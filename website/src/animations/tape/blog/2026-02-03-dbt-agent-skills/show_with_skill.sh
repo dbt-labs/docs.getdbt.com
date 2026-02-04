@@ -91,7 +91,7 @@ sleep 0.3
 line "  ⚙ dbt    run --select fct_reviews --full-refresh" 0.2
 line "           → PASS=1" 0.3
 line "  ⚙ dbt    show --inline [...]" 0.2
-line "           No results returned" 0.2
+line "           → No duplicates found" 0.2
 sleep 0.7
 
 echo ""

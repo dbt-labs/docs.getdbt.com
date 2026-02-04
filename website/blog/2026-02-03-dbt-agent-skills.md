@@ -18,6 +18,8 @@ Today we released a collections of [dbt agent skills](https://github.com/dbt-lab
 
 These skills encapsulate a broad swathe of hard-won knowledge from the dbt Community and the dbt Labs Developer Experience team. Collectively, they represent dozens of hours of focused work by dbt experts, backed by years of using dbt.
 
+<Lightbox src="/img/blog/2026-02-03-dbt-agent-skills/with_skill.gif" width="85%" alt="A gif showing Claude using the analytics engineering skill to validate its work" title="With access to skills, agents like Claude take a systematic approach to tasks"/>
+
 <!-- truncate -->
 
 The ecosystem is rapidly evolving for both authors of skills and the agents that consume them. We believe these skills are very useful today, _and_ that they will become more useful over the coming weeks and months as:

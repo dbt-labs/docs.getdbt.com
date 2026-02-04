@@ -12,8 +12,16 @@ brew install vhs
 
 ```bash
 cd blog/2026-02-03-dbt-agent-skills
-vhs without_skill.tape
-vhs with_skill.tape
+../generate.sh
 ```
 
-Edit `.sh` scripts to change content/timing, then re-run VHS.
+This generates all `.tape` files, optimizes them, and copies to `static/img/`.
+
+Edit `.sh` scripts to change content/timing, then re-run.
+
+## Manual optimize
+
+```bash
+brew install gifsicle
+gifsicle -O3 --lossy=80 --colors=8 input.gif -o output.gif
+```
