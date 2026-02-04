@@ -46,7 +46,7 @@ Before upgrading your development environment, confirm:
     <FusionAdapters/>
 - You have a developer license in <Constant name="dbt_platform" />
 - <Constant name="fusion" /> has been enabled for your account
-- You have appropriate permissions to modify environments (see [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) if restricted)
+- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) if restricted)
 
 
 ## Upgrade your development environment
