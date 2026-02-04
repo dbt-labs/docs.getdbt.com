@@ -30,17 +30,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Studio IDE: Copy repo-relative path command**: Adds a command to copy a file path relative to your dbt project subdirectory, making it easier to share paths in runbooks and support tickets.
   <!-- PR: https://github.com/dbt-labs/studio/pulls?q=studio.copyRepoRelativePath -->
 
-### Copilot and Agents
-
-- **Copilot: Workspace file read and edit tools**: Adds workspace-scoped tools to read files, edit files, and list directories with safety checks for supported Copilot and agent workflows.
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/683 -->
-
-- **Copilot: Run dbt command tool**: Adds a tool for running dbt Command Line Interface (CLI) commands and returning console output for supported Copilot and agent workflows.
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/684 -->
-- **Copilot and Agent: New lineage retrieval tool** Retrieve upstream and downstream lineage graphs for dbt resources, with resource-type filters and configurable depth. <!-- Leona question: is this gated or beta? PRs: https://github.com/dbt-labs/ai-codegen-api/compare/54fcfc8bd919c12953141148040985e15a92df92...d6119984f2f750567872a76eb46a3d2c8994bbb6 -->
-  
-- **Copilot and Agent: New model performance tool** Fetch historical model run performance and statuses, with optional related test execution history. <!--  Leona question: is this gated or beta? PRs: https://github.com/dbt-labs/ai-codegen-api/compare/54fcfc8bd919c12953141148040985e15a92df92...d6119984f2f750567872a76eb46a3d2c8994bbb6 -->
-
 ## Enhancements
 
 ### dbt platform
@@ -204,15 +193,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Orchestration: dbt project YAML parsing option added**: Adds an optional parsing and writing path using ruamel.yaml to better preserve quoted strings and formatting when modifying `dbt_project.yml`. (Feature Flag: `ORC_USE_RUAMEL_YAML_PARSING`)
   <!-- PRs: https://github.com/dbt-labs/dbt-orc/compare/39e8c7ec29a86e202d85805f1eb2b795482535ce...89212ae519c0bcf274a390503751956f37615593 -->
-
-### Copilot and AI Assistant
-
-- **Copilot: Tool search name changed**: The tool previously named `search_files` was renamed to `find_files`; any custom prompts or clients calling the old tool name must be updated.
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/698 -->
-
-- **Copilot: File read truncation marker changed**: Truncated file reads now use `[TRUNCATED]` instead of `...`, which can affect downstream parsing of tool output.
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/699 -->
-
 
 ## January 28, 2026
 
