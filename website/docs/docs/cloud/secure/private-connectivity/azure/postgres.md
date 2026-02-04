@@ -1,7 +1,7 @@
 ---
 title: "Configuring Private Link for Azure Database for Postgres Flexible Server"
 id: azure-postgres
-description: "Configuring Private Link for Azure Database for Postgres Flexible Server"
+description: "Configuring Private Link for Azure Database for Postgres Flexible Server."
 sidebar_label: "Azure Database for PostgreSQL Flexible Server"
 ---
 
@@ -31,12 +31,12 @@ From your Azure portal:
     - dbt Azure multi-tenant environment (EMEA):
     - Azure Postgres server region (for example, WestEurope, NorthEurope):
     ```
-5. Once our support team confirms the endpoint has been created, navigate to the Azure Database for Postgres Flexible Server in the Azure Portal and browse to **Settings** > **Networking**. In the **Private Endpoints** section, highlight the `dbt` named option and select **Approve**. Confirm with Support that the connection has been approved so they can validate the connection and make it available for use in  <Constant name="cloud" />.
+5. Once our Support team confirms the endpoint has been created, navigate to the Azure Database for Postgres Flexible Server in the Azure Portal and browse to **Settings** > **Networking**. In the **Private Endpoints** section, highlight the `dbt` named option and select **Approve**. Confirm with dbt Support that the connection has been approved so they can validate the connection and make it available for use in <Constant name="cloud" />.
 
 
 ## Create connection in dbt
 
-Once you've completed the setup in the Azure environment, you will be able to configure a private endpoint in <Constant name="cloud" />:
+Once you've completed the setup in the Azure environment, you can configure a private endpoint in <Constant name="cloud" />:
 
 1. Navigate to **Settings** → **Create new project** → select **Postgres**. 
 2. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**. 

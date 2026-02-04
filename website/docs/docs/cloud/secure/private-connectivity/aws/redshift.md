@@ -1,7 +1,7 @@
 ---
 title: "Configure AWS PrivateLink for Redshift"
 id: aws-redshift
-description: "Configuring PrivateLink for Redshift"
+description: "Configuring PrivateLink for Redshift."
 sidebar_label: "Redshift"
 ---
 
@@ -18,7 +18,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 - [Redshift-managed PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html)
 - [Redshift Interface-type PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/security-private-link.html)
 
-<Constant name="cloud" /> supports both types of endpoints, but there are a number of [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a far simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, you will need to determine which is the right type for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
+<Constant name="cloud" /> supports both types of endpoints, but there are several [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, determine which type is right for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
 
 <CloudProviders type='Redshift' />
 
@@ -68,9 +68,9 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
-## Configuring Redshift Interface-type PrivateLink
+## Configuring Redshift interface-type PrivateLink
 
-### 1. Provision AWS Resources
+### 1. Provision AWS resources
 
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing the Redshift cluster:
 
@@ -106,7 +106,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 <PrivateLinkCrossZone features={'/snippets/_privatelink-cross-zone-load-balancing.md'}/>
 
-### 2. Grant dbt AWS Account access to the VPC Endpoint Service
+### 2. Grant dbt AWS account access to the VPC endpoint service
 
 On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the root user in the appropriate production AWS account and save your changes.
 
@@ -114,13 +114,14 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-allow-principals.png" title="Enter ARN"/>
 
-### 3. Obtain VPC Endpoint Service Name
+### 3. Obtain VPC endpoint service name
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="cloud" /> support.
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" title="Get service name field value"/>
 
-### 4. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
+### 4. Submit your request to dbt Support
+Add the required information to the template below and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
 ```
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Redshift Interface-type
@@ -131,13 +132,13 @@ Subject: New Multi-Tenant PrivateLink Request
 
 <PrivateLinkSLA />
 
-## Create Connection in dbt
+## Create connection in dbt
 
-Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink.
+Once <Constant name="cloud" /> Support completes the configuration, you can start creating new connections using PrivateLink.
 
-1. Navigate to **settings** → **Create new project** → select **Redshift**
-2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+1. Navigate to **Settings** → **Create new project** → select **Redshift**.
+2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
+3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 

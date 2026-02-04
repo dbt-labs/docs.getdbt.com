@@ -1,7 +1,7 @@
 ---
 title: "Configuring Snowflake and AWS PrivateLink"
 id: aws-snowflake
-description: "Configuring AWS PrivateLink for Snowflake"
+description: "Configuring AWS PrivateLink for Snowflake."
 sidebar_label: "Snowflake"
 ---
 
@@ -24,11 +24,11 @@ import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md';
 
 To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.amazon.com/privatelink):
 
-1. Open a support case with Snowflake to allow access from the <Constant name="cloud" /> AWS or Entra ID account.
-- Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
-- Provide them with your <Constant name="cloud" /> account ID along with any other information requested in the article.
-  - **AWS account ID**: `346425330055` &mdash; _NOTE: This account ID only applies to AWS <Constant name="cloud" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, please contact [Support](/docs/dbt-support#dbt-cloud-support)._
-- You will need to have `ACCOUNTADMIN` access to the Snowflake instance to submit a Support request.
+1. Open a support case with Snowflake to allow access from the <Constant name="cloud" /> AWS account.
+   - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
+   - Provide them with your <Constant name="cloud" /> account ID along with any other information requested in the article.
+     - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="cloud" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](/docs/dbt-support#dbt-cloud-support)._
+   - You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support request.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
@@ -53,17 +53,17 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
-## Create Connection in dbt
+## Create connection in dbt
 
-Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink. 
+Once <Constant name="cloud" /> Support completes the configuration, you can start creating new connections using PrivateLink. 
 
 1. Navigate to **Settings** → **Create new project** → select **Snowflake**. 
-2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
+3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 
-## Configuring Internal Stage PrivateLink in <Constant name="cloud" />
+## Configuring internal stage PrivateLink in <Constant name="cloud" />
 
 If an Internal Stage PrivateLink endpoint has been provisioned, your dbt environments must be configured to use this endpoint instead of the account default set in Snowflake.
 
@@ -73,12 +73,12 @@ If an Internal Stage PrivateLink endpoint has been provisioned, your dbt environ
 ```
 s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.amazonaws.com'
 ```
-4. Save the changes
+4. Save the changes.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflake-internal-stage-dns.png" title="Internal Stage DNS"/>
 
-## Configuring Network Policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will need to add a network rule for <Constant name="cloud" />. 
+## Configuring network policies
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="cloud" />. 
 
 You can request the VPCE IDs from [<Constant name="cloud" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. If creating an endpoint for Internal Stage, the VPCE ID will be different from the VPCE ID of the main service endpoint.
 

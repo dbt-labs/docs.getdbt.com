@@ -1,7 +1,7 @@
 ---
 title: "Configuring public IP restrictions"
 id: ip-restrictions
-description: "Restrict public access to dbt Cloud by allowing only specific IP addresses"
+description: "Restrict public access to the dbt platform by allowing only specific IP addresses."
 sidebar_label: "Public IP restrictions"
 pagination_next: "docs/cloud/secure/private-connectivity/private-connectivity"
 pagination_prev: null
@@ -13,67 +13,67 @@ import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
 
 <SetUpPages features={'/snippets/_available-tiers-iprestrictions.md'}/>
 
-IP Restrictions help control which IP addresses are allowed to connect to <Constant name="cloud" />. IP restrictions allow <Constant name="cloud" /> customers to meet security and compliance controls by only allowing approved IPs to connect to their <Constant name="cloud" /> environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
+IP restrictions help control which IP addresses can connect to <Constant name="cloud" />. They allow <Constant name="cloud" /> customers to meet security and compliance controls by only allowing approved IPs to connect to their <Constant name="cloud" /> environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
 
 ## Configuring IP restrictions
 
-To configure IP restrictions, go to **Account Settings** → **IP Restrictions**. IP restrictions provide two methods for determining which IPs can access <Constant name="cloud" />: an allowlist and a blocklist. IPs in the allowlist are allowed to access <Constant name="cloud" />, and IPs in the deny list will be blocked from accessing <Constant name="cloud" />. IP Restrictions can be used for a range of use cases, including:
+To configure IP restrictions, go to **Account Settings** → **IP Restrictions**. IP restrictions provide two methods for determining which IPs can access <Constant name="cloud" />: an allowlist and a blocklist. IPs in the allowlist can access <Constant name="cloud" />, and IPs in the blocklist are blocked from accessing <Constant name="cloud" />. You can use IP restrictions for a range of use cases, including:
 
-- Only allowing corporate VPN traffic and deny all other traffic
-- Deny IPs flagged by the Security team
-- Allow only VPN traffic but make an exception for contractors’ IP addresses
+- Allow only corporate VPN traffic and deny all other traffic
+- Deny IPs flagged by the security team
+- Allow only VPN traffic but make an exception for contractors' IP addresses
 
-IP restrictions will block all service tokens, user requests done via the API (via personal user token), and the UI if they come from blocked IP addresses.
+IP restrictions block all service tokens, user requests made through the API (using personal user tokens), and the UI if they come from blocked IP addresses.
 
-For any version control system integrations (Github, Gitlab, ADO, etc.) inbound into <Constant name="cloud" />, ensure their IP addresses are added to the allowed list.
+For any version control system integrations (GitHub, GitLab, ADO, and others) inbound into <Constant name="cloud" />, ensure you add their IP addresses to the allowed list.
 
 ### Allowing IPs
 
 To add an IP to the allowlist, from the **IP Restrictions** page:
 
-1.  Click **Edit**
-2. Click **Add Rule**
-3. Add name and description for the rule
-    - For example, Corporate VPN CIDR Range
-4. Select **Allow**
-5. Add the ranges in the CIDR notation
-	- For example, 1.1.1.1/8
-	- You can add multiple ranges in the same rule.
-6. Click **Save**
+1. Click **Edit**.
+2. Click **Add Rule**.
+3. Add a name and description for the rule.
+   - For example, Corporate VPN CIDR Range
+4. Select **Allow**.
+5. Add the ranges in CIDR notation.
+   - For example, 1.1.1.1/8
+   - You can add multiple ranges in the same rule.
+6. Click **Save**.
 
 Add multiple IP ranges by clicking the **Add IP range** button to create a new text field.
 
-Note that simply adding the IP Ranges will not enforce IP restrictions. For more information, see the [Enabling restrictions](#enabling-restrictions) section.
+Simply adding the IP ranges does not enforce IP restrictions. For more information, refer to the [Enabling restrictions](#enabling-restrictions) section.
 
-If you only want to allow the IP ranges added to this list and deny all other requests, adding a denylist is not necessary. By default, if only an allow list is added, <Constant name="cloud" /> will only allow IPs in the allowable range and deny all other IPs. However, you can add a denylist if you want to deny specific IP addresses within your allowlist CIDR range.
+If you only want to allow the IP ranges added to this list and deny all other requests, you don't need to add a blocklist. By default, if you only add an allowlist, <Constant name="cloud" /> only allows IPs in the allowable range and denies all other IPs. However, you can add a blocklist if you want to deny specific IP addresses within your allowlist CIDR range.
 
 ### Blocking IPs (deny)
 
-If you have an IP(s) defined in the allowlist that needs to be denied, you can add those IP ranges to the denylist by doing the following:
+If you have IPs defined in the allowlist that need to be denied, you can add those IP ranges to the blocklist:
 
-1. Click **Edit**
-2. Click **Add Rule**
-3. Add name and description for the rule
-	- For example, "Corporate VPN Deny Range"
-4. Select **Deny**
-5. Add the ranges or the individual IP addresses in CIDR notation
-6. Click **Save**
+1. Click **Edit**.
+2. Click **Add Rule**.
+3. Add a name and description for the rule.
+   - For example, "Corporate VPN Deny Range"
+4. Select **Deny**.
+5. Add the ranges or individual IP addresses in CIDR notation.
+6. Click **Save**.
 
 :::note Duplicate IP addresses
 
-If identical IP addresses are in both the allow and block configurations, whichever is entered second will fail to save.
+If identical IP addresses are in both the allow and block configurations, the second entry fails to save.
 
-It is possible to put an IP range on one list and then a sub-range or IP address that is part of it on the other. Using USA (Range) and NY(sub-range) as an example, the expected behavior is:
-- USA is on denylist and NY in allowlist - Traffic from the USA will be blocked, but IPs from NY will be allowed.
-- USA is on the allowlist, and NY is on the denylist - USA traffic will be allowed, but IPs from NY will be blocked.
+You can put an IP range on one list and then a sub-range or IP address that is part of it on the other. Using USA (range) and NY (sub-range) as an example, the expected behavior is:
+- USA is on blocklist and NY is on allowlist &mdash; Traffic from the USA is blocked, but IPs from NY are allowed.
+- USA is on the allowlist and NY is on the blocklist &mdash; USA traffic is allowed, but IPs from NY are blocked.
 
 :::
 
 ## Enabling restrictions
 
-Once you are done adding all your ranges, IP restrictions can be enabled by selecting the **Enable IP restrictions** button and clicking **Save**. If your IP address is in any of the denylist ranges, you won’t be able to save or enable IP restrictions - this is done to prevent accidental account lockouts. If you do get locked out due to IP changes on your end, please reach out to support@getdbt.com
+Once you finish adding all your ranges, you can enable IP restrictions by selecting **Enable IP restrictions** and clicking **Save**. If your IP address is in any of the blocklist ranges, you can't save or enable IP restrictions &mdash; this prevents accidental account lockouts. If you get locked out due to IP changes on your end, reach out to support@getdbt.com.
 
-Once enabled, when someone attempts to access <Constant name="cloud" /> from a restricted IP, they will encounter one of the following messages depending on whether they use email & password or SSO login.
+Once enabled, when someone attempts to access <Constant name="cloud" /> from a restricted IP, they encounter one of the following messages depending on whether they use email and password or SSO login:
 
 - For email logins: "Access denied! Please contact your admin for more details."
-- For SSO logins: "Access denied! Please contact your admin for more details." in a dbt login page
+- For SSO logins: "Access denied! Please contact your admin for more details." on a dbt login page

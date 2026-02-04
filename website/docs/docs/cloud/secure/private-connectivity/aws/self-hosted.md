@@ -53,7 +53,7 @@ Before you begin, make sure to review the following requirements:
 
 3. **dbt AWS Account ARN**
 
-    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt AWS account ARN. You will need this in order to allow dbt Cloud to connect to your Endpoint Service.
+    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt AWS account ARN. You will need this in order to allow dbt to connect to your Endpoint Service.
 
 
 ## Additional NLB configuration
@@ -81,7 +81,7 @@ For more details, see [Update the security groups for your Network Load Balancer
 1. Log in to the [AWS Console](https://console.aws.amazon.com).
 2. Navigate to the AWS Account and Region where your self-hosted service is located.
 
-### Create a VPC Endpoint Service
+### Create a VPC endpoint service
 
 3. In the AWS Console, navigate to **VPC** → **Endpoint Services** → **Create Endpoint Service**
 
@@ -95,7 +95,7 @@ For more details, see [Update the security groups for your Network Load Balancer
 
     d. Click **Create**
 
-### Grant dbt access to the Endpoint Service
+### Grant dbt access to the endpoint service
 
 5. After the Endpoint Service is created, select it and go to the **Allow principals** tab
 
@@ -103,7 +103,7 @@ For more details, see [Update the security groups for your Network Load Balancer
 
     - Principal: `arn:aws:iam::<dbt-account-id>:root`
 
-### Obtain the Endpoint Service Name
+### Obtain the endpoint service name
 
 7. On the Endpoint Service details page, copy the **Service name** value (format: `com.amazonaws.vpce.region.vpce-svc-xxx`)
 

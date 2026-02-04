@@ -222,11 +222,13 @@ const sidebarSettings = {
                   label: "Private connectivity",
                   link: { type: "doc", id: "docs/cloud/secure/private-connectivity/private-connectivity" },
                   items: [
+                    "docs/cloud/secure/private-connectivity/private-connectivity",
                     {
                       type: "category",
                       label: "AWS",
                       link: { type: "doc", id: "docs/cloud/secure/private-connectivity/aws/aws-overview" },
                       items: [
+                        "docs/cloud/secure/private-connectivity/aws/aws-overview",
                         "docs/cloud/secure/private-connectivity/aws/aws-snowflake",
                         "docs/cloud/secure/private-connectivity/aws/aws-databricks",
                         "docs/cloud/secure/private-connectivity/aws/aws-redshift",
@@ -239,6 +241,7 @@ const sidebarSettings = {
                       label: "Azure",
                       link: { type: "doc", id: "docs/cloud/secure/private-connectivity/azure/azure-overview" },
                       items: [
+                        "docs/cloud/secure/private-connectivity/azure/azure-overview",
                         "docs/cloud/secure/private-connectivity/azure/azure-snowflake",
                         "docs/cloud/secure/private-connectivity/azure/azure-databricks",
                         "docs/cloud/secure/private-connectivity/azure/azure-postgres",
@@ -251,6 +254,7 @@ const sidebarSettings = {
                       label: "GCP",
                       link: { type: "doc", id: "docs/cloud/secure/private-connectivity/gcp/gcp-overview" },
                       items: [
+                        "docs/cloud/secure/private-connectivity/gcp/gcp-overview",
                         "docs/cloud/secure/private-connectivity/gcp/gcp-snowflake",
                         "docs/cloud/secure/private-connectivity/gcp/gcp-bigquery",
                         "docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted",

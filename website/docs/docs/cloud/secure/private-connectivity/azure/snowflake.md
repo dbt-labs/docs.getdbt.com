@@ -1,7 +1,7 @@
 ---
 title: "Configuring Snowflake and Azure Private Link"
 id: azure-snowflake
-description: "Configuring Azure Private Link for Snowflake"
+description: "Configuring Azure Private Link for Snowflake."
 sidebar_label: "Snowflake"
 ---
 
@@ -14,8 +14,8 @@ The following steps walk you through the setup of an Azure-hosted Snowflake Priv
 
 <CloudProviders type='Snowflake' />
 
-:::note Snowflake OAuth with PrivateLink
-Users connecting to Snowflake using [Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) over an AWS PrivateLink connection from <Constant name="cloud" /> will also require access to a PrivateLink endpoint from their local workstation. Where possible, use [Snowflake External OAuth](/docs/cloud/manage-access/snowflake-external-oauth) instead to bypass this limitation.
+:::note Snowflake OAuth with Private Link
+Users connecting to Snowflake using [Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) over an Azure Private Link connection from <Constant name="cloud" /> also require access to a Private Link endpoint from their local workstation. Where possible, use [Snowflake External OAuth](/docs/cloud/manage-access/snowflake-external-oauth) instead to bypass this limitation.
 
 Snowflake docs:
 >Currently, for any given Snowflake account, SSO works with only one account URL at a time: either the public account URL or the URL associated with the private connectivity service
@@ -59,16 +59,16 @@ As the Snowflake administrator, call the `SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACC
 USE ROLE ACCOUNTADMIN;
 
 -- Azure Private Link
-SELECT SYSTEMS$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( `AZURE PRIVATE ENDPOINT RESOURCE ID` );
+SELECT SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( 'AZURE_PRIVATE_ENDPOINT_RESOURCE_ID' );
 
 ```
 
-## Configuring Network Policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will need to add a network rule for <Constant name="cloud" />. 
+## Configuring network policies
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="cloud" />. 
 
 ### Find the endpoint Azure Link ID
 
-Snowflake allows for finding the Azure Link ID of configured endpoints by running the `` command. The following can be used to better isolate the Link ID value and the associated endpoint resource name:
+Snowflake allows you to find the Azure Link ID of configured endpoints by running the `SYSTEM$GET_PRIVATELINK_AUTHORIZED_ENDPOINTS` command. Use the following to isolate the Link ID value and the associated endpoint resource name:
 
 ```sql
 

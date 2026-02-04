@@ -53,14 +53,14 @@ Before you begin, make sure to review the following requirements:
 
 3. **dbt Azure Subscription ID**
 
-    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt Azure subscription ID. You will need this in order to allow dbt Cloud to connect to your Private Link Service.
+    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt Azure subscription ID. You will need this in order to allow dbt to connect to your Private Link Service.
 
 
 ## Instructions
 1. Log in to the [Azure Portal](https://portal.azure.com).
 2. Navigate to the Azure Subscription and Resource Group where your self-hosted service is located.
 
-### Create a NAT subnet for the Private Link Service
+### Create a NAT subnet for the Private Link service
 3. Under the **Resources** section, search for **Virtual network** and go into the VNet where your self-hosted service is running.
 4. Expand the **Settings** in the left side panel, and go into **Subnets**. Click the **+ Subnet** button to create a new subnet.
 5. In the subnet creation panel:
@@ -88,7 +88,7 @@ Before you begin, make sure to review the following requirements:
 <Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/vnet-search.png" width="90%" title="Screenshot of step 3: Search for VNet of self-hosted service" />
 <Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/nat-subnet-creation.png" width="90%" title="Screenshot of steps 4-5: NAT Subnet creation for Private Link Service" />
 
-### Create a Private Link Service
+### Create a Private Link service
 6. After the subnet creation has completed, in the search field at the top-middle of the portal, search for **Private link services**, and click on its page.
 7. Click the **+ Create** button.
 8. In the Create private link service page:

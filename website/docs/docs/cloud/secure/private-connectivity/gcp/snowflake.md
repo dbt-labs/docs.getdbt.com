@@ -1,7 +1,7 @@
 ---
 title: "Configuring Snowflake and GCP Private Service Connect"
 id: gcp-snowflake
-description: "Configuring GCP Private Service Connect for Snowflake"
+description: "Configuring GCP Private Service Connect for Snowflake."
 sidebar_label: "Snowflake"
 ---
 
@@ -46,19 +46,19 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
-## Create Connection in dbt
+## Create connection in dbt
 
-Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink. 
+Once <Constant name="cloud" /> Support completes the configuration, you can start creating new connections using PrivateLink. 
 
 1. Navigate to **Settings** → **Create new project** → select **Snowflake**. 
-2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
+3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 
-## Configuring Network Policies
+## Configuring network policies
 
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will need to add a network rule for <Constant name="cloud" />. 
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="cloud" />. 
 
 You can request the CIDR range from [<Constant name="cloud" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. 
 

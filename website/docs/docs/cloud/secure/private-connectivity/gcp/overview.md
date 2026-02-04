@@ -1,12 +1,13 @@
 ---
 title: "GCP private connectivity"
 id: gcp-overview
-description: "Configure private connections for GCP deployments of dbt Cloud"
+description: "Configure private connections for GCP deployments of the dbt platform."
 sidebar_label: "Overview"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 import GCPMatrix from '/snippets/_gcp-private-connectivity-matrix.md';
+import Terminology from '/snippets/_terminology.md';
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
@@ -16,21 +17,4 @@ For more details, refer to the [GCP Private Service Connect documentation](https
 
 <GCPMatrix />
 
----
-
-## Configuration guides
-
-### Data platforms
-
-- [Snowflake](/docs/cloud/secure/private-connectivity/gcp/gcp-snowflake)
-- [BigQuery](/docs/cloud/secure/private-connectivity/gcp/gcp-bigquery)
-
-### Self-hosted services
-
-- [Self-hosted services (VCS, databases, and more)](/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted)
-
----
-
-## Terminology
-
-For definitions of terms like **Native**, **Vendor**, **Customer-provisioned**, and **dbt-provisioned**, see the [Terminology section](/docs/cloud/secure/private-connectivity/private-connectivity#terminology) in the private connectivity overview.
+<Terminology />

@@ -28,10 +28,10 @@ This guide does not cover the configuration or troubleshooting of your self-host
 This guide is intended for cloud network administrators or engineers responsible for configuring and maintaining secure network communications within your organization's Google Cloud Platform (GCP) environment.
 
 ## Terminology
-This guide uses several important terms related to Private Service Connect. Understanding these definitions will help ensure successful implementation. For a more detailed explanation of these concepts, refer to the [GCP Private Service Connect documentation](https://docs.cloud.google.com/vpc/docs/private-service-connect#managed-services).
+This guide uses several important terms related to Private Service Connect. Understanding these definitions helps ensure successful implementation. For a more detailed explanation of these concepts, refer to the [GCP Private Service Connect documentation](https://cloud.google.com/vpc/docs/private-service-connect#managed-services).
 
 - **Consumer:** In this context, the Consumer is <Constant name="cloud" />, which establishes the PSC connection as the client.
-- **Published Service:** The service you are exposing via PSC to dbt Cloud, such as your version control system (VCS), data warehouse, or another application.
+- **Published Service:** The service you are exposing via PSC to the dbt platform, such as your version control system (VCS), data warehouse, or another application.
 - **Service Attachment:** Refers to the resource that is shared with consumer(s) of your Published Service, so that they can establish endpoints to it.
 - **Backend:** Can also be referred to as Network Endpoint Groups (NEGs). This is the particular architecture that your service is running on. For example, this may be VMs, GKE Instance Groups, or even on-prem IPs.
 
@@ -53,14 +53,14 @@ Before you begin, make sure to review the following requirements:
 
 3. **dbt GCP Project ID**
 
-    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt GCP project ID. You will need this in order to share your service attachment with dbt Cloud.
+    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt GCP project ID. You will need this in order to share your service attachment with the dbt platform.
 
 
 ## Instructions
 1. Log in to the Google Cloud Platform [console](https://console.cloud.google.com)
 2. Navigate to the GCP Organization and Project that your self-hosted service is in.
 
-### Create a dedicated Service Attachment subnet
+### Create a dedicated service attachment subnet
 3. In the search field at the top-middle of the console, search for **VPC networks** and navigate to its product page.
 4. On the product page, click the VPC network link where your self-hosted service is located.
 5. Select the **Subnets** tab on the next page, and click the **Add subnet** button.
@@ -78,7 +78,7 @@ Before you begin, make sure to review the following requirements:
 
 <Lightbox src="/img/docs/dbt-cloud/gcp-self-hosted-psc/service-attach-subnet-creation.png" width="90%" title="Screenshot of step 6: Subnet creation for PSC Service Attachment" />
 
-### Create a Service Attachment
+### Create a service attachment
 7. After the subnet creation for the service attachment has completed, in the search field at the top-middle of the console, search for **Private Service Connect**, and click on its product page.
 8. On the product page, select the **Published services** tab, and click the **Publish service** button.
 9. In the Publish service page:
