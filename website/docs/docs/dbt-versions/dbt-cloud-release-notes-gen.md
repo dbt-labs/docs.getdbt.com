@@ -119,9 +119,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Insights and Catalog
 
-- **Insights: Improved page stability with error boundary**: Adds a top-level error boundary to handle unexpected rendering errors more gracefully instead of resulting in blank or failed pages.
-  <!-- PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
-
 - **Catalog: Search highlighting displays correctly with multiple matches**: Fixes search result highlighting when the backend returns multiple highlights per field, improving readability of matches.
   <!-- PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
 
@@ -185,15 +182,9 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and Run Status
 
-- **Orchestration: Build conformance artifact collection more resilient**: Build conformance artifact packaging now tolerates symlink and copy conflicts by logging a warning and continuing, reducing avoidable failures during artifact preparation.
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/compare/39e8c7ec29a86e202d85805f1eb2b795482535ce...89212ae519c0bcf274a390503751956f37615593 -->
-
 - **Orchestration: Cached and stale outcome status mapping updated**: Cached nodes are now consistently surfaced as Reused with clearer reasons, and stale outcomes are treated as errors, which can change the statuses operators see in run output and telemetry.
   <!-- PRs: https://github.com/dbt-labs/dbt-orc/compare/39e8c7ec29a86e202d85805f1eb2b795482535ce...89212ae519c0bcf274a390503751956f37615593 -->
-
-- **Orchestration: dbt project YAML parsing option added**: Adds an optional parsing and writing path using ruamel.yaml to better preserve quoted strings and formatting when modifying `dbt_project.yml`. (Feature Flag: `ORC_USE_RUAMEL_YAML_PARSING`)
-  <!-- PRs: https://github.com/dbt-labs/dbt-orc/compare/39e8c7ec29a86e202d85805f1eb2b795482535ce...89212ae519c0bcf274a390503751956f37615593 -->
-
+  
 ## January 28, 2026
 
 ### New
