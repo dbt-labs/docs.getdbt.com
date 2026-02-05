@@ -6,8 +6,8 @@
   button_text: Take the survey
   url: https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform
 
-- name: core_1_11_webinar
-  header: dbt Core 1.11 Live
-  subheader: Release updates, roadmap, and Q&A with the dbt Core team. Join us on February 19th.
-  button_text: RSVP here
-  url: https://www.getdbt.com/resources/webinars/dbt-core-1-11-live-release-updates-roadmap
+- name: fusion_webinar
+  header: Is your team ready for Fusion?
+  subheader: Join Brooklyn Data Feb 18 for a practical readiness framework — assess your project, process, and people before you migrate.
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/are-you-ready-for-the-dbt-fusion-engine
