@@ -244,7 +244,7 @@ Learn more about `initialize` in [Snowflake's docs](https://docs.snowflake.com/e
 
 ### Immutable where
 
-Snowflake allows you to mark specific portions of a dynamic table as immutable using the `IMMUTABLE WHERE` clause. This prevents Snowflake from applying updates or deletions to matching rows during refreshes, allowing historical data to remain unchanged and improving refresh performance.
+Snowflake allows you to mark certain rows of a dynamic table as immutable using the `IMMUTABLE WHERE` clause. This prevents Snowflake from applying updates or deletions to matching rows during refreshes, so historical data stays the same and refreshes run faster.
 
 Starting in <Constant name="core"/> v1.11, you can configure this using the `immutable_where` configuration. This config accepts a SQL condition expression. Rows that satisfy the `immutable_where` condition will be treated as immutable and won't be updated or deleted during subsequent refreshes.
 
