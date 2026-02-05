@@ -72,12 +72,12 @@ var siteSettings = {
     announcementBar: {
       id: "dbt-workshop",
       content:
-        "dbt Core 1.11 Live: Release updates, roadmap, and Q&A with the dbt Core team - join us on February 19th.",
+        "Is your team ready for Fusion? Join Brooklyn Data Feb 18 for a practical readiness framework — assess your project, process, and people before you migrate.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/dbt-core-1-11-live-release-updates-roadmap",
+      "https://www.getdbt.com/resources/webinars/are-you-ready-for-the-dbt-fusion-engine",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
