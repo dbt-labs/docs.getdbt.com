@@ -9,7 +9,7 @@ tags: [ai, data_ecosystem]
 hide_table_of_contents: false
 image: /img/blog/2026-02-03-dbt-agent-skills/social-share.png
 
-date: 2026-02-04
+date: 2026-02-05
 is_featured: true
 ---
 
