@@ -301,9 +301,7 @@ Macro argument validation runs during project parsing, not during macro executio
   - With partial parsing (the default), dbt validates only macros affected by changed files.
   - Use `--no-partial-parse` to force validation of all macros.
  
-- In <Constant name="fusion_engine" />:
-  - <Constant name="fusion" /> doesn't support partial parsing.
-  - As a result, dbt validates all macros on every parse, for any command that triggers parsing.
+<Constant name="fusion_engine" /> will support macro argument validation in a future release. <!--add when avail: When available, <Constant name="fusion" /> will validate all macros on every parse (no partial parsing support needed).-->
 </Expandable>
 
 ### Warn-error handler for all warnings
