@@ -102,6 +102,9 @@
     }
   },
   "version": "0.0.0",
+  "engines": {
+    "node": "20.x"
+  },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,md}": "npm run lint"
   }
