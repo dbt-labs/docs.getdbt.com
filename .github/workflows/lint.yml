@@ -18,7 +18,7 @@ jobs:
       id: cache-node-mods
       with:
         path: website/node_modules
-        key: node-modules-cache-v3-${{ hashFiles('**/package.json', '**/package-lock.json') }}
+        key: node-modules-cache-v4-${{ hashFiles('**/package.json', '**/package-lock.json') }}
 
     - name: Install Packages
       if: steps.cache-node-mods.outputs.cache-hit != 'true'
