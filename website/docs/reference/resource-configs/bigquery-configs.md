@@ -1191,7 +1191,7 @@ The BigQuery Python models also have the following additional configuration para
 | `enable_list_inference` | `<boolean>` | no       | `True`    | `True`, `False`  |
 | `intermediate_format`   | `<string>`  | no       | `parquet` | `parquet`, `orc` |
 | `submission_method`     | `<string>`  | no       | ``        | `serverless`, `bigframes`, `cluster` |
-| `notebook_template_id`  | `<Integer>` | no       | ``        | `<NOTEBOOK RUNTIME TEMPLATE_ID>` |
+| `notebook_template_id`  | `<integer>` | no       | ``        | `<NOTEBOOK RUNTIME TEMPLATE_ID>` |
 | `compute_region`        | `<string>`  | no       | ``        | `<COMPUTE_REGION>` |
 | `gcs_bucket`            | `<string>`  | no       | ``        | `<GCS_BUCKET>` |
 | `packages`              | `<string>`  | no       | ``        | `['numpy<=1.1.1', 'pandas', 'mlflow']` |
