@@ -112,7 +112,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
     ```
     </File>
 
-2. (Optional) Apply transformations using an ephemeral model. By default, snapshots reference a source directly (as shown in the YAML in the previous step). If you need to apply transformations, such as filtering or deduplication, before the snapshot, define an ephemeral model and reference it in the relation field instead of `source()`.
+2. (Optional) Apply transformations using an ephemeral model. By default, snapshots reference a source directly (as shown in the YAML in the previous step). If you need to apply transformations (such as filtering or deduplication), define an ephemeral model first to apply those transformations, and reference it in the snapshot relation field instead of calling `source()` directly.
 
   For example, here's an ephemeral model:
 
