@@ -26,7 +26,6 @@ export default function BlogLayout(props) {
     children,
     title,
     description,
-    image,
     isBlogList,
     isBlogPost,
     ...layoutProps
@@ -71,11 +70,10 @@ export default function BlogLayout(props) {
     <Layout {...layoutProps}>
 
       {/* Set Custom Metadata */}
-       {(image || (featured_image && featured_image !== "")) &&
+       {featured_image && featured_image !== "" &&
          <Head>
-           <meta property="og:image" content={image || featured_image} />
-           <meta name="twitter:image" content={image || featured_image} />
-           {image && <meta property="og:image:alt" content={title || ''} />}
+           <meta property="og:image" content={featured_image} />
+           <meta property="twitter:image" content={featured_image} />
          </Head>
        }
  

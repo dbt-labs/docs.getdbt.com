@@ -16,7 +16,6 @@ import { DiscourseBlogComments } from '@site/src/components/discourseBlogComment
 import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
 import StructuredData from '@site/src/components/StructuredData';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Head from '@docusaurus/Head';
 
 /* dbt Customizations:
  * Import global data from plugin
@@ -106,7 +105,6 @@ function BlogPostPageContent({sidebar, children}) {
         ) : undefined
       }
       isBlogPost={true}
-      image={postImageUrl}
     >
       <StructuredData
         type="BlogPosting"
