@@ -23,6 +23,5 @@ Found 2 models, 3 tests, 0 archives, 0 analyses, 53 macros, 0 operations, 2 seed
 14:46:16 | Finished running 1 seed in 0.14s.
 
 ```
-<br />
 
 For information about configuring seeds (for example, column types and quoting behavior), see [Seed configurations](/reference/seed-configs).
