@@ -125,7 +125,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
   ```
   </File>
 
-  This is how to reference the ephemeral model in the relation field:
+  This is how to reference the ephemeral model in the `relation` field:
    
   <File name='snapshots/orders_snapshot.yml'>
 
