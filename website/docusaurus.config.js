@@ -541,7 +541,9 @@ var siteSettings = {
     experimental_faster: {
       swcJsLoader: true,
       swcJsMinimizer: true,
-      swcHtmlMinimizer: true,
+      // Disabled: SWC HTML minifier strips <head> tags (optional in HTML5),
+      // which breaks LinkedIn's OG scraper — it can't find og:image without them
+      swcHtmlMinimizer: false,
       lightningCssMinimizer: true,
       mdxCrossCompilerCache: true,
       rspackBundler: true,
