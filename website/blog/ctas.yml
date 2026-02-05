@@ -5,3 +5,9 @@
   subheader: Help us find out what's next for data teams by taking the 2026 State of Analytics Engineering survey
   button_text: Take the survey
   url: https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform
+
+- name: core_1_11_webinar
+  header: dbt Core 1.11 Live
+  subheader: Release updates, roadmap, and Q&A with the dbt Core team. Join us on February 11.
+  button_text: RSVP here
+  url: https://www.getdbt.com/resources/webinars/dbt-core-1-11-live-release-updates-roadmap
