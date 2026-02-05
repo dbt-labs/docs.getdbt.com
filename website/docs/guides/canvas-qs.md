@@ -110,7 +110,7 @@ To get started:
 2. Click **Choose a model** and then select the source `stg_models` from the dropdown. 
 3. Click the **Select model** option in the window that lists the columns.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/one-model-operators.png" width="90%" title="A single model operator." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/one-model-operator.png" width="90%" title="A single model operator." />
 
 You now have your first input model in <Constant name="visual_editor" />!
 
