@@ -21,11 +21,11 @@ These tables indicate whether private connectivity can be established to specifi
 
 <Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
 
-| Service | MT |
-|---------|-----|
-| Snowflake | ✅ |
-| Google BigQuery | ✅* |
-| Teradata VantageCloud | ✅ |
+| Service | MT | Setup guide |
+|---------|-----|-------------|
+| Snowflake | ✅ | [View](/docs/cloud/secure/private-connectivity/gcp/gcp-snowflake) |
+| Google BigQuery | ✅* | [View](/docs/cloud/secure/private-connectivity/gcp/gcp-bigquery) |
+| Teradata VantageCloud | ✅ | |
 
 ---
 

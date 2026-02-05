@@ -29,15 +29,15 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 <Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
 
-| Service | MT | ST |
-|---------|-----|-----|
-| Snowflake | ✅ | ✅ |
-| &nbsp;&nbsp;Snowflake Internal Stage | ✅ | ✅ |
-| Databricks | ✅ | ✅ |
-| Azure Database for PostgreSQL Flexible Server | ✅ | ✅ |
-| Azure Synapse | ✅ | ✅ |
-| Azure Fabric | ❌ | ❌ |
-| Teradata VantageCloud | ✅ | ✅ |
+| Service | MT | ST | Setup guide |
+|---------|-----|-----|-------------|
+| Snowflake | ✅ | ✅ | [View](/docs/cloud/secure/private-connectivity/azure/azure-snowflake) |
+| &nbsp;&nbsp;Snowflake Internal Stage | ✅ | ✅ | [View](/docs/cloud/secure/private-connectivity/azure/azure-snowflake) |
+| Databricks | ✅ | ✅ | [View](/docs/cloud/secure/private-connectivity/azure/azure-databricks) |
+| Azure Database for PostgreSQL Flexible Server | ✅ | ✅ | [View](/docs/cloud/secure/private-connectivity/azure/azure-postgres) |
+| Azure Synapse | ✅ | ✅ | [View](/docs/cloud/secure/private-connectivity/azure/azure-synapse) |
+| Azure Fabric | ❌ | ❌ | |
+| Teradata VantageCloud | ✅ | ✅ | |
 
 ---
 
