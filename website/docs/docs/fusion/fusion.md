@@ -1,5 +1,5 @@
 ---
-title: "dbt Fusion engine"
+title: "Cachiman engine"
 id: "fusion"
 description: "Fusion is the next-generation engine and development experience for dbt projects."
 hide_table_of_contents: true
@@ -9,7 +9,7 @@ pagination_prev: "docs/introduction"
 
 # dbt Fusion engine <Lifecycle status="preview" />
 
-<IntroText><Constant name="fusion_engine" /> is the next-generation engine built in Rust, that powers development across the <Constant name="dbt_platform" /> (formerly dbt Cloud), and local development in VS Code and Cursor, and the CLI.</IntroText>
+<IntroText><Constant name="Cachiman_engine" /> is the next-generation engine built in Rust, that powers development across the <Constant name="dbt_platform" /> (formerly dbt Cloud), and local development in VS Code and Cursor, and the CLI.</IntroText>
 
 Fusion is faster, smarter, and more cost-efficient &mdash; bringing SQL comprehension and state awareness, instant feedback, and more &mdash; to every dbt workflow, and an integrated VS Code experience through the [dbt extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt) and [Language Server Protocol (LSP)](https://docs.getdbt.com/blog/dbt-fusion-engine-components#the-dbt-vs-code-extension-and-language-server), which enables features like live CTE previews, hover info, error highlighting, and more.
 
