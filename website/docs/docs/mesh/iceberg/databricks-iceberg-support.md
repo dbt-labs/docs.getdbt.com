@@ -39,6 +39,17 @@ dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tabl
 dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The adapter property `use_uniform` (see [Adapter properties](#adapter-properties)) determines whether a managed Iceberg table or a Delta table will be created.
 </VersionBlock>
 
+### External tables
+
+dbt also supports creating externally-managed Iceberg tables using the model configuration [`location_root`](/reference/resource-configs/databricks-configs#configuring-tables). Databricks' DDL for creating tables requires that a fully qualified `location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data:
+
+- When you set a `location_root` string, dbt generates a `location` string of the form: `{{ location_root }}/{{ model_name }}`.
+If the configuration option `include_full_name_in_path` is set to true, dbt generates a `location` string of the form `{{ location_root }}/{{ database_name}}/{{ schema_name }}/{{ model_name }}`.
+
+<VersionBlock firstVersion="2.0">
+In Fusion, dbt also supports setting `location_root` as an [adapter property](#adapter-properties) in `catalogs.yml`.
+</VersionBlock>
+
 ### dbt Catalog integration configurations for Databricks
 
 <VersionBlock lastVersion="1.99">
@@ -79,7 +90,7 @@ These are the additional configurations, unique to Databricks, that can be suppl
 | `location_root` | Optional | "external/location/path"; for example, `"s3://cloud-storage-uri"` |
 
 - **use_uniform**: Specifies whether to use managed Iceberg tables or Iceberg-enabled UniForm tables. By default, `use_uniform` is false.
-- **location_root**: Specify an [external location](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-external-tables) root to write to. The table will be written to `<location_root>/<identifier>`, or `<location_root>/<database>/<schema>/<identifier>` if `use_full_location_path` is true.
+- **location_root**: Specify an [external location](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-external-tables) root to write to. The table will be written to `<location_root>/<identifier>`, or `<location_root>/<database>/<schema>/<identifier>` if `include_full_name_in_path` is true.
 </VersionBlock>
 
 ## Configure catalog integration for Iceberg tables
