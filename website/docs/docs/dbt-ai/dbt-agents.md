@@ -8,9 +8,13 @@ tags: [AI, Agents]
 
 # dbt Agents overview <Lifecycle status="beta,managed,managed_plus"/>
 
-[dbt Agents](https://www.getdbt.com/product/dbt-agents) are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
+[dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
-Agents are currently available on dbt [Enterprise-tier plans](https://www.getdbt.com/pricing).
+:::info 
+dbt Agents are currently in beta or coming soon. Contact your account manager for early access.
+
+See [available agents](#available-agents) to find out what's available.
+:::
 
 dbt Agents are built on top of dbt's structured context to provide accurate, auditable, and governed results:
 
@@ -32,10 +36,9 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 - Scalability &mdash; Routine tasks are automated so teams can focus on high-value work.
 
 ## Available agents
+dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle and help you scale your data teams across the <Constant name="dbt_platform" />.
 
-dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle.
-
-Most agents are currently in beta or on the waitlist &mdash; [join the waitlist](https://www.getdbt.com/contact) to get early access.
+dbt Agents are currently in beta or coming soon. Contact your account manager for early access.
 
 #### Analyst agent <Lifecycle status="beta"/>
 
@@ -51,11 +54,11 @@ Find the right, approved dataset fast in <Constant name="explorer" />. The Disco
 
 To request access to the Discovery agent, contact your account manager.
 
-#### Observability agent <Lifecycle status="Waitlist"/>
+#### Observability agent <Lifecycle status="Coming soon"/>
 
 The Observability agent in the <Constant name="dbt_platform" />'s orchestrator helps you monitor jobs, pinpoint likely root causes, and cut resolution time. It's designed to reduce noise and cuts down on investigation and debugging time &mdash; no more digging through logs.
 
-#### Developer agent <Lifecycle status="Waitlist"/>
+#### Developer agent <Lifecycle status="Coming soon"/>
 
 The Developer agent helps you describe the data question or product you want; the agent writes or refactors models, validates with <Constant name="fusion" />, and runs against your warehouse with full context. 
 
