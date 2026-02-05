@@ -36,7 +36,7 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 - Scalability &mdash; Routine tasks are automated so teams can focus on high-value work.
 
 ## Available agents
-dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle and help you scale your data teams across the <Constant name="dbt_platform" />.
+dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle to help you scale your data teams across the <Constant name="dbt_platform" />.
 
 dbt Agents are currently in beta or coming soon. Contact your account manager for early access.
 
