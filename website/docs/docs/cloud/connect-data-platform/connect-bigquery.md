@@ -5,6 +5,8 @@ description: "Configure BigQuery connection."
 sidebar_label: "Connect BigQuery"
 ---
 
+# Connect BigQuery <ProductCard text="Fusion compatible" />
+
 ## Required permissions
 
 import BigQueryPerms from '/snippets/_bigquery-permissions.md';
