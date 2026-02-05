@@ -7,6 +7,7 @@ authors: [joel_labes, jason_ganz]
 
 tags: [ai, data_ecosystem]
 hide_table_of_contents: false
+image: /img/blog/2026-02-03-dbt-agent-skills/social-share.png
 
 date: 2026-02-04
 is_featured: true
@@ -14,7 +15,9 @@ is_featured: true
 
 Community-driven creation and curation of best practices is perhaps _the_ driving factor behind dbt and analytics engineering’s rise - transferrable workflows and processes enable everyone to create and disseminate organizational knowledge. In the early days, ~dbt Labs’~ Fishtown Analytics’ [dbt_style_guide.md](https://github.com/dbt-labs/corp/blob/773079cc140e8636403771e0c9f56ab9be528597/dbt_style_guide.md) contained foundational guidelines for anyone adopting the dbt viewpoint for the first time.
 
-Today we released a collection of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) so that <Term id="agents">AI agents</Term> (like Claude Code, OpenAI’s Codex, Cursor or Factory) can follow the same dbt best practices you would expect of any collaborator in your codebase. This matters because by extending their baseline capabilities, **skills can transform generalist coding agents into highly capable data agents**.
+Today we released a collection of [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) so that <Term id="agents">AI agents</Term> (like Claude Code, OpenAI's Codex, Cursor, Factory or Kilo Code) can follow the same dbt best practices you would expect of any collaborator in your codebase. This matters because by extending their baseline capabilities, **skills can transform generalist coding agents into highly capable data agents**.
+
+<Lightbox src="/img/blog/2026-02-03-dbt-agent-skills/skills-blog-infographic.png" width="85%" alt="Diagram showing how dbt agent skills transform generalist coding agents into specialized data agents capable of analytics engineering, semantic layer definition, testing, debugging, natural language querying, and migration workflows" title="dbt agent skills allow you to transform generalist coding agents into highly capable data agents"/>
 
 These skills encapsulate a broad swathe of hard-won knowledge from the dbt Community and the dbt Labs Developer Experience team. Collectively, they represent dozens of hours of focused work by dbt experts, backed by years of using dbt.
 
@@ -66,7 +69,7 @@ Boot up the coding agent of your choice and try giving an instruction like:
 - Plan and build models for my new HubSpot source tables
 - Work out why my `dbt build` just failed
 - Write unit tests based on the requirements in this GitHub issue, then create a new model that passes
-- Update `dim_customers` to become a semantic model
+- Update `fct_transactions` to become a semantic model
 - Is there a difference in bounce rate for free vs paid email domains?
 
 We focused on tasks that are either common (daily model building, debugging) or complex (semantic layer setup, unit testing edge cases). Each skill contains high-signal knowledge, and has been validated in real-world testing and against <Term id="ade-bench"/>.
@@ -105,7 +108,9 @@ So then why does the dbt MCP also have tools that call into the CLI? For interfa
 
 ### From generalist to specialist
 
-To summarize, the best way to think of skills is as a layered training manual. If you took a very smart generalist off the street, what would they need to be able to use and implement _your organization’s workflows?_
+To summarize, the best way to think of skills is as a layered training manual. If you took a very smart generalist off the street, what would they need to be able to use and implement _your organization's workflows?_
+
+<Lightbox src="/img/blog/2026-02-03-dbt-agent-skills/skills-blog-diagram.png" width="85%" alt="A pyramid diagram showing three layers: Coding Agent at the base (takes autonomous actions, runs dbt commands, and looks up docs), dbt best practice skills in the middle (knows dbt best practices and workflows), and Project skills at the top (knows workflows unique to your team and data model)" title="Skills provide layered context that builds on an agent's baseline capabilities"/>
 
 ## Why skills matter
 
@@ -219,7 +224,7 @@ On the other hand, encouraging DRY principles led to the skill-using agent inter
 
 ### Where there are gaps
 
-Today, skill loading can be [a little hit-and-miss](https://scottspence.com/posts/claude-code-skills-dont-auto-activate). As with everything in AI, things are moving fast, and skills are seeing widespread adoption, so we don’t think that’s going to be a long term issue. We’d also love to see stronger and more reliable cross-skill referencing, such as [what’s described here](https://github.com/agentskills/agentskills/issues/90).
+Today, skill loading can be a little hit-and-miss. As with everything in AI, things are moving fast, and skills are seeing widespread adoption, so we don’t think that’s going to be a long term issue. We’d also love to see stronger and more reliable cross-skill referencing, such as [what’s described here](https://github.com/agentskills/agentskills/issues/90).
 
 ## Again: you should go try this yourself
 
