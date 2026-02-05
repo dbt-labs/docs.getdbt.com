@@ -21,7 +21,6 @@ Found 2 models, 3 tests, 0 archives, 0 analyses, 53 macros, 0 operations, 2 seed
 14:46:15 | 1 of 1 OK loaded seed file analytics.country_codes....................... [INSERT 3 in 0.01s]
 14:46:16 |
 14:46:16 | Finished running 1 seed in 0.14s.
-
 ```
 
 For information about configuring seeds (for example, column types and quoting behavior), see [Seed configurations](/reference/seed-configs).
