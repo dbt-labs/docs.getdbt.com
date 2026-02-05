@@ -466,7 +466,7 @@ packages:
 
 If you encounter errors while working with dbt packages, see the following FAQs:
 
-- <FAQ path="Troubleshooting/runtime-packages.yml" />
+<FAQ path="Troubleshooting/runtime-packages.yml" />
 - <FAQ path="Troubleshooting/dispatch-could-not-find-package" />
 
 
