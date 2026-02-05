@@ -21,13 +21,14 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function BlogLayout(props) {
   const {
-    sidebar, 
-    toc, 
-    children, 
-    title, 
-    description, 
-    isBlogList, 
-    isBlogPost, 
+    sidebar,
+    toc,
+    children,
+    title,
+    description,
+    image,
+    isBlogList,
+    isBlogPost,
     ...layoutProps
   } = props;
   const hasSidebar = sidebar && sidebar.items.length > 0;
@@ -70,10 +71,11 @@ export default function BlogLayout(props) {
     <Layout {...layoutProps}>
 
       {/* Set Custom Metadata */}
-       {featured_image && featured_image !== "" &&
-         <Head> 
-           <meta property="og:image" content={featured_image} />
-           <meta property="twitter:image" content={featured_image} />
+       {(image || (featured_image && featured_image !== "")) &&
+         <Head>
+           <meta property="og:image" content={image || featured_image} />
+           <meta name="twitter:image" content={image || featured_image} />
+           {image && <meta property="og:image:alt" content={title || ''} />}
          </Head>
        }
  

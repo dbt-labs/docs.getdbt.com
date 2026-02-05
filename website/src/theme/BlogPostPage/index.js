@@ -16,6 +16,7 @@ import { DiscourseBlogComments } from '@site/src/components/discourseBlogComment
 import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
 import StructuredData from '@site/src/components/StructuredData';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Head from '@docusaurus/Head';
 
 /* dbt Customizations:
  * Import global data from plugin
@@ -84,6 +85,11 @@ function BlogPostPageContent({sidebar, children}) {
   // Get the full URL for the blog post
   const postUrl = `${siteConfig.url}/blog/${frontMatter.slug}`;
 
+  // Construct absolute image URL for social sharing and structured data
+  const postImageUrl = frontMatter.image
+    ? (frontMatter.image.startsWith('http') ? frontMatter.image : `${siteConfig.url}${frontMatter.image}`)
+    : undefined;
+
   return (
     <BlogLayout
       sidebar={sidebar}
@@ -100,6 +106,7 @@ function BlogPostPageContent({sidebar, children}) {
         ) : undefined
       }
       isBlogPost={true}
+      image={postImageUrl}
     >
       <StructuredData
         type="BlogPosting"
@@ -109,6 +116,7 @@ function BlogPostPageContent({sidebar, children}) {
         date={date}
         url={postUrl}
         tags={tags}
+        imageUrl={postImageUrl}
       />
 
       {!hideTableOfContents && toc.length > 0 && (
