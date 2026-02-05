@@ -558,6 +558,12 @@ The `incremental_strategy` config can be set to one of the following values:
 - `insert_overwrite`
 - [`microbatch`](/docs/build/incremental-microbatch)
 
+### Change history
+
+The `enable_change_history` parameter enables [BigQuery's change history feature](https://cloud.google.com/bigquery/docs/change-history) which tracks changes made to a BigQuery table. When enabled, you can use the change history to audit and debug the behavior of your incremental models. 
+
+`enable_change_history` is set to `<boolean>` values.
+
 ### Performance and cost
 
 The operations performed by dbt while building a BigQuery incremental model can
@@ -1196,7 +1202,6 @@ The BigQuery Python models also have the following additional configuration para
 | `gcs_bucket`            | `<string>`  | no       | ``        | `<GCS_BUCKET>` |
 | `packages`              | `<string>`  | no       | ``        | `['numpy<=1.1.1', 'pandas', 'mlflow']` |
 | `timeout`               | `<integer>` | no       | ``        | `<timeout_in_seconds>` |
-| `enable_change_history` | `<boolean>` | no       | ``        | `True`, `False`   |
 
 - The `enable_list_inference` parameter
   - The `enable_list_inference` parameter enables a PySpark data frame to read multiple records in the same operation. By default, this is set to `True` to support the default `intermediate_format` of `parquet`.
@@ -1219,8 +1224,6 @@ The BigQuery Python models also have the following additional configuration para
 - The `timeout` parameter
   - The `timeout` parameter specifies the maximum execution time in seconds for the Python model. This is particularly useful for BigFrames models that may require longer execution times for complex data processing or machine learning workloads. If not specified, the model will use the default timeout configured for the execution environment.
 
-- The `enable_change_history` parameter
-  - The `enable_change_history` parameter enables [BigQuery's change history feature](https://cloud.google.com/bigquery/docs/change-history) which tracks changes made to a BigQuery table. When enabled, you can use the change history to audit and debug the behavior of your incremental models.
 
 **Related docs:**
 
