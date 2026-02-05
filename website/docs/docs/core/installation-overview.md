@@ -48,4 +48,12 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 
 :::
 
+## Create a project
+
+After installing <Constant name="core" />, create your first [dbt project](/docs/build/projects) using the [`dbt init`](/reference/commands/init) command. This initializes a new project with the standard dbt directory structure and helps verify that your installation is working as expected.
+
+## Related content
+
+- [Quickstart for dbt Core from a manual install](https://docs.getdbt.com/guides/manual-install?step=1)
+
 
