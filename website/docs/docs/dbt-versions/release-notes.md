@@ -18,7 +18,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## February 2026
 
-- **New:** [Profiles](/docs/cloud/about-profiles) let you define and manage connections, credentials, and attributes for deployment environments at the project level. dbt automatically creates profiles for existing projects and environments based on the current configurations, so you don't need to take any action. This is being rolled out in phases during the coming weeks.
 - **New**: The `immutable_where` configuration is now supported for Snowflake dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
 
 ## January 2026
