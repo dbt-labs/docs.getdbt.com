@@ -11,7 +11,7 @@ jobs:
     - name: Install Node
       uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # actions/setup-node@v3
       with:
-        node-version: '18.12.0'
+        node-version: '20'
       
     - name: Cache Node Modules
       uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # actions/cache@v3
