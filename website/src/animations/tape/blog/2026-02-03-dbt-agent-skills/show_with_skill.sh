@@ -27,7 +27,7 @@ sleep 1
 
 echo ""
 line "  📖 Skill  using-dbt-for-analytics-engineering" 0.3
-type_text '           "You must look at the data to correctly model it"' 0.02
+type_text '           "…You must look at the data to correctly model it…"' 0.02
 sleep 0.6
 
 echo ""
