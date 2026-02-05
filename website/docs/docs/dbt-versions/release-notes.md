@@ -22,6 +22,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2026
 
+- **New:** [Profiles](/docs/cloud/about-profiles) let you define and manage connections, credentials, and attributes for deployment environments at the project level. dbt automatically creates profiles for existing projects and environments based on the current configurations, so you don't need to take any action.
 - **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="query_page" /> is now in beta. 
   - dbt <Constant name="copilot" />'s AI assistant in <Constant name="query_page" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
 - **Enhancement:** The [Studio IDE](/docs/cloud/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands. This feature is being rolled out in phases and will become available to all <Constant name="dbt_platform" /> accounts by mid-February. 
