@@ -1176,7 +1176,7 @@
     },
     {
       "source": "/guides/migration/sl-migration",
-      "destination": "/guides/sl-migration",
+      "destination": "/docs/build/latest-metrics-spec",
       "permanent": true
     },
     {

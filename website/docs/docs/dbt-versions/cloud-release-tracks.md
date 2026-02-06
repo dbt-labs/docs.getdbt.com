@@ -104,7 +104,7 @@ Starting in October 2024, dbt accounts on the Developer and Starter (formerly Te
 
 <Expandable alt_header="I'm using the legacy metrics definitions from dbt Core version ≤1.5. What should I do?" >
 
-The legacy dbt Semantic Layer was deprecated in the second half of 2023. We recommend that you refer to the [Legacy dbt Semantic Layer migration guide](/guides/sl-migration?step=1) for more information.
+The legacy dbt Semantic Layer was deprecated in the second half of 2023. We recommend that you refer to the [Legacy dbt Semantic Layer migration guide](/docs/build/latest-metrics-spec?step=1) for more information.
 
 </Expandable>
 

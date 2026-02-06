@@ -315,5 +315,5 @@ Currently, semantic models can be created from dbt models that live across proje
 
 <Expandable alt_header="How do I migrate from the legacy Semantic Layer?">
 
-If you're using the legacy Semantic Layer, we highly recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/sl-migration) for more info.
+If you're using the legacy Semantic Layer, we highly recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer and update your metrics to the new spec. Refer to the dedicated [migration guide](/docs/build/latest-metrics-spec) for more info.
 </Expandable>
