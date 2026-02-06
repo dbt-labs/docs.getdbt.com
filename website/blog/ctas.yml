@@ -5,3 +5,9 @@
   subheader: Help us find out what's next for data teams by taking the 2026 State of Analytics Engineering survey
   button_text: Take the survey
   url: https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform
+
+- name: fusion_webinar
+  header: Is your team ready for Fusion?
+  subheader: Join Brooklyn Data Feb 18 for a practical readiness framework — assess your project, process, and people before you migrate.
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/are-you-ready-for-the-dbt-fusion-engine
