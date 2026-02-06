@@ -60,9 +60,9 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2024
 
-<Expandable alt_header="Coalesce 2024 announcements">
+<Expandable alt_header="dbt Summit 2024 announcements">
 
-  Documentation for new features and functionality announced at Coalesce 2024:
+  Documentation for new features and functionality announced at dbt Summit 2024:
 
   - Iceberg table support for [Snowflake](/reference/resource-configs/snowflake-configs#iceberg-table-format)
   - [Athena](/reference/resource-configs/athena-configs) and [Teradata](/reference/resource-configs/teradata-configs) adapter support in dbt Cloud
