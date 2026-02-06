@@ -33,11 +33,6 @@ The <Constant name="fusion_engine" /> handles threading differently than <Consta
 
 <FusionThreads />
 
-:::tip Performance impact
-Low thread values (like 4 or 6) can significantly slow down Fusion on Snowflake and Databricks. In testing, compile times improved from 45+ minutes to under 2 minutes when switching from a fixed thread count to automatic optimization.
-:::
-
-
 For more information about Fusion's approach to parallelism, refer to [the dbt Fusion engine](/docs/fusion) page.
 
 </VersionBlock>
