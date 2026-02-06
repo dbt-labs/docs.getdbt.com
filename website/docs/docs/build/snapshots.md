@@ -112,16 +112,30 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
     ```
     </File>
 
-2. Since snapshots focus on configuration, the transformation logic is minimal. Typically, you'd select all data from the source. If you need to apply transformations (like filters, deduplication), it's best practice to define an ephemeral model and reference it in your snapshot configuration.
+2. (Optional) Apply transformations using an ephemeral model. By default, snapshots reference a source directly (as shown in the YAML in the previous step). If you need to apply transformations (such as filtering or deduplication), define an ephemeral model first to apply those transformations, and reference it in the snapshot relation field instead of calling `source()` directly.
 
-    <File name="models/ephemeral_orders.sql" >
-
-    ```yaml
-    {{ config(materialized='ephemeral') }}
-
-    select * from {{ source('jaffle_shop', 'orders') }}
-    ```
-    </File>
+      For example, here's an ephemeral model:
+    
+      <File name="models/ephemeral_orders.sql" >
+    
+      ```sql
+      {{ config(materialized='ephemeral') }}
+    
+      select * from {{ source('jaffle_shop', 'orders') }}
+      ```
+      </File>
+    
+      This is how to reference the ephemeral model in the `relation` field:
+       
+      <File name='snapshots/orders_snapshot.yml'>
+    
+      ```yaml
+        snapshots:
+          - name: orders_snapshot
+            relation: ref('ephemeral_orders')
+            ... rest of config...
+      ```
+      </File>
 
 3. Check whether the result set of your query includes a reliable timestamp column that indicates when a record was last updated. For our example, the `updated_at` column reliably indicates record changes, so we can use the `timestamp` strategy. If your query result set does not have a reliable timestamp, you'll need to instead use the `check` strategy — more details on this below.
 
