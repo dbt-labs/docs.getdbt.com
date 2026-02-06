@@ -45,11 +45,14 @@ Fusion also enables more-efficient deployments of large DAGs. By tracking which 
 
 ### Thread management
 
-The <Constant name="fusion_engine" /> manages parallelism differently than <Constant name="core" />. Rather than treating the `threads` setting as a strict limit on concurrent operations, Fusion dynamically optimizes parallelism based on the selected warehouse.
+The <Constant name="fusion_engine" /> manages parallelism differently than <Constant name="core" />. Rather than treating the `threads` setting as a strict limit on concurrent operations, Fusion optimizes parallelism based on each adapter's characteristics.
 
-In Redshift, the `threads` setting limits the number of queries or statements that can run in parallel, which is important for managing Redshift's concurrency limits. In other warehouses, Fusion dynamically adjusts thread usage based on each warehouse's capabilities, using your thread configuration as guidance while automatically optimizing for maximum efficiency.
+- **Snowflake and Databricks**: Fusion ignores user-set threads and automatically optimizes parallelism for maximum performance.
+- **BigQuery and Redshift**: Fusion respects user-set threads to manage rate limits and concurrency constraints.
 
-For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#fusion-engine-thread-behavior).
+For Snowflake and Databricks, setting `--threads 0` or omitting the setting allows Fusion to dynamically optimize. Low thread values can significantly slow down performance on these platforms.
+
+For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#fusion-engine-thread-optimization).
 
 ### How to use Fusion
  
