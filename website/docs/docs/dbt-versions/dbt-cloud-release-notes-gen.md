@@ -49,9 +49,6 @@ Release notes are grouped by date for single-tenant environments.
 - **dbt platform: Private Endpoints list search and sorting**: Adds server-side name search and sorting, shows connection counts, and surfaces the Endpoint Identifier on details pages.
   <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
-- **dbt platform: Platform Metadata Credentials expanded adapter support**: Expands Platform Metadata Credentials setup to additional adapters, including BigQuery v0 and Amazon Redshift.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
-
 - **dbt platform: Job artifacts content types and downloads**: Improves artifact handling for job documentation and run artifacts by strengthening HyperText Markup Language (HTML) detection, defaulting empty paths to `index.html`, and returning clearer `Content-Type` and download filenames.
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
 
@@ -153,9 +150,6 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
 
 - **dbt platform: Connected app refresh tokens now last 7 days**: Refresh token expiration for connected app OAuth (Open Authorization (OAuth)) flows increased from 8 hours to 7 days, reducing re-authorization frequency.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
-
-- **dbt platform: BigQuery Platform Metadata Credentials profile generation requirements updated**: BigQuery v1 Platform Metadata Credentials profile generation now requires an associated OAuth configuration and includes a token endpoint stanza for machine OAuth flows.
   <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
 
 - **dbt platform: Private Endpoints authorization failures return not found**: Authorization failures for Private Endpoints are intentionally returned as HyperText Transfer Protocol (HTTP) 404 (Not Found) to reduce endpoint enumeration risk.
