@@ -148,9 +148,5 @@ We've provided a set of example projects you can use to explore the topics cover
 - **[Marketing](https://github.com/dbt-labs/jaffle-shop-mesh-marketing)** - containing our marketing marts.
 - **[Finance](https://github.com/dbt-labs/jaffle-shop-mesh-finance)** - containing our finance marts.
 
-### dbt-meshify
-
-We recommend using the `dbt-meshify` [command line tool](<https://dbt-labs.github.io/dbt-meshify/>) to help you do this. This comes with CLI operations to automate most of the above steps.
-
 ## Related docs
 - [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)
