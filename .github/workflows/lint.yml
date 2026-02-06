@@ -4,6 +4,9 @@ on: push
 jobs:
   eslint-check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     steps:
     - name: Checkout
       uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
@@ -22,6 +25,8 @@ jobs:
 
     - name: Install Packages
       if: steps.cache-node-mods.outputs.cache-hit != 'true'
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN || secrets.GITHUB_TOKEN }}
       run: cd website && npm ci
       
     - name: Run ESLint
