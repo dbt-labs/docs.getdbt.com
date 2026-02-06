@@ -320,7 +320,7 @@ Yes, a [<Constant name="cloud" /> Enterprise-tier](https://www.getdbt.com/pricin
 
 <DetailsToggle alt_header="Is there a recommended migration or implementation process?">
 
-Refer to our developer guide on [How we structure our dbt Mesh projects](/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from the dbt Summit 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
+Refer to our developer guide on [How we structure our dbt Mesh projects](/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
 
 You can also learn how to implement dbt Mesh by following our [Quickstart dbt Mesh](/guides/mesh-qs) guide.
 

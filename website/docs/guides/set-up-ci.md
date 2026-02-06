@@ -315,7 +315,7 @@ This approach can increase release safety, but creates additional manual steps i
 
 As such, it may slow down the time it takes to get new features into production.
 
-The team at Sunrun maintained a SOX-compliant deployment in dbt while reducing the number of environments. Check out [their dbt Summit presentation](https://www.youtube.com/watch?v=vmBAO2XN-fM) to learn more.
+The team at Sunrun maintained a SOX-compliant deployment in dbt while reducing the number of environments. Check out [their Coalesce presentation](https://www.youtube.com/watch?v=vmBAO2XN-fM) to learn more.
 :::
 
 In this section, we will add a new **QA** environment. New features will branch off from and be merged back into the associated `qa` branch, and a member of your team (the "Release Manager") will create a PR against `main` to be validated in the CI environment before going live.
