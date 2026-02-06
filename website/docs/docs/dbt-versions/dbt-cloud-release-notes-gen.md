@@ -24,160 +24,111 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Studio IDE
 
-- **Studio IDE: AI Assistant entry point in console toolbar**: Adds an Artificial Intelligence (AI) button in the Studio Integrated Development Environment (IDE) console toolbar to open the assistant; when enabled, the assistant can read files and list directories for better context.
-  <!-- PR: https://github.com/dbt-labs/studio/pulls?q=AIButton+clientTools+read_file_tool+list_directory_tool -->
+- **Studio IDE: Copilot link in console toolbar**: Adds a link that opens Copilot from the console toolbar. You an use Copilot to read files and list directories for better context.
 
 - **Studio IDE: Copy repo-relative path command**: Adds a command to copy a file path relative to your dbt project subdirectory, making it easier to share paths in runbooks and support tickets.
-  <!-- PR: https://github.com/dbt-labs/studio/pulls?q=studio.copyRepoRelativePath -->
 
 ## Enhancements
 
 ### dbt platform
 
-- **dbt platform: Fusion Eligibility And Compatibility Indicators In Setup Flows**: Improves Fusion setup by showing “Fusion compatible” indicators during connection setup and using the Fusion eligibility status Application Programming Interface (API) for gating.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
+- **dbt platform: Fusion eligibility and compatibility indicators in setup flows**: Improves Fusion setup by showing “Fusion compatible” indicators during connection setup.
 
-- **dbt platform: Compare Changes shows partial success warnings**: When Compare Changes subqueries fail, the experience now surfaces a Partial success state with expandable warning details to make troubleshooting faster.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
+- **dbt platform: Compare Changes shows partial success warnings**: When Compare Changes subqueries fail, the experience now surfaces a partial success state with expandable warning details to make troubleshooting faster.
 
 - **dbt platform: In-progress run logs preserve text selection**: Improves log usability during in-progress runs by preserving text selection while logs auto-refresh and rerender.
-  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
 - **dbt platform: Job completion trigger job picker search**: Adds server-side search and clearer loading and empty states to the job picker for job-completion triggers.
-  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
-- **dbt platform: Private Endpoints list search and sorting**: Adds server-side name search and sorting, shows connection counts, and surfaces the Endpoint Identifier on details pages.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
+- **dbt platform: Job artifacts content types and downloads**: Improves artifact handling for job documentation and run artifacts by strengthening HTML detection, defaulting empty paths to `index.html`, and returning clearer `Content-Type` and download filenames.
 
-- **dbt platform: Job artifacts content types and downloads**: Improves artifact handling for job documentation and run artifacts by strengthening HyperText Markup Language (HTML) detection, defaulting empty paths to `index.html`, and returning clearer `Content-Type` and download filenames.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
-
-- **dbt platform: Private Endpoints API listing and pagination improvements**: Improves Private Endpoints Application Programming Interface (API) v3 list behavior with validated query parameters, filtering, limit and offset pagination, and `connection_count` in responses.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
+- **dbt platform: Private Endpoints API listing and pagination improvements**: Improves Private Endpoints API v3 list behavior with validated query parameters, filtering, limit and offset pagination, and `connection_count` in responses.
 
 ### Studio IDE
 
 - **Studio IDE: Format file more reliable in subdirectories**: Improves formatting reliability by consistently using the active editor content and a stable repo-relative path when invoking formatting.
-  <!-- PR: https://github.com/dbt-labs/studio/pulls?q=useFormatFile+openTextDocument+getRelativePath -->
 
 - **Studio IDE: Better stability for tabs and Git operations**: Reduces errors when working with non-file tabs and improves robustness around tab-close and Git checkout flows.
-  <!-- PR: https://github.com/dbt-labs/studio/pulls?q=uri+%7C+null+getOpenTabs+forceCloseTab -->
 
 - **Studio IDE: Sidebar layout improvements for embedded panels**: Improves embedded panel sizing to reduce clipping and scrolling issues in the sidebar.
-  <!-- PR: https://github.com/dbt-labs/studio/pulls?q=SIDEBAR_PART+mb-%5B-34px%5D -->
 
 - **Studio IDE: Fusion prompts reflect actual eligibility**: Improves Fusion banners and prompts by checking project eligibility via a Fusion status endpoint to reduce confusing prompts for ineligible projects.
-  <!-- PR: https://github.com/dbt-labs/studio/pulls?q=useFusionStatus+fusion%2Fstatus+orc2609ShowFusionToggle -->
 
 ### Catalog and Discovery
 
-- **Catalog: Search highlight rendering more compact**: Updates search highlights to display as compact badges with counts for easier scanning of results.
-  <!-- PRs: https://github.com/dbt-labs/metadata-ui/compare/e998252b400d211c8523a90709fb322165491100...42355248ca93c97862a2a9bac317cfc960a7d1bf -->
-
 - **Catalog: Improved cross-project lineage for dbt Mesh**: Improves cross-project lineage (“public ancestors”) computation to better match expected external lineage boundaries in dbt Mesh experiences.
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/compare/04fe0bec086b540d36cbcc4b587211c6579b6183...fc3f3ffce5d885ddbbbf0f9d145ac78b6a879a74 -->
 
 ### Insights
 
-- **Insights: Copilot Agent availability via release channel setting**: Improves Copilot Agent (Beta) enablement by supporting an external beta release-channel setting alongside feature flags, with a loading state to prevent incorrect redirects while access is being resolved. (Feature Flag: Required)
-  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
-
-- **Insights: More reliable Copilot Agent requests and context handoff**: Standardizes Copilot Agent requests on the v1 agent Application Programming Interface (API) and includes active tab content as context to improve reliability of agent runs and handoff.
-  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
+- **Insights: More reliable Copilot Agent requests and context handoff**: Standardizes Copilot Agent requests to the API and includes active tab content as context to improve reliability of agent runs and handoff.
 
 ## Fixes
 
 ### dbt platform
 
 - **dbt platform: Webhook form editing more resilient**: Improves webhook subscription editing reliability with asynchronous data and fixes a multiselect focus issue that could cause accidental option selection.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
-- **dbt platform: Run warning emails render correctly**: Fixes HyperText Markup Language (HTML) email markup that could break rendering for run warning notifications.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
+- **dbt platform: Run warning emails render correctly**: Fixes HTML email markup that could break rendering for run warning notifications.
 
-- **dbt platform: Profiles URLs moved under project dashboard** Profile create and view routes now live under `/dashboard/:accountId/projects/:projectId/profiles/...`, which may affect bookmarks and direct links. <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...3651e52a842bf377661b303cbaf47851fc6ab2a2 -->
+- **dbt platform: Profiles URLs moved under project dashboard** Profile create and view routes now live under `/dashboard/:accountId/projects/:projectId/profiles/...`, which may affect bookmarks and direct links.
 
 ### Studio IDE
 
 - **Studio IDE: Cleaner command history list**: Removes hidden background commands (such as listing and parsing commands) from command history to reduce noise for users.
-  <!-- PRs: https://github.com/dbt-labs/ide-server/compare/6fa03b9543e5a8922e18f30b194eac9275e9e5c2...35877c93fb0b394b392095d04cea9a5d5fca5768 -->
 
 - **Studio IDE: More reliable inline compile and show output**: Improves robustness of inline compile and show output attachment, including cases with tricky quoting and newlines, reducing missing results during interactive use.
-  <!-- PRs: https://github.com/dbt-labs/ide-server/compare/6fa03b9543e5a8922e18f30b194eac9275e9e5c2...35877c93fb0b394b392095d04cea9a5d5fca5768 -->
 
 - **Studio IDE: More reliable log downloads for dbt commands**: Fixes log download behavior so downloads correctly serve either the active `dbt.log` or the finalized compressed log.
-  <!-- PRs: https://github.com/dbt-labs/ide-server/compare/6fa03b9543e5a8922e18f30b194eac9275e9e5c2...35877c93fb0b394b392095d04cea9a5d5fca5768 -->
 
 - **Studio IDE: More reliable artifact uploads to Microsoft Azure Blob Storage**: Fixes edge cases where gzipped artifacts (such as manifests) could fail to upload due to upload stream handling, improving upload reliability.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud-cli/compare/58f5839a2c22c56dd482f8d89d0f97075737c2e4...f879b17ee12e4dca35bc79108c206008a7488058 -->
 
-- **Studio IDE: More stable Language Server Protocol sessions in workers**: Reduces noisy disconnect and cleanup errors when multiple websocket connections and processes map to the same invocation, improving session stability. (Language Server Protocol (LSP))
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud-cli/compare/58f5839a2c22c56dd482f8d89d0f97075737c2e4...f879b17ee12e4dca35bc79108c206008a7488058 -->
+- **Studio IDE: More stable language server protocol (LSP) sessions in workers**: Reduces noisy disconnect and cleanup errors when multiple websocket connections and processes map to the same invocation, improving session stability. 
 
-### Insights and Catalog
+### Catalog
 
-- **Catalog: Search highlighting displays correctly with multiple matches**: Fixes search result highlighting when the backend returns multiple highlights per field, improving readability of matches.
-  <!-- PRs: https://github.com/dbt-labs/insights-ui/compare/6c52cc68e505ed3097abd9f2aff3fa5b2dad96c4...7fe0568c4e76c08c0b4c31872b44a02e3252b037 -->
+- **Catalog: Search highlighting displays correctly with multiple matches**: Fixes search result highlighting when the backend returns multiple highlights per field, improving readability of matches. Updates search highlights to display as compact badges with counts for easier scanning of results.
 
 - **Catalog: Environment filtering more accurate in search results**: Improves environment-scoped Catalog search filtering by using merged environment identifiers and preserving warehouse-only assets via a dedicated sentinel value.
-  <!-- PRs: https://github.com/dbt-labs/codex-api/compare/43bcb19c27b1d05ad1424052836562fc49039356...2194c791f740b8e92c328b2826517662c743a6e7 -->
 
 - **Catalog: Public models return empty list when none exist**: Improves behavior for environments with no public models by returning an empty list instead of falling into follow-on query logic.
-  <!-- PRs: https://github.com/dbt-labs/codex-api/compare/43bcb19c27b1d05ad1424052836562fc49039356...2194c791f740b8e92c328b2826517662c743a6e7 -->
 
-### Copilot and AI Assistant
+### Copilot
 
-- **Copilot: More reliable Model Context Protocol connections during long tool calls**: Improves keep-alive behavior so connections shut down cleanly when the client disconnects, reducing noisy failures. (Model Context Protocol (MCP))
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/707 -->
+- **Copilot: More reliable model context protocol (MCP) connections during long tool calls**: Improves keep-alive behavior so connections shut down cleanly when the client disconnects, reducing noisy failures.
 
 - **Copilot: Semantic Layer tools only offered when available**: Prevents failing tool calls by hiding Semantic Layer tools when the Semantic Layer is not available for the user or environment.
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/692 -->
 
-- **Copilot: More accurate HyperText Transfer Protocol error responses**: Improves error reporting by walking wrapped exceptions and exception groups to return the most specific status code and detail available. (HyperText Transfer Protocol (HTTP))
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/687 -->
+- **Copilot: More accurate HTTP error responses**: Improves error reporting by walking wrapped exceptions and exception groups to return the most specific status code and detail available.
 
 - **Copilot: Empty Tool Outputs No Longer Cause Failures**: Treats empty tool outputs as valid results (for example, “no matches”) to reduce unnecessary “tool call failed” errors.
-  <!-- PR: https://github.com/dbt-labs/ai-codegen-api/pull/690 -->
 
 ## Behavior Changes
 
 ### dbt platform
 
 - **dbt platform: Fusion default dbt version selection more restrictive**: During connection setup, the default dbt version now only defaults to `latest-fusion` when the selected adapter is Fusion-compatible and the project and account are eligible.
-  <!-- PRs: https://github.com/dbt-labs/cloud-ui/compare/e66be6e69a6429764427d1bcaffc3d6cd69a6848...260303e1d271d66e5714fda91804bd740e44b159 -->
 
 - **dbt platform: dbt version enforcement now project-aware**: dbt version “allowed version” checks now account for `project_id` across jobs and environments, including Application Programming Interface (API)-triggered runs, improving correctness for overrides and automatic mapping to allowed equivalents when possible.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
 
 - **dbt platform: Connected app refresh tokens now last 7 days**: Refresh token expiration for connected app OAuth (Open Authorization (OAuth)) flows increased from 8 hours to 7 days, reducing re-authorization frequency.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2cdb2e7ac0f4d38197fea1bfffc -->
-
-- **dbt platform: Private Endpoints authorization failures return not found**: Authorization failures for Private Endpoints are intentionally returned as HyperText Transfer Protocol (HTTP) 404 (Not Found) to reduce endpoint enumeration risk.
-  <!-- PRs: https://github.com/dbt-labs/dbt-cloud/compare/4e7b64224cc49a23c3f4167676ec8d8c2c6349cd...0a8f78d5a14ee2c7ac0f4d38197fea1bfffc -->
 
 ### Studio IDE
 
 - **Studio IDE: File stat timestamps now milliseconds**: File stat responses now return modified time and created time as integer milliseconds since epoch instead of float seconds; integrations consuming these endpoints may need to adjust.
-  <!-- PRs: https://github.com/dbt-labs/ide-server/compare/6fa03b9543e5a8922e18f30b194eac9275e9e5c2...35877c93fb0b394b392095d04cea9a5d5fca5768 -->
 
 - **Studio IDE: Language Server Protocol deferral controls expanded**: The Language Server Protocol (LSP) websocket now supports `defer_env_id` to defer against a specific environment and `no_defer=true` to explicitly disable deferral.
-  <!-- PRs: https://github.com/dbt-labs/ide-server/compare/6fa03b9543e5a8922e18f30b194eac9275e9e5c2...35877c93fb0b394b392095d04cea9a5d5fca5768 -->
 
 - **Studio IDE: Deferral toggle applied more consistently to Language Server Protocol connections**: When “defer to production” is turned off, the Studio Integrated Development Environment (IDE) now passes `no_defer=true` to align editor intelligence with the selected deferral behavior. (Language Server Protocol (LSP))
-  <!-- PR: https://github.com/dbt-labs/studio/pulls?q=no_defer%3Dtrue+useDeferToProductionToggle -->
 
 ### Catalog
 
 - **Catalog: Source freshness outdated status removed**: The freshness status value `outdated` was removed; unconfigured freshness is now handled explicitly as `unconfigured`, and sources will no longer report `outdated`.
-  <!-- PRs: https://github.com/dbt-labs/codex-workflows/compare/04fe0bec086b540d36cbcc4b587211c6579b6183...fc3f3ffce5d885ddbbbf0f9d145ac78b6a879a74 -->
 
 - **Catalog: Rows per page selector removed from tables**: The rows-per-page selector was removed, and pagination now uses a fixed page size.
-  <!-- PRs: https://github.com/dbt-labs/metadata-ui/commit/f3daebc -->
 
 ### Orchestration and Run Status
 
 - **Orchestration: Cached and stale outcome status mapping updated**: Cached nodes are now consistently surfaced as Reused with clearer reasons, and stale outcomes are treated as errors, which can change the statuses operators see in run output and telemetry.
-  <!-- Reviewed by Bianca PRs: https://github.com/dbt-labs/dbt-orc/compare/39e8c7ec29a86e202d85805f1eb2b795482535ce...89212ae519c0bcf274a390503751956f37615593 -->
   
 ## January 28, 2026
 
