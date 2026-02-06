@@ -61,7 +61,6 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     - For users on dbt version 1.5 and lower with dbt Metrics and Snowflake proxy:
     - **Impact**: Post-deprecation, queries using the proxy _will not_ run.
-    - **Action required:** _Immediate_ migration is necessary. Refer to the [dbt Semantic Layer migration guide](/docs/build/latest-metrics-spec)
 
     - For users on dbt version 1.5 and lower using dbt Metrics without Snowflake proxy:
     - **Impact**: No immediate disruption, but the package will not receive updates or support after deprecation
@@ -223,7 +222,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='Semantic layer GA'>
   
-    If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher and [migrate](/docs/build/latest-metrics-spec) to the latest Semantic Layer.
+    If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher and migrate to the latest Semantic Layer.
 
     dbt Labs is thrilled to announce that the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is now generally available. It offers consistent data organization, improved governance, reduced costs, enhanced efficiency, and accessible data for better decision-making and collaboration across organizations.
 
