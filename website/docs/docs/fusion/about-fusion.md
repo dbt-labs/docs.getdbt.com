@@ -50,7 +50,7 @@ The <Constant name="fusion_engine" /> manages parallelism differently than <Cons
 - **Snowflake and Databricks**: Fusion ignores user-set threads and automatically optimizes parallelism for maximum performance.
 - **BigQuery and Redshift**: Fusion respects user-set threads to manage rate limits and concurrency constraints.
 
-For Snowflake and Databricks, setting `--threads 0` or omitting the setting allows Fusion to dynamically optimize. Low thread values can significantly slow down performance on these platforms.
+For BigQuery and Redshift, setting `--threads 0` or omitting the setting allows Fusion to dynamically optimize. Low thread values can significantly slow down performance on these platforms.
 
 For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#fusion-engine-thread-optimization).
 
