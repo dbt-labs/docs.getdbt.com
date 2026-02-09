@@ -320,15 +320,10 @@ Yes, a [<Constant name="cloud" /> Enterprise-tier](https://www.getdbt.com/pricin
 
 <DetailsToggle alt_header="Is there a recommended migration or implementation process?">
 
-Refer to our developer guide on [How we structure our dbt Mesh projects](/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from the dbt Summit 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
+Refer to our developer guide on [How we structure our dbt Mesh projects](/best-practices/how-we-mesh/mesh-1-intro).
 
 You can also learn how to implement dbt Mesh by following our [Quickstart dbt Mesh](/guides/mesh-qs) guide.
 
-</DetailsToggle>
-
-<DetailsToggle alt_header="Are there tools available to help me migrate to a dbt Mesh?">
-
-`dbt-meshify` is a [CLI tool](https://github.com/dbt-labs/dbt-meshify) that automates the creation of model governance and cross-project lineage features introduced in dbt-core v1.5 and v1.6. This package will leverage your dbt project metadata to create and/or edit the files in your project to properly configure the models in your project with these features.
 </DetailsToggle>
 
 <DetailsToggle alt_header="My team isn’t structured to require multiple projects today. What aspects of dbt Mesh are relevant to me?">
