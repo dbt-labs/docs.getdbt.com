@@ -31,7 +31,7 @@ These tables indicate whether private connectivity can be established to specifi
 
 ### Connecting the dbt platform to self-hosted services (Egress)
 
-The services in this table are deployed as a [self-hosted Private Service Connect service](/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted). All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
+All of the services below share [a common Private Service Connect setup guide](/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted) — backend configuration varies by service. Self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
 
 | Service | MT |
 |---------|-----|

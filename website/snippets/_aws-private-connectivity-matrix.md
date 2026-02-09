@@ -44,7 +44,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 ### Connecting the dbt platform to self-hosted services (Egress)
 
-The services in this table are deployed as a [self-hosted PrivateLink service](/docs/cloud/secure/private-connectivity/aws/aws-self-hosted). All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
+All of the services below share [a common PrivateLink setup guide](/docs/cloud/secure/private-connectivity/aws/aws-self-hosted) — backend configuration varies by service. Self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model — you are the <Term id="service-producer">service producer</Term> and dbt is the <Term id="consumer">consumer</Term>.
 
 | Service | MT | ST |
 |---------|-----|-----|
