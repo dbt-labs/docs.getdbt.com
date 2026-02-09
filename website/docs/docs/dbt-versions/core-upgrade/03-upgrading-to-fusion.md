@@ -239,7 +239,7 @@ In Fusion, `dbt build` runs _all_ of the unit tests _first_, and then build the 
 
 dbt Core runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
 
-Fusion handles threading differently depending on your data platform:
+<Constant name="fusion"/>  handles threading differently depending on your data platform:
 
 <FusionThreads />
 
