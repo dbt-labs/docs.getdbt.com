@@ -26,7 +26,7 @@ You will define the number of threads in your `profiles.yml` file (when developi
 
 ## Fusion engine thread optimization
 
-The <Constant name="fusion_engine" /> handles threading differently than <Constant name="core" />. Rather than treating `threads` as a strict limit, Fusion manages parallelism based on each adapter's characteristics.
+The <Constant name="fusion_engine" /> handles threading differently than <Constant name="core" />. Rather than treating `threads` as a strict limit, <Constant name="fusion"/> manages parallelism based on each adapter's characteristics.
 
 ### Adapter-specific behavior
 
