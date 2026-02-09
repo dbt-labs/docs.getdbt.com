@@ -5,6 +5,7 @@ sidebar_label: "Use threads"
 description: "Understand what threads mean and how to use them."
 pagination_next: null
 ---
+import FusionThreads from '/snippets/_fusion-threads.md';
  
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
 
@@ -25,17 +26,14 @@ You will define the number of threads in your `profiles.yml` file (when developi
 
 ## Fusion engine thread optimization
 
-The <Constant name="fusion_engine" /> handles threading differently than <Constant name="core" />. The legacy `threads` setting doesn't act as a strict limit on the number of threads created. Instead, Fusion manages parallelism dynamically based on the selected warehouse.
+The <Constant name="fusion_engine" /> handles threading differently than <Constant name="core" />. Rather than treating `threads` as a strict limit, <Constant name="fusion"/> manages parallelism based on each adapter's characteristics.
 
-### Redshift
+### Adapter-specific behavior
 
-In Redshift, the `threads` setting limits the number of queries or statements that can run in parallel. This behavior is the same as <Constant name="core" />, and is important for managing Redshift's concurrency limits and query queue behavior.
 
-### Other warehouses
+<FusionThreads />
 
-In other warehouses, Fusion dynamically optimizes thread usage based on the DAG and warehouse concurrency properties.
-
-For more information about Fusion's approach to parallelism, refer to [the dbt Fusion engine](/docs/fusion) page.
+For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/fusion) page.
 
 </VersionBlock>
 
