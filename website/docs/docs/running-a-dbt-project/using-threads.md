@@ -33,7 +33,7 @@ The <Constant name="fusion_engine" /> handles threading differently than <Consta
 
 <FusionThreads />
 
-For more information about Fusion's approach to parallelism, refer to [the dbt Fusion engine](/docs/fusion) page.
+For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/fusion) page.
 
 </VersionBlock>
 
