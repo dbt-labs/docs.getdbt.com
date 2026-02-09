@@ -11,7 +11,7 @@ Test selection works a little differently from other resource selection. This ma
 
 Like all resource types, tests can be selected **directly**, by methods and operators that capture one of their attributes: their name, properties, tags, etc.
 
-Unlike other resource types, tests can also be selected _indirectly_ through relationships in your DAG. If a selection method or operator includes a model that a test depends on, dbt will also select that test. For example, when you run `dbt test --select model_b`, dbt includes tests defined on `model_b` as well as tests on related models (like `model_b`) that reference `model_b`.[See the next section](#indirect-selection) for more details on controlling this behavior.
+Unlike other resource types, tests can also be selected _indirectly_ through relationships in your DAG. If a selection method or operator includes a model that a test depends on, dbt will also select that test. For example, when you run `dbt test --select model_b`, dbt includes tests defined on `model_b` as well as tests on related models (like `model_a`) that reference `model_b`.[See the next section](#indirect-selection) for more details on controlling this behavior.
 
 Test selection is powerful, and we know it can be tricky. To that end, we've included lots of examples below:
 
