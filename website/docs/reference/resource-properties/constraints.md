@@ -18,7 +18,13 @@ Before using constraints, ensure the following requirements are met:
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
 
-If you define multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
+If you define multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported.
+
+:::info Advanced CI compare changes
+
+A `primary_key` constraint on a model enables [row-level comparison](/docs/deploy/advanced-ci#compare-row-level) in Advanced CI's compare changes feature, so you can see which specific rows differ between environments (not just schema or row count changes).
+
+:::
 
 The structure of a constraint is:
 - `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`

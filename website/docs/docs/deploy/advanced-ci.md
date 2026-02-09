@@ -23,14 +23,75 @@ You can opt into Advanced CI in <Constant name="cloud" />. Please refer to [Acco
 
 ## Compare changes feature {#compare-changes}
 
-For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="cloud" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
+For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="cloud" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.
 
 dbt reports the comparison differences in:
 
 - **<Constant name="cloud" />** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
 - **The pull request from your <Constant name="git" /> provider** &mdash; Shows a summary of the changes as a <Constant name="git" /> comment.
 
-<Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
+<Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="50%" title="Example of the Compare tab" />
+
+### Compare row level (primary keys) {#compare-row-level}
+
+To see modified data (which specific rows differ and column-level differences for matching rows) and not just modified columns or row counts, configure a `primary_key` on each model you want to compare. A <Term id="primary-key" /> tells dbt how to match rows between your CI and production environments.
+
+| Configuration | What compare changes reports |
+|----------|------------------------------|
+| Without `primary_key`  | - Schema changes (added, removed, or modified columns) <br /> - Row count differences <br /> - Primary key changes (if any) |
+| With `primary_key`  | - Which specific rows were added, removed, or modified <br /> - Column-level data differences for matching rows |
+
+<br />
+
+You can configure a `primary_key` in one of two ways:
+
+<Tabs>
+<TabItem value="model-contract" label="Model contract">
+
+**Configuring a primary key constraint in your model contract** &mdash; In your model's YAML schema, enable an enforced [contract](/docs/mesh/govern/model-contracts) and add a `primary_key` [constraint](/reference/resource-properties/constraints#primary_key) on the column(s) that uniquely identify each row.
+
+<File name="models/marts/docs/_fct_orders.yml">
+
+```yaml
+# Option 1: Primary key constraint (requires enforced contract)
+models:
+  - name: fct_orders
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: order_id
+        data_type: int
+        constraints:
+          - type: primary_key
+      # ... other columns with data_type
+```
+
+</File>
+</TabItem>
+<TabItem value="uniqueness-test" label="Uniqueness test">
+
+**Configuring a uniqueness test** &mdash; In your model's YAML schema, add a [unique](/reference/resource-properties/data-tests#unique) test on the column (or combination of columns) that identifies each row. dbt infers the `primary_key` from the test for the comparison; no contract is required.
+
+<File name="models/marts/docs/_fct_orders.yml">
+
+```yaml
+# Option 2: Uniqueness test (dbt infers primary key for compare changes)
+models:
+  - name: fct_orders
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+```
+
+</File>
+</TabItem>
+</Tabs>
+
+For multi-column primary keys with the constraint approach, define the constraint at the model level with a `columns` list. See [Defining constraints](/reference/resource-properties/constraints#defining-constraints) and [Model contracts](/docs/mesh/govern/model-contracts) for full syntax and platform support.
+
+Once you configure primary keys on the models you want to compare, the next CI run should show the full row-level data comparison (not just schema changes).
 
 ### Optimizing comparisons
 
