@@ -94,19 +94,19 @@ MetricFlow supports different metric types:
 
 <VersionBlock lastVersion="1.99">
 
-- [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
-- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> over a given window.
-- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
-- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure.
+- [Conversion](/docs/build/conversion): Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period
+- [Cumulative](/docs/build/cumulative): Aggregates a <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> over a given window
+- [Derived](/docs/build/derived): An expression of other metrics, which allows you to do calculations on top of metrics.
+- [Ratio](/docs/build/ratio): Create a ratio out of two measures, like revenue per customer.
+- [Simple](/docs/build/simple): Metrics that refer directly to one measure
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-- [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
-- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a simple metric over a given window.
-- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two simple metrics, like revenue per customer.
-- [Simple](/docs/build/simple) &mdash; Metrics defined as simple aggregations over a particular dataset.
+- [Conversion](/docs/build/conversion): Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period
+- [Cumulative](/docs/build/cumulative): Aggregates a simple metric over a given window
+- [Derived](/docs/build/derived): An expression of other metrics, which allows you to do calculations on top of metrics.
+- [Ratio](/docs/build/ratio): Create a ratio out of two simple metrics, like revenue per customer.
+- [Simple](/docs/build/simple): Metrics defined as simple aggregations over a particular dataset
 </VersionBlock> 
 
 ## Use case
