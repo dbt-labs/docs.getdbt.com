@@ -5,7 +5,32 @@ sidebar_label: 'Installing dbt Core with pip'
 id: install-pip-best-practices.md
 ---
 
-Managing Python local environments can be challenging! You can use these best practices to improve the <Constant name="core" /> installation with pip. 
+:::info
+The <Constant name="fusion_engine" /> is a next-generation, Rust-based engine that powers dbt development across the platform and local tooling. See [<Constant name="fusion_engine" />](/docs/fusion) for more information.
+:::
+
+## Best practices
+
+Managing Python local environments can be challenging! You can use these best practices to improve the <Constant name="core" /> installation with `pip`. 
+
+| Best practice | Recommendation | Why it matters |
+|---------------|----------------|----------------|
+| Keep <Constant name="core" /> and adapters in sync | Match adapter versions to your <Constant name="core" /> version | Prevents runtime errors and adapter incompatibilities |
+| Use [virtual environments](/faqs/Core/install-pip-best-practices.md#using-virtual-environments) | Install dbt in an isolated environment (for example, `venv`, `pipenv`, `poetry`) | Avoids dependency conflicts |
+| Reactivate your virtual environment for each session | Reactivate your virtual environment at the start of each new session before installing dependencies or running dbt commands | Keeps your dbt setup predictable, isolated, and reproducible |
+| [Create a project](/docs/core/installation-overview#create-a-project) | Use the `dbt init` command to create and initialize your first project | Creates a standard dbt project and verifies your installation |
+| Ensure you have the latest versions of `pip` and `setuptools` | Upgrade `pip`, `wheel`, and `setuptools` before installing: `python -m pip install --upgrade pip wheel setuptools` | Helps ensure a smoother, more predictable dbt installation |
+
+<br />
+
+- Install [<Constant name="core" />](https://github.com/dbt-labs/dbt-core) without an adapter if you are developing or integrating tooling that depends on <Constant name="core" />, but does not connect directly to a data platform:
+
+```
+python -m pip install dbt-core
+```
+
+- Note, dbt adapters and <Constant name="core" /> are versioned and installed independently to prevent unintended changes to an existing <Constant name="core" /> installation. If you want to execute dbt projects on a specific data platform, after installing dbt Core on the command line, you can [install an adapter](/docs/core/pip-install#installing-the-adapter).
+
 
 ### Using virtual environments
 
