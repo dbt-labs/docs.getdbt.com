@@ -20,7 +20,7 @@ Managing Python local environments can be challenging! You can use these best pr
 | Use [virtual environments](/faqs/Core/install-pip-best-practices.md#using-virtual-environments) | Install dbt in an isolated environment (for example, `venv`, `pipenv`, `poetry`) | Avoids dependency conflicts |
 | Reactivate your virtual environment for each session | Reactivate your virtual environment at the start of each new session before installing dependencies or running dbt commands | Keeps your dbt setup predictable, isolated, and reproducible |
 | [Create a project](/docs/core/installation-overview#create-a-project) | Use the `dbt init` command to create and initialize your first project | Creates a standard dbt project and verifies your installation |
-| Ensure you have the latest versions of `pip` and `setuptools` | Upgrade `pip`, `wheel`, and `setuptools` before installing: `python -m pip install --upgrade pip wheel setuptools` | Helps ensure a smoother, more predictable dbt installation |
+| Ensure you have the latest versions of `pip`, `wheel`, and `setuptools` | Before installing dbt, upgrade your Python packaging tools:<br /><br />`python -m pip install --upgrade pip wheel setuptools` | Helps ensure a smoother, more predictable dbt installation |
 
 <br />
 
