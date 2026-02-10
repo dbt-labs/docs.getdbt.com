@@ -194,7 +194,7 @@ Native private packages let you install packages from [supported](#prerequisites
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos without having to provision an access token or manage a Git URL.
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="cloud" /> Git integration without having to provision an access token or create a <Constant name="cloud" /> environment variable. 
 
 
 <File name="packages.yml">
