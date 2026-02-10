@@ -12,7 +12,7 @@ The latest Semantic Layer specification creates an open standard for defining me
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization. 
 
 :::info Availability
-The new YAML spec is currently only available in the <Constant name="fusion_engine" />, and will be coming soon to the <Constant name="dbt_platform" /> **Latest** release track and <Constant name="core" /> v1.12 (coming in 1H 2026).
+The new YAML spec is currently only available in the <Constant name="fusion_engine" />, and will be coming soon to the <Constant name="dbt_platform" /> **Latest** release track and <Constant name="core" /> v1.12. Reach out to your account manager for more information about availability. 
 :::
 
 ## Changes in the latest spec 
