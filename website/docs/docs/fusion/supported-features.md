@@ -25,10 +25,12 @@ import FusionDWH from '/snippets/_fusion-dwh.md';
 
 ## Requirements
 
-To use Fusion in your dbt project:
-- You're using a supported adapter and authentication method:
+To use Fusion in your dbt project you must:
+- Use a supported adapter and authentication method:
   <FusionDWH /> 
-- Have only SQL models defined in your project. Python models are not currently supported because Fusion cannot parse these to extract dependencies (refs) on other models. <!-- [TODO: Link to dbt-fusion Python issue.] -->
+- Be able to run your project on the latest version of <Constant name="core" /> with no deprecation warnings or errors.
+- Migrate your Semantic Layer configurations to the [latest YAML spec](/docs/build/latest-metrics-spec).
+
 
 ## Parity with dbt Core
 
