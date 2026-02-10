@@ -183,14 +183,14 @@ Native private packages let you install packages from [supported](#prerequisites
 #### Prerequisites
 
 - You must have the feature flag enabled. Contact your account team to request access.
-- **<Constant name="dbt_platform" />** &mdash; You must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
+- To use native private packages, you must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
   - [GitHub](/docs/cloud/git/connect-github)
   - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
     - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
   - [GitLab](/docs/cloud/git/connect-gitlab)
     - Every GitLab repo with private packages must also be a <Constant name="cloud" /> project. 
-- **<Constant name="fusion" /> locally** &mdash; You must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
+- If using <Constant name="fusion" /> locally, you must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
 
