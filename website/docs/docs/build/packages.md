@@ -175,22 +175,26 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 ### Native private packages <Lifecycle status='beta'/> 
 
-<Constant name="cloud" /> supports private packages from [supported](#prerequisites) <Constant name="git" /> repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
+Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. 
+
+- <Constant name="dbt_platform" /> &mdash; Uses your existing <Constant name="git" /> [integration](/docs/cloud/git/git-configuration-in-dbt-cloud) for authentication.
+- <Constant name="fusion" /> locally &mdash; Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
 
 #### Prerequisites
 
 - You must have the feature flag enabled. Contact your account team to request access.
-- To use native private packages, you must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
+- **<Constant name="dbt_platform" />** &mdash; You must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
   - [GitHub](/docs/cloud/git/connect-github)
   - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
     - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
-  - [Gitlab](/docs/cloud/git/connect-gitlab)
-    - Every Gitlab repo with private packages must also be a <Constant name="cloud" /> project. 
+  - [GitLab](/docs/cloud/git/connect-gitlab)
+    - Every GitLab repo with private packages must also be a <Constant name="cloud" /> project. 
+- **<Constant name="fusion" /> locally** &mdash; You must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="cloud" /> Git integration without having to provision an access token or create a <Constant name="cloud" /> environment variable. 
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos without having to provision an access token or manage a Git URL.
 
 
 <File name="packages.yml">
@@ -229,20 +233,32 @@ packages:
   
 ```
 
-If you are using multiple <Constant name="git" /> integrations or using the dbt Fusion engine, add the provider key:
+#### Using the `provider` key
+
+If you are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />, add the `provider` key. When using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/fusion/install-fusion-cli) or the [VS Code extension](/docs/fusion/install-dbt-extension)), the `provider` key is **required**.
 
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo
-    provider: "github" # GitHub and Azure are currently supported. GitLab is coming soon.
-
+    provider: "github" # Supported values: "github", "gitlab", "azure_devops"
 ```
 
-With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect.
+<Constant name="fusion" /> uses the `provider` value to construct the correct SSH URL for cloning, based on the provider:
 
-Using `provider` with Fusion carries the expectation that you have a SSH key configured on your machine to use for git cloning.
+| Provider | SSH URL format |
+| --- | --- |
+| `github` | `git@github.com:org/repo.git` |
+| `gitlab` | `git@gitlab.com:org/repo.git` |
+| `azure_devops` | `git@ssh.dev.azure.com:v3/org/repo` |
 
-### SSH key method (command line only)
+<Constant name="fusion" /> relies on your system's SSH configuration to authenticate and clone the private repository. If `git clone` works on your system for the private package repo, the private package install should work too.
+
+### SSH key method (CLI only)
+
+:::note
+This method uses the `git:` key with a full SSH URL, which is different from [native private packages](#native-private-packages) that use the `private:` key. For most use cases, native private packages is the recommended approach.
+:::
+
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
 
 When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/user/ssh.html).
@@ -257,14 +273,14 @@ packages:
 
 </File>
 
-If you're using the <Constant name="dbt_platform" />, the SSH key method will not work, but you can use the [HTTPS <Constant name="git" /> Token Method](/docs/build/packages#git-token-method).
+If you're using the <Constant name="dbt_platform" />, the SSH key method will not work, but you can use [native private packages](#native-private-packages) or the [HTTPS <Constant name="git" /> Token Method](/docs/build/packages#git-token-method).
 
 
 ### Git token method
 
 :::note
 
-<Constant name="cloud" /> has [native support](#native-private-packages) for <Constant name="git" /> hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated <Constant name="git" /> environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure <Constant name="git" /> tokens to retrieve private packages. 
+[Native private packages](#native-private-packages) is the recommended approach for GitHub, GitLab, and Azure DevOps. The git token method is still functional in both <Constant name="fusion" /> and the <Constant name="dbt_platform" />, but requires provisioning a personal access token. It can be useful as a fallback if you need to unblock yourself.
 
 :::
 
