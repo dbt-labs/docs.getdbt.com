@@ -177,7 +177,7 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. 
 
-- <Constant name="dbt_platform" /> &mdash; Uses your existing <Constant name="git" /> [integration](/docs/cloud/git/git-configuration-in-dbt-cloud) for authentication.
+- <Constant name="dbt_platform" /> &mdash; Uses your existing <Constant name="git" /> [integration](/docs/cloud/git/git-configuration-in-dbt-cloud) for authentication. Needs the `private` key.
 - <Constant name="fusion" /> locally &mdash; Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
 
 #### Prerequisites
