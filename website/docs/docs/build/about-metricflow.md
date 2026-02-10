@@ -290,7 +290,7 @@ models:
 </TabItem>
 <TabItem value="example2" label="More dimensions example">
 
-Similarly, you can add additional dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue order_total. 
+Similarly, you can add additional dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue `order_total`. 
 
 <VersionBlock lastVersion="1.99">
 
