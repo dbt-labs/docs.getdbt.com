@@ -560,7 +560,7 @@ Additionally, not all metrics are constructed off of measures. As an example, a 
 </DetailsToggle>
 </VersionBlock>
 <DetailsToggle alt_header="How does the dbt Semantic Layer handle joins?">
-The dbt <Constant name="semantic_layer" />, powered by MetricFlow, builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentation on [join types](/docs/build/join-logic#types-of-joins).
+The dbt <Constant name="semantic_layer" />, powered by MetricFlow, builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed, see the documentation on [join types](/docs/build/join-logic#types-of-joins).
 
 Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps users navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.
 </DetailsToggle>
