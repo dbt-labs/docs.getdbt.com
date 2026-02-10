@@ -6,18 +6,20 @@ sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
+import LongSession from '/snippets/_long-sessions-cli.md';
+
 Learn how to configure the <Constant name="cloud_cli" /> for your <Constant name="cloud" /> project to run dbt commands, like `dbt environment show` to view your <Constant name="cloud" /> configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
-- Secure credential storage in the <Constant name="cloud" /> platform.
-- [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
+- Secure credential storage in the <Constant name="dbt_platform" />.
+- [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your project's production environment.
 - Speedier, lower-cost builds.
 - Support for <Constant name="mesh" /> ([cross-project ref](/docs/mesh/govern/project-dependencies)), and more.
 
 ## Prerequisites
 
 - You must set up a project in <Constant name="cloud" />.
-  - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="cloud" /> interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
-- You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="cloud" /> CLI will use these credentials, stored securely in <Constant name="cloud" />, to communicate with your data platform.
+  - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="dbt_platform" /> interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+- You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="cloud_cli" /> will use these credentials, stored securely in <Constant name="cloud" />, to communicate with your data platform.
 - You must be on dbt version 1.5 or higher. Refer to [<Constant name="cloud" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
 
 ## Configure the dbt CLI
@@ -34,7 +36,7 @@ Once you install the <Constant name="cloud_cli" />, you need to configure it to 
     You can also download the credentials from the links provided based on your region:
 
     - North America: <a href="https://cloud.getdbt.com/cloud-cli">https://cloud.getdbt.com/cloud-cli</a>
-    - EMEA: <a herf="https://emea.dbt.com/cloud-cli">https://emea.dbt.com/cloud-cli</a>
+    - EMEA: <a href="https://emea.dbt.com/cloud-cli">https://emea.dbt.com/cloud-cli</a>
     - APAC: <a href="https://au.dbt.com/cloud-cli">https://au.dbt.com/cloud-cli</a>
     - North American Cell 1: <code>https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli</code>
     - Single-tenant: <code>https://YOUR_ACCESS_URL/cloud-cli</code>
@@ -100,7 +102,7 @@ With your repo recloned, you can add, edit, and sync files with your repo.
 
 ## Set environment variables
 
-To set environment variables in the <Constant name="cloud" /> CLI for your dbt project:
+To set environment variables in the <Constant name="cloud_cli" /> for your dbt project:
 
 1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
 2. Under the **Your profile** section, select **Credentials**.
@@ -111,9 +113,9 @@ To set environment variables in the <Constant name="cloud" /> CLI for your dbt p
 
 The <Constant name="cloud_cli" /> uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your <Constant name="cloud" /> configuration details. With the <Constant name="cloud_cli" />, you can:
 
-- Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which is currently not guaranteed by `dbt-core`.
-- Automatically defers build artifacts to your Cloud project's production environment.
-- Supports [project dependencies](/docs/mesh/govern/project-dependencies), which allows you to depend on another project using the metadata service in <Constant name="cloud" />. 
+- Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which `dbt-core` doesn't currently guarantee.
+- Automatically defer build artifacts to your project's production environment.
+- Support [project dependencies](/docs/mesh/govern/project-dependencies), which allows you to depend on another project using the metadata service in <Constant name="cloud" />. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
  
 :::tip Use the <code>--help</code> flag
@@ -124,7 +126,7 @@ As a tip, most command-line tools have a `--help` flag to show available command
  
 ## Lint SQL files 
 
-From the <Constant name="cloud" /> CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the <Constant name="cloud" /> CLI.
+From the <Constant name="cloud_cli" />, you can invoke [SQLFluff](https://sqlfluff.com/), which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the <Constant name="cloud_cli" />.
 
 The available SQLFluff commands are: 
 
@@ -139,7 +141,7 @@ To lint SQL files, run the command as follows:
 dbt sqlfluff lint [PATHS]... [flags]
 ```
 
-When no path is set, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.  
+When you don't specify a path, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.  
 
 To show detailed information on all the dbt supported commands and flags, run the `dbt sqlfluff -h` command. 
 
@@ -169,8 +171,12 @@ import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
 <DetailsToggle alt_header="How to skip artifacts from being downloaded">
 
-By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the <Constant name="cloud_cli" />. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
+By default, the <Constant name="cloud_cli" /> downloads [all artifacts](/reference/artifacts/dbt-artifacts) when you execute dbt commands. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
 
 </DetailsToggle>
 
-<FAQ path="Troubleshooting/long-sessions-cloud-cli" />
+<DetailsToggle alt_header="I'm getting a 'Session occupied' error in dbt CLI?">
+
+<LongSession />
+
+</DetailsToggle>
