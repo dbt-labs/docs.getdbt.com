@@ -547,7 +547,7 @@ If you have not invested in data consistency, that is okay. The <Constant name="
 
 <DetailsToggle alt_header="Why is normalized data the ideal input?">
 
-MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplishing the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.
+MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.
 </DetailsToggle>
 <VersionBlock lastVersion="1.99">
 <DetailsToggle alt_header="Why not just make metrics the same as measures?">
