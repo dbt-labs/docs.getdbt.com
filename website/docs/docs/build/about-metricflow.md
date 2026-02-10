@@ -71,7 +71,7 @@ Semantic models are the starting points of your data and correspond to models in
 For a semantic model, there are three main pieces of metadata:
 
 * [Entities](/docs/build/entities): The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
-* [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
+* [Dimensions](/docs/build/dimensions): These are the ways you want to group or slice/dice your metrics.
 <VersionBlock lastVersion="1.99">
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
 </VersionBlock>
