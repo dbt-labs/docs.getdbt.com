@@ -15,9 +15,8 @@ Managing Python local environments can be challenging! You can use these best pr
 
 | Best practice | Recommendation | Why it matters |
 |---------------|----------------|----------------|
-| Keep <Constant name="core" /> and adapters in sync | Match adapter versions to your <Constant name="core" /> version | Prevents runtime errors and adapter incompatibilities |
+| [Install <Constant name="core" /> with an adapter](/docs/core/pip-install#installing-the-adapter) and keep versions in sync | Install with: `python -m pip install dbt-core dbt-ADAPTER_NAME` <br /><br /> (For example, `python -m pip install dbt-core dbt-snowflake`) <br /><br /> Match adapter versions to your <Constant name="core" /> version <br /><br /> | Provides a complete, compatible, and ready-to-run dbt setup <br /><br /> <br /><br /> Prevents runtime errors and adapter incompatibilities |
 | For tooling without a warehouse connection, install dbt Core without an adapter | `python -m pip install dbt-core` | Keeps your setup lean, predictable, and easier to maintain|
-| For projects that connect to a data platform, [install <Constant name="core" /> with an adapter](/docs/core/pip-install#installing-the-adapter) | `python -m pip install dbt-core dbt-ADAPTER_NAME` <br /><br />(For example, `python -m pip install dbt-core dbt-snowflake`) | Provides a complete, compatible, and ready-to-run dbt setup |
 | Use [virtual environments](/faqs/Core/install-pip-best-practices.md#using-virtual-environments) | Install dbt in an isolated environment (for example, `venv`, `pipenv`, `poetry`) | Avoids dependency conflicts |
 | Reactivate your virtual environment for each session | Reactivate your virtual environment at the start of each new session before installing dependencies or running dbt commands | Keeps your dbt setup predictable, isolated, and reproducible |
 | [Create a project](/docs/core/installation-overview#create-a-project) | Use the `dbt init` command to create and initialize your first project | Creates a standard dbt project and verifies your installation |
