@@ -38,6 +38,14 @@ You can view and download in-progress and historical logs for your dbt runs. Thi
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/download-logs.png" width="85%" title="Download logs" />
 
+#### Log size limits
+
+dbt enforces cumulative log size limits on run endpoints. If a single step's logs or the total run logs exceed this limit, the logs are omitted.
+
+If a log is omitted due to size, a **Run logs are too large** banner is displayed, and a message is shown where the logs would usually appear. The run step also shows an **Unknown** status.
+
+You can still download omitted logs. If the log is too large, the download may fail. If that happens, you can [reach out to support](mailto:support@getdbt.com).
+
 ### Lineage tab
 
 View the lineage graph associated with the job run so you can better understand the dependencies and relationships of the resources in your project. To view a node's metadata directly in [<Constant name="explorer" />](/docs/explore/explore-projects), select it (double-click) from the graph. 
