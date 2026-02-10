@@ -551,7 +551,7 @@ MetricFlow is built to do denormalization efficiently. There are better tools to
 </DetailsToggle>
 <VersionBlock lastVersion="1.99">
 <DetailsToggle alt_header="Why not just make metrics the same as measures?">
-One principle of MetricFlow is to reduce the duplication of logic, sometimes referred to as Don't Repeat Yourself(DRY).
+One principle of MetricFlow is to reduce the duplication of logic, sometimes referred to as Don't Repeat Yourself (DRY).
 
 Many metrics are constructed from reused measures, and in some cases, they are constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other).
 
