@@ -382,7 +382,7 @@ models:
 </TabItem>
 <TabItem value="example3" label="Advanced example">
 
-Imagine an even more complex metric is needed, such as the amount of money earned each day from food orders from returning customers. Without MetricFlow the data practitioner's original SQL might look like this:
+Imagine an even more complex metric is needed, such as the amount of money earned each day from food orders from returning customers. Without MetricFlow, the data practitioner's original SQL might look like this:
 
 ```sql
 select
