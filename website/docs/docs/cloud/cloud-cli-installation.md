@@ -319,7 +319,7 @@ The <Constant name="cloud_cli" /> allows only one command that writes to the dat
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="I'm getting a 'Session occupied' error in dbt CLI?">
+<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt CLI?">
 
 <LongSession />
 

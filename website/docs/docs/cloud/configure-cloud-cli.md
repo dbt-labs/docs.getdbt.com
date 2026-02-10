@@ -175,7 +175,7 @@ By default, the <Constant name="cloud_cli" /> downloads [all artifacts](/referen
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="I'm getting a 'Session occupied' error in dbt CLI?">
+<DetailsToggle alt_header="I'm getting a `Session occupied` error in dbt CLI?">
 
 <LongSession />
 
