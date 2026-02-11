@@ -22,6 +22,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## January 2026
 
+- **Enhancement:** The `defer-env-id` setting for choosing which deployment environment to defer to is [now available](/docs/cloud/about-cloud-develop-defer#defer-environment) in the <Constant name="cloud_ide" />. Previously, this configuration only worked for the <Constant name="cloud_cli" />
 - **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="query_page" /> is now in beta. 
   - dbt <Constant name="copilot" />'s AI assistant in <Constant name="query_page" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
 - **Enhancement:** The [Studio IDE](/docs/cloud/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands. This feature is being rolled out in phases and will become available to all <Constant name="dbt_platform" /> accounts by mid-February. 

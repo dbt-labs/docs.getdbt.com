@@ -72,12 +72,12 @@ var siteSettings = {
     announcementBar: {
       id: "dbt-workshop",
       content:
-        "Help us find out what's next for data teams by taking the 2026 State of Analytics Engineering survey",
+        "Is your team ready for Fusion? Join Brooklyn Data Feb 18 for a practical readiness framework — assess your project, process, and people before you migrate.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform",
+      "https://www.getdbt.com/resources/webinars/are-you-ready-for-the-dbt-fusion-engine",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
