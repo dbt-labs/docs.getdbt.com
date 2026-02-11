@@ -20,7 +20,7 @@ If the extension is attempting to activate during startup and locks into a perma
 - Your IDE is on the latest version.
 - You have a valid `dbt_cloud.yml` file configured and in the [correct location](#register-with-dbt_cloudyml).
 
-If you're still experiencing issues:
+If you're still experiencing issues, try these steps before contacting dbt Support:
 - Delete and download a new copy of your `dbt_cloud.yml` file.
 - Delete and reinstall the dbt VS Code extension.
 - In some very rare cases, you may need to completely remove and reinstall the IDE. 
