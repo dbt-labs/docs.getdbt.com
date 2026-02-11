@@ -131,8 +131,6 @@ This is required so that BigFrames jobs execute correctly.
 
 Refer to [Connect to BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) for more info on how to connect to BigQuery in the <Constant name="dbt_platform"/>.
 
-<Lightbox src="/img/guides/gcp-guides/dbt-platform-bq.png" width="80%" title="Configure BigQuery in the dbt platform"/>
-
 ## Create, configure, and execute your Python models
 
 1. In your dbt project, create a SQL model in your models directory, ending in the `.sql` file extension. Name it `my_sql_model.sql`.
