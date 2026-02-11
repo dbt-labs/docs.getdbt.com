@@ -37,6 +37,9 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2025
 
+- **Behavior change**: dbt enforces cumulative log size limits on run endpoints. If logs exceed this limit, they are omitted and a banner is displayed. For more information, see [Run visibility](/docs/deploy/run-visibility#log-size-limits).
+  
+  **Note:** This behavior was introduced in October 2025 but was not documented at the time. See [February 2026 release notes](/docs/dbt-versions/release-notes#february-2026) for details.
 - **New**: The [docs.getdbt.com](http://docs.getdbt.com/) documentation site has introduced an LLM Context menu on all product documentation and guide pages. This menu provides users with quick options to interact with the current page using LLMs. You can can now:
   - Copy the page as raw Markdown &mdash; This makes it easier to reference or reuse documentation content.
   - Open the page directly in ChatGPT or Claude &mdash; This redirects you to a chat with the LLM and automatically loads a message asking it to read the page, helping you start a conversation with context from the page.
