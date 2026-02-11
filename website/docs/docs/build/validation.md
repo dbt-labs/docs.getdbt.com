@@ -17,7 +17,7 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In <Constant name="cloud" />, you need developer credentials to run `dbt sl validate-configs` in the IDE or CLI, and deployment credentials to run it in CI.
 
 ```bash
-# Fusion and dbt platform users in Studio CLI or locally with a valid dbt_cloud.yml/platform connection
+# Fusion and dbt platform users in dbt CLI or locally with a valid dbt_cloud.yml/platform connection
 # runs parsing, semantic, and (where supported) data platform validations
 dbt sl validate
 
@@ -27,13 +27,17 @@ dbt sl validate
 mf validate-configs
 ```
 
+import SLValidations from '/snippets/_sl-validations.md';
+
+<SLValidations />
+
 ## Availability by environment
 
 Validation behavior and availability differ depending on your environment and setup:
 
 | Environment | Who can use | Parsing | Semantic syntax | Data platform | How to run |
 | --- | --- | --- | --- | --- | --- |
-| <Constant name="fusion_engine"/>  | <Constant name="dbt_platform"/> users for full Semantic Layer features | ✅ | ✅ * | ✅ | <li> Parsing validations run automatically while generating the semantic manifest.</li> <li> When running in development, semantic syntax validations run automatically on <Constant name="dbt_platform"/> if `dbt_cloud.yml` is configured. If not, run manually using `mf-validate-configs`.</li> <li> Data platform validations don't run automatically for Fusion. You must run `dbt sl validate` to run data platform validations. </li>|
+| <Constant name="fusion_engine"/>  | <Constant name="dbt_platform"/> users for full Semantic Layer features | ✅ | ✅ * | ✅ | - Parsing validations run automatically while generating the semantic manifest. <br></br> - When running in development, semantic syntax validations run automatically on <Constant name="dbt_platform"/> if `dbt_cloud.yml` is configured. If not, run manually using `mf-validate-configs`. <br></br> - Data platform validations don't run automatically for Fusion. You must run `dbt sl validate` to run data platform validations.|
 | <Constant name="cloud_cli"/>  | <Constant name="dbt_platform"/>  users | ✅ | ✅ | ✅ | Run any <Constant name="cloud_cli"/>  command; validations execute automatically except data platform validations. You must run `dbt sl validate` to run data platform validations.|
 | <Constant name="core"/>  | Open source users | ✅ | ✅ | ❌ | Use <Constant name="core"/>  for parsing/builds. Run additional validation manually with the MetricFlow CLI. |
 | MetricFlow CLI | Open source users | ✅ | ✅ | ✅ | Run `mf validate-configs` locally to validate and test metrics. |

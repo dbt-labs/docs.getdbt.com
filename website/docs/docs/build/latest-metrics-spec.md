@@ -601,9 +601,13 @@ To update packages, a package maintainer should:
 
     ```bash
     dbt parse
-    dbt sl validate  # For Fusion and dbt platform users in Studio CLI or locally with a valid dbt_cloud.yml/platform connection
+    dbt sl validate  # For Fusion and dbt platform users in dbt CLI or locally with a valid dbt_cloud.yml/platform connection
     mf validate-configs # For Fusion CLI users not connected to dbt platform and using local MetricFlow
     ```
+
+import SLValidations from '/snippets/_sl-validations.md';
+
+<SLValidations />
 
 3. Release a new version of the package with the updated metrics definitions.
 

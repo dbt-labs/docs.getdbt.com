@@ -219,7 +219,7 @@ The list of available saved queries:
 The following command performs validations against the defined semantic model configurations.
 
 ```bash
-dbt sl validate  # For dbt platform users (Core or Fusion engine) 
+dbt sl validate  # # For Fusion and dbt platform users in dbt CLI or locally with a valid dbt_cloud.yml/platform connection
 mf validate-configs # For open-source users (Core or Fusion source available)
  
 
