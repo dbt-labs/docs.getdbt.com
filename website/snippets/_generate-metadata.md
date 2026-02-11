@@ -18,13 +18,15 @@ Note that <Constant name="explorer" /> automatically deletes stale metadata afte
 
 | To view in <Constant name="explorer" /> | You must successfully run |
 |---------------------|---------------------------|
-| All metadata        |  [dbt build](/reference/commands/build), [dbt docs generate](/reference/commands/cmd-docs), and [dbt source freshness](/reference/commands/source#dbt-source-freshness) together as part of the same job in the environment
+| All metadata        | [dbt build](/reference/commands/build), [dbt docs generate](/reference/commands/cmd-docs), and [dbt source freshness](/reference/commands/source#dbt-source-freshness) together as part of the same job in the environment |
 | Model lineage, details, or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
-| Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within [a job](/docs/explore/build-and-view-your-docs) in the environment |
-| Test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment |
-| Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
-| Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
+| Columns and statistics for models, sources, and snapshots | [dbt docs generate](/reference/commands/cmd-docs) within [a job](/docs/explore/build-and-view-your-docs) in the environment |
+| Data test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment |
+| Unit test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment. Unit tests are typically run in development or CI environments only. |
+| Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
+| Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
 | Seed details | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |
+| Exposure details | [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment. Exposures are defined in YAML files. |
+| Metrics, semantic models, and saved queries | [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment. These [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) resources are defined in YAML files. |
 
 Richer and more timely metadata will become available as <Constant name="cloud" /> evolves.
-
