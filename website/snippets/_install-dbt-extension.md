@@ -4,7 +4,7 @@ import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
 The dbt extension &mdash; available for [VS Code, Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt) &mdash; uses the <Constant name="fusion_engine" /> to make dbt development smoother and more efficient. 
 
-The dbt VS Code extension is not compatible with <Constant name="core" />.
+The dbt VS Code extension is only compatible with the <Constant name="fusion_engine" />, but not with <Constant name="core" />.
 
 :::note
 
