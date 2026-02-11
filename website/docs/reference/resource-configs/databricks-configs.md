@@ -1096,11 +1096,11 @@ or `show table extended in [database] like '*'`.
 ## Query tags
 _Available in versions 1.11 or higher_
 
-[Query tags](https://docs.databricks.com/en/admin/system-tables/query.html#query-tags) are a Databricks feature that allows you to attach custom key-value metadata to SQL queries. This metadata appears in system tables and query history, making it useful for tracking query costs, debugging, and auditing.
+[Query tags](https://docs.databricks.com/aws/en/sql/user/queries/query-tags) are a Databricks feature that allows you to attach custom key-value metadata to SQL queries. This metadata appears in system tables and query history, making it useful for tracking query costs, debugging, and auditing.
 
 :::note Feature availability
 
-Query tags may not yet be available in all Databricks workspaces. Check the [Databricks documentation](https://docs.databricks.com/en/admin/system-tables/query.html#query-tags) for the latest information on feature availability.
+Query tags may not yet be available in all Databricks workspaces. Check the [Databricks documentation](https://docs.databricks.com/aws/en/sql/user/queries/query-tags) for the latest information on feature availability.
 
 :::
 
