@@ -258,7 +258,7 @@ packages:
 ### SSH key method (CLI only)
 
 :::note
-This method uses the `git:` key with a full SSH URL, which is different from [native private packages](#native-private-packages) that use the `private:` key. For most use cases, native private packages is the recommended approach.
+This method uses the `git:` key with a full SSH URL, which is different from [native private packages](#native-private-packages) that use the `private:` key. For most use cases, native private packages is the recommended approach as it simplifies setup.
 :::
 
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
