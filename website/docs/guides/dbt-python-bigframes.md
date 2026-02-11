@@ -30,7 +30,7 @@ BigQuery DataFrames is an open source Python package that transpiles pandas and 
 - Basic to intermediate SQL and python.
 - Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://learn.getdbt.com).
 
-During setup, you’ll need to select the **BigQuery (Legacy)** adapter and enter values for your **Google Cloud Storage Bucket** and **Dataproc Region** in the <Constant name="dbt_platform"/>. See [Configure BigQuery in dbt platform](/guides/dbt-python-bigframes?step=2#configure-bigquery-in-dbt-platform) for details.
+During setup, you’ll need to select the **BigQuery** adapter and enter values for your **Google Cloud Storage Bucket** and **Dataproc Region** in the <Constant name="dbt_platform"/>. See [Configure BigQuery in dbt platform](/guides/dbt-python-bigframes?step=2#configure-bigquery-in-dbt-platform) for details.
 
 ### What you'll build
 
@@ -121,7 +121,7 @@ The dbt BigFrames submission method supports both service account and OAuth cred
 To set up your BigQuery DataFrames connection in the <Constant name="dbt_platform"/>, refer to the following steps:
 1. Go to **Account settings** > **Connections**. Click **New connection**. 
 2. In the **Type** section, select **BigQuery**.
-3. Select **BigQuery (Legacy)** as your adapter.
+3. Select **BigQuery** as your adapter.
 2. Under **Optional settings**, enter values for the following fields:
     - **Google Cloud Storage Bucket** (for example: `dbt_name_bucket`)
     - **Dataproc Region** (for example: `us-central1`)
