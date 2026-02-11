@@ -13,6 +13,21 @@ import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 If you're using the dbt VS Code extension in Cursor, the lineage tab works best in Editor mode and doesn't render in Agent mode. If you're in Agent mode and the lineage tab isn't rendering, just switch to Editor mode to view your project's table and column lineage.
 </Expandable>
 
+<Expandable alt_header="The extension gets stuck in a loading state">
+
+If the extension is attempting to activate during startup and locks into a permanent loading state, check that:
+- Your dbt VS Code extension is on the latest version.
+- Your IDE is on the latest version.
+- You have a valid `dbt_cloud.yml` file configured and in the [correct location](#register-with-dbt_cloudyml).
+
+If you're still experiencing issues:
+- Delete and download a new copy of your `dbt_cloud.yml` file.
+- Delete and reinstall the dbt VS Code extension.
+- In some very rare cases, you may need to completely remove and reinstall the IDE. 
+
+
+</Expandable>
+
 <Expandable  alt_header="dbt platform configurations">
 
 If you're a cloud-based dbt platform user who has the `dbt-cloud:` config in the `dbt_project.yml` file and are also using dbt Mesh, you must have the project ID configured:
