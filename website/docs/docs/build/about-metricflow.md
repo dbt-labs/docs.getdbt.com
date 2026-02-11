@@ -105,7 +105,7 @@ MetricFlow supports different metric types:
 - [Conversion](/docs/build/conversion): Tracks when a base event and a subsequent conversion event occurs for an entity within a set time period
 - [Cumulative](/docs/build/cumulative): Aggregates a simple metric over a given window
 - [Derived](/docs/build/derived): Defines a metric as an expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio): Defines a metric as the ratio of two measures, such as revenue per customer.
+- [Ratio](/docs/build/ratio): Defines a metric as the ratio of two simple metrics, such as revenue per customer.
 - [Simple](/docs/build/simple): Defines a metric that directly references a single measure.
 </VersionBlock> 
 
