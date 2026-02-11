@@ -17,6 +17,8 @@ This is the only way to enjoy all the power of the <Constant name="fusion_engine
 
 The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
 
+The dbt VS Code extension is not compatible with <Constant name="core" />.
+
 :::tip Try out the Fusion quickstart guide
 
 Check out the [Fusion quickstart guide](/guides/fusion?step=1) to try the dbt VS Code extension in action.
