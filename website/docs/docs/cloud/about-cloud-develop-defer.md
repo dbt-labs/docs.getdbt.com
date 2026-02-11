@@ -54,7 +54,7 @@ One key difference between using `--defer` in the <Constant name="cloud_cli" /> 
 
 ### Defer environment
 
-The <Constant name="cloud_ide" /> and <Constant name="cloud_cli" /> both offer additional flexibility by letting you choose the source environment for deferral artifacts. You can manually set a `defer-env-id` key in either your `dbt_project.yml` or `dbt_cloud.yml` file. By default, dbt will prefer metadata from the project's "Staging" environment (if defined), otherwise "Production."
+The <Constant name="cloud_ide" /> and <Constant name="cloud_cli" /> both offer additional flexibility by letting you choose the source environment for deferral artifacts. You can manually set a `defer-env-id` key in either your `dbt_project.yml` or `dbt_cloud.yml` file. By default, dbt will prefer metadata from the project's "Staging" environment (if defined). Otherwise, it uses "Production."
 
 <Lightbox src="/img/docs/dbt-cloud/defer-env-id.png" width="100%" title="Set the defer environment and the target name will change in the UI."/>
 
