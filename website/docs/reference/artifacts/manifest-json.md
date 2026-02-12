@@ -15,7 +15,7 @@ After executing a dbt command, the `manifest.json` file can be found in the proj
 
 - If developing locally: Open the `target/` directory in your project folder
 - In the <Constant name="cloud_ide" />: Open the `target/` directory in the file tree
-- In <Constant name="dbt_platform" /> jobs: Download `manifest.json` from the [artifacts](/reference/artifacts/dbt-artifacts) tab for a given job run
+- In <Constant name="dbt_platform" /> jobs: Download the `manifest.json` from the [artifacts](/reference/artifacts/dbt-artifacts) tab for a given job run
 
 This file contains a full representation of your dbt project's resources (models, tests, macros, and more), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. Some properties, such as `compiled_sql`, are included only for executed nodes.
 
