@@ -42,7 +42,7 @@ You can view and download in-progress and historical logs for your dbt runs. Thi
 
 dbt enforces cumulative log size limits on run endpoints. If a single step's logs or the total run logs exceed this limit, dbt omits the logs.
 
-If a log is omitted due to size, a **Run logs are too large** banner is displayed, and a message is shown where the logs would usually appear. The run step also shows an **Unknown** status.
+When dbt omits logs due to size, it displays a **Run logs are too large** banner and shows a message where the logs would usually appear. The run step also displays an **Unknown**  status.
 
 You can still download omitted logs. If the log is too large, the download may fail. If that happens, you can [reach out to support](mailto:support@getdbt.com).
 
