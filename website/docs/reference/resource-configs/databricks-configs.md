@@ -1208,7 +1208,7 @@ To work around this limitation, dbt-databricks accepts `query_tags` in your conn
 
 ### Viewing query tags
 
-Query tags appear in Databricks system tables and query history. For information on how to query and analyze query tags, see the [Databricks query tags documentation](https://docs.databricks.com/en/admin/system-tables/query.html#query-tags).
+Query tags appear in Databricks system tables and query history. For information on how to query and analyze query tags, see the [Databricks query tags documentation](https://docs.databricks.com/aws/en/sql/user/queries/query-tags).
 
 ## Default file format configurations
 
