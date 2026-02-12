@@ -51,7 +51,7 @@ All resources nested within `nodes`, `sources`, `metrics`, `exposures`, `macros`
 Each has several additional properties related to its resource type.
 
 ### dbt JSON schema
-You can refer to the [dbt JSON schema](https://schemas.getdbt.com/) for info on describing and consuming dbt-generated artifacts. 
+You can refer to the [dbt JSON schema](https://schemas.getdbt.com/) for information on describing and consuming dbt-generated artifacts. 
 
 **Note**: The `manifest.json` version number is related to (but not _equal_ to) your dbt version, so you _must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, select the dbt version on the top navigation (such as `v1.5`). 
 
