@@ -138,7 +138,7 @@ If you're using the <Constant name="fusion_engine" /> with [state-aware orchestr
 
 However, you should still configure source freshness if you want to:
 - Receive SLA alerts when sources don't update within expected timeframes.
-- Define custom freshness logic using `loaded_at_field` or `loaded_at_query` (for example, for streaming data or partial loads).
+- Define custom freshness logic using [advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations) `loaded_at_field` or `loaded_at_query` (for example, for streaming data or partial loads).
 - Track freshness for source views. Fusion treats views as "always fresh" since it can't determine freshness from view metadata.
 
 
