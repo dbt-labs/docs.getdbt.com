@@ -17,7 +17,7 @@ pagination_prev: null
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
 ## February 2026
-
+- **Enhancement**: We clarified documentation for cumulative log size limits on run endpoints, originally introduced in [October 2025](/docs/dbt-versions/2025-release-notes#october-2025). When logs exceed the cumulative size limit, dbt omits them and displays a banner. No functional changes were made in February 2026. For more information, see [Run visibility](/docs/deploy/run-visibility#log-size-limits).
 - **New**: The `immutable_where` configuration is now supported for Snowflake dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
 
 ## January 2026
