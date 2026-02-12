@@ -369,6 +369,8 @@ models:
 
 </File>
 
+<VersionBlock firstVersion="2.0" >
+
 ### Disable Semantic Layer resources from a package
 
 Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn't compatible with the <Constant name="fusion_engine" />. To use these packages with <Constant name="fusion" /> while maintaining your own <Constant name="semantic_layer" /> definitions, disable the package's <Constant name="semantic_layer" /> resources:
@@ -399,3 +401,4 @@ saved-queries:
 
 </File>
 
+</VersionBlock>
