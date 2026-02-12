@@ -122,9 +122,12 @@ You can optionally configure state-aware orchestration when you want to fine-tun
 
 - **Defining source freshness:**
 
-  By default, dbt uses metadata from the data warehouse. You can instead:
-  * Specify a custom column and dbt will go to that column in the table instead
-  * Specify a custom SQL statement to define what freshness means
+  By default, dbt uses metadata from the data warehouse to automatically detect when source data changes. Freshness configuration is not required for state-aware orchestration to work.
+  
+  You can optionally configure source freshness if you want to:
+  - Receive alerts when sources don't update within your expected SLA (using `warn_after`/`error_after`).
+  - Specify a custom column using `loaded_at_field`.
+  - Specify a custom SQL statement using `loaded_at_query` to define what freshness means.
 
   Not all source freshness is equal — especially with partial ingestion pipelines. You may want to delay a model build until your sources have received a larger volume of data or until a specific time window has passed.
 
