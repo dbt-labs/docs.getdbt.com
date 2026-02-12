@@ -130,7 +130,7 @@ You can find more details on the available properties for sources in the [refere
 <FAQ path="Runs/running-models-downstream-of-source" />
 
 ## Source data freshness
-With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
+With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining Service Level Agreements (SLAs) for your warehouse.
 
 ### Fusion and state-aware orchestration
 
