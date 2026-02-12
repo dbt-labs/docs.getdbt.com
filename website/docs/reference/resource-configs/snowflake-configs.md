@@ -274,6 +274,7 @@ Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.
 
 </VersionBlock>
 
+
 ### Limitations
 
 As with materialized views on most data platforms, there are limitations associated with dynamic tables. Some worth noting include:
@@ -855,3 +856,19 @@ flags:
 ```
 
 </VersionBlock>
+
+## Model functions
+
+<Constant name="fusion" /> supports [Snowflake ML model functions](https://docs.snowflake.com/en/user-guide/ml-functions-overview), which allow you to call machine learning models directly in SQL. 
+
+Because model function return types are flexible and defined by the underlying model, <Constant name="fusion" /> uses simplified type checking:
+- **Arguments:** <Constant name="fusion" /> accepts any arguments without strict type validation.
+- **Return type:** <Constant name="fusion" /> treats all model function results as `VARIANT`.
+
+To use the result in your models, cast it to the expected type:
+
+```sql
+select 
+  my_model!predict(input_column)::float as prediction_score
+from {{ ref('my_table') }}
+```
