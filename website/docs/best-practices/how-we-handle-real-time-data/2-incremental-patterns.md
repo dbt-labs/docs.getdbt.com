@@ -108,8 +108,6 @@ This pattern leverages Snowflake's native Change Data Capture (CDC) capabilities
 
 ### When to use CDC
 
-### When to use CDC
-
 Use CDC when:
 
 - You have source tables that receive frequent updates (not just appends).
