@@ -342,6 +342,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/yellowbrick-setup",
                 "docs/core/connect-data-platform/ydb-setup",
                 "docs/core/connect-data-platform/maxcompute-setup",
+                "docs/core/connect-data-platform/hologres-setup",
               ],
             },
           ],
@@ -473,7 +474,7 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
-            "docs/build/metrics-spec-fusion",
+            "docs/build/latest-metrics-spec",
             {
               type: "link",
               label: "Quickstart with the dbt Semantic Layer",
@@ -1138,7 +1139,7 @@ const sidebarSettings = {
         title: "Platform-specific configs",
         description:
           "Platform-specific configs are used to configure the dbt project for a specific database platform.",
-        slug: "/reference/resource-configs/resource-configs",
+        slug: "/reference/resource-configs",
       },
       items: [
         "reference/resource-configs/azuresynapse-configs",
@@ -1662,6 +1663,22 @@ const sidebarSettings = {
             "best-practices/how-we-mesh/mesh-4-implementation",
             "best-practices/how-we-mesh/mesh-6-coordinate-versions",  
             "best-practices/how-we-mesh/mesh-5-faqs",
+          ],
+        },
+        {
+          type: "category",
+          label: "How to handle real-time data",
+          link: {
+            type: "doc",
+            id: "best-practices/how-we-handle-real-time-data/1-intro",
+          },
+          items: [
+            "best-practices/how-we-handle-real-time-data/1-intro",
+            "best-practices/how-we-handle-real-time-data/2-incremental-patterns",
+            "best-practices/how-we-handle-real-time-data/3-warehouse-native-features",
+            "best-practices/how-we-handle-real-time-data/4-lambda-views",
+            "best-practices/how-we-handle-real-time-data/5-views-only-pattern",
+            "best-practices/how-we-handle-real-time-data/6-operational-considerations",
           ],
         },
         {

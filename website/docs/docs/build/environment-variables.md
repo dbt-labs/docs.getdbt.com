@@ -95,7 +95,9 @@ See the [Configure the dbt VS Code extension](/docs/configure-dbt-extension#set-
 
 ### Handling secrets
 
-While all environment variables are encrypted at rest in <Constant name="cloud" />, <Constant name="cloud" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET`. This functionality is supported from `dbt v1.0` and on.
+While all environment variables are encrypted at rest in <Constant name="cloud" />, <Constant name="cloud" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in <Constant name="cloud" />, you can prefix the key with `DBT_ENV_SECRET`. 
+
+Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additional security controls. They are encrypted at rest using an encryption key (for example, AWS KMS when your deployment is hosted on AWS) and can only be accessed by decrypting them with that key. Decryption is restricted to specific flows where the value is required, such as when a job runs. Secret keys are never written to logs or error messages and are obfuscated in <Constant name="cloud" />, so they are not exposed in the UI or artifacts, and are only available to dbt at runtime as needed.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
 
