@@ -38,7 +38,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 
 <Card
     title="Upcoming events"
-    body="Whether it's in-person Meetups in your local area, Coalesce – the annual Analytics Engineering Conference – or online Office Hours there are options for everyone."
+    body="Whether it's in-person Meetups in your local area, dbt Summit – the annual Analytics Engineering Conference – or online Office Hours there are options for everyone."
     link="community/events"
     icon="calendar" />
 

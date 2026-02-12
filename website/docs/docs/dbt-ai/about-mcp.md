@@ -108,7 +108,6 @@ To learn more about the dbt Discovery API, click [here](/docs/dbt-cloud-apis/dis
 - `get_semantic_model_details`: Gets details for a specific semantic model
 - `get_snapshot_details`: Gets details for a specific snapshot
 - `get_test_details`: Gets details for a specific test
-- `search`: Searches for dbt resources using natural language queries
 
 ### Administrative API
 

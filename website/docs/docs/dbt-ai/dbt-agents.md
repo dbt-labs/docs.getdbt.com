@@ -6,11 +6,15 @@ sidebar_label: "dbt Agents overview"
 tags: [AI, Agents]
 ---
 
-# dbt Agents overview <Lifecycle status="private_beta,managed,managed_plus"/>
+# dbt Agents overview <Lifecycle status="beta,managed,managed_plus"/>
 
-[dbt Agents](https://www.getdbt.com/product/dbt-agents) are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
+[dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
-Agents are currently available on dbt [Enterprise-tier plans](https://www.getdbt.com/pricing).
+:::info 
+dbt Agents are currently in beta or coming soon. Contact your account manager for early access.
+
+See [available agents](#available-agents) to find out what's available.
+:::
 
 dbt Agents are built on top of dbt's structured context to provide accurate, auditable, and governed results:
 
@@ -32,28 +36,29 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 - Scalability &mdash; Routine tasks are automated so teams can focus on high-value work.
 
 ## Available agents
+dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle to help you scale your data teams across the <Constant name="dbt_platform" />.
 
-dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle.
+dbt Agents are currently in beta or coming soon. Contact your account manager for early access.
 
-Most agents are currently in private beta or on the waitlist &mdash; [join the waitlist](https://www.getdbt.com/contact) to get early access, or [book a demo](https://www.getdbt.com/contact) to learn more about the Analyst agent.
-
-#### Analyst agent <Lifecycle status="private_beta"/>
+#### Analyst agent <Lifecycle status="beta"/>
 
 Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
-The Analyst agent is currently available in private beta. [Book a demo](https://www.getdbt.com/product/dbt-agents) to learn more.
+The Analyst agent is a beta feature. Enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
-#### Discovery agent <Lifecycle status="Waitlist"/>
+#### Discovery agent <Lifecycle status="private_beta"/>
 
 Find the right, approved dataset fast in <Constant name="explorer" />. The Discovery agent surfaces definitions, freshness, tests, owners, and lineage right where you work.
 
-#### Observability agent <Lifecycle status="Waitlist"/>
+To request access to the Discovery agent, contact your account manager.
+
+#### Observability agent <Lifecycle status="Coming soon"/>
 
 The Observability agent in the <Constant name="dbt_platform" />'s orchestrator helps you monitor jobs, pinpoint likely root causes, and cut resolution time. It's designed to reduce noise and cuts down on investigation and debugging time &mdash; no more digging through logs.
 
-#### Developer agent <Lifecycle status="Waitlist"/>
+#### Developer agent <Lifecycle status="Coming soon"/>
 
 The Developer agent helps you describe the data question or product you want; the agent writes or refactors models, validates with <Constant name="fusion" />, and runs against your warehouse with full context. 
 
