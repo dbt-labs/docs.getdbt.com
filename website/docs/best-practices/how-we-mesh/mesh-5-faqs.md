@@ -290,6 +290,25 @@ The [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) allows u
 
 </DetailsToggle>
 
+<DetailsToggle alt_header="Can I upgrade Mesh projects to Fusion incrementally?">
+
+Yes! You can upgrade select projects to the <Constant name="fusion_engine" /> while keeping others on <Constant name="core" />.
+
+- <Constant name="fusion" /> projects can reference public models from <Constant name="core" /> projects
+- <Constant name="core" /> projects can reference public models from <Constant name="fusion" /> projects
+
+This works because dbt Mesh uses a publication artifact (not the manifest) to resolve cross-project references, and this artifact is identical between <Constant name="core" /> and <Constant name="fusion" />.
+
+You can upgrade dbt Mesh projects to <Constant name="fusion" /> in any order and there's no requirement to start with upstream or downstream projects first.
+
+:::note Feature optimization
+
+While basic Mesh functionality works in hybrid setups, some advanced platform features (like full Catalog lineage visibility across projects) work best when all projects use the same engine.
+
+:::
+
+</DetailsToggle>
+
 ## Availability
 
 <DetailsToggle alt_header="Does dbt Mesh require me to be on a specific version of dbt?">
