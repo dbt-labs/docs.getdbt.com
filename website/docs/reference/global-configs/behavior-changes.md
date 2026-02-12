@@ -90,7 +90,7 @@ flags:
 
 This table outlines which month of the **Latest** release track in <Constant name="cloud" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
-| Flag                                                            | <Constant name="cloud" /> **Latest**: Intro | <Constant name="cloud" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | Flag deprecated in |
+| Flag                                                            | <Constant name="cloud" /> **Latest**: Intro | <Constant name="cloud" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | Removed |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|---------------|
 | [require_explicit_package_overrides_for_builtin_materializations](#package-override-for-built-in-materialization) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             | Fusion |
 | [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | 2025.05                | 1.8.0           | 1.10.0             | Fusion |
