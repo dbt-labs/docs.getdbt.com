@@ -368,3 +368,34 @@ models:
 ```
 
 </File>
+
+### Disable Semantic Layer resources from a package
+
+Some packages may define <Constant name="semantic_layer" /> resources (semantic models, metrics, saved queries) using an older specification that isn't compatible with the <Constant name="fusion_engine" />. To use these packages with <Constant name="fusion" /> while maintaining your own <Constant name="semantic_layer" /> definitions, disable the package's <Constant name="semantic_layer" /> resources:
+
+<File name='dbt_project.yml'>
+
+```yml
+# Disable the package's time spine model (if it conflicts with yours)
+models:
+  ad_reporting:
+    semantic_models:
+      metricflow_time_spine:
+        +enabled: false
+
+# Disable all semantic layer resources from the package
+semantic-models:
+  ad_reporting:
+    +enabled: false
+
+metrics:
+  ad_reporting:
+    +enabled: false
+
+saved-queries:
+  ad_reporting:
+    +enabled: false
+```
+
+</File>
+
