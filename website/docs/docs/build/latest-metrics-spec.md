@@ -601,7 +601,7 @@ To update packages, a package maintainer should:
 
     ```bash
     dbt parse
-    # For Fusion and dbt platform users in dbt CLI or locally with a valid dbt_cloud.yml/platform connection
+    # For Fusion and dbt platform users in cloud-based dbt CLI or locally with a valid dbt_cloud.yml/platform connection
     dbt sl validate
     # For Fusion CLI users not connected to dbt platform and using local MetricFlow
     mf validate-configs
