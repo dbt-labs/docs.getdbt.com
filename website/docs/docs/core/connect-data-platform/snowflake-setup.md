@@ -254,7 +254,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | retry_on_database_errors | No | A boolean flag indicating whether to retry after encountering errors of type [snowflake.connector.errors.DatabaseError](https://github.com/snowflakedb/snowflake-connector-python/blob/ffdd6b3339aa71885878d047141fe9a77c4a4ae3/src/snowflake/connector/errors.py#L361-L364) |
 | connect_retries | No | The number of times to retry after an unsuccessful connection |
 | connect_timeout | No | The number of seconds to sleep between failed connection retries |
-| reuse_connections | No | A boolean flag indicating whether to reuse idle connections to help reduce total connections opened. Default is `True`. |
+| reuse_connections | No | A boolean flag indicating whether to reuse idle connections to help reduce total connections opened. Default is `True` when `client_session_keep_alive` is `False` or unset; otherwise `None` (must be explicitly set).|
 | platform_detection_timeout_seconds | No | Timeout (in seconds) for platform detection. Defaults to `0.0`. Set to a positive value if using Workload Identity Federation (WIF) authentication.|
 
 ### account
