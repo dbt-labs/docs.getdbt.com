@@ -32,7 +32,7 @@ The following tools integrate with the dbt Semantic Layer:
     <Card
       title="Omni"
       link="https://docs.omni.co/integrations/dbt/semantic-layer"
-      body="Enable everyone to analyze data with AI in Slack or Teams."
+      body="Connect Omni to the dbt Semantic Layer to query trusted metrics directly within your Omni data model."
       icon="omni"/>
       <a href="https://docs.omni.co/integrations/dbt/semantic-layer"
       className="external-link"
