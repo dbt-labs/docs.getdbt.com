@@ -7,7 +7,8 @@ displayed_sidebar: "docs"
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
-import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md'
+import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import FusionThreads from '/snippets/_fusion-threads.md';
 
 <FusionLifecycle />
 
@@ -238,7 +239,11 @@ In Fusion, `dbt build` runs _all_ of the unit tests _first_, and then build the 
 
 dbt Core runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
 
-In Fusion, if `--threads` is not set, or set to `--threads 0`, dbt will use a per-adapter default value for maximum threads. Some data platforms can handle more concurrent connections than others. If there is a user-configured value for `--threads` (via CLI flag or `profiles.yml`), Fusion will use it.
+<Constant name="fusion"/>  handles threading differently depending on your data platform:
+
+<FusionThreads />
+
+For more information, refer to [Using threads](/docs/running-a-dbt-project/using-threads#fusion-engine-thread-optimization).
 
 #### Continue to compile unrelated nodes after hitting a compile error
 

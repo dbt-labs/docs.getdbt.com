@@ -37,6 +37,8 @@ After completing OAuth setup, skip to [Test your configuration](#optional-test-y
 
 ### CLI only (no dbt platform)
 
+This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.
+
 If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
 
 Add this configuration to your MCP client (refer to the specific [integration guides](#set-up-your-mcp-client) for exact file locations):
@@ -196,6 +198,8 @@ You can disable the following tool access on the local `dbt-mcp`:
 | `DISABLE_ADMIN_API`      | `false` | Set this to `true` to disable dbt Administrative API MCP tools.                                                                      |
 | `DISABLE_SQL`            | `true`  | Set this to `false` to enable SQL MCP tools.                                                                                         |
 | `DISABLE_DBT_CODEGEN`    | `true`  | Set this to `false` to enable [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) (requires dbt-codegen package).          |
+| `DISABLE_LSP`            | `false` | Set this to `true` to disable dbt LSP/Fusion MCP tools.                                                                              |
+| `DISABLE_MCP_SERVER_METADATA` | `true` | Set this to `false` to enable MCP server metadata tools (like `get_mcp_server_version`).                                        |
 | `DISABLE_TOOLS`          | ""      | Set this to a list of tool names delimited by a `,` to disable specific tools.                                                       |
 
 #### Using environment variables in your MCP client configuration

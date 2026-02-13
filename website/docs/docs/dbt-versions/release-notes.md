@@ -19,12 +19,21 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## February 2026
 
 - **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on **Latest** in the <Constant name="dbt_platform" />. For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
+- **Enhancement**: We clarified documentation for cumulative log size limits on run endpoints, originally introduced in [October 2025](/docs/dbt-versions/2025-release-notes#october-2025). When logs exceed the cumulative size limit, dbt omits them and displays a banner. No functional changes were made in February 2026. For more information, see [Run visibility](/docs/deploy/run-visibility#log-size-limits).
+- **New**: The `immutable_where` configuration is now supported for Snowflake dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
 
 ## January 2026
 
-- **Enhancement:** When a model fails a data test, [state-aware orchestration](/docs/deploy/state-aware-about) rebuilds it on subsequent runs instead of reusing it from prior state to ensure dbt reevaluates data quality issues.
+- **Enhancement:** The `defer-env-id` setting for choosing which deployment environment to defer to is [now available](/docs/cloud/about-cloud-develop-defer#defer-environment) in the <Constant name="cloud_ide" />. Previously, this configuration only worked for the <Constant name="cloud_cli" />
+- **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="query_page" /> is now in beta. 
+  - dbt <Constant name="copilot" />'s AI assistant in <Constant name="query_page" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
+- **Enhancement:** The [Studio IDE](/docs/cloud/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands. This feature is being rolled out in phases and will become available to all <Constant name="dbt_platform" /> accounts by mid-February. 
+- **Enhancement:** [State-aware orchestration](/docs/deploy/state-aware-about) improvements:
+  - When a model fails a data test, state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state to ensure dbt reevaluates data quality issues.
+  - State-aware orchestration now detects and rebuilds models whose tables are deleted from the warehouse, even when there are no code or data changes. Previously, tables deleted externally were not detected, and therefore not rebuilt, unless code or data had changed. For more information, see [Handling deleted tables](/docs/deploy/state-aware-about#handling-deleted-tables). 
+
+  State-aware orchestration is in private preview. See the [prerequisites for using the feature](/docs/deploy/state-aware-setup#prerequisites).
 - **Enhancement:** [dbt <Constant name="copilot" />](/docs/cloud/dbt-copilot) correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
-- **Enhancement:** State-aware orchestration now detects and rebuilds models whose tables are deleted from the warehouse, even when there are no code or data changes. Previously, tables deleted externally were not detected, and therefore not rebuilt, unless code or data had changed. For more information, see [Handling deleted tables](/docs/deploy/state-aware-about#handling-deleted-tables).
 - **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files as well as <Term id="lsp" />-powered features. For more information, refer to [Install <Constant name="fusion"/> CLI](/docs/fusion/install-fusion-cli#environment-variables). 
 - **New**: The new <Constant name="semantic_layer"/>  YAML specification creates an open standard for defining metrics and dimensions that works across multiple platforms. The new spec is now live in the <Constant name="fusion_engine" />.
   

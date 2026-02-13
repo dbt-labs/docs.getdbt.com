@@ -4,7 +4,7 @@ description: "Learn about the new remote dbt MCP server, how it was built, and h
 slug: building-the-remote-dbt-mcp-server
 authors: [devon_fulcher]
 
-tags: [ai, data ecosystem, mcp]
+tags: [ai, data ecosystem]
 hide_table_of_contents: false
 
 date: 2025-08-26

@@ -1,7 +1,7 @@
 ---
 title: "Derived metrics"
 id: derived
-description: "Derived metrics is defined as an expression of other metrics.."
+description: "Derived metrics is defined as an expression of other metrics"
 sidebar_label: Derived
 tags: [Metrics, Semantic Layer]
 ---

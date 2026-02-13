@@ -99,12 +99,6 @@ To add a deploy key to a BitBucket account:
 
 <Constant name="cloud" /> can work with dbt projects hosted on AWS CodeCommit, but there are some extra steps needed compared to Github or other git providers. This guide will help you connect your CodeCommit-hosted dbt project to <Constant name="cloud" />.
 
-:::warning AWS discontinued CodeCommit git-hosting service
-
-AWS CodeCommit is no longer available to new customers, and existing customers only receive security and performance improvements. Learn more about [migrating to another git provider](https://aws.amazon.com/blogs/devops/how-to-migrate-your-aws-codecommit-repository-to-another-git-provider/).
-
-:::
-
 #### Step 1: Create an AWS User for dbt
 - To give <Constant name="cloud" /> access to your repository, first you'll need to create an AWS IAM user for <Constant name="cloud" />. 
 - Log into the AWS Console and navigate to the IAM section. 

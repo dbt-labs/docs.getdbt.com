@@ -115,7 +115,7 @@ This upstream project is where you build your core data assets. This project wil
 
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="cloud_ide" />.
 
-1. First, navigate to the **Develop** page to verify your setup.
+1. First, navigate to the **<Constant name="cloud_ide"/>** page to verify your setup.
 2. Click **Initialize dbt project** if you’ve started with an empty repo.
 3. Delete the `models/example` folder.  
 4. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `analytics`.
@@ -224,7 +224,7 @@ Now that you've set up the foundational project, let's start building the data a
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/mesh/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
-  - Note, Enable the **Generate docs on run** toggle for this job to update the <Constant name="explorer" />. Once run, you can click Explore from the upper menu bar and see your lineage, tests, and documentation coming through successfully.
+  - Note, Enable [**Generate docs on run**](/docs/deploy/deploy-jobs) for this job to update assets in <Constant name="explorer" />. Once run, you can click **Catalog** from the main navigation and select your project to see its lineage, tests, and documentation coming through successfully.
 
 ## Define a public model and run first job
 
