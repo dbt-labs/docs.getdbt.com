@@ -68,7 +68,7 @@ Here's an example of the available behavior change flags with their default valu
 ```yml
 flags:
   require_explicit_package_overrides_for_builtin_materializations: True
-  require_model_names_without_spaces: True
+  require_resource_names_without_spaces: True
   source_freshness_run_project_hooks: True
   restrict_direct_pg_catalog_access: False
   skip_nodes_if_on_run_start_fails: False
