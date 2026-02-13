@@ -155,7 +155,7 @@ For more information about Exasol's table distribution and partitioning, refer t
 
 ## Model contracts
 
-Exasol supports [model contracts](/docs/collaborate/govern/model-contracts) with the following database constraints:
+Exasol supports [model contracts](/docs/mesh/govern/model-contracts) with the following database constraints:
 
 | Constraint Type | Support Status | Description |
 |----------------|----------------|-------------|
