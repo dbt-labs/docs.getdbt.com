@@ -818,6 +818,7 @@ const sidebarSettings = {
       items: [
         "docs/dbt-ai/dbt-agents",
         "docs/dbt-ai/analyst-agent",
+        "docs/dbt-ai/developer-agent",
       ],
     },
     {

@@ -11,7 +11,7 @@ tags: [AI, Agents]
 [dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
 :::info 
-dbt Agents are currently in beta or coming soon. Contact your account manager for early access.
+Some dbt Agents are in beta; others are coming soon. Contact your account manager for early access.
 
 See [available agents](#available-agents) to find out what's available.
 :::
@@ -38,7 +38,7 @@ Having dbt as the standard context layer for agentic analytics means that dbt Ag
 ## Available agents
 dbt offers several specialized agents, each designed for specific workflows in the analytics lifecycle to help you scale your data teams across the <Constant name="dbt_platform" />.
 
-dbt Agents are currently in beta or coming soon. Contact your account manager for early access.
+Contact your account manager for early access to agents that are in beta or coming soon.
 
 #### Analyst agent <Lifecycle status="beta"/>
 
@@ -58,11 +58,11 @@ To request access to the Discovery agent, contact your account manager.
 
 The Observability agent in the <Constant name="dbt_platform" />'s orchestrator helps you monitor jobs, pinpoint likely root causes, and cut resolution time. It's designed to reduce noise and cuts down on investigation and debugging time &mdash; no more digging through logs.
 
-#### Developer agent <Lifecycle status="Coming soon"/>
+#### Developer agent <Lifecycle status="beta"/>
 
-The Developer agent helps you describe the data question or product you want; the agent writes or refactors models, validates with <Constant name="fusion" />, and runs against your warehouse with full context. 
+The Developer agent in [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) creates plans from your natural language prompts, and applies dbt-aware logic. It can generate or refactor dbt models and semantic models, with full auditability for every action. 
 
-It helps you understand model logic, predict downstream impact, flag duplicate logic, and validate changes before merge. It runs directly in VS Code or <Constant name="cloud_ide" />, powered by dbt's context, so every change can be shipped quickly and safely.
+The Developer agent is available only in [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) (not in VS Code or the <Constant name="cloud_cli" />).
 
 #### dbt MCP server
 
@@ -71,6 +71,7 @@ Build your own custom agents and copilots with the local or remote dbt MCP serve
 ## Related docs
 
 - [About dbt AI and intelligence](/docs/dbt-ai/about-dbt-ai)
+- [Developer agent](/docs/dbt-ai/developer-agent)
 - [dbt Copilot](/docs/cloud/dbt-copilot)
 - [dbt MCP server](/docs/dbt-ai/about-mcp)
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)

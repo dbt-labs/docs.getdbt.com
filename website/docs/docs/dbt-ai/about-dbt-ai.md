@@ -19,7 +19,7 @@ Whether you're using AI to generate code, tests, and documentation, to scale you
 
 <Card
     title="dbt Agents"
-    body="dbt Agents come with a suite of native AI agents that turn structured dbt context into auditable actions that let you build, manage, and consume governed data at scale."
+    body="dbt Agents include the Analyst agent (chat with your data), the Developer agent (generate and refactor models in dbt Studio from natural language), and more—all turning structured dbt context into auditable actions."
     link="/docs/dbt-ai/dbt-agents"
     icon="dbt-copilot"/>
 
