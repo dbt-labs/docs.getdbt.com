@@ -6,11 +6,16 @@ Defer is a powerful feature that makes it possible to run a subset of models or 
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
-Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/reference/node-selection/state-selection).
+Defer requires a manifest from a previous dbt invocation. Provide the path using the `--state flag` or by setting the `DBT_STATE` environment variable. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/reference/node-selection/state-selection).
 
-An alternative command that accomplishes similar functionality for different use cases is `dbt clone` - see the docs for [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral) for more information.
+For some use cases, you can use  `dbt clone` to achieve similar functionality. For more details, refer to [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral).
 
-It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to compare against logical state from one environment or past point in time, and defer to applied state from a different environment or point in time. If `--defer-state` is not specified, deferral will use the manifest supplied to `--state`. In most cases, you will want to use the same state for both: compare logical changes against production, and also "fail over" to the production environment for unbuilt upstream resources.
+It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to:
+
+- compare against logical state from one environment or past point in time
+- defer to applied state from a different environment or point in time
+
+If `--defer-state` is not specified, deferral will use the manifest supplied to `--state`. In most cases, you will want to use the same state for both; compare logical changes against production, and also "fail over" to the production environment for unbuilt upstream resources.
 
 ### Usage
 
@@ -21,23 +26,27 @@ dbt test --select [...] --defer --state path/to/artifacts
 
 By default, dbt uses the [`target`](/reference/dbt-jinja-functions/target) namespace to resolve `ref` calls.
 
-When `--defer` is enabled, dbt resolves ref calls using the state manifest instead, but only if:
+When `--defer` is enabled, dbt resolves `ref` calls using the state manifest instead, but only if:
 
 1. The node isn’t among the selected nodes, _and_
 2. It doesn’t exist in the database (or `--favor-state` is used).
 
 Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls.
 
-When using defer, you may be selecting from production datasets, development datasets, or a mix of both. Note that this can yield unexpected results
-- if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
-- when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
+:::info
 
-Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). If you use <Constant name="cloud" />, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
+When using defer, you may be selecting from production datasets, development datasets, or a mix of both. Note that this can yield unexpected results:
+- If you apply environment-specific limits in development but not in production, you may select more data than expected.
+- Tests that depend on multiple parents (for example, `relationships`), may run across environments.
+
+:::
+
+Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). Refer to [Continuous integration](/docs/deploy/continuous-integration) for more information.
 
 
 #### Favor state
 
-When `--favor-state` is passed, dbt prioritizes node definitions from the `--state directory`. However, this doesn’t apply if the node is also part of the selected nodes.
+When `--favor-state` is passed, dbt prioritizes node definitions from the `--state` directory. However, this doesn’t apply if the node is also part of the selected nodes.
 
 ### Example
 
@@ -147,7 +156,7 @@ models:
                 field: id
 ```
 
-(A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)
+(This is a simplified example, since all the data in `model_b` already comes from `model_a`)
 
 </File>
 
