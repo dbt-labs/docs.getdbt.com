@@ -1,4 +1,12 @@
 ---
+ade-bench:
+  displayText: ADE-bench
+  hoverSnippet: The Analytics and Data Engineering benchmark, a framework for evaluating AI agents on data tasks with highly realistic testing environments.
+
+agents:
+  displayText: agents
+  hoverSnippet: AI agents add a layer of abstraction over computing tasks. Instead of prompting for specific snippets of code, you define the goal and the agent takes action on your behalf. An agent can work independently for an extended period of time, and might write new code, use CLI tools or MCP servers, or search the web while completing its tasks.
+
 aggregate:
   displayText: aggregate
   hoverSnippet: A UDF type that returns a single value per group, aggregating several rows.

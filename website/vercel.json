@@ -38,6 +38,11 @@
     }
   ],
   "redirects": [
+    { 
+      "source": "/guides/sl-migration",
+      "destination": "/docs/build/latest-metrics-spec",
+      "permanent": true
+    },
     {
       "source": "/guides/coalesce-fusion-platform-qs",
       "destination": "/guides/fusion",
@@ -1171,7 +1176,7 @@
     },
     {
       "source": "/guides/migration/sl-migration",
-      "destination": "/guides/sl-migration",
+      "destination": "/docs/build/latest-metrics-spec",
       "permanent": true
     },
     {

@@ -127,7 +127,6 @@ Here are some tips and caveats to consider when using <Constant name="mesh" />:
   - **[Model access](/docs/mesh/govern/model-access#access-modifiers)** &mdash; Control which other models or projects can reference this model.
   - **[Model versions](/docs/mesh/govern/model-versions)** &mdash; Enable adoption and deprecation of models as they evolve.
   - **[Model contracts](/docs/mesh/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
-- Use [dbt-meshify](https://github.com/dbt-labs/dbt-meshify) to accelerate splitting apart your monolith into multiple projects.
 
 ### Caveats
 - To use cross-project references in dbt, each dbt project must correspond to just one <Constant name="cloud" /> project. We strongly discourage defining multiple projects for the same codebase, even if you're trying to manage access permissions, connect to different data warehouses, or separate production and non-production data.  While this was required historically, features like [Staging environments](/docs/dbt-cloud-environments#types-of-environments), Environment-level RBAC (_coming soon_), and [Extended attributes](/docs/dbt-cloud-environments#extended-attributes) will make it unnecessary.

@@ -13,18 +13,15 @@ To work around this, you can set the table's freshness to null (`freshness: null
 <File name='models/<filename>.yml'>
 
 ```yaml
-
-version: 2
-
 sources:
   - name: jaffle_shop
     database: raw
+    schema: jaffle_shop
     config: 
-      freshness: # changed to config in v1.9
+      freshness:
         warn_after: {count: 12, period: hour}
         error_after: {count: 24, period: hour}
-
-      loaded_at_field: _etl_loaded_at # changed to config in v1.10
+      loaded_at_field: _etl_loaded_at
 
     tables:
       - name: orders

@@ -16,8 +16,14 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## February 2026
+- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) now supports [Omni](https://docs.omni.co/integrations/dbt/semantic-layer) as a partner integration. For more info, see [Available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- **Enhancement**: We clarified documentation for cumulative log size limits on run endpoints, originally introduced in [October 2025](/docs/dbt-versions/2025-release-notes#october-2025). When logs exceed the cumulative size limit, dbt omits them and displays a banner. No functional changes were made in February 2026. For more information, see [Run visibility](/docs/deploy/run-visibility#log-size-limits).
+- **New**: The `immutable_where` configuration is now supported for Snowflake dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
+
 ## January 2026
 
+- **Enhancement:** The `defer-env-id` setting for choosing which deployment environment to defer to is [now available](/docs/cloud/about-cloud-develop-defer#defer-environment) in the <Constant name="cloud_ide" />. Previously, this configuration only worked for the <Constant name="cloud_cli" />
 - **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="query_page" /> is now in beta. 
   - dbt <Constant name="copilot" />'s AI assistant in <Constant name="query_page" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
 - **Enhancement:** The [Studio IDE](/docs/cloud/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands. This feature is being rolled out in phases and will become available to all <Constant name="dbt_platform" /> accounts by mid-February. 
