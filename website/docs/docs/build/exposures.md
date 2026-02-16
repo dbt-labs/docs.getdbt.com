@@ -55,6 +55,13 @@ _Required:_
 _Expected:_
 - **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
 
+:::tip 
+
+Not to be confused with [`-- depends_on`](/reference/dbt-jinja-functions/statement-blocks#example-using-depends_on), a SQL comment directive defined at the top of a model SQL file. This directive explicitly adds dependencies to the DAG, ensuring the referenced resources are built before the model executes.
+
+:::
+
+
 _Optional:_
 - **label**:  May contain spaces, capital letters, or special characters.
 - **url**:  Activates and populates the link to **View this exposure** in the upper right corner of the generated documentation site
