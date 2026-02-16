@@ -99,8 +99,8 @@ By default, all users can access the Fusion upgrade experience and perform upgra
 
 When upgrade permissions are enabled:
 
-- **Fusion Admin** &mdash; Assign to user accounts. This permission cannot be assigned to service tokens.
-- **Account Admin** &mdash; Assign to users or service tokens. This permission allows both users and service tokens to perform upgrades.
+- **Fusion admin** &mdash; Assign to user accounts. This permission cannot be assigned to service tokens.
+- **Account admin** &mdash; Assign to users or service tokens. This permission allows both users and service tokens to perform upgrades.
 
 See the [dbt platform Fusion upgrade](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine) docs for more information.
 
