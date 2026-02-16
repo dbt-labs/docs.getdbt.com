@@ -12,12 +12,13 @@ When the `contract` configuration is enforced, dbt will ensure that your model's
 
 This is to ensure that the people querying your model downstream—both inside and outside dbt—have a predictable and consistent set of columns to use in their analyses. Even a subtle change in data type, such as from `boolean` (`true`/`false`) to `integer` (`0`/`1`), could cause queries to fail in surprising ways.
 
-## Support
+Contracts give you control over how schemas are enforced, whether that’s on a single model or consistently across many models in a project.
 
-At present, model contracts are supported for:
-- SQL models (not yet Python)
-- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns` or `on_schema_change: fail`)
-- The most popular data platforms — though support and enforcement of different [constraint types](/reference/resource-properties/constraints) vary by platform
+import Contractsupport from '/snippets/_contract-support.md'; 
+
+<Contractsupport />
+
+Refer to the [Examples](/reference/resource-configs/contract#examples) to see how to apply contracts in your project.
 
 ## Data type aliasing
 
@@ -46,7 +47,7 @@ When dbt compares data types, it will not compare granular details such as size,
 
 Note that you need to specify a varchar size or numeric scale, otherwise dbt relies on default values. For example, if a `numeric` type defaults to a precision of 38 and a scale of 0, then the numeric column stores 0 digits to the right of the decimal (it only stores whole numbers), which might cause it to fail contract enforcement. To avoid this implicit coercion, specify your `data_type` with a nonzero scale, like `numeric(38, 6)`. dbt Core 1.7 and higher provides a warning if you don't specify precision and scale when providing a numeric data type.
 
-### Example
+### Examples
 
 <File name='models/dim_customers.yml'>
 
@@ -96,6 +97,68 @@ When you `dbt run` your model, _before_ dbt has materialized it as a table in th
 20:53:45    > in macro assert_columns_equivalent (macros/materializations/models/table/columns_spec_ddl.sql)
 ```
 
+<Tabs>
+  <TabItem value="Project YAML" label="Project YAML">
+
+  Use a contract enforcement in your `dbt_project.yml` to enforce contracts consistently across multiple models:
+
+    ```yml
+
+    models:
+      property_management:  # replace with your dbt project name
+        +contract:
+          enforced: true
+
+    ```
+
+  </TabItem>
+ 
+  <TabItem value="Properties YAML" label="Properties YAML">
+
+  Define a model’s contract in a `properties.yml` by specifying the expected columns and data types:
+
+```yml
+
+models:
+  - name: stg_rental_applications  # replace with your model name
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: column_1_id  # example id column. Replace with your column
+        data_type: int    # replace with your column's data type
+      - name: column_2_created_at  # example column tracking when something was created
+        data_type: timestamp
+      - name: column_3_status      # example status column, which typically store text values ("active", "pending", "completed", etc.)
+        data_type: string
+
+```
+
+    </TabItem>
+ 
+  <TabItem value="SQL file config" label="SQL file config">
+
+  Enforce a contract in a model SQL file when you want to apply it to a single model and maintain fine-grained control: 
+
+  ```sql
+
+  {{ config(
+    contract = { "enforced": true }  -- Enables contract enforcement for this model
+  ) }}
+
+  select
+    column_1_id,          -- replace with your column
+    column_2_created_at,  -- replace with your column
+    column_3_status       -- replace with your column
+  from {{ source('property_management', 'rental_applications') }}  -- replace with your source name and table
+
+  ```
+
+  </TabItem>
+
+</Tabs>
+
+Refer to [General configurations](/reference/model-configs#general-configurations) for more information on the supported configs available for model SQL files, `dbt_project.yml` and `properties.yml`.
 
 ### Incremental models and `on_schema_change`
 
@@ -107,7 +170,7 @@ Imagine:
 - dbt doesn't actually add that new column to the existing table — and the upsert/merge still succeeds, because it does that upsert/merge on the basis of the already-existing "destination" columns only (this is long-established behavior)
 - The result is a delta between the yaml-defined contract, and the actual table in the database - which means the contract is now incorrect!
 
-Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models! `sync_all_columns` works like `append_new_columns` but also removes deleted columns, which you're not suppose to do with contracted models unless you upgrade the version.
+Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models! `sync_all_columns` works like `append_new_columns` but also removes deleted columns, which you're not supposed to do with contracted models unless you upgrade the version.
 
 ## Related documentation
 - [What is a model contract?](/docs/mesh/govern/model-contracts)
