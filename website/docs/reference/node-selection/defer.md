@@ -8,7 +8,7 @@ Defer is a powerful feature that makes it possible to run a subset of models or 
 
 Defer requires a manifest from a previous dbt invocation. Provide the path using the `--state flag` or by setting the `DBT_STATE` environment variable. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/reference/node-selection/state-selection).
 
-For some use cases, you can use  `dbt clone` to achieve similar functionality. For more details, refer to [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral).
+For some use cases, you can use `dbt clone` to achieve similar functionality. For more details, refer to [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral).
 
 It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to:
 
