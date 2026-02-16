@@ -64,6 +64,9 @@ A freshness block is used to define the acceptable amount of time between the mo
 
 In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
 
+- `warn_after`: Duration (for example, 12 hours) after which dbt raises a warning if the source data is stale.
+- `error_after`: Duration (for example, 24 hours) after which dbt fails the freshness check if the source data is stale.
+
 In most cases, the `loaded_at_field` is required. Some adapters support calculating source freshness from the warehouse metadata tables and can exclude the `loaded_at_field`. <VersionBlock firstVersion="1.10">Alternatively, you can define `loaded_at_query` to use custom SQL expression to calculate the timestamp.</VersionBlock>
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
