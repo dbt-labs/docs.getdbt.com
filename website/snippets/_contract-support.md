@@ -1,6 +1,6 @@
 ## Prerequisites
 
-**At present, model contracts are supported for:**
+**These places support model contracts:**
 - `dbt_project.yml` file
 - `properties.yml` file
 - SQL models
