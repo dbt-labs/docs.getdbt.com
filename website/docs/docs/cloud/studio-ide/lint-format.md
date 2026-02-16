@@ -66,6 +66,24 @@ Linting is available on all branches, including your protected primary git branc
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-lint-format-console.gif" width="90%" title="Use the Lint or Fix button in the console section to lint or auto-fix your code."/>
 
+### Lint multiple files
+
+You can lint multiple SQL files at once, depending on how you are working with dbt. The behavior differs between the <Constant name="cloud_ide" />, <Constant name="core" />, and the <Constant name="cloud_cli" />.
+
+- **<Constant name="cloud_ide" />** &mdash; Linting in the <Constant name="cloud_ide" /> runs against [all modified](/docs/cloud/studio-ide/lint-format#snapshot-linting) `.sql files` in your project by default on your current branch.
+
+- **<Constant name="core" />** &mdash; <Constant name="core" /> does not include a built-in linter. To lint SQL files in your project, use a third-party tool such as SQLFluff with the dbt templater. You can lint multiple files by specifying one or more files or directory `PATHS` flags.
+
+- **<Constant name="cloud_cli" />** &mdash; The <Constant name="cloud_cli" /> supports the same linting [commands](/reference/dbt-commands) as dbt Core:
+
+```
+dbt sqlfluff lint [PATHS]... [flags]
+```
+
+If no path is specified (for example, `dbt sqlfluff lint`), all SQL files in the project are linted.
+
+See [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files) for more information.
+
 ### Customize linting
 
 SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE. You can exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2). 
