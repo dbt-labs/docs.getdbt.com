@@ -26,7 +26,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 The Invites endpoints of the dbt platform Admin v2 API now include these additional statuses:
   - `4` (PENDINGEMAIL_VERIFICATION)
   - `5` (EMAIL_VERIFIED_SSO).
-- **Enhancement**: Improved performance on Runs endpoint for dbt platform Admin V2 and run details in dbt platform when connecting with GCP.
+- **Enhancement**: Improved performance on Runs endpoint for dbt platform Admin V2 API and run details in dbt platform when connecting with GCP.
 
 ## January 2026
 
