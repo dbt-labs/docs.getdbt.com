@@ -51,7 +51,7 @@ dbt-exasol:
 ```
 </File>
 
-#### OpenID authentication (Exasol SaaS)
+#### OpenID authentication (Exasol SaaS) {#open-id-authentication}
 
 For Exasol SaaS environments, you can authenticate using OpenID tokens instead of username and password:
 
