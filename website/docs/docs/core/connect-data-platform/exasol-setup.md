@@ -74,7 +74,7 @@ dbt-exasol:
 </File>
 
 - **`access_token`** &mdash; Personal access token for OpenID authentication
-- **`refresh_token`** &mdash; Refresh token for OpenID authentication (alternative to access_token)
+- **`refresh_token`** &mdash; Refresh token for OpenID authentication (alternative to `access_token`)
 
 :::info
 Use either `access_token` or `refresh_token`, not both. TLS encryption is required when using OpenID authentication with Exasol SaaS.
