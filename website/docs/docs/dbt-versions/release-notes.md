@@ -24,6 +24,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: The `immutable_where` configuration is now supported for Snowflake dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
 - **Fix**: The user invite details now shows more details in invite status, giving admins visibility into users who accepted an invite to an SSO-protected account but haven't yet logged in via SSO. Previously, these invites were hidden, making it appear as if the user hadn't been invited. 
 The Invites endpoints of the dbt platform Admin v2 API now include these additional statuses: `4` (PENDINGEMAIL_VERIFICATION) and `5` (EMAIL_VERIFIED_SSO).
+- **Enhancement**: Improved performance on run details in dbt platform when connecting with GCP.
 
 ## January 2026
 
