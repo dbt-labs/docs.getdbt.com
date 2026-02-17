@@ -194,7 +194,7 @@ models:
 
 </File>
 
-For more information on model contracts, refer to the [model contracts documentation](/docs/collaborate/govern/model-contracts).
+For more information on model contracts, refer to the [model contracts documentation](/docs/mesh/govern/model-contracts).
 
 ## Timestamp format
 
