@@ -1,0 +1,1 @@
+When viewing the table, you can export the data as a CSV file using the **Download** button.
