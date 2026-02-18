@@ -11,6 +11,12 @@ hide_table_of_contents: true
 <div className="grid--3-col">
 
 <Card
+    title="Cost Insights"
+    body="Track warehouse compute costs and see realized savings from state-aware orchestration across your dbt projects and models."
+    link="/docs/explore/cost-insights"
+    icon="dbt-bit"/>
+
+<Card
     title="dbt Catalog"
     body="Interact with dbt Catalog to understand, improve, and leverage your dbt projects."
     link="/docs/explore/explore-projects"
@@ -18,7 +24,7 @@ hide_table_of_contents: true
 
 <Card
     title="dbt Insights"
-    body="Query data and perform exploratory data analysis using dbt Insights"
+    body="Query data and perform exploratory data analysis using dbt Insights."
     link="/docs/explore/dbt-insights"
     icon="dbt-bit"/>
 
