@@ -192,5 +192,6 @@ Keep the following in mind when using Cost Insights:
 <FAQ path="Cost optimizations/cost-data-refresh-frequency" />
 <FAQ path="Cost optimizations/troubleshooting-cost-data" />
 <FAQ path="Cost optimizations/metadata-warehouse-costs" />
+<FAQ path="Cost optimizations/job-frequency-change" />
 
 
