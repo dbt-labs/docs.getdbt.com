@@ -611,7 +611,9 @@ html[data-theme="dark"] .nav-versioning-filter__btn--active {
   color: #fff;
 }
 
+
 /* Version dropdown orange border and positioning */
+/*
 .navbar__item.dropdown:has(.nav-versioning) {
   border: 2px solid var(--color-orange);
   border-radius: 8px;
@@ -619,8 +621,7 @@ html[data-theme="dark"] .nav-versioning-filter__btn--active {
   margin-right: auto;
   margin-left: 8px;
 }
-
-
+*/
 
 .navbar-sidebar .menu__link.nav-create-account {
   color: var(--color-white);
