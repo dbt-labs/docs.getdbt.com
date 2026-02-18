@@ -67,6 +67,33 @@ Notable features:
 - No other access. 
 
 </Expandable>
+
+<Expandable alt_header="Cost Insights Admin">
+
+The Cost Insights Admin permission set provides the minimum permissions needed to configure and manage [Cost Insights](/docs/explore/cost-insights) settings and view cost data.
+
+Notable features:
+- Cost Insights Admin is both an account-level and project-level set.
+- Can configure platform metadata credentials and Cost Insights settings in connection settings.
+- Can view cost and savings data across projects, models, and jobs.
+- Read-only access to connections, projects, jobs, and metadata.
+- Can access dbt <Constant name="explorer" />.
+
+</Expandable>
+
+<Expandable alt_header="Cost Insights Viewer">
+
+The Cost Insights Viewer permission set provides read-only access to [Cost Insights](/docs/explore/cost-insights) data with the minimum permissions needed to view estimated cost and reduction information.
+
+Notable features:
+- Cost Insights Viewer is both an account-level and project-level set.
+- Read-only access to cost and savings data across projects, models, and jobs.
+- Read-only access to connections, platform metadata credentials, projects, jobs, and metadata.
+- Cannot configure or edit Cost Insights settings.
+- Can access dbt <Constant name="explorer" />.
+
+</Expandable>
+
 <Expandable alt_header="Database admin">
 
 Database admins manage configurations between <Constant name="cloud" /> and the underlying databases. 
