@@ -42,7 +42,7 @@ By default, the IDE uses sqlfmt rules to format your code, making it convenient 
 
 With the <Constant name="cloud_ide" />, you can seamlessly use [SQLFluff](https://sqlfluff.com/), a configurable SQL linter, to warn you of complex functions, syntax, formatting, and compilation errors. This integration allows you to run checks, fix, and display any code errors directly within the Cloud <Constant name="cloud_ide" />:
 
-- Works with Jinja and SQL, 
+- Works with Jinja and SQL.
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the <Constant name="cloud_ide" />).
 - Displays a **Code Quality** tab to view code errors, provides code quality visibility and management.
