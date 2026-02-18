@@ -18,7 +18,7 @@ If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploadin
 
 dbt populates a model's metadata in <Constant name="explorer" /> when both of the following conditions are met:
 - The model is defined in your dbt project (it exists in the manifest).
-- The model is included in the run_results of a build, run, or clone command.
+- The model appears in the `run_results` of a [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), or [`dbt clone`](/reference/commands/clone) command. Note that models appearing in `run_results` from `dbt docs generate` alone do not count.
 
 ### When dbt removes model metadata
 
