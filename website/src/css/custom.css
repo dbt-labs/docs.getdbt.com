@@ -531,6 +531,95 @@ a.code-link:hover {
   justify-content: center;
 }
 
+/* Version dropdown checkmark for selected version */
+.nav-versioning-checkmark {
+  color: #999;
+  margin-right: 6px;
+  font-size: 0.85em;
+}
+
+.nav-versioning-dropdown__link {
+  display: flex;
+  align-items: center;
+}
+
+/* Keep version dropdown width stable when filtering major versions */
+.navbar__item.dropdown:has(.nav-versioning) .dropdown__menu {
+  min-width: max-content;
+}
+
+/* Major version filter toggle in version dropdown */
+.nav-versioning-filter {
+  list-style: none;
+  padding: 4px 8px 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+html[data-theme="dark"] .nav-versioning-filter {
+  border-bottom-color: #242B37;
+}
+
+.nav-versioning-filter__buttons {
+  display: flex;
+  gap: 4px;
+  background: #F5F5F5;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+html[data-theme="dark"] .nav-versioning-filter__buttons {
+  background: var(--color-terminal-black-700);
+}
+
+.nav-versioning-filter__btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+html[data-theme="dark"] .nav-versioning-filter__btn {
+  color: #999;
+}
+
+.nav-versioning-filter__btn:hover {
+  color: #333;
+  background: #e8e8e8;
+}
+
+html[data-theme="dark"] .nav-versioning-filter__btn:hover {
+  color: #ddd;
+  background: var(--color-terminal-black-800);
+}
+
+.nav-versioning-filter__btn--active {
+  background: white;
+  color: #333;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="dark"] .nav-versioning-filter__btn--active {
+  background: var(--color-terminal-black-800);
+  color: #fff;
+}
+
+/* Version dropdown orange border and positioning */
+.navbar__item.dropdown:has(.nav-versioning) {
+  border: 2px solid var(--color-orange);
+  border-radius: 8px;
+  padding: 2px 4px;
+  margin-right: auto;
+  margin-left: 8px;
+}
+
 
 
 .navbar-sidebar .menu__link.nav-create-account {
