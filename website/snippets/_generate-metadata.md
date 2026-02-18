@@ -2,7 +2,7 @@
 
 <Constant name="explorer" /> uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your dbt project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your <Constant name="cloud" /> project.
 
-<Constant name="explorer" /> also allows you to ingest metadata from your data warehouse, giving you visibility into external resources in <Constant name="explorer" />.
+<Constant name="explorer" /> also allows you to ingest metadata from your data warehouse, giving you visibility into external resources in <Constant name="explorer" />. For information on supported warehouses, refer to [External metadata ingestion](/docs/explore/external-metadata-ingestion#prerequisites).
 
 ## dbt metadata
 
@@ -18,7 +18,7 @@ If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploadin
 
 dbt populates a model's metadata in <Constant name="explorer" /> when both of the following conditions are met:
 - The model is defined in your dbt project (it exists in the manifest).
-- The model appears in the `run_results` of a [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), or [`dbt clone`](/reference/commands/clone) command, regardless of the run's success or failure status. Note that models appearing in `run_results` from `dbt docs generate` alone do not count.
+- The model appears in the `run_results` of a [`dbt build`](/reference/commands/build), [`dbt run`](/reference/commands/run), or [`dbt clone`](/reference/commands/clone) command, regardless of the run's success or failure status. Note that `dbt docs generate` alone does not create model entries in <Constant name="explorer" />. It provides supplementary metadata like column details and descriptions for models that already exist.
 
 ### When dbt removes model metadata
 
