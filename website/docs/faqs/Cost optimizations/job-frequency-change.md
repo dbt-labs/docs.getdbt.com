@@ -1,10 +1,12 @@
 ---
-title:  How will cost and cost reductions change if I update my jobs to run them more frequently?
+title:  How will cost and reduction estimations change if I update my jobs to run them more frequently?
 description: "Explanation of how increasing run frequency affects cost reductions"
-sidebar_label: 'Cost Insights and frequency changes of runs'
+sidebar_label: 'Job frequency and cost reductions'
 id: job-frequency-change
 ---
 
-Our reduction metric reflects the compute costs avoided when dbt reuses an existing result instead of running the same work again. When you change the behavior of your runs and run workflows more frequently — for example, because performance improvements make it easier to schedule them more often — there are naturally more opportunities for reuse.
+Cost reduction metrics reflect how dbt optimizes compute costs by reusing existing results instead of running the same model again.
+
+When you increase your job run frequency (for example, because performance improvements make it easier to schedule jobs more often), dbt has more opportunities to reuse models. As reuse increases, dbt optimizes more compute, which means your reported cost reductions may also increase.
 As reuse increases, the total avoided compute increases as well. So as your run frequency grows, your reported savings may grow too.
-This metric is designed to show the efficiency impact of reuse within your current workload. It reflects compute costs avoided through smarter execution, rather than total warehouse spend reduction.
+This metric shows the efficiency impact of reuse within your current workload. It reflects how dbt optimizes compute through intelligent execution to maximize warehouse value, not just reduce total warehouse spend.
