@@ -12,7 +12,7 @@ For some use cases, you can use `dbt clone` to achieve similar functionality. Fo
 
 It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to:
 
-- compare against logical state from one environment or past point in time
+- Compare against logical state from one environment or past point in time
 - defer to applied state from a different environment or point in time
 
 If `--defer-state` is not specified, deferral will use the manifest supplied to `--state`. In most cases, you will want to use the same state for both; compare logical changes against production, and also "fail over" to the production environment for unbuilt upstream resources.
