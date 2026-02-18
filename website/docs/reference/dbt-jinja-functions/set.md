@@ -8,7 +8,6 @@ description: "Converts any iterable to a sequence of iterable and unique element
 :::tip
 
 Not to be confused with the `{% set foo = "bar" ... %}` expression in Jinja, which defines a variable. For examples of constructing SQL strings with `{% set %}` (and why `{{ }}` should not be nested inside quoted strings), see [Don’t nest your curlies](/best-practices/dont-nest-your-curlies).
-``
 
 :::
 
