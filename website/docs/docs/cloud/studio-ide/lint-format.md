@@ -70,19 +70,19 @@ Linting is available on all branches, including your protected primary git branc
 
 You can lint multiple SQL files at once, depending on how you are working with dbt. The behavior differs between the <Constant name="cloud_ide" />, <Constant name="core" />, and the <Constant name="cloud_cli" />.
 
-- **<Constant name="cloud_ide" />**: By default, linting runs against all modified `.sql` files in your project on your current branch. See [Snapshot linting](#snapshot-linting) for more information.
+- **<Constant name="cloud_ide" />:** By default, linting runs against all modified `.sql` files in your project on your current branch. See [Snapshot linting](#snapshot-linting) for more information.
 
-- **<Constant name="core" />** &mdash; <Constant name="core" /> does not include a built-in linter. To lint SQL files in your project, use a third-party tool such as SQLFluff with the dbt templater. You can lint multiple files by specifying one or more files or directory `PATHS` flags.
+- **<Constant name="core" />:** Does not include a built-in linter. To lint SQL files in your project, use a third-party linter such as SQLFluff configured to use the [dbt templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html). You can lint multiple files by specifying one or more files or directory `PATHS` flags.
 
-- **<Constant name="cloud_cli" />** &mdash; The <Constant name="cloud_cli" /> supports the same linting [commands](/reference/dbt-commands) as dbt Core:
+- **<Constant name="cloud_cli" />:** Supports the same linting [commands](/docs/cloud/configure-cloud-cli#lint-sql-files) as dbt Core:
 
-```
-dbt sqlfluff lint [PATHS]... [flags]
-```
+    ```
+    dbt sqlfluff lint [PATHS]... [flags]
+    ```
 
-If no path is specified (for example, `dbt sqlfluff lint`), all SQL files in the project are linted.
+    If no path is specified (for example, `dbt sqlfluff lint`), all SQL files in the project are linted.
 
-See [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files) for more information.
+    See [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files) for more information.
 
 ### Customize linting
 
