@@ -72,7 +72,7 @@ You can lint multiple SQL files at once, depending on how you are working with d
 
 - **<Constant name="cloud_ide" />:** By default, linting runs against all modified `.sql` files in your project on your current branch. See [Snapshot linting](#snapshot-linting) for more information.
 
-- **<Constant name="core" />:** Does not include a built-in linter. To lint SQL files in your project, use a third-party linter such as SQLFluff configured to use the [dbt templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html). You can lint multiple files by specifying one or more files or directory `PATHS` flags.
+- **<Constant name="core" />:** Does not include a built-in linter. To lint SQL files in your project, use a third-party linter such as SQLFluff configured to use the [dbt templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html). You can lint multiple files by specifying one or more file or directory paths as arguments to the command.
 
 - **<Constant name="cloud_cli" />:** Supports the same linting [commands](/docs/cloud/configure-cloud-cli#lint-sql-files) as dbt Core:
 
