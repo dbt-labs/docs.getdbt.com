@@ -8,7 +8,7 @@
 
 If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploading artifacts from dbt Core, make sure to follow the [setup instructions](/docs/deploy/hybrid-setup#connect-project-in-dbt-cloud) to connect your project in <Constant name="cloud" />. This enables <Constant name="explorer" /> to access and display your metadata correctly.
 
-- To ensure all metadata is available in <Constant name="explorer" />, run `dbt build` and `dbt docs generate` as part of your job in your production or staging environment. Running those two commands ensures all relevant metadata (like lineage, test results, documentation, and more) is available in <Constant name="explorer" />.
+- To ensure all metadata is available in <Constant name="explorer" />, run `dbt build` and `dbt docs generate` as part of your job in your production or staging environment. Running these two commands ensures all relevant metadata (like lineage, test results, documentation, and more) is available in <Constant name="explorer" />.
 - <Constant name="explorer" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
     - Note that CI jobs don't update <Constant name="explorer" />. This is because they don't reflect the production state and don't provide the necessary metadata updates.
 - To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment.
@@ -16,13 +16,13 @@ If you're using a [hybrid project setup](/docs/deploy/hybrid-setup) and uploadin
 
 ### When dbt creates model metadata
 
-A model appears in <Constant name="explorer" /> when both of the following conditions are met:
+dbt populates a model's metadata in <Constant name="explorer" /> when both of the following conditions are met:
 - The model is defined in your dbt project (it exists in the manifest).
 - The model is included in the run_results of a build, run, or clone command.
 
 ### When dbt removes model metadata
 
-Model metadata is removed from <Constant name="explorer" /> in these two cases:
+dbt removes a model's metadata from <Constant name="explorer" /> in these two cases:
 
 - **Model removed from project**: If a model is deleted from your dbt project (and therefore no longer exists in the manifest), its metadata is removed after a subsequent job run in which the model is no longer included.
 - **Environment inactivity**: If an environment has had no job runs in the past 3 months, all metadata for that environment is purged. To prevent this, schedule jobs to run at least once every 3 months.
