@@ -65,8 +65,8 @@ There are three default groups available as soon as you create your <Constant na
 :::note default group permissions
 
 The `Owner` and `Member` groups have default permission sets:
-- **Starter plan:** These groups use the `Owner` and `Member` [permission sets](https://docs.getdbt.com/docs/cloud/manage-access/self-service-permissions#table-of-groups-licenses-and-permissions), respectively.
-- **Enterprise plans:** The `Owner` group has permissions equivalent to [`Account Admin`](/docs/cloud/manage-access/enterprise-permissions#account-admin), and the `Member` group has permissions equivalent to [`Admin`](/docs/cloud/manage-access/enterprise-permissions#admin).
+- **Starter plan:** The `Owner` and `Member` groups use the `Owner` and `Member` [permission sets](https://docs.getdbt.com/docs/cloud/manage-access/self-service-permissions#table-of-groups-licenses-and-permissions), respectively.
+- **Enterprise plans:** By default, dbt assigns the `Owner` group an [`Account Admin`](/docs/cloud/manage-access/enterprise-permissions#account-admin) permission set, and the `Member` group an [`Admin`](/docs/cloud/manage-access/enterprise-permissions#admin) permission set.
 
 :::
 
