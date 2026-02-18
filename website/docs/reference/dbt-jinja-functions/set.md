@@ -12,7 +12,7 @@ Not to be confused with the `{% set foo = "bar" ... %}` expression in Jinja, whi
 
 :::
 
-The `set` context method can be used to convert any iterable to a sequence of iterable elements that are unique (a set).
+You can use the `set` context method to convert any iterable to a sequence of iterable elements that are unique (a set).
         
 __Args__:
 - `value`: The iterable to convert (for example, a list)
