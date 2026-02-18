@@ -55,11 +55,11 @@ _Required:_
 _Expected:_
 - **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
 
-:::tip 
+  :::tip 
 
-Try not to confuse this `depends_on` YAML property with the [`-- depends_on`](/reference/dbt-jinja-functions/statement-blocks#example-using-depends_on), a SQL comment directive defined at the top of a model SQL file, which explicitly adds dependencies to the DAG and ensures the referenced resources are built before the model executes.
+  Try not to confuse this `depends_on` YAML property with the [`-- depends_on`](/reference/dbt-jinja-functions/statement-blocks#example-using-depends_on), a SQL comment directive defined at the top of a model SQL file, which explicitly adds dependencies to the DAG and ensures the referenced resources are built before the model executes.
 
-:::
+  :::
 
 
 _Optional:_
