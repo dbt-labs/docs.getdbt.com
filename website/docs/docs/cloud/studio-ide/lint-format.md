@@ -82,7 +82,7 @@ You can lint multiple SQL files at once, depending on how you are working with d
 
     If no path is specified (for example, `dbt sqlfluff lint`), all SQL files in the project are linted.
 
-    See [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files) for more information.
+
 
 ### Customize linting
 
