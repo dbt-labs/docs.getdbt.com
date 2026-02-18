@@ -3,7 +3,7 @@ resource_types: [models]
 title: "static_analysis"
 description: "Use static_analysis config to control how the Fusion engine performs static SQL analysis for models."
 datatype: string
-default_value: on
+default_value: strict
 sidebar_label: "static_analysis"
 ---
 
@@ -22,7 +22,7 @@ The `static_analysis` config is available in the <Constant name="fusion_engine"/
 ```yml
 models:
   [resource-path](/reference/resource-configs/resource-path):
-    +static_analysis: on | unsafe | off
+    +static_analysis: strict | baseline | off
 
 ```
 
@@ -38,7 +38,7 @@ models:
 models:
   - name: model_name
     [config](/reference/resource-properties/config):
-      static_analysis: on | unsafe | off
+      static_analysis: strict | baseline | off
 ```
 
 </File>
@@ -49,7 +49,7 @@ models:
 <File name='models/model_name.sql'>
 
 ```sql
-{{ config(static_analysis='on' | 'unsafe' | 'off') }}
+{{ config(static_analysis='strict' | 'baseline' | 'off') }}
 
 select 
   user_id,
@@ -69,9 +69,19 @@ You can configure if and when the <Constant name="fusion_engine" /> performs sta
 
 The following values are available for `static_analysis`:
 
-- `on`: Statically analyze SQL ahead-of-time (AOT). Default for non-introspective models, depends on AOT rendering.
-- `unsafe`: Statically analyze SQL just-in-time (JIT). The default for when a model (or any of its parents) uses introspective queries. JIT analysis still catches most SQL errors, but [analysis happens]( /docs/fusion/new-concepts#static-analysis-and-introspective-queries) after some upstream execution.
+- `strict`: Statically analyze SQL ahead-of-time (AOT). Default for non-introspective models, depends on AOT rendering.
+- `baseline`: Statically analyze SQL just-in-time (JIT). Use this when a model (or any of its parents) uses introspective queries. JIT analysis still catches most SQL errors, but [analysis happens](/docs/fusion/new-concepts#static-analysis-and-introspective-queries) after some upstream execution.
 - `off`: Skip SQL analysis for this model and its descendants.
+
+:::caution Deprecated values
+
+The following values are deprecated and will be removed in May 2026:
+- `on`: Use `strict` instead (same behavior).
+- `unsafe`: Use `baseline` instead.
+
+If you're currently using `on` or `unsafe`, migrate to `strict`.
+
+:::
 
 A model is _only_ eligible for static analysis if all of its parents are also eligible.
 
@@ -83,7 +93,7 @@ You can override model-level configuration for a run using the following CLI fla
 
 ```bash
 dbt run --static-analysis off # disable static analysis for all models
-dbt run --static-analysis unsafe # use JIT analysis for all models
+dbt run --static-analysis baseline # use JIT analysis for all models
 ```
 
 See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).

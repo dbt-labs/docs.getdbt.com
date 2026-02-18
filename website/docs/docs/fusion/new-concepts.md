@@ -83,7 +83,7 @@ During a `dbt run`, JIT rendering ensures the downstream model's code will be up
   Note that `model_d` is rendered AOT, since it doesn't use introspection, but it still has to wait for `introspective_model_c` to be analyzed.
 </Expandable>
 
-You will still derive significant benefits from "unsafe" static analysis compared to no static analysis, and we recommend leaving it on unless you notice it causing you problems. Better still, you should consider whether your introspective code could be rewritten in a way that is eligible for AOT rendering and static analysis.
+You will still derive significant benefits from `baseline` static analysis compared to no static analysis, and we recommend leaving it on unless you notice it causing you problems. Better still, you should consider whether your introspective code could be rewritten in a way that is eligible for AOT rendering and static analysis.
 
 ## Recapping the differences between engines
 
@@ -103,13 +103,19 @@ Beyond the default behavior described above, you can always modify the way stati
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
-- `on`: Statically analyze SQL. The default for non-introspective models, depends on AOT rendering.
-- `unsafe`: Statically analyze SQL. The default for introspective models. Always uses JIT rendering.
+- `strict`: Statically analyze SQL. The default for non-introspective models, depends on AOT rendering.
+- `baseline`: Statically analyze SQL. The default for introspective models. Always uses JIT rendering.
 - `off`: Skip SQL analysis on this model and its descendants.
+
+:::caution Deprecated values
+
+The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead of `on`, and `baseline` instead of `unsafe`.
+
+:::
 
 When you disable static analysis, features of the VS Code extension which depend on SQL comprehension will be unavailable.
 
-The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the [`--static-analysis off` or `--static-analysis unsafe` CLI flags](/reference/global-configs/static-analysis-flag) to override all model-level configuration. 
+The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the [`--static-analysis off` or `--static-analysis baseline` CLI flags](/reference/global-configs/static-analysis-flag) to override all model-level configuration. 
 
 Refer to [CLI options](/reference/global-configs/command-line-options) and [Configurations and properties](/reference/configs-and-properties) to learn more about configs.
 

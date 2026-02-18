@@ -9,16 +9,24 @@ Use the `--static-analysis` flag to override model-level `static_analysis` behav
 
 Values:
 
+- `strict`: Use Ahead-of-time (AOT) static analysis for all models in the run.
+- `baseline`: Use Just-in-time (JIT) static analysis for all models in the run.
 - `off`: Disable static analysis for all models in the run.
-- `unsafe`: Use Just-in-time (JIT) static analysis for all models in the run.
 
-If not set, Fusion uses its defaults: Ahead-of-time (AOT) static analysis (`on`) for eligible models and JIT (`unsafe`) for introspective branches. See [Configuring `static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) for more information.
+If not set, Fusion uses its defaults: AOT static analysis (`strict`) for eligible models and JIT (`baseline`) for introspective branches. See [Configuring `static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) for more information.
+
+:::caution Deprecated value
+
+The `unsafe` value is deprecated and will be removed in May 2026. Use `baseline` instead.
+
+:::
 
 <File name='Usage'>
 
 ```shell
+dbt run --static-analysis strict
+dbt run --static-analysis baseline
 dbt run --static-analysis off
-dbt run --static-analysis unsafe
 ```
 
 </File>

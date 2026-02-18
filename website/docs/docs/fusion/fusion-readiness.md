@@ -42,7 +42,7 @@ Check that all user-defined functions (UDFs) in your project are supported by <C
 
 If you see this warning:
 
-- [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) for the full <Constant name="fusion" /> experience with `static_analysis: on`.
+- [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) for the full <Constant name="fusion" /> experience with `static_analysis: strict`.
 - [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). As a workaround, you can set `static_analysis: off` when running on <Constant name="fusion" />. 
 
 ### Check for known Fusion limitations
