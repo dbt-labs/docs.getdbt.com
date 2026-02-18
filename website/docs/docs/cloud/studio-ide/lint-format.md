@@ -70,7 +70,7 @@ Linting is available on all branches, including your protected primary git branc
 
 You can lint multiple SQL files at once, depending on how you are working with dbt. The behavior differs between the <Constant name="cloud_ide" />, <Constant name="core" />, and the <Constant name="cloud_cli" />.
 
-- **<Constant name="cloud_ide" />** &mdash; Linting in the <Constant name="cloud_ide" /> runs against [all modified](/docs/cloud/studio-ide/lint-format#snapshot-linting) `.sql files` in your project by default on your current branch.
+- **<Constant name="cloud_ide" />**: By default, linting runs against all modified `.sql` files in your project on your current branch. See [Snapshot linting](#snapshot-linting) for more information.
 
 - **<Constant name="core" />** &mdash; <Constant name="core" /> does not include a built-in linter. To lint SQL files in your project, use a third-party tool such as SQLFluff with the dbt templater. You can lint multiple files by specifying one or more files or directory `PATHS` flags.
 
