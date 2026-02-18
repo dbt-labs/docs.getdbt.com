@@ -20,24 +20,11 @@ import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
 
 <ModelGovernanceRollback />
 
-## Where are contracts supported?
+import Contractsupport from '/snippets/_contract-support.md'; 
 
-At present, model contracts are supported for:
-- SQL models. 
-- Models materialized as one of the following:
-    - `table`
-    - `view` &mdash; Views offer limited support for column names and data types, but not `constraints`.
-    - `incremental` &mdash; with `on_schema_change: append_new_columns` or `on_schema_change: fail`.  
-- Certain data platforms, but the supported and enforced `constraints` vary by platform.
+<Contractsupport />
 
-Model contracts are _not_ supported for:
-- Python models.
-- `materialized view` or `ephemeral`-materialized SQL models.
-- Custom materializations (unless added by the author).
-- Models with recursive <Term id="cte" />'s in BigQuery.
-- Other resource types, such as `sources`, `seeds`, `snapshots`, and so on.
-
-## How to define a contract
+## Define a contract
 
 Let's say you have a model with a query like:
 
