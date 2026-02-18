@@ -1,0 +1,1 @@
+The **Model performance** section in <Constant name="explorer" /> displays historical trends to help you identify optimization opportunities and understand model resource consumption. 
