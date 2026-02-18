@@ -14,5 +14,5 @@ The following table outlines which <Constant name="cloud" /> features are suppor
 | IP restrictions               | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
 | <Constant name="orchestrator" />  | ✅           | ✅                    | ✅                  | ✅                  | ✅               |
 | PrivateLink egress            | ✅ (AWS only)    | ✅                    | ✅                  | ✅                  | ✅               |
-| PrivateLink ingress           | ❌               | ✅                    | ❌                  | ✅                  | ✅               |
+| PrivateLink ingress           | ❌               | ✅                    | ❌                  | ✅                  | ❌               |
 | Webhooks (Outbound)           | ✅               | ✅                    | ✅                  | ❌                  | ❌               |
