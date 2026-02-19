@@ -191,6 +191,7 @@ Out of the box, the `dbt` class supports:
 - Returning DataFrames referencing the locations of other resources: `dbt.ref()` + `dbt.source()`
 - Accessing the database location of the current model: `dbt.this()` (also: `dbt.this.database`, `.schema`, `.identifier`)
 - Determining if the current model's run is incremental: `dbt.is_incremental`
+- Accessing custom values stored in `meta`: `dbt.config.meta_get()`
 
 It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). The `dbt.config.get()` method supports dynamic access to configurations within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values for the conditional logic in your model, we require setting them through a dedicated properties YAML file config:
 
@@ -246,18 +247,15 @@ models:
 
 </File>
 
-Then access them in your Python model using the `dbt.config.get()` method to access the `meta` object first and then access your custom values:
+Then access them in your Python model using the `dbt.config.meta_get()` method:
 
 <File name='models/my_python_model.py'>
 
 ```python
 def model(dbt, session):
-    # First, get the meta object
-    meta = dbt.config.get("meta")
-    
-    # Then access your custom values from meta
-    custom_value = meta.get("custom_value")
-    another_value = meta.get("another_value")
+    # Access custom values stored in meta directly
+    custom_value = dbt.config.meta_get("custom_value")
+    another_value = dbt.config.meta_get("another_value")
     
     # Use your custom values in your model logic
     orders_df = dbt.ref("fct_orders")
@@ -265,6 +263,14 @@ def model(dbt, session):
 ```
 
 </File>
+
+:::caution Deprecated pattern
+
+The previous approach of using `dbt.config.get("meta")` to retrieve the meta object is being deprecated. Use `dbt.config.meta_get()` instead:
+
+You can use [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) to automatically migrate from the deprecated pattern to the correct `meta_get()`.
+
+:::
 
 #### Dynamic configurations
 
