@@ -266,7 +266,7 @@ def model(dbt, session):
 
 :::caution Deprecated pattern
 
-The previous approach of using `dbt.config.get("meta")` to retrieve the meta object is being deprecated. Use `dbt.config.meta_get()` instead:
+The previous approach of using `dbt.config.get("meta")` to retrieve the meta object is being deprecated. Use `dbt.config.meta_get()` instead.
 
 You can use [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) to automatically migrate from the deprecated pattern to the correct `meta_get()`.
 
