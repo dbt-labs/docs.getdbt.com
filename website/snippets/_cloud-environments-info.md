@@ -16,7 +16,7 @@ Each <Constant name="cloud" /> project can only have a single development enviro
 | **How many can I have in my project?** | 1 | Any number | 1 | 1 |
 
 :::note 
-For users familiar with development on <Constant name="core" />, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/core/dbt-core-environments).
+For users familiar with development on <Constant name="core" />, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/local/dbt-core-environments).
 :::
 
 ## Common environment settings
@@ -52,7 +52,7 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 Extended attributes are currently _not_ supported for SSH tunneling
 :::
 
-Extended attributes allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their <Constant name="cloud" /> Environment settings. It provides users with more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
+Extended attributes allows users to set a flexible [profiles.yml](/docs/local/connect-data-platform/profiles.yml) snippet in their <Constant name="cloud" /> Environment settings. It provides users with more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
 
 Extended attributes are set at the environment level, and can partially override connection or environment credentials, including any custom environment variables. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`.
 
@@ -79,7 +79,7 @@ If you're developing in the [<Constant name="cloud_ide" />](/docs/cloud/studio-i
 - If the attribute doesn't exist, it will add the attribute or value pair to the profile.
 
 #### Only the **top-level keys** are accepted in extended attributes
-This means that if you want to change a specific sub-key value, you must provide the entire top-level key as a JSON block in your resulting YAML. For example, if you want to customize a particular field within a [service account JSON](/docs/core/connect-data-platform/bigquery-setup#service-account-json) for your BigQuery connection (like 'project_id' or 'client_email'), you need to provide an override for the entire top-level `keyfile_json` main key/attribute using extended attributes. Include the sub-fields as a nested JSON block.
+This means that if you want to change a specific sub-key value, you must provide the entire top-level key as a JSON block in your resulting YAML. For example, if you want to customize a particular field within a [service account JSON](/docs/local/connect-data-platform/bigquery-setup#service-account-json) for your BigQuery connection (like 'project_id' or 'client_email'), you need to provide an override for the entire top-level `keyfile_json` main key/attribute using extended attributes. Include the sub-fields as a nested JSON block.
 
 
 

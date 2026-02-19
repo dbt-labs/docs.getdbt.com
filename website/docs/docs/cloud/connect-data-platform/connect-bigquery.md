@@ -279,7 +279,7 @@ For a project, you will first create an environment variable to store the secret
       client_x509_cert_url: xxx
     ```
 
-    If you require [other fields](/docs/core/connect-data-platform/bigquery-setup#service-account-json) to be overridden at the environment level via extended attributes, please respect the [expected indentation](/docs/dbt-cloud-environments#only-the-top-level-keys-are-accepted-in-extended-attributes) (ordering doesn't matter):
+    If you require [other fields](/docs/local/connect-data-platform/bigquery-setup#service-account-json) to be overridden at the environment level via extended attributes, please respect the [expected indentation](/docs/dbt-cloud-environments#only-the-top-level-keys-are-accepted-in-extended-attributes) (ordering doesn't matter):
 
     ```yaml
     priority: interactive
