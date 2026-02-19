@@ -85,9 +85,9 @@ function DropdownNavbarItemDesktop({
   // dbt Custom: handle version dropdown state on click
   const [showVersionDropdown, setShowVersionDropdown] = useState(true);
 
-  // dbt Custom: major version filter
+  // dbt Custom: major version filter (default to "2" for Fusion)
   const majorVersions = className === "nav-versioning" ? getMajorVersions() : [];
-  const [majorVersionFilter, setMajorVersionFilter] = useState(null);
+  const [majorVersionFilter, setMajorVersionFilter] = useState("2");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
