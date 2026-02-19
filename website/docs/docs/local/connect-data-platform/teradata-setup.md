@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/teradata-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code in the repository listed in the next section.
 
@@ -277,4 +276,3 @@ The adapter was originally created by [Doug Beatty](https://github.com/dbeatty10
 
 The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt-core/blob/main/License.md) to understand items such as creating derivative work and the support model.  
 
-</VersionBlock>

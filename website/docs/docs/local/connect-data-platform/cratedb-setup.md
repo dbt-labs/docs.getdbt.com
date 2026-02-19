@@ -16,8 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta}/>
@@ -63,4 +61,3 @@ cratedb_analytics:
 [`profiles.yml`]: https://docs.getdbt.com/docs/local/connect-data-platform/profiles.yml
 [using dbt with CrateDB]: https://cratedb.com/docs/guide/integrate/dbt/
 
-</VersionBlock>

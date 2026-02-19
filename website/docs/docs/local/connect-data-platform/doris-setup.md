@@ -15,7 +15,6 @@ meta:
   config_page: '/reference/resource-configs/doris-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -71,4 +70,3 @@ You can find some help [here](https://doris.apache.org/docs/admin-manual/privile
 | Create_priv        |
 | Drop_priv          |
 
-</VersionBlock>

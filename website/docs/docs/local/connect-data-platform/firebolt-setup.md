@@ -15,8 +15,6 @@ meta:
   config_page: '/reference/resource-configs/firebolt-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.
 
@@ -100,4 +98,3 @@ For an example of how this works, let’s say Shahar and Eric are both working o
 
 In her `.dbt/profiles.yml`, Sharar sets `schema=sh`, whereas Eric sets `schema=er` in his. When each runs the `customers` model, the models will land in the database as tables named `sh_customers` and `er_customers`, respectively. When running dbt in production, you would use yet another `profiles.yml` with a string of your choice.
 
-</VersionBlock>

@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Community plugin
 
@@ -101,4 +100,3 @@ your_profile_name:
   ```
   - Where `{other_sql_modes}` is the rest of the modes from the `SHOW VARIABLES LIKE 'sql_mode'` output.
 
-</VersionBlock>

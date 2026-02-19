@@ -15,8 +15,6 @@ meta:
   config_page: '/reference/resource-configs/clickhouse-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each
 repository listed below.
 
@@ -108,4 +106,3 @@ adding a new feature, or enhancing the documentation, your efforts are greatly a
 
 Please take a moment to read our [Contribution Guide](https://github.com/ClickHouse/dbt-clickhouse/blob/main/CONTRIBUTING.md) to get started. The guide provides detailed instructions on setting up your environment, running tests, and submitting pull requests.
 
-</VersionBlock>

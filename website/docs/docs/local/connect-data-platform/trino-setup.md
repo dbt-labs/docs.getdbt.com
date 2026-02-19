@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/trino-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 <Snippet path="warehouse-setups-cloud-callout" />
 
@@ -334,4 +333,3 @@ trino:
 </TabItem>
 </Tabs>
 
-</VersionBlock>

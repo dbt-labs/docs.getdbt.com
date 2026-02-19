@@ -16,9 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
@@ -139,7 +136,3 @@ SELECT
 FROM
     {{ ref("products") }}
 ```
-
-
-
-</VersionBlock>

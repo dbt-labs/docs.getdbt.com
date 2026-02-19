@@ -16,8 +16,6 @@ meta:
   config_page: /reference/resource-configs/watsonx-presto-config
 ---
 
-<VersionBlock lastVersion="1.99">
-
 The dbt-watsonx-presto adapter allows you to use dbt to transform and manage data on IBM watsonx.data Presto(Java), leveraging its distributed SQL query engine capabilities. Before proceeding, ensure you have the following:
 <ul>
   <li>An active IBM watsonx.data Presto(Java) engine with connection details (host, port, catalog, schema) in SaaS/Software.</li>
@@ -104,4 +102,3 @@ The following profile fields are optional to set up. They let you configure your
 | `http_headers`                | HTTP headers to send alongside requests to Presto, specified as a yaml dictionary of (header, value) pairs. | `X-Presto-Routing-Group: my-instance` |
 | `http_scheme`                 | The HTTP scheme to use for requests to    (default: `http`, or `https` if `BasicAuth`)                | `https` or `http`                    |
 
-</VersionBlock>

@@ -13,8 +13,6 @@ meta:
   config_page: '/reference/resource-configs/fabric-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 <Snippet path="warehouse-setups-cloud-callout" />
 
 Below is a guide for use with [Fabric Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric. The adapter currently supports connecting to a warehouse. 
@@ -381,4 +379,3 @@ Valid values for `authentication`:
 * `environment`: Microsoft Entra ID authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
 * `auto`: Microsoft Entra ID authentication trying the previous authentication methods until it finds one that works
 
-</VersionBlock>

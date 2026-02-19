@@ -15,7 +15,6 @@ meta:
   config_page: '/reference/resource-configs/vertica-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info VENDOR-SUPPORTED PLUGIN
 
@@ -88,5 +87,3 @@ autocommit | Boolean value that indicates if the connection can enable or disabl
 For more information on Vertica’s connection properties please refer to [Vertica-Python](https://github.com/vertica/vertica-python#create-a-connection) Connection Properties.
 
 
-
-</VersionBlock>

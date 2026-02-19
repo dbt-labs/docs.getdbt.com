@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -92,4 +91,3 @@ profile-name:
 | token | No | `empty_string` | YDB token to use Access Token credentials |
 | service_account_credentials_file | No | `empty_string` | Path to service account credentials file to use service account credentials |
 
-</VersionBlock>

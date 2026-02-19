@@ -16,8 +16,6 @@ meta:
   config_page: '/reference/resource-configs/oracle-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
@@ -657,5 +655,3 @@ def model(dbt, session):
 
 ## Not supported features
 - Ephemeral materialization
-
-</VersionBlock>

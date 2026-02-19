@@ -16,7 +16,6 @@ meta:
   config_page: /reference/resource-configs/ibm-netezza-config
 ---
 
-<VersionBlock lastVersion="1.99">
 
 The dbt-ibm-netezza adapter allows you to use dbt to transform and manage data on IBM Netezza, leveraging its distributed SQL query engine capabilities. Before proceeding, ensure you have the following:
 <ul>
@@ -97,4 +96,3 @@ When selecting the database and the schema, make sure the user has read and writ
 
 The `dbt-ibm-netezza` adapter is built on the IBM Netezza Python driver - [nzpy](https://pypi.org/project/nzpy/) and is a pre-requisite which gets installed along with the adapter.
 
-</VersionBlock>

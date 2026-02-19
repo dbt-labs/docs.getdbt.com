@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/greenplum-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -59,4 +58,3 @@ company-name:
 
 This adapter strongly depends on dbt-postgres, so you can read more about configurations here [Profile Setup](postgres-setup)
 
-</VersionBlock>

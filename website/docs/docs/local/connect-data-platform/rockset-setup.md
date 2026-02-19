@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Vendor-supported plugin
 
@@ -61,4 +60,3 @@ incremental | YES | Creates a [collection](https://rockset.com/docs/collections/
 2. The `table` <Term id="materialization" /> is slower in Rockset than most due to Rockset's architecture as a low-latency, real-time database. Creating new collections requires provisioning hot storage to index and serve fresh data, which takes about a minute.
 3. Rockset queries have a two-minute timeout. Any model which runs a query that takes longer to execute than two minutes will fail.
 
-</VersionBlock>

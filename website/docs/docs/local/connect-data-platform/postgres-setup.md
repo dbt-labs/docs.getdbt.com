@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/postgres-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 <Snippet path="warehouse-setups-cloud-callout" />
 
@@ -133,6 +132,3 @@ pip install psycopg2
 ```
 Your OS may have its own dependencies based on your particular scenario.
 
-
-
-</VersionBlock>

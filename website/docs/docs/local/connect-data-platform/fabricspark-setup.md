@@ -16,8 +16,6 @@ meta:
   config_page: '/reference/resource-configs/fabricspark-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 
 <Snippet path="warehouse-setups-cloud-callout" />
 
@@ -126,5 +124,3 @@ Delta-only features:
 1. Lakehouse schemas are not supported. Refer to [limitations](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-schemas#public-preview-limitations)
 2. Service Principal Authentication is not supported yet by Livy API.
 3. Only Delta, CSV & Parquet table data formats are supported by Fabric Lakehouse.
-
-</VersionBlock>

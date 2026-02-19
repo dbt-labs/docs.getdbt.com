@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/materialize-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Vendor-supported plugin
 
@@ -101,4 +100,3 @@ Running [`dbt test`](/reference/commands/test) with the optional `--store-failur
 
 - [dbt and Materialize guide](https://materialize.com/docs/guides/dbt/)
 
-</VersionBlock>

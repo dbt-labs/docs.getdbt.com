@@ -16,7 +16,6 @@ meta:
   min_supported_version: n/a
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Vendor-supported plugin
 
@@ -142,4 +141,3 @@ Not that we ignore `user_id` from the prediction.
 This is because we think that the `user_id` might, and should, not influence our prediction of churn, so we remove it.
 We also use the convention of pulling together the inputs for our prediction in a CTE, named `predict_user_churn_input`.
 
-</VersionBlock>

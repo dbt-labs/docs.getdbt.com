@@ -12,7 +12,6 @@ meta:
   config_page: "/reference/resource-configs/no-configs"
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/\_setup-pages-intro.md';
 
@@ -300,4 +299,3 @@ The default credential provider chain looks for available credentials, with foll
 
 - [Credentials Python](https://github.com/aliyun/credentials-python)
 
-</VersionBlock>

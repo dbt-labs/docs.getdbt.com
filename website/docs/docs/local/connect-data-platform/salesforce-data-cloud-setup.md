@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/data-cloud-configs'
 ---
 
-<VersionBlock firstVersion="2.0">
 
 :::warning Disclaimer
 This adapter is in the Alpha product stage and is not production-ready. It should only be used in sandbox or test environments. 
@@ -71,5 +70,4 @@ company-name:
 
 Find Salesforce-specific configuration information in the [Salesforce adapter reference guide](/reference/resource-configs/data-cloud-configs).
 
-</VersionBlock>
 

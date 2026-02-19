@@ -16,8 +16,6 @@ meta:
   config_page: '/reference/resource-configs/glue-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 :::info Community plugin
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
@@ -1034,5 +1032,3 @@ Apache Hudi-only features:
 Some dbt features, available on the core adapters, are not yet supported on Glue:
 1. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments
 2. [Snapshots](/docs/build/snapshots)
-
-</VersionBlock>

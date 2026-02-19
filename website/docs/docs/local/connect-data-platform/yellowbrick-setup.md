@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/yellowbrick-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Community plugin
 
@@ -67,5 +66,3 @@ The `role` config controls the user role that dbt assumes when opening new conne
 The ssl config parameters control how dbt connects to Yellowbrick using SSL. Refer to the [Yellowbrick documentation](https://docs.yellowbrick.com/5.2.27/client_tools/config_ssl_for_clients_intro.html) for
 details.
 
-
-</VersionBlock>

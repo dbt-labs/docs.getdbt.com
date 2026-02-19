@@ -17,7 +17,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Vendor-supported plugin
 
@@ -110,4 +109,3 @@ You can find some help [here](https://docs.pingcap.com/tidb/v4.0/privilege-manag
 * TiDB 4.X does not support using SQL func in `CREATE VIEW`, avoid it in your SQL code.
   You can find more detail [here](https://github.com/pingcap/tidb/pull/27252).
 
-</VersionBlock>

@@ -16,8 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 :::info Community plugin
 
 Some core functionality may be limited. If you're interested in contributing, see the source code for the repository listed below.
@@ -130,7 +128,3 @@ Delete all streams for resources defined within the project. If a pipeline is as
 If the list argument is provided, then only the specified resource entities are deleted.
 If the models, seeds, or test arguments are provided, then those resource types are also included in the cleanup. Tests that have not been materialized are not included in the cleanup. 
 
-
-
-
-</VersionBlock>

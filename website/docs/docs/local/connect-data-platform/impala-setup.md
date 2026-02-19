@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/impala-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -151,4 +150,3 @@ Relatedly, if you'd like to turn off dbt Lab's anonymous usage tracking, see [YA
 |Authentication: LDAP|Yes|
 |Authentication: Kerberos|Yes|
 
-</VersionBlock>

@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Vendor-supported plugin
 
@@ -88,4 +87,3 @@ The dbt models for managing data transformations in RisingWave are similar to ty
 - [RisingWave's guide about using dbt for data transformations](https://docs.risingwave.com/integrations/other/dbt)
 - [A demo project using dbt to manage Nexmark benchmark queries in RisingWave](https://github.com/risingwavelabs/dbt_rw_nexmark)
 
-</VersionBlock>

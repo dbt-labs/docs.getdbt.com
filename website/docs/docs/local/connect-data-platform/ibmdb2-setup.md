@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Community plugin
 
@@ -90,5 +89,3 @@ your_profile_name:
 
 ## Notes 
 - dbt-ibmdb2 is built on the ibm_db python package and there are some known encoding issues related to z/OS.
-
-</VersionBlock>

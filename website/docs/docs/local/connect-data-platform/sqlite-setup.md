@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Community plugin
 
@@ -96,4 +95,3 @@ Point to these module files in your profile config as shown in the example above
 
 Mac OS seems to ship with [SQLite libraries that do not have support for loading extensions compiled in](https://docs.python.org/3/library/sqlite3.html#f1), so this won't work "out of the box." Accordingly, snapshots won't work. If you need snapshot functionality, you'll need to compile SQLite/python or find a python distribution for Mac OS with this support.
 
-</VersionBlock>

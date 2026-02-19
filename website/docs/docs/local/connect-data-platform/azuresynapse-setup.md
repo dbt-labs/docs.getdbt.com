@@ -15,8 +15,6 @@ meta:
   config_page: '/reference/resource-configs/azuresynapse-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 :::info
 
 The following is a guide to using Azure Synapse Analytics dedicated SQL pools (formerly SQL DW). For more info, refer to [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
@@ -85,4 +83,3 @@ your_profile_name:
 
 You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](/docs/local/connect-data-platform/mssql-setup).
 
-</VersionBlock>

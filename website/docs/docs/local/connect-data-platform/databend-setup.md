@@ -15,7 +15,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Vendor-supported plugin
 
@@ -98,5 +97,3 @@ You can find some help [here](https://docs.databend.com/using-databend-cloud/war
 **Note:**
 
 * Databend does not support `Ephemeral` and `SnapShot`. You can find more detail [here](https://github.com/datafuselabs/databend/issues/8685)
-
-</VersionBlock>

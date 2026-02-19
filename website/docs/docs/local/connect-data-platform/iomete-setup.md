@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -67,4 +66,3 @@ Most <Constant name="core" /> functionality is supported.
 Iceberg specific improvements.
 1. Joining the results of `show tables` and `show views`.
 
-</VersionBlock>

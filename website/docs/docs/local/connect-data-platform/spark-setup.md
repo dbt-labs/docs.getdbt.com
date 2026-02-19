@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/spark-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 
 <Snippet path="warehouse-setups-cloud-callout" />
@@ -226,4 +225,3 @@ To run metadata queries in dbt, you need to have a namespace named `default` in 
 
 If there's a network connection issue, your logs will display an error like `Could not connect to any of [('127.0.0.1', 10000)]` (or something similar).
 
-</VersionBlock>

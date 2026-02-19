@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/singlestore-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Vendor-supported plugin
 
@@ -83,5 +82,3 @@ In order to support concurrent development, `schema` can be used to prefix <Term
 ```
 
 Therefore, if you set `schema=dev` in your `.dbt/profiles.yml` file and run the `customers` model with the corresponding profile, `dbt` will create a table named `dev__customers` in your database.
-
-</VersionBlock>

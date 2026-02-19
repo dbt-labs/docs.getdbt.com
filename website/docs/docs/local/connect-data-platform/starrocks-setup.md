@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/starrocks-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -104,4 +103,3 @@ my-starrocks-db:
 
 It is recommended to use the latest starrocks version and dbt-starrocks version for the best experience.
 
-</VersionBlock>

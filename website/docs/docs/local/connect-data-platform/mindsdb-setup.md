@@ -15,8 +15,6 @@ meta:
   config_page: '/reference/resource-configs/mindsdb-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
-
 :::info Vendor-supported plugin
 
 The dbt-mindsdb package allows dbt to connect to [MindsDB](https://github.com/mindsdb/mindsdb).
@@ -54,6 +52,3 @@ mindsdb:
 | username |    ✔️   | The username to use to connect to the server         | `mindsdb` or mindsdb cloud user|
 | password |    ✔️   | The password to use for authenticating to the server | `pass                          |
 
-
-
-</VersionBlock>

@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/hive-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -152,5 +151,3 @@ python -m pip install dbt-hive
 |Documentation|Yes|
 |Authentication: LDAP|Yes|
 |Authentication: Kerberos|Yes|
-
-</VersionBlock>

@@ -17,7 +17,6 @@ meta:
 pagination_next: null
 ---
 
-<VersionBlock lastVersion="1.99">
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -86,4 +85,3 @@ The configs for Upsolver targets are shown below.
 | schema | Yes | The schema to build models into by default |
 | api_url | Yes | The API url to connect. Common value ```https://mt-api-prod.upsolver.com``` |
 
-</VersionBlock>

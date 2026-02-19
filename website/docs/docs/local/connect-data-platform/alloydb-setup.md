@@ -14,7 +14,6 @@ meta:
   config_page: '/reference/resource-configs/postgres-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -25,4 +24,3 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 AlloyDB targets are configured exactly the same as [Postgres targets](postgres-setup#profile-configuration).
 
-</VersionBlock>

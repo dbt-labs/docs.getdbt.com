@@ -14,7 +14,6 @@ meta:
   config_page: '/reference/resource-configs/postgres-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -34,4 +33,3 @@ Use these key parameters to connect to Databricks Lakebase:
 Alternatively you can [generate an OAuth token](https://docs.databricks.com/aws/en/oltp/oauth?language=UI#authenticate-with-databricks-identities) that will need to be refreshed every hour to use with your Databricks username. 
 
 
-</VersionBlock>

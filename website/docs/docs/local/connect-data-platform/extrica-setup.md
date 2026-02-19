@@ -13,7 +13,6 @@ meta:
   platform_name: 'Extrica'
 ---
 
-<VersionBlock lastVersion="1.99">
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
@@ -81,4 +80,3 @@ Here is an example of dbt-extrica profiles. At a minimum, you need to specify `t
 | catalog    | string   | Name of the catalog representing the data source. |
 | threads    | integer  | Number of threads for parallel execution of queries. (1 or more) |
 
-</VersionBlock>

@@ -16,7 +16,6 @@ meta:
   config_page: /reference/resource-configs/watsonx-Spark-config
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -115,4 +114,3 @@ The following profile fields are optional. You can configure the instance sessio
 - **Limited <Constant name="cloud" /> Support**: Not fully compatible with <Constant name="cloud" />.
 - **Metadata Persistence**: Some dbt features, such as column descriptions, may not persist in all table formats.
 
-</VersionBlock>

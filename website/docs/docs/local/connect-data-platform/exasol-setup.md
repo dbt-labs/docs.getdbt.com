@@ -16,7 +16,6 @@ meta:
   config_page: '/reference/resource-configs/exasol-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 :::info Community plugin
 
@@ -102,9 +101,3 @@ By default, dbt-exasol validates SSL/TLS certificates when `encryption=True`. Fo
 
 For more information, see the [PyExasol security documentation](https://exasol.github.io/pyexasol/master/user_guide/configuration/security.html).
 :::
-
-  
-  
-
-
-</VersionBlock>

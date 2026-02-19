@@ -12,7 +12,6 @@ meta:
   config_page: "/reference/resource-configs/no-configs"
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/\_setup-pages-intro.md';
 
@@ -166,4 +165,3 @@ Hologres supports the following table properties. For full details, see the
 - [Hologres documentation](https://www.alibabacloud.com/help/en/hologres/)
 - [Hologres dynamic table guide](https://www.alibabacloud.com/help/en/hologres/user-guide/introduction-to-dynamic-table)
 
-</VersionBlock>

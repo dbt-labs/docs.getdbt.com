@@ -14,7 +14,6 @@ meta:
   config_page: '/reference/resource-configs/deltastream-configs'
 ---
 
-<VersionBlock lastVersion="1.99">
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -97,4 +96,3 @@ If you encounter issues connecting to DeltaStream from dbt, verify the following
 - Verify the token has appropriate permissions for the target organization
 - Check that the `organization_id` matches your DeltaStream organization
 
-</VersionBlock>
