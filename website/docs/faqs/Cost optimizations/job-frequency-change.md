@@ -8,5 +8,4 @@ id: job-frequency-change
 Cost reduction metrics reflect how dbt optimizes compute costs by reusing existing results instead of running the same model again.
 
 When you increase your job run frequency (for example, because performance improvements make it easier to schedule jobs more often), dbt has more opportunities to reuse models. As reuse increases, dbt optimizes more compute, which means your reported cost reductions may also increase.
-As reuse increases, the total avoided compute increases as well. So as your run frequency grows, your reported savings may grow too.
 This metric shows the efficiency impact of reuse within your current workload. It reflects how dbt optimizes compute through intelligent execution to maximize warehouse value, not just reduce total warehouse spend.
