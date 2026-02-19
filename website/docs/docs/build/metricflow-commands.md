@@ -218,12 +218,21 @@ The list of available saved queries:
 
 The following command performs validations against the defined semantic model configurations.
 
-```bash
-dbt sl validate  # For Fusion and dbt users in the dbt platform CLI or locally with a valid dbt_cloud.yml
-mf validate-configs # For open-source users (Core or Fusion source available)
- 
+- For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
 
+  ```bash
+  dbt sl validate
+  ```
+
+- For open-source users (Core or Fusion source available):
+
+  ```bash
+  mf validate-configs
+  ```
+
+```bash
 Options:
+
   --timeout                       # dbt platform only
                                   Optional timeout for data warehouse validation in dbt platform.
   --dw-timeout INTEGER            # dbt Core only

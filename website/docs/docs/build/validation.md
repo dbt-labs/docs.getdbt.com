@@ -16,20 +16,23 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 
 You can run validations from the <Constant name="dbt_platform" /> or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In <Constant name="cloud" />, you need developer credentials to run `dbt sl validate-configs` in the IDE or CLI, and deployment credentials to run it in CI.
 
-```bash
-# For Fusion and dbt users in the dbt platform CLI or locally with a valid dbt_cloud.yml
-# runs parsing, semantic, and (where supported) data platform validations
-dbt sl validate
+- For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
 
-# dbt Core (open source) users 
-# Fusion CLI users not connected to dbt platform and using local MetricFlow
-# runs parsing and semantic validations 
-mf validate-configs
-```
+  ```bash
+  dbt sl validate
+  ```
 
-import SLValidations from '/snippets/_sl-validations.md';
+  This runs parsing, semantic, and (where supported) data platform validations.
 
-<SLValidations />
+  When using `dbt sl validate` locally, the command validates your local semantic manifest, and not the platform's manifest. This means your uncommitted local changes are included in the validation.
+
+- For dbt Core (open source) users or Fusion CLI users not connected to dbt platform and using local MetricFlow:
+
+  ```bash
+  mf validate-configs
+  ```
+  
+  This runs parsing and semantic validations.
 
 ## Availability by environment
 
