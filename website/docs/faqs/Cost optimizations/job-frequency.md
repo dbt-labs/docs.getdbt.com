@@ -9,4 +9,4 @@ Cost reduction metrics reflect how dbt optimizes compute costs by reusing existi
 
 When you increase your job run frequency (for example, because performance improvements make it easier to schedule jobs more often), dbt has more opportunities to reuse models. As reuse increases, dbt optimizes more compute, which means your reported cost reductions may also increase.
 
-This metric shows the efficiency impact of model reuse within your current workload. It reflects how dbt optimizes compute through intelligent execution to maximize warehouse value, not just reduce total warehouse spend.
+This metric shows the efficiency impact of reuse within your current workload. It reflects the compute costs that dbt reduces by reusing models instead of rebuilding them, rather than showing your total warehouse spend reduction.
