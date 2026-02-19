@@ -62,6 +62,14 @@ There are three default groups available as soon as you create your <Constant na
 - **Member:** This group is for the general members of your organization. Default permissions are broad, restricting only access to features that can alter billing or security. By default, <Constant name="cloud" /> adds new users to this group.
 - **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, <Constant name="cloud" /> adds new users to this group.
 
+:::note default group permissions
+
+The `Owner` and `Member` groups have default permission sets:
+- **Starter plan:** The `Owner` and `Member` groups use the `Owner` and `Member` [permission sets](/docs/cloud/manage-access/self-service-permissions#table-of-groups-licenses-and-permissions), respectively.
+- **Enterprise plans:** By default, dbt assigns the `Owner` group an [`Account Admin`](/docs/cloud/manage-access/enterprise-permissions#account-admin) permission set, and the `Member` group a `Member` permission set, which doesn't appear in the settings, but has the same privileges as the [`Admin`](/docs/cloud/manage-access/enterprise-permissions#admin) permission set.
+
+:::
+
 Default groups are automatically provisioned for all accounts to simplify the initial set up. We recommend  creating your own organizational groups so you can customize the permissions. Once you create your own groups, you can delete the default groups.
 
 ### Create new groups <Lifecycle status="managed,managed_plus" />

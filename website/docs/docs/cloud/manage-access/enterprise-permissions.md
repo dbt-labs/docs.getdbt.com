@@ -42,6 +42,7 @@ Notable features:
 - Unrestricted access to existing projects, but can't create new projects.
 - Can invite new members and assign access but can't create groups.
 - Can access <Constant name="explorer" />.
+- The default permissions assigned to the `Member` group.
 
 </Expandable>
 <Expandable alt_header="Analyst">
