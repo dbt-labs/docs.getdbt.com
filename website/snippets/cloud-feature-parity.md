@@ -13,6 +13,6 @@ The following table outlines which <Constant name="cloud" /> features are suppor
 | Discovery API                 | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
 | IP restrictions               | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
 | <Constant name="orchestrator" />  | ✅           | ✅                    | ✅                  | ✅                  | ✅               |
-| PrivateLink egress            | ✅ (AWS only)    | ✅                    | ✅                  | ✅                  | ✅               |
-| PrivateLink ingress           | ❌               | ✅                    | ❌                  | ✅                  | ✅               |
+| PrivateLink egress            | ✅               | ✅                    | ✅                  | ✅                  | ✅               |
+| PrivateLink ingress           | ❌               | ✅                    | ❌                  | ✅                  | ❌               |
 | Webhooks (Outbound)           | ✅               | ✅                    | ✅                  | ❌                  | ❌               |
