@@ -1,5 +1,5 @@
 ---
-title:  How will cost and reduction estimates be affected if I increase the frequency of my jobs?
+title:  How does increasing job frequency affect cost reduction estimates?
 description: "Explanation of how increasing run frequency affects cost reductions"
 sidebar_label: 'Job frequency and cost reductions'
 id: job-frequency-change
