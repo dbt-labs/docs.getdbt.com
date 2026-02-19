@@ -1,8 +1,26 @@
-To connect to a {props.redshift}{props.postgresalloydb} instance via an SSH tunnel, select the **Use SSH Tunnel** option when creating your connection. When configuring the tunnel, you must supply the hostname, username, and port for the [bastion server](#about-the-bastion-server-in-aws).
+Use an SSH tunnel when your {props.redshift}{props.postgresalloydb} instance is not publicly accessible and must be reached through a [bastion server](/docs/cloud/connect-data-platform/connect-redshift#about-the-bastion-server-in-aws). When enabled, <Constant name="dbt_platform" /> connects to your database by first establishing a secure connection to the bastion host, which then forwards traffic to your database.
 
-Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize <Constant name="cloud" /> to connect to your database via the bastion server.
+To configure a connection using an SSH tunnel:
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" width="70%" title="A public key is generated after saving"/>
+1. Navigate to **Account settings** (by clicking on your account name in the left side menu) and select **Connections**.
+2. Select an existing connection to edit it, or click **+ New connection**.
+3. In **Connection settings**, ensure **SSH Tunnel Enabled** is checked.
+4. Enter the hostname, username, and port for the bastion server.
+
+<Lightbox
+  src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png"
+  width="70%"
+  title="A public key is generated after saving"
+/>
+
+5. Click **Save**. <Constant name="dbt_platform" /> generates and displays a public key.
+
+   Each time you create and save a new SSH tunnel connection in <Constant name="dbt_platform" />, a new SSH key pair is generated. Even if the connection details are identical to an existing connection, the public key will be unique.
+
+6. Copy the public key to the bastion server to authorize <Constant name="dbt_platform" /> to connect to your database through the bastion server.
+
+   When you create a new SSH tunnel connection, you must add the newly generated public key to the bastion server’s `authorized_keys` file. If you do not add the new key, the SSH tunnel connection will fail.
+
 
 #### About the Bastion server in AWS
 
