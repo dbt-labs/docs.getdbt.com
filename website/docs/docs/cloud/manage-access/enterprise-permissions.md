@@ -122,7 +122,7 @@ Notable features:
 
 This permission set is used exclusively to enable users to interact with the Fusion upgrade workflows. We recommend limiting this permission to users and projects that are Fusion-ready. 
 
-By default, all users can access the Fusion upgrade experience and perform upgrades based on their existing permissions. When the Fusion upgrade permissions setting is enabled, only users with the fusion admin or account admin permission set can perform upgrades. If the setting is disabled, upgrades are not restricted.
+By default, all users can access the Fusion upgrade experience and perform upgrades based on their existing permissions. When the Fusion upgrade permissions setting is enabled (when you see a check mark), only users with the fusion admin or account admin permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
 
 When upgrade permissions are enabled:
 
