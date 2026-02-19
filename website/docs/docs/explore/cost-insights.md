@@ -44,7 +44,7 @@ For setup instructions, see [Set up Cost Insights](/docs/explore/set-up-cost-ins
 Cost estimates are intended for visibility and optimization, not billing reconciliation.
 :::
 
-dbt calculates the cost of running your dbt models using your data warehouse’s usage metadata and billing context. dbt computes costs daily using up to the _last seven days of available data_.
+dbt calculates the cost of running your dbt models using your data warehouse's usage metadata and billing context. dbt computes costs daily using up to the _last seven days of available data_.
 
 ### Warehouse-specific logic
 
