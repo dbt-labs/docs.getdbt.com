@@ -5,7 +5,7 @@ description: "Use dbt to proactively refresh the underlying data sources (like T
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 ---
 
-# Orchestrate downstream exposures <Lifecycle status="managed,managed_plus,beta" />
+# Orchestrate downstream exposures <Lifecycle status="managed,managed_plus" />
 
 <IntroText>
 
@@ -13,8 +13,8 @@ Use dbt [Cloud job scheduler](/docs/deploy/job-scheduler) to proactively refresh
 
 </IntroText>
 
-:::tip Available in private beta
-Orchestrating exposures is currently available in private beta to <Constant name="cloud" /> Enterprise accounts. To join the beta, contact your account representative.
+:::tip
+Orchestrating downstream exposures for Tableau is available for <Constant name="cloud" /> Enterprise and Enterprise+ accounts.
 :::
 
 Orchestrating exposures integrates with [downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau) and uses your `dbt build` job to ensure that Tableau extracts are updated regularly.
@@ -25,7 +25,7 @@ Control the frequency of these refreshes by configuring environment variables in
 
 The following table summarizes the differences between visualizing and orchestrating downstream exposures:
 
-| Info | Set up and visualize downstream exposures | Orchestrate downstream exposures <Lifecycle status="beta"/> |
+| Info | Set up and visualize downstream exposures | Orchestrate downstream exposures |
 | ---- | ---- | ---- |
 | Purpose | Automatically brings downstream assets into your dbt lineage. | Proactively refreshes the underlying data sources during scheduled dbt jobs. |
 | Benefits | Provides visibility into data flow and dependencies. | Ensures BI tools always have up-to-date data without manual intervention. |
