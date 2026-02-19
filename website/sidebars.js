@@ -712,6 +712,19 @@ const sidebarSettings = {
         "docs/explore/explore-your-data",
         {
           type: "category",
+          label: "Track costs and optimizations with Cost Insights",
+          link: {
+            type: "doc",
+            id: "docs/explore/cost-insights",
+          },
+          items: [
+            "docs/explore/cost-insights",
+            "docs/explore/set-up-cost-insights",
+            "docs/explore/explore-cost-data",
+          ],
+        },
+        {
+          type: "category",
           label: "Discover data with dbt Catalog",
           link: { type: "doc", id: "docs/explore/explore-projects" },
           items: [

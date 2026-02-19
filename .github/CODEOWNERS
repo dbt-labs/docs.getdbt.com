@@ -13,6 +13,6 @@
 /website/docs/guides/building-packages                          @dbt-labs/product-docs
 /website/docs/guides/creating-new-materializations              @dbt-labs/product-docs
 
-# Require approval from the Multicell team when making
-# changes to the public facing migration documentation.
-/website/docs/docs/cloud/migration.md @dbt-labs/dev-multicell
+# Require approval from the Transport team when making
+# changes to the public-facing migration documentation.
+/website/docs/docs/cloud/migration.md @dbt-labs/transport
