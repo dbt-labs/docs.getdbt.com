@@ -63,8 +63,6 @@ models:
 
 ### Defining variables on the command line
 
-The `dbt_project.yml` file is a great place to define variables that rarely change. 
-
 import Commandlinevariable from '/snippets/_command-line-variables.md';
 
 <Commandlinevariable />
