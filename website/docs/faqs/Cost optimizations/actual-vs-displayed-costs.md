@@ -5,7 +5,7 @@ sidebar_label: 'Actual vs displayed costs'
 id: actual-vs-displayed-costs
 ---
 
-Cost Insights shows estimates based on warehouse-reported usage and your configured pricing variables. Adjustments and differences may occur if:
+Cost Insights shows estimates based on warehouse-reported usage and your configured pricing variables. These estimates are based on a retroactive analysis of historical runs and reflect actual usage, _not_ forecasts of future costs. Adjustments and differences may occur if:
 
 - Your warehouse has custom pricing that differs from the default compute credit unit.
 - There are discounts or credits applied at the billing level that aren't reflected in usage tables.
