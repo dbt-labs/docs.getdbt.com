@@ -64,7 +64,7 @@ The easiest way to create and configure a `profiles.yml` file is to execute `dbt
 
 If your project has an existing `profiles.yml` file, running `dbt init` will prompt you to amend or overwrite it. If you select the existing adapter for configuration, dbt will automatically populate the existing values.
 
-You can also manually create the file and add it to the proper location. To configure an adapter manually, copy and paste the fields from the adapter setup instructions for [<Constant name="core" />](/docs/core/connect-data-platform/about-core-connections) or [<Constant name="fusion" />](/docs/fusion/connect-data-platform-fusion/profiles.yml) along with the appropriate values for each. 
+You can also manually create the file and add it to the proper location. To configure an adapter manually, copy and paste the fields from the adapter setup instructions for [<Constant name="core" />](/docs/local/connect-data-platform/about-core-connections) or [<Constant name="fusion" />](/docs/local/connect-data-platform/profiles.yml) along with the appropriate values for each. 
 
 ### Example configuration
 

@@ -18,7 +18,7 @@ Learn how to configure the <Constant name="cloud_cli" /> for your <Constant name
 ## Prerequisites
 
 - You must set up a project in <Constant name="cloud" />.
-  - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="dbt_platform" /> interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+  - **Note** &mdash; If you're using the <Constant name="cloud_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="dbt_platform" /> interface and don't need a [`profiles.yml`](/docs/local/connect-data-platform/profiles.yml) file. 
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="cloud_cli" /> will use these credentials, stored securely in <Constant name="cloud" />, to communicate with your data platform.
 - You must be on dbt version 1.5 or higher. Refer to [<Constant name="cloud" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
 

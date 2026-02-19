@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ## Resources 
 
 - <Constant name="core" /> [v1.10 changelog](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md)
-- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
 ## What to know before upgrading
@@ -315,12 +315,12 @@ The `warn_error_option` options for `include` and `exclude` have been deprecated
 ## Adapter-specific features and functionalities
 
 ### Snowflake
-- You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/core/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
+- You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/local/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
 
 
 ### BigQuery
 
-- `dbt-bigquery` cancels BigQuery jobs that exceed their configured timeout by sending a cancellation request. If the request succeeds, dbt stops the job. If the request fails, the BigQuery job may keep running in the background until it finishes or you cancel it manually. For more information, see [Timeout and retries](/docs/core/connect-data-platform/bigquery-setup#timeouts-and-retries).
+- `dbt-bigquery` cancels BigQuery jobs that exceed their configured timeout by sending a cancellation request. If the request succeeds, dbt stops the job. If the request fails, the BigQuery job may keep running in the background until it finishes or you cancel it manually. For more information, see [Timeout and retries](/docs/local/connect-data-platform/bigquery-setup#timeouts-and-retries).
 
 
 ## Quick hits

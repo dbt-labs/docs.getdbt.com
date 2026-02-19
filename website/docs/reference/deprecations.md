@@ -351,7 +351,7 @@ Rename one of the conflicting resources to ensure all names are unique.
 
 This warning is raised when two identical keys exist in the `profiles.yml`. 
 
-Previously, if identical keys existed in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml), dbt would use the last configuration listed in the file. 
+Previously, if identical keys existed in the [`profiles.yml` file](/docs/local/connect-data-platform/profiles.yml), dbt would use the last configuration listed in the file. 
 
 <File name='profiles.yml'>
 
