@@ -2,7 +2,7 @@
 title:  How does increasing job frequency affect cost reduction estimates?
 description: "Explanation of how increasing run frequency affects cost reductions"
 sidebar_label: 'Job frequency and cost reductions'
-id: job-frequency-change
+id: job-frequency
 ---
 
 Cost reduction metrics reflect how dbt optimizes compute costs by reusing existing results instead of running the same model again.
