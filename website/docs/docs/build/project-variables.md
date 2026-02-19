@@ -28,6 +28,8 @@ Jinja is not supported within the `vars` config, and all values will be interpre
 
 :::
 
+s
+
 
 To define variables in a dbt project, add a `vars` config to your `dbt_project.yml` file.
 These `vars` can be scoped globally, or to a specific package imported in your
@@ -61,30 +63,11 @@ models:
 
 ### Defining variables on the command line
 
-The `dbt_project.yml` file is a great place to define variables that rarely
-change. Other types of variables, like date ranges, will change frequently. To
-define (or override) variables for a run of dbt, use the `--vars` command line
-option. In practice, this looks like:
+The `dbt_project.yml` file is a great place to define variables that rarely change. 
 
-```
-$ dbt run --vars '{"key": "value"}'
-```
+import Commandlinevariable from '/snippets/_command-line-variables.md';
 
-The `--vars` argument accepts a YAML dictionary as a string on the command line.
-YAML is convenient because it does not require strict quoting as with <Term id="json" />.
-
-Both of the following are valid and equivalent:
-
-```
-$ dbt run --vars '{"key": "value", "date": 20180101}'
-$ dbt run --vars '{key: value, date: 20180101}'
-```
-
-If only one variable is being set, the brackets are optional, eg:
-
-```
-$ dbt run --vars 'key: value'
-```
+<Commandlinevariable />
 
 You can find more information on defining dictionaries with YAML [here](https://github.com/Animosity/CraftIRC/wiki/Complete-idiot%27s-introduction-to-yaml).
 
