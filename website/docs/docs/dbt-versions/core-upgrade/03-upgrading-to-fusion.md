@@ -398,7 +398,7 @@ For more information, see [config.meta_get()](/reference/dbt-jinja-functions/con
 
 #### Snowflake model functions
 
-<Constant name="fusion" /> supports [Snowflake ML model functions](https://docs.snowflake.com/en/user-guide/ml-functions-overview), which allow you to call machine learning models directly in SQL. 
+<Constant name="fusion" /> supports [Snowflake ML model functions](https://docs.snowflake.com/en/guides-overview-ml-functions), which allow you to call machine learning models directly in SQL. 
 
 Because model function return types are flexible and defined by the underlying model, <Constant name="fusion" /> uses simplified type checking:
 - **Arguments:** <Constant name="fusion" /> accepts any arguments without strict type validation.
