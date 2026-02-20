@@ -1,5 +1,6 @@
 ---
 title: "TiDB setup"
+sidebar_label: "TiDB"
 description: "Read this guide to learn about the TiDB warehouse setup in dbt."
 id: "tidb-setup"
 meta:

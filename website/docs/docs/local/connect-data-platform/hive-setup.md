@@ -1,5 +1,6 @@
 ---
 title: "Cloudera Hive setup"
+sidebar_label: "Cloudera Hive"
 description: "Read this guide to learn about the Cloudera Hive warehouse setup in dbt."
 id: "hive-setup"
 meta:

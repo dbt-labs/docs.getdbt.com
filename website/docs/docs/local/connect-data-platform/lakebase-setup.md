@@ -1,5 +1,6 @@
 ---
 title: "Databricks Lakebase setup"
+sidebar_label: "Databricks Lakebase"
 meta:
   maintained_by: dbt Labs
   authors: dbt Labs

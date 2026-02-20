@@ -1,5 +1,6 @@
 ---
 title: "MindsDB setup"
+sidebar_label: "MindsDB"
 id: "mindsdb-setup"
 meta:
   maintained_by: MindsDB

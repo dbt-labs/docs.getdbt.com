@@ -1,5 +1,6 @@
 ---
 title: "Firebolt setup"
+sidebar_label: "Firebolt"
 description: "Read this guide to learn about the Firebolt warehouse setup in dbt."
 meta:
   maintained_by: Firebolt

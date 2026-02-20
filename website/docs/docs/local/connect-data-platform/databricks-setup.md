@@ -1,5 +1,6 @@
 ---
 title: "Databricks setup"
+sidebar_label: "Databricks"
 description: "Read this guide to learn about the Databricks warehouse setup in dbt."
 id: "databricks-setup"
 meta:
@@ -142,7 +143,8 @@ Find Databricks-specific configuration information in the [Databricks adapter re
 
 <VersionBlock lastVersion="1.99">
 
-<Snippet path="warehouse-setups-cloud-callout" />
+
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/databricks-setup?version=2.0" />
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 

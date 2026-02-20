@@ -1,5 +1,6 @@
 ---
 title: "Athena setup"
+sidebar_label: "Athena"
 description: "Read this guide to learn about the Athena warehouse setup in dbt."
 meta:
   maintained_by: dbt Labs

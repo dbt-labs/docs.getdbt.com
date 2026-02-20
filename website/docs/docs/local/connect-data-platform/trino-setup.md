@@ -1,5 +1,6 @@
 ---
 title: "Starburst/Trino setup"
+sidebar_label: "Starburst/Trino"
 description: "Read this guide to learn about the Starburst/Trino warehouse setup in dbt."
 id: "trino-setup"
 meta:

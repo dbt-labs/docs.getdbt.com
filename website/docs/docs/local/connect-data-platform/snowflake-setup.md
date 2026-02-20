@@ -1,5 +1,6 @@
 ---
 title: "Snowflake setup"
+sidebar_label: "Snowflake"
 description: "Read this guide to learn about the Snowflake warehouse setup in dbt."
 id: "snowflake-setup"
 meta:
@@ -188,7 +189,8 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 
 <VersionBlock lastVersion="1.99">
 
-<Snippet path="warehouse-setups-cloud-callout" />
+
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2.0" />
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 

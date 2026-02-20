@@ -1,5 +1,6 @@
 ---
 title: "IBM watsonx.data Spark setup"
+sidebar_label: "IBM watsonx.data Spark"
 description: "Read this guide to learn about the IBM watsonx.data Spark setup in dbt."
 id: "watsonx-spark-setup"
 meta:

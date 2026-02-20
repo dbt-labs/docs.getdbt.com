@@ -1,5 +1,6 @@
 ---
 title: "IBM watsonx.data Presto setup"
+sidebar_label: "IBM watsonx.data Presto"
 description: "Read this guide to learn about the IBM watsonx.data Presto setup in dbt."
 id: "watsonx-presto-setup"
 meta:

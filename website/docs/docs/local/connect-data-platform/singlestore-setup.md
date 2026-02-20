@@ -1,5 +1,6 @@
 ---
 title: "SingleStore setup"
+sidebar_label: "SingleStore"
 description: "Read this guide to learn about the SingleStore warehouse setup in dbt."
 id: "singlestore-setup"
 meta:

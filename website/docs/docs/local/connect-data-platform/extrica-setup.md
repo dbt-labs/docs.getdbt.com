@@ -1,5 +1,6 @@
 ---
 title: "Extrica Setup"
+sidebar_label: "Extrica"
 description: "Read this guide to learn about the Extrica Trino Query Engine setup in dbt."
 id: "extrica-setup"
 meta:

@@ -1,5 +1,6 @@
 ---
 title: "Salesforce Data Cloud setup"
+sidebar_label: "Salesforce Data Cloud"
 description: "Read this guide to learn about the Salesforce Data Cloud warehouse setup in dbt."
 id: "salesforce-data-cloud-setup"
 meta:

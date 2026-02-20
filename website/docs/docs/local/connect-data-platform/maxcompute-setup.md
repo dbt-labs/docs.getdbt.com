@@ -1,5 +1,6 @@
 ---
 title: "MaxCompute setup"
+sidebar_label: "MaxCompute"
 description: "Read this guide to learn about the MaxCompute setup in dbt."
 meta:
   maintained_by: Alibaba Cloud MaxCompute Team

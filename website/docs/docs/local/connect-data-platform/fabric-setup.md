@@ -1,5 +1,6 @@
 ---
 title: "Microsoft Fabric Data Warehouse setup"
+sidebar_label: "Microsoft Fabric Data Warehouse"
 description: "Read this guide to learn about the Microsoft Fabric Data Warehouse setup in dbt."
 id: fabric-setup
 meta:

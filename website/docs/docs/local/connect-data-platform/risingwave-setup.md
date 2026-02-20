@@ -1,5 +1,6 @@
 ---
 title: "RisingWave setup"
+sidebar_label: "RisingWave"
 id: "risingwave-setup"
 description: "Read this guide to learn about how to set up RisingWave in dbt."
 meta:

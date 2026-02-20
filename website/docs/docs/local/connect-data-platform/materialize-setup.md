@@ -1,5 +1,6 @@
 ---
 title: "Materialize setup"
+sidebar_label: "Materialize"
 description: "Read this guide to learn about the Materialize warehouse setup in dbt."
 id: "materialize-setup"
 meta:

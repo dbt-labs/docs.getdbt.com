@@ -1,5 +1,6 @@
 ---
 title: "Vertica setup"
+sidebar_label: "Vertica"
 id: "vertica-setup"
 meta:
   maintained_by: 'Vertica'

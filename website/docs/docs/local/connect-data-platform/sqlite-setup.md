@@ -1,5 +1,6 @@
 ---
 title: "SQLite setup"
+sidebar_label: "SQLite"
 description: "Read this guide to learn about the SQLite warehouse setup in dbt."
 id: "sqlite-setup"
 meta:

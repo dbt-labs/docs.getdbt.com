@@ -1,5 +1,6 @@
 ---
 title: "YDB setup"
+sidebar_label: "YDB"
 description: "Read this guide to learn how to configure YDB with dbt."
 id: "ydb-setup"
 meta:

@@ -1,5 +1,6 @@
 ---
 title: "AlloyDB setup"
+sidebar_label: "AlloyDB"
 meta:
   maintained_by: dbt Labs
   authors: dbt Labs

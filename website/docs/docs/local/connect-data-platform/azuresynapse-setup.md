@@ -1,5 +1,6 @@
 ---
 title: "Microsoft Azure Synapse Analytics setup"
+sidebar_label: "Microsoft Azure Synapse Analytics"
 description: "Read this guide to learn about the Mircosoft Azure Synapse Analytics dedicated SQL pool setup in dbt."
 meta:
   maintained_by: Microsoft

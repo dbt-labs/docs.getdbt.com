@@ -1,5 +1,6 @@
 ---
 title: "Redshift setup"
+sidebar_label: "Redshift"
 description: "Read this guide to learn about the Redshift warehouse setup in dbt."
 id: "redshift-setup"
 meta:
@@ -113,7 +114,8 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-<Snippet path="warehouse-setups-cloud-callout" />
+
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2.0" />
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
