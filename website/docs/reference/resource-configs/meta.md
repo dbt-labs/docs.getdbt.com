@@ -802,12 +802,6 @@ semantic-models:
 
 ### Access meta values in Python models
 
-:::caution Deprecated pattern
-
-The previous approach of using `dbt.config.get("meta")` to retrieve the meta object has been deprecated. Use `dbt.config.meta_get()` instead. You can use [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) to automatically migrate to the correct pattern.
-
-:::
-
 To access custom `meta` values in [Python models](/docs/build/python-models), use the `dbt.config.meta_get()` method.
 
 For example, if you have a model named `my_python_model` and you want to store custom values, you can do the following:
