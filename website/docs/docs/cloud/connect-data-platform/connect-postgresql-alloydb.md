@@ -38,7 +38,6 @@ import BastionServer from '/snippets/_bastion-server.md';
 
 <BastionServer postgresalloydb='Postgres or AlloyDB' postgres='Postgres' />
 
-
 ## Configuration
 
 To grant users or roles database permissions (access rights and privileges), refer to the [Postgres permissions](/reference/database-permissions/postgres-permissions) page.

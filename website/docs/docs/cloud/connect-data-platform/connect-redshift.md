@@ -73,7 +73,6 @@ import BastionServer from '/snippets/_bastion-server.md';
 
 <BastionServer redshift='Redshift' />
 
-
 ## Configuration
 
 To optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).

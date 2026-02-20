@@ -15,12 +15,9 @@ To configure a connection using an SSH tunnel:
 
 5. Click **Save**. <Constant name="dbt_platform" /> generates and displays a public key.
 
-   Each time you create and save a new SSH tunnel connection in <Constant name="dbt_platform" />, a new SSH key pair is generated. Even if the connection details are identical to an existing connection, the public key will be unique.
-
-6. Copy the public key to the bastion server to authorize <Constant name="dbt_platform" /> to connect to your database through the bastion server.
-
-   When you create a new SSH tunnel connection, you must add the newly generated public key to the bastion server’s `authorized_keys` file. If you do not add the new key, the SSH tunnel connection will fail.
-
+  :::important
+   Each time you create and save a new SSH tunnel connection, <Constant name="dbt_platform" /> generates a unique SSH key pair, even when the connection details are identical to an existing connection. Copy the newly generated public key to the bastion server and add it to the server’s `authorized_keys` file to authorize <Constant name="dbt_platform" /> to connect through the bastion host. If the new key is not added, the SSH tunnel connection will fail.
+  :::
 
 #### About the Bastion server in AWS
 
