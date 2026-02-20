@@ -34,7 +34,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Authentication
 
-The Fabric Lakehouse adapter (`dbt-fabricspark`) connects to Fabric Spark through the Livy API. To authenticate using your active Azure CLI session (for example, after running `az login`), set `authentication: CLI` in your `profiles.yml` file.
+The Fabric Lakehouse adapter (`dbt-fabricspark`) connects to Fabric Spark through the Livy API. You can authenticate using Azure CLI, which allows dbt to use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file.
 
 See [`session-jobs`](/docs/core/connect-data-platform/fabricspark-setup#session-jobs) for an example authentication configuration.
 
