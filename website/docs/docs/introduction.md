@@ -17,19 +17,19 @@ Read more about why we want to enable analysts to work more like software engine
 
 ## The dbt framework
 
+Use the dbt framework to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines.
+
 The dbt framework is composed of a **language** and an **engine**:
 
 - The dbt **language** is the code you write in your dbt project &mdash; SQL select statements, Jinja templating, YAML configs, and tests. It has become a standard for the data industry.
 
-- The dbt **engine** compiles your project, executes your transformation graph, and produces metadata. dbt supports two engines: the **Fusion engine** and **dbt Core**.
-
-Use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines.
+- The dbt **engine** compiles your project, executes your transformation graph, and produces metadata. dbt supports two engines: [dbt <Constant name="fusion" />](/docs/fusion) and [<Constant name="core" />](/docs/core/installation-overview).
 
 ### The dbt Fusion engine
 
 The <Constant name="fusion_engine" /> is a fast, Rust-based engine that delivers a lightning-fast development experience, intelligent cost savings, and improved governance. Fusion understands SQL natively across multiple dialects, catches errors instantly, and optimizes how your models are built. The Fusion engine is the foundation for future investment and innovation in dbt.
 
-Fusion powers dbt in the [<Constant name="dbt_platform" />](/docs/cloud/about-cloud/dbt-cloud-features), [VS Code / Cursor](/docs/about-dbt-extension), and [locally from the command line](/docs/fusion/install-fusion-cli). You do not need to be a paying dbt customer to use Fusion.
+Fusion powers dbt in the [<Constant name="dbt_platform" />](/docs/cloud/about-cloud/dbt-cloud-features), [VS Code / Cursor](/docs/about-dbt-extension), and [locally from the command line](/docs/fusion/install-fusion-cli). You do not need to have a <Constant name="dbt_platform" /> project to use <Constant name="fusion_engine" />.
 
 For more information, refer to [About the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [get started with Fusion](/docs/fusion/get-started-fusion) page.
 
@@ -50,7 +50,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 ### Local development
 
-Install dbt locally to develop from your command line or code editor:
+Use the dbt framework and develop dbt projects from your command line or code editor:
 
 - [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes <Term id="lsp" /> features and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
 - [Install the Fusion CLI](/docs/fusion/install-fusion-cli) &mdash; <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
