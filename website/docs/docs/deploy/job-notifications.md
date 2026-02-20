@@ -164,7 +164,15 @@ After an account admin links the Slack app for the account, [any licensed user](
 ### Set up the Slack integration
 
 :::info
-The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). To use the private beta Slack notifications, you must **unlink the old app** (in **Account settings** → **Integrations** → **OAuth**, click the **X** icon next to Slack and choose **Unlink**) and **link to the new official app** by clicking **Link** in the same OAuth section. Until you do this, the account-level Slack option will not appear.
+The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
+
+To use the private beta Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+
+1. Go to **Account settings** > **Integrations** > **OAuth**.
+2. Click the **X** icon next to Slack and select **Unlink**.
+3. In the same OAuth section, click **Link** to connect the official Slack app.
+
+Until you do this, the account-level Slack option will not appear.
 :::
 
 1. Select **Account settings** and then select **Integrations** from the left sidebar.
