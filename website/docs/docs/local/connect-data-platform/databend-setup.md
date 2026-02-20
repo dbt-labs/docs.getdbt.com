@@ -1,5 +1,6 @@
 ---
 title: "Databend Cloud setup"
+sidebar_label: "Databend Cloud"
 description: "Read this guide to learn about the Databend warehouse setup in dbt."
 id: "databend-setup"
 meta:

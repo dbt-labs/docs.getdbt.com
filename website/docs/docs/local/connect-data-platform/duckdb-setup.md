@@ -1,5 +1,6 @@
 ---
 title: "DuckDB setup"
+sidebar_label: "DuckDB"
 description: "Read this guide to learn about the DuckDB warehouse setup in dbt."
 meta:
   maintained_by: Community

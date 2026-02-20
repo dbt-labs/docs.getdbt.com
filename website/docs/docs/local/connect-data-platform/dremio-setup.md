@@ -1,5 +1,6 @@
 ---
 title: "Dremio setup"
+sidebar_label: "Dremio"
 description: "Read this guide to learn about the Dremio warehouse setup in dbt."
 meta:
   maintained_by: Dremio

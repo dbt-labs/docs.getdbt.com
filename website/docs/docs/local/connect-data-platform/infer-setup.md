@@ -1,5 +1,6 @@
 ---
 title: "Infer setup"
+sidebar_label: "Infer"
 description: "Read this guide to learn about the Infer warehouse setup in dbt."
 id: "infer-setup"
 meta:

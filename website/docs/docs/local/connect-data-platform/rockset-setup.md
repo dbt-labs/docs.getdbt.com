@@ -1,5 +1,6 @@
 ---
 title: "Rockset setup"
+sidebar_label: "Rockset"
 description: "Read this guide to learn about the Rockset warehouse setup in dbt."
 id: "rockset-setup"
 meta:

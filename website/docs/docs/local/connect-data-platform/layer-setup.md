@@ -1,5 +1,6 @@
 ---
 title: "Layer setup"
+sidebar_label: "Layer"
 description: "Read this guide to learn about the Layer warehouse setup in dbt."
 id: "layer-setup"
 meta:

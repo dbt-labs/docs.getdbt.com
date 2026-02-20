@@ -1,5 +1,6 @@
 ---
 title: "CrateDB setup"
+sidebar_label: "CrateDB"
 description: "Read this guide to learn about the CrateDB data platform setup in dbt."
 id: "cratedb-setup"
 meta:

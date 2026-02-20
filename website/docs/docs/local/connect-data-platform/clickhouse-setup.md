@@ -1,5 +1,6 @@
 ---
 title: "ClickHouse setup"
+sidebar_label: "ClickHouse"
 description: "Read this guide to learn about the ClickHouse warehouse setup in dbt."
 meta:
   maintained_by: Community

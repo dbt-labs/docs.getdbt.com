@@ -1,5 +1,6 @@
 ---
 title: "Exasol setup"
+sidebar_label: "Exasol"
 description: "Read this guide to learn about the Exasol warehouse setup in dbt."
 meta:
   maintained_by: Community

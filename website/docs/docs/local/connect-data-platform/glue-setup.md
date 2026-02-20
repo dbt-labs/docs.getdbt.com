@@ -1,5 +1,6 @@
 ---
 title: "AWS Glue setup"
+sidebar_label: "AWS Glue"
 description: "Read this guide to learn about the AWS Glue warehouse setup in dbt."
 id: "glue-setup"
 meta:

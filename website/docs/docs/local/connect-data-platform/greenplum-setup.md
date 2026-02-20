@@ -1,5 +1,6 @@
 ---
 title: "Greenplum setup"
+sidebar_label: "Greenplum"
 description: "Read this guide to learn about the Greenplum warehouse setup in dbt."
 id: "greenplum-setup"
 meta:

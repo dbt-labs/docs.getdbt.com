@@ -1,5 +1,6 @@
 ---
 title: "Doris setup"
+sidebar_label: "Doris"
 description: "Read this guide to learn about the Doris warehouse setup in dbt."
 id: "doris-setup"
 meta:

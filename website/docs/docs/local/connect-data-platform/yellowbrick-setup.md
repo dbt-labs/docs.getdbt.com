@@ -1,5 +1,6 @@
 ---
 title: "Yellowbrick setup"
+sidebar_label: "Yellowbrick"
 description: "Read this guide to learn about the Yellowbrick warehouse setup in dbt."
 id: "yellowbrick-setup"
 meta:

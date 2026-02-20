@@ -1,5 +1,6 @@
 ---
 title: "IBM Netezza setup"
+sidebar_label: "IBM Netezza"
 description: "Read this guide to learn about the IBM Netezza setup in dbt."
 id: "ibmnetezza-setup"
 meta:

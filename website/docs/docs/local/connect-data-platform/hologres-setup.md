@@ -1,5 +1,6 @@
 ---
 title: "Hologres setup"
+sidebar_label: "Hologres"
 description: "Read this guide to learn about the Alibaba Cloud Hologres setup in dbt."
 meta:
   maintained_by: Alibaba Cloud Hologres Team

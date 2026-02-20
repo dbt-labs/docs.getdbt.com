@@ -1,5 +1,6 @@
 ---
 title: "Decodable setup"
+sidebar_label: "Decodable"
 id: "decodable-setup"
 meta:
   maintained_by: Decodable

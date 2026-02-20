@@ -1,5 +1,6 @@
 ---
 title: "Microsoft SQL Server setup"
+sidebar_label: "Microsoft SQL Server"
 description: "Read this guide to learn about the Microsoft SQL Server warehouse setup in dbt."
 id: "mssql-setup"
 meta:
