@@ -42,6 +42,7 @@ Notable features:
 - Unrestricted access to existing projects, but can't create new projects.
 - Can invite new members and assign access but can't create groups.
 - Can access <Constant name="explorer" />.
+- The default permissions assigned to the `Member` group.
 
 </Expandable>
 <Expandable alt_header="Analyst">
@@ -119,7 +120,15 @@ Notable features:
 
 </Expandable>
 <Expandable alt_header="Fusion admin">
+
 This permission set is used exclusively to enable users to interact with the Fusion upgrade workflows. We recommend limiting this permission to users and projects that are Fusion-ready. 
+
+By default, all users can access the Fusion upgrade experience and perform upgrades based on their existing permissions. When the Fusion upgrade permissions setting is enabled (when you see a check mark), only users with the fusion admin or account admin permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
+
+When upgrade permissions are enabled:
+
+- **Fusion admin** &mdash; Assign to user accounts. This permission cannot be assigned to service tokens.
+- **Account admin** &mdash; Assign to users or service tokens. This permission allows both users and service tokens to perform upgrades.
 
 See the [dbt platform Fusion upgrade](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine) docs for more information.
 
