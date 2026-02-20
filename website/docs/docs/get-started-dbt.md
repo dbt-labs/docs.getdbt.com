@@ -6,17 +6,19 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](#the-dbt-platform) or [<Constant name="core" />](#dbt-local-installations) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
+Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](/docs/introduction#the-dbt-platform) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
 
-## The dbt platform (formerly dbt Cloud) {#the-dbt-platform}
+## The dbt platform
 
-<Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
+<Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It's powered by the dbt [<Constant name="fusion" />](/docs/fusion) and [<Constant name="core" />](/docs/introduction#dbt-core-engine) engines,  and enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
 
 - Development experiences tailored to multiple personas (in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or locally with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)).
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs).
 - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint.
 - Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups.
 - [<Constant name="explorer" />](/docs/explore/explore-projects) for collaborative data discovery and understanding.
+
+The <Constant name="fusion_engine" /> adds managed execution, state-aware orchestration, and a unified development experience so you can focus on building rather than infrastructure.
 
 Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
 
@@ -80,7 +82,9 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
 
 ## dbt local installations
 
-[<Constant name="core" /> and <Constant name="fusion_engine" />](/docs/install-dbt) provide command-line tools that enable data practitioners to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
+When you [install dbt locally](/docs/about-dbt-install), you get command-line tools that enable you to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
+
+Develop locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
 <div className="grid--3-col">
 
@@ -96,8 +100,8 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
     icon="dbt-bit"/>
 
 <Card
-    title="Quickstart for dbt Core using DuckDB"
-    body="Learn how to connect to DuckDB."
+    title="Quickstart for dbt with DuckDB"
+    body="Learn how to connect dbt to DuckDB."
     link="/guides/duckdb?step=1"
     icon="duckdb"/>
 </div>
