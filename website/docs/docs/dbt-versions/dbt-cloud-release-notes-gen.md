@@ -17,6 +17,90 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## February 11, 2026
+
+## Enhancements
+
+### Catalog
+
+- **Faster model graph rendering for large projects**: Improved model graph layout performance to reduce load time in larger projects.
+
+- **Faster similar models results**: Similar Models lookup now uses an optimized vector search strategy to reduce timeouts on large projects.
+
+### Studio IDE
+
+- **Clearer project root in Catalog file tree**: When your dbt project is in a subdirectory, the project root is highlighted in the Catalog file tree.
+
+- **More native rename and delete in Catalog file tree**: Rename and delete actions now use native editor behaviors when using the Catalog file tree.
+
+- **More reliable in-browser formatting**: Formatting updates now apply directly to the active editor buffer to reduce prompts and inconsistent results.
+
+- **Cleaner code generation workflow**: Code generation no longer creates a temporary file in your repository during generation.
+
+### dbt platform
+
+- **Fusion compatibility validation on environments**: Environment settings now prevent saving a Fusion dbt version with an incompatible connection and surface field level validation errors.
+
+- **Smarter Fusion defaults during connection setup**: When setting up a new connection, Fusion eligible adapters now default to the latest Fusion version to reduce misconfiguration during setup.
+
+- **Improved Private Link endpoint management**: Private Endpoints can be sorted by status and connections, and endpoint details now show associated connections and environments.
+
+
+### Run Logs
+
+- **More reliable invocation event streaming**: Invocation event streaming is more reliable for long running jobs by deriving totals from the latest stream event identifier.
+
+- **Reduced Redis usage after log streams complete**: Log streaming now cleans up Redis keys after a stream completes, reducing stale keys and Redis memory pressure for high volume runs.
+
+## Fixes
+
+### dbt Copilot
+
+- **Consistent usage limit messaging in Insights and Studio IDE**: When users hit the usage limit, dbt disables Copilot and shows a clear message, including the reset date when available.
+
+### Studio IDE
+
+- **Git status decorations registered once**: Fixed duplicate Git status decorations in the file tree that could cause visual issues and performance impact.
+
+- **Avoid automatic pull on primary branch**: Studio IDE no longer runs an automatic pull on the primary branch to reduce unexpected changes during development.
+
+- **Clearer file operation validation errors**: File operations now return structured validation errors and explicitly reject names that exceed operating system limits.
+
+- **More reliable command log refresh and finalization**: Command logs for the dbt Cloud Command Line Interface (CLI) are refreshed and finalized more reliably.
+
+### Run Automation
+
+- **Correct account attribution for automatically triggered runs**: Scheduler triggered runs now include account context, improving run attribution and preventing some downstream triggers from running without proper context.
+
+- **Reject malformed account identifiers for exposure events**: Exposure generated events now validate that account identifiers are numeric before triggering follow on automation.
+
+### Webhooks
+
+- **More compatible run completion payload for canceled and errored runs**: Webhook payloads now include consistent completion and error timestamps, and canceled runs include a canceled timestamp and normalized status.
+
+- **Restored dual dispatch for some failure and completion triggers**: When both failure and completion triggers are configured, errored runs may generate two webhook deliveries to match legacy behavior.
+
+### dbt Project Metadata
+
+- **Manifest Ingestion: Accept functions section in manifest.json**: Ingestion now accepts the `functions` section (for example, Snowflake user defined functions (UDF)) to prevent parse failures on newer manifest schemas.
+
+- **Macro Metadata: More consistent timestamps and argument comparison**: Macro metadata persistence now uses more consistent Coordinated Universal Time (UTC) timestamps and improves argument comparison to reduce noisy or incorrect macro updates.
+
+## Behavior Changes
+
+### dbt platform APIs
+
+- **Removed credential configuration fields from responses**: Profiles API responses no longer include credential configuration and extended attributes; use the appropriate credentials and configuration endpoints instead.
+
+- **Filter connections by Private Endpoint**: Account Connections list supports filtering by Private Endpoint identifier for easier management.
+
+- **Additional ordering options**: Private Endpoints list now supports ordering by endpoint state and connection count.
+
+- **Private Link: Updated license permission defaults**: User licenses now include read access for Private Link resources, which may change who can view Private Link related settings.
+
+### Studio IDE
+
+- **Metric generation writes directly to active file**: Generated metrics are now written directly into the active model file instead of using an accept and reject diff flow.
 
 ## February 4, 2026
 

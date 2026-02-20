@@ -167,7 +167,6 @@ from {{ ref('my_model') }}
 Static analysis may incorrectly fail on valid queries if they contain:
 
 - **syntax or native functions** that the <Constant name="fusion_engine" /> doesn't recognize. Please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) in addition to disabling static analysis.
-- **user-defined functions** that the <Constant name="fusion_engine" /> doesn't recognize. You will need to temporarily disable static analysis. Native support for UDF compilation will arrive in a future version - see [dbt-fusion#69](https://github.com/dbt-labs/dbt-fusion/issues/69).
 - **dynamic SQL** such as [Snowflake's PIVOT ANY](https://docs.snowflake.com/en/sql-reference/constructs/pivot#dynamic-pivot-on-all-distinct-column-values-automatically) which cannot be statically analyzed. You can disable static analysis, refactor your pivot to use explicit column names, or create a [dynamic pivot in Jinja](https://github.com/dbt-labs/dbt-utils#pivot-source).
 - **highly volatile data feeding an introspective query** during a standalone `dbt compile` invocation. Because the `dbt compile` step does not run models, it uses old data or defers to a different environment when running introspective queries. The more frequently the input data changes, the more likely it is for this divergence to cause a compilation error. Consider whether these standalone `dbt compile` commands are necessary before disabling static analysis.
 
