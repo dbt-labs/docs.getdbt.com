@@ -264,11 +264,13 @@ def model(dbt, session):
 
 </File>
 
-:::caution Deprecated pattern
+:::tip Alternative approach
 
-The previous approach of using `dbt.config.get("meta")` to retrieve the meta object is being deprecated. Use `dbt.config.meta_get()` instead.
+You can also retrieve meta values using `dbt.config.get("meta")`, which returns the entire meta dictionary. When using this approach, handle the case where `meta` might not be configured:
 
-You can use [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) to automatically migrate from the deprecated pattern to the correct `meta_get()`.
+```python
+custom_value = dbt.config.get("meta", {}).get("custom_value")
+```
 
 :::
 
