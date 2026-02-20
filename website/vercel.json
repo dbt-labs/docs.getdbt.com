@@ -39,16 +39,6 @@
   ],
   "redirects": [
     { 
-      "source": "/docs/cloud/connect-data-platform/connect-redshift#connecting-via-an-ssh-tunnel",
-      "destination": "/docs/cloud/connect-data-platform/connect-redshift#connecting-using-an-ssh-tunnel",
-      "permanent": true
-    },
-    { 
-      "source": "/docs/cloud/connect-data-platform/connect-postgresql-alloydb#connecting-via-an-ssh-tunnel",
-      "destination": "/docs/cloud/connect-data-platform/connect-postgresql-alloydb#connecting-using-an-ssh-tunnel",
-      "permanent": true
-    },
-    { 
       "source": "/guides/sl-migration",
       "destination": "/docs/build/latest-metrics-spec",
       "permanent": true
