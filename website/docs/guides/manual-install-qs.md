@@ -462,7 +462,7 @@ You need to commit the changes you made to the project so that the repository ha
 
 1. Add all your changes to git: `git add -A`
 2. Commit your changes: `git commit -m "Add customers model, tests, docs"`
-3. Push your changes to your repository: `git push`
+3. Push your changes to your repository: `git push -u origin add-customers-model`
 4. Navigate to your repository, and open a pull request to merge the code into your master branch.
 
 ## Schedule a job

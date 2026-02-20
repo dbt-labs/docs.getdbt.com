@@ -12,7 +12,9 @@ The latest Semantic Layer specification creates an open standard for defining me
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization. 
 
 :::info Availability
-The new YAML spec is currently only available in the <Constant name="fusion_engine" />, and will be coming soon to the <Constant name="dbt_platform" /> **Latest** release track and <Constant name="core" /> v1.12 (coming in 1H 2026).
+The new YAML spec is currently only available in the <Constant name="fusion_engine" />, and will be coming soon to the <Constant name="dbt_platform" /> **Latest** release track and <Constant name="core" /> v1.12. 
+
+For more information about availability, reach out to your account manager or post in the [#dbt-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/). 
 :::
 
 ## Changes in the latest spec 
@@ -597,10 +599,20 @@ To update packages, a package maintainer should:
 
 2. Validate the changes by running:
 
+  - For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
+
     ```bash
     dbt parse
-    dbt sl validate  # For dbt platform and Fusion users in IDE / Cloud CLI
-    mf validate-configs # For Fusion CLI users not connected to dbt platform and using local MetricFlow
+    dbt sl validate
+    ```
+
+    When using `dbt sl validate` locally, the command validates your local semantic manifest, and not the platform's manifest. This means your uncommitted local changes are included in the validation.
+
+  - For Fusion CLI users not connected to dbt platform and using local MetricFlow:
+
+    ```bash
+    dbt parse
+    mf validate-configs
     ```
 
 3. Release a new version of the package with the updated metrics definitions.
