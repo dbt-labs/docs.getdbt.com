@@ -14,7 +14,7 @@ export const CONSTANTS = {
   fusion: 'Fusion',
   fusion_engine: 'dbt Fusion Engine',
   dbt: 'dbt',
-  cloud_cli: 'Cloud CLI',
+  cloud_cli: 'dbt CLI',
   explorer: 'Catalog',
   visual_editor: 'Canvas',
   query_page: 'Insights',

@@ -24,7 +24,7 @@ Use <Constant name="explorer" /> to navigate and manage your projects within <Co
 
 import Generatemetadata from '/snippets/_generate-metadata.md';
 
-<Generatemetadata />
+<Generatemetadata /> 
 
 :::tip
 If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="explorer" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
