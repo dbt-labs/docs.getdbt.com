@@ -5,17 +5,18 @@ id: "project-variables"
 pagination_next: "docs/build/environment-variables"
 ---
 
-dbt provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for
-compilation. Variables can be used to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22),
-[avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23)
-or otherwise provide data to models to configure how they are compiled.
-
-To use a variable in a model, hook, or macro, use the `{{ var('...') }}` function. More information on the `var` function can be found [here](/reference/dbt-jinja-functions/var).
+dbt provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for compilation. Variables allow you to define configurable values for your project instead of hardcoding them in SQL.
 
 Variables can be defined in two ways:
 
-1. In the `dbt_project.yml` file
-2. On the command line
+- In the [`dbt_project.yml`](/reference/dbt_project.yml) file
+- On the command line
+
+Variables defined in the `dbt_project.yml` act as project-wide defaults. These defaults apply anywhere the variable is referenced. You can override them at runtime using the `--vars` command-line argument, which is useful when you want to change a value for a specific run. For example, when testing with a different date range or running models with environment-specific settings.
+
+You might use variables to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22), set reporting date ranges, [avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23), or otherwise control how models are compiled.
+
+To use a variable in a model, hook, or macro, use the `{{ var('...') }}` function. The `var()` function retrieves the value defined in your project or passed using `--vars`. For more information, see [About var function](/reference/dbt-jinja-functions/var).
 
 Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML information.
 
@@ -27,8 +28,6 @@ Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML informa
 Jinja is not supported within the `vars` config, and all values will be interpreted literally.
 
 :::
-
-s
 
 
 To define variables in a dbt project, add a `vars` config to your `dbt_project.yml` file.
