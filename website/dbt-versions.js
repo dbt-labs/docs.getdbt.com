@@ -50,6 +50,10 @@ exports.versions = [
  */
 exports.versionedPages = [
   {
+    page: "docs/local/connect-data-platform/salesforce-data-cloud-setup",
+    firstVersion: "2.0",
+  },
+  {
     page: "docs/build/sample-flag",
     firstVersion: "1.10",
   },
