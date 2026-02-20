@@ -45,13 +45,13 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
 6. Copy these statements into the SQL editor to load the Jaffle Shop example data:
 
     ```sql
-    DROP TABLE dbo.customers;
+    DROP TABLE IF EXISTS dbo.customers;
 
     CREATE TABLE dbo.customers
     (
         [ID] [int],
-        \[FIRST_NAME] [varchar](8000),
-        \[LAST_NAME] [varchar](8000)
+        [FIRST_NAME] [varchar](8000),
+        [LAST_NAME] [varchar](8000)
     );
 
     COPY INTO [dbo].[customers]
@@ -60,7 +60,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
         FILE_TYPE = 'PARQUET'
     );
 
-    DROP TABLE dbo.orders;
+    DROP TABLE IF EXISTS dbo.orders;
 
     CREATE TABLE dbo.orders
     (
@@ -68,7 +68,7 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
         [USER_ID] [int],
         -- [ORDER_DATE] [int],
         [ORDER_DATE] [date],
-        \[STATUS] [varchar](8000)
+        [STATUS] [varchar](8000)
     );
 
     COPY INTO [dbo].[orders]
@@ -77,14 +77,14 @@ In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with
         FILE_TYPE = 'PARQUET'
     );
 
-    DROP TABLE dbo.payments;
+    DROP TABLE IF EXISTS dbo.payments;
 
     CREATE TABLE dbo.payments
     (
         [ID] [int],
         [ORDERID] [int],
-        \[PAYMENTMETHOD] [varchar](8000),
-        \[STATUS] [varchar](8000),
+        [PAYMENTMETHOD] [varchar](8000),
+        [STATUS] [varchar](8000),
         [AMOUNT] [int],
         [CREATED] [date]
     );
