@@ -138,7 +138,7 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 ### Disable the Slack integration
 
 1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
-1. Click the **X** can icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
+1. Click the **X** icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
 
 ## Slack notifications (account) <Lifecycle status="private_beta" />  {#slack-notifications-account}
 
