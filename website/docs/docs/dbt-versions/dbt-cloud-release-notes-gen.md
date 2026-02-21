@@ -99,10 +99,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Behavior Changes
 
-### dbt platform
-
-- **Fusion-eligible projects default to latest Fusion**: For Fusion-eligible projects, default version selection now prefers latest Fusion, and Fusion versions can display a Preview badge.
-
 ### Studio IDE
 
 - **Prevent destructive root operations**: Prevents rename and delete operations on the repository root and shows clearer warnings.
