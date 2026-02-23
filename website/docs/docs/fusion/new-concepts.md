@@ -35,34 +35,34 @@ The dbt Fusion engine can also render Jinja, but then it completes a second phas
 
 ## Rendering strategies
 
-<Lightbox src="/img/fusion/annotated_steps.png" title="Each dot represents a step in that model's execution (render, analyze, run). The numbers reflect step order across the DAG. JIT steps are green; AOT steps are purple." alignment="left" width="600px"/>
+<Lightbox src="/img/fusion/annotated_steps.png" title="Each dot represents a step in that model's execution (render, analyze, run). The numbers reflect step order across the DAG." alignment="left" width="600px"/>
 
-<Expandable alt_header="JIT rendering and execution (dbt Core)" is_open="true">
+<Expandable alt_header="Rendering and execution (dbt Core)" is_open="true">
   <video src="/img/fusion/CoreJitRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
 </Expandable>
 
-<Constant name="core" /> will _always_ use **Just In Time (JIT) rendering**. It renders a model, runs it in the warehouse, then moves on to the next model.
+<Constant name="core" /> renders a model, runs it in the warehouse, then moves on to the next model.
 
-<Expandable alt_header="AOT rendering, analysis and execution (dbt Fusion engine)" is_open="true">
+<Expandable alt_header="Rendering, analysis, and execution (dbt Fusion engine)" is_open="true">
   <video src="/img/fusion/FusionAotRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
 </Expandable>
 
-The <Constant name="fusion_engine" /> _can_ use **Ahead of Time (AOT) rendering and analysis** when configured with `static_analysis: strict`. In strict mode, it renders all models in the project, then produces and statically analyzes every model's logical plan, and only then will it start running models in the warehouse.
+When configured with `static_analysis: strict`, the <Constant name="fusion_engine" /> renders all models in the project, then produces and statically analyzes every model's logical plan, and only then starts running models in the warehouse.
 
-By rendering and analyzing all models ahead of time, and only beginning execution once everything is proven to be valid. The amount of analysis done is determined by the value of` static_analysis:` &mdash; `baseline` or `strict`. The <Constant name="fusion_engine" /> prevents unnecessary consumption of warehouse resources.
+By rendering and analyzing all models before execution, and only beginning execution once everything is proven valid, the <Constant name="fusion_engine" /> prevents unnecessary consumption of warehouse resources. The amount of analysis performed is determined by the `static_analysis` setting &mdash; `baseline` or `strict`.
 
 By contrast, SQL errors in models run by <Constant name="core" />'s engine will only be flagged by the database itself during execution.
 
 ### Rendering introspective queries
 
-The exception to AOT rendering is an introspective model: a model whose rendered SQL depends on the results of a database query. Models containing macros like `run_query()` or `dbt_utils.get_column_values()` are introspective. Introspection causes issues with ahead-of-time rendering because:
+An introspective model is a model whose rendered SQL depends on the results of a database query. Models containing macros like `run_query()` or `dbt_utils.get_column_values()` are introspective. Introspection causes issues with pre-execution rendering because:
 
-- Most introspective queries are run against the results of an earlier model in the DAG, which may not yet exist in the database during AOT rendering.
+- Most introspective queries run against the results of an earlier model in the DAG, which may not yet exist in the database during rendering.
 - Even if the model does exist in the database, it might be out of date until after the model has been refreshed.
 
-The <Constant name="fusion_engine" /> switches to **JIT rendering for introspective models**, to ensure it renders them the same way as <Constant name="core" />.
+The <Constant name="fusion_engine" /> handles introspective models by rendering them during execution, ensuring they behave the same way as in <Constant name="core" />.
 
-Note that macros like `adapter.get_columns_in_relation()` and `dbt_utils.star()` _can_ be rendered and analyzed ahead of time, as long as the [`Relations`](/reference/dbt-classes#relation) they inspect aren't themselves dynamic. This is because the <Constant name="fusion_engine" /> populates schemas into memory as part of the compilation process.
+Note that macros like `adapter.get_columns_in_relation()` and `dbt_utils.star()` _can_ be rendered and analyzed before execution, as long as the [`Relations`](/reference/dbt-classes#relation) they inspect aren't themselves dynamic. This is because the <Constant name="fusion_engine" /> populates schemas into memory as part of the compilation process.
 
 ## Principles of static analysis
 
@@ -93,35 +93,34 @@ Baseline mode lets you start using <Constant name="fusion" /> immediately while 
 
 ### Static analysis and introspective queries
 
-When Fusion encounters an introspective query, it switches that model to just-in-time rendering (as described above). Fusion also applies JIT static analysis to the introspective model and all its descendants. JIT analysis still captures most SQL errors and prevents execution of an invalid model, but analysis happens only after upstream models have materialized.
+When Fusion encounters an introspective query, it switches that model to render during execution (as described above). Fusion also applies static analysis to the introspective model and all its descendants during execution. This analysis still captures most SQL errors and prevents execution of an invalid model, but analysis happens only after upstream models have materialized.
 
-In baseline mode (the default), <Constant name="fusion" /> applies this JIT behavior consistently across your project. This means <Constant name="fusion" /> can no longer 100% guarantee alignment between what it analyzes and what it executes. The most common real-world example where JIT static analysis can cause an issue is a standalone `dbt compile` step (as opposed to the compilation that happens as part of a `dbt run`).
+In baseline mode (the default), <Constant name="fusion" /> applies this behavior consistently across your project. This means <Constant name="fusion" /> can no longer 100% guarantee alignment between what it analyzes and what it executes. The most common real-world example where this can cause an issue is a standalone `dbt compile` step (as opposed to the compilation that happens as part of a `dbt run`).
 
-During a `dbt run`, JIT rendering keeps the downstream model's code up to date with the current warehouse state, but a standalone compile does not refresh the upstream model. In this scenario, Fusion reads from the upstream model's last-run state. This is _probably_ fine, but could lead to errors being raised incorrectly (a false positive) or not at all (a false negative).
+During a `dbt run`, rendering keeps the downstream model's code up to date with the current warehouse state, but a standalone compile does not refresh the upstream model. In this scenario, Fusion reads from the upstream model's last-run state. This is _probably_ fine, but could lead to errors being raised incorrectly (a false positive) or not at all (a false negative).
 
 <Expandable alt_header="Rendering and analyzing without execution" is_open="true">
   <video src="/img/fusion/FusionJitCompileUnsafe.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
-  Note that `model_d` is rendered AOT, since it doesn't use introspection, but it still has to wait for `introspective_model_c` to be analyzed.
+  Note that `model_d` is rendered before execution since it doesn't use introspection, but it still has to wait for `introspective_model_c` to be analyzed.
 </Expandable>
 
-You still gain significant benefits from `baseline` static analysis compared to no static analysis. As you become more familiar with <Constant name="fusion" />, consider rewriting introspective code to make it eligible for AOT rendering and `strict` static analysis.
+You still gain significant benefits from `baseline` static analysis compared to no static analysis. As you become more familiar with <Constant name="fusion" />, consider rewriting introspective code to make it eligible for `strict` static analysis.
 
 ## Recapping the differences between engines
 
 <Constant name="dbt_core" />:
 
-- Renders all models just-in-time.
+- Renders and runs models one at a time.
 - Never runs static analysis.
 
 The <Constant name="fusion_engine" /> (baseline mode &mdash; default):
 
-- Renders all models just-in-time, similar to <Constant name="core" />.
-- Statically analyzes all models just-in-time, catching most SQL errors while providing a familiar migration experience.
+- Statically analyzes all models, catching most SQL errors while providing a familiar migration experience.
 
 The <Constant name="fusion_engine" /> (strict mode):
 
-- Renders all models ahead-of-time, unless they use introspective queries.
-- Statically analyzes all models ahead-of-time, guaranteeing nothing runs until the entire project is proven valid.
+- Renders and statically analyzes all models before execution begins.
+- Guarantees nothing runs until the entire project is proven valid.
 
 ## Configuring `static_analysis`
 
@@ -130,7 +129,7 @@ You can modify the way static analysis is applied for specific models in your pr
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
 - `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors.
-- `strict` (previously `on`): Statically analyze SQL ahead-of-time (AOT). Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid. Requires AOT rendering, which isn't compatible with introspective queries.
+- `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis on this model and its descendants.
 
 :::caution Deprecated values
@@ -164,7 +163,7 @@ models:
 
 </File>
 
-This approach lets you gain the benefits of AOT validation where possible while keeping the flexibility of JIT analysis for models that aren't yet compatible.
+This approach lets you gain the benefits of strict validation where possible while keeping the flexibility of baseline analysis for models that aren't yet compatible.
 
 Refer to [CLI options](/reference/global-configs/command-line-options) and [Configurations and properties](/reference/configs-and-properties) to learn more about configs.
 
@@ -229,7 +228,7 @@ Static analysis may incorrectly fail on valid queries if they contain:
 
 ### No introspective models
 
-<Expandable alt_header="AOT rendering, analysis and execution" is_open="true">
+<Expandable alt_header="Rendering, analysis, and execution" is_open="true">
   <video src="/img/fusion/FusionAotRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
 </Expandable>
 

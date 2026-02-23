@@ -9,8 +9,8 @@ Use the `--static-analysis` flag to override model-level `static_analysis` behav
 
 Values:
 
-- `baseline` (default): Use Just-in-time (JIT) static analysis for all models in the run. This is the recommended starting point for users transitioning from <Constant name="core" />.
-- `strict` (previously `on`): Use Ahead-of-time (AOT) static analysis for all models in the run. Provides maximum validation guarantees but requires AOT-compatible code.
+- `baseline` (default): Statically analyze SQL for all models in the run. This is the recommended starting point for users transitioning from <Constant name="core" />.
+- `strict` (previously `on`): Statically analyze all SQL before execution begins. Provides maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Disable static analysis for all models in the run.
 
 :::caution Deprecated values

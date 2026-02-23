@@ -69,8 +69,8 @@ You can configure if and when the <Constant name="fusion_engine" /> performs sta
 
 The following values are available for `static_analysis`:
 
-- `baseline` (default): Statically analyze SQL just-in-time (JIT). This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors. JIT analysis happens after upstream execution, similar to how <Constant name="core" /> validates SQL. You can incrementally opt-in to stricter analysis over time.
-- `strict` (previously `on`): Statically analyze SQL ahead-of-time (AOT). Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid. Requires AOT rendering, which isn't compatible with introspective queries.
+- `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors. You can incrementally opt-in to stricter analysis over time.
+- `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis for this model and its descendants.
 
 :::caution Deprecated values
@@ -89,7 +89,7 @@ You can override model-level configuration for a run using the following CLI fla
 
 ```bash
 dbt run --static-analysis off # disable static analysis for all models
-dbt run --static-analysis baseline # use JIT analysis for all models
+dbt run --static-analysis baseline # use baseline analysis for all models
 ```
 
 See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
