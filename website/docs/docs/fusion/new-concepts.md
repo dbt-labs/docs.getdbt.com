@@ -129,9 +129,15 @@ You can modify the way static analysis is applied for specific models in your pr
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
-- `baseline` (default): Statically analyze SQL just-in-time (JIT). This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors.
+- `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors.
 - `strict` (previously `on`): Statically analyze SQL ahead-of-time (AOT). Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid. Requires AOT rendering, which isn't compatible with introspective queries.
 - `off`: Skip SQL analysis on this model and its descendants.
+
+:::caution Deprecated values
+
+The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
+
+:::
 
 When you disable static analysis, features of the VS Code extension which depend on SQL comprehension will be unavailable.
 
