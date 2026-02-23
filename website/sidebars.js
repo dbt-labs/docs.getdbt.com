@@ -1198,6 +1198,7 @@ const sidebarSettings = {
         "reference/resource-configs/deltastream-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/duckdb-configs",
+        "reference/resource-configs/exasol-configs",
         "reference/resource-configs/fabric-configs",
         "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
