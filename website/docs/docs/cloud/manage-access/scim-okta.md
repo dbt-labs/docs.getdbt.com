@@ -62,7 +62,7 @@ If you are adding SCIM to an existing Okta integration in <Constant name="cloud"
 You can manage user license assignments via SCIM with a user attribute in your Okta environment, so license type is set as users are provisioned and onboarded.
 
 :::note Before you enable SCIM license mapping
-- Default license: New users are assigned a Developer license unless you change it manually, using [SSO license mappings](/docs/cloud/manage-access/cloud-seats-and-users#mapped-configuration), or using SCIM.
+- Default license: New users are assigned a Developer license unless you change it manually, using [SSO license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration), or using SCIM.
 - Best practice: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or SSO mapping changes.
 - Analyst license: Only available on select plans. Assigning it using SCIM will error if that license type isn't available for your account.
 :::
