@@ -11,7 +11,7 @@ import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 [The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="cloud_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
 :::note No clone required
-You do not need to clone the dbt-mcp repository to use local MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`; uv fetches and runs dbt-mcp for you. 
+You don't need to clone the dbt-mcp repository to use local MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`, which fetches and runs dbt-mcp for you. 
 
 If you'd like to contribute to dbt MCP, clone the [dbt-mcp repo](https://github.com/dbt-labs/dbt-mcp) and contribute away!
 :::
@@ -210,7 +210,10 @@ You can disable the following tool access on the local `dbt-mcp`:
 
 #### Using environment variables in your MCP client configuration
 
-The recommended way to configure your MCP client is to use the `env` field in your JSON configuration file. This keeps all configuration in one file:
+You can pass environment variables in three ways: 
+- An `.env` file with `--env-file` (see the [next example](#using-an-env-file-recommended-when-using-a-file)). Put the file in your dbt project root and use an absolute path.
+- Inline in the client config (this section)
+- By exporting variables in your shell before starting the client. The inline `env` field in the next example keeps all configuration in one file:
 
 ```json
 {
@@ -230,22 +233,34 @@ The recommended way to configure your MCP client is to use the `env` field in yo
 }
 ```
 
-#### Using an `.env` file
+#### Where the `.env` file should live
 
-If you prefer to manage environment variables in a separate file, you can create an `.env` file and reference it:
+You can pass environment variables to dbt-mcp in three ways: (1) an `.env` file referenced with `--env-file`, (2) inline in your MCP client config, or (3) shell environment variables. Many people assume the `.env` file must live "inside" the MCP or in a special app folder—it does not.
+
+:::tip Recommended location and path
+Put the `.env` file in your **dbt project root** (the same folder as `dbt_project.yml`). When using `--env-file`, **use an absolute path** so your MCP client can resolve the file reliably.
+:::
+
+#### Using an `.env` file (recommended when using a file)
+
+Create an `.env` file in your dbt project root and reference it with `--env-file` using an absolute path:
 
 ```json
 {
   "mcpServers": {
     "dbt": {
       "command": "uvx",
-      "args": ["--env-file", "/path/to/.env", "dbt-mcp"]
+      "args": [
+        "--env-file",
+        "/absolute/path/to/your-dbt-project/.env",
+        "dbt-mcp"
+      ]
     }
   }
 }
 ```
 
-However, this approach requires managing two files instead of one.
+Replace `/absolute/path/to/your-dbt-project` with the full path to your dbt project (the folder that contains `dbt_project.yml`).
 
 ## (Optional) Test your configuration
 
@@ -258,9 +273,9 @@ export DBT_PATH=/path/to/dbt
 uvx dbt-mcp
 ```
 
-**If using an `.env` file:**
+**If using an `.env` file:** (use an absolute path, for example to `.env` in your dbt project root)
 ```bash
-uvx --env-file <path-to-.env-file> dbt-mcp
+uvx --env-file /absolute/path/to/your-dbt-project/.env dbt-mcp
 ```
 
 If there are no errors, your configuration is correct.

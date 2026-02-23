@@ -72,9 +72,9 @@ To add advanced configurations:
 
     <Expandable alt_header="Local MCP with .env">
 
-    Advanced configuration for users who need custom environment variables
+    Advanced configuration for users who need custom environment variables. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`.
 
-    Using the `env` field (recommended):
+    Using the `env` field (single-file configuration):
     ```json
     {
       "mcpServers": {
@@ -93,13 +93,17 @@ To add advanced configurations:
     }
     ```
 
-    Using an .env file (alternative):
+    Using an `.env` file (use an absolute path to `.env` in your dbt project root):
     ```json
     {
       "mcpServers": {
         "dbt": {
           "command": "uvx",
-          "args": ["--env-file", "/path/to/.env", "dbt-mcp"]
+          "args": [
+            "--env-file",
+            "/absolute/path/to/your-dbt-project/.env",
+            "dbt-mcp"
+          ]
         }
       }
     }
@@ -164,12 +168,12 @@ claude mcp add dbt \
 
 #### Using an `.env` file
 
-If you prefer to manage environment variables in a separate file, you can use the `--env-file` parameter from `uvx`:
+If you prefer to manage environment variables in a separate file, put the `.env` file in your **dbt project root** (same folder as `dbt_project.yml`) and use the `--env-file` parameter with an **absolute path**:
 
 ```bash
-claude mcp add dbt -- uvx --env-file <path-to-.env-file> dbt-mcp
+claude mcp add dbt -- uvx --env-file /absolute/path/to/your-dbt-project/.env dbt-mcp
 ```
-Replace `<path-to-.env-file>` with the full path to your `.env` file.
+Replace `/absolute/path/to/your-dbt-project` with the full path to your dbt project.
 
 ## Troubleshooting
 

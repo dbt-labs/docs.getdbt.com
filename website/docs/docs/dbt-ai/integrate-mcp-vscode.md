@@ -82,9 +82,9 @@ To get started, in VS Code:
 
     <Expandable alt_header="Local MCP with .env">
 
-    For advanced users who need custom environment variables or service token authentication
+    For advanced users who need custom environment variables or service token authentication. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`.
 
-    Using the `env` field (recommended - single-file configuration):
+    Using the `env` field (single-file configuration):
 
     ```json
     {
@@ -104,14 +104,18 @@ To get started, in VS Code:
     }
     ```
 
-    Using an `.env` file (alternative - two-file configuration):
+    Using an `.env` file (use an absolute path to `.env` in your dbt project root):
 
     ```json
     {
       "servers": {
         "dbt": {
           "command": "uvx",
-          "args": ["--env-file", "/path/to/.env", "dbt-mcp"]
+          "args": [
+            "--env-file",
+            "/absolute/path/to/your-dbt-project/.env",
+            "dbt-mcp"
+          ]
         }
       }
     }

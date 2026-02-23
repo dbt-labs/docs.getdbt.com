@@ -66,11 +66,11 @@ If you need custom environment variable configuration or prefer to use service t
 
 #### Using an `.env` file
 
-If you prefer to manage environment variables in a separate file, click this link:
+If you prefer to manage environment variables in a separate file, put the `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`). Click this link:
 
 [Add to Cursor (with .env file)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt-mcp&config=eyJjb21tYW5kIjoidXZ4IC0tZW52LWZpbGUgPGVudi1maWxlLXBhdGg%252BIGRidC1tY3AifQ%3D%3D)
 
-Then update `<env-file-path>` with the full path to your `.env` file.
+Then update `env-file-path` with the absolute path to your `.env` file (for example, `/absolute/path/to/your-dbt-project/.env`).
 
 
 ## Set up with remote dbt MCP server
