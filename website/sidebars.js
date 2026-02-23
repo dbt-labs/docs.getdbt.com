@@ -143,26 +143,59 @@ const sidebarSettings = {
                 },
                 {
                   type: "category",
-                  label: "Single sign-on and Oauth",
+                  label: "Single sign-on and OAuth",
                   link: {
                     type: "doc",
-                    id: "docs/cloud/manage-access/sso-overview",
+                    id: "docs/cloud/manage-access/sso-oauth-intro",
                   },
                   items: [
-                    "docs/cloud/manage-access/sso-overview",
-                    "docs/cloud/manage-access/auth0-migration",
-                    "docs/cloud/manage-access/set-up-sso-saml-2.0",
-                    "docs/cloud/manage-access/set-up-sso-okta",
-                    "docs/cloud/manage-access/set-up-sso-google-workspace",
-                    "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
-                    "docs/cloud/manage-access/scim",
-                    "docs/cloud/manage-access/set-up-snowflake-oauth",
-                    "docs/cloud/manage-access/set-up-databricks-oauth",
-                    "docs/cloud/manage-access/set-up-bigquery-oauth",
-                    "docs/cloud/manage-access/snowflake-external-oauth",
-                    "docs/cloud/manage-access/redshift-external-oauth",
+                    {
+                      type: "category",
+                      label: "SSO",
+                      link: {
+                        type: "doc",
+                        id: "docs/cloud/manage-access/sso-overview",
+                      },
+                      items: [
+                        "docs/cloud/manage-access/sso-overview",
+                        "docs/cloud/manage-access/auth0-migration",
+                        "docs/cloud/manage-access/set-up-sso-saml-2.0",
+                        "docs/cloud/manage-access/set-up-sso-okta",
+                        "docs/cloud/manage-access/set-up-sso-google-workspace",
+                        "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "SCIM",
+                      link: {
+                        type: "doc",
+                        id: "docs/cloud/manage-access/scim",
+                      },
+                      items: [
+                        "docs/cloud/manage-access/scim",
+                        "docs/cloud/manage-access/scim-okta",
+                        "docs/cloud/manage-access/scim-entra-id",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "OAuth",
+                      link: {
+                        type: "doc",
+                        id: "docs/cloud/manage-access/oauth-intro",
+                      },
+                      items: [
+                        "docs/cloud/manage-access/oauth-intro",
+                        "docs/cloud/manage-access/set-up-snowflake-oauth",
+                        "docs/cloud/manage-access/set-up-databricks-oauth",
+                        "docs/cloud/manage-access/set-up-bigquery-oauth",
+                        "docs/cloud/manage-access/snowflake-external-oauth",
+                        "docs/cloud/manage-access/redshift-external-oauth",
+                      ],
+                    },
                   ],
-                }, // SSO
+                }, // Single sign-on and OAuth
                 "docs/cloud/manage-access/audit-log",
               ],
             }, // Manage access

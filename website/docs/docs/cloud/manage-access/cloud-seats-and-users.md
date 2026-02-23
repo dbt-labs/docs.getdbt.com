@@ -136,6 +136,10 @@ To manually assign a specific type of license to a user on your team, navigate t
 
 If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in <Constant name="cloud" /> and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
 
+:::important License mappings use IdP groups, not dbt groups
+License type mappings are based on **IdP groups** (groups in your identity provider), not **<Constant name="cloud" /> groups**. When you create or edit a license mapping, you enter IdP group names. Check group memberships in your IdP when configuring or troubleshooting.
+:::
+
 By default, all new members of a <Constant name="cloud" /> account will be assigned a Developer
 license. To assign Read-Only licenses to certain groups of users, create a new
 License Mapping for the Read-Only license type and include a comma separated
@@ -151,9 +155,7 @@ Usage notes:
 - License types are adjusted when users sign into <Constant name="cloud" /> via Single Sign On.
   Changes made to license type mappings will take effect the next time users
   sign in to <Constant name="cloud" />.
-- License type mappings are based on _IdP Groups_, not _<Constant name="cloud" /> groups_, so be
-  sure to check group memberships in your identity provider when configuring
-  this feature.
+- License type mappings are based on _IdP groups_, not _<Constant name="cloud" /> groups_ &mdash; check group memberships in your identity provider when configuring or troubleshooting.
 
 ## Granular permissioning
 

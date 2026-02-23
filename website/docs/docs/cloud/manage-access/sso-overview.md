@@ -8,7 +8,9 @@ pagination_prev: null
 # Single sign-on (SSO) overview <Lifecycle status="managed, managed_plus" />
 
 This overview explains how users are provisioned in <Constant name="cloud" /> via Single Sign-On (SSO).
-<Constant name="cloud" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. You can learn more about our supported options [here](https://www.getdbt.com/pricing/).
+<Constant name="cloud" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. 
+
+You can also use [SCIM](/docs/cloud/manage-access/scim) to automate user and group provisioning from your identity provider (Okta or Microsoft Entra ID). You can learn more about our supported options [here](https://www.getdbt.com/pricing/).
 
 ## Prerequisites
 
@@ -42,6 +44,10 @@ The diagram below explains the basic process by which users are provisioned in <
   - Have the "Assign by Default" option checked.
 Then, assign all of these (and only these) to the user license. This step will also remove any permissions that the user should not have based on the current SSO group mappings.
 - **<Constant name="cloud" /> Application**: After these steps, the user is redirected into the <Constant name="cloud" /> application, and they can begin to use the application normally.
+
+:::note License and permission mappings use IdP groups
+License type mappings and SSO group mappings are based on **IdP group** membership (groups in your identity provider), not <Constant name="cloud" /> group names. When configuring [license mappings](/docs/cloud/manage-access/cloud-seats-and-users#mapped-configuration) or group assignments, use the group names and memberships from your IdP.
+:::
 
 ## SSO enforcement
 
