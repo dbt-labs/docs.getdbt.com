@@ -35,7 +35,7 @@ For more information, refer to [About the <Constant name="fusion_engine" />](/do
 
 ### dbt Core engine
 
-[<Constant name="core" />](/docs/core/installation-overview) is the open-source, Python-based engine that has powered dbt for over a decade. dbt Labs continues to maintain and expand <Constant name="core" /> with new language features and community contributions. <Constant name="core" /> is suitable for users who prefer an open-source tool or have existing workflows built around it.
+[<Constant name="core" />](/docs/install-dbt) is the open-source, Python-based engine that has powered dbt for over a decade. dbt Labs continues to maintain and expand <Constant name="core" /> with new language features and community contributions. <Constant name="core" /> is suitable for users who prefer an open-source tool or have existing workflows built around it.
 
 Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?step=1).
 
@@ -58,7 +58,7 @@ Use the dbt framework and develop dbt projects from your command line or code ed
 
 ## Why use dbt
 
-As a dbt user, your main focus will be on writing models (select queries) that reflect core business logic – there's no need to write boilerplate code to create tables and views, or to define the order of execution of your models. Instead, dbt handles turning these models into objects in your warehouse for you.
+As a dbt user, your main focus will be on writing models (select queries) that reflect core business logic – there's no need to write boilerplate code to create tables and views, or to define the order of execution of your models. Instead, dbt handles turning these models into objects in your warehouse for you
 
 - **No boilerplate** &mdash; Write business logic with just a SQL `select` statement or a Python DataFrame. dbt handles <Term id="materialization" />, transactions, <Term id="ddl" />, and schema changes.
 - **Modular and reusable** &mdash; Build data models that can be referenced in subsequent work. Change a model once and the change propagates to all its dependencies, so you can publish canonical business logic without reimplementing it.

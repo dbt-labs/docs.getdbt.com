@@ -82,7 +82,7 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
 
 ## dbt local installations
 
-When you [install dbt locally](/docs/about-dbt-install), you get command-line tools that enable you to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
+When you [install dbt locally](/docs/install-dbt), you get command-line tools that enable you to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
 
 Develop locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
