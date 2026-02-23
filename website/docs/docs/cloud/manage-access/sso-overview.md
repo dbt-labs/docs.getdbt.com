@@ -46,7 +46,7 @@ Then, assign all of these (and only these) to the user license. This step will a
 - **<Constant name="cloud" /> Application**: After these steps, the user is redirected into the <Constant name="cloud" /> application, and they can begin to use the application normally.
 
 :::note License and permission mappings use IdP groups
-License type mappings and SSO group mappings are based on **IdP group** membership (groups in your identity provider), not <Constant name="cloud" /> group names. When configuring [license mappings](/docs/cloud/manage-access/cloud-seats-and-users#mapped-configuration) or group assignments, use the group names and memberships from your IdP.
+License type mappings and SSO group mappings are based on **IdP group** membership (groups in your identity provider), not <Constant name="dbt_platform" /> group names. When configuring [license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration) or group assignments, use the group names and memberships from your IdP.
 :::
 
 ## SSO enforcement
