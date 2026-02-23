@@ -31,6 +31,10 @@ To add advanced configurations:
 3. Click the **Edit Config** button and open the configuration file with a text editor.
 4. Add your server configuration based on your use case. Choose the [correct JSON structure](https://modelcontextprotocol.io/quickstart/user#installing-the-filesystem-server) from the following options:
 
+    :::tip
+    You do not need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the config below); cloning is only for contributing.
+    :::
+
     <Expandable alt_header="Local MCP with OAuth">
 
     #### Local MCP with dbt platform authentication <Lifecycle status="managed, managed_plus" />

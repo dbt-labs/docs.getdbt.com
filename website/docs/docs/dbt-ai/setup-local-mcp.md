@@ -10,6 +10,12 @@ import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 
 [The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="cloud_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
+:::note No clone required
+You do not need to clone the dbt-mcp repository to use local MCP. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`; uv fetches and runs dbt-mcp for you. 
+
+If you'd like to contribute to dbt MCP, clone the [dbt-mcp repo](https://github.com/dbt-labs/dbt-mcp) and contribute away!
+:::
+
 ## Prerequisites
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to be able to run `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment.

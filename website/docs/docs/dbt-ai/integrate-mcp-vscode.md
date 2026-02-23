@@ -36,6 +36,10 @@ To get started, in VS Code:
 
 5. Add your server configuration (`dbt`) to the provided `mcp.json` file as one of the servers:
 
+    :::tip
+    You do not need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the config below); cloning is only for contributing.
+    :::
+
     <Expandable alt_header="Local MCP with dbt platform OAuth" >
 
 

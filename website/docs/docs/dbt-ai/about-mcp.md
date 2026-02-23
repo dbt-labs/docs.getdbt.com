@@ -23,7 +23,7 @@ You can use the dbt MCP server in two ways: locally or remotely. Choose the setu
 
 The local MCP server provides the best experience for development workflows, like authoring dbt models, tests, and documentation.
 
-The [local MCP server](/docs/dbt-ai/setup-local-mcp) runs on your machine and requires installing `uvx` (which installs dbt-mcp locally). This option provides:
+The [local MCP server](/docs/dbt-ai/setup-local-mcp) runs on your machine and requires installing `uvx` (which installs dbt-mcp locally) and then running `uvx dbt-mcp` to start the server. You don't need to clone the repository unless you want to contribute to dbt MCP. The local MCP server provides:
 - Full access to dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more)
 - Support for <Constant name="core" />, <Constant name="cloud_cli" />, and <Constant name="fusion_engine" />
 - Ability to work with local dbt projects without requiring a <Constant name="dbt_platform" /> account
