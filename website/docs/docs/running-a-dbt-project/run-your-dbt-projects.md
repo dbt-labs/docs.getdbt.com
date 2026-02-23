@@ -28,7 +28,7 @@ If you're not using the platform, you can run dbt locally with the <Constant nam
 
 - **[dbt VS Code extension](/docs/about-dbt-extension)** &mdash; VS Code with the <Constant name="fusion_engine" />; no platform project needed for core workflows.
 - **[<Constant name="fusion_engine" /> CLI](/docs/fusion/install-fusion-cli)** &mdash; Install the <Constant name="fusion_engine" /> and run dbt from the command line. Fusion is source-available (ELv2) and includes open-source and proprietary components; see [licensing](https://www.getdbt.com/licenses-faq) for more info.
-- **[<Constant name="core" />](/docs/core/installation-overview)** &mdash; Open source, install <Constant name="core" /> locally to run dbt from the command line using the <Constant name="core" /> engine.
+- **[<Constant name="core" />](/docs/install-dbt)** &mdash; Open source, install <Constant name="core" /> locally to run dbt from the command line using the <Constant name="core" /> engine.
 
 
 #### Command-line tools
