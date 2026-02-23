@@ -55,7 +55,7 @@ Use the dbt framework and develop dbt projects from your command line or code ed
 
 - [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
 - [Install the Fusion CLI](/docs/fusion/install-fusion-cli) &mdash; <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
-- [Install <Constant name="core" />](/docs/core/installation-overview) &mdash; The open-source, Python-based CLI. Doesn't include <Term id="lsp" /> features.
+- [Install <Constant name="core" />](/docs/install-dbt) &mdash; The open-source, Python-based CLI. Doesn't include <Term id="lsp" /> features.
 
 ## Why use dbt
 
