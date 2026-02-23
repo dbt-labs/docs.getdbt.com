@@ -8,7 +8,7 @@ Community adapters are adapter plugins contributed and maintained by members of 
 | Data platforms (click to view setup guide) |||
 | ------------------------------------------ | -------------------------------- | ------------------------------------- |
 | [CrateDB](/docs/core/connect-data-platform/cratedb-setup) | [Databend Cloud](/docs/core/connect-data-platform/databend-setup) | [DeltaStream](/docs/core/connect-data-platform/deltastream-setup) |
-| [Doris & SelectDB](/docs/core/connect-data-platform/doris-setup) | [DuckDB](/docs/core/connect-data-platform/duckdb-setup) | [Exasol Analytics](/docs/core/connect-data-platform/exasol-setup) |
+| [Doris & SelectDB](/docs/core/connect-data-platform/doris-setup) | [DuckDB](/docs/core/connect-data-platform/duckdb-setup) | 
 | [Extrica](/docs/core/connect-data-platform/extrica-setup) | [Hive](/docs/core/connect-data-platform/hive-setup) | [Hologres](/docs/core/connect-data-platform/hologres-setup) |  
 | [IBM DB2](/docs/core/connect-data-platform/ibmdb2-setup) | [IBM watsonx.data - Spark](/docs/core/connect-data-platform/watsonx-spark-setup) | [Impala](/docs/core/connect-data-platform/impala-setup) |
 | [Infer](/docs/core/connect-data-platform/infer-setup) | [iomete](/docs/core/connect-data-platform/iomete-setup) | [MaxCompute](/docs/core/connect-data-platform/maxcompute-setup) |
