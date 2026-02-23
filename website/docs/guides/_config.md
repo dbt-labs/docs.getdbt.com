@@ -31,6 +31,7 @@ categories:
   - title: Advanced use cases
     guides:
       - fusion-package-compat
+      - state-aware-freshness
       - airflow-and-dbt-cloud
       - adapter-creation
       - core-to-cloud-1

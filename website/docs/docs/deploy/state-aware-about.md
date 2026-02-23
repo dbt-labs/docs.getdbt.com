@@ -169,6 +169,7 @@ The following section lists some considerations when using Efficient testing in 
 
 ## Related docs
 
+- [Configure freshness for state-aware orchestration](/guides/state-aware-freshness)
 - [State-aware orchestration configuration](/docs/deploy/state-aware-setup)
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)

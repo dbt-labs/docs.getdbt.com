@@ -116,6 +116,10 @@ Some notes when using `loaded_at_field` or `loaded_at_query`:
 
 To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
 
+:::tip Comprehensive configuration guide
+For a guide to configuring source freshness, model freshness, and state-aware orchestration (including recommended defaults and a validation checklist), see [Configure freshness for state-aware orchestration](/guides/state-aware-freshness).
+::: 
+
 ### Customizing behavior
 
 You can optionally configure state-aware orchestration when you want to fine-tune orchestration behavior for these reasons:
@@ -333,6 +337,7 @@ This way, if either `dim_wizards` or `dim_worlds` has fresh upstream data and en
 
 ## Related docs
 
+- [Configure freshness for state-aware orchestration](/guides/state-aware-freshness)
 - [State-aware orchestration configuration](/docs/deploy/state-aware-about)
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
