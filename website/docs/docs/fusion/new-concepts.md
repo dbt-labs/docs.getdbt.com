@@ -231,22 +231,6 @@ Static analysis may incorrectly fail on valid queries if they contain:
 - Then it statically analyzes each model's logical plan in order.
 - Finally, it runs each model's rendered SQL. Nothing is persisted to the database until Fusion has validated the entire project.
 
-### Introspective model with baseline static analysis
-
-Imagine we update `model_c` to contain an introspective query (such as `dbt_utils.get_column_values`). We'll say it's querying `model_b`, but the <Constant name="fusion_engine" />'s response is the same regardless of what the introspection does.
-
-In baseline mode (the default), all models use JIT rendering and analysis. When running in strict mode, here's what happens:
-
-- During parsing, Fusion discovers `model_c`'s introspective query. It switches `model_c` to JIT rendering and opts `model_c+` in to JIT static analysis.
-- `model_a` and `model_b` are still eligible for AOT compilation, so Fusion handles them the same as in the introspection-free example above. `model_d` is still eligible for AOT rendering (but not analysis).
-- Once `model_b` is run, Fusion renders `model_c`'s SQL (using the just-refreshed data), analyzes it, and runs it. All three steps happen back-to-back.
-- `model_d`'s AOT-rendered SQL is analyzed and run.
-
-<Expandable alt_header="Complex DAG with an introspective branch" is_open="true">
-  <video src="/img/fusion/FusionJitRunUnsafeComplexDag.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
-</Expandable>
-
-As you'd expect, when using strict mode, a branching DAG will AOT compile as much as possible before moving on to the JIT components, and will work with multiple `--threads` if they're available. Here, `model_c` can start rendering as soon as `model_b` has finished running, while the AOT-compiled `model_x` and `model_y` run separately:
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
