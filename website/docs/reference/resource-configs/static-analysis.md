@@ -3,7 +3,7 @@ resource_types: [models]
 title: "static_analysis"
 description: "Use static_analysis config to control how the Fusion engine performs static SQL analysis for models."
 datatype: string
-default_value: strict
+default_value: baseline
 sidebar_label: "static_analysis"
 ---
 
@@ -69,8 +69,8 @@ You can configure if and when the <Constant name="fusion_engine" /> performs sta
 
 The following values are available for `static_analysis`:
 
-- `strict`: Statically analyze SQL ahead-of-time (AOT). Default for non-introspective models, depends on AOT rendering.
-- `baseline`: Statically analyze SQL just-in-time (JIT). Use this when a model (or any of its parents) uses introspective queries. JIT analysis still catches most SQL errors, but [analysis happens](/docs/fusion/new-concepts#static-analysis-and-introspective-queries) after some upstream execution.
+- `baseline` (default): Statically analyze SQL just-in-time (JIT). This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors. JIT analysis happens after upstream execution, similar to how <Constant name="core" /> validates SQL. You can incrementally opt-in to stricter analysis over time.
+- `strict`: Statically analyze SQL ahead-of-time (AOT). Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid. Requires AOT rendering, which isn't compatible with introspective queries.
 - `off`: Skip SQL analysis for this model and its descendants.
 
 :::caution Deprecated values
@@ -78,8 +78,6 @@ The following values are available for `static_analysis`:
 The following values are deprecated and will be removed in May 2026:
 - `on`: Use `strict` instead (same behavior).
 - `unsafe`: Use `baseline` instead.
-
-If you're currently using `on` or `unsafe`, migrate to `strict`.
 
 :::
 
