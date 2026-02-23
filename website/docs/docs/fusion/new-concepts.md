@@ -91,21 +91,6 @@ Migrating to <Constant name="fusion" /> involves more than moving YAML around. S
 
 Baseline mode lets you start using <Constant name="fusion" /> immediately while you address these scenarios incrementally. As you resolve compatibility issues, you can opt specific models or your entire project into `strict` mode for maximum validation guarantees.
 
-### Static analysis and introspective queries
-
-When Fusion encounters an introspective query, it switches that model to render during execution (as described above). Fusion also applies static analysis to the introspective model and all its descendants during execution. This analysis still captures most SQL errors and prevents execution of an invalid model, but analysis happens only after upstream models have materialized.
-
-In baseline mode (the default), <Constant name="fusion" /> applies this behavior consistently across your project. This means <Constant name="fusion" /> can no longer 100% guarantee alignment between what it analyzes and what it executes. The most common real-world example where this can cause an issue is a standalone `dbt compile` step (as opposed to the compilation that happens as part of a `dbt run`).
-
-During a `dbt run`, rendering keeps the downstream model's code up to date with the current warehouse state, but a standalone compile does not refresh the upstream model. In this scenario, Fusion reads from the upstream model's last-run state. This is _probably_ fine, but could lead to errors being raised incorrectly (a false positive) or not at all (a false negative).
-
-<Expandable alt_header="Rendering and analyzing without execution" is_open="true">
-  <video src="/img/fusion/FusionJitCompileUnsafe.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
-  Note that `model_d` is rendered before execution since it doesn't use introspection, but it still has to wait for `introspective_model_c` to be analyzed.
-</Expandable>
-
-You still gain significant benefits from `baseline` static analysis compared to no static analysis. As you become more familiar with <Constant name="fusion" />, consider rewriting introspective code to make it eligible for `strict` static analysis.
-
 ## Recapping the differences between engines
 
 <Constant name="dbt_core" />:
@@ -223,18 +208,6 @@ Static analysis may incorrectly fail on valid queries if they contain:
 - **syntax or native functions** that the <Constant name="fusion_engine" /> doesn't recognize. Please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) in addition to disabling static analysis.
 - **dynamic SQL** such as [Snowflake's PIVOT ANY](https://docs.snowflake.com/en/sql-reference/constructs/pivot#dynamic-pivot-on-all-distinct-column-values-automatically) which cannot be statically analyzed. You can disable static analysis, refactor your pivot to use explicit column names, or create a [dynamic pivot in Jinja](https://github.com/dbt-labs/dbt-utils#pivot-source).
 - **highly volatile data feeding an introspective query** during a standalone `dbt compile` invocation. Because the `dbt compile` step does not run models, it uses old data or defers to a different environment when running introspective queries. The more frequently the input data changes, the more likely it is for this divergence to cause a compilation error. Consider whether these standalone `dbt compile` commands are necessary before disabling static analysis.
-
-## Examples
-
-### No introspective models
-
-<Expandable alt_header="Rendering, analysis, and execution" is_open="true">
-  <video src="/img/fusion/FusionAotRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
-</Expandable>
-
-- Fusion renders each model in order.
-- Then it statically analyzes each model's logical plan in order.
-- Finally, it runs each model's rendered SQL. Nothing is persisted to the database until Fusion has validated the entire project.
 
 
 import AboutFusion from '/snippets/_about-fusion.md';
