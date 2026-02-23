@@ -66,7 +66,7 @@ models:
 <!--- TODO: how to make this image preview bigger? --->
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/python-model-dag.png" title="SQL + Python, together at last" style="width:200%"/>
 
-The prerequisites for dbt Python models include using an adapter for a data platform that supports a fully featured Python runtime. In a dbt Python model, all Python code is executed remotely on the platform. None of it is run by dbt locally. We believe in clearly separating _model definition_ from _model execution_. In this and many other ways, you'll find that dbt's approach to Python models mirrors its longstanding approach to modeling data in SQL.
+The prerequisites for dbt Python models include using an adapter for a data platform that supports a fully featured Python runtime when using <Constant name="core" /> or <Constant name="fusion" /> engine. In a dbt Python model, all Python code is executed remotely on the platform. None of it is run by dbt locally. We believe in clearly separating _model definition_ from _model execution_. In this and many other ways, you'll find that dbt's approach to Python models mirrors its longstanding approach to modeling data in SQL.
 
 We've written this guide assuming that you have some familiarity with dbt. If you've never before written a dbt model, we encourage you to start by first reading [dbt Models](/docs/build/models). Throughout, we'll be drawing connections between Python models and SQL models, as well as making clear their differences.
 
@@ -191,6 +191,7 @@ Out of the box, the `dbt` class supports:
 - Returning DataFrames referencing the locations of other resources: `dbt.ref()` + `dbt.source()`
 - Accessing the database location of the current model: `dbt.this()` (also: `dbt.this.database`, `.schema`, `.identifier`)
 - Determining if the current model's run is incremental: `dbt.is_incremental`
+- Accessing custom values stored in `meta`: `dbt.config.meta_get()`
 
 It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). The `dbt.config.get()` method supports dynamic access to configurations within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values for the conditional logic in your model, we require setting them through a dedicated properties YAML file config:
 
@@ -246,18 +247,15 @@ models:
 
 </File>
 
-Then access them in your Python model using the `dbt.config.get()` method to access the `meta` object first and then access your custom values:
+Then access them in your Python model using the `dbt.config.meta_get()` method:
 
 <File name='models/my_python_model.py'>
 
 ```python
 def model(dbt, session):
-    # First, get the meta object
-    meta = dbt.config.get("meta")
-    
-    # Then access your custom values from meta
-    custom_value = meta.get("custom_value")
-    another_value = meta.get("another_value")
+    # Access custom values stored in meta directly
+    custom_value = dbt.config.meta_get("custom_value")
+    another_value = dbt.config.meta_get("another_value")
     
     # Use your custom values in your model logic
     orders_df = dbt.ref("fct_orders")
@@ -265,6 +263,16 @@ def model(dbt, session):
 ```
 
 </File>
+
+:::tip Alternative approach
+
+You can also retrieve meta values using `dbt.config.get("meta")`, which returns the entire meta dictionary. When using this approach, handle the case where `meta` might not be configured:
+
+```python
+custom_value = dbt.config.get("meta", {}).get("custom_value")
+```
+
+:::
 
 #### Dynamic configurations
 
