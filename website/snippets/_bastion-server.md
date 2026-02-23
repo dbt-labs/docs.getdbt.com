@@ -17,9 +17,9 @@ To configure a connection using an SSH tunnel:
 6. Copy the newly generated public key to the bastion server and add it to the server’s `authorized_keys` file to authorize <Constant name="dbt_platform" /> to connect through the bastion host. If the new key is not added, the SSH tunnel connection will fail.
 
 
-  :::important
-   Each time you create and save a new SSH tunnel connection, <Constant name="dbt_platform" /> generates a unique SSH key pair, even when the connection details are identical to an existing connection. 
-  :::
+    :::important
+    Each time you create and save a new SSH tunnel connection, <Constant name="dbt_platform" /> generates a unique SSH key pair, even when the connection details are identical to an existing connection. 
+    :::
 
 #### About the Bastion server in AWS
 
