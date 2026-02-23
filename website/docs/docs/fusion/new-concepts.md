@@ -111,10 +111,10 @@ dbt Core:
 - renders all models just-in-time
 - never runs static analysis
 
-The dbt Fusion engine (baseline mode &mdash; default):
+The <Constant name="fusion_engine" /> (baseline mode &mdash; default):
 
-- renders all models just-in-time, similar to <Constant name="core" />
-- statically analyzes all models just-in-time, catching most SQL errors while providing a familiar migration experience
+- Renders all models just-in-time, similar to <Constant name="core" />.
+- Statically analyzes all models just-in-time, catching most SQL errors while providing a familiar migration experience.
 
 The dbt Fusion engine (strict mode):
 
