@@ -20,7 +20,7 @@ This guide walks you through configuring source and model freshness to get the m
 - How to configure source freshness at different levels
 - How to control model rebuild frequency with `build_after`
 - How to set project-wide defaults and override them where needed
-- How to validate your configuration with a hands-on experiment checklist
+- How to validate your configuration with a checklist
 
 By the end of this guide, you'll have a cost-efficient configuration that reduces unnecessary rebuilds while keeping your data fresh.
 
