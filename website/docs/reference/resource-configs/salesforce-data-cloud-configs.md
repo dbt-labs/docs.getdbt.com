@@ -4,12 +4,7 @@ description: "Salesforce Data Cloud Configurations - Read this in-depth guide to
 id: "data-cloud-configs"
 ---
 
-:::warning Disclaimer
-This adapter is in the Alpha product stage and is not production-ready. It should only be used in sandbox or test environments. 
-
-As we continue to develop and take in your feedback, the experience is subject to change &mdash; commands, configuration, and workflows may be updated or removed in future releases. 
-:::
-
+# Salesforce Data Cloud configurations <Lifecycle status="beta"/>
 
 ## Supported materializations
 
