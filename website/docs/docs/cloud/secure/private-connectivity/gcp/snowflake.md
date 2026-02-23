@@ -1,8 +1,8 @@
 ---
 title: "Configuring Snowflake and GCP Private Service Connect"
-id: snowflake-psc
-description: "Configuring GCP Private Service Connect for Snowflake"
-sidebar_label: "GCP Private Service Connect for Snowflake"
+id: gcp-snowflake
+description: "Configuring GCP Private Service Connect for Snowflake."
+sidebar_label: "Snowflake"
 ---
 
 # Configuring Snowflake Private Service Connect <Lifecycle status="managed_plus" />
@@ -46,21 +46,21 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
-## Create Connection in dbt
+## Create connection in dbt
 
-Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink. 
+Once <Constant name="cloud" /> Support completes the configuration, you can start creating new connections using PrivateLink. 
 
 1. Navigate to **Settings** → **Create new project** → select **Snowflake**. 
-2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
+3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 
-## Configuring Network Policies
+## Configuring network policies
 
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will need to add a network rule for <Constant name="cloud" />. 
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="cloud" />. 
 
-You can request the CIDR range from [<Constant name="cloud" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. 
+Request the **PSC connection ID** from [<Constant name="cloud" /> Support](mailto:support@getdbt.com) to use in a network rule. Snowflake supports [`GCPPSCID` as a network rule identifier type](https://docs.snowflake.com/en/sql-reference/sql/create-network-rule), and this is the recommended approach. A PSC connection ID uniquely identifies your organization's connection endpoint, whereas IP-based rules rely on CIDR ranges that may be shared across multiple dbt customers.
 
 ### Using the UI
 
@@ -70,8 +70,8 @@ Open the Snowflake UI and take the following steps:
 3. Click on **Add Rule**.
 4. Give the rule a name.
 5. Select a database and schema where the rule will be stored. These selections are for permission settings and organizational purposes; they do not affect the rule itself.
-6. Set the type to `IPV4` and the mode to `Ingress`.
-7. Type the CIDR range provided by <Constant name="cloud" /> Support into the identifier box and press **Enter**.
+6. Set the type to `GCPPSCID` and the mode to `Ingress`.
+7. Enter the PSC connection ID provided by <Constant name="cloud" /> Support into the identifier box and press **Enter**.
 8. Click **Create Network Rule**.
 9. In the **Network Policy** tab, edit the policy you want to add the rule to. This could be your account-level policy or a policy specific to the users connecting from <Constant name="cloud" />.
 10. Add the new rule to the allowed list and click **Update Network Policy**.
@@ -85,8 +85,8 @@ For quick and automated setup of network rules via SQL in Snowflake, the followi
 
 CREATE NETWORK RULE allow_dbt_cloud_access
   MODE = INGRESS
-  TYPE = IPV4
-  VALUE_LIST = ('<CIDR_RANGE>'); -- Replace '<CIDR_RANGE>' with the actual CIDR provided
+  TYPE = GCPPSCID
+  VALUE_LIST = ('<PSC_CONNECTION_ID>'); -- Replace with the PSC connection ID from dbt Support
 
 ```
 

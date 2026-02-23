@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](#dbt-cloud) or [<Constant name="core" />](#dbt-core) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
+Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](#the-dbt-platform) or [<Constant name="core" />](#dbt-local-installations) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
 
 ## The dbt platform (formerly dbt Cloud) {#the-dbt-platform}
 
