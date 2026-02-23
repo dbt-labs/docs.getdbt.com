@@ -1,11 +1,11 @@
 ---
 title: "Configure freshness for state-aware orchestration"
-description: "Learn how to configure source freshness, model freshness, and state-aware orchestration to optimize your dbt builds and reduce warehouse costs."
+description: "Learn how to configure source and model freshness for state-aware orchestration to optimize your builds and reduce warehouse costs."
 hoverSnippet: Learn how to configure freshness for state-aware orchestration to optimize builds and reduce costs.
 id: state-aware-freshness
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt platform', 'Orchestration', 'SAO', 'freshness']
+tags: ['dbt platform', 'Orchestration', 'state-aware-orchestration', 'SAO', 'freshness']
 level: 'Intermediate'
 ---
 
