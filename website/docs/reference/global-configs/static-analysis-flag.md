@@ -10,16 +10,10 @@ Use the `--static-analysis` flag to override model-level `static_analysis` behav
 Values:
 
 - `baseline` (default): Use Just-in-time (JIT) static analysis for all models in the run. This is the recommended starting point for users transitioning from <Constant name="core" />.
-- `strict`: Use Ahead-of-time (AOT) static analysis for all models in the run. Provides maximum validation guarantees but requires AOT-compatible code.
+- `strict` (previously `on`): Use Ahead-of-time (AOT) static analysis for all models in the run. Provides maximum validation guarantees but requires AOT-compatible code.
 - `off`: Disable static analysis for all models in the run.
 
 If not set, Fusion defaults to `baseline` mode, which provides a smooth transition from <Constant name="core" /> while still catching most SQL errors. See [Configuring `static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) for more information on incrementally opting in to stricter analysis.
-
-:::caution Deprecated value
-
-The `unsafe` value is deprecated and will be removed in May 2026. Use `baseline` instead.
-
-:::
 
 <File name='Usage'>
 
