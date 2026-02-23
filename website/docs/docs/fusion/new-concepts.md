@@ -235,7 +235,7 @@ Static analysis may incorrectly fail on valid queries if they contain:
 - Then it statically analyzes each model's logical plan in order.
 - Finally, it runs each model's rendered SQL. Nothing is persisted to the database until Fusion has validated the entire project.
 
-### Introspective model with JIT (baseline) static analysis
+### Introspective model with baseline static analysis
 
 Imagine we update `model_c` to contain an introspective query (such as `dbt_utils.get_column_values`). We'll say it's querying `model_b`, but the <Constant name="fusion_engine" />'s response is the same regardless of what the introspection does.
 
