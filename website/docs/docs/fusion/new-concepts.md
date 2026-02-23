@@ -239,10 +239,6 @@ Static analysis may incorrectly fail on valid queries if they contain:
 
 Imagine we update `model_c` to contain an introspective query (such as `dbt_utils.get_column_values`). We'll say it's querying `model_b`, but the <Constant name="fusion_engine" />'s response is the same regardless of what the introspection does.
 
-<Expandable alt_header="JIT static analysis of introspective models" is_open="true">
-  <video src="/img/fusion/FusionJitRunUnsafe.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
-</Expandable>
-
 In baseline mode (the default), all models use JIT rendering and analysis. When running in strict mode, here's what happens:
 
 - During parsing, Fusion discovers `model_c`'s introspective query. It switches `model_c` to JIT rendering and opts `model_c+` in to JIT static analysis.
