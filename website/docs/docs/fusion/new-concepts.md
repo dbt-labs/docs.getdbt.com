@@ -72,54 +72,54 @@ The <Constant name="fusion_engine" /> is unique in that it can statically analyz
 
 ### Baseline mode: A smooth transition from dbt Core
 
-The <Constant name="fusion_engine" /> defaults to `static_analysis: baseline` mode, which draws inspiration from similar type-checking and linting tools like [TypeScript's migration approach](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html), [basedpyright's baseline feature](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/), and [Pydantic's strict/lax modes](https://docs.pydantic.dev/latest/why/#strict-lax).
+The <Constant name="fusion_engine" /> defaults to `static_analysis: baseline` mode, inspired by similar type-checking and linting tools like [TypeScript's migration approach](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html), [basedpyright's baseline feature](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/), and [Pydantic's strict/lax modes](https://docs.pydantic.dev/latest/why/#strict-lax).
 
-The philosophy behind baseline mode is:
+The philosophy behind baseline mode:
 
-- **Smooth transition**: Users coming from <Constant name="core" /> should have a familiar first-time experience
-- **Incremental opt-in**: A clear pathway to adopt more Fusion features over time
+- **Smooth transition**: Provide a familiar first-time experience for users coming from <Constant name="core" />.
+- **Incremental opt-in**: Offer a clear pathway to adopt more <Constant name="fusion" /> features over time.
 - **Pragmatic validation**: Catch most SQL errors without requiring a complete project overhaul
 
 Migrating to <Constant name="fusion" /> involves more than moving YAML around. Some scenarios that can make migration more involved include:
 
-1. **Limited access to sources**: Users who don't have access to all the sources and models of a large dbt project
-2. **Intricate Jinja workflows**: Projects that use post-hooks and introspection extensively
-3. **Package compatibility**: Projects that depend on packages that aren't yet Fusion-compatible
-4. **Unsupported SQL features**: Models and sources that use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by the engine
+1. **Limited access to sources**: You don't have access to all the sources and models of a large dbt project.
+2. **Intricate Jinja workflows**: Your project uses post-hooks and introspection extensively.
+3. **Package compatibility**: Your project depends on packages that aren't yet <Constant name="fusion" />-compatible.
+4. **Unsupported SQL features**: Your models or sources use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by the engine.
 
-Baseline mode lets you start using <Constant name="fusion" /> immediately while addressing these scenarios incrementally. As you resolve compatibility issues, you can opt specific models or your entire project into `strict` mode for maximum validation guarantees.
+Baseline mode lets you start using <Constant name="fusion" /> immediately while you address these scenarios incrementally. As you resolve compatibility issues, you can opt specific models or your entire project into `strict` mode for maximum validation guarantees.
 
 ### Static analysis and introspective queries
 
-When Fusion encounters an introspective query, that model will switch to just-in-time rendering (as described above). Both the introspective model and all of its descendants will also use JIT static analysis. JIT analysis still captures most SQL errors and prevents execution of an invalid model, but analysis happens only after upstream models have already been materialized.
+When Fusion encounters an introspective query, it switches that model to just-in-time rendering (as described above). Fusion also applies JIT static analysis to the introspective model and all its descendants. JIT analysis still captures most SQL errors and prevents execution of an invalid model, but analysis happens only after upstream models have materialized.
 
-In baseline mode (the default), this JIT behavior is applied consistently across your project, which means Fusion can no longer 100% guarantee alignment between what it analyzes and what will be executed. The most common real-world example where JIT static analysis can cause an issue is a standalone `dbt compile` step (as opposed to the compilation that happens as part of a `dbt run`).
+In baseline mode (the default), <Constant name="fusion" /> applies this JIT behavior consistently across your project. This means <Constant name="fusion" /> can no longer 100% guarantee alignment between what it analyzes and what it executes. The most common real-world example where JIT static analysis can cause an issue is a standalone `dbt compile` step (as opposed to the compilation that happens as part of a `dbt run`).
 
-During a `dbt run`, JIT rendering ensures the downstream model's code will be up to date with the current warehouse state, but a standalone compile does not refresh the upstream model. In this scenario Fusion will read from the upstream model as it was last run. This is _probably_ fine, but could lead to errors being raised incorrectly (a false positive) or not at all (a false negative).
+During a `dbt run`, JIT rendering keeps the downstream model's code up to date with the current warehouse state, but a standalone compile does not refresh the upstream model. In this scenario, Fusion reads from the upstream model's last-run state. This is _probably_ fine, but could lead to errors being raised incorrectly (a false positive) or not at all (a false negative).
 
 <Expandable alt_header="Rendering and analyzing without execution" is_open="true">
   <video src="/img/fusion/FusionJitCompileUnsafe.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
   Note that `model_d` is rendered AOT, since it doesn't use introspection, but it still has to wait for `introspective_model_c` to be analyzed.
 </Expandable>
 
-You will still derive significant benefits from `baseline` static analysis compared to no static analysis. As you become more familiar with <Constant name="fusion" />, consider whether your introspective code could be rewritten in a way that is eligible for AOT rendering and `strict` static analysis.
+You still gain significant benefits from `baseline` static analysis compared to no static analysis. As you become more familiar with <Constant name="fusion" />, consider rewriting introspective code to make it eligible for AOT rendering and `strict` static analysis.
 
 ## Recapping the differences between engines
 
-dbt Core:
+<Constant name="dbt_core" />:
 
-- renders all models just-in-time
-- never runs static analysis
+- Renders all models just-in-time.
+- Never runs static analysis.
 
 The <Constant name="fusion_engine" /> (baseline mode &mdash; default):
 
 - Renders all models just-in-time, similar to <Constant name="core" />.
 - Statically analyzes all models just-in-time, catching most SQL errors while providing a familiar migration experience.
 
-The dbt Fusion engine (strict mode):
+The <Constant name="fusion_engine" /> (strict mode):
 
-- renders all models ahead-of-time, unless they use introspective queries
-- statically analyzes all models ahead-of-time, guaranteeing nothing runs until the entire project is proven valid
+- Renders all models ahead-of-time, unless they use introspective queries.
+- Statically analyzes all models ahead-of-time, guaranteeing nothing runs until the entire project is proven valid.
 
 ## Configuring `static_analysis`
 
