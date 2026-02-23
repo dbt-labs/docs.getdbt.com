@@ -49,7 +49,9 @@ The dbt Fusion engine can also render Jinja, but then it completes a second phas
 
 The <Constant name="fusion_engine" /> _can_ use **Ahead of Time (AOT) rendering and analysis** when configured with `static_analysis: strict`. In strict mode, it renders all models in the project, then produces and statically analyzes every model's logical plan, and only then will it start running models in the warehouse.
 
-By rendering and analyzing all models ahead of time, and only beginning execution once everything is proven to be valid, strict mode avoids consuming any warehouse resources unnecessarily. By contrast, in baseline mode (the default) or when using <Constant name="core" />, SQL errors are flagged during execution.
+By rendering and analyzing all models ahead of time, and only beginning execution once everything is proven to be valid. The amount of analysis done is determined by the value of` static_analysis:` &mdash; `baseline` or `strict`. The <Constant name="fusion_engine" /> prevents unnecessary consumption of warehouse resources.
+
+By contrast, SQL errors in models run by <Constant name="core" />'s engine will only be flagged by the database itself during execution.
 
 ### Rendering introspective queries
 
