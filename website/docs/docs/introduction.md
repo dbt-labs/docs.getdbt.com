@@ -4,7 +4,7 @@ id: "introduction"
 description: "dbt is the industry standard for data transformation."
 pagination_next: null
 pagination_prev: null
-intro_text: "dbt transforms raw warehouse data into trusted data products. You write simple SQL select statements, and dbt handles the heavy lifting by creating modular, maintainable data models that power analytics, operations, and AI, replacing the need for complex and fragile transformation code."
+intro_text: "dbt transforms raw warehouse data into trusted data products. You write simple SQL select statements, and dbt handles the heavy lifting by creating modular, maintainable data models that power analytics, operations, and AI -- replacing the need for complex and fragile transformation code."
 ---
 
 <Snippet path="what-is-dbt-intro" />
@@ -16,38 +16,45 @@ Read more about why we want to enable analysts to work more like software engine
 
 ## dbt framework
 
-Use the dbt framework to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines.
+import DbtFramework from '/snippets/_dbt-framework.md';
 
-The dbt framework is composed of a **language** and an **engine**:
-
-- The _dbt language_ is the code you write in your dbt project &mdash; SQL select statements, Jinja templating, YAML configs, and tests. It's the standard for the data industry and the foundation of the dbt framework.
-
-- The _dbt engine_ compiles your project, executes your transformation graph, and produces metadata. dbt supports two engines: [dbt <Constant name="fusion" />](/docs/fusion) and [<Constant name="core" />](/docs/install-dbt).
+<DbtFramework />
 
 ### dbt Fusion engine
 
-The <Constant name="fusion_engine" /> is a fast, Rust-based engine that delivers a lightning-fast development experience, intelligent cost savings, and improved governance. Fusion understands SQL natively across multiple dialects, catches errors instantly, and optimizes how your models are built. The <Constant name="fusion_engine" /> is the foundation for future investment and innovation in dbt.
+The <Constant name="fusion_engine" /> is a fast, Rust-based engine that delivers a lightning-fast development experience, intelligent cost savings, and improved governance. <Constant name="fusion" /> understands SQL natively across multiple dialects, catches errors instantly, and optimizes how your models are built &mdash; bringing SQL comprehension and state awareness, instant feedback, <Term id="lsp"/>, and more to every dbt workflow.
 
-Fusion powers dbt in the [<Constant name="dbt_platform" />](/docs/cloud/about-cloud/dbt-cloud-features), [VS Code / Cursor](/docs/about-dbt-extension), and [locally from the command line](/docs/fusion/install-fusion-cli). You don't need to have a <Constant name="dbt_platform" /> project to use <Constant name="fusion_engine" />.
+<Constant name="fusion" /> powers dbt in the [<Constant name="dbt_platform" />](/docs/cloud/about-cloud/dbt-cloud-features), [VS Code / Cursor](/docs/about-dbt-extension), and [locally from the command line](/docs/fusion/install-fusion-cli). You don't need to have a <Constant name="dbt_platform" /> project to use <Constant name="fusion_engine" />.
 
 For more information, refer to [About the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [get started with Fusion](/docs/fusion/get-started-fusion) page.
 
 ### dbt Core engine
 
-[<Constant name="core" />](/docs/install-dbt) is the open-source, Python-based engine that has powered dbt for over a decade. dbt Labs continues to maintain and expand <Constant name="core" /> with new language features and community contributions. <Constant name="core" /> is best suited for small, highly technical teams with simpler dbt deployments who want to set up and run dbt on their own infrastructure. 
+[<Constant name="core" />](/docs/install-dbt) is the open-source, Python-based engine that enables data practitioners to transform data. <Constant name="core" /> is best suited for small, highly technical teams with simpler dbt deployments who want to set up and run dbt on their own infrastructure. 
 
 Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?step=1).
 
 ## How to use dbt
-Use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team comfortable with SQL can safely contribute to production-grade data pipelines, helping businesses make data-driven decisions.
+Use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team familiar with SQL can safely contribute to production-grade data pipelines, helping organizations make data-driven decisions.
 
-You can deploy dbt projects using <Constant name="dbt_platform" /> or locally from your command line or code editor using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
+You can deploy dbt projects in different ways depending on your needs: 
+- Using the [<Constant name="dbt_platform" />](#dbt-platform) (recommended for most users)
+- [Locally from your command line or code editor](#dbt-local-development)
+
+All ways support using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
 ### dbt platform
 
 The <Constant name="dbt_platform" /> offers the fastest, most reliable, and scalable way to deploy dbt. It's powered by the <Constant name="fusion_engine" /> or <Constant name="core" /> engine, and provides a fully managed service with scheduling, CI/CD, documentation hosting, monitoring, development, and alerting through a web-based user interface (UI).
 
-You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com/pricing/). Learn more about the [<Constant name="dbt_platform" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [<Constant name="cloud" /> quickstarts](/guides).
+The <Constant name="dbt_platform" /> offers [multiple ways](/docs/cloud/about-cloud/dbt-cloud-features) to develop and collaborate on dbt projects:
+- [Develop in your browser using the <Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio)
+- [Seamless drag-and-drop development with <Constant name="visual_editor" />](/docs/cloud/canvas)
+- [Run dbt commands from your local command line](#dbt-local-development) using dbt VS Code extension or <Constant name="cloud_cli" /> (both which integrate seamlessly with the <Constant name="dbt_platform" /> project(s)).
+
+Learn more about the [<Constant name="dbt_platform" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [<Constant name="cloud" /> quickstarts](/guides).
+
+You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com/pricing/). 
 
 ### dbt local development
 
@@ -55,7 +62,8 @@ Use the dbt framework and develop dbt projects from your command line or code ed
 
 - [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
 - [Install the Fusion CLI](/docs/fusion/install-fusion-cli) &mdash; <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
-- [Install <Constant name="core" />](/docs/install-dbt) &mdash; The open-source, Python-based CLI. Doesn't include <Term id="lsp" /> features.
+- [Install the <Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) &mdash; The <Constant name="dbt_platform" /> CLI, which allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
+- [Install <Constant name="core" />](/docs/install-dbt) &mdash; The open-source, Python-based CLI that uses the <Constant name="core" /> engine. Doesn't include <Term id="lsp" /> features.
 
 ## Why use dbt
 
@@ -72,7 +80,7 @@ Here are some key dbt user features that make it a powerful tool for data transf
 | Feature               | Description |
 |-----------------------|-------------|
 | Handle boilerplate code to materialize queries as relations | For each model you create, you can easily configure a *materialization*. A materialization represents a build strategy for your select query – the code behind a materialization is robust, boilerplate SQL that wraps your select query in a statement to create a new, or update an existing, relation. Read more about [Materializations](/docs/build/materializations).|
-| Use a code compiler | SQL files can contain Jinja, a lightweight templating language. Using Jinja in SQL provides a way to use control structures in your queries. For example, `if` statements and `for` loops. It also enables repeated SQL to be shared through `macros`. Read more about [Macros](/docs/build/jinja-macros).|
+| Use Jinja templating and compilation | SQL files can contain Jinja for control structures (`if`, `for` loops) and macros. The [dbt Fusion engine](/docs/fusion) goes beyond rendering to statically analyze your SQL, enabling dialect-aware validation and column-level lineage. Read more about [Macros](/docs/build/jinja-macros) and [new concepts in Fusion](/docs/fusion/new-concepts).|
 | Determine the order of model execution | Often, when transforming data, it makes sense to do so in a staged approach. dbt provides a mechanism to implement transformations in stages through the [ref function](/reference/dbt-jinja-functions/ref). Rather than selecting from existing tables and views in your warehouse, you can select from another model.|
 | Document your dbt project | In the <Constant name="dbt_platform" />, you can auto-generate the documentation when your dbt project runs. dbt provides a mechanism to write, version-control, and share documentation for your dbt models. You can write descriptions (in plain text or markdown) for each model and field. Read more about the [Documentation](/docs/build/documentation).|
 | Test your models |   Tests provide a way to improve the integrity of the SQL in each model by making assertions about the results generated by a model. Build, test, and run your project with a button click or by using the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) command bar. Read more about writing tests for your models [Testing](/docs/build/data-tests)|
