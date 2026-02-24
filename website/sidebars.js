@@ -19,6 +19,7 @@ const sidebarSettings = {
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
         "docs/fusion/install-fusion",
+        "docs/fusion/fusion-releases",
       ],
     },
     {
