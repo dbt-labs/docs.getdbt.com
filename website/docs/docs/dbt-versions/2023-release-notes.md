@@ -31,7 +31,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='External attributes'>
 
-    The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/core/connect-data-platform/profiles.yml) value.
+    The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/local/connect-data-platform/profiles.yml) value.
 
     To learn more, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
 
@@ -207,7 +207,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## 🎯 Core projects
 
     - Deprecated dbt Core v1.0 and v1.1 from the docs.
-    - Added configuration instructions for the [AWS Glue](/docs/core/connect-data-platform/glue-setup) community plugin.
+    - Added configuration instructions for the [AWS Glue](/docs/local/connect-data-platform/glue-setup) community plugin.
     - Revised the dbt Core quickstart, making it easier to follow. Divided this guide into steps that align with the [other guides](/guides/manual-install?step=1).
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
@@ -599,7 +599,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## ☁ Cloud projects
 
     - We clarified the nuances of [CI and CI jobs](/docs/deploy/continuous-integration), updated the [Scheduler content](/docs/deploy/job-scheduler), added two new pages for the job settings and run visibility, moved the project state page to the [Syntax page](/reference/node-selection/syntax), and provided a landing page for [Deploying with Cloud](/docs/deploy/jobs) to help readers navigate the content better.
-    - We reformatted the [Supported data platforms page](/docs/supported-data-platforms) by adding dbt Cloud to the page, splitting it into multiple pages, using cards to display verified adapters, and moving the [Warehouse setup pages](/docs/core/connect-data-platform/about-core-connections) to the Docs section. 
+    - We reformatted the [Supported data platforms page](/docs/supported-data-platforms) by adding dbt Cloud to the page, splitting it into multiple pages, using cards to display verified adapters, and moving the [Warehouse setup pages](/docs/local/connect-data-platform/about-core-connections) to the Docs section. 
     - We launched a new [Lint and format page](/docs/cloud/studio-ide/lint-format), which highlights the awesome new dbt Cloud IDE linting/formatting function.
     - We enabled a connection between [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes) and the dbt Slack community. This means new dbt Cloud release notes are automatically sent to the slack community [#dbt-cloud channel](https://getdbt.slack.com/archives/CMZ2V0X8V) via RSS feed, keeping users up to date with changes that may affect them. 
     - We’ve added two new docs links in the dbt Cloud Job settings user interface (UI). This will provide additional guidance and help users succeed when setting up a dbt Cloud job: [job commands](/docs/deploy/job-commands) and job triggers.    
@@ -712,7 +712,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     ## 🔎 Discoverability
 
-    - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/core/connect-data-platform/profiles.yml) by adding a callout on several key pages.
+    - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/local/connect-data-platform/profiles.yml) by adding a callout on several key pages.
     - Fleshed out the [model Jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
     - Added a new [Quickstarts landing page](/guides). This new format sets up for future iterations that will include filtering! But for now, we are excited you can step through quickstarts in a focused way.
 
@@ -729,7 +729,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## 🎯 Core projects
 
     - See what’s coming up [in Core v 1.6](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.6%22)!
-    - We turned the `profiles.yml` [page](/docs/core/connect-data-platform/profiles.yml) into a landing page, added more context to profile.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
+    - We turned the `profiles.yml` [page](/docs/local/connect-data-platform/profiles.yml) into a landing page, added more context to profile.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
@@ -833,7 +833,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - Added Starburst/Trino adapter docs, including:
   * [dbt Cloud quickstart guide](/guides/starburst-galaxy), 
   * [connection page](/docs/cloud/connect-data-platform/connect-starburst-trino), 
-  * [set up page](/docs/core/connect-data-platform/trino-setup), and [config page](/reference/resource-configs/trino-configs). 
+  * [set up page](/docs/local/connect-data-platform/trino-setup), and [config page](/reference/resource-configs/trino-configs). 
     - Enhanced [dbt Cloud jobs page](/docs/deploy/jobs) and section to include conceptual info on the queue time, improvements made around it, and about failed jobs. 
     - Check out the April dbt [Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes)
 

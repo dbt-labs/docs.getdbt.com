@@ -434,11 +434,11 @@ var siteSettings = {
                   ],
                 },
                 {
-                  id: "dbt-core-and-fusion",
-                  name: "dbt Core and Fusion",
+                  id: "dbt-local-installation",
+                  name: "dbt local installation",
                   routes: [
-                    { route: "/docs/about-dbt-install" },
-                    { route: "/docs/core/dbt-core-environments" },
+                    { route: "/docs/install-dbt" },
+                    { route: "/docs/local/dbt-core-environments" },
                   ],
                   subsections: [
                     {
@@ -451,20 +451,10 @@ var siteSettings = {
                       ],
                     },
                     {
-                      id: "install-dbt-core",
-                      name: "Install dbt Core",
-                      routes: [
-                        { route: "/docs/core/installation-overview" },
-                        { route: "/docs/core/docker-install" },
-                        { route: "/docs/core/pip-install" },
-                        { route: "/docs/core/source-install" },
-                      ],
-                    },
-                    {
                       id: "core-connect-data-platform",
                       name: "Connect data platform",
                       routes: [
-                        { route: "/docs/core/connect-data-platform/**" },
+                        { route: "/docs/local/connect-data-platform/**" },
                       ],
                     },
                   ],
