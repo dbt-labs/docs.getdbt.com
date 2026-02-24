@@ -70,6 +70,7 @@ const sidebarSettings = {
           items: [
             "docs/cloud/about-cloud-setup",
             "docs/configuration-checklist",
+            "docs/cloud/about-profiles",
             "docs/cloud/account-settings",
             "docs/cloud/account-integrations",
             "docs/dbt-cloud-environments",
