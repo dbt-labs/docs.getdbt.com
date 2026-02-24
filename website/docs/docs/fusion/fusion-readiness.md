@@ -38,7 +38,13 @@ The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_p
 
 ### Validate user-defined functions
 
-Check that all user-defined functions (UDFs) in your project are supported by <Constant name="fusion" />. Unsupported functions trigger a deprecation warning: `dbt0209: No function <function name>`.
+### Validate support for functions
+
+Check that <Constant name="fusion" /> supports all user-defined functions (UDFs) in your project.
+
+<Constant name="fusion" /> supports nearly all built-in data platform functions out of the box. However, data platforms continuously add new functions that <Constant name="fusion" /> may not yet support.
+
+If you see the error `dbt0209: No function <function name>`, the resolution depends on whether the function is a UDF or a built-in function:
 
 If you see this warning:
 
