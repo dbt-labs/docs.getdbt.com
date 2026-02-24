@@ -11,8 +11,8 @@ If you see a `authentication has expired` error when you try to run queries, you
 To resolve the issue, complete the following steps:
 
 1. Go to your **Profile settings** page, accessible from the navigation menu.
-2. Navigate to **Credentials** and click on the project you're experiencing the issue with.
-3. Under **Development credentials**, click the **Reconnect Snowflake Account** button. This steps you through reauthentication using the SSO workflow.
+2. Navigate to **Credentials** and then choose the project where you're experiencing the issue.
+3. Under **Development credentials**, click the **Reconnect Snowflake Account** button. This will guide you through re-authenticating using your SSO workflow.
 
 Your Snowflake administrator can [configure the refresh token validity period](/docs/cloud/manage-access/set-up-snowflake-oauth#create-a-security-integration), up to the maximum 90 days.
 
