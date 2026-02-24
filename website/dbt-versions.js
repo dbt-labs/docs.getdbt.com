@@ -323,10 +323,6 @@ exports.versionedPages = [
  */
 exports.versionedCategories = [
   {
-    category: "Connect dbt Core to your data platform",
-    lastVersion: "1.99",
-  },
-  {
     category: "Install dbt Core",
     lastVersion: "1.99",
   },
