@@ -33,37 +33,6 @@ The dbt Fusion engine can also render Jinja, but then it completes a second phas
 | Produce and statically analyze logical plan  | ❌ | ✅ |
 | Run rendered SQL | ✅ | ✅ |
 
-## Rendering strategies
-
-<Lightbox src="/img/fusion/annotated_steps.png" title="Each dot represents a step in that model's execution (render, analyze, run). The numbers reflect step order across the DAG." alignment="left" width="600px"/>
-
-<Expandable alt_header="Rendering and execution (dbt Core)" is_open="true">
-  <video src="/img/fusion/CoreJitRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
-</Expandable>
-
-<Constant name="core" /> renders a model, runs it in the warehouse, then moves on to the next model.
-
-<Expandable alt_header="Rendering, analysis, and execution (dbt Fusion engine)" is_open="true">
-  <video src="/img/fusion/FusionAotRun.mp4" autoPlay loop muted style={{ width: "100%", maxWidth: 950 }} />
-</Expandable>
-
-When configured with `static_analysis: strict`, the <Constant name="fusion_engine" /> renders all models in the project, then produces and statically analyzes every model's logical plan, and only then starts running models in the warehouse.
-
-By rendering and analyzing all models before execution, and only beginning execution once everything is proven valid, the <Constant name="fusion_engine" /> prevents unnecessary consumption of warehouse resources. dbt determines the amount of analysis performed using the `static_analysis` setting of `baseline` or `strict`.
-
-By contrast, SQL errors in models run by <Constant name="core" />'s engine will only be flagged by the database itself during execution.
-
-### Rendering introspective queries
-
-An introspective model is a model whose rendered SQL depends on the results of a database query. Models containing macros like `run_query()` or `dbt_utils.get_column_values()` are introspective. Introspection causes issues with pre-execution rendering because:
-
-- Most introspective queries run against the results of an earlier model in the DAG, which may not yet exist in the database during rendering.
-- Even if the model does exist in the database, it might be out of date until after the model has been refreshed.
-
-The <Constant name="fusion_engine" /> handles introspective models by rendering them during execution, ensuring they behave the same way as in <Constant name="core" />.
-
-Note that macros like `adapter.get_columns_in_relation()` and `dbt_utils.star()` _can_ be rendered and analyzed before execution, as long as the [`Relations`](/reference/dbt-classes#relation) they inspect aren't themselves dynamic. This is because the <Constant name="fusion_engine" /> populates schemas into memory as part of the compilation process.
-
 ## Principles of static analysis
 
 The concept of [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) is meant to guarantee that if a model compiles without error in development, it will also run without compilation errors when deployed. Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control. 
@@ -76,11 +45,13 @@ The <Constant name="fusion_engine" /> is unique in that it can statically analyz
 
 The <Constant name="fusion_engine" /> defaults to `static_analysis: baseline` mode, inspired by similar type-checking and linting tools like [TypeScript's migration approach](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html), [basedpyright's baseline feature](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/), and [Pydantic's strict/lax modes](https://docs.pydantic.dev/latest/why/#strict-lax).
 
-The philosophy behind baseline mode:
+The philosophy behind the above-mentioned tools and <Constant name="fusion" />'s baseline mode is:
 
 - **Smooth transition**: Provide a familiar first-time experience for users coming from <Constant name="core" />.
 - **Incremental opt-in**: Offer a clear pathway to adopt more <Constant name="fusion" /> features over time.
-- **Pragmatic validation**: Catch most SQL errors without requiring a complete project overhaul
+- **Pragmatic validation**: Catch most SQL errors without requiring a complete project overhaul.
+
+Use this style of gradual typing to start with lightweight validation, then incrementally adopt strict guarantees as your project is ready.
 
 Migrating to <Constant name="fusion" /> can involve more than moving YAML around. Some scenarios that can make migration more involved include:
 
