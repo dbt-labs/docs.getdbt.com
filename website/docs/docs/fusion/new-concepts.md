@@ -49,7 +49,7 @@ The dbt Fusion engine can also render Jinja, but then it completes a second phas
 
 When configured with `static_analysis: strict`, the <Constant name="fusion_engine" /> renders all models in the project, then produces and statically analyzes every model's logical plan, and only then starts running models in the warehouse.
 
-By rendering and analyzing all models before execution, and only beginning execution once everything is proven valid, the <Constant name="fusion_engine" /> prevents unnecessary consumption of warehouse resources. The amount of analysis performed is determined by the `static_analysis` setting &mdash; `baseline` or `strict`.
+By rendering and analyzing all models before execution, and only beginning execution once everything is proven valid, the <Constant name="fusion_engine" /> prevents unnecessary consumption of warehouse resources. dbt determines the amount of analysis performed using the `static_analysis` setting of `baseline` or `strict`.
 
 By contrast, SQL errors in models run by <Constant name="core" />'s engine will only be flagged by the database itself during execution.
 
@@ -82,18 +82,18 @@ The philosophy behind baseline mode:
 - **Incremental opt-in**: Offer a clear pathway to adopt more <Constant name="fusion" /> features over time.
 - **Pragmatic validation**: Catch most SQL errors without requiring a complete project overhaul
 
-Migrating to <Constant name="fusion" /> involves more than moving YAML around. Some scenarios that can make migration more involved include:
+Migrating to <Constant name="fusion" /> can involve more than moving YAML around. Some scenarios that can make migration more involved include:
 
 1. **Limited access to sources**: You don't have access to all the sources and models of a large dbt project.
 2. **Intricate Jinja workflows**: Your project uses post-hooks and introspection extensively.
 3. **Package compatibility**: Your project depends on packages that aren't yet <Constant name="fusion" />-compatible.
-4. **Unsupported SQL features**: Your models or sources use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by the engine.
+4. **Unsupported SQL features**: Your models or sources use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by the <Constant name="fusion_engine" /> .
 
-Baseline mode lets you start using <Constant name="fusion" /> immediately while you address these scenarios incrementally. As you resolve compatibility issues, you can opt specific models or your entire project into `strict` mode for maximum validation guarantees.
+Setting `static_analysis` to `baseline` mode lets you start using <Constant name="fusion" /> immediately while you address these scenarios incrementally. As you resolve compatibility issues, you can opt specific models or your entire project into `strict` mode for maximum validation guarantees.
 
 ## Recapping the differences between engines
 
-<Constant name="dbt_core" />:
+<Constant name="core" />:
 
 - Renders and runs models one at a time.
 - Never runs static analysis.
