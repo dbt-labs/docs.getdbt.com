@@ -8,7 +8,7 @@ Fusion marks a significant update to dbt. While many of the workflows you've gro
 - [New concepts in Fusion](/docs/fusion/new-concepts)
 - [Supported features matrix](/docs/fusion/supported-features)
 - [Installing Fusion CLI](/docs/fusion/install-fusion-cli)
-- [Installing VS Code extension](/docs/local/install-dbt-extension)
+- [Installing VS Code extension](/docs/install-dbt-extension)
 - [Fusion release track](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine)
 - [Quickstart for Fusion](/guides/fusion?step=1)
 - [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)
