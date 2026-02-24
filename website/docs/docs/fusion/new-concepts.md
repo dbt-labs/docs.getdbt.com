@@ -53,6 +53,76 @@ The philosophy behind the above-mentioned tools and <Constant name="fusion" />'s
 
 Use this style of gradual typing to start with lightweight validation, then incrementally adopt strict guarantees as your project is ready.
 
+#### What baseline mode changes
+
+Baseline mode introduces several fundamental behavior changes compared to the previous binary (off/on) approach:
+
+- **No downloading of remote schemas** &mdash; Baseline mode does not fetch schemas from the warehouse.
+- **Unit tests work without strict mode** &mdash; Previously, unit tests required static analysis to be fully on. In baseline mode, they work out of the box.
+- **No unsafe introspection warnings** &mdash; We no longer warn about unsafe introspection, though we'd still love to help you assess it in the future.
+
+The following tables show how baseline mode expands what's available without requiring strict mode.
+
+> ✅ = Available | ❌ = Not available
+
+#### Before baseline
+
+Before baseline mode existed, you had two choices: static analysis _off_ or _on_.
+
+| Feature | SA: off | SA: on |
+|---------|:-------:|:------:|
+| Go-to-definition (macros, refs, docs) | ✅ | ✅ |
+| Table lineage | ✅ | ✅ |
+| YAML validation | ✅ | ✅ |
+| Render + preview SQL | ✅ | ✅ |
+| _...and more parsing-based features_ | ✅ | ✅ |
+| Detect syntax errors | ❌ | ✅ |
+| Preview CTE results | ❌ | ✅ |
+| Go-to-definition (columns) | ❌ | ✅ |
+| Unit tests | ❌ | ✅ |
+| Intellisense / typeahead (Tier 1) | ❌ | ✅ |
+| Automatic refactor column names | ❌ | ✅ |
+| Dev-mode column lineage | ❌ | ✅ |
+| Efficient testing | ❌ | ✅ |
+| Classifiers / Governance | ❌ | ✅ |
+| Linting | ❌ | ✅ |
+| Formatting SQL | ❌ | ✅ |
+| Model overlap analysis | ❌ | ✅ |
+| Detect query/SQL errors (Tier 2) | ❌ | ✅ |
+| Intellisense / typeahead (Tier 2) | ❌ | ✅ |
+
+#### With baseline (today + future)
+
+Baseline mode unlocks a meaningful set of features without requiring strict mode. We're also investing in moving more features into baseline over time.
+
+| Feature | SA: off | Baseline | Baseline (future) | SA: strict |
+|---------|:-------:|:--------:|:------------------:|:----------:|
+| Go-to-definition (macros, refs, docs) | ✅ | ✅ | ✅ | ✅ |
+| Table lineage | ✅ | ✅ | ✅ | ✅ |
+| YAML validation | ✅ | ✅ | ✅ | ✅ |
+| Render + preview SQL | ✅ | ✅ | ✅ | ✅ |
+| _...and more parsing-based features_ | ✅ | ✅ | ✅ | ✅ |
+| Detect syntax errors | ❌ | ✅ | ✅ | ✅ |
+| Preview CTE results | ❌ | ✅ | ✅ | ✅ |
+| Go-to-definition (columns) | ❌ | ✅ | ✅ | ✅ |
+| Unit tests | ❌ | ✅ | ✅ | ✅ |
+| Intellisense / typeahead (Tier 1) | ❌ | ❌ | ✅ | ✅ |
+| Automatic refactor column names | ❌ | ❌ | ✅ | ✅ |
+| Dev-mode column lineage | ❌ | ❌ | ✅ | ✅ |
+| Efficient testing | ❌ | ❌ | ✅ | ✅ |
+| Classifiers / Governance | ❌ | ❌ | ✅ | ✅ |
+| Linting | ❌ | ❌ | ✅ | ✅ |
+| Formatting SQL | ❌ | ❌ | ✅ | ✅ |
+| Model overlap analysis | ❌ | ❌ | ✅ | ✅ |
+| Detect query/SQL errors (Tier 2) | ❌ | ❌ | ❌ | ✅ |
+| Intellisense / typeahead (Tier 2) | ❌ | ❌ | ❌ | ✅ |
+
+:::tip CodeLens visibility
+The VS Code extension and dbt Platform Studio provide CodeLens even when static analysis is off, giving you visibility into which models have static analysis disabled and why.
+:::
+
+Ultimately, we want everyone developing in strict mode for maximum guarantees. We acknowledge this isn't a change that can happen overnight &mdash; baseline exists to smooth the transition. Many planned features (like local compute) require strict mode. We're also exploring inferring column types on your behalf, which would enable more functionality in baseline mode without requiring you to manually provide type information.
+
 Migrating to <Constant name="fusion" /> can involve more than moving YAML around. Some scenarios that can make migration more involved include:
 
 1. **Limited access to sources**: You don't have access to all the sources and models of a large dbt project.
