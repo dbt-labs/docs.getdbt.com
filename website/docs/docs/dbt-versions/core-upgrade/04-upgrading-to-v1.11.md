@@ -117,6 +117,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ### BigQuery
 
 - To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`.
+- You can configure BigQuery job link logging. By default, dbt logs job links at the debug level. Set `job_link_info_level_log: true` in your BigQuery profile to log job links at the info level, making them visible in standard dbt output and easier to access in the BigQuery console for debugging and monitoring. For more information, see [BigQuery setup](/docs/core/connect-data-platform/bigquery-setup#job_link_info_level_log).
 
 ### Redshift
 
