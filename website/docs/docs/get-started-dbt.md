@@ -6,7 +6,11 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](/docs/introduction#the-dbt-platform) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
+Begin your dbt journey by choosing how you want to develop:
+
+- **<Constant name="dbt_platform" />** &mdash; Develop in your browser (<Constant name="cloud_ide" /> or <Constant name="visual_editor" />) or use local tools (VS Code extension, <Constant name="cloud_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/install-dbt) engines.
+- **Local only** &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [Fusion CLI](/docs/fusion/install-fusion-cli), or [<Constant name="core" />](/docs/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
+- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="cloud_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, and the <Constant name="semantic_layer" />.
 
 ## The dbt platform
 
@@ -82,7 +86,9 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
 
 ## dbt local installations
 
-When you [install dbt locally](/docs/install-dbt), you get command-line tools that enable you to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
+When you install dbt locally, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
+
+You can use local tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="cloud_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
 
 Develop locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
@@ -103,7 +109,7 @@ Develop locally using the <Constant name="fusion_engine" /> or <Constant name="c
     title="Quickstart for dbt with DuckDB"
     body="Learn how to connect dbt to DuckDB."
     link="/guides/duckdb?step=1"
-    icon="duckdb"/>
+    icon="duckdb-seeklogo"/>
 </div>
 
 ## Related docs
