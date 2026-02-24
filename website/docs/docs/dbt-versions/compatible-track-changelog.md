@@ -10,6 +10,41 @@ Each monthly **Compatible** release includes functionality matching up-to-date o
 
 For more information, see [release tracks](/docs/dbt-versions/cloud-release-tracks).
 
+## February 2026
+
+Release date: February 24, 2026
+
+### dbt cloud-based platform
+
+### Under the Hood
+- Resolve Click CLI UserWarning regarding --target and --profile usage in Advanced CI
+
+This compatible release includes functionality from the following versions of dbt Core OSS:
+
+```
+dbt-core==1.11.6
+
+# shared interfaces
+dbt-adapters==1.22.6
+dbt-common==1.37.2
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.1
+
+# adapters
+dbt-athena==1.10.0
+dbt-bigquery==1.11.0
+dbt-databricks==1.11.5
+dbt-fabric==1.9.4
+dbt-postgres==1.10.0
+dbt-redshift==1.10.1
+dbt-snowflake==1.11.2
+dbt-spark==1.10.1
+dbt-synapse==1.8.4
+dbt-teradata==1.10.1
+dbt-trino==1.10.1
+```
+
 ## December 2025
 
 Release date: December 9, 2025
