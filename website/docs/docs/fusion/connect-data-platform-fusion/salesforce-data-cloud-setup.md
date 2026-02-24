@@ -1,6 +1,6 @@
 ---
-title: "Salesforce Data Cloud setup"
-description: "Read this guide to learn about the Salesforce Data Cloud warehouse setup in dbt."
+title: "Salesforce Data 360 setup"
+description: "Read this guide to learn about the Salesforce Data 360 warehouse setup in dbt."
 id: "salesforce-data-cloud-setup"
 meta:
   maintained_by: dbt Labs
@@ -12,17 +12,17 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: N/A
   slack_channel_link: N/A
-  platform_name: 'Salesforec Data Cloud'
+  platform_name: 'Salesforec Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
 ---
 
-# Salesforce Data Cloud setup <Lifecycle status="beta"/>
+# Salesforce Data 360 setup <Lifecycle status="beta"/>
 
 This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install dbt Fusion](/docs/fusion/about-fusion-install). We recommend using the [VS Code Extension](/docs/fusion/install-dbt-extension) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
 
 ## Prerequisites
 
-Before you can connect dbt to the Salesforce Data Cloud, you need the following:
+Before you can connect dbt to the Salesforce Data 360, you need the following:
 
 - A Data Cloud instance
 - [An external client app that dbt connects to for the Data Cloud instance](https://help.salesforce.com/s/articleView?id=xcloud.create_a_local_external_client_app.htm&type=5), with [OAuth configured](https://help.salesforce.com/s/articleView?id=xcloud.configure_external_client_app_oauth_settings.htm&type=5). OAuth scopes must include:
@@ -34,7 +34,7 @@ Before you can connect dbt to the Salesforce Data Cloud, you need the following:
 
 ## Configure Fusion
 
-To connect dbt to Salesforce Data Cloud, set up your `profiles.yml`. Refer to the following configuration:
+To connect dbt to Salesforce Data 360, set up your `profiles.yml`. Refer to the following configuration:
 
 <File name='~/.dbt/profiles.yml'>
 

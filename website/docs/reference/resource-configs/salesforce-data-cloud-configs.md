@@ -1,10 +1,10 @@
 ---
-title: "Salesforce Data Cloud configurations"
-description: "Salesforce Data Cloud Configurations - Read this in-depth guide to learn about configurations in dbt."
+title: "Salesforce Data 360 configurations"
+description: "Salesforce Data 360 Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "data-cloud-configs"
 ---
 
-# Salesforce Data Cloud configurations <Lifecycle status="beta"/>
+# Salesforce Data 360 configurations <Lifecycle status="beta"/>
 
 ## Supported materializations
 
@@ -51,7 +51,7 @@ sources:
 
 ### Table materialization 
 
-dbt <Constant name="fusion" /> supports Table materialization on Salesforce Data Cloud. Execution of the materialization results in the creation of a [batch data transform](https://help.salesforce.com/s/articleView?id=data.c360_a_batch_transform_overview.htm&language=en_US&type=5) and a [Data Lake Object (DLO)](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_concepts_data_cloud_objects.htm) for querying. 
+dbt <Constant name="fusion" /> supports Table materialization on Salesforce Data 360. Execution of the materialization results in the creation of a [batch data transform](https://help.salesforce.com/s/articleView?id=data.c360_a_batch_transform_overview.htm&language=en_US&type=5) and a [Data Lake Object (DLO)](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_concepts_data_cloud_objects.htm) for querying. 
 
 Currently, only the `profile` type DLO is supported. Support for `engagement` DLOs is coming soon. Profile DLOs must define a `primary_key` in the model config. For example:
 
