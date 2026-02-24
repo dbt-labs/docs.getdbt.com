@@ -159,7 +159,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to Databricks
 
-To connect to a data platform with dbt Core, create the appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Databricks SQL Warehouse/cluster. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more info, refer to [Connection profiles](/docs/local/connect-data-platform/connection-profiles) and [profiles.yml](/docs/local/connect-data-platform/profiles.yml).
+To connect to a data platform with dbt Core, create the appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Databricks SQL Warehouse/cluster. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more info, refer to [Connection profiles](/docs/local/connect-data-platform/connection-profiles) and [profiles.yml](/docs/local/profiles.yml).
 
 `dbt-databricks` can connect to Databricks SQL Warehouses and all-purpose clusters. Databricks SQL Warehouses is the recommended way to get started with Databricks.
 

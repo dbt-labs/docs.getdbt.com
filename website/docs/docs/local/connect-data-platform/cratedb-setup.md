@@ -59,6 +59,6 @@ cratedb_analytics:
 [CrateDB]: https://cratedb.com/database
 [PostgreSQL configuration]: https://docs.getdbt.com/reference/resource-configs/postgres-configs
 [PostgreSQL profile setup]: https://docs.getdbt.com/docs/local/connect-data-platform/postgres-setup
-[`profiles.yml`]: https://docs.getdbt.com/docs/local/connect-data-platform/profiles.yml
+[`profiles.yml`]: https://docs.getdbt.com/docs/local/profiles.yml
 [using dbt with CrateDB]: https://cratedb.com/docs/guide/integrate/dbt/
 

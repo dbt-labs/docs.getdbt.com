@@ -22,7 +22,7 @@ pagination_prev: null
 - [Snowflake](/docs/local/connect-data-platform/snowflake-setup)
 - [Starburst or Trino](/docs/local/connect-data-platform/trino-setup)
 
-dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your data platform, connect to <Constant name="core" />, and set up a [profiles.yml file](/docs/local/connect-data-platform/profiles.yml). You can do this using the command line (CLI).
+dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your data platform, connect to <Constant name="core" />, and set up a [profiles.yml file](/docs/local/profiles.yml). You can do this using the command line (CLI).
 
 Data platforms supported in <Constant name="core" /> may be verified by our Trusted Adapter Program, and maintained by dbt Labs, partners, or community members.
 

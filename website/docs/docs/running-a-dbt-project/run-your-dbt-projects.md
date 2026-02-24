@@ -13,7 +13,7 @@ You can run your dbt projects with [<Constant name="cloud" />](/docs/cloud/about
   - The <Constant name="cloud" /> CLI to develop and run dbt commands against your <Constant name="cloud" /> development environment from your local command line.
   - For more details, refer to [Develop dbt](/docs/cloud/about-develop-dbt).
 
-- **<Constant name="core" />**: An open source project where you can develop from the [command line](/docs/install-dbt).
+- **<Constant name="core" />**: An open source project where you can develop from the [command line](/docs/local/install-dbt).
 
 The <Constant name="cloud" /> CLI and <Constant name="core" /> are both command line tools that enable you to run dbt commands. The key distinction is the <Constant name="cloud" /> CLI is tailored for <Constant name="cloud" />'s infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 

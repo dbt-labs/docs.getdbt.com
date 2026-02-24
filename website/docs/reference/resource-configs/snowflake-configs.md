@@ -643,7 +643,7 @@ For more information on using this configuration, refer to [Snowflake's document
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/docs/local/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/docs/local/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
 
 [Tests](/docs/build/data-tests) also supports the `snowflake_warehouse` configuration. This can be useful when you want to you run tests on a different Snowflake virtual warehouse than the one used to build models, for example, using a smaller warehouse for lightweight data tests while models run on a larger warehouse.
 

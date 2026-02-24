@@ -28,7 +28,7 @@ To begin configuring dbt now, select the option that is right for you.
 <Card
     title="dbt local setup"
     body="Learn how to set up dbt locally using the dbt VS Code extension or CLI."
-    link="/docs/install-dbt"
+    link="/docs/local/install-dbt"
     icon="dbt-bit"/>
 
 </div>

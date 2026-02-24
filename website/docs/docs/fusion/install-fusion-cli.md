@@ -10,7 +10,7 @@ import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
 # Install Fusion from the CLI <Lifecycle status="preview" />
 
-Fusion can be installed via the command line from our official content delivery network (CDN). <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine" /> performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp" /> features. For the best <Constant name="fusion_engine" /> experience, [install the dbt VS Code extension](/docs/install-dbt-extension) in your VS Code or compatible IDE. 
+Fusion can be installed via the command line from our official content delivery network (CDN). <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine" /> performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp" /> features. For the best <Constant name="fusion_engine" /> experience, [install the dbt VS Code extension](/docs/local/install-dbt-extension) in your VS Code or compatible IDE. 
 
 
 <FusionManualInstall />
@@ -95,7 +95,7 @@ For more details on managing environment variables locally, refer to [Configure 
 
 <Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the `DBT_PROFILES_DIR` environment variable or `profiles.yml` in arbitrary working directories.
 
-For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/connect-data-platform/profiles.yml#location-of-profilesyml).
+For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/profiles.yml#location-of-profilesyml).
 
 ## Troubleshooting
 

@@ -10,5 +10,5 @@ import ProfilesYml from '/snippets/_profiles.yml.md';
 
 ## Related docs
 
-- [Install dbt](/docs/install-dbt)
+- [Install dbt](/docs/local/install-dbt)
 - [Connection profiles](/docs/local/connect-data-platform/connection-profiles)

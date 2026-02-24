@@ -31,7 +31,7 @@ The steps differ slightly depending on whether you use <Constant name="dbt_platf
 In this section, we'll walk you through the steps to prepare your local setup for the dbt VS Code extension. If you're a <Constant name="dbt_platform" /> user that installed the VS Code extension, follow these steps. If you're a self-hosted user, you most likely already have a local setup and environment variables but can confirm using these steps.
 
 1. [Clone](https://code.visualstudio.com/docs/sourcecontrol/overview#_cloning-a-repository) your dbt project repository from your Git provider to your local machine. If you use <Constant name="dbt_platform" />, clone the same repo connected to your project.
-2. Ensure you have a dbt [`profiles.yml` file](/docs/local/connect-data-platform/profiles.yml). This file defines your data warehouse connection. If you don't have one, run `dbt init` in the terminal to configure your adapter. 
+2. Ensure you have a dbt [`profiles.yml` file](/docs/local/profiles.yml). This file defines your data warehouse connection. If you don't have one, run `dbt init` in the terminal to configure your adapter. 
 3. Validate your `profiles.yml` and project configuration by running `dbt debug`.
 4. Add a `dbt_cloud.yml` file from the <Constant name="dbt_platform" /> Account settings:
    - Navigate to **Your profile** -> **VS Code Extension** -> **Download credentials**.
@@ -255,4 +255,4 @@ Now that you've configured your local environment, you can start using the dbt e
 
 - [About the dbt extension](/docs/about-dbt-extension)
 - [dbt extension features](/docs/dbt-extension-features)
-- [Register the extension](/docs/install-dbt-extension#register-the-extension)
+- [Register the extension](/docs/local/install-dbt-extension#register-the-extension)

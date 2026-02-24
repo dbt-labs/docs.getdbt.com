@@ -31,7 +31,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='External attributes'>
 
-    The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/local/connect-data-platform/profiles.yml) value.
+    The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/local/profiles.yml) value.
 
     To learn more, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
 
@@ -712,7 +712,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     ## 🔎 Discoverability
 
-    - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/local/connect-data-platform/profiles.yml) by adding a callout on several key pages.
+    - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/local/profiles.yml) by adding a callout on several key pages.
     - Fleshed out the [model Jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
     - Added a new [Quickstarts landing page](/guides). This new format sets up for future iterations that will include filtering! But for now, we are excited you can step through quickstarts in a focused way.
 
@@ -729,7 +729,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## 🎯 Core projects
 
     - See what’s coming up [in Core v 1.6](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.6%22)!
-    - We turned the `profiles.yml` [page](/docs/local/connect-data-platform/profiles.yml) into a landing page, added more context to profile.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
+    - We turned the `profiles.yml` [page](/docs/local/profiles.yml) into a landing page, added more context to profile.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 

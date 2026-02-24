@@ -210,47 +210,47 @@
     },
     {
       "source": "/docs/local/about-core-setup",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/about-dbt-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/fusion/install-dbt-extension",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/fusion/install-fusion-cli",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/local/installation-overview",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/local/pip-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/local/docker-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/local/source-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/fusion/about-fusion-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
@@ -280,7 +280,7 @@
     },
     {
       "source": "/docs/fusion/connect-data-platform-fusion/profiles.yml",
-      "destination": "/docs/local/connect-data-platform/profiles.yml",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {
@@ -295,22 +295,22 @@
     },
     {
       "source": "/docs/core/pip-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/core/docker-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/core/source-install",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/core/installation-overview",
-      "destination": "/docs/install-dbt",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
@@ -320,7 +320,7 @@
     },
     {
       "source": "/docs/core/connect-data-platform/profiles.yml",
-      "destination": "/docs/local/connect-data-platform/profiles.yml",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {
@@ -1500,7 +1500,7 @@
     },
     {
       "source": "/reference/profiles.yml",
-      "destination": "/docs/local/connect-data-platform/profiles.yml",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {

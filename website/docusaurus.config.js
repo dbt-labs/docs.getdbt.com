@@ -437,7 +437,7 @@ var siteSettings = {
                   id: "dbt-local-installation",
                   name: "dbt local installation",
                   routes: [
-                    { route: "/docs/install-dbt" },
+                    { route: "/docs/local/install-dbt" },
                     { route: "/docs/local/dbt-core-environments" },
                   ],
                   subsections: [
