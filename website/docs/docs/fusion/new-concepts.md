@@ -105,7 +105,7 @@ Baseline mode unlocks a meaningful set of features without requiring strict mode
 | Detect syntax errors | ❌ | ✅ | ✅ | ✅ |
 | Preview CTE results | ❌ | ✅ | ✅ | ✅ |
 | Go-to-definition (columns) | ❌ | ✅ | ✅ | ✅ |
-| Unit tests | ❌ | ✅ | ✅ | ✅ |
+| Unit tests | ✅ | ✅ | ✅ | ✅ |
 | Intellisense / typeahead (Tier 1) | ❌ | ❌ | ✅ | ✅ |
 | Automatic refactor column names | ❌ | ❌ | ✅ | ✅ |
 | Dev-mode column lineage | ❌ | ❌ | ✅ | ✅ |
