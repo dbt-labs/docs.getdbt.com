@@ -263,7 +263,7 @@ const sidebarSettings = {
           type: "category",
           label: "dbt local installation",
           collapsed: true,
-          link: { type: "doc", id: "docs/install-dbt" },
+          link: { type: "doc", id: "docs/local/install-dbt" },
           items: [
             "docs/local/install-dbt",
             "docs/local/profiles.yml",
