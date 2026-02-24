@@ -285,7 +285,7 @@
     },
     {
       "source": "/docs/fusion/connect-data-platform-fusion/connection-profiles",
-      "destination": "/docs/local/connect-data-platform/connection-profiles",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {
@@ -325,7 +325,7 @@
     },
     {
       "source": "/docs/core/connect-data-platform/connection-profiles",
-      "destination": "/docs/local/connect-data-platform/connection-profiles",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {
@@ -2002,7 +2002,7 @@
     },
     {
       "source": "/docs/local/connection-profiles",
-      "destination": "/docs/local/connect-data-platform/connection-profiles",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {

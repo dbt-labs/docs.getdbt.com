@@ -22,7 +22,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to DeltaStream with **dbt-deltastream**
 
-To connect to DeltaStream from dbt, you'll need to add a [profile](/docs/local/connect-data-platform/connection-profiles)
+To connect to DeltaStream from dbt, you'll need to add a [profile](/docs/local/profiles.yml)
 to your `profiles.yml` file. A DeltaStream profile conforms to the following syntax:
 
 <File name='profiles.yml'>
