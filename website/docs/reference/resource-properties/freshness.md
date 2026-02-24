@@ -82,14 +82,15 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [Snowflake](/reference/resource-configs/snowflake-configs)
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
-  :::note Wildcard table identifiers
-  On BigQuery, metadata-based freshness checks are not reliable for sources defined with wildcard table identifiers (for example, `events_*`).
-
-  To prevent incorrect freshness results, enable the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag in your `dbt_project.yml`. When enabled, dbt raises an error if metadata-based freshness is used with a wildcard table identifier.
-
-  To calculate freshness for wildcard tables, configure `loaded_at_field` to use query-based freshness instead.
-  :::
 - [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
+
+:::note Wildcard table identifiers
+On BigQuery, metadata-based freshness checks are not reliable for sources defined with wildcard table identifiers (for example, `events_*`).
+
+To prevent incorrect freshness results, enable the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag in your `dbt_project.yml`. When enabled, dbt raises an error if metadata-based freshness is used with a wildcard table identifier.
+
+To calculate freshness for wildcard tables, configure `loaded_at_field` to use query-based freshness instead.
+:::
 
 Freshness blocks are applied hierarchically:
 - A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source.

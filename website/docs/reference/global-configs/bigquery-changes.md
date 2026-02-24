@@ -47,13 +47,14 @@ sources:
   - name: events
     database: dbt-test-env
     schema: dbt_username
-    config:
-      freshness:
-        warn_after: {count: 12, period: hour}
-        error_after: {count: 24, period: hour}
-      loaded_at_field: _etl_loaded_at
     tables:
-      - name: events_*  # wildcard table identifier
+      - name: events           
+        identifier: "events_*"  # wildcard table identifier in BigQuery
+        config:
+          freshness:
+            warn_after: {count: 12, period: hour}
+            error_after: {count: 24, period: hour}
+          loaded_at_field: _etl_loaded_at
 ```
 
 </File>
