@@ -4,9 +4,9 @@ description: "The `authentication has expired` error happens because Snowflake r
 sidebar_label: 'Reconnecting to Snowflake OAuth after authentication expires'
 ---
 
-When you use [OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) to connect Snowflake to the dbt platform, <Constant name="cloud" /> stores an refresh token so that your development credentials are usable from tools like the <Constant name="cloud_ide" /> and the dbt Semantic Layer.
+When you connect Snowflake to <Constant name="dbt_platform"/> using [OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth), dbt stores a refresh token. This allows your development credentials to remain usable in tools like the <Constant name="cloud_ide" /> and the dbt Semantic Layer without needing to re-authenticate each time.
 
-If you see a `authentication has expired` error when you try to run queries, you must renew your connection between Snowflake and the dbt platform.
+If you see an `authentication has expired` error when you try to run queries, you must renew your connection between Snowflake and the <Constant name="dbt_platform"/>.
 
 To resolve the issue, complete the following steps:
 
