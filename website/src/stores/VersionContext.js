@@ -30,6 +30,13 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   const [version, setVersion] = useState(value)
 
+  // Helper to update URL with version parameter
+  const updateUrlVersion = (newVersion) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('version', newVersion)
+    window.history.replaceState({}, '', url.toString())
+  }
+
   useEffect(() => {
     const storageVersion = window.localStorage.getItem('dbtVersion')
     const { search } = window.location
@@ -39,6 +46,8 @@ export const VersionContextProvider = ({ value = "", children }) => {
     // Sanitize version param
     const versionParam = sanitizeHtml(originalVersionParam);
 
+    let resolvedVersion;
+
     // Check for exact version match first
     if(versionParam && versions.find(ver => ver?.version && ver.version === versionParam)) {
       {/* 
@@ -46,21 +55,18 @@ export const VersionContextProvider = ({ value = "", children }) => {
         * and is in current versions array
         * If true, set version to param value
       */}
-      setVersion(versionParam)
-      window.localStorage.setItem('dbtVersion', versionParam)
+      resolvedVersion = versionParam
     } else if (versionParam && /^\d+$/.test(versionParam)) {
       {/*
         * Check if version param is a major version only (e.g., "1" or "2")
         * If so, resolve to the latest minor version within that major
       */}
-      const resolvedVersion = getLatestVersionForMajor(versionParam);
-      if (resolvedVersion) {
-        setVersion(resolvedVersion)
-        window.localStorage.setItem('dbtVersion', resolvedVersion)
+      const latestForMajor = getLatestVersionForMajor(versionParam);
+      if (latestForMajor) {
+        resolvedVersion = latestForMajor
       } else {
         // Major version not found, fall back to default behavior
-        setVersion(lastReleasedVersion.version)
-        window.localStorage.setItem('dbtVersion', lastReleasedVersion.version)
+        resolvedVersion = lastReleasedVersion.version
       }
     } else {
       {/*
@@ -68,12 +74,18 @@ export const VersionContextProvider = ({ value = "", children }) => {
         * Otherwise set version to latest version 
       */}
       if(storageVersion && versions.find(ver => ver?.version && ver.version === storageVersion)) {
-        setVersion(storageVersion)
+        resolvedVersion = storageVersion
       } else {
-        setVersion(lastReleasedVersion.version)
-        window.localStorage.setItem('dbtVersion', lastReleasedVersion.version)
+        resolvedVersion = lastReleasedVersion.version
       }
     }
+
+    // Set version state and localStorage
+    setVersion(resolvedVersion)
+    window.localStorage.setItem('dbtVersion', resolvedVersion)
+    
+    // Always update URL to reflect current version
+    updateUrlVersion(resolvedVersion)
   }, [])
 
   const updateVersion = (e) => {
@@ -83,9 +95,11 @@ export const VersionContextProvider = ({ value = "", children }) => {
     // Get selected version value from `dbt-version` data attribute
     const versionValue = e.target?.dataset?.dbtVersion
     
-    versionValue &&
+    if (versionValue) {
       setVersion(versionValue)
       window.localStorage.setItem('dbtVersion', versionValue)
+      updateUrlVersion(versionValue)
+    }
   }
 
   let context = {
