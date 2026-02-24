@@ -46,7 +46,7 @@ You're all set up with the dbt extension! The next steps are:
 - Follow the [getting started](#getting-started) section to begin the terminal onboarding workflow and configure your set up. If you encounter any parsing errors, you can also run the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) to resolve them.
 - <Expandable alt_header="Install the dbt Fusion engine from the command line, if you haven't already." > 
     <FusionManualInstall />
-  3. Follow the [getting started](/docs/local/install-dbt-extension#getting-started) guide to get started with the extension. You can get started using one of these methods:
+  3. Follow the [getting started](/docs/local/install-dbt#getting-started) guide to get started with the extension. You can get started using one of these methods:
       - Running `dbtf init` to use terminal onboarding.
       - Running **Run dbt: Register dbt extension** in the command palette.
       - Using the **Get started** button in the extension menu.

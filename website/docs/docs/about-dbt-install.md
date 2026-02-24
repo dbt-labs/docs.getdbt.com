@@ -15,7 +15,7 @@ pagination_prev: null
   - [Install dbt Fusion CLI](/docs/fusion/install-fusion-cli) &mdash; Provides Fusion performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp"/> features.
 
 **dbt VS Code extension**
-- [Install the official dbt VS Code extension](/docs/local/install-dbt-extension) which combines <Constant name="fusion_engine" /> performance with visual <Term id="lsp"/> features when developing locally to make dbt development smoother and more efficient.
+- [Install the official dbt VS Code extension](/docs/local/install-dbt) which combines <Constant name="fusion_engine" /> performance with visual <Term id="lsp"/> features when developing locally to make dbt development smoother and more efficient.
 
 ## Getting started
 
