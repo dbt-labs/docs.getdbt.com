@@ -33,7 +33,7 @@ This quickstart guide will get you from zero to running your first dbt project w
 |--------------|-------------------|
 | **<Constant name="cloud_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine). |
 | **dbt CLI (local)** | [Install <Constant name="fusion_engine" />](/docs/fusion/install-fusion-cli) locally following this guide. |
-| **VS Code / Cursor IDE** | [Install the dbt extension](/docs/local/install-dbt) to unlock <Constant name="fusion" />'s interactive power in your editor. |
+| **VS Code / Cursor IDE** | [Install the dbt extension](/docs/local/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 
 To learn more about which tool is best for you, see the [Fusion availability](/docs/fusion/fusion-availability) page. To learn about the <Constant name="fusion_engine" /> and how it works, read more [about the dbt Fusion engine](/docs/fusion/about-fusion).
 
@@ -68,7 +68,7 @@ It's easy to think of the <Constant name="fusion_engine" /> and the dbt extensio
 - You *cannot* use the dbt extension without <Constant name="fusion" /> installed.
 :::
 
-The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/fusion/install-fusion-cli) and [extension](/docs/local/install-dbt) installation guides:
+The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/fusion/install-fusion-cli) and [extension](/docs/local/install-dbt-extension) installation guides:
 
 <Tabs queryString="installation">
 <TabItem value="mac-linux" label="macOS & Linux">
@@ -119,7 +119,7 @@ The dbt VS Code extension is available in the [Visual Studio extension marketpla
 2. Search for `dbt` and choose the one from the publisher `dbt Labs Inc`.
     <Lightbox src="/img/docs/extension/extension-marketplace.png" width="60%" title="Search for the extension"/>
 3. Click **Install**.
-4. When the prompt appears, you can register the extension now or skip it (you can register later). You can also check out our [installation instructions](/docs/local/install-dbt) to come back to it later.
+4. When the prompt appears, you can register the extension now or skip it (you can register later). You can also check out our [installation instructions](/docs/local/install-dbt-extension) to come back to it later.
 5. Confirm you've installed the extension by looking for the **dbt Extension** label in the status bar. If you see it, the extension was installed successfully!
     <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="Verify installation in the status bar."/>
 

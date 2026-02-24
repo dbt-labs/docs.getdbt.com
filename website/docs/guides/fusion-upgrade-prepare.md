@@ -115,7 +115,7 @@ While environments control the dbt version for most scenarios, some older job co
 
 :::tip VS Code extension
 
-This guide provides steps to resolve deprecation warnings without leaving <Constant name="dbt_platform" />. If you prefer to work in the VS Code or Cursor editors locally, you can run the autofix in our dbt VS Code extension. Check out the [installation guide](/docs/local/install-dbt) for more information about those workflows.
+This guide provides steps to resolve deprecation warnings without leaving <Constant name="dbt_platform" />. If you prefer to work in the VS Code or Cursor editors locally, you can run the autofix in our dbt VS Code extension. Check out the [installation guide](/docs/local/install-dbt-extension) for more information about those workflows.
 
 :::
 

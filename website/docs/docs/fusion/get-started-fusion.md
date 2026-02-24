@@ -15,7 +15,7 @@ Upgrade your existing projects to the <Constant name="fusion_engine" /> and lear
 <Card
     title="dbt VS Code extension"
     body="Add the dbt VS Code extension to your existing development workflows for both dbt platform and the CLI."
-    link="/docs/local/install-dbt"
+    link="/docs/local/install-dbt-extension"
     icon="dbt-bit"
     lifecycle="preview"/>
 
