@@ -61,7 +61,7 @@ If SSO is configured for the environment, the user must:
 3. A confirmation screen appears, with a link to authenticate against the company's identity provider. Click **Authenticate with your enterprise login**.
 
 :::info Complete the SSO flow
-Accepting the invite doesn't fully complete the process. The user _must_ log in using SSO to fully redeem their invite and access the account.
+Accepting the invite doesn't fully complete the process. The user _must_ log in using SSO to redeem the invite and access the account.
 :::
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-user-invite.png" width="60%" title="User invitation with SSO configured"/>
