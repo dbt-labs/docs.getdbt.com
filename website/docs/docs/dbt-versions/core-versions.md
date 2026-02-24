@@ -35,7 +35,7 @@ For upcoming releases, see the [`dbt-core` milestones](https://github.com/dbt-la
 
 ## Upgrading
 
-Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready -- some features and fixes are only available on the latest minor version.
+Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because some features and fixes are only available on the latest minor version.
 
 All versions are available as prereleases (betas and release candidates) before final release. See the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
 
