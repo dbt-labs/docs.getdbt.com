@@ -14,8 +14,10 @@ dbt enables data teams to transform data using analytics engineering best practi
 For the best local development experience, we recommend the <Constant name="fusion_engine" />. Built in Rust, <Constant name="fusion" /> delivers:
 
 - **Faster performance** &mdash; Up to 10x faster parsing, compilation, and execution
-- **SQL comprehension** &mdash; Dialect-aware validation catches errors before they reach your warehouse
-- **Column-level lineage** &mdash; Trace data flow across your entire project
+- **SQL comprehension** &mdash; Dialect-aware validation catches errors before they reach your warehouse.
+- **Column-level lineage** &mdash; Trace data flow across your entire project.
+
+[Install Fusion now!](/docs/local/install-dbt?version=2.0#get-started)
 
 ### VS Code extension
 
@@ -26,22 +28,14 @@ The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant nam
 - **Hover insights** &mdash; View model definitions and column info without leaving your code
 - **Refactoring tools** &mdash; Rename models and columns across your project
 
-This is the fastest way to get started with dbt locally.
+This is the fastest way to get started with dbt locally. [Install the VS Code extension now!](/docs/local/install-dbt?version=2.0#get-started)
 
 
 ## dbt Core
 
 [<Constant name="core" />](/docs/local/install-dbt?version=1.11) is the original Python-based dbt engine. Choose dbt Core if you need to use one of our [community-maintained adapters](/docs/supported-data-platforms) that aren't yet supported by <Constant name="fusion" />, or if your workflow requires Python-based customizations.
 
-## Getting started
-
-After installing dbt locally:
-
-1. [Connect to your data platform](/docs/local/connect-data-platform)
-2. [Run your dbt project](/docs/running-a-dbt-project/run-your-dbt-projects)
-3. Explore the [<Constant name="fusion" /> quickstart guide](/guides/fusion-qs) for a detailed walkthrough
-
-If you prefer an even more powerful enterprise experience, learn about the [managed dbt platform](/docs/cloud/about-cloud/dbt-cloud-features).
+## Get started
 
 <VersionBlock firstVersion="2.0">
 
