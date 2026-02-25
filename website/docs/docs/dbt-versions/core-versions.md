@@ -8,7 +8,7 @@ pagination_prev: null
 
 Learn about versioning for the <Constant name="core"/> engine (Python-based CLI). If you run the <Constant name="core"/> engine locally (for example, using `pip`), then this page is for you. <Constant name="core"/> releases follow [semantic versioning](https://semver.org/).
 :::note
-If you're interested in using <Constant name="fusion_engine"/>, locally or in <Constant name="dbt_platform"/> then read [Get Started](/docs/local/install-dbt?version=2.0#get-started).
+If you're interested in using <Constant name="fusion_engine"/>, locally or in <Constant name="dbt_platform"/>, then read [Get Started](/docs/local/install-dbt?version=2.0).
 :::
 
 If you're using <Constant name="dbt_platform" /> (including the <Constant name="cloud_cli"/>, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features before they’re available in <Constant name="core" />.
@@ -21,9 +21,9 @@ If you manage your own <Constant name="core" /> versions locally, read on. <Cons
 
 ### Further reading
 
-- [Choosing a <Constant name="core" /> version in <Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
-- [How to install <Constant name="core" />](/docs/local/install-dbt)
-- [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version)
+- [Choosing a <Constant name="core" /> version in <Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how you can use <Constant name="core" /> versions in <Constant name="cloud" />.
+- [How to install <Constant name="core" />](/docs/local/install-dbt): Learn about installing <Constant name="core" />
+- [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version): Restrict your project to only work with a range of <Constant name="core" /> versions, or use the currently running version.
 
 ## End-of-life versions
 
