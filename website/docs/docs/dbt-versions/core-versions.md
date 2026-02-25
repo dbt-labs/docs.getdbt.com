@@ -28,7 +28,11 @@ Once a <Constant name="core" /> version reaches end-of-life (EOL), it no longer 
 
 dbt supports each minor version (for example, v1.8) for **one year** from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
 
-After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window.
+After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window. After the one-year window ends, the version reaches **end of life** and no longer receives patches.
+
+While a minor version is officially supported:
+- You can use it in <Constant name="cloud" />. For more on <Constant name="cloud" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- You can select it from the version dropdown on this website, to see documentation that is accurate for use with that minor version.
 
 For upcoming releases, refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones).
 
@@ -36,7 +40,7 @@ For upcoming releases, refer to the [`dbt-core` milestones](https://github.com/d
 
 Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
 
-dbt makes all versions available as prereleases (betas and release candidates) before final release. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
+dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
 
 ## How dbt Core uses semantic versioning
 
@@ -45,6 +49,12 @@ dbt makes all versions available as prereleases (betas and release candidates) b
 - **Major versions** (for example, v1 to v2) may include breaking changes. Deprecated functionality will stop working.
 - **Minor versions** (for example, v1.8 to v1.9) add features and are backwards compatible. They will not break project code that relies on documented functionality.
 - **Patch versions** (for example, v1.8.0 to v1.8.1) include fixes only: bug fixes, security fixes, or installation fixes.
+
+We are committed to avoiding breaking changes in minor versions for end users of dbt. There are two types of breaking changes that may be included in minor versions:
+
+- Changes to the Python interface for adapter plugins. These changes are relevant only to adapter maintainers, and they will be clearly communicated in documentation and release notes. For more information, refer to [Build, test, document, and promote adapters guide](/guides/adapter-creation).
+
+- Changes to metadata interfaces, including [artifacts](/docs/deploy/artifacts) and [logging](/reference/events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](/reference/node-selection/syntax#about-node-selection).
 
 ### Adapter plugin versions
 
