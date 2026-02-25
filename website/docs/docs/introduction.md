@@ -30,7 +30,7 @@ For more information, refer to [About the <Constant name="fusion_engine" />](/do
 
 ### dbt Core engine
 
-[<Constant name="core" />](/docs/install-dbt) is the open-source, Python-based engine that enables data practitioners to transform data. <Constant name="core" /> surfaces feedback when you run or build your project. It doesn't include <Constant name="fusion"/> features like the <Term id="lsp"/>, for example, which provides instant feedback as you type.
+[<Constant name="core" />](/docs/local/install-dbt) is the open-source, Python-based engine that enables data practitioners to transform data. <Constant name="core" /> surfaces feedback when you run or build your project. It doesn't include <Constant name="fusion"/> features like the <Term id="lsp"/>, for example, which provides instant feedback as you type.
 
 Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?step=1).
 
@@ -62,7 +62,7 @@ Use the dbt framework and develop dbt projects from your command line or code ed
 - [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines the <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
 - [Install the Fusion CLI](/docs/fusion/install-fusion-cli) &mdash; The <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
 - [Install the <Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) &mdash; The <Constant name="dbt_platform" /> CLI, which allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
-- [Install <Constant name="core" />](/docs/install-dbt) &mdash; The open-source, Python-based CLI that uses the <Constant name="core" /> engine. Doesn't include <Term id="lsp" /> features.
+- [Install <Constant name="core" />](/docs/local/install-dbt) &mdash; The open-source, Python-based CLI that uses the <Constant name="core" /> engine. Doesn't include <Term id="lsp" /> features.
 
 ## Why use dbt
 
