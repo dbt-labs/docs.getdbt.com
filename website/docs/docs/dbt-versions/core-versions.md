@@ -8,7 +8,7 @@ pagination_prev: null
 
 If you're using <Constant name="cloud" />, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) keep you up to date automatically, with early access to new features before they're available in <Constant name="core" />.
 
-The rest of this page is for <Constant name="core" /> users who manage their own versions. <Constant name="core" /> releases follow [semantic versioning](https://semver.org/).
+If you manage your own <Constant name="core" /> versions, read on. <Constant name="core" /> releases follow [semantic versioning](https://semver.org/).
 
 <Snippet path="core-version-support" />
 
@@ -22,11 +22,11 @@ The rest of this page is for <Constant name="core" /> users who manage their own
 
 ## End-of-life versions
 
-<Constant name="core" /> versions that have reached end-of-life (EOL) no longer receive patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
+Once a <Constant name="core" /> version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
 
-Each minor version (for example, v1.8) is supported for **one year** from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
+dbt supports each minor version (for example, v1.8) for **one year** from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
 
 After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window.
 
@@ -34,9 +34,9 @@ For upcoming releases, refer to the [`dbt-core` milestones](https://github.com/d
 
 ## Upgrading
 
-Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because some features and fixes are only available on the latest minor version.
+Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
 
-All versions are available as prereleases (betas and release candidates) before final release. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
+dbt makes all versions available as prereleases (betas and release candidates) before final release. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
 
 ## How dbt Core uses semantic versioning
 
@@ -48,7 +48,7 @@ All versions are available as prereleases (betas and release candidates) before 
 
 ### Adapter plugin versions
 
-`dbt-core` and adapter plugins (such as `dbt-snowflake`) are released independently. Their minor and patch version numbers may not match, but they coordinate through the `dbt-adapters` interface so you won't get a broken experience. For example, `dbt-core==1.8.0` can work with `dbt-snowflake==1.9.0`.
+dbt releases `dbt-core` and adapter plugins (such as `dbt-snowflake`) independently. Their minor and patch version numbers may not match, but they coordinate through the `dbt-adapters` interface so you won't get a broken experience. For example, `dbt-core==1.8.0` can work with `dbt-snowflake==1.9.0`.
 
 If you're building or maintaining an adapter, refer to the [adapter creation guide](/guides/adapter-creation) for details on the `dbt-adapters` interface.
 
