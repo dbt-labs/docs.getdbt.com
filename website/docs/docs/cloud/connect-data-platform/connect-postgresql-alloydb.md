@@ -32,12 +32,11 @@ The following table contains the parameters for the database (password-based) co
 | `password`  | Password for authentication  | _password1! |
 
 
-### Connecting via an SSH Tunnel
+### Connecting using an SSH Tunnel
 
 import BastionServer from '/snippets/_bastion-server.md';
 
 <BastionServer postgresalloydb='Postgres or AlloyDB' postgres='Postgres' />
-
 
 ## Configuration
 
