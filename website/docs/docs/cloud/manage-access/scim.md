@@ -38,8 +38,8 @@ When users are provisioned, the following attributes are supported
 - Family name
 - Given name
 
-The following IdPs are supported in the <Constant name="cloud" /> UI:
-- [Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta) (includes [license management](/docs/cloud/manage-access/scim-okta#manage-user-licenses-with-scim))
+The following IdPs are supported in the <Constant name="cloud" /> user interface:
+- [Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta) (includes [license management](/docs/cloud/manage-access/scim-manage-user-licenses))
 - [Set up SCIM with Entra ID](/docs/cloud/manage-access/scim-entra-id)
 
 If your IdP isn't on the list, it can be supported using <Constant name="cloud" /> [APIs](/dbt-cloud/api-v3#/operations/Retrieve%20SCIM%20configuration).
@@ -69,5 +69,5 @@ To retrieve the necessary <Constant name="cloud" /> configurations for use in Ok
 
 Configure SCIM for your identity provider and optionally manage licenses:
 
-- **[Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta)** &mdash; User and group provisioning, profile updates, and [license management](/docs/cloud/manage-access/scim-okta#manage-user-licenses-with-scim) (Okta only).
+- **[Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta)** &mdash; User and group provisioning, profile updates, and [license management](/docs/cloud/manage-access/scim-manage-user-licenses) (Okta only).
 - **[Set up SCIM with Entra ID](/docs/cloud/manage-access/scim-entra-id)** &mdash; User and group provisioning and profile updates, plus assigning users to the SCIM app.
