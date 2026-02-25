@@ -6,7 +6,10 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-version-in-cloud"
 pagination_prev: null
 ---
 
-This page describes versioning for the <Constant name="core"/> engine (Python-based CLI). If you run the <Constant name="core"/> engine locally (for example, using `pip`), then this page is for you. <Constant name="core"/> releases follow [semantic versioning](https://semver.org/).
+Learn about versioning for the <Constant name="core"/> engine (Python-based CLI). If you run the <Constant name="core"/> engine locally (for example, using `pip`), then this page is for you. <Constant name="core"/> releases follow [semantic versioning](https://semver.org/).
+:::note
+If you're interested in using <Constant name="fusion_engine"/>, locally or in <Constant name="dbt_platform"/> then read [Get Started](/docs/local/install-dbt?version=2.0#get-started).
+:::
 
 If you're using <Constant name="dbt_platform" /> (including the <Constant name="cloud_cli"/>, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features before they’re available in <Constant name="core" />.
 
