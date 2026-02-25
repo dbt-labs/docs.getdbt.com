@@ -9,7 +9,7 @@ displayed_sidebar: "docs"
 
 :::info Beta not yet available
 
-dbt Core v1.12 is not yet available in beta. This upgrade guide will be updated when the beta release becomes available.
+<Constant name="core" /> v1.12 is not yet available in beta. We will update this guide when it becomes available.
 
 :::
 
