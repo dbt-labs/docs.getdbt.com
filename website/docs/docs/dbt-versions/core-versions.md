@@ -6,9 +6,9 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-version-in-cloud"
 pagination_prev: null
 ---
 
-If you're using <Constant name="cloud" />, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) keep you up to date automatically, with early access to new features before they're available in <Constant name="core" />.
+If you're using <Constant name="dbt_platform" />, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) keep you up to date automatically, with early access to new features before they're available in <Constant name="core" />.
 
-If you manage your own <Constant name="core" /> versions, read on. <Constant name="core" /> releases follow [semantic versioning](https://semver.org/).
+If you manage your own <Constant name="core" /> versions locally, read on. <Constant name="core" /> releases follow [semantic versioning](https://semver.org/).
 
 <Snippet path="core-version-support" />
 

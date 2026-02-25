@@ -14,7 +14,7 @@
 | [**v1.2**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.2) | Jul 26, 2022  | Deprecated ⛔️  | 
 | [**v1.1**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.1) | Apr 28, 2022  | Deprecated ⛔️  |
 | [**v1.0**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) | Dec 3, 2021   | Deprecated ⛔️ | 
-|  **v0.X** ⛔️                                               | (Various dates) | Deprecated ⛔️  | Deprecated ⛔️     | 
+|  **v0.X** ⛔️                                               | (Various dates) | Deprecated ⛔️  |
 
 All functionality in dbt Core since the v1.7 release is available in [<Constant name="cloud" /> release tracks](/docs/dbt-versions/cloud-release-tracks), which provide automated upgrades at a cadence appropriate for your team.
 
