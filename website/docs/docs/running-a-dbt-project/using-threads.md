@@ -38,5 +38,5 @@ For more information about <Constant name="fusion"/>'s approach to parallelism, 
 </VersionBlock>
 
 ## Related docs
-- [About profiles.yml](/docs/local/connect-data-platform/profiles.yml)
+- [About profiles.yml](/docs/local/profiles.yml)
 - [<Constant name="cloud" /> job scheduler](/docs/deploy/job-scheduler)

@@ -33,7 +33,7 @@ For more information, refer to [the <Constant name="fusion_engine" />](/docs/fus
 
 ### dbt Core
 
-[<Constant name="core" />](/docs/about-setup) is an open-source tool that enables data practitioners to transform data and is suitable for users who prefer to manually set up dbt and locally maintain it. You can [install <Constant name="core" />](/docs/install-dbt) through the command line. Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?step=1).
+[<Constant name="core" />](/docs/about-setup) is an open-source tool that enables data practitioners to transform data and is suitable for users who prefer to manually set up dbt and locally maintain it. You can [install <Constant name="core" />](/docs/local/install-dbt) through the command line. Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?step=1).
 
 ## dbt optimizes your workflow
 

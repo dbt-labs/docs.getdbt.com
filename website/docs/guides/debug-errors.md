@@ -107,7 +107,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/local/connect-data-platform/profiles.yml)
+  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/local/profiles.yml)
 
 
 </details>

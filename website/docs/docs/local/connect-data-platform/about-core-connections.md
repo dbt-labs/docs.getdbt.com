@@ -4,7 +4,7 @@ id: "about-core-connections"
 description: "Information about data platform connections in dbt Core"
 sidebar_label: "About data platform connections in dbt Core"
 hide_table_of_contents: true
-pagination_next: "docs/local/connect-data-platform/profiles.yml"
+pagination_next: null
 pagination_prev: null
 ---
 
@@ -22,7 +22,7 @@ pagination_prev: null
 - [Snowflake](/docs/local/connect-data-platform/snowflake-setup)
 - [Starburst or Trino](/docs/local/connect-data-platform/trino-setup)
 
-dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your data platform, connect to <Constant name="core" />, and set up a [profiles.yml file](/docs/local/connect-data-platform/profiles.yml). You can do this using the command line (CLI).
+dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install <Constant name="core" />, you'll also need to install the specific adapter for your data platform, connect to <Constant name="core" />, and set up a [profiles.yml file](/docs/local/profiles.yml). You can do this using the command line (CLI).
 
 Data platforms supported in <Constant name="core" /> may be verified by our Trusted Adapter Program, and maintained by dbt Labs, partners, or community members.
 
@@ -32,7 +32,7 @@ These connection instructions provide the basic fields required for configuring 
 
 If you're using dbt from the command line (CLI), you'll need a profiles.yml file that contains the connection details for your data platform. When you run dbt from the CLI, it reads your dbt_project.yml file to find the profile name, and then looks for a profile with the same name in your profiles.yml file. This profile contains all the information dbt needs to connect to your data platform.
 
-For detailed info, you can refer to the [Connection profiles](/docs/local/connect-data-platform/connection-profiles).
+For detailed info, you can refer to the [Connection profiles](/docs/local/profiles.yml).
 
 ## Adapter features
 

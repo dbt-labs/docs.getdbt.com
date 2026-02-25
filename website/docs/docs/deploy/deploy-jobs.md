@@ -57,7 +57,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
     :::
 
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
-    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
+    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/profiles.yml#understanding-threads). Increase the thread count to increase model execution concurrency.
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
 

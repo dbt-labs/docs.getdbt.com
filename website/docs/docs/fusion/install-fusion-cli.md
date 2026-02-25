@@ -95,7 +95,7 @@ For more details on managing environment variables locally, refer to [Configure 
 
 <Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the `DBT_PROFILES_DIR` environment variable or `profiles.yml` in arbitrary working directories.
 
-For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/connect-data-platform/profiles.yml#location-of-profilesyml).
+For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/profiles.yml#location-of-profilesyml).
 
 ## Troubleshooting
 

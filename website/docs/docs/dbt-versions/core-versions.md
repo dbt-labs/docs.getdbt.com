@@ -17,14 +17,12 @@ The rest of this page is for <Constant name="core" /> users who manage their own
 ### Further reading
 
 - [Choosing a <Constant name="core" /> version in <Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
-- [How to install <Constant name="core" />](/docs/install-dbt)
+- [How to install <Constant name="core" />](/docs/local/install-dbt)
 - [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version)
 
 ## End-of-life versions
 
-<Constant name="core" /> versions that have reached end-of-life (EOL) no longer receive patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
-
-
+<Constant name="core" /> versions that have reached end-of-life (EOL) no longer receive patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
 

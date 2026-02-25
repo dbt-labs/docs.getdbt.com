@@ -31,7 +31,7 @@ For other information including Firebolt feature support, see the [GitHub README
 
 ## Connecting to Firebolt
 
-To connect to Firebolt from dbt, you'll need to add a [profile](/docs/local/connect-data-platform/connection-profiles) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
+To connect to Firebolt from dbt, you'll need to add a [profile](/docs/local/profiles.yml) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 
