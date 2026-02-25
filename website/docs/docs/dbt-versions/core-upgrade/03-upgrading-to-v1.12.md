@@ -45,51 +45,12 @@ You can read more about each of these behavior changes in the following links:
 ## Adapter-specific features and functionalities
 
 **Coming soon**
-### Session configuration
 
-The Redshift adapter now supports the `query_group` session parameter, enabling dbt runs to tag queries for the Redshift Workload Manager (WLM) and query logging. When configured, dbt sets the `query_group` value when opening a connection and applies it for the duration of that session. Support exists at both the profile and model level, allowing users to specify a default `query_group` for all executions or override it for individual model materializations.
+### Redshift
 
-#### Profile-level configuration
+- The Redshift adapter supports the `query_group` session parameter, allowing dbt to tag queries for the Redshift Workload Manager (WLM) routing and query logging. When configured, dbt sets `query_group` when opening a connection, and the value applies for the duration of that session. The `query_group` parameter can be configured at either the profile level or the model level, enabling a default value for all executions or an override for specific models.
 
-Configure `query_group` in your `profiles.yml` to apply a default value to all queries executed using that profile. dbt sets the `query_group` when opening a connection.
-
-<File name="profiles.yml">
-
-```yml
-outputs:
-  dev:
-    type: redshift
-    host: CLUSTER_ENDPOINT
-    user: REDSHIFT_USER
-    password: REDSHIFT_PASSWORD
-    dbname: REDSHIFT_DBNAME
-    port: 5439
-    schema: analytics
-    threads: 4
-    query_group: QUERY_GROUP_NAME
-```
-
-</File>
-
-#### Model-level configuration
-
-Set `query_group` in a model’s `config()` block to override the profile-level value for that model only. The configured value applies for the duration of that model’s materialization.
-
-```sql
-{{ config(query_group='my_model_group') }}
-select *
-from {{ ref('some_source_table') }}
-```
-
-#### What SQL dbt executes
-
-When `query_group` is configured, dbt issues a `SET query_group` statement in Redshift to apply the value at the session level.
-
-```sql
-SET query_group TO 'query_group'
-```
-
-Read more about the [`query_grouo`](https://docs.aws.amazon.com/redshift/latest/dg/r_query_group.html) configuration in the Redshift documentation.
+    See [Session configuration](/reference/resource-configs/redshift-configs#session-configuration) for more information.
 
 ## Quick hits
 

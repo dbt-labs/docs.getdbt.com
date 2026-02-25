@@ -68,6 +68,54 @@ For more information on distkeys and sortkeys, view Amazon's docs:
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing a Data Distribution Style](https://docs.aws.amazon.com/redshift/latest/dg/t_Distributing_data.html)
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing Sort Keys](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html)
 
+<VersionBlock firstVersion="1.12">
+
+### Session configuration
+
+The Redshift adapter now supports the `query_group` session parameter, enabling dbt runs to tag queries for the Redshift Workload Manager (WLM) and query logging. When configured, dbt sets the `query_group` value when opening a connection and applies it for the duration of that session. Support exists at both the profile and model level, allowing users to specify a default `query_group` for all executions or override it for individual model materializations.
+
+#### Profile-level configuration
+
+Configure `query_group` in your `profiles.yml` to apply a default value to all queries executed using that profile. dbt sets the `query_group` when opening a connection.
+
+<File name="profiles.yml">
+
+```yml
+outputs:
+  dev:
+    type: redshift
+    host: CLUSTER_ENDPOINT
+    user: REDSHIFT_USER
+    password: REDSHIFT_PASSWORD
+    dbname: REDSHIFT_DBNAME
+    port: 5439
+    schema: analytics
+    threads: 4
+    query_group: QUERY_GROUP_NAME
+```
+
+</File>
+
+#### Model-level configuration
+
+Set `query_group` in a model’s `config()` block to override the profile-level value for that model only. The configured value applies for the duration of that model’s materialization.
+
+```sql
+{{ config(query_group='my_model_group') }}
+select *
+from {{ ref('some_source_table') }}
+```
+
+#### What SQL dbt executes
+
+When `query_group` is configured, dbt issues a `SET query_group` statement in Redshift to apply the value at the session level.
+
+```sql
+SET query_group TO 'query_group'
+```
+
+</VersionBlock>
+
 ## Late binding views
 
 Redshift supports <Term id="view">views</Term> unbound from their dependencies, or [late binding views](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html#late-binding-views). This DDL option "unbinds" a view from the data it selects from. In practice, this means that if upstream views or tables are dropped with a cascade qualifier, the late-binding view does not get dropped as well.
