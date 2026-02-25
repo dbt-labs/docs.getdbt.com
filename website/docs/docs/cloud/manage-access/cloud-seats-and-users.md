@@ -126,7 +126,11 @@ Licenses can be assigned to users individually or through group membership. To a
 
 ### Manual configuration
 
-To manually assign a specific type of license to a user on your team, navigate to the **Users** page in your **Account settings** and click the **Edit** button for the user you want to manage. From this page, you can select the license type and relevant groups for the user.
+To manually assign a specific type of license to a user on your team:
+1. Click on your account name in the left side menu and select **Account settings**.
+2. Navigate to the **Users** page in your **Account settings**. 
+3. Select the user you want to manage and click the **Edit** button.
+4. From this **User details** page, you can select the license type and relevant groups for the user.
 
 **Note:** You will need to have an available license ready to allocate for the user. If your account does not have an available license to allocate, you will need to add more licenses to your plan to complete the license change.
 
@@ -134,7 +138,10 @@ To manually assign a specific type of license to a user on your team, navigate t
 
 ### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
 
-If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in <Constant name="cloud" /> and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
+If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in <Constant name="cloud" /> and assign license types to those groups. To configure license mappings:
+1. Click on your account name in the left side menu and select **Account settings**.
+2. Navigate to the **Groups & Licenses**  and scroll to the **License Mappings** section.
+3. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
 
 :::important License mappings use IdP groups, not dbt groups
 License type mappings are based on **IdP groups** (groups in your identity provider), not **<Constant name="cloud" /> groups**. When you create or edit a license mapping, you enter IdP group names. Check group memberships in your IdP when configuring or troubleshooting.
