@@ -8,23 +8,17 @@ pagination_prev: null
 
 Begin your dbt journey by choosing how you want to develop:
 
-- **<Constant name="dbt_platform" />** &mdash; Develop in your browser (<Constant name="cloud_ide" /> or <Constant name="visual_editor" />) or use local tools (VS Code extension, <Constant name="cloud_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/install-dbt) engines.
-- **Local only** &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [Fusion CLI](/docs/fusion/install-fusion-cli), or [<Constant name="core" />](/docs/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
-- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="cloud_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, and the <Constant name="semantic_layer" />.
+- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="cloud_ide" /> or <Constant name="visual_editor" />) or use local tools (VS Code extension, <Constant name="cloud_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/install-dbt) engines.
+- [**Local only**](#dbt-local-installations) &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [Fusion CLI](/docs/fusion/install-fusion-cli), or [<Constant name="core" />](/docs/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
+- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="cloud_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="query_page" />, <Constant name="visual_editor" />, and more.
 
 ## The dbt platform
 
-<Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It supports both [the dbt <Constant name="fusion" />](/docs/fusion) and [<Constant name="core" />](/docs/introduction#dbt-core-engine) engines,  and enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
+<Constant name="cloud" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
-- Development experiences tailored to multiple personas (in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="visual_editor" />](/docs/cloud/canvas) or locally with the [dbt VS Code extension](/docs/about-dbt-extension) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)).
-- Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs).
-- The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint.
-- Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups.
-- [<Constant name="explorer" />](/docs/explore/explore-projects) for collaborative data discovery and understanding.
+The <Constant name="fusion_engine" /> adds managed execution, [state-aware orchestration](/docs/deploy/state-aware-about), and a unified development experience so you can focus on building rather than infrastructure.
 
-The <Constant name="fusion_engine" /> adds managed execution, [state-aware orchestration](/docs/deploy/state-aware-about), and a unified development experience so you can focus on building rather than infrastructure.
-
-Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
+Choose your warehouse to get started with a quickstart:
 
 <div className="grid--3-col">
 
