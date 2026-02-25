@@ -7,7 +7,7 @@ displayed_sidebar: "docs"
 
 # Upgrading to v1.12
 
-:::info Beta not yet available
+:::info Beta coming soon
 
 <Constant name="core" /> v1.12 is not yet available in beta. We will update this guide when it becomes available.
 
