@@ -30,13 +30,13 @@ Each minor version (for example, v1.8) is supported for **one year** from its in
 
 After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window.
 
-For upcoming releases, see the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones).
+For upcoming releases, refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones).
 
 ## Upgrading
 
 Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because some features and fixes are only available on the latest minor version.
 
-All versions are available as prereleases (betas and release candidates) before final release. See the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
+All versions are available as prereleases (betas and release candidates) before final release. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
 
 ## How dbt Core uses semantic versioning
 
@@ -50,7 +50,7 @@ All versions are available as prereleases (betas and release candidates) before 
 
 `dbt-core` and adapter plugins (such as `dbt-snowflake`) are released independently. Their minor and patch version numbers may not match, but they coordinate through the `dbt-adapters` interface so you won't get a broken experience. For example, `dbt-core==1.8.0` can work with `dbt-snowflake==1.9.0`.
 
-If you're building or maintaining an adapter, see the [adapter creation guide](/guides/adapter-creation) for details on the `dbt-adapters` interface.
+If you're building or maintaining an adapter, refer to the [adapter creation guide](/guides/adapter-creation) for details on the `dbt-adapters` interface.
 
 Run `dbt --version` to check your installed versions:
 
@@ -64,10 +64,10 @@ Plugins:
   - snowflake: 1.9.0 - Up to date!
 ```
 
-You can also see the registered adapter version in [logs](/reference/global-configs/logs). For example, in `logs/dbt.log`:
+You can also find the registered adapter version in [logs](/reference/global-configs/logs). For example, in `logs/dbt.log`:
 
 ```
 [0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
 ```
 
-See [Supported Data Platforms](/docs/supported-data-platforms) for the full list of adapters.
+Refer to [Supported Data Platforms](/docs/supported-data-platforms) for the full list of adapters.
