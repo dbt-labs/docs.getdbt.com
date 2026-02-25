@@ -8,23 +8,6 @@ intro_text: "dbt transforms raw warehouse data into trusted data products. You w
 ---
 
 
-### filtered table (normal)
-<!-- This gets filters (default) -->
-| Column 1 | Column 2 |
-|----------|----------|
-| Data     | Data     |
-
-### plain table (no filters)
-
-<!-- This is plain (no filters) -->
-<SimpleTable>
-
-| Column 1 | Column 2 |
-|----------|----------|
-| Data     | Data     |
-
-</SimpleTable>
-
 <Snippet path="what-is-dbt-intro" />
 
 dbt brings software engineering best practices like version control, testing, modularity, CI/CD, and documentation to analytics workflows &mdash; helping teams build production-grade data pipelines backed by a 100,000+ member [community](/community/join). 
