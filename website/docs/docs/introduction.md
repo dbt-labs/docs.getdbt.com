@@ -22,20 +22,19 @@ import DbtFramework from '/snippets/_dbt-framework.md';
 
 ### dbt Fusion engine
 
-The <Constant name="fusion_engine" /> is a fast, Rust-based engine that delivers a lightning-fast development experience, intelligent cost savings, and improved governance. <Constant name="fusion" /> understands SQL natively across multiple dialects, catches errors instantly, and optimizes how your models are built &mdash; bringing SQL comprehension and state awareness, instant feedback, <Term id="lsp"/>, and more to every dbt workflow.
+The <Constant name="fusion_engine" /> is a Rust-based engine that delivers a lightning-fast development experience, intelligent cost savings, and improved governance. <Constant name="fusion" /> understands SQL natively across multiple dialects, catches errors instantly, and optimizes how your models are built &mdash; bringing SQL comprehension and state awareness, instant feedback, <Term id="lsp"/>, and more to every dbt workflow.
 
-<Constant name="fusion" /> powers dbt in the [<Constant name="dbt_platform" />](/docs/cloud/about-cloud/dbt-cloud-features), [VS Code / Cursor](/docs/about-dbt-extension), and [locally from the command line](/docs/fusion/install-fusion-cli). You don't need to have a <Constant name="dbt_platform" /> project to use <Constant name="fusion_engine" />.
+<Constant name="fusion" /> powers dbt in the [<Constant name="dbt_platform" />](/docs/cloud/about-cloud/dbt-cloud-features), [VS Code / Cursor](/docs/about-dbt-extension), and [locally from the command line](/docs/fusion/install-fusion-cli). You don't need to have a <Constant name="dbt_platform" /> project to use the <Constant name="fusion_engine" />.
 
-For more information, refer to [About the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [get started with Fusion](/docs/fusion/get-started-fusion) page.
+For more information, refer to [About the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [get started with Fusion](/docs/fusion/get-started-fusion) pages.
 
 ### dbt Core engine
 
-[<Constant name="core" />](/docs/install-dbt) is the open-source, Python-based engine that enables data practitioners to transform data. <Constant name="core" /> is best suited for small, highly technical teams with simpler dbt deployments who want to set up and run dbt on their own infrastructure. 
+[<Constant name="core" />](/docs/install-dbt) is the open-source, Python-based engine that enables data practitioners to transform data. <Constant name="core" /> surfaces feedback when you run or build your project. It doesn't include <Constant name="fusion"/> features like the <Term id="lsp"/>,for example, which provides instant feedback as you type.
 
 Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?step=1).
 
 ## How to use dbt
-Use dbt to quickly and collaboratively transform data and deploy analytics code following software engineering best practices like version control, modularity, portability, CI/CD, and documentation. This means anyone on the data team familiar with SQL can safely contribute to production-grade data pipelines, helping organizations make data-driven decisions.
 
 You can deploy dbt projects in different ways depending on your needs: 
 - Using the [<Constant name="dbt_platform" />](#dbt-platform) (recommended for most users)
@@ -45,14 +44,14 @@ All ways support using the <Constant name="fusion_engine" /> or <Constant name="
 
 ### dbt platform
 
-The <Constant name="dbt_platform" /> offers the fastest, most reliable, and scalable way to deploy dbt. It's powered by the <Constant name="fusion_engine" /> or <Constant name="core" /> engine, and provides a fully managed service with scheduling, CI/CD, documentation hosting, monitoring, development, and alerting through a web-based user interface (UI).
+The <Constant name="dbt_platform" /> offers the fastest, most reliable, and scalable way to deploy dbt. It can be powered by the <Constant name="fusion_engine" /> or <Constant name="core" /> engine, and provides a fully managed service with scheduling, CI/CD, documentation hosting, monitoring, development, and alerting through a web-based user interface (UI).
 
 The <Constant name="dbt_platform" /> offers [multiple ways](/docs/cloud/about-cloud/dbt-cloud-features) to develop and collaborate on dbt projects:
 - [Develop in your browser using the <Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio)
 - [Seamless drag-and-drop development with <Constant name="visual_editor" />](/docs/cloud/canvas)
-- [Run dbt commands from your local command line](#dbt-local-development) using dbt VS Code extension or <Constant name="cloud_cli" /> (both which integrate seamlessly with the <Constant name="dbt_platform" /> project(s)).
+- [Run dbt commands from your local command line](#dbt-local-development) using the dbt VS Code extension or <Constant name="cloud_cli" /> (both which integrate seamlessly with the <Constant name="dbt_platform" /> project(s)).
 
-Learn more about the [<Constant name="dbt_platform" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [<Constant name="cloud" /> quickstarts](/guides).
+Learn more about the [<Constant name="dbt_platform" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [<Constant name="cloud" /> Quickstarts](/guides).
 
 You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com/pricing/). 
 
@@ -60,8 +59,8 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 Use the dbt framework and develop dbt projects from your command line or code editor:
 
-- [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
-- [Install the Fusion CLI](/docs/fusion/install-fusion-cli) &mdash; <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
+- [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines the <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
+- [Install the Fusion CLI](/docs/fusion/install-fusion-cli) &mdash; The <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
 - [Install the <Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) &mdash; The <Constant name="dbt_platform" /> CLI, which allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line.
 - [Install <Constant name="core" />](/docs/install-dbt) &mdash; The open-source, Python-based CLI that uses the <Constant name="core" /> engine. Doesn't include <Term id="lsp" /> features.
 
