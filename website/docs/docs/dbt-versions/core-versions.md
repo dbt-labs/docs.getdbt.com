@@ -6,7 +6,9 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-version-in-cloud"
 pagination_prev: null
 ---
 
-If you're using <Constant name="dbt_platform" />, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) keep you up to date automatically, with early access to new features before they're available in <Constant name="core" />.
+This page describes versioning for the <Constant name="core"/> engine (Python-based CLI). If you run the <Constant name="core"/> engine locally (for example, using `pip`), then this page is for you. <Constant name="core"/> releases follow [semantic versioning](https://semver.org/).
+
+If you're using <Constant name="dbt_platform" /> (including the <Constant name="cloud_cli"/>, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features before they’re available in <Constant name="core" />.
 
 If you manage your own <Constant name="core" /> versions locally, read on. <Constant name="core" /> releases follow [semantic versioning](https://semver.org/).
 
@@ -26,7 +28,7 @@ Once a <Constant name="core" /> version reaches end-of-life (EOL), it no longer 
 
 ## Current version support
 
-dbt supports each minor version (for example, v1.8) for **one year** from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
+dbt supports each minor version (for example, v1.8) for _one year_ from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
 
 After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window. After the one-year window ends, the version reaches **end of life** and no longer receives patches.
 
@@ -80,4 +82,4 @@ You can also find the registered adapter version in [logs](/reference/global-con
 [0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
 ```
 
-Refer to [Supported Data Platforms](/docs/supported-data-platforms) for the full list of adapters.
+Refer to [Supported data platforms](/docs/supported-data-platforms) for the full list of adapters.
