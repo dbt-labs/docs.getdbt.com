@@ -5,7 +5,13 @@ id: "set-up-sso-okta"
 
 # Set up SSO with Okta <Lifecycle status="managed, managed_plus" />
 
-<Constant name="cloud" /> Enterprise-tier plans support single-sign on via Okta (using SAML). After SSO is configured, you can optionally [set up SCIM](/docs/cloud/manage-access/scim) with Okta to automate user and group provisioning and license assignment. Currently supported SSO features include:
+<Constant name="cloud" /> Enterprise-tier plans support single-sign on via Okta (using SAML).
+
+:::info SCIM available for Okta
+After setting up SSO, you can [set up SCIM](/docs/cloud/manage-access/scim-okta) with Okta to automate user and group provisioning and license assignment. 
+:::
+
+Currently supported SSO features include:
 
 * IdP-initiated SSO
 * SP-initiated SSO
@@ -179,8 +185,8 @@ Settings. Next, click the **Edit** button and supply the following SSO details:
 Now you have completed setting up SSO with Okta, the next steps will be to set up
 [RBAC groups](/docs/cloud/manage-access/about-user-access#role-based-access-control-) to complete your access control configuration.
 
-:::tip Optional: Set up SCIM
-To automate user and group provisioning (and license assignment for Okta) from your IdP, see [Set up SCIM](/docs/cloud/manage-access/scim).
+:::tip Set up SCIM
+Now that you've set up SSO with Okta, you can [set up SCIM](/docs/cloud/manage-access/scim-okta) to automate user and group provisioning (and license assignment for Okta).
 :::
 
 ## Learn more

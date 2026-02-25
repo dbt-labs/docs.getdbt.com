@@ -8,10 +8,16 @@ sidebar_label: "Set up SCIM with Entra ID"
 # Set up SCIM with Entra ID <Lifecycle status="managed, managed_plus" />
 
 :::info SCIM available for Entra ID
-<Constant name="cloud" /> supports SCIM with Microsoft Entra ID for user and group provisioning and profile updates. Complete the steps below after SSO is configured.
+<Constant name="cloud" /> supports SCIM with Microsoft Entra ID for user and group provisioning and profile updates.
+
+License type mapping is not currently supported with Entra ID SCIM. See [mapped configuration](/docs/cloud/manage-access/seats-and-users#mapped-configuration) to manage license types within the <Constant name="dbt_platform" /> user interface.
+
 :::
 
-Complete [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) first to get your SCIM base URL and token, then complete [setup SSO with Entra ID](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) before configuring SCIM settings.
+## Prerequisites
+- Available on [Enterprise or Enterprise+ plans](https://www.getdbt.com/pricing).
+- Complete [setup SSO with Entra ID](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) before configuring SCIM settings.
+- Complete the [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) to get your SCIM base URL and token.
 
 ## Set up Entra ID
 

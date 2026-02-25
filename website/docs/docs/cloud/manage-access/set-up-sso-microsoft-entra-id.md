@@ -7,7 +7,13 @@ sidebar_label: "Set up SSO with Microsoft Entra ID"
 
 # Set up SSO with Microsoft Entra ID <Lifecycle status="managed, managed_plus" />
 
-<Constant name="cloud" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). After SSO is configured, you can optionally [set up SCIM](/docs/cloud/manage-access/scim) with Entra ID to automate user and group provisioning. You will need permissions to create and manage a new Entra ID application. Currently supported SSO features include:
+<Constant name="cloud" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). 
+
+:::info SCIM available for Entra ID
+After setting up SSO, you can [set up SCIM](/docs/cloud/manage-access/scim-entra-id) with Entra ID to automate user and group provisioning. 
+:::
+
+Currently supported SSO features include:
 
 * IdP-initiated SSO
 * SP-initiated SSO
@@ -161,8 +167,8 @@ The **Single sign-on** section also contains additional configuration options wh
 Now you have completed setting up SSO with Entra ID, the next steps will be to set up
 [RBAC groups](/docs/cloud/manage-access/enterprise-permissions) to complete your access control configuration.
 
-:::tip Optional: Set up SCIM
-To automate user and group provisioning from Entra ID, see [Set up SCIM](/docs/cloud/manage-access/scim).
+:::tip Set up SCIM
+Now that you've set up SSO with Entra ID, you can [set up SCIM](/docs/cloud/manage-access/scim-entra-id) to automate user and group provisioning.
 :::
 
 ## Troubleshooting tips

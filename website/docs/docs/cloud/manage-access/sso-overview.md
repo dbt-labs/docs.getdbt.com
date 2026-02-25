@@ -10,7 +10,7 @@ pagination_prev: null
 This overview explains how users are provisioned in <Constant name="cloud" /> via Single Sign-On (SSO).
 <Constant name="cloud" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. 
 
-You can also use [SCIM](/docs/cloud/manage-access/scim) to automate user and group provisioning from your identity provider (Okta or Microsoft Entra ID). You can learn more about our supported options [here](https://www.getdbt.com/pricing/).
+To further automate your workflow, you can use [SCIM (System for Cross-domain Identity Management)](/docs/cloud/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your Identity Provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
 
 ## Prerequisites
 

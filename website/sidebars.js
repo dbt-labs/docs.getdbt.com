@@ -175,6 +175,7 @@ const sidebarSettings = {
                       items: [
                         "docs/cloud/manage-access/scim",
                         "docs/cloud/manage-access/scim-okta",
+                        "docs/cloud/manage-access/scim-manage-user-licenses",
                         "docs/cloud/manage-access/scim-entra-id",
                       ],
                     },
