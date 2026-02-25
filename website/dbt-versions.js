@@ -123,10 +123,6 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
-    page: "docs/local/connect-data-platform/profiles.yml",
-    lastVersion: "1.99",
-  },
-  {
     page: "docs/local/connect-data-platform/connection-profiles",
     lastVersion: "1.99",
   },
@@ -326,10 +322,6 @@ exports.versionedPages = [
  * @property {string} firstVersion The first version the category is visible in the sidebar
  */
 exports.versionedCategories = [
-  {
-    category: "Connect dbt Core to your data platform",
-    lastVersion: "1.99",
-  },
   {
     category: "Install dbt Core",
     lastVersion: "1.99",

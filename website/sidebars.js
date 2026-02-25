@@ -263,9 +263,10 @@ const sidebarSettings = {
           type: "category",
           label: "dbt local installation",
           collapsed: true,
-          link: { type: "doc", id: "docs/install-dbt" },
+          link: { type: "doc", id: "docs/local/install-dbt" },
           items: [
-            "docs/install-dbt",
+            "docs/local/install-dbt",
+            "docs/local/profiles.yml",
             "docs/local/dbt-core-environments",
             {
               type: "category",
@@ -276,8 +277,6 @@ const sidebarSettings = {
               },
               items: [
                 "docs/local/connect-data-platform/about-core-connections",
-                "docs/local/connect-data-platform/profiles.yml",
-                "docs/local/connect-data-platform/connection-profiles",
                 "docs/local/connect-data-platform/bigquery-setup",
                 "docs/local/connect-data-platform/databricks-setup",
                 "docs/local/connect-data-platform/redshift-setup",

@@ -26,7 +26,7 @@ dbt Labs provides different support levels for different versions, which may inc
 ### Further reading
 
 - To learn how you can use <Constant name="core" /> versions in <Constant name="cloud" />, see [Choosing a <Constant name="core" /> version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-- To learn about installing <Constant name="core" />, see "[How to install <Constant name="core" />](/docs/install-dbt)."
+- To learn about installing <Constant name="core" />, see "[How to install <Constant name="core" />](/docs/local/install-dbt)."
 - To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version).
 
 ## Version support prior to v1.0
@@ -37,7 +37,7 @@ All <Constant name="core" /> versions released prior to 1.0 and their version-sp
 
 All <Constant name="core" /> minor versions that have reached end-of-life (EOL) will have no new patch releases. This means they will no longer receive any fixes, including for known bugs that have been identified. Fixes for those bugs will instead be made in newer minor versions that are still under active support.
 
-We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/install-dbt#upgrading-dbt-core) to continue receiving support. 
+We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core) to continue receiving support. 
 
 All <Constant name="core" /> v1.0 and later are available in <Constant name="cloud" /> until further notice. In the future, we intend to align <Constant name="cloud" /> availability with <Constant name="core" /> ongoing support. You will receive plenty of advance notice before any changes take place.
 

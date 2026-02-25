@@ -4,14 +4,12 @@ description: "The dbt profiles.yml file contains the connection details for your
 id: profiles.yml
 ---
 
-<VersionBlock lastVersion="1.99">
 import ProfilesYml from '/snippets/_profiles.yml.md';
 
 <ProfilesYml />
 
 ## Related docs
 
-- [Install dbt](/docs/install-dbt)
-- [Connection profiles](/docs/local/connect-data-platform/connection-profiles)
+- [Install dbt](/docs/local/install-dbt)
+- [Connection profiles](/docs/local/profiles.yml)
 
-</VersionBlock>
