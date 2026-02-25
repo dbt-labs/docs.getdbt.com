@@ -30,11 +30,11 @@ Tables in Amazon Redshift have two powerful optimizations to improve query perfo
 
 - `dist` can have a setting of `all`, `even`, `auto`, or the name of a key.
 - `sort` accepts a list of sort keys, for example: `['reporting_day', 'category']`. dbt will build the sort key in the same order the fields are supplied.
-- `sort_type` can have a setting of `interleaved` or `compound`. if no setting is specified, sort_type defaults to `compound`.
+- `sort_type` can have a setting of `interleaved` or `compound`. If no setting is specified, `sort_type` defaults to `compound`.
 
 When working with sort keys, it's highly recommended you follow [Redshift's best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/query-best-practices-redshift/best-practices-tables.html#sort-keys) on sort key effectiveness and cardinality. 
 
-Sort and dist keys should be added to the `{{ config(...) }}` block in model `.sql` files, eg:
+Sort and dist keys should be added to the `{{ config(...) }}` block in model `.sql` files, for example:
 
 <File name='my_model.sql'>
 
@@ -52,11 +52,12 @@ select ...
 
 
 -- Example with interleaved sort keys
-{{ config(materialized='table',
-          sort_type='interleaved'
-          sort=['category', 'region', 'reporting_day'],
-          dist='unique_id')
-}}
+{{ config(
+    materialized='table',
+    sort_type='interleaved',
+    sort=['category', 'region', 'reporting_day'],
+    dist='unique_id'
+) }}
 
 select ...
 ```
@@ -67,6 +68,53 @@ For more information on distkeys and sortkeys, view Amazon's docs:
 
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing a Data Distribution Style](https://docs.aws.amazon.com/redshift/latest/dg/t_Distributing_data.html)
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing Sort Keys](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html)
+
+## Session configurations
+
+The Redshift adapter supports the `query_group` session parameter, enabling dbt runs to tag queries for the Redshift Workload Manager (WLM) and query logging. When configured, dbt sets the `query_group` value on connection open and applies it for the duration of a session. Support exists at both the profile and model level, allowing users to specify a default `query_group` for all executions or override it for individual model materializations.
+
+#### Profile-level configuration
+
+Configure `query_group` in your `profiles.yml` file to apply a default value to all queries executed using that profile. dbt sets the `query_group` when opening a connection. In your YAML file, replace the uppercase placeholder values with your own connection details.
+
+<File name='profiles.yml'>
+
+```yaml
+outputs:
+  dev:
+    type: redshift
+    host: CLUSTER_ENDPOINT
+    user: REDSHIFT_USER
+    password: REDSHIFT_PASSWORD
+    dbname: REDSHIFT_DBNAME
+    port: 5439
+    schema: analytics
+    threads: 4
+    query_group: my_profile_query_group
+```
+
+</File>
+
+#### Model-level configuration
+
+Set `query_group` in a model’s `config()` block to override the profile-level value for that model only. The configured value applies for the duration of that model’s materialization.
+
+```jinja
+{{ config(query_group='my_model_group') }}
+select *
+from {{ ref('some_source_table') }}
+```
+
+#### The SQL dbt executes
+
+When `query_group` is configured, dbt issues a `SET query_group` statement in Redshift to apply the value at the session level.
+
+```sql
+SET query_group TO 'query_group'
+```
+<br />
+
+See [`query_group`](https://docs.aws.amazon.com/redshift/latest/dg/r_query_group.html) for more information about this configuration.
 
 ## Late binding views
 
@@ -112,7 +160,7 @@ with the following configuration parameters:
 | [`sort`](#using-sortkey-and-distkey)                                             | `[<string>]` | no       | `none`                                         | drop/create               |
 | [`sort_type`](#using-sortkey-and-distkey)                                        | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
 | [`auto_refresh`](#auto-refresh)                                                  | `<boolean>`  | no       | `false`                                        | alter                     |
-| [`backup`](#backup)                                                              | `<string>`   | no       | `true`                                         | n/a                       |
+| [`backup`](#backup)                                                              | `<boolean>`  | no       | `true`                                         | n/a                       |
 
 <Tabs
   groupId="config-languages"
@@ -237,5 +285,5 @@ Find more information about materialized view limitations in Redshift's [docs](h
 
   In order to support this pattern in the future, dbt would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [dbt-labs/<Constant name="core" />#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
 
-- Redshift doesn't support unit tests that rely on sources in a database that differs from the models. See this issue in GitHub for more detail: https://github.com/dbt-labs/dbt-redshift/issues/995
+- Redshift doesn't support unit tests that rely on sources in a database that differs from the models. See this issue in GitHub for more detail: [dbt-labs/dbt-redshift#995](https://github.com/dbt-labs/dbt-redshift/issues/995)
 
