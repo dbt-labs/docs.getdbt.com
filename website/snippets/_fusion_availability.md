@@ -6,7 +6,7 @@ Try out the [<Constant name="fusion" /> quickstart](/guides/fusion) and check ou
 
 [<Constant name="dbt_platform" />](/docs/introduction#the-dbt-platform-formerly-dbt-cloud) supports two engines: <Constant name="fusion" /> (Rust-based, fast, visual) and <Constant name="core" /> (Python-based, traditional). <Constant name="core" /> is also available as an [open-source CLI](/docs/introduction#dbt-core) for self-hosted workflows.
 
-Features vary depending on how Fusion is implemented. Whether you’re new to dbt or already set up, check out the following table to see what solutions are available and where you can use them. 
+Features vary depending on how <Constant name="fusion" /> is implemented. Whether you’re new to dbt or already set up, check out the following table to see what developement solutions are available and where you can use them. See [<Constant name="dbt_platform"/> features](/docs/cloud/about-cloud/dbt-cloud-features) for a full list of the available features for <Constant name="dbt_platform"/>.
 <!-- table 1 for orientation (“Which tool should I use?”)-->
 
 |  <div style={{width:'200px'}}></div>  | <div style={{width:'230px'}}>Features you can use</div> | <div style={{width:'240px'}}>Who can use it?</div>  | <div style={{width:'250px'}}>Solutions available</div> |
