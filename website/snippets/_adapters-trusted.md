@@ -56,7 +56,7 @@
 
 <Card
     title="Exasol"
-    body="<ul><li><a href='/docs/core/connect-data-platform/exasol-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-exasol><img src=https://badge.fury.io/py/dbt-exasol.svg/></a>"
+    body="<ul><li><a href='/docs/local/connect-data-platform/exasol-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-exasol><img src=https://badge.fury.io/py/dbt-exasol.svg/></a>"
     pills='["dbt Core"]'
     icon="exasol"/>
 

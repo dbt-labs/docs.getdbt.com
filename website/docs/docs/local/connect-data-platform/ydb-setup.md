@@ -46,7 +46,7 @@ pip is the easiest way to install the adapter:
 
 ## Connecting to YDB
 
-To connect to YDB from dbt, you'll need to add a [profile](/docs/local/connect-data-platform/connection-profiles) to your `profiles.yml` file. A YDB profile conforms to the following syntax:
+To connect to YDB from dbt, you'll need to add a [profile](/docs/local/profiles.yml) to your `profiles.yml` file. A YDB profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 

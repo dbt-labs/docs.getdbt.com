@@ -107,7 +107,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/local/connect-data-platform/profiles.yml)
+  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/local/profiles.yml)
 
 
 </details>
@@ -391,7 +391,7 @@ If you just opened a SQL file in the `target/` directory to help debug an issue,
 Here are some useful FAQs to help you debug your dbt project:
 
 - <FAQ path="Troubleshooting/generate-har-file" />
-- <FAQ path="Troubleshooting/auth-expired-error" />  
+- <FAQ path="Troubleshooting/refresh-snowflake-oauth-credentials" />  
 - <FAQ path="Troubleshooting/could-not-parse-project" />
 - <FAQ path="Troubleshooting/gitignore" />
 - <FAQ path="Troubleshooting/job-memory-limits" />

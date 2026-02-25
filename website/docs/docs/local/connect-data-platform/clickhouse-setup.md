@@ -25,7 +25,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to ClickHouse
 
-To connect to ClickHouse from dbt, you'll need to add a [profile](/docs/local/connect-data-platform/connection-profiles)
+To connect to ClickHouse from dbt, you'll need to add a [profile](/docs/local/profiles.yml)
 to your `profiles.yml` configuration file. Follow the reference configuration below to set up a ClickHouse profile:
 
 <File name='profiles.yml'>

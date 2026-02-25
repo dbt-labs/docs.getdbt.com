@@ -52,7 +52,7 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 Extended attributes are currently _not_ supported for SSH tunneling
 :::
 
-Extended attributes allows users to set a flexible [profiles.yml](/docs/local/connect-data-platform/profiles.yml) snippet in their <Constant name="cloud" /> Environment settings. It provides users with more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
+Extended attributes allows users to set a flexible [profiles.yml](/docs/local/profiles.yml) snippet in their <Constant name="cloud" /> Environment settings. It provides users with more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
 
 Extended attributes are set at the environment level, and can partially override connection or environment credentials, including any custom environment variables. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`.
 

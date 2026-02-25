@@ -13,7 +13,7 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.6.latest/CHANGELOG.md)
-- [<Constant name="core" /> installation guide](/docs/install-dbt)
+- [<Constant name="core" /> installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/7481)
 

@@ -24,7 +24,7 @@ This adapter is in the Alpha product stage and is not production-ready. It shoul
 As we continue to develop and take in your feedback, the experience is subject to change &mdash; commands, configuration, and workflows may be updated or removed in future releases. 
 :::
 
-This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install dbt Fusion](/docs/install-dbt). We recommend using the [VS Code Extension](/docs/install-dbt) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
+This `dbt-salesforce` adapter is available via the <Constant name="fusion_engine" /> CLI. To access the adapter, [install dbt Fusion](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
 
 ## Prerequisites
 

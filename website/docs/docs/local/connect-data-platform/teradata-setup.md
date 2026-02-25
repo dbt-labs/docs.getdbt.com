@@ -59,7 +59,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ### Connecting to Teradata
 
-To connect to Teradata Vantage from dbt, you'll need to add a [profile](/docs/local/connect-data-platform/connection-profiles) to your `profiles.yml` file. A Teradata profile conforms to the following syntax:
+To connect to Teradata Vantage from dbt, you'll need to add a [profile](/docs/local/profiles.yml) to your `profiles.yml` file. A Teradata profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 

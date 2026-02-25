@@ -7,7 +7,35 @@ pagination_next: "docs/local/dbt-core-environments"
 pagination_prev: null
 ---
 
-<Constant name="dbt" /> enables data teams to transform data using analytics engineering best practices. Choose your local development experience from these tools.
+dbt enables data teams to transform data using analytics engineering best practices. You can run dbt locally through a command line interface (CLI) to build, test, and deploy your data transformations.
+
+## dbt Fusion engine (recommended)
+
+For the best local development experience, we recommend the <Constant name="fusion_engine" />. Built in Rust, <Constant name="fusion" /> delivers:
+
+- **Faster performance** &mdash; Up to 10x faster parsing, compilation, and execution
+- **SQL comprehension** &mdash; Dialect-aware validation catches errors before they reach your warehouse.
+- **Column-level lineage** &mdash; Trace data flow across your entire project.
+
+[Install Fusion now!](/docs/local/install-dbt?version=2.0#get-started)
+
+### VS Code extension
+
+The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant name="fusion" />'s performance with powerful editor features:
+
+- **IntelliSense** &mdash; Autocomplete for models, macros, and columns
+- **Inline errors** &mdash; See SQL errors as you type
+- **Hover insights** &mdash; View model definitions and column info without leaving your code
+- **Refactoring tools** &mdash; Rename models and columns across your project
+
+This is the fastest way to get started with dbt locally. [Install the VS Code extension now!](/docs/local/install-dbt?version=2.0#get-started)
+
+
+## dbt Core
+
+[<Constant name="core" />](/docs/local/install-dbt?version=1.11) is the original Python-based dbt engine. Choose dbt Core if you need to use one of our [community-maintained adapters](/docs/supported-data-platforms) that aren't yet supported by <Constant name="fusion" />, or if your workflow requires Python-based customizations.
+
+## Get started
 
 <VersionBlock firstVersion="2.0">
 
@@ -112,7 +140,7 @@ For more details on managing environment variables locally, refer to [Configure 
 
 <Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the `DBT_PROFILES_DIR` environment variable or `profiles.yml` in arbitrary working directories.
 
-For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/connect-data-platform/profiles.yml#location-of-profilesyml).
+For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/profiles.yml#location-of-profilesyml).
 
 ## Troubleshooting
 
@@ -443,7 +471,7 @@ You might also be able to use Docker to install and develop locally if you don't
 ### Prerequisites
 
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site.
-* You understand which database adapter(s) you need. For more information, see [About dbt adapters](/docs/install-dbt#about-dbt-data-platforms-and-adapters).
+* You understand which database adapter(s) you need. For more information, see [About dbt adapters](/docs/local/install-dbt#about-dbt-data-platforms-and-adapters).
 * You understand how <Constant name="core" /> is versioned. For more information, see [About <Constant name="core" /> versions](/docs/dbt-versions/core).
 * You have a general understanding of the dbt, dbt workflow, developing locally in the command line interface (CLI). For more information, see [About dbt](/docs/introduction#how-do-i-use-dbt).
 
@@ -555,7 +583,7 @@ To install in editable mode, such as while contributing, use `python -m pip inst
 
 dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade) highlighting the changes required for each [minor and major release](/docs/dbt-versions/core).
 
-- [Upgrade `pip`](/docs/install-dbt)
+- [Upgrade `pip`](/docs/local/install-dbt)
 
 ### About dbt data platforms and adapters
 
