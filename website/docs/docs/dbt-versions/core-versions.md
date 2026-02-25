@@ -22,7 +22,7 @@ If you manage your own <Constant name="core" /> versions locally, read on. <Cons
 ### Further reading
 
 - [Choosing a <Constant name="core" /> version in <Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how you can use <Constant name="core" /> versions in <Constant name="cloud" />.
-- [How to install <Constant name="core" />](/docs/local/install-dbt): Learn about installing <Constant name="core" />
+- [How to install <Constant name="core" />](/docs/local/install-dbt): Learn about installing <Constant name="core" />.
 - [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version): Restrict your project to only work with a range of <Constant name="core" /> versions, or use the currently running version.
 
 ## End-of-life versions
