@@ -44,14 +44,14 @@ Once you've caught up on everything [<Constant name="fusion" /> has to offer](/d
 <Card
     title="Install Fusion + VS Code extension"
     body="Learn how to install and configure our most robust set of tools for local development."
-    link="/docs/fusion/install-dbt-extension"
+    link="/docs/local/install-dbt?version=2#get-started"
     icon="dbt-bit"
     lifecycle="preview"/>
 
 <Card
     title="Install Fusion CLI only"
     body="Learn how to install and configure the dbt Fusion engine from your command line."
-    link="/docs/fusion/install-fusion-cli"
+    link="/docs/local/install-dbt?version=2#get-started"
     icon="dbt-bit"
     lifecycle="preview"/>
 

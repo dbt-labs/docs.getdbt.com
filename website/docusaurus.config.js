@@ -434,7 +434,7 @@ var siteSettings = {
                   ],
                 },
                 {
-                  id: "dbt-local-installation",
+                  id: "install-dbt",
                   name: "dbt local installation",
                   routes: [
                     { route: "/docs/local/install-dbt" },
@@ -442,12 +442,10 @@ var siteSettings = {
                   ],
                   subsections: [
                     {
-                      id: "install-dbt-fusion-engine",
+                      id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
                       routes: [
                         { route: "/docs/fusion/about-fusion-install" },
-                        { route: "/docs/fusion/install-dbt-extension" },
-                        { route: "/docs/fusion/install-fusion-cli" },
                       ],
                     },
                     {
