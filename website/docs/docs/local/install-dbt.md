@@ -43,7 +43,7 @@ This is the fastest way to get started with dbt locally.
 
 [Install dbt Core now!](/docs/local/install-dbt?version=1#get-started)
 
-## Get started
+## Installation
 
 <VersionBlock firstVersion="2.0">
 
