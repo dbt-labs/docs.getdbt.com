@@ -468,7 +468,7 @@ from {{ ref('my_source') }}
   from staging_table
   ```
 
-- When `overwrite_columns` is not set, dbt currently defaults to `SELECT *`:
+- If you don't set `overwrite_columns`, dbt currently defaults to `SELECT *`:
 
   ```sql
   insert overwrite into my_schema.my_table
