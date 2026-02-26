@@ -22,7 +22,7 @@ pagination_prev: null
  After installing your local development experience, you can get started:
 
 - Explore a detailed first-time setup guide for [dbt Fusion engine](/guides/fusion?step=1).
-- [Connect to a data platform](/docs/local/connect-data-platform/about-core-connections).
+- [Connect to a data platform](/docs/local/connect-data-platform/about-dbt-connections).
 - Learn [how to run your dbt projects](/docs/running-a-dbt-project/run-your-dbt-projects).
 
 If you're interested in using the <Constant name="dbt_platform" />, our feature-rich, browser-based UI, you can learn more in [About dbt set up](/docs/cloud/about-cloud-setup).
