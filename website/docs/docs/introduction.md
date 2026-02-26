@@ -7,6 +7,7 @@ pagination_prev: null
 intro_text: "dbt transforms raw warehouse data into trusted data products. You write simple SQL select statements, and dbt handles the heavy lifting by creating modular, maintainable data models that power analytics, operations, and AI -- replacing the need for complex and fragile transformation code."
 ---
 
+
 <Snippet path="what-is-dbt-intro" />
 
 
@@ -73,6 +74,7 @@ As a dbt user, your main focus will be on writing models (select queries) that r
 - **Fast builds** &mdash; Use [incremental models](/docs/build/incremental-models) and leverage metadata to optimize long-running models.
 - **Tested and documented** &mdash; Write [data quality tests](/docs/build/data-tests) on your underlying data and auto-generate [documentation](/docs/build/documentation) alongside your code.
 - **Software engineering workflows** &mdash; Version control, branching, pull requests, CI/CD, and [package management](/docs/build/packages) for your data pipelines. Write <Term id="dry" />er code with [macros](/docs/build/jinja-macros) and [hooks](/docs/build/hooks-operations).
+- **State-aware orchestration** &mdash; Use the <Constant name="fusion_engine" /> to orchestrate your dbt projects and models with [state-awareness orchestration](/docs/deploy/state-aware-about), which automatically determines which models to build by detecting changes in code or data. This reduces runtime and costs by only building the models that have changed.
 
 ## Related docs
 
