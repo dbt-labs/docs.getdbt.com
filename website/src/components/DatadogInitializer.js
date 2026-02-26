@@ -1,23 +1,41 @@
 /**
  * Initializes Datadog RUM when consent is given (OneTrust performance group).
- * Renders nothing; runs once on mount and reacts to consent changes.
+ * Config is injected at build time via webpack DefinePlugin (see plugins/customWebpackConfig).
  */
 
 import { useEffect } from 'react';
 import { datadogRum } from '@datadog/browser-rum';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { initDatadogRum } from '../utils/datadog';
 import { hasPerformanceConsent, onConsentChanged } from '../utils/consent';
 
 let isRumInitialized = false;
 
-export function DatadogInitializer() {
-  const { siteConfig } = useDocusaurusContext();
-  const datadogConfig = siteConfig?.datadog;
+// Build config from env (injected at build time by customWebpackConfig)
+function getDatadogConfig() {
+  return {
+    applicationId: process.env.DD_APP_ID || '',
+    clientToken: process.env.DD_CLIENT_TOKEN || '',
+    service: process.env.DD_SERVICE || 'docs-getdbt-com',
+    env: process.env.DD_ENV || 'production',
+    version: process.env.DD_VERSION || 'unknown',
+    sessionSampleRate: parseInt(process.env.DD_SAMPLE_RATE || '25', 10),
+    sessionReplaySampleRate: parseInt(process.env.DD_SESSION_REPLAY_SAMPLE_RATE || '10', 10),
+  };
+}
 
+export function DatadogInitializer() {
   useEffect(() => {
+    const datadogConfig = getDatadogConfig();
+    console.log("DEBUG: datadogConfig =", {
+      service: datadogConfig.service,
+      env: datadogConfig.env,
+      version: datadogConfig.version,
+      sessionSampleRate: datadogConfig.sessionSampleRate,
+      sessionReplaySampleRate: datadogConfig.sessionReplaySampleRate,
+    });
+
     const initRUM = () => {
-      if (isRumInitialized || !datadogConfig) return;
+      if (isRumInitialized || !datadogConfig.applicationId || !datadogConfig.clientToken) return;
 
       initDatadogRum(datadogConfig);
       isRumInitialized = true;
@@ -25,6 +43,8 @@ export function DatadogInitializer() {
 
     const disableRUM = () => {
       if (!isRumInitialized) return;
+
+      console.log("DEBUG: disabling RUM");
 
       // Clear any user-identifying context
       datadogRum.setGlobalContext({
@@ -43,6 +63,8 @@ export function DatadogInitializer() {
       const hasConsent =
         process.env.NODE_ENV === 'development' || hasPerformanceConsent();
 
+      console.log("DEBUG: hasConsent =", hasConsent);
+
       if (hasConsent) {
         initRUM();
       } else {
@@ -55,13 +77,14 @@ export function DatadogInitializer() {
 
     // 2. Listen for OneTrust updates (handles timing issue)
     const removeListener = onConsentChanged(() => {
+      console.log("DEBUG: consent changed");
       evaluateConsent();
     });
 
     return () => {
       removeListener?.();
     };
-  }, [datadogConfig]);
+  }, []);
 
   return null;
 }
