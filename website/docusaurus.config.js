@@ -18,6 +18,17 @@ const GIT_BRANCH = process?.env?.VERCEL_GIT_COMMIT_REF;
 
 let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
 
+// Datadog RUM (Core Web Vitals) - env vars at build time
+const datadogConfig = {
+  applicationId: process.env.DD_APP_ID || '',
+  clientToken: process.env.DD_CLIENT_TOKEN || '',
+  service: process.env.DD_SERVICE || 'docs-getdbt-com',
+  env: process.env.DD_ENV || process.env.VERCEL_ENV || 'production',
+  version: process.env.VERCEL_GIT_COMMIT_SHA || process.env.VERCEL_GIT_SHA || 'unknown',
+  sessionSampleRate: parseInt(process.env.DD_SAMPLE_RATE || '25', 10),
+  sessionReplaySampleRate: parseInt(process.env.DD_SESSION_REPLAY_SAMPLE_RATE || '10', 10),
+};
+
 let metatags = [];
 // If not `current` and not `main` branch, do not index site
 if (GIT_BRANCH && (GIT_BRANCH !== "current" && GIT_BRANCH !== "main")) {
@@ -45,6 +56,7 @@ var siteSettings = {
   tagline: "End user documentation, guides and technical reference for dbt",
   title: "dbt Developer Hub",
   url: SITE_URL,
+  datadog: datadogConfig,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
