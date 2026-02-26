@@ -64,7 +64,7 @@ Use MetricFlow commands to retrieve metadata and query metrics. The following ta
 
 - If you’re using <Constant name="fusion" /> with <Constant name="dbt_platform" /> and have a `dbt_cloud.yml` file with a valid token to connect to <Constant name="dbt_platform" />, run MetricFlow commands using the `dbt sl` prefix. 
   - This allows you to interact with metrics that are executed remotely on <Constant name="dbt_platform" /> (for example, from the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation)).
-- If you’re using [<Constant name="fusion" /> CLI](/docs/fusion/install-fusion-cli) ([source available](https://www.getdbt.com/licenses-faq)) and aren't connected to <Constant name="dbt_platform" />, install MetricFlow separately and use the `mf` prefix to run commands locally.
+- If you’re using [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2#get-started) ([source available](https://www.getdbt.com/licenses-faq)) and aren't connected to <Constant name="dbt_platform" />, install MetricFlow separately and use the `mf` prefix to run commands locally.
 - If you’re using <Constant name="core" /> locally without <Constant name="fusion" />, run MetricFlow commands using the `mf` prefix.
 
 

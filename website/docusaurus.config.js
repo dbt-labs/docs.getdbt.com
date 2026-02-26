@@ -446,8 +446,7 @@ var siteSettings = {
                       name: "Install dbt Fusion engine",
                       routes: [
                         { route: "/docs/fusion/about-fusion-install" },
-                        { route: "/docs/fusion/install-dbt-extension" },
-                        { route: "/docs/fusion/install-fusion-cli" },
+                        { route: "/docs/local/install-dbt" },
                       ],
                     },
                     {
