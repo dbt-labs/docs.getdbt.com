@@ -10,7 +10,7 @@ sidebar_label: "Manage user licenses with SCIM"
 You can manage user license assignments via SCIM with a user attribute in your Okta environment, so license type is set as users are provisioned and onboarded.
 
 :::info SCIM license mapping available for Okta only
-SCIM license mapping is currently only supported for Okta. For other providers, license types must be [managed](/docs/cloud/manage-access/seats-and-users#mapped-configuration) within the <Constant name="dbt_platform" /> user interface.
+SCIM license mapping is currently only supported for Okta. For other providers, use [SSO license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration) or manage [licenses](/docs/cloud/manage-access/seats-and-users) in the <Constant name="dbt_platform" /> user interface.
 :::
 
 #### Considerations
@@ -43,7 +43,7 @@ On the Enterprise licensing page, the following default groups are available. Th
 | **Everyone** | A catch-all group for all users. This group does not have permission assignments beyond the user's profile. Users must be assigned to the Member or Owner group to work in dbt. |
 
 :::tip Best practice
-After creating and syncing your specific IdP groups, remove users from these default groups to ensure that SCIM remains the single source of truth for permissions and licensing.
+After creating and syncing your specific IdP groups, remove users from these default groups to ensure that SCIM remains the single source of truth for permissions and licensing. Once all users have been removed, you can also delete the groups altogether.
 :::
 
 ## Automated license mapping
@@ -56,7 +56,7 @@ A common strategy involves defining two primary groups in your IdP, for example:
 - `dbt_developers`
 - `dbt_read_only`
 
-#### Core licensing rules
+#### Fundamental licensing rules
 
 Understanding these rules will help you plan your group structure in Okta:
 
@@ -65,9 +65,11 @@ Understanding these rules will help you plan your group structure in Okta:
 
 #### Mapping logic and precedence
 
-When you use groups like `dbt_developers` and `dbt_read_only`, a user might be in one group, both groups, or neither. The following table shows which license they receive in each scenario and is useful when you're deciding how to structure your groups or troubleshooting why someone received a particular license.
+With SSO license mapping, the Developer license takes precedence over all other licenses. With SCIM license mapping (Okta), precedence depends on your configuration &mdash; whether you assign the license attribute directly to the user or derive it from group membership through the expression in your Okta Profile Editor.
 
-Users in the Enterprise default group **Member** are assigned a **Developer** license by default. Until you remove users from **Member** (per the [best practice](#enterprise-default-groups) earlier), that default applies when they're not in any IdP license-mapping groups. Once you enable SCIM license mapping, the IdP group mapping overrides the Member default and assigns the license based on the groups the user is in.
+When you use groups like `dbt_developers` and `dbt_read_only`, a user might be in one group, both groups, or neither. The following table shows one common scenario (group-based mapping) and can be useful when you're deciding how to structure your groups or troubleshooting why someone received a particular license.
+
+Users in the Enterprise default group **Member** are assigned a **Developer** license by default. Until you remove users from **Member** (per the [best practice](#enterprise-default-groups) earlier), that default applies when they're not in any IdP license-mapping groups. Once you enable SCIM license mapping, the IdP group mapping overrides the Member default.
 
 | In `dbt_developers` group? | In `dbt_read_only` group? | License assigned |
 |----------------------|---------------------|------------------|

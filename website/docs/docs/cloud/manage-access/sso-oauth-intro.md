@@ -1,5 +1,5 @@
 ---
-title: "Single sign-on and OAuth"
+title: "Single sign-on, SCIM, and OAuth"
 description: "Overview of SSO, SCIM, and OAuth options for authentication and access in the dbt platform."
 id: "sso-oauth-intro"
 ---
@@ -11,7 +11,7 @@ This section covers how to authenticate users and connect data platforms in <Con
 <!-- no toc -->
 - [SSO](#sso)
 - [SCIM](#scim)
-- [OAuth](#oauth)
+- [Connection OAuth](#connection-oauth)
 
 These features are available on Enterprise and Enterprise+ plans and are typically configured by account admins or security teams.
 
@@ -34,9 +34,9 @@ Automates user and group provisioning from your IdP into <Constant name="cloud" 
 - [Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta) (includes [license management](/docs/cloud/manage-access/scim-manage-user-licenses))
 - [Set up SCIM with Entra ID](/docs/cloud/manage-access/scim-entra-id)
 
-## OAuth
+## Connection OAuth {#connection-oauth}
 
-Lets developers authorize their development credentials with a data platform (e.g. Snowflake, BigQuery) using that platform's login instead of storing passwords in <Constant name="cloud" />. *For admins and developers connecting to supported data platforms.*
+Connection OAuth is for authenticating to your data platform (like Snowflake, BigQuery), which is different from SSO, which handles user login to <Constant name="dbt_platform" />. It lets developers authorize their development credentials with a data platform using that platform's login instead of storing passwords in <Constant name="cloud" />. *For admins and developers connecting to supported data platforms.*
 
 - [OAuth overview](/docs/cloud/manage-access/oauth-intro) &mdash; What's available and by platform
 - [Set up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth)
