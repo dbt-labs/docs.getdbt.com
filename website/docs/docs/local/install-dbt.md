@@ -17,7 +17,7 @@ For the best local development experience, we recommend the <Constant name="fusi
 - **SQL comprehension** &mdash; Dialect-aware validation catches errors before they reach your warehouse.
 - **Column-level lineage** &mdash; Trace data flow across your entire project.
 
-[Install Fusion now!](/docs/local/install-dbt?version=2#get-started)
+[Install Fusion now!](/docs/local/install-dbt?version=2#installation)
 
 ### dbt VS Code extension
 
@@ -30,7 +30,7 @@ The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant nam
 
 This is the fastest way to get started with dbt locally.
 
-[Install Fusion with the dbt VS Code extension](/docs/local/install-dbt?version=2#get-started)
+[Install Fusion with the dbt VS Code extension](/docs/local/install-dbt?version=2#installation)
 
 ## dbt Core
 
@@ -41,7 +41,7 @@ This is the fastest way to get started with dbt locally.
 - **Code editor support** &mdash; Build your dbt project in popular editors like VS Code or Cursor.
 - **Command line interface** &mdash; Run your project from the terminal using macOS Terminal, iTerm, or the integrated terminal in your code editor.
 
-[Install dbt Core now!](/docs/local/install-dbt?version=1#get-started)
+[Install dbt Core now!](/docs/local/install-dbt?version=1#installation)
 
 ## Installation
 
