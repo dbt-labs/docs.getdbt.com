@@ -13,27 +13,35 @@ dbt enables data teams to transform data using analytics engineering best practi
 
 For the best local development experience, we recommend the <Constant name="fusion_engine" />. Built in Rust, <Constant name="fusion" /> delivers:
 
-- **Faster performance** &mdash; Up to 10x faster parsing, compilation, and execution
+- **Faster performance** &mdash; Up to 10x faster parsing, compilation, and execution.
 - **SQL comprehension** &mdash; Dialect-aware validation catches errors before they reach your warehouse.
 - **Column-level lineage** &mdash; Trace data flow across your entire project.
 
 [Install Fusion now!](/docs/local/install-dbt?version=2.0#get-started)
 
-### VS Code extension
+### dbt VS Code extension
 
-The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant name="fusion" />'s performance with powerful editor features:
+The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant name="fusion" />'s performance with powerful <Term id="lsp"/> editor features:
 
-- **IntelliSense** &mdash; Autocomplete for models, macros, and columns
-- **Inline errors** &mdash; See SQL errors as you type
-- **Hover insights** &mdash; View model definitions and column info without leaving your code
-- **Refactoring tools** &mdash; Rename models and columns across your project
+- **IntelliSense** &mdash; Autocomplete for models, macros, and columns.
+- **Inline errors** &mdash; See SQL errors as you type.
+- **Hover insights** &mdash; View model definitions and column info without leaving your code.
+- **Refactoring tools** &mdash; Rename models and columns across your project.
 
-This is the fastest way to get started with dbt locally. [Install the VS Code extension now!](/docs/local/install-dbt?version=2.0#get-started)
+This is the fastest way to get started with dbt locally.
 
+[Install Fusion with the dbt VS Code extension](/docs/local/install-dbt?version=2#get-started)
 
 ## dbt Core
 
-[<Constant name="core" />](/docs/local/install-dbt?version=1.11) is the original Python-based dbt engine. Choose dbt Core if you need to use one of our [community-maintained adapters](/docs/supported-data-platforms) that aren't yet supported by <Constant name="fusion" />, or if your workflow requires Python-based customizations.
+[<Constant name="core" />](/docs/local/install-dbt?version=1) is the original Python-based dbt engine. <Constant name="core" /> changed data transformation forever and includes a rich set of features:
+
+- **Apache License 2.0** &mdash; <Constant name="core" /> is open source now and forever.
+- **Community adapters** &mdash; An amazing community of contributors has built adapters for a vast [catalog of data warehouses](/docs/supported-data-platforms).
+- **Code editor support** &mdash; Build your dbt project in popular editors like VS Code or Cursor.
+- **Command line interface** &mdash; Run your project from the terminal using macOS Terminal, iTerm, or the integrated terminal in your code editor.
+
+[Install dbt Core now!](/docs/local/install-dbt?version=1.0#get-started)
 
 ## Get started
 
@@ -168,12 +176,6 @@ import AboutFusion from '/snippets/_about-fusion.md';
 <VersionBlock lastVersion="1.99">
 
 [<Constant name="core" />](https://github.com/dbt-labs/dbt-core) is an open-source project where you can develop from the command line and run your dbt project.
-
-To use <Constant name="core" />, your workflow generally looks like:
-
-1. **Build your dbt project in a code editor &mdash;** popular choices include VS Code and Atom.
-
-2. **Run your project from the command line &mdash;** macOS ships with a default Terminal program, however you can also use iTerm or the command line prompt within a code editor to execute dbt commands.
 
 :::info How we set up our computers for working on dbt projects
 

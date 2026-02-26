@@ -315,7 +315,7 @@
     },
     {
       "source": "/docs/core/connect-data-platform/about-core-connections",
-      "destination": "/docs/local/connect-data-platform/about-core-connections",
+      "destination": "/docs/local/connect-data-platform/about-dbt-connections",
       "permanent": true
     },
     {
@@ -2267,7 +2267,7 @@
     },
     {
       "source": "/docs/get-started/pip-install",
-      "destination": "/docs/local/pip-install",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {

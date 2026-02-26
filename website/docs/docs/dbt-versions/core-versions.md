@@ -6,106 +6,69 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-version-in-cloud"
 pagination_prev: null
 ---
 
-<Constant name="core" /> releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How <Constant name="core" /> uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 
+Learn about versioning for the <Constant name="core"/> engine (Python-based CLI). If you run the <Constant name="core"/> engine locally (for example, using `pip`), then this page is for you. <Constant name="core"/> releases follow [semantic versioning](https://semver.org/).
 
-:::tip Release Tracks keep you up to date, always
+If you're using <Constant name="dbt_platform" /> (including the <Constant name="cloud_cli"/>, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features before they’re available in <Constant name="core" />.
 
-_Did you know that you can always be working with the latest features and functionality?_ 
-
-With <Constant name="cloud" />, you can get early access to new functionality before it becomes available in <Constant name="core" /> and without the need of managing your own version upgrades. Refer to the [**Latest** release track](/docs/dbt-versions/cloud-release-tracks) setting for details.
-
+:::note
+If you want to use the <Constant name="fusion_engine"/>, locally or in <Constant name="dbt_platform"/>, then read [Get Started](/docs/local/install-dbt?version=2.0).
 :::
 
-dbt Labs provides different support levels for different versions, which may include new features, bug fixes, or security patches:
+If you manage your own <Constant name="core" /> versions locally, read on. <Constant name="core" /> releases follow [semantic versioning](https://semver.org/).
 
 <Snippet path="core-version-support" />
-
 
 <Snippet path="core-versions-table" />
 
 ### Further reading
 
-- To learn how you can use <Constant name="core" /> versions in <Constant name="cloud" />, see [Choosing a <Constant name="core" /> version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-- To learn about installing <Constant name="core" />, see "[How to install <Constant name="core" />](/docs/local/install-dbt)."
-- To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version).
+- [Choosing a <Constant name="core" /> version in <Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how you can use <Constant name="core" /> versions in <Constant name="cloud" />.
+- [How to install <Constant name="core" />](/docs/local/install-dbt): Learn about installing <Constant name="core" />.
+- [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version): Restrict your project to only work with a range of <Constant name="core" /> versions, or use the currently running version.
 
-## Version support prior to v1.0
+## End-of-life versions
 
-All <Constant name="core" /> versions released prior to 1.0 and their version-specific documentation have been deprecated. If upgrading to a currently supported version, reference our [best practices for upgrading](#best-practices-for-upgrading)
-
-## EOL version support 
-
-All <Constant name="core" /> minor versions that have reached end-of-life (EOL) will have no new patch releases. This means they will no longer receive any fixes, including for known bugs that have been identified. Fixes for those bugs will instead be made in newer minor versions that are still under active support.
-
-We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core) to continue receiving support. 
-
-All <Constant name="core" /> v1.0 and later are available in <Constant name="cloud" /> until further notice. In the future, we intend to align <Constant name="cloud" /> availability with <Constant name="core" /> ongoing support. You will receive plenty of advance notice before any changes take place.
-
+Once a <Constant name="core" /> version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
 
-### Minor versions
+dbt supports each minor version (for example, v1.8) for _one year_ from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
 
-Minor versions include new features and capabilities. They will be supported for one year from their initial release date. _dbt Labs is committed to this 12-month support timeframe._ Our mechanism for continuing to support a minor version is by releasing new patches: small, targeted bug fixes. Whenever we refer to a minor version, such as v1.0, we always mean its latest available patch release (v1.0.x).
+After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window. After the one-year window ends, the version reaches **end of life** and no longer receives patches.
 
 While a minor version is officially supported:
 - You can use it in <Constant name="cloud" />. For more on <Constant name="cloud" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - You can select it from the version dropdown on this website, to see documentation that is accurate for use with that minor version.
 
-### Ongoing patches
+For upcoming releases, refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones).
 
-During the 12-month support window, we will continue to release new patch versions that include fixes.
+## Upgrading
 
-**Active Support:** In the first few months after a minor version's initial release, we will patch it with "bugfix" releases. These will include fixes for regressions and net-new bugs that were present in the minor version's original release.
+Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
 
-**Critical Support:** When a newer minor version is available, we will transition the previous minor version into "Critical Support." Subsequent patches to that older minor version will be "security" releases only, limited to critical fixes related to security and installation.
-
-After a minor version reaches the end of its critical support period, one year after its initial release, no new patches will be released.
-
-### Future versions
-
-For the latest information about upcoming releases, including planned release dates and which features and fixes might be included, consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones) and [product roadmaps](https://github.com/dbt-labs/dbt-core/tree/main/docs/roadmap).
-
-## Best practices for upgrading
-
-Because of our new version practice, we've outlined best practices and expectations for dbt users to upgrade as we continue to release new versions of <Constant name="core" />.
-
-### Upgrading to new patch versions
-
-We expect users to upgrade to patches as soon as they're available. When we refer to a "minor version" of dbt Core, such as v1.0, we are always referring to the latest available patch release for that minor version. We encourage you to structure your development and production environments so that you can always install the latest patches of `dbt-core` and any adapter plugins. (Note that patch numbers may be different between dbt-core and plugins. [See below](#how-we-version-adapter-plugins) for an explanation.)
-
-### Upgrading to new minor versions
-
-During the official support period, minor versions will remain available in <Constant name="cloud" /> and the version dropdown on the docs site. While we do not expect users to immediately upgrade to newer minor versions as soon as they're available, there will always be some features and fixes only available for users of the latest minor version.
-
-### Trying prereleases
-
-All <Constant name="core" /> versions are available as _prereleases_ before the final release. "Release candidates" are available for testing, in production-like environments, two weeks before the final release. For minor versions, we also aim to release one or more "betas," which include new features and invite community feedback, 4+ weeks before the final release. It is in your interest to help us test prereleases—we need your help!
+dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
 
 ## How dbt Core uses semantic versioning
 
-Like many software projects, <Constant name="core" /> releases follow [semantic versioning](https://semver.org/), which defines three types of version releases.
+<Constant name="core" /> follows [semantic versioning](https://semver.org/):
 
-- **Major versions:** To date, <Constant name="core" /> has had one major version release: v1.0.0. When v2.0.0 is released, it will introduce new features, and functionality that has been announced for deprecation will stop working.
-- **Minor versions**, also called "feature" releases, include a mix of new features, behind-the-scenes improvements, and changes to existing capabilities that are **backwards compatible** with previous minor versions. They will not break code in your project that relies on documented functionality.
-- **Patch versions**, also called "bugfix" or "security" releases, include **fixes _only_**. These fixes could be needed to restore previous (documented) behavior, fix obvious shortcomings of new features, or offer critical fixes for security or installation issues. We are judicious about which fixes are included in patch releases, to minimize the surface area of changes.
+- **Major versions** (for example, v1 to v2) may include breaking changes. Deprecated functionality will stop working.
+- **Minor versions** (for example, v1.8 to v1.9) add features and are backwards compatible. They will not break project code that relies on documented functionality.
+- **Patch versions** (for example, v1.8.0 to v1.8.1) include fixes only: bug fixes, security fixes, or installation fixes.
 
 We are committed to avoiding breaking changes in minor versions for end users of dbt. There are two types of breaking changes that may be included in minor versions:
 
-- Changes to the Python interface for adapter plugins. These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes. For more information, refer to [Build, test, document, and promote adapters](/guides/adapter-creation) guide.
+- Changes to the Python interface for adapter plugins. These changes are relevant only to adapter maintainers, and they will be clearly communicated in documentation and release notes. For more information, refer to [Build, test, document, and promote adapters guide](/guides/adapter-creation).
+
 - Changes to metadata interfaces, including [artifacts](/docs/deploy/artifacts) and [logging](/reference/events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](/reference/node-selection/syntax#about-node-selection).
 
-### How we version adapter plugins
+### Adapter plugin versions
 
-When you use dbt, you use a combination of `dbt-core` and an adapter plugin specific to your database. You can see the current list in [Supported Data Platforms](/docs/supported-data-platforms). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
+dbt releases `dbt-core` and adapter plugins (such as `dbt-snowflake`) independently. Their minor and patch version numbers may not match, but they coordinate through the `dbt-adapters` interface so you won't get a broken experience. For example, `dbt-core==1.8.0` can work with `dbt-snowflake==1.9.0`.
 
-`dbt-core` and adapter plugins use the `dbt-adapters` interface to coordinate new features and behind-the-scenes changes. New adapter features are defined in `dbt-adapters` (which `dbt-core` will use). These features are opt-in, meaning they only impact adapters that explicitly implement them. This allows us to independently release adapters, `dbt-adapters`, and `dbt-core` without creating a broken experience for users.
+If you're building or maintaining an adapter, refer to the [adapter creation guide](/guides/adapter-creation) for details on the `dbt-adapters` interface.
 
-Unlike `dbt-core` versions before 1.8, the minor and patch version numbers might not match between `dbt-core` and the adapter plugin(s) you've installed. 
-
-For example, you might find you're using `dbt-core==1.8.0` with `dbt-snowflake==1.9.0`. Even though these don't have the same minor version, they can still work together as they both work with `dbt-adapters==1.8.0`. Patch releases can contain important bug or security fixes so it’s critical to stay up to date. 
-
-You can use the `dbt --version` command to see which versions you have installed:
+Run `dbt --version` to check your installed versions:
 
 ```
 $ dbt --version
@@ -117,9 +80,10 @@ Plugins:
   - snowflake: 1.9.0 - Up to date!
 ```
 
-You can see which version of the registered adapter that's being invoked in the [logs](/reference/global-configs/logs). Below is an example of the message in the `logs/dbt.log` file: 
+You can also find the registered adapter version in [logs](/reference/global-configs/logs). For example, in `logs/dbt.log`:
+
 ```
 [0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
 ```
 
-It's likely that newer patches have become available since then, so it's always important to check and make sure you're up to date!
+Refer to [Supported data platforms](/docs/supported-data-platforms) for the full list of adapters.

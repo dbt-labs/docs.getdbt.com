@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react"
+import React, { useState, useEffect, createContext, useCallback } from "react"
 import { versions } from '../../dbt-versions'
 import sanitizeHtml from "sanitize-html";
 
@@ -37,7 +37,8 @@ export const VersionContextProvider = ({ value = "", children }) => {
     window.history.replaceState({}, '', url.toString())
   }
 
-  useEffect(() => {
+  // Function to read version from URL and update state
+  const syncVersionFromUrl = useCallback(() => {
     const storageVersion = window.localStorage.getItem('dbtVersion')
     const { search } = window.location
     const urlParams = new URLSearchParams(search);
@@ -87,6 +88,34 @@ export const VersionContextProvider = ({ value = "", children }) => {
     // Always update URL to reflect current version
     updateUrlVersion(resolvedVersion)
   }, [])
+
+  // Initial sync on mount
+  useEffect(() => {
+    syncVersionFromUrl()
+  }, [syncVersionFromUrl])
+
+  // Listen for click events on links that might change the version
+  useEffect(() => {
+    const handleClick = (e) => {
+      // Find the closest anchor element
+      const anchor = e.target.closest('a')
+      if (!anchor) return
+
+      const href = anchor.getAttribute('href')
+      if (!href) return
+
+      // Check if the link has a version parameter
+      if (href.includes('version=')) {
+        // Use setTimeout to allow the navigation to complete first
+        setTimeout(() => {
+          syncVersionFromUrl()
+        }, 0)
+      }
+    }
+
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [syncVersionFromUrl])
 
   const updateVersion = (e) => {
     if(!e.target)

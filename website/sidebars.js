@@ -273,10 +273,10 @@ const sidebarSettings = {
               label: "Connect to your data platform",
               link: {
                 type: "doc",
-                id: "docs/local/connect-data-platform/about-core-connections",
+                id: "docs/local/connect-data-platform/about-dbt-connections",
               },
               items: [
-                "docs/local/connect-data-platform/about-core-connections",
+                "docs/local/connect-data-platform/about-dbt-connections",
                 "docs/local/connect-data-platform/bigquery-setup",
                 "docs/local/connect-data-platform/databricks-setup",
                 "docs/local/connect-data-platform/redshift-setup",
