@@ -35,7 +35,7 @@ For detailed configuration options, refer to [Connection profiles](/docs/local/p
 
 <VersionBlock lastVersion="1.99">
 
-## Supported data platforms
+## Supported Core data platforms
 
 <Constant name="core" /> connects to data platforms through adapters. Popular platforms include:
 
