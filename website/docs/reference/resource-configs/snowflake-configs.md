@@ -460,7 +460,7 @@ from {{ ref('my_source') }}
 
 </File>
 
-- If `overwrite_columns` is set, dbt generates SQL that explicitly lists columns in both the `INSERT` target and the `SELECT` projection:
+- When `overwrite_columns` is set, dbt generates SQL that explicitly lists columns in both the `INSERT` target and the `SELECT` projection:
 
   ```sql
   insert overwrite into my_schema.my_table (id, value, event_date)
@@ -468,7 +468,7 @@ from {{ ref('my_source') }}
   from staging_table
   ```
 
-- If `overwrite_columns` is not set, dbt currently defaults to `SELECT *`:
+- When `overwrite_columns` is not set, dbt currently defaults to `SELECT *`:
 
   ```sql
   insert overwrite into my_schema.my_table
