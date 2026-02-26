@@ -15,7 +15,7 @@ displayed_sidebar: "docs"
 
 ## Resources
 - <Constant name="core" /> v1.12 changelog (coming soon)
-- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
 ## What to know before upgrading
