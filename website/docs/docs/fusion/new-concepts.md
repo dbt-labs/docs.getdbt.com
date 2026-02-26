@@ -69,53 +69,45 @@ The following tables show how baseline mode expands what's available without req
 
 Before baseline mode existed, you had two choices: static analysis _off_ or _on_.
 
-| Feature | SA: off | SA: on |
+**VS Code extension features by static analysis configuration**
+
+| Feature | off | on |
 |---------|:-------:|:------:|
-| Go-to-definition (macros, refs, docs) | ✅ | ✅ |
+| Go-to-definition | ✅* | ✅ |
 | Table lineage | ✅ | ✅ |
 | YAML validation | ✅ | ✅ |
 | Render + preview SQL | ✅ | ✅ |
-| _...and more parsing-based features_ | ✅ | ✅ |
+| Unit tests | ❌ | ✅ |
 | Detect syntax errors | ❌ | ✅ |
 | Preview CTE results | ❌ | ✅ |
-| Go-to-definition (columns) | ❌ | ✅ |
-| Unit tests | ❌ | ✅ |
-| Intellisense / typeahead (Tier 1) | ❌ | ✅ |
 | Automatic refactor column names | ❌ | ✅ |
-| Dev-mode column lineage | ❌ | ✅ |
-| Efficient testing | ❌ | ✅ |
-| Classifiers / Governance | ❌ | ✅ |
-| Linting | ❌ | ✅ |
-| Formatting SQL | ❌ | ✅ |
-| Model overlap analysis | ❌ | ✅ |
-| Detect query/SQL errors (Tier 2) | ❌ | ✅ |
-| Intellisense / typeahead (Tier 2) | ❌ | ✅ |
+| Column lineage (local) | ❌ | ✅ |
+| Detect data type and function signature errors | ❌ | ✅ |
 
-#### With baseline (today + future)
+_*Column-level go-to-definition requires static analysis; macros, refs, and docs work without it._
+
+#### With baseline
 
 Baseline mode unlocks a meaningful set of features without requiring strict mode. We're also investing in moving more features into baseline over time.
 
-| Feature | SA: off | Baseline | Baseline (future) | SA: strict |
-|---------|:-------:|:--------:|:------------------:|:----------:|
-| Go-to-definition (macros, refs, docs) | ✅ | ✅ | ✅ | ✅ |
-| Table lineage | ✅ | ✅ | ✅ | ✅ |
-| YAML validation | ✅ | ✅ | ✅ | ✅ |
-| Render + preview SQL | ✅ | ✅ | ✅ | ✅ |
-| _...and more parsing-based features_ | ✅ | ✅ | ✅ | ✅ |
-| Detect syntax errors | ❌ | ✅ | ✅ | ✅ |
-| Preview CTE results | ❌ | ✅ | ✅ | ✅ |
-| Go-to-definition (columns) | ❌ | ✅ | ✅ | ✅ |
-| Unit tests | ✅ | ✅ | ✅ | ✅ |
-| Intellisense / typeahead (Tier 1) | ❌ | ❌ | ✅ | ✅ |
-| Automatic refactor column names | ❌ | ❌ | ✅ | ✅ |
-| Dev-mode column lineage | ❌ | ❌ | ✅ | ✅ |
-| Efficient testing | ❌ | ❌ | ✅ | ✅ |
-| Classifiers / Governance | ❌ | ❌ | ✅ | ✅ |
-| Linting | ❌ | ❌ | ✅ | ✅ |
-| Formatting SQL | ❌ | ❌ | ✅ | ✅ |
-| Model overlap analysis | ❌ | ❌ | ✅ | ✅ |
-| Detect query/SQL errors (Tier 2) | ❌ | ❌ | ❌ | ✅ |
-| Intellisense / typeahead (Tier 2) | ❌ | ❌ | ❌ | ✅ |
+**VS Code extension features by static analysis configuration**
+
+| Feature | off | baseline | strict |
+|---------|:-------:|:--------:|:----------:|
+| Go-to-definition | ✅* | ✅ | ✅ |
+| Table lineage | ✅ | ✅ | ✅ |
+| YAML validation | ✅ | ✅ | ✅ |
+| Render + preview SQL | ✅ | ✅ | ✅ |
+| Unit tests | ✅ | ✅ | ✅ |
+| Detect syntax errors | ❌ | ✅ | ✅ |
+| Preview CTE results | ❌ | ✅ | ✅ |
+| Automatic refactor column names | ❌ | ❌** | ✅ |
+| Column lineage (local) | ❌ | ❌** | ✅ |
+| Detect data type and function signature errors | ❌ | ❌ | ✅ |
+
+_*Column-level go-to-definition requires baseline; macros, refs, and docs work without it._
+
+_**Planned for baseline mode in a future release._
 
 :::tip CodeLens visibility
 The VS Code extension and dbt Platform Studio provide CodeLens even when static analysis is off, giving you visibility into which models have static analysis disabled and why.
