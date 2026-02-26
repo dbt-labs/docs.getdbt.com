@@ -6,7 +6,7 @@ id: install-pip-os-prereqs.md
 
 ---
 
-Your operating system may require pre-installation setup before installing <Constant name="core" /> with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of <Constant name="core" />](/docs/local/pip-install).
+Your operating system may require pre-installation setup before installing <Constant name="core" /> with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of <Constant name="core" />](/docs/local/dbt-install).
 
 ### CentOS
 
