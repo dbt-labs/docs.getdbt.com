@@ -19,9 +19,9 @@ For the best local development experience, we recommend the <Constant name="fusi
 
 [Install Fusion now!](/docs/local/install-dbt?version=2.0#get-started)
 
-### VS Code extension
+### dbt VS Code extension
 
-The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant name="fusion" />'s performance with powerful editor features:
+The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant name="fusion" />'s performance with powerful <Term id="lsp"/> editor features:
 
 - **IntelliSense** &mdash; Autocomplete for models, macros, and columns
 - **Inline errors** &mdash; See SQL errors as you type
