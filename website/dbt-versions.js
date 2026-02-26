@@ -119,10 +119,6 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
-    page: "docs/local/connect-data-platform/about-core-connections",
-    lastVersion: "1.99",
-  },
-  {
     page: "docs/local/connect-data-platform/connection-profiles",
     lastVersion: "1.99",
   },
