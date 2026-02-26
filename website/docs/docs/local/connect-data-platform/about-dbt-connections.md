@@ -8,11 +8,13 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt connects to your data platform to run SQL transformations against your data. The connection setup depends on which dbt engine you use &mdash;
+dbt connects to your data platform to run SQL transformations against your data. The connection setup depends on which dbt engine you use:
+- [<Constant name="fusion_engine" />](/docs/local/connect-data-platform/about-dbt-connections?version=2)
+- [<Constant name="core" />](/docs/local/connect-data-platform/about-dbt-connections?version=1)
 
 <VersionBlock firstVersion="2.0">
 
-## Supported data platforms
+## Supported Fusion data platforms
 
 The <Constant name="fusion_engine" /> includes built-in support for:
 
@@ -20,7 +22,6 @@ The <Constant name="fusion_engine" /> includes built-in support for:
 - [Databricks](/docs/local/connect-data-platform/databricks-setup)
 - [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup)
 - [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup)
-- [Salesforce Data Cloud](/docs/local/connect-data-platform/salesforce-data-cloud-setup)
 
 <Constant name="fusion" /> uses [ADBC (Arrow Database Connectivity)](https://arrow.apache.org/adbc/) drivers for high-performance connections to these platforms. No separate adapter installation is required.
 
