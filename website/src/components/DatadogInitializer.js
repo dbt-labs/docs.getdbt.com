@@ -26,14 +26,7 @@ function getDatadogConfig() {
 export function DatadogInitializer() {
   useEffect(() => {
     const datadogConfig = getDatadogConfig();
-    console.log("DEBUG: datadogConfig =", {
-      service: datadogConfig.service,
-      env: datadogConfig.env,
-      version: datadogConfig.version,
-      sessionSampleRate: datadogConfig.sessionSampleRate,
-      sessionReplaySampleRate: datadogConfig.sessionReplaySampleRate,
-    });
-
+  
     const initRUM = () => {
       if (isRumInitialized || !datadogConfig.applicationId || !datadogConfig.clientToken) return;
 
@@ -43,8 +36,6 @@ export function DatadogInitializer() {
 
     const disableRUM = () => {
       if (!isRumInitialized) return;
-
-      console.log("DEBUG: disabling RUM");
 
       // Clear any user-identifying context
       datadogRum.setGlobalContext({
@@ -63,8 +54,6 @@ export function DatadogInitializer() {
       const hasConsent =
         process.env.NODE_ENV === 'development' || hasPerformanceConsent();
 
-      console.log("DEBUG: hasConsent =", hasConsent);
-
       if (hasConsent) {
         initRUM();
       } else {
@@ -77,7 +66,6 @@ export function DatadogInitializer() {
 
     // 2. Listen for OneTrust updates (handles timing issue)
     const removeListener = onConsentChanged(() => {
-      console.log("DEBUG: consent changed");
       evaluateConsent();
     });
 
