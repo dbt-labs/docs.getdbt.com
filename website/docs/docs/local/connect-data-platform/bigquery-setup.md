@@ -136,7 +136,7 @@ Find BigQuery-specific configuration information in the [BigQuery adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/bigquery-setup?version=2.0" />
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/bigquery-setup?version=2" />
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
