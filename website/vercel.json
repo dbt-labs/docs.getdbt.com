@@ -2267,7 +2267,7 @@
     },
     {
       "source": "/docs/get-started/pip-install",
-      "destination": "/docs/local/pip-install",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
