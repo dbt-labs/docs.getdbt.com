@@ -98,7 +98,7 @@ The Redshift adapter supports the `query_group` session parameter, enabling dbt 
 
   ```sql
   -- models/a_default_group.sql
-  -- Runs under query_group = 'dbt_default' (from the profile)
+  -- Runs under query_group = 'QUERY_GROUP_NAME' (from the profile)
   select 1 as id
   ```
 
