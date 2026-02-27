@@ -110,7 +110,7 @@ from {{ ref('some_source_table') }}
 When `query_group` is configured, dbt issues a `SET query_group` statement in Redshift to apply the value at the session level.
 
 ```sql
-SET query_group TO 'query_group'
+SET query_group TO '<value>'
 ```
 
 </VersionBlock>
