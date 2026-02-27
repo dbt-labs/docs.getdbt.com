@@ -945,7 +945,12 @@
     },
     {
       "source": "/faqs/Troubleshooting/access_token_error",
-      "destination": "/faqs/Troubleshooting/auth-expired-error",
+      "destination": "/faqs/Troubleshooting/refresh-snowflake-oauth-credentials",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Troubleshooting/auth-expired-error",
+      "destination": "/faqs/Troubleshooting/refresh-snowflake-oauth-credentials",
       "permanent": true
     },
     {

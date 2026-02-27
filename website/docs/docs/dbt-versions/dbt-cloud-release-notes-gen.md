@@ -18,6 +18,73 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## February 25, 2026
+
+## New
+
+### Semantic Layer
+
+- **BigQuery Workload Identity Federation authentication for external OAuth**: You can now connect to BigQuery using Workload Identity Federation (WIF) with External OAuth, including Microsoft Entra ID-backed flows, for Semantic Layer queries. For setup instructions, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation).
+
+### Catalog
+
+- **Saved queries now ingested for lineage and governance**: Saved query definitions (including tags, exports, parameters, and lineage relationships) are now captured during ingestion so they can participate in Catalog lineage and governance workflows.
+
+## Enhancements
+
+### dbt platform
+
+- **System logs now surface warnings and errors**: Run step structured logs now show an indicator when system warnings or errors are present, making issues easier to spot during run triage.
+
+- **Region labels now use backend display names**: Account Settings now shows the backend-provided region display name for clearer, more accurate region labeling.
+
+- **SCIM create group UI change**: Changes to our UI to improve the experience of managing groups with SCIM enabled.
+ 
+- **Updated the post-invite message for SSO accounts**:  After a user accepts an invite, the UI now explains that they must log in using SSO to fully redeem the invite and access the account. This replaces the previous "Joined successfully" message and helps avoid confusion when users accept an invite but do not complete the SSO login flow.
+
+### Studio IDE and Copilot
+
+- **Improved crash recovery and not-found routing**: Studio IDE now catches unexpected render failures with a top-level error boundary and shows Not Found more reliably for unknown in-project routes.
+
+- **Improved navigation accessibility and semantics in Studio IDE**: The main navigation trigger area is now a navigation element with improved focus and labeling.
+
+- **Reduced shortcut conflicts with VS Code search**: When Visual Studio Code (VS Code) search is enabled, Studio IDE avoids unregistering Quick Open and suppresses conflicting command palette shortcuts.
+
+### Catalog and Insights Data
+
+- **More accurate source freshness outdated status in Catalog**: Source freshness Outdated status can now be computed at query time, improving freshness status filtering consistency.
+
+- **Improved search and lineage usability in Catalog**: Search results better support column-level navigation and very long queries show a clear validation error, and lineage visuals have improved alignment and reduced edge clutter.
+
+- **Improved cross-project lineage and function awareness in Catalog**: Lineage graph building now includes cross-project dependencies and supports function nodes as first-class lineage entities.
+
+### APIs, Identity, and Administration
+
+- **Project deletion now supported in Admin v2 and v3 Projects APIs**: Projects APIs now explicitly support DELETE with stricter permission checks.
+
+## Fixes
+
+### Semantic Layer
+
+- **Automatic token refresh for BigQuery Workload Identity Federation failures**: For WIF-authenticated BigQuery connections, the gateway now refreshes access tokens on common expiration failures and recycles pooled connections to reduce authentication outages.
+
+## Behavior Changes
+
+### Webhooks
+
+- **Updated job run event field presence and status normalization**: Webhook payloads now include `runFinishedAt` only for completed events and `runErroredAt` only for errored events; canceled runs no longer include `runCanceledAt`, and run status is normalized from Cancelled to Canceled. Also note that enabling JSON preserve order can change key ordering, so consumers should parse JSON rather than string-compare payloads.
+
+### Insights APIs
+
+- **Optional source freshness expiration windows**: Source freshness expiration windows can optionally derive from each source’s freshness criteria rather than a fixed window. You must enable in your deployment.
+
+### Deployment and Configuration
+
+- **Source ingestion may skip sources for extremely large manifests in Catalog**: For very large `manifest.json` files, ingestion may strip sources above a configurable threshold to prevent out of memory failures. Set `SOURCE_INGESTION_THRESHOLD=0` if you must always ingest sources regardless of size.
+
+- **Removed deprecated object storage settings in Studio IDE**: Deprecated settings `project_storage_bucket_name` and `project_storage_object_prefix` have been removed. Migrate to `object_storage_bucket_name` and `object_storage_object_prefix`.
+
+
 ## February 18, 2026
 
 ## New
@@ -306,7 +373,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **dbt platform: dbt version enforcement now project-aware**: dbt version “allowed version” checks now account for `project_id` across jobs and environments, including Application Programming Interface (API)-triggered runs, improving correctness for overrides and automatic mapping to allowed equivalents when possible.
 
-- **dbt platform: Connected app refresh tokens now last 7 days**: Refresh token expiration for connected app OAuth (Open Authorization (OAuth)) flows increased from 8 hours to 7 days, reducing re-authorization frequency.
+- **dbt platform: Connected app refresh tokens now last 7 days**: Refresh token expiration for connected app OAuth flows increased from 8 hours to 7 days, reducing re-authorization frequency.
 
 ### Studio IDE
 
