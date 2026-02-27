@@ -218,7 +218,7 @@ When you set your environment connection to the WIF configuration, you will then
 
 If you don't already have a job based on the deployment environment with a connection set up for WIF, you should create one now. Once you've configured it with the preferred settings, run the job.
 
-### 8. Configure Semantic Layer credentials { #8-configure-semantic-layer-credentials }
+### 8. Configure Semantic Layer credentials
 
 If you want to use WIF authentication for Semantic Layer queries, follow the steps in [Administer the Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl). When configuring your Semantic Layer credentials, select the connection with the WIF configuration you created in [step 5](#5-create-connections-in-dbt).
 
