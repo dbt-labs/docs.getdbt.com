@@ -143,6 +143,7 @@ Find Databricks-specific configuration information in the [Databricks adapter re
 
 <VersionBlock lastVersion="1.99">
 
+# Databricks setup
 
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/databricks-setup?version=2" />
 

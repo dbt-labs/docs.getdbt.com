@@ -189,6 +189,7 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 
 <VersionBlock lastVersion="1.99">
 
+# Snowflake setup
 
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" />
 
