@@ -4,7 +4,7 @@ id: "job-commands"
 description: "How to use dbt commands to set tasks for your dbt jobs."
 ---
 
-A <Constant name="cloud" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
+A <Constant name="cloud" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
 
 Each job allows you to:
 
@@ -63,7 +63,7 @@ The following examples highlight how you can customize the dbt compare command b
 - Exclude models based on tags for scenarios like when models share a common feature or function. Use the following command:
 
    ```sql 
-      --select state modified --exclude tag:tagname_a tag:tagname_b
+      --select state:modified --exclude tag:tagname_a tag:tagname_b
    ```
 - Include models that were directly modified and also those one step downstream using the `modified+1` selector. Use the following command:
   ```sql

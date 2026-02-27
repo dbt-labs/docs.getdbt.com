@@ -3,26 +3,26 @@ resource_types: [models]
 title: "static_analysis"
 description: "Use static_analysis config to control how the Fusion engine performs static SQL analysis for models."
 datatype: string
-default_value: on
+default_value: baseline
 sidebar_label: "static_analysis"
 ---
 
 :::info
 
-The `static_analysis` config is available in the <Constant name="fusion_engine"/> only. It isn't available in <Constant name="core" /> and will be ignored. To upgrade to <Constant name="fusion"/>, refer to [Install <Constant name="fusion"/>](/docs/fusion/install-fusion).
+The `static_analysis` config is available in the <Constant name="fusion_engine"/> only. It isn't available in <Constant name="core" /> and will be ignored. To upgrade to <Constant name="fusion"/>, refer to [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion).
 
 :::
 
 <Tabs>
 
-<TabItem value="dbt_project.yml" label="Project file">
+<TabItem value="dbt_project.yml" label="Project YAML file">
 
 <File name='dbt_project.yml'>
 
 ```yml
 models:
   [resource-path](/reference/resource-configs/resource-path):
-    +static_analysis: on | unsafe | off
+    +static_analysis: strict | baseline | off
 
 ```
 
@@ -30,7 +30,7 @@ models:
 
 </TabItem>
 
-<TabItem value="Property file">
+<TabItem value="Properties YAML file">
 
 <File name='models/filename.yml'>
 
@@ -38,18 +38,18 @@ models:
 models:
   - name: model_name
     [config](/reference/resource-properties/config):
-      static_analysis: on | unsafe | off
+      static_analysis: strict | baseline | off
 ```
 
 </File>
 </TabItem>
 
-<TabItem value="SQL config">
+<TabItem value="SQL file config">
 
 <File name='models/model_name.sql'>
 
 ```sql
-{{ config(static_analysis='on' | 'unsafe' | 'off') }}
+{{ config(static_analysis='strict' | 'baseline' | 'off') }}
 
 select 
   user_id,
@@ -65,13 +65,19 @@ from {{ ref('my_model') }}
 
 ## Definition
 
-You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your `dbt_project.yml` file, model YAML file, or in the `config` block of your model file. Refer to [rendering strategies](/docs/fusion/new-concepts#rendering-strategies) for more information on how the <Constant name="fusion_engine" /> renders models.
+You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [rendering strategies](/docs/fusion/new-concepts#rendering-strategies) for more information on how the <Constant name="fusion_engine" /> renders models.
 
 The following values are available for `static_analysis`:
 
-- `on`: Statically analyze SQL ahead-of-time (AOT). Default for non-introspective models, depends on AOT rendering.
-- `unsafe`: Statically analyze SQL just-in-time (JIT). The default for when a model (or any of its parents) uses introspective queries. JIT analysis still catches most SQL errors, but [analysis happens]( /docs/fusion/new-concepts#static-analysis-and-introspective-queries) after some upstream execution.
+- `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors. You can incrementally opt-in to stricter analysis over time.
+- `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis for this model and its descendants.
+
+:::caution Deprecated values
+
+The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
+
+:::
 
 A model is _only_ eligible for static analysis if all of its parents are also eligible.
 
@@ -83,7 +89,7 @@ You can override model-level configuration for a run using the following CLI fla
 
 ```bash
 dbt run --static-analysis off # disable static analysis for all models
-dbt run --static-analysis unsafe # use JIT analysis for all models
+dbt run --static-analysis baseline # use baseline analysis for all models
 ```
 
 See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).

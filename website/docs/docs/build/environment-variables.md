@@ -95,7 +95,9 @@ See the [Configure the dbt VS Code extension](/docs/configure-dbt-extension#set-
 
 ### Handling secrets
 
-While all environment variables are encrypted at rest in <Constant name="cloud" />, <Constant name="cloud" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in the UI, you can prefix the key with `DBT_ENV_SECRET`. This functionality is supported from `dbt v1.0` and on.
+While all environment variables are encrypted at rest in <Constant name="cloud" />, <Constant name="cloud" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in <Constant name="cloud" />, you can prefix the key with `DBT_ENV_SECRET`. 
+
+Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additional security controls. They are encrypted at rest using an encryption key (for example, AWS KMS when your deployment is hosted on AWS) and can only be accessed by decrypting them with that key. Decryption is restricted to specific flows where the value is required, such as when a job runs. Secret keys are never written to logs or error messages and are obfuscated in <Constant name="cloud" />, so they are not exposed in the UI or artifacts, and are only available to dbt at runtime as needed.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
 
@@ -103,13 +105,13 @@ While all environment variables are encrypted at rest in <Constant name="cloud" 
 
 ### Special environment variables
 
-<Constant name="cloud" /> has a number of pre-defined variables built in. Variables are set automatically and cannot be changed.
+<Constant name="cloud" /> has a number of pre-defined variables built in. Variables are set automatically and cannot be changed. This means that the order of precedence for overriding environment variables doesn't apply to these pre-defined variables at the project, environment, or job level.
 
 #### Studio IDE details
 
 The following environment variable is set automatically for the <Constant name="cloud_ide" />:
 
-- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
   - The variable changes when the branch is changed.
   - Doesn't require restarting the <Constant name="cloud_ide" /> after a branch change.
   - Currently not available in the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).

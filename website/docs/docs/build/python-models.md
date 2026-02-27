@@ -4,7 +4,7 @@ description: "Configure Python models to enhance your dbt project."
 id: "python-models"
 ---
 
-Note that only specific data platforms support `dbt-py` models. Check the [platform configuration pages](/reference/resource-configs/resource-configs) to confirm if Python models are supported. 
+Note that only specific data platforms support `dbt-py` models. Check the [platform configuration pages](/reference/resource-configs) to confirm if Python models are supported. 
 
 We encourage you to:
 - Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.
@@ -66,7 +66,7 @@ models:
 <!--- TODO: how to make this image preview bigger? --->
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/python-model-dag.png" title="SQL + Python, together at last" style="width:200%"/>
 
-The prerequisites for dbt Python models include using an adapter for a data platform that supports a fully featured Python runtime. In a dbt Python model, all Python code is executed remotely on the platform. None of it is run by dbt locally. We believe in clearly separating _model definition_ from _model execution_. In this and many other ways, you'll find that dbt's approach to Python models mirrors its longstanding approach to modeling data in SQL.
+The prerequisites for dbt Python models include using an adapter for a data platform that supports a fully featured Python runtime when using <Constant name="core" /> or <Constant name="fusion" /> engine. In a dbt Python model, all Python code is executed remotely on the platform. None of it is run by dbt locally. We believe in clearly separating _model definition_ from _model execution_. In this and many other ways, you'll find that dbt's approach to Python models mirrors its longstanding approach to modeling data in SQL.
 
 We've written this guide assuming that you have some familiarity with dbt. If you've never before written a dbt model, we encourage you to start by first reading [dbt Models](/docs/build/models). Throughout, we'll be drawing connections between Python models and SQL models, as well as making clear their differences.
 
@@ -181,7 +181,7 @@ def model(dbt, session):
 
 </File>
 
-There's a limit to how complex you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types) and dynamic configuration. Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the [`config` property](/reference/resource-properties/config) in a YAML file.
+There's a limit to how complex you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types) and dynamic configuration. Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the [`config` property](/reference/resource-properties/config) in a properties YAML file.
 
 #### Accessing project context
 
@@ -191,8 +191,9 @@ Out of the box, the `dbt` class supports:
 - Returning DataFrames referencing the locations of other resources: `dbt.ref()` + `dbt.source()`
 - Accessing the database location of the current model: `dbt.this()` (also: `dbt.this.database`, `.schema`, `.identifier`)
 - Determining if the current model's run is incremental: `dbt.is_incremental`
+- Accessing custom values stored in `meta`: `dbt.config.meta_get()`
 
-It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). The `dbt.config.get()` method supports dynamic access to configurations within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values for the conditional logic in your model, we require setting them through a dedicated YAML file config:
+It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). The `dbt.config.get()` method supports dynamic access to configurations within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values for the conditional logic in your model, we require setting them through a dedicated properties YAML file config:
 
 <File name='models/config.yml'>
 
@@ -227,6 +228,51 @@ def model(dbt, session):
 ```
 
 </File>
+
+#### Accessing custom meta values
+
+To store custom values, use the [`meta` config](/reference/resource-configs/meta). For example, if you have a model named `my_python_model` and you want to store custom values, you can do the following:
+
+<File name='models/schema.yml'>
+
+```yml
+
+models:
+  - name: my_python_model
+    config:
+      meta:
+        custom_value: "111"
+        another_value: "abc"
+```
+
+</File>
+
+Then access them in your Python model using the `dbt.config.meta_get()` method:
+
+<File name='models/my_python_model.py'>
+
+```python
+def model(dbt, session):
+    # Access custom values stored in meta directly
+    custom_value = dbt.config.meta_get("custom_value")
+    another_value = dbt.config.meta_get("another_value")
+    
+    # Use your custom values in your model logic
+    orders_df = dbt.ref("fct_orders")
+    ...
+```
+
+</File>
+
+:::tip Alternative approach
+
+You can also retrieve meta values using `dbt.config.get("meta")`, which returns the entire meta dictionary. When using this approach, handle the case where `meta` might not be configured:
+
+```python
+custom_value = dbt.config.get("meta", {}).get("custom_value")
+```
+
+:::
 
 #### Dynamic configurations
 
@@ -522,6 +568,10 @@ You can use the `@udf` decorator or `udf` function to define an "anonymous" func
 - [BigQuery DataFrames UDFs](https://cloud.google.com/bigquery/docs/use-bigquery-dataframes#custom-python-functions)
 - [PySpark functions: udf](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html)
 
+:::tip
+You can also define [SQL or Python UDFs](/docs/build/udfs) as first-class resources under `/functions` with a matching `YAML` file. dbt builds them as part of the DAG, and you reference them from SQL using `{{ function('my_udf') }}`. These UDFs are reusable across tools (BI, notebooks, SQL clients) because they live in your warehouse.
+:::
+
 <Tabs>
 
 <TabItem value="Snowpark">
@@ -626,14 +676,13 @@ def model(dbt, session):
 
 #### Code reuse
 
-Currently, Python functions defined in one dbt model can't be imported and reused in other models. This is something dbt Labs would like to support, so there are two patterns we're considering:
+To re-use a Python function across multiple dbt models, you can define [Python UDFs](/docs/build/udfs) under `/functions` with a matching YAML file. These UDFs live in your warehouse and can be reused across tools (BI, notebooks, SQL clients). 
 
-- Creating and registering **"named" UDFs** &mdash; This process is different across data platforms and has some performance limitations. For example, Snowpark supports [vectorized UDFs](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-batch.html) for pandas-like functions that you can execute in parallel.
-- **Private Python packages** &mdash; In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
+In the future, we're considering also adding support for Private Python packages. In addition to importing reusable functions from public PyPI packages, many data platforms support uploading custom Python assets and registering them as packages. The upload process looks different across platforms, but your code’s actual `import` looks the same.
+
 
 :::note ❓ dbt questions
 
-- Should dbt have a role in abstracting over UDFs? Should dbt support a new type of DAG node, `function`? Would the primary use case be code reuse across Python models or defining Python-language functions that can be called from SQL models?
 - How can dbt help users when uploading or initializing private Python assets? Is this a new form of `dbt deps`?
 - How can dbt support users who want to test custom functions? If defined as UDFs: "unit testing" in the database? If "pure" functions in packages: encourage adoption of `pytest`?
 

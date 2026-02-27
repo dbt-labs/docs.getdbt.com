@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {useWindowSize} from '@docusaurus/theme-common';
 import { useDoc } from "@docusaurus/plugin-content-docs/client";
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -30,12 +31,15 @@ import getElements from '../../../utils/get-html-elements';
 import useHashLink from '../../../utils/use-hash-link';
 import removeTrailingDashes from '../../../utils/remove-trailing-slashes';
 import CopyPage from '@site/src/components/copyPage';
+import StructuredData from '@site/src/components/StructuredData';
+import queryString from 'query-string';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
  */
 function useDocTOC() {
   const {frontMatter, toc, metadata} = useDoc();
+  const location = useLocation();
 
   // dbt Custom: If term has cta property set, show that cta
   const termCTA = frontMatter?.cta && frontMatter.cta
@@ -44,13 +48,30 @@ function useDocTOC() {
   // html markdown headings for current version. 
   const { version: dbtVersion } = useContext(VersionContext)
   const [currentToc, setCurrentToc] = useState(toc)
-  const [tocReady, setTocReady] = useState(true)
+  const [tocReady, setTocReady] = useState(false)
 
   async function fetchElements() {
+    // For guides pages, determine the active step and only show TOC items for that step
+    const isGuidesPage = window.location.pathname.includes('/guides/');
+    let headingsSelector = ".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6";
+    
+    if (isGuidesPage) {
+      // Hide TOC initially until the active step is determined
+      // This prevents the old step TOC from staying in place until the new step TOC is loaded
+      setTocReady(false)
+
+      // Get active step from URL params or localStorage
+      const queryParams = queryString.parse(window.location.search);
+      const locationPath = window.location.pathname;
+      const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(locationPath) : 1;
+      const activeStep = queryParams.step ? queryParams.step : activeStepLocal ? activeStepLocal : 1;
+      
+      // Only get headings from the active step wrapper
+      headingsSelector = `[data-step="${activeStep}"] h1, [data-step="${activeStep}"] h2, [data-step="${activeStep}"] h3, [data-step="${activeStep}"] h4, [data-step="${activeStep}"] h5, [data-step="${activeStep}"] h6`;
+    }
+    
     // get html elements
-    const headings = await getElements(
-      ".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6"
-    );
+    const headings = await getElements(headingsSelector);
 
     // Headings to remove from TOC
     const headingsToFilter = document.querySelectorAll(
@@ -132,8 +153,8 @@ function useDocTOC() {
   }
 
   useEffect(() => {
-      fetchElements()
-  }, [toc, dbtVersion])
+    fetchElements();
+  }, [toc, dbtVersion, location.search]);
 
   // end dbt Custom
 
@@ -179,24 +200,41 @@ export default function DocItemLayout({children}) {
 
   // dbt Custom
   // If the page has a search_weight value, apply that value
-  const {frontMatter} = useDoc();
+  const {frontMatter, metadata} = useDoc();
   const searchWeight = frontMatter?.search_weight && frontMatter.search_weight
-  
-  // Check if the current route contains /guides/
+
+  // Get site URL from Docusaurus config so we can build a canonical, fully-qualified URL
+  const { siteConfig } = useDocusaurusContext();
+
+  // Construct full URL for structured data
   const location = useLocation();
   const isGuidesRoute = location.pathname.includes('/guides/');
+  const siteUrl = siteConfig?.url || '';
+  const fullUrl = `${siteUrl}${location.pathname}${location.search}${location.hash}`;
 
-  
+  // Format date for structured data (use lastUpdatedAt if available)
+  const formatDate = (timestamp) => {
+    if (!timestamp) return undefined;
+    return new Date(timestamp).toISOString();
+  };
 
   return (
     <div className="row">
+      <StructuredData
+        title={frontMatter?.title}
+        description={frontMatter?.description || frontMatter?.hoverSnippet}
+        url={fullUrl}
+        date={formatDate(metadata?.lastUpdatedAt)}
+        tags={frontMatter?.tags || []}
+        totalTime={frontMatter?.time_to_complete}
+      />
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
           <div className={styles.copyPageContainer}>
             <DocBreadcrumbs />
-            <CopyPage dropdownRight={isGuidesRoute} />
+            <CopyPage dropdownRight={isGuidesRoute} pageUrl={fullUrl} />
             </div>
             <DocVersionBadge />
             {docTOC.mobile}

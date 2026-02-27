@@ -432,7 +432,7 @@ Refer to the following prop list for detailed explanations and examples:
 | ---- | ---- | ---- | ------- |
 | `title` | required | The title should be clear and explain an action the user should take or a product/feature. | `title: Studio IDE`
 | `body` | required | The body contains the actionable or informative text for the user. You can include `<a href="` link within the body of the text. However, if you do this, you must not include the `link` prop set as that'll override any `<a href's` within the body text.  | `body="The IDE is the easiest and most efficient way to develop dbt models`
-| `link` | optional | Add a link to the entire card component so when users click on the card, it'll trigger the link. Adding a link prop means it'll override any links within the body and if users click on the card, they'll be directed to the link set by the link prop. | `link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud`
+| `link` | optional | Add a link to the entire card component so when users click on the card, it'll trigger the link. Adding a link prop means it'll override any links within the body and if users click on the card, they'll be directed to the link set by the link prop. | `link="//docs/cloud/studio-ide/develop-in-studio`
 | `icon` | optional but recommended | You can add an icon to the card component by using any icons found in the [icons](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/static/img/icons) directory. <br /> * Icons are added in .svg format and you must add icons in two locations: website/static/img/icons and website/static/img/icons/white. This is so users can view the icons in dark or light mode on the docs.getdbt.com site. | ` icon="pencil-paper"/>` |
 
 The following is an example of a 4-card column:
@@ -443,7 +443,7 @@ The following is an example of a 4-card column:
 <Card
     title="Studio IDE" 
     body="The IDE is the easiest and most efficient way to develop dbt models." 
-    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    link="//docs/cloud/studio-ide/develop-in-studio" 
     icon="pencil-paper"/> 
     
 <Card  ## this card component has an <a href link within the body. Notice how there's no link prop set as it'll override any a href's within the body. 
@@ -454,13 +454,13 @@ The following is an example of a 4-card column:
 <Card
     title="New title"
     body="more text text"
-    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    link="//docs/cloud/studio-ide/develop-in-studio" 
     icon="pencil-paper"/>
 
 <Card
     title="New title"
     body="more text text"
-    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    link="//docs/cloud/studio-ide/develop-in-studio" 
     icon="pencil-paper"/>
 
 </div>

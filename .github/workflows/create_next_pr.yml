@@ -8,9 +8,9 @@ jobs:
     if: github.repository == 'dbt-labs/docs.getdbt.com'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # actions/checkout@v3
     - name: pull-request
-      uses: repo-sync/pull-request@v2
+      uses: repo-sync/pull-request@7e79a9f5dc3ad0ce53138f01df2fad14a04831c5 # repo-sync/pull-request@v2
       with:
         source_branch: "current"
         destination_branch: "next"

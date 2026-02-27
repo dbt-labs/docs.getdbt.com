@@ -24,12 +24,13 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 | [semantic models](/docs/build/semantic-models) | Semantic models define the foundational data relationships in [MetricFlow](/docs/build/about-metricflow) and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), enabling you to query metrics using a semantic graph. |
 | [saved queries](/docs/build/saved-queries) | Saved queries organize reusable queries by grouping metrics, dimensions, and filters into nodes visible in the dbt DAG. |
+| [user-defined functions](/docs/build/udfs) | User-defined functions (UDFs) let you create reusable custom functions in your warehouse, shareable across dbt, BI tools, data science workflows, and more. |
 
 When building out the structure of your project, you should consider these impacts on your organization's workflow:
 
 * **How would people run dbt commands** &mdash; Selecting a path
 * **How would people navigate within the project** &mdash; Whether as developers in the <Constant name="cloud_ide" /> or stakeholders from the docs
-* **How would people configure the models** &mdash; Some bulk configurations are easier done at the directory level so people don’t have to remember to do everything in a config block with each new model
+* **How would people configure the models** &mdash; Some bulk configurations are easier done at the directory level so people don't have to remember to do everything in a config block with each new model
 
 ## Project configuration
 Every dbt project includes a project configuration file called `dbt_project.yml`. It defines the directory of the dbt project and other project configurations.
@@ -69,9 +70,9 @@ To use the Project subdirectory option in <Constant name="cloud" />, follow thes
 
 3. Select **Edit** on the lower right-hand corner of the page.
 
-4. In the **Project subdirectory** field, add the name of the subdirectory. For example, if your dbt project files are located in a subdirectory called `<repository>/finance`, you would enter `finance` as the subdirectory. 
+4. In the **Project subdirectory** field, add the name of the subdirectory. For example, if your project YAML files are located in a subdirectory called `<repository>/finance`, you would enter `finance` as the subdirectory. 
 
-    * You can also reference nested subdirectories. For example, if your dbt project files are located in `<repository>/teams/finance`, you would enter `teams/finance` as the subdirectory. **Note**: You do not need a leading or trailing `/` in the Project subdirectory field. 
+    * You can also reference nested subdirectories. For example, if your project YAML files are located in `<repository>/teams/finance`, you would enter `teams/finance` as the subdirectory. **Note**: You do not need a leading or trailing `/` in the Project subdirectory field. 
 
 5. Click **Save** when you've finished.
 

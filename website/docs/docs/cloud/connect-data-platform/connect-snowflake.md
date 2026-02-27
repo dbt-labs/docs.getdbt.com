@@ -5,6 +5,8 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
+# Connect Snowflake <ProductCard text="Fusion compatible" />
+
 :::note
 
 <Constant name="cloud" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
@@ -24,7 +26,7 @@ The following fields are required when creating a Snowflake connection
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="cloud" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) area of their user profile. 
+This section describes the different authentication methods for connecting <Constant name="cloud" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
 
 ### Username and password with MFA
 
@@ -83,10 +85,6 @@ to authenticate <Constant name="cloud" /> to run queries against Snowflake on be
 
 ### Key pair
 
-
-
-
-
 **Available in:** Development environments,  Deployment environments
 
 The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a <Constant name="cloud" /> project.
@@ -114,6 +112,12 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 ```
 
    <Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
+
+#### Fusion key pair
+
+import FusionKeyPair from '/snippets/_fusion-key-pair.md';
+
+<FusionKeyPair />
 
 ### Snowflake OAuth
 

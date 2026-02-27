@@ -1,10 +1,29 @@
 If you run into any issues, check out the troubleshooting section below.
 
-<Expandable alt_header="How to create a .dbt directory in root and move config files">
+<Expandable alt_header="How to create a .dbt directory in root and move dbt_cloud.yml file">
 
 import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
 <DbtDirectoryFaq />
+
+</Expandable>
+
+<Expandable alt_header="I can't see the lineage tab in Cursor">
+
+If you're using the dbt VS Code extension in Cursor, the lineage tab works best in Editor mode and doesn't render in Agent mode. If you're in Agent mode and the lineage tab isn't rendering, just switch to Editor mode to view your project's table and column lineage.
+</Expandable>
+
+<Expandable alt_header="The extension gets stuck in a loading state">
+
+If the extension is attempting to activate during startup and locks into a permanent loading state, check that:
+- Your dbt VS Code extension is on the latest version.
+- Your IDE is on the latest version.
+- You have a valid `dbt_cloud.yml` file configured and in the [correct location](#register-with-dbt_cloudyml).
+
+If you're still experiencing issues, try these steps before contacting dbt Support:
+- Delete and download a new copy of your `dbt_cloud.yml` file.
+- Delete and reinstall the dbt VS Code extension.
+
 
 </Expandable>
 

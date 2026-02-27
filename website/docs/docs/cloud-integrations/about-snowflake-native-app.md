@@ -4,6 +4,8 @@ id: "snowflake-native-app"
 description: "An overview of the dbt Snowflake Native App for dbt accounts"
 pagination_prev: null
 pagination_next: "docs/cloud-integrations/set-up-snowflake-native-app"
+unlisted: true
+
 ---
 
 # About the dbt Snowflake Native App <Lifecycle status='preview' />
@@ -11,7 +13,7 @@ pagination_next: "docs/cloud-integrations/set-up-snowflake-native-app"
 The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framework and Snowpark Container Services &mdash; extends your <Constant name="cloud" /> experience into the Snowflake user interface. You'll be able to access these three experiences with your Snowflake login: 
 
 - **<Constant name="explorer" />** &mdash; An embedded version of [<Constant name="explorer" />](/docs/explore/explore-projects) 
-- **Ask dbt** &mdash; A dbt-assisted chatbot, powered by [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), OpenAI, and Snowflake Cortex
+- **Copilot** &mdash; A dbt-assisted chatbot, powered by [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), OpenAI, and Snowflake Cortex
 - **Orchestration observability** &mdash; A view into the [job run history](/docs/deploy/run-visibility) and sample code to create Snowflake tasks that trigger [deploy jobs](/docs/deploy/deploy-jobs). 
 
 These experiences enable you to extend what's been built with <Constant name="cloud" /> to users who have traditionally worked downstream from the dbt project, such as BI analysts and technical stakeholders. 
@@ -24,9 +26,9 @@ There are three tools connected to the operation of the dbt Snowflake Native App
 
 | Tool                               | Description |
 |------------------------------------|-------------|
-| Consumer’s Snowflake account       | The location of where the Native App is installed, powered by Snowpark Container Services. <br /><br /> The Native App makes calls to the <Constant name="cloud" /> APIs and Datadog APIs (for logging) using [Snowflake's external network access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview). <br /><br />To power the **Ask dbt** chatbot, the <Constant name="semantic_layer" /> accesses the Cortex LLM to execute queries and generate text based on the prompt. This is configured when the user sets up the <Constant name="semantic_layer" /> environment. | 
+| Consumer’s Snowflake account       | The location of where the Native App is installed, powered by Snowpark Container Services. <br /><br /> The Native App makes calls to the <Constant name="cloud" /> APIs and Datadog APIs (for logging) using [Snowflake's external network access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview). <br /><br />To power the **Copilot** chatbot, the <Constant name="semantic_layer" /> accesses the Cortex LLM to execute queries and generate text based on the prompt. This is configured when the user sets up the <Constant name="semantic_layer" /> environment. | 
 | dbt product Snowflake account | The location of where the Native App application package is hosted and then distributed into the consumer account. <br /><br />The consumer's event table is shared to this account for application monitoring and logging. |
-| Consumer’s <Constant name="cloud" /> account       | The Native App interacts with the <Constant name="cloud" /> APIs for metadata and processing <Constant name="semantic_layer" /> queries to power the Native App experiences. <br /> <br /> The <Constant name="cloud" /> account also calls the consumer Snowflake account to utilize the warehouse to execute dbt queries for orchestration and the Cortex LLM Arctic to power the **Ask dbt** chatbot. |
+| Consumer’s <Constant name="cloud" /> account       | The Native App interacts with the <Constant name="cloud" /> APIs for metadata and processing <Constant name="semantic_layer" /> queries to power the Native App experiences. <br /> <br /> The <Constant name="cloud" /> account also calls the consumer Snowflake account to utilize the warehouse to execute dbt queries for orchestration and the Cortex LLM Arctic to power the **Copilot** chatbot. |
 
 The following diagram provides an illustration of the architecture:
 

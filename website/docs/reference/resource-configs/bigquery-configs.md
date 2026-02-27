@@ -558,6 +558,12 @@ The `incremental_strategy` config can be set to one of the following values:
 - `insert_overwrite`
 - [`microbatch`](/docs/build/incremental-microbatch)
 
+### Change history
+
+The `enable_change_history` parameter enables [BigQuery's change history feature](https://cloud.google.com/bigquery/docs/change-history) which tracks changes made to a BigQuery table. When enabled, you can use the change history to audit and debug the behavior of your incremental models. 
+
+`enable_change_history` is set to `<boolean>` values.
+
 ### Performance and cost
 
 The operations performed by dbt while building a BigQuery incremental model can
@@ -864,7 +870,7 @@ with the following configuration parameters:
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'SQL file config', value: 'config', },
   ]
 }>
 
@@ -1191,11 +1197,11 @@ The BigQuery Python models also have the following additional configuration para
 | `enable_list_inference` | `<boolean>` | no       | `True`    | `True`, `False`  |
 | `intermediate_format`   | `<string>`  | no       | `parquet` | `parquet`, `orc` |
 | `submission_method`     | `<string>`  | no       | ``        | `serverless`, `bigframes`, `cluster` |
-| `notebook_template_id`  | `<Integer>` | no       | ``        | `<NOTEBOOK RUNTIME TEMPLATE_ID>` |
+| `notebook_template_id`  | `<integer>` | no       | ``        | `<NOTEBOOK RUNTIME TEMPLATE_ID>` |
 | `compute_region`        | `<string>`  | no       | ``        | `<COMPUTE_REGION>` |
 | `gcs_bucket`            | `<string>`  | no       | ``        | `<GCS_BUCKET>` |
 | `packages`              | `<string>`  | no       | ``        | `['numpy<=1.1.1', 'pandas', 'mlflow']` |
-| `enable_change_history` | `<boolean>` | no       | ``        | `True`, `False`   |
+| `timeout`               | `<integer>` | no       | ``        | `<timeout_in_seconds>` |
 
 - The `enable_list_inference` parameter
   - The `enable_list_inference` parameter enables a PySpark data frame to read multiple records in the same operation. By default, this is set to `True` to support the default `intermediate_format` of `parquet`.
@@ -1215,8 +1221,9 @@ The BigQuery Python models also have the following additional configuration para
 - The `gcs_bucket` parameter
   - The `gcs_bucket` parameter specifies the GCS bucket used for storing artifacts for the job.
 
-- The `enable_change_history` parameter
-  - The `enable_change_history` parameter enables [BigQuery's change history feature](https://cloud.google.com/bigquery/docs/change-history) which tracks changes made to a BigQuery table. When enabled, you can use the change history to audit and debug the behavior of your incremental models.
+- The `timeout` parameter
+  - The `timeout` parameter specifies the maximum execution time in seconds for the Python model. This is particularly useful for BigFrames models that may require longer execution times for complex data processing or machine learning workloads. If not specified, the model will use the default timeout configured for the execution environment.
+
 
 **Related docs:**
 

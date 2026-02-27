@@ -93,7 +93,7 @@ The following table outlines the configurations available for snapshots:
 
 To add a snapshot to your project follow these steps. For users on versions 1.8 and earlier, refer to [Legacy snapshot configurations](/reference/resource-configs/snapshots-jinja-legacy). 
 
-1. Create a YAML file in your `snapshots` directory: `snapshots/orders_snapshot.yml` and add your configuration details. You can also configure your snapshot from your `dbt_project.yml` file ([docs](/reference/snapshot-configs)).
+1. Create a properties YAML file in your `snapshots` directory: `snapshots/orders_snapshot.yml` and add your configuration details. You can also configure your snapshot from your project YAML file (`dbt_project.yml`) ([docs](/reference/snapshot-configs)).
 
     <File name='snapshots/orders_snapshot.yml'>
 
@@ -112,16 +112,30 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
     ```
     </File>
 
-2. Since snapshots focus on configuration, the transformation logic is minimal. Typically, you'd select all data from the source. If you need to apply transformations (like filters, deduplication), it's best practice to define an ephemeral model and reference it in your snapshot configuration.
+2. (Optional) Apply transformations using an ephemeral model. By default, snapshots reference a source directly (as shown in the YAML in the previous step). If you need to apply transformations (such as filtering or deduplication), define an ephemeral model first to apply those transformations, and reference it in the snapshot relation field instead of calling `source()` directly.
 
-    <File name="models/ephemeral_orders.sql" >
-
-    ```yaml
-    {{ config(materialized='ephemeral') }}
-
-    select * from {{ source('jaffle_shop', 'orders') }}
-    ```
-    </File>
+      For example, here's an ephemeral model:
+    
+      <File name="models/ephemeral_orders.sql" >
+    
+      ```sql
+      {{ config(materialized='ephemeral') }}
+    
+      select * from {{ source('jaffle_shop', 'orders') }}
+      ```
+      </File>
+    
+      This is how to reference the ephemeral model in the `relation` field:
+       
+      <File name='snapshots/orders_snapshot.yml'>
+    
+      ```yaml
+        snapshots:
+          - name: orders_snapshot
+            relation: ref('ephemeral_orders')
+            ... rest of config...
+      ```
+      </File>
 
 3. Check whether the result set of your query includes a reliable timestamp column that indicates when a record was last updated. For our example, the `updated_at` column reliably indicates record changes, so we can use the `timestamp` strategy. If your query result set does not have a reliable timestamp, you'll need to instead use the `check` strategy — more details on this below.
 
@@ -383,7 +397,7 @@ The resulting table will look like this:
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
-In <Constant name="core" /> v1.9+ (or available sooner in [the "Latest" release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks)):
+In <Constant name="core" /> v1.9+ (or available sooner in [the **Latest** release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks)):
 - These column names can be customized to your team or organizational conventions using the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
 - Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date such as `9999-12-31`). By default, this value is `NULL`. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table.
 - Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track deleted records as new rows with the `dbt_is_deleted` meta field when using the `hard_deletes='new_record'` field.

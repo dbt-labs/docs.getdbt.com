@@ -136,7 +136,7 @@ There are two ways to connect <Constant name="cloud" /> to Snowflake. The first 
 
 Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/cloud/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
-1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+1. On the left sidebar of the Snowflake UI, go to **Admin > Partner Connect**. Find the dbt tile under the **Data Integration** section or search for dbt in the search bar. Click the tile to connect to dbt.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" width="60%" title="Snowflake Partner Connect Box" />
 
@@ -217,7 +217,7 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 <Snippet path="tutorial-managed-repo" />
 
 ### Initialize your dbt project
-This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
+This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" /> using the <Constant name="cloud_ide" />:
 
@@ -299,7 +299,7 @@ sources:
    id as customer_id,
    first_name,
    last_name
-from {{ source('jaffle_shop', 'customers') }}
+  from {{ source('jaffle_shop', 'customers') }}
 ```
 
 </File>
@@ -436,57 +436,17 @@ select * from final
 
 </File>
 
-5. In your main directory, create the file `packages.yml`.
-6. Copy the following text into the file and click **Save**.
+5. Create a MetricFlow time spine model by following the [MetricFlow time spine guide](/guides/mf-time-spine?step=1). This guide walks you through creating both the SQL model and YAML configuration required for time-based metric calculations.
 
-<File name='packages.yml'>
-
-```sql
-packages:
- - package: dbt-labs/dbt_utils
-   version: 1.1.1
-```
-
-</File>
-
-7. In the `models` directory, create the file `metrics/metricflow_time_spine.sql` in your main directory.
-8. Copy the following query into the file and click **Save**.
-
-<File name='models/metrics/metricflow_time_spine.sql'>
-
-```sql
-{{
-   config(
-       materialized = 'table',
-   )
-}}
-with days as (
-   {{
-       dbt_utils.date_spine(
-           'day',
-           "to_date('01/01/2000','mm/dd/yyyy')",
-           "to_date('01/01/2027','mm/dd/yyyy')"
-       )
-   }}
-),
-final as (
-   select cast(date_day as date) as date_day
-   from days
-)
-select * from final
-
-```
-
-</File>
-
-9. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run message and also see in the run details that dbt has successfully built five models.
+6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run message and also see in the run details that dbt has successfully built your models.
 
 ## Create semantic models
 
 In this section, you'll learn about [semantic model](/guides/sl-snowflake-qs?step=6#about-semantic-models), [their components](/guides/sl-snowflake-qs?step=6#semantic-model-components), and [how to configure a time spine](/guides/sl-snowflake-qs?step=6#configure-a-time-spine).
 
-
 ### About semantic models
+
+<VersionBlock lastVersion="1.99">
 
 [Semantic models](/docs/build/semantic-models) contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
@@ -519,7 +479,48 @@ semantic_models:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+[Semantic models](/docs/build/semantic-models) contain many object types (such as entities, simple metrics, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
+
+- Each semantic model will be 1:1 with a dbt SQL model.
+- Each semantic model will contain (at most) 1 primary or natural entity.
+- Each semantic model will contain zero, one, or many foreign or unique entities used to connect to other entities.
+- Each semantic model may also contain dimensions, simple metrics, and metrics. This is what actually gets fed into and queried by your downstream BI tool.
+
+In the following steps, semantic models enable you to define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and simple metrics (for data aggregations).
+
+1. In the `models` directory, create a new file `fct_orders.yml`.
+
+:::tip 
+Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
+:::
+
+2. Add the following code to that newly created file:
+
+<File name='models/fct_orders.yml'>
+
+```yaml
+models:
+  - name: fct_orders
+    description: |
+      Order fact table. This table's grain is one row per order.
+    semantic_model:
+      enabled: true
+      name: orders
+      
+    agg_time_dimension: order_date
+```
+
+</File>
+
+</VersionBlock>
+
 ### Semantic model components
+
+<VersionBlock lastVersion="1.99">
 
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
@@ -527,12 +528,25 @@ The following sections explain [dimensions](/docs/build/dimensions), [entities](
 - [Dimensions](#dimensions) categorize and filter data, making it easier to organize.
 - [Measures](#measures) calculates data, providing valuable insights through aggregation.
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [simple metrics](/docs/build/metrics-overview#simple-metrics) in more detail, showing how they each play a role in semantic models.
+
+- [Entities](#entities) act as unique identifiers (like ID columns) that link data together from different tables.
+- [Dimensions](#dimensions) categorize and filter data, making it easier to organize.
+- [Simple metrics](#simple-metrics) calculates data using an aggregation function, providing valuable insights through aggregation.
+
+</VersionBlock>
 
 ### Entities
 
 [Entities](/docs/build/semantic-models#entities) are a real-world concept in a business, serving as the backbone of your semantic model. These are going to be ID columns (like `order_id`) in our semantic models. These will serve as join keys to other semantic models.
 
 Add entities to your `fct_orders.yml` semantic model file:
+
+<VersionBlock lastVersion="1.99">
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -555,12 +569,43 @@ semantic_models:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<File name='models/fct_orders.yml'>
+
+```yaml
+models:
+  - name: fct_orders
+    semantic_model:
+      enabled: true
+      name: orders
+      
+    agg_time_dimension: order_date
+    
+    columns:
+      # Entities
+      - name: order_id
+        entity:
+          type: primary
+      - name: customer_id
+        entity:
+          name: customer
+          type: foreign
+```
+
+</File>
+
+</VersionBlock>
+
 ### Dimensions
 
-[Dimensions](/docs/build/semantic-models#entities) are a way to group or filter information based on categories or time. 
+[Dimensions](/docs/build/semantic-models#dimensions) are a way to group or filter information based on categories or time. 
 
 Add dimensions to your `fct_orders.yml` semantic model file:
 
+<VersionBlock lastVersion="1.99">
 <File name='models/metrics/fct_orders.yml'>
 
 ```yaml
@@ -586,6 +631,43 @@ semantic_models:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<File name='models/fct_orders.yml'>
+
+```yaml
+models:
+  - name: fct_orders
+    semantic_model:
+      enabled: true
+      name: orders
+      
+    agg_time_dimension: order_date
+    
+    columns:
+      # Entities
+      - name: order_id
+        entity:
+          type: primary
+      - name: customer_id
+        entity:
+          name: customer
+          type: foreign
+      # Newly added - Dimensions      
+      - name: order_date
+        granularity: day
+        dimension:
+          type: time
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
 
 ### Measures
 
@@ -638,14 +720,82 @@ semantic_models:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+### Simple metrics
+
+[Simple metrics](/docs/build/simple) perform an aggregation (like `sum`, `count`, or `average`, and so on) on a single field in your model. They replace the concept of "measures" in previous versions. To define more advanced metrics, refer to [Define metrics and add a second semantic model](/guides/sl-snowflake-qs?step=10).
+
+Add simple metrics to your `fct_orders.yml` model file:
+
+<File name='models/fct_orders.yml'>
+
+```yaml
+models:
+  - name: fct_orders
+    semantic_model:
+      enabled: true
+      name: orders
+      
+    agg_time_dimension: order_date
+    
+    columns:
+      # Entities
+      - name: order_id
+        entity:
+          type: primary
+      - name: customer_id
+        entity:
+          name: customer
+          type: foreign
+      # Dimensions      
+      - name: order_date
+        granularity: day
+        dimension:
+          type: time
+      - name: amount
+        dimension:
+          type: categorical
+          
+    # Newly added - Simple metrics
+    metrics:
+      - name: order_total
+        description: The total amount for each order including taxes
+        type: simple
+        label: Order total
+        agg: sum
+        expr: amount
+      - name: order_count
+        type: simple
+        label: Order count
+        agg: sum
+        expr: 1
+      - name: customers_with_orders
+        description: Distinct count of customers placing orders
+        type: simple
+        label: Customers with orders
+        agg: count_distinct
+        expr: customer_id
+      - name: order_value_p99
+        type: simple
+        label: Order value P99
+        agg: percentile
+        expr: amount
+        percentile: 99.0
+        percentile_type: discrete
+```
+
+</File>
+
+</VersionBlock>
+
 ### Configure a time spine
 
 To ensure accurate time-based aggregations, you must configure a [time spine](/docs/build/metricflow-time-spine). The time spine allows you to have accurate metric calculations over different time granularities.
 
-1. Add a time spine model to your project at whichever granularity needed for your metrics (like daily or hourly).
-2. Configure each time spine in a YAML file to define how MetricFlow recognizes and uses its columns. Follow the instructions in [Configuring time spine in YAML](/docs/build/metricflow-time-spine#configuring-time-spine-in-yaml) documenation.
-
-For a step-by-step guide, refer to [MetricFlow time spine guide](/guides/mf-time-spine?step=1).
+Follow the [MetricFlow time spine guide](/guides/mf-time-spine?step=1) for complete step-by-step instructions on creating and configuring your time spine model. This guide provides the current best practices and avoids deprecated configurations.
 
 ## Define metrics and add a second semantic model
 
@@ -658,18 +808,20 @@ In this section, you will [define metrics](#define-metrics) and [add a second se
 There are different types of metrics you can configure:
 
 - [Conversion metrics](/docs/build/conversion) &mdash; Track when a base event and a subsequent conversion event occur for an entity within a set time period.
-- [Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics) &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you must create the time spine model before you add cumulative metrics.
+- [Cumulative metrics](/docs/build/cumulative) &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you must create the time spine model before you add cumulative metrics.
 - [Derived metrics](/docs/build/metrics-overview#derived-metrics) &mdash; Allows you to do calculations on top of metrics.
-- [Simple metrics](/docs/build/metrics-overview#simple-metrics) &mdash; Directly reference a single measure without any additional measures involved.
+- [Simple metrics](/docs/build/metrics-overview#simple-metrics) &mdash; Directly reference a single column expression within a semantic model, without any additional columns involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 - [Ratio metrics](/docs/build/metrics-overview#ratio-metrics) &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
-Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics:
+Once you've created your semantic models, it's time to start referencing those <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0">simple metrics</VersionBlock> you made to create some metrics:
 
-1. Add metrics to your `fct_orders.yml` semantic model file:
+1. Add metrics to your `fct_orders.yml` file:
 
 :::tip 
 Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
 :::
+
+<VersionBlock lastVersion="1.99">
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -755,7 +907,8 @@ metrics:
     type_params:
       measure:
         name: order_total
-      grain_to_date: month
+      cumulative_type_params:
+        grain_to_date: month
   # Derived metric
   - name: "pct_of_orders_that_are_large"
     label: "pct_of_orders_that_are_large"
@@ -770,16 +923,113 @@ metrics:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<File name='models/fct_orders.yml'>
+
+```yaml
+models:
+  - name: fct_orders
+    semantic_model:
+      enabled: true
+      name: orders
+      
+    agg_time_dimension: order_date
+    
+    columns:
+      - name: order_id
+        entity:
+          type: primary
+      - name: customer_id
+        entity:
+          name: customer
+          type: foreign
+      - name: order_date
+        granularity: day
+        dimension:
+          type: time
+      - name: amount
+        dimension:
+          type: categorical
+          
+    metrics:
+      # Simple type metrics
+      - name: order_total
+        description: Sum of orders value
+        type: simple
+        label: Order total
+        agg: sum
+        expr: amount
+      - name: order_count
+        description: Number of orders
+        type: simple
+        label: Order count
+        agg: sum
+        expr: 1
+      - name: customers_with_orders
+        description: Distinct count of customers placing orders
+        type: simple
+        label: Customers with orders
+        agg: count_distinct
+        expr: customer_id
+      - name: large_orders
+        description: Count of orders with order total over 20
+        type: simple
+        label: Large orders
+        agg: sum
+        expr: 1
+        filter: |
+          {{ Dimension('order_id__amount') }} >= 20
+      # Ratio type metric
+      - name: avg_order_value
+        label: Average order value
+        description: Average value of each order
+        type: ratio
+        numerator: order_total
+        denominator: order_count
+      # Cumulative type metrics
+      - name: cumulative_order_amount_mtd
+        label: Cumulative order amount MTD
+        description: The month to date value of all orders
+        type: cumulative
+        grain_to_date: month
+        input_metric: order_total
+      # Derived metric
+      - name: pct_of_orders_that_are_large
+        label: Percent of orders that are large
+        description: Percent of orders that are large
+        type: derived
+        expr: large_orders / order_count
+        input_metrics:
+          - name: large_orders
+          - name: order_count
+```
+
+</File>
+
+</VersionBlock>
+
 ### Add second semantic model to your project
 
+<VersionBlock lastVersion="1.99">
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, measures, and metrics.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, and metrics.
+</VersionBlock>
 
 Let’s expand your project's analytical capabilities by adding another semantic model in your other marts model, such as: `dim_customers.yml`.
 
 After setting up your orders model:
 
-1. In the `metrics` sub-directory, create the file `dim_customers.yml`.
-2. Copy the following query into the file and click **Save**.
+1. Create the file `dim_customers.yml`.
+2. Copy the following code into the file and click **Save**.
+
+<VersionBlock lastVersion="1.99">
 
 <File name='models/metrics/dim_customers.yml'>
 
@@ -831,6 +1081,73 @@ metrics:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+<File name='models/dim_customers.yml'>
+
+```yaml
+models:
+  - name: dim_customers
+    semantic_model:
+      enabled: true
+      name: customers
+      
+    agg_time_dimension: most_recent_order_date
+    
+    columns:
+      # Entities
+      - name: customer_id
+        entity:
+          name: customer
+          type: primary
+      # Dimensions
+      - name: first_name
+        dimension:
+          name: customer_name
+          type: categorical
+      - name: first_order_date
+        granularity: day
+        dimension:
+          type: time
+      - name: most_recent_order_date
+        granularity: day
+        dimension:
+          type: time
+      - name: number_of_orders
+        dimension:
+          type: categorical
+      - name: lifetime_value
+        dimension:
+          type: categorical
+          
+    # Metrics
+    metrics:
+      - name: customers_with_orders
+        label: Customers with orders
+        description: Unique count of customers placing orders
+        type: simple
+        agg: count_distinct
+        expr: customer_id
+      - name: count_lifetime_orders
+        description: Total count of orders per customer
+        type: simple
+        label: Lifetime orders
+        agg: sum
+        expr: number_of_orders
+      - name: lifetime_spend
+        description: Gross customer lifetime spend inclusive of taxes
+        type: simple
+        label: Lifetime spend
+        agg: sum
+        expr: lifetime_value
+```
+
+</File>
+
+</VersionBlock>
 
 This semantic model uses simple metrics to focus on customer metrics and emphasizes customer dimensions like name, type, and order dates. It uniquely analyzes customer behavior, lifetime value, and order patterns.
 
@@ -999,7 +1316,7 @@ This section will guide you on how to use the Sigma integration to query your me
 ```sql
 select * from
   {{ semantic_layer.query (
-    metrics = ['order_total', 'order_count', 'large_orders', 'customers_with_orders', 'avg_order_value', pct_of_orders_that_are_large'],
+    metrics = ['order_total', 'order_count', 'large_orders', 'customers_with_orders', 'avg_order_value', 'pct_of_orders_that_are_large'],
     group_by = 
     [Dimension('metric_time').grain('day') ]
 ) }}

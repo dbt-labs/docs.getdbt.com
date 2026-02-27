@@ -31,9 +31,20 @@ An example of a completed run with a configuration for a [job completion trigger
 
 ### Run summary tab
 
-You can view or download in-progress and historical logs for your dbt runs. This makes it easier for the team to debug errors more efficiently.
+You can view and download in-progress and historical logs for your dbt runs. This makes it easier for you to debug errors more efficiently. 
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.png" width="85%" title="Access logs for run steps" />
+- To download logs for an individual step, select the step in the **Run summary** tab and click **Download** > **Download logs**. 
+- Note that when viewing debug logs, the log output is truncated. To view and export all debug logs for an individual step, click **Download** > **Download all debug logs**.
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/download-logs.png" width="85%" title="Download logs" />
+
+#### Log size limits
+
+dbt enforces cumulative log size limits on run endpoints. If a single step's logs or the total run logs exceed this limit, dbt omits the logs.
+
+When dbt omits logs due to size, it displays a **Run logs are too large** banner and shows a message where the logs would usually appear. The run step also displays an **Unknown**  status.
+
+You can still download omitted logs. If the log file is too large, the download may fail. If that happens, you can [reach out to support](mailto:support@getdbt.com).
 
 ### Lineage tab
 

@@ -21,7 +21,7 @@ And once you have a time spine, you need to configure it in YAML to tell MetricF
 MetricFlow requires you to define at least one dbt model which provides a time-spine, and then specify (in YAML) the columns to be used for time-based joins. This means you need to:
 
 - Define at least one [time spine](#example-time-spine-tables) at whichever granularity needed for your metrics (like daily or hourly). You can optionally define additional tables for coarser grains (like monthly or yearly).
-- [Configure each time spine in a YAML file](#configuring-time-spine-in-yaml) to define how MetricFlow recognizes and uses its columns.
+- [Configure each time spine in a properties YAML file](#configuring-time-spine-in-yaml) to define how MetricFlow recognizes and uses its columns.
 
 Note that you can't have overlapping time spines.
 
@@ -104,9 +104,10 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
 
 ### Migrating from SQL to YAML
-If you already have a SQL model that defines your time spine, you can reference that model directly. The `metricflow_time_spine.sql` file is no longer required and can be removed.
 
-1. Add the following configuration to a new or existing YAML file using the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. Name the YAML file whatever you want (for example, `util/_models.yml`):
+If you already have a SQL model that defines your time spine, you can reference that model directly in the YAML file. If you don't have a SQL model that defines your time spine, add one before proceeding to the following steps. 
+
+1. Add the following configuration to a new or existing properties YAML file using the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. Name the properties YAML file whatever you want (for example, `util/_models.yml`):
 
   <File name="models/_models.yml">
 
@@ -122,7 +123,7 @@ If you already have a SQL model that defines your time spine, you can reference 
   ```
   </File>
 
-2. After adding the YAML configuration, delete the existing `metricflow_time_spine.sql` file from your project to avoid any issues.
+2. After adding the YAML configuration and ensuring you have a SQL model that defines the time spine, you can delete the existing `metricflow_time_spine.sql` file from your project to avoid any deprecation warnings or errors.
 
 3. Test the configuration to ensure compatibility with your production jobs.
 

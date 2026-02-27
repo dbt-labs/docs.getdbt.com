@@ -313,7 +313,3 @@ Semantic layer credentials are different than the credentials you use to run dbt
 Currently, semantic models can be created from dbt models that live across projects ([dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)). In the future, users will also be able to use mesh concepts on semantic objects and define metrics across dbt projects.
 </Expandable>
 
-<Expandable alt_header="How do I migrate from the legacy Semantic Layer?">
-
-If you're using the legacy Semantic Layer, we highly recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/sl-migration) for more info.
-</Expandable>

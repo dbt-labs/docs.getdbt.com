@@ -1,4 +1,4 @@
-Groups are defined in `.yml` files, nested under a `groups:` key. <VersionBlock firstVersion="1.10">You can add the `description` property and the `meta` config to add more information about the group.</VersionBlock>
+Groups are defined in `.yml` files, nested under a `groups:` key. <VersionBlock firstVersion="1.10">You can add the `meta` config to add more information about the group.</VersionBlock>
 
 
 <VersionBlock lastVersion="1.9">
@@ -26,7 +26,6 @@ groups:
     owner:
       # 'name' or 'email' is required; additional properties will no longer be allowed in a future release
       email: finance@jaffleshop.com
-    description: For the finance team # optional
     config:
       meta: # optional
         data_owner: Finance team

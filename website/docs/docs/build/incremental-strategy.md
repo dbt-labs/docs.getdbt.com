@@ -22,9 +22,9 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table shows the support of each incremental strategy across adapters available on <Constant name="cloud" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks). Some strategies may be unavailable if you're not on "Latest" and the feature hasn't been released to the "Compatible" track.  
+This table shows the support of each incremental strategy across adapters available on <Constant name="cloud" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks). Some strategies may be unavailable if you're not on **Latest** and the feature hasn't been released to the **Compatible** track.  
 
-If you're interested in an adapter available in <Constant name="core" /> only, check out the [adapter's individual configuration page](/reference/resource-configs/resource-configs) for more details.
+If you're interested in an adapter available in <Constant name="core" /> only, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
 
 Click the name of the adapter in the following table for more information about supported incremental strategies:
 
@@ -34,10 +34,10 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅   |  ✅ |   |   ✅   |
 | [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |           |    ✅   |    | ✅ |  ✅    |
 | [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅   |    |    ✅   | ✅ |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |    |          ✅         |          ✅         |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   | ✅ |          ✅         |          ✅         |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   | ✅  | ✅ | ✅  |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |  ✅  |
-| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         | ✅  |    |    |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |    |
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 
@@ -200,7 +200,7 @@ This strategy shouldn't be confused with `delete+insert` which deletes matching 
 
 By specifying a `unique_key` (which can be composed of one or more columns), `merge` can also help resolve duplicates. If the `unique_key` already exists in the destination table, `merge` will update the record, so you won't have duplicates. If the records don’t exist, `merge` will insert them.
 
-Note, if you use `merge` without specifying a `unique_key`, it behaves like the `append` strategy. However, it is required to use a `unique_key` with `merge` for adapters like BigQuery.
+Note, if you use `merge` without specifying a `unique_key`, it behaves like the `append` strategy.
 
 While the `merge` strategy is useful for keeping tables current, it's best suited for smaller tables or incremental datasets. It can be expensive for large tables because it scans the entire destination table to determine what to update or insert.
 

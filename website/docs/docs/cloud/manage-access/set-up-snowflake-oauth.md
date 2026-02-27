@@ -6,9 +6,11 @@ id: "set-up-snowflake-oauth"
 
 # Set up Snowflake OAuth <Lifecycle status="managed, managed_plus" />
 
-:::info Enterprise-tier feature
+:::info Subdomain migration
 
-This guide describes a feature available on <Constant name="cloud" /> Enterprise and Enterprise+ plans. If you’re interested in learning more about our Enterprise-tier plans, contact us at sales@getdbt.com.
+We're migrating <Constant name="dbt_platform" /> [multi-tenant accounts worldwide](/docs/cloud/about-cloud/access-regions-ip-addresses) to static subdomains. After the migration, you’ll be automatically redirected from your original URL (for example, `cloud.getdbt.com`) to the new URL static subdomain (for example, `abc123.us1.dbt.com`), which you can find in your account settings. If your organization has network allow listing, add the `us1.dbt.com` domain to your allow list. 
+
+The migration may require additional actions in your Snowflake account. See [subdomain migration](#subdomain-migration) for more information.
 
 :::
 
@@ -117,6 +119,15 @@ Once a user has authorized <Constant name="cloud" /> with Snowflake via their id
 ### Setting up multiple dbt projects with Snowflake 0Auth
 If you are planning to set up the same Snowflake account to different <Constant name="cloud" /> projects, you can use the same security integration for all of the projects.
 
+## Subdomain migration
+
+If you're a [multi-tenant account](/docs/cloud/about-cloud/access-regions-ip-addresses) being migrated to a static subdomain, you may need to take additional action in your Snowflake account to prevent service disruptions.
+
+Snowflake limits each security integration (`CREATE SECURITY INTEGRATION … TYPE = OAUTH`) to a single redirect URI. If you configured your OAuth integration with `cloud.getdbt.com`, you must take one of two courses of action: 
+
+- **Configure an additional security integration:** In your Snowflake account, you will have one with the original URL (for example, `cloud.getdbt.com/complete/snowflake`) as the redirect URI, and another using the new static subdomain. Refer to our [regions & IP addresses page](/docs/cloud/about-cloud/access-regions-ip-addresses) for a complete list of the original domains in your region (marked as "multi-tenant" on the chart).
+- **Use a single security integration:** Create one that uses the new static subdomain as the redirect URI. In this scenario, you must recreate all of your [existing connections](/docs/cloud/connect-data-platform/about-connections#connection-management).
+
 ### Troubleshooting
 
 <Expandable alt_header="Invalid consent request">
@@ -136,7 +147,7 @@ This error might be because of a configuration issue in the Snowflake OAuth flow
 
 <Expandable alt_header="Server error 500">
 
-If you experience a 500 server error when redirected from Snowflake to <Constant name="cloud" />, double-check that you have allow-listed [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses), or [VPC Endpoint ID (for PrivateLink connections)](/docs/cloud/secure/snowflake-privatelink#configuring-network-policies), on a Snowflake account level.
+If you experience a 500 server error when redirected from Snowflake to <Constant name="cloud" />, double-check that you have allow-listed [<Constant name="cloud" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses), or [VPC Endpoint ID (for PrivateLink connections)](/docs/cloud/secure/private-connectivity/aws/aws-snowflake#configuring-network-policies), on a Snowflake account level.
 
 Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to allow list.
 

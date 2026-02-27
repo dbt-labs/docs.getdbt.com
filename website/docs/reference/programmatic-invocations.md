@@ -4,7 +4,9 @@ title: "Programmatic invocations"
 
 In v1.5, <Constant name="core" /> added support for programmatic invocations. The intent is to expose the existing <Constant name="core" /> CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
 
-The entry point is a `dbtRunner` class, which allows you to `invoke` the same commands as on the CLI.
+Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven’t done so already.
+
+The entry point is the `dbtRunner` class, which allows you to `invoke` the same commands available in the <Constant name="cloud" /> CLI.
 
 ```python
 from dbt.cli.main import dbtRunner, dbtRunnerResult
@@ -23,14 +25,16 @@ for r in res.result:
     print(f"{r.node.name}: {r.status}")
 ```
 
+For implementation details, see the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/cli/main.py).
+
 ## Parallel execution not supported
 
 [`dbt-core`](https://pypi.org/project/dbt-core/) doesn't support [safe parallel execution](/reference/dbt-commands#parallel-execution) for multiple invocations in the same process. This means it's not safe to run multiple dbt commands concurrently. It's officially discouraged and requires a wrapping process to handle sub-processes. This is because:
 
 - Running concurrent commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
-- Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, which can be achieved using methods like spawning processes or using tools like Celery.
+- Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, which can be achieved using methods like spawning subprocesses or using tools like Celery.
 
-To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
+To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
 
 ## `dbtRunnerResult`
 

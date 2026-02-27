@@ -15,7 +15,7 @@ displayed_sidebar: "docs"
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-Starting in 2024, <Constant name="cloud" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the "Latest" release track in <Constant name="cloud" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.10! If you have selected the "Compatible" release track, you will have access in the next monthly "Compatible" release after the <Constant name="core" /> v1.10 final release.
+Starting in 2024, <Constant name="cloud" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="cloud" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.10! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.10 final release.
 
 For users of dbt Core, since v1.8, we recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
 
@@ -33,7 +33,7 @@ Large data sets can slow down dbt build times, making it harder for developers t
 
 ### Move standalone anchors under `anchors:` key
 
-As part of the ongoing process of making the dbt authoring language more precise, dbt Core v1.10 raises a warning when it sees an unexpected top-level key in a YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
+As part of the ongoing process of making the dbt authoring language more precise, dbt Core v1.10 raises a warning when it sees an unexpected top-level key in a properties YAML file. A common use case behind these unexpected keys is standalone anchor definitions at the top level of a properties YAML file. You can use the new top-level `anchors:` key as a container for these reusable configuration blocks.
 
 For example, rather than using this configuration:
 
@@ -143,6 +143,7 @@ dbt Core v1.10 introduces new flags for [managing changes to legacy behaviors](
 You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation). If the flag is set to `True`, dbt will raise a warning if the argument `type` names you've added in your macro YAMLs don't match the argument names in your macro or if the argument types aren't valid according to the [supported types](/reference/resource-properties/arguments#supported-types).
+- (Introduced, disabled by default) [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-changes#warn-error-handler-for-all-warnings). If this flag is set to `True`, all warnings raised during a run will be routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `False` (which is the current default), only some warnings are processed by the handler &mdash; others may bypass it. Turning it on for projects that use `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may cause build failures on warnings that were previously ignored to fail so we recommend enabling it gradually, one a project at a time.
 
 ### Deprecation warnings
 
@@ -215,7 +216,7 @@ models:
 
 #### Duplicate keys in the same yaml file
 
-If two identical keys exist in the same YAML file, you will get a warning, and in a future version, dbt will stop supporting duplicate keys. Previously, if identical keys existed in the same YAML file, dbt silently overwrite, using the last configuration listed in the file. 
+If two identical keys exist in the same properties YAML file, you will get a warning, and in a future version, dbt will stop supporting duplicate keys. Previously, if identical keys existed in the same properties YAML file, dbt silently overwrite, using the last configuration listed in the file.
 
 <File name='profiles.yml'>
 
@@ -235,7 +236,7 @@ my_profile: # dbt would use only this profile key
 
 </File>
 
-Moving forward, you should delete unused keys or move them to a separate YAML file.
+Moving forward, you should delete unused keys or move them to a separate properties YAML file.
 
 #### Unexpected Jinja blocks
 
@@ -315,7 +316,7 @@ The `warn_error_option` options for `include` and `exclude` have been deprecated
 
 ### Snowflake
 - You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/core/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
-- The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
+
 
 ### BigQuery
 
@@ -327,3 +328,5 @@ The `warn_error_option` options for `include` and `exclude` have been deprecated
 - Provide the [`loaded_at_query`](/reference/resource-properties/freshness#loaded_at_query) property for source freshness to specify custom SQL to generate the `maxLoadedAt` time stamp on the source (versus the [built-in query](https://github.com/dbt-labs/dbt-adapters/blob/6c41bedf27063eda64375845db6ce5f7535ef6aa/dbt/include/global_project/macros/adapters/freshness.sql#L4-L16), which uses the `loaded_at_field`). You cannot define `loaded_at_query` if the `loaded_at_field` config is also provided.
 
 - Provide validation for macro arguments using the [`validate_macro_args`](/reference/global-configs/behavior-changes#macro-argument-validation) flag, which is disabled by default. When enabled, this flag checks that documented macro argument names match those in the macro definition and validates their types against a supported format. Previously, dbt did not enforce standard argument types, treating the type field as documentation-only. If no arguments are documented, dbt infers them from the macro and includes them in the manifest.json file. Learn more about [supported types](/reference/resource-properties/arguments#supported-types). 
+
+- You can use the [`config.meta_get()`](/reference/dbt-jinja-functions/config#configmeta_get) and [`config.meta_require()`](/reference/dbt-jinja-functions/config#configmeta_require) functions to access custom configurations stored under `meta`.

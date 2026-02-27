@@ -6,10 +6,10 @@ description: "Learn where and how to directly access and interact with Catalog f
 
 Access <Constant name="explorer" /> from other features and products inside <Constant name="cloud" />, ensuring you have a seamless experience navigating between resources and lineage in your project. 
 
-This page explains how to access <Constant name="explorer" /> from various <Constant name="cloud" /> features, including the <Constant name="cloud_ide" /> and jobs. While the primary way to navigate to <Constant name="explorer" /> is through the **Explore** link in the navigation, you can also access it from other <Constant name="cloud" /> features.
+This page explains how to access <Constant name="explorer" /> from various <Constant name="cloud" /> features, including the <Constant name="cloud_ide" /> and jobs. While the primary way to navigate to <Constant name="explorer" /> is by clicking **Catalog** in the navigation, you can also access it from other <Constant name="cloud" /> features.
 
 ### Studio IDE 
-You can enhance your project navigation and editing experience by directly accessing resources from the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to <Constant name="explorer" /> for model, seed, or snapshot files. This workflow offers a seamless transition between the <Constant name="cloud_ide" /> and <Constant name="explorer" />, allowing you to quickly navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
+You can enhance your project navigation and editing experience by directly accessing resources from the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) to <Constant name="explorer" /> for model, seed, or snapshot files. This workflow offers a seamless transition between the <Constant name="cloud_ide" /> and <Constant name="explorer" />, allowing you to quickly navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
 
 #### Access Catalog from the IDE
 - In your model, seed, or snapshot file, click the **View in <Constant name="explorer" />** icon to the right of your file breadcrumb (under the file name tab). 
@@ -51,6 +51,6 @@ Access <Constant name="explorer" /> directly from the **modeling timing tab**, w
 
 Access <Constant name="explorer" /> directly from [<Constant name="query_page" />](/docs/explore/access-dbt-insights) to view the project lineage and project resources with access to tables, columns, metrics, dimensions, and more.
 
-To access <Constant name="explorer" /> from <Constant name="query_page" />, click on the **<Constant name="explorer" />** icon in the Query console sidebar menu and search for the resource you're interested in.
+To access <Constant name="explorer" /> from <Constant name="query_page" />, click the **<Constant name="explorer" />** icon in the Query console sidebar menu and search for the resource you're interested in.
 
 <Lightbox src="/img/docs/dbt-insights/insights-explorer.png" width="90%" title="dbt Insights integrated with dbt Catalog" />

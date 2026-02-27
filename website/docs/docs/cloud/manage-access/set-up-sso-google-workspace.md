@@ -38,7 +38,7 @@ Client Secret for use in <Constant name="cloud" />.
 | ---------------------- | ------------ | ------ |
 | **Application type**   | internal     | required |
 | **Application name**   | <Constant name="cloud" />    | required |
-| **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank" rel="noopener noreferrer">here</a> | optional |
+| **Application logo**   | Download the logo <a href="https://cdn.sanity.io/images/wl0ndo6t/main/333fef4fc72db6f1ce4d1bc0789f355b4f0bbaa2-1280x1280.png" target="_blank" rel="noopener noreferrer">here</a> | optional |
 | **Authorized domains** | `getdbt.com` (US multi-tenant) `getdbt.com` and `dbt.com`(US Cell 1) `dbt.com` (EMEA or AU) | If deploying into a VPC, use the domain for your deployment |
 | **Scopes** | `email, profile, openid` | The default scopes are sufficient |
 
@@ -84,10 +84,7 @@ To complete setup, follow the steps below in the <Constant name="cloud" /> appli
       Only users with an email address from this domain will be able to log into your <Constant name="cloud" />
       account using GSuite auth. Optionally, you may specify a CSV of domains
       which are _all_ authorized to access your <Constant name="cloud" /> account (eg. `dbtlabs.com, fishtowndata.com`)
-    - **Slug**: Enter your desired login slug. Users will be able to log into dbt
-      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. The `LOGIN-SLUG` must
-      be unique across all <Constant name="cloud" /> accounts, so pick a slug that uniquely
-      identifies your company.
+      
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
 3. Click **Save &amp; Authorize** to authorize your credentials. You should be
    dropped into the GSuite OAuth flow and prompted to log into <Constant name="cloud" /> with

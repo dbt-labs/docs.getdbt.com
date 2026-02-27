@@ -95,7 +95,7 @@ A column name or expression that uniquely identifies each record in the inputs o
 * In an incremental model, dbt replaces the old row (like a merge key or upsert).
 * In a snapshot, dbt keeps history, storing multiple rows for that same `unique_key` as it evolves over time.
 
-In <Constant name="cloud" /> "Latest" release track and from dbt v1.9, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
+In <Constant name="cloud" /> **Latest** release track and from dbt v1.9, [snapshots](/docs/build/snapshots) are defined and configured in YAML files within your `snapshots/` directory. You can specify one or multiple `unique_key` values within your snapshot YAML file's `config` key.
 
 :::caution 
 
@@ -104,8 +104,14 @@ Providing a non-unique key will result in unexpected snapshot results. dbt **wil
 :::
 
 ## Default
-This is a **required parameter**. No default is provided.
 
+This parameter is optional. If you don't provide a `unique_key`, your adapter will default to using `incremental_strategy: append`.
+
+If you leave out the `unique_key` parameter and use strategies like `merge`, `insert_overwrite`, `delete+insert`, or `microbatch`, the adapter will fall back to using `incremental_strategy: append`.
+
+This is different for BigQuery:
+- For `incremental_strategy = merge`, you must provide a `unique_key`; leaving it out leads to ambiguous or failing behavior.
+- For `insert_overwrite` or `microbatch`, `unique_key` is not required because they work by partition replacement rather than row-level upserts.
 
 ## Examples
 ### Use an `id` column as a unique key

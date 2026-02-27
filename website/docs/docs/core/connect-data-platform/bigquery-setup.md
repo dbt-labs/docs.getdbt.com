@@ -22,6 +22,14 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+## Prerequisites
+
+- Install [Git](https://git-scm.com/install/)
+- Install [Google Cloud SDK](https://docs.cloud.google.com/sdk/docs/install-sdk)
+- Use Python versions 3.13.x or older. Python 3.14 is [not supported](/faqs/Core/install-python-compatibility#python-compatibility-matrix) as yet
+- Access to a GCP account BigQuery project
+- Access to a Git platform repository (like GitHub, AzureDevOps, GitLab, and so on)
+
 ## Required permissions
 
 import BigQueryPerms from '/snippets/_bigquery-permissions.md';
@@ -297,6 +305,34 @@ my-profile:
 
 </File>
 
+<VersionBlock firstVersion="1.12">
+
+#### job_link_info_level_log
+
+By default, `dbt-bigquery` logs BigQuery job links at the debug level, so they only appear when you run dbt with the `--debug` flag. This can make it harder to find the corresponding job in the BigQuery console.
+
+To log job links at the info level instead, set `job_link_info_level_log: true` in your BigQuery profile. 
+
+With this enabled, job links appear in dbt logs, giving you quicker access to the BigQuery console for debugging and monitoring.
+
+You can configure `dbt-bigquery` to log BigQuery job links at the info level by setting `job_link_info_level_log: true` in your BigQuery profile. This makes the job links visible in dbt logs, making it easier to access the BigQuery console for debugging and monitoring.
+
+<File name='profiles.yml'>
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      job_link_info_level_log: true
+```
+
+</File>
+</VersionBlock>
 
 ### Dataset locations
 
@@ -515,7 +551,7 @@ To connect to BigQuery using the `oauth` method, follow these steps:
 2. Activate the application-default account with:
 
 ```shell
-gcloud auth application-default login \           
+gcloud auth application-default login \
   --scopes=https://www.googleapis.com/auth/bigquery,\
 https://www.googleapis.com/auth/drive.readonly,\
 https://www.googleapis.com/auth/iam.test,\

@@ -3,15 +3,17 @@ title: "Set up the dbt Snowflake Native App"
 description: "Learn how to set up the dbt Snowflake Native App"
 pagination_prev: "docs/cloud-integrations/snowflake-native-app"
 pagination_next: null
+unlisted: true
+
 ---
 
 # Set up the dbt Snowflake Native App <Lifecycle status='preview' />
 
-The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: <Constant name="explorer" />, the **Ask dbt** chatbot, and <Constant name="cloud" />'s orchestration observability features. 
+The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: <Constant name="explorer" />, the **Copilot** chatbot, and <Constant name="cloud" />'s orchestration observability features. 
 
 Configure both <Constant name="cloud" /> and Snowflake to set up this integration. The high-level steps are described as follows: 
 
-1. Set up the **Ask dbt** configuration. 
+1. Set up the **Copilot** configuration. 
 1. Configure Snowflake. 
 1. Configure <Constant name="cloud" />.
 1. Purchase and install the dbt Snowflake Native App.
@@ -27,7 +29,7 @@ The following are the prerequisites for <Constant name="cloud" /> and Snowflake.
 ### dbt
 
 - You must have a <Constant name="cloud" /> account on an Enterprise-tier plan that's in an AWS Region or Azure region. If you don't already have one, please [contact us](mailto:sales_snowflake_marketplace@dbtlabs.com) to get started.
-    - Currently, <Constant name="semantic_layer" /> is unavailable for Azure ST instances and the **Ask dbt** chatbot will not function in the dbt Snowflake Native App without it. 
+    - Currently, <Constant name="semantic_layer" /> is unavailable for Azure ST instances and the **Copilot** chatbot will not function in the dbt Snowflake Native App without it. 
 - Your <Constant name="cloud" /> account must have permission to create a [service token](/docs/dbt-cloud-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
 - There's a <Constant name="cloud" /> project with [<Constant name="semantic_layer" /> configured](/docs/use-dbt-semantic-layer/setup-sl) and metrics declared. 
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment).
@@ -38,11 +40,11 @@ The following are the prerequisites for <Constant name="cloud" /> and Snowflake.
 - You have **ACCOUNTADMIN** access in Snowflake.
 - Your Snowflake account must have access to the Native App/SPCS integration and NA/SPCS configurations (Public Preview planned at end of June). If you're unsure, please check with your Snowflake account manager.
 - The Snowflake account must be in an AWS Region. Azure is not currently supported for Native App/SPCS integration. 
-- You have access to Snowflake Cortex through your Snowflake permissions and [Snowflake Cortex is available in your region](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability). Without this, Ask dbt will not work.
+- You have access to Snowflake Cortex through your Snowflake permissions and [Snowflake Cortex is available in your region](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability). Without this, Copilot will not work.
 
-## Set up the configuration for Ask dbt
+## Set up the configuration for Copilot
 
-Configure <Constant name="cloud" /> and Snowflake Cortex to power the **Ask dbt** chatbot.
+Configure <Constant name="cloud" /> and Snowflake Cortex to power the **Copilot** chatbot.
 
 1. In <Constant name="cloud" />, browse to your <Constant name="semantic_layer" /> configurations. 
 
@@ -117,12 +119,12 @@ To verify the app installed successfully, select any of the following from the s
 
 - **Explore** &mdash; Launch <Constant name="explorer" /> and make sure you can access your dbt project information.
 - **Jobs** &mdash; Review the run history of the dbt jobs. 
-- **Ask dbt** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the dbt project, it can take several minutes to load **Ask dbt** the first time because dbt is building the Retrieval Augmented Generation (RAG). Subsequent launches will load faster.
+- **Copilot** &mdash; From <Constant name="explorer" />, click the Copilot button to ask the chatbot a question.
 
 
-The following is an example of the **Ask dbt** chatbot with the suggested prompts near the top: 
+The following is an example of the **Copilot** chatbot with the suggested prompts near the top: 
 
-<Lightbox src="/img/docs/cloud-integrations/example-ask-dbt-native-app.png" title="Example of the Ask dbt chatbot"/>
+<Lightbox src="/img/docs/cloud-integrations/example-ask-dbt-native-app.png" title="Example of the Copilot chatbot"/>
 
 
 ## Onboard new users
@@ -139,7 +141,7 @@ The <Constant name="cloud" /> Snowflake Native App is not available to Snowflake
 
 </Expandable>
 
-<Expandable alt_header="Received the error message `Unable to access schema dbt_sl_llm` from Ask dbt" >
+<Expandable alt_header="Received the error message `Unable to access schema dbt_sl_llm` from Copilot" >
 
 Check that the SL user has been granted access to the `dbt_sl_llm` schema and make sure they have all the necessary permissions to read and write from the schema.
 
@@ -152,5 +154,5 @@ If there's been an update to the <Constant name="cloud" /> account ID, access UR
 
 <Expandable alt_header="Are environment variables supported in the Native App?" >
 
-[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported in the <Constant name="semantic_layer" /> yet. To use the 'Ask dbt' feature, you must use the actual credentials instead.
+[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported in the <Constant name="semantic_layer" /> yet. To use the 'Copilot' feature, you must use the actual credentials instead.
 </Expandable>

@@ -57,9 +57,7 @@ In this section, you'll create two new, empty projects in <Constant name="cloud"
 - **Foundational projects** (or upstream projects) typically contain core models and datasets that serve as the base for further analysis and reporting.
 - **Downstream projects** build on these foundations, often adding more specific transformations or business logic for dedicated teams or purposes. 
 
-For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: Jaffle | Data Analytics and Jaffle | Finance.
-
-<Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Create two new dbt projects named 'Jaffle | Data Analytics' and 'Jaffle Finance' " />
+For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: **Jaffle | Data Analytics** and **Jaffle | Finance**.
 
 To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="cloud" />:
 
@@ -113,11 +111,11 @@ To set a production environment:
 
 This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
-<Constant name="cloud" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or in-browser [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+<Constant name="cloud" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
 
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="cloud_ide" />.
 
-1. First, navigate to the **Develop** page to verify your setup.
+1. First, navigate to the **<Constant name="cloud_ide"/>** page to verify your setup.
 2. Click **Initialize dbt project** if you’ve started with an empty repo.
 3. Delete the `models/example` folder.  
 4. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `analytics`.
@@ -129,7 +127,7 @@ In this section of the guide, you will set the "Jaffle | Data Analytics" project
 ### Staging layer
 Now that you've set up the foundational project, let's start building the data assets. Set up the staging layer as follows:
 
-1. Create a new YAML file `models/staging/sources.yml`.
+1. Create a new properties YAML file `models/staging/sources.yml`.
 2. Declare the sources by copying the following into the file and clicking **Save**.
 
   <File name='models/staging/sources.yml'>
@@ -226,7 +224,7 @@ Now that you've set up the foundational project, let's start building the data a
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/mesh/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
-  - Note, Enable the **Generate docs on run** toggle for this job to update the <Constant name="explorer" />. Once run, you can click Explore from the upper menu bar and see your lineage, tests, and documentation coming through successfully.
+  - Note, Enable [**Generate docs on run**](/docs/deploy/deploy-jobs) for this job to update assets in <Constant name="explorer" />. Once run, you can click **Catalog** from the main navigation and select your project to see its lineage, tests, and documentation coming through successfully.
 
 ## Define a public model and run first job
 
@@ -236,7 +234,7 @@ Although the Finance team requires the `fct_orders` model for analyzing payment 
 
 To make `fct_orders` publicly available:
 
-1. In the `models/core/core.yml` file, add a `access: public` clause to the relevant YAML file by adding and saving the following:
+1. In the `models/core/core.yml` file, add a `access: public` clause to the relevant properties YAML file by adding and saving the following:
 
   <File name='models/core/core.yml'>
 
@@ -338,7 +336,7 @@ In this section, you will set up the downstream project, "Jaffle | Finance", and
 
 Now that you've set up the foundational project, let's start building the data assets. Set up the staging layer as follows:
 
-1. Create a new YAML file `models/staging/sources.yml` and declare the sources by copying the following into the file and clicking **Save**.
+1. Create a new property file `models/staging/sources.yml` and declare the sources by copying the following into the file and clicking **Save**.
 
     <File name='models/staging/sources.yml'>
 

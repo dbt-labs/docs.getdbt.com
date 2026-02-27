@@ -13,18 +13,18 @@ With <Constant name="explorer" />, you can view your project's [resources](/docs
 
 </IntroText>
 
-Use <Constant name="explorer" /> to navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="explorer" /> integrates with the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt <Constant name="query_page" />](/docs/explore/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="visual_editor" />](/docs/cloud/canvas) to help you develop or view your dbt resources.
+Use <Constant name="explorer" /> to navigate and manage your projects within <Constant name="cloud" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="explorer" /> integrates with the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), [dbt <Constant name="query_page" />](/docs/explore/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="visual_editor" />](/docs/cloud/canvas) to help you develop or view your dbt resources.
 
 ## Prerequisites
 
 - You have a <Constant name="cloud" /> account on the [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/).
 - You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
 - You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update <Constant name="explorer" />. 
-- You are on the <Constant name="explorer" /> page. To do this, select **Explore** from the navigation in <Constant name="cloud" />.
+- You are on the <Constant name="explorer" /> page. To do this, select **Catalog** from the top-level navigation in <Constant name="cloud" />.
 
 import Generatemetadata from '/snippets/_generate-metadata.md';
 
-<Generatemetadata />
+<Generatemetadata /> 
 
 :::tip
 If your organization works in both dbt Core and Cloud, you can unify these workflows by automatically uploading dbt Core artifacts into dbt Cloud and viewing them in <Constant name="explorer" /> for a more connected dbt experience. To learn more, visit [hybrid projects](/docs/deploy/hybrid-projects).
@@ -38,7 +38,7 @@ We create dbt metadata and pull external metadata. <Constant name="explorer" /> 
 
 ## Catalog overview 
 
-:::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' /> <Lifecycle status="preview" />
+:::info [Global navigation](/docs/explore/global-navigation) <Lifecycle status='self_service,managed,managed_plus' />
 
 <Constant name="explorer" /> introduces the ability to widen your search by including dbt resources (models, seeds, snapshots, sources, exposures, and more) across your entire account. This broadens the results returned and gives you greater insight into all the assets across your dbt projects. Learn more in [Global navigation](/docs/explore/global-navigation) or in our [video overview](https://www.loom.com/share/ae93b3d241cd439fbe5f98f5e6872113?).
 
@@ -92,7 +92,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
     - View the node's [resource details](#view-resource-details) page
 - Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph's right-hand side that displays a high-level summary of the resource's details. The side panel includes a **General** tab for information like description, materialized type, and other details. In the side panel's upper right corner:
     - Click the View Resource icon to [view the resource details](#view-resource-details).
-    - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+    - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
     - Click the Copy Link to Page icon to copy the page's link to your clipboard.
 - Use [selectors](/reference/node-selection/methods) (in the search bar) to select specific resources or a subset of the DAG. This can help narrow the focus on the resources that interest you. All selectors are available for use, except those requiring a state comparison (result, source status, and state). You can also use the `--exclude` and the `--select` flag (which is optional). Examples:
     - `resource_type:model [RESOURCE_NAME]` &mdash; Returns all models matching the name search
@@ -211,7 +211,7 @@ You can view the definition and latest run results of any resource in your proje
 The details (metadata) available to you depends on the resource's type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment.
 
 In the upper right corner of the resource details page, you can:
-- Click the [Open in <Constant name="cloud_ide" />](#open-in-ide) icon to examine the resource using the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- Click the [Open in <Constant name="cloud_ide" />](#open-in-ide) icon to examine the resource using the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
 - Click the Share icon to copy the page's link to your clipboard.
 
 <Expandable alt_header="What details are available for a model?">

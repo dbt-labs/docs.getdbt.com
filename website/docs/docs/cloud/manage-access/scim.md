@@ -26,7 +26,12 @@ The currently available supported features for SCIM are:
 - Group creation and management
 - Importing groups and users
 
-When users are managed by SCIM, functionality like applying default groups and inviting users manually will be disabled by default. 
+When SCIM is enabled, the following functionality will change: 
+- Users are not automatically added to default groups
+- Manual actions such as inviting users, updating user information and updating group memberships are disabled by default
+- SSO group mappings are disabled in favor of SCIM group management
+
+To overwrite these updates to functionality with SCIM enabled, enable manual updates as part of the SCIM configuration (not recommended). 
 
 When users are provisioned, the following attributes are supported
 - Username
@@ -44,7 +49,7 @@ If your IdP isn’t on the list, it can be supported using <Constant name="cloud
 To retrieve the necessary <Constant name="cloud" /> configurations for use in Okta or Entra ID:
 
 1. Navigate to your <Constant name="cloud" /> **Account settings**.
-2. Select **Single sign-on** from the left-side menu.
+2. Under **Settings**, click **SSO & SCIM**.
 3. Scroll to the bottom of your SSO configuration settings and click **Enable SCIM**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/enable-scim.png" width="60%" title="SCIM enabled in the configuration settings." />
 4. Record the **SCIM base URL** field for use in a later step.
@@ -77,6 +82,7 @@ Please complete the [setup SSO with Okta](/docs/cloud/manage-access/set-up-sso-o
     - Push New Users
     - Push Profile Updates
     - Push Groups
+    - Import New Users and Profile Updates  (Optional for users created before SSO/SCIM setup)
 6. From the **Authentication mode** dropdown, select **HTTP Header**.
 7. In the **Authorization** section, paste the token from <Constant name="cloud" /> into the **Bearer** field.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />
@@ -159,9 +165,9 @@ To map the attributes that will sync with dbt:
 9. Click **Ok**
     <Lightbox src="/img/docs/dbt-cloud/access-control/edit-attribute.png" width="60%" title="Edit the attribute as shown." />
 10. Make sure the following mappings are in place and delete any others:
-    - **UserName:** `userPrincipalName`
+    - **UserName:** `userPrincipalName` or the value you want users to leverage to log in to dbt. 
     - **active:** `Switch([IsSoftDeleted], , "False", "True", "True", "False")`
-    - **emails[type eq "work"].value:** `userPrincipalName`
+    - **emails[type eq "work"].value:** `userPrincipalName` is the most common, but this value needs to be the same set for **UserName**. 
     - **name.givenName:** `givenName`
     - **name.familyName:** `surname`
     - **externalid:** `mailNickname`
@@ -198,7 +204,7 @@ You can manage user license assignments via SCIM with a user attribute in your I
 
 :::
 
-To use license management via SCIM, enable the feature under the **SCIM** section in the **Single sign-on** settings. This setting will enforce license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.  
+To use license management via SCIM, enable the feature under the **SCIM** section in the **SSO & SCIM** settings. This setting will enforce license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.  
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-managed-licenses.png" width="60%" title="Enable SCIM managed user license distribution." />
 
 _We recommend that you complete the setup instructions for your identity provider prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="dbt_platform" /> will be ignored. SCIM license mapping is currently only supported for Okta._

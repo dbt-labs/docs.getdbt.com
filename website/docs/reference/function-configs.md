@@ -19,8 +19,8 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
   ]
 }>
 <TabItem value="project-yaml">
@@ -30,7 +30,7 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 ```yml
 functions:
   [<resource-path>](/reference/resource-configs/resource-path):
-    # Function-specific configs are defined in the property file
+    # Function-specific configs are defined in the properties YAML file
     # See functions/schema.yml examples below
 
 ```
@@ -49,6 +49,10 @@ functions:
 functions:
   - name: [<function-name>]
     config:
+      [type](/reference/resource-configs/type): scalar  # optional, defaults to scalar. Eventually will include aggregate | table
+      [volatility](/reference/resource-configs/volatility): deterministic | stable | non-deterministic # optional
+      [runtime_version](/reference/resource-configs/runtime-version): <string> # required for Python UDFs
+      [entry_point](/reference/resource-configs/entry-point): <string> # required for Python UDFs
       # Standard configs that apply to functions
       [database](/reference/resource-configs/database): <string>
       [schema](/reference/resource-properties/schema): <string>
@@ -76,8 +80,8 @@ Functions support `database`, `schema`, and `alias` configurations just like mod
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
   ]
 }>
 
@@ -124,6 +128,7 @@ functions:
 
 </TabItem>
 </Tabs>
+
 
 ## Configuring functions
 Functions are configured in YAML files, either in `dbt_project.yml` or within an individual function's YAML properties file. The function body is defined in a SQL file in the `functions/` directory.
@@ -228,6 +233,8 @@ functions:
   - name: is_positive_int
     description: Determines if a string represents a positive integer
     config:
+      type: scalar
+      volatility: deterministic
       database: analytics
       schema: udf_schema
     arguments:

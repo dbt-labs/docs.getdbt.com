@@ -11,7 +11,7 @@ There are two options for developing a dbt project, including the <Constant name
 
 - [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) &mdash; MetricFlow commands are embedded in the <Constant name="cloud_cli" /> under the `dbt sl` subcommand. This is the easiest, most full-featured way to develop <Constant name="semantic_layer" /> code for the time being. You can use the editor of your choice and run commands from the terminal.
 
-- [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) &mdash; You can create semantic models and metrics in the <Constant name="cloud_ide" />. 
+- [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) &mdash; You can create semantic models and metrics in the <Constant name="cloud_ide" />. 
 
 ## Basic commands
 

@@ -18,7 +18,7 @@ is_featured: true
 - The new engine is called the dbt Fusion engine — rewritten from the ground up in Rust based on technology [from SDF](https://www.getdbt.com/blog/dbt-labs-acquires-sdf-labs).  The dbt Fusion engine is substantially faster than dbt Core and has built in [SQL comprehension technology](/blog/the-levels-of-sql-comprehension) to power the next generation of analytics engineering workflows.
 - The dbt Fusion engine is currently in beta. You can try it today if you use Snowflake — with additional adapters coming starting in early June. Review our [path to general availability](/blog/dbt-fusion-engine-path-to-ga) (GA) and [try the quickstart](/guides/fusion).
 - **You do not need to be a dbt Labs customer to use Fusion - dbt Core users can adopt the dbt Fusion engine today for free in your local environment.**
-- You can use Fusion with the [new dbt VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt), [directly via the CLI](/docs/fusion/install-fusion), or [via dbt Studio](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine).
+- You can use Fusion with the [new dbt VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt), [directly via the CLI](/docs/fusion/install-fusion-cli), or [via dbt Studio](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine).
 - This is the beginning of a new era for analytics engineering. For a glimpse into what the Fusion engine is going to enable over the next 1 to 2 years, [read this post](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine).
 
 <!--truncate-->
@@ -137,7 +137,7 @@ Whether or not you can move your existing project to Fusion today, you can jump 
 
 - **dbt customers:** Over the coming weeks, in projects eligible to start using Fusion, you’ll see a toggle in your account or receive a message from your account team. From there, [you can activate Fusion for your environments](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine).
 - **To use the VS Code extension:** [Install the "dbt" extension](/docs/install-dbt-extension) directly from the marketplace for automated setup and head to the quickstart. This will also automatically install the Fusion-powered CLI for you.
-- **To use the dbt CLI powered by Fusion:** Simply [install Fusion](/docs/fusion/install-fusion#install-fusion)
+- **To use the dbt CLI powered by Fusion:** Simply [install Fusion](/docs/fusion/install-fusion-cli)
 
 *If you are looking to migrate an existing project to Fusion, see the [migration guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) — as well as the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper, which automatically addresses many of the changes needed to migrate to Fusion.*
 

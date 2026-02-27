@@ -25,18 +25,13 @@ exports.versions = [
   },
  {
     version: "1.11",
-    customDisplay: "Core v1.11 Beta",
-    isPrerelease: true,
+    customDisplay: "Core v1.11",
+    EOLDate: "2026-12-18",
   },
   {
     version: "1.10",
-    customDisplay: "Core v1.10 (Compatible)",
+    customDisplay: "Core v1.10 (Compatible/Extended)",
     EOLDate: "2026-06-15",
-  },
-  {
-    version: "1.9",
-    customDisplay: "Core v1.9 (Extended)",
-    EOLDate: "2025-12-08",
   },
 ];
 
@@ -79,6 +74,10 @@ exports.versionedPages = [
     firstVersion: "1.8",
   },
   {
+    page: "/docs/build/measures",
+    lastVersion: "1.99",
+  },
+  {
     page: "docs/cloud/connect-data-platform/connect-apache-spark",
     lastVersion: "1.99",
   },
@@ -108,6 +107,10 @@ exports.versionedPages = [
   },
   {
     page: "docs/cloud/connect-data-platform/connect-teradata",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/build/measures",
     lastVersion: "1.99",
   },
 ];

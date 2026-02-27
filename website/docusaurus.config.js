@@ -72,12 +72,12 @@ var siteSettings = {
     announcementBar: {
       id: "dbt-workshop",
       content:
-        "✨ Live virtual event - Smarter pipelines, 29% more efficient: How the dbt Fusion engine optimizes data work on December 3rd!",
+        "Join our free workshop to modernize your dbt project and upgrade to Fusion during our global friendly sessions on March 3rd & 4th",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/how-the-dbt-fusion-engine-optimizes-data-work",
+      "https://www.getdbt.com/resources/webinars/modernize-your-dbt-project-upgrade-to-fusion-in-practice-workshop",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",

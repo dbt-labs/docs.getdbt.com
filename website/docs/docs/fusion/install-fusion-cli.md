@@ -1,62 +1,19 @@
 ---
-title: "Install Fusion from the CLI"
+title: "Install Fusion CLI"
+sidebar_label: "Install Fusion CLI only" 
 description: "Install the Fusion engine locally from the command line interface (CLI) to take data transformation to the next level."
 keywords: ["dbt Fusion engine", "Fusion", "Install Fusion", "Update Fusion", "Fusion updates" ]
 id: install-fusion-cli
 ---
 
+import FusionManualInstall from '/snippets/_fusion-manual-install.md';
+
 # Install Fusion from the CLI <Lifecycle status="preview" />
 
-Fusion can be installed via the command line from our official CDN:
+Fusion can be installed via the command line from our official content delivery network (CDN). <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine" /> performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp" /> features. For the best <Constant name="fusion_engine" /> experience, [install the dbt VS Code extension](/docs/install-dbt-extension) in your VS Code or compatible IDE. 
 
-- **macOS/Linux:** Using `curl`
-<!--- **Windows:** Using `irm` -->
 
-## macOS & Linux installation
-
-Run the following command in the terminal:
-
-```shell
-curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
-```
-
-To use `dbtf` immediately after installation, reload your shell so that the new `$PATH` is recognized:
-
-```shell
-exec $SHELL
-```
-
-Or, close and reopen your Terminal window. This will load the updated environment settings into the new session.
-
-### Windows installation (PowerShell)
-
-Run the following command in PowerShell:
-
-```powershell
-irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-```
-
-To use `dbtf` immediately after installation, reload your shell so that the new `Path` is recognized:
-
-```powershell
-Start-Process powershell
-```
-
-Or, close and reopen PowerShell. This will load the updated environment settings into the new session.
-
-## Verify the installation
-
-After installation, open a new command-line window and verify that Fusion is installed correctly by checking the version. You can run these commands using `dbt`, or use `dbtf` as an unambiguous alias for Fusion, if you have another dbt CLI installed on your machine.
-
-```bash
-dbtf --version
-```
-
-- **macOS** & **Linux**: $HOME/.local/bin/dbt
-- **Windows:** `C:\Users\<YourUsername>\.local\bin\dbt.exe`
-
-This location is automatically added to your path to easily execute the `dbtf` command, but it requires reloading your shell.
-
+<FusionManualInstall />
 
 ## Update Fusion
 
@@ -77,6 +34,68 @@ dbtf system uninstall
 ## Adapter installation
 
 The Fusion install automatically includes adapters outlined in the [Fusion requirements](/docs/fusion/supported-features#requirements). Other adapters will be available at a later date.
+
+## Environment variables
+
+<Constant name="fusion"/> automatically loads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal). This helps you manage credentials and settings without hardcoding them in your `profiles.yml` or exposing them in your shell history.
+
+### Using a `.env` file
+
+1. Create a `.env` file in your current working directory (typically at the root of your dbt project):
+   ```env
+   DBT_MY_DATABASE=my_database
+   DBT_MY_SCHEMA=my_schema
+   DBT_SECRET_KEY=my_secret_value
+   ```
+
+2. Reference these variables in your `profiles.yml` using the [`env_var` Jinja function](/reference/dbt-jinja-functions/env_var):
+   ```yaml
+   my_profile:
+     target: dev
+     outputs:
+       dev:
+         type: snowflake
+         account: my_account
+         database: "{{ env_var('DBT_MY_DATABASE') }}"
+         schema: "{{ env_var('DBT_MY_SCHEMA') }}"
+   ```
+
+3. Run dbt commands normally. <Constant name="fusion"/> will automatically load the variables from the `.env` file. For example, running `dbtf debug` will show your connection using the values from `.env`:
+   ```shell
+   dbtf debug
+   ...
+   Debugging connection:
+   "authenticator": "my_authenticator",
+   "account": "my_account",
+   "user": "my_user",
+   "database": "my_database",        # Loaded from DBT_MY_DATABASE in .env
+   "schema": "my_schema",            # Loaded from DBT_MY_SCHEMA in .env
+   ```
+
+:::note
+We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable, and dbt won't search your project root if you're running commands from a different directory location.
+:::
+
+### Precedence order
+
+When the same environment variable is defined in multiple places, <Constant name="fusion"/> uses the following precedence order (highest to lowest):
+
+1. Shell environment &mdash; Variables set directly in your shell (for example, `export DBT_MY_VAR=value`)
+2. `.env` file &mdash; Variables defined in the `.env` file in your current working directory
+
+This means environment variables set in your shell always override values from the `.env` file.
+
+:::tip
+Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbtf init` command automatically includes `.env` in the generated `.gitignore` file.
+:::
+
+For more details on managing environment variables locally, refer to [Configure your local environment](/docs/configure-dbt-extension#set-environment-variables-locally).
+
+## profiles.yml location
+
+<Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the `DBT_PROFILES_DIR` environment variable or `profiles.yml` in arbitrary working directories.
+
+For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/fusion/connect-data-platform-fusion/profiles.yml#location-of-profilesyml).
 
 ## Troubleshooting
 

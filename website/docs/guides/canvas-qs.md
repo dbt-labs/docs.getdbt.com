@@ -4,7 +4,7 @@ id: "canvas"
 level: 'Beginner'
 icon: 'dbt'
 hide_table_of_contents: true
-tags: ['Visual Editor','Canvas','Analyst', 'dbt platform','model']
+tags: ['Canvas', 'Analyst', 'dbt platform', 'Model']
 recently_updated: true
 ---
 
@@ -110,7 +110,7 @@ To get started:
 2. Click **Choose a model** and then select the source `stg_models` from the dropdown. 
 3. Click the **Select model** option in the window that lists the columns.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/one-model-operators.png" width="90%" title="A single model operator." />
+<Lightbox src="/img/docs/dbt-cloud/canvas/one-model-operator.png" width="90%" title="A single model operator." />
 
 You now have your first input model in <Constant name="visual_editor" />!
 
@@ -268,7 +268,7 @@ You've just submitted your first model from the <Constant name="visual_editor" /
 
 :::tip
 
-Want to take your skills to the next level? Try taking the SQL output from your <Constant name="visual_editor" /> model and using it to create a model in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). 
+Want to take your skills to the next level? Try taking the SQL output from your <Constant name="visual_editor" /> model and using it to create a model in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio). 
 
 :::
 

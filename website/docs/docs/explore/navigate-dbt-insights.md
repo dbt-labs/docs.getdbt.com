@@ -33,18 +33,18 @@ The Query console menu is located at the top right of the Query editor. It conta
   - When you click **Bookmark**, a **Bookmark Query Details** modal (pop up box) will appear where you can add a **Title** and **Description**.
   - Let [<Constant name="copilot" />](/docs/cloud/dbt-copilot) do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
   - Access the newly created bookmark from the **Bookmark** icon in the [Query console sidebar menu](#query-console-sidebar-menu). 
- - **Develop**: Open the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [<Constant name="visual_editor" />](/docs/cloud/canvas) to continue editing your SQL query.
+ - **Develop**: Open the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="visual_editor" />](/docs/cloud/canvas) to continue editing your SQL query.
 - **Run** button &mdash; Run your SQL query and view the results in the **Data** tab.
 
-## Query Builder <Lifecycle status="beta" />
+## Semantic Layer querying
 
-Query Builder in dbt <Constant name="query_page" /> lets you build queries against the Semantic Layer without writing SQL code. It guides you in creating queries based on available metrics, dimensions, and entities. With Query Builder, you can:
+The Semantic Layer querying in dbt <Constant name="query_page" /> lets you build queries against the Semantic Layer without writing SQL code. It guides you in creating queries based on available metrics, dimensions, and entities. With this feature, you can:
 
 - Build analyses from your predefined semantic layer metrics.
 - Have filters, time ranges, and aggregates tailored to the semantic model.
 - View the underlying SQL code for each metric query. 
 
-To create a query in Query Builder:
+To build a query in dbt <Constant name="query_page" />:
 
 1. From the main menu, go to **<Constant name="query_page" />**.
 2. Click **Build a query**. 
@@ -59,7 +59,7 @@ To create a query in Query Builder:
 
     <DocCarousel slidesPerView={1}>
 
-    <Lightbox src="/img/docs/dbt-insights/insights-query-builder-interface.png" title="Query Builder in dbt Insights" />
+    <Lightbox src="/img/docs/dbt-insights/insights-query-builder-interface.png" title="Semantic Layer querying within dbt Insights" />
 
     <Lightbox src="/img/docs/dbt-insights/insights-query-builder.png" title="Results are displayed in the Data tab" />
 
@@ -112,9 +112,11 @@ View past queries, their statuses (All, Success, Error, or Pending), start time,
 
 Use [dbt <Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to modify or generate queries using natural language prompts or to chat with the Analyst agent to gather insights about your data. There are two ways you can use dbt <Constant name="copilot" /> in <Constant name="query_page" /> to interact with your data:
 
-<Lightbox src="/img/docs/dbt-insights/insights-copilot-tabs.png" width="90%" title="dbt Copilot in Insights" />
+<Lightbox src="/img/docs/dbt-insights/insights-copilot-tabs.png" width="50%" title="dbt Copilot in Insights" />
 
-- **Agent** tab<Lifecycle status='private_beta' /> - Ask questions to the Analyst agent to get intelligent data analysis with automated workflows, governed insights, and actionable recommendations. This is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. To request access to the Analyst agent, [join the waitlist](https://www.getdbt.com/product/dbt-agents#dbt-Agents-signup).  
+- **Agent** <Lifecycle status='beta' /> - Ask questions to the Analyst agent to get intelligent data analysis with automated workflows, governed insights, and actionable recommendations. This is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. 
+
+  To enable the Analyst agent, enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
   Some sample questions you can ask the agent: 
 
@@ -134,7 +136,7 @@ Use [dbt <Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to
 
   For more information, see [Analyze data with the Analyst agent](/docs/cloud/use-dbt-copilot#analyze-data-with-the-analyst-agent).
 
-- **Generate SQL** tab - Build queries in <Constant name="query_page" /> with natural language prompts to explore and query data with an intuitive, context-rich interface. For more information, see [Build queries](/docs/cloud/use-dbt-copilot#build-queries).
+- **Generate SQL** - Build queries in <Constant name="query_page" /> with natural language prompts to explore and query data with an intuitive, context-rich interface. For more information, see [Build queries](/docs/cloud/use-dbt-copilot#build-queries).
 
 ## LSP features
 

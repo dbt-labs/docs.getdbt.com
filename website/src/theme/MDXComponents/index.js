@@ -14,6 +14,8 @@ import Mermaid from '@theme/Mermaid';
  * Imports the following components below for export
  */
 import SortableTable from '@site/src/components/sortableTable';
+import FilterableTable from '@site/src/components/filterableTable';
+import SimpleTable from '@site/src/components/simpleTable';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
 import Changelog from '@site/src/components/changelog';
@@ -42,6 +44,7 @@ import CommunitySpotlightList from '@site/src/components/communitySpotlightList'
 import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
+import ProductCard from '@site/src/components/productCard';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
@@ -58,6 +61,7 @@ const MDXComponents = {
   Details: MDXDetails,
   ul: MDXUl,
   img: MDXImg,
+  table: FilterableTable, // All tables automatically get filtering functionality
   h1: (props) => <MDXHeading as="h1" {...props} />,
   h2: (props) => <MDXHeading as="h2" {...props} />,
   h3: (props) => <MDXHeading as="h3" {...props} />,
@@ -96,10 +100,13 @@ const MDXComponents = {
   dbtEditor: dbtEditor,
   Icon: Icon,
   Lifecycle: Lifecycle,
+  ProductCard: ProductCard,
   DetailsToggle: DetailsToggle,
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
   SortableTable: SortableTable,
+  FilterableTable: FilterableTable,
+  SimpleTable: SimpleTable,
   VersionCallout: VersionCallout,
   IntroText: IntroText,
   Constant: Constant,
