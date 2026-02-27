@@ -32,12 +32,11 @@ You can view historical metadata for up to the past three months. Select the tim
 
 ## The Model performance tab
 
-You can view trends in execution times, counts, and failures by using the Model performance tab for historical performance analysis. Daily execution data includes:
+import ModelPerfIntro from '/snippets/_model-perf-intro.md';
 
-- Average model execution time.
-- Model execution counts, including failures/errors (total sum).
+<ModelPerfIntro />
 
-Clicking on a data point reveals a table listing all job runs for that day, with each row providing a direct link to the details of a specific run.
+import ModelPerformance from '/snippets/_model-performance.md';
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-performance-tab.png" title="Example of the Model performance tab"/> 
+<ModelPerformance />
 
