@@ -4,7 +4,7 @@ description: "Salesforce Data 360 Configurations - Read this in-depth guide to l
 id: "data-cloud-configs"
 ---
 
-# Salesforce Data 360 configurations <Lifecycle status="beta"/>
+# Salesforce Data 360 configurations<Lifecycle status="beta"/>
 
 ## Supported materializations
 
