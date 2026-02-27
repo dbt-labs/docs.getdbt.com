@@ -19,7 +19,7 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 | Channel | Description | Stability |
 |---------|-------------|-----------|
 | `latest` | The "known good" stable version | ✅ Recommended for production |
-| `canary` | The latest version to be officially released | ⚠️ Preview of upcoming release if not the same as `latest` |
+| `canary` | The latest version to be officially released | ⚠️ May be unstable if a different version than `latest` |
 | `dev` | The latest development build | ❌ May be unstable |
 
 ## Updating Fusion
@@ -37,5 +37,7 @@ dbt system update --version canary    # Install the canary release
 dbt system update --version dev       # Install the dev release
 dbt system update --version 2.0.0-preview.126     # Install a specific version
 ```
+
+For more detailed information about each release version, visit the [<Constant name="fusion" /> changelogs](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md)
 
 <FusionReleases />
