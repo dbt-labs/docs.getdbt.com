@@ -136,7 +136,9 @@ If the `updates_on` condition fails, dbt does not build the model and instead di
 
 ### Step 2: Add `build_after` to a model
 
-After upstream freshness passes, dbt checks the `build_after` timing window. Configure freshness on a single model:
+After the upstream freshness check (`updates_on`) passes, dbt checks the `build_after` timing window. 
+
+Configure `build_after` on a single model:
 
 ```yaml
 models:
