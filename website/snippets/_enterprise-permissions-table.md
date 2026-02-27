@@ -1,8 +1,8 @@
 
-Permissions: 
+Permissions:
 
 * **Account-level permissions** &mdash; Permissions related to the management of the <Constant name="cloud" /> account. For example, billing and account settings.
-* **Project-level permissions** &mdash; Permissions related to the projects in <Constant name="cloud" />. For example, repos and access to the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />. 
+* **Project-level permissions** &mdash; Permissions related to the projects in <Constant name="cloud" />. For example, repos and access to the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />.
 
 :::note
 
@@ -12,7 +12,7 @@ Some permissions sets have read-only access to environment settings that can be 
 
 ### Account permissions
 
-Account permission sets enable you to manage the <Constant name="cloud" /> account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** permission set is the highest level of access you can assign.  
+Account permission sets enable you to manage the <Constant name="cloud" /> account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** permission set is the highest level of access you can assign.
 
 Key:
 
@@ -46,7 +46,7 @@ Key:
 
 
 #### Project access for account permissions
- 
+
 <FilterableTable>
 | Project-level permission     | Account Admin | Billing admin | Project creator | Security admin | Viewer |
 |:-----------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:|
@@ -65,7 +65,7 @@ Key:
 </FilterableTable>
 
 ### Project permissions
- 
+
 The project permission sets enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />, but may also provide some account-level permissions.
 
 Key:
@@ -74,10 +74,10 @@ Key:
 * **(R)ead** &mdash; Can view but can not create or change any fields.
 
 #### Account access for project permissions
- 
+
 <FilterableTable>
 | Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:| 
+|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
 | Account settings         |   R   |    -    |      R         |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
 | Auth provider            |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Billing                  |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
@@ -94,9 +94,9 @@ Key:
 
 #### Project access for project permissions
 
-<FilterableTable> 
+<FilterableTable>
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:| 
+|--------------------------|:-----:|:-------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
 | Environment credentials  |   W   |    R    |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
 | Custom env. variables    |   W   |    W#  |       W         |     W#    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
 | Data platform configs    |   W   |    W    |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
@@ -107,7 +107,7 @@ Key:
 | Metadata GraphQL API access| R   |    R    |       R        |     R     |      -       |     R     |     R     |      -      |      R      |                  R                      |       -        |     R       |     R      |
 | Permissions              |   W   |    -    |       R        |     R     |      -       |     R     |     -     |      -      |      -      |                  -                      |       -        |     -       |     R      |
 | Projects                 |   W   |    R    |       W        |     R     |      -       |     W     |     R     |      -      |      R      |                  -                      |       -        |     R       |     W      |
-| Repositories             |   W   |   -     |       R        |     R     |      -       |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |
+| Repositories             |   W   |    R    |       R        |     R     |      -       |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |
 | Runs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R*     |
 | Semantic Layer config    |   W   |    R    |       W        |     R     |      -       |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
