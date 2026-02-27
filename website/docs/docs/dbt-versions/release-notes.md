@@ -18,6 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## February 2026
 
+- **Beta**: The `dbt-salesforce` adapter available in the <Constant name="fusion_engine" /> CLI is now in beta. For more information, see [Salesforce Data 360 setup](/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup).
 - **New**: You can connect to BigQuery using Workload Identity Federation (WIF) with external OAuth for [Semantic Layer queries](/docs/use-dbt-semantic-layer/dbt-sl). For setup instructions, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
 - **Enhancement**: For WIF-authenticated BigQuery connections, the Semantic Layer gateway refreshes access tokens on common expiration failures and recycles pooled connections to reduce authentication outages.
 - **Enhancement:** The Analyst permission now has the project-level access to read repositories. See [Project access for project permissions](/docs/cloud/manage-access/enterprise-permissions#project-access-for-project-permissions) for more information.
