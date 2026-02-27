@@ -290,6 +290,25 @@ The [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) allows u
 
 </DetailsToggle>
 
+<DetailsToggle alt_header="Can I upgrade Mesh projects to Fusion incrementally?">
+
+Yes! You can upgrade select projects to the <Constant name="fusion_engine" /> while keeping others on <Constant name="core" />.
+
+- <Constant name="fusion" /> projects can reference public models from <Constant name="core" /> projects
+- <Constant name="core" /> projects can reference public models from <Constant name="fusion" /> projects
+
+This works because dbt Mesh uses a publication artifact (not the manifest) to resolve cross-project references, and this artifact is identical between <Constant name="core" /> and <Constant name="fusion" />.
+
+You can upgrade dbt Mesh projects to <Constant name="fusion" /> in any order and there's no requirement to start with upstream or downstream projects first.
+
+:::note Feature optimization
+
+While basic Mesh functionality works in hybrid setups, some advanced platform features (like full Catalog lineage visibility across projects) work best when all projects use the same engine.
+
+:::
+
+</DetailsToggle>
+
 ## Availability
 
 <DetailsToggle alt_header="Does dbt Mesh require me to be on a specific version of dbt?">
@@ -320,15 +339,10 @@ Yes, a [<Constant name="cloud" /> Enterprise-tier](https://www.getdbt.com/pricin
 
 <DetailsToggle alt_header="Is there a recommended migration or implementation process?">
 
-Refer to our developer guide on [How we structure our dbt Mesh projects](/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
+Refer to our developer guide on [How we structure our dbt Mesh projects](/best-practices/how-we-mesh/mesh-1-intro).
 
 You can also learn how to implement dbt Mesh by following our [Quickstart dbt Mesh](/guides/mesh-qs) guide.
 
-</DetailsToggle>
-
-<DetailsToggle alt_header="Are there tools available to help me migrate to a dbt Mesh?">
-
-`dbt-meshify` is a [CLI tool](https://github.com/dbt-labs/dbt-meshify) that automates the creation of model governance and cross-project lineage features introduced in dbt-core v1.5 and v1.6. This package will leverage your dbt project metadata to create and/or edit the files in your project to properly configure the models in your project with these features.
 </DetailsToggle>
 
 <DetailsToggle alt_header="My team isn’t structured to require multiple projects today. What aspects of dbt Mesh are relevant to me?">

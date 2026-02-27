@@ -4,8 +4,10 @@ id: connect-redshift
 description: "Setup instructions for connecting Redshift to dbt"
 sidebar_label: "Connect Redshift"
 ---
+
+# Connect Redshift <ProductCard text="Fusion compatible" />
  
-dbt platform supports connecting to Redshift. 
+<Constant name="dbt_platform" /> supports connecting to Redshift. 
 
 The following fields are required when creating a connection:
 
@@ -65,12 +67,11 @@ secret_access_key: '{{ env_var(''DBT_ENV_SECRET_ACCESS_KEY'') }}'
 
 Both `DBT_ENV_ACCESS_KEY_ID` and `DBT_ENV_SECRET_ACCESS_KEY` will need [to be assigned](/docs/build/environment-variables) for every environment leveraging extended attributes as such.
 
-### Connecting via an SSH Tunnel
+### Connecting using an SSH Tunnel
 
 import BastionServer from '/snippets/_bastion-server.md';
 
 <BastionServer redshift='Redshift' />
-
 
 ## Configuration
 

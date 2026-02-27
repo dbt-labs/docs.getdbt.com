@@ -37,6 +37,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2025
 
+- **Enhancement**: dbt enforces cumulative log size limits on run endpoints. If logs exceed this limit, dbt omits them and displays a banner. For more information, see [Run visibility](/docs/deploy/run-visibility#log-size-limits).
+  
 - **New**: The [docs.getdbt.com](http://docs.getdbt.com/) documentation site has introduced an LLM Context menu on all product documentation and guide pages. This menu provides users with quick options to interact with the current page using LLMs. You can can now:
   - Copy the page as raw Markdown &mdash; This makes it easier to reference or reuse documentation content.
   - Open the page directly in ChatGPT or Claude &mdash; This redirects you to a chat with the LLM and automatically loads a message asking it to read the page, helping you start a conversation with context from the page.
@@ -161,7 +163,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
 ## April 2025
 
 - **Enhancement**: The [Python SDK](/docs/dbt-cloud-apis/sl-python) now supports lazy loading for large fields for `dimensions`, `entities`, and `measures` on `Metric` objects. For more information, see [Lazy loading for large fields](/docs/dbt-cloud-apis/sl-python#lazy-loading-for-large-fields).
-- **Enhancement**: The <Constant name="semantic_layer" /> now supports SSH tunneling for [Postgres](/docs/cloud/connect-data-platform/connect-postgresql-alloydb) or [Redshift](/docs/cloud/connect-data-platform/connect-redshift) connections. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information.
+- **Enhancement**: The <Constant name="semantic_layer" /> now supports SSH tunneling for [Postgres](/docs/cloud/connect-data-platform/connect-postgresql-alloydb#connecting-using-an-ssh-tunnel) or [Redshift](/docs/cloud/connect-data-platform/connect-redshift#connecting-using-an-ssh-tunnel) connections. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information.
 - **Behavior change**: Users assigned the [`job admin` permission set](/docs/cloud/manage-access/enterprise-permissions#job-admin) now have access to set up integrations for projects, including the [Tableau](/docs/cloud-integrations/downstream-exposures-tableau) integration to populate downstream exposures.
 
 ## March 2025

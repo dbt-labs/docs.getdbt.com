@@ -26,7 +26,8 @@ To use state-aware orchestration, make sure you meet these prerequisites:
 - You have updated the environment that will run state-aware orchestration to the dbt Fusion engine. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
-- You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only. 
+- You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only.
+- You must use a deploy job. Continuous integration (CI) and merge jobs currently do not support state-aware orchestration.
 - (Optional) To customize behavior, you have configured your model or source data with [advanced configurations](#advanced-configurations).
 
 :::info
@@ -121,9 +122,12 @@ You can optionally configure state-aware orchestration when you want to fine-tun
 
 - **Defining source freshness:**
 
-  By default, dbt uses metadata from the data warehouse. You can instead:
-  * Specify a custom column and dbt will go to that column in the table instead
-  * Specify a custom SQL statement to define what freshness means
+  By default, dbt uses metadata from the data warehouse to automatically detect when source data changes. Freshness configuration is not required for state-aware orchestration to work.
+  
+  You can optionally configure source freshness if you want to:
+  - Receive alerts when sources don't update within your expected Service Level Agreement (SLA) using `warn_after`/`error_after`.
+  - Specify a custom column using `loaded_at_field`.
+  - Specify a custom SQL statement using `loaded_at_query` to define what freshness means.
 
   Not all source freshness is equal — especially with partial ingestion pipelines. You may want to delay a model build until your sources have received a larger volume of data or until a specific time window has passed.
 

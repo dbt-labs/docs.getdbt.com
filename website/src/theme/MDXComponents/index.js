@@ -15,6 +15,7 @@ import Mermaid from '@theme/Mermaid';
  */
 import SortableTable from '@site/src/components/sortableTable';
 import FilterableTable from '@site/src/components/filterableTable';
+import SimpleTable from '@site/src/components/simpleTable';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
 import Changelog from '@site/src/components/changelog';
@@ -43,6 +44,7 @@ import CommunitySpotlightList from '@site/src/components/communitySpotlightList'
 import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
+import ProductCard from '@site/src/components/productCard';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
@@ -98,11 +100,13 @@ const MDXComponents = {
   dbtEditor: dbtEditor,
   Icon: Icon,
   Lifecycle: Lifecycle,
+  ProductCard: ProductCard,
   DetailsToggle: DetailsToggle,
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
+  SimpleTable: SimpleTable,
   VersionCallout: VersionCallout,
   IntroText: IntroText,
   Constant: Constant,

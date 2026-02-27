@@ -61,7 +61,6 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     - For users on dbt version 1.5 and lower with dbt Metrics and Snowflake proxy:
     - **Impact**: Post-deprecation, queries using the proxy _will not_ run.
-    - **Action required:** _Immediate_ migration is necessary. Refer to the [dbt Semantic Layer migration guide](/guides/sl-migration?step=1)
 
     - For users on dbt version 1.5 and lower using dbt Metrics without Snowflake proxy:
     - **Impact**: No immediate disruption, but the package will not receive updates or support after deprecation
@@ -199,7 +198,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     ## ☁ Cloud projects
     - Continuous integration jobs are now generally available and no longer in beta!
-    - Added [Postgres PrivateLink set up page](/docs/cloud/secure/postgres-privatelink)
+    - Added [Postgres PrivateLink set up page](/docs/cloud/secure/private-connectivity/aws/aws-postgres)
     - Published beta docs for [dbt Explorer](/docs/explore/explore-projects).
     - Added a new Semantic Layer [GraphQL API doc](/docs/dbt-cloud-apis/sl-graphql) and updated the [integration docs](/docs/cloud-integrations/avail-sl-integrations) to include Hex. Responded to dbt community feedback and clarified Metricflow use cases for dbt Core and dbt Cloud.
     - Added an [FAQ](/faqs/Git/git-migration) describing how to migrate from one git provider to another in dbt Cloud.
@@ -223,7 +222,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='Semantic layer GA'>
   
-    If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher and [migrate](/guides/sl-migration) to the latest Semantic Layer.
+    If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher and migrate to the latest Semantic Layer.
 
     dbt Labs is thrilled to announce that the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is now generally available. It offers consistent data organization, improved governance, reduced costs, enhanced efficiency, and accessible data for better decision-making and collaboration across organizations.
 

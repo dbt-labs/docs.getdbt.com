@@ -18,6 +18,381 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## February 25, 2026
+
+## New
+
+### Semantic Layer
+
+- **BigQuery Workload Identity Federation authentication for external OAuth**: You can now connect to BigQuery using Workload Identity Federation (WIF) with External OAuth, including Microsoft Entra ID-backed flows, for Semantic Layer queries. For setup instructions, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation).
+
+### Catalog
+
+- **Saved queries now ingested for lineage and governance**: Saved query definitions (including tags, exports, parameters, and lineage relationships) are now captured during ingestion so they can participate in Catalog lineage and governance workflows.
+
+## Enhancements
+
+### dbt platform
+
+- **System logs now surface warnings and errors**: Run step structured logs now show an indicator when system warnings or errors are present, making issues easier to spot during run triage.
+
+- **Region labels now use backend display names**: Account Settings now shows the backend-provided region display name for clearer, more accurate region labeling.
+
+- **SCIM create group UI change**: Changes to our UI to improve the experience of managing groups with SCIM enabled.
+ 
+- **Updated the post-invite message for SSO accounts**:  After a user accepts an invite, the UI now explains that they must log in using SSO to fully redeem the invite and access the account. This replaces the previous "Joined successfully" message and helps avoid confusion when users accept an invite but do not complete the SSO login flow.
+
+### Studio IDE and Copilot
+
+- **Improved crash recovery and not-found routing**: Studio IDE now catches unexpected render failures with a top-level error boundary and shows Not Found more reliably for unknown in-project routes.
+
+- **Improved navigation accessibility and semantics in Studio IDE**: The main navigation trigger area is now a navigation element with improved focus and labeling.
+
+- **Reduced shortcut conflicts with VS Code search**: When Visual Studio Code (VS Code) search is enabled, Studio IDE avoids unregistering Quick Open and suppresses conflicting command palette shortcuts.
+
+### Catalog and Insights Data
+
+- **More accurate source freshness outdated status in Catalog**: Source freshness Outdated status can now be computed at query time, improving freshness status filtering consistency.
+
+- **Improved search and lineage usability in Catalog**: Search results better support column-level navigation and very long queries show a clear validation error, and lineage visuals have improved alignment and reduced edge clutter.
+
+- **Improved cross-project lineage and function awareness in Catalog**: Lineage graph building now includes cross-project dependencies and supports function nodes as first-class lineage entities.
+
+### APIs, Identity, and Administration
+
+- **Project deletion now supported in Admin v2 and v3 Projects APIs**: Projects APIs now explicitly support DELETE with stricter permission checks.
+
+## Fixes
+
+### Semantic Layer
+
+- **Automatic token refresh for BigQuery Workload Identity Federation failures**: For WIF-authenticated BigQuery connections, the gateway now refreshes access tokens on common expiration failures and recycles pooled connections to reduce authentication outages.
+
+## Behavior Changes
+
+### Webhooks
+
+- **Updated job run event field presence and status normalization**: Webhook payloads now include `runFinishedAt` only for completed events and `runErroredAt` only for errored events; canceled runs no longer include `runCanceledAt`, and run status is normalized from Cancelled to Canceled. Also note that enabling JSON preserve order can change key ordering, so consumers should parse JSON rather than string-compare payloads.
+
+### Insights APIs
+
+- **Optional source freshness expiration windows**: Source freshness expiration windows can optionally derive from each source’s freshness criteria rather than a fixed window. You must enable in your deployment.
+
+### Deployment and Configuration
+
+- **Source ingestion may skip sources for extremely large manifests in Catalog**: For very large `manifest.json` files, ingestion may strip sources above a configurable threshold to prevent out of memory failures. Set `SOURCE_INGESTION_THRESHOLD=0` if you must always ingest sources regardless of size.
+
+- **Removed deprecated object storage settings in Studio IDE**: Deprecated settings `project_storage_bucket_name` and `project_storage_object_prefix` have been removed. Migrate to `object_storage_bucket_name` and `object_storage_object_prefix`.
+
+
+## February 18, 2026
+
+## New
+
+### Cost Insights
+
+- **Estimated warehouse compute costs**: Cost Insights shows estimated warehouse compute costs and run times for your dbt projects and models, directly in the dbt platform. It highlights cost reductions and efficiency gains from optimizations like state-aware orchestration across your project dashboard, model pages, and job details. This feature is in private beta. To request access, contact your account manager.
+
+## Enhancements
+
+### Studio IDE
+
+- **Reduced conflicts across multiple tabs**: Studio IDE can pause the Language Server Protocol (LSP) in background tabs and resume on return to improve stability when the editor is open in more than one tab.
+
+- **More informative header and more editor space**: Adds a Visual Studio Code-style header showing a dbt badge and current project name, with an option to hide surrounding chrome for more editor space. Please contact your account manager to enable.
+
+- **Clearer file and folder creation errors**: Surfaces more actionable filesystem errors (for example, name too long and file-is-a-directory) instead of generic failures.
+
+- **Copy relative path**: Adds a Copy Relative Path action that respects `dbt_project_subdirectory` for quicker navigation and sharing.
+
+- **Friendlier lineage error messages**: Improves user-facing errors for lineage failures (including server errors and cases where upstream returns HTML instead of JSON).
+
+- **More reliable private connectivity selection**: Improves private endpoint filtering by adapter type and updates Studio IDE to use the correct version 3 private endpoints endpoint.
+
+### Canvas
+
+- **More reliable Add Sources CSV uploads**: Improves Comma-Separated Values (CSV) upload progress, resume behavior, and common error handling during Add Sources.
+
+
+### Catalog
+
+- **Faster and more usable lineage for large projects**: Improves directed acyclic graph (DAG) performance by rendering only visible elements and improving layout for disconnected nodes.
+
+- **Safer search result interactions**: Improves keyboard and hover behavior in the search dropdown and avoids showing stale results while searches are loading.
+
+### dbt platform
+
+- **More informative user invite statuses**: This change shows clearer invite status (invitation sent and invitation accepted) and supports accepted, login pending for Single Sign-On (SSO).
+
+- **Unpaid billing banner enabled by default**: The unpaid billing banner is no longer feature-flagged and will display when applicable, while billing link visibility remains permission-based.
+
+- **System for cross-domain identity management (SCIM)**: Bug fixes and improvements related to managed invites for easier processing.
+
+### dbt Copilot and agents
+
+- **Streaming control for server-sent events**: Adds Server-Sent Events (SSE) streaming control so clients can choose chunk streaming or message streaming. This enables more responsive Copilot experiences in environments that support streaming.
+
+- **More reliable similar models requests**: Improves responsiveness for AI Similar Models and Similar Sources requests by enforcing tighter embedding and database timeouts aligned to request deadlines.  Users should see faster, more consistent results when exploring related models.
+
+- **dbt Copilot: Improved bring your own key error handling**: Categorizes OpenAI failures with Bring Your Own Key (BYOK) awareness so BYOK failures return the expected 424-class behavior instead of generic 500-series errors.  This makes it easier to diagnose and resolve key or configuration issues.
+
+- **Expanded dbt Model Context Protocol tooling**: Updates dbt Model Context Protocol (MCP) tooling, including adding `get_all_macros` and improving error categorization, enabling more accurate responses.
+
+
+## Fixes
+
+### Studio IDE and Catalog
+
+- **More reliable search and replace**: Ensures bulk edits stay in sync after server-side edits to prevent stale content from overwriting changes.
+
+- **Correct search preview highlighting**: Fixes preview and match highlighting assembly so match ranges align correctly in multi-line previews.
+
+- **Improved startup failure experience**: Shows a proper error layout and notification on unrecoverable initialization failures.
+
+### Canvas
+
+- **Fewer Add Sources UI interruptions**: Prevents incorrect tab closing after uploads complete and avoids showing the floating node panel when not on a file tab.
+
+
+### Catalog
+
+- **Public model lineage across environments**: Fixes lineage resolution for public model parents when the producer model lives in a non-default environment.
+
+### dbt Copilot And Agents
+
+- **Reduced resource growth under load**: Fixes an OpenAI connection pool leak that could lead to out-of-memory (OOM) conditions under sustained load. Users should see fewer slowdowns during high-traffic periods.
+
+- **Fewer related models timeouts**: Reduces intermittent failures when attaching related models by increasing internal timeouts for related-model fetching. Users should experience fewer timeout errors when working with related models.
+
+## Behavior Changes
+
+### Studio IDE
+
+- **Prevent destructive root operations**: Prevents rename and delete operations on the repository root and shows clearer warnings.
+
+- **Resumable dbt command log streaming**: Improves dbt command log streaming reliability by resuming from the last known Command Line Interface (CLI) event offset. Contact your account manager to enable.
+
+### Admin And APIs
+
+- **Job Admin gains write access in Profiles API**: Job Admin now includes `profiles_write`, which can change what Job Admin users can do where Profiles are enabled.
+
+- **Search parameter renamed**: Version 3 Private Endpoints query parameter `name_search` is renamed to `search`, and search matches endpoint name and endpoint value.
+
+- **Connections: Postgres database name required**: Postgres connection validation now requires a non-empty database name.
+
+- **User credentials: Prevent sharing credentials across users**: Prevents associating the same active credentials object to multiple users, returning a conflict instead of silently duplicating associations.
+
+### Integrations
+
+- **GitHub: More flexible repository URL schemes**: GitHub shared webhooks now accept repository URLs using https, git, and Secure Shell (SSH) formats.
+
+- **Slack: Tighter permission gating for settings**: Slack linking and notification settings are more strictly gated by the relevant permissions.
+
+- **Slack: Permission check aligned to job notification access**: Slack integration listing now uses job notifications read permission, reducing incorrect permission-denied scenarios.
+
+### CLI Runtime
+
+- **Shorter default request timeouts**: Reduces default timeouts from 60 seconds to 5 seconds for Cloud Config and Cloud Artifact calls, causing requests to fail faster in high-latency environments unless overridden.
+
+- **OpenTelemetry logs: Corrected JSON field name**: Corrects the OpenTelemetry (OTel) log payload field name to `additional_message` (from the misspelled `addtional_message`), which may require updates to downstream parsing.
+
+## February 11, 2026
+
+## Enhancements
+
+### Catalog
+
+- **Faster model graph rendering for large projects**: Improved model graph layout performance to reduce load time in larger projects.
+
+- **Faster similar models results**: Similar Models lookup now uses an optimized vector search strategy to reduce timeouts on large projects.
+
+### Studio IDE
+
+- **Clearer project root in Catalog file tree**: When your dbt project is in a subdirectory, the project root is highlighted in the Catalog file tree.
+
+- **More native rename and delete in Catalog file tree**: Rename and delete actions now use native editor behaviors when using the Catalog file tree.
+
+- **More reliable in-browser formatting**: Formatting updates now apply directly to the active editor buffer to reduce prompts and inconsistent results.
+
+- **Cleaner code generation workflow**: Code generation no longer creates a temporary file in your repository during generation.
+
+### dbt platform
+
+- **Fusion compatibility validation on environments**: Environment settings now prevent saving a Fusion dbt version with an incompatible connection and surface field level validation errors.
+
+- **Smarter Fusion defaults during connection setup**: When setting up a new connection, Fusion eligible adapters now default to the latest Fusion version to reduce misconfiguration during setup.
+
+- **Improved Private Link endpoint management**: Private Endpoints can be sorted by status and connections, and endpoint details now show associated connections and environments.
+
+
+### Run Logs
+
+- **More reliable invocation event streaming**: Invocation event streaming is more reliable for long running jobs by deriving totals from the latest stream event identifier.
+
+- **Reduced Redis usage after log streams complete**: Log streaming now cleans up Redis keys after a stream completes, reducing stale keys and Redis memory pressure for high volume runs.
+
+## Fixes
+
+### dbt Copilot
+
+- **Consistent usage limit messaging in Insights and Studio IDE**: When users hit the usage limit, dbt disables Copilot and shows a clear message, including the reset date when available.
+
+### Studio IDE
+
+- **Git status decorations registered once**: Fixed duplicate Git status decorations in the file tree that could cause visual issues and performance impact.
+
+- **Avoid automatic pull on primary branch**: Studio IDE no longer runs an automatic pull on the primary branch to reduce unexpected changes during development.
+
+- **Clearer file operation validation errors**: File operations now return structured validation errors and explicitly reject names that exceed operating system limits.
+
+- **More reliable command log refresh and finalization**: Command logs for the dbt Cloud Command Line Interface (CLI) are refreshed and finalized more reliably.
+
+### Run Automation
+
+- **Correct account attribution for automatically triggered runs**: Scheduler triggered runs now include account context, improving run attribution and preventing some downstream triggers from running without proper context.
+
+- **Reject malformed account identifiers for exposure events**: Exposure generated events now validate that account identifiers are numeric before triggering follow on automation.
+
+### Webhooks
+
+- **More compatible run completion payload for canceled and errored runs**: Webhook payloads now include consistent completion and error timestamps, and canceled runs include a canceled timestamp and normalized status.
+
+- **Restored dual dispatch for some failure and completion triggers**: When both failure and completion triggers are configured, errored runs may generate two webhook deliveries to match legacy behavior.
+
+### dbt Project Metadata
+
+- **Manifest Ingestion: Accept functions section in manifest.json**: Ingestion now accepts the `functions` section (for example, Snowflake user defined functions (UDF)) to prevent parse failures on newer manifest schemas.
+
+- **Macro Metadata: More consistent timestamps and argument comparison**: Macro metadata persistence now uses more consistent Coordinated Universal Time (UTC) timestamps and improves argument comparison to reduce noisy or incorrect macro updates.
+
+## Behavior Changes
+
+### dbt platform APIs
+
+- **Removed credential configuration fields from responses**: Profiles API responses no longer include credential configuration and extended attributes; use the appropriate credentials and configuration endpoints instead.
+
+- **Filter connections by Private Endpoint**: Account Connections list supports filtering by Private Endpoint identifier for easier management.
+
+- **Additional ordering options**: Private Endpoints list now supports ordering by endpoint state and connection count.
+
+- **Private Link: Updated license permission defaults**: User licenses now include read access for Private Link resources, which may change who can view Private Link related settings.
+
+### Studio IDE
+
+- **Metric generation writes directly to active file**: Generated metrics are now written directly into the active model file instead of using an accept and reject diff flow.
+
+## February 4, 2026
+
+## New
+
+### Studio IDE
+
+- **Studio IDE: Copilot link in console toolbar**: Adds a link that opens Copilot from the console toolbar. You can use Copilot to read files and list directories for better context.
+
+- **Studio IDE: Copy repo-relative path command**: Adds a command to copy a file path relative to your dbt project subdirectory, making it easier to share paths in runbooks and support tickets.
+
+## Enhancements
+
+### dbt platform
+
+- **dbt platform: Fusion eligibility and compatibility indicators in setup flows**: Improves Fusion setup by showing “Fusion compatible” indicators during connection setup.
+
+- **dbt platform: Compare Changes shows partial success warnings**: When Compare Changes subqueries fail, the experience now surfaces a partial success state with expandable warning details to make troubleshooting faster.
+
+- **dbt platform: In-progress run logs preserve text selection**: Improves log usability during in-progress runs by preserving text selection while logs auto-refresh and rerender.
+
+- **dbt platform: Job completion trigger job picker search**: Adds server-side search and clearer loading and empty states to the job picker for job-completion triggers.
+
+- **dbt platform: Job artifacts content types and downloads**: Improves artifact handling for job documentation and run artifacts by strengthening HTML detection, defaulting empty paths to `index.html`, and returning clearer `Content-Type` and download filenames.
+
+- **dbt platform: Private Endpoints API listing and pagination improvements**: Improves Private Endpoints API v3 list behavior with validated query parameters, filtering, limit and offset pagination, and `connection_count` in responses.
+
+### Studio IDE
+
+- **Studio IDE: Format file more reliable in subdirectories**: Improves formatting reliability by consistently using the active editor content and a stable repo-relative path when invoking formatting.
+
+- **Studio IDE: Better stability for tabs and Git operations**: Reduces errors when working with non-file tabs and improves robustness around tab-close and Git checkout flows.
+
+- **Studio IDE: Sidebar layout improvements for embedded panels**: Improves embedded panel sizing to reduce clipping and scrolling issues in the sidebar.
+
+- **Studio IDE: Fusion prompts reflect actual eligibility**: Improves Fusion banners and prompts by checking project eligibility via a Fusion status endpoint to reduce confusing prompts for ineligible projects.
+
+### Catalog and Discovery
+
+- **Catalog: Improved cross-project lineage for dbt Mesh**: Improves cross-project lineage (“public ancestors”) computation to better match expected external lineage boundaries in dbt Mesh experiences.
+
+### Insights
+
+- **Insights: More reliable Copilot Agent requests and context handoff**: Standardizes Copilot Agent requests to the API and includes active tab content as context to improve reliability of agent runs and handoff.
+
+## Fixes
+
+### dbt platform
+
+- **dbt platform: Webhook form editing more resilient**: Improves webhook subscription editing reliability with asynchronous data and fixes a multiselect focus issue that could cause accidental option selection.
+
+- **dbt platform: Run warning emails render correctly**: Fixes HTML email markup that could break rendering for run warning notifications.
+
+- **dbt platform: Profiles URLs moved under project dashboard** Profile create and view routes now live under `/dashboard/:accountId/projects/:projectId/profiles/...`, which may affect bookmarks and direct links.
+
+### Studio IDE
+
+- **Studio IDE: Cleaner command history list**: Removes hidden background commands (such as listing and parsing commands) from command history to reduce noise for users.
+
+- **Studio IDE: More reliable inline compile and show output**: Improves robustness of inline compile and show output attachment, including cases with tricky quoting and newlines, reducing missing results during interactive use.
+
+- **Studio IDE: More reliable log downloads for dbt commands**: Fixes log download behavior so downloads correctly serve either the active `dbt.log` or the finalized compressed log.
+
+- **Studio IDE: More reliable artifact uploads to Microsoft Azure Blob Storage**: Fixes edge cases where gzipped artifacts (such as manifests) could fail to upload due to upload stream handling, improving upload reliability.
+
+- **Studio IDE: More stable language server protocol (LSP) sessions in workers**: Reduces noisy disconnect and cleanup errors when multiple websocket connections and processes map to the same invocation, improving session stability. 
+
+### Catalog
+
+- **Catalog: Search highlighting displays correctly with multiple matches**: Fixes search result highlighting when the backend returns multiple highlights per field, improving readability of matches. Updates search highlights to display as compact badges with counts for easier scanning of results.
+
+- **Catalog: Environment filtering more accurate in search results**: Improves environment-scoped Catalog search filtering by using merged environment identifiers and preserving warehouse-only assets via a dedicated sentinel value.
+
+- **Catalog: Public models return empty list when none exist**: Improves behavior for environments with no public models by returning an empty list instead of falling into follow-on query logic.
+
+### Copilot
+
+- **Copilot: More reliable model context protocol (MCP) connections during long tool calls**: Improves keep-alive behavior so connections shut down cleanly when the client disconnects, reducing noisy failures.
+
+- **Copilot: Semantic Layer tools only offered when available**: Prevents failing tool calls by hiding Semantic Layer tools when the Semantic Layer is not available for the user or environment.
+
+- **Copilot: More accurate HTTP error responses**: Improves error reporting by walking wrapped exceptions and exception groups to return the most specific status code and detail available.
+
+- **Copilot: Empty Tool Outputs No Longer Cause Failures**: Treats empty tool outputs as valid results (for example, “no matches”) to reduce unnecessary “tool call failed” errors.
+
+## Behavior Changes
+
+### dbt platform
+
+- **dbt platform: Fusion default dbt version selection more restrictive**: During connection setup, the default dbt version now only defaults to `latest-fusion` when the selected adapter is Fusion-compatible and the project and account are eligible.
+
+- **dbt platform: dbt version enforcement now project-aware**: dbt version “allowed version” checks now account for `project_id` across jobs and environments, including Application Programming Interface (API)-triggered runs, improving correctness for overrides and automatic mapping to allowed equivalents when possible.
+
+- **dbt platform: Connected app refresh tokens now last 7 days**: Refresh token expiration for connected app OAuth flows increased from 8 hours to 7 days, reducing re-authorization frequency.
+
+### Studio IDE
+
+- **Studio IDE: File stat timestamps now milliseconds**: File stat responses now return modified time and created time as integer milliseconds since epoch instead of float seconds; integrations consuming these endpoints may need to adjust.
+
+- **Studio IDE: Language Server Protocol deferral controls expanded**: The Language Server Protocol (LSP) websocket now supports `defer_env_id` to defer against a specific environment and `no_defer=true` to explicitly disable deferral.
+
+- **Studio IDE: Deferral toggle applied more consistently to Language Server Protocol connections**: When “defer to production” is turned off, the Studio Integrated Development Environment (IDE) now passes `no_defer=true` to align editor intelligence with the selected deferral behavior. (Language Server Protocol (LSP))
+
+### Catalog
+
+- **Catalog: Source freshness outdated status removed**: The freshness status value `outdated` was removed; unconfigured freshness is now handled explicitly as `unconfigured`, and sources will no longer report `outdated`.
+
+- **Catalog: Rows per page selector removed from tables**: The rows-per-page selector was removed, and pagination now uses a fixed page size.
+
+### Orchestration and Run Status
+
+- **Orchestration: Cached and stale outcome status mapping updated**: Cached nodes are now consistently surfaced as Reused with clearer reasons, and stale outcomes are treated as errors, which can change the statuses operators see in run output and telemetry.
+  
 ## January 28, 2026
 
 ### New

@@ -112,10 +112,15 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 - The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
 - The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
+- The `immutable_where` configuration is supported in dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
 
 ### BigQuery
 
 - To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`.
+
+### Redshift
+
+- The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#the-redshift_skip_autocommit_transaction_statements-flag) flag is now `True` by default. When `autocommit=True` (the default since dbt-redshift 1.5), dbt now skips sending unnecessary `BEGIN`/`COMMIT`/`ROLLBACK` statements, improving performance by reducing round trips to Redshift. To preserve the legacy behavior, set the flag to `False`.
 
 ### Spark
 

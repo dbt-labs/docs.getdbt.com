@@ -25,10 +25,12 @@ import FusionDWH from '/snippets/_fusion-dwh.md';
 
 ## Requirements
 
-To use Fusion in your dbt project:
-- You're using a supported adapter and authentication method:
+To use Fusion in your dbt project you must:
+- Use a supported adapter and authentication method:
   <FusionDWH /> 
-- Have only SQL models defined in your project. Python models are not currently supported because Fusion cannot parse these to extract dependencies (refs) on other models. <!-- [TODO: Link to dbt-fusion Python issue.] -->
+- Be able to run your project on the latest version of <Constant name="core" /> with no deprecation warnings or errors.
+- Migrate your Semantic Layer configurations to the [latest YAML spec](/docs/build/latest-metrics-spec).
+
 
 ## Parity with dbt Core
 
@@ -67,7 +69,7 @@ In this table, self-hosted means it's open-source/source-available and runs on y
 | Inline errors (on save/in editor) | 🟡 | ✅ | ✅ | ✅ | ✅ |
 | Live CTE previews/compiled SQL view | ❌ | ✅ | ✅ | ✅ | 🟡 <br /><small>(Live CTE previews only)</small> |
 | Refactoring tools (rename model/column) | ❌ | ✅ | ✅ | <small>Coming soon</small> | 🟡 <br /><small>(Column refactor only)</small> |
-| Go-to definition/references/macro | ❌ | ✅ | ✅ | <small>Coming soon</small> | 🟡 <br /><small>(Column go-to definition only)</small> |
+| Go-to definition/references/macro | ❌ | ✅ | ✅ |✅ | 🟡 <br /><small>(Column go-to definition only)</small> |
 | Column-level lineage (in editor) | ❌ | ✅ | ✅ | <small>Coming soon</small>  | ✅ |
 | Developer compare changes | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ❌ |
 | **Platform and governance** |  |  |  |  |  |
@@ -78,7 +80,7 @@ In this table, self-hosted means it's open-source/source-available and runs on y
 | Governance (PII/PHI tracking) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 | CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 
-<sup>1</sup> Support for other <Constant name="dbt_platform" /> and <Term id="lsp"/> features, like <Constant name="visual_editor"/>, <Constant name="semantic_layer" /> or Column-level lineage, is coming soon. See [About LSP](/docs/about-dbt-lsp) for a more detailed comparison of dbt development environments.<br />
+<sup>1</sup> Support for other <Constant name="dbt_platform" /> and <Term id="lsp"/> features, like Column-level lineage, is coming soon. See [About LSP](/docs/about-dbt-lsp) for a more detailed comparison of dbt development environments.<br />
 <sup>2</sup> The [dbt VS Code extension](/docs/about-dbt-extension) is usable in VS Code, Cursor, Windsurf, and other VS Code–based editors.
 
 
@@ -100,7 +102,7 @@ Here are some additional considerations if using the Fusion CLI without the VS C
 If your project is using any of the features listed in the following table, you can use Fusion, but you won't be able to fully migrate all your workloads because you have:
 - Models that leverage specific materialization features may be unable to run or may be missing some desirable configurations.
 - Tooling that expects dbt Core's exact log output. Fusion's logging system is currently unstable and incomplete.
-- Workflows built around complementary features of the dbt platform (like model-level notifications, Advanced CI, and Semantic Layer) that Fusion does not yet support.
+- Workflows built around complementary features of the dbt platform (like model-level notifications and Advanced CI) that <Constant name="fusion"/> does not yet support.
 - When using the dbt VS Code extension in Cursor, lineage visualization works best in Editor mode and doesn't render in Agent mode. If you're working in Agent mode and need to view lineage, switch to Editor mode to access the full lineage tab functionality.
 
 :::note

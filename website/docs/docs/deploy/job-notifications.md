@@ -138,11 +138,13 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 ### Disable the Slack integration
 
 1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
-1. Click the trash can icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
+1. Click the **X** icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
 
 ## Slack notifications (account) <Lifecycle status="private_beta" />  {#slack-notifications-account}
+
 :::info
 Configuring Slack notifications at the account level is currently available in private beta. To request access, contact your account manager. Only refer to these instructions if you have access to the private beta feature.
+
 :::
 
 Integrate Slack with <Constant name="dbt_platform" /> at the account level to receive job notifications in Slack. dbt integrates with Slack via OAuth to ensure secure authentication. 
@@ -153,16 +155,25 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 
 - You have a Slack workspace that you want to receive job notifications from.
 - A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
+- Install the official <Constant name="dbt_platform"/> Slack app using the [steps outlined in the next section](#set-up-the-slack-integration-1).
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
 - The integration only supports _public_ channels in the Slack workspace. 
 
-After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to a [group](/docs/cloud/manage-access/about-user-access#groups) with **Account Admin**, **Owner**, or **Member** permissions. IT licenses don't have access to configure Slack job notifications.
+After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to the **Account Admin**, **Owner**, or **Member** default [groups](/docs/cloud/manage-access/about-user-access#groups). IT licenses don't have access to configure Slack job notifications.
 
 ### Set up the Slack integration
 
-1. Select **Account settings** and then select **Integrations** from the left sidebar.
-2. Locate the **OAuth** section with the Slack application and click **Link**.
-    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
+The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
+
+To use the private beta Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+
+1. Go to **Account settings** > **Integrations** > **OAuth**.
+2. Click the **X** icon next to Slack and select **Unlink**.
+3. In the same OAuth section, click **Link** to connect the official Slack app.
+
+Until you do this, the account-level Slack option will not appear.
+
+    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="85%" title="Link for the Slack app"/>
 
 ### Logged in to Slack
 
@@ -200,7 +211,7 @@ That's it! Your Slack channel is now set up to receive dbt job notifications at 
 In this step, you'll disable the Slack integration and remove the account-level Slack credentials. You can always re-enable the integration by following the [Set up the Slack integration](#set-up-the-slack-integration-1) steps.
 
 1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
-2. Click the x icon (on the far right of the Slack integration) and click **Unlink**.
+2. Click the **X** icon (on the far right of the Slack integration) and click **Unlink**.
     - This removes the account-level Slack credentials. All Slack notifications that rely on the account-level integration will stop sending.
     - If any legacy, user-linked Slack integrations still exist, those notifications may continue until the legacy link is removed. We recommend migrating to the new account-level app and removing legacy links.
 
