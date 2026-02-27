@@ -50,7 +50,6 @@ You can read more about each of these behavior changes in the following links:
 
 - The Redshift adapter supports the `query_group` session parameter, allowing dbt to tag queries for the Redshift Workload Manager (WLM) routing and query logging. When configured, dbt sets `query_group` when opening a connection, and the value applies for the duration of that session. The `query_group` parameter can be configured at either the profile level or the model level, enabling a default value for all executions or an override for specific models.
 
-    See [Session configuration](/reference/resource-configs/redshift-configs#session-configuration) for more information.
 
 ## Quick hits
 
