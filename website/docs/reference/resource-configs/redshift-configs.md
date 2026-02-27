@@ -104,7 +104,7 @@ The Redshift adapter supports the `query_group` session parameter, enabling dbt 
 
 - **Model-level configuration**
 
-  Set `query_group` in a model's `config()` block to temporarily override the default profile-level value for that model’s execution. dbt applies the model-level value while the model runs and then restores the default value afterward.
+  Set `query_group` in a model's `config()` block to temporarily override the default value for that model’s execution. dbt applies the model-level value while the model runs and then restores the default value after model materialization.
 
   ```sql
   -- models/b_override_group.sql
