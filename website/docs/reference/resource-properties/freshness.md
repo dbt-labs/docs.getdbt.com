@@ -84,6 +84,7 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
 - [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
 
+<VersionBlock firstVersion="1.12">
 :::note Wildcard table identifiers
 On BigQuery, metadata-based freshness checks are not reliable for sources defined with wildcard table identifiers (for example, `events_*`).
 
@@ -91,6 +92,7 @@ To prevent incorrect freshness results, enable the [`bigquery_reject_wildcard_me
 
 To calculate freshness for wildcard tables, configure `loaded_at_field` to use query-based freshness instead.
 :::
+</VersionBlock>
 
 Freshness blocks are applied hierarchically:
 - A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source.

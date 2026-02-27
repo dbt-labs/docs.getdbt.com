@@ -10,13 +10,15 @@ The `bigquery_use_batch_source_freshness` flag is `False` by default. Setting it
 
 Setting this flag to `True` improves the performance of the `source freshness` command significantly, especially when a project contains a large (1000+) number of sources.
 
+<VersionBlock firstVersion="1.12">
+
 ## The `bigquery_reject_wildcard_metadata_source_freshness` flag
 
 When a BigQuery source uses a wildcard table identifier (for example, `events_*`), metadata-based source freshness checks return incorrect results. BigQuery's `client.get_table()` method creates a temporary union table for wildcard identifiers whose modified timestamp reflects the current time &mdash; not the actual modification time of the underlying tables. This makes freshness checks report an age of approximately 0 seconds, masking stale data without any warning.
 
 The `bigquery_reject_wildcard_metadata_source_freshness` flag controls how dbt handles metadata-based source freshness checks for BigQuery sources that use wildcard table identifiers.
 
-By default, this flag is set to `False`. With this setting, wildcard tables continue to run metadata-based freshness checks, but dbt emits a deprecation warning advising users to opt in to the new behavior. For example:
+By default, this flag is set to `False`. Wildcard tables continue to run metadata-based freshness checks, but dbt emits a deprecation warning advising users to opt in to the new behavior. For example:
 
 ```
 WARNING: Raise an error when metadata-based source freshness is used with a
@@ -27,7 +29,7 @@ You may opt into the new behavior sooner by setting
 `flags.bigquery_reject_wildcard_metadata_source_freshness` to `True` in `dbt_project.yml`.
 ```
 
-When the flag is set to `True` , dbt raises a `DbtRuntimeError` when metadata-based source freshness checks are used with wildcard table identifiers. For example:
+When the flag is set to `True`, dbt raises a `DbtRuntimeError` when metadata-based source freshness checks are used with wildcard table identifiers. For example:
 
 ```
 Runtime Error in source my_* (models/schema.yml)
@@ -59,4 +61,5 @@ sources:
 
 </File>
 
+</VersionBlock>
 

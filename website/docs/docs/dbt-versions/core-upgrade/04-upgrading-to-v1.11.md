@@ -117,7 +117,6 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ### BigQuery
 
 - To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`.
-- Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When the flag is set to `True`, dbt raises a `DbtRuntimeError` if metadata-based source freshness checks are used with BigQuery wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.
 
 ### Redshift
 
