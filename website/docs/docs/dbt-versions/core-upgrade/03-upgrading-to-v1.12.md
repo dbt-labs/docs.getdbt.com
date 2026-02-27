@@ -44,7 +44,8 @@ You can read more about each of these behavior changes in the following links:
 
 ## Adapter-specific features and functionalities
 
-**Coming soon**
+### BigQuery
+- You can configure BigQuery job link logging with `job_link_info_level_log`. By default, dbt logs job links at the debug level. To log job links at the info level, set `job_link_info_level_log: true` in your BigQuery profile. This makes job links visible in dbt logs for easier access to the BigQuery console. For more information, see [BigQuery setup](/docs/core/connect-data-platform/bigquery-setup#job_link_info_level_log).
 
 ## Quick hits
 

@@ -305,6 +305,8 @@ my-profile:
 
 </File>
 
+<VersionBlock firstVersion="1.12">
+
 #### job_link_info_level_log
 
 By default, BigQuery job links are logged at the debug level, which means they only appear when running dbt with the `--debug` flag. This can make it difficult to look for the corresponding job in the BigQuery console.
@@ -326,6 +328,7 @@ my-profile:
 ```
 
 </File>
+</VersionBlock>
 
 ### Dataset locations
 
