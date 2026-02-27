@@ -34,7 +34,46 @@ You can install <Constant name="core" /> on the command line by using one of the
 
 dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade) highlighting the changes required for each [minor and major release](/docs/dbt-versions/core).
 
-- [Upgrade `pip`](/docs/core/pip-install#change-dbt-core-versions)
+In addition to reviewing those resources, upgrading <Constant name="core" /> depends on how you installed it.
+
+<Expandable alt_header="Upgrading with pip">
+
+If you installed dbt using [pip](/docs/core/pip-install) (recommended for local development), upgrade <Constant name="core" /> first:
+
+```
+python -m pip install --upgrade dbt-core
+```
+
+Then upgrade your installed adapter package:
+
+```
+python -m pip install --upgrade dbt-ADAPTER_NAME
+```
+
+For example:
+```
+python -m pip install --upgrade dbt-postgres
+```
+
+Most users should upgrade both <Constant name="core" /> and their adapter to keep versions aligned.
+
+</Expandable>
+
+<Expandable alt_header="Upgrading with docker">
+
+dbt publishes [Docker](/docs/core/docker-install) images per adapter. To upgrade, pull a newer tag for your adapter image:
+
+```
+docker pull ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>
+```
+
+For example:
+
+```
+docker pull ghcr.io/dbt-labs/dbt-postgres:1.10.latest
+```
+
+</Expandable>
 
 ## About dbt data platforms and adapters
 
