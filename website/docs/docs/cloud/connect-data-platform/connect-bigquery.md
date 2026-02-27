@@ -80,8 +80,7 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 
 :::note
 
-If you're using BigQuery WIF, we recommend using it with BigQuery OAuth. Otherwise, you must create two connections - one with service JSON and one with WIF to use service JSON for development environments. <!--with the support for external oauth, should we modify this note?-->
-
+If you're using BigQuery WIF, we recommend using it with BigQuery OAuth. Otherwise, you must create two connections - one with service JSON and one with WIF to use service JSON for development environments.
 :::
 
 **Available in:** Deployment environments
