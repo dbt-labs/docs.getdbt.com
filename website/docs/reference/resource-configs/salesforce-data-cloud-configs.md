@@ -22,7 +22,7 @@ id: "data-cloud-configs"
 
 ### Sources
 
-For models that query raw Data Cloud data, reference the table though a dbt source. Selecting a DLO directly is not supported.
+For models that query raw Data 360 data, reference the table though a dbt source. Selecting a DLO directly is not supported.
 
 For example:
 
@@ -75,14 +75,14 @@ Currently, only the `profile` type DLO is supported. Support for `engagement` DL
 
 ## Naming rules and required configs
 
-- All dbt model names must end with `__dll`. If you omit this suffix in your file name, it is appended automatically during execution (for example, `model_name` becomes `model_name__dll`). This will break downstream dbt references because dbt will look for a DLO named `model_name` when Data Cloud has `model_name__dll`. 
-- Columns must end with `__c`. Omitting the suffix causes a Data Cloud “unknown syntax” error.
+- All dbt model names must end with `__dll`. If you omit this suffix in your file name, it is appended automatically during execution (for example, `model_name` becomes `model_name__dll`). This will break downstream dbt references because dbt will look for a DLO named `model_name` when Data 360 has `model_name__dll`. 
+- Columns must end with `__c`. Omitting the suffix causes a Data 360 “unknown syntax” error.
 - Model names cannot contain double under scores (`__`) outside of the final `__dll`. For example, `supplies__agg__dll` will build as `agg__dll`, which can cause confusion for downstream refs.
 - All dbt models must be configured with `primary_key` and `category='Profile'` in the model configuration. You can also apply the configurations in the `resources.yml` and `dbt_project.yml`. 
 
 ## Known limitations
 
-- **Reruns of dbt models**: Due to the Data Cloud architecture of metadata and dependency management, dbt cannot rerun the same model if a data transform and a DLO already exist. This is because dbt can't drop the DLO during subsequent runs of table materializations, as expected in data warehouses. If you change your logic between runs, you have to delete the dependencies of the data transform and DLO manually in the UI before executing a `dbtf run`. A fix is in progress. 
+- **Reruns of dbt models**: Due to the Data 360 architecture of metadata and dependency management, dbt cannot rerun the same model if a data transform and a DLO already exist. This is because dbt can't drop the DLO during subsequent runs of table materializations, as expected in data warehouses. If you change your logic between runs, you have to delete the dependencies of the data transform and DLO manually in the UI before executing a `dbtf run`. A fix is in progress. 
 - **Static analysis in VS Code**: Column-level lineage and dbt buttons (`Build` and `Test`) are affected. You can either turn off static analysis temporarily by running all commands with `--static-analysis off` or set up your environment variables with `DBT_STATIC_ANALYSIS=off`.
 - **Arbitrary queries** (for example, `SELECT 1 AS foo`): All queries must be tied to a defined dbt source before building a dbt model on it.
-- **`select *`** Metadata queries may fail because Data Cloud injects system columns into every DLO. Bug fix is in progress.
+- **`select *`** Metadata queries may fail because Data 360 injects system columns into every DLO. Bug fix is in progress.
