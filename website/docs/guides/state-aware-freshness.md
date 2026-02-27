@@ -123,9 +123,20 @@ Model freshness controls _how often_ a model may be rebuilt, even if upstream da
 - Enough time has passed since the model was last built (`count` + `period`).
 - The `updates_on` condition is satisfied.
 
-### Step 1: Add `build_after` to a model
+### Step 1: Understand `updates_on` options
 
-Configure freshness on a single model:
+The `updates_on` setting controls when upstream changes trigger a rebuild.
+
+| Value | Behavior | Use case |
+|-------|----------|----------|
+| `any` (default) | Model rebuilds when _any one_ upstream has new data. | Fresher data, but more cost. |
+| `all` | Model rebuilds only when _all_ upstreams have new data. | Fewer builds, lower cost. |
+
+If the `updates_on` condition fails, dbt does not build the model and instead displays the log message: `No new changes on any/all upstreams`.
+
+### Step 2: Add `build_after` to a model
+
+After upstream freshness passes, dbt checks the `build_after` timing window. Configure freshness on a single model:
 
 ```yaml
 models:
@@ -138,17 +149,11 @@ models:
           updates_on: all
 ```
 
+This tells dbt to only rebuild this model if:
+1. All upstream dependencies have new data (`updates_on: all`), _and_
+2. At least 4 hours have passed since the last build (`build_after`)
 
-This tells dbt to only rebuild this model if it has been at least 4 hours since the last build _and_ all upstream dependencies have new data.
-
-### Step 2: Understand `updates_on` options
-
-The `updates_on` setting controls when upstream changes trigger a rebuild:
-
-| Value | Behavior | Use case |
-|-------|----------|----------|
-| `any` (default) | Model rebuilds when _any one_ upstream has new data. | Fresher data, but more cost. |
-| `all` | Model rebuilds only when _all_ upstreams have new data. | Fewer builds, lower cost. |
+If upstream freshness (`updates_on`) passes but the timing window hasn't elapsed, dbt does not build the model and instead displays the log message: `New changes detected. Did not meet build_after of <count> <period>. Last updated <duration> ago`, where `<count>` and `<period>` are the values from your `build_after` configuration, and `<duration>` is the time elapsed since the last build.
 
 ## Set project-level defaults
 
