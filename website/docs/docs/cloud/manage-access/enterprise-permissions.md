@@ -102,8 +102,9 @@ Database admins manage configurations between <Constant name="cloud" /> and the 
 Notable features: 
 - Database admin is a project-level set. 
 - Can set up and maintain environment variables and <Constant name="semantic_layer" /> configs.
-- Helpful for scenarios where your data warehouse admins only need access to <Constant name="cloud" /> to configure connections. 
-- Read-only access to connections, Git repo, job, and run settings. 
+- Write access to data platform configurations within environments (credentials, warehouse, schema per environment).
+- Helpful for scenarios where your data warehouse admins only need access to <Constant name="cloud" /> to configure data platform settings within environments.
+- Read-only access to account-level connections, Git repo, job, and run settings. 
 - Can access <Constant name="explorer" />.
 
 </Expandable>

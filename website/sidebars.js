@@ -78,6 +78,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
+            "docs/cloud/about-profiles",
             "docs/cloud/account-settings",
             "docs/cloud/account-integrations",
             "docs/dbt-cloud-environments",
@@ -1198,6 +1199,7 @@ const sidebarSettings = {
         "reference/resource-configs/deltastream-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/duckdb-configs",
+        "reference/resource-configs/exasol-configs",
         "reference/resource-configs/fabric-configs",
         "reference/resource-configs/fabricspark-configs",
         "reference/resource-configs/firebolt-configs",
