@@ -12,6 +12,8 @@ import FusionReleases from '/src/components/fusionReleases';
 
 Track the current versions and full release history for the <Constant name="fusion_engine" />. Data is fetched live from the dbt release channels.
 
+> For more detailed information about each release, refer to the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
+
 ## Release channels
 
 The <Constant name="fusion_engine" /> is distributed through three release channels:
@@ -20,7 +22,7 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 |---------|-------------|-----------|
 | `latest` | The "known good" stable version | ✅ Recommended for production |
 | `canary` | The latest version to be officially released | ⚠️ May be unstable if a different version than `latest` |
-| `dev` | The latest development build | ❌ May be unstable |
+| `dev` | The latest development build | ❌ May be unstable. Has not passed all internal tests |
 
 ## Updating Fusion
 
@@ -37,7 +39,5 @@ dbt system update --version canary    # Install the canary release
 dbt system update --version dev       # Install the dev release
 dbt system update --version 2.0.0-preview.126     # Install a specific version
 ```
-
-For more detailed information about each release version, visit the [<Constant name="fusion" /> changelogs](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md)
 
 <FusionReleases />
