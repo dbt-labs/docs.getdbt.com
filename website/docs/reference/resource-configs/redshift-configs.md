@@ -74,7 +74,7 @@ For more information on distkeys and sortkeys, view Amazon's docs:
 
 The Redshift adapter now supports the `query_group` session parameter, enabling dbt runs to tag queries for the Redshift Workload Manager (WLM) and query logging. When configured, dbt sets the `query_group` value when opening a connection and applies it for the duration of that session. Support exists at both the profile and model level, allowing users to specify a default `query_group` for all executions or override it for individual model materializations.
 
-#### Profile-level configuration
+- Profile-level configuration
 
 Configure `query_group` in your `profiles.yml` to apply a default value to all queries executed using that profile. dbt sets the `query_group` when opening a connection.
 
