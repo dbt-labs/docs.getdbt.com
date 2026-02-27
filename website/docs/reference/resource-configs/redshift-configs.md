@@ -108,7 +108,7 @@ The Redshift adapter supports the `query_group` session parameter, enabling dbt 
 
   ```sql
   -- models/b_override_group.sql
-  -- dbt temporarily sets query_group = 'dbt_finance' for this model, then restores 'dbt_default'
+  -- dbt temporarily sets query_group = 'dbt_finance' for this model, then restores the default value
   {{ config(query_group='dbt_finance') }}
 
   select 1 as id
