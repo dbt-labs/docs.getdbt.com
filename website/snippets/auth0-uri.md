@@ -7,12 +7,12 @@ The URI used for SSO connections will vary based on your <Constant name="cloud" 
 
    | Identity provider | Field label | Example URI |
    |---|---|---|
-   | SAML 2.0 | **Single sign-on URL** | `https://auth.cloud.getdbt.com/login/callback?connection=<login_slug>` |
-   | Okta | **Single sign-on URL** | `https://auth.cloud.getdbt.com/login/callback?connection=<login_slug>` |
+   | SAML 2.0 | **Single sign-on URL** | `https://auth.cloud.getdbt.com/login/callback?connection=account_name-random_characters` |
+   | Okta | **Single sign-on URL** | `https://auth.cloud.getdbt.com/login/callback?connection=account_name-random_characters` |
    | Google Workspace | **Authorized Redirect URI** | `https://auth.cloud.getdbt.com/login/callback` |
    | Microsoft Entra ID | **Callback URI** | `https://auth.cloud.getdbt.com/login/callback` |
 
-   *`<login_slug>` is the login URL slug specific to your account.*
+   *Where `account_name-random_characters` is specific to your account.*
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-uri.png" width="80%" title="Example of the identity provider values for a SAML 2.0 provider" />
 
