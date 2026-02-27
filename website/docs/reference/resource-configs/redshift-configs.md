@@ -96,7 +96,7 @@ outputs:
 
 </File>
 
-#### Model-level configuration
+- Model-level configuration
 
 Set `query_group` in a model’s `config()` block to override the default value set at the profile level for that model only. The configured value applies for the duration of that model’s materialization, and dbt reverts it afterward.
 
