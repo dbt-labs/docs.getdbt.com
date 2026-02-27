@@ -131,7 +131,7 @@ The `updates_on` setting controls when upstream changes trigger a rebuild.
 |-------|----------|----------|
 | `any` (default) | Model rebuilds when _any one_ upstream has new data. | Fresher data, but more cost. |
 | `all` | Model rebuilds only when _all_ upstreams have new data. | Fewer builds, lower cost. |
-
+<br></br>
 If the `updates_on` condition fails, dbt does not build the model and instead displays the log message: `No new changes on any/all upstreams`.
 
 ### Step 2: Add `build_after` to a model
