@@ -106,7 +106,6 @@ select *
 from {{ ref('some_source_table') }}
 ```
 
-#### What SQL dbt executes
 
 When `query_group` is configured, dbt issues a `SET query_group` statement in Redshift to apply the value at the session level.
 
