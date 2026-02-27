@@ -55,6 +55,12 @@
     icon="glue"/>
 
 <Card
+    title="Exasol"
+    body="<ul><li><a href='/docs/core/connect-data-platform/exasol-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-exasol><img src=https://badge.fury.io/py/dbt-exasol.svg/></a>"
+    pills='["dbt Core"]'
+    icon="exasol"/>
+
+<Card
     title="IBM Netezza"
     body="<ul><li><a href='/docs/core/connect-data-platform/ibmnetezza-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-ibm-netezza><img src=https://badge.fury.io/py/dbt-ibm-netezza.svg/></a>"
     pills='["dbt Core"]'
@@ -111,7 +117,7 @@
     icon="risingwave"/>
 
 <Card
-    title="Salesforce Data Cloud"
+    title="Salesforce Data 360"
     body="<ul><li><a href='/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup'>Install with dbt Fusion </a> </li></ul><br />"
     pills='["Fusion"]'
     icon="salesforce"/>

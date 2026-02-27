@@ -1,8 +1,8 @@
 ---
 title: "Configuring BigQuery and GCP Private Service Connect"
-id: bigquery-psc
-description: "Configuring GCP Private Service Connect for BigQuery"
-sidebar_label: "GCP Private Service Connect for BigQuery"
+id: gcp-bigquery
+description: "Configuring GCP Private Service Connect for BigQuery."
+sidebar_label: "BigQuery"
 ---
 
 # Configuring BigQuery Private Service Connect <Lifecycle status="managed_plus" />
@@ -31,12 +31,12 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
-## (Optional) Generate Bigquery Credentials
+## (Optional) Generate BigQuery credentials
 You may already have credentials set up for your datasets. If not, you can follow the steps in our [BigQuery quickstart guide](/guides/bigquery?step=4) to generate credentials. 
 
-## Create the connection in dbt
+## Create connection in dbt
 
-Once the dbt Support team completes the configuration, you can start creating new connections using PSC: 
+Once dbt Support completes the configuration, you can start creating new connections using PSC: 
 
 1. Navigate to **Account settings** > **Connections**.
 2. In the **Connections** page, select **BigQuery**. Click **Edit**.
