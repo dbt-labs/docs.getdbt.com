@@ -45,7 +45,7 @@ You can read more about each of these behavior changes in the following links:
 ## Adapter-specific features and functionalities
 
 ### BigQuery
-- Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When the flag is set to `True`, dbt raises a `DbtRuntimeError` if metadata-based source freshness checks are used with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.
+- Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When you set this flag to `True`, dbt raises a `DbtRuntimeError` if you run metadata-based source freshness checks with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.
 
 ## Quick hits
 

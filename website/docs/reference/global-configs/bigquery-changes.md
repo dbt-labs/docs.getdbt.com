@@ -18,7 +18,7 @@ When a BigQuery source uses a wildcard table identifier (for example, `events_*`
 
 The `bigquery_reject_wildcard_metadata_source_freshness` flag controls how dbt handles metadata-based source freshness checks for BigQuery sources that use wildcard table identifiers.
 
-By default, this flag is set to `False`. Wildcard tables continue to run metadata-based freshness checks, but dbt emits a deprecation warning advising users to opt in to the new behavior. For example:
+By default, this flag is set to `False`. Tables with wildcard identifiers continue to run metadata-based freshness checks, but dbt emits a deprecation warning advising users to opt in to the new behavior. For example:
 
 ```
 WARNING: Raise an error when metadata-based source freshness is used with a
@@ -29,7 +29,7 @@ You may opt into the new behavior sooner by setting
 `flags.bigquery_reject_wildcard_metadata_source_freshness` to `True` in `dbt_project.yml`.
 ```
 
-When the flag is set to `True`, dbt raises a `DbtRuntimeError` when metadata-based source freshness checks are used with wildcard table identifiers. For example:
+When you set this flag to `True`, dbt raises a `DbtRuntimeError` when you run metadata-based source freshness checks with wildcard table identifiers. For example:
 
 ```
 Runtime Error in source my_* (models/schema.yml)
@@ -38,7 +38,7 @@ Runtime Error in source my_* (models/schema.yml)
   this source to use a query-based freshness check instead.
 ```
 
-To calculate freshness for wildcard tables, configure `loaded_at_field` on the source. This enables query-based freshness, which runs a query such as `SELECT MAX(loaded_at_field)`.
+To calculate freshness for wildcard tables, configure [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) on the source to use query-based freshness checks instead. 
 
 Example configuration:
 

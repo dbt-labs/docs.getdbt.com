@@ -90,7 +90,7 @@ On BigQuery, metadata-based freshness checks are not reliable for sources define
 
 To prevent incorrect freshness results, enable the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag in your `dbt_project.yml`. When enabled, dbt raises an error if metadata-based freshness is used with a wildcard table identifier.
 
-To calculate freshness for wildcard tables, configure [`loaded_at_field`](#loaded_at_field) to use query-based freshness instead.
+To calculate freshness for wildcard tables, configure [`loaded_at_field`](#loaded_at_field) to use query-based freshness checks instead.
 :::
 </VersionBlock>
 
