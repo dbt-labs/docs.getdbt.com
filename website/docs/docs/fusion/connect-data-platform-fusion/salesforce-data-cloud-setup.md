@@ -12,7 +12,7 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: N/A
   slack_channel_link: N/A
-  platform_name: 'Salesforec Data 360'
+  platform_name: 'Salesforce Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
 ---
 
