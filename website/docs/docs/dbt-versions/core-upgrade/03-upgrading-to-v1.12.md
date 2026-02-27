@@ -44,7 +44,6 @@ You can read more about each of these behavior changes in the following links:
 
 ## Adapter-specific features and functionalities
 
-**Coming soon**
 
 ### Redshift
 
