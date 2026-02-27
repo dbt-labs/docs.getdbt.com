@@ -85,7 +85,7 @@ Under **Timing**, you can either use regular intervals for jobs that need to run
 
 To fully customize the scheduling of your job, choose the **Cron schedule** option and use cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
 
-**Note:** Cron schedules in <Constant name="cloud" /> use UTC and do not convert to your local timezone or adjust for daylight saving time.
+**Note:** Cron schedules in <Constant name="cloud" /> use UTC and don't convert to your local timezone or adjust for daylight saving time.
 
 **Cron frequency**
 
