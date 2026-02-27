@@ -3,11 +3,16 @@ The URI used for SSO connections will vary based on your <Constant name="cloud" 
 1. Navigate to your **Account settings** and click **SSO & SCIM** on the left menu.
 2. Click **Edit** or **Get started** in the **Single sign-on** pane.
 3. Select the appropriate **Identity provider** from the **Provider type** dropdown.
-4. The Auth0 URI should be displayed under the **Identity provider values** section. This is your Auth0 URI and the label will depend on the identity provider you selected.
-   - SAML 2.0 providers will show the **Single sign-on URL** (example `https://auth.cloud.getdbt.com/login/callback?connection=account_name-random_characters`, where `account_name-random_characters` is specific to your account).
-   - Okta providers will show the **Single sign-on URL** (example `https://auth.cloud.getdbt.com/login/callback?connection=account_name-random_characters`, where `account_name-random_characters` is specific to your account).
-   - Google Workspace providers will show the **Authorized Redirect URI** (example `https://auth.cloud.getdbt.com/login/callback`).
-   - Microsoft Entra ID providers will show the **Callback URI** (example `https://auth.cloud.getdbt.com/login/callback`).
+4. The Auth0 URI is displayed under the **Identity provider values** section. The field label depends on the provider you selected:
+
+   | Identity provider | Field label | Example URI |
+   |---|---|---|
+   | SAML 2.0 | **Single sign-on URL** | `https://auth.cloud.getdbt.com/login/callback?connection=<login_slug>` |
+   | Okta | **Single sign-on URL** | `https://auth.cloud.getdbt.com/login/callback?connection=<login_slug>` |
+   | Google Workspace | **Authorized Redirect URI** | `https://auth.cloud.getdbt.com/login/callback` |
+   | Microsoft Entra ID | **Callback URI** | `https://auth.cloud.getdbt.com/login/callback` |
+
+   *`<login_slug>` is the login URL slug specific to your account.*
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-uri.png" width="80%" title="Example of the identity provider values for a SAML 2.0 provider" />
 
