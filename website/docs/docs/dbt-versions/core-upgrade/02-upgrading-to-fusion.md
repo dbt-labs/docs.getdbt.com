@@ -394,6 +394,25 @@ To access custom configurations stored under meta, use the explicit methods:
 
 For more information, see [config.meta_get()](/reference/dbt-jinja-functions/config#configmeta_get) and [config.meta_require()](/reference/dbt-jinja-functions/config#configmeta_require).
 
+### Fusion compiler
+
+#### Snowflake model functions
+
+<Constant name="fusion" /> supports [Snowflake ML model functions](https://docs.snowflake.com/en/guides-overview-ml-functions), which allow you to call machine learning models directly in SQL. 
+
+Because model function return types are flexible and defined by the underlying model, <Constant name="fusion" /> uses simplified type checking:
+- **Arguments:** <Constant name="fusion" /> accepts any arguments without strict type validation.
+- **Return type:** <Constant name="fusion" /> treats all model function results as `VARIANT`.
+
+To use the result in your models, cast it to the expected type:
+
+```sql
+select 
+  my_model!predict(input_column)::float as prediction_score
+from {{ ref('my_table') }}
+```
+
+
 ### Package support
 
 import FusionPackages from '/snippets/_fusion-supported-packages.md';
