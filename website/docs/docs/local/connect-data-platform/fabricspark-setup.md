@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Fabric Lakehouse setup"
+title: "Connect Microsoft Fabric Lakehouse to dbt Core"
 sidebar_label: "Microsoft Fabric Lakehouse"
 description: "Read this guide to learn about the Microsoft Fabric spark setup for Lakehouse in dbt."
 id: "fabricspark-setup"

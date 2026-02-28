@@ -1,5 +1,5 @@
 ---
-title: "iomete setup"
+title: "Connect iomete to dbt Core"
 sidebar_label: "iomete"
 description: "Read this guide to learn about the iomete warehouse setup in dbt."
 id: "iomete-setup"

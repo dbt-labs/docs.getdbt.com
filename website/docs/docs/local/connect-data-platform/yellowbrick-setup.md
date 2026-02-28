@@ -1,5 +1,5 @@
 ---
-title: "Yellowbrick setup"
+title: "Connect Yellowbrick to dbt Core"
 sidebar_label: "Yellowbrick"
 description: "Read this guide to learn about the Yellowbrick warehouse setup in dbt."
 id: "yellowbrick-setup"

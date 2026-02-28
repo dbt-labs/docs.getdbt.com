@@ -1,5 +1,5 @@
 ---
-title: "Cloudera Impala setup"
+title: "Connect Cloudera Impala to dbt Core"
 sidebar_label: "Cloudera Impala"
 description: "Read this guide to learn about the Cloudera Impala warehouse setup in dbt."
 id: "impala-setup"

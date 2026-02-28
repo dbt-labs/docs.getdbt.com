@@ -1,5 +1,5 @@
 ---
-title: "IBM DB2 setup"
+title: "Connect IBM DB2 to dbt Core"
 sidebar_label: "IBM DB2"
 description: "Read this guide to learn about the IBM DB2 warehouse setup in dbt."
 id: "ibmdb2-setup"

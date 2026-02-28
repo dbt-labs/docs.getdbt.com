@@ -1,5 +1,5 @@
 ---
-title: "DeltaStream setup"
+title: "Connect DeltaStream to dbt Core"
 sidebar_label: "DeltaStream"
 description: "Read this guide to learn about the DeltaStream warehouse setup in dbt."
 meta:

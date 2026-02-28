@@ -19,7 +19,7 @@ meta:
 
 <VersionBlock firstVersion="2.0">
 
-# Redshift setup <Lifecycle status='preview' />
+# Connect Redshift to Fusion <Lifecycle status='preview' />
 
 You can configure the Redshift adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
@@ -114,9 +114,9 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-# Redshift setup
+# Connect Redshift to dbt Core
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" />
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 

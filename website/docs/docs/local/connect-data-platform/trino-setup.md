@@ -1,5 +1,5 @@
 ---
-title: "Starburst/Trino setup"
+title: "Connect Starburst/Trino to dbt Core"
 sidebar_label: "Starburst/Trino"
 description: "Read this guide to learn about the Starburst/Trino warehouse setup in dbt."
 id: "trino-setup"

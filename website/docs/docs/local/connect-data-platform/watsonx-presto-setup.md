@@ -1,5 +1,5 @@
 ---
-title: "IBM watsonx.data Presto setup"
+title: "Connect IBM watsonx.data Presto to dbt Core"
 sidebar_label: "IBM watsonx.data Presto"
 description: "Read this guide to learn about the IBM watsonx.data Presto setup in dbt."
 id: "watsonx-presto-setup"

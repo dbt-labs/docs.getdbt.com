@@ -1,5 +1,5 @@
 ---
-title: "YDB setup"
+title: "Connect YDB to dbt Core"
 sidebar_label: "YDB"
 description: "Read this guide to learn how to configure YDB with dbt."
 id: "ydb-setup"

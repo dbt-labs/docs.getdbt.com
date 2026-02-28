@@ -1,5 +1,5 @@
 ---
-title: "Vertica setup"
+title: "Connect Vertica to dbt Core"
 sidebar_label: "Vertica"
 id: "vertica-setup"
 meta:

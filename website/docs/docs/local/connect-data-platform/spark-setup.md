@@ -1,5 +1,5 @@
 ---
-title: "Apache Spark setup"
+title: "Connect Apache Spark to dbt Core"
 sidebar_label: "Apache Spark"
 description: "Read this guide to learn about the Apache Spark warehouse setup in dbt."
 id: "spark-setup"
