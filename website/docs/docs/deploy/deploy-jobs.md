@@ -26,6 +26,16 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 ## Create and schedule jobs {#create-and-schedule-jobs}
 
+:::info
+
+<Constant name="cloud" /> uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (UTC) for all jobs, including those configured with cron. It does not adjust for your local timezone or daylight saving time. For example:
+
+- 0 means 12am (midnight) UTC
+- 12 means 12pm (afternoon) UTC
+- 23 means 11pm UTC
+
+:::
+
 1. On your deployment environment page, click **Create job** > **Deploy job** to create a new deploy job. 
 2. Options in the **Job settings** section:
     - **Job name** &mdash; Specify the name for the deploy job. For example, `Daily build`.
@@ -71,20 +81,11 @@ Under **Timing**, you can either use regular intervals for jobs that need to run
 
 - **Specific hours** &mdash; Use this option to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. Job runs will always be consistent between both hours and days, so if your job runs at 00:05, 12:05, and 23:05 UTC, it will run at these same hours each day. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
 
-
-:::info
-
-<Constant name="cloud" /> uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (UTC) and does not account for translations to your specific timezone or take into consideration daylight savings time. For example:
-
-- 0 means 12am (midnight) UTC
-- 12 means 12pm (afternoon) UTC
-- 23 means 11pm UTC
-
-:::
-
 ### Cron schedule
 
 To fully customize the scheduling of your job, choose the **Cron schedule** option and use cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
+
+**Note:** Cron schedules in <Constant name="cloud" /> use UTC and don't convert to your local timezone or adjust for daylight saving time.
 
 **Cron frequency**
 
