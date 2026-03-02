@@ -15,7 +15,7 @@ OAuth in <Constant name="dbt_platform" /> lets developers authorize their develo
 
 Pick the best documentation for your platform to configure OAuth and have developers authorize their credentials.
 
-| Platform | Doc | What it does |
+| Platform | Doc | Description |
 |----------|-----|----------------|
 | **Snowflake** | [Set up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) | Developers authorize dev credentials via Snowflake (or Snowflake SSO). |
 | **Databricks** | [Set up Databricks OAuth](/docs/cloud/manage-access/set-up-databricks-oauth) | Developers authorize dev credentials via Databricks. |
