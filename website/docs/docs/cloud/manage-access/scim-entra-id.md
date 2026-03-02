@@ -31,7 +31,7 @@ Automatic license type mapping is not currently supported with Entra ID SCIM. Se
     <Lightbox src="/img/docs/dbt-cloud/access-control/create-application.png" width="60%" title="Give your app a unique name." />
 5. From the application **Overview** screen, click **Provision User Accounts**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/provision-user-accounts.png" width="60%" title="The 'Provision user accounts' option." />
-6. From the **Create configuration** section, click **Connect your application**
+6. From the **Create configuration** section, click **Connect your application**.
 7. Fill out the form with the information from your dbt account:
     - The **Tenant URL** in Entra ID is your **SCIM base URL** from dbt
     - The **Secret token** in Entra ID is your **SCIM token** from dbt
