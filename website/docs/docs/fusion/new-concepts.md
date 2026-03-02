@@ -55,17 +55,19 @@ Use this style of gradual typing to start with lightweight validation, then incr
 
 #### Introspection handling in baseline mode
 
-In baseline mode, static analysis errors are automatically downgraded to warnings if introspection is detected on the node. This prevents common scenarios where introspective queries that fail to reach the database or return no results don't error, and instead produce invalid SQL.
+In baseline mode, static analysis errors are automatically downgraded to warnings if introspection is detected on the node. This prevents failures in common scenarios where an introspective query cannot reach the database or returns no results.
+
+In these cases, the macro may render invalid SQL. Instead of failing the run, baseline mode surfaces a warning so your project can continue executing.
 
 For example, consider this query using the `dbt_utils.unpivot` macro:
 
 ```sql
-select * from  (
+select * from (
 {{
     dbt_utils.unpivot(
-        relation=ref('order_items_summary'),
+        relation=ref('example_model'),
         cast_to='integer',
-        exclude=['order_id', 'customer_id', 'order_time', 'order_value', 'delivery_id', 'platform'],
+        exclude=['order_id', 'customer_id'],
         field_name='product_type',
         value_name='quantity'
     )
@@ -76,21 +78,21 @@ select * from  (
 If the introspection query fails or returns no results, this renders to:
 
 ```sql
-SELECT * FROM (
+select * from (
 
 )
 ```
 
-This is invalid SQL. In baseline mode, the static analysis error is downgraded to a warning:
+This is invalid SQL and would normally produce a static analysis error. However, in baseline mode, the error is downgraded to a warning:
 
-```
+```bash
 dbt0101: no viable alternative at input '(
     
 )'
-  --> models/analytics/order_items_unpivoted.sql:17:1
+  --> models/example_model.sql:17:1
 ```
 
-This allows your project to continue running while alerting you to potential issues with introspective queries.
+This behavior allows your project to continue running while still alerting you to potential issues with introspective queries.
 
 #### Migration scenarios
 
@@ -217,8 +219,9 @@ from {{ ref('my_model') }}
 
 With baseline mode as the default, the scenarios that previously required disabling static analysis are no longer blockers. The only real case to turn static analysis off is if the <Constant name="fusion_engine" /> does not parse _confirmed valid_ SQL in your database of choice.
 
-This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
+With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if the <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
 
+This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
 
 import AboutFusion from '/snippets/_about-fusion.md';
 
