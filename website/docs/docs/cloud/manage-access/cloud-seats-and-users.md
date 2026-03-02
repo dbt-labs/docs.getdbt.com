@@ -167,7 +167,7 @@ When a user belongs to multiple IdP groups, the Developer license takes preceden
 | Yes | Yes | Developer (Developer takes precedence) |
 
 :::note
-If a user's IdP groups do not match _any_ license type mappings, <Constant name="cloud" /> will assign a Developer license by default.
+If a user's IdP groups do not match _any_ license type mappings, <Constant name="cloud" /> assigns a Developer license by default.
 :::
 
 ## Granular permissioning
