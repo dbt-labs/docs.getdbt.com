@@ -130,7 +130,7 @@ To manually assign a specific type of license to a user on your team:
 1. Click on your account name in the left side menu and select **Account settings**.
 2. Navigate to the **Users** page in your **Account settings**. 
 3. Select the user you want to manage and click the **Edit** button.
-4. From this **User details** page, you can select the license type and relevant groups for the user.
+4. On the **User details** page, you can select the license type and relevant groups for the user.
 
 **Note:** You will need to have an available license ready to allocate for the user. If your account does not have an available license to allocate, you will need to add more licenses to your plan to complete the license change.
 
