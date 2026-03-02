@@ -8,7 +8,7 @@ sidebar_label: "Set up SCIM with Entra ID"
 # Set up SCIM with Entra ID <Lifecycle status="managed, managed_plus" />
 
 :::info SCIM available for Entra ID
-<Constant name="cloud" /> supports SCIM with Microsoft Entra ID for user and group provisioning and profile updates.
+<Constant name="cloud" /> supports System for Cross-Domain Identity Management (SCIM) with Microsoft Entra ID for user and group provisioning and profile updates.
 
 Automatic license type mapping is not currently supported with Entra ID SCIM. See [mapped configuration](/docs/cloud/manage-access/seats-and-users#mapped-configuration) to manage license types within the <Constant name="dbt_platform" /> user interface.
 
