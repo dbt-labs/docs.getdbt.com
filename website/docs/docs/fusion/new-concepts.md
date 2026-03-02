@@ -123,7 +123,7 @@ The <Constant name="fusion_engine" /> (strict mode):
 
 ## Configuring `static_analysis`
 
-You can modify the way static analysis is applied for specific models in your project. The static analysis configuration cascades from most strict to least strict: `baseline` can overwrite `strict`, and `off` can overwrite `baseline` or `strict`, but `strict` cannot overwrite `baseline`. For more details, refer to [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
+You can modify the way static analysis is applied for specific models in your project. The static analysis configuration cascades from most strict to least strict. Going downstream in your lineage, a model can keep the same mode or relax it &mdash; it can't be stricter than its parent. For the full rules and examples, see [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
