@@ -162,7 +162,7 @@ When a user belongs to multiple IdP groups, the Developer license takes preceden
 | In a Developer-mapped group? | In a Read-Only-mapped group? | License assigned |
 |---|---|---|
 | No | No | Developer (default) |
-| No | Yes | Read Only |
+| No | Yes | Read-Only |
 | Yes | No | Developer |
 | Yes | Yes | Developer (Developer takes precedence) |
 
