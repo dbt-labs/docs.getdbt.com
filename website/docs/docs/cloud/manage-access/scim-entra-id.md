@@ -64,8 +64,8 @@ To map the attributes that will sync with dbt:
     - **Match objects using this attribute:** `No`
     - **Matching precedence:** *Leave blank*
     - **Apply this mapping:** `Always`
+    <Lightbox src="/img/docs/dbt-cloud/access-control/edit-attribute.png" width="60%" title="Complete the fields as shown." />
 9. Click **Ok**.
-    <Lightbox src="/img/docs/dbt-cloud/access-control/edit-attribute.png" width="60%" title="Edit the attribute as shown." />
 10. Make sure the following mappings are in place and delete any others:
     - **UserName:** `userPrincipalName` or the value you want users to leverage to log in to dbt. 
     - **active:** `Switch([IsSoftDeleted], , "False", "True", "True", "False")`
