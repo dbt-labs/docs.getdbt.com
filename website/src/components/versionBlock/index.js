@@ -5,21 +5,23 @@ import { availableInCurrentVersion } from '../../utils/available-in-current-vers
 export default function VersionBlock({ firstVersion = "0", lastVersion = undefined, children }) {
   const { version } = useContext(VersionContext);
 
-  const [loading, setLoading] = useState(true);
+  const [versionReady, setVersionReady] = useState(false);
 
-  // Hide versionBlock components until version ready
+  // Wait until version is resolved before filtering content
   useEffect(() => {
-    version && setLoading(false);
+    if (version) setVersionReady(true);
   }, [version]);
 
-  // Only check version if current version set
-  if (version) {
-    if (!availableInCurrentVersion(
-      version, 
-      firstVersion, 
-      lastVersion
-    )) return null;
+  // Once version is known, apply version filtering normally
+  if (versionReady) {
+    if (!availableInCurrentVersion(version, firstVersion, lastVersion)) {
+      return null;
+    }
+    return <>{children}</>;
   }
 
-  return loading ? null : <>{children}</>;
+  // SSR and initial client render: keep content in the DOM so that static
+  // markdown output (e.g. llms-txt .md files) includes all version block
+  // content, but hide it visually so users don't see a flash of wrong content.
+  return <div style={{ display: 'none' }}>{children}</div>;
 }
