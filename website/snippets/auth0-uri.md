@@ -1,7 +1,7 @@
 The URI used for SSO connections will vary based on your <Constant name="cloud" /> hosted region. To find the Auth0 URI (also called the **Single sign-on URL**, **Authorization URL**, or **Callback URI**) for your environment:
 
 1. Navigate to your **Account settings** and click **SSO & SCIM** on the left menu.
-2. Click **Edit** or **Get started** in the **Single sign-on** pane.
+2. In the **Single sign-on** pane, click **Get started** (if SSO has not been configured) or **Edit** (if it has already been set up).
 3. Select the appropriate **Identity provider** from the **Provider type** dropdown.
 4. The Auth0 URI is displayed under the **Identity provider values** section. The field label depends on the provider you selected:
 
