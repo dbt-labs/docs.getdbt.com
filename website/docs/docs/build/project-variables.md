@@ -5,17 +5,18 @@ id: "project-variables"
 pagination_next: "docs/build/environment-variables"
 ---
 
-dbt provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for
-compilation. Variables can be used to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22),
-[avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23)
-or otherwise provide data to models to configure how they are compiled.
-
-To use a variable in a model, hook, or macro, use the `{{ var('...') }}` function. More information on the `var` function can be found [here](/reference/dbt-jinja-functions/var).
+dbt provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for compilation. Variables allow you to define configurable values for your project instead of hardcoding them in SQL.
 
 Variables can be defined in two ways:
 
-1. In the `dbt_project.yml` file
-2. On the command line
+- In the [`dbt_project.yml`](/reference/dbt_project.yml) file
+- On the command line
+
+Variables defined in the `dbt_project.yml` act as project-wide defaults. These defaults apply anywhere the variable is referenced. You can override them at runtime using the `--vars` command-line argument, which is useful when you want to change a value for a specific run. For example, when testing with a different date range or running models with environment-specific settings.
+
+You might use variables to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22), set reporting date ranges, [avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23), or otherwise control how models are compiled.
+
+To use a variable in a model, hook, or macro, use the `{{ var('...') }}` function. The `var()` function retrieves the value defined in your project or passed using `--vars`. For more information, see [About var function](/reference/dbt-jinja-functions/var).
 
 Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML information.
 
@@ -61,30 +62,9 @@ models:
 
 ### Defining variables on the command line
 
-The `dbt_project.yml` file is a great place to define variables that rarely
-change. Other types of variables, like date ranges, will change frequently. To
-define (or override) variables for a run of dbt, use the `--vars` command line
-option. In practice, this looks like:
+import Commandlinevariable from '/snippets/_command-line-variables.md';
 
-```
-$ dbt run --vars '{"key": "value"}'
-```
-
-The `--vars` argument accepts a YAML dictionary as a string on the command line.
-YAML is convenient because it does not require strict quoting as with <Term id="json" />.
-
-Both of the following are valid and equivalent:
-
-```
-$ dbt run --vars '{"key": "value", "date": 20180101}'
-$ dbt run --vars '{key: value, date: 20180101}'
-```
-
-If only one variable is being set, the brackets are optional, eg:
-
-```
-$ dbt run --vars 'key: value'
-```
+<Commandlinevariable />
 
 You can find more information on defining dictionaries with YAML [here](https://github.com/Animosity/CraftIRC/wiki/Complete-idiot%27s-introduction-to-yaml).
 
