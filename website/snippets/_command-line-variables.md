@@ -1,6 +1,6 @@
 The `dbt_project.yml` file is a great place to define variables that rarely change. 
 
-When you need to override a variable for a specific run, for example to pass a date range or adjust behavior dynamically, use the `--vars` command line option.
+When you need to override a variable for a specific run, use the `--vars` command line option. For example, when you want to test with a different date range, run models with environment-specific settings, or adjust behavior dynamically.
 
 Use `--vars` to pass one or more variables to a dbt command. Provide the argument as a YAML dictionary string.
 
