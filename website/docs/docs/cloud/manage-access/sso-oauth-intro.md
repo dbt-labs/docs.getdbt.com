@@ -9,8 +9,8 @@ id: "sso-oauth-intro"
 This section covers how to authenticate users and connect data platforms in <Constant name="dbt_platform" /> using:
 
 <!-- no toc -->
-- [SSO](#sso)
-- [SCIM](#scim)
+- [Single sign-on (SSO)](#sso)
+- [System for Cross-Domain Identity Management (SCIM)](#scim)
 - [Connection OAuth](#connection-oauth)
 
 These features are available on Enterprise and Enterprise+ plans and are typically configured by account admins or security teams.
@@ -38,7 +38,7 @@ Automates user and group provisioning from your IdP into <Constant name="cloud" 
 
 Connection OAuth is for authenticating to your data platform (like Snowflake, BigQuery), which is different from SSO, which handles user login to <Constant name="dbt_platform" />. It lets developers authorize their development credentials with a data platform using that platform's login instead of storing passwords in <Constant name="cloud" />. *For admins and developers connecting to supported data platforms.*
 
-- [OAuth overview](/docs/cloud/manage-access/oauth-intro) &mdash; What's available and by platform
+- [OAuth overview](/docs/cloud/manage-access/oauth-intro) &mdash; What's available by platform
 - [Set up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth)
 - [Set up Databricks OAuth](/docs/cloud/manage-access/set-up-databricks-oauth)
 - [Set up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth)

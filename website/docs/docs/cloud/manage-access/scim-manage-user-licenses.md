@@ -16,21 +16,21 @@ SCIM license mapping is currently only supported for Okta. For other providers, 
 #### Considerations
 Before you enable SCIM license mapping:
 - Default license: New users are assigned a Developer license unless you change it manually, using [SSO license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration), or using SCIM.
-- Best practice: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or SSO mapping changes.
-- Analyst license: Only available on [select plans](/docs/cloud/manage-access/seats-and-users). Assigning it using SCIM will error if that license type isn't available for your account.
+- **Best practice**: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or single sign-on (SSO) mapping changes.
+- **Analyst license**: Only available on [select plans](/docs/cloud/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account.
 
 ## Enable SCIM license mapping
 
-To use license management using SCIM, enable the feature under the **SCIM** section in the **SSO & SCIM** settings. This setting will enforce license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.
+To use license management using SCIM, go to your **Account settings** > **SSO & SCIM**. Under the **SCIM** section, enable **Manage user licenses with SCIM**. This setting enforces license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.
 <Lightbox src="/img/docs/dbt-cloud/access-control/scim-managed-licenses.png" width="60%" title="Enable SCIM managed user license distribution." />
 
-We recommend that you complete the setup instructions for your identity provider prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="cloud" /> will be ignored.
+We recommend that you complete the setup instructions for your identity provider (IdP) prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="cloud" /> will be ignored.
 
 The recommended steps for migrating to SCIM license mapping are as follows:
 1. Set up SCIM but keep the toggle disabled so existing license mappings continue to work as expected.
-2. Configure license attributes in your Identity Provider (IdP).
+2. Configure license attributes in your IdP.
 3. Test that SCIM attributes are being used to set license type in <Constant name="cloud" />.
-4. Enable the toggle to ignore existing license mappings so that SCIM is the source-of-truth for assigning licenses to users.
+4. Enable the toggle to ignore existing license mappings so that SCIM is the source of truth for assigning licenses to users.
 
 ## Enterprise default groups
 
@@ -74,7 +74,7 @@ Users in the Enterprise default group **Member** are assigned a **Developer** li
 | In `dbt_developers` group? | In `dbt_read_only` group? | License assigned |
 |----------------------|---------------------|------------------|
 | No | No | Developer (Member default or default for new users) |
-| No | Yes | Read Only |
+| No | Yes | Read-Only |
 | Yes | No | Developer |
 | Yes | Yes | Developer (Developer takes precedence) |
 
@@ -84,15 +84,15 @@ To add the attribute for license types to your Okta environment:
 
 1. From your Okta application, navigate to the **Provisioning** tab, scroll down to **Attribute Mappings**, and click **Go to Profile Editor**.
 2. Click **Add Attribute**.
-3. Configure the attribute fields as follows (the casing should match for the values of each):
+3. Configure the attribute fields as follows (the casing should match for each value):
     - **Data type:** `string`
     - **Display name:** `License Type`
     - **Variable name:** `licenseType`
     - **External name:** `licenseType`
     - **External namespace:** `urn:ietf:params:scim:schemas:extension:dbtLabs:2.0:User`
     - **Description:** An arbitrary string of your choosing.
-    - **Enum:** Check the box for **Define enumerated list of values**
-    - **Attribute members:** Add the initial attribute and then click **Add another** until each license type is defined. We recommend adding all of the values even if you don't use them today, so they'll be available in the future.
+    - **Enum:** Select the box for **Define enumerated list of values**.
+    - **Attribute members:** Add the initial attribute and then click **Add another** until each license type is defined. We recommend adding all of the values even if you don't use them today, so they'll be available in the future. Refer to the following table for the values you can use.
         | Display name | Value |
         |--------------|-------|
         | **IT**       | `it`  |
@@ -104,20 +104,20 @@ To add the attribute for license types to your Okta environment:
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-license-attributes.png" width="60%" title="Enter the fields as they appear in the image. Ensure the cases match." />
 
 4. **Save** the attribute mapping.
-5. Users can now have license types set in their profiles and when they are being provisioned.
+Users can now have license types set in their profiles and when they are being provisioned.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-license-provisioning.png" width="60%" title="Set the license type for the user in their Okta profile." />
 
 ## Automate license assignments with Okta groups
 
 To automate seat assignments in Okta, use the Profile Editor to map Okta group memberships to dbt license types.
 
-1. **Define Okta groups** &mdash; Create groups in Okta, for example:
+1. Create groups in Okta, for example:
    - `dbt_developers`
    - `dbt_read_only`
 
-2. **Configure mappings** &mdash; Within the dbt app Profile Editor in Okta, create mapping rules for Okta users to dbt app users:
+2. Within the dbt app Profile Editor in Okta, create mapping rules for Okta users to dbt app users:
    - **Attribute:** `licenseType`
    - **Logic (Expression):** `IIF(isMemberOf("dbt_developers"), "developer", "read_only")`
-   - **Default behavior:** Users not in the `dbt_developers` group will default to Read Only.
+   - **Default behavior:** Users not in the `dbt_developers` group will default to Read-Only.
 
-3. **Automated updates** &mdash; Adding or removing users from these Okta groups automatically updates their dbt app profile and triggers a SCIM update to synchronize the `licenseType` in <Constant name="cloud" />.
+Adding or removing users from these Okta groups automatically updates their dbt app profile and triggers a SCIM update to synchronize the `licenseType` in <Constant name="cloud" />.

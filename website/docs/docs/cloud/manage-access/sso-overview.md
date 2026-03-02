@@ -7,10 +7,10 @@ pagination_prev: null
 
 # Single sign-on (SSO) overview <Lifecycle status="managed, managed_plus" />
 
-This overview explains how users are provisioned in <Constant name="cloud" /> via Single Sign-On (SSO).
+This overview explains how users are provisioned in <Constant name="cloud" /> via single sign-on (SSO).
 <Constant name="cloud" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. 
 
-To further automate your workflow, you can use [SCIM (System for Cross-domain Identity Management)](/docs/cloud/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your Identity Provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
+To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
 
 ## Prerequisites
 

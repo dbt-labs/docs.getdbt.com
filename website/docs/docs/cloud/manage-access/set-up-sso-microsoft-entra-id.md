@@ -10,7 +10,7 @@ sidebar_label: "Set up SSO with Microsoft Entra ID"
 <Constant name="cloud" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). 
 
 :::info SCIM available for Entra ID
-After setting up SSO, you can [set up SCIM](/docs/cloud/manage-access/scim-entra-id) with Entra ID to automate user and group provisioning. 
+After setting up single sign-on (SSO), you can [set up System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim-entra-id) with Entra ID to automate user and group provisioning. 
 :::
 
 Currently supported SSO features include:

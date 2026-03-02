@@ -8,7 +8,7 @@ id: "set-up-sso-okta"
 <Constant name="cloud" /> Enterprise-tier plans support single-sign on via Okta (using SAML).
 
 :::info SCIM available for Okta
-After setting up SSO, you can [set up SCIM](/docs/cloud/manage-access/scim-okta) with Okta to automate user and group provisioning and license assignment. 
+After setting up single sign-on (SSO), you can [set up System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim-okta) with Okta to automate user and group provisioning, and license assignment. 
 :::
 
 Currently supported SSO features include:
