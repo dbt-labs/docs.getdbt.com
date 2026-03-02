@@ -1,5 +1,5 @@
 ---
-title: "Decodable setup"
+title: "Connect Decodable to dbt Core"
 sidebar_label: "Decodable"
 id: "decodable-setup"
 meta:

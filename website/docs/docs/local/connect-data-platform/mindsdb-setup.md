@@ -1,5 +1,5 @@
 ---
-title: "MindsDB setup"
+title: "Connect MindsDB to dbt Core"
 sidebar_label: "MindsDB"
 id: "mindsdb-setup"
 meta:

@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure Synapse Analytics setup"
+title: "Connect Microsoft Azure Synapse Analytics to dbt Core"
 sidebar_label: "Microsoft Azure Synapse Analytics"
 description: "Read this guide to learn about the Mircosoft Azure Synapse Analytics dedicated SQL pool setup in dbt."
 meta:

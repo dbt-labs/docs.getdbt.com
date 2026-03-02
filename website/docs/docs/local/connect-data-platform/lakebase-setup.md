@@ -1,5 +1,5 @@
 ---
-title: "Databricks Lakebase setup"
+title: "Connect Databricks Lakebase to dbt Core"
 sidebar_label: "Databricks Lakebase"
 meta:
   maintained_by: dbt Labs

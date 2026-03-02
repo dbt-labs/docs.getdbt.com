@@ -17,7 +17,7 @@ meta:
 
 <VersionBlock firstVersion="2.0">
 
-# BigQuery setup <Lifecycle status='preview' />
+# Connect BigQuery to Fusion <Lifecycle status='preview' />
 
 You can configure the BigQuery adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
@@ -136,7 +136,10 @@ Find BigQuery-specific configuration information in the [BigQuery adapter refere
 
 <VersionBlock lastVersion="1.99">
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/bigquery-setup?version=2" />
+# Connect BigQuery to dbt Core
+
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/bigquery-setup?version=2" /> connection also available.
+
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />

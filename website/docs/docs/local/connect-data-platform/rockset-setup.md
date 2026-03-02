@@ -1,5 +1,5 @@
 ---
-title: "Rockset setup"
+title: "Connect Rockset to dbt Core"
 sidebar_label: "Rockset"
 description: "Read this guide to learn about the Rockset warehouse setup in dbt."
 id: "rockset-setup"

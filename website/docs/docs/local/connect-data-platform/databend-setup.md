@@ -1,5 +1,5 @@
 ---
-title: "Databend Cloud setup"
+title: "Connect Databend Cloud to dbt Core"
 sidebar_label: "Databend Cloud"
 description: "Read this guide to learn about the Databend warehouse setup in dbt."
 id: "databend-setup"

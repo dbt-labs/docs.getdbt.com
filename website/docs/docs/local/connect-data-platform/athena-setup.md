@@ -1,5 +1,5 @@
 ---
-title: "Athena setup"
+title: "Connect Athena to dbt Core"
 sidebar_label: "Athena"
 description: "Read this guide to learn about the Athena warehouse setup in dbt."
 meta:

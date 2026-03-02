@@ -17,6 +17,7 @@ meta:
   config_page: '/reference/resource-configs/data-cloud-configs'
 ---
 
+# Connect Salesforce to Fusion <Lifecycle status="Alpha" />
 
 :::warning Disclaimer
 This adapter is in the Alpha product stage and is not production-ready. It should only be used in sandbox or test environments. 

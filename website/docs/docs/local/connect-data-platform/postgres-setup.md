@@ -1,5 +1,5 @@
 ---
-title: "Postgres setup"
+title: "Connect Postgres to dbt Core"
 sidebar_label: "Postgres"
 description: "Read this guide to learn about the Postgres warehouse setup in dbt."
 id: "postgres-setup"

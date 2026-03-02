@@ -2,7 +2,7 @@
 Try out the [<Constant name="fusion" /> quickstart](/guides/fusion) and check out the [<Constant name="fusion" /> migration guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to see how to migrate your project.
 :::
 
-<Constant name="fusion_engine" /> powers dbt development everywhere — in the [<Constant name="dbt_platform" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine), [VS Code/Cursor/Windsurf](/docs/about-dbt-extension), and [locally](/docs/local/install-dbt?version=2#get-started). <Constant name="fusion"/> in the <Constant name="dbt_platform"/> is available in private preview. Contact your account team for access.
+<Constant name="fusion_engine" /> powers dbt development everywhere — in the [<Constant name="dbt_platform" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine), [VS Code/Cursor/Windsurf](/docs/about-dbt-extension), and [locally](/docs/local/install-dbt?version=2#installation). <Constant name="fusion"/> in the <Constant name="dbt_platform"/> is available in private preview. Contact your account team for access.
 
 [<Constant name="dbt_platform" />](/docs/introduction#the-dbt-platform-formerly-dbt-cloud) supports two engines: <Constant name="fusion" /> (Rust-based, fast, visual) and <Constant name="core" /> (Python-based, traditional). <Constant name="core" /> is also available as an [open-source CLI](/docs/introduction#dbt-core) for self-hosted workflows.
 

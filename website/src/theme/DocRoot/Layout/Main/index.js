@@ -70,8 +70,8 @@ export default function DocRootLayoutMain({
         isPrereleaseBannerText: "",
       });
     } else {
-      // Check if this is Fusion (version 2.0) or another prerelease
-      if (dbtVersion === "2.0") {
+      // Check if this is Fusion (version 2.x) or a Core prerelease
+      if (parseFloat(dbtVersion) >= 2) {
         setPreData({
           showisPrereleaseBanner: true,
           isPrereleaseBannerText: `You're viewing the preview docs for the <a href="https://docs.getdbt.com/docs/fusion">dbt Fusion engine</a>.`,

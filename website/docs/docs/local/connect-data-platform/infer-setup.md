@@ -1,5 +1,5 @@
 ---
-title: "Infer setup"
+title: "Connect Infer to dbt Core"
 sidebar_label: "Infer"
 description: "Read this guide to learn about the Infer warehouse setup in dbt."
 id: "infer-setup"

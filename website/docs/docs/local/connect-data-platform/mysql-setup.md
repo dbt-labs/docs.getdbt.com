@@ -1,5 +1,5 @@
 ---
-title: "MySQL setup"
+title: "Connect MySQL to dbt Core"
 sidebar_label: "MySQL"
 description: "Read this guide to learn about the MySQL warehouse setup in dbt."
 id: "mysql-setup"

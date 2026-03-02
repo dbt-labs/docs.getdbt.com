@@ -1,5 +1,5 @@
 ---
-title: "Greenplum setup"
+title: "Connect Greenplum to dbt Core"
 sidebar_label: "Greenplum"
 description: "Read this guide to learn about the Greenplum warehouse setup in dbt."
 id: "greenplum-setup"

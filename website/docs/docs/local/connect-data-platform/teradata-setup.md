@@ -1,5 +1,5 @@
 ---
-title: "Teradata setup"
+title: "Connect Teradata to dbt Core"
 sidebar_label: "Teradata"
 description: "Read this guide to learn about the Teradata warehouse setup in dbt."
 id: "teradata-setup"

@@ -1,5 +1,5 @@
 ---
-title: "Doris setup"
+title: "Connect Doris to dbt Core"
 sidebar_label: "Doris"
 description: "Read this guide to learn about the Doris warehouse setup in dbt."
 id: "doris-setup"

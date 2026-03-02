@@ -1,5 +1,5 @@
 ---
-title: "RisingWave setup"
+title: "Connect RisingWave to dbt Core"
 sidebar_label: "RisingWave"
 id: "risingwave-setup"
 description: "Read this guide to learn about how to set up RisingWave in dbt."

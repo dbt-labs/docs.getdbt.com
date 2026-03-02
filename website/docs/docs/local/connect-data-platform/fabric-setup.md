@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Fabric Data Warehouse setup"
+title: "Connect Microsoft Fabric Data Warehouse to dbt Core"
 sidebar_label: "Microsoft Fabric Data Warehouse"
 description: "Read this guide to learn about the Microsoft Fabric Data Warehouse setup in dbt."
 id: fabric-setup
