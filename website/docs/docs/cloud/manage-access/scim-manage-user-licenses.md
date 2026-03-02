@@ -120,4 +120,4 @@ To automate seat assignments in Okta, use the Profile Editor to map Okta group m
    - **Logic (Expression):** `IIF(isMemberOf("dbt_developers"), "developer", "read_only")`
    - **Default behavior:** Users not in the `dbt_developers` group will default to Read-Only.
 
-Adding or removing users from these Okta groups automatically updates their dbt app profile and triggers a SCIM update to synchronize the `licenseType` in <Constant name="cloud" />.
+Adding or removing users from these Okta groups automatically updates their dbt app profile and triggers a SCIM update to synchronize the `licenseType` in <Constant name="cloud" />. Admins also have the option of using **Manual Push** in the Okta app to synchronize the changes.
