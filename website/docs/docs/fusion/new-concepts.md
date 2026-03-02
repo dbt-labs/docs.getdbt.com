@@ -217,8 +217,6 @@ from {{ ref('my_model') }}
 
 ### When should I turn static analysis `off`?
 
-With baseline mode as the default, the scenarios that previously required disabling static analysis are no longer blockers. The only real case to turn static analysis off is if the <Constant name="fusion_engine" /> does not parse _confirmed valid_ SQL in your database of choice.
-
 With baseline mode enabled by default, static analysis is less likely to block your runs. You should only disable it if the <Constant name="fusion_engine" /> cannot parse SQL that is valid for your database of choice.
 
 This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
