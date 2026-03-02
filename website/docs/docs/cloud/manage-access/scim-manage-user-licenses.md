@@ -7,7 +7,7 @@ sidebar_label: "Manage user licenses with SCIM"
 
 # Manage user licenses with SCIM <Lifecycle status="managed, managed_plus" />
 
-You can manage user license assignments via SCIM with a user attribute in your Okta environment, so license type is set as users are provisioned and onboarded.
+You can manage user license assignments using System for Cross-Domain Identity Management (SCIM) and a user attribute in Okta, so the license type is set as users are provisioned and onboarded.
 
 :::info SCIM license mapping available for Okta only
 SCIM license mapping is currently only supported for Okta. For other providers, use [SSO license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration) or manage [licenses](/docs/cloud/manage-access/seats-and-users) in the <Constant name="dbt_platform" /> user interface.

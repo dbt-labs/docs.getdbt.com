@@ -33,8 +33,8 @@ Automatic license type mapping is not currently supported with Entra ID SCIM. Se
     <Lightbox src="/img/docs/dbt-cloud/access-control/provision-user-accounts.png" width="60%" title="The 'Provision user accounts' option." />
 6. From the **Create configuration** section, click **Connect your application**.
 7. Fill out the form with the information from your dbt account:
-    - The **Tenant URL** in Entra ID is your **SCIM base URL** from dbt
-    - The **Secret token** in Entra ID is your **SCIM token** from dbt
+    - The **Tenant URL** in Entra ID is your **SCIM base URL** from dbt.
+    - The **Secret token** in Entra ID is your **SCIM token** from dbt.
 8. Click **Test connection** and click **Create** once complete.
     <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning-config.png" width="60%" title="Configure the app and test the connection." />
 
@@ -44,19 +44,19 @@ To map the attributes that will sync with dbt:
 
 1. From the enterprise app **Overview** screen sidebar menu, click **Provisioning**. 
     <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning.png" width="60%" title="The Provisioning option on the sidebar." />
-2. From under **Manage**, again click **Provisioning**.
+2. Under **Manage**, click **Provisioning** again.
 3. Expand the **Mappings** section and click **Provision Microsoft Entra ID users**.
      <Lightbox src="/img/docs/dbt-cloud/access-control/provision-entra-users.png" width="60%" title="Provision the Entra ID users." />
-4. Click the box for **Show advanced options** and then click **Edit attribute list for customappsso**.
+4. Select the box for **Show advanced options** and then click **Edit attribute list for customappsso**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/customappsso-attributes.png" width="60%" title="Click to edit the customappsso attributes." />
-5. Scroll to the bottom of the **Edit attribute list** window and find an empty field where you can add a new entry with the following fields: 
+5. Scroll to the bottom of the **Edit Attribute List** window and find an empty field where you can add a new entry with the following fields: 
     - **Name:** `emails[type eq "work"].primary`
     - **Type:** `Boolean`
     - **Required:** True
     <Lightbox src="/img/docs/dbt-cloud/access-control/customappsso-entry.png" width="60%" title="Add the new field to the entry list." />
 6. Mark all of the fields listed in Step 10 below as `Required`.
     <Lightbox src="/img/docs/dbt-cloud/access-control/mark-as-required.png" width="60%" title="Mark the fields as required." />    
-7. Click **Save**
+7. Click **Save**.
 8. Back on the **Attribute mapping** window, click **Add new mapping** and complete fields with the following:
     - **Mapping type:** `none`
     - **Default value if null (optional):** `True`
@@ -64,7 +64,7 @@ To map the attributes that will sync with dbt:
     - **Match objects using this attribute:** `No`
     - **Matching precedence:** *Leave blank*
     - **Apply this mapping:** `Always`
-9. Click **Ok**
+9. Click **Ok**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/edit-attribute.png" width="60%" title="Edit the attribute as shown." />
 10. Make sure the following mappings are in place and delete any others:
     - **UserName:** `userPrincipalName` or the value you want users to leverage to log in to dbt. 
@@ -85,7 +85,7 @@ The following steps go over how to assign users/groups to the SCIM app. Refer to
 
 1. Navigate to Enterprise applications and select the SCIM app.
 2. Go to **Manage** > **Provisioning**.
-3. To synchronize Microsoft Entra ID users and groups to dbt, click the **Start provisioning** button.
+3. To synchronize Microsoft Entra ID users and groups to dbt, click **Start provisioning**.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/scim-entraid-start-provision.png" width="80%" title="Start provisioning to synchronize users and groups." />
 4. Navigate back to the SCIM app's overview page and go to **Manage** > **Users and groups**.
 5. Click **Add user/group** and select the users and groups. 
