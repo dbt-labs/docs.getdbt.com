@@ -60,7 +60,7 @@ In baseline mode, static analysis errors are automatically downgraded to warning
 For example, consider this query using the `dbt_utils.unpivot` macro:
 
 ```sql
-SELECT * FROM (
+select * from  (
 {{
     dbt_utils.unpivot(
         relation=ref('order_items_summary'),
