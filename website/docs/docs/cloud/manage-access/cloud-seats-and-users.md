@@ -151,7 +151,7 @@ If your account is connected to an Identity Provider (IdP) for [Single Sign On](
 
 #### Fundamental licensing rules
 
-- Default assignment: All new members of a <Constant name="cloud" /> account are assigned a Developer license unless you configure otherwise.
+- **Default assignment**: All new members of a <Constant name="cloud" /> account are assigned a Developer license unless you configure otherwise.
 - **Mapping basis**: License type mappings are based on _IdP groups_ (groups in your identity provider), not _<Constant name="cloud" /> groups_. Check group memberships in your IdP when configuring or troubleshooting.
 - **When changes take effect**: License types are adjusted when users sign into <Constant name="cloud" /> using single sign-on. Changes to license type mappings take effect the next time users sign in.
 
