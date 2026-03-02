@@ -71,6 +71,7 @@ When you use groups like `dbt_developers` and `dbt_read_only`, a user might be i
 
 Users in the Enterprise default group **Member** are assigned a **Developer** license by default. Until you remove users from **Member** (per the [best practice](#enterprise-default-groups) earlier), that default applies when they're not in any IdP license-mapping groups. Once you enable SCIM license mapping, the IdP group mapping overrides the Member default.
 
+**SSO license mapping (IdP group-based):**
 | In `dbt_developers` group? | In `dbt_read_only` group? | License assigned |
 |----------------------|---------------------|------------------|
 | No | No | Developer (Member default or default for new users) |
@@ -99,6 +100,9 @@ To add the attribute for license types to your Okta environment:
         | **Analyst**  | `analyst` |
         | **Developer**| `developer` |
         | **Read Only**| `read_only` |
+
+    The **Analyst** license is only available on [select plans](/docs/cloud/manage-access/seats-and-users).
+
     - **Attribute type:** Personal
 
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-license-attributes.png" width="60%" title="Enter the fields as they appear in the image. Ensure the cases match." />
