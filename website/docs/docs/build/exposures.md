@@ -57,7 +57,7 @@ _Expected:_
 
   :::tip 
 
-  Try not to confuse this `depends_on` YAML property with the [`-- depends_on`](/reference/dbt-jinja-functions/statement-blocks#example-using-depends_on), a SQL comment directive defined at the top of a model SQL file, which explicitly adds dependencies to the DAG and ensures the referenced resources are built before the model executes.
+Do not confuse this `depends_on` YAML property with the [`-- depends_on`](/reference/dbt-jinja-functions/statement-blocks#example-using-depends_on) a SQL comment directive defined at the top of a model SQL file, which explicitly adds dependencies to the DAG and ensures the referenced resources are built before the model executes.
 
   :::
 
