@@ -12,7 +12,7 @@ For more information, see [release tracks](/docs/dbt-versions/cloud-release-trac
 
 ## February 2026
 
-Release date: February 24, 2026
+Release date: February 27, 2026
 
 ### dbt cloud-based platform
 
