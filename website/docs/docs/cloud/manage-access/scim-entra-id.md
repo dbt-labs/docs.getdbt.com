@@ -16,7 +16,7 @@ Automatic license type mapping is not currently supported with Entra ID SCIM. Se
 
 ## Prerequisites
 - Available on [Enterprise or Enterprise+ plans](https://www.getdbt.com/pricing).
-- You must use Entra ID as your SSO provider and have it connected in the <Constant name="dbt_platform" />.
+- You must use Entra ID as your single sign-on (SSO) provider and have it connected in the <Constant name="dbt_platform" />.
 - You must have permissions to configure the account settings in [<Constant name="dbt_platform" />](/docs/cloud/manage-access/enterprise-permissions).
 - Complete [setup SSO with Entra ID](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) before configuring SCIM settings.
 - Complete the [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) to get your SCIM base URL and token.
