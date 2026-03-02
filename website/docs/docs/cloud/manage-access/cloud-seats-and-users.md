@@ -143,7 +143,7 @@ If your account is connected to an Identity Provider (IdP) for [Single Sign On](
 #### Configure license mappings
 
 1. Click on your account name in the left side menu and select **Account settings**.
-2. Navigate to **Groups & Licenses** and scroll to the **License Mappings** section.
+2. Navigate to **Groups & Licenses** and scroll to the **License mappings** section.
 3. Create or edit SSO mappings for both Read-Only and Developer license types.
 4. Enter a comma-separated list of **IdP group names** that should receive each license type.
 
