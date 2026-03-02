@@ -17,7 +17,7 @@ Release date: February 27, 2026
 ### dbt cloud-based platform
 
 ### Under the Hood
-- Resolve Click CLI UserWarning regarding --target and --profile usage in Advanced CI
+- Resolve Click CLI UserWarning regarding `--target` and `--profile` usage in Advanced CI
 
 This compatible release includes functionality from the following versions of dbt Core OSS:
 
