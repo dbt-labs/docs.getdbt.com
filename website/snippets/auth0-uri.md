@@ -17,7 +17,7 @@ The URI used for SSO connections will vary based on your <Constant name="cloud" 
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-uri.png" width="80%" title="Example of the identity provider values for a SAML 2.0 provider" />
 
 :::info The Auth0 URI uses `auth.cloud.getdbt.com` for all accounts
-The Auth0 URI always uses `auth.cloud.getdbt.com`, even if your account uses a cell-based login URL (such as `ks123.us1.dbt.com`). This is because <Constant name="cloud" /> uses Auth0 as a centralized authentication service. You do _not_ need to replace this with your cell-specific URL.
+The Auth0 URI always contains `auth.cloud.getdbt.com`, not your account prefix URL (such as `ks123.us1.dbt.com`). This is because <Constant name="cloud" /> uses Auth0 as a centralized authentication service. You do _not_ need to replace this with your cell-specific URL.
 :::
 
 
