@@ -79,7 +79,22 @@ The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use
 
 :::
 
-A model is _only_ eligible for static analysis if all of its parents are also eligible.
+### How static analysis modes cascade
+
+A model is _only_ eligible for static analysis if all of its parents are also eligible. The static analysis configuration cascades from most strict to least strict:
+
+- `baseline` can overwrite `strict`
+- `off` can overwrite `baseline` or `strict`
+- `strict` **cannot** overwrite `baseline`
+
+**Example:**
+
+If you have a lineage like: Model A → Model B → Model C
+
+- If Model A is set to `baseline`, you **cannot** set Model B to `strict`
+- If Model A is set to `strict`, you **can** set Model B to `baseline` ✓
+
+This ensures that stricter validation requirements don't propagate downstream when parent models haven't met those requirements.
 
 Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/fusion/new-concepts). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
 

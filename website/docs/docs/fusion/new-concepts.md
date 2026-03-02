@@ -53,6 +53,47 @@ The philosophy behind the above-mentioned tools and <Constant name="fusion" />'s
 
 Use this style of gradual typing to start with lightweight validation, then incrementally adopt strict guarantees as your project is ready.
 
+#### Introspection handling in baseline mode
+
+In baseline mode, static analysis errors are automatically downgraded to warnings if introspection is detected on the node. This prevents common scenarios where introspective queries that fail to reach the database or return no results don't error, and instead produce invalid SQL.
+
+For example, consider this query using the `dbt_utils.unpivot` macro:
+
+```sql
+SELECT * FROM (
+{{
+    dbt_utils.unpivot(
+        relation=ref('order_items_summary'),
+        cast_to='integer',
+        exclude=['order_id', 'customer_id', 'order_time', 'order_value', 'delivery_id', 'platform'],
+        field_name='product_type',
+        value_name='quantity'
+    )
+}}
+)
+```
+
+If the introspection query fails or returns no results, this renders to:
+
+```sql
+SELECT * FROM (
+
+)
+```
+
+This is invalid SQL. In baseline mode, the static analysis error is downgraded to a warning:
+
+```
+dbt0101: no viable alternative at input '(
+    
+)'
+  --> models/analytics/order_items_unpivoted.sql:17:1
+```
+
+This allows your project to continue running while alerting you to potential issues with introspective queries.
+
+#### Migration scenarios
+
 Migrating to <Constant name="fusion" /> can involve more than moving YAML around. Some scenarios that can make migration more involved include:
 
 1. **Limited access to sources**: You don't have access to all the sources and models of a large dbt project.
@@ -80,7 +121,7 @@ The <Constant name="fusion_engine" /> (strict mode):
 
 ## Configuring `static_analysis`
 
-You can modify the way static analysis is applied for specific models in your project. Remember that **a model is only eligible for `strict` static analysis if all of its parents are also eligible.**
+You can modify the way static analysis is applied for specific models in your project. The static analysis configuration cascades from most strict to least strict: `baseline` can overwrite `strict`, and `off` can overwrite `baseline` or `strict`, but `strict` cannot overwrite `baseline`. For more details, refer to [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
@@ -174,11 +215,9 @@ from {{ ref('my_model') }}
 
 ### When should I turn static analysis `off`?
 
-Static analysis may incorrectly fail on valid queries if they contain:
+With baseline mode as the default, the scenarios that previously required disabling static analysis are no longer blockers. The only real case to turn static analysis off is if the <Constant name="fusion_engine" /> does not parse _confirmed valid_ SQL in your database of choice.
 
-- **syntax or native functions** that the <Constant name="fusion_engine" /> doesn't recognize. Please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) in addition to disabling static analysis.
-- **dynamic SQL** such as [Snowflake's PIVOT ANY](https://docs.snowflake.com/en/sql-reference/constructs/pivot#dynamic-pivot-on-all-distinct-column-values-automatically) which cannot be statically analyzed. You can disable static analysis, refactor your pivot to use explicit column names, or create a [dynamic pivot in Jinja](https://github.com/dbt-labs/dbt-utils#pivot-source).
-- **highly volatile data feeding an introspective query** during a standalone `dbt compile` invocation. Because the `dbt compile` step does not run models, it uses old data or defers to a different environment when running introspective queries. The more frequently the input data changes, the more likely it is for this divergence to cause a compilation error. Consider whether these standalone `dbt compile` commands are necessary before disabling static analysis.
+This is a very rare occurrence. If you encounter this situation, please [open an issue](https://github.com/dbt-labs/dbt-fusion/issues) with an example of the failing SQL so we can update our parsers.
 
 
 import AboutFusion from '/snippets/_about-fusion.md';
