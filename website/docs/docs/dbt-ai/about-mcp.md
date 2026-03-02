@@ -17,7 +17,9 @@ For more information on MCP, have a look at [Get started with the Model Context 
 
 ## Server access
 
-You can use the dbt MCP server in two ways: locally or remotely. Choose the setup that best fits your workflow:
+You can use the dbt MCP server in the following ways: 
+- [Local MCP server](#local-mcp-server) &mdash; runs locally on your machine and requires installing `uvx` (which installs dbt-mcp locally) and then running `uvx dbt-mcp` to start the server. You don't need to clone the repository unless you want to contribute to dbt MCP.
+- [Remote MCP server](#remote-mcp-server) &mdash; uses an HTTP connection and makes calls to dbt-mcp hosted on the managed <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
 
 ### Local MCP server
 
@@ -38,7 +40,7 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 - Your use case is primarily consumption-based (for example, querying metrics, exploring metadata, viewing lineage).
 
 
-import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
+import MCPCreditUsage from '/snippets/_mcp-cre41dit-usage.md';
 
 <MCPCreditUsage />
 

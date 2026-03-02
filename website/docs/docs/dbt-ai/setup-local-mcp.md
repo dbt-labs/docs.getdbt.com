@@ -16,6 +16,24 @@ You don't need to clone the dbt-mcp repository to use local MCP. [Install uv](ht
 If you'd like to contribute to dbt MCP, clone the [dbt-mcp repo](https://github.com/dbt-labs/dbt-mcp) and contribute away!
 :::
 
+## Tool requirements at a glance
+
+Use this table to understand what each toolset needs and whether it works with or without a <Constant name="dbt_platform" /> account:
+
+| Toolset | Required variables | Works with <Constant name="dbt_platform" /> | Works without <Constant name="dbt_platform" /> |
+| --- | --- | --- | --- |
+| dbt CLI | `DBT_PROJECT_DIR`, `DBT_PATH` | Yes | Yes |
+| Semantic Layer | `DBT_HOST`, `DBT_TOKEN`, `DBT_PROD_ENV_ID` | Yes | No |
+| Discovery API | `DBT_HOST`, `DBT_TOKEN`, `DBT_PROD_ENV_ID` | Yes | No |
+| Admin API | `DBT_HOST`, `DBT_TOKEN`, `DBT_ACCOUNT_ID` | Yes | No |
+| SQL execution (`execute_sql`) | Personal access token, `DBT_DEV_ENV_ID`, `DBT_USER_ID` | Yes | No |
+| Codegen | `DBT_PROJECT_DIR`, `DBT_PATH`, and `DISABLE_DBT_CODEGEN=false` | Yes | Yes |
+| LSP / Fusion | `DBT_PROJECT_DIR`, `DBT_PATH`, and the dbt VS Code extension | Yes | Yes |
+
+:::note Toolsets auto-disable when required variables are missing
+If a required variable is not set, dbt-mcp will automatically disable that toolset rather than error. For example, if `DBT_HOST` is not configured, the Semantic Layer, Discovery, and Admin API toolsets won't be available. To confirm which toolsets are active, set `DBT_MCP_LOG_LEVEL=DEBUG` in your environment and check the [server logs](#debug-configurations).
+:::
+
 ## Prerequisites
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to be able to run `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment.
@@ -244,6 +262,22 @@ uvx dbt-mcp
 | `DBT_DEV_ENV_ID` | Optional | Your <Constant name="dbt_platform" /> development environment ID |
 | `DBT_USER_ID` | Optional | Your <Constant name="dbt_platform" /> user ID ([docs](/faqs/Accounts/find-user-id)) |
 
+:::warning Use values only, not full URLs
+A common mistake is pasting a full URL instead of the value. These variables expect hostnames or numeric IDs:
+
+```bash
+# ✅ Correct
+DBT_HOST=cloud.getdbt.com
+DBT_PROD_ENV_ID=54321
+DBT_USER_ID=123
+
+# ❌ Wrong — don't include https:// or full URLs
+DBT_HOST=https://cloud.getdbt.com
+DBT_PROD_ENV_ID=https://cloud.getdbt.com/deploy/12345/projects/67890/environments/54321
+DBT_USER_ID=https://cloud.getdbt.com/settings/profile
+```
+:::
+
 **Multi-cell configuration examples:**
 
 ✅ **Correct configuration:**
@@ -304,21 +338,59 @@ Example output: `C:\Python39\Scripts\dbt.exe`
 - dbt MCP respects the standard environment variables and flags for usage tracking mentioned [here](/reference/global-configs/usage-stats).
 - `DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}'` is automatically set so that the MCP server knows if no node is selected when running a dbt command. You can overwrite it if needed, but it provides a better experience when calling dbt from the MCP server, ensuring the tool selects valid nodes.
 
-## Disabling tools
+## Controlling tool access
 
-You can disable the following tool access on the local `dbt-mcp`:
+dbt-mcp has two modes for controlling which tools are available. Pick one approach:
+- disable mode (turn off what you don't want)
+- enable mode (turn on only what you want)
+
+:::tip Which mode should I use?
+- Disable mode &mdash; Use when you want _most_ tools available and just need to turn off a few. This is the default behavior.
+- Enable mode &mdash; Use when you want _only_ a small set of tools available (allowlist approach).
+
+**Do not mix both modes** for the same toolset. For example, don't set both `DISABLE_SEMANTIC_LAYER=true` and `DBT_MCP_ENABLE_SEMANTIC_LAYER=true` together &mdash; the behavior may be unpredictable.
+:::
+
+### Disable mode (default) { #disable-mode }
+
+All tools are available by default. Set any of these to `true` to turn off a toolset:
 
 | Name | Default | Description |
 | --- | --- | --- |
-| `DISABLE_DBT_CLI` | `false` | Set this to `true` to disable <Constant name="core" />, <Constant name="cloud_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
-| `DISABLE_SEMANTIC_LAYER` | `false` | Set this to `true` to disable dbt Semantic Layer MCP tools. |
-| `DISABLE_DISCOVERY` | `false` | Set this to `true` to disable dbt Discovery API MCP tools. |
-| `DISABLE_ADMIN_API` | `false` | Set this to `true` to disable dbt Administrative API MCP tools. |
-| `DISABLE_SQL` | `true` | Set this to `false` to enable SQL MCP tools. |
-| `DISABLE_DBT_CODEGEN` | `true` | Set this to `false` to enable [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) (requires dbt-codegen package). |
-| `DISABLE_LSP` | `false` | Set this to `true` to disable dbt LSP/Fusion MCP tools. |
-| `DISABLE_MCP_SERVER_METADATA` | `true` | Set this to `false` to enable MCP server metadata tools (like `get_mcp_server_version`). |
-| `DISABLE_TOOLS` | `""` | Set this to a list of tool names delimited by a `,` to disable specific tools. |
+| `DISABLE_DBT_CLI` | `false` | Disable <Constant name="core" />, <Constant name="cloud_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
+| `DISABLE_SEMANTIC_LAYER` | `false` | Disable dbt Semantic Layer MCP tools. |
+| `DISABLE_DISCOVERY` | `false` | Disable dbt Discovery API MCP tools. |
+| `DISABLE_ADMIN_API` | `false` | Disable dbt Administrative API MCP tools. |
+| `DISABLE_SQL` | `true` | SQL MCP tools are disabled by default. Set to `false` to enable. |
+| `DISABLE_DBT_CODEGEN` | `true` | [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) are disabled by default. Set to `false` to enable (requires dbt-codegen package). |
+| `DISABLE_LSP` | `false` | Disable dbt LSP/Fusion MCP tools. |
+| `DISABLE_MCP_SERVER_METADATA` | `true` | MCP server metadata tools (like `get_mcp_server_version`) are disabled by default. Set to `false` to enable. |
+| `DISABLE_TOOLS` | `""` | A comma-separated list of specific tool names to disable. |
+
+### Enable mode
+
+Use `DBT_MCP_ENABLE_*` variables when you want to explicitly allowlist which toolsets are available. When an enable variable is set, only the enabled toolsets will be active:
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `DBT_MCP_ENABLE_DBT_CLI` | Not set | Set to `true` to enable dbt CLI tools. |
+| `DBT_MCP_ENABLE_SEMANTIC_LAYER` | Not set | Set to `true` to enable Semantic Layer tools. |
+| `DBT_MCP_ENABLE_DISCOVERY` | Not set | Set to `true` to enable Discovery API tools. |
+| `DBT_MCP_ENABLE_ADMIN_API` | Not set | Set to `true` to enable Administrative API tools. |
+| `DBT_MCP_ENABLE_SQL` | Not set | Set to `true` to enable SQL tools. |
+| `DBT_MCP_ENABLE_DBT_CODEGEN` | Not set | Set to `true` to enable dbt codegen tools. |
+| `DBT_MCP_ENABLE_LSP` | Not set | Set to `true` to enable LSP/Fusion tools. |
+| `DBT_MCP_ENABLE_TOOLS` | Not set | A comma-separated list of specific tool names to enable. |
+
+### Precedence
+
+When multiple variables are set, they are evaluated in this order (highest priority first):
+
+1. `DBT_MCP_ENABLE_TOOLS` (enable specific tools by name)
+2. `DISABLE_TOOLS` (disable specific tools by name)
+3. Toolset enable (`DBT_MCP_ENABLE_*=true`)
+4. Toolset disable (`DISABLE_*=true`)
+5. Default behavior
 
 ## (Optional) Test your configuration
 

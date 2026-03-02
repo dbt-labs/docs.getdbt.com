@@ -64,6 +64,10 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
 
 The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. You can use this example Cursor configuration, replacing `YOUR_DBT_HOST_URL`, `YOUR_DBT_ACCESS_TOKEN`, `PROD-ID`, `USER-ID`, and `DEV-ID` with your information:
 
+:::warning Use numeric IDs, not full URLs
+Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeric IDs (for example, `54321`), not full URLs. The host in the `url` field should include `https://`, but ID headers should not.
+:::
+
   ```
   {
     "mcpServers": {
