@@ -1,8 +1,8 @@
 ---
 title: "Configure AWS PrivateLink for Postgres"
-id: postgres-privatelink
-description: "Configuring PrivateLink for Postgres"
-sidebar_label: "AWS PrivateLink for Postgres"
+id: aws-postgres
+description: "Configuring PrivateLink for Postgres."
+sidebar_label: "Postgres"
 ---
 
 # Configure AWS PrivateLink for Postgres <Lifecycle status="managed_plus" />
@@ -58,7 +58,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 <PrivateLinkCrossZone features={'/snippets/_privatelink-cross-zone-load-balancing.md'}/>
 
-### 2. Grant dbt AWS account access to the VPC Endpoint Service
+### 2. Grant dbt AWS account access to the VPC endpoint service
 
 On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the root user in the appropriate production AWS account and save your changes.
 
@@ -66,13 +66,14 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-allow-principals.png" width="70%" title="Enter ARN"/>
 
-### 3. Obtain VPC Endpoint Service Name
+### 3. Obtain VPC endpoint service name
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="cloud" /> support.
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
-### 4. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
+### 4. Submit your request to dbt Support
+Add the required information to the template below and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
 ```
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Postgres Interface-type
@@ -86,19 +87,19 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 <PrivateLinkSLA />
 
-### 5. Accepting the connection request
+### 5. Accept the connection request
 
-When you have been notified that the resources are provisioned within the <Constant name="cloud" /> environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
+When you receive notification that the resources are provisioned within the <Constant name="cloud" /> environment, you must accept the endpoint connection (unless the VPC endpoint service is set to auto-accept connection requests). You can accept requests through the AWS console, as shown below, or through the AWS CLI.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
 
-## Create Connection in dbt
+## Create connection in dbt
 
-Once <Constant name="cloud" /> support completes the configuration, you can start creating new connections using PrivateLink.
+Once <Constant name="cloud" /> Support completes the configuration, you can start creating new connections using PrivateLink.
 
-1. Navigate to **settings** → **Create new project** → select **PostgreSQL**
-2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+1. Navigate to **Settings** → **Create new project** → select **PostgreSQL**.
+2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
+3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 

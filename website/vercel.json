@@ -44,6 +44,101 @@
       "permanent": true
     },
     {
+      "source": "/docs/cloud/secure/secure-your-tenant",
+      "destination": "/docs/cloud/secure/about-network-security",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/network-security",
+      "destination": "/docs/cloud/secure/about-network-security",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/aws/:path*",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/azure/:path*",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/gcp/:path*",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/databricks-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-databricks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/redshift-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-redshift",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/postgres-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-postgres",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/vcs-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-self-hosted",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/databricks-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-databricks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-postgres-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-postgres",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-synapse-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-synapse",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-self-hosted-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-self-hosted",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-psc",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/gcp-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/bigquery-psc",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/gcp-bigquery",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/gcp-self-hosted-psc",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted",
+      "permanent": true
+    },
+    {
       "source": "/guides/coalesce-fusion-platform-qs",
       "destination": "/guides/fusion",
       "permanent": true
@@ -120,17 +215,17 @@
     },
     {
       "source": "/docs/cloud/secure/about-privatelink",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
       "source": "/docs/cloud/privatelink/about-privatelink",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
       "source": "/docs/cloud/privatelink/about-private-link",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
@@ -305,7 +400,7 @@
     },
     {
       "source": "/docs/cloud/secure/about-privatelink",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
@@ -850,7 +945,12 @@
     },
     {
       "source": "/faqs/Troubleshooting/access_token_error",
-      "destination": "/faqs/Troubleshooting/auth-expired-error",
+      "destination": "/faqs/Troubleshooting/refresh-snowflake-oauth-credentials",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Troubleshooting/auth-expired-error",
+      "destination": "/faqs/Troubleshooting/refresh-snowflake-oauth-credentials",
       "permanent": true
     },
     {

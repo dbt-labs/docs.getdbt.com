@@ -14,7 +14,7 @@ You can access Cost Insights in these different <Constant name="dbt_platform" />
 - [Catalog on Model page](#model-performance-in-catalog)
 - [Job details page](#job-details) 
 
-Each view provides different levels of detail to help you understand your warehouse spending and optimization impact.
+Each view provides different levels of detail to help you understand your warehouse spending and optimization impact. Cost and cost reduction estimates are based on historical runs and reflect actual usage, _not_ forecasts of future costs.
 
 ## Prerequisites
 
