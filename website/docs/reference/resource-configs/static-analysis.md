@@ -3,7 +3,7 @@ resource_types: [models]
 title: "static_analysis"
 description: "Use static_analysis config to control how the Fusion engine performs static SQL analysis for models."
 datatype: string
-default_value: on
+default_value: baseline
 sidebar_label: "static_analysis"
 ---
 
@@ -22,7 +22,7 @@ The `static_analysis` config is available in the <Constant name="fusion_engine"/
 ```yml
 models:
   [resource-path](/reference/resource-configs/resource-path):
-    +static_analysis: on | unsafe | off
+    +static_analysis: strict | baseline | off
 
 ```
 
@@ -38,7 +38,7 @@ models:
 models:
   - name: model_name
     [config](/reference/resource-properties/config):
-      static_analysis: on | unsafe | off
+      static_analysis: strict | baseline | off
 ```
 
 </File>
@@ -49,7 +49,7 @@ models:
 <File name='models/model_name.sql'>
 
 ```sql
-{{ config(static_analysis='on' | 'unsafe' | 'off') }}
+{{ config(static_analysis='strict' | 'baseline' | 'off') }}
 
 select 
   user_id,
@@ -69,11 +69,42 @@ You can configure if and when the <Constant name="fusion_engine" /> performs sta
 
 The following values are available for `static_analysis`:
 
-- `on`: Statically analyze SQL ahead-of-time (AOT). Default for non-introspective models, depends on AOT rendering.
-- `unsafe`: Statically analyze SQL just-in-time (JIT). The default for when a model (or any of its parents) uses introspective queries. JIT analysis still catches most SQL errors, but [analysis happens]( /docs/fusion/new-concepts#static-analysis-and-introspective-queries) after some upstream execution.
+- `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors. You can incrementally opt-in to stricter analysis over time.
+- `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis for this model and its descendants.
 
-A model is _only_ eligible for static analysis if all of its parents are also eligible.
+:::caution Deprecated values
+
+The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
+
+:::
+
+### How static analysis modes cascade
+
+Two rules determine how `static_analysis` modes apply in a lineage:
+- Eligibility rule: A model is eligible for static analysis only if all of its "parents" are eligible (by parents, we mean the models that are upstream of the current model in the lineage).
+- Strictness rule: A "child" model cannot be stricter than its parent (by child, we mean the models that are downstream of the current model in the lineage).
+
+The static analysis configuration cascades from most strict to least strict. Here's the strictness hierarchy:
+`strict` → `baseline` → `off`
+
+**Allowed downstream by parent mode**<br /> 
+When going downstream in your lineage, you can keep the same mode or relax it; but you cannot make a child stricter than its parent. The following table shows the allowed downstream modes by parent mode:
+
+<SimpleTable>
+| Parent mode | Child can be |
+|-------------|--------------|
+| `strict`    | `strict`, `baseline`, or `off` |
+| `baseline`  | `baseline` or `off` (not `strict`) |
+| `off`       | `off` only |
+</SimpleTable>
+
+For example, for the lineage Model A → Model B → Model C:
+
+- If Model A is `baseline`, you _cannot_ set Model B to `strict`
+- If Model A is `strict`, you _can_ set Model B to `baseline`
+
+This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements.
 
 Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/fusion/new-concepts). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
 
@@ -83,7 +114,7 @@ You can override model-level configuration for a run using the following CLI fla
 
 ```bash
 dbt run --static-analysis off # disable static analysis for all models
-dbt run --static-analysis unsafe # use JIT analysis for all models
+dbt run --static-analysis baseline # use baseline analysis for all models
 ```
 
 See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
