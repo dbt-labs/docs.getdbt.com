@@ -7,11 +7,17 @@ pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. You assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and can reuse those profiles in other deployment environments within the same project.
+<IntroText>
+<Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. 
+</IntroText>
 
-Because of the unique configurations and individual credentials applied, profiles don't apply to development environments.
+Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/List%20Profiles).
 
-## Create a profile
+#### Considerations
+- Profiles don't apply to development environments because of the unique configurations and individual credentials applied.
+- The <Constant name="semantic_layer" /> configuration isn't supported with profiles yet. We're building toward supporting it in the future.
+
+## Create a pro file
 
 :::important new feature rollout
 
@@ -78,6 +84,14 @@ To assign a different profile, update the deployment environment settings:
 4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
 5. Click the **Profile** dropdown and select the new profile to assign.
 
+## Permissions and access to profiles
+
+Profiles are shared at the project level, which means anyone with permission to create or edit deployment environments in a project can use those credentials &mdash; including running jobs or querying data in any environment the profile is assigned to.
+
+To avoid unintended access, only grant permission sets like **Job Admin** or **Project Admin** to users who should have access to all credentials in a project. Be mindful that shared credentials could allow a user to deploy changes or access data beyond their intended scope.
+
+For more information on permission sets, see [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
+
 ## FAQs
 
 <DetailsToggle alt_header="Do I need to create profiles for all of my existing projects?">
@@ -103,5 +117,11 @@ Any profiles using those settings automatically update with the new information.
 Existing APIs continue to work and automatically map to a profile behind the scenes. You won't need to take any manual action unless you use APIs to create a deployment environment with no credentials configured. This is a rare occurrence unique to APIs, but it's the only scenario where dbt wouldn't create a profile.
 
 Profile-specific APIs are available. Check out our [API documentation](/docs/dbt-cloud-apis/overview) for more information.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="Does the Semantic Layer support profiles?">
+
+<Constant name="semantic_layer" /> configuration isn't supported with profiles yet. We're building toward supporting it in the future.
 
 </DetailsToggle>
