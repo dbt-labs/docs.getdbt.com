@@ -33,6 +33,12 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     icon="computer"/>
 
 <Card
+    title="Semantic Layer reference"
+    body="Complete configuration reference for semantic models, metrics, and dimensions in the dbt Semantic Layer."
+    link="/reference/semantic-layer-reference"
+    icon="computer"/>
+
+<Card
     title="dbt Commands"
     body="Outlines the commands supported by dbt and their relevant flags."
     link="/reference/dbt-commands"

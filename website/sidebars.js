@@ -1446,6 +1446,17 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "Semantic Layer",
+          link: { type: "doc", id: "reference/semantic-layer-reference" },
+          items: [
+            "reference/semantic-layer-reference",
+            "reference/semantic-model-properties",
+            "reference/metric-properties",
+            "reference/dimension-properties",
+          ],
+        },
+        {
+          type: "category",
           label: "For functions",
           link: { type: "doc", id: "reference/function-properties" },
           items: [

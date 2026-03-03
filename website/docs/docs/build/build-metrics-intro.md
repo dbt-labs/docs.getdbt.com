@@ -11,6 +11,8 @@ pagination_prev: null
 
 Use MetricFlow in dbt to centrally define your metrics. As a key component of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
+For a complete list of configuration options and property specs, see the [Semantic Layer reference](/reference/semantic-layer-reference).
+
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="50%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 MetricFlow allows you to:
@@ -20,6 +22,12 @@ MetricFlow allows you to:
 - Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
 
 <div className="grid--3-col">
+
+  <Card
+    title="Semantic Layer reference"
+    body="Complete, exhaustive configuration reference for semantic models, metrics, and dimensions."
+    link="/reference/semantic-layer-reference"
+    icon="dbt-bit"/>
 
   <Card
     title="Migrate to the latest YAML spec"
