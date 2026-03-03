@@ -25,9 +25,9 @@ To get started, choose the quick start that matches your setup:
 
 | I want to... | Quickstart |
 | --- | --- |
-| Connect to my dbt platform account without managing tokens | [OAuth setup](/docs/dbt-ai/mcp-quickstart-oauth) |
-| Use dbt CLI commands locally (no dbt platform account) | [CLI-only setup](/docs/dbt-ai/mcp-quickstart-cli) |
-| Use dbt CLI + all dbt platform features (Semantic Layer, Discovery, Admin API, SQL) | [Full setup](/docs/dbt-ai/mcp-quickstart-full) |
+| Connect to my dbt platform account without managing tokens | [<Constant name="dbt_platform" /> setup](/docs/dbt-ai/mcp-quickstart-oauth) |
+| Use dbt CLI commands locally | [Local CLI setup](/docs/dbt-ai/mcp-quickstart-cli) |
+| Use dbt CLI + all <Constant name="dbt_platform" /> features (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL) | [Full setup](/docs/dbt-ai/mcp-quickstart-full) |
 
 Not sure which to pick? Start with the [OAuth quick start](/docs/dbt-ai/mcp-quickstart-oauth) — it's the fastest path.
 
