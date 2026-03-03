@@ -14,6 +14,8 @@ You can define variables in two ways:
 - In the [`dbt_project.yml`](/reference/dbt_project.yml) file
 - On the command line
 
+Variables defined in the `dbt_project.yml` act as project-wide defaults. These defaults apply anywhere the variable is referenced. You can override them at runtime using the `--vars` command-line argument, which is useful when you want to change a value for a specific run. For example, when testing with a different date range or running models with environment-specific settings.
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
@@ -24,9 +26,9 @@ You can define variables in three ways:
 2. In the `dbt_project.yml` file
 3. On the command line
 
-</VersionBlock>
+Variables defined in the `vars.yml` or `dbt_project.yml` act as project-wide defaults. These defaults apply anywhere the variable is referenced. You can override them at runtime using the `--vars` command-line argument, which is useful when you want to change a value for a specific run. For example, when testing with a different date range or running models with environment-specific settings.
 
-Variables defined in the `dbt_project.yml` act as project-wide defaults. These defaults apply anywhere the variable is referenced. You can override them at runtime using the `--vars` command-line argument, which is useful when you want to change a value for a specific run. For example, when testing with a different date range or running models with environment-specific settings.
+</VersionBlock>
 
 You might use variables to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22), set reporting date ranges, [avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23), or otherwise control how models are compiled.
 

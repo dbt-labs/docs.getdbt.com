@@ -9,15 +9,17 @@ description: "Pass variables from `dbt_project.yml` file into models."
 
 Variables can be passed from your [`dbt_project.yml`](/reference/dbt_project.yml) file into models during compilation. These variables allow you to make your models configurable instead of hardcoding values directly in SQL. For example, you might define a default reporting date, region, or feature flag once in your project and reference it across multiple models.
 
+Variables defined in your `dbt_project.yml` file act as project-wide defaults. You can override them at runtime using the `--vars` command-line argument. For example, to test a different date range or run models with environment-specific settings without modifying your model logic.
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
 
 You can pass down variables from your `vars.yml` or `dbt_project.yml` file into models during compilation. These variables are useful for configuring packages for deployment in multiple environments, or defining values that should be used across multiple models within a package.
 
-</VersionBlock>
+Variables defined in your `vars.yml` or `dbt_project.yml` file act as project-wide defaults. You can override them at runtime using the `--vars` command-line argument. For example, to test a different date range or run models with environment-specific settings without modifying your model logic.
 
-Variables defined in your `dbt_project.yml` file act as project-wide defaults. You can override them at runtime using the `--vars` command-line argument. For example, to test a different date range or run models with environment-specific settings without modifying your model logic.
+</VersionBlock>
 
 To retrieve a variable inside a model, hook, or macro, use the `var()` function. The `var()` function returns the value defined in your project or passed using `--vars`, based on precedence.
 
