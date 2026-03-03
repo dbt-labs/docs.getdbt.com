@@ -32,7 +32,7 @@ Metrics define measurable quantities that can be queried via the dbt Semantic La
 - **Ratio**: `numerator` (required), `denominator` (required)
 - **Conversion**: `entity` (required), `calculation` (required), `base_metric` (required), `conversion_metric` (required), `window`, `constant_properties`
 
-For full type_params and examples per type, see [Creating metrics](/docs/build/metrics-overview), [Simple metrics](/docs/build/simple), [Cumulative metrics](/docs/build/cumulative-metrics), [Ratio metrics](/docs/build/ratio-metrics), [Derived metrics](/docs/build/derived-metrics), and [Conversion metrics](/docs/build/conversion-metrics).
+For full type_params and examples per type, see [Creating metrics](/docs/build/metrics-overview), [Simple metrics](/docs/build/simple), [Cumulative metrics](/docs/build/cumulative), [Ratio metrics](/docs/build/ratio), [Derived metrics](/docs/build/derived), and [Conversion metrics](/docs/build/conversion).
 
 ## Defining metrics on a model (2.0+)
 
