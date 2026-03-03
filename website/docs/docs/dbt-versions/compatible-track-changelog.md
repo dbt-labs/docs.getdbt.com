@@ -17,11 +17,9 @@ Release date: February 27, 2026
 ### dbt cloud-based platform
 
 ### Features
-
 - Support partial success result status for Advanced CI
 
 ### Dependencies
-
 - Update dbt-databricks upper bound to 1.12
 
 This compatible release includes functionality from the following versions of dbt Core OSS:
