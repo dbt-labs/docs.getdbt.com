@@ -2,7 +2,7 @@
 title: "Exasol setup"
 description: "Read this guide to learn about the Exasol warehouse setup in dbt."
 meta:
-  maintained_by: Community
+  maintained_by: Exasol
   authors: 'Torsten Glunde, Ilija Kutle'
   github_repo: 'exasol/dbt-exasol'
   pypi_package: 'dbt-exasol'
@@ -11,17 +11,10 @@ meta:
   cloud_support: Not Supported
   min_supported_version: 'Exasol 6.x'
   slack_channel_name: 'n/a'
-  slack_channel_link: 'https://www.getdbt.com/community'
+  slack_channel_link:
   platform_name: 'Exasol'
   config_page: '/reference/resource-configs/exasol-configs'
 ---
-
-:::info Community plugin
-
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
-
-:::
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
@@ -49,6 +42,7 @@ dbt-exasol:
       dbname: db
       schema: SCHEMA
 ```
+
 </File>
 
 #### OpenID authentication (Exasol SaaS) {#open-id-authentication}
@@ -71,6 +65,7 @@ dbt-exasol:
       schema: SCHEMA
       encryption: True  # required for SaaS
 ```
+
 </File>
 
 - **`access_token`** &mdash; Personal access token for OpenID authentication
@@ -94,13 +89,10 @@ Use either `access_token` or `refresh_token`, not both. TLS encryption is requir
 
 :::info SSL/TLS Certificate Validation
 By default, dbt-exasol validates SSL/TLS certificates when `encryption=True`. For development/testing with self-signed certificates, you can either:
+
 - Set `validate_server_certificate: False` (not recommended for production)
 - Use a certificate fingerprint in the DSN: `dsn: myhost/FINGERPRINT:8563`
 - Use `dsn: myhost/nocertcheck:8563` to skip validation (testing only)
 
 For more information, see the [PyExasol security documentation](https://exasol.github.io/pyexasol/master/user_guide/configuration/security.html).
 :::
-
-  
-  
-
