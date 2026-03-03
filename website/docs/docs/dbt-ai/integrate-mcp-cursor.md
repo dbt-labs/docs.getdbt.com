@@ -79,6 +79,9 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
     [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJ1cmwiOiJodHRwczovLzxob3N0Pi9hcGkvYWkvdjEvbWNwLyIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6InRva2VuIDx0b2tlbj4iLCJ4LWRidC1wcm9kLWVudmlyb25tZW50LWlkIjoiPHByb2QtaWQ%252BIn19)
 
-2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template. 
+2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template.
+   :::tip IDs are integers, not URLs
+   `PROD-ID`, `USER-ID`, and `DEV-ID` must be numeric IDs (for example, `54321`), not full URLs. Only the `url` field should contain `https://`.
+   :::
 3. Save, and now you have access to the dbt MCP server!
 

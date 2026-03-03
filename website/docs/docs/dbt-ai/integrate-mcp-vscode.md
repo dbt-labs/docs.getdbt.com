@@ -86,6 +86,10 @@ To get started, in VS Code:
 
     Using the `env` field (single-file configuration):
 
+    :::tip IDs are integers, not URLs
+    `DBT_HOST` should be a hostname only (no `https://`). `DBT_PROD_ENV_ID`, `DBT_DEV_ENV_ID`, and `DBT_USER_ID` must be numeric IDs (for example, `54321`), not full URLs copied from your browser.
+    :::
+
     ```json
     {
       "servers": {
