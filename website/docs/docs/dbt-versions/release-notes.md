@@ -18,6 +18,11 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## February 2026
 
+- **New**: Advanced CI (dbt compare in orchestration) is now supported in the <Constant name="fusion_engine" />. For more information, see [Advanced CI](/docs/deploy/advanced-ci).
+- **Beta**: The `dbt-salesforce` adapter available in the <Constant name="fusion_engine" /> CLI is now in beta. For more information, see [Salesforce Data 360 setup](/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup).
+- **New**: You can connect to BigQuery using Workload Identity Federation (WIF) with external OAuth for [Semantic Layer queries](/docs/use-dbt-semantic-layer/dbt-sl). For setup instructions, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
+- **Enhancement**: For WIF-authenticated BigQuery connections, the Semantic Layer gateway refreshes access tokens on common expiration failures and recycles pooled connections to reduce authentication outages.
+- **Enhancement:** The Analyst permission now has the project-level access to read repositories. See [Project access for project permissions](/docs/cloud/manage-access/enterprise-permissions#project-access-for-project-permissions) for more information.
 - **Enhancement:** After a user accepts an email [invite](/docs/cloud/manage-access/invite-users) to access an [SSO-protected](/docs/cloud/manage-access/sso-overview) <Constant name="dbt_platform"/> account, the UI now prompts them to log in with SSO to complete the process. This replaces the previous "Joined successfully" message, helping avoid confusion when users accept an invite but do not complete the SSO login flow.
 - **New:** [Profiles](/docs/cloud/about-profiles) let you define and manage connections, credentials, and attributes for deployment environments at the project level. dbt automatically creates profiles for existing projects and environments based on the current configurations, so you don't need to take any action. This is being rolled out in phases during the coming weeks.
 - **New**: [Python UDFs](/docs/build/udfs) are now supported and available in <Constant name="fusion_engine" /> when using Snowflake or BigQuery.

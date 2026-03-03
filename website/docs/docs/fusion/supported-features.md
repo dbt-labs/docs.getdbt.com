@@ -102,7 +102,7 @@ Here are some additional considerations if using the Fusion CLI without the VS C
 If your project is using any of the features listed in the following table, you can use Fusion, but you won't be able to fully migrate all your workloads because you have:
 - Models that leverage specific materialization features may be unable to run or may be missing some desirable configurations.
 - Tooling that expects dbt Core's exact log output. Fusion's logging system is currently unstable and incomplete.
-- Workflows built around complementary features of the dbt platform (like model-level notifications and Advanced CI) that <Constant name="fusion"/> does not yet support.
+- Workflows built around complementary features of the dbt platform (like model-level notifications) that <Constant name="fusion"/> does not yet support.
 - When using the dbt VS Code extension in Cursor, lineage visualization works best in Editor mode and doesn't render in Agent mode. If you're working in Agent mode and need to view lineage, switch to Editor mode to access the full lineage tab functionality.
 
 :::note
