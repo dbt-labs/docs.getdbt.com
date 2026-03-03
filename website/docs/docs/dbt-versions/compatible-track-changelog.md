@@ -17,7 +17,7 @@ Release date: February 27, 2026
 ### dbt cloud-based platform
 
 ### Under the Hood
-- Resolve Click CLI UserWarning regarding `--target` and `--profile` usage in Advanced CI
+- Resolve Click CLI UserWarning regarding `--target` and `--profile` usage in Advanced CI.
 
 This compatible release includes functionality from the following versions of dbt Core OSS:
 
@@ -44,6 +44,22 @@ dbt-synapse==1.8.4
 dbt-teradata==1.10.1
 dbt-trino==1.10.1
 ```
+
+Changelogs:
+- [dbt-core 1.11.6](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md#dbt-core-1116---february-17-2026)
+- [dbt-adapters 1.22.6](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1226---february-17-2026)
+- [dbt-common 1.37.2](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1372---december-15-2025)
+- [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md#dbt-athena-1100---december-22-2025)
+- [dbt-bigquery 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md#dbt-bigquery-1110---december-22-2025)
+- [dbt-databricks 1.11.5](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md#dbt-databricks-1115-feb-19-2026)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md#dbt-postgres-1100---december-22-2025)
+- [dbt-redshift 1.10.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md#dbt-redshift-1101---february-11-2026)
+- [dbt-snowflake 1.11.2](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md#dbt-snowflake-1112---february-11-2026)
+- [dbt-spark 1.10.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md#dbt-spark-1101---february-11-2026)
+- [dbt-synapse 1.8.4](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.10.1](https://github.com/Teradata/dbt-teradata/releases/tag/v1.10.1)
+- [dbt-trino 1.10.1](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md#dbt-trino-1101---january-16-2026)
 
 ## December 2025
 
