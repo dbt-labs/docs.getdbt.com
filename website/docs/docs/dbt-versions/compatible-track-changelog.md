@@ -61,6 +61,58 @@ Changelogs:
 - [dbt-teradata 1.10.1](https://github.com/Teradata/dbt-teradata/releases/tag/v1.10.1)
 - [dbt-trino 1.10.1](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md#dbt-trino-1101---january-16-2026)
 
+## January 2026
+
+Release date: January 22, 2026
+
+### dbt cloud-based platform
+
+### Under the Hood
+- Add debug log for local md5 hash for fusion conformance
+- Resolve Click CLI UserWarning regarding --target and --profile usage in Advanced CI
+
+This compatible release includes functionality from the following versions of dbt Core OSS:
+
+```
+dbt-core==1.10.19
+
+# shared interfaces
+dbt-adapters==1.22.5
+dbt-common==1.37.2
+dbt-extractor==0.6.0
+dbt-semantic-interfaces==0.9.0
+dbt-sl-sdk[sync]==0.13.1
+
+# adapters
+dbt-athena==1.10.0
+dbt-bigquery==1.11.0
+dbt-databricks==1.10.19
+dbt-fabric==1.9.4
+dbt-postgres==1.10.0
+dbt-redshift==1.10.0
+dbt-snowflake==1.11.1
+dbt-spark==1.9.3
+dbt-synapse==1.8.4
+dbt-teradata==1.10.1
+dbt-trino==1.10.1
+```
+
+Changelogs:
+- [dbt-core 1.10.19](https://github.com/dbt-labs/dbt-core/blob/1.10.latest/CHANGELOG.md#dbt-core-11019---january-20-2026)
+- [dbt-adapters 1.22.5](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md#dbt-adapters-1225---january-14-2026)
+- [dbt-common 1.37.2](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md#dbt-common-1372---december-15-2025)
+- [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md#dbt-athena-1100---december-22-2025)
+- [dbt-bigquery 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md#dbt-bigquery-1110---december-22-2025)
+- [dbt-databricks 1.10.19](https://github.com/databricks/dbt-databricks/blob/1.10.latest/CHANGELOG.md#dbt-databricks-11019-jan-21-2026)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-postgres 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md#dbt-postgres-1100---december-22-2025)
+- [dbt-redshift 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md#dbt-redshift-1100---december-22-2025)
+- [dbt-snowflake 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md#dbt-snowflake-1111---january-08-2026)
+- [dbt-spark 1.9.3](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md#dbt-spark-193---july-16-2025)
+- [dbt-synapse 1.8.4](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.10.1](https://github.com/Teradata/dbt-teradata/releases/tag/v1.10.1)
+- [dbt-trino 1.10.1](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md#dbt-trino-1101---january-16-2026)
+
 ## December 2025
 
 Release date: December 9, 2025
