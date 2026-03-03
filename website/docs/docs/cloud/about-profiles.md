@@ -86,9 +86,9 @@ To assign a different profile, update the deployment environment settings:
 
 ## Permissions and access to profiles
 
-Profiles are shared at the project level, which means anyone with permission to create or edit deployment environments in a project can use those credentials &mdash; including running jobs or querying data in any environment the profile is assigned to.
+Profiles are created at the project level. Only users with permission to edit the project can create profiles and anyone with permission to create or edit deployment environments in that project can assign that profile and its credentials to those environments.
 
-To avoid unintended access, only grant permission sets like **Job Admin** or **Project Admin** to users who should have access to all credentials in a project. Be mindful that shared credentials could allow a user to deploy changes or access data beyond their intended scope.
+To avoid unintended access, only grant permission sets like **Job Admin** or **Project Admin** to users who should have access to all credentials in a project. Be mindful that profiles created at the project level can be used to configure credentials for any deployment environment in that project.
 
 For more information on permission sets, see [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
 
