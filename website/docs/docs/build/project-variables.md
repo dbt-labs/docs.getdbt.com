@@ -114,6 +114,11 @@ project.
 <File name='dbt_project.yml'>
 
 ```yaml
+name: my_dbt_project
+version: 1.0.0
+
+config-version: 2
+
 vars:
   # The `start_date` variable will be accessible in all resources
   start_date: '2016-06-01'
