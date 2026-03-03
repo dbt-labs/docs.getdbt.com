@@ -599,10 +599,20 @@ To update packages, a package maintainer should:
 
 2. Validate the changes by running:
 
+  - For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
+
     ```bash
     dbt parse
-    dbt sl validate  # For dbt platform and Fusion users in IDE / Cloud CLI
-    mf validate-configs # For Fusion CLI users not connected to dbt platform and using local MetricFlow
+    dbt sl validate
+    ```
+
+    When using `dbt sl validate` locally, the command validates your local semantic manifest, and not the platform's manifest. This means your uncommitted local changes are included in the validation.
+
+  - For Fusion CLI users not connected to dbt platform and using local MetricFlow:
+
+    ```bash
+    dbt parse
+    mf validate-configs
     ```
 
 3. Release a new version of the package with the updated metrics definitions.

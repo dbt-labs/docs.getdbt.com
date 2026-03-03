@@ -802,7 +802,7 @@ semantic-models:
 
 ### Access meta values in Python models
 
-To access custom `meta` values in [Python models](/docs/build/python-models), first retrieve the `meta` object using the `dbt.config.get()` method, then access your custom values from it.
+To access custom `meta` values in [Python models](/docs/build/python-models), use the `dbt.config.meta_get()` method.
 
 For example, if you have a model named `my_python_model` and you want to store custom values, you can do the following:
 
@@ -823,12 +823,9 @@ models:
 
 ```python
 def model(dbt, session):
-    # First, get the meta object
-    meta = dbt.config.get("meta")
-    
-    # Then access your custom values from meta
-    batch_size = meta.get("batch_size")
-    processing_mode = meta.get("processing_mode")
+    # Access custom values stored in meta directly
+    batch_size = dbt.config.meta_get("batch_size")
+    processing_mode = dbt.config.meta_get("processing_mode")
     
     # Use the meta values in your model logic
     df = dbt.ref("upstream_model")

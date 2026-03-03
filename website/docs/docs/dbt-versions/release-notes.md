@@ -16,11 +16,31 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## March 2026
+
+**New**: The new <Constant name="semantic_layer"/> YAML specification is now available on **Latest** in the <Constant name="dbt_platform" />. For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
+
 ## February 2026
 
-- **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on **Latest** in the <Constant name="dbt_platform" />. For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
+- **New**: Advanced CI (dbt compare in orchestration) is now supported in the <Constant name="fusion_engine" />. For more information, see [Advanced CI](/docs/deploy/advanced-ci).
+- **Beta**: The `dbt-salesforce` adapter available in the <Constant name="fusion_engine" /> CLI is now in beta. For more information, see [Salesforce Data 360 setup](/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup).
+- **New**: You can connect to BigQuery using Workload Identity Federation (WIF) with external OAuth for [Semantic Layer queries](/docs/use-dbt-semantic-layer/dbt-sl). For setup instructions, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
+- **Enhancement**: For WIF-authenticated BigQuery connections, the Semantic Layer gateway refreshes access tokens on common expiration failures and recycles pooled connections to reduce authentication outages.
+- **Enhancement:** The Analyst permission now has the project-level access to read repositories. See [Project access for project permissions](/docs/cloud/manage-access/enterprise-permissions#project-access-for-project-permissions) for more information.
+- **Enhancement:** After a user accepts an email [invite](/docs/cloud/manage-access/invite-users) to access an [SSO-protected](/docs/cloud/manage-access/sso-overview) <Constant name="dbt_platform"/> account, the UI now prompts them to log in with SSO to complete the process. This replaces the previous "Joined successfully" message, helping avoid confusion when users accept an invite but do not complete the SSO login flow.
+- **New:** [Profiles](/docs/cloud/about-profiles) let you define and manage connections, credentials, and attributes for deployment environments at the project level. dbt automatically creates profiles for existing projects and environments based on the current configurations, so you don't need to take any action. This is being rolled out in phases during the coming weeks.
+- **New**: [Python UDFs](/docs/build/udfs) are now supported and available in <Constant name="fusion_engine" /> when using Snowflake or BigQuery.
+- **Enhancement:** Minor enhancements and UI updates to the <Constant name="cloud_ide" />, file explorer that replicate the VS Code IDE experience.
+- **Enhancement:** Profile creation now displays specific validation error messages (such as "Profile keys cannot contain spaces or special characters") instead of generic error text, making it easier to identify and fix configuration issues.
+- **Private beta**: [Cost Insights](/docs/explore/cost-insights) shows estimated warehouse compute costs and run times for your dbt projects and models, directly in the <Constant name="dbt_platform" />. It highlights cost reductions and efficiency gains from optimizations like [state-aware orchestration](/docs/deploy/state-aware-about) across your project dashboard, model pages, and job details. See [Set up Cost Insights](/docs/explore/set-up-cost-insights) and [Explore cost data](/docs/explore/explore-cost-data) to learn more.
+- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) now supports [Omni](https://docs.omni.co/integrations/dbt/semantic-layer) as a partner integration. For more info, see [Available integrations](/docs/cloud-integrations/avail-sl-integrations).
 - **Enhancement**: We clarified documentation for cumulative log size limits on run endpoints, originally introduced in [October 2025](/docs/dbt-versions/2025-release-notes#october-2025). When logs exceed the cumulative size limit, dbt omits them and displays a banner. No functional changes were made in February 2026. For more information, see [Run visibility](/docs/deploy/run-visibility#log-size-limits).
 - **New**: The `immutable_where` configuration is now supported for Snowflake dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
+- **Fix**: The user invite details now show more information in invite status, giving admins visibility into users who accepted an invite to an SSO-protected account but haven't yet logged in via SSO. Previously, these invites were hidden, making it appear as if the user hadn't been invited. 
+The Invites endpoints of the dbt platform Admin v2 API now include these additional statuses:
+  - `4` (PENDINGEMAIL_VERIFICATION)
+  - `5` (EMAIL_VERIFIED_SSO).
+- **Enhancement**: Improved performance on Runs endpoint for Admin V2 API and run details in dbt platform when connecting with GCP.
 
 ## January 2026
 

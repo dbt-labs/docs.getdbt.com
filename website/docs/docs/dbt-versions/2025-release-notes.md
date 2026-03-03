@@ -163,7 +163,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
 ## April 2025
 
 - **Enhancement**: The [Python SDK](/docs/dbt-cloud-apis/sl-python) now supports lazy loading for large fields for `dimensions`, `entities`, and `measures` on `Metric` objects. For more information, see [Lazy loading for large fields](/docs/dbt-cloud-apis/sl-python#lazy-loading-for-large-fields).
-- **Enhancement**: The <Constant name="semantic_layer" /> now supports SSH tunneling for [Postgres](/docs/cloud/connect-data-platform/connect-postgresql-alloydb) or [Redshift](/docs/cloud/connect-data-platform/connect-redshift) connections. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information.
+- **Enhancement**: The <Constant name="semantic_layer" /> now supports SSH tunneling for [Postgres](/docs/cloud/connect-data-platform/connect-postgresql-alloydb#connecting-using-an-ssh-tunnel) or [Redshift](/docs/cloud/connect-data-platform/connect-redshift#connecting-using-an-ssh-tunnel) connections. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information.
 - **Behavior change**: Users assigned the [`job admin` permission set](/docs/cloud/manage-access/enterprise-permissions#job-admin) now have access to set up integrations for projects, including the [Tableau](/docs/cloud-integrations/downstream-exposures-tableau) integration to populate downstream exposures.
 
 ## March 2025

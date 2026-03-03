@@ -42,13 +42,14 @@ By default, the IDE uses sqlfmt rules to format your code, making it convenient 
 
 With the <Constant name="cloud_ide" />, you can seamlessly use [SQLFluff](https://sqlfluff.com/), a configurable SQL linter, to warn you of complex functions, syntax, formatting, and compilation errors. This integration allows you to run checks, fix, and display any code errors directly within the Cloud <Constant name="cloud_ide" />:
 
-- Works with Jinja and SQL, 
+- Works with Jinja and SQL.
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the <Constant name="cloud_ide" />).
 - Displays a **Code Quality** tab to view code errors, provides code quality visibility and management.
 
-:::info Ephemeral models not supported
-Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
+:::info Linting considerations
+- The <Constant name="cloud_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **Latest Fusion** release track. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
+- Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
 :::
 
 ### Enable linting
@@ -65,6 +66,24 @@ Linting is available on all branches, including your protected primary git branc
     - Use the **Code Quality** tab to view and debug any code errors.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-lint-format-console.gif" width="90%" title="Use the Lint or Fix button in the console section to lint or auto-fix your code."/>
+
+### Lint multiple files
+
+You can lint multiple SQL files at once, depending on how you are working with dbt. The behavior differs between the <Constant name="cloud_ide" />, <Constant name="core" />, and the <Constant name="cloud_cli" />.
+
+- **<Constant name="cloud_ide" />:** By default, linting runs against all modified `.sql` files in your project on your current branch. See [Snapshot linting](#snapshot-linting) for more information.
+
+- **<Constant name="core" />:** Does not include a built-in linter. To lint SQL files in your project, use a third-party linter such as SQLFluff configured to use the [dbt templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html). You can lint multiple files by specifying one or more file or directory paths as arguments to the command.
+
+- **<Constant name="cloud_cli" />:** Supports the same linting [commands](/docs/cloud/configure-cloud-cli#lint-sql-files) as <Constant name="core" />:
+
+    ```
+    dbt sqlfluff lint [PATHS]... [flags]
+    ```
+
+    If no path is specified (for example, `dbt sqlfluff lint`), all SQL files in the project are linted.
+
+
 
 ### Customize linting
 
