@@ -19,6 +19,21 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
 
+## Choose your auth method
+
+Use this table to choose the right token type before you start:
+
+| If you need... | Use... |
+| --- | --- |
+| Fastest first-time setup | **OAuth** (if supported by your client) |
+| `execute_sql` tool | **Personal Access Token (PAT)**. Service tokens _do not_ work for `execute_sql` |
+| Shared or team setup | **Service token** |
+| CI or automation | **Service token** |
+
+:::warning `execute_sql` requires a PAT
+The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) in the `Authorization` header when using this tool.
+:::
+
 ## Setup instructions
 
 1. Ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
@@ -26,7 +41,8 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
   - **dbt Cloud host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
   - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
-  - **Token**: Generate either a personal access token or a service token. In terms of permissions, to fully utilize remote MCP, it must be configured with Semantic Layer and Developer permissions. Note: to use functionality that requires the `x-dbt-user-id` header, a personal access token is required.
+  - **Token**: Generate either a personal access token or a service token. To fully utilize remote MCP, the token must have Semantic Layer and Developer permissions. 
+  - If you plan to use `execute_sql`, you must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens). Service tokens _do not_ work for this tool. For other tools that require `x-dbt-user-id`, a PAT is also required.
 
 3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 

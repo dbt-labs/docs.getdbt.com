@@ -887,11 +887,45 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
         "docs/dbt-ai/about-mcp",
-        "docs/dbt-ai/setup-local-mcp",
-        "docs/dbt-ai/setup-remote-mcp",
-        "docs/dbt-ai/integrate-mcp-vscode",
-        "docs/dbt-ai/integrate-mcp-cursor",
-        "docs/dbt-ai/integrate-mcp-claude",
+        {
+          type: "category",
+          label: "Quickstarts",
+          collapsed: false,
+          items: [
+            "docs/dbt-ai/mcp-quickstart-oauth",
+            "docs/dbt-ai/mcp-quickstart-cli",
+            "docs/dbt-ai/mcp-quickstart-full",
+          ],
+        },
+        {
+          type: "category",
+          label: "How-to guides",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/mcp-find-ids",
+            "docs/dbt-ai/mcp-troubleshooting",
+          ],
+        },
+        {
+          type: "category",
+          label: "Reference",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/mcp-environment-variables",
+            "docs/dbt-ai/setup-local-mcp",
+            "docs/dbt-ai/setup-remote-mcp",
+          ],
+        },
+        {
+          type: "category",
+          label: "Integrations",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/integrate-mcp-claude",
+            "docs/dbt-ai/integrate-mcp-cursor",
+            "docs/dbt-ai/integrate-mcp-vscode",
+          ],
+        },
       ],
     },
     {

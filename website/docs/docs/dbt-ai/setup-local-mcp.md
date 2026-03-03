@@ -39,6 +39,21 @@ If a required variable is not set, dbt-mcp will automatically disable that tools
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to be able to run `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment.
 - Have a local dbt project (if you want to use dbt CLI commands).
 
+## Choose your auth method
+
+If you're connecting to <Constant name="dbt_platform" /> features (<Constant name="semantic_layer" />, Discovery API, Admin API, or SQL execution), you need to authenticate. Use this table to choose the right method:
+
+| If you need... | Use... |
+| --- | --- |
+| Fastest first-time setup | **OAuth** |
+| `execute_sql` tool | **Personal Access Token (PAT)**. Service tokens _do not_ work for `execute_sql` |
+| Shared or team setup | **Service token** |
+| CI or automation | **Service token** |
+
+:::warning `execute_sql` requires a PAT
+The `execute_sql` tool does _not_ work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) for `DBT_TOKEN` when using this tool.
+:::
+
 ## Setup options
 
 Choose the setup method that best fits your workflow:
@@ -256,7 +271,7 @@ uvx dbt-mcp
 | --- | --- | --- |
 | `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For Multi-cell accounts, exclude the account prefix from the hostname. The default is `cloud.getdbt.com`. |
 | `MULTICELL_ACCOUNT_PREFIX` | Only required for Multi-cell instances | Set your Multi-cell account prefix here (not in DBT_HOST). If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses). |
-| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
 | `DBT_ACCOUNT_ID` | Required for Administrative API tools | Your [dbt account ID](/faqs/Accounts/find-user-id) |
 | `DBT_PROD_ENV_ID` | Required | Your <Constant name="dbt_platform" /> production environment ID |
 | `DBT_DEV_ENV_ID` | Optional | Your <Constant name="dbt_platform" /> development environment ID |
@@ -326,6 +341,7 @@ Run this command in Command Prompt or PowerShell:
 ```bash
 where dbt
 ```
+
 Example output: `C:\Python39\Scripts\dbt.exe`
 
 **Note:** Use forward slashes in your configuration: `C:/Python39/Scripts/dbt.exe`
@@ -351,7 +367,7 @@ dbt-mcp has two modes for controlling which tools are available. Pick one approa
 **Do not mix both modes** for the same toolset. For example, don't set both `DISABLE_SEMANTIC_LAYER=true` and `DBT_MCP_ENABLE_SEMANTIC_LAYER=true` together &mdash; the behavior may be unpredictable.
 :::
 
-### Disable mode (default) { #disable-mode }
+### Disable mode (default) {#disable-mode}
 
 All tools are available by default. Set any of these to `true` to turn off a toolset:
 

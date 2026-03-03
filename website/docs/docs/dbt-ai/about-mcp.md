@@ -7,13 +7,29 @@ id: "about-mcp"
 
 # About dbt Model Context Protocol (MCP)
 
-As AI becomes more deeply integrated into data workflows, dbt users need a seamless way to access and integrate dbt's structured metadata and execution context effectively. This page provides an overview of dbt's MCP Server, which exposes this context, supporting use cases such as conversational access to data, agent-driven automation of dbt workflows, and AI-assisted development.
+<IntroText>
 
 The [dbt Model Context Protocol (MCP) server](https://github.com/dbt-labs/dbt-mcp) provides a standardized framework that enables users to seamlessly integrate AI applications with dbt-managed data assets regardless of the underlying data platforms. This ensures consistent, governed access to models, metrics, lineage, and freshness across various AI tools.
+
+</IntroText>
+
+As AI becomes more deeply integrated into data workflows, dbt users need a seamless way to access and integrate dbt's structured metadata and execution context effectively. This page provides an overview of dbt's MCP Server, which exposes this context, supporting use cases such as conversational access to data, agent-driven automation of dbt workflows, and AI-assisted development.
 
 The MCP server provides access to the dbt CLI, [API](/docs/dbt-cloud-apis/overview), the [Discovery API](/docs/dbt-cloud-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
+
+## Get started
+
+To get started, choose the quick start that matches your setup:
+
+| I want to... | Quickstart |
+| --- | --- |
+| Connect to my dbt platform account without managing tokens | [OAuth setup](/docs/dbt-ai/mcp-quickstart-oauth) |
+| Use dbt CLI commands locally (no dbt platform account) | [CLI-only setup](/docs/dbt-ai/mcp-quickstart-cli) |
+| Use dbt CLI + all dbt platform features (Semantic Layer, Discovery, Admin API, SQL) | [Full setup](/docs/dbt-ai/mcp-quickstart-full) |
+
+Not sure which to pick? Start with the [OAuth quick start](/docs/dbt-ai/mcp-quickstart-oauth) — it's the fastest path.
 
 ## Server access
 
@@ -40,7 +56,7 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 - Your use case is primarily consumption-based (for example, querying metrics, exploring metadata, viewing lineage).
 
 
-import MCPCreditUsage from '/snippets/_mcp-cre41dit-usage.md';
+import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
 
@@ -130,7 +146,7 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 ### SQL (remote)
 
 - `text_to_sql`: Generate SQL from natural language requests
-- `execute_sql`: Execute SQL on the dbt platform's backend infrastructure with support for Semantic Layer SQL syntax. Note: using a PAT instead of a service token for `DBT_TOKEN` is required for this tool.
+- `execute_sql`: Execute SQL on the dbt platform's backend infrastructure with support for Semantic Layer SQL syntax. **Requires a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) — service tokens do not work for this tool.**
 
 ### Codegen tools
 
