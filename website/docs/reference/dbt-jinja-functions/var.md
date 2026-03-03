@@ -5,8 +5,18 @@ id: "var"
 description: "Pass variables from `dbt_project.yml` file into models."
 ---
 
+<VersionBlock lastVersion="1.11">
+
 Variables can be passed from your `dbt_project.yml` file into models during compilation.
 These variables are useful for configuring packages for deployment in multiple environments, or defining values that should be used across multiple models within a package.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+You can pass down variables from your `vars.yml` or `dbt_project.yml` file into models during compilation. These variables are useful for configuring packages for deployment in multiple environments, or defining values that should be used across multiple models within a package.
+
+</VersionBlock>
 
 To add a variable to a model, use the `var()` function:
 
@@ -29,6 +39,8 @@ Vars supplied to package_name.my_model = {
 }
 ```
 
+<VersionBlock lastVersion="1.11">
+
 To define a variable in your project, add the `vars:` config to your `dbt_project.yml` file.
 See the docs on [using variables](/docs/build/project-variables) for more information on
 defining variables in your dbt project.
@@ -47,6 +59,60 @@ vars:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+To define a variable in your project, add the `vars:` config to a dedicated `vars.yml` file or to your `dbt_project.yml` file. `vars.yml` is parsed _before_ `dbt_project.yml`, so you can reference variables from `vars.yml` in `dbt_project.yml` using `{{ var('...') }}`.
+
+<Tabs>
+<TabItem value="vars.yml" label="vars.yml">
+
+<File name='vars.yml'>
+
+```yaml
+vars:
+  event_type: activation
+```
+
+</File>
+:::info Beta feature
+The `vars.yml` file is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+</TabItem>
+<TabItem value="dbt_project.yml" label="dbt_project.yml">
+
+You can define variables in `dbt_project.yml`, or reference variables from `vars.yml` (for example, in your `models` config):
+
+<File name='dbt_project.yml'>
+
+```yaml
+name: my_dbt_project
+version: 1.0.0
+config-version: 2
+
+# Option 1: Define variables here
+vars:
+  event_type: activation
+
+# Option 2: Reference a variable from vars.yml
+models:
+  my_dbt_project:
+    +schema: "{{ var('event_type') }}"
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+You cannot define variables in both `vars.yml` and `dbt_project.yml`; you can only use one or the other. If both files contain a `vars` block with definitions, dbt raises an error.
+
+See the docs on [using variables](/docs/build/project-variables) for more information on how to define variables in your dbt project.
+
+</VersionBlock>
 
 ### Variable default values
 

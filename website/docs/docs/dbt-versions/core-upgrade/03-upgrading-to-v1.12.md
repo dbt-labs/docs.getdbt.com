@@ -32,7 +32,9 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ## New and changed features and functionality
 
-**Coming soon**
+### Support for `vars.yml` <Lifecycle status="beta" />
+
+<Constant name="core" /> v1.12 introduces support for a dedicated [`vars.yml`](/docs/build/project-variables#defining-variables-in-varsyml) file at the project root. Variables defined in `vars.yml` are parsed _before_ `dbt_project.yml`, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. This keeps variable definitions in one place and helps simplify `dbt_project.yml`. You can continue to define variables in `dbt_project.yml` as before; you cannot define variables in both files. For details and precedence, see [Project variables](/docs/build/project-variables).
 
 ### Managing changes to legacy behaviors
 
