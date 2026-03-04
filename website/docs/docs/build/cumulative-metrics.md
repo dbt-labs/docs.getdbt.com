@@ -6,7 +6,7 @@ sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
 ---
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Cumulative metrics aggregate values from other metrics across a defined accumulation period. If you don’t specify a period, the metric accumulates values over the entire available time range.
 
@@ -16,7 +16,7 @@ Use cumulative metrics when you want to calculate rolling or period-to-date valu
 - If a cumulative metric depends on metrics or dimensions defined in a different semantic model, set cumulative metrics under the top level `metrics` key.
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Cumulative metrics aggregate a measure over a given accumulation period. If no window is specified, the period is considered infinite and accumulates values over all time. You will need to create a [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
@@ -30,7 +30,7 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 
 ## Parameters
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 | Parameter   | <div style={{width:'350px'}}>Description</div>   | Required | Type      |
 |-------------|---------------------------------------------------|----------|-----------|
@@ -49,7 +49,7 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 | Parameter   | <div style={{width:'350px'}}>Description</div>   | Required | Type      |
 |-------------|---------------------------------------------------|----------|-----------|
@@ -92,7 +92,7 @@ The `type_params.measure` configuration can be written in different ways:
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 <File name='models/marts/sem_semantic_model_name.yml'>
 
@@ -117,7 +117,7 @@ metrics:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 metrics:
@@ -142,7 +142,7 @@ Cumulative metrics measure data over a given window and consider the window infi
 
 The following example shows how to define cumulative metrics in a YAML file:
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 - `cumulative_order_total`: Calculates the cumulative order total over all time. Uses `type params` to specify the measure `order_total` to be aggregated.
 
@@ -152,7 +152,7 @@ The following example shows how to define cumulative metrics in a YAML file:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 - `cumulative_order_total`: Calculates the cumulative order total over all time. Uses `input_metric` to specify the simple metric `order_total` to be aggregated.
 
@@ -190,7 +190,7 @@ metrics:
 </VersionBlock>
 
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 <File name='models/marts/sem_semantic_model_name.yml'>
 
@@ -230,7 +230,7 @@ metrics:
 
 ### Granularity options
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 Use the `period_agg` parameter with `first()`, `last()`, and `average()` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
 - For other metrics, we use the `date_trunc` function to implement granularity. 
@@ -258,7 +258,7 @@ In this example, `period_agg` is set to `first`, which chooses the first value f
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Use the `period_agg` parameter with `first`, `last`, and `average` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
 - For other metrics, we use the `date_trunc` function to implement granularity. 
@@ -352,7 +352,7 @@ group by
 
 This section details examples of when to specify and not to specify window options.
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 - When a period is specified, MetricFlow applies a sliding window to the underlying simple metric, such as tracking weekly active users with a 7-day window.
 - Without specifying a period, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
@@ -448,7 +448,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 - When a window is specified, MetricFlow applies a sliding window to the underlying measure, such as tracking weekly active users with a 7-day window.
 - Without specifying a window, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
@@ -548,7 +548,7 @@ metrics:
 You can choose to specify a grain to date in your cumulative metric configuration to accumulate a metric from the start of a grain (such as week, month, or year). When using a window, such as a month, MetricFlow will go back one full calendar month. However, grain to date will always start accumulating from the beginning of the grain, regardless of the latest date of data.
 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 For example, let's consider an underlying measure of `order_total.`
 
@@ -563,7 +563,7 @@ For example, let's consider an underlying measure of `order_total.`
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 For example, let's consider an underlying simple metric `order_total` defined within a semantic model:
 
@@ -588,7 +588,7 @@ We can compare the difference between a 1-month window and a monthly grain to da
 - The cumulative metric in a window approach applies a sliding window of 1 month
 - The grain to date by month resets at the beginning of each month.
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -615,7 +615,7 @@ metrics:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/marts/fct_orders.yml'>
 
@@ -635,7 +635,7 @@ metrics:
 
 Cumulative metric with grain to date:
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -651,7 +651,7 @@ Cumulative metric with grain to date:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/marts/fct_orders.yml'>
 
