@@ -122,6 +122,6 @@ Profile-specific APIs are available. Check out our [API documentation](/docs/dbt
 
 <DetailsToggle alt_header="Does the Semantic Layer support profiles?">
 
-<Constant name="semantic_layer" /> configuration isn't supported with profiles yet. We're building toward supporting it in the future.
+<Constant name="semantic_layer" /> configuration isn't supported with profiles yet.
 
 </DetailsToggle>
