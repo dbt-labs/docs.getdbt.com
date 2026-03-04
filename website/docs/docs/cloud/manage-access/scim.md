@@ -65,23 +65,6 @@ To retrieve the necessary <Constant name="cloud" /> configurations for use in Ok
    - However, if you need to make manual updates (like update group membership for a SCIM-managed group), you can enable this setting by clicking **Allow manual updates** and confirming the **Allow manual updates** pop up.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-manual-updates.png" width="70%" title="Enabling manual updates in SCIM settings." />
 
-## Email domain changes and acquisitions
-
-If your organization is changing email domains (for example, after an acquisition or rebrand), SCIM behavior depends on whether users are already SCIM-managed at the time of the change.
-
-- **If users are already SCIM-managed**: SCIM can update email addresses when the IdP changes them. Each email change triggers a verification email to the new address — the user must accept it before the change takes effect in <Constant name="dbt_platform" />.
-- **If users are not yet SCIM-managed**: Enabling SCIM after emails have already changed in the IdP may create duplicate users (one record for the old email, one for the new) because SCIM cannot automatically match the mismatched identities.
-
-### Recommended order for a domain migration
-
-To avoid duplicate users and provisioning failures, use the following order:
-
-1. **Align emails in <Constant name="dbt_platform" /> first.** Update user email addresses in <Constant name="dbt_platform" /> to match what the IdP will send. Users receive a verification email and must confirm the change before it takes effect.
-2. **Enable SCIM and confirm users are SCIM-managed.** After emails are aligned, complete the SCIM setup and verify existing users are picked up correctly (use **Import Users** in Okta if needed).
-3. **Future email changes flow through SCIM.** Once users are SCIM-managed, the IdP controls email updates — though each change still requires user verification.
-
-SCIM streamlines ongoing identity management _after_ the initial identity alignment is complete. It does not automatically reconcile mismatched emails during the first sync.
-
 ## Next steps
 
 Configure SCIM for your identity provider and optionally manage licenses:

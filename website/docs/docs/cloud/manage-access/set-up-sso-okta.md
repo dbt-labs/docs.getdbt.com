@@ -85,11 +85,9 @@ import LoginSlug from '/snippets/_login-slug.md';
 />
 
 :::info Application username configuration
-The **Application username** setting depends on whether you plan to use SCIM:
-- **SSO only**: Use a unique value such as `Custom` / `user.getInternalProperty("id")` (recommended above)
-- **SSO + SCIM**: Use `Email` format instead, as SCIM requires the username to be in email address format
-
-If you're planning to [set up SCIM with Okta](/docs/cloud/manage-access/scim-okta), configure the Application username as `Email` to avoid provisioning issues.
+The **Application username** setting depends on whether you plan to use SCIM or not:
+- If you're using SSO only: Use a unique value such as `Custom` / `user.getInternalProperty("id")` (recommended in earlier steps)
+- If you're using SSO _and_ SCIM: Use `Email` format instead, as SCIM requires the username to be in email address format
 :::
 
 Use the **Attribute Statements** and **Group Attribute Statements** forms to
