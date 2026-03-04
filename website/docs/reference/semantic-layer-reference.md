@@ -1,27 +1,32 @@
 ---
-title: "Semantic Layer reference"
+title: Semantic Layer configurations
 id: semantic-layer-reference
-sidebar_label: "Semantic Layer reference"
 description: "Configuration reference for the Semantic Layer: semantic models, metrics, and dimensions."
 keywords:
   - dbt semantic layer
-  - semantic layer reference
   - semantic layer configuration
   - metrics configuration
   - dimensions configuration
 ---
 
-The following **configuration reference** for the Semantic Layer lists every property and option for semantic models, metrics, and dimensions so you can see the full spec in one place.
+## Related documentation
 
-For conceptual guides and examples, see [Build your metrics](/docs/build/build-metrics-intro) and the linked build docs below.
+- [Build your metrics](/docs/build/build-metrics-intro): For conceptual guides and examples.
+- [Semantic models](/docs/build/semantic-models)
+- [Creating metrics](/docs/build/metrics-overview)
+- [Dimensions](/docs/build/dimensions)
 
-## Reference pages
+This section is the **configuration reference** for the Semantic Layer. It lists every property and option for semantic models, metrics, and dimensions so you can see the full spec in one place.
+
+## Property reference
+
+Click the link on each option to read the full property reference.
 
 | Page | Description |
 |------|-------------|
-| [Semantic model properties](/reference/semantic-model-properties) | Full property reference for semantic models (entities, measures, dimensions, defaults). |
-| [Metric properties](/reference/metric-properties) | Full property reference for metrics (simple, cumulative, ratio, derived, conversion), including metrics defined on a model. |
-| [Dimension properties](/reference/dimension-properties) | Full property reference for dimensions (time and categorical). |
+| [Semantic model properties](/reference/semantic-model-properties) | Properties for semantic models (entities, measures, dimensions, defaults). |
+| [Metric properties](/reference/metric-properties) | Properties for metrics (simple, cumulative, ratio, derived, conversion), including metrics defined on a model. |
+| [Dimension properties](/reference/dimension-properties) | Properties for dimensions (time and categorical). |
 
 ## Where to define Semantic Layer objects
 
@@ -31,4 +36,4 @@ You can define Semantic Layer objects in the following ways:
 - **Metrics** — In standalone YAML or in <Constant name="fusion" /> under a semantic model on a model (`semantic_model.metrics`).
 - **Dimensions** — Always within a semantic model (as a list under `dimensions` or on columns).
 
-For the complete structure and examples, refer to the build docs: [Semantic models](/docs/build/semantic-models), [Creating metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions).
+For the complete structure and examples, refer to the build docs linked above.

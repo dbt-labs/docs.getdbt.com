@@ -1446,7 +1446,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Semantic Layer",
+          label: "For Semantic Layer",
           link: { type: "doc", id: "reference/semantic-layer-reference" },
           items: [
             "reference/semantic-layer-reference",
