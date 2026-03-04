@@ -48,10 +48,16 @@ function compareVersions(a, b) {
   return 0;
 }
 
+// Public channels to display in "Current versions" section
+const PUBLIC_CHANNELS = ["dev", "canary", "latest"];
+
 function VersionCards({ versions }) {
   if (!versions) return null;
 
-  const channels = Object.entries(versions);
+  // Filter to only show public channels (exclude ST releases)
+  const channels = Object.entries(versions).filter(([channel]) =>
+    PUBLIC_CHANNELS.includes(channel)
+  );
   if (channels.length === 0) return null;
 
   return (
