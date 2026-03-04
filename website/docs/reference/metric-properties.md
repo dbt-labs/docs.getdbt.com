@@ -10,7 +10,10 @@ keywords:
   - MetricFlow
 ---
 
-Metrics define measurable quantities that you can query through the Semantic Layer. You can define them in standalone YAML (see [Creating metrics](/docs/build/metrics-overview)) or, in the *latest spec*, as a top-level `metrics:` list on a [model](/reference/model-properties) alongside `semantic_model:` and `columns:`.
+Metrics define measurable quantities that you can query through the <Constant name="semantic_layer" />. You define them in different places, depending on your <Constant name="dbt" /> version:
+
+- In a model using the *latest* YAML spec. Top-level `metrics:` list on a [model](/reference/model-properties) that has semantic modeling enabled, alongside `semantic_model:` and `columns:`. Available in the <Constant name="dbt_platform" /> **Latest** release track and the <Constant name="fusion_engine" />.
+- In the standalone *legacy* YAML spec.  Refer to [Creating metrics](/docs/build/metrics-overview) for more information.
 
 import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability-versioned.md';
 
@@ -20,7 +23,7 @@ import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability
 
 ## Latest spec (model YAML)
 
-In the latest spec, you can define metrics on a model. Add a top-level *metrics* list alongside *semantic_model* and *columns* (metrics are not nested under semantic_model). Type-specific settings are top-level keys on each metric.
+In the latest YAML spec, you can define metrics on a model that has semantic modeling enabled. Add a top-level *metrics* list alongside *semantic_model* and *columns* (metrics are not nested under semantic_model). Type-specific settings are top-level keys on each metric.
 
 ### Available metric properties (latest spec)
 
@@ -48,7 +51,7 @@ In the latest spec, you can define metrics on a model. Add a top-level *metrics*
 
 **Note:** For the legacy spec, all metrics were defined in standalone YAML; there was no model-level `metrics:` list.
 
-See [Creating metrics](/docs/build/metrics-overview) and [Semantic models](/docs/build/semantic-models) for the exact YAML structure and examples.
+Refer to [Creating metrics](/docs/build/metrics-overview) and [Semantic models](/docs/build/semantic-models) for the exact YAML structure and examples.
 
 </VersionBlock>
 

@@ -9,7 +9,7 @@ keywords:
   - dimensions configuration
 ---
 
-You can use this Semantic Layer configuration reference to learn about every property and option for semantic models, metrics, and dimensions that belong to the full YAML spec.
+You can use this <Constant name="semantic_layer" /> configuration reference to learn about every property and option for semantic models, metrics, and dimensions that belong to the full YAML spec.
 
 Because this reference provides information about both the *latest spec* (model-embedded) and the *legacy spec* (standalone YAML), you'll need to select the appropriate version from the version picker. [Read the build docs](/docs/build/semantic-models) to find out which applies to your environment. To convert from the legacy spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
@@ -28,7 +28,7 @@ Click a link to read the full property reference for that resource. Use the vers
 | [Metric properties](/reference/metric-properties) | **Metrics** — Latest spec (model YAML): top-level `metrics:` list on a model; property table and properties by type (simple, cumulative, ratio, derived, conversion); cross-model rules. Legacy spec (standalone YAML): top-level `metrics:` key; property table with `type_params`; type-specific parameters. |
 | [Dimension properties](/reference/dimension-properties) | **Dimensions** — Latest spec (model YAML): column-level `dimension:` block, `granularity:` on column, `derived_semantics.dimensions`, `validity_params`. Legacy spec (standalone semantic model): `dimensions:` list with name, type, `type_params`, description, expr, label, meta. |
 
-## Where to define Semantic Layer objects
+## Where to define <Constant name="semantic_layer" /> objects
 
 | Object | Latest spec (model YAML) | Legacy spec (standalone YAML) |
 |--------|--------------------------|------------------------------|
@@ -40,7 +40,7 @@ Click a link to read the full property reference for that resource. Use the vers
 
 For the complete structure and examples, refer to these build docs:
 
-- [Build your metrics](/docs/build/build-metrics-intro): Conceptual overview of the Semantic Layer, metric types, and how to get started.
+- [Build your metrics](/docs/build/build-metrics-intro): Conceptual overview of the <Constant name="semantic_layer" />, metric types, and how to get started.
 - [Semantic models](/docs/build/semantic-models): How to define semantic models (on a model or standalone), structure, and examples.
 - [Creating metrics](/docs/build/metrics-overview): How to create and configure metrics; links to type-specific guides (simple, cumulative, ratio, derived, conversion).
 - [Dimensions](/docs/build/dimensions): How to define time and categorical dimensions within semantic models.
