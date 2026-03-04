@@ -15,7 +15,7 @@ Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deploy
 
 #### Considerations
 - Profiles don't apply to development environments because of the unique configurations and individual credentials applied.
-- The <Constant name="semantic_layer" /> configuration isn't supported with profiles yet. We're building toward supporting it in the future.
+- The <Constant name="semantic_layer" /> configuration isn't supported with profiles yet. 
 
 ## Create a profile
 
