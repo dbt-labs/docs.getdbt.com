@@ -74,10 +74,6 @@ exports.versionedPages = [
     firstVersion: "1.8",
   },
   {
-    page: "/docs/build/measures",
-    lastVersion: "1.99",
-  },
-  {
     page: "docs/cloud/connect-data-platform/connect-apache-spark",
     lastVersion: "1.99",
   },
