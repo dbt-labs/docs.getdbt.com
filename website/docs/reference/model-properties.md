@@ -22,7 +22,7 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 |[deprecation_date](/reference/resource-properties/deprecation_date)|	string|	No	|Date when the model is deprecated.|
 |[access](/reference/resource-configs/access)	|string|	No|	Access level: private, protected, or public. Supported at the top-level for backwards compatibility only. |
 |[time_spine](/docs/build/metricflow-time-spine)|	object	|No	|Time spine configuration for semantic layer.|
-|[semantic_model](/reference/semantic-model-properties)|	object	|No	|Semantic model configuration for the dbt Semantic Layer. In <Constant name="fusion" />, can include [metrics](/reference/metric-properties) defined on the model.|
+|[semantic_model](/reference/semantic-model-properties)|	object	|No	|Semantic model configuration for the dbt Semantic Layer. In the latest spec (<Constant name="dbt_platform" /> Latest, <Constant name="fusion" />, and <Constant name="core" /> v1.12 coming soon), you can also define a top-level `metrics:` list on the model alongside `semantic_model:` and `columns`.|
 
 ### Example file
 

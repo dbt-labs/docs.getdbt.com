@@ -9,31 +9,39 @@ keywords:
   - dimensions configuration
 ---
 
-## Related documentation
+You can use this Semantic Layer configuration reference to learn about every property and option for semantic models, metrics, and dimensions that belong to the full YAML spec.
 
-- [Build your metrics](/docs/build/build-metrics-intro): Conceptual overview of the Semantic Layer, metric types, and how to get started.
-- [Semantic models](/docs/build/semantic-models): How to define semantic models (standalone or on a model), structure, and examples.
-- [Creating metrics](/docs/build/metrics-overview): How to create and configure metrics; links to type-specific guides (simple, cumulative, ratio, derived, conversion).
-- [Dimensions](/docs/build/dimensions): How to define time and categorical dimensions within semantic models.
+Because this reference provides information about both the *latest spec* (model-embedded) and the *legacy spec* (standalone YAML), you'll need to select the appropriate version from the version picker. [Read the build docs](/docs/build/semantic-models) to find out which applies to your environment. To convert from the legacy spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
-This section is the **configuration reference** for the Semantic Layer. It lists every property and option for semantic models, metrics, and dimensions so you can see the full spec in one place.
+import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability.md';
+
+<LatestYamlSpecAvailability />
+
 
 ## Property reference
 
-Click the link on each option to read the full property reference.
+Click a link to read the full property reference for that resource. Use the version picker on each page to see *latest spec (model YAML)* or *legacy spec (standalone YAML)* content.
 
 | Page | Description |
 |------|-------------|
-| [Semantic model properties](/reference/semantic-model-properties) | Properties for semantic models (entities, measures, dimensions, defaults). |
-| [Metric properties](/reference/metric-properties) | Properties for metrics (simple, cumulative, ratio, derived, conversion), including metrics defined on a model. |
-| [Dimension properties](/reference/dimension-properties) | Properties for dimensions (time and categorical). |
+| [Semantic model properties](/reference/semantic-model-properties) | **Semantic models** — Latest spec (model YAML): `semantic_model:` block, top-level `agg_time_dimension` and `primary_entity`, `columns` (entity/dimension blocks, `granularity`), `derived_semantics`, and optional `metrics`. Legacy spec (standalone YAML): `semantic_models:` list with model, defaults, entities, dimensions, measures, config. |
+| [Metric properties](/reference/metric-properties) | **Metrics** — Latest spec (model YAML): top-level `metrics:` list on a model; property table and properties by type (simple, cumulative, ratio, derived, conversion); cross-model rules. Legacy spec (standalone YAML): top-level `metrics:` key; property table with `type_params`; type-specific parameters. |
+| [Dimension properties](/reference/dimension-properties) | **Dimensions** — Latest spec (model YAML): column-level `dimension:` block, `granularity:` on column, `derived_semantics.dimensions`, `validity_params`. Legacy spec (standalone semantic model): `dimensions:` list with name, type, `type_params`, description, expr, label, meta. |
 
 ## Where to define Semantic Layer objects
 
-You can define Semantic Layer objects in the following ways:
+| Object | Latest spec (model YAML) | Legacy spec (standalone YAML) |
+|--------|--------------------------|------------------------------|
+| **Semantic models** | Top-level `semantic_model:` block on a [model](/reference/model-properties). | Top-level `semantic_models:` list. |
+| **Metrics** | Top-level `metrics:` list on a model alongside `semantic_model:` and `columns:` (not nested under `semantic_model`). Model-level `metrics:` can only reference that semantic model; for cross-model metrics, use standalone YAML. | Top-level `metrics:` key in standalone YAML. |
+| **Dimensions** | `dimension:` blocks on model columns (and optional `derived_semantics.dimensions`). Always within a semantic model. | `dimensions:` list on the semantic model. Always within a semantic model. |
 
-- **Semantic models** — In standalone YAML or in <Constant name="fusion" /> as a `semantic_model` block on a [model](/reference/model-properties).
-- **Metrics** — In standalone YAML or in <Constant name="fusion" /> under a semantic model on a model (`semantic_model.metrics`).
-- **Dimensions** — Always within a semantic model (as a list under `dimensions` or on columns).
+## Related documentation
 
-For the complete structure and examples, refer to the build docs linked above.
+For the complete structure and examples, refer to these build docs:
+
+- [Build your metrics](/docs/build/build-metrics-intro): Conceptual overview of the Semantic Layer, metric types, and how to get started.
+- [Semantic models](/docs/build/semantic-models): How to define semantic models (on a model or standalone), structure, and examples.
+- [Creating metrics](/docs/build/metrics-overview): How to create and configure metrics; links to type-specific guides (simple, cumulative, ratio, derived, conversion).
+- [Dimensions](/docs/build/dimensions): How to define time and categorical dimensions within semantic models.
+- [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec): How to migrate from the legacy metrics YAML spec to the latest spec.
