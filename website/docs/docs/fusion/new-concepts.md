@@ -39,9 +39,7 @@ The software engineering concept of [static analysis](https://en.wikipedia.org/w
 
 The most rigorous static analysis is one in which you can trust that if the static analysis succeeds, the code will run in production without compilation errors.
 
-There's also less strict static analysis that can be performed that surfaces helpful information to developers as they are working.
-
-Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control. 
+There's also less strict static analysis that can be performed that surfaces helpful information to developers as they are working. There's no free lunch because what you gain in responsiveness you lose in correctness guarantees.
 
 The <Constant name="fusion_engine" /> uses the [`static_analysis`](/reference/resource-configs/static-analysis) config to help you control how it performs static analysis for your models.
 
