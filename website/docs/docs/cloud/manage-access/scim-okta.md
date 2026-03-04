@@ -45,12 +45,24 @@ You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_p
 
 ## SCIM username format
 
-SCIM requires the username to be in the email address format. If your Okta configurations map the `Username` field to a different attribute, SCIM user provisioning will fail. To get around this without altering your user profiles, set your Okta app config to `Email`:
+For <Constant name="dbt_platform" /> SCIM with Okta, `userName` **must be the user's email address**. <Constant name="dbt_platform" /> uses `userName` to look up existing users during SCIM sync. If Okta sends a non-email value (such as an Okta internal ID like `00u...` or an employee ID), <Constant name="dbt_platform" /> cannot match the existing user and provisioning will fail.
+
+If your Okta configurations map the `Username` field to a different attribute, set your Okta app config to `Email`:
 
 1. Open the SAML app created for the dbt integration.
 2. In the **Sign on** tab, click **Edit** in the **Settings** pane.
 3. Set the **Application username format** field to **Email**.
 4. Click **Save**.
+
+### What you'll see if misconfigured
+
+If `userName` is not an email address, you may encounter errors like:
+
+- Okta reports **"User already exists"** when attempting to provision a user.
+- SCIM logs show a filter like `userName eq "00uXXXXXXXXX"` (an Okta internal ID instead of an email).
+- <Constant name="dbt_platform" /> returns no match on the SCIM `GET` request, then the subsequent `POST` to create the user fails with a conflict because the user already exists under their email.
+
+When this occurs, <Constant name="dbt_platform" /> cannot match the existing user during SCIM sync, and provisioning fails with a conflict error.
 
 ## SCIM license mapping
 
@@ -61,9 +73,47 @@ To automate seat assignments in Okta for users as they are provisioned, see [Man
 If you are adding SCIM to an existing Okta integration in <Constant name="cloud" /> (as opposed to setting up SCIM and SSO concurrently for the first time), be aware of the following behavior:
 
 - Users and groups already synced to <Constant name="cloud" /> will become SCIM-managed once you complete the SCIM configuration.
-- (Recommended) Import and manage existing <Constant name="cloud" /> groups and users with Okta's **Import Groups** and **Import Users** features. Update the groups in your IdP with the same naming convention used for <Constant name="cloud" /> groups. New users, groups, and changes to existing profiles will be automatically imported into <Constant name="cloud" />.
-    - Ensure the **Import users and profile updates** and **Import Groups** boxes are selected under the **Provisioning settings** tab in the Okta SCIM configuration.
-    - Use **Import Users** to sync all users from <Constant name="cloud" />, including previously deleted users, if you need to re-provision those users. 
-    - Read more about this feature in the [Okta documentation](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
+- Before enabling SCIM, confirm that user emails in <Constant name="dbt_platform" /> match the email addresses in Okta. If they differ, SCIM may create duplicate users rather than matching existing ones. See [Email domain changes](#email-domain-changes) below for guidance on ordering.
+
+### Import users
+
+When adding SCIM to an existing integration, use the following guidance:
+
+- **Import users** from the app to bring existing <Constant name="dbt_platform" /> users under SCIM management. In Okta, go to the app's **Import** tab (located at the top of the app, not under the **Provisioning** tab) and click **Import Now**.
+- **Avoid importing groups** unless you intend to fully manage group membership through Okta. Importing groups transfers ownership to SCIM, which disables manual group management in <Constant name="dbt_platform" />.
+- Ensure **Import New Users and Profile Updates** is selected under the **Provisioning** → **To App** settings in Okta.
+- Use **Import Users** to re-provision previously deleted users if needed.
+
+For more detail, see the [Okta documentation on importing groups](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
 
 To set license type for users as they are provisioned, see [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
+
+## Email domain changes
+
+If your organization is migrating to a new email domain (for example, through an acquisition), the order of operations matters for SCIM to work correctly.
+
+**If users are already SCIM-managed**, SCIM can update email addresses automatically when the IdP changes them. However, email changes trigger a verification email to the new address — the user must accept the change before it takes effect in <Constant name="dbt_platform" />.
+
+**If users are not yet SCIM-managed** and email addresses have already changed in the IdP, enabling SCIM may create duplicate users (one for the old email, one for the new) unless emails are aligned first.
+
+### Recommended order for a domain migration
+
+1. Align email addresses in <Constant name="dbt_platform" /> to match the new IdP emails (users will receive a verification email and must confirm the change).
+2. Enable SCIM and confirm existing users become SCIM-managed (verify via **Import Users** in Okta).
+3. From this point forward, email updates can flow through SCIM — though each change still requires user verification.
+
+SCIM reduces ongoing manual work _after_ initial identity alignment, but it does not automatically reconcile mismatched identities during the first sync.
+
+## Emails users receive when SCIM is enabled
+
+When SCIM is enabled, users may receive the following emails from <Constant name="dbt_platform" />. This is expected behavior.
+
+| Trigger | Email sent |
+|---|---|
+| New user provisioned via SCIM for the first time | MFA or account verification email (depending on your Okta configuration) |
+| User's email address updated via SCIM | Verification email to the **new** address; the change does not take effect until the user confirms it |
+| User accepts a group or license assignment invite | Confirmation email |
+
+:::note
+If a newly provisioned user does not complete email or MFA verification, their account is created but remains in an unconfirmed state. Group and license assignments may not take effect until the user completes verification. If a user reports missing group access after being provisioned, verify that their account confirmation is complete.
+:::
