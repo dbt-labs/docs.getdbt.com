@@ -217,13 +217,21 @@ Some queries inevitably fail, at different points in process. To handle these ca
 
 #### job_execution_timeout_seconds
 
-Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete, after being submitted successfully. Of the four configurations that control timeout and retries, this one is the most common to use.
-
-:::info Renamed config
-
 In older versions of `dbt-bigquery`, this same config was called `timeout_seconds`.
 
-:::
+Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete, after being submitted successfully. Of the four configurations that control timeout and retries, this one is the most common to use.
+
+<VersionBlock lastVersion="1.11">
+
+You can set it in your BigQuery profile (applies to all runs).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+You can set it in your BigQuery profile (applies to all runs) or per model, snapshot, seed, or test. The per-resource value overrides the profile-level value.
+
+</VersionBlock>
   
 No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set). When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
 
@@ -238,19 +246,87 @@ Normally, BigQuery keeps running the job even if this timeout is reached, howeve
 
 :::
   
-You can change the timeout seconds for the job execution step by configuring `job_execution_timeout_seconds` in the BigQuery profile:
+- Set `job_execution_timeout_seconds` in your BigQuery profile to apply a default to all runs:
 
-```yaml
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      job_execution_timeout_seconds: 600 # 10 minutes
-```
+  ```yaml
+  my-profile:
+    target: dev
+    outputs:
+      dev:
+        type: bigquery
+        method: oauth
+        project: abc-123
+        dataset: my_dataset
+        job_execution_timeout_seconds: 600 # 10 minutes
+  ```
+
+<VersionBlock firstVersion="1.12">
+
+- You can override the default timeout set in the profile level for the following resources (available in `dbt-bigquery` v1.12.0 and later). 
+
+  <Tabs>
+  <TabItem value="model" label="Models">
+
+  <File name='my_model.sql'>
+
+  ```sql
+  {{ config(job_execution_timeout_seconds=600) }}
+  SELECT ...
+  ```
+
+  </File>
+
+  <File name='schema.yml'>
+
+  ```yaml
+  models:
+    - name: my_model
+      config:
+        job_execution_timeout_seconds: 600
+  ```
+
+  </File>
+
+  </TabItem>
+  <TabItem value="seeds" label="Seeds">
+
+  ```yaml
+  seeds:
+    - name: my_large_seed
+      config:
+        job_execution_timeout_seconds: 600
+  ```
+
+  For seeds, the timeout applies to the SQL that runs after the CSV is uploaded. The upload step uses the profile-level timeout.
+
+  </TabItem>
+  <TabItem value="snapshots" label="Snapshots">
+
+  ```yaml
+  snapshots:
+    - name: my_snapshot
+      config:
+        job_execution_timeout_seconds: 600
+  ```
+
+  </TabItem>
+  <TabItem value="tests" label="Tests">
+
+  ```yaml
+  models:
+    - name: my_model
+      columns:
+        - name: id
+          data_tests:
+            - unique:
+                config:
+                  job_execution_timeout_seconds: 600
+  ```
+
+  </TabItem>
+  </Tabs>
+
+</VersionBlock>
 
 import JobTimeout from '/snippets/_bigquery-timeout.md';
 
