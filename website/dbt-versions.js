@@ -111,7 +111,7 @@ exports.versionedPages = [
   },
   {
     page: "docs/build/measures",
-    lastVersion: "1.99",
+    lastVersion: "1.11",
   },
 ];
 
