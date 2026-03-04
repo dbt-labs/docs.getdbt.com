@@ -10,7 +10,7 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 
 The parameters, description, and type for derived metrics are: 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 | Parameter | Description | Required | Type | 
 | --------- | ----------- | ---- | ---- |
@@ -27,7 +27,7 @@ The parameters, description, and type for derived metrics are:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 | Parameter | Description | Required | Type | 
 | --------- | ----------- | ---- | ---- |
@@ -46,7 +46,7 @@ The parameters, description, and type for derived metrics are:
 
 The following displays the complete specification for derived metrics, along with an example.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 metrics:
@@ -65,7 +65,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/model.yml'>
 
@@ -90,7 +90,7 @@ For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine
 
 ## Derived metrics example
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 metrics:
@@ -135,7 +135,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/model.yml'>
 
@@ -194,7 +194,7 @@ To perform calculations using a metric's value from a previous time period, you 
 
 The following example displays how you can calculate monthly revenue growth using a 1-month offset window:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: customer_retention
@@ -212,7 +212,7 @@ The following example displays how you can calculate monthly revenue growth usin
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/model.yml'>
 
@@ -242,7 +242,7 @@ models:
 
 You can query any granularity and offset window combination. The following example queries a metric with a 7-day offset and a monthly grain:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: d7_booking_change
@@ -261,7 +261,7 @@ You can query any granularity and offset window combination. The following examp
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/model.yml'>
 
@@ -290,7 +290,7 @@ models:
 
 When you run the query  `dbt sl query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated. For dbt Core, you can use the `mf query` prefix. 
 
-1. Retrieve the raw, unaggregated dataset with the specified <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> and dimensions at the smallest level of detail, which is currently 'day'.
+1. Retrieve the raw, unaggregated dataset with the specified <VersionBlock lastVersion="1.11">measure</VersionBlock><VersionBlock firstVersion="1.12">simple metric</VersionBlock> and dimensions at the smallest level of detail, which is currently 'day'.
 2. Then, perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
    For example, to calculate `d7_booking_change` for July 2017: 
    - First, sum up all the booking values for each day in July to calculate the bookings metric.
