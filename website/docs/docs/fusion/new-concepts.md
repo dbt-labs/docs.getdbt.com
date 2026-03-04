@@ -19,11 +19,11 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 <IntroText>
 
-The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
+The <Constant name="fusion_engine" /> [can fully comprehends your project's SQL](/blog/the-levels-of-sql-comprehension), enabling advanced capabilities like dialect-aware validation and precise column-level lineage.
 
 It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
-The dbt Fusion engine can also render Jinja, but then it completes a second phase: producing and validating with _static analysis_ a logical plan for every rendered query in the project. This static analysis step is the cornerstone of Fusion's new capabilities.
+The dbt Fusion engine can also render Jinja, but then it completes a second phase: _static analysis_, in which  a logical plan is produced and validated with for every rendered query in the project. This step is the cornerstone of Fusion's new capabilities.
 
 </IntroText>
 
@@ -35,7 +35,13 @@ The dbt Fusion engine can also render Jinja, but then it completes a second phas
 
 ## Principles of static analysis
 
-The concept of [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) is meant to guarantee that if a model compiles without error in development, it will also run without compilation errors when deployed. Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control. 
+The software engineering concept of [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) is used to describe the category of checks that can done on code before it runs (i.e. static == not running).
+
+The most rigorous static analysis is one in which you can trust that if the static analysis succeeds, the code will run in production without compilation errors.
+
+There's also less strict static analysis that can be performed that surfaces helpful information to developers as they are working.
+
+Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control. 
 
 The <Constant name="fusion_engine" /> uses the [`static_analysis`](/reference/resource-configs/static-analysis) config to help you control how it performs static analysis for your models.
 
