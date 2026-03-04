@@ -11,10 +11,10 @@ keywords:
 
 ## Related documentation
 
-- [Build your metrics](/docs/build/build-metrics-intro): For conceptual guides and examples.
-- [Semantic models](/docs/build/semantic-models)
-- [Creating metrics](/docs/build/metrics-overview)
-- [Dimensions](/docs/build/dimensions)
+- [Build your metrics](/docs/build/build-metrics-intro): Conceptual overview of the Semantic Layer, metric types, and how to get started.
+- [Semantic models](/docs/build/semantic-models): How to define semantic models (standalone or on a model), structure, and examples.
+- [Creating metrics](/docs/build/metrics-overview): How to create and configure metrics; links to type-specific guides (simple, cumulative, ratio, derived, conversion).
+- [Dimensions](/docs/build/dimensions): How to define time and categorical dimensions within semantic models.
 
 This section is the **configuration reference** for the Semantic Layer. It lists every property and option for semantic models, metrics, and dimensions so you can see the full spec in one place.
 

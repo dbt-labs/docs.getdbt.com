@@ -18,7 +18,7 @@ Dimensions are non-aggregatable expressions that define how metrics can be group
 |----------|------|----------|-------------|
 | name | string | Yes | Unique within the semantic model. Displayed in downstream tools; can act as alias when `expr` differs. |
 | type | string | Yes | `time` or `categorical`. |
-| type_params | object | Yes (pre-2.0) | For time dimensions: e.g. `time_granularity`, `is_primary`, `time_partitioning_granularity`. Omitted for categorical. |
+| type_params | object | Yes (<Constant name="core" />) | For time dimensions: For example, `time_granularity`, `is_primary`, `time_partitioning_granularity`. Omitted for categorical. |
 | description | string | No | Documentation for the dimension. |
 | expr | string | No | Column or SQL expression. Defaults to the dimension name if omitted. |
 | label | string | No | Display value in downstream tools. |
