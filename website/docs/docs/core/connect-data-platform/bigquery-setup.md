@@ -229,11 +229,11 @@ You can set it in your BigQuery profile (applies to all runs).
 
 <VersionBlock firstVersion="1.12">
 
-You can set it in your BigQuery profile (applies to all runs) or per model, snapshot, seed, or test. The per-resource value overrides the profile-level value.
+You can set it in your BigQuery profile (applies to all runs) or per model, snapshot, seed, or test. The per-resource value overrides the default value set in the profile level.
 
 </VersionBlock>
   
-No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set). When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
+No timeout is set by default. For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set. When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
 
 ```
  Operation did not complete within the designated timeout.
@@ -262,7 +262,7 @@ Normally, BigQuery keeps running the job even if this timeout is reached, howeve
 
 <VersionBlock firstVersion="1.12">
 
-- You can override the default timeout set in the profile level for the following resources (available in `dbt-bigquery` v1.12.0 and later). 
+- You can override the default timeout set in the profile level for the following resources (available in `dbt-bigquery` v1.12.0 and later):
 
   <Tabs>
   <TabItem value="model" label="Models">
@@ -292,7 +292,7 @@ Normally, BigQuery keeps running the job even if this timeout is reached, howeve
 
   ```yaml
   seeds:
-    - name: my_large_seed
+    - name: my_seed
       config:
         job_execution_timeout_seconds: 600
   ```
