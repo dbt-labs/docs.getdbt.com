@@ -22,7 +22,7 @@ Historically, <Constant name="core" />  adapters required bespoke connection log
 
 ## Technical overview
 
-This technical specification covers ADBC 22. For the latest information and detailed documentation, refer to the [ADBC documentation](https://arrow.apache.org/adbc/current/), which is the source of truth.
+This technical specification covers the ADBC specification. The specification maintains backwards compatibility, so guidance here remains valid as the spec evolves. For the latest information and detailed documentation, refer to the [ADBC documentation](https://arrow.apache.org/adbc/current/), which is the source of truth.
 
 The ADBC API provides a powerful array of features, but you don't need to implement all of them. This section covers the API surface required for <Constant name="fusion" /> compatibility.
 
@@ -33,10 +33,10 @@ The ADBC API provides a powerful array of features, but you don't need to implem
 One distinct advantage of Arrow ADBC is portability. You can write drivers in various languages and load them via driver managers. This portability allows <Constant name="fusion" /> (written in Rust) to leverage drivers written in other languages.
 
 For <Constant name="fusion" /> compatibility, drivers must:
-- Be written in a compiled language with no runtime
+- Compile into shared libraries that can be loaded from any program
 - Produce a platform-specific, standalone binary
 
-We recommend **Go** as the language of choice, though Rust or C++ also work. A standalone binary allows users to download and run the driver out of the box without setting up an interpreter or runtime. Compiled languages like Go also enable <Constant name="fusion" /> and its drivers to share memory directly over FFI without external dependencies.
+We recommend **Go** as the language of choice, though Rust or C++ also work. Go has a runtime and garbage collector, but it's engineered to compile into well-behaved shared libraries&mdash;unlike languages like C# or Java. A standalone binary allows users to download and run the driver out of the box without setting up an interpreter. Compiled languages like Go also enable <Constant name="fusion" /> and its drivers to share memory directly over FFI without external dependencies.
 
 ### ADBC specifications
 
@@ -53,19 +53,25 @@ Drivers consist of several key abstractions:
 
 ### Authentication
 
-Drivers handle authentication through key-value options set on the database. <Constant name="fusion" /> passes options from user-authored `profiles.yml` files directly to the driver. For example, OAuth typically requires one option to control the authentication type, plus additional options for client ID and client secret (depending on the OAuth flavor). For more information, refer to [dbt profiles](/docs/core/connect-data-platform/profiles.yml).
+Drivers handle authentication through key-value options set on the database. <Constant name="fusion" /> translates options from user-authored `profiles.yml` files before passing them to the driver. For example, what dbt calls `client_secret` in a Snowflake profile gets set on the driver as `adbc.snowflake.sql.client_option.client_secret`. 
+
+For a complete example of how <Constant name="fusion" /> translates profile options, see the [Snowflake authentication source code](https://github.com/dbt-labs/dbt-fusion/blob/main/crates/dbt-auth/src/snowflake/mod.rs).
+
+For more information on profile configuration, refer to [dbt profiles](/docs/core/connect-data-platform/profiles.yml).
 
 #### Credential caching
 
+Simple authentication methods (like username/password stored in `profiles.yml`) support fully parallel connection creation with no special handling required.
+
 For authentication methods that require browser interaction (user-to-machine OAuth, SSO, or MFA), implement credential caching. Due to <Constant name="fusion" />'s highly parallel execution, without caching, every new connection prompts the user for authentication repeatedly.
 
-Your credential cache must:
+Your credential cache for browser-based authentication must:
 
 - Block new connections until an initial connection establishes and stores a token in memory (avoiding the thundering herd problem).
 - Handle token refresh using the same blocking principle when invalidation occurs.
-- Use interprocess, file-system-based storage** to support the LSP, which runs in a separate process.
+- Use interprocess, file-system-based storage to support the LSP, which runs in a separate process.
 
-This caching is critical for any browser-based or MFA authentication option.
+This caching is critical for any browser-based or MFA authentication option, but is not needed for simple credential-based authentication.
 
 ## Required APIs
 
