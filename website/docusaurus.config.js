@@ -1,6 +1,7 @@
 import path from "path";
 import math from "remark-math";
 import katex from "rehype-katex";
+import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 const { themes } = require('prism-react-renderer')
 
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
@@ -374,6 +375,9 @@ var siteSettings = {
           enableLlmsFullTxt: true,
           relativePaths: false,
         },
+        processing: {
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage],
+        },
         include: {
           includeBlog: false,
           includePages: false,
@@ -511,7 +515,6 @@ var siteSettings = {
     "/js/headerLinkCopy.js",
     "/js/gtm.js",
     "/js/onetrust.js",
-    "/js/mutiny.js",
     "/js/hide-forethought.js",
     {
       src: "https://www.google.com/recaptcha/api.js?render=6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
