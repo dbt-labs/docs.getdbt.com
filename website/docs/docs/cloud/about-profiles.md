@@ -11,7 +11,7 @@ pagination_prev: null
 <Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. 
 </IntroText>
 
-Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/List%20Profiles).
+Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](/dbt-cloud/api-v3#/operations/List%20Profiles).
 
 #### Considerations
 - Profiles don't apply to development environments because of the unique configurations and individual credentials applied.
