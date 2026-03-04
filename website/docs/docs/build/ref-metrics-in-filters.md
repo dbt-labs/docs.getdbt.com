@@ -66,7 +66,7 @@ from
 
 Using the same `activated_accounts` example mentioned in [the usage example](#usage-example), the following YAML example explains how a company can create [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview), and use the `Metric()` object to reference the `data_model_runs` metric in the `activated_accounts` metric filter:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 - Create two semantic models: `model_runs` and `accounts`.
 - Create a `measure` and `metric` to count data model runs, and another measure to count users.
@@ -113,7 +113,7 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 - Create two semantic models: `model_runs` and `accounts`.
 - Create metrics to count data model runs and users.
