@@ -4,6 +4,10 @@ sidebar_label: "snapshot"
 id: "snapshot"
 ---
 
+:::info
+`dbt snapshot` supports all standard global <Constant name="cloud_cli" /> flags. You can use these flags to modify execution behavior, configure targets, and adjust logging output. For a full list of available flags and examples, refer to [About flags (global configs)](/reference/global-configs/about-global-configs).
+:::
+
 The `dbt snapshot` command executes the [Snapshots](/docs/build/snapshots) defined in your project.
 
 dbt will look for Snapshots in the `snapshot-paths` paths defined in your `dbt_project.yml` file. By default, the `snapshot-paths` path is `snapshots/`.
