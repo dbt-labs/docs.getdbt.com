@@ -72,7 +72,7 @@ If `vars.yml` is empty or doesn't exist, variables defined in `dbt_project.yml` 
 
 #### Using `vars.yml` variables in `dbt_project.yml`<Lifecycle status="beta" />
 
-Because `vars.yml` is parsed before `dbt_project.yml`, you can reference variables from `vars.yml` within `dbt_project.yml` using `{{ var('...') }}`. Variables referenced in `dbt_project.yml` are resolved only from `vars.yml` or the `--vars` command-line argument, not from the `vars` block in `dbt_project.yml` itself. If `dbt_project.yml` expects a variable that is defined only in its own `vars` block, dbt raises an error.
+Because `vars.yml` is parsed before `dbt_project.yml`, you can reference variables from `vars.yml` within `dbt_project.yml` using `{{ var('...') }}`. Variables referenced in `dbt_project.yml` are resolved only from `vars.yml` or the `--vars` command-line argument, not from the `vars` block in `dbt_project.yml` itself. If `dbt_project.yml` references a variable that is defined only in its own `vars` block, dbt raises an error.
 
 For example, you have the following variables defined in `vars.yml`:
 
