@@ -7,8 +7,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# New concepts
-
 <VersionBlock lastVersion="1.99">
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
