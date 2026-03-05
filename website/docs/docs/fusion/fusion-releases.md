@@ -33,6 +33,8 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 <details>
     <summary>Updating Fusion</summary>
 <p>
+The following instructions are for updating local installations of <Constant name="fusion" />. <Constant name="dbt_platform" /> users automatically get the `latest` updates.
+
 Running the system update command without a version flag installs the `latest` stable release:
 
 ```shell
