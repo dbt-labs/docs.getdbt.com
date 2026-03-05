@@ -85,7 +85,7 @@ If you're using BigQuery WIF, we recommend using it with BigQuery OAuth. Otherwi
 
 **Available in:** Deployment environments
 
-The BigQuery WIF auth method permits <Constant name="cloud" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="cloud" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="cloud" />, please see [the docs on setting up BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation) WIF.
+The BigQuery WIF auth method permits <Constant name="cloud" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="cloud" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="cloud" />, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
 
 ## Configuration
 
