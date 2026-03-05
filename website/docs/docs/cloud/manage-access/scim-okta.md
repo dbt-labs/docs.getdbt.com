@@ -45,7 +45,7 @@ You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_p
 
 ## SCIM username format
 
-For <Constant name="dbt_platform" /> SCIM with Okta, `userName` **must be the user's email address**. <Constant name="dbt_platform" /> uses `userName` to look up existing users during SCIM sync. If Okta sends a non-email value (such as an Okta internal ID like `00u...` or an employee ID), <Constant name="dbt_platform" /> cannot match the existing user and provisioning will fail.
+For <Constant name="dbt_platform" /> SCIM with Okta, `userName` **must be the email address format**. <Constant name="dbt_platform" /> uses `userName` to look up existing users during SCIM sync. If Okta sends another format (such as an Okta internal ID like `00u...` or an employee ID), <Constant name="dbt_platform" /> cannot match the existing user, and provisioning will fail.
 
 If your Okta configurations map the `Username` field to a different attribute, set your Okta app config to `Email`:
 
@@ -56,7 +56,7 @@ If your Okta configurations map the `Username` field to a different attribute, s
 
 #### What you'll see if misconfigured
 
-If `userName` is not an email address, you may encounter errors like:
+If `userName` is not configured for `Email`, you may encounter errors like:
 
 - Okta reports **"User already exists"** when attempting to provision a user.
 - SCIM logs show a filter like `userName eq "00uXXXXXXXXX"` (an Okta internal ID instead of an email).
