@@ -12,7 +12,7 @@ level: 'Intermediate'
 
 ## Introduction
 
-Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
+Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. It's not just better tooling &mdash; it's about lowering total cost of ownership, powering AI with trusted data, and scaling with governed self-service.
 
 Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
@@ -137,7 +137,7 @@ Refer to the [<Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-
 
 ## dbt Semantic Layer
 
-Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. Here are some tips and caveats to consider when using <Constant name="semantic_layer" />:
+Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. The data layer is the foundation for AI as well as analytics &mdash; shared definitions and lineage give AI and BI the same trusted context so answers are consistent and actionable. Here are some tips and caveats to consider when using <Constant name="semantic_layer" />:
 
 ### Tips
 - Define semantic models and metrics once in <Constant name="cloud" /> with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
@@ -154,7 +154,7 @@ Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-la
 
 ## dbt Catalog
 
-[<Constant name="explorer" />](/docs/explore/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Here are some tips and caveats to consider when using <Constant name="explorer" />:
+[<Constant name="explorer" />](/docs/explore/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Lineage and discovery are essential for governance and for feeding reliable context to AI workflows. Here are some tips and caveats to consider when using <Constant name="explorer" />:
 
 ### Tips
 - Use the search and filter capabilities in <Constant name="explorer" /> to quickly locate models, sources, and tests, streamlining your workflow.
@@ -175,7 +175,7 @@ Refer to the [<Constant name="explorer" /> FAQs](/docs/explore/dbt-explorer-faqs
 
 Congratulations on making it through the guide 🎉!
 
-We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from <Constant name="core" /> to <Constant name="cloud" /> isn’t just about evolving your data projects, it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team.
+We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from <Constant name="core" /> to <Constant name="cloud" /> isn’t just about evolving your data projects, it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team, and building a data layer that's ready for AI.
 
 For the next steps, continue exploring our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />:
 

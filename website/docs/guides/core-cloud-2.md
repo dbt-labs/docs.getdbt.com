@@ -11,7 +11,8 @@ level: 'Intermediate'
 ---
 
 ## Introduction
-Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
+
+Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. It's not just better tooling &mdash; it's about lowering total cost of ownership, powering AI with trusted data, and scaling with governed self-service.
 
 Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 

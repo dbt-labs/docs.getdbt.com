@@ -15,7 +15,7 @@ level: 'Intermediate'
 
 ## Introduction
 
-Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
+Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. The data layer is the foundation for trusted analytics and AI; <Constant name="dbt_platform" /> gives you the governance, shared definitions, and reliability to scale both &mdash; without the hidden cost of self-hosting in engineer hours and wasted compute.
 
 Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />. This series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
@@ -25,7 +25,8 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <Expandable alt_header="What are dbt and dbt Core?">
 
-   - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+   - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. Infrastructure is managed for you &mdash; no custom scripts or fragile orchestration. State-aware orchestration only builds what's changed, so you waste less compute and time. Browser-based development and Copilot open up development to analysts, so you're no longer the bottleneck for every change. With end-to-end lineage, shared metric definitions, and CI that catches regressions before production, you spend less time debugging and more time building. 
+   <Constant name="cloud" /> also supports:
      - Development experiences tailored to multiple personas ([<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation))
      - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
      - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
@@ -33,7 +34,9 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
      - [<Constant name="explorer" />](/docs/explore/explore-projects) for easier data discovery and understanding
 
    Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features).
-- <Constant name="core" /> is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
+- <Constant name="core" /> is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface (CLI), and production deployments must be self-hosted and maintained. 
+
+You absorb the cost of every upgrade, every broken CI run, and every request that pulls you away from real work: maintaining infrastructure, debugging the CI pipeline, and fielding every change that requires CLI access. Compute runs unchecked, upgrades are risky, and there's no easy way to trace what broke or why. This requires significant, costly work that adds up over time to maintain and scale &mdash; and without governance, shared definitions, or reliable testing.
 
 </Expandable>
 
