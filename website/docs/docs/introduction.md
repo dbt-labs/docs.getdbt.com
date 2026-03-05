@@ -7,6 +7,7 @@ pagination_prev: null
 intro_text: "dbt transforms raw warehouse data into trusted data products. You write simple SQL select statements, and dbt handles the heavy lifting by creating modular, maintainable data models that power analytics, operations, and AI, replacing the need for complex and fragile transformation code."
 ---
 
+
 <Snippet path="what-is-dbt-intro" />
 
 dbt brings software engineering best practices like version control, testing, modularity, CI/CD, and documentation to analytics workflows &mdash; helping teams build production-grade data pipelines backed by a 100,000+ member [community](/community/join). 

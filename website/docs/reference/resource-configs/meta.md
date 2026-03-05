@@ -266,7 +266,7 @@ exposures:
 </TabItem>
 
 <TabItem value="semantic models">
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Configure `meta` in your [semantic models](/docs/build/semantic-models) YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
 
@@ -293,7 +293,7 @@ semantic_models:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Configure `meta` in the [semantic models](/docs/build/semantic-models) embedded within your model YAML file or under the `semantic-models` config block in the `dbt_project.yml` file. 
 
@@ -321,7 +321,7 @@ models:
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 [Dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) can also have their own `meta` configurations.
 
@@ -353,7 +353,7 @@ semantic_models:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 [Dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and metrics can also have their own `meta` configurations.
 
@@ -414,7 +414,7 @@ metrics:
 ```
 </File>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name='models/metrics.yml'>
 
 ```yml
@@ -433,7 +433,7 @@ metrics:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 <File name='models/file_name.yml'>
 
 ```yml
@@ -591,7 +591,7 @@ models:
 
 ### Assign meta to semantic model
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 The following example shows how to assign a `meta` value to a [semantic model](/docs/build/semantic-models) in the `semantic_model.yml` file and  `dbt_project.yml` file:
 
@@ -626,7 +626,7 @@ semantic-models:
 </VersionBlock>
 
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 The following example shows how to assign a `meta` value to a [semantic model](/docs/build/semantic-models) in the model YAML file and  `dbt_project.yml` file:
 
@@ -664,7 +664,7 @@ semantic-models:
 
 ### Assign meta to dimensions, measures, entities
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <Tabs>
 <TabItem value="semantic_model" label="Semantic model">
@@ -727,7 +727,7 @@ semantic-models:
 </Tabs>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <Tabs>
 <TabItem value="semantic_model" label="Semantic model">
@@ -802,7 +802,7 @@ semantic-models:
 
 ### Access meta values in Python models
 
-To access custom `meta` values in [Python models](/docs/build/python-models), first retrieve the `meta` object using the `dbt.config.get()` method, then access your custom values from it.
+To access custom `meta` values in [Python models](/docs/build/python-models), use the `dbt.config.meta_get()` method.
 
 For example, if you have a model named `my_python_model` and you want to store custom values, you can do the following:
 
@@ -823,12 +823,9 @@ models:
 
 ```python
 def model(dbt, session):
-    # First, get the meta object
-    meta = dbt.config.get("meta")
-    
-    # Then access your custom values from meta
-    batch_size = meta.get("batch_size")
-    processing_mode = meta.get("processing_mode")
+    # Access custom values stored in meta directly
+    batch_size = dbt.config.meta_get("batch_size")
+    processing_mode = dbt.config.meta_get("processing_mode")
     
     # Use the meta values in your model logic
     df = dbt.ref("upstream_model")

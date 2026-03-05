@@ -14,11 +14,11 @@ MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, 3.11, and 3.12.
 
 ## MetricFlow
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="cloud" /> CLI, <Constant name="cloud_ide" />, or <Constant name="core" />  (open source).
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 MetricFlow is a Python library that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the <Constant name="dbt_platform" /> or <Constant name="core" /> (open source), using either the <Constant name="fusion_engine"/> or <Constant name="core" /> engine.
 </VersionBlock>
@@ -218,12 +218,21 @@ The list of available saved queries:
 
 The following command performs validations against the defined semantic model configurations.
 
-```bash
-dbt sl validate  # For dbt platform users (Core or Fusion engine) 
-mf validate-configs # For open-source users (Core or Fusion source available)
- 
+- For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
 
+  ```bash
+  dbt sl validate
+  ```
+
+- For open-source users (Core or Fusion source available):
+
+  ```bash
+  mf validate-configs
+  ```
+
+```bash
 Options:
+
   --timeout                       # dbt platform only
                                   Optional timeout for data warehouse validation in dbt platform.
   --dw-timeout INTEGER            # dbt Core only
