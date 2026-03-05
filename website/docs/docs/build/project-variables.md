@@ -68,7 +68,7 @@ vars:
 
 You cannot define variables in both `vars.yml` and `dbt_project.yml`. If both files contain a `vars` block with definitions, dbt raises an error.
 
-If `vars.yml` is empty or doesn't exist, variables defined in `dbt_project.yml` are used instead. If `vars.yml` exists but has no top-level `vars` key, variables are resolved from the command line or `dbt_project.yml`.
+If `vars.yml` is empty or doesn't exist, variables defined in `dbt_project.yml` are used instead. 
 
 #### Using `vars.yml` variables in `dbt_project.yml`<Lifecycle status="beta" />
 
