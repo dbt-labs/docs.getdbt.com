@@ -36,6 +36,7 @@ The <Constant name="dev_agent" /> supports the following use cases:
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
 - It does not retain conversation context between sessions. If you close or leave the <Constant name="cloud_ide" />, the conversation resets. However, if you saved any file changes the agent already made, those changes will stay in your branch. Unsaved changes are lost.
 - Currently, plan mode isn't supported. The <Constant name="dev_agent" /> applies changes directly without showing a plan first. Use **Ask** mode if you want to confirm each edit before it is applied.
+- You cannot edit a prompt after submitting it. To refine your request, use **Start over** to reset the session and submit a new prompt.
 - Custom skill support isn't yet available.
 
 ## Use the Developer agent
