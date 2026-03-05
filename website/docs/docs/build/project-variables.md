@@ -44,7 +44,7 @@ Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML informa
 The `vars.yml` file is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-`vars.yml` is a dedicated file for project variables located at the project root. Because dbt parses it _before_ `dbt_project.yml`, you can [reference variables from `vars.yml` in `dbt_project.yml`](#using-varsyml-variables-in-dbt_projectyml) using `{{ var('...') }}`. 
+`vars.yml` is a dedicated file for project variables located at the project root. Because dbt parses it _before_ `dbt_project.yml`, variables from `vars.yml` are available when `dbt_project.yml` is evaluated, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. For more information, refer to [Using vars.yml variables in dbt_project.yml](#using-varsyml-variables-in-dbt_projectyml).
 
 To define variables in a `vars.yml` file, add a `vars` config. You can scope these variables globally, or to a specific package imported in your project. The following example shows variables in a `vars.yml` file:
 
