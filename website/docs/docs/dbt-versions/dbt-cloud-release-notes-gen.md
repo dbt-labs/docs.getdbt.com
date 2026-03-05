@@ -22,10 +22,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## New
 
-### Semantic Layer
-
-- **BigQuery Workload Identity Federation authentication for external OAuth**: You can now connect to BigQuery using Workload Identity Federation (WIF) with External OAuth, including Microsoft Entra ID-backed flows, for Semantic Layer queries. For setup instructions, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation).
-
 ### Catalog
 
 - **Saved queries now ingested for lineage and governance**: Saved query definitions (including tags, exports, parameters, and lineage relationships) are now captured during ingestion so they can participate in Catalog lineage and governance workflows.
@@ -61,12 +57,6 @@ Release notes are grouped by date for single-tenant environments.
 ### APIs, Identity, and Administration
 
 - **Project deletion now supported in Admin v2 and v3 Projects APIs**: Projects APIs now explicitly support DELETE with stricter permission checks.
-
-## Fixes
-
-### Semantic Layer
-
-- **Automatic token refresh for BigQuery Workload Identity Federation failures**: For WIF-authenticated BigQuery connections, the gateway now refreshes access tokens on common expiration failures and recycles pooled connections to reduce authentication outages.
 
 ## Behavior Changes
 
