@@ -17,6 +17,8 @@ keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 
 With automatic code generation and using natural language prompts, <Constant name="copilot" /> can [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/build-canvas-copilot), and [<Constant name="query_page" />](/docs/explore/dbt-insights). To learn about prompt best practices, check out the [Prompt cookbook](/guides/prompt-cookbook).
 
+<Constant name="copilot" /> also powers [dbt Agents](/docs/dbt-ai/dbt-agents) &mdash; autonomous AI agents that can build, refactor, and validate models end-to-end, or answer data questions grounded in the Semantic Layer. Agents like the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and [Analyst agent](/docs/dbt-ai/analyst-agent) are accessible from the same Copilot panel.
+
 :::tip
 <Constant name="copilot" /> is available on Starter, Enterprise, and Enterprise+ accounts. [Book a demo](https://www.getdbt.com/contact) to see how AI-driven development can streamline your workflow.
 :::
@@ -28,7 +30,7 @@ With automatic code generation and using natural language prompts, <Constant nam
 <Constant name="copilot" /> enhances efficiency by automating repetitive tasks while ensuring data privacy and security. It works as follows:
 
 - Access <Constant name="copilot" /> through:
-  - The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot) to generate documentation, tests, semantic models.
+  - The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot) to generate documentation, tests, semantic models. Access the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) from the same Copilot panel to build, refactor, and validate models end-to-end.
   - The [<Constant name="visual_editor" /> ](/docs/cloud/build-canvas-copilot) to generate SQL code using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
   - The [<Constant name="query_page" />](/docs/explore/dbt-insights) to generate SQL queries for analysis using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
 - <Constant name="copilot" /> gathers metadata (like column names, model SQL, documentation) but never accesses row-level warehouse data.

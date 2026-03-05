@@ -6,13 +6,15 @@ sidebar_label: "Developer agent"
 tags: [AI, Agents, Studio]
 ---
 
+import DevAgent from '/snippets/_developer-agent-studio-setup.md';
+
 # Developer agent <Lifecycle status="private_beta"/>
 
 <IntroText>
 The <Constant name="dev_agent" /> is an AI assistant built into the <Constant name="cloud_ide" /> that can write, refactor, and validate dbt models using your project's structured context &mdash; including lineage, metadata, governance, and the Semantic Layer.
 </IntroText>
 
-It helps you move faster by generating models, tests, and documentation from natural language prompts, while keeping every change auditable and aligned with your dbt project.
+Move faster by generating or refactoring models, tests, and documentation from natural language prompts, while keeping every change auditable and aligned with your dbt project.
 
 The <Constant name="dev_agent" /> supports the following use cases:
 
@@ -32,33 +34,36 @@ The <Constant name="dev_agent" /> supports the following use cases:
 
 - The <Constant name="dev_agent" /> is available in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) only. It's not available in VS Code or the <Constant name="cloud_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
-- It does not retain context between sessions. If you close or leave the <Constant name="cloud_ide" />, you start from scratch in your next session.
+- It does not retain conversation context between sessions. If you close or leave the <Constant name="cloud_ide" />, the conversation resets. However, if you saved any file changes the agent already made, those changes will stay in your branch. Unsaved changes are lost.
 - Currently, plan mode isn't supported. The <Constant name="dev_agent" /> applies changes directly without showing a plan first. Use **Ask** mode if you want to confirm each edit before it is applied.
 - Custom skill support isn't yet available.
 
 ## Use the Developer agent
-To use the <Constant name="dev_agent" />, follow these steps:
-1. Open your dbt project in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), then click **<Constant name="copilot" />** in the command palette. 
-2. Select the [**Agent mode** button](#agent-modes) to specify the mode for the <Constant name="dev_agent" />. Availble modes are **Ask** and **Code**.
-3. Start a prompt in several ways:
-   - **Quick-action buttons** &mdash; The buttons at the top of the panel (**Generate documentation**, **Semantic model**, **Generate generic tests**, **Metrics**) pre-fill prompts for common tasks.
-   - **Plain text** &mdash; Type directly into the text field to describe what you want to build or change.
-   - **Slash commands** &mdash; Type `/` to browse available commands.
-   - **Model context** &mdash; Type `@` to select a model as context. This scopes the agent's changes to that resource.
-4. [Review the agent's suggestions](#reviewing-agent-suggestions) and approve or reject the changes. You can also use the **Start over** button to reset the current session.
-5. [Approve and run commands](#granting-command-permissions) using the `invoke_dbt` command prompted by the <Constant name="dev_agent" />.
-6. Repeat the process to build or change more models.
-7. Commit the changes to your dbt project and open a pull request.
+
+<DevAgent />
+
+<div style={{maxWidth: '100%', margin: '20px 0'}}>
+<video width="100%" controls autoPlay muted loop playsInline>
+  <source src="/img/docs/dbt-cloud/dev-agent.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>Example of using the Developer agent to refactor a model in the Studio IDE.</span>
+</div>
 
 For more details on the <Constant name="dev_agent" /> and how it works, see the following sections.
 
 #### Panel controls
 
-The toolbar below the text field contains:
+The <Constant name="copilot" /> panel contains:
 
+- **Quick-action buttons** (top) &mdash; The buttons at the top of the panel (**Generate documentation**, **Semantic model**, **Generate generic tests**, **Metrics**) pre-fill prompts for common tasks. When selected, the text field is pre-filled with the prompt for the selected action.
 - **Agent mode button** (bottom left) &mdash; Switch between **Ask** and **Code** mode. Click the button to change modes.
-- **Active model** (bottom left, next to mode) &mdash; Shows the currently open file. Use `@` in the text field to reference a different model. Click **x** to remove the model context.
+- **Text input field** (bottom right) &mdash; Type your prompt in the text field to describe what you want to build or change. Use `/` to browse available commands, or type `@` to select a model as context. This scopes the agent's changes to that resource.
+- **Model context** (bottom left, next to mode) &mdash; Shows the currently open file. Use `@` in the text field to reference a different model. Click **x** to remove the model context.
 - **Start over** (top right) &mdash; Resets the current session. A confirmation prompt will appear &mdash; click **Start over** to confirm, or **Cancel** to return to your current conversation. This action cannot be undone.
+- **Stop** (bottom right) &mdash; Stops the current session and agent processing. This action cannot be undone.
+
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-copilot-panel.png" width="95%" title="The Copilot panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
 
 #### Agent modes
 
@@ -66,14 +71,16 @@ The <Constant name="dev_agent" /> operates in two modes:
 
 <SimpleTable>
 
-| Mode | Behavior |
-|------|----------|
-| **Ask** | The agent asks for your confirmation before making each edit to a file. Use this when you want to review and approve changes before they are applied. |
-| **Code** | The agent edits files immediately without waiting for confirmation. Use this for faster iteration when you're confident in the prompt. |
+| Mode | Behavior | When to use |
+|------|----------|-------------|
+| **Ask** | The agent asks for your confirmation before making each edit to a file. This is the default mode. | Use **Ask** mode when working in shared projects, making structural changes, or exploring unfamiliar models. |
+| **Code** | The agent edits files immediately without waiting for confirmation. | Use this for faster iteration when you're confident in the prompt. |
+
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask mode, requesting confirmation before applying file edits." />
 
 </SimpleTable>
 
-You can switch between modes at any time. Use **Ask** mode when working in shared projects, making structural changes, or exploring unfamiliar models. Use **Code** mode when iterating quickly on a development branch.
+You can switch between modes at any time.
 
 #### Reviewing agent suggestions
 
@@ -83,6 +90,8 @@ When the <Constant name="dev_agent" /> proposes code changes, you can review the
 - **Line indicators** &mdash; Added and removed lines are highlighted with line number indicators so you can see exactly what changed.
 - **Copy or open in editor** &mdash; Use the options in the top-right corner of the diff view to copy the suggestion or open it directly in the editor.
 
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-code-suggestion.png" width="95%" title="The Developer agent displaying a diff of proposed YAML changes with line indicators and copy/open options." />
+
 #### Granting command permissions
 
 To validate or run models during a session, the agent executes dbt commands using `invoke_dbt`. You'll be prompted to approve each request. For example:
@@ -90,6 +99,8 @@ To validate or run models during a session, the agent executes dbt commands usin
 ```
 invoke_dbt(args: ["compile", "--select", "model_name"])
 ```
+
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-invoke-dbt.png" width="95%" title="The Developer agent requesting permission to run an invoke_dbt command." />
 
 You can respond with one of the following options:
 

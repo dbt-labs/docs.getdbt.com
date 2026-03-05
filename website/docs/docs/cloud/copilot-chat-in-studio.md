@@ -15,6 +15,10 @@ Use the <Constant name="copilot" /> chat feature in <Constant name="cloud_ide" /
 
 <Constant name="copilot" /> chat is an interactive interface within <Constant name="cloud_ide" /> that allows users to generate SQL from natural language prompts and ask analytics-related questions. By integrating contextual understanding of your dbt project, <Constant name="copilot" /> assists in streamlining SQL development while ensuring users remain actively involved in the process. This collaborative approach helps maintain accuracy, relevance, and adherence to best practices in your organization’s analytics workflows.
 
+:::tip Need more than inline SQL generation?
+For multi-step workflows like building new models end-to-end, refactoring existing models, or generating tests and documentation, use the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent). The <Constant name="dev_agent" /> is an autonomous agent that can write, validate, and run changes across your project &mdash; activate it by switching to **Ask** or **Code** mode in the Copilot panel.
+:::
+
 ## Prerequisites
 
 - Must have a [<Constant name="cloud" /> Starter, Enterprise or Enterprise+ account](https://www.getdbt.com/pricing).
