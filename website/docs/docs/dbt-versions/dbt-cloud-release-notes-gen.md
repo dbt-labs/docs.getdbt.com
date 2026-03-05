@@ -18,6 +18,53 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## March 4, 2026
+
+## Enhancements
+
+### Orchestration and Run Status
+
+- **Clearer SAO description**: Job settings now describe state-aware orchestration (SAO) as only building models when data or code changes are detected.
+- **Direct links for cost optimization setup**: Fusion cost optimization settings now link to account-level Cost Insights settings and setup documentation so you can validate cost data and savings.
+
+### APIs, Identity, and Administration
+
+- **Confirmation when enabling manual SCIM updates**: When you enable manual updates for System for Cross-domain Identity Management (SCIM), dbt platform now asks you to confirm so you do not accidentally allow changes outside your identity provider.
+- **More reliable SCIM group provisioning**: SCIM has been updated so that when a SCIM-provisioned user with an expired invite is added to a SCIM-managed group through a SCIM request, the invite is automatically resent during group assignment. This helps prevent errors caused by unaccepted invites.
+
+### dbt platform
+
+- **Project names and descriptions handle empty values better**: Projects with missing names now show as “Untitled Project,” and you can save project descriptions as empty.
+
+### Studio IDE
+
+- **Removed non-functional “Open Settings” actions**: Studio IDE no longer shows “Open Settings” buttons in editor notifications because Studio IDE does not expose VS Code settings, and the action would not help you resolve issues.
+
+## Fixes
+
+- **More reliable file tree loading**: Catalog no longer gets stuck loading the file tree on initial page load.
+- **Clearer trust signals**: Trust signals now suppress less-severe upstream-source issues when a more severe issue is present, so badges and messages are easier to interpret.
+
+### Integrations
+
+- **Clearer deploy key decryption errors**: When dbt platform cannot decrypt a deploy key, you now get a clearer failure instead of a generic git credentials error.
+
+### Studio IDE
+
+- **Cleaner LSP disconnects**: If authentication fails when you connect to the Language Server Protocol (LSP) WebSocket, the connection now closes cleanly instead of failing with an internal server error, so you should see fewer unexpected disconnects.
+- **Improved timeout handling and authentication stability**: Reduced environment setup timeouts and intermittent authentication failures during busy periods.
+- **Clearer invalid credentials error**: If your development connection credentials are invalid, you now see a corrected error message to help you diagnose the issue faster.
+
+## Behavior Changes
+
+### Orchestration and Run Status
+
+- **`versionless` dbt version is no longer accepted**: dbt platform now treats `versionless` as deprecated and updates existing environments and jobs to use `latest`. If you set `dbt_version` in an API integration or automation, update it to send `latest` instead.
+
+### Webhooks
+
+- **Account identifier required for run-based notifications**: If you send events that include a `run_id`, you must also provide an `account_identifier` so the service can validate and resolve the correct account before dispatch. If `account_identifier` is missing, the event fails instead of falling back to a `run_id`-only lookup.
+
 ## February 25, 2026
 
 ## New
