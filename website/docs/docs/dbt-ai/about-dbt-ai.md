@@ -13,25 +13,20 @@ tags: [AI, Intelligence]
 dbt AI and intelligence is a suite of features that helps you use AI to accelerate your data analytics and intelligence workflows.
 </IntroText>
 
-Whether you're using AI to generate code, tests, and documentation, to scale your data teams with autonomous agents, or to build your own custom agents, we have you covered. The following features in dbt can help you optimize your workflows. 
+Whether you're generating code, tests, and documentation with inline AI assistance, delegating complex workflows to autonomous agents, or building your own custom agents with MCP &mdash; dbt has you covered.
 
-<div className="grid--3-col">
-
-<Card
-    title="dbt Agents"
-    body="dbt Agents include the Analyst agent (chat with your data), the Developer agent (generate and refactor models in dbt Studio from natural language), and more—all turning structured dbt context into auditable actions."
-    link="/docs/dbt-ai/dbt-agents"
-    icon="dbt-copilot"/>
+<div className="grid--2-col">
 
 <Card
     title="dbt Copilot"
-    body="dbt Copilot is a powerful, AI-powered assistant fully integrated into your dbt platform experience—designed to accelerate your analytics workflows."
-    link="/docs/cloud/dbt-copilot"
+    body="dbt's AI experience — bringing inline code assistance and autonomous agents (like the Developer agent) together across your analytics development lifecycle."
+    link="/docs/cloud/dbt-copilot-overview"
     icon="dbt-copilot"/>
 
 <Card
     title="dbt MCP"
-    body="Build your own custom agents and copilots with the local or remote dbt MCP server today."
+    body="Build your own custom agents and copilots with the local or remote dbt MCP server."
     link="/docs/dbt-ai/about-mcp"
     icon="dbt-copilot"/>
+
 </div>

@@ -15,13 +15,16 @@ Use [<Constant name="copilot" />](/docs/cloud/dbt-copilot) in the [<Constant nam
 
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import CopilotEditCode from '/snippets/_use-copilot-edit-code.md';
-import DeveloperAgentStudioSetup from '/snippets/_developer-agent-studio-setup.md';
+import CopilotAgentPanel from '/snippets/_copilot-agent-panel.md';
+import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 
-## Developer agent <Lifecycle status="beta" />
+## Developer agent <Lifecycle status="private_beta" />
 
-The [Developer agent](/docs/dbt-ai/developer-agent) generates or refactors dbt <!--add resource type--> from natural language, and can generate semantic models—all within the <Constant name="cloud_ide" />.
+The [Developer agent](/docs/dbt-ai/developer-agent) uses natural language prompts to generate or refactor dbt models, semantic models, tests, and documentation — all within the <Constant name="cloud_ide" />. The agent proactively creates or updates associated YAML files to stay in sync with any model changes it makes.
 
-<DeveloperAgentStudioSetup/>
+<DevAgent />
+
+<CopilotAgentPanel />
 
 ## Generate resources
 

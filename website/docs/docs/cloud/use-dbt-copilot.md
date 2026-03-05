@@ -7,6 +7,7 @@ description: "Use dbt Copilot to generate documentation, tests, semantic models,
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import CopilotEditCode from '/snippets/_use-copilot-edit-code.md';
 import CopilotVE from '/snippets/_use-copilot-ve.md';
+import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 
 # Use dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
@@ -21,6 +22,7 @@ This page explains how to use <Constant name="copilot" /> to:
 - [Generate and edit SQL inline](#generate-and-edit-sql-inline) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
 - [Build visual models](#build-visual-models) &mdash; Use <Constant name="copilot" /> to generate models in [<Constant name="visual_editor" />](/docs/cloud/use-canvas) with natural language prompts.
 - [Build queries](#build-queries) &mdash; Use <Constant name="copilot" /> to generate queries in [<Constant name="query_page" />](/docs/explore/dbt-insights) for exploratory data analysis using natural language prompts.
+- [Generate models with the Developer agent](#generate-models-with-the-developer-agent) &mdash; Use the <Constant name="dev_agent" /> to generate new dbt models, semantic models, tests, and documentation from natural language prompts in the <Constant name="cloud_ide" />.
 - [Analyze data with the Analyst agent](#analyze-data-with-the-analyst-agent) &mdash; Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking a natural language question to the Analyst agent.
 
 :::tip
@@ -60,6 +62,14 @@ To begin building SQL queries with natural language prompts in <Constant name="q
 7. Confirm the results or continue building your model. 
 
 <Lightbox src="/img/docs/dbt-insights/insights-copilot.gif" width="95%" title="dbt Copilot in dbt Insights" />
+
+## Generate models with the Developer agent <Lifecycle status='private_beta' />
+
+The <Constant name="dev_agent" /> is available in the <Constant name="cloud_ide" /> and uses natural language prompts to generate or refactor dbt models, semantic models, tests, and documentation. The agent proactively creates or updates associated YAML files to stay in sync with any model changes it makes.
+
+<DevAgent />
+
+For full setup instructions, available use cases, agent modes, and known limitations, see [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent).
 
 ## Analyze data with the Analyst agent <Lifecycle status='beta' />
 

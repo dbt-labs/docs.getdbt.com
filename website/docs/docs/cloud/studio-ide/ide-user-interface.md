@@ -153,7 +153,7 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/cloud/studio-ide/lint-format) on the active file in the file editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Copilot** &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence engine that generates documentation, data-tests, metrics, and semantic models for you. <Lifecycle status="self_service,managed,managed_plus" />
+5. **dbt Copilot** &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is an AI assistant integrated into the <Constant name="cloud_ide" />. Use the quick-action buttons to generate documentation, tests, semantic models, and metrics with a single click. The Copilot panel also provides access to the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent), which applies natural language prompts to generate or refactor models, semantic models, tests, and documentation autonomously. Select **Ask** or **Code** mode in the bottom toolbar to activate the <Constant name="dev_agent" />. <Lifecycle status="self_service,managed,managed_plus" />
 
 6. **Commands tab** &mdash; View the most recently run [dbt commands](/reference/dbt-commands) from your current IDE session, their results, and relevant system logs.
 
