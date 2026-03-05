@@ -141,7 +141,7 @@ models:
 
 <VersionBlock firstVersion="1.12">
 
-You cannot define variables in both `vars.yml` and `dbt_project.yml`; you can only use one or the other. If both files contain a `vars` block with definitions, dbt raises an error.
+You cannot define variables in both `vars.yml` and `dbt_project.yml`. If both files contain a `vars` block with definitions, dbt raises an error.
 
 </VersionBlock>
 
