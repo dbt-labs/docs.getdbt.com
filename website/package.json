@@ -11,6 +11,7 @@
     "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^6.27.1",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/faster": "^3.7.0",
     "@docusaurus/plugin-ideal-image": "^3.7.0",
