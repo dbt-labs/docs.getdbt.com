@@ -85,12 +85,7 @@ If you're using BigQuery WIF, we recommend using it with BigQuery OAuth. Otherwi
 
 **Available in:** Deployment environments
 
-The BigQuery WIF authentication method permits <Constant name="cloud" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="cloud" />.
-
-You can connect to BigQuery using WIF with external OAuth (including Microsoft Entra ID) for [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) queries. For WIF–authenticated BigQuery connections, the Semantic Layer gateway automatically refreshes access tokens on common expiration failures and recycles pooled connections to help reduce authentication outages. 
-
-For instructions on how to configure a BigQuery WIF connection in <Constant name="cloud" />, see [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
-
+The BigQuery WIF auth method permits <Constant name="cloud" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="cloud" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="cloud" />, please see [the docs on setting up BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation) WIF.
 
 ## Configuration
 
