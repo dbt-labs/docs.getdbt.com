@@ -15,7 +15,7 @@ Variables defined in your `dbt_project.yml` file act as project-wide defaults. Y
 
 <VersionBlock firstVersion="1.12">
 
-You can pass down variables from your `vars.yml` or `dbt_project.yml` file into models during compilation. These variables are useful for configuring packages for deployment in multiple environments, or defining values that should be used across multiple models within a package.
+You can provide variables from `vars.yml` or `dbt_project.yml` to models during compilation. These variables are useful for configuring packages for deployment in multiple environments, or for defining values that should be used across multiple models within a package.
 
 Variables defined in your `vars.yml` or `dbt_project.yml` file act as project-wide defaults. You can override them at runtime using the `--vars` command-line argument. For example, to test a different date range or run models with environment-specific settings without modifying your model logic.
 
