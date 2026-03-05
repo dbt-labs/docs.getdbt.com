@@ -54,15 +54,6 @@ If your Okta configurations map the `Username` field to a different attribute, s
 3. Set the **Application username format** field to **Email**.
 4. Click **Save**.
 
-#### What you'll see if misconfigured
-
-If `userName` is not configured for `Email`, you may encounter errors like:
-
-- Okta reports **"User already exists"** when attempting to provision a user.
-- SCIM logs show a filter like `userName eq "00uXXXXXXXXX"` (an Okta internal ID instead of an email).
-- <Constant name="dbt_platform" /> returns no match on the SCIM `GET` request, then the subsequent `POST` to create the user fails with a conflict because the user already exists under their email.
-
-When this occurs, <Constant name="dbt_platform" /> cannot match the existing user during SCIM sync, and provisioning fails with a conflict error. To fix this, set the **Application username format** field to **Email** in your Okta app configuration.
 
 ## SCIM license mapping
 
