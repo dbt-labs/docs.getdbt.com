@@ -61,10 +61,10 @@ The audit log supports various events for different objects in <Constant name="c
 
 | Event Name                 | Event Type                     | Description                                            |
 | -------------------------- | ------------------------------ | ------------------------------------------------------ |
-| Access Token Issued        | access_token.issued            | An access token was issued for OAuth authentication (for example, VS Code extension or MCP server) |
+| Access Token Issued        | access_token.issued            | dbt issued an access token following OAuth authentication for VS Code extension or MCP server. | 
 | Auth Provider Changed      | auth_provider.changed          | Authentication provider settings changed               |
 | Credential Login Succeeded | login.password.succeeded       | User successfully logged in with username and password |
-| Refresh Token Issued       | refresh_token.issued           | A refresh token was issued for OAuth authentication (for example, VS Code extension or MCP server) |
+| Refresh Token Issued       | refresh_token.issued           | dbt issued an access token following OAuth authentication for VS Code extension or MCP server.  |
 | SSO Login Failed           | login.sso.failed               | User login via SSO failed                              |
 | SSO Login Succeeded        | login.sso.succeeded            | User successfully logged in via SSO                    |
 
