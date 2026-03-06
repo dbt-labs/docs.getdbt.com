@@ -273,7 +273,7 @@ The `enable_truthy_nulls_equals_macro` flag is `False` by default. Setting it to
 
 By default, the `equals()` macro follows SQL's [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`.
 
-When the `enable_truthy_nulls_equals_macro` flag is enabled, the equals macro uses the `IS NOT DISTINCT FROM` operator where supported, so two values are equal if they match or if both are `NULL`. This evaluates each expression once and lets the engine treat the comparison as a single equality predicate, which can improve query plans (for example, hash joins on nullable keys or index usage).
+When the `enable_truthy_nulls_equals_macro` flag is enabled, the equals macro uses the semantics of the `IS NOT DISTINCT FROM` operator with two `NULL` values treated as equal.
 
 To enable the flag, add it under `flags` in `dbt_project.yml`:
 
