@@ -2,6 +2,7 @@
   "scripts": {
     "prestart": "npm run prepare",
     "start": "docusaurus start",
+    "prebuild": "node scripts/fetch-mcp-readme-tools.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
