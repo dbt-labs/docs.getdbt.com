@@ -132,7 +132,7 @@ select * from (
 )
 ```
 
-This is invalid SQL. In `baseline` mode, <Constant name="fusion" /> surfaces a warning so your project can continue running while still alerting you to the issue:
+This is invalid SQL. In `baseline` mode, <Constant name="fusion" /> displays a warning so your project can continue running while still alerting you to the issue:
 
 ```bash
 dbt0101: no viable alternative at input '(
