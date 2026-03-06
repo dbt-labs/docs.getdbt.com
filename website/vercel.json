@@ -39,8 +39,8 @@
   ],
   "redirects": [
     {
-      "source": "/docs/reference/global-configs/snowflake-changes",
-      "destination": "/docs/reference/global-configs/behavior-changes",
+      "source": "/reference/global-configs/snowflake-changes",
+      "destination": "/reference/global-configs/behavior-changes",
       "permanent": true
     },
     { 

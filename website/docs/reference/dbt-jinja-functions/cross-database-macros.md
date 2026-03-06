@@ -818,24 +818,18 @@ For databases that support it, this macro will return `NULL` when the cast fails
 **Availability**:
 dbt v1.12 or later. For more information, select the version from the documentation navigation menu.<!--need to confirm if correct--> 
 
-The `IS NOT DISTINCT FROM` implementation is supported on the following adapters: 
-- Athena
-- BigQuery
-- Postgres
-- Redshift
-- Snowflake
-- Spark
-
 __Args__:
 
 - `a`: [attribute name or expression](#sql-expressions).
 - `b`: [attribute name or expression](#sql-expressions).
 
-This macro performs null-safe equality: two values are equal if they match or if both are `NULL`. It is used in incremental and snapshot materializations (for example when comparing `unique_key` or snapshot keys that may be null).
+This macro compares two expressions for equality.
 
-By default, comparisons use [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`. The `equals()` macro treats two nulls as equal. 
+By default, the `equals()` macro follows SQL's [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`.
 
-On supported adapters, dbt uses the [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) operator when the [enable_truthy_nulls_equals_macro](/reference/global-configs/behavior-changes#null-safe-equality-equals-macro) flag is enabled. This operator evaluates each expression _once_ and lets the engine treat the comparison as a single equality predicate.
+is macro performs null-safe equality: two values are equal if they match or if both are `NULL`. It is used in incremental and snapshot materializations (for example, when comparing `unique_key` or snapshot keys that may be null).
+
+When the [`enable_truthy_nulls_equals_macro`](/reference/global-configs/behavior-changes#null-safe-equality-equals-macro) flag is enabled, `equals()` becomes null-safe: two values are considered equal if they match or if both are NULL. On adapters that implement it, dbt uses the SQL operator [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) to implement this behavior. This evaluates each expression _once_ and lets the engine treat the comparison as a single equality predicate.
 
 **Usage**:
 
