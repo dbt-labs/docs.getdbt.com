@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 pagination_next: null
 ---
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 
 The parameters, description, and type for simple metrics are:
@@ -33,7 +33,7 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Simple metrics are metrics that directly reference a single column expression within a semantic model, without any additional columns involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 
@@ -59,7 +59,7 @@ The parameters, description, and type for simple metrics are:
 The following displays the complete specification for simple metrics, along with an example.
 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 metrics:
@@ -79,7 +79,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Note that you must define simple metrics within a semantic model's YAML entry.
 
@@ -120,7 +120,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
 
 ## Simple metrics example
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
   metrics: 
@@ -148,7 +148,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
   metrics:

@@ -427,6 +427,34 @@ my-profile:
 
 </File>
 
+<VersionBlock firstVersion="1.12">
+
+#### job_link_info_level_log
+
+By default, `dbt-bigquery` logs BigQuery job links at the debug level, so they only appear when you run dbt with the `--debug` flag. This can make it harder to find the corresponding job in the BigQuery console.
+
+To log job links at the info level instead, set `job_link_info_level_log: true` in your BigQuery profile. 
+
+With this enabled, job links appear in dbt logs, giving you quicker access to the BigQuery console for debugging and monitoring.
+
+You can configure `dbt-bigquery` to log BigQuery job links at the info level by setting `job_link_info_level_log: true` in your BigQuery profile. This makes the job links visible in dbt logs, making it easier to access the BigQuery console for debugging and monitoring.
+
+<File name='profiles.yml'>
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      job_link_info_level_log: true
+```
+
+</File>
+</VersionBlock>
 
 ### Dataset locations
 

@@ -117,7 +117,7 @@
     icon="risingwave"/>
 
 <Card
-    title="Salesforce Data Cloud"
+    title="Salesforce Data 360"
     body="<ul><li><a href='/docs/local/connect-data-platform/salesforce-data-cloud-setup'>Install with dbt Fusion </a> </li></ul><br />"
     pills='["Fusion"]'
     icon="salesforce"/>

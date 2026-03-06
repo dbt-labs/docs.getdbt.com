@@ -21,8 +21,6 @@ You can use a different number of threads than the value defined in your target 
 
 You will define the number of threads in your `profiles.yml` file (when developing locally with dbt Core and the dbt Fusion engine), <Constant name="cloud" /> job definition, and <Constant name="cloud" /> development credentials under your profile.
 
-<VersionBlock firstVersion="1.12">
-<!-- versioning for 1.12 so it shows up in Latest eventually we might want to firstVersion="2.0"-->
 
 ## Fusion engine thread optimization
 
@@ -30,12 +28,9 @@ The <Constant name="fusion_engine" /> handles threading differently than <Consta
 
 ### Adapter-specific behavior
 
-
 <FusionThreads />
 
 For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/fusion) page.
-
-</VersionBlock>
 
 ## Related docs
 - [About profiles.yml](/docs/local/profiles.yml)
