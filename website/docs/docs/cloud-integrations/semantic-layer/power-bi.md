@@ -125,13 +125,11 @@ These tables do not actually map to an underlying table in your data warehouse. 
 
 This allows for very flexible analytics workflows, like drag and drop metrics and slice by dimensions and entities &mdash; the <Constant name="semantic_layer" /> will generate the appropriate SQL to actually query your data source for you.
 
-### Modifying time granularity
+#### Modifying time granularity
 
-When you select time dimensions to group by, you'll see a list of available time granularities. The lowest granularity is selected by default. Metric time is the default time dimension for grouping your metrics.
+import SlCustomGranularity from '/snippets/_sl-custom-granularity.md';
 
-:::info 
-Note: [Custom time granularities](/docs/build/metricflow-time-spine#add-custom-granularities) (like fiscal year) aren't currently supported or accessible in this integration. Only [standard granularities](/docs/build/dimensions?dimension=time_gran#time) (like day, week, month, and so on) are available. If you'd like to access custom granularities, consider using the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview).
-:::
+<SlCustomGranularity />
 
 ## Considerations
 
