@@ -88,7 +88,19 @@ VS Code extension features by static analysis configuration:
 
 _*Column-level go-to-definition requires baseline; macros, refs, and docs work without it._
 
-_**Planned for baseline mode in a future release._
+| Feature | off | baseline | strict |
+|---------|-----|----------|--------|
+| Go-to-definition/reference (except columns) | ✅ | ✅ | ✅ |
+| Table lineage | ✅ | ✅ | ✅ |
+| YAML validation | ✅ | ✅ | ✅ |
+| Render + preview SQL | ✅ | ✅ | ✅ |
+| Unit tests | ✅ | ✅ | ✅ |
+| Detect syntax errors | ❌ | ✅ | ✅ |
+| Preview CTE results | ❌ | ✅ | ✅ |
+| Go-to-definition/reference (columns) | ❌ | ❌ | ✅ |
+| Automatic refactor column names | ❌ | ❌ | ✅ |
+| Rich column lineage | ❌ | ❌ | ✅ |
+| Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
 :::tip CodeLens visibility
 The VS Code extension and Studio IDE provide CodeLens even when static analysis is off, giving you visibility into which models have static analysis disabled and why.
@@ -98,9 +110,15 @@ Ultimately, we want everyone developing in strict mode for maximum guarantees. W
 
 #### Introspection handling in baseline mode
 
-In baseline mode, <Constant name="fusion" /> automatically downgrades static analysis errors to warnings when it detects introspection on the node. This prevents failures in common scenarios where an introspective query cannot reach the database or returns no results.
+In `baseline` mode, all static analysis findings are warnings, not errors &mdash; your project can continue running even when the compiler flags invalid or problematic SQL. This section is a good example of why that design exists.
 
-In these cases, the macro may render invalid SQL. Instead of failing the run, baseline mode surfaces a warning so your project can continue executing.
+Previously, with `strict` mode, the system assumed local schemas of your compiled models would be available. In `baseline` mode, we can no longer assume the full local schema is available and complete, so `baseline` uses the remote database as the source of truth &mdash; similar to <Constant name="core"/>.
+
+The practical result is that the <Constant name="fusion" /> compiler may sometimes flag incorrect queries that result from introspective queries that come back empty. If you encounter this, you can:
+
+1. Ignore the warning
+2. Build the model locally
+3. (Coming soon) Use `warn_error_options` to disable the warning
 
 For example, consider this query using the `dbt_utils.unpivot` macro:
 
@@ -126,7 +144,7 @@ select * from (
 )
 ```
 
-This is invalid SQL and would normally produce a static analysis error. However, in baseline mode, <Constant name="fusion" /> downgrades the error to a warning:
+This is invalid SQL. In `baseline` mode, <Constant name="fusion" /> displays a warning so your project can continue running while still alerting you to the issue:
 
 ```bash
 dbt0101: no viable alternative at input '(
@@ -134,8 +152,6 @@ dbt0101: no viable alternative at input '(
 )'
   --> models/example_model.sql:17:1
 ```
-
-This behavior allows your project to continue running while still alerting you to potential issues with introspective queries.
 
 #### Migration scenarios
 
