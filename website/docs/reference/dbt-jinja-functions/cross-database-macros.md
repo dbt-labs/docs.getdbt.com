@@ -824,7 +824,7 @@ This macro compares two expressions for equality.
 
 By default, the `equals()` macro follows SQL's [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`.
 
-When the [`enable_truthy_nulls_equals_macro`](/reference/global-configs/behavior-changes#null-safe-equality-equals-macro) flag is enabled, `equals()` becomes null-safe: two values are considered equal if they match or if both are NULL. On supported adapters, dbt uses the SQL operator [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) to implement this behavior. This evaluates each expression _once_ and lets the engine treat the comparison as a single equality predicate.
+When the [`enable_truthy_nulls_equals_macro`](/reference/global-configs/behavior-changes#null-safe-equality-equals-macro) flag is enabled, `equals()` becomes behaves like the  [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) SQL operator and treats two `NULL` values as the same.
 
 **Usage**:
 
