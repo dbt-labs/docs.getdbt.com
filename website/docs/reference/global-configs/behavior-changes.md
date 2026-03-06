@@ -82,6 +82,7 @@ flags:
   require_unique_project_resource_names: False
   require_ref_searches_node_package_before_root: False
   require_valid_schema_from_generate_schema_name: False
+  enable_truthy_nulls_equals_macro: False
 ```
 
 </File>
@@ -100,12 +101,14 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              | ✅ |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              | ✅ |
 | [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            | - |
+| [enable_truthy_nulls_equals_macro](#null-safe-equality-equals-macro) | 2025.02 | TBD* | 1.9.0 | TBD* | - |
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | - |
 | [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            | - |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 | - |
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
+
 
 #### dbt adapter behavior changes
 
@@ -116,7 +119,6 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [use_info_schema_for_columns](/reference/global-configs/databricks-changes#use-information-schema-for-columns) | Databricks 1.9.0                   | TBD | ✅ |
 | [use_user_folder_for_python](/reference/global-configs/databricks-changes#use-users-folder-for-python-model-notebooks)  | Databricks 1.9.0                   | TBD  | ✅ |
 | [use_materialization_v2](/reference/global-configs/databricks-changes#use-restructured-materializations)      | Databricks 1.10.0                  | TBD| - |
-| [enable_truthy_nulls_equals_macro](/reference/global-configs/snowflake-changes#the-enable_truthy_nulls_equals_macro-flag) | Snowflake 1.9.0 | TBD | - |
 | [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) | Redshift 1.9.0 | TBD | - |
 | [redshift_skip_autocommit_transaction_statements](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) | Redshift 1.12.0 | TBD | - |
 | [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | TBD | - |
@@ -264,6 +266,23 @@ Once the metric is updated, it will work as expected:
         window: 7 days
 
 ```
+
+### Null-safe equality (equals macro)
+
+The `enable_truthy_nulls_equals_macro` flag is `False` by default. Setting it to `True` in your `dbt_project.yml` enables null-safe equality in the dbt [equals](/reference/dbt-jinja-functions/cross-database-macros#equals) macro, which is used in incremental and snapshot materializations.
+
+In standard SQL, comparisons use [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic): `NULL = NULL` evaluates to `UNKNOWN`, not `TRUE`. When the flag is enabled, the equals macro uses the native `IS NOT DISTINCT FROM` operator where supported, so two values are equal if they match or if both are `NULL`. This evaluates each expression only once and lets the engine treat the comparison as a single equality predicate, which can improve query plans (for example, hash joins on nullable keys or index usage).
+
+To enable the flag, add it under `flags` in `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  enable_truthy_nulls_equals_macro: true
+```
+
+</File>
 
 ### Macro argument validation
 

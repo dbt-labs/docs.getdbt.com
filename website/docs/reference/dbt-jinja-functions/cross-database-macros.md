@@ -55,6 +55,8 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
+  - [Comparison functions](#comparison-functions)
+    - [equals](#equals)
   - [Date and time functions](#date-and-time-functions)
     - [date](#date)
     - [dateadd](#dateadd)
@@ -105,6 +107,9 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [cast](#cast)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [safe_cast](#safe_cast)
+
+[**Comparison functions**](#comparison-functions)
+- [equals](#equals)
 
 [**Date and time functions**](#date-and-time-functions)
 - [date](#date)
@@ -804,6 +809,46 @@ For databases that support it, this macro will return `NULL` when the cast fails
     cast(column_1 as TEXT)
     cast(column_2 as INT)
     cast('2016-03-09' as date)
+```
+
+## Comparison functions
+
+### equals
+
+**Availability**:
+dbt v1.12 or later. For more information, select the version from the documentation navigation menu.<!--need to confirm if correct--> 
+
+The `IS NOT DISTINCT FROM` implementation is supported on the following adapters: 
+- Athena
+- BigQuery
+- Postgres
+- Redshift
+- Snowflake
+- Spark
+
+__Args__:
+
+- `a`: [attribute name or expression](#sql-expressions).
+- `b`: [attribute name or expression](#sql-expressions).
+
+This macro performs null-safe equality: two values are equal if they match or if both are `NULL`. It is used in incremental and snapshot materializations (for example when comparing `unique_key` or snapshot keys that may be null).
+
+By default, comparisons use [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`. The `equals()` macro treats two nulls as equal. 
+
+On supported adapters, dbt uses the [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) operator when the [enable_truthy_nulls_equals_macro](/reference/global-configs/behavior-changes#null-safe-equality-equals-macro) flag is enabled. This operator evaluates each expression _once_ and lets the engine treat the comparison as a single equality predicate.
+
+**Usage**:
+
+```sql
+{{ dbt.equals("column_a", "column_b") }}
+{{ dbt.equals("id", "previous_id") }}
+```
+
+**Sample output (PostgreSQL)**:
+
+```sql
+(column_a IS NOT DISTINCT FROM column_b)
+(id IS NOT DISTINCT FROM previous_id)
 ```
 
 ## Date and time functions
