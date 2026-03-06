@@ -39,7 +39,7 @@ The Fabric Lakehouse adapter (`dbt-fabricspark`) connects to Fabric Spark throug
 
 When you authenticate, Azure CLI may open a browser window or prompt you to complete sign-in on the [Microsoft device login](https://microsoft.com/devicelogin) page and enter a one-time code to complete sign-in. Once authentication is successful, dbt automatically reuses the active Azure CLI session for subsequent commands.
 
-Refer to [`session-jobs`](/docs/core/connect-data-platform/fabricspark-setup#session-jobs) for an example authentication configuration.
+Refer to [`session-jobs`](/docs/local/connect-data-platform/fabricspark-setup#session-jobs) for an example authentication configuration.
 
 ## Connection methods
 
