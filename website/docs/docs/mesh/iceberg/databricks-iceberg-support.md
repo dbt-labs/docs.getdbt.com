@@ -36,7 +36,7 @@ dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tabl
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The adapter property `use_uniform` (see [Adapter properties](#adapter-properties)) determines whether dbt creates a managed Iceberg table or a Delta table.
+dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The behavior change flag `use_managed_iceberg` (see [use_managed_iceberg](/reference/global-configs/databricks-changes#use-managed-iceberg)) determines whether dbt creates a managed Iceberg table or a Delta table.
 </VersionBlock>
 
 ### External tables
@@ -86,10 +86,8 @@ These are the additional configurations, unique to Databricks, that you supply a
 
 | Field | Required | Accepted values |
 | --- | --- | --- |
-| `use_uniform` | Optional | `True` or `False` |
 | `location_root` | Optional | "external/location/path"; for example, `"s3://cloud-storage-uri"` |
 
-- **use_uniform**: Specifies whether to use managed Iceberg tables or Iceberg-enabled UniForm tables. By default, `use_uniform` is false.
 - **location_root**: Specify an [external location](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-external-tables) root to write to. dbt writes the table to `<location_root>/<identifier>`, or `<location_root>/<database>/<schema>/<identifier>` if `include_full_name_in_path` is true.
 </VersionBlock>
 
