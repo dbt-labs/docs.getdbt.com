@@ -57,7 +57,7 @@ Drivers handle authentication through key-value options set on the database. <Co
 
 For a complete example of how <Constant name="fusion" /> translates profile options, see the [Snowflake authentication source code](https://github.com/dbt-labs/dbt-fusion/blob/main/crates/dbt-auth/src/snowflake/mod.rs).
 
-For more information on profile configuration, refer to [dbt profiles](/docs/local/connect-data-platform/profiles.yml).
+For more information on profile configuration, refer to [dbt profiles](/docs/local/profiles.yml).
 
 #### Credential caching
 
