@@ -33,20 +33,28 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
+## Authentication
+
+The Fabric Lakehouse adapter (`dbt-fabricspark`) connects to Fabric Spark through the Livy API. You can authenticate using Azure CLI, which allows dbt to use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file and run `az login`.
+
+When you authenticate, Azure CLI may open a browser window or prompt you to complete sign-in on the [Microsoft device login](https://microsoft.com/devicelogin) page and enter a one-time code to complete sign-in. Once authentication is successful, dbt automatically reuses the active Azure CLI session for subsequent commands.
+
+Refer to [`session-jobs`](/docs/core/connect-data-platform/fabricspark-setup#session-jobs) for an example authentication configuration.
+
 ## Connection methods
 
-dbt-fabricspark can connect to Fabric Spark runtime using Fabric Livy API method. The Fabric Livy API allows submitting jobs in two different modes:  
+`dbt-fabricspark` can connect to Fabric Spark runtime using Fabric Livy API method. The Fabric Livy API allows submitting jobs in two different modes:  
 
-- [`session-jobs`](#session-jobs) A Livy session job entails establishing a Spark session that remains active throughout the spark session. A spark session, can run multiple jobs (each job is an action), sharing state and cached data between jobs.
+- [`session-jobs`](#session-jobs) A Livy session job entails establishing a Spark session that remains active throughout the Spark session. A Spark session, can run multiple jobs (each job is an action), sharing state and cached data between jobs.
 - batch jobs entails submitting a Spark application for a single job execution. In contrast to a Livy session job, a batch job doesn't sustain an ongoing Spark session. With Livy batch jobs, each job initiates a new Spark session that ends when the job finishes.
 
 :::info Supported mode
-To share the session state among jobs and reduce the overhead of session management,  dbt-fabricspark adapter supports only `session-jobs` mode.
+To share the session state among jobs and reduce the overhead of session management,  `dbt-fabricspark` adapter supports only `session-jobs` mode.
 :::
 
 ### session-jobs
 
-session-jobs is the preferred method when connecting to Fabric Lakehouse.
+`session-jobs` is the preferred method when connecting to Fabric Lakehouse.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -91,7 +99,7 @@ your_profile_name:
 
 ### Retries
 
-Intermittent errors can crop up unexpectedly while running queries against Fabric Spark. If `retry_all` is enabled, dbt-fabricspark will naively retry any queries that fails, based on the configuration supplied by `connect_timeout` and `connect_retries`. It does not attempt to determine if the query failure was transient or likely to succeed on retry. This configuration is recommended in production environments, where queries ought to be succeeding. The default `connect_retries` configuration is 2. 
+Intermittent errors can crop up unexpectedly while running queries against Fabric Spark. If `retry_all` is enabled, `dbt-fabricspark` will naively retry any queries that fails, based on the configuration supplied by `connect_timeout` and `connect_retries`. It does not attempt to determine if the query failure was transient or likely to succeed on retry. This configuration is recommended in production environments, where queries ought to be succeeding. The default `connect_retries` configuration is 2. 
 
 For instance, this will instruct dbt to retry all failed queries up to 3 times, with a 5 second delay between each retry:
 
@@ -123,5 +131,5 @@ Delta-only features:
 ### Limitations
 
 1. Lakehouse schemas are not supported. Refer to [limitations](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-schemas#public-preview-limitations)
-2. Service Principal Authentication is not supported yet by Livy API.
-3. Only Delta, CSV & Parquet table data formats are supported by Fabric Lakehouse.
+2. Service principal authentication is not supported yet by Livy API.
+3. Only Delta, CSV and Parquet table data formats are supported by Fabric Lakehouse.

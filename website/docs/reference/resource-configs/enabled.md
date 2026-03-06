@@ -284,7 +284,7 @@ semantic-models:
 
 </File>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name='models/semantic_models.yml'>
 
 ```yaml
@@ -297,7 +297,7 @@ semantic_models:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 <File name='models/file_name.yml'>
 
 ```yaml

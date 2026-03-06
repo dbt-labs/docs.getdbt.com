@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.mutinyhq.com https://*.getdbt.com"
+          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.getdbt.com"
         },
         {
           "key": "Strict-Transport-Security",
