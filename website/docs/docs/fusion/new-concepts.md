@@ -100,7 +100,7 @@ Ultimately, we want everyone developing in strict mode for maximum guarantees. W
 
 In `baseline` mode, all static analysis findings are warnings, not errors &mdash; your project can continue running even when the compiler flags invalid or problematic SQL. This section is a good example of why that design exists.
 
-Previously, with `strict` mode, the system assumed local schemas of your compiled models would be available. In `baseline` mode, we can no longer assume the full local schema is available and complete, so `baseline` uses the remote database as the source of truth &mdash; similar to dbt Core.
+Previously, with `strict` mode, the system assumed local schemas of your compiled models would be available. In `baseline` mode, we can no longer assume the full local schema is available and complete, so `baseline` uses the remote database as the source of truth &mdash; similar to <Constant name="core"/>.
 
 The practical result is that the <Constant name="fusion" /> compiler may sometimes flag incorrect queries that result from introspective queries that come back empty. If you encounter this, you can:
 
