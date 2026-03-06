@@ -59,7 +59,7 @@ The <Constant name="copilot" /> panel contains:
 
 - **Quick-action buttons** (top) &mdash; The buttons at the top of the panel (**Generate documentation**, **Semantic model**, **Generate generic tests**, **Metrics**) pre-fill prompts for common tasks. When selected, the text field is pre-filled with the prompt for the selected action.
 - **Agent mode button** (bottom left) &mdash; Switch between **Ask** and **Code** mode. Click the button to change modes.
-- **Text input field** (bottom right) &mdash; Type your prompt in the text field to describe what you want to build or change. Use `/` to browse available commands, or type `@` to select a model as context. This scopes the agent's changes to that resource.
+- **Text input field** (bottom right) &mdash; Type your prompt in the text field to describe what you want to build or change. Type `@` to select a model as context. This scopes the agent's changes to that resource.
 - **Model context** (bottom left, next to mode) &mdash; Shows the currently open file. Use `@` in the text field to reference a different model. Click **x** to remove the model context.
 - **Start over** (top right) &mdash; Resets the current session. A confirmation prompt will appear &mdash; click **Start over** to confirm, or **Cancel** to return to your current conversation. This action cannot be undone.
 - **Stop** (bottom right) &mdash; Stops the current session and agent processing. This action cannot be undone.

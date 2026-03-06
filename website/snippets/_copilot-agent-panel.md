@@ -1,6 +1,6 @@
 To access the <Constant name="dev_agent" />, click **Copilot** in the <Constant name="cloud_ide" /> command palette. The Copilot panel is shared between inline Copilot features and the <Constant name="dev_agent" /> — the **Ask** or **Code** mode toggle at the bottom of the panel is what activates agent mode.
 
-The quick-action buttons at the top of the panel (**Generate documentation**, **Semantic model**, **Generate generic tests**, **Metrics**) pre-fill prompts in the text field for common tasks. The text input field also accepts plain prompts. Use `/` to browse available commands, or type `@` to select a model as context — this scopes the agent's changes to that resource.
+The quick-action buttons at the top of the panel (**Generate documentation**, **Semantic model**, **Generate generic tests**, **Metrics**) pre-fill prompts in the text field for common tasks. The text input field also accepts plain prompts. Type `@` to select a model as context — this scopes the agent's changes to that resource.
 
 The toolbar below the text field contains:
 
