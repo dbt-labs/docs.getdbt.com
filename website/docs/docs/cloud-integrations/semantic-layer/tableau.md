@@ -53,9 +53,17 @@ Alternatively, you can follow these steps to install the connector. Note that th
 
 Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/en-us/gettingstarted_overview.htm) to learn more about how to use Tableau worksheets and dashboards.
 
+
 ### Publish from Tableau Desktop to Tableau Server
 
 - **From Desktop to Server** &mdash; Like any Tableau workflow, you can publish your workbook from Tableau Desktop to Tableau Server. For step-by-step instructions, visit Tableau's [publishing guide](https://help.tableau.com/current/pro/desktop/en-us/publish_workbooks_share.htm).
+
+
+#### Modifying time granularity
+
+import SlCustomGranularity from '/snippets/_sl-custom-granularity.md';
+
+<SlCustomGranularity />
 
 ## Things to note
 
