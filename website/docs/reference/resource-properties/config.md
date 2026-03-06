@@ -185,7 +185,7 @@ exposures:
 
 <TabItem value="semantic models">
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -201,7 +201,7 @@ semantic_models:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 <File name='models/<filename>.yml'>
 
 ```yml

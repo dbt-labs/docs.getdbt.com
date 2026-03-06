@@ -50,7 +50,7 @@ Validation behavior and availability differ depending on your environment and se
 ## Parsing
 
 In this validation step, we ensure your config files follow the defined schema for each semantic graph object and can be parsed successfully. It validates the schema for the following core objects:
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 * Semantic models
 * Identifiers
@@ -58,7 +58,7 @@ In this validation step, we ensure your config files follow the defined schema f
 * Dimensions
 * Metrics
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 * Semantic models
 * Identifiers
 * Simple metrics
@@ -68,9 +68,9 @@ In this validation step, we ensure your config files follow the defined schema f
 
 ## Semantic syntax
 
-This syntactic validation step occurs after we've built your semantic graph. The <Constant name="semantic_layer" />, powered by MetricFlow, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
+This syntactic validation step occurs after we've built your semantic graph. The <Constant name="semantic_layer" />, powered by MetricFlow, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if <VersionBlock lastVersion="1.11">measure</VersionBlock><VersionBlock firstVersion="1.12">simple metric</VersionBlock> names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 1. Check those semantic models with measures have a valid time dimension
 2. Check that there is only one primary identifier defined in each semantic model
 3. Dimension consistency
@@ -79,7 +79,7 @@ This syntactic validation step occurs after we've built your semantic graph. The
 7. Cumulative metrics are configured properly
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 1. Check those semantic models with simple metrics have a valid time dimension
 2. Check that there is only one primary identifier defined in each semantic model
 3. Dimension consistency
@@ -94,13 +94,13 @@ This type of validation checks to see if the semantic definitions in your semant
 
 We run the following checks:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 * Measures and dimensions exist
 * Underlying tables for data sources exist
 * Generated SQL for metrics will execute
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 * Simple metrics and dimensions exist
 * Underlying tables for data sources exist
 * Generated SQL for metrics will execute

@@ -71,14 +71,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "dbt-workshop",
+      id: "fast-track-workshop",
       content:
-        "Join our free workshop to modernize your dbt project and upgrade to Fusion during our global friendly sessions on March 3rd & 4th",
+        "Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/modernize-your-dbt-project-upgrade-to-fusion-in-practice-workshop",
+      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
@@ -360,6 +360,7 @@ var siteSettings = {
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),
+    path.resolve("plugins/buildFusionReleases"),
     [
       "vercel-analytics",
       {
