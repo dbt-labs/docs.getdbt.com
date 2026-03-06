@@ -108,7 +108,7 @@ The VS Code extension and Studio IDE provide CodeLens even when static analysis 
 
 Ultimately, we want everyone developing in strict mode for maximum guarantees. We acknowledge this isn't a change that can happen overnight &mdash; baseline exists to smooth the transition. Many planned features (like local compute) require strict mode. We're also exploring inferring column types on your behalf, which would enable more functionality in baseline mode without requiring you to manually provide type information.
 
-#### Introspection handling in baseline mode
+### Introspection handling in baseline mode
 
 In `baseline` mode, all static analysis findings are warnings, not errors &mdash; your project can continue running even when the compiler flags invalid or problematic SQL. This section is a good example of why that design exists.
 
