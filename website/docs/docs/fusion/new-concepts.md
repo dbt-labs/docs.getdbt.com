@@ -88,7 +88,19 @@ VS Code extension features by static analysis configuration:
 
 _*Column-level go-to-definition requires baseline; macros, refs, and docs work without it._
 
-_**Planned for baseline mode in a future release._
+| Feature | off | baseline | strict |
+|---------|-----|----------|--------|
+| Go-to-definition/reference (except columns) | ✅ | ✅ | ✅ |
+| Table lineage | ✅ | ✅ | ✅ |
+| YAML validation | ✅ | ✅ | ✅ |
+| Render + preview SQL | ✅ | ✅ | ✅ |
+| Unit tests | ✅ | ✅ | ✅ |
+| Detect syntax errors | ❌ | ✅ | ✅ |
+| Preview CTE results | ❌ | ✅ | ✅ |
+| Go-to-definition/reference (columns) | ❌ | ❌ | ✅ |
+| Automatic refactor column names | ❌ | ❌ | ✅ |
+| Rich column lineage | ❌ | ❌ | ✅ |
+| Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
 :::tip CodeLens visibility
 The VS Code extension and Studio IDE provide CodeLens even when static analysis is off, giving you visibility into which models have static analysis disabled and why.
