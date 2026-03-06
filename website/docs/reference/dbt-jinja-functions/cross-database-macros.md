@@ -813,7 +813,7 @@ For databases that support it, this macro will return `NULL` when the cast fails
 
 ## Comparison functions
 
-### equals
+### equals<Lifecycle status='beta'/> 
 
 **Availability**:
 dbt v1.12 or later. For more information, select the version from the documentation navigation menu.<!--need to confirm if correct--> 
