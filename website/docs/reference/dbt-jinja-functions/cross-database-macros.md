@@ -818,7 +818,6 @@ For databases that support it, this macro will return `NULL` when the cast fails
 **Availability**:
 dbt v1.12 or later. For more information, select the version from the documentation navigation menu.<!--need to confirm if correct-->
 
-The `IS NOT DISTINCT FROM` behavior is supported on Athena, BigQuery, Postgres, Redshift, Snowflake, and Spark.
 
 __Args__:
 
