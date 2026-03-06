@@ -837,7 +837,7 @@ When the [`enable_truthy_nulls_equals_macro`](/reference/global-configs/behavior
 {{ dbt.equals("id", "previous_id") }}
 ```
 
-**Sample output (PostgreSQL)**:
+**Sample output (PostgreSQL with [`enable_truthy_nulls_equals_macro`](/reference/global-configs/behavior-changes#null-safe-equality-equals-macro) enabled)**:
 
 ```sql
 (column_a IS NOT DISTINCT FROM column_b)
