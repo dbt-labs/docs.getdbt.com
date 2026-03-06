@@ -53,34 +53,41 @@ DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 ```
 :::
 
-## Step 2: Create your `.env` file
+## Step 2: Configure dbt MCP
 
-Create a file named `.env` in your dbt project root (same folder as `dbt_project.yml`). Add only the variables you need:
+Use the configuration below. Replace the placeholder values with your paths and IDs from Step 1. Include only the variables you need for your setup:
 
-```bash
-# Required for dbt CLI
-DBT_PROJECT_DIR=/path/to/your/dbt/project
-DBT_PATH=/path/to/your/dbt/executable
-
-# Required for platform features
-DBT_HOST=cloud.getdbt.com
-DBT_TOKEN=your-token-here
-DBT_PROD_ENV_ID=12345
-
-# Required for execute_sql (PAT only)
-DBT_DEV_ENV_ID=67890
-DBT_USER_ID=123
-
-# Required for Admin API
-DBT_ACCOUNT_ID=99999
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"],
+      "env": {
+        "DBT_PROJECT_DIR": "/path/to/your/dbt/project",
+        "DBT_PATH": "/path/to/your/dbt/executable",
+        "DBT_HOST": "cloud.getdbt.com",
+        "DBT_TOKEN": "your-token-here",
+        "DBT_PROD_ENV_ID": "12345",
+        "DBT_DEV_ENV_ID": "67890",
+        "DBT_USER_ID": "123",
+        "DBT_ACCOUNT_ID": "99999"
+      }
+    }
+  }
+}
 ```
 
 :::tip Multi-cell accounts
-If your Access URL is `abc123.us1.dbt.com`, set:
+If your Access URL is `abc123.us1.dbt.com`, add to `env`:
 - `DBT_HOST=us1.dbt.com`
 - `MULTICELL_ACCOUNT_PREFIX=abc123`
 
 Don't include the account prefix in `DBT_HOST`.
+:::
+
+:::tip Optional: use a .env file
+You can keep variables in a separate `.env` file and use uv's `--env-file` option in `args` instead of the `env` block. That approach is optional and is a feature of uv rather than dbt MCP. For most users, inline `env` (above) is simpler. See [Set up local MCP](/docs/dbt-ai/setup-local-mcp) for `.env` examples.
 :::
 
 ## Step 3: Add the config to your MCP client
@@ -90,23 +97,7 @@ Don't include the account prefix in `DBT_HOST`.
 <TabItem value="claude-desktop" label="Claude Desktop">
 
 1. In Claude Desktop, go to **Settings** → **Developer** tab → **Edit Config**.
-2. Add this configuration, replacing the `.env` path with your absolute path:
-
-```json
-{
-  "mcpServers": {
-    "dbt": {
-      "command": "uvx",
-      "args": [
-        "--env-file",
-        "/absolute/path/to/your-dbt-project/.env",
-        "dbt-mcp"
-      ]
-    }
-  }
-}
-```
-
+2. Paste the configuration from Step 2, replacing the placeholder values with your actual paths and IDs.
 3. Save and restart Claude Desktop.
 
 Config file location:
@@ -117,21 +108,26 @@ Config file location:
 
 <TabItem value="claude-code" label="Claude Code">
 
-Run this command, replacing the path with the absolute path to your `.env` file:
+Run this command, replacing the placeholders with your actual values:
 
 ```bash
-claude mcp add dbt -- uvx --env-file /absolute/path/to/your-dbt-project/.env dbt-mcp
+claude mcp add dbt \
+-e DBT_PROJECT_DIR=/path/to/your/dbt/project \
+-e DBT_PATH=/path/to/your/dbt/executable \
+-e DBT_HOST=cloud.getdbt.com \
+-e DBT_TOKEN=your-token-here \
+-e DBT_PROD_ENV_ID=12345 \
+-- uvx dbt-mcp
 ```
+
+Add `-e DBT_DEV_ENV_ID=...` and `-e DBT_USER_ID=...` if you use `execute_sql`; add `-e DBT_ACCOUNT_ID=...` for Admin API.
 
 </TabItem>
 
 <TabItem value="cursor" label="Cursor">
 
-1. Click the link below with Cursor open:
-
-   [Add to Cursor (with .env file)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt-mcp&config=eyJjb21tYW5kIjoidXZ4IC0tZW52LWZpbGUgPGVudi1maWxlLXBhdGg%252BIGRidC1tY3AifQ%3D%3D)
-
-2. Replace `<env-file-path>` with the absolute path to your `.env` file (for example, `/absolute/path/to/your-dbt-project/.env`).
+1. In Cursor, open **Settings** → **MCP** → **Edit config** (or your config file).
+2. Paste the configuration from Step 2, replacing the placeholder values with your actual paths and IDs.
 3. Save the configuration.
 
 </TabItem>
@@ -140,7 +136,7 @@ claude mcp add dbt -- uvx --env-file /absolute/path/to/your-dbt-project/.env dbt
 
 1. Open **Settings** → **Features** → **Chat** and ensure **MCP** is enabled.
 2. Open the Command Palette (`Ctrl/Cmd + Shift + P`) and select **MCP: Open User Configuration**.
-3. Add the configuration to `mcp.json`.
+3. Add the configuration to `mcp.json`, replacing the placeholder values with your actual paths and IDs.
 
 :::note VS Code uses `"servers"`, not `"mcpServers"`
 :::
@@ -150,17 +146,21 @@ claude mcp add dbt -- uvx --env-file /absolute/path/to/your-dbt-project/.env dbt
   "servers": {
     "dbt": {
       "command": "uvx",
-      "args": [
-        "--env-file",
-        "/absolute/path/to/your-dbt-project/.env",
-        "dbt-mcp"
-      ]
+      "args": ["dbt-mcp"],
+      "env": {
+        "DBT_PROJECT_DIR": "/path/to/your/dbt/project",
+        "DBT_PATH": "/path/to/your/dbt/executable",
+        "DBT_HOST": "cloud.getdbt.com",
+        "DBT_TOKEN": "your-token-here",
+        "DBT_PROD_ENV_ID": "12345",
+        "DBT_DEV_ENV_ID": "67890",
+        "DBT_USER_ID": "123",
+        "DBT_ACCOUNT_ID": "99999"
+      }
     }
   }
 }
 ```
-
-Replace the path with the absolute path to your `.env` file and save.
 
 </TabItem>
 
@@ -168,15 +168,7 @@ Replace the path with the absolute path to your `.env` file and save.
 
 ## Step 4: Test your setup
 
-Verify from the command line:
-
-```bash
-uvx --env-file /absolute/path/to/your-dbt-project/.env dbt-mcp
-```
-
-No errors means your configuration is correct.
-
-Then ask your AI assistant something that requires platform data (for example, _"What metrics are defined in my Semantic Layer?"_ or _"List all models and their last run status"_).
+Ask your AI assistant something that requires platform data (for example, _"What metrics are defined in my Semantic Layer?"_ or _"List all models and their last run status"_). If dbt MCP is working, the response will use your dbt metadata.
 
 ## What's available
 

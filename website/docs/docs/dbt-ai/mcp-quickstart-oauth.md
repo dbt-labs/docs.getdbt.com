@@ -14,27 +14,28 @@ This quick start walks you through connecting dbt MCP to your dbt platform accou
 
 ## Prerequisites
 
-- [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A dbt platform account
 
 <StaticSubdomainRequired />
+
+:::note Installing uv
+Installing [uv](https://docs.astral.sh/uv/getting-started/installation/) is **not** required for Claude Desktop. For Cursor, VS Code, and Claude Code, you need uv to run `uvx dbt-mcp`; install it when you set up those clients.
+:::
 
 ## Step 1: Find your Access URL
 
 1. Log in to your dbt platform account.
 2. Go to **Account settings** and copy your **Access URL** (for example, `abc123.us1.dbt.com`).
 
-## Step 2: Configure dbt MCP
+## Step 2: Add the config to your MCP client
 
-Use the configuration below for your setup. Replace `<your-dbt-host-with-custom-subdomain>` with your Access URL from Step 1.
+Use the configuration below for manual setup. Replace `<your-dbt-host-with-custom-subdomain>` with your Access URL from Step 1.
 
 <MCPExample />
 
 :::tip No clone required
-You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` — it fetches and runs dbt-mcp for you.
+You don't need to clone the dbt-mcp repository. For clients that use the local server (Cursor, VS Code, Claude Code), [install uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` — it fetches and runs dbt-mcp for you.
 :::
-
-## Step 3: Add the config to your MCP client
 
 <Tabs>
 
@@ -50,7 +51,7 @@ You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral
 **Option B: Manual config**
 
 1. In Claude Desktop, go to **Settings** → **Developer** tab → **Edit Config**.
-2. Paste the configuration from Step 2 into the config file.
+2. Paste the configuration above into the config file.
 3. Save and restart Claude Desktop. A server indicator appears in the bottom-right corner of the input box.
 
 Config file location:
@@ -119,7 +120,7 @@ Replace `<your-dbt-host-with-custom-subdomain>` with your Access URL (for exampl
 
 </Tabs>
 
-## Step 4: Authenticate
+## Step 3: Authenticate
 
 The first time you connect, dbt MCP opens a browser window to complete OAuth. After signing in, your session is saved and future connections are automatic.
 
@@ -129,17 +130,9 @@ If authentication doesn't start, close your client and run:
 
 Then restart your client.
 
-## Step 5: Test your setup
+## Step 4: Test your setup
 
-Ask your AI assistant a question about your dbt project (for example, _"What models are in my dbt project?"_). If dbt MCP connects successfully, you'll get a response using your dbt metadata.
-
-To verify from the command line:
-
-```bash
-uvx dbt-mcp
-```
-
-No errors means your setup is working.
+Test the setup by asking a data-related question in your client (for example, _"What models are in my dbt project?"_ or _"Which metrics are available?"_). If dbt MCP is working, the response will use your dbt metadata and you'll see the MCP server in use (for example, a server indicator in Claude Desktop).
 
 ## Next steps
 
