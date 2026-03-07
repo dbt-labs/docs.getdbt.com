@@ -139,7 +139,7 @@ Now you have all the working pieces to get up and running with Airflow + <Consta
 
 ## Update the placeholders in the sample code
 
- Add your `account_id` and `job_id` to the python file [dbt_cloud_run_job.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/dbt_cloud_run_job.py).
+ Add your `account_id` and `job_id` to the python file [run_dbt_cloud_job.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/run_dbt_cloud_job.py).
 
 Both IDs are included inside of the <Constant name="cloud" /> job URL as shown in the following snippets:
 
