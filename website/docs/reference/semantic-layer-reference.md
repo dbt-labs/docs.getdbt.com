@@ -24,7 +24,7 @@ Click a link to read the full property reference for that resource. Use the vers
 
 | Page | Description |
 |------|-------------|
-| [Semantic model properties](/reference/semantic-model-properties) | **Semantic models** — Latest spec (model YAML): `semantic_model:` block, top-level `agg_time_dimension` and `primary_entity`, `columns` (entity/dimension blocks, `granularity`), `derived_semantics`, and optional `metrics`. Legacy spec (standalone YAML): `semantic_models:` list with model, defaults, entities, dimensions, measures, config. |
+| [Semantic model properties](/reference/semantic-model-properties) | **Semantic models**: <br></br>- Latest spec (model YAML): `semantic_model:` block, top-level `agg_time_dimension` and `primary_entity`, `columns` (entity/dimension blocks, `granularity`), `derived_semantics`, and optional `metrics`.<br></br> - Legacy spec (standalone YAML): `semantic_models:` list with model, defaults, entities, dimensions, measures, config. |
 | [Metric properties](/reference/metric-properties) | **Metrics** — Latest spec (model YAML): top-level `metrics:` list on a model; property table and properties by type (simple, cumulative, ratio, derived, conversion); cross-model rules. Legacy spec (standalone YAML): top-level `metrics:` key; property table with `type_params`; type-specific parameters. |
 | [Dimension properties](/reference/dimension-properties) | **Dimensions** — Latest spec (model YAML): column-level `dimension:` block, `granularity:` on column, `derived_semantics.dimensions`, `validity_params`. Legacy spec (standalone semantic model): `dimensions:` list with name, type, `type_params`, description, expr, label, meta. |
 

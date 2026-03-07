@@ -33,7 +33,7 @@ In the latest spec, a model defines a `semantic_model:` block and optional top-l
 | `agg_time_dimension` (top-level) | string | Yes | Default time dimension for metrics; references dimension name. |
 | `primary_entity` (top-level) | string | No | Primary entity name when no column has `type: primary`. |
 | `columns` | array | Yes | Column list; each can have `entity:` or `dimension:` block; time dimensions have `granularity` on the column. |
-| `derived_semantics` | object | No | Optional dimensions and entities with `expr`. |
+| `derived_semantics` (top-level) | object | No | Optional dimensions and entities with `expr`. |
 | `metrics` (top-level) | array | No | Metrics derived from this semantic model; list is alongside (not under) `semantic_model`. |
 
 In the latest spec, a model can define:
@@ -96,7 +96,7 @@ Semantic models are defined in a top-level `semantic_models:` list in standalone
 |----------|------|----------|-------------|
 | name | string | Yes | Unique name for the semantic model. Avoid double underscores (`__`). |
 | description | string | No | Documentation for the semantic model. |
-| model | string | Yes | The dbt model reference, e.g. `ref('my_model')`. |
+| model | string | Yes | The dbt model reference (for example, `ref('my_model')`). |
 | defaults | object | Yes | Defaults; typically `agg_time_dimension`. |
 | entities | array | Yes | Join keys and type (primary, foreign, unique); each with `name`, `type`, optional `expr`. |
 | primary_entity | string | No | Name of the primary entity if not declared on an entity. |

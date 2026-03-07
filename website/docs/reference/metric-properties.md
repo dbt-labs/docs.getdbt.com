@@ -47,7 +47,7 @@ In the latest YAML spec, you can define metrics on a model that has semantic mod
 | Conversion | entity, calculation, base_metric, conversion_metric, window; optional constant_properties |
 | Cumulative | input_metric, window, grain_to_date, period_agg |
 
-**Cross-model metrics:** Metrics under a model's *metrics* list can only reference that semantic model. Metrics that depend on other semantic models (for example, cross-model cumulative, ratio, derived, or conversion) go in a top-level *metrics* key in standalone YAML (same in both specs). No simple metrics at that level.
+**Cross-model metrics:** Metrics under a model's `metrics:` list can only reference that semantic model. Metrics that depend on other semantic models (for example, cross-model cumulative, ratio, derived, or conversion) go in a top-level `metrics:` block (outside `models:`). This can live in the same YAML file or a separate file. 
 
 **Note:** For the legacy spec, all metrics were defined in standalone YAML; there was no model-level `metrics:` list.
 

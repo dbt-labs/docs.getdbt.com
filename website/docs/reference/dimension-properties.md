@@ -32,9 +32,9 @@ Dimensions are defined at the column level.
 | `dimension.description` | string | No | Documentation for the dimension. |
 | `dimension.label` | string | No | Display value in downstream tools. |
 | `dimension.config` | object | No | Metadata and config. |
-| `granularity:` (on column) | string | Yes (time only) | Time grain, e.g. `day`, `week`, `month`. Required on the column for time dimensions. |
+| `granularity:` (on column) | string | Yes (time only) | Time grain (for example, `day`, `week`, `month`). Required on the column for time dimensions. |
 | `derived_semantics.dimensions` | array | No | Derived dimensions with an `expr`. |
-| `validity_params` (time) | object | No | SCD-style validity, e.g. `is_start`, `is_end`. |
+| `validity_params` (time) | object | No | SCD-style validity (for example, `is_start`, `is_end`). |
 
 - **Column-level:** Under the model's `columns:` list, each column can have a `dimension:` block with *time* or *categorical* type, and optional `name`, `description`, `label`, `config`.
 - **Time dimensions:** The column must also have a top-level `granularity:` (for example, `day`).
@@ -57,7 +57,7 @@ Dimensions are defined in a top-level `dimensions:` list on the semantic model.
 |----------|------|----------|-------------|
 | name | string | Yes | Unique within the semantic model. Displayed in downstream tools; can act as alias when `expr` differs. |
 | type | string | Yes | `time` or `categorical`. |
-| type_params | object | Yes (time only) | For time dimensions: e.g. `time_granularity`, `is_primary`, `time_partitioning_granularity`. Omitted for categorical. |
+| type_params | object | Yes (time only) | For time dimensions (for example, `time_granularity`, `is_primary`, `time_partitioning_granularity`). Omitted for categorical. |
 | description | string | No | Documentation for the dimension. |
 | expr | string | No | Column or SQL expression. Defaults to the dimension name if omitted. |
 | label | string | No | Display value in downstream tools. |
