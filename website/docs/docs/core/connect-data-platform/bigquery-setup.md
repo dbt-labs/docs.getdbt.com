@@ -229,7 +229,7 @@ You can set the `job_execution_timeout_seconds` config in your BigQuery profile.
 
 <VersionBlock firstVersion="1.12">
 
-You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs. To override the default, you can set the config per model, snapshot, seed, or test. The per-resource value overrides the default value set in the profile level.
+You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs. To override this, you can set the config per model, snapshot, seed, or test. The per-resource value overrides the default value set in the profile level.
 
 </VersionBlock>
   
