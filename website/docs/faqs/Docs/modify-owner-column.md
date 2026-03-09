@@ -15,7 +15,7 @@ If you set `meta.owner`, that field appears under **meta** (pulled from dbt), bu
 
 ## Example
 
-The following example shows a model with `meta.owner` and `meta.support` so they appear under **meta** in the docs. Replace `DATA_TEAM_EMAIL` and `SUPPORT_EMAIL` with your own values.
+The following example shows a model with `meta.owner` so it appears under **meta** in the docs. Replace `DATA_TEAM_EMAIL` with your own values.
 
 <File name='models/stg_orders.yml'>
 ```yaml
@@ -25,7 +25,6 @@ models:
     config:
       meta:
         owner: "DATA_TEAM_EMAIL"
-        support: "SUPPORT_EMAIL"
     columns:
       - name: order_id
         description: "Primary key for orders."
