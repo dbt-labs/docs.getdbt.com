@@ -223,17 +223,17 @@ Use the `job_execution_timeout_seconds` configuration to set the number of secon
 
 <VersionBlock lastVersion="1.11">
 
-You can set it in your BigQuery profile (applies to all runs).
+You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
 
-You can set it in your BigQuery profile (applies to all runs) or per model, snapshot, seed, or test. The per-resource value overrides the default value set in the profile level.
+You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs. To override the default, you can set the config per model, snapshot, seed, or test. The per-resource value overrides the default value set in the profile level.
 
 </VersionBlock>
   
-No timeout is set by default. For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set. When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
+No timeout is set by default. For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set. When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the `dbt-bigquery` adapter will run into an exception:
 
 ```
  Operation did not complete within the designated timeout.
