@@ -104,7 +104,7 @@ Select **Allow**. This redirects you back to the <Constant name="dbt_platform" /
 
 ## Set up BigQuery Workload Identity Federation <Lifecycle status= "managed, Preview" /> 
 
-Workload Identity Federation (WIF) allows application workloads, running externally to the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF. 
+Workload Identity Federation (WIF) allows application workloads, running outside the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF. 
 Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
 ### 1. Set up Entra ID
@@ -173,20 +173,20 @@ Once you've created the service account, navigate back to the workpool you creat
 To configure a BigQuery connection to use WIF authentication in the <Constant name="dbt_platform" />, you must set up a custom OAuth integration configured with details from the Entra application used as your workpool provider in GCP.
 <Constant name="dbt_platform" />: 
 
-1. Navigate to **Account settings** --> **Integrations** 
-2. Scroll down to the section for **Custom OAuth Integrations** and create a new integration, 
+1. Navigate to **Account settings** --> **Integrations**.
+2. Scroll down to the section for **Custom OAuth Integrations** and create a new integration.
 3. Fill out all fields with the appropriate information from your IdP environment.
     - The Application ID URI should be set to the expected audience claim on tokens issued from the Entra application. It will be the same URI your workpool provider has been configured to expect.
-    - You do not have to add the Redirect URI to your Entra application
+    - You do not have to add the Redirect URI to your Entra application.
 
 ### 5. Create connections in dbt
 
 To get started, create a new connection in the <Constant name="dbt_platform" />:
 
-1. Navigate to **Account settings** --> **Connections**.
-2. Click **New connection** and select **BigQuery** as the connection type. You will then see the option to select **BigQuery** or **BigQuery (Legacy)**. Select **BigQuery**.
-3. For the **Deployment Environment Authentication Method**, select **Workload Identity Federation**.
-4. Fill out the **Google Cloud Project ID** and any optional settings you need.
+1. Navigate to **Account settings** --> **Connections**.
+2. Click **New connection** and select **BigQuery** as the connection type. You will then see the option to select **BigQuery** or **BigQuery (Legacy)**. Select **BigQuery**.
+3. For the **Deployment Environment Authentication Method**, select **Workload Identity Federation**.
+4. Fill out the **Google Cloud Project ID** and any optional settings you need.
 5. Select the OAuth Configuration you created in the previous section from the drop-down. 
 6. Configure your development connection: 
     - [BigQuery OAuth](/docs/cloud/connect-data-platform/connect-bigquery#bigquery-oauth) (recommended).
@@ -213,7 +213,7 @@ When you set your environment connection to the WIF configuration, you will then
 - **Service account impersonation URL:** Used only if you’ve configured your workpool to use a service account impersonation for accessing your BigQuery resources (as opposed to granting the workpool direct resource access to the BigQuery resources).
     Example: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts<serviceaccountemail>:generateAccessToken`
 
-If you don’t already have a job based on the deployment environment with a connection set up for WIF, you should create one now. Once you’ve configured it with the preferred settings, run the job.
+If you don't already have a job based on the deployment environment with a connection set up for WIF, you should create one now. Once you've configured it with the preferred settings, run the job.
 
 ## FAQs
 
