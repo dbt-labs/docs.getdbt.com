@@ -21,6 +21,41 @@ import NavbarItem from '@theme/NavbarItem';
 import VersionContext from '../../stores/VersionContext';
 import { versions } from '../../../dbt-versions'
 
+/**
+ * Renders a version display string, splitting on \n to create line breaks
+ */
+function renderVersionDisplay(text) {
+  if (!text || !text.includes('\n')) return text;
+  return text.split('\n').map((part, idx, arr) => (
+    <React.Fragment key={idx}>
+      {part}
+      {idx < arr.length - 1 && <br />}
+    </React.Fragment>
+  ));
+}
+
+/**
+ * Get unique major versions from the versions array
+ */
+function getMajorVersions() {
+  const majors = new Set();
+  versions.forEach((v) => {
+    if (v.version) {
+      const major = v.version.split('.')[0];
+      majors.add(major);
+    }
+  });
+  return Array.from(majors).sort((a, b) => Number(a) - Number(b));
+}
+
+/**
+ * Display labels for major version filter buttons
+ */
+const majorVersionLabels = {
+  "1": "Core",
+  "2": "Fusion",
+};
+
 function isItemActive(item, localPathname) {
   if (isSamePath(item.to, localPathname)) {
     return true;
@@ -49,6 +84,10 @@ function DropdownNavbarItemDesktop({
 
   // dbt Custom: handle version dropdown state on click
   const [showVersionDropdown, setShowVersionDropdown] = useState(true);
+
+  // dbt Custom: major version filter (default to "2" for Fusion)
+  const majorVersions = className === "nav-versioning" ? getMajorVersions() : [];
+  const [majorVersionFilter, setMajorVersionFilter] = useState("2");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -104,32 +143,85 @@ function DropdownNavbarItemDesktop({
         }}
         label={
           className === "nav-versioning"
-            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            ? `Version: ${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
             : props.children ?? props.label
         }
       >
         {props.children ?? props.label}
       </NavbarNavLink>
       <ul className="dropdown__menu">
+        {className === "nav-versioning" && majorVersions.length > 1 && (
+          <li className="nav-versioning-filter">
+            <div className="nav-versioning-filter__buttons">
+              {[...majorVersions].reverse().map((major) => (
+                <button
+                  key={major}
+                  className={clsx("nav-versioning-filter__btn", {
+                    "nav-versioning-filter__btn--active": majorVersionFilter === major,
+                  })}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setMajorVersionFilter(major);
+                  }}
+                >
+                  {majorVersionLabels[major] || `v${major}`}
+                </button>
+              ))}
+              <button
+                className={clsx("nav-versioning-filter__btn", {
+                  "nav-versioning-filter__btn--active": majorVersionFilter === null,
+                })}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setMajorVersionFilter(null);
+                }}
+              >
+                All
+              </button>
+            </div>
+          </li>
+        )}
         {items.map((childItemProps, i) => {
           const thisVersion = versions.find(
             (version) => childItemProps.label == version.version
           );
           const versionDisplay = thisVersion?.customDisplay ? thisVersion.customDisplay : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
-                    
+
+          // Filter by major version if a filter is active
+          if (
+            className === "nav-versioning" &&
+            majorVersionFilter !== null &&
+            childItemProps.label.split('.')[0] !== majorVersionFilter
+          ) {
+            return null;
+          }
+
           return (
             <React.Fragment key={i}>
               {className === "nav-versioning" ? (
                 <li>
                   <a
-                    className="dropdown__link nav-versioning-dropdown__link"
+                    className={clsx(
+                      "dropdown__link nav-versioning-dropdown__link",
+                      { "nav-versioning-dropdown__link--active": childItemProps.label === versionContext.version }
+                    )}
                     data-dbt-version={childItemProps.label}
                     onClick={(e) => {
                       handleVersionMenuClick();
-                      versionContext.updateVersion(e);
+                      // Use currentTarget to ensure we always read the data attribute
+                      // from the <a> element, not a child element the user clicked on
+                      const syntheticEvent = {
+                        target: e.currentTarget
+                      };
+                      versionContext.updateVersion(syntheticEvent);
                     }}
                   >
-                    {versionDisplay}
+                    {childItemProps.label === versionContext.version && (
+                      <span className="nav-versioning-checkmark">&#10003;</span>
+                    )}
+                    <span>{renderVersionDisplay(versionDisplay)}</span>
                   </a>
                 </li>
               ) : (
@@ -159,7 +251,7 @@ function DropdownNavbarItemDesktop({
               )}
             </React.Fragment>
           );
-        } 
+        }
         )}
       </ul>
     </div>
@@ -203,7 +295,7 @@ function DropdownNavbarItemMobile({
         }}
         label={
           className === "nav-versioning"
-            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            ? `Version: ${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
             : props.children ?? props.label
         }
       >

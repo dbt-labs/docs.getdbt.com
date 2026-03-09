@@ -439,37 +439,25 @@ var siteSettings = {
                   ],
                 },
                 {
-                  id: "dbt-core-and-fusion",
-                  name: "dbt Core and Fusion",
+                  id: "install-dbt",
+                  name: "dbt local installation",
                   routes: [
-                    { route: "/docs/about-dbt-install" },
-                    { route: "/docs/core/dbt-core-environments" },
+                    { route: "/docs/local/install-dbt" },
+                    { route: "/docs/local/dbt-core-environments" },
                   ],
                   subsections: [
                     {
-                      id: "install-dbt-fusion-engine",
+                      id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
                       routes: [
                         { route: "/docs/fusion/about-fusion-install" },
-                        { route: "/docs/fusion/install-dbt-extension" },
-                        { route: "/docs/fusion/install-fusion-cli" },
-                      ],
-                    },
-                    {
-                      id: "install-dbt-core",
-                      name: "Install dbt Core",
-                      routes: [
-                        { route: "/docs/core/installation-overview" },
-                        { route: "/docs/core/docker-install" },
-                        { route: "/docs/core/pip-install" },
-                        { route: "/docs/core/source-install" },
                       ],
                     },
                     {
                       id: "core-connect-data-platform",
                       name: "Connect data platform",
                       routes: [
-                        { route: "/docs/core/connect-data-platform/**" },
+                        { route: "/docs/local/connect-data-platform/**" },
                       ],
                     },
                   ],
@@ -560,7 +548,7 @@ var siteSettings = {
 if (versions) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
-    position: "right",
+    position: "left",
     className: "nav-versioning",
     items: [
       ...versions.reduce((acc, version) => {
