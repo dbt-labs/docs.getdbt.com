@@ -15,12 +15,8 @@
  */
 exports.versions = [
   {
-    version: "2.1",
-    customDisplay: "dbt platform (Latest Fusion)",
-  },
-  {
     version: "2.0",
-    customDisplay: "Fusion CLI + extension",
+    customDisplay: "dbt Fusion engine (Latest)",
     isPrerelease: true,
   },
     {
