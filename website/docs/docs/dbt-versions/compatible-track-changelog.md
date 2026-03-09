@@ -12,7 +12,7 @@ For more information, see [release tracks](/docs/dbt-versions/cloud-release-trac
 
 ## March 2026
 
-The compatible release slated for March 2026 will be skipped in order to further stabilize the minor upgrade of `dbt-core==1.11.6` across the dbt platform.
+The compatible release scheduled for March 2026 will be skipped in order to further stabilize the minor upgrade of `dbt-core==1.11.6` across the dbt platform.
 
 Compatible releases will resume in April 2026.
 
