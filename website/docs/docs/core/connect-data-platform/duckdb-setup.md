@@ -56,4 +56,50 @@ your_profile_name:
 
 </File>
 
+### Local storage
 
+When using dbt with DuckDB, the `path` field in your [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) determines where the DuckDB database file is stored on your local filesystem. You can provide an absolute path or a relative path (which will be resolved relative to your dbt project root).
+
+If you provide a filesystem path ending in `.duckdb`, DuckDB will:
+
+- Create the file automatically if it does not exist
+- Write tables and views into that file when you execute [`dbt run`](/reference/commands/run)
+- Persist data between runs
+
+The following is an example of a profile configured to create and connect to a local DuckDB database using a relative path:
+
+<File name='profiles.yml'>
+```yaml
+duckdb_local_storage_test:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "./local.duckdb"
+      threads: 4
+```
+</File>
+
+This configuration tells DuckDB to create (or reuse) a file named `local.duckdb` in the directory where you run dbt.
+
+From your project directory, run the commands:
+
+```shell
+dbt debug
+dbt run
+ls -lah local.duckdb
+```
+
+After executing `dbt run`, you should see a file named `local.duckdb` in your project directory. This file contains the tables and views built by dbt.
+
+If you delete the file:
+
+```shell
+rm local.duckdb
+```
+
+Running `dbt run` again will recreate it.
+
+:::note
+If you use a relative path (for example, `./local.duckdb`), the database file is created relative to the directory where you execute dbt. You can also use an absolute path (for example, `/Users/yourname/project/local.duckdb`) to ensure the database file is always written to a specific location.
+:::
