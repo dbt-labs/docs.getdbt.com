@@ -32,7 +32,15 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ## New and changed features and functionality
 
-**Coming soon**
+### Null-safe equality<Lifecycle status="beta"/>
+
+:::info Beta feature
+The implementation of the `IS NOT DISTINCT FROM` operator is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+When the [enable_truthy_nulls_equals_macro](/reference/global-configs/behavior-changes#null-safe-equality-equals-macro) flag is enabled, the [`equals()`](/reference/dbt-jinja-functions/cross-database-macros#equals) macro compiles to the [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) SQL operator, giving you null-safe equality that works across adapters.
+
+For more information, see [Comparison functions](/reference/dbt-jinja-functions/cross-database-macros#comparison-functions) in the cross-database macros reference.
 
 ### Managing changes to legacy behaviors
 
