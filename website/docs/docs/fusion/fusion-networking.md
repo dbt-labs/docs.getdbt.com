@@ -73,7 +73,7 @@ For more details on `.env` file usage, refer to [Environment variables](/docs/lo
 
 <Lifecycle status="enterprise" />
 
-For [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features) customers using <Constant name="fusion" /> locally, <Constant name="fusion" /> downloads production manifests from dbt Cloud to enable features like [deferral](/reference/node-selection/defer) and [cross-project references](/docs/collaborate/govern/project-dependencies). These manifests are served via **pre-signed URLs** from the cloud storage provider that hosts your dbt Cloud cell.
+For [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features) customers using <Constant name="fusion" /> locally, <Constant name="fusion" /> downloads production manifests from dbt Cloud to enable features like [deferral](/reference/node-selection/defer) and [cross-project references](/docs/mesh/govern/project-dependencies). These manifests are served via **pre-signed URLs** from the cloud storage provider that hosts your dbt Cloud cell.
 
 The specific hostnames depend on your dbt Cloud deployment region and the underlying cloud provider. To ensure <Constant name="fusion" /> can download manifests, allowlist the appropriate storage domain for your region:
 
