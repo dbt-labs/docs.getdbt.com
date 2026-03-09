@@ -84,3 +84,16 @@ To resolve the `dbt language server is not running in this workspace` error, you
 
 This should resolve the error and open your dbt project by opening the workspace it belongs to. For more information on workspaces, refer to [What is a VS Code workspace?](https://code.visualstudio.com/docs/editing/workspaces/workspaces).
 </Expandable>
+
+<Expandable alt_header="Manifest cannot be downloaded from the dbt platform">
+
+If the **dbt Extension** cannot download the manifest from the **dbt platform** or you get `warning: dbt1200: Failed to download manifest` using **Fusion CLI**, you are probably having DNS related issues.
+
+To confirm this you can do DNS lookup for the host dbt fusion is trying to download from (e.g. prodeu2.blob.core.windows.net) by using `dig` on Linux or `nslookup` on Windows.
+
+If this won't return an IP address, the probable reason is you company is using the same cloud provider with private endpoints for cloud resources and the DNS requests for these are forwarded to private DNS zones.
+
+This situation can be remedied by setting up an internet fallback which will then return a public ip to any cloud storage that do not have a private ip registered with the private dns zone.
+
+For Azure refer to [Fallback to internet for Azure Private DNS zones](https://learn.microsoft.com/en-us/azure/dns/private-dns-fallback).
+</Expandable>
