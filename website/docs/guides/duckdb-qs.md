@@ -235,7 +235,7 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 
 ## Verify local storage
 
-DuckDB stores your data in a local `.duckdb` file on your machine. The location of this file is defined by the `path` field in your [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml).
+DuckDB stores your data in a local `.duckdb` file on your machine. The location of this file is defined by the `path` field in your [`profiles.yml`](/docs/local/profiles.yml).
 
 In this quickstart, the project is configured to use a file named `jaffle_shop.duckdb`. After running `dbt build`, you can confirm that the database file was created by running the following command:
 
@@ -256,8 +256,6 @@ Running `dbt build` again will recreate it.
 :::note
 If you use a relative path (such as `./local.duckdb`), the file is created relative to the directory where you run dbt.
 :::
-
-
 
 
 

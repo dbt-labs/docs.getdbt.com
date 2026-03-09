@@ -59,7 +59,7 @@ your_profile_name:
 
 ### Local storage
 
-When using dbt with DuckDB, the `path` field in your [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) determines where the DuckDB database file is stored on your local filesystem. You can provide an absolute path or a relative path (which will be resolved relative to your dbt project root).
+When using dbt with DuckDB, the `path` field in your [`profiles.yml`](/docs/local/profiles.yml) determines where the DuckDB database file is stored on your local filesystem. You can provide an absolute path or a relative path (which will be resolved relative to your dbt project root).
 
 If you provide a filesystem path ending in `.duckdb`, DuckDB will:
 
