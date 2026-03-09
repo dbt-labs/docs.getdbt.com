@@ -22,8 +22,8 @@ This guide will demonstrate how to build a data lakehouse with <Constant name="c
 
 * You must have a [Dremio Cloud](https://docs.dremio.com/cloud/) account.
 * You must have Python 3 installed.
-* You must have <Constant name="core" /> v1.5 or newer [installed](//docs/core/installation-overview). 
-* You must have the Dremio adapter 1.5.0 or newer [installed and configured](/docs/core/connect-data-platform/dremio-setup) for Dremio Cloud.
+* You must have <Constant name="core" /> v1.5 or newer [installed](//docs/local/install-dbt). 
+* You must have the Dremio adapter 1.5.0 or newer [installed and configured](/docs/local/connect-data-platform/dremio-setup) for Dremio Cloud.
 * You must have basic working knowledge of <Constant name="git" /> and the command line interface (CLI).
 
 ## Validate your environment 
