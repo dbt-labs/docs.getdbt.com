@@ -225,28 +225,28 @@ Use the `job_execution_timeout_seconds` configuration to set the number of secon
 
 You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs.
 
+For example:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      job_execution_timeout_seconds: 600 # 10 minutes
+```
+
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
 
 You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs. To override this, you can set the config per model, snapshot, seed, or test. The per-resource value overrides the default value set in the profile level.
 
-</VersionBlock>
-  
-No timeout is set by default. For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set. When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the `dbt-bigquery` adapter will run into an exception:
-
-```
- Operation did not complete within the designated timeout.
-```
-
-:::caution Note
-
-The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. 
-Normally, BigQuery keeps running the job even if this timeout is reached, however `dbt-bigquery` will send a request to BigQuery to cancel it.
-
-:::
-  
-- Set `job_execution_timeout_seconds` in your BigQuery profile to apply a default to all runs:
+- Profile-level configuration:
 
   ```yaml
   my-profile:
@@ -260,9 +260,7 @@ Normally, BigQuery keeps running the job even if this timeout is reached, howeve
         job_execution_timeout_seconds: 600 # 10 minutes
   ```
 
-<VersionBlock firstVersion="1.12">
-
-- You can override the default timeout set in the profile level for the following resources (available in `dbt-bigquery` v1.12.0 and later):
+- Resource-level configuration:
 
   <Tabs>
   <TabItem value="model" label="Models">
@@ -327,6 +325,19 @@ Normally, BigQuery keeps running the job even if this timeout is reached, howeve
   </Tabs>
 
 </VersionBlock>
+  
+No timeout is set by default. For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set. When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the `dbt-bigquery` adapter will run into an exception:
+
+```
+ Operation did not complete within the designated timeout.
+```
+
+:::caution Note
+
+The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. 
+Normally, BigQuery keeps running the job even if this timeout is reached, however `dbt-bigquery` will send a request to BigQuery to cancel it.
+
+:::
 
 import JobTimeout from '/snippets/_bigquery-timeout.md';
 
