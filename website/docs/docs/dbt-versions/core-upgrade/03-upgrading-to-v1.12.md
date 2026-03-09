@@ -44,6 +44,10 @@ You can read more about each of these behavior changes in the following links:
 
 ## Adapter-specific features and functionalities
 
+### Snowflake
+
+- You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. The [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default behavior when `transient` is not set. Set this flag to `True` to create dynamic tables as transient when `transient` is not explicitly configured on the model.
+
 ### BigQuery
 
 - Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When you set this flag to `True`, dbt raises a `DbtRuntimeError` if you run metadata-based source freshness checks with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.

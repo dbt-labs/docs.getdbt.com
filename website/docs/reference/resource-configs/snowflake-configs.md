@@ -110,7 +110,7 @@ models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.11">
+<VersionBlock lastVersion="1.11">
 
 | Parameter          | Type       | Required | Default     | Change Monitoring Support |
 |--------------------|------------|----------|-------------|---------------------------|
@@ -209,6 +209,109 @@ models:
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.12">
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+| [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
+| [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
+| [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
+| [`immutable_where`](#immutable-where)     | `<string>` | no       | `None` | alter   |
+| [`transient`](#transient-dynamic-tables)     | `<boolean>` | no       | `False` | full refresh   |
+
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+    [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
+    [+](/reference/resource-configs/plus-prefix)[immutable_where](#immutable-where): <condition>
+    [+](/reference/resource-configs/plus-prefix)[transient](#transient-dynamic-tables): true | false
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL 
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+      [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
+      [immutable_where](#immutable-where): <condition>
+      [transient](#transient-dynamic-tables): true | false
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="dynamic_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
+    [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
+    [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
+    [immutable_where](#immutable-where)="<condition>",
+    [transient](#transient-dynamic-tables)=true | false,
+
+) }}
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
+
 Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
 ### Target lag
@@ -271,6 +374,34 @@ from {{ source('raw', 'events') }}
 - You can alter changes to `immutable_where` without a full refresh.
 
 Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-immutability-constraints).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+### Transient (dynamic tables)
+
+The Snowflake adapter supports creating [transient dynamic tables](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table), which are created without a [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe) and can reduce storage costs. To create a dynamic table as transient, set `transient: true` in the model configuration.
+
+When `transient` is not set, dbt uses the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) behavior flag to determine the default behavior. This flag defaults to `False`, meaning dynamic tables are created as permanent by default.
+
+**Key points:**
+- Setting `transient: true` creates the dynamic table with the `TRANSIENT` keyword in the `CREATE DYNAMIC TABLE` statement.
+- Snowflake does not support changing the transient property on an existing dynamic table. Changing `transient` from `true` to `false` or vice versa triggers a full table recreation (drop and create).
+- To make all new dynamic tables transient by default when `transient` is not specified, enable the `snowflake_default_transient_dynamic_tables` flag in your `dbt_project.yml`.
+
+For example:
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+    target_lag='1 hour',
+    transient=true
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
 
 </VersionBlock>
 
