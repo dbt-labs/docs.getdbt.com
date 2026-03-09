@@ -237,7 +237,7 @@ packages:
 
 Add the `provider` key when:
 - You are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />.
-- You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/fusion/install-fusion-cli) or the [VS Code extension](/docs/fusion/install-dbt-extension)) (required).
+- You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2#get-started) or the [VS Code extension](/docs/local/install-dbt?version=2#get-started)) (required).
 
 ```yaml
 packages:

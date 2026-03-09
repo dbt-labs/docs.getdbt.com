@@ -19,7 +19,7 @@ In this quickstart guide, you'll learn how to use <Constant name="core" /> with 
 
 This guide will demonstrate how to: 
 
-- [Create a virtual development environment](/docs/core/pip-install#using-virtual-environments) using a template provided by dbt Labs.
+- [Create a virtual development environment](/docs/local/install-dbt#using-virtual-environments) using a template provided by dbt Labs.
 - We will set up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
 - Run through the steps outlined in the `jaffle_shop_duck_db` repository, but if you want to dig into the underlying code further, refer to the [README](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/README.md) for the Jaffle Shop template.
 - Run any dbt command from the environment’s terminal. 
@@ -31,7 +31,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 ### Related content
 
 
-- [DuckDB setup](/docs/core/connect-data-platform/duckdb-setup)
+- [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup)
 - [Create a GitHub repository](/guides/manual-install?step=2)
 - [Build your first models](/guides/manual-install?step=3)
 - [Test and document your project](/guides/manual-install?step=4)
@@ -64,7 +64,7 @@ Below is an example of the `requirements.txt` file alongside other key files lik
 
 ```
 
-For more information, refer to the [DuckDB setup](/docs/core/connect-data-platform/duckdb-setup).
+For more information, refer to the [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup).
 
 <Tabs>
   <TabItem value="local" label="Local">
@@ -275,7 +275,7 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
     ```shell
     jafgen [number of years to generate] # e.g. jafgen 6
     ``` 
-    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, you would run: `jafgen --years 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/core/connect-data-platform/duckdb-setup) adapter.
+    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, you would run: `jafgen --years 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/local/connect-data-platform/duckdb-setup) adapter.
 
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
 ## Next steps
