@@ -387,7 +387,7 @@ When `transient` is not set, dbt uses the [`snowflake_default_transient_dynamic_
 
 **Key points:**
 - Setting `transient: true` creates the dynamic table with the `TRANSIENT` keyword in the `CREATE DYNAMIC TABLE` statement.
-- Snowflake does not support changing the transient property on an existing dynamic table. Changing `transient` from `true` to `false` or vice versa triggers a full table recreation (drop and create).
+- Snowflake does not support changing the transient property on an existing dynamic table. Changing `transient` from `true` to `false` or vice versa triggers a full table recreation.
 - To make all new dynamic tables transient by default when `transient` is not specified, enable the `snowflake_default_transient_dynamic_tables` flag in your `dbt_project.yml`.
 
 For example:

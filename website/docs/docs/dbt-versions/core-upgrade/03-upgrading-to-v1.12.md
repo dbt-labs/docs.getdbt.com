@@ -46,7 +46,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
-- You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. The [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default behavior when `transient` is not set. Set this flag to `True` to create dynamic tables as transient when `transient` is not explicitly configured on the model.
+- You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. The [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default behavior when `transient` is not set. Set this flag to `True` to create dynamic tables as transient when `transient` is not configured on the model.
 
 ### BigQuery
 
