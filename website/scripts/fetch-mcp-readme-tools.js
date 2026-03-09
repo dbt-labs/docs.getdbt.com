@@ -68,8 +68,13 @@ ${toolsSection}
     fs.writeFileSync(OUT_PATH, content, 'utf8');
     console.log('Wrote', OUT_PATH);
   } catch (err) {
-    console.error('fetch-mcp-readme-tools.js failed:', err.message);
-    process.exit(1);
+    console.warn('fetch-mcp-readme-tools.js warning:', err.message);
+    if (fs.existsSync(OUT_PATH)) {
+      console.warn('Using previously committed snippet as fallback.');
+    } else {
+      console.error('No fallback snippet found — build will likely fail.');
+      process.exit(1);
+    }
   }
 }
 
