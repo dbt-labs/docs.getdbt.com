@@ -1,13 +1,11 @@
 ---
-title: "New concepts in the dbt Fusion engine"
+title: "A new concept: static analysis"
 id: "new-concepts"
-sidebar_label: "New concepts"
+sidebar_label: "New concept: static analysis"
 description: "New concepts and configurations you will encounter when you install the dbt Fusion engine."
 pagination_next: null
 pagination_prev: null
 ---
-
-# New concepts
 
 <VersionBlock lastVersion="1.99">
 
@@ -23,7 +21,7 @@ The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/bl
 
 It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
-The dbt Fusion engine can also render Jinja, but then it completes a second phase: producing and validating with _static analysis_ a logical plan for every rendered query in the project. This static analysis step is the cornerstone of Fusion's new capabilities.
+The dbt Fusion engine can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of Fusion's new capabilities.
 
 </IntroText>
 
@@ -35,7 +33,11 @@ The dbt Fusion engine can also render Jinja, but then it completes a second phas
 
 ## Principles of static analysis
 
-The concept of [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) is meant to guarantee that if a model compiles without error in development, it will also run without compilation errors when deployed. Introspective queries can break this promise by making it possible to modify the rendered query after a model is committed to source control. 
+The software engineering concept of [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) describes checks that can be done on code before it runs (static == not running).
+
+The most rigorous static analysis means you can trust that if the analysis succeeds, the code will run in production without compilation errors.
+
+Less strict static analysis also surfaces helpful information to developers as they work. There's no free lunch&mdash;what you gain in responsiveness you lose in correctness guarantees.
 
 The <Constant name="fusion_engine" /> uses the [`static_analysis`](/reference/resource-configs/static-analysis) config to help you control how it performs static analysis for your models.
 
@@ -53,11 +55,70 @@ The philosophy behind the above-mentioned tools and <Constant name="fusion" />'s
 
 Use this style of gradual typing to start with lightweight validation, then incrementally adopt strict guarantees as your project is ready.
 
-#### Introspection handling in baseline mode
+#### What baseline mode changes
 
-In baseline mode, static analysis errors are automatically downgraded to warnings if introspection is detected on the node. This prevents failures in common scenarios where an introspective query cannot reach the database or returns no results.
+Baseline mode introduces several fundamental behavior changes compared to the previous binary (off/on) approach:
 
-In these cases, the macro may render invalid SQL. Instead of failing the run, baseline mode surfaces a warning so your project can continue executing.
+- **No downloading of remote schemas** &mdash; Baseline mode does not fetch schemas from the warehouse.
+- **Unit tests work without strict mode** &mdash; Previously, unit tests required static analysis to be fully on. In baseline mode, they work out of the box.
+- **No unsafe introspection warnings** &mdash; We no longer warn about unsafe introspection, though we'd still love to help you assess it in the future.
+
+The following table shows how baseline mode expands what's available without requiring strict mode.
+
+### LSP feature comparison
+
+Baseline mode unlocks a meaningful set of features without requiring strict mode. We're also investing in moving more features into baseline over time.
+
+VS Code extension features by static analysis configuration:
+
+✅ = Available | ❌ = Not available
+
+| Feature | off | baseline | strict |
+|---------|:-------:|:--------:|:----------:|
+| Go-to-definition | ✅* | ✅ | ✅ |
+| Table lineage | ✅ | ✅ | ✅ |
+| YAML validation | ✅ | ✅ | ✅ |
+| Render + preview SQL | ✅ | ✅ | ✅ |
+| Unit tests | ✅ | ✅ | ✅ |
+| Detect syntax errors | ❌ | ✅ | ✅ |
+| Preview CTE results | ❌ | ✅ | ✅ |
+| Automatic refactor column names | ❌ | ❌** | ✅ |
+| Column lineage (local) | ❌ | ❌** | ✅ |
+| Detect data type and function signature errors | ❌ | ❌ | ✅ |
+
+_*Column-level go-to-definition requires baseline; macros, refs, and docs work without it._
+
+| Feature | off | baseline | strict |
+|---------|-----|----------|--------|
+| Go-to-definition/reference (except columns) | ✅ | ✅ | ✅ |
+| Table lineage | ✅ | ✅ | ✅ |
+| YAML validation | ✅ | ✅ | ✅ |
+| Render + preview SQL | ✅ | ✅ | ✅ |
+| Unit tests | ✅ | ✅ | ✅ |
+| Detect syntax errors | ❌ | ✅ | ✅ |
+| Preview CTE results | ❌ | ✅ | ✅ |
+| Go-to-definition/reference (columns) | ❌ | ❌ | ✅ |
+| Automatic refactor column names | ❌ | ❌ | ✅ |
+| Rich column lineage | ❌ | ❌ | ✅ |
+| Detect data type and function signature errors | ❌ | ❌ | ✅ |
+
+:::tip CodeLens visibility
+The VS Code extension and Studio IDE provide CodeLens even when static analysis is off, giving you visibility into which models have static analysis disabled and why.
+:::
+
+Ultimately, we want everyone developing in strict mode for maximum guarantees. We acknowledge this isn't a change that can happen overnight &mdash; baseline exists to smooth the transition. Many planned features (like local compute) require strict mode. We're also exploring inferring column types on your behalf, which would enable more functionality in baseline mode without requiring you to manually provide type information.
+
+### Introspection handling in baseline mode
+
+In `baseline` mode, all static analysis findings are warnings, not errors &mdash; your project can continue running even when the compiler flags invalid or problematic SQL. This section is a good example of why that design exists.
+
+Previously, with `strict` mode, the system assumed local schemas of your compiled models would be available. In `baseline` mode, we can no longer assume the full local schema is available and complete, so `baseline` uses the remote database as the source of truth &mdash; similar to <Constant name="core"/>.
+
+The practical result is that the <Constant name="fusion" /> compiler may sometimes flag incorrect queries that result from introspective queries that come back empty. If you encounter this, you can:
+
+1. Ignore the warning
+2. Build the model locally
+3. (Coming soon) Use `warn_error_options` to disable the warning
 
 For example, consider this query using the `dbt_utils.unpivot` macro:
 
@@ -83,7 +144,7 @@ select * from (
 )
 ```
 
-This is invalid SQL and would normally produce a static analysis error. However, in baseline mode, the error is downgraded to a warning:
+This is invalid SQL. In `baseline` mode, <Constant name="fusion" /> displays a warning so your project can continue running while still alerting you to the issue:
 
 ```bash
 dbt0101: no viable alternative at input '(
@@ -92,8 +153,6 @@ dbt0101: no viable alternative at input '(
   --> models/example_model.sql:17:1
 ```
 
-This behavior allows your project to continue running while still alerting you to potential issues with introspective queries.
-
 #### Migration scenarios
 
 Migrating to <Constant name="fusion" /> can involve more than moving YAML around. Some scenarios that can make migration more involved include:
@@ -101,7 +160,7 @@ Migrating to <Constant name="fusion" /> can involve more than moving YAML around
 1. **Limited access to sources**: You don't have access to all the sources and models of a large dbt project.
 2. **Intricate Jinja workflows**: Your project uses post-hooks and introspection extensively.
 3. **Package compatibility**: Your project depends on packages that aren't yet <Constant name="fusion" />-compatible.
-4. **Unsupported SQL features**: Your models or sources use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by the <Constant name="fusion_engine" /> .
+4. **Unsupported SQL features**: Your models or sources use advanced data types (`STRUCT`, `ARRAY`, `GEOGRAPHY`) or built-in functions (`AI.PREDICT`, `JSON_FLATTEN`, `st_pointfromgeohash`) not yet supported by the <Constant name="fusion_engine" />.
 
 Setting `static_analysis` to `baseline` mode lets you start using <Constant name="fusion" /> immediately while you address these scenarios incrementally. As you resolve compatibility issues, you can opt specific models or your entire project into `strict` mode for maximum validation guarantees.
 
