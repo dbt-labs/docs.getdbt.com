@@ -19,11 +19,11 @@ exports.versions = [
     customDisplay: "dbt Fusion engine (Latest)",
     isPrerelease: true,
   },
-  {
+    {
     version: "1.12",
     customDisplay: "dbt platform (Latest Core)",
   },
- {
+  {
     version: "1.11",
     customDisplay: "Core v1.11",
     EOLDate: "2026-12-18",

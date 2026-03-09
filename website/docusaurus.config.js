@@ -548,7 +548,7 @@ var siteSettings = {
 if (versions) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
-    position: "right",
+    position: "left",
     className: "nav-versioning",
     items: [
       ...versions.reduce((acc, version) => {
