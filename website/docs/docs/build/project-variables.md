@@ -22,7 +22,7 @@ Variables defined in the `dbt_project.yml` act as project-wide defaults. These d
 
 You can define variables in three ways:
 
-1. In the `vars.yml` file (recommended for projects with multiple variables)
+1. In the `vars.yml` file (recommended for projects with several variables or for projects with variables you need to reference from `dbt_project.yml`)
 2. In the `dbt_project.yml` file
 3. On the command line
 
