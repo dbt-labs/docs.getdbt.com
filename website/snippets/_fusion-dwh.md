@@ -2,7 +2,7 @@
     - Service Account / User Token
     - Native OAuth
     - External OAuth
-    - [Required permissions](/docs/core/connect-data-platform/bigquery-setup#required-permissions)
+    - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
   <Expandable alt_header="Databricks">

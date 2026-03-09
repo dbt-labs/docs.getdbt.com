@@ -5,11 +5,12 @@ level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
 tags: ['Platform', 'Quickstart', 'Databricks']
+product_badge: "Fusion compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-## Introduction
+## Introduction 
 
 In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Databricks. It will show you how to: 
 
