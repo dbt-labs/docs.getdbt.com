@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 
 /**
  * ProductCard - A pill-sized rectangular component with an animated iridescent gradient border.
@@ -9,7 +10,7 @@ import styles from './styles.module.css';
  * @param {string} colorFrom - Start color for the gradient (default: '#ffaa40')
  * @param {string} colorTo - End color for the gradient (default: '#9c40ff')
  * @param {number} duration - Animation duration in seconds (default: 3)
- * @param {string} url - Optional URL to link to
+ * @param {string} url - Optional URL to link to (relative paths open in same window, external URLs open in new tab)
  * @param {string} className - Additional CSS classes
  */
 function ProductCard({
@@ -39,16 +40,32 @@ function ProductCard({
   );
 
   if (url) {
+    // Check if URL is external (starts with http:// or https://)
+    const isExternal = /^https?:\/\//.test(url);
+
+    if (isExternal) {
+      return (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.productCardLink}
+          title={text}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    // Internal link - use Docusaurus Link for client-side routing
     return (
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        to={url}
         className={styles.productCardLink}
         title={text}
       >
         {content}
-      </a>
+      </Link>
     );
   }
 

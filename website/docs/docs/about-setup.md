@@ -1,8 +1,8 @@
 ---
-title: About dbt setup
+title: dbt setup and installation
 id: about-setup
-description: "About setup of dbt locally and on the dbt platform"
-sidebar_label: "About dbt setup"
+description: "About setup and installation of dbt locally and on the dbt platform"
+sidebar_label: "dbt setup and installation"
 pagination_next: "docs/environments-in-dbt"
 pagination_prev: null
 ---
@@ -28,7 +28,7 @@ To begin configuring dbt now, select the option that is right for you.
 <Card
     title="dbt local setup"
     body="Learn how to set up dbt locally using the dbt VS Code extension or CLI."
-    link="/docs/about-dbt-install"
+    link="/docs/local/install-dbt"
     icon="dbt-bit"/>
 
 </div>
