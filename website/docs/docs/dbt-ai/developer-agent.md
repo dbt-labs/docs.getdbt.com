@@ -16,10 +16,6 @@ The <Constant name="dev_agent" /> is an AI assistant built into the <Constant na
 
 Move faster by generating or refactoring models, tests, and documentation from natural language prompts, while keeping every change auditable and aligned with your dbt project.
 
-:::tip dbt agent skills
-The <Constant name="dev_agent" /> natively supports [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions and scripts that help AI agents understand and execute dbt workflows more effectively. Skills cover analytics engineering, semantic layer, platform operations, and migration use cases.
-:::
-
 The <Constant name="dev_agent" /> supports the following use cases:
 
 - **Generate semantic models, tests, and docs** &mdash; Scaffold YAML definitions from existing models and save time on manual setup.
