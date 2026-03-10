@@ -5,6 +5,10 @@ description: "Snowflake Configurations - Read this in-depth guide to learn about
 tags: ['Snowflake', 'dbt Fusion', 'dbt Core']
 ---
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 ## Iceberg table format
 
 Our Snowflake Iceberg table content has moved to a [new page](/docs/mesh/iceberg/snowflake-iceberg-support)!
