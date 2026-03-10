@@ -1,7 +1,7 @@
 ---
-title: "Run dbt locally"
-sidebar_label: "Run dbt locally"
-description: "Set up dbt MCP with local dbt CLI commands — no dbt platform account required."
+title: "Run dbt MCP locally"
+sidebar_label: "Run dbt MCP locally"
+description: "Set up dbt MCP with local dbt CLI commands"
 id: "mcp-quickstart-cli"
 ---
 
