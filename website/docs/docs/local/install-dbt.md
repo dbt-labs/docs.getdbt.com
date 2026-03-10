@@ -86,7 +86,9 @@ dbtf system uninstall
 
 ## Adapter installation
 
-The Fusion install automatically includes adapters outlined in the [Fusion requirements](/docs/fusion/supported-features#requirements). Other adapters will be available at a later date.
+Database drivers used by adapters are **not** bundled in the <Constant name="fusion" /> binary. Instead, <Constant name="fusion" /> automatically downloads the correct [ADBC](https://arrow.apache.org/adbc/) driver for your data platform the first time you run a dbt command (such as `dbt run`, `dbt debug`, or `dbt compile`). <Constant name="fusion" /> detects which driver you need based on your `profiles.yml` configuration and downloads it from the dbt Labs CDN at the time of first connection.
+
+For supported adapters, refer to [Fusion requirements](/docs/fusion/supported-features#requirements). For details on network access requirements (including restricted network environments), refer to [Networking requirements](/docs/fusion/fusion-networking).
 
 ## Environment variables
 
