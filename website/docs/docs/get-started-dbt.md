@@ -6,19 +6,19 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up [<Constant name="cloud" />](#the-dbt-platform) or [<Constant name="core" />](#dbt-local-installations) with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
+Begin your dbt journey by choosing how you want to develop:
 
-## The dbt platform (formerly dbt Cloud) {#the-dbt-platform}
+- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="cloud_ide" /> or <Constant name="visual_editor" />) or use local tools (VS Code extension, <Constant name="cloud_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
+- [**Local only**](#dbt-local-installations) &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [Fusion CLI](/docs/local/install-dbt?version=2#get-started), or [<Constant name="core" />](/docs/local/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
+- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="cloud_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="query_page" />, <Constant name="visual_editor" />, and more.
 
-<Constant name="cloud" /> is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
+## The dbt platform
 
-- Development experiences tailored to multiple personas (in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or locally with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)).
-- Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs).
-- The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint.
-- Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups.
-- [<Constant name="explorer" />](/docs/explore/explore-projects) for collaborative data discovery and understanding.
+<Constant name="cloud" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
-Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
+The <Constant name="fusion_engine" /> adds managed execution, [state-aware orchestration](/docs/deploy/state-aware-about), and a unified development experience so you can focus on building rather than infrastructure.
+
+Choose your warehouse to get started with a quickstart:
 
 <div className="grid--3-col">
 
@@ -80,7 +80,11 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
 
 ## dbt local installations
 
-[<Constant name="core" /> and <Constant name="fusion_engine" />](/docs/about-dbt-install) provide command-line tools that enable data practitioners to transform data using analytics engineering best practices. These tools suit individuals and small technical teams who prefer manual setup and customization, support community adapters, and follow open-source standards.
+When you install dbt locally, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
+
+You can use local tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="cloud_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
+
+Develop locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
 <div className="grid--3-col">
 
@@ -96,10 +100,10 @@ Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/d
     icon="dbt-bit"/>
 
 <Card
-    title="Quickstart for dbt Core using DuckDB"
-    body="Learn how to connect to DuckDB."
+    title="Quickstart for dbt with DuckDB"
+    body="Learn how to connect dbt to DuckDB."
     link="/guides/duckdb?step=1"
-    icon="duckdb"/>
+    icon="duckdb-seeklogo"/>
 </div>
 
 ## Related docs

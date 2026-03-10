@@ -11,7 +11,8 @@ The following are the current [behavior change flags](/docs/reference/global-con
 | [`use_info_schema_for_columns`](#use-information-schema-for-columns) | 1.9.0                   | N/A                        | **Removed in 1.11.0** |
 | [`use_user_folder_for_python`](#use-users-folder-for-python-model-notebooks)  | 1.9.0                   | 1.11.0                     | Default changed to `True` |
 | [`use_materialization_v2`](#use-restructured-materializations)      | 1.10.0                  | TBD                        | Active |
-| [`use_replace_on_for_insert_overwrite`](#use-replace-on-for-insert_overwrite-strategy)   | 1.11.0   | 1.11.0                    | Active, defaults to `True` |
+| [`use_managed_iceberg`](#use-managed-iceberg)  | 1.11.0  |  1.12.0                                                     | Active |
+| [`use_replace_on_for_insert_overwrite`](#use-replace-on-for-insert_overwrite-strategy)   | 1.11.0   | 1.12.0                    | Active, defaults to `True` |
 
 ## Use information schema for columns
 
@@ -202,10 +203,13 @@ models:
 
 </File>
 
+## Use managed Iceberg
+
+When you set `table_format` to `iceberg`, the `use_managed_iceberg` flag controls how the table is created. By default, this flag is set to `False` and dbt creates a [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability) table. When set to `True`, dbt creates a [managed Iceberg](https://docs.databricks.com/aws/en/tables/managed) table.
 
 ## Use `replace on` for `insert_overwrite` strategy
 
-The `use_replace_on_for_insert_overwrite` flag controls which SQL syntax dbt generates for incremental models using the `insert_overwrite` strategy. This flag defaults to `True`.
+The `use_replace_on_for_insert_overwrite` flag controls which SQL syntax dbt generates for incremental models using the `insert_overwrite` strategy. This flag defaults to `True` by default and results in using the [`insert into ... replace on`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) syntax to perform dynamic partition/cluster overwrites, which is the same behavior as in cluster computes. When the flag is set to `False`, `insert_overwrite` will truncate the entire table when used with SQL warehouses. The flag is not relevant for cluster computes because the `insert_overwrite`'s behavior has always been dynamic partition/cluster overwrites in cluster computes.
 
 <SimpleTable>
 
@@ -215,11 +219,5 @@ The `use_replace_on_for_insert_overwrite` flag controls which SQL syntax dbt gen
 | `False` | `INSERT OVERWRITE` | Uses the older Spark syntax to overwrite partitions. Depends on Spark session settings.|  <br />
 </SimpleTable>
 
-When disabled on SQL warehouses, `insert_overwrite` truncates and replaces the entire table (equivalent to the `table` materialization) instead of performing partition-level overwrites. On all-purpose or job clusters, both syntaxes produce the same functional outcome &mdash; the difference is only syntactical.
-
-To disable, set the flag to `False` in your `dbt_project.yml`:
-
-```yaml
-flags:
-  use_replace_on_for_insert_overwrite: false
-```
+If you previously relied on this behavior to get full table replacement without dropping existing metadata, that behavior continues to exist with the flag set to `True`, provided you do not use any partitions or liquid clustering clusters.
+These data layout optimizations only tend to have a significant effect for tables that are approximately 1 TB large or greater, at which point regular replacement of all of the data is probably not the best approach.

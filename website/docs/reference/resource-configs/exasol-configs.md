@@ -200,7 +200,7 @@ For more information on model contracts, refer to the [model contracts documenta
 
 Starting from dbt-exasol 1.2.2, the default timestamp format is `YYYY-MM-DDTHH:MI:SS.FF6`.
 
-You can customize the timestamp format in your [profile configuration](/docs/core/connect-data-platform/exasol-setup):
+You can customize the timestamp format in your [profile configuration](/docs/local/connect-data-platform/exasol-setup):
 
 <File name='profiles.yml'>
 
@@ -275,4 +275,4 @@ If you are interested in supporting materialized test fixtures, we encourage you
 
 ## Connection configuration
 
-For information about connection parameters such as encryption, SSL/TLS validation, OpenID authentication, and other profile settings, refer to the [Exasol setup documentation](/docs/core/connect-data-platform/exasol-setup).
+For information about connection parameters such as encryption, SSL/TLS validation, OpenID authentication, and other profile settings, refer to the [Exasol setup documentation](/docs/local/connect-data-platform/exasol-setup).

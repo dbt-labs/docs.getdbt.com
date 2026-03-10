@@ -70,7 +70,7 @@ This command downloads the LSP and re-activates the extension to resolve the err
 If you see an error message indicating that your version of dbt is unsupported, then there is likely a problem with your environment.
 
 Check the dbt Path setting in your VS Code settings. If this path is set, ensure that it is pointing to a valid dbt Fusion Engine executable.
-If necessary, you can also install the dbt Fusion Engine directly using these instructions: [Install the Fusion CLI](/docs/fusion/install-fusion-cli)
+If necessary, you can also install the dbt Fusion Engine directly using these instructions: [Install the Fusion CLI](/docs/local/install-dbt?version=2#get-started)
 </Expandable>
 
 <Expandable alt_header="Addressing the 'dbt language server is not running in this workspace' error">
@@ -83,4 +83,17 @@ To resolve the `dbt language server is not running in this workspace` error, you
 4. Navigate to the location you want to save your workspace.
 
 This should resolve the error and open your dbt project by opening the workspace it belongs to. For more information on workspaces, refer to [What is a VS Code workspace?](https://code.visualstudio.com/docs/editing/workspaces/workspaces).
+</Expandable>
+
+<Expandable alt_header="Manifest cannot be downloaded from the dbt platform">
+
+If the dbt VS Code extension cannot download the manifest from the <Constant name="dbt_platform" /> or you get `warning: dbt1200: Failed to download manifest` using <Constant name="fusion" /> locally, you are probably having DNS-related issues.
+
+To confirm this, do a DNS lookup for the host <Constant name="fusion" /> is trying to download from (for example, prodeu2.blob.core.windows.net) by using `dig` on Linux/Mac or `nslookup` on Windows.
+
+If this doesn't return an IP address, the likely reason is that your company uses the same cloud provider with private endpoints for cloud resources, and DNS requests for these are forwarded to private DNS zones.
+
+This situation can be remedied by setting up an internet fallback, which will then return a public IP to any cloud storage that does not have a private IP registered with the private DNS zone.
+
+For Azure refer to [Fallback to internet for Azure Private DNS zones](https://learn.microsoft.com/en-us/azure/dns/private-dns-fallback).
 </Expandable>
