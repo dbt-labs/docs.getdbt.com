@@ -15,11 +15,11 @@ import MCPFaqToolsetDisabled from '/snippets/_mcp-faq-toolset-disabled.md';
 import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
 import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
 
-This quickstart connects dbt MCP to your dbt platform account. Choose **OAuth** (fastest — no tokens to manage) or **Tokens** (more control, better for shared setups).
+This quickstart connects dbt MCP to your <Constant name="dbt_platform"/> account. Choose **OAuth** (fastest — no tokens to manage) or **Tokens** (more control, better for shared setups).
 
 ## Prerequisites
 
-- A [dbt platform account](https://www.getdbt.com/signup)
+- A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) (not required for Claude Desktop)
 
 ## Step 1: Choose your auth method and configure
@@ -34,7 +34,7 @@ OAuth is the fastest setup — no tokens to copy or manage. A browser window ope
 
 #### Find your Access URL
 
-1. Log in to your dbt platform account.
+1. Log in to your <Constant name="dbt_platform"/> account.
 2. Go to **Account settings** and copy your **Access URL** (for example, `abc123.us1.dbt.com`).
 
 :::warning Use the hostname only, not a full URL
@@ -49,6 +49,14 @@ DBT_HOST=https://abc123.us1.dbt.com
 ```
 :::
 
+:::tip Multi-cell accounts
+If your Access URL is `abc123.us1.dbt.com`, split it into two variables:
+- `DBT_HOST=us1.dbt.com`
+- `MULTICELL_ACCOUNT_PREFIX=abc123`
+
+Don't include the account prefix in `DBT_HOST`. For more details, see [multi-cell configuration examples](/docs/dbt-ai/setup-local-mcp#api-and-sql-tool-settings).
+:::
+
 #### Add the config to your MCP client
 
 <Tabs>
@@ -59,7 +67,7 @@ DBT_HOST=https://abc123.us1.dbt.com
 
 1. Go to the [latest dbt MCP release](https://github.com/dbt-labs/dbt-mcp/releases/latest) and download `dbt-mcp.mcpb`.
 2. Double-click the file to open it in Claude Desktop.
-3. Enter your **Access URL** as the dbt Platform Host.
+3. Enter your **Access URL** as the <Constant name="dbt_platform"/> Host.
 4. Enable the server.
 
 **Option B: Manual config**
@@ -113,8 +121,8 @@ claude mcp add dbt \
 
 Click a link below with Cursor open to auto-configure, then replace the placeholder with your Access URL:
 
-- [dbt platform only (OAuth)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJZT1VSLUFDQ0VTUy1VUkwiLCJESVNBQkxFX0RCVF9DTEkiOiJ0cnVlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D) — platform features only, no CLI
-- [dbt platform + CLI (OAuth)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJZT1VSLUFDQ0VTUy1VUkwiLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D) — platform features + local CLI commands
+- [<Constant name="dbt_platform"/> only (OAuth)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJZT1VSLUFDQ0VTUy1VUkwiLCJESVNBQkxFX0RCVF9DTEkiOiJ0cnVlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D) — platform features only, no CLI
+- [<Constant name="dbt_platform"/> + CLI (OAuth)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJZT1VSLUFDQ0VTUy1VUkwiLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D) — platform features + local CLI commands
 
 After clicking, replace `YOUR-ACCESS-URL` with your actual Access URL (for example, `abc123.us1.dbt.com`) and save.
 
@@ -181,7 +189,7 @@ You need the following values. See [Finding your IDs](/docs/dbt-ai/mcp-find-ids)
 
 | Variable | Where to find it |
 | --- | --- |
-| `DBT_HOST` | Your dbt platform hostname, found in **Account settings** → **Access URL** |
+| `DBT_HOST` | Your <Constant name="dbt_platform"/> hostname, found in **Account settings** → **Access URL** |
 | `DBT_TOKEN` | A service token or PAT from **Account settings** → **API tokens** |
 | `DBT_PROD_ENV_ID` | Your production environment ID, found in **Deploy** → **Environments** |
 | `DBT_DEV_ENV_ID` | Your development environment ID (required for `execute_sql`) |
@@ -206,7 +214,11 @@ DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 :::
 
 :::tip Multi-cell accounts
-If you have a multi-cell account, see the [multi-cell configuration examples](/docs/dbt-ai/setup-local-mcp#api-and-sql-tool-settings) for how to set `DBT_HOST` and `MULTICELL_ACCOUNT_PREFIX`.
+If your Access URL is `abc123.us1.dbt.com`, split it into two variables:
+- `DBT_HOST=us1.dbt.com`
+- `MULTICELL_ACCOUNT_PREFIX=abc123`
+
+Don't include the account prefix in `DBT_HOST`. For more details, see [multi-cell configuration examples](/docs/dbt-ai/setup-local-mcp#api-and-sql-tool-settings).
 :::
 
 ### Add the config to your MCP client

@@ -19,7 +19,7 @@ Claude is an AI assistant from Anthropic with two primary interfaces:
 To configure Claude Desktop to use the dbt MCP server:
 1. Go to the [latest dbt MCP release](https://github.com/dbt-labs/dbt-mcp/releases/latest) and download the `dbt-mcp.mcpb` file.
 2. Double-click the downloaded file to open it in Claude Desktop.
-3. Configure the **dbt Platform Host**. You can find this in your <Constant name="dbt_platform" /> account by navigating to **Account settings** and copying the **Access URL**. 
+3. Configure the **<Constant name="dbt_platform"/> Host**. You can find this in your <Constant name="dbt_platform" /> account by navigating to **Account settings** and copying the **Access URL**. 
 4. Enable the server in Claude Desktop.
 5. Ask Claude a data-related question and see dbt MCP in action!
 
@@ -37,7 +37,7 @@ To add advanced configurations:
 
     <Expandable alt_header="Local MCP with OAuth">
 
-    #### Local MCP with dbt platform authentication <Lifecycle status="managed, managed_plus" />
+    #### Local MCP with <Constant name="dbt_platform"/> authentication <Lifecycle status="managed, managed_plus" />
 
     Configuration for users who want seamless OAuth authentication with the <Constant name="dbt_platform" />
 

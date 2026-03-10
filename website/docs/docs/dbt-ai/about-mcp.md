@@ -26,11 +26,11 @@ To get started, choose the quick start that matches your setup:
 <SimpleTable>
 | I want to... | Quickstart |
 | --- | --- |
-| Connect to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL) | [Connect to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth) |
+| Connect to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL) | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |
 | Use dbt CLI commands locally (no platform account needed) | [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |
 </SimpleTable>
 
-Not sure which to pick? Start with [Connect to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth) — it covers both OAuth and token-based auth, with an option to add CLI commands.
+Not sure which to pick? Start with [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) — it covers both OAuth and token-based auth, with an option to add CLI commands.
 
 Looking for a zero-install option? The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects via HTTP with no local installation required.
 

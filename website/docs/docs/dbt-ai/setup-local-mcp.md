@@ -58,7 +58,7 @@ The `execute_sql` tool does _not_ work with service tokens. You must use a [Pers
 
 Choose the setup method that best fits your workflow:
 
-### OAuth authentication with dbt platform <Lifecycle status="managed, managed_plus" />
+### OAuth authentication with <Constant name="dbt_platform"/> <Lifecycle status="managed, managed_plus" />
 
 This method uses OAuth to authenticate with your <Constant name="dbt_platform" /> account. It's the simplest setup and doesn't require managing tokens or environment variables manually.
 
@@ -68,13 +68,13 @@ This method uses OAuth to authenticate with your <Constant name="dbt_platform" /
 
 <MCPExample />
 
-Once configured, your session connects to the dbt platform account, starts the OAuth authentication workflow, and then opens your account where you can select the project you want to reference.
+Once configured, your session connects to the <Constant name="dbt_platform"/> account, starts the OAuth authentication workflow, and then opens your account where you can select the project you want to reference.
 
 <Lightbox src="/img/mcp/select-project.png" width="60%" title="Select your dbt platform project"/>
 
 After completing OAuth setup, skip to [Test your configuration](#optional-test-your-configuration).
 
-### CLI only (no dbt platform)
+### CLI only (no dbt platform) { #cli-only }
 
 This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.
 

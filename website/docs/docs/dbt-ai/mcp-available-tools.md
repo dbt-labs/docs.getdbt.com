@@ -87,7 +87,7 @@ To learn more about the dbt Administrative API, click [here](/docs/dbt-cloud-api
 ## SQL
 
 - `text_to_sql`: Generate SQL from natural language requests
-- `execute_sql`: Execute SQL on the dbt platform's backend infrastructure with support for Semantic Layer SQL syntax. **Requires a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) — service tokens do not work for this tool.**
+- `execute_sql`: Execute SQL on the <Constant name="dbt_platform"/>'s backend infrastructure with support for Semantic Layer SQL syntax. **Requires a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) — service tokens do not work for this tool.**
 
 ## Codegen tools
 

@@ -37,7 +37,7 @@ The `execute_sql` tool does **not** work with service tokens. You must use a [Pe
 ## Setup instructions
 
 1. Ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
-2. Obtain the following information from dbt platform:
+2. Obtain the following information from <Constant name="dbt_platform"/>:
 
   - **<Constant name="dbt_platform"/> host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
   - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
@@ -65,7 +65,7 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
 
   | Header | Required | Description |
   | --- | --- | --- |
-  | x-dbt-dev-environment-id | Required| Your dbt platform development environment ID |
+  | x-dbt-dev-environment-id | Required| Your <Constant name="dbt_platform"/> development environment ID |
   | x-dbt-user-id | Required | Your <Constant name="dbt_platform"/> user ID ([see docs](/faqs/Accounts/find-user-id)) |
   | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, <Constant name="fusion"/> tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
 
