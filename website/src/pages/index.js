@@ -127,7 +127,7 @@ function Home() {
                   title="Move to the dbt platform"
                   tag="Guide"
                   body="Migrate from dbt Core to the powerful, lightning fast dbt platform today!"
-                  link="/guides/core-to-cloud-1?step=1"
+                  link="/guides/core-migration-1?step=1"
                   icon="tool"
                 />
               </div>
