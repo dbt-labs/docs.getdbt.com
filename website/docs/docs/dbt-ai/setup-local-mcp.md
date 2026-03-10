@@ -7,6 +7,8 @@ id: "setup-local-mcp"
 
 import MCPExample from '/snippets/_mcp-config-files.md';
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
+import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
+import MCPFaqOauth from '/snippets/_mcp-faq-oauth.md';
 
 [The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="cloud_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
@@ -74,7 +76,7 @@ Once configured, your session connects to the <Constant name="dbt_platform"/> ac
 
 After completing OAuth setup, skip to [Test your configuration](#optional-test-your-configuration).
 
-### CLI only (no dbt platform) { #cli-only }
+### CLI only (no dbt platform) {#cli-only}
 
 This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.
 
@@ -444,31 +446,16 @@ To see more detail about what’s happening inside the MCP server and help debug
 
 ## Troubleshooting
 
-#### Can't find `uvx` executable
+<Expandable alt_header="Can't find the uvx executable">
 
-Some MCP clients may be unable to find `uvx` from the JSON config. This will result in error messages like `Could not connect to MCP server dbt-mcp`, `Error: spawn uvx ENOENT`, or similar.
+<MCPFaqUvx />
 
-**Solution:** Locate the full path to `uvx` and use it in your configuration:
+</Expandable>
 
-- **macOS/Linux:** Run `which uvx` in your Terminal.
-- **Windows:** Run `where uvx` in CMD or PowerShell.
+<Expandable alt_header="OAuth login not initiating">
 
-Then update your JSON configuration to use the full path:
-```json
-{
-  "mcpServers": {
-    "dbt": {
-      "command": "/full/path/to/uvx", # For example, on macOS with Homebrew: "command": "/opt/homebrew/bin/uvx"
-      "args": ["dbt-mcp"],
-      "env": { ... }
-    }
-  }
-}
-```
+<MCPFaqOauth />
 
-### Oauth login not initiating
+</Expandable>
 
-dbt MCP uses a lock file to avoid repeated authentication. In some cases, this can block authentication entirely. If this happens, close your client (for example, Cursor or Claude) and delete the local dbt MCP config files to reset the auth flow.
-
-- On macOS and Linux, run: `rm -f ~/.dbt/mcp.yml ~/.dbt/mcp.lock`
-- On [Windows](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/remove-item?view=powershell-7.5), run: `Remove-Item -Force $env:USERPROFILE\.dbt\mcp.yml, $env:USERPROFILE\.dbt\mcp.lock`
+For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).

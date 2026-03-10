@@ -18,15 +18,15 @@ These variables are required to use dbt CLI commands through MCP.
 | `DBT_PROFILES_DIR` | Optional | Path to a custom `profiles.yml` directory. Defaults to `~/.dbt/`. |
 | `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt CLI commands time out. Defaults to `60`. |
 
-## dbt Platform
+## dbt platform
 
-These variables are required for dbt platform features (Semantic Layer, Discovery API, Admin API, SQL execution).
+These variables are required for <Constant name="dbt_platform"/> features (Semantic Layer, Discovery API, Admin API, SQL execution).
 
 | Variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your dbt platform hostname — no `https://`. Default: `cloud.getdbt.com`. For multi-cell accounts, use the base hostname and set `MULTICELL_ACCOUNT_PREFIX` separately. |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses) (without `https://`). Default: `cloud.getdbt.com`. <br /> <br />For multi-cell accounts, use the base hostname (for example, `us1.dbt.com`) and set `MULTICELL_ACCOUNT_PREFIX` separately (for example, `abc123`). |
 | `MULTICELL_ACCOUNT_PREFIX` | Required for multi-cell | Your account prefix (for example, `abc123` from `abc123.us1.dbt.com`). Do not include this in `DBT_HOST`. |
-| `DBT_TOKEN` | Required | A service token or Personal Access Token (PAT). **`execute_sql` requires a PAT** — service tokens do not work for that tool. |
+| `DBT_TOKEN` | Required | A service token or Personal Access Token (PAT). <br /> <br />The `execute_sql` tool requires a PAT — service tokens _do not_ work for that tool. |
 | `DBT_PROD_ENV_ID` | Required | Your production environment ID (numeric integer). |
 | `DBT_DEV_ENV_ID` | Required for `execute_sql` | Your development environment ID (numeric integer). |
 | `DBT_USER_ID` | Required for `execute_sql` | Your numeric user ID. |
@@ -47,7 +47,7 @@ Do not mix both modes for the same toolset.
 
 ### Disable mode (default)
 
-All tools are available by default. Set any of these to `true` to turn off a toolset:
+All tools are available by default. To disable a toolset, set any of the following variables to `true` in your MCP client configuration:
 
 | Variable | Default | Description |
 | --- | --- | --- |
