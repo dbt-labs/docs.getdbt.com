@@ -37,8 +37,8 @@ In <Constant name="cloud" />, you can natively connect to your data platform and
 ### Tips
 - Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with <Constant name="cloud" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
 - <Constant name="cloud" /> supports a whole host of [cloud providers](/docs/cloud/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
-- Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in your <Constant name="cloud" /> environment settings. It gives you more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
-  - For example, if you have a field in your `profiles.yml` that you'd like to add to the <Constant name="cloud" /> adapter user interface, you can use Extended Attributes to set it.
+- Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/local/profiles.yml) snippet in your <Constant name="cloud" /> environment settings. It gives you more control over environments (both deployment and development) and extends how <Constant name="cloud" /> connects to the data platform within a given environment.
+  - For example, if you have a field in your `profiles.yml` that you’d like to add to the <Constant name="cloud" /> adapter user interface, you can use Extended Attributes to set it.
 
 ### Caveats
 - Not all parameters are available for adapters.

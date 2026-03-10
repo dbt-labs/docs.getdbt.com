@@ -55,7 +55,7 @@ packages:
 
 <Constant name="cloud" /> is the easiest and most reliable way to develop and deploy a dbt project. It helps remove complexity while also giving you more features and better performance. A simpler Databricks connection experience with support for Databricks’ Unity Catalog and better modeling defaults is now available for your use.
 
-For all the Databricks customers already using <Constant name="cloud" /> with the dbt-spark adapter, you can now [migrate](/guides/migrate-from-spark-to-databricks) your connection to the [dbt-databricks adapter](/docs/core/connect-data-platform/databricks-setup) to get the benefits. [Databricks](https://www.databricks.com/blog/2022/11/17/introducing-native-high-performance-integration-dbt-cloud.html) is committed to maintaining and improving the adapter, so this integrated experience will continue to provide the best of dbt and Databricks.
+For all the Databricks customers already using <Constant name="cloud" /> with the dbt-spark adapter, you can now [migrate](/guides/migrate-from-spark-to-databricks) your connection to the [dbt-databricks adapter](/docs/local/connect-data-platform/databricks-setup) to get the benefits. [Databricks](https://www.databricks.com/blog/2022/11/17/introducing-native-high-performance-integration-dbt-cloud.html) is committed to maintaining and improving the adapter, so this integrated experience will continue to provide the best of dbt and Databricks.
 
 Check out our [live blog post](https://www.getdbt.com/blog/dbt-cloud-databricks-experience/) to learn more.
 
@@ -137,7 +137,7 @@ Cross-database queries for RA3 instances are now supported by <Constant name="cl
 
 With cross-database queries, you can seamlessly query data from any database in the cluster, regardless of which database you are connected to with dbt. 
 
-The [connection configuration](/docs/core/connect-data-platform/redshift-setup) `ra3_node` has been defaulted to `true`. This allows users to:
+The [connection configuration](/docs/local/connect-data-platform/redshift-setup) `ra3_node` has been defaulted to `true`. This allows users to:
 
 - benefit from the full RA3 nodes’ capabilities, 
 - generate appropriate dbt documentation.
