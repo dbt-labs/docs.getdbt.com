@@ -5,6 +5,8 @@ id: "project-variables"
 pagination_next: "docs/build/environment-variables"
 ---
 
+import VarsYmlBeta from '/snippets/_vars-yml-beta.md';
+
 dbt provides a mechanism called [variables](/reference/dbt-jinja-functions/var) to provide data to models for compilation. Variables allow you to define configurable values for your project instead of hardcoding them in SQL.
 
 <VersionBlock lastVersion="1.11">
@@ -40,9 +42,7 @@ Note, refer to [YAML tips](/docs/build/dbt-tips#yaml-tips) for more YAML informa
 
 ### Defining variables in `vars.yml`<Lifecycle status="beta" />
 
-:::info Beta feature
-The `vars.yml` file is a beta feature in <Constant name="core" /> v1.12.
-:::
+<VarsYmlBeta />
 
 `vars.yml` is a dedicated file for project variables located at the project root. Because dbt parses it _before_ `dbt_project.yml`, variables from `vars.yml` are available when `dbt_project.yml` is evaluated, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. For more information, refer to [Using vars.yml variables in dbt_project.yml](#using-varsyml-variables-in-dbt_projectyml).
 
