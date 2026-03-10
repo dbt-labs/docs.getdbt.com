@@ -48,9 +48,11 @@ Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/d
 
 The Analyst agent is a beta feature. Enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
-#### Developer agent <Lifecycle status="private_beta"/>
+#### Developer agent <Lifecycle status="beta,managed,managed_plus"/>
 
-Describe the data product or change you want directly in <Constant name="dbt_platform" /> &mdash;  the <Constant name="dev_agent" /> writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio)
+Describe the data product or change you want directly in <Constant name="dbt_platform" /> &mdash;  the <Constant name="dev_agent" /> writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+
+The <Constant name="dev_agent" /> natively supports [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions and scripts that help AI agents understand and execute dbt workflows across analytics engineering, semantic layer, platform operations, and migration use cases.
 
 For setup instructions and available use cases, see [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent).
 

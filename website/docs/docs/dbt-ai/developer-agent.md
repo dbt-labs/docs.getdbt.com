@@ -8,7 +8,7 @@ tags: [AI, Agents, Studio]
 
 import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 
-# Developer agent <Lifecycle status="private_beta"/>
+# Developer agent <Lifecycle status="beta,managed,managed_plus"/>
 
 <IntroText>
 The <Constant name="dev_agent" /> is an AI assistant built into the <Constant name="cloud_ide" /> that can write, refactor, and validate dbt models using your project's structured context &mdash; including lineage, metadata, governance, and the Semantic Layer.
@@ -16,12 +16,16 @@ The <Constant name="dev_agent" /> is an AI assistant built into the <Constant na
 
 Move faster by generating or refactoring models, tests, and documentation from natural language prompts, while keeping every change auditable and aligned with your dbt project.
 
+:::tip dbt agent skills
+The <Constant name="dev_agent" /> natively supports [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions and scripts that help AI agents understand and execute dbt workflows more effectively. Skills cover analytics engineering, semantic layer, platform operations, and migration use cases.
+:::
+
 The <Constant name="dev_agent" /> supports the following use cases:
 
 - **Generate semantic models, tests, and docs** &mdash; Scaffold YAML definitions from existing models and save time on manual setup.
 - **Build or modify models** &mdash; Create new or modify existing dbt models from natural language descriptions of the transformation or logic you need.
 - **Light refactors** &mdash; Rename columns, change materializations, or adjust logic. The agent also keeps associated YAML files in sync with any changes it makes.
-- **dbt agent skills** (coming soon) &mdash; Support for [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions and scripts for agents, is coming soon.
+- **dbt agent skills** &mdash; Natively supports [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions and scripts for agents that cover analytics engineering, semantic layer, testing, platform operations, and more.
 
 ## Prerequisites
 
@@ -37,7 +41,6 @@ The <Constant name="dev_agent" /> supports the following use cases:
 - It does not retain conversation context between sessions. If you close or leave the <Constant name="cloud_ide" />, the conversation resets. However, if you saved any file changes the agent already made, those changes will stay in your branch. Unsaved changes are lost.
 - Currently, plan mode isn't supported. The <Constant name="dev_agent" /> applies changes directly without showing a plan first. Use **Ask** mode if you want to confirm each edit before it is applied.
 - You cannot edit a prompt after submitting it. To refine your request, use **Start over** to reset the session and submit a new prompt.
-- Custom skill support isn't yet available.
 
 ## Use the Developer agent
 
