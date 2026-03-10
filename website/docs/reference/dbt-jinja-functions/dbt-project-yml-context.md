@@ -11,7 +11,7 @@ and `snapshots:` keys in the `dbt_project.yml` file.
 
 **Available context methods:**
 - [env_var](/reference/dbt-jinja-functions/env_var)
-- [var](/reference/dbt-jinja-functions/var) (_Note: only variables defined with `--vars` are available_)
+- [var](/reference/dbt-jinja-functions/var) <VersionBlock lastVersion="1.11">(_Note: Only variables defined with `--vars` are available_)</VersionBlock><VersionBlock firstVersion="1.12">(_Note: Variables defined in `vars.yml` or with `--vars` are available_)</VersionBlock>
 
 **Available context variables:**
 - [target](/reference/dbt-jinja-functions/target)
