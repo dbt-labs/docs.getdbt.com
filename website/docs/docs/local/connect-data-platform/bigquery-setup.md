@@ -341,7 +341,7 @@ Some queries inevitably fail, at different points in process. To handle these ca
 
 In older versions of `dbt-bigquery`, this same config was called `timeout_seconds`.
 
-Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete, after being submitted successfully. Of the four configurations that control timeout and retries, this one is the most common to use.
+Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete after successfully submitting them. Of the four configurations that control timeout and retries, this one is the most common to use.
 
 <VersionBlock lastVersion="1.11">
 
@@ -366,7 +366,7 @@ my-profile:
 
 <VersionBlock firstVersion="1.12">
 
-You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs. To override this, you can set the config per model, snapshot, seed, or test. The per-resource value overrides the default value set in the profile level.
+You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs. To override this default value, you can set the config individually per model, snapshot, seed, or test.
 
 - Profile-level configuration:
 
@@ -457,7 +457,7 @@ No timeout is set by default. For historical reasons, some query types use a def
 :::caution Note
 
 The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. 
-Normally, BigQuery keeps running the job even if this timeout is reached, however `dbt-bigquery` will send a request to BigQuery to cancel it.
+Normally, BigQuery keeps running the job even if this timeout is reached; however, `dbt-bigquery` will send a request to BigQuery to cancel it.
 
 :::
 
