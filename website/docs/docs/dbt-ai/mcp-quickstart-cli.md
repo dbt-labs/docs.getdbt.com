@@ -1,6 +1,6 @@
 ---
 title: "Local CLI setup"
-sidebar_label: "Local CLI setup"
+sidebar_label: "Local MCP quickstart"
 description: "Set up dbt MCP with local dbt CLI commands — no dbt platform account required."
 id: "mcp-quickstart-cli"
 ---

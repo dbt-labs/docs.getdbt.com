@@ -8,7 +8,7 @@ id: "mcp-quickstart-oauth"
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 import MCPExample from '/snippets/_mcp-config-files.md';
 
-This quick start walks you through connecting dbt MCP to your dbt platform account using OAuth. OAuth is the fastest first-time setup — no tokens to copy or manage.
+This quickstart walks you through connecting dbt MCP to your dbt platform account using OAuth. OAuth is the fastest first-time setup — no tokens to copy or manage.
 
 **Time to complete:** ~5 minutes
 
