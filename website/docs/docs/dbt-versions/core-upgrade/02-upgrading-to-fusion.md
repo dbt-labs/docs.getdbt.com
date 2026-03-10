@@ -57,7 +57,7 @@ In dbt Core v1, when printing the result of `get_relation()`, the parse time out
 
 In Fusion, to help with intelligent batching of `get_relation()` calls (and significantly speed up `dbt compile`), dbt needs to construct a relation object with the fully qualified name resolved at parse time for the `get_relation()` adapter call.
 
-Constructing a relation object with the fully qualified name in Fusion produces different behavior than dbt Core v1 in `print()`, `log()`, or any Jinja macro that outputs to `stdout` or `stderr` at parse time. 
+Constructing a relation object with the fully qualified name in Fusion produces different behavior than dbt Core in `print()`, `log()`, or any Jinja macro that outputs to `stdout` or `stderr` at parse time. 
 
 Example:
 
@@ -105,7 +105,7 @@ See the [Changes overview](/reference/changes-overview) for a full comparison.
 
 :::
 
-Some historic CLI flags in dbt Core v1 will no longer do anything in Fusion. If you pass them into a dbt command using Fusion, the command will not error, but the flag will do nothing (and warn accordingly).
+Some historic CLI flags in dbt Core will no longer do anything in Fusion. If you pass them into a dbt command using Fusion, the command will not error, but the flag will do nothing (and warn accordingly).
 
 One exception to this rule: The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise an error** in Fusion. Please update your job definitions accordingly.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Move from dbt Core to the dbt platform: Optimization tips'
-id: core-to-cloud-3
+id: core-migration-3
 description: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
 hoverSnippet: "Use this guide to learn how to optimize your dbt experience and get answers to common questions."
 icon: 'guides'
@@ -12,27 +12,27 @@ level: 'Intermediate'
 
 ## Introduction
 
-Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
+Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. It's not just better tooling &mdash; it's about lowering total cost of ownership, powering AI with trusted data, and scaling with governed self-service.
 
 Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
-import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
+import CoreMigrationTable from '/snippets/_core-migration-table.md';
 
-<CoretoCloudTable/>
+<CoreMigrationTable/>
 
 ## What you'll learn
 You may have already started your move to <Constant name="cloud" /> and are looking for tips to help you optimize your <Constant name="cloud" /> experience. This guide includes tips and caveats for the following areas:
 
-- [Adapters and connections](/guides/core-to-cloud-3?step=3) 
-- [Development tools](/guides/core-to-cloud-3?step=4) 
-- [Orchestration](/guides/core-to-cloud-3?step=5)
-- [<Constant name="mesh" />](/guides/core-to-cloud-3?step=6)
-- [<Constant name="semantic_layer" />](/guides/core-to-cloud-3?step=7)
-- [<Constant name="explorer" />](/guides/core-to-cloud-3?step=8)
+- [Adapters and connections](/guides/core-migration-3?step=3) 
+- [Development tools](/guides/core-migration-3?step=4) 
+- [Orchestration](/guides/core-migration-3?step=5)
+- [<Constant name="mesh" />](/guides/core-migration-3?step=6)
+- [<Constant name="semantic_layer" />](/guides/core-migration-3?step=7)
+- [<Constant name="explorer" />](/guides/core-migration-3?step=8)
 
 ## Adapters and connections
 
-In <Constant name="cloud" />, you can natively connect to your data platform and test its [connection](/docs/connect-adapters) with a click of a button. This is especially useful for users who are new to <Constant name="cloud" /> or are looking to streamline their connection setup. Here are some tips and caveats to consider:
+In <Constant name="cloud" />, you can natively connect to your data platform and test its [connection](/docs/connect-adapters) with a click of a button. This is especially useful for users who are new to <Constant name="cloud" /> or are looking to streamline their connection setup. Here are some tips and caveats to consider:
 
 ### Tips
 - Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with <Constant name="cloud" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
@@ -48,7 +48,7 @@ In <Constant name="cloud" />, you can natively connect to your data platform an
 
 <Constant name="cloud" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (local) or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt projects.
 
-Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team’s workflow, it's important to know who will prefer the <Constant name="cloud_ide" /> and who might lean towards the <Constant name="cloud" /> CLI. This section aims to clarify these preferences.
+Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team's workflow, it's important to know who will prefer the <Constant name="cloud_ide" /> and who might lean towards the <Constant name="cloud" /> CLI. This section aims to clarify these preferences.
 
 ### Studio IDE
 A web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. The <Constant name="cloud_ide" /> makes developing fast and easy for new and seasoned data practitioners to build and test changes.
@@ -66,7 +66,7 @@ A web-based interface for building, testing, running, and version-controlling db
   - View saved but not-committed code changes directly in the <Constant name="cloud_ide" />.
 - [Format or lint](/docs/cloud/studio-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="cloud" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="cloud" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
 The <Constant name="cloud_ide" /> provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the <Constant name="cloud_ide" /> due to its focus on simplicity and ease of use:
 
@@ -89,7 +89,7 @@ When moving from dbt Core to <Constant name="cloud" />, make sure you check the 
 
 - Allows users to run dbt commands against their <Constant name="cloud" /> development environment from their local command line with minimal configuration.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="cloud" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="cloud" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 - Able to use Visual Studio (VS) Code extensions
 
 ## Orchestration
@@ -101,9 +101,9 @@ When moving from dbt Core to <Constant name="cloud" />, make sure you check the 
 - Enable [partial parsing](/docs/cloud/account-settings#partial-parsing) between jobs in <Constant name="cloud" /> to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
 - [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
 - <Constant name="cloud" /> automatically [cancels](/docs/deploy/job-scheduler#run-cancellation-for-over-scheduled-jobs) a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
-- Protect you and your data freshness from third-party outages by enabling <Constant name="cloud" />’s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="managed,managed_plus" />
-- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across <Constant name="cloud" /> projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="self_service,managed" />
-- [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
+- Protect you and your data freshness from third-party outages by enabling <Constant name="cloud" />'s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="managed,managed_plus" />
+- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across <Constant name="cloud" /> projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="self_service,managed" />
+- [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
 
 ### Caveats
 - To automate the setup and configuration of your <Constant name="cloud" /> platform, you can store your job configurations as code within a repository:
@@ -123,10 +123,10 @@ Here are some tips and caveats to consider when using <Constant name="mesh" />:
 - To dynamically resolve [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with <Constant name="cloud" /> (either with the <Constant name="cloud" /> CLI or <Constant name="cloud_ide" />). Cross-project references aren't natively supported in <Constant name="core" />, except by installing the source code from upstream projects [as packages](/docs/build/packages#how-do-i-add-a-package-to-my-project)
 - Link models across projects for a modular and scalable approach for your project and teams.
 - Manage access to your dbt models both within and across projects using:
-  - **[Groups](/docs/mesh/govern/model-access#groups)** &mdash; Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
-  - **[Model access](/docs/mesh/govern/model-access#access-modifiers)** &mdash; Control which other models or projects can reference this model.
-  - **[Model versions](/docs/mesh/govern/model-versions)** &mdash; Enable adoption and deprecation of models as they evolve.
-  - **[Model contracts](/docs/mesh/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
+  - **[Groups](/docs/mesh/govern/model-access#groups)** &mdash; Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
+  - **[Model access](/docs/mesh/govern/model-access#access-modifiers)** &mdash; Control which other models or projects can reference this model.
+  - **[Model versions](/docs/mesh/govern/model-versions)** &mdash; Enable adoption and deprecation of models as they evolve.
+  - **[Model contracts](/docs/mesh/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
 
 ### Caveats
 - To use cross-project references in dbt, each dbt project must correspond to just one <Constant name="cloud" /> project. We strongly discourage defining multiple projects for the same codebase, even if you're trying to manage access permissions, connect to different data warehouses, or separate production and non-production data.  While this was required historically, features like [Staging environments](/docs/dbt-cloud-environments#types-of-environments), Environment-level RBAC (_coming soon_), and [Extended attributes](/docs/dbt-cloud-environments#extended-attributes) will make it unnecessary.
@@ -137,7 +137,7 @@ Refer to the [<Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-
 
 ## dbt Semantic Layer
 
-Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. Here are some tips and caveats to consider when using <Constant name="semantic_layer" />:
+Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. The data layer is the foundation for AI as well as analytics &mdash; shared definitions and lineage give AI and BI the same trusted context so answers are consistent and actionable. Here are some tips and caveats to consider when using <Constant name="semantic_layer" />:
 
 ### Tips
 - Define semantic models and metrics once in <Constant name="cloud" /> with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
@@ -147,25 +147,25 @@ Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/d
 
 ### Caveats
 - <Constant name="semantic_layer" /> currently supports the Deployment environment for querying. Development querying experience coming soon.
-- Run queries/semantic layer commands in the <Constant name="cloud" /> CLI, however running queries/semantic layer commands in the <Constant name="cloud_ide" /> isn’t supported *yet.*
+- Run queries/semantic layer commands in the <Constant name="cloud" /> CLI, however running queries/semantic layer commands in the <Constant name="cloud_ide" /> isn't supported *yet.*
 - <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
 
 Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 
 ## dbt Catalog
 
-[<Constant name="explorer" />](/docs/explore/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Here are some tips and caveats to consider when using <Constant name="explorer" />:
+[<Constant name="explorer" />](/docs/explore/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Lineage and discovery are essential for governance and for feeding reliable context to AI workflows. Here are some tips and caveats to consider when using <Constant name="explorer" />:
 
 ### Tips
 - Use the search and filter capabilities in <Constant name="explorer" /> to quickly locate models, sources, and tests, streamlining your workflow.
 - View all the [different projects](/docs/explore/explore-multiple-projects) and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
-- Use the [Lenses](/docs/explore/explore-projects#lenses) feature, which are map-like layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
+- Use the [Lenses](/docs/explore/explore-projects#lenses) feature, which are map-like layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project's contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 - Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="managed,managed_plus" />
 
 ### Caveats
 - There must be at least one successful job run in the production deployment environment for <Constant name="explorer" /> to populate information. 
 
-Familiarize yourself with <Constant name="explorer" />’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
+Familiarize yourself with <Constant name="explorer" />'s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
 
 Refer to the [<Constant name="explorer" /> FAQs](/docs/explore/dbt-explorer-faqs) for more information.
 
@@ -175,11 +175,11 @@ Refer to the [<Constant name="explorer" /> FAQs](/docs/explore/dbt-explorer-faqs
 
 Congratulations on making it through the guide 🎉!
 
-We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from <Constant name="core" /> to <Constant name="cloud" /> isn’t just about evolving your data projects, it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team.
+We hope you're equipped with useful insights and tips to help you with your move. Something to note is that moving from <Constant name="core" /> to <Constant name="cloud" /> isn't just about evolving your data projects, it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team, and building a data layer that's ready for AI.
 
 For the next steps, continue exploring our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />:
 
-<CoretoCloudTable/>
+<CoreMigrationTable/>
 
 </ConfettiTrigger>
 
@@ -197,4 +197,4 @@ If you need any additional help or have some questions, use the following resour
 For tailored assistance, you can use the following resources:
 
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
-- Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and move.
+- Work with the [dbt Labs' Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and move.
