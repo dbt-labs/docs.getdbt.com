@@ -7,6 +7,8 @@ const { themes } = require('prism-react-renderer')
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
+// Test
+
 /* Set SITE_URL by environment */
 var SITE_URL = "https://docs.getdbt.com";
 if (process?.env?.VERCEL_ENV === "preview" && process?.env?.VERCEL_BRANCH_URL) {
