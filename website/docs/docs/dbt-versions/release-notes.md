@@ -18,6 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## March 2026
 
+- **Behavior change**: [Snowflake plans to increase](https://docs.snowflake.com/en/release-notes/bcr-bundles/un-bundled/bcr-2118) the default column size for string and binary data types in May 2026. `dbt-snowflake` versions below v1.10.6 may fail to build certain incremental models when this change is deployed. [Assess impact and take any required actions](/reference/resource-configs/snowflake-configs#assess-impact-and-required-actions).
 - **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on the <Constant name="dbt_platform" /> **Latest** release track. For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
 ## February 2026

@@ -197,6 +197,10 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta}/>
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 
 ## Authentication Methods
 

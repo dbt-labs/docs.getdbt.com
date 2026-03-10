@@ -15,7 +15,11 @@ Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permi
 
 :::
 
-The following fields are required when creating a Snowflake connection
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
+The following fields are required when creating a Snowflake connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |

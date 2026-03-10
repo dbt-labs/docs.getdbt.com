@@ -40,6 +40,10 @@ pip install dbt-core dbt-snowflake
 
 For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and `dbt-snowflake`. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 ### Unit Tests
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure.
