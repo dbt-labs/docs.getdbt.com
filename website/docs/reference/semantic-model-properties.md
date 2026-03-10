@@ -30,7 +30,7 @@ In the latest spec, a model defines a `semantic_model:` block and optional top-l
 | `semantic_model.name` | string | No | Unique name; defaults to model name. |
 | `semantic_model.group` | string | No | Group for organization. |
 | `semantic_model.config` | object | No | Supports [meta](/reference/resource-configs/meta), [group](/reference/resource-configs/group), [enabled](/reference/resource-configs/enabled). |
-| `agg_time_dimension` (top-level) | string | Yes | Default time dimension for metrics; references dimension name. |
+| `agg_time_dimension` (top-level) | string | No | Default time dimension for metrics; references dimension name. |
 | `primary_entity` (top-level) | string | No | Primary entity name when no column has `type: primary`. |
 | `columns` | array | Yes | Column list; each can have `entity:` or `dimension:` block; time dimensions have `granularity` on the column. |
 | `derived_semantics` (top-level) | object | No | Optional dimensions and entities with `expr`. |

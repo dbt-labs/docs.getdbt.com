@@ -41,11 +41,11 @@ In the latest YAML spec, you can define metrics on a model that has semantic mod
 | Metric type | Key properties |
 |-------------|-----------------|
 | All | name, type, description, label |
-| Simple | agg, expr, time_granularity, agg_time_dimension, hidden, join_to_timespine, fill_nulls_with; optionally config, non_additive_dimension |
-| Derived | expr, input_metrics (each with optional alias, filter, offset_window) |
-| Ratio | numerator, denominator (each a metric name or a dict with name, filter, alias) |
-| Conversion | entity, calculation, base_metric, conversion_metric, window; optional constant_properties |
-| Cumulative | input_metric, window, grain_to_date, period_agg |
+| [Simple](/docs/build/simple) | agg, expr, time_granularity, agg_time_dimension, hidden, join_to_timespine, fill_nulls_with; optionally config, non_additive_dimension |
+| [Derived](/docs/build/derived-metrics) | expr, input_metrics (each with optional alias, filter, offset_window) |
+| [Ratio](/docs/build/ratio-metrics) | numerator, denominator (each a metric name or a dict with name, filter, alias) |
+| [Conversion](/docs/build/conversion-metrics) | entity, calculation, base_metric, conversion_metric, window; optional constant_properties |
+| [Cumulative](/docs/build/cumulative-metrics) | input_metric, window, grain_to_date, period_agg |
 
 **Cross-model metrics:** Metrics under a model's `metrics:` list can only reference that semantic model. Metrics that depend on other semantic models (for example, cross-model cumulative, ratio, derived, or conversion) go in a top-level `metrics:` block (outside `models:`). This can live in the same YAML file or a separate file. 
 
@@ -77,11 +77,11 @@ Metrics are defined in a top-level `metrics:` key in standalone YAML. Type-speci
 
 The following parameters apply by metric type under `type_params`:
 
-- **Simple**: `agg` (required), `expr`, `percentile`, `percentile_type`, `non_additive_dimension`, `agg_time_dimension`, `join_to_timespine`, `fill_nulls_with`
-- **Cumulative**: `input_metric` (required), `window`, `grain_to_date`, `period_agg`
-- **Derived**: `expr` (required), `input_metrics` (required)
-- **Ratio**: `numerator` (required), `denominator` (required)
-- **Conversion**: `entity` (required), `calculation` (required), `base_metric` (required), `conversion_metric` (required), `window`, `constant_properties`
+- **[Simple](/docs/build/simple)**: `agg` (required), `expr`, `percentile`, `percentile_type`, `non_additive_dimension`, `agg_time_dimension`, `join_to_timespine`, `fill_nulls_with`
+- **[Cumulative](/docs/build/cumulative-metrics)**: `input_metric` (required), `window`, `grain_to_date`, `period_agg`
+- **[Derived](/docs/build/derived-metrics)**: `expr` (required), `input_metrics` (required)
+- **[Ratio](/docs/build/ratio-metrics)**: `numerator` (required), `denominator` (required)
+- **[Conversion](/docs/build/conversion-metrics)**: `entity` (required), `calculation` (required), `base_metric` (required), `conversion_metric` (required), `window`, `constant_properties`
 
 For full `type_params` and examples per type, see [Creating metrics](/docs/build/metrics-overview), [Simple metrics](/docs/build/simple), [Cumulative metrics](/docs/build/cumulative), [Ratio metrics](/docs/build/ratio), [Derived metrics](/docs/build/derived), and [Conversion metrics](/docs/build/conversion).
 
