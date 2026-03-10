@@ -197,9 +197,9 @@ In some cases, you can replace a data test with its equivalent constraint. This 
 
 ### Do I need to define every column for a contract?
 
-Yes. dbt contracts apply to **all** columns defined in a model, and they require declaring explicit expectations about **all** of those columns. The explicit declaration of a contract is not an accident—it's very much the intent of this feature.
+Yes. dbt contracts apply to _all_ columns defined in a model, and they require declaring explicit expectations about _all_ of those columns. The explicit declaration of a contract is not an accident &mdash; it's very much the intent of this feature.
 
-At the same time, for models with many columns, we understand that this can mean a _lot_ of yaml. See [dbt-core#11764](https://github.com/dbt-labs/dbt-core/issues/11764) for discussion of potential approaches to generate and update model contract definitions.
+At the same time, for models with many columns, we understand that this can mean a _lot_ of YAML. See [dbt-core#11764](https://github.com/dbt-labs/dbt-core/issues/11764) for discussion of potential approaches to generate and update model contract definitions.
 
 ### How are breaking changes handled?
 
