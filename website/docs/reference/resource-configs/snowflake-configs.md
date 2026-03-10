@@ -381,7 +381,7 @@ select * from ...
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
 dbt supports setting a default query tag for the duration of its Snowflake connections in
-[your profile](/docs/core/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
+[your profile](/docs/local/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
 a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 <File name='dbt_project.yml'>
@@ -677,7 +677,7 @@ For more information on using this configuration, refer to [Snowflake's document
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/docs/core/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/docs/local/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
 
 [Tests](/docs/build/data-tests) also supports the `snowflake_warehouse` configuration. This can be useful when you want to you run tests on a different Snowflake virtual warehouse than the one used to build models, for example, using a smaller warehouse for lightweight data tests while models run on a larger warehouse.
 

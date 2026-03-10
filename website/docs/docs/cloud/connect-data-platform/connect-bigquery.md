@@ -228,7 +228,7 @@ This region must match the location of your BigQuery dataset if you want to use 
 
 ### Account level connections and credential management
 
-You can re-use connections across multiple projects with [global connections](/docs/cloud/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can utilize multiple connections inside of a single project (to handle dev, staging, production, etc.).
+You can re-use connections across multiple projects with [global connections](/docs/cloud/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can use multiple connections inside of a single project (to handle dev, staging, production, and more).
 
 BigQuery connections in <Constant name="cloud" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
 
@@ -277,7 +277,7 @@ For a project, you will first create an environment variable to store the secret
       client_x509_cert_url: xxx
     ```
 
-    If you require [other fields](/docs/core/connect-data-platform/bigquery-setup#service-account-json) to be overridden at the environment level via extended attributes, please respect the [expected indentation](/docs/dbt-cloud-environments#only-the-top-level-keys-are-accepted-in-extended-attributes) (ordering doesn't matter):
+    If you require [other fields](/docs/local/connect-data-platform/bigquery-setup#service-account-json) to be overridden at the environment level via extended attributes, please respect the [expected indentation](/docs/dbt-cloud-environments#only-the-top-level-keys-are-accepted-in-extended-attributes) (ordering doesn't matter):
 
     ```yaml
     priority: interactive
