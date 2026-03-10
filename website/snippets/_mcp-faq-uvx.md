@@ -1,6 +1,6 @@
 **Symptoms:** Error messages like `Could not connect to MCP server dbt-mcp`, `Error: spawn uvx ENOENT`, or `spawn uvx ENOENT` in your MCP client.
 
-**Cause:** Your MCP client can't find `uvx` in its PATH because it starts with a limited environment.
+**Cause:** Your MCP client (like Claude desktop) can't find `uvx` in its PATH because it starts with a limited environment.
 
 **Solution:** Use the full path to `uvx` in your configuration.
 
