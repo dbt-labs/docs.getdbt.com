@@ -881,30 +881,22 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Quickstarts",
-          collapsed: false,
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
           items: [
             "docs/dbt-ai/mcp-quickstart-oauth",
             "docs/dbt-ai/mcp-quickstart-cli",
-            "docs/dbt-ai/mcp-quickstart-full",
           ],
         },
         {
           type: "category",
-          label: "How-to guides",
+          label: "Setup and configuration",
           collapsed: true,
           items: [
-            "docs/dbt-ai/mcp-find-ids",
-            "docs/dbt-ai/mcp-troubleshooting",
-          ],
-        },
-        {
-          type: "category",
-          label: "Reference",
-          collapsed: true,
-          items: [
-            "docs/dbt-ai/mcp-environment-variables",
             "docs/dbt-ai/setup-local-mcp",
             "docs/dbt-ai/setup-remote-mcp",
+            "docs/dbt-ai/mcp-environment-variables",
+            "docs/dbt-ai/mcp-find-ids",
           ],
         },
         {
@@ -917,6 +909,8 @@ const sidebarSettings = {
             "docs/dbt-ai/integrate-mcp-vscode",
           ],
         },
+        "docs/dbt-ai/mcp-available-tools",
+        "docs/dbt-ai/mcp-troubleshooting",
       ],
     },
     {

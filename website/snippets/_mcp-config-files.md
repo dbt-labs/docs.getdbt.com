@@ -13,14 +13,14 @@ When you use only the dbt platform, the CLI tools are automatically disabled. Yo
       "command": "uvx",
       "args": ["dbt-mcp"],
       "env": {
-        "DBT_HOST": "https://<your-dbt-host-with-custom-subdomain>",
+        "DBT_HOST": "YOUR-ACCESS-URL"
       }
     }
   }
 }
 ```
 
-**Note:** Replace `<your-dbt-host-with-custom-subdomain>` with your actual host (for example, `abc123.us1.dbt.com`). This enables OAuth authentication without requiring local dbt installation.
+**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Don't include `https://`. This enables OAuth authentication without requiring local dbt installation.
 
 </TabItem>
 
@@ -37,7 +37,7 @@ The `DBT_PROJECT_DIR` and `DBT_PATH` fields are required for CLI access. You can
       "command": "uvx",
       "args": ["dbt-mcp"],
       "env": {
-        "DBT_HOST": "https://<your-dbt-host-with-custom-subdomain>",
+        "DBT_HOST": "YOUR-ACCESS-URL",
         "DBT_PROJECT_DIR": "/path/to/project",
         "DBT_PATH": "/path/to/dbt/executable"
       }
@@ -46,7 +46,7 @@ The `DBT_PROJECT_DIR` and `DBT_PATH` fields are required for CLI access. You can
 }
 ```
 
-**Note:** Replace `<your-dbt-host-with-custom-subdomain>` with your actual host (for example, `https://abc123.us1.dbt.com`). This enables OAuth authentication.
+**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Don't include `https://`. This enables OAuth authentication.
 
 </TabItem>
 

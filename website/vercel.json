@@ -4966,6 +4966,11 @@
       "source": "/report-a-problem",
       "destination": "https://www.getdbt.com/report-a-problem",
       "permanent": true
+    },
+    {
+      "source": "/docs/dbt-ai/mcp-quickstart-full",
+      "destination": "/docs/dbt-ai/mcp-quickstart-oauth",
+      "permanent": true
     }
   ]
 }

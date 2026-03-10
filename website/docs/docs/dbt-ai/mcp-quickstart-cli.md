@@ -1,9 +1,12 @@
 ---
-title: "Local CLI setup"
-sidebar_label: "Local MCP quickstart"
+title: "Run dbt locally"
+sidebar_label: "Run dbt locally"
 description: "Set up dbt MCP with local dbt CLI commands — no dbt platform account required."
 id: "mcp-quickstart-cli"
 ---
+
+import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
+import MCPFaqServerNotStarting from '/snippets/_mcp-faq-server-not-starting.md';
 
 This quick start walks you through connecting dbt MCP to your local dbt project. This setup gives you dbt CLI tools (run, build, test, compile, and more) inside your AI assistant without needing a dbt platform account.
 
@@ -171,11 +174,25 @@ With CLI-only setup, your AI assistant can use:
 - Model lineage and node details from your local project
 - Codegen tools (when enabled — see [Environment variables reference](/docs/dbt-ai/mcp-environment-variables))
 
-Platform features like Semantic Layer, Discovery API, and metadata queries require a dbt platform account. To add them, see the [Full setup quick start](/docs/dbt-ai/mcp-quickstart-full).
+Platform features like Semantic Layer, Discovery API, and metadata queries require a dbt platform account. To add them, see [Connect to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth).
+
+## Troubleshooting
+
+<Expandable alt_header="Can't find the uvx executable">
+
+<MCPFaqUvx />
+
+</Expandable>
+
+<Expandable alt_header="Server not starting">
+
+<MCPFaqServerNotStarting />
+
+</Expandable>
+
+For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting).
 
 ## Next steps
 
-- Add dbt platform features: see the [Full setup quick start](/docs/dbt-ai/mcp-quickstart-full)
-- Use OAuth instead of path-based config: see the [OAuth quick start](/docs/dbt-ai/mcp-quickstart-oauth)
+- Add dbt platform features: see [Connect to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth)
 - Configure toolsets or disable specific tools: see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables)
-- Something not working? See [MCP troubleshooting](/docs/dbt-ai/mcp-troubleshooting)

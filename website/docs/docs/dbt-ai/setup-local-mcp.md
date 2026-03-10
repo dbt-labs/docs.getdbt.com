@@ -378,7 +378,7 @@ All tools are available by default. Set any of these to `true` to turn off a too
 | `DISABLE_DISCOVERY` | `false` | Disable dbt Discovery API MCP tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable dbt Administrative API MCP tools. |
 | `DISABLE_SQL` | `true` | SQL MCP tools are disabled by default. Set to `false` to enable. |
-| `DISABLE_DBT_CODEGEN` | `true` | [dbt codegen MCP tools](/docs/dbt-ai/about-mcp#codegen-tools) are disabled by default. Set to `false` to enable (requires dbt-codegen package). |
+| `DISABLE_DBT_CODEGEN` | `true` | [dbt codegen MCP tools](/docs/dbt-ai/mcp-available-tools#codegen-tools) are disabled by default. Set to `false` to enable (requires dbt-codegen package). |
 | `DISABLE_LSP` | `false` | Disable dbt LSP/Fusion MCP tools. |
 | `DISABLE_MCP_SERVER_METADATA` | `true` | MCP server metadata tools (like `get_mcp_server_version`) are disabled by default. Set to `false` to enable. |
 | `DISABLE_TOOLS` | `""` | A comma-separated list of specific tool names to disable. |
