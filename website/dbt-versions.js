@@ -297,6 +297,10 @@ exports.versionedPages = [
     page: "docs/local/connect-data-platform/yellowbrick-setup",
     lastVersion: "1.99",
   },
+  {
+    page: "reference/global-configs/cache",
+    lastVersion: "1.99",
+  },
 ];
 
 /**
