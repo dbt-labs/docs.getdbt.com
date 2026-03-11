@@ -158,7 +158,7 @@ These tools provide information about the MCP server itself. They are disabled b
 
 ### Product docs
 
-A set of tools provided that lets your AI assistant search and fetch pages from docs.getdbt.com in real time. Get responses grounded in the latest official dbt documentation rather than relying on training data or web searches:
+A set of tools that enables your AI assistant to search and fetch pages from docs.getdbt.com in real time. Get responses grounded in the latest official dbt documentation rather than relying on training data or web searches:
 - `get_product_doc_pages`: Fetches the full Markdown content of one or more docs.getdbt.com pages by path or URL.
 - `search_product_docs`: Searches docs.getdbt.com for pages matching a query; returns titles, URLs, and descriptions ranked by relevance. Use `get_product_doc_pages` to fetch full content.
 
