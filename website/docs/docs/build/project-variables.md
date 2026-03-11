@@ -24,9 +24,9 @@ Variables defined in the `dbt_project.yml` act as project-wide defaults. These d
 
 You can define variables in three ways:
 
-1. In the `vars.yml` file (recommended for projects with several variables, or when you need to reference variables from within [`dbt_project.yml`](/reference/dbt_project.yml))
-2. In the `dbt_project.yml` file
-3. On the command line
+- In the `vars.yml` file (recommended for projects with several variables, or when you need to reference variables from within [`dbt_project.yml`](/reference/dbt_project.yml))
+- In the `dbt_project.yml` file
+- On the command line
 
 Variables defined in the `vars.yml` or `dbt_project.yml` act as project-wide defaults. These defaults apply anywhere the variable is referenced. You can override them at runtime using the `--vars` command-line argument, which is useful when you want to change a value for a specific run. For example, when testing with a different date range or running models with environment-specific settings.
 
