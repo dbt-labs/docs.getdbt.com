@@ -7,6 +7,7 @@
  */
 
 export const CONSTANTS = {
+  git: 'Git',
   dbt_platform: 'dbt platform',
   core: 'dbt Core',
   fusion: 'Fusion',
