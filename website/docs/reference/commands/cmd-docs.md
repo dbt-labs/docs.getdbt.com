@@ -5,6 +5,8 @@ sidebar_label: "docs"
 id: "cmd-docs"
 ---
 
+<VersionBlock lastVersion="1.99">
+
 `dbt docs` has two supported subcommands: `generate` and `serve`.
 
 ### dbt docs generate
@@ -104,4 +106,44 @@ dbt docs serve --host ""
 ```
 
 As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the default host was `""`.
+</VersionBlock>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+The <Constant name="fusion_engine" /> uses `write-catalog` instead of `dbt docs generate` for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. This command is fully Fusion native and significantly more performant.
+
+## dbt write-catalog
+
+The `write-catalog` command generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project.
+
+**Example**:
+
+```shell
+dbt write-catalog
+```
+
+### Platform behavior
+
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically invokes `write-catalog` instead.
+
+### Local usage
+
+When running <Constant name="fusion" /> locally, use `dbt write-catalog` directly to generate your catalog:
+
+```shell
+dbt write-catalog
+```
+
+### What's different from docs generate
+
+The `write-catalog` command focuses solely on metadata hydration&mdash;generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
+
+For the open-source documentation site experience, use `dbt docs generate` with <Constant name="core" />.
+
+### What's next
+
+Catalog metadata hydration will be integrated directly into `dbt build` and `dbt run` commands automatically, eliminating the need for a separate step. The `write-catalog` command is a stepping stone toward this seamless experience.
+
 </VersionBlock>
