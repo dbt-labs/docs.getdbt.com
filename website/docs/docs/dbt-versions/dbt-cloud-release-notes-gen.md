@@ -8,7 +8,7 @@ pagination_prev: null
 unlisted: true
 ---
 
-<Constant name="cloud" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
+<Constant name="dbt" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
 
 - **New:** New products and features
 - **Enhancement:** Performance improvements and feature enhancements

@@ -13,10 +13,10 @@ import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
-GCP Private Service Connect (PSC) enables secure, private connectivity between <Constant name="cloud" /> and your self-hosted services. These services may include version control systems (VCS), data warehouses, or any other applications you manage. With PSC, you do not need to expose your service to the public internet. All communication occurs over a private network, significantly enhancing security. For more details, refer to the GCP [Private Service Connect documentation](https://cloud.google.com/private-service-connect).
+GCP Private Service Connect (PSC) enables secure, private connectivity between <Constant name="dbt" /> and your self-hosted services. These services may include version control systems (VCS), data warehouses, or any other applications you manage. With PSC, you do not need to expose your service to the public internet. All communication occurs over a private network, significantly enhancing security. For more details, refer to the GCP [Private Service Connect documentation](https://cloud.google.com/private-service-connect).
 
 ## What this guide covers
-The focus of this guide is not on any particular service or [Backend](#terminology) architecture, but on the [Service Attachment](#terminology) that interconnects <Constant name="cloud" /> with your self-hosted service. This attachment process should be standard across most use cases.
+The focus of this guide is not on any particular service or [Backend](#terminology) architecture, but on the [Service Attachment](#terminology) that interconnects <Constant name="dbt" /> with your self-hosted service. This attachment process should be standard across most use cases.
 
 <Lightbox src="/img/docs/dbt-cloud/gcp-self-hosted-psc/scope-of-guide.png" width="90%" title="The scope of this guide" />
 
@@ -30,7 +30,7 @@ This guide is intended for cloud network administrators or engineers responsible
 ## Terminology
 This guide uses several important terms related to Private Service Connect. Understanding these definitions helps ensure successful implementation. For a more detailed explanation of these concepts, refer to the [GCP Private Service Connect documentation](https://cloud.google.com/vpc/docs/private-service-connect#managed-services).
 
-- **Consumer:** In this context, the Consumer is <Constant name="cloud" />, which establishes the PSC connection as the client.
+- **Consumer:** In this context, the Consumer is <Constant name="dbt" />, which establishes the PSC connection as the client.
 - **Published Service:** The service you are exposing via PSC to the dbt platform, such as your version control system (VCS), data warehouse, or another application.
 - **Service Attachment:** Refers to the resource that is shared with consumer(s) of your Published Service, so that they can establish endpoints to it.
 - **Backend:** Can also be referred to as Network Endpoint Groups (NEGs). This is the particular architecture that your service is running on. For example, this may be VMs, GKE Instance Groups, or even on-prem IPs.
@@ -87,7 +87,7 @@ Before you begin, make sure to review the following requirements:
 
     a. Choose **Load Balancer**
 
-    b. The load balancer types that <Constant name="cloud" /> has validated are the **Regional Internal Proxy Load Balancer** and the **Cross-Regional Internal Proxy Load Balancer**. However, the others may work as well, although not officially supported.
+    b. The load balancer types that <Constant name="dbt" /> has validated are the **Regional Internal Proxy Load Balancer** and the **Cross-Regional Internal Proxy Load Balancer**. However, the others may work as well, although not officially supported.
 
     c. In the **Load balancer** dropdown, choose the load balancer that is in front of your self-hosted service.
 
@@ -137,7 +137,7 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 ## Troubleshooting
 
-If the Private Service Connect endpoint has been provisioned and configured in <Constant name="cloud" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt and your service.
+If the Private Service Connect endpoint has been provisioned and configured in <Constant name="dbt" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt and your service.
 
 ### Configuration checklist
 

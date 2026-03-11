@@ -39,7 +39,7 @@ dbt docs generate --no-compile
 
 Use the `--empty-catalog` argument to skip running the database queries to populate `catalog.json`. When this flag is provided, `dbt docs generate` will skip step (3) described above.
 
-This is not recommended for production environments, as it means that your documentation will be missing information gleaned from database metadata (the full set of columns in each table, and statistics about those tables). It can speed up `docs generate` in development, when you just want to visualize lineage and other information defined within your project. To learn how to build your documentation in <Constant name="cloud" />, refer to [build your docs in <Constant name="cloud" />](/docs/explore/build-and-view-your-docs).
+This is not recommended for production environments, as it means that your documentation will be missing information gleaned from database metadata (the full set of columns in each table, and statistics about those tables). It can speed up `docs generate` in development, when you just want to visualize lineage and other information defined within your project. To learn how to build your documentation in <Constant name="dbt" />, refer to [build your docs in <Constant name="dbt" />](/docs/explore/build-and-view-your-docs).
 
 **Example**:
 
@@ -59,7 +59,7 @@ dbt docs generate --static
 
 This command starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser. The webserver is rooted in your `target/` directory. Be sure to run `dbt docs generate` before `dbt docs serve` because the `generate` command produces a [catalog metadata artifact](/reference/artifacts/catalog-json) that the `serve` command depends upon. You will see an error message if the catalog is missing.
 
-Use the `dbt docs serve` command if you're developing locally with the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="core" />](/docs/local/install-dbt). The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) doesn't support this command.
+Use the `dbt docs serve` command if you're developing locally with the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="core" />](/docs/local/install-dbt). The [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) doesn't support this command.
 
 **Usage:**
 
@@ -94,7 +94,7 @@ dbt docs serve --port 8001
 You may specify a different host using the `--host` flag.
 
 :::info Note
-The `--host` flag is only available in the [<Constant name="core"/>](/docs/local/install-dbt). It's not supported in the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation).
+The `--host` flag is only available in the [<Constant name="core"/>](/docs/local/install-dbt). It's not supported in the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation).
 :::
 
 **Example**:

@@ -4,14 +4,14 @@ title: "dbt Command reference"
 
 You can run dbt using the following tools:
 
-- In your browser with the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) 
-- On the command line interface using the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
+- In your browser with the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) 
+- On the command line interface using the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
   
-A key distinction with the tools mentioned, is that <Constant name="cloud_cli" /> and <Constant name="cloud_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="cloud" />'s infrastructure and its comprehensive [features](/docs/cloud/about-cloud/dbt-cloud-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
+A key distinction with the tools mentioned, is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt" />'s infrastructure and its comprehensive [features](/docs/cloud/about-cloud/dbt-cloud-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
 
 ## Parallel execution
 
-<Constant name="cloud" /> allows for concurrent execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time. However, it's important to understand which commands can be run in parallel and which can't.
+<Constant name="dbt" /> allows for concurrent execution of commands, enhancing efficiency without compromising data integrity. This enables you to run multiple commands at the same time. However, it's important to understand which commands can be run in parallel and which can't.
 
 In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 
@@ -40,20 +40,20 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | Command | Description | Parallel execution |  <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
 | [build](/reference/commands/build) | Builds and tests all selected resources (models, seeds, tests, and more) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) | 
-| cancel | Cancels the most recent invocation. | N/A | <Constant name="cloud_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| cancel | Cancels the most recent invocation. | N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [clone](/reference/commands/clone) | Clones selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) <br /> Not yet supported in <Constant name="fusion" /> |
-| [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="cloud" /> environment. |   N/A | <Constant name="cloud_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
-| help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="cloud_cli" /> <br /> All [supported versions](/docs/dbt-versions/core) |
+| [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="dbt" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
+| help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions/core) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions/core) |
-| [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="cloud_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
+| [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="cloud_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [run](/reference/commands/run) | Runs the models in a project |   ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [run-operation](/reference/commands/run-operation) | Invokes a macro, including running arbitrary maintenance SQL against the database | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
@@ -63,4 +63,4 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
 
-Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="cloud_cli" /> version. (Not applicable for the <Constant name="cloud_ide" />). Available on all [supported versions](/docs/dbt-versions/core).
+Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="platform_cli" /> version. (Not applicable for the <Constant name="studio_ide" />). Available on all [supported versions](/docs/dbt-versions/core).

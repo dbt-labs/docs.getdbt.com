@@ -42,7 +42,7 @@ dbt Agents are currently in beta or coming soon. Contact your account manager fo
 
 #### Analyst agent <Lifecycle status="beta"/>
 
-Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
+Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="insights" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
@@ -50,7 +50,7 @@ The Analyst agent is a beta feature. Enable beta features under **Account settin
 
 #### Discovery agent <Lifecycle status="private_beta"/>
 
-Find the right, approved dataset fast in <Constant name="explorer" />. The Discovery agent surfaces definitions, freshness, tests, owners, and lineage right where you work.
+Find the right, approved dataset fast in <Constant name="catalog" />. The Discovery agent surfaces definitions, freshness, tests, owners, and lineage right where you work.
 
 To request access to the Discovery agent, contact your account manager.
 
@@ -62,7 +62,7 @@ The Observability agent in the <Constant name="dbt_platform" />'s orchestrator h
 
 The Developer agent helps you describe the data question or product you want; the agent writes or refactors models, validates with <Constant name="fusion" />, and runs against your warehouse with full context. 
 
-It helps you understand model logic, predict downstream impact, flag duplicate logic, and validate changes before merge. It runs directly in VS Code or <Constant name="cloud_ide" />, powered by dbt's context, so every change can be shipped quickly and safely.
+It helps you understand model logic, predict downstream impact, flag duplicate logic, and validate changes before merge. It runs directly in VS Code or <Constant name="studio_ide" />, powered by dbt's context, so every change can be shipped quickly and safely.
 
 #### dbt MCP server
 
