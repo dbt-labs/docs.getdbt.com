@@ -74,21 +74,6 @@ VS Code extension features by static analysis configuration:
 ✅ = Available | ❌ = Not available
 
 | Feature | off | baseline | strict |
-|---------|:-------:|:--------:|:----------:|
-| Go-to-definition | ✅* | ✅ | ✅ |
-| Table lineage | ✅ | ✅ | ✅ |
-| YAML validation | ✅ | ✅ | ✅ |
-| Render + preview SQL | ✅ | ✅ | ✅ |
-| Unit tests | ✅ | ✅ | ✅ |
-| Detect syntax errors | ❌ | ✅ | ✅ |
-| Preview CTE results | ❌ | ✅ | ✅ |
-| Automatic refactor column names | ❌ | ❌** | ✅ |
-| Column lineage (local) | ❌ | ❌** | ✅ |
-| Detect data type and function signature errors | ❌ | ❌ | ✅ |
-
-_*Column-level go-to-definition requires baseline; macros, refs, and docs work without it._
-
-| Feature | off | baseline | strict |
 |---------|-----|----------|--------|
 | Go-to-definition/reference (except columns) | ✅ | ✅ | ✅ |
 | Table lineage | ✅ | ✅ | ✅ |
