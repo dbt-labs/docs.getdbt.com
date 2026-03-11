@@ -137,8 +137,6 @@ You can optionally configure state-aware orchestration when you want to fine-tun
 
   The following examples show how to configure a source so that state-aware orchestration detects new upstream data only when your custom condition is met.
 
-  Use `loaded_at_field` when your table has a single timestamp column that indicates when data was loaded. Use `loaded_at_query` when you need a custom SQL expression (for example, the latest of several columns, or a filter for recent data). You can either define `loaded_at_field` or `loaded_at_query` but not both.
-
   <Tabs>
   <TabItem value="loaded_at_field" label="loaded_at_field">
   State-aware orchestration treats the source as having new data when the maximum value of the `loaded_at_field` column changes since the last run:
