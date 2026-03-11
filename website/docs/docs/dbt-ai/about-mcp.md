@@ -5,6 +5,8 @@ description: "Learn about the dbt MCP server"
 id: "about-mcp"
 ---
 
+import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
+
 # About dbt Model Context Protocol (MCP)
 
 <IntroText>
@@ -58,30 +60,30 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 - You either don’t want to install, or are restricted from installing, additional software on your system.
 - Your use case is primarily consumption-based (for example, querying metrics, exploring metadata, viewing lineage).
 
-
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
 
 ## Available tools
 
-The dbt MCP server exposes tools across the following categories. Check out the following table for a sample list of the tools available and which server type supports them.
+The following tool list is available for your MCP server and is auto-fetched from the [dbt MCP server README on GitHub](https://github.com/dbt-labs/dbt-mcp#tools) when the docs are built, so it stays in sync with each release.
 
-For the complete list of tools and commands, see [Available tools](/docs/dbt-ai/mcp-available-tools) or the [dbt-mcp repository](https://github.com/dbt-labs/dbt-mcp).
+<McpToolsFromReadme />
 
+### Supported tools by MCP server type
+The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
 
-| Tools | Local | Remote | Info |
-| --- | --- | --- | --- |
-| dbt CLI | ✅ | ❌ | Run commands like `dbt build`, `dbt run`, `dbt test`, and `dbt compile` directly from your AI assistant. |
-| [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) | ✅ | ✅ | Query metrics, dimensions, and saved queries defined in your project. |
-| SQL | ✅ | ✅ | Generate SQL from natural language and execute queries against your warehouse. |
-| [Metadata Discovery](/docs/dbt-cloud-apis/discovery-api) | ✅ | ✅ | Explore model lineage, test results, source freshness, and other project metadata. |
-| [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) | ✅ | ❌ | Trigger jobs, list runs, retrieve artifacts, and manage deployments. |
-| Codegen | ✅ | ❌ | Auto-generate source definitions, model YAML, and staging models (requires [dbt-codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/)). |
-| [Fusion](/docs/fusion) | ✅ | ✅ | Compile SQL and get column-level lineage using the <Constant name="fusion" /> engine. |
+Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
-Note that access to the Discovery API and the Semantic Layer API is limited depending on your [plan type](https://www.getdbt.com/pricing).
-
+| Tools | Local | Remote |
+| --- | --- | --- |
+| dbt CLI  | ✅ | ❌ |
+| Semantic Layer | ✅ | ✅ |
+| SQL  | ✅ | ✅ |
+| Metadata Discovery| ✅ | ✅ |
+| Administrative API | ✅ | ❌ |
+| Codegen Tools | ✅ | ❌ |
+| Fusion Tools | ✅ | ✅ |
 
 ## MCP integrations
 
