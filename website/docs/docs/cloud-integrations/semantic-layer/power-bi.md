@@ -125,6 +125,12 @@ These tables do not actually map to an underlying table in your data warehouse. 
 
 This allows for very flexible analytics workflows, like drag and drop metrics and slice by dimensions and entities &mdash; the <Constant name="semantic_layer" /> will generate the appropriate SQL to actually query your data source for you.
 
+#### Modifying time granularity
+
+import SlCustomGranularity from '/snippets/_sl-custom-granularity.md';
+
+<SlCustomGranularity />
+
 ## Considerations
 
 <Expandable alt_header="Not every “column” of METRICS.ALL are compatible with every other column">

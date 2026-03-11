@@ -35,7 +35,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: The <Constant name="semantic_layer" /> supports Sigma as a [partner integration](/docs/cloud-integrations/avail-sl-integrations), available in Preview. Refer to [Sigma](https://help.sigmacomputing.com/docs/configure-a-dbt-semantic-layer-integration) for more information.
 - **New**: The <Constant name="semantic_layer" /> now supports Azure Single-tenant deployments. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information on how to get started.
 - **Fix**: Resolved intermittent issues in Single-tenant environments affecting <Constant name="semantic_layer" /> and query history.
-- **Fix**: [The dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) now respects the BigQuery [`execution_project` attribute](/docs/core/connect-data-platform/bigquery-setup#execution-project), including for exports.
+- **Fix**: [The dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) now respects the BigQuery [`execution_project` attribute](/docs/local/connect-data-platform/bigquery-setup#execution-project), including for exports.
 - **New**: [Model notifications](/docs/deploy/model-notifications) are now generally available in <Constant name="cloud" />. These notifications alert model owners through email about any issues encountered by models and tests as soon as they occur while running a job.
 - **New**: You can now use your [Azure OpenAI key](/docs/cloud/account-integrations?ai-integration=azure#ai-integrations) (available in beta) to use <Constant name="cloud" /> features like [<Constant name="copilot" />](/docs/cloud/dbt-copilot) and [Ask dbt](/docs/cloud-integrations/snowflake-native-app) . Additionally, you can use your own [OpenAI API key](/docs/cloud/account-integrations?ai-integration=openai#ai-integrations) or use [dbt Labs-managed OpenAI](/docs/cloud/account-integrations?ai-integration=dbtlabs#ai-integrations) key. Refer to [AI integrations](/docs/cloud/account-integrations#ai-integrations) for more information.
 - **New**: The [`hard_deletes`](/reference/resource-configs/hard-deletes) config gives you more control on how to handle deleted rows from the source. Supported options are `ignore` (default), `invalidate` (replaces the legacy `invalidate_hard_deletes=true`), and `new_record`. Note that `new_record` will create a new metadata column in the snapshot table.
@@ -405,7 +405,7 @@ The following features are new or enhanced as part of our [<Constant name="cloud
     - [More time coding, less time waiting: Mastering defer in dbt](/blog/defer-to-prod)
     - [Deprecation of dbt Server](/blog/deprecation-of-dbt-server)
     - From the community: [Serverless, free-tier data stack with dlt + dbt core](/blog/serverless-dlt-dbt-stack)
-  - The Extrica team added docs for the [dbt-extrica community adapter](/docs/core/connect-data-platform/extrica-setup)
+  - The Extrica team added docs for the [dbt-extrica community adapter](/docs/local/connect-data-platform/extrica-setup)
   - Semantic Layer: New [conversion metrics docs](/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024)
   - New [dbt environment command](/reference/commands/dbt-environment) and its flags for the dbt CLI
 

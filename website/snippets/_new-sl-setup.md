@@ -49,7 +49,6 @@ This credential controls the physical access to underlying data accessed by the 
 ##### 2. Configure credential
    - In the **1. Add credentials** section, enter the credentials specific to your data platform that you want the Semantic Layer to use.
    - Use credentials with minimal privileges. The Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
-   - For BigQuery, you can use [Workload Identity Federation with external OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation) for Semantic Layer queries.
    - <SLEnvVars/>
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.png" width="55%" title="Add credentials and map them to a service token. " />

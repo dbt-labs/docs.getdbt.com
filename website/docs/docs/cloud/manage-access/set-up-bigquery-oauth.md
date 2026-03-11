@@ -104,9 +104,8 @@ Select **Allow**. This redirects you back to the <Constant name="dbt_platform" /
 
 ## Set up BigQuery Workload Identity Federation <Lifecycle status= "managed, Preview" /> 
 
-Workload Identity Federation (WIF) allows application workloads, running externally to the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF with Microsoft Entra ID as the OAuth identity provider (IdP). 
-
-You can also use external OAuth IdPs (including Microsoft Entra ID) for WIF connections with [Semantic Layer queries](/docs/use-dbt-semantic-layer/dbt-sl). If you need additional IdP support, please contact your account team.
+Workload Identity Federation (WIF) allows application workloads, running outside the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF. 
+Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
 ### 1. Set up Entra ID
 
@@ -194,8 +193,6 @@ To get started, create a new connection in the <Constant name="dbt_platform" />:
         - Set this up in the same connection as the one you're using for WIF under **`OAuth2.0 settings`**
     - Service JSON.
         - You must create a separate connection with the Service JSON configuration.
-    - External OAuth.
-        - You can use external OAuth providers for Semantic Layer queries.
 
 ### 6. Set up project
 
@@ -217,10 +214,6 @@ When you set your environment connection to the WIF configuration, you will then
     Example: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts<serviceaccountemail>:generateAccessToken`
 
 If you don't already have a job based on the deployment environment with a connection set up for WIF, you should create one now. Once you've configured it with the preferred settings, run the job.
-
-### 8. Configure Semantic Layer credentials
-
-If you want to use WIF authentication for Semantic Layer queries, follow the steps in [Administer the Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl). When configuring your Semantic Layer credentials, select the connection with the WIF configuration you created in [step 5](#5-create-connections-in-dbt).
 
 ## FAQs
 

@@ -5,11 +5,13 @@ level: 'Beginner'
 icon: 'redshift'
 hide_table_of_contents: true
 tags: ['Redshift', 'dbt platform','Quickstart']
+product_badge: "Fusion compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-## Introduction
+## Introduction 
+
 
 In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Redshift. It will show you how to: 
 

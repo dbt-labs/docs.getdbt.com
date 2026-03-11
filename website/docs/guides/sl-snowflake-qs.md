@@ -446,7 +446,7 @@ In this section, you'll learn about [semantic model](/guides/sl-snowflake-qs?ste
 
 ### About semantic models
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 [Semantic models](/docs/build/semantic-models) contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
@@ -481,7 +481,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 [Semantic models](/docs/build/semantic-models) contain many object types (such as entities, simple metrics, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
@@ -520,7 +520,7 @@ models:
 
 ### Semantic model components
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
@@ -530,7 +530,7 @@ The following sections explain [dimensions](/docs/build/dimensions), [entities](
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [simple metrics](/docs/build/metrics-overview#simple-metrics) in more detail, showing how they each play a role in semantic models.
 
@@ -546,7 +546,7 @@ The following sections explain [dimensions](/docs/build/dimensions), [entities](
 
 Add entities to your `fct_orders.yml` semantic model file:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -571,7 +571,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/fct_orders.yml'>
 
@@ -605,7 +605,7 @@ models:
 
 Add dimensions to your `fct_orders.yml` semantic model file:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name='models/metrics/fct_orders.yml'>
 
 ```yaml
@@ -634,7 +634,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/fct_orders.yml'>
 
@@ -667,7 +667,7 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ### Measures
 
@@ -722,7 +722,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ### Simple metrics
 
@@ -813,7 +813,7 @@ There are different types of metrics you can configure:
 - [Simple metrics](/docs/build/metrics-overview#simple-metrics) &mdash; Directly reference a single column expression within a semantic model, without any additional columns involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 - [Ratio metrics](/docs/build/metrics-overview#ratio-metrics) &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
-Once you've created your semantic models, it's time to start referencing those <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0">simple metrics</VersionBlock> you made to create some metrics:
+Once you've created your semantic models, it's time to start referencing those <VersionBlock lastVersion="1.11">measures</VersionBlock><VersionBlock firstVersion="1.12">simple metrics</VersionBlock> you made to create some metrics:
 
 1. Add metrics to your `fct_orders.yml` file:
 
@@ -821,7 +821,7 @@ Once you've created your semantic models, it's time to start referencing those <
 Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
 :::
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -925,7 +925,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/fct_orders.yml'>
 
@@ -1013,12 +1013,12 @@ models:
 
 ### Add second semantic model to your project
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, measures, and metrics.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, and metrics.
 </VersionBlock>
 
@@ -1029,7 +1029,7 @@ After setting up your orders model:
 1. Create the file `dim_customers.yml`.
 2. Copy the following code into the file and click **Save**.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name='models/metrics/dim_customers.yml'>
 
@@ -1084,7 +1084,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/dim_customers.yml'>
 

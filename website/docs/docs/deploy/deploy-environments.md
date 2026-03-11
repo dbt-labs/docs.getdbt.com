@@ -156,7 +156,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 #### Editable fields
 
-- **Catalog** (optional): [Unity Catalog namespace](/docs/core/connect-data-platform/databricks-setup)
+- **Catalog** (optional): [Unity Catalog namespace](/docs/local/connect-data-platform/databricks-setup)
 
 </div>
 

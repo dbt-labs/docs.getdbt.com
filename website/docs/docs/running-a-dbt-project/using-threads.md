@@ -33,5 +33,5 @@ The <Constant name="fusion_engine" /> handles threading differently than <Consta
 For more information about <Constant name="fusion"/>'s approach to parallelism, refer to [the <Constant name="fusion_engine"/>](/docs/fusion) page.
 
 ## Related docs
-- [About profiles.yml](/docs/core/connect-data-platform/profiles.yml)
+- [About profiles.yml](/docs/local/profiles.yml)
 - [<Constant name="cloud" /> job scheduler](/docs/deploy/job-scheduler)

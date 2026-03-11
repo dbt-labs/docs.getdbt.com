@@ -243,7 +243,7 @@ MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 ```
 
 #### Metric type parameters
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 ```graphql
 MetricTypeParams {
   numerator: MetricInput

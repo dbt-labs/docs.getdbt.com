@@ -380,7 +380,6 @@ Start by understanding which features have limited or no support in <Constant na
 Visit the [Fusion supported features page](/docs/fusion/supported-features#limitations) and review the limitations table to see features that may affect your project.
 
 Common limitations include:
-- **Microbatch incremental strategy:**  Not yet available
 - **Model-level notifications:** Job-level notifications work, model-level don't yet
 - **Semantic Layer development:** Active semantic model development should stay on <Constant name="core" />
 - **SQLFluff linting:** Not integrated yet (though linting will be built into <Constant name="fusion" /> directly)

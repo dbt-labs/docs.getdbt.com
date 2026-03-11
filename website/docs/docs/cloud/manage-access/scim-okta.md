@@ -45,12 +45,15 @@ You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_p
 
 ## SCIM username format
 
-SCIM requires the username to be in the email address format. If your Okta configurations map the `Username` field to a different attribute, SCIM user provisioning will fail. To get around this without altering your user profiles, set your Okta app config to `Email`:
+For <Constant name="dbt_platform" /> SCIM with Okta, `userName` **must be the email address format**. <Constant name="dbt_platform" /> uses `userName` to look up existing users during SCIM sync. If Okta sends another format (such as an Okta internal ID like `00u...` or an employee ID), <Constant name="dbt_platform" /> cannot match the existing user, and provisioning will fail.
+
+If your Okta configurations map the `Username` field to a different attribute, set your Okta app config to `Email`:
 
 1. Open the SAML app created for the dbt integration.
 2. In the **Sign on** tab, click **Edit** in the **Settings** pane.
 3. Set the **Application username format** field to **Email**.
 4. Click **Save**.
+
 
 ## SCIM license mapping
 

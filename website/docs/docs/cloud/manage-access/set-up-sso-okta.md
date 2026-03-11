@@ -84,6 +84,12 @@ import LoginSlug from '/snippets/_login-slug.md';
     title="Configure the app's SAML Settings"
 />
 
+:::info Application username configuration
+The **Application username** setting depends on whether you plan to use SCIM or not:
+- **SSO only:** Use a unique value such as `Custom` / `user.getInternalProperty("id")` (recommended in earlier steps)
+- **SSO and SCIM:** Use `Email` format instead, as SCIM requires the username to be in email address format
+:::
+
 Use the **Attribute Statements** and **Group Attribute Statements** forms to
 map your organization's Okta User and Group Attributes to the format that
 <Constant name="cloud" /> expects.

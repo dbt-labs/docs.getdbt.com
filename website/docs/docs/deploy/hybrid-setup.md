@@ -74,7 +74,7 @@ A [<Constant name="cloud" /> account admin](/docs/cloud/manage-access/enterprise
    - The hybrid project will have a visible **Hybrid** indicator in the project list to help you identify it.
 <Lightbox src="/img/docs/deploy/hp-new-project.jpg" title="Hybrid project new project" />
 
-5. After creating a project, create a corresponding [production environment](/docs/deploy/deploy-environments#create-a-deployment-environment) and click **Save**. Note that you can leave the **Connection** field blank.
+5. After creating a project, create a corresponding [production environment](/docs/deploy/deploy-environments#create-a-deployment-environment) and click **Save**. You will need to create a placeholder [profile](/docs/cloud/about-profiles) and assign it to the environment to save. 
 6. (Optional) To update an existing dbt project to a hybrid project, navigate to **Account settings** and then select the **Project**. Click **Edit** and then check the **Hybrid development** checkbox.
 <Lightbox src="/img/docs/deploy/hp-existing-project.jpg" width="80%" title="Hybrid project for an existing project" />
 
@@ -105,7 +105,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
       - installed: 1.10.0-b1
       - latest:    1.9.3     - Ahead of latest version!
    ```
-2. If you don't have the latest version (1.10 or later), [upgrade](/docs/core/pip-install#change-dbt-core-versions) your dbt Core project by running `python -m pip install --upgrade dbt-core`.
+2. If you don't have the latest version (1.10 or later), [upgrade](/docs/local/install-dbt?version=1#change-dbt-core-versions) your dbt Core project by running `python -m pip install --upgrade dbt-core`.
 3. Set the following environment variables in your dbt Core project by running the following commands in the CLI. Replace the `your_account_id`, `your_environment_id`, and `your_token` with the actual values in the [previous step](#generate-service-token-and-artifact-upload-values).
 
    ```bash
