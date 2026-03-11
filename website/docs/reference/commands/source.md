@@ -115,11 +115,16 @@ When `dbt source freshness` completes, a <Term id="json" /> file containing info
 
 </File>
 
+<VersionBlock lastVersion="1.99">
+
 To override the destination for this `sources.json` file, use the `-o` (or `--output`) flag:
+
 ```
 # Output source freshness info to a different path
 $ dbt source freshness --output target/source_freshness.json
 ```
+
+</VersionBlock>
 
 ### Using source freshness
 

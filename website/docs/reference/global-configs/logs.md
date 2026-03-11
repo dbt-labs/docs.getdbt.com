@@ -141,6 +141,8 @@ You can use either of these parameters to ensure clean output that's compatible 
 - `dbt list --quiet` (suppresses all logging less than `ERROR` level, except for "printed" messages and list output)
 
 
+<VersionBlock lastVersion="1.99">
+
 ### Logging relational cache events
 
 import LogLevel from '/snippets/_log-relational-cache.md';
@@ -148,6 +150,8 @@ import LogLevel from '/snippets/_log-relational-cache.md';
 <LogLevel
 event={<a href="https://docs.getdbt.com/reference/global-configs/cache">relational cache</a>}
 />
+
+</VersionBlock>
 
 ### Color
 

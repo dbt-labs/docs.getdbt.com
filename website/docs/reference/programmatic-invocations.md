@@ -2,6 +2,14 @@
 title: "Programmatic invocations"
 ---
 
+<VersionBlock firstVersion="2.0">
+
+:::info Not yet supported in the <Constant name="fusion_engine" />
+Programmatic invocations via the Python API are not supported in the <Constant name="fusion_engine" />. Refer to [<Constant name="fusion" />'s limitations](/docs/fusion/supported-features#limitations) for details.
+:::
+
+</VersionBlock>
+
 In v1.5, <Constant name="core" /> added support for programmatic invocations. The intent is to expose the existing <Constant name="core" /> CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
 
 Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven’t done so already.

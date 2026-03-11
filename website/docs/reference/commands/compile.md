@@ -77,10 +77,19 @@ dbt compile --inline "select * from {{ ref('raw_orders') }}"
 select * from "jaffle_shop"."main"."raw_orders"
 ```
 
+<VersionBlock lastVersion="1.99">
 The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
 - `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query. This is a `dbt` flag, which means you need to add `dbt` as a prefix. For example: `dbt --no-populate-cache`.
 - `--no-introspect` to disable [introspective queries](/faqs/Warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example:`dbt compile --no-introspect`.
+</VersionBlock>
 
+<VersionBlock firstVersion="2.0">
+
+:::info Deprecated flags in the <Constant name="fusion_engine" />
+The `--no-populate-cache` and `--no-introspect` flags are not supported in the <Constant name="fusion_engine" />. They will be silently ignored if passed. [Learn more about deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags).
+:::
+
+</VersionBlock>
 
 ### FAQs
 <FAQ path="Warehouse/db-connection-dbt-compile" />

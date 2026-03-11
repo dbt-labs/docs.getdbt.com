@@ -6,6 +6,14 @@ toc_max_heading_level: 2
 intro_text: "Use the --warn-error flag to promote all warnings to errors or --warn-error-options for granular control through options."
 ---
 
+<VersionBlock firstVersion="2.0">
+
+:::info Limited support in the <Constant name="fusion_engine" />
+The `--warn-error` and `--warn-error-options` flags have limited support in the <Constant name="fusion_engine" />. Refer to [<Constant name="fusion" />'s limitations](/docs/fusion/supported-features#limitations) for details.
+:::
+
+</VersionBlock>
+
 ## Use `--warn-error` to promote all warnings to errors
 
 Enabling `WARN_ERROR` config or setting the `--warn-error` flag will convert _all_ dbt warnings into errors. Any time dbt would normally warn, it will instead raise an error. Examples include `--select` criteria that selects no resources, deprecations, configurations with no associated models, invalid test configurations, or tests and freshness checks that are configured to return warnings.

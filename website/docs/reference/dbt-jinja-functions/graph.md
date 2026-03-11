@@ -5,6 +5,14 @@ id: "graph"
 description: "The `graph` context variable contains info about nodes in your project."
 ---
 
+<VersionBlock firstVersion="2.0">
+
+:::info Limitation in the <Constant name="fusion_engine" />
+In the <Constant name="fusion_engine" />, the `raw_sql` / `raw_code` attribute of the `{{ graph }}` context variable is stubbed with an empty value at runtime. Code that accesses this attribute will not fail but will return different results than in <Constant name="core" />. Refer to [<Constant name="fusion" />'s limitations](/docs/fusion/supported-features#limitations) for details.
+:::
+
+</VersionBlock>
+
 The `graph` context variable contains information about the _nodes_ in your dbt
 project. Models, sources, tests, and snapshots are all examples of nodes in dbt
 projects.

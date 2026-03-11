@@ -4,6 +4,14 @@ description: "While a job is running, receive email notifications in real time a
 intro_text: "Set up dbt to notify model owners through email about issues in your deployment environments."
 ---
 
+<VersionBlock firstVersion="2.0">
+
+:::info Not yet supported in the <Constant name="fusion_engine" />
+Model-level notifications are not yet supported in the <Constant name="fusion_engine" />. Refer to [<Constant name="fusion" />'s limitations](/docs/fusion/supported-features#limitations) for details.
+:::
+
+</VersionBlock>
+
 Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-cloud-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
 
 - **Success** and **Fails** for models

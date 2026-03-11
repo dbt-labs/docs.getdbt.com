@@ -7,6 +7,16 @@ id: "cmd-docs"
 
 `dbt docs` has two supported subcommands: `generate` and `serve`.
 
+<VersionBlock firstVersion="2.0">
+
+:::info Limited support in the <Constant name="fusion_engine" />
+The <Constant name="fusion_engine" /> does not yet support a local experience for generating, hosting, and viewing documentation with `dbt docs generate` and `dbt docs serve`. Refer to [<Constant name="fusion" />'s limitations](/docs/fusion/supported-features#limitations) for details.
+
+The `--no-compile` and `--empty-catalog` flags for `dbt docs generate` are not supported in the <Constant name="fusion_engine" />. They will be silently ignored if passed. [Learn more about deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags).
+:::
+
+</VersionBlock>
+
 ### dbt docs generate
 
 The command is responsible for generating your project's documentation website by
@@ -29,6 +39,8 @@ Use the `--select` argument to limit the nodes included within `catalog.json`. W
 dbt docs generate --select +orders
 ```
 
+<VersionBlock lastVersion="1.99">
+
 Use the `--no-compile` argument to skip re-compilation. When this flag is provided, `dbt docs generate` will skip step (2) described above. Note that dbt still runs certain special macros (like `generate_schema_name`) [during parsing](/reference/global-configs/parsing), even when compilation is skipped.
 
 **Example**:
@@ -46,6 +58,8 @@ This is not recommended for production environments, as it means that your docum
 ```
 dbt docs generate --empty-catalog
 ```
+
+</VersionBlock>
 
 **Example**:
 

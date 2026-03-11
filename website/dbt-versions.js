@@ -301,6 +301,14 @@ exports.versionedPages = [
     page: "reference/global-configs/cache",
     lastVersion: "1.99",
   },
+  {
+    page: "reference/global-configs/record-timing-info",
+    lastVersion: "1.99",
+  },
+  {
+    page: "reference/global-configs/parsing",
+    lastVersion: "1.99",
+  },
 ];
 
 /**

@@ -4,6 +4,16 @@ id: "print-output"
 sidebar: "Print output"
 ---
 
+<VersionBlock firstVersion="2.0">
+
+:::info Not supported in the <Constant name="fusion_engine" />
+The `--print / --no-print` and `--printer-width` CLI flags are not supported in the <Constant name="fusion_engine" />. They will be silently ignored if passed. [Learn more about deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags).
+:::
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
 ### Suppress `print()` messages in stdout
 
 By default, dbt includes [`print()`](/reference/dbt-jinja-functions/print) messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
@@ -32,6 +42,8 @@ config:
 ```
 
 </File>
+
+</VersionBlock>
 
 ### Print color
 

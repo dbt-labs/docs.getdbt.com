@@ -4,6 +4,14 @@ id: "parsing"
 sidebar: "Parsing"
 ---
 
+<VersionBlock firstVersion="2.0">
+
+:::info Not supported in the <Constant name="fusion_engine" />
+The `--partial-parse`, `--static-parser`, and `--use-experimental-parser` CLI flags are not supported in the <Constant name="fusion_engine" />. They will be silently ignored if passed. [Learn more about deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags).
+:::
+
+</VersionBlock>
+
 ### Partial Parsing
 
 The `PARTIAL_PARSE` flag can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.

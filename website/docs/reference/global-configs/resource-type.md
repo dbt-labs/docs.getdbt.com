@@ -4,6 +4,14 @@ id: "resource-type"
 sidebar: "resource type"
 ---
 
+<VersionBlock firstVersion="2.0">
+
+:::info Renamed in the <Constant name="fusion_engine" />
+The `--resource-type` and `--exclude-resource-type` flags have been renamed to `--resource-types` and `--exclude-resource-types` (plural) in the <Constant name="fusion_engine" />. Update your commands and job definitions accordingly. [Learn more about deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags).
+:::
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.9">
 
 The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` commands.

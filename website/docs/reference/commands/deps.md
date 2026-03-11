@@ -113,6 +113,8 @@ dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"
 
 #### Non-Hub packages
 
+<VersionBlock lastVersion="1.99">
+
 Use the `--source` flag to specify the type of package to be installed:
 
 ```shell
@@ -123,3 +125,13 @@ dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source
 # Local package
 dbt deps --add-package /opt/dbt/redshift --source local
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+:::info Deprecated flag in the <Constant name="fusion_engine" />
+The `--source` flag for `dbt deps` is not supported in the <Constant name="fusion_engine" />. [Learn more about deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags).
+:::
+
+</VersionBlock>

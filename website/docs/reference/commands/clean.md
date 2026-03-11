@@ -13,6 +13,14 @@ dbt clean
 
 ## Supported flags
 
+<VersionBlock firstVersion="2.0">
+
+:::info Not supported in the <Constant name="fusion_engine" />
+The `--clean-project-files-only` and `--no-clean-project-files-only` flags are not supported in the <Constant name="fusion_engine" />. In Fusion, `dbt clean` will not delete any files in configured resource paths or files outside the project directory. [Learn more about deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags).
+:::
+
+</VersionBlock>
+
 This section will briefly explain the following flags:
 
 - [`--clean-project-files-only`](#--clean-project-files-only) (default)

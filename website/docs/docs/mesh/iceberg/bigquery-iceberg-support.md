@@ -7,6 +7,14 @@ description: Understand BigQuery support for Apache Iceberg.
 
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
 
+<VersionBlock firstVersion="2.0">
+
+:::info Not yet supported in the <Constant name="fusion_engine" />
+Iceberg table support for BigQuery is not yet available in the <Constant name="fusion_engine" />. Refer to [<Constant name="fusion" />'s limitations](/docs/fusion/supported-features#limitations) for details.
+:::
+
+</VersionBlock>
+
 dbt supports materializing Iceberg tables on BigQuery via the catalog integration, starting with the dbt-bigquery 1.10 release.
 
 ## Creating Iceberg Tables
