@@ -127,9 +127,6 @@ The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/c
 
 ```shell
 dbt build --write-catalog
-dbt run --write-catalog
-dbt parse --write-catalog
-dbt compile --write-catalog
 ```
 
 ### Platform behavior
