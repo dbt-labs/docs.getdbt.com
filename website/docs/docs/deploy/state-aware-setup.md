@@ -135,6 +135,51 @@ You can optionally configure state-aware orchestration when you want to fine-tun
   - Add a time difference to account for late-arriving data
   - Delay freshness detection until a threshold is reached (for example, number of records or hours of data)
 
+  The following examples show how to configure a source so that state-aware orchestration detects new upstream data only when your custom condition is met.
+
+  Use `loaded_at_field` when your table has a single timestamp column that indicates when data was loaded. Use `loaded_at_query` when you need a custom SQL expression (for example, the latest of several columns, or a filter for recent data). You can either define `loaded_at_field` or `loaded_at_query` but not both.
+
+  <Tabs>
+  <TabItem value="loaded_at_field" label="loaded_at_field">
+  State-aware orchestration treats the source as having new data when the maximum value of the `loaded_at_field` column changes since the last run:
+
+  <File name="models/sources.yml">
+
+  ```yaml
+  sources:
+    - name: jaffle_shop
+      config:
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        loaded_at_field: _etl_loaded_at
+  ```
+
+  </File>
+
+  </TabItem>
+  <TabItem value="loaded_at_query" label="loaded_at_query">
+
+  To define freshness with custom SQL (for example, to align with a lookback window), use `loaded_at_query`. State-aware orchestration runs the query to get a single timestamp. When that value changes compared to the previous run, the source is considered fresh:
+
+  <File name="models/sources.yml">
+
+  ```yaml
+  sources:
+    - name: raw_orders
+      tables:
+        - name: orders
+          loaded_at_query: |
+            select max(ingested_at)
+            from {{ this }}
+            where ingested_at >= current_timestamp - interval '3 days'
+  ```
+
+  </File>
+
+  </TabItem>
+  </Tabs>
+
 - **Reducing model build frequency**
 
   Some models don’t need to be rebuilt every time their source data is updated. To control this:
