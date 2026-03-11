@@ -26,5 +26,11 @@ Some adapters can display behavior changes when certain flags are enabled. The f
     body="Behavior changes for the Amazon Redshift adapter."
     link="reference/global-configs/redshift-changes"
     icon="redshift"/>
-
+<!--
+<Card
+    title="Snowflake"
+    body="Behavior changes for the Snowflake adapter."
+    link="reference/global-configs/snowflake-changes"
+    icon="snowflake"/>
+-->
 </div>

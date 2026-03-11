@@ -813,6 +813,8 @@ For databases that support it, this macro will return `NULL` when the cast fails
 
 ## Comparison functions
 
+Comparison functions are macros that compare two SQL expressions and return a boolean SQL expression (for example, `TRUE`, `FALSE`, or `UNKNOWN`).
+
 ### equals 
 
 __Args__:
