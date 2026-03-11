@@ -139,7 +139,7 @@ You can optionally configure state-aware orchestration when you want to fine-tun
 
   <Tabs>
   <TabItem value="loaded_at_field" label="loaded_at_field">
-  State-aware orchestration treats the source as having new data when the maximum value of the `loaded_at_field` column changes since the last run:
+  State-aware orchestration treats the source as fresh when the maximum value of the `loaded_at_field` column changes since the previous run:
 
   <File name="models/sources.yml">
 
@@ -158,7 +158,7 @@ You can optionally configure state-aware orchestration when you want to fine-tun
   </TabItem>
   <TabItem value="loaded_at_query" label="loaded_at_query">
 
-  To define freshness with custom SQL (for example, to align with a lookback window), use `loaded_at_query`. State-aware orchestration runs the query to get a single timestamp. When that value changes compared to the previous run, the source is considered fresh:
+  To define freshness with custom SQL, use `loaded_at_query`. State-aware orchestration runs the query to get a single timestamp. When that value changes compared to the previous run, the source is considered fresh.
 
   <File name="models/sources.yml">
 
@@ -172,6 +172,8 @@ You can optionally configure state-aware orchestration when you want to fine-tun
             from {{ this }}
             where ingested_at >= current_timestamp - interval '3 days'
   ```
+
+  In this example, dbt runs the custom `loaded_at_query` to get a single timestamp &mdash; the latest `ingested_at` within the last three days. On each run, dbt compares this new maximum timestamp to the value from the previous run. If the maximum timestamp is newer, state-aware orchestration considers the source to have fresh data and may trigger rebuilds.
 
   </File>
 
