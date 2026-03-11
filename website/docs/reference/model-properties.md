@@ -26,8 +26,8 @@ import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability
 |[deprecation_date](/reference/resource-properties/deprecation_date)|	string|	No	|Date when the model is deprecated.|
 |[access](/reference/resource-configs/access)	|string|	No|	Access level: private, protected, or public. Supported at the top-level for backwards compatibility only. |
 |[time_spine](/docs/build/metricflow-time-spine)|	object	|No	|Time spine configuration for the <Constant name="semantic_layer" />.|
-|[semantic_model](/reference/semantic-model-properties)|	object	|No	|*Latest YAML spec only.* Semantic model configuration for the <Constant name="semantic_layer" />: top-level block with `enabled`, plus optional top-level `agg_time_dimension`, `primary_entity`, and `derived_semantics`. Refer to [Semantic model properties](/reference/semantic-model-properties).|
-|[metrics](/reference/metric-properties)|	array	|No	|*Latest YAML spec only.* List of metrics derived from this model's semantic model; defined alongside `semantic_model:` and `columns:`. Refer to [Metric properties](/reference/metric-properties).|
+|[semantic_model](/reference/semantic-model-properties)|	object	|No	|*Latest YAML spec only.* Enable semantic model configuration for the <Constant name="semantic_layer" /> with `enabled: true`. For other properties, refer to [Semantic model properties](/reference/semantic-model-properties).|
+|[metrics](/reference/metric-properties)|	array	|No	|*Latest YAML spec only.* Metrics derived from this semantic model; list is alongside (not under) `semantic_model` and `columns`. For other properties, refer to [Metric properties](/reference/metric-properties).|
 
 <VersionBlock lastVersion="1.11">
 
