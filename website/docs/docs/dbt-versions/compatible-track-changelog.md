@@ -10,6 +10,12 @@ Each monthly **Compatible** release includes functionality matching up-to-date o
 
 For more information, see [release tracks](/docs/dbt-versions/cloud-release-tracks).
 
+## March 2026
+
+The compatible release scheduled for March 2026 will be skipped in order to further stabilize the minor upgrade of `dbt-core==1.11.6` across the dbt platform.
+
+Compatible releases will resume in April 2026.
+
 ## February 2026
 
 Release date: February 27, 2026

@@ -314,6 +314,10 @@ The `warn_error_option` options for `include` and `exclude` have been deprecated
 
 ## Adapter-specific features and functionalities
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 ### Snowflake
 - You can use the `platform_detection_timeout_seconds` parameter to control how long the Snowflake connector waits when detecting the cloud platform where the connection is being made. For more information, see [Snowflake setup](/docs/local/connect-data-platform/snowflake-setup#platform_detection_timeout_seconds).
 

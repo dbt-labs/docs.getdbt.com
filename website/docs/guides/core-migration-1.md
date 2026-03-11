@@ -1,6 +1,6 @@
 ---
 title: 'Move from dbt Core to the dbt platform: Get started'
-id: core-to-cloud-1
+id: core-migration-1
 description: "Learn how to move from dbt Core to the dbt platform and what you need to get started."
 hoverSnippet: "Learn how to move from dbt Core to the dbt platform."
 icon: 'guides'
@@ -15,25 +15,28 @@ level: 'Intermediate'
 
 ## Introduction
 
-Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
+Moving from <Constant name="core" /> to <Constant name="cloud" /> streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service. The data layer is the foundation for trusted analytics and AI; <Constant name="dbt_platform" /> gives you the governance, shared definitions, and reliability to scale both &mdash; without the hidden cost of self-hosting in engineer hours and wasted compute.
 
 Explore our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />. This series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
-import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
+import CoreMigrationTable from '/snippets/_core-migration-table.md';
 
-<CoretoCloudTable/>
+<CoreMigrationTable/>
 
 <Expandable alt_header="What are dbt and dbt Core?">
 
-   - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+   - <Constant name="cloud" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. Infrastructure is managed for you &mdash; no custom scripts or fragile orchestration. State-aware orchestration only builds what's changed, so you waste less compute and time. Browser-based development and Copilot open up development to analysts, so you're no longer the bottleneck for every change. With end-to-end lineage, shared metric definitions, and CI that catches regressions before production, you spend less time debugging and more time building. 
+   <Constant name="cloud" /> also supports:
      - Development experiences tailored to multiple personas ([<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation))
      - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
      - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
      - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
      - [<Constant name="explorer" />](/docs/explore/explore-projects) for easier data discovery and understanding
 
-   Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features).
-- <Constant name="core" /> is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
+   Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features).
+- <Constant name="core" /> is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for 'single players' and small technical teams, all development happens on a command-line interface (CLI), and production deployments must be self-hosted and maintained. 
+
+You absorb the cost of every upgrade, every broken CI run, and every request that pulls you away from real work: maintaining infrastructure, debugging the CI pipeline, and fielding every change that requires CLI access. Compute runs unchecked, upgrades are risky, and there's no easy way to trace what broke or why. This requires significant, costly work that adds up over time to maintain and scale &mdash; and without governance, shared definitions, or reliable testing.
 
 </Expandable>
 
@@ -41,19 +44,19 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 This guide outlines the steps you need to take to move from <Constant name="core" /> to <Constant name="cloud" /> and highlights the necessary technical changes:
 
-- [Account setup](/guides/core-to-cloud-1?step=4): Learn how to create a <Constant name="cloud" /> account, invite team members, and configure it for your team.
-- [Data platform setup](/guides/core-to-cloud-1?step=5): Find out about connecting your data platform to <Constant name="cloud" />.
-- [<Constant name="git" /> setup](/guides/core-to-cloud-1?step=6): Learn to link your dbt project's <Constant name="git" /> repository with <Constant name="cloud" />.
-- [Developer setup:](/guides/core-to-cloud-1?step=7) Understand the setup needed for developing in <Constant name="cloud" />.
-- [Environment variables](/guides/core-to-cloud-1?step=8): Discover how to manage environment variables in <Constant name="cloud" />, including their priority.
-- [Orchestration setup](/guides/core-to-cloud-1?step=9): Learn how to prepare your <Constant name="cloud" /> environment and jobs for orchestration.
-- [Models configuration](/guides/core-to-cloud-1?step=10): Get insights on validating and running your models in <Constant name="cloud" />, using either the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
-- [What's next?](/guides/core-to-cloud-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
+- [Account setup](/guides/core-migration-1?step=4): Learn how to create a <Constant name="cloud" /> account, invite team members, and configure it for your team.
+- [Data platform setup](/guides/core-migration-1?step=5): Find out about connecting your data platform to <Constant name="cloud" />.
+- [<Constant name="git" /> setup](/guides/core-migration-1?step=6): Learn to link your dbt project's <Constant name="git" /> repository with <Constant name="cloud" />.
+- [Developer setup:](/guides/core-migration-1?step=7) Understand the setup needed for developing in <Constant name="cloud" />.
+- [Environment variables](/guides/core-migration-1?step=8): Discover how to manage environment variables in <Constant name="cloud" />, including their priority.
+- [Orchestration setup](/guides/core-migration-1?step=9): Learn how to prepare your <Constant name="cloud" /> environment and jobs for orchestration.
+- [Models configuration](/guides/core-migration-1?step=10): Get insights on validating and running your models in <Constant name="cloud" />, using either the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI.
+- [What's next?](/guides/core-migration-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ### Related docs
 - [Learn <Constant name="cloud" />](https://learn.getdbt.com) on-demand video learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
-- Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+- Work with the [dbt Labs' Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
 ## Prerequisites
 
@@ -102,7 +105,7 @@ This section outlines the considerations and methods to connect your data platfo
 
 Explore these additional configurations to optimize your data platform setup further:
 
-1. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status="managed,managed_plus" />
+1. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform's SSO.  <Lifecycle status="managed,managed_plus" />
 
 ## Git setup
 
@@ -118,12 +121,12 @@ Your existing dbt project source code should live in a <Constant name="git" /> r
 
 ## Developer setup
 
-This section highlights the development configurations you’ll need for your <Constant name="cloud" /> project. The following categories are covered in this section:
+This section highlights the development configurations you'll need for your <Constant name="cloud" /> project. The following categories are covered in this section:
 
-- [<Constant name="cloud" /> environments](/guides/core-to-cloud-1?step=7#dbt-cloud-environments)
-- [Initial setup steps](/guides/core-to-cloud-1?step=7#initial-setup-steps)
-- [Additional configuration](/guides/core-to-cloud-1?step=7#additional-configuration-2)
-- [<Constant name="cloud" /> commands](/guides/core-to-cloud-1?step=7#dbt-cloud-commands)
+- [<Constant name="cloud" /> environments](/guides/core-migration-1?step=7#dbt-cloud-environments)
+- [Initial setup steps](/guides/core-migration-1?step=7#initial-setup-steps)
+- [Additional configuration](/guides/core-migration-1?step=7#additional-configuration-2)
+- [<Constant name="cloud" /> commands](/guides/core-migration-1?step=7#dbt-cloud-commands)
 
 ### dbt environments
 
@@ -137,13 +140,13 @@ The most common data environments are production, staging, and development. The 
 - Using [Git repo caching](/docs/cloud/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="managed,managed_plus" />
 
 ### Initial setup steps
-1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/studio-ide/develop-in-studio#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
+1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/studio-ide/develop-in-studio#access-the-cloud-ide). You'll need this to access your dbt project and start developing.
 
-2. **dbt Core version** &mdash; In your <Constant name="cloud" /> environment, select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and <Constant name="cloud" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
-   - When using <Constant name="core" />, you need to think about which version you’re using and manage your own upgrades. When using <Constant name="cloud" />, leverage [release tracks](/docs/dbt-versions/cloud-release-tracks) so you don’t have to.
+2. **dbt Core version** &mdash; In your <Constant name="cloud" /> environment, select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and <Constant name="cloud" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of dbt Core you're using.
+   - When using <Constant name="core" />, you need to think about which version you're using and manage your own upgrades. When using <Constant name="cloud" />, leverage [release tracks](/docs/dbt-versions/cloud-release-tracks) so you don't have to.
 
-3. **Connect to your data platform** &mdash; When using <Constant name="cloud" />, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI.
-   - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
+3. **Connect to your data platform** &mdash; When using <Constant name="cloud" />, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI.
+   - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
 
 4. **Development tools** &mdash; Set up your development workspace with the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) (command line interface or code editor) or [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt code in your tool of choice.
    - If you've previously installed <Constant name="core" />, the [<Constant name="cloud" /> CLI installation doc](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli) has more information on how to install the <Constant name="cloud" /> CLI, create aliases, or uninstall <Constant name="core" /> for a smooth transition.
@@ -154,13 +157,13 @@ Explore these additional configurations to optimize your developer setup further
 1. **Custom target names** &mdash; Using [`custom target.names`](/docs/build/custom-target-names) in your dbt projects helps identify different environments (like development, staging, and production). While you can specify the `custom target.name` values in your developer credentials or orchestration setup, we recommend using [environment variables](/docs/build/environment-variables) as the preferred method. They offer a clearer way to handle different environments and are better supported by dbt's partial parsing feature, unlike using [`{{ target }}` logic](/reference/dbt-jinja-functions/target) which is meant for defining the data warehouse connection.
 
 ### dbt commands
-1. Review the [dbt commands](/reference/dbt-commands) supported for <Constant name="cloud" /> development. For example, `dbt init` isn’t needed in <Constant name="cloud" /> as you can create a new project directly in <Constant name="cloud" />.
+1. Review the [dbt commands](/reference/dbt-commands) supported for <Constant name="cloud" /> development. For example, `dbt init` isn't needed in <Constant name="cloud" /> as you can create a new project directly in <Constant name="cloud" />.
 
 ## Environment variables
 This section will help you understand how to set up and manage <Constant name="cloud" /> environment variables for your project. The following categories are covered:
-- [Environment variables in <Constant name="cloud" />](/guides/core-to-cloud-1?step=7#environment-variables-in-dbt-cloud)
-- [<Constant name="cloud" /> environment variables order of precedence](/guides/core-to-cloud-1?step=7#dbt-cloud-environment-variables-order-of-precedence)
-- [Set environment variables in <Constant name="cloud" />](/guides/core-to-cloud-1?step=7#set-environment-variables-in-dbt-cloud)
+- [Environment variables in <Constant name="cloud" />](/guides/core-migration-1?step=7#environment-variables-in-dbt-cloud)
+- [<Constant name="cloud" /> environment variables order of precedence](/guides/core-migration-1?step=7#dbt-cloud-environment-variables-order-of-precedence)
+- [Set environment variables in <Constant name="cloud" />](/guides/core-migration-1?step=7#set-environment-variables-in-dbt-cloud)
 
 In <Constant name="cloud" />, you can set [environment variables](/docs/build/environment-variables) in the <Constant name="cloud" /> user interface (UI). Read [Set up environment variables](#set-environment-variables-in-dbt-cloud) for more info.
 
@@ -168,7 +171,7 @@ In dbt Core, environment variables, or the [`env_var` function](/reference/dbt-j
 
 ### Environment variables in dbt
   - <Constant name="cloud" /> environment variables must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`).
-  - If your <Constant name="core" /> environment variables don’t follow this naming convention, perform a [“find and replace”](/docs/cloud/studio-ide/develop-in-studio#dbt-cloud-ide-features) in your project to make sure all references to these environment variables contain the proper naming conventions.
+  - If your <Constant name="core" /> environment variables don't follow this naming convention, perform a ["find and replace"](/docs/cloud/studio-ide/develop-in-studio#dbt-cloud-ide-features) in your project to make sure all references to these environment variables contain the proper naming conventions.
 - <Constant name="cloud" /> secures environment variables that enable more flexible configuration of data warehouse connections or git provider integrations, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET`to obscure them in logs and the UI.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
@@ -192,10 +195,10 @@ Environment variables in <Constant name="cloud" /> are managed with a clear [ord
 
 This section outlines the considerations and methods to set up your <Constant name="cloud" /> environments and jobs for orchestration. The following categories are covered in this section:
 
-- [<Constant name="cloud" /> environments](/guides/core-to-cloud-1?step=8#dbt-cloud-environments-1)
-- [Initial setup steps](/guides/core-to-cloud-1?step=8#initial-setup-steps-1)
-- [Additional configuration](/guides/core-to-cloud-1?step=8#additional-configuration-3)
-- [CI/CD setup](/guides/core-to-cloud-1?step=8#cicd-setup)
+- [<Constant name="cloud" /> environments](/guides/core-migration-1?step=8#dbt-cloud-environments-1)
+- [Initial setup steps](/guides/core-migration-1?step=8#initial-setup-steps-1)
+- [Additional configuration](/guides/core-migration-1?step=8#additional-configuration-3)
+- [CI/CD setup](/guides/core-migration-1?step=8#cicd-setup)
 
 ### dbt environments
 To use the [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This is the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.
@@ -205,7 +208,7 @@ To use the [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-schedule
    - Once your full migration is complete, we recommend upgrading your environments to [release tracks](/docs/dbt-versions/cloud-release-tracks) to always get the latest features and more. You only need to do this once.
 
 2. **Configure your jobs** &mdash; [Create jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs) for scheduled or event-driven dbt jobs. You can use cron execution, manual, pull requests, or trigger on the completion of another job.
-   - Note that alongside [jobs in <Constant name="cloud" />](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
+   - Note that alongside [jobs in <Constant name="cloud" />](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
 
 ### Additional configuration
 Explore these additional configurations to optimize your <Constant name="cloud" /> orchestration setup further:
@@ -236,17 +239,17 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 
 ## Model development and discovery
 
-In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).
+In this section, you'll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation).
 
-You’ll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
+You'll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
 
 1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and run some [dbt commands](/reference/dbt-commands):
    - Run `dbt compile` to make sure your project compiles correctly.
-   - Run a few models in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to ensure you’re experiencing accurate results in development.
+   - Run a few models in the <Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI to ensure you're experiencing accurate results in development.
 
-2. Once your first job has successfully run in your production environment, use [<Constant name="explorer" />](/docs/explore/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
+2. Once your first job has successfully run in your production environment, use [<Constant name="explorer" />](/docs/explore/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
 
-## What’s next?
+## What's next?
 
 <ConfettiTrigger>
 
@@ -262,12 +265,12 @@ You have learned:
 For the next steps, you can continue exploring our 3-part-guide series on moving from <Constant name="core" /> to <Constant name="cloud" />:
 
 
-<CoretoCloudTable/>
+<CoreMigrationTable/>
 
 ### Related docs
 - [Learn <Constant name="cloud" />](https://learn.getdbt.com) video courses for on-demand learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights.
-- Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+- Work with the [dbt Labs' Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 - [How <Constant name="cloud" /> compares with <Constant name="core" />](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of <Constant name="core" /> and <Constant name="cloud" />.
 - Subscribe to the [<Constant name="cloud" /> RSS alerts](https://status.getdbt.com/)
 
