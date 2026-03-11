@@ -112,38 +112,42 @@ As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the 
 
 <VersionBlock firstVersion="2.0">
 
-The <Constant name="fusion_engine" /> uses `write-catalog` instead of `dbt docs generate` for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. This command is fully Fusion native and significantly more performant.
+The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of the `dbt docs generate` command for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. This flag is fully Fusion native and significantly more performant.
 
-## dbt write-catalog
+## --write-catalog flag
 
-The `write-catalog` command generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project.
+The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. You can use this flag with the following commands:
 
-**Example**:
+- `dbt build`
+- `dbt run`
+- `dbt parse`
+- `dbt compile`
+
+**Examples**:
 
 ```shell
-dbt write-catalog
+dbt build --write-catalog
+dbt run --write-catalog
+dbt parse --write-catalog
+dbt compile --write-catalog
 ```
 
 ### Platform behavior
 
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically invokes `write-catalog` instead.
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead.
 
 ### Local usage
 
-When running <Constant name="fusion" /> locally, use `dbt write-catalog` directly to generate your catalog:
+When running <Constant name="fusion" /> locally, add the `--write-catalog` flag to your command to generate the catalog:
 
 ```shell
-dbt write-catalog
+dbt build --write-catalog
 ```
 
 ### What's different from docs generate
 
-The `write-catalog` command focuses solely on metadata hydration&mdash;generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
+The `--write-catalog` flag focuses solely on metadata hydration, generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
 
 For the open-source documentation site experience, use `dbt docs generate` with <Constant name="core" />.
-
-### What's next
-
-Catalog metadata hydration will be integrated directly into `dbt build` and `dbt run` commands automatically, eliminating the need for a separate step. The `write-catalog` command is a stepping stone toward this seamless experience.
 
 </VersionBlock>

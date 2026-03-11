@@ -5,7 +5,7 @@ sidebar_label: "Catalog"
 
 **Current schema**: [`v1`](https://schemas.getdbt.com/dbt/catalog/v1.json)
     
-**Produced by:** <VersionBlock lastVersion="1.99">[`docs generate`](/reference/commands/cmd-docs)</VersionBlock><VersionBlock firstVersion="2.0">[`write-catalog`](/reference/commands/cmd-docs)</VersionBlock>
+**Produced by:** <VersionBlock lastVersion="1.99">[`docs generate`](/reference/commands/cmd-docs)</VersionBlock><VersionBlock firstVersion="2.0">[`--write-catalog`](/reference/commands/cmd-docs) flag</VersionBlock>
 
 This file contains information from your <Term id="data-warehouse" /> about the tables and <Term id="view">views</Term> produced and defined by the resources in your project. Today, dbt uses this file to populate metadata, such as column types and <Term id="table" /> statistics, in the [docs site](/docs/explore/build-and-view-your-docs).
 
@@ -14,7 +14,7 @@ This file contains information from your <Term id="data-warehouse" /> about the 
 - [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
 - `nodes`: Dictionary containing information about database objects corresponding to dbt models, seeds, and snapshots.
 - `sources`: Dictionary containing information about database objects corresponding to dbt sources.
-- `errors`: Errors received while running metadata queries during <VersionBlock lastVersion="1.99">`dbt docs generate`</VersionBlock><VersionBlock firstVersion="2.0">`dbt write-catalog`</VersionBlock>.
+- `errors`: Errors received while running metadata queries during <VersionBlock lastVersion="1.99">`dbt docs generate`</VersionBlock><VersionBlock firstVersion="2.0">catalog generation (via `--write-catalog` flag)</VersionBlock>.
 
 ### Resource details
 
