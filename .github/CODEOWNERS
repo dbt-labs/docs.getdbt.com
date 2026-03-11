@@ -16,3 +16,10 @@
 # Require approval from the Transport team when making
 # changes to the public-facing migration documentation.
 /website/docs/docs/cloud/migration.md @dbt-labs/transport
+
+# Require review from the dbt Labs web team
+website/src/                                                  @dbt-labs/web-team 
+website/scripts/                                              @dbt-labs/web-team 
+website/docusaurus.config.js                                  @dbt-labs/web-team 
+styles/ (or styles/**)                                        @dbt-labs/web-team 
+website/src/theme/                                            @dbt-labs/web-team 
