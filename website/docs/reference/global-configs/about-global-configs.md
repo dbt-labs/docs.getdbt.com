@@ -33,6 +33,7 @@ on-run-start:
 
 
 ## Available flags
+
 Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
 
 ### Common flag examples
@@ -46,6 +47,8 @@ dbt build --target staging
 ```
 
 The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/core/connect-data-platform/connection-profiles#understanding-targets-in-profiles).
+
+<VersionBlock lastVersion="1.10">
 
 <FilterableTable>
 
@@ -96,3 +99,62 @@ The `--target` flag allows you to run the same dbt project against different env
 | [write_json](/reference/global-configs/json-artifacts) | boolean | True | ✅ | `DBT_WRITE_JSON` | `--write-json`, `--no-write-json` | ✅ |
 
 </FilterableTable>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+<FilterableTable>
+
+| Flag name | Type | Default | Supported in project? | Environment variable | <div style={{width:'400px'}}>CLI options</div> | Supported in <Constant name="cloud_cli" />? |
+|-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
+| [cache_selected_only](/reference/global-configs/cache) | boolean | False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only`, `--no-cache-selected-only` | ✅ |
+| [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | boolean | True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only, --no-clean-project-files-only` | ❌ |
+| [debug](/reference/global-configs/logs#debug-level-logging) | boolean | False | ✅ | `DBT_ENGINE_DEBUG` | `--debug`, `--no-debug` | ✅ |
+| [defer](/reference/node-selection/defer) | boolean | False | ❌ | `DBT_ENGINE_DEFER` | `--defer`, `--no-defer` | ✅ (default) |
+| [defer_state](/reference/node-selection/defer) | path | None | ❌ | `DBT_ENGINE_DEFER_STATE` | `--defer-state` | ❌ |
+| [favor_state](/reference/node-selection/defer#favor-state) | boolean | False | ❌ | `DBT_ENGINE_FAVOR_STATE` | `--favor-state`, `--no-favor-state` | ✅ |
+| [empty](/docs/build/empty-flag) | boolean | False | ❌ | `DBT_ENGINE_EMPTY` | `--empty`, `--no-empty` | ✅  |
+| [event_time_start](/reference/dbt-jinja-functions/model#batch-properties-for-microbatch-models) | datetime | None | ❌ | `DBT_ENGINE_EVENT_TIME_START` | `--event-time-start` | ✅ |
+| [event_time_end](/reference/dbt-jinja-functions/model#batch-properties-for-microbatch-models) | datetime | None | ❌ | `DBT_ENGINE_EVENT_TIME_END` | `--event-time-end` | ✅ |
+| [fail_fast](/reference/global-configs/failing-fast) | boolean | False | ✅ | `DBT_ENGINE_FAIL_FAST` | `--fail-fast`, `-x`, `--no-fail-fast` | ✅ |
+| [full_refresh](/reference/resource-configs/full_refresh) | boolean | False | ✅ (as resource config) | `DBT_ENGINE_FULL_REFRESH` | `--full-refresh`, `--no-full-refresh` | ✅ |
+| [indirect_selection](/reference/node-selection/test-selection-examples#syntax-examples) | enum | eager | ✅ | `DBT_ENGINE_INDIRECT_SELECTION` | `--indirect-selection` | ❌ |
+| [introspect](/reference/commands/compile#introspective-queries) | boolean | True | ❌ | `DBT_ENGINE_INTROSPECT` | `--introspect`, `--no-introspect` | ❌ |
+| [log_cache_events](/reference/global-configs/logs#logging-relational-cache-events) | boolean | False | ❌ | `DBT_ENGINE_LOG_CACHE_EVENTS` | `--log-cache-events`, `--no-log-cache-events` | ❌ |
+| [log_format_file](/reference/global-configs/logs#log-formatting) | enum | default (text) | ✅ | `DBT_ENGINE_LOG_FORMAT_FILE` | `--log-format-file` | ❌ |
+| [log_format](/reference/global-configs/logs#log-formatting) | enum | default (text) | ✅ | `DBT_ENGINE_LOG_FORMAT` | `--log-format` | ❌ |
+| [log_level_file](/reference/global-configs/logs#log-level) | enum | debug | ✅ | `DBT_ENGINE_LOG_LEVEL_FILE` | `--log-level-file` | ❌ |
+| [log_level](/reference/global-configs/logs#log-level) | enum | info | ✅ | `DBT_ENGINE_LOG_LEVEL` | `--log-level` | ❌ |
+| [log_path](/reference/global-configs/logs) | path | None (uses `logs/`) | ❌ | `DBT_ENGINE_LOG_PATH` | `--log-path` | ❌ |
+| [partial_parse](/reference/global-configs/parsing#partial-parsing) | boolean | True | ✅ | `DBT_ENGINE_PARTIAL_PARSE` | `--partial-parse`, `--no-partial-parse` | ✅ |
+| [populate_cache](/reference/global-configs/cache) | boolean | True | ✅ | `DBT_ENGINE_POPULATE_CACHE` | `--populate-cache`, `--no-populate-cache` | ✅ |
+| [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | boolean | True | ❌ | `DBT_ENGINE_PRINT` | `--print`, `--no-print` | ❌ |
+| [printer_width](/reference/global-configs/print-output#printer-width) | int | 80 | ✅ | `DBT_ENGINE_PRINTER_WIDTH` | `--printer-width` | ❌ |
+| [profile](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ✅ (as top-level key) | `DBT_ENGINE_PROFILE`  | [`--profile`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) | ❌ |
+| [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (current dir, then HOME dir) | ❌ | `DBT_ENGINE_PROFILES_DIR` | `--profiles-dir` | ❌ |
+| [project_dir](/reference/dbt_project.yml) | path |  | ❌ | `DBT_ENGINE_PROJECT_DIR` | `--project-dir` | ❌ |
+| [quiet](/reference/global-configs/logs#suppress-non-error-logs-in-output) | boolean | False | ❌ | `DBT_ENGINE_QUIET` | `--quiet` | ✅ |
+| [resource-type](/reference/global-configs/resource-type) (v1.8+) | string | None | ❌ | `DBT_ENGINE_RESOURCE_TYPES` <br></br> `DBT_ENGINE_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` | ✅ |
+| [sample](/docs/build/sample-flag) | string | None | ❌ | `DBT_ENGINE_SAMPLE` | `--sample` | ✅ |
+| [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | boolean | True | ✅ | `DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats`, `--no-send-anonymous-usage-stats` | ❌ |
+| [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | boolean | True | ✅ | ❌ | ❌ | ❌ |
+| [state](/reference/node-selection/defer) | path | none | ❌ | `DBT_ENGINE_STATE`, `DBT_ENGINE_DEFER_STATE` | `--state`, `--defer-state` | ❌ |
+| [static_parser](/reference/global-configs/parsing#static-parser) | boolean | True | ✅ | `DBT_ENGINE_STATIC_PARSER` | `--static-parser`, `--no-static-parser` | ❌ |
+| [store_failures](/reference/resource-configs/store_failures) | boolean | False | ✅ (as resource config) | `DBT_ENGINE_STORE_FAILURES` | `--store-failures`, `--no-store-failures` | ✅ |
+| [target_path](/reference/global-configs/json-artifacts) | path | None (uses `target/`) | ❌ | `DBT_ENGINE_TARGET_PATH` | `--target-path` | ❌ |
+| [target](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ❌ | `DBT_ENGINE_TARGET` | [`--target`](/docs/core/connect-data-platform/connection-profiles#overriding-profiles-and-targets) | ❌ |
+| [use_colors_file](/reference/global-configs/logs#color) | boolean | True | ✅ | `DBT_ENGINE_USE_COLORS_FILE` | `--use-colors-file`, `--no-use-colors-file` | ❌ |
+| [use_colors](/reference/global-configs/print-output#print-color) | boolean | True | ✅ | `DBT_ENGINE_USE_COLORS` | `--use-colors`, `--no-use-colors` | ❌ |
+| [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | boolean | False | ✅ | `DBT_ENGINE_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser`, `--no-use-experimental-parser` | ❌ |
+| [version_check](/reference/global-configs/version-compatibility) | boolean | varies | ✅ | `DBT_ENGINE_VERSION_CHECK` | `--version-check`, `--no-version-check` | ❌ |
+| [warn_error_options](/reference/global-configs/warnings) | dict | {} | ✅ | `DBT_ENGINE_WARN_ERROR_OPTIONS` | `--warn-error-options` | ✅ |
+| [warn_error](/reference/global-configs/warnings) | boolean | False | ✅ | `DBT_ENGINE_WARN_ERROR` | `--warn-error` | ✅ |
+| [write_json](/reference/global-configs/json-artifacts) | boolean | True | ✅ | `DBT_ENGINE_WRITE_JSON` | `--write-json`, `--no-write-json` | ✅ |
+
+</FilterableTable>
+
+
+</VersionBlock>
+
+

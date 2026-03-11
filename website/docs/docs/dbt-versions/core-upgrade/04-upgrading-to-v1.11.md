@@ -42,6 +42,9 @@ Key features include:
 
 Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/udfs).
 
+### `DBT_ENGINE_` prefix for environment variables
+
+<Constant name="core" /> engine configuration environment variables use the `DBT_ENGINE_` prefix. For example, `DBT_STATE` becomes `DBT_ENGINE_STATE`, `DBT_PROJECT_DIR` becomes `DBT_ENGINE_PROJECT_DIR`, and so on. The previous names remain supported for backward compatibility. Refer to [About flags (global configs)](/reference/global-configs/about-global-configs) for the full mapping.
 
 ### Managing changes to legacy behaviors
 

@@ -333,6 +333,8 @@ export DBT_ORACLE_CONNECT_STRING="(description=(retry_count=20)(retry_delay=3)(a
 
 <File name='~/.dbt/profiles.yml'>
 
+<VersionBlock lastVersion="1.10">
+
 ```yaml
 dbt_test:
    target: "{{ env_var('DBT_TARGET', 'dev') }}"
@@ -345,6 +347,25 @@ dbt_test:
          schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
          connection_string: "{{ env_var('DBT_ORACLE_CONNECT_STRING') }}"
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```yaml
+dbt_test:
+   target: "{{ env_var('DBT_ENGINE_TARGET', 'dev') }}"
+   outputs:
+      dev:
+         type: oracle
+         user: "{{ env_var('DBT_ORACLE_USER') }}"
+         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
+         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
+         connection_string: "{{ env_var('DBT_ORACLE_CONNECT_STRING') }}"
+```
+
+</VersionBlock>
 
 </File>
 </TabItem>
@@ -364,6 +385,8 @@ export DBT_ORACLE_SERVICE=example_high.adb.oraclecloud.com
 
 <File name='~/.dbt/profiles.yml'>
 
+<VersionBlock lastVersion="1.10">
+
 ```yaml
 dbt_test:
    target: "{{ env_var('DBT_TARGET', 'dev') }}"
@@ -382,6 +405,32 @@ dbt_test:
          retry_delay: 3
          threads: 4
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```yaml
+dbt_test:
+   target: "{{ env_var('DBT_ENGINE_TARGET', 'dev') }}"
+   outputs:
+      dev:
+         type: oracle
+         user: "{{ env_var('DBT_ORACLE_USER') }}"
+         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         protocol: "tcps"
+         host: "{{ env_var('DBT_ORACLE_HOST') }}"
+         port: 1522
+         service: "{{ env_var('DBT_ORACLE_SERVICE') }}"
+         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
+         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
+         retry_count: 1
+         retry_delay: 3
+         threads: 4
+```
+
+</VersionBlock>
+
 </File>
 
 </TabItem>

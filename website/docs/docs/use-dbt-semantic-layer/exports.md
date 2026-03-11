@@ -2,7 +2,7 @@
 title: "Write queries with exports"
 description: "Use exports to write tables to the data platform on a schedule."
 sidebar_label: "Write queries with exports"
-keywords: [DBT_INCLUDE_SAVED_QUERY, exports, DBT_EXPORTS_SAVED_QUERY, dbt, Semantic Layer]
+keywords: [DBT_INCLUDE_SAVED_QUERY, DBT_EXPORT_SAVED_QUERIES, DBT_ENGINE_EXPORT_SAVED_QUERIES, exports, dbt, Semantic Layer]
 ---
 
 # Write queries with exports <Lifecycle status="self_service,managed,managed_plus" />
@@ -171,11 +171,11 @@ Exports use the default credentials of the production environment. To enable exp
 
 1. Click **Deploy** in the top navigation bar and choose **Environments**.
 2. Select **Environment variables**.
-3. [Set the environment variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) key to `DBT_EXPORT_SAVED_QUERIES` and the environment variable's value to `TRUE` (`DBT_EXPORT_SAVED_QUERIES=TRUE`).
+3. [Set the environment variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) key to <VersionBlock lastVersion="1.10">`DBT_EXPORT_SAVED_QUERIES`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_EXPORT_SAVED_QUERIES`</VersionBlock> and the environment variable's value to `TRUE`.
 
 Doing this ensures saved queries and exports are included in your dbt build job. For example, running `dbt build -s sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the <Constant name="cloud" /> Job scheduler.
 
-If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_EXPORT_SAVED_QUERIES=FALSE`).
+If exports aren't needed, you can set the value(s) to `FALSE` (<VersionBlock lastVersion="1.10">`DBT_EXPORT_SAVED_QUERIES=FALSE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_EXPORT_SAVED_QUERIES=FALSE`</VersionBlock>).
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/env-var-dbt-exports.png" width="90%" title="Add an environment variable to run exports in your production run." />
 
@@ -184,7 +184,7 @@ When you run a build job, any saved queries downstream of the dbt models in that
 
 ### Create and execute exports
 
-1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the `DBT_EXPORT_SAVED_QUERIES=TRUE` environment variable is set, as described in [Set environment variable](#set-environment-variable).
+1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the <VersionBlock lastVersion="1.10">`DBT_EXPORT_SAVED_QUERIES=TRUE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_EXPORT_SAVED_QUERIES=TRUE`</VersionBlock> environment variable is set, as described in [Set environment variable](#set-environment-variable).
    - This enables you to run any export that needs to be refreshed after a model is built.
    - Use the [selector syntax](/reference/node-selection/syntax) `--select` or `-s` option in your build command to specify a particular dbt model or saved query to run. For example, to run all saved queries downstream of the `orders` semantic model, use the following command:
     ```bash

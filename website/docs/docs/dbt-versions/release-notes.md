@@ -18,7 +18,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## March 2026
 
+- **New:** On <Constant name="core" /> v1.11+ and the <Constant name="dbt_platform" /> **Latest** release track, engine configuration environment variables use the `DBT_ENGINE_` prefix (for example, `DBT_STATE` is now `DBT_ENGINE_STATE`, `DBT_PROJECT_DIR` is now `DBT_ENGINE_PROJECT_DIR`). The previous names remain supported for backward compatibility. For the full mapping, see [About flags (global configs)](/reference/global-configs/about-global-configs).
+
 - **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on the <Constant name="dbt_platform" /> **Latest** release track. For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
+
 
 ## February 2026
 

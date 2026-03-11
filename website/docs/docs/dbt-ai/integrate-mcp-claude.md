@@ -45,6 +45,8 @@ To add advanced configurations:
 
     Local configuration for users who only want to use dbt CLI commands with <Constant name="core" /> or <Constant name="fusion" />
 
+    <VersionBlock lastVersion="1.10">
+
     ```json
     {
       "mcpServers": {
@@ -60,8 +62,29 @@ To add advanced configurations:
     }
     ```
 
+    </VersionBlock>
+
+    <VersionBlock firstVersion="1.11">
+
+    ```json
+    {
+      "mcpServers": {
+        "dbt": {
+          "command": "uvx",
+          "args": ["dbt-mcp"],
+          "env": {
+            "DBT_ENGINE_PROJECT_DIR": "/path/to/your/dbt/project",
+            "DBT_PATH": "/path/to/your/dbt/executable"
+          }
+        }
+      }
+    }
+    ```
+
+    </VersionBlock>
+
     Finding your paths:
-    - **DBT_PROJECT_DIR**: Full path to the folder containing your `dbt_project.yml` file
+    - <VersionBlock lastVersion="1.10">**DBT_PROJECT_DIR**</VersionBlock><VersionBlock firstVersion="1.11">**DBT_ENGINE_PROJECT_DIR**</VersionBlock>: Full path to the folder containing your `dbt_project.yml` file
     - **DBT_PATH**: Find by running `which dbt` in Terminal (macOS/Linux) or `where dbt` (Windows) in Powershell
 
     </Expandable>
@@ -71,6 +94,9 @@ To add advanced configurations:
     Advanced configuration for users who need custom environment variables
 
     Using the `env` field (recommended):
+
+    <VersionBlock lastVersion="1.10">
+
     ```json
     {
       "mcpServers": {
@@ -88,6 +114,30 @@ To add advanced configurations:
       }
     }
     ```
+
+    </VersionBlock>
+
+    <VersionBlock firstVersion="1.11">
+
+    ```json
+    {
+      "mcpServers": {
+        "dbt": {
+          "command": "uvx",
+          "args": ["dbt-mcp"],
+          "env": {
+            "DBT_ENGINE_HOST": "cloud.getdbt.com",
+            "DBT_TOKEN": "your-token-here",
+            "DBT_PROD_ENV_ID": "12345",
+            "DBT_ENGINE_PROJECT_DIR": "/path/to/project",
+            "DBT_PATH": "/path/to/dbt"
+          }
+        }
+      }
+    }
+    ```
+
+    </VersionBlock>
 
     Using an .env file (alternative):
     ```json
@@ -125,6 +175,8 @@ In your Claude Code set up, run one of these commands based on your use case. Be
 
 For <Constant name="core" /> or <Constant name="fusion" /> only (no <Constant name="dbt_platform" /> account):
 
+<VersionBlock lastVersion="1.10">
+
 ```shell
 claude mcp add dbt \
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
@@ -132,10 +184,25 @@ claude mcp add dbt \
 -- uvx dbt-mcp
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```shell
+claude mcp add dbt \
+-e DBT_ENGINE_PROJECT_DIR=/path/to/your/dbt/project \
+-e DBT_PATH=/path/to/your/dbt/executable \
+-- uvx dbt-mcp
+```
+
+</VersionBlock>
+
 </TabItem>
 <TabItem value="oauth" label="OAuth with dbt platform">
 
 For OAuth authentication (requires static subdomain). Find your static subdomain [here](/docs/cloud/about-cloud/access-regions-ip-addresses):
+
+<VersionBlock lastVersion="1.10">
 
 ```shell
 claude mcp add dbt \
@@ -145,16 +212,48 @@ claude mcp add dbt \
 -- uvx dbt-mcp
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```shell
+claude mcp add dbt \
+-e DBT_ENGINE_HOST=your-host-with-subdomain \
+-e DBT_ENGINE_PROJECT_DIR=/path/to/your/dbt/project \
+-e DBT_PATH=/path/to/your/dbt/executable \
+-- uvx dbt-mcp
+```
+
+</VersionBlock>
+
 Replacing `your-host-with-subdomain`, `path/to/your/dbt/project`, and `path/to/your/dbt/executable` with your actual static subdomain, project path, and dbt executable path.
 
 For example, if your static subdomain is `abc123.us1.dbt.com`, your command would look like this:
+
+<VersionBlock lastVersion="1.10">
+
 ```shell
 claude mcp add dbt \
--e DBT_HOST=abc123.us1.dbt.com \ ## this is the static subdomain
+-e DBT_HOST=abc123.us1.dbt.com \
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```shell
+claude mcp add dbt \
+-e DBT_ENGINE_HOST=abc123.us1.dbt.com \
+-e DBT_ENGINE_PROJECT_DIR=/path/to/your/dbt/project \
+-e DBT_PATH=/path/to/your/dbt/executable \
+-- uvx dbt-mcp
+```
+
+</VersionBlock>
+
 </TabItem>
 </Tabs>
 
