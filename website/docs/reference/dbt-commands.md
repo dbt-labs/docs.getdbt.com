@@ -46,7 +46,7 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) <br /> Not yet supported in <Constant name="fusion" /> |
+| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) <br /> <Constant name="fusion" /> uses [`--write-catalog`](/reference/commands/cmd-docs) flag instead |
 | [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="cloud" /> environment. |   N/A | <Constant name="cloud_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
 | help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="cloud_cli" /> <br /> All [supported versions](/docs/dbt-versions/core) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions/core) |
