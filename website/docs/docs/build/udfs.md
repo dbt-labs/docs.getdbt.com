@@ -312,6 +312,8 @@ Follow these steps to define UDFs in dbt:
     from {{ ref('a_model_i_like') }}
     ```
     </File>
+  
+  When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the UDF definition from the state manifest (for example, production) if the UDF is not selected or not yet built in your target. This allows models that depend on UDFs to run successfully in slim CI and development workflows.
 
 5. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
