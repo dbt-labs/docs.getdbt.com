@@ -33,8 +33,8 @@ Click a link to read the full property reference for that resource. Use the vers
 | Object | Latest spec (model YAML) | Legacy spec (standalone YAML) |
 |--------|--------------------------|------------------------------|
 | **Semantic models** | Top-level `semantic_model:` block on a [model](/reference/model-properties). | Top-level `semantic_models:` list. |
-| **Metrics** | Top-level `metrics:` list on a model alongside `semantic_model:` and `columns:` (not nested under `semantic_model`). Model-level `metrics:` can only reference that semantic model; for cross-model metrics, use standalone YAML. | Top-level `metrics:` key in standalone YAML. |
-| **Dimensions** | `dimension:` blocks on model columns (and optional `derived_semantics.dimensions`). Always within a semantic model. | `dimensions:` list on the semantic model. Always within a semantic model. |
+| **Metrics** | For metrics that only depend on the same semantic model, list `metrics:` alongside `semantic_model:` and `columns:` (not nested under semantic_model). <br/ > <br/ > For metrics that depend on metrics or dimensions from a different semantic model, define them under a top-level `metrics:` block (For example, `outside models:`). This can be in the same YAML file or a separate one. | Top-level `metrics:` key in standalone YAML. |
+| **Dimensions** | `dimension:` blocks on model columns (and optional `derived_semantics.dimensions`). Defined within a model's semantic layer configuration. | `dimensions:` list on the semantic model. Defined within a model's semantic layer configuration. |
 
 ## Related documentation
 

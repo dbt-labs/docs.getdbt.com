@@ -10,7 +10,7 @@ keywords:
   - MetricFlow
 ---
 
-Semantic models define the structure that MetricFlow uses to build the semantic graph. They can be declared in standalone YAML (see [Semantic models](/docs/build/semantic-models)) or, in the *latest spec*, as a top-level `semantic_model:` block on a [model](/reference/model-properties).
+Semantic models define the structure that MetricFlow uses to build the semantic graph. in the *latest spec*, they can be declared as a top-level `semantic_model:` block on a [model](/reference/model-properties). In the *legacy spec*, we used standalone YAML. For more information, refer to [Semantic models](/docs/build/semantic-models).
 
 import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability-versioned.md';
 
@@ -30,20 +30,14 @@ In the latest spec, a model defines a `semantic_model:` block and optional top-l
 | `semantic_model.name` | string | No | Unique name; defaults to model name. |
 | `semantic_model.group` | string | No | Group for organization. |
 | `semantic_model.config` | object | No | Supports [meta](/reference/resource-configs/meta), [group](/reference/resource-configs/group), [enabled](/reference/resource-configs/enabled). |
-| `agg_time_dimension` (top-level) | string | No | Default time dimension for metrics; references dimension name. |
+| `agg_time_dimension` (top-level) | string | Yes | Default time dimension for metrics; references dimension name. |
 | `primary_entity` (top-level) | string | No | Primary entity name when no column has `type: primary`. |
 | `columns` | array | Yes | Column list; each can have `entity:` or `dimension:` block; time dimensions have `granularity` on the column. |
 | `derived_semantics` (top-level) | object | No | Optional dimensions and entities with `expr`. |
 | `metrics` (top-level) | array | No | Metrics derived from this semantic model; list is alongside (not under) `semantic_model`. |
 
-In the latest spec, a model can define:
 
-- **`semantic_model:`** block (with required `enabled`) and optional top-level keys such as `agg_time_dimension` and `primary_entity`.
-- **`columns:`** list: each column can have an `entity:` or `dimension:` block; time dimensions also have `granularity` on the column.
-- Optional **`derived_semantics:`** (dimensions and entities with `expr`).
-- Top-level **`metrics:`** list alongside (not under) `semantic_model`. Metrics on the model are only derived from that semantic model.
-
-**Minimal structure:**
+### Minimal structure example
 
 ```yaml
 models:
@@ -80,13 +74,13 @@ models:
         expr: optional_expr
 ```
 
-For the full structure and all options, see [Semantic models](/docs/build/semantic-models).
+For an example with the full structure, refer to [Semantic models](/docs/build/semantic-models).
 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.11">
 
-## Legacy spec (standalone YAML)
+## Legacy spec
 
 Semantic models are defined in a top-level `semantic_models:` list in standalone YAML, with `model`, `defaults`, `entities`, `dimensions`, and `measures`.
 
@@ -105,7 +99,7 @@ Semantic models are defined in a top-level `semantic_models:` list in standalone
 | label | string | No | Display name in downstream tools. |
 | config | object | No | Supports [meta](/reference/resource-configs/meta), [group](/reference/resource-configs/group), [enabled](/reference/resource-configs/enabled). |
 
-### Full structure (standalone YAML, legacy spec)
+### Full structure
 
 ```yaml
 semantic_models:
