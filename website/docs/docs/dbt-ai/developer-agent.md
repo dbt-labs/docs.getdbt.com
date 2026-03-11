@@ -11,17 +11,18 @@ import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 # Developer agent <Lifecycle status="beta,managed,managed_plus"/>
 
 <IntroText>
-The <Constant name="dev_agent" /> is an AI assistant built into the <Constant name="cloud_ide" /> that can write, refactor, and validate dbt models using your project's structured context &mdash; including lineage, metadata, governance, and the Semantic Layer.
+The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="cloud_ide" />, purpose-built to streamline the developer experience. As an agentic capability within <Constant name="copilot" />, it can write, refactor, and validate dbt models using your project's structured context &mdash; including lineage, metadata, governance, and the <Constant name="semantic_layer" />.
 </IntroText>
 
-Move faster by generating or refactoring models, tests, and documentation from natural language prompts, while keeping every change auditable and aligned with your dbt project.
+While <Constant name="copilot" /> is the AI-powered product surface you interact with across the <Constant name="dbt_platform" />, the <Constant name="dev_agent" /> is the DevEx-focused workflow within it &mdash; designed to help you move faster by generating or refactoring models, tests, and documentation from natural language prompts, while keeping every change auditable and aligned with your dbt project.
 
 The <Constant name="dev_agent" /> supports the following use cases:
 
 - **Generate semantic models, tests, and docs** &mdash; Scaffold YAML definitions from existing models and save time on manual setup.
 - **Build or modify models** &mdash; Create new or modify existing dbt models from natural language descriptions of the transformation or logic you need.
 - **Light refactors** &mdash; Rename columns, change materializations, or adjust logic. The agent also keeps associated YAML files in sync with any changes it makes.
-- **dbt agent skills** &mdash; Natively supports [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions and scripts for agents that cover analytics engineering, semantic layer, testing, platform operations, and more.
+
+The <Constant name="dev_agent" /> always has access to the latest dbt-recommended guidance through [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) &mdash; a curated collection of instructions and scripts managed by dbt Labs that cover analytics engineering, semantic layer, testing, platform operations, and more. These skills are natively available to the agent out of the box, so you don't need to configure or maintain them! 🎉
 
 ## Prerequisites
 
@@ -35,7 +36,7 @@ The <Constant name="dev_agent" /> supports the following use cases:
 - The <Constant name="dev_agent" /> is available in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) only. It's not available in VS Code or the <Constant name="cloud_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
 - It does not retain conversation context between sessions. If you close or leave the <Constant name="cloud_ide" />, the conversation resets. However, if you saved any file changes the agent already made, those changes will stay in your branch. Unsaved changes are lost.
-- Currently, plan mode isn't supported. The <Constant name="dev_agent" /> applies changes directly without showing a plan first. Use **Ask** mode if you want to confirm each edit before it is applied.
+- Currently, plan mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask** mode if you want to approve each file change before it is persisted.
 - You cannot edit a prompt after submitting it. To refine your request, use **Start over** to reset the session and submit a new prompt.
 
 ## Use the Developer agent
@@ -56,12 +57,11 @@ For more details on the <Constant name="dev_agent" /> and how it works, see the 
 
 The <Constant name="copilot" /> panel contains:
 
-- **Quick-action buttons** (top) &mdash; The buttons at the top of the panel (**Generate documentation**, **Semantic model**, **Generate generic tests**, **Metrics**) pre-fill prompts for common tasks. When selected, the text field is pre-filled with the prompt for the selected action.
+- **Quick actions** (top) &mdash; The <Constant name="cloud_ide" /> surfaces quick actions at the top of the panel to help you get started with common tasks, like generating documentation, semantic models, tests, and metrics. When selected, the text field is pre-filled with a prompt for the selected action. These quick actions may evolve over time as new capabilities are added.
 - **Agent mode button** (bottom left) &mdash; Switch between **Ask** and **Code** mode. Click the button to change modes.
 - **Text input field** (bottom right) &mdash; Type your prompt in the text field to describe what you want to build or change. Type `@` to select a model as context. This scopes the agent's changes to that resource.
 - **Model context** (bottom left, next to mode) &mdash; Shows the currently open file. Use `@` in the text field to reference a different model. Click **x** to remove the model context.
-- **Start over** (top right) &mdash; Resets the current session. A confirmation prompt will appear &mdash; click **Start over** to confirm, or **Cancel** to return to your current conversation. This action cannot be undone.
-- **Stop** (bottom right) &mdash; Stops the current session and agent processing. This action cannot be undone.
+- **Start over** (top right) &mdash; Resets the current session. A confirmation prompt will appear &mdash; click **Start over** to confirm, or **Cancel** to return to your current conversation. This action cannot be undone.- **Stop** (bottom right) &mdash; Stops the current session and agent processing. This action cannot be undone.
 
 <Lightbox src="/img/docs/dbt-cloud/dev-agent-copilot-panel.png" width="95%" title="The Copilot panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
 
@@ -71,12 +71,12 @@ The <Constant name="dev_agent" /> operates in two modes:
 
 <SimpleTable>
 
-| Mode | Behavior | When to use |
-|------|----------|-------------|
-| **Ask** | The agent asks for your confirmation before making each edit to a file. This is the default mode. | Use **Ask** mode when working in shared projects, making structural changes, or exploring unfamiliar models. |
-| **Code** | The agent edits files immediately without waiting for confirmation. | Use this for faster iteration when you're confident in the prompt. |
+| Mode | Behavior |
+|------|----------|
+| **Ask** (default) | The agent drafts edits to files. You must approve each file change before it is persisted. Best when you want tight control over what gets saved to your branch. |
+| **Code** | The agent drafts and automatically edits files without per-file approval. Best for faster iteration when you're confident in the prompt. |
 
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask mode, requesting confirmation before applying file edits." />
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask mode, requesting approval before persisting file edits." />
 
 </SimpleTable>
 
@@ -94,13 +94,13 @@ When the <Constant name="dev_agent" /> proposes code changes, you can review the
 
 #### Granting command permissions
 
-To validate or run models during a session, the agent executes dbt commands using `invoke_dbt`. You'll be prompted to approve each request. For example:
+To validate or run models during a session, the agent may request to run dbt commands such as `dbt compile` or `dbt build`. You'll be prompted to approve each request before it executes. For example, the agent might request to run:
 
 ```
-invoke_dbt(args: ["compile", "--select", "model_name"])
+dbt compile --select model_name
 ```
 
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-invoke-dbt.png" width="95%" title="The Developer agent requesting permission to run an invoke_dbt command." />
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-invoke-dbt.png" width="95%" title="The Developer agent requesting permission to run a dbt command." />
 
 You can respond with one of the following options:
 
@@ -109,7 +109,7 @@ You can respond with one of the following options:
 | Option | Behavior |
 |--------|----------|
 | **Yes, run once** | Grants permission to run this specific command one time. |
-| **Yes, and allow invoke_dbt for the session** | Grants permission to run `invoke_dbt` commands for the remainder of your session without prompting again. |
+| **Yes, and allow dbt commands for the session** | Grants permission to run dbt commands for the remainder of your session without prompting again. |
 | **No** | Denies the request. The agent will not run the command. |
 
 </SimpleTable>
