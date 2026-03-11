@@ -38,11 +38,6 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/reference/global-configs/snowflake-changes",
-      "destination": "/reference/global-configs/behavior-changes",
-      "permanent": true
-    },
     { 
       "source": "/guides/sl-migration",
       "destination": "/docs/build/latest-metrics-spec",
