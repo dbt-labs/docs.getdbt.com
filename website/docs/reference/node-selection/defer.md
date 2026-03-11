@@ -33,7 +33,7 @@ When `--defer` is enabled, dbt resolves `ref` and `function` calls using the sta
 
 Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls. 
 
-[User-defined functions (UDFs)](/docs/build/udfs) referenced using `{{ function('...') }}` are deferred under the same conditions. When deferred, `function()` resolves to the function definition in the state manifest if the UDF is is not selected or not built in the current target.
+[User-defined functions (UDFs)](/docs/build/udfs) referenced using `{{ function('...') }}` are deferred under the same conditions. When deferred, `function()` resolves to the function definition in the state manifest if the UDF is not selected or not built in the current target.
 
 :::info
 
