@@ -152,6 +152,19 @@ The following are best practices for external metadata ingestion, designed to en
 
 External metadata ingestion runs daily at 5 PM UTC, and also runs immediately each time you update and save credentials.
 
+## Viewing ingestion run logs
+
+You can view logs for external metadata ingestion runs to monitor the ingestion process and troubleshoot any issues. This helps you understand what metadata is being ingested and identify any errors that may occur during the process.
+
+To view ingestion run logs:
+
+1. Navigate to **Deploy** > **Run history** in the top navigation menu.
+2. Find the metadata ingestion run in your run history.
+3. Click on the run to open the run details page.
+4. Click on individual run steps to view their logs in the log drawer.
+
+This provides visibility into the metadata ingestion process, including which databases, schemas, and tables are being processed, and any warnings or errors that occurred during ingestion.
+
 
 
 
