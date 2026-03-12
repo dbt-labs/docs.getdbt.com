@@ -6,7 +6,6 @@ description: "Use dbt Copilot to generate documentation, tests, semantic models,
 
 import CopilotResources from '/snippets/_use-copilot-resources.md';
 import CopilotEditCode from '/snippets/_use-copilot-edit-code.md';
-import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 
 # Develop with dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
@@ -18,11 +17,11 @@ This page describes how to use <Constant name="copilot" /> in the <Constant name
 Use [<Constant name="copilot" />](/docs/cloud/dbt-copilot) in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) to generate documentation, tests, semantic models, metrics, and SQL code from scratch &mdash; making it easier for you to build your dbt project, accelerate your development, and focus on high-level tasks. For information about using <Constant name="copilot" /> in the [<Constant name="canvas" />](/docs/cloud/canvas), see [Build with <Constant name="copilot" />](/docs/cloud/build-canvas-copilot).
 
 
-## Developer agent <Lifecycle status="private_beta" />
+## Developer agent <Lifecycle status="beta" />
 
 For autonomous model generation, refactoring, and multi-step workflows in the <Constant name="studio_ide" />, see the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent). 
 
-The <Constant name="dev_agent" /> is accessible from the same Copilot panel &mdash; switch to **Ask** or **Code** mode to activate it.
+The <Constant name="dev_agent" /> is accessible from the Copilot panel. Switch to **Ask** or **Code** mode to activate the agent.
 
 <div style={{maxWidth: '100%', margin: '20px 0'}}>
 <video width="100%" controls autoPlay muted loop playsInline>

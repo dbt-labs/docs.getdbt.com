@@ -20,7 +20,7 @@ The <Constant name="dev_agent" /> supports the following use cases:
 
 - **Generate semantic models, tests, and docs**: Scaffold YAML definitions from existing models and save time on manual setup.
 - **Build or modify models**: Create new or modify existing dbt models from natural language descriptions of the transformation or logic you need.
-- **Light refactors** &mdash; Rename columns, change materializations, or adjust logic. The agent also keeps associated YAML files in sync with any changes it makes.
+- **Light refactors**: Rename columns, change materializations, or adjust logic. The agent also keeps associated YAML files in sync with any changes it makes.
 
 The <Constant name="dev_agent" /> always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) &mdash; a curated collection of instructions and scripts managed by dbt Labs covering analytics engineering, semantic layer, testing, platform operations, and more. These skills are available to the agent out of the box, so you don't need to configure or maintain them! 🎉
 
