@@ -117,13 +117,13 @@ You can select one of the following options:
 
 ## Writing effective prompts
 
-Good prompts include the **scope** (which models or area of the project), the **intent** (the transformation or business logic you want), and any **constraints** (naming conventions, materialization, tests). Here are a few examples:
+Good prompts include the _scope_ (which models or area of the project), the _intent_ (the transformation or business logic you want), and any _constraints_ (naming conventions, materialization, tests). Here are a few examples:
 
 | Task | Example prompt |
 |------|---------------|
 | Build a new model | "Create a model called `fct_daily_revenue` that joins `stg_orders` and `stg_payments`, aggregates revenue by day, and materializes as a table." |
 | Refactor an existing model | "Refactor `fct_orders` to use incremental materialization. Keep existing tests and follow our naming conventions." |
-| Generate tests and docs | "Add not_null and unique tests to the primary key of `dim_customers`, and generate documentation for all columns." |
+| Generate tests and docs | "Add `not_null` and `unique` tests to the primary key of `dim_customers`, and generate documentation for all columns." |
 
 For detailed guidance, patterns, and more examples across SQL, documentation, tests, and semantic models, see the [Prompt cookbook](/guides/prompt-cookbook).
 
