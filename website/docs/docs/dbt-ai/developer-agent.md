@@ -110,7 +110,7 @@ You can select one of the following options:
 | Option | Behavior |
 |--------|----------|
 | **Yes, run once** | Grants permission to run this specific command one time. |
-| **Yes, and allow dbt commands for the session** | Grants permission to run dbt commands for the remainder of your session without prompting again. |
+| **Yes, and allow `dbt_command_name` for the session** | Grants permission to run dbt commands for the remainder of your session without prompting again. |
 | **No** | Denies the request. The agent will not run the command. |
 
 </SimpleTable>
