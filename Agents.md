@@ -1,4 +1,4 @@
-# CLAUDE.md — docs.getdbt.com
+# Agents.md — docs.getdbt.com
 
 Agent-facing guide for working in the dbt documentation repository.
 
