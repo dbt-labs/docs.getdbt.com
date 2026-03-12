@@ -1,4 +1,4 @@
-# Agents.md — docs.getdbt.com
+# AGENTS.md — docs.getdbt.com
 
 Agent-facing guide for working in the dbt documentation repository.
 
