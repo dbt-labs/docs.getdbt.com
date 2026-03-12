@@ -52,7 +52,7 @@ The Analyst agent is a beta feature. Enable beta features under **Account settin
 
 The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />, purpose-built to streamline the developer experience. Describe the data product or change you want &mdash; the agent writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
 
-The agent always has access to the latest dbt-recommended guidance through [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) &mdash; curated instructions and scripts managed by dbt Labs, available out of the box with no configuration required.
+The agent always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) &mdash; curated instructions and scripts managed by dbt Labs, available out of the box with no configuration required.
 
 For setup instructions and available use cases, see [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent).
 
