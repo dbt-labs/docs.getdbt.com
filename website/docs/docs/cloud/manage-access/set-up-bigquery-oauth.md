@@ -19,7 +19,7 @@ The <Constant name="dbt_platform" /> supports [OAuth](https://cloud.google.com/b
 
 ## Set up BigQuery native OAuth
 
-When BigQuery OAuth is enabled for a <Constant name="dbt_platform" /> project, all <Constant name="dbt_platform" /> developers must authenticate with BigQuery to access development tools, such as the <Constant name="cloud_ide" />. 
+When BigQuery OAuth is enabled for a <Constant name="dbt_platform" /> project, all <Constant name="dbt_platform" /> developers must authenticate with BigQuery to access development tools, such as the <Constant name="studio_ide" />. 
 
 
 To set up BigQuery OAuth in the <Constant name="dbt_platform" />, a BigQuery admin must:
@@ -27,7 +27,7 @@ To set up BigQuery OAuth in the <Constant name="dbt_platform" />, a BigQuery adm
 2. [Create a BigQuery OAuth 2.0 client ID and secret](#creating-a-bigquery-oauth-20-client-id-and-secret) in BigQuery.
 3. [Configure the connection](/docs/cloud/manage-access/set-up-bigquery-oauth#configure-the-connection-in-dbt) in the <Constant name="dbt_platform" />.
 
-To use BigQuery in the <Constant name="cloud_ide" />, all developers must:
+To use BigQuery in the <Constant name="studio_ide" />, all developers must:
 1. [Authenticate to BigQuery](#authenticating-to-bigquery) in the their profile credentials.
 
 ### Locate the redirect URI value
@@ -80,7 +80,7 @@ Now that you have an OAuth app set up in BigQuery, you'll need to add the client
  3. Enter the BigQuery token URI. The default value is `https://oauth2.googleapis.com/token`. 
 
 ### Authenticating to BigQuery
-Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> project, each <Constant name="dbt_platform" />user will need to authenticate with BigQuery in order to use the <Constant name="cloud_ide" />. To do so:
+Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> project, each <Constant name="dbt_platform" />user will need to authenticate with BigQuery in order to use the <Constant name="studio_ide" />. To do so:
 
 1. Navigate to your account name, above your profile icon on the left side panel.
 2. Select **Account settings** from the menu.

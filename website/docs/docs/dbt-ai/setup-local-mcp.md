@@ -8,7 +8,7 @@ id: "setup-local-mcp"
 import MCPExample from '/snippets/_mcp-config-files.md';
 import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 
-[The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="cloud_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
+[The local dbt MCP server](https://github.com/dbt-labs/dbt-mcp) runs locally on your machine and supports <Constant name="core" />, <Constant name="fusion_engine" />, and <Constant name="platform_cli" />. You can use it with or without a <Constant name="dbt_platform" /> account.
 
 ## Prerequisites
 
@@ -151,7 +151,7 @@ The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /
 | Environment Variable | Required | Description                                                                                                                                                          | Example                                                                         |
 | -------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `DBT_PROJECT_DIR`    | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file.                              | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame`   |
-| DBT_PATH             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
+| DBT_PATH             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
 | DBT_CLI_TIMEOUT      | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.                                                                                     | Defaults to 60 seconds.                                                         |
 
 ### Locating your `DBT_PATH`
@@ -192,7 +192,7 @@ You can disable the following tool access on the local `dbt-mcp`:
 
 | Name                     | Default | Description                                                                                                                          |
 | ------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `DISABLE_DBT_CLI`        | `false` | Set this to `true` to disable <Constant name="core" />, <Constant name="cloud_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
+| `DISABLE_DBT_CLI`        | `false` | Set this to `true` to disable <Constant name="core" />, <Constant name="platform_cli" />, and dbt <Constant name="fusion" /> MCP tools. |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Set this to `true` to disable dbt Semantic Layer MCP tools.                                                                          |
 | `DISABLE_DISCOVERY`      | `false` | Set this to `true` to disable dbt Discovery API MCP tools.                                                                           |
 | `DISABLE_ADMIN_API`      | `false` | Set this to `true` to disable dbt Administrative API MCP tools.                                                                      |

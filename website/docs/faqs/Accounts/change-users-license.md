@@ -6,9 +6,9 @@ id: change-user-license
 
 ---
 
-To change the license type for a user from `developer` to `read-only` or `IT` in <Constant name="cloud" />, you must be an account owner or have admin privileges. You might make this change to free up a billable seat but retain the user’s access to view the information in the <Constant name="cloud" /> account.
+To change the license type for a user from `developer` to `read-only` or `IT` in <Constant name="dbt" />, you must be an account owner or have admin privileges. You might make this change to free up a billable seat but retain the user’s access to view the information in the <Constant name="dbt" /> account.
 
-1. From <Constant name="cloud" />, click on your account name in the left side menu and, select **Account settings**.
+1. From <Constant name="dbt" />, click on your account name in the left side menu and, select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" title="Navigate to account settings" />
 

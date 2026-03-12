@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="cloud" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/access-regions-ip-addresses) worldwide, <Constant name="dbt_platform" /> is the fastest and easiest way to begin transforming your data.
+<Constant name="dbt" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/access-regions-ip-addresses) worldwide, <Constant name="dbt_platform" /> is the fastest and easiest way to begin transforming your data.
 
 ## How does dbt pricing work?
 
@@ -25,11 +25,11 @@ There are four types of possible seat licenses:
 
 ### What counts as a Successful Model Built?
 
-<Constant name="cloud" /> considers a Successful Model Built as any <Term id="model">model</Term> that is successfully built via a run through <Constant name="cloud" />’s orchestration functionality in a <Constant name="cloud" /> deployment environment. Models are counted when built and run. This includes any jobs run via <Constant name="cloud" />'s scheduler, CI builds (jobs triggered by pull requests), runs kicked off via the <Constant name="cloud" /> API, and any successor <Constant name="cloud" /> tools with similar functionality. This also includes models that are successfully built even when a run may fail to complete. For example, you may have a job that contains 100 models and on one of its runs, 51 models are successfully built and then the job fails. In this situation, only 51 models would be counted.
+<Constant name="dbt" /> considers a Successful Model Built as any <Term id="model">model</Term> that is successfully built via a run through <Constant name="dbt" />’s orchestration functionality in a <Constant name="dbt" /> deployment environment. Models are counted when built and run. This includes any jobs run via <Constant name="dbt" />'s scheduler, CI builds (jobs triggered by pull requests), runs kicked off via the <Constant name="dbt" /> API, and any successor <Constant name="dbt" /> tools with similar functionality. This also includes models that are successfully built even when a run may fail to complete. For example, you may have a job that contains 100 models and on one of its runs, 51 models are successfully built and then the job fails. In this situation, only 51 models would be counted.
 
-Any models built in a <Constant name="cloud" /> development environment (for example, via the <Constant name="cloud_ide" />) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
+Any models built in a <Constant name="dbt" /> development environment (for example, via the <Constant name="studio_ide" />) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
 
-When a dynamic table is initially created, the model is counted (if the creation is successful). However, in subsequent runs, dbt skips these models unless the definition of the dynamic table has changed. This refers not to changes in the SQL logic but to changes in dbt's logic, specifically those governed by [`on_configuration_change config`](/reference/resource-configs/on_configuration_change)). The dynamic table continues to update on a cadence because the adapter is orchestrating that refresh rather than <Constant name="cloud" />. 
+When a dynamic table is initially created, the model is counted (if the creation is successful). However, in subsequent runs, dbt skips these models unless the definition of the dynamic table has changed. This refers not to changes in the SQL logic but to changes in dbt's logic, specifically those governed by [`on_configuration_change config`](/reference/resource-configs/on_configuration_change)). The dynamic table continues to update on a cadence because the adapter is orchestrating that refresh rather than <Constant name="dbt" />. 
 
 
 | What counts towards Successful Models Built |                     |
@@ -104,7 +104,7 @@ In addition, you can look at the **Job Details** page's **Insights** tab to show
 
 <Lightbox src="/img/docs/building-a-dbt-project/billing-job-page.jpg" width="80%" title="View how many models are being built per month for a particular job by going to the 'Insights' tab in the 'Job details' page."/>
 
-Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in <Constant name="cloud" /> is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Starter and Enterprise-tier plans).
+Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in <Constant name="dbt" /> is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Starter and Enterprise-tier plans).
 
 ## dbt Copilot: Usage metering and limiting <Lifecycle status="Starter, Enterprise, Enterprise+" />
 
@@ -116,7 +116,7 @@ A defined number of <Constant name="copilot" /> invocations is allocated monthly
 
 <Expandable alt_header="AI usage tracking by Copilot actions">
 
-<Constant name="copilot" /> actions refer to requests made to the <Constant name="copilot" /> assistant through the <Constant name="cloud" /> interface. These actions are recorded and displayed on the billing page alongside other usage metrics.
+<Constant name="copilot" /> actions refer to requests made to the <Constant name="copilot" /> assistant through the <Constant name="dbt" /> interface. These actions are recorded and displayed on the billing page alongside other usage metrics.
 
 The following interactions count as <Constant name="copilot" /> actions:
 
@@ -124,7 +124,7 @@ The following interactions count as <Constant name="copilot" /> actions:
 
 - **Each generation of documentation, tests, semantic models, or metrics** &mdash; Any time you ask <Constant name="copilot" /> to automatically create things like documentation, tests, data models, or metrics, it counts as one interaction.
 
-- **Each generation within <Constant name="copilot" /> chats on <Constant name="visual_editor" /> or <Constant name="query_page" />** &mdash; Any time you use <Constant name="copilot" /> chat in <Constant name="visual_editor" /> or <Constant name="query_page" /> to generate something, it counts as an interaction.
+- **Each generation within <Constant name="copilot" /> chats on <Constant name="canvas" /> or <Constant name="insights" />** &mdash; Any time you use <Constant name="copilot" /> chat in <Constant name="canvas" /> or <Constant name="insights" /> to generate something, it counts as an interaction.
 
 </Expandable>
 
@@ -171,11 +171,11 @@ To view the usage in your account:
 
 ## Plans and Billing
 
-<Constant name="cloud" /> offers several [plans](https://www.getdbt.com/pricing) with different features that meet your needs. We may make changes to our plan details from time to time. We'll always let you know in advance, so you can be prepared. The following section explains how billing works in each plan.
+<Constant name="dbt" /> offers several [plans](https://www.getdbt.com/pricing) with different features that meet your needs. We may make changes to our plan details from time to time. We'll always let you know in advance, so you can be prepared. The following section explains how billing works in each plan.
 
 ### Developer plan billing
 
-Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the <Constant name="cloud" /> platform is still accessible, and no work will be lost.
+Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the <Constant name="dbt" /> platform is still accessible, and no work will be lost.
 
 All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Developer Plan, the included model entitlements may be different from what’s reflected above.
 
@@ -197,11 +197,11 @@ All included successful models built numbers above reflect our most current pric
 
 As an Enterprise customer, you pay annually via invoice, monthly in arrears for additional usage (if applicable), and may benefit from negotiated usage rates. Please refer to your order form or contract for your specific pricing details, or [contact the account team](https://www.getdbt.com/contact-demo) with any questions. 
 
-Enterprise plan billing information is not available in the <Constant name="cloud" /> UI.  Changes are handled through your dbt Labs Solutions Architect or account team manager.
+Enterprise plan billing information is not available in the <Constant name="dbt" /> UI.  Changes are handled through your dbt Labs Solutions Architect or account team manager.
 
 ### Legacy plans
 
-Customers who purchased the <Constant name="cloud" /> Starter plan (formerly Team) plan before August 11, 2023, remain on a legacy pricing plan as long as your account is in good standing. The legacy pricing plan is based on seats and includes unlimited models, subject to reasonable use. 
+Customers who purchased the <Constant name="dbt" /> Starter plan (formerly Team) plan before August 11, 2023, remain on a legacy pricing plan as long as your account is in good standing. The legacy pricing plan is based on seats and includes unlimited models, subject to reasonable use. 
 
 :::note Legacy <Constant name="semantic_layer" />
 
@@ -214,7 +214,7 @@ dbt Labs may institute use limits if reasonable use is exceeded. Additional feat
 
 ## Managing usage
 
-From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**. The **Billing** option will be on the left side menu under the **Settings** heading. Here, you can view individual available plans and the features provided for each. 
+From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**. The **Billing** option will be on the left side menu under the **Settings** heading. Here, you can view individual available plans and the features provided for each. 
 
 ### Usage notifications 
 
@@ -228,23 +228,23 @@ Users cannot opt out of these emails. To have additional users to receive these 
 
 There are 2 options to disable models from being built and charged:
 
-1. Open the **Job Settings** of every job and navigate to the **Triggers** section. Disable the **Run on Schedule** and set the **Continuous Integration** feature **Run on Pull Requests?**  to **No**. Check your workflows to ensure that you are not triggering any runs via the <Constant name="cloud" /> API. This option will enable you to keep your <Constant name="cloud" /> jobs without building more models. 
-2. Alternatively, you can delete some or all of your <Constant name="cloud" /> jobs. This will ensure that no runs are kicked off, but you will permanently lose your job(s). 
+1. Open the **Job Settings** of every job and navigate to the **Triggers** section. Disable the **Run on Schedule** and set the **Continuous Integration** feature **Run on Pull Requests?**  to **No**. Check your workflows to ensure that you are not triggering any runs via the <Constant name="dbt" /> API. This option will enable you to keep your <Constant name="dbt" /> jobs without building more models. 
+2. Alternatively, you can delete some or all of your <Constant name="dbt" /> jobs. This will ensure that no runs are kicked off, but you will permanently lose your job(s). 
 
 
 ## Optimize costs in dbt
 
-<Constant name="cloud" /> offers ways to optimize your model’s built usage and warehouse costs. 
+<Constant name="dbt" /> offers ways to optimize your model’s built usage and warehouse costs. 
 
 ### Best practices for optimizing successful models built
 
-When thinking of ways to optimize your costs from successful models built, there are methods to reduce those costs while still adhering to best practices. To ensure that you are still utilizing tests and rebuilding views when logic is changed, it's recommended to implement a combination of the best practices that fit your needs. More specifically, if you decide to exclude views from your regularly scheduled <Constant name="cloud" /> job runs, it's imperative that you set up a merge job (with a link to the section) to deploy updated view logic when changes are detected.
+When thinking of ways to optimize your costs from successful models built, there are methods to reduce those costs while still adhering to best practices. To ensure that you are still utilizing tests and rebuilding views when logic is changed, it's recommended to implement a combination of the best practices that fit your needs. More specifically, if you decide to exclude views from your regularly scheduled <Constant name="dbt" /> job runs, it's imperative that you set up a merge job (with a link to the section) to deploy updated view logic when changes are detected.
 
 #### Exclude views in a dbt job
 
-Many <Constant name="cloud" /> users utilize views, which don’t always need to be rebuilt every time you run a job. For any jobs that contain views that _do not_ include macros that dynamically generate code (for example, case statements) based on upstream tables and also _do not_ have tests, you can implement these steps:
+Many <Constant name="dbt" /> users utilize views, which don’t always need to be rebuilt every time you run a job. For any jobs that contain views that _do not_ include macros that dynamically generate code (for example, case statements) based on upstream tables and also _do not_ have tests, you can implement these steps:
 
-1. Go to your current production deployment job in <Constant name="cloud" />.
+1. Go to your current production deployment job in <Constant name="dbt" />.
 2. Modify your command to include: `--exclude config.materialized:view`.
 3. Save your job changes.
 
@@ -254,7 +254,7 @@ If you have views that contain macros with case statements based on upstream tab
 
 Running tests for views in every job run can help keep data quality intact and save you from the need to rerun failed jobs. To exclude views from your job run while running tests, you can follow these steps to create a custom [selector](/reference/node-selection/yaml-selectors) for your job command. 
 
-1. Open your dbt project in the <Constant name="cloud_ide" />.
+1. Open your dbt project in the <Constant name="studio_ide" />.
 2. Add a file called `selectors.yml` in your top-level project folder.
 3. In the file, add the following code:
 
@@ -292,7 +292,7 @@ If you want to ensure that you're building views whenever the logic is changed, 
     Executing `dbt build` in this context is unnecessary because the CI job was used to both run and test the code that just got merged into main.
 5. Under the **Execution Settings**, select the default production job to compare changes against:
     - **Defer to a previous run state** &mdash; Select the “Merge Job” you created so the job compares and identifies what has changed since the last merge.
-6. In your dbt project, follow the steps in Run a <Constant name="cloud" /> job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the <Constant name="cloud" /> API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
+6. In your dbt project, follow the steps in Run a <Constant name="dbt" /> job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the <Constant name="dbt" /> API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
 
 The purpose of the merge job is to:
 
@@ -325,7 +325,7 @@ _If you need more developer seats, select the [Contact Sales](https://www.getdbt
 _Consider upgrading to a Starter or Enterprise-tier plan. Starter and Enterprise-tier plans include more models and allow you to exceed the monthly usage limit. Enterprise accounts are supported by a dedicated account management team and offer annual plans, custom configurations, and negotiated usage rates._ 
 
 * I want to upgrade my plan. Will all of my work carry over?
-_Yes. Your <Constant name="cloud" /> account will be upgraded without impacting your existing projects and account settings._
+_Yes. Your <Constant name="dbt" /> account will be upgraded without impacting your existing projects and account settings._
 
 * How do I determine the right plan for me?
  _The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Starter plan._

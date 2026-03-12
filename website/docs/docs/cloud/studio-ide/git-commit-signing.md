@@ -8,18 +8,18 @@ sidebar_label: Git commit signing
 
 To prevent impersonation and enhance security, you can sign your <Constant name="git" /> commits before pushing them to your repository. Using your signature, a <Constant name="git" /> provider can cryptographically verify a commit and mark it as "verified", providing increased confidence about its origin.
 
-You can configure <Constant name="cloud" /> to sign your <Constant name="git" /> commits when using the <Constant name="cloud_ide" /> for development. To set up, enable the feature in <Constant name="cloud" />, follow the flow to generate a keypair, and upload the public key to your <Constant name="git" /> provider to use for signature verification.  
+You can configure <Constant name="dbt" /> to sign your <Constant name="git" /> commits when using the <Constant name="studio_ide" /> for development. To set up, enable the feature in <Constant name="dbt" />, follow the flow to generate a keypair, and upload the public key to your <Constant name="git" /> provider to use for signature verification.  
 
 
 ## Prerequisites 
 
 - GitHub or GitLab is your <Constant name="git" /> provider. Currently, Azure DevOps is not supported.
-- You have a <Constant name="cloud" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
+- You have a <Constant name="dbt" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
 
 ## Generate GPG keypair in dbt
 
-To generate a GPG keypair in <Constant name="cloud" />, follow these steps:
-1. Go to your **Personal profile** page in <Constant name="cloud" />.
+To generate a GPG keypair in <Constant name="dbt" />, follow these steps:
+1. Go to your **Personal profile** page in <Constant name="dbt" />.
 2. Navigate to **Signed Commits** section.
 3. Enable the **Sign commits originating from this user** toggle.
 4. This will generate a GPG keypair. The private key will be used to sign all future <Constant name="git" /> commits. The public key will be displayed, allowing you to upload it to your <Constant name="git" /> provider.
@@ -40,9 +40,9 @@ Once you have uploaded the public key to your <Constant name="git" /> provider, 
 ## Considerations
 
 - The GPG keypair is tied to the user, not a specific account. There is a 1:1 relationship between the user and keypair. The same key will be used for signing commits on any accounts the user is a member of.
-- The GPG keypair generated in <Constant name="cloud" /> is linked to the email address associated with your account at the time of keypair creation. This email identifies the author of signed commits.
-- For your <Constant name="git" /> commits to be marked as "verified", your <Constant name="cloud" /> email address must be a verified email address with your <Constant name="git" /> provider. The <Constant name="git" /> provider (such as, GitHub, GitLab) checks that the commit's signed email matches a verified email in your <Constant name="git" /> provider account. If they don’t match, the commit won't be marked as "verified."
-- Keep your <Constant name="cloud" /> email and <Constant name="git" /> provider's verified email in sync to avoid verification issues. If you change your <Constant name="cloud" /> email address:
+- The GPG keypair generated in <Constant name="dbt" /> is linked to the email address associated with your account at the time of keypair creation. This email identifies the author of signed commits.
+- For your <Constant name="git" /> commits to be marked as "verified", your <Constant name="dbt" /> email address must be a verified email address with your <Constant name="git" /> provider. The <Constant name="git" /> provider (such as, GitHub, GitLab) checks that the commit's signed email matches a verified email in your <Constant name="git" /> provider account. If they don’t match, the commit won't be marked as "verified."
+- Keep your <Constant name="dbt" /> email and <Constant name="git" /> provider's verified email in sync to avoid verification issues. If you change your <Constant name="dbt" /> email address:
   - Generate a new GPG keypair with the updated email, following the [steps mentioned earlier](/docs/cloud/studio-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
   - Add and verify the new email in your <Constant name="git" /> provider.
 
@@ -54,7 +54,7 @@ Once you have uploaded the public key to your <Constant name="git" /> provider, 
 
 <DetailsToggle alt_header="What happens if I delete my GPG keypair in dbt?">
 
-If you delete your GPG keypair in <Constant name="cloud" />, your Git commits will no longer be signed. You can generate a new GPG keypair by following the [steps mentioned earlier](/docs/cloud/studio-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
+If you delete your GPG keypair in <Constant name="dbt" />, your Git commits will no longer be signed. You can generate a new GPG keypair by following the [steps mentioned earlier](/docs/cloud/studio-ide/git-commit-signing#generate-gpg-keypair-in-dbt-cloud).
 </DetailsToggle>
 
 <DetailsToggle alt_header="What Git providers support GPG keys?">
