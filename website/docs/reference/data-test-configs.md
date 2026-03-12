@@ -381,7 +381,7 @@ models:
 
 #### Add a description to generic and singular tests
 
-Starting from dbt v1.9 (also available to <Constant name="cloud" /> [release tracks](/docs/dbt-versions/cloud-release-tracks)), you can add [descriptions](/reference/resource-properties/data-tests#description) to both generic and singular tests.
+Starting from dbt v1.9 (also available to <Constant name="dbt" /> [release tracks](/docs/dbt-versions/cloud-release-tracks)), you can add [descriptions](/reference/resource-properties/data-tests#description) to both generic and singular tests.
 
 For a generic test, add the description in line with the existing YAML:
 

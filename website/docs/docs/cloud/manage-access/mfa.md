@@ -9,11 +9,11 @@ sidebar: null
 
 :::important
 
-<Constant name="cloud" /> enforces multi-factor authentication (MFA) for all users with username and password credentials. If MFA is not set up, you will see a notification bar prompting you to configure one of the supported methods when you log in. If you do not, you will have to configure MFA upon subsequent logins, or you will be unable to access <Constant name="cloud" />.
+<Constant name="dbt" /> enforces multi-factor authentication (MFA) for all users with username and password credentials. If MFA is not set up, you will see a notification bar prompting you to configure one of the supported methods when you log in. If you do not, you will have to configure MFA upon subsequent logins, or you will be unable to access <Constant name="dbt" />.
 
 :::
 
-<Constant name="cloud" /> provides multiple options for multi-factor authentication (MFA), which adds an extra layer of security to username and password logins. MFA is available across <Constant name="cloud" /> plans for users with username and password logins only. The available MFA methods are:
+<Constant name="dbt" /> provides multiple options for multi-factor authentication (MFA), which adds an extra layer of security to username and password logins. MFA is available across <Constant name="dbt" /> plans for users with username and password logins only. The available MFA methods are:
 
 - SMS verification code
     - Currently, only phone numbers with the North American Numbering Plan (NANP) +1 country code are supported.
@@ -36,7 +36,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 <Lightbox src="/img/docs/dbt-cloud/sms-enter-phone.png" width="60%" title="The phone number selection, including a dropdown for country code." />
 
-3. You will receive an SMS message with a six digit code. Enter the code in <Constant name="cloud" />.
+3. You will receive an SMS message with a six digit code. Enter the code in <Constant name="dbt" />.
 
 <Lightbox src="/img/docs/dbt-cloud/enter-code.png" width="60%" title="Enter the 6-digit code." />
 
@@ -48,7 +48,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 <Lightbox src="/img/docs/dbt-cloud/scan-qr.png" title="Example of the user generated QR code." />
 
-3. Enter the code provide for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in <Constant name="cloud" />.
+3. Enter the code provide for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in <Constant name="dbt" />.
 
 </Expandable>
 
@@ -72,9 +72,9 @@ If possible, it's recommended to configure multiple MFA methods so that if one f
 
 ## Disclaimer
 
-The terms below apply to <Constant name="cloud" />’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for <Constant name="cloud" /> log-in requests.
+The terms below apply to <Constant name="dbt" />’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for <Constant name="dbt" /> log-in requests.
 
-Any clients of dbt Labs that use <Constant name="cloud" /> Labs 2FA via SMS program (after password is input) are subject to the dbt Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
+Any clients of dbt Labs that use <Constant name="dbt" /> Labs 2FA via SMS program (after password is input) are subject to the dbt Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms:
 
 (1) The message frequency is a maximum of 1 message per user login;
 
