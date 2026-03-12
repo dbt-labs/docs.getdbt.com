@@ -11,23 +11,18 @@ keywords: ["dbt Copilot", "dbt Agents", "AI", "analytics", "dbt"]
 # dbt Copilot <Lifecycle status="self_service,managed,managed_plus" />
 
 <IntroText>
-<Constant name="copilot" /> is dbt's AI experience — designed to accelerate every stage of your analytics development lifecycle through inline code assistance and autonomous agents, all grounded in dbt's structured context.
+<Constant name="copilot" /> is dbt's AI-powered product surface &mdash; the single place where inline code assistance, autonomous agents, and structured workflows come together across your analytics development lifecycle, all grounded in dbt's structured context.
 </IntroText>
 
-Whether you're generating SQL and documentation with a single click, or delegating complex workflows to an autonomous agent, <Constant name="copilot" /> brings AI into the places you already work in <Constant name="dbt" />.
+From generating SQL and documentation with a single click, to delegating complex multi-step workflows to autonomous agents like the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent), <Constant name="copilot" /> brings AI into the places you already work in <Constant name="dbt" />.
 
-<div className="grid--2-col">
+## What Copilot includes
 
-<Card
-    title="Copilot"
-    body="Inline AI assistance for code generation, documentation, tests, semantic models, and SQL — available in the dbt Studio IDE, Canvas, and Insights."
-    link="/docs/cloud/dbt-copilot"
-    icon="dbt-copilot"/>
+<Constant name="copilot" /> includes the following capabilities:
 
-<Card
-    title="dbt Agents"
-    body="Autonomous AI agents that turn structured dbt context into auditable actions — from answering data questions to generating and refactoring models."
-    link="/docs/dbt-ai/dbt-agents"
-    icon="dbt-copilot"/>
+#### Inline assistance <Lifecycle status="self_service,managed,managed_plus" />
+- **[Inline assistance](/docs/cloud/dbt-copilot)** &mdash; Generate code, documentation, tests, semantic models, and SQL with a single click &mdash; available in the <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />.
 
-</div>
+#### dbt Agents <Lifecycle status="beta,managed,managed_plus" />
+- [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) &mdash; Write or refactor models, generate tests, and validate changes from natural language, all within the <Constant name="studio_ide" />.
+- [Analyst agent](/docs/dbt-ai/analyst-agent) &mdash; Ask natural language questions and get accurate, governed answers powered by the dbt Semantic Layer.
