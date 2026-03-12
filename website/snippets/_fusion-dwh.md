@@ -23,4 +23,8 @@
     - MFA
   </Expandable>
 
+  <Expandable alt_header="Apache Spark">
+    - Service Account / User Token
+  </Expandable>
+
 <!-- <Expandable alt_header="Supported data platforms"> -->

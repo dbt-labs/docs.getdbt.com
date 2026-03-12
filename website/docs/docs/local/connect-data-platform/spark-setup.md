@@ -1,5 +1,5 @@
 ---
-title: "Connect Apache Spark to dbt Core"
+title: "Apache Spark setup"
 sidebar_label: "Apache Spark"
 description: "Read this guide to learn about the Apache Spark warehouse setup in dbt."
 id: "spark-setup"
@@ -17,7 +17,50 @@ meta:
   config_page: '/reference/resource-configs/spark-configs'
 ---
 
+<VersionBlock firstVersion="2.0">
 
+# Connect Apache Spark to Fusion <Lifecycle status="preview" />
+
+The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects.
+
+## Fusion and Spark
+
+<Constant name="fusion" /> uses the Databricks SQL dialect for [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) when working with Spark. This means your Spark SQL is validated using Databricks SQL semantics, providing comprehensive error checking and SQL comprehension features.
+
+### Authentication
+
+The Spark adapter in <Constant name="fusion" /> supports:
+- Service Account / User Token authentication
+
+### Configuration
+
+Configure your Spark connection in `profiles.yml`:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: odbc
+      driver: [path/to/driver]
+      schema: [database/schema name]
+      host: [yourorg.sparkhost.com]
+      token: [abc123]
+      cluster: [cluster id]
+```
+
+</File>
+
+For detailed configuration options, refer to the [Spark configuration](/reference/resource-configs/spark-configs) page.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
+# Connect Apache Spark to dbt Core
 
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />
@@ -225,4 +268,6 @@ Delta-only features:
 To run metadata queries in dbt, you need to have a namespace named `default` in Spark when connecting with Thrift. You can check available namespaces by using Spark's `pyspark` and running `spark.sql("SHOW NAMESPACES").show()`. If the default namespace doesn't exist, create it by running `spark.sql("CREATE NAMESPACE default").show()`.
 
 If there's a network connection issue, your logs will display an error like `Could not connect to any of [('127.0.0.1', 10000)]` (or something similar).
+
+</VersionBlock>
 
