@@ -5,6 +5,8 @@ sidebar_label: "docs"
 id: "cmd-docs"
 ---
 
+<VersionBlock lastVersion="1.99">
+
 `dbt docs` has two supported subcommands: `generate` and `serve`.
 
 ### dbt docs generate
@@ -104,4 +106,45 @@ dbt docs serve --host ""
 ```
 
 As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the default host was `""`.
+</VersionBlock>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of the `dbt docs generate` command for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. This flag is fully Fusion native and significantly more performant.
+
+## --write-catalog flag
+
+The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. You can use this flag with the following commands:
+
+- `dbt build`
+- `dbt run`
+- `dbt parse`
+- `dbt compile`
+
+**Examples**:
+
+```shell
+dbt build --write-catalog
+```
+
+### Platform behavior
+
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead.
+
+### Local usage
+
+When running <Constant name="fusion" /> locally, add the `--write-catalog` flag to your command to generate the catalog:
+
+```shell
+dbt build --write-catalog
+```
+
+### What's different from docs generate
+
+The `--write-catalog` flag focuses solely on metadata hydration, generating the `catalog.json` file that powers [Catalog](/docs/explore/build-and-view-your-docs) and metadata APIs. It does not generate the static documentation website files (`index.html`).
+
+For the open-source documentation site experience, use `dbt docs generate` with <Constant name="core" />.
+
 </VersionBlock>

@@ -135,6 +135,51 @@ You can optionally configure state-aware orchestration when you want to fine-tun
   - Add a time difference to account for late-arriving data
   - Delay freshness detection until a threshold is reached (for example, number of records or hours of data)
 
+  The following examples show how to configure a source so that state-aware orchestration detects new upstream data only when your custom condition is met.
+
+  <Tabs>
+  <TabItem value="loaded_at_field" label="loaded_at_field">
+  State-aware orchestration treats the source as fresh when the maximum value of the `loaded_at_field` column changes since the previous run:
+
+  <File name="models/sources.yml">
+
+  ```yaml
+  sources:
+    - name: jaffle_shop
+      config:
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        loaded_at_field: _etl_loaded_at
+  ```
+
+  </File>
+
+  </TabItem>
+  <TabItem value="loaded_at_query" label="loaded_at_query">
+
+  To define freshness with custom SQL, use `loaded_at_query`. State-aware orchestration runs the query to get a single timestamp. When that value changes compared to the previous run, the source is considered fresh.
+
+  <File name="models/sources.yml">
+
+  ```yaml
+  sources:
+    - name: raw_orders
+      tables:
+        - name: orders
+          loaded_at_query: |
+            select max(ingested_at)
+            from {{ this }}
+            where ingested_at >= current_timestamp - interval '3 days'
+  ```
+
+  In this example, dbt runs the custom `loaded_at_query` to get a single timestamp &mdash; the latest `ingested_at` within the last three days. On each run, dbt compares this new maximum timestamp to the value from the previous run. If the maximum timestamp is newer, state-aware orchestration considers the source to have fresh data and may trigger rebuilds.
+
+  </File>
+
+  </TabItem>
+  </Tabs>
+
 - **Reducing model build frequency**
 
   Some models don’t need to be rebuilt every time their source data is updated. To control this:
