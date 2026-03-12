@@ -96,18 +96,21 @@ snapshots:
 
 <TabItem value="properties">
 
-Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting dbt Core v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag to use `sql_header` in your `properties.yml`.
+Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting <Constant name="core" /> v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag to use `sql_header` in your `properties.yml`.
 
 
 Here's an example of a model-level configuration:
+
 <File name="models/properties.yml">
 
 ```yaml
 models:
-  - name: my_model
+  - name: orders
     data_tests:
-      - dbt_utils.equality:
-          name: equality_fct_test_coverage
+      - unique:
+          name: unique_orders_order_id
+          arguments:
+            column_name: order_id
           config:
             sql_header: "-- SQL_HEADER_TEST_MARKER"
 ```
@@ -116,14 +119,15 @@ models:
 You can also use `sql_header` for column-level data tests:
 
 <File name="models/properties.yml">
+
 ```yaml
 models:
-  - name: my_model
+  - name: orders
     columns:
-      - name: id
+      - name: order_id
         data_tests:
           - not_null:
-              name: generic_test_with_sql_header
+              name: not_null_orders_order_id
               config:
                 sql_header: "-- SQL_HEADER_TEST_MARKER"
 ```

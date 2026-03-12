@@ -165,7 +165,7 @@ This configuration mechanism is supported for specific instances of generic test
 
 <VersionBlock firstVersion="1.12">
 
-You can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level of your `properties.yml`. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` for your data tests.
+You can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level of your `properties.yml`. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` in your data tests.
 
 </VersionBlock>
 
@@ -397,20 +397,20 @@ For more information refer to [Add a description to a data test](/reference/reso
 
 <VersionBlock firstVersion="1.12">
 
-#### Set `sql_header` for a generic data test
+#### Set `sql_header` in a generic data test
 
-When the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag is enabled, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test so that the specified SQL runs before the test runs (for example, to set session parameters or add a comment):
+When the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag is enabled, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test so that the specified SQL runs before the test is executed (for example, to set session parameters or add a comment):
 
-<File name='models/properties.yml'>
+<File name="models/properties.yml">
 
 ```yaml
 models:
-  - name: table
+  - name: orders
     columns:
-      - name: id
+      - name: order_id
         data_tests:
           - not_null:
-              name: generic_test_with_sql_header
+              name: not_null_orders_order_id
               config:
                 sql_header: "-- SQL_HEADER_TEST_MARKER"
 ```
