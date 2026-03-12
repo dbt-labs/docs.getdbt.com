@@ -79,48 +79,6 @@ data_tests:
 
 <TabItem value="property-yaml">
 
-<VersionBlock lastVersion="1.11">
-
-```yaml
-<resource_type>:
-  - name: <resource_name>
-    data_tests:
-      - <test_name>: # # Actual name of the test. For example, dbt_utils.equality
-          name: # Human friendly name for the test. For example, equality_fct_test_coverage
-          [description](/reference/resource-properties/description): "markdown formatting"
-          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
-            <argument_name>: <argument_value>
-          [config](/reference/resource-properties/config):
-            [fail_calc](/reference/resource-configs/fail_calc): <string>
-            [limit](/reference/resource-configs/limit): <integer>
-            [severity](/reference/resource-configs/severity): error | warn
-            [error_if](/reference/resource-configs/severity): <string>
-            [warn_if](/reference/resource-configs/severity): <string>
-            [store_failures](/reference/resource-configs/store_failures): true | false
-            [where](/reference/resource-configs/where): <string>
-
-    [columns](/reference/resource-properties/columns):
-      - name: <column_name>
-        data_tests:
-          - <test_name>:
-              name:
-              [description](/reference/resource-properties/description): "markdown formatting"
-              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
-                <argument_name>: <argument_value>
-              [config](/reference/resource-properties/config):
-                [fail_calc](/reference/resource-configs/fail_calc): <string>
-                [limit](/reference/resource-configs/limit): <integer>
-                [severity](/reference/resource-configs/severity): error | warn
-                [error_if](/reference/resource-configs/severity): <string>
-                [warn_if](/reference/resource-configs/severity): <string>
-                [store_failures](/reference/resource-configs/store_failures): true | false
-                [where](/reference/resource-configs/where): <string>
-```
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.12">
-
 ```yaml
 <resource_type>:
   - name: <resource_name>
@@ -158,8 +116,6 @@ data_tests:
                 [where](/reference/resource-configs/where): <string>
                 [sql_header](/reference/resource-configs/sql_header): <string>  # available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
 ```
-
-</VersionBlock>
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
 
