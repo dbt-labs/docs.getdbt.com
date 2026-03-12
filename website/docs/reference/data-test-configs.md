@@ -86,7 +86,7 @@ data_tests:
       - <test_name>: # # Actual name of the test. For example, dbt_utils.equality
           name: # Human friendly name for the test. For example, equality_fct_test_coverage
           [description](/reference/resource-properties/description): "markdown formatting"
-          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+          arguments: # Available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
             <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [fail_calc](/reference/resource-configs/fail_calc): <string>
@@ -96,7 +96,8 @@ data_tests:
             [warn_if](/reference/resource-configs/severity): <string>
             [store_failures](/reference/resource-configs/store_failures): true | false
             [where](/reference/resource-configs/where): <string>
-            [sql_header](/reference/resource-configs/sql_header): <string>  # available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
+            # Available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
+            [sql_header](/reference/resource-configs/sql_header): <string> 
 
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
@@ -104,7 +105,7 @@ data_tests:
           - <test_name>:
               name:
               [description](/reference/resource-properties/description): "markdown formatting"
-              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+              arguments: # Available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
                 <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [fail_calc](/reference/resource-configs/fail_calc): <string>
@@ -114,7 +115,8 @@ data_tests:
                 [warn_if](/reference/resource-configs/severity): <string>
                 [store_failures](/reference/resource-configs/store_failures): true | false
                 [where](/reference/resource-configs/where): <string>
-                [sql_header](/reference/resource-configs/sql_header): <string>  # available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
+                # Available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
+                [sql_header](/reference/resource-configs/sql_header): <string> 
 ```
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
