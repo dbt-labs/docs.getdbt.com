@@ -35,9 +35,9 @@ import DbtFramework from '/snippets/_dbt-framework.md';
 
 The <Constant name="dbt_platform" /> is a fully managed service that gives you a complete environment to build, test, deploy, and collaborate on dbt projects. You can develop in the browser or locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
-- [Develop in your browser using the <Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio)
-- [Seamless drag-and-drop development with <Constant name="visual_editor" />](/docs/cloud/canvas)
-- [Run dbt commands from your local command line](#dbt-local-development) using dbt VS Code extension or <Constant name="cloud_cli" /> (both which integrate seamlessly with the <Constant name="dbt_platform" /> project(s)).
+- [Develop in your browser using the <Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio)
+- [Seamless drag-and-drop development with <Constant name="canvas" />](/docs/cloud/canvas)
+- [Run dbt commands from your local command line](#dbt-local-development) using dbt VS Code extension or <Constant name="platform_cli" /> (both which integrate seamlessly with the <Constant name="dbt_platform" /> project(s)).
 
 For more details, see [About dbt plans](https://www.getdbt.com/pricing).
 
@@ -47,15 +47,15 @@ You can run dbt locally with the <Constant name="fusion_engine" /> or the <Const
 
 - [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
 - [Install the Fusion CLI](/docs/local/install-dbt?version=2#get-started) &mdash; <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
-- [Install the <Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) &mdash; The <Constant name="dbt_platform" /> CLI, which allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line. Requires a <Constant name="dbt_platform" /> project.
+- [Install the <Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) &mdash; The <Constant name="dbt_platform" /> CLI, which allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line. Requires a <Constant name="dbt_platform" /> project.
 - [Install <Constant name="core" />](/docs/local/install-dbt) &mdash; The open-source, Python-based CLI that uses the <Constant name="core" /> engine. Doesn't include <Term id="lsp" /> features.
 
 ## Related docs
 
 - [About the dbt VS Code extension](/docs/about-dbt-extension)
-- [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features)
+- [<Constant name="dbt" /> features](/docs/cloud/about-cloud/dbt-cloud-features)
 - [Model selection syntax](/reference/node-selection/syntax)
-- [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation)
-- [<Constant name="cloud_ide" /> features](/docs/cloud/studio-ide/develop-in-studio#ide-features)
+- [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation)
+- [<Constant name="studio_ide" /> features](/docs/cloud/studio-ide/develop-in-studio#ide-features)
 - [Does dbt offer extract and load functionality?](/faqs/Project/transformation-tool)
 - [Why does dbt compile need a data platform connection](/faqs/Warehouse/db-connection-dbt-compile)

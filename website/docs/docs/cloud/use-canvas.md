@@ -13,20 +13,20 @@ import Prerequisites from '/snippets/_canvas-prerequisites.md';
 # Edit and create dbt models <Lifecycle status='managed, managed_plus'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
-Access and use <Constant name="visual_editor" /> to create or edit dbt models through a visual, drag-and-drop experience. Use the built-in AI for custom code generation in your development experience.
+Access and use <Constant name="canvas" /> to create or edit dbt models through a visual, drag-and-drop experience. Use the built-in AI for custom code generation in your development experience.
 </p>
 
 ## Access Canvas
 
-Before accessing the editor, you should have a <Constant name="cloud" /> project already set up. This includes a <Constant name="git" /> repository, data platform connection, environments, and developer credentials. If you don't have this set up, please contact your <Constant name="cloud" /> Admin.
+Before accessing the editor, you should have a <Constant name="dbt" /> project already set up. This includes a <Constant name="git" /> repository, data platform connection, environments, and developer credentials. If you don't have this set up, please contact your <Constant name="dbt" /> Admin.
 
-Access **<Constant name="visual_editor" />** at any time from the left-side menu.
+Access **<Constant name="canvas" />** at any time from the left-side menu.
 
 <Prerequisites feature={'/snippets/_canvas-prerequisites.md'} />
 
 ## Create a model
 
-To create a dbt SQL model, click on **Create a new model** and perform the following steps. Note that you can't create source models in <Constant name="visual_editor" />. This is because you need to have production run with sources already created.
+To create a dbt SQL model, click on **Create a new model** and perform the following steps. Note that you can't create source models in <Constant name="canvas" />. This is because you need to have production run with sources already created.
 
 1. Drag an [operator](/docs/cloud/canvas-interface#operators) from the operator toolbar and drop it onto the canvas.
 2. Click on the operator to open its configuration panel.
@@ -46,7 +46,7 @@ To create a dbt SQL model, click on **Create a new model** and perform the follo
 
 ## Edit an existing model
 To edit an existing model: 
-1. Navigate to a <Constant name="visual_editor" /> workspace.
+1. Navigate to a <Constant name="canvas" /> workspace.
 2. Click **+Add** on the top navigation bar.
 3. Click **Edit existing model**. 
 
@@ -56,7 +56,7 @@ This will allow you to select the model you'd like to edit.
 
 ## Upload data to Canvas
 
-You can upload a CSV file of source data for model creation directly from <Constant name="visual_editor" />:
+You can upload a CSV file of source data for model creation directly from <Constant name="canvas" />:
 
 1. Click **+Add**. 
 2. Select **Upload CSV source**.
@@ -64,13 +64,13 @@ You can upload a CSV file of source data for model creation directly from <Const
 
 This uploads the data to your data warehouse in a new table in your developer schema. It will be prefixed with `VE_UPLOADS_`.
 
-In the canvas window, it creates a source operator and a basic SQL model that you can customize. You can now work with this data in both <Constant name="visual_editor" /> and the <Constant name="cloud_ide" />.
+In the canvas window, it creates a source operator and a basic SQL model that you can customize. You can now work with this data in both <Constant name="canvas" /> and the <Constant name="studio_ide" />.
 
 ## Test and document
 
 Testing and documenting your models is an important part of the development process.  
 
-Stay tuned! Coming very soon, you'll be able to test and document your dbt models in <Constant name="visual_editor" />. This ensures you can maintain high data quality and clarity around how your models ought to be used. 
+Stay tuned! Coming very soon, you'll be able to test and document your dbt models in <Constant name="canvas" />. This ensures you can maintain high data quality and clarity around how your models ought to be used. 
 
 <!-- leaving this section here in case there's more to add later if needed
 ## Limitations

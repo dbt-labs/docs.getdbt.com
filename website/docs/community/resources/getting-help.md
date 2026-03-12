@@ -74,10 +74,10 @@ If you want to receive dbt training, check out our [dbt Learn](https://learn.get
 
 ## dbt support
 
-**Note:** If you are a **<Constant name="cloud" /> user** and need help with one of the following issues, please reach out to us by clicking [**Create a support ticket**](/docs/dbt-support#create-a-support-ticket) through the <Constant name="cloud" /> navigation or [emailing support@getdbt.com](mailto:support@getdbt.com):
+**Note:** If you are a **<Constant name="dbt" /> user** and need help with one of the following issues, please reach out to us by clicking [**Create a support ticket**](/docs/dbt-support#create-a-support-ticket) through the <Constant name="dbt" /> navigation or [emailing support@getdbt.com](mailto:support@getdbt.com):
 
 - Account setup (e.g. connection issues, repo connections)
 - Billing
 - Bug reports related to the web interface
 
-As a rule of thumb, if you are using <Constant name="cloud" />, but your problem is related to code within your dbt project, then please follow the above process or checking out the [FAQs](/docs/faqs) rather than reaching out to support. Refer to [<Constant name="cloud" /> support](/docs/dbt-support) for more information.
+As a rule of thumb, if you are using <Constant name="dbt" />, but your problem is related to code within your dbt project, then please follow the above process or checking out the [FAQs](/docs/faqs) rather than reaching out to support. Refer to [<Constant name="dbt" /> support](/docs/dbt-support) for more information.

@@ -9,7 +9,7 @@ keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 # About dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
 <IntroText>
-<Constant name="copilot" /> is a powerful, AI-powered assistant fully integrated into your <Constant name="cloud" /> experience—designed to accelerate your analytics workflows.
+<Constant name="copilot" /> is a powerful, AI-powered assistant fully integrated into your <Constant name="dbt" /> experience—designed to accelerate your analytics workflows.
 
 </IntroText>
 
@@ -18,7 +18,7 @@ keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 <Constant name="copilot" /> includes:
 
 - [**dbt Agents**](/docs/dbt-ai/dbt-agents) &mdash; Autonomous agents like the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and [Analyst agent](/docs/dbt-ai/analyst-agent) that build, refactor, and validate models, generate [documentation](/docs/build/documentation), [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), [semantic models](/docs/build/semantic-models), and answer data questions &mdash; all from natural language prompts.
-- [**Inline editing**](/docs/cloud/use-dbt-copilot) &mdash; Generate and edit SQL directly in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot), build visual models in the [<Constant name="visual_editor" />](/docs/cloud/build-canvas-copilot), and query data in [<Constant name="query_page" />](/docs/explore/dbt-insights).
+- [**Inline editing**](/docs/cloud/use-dbt-copilot) &mdash; Generate and edit SQL directly in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), build visual models in the [<Constant name="canvas" />](/docs/cloud/build-canvas-copilot), and query data in [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 To learn about prompt best practices, check out the [Prompt cookbook](/guides/prompt-cookbook).
 
@@ -33,12 +33,12 @@ To learn about prompt best practices, check out the [Prompt cookbook](/guides/pr
 <Constant name="copilot" /> enhances efficiency by automating repetitive tasks while ensuring data privacy and security. It works as follows:
 
 - Access <Constant name="copilot" /> through:
-  - The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot) to generate documentation, tests, semantic models. Access the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) from the same Copilot panel to build, refactor, and validate models end-to-end.
-  - The [<Constant name="visual_editor" /> ](/docs/cloud/build-canvas-copilot) to generate SQL code using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
-  - The [<Constant name="query_page" />](/docs/explore/dbt-insights) to generate SQL queries for analysis using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
+  - The [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot) to generate documentation, tests, semantic models. Access the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) from the same Copilot panel to build, refactor, and validate models end-to-end.
+  - The [<Constant name="canvas" /> ](/docs/cloud/build-canvas-copilot) to generate SQL code using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
+  - The [<Constant name="insights" />](/docs/explore/dbt-insights) to generate SQL queries for analysis using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
 - <Constant name="copilot" /> gathers metadata (like column names, model SQL, documentation) but never accesses row-level warehouse data.
 - The metadata and user prompts are sent to the AI provider (in this case, OpenAI) through API calls for processing.
-- The AI-generated content is returned to <Constant name="cloud" /> for you to review, edit, and save within your project files.
+- The AI-generated content is returned to <Constant name="dbt" /> for you to review, edit, and save within your project files.
 - <Constant name="copilot" /> does not use warehouse data to train AI models.
 - No sensitive data persists on dbt Labs' systems, except for usage data.
 - Client data, including any personal or sensitive data inserted into the query by the user, is deleted within 30 days by OpenAI.

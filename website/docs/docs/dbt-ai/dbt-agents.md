@@ -42,7 +42,7 @@ The following agents are available. Contact your account manager for early acces
 
 #### Analyst agent <Lifecycle status="beta"/>
 
-Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="query_page" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
+Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="insights" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
@@ -50,7 +50,7 @@ The Analyst agent is a beta feature. Enable beta features under **Account settin
 
 #### Developer agent <Lifecycle status="beta,managed,managed_plus"/>
 
-The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="cloud_ide" />, purpose-built to streamline the developer experience. Describe the data product or change you want &mdash; the agent writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />, purpose-built to streamline the developer experience. Describe the data product or change you want &mdash; the agent writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
 
 The agent always has access to the latest dbt-recommended guidance through [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) &mdash; curated instructions and scripts managed by dbt Labs, available out of the box with no configuration required.
 
@@ -58,7 +58,7 @@ For setup instructions and available use cases, see [<Constant name="dev_agent" 
 
 #### Discovery agent <Lifecycle status="private_beta"/>
 
-Find the right, approved dataset fast in <Constant name="explorer" />. The Discovery agent surfaces definitions, freshness, tests, owners, and lineage right where you work.
+Find the right, approved dataset fast in <Constant name="catalog" />. The Discovery agent surfaces definitions, freshness, tests, owners, and lineage right where you work.
 
 To request access to the Discovery agent, contact your account manager.
 
