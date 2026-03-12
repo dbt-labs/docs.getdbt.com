@@ -484,7 +484,7 @@ To resolve this, update your macro to return a valid schema name (`target.schema
 
 ### `sql_header` in data tests
 
-Set the `require_sql_header_in_test_configs` flag to `True` to enable support for the [sql_header](/reference/resource-configs/sql_header) config for generic data tests. When enabled, you can set `sql_header` in the `config` of a generic data test at the model or column level in your properties YAML file. You can use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
+Set the `require_sql_header_in_test_configs` flag to `True` to enable support for the [`sql_header`](/reference/resource-configs/sql_header) config for generic data tests. When enabled, you can set `sql_header` in the `config` of a generic data test at the model or column level in your properties YAML file. You can use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
 
 For example:
 

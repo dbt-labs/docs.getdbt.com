@@ -165,7 +165,7 @@ This configuration mechanism is supported for specific instances of generic test
 
 <VersionBlock firstVersion="1.12">
 
-You can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level of your `properties.yml`. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` in your data tests.
+You can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level of your `properties.yml`. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` in your data tests.
 
 </VersionBlock>
 
