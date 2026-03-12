@@ -20,7 +20,7 @@ Whether you're generating SQL and documentation with a single click, or delegati
 
 <Card
     title="Copilot"
-    body="Inline AI assistance for code generation, documentation, tests, semantic models, and SQL — available in the dbt Cloud IDE, Visual Editor, and Query page."
+    body="Inline AI assistance for code generation, documentation, tests, semantic models, and SQL — available in the dbt Studio IDE, Canvas, and Insights."
     link="/docs/cloud/dbt-copilot"
     icon="dbt-copilot"/>
 
