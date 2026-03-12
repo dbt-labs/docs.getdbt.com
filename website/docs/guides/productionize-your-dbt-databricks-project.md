@@ -15,7 +15,7 @@ level: 'Intermediate'
 
 ## Introduction
 
-Welcome to the third installment of our comprehensive series on optimizing and deploying your data pipelines using Databricks and <Constant name="cloud" />. In this guide, we'll dive into delivering these models to end users while incorporating best practices to ensure that your production data remains reliable and timely.
+Welcome to the third installment of our comprehensive series on optimizing and deploying your data pipelines using Databricks and <Constant name="dbt" />. In this guide, we'll dive into delivering these models to end users while incorporating best practices to ensure that your production data remains reliable and timely.
 
 ### Prerequisites
 
@@ -25,7 +25,7 @@ If you don't have any of the following requirements, refer to the instructions i
 - You have [optimized your dbt models for peak performance](/guides/optimize-dbt-models-on-databricks).
 - You have created two catalogs in Databricks: *dev* and *prod*.
 - You have created  Databricks Service Principal to run your production jobs.
-- You have at least one [deployment environment](/docs/deploy/deploy-environments) in <Constant name="cloud" />.
+- You have at least one [deployment environment](/docs/deploy/deploy-environments) in <Constant name="dbt" />.
 
 To get started, let's revisit the deployment environment created for your production data.
 
@@ -33,22 +33,22 @@ To get started, let's revisit the deployment environment created for your produc
 
 In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, you can design [data lakehouses](https://www.databricks.com/product/data-lakehouse) with separate environments. The _production_ environment includes the relations (schemas, tables, and views) that end users query or use, typically in a BI tool or ML model.
 
-In <Constant name="cloud" />, [environments](/docs/dbt-cloud-environments) come in two flavors:
+In <Constant name="dbt" />, [environments](/docs/dbt-cloud-environments) come in two flavors:
 
 - Deployment &mdash; Defines the settings used for executing jobs created within that environment.
-- Development &mdash; Determine the settings used in the <Constant name="cloud_ide" /> for a particular <Constant name="cloud" /> project. 
+- Development &mdash; Determine the settings used in the <Constant name="studio_ide" /> for a particular <Constant name="dbt" /> project. 
 
-Each <Constant name="cloud" /> project can have multiple deployment environments, but only one development environment per user.
+Each <Constant name="dbt" /> project can have multiple deployment environments, but only one development environment per user.
 
 ## Create and schedule a production job
 
 With your deployment environment set up, it's time to create a production job to run in your *prod* environment.
 
-To deploy our data transformation workflows, we will utilize [<Constant name="cloud" />’s built-in job scheduler](/docs/deploy/deploy-jobs). The job scheduler is designed specifically to streamline your dbt project deployments and runs, ensuring that your data pipelines are easy to create, monitor, and modify efficiently.
+To deploy our data transformation workflows, we will utilize [<Constant name="dbt" />’s built-in job scheduler](/docs/deploy/deploy-jobs). The job scheduler is designed specifically to streamline your dbt project deployments and runs, ensuring that your data pipelines are easy to create, monitor, and modify efficiently.
 
-Leveraging <Constant name="cloud" />'s job scheduler allows data teams to own the entire transformation workflow. You don't need to learn and maintain additional tools for orchestration or rely on another team to schedule code written by your team. This end-to-end ownership simplifies the deployment process and accelerates the delivery of new data products.
+Leveraging <Constant name="dbt" />'s job scheduler allows data teams to own the entire transformation workflow. You don't need to learn and maintain additional tools for orchestration or rely on another team to schedule code written by your team. This end-to-end ownership simplifies the deployment process and accelerates the delivery of new data products.
 
-Let’s [create a job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) in <Constant name="cloud" /> that will transform data in our Databricks *prod* catalog.
+Let’s [create a job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) in <Constant name="dbt" /> that will transform data in our Databricks *prod* catalog.
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 2. **Name** the job “Daily refresh”.
@@ -68,7 +68,7 @@ Let’s [create a job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) in <Co
         - We are excluding source data because we already tested it in step 2.
         - The fail-fast flag will make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
 5. Under **Triggers**, use the toggle to configure your job to [run on a schedule](/docs/deploy/deploy-jobs#schedule-days). You can enter specific days and timing or create a custom cron schedule. 
-    - If you want your <Constant name="cloud" /> job scheduled by another orchestrator, like Databricks Workflows, see the [Advanced Considerations](#advanced-considerations) section below.
+    - If you want your <Constant name="dbt" /> job scheduled by another orchestrator, like Databricks Workflows, see the [Advanced Considerations](#advanced-considerations) section below.
 
 This is just one example of an all-or-nothing command list designed to minimize wasted computing. The [job command list](/docs/deploy/job-commands) and [selectors](/reference/node-selection/syntax) provide a lot of flexibility on how your DAG will execute. You may want to design yours to continue running certain models if others fail. You may want to set up multiple jobs to refresh models at different frequencies. See our [Job Creation Best Practices discourse](https://discourse.getdbt.com/t/job-creation-best-practices-in-dbt-cloud-feat-my-moms-lasagna/2980) for more job design suggestions.
 
@@ -78,9 +78,9 @@ This will be our main production job to refresh data that will be used by end us
 
 ## Add a CI job
 
-CI/CD, or Continuous Integration and Continuous Deployment/Delivery, has become a standard practice in software development for rapidly delivering new features and bug fixes while maintaining high quality and stability. <Constant name="cloud" /> enables you to apply these practices to your data transformations.
+CI/CD, or Continuous Integration and Continuous Deployment/Delivery, has become a standard practice in software development for rapidly delivering new features and bug fixes while maintaining high quality and stability. <Constant name="dbt" /> enables you to apply these practices to your data transformations.
 
-The steps below show how to create a CI test for your dbt project. CD in <Constant name="cloud" /> requires no additional steps, as your jobs will automatically pick up the latest changes from the branch assigned to the environment your job is running in. You may choose to add steps depending on your deployment strategy. If you want to dive deeper into CD options, check out [this blog on adopting CI/CD with <Constant name="cloud" />](https://www.getdbt.com/blog/adopting-ci-cd-with-dbt-cloud/).
+The steps below show how to create a CI test for your dbt project. CD in <Constant name="dbt" /> requires no additional steps, as your jobs will automatically pick up the latest changes from the branch assigned to the environment your job is running in. You may choose to add steps depending on your deployment strategy. If you want to dive deeper into CD options, check out [this blog on adopting CI/CD with <Constant name="dbt" />](https://www.getdbt.com/blog/adopting-ci-cd-with-dbt-cloud/).
 
 dbt allows you to write [data tests](/docs/build/data-tests) for your data pipeline, which can be run at every step of the process to ensure the stability and correctness of your data transformations. The main places you’ll use your dbt tests are:
 
@@ -92,19 +92,19 @@ Your CI job will ensure that the models build properly and pass any tests applie
 
 - A catalog called *test*
 - A service principal called *dbt_test_sp*
-- A new <Constant name="cloud" /> environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
+- A new <Constant name="dbt" /> environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
 
-We recommend setting up a <Constant name="cloud" /> CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a CI job, refer to [Set up CI jobs](/docs/deploy/ci-jobs) for details.
+We recommend setting up a <Constant name="dbt" /> CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a CI job, refer to [Set up CI jobs](/docs/deploy/ci-jobs) for details.
 
 With dbt tests and SlimCI, you can feel confident that your production data will be timely and accurate even while delivering at high velocity.
 
 ## Monitor your jobs
 
-Keeping a close eye on your <Constant name="cloud" /> jobs is crucial for maintaining a robust and efficient data pipeline. By monitoring job performance and quickly identifying potential issues, you can ensure that your data transformations run smoothly. <Constant name="cloud" /> provides three entry points to monitor the health of your project: run history, deployment monitor, and status tiles.
+Keeping a close eye on your <Constant name="dbt" /> jobs is crucial for maintaining a robust and efficient data pipeline. By monitoring job performance and quickly identifying potential issues, you can ensure that your data transformations run smoothly. <Constant name="dbt" /> provides three entry points to monitor the health of your project: run history, deployment monitor, and status tiles.
 
-The [run history](/docs/deploy/run-visibility#run-history) dashboard in <Constant name="cloud" /> provides a detailed view of all your project's job runs, offering various filters to help you focus on specific aspects. This is an excellent tool for developers who want to check recent runs, verify overnight results, or track the progress of running jobs. To access it, select **Run History** from the **Deploy** menu.
+The [run history](/docs/deploy/run-visibility#run-history) dashboard in <Constant name="dbt" /> provides a detailed view of all your project's job runs, offering various filters to help you focus on specific aspects. This is an excellent tool for developers who want to check recent runs, verify overnight results, or track the progress of running jobs. To access it, select **Run History** from the **Deploy** menu.
 
-The deployment monitor in <Constant name="cloud" /> offers a higher-level view of your run history, enabling you to gauge the health of your data pipeline over an extended period of time. This feature includes information on run durations and success rates, allowing you to identify trends in job performance, such as increasing run times or more frequent failures. The deployment monitor also highlights jobs in progress, queued, and recent failures. To access the deployment monitor click on the dbt logo in the top left corner of the <Constant name="cloud" /> UI.
+The deployment monitor in <Constant name="dbt" /> offers a higher-level view of your run history, enabling you to gauge the health of your data pipeline over an extended period of time. This feature includes information on run durations and success rates, allowing you to identify trends in job performance, such as increasing run times or more frequent failures. The deployment monitor also highlights jobs in progress, queued, and recent failures. To access the deployment monitor click on the dbt logo in the top left corner of the <Constant name="dbt" /> UI.
 
 <Lightbox src="/img/guides/databricks-guides/deployment_monitor_dbx.png" width="85%" title="The Deployment Monitor Shows Job Status Over Time Across Environments" />
 
@@ -112,28 +112,28 @@ By adding [data health tiles](/docs/explore/data-tile) to your BI dashboards, yo
 
 ## Set up notifications
 
-Setting up [notifications](/docs/deploy/job-notifications) in <Constant name="cloud" /> allows you to receive alerts via email or a Slack channel whenever a run ends. This ensures that the appropriate teams are notified and can take action promptly when jobs fail or are canceled. To set up notifications:
+Setting up [notifications](/docs/deploy/job-notifications) in <Constant name="dbt" /> allows you to receive alerts via email or a Slack channel whenever a run ends. This ensures that the appropriate teams are notified and can take action promptly when jobs fail or are canceled. To set up notifications:
 
-1. Navigate to your <Constant name="cloud" /> project settings.
+1. Navigate to your <Constant name="dbt" /> project settings.
 2. Select the **Notifications** tab.
 3. Choose the desired notification type (Email or Slack) and configure the relevant settings.
 
-If you require notifications through other means than email or Slack, you can use <Constant name="cloud" />'s outbound [webhooks](/docs/deploy/webhooks) feature to relay job events to other tools. Webhooks enable you to integrate <Constant name="cloud" /> with a wide range of SaaS applications, extending your pipeline’s automation into other systems.
+If you require notifications through other means than email or Slack, you can use <Constant name="dbt" />'s outbound [webhooks](/docs/deploy/webhooks) feature to relay job events to other tools. Webhooks enable you to integrate <Constant name="dbt" /> with a wide range of SaaS applications, extending your pipeline’s automation into other systems.
 
 ## Troubleshooting
 
 When a disruption occurs in your production pipeline, it's essential to know how to troubleshoot issues effectively to minimize downtime and maintain a high degree of trust with your stakeholders.
 
-The five key steps for troubleshooting <Constant name="cloud" /> issues are:
+The five key steps for troubleshooting <Constant name="dbt" /> issues are:
 
 1. Read the error message: dbt error messages usually indicate the error type and the file where the issue occurred.
 2. Inspect the problematic file and look for an immediate fix.
-3. Isolate the problem by running one model at a time in the <Constant name="cloud_ide" /> or undoing the code that caused the issue.
+3. Isolate the problem by running one model at a time in the <Constant name="studio_ide" /> or undoing the code that caused the issue.
 4. Check for problems in compiled files and logs.
 
 Consult the [Debugging errors documentation](/guides/debug-errors) for a comprehensive list of error types and diagnostic methods.
 
-To troubleshoot issues with a <Constant name="cloud" /> job, navigate to the "Deploy > Run History" tab in your <Constant name="cloud" /> project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/run-visibility#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
+To troubleshoot issues with a <Constant name="dbt" /> job, navigate to the "Deploy > Run History" tab in your <Constant name="dbt" /> project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/run-visibility#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
 
 If your jobs are taking longer than expected, use the [model timing](/docs/deploy/run-visibility#model-timing) dashboard to identify bottlenecks in your pipeline. Analyzing the time taken for each model execution helps you pinpoint the slowest components and optimize them for better performance. The Databricks [Query History](https://docs.databricks.com/sql/admin/query-history.html) lets you inspect granular details such as time spent in each task, rows returned, I/O performance, and execution plan.
 
@@ -141,27 +141,27 @@ For more on performance tuning, see our guide on [How to Optimize and Troublesho
 
 ## Advanced considerations
 
-As you become more experienced with <Constant name="cloud" /> and Databricks, you might want to explore advanced techniques to further enhance your data pipeline and improve the way you manage your data transformations. The topics in this section are not requirements but will help you harden your production environment for greater security, efficiency, and accessibility.
+As you become more experienced with <Constant name="dbt" /> and Databricks, you might want to explore advanced techniques to further enhance your data pipeline and improve the way you manage your data transformations. The topics in this section are not requirements but will help you harden your production environment for greater security, efficiency, and accessibility.
 
 ### Refreshing your data with Databricks Workflows
 
-The <Constant name="cloud" /> job scheduler offers several ways to trigger your jobs. If your dbt transformations are just one step of a larger orchestration workflow, use the <Constant name="cloud" /> API to trigger your job from Databricks Workflows.
+The <Constant name="dbt" /> job scheduler offers several ways to trigger your jobs. If your dbt transformations are just one step of a larger orchestration workflow, use the <Constant name="dbt" /> API to trigger your job from Databricks Workflows.
 
 This is a common pattern for analytics use cases that want to minimize latency between ingesting bronze data into the lakehouse with a notebook, transforming that data into gold tables with dbt, and refreshing a dashboard. It is also useful for data science teams who use dbt for feature extraction before using the updated feature store to train and register machine learning models with MLflow.
 
-The API enables integration between your <Constant name="cloud" /> jobs and the Databricks workflow, ensuring that your data transformations are effectively managed within the broader context of your data processing pipeline.
+The API enables integration between your <Constant name="dbt" /> jobs and the Databricks workflow, ensuring that your data transformations are effectively managed within the broader context of your data processing pipeline.
 
-Inserting <Constant name="cloud" /> jobs into a Databricks Workflows allows you to chain together external tasks while still leveraging these benefits of <Constant name="cloud" />:
+Inserting <Constant name="dbt" /> jobs into a Databricks Workflows allows you to chain together external tasks while still leveraging these benefits of <Constant name="dbt" />:
 
-- UI Context: The <Constant name="cloud" /> UI enables you to define the job within the context of your <Constant name="cloud" /> environments, making it easier to create and manage relevant configs.
-- Logs and Run History: Accessing logs and run history becomes more convenient when using <Constant name="cloud" />.
-- Monitoring and Notification Features: <Constant name="cloud" /> comes equipped with monitoring and notification features like the ones described above that can help you stay informed about the status and performance of your jobs.
+- UI Context: The <Constant name="dbt" /> UI enables you to define the job within the context of your <Constant name="dbt" /> environments, making it easier to create and manage relevant configs.
+- Logs and Run History: Accessing logs and run history becomes more convenient when using <Constant name="dbt" />.
+- Monitoring and Notification Features: <Constant name="dbt" /> comes equipped with monitoring and notification features like the ones described above that can help you stay informed about the status and performance of your jobs.
 
-To trigger your <Constant name="cloud" /> job from Databricks, follow the instructions in our [Databricks Workflows to run <Constant name="cloud" /> jobs guide](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
+To trigger your <Constant name="dbt" /> job from Databricks, follow the instructions in our [Databricks Workflows to run <Constant name="dbt" /> jobs guide](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
 
 ## Data masking
 
-Our [Best Practices for dbt and Unity Catalog](/best-practices/dbt-unity-catalog-best-practices) guide recommends using separate catalogs *dev* and *prod* for development and deployment environments, with Unity Catalog and <Constant name="cloud" /> handling configurations and permissions for environment isolation. Ensuring security while maintaining efficiency in your development and deployment environments is crucial. Additional security measures may be necessary to protect sensitive data, such as personally identifiable information (PII).
+Our [Best Practices for dbt and Unity Catalog](/best-practices/dbt-unity-catalog-best-practices) guide recommends using separate catalogs *dev* and *prod* for development and deployment environments, with Unity Catalog and <Constant name="dbt" /> handling configurations and permissions for environment isolation. Ensuring security while maintaining efficiency in your development and deployment environments is crucial. Additional security measures may be necessary to protect sensitive data, such as personally identifiable information (PII).
 
 Databricks leverages [Dynamic Views](https://docs.databricks.com/data-governance/unity-catalog/create-views.html#create-a-dynamic-view) to enable data masking based on group membership. Because views in Unity Catalog use Spark SQL, you can implement advanced data masking by using more complex SQL expressions and regular expressions. You can now also apply fine grained access controls like row filters in preview and column masks in preview on tables in Databricks Unity Catalog, which will be the recommended approach to protect sensitive data once this goes GA. Additionally, in the near term, Databricks Unity Catalog will also enable Attribute Based Access Control natively, which will make protecting sensitive data at scale simpler.
 
@@ -182,7 +182,7 @@ Using the same sources for development and deployment environments enables testi
 
 Though there are similarities between dbt docs and Databricks Unity Catalog, they are ultimately used for different purposes and complement each other well. By combining their strengths, you can provide your organization with a robust and user-friendly data management ecosystem.
 
-dbt docs is a documentation site generated from your dbt project that provides an interface for developers and non-technical stakeholders to understand the data lineage and business logic applied to transformations without requiring full access to <Constant name="cloud" /> or Databricks. It gives you additional options on how you can organize and search for your data. You can automatically [build and view your dbt docs using <Constant name="cloud" />](/docs/explore/build-and-view-your-docs) to keep the documentation evergreen.
+dbt docs is a documentation site generated from your dbt project that provides an interface for developers and non-technical stakeholders to understand the data lineage and business logic applied to transformations without requiring full access to <Constant name="dbt" /> or Databricks. It gives you additional options on how you can organize and search for your data. You can automatically [build and view your dbt docs using <Constant name="dbt" />](/docs/explore/build-and-view-your-docs) to keep the documentation evergreen.
 
 Unity Catalog is a unified governance solution for your lakehouse. It provides a data explorer that can be used for discovery of datasets that have not been defined in dbt. The data explorer also captures [column-level lineage](https://docs.databricks.com/data-governance/unity-catalog/data-lineage.html#capture-and-explore-lineage),  when you need to trace the lineage of a specific column.
 
@@ -192,8 +192,8 @@ To get the most out of both tools, you can use the [persist docs config](/refere
 
 - [Advanced Deployment course](https://learn.getdbt.com/courses/advanced-deployment) if you want a deeper dive into these topics
 - [Autoscaling CI: The intelligent Slim CI](/docs/deploy/continuous-integration)
-- [Trigger a <Constant name="cloud" /> Job in your automated workflow with Python](https://discourse.getdbt.com/t/triggering-a-dbt-cloud-job-in-your-automated-workflow-with-python/2573)
-- [Databricks + <Constant name="cloud" /> Quickstart Guide](/guides/databricks)
+- [Trigger a <Constant name="dbt" /> Job in your automated workflow with Python](https://discourse.getdbt.com/t/triggering-a-dbt-cloud-job-in-your-automated-workflow-with-python/2573)
+- [Databricks + <Constant name="dbt" /> Quickstart Guide](/guides/databricks)
 - Reach out to your Databricks account team to get access to preview features on Databricks.
 
 </div>

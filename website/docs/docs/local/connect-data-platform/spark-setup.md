@@ -62,7 +62,7 @@ dbt-spark can connect to Spark clusters by four different methods:
 - [`session`](#session) connects to a pySpark session, running locally or on a remote machine.
 
 :::info Advanced functionality
-The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by <Constant name="cloud" />.
+The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by <Constant name="dbt" />.
 :::
 
 
