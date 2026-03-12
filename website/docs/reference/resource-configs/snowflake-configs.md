@@ -5,6 +5,10 @@ description: "Snowflake Configurations - Read this in-depth guide to learn about
 tags: ['Snowflake', 'dbt Fusion', 'dbt Core']
 ---
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 ## Iceberg table format
 
 Our Snowflake Iceberg table content has moved to a [new page](/docs/mesh/iceberg/snowflake-iceberg-support)!
@@ -381,7 +385,7 @@ select * from ...
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
 dbt supports setting a default query tag for the duration of its Snowflake connections in
-[your profile](/docs/core/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
+[your profile](/docs/local/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
 a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 <File name='dbt_project.yml'>
@@ -436,11 +440,45 @@ Snowflake supports the following incremental strategies:
 - [`append`](/docs/build/incremental-strategy#append)
 - [`delete+insert`](/docs/build/incremental-strategy#deleteinsert)
 - [`insert_overwrite`](/docs/build/incremental-strategy#insert_overwrite)
-  - Note: This is not a standard dbt incremental strategy. `insert_overwrite` behaves like `truncate` + re-`insert` commands on Snowflake. It doesn't support partition-based overwrites, which means it'll overwrite the entire table intentionally. It's implemented as an incremental strategy because it aligns with dbt’s workflow of not dropping existing tables.
+  - Note: This is not a standard dbt incremental strategy. `insert_overwrite` behaves like `truncate` + re-`insert` commands on Snowflake. It doesn't support partition-based overwrites, which means it'll overwrite the entire table intentionally. It's implemented as an incremental strategy because it aligns with dbt's workflow of not dropping existing tables. You can use [`overwrite_columns`](#overwrite_columns) to control which columns are included in the `INSERT OVERWRITE` statement.
 - [`microbatch`](/docs/build/incremental-microbatch)
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`.
 
+### `overwrite_columns`
+
+When using `incremental_strategy='insert_overwrite'` on Snowflake, you can set `overwrite_columns` to control how dbt generates the `INSERT OVERWRITE` statement for your incremental model. For example:
+
+<File name='models/my_model.sql'>
+
+```sql
+{{ config(
+    materialized='incremental',
+    incremental_strategy='insert_overwrite',
+    overwrite_columns=['id', 'value', 'event_date']
+) }}
+
+select id, value, event_date
+from {{ ref('my_source') }}
+```
+
+</File>
+
+- If you set `overwrite_columns`, dbt generates SQL that explicitly lists the columns in both the `INSERT` target and the `SELECT` projection:
+
+  ```sql
+  insert overwrite into my_schema.my_table (id, value, event_date)
+  select id, value, event_date
+  from staging_table
+  ```
+
+- If you don't set `overwrite_columns`, dbt currently defaults to `SELECT *`:
+
+  ```sql
+  insert overwrite into my_schema.my_table
+  select *
+  from staging_table
+  ```
 
 ## Configuring table clustering
 
@@ -643,7 +681,7 @@ For more information on using this configuration, refer to [Snowflake's document
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/docs/core/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/docs/local/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
 
 [Tests](/docs/build/data-tests) also supports the `snowflake_warehouse` configuration. This can be useful when you want to you run tests on a different Snowflake virtual warehouse than the one used to build models, for example, using a smaller warehouse for lightweight data tests while models run on a larger warehouse.
 

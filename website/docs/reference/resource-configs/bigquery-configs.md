@@ -1112,7 +1112,7 @@ Dataproc (`serverless` or pre-configured `cluster`) can execute Python models as
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-connector-initialization.png" title="Add the Spark BigQuery connector as an initialization action"/>
 
-The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup#running-python-models-on-dataproc) or configure them on specific Python models:
+The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/docs/local/connect-data-platform/bigquery-setup#running-python-models-on-dataproc) or configure them on specific Python models:
 - `gcs_bucket`: Storage bucket to which dbt will upload your model's compiled PySpark code.
 - `dataproc_region`: GCP region in which you have enabled Dataproc (for example `us-central1`).
 - `dataproc_cluster_name`: Name of Dataproc cluster to use for running Python model (executing PySpark job). Only required if `submission_method: cluster`.
@@ -1132,7 +1132,7 @@ models:
       submission_method: serverless
 ```
 
-Python models running on Dataproc Serverless can be further configured in your [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup#running-python-models-on-dataproc).
+Python models running on Dataproc Serverless can be further configured in your [BigQuery profile](/docs/local/connect-data-platform/bigquery-setup#running-python-models-on-dataproc).
 
 Any user or service account that runs dbt Python models will need the following permissions, in addition to the required BigQuery permissions:
 ```

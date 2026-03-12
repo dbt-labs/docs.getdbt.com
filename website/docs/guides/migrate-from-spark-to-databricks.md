@@ -23,7 +23,7 @@ You can migrate your projects from using the `dbt-spark` adapter to using the [d
 
 ### Simpler authentication
 
-Previously, you had to provide a `cluster` or `endpoint` ID which was hard to parse from the `http_path` that you were given. Now, it doesn't matter if you're using a cluster or an SQL endpoint because the [dbt-databricks setup](/docs/core/connect-data-platform/databricks-setup) requires the _same_ inputs for both. All you need to provide is:
+Previously, you had to provide a `cluster` or `endpoint` ID which was hard to parse from the `http_path` that you were given. Now, it doesn't matter if you're using a cluster or an SQL endpoint because the [dbt-databricks setup](/docs/local/connect-data-platform/databricks-setup) requires the _same_ inputs for both. All you need to provide is:
 - hostname of the Databricks workspace
 - HTTP path of the Databricks SQL warehouse or cluster
 - appropriate credentials
@@ -38,7 +38,7 @@ The `dbt-databricks` adapter provides better defaults than `dbt-spark` does. The
 
 With dbt-spark, however, the default for `incremental_strategy` is `append`. If you want to continue using `incremental_strategy=append`, you must set this config specifically on your incremental models. If you already specified `incremental_strategy=merge` on your incremental models, you don't need to change anything when moving to dbt-databricks; but, you can keep your models clean (tidy) by removing the config since it's redundant. Read [About incremental_strategy](/docs/build/incremental-strategy) to learn more.
 
-For more information on defaults, see [Caveats](/docs/core/connect-data-platform/databricks-setup#caveats).
+For more information on defaults, see [Caveats](/docs/local/connect-data-platform/databricks-setup#caveats).
 
 ### Pure Python
 

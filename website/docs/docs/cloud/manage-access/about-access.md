@@ -238,7 +238,7 @@ With RBAC configured, you now have granular control over user access to features
 
 ### SCIM license management
 
-As part of the SSO configuration for supported IdPs, you can also configure the [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) settings to add a layer of security to your user lifecycle management. As part of this process, you can integrate user license distribution into the user provisioning process through your IdP. See the [SCIM license management instructions](/docs/cloud/manage-access/scim#manage-user-licenses-with-scim) for more information.
+As part of the SSO configuration for supported IdPs, you can also configure the [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) settings to add a layer of security to your user lifecycle management. As part of this process, you can integrate user license distribution into the user provisioning process through your IdP. See the [SCIM license management instructions](/docs/cloud/manage-access/scim-manage-user-licenses) for more information.
 
 ## FAQs
 

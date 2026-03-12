@@ -38,12 +38,18 @@ The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_p
 
 ### Validate user-defined functions
 
-Check that all user-defined functions (UDFs) in your project are supported by <Constant name="fusion" />. Unsupported functions trigger a deprecation warning: `dbt0209: No function <function name>`.
+### Validate support for functions
+
+Check that <Constant name="fusion" /> supports all user-defined functions (UDFs) in your project.
+
+<Constant name="fusion" /> supports nearly all built-in data platform functions out of the box. However, data platforms continuously add new functions that <Constant name="fusion" /> may not yet support.
+
+If you see the error `dbt0209: No function <function name>`, the resolution depends on whether the function is a UDF or a built-in function:
 
 If you see this warning:
 
-- [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) for the full <Constant name="fusion" /> experience with `static_analysis: on`.
-- [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). As a workaround, you can set `static_analysis: off` when running on <Constant name="fusion" />. 
+- [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) to get the full <Constant name="fusion" /> experience. With `static_analysis: baseline` (the default), most UDFs will work out of the box.
+- [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). <Constant name="fusion" />'s `baseline` mode handles most cases, but will throw warnings and not errors. You can set `static_analysis: off` for specific models if needed. 
 
 ### Check for known Fusion limitations
 

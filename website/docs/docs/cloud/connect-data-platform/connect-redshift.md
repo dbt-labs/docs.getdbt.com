@@ -7,13 +7,13 @@ sidebar_label: "Connect Redshift"
 
 # Connect Redshift <ProductCard text="Fusion compatible" />
  
-dbt platform supports connecting to Redshift. 
+<Constant name="dbt_platform" /> supports connecting to Redshift. 
 
 The following fields are required when creating a connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [set up pages](/docs/core/connect-data-platform/about-core-connections) to find the hostname for your adapter. | Redshift: `hostname.region.redshift.amazonaws.com` |
+| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [set up pages](/docs/local/connect-data-platform/about-dbt-connections) to find the hostname for your adapter. | Redshift: `hostname.region.redshift.amazonaws.com` |
 | Port | Usually 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
@@ -67,12 +67,11 @@ secret_access_key: '{{ env_var(''DBT_ENV_SECRET_ACCESS_KEY'') }}'
 
 Both `DBT_ENV_ACCESS_KEY_ID` and `DBT_ENV_SECRET_ACCESS_KEY` will need [to be assigned](/docs/build/environment-variables) for every environment leveraging extended attributes as such.
 
-### Connecting via an SSH Tunnel
+### Connecting using an SSH Tunnel
 
 import BastionServer from '/snippets/_bastion-server.md';
 
 <BastionServer redshift='Redshift' />
-
 
 ## Configuration
 

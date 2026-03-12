@@ -12,7 +12,7 @@ export const CONSTANTS = {
   dbt_platform: 'dbt platform',
   core: 'dbt Core',
   fusion: 'Fusion',
-  fusion_engine: 'dbt Fusion Engine',
+  fusion_engine: 'dbt Fusion engine',
   dbt: 'dbt',
   cloud_cli: 'dbt CLI',
   explorer: 'Catalog',

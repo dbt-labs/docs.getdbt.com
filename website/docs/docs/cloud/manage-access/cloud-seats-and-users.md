@@ -126,7 +126,11 @@ Licenses can be assigned to users individually or through group membership. To a
 
 ### Manual configuration
 
-To manually assign a specific type of license to a user on your team, navigate to the **Users** page in your **Account settings** and click the **Edit** button for the user you want to manage. From this page, you can select the license type and relevant groups for the user.
+To manually assign a specific type of license to a user on your team:
+1. Click on your account name in the left side menu and select **Account settings**.
+2. Navigate to the **Users** page in your **Account settings**. 
+3. Select the user you want to manage and click the **Edit** button.
+4. On the **User details** page, you can select the license type and relevant groups for the user.
 
 **Note:** You will need to have an available license ready to allocate for the user. If your account does not have an available license to allocate, you will need to add more licenses to your plan to complete the license change.
 
@@ -134,26 +138,37 @@ To manually assign a specific type of license to a user on your team, navigate t
 
 ### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
 
-If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific groups in <Constant name="cloud" /> and assign license types to those groups. To configure license mappings, navigate to the **Account Settings** > **Groups & Licenses** > **License Mappings** page. From here, you can create or edit SSO mappings for both Read-Only and Developer license types.
+If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific license types in <Constant name="cloud" />. For SCIM-based license mapping with Okta, see [Automated license mapping](/docs/cloud/manage-access/scim-manage-user-licenses#automated-license-mapping).
 
-By default, all new members of a <Constant name="cloud" /> account will be assigned a Developer
-license. To assign Read-Only licenses to certain groups of users, create a new
-License Mapping for the Read-Only license type and include a comma separated
-list of IdP group names that should receive a Read-Only license at sign-in time.
+#### Configure license mappings
+
+1. Click on your account name in the left side menu and select **Account settings**.
+2. Navigate to **Groups & Licenses** and scroll to the **License mappings** section.
+3. Create or edit SSO mappings for both Read-Only and Developer license types.
+4. Enter a comma-separated list of **IdP group names** that should receive each license type.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/license-mapping.png" width="65%" title="Configuring IdP group license mapping"/>
 
-Usage notes:
-- If a user's IdP groups match both a Developer and Read-Only license type
-  mapping, a Developer license type will be assigned
-- If a user's IdP groups do not match _any_ license type mappings, a Developer
-  license will be assigned
-- License types are adjusted when users sign into <Constant name="cloud" /> via Single Sign On.
-  Changes made to license type mappings will take effect the next time users
-  sign in to <Constant name="cloud" />.
-- License type mappings are based on _IdP Groups_, not _<Constant name="cloud" /> groups_, so be
-  sure to check group memberships in your identity provider when configuring
-  this feature.
+#### Fundamental licensing rules
+
+- **Default assignment**: All new members of a <Constant name="cloud" /> account are assigned a Developer license unless you configure otherwise.
+- **Mapping basis**: License type mappings are based on _IdP groups_ (groups in your identity provider), not _<Constant name="cloud" /> groups_. Check group memberships in your IdP when configuring or troubleshooting.
+- **When changes take effect**: License types are adjusted when users sign into <Constant name="cloud" /> using single sign-on. Changes to license type mappings take effect the next time users sign in.
+
+#### Mapping logic and precedence
+
+When a user belongs to multiple IdP groups, the Developer license takes precedence. The following table shows how group membership determines the assigned license:
+
+| In a Developer-mapped group? | In a Read-Only-mapped group? | License assigned |
+|---|---|---|
+| No | No | Developer (default) |
+| No | Yes | Read-Only |
+| Yes | No | Developer |
+| Yes | Yes | Developer (Developer takes precedence) |
+
+:::note
+If a user's IdP groups do not match _any_ license type mappings, <Constant name="cloud" /> assigns a Developer license by default.
+:::
 
 ## Granular permissioning
 

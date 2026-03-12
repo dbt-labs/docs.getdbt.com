@@ -47,8 +47,9 @@ With the <Constant name="cloud_ide" />, you can seamlessly use [SQLFluff](https:
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the <Constant name="cloud_ide" />).
 - Displays a **Code Quality** tab to view code errors, provides code quality visibility and management.
 
-:::info Ephemeral models not supported
-Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
+:::info Linting considerations
+- The <Constant name="cloud_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **Latest Fusion** release track. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
+- Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
 :::
 
 ### Enable linting

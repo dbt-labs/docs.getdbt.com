@@ -5,11 +5,12 @@ level: 'Beginner'
 icon: 'snowflake'
 tags: ['dbt platform','Quickstart','Snowflake']
 hide_table_of_contents: true
+product_badge: "Fusion compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-## Introduction
+## Introduction 
 
 In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Snowflake. It will show you how to: 
 

@@ -15,6 +15,7 @@ import Mermaid from '@theme/Mermaid';
  */
 import SortableTable from '@site/src/components/sortableTable';
 import FilterableTable from '@site/src/components/filterableTable';
+import SimpleTable from '@site/src/components/simpleTable';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
 import Changelog from '@site/src/components/changelog';
@@ -105,6 +106,7 @@ const MDXComponents = {
   ConfettiTrigger: ConfettiTrigger,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
+  SimpleTable: SimpleTable,
   VersionCallout: VersionCallout,
   IntroText: IntroText,
   Constant: Constant,

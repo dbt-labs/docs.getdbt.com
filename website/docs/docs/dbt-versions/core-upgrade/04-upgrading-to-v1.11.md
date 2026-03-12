@@ -10,7 +10,7 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [<Constant name="core" /> v1.11 changelog](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
-- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
 ## What to know before upgrading
@@ -117,6 +117,10 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ### BigQuery
 
 - To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`.
+
+### Redshift
+
+- The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#the-redshift_skip_autocommit_transaction_statements-flag) flag is now `True` by default. When `autocommit=True` (the default since dbt-redshift 1.5), dbt now skips sending unnecessary `BEGIN`/`COMMIT`/`ROLLBACK` statements, improving performance by reducing round trips to Redshift. To preserve the legacy behavior, set the flag to `False`.
 
 ### Spark
 

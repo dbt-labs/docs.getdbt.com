@@ -39,7 +39,7 @@ Our [agent skills repo](https://github.com/dbt-labs/dbt-agent-skills) contains s
 - **Platform operations**: Troubleshoot job failures, configure the dbt MCP server
 - **Migration**: Move projects from dbt Core to the dbt Fusion engine
 
-You’ll notice these skills vary in size of task and complexity. The primary [_using dbt for analytics engineering_ skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/using-dbt-for-analytics-engineering) contains information about the entire workflow loop for analytics engineering. Other skills are more focused and task dependent.
+You’ll notice these skills vary in size of task and complexity. The primary [_using dbt for analytics engineering_ skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt/skills/using-dbt-for-analytics-engineering) contains information about the entire workflow loop for analytics engineering. Other skills are more focused and task dependent.
 
 We plan to continue refining these and adding more skills over time. If there’s a skill that would be useful that you don’t see, please open an issue on the repo.
 

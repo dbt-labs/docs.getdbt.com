@@ -11,7 +11,7 @@ The following fields are required when creating a connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [set up pages](/docs/core/connect-data-platform/about-core-connections) to find the hostname for your adapter. | Postgres: `xxx.us-east-1.amazonaws.com` |
+| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to the [set up pages](/docs/local/connect-data-platform/about-dbt-connections) for adapter-specific details. | Postgres: `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
@@ -32,12 +32,11 @@ The following table contains the parameters for the database (password-based) co
 | `password`  | Password for authentication  | _password1! |
 
 
-### Connecting via an SSH Tunnel
+### Connecting using an SSH Tunnel
 
 import BastionServer from '/snippets/_bastion-server.md';
 
 <BastionServer postgresalloydb='Postgres or AlloyDB' postgres='Postgres' />
-
 
 ## Configuration
 

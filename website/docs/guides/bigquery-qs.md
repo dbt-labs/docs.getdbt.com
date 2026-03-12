@@ -6,11 +6,12 @@ level: 'Beginner'
 icon: 'bigquery'
 hide_table_of_contents: true
 tags: ['BigQuery', 'Platform', 'Quickstart']
+product_badge: "Fusion compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-## Introduction
+## Introduction 
 
 In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with BigQuery. It will show you how to: 
 

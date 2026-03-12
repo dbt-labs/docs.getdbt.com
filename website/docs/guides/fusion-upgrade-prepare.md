@@ -380,8 +380,6 @@ Start by understanding which features have limited or no support in <Constant na
 Visit the [Fusion supported features page](/docs/fusion/supported-features#limitations) and review the limitations table to see features that may affect your project.
 
 Common limitations include:
-- **Python models:** Not currently supported (Fusion cannot parse Python to extract dependencies)
-- **Microbatch incremental strategy:**  Not yet available
 - **Model-level notifications:** Job-level notifications work, model-level don't yet
 - **Semantic Layer development:** Active semantic model development should stay on <Constant name="core" />
 - **SQLFluff linting:** Not integrated yet (though linting will be built into <Constant name="fusion" /> directly)
@@ -391,9 +389,9 @@ Common limitations include:
 Check if your project uses any features with limited support. For example:
 
 1. Check for Python models:
+   - Python models for Snowflake, BigQuery, and Databricks are supported in <Constant name="fusion" />. If you use Python models on other data platforms, confirm [Fusion support](/docs/fusion/supported-features) for your data platform.
    - In the <Constant name="cloud_ide" />, look in your `models/` directory
    - Search for files with `.py` extensions
-   - If found, you'll need to either remove them or keep those models on <Constant name="core" />
 
 2. Review your `dbt_project.yml` for specific configurations:
    - Look for `store_failures` settings
@@ -403,7 +401,7 @@ Check if your project uses any features with limited support. For example:
 3. Check your job configurations:
    - Review any jobs using `--fail-fast` flag
    - Identify jobs using `--store-failures`
-   - Note any Advanced CI "compare changes" workflows
+   - Note that [Advanced CI (dbt compare in orchestration)](/docs/deploy/advanced-ci) is supported in <Constant name="fusion" />.
 
 4. Review model governance settings:
    - Search for models with `deprecation_date` set
@@ -414,7 +412,7 @@ Check if your project uses any features with limited support. For example:
 For each limitation that affects your project, determine its criticality:
 
 - **Critical features:** Features your project can't function without:
-    - If Python models are essential, you may need to wait or refactor them to SQL
+    - Python models for Snowflake, BigQuery, and Databricks are supported in <Constant name="fusion" />. If you use Python models on other data platforms, confirm [Fusion support](/docs/fusion/supported-features) for your data platform.
     - If Semantic Layer development is active, continue those workloads on <Constant name="core" />
 
 - **Nice-to-have features:** Features that improve workflows but aren't blockers:

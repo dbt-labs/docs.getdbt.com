@@ -36,7 +36,7 @@ dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tabl
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
-dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The adapter property `use_uniform` (see [Adapter properties](#adapter-properties)) determines whether dbt creates a managed Iceberg table or a Delta table.
+dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The behavior change flag `use_managed_iceberg` (see [use_managed_iceberg](/reference/global-configs/databricks-changes#use-managed-iceberg)) determines whether dbt creates a managed Iceberg table or a Delta table.
 </VersionBlock>
 
 ### External tables
@@ -82,15 +82,10 @@ On Databricks, if a model has `catalog_name=<>` in its model config, the catalog
 <VersionBlock firstVersion="2.0">
 ### Adapter properties
 
-These are the additional configurations, unique to Databricks, that you supply and nest under `adapter_properties`. These configurations are specific to Unity Catalog; `adapter_properties` is not allowed for catalog integrations with `catalog_type: hive_metastore`.
+Databricks supports one additional configuration, `location_root`, that specifies an [external location](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-external-tables) root to write to. dbt writes the table to `<location_root>/<identifier>`, or `<location_root>/<database>/<schema>/<identifier>` if `include_full_name_in_path` is true.
 
-| Field | Required | Accepted values |
-| --- | --- | --- |
-| `use_uniform` | Optional | `True` or `False` |
-| `location_root` | Optional | "external/location/path"; for example, `"s3://cloud-storage-uri"` |
+`location_root` should be supplied and nested under `adapter_properties`. This configuration is specific to Unity Catalog; `adapter_properties` is not allowed for catalog integrations with `catalog_type: hive_metastore`.
 
-- **use_uniform**: Specifies whether to use managed Iceberg tables or Iceberg-enabled UniForm tables. By default, `use_uniform` is false.
-- **location_root**: Specify an [external location](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-external-tables) root to write to. dbt writes the table to `<location_root>/<identifier>`, or `<location_root>/<database>/<schema>/<identifier>` if `include_full_name_in_path` is true.
 </VersionBlock>
 
 ## Configure catalog integration for Iceberg tables
@@ -108,6 +103,8 @@ catalogs:
         table_format: iceberg
         catalog_type: unity
         file_format: delta   
+        adapter_properties:
+          location_root: s3://cloud-storage-uri
 ```
 
 2. Add the `catalog_name` config parameter in either a config block (inside the .sql model file), properties YAML file (model folder), or your project YAML file (`dbt_project.yml`). <br />

@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ## Resources 
 
 - [<Constant name="core" /> 1.9 changelog](https://github.com/dbt-labs/dbt-core/blob/1.9.latest/CHANGELOG.md)
-- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
 ## What to know before upgrading
@@ -102,7 +102,11 @@ You can read more about each of these behavior changes in the following links:
 - (Introduced, disabled by default) [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-changes#cumulative-metrics). If the flag is set to `True`, users will receive an error instead of a warning if they're not properly formatting cumulative metrics using the new [`cumulative_type_params`](/docs/build/cumulative#parameters) nesting.
 - (Introduced, disabled by default) [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-changes#custom-microbatch-strategy). Set to `True` if you use a custom microbatch macro to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the microbatch strategy.
 
-## Adapter specific features and functionalities
+## Adapter-specific features and functionalities
+
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
 
 ### Redshift
 
