@@ -21,6 +21,7 @@ The primary function of `set_sql_header` is fairly limited. It's intended to:
     { label: 'Models', value: 'models', },
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
+    { label: 'Properties YAML file', value: 'properties', },
   ]
 }>
 <TabItem value="models">
@@ -93,6 +94,42 @@ snapshots:
 
 </TabItem>
 
+<TabItem value="properties">
+
+Setting `sql_header` in the `config` of a generic data test is available starting dbt Core v1.12. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `sql_header` in your `properties.yml`.
+
+<File name="models/properties.yml">
+
+Model-level (test on the model; `sql_header` in that test's `config`):
+
+```yaml
+models:
+  - name: my_model
+    data_tests:
+      - dbt_utils.equality:
+          name: equality_fct_test_coverage
+          config:
+            sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+Column-level (test on a column; `sql_header` in that test's `config`):
+
+```yaml
+models:
+  - name: my_model
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              name: generic_test_with_sql_header
+              config:
+                sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 
@@ -100,6 +137,12 @@ snapshots:
 An optional configuration to inject SQL above the `create table as` and `create view as` statements that dbt executes when building models and snapshots.
 
 `sql_header`s can be set using the config, or by `call`-ing the `set_sql_header` macro (example below).
+
+<VersionBlock firstVersion="1.12">
+
+You can also set `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) at the model level or column level in your properties YAML. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `sql_header` for generic tests. For more information, refer to [Data test configurations](/reference/data-test-configs).
+
+</VersionBlock>
 
 ## Comparison to pre-hooks
 [Pre-hooks](/reference/resource-configs/pre-hook-post-hook) also provide an opportunity to execute SQL before model creation, as a _preceding_ query. In comparison, SQL in a `sql_header` is run in the same _query_ as the `create table|view as` statement.
@@ -161,3 +204,5 @@ select yes_no_to_boolean(yes_no) from {{ ref('other_model') }}
 ```
 
 </File>
+
+

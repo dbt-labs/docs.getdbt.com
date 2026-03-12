@@ -79,8 +79,9 @@ data_tests:
 
 <TabItem value="property-yaml">
 
-```yaml
+<VersionBlock lastVersion="1.11">
 
+```yaml
 <resource_type>:
   - name: <resource_name>
     data_tests:
@@ -102,7 +103,7 @@ data_tests:
       - name: <column_name>
         data_tests:
           - <test_name>:
-              name: 
+              name:
               [description](/reference/resource-properties/description): "markdown formatting"
               arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
                 <argument_name>: <argument_value>
@@ -116,8 +117,57 @@ data_tests:
                 [where](/reference/resource-configs/where): <string>
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+```yaml
+<resource_type>:
+  - name: <resource_name>
+    data_tests:
+      - <test_name>: # # Actual name of the test. For example, dbt_utils.equality
+          name: # Human friendly name for the test. For example, equality_fct_test_coverage
+          [description](/reference/resource-properties/description): "markdown formatting"
+          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+            <argument_name>: <argument_value>
+          [config](/reference/resource-properties/config):
+            [fail_calc](/reference/resource-configs/fail_calc): <string>
+            [limit](/reference/resource-configs/limit): <integer>
+            [severity](/reference/resource-configs/severity): error | warn
+            [error_if](/reference/resource-configs/severity): <string>
+            [warn_if](/reference/resource-configs/severity): <string>
+            [store_failures](/reference/resource-configs/store_failures): true | false
+            [where](/reference/resource-configs/where): <string>
+            [sql_header](/reference/resource-configs/sql_header): <string>  # requires require_sql_header_in_test_configs flag
+
+    [columns](/reference/resource-properties/columns):
+      - name: <column_name>
+        data_tests:
+          - <test_name>:
+              name:
+              [description](/reference/resource-properties/description): "markdown formatting"
+              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+                <argument_name>: <argument_value>
+              [config](/reference/resource-properties/config):
+                [fail_calc](/reference/resource-configs/fail_calc): <string>
+                [limit](/reference/resource-configs/limit): <integer>
+                [severity](/reference/resource-configs/severity): error | warn
+                [error_if](/reference/resource-configs/severity): <string>
+                [warn_if](/reference/resource-configs/severity): <string>
+                [store_failures](/reference/resource-configs/store_failures): true | false
+                [where](/reference/resource-configs/where): <string>
+                [sql_header](/reference/resource-configs/sql_header): <string>  # requires require_sql_header_in_test_configs flag
+```
+
+</VersionBlock>
+
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
 
+<VersionBlock firstVersion="1.12">
+
+**`sql_header` for generic tests:** You can set [sql_header](/reference/resource-configs/sql_header) in the `config` of a generic test (at the model level or column level) to run SQL before the test runs. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag (default: `False`) to use `config.sql_header` for that test instance.
+
+</VersionBlock>
 
 </TabItem>
 
@@ -304,6 +354,30 @@ models:
 ```
 
 Given the config, the data test runs on a different Snowflake virtual warehouse than the one in your default connection to enable better price-performance with a different warehouse size or more granular cost allocation and visibility.
+
+<VersionBlock firstVersion="1.12">
+
+#### Set sql_header for a generic test
+
+When the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag is enabled, you can set [sql_header](/reference/resource-configs/sql_header) in the `config` of a generic test so that the specified SQL runs before the test runs (for example, to set session parameters or add a comment):
+
+<File name='models/<filename>.yml'>
+
+```yaml
+models:
+  - name: table
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              name: generic_test_with_sql_header
+              config:
+                sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+</File>
+
+</VersionBlock>
 
 #### Add a description to generic and singular tests
 
