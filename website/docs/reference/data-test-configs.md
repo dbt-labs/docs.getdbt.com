@@ -165,7 +165,7 @@ This configuration mechanism is supported for specific instances of generic test
 
 <VersionBlock firstVersion="1.12">
 
-**`sql_header` for generic tests:** You can set [sql_header](/reference/resource-configs/sql_header) in the `config` of a generic test (at the model level or column level) to run SQL before the test runs. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag (default: `False`) to use `config.sql_header` for that test instance.
+You can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model level or column level of your `properties.yml`. dbt runs that SQL before executing the test. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` for that test instance.
 
 </VersionBlock>
 
