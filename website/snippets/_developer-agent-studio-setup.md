@@ -1,7 +1,7 @@
 To use the <Constant name="dev_agent" />, follow these steps:
-1. Open your dbt project in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio), then click **<Constant name="copilot" />** in the command palette. 
+1. Open your dbt project in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), then click **<Constant name="copilot" />** in the command palette. 
 2. Start a prompt in several ways in the [<Constant name="copilot" /> panel](/docs/dbt-ai/developer-agent#panel-controls):
-   - **Quick actions** &mdash; The <Constant name="cloud_ide" /> surfaces quick actions at the top of the panel to help you get started with common tasks.
+   - **Quick actions** &mdash; The <Constant name="studio_ide" /> surfaces quick actions at the top of the panel to help you get started with common tasks.
    - **Plain text** &mdash; Type directly into the text field to describe what you want to build or change.
    - **Model context** &mdash; Type `@` to select a model as context. This scopes the agent's changes to that resource.
 3. Select the [**Agent mode** button](/docs/dbt-ai/developer-agent#agent-modes) to specify the mode for the <Constant name="dev_agent" />. Available modes are **Ask** and **Code**.

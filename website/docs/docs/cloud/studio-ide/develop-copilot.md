@@ -20,7 +20,7 @@ Use [<Constant name="copilot" />](/docs/cloud/dbt-copilot) in the [<Constant nam
 
 ## Developer agent <Lifecycle status="private_beta" />
 
-For autonomous model generation, refactoring, and multi-step workflows in the <Constant name="cloud_ide" />, see the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent). 
+For autonomous model generation, refactoring, and multi-step workflows in the <Constant name="studio_ide" />, see the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent). 
 
 The <Constant name="dev_agent" /> is accessible from the same Copilot panel &mdash; switch to **Ask** or **Code** mode to activate it.
 

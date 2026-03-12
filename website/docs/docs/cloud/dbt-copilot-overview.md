@@ -14,7 +14,7 @@ keywords: ["dbt Copilot", "dbt Agents", "AI", "analytics", "dbt"]
 <Constant name="copilot" /> is dbt's AI experience — designed to accelerate every stage of your analytics development lifecycle through inline code assistance and autonomous agents, all grounded in dbt's structured context.
 </IntroText>
 
-Whether you're generating SQL and documentation with a single click, or delegating complex workflows to an autonomous agent, <Constant name="copilot" /> brings AI into the places you already work in <Constant name="cloud" />.
+Whether you're generating SQL and documentation with a single click, or delegating complex workflows to an autonomous agent, <Constant name="copilot" /> brings AI into the places you already work in <Constant name="dbt" />.
 
 <div className="grid--2-col">
 
