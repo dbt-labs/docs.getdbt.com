@@ -16,6 +16,10 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## March 2026
+
+- **Fix:** Resolved an issue where [retrying failed runs](/docs/deploy/retry-jobs) that were triggered from Git tags would use the wrong commit. Previously, when runs were triggered from Git tags instead of branches, the system would enter a detached HEAD state, causing retries to use the latest commit on HEAD rather than the original tagged commit. The fix now correctly preserves and uses the original Git tag reference when retrying runs, ensuring consistency between the initial run and any retries.
+
 ## December 2025
 
 - **New**: [Global navigation](/docs/explore/global-navigation) is now the default experience for <Constant name="catalog"/>, providing a unified search experience that lets you find dbt resources across all your projects, as well as non-dbt resources in Snowflake. Global navigation is now generally available to all users. You can access <Constant name="catalog"/> by clicking **Catalog** in the top-level navigation.
