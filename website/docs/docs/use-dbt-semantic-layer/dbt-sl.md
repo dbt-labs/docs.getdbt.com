@@ -43,7 +43,7 @@ This page points to various resources available to help you understand, configur
 
 Refer to the following resources to get started with the <Constant name="semantic_layer" />:
 - [Quickstart with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) &mdash; Build and define metrics, set up the <Constant name="semantic_layer" />, and query them using our first-class integrations.
-- [Build your metrics](/docs/build/build-metrics-intro) &mdash; Use MetricFlow in <Constant name="cloud" /> to centrally define your metrics.
+- [Build your metrics](/docs/build/build-metrics-intro) &mdash; Use MetricFlow in <Constant name="dbt" /> to centrally define your metrics.
 - [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) &mdash; Discover answers to frequently asked questions about the <Constant name="semantic_layer" />, such as availability, integrations, and more.
 
 ## Configure the dbt Semantic Layer
@@ -54,7 +54,7 @@ The following resources provide information on how to configure the <Constant na
 
 ## Deploy metrics
 This section provides information on how to deploy the <Constant name="semantic_layer" /> and materialize your metrics:
-- [Deploy your <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/deploy-sl) &mdash; Run a <Constant name="cloud" /> job to deploy the <Constant name="semantic_layer" /> and materialize your metrics.
+- [Deploy your <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/deploy-sl) &mdash; Run a <Constant name="dbt" /> job to deploy the <Constant name="semantic_layer" /> and materialize your metrics.
 - [Write queries with exports](/docs/use-dbt-semantic-layer/exports) &mdash; Use exports to write commonly used queries directly within your data platform, on a schedule.
 - [Cache common queries](/docs/use-dbt-semantic-layer/sl-cache) &mdash; Leverage result caching and declarative caching for common queries to speed up performance and reduce query computation.
 

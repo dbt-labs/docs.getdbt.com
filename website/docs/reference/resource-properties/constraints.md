@@ -32,7 +32,7 @@ Foreign key constraints accept two additional inputs:
 - `to`: A relation input, likely [`ref()`](/reference/dbt-jinja-functions/ref)] and [`source()`](/reference/dbt-jinja-functions/source), indicating the referenced table.
 - `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
 
-This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [<Constant name="cloud" /> **Latest**"](/docs/dbt-versions/cloud-release-tracks) and [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [<Constant name="dbt" /> **Latest**"](/docs/dbt-versions/cloud-release-tracks) and [<Constant name="core" /> v1.9+](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
 
 Since constraints support and enforcement [varies by platform](/reference/resource-properties/constraints#platform-specific-support), dbt offers two optional fields you can specify on any filter:
 
@@ -546,7 +546,7 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ## Custom constraints 
 
-In <Constant name="cloud" /> and <Constant name="core" />, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
+In <Constant name="dbt" /> and <Constant name="core" />, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
 
 Custom constraints allow you to add configuration to specific columns. For example:
 

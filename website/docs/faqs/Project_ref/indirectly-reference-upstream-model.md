@@ -5,7 +5,7 @@ id: indirectly-reference-upstream-model
 description: Learn why an indirectly referenced upstream public models don't appear in Explorer
 ---
 
-For [project dependencies](/docs/mesh/govern/project-dependencies) in <Constant name="mesh" />, [<Constant name="explorer" />](/docs/explore/explore-multiple-projects) only displays directly referenced [public models](/docs/mesh/govern/model-access) from upstream projects, even if an upstream model indirectly depends on another public model.
+For [project dependencies](/docs/mesh/govern/project-dependencies) in <Constant name="mesh" />, [<Constant name="catalog" />](/docs/explore/explore-multiple-projects) only displays directly referenced [public models](/docs/mesh/govern/model-access) from upstream projects, even if an upstream model indirectly depends on another public model.
 
 So for example, if:
 
@@ -16,6 +16,6 @@ So for example, if:
 Then:
 
 - In Explorer, only directly referenced public models (`upstream_b` in this case) appear.
-- In the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) lineage view, however, `upstream_a` (the indirect dependency) _will_ appear because <Constant name="cloud" /> dynamically resolves the full dependency graph.
+- In the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) lineage view, however, `upstream_a` (the indirect dependency) _will_ appear because <Constant name="dbt" /> dynamically resolves the full dependency graph.
 
-This behavior makes sure that <Constant name="explorer" /> only shows the immediate dependencies available to that specific project.
+This behavior makes sure that <Constant name="catalog" /> only shows the immediate dependencies available to that specific project.

@@ -203,7 +203,7 @@ In the `generate_schema_name` macro examples shown in the [built-in alternative 
 
 * **dev** &mdash; Your local development environment; configured in a `profiles.yml` file on your computer.
 * **ci** &mdash; A [continuous integration](/docs/cloud/git/connect-github) environment running on pull requests in GitHub, GitLab, and so on.
-* **prod** &mdash; The production deployment of your dbt project, like in <Constant name="cloud" />, Airflow, or [similar](/docs/deploy/deployments).
+* **prod** &mdash; The production deployment of your dbt project, like in <Constant name="dbt" />, Airflow, or [similar](/docs/deploy/deployments).
 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.
 
