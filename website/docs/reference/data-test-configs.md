@@ -138,7 +138,7 @@ data_tests:
             [warn_if](/reference/resource-configs/severity): <string>
             [store_failures](/reference/resource-configs/store_failures): true | false
             [where](/reference/resource-configs/where): <string>
-            [sql_header](/reference/resource-configs/sql_header): <string>  # requires require_sql_header_in_test_configs flag
+            [sql_header](/reference/resource-configs/sql_header): <string>  # available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
 
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
@@ -156,7 +156,7 @@ data_tests:
                 [warn_if](/reference/resource-configs/severity): <string>
                 [store_failures](/reference/resource-configs/store_failures): true | false
                 [where](/reference/resource-configs/where): <string>
-                [sql_header](/reference/resource-configs/sql_header): <string>  # requires require_sql_header_in_test_configs flag
+                [sql_header](/reference/resource-configs/sql_header): <string>  # available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
 ```
 
 </VersionBlock>
@@ -165,7 +165,7 @@ This configuration mechanism is supported for specific instances of generic test
 
 <VersionBlock firstVersion="1.12">
 
-You can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model level or column level of your `properties.yml`. dbt runs that SQL before executing the test. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` for that test instance.
+You can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model level or column level of your `properties.yml`. Use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` for that test instance.
 
 </VersionBlock>
 

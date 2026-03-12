@@ -96,11 +96,11 @@ snapshots:
 
 <TabItem value="properties">
 
-Setting `sql_header` in the `config` of a generic data test is available starting dbt Core v1.12. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `sql_header` in your `properties.yml`.
+Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting dbt Core v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `sql_header` in your `properties.yml`.
 
+
+Here's an example of a model-level configuration:
 <File name="models/properties.yml">
-
-Model-level (test on the model; `sql_header` in that test's `config`):
 
 ```yaml
 models:
@@ -111,9 +111,11 @@ models:
           config:
             sql_header: "-- SQL_HEADER_TEST_MARKER"
 ```
+</File>
 
-Column-level (test on a column; `sql_header` in that test's `config`):
+You can also use `sql_header` for column-level data tests:
 
+<File name="models/properties.yml">
 ```yaml
 models:
   - name: my_model
@@ -140,7 +142,9 @@ An optional configuration to inject SQL above the `create table as` and `create 
 
 <VersionBlock firstVersion="1.12">
 
-You can also set `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) at the model level or column level in your properties YAML. Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `sql_header` for generic tests. For more information, refer to [Data test configurations](/reference/data-test-configs).
+You can also set `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) at the model level or column level in your properties YAML file. Use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
+
+Enable the [require_sql_header_in_test_configs](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `sql_header` for data tests. For more information, refer to [Data test configurations](/reference/data-test-configs).
 
 </VersionBlock>
 
