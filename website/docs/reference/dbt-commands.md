@@ -4,7 +4,7 @@ title: "dbt Command reference"
 
 You can run dbt using the following tools:
 
-- In your browser with the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) 
+- In your browser with the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) 
 - On the command line interface using the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
   
 A key distinction with the tools mentioned, is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/cloud/about-cloud/dbt-cloud-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
@@ -63,4 +63,4 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
 
-Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="platform_cli" /> version. (Not applicable for the <Constant name="cloud_ide" />). Available on all [supported versions](/docs/dbt-versions/core).
+Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="platform_cli" /> version. (Not applicable for the <Constant name="studio_ide" />). Available on all [supported versions](/docs/dbt-versions/core).
