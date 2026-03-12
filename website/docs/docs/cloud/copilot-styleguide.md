@@ -20,7 +20,7 @@ This guide helps ensure consistency and clarity in dbt projects.
 
 ## `dbt-styleguide.md` for Copilot
 
-Using <Constant name="copilot" /> in the <Constant name="cloud_ide" />, you can automatically generate a style guide template called `dbt-styleguide.md`. If the style guide is manually added or edited, it must also follow this naming convention. Any other file name cannot be used with <Constant name="copilot" />.
+Using <Constant name="copilot" /> in the <Constant name="studio_ide" />, you can automatically generate a style guide template called `dbt-styleguide.md`. If the style guide is manually added or edited, it must also follow this naming convention. Any other file name cannot be used with <Constant name="copilot" />.
 
 Add the `dbt-styleguide.md` file to the root of your project. <Constant name="copilot" /> will use it as context for the large language model (LLM) when generating [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), [semantic models](/docs/build/semantic-models), and [documentation](/docs/build/documentation).
 
@@ -28,11 +28,11 @@ Note, by creating a `dbt-styleguide.md` for <Constant name="copilot" />, you are
 
 ## Creating `dbt-styleguide.md` in the Studio IDE
 
-1. Open a file in the <Constant name="cloud_ide" />.
+1. Open a file in the <Constant name="studio_ide" />.
 2. Click **<Constant name="copilot" />** in the toolbar.
 3. Select **Generate ... Style guide** from the menu.
 <Lightbox src="/img/docs/dbt-cloud/generate-styleguide.png" title="Generate styleguide in Copilot" /> 
-4. The style guide template appears in the <Constant name="cloud_ide" />. Click **Save**. 
+4. The style guide template appears in the <Constant name="studio_ide" />. Click **Save**. 
       `dbt-styleguide.md` is added at the root level of your project.
 
 If you haven't previously generated a style guide file, the latest version will be automatically sourced from <Constant name="dbt_platform" />.

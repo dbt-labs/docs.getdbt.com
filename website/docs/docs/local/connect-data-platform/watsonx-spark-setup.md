@@ -112,6 +112,6 @@ The following profile fields are optional. You can configure the instance sessio
 ## Limitations and considerations
 
 - **Supports only HTTP**: No support for ODBC, Thrift, or session-based connections.
-- **Limited <Constant name="cloud" /> Support**: Not fully compatible with <Constant name="cloud" />.
+- **Limited <Constant name="dbt" /> Support**: Not fully compatible with <Constant name="dbt" />.
 - **Metadata Persistence**: Some dbt features, such as column descriptions, may not persist in all table formats.
 

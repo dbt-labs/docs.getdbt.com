@@ -15,7 +15,7 @@ import BigQueryPerms from '/snippets/_bigquery-permissions.md';
 
 ## Authentication
 
-<Constant name="cloud" /> supports different authentication methods depending on your environment and plan type:
+<Constant name="dbt" /> supports different authentication methods depending on your environment and plan type:
 
 - Development environments support:
     - Service JSON
@@ -72,9 +72,9 @@ In addition to these fields, two other optional fields can be configured in a Bi
 ### BigQuery OAuth
 **Available in:** Development environments, Enterprise-tier plans only
 
-The OAuth auth method permits <Constant name="cloud" /> to run queries on behalf of a BigQuery user or workload without storing the BigQuery service account keyfile in <Constant name="cloud" />. However, the JSON must still be provided, or fields must be manually filled out to complete the configuration in dbt Cloud. Those values do not have to be real for this bypass to work (for example, they can be `N/A`). For more information on the initial configuration of a BigQuery OAuth connection in <Constant name="cloud" />>, please see [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
+The OAuth auth method permits <Constant name="dbt" /> to run queries on behalf of a BigQuery user or workload without storing the BigQuery service account keyfile in <Constant name="dbt" />. However, the JSON must still be provided, or fields must be manually filled out to complete the configuration in dbt Cloud. Those values do not have to be real for this bypass to work (for example, they can be `N/A`). For more information on the initial configuration of a BigQuery OAuth connection in <Constant name="dbt" />>, please see [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
 
-As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your Profile in <Constant name="cloud" />.
+As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your Profile in <Constant name="dbt" />.
 
 ### BigQuery Workload Identity Federation <Lifecycle status="managed, preview" />
 
@@ -85,17 +85,17 @@ If you're using BigQuery WIF, we recommend using it with BigQuery OAuth. Otherwi
 
 **Available in:** Deployment environments
 
-The BigQuery WIF auth method permits <Constant name="cloud" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="cloud" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="cloud" />, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
+The BigQuery WIF auth method permits <Constant name="dbt" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="dbt" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="dbt" />, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
 
 ## Configuration
 
-To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [BigQuery-specific configuration](/reference/resource-configs/bigquery-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="dbt" />, refer to [BigQuery-specific configuration](/reference/resource-configs/bigquery-configs).
 
 ### Optional configurations
 
 In BigQuery, optional configurations let you tailor settings for tasks such as query priority, dataset location, job timeout, and more. These options give you greater control over how BigQuery functions behind the scenes to meet your requirements.
 
-To customize your optional configurations in <Constant name="cloud" />:
+To customize your optional configurations in <Constant name="dbt" />:
 
 1. Click your account name at the bottom left-hand menu and go to **Account settings** > **Projects**.
 2. Select your BigQuery project.
@@ -104,7 +104,7 @@ To customize your optional configurations in <Constant name="cloud" />:
 
 <Lightbox src="/img/bigquery/bigquery-optional-config.png" width="70%" title="BigQuery optional configuration"/>
 
-The following are the optional configurations you can set in <Constant name="cloud" />:
+The following are the optional configurations you can set in <Constant name="dbt" />:
 
 | Configuration    | <div style={{width:'250'}}>Information</div>   | Type    | <div style={{width:'150'}}>Example</div>             |
 |---------------------------|-----------------------------------------|---------|--------------------|
@@ -145,7 +145,7 @@ The `location` of BigQuery datasets can be set using the `location` setting in a
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile, that allows you to limit how much data your query can process. It’s a safeguard to prevent your query from accidentally processing more data than you expect, which could lead to higher costs. Queries executed by dbt will fail if they exceed the configured maximum bytes threshhold. This configuration should be supplied as an integer number of bytes.
 
-If your `maximum_bytes_billed` is 1000000000, you would enter that value in the `maximum_bytes_billed` field in <Constant name="cloud" />.
+If your `maximum_bytes_billed` is 1000000000, you would enter that value in the `maximum_bytes_billed` field in <Constant name="dbt" />.
 
 
 </Expandable>
@@ -230,7 +230,7 @@ This region must match the location of your BigQuery dataset if you want to use 
 
 You can re-use connections across multiple projects with [global connections](/docs/cloud/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can use multiple connections inside of a single project (to handle dev, staging, production, and more).
 
-BigQuery connections in <Constant name="cloud" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
+BigQuery connections in <Constant name="dbt" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
 
 For a project, you will first create an environment variable to store the secret `private_key` value. Then, you will use extended attributes to override the entire service account JSON (you can't only override the secret key due to a constraint of extended attributes).
 
