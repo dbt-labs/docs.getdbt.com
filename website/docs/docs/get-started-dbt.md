@@ -8,13 +8,13 @@ pagination_prev: null
 
 Begin your dbt journey by choosing how you want to develop:
 
-- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="cloud_ide" /> or <Constant name="visual_editor" />) or use local tools (VS Code extension, <Constant name="cloud_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
+- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use local tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
 - [**Local only**](#dbt-local-installations) &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [Fusion CLI](/docs/local/install-dbt?version=2#get-started), or [<Constant name="core" />](/docs/local/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
-- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="cloud_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="query_page" />, <Constant name="visual_editor" />, and more.
+- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="platform_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="insights" />, <Constant name="canvas" />, and more.
 
 ## The dbt platform
 
-<Constant name="cloud" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="cloud" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
+<Constant name="dbt" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="dbt" /> features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
 The <Constant name="fusion_engine" /> adds managed execution, [state-aware orchestration](/docs/deploy/state-aware-about), and a unified development experience so you can focus on building rather than infrastructure.
 
@@ -82,7 +82,7 @@ Choose your warehouse to get started with a quickstart:
 
 When you install dbt locally, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
 
-You can use local tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="cloud_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
+You can use local tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
 
 Develop locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
@@ -110,8 +110,8 @@ Develop locally using the <Constant name="fusion_engine" /> or <Constant name="c
 
 Expand your dbt knowledge and expertise with these additional resources:
 
-- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see <Constant name="cloud" /> in action and ask questions.
-- [<Constant name="cloud" /> AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy <Constant name="cloud" /> on AWS, user reviews, and more.
+- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see <Constant name="dbt" /> in action and ask questions.
+- [<Constant name="dbt" /> AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy <Constant name="dbt" /> on AWS, user reviews, and more.
 - [Best practices](/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
 - [dbt Learn](https://learn.getdbt.com) offers free online courses that cover dbt fundamentals, advanced topics, and more.
 - [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.

@@ -14,7 +14,7 @@ level: 'Advanced'
 
 ## Introduction
 
-This guide will teach you how to refresh a Mode dashboard when a <Constant name="cloud" /> job has completed successfully and there is fresh data available. The integration will:
+This guide will teach you how to refresh a Mode dashboard when a <Constant name="dbt" /> job has completed successfully and there is fresh data available. The integration will:
 
  - Receive a webhook notification in Zapier
  - Trigger a refresh of a Mode report
@@ -24,7 +24,7 @@ Although we are using the Mode API for a concrete example, the principles are re
 ### Prerequisites
 
 In order to set up the integration, you should have familiarity with:
-- [<Constant name="cloud" /> Webhooks](/docs/deploy/webhooks)
+- [<Constant name="dbt" /> Webhooks](/docs/deploy/webhooks)
 - Zapier
 - The [Mode API](https://mode.com/developer/api-reference/introduction/)
 
@@ -40,12 +40,12 @@ See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subsc
 
 Make note of the Webhook Secret Key for later.
 
-Once you've tested the endpoint in <Constant name="cloud" />, go back to Zapier and click **Test Trigger**, which will create a sample webhook body based on the test event <Constant name="cloud" /> sent.
+Once you've tested the endpoint in <Constant name="dbt" />, go back to Zapier and click **Test Trigger**, which will create a sample webhook body based on the test event <Constant name="dbt" /> sent.
 
 The sample body's values are hard-coded and not reflective of your project, but they give Zapier a correctly-shaped object during development. 
 
 ## Store secrets 
-In the next step, you will need the Webhook Secret Key from the prior step, and a <Constant name="cloud" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens), as well as a [Mode API token and secret](https://mode.com/developer/api-reference/authentication/). 
+In the next step, you will need the Webhook Secret Key from the prior step, and a <Constant name="dbt" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens), as well as a [Mode API token and secret](https://mode.com/developer/api-reference/authentication/). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
@@ -60,7 +60,7 @@ If you haven't already got one, go to [https://zapier.com/app/connections/storag
 Choose **Run Python** as the Event. Run the following code: 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your <Constant name="cloud" /> API token
+store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your <Constant name="dbt" /> API token
 store.set('MODE_API_TOKEN', 'abc123') #replace with your Mode API Token
 store.set('MODE_API_SECRET', 'abc123') #replace with your Mode API Secret
 ```
@@ -73,7 +73,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 ![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
 
-In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` in the StoreClient constructor with the secret you created when setting up the Storage by Zapier integration (not your <Constant name="cloud" /> secret), and setting the `account_username` and `report_token` variables to actual values.
+In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` in the StoreClient constructor with the secret you created when setting up the Storage by Zapier integration (not your <Constant name="dbt" /> secret), and setting the `account_username` and `report_token` variables to actual values.
 
 The code below will validate the authenticity of the request, then send a [`run report` command to the Mode API](https://mode.com/developer/api-reference/analytics/report-runs/#runReport) for the given report token.
 
@@ -99,7 +99,7 @@ password = secret_store.get('MODE_API_SECRET')
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="cloud" />.")
+  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 

@@ -25,7 +25,7 @@ When you set this configuration:
 
 You should pin to a major release. See [pin to a range](#pin-to-a-range) for more details. If this configuration isn't specified, no version check will occur.
 
-:::info <Constant name="cloud" /> release tracks 
+:::info <Constant name="dbt" /> release tracks 
 
 <Snippet path="_config-dbt-version-check" />
 
