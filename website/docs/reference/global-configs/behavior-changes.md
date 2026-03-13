@@ -271,7 +271,7 @@ Once the metric is updated, it will work as expected:
 
 ```
 
-### Null-safe equality (equals macro)
+### Null-safe equality (equals macro) {#null-safe-equality}
 
 The `enable_truthy_nulls_equals_macro` flag is `False` by default. Setting it to `True` in your `dbt_project.yml` enables null-safe equality in the dbt [equals](/reference/dbt-jinja-functions/cross-database-macros#equals) macro, which is used in incremental and snapshot materializations.
 
