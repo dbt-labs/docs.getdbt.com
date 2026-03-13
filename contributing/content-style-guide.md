@@ -293,7 +293,7 @@ Use the `<Card` component to display content and actions on a single topic. Thes
 | `grid--4-col` | 4 | Limited text only (≤15 words) |
 | `grid--5-col` | 5 | Limited text only (≤15 words) |
 
-**For 4-5 columns:** Set `hide_table_of_contents: true` in frontmatter.
+**For 4-5 columns:** Set `hide_table_of_contents: true` in the frontmatter to hide the right table of contents and prevent crowding.
 
 ### Card component syntax
 
