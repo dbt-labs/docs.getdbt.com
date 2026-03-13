@@ -224,25 +224,27 @@ If you don't already have a job based on the deployment environment with a conne
 
 ### Connection fails after granting Google permissions
 
-When connecting a BigQuery account, you may successfully sign in to Google and approve the requested permissions, but then see an error page instead of being returned to the <Constant name="dbt_platform" />. This typically appears as a page showing a server error message rather than the credentials page you started from.
+When connecting a BigQuery account, you may successfully sign in to Google and approve the requested permissions, but then see an error page instead of returning to the <Constant name="dbt_platform" />. This typically appears as a server error message rather than the credentials page you started from.
 
-This can happen when your Google Workspace organization has restricted which third-party applications can access Google services. Even though Google allowed you to sign in and view the consent screen, the organization's security policy blocked the final step of issuing credentials to the <Constant name="dbt_platform" />.
+This can happen when your Google Workspace organization restricts which third-party applications can access Google services. Even though Google allowed you to sign in and view the consent screen, the organization's security policy blocked the final step of issuing credentials to the <Constant name="dbt_platform" />.
 
-#### Why this affects BigQuery OAuth
+<Expandable alt_header="Why this affects BigQuery OAuth">
 
-Google classifies OAuth scopes into tiers: non-sensitive, sensitive, and restricted. Applications that only request non-sensitive scopes (such as basic sign-in) typically work without additional admin approval. The BigQuery OAuth connection requires scopes that Google classifies as [restricted](https://support.google.com/cloud/answer/9110914), which always require explicit admin trust regardless of your organization's default policy for third-party apps.
+Google classifies OAuth scopes into three tiers: non-sensitive, sensitive, and restricted. Applications that only request non-sensitive scopes (such as basic sign-in) typically work without additional admin approval. The BigQuery OAuth connection requires scopes that Google classifies as [restricted](https://support.google.com/cloud/answer/9110914), which always require explicit admin trust regardless of your organization's default policy for third-party apps.
 
-The restricted scopes requested by the BigQuery OAuth connection are:
+The BigQuery OAuth connection requests these restricted scopes:
 
-- `bigquery` — required to run queries and access BigQuery resources
-- `cloud-platform` — required for cross-project BigQuery access and service interoperability
-- `drive` — required to support [BigQuery external tables over Google Drive](https://cloud.google.com/bigquery/docs/external-data-drive)
+- `bigquery` &mdash; Required to run queries and access BigQuery resources
+- `cloud-platform` &mdash; Required for cross-project BigQuery access and service interoperability
+- `drive` &mdash; Required to support [BigQuery external tables over Google Drive](https://cloud.google.com/bigquery/docs/external-data-drive)
 
-This is why other applications you use may connect without this approval step — they likely request only non-sensitive or sensitive scopes that don't trigger the same restriction.
+Other applications you use may connect without this approval step because they likely request only non-sensitive or sensitive scopes that don't trigger the same restriction.
 
-#### How to resolve this
+</Expandable>
 
-Your Google Workspace administrator needs to trust the OAuth client ID that your <Constant name="dbt_platform" /> BigQuery connection uses. You can find this client ID in the <Constant name="dbt_platform" /> under **Account settings** > **Connections** > your BigQuery connection > **OAuth 2.0 Settings**.
+<Expandable alt_header="How to resolve this">
+
+Your Google Workspace administrator must trust the OAuth client ID that your <Constant name="dbt_platform" /> BigQuery connection uses. Find this client ID in the <Constant name="dbt_platform" /> under **Account settings** > **Connections** > your BigQuery connection > **OAuth 2.0 Settings**.
 
 Once you have the client ID, ask your Google Workspace administrator to:
 
@@ -253,12 +255,16 @@ Once you have the client ID, ask your Google Workspace administrator to:
 5. Set the access level to **Trusted**.
 6. Apply the setting to the relevant organizational unit or the entire organization.
 
-After the administrator makes this change, retry the BigQuery connection from your credentials page in the <Constant name="dbt_platform" />.
+After the administrator completes these steps, retry the BigQuery connection from your credentials page in the <Constant name="dbt_platform" />.
 
 For more details, see Google's documentation on [controlling third-party app access to Google Workspace data](https://support.google.com/a/answer/7281227).
 
-#### If the issue persists
+</Expandable>
 
-If the connection still fails after the OAuth client has been trusted in Google Workspace, ask your GCP project administrator to check whether a Google Cloud [Organization Policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview) is restricting external OAuth clients. The relevant constraint is `constraints/iam.allowedExternalOAuthClients`.
+<Expandable alt_header="If the issue persists">
 
-If neither of these resolves the issue, contact [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) with the approximate time of the failed connection attempt and the email address used to authenticate with Google.
+If the connection still fails after your administrator trusts the OAuth client in Google Workspace, ask your GCP project administrator to check whether a Google Cloud [Organization Policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview) restricts external OAuth clients. The relevant constraint is `constraints/iam.allowedExternalOAuthClients`.
+
+If neither of these steps resolves the issue, contact [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) with the approximate time of the failed connection attempt and the email address you used to authenticate with Google.
+
+</Expandable>
