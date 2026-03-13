@@ -96,7 +96,7 @@ snapshots:
 
 <TabItem value="property-yaml">
 
-Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting <Constant name="core" /> v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag to use `sql_header` in your `properties.yml`.
+Setting `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) is available starting in <Constant name="core" /> v1.12. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag to use `sql_header` in `properties.yml` for generic data tests.
 
 
 Here's an example of a model-level configuration:
