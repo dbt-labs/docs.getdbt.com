@@ -354,7 +354,7 @@ For more information refer to [Add a description to a data test](/reference/reso
 
 #### Set `sql_header` in a generic data test
 
-When the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag is enabled, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test so that the specified SQL runs before the test is executed (for example, to set session parameters or add a comment):
+When the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag is enabled, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test so that the specified SQL runs before the test executes (for example, to set session parameters or add a comment):
 
 <File name="models/properties.yml">
 
