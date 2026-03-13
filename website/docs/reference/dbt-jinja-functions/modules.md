@@ -5,7 +5,7 @@ id: "modules"
 description: "`modules` Jinja variable exposes useful Python modules for operating on data."
 ---
 
-The `modules` variable in the Jinja context is a predefined namespace that contains only a limited set of supported Python modules for operating on data; you cannot import or access arbitrary Python modules (for example, `os`, `requests`, or custom third-party libraries) from within Jinja.
+The `modules` variable in the Jinja context is a predefined namespace that contains only a limited set of supported Python modules for operating on data. You cannot import or access arbitrary Python modules (for example, `os`, `requests`, or custom third-party libraries) from within Jinja.
 
 There is no user-facing configuration to modify or extend the `modules` namespace. This restriction helps ensure consistent behavior, security, and portability across environments.
 
