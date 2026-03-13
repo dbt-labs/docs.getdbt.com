@@ -446,9 +446,10 @@ Every image must include descriptive alt text for screen readers.
 
 ### Screenshot rules
 
-1. Redact all PII (names, emails, phone numbers)
-2. Exclude URL and bookmark bars
-3. Use generic names (John Doe, Jane Doe) in account fields
+- Redact all PII (names, emails, phone numbers) and sensitive info (like account numbers)
+- Exclude URL and bookmark bars
+- Use generic names (John Doe, Jane Doe) in account fields
+- Capture only the relevant area 
 
 ### Callout annotations
 
