@@ -146,7 +146,7 @@ An optional configuration to inject SQL above the `create table as` and `create 
 
 <VersionBlock firstVersion="1.12">
 
-You can also set `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) at the model or column level in your properties YAML file. Use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
+You can also set `sql_header` in the `config` of a [generic data test](/docs/build/data-tests) at the model or column level in your `properties.yml` file. Use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, set session parameters, or declare variables required by the test query). dbt runs this SQL before executing the test.
 
 Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag to use `sql_header` for data tests. For more information, refer to [Data test configurations](/reference/data-test-configs).
 
