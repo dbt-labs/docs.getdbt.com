@@ -2,14 +2,14 @@
 title: "About modules variable"
 sidebar_label: "modules"
 id: "modules"
-description: "`modules` Jinja variables has useful Python modules to operate data."
+description: "`modules` Jinja variable exposes useful Python modules for operating on data."
 ---
 
-:::note
-The `modules` namespace is predefined by dbt and includes only the Python modules documented on this page. Refer to [Limitations](#limitations) for more information.
-:::
+The `modules` variable in the Jinja context is a predefined namespace that contains only a limited set of supported Python modules for operating on data; you cannot import or access arbitrary Python modules (for example, `os`, `requests`, or custom third-party libraries) from within Jinja.
 
-The `modules` variable in the Jinja context contains useful Python modules for operating on data.
+There is no user-facing configuration to modify or extend the `modules` namespace. This restriction helps ensure consistent behavior, security, and portability across environments.
+
+If your workflow requires functionality from additional Python libraries, use a [Python model](/docs/build/python-models) (where supported) instead of Jinja. Python models run in a different execution context and allow you to import and use external libraries as needed.
 
 ## datetime
 This variable is a pointer to the Python [`datetime`](https://docs.python.org/3/library/datetime.html) module, which supports complex date and time logic.
@@ -98,10 +98,3 @@ The supported functions are:
   (2, 'y')
   (2, 'z')
 ```
-## Limitations
-
-The `modules` namespace is predefined by dbt and includes only a limited set of supported Python modules. You cannot import or access arbitrary Python modules (for example, `os`, `requests`, or custom third-party libraries) from within Jinja.
-
-There is no user-facing configuration to modify or extend the modules namespace. This restriction helps ensure consistent behavior, security, and portability across environments.
-
-If your workflow requires functionality from additional Python libraries, use a [Python model](/docs/build/python-models) (where supported) instead of Jinja. Python models run in a different execution context and allow you to import and use external libraries as needed.
