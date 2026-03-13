@@ -116,6 +116,7 @@ Use all caps unless another standard exists (such as in code blocks):
 - The left sidebar (leftbar) is defined in `sidebar.js`
 - The right sidebar (page TOC) generates automatically from H2 (##) and H3 (###) headings
 - Expect merge conflicts in `sidebar.js`. Review carefully and accept other contributors' changes
+- Ensure content is placed into proper directory (/docs, /guides, /reference, etc.)
 
 ---
 
@@ -136,12 +137,14 @@ Use all caps unless another standard exists (such as in code blocks):
 - `/reference/`
 - `/community/`
 
-Do not include file extensions in internal links.
+Do not include file extensions (like .md) in internal links.
 
 ### Image syntax
 
+We use the Lightbox feature for image posting. Use the following syntax for posting images (width optional. Use it to resize large images):
+
 ```markdown
-<Lightbox src="/img/docs/image-name.jpg" title="Concise description"/>
+<Lightbox src="/img/docs/image-name.jpg" width=60% title="Concise description"/>
 ```
 
 ---
@@ -209,7 +212,7 @@ Bold section names. Avoid "panel" and "pane."
 ### Rules
 
 1. Use sentence case for titles and headings
-2. Capitalize product names (see [dbt features](#dbt-features))
+2. Capitalize product names (see [product list](#dbt-features))
 3. Capitalize acronyms and proper nouns
 4. Do not capitalize common features
 
@@ -278,6 +281,8 @@ Bold section names. Avoid "panel" and "pane."
 ---
 
 ## Cards
+
+Use the `<Card` component to display content and actions on a single topic. These are primarily used on landing pages that link out to multiple related subjects.
 
 ### Grid options
 
