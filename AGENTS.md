@@ -31,12 +31,13 @@ website/
 | `website/constants.js` | Global terminology constants |
 | `website/blog/authors.yml` | Blog post author profiles |
 | `website/blog/categories.yml` | Blog tag/category definitions |
-
+| `website/vercel.json` | Contains page redirects |
 ## Dev commands
 
 ```bash
 cd website
 npm start          # Local dev server (port 3000)
+npm i              #  Install dependencies
 npm run build      # Production build
 npm test           # Jest tests (watch mode)
 npm run lint       # ESLint with cache
@@ -68,10 +69,10 @@ All other features (models, environments, configs, settings) are common nouns.
 ```jsx
 <Constant name="dbt_platform" />   // → "dbt platform"
 <Constant name="fusion_engine" />  // → "dbt Fusion engine"
-<Constant name="cloud_ide" />      // → "Studio IDE"
+<Constant name="studio_ide" />      // → "Studio IDE"
 ```
 
-Source: `website/constants.js`
+Refer to `website/constants.js` for constant names
 
 ### Third-party brands
 
@@ -89,7 +90,7 @@ All caps except `dbt`: YAML, SQL, JSON, IDE. Spell out on first use.
 - **Spelling**: US English (standardize, not standardise)
 - **Emphasis**: Italics for emphasis, bold for UI elements only
 - **Code font**: Filenames, commands, params, directory paths, branch names
-- **Placeholder text**: `SCREAMING_SNAKE_CASE` (no brackets)
+- **Placeholder text**: `SCREAMING_SNAKE_CASE` (no brackets and no angular brackets)
 - **Avoid**: Latin abbreviations (i.e., e.g., etc.) — use "that is," "for example," "and more"
 - **UI elements**: Bold the element name — "Click **Submit**" (not "Click the **Submit** button")
 - **Links**: Never "Click here" — use descriptive text: "refer to the [dbt Labs doc site](https://docs.getdbt.com/)"
@@ -124,6 +125,7 @@ pagination_prev: null
 hide_table_of_contents: false
 ---
 ```
+Do not use constants in frontmatter.
 
 ### Blog posts
 
@@ -289,6 +291,11 @@ Terms defined in `website/docs/terms/hover-terms.md`.
 ```jsx
 <Lifecycle status="preview" />
 <Lifecycle status="deprecated" />
+<Lifecycle status="beta" />
+
+Source for additional lifecycle statuses: `website/src/components/lifeCycle/index.js`.
+
+GA is not used usually.
 ```
 
 ### FAQ
@@ -313,7 +320,7 @@ Loads from `website/docs/faqs/` directory.
 ```
 
 Grid options: `grid--2-col`, `grid--3-col`, `grid--4-col` (sparingly), `grid--5-col` (sparingly).
-
+Do not use constants in Cards.
 ### Intro text
 
 ```jsx
