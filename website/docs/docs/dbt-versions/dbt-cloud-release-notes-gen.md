@@ -30,7 +30,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and Run Status
 
-- **Run retries support dbt Fusion runs:** You can now retry failed runs as long as at least one configured dbt Core version is `1.6` or higher, including runs that used dbt Fusion.
+- **Run retries support dbt Fusion runs:** You can now retry failed runs as long as your environment is on dbt Core version `1.6` or higher or dbt Fusion.
 
 ### Integrations
 
