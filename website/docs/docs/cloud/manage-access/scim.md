@@ -7,11 +7,11 @@ sidebar: "Set up SCIM"
 
 # Set up SCIM <Lifecycle status="managed, managed_plus" />
 
-The System for Cross-Domain Identity Management (SCIM) makes user data more secure and simplifies the admin and end-user lifecycle experience by automating user identities and groups. You can create or disable user identities in your Identity Provider (IdP), and SCIM will automatically make those changes in near real-time downstream in <Constant name="cloud" />.
+The System for Cross-Domain Identity Management (SCIM) makes user data more secure and simplifies the admin and end-user lifecycle experience by automating user identities and groups. You can create or disable user identities in your Identity Provider (IdP), and SCIM will automatically make those changes in near real-time downstream in <Constant name="dbt" />.
 
 ## Prerequisites
 
-To configure SCIM in your <Constant name="cloud" /> environment:
+To configure SCIM in your <Constant name="dbt" /> environment:
 - You must be on an [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
 - You must use Okta or Entra ID as your SSO provider and have it connected in the dbt platform.
 - You must have [permissions](/docs/cloud/manage-access/enterprise-permissions) to configure the account settings in <Constant name="dbt_platform" /> and change application settings in [Okta](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm).
@@ -38,24 +38,24 @@ When users are provisioned, the following attributes are supported
 - Family name
 - Given name
 
-The following IdPs are supported in the <Constant name="cloud" /> user interface:
+The following IdPs are supported in the <Constant name="dbt" /> user interface:
 - [Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta) (includes [license management](/docs/cloud/manage-access/scim-manage-user-licenses))
 - [Set up SCIM with Entra ID](/docs/cloud/manage-access/scim-entra-id)
 
-If your IdP isn't on the list, it can be supported using <Constant name="cloud" /> [APIs](/dbt-cloud/api-v3#/operations/Retrieve%20SCIM%20configuration).
+If your IdP isn't on the list, it can be supported using <Constant name="dbt" /> [APIs](/dbt-cloud/api-v3#/operations/Retrieve%20SCIM%20configuration).
 
 ## Set up dbt {#set-up-dbt}
 
-To retrieve the necessary <Constant name="cloud" /> configurations for use in Okta or Entra ID:
+To retrieve the necessary <Constant name="dbt" /> configurations for use in Okta or Entra ID:
 
-1. Navigate to your <Constant name="cloud" /> **Account settings**.
+1. Navigate to your <Constant name="dbt" /> **Account settings**.
 2. Under **Settings**, click **SSO & SCIM**.
 3. Scroll to the bottom of your SSO configuration settings and click **Enable SCIM**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/enable-scim.png" width="60%" title="SCIM enabled in the configuration settings." />
 4. Record the **SCIM base URL** field for use in a later step.
 5. Click **Create SCIM token**.
     :::note
-    To follow best practices, you should regularly rotate your SCIM tokens. To do so, follow these same instructions you did to create a new one. To avoid service disruptions, remember to replace your token in your IdP before deleting the old token in <Constant name="cloud" />.
+    To follow best practices, you should regularly rotate your SCIM tokens. To do so, follow these same instructions you did to create a new one. To avoid service disruptions, remember to replace your token in your IdP before deleting the old token in <Constant name="dbt" />.
     :::
 6. In the pop-up window, give the token a name that will make it easily identifiable. Click **Save**.
     <Lightbox src="/img/docs/dbt-cloud/access-control/name-scim-token.png" width="60%" title="Give your token and identifier." />

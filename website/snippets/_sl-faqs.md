@@ -2,7 +2,7 @@
 
 The <Constant name="semantic_layer" /> is proprietary; however, some components of the <Constant name="semantic_layer" /> are open source, such as <Constant name="core" /> and MetricFlow.
 
-<Constant name="cloud" /> Developer or <Constant name="core" /> users can define metrics in their project, including a local <Constant name="core" /> project, using the <Constant name="cloud_ide" />, <Constant name="cloud_cli" />, or <Constant name="core" /> CLI. However, to experience the universal <Constant name="semantic_layer" /> and access those metrics using the API or downstream tools, users must be on a <Constant name="cloud" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing/) plan.
+<Constant name="dbt" /> Developer or <Constant name="core" /> users can define metrics in their project, including a local <Constant name="core" /> project, using the <Constant name="studio_ide" />, <Constant name="platform_cli" />, or <Constant name="core" /> CLI. However, to experience the universal <Constant name="semantic_layer" /> and access those metrics using the API or downstream tools, users must be on a <Constant name="dbt" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing/) plan.
 
 Refer to <a href="https://docs.getdbt.com/docs/cloud/billing">Billing</a> for more information.
 
@@ -10,7 +10,7 @@ Refer to <a href="https://docs.getdbt.com/docs/cloud/billing">Billing</a> for mo
 
 <DetailsToggle alt_header="How can open-source users use the dbt Semantic Layer?">
 
-The <Constant name="semantic_layer" /> requires the use of the <Constant name="cloud" />-provided service for coordinating query requests. Open source users who don't use <Constant name="cloud" /> can currently work around the lack of a service layer. They can do this by running `mf query --explain` in the command line. This command generates SQL code, which they can then use in their current systems for running and managing queries.
+The <Constant name="semantic_layer" /> requires the use of the <Constant name="dbt" />-provided service for coordinating query requests. Open source users who don't use <Constant name="dbt" /> can currently work around the lack of a service layer. They can do this by running `mf query --explain` in the command line. This command generates SQL code, which they can then use in their current systems for running and managing queries.
   
 As we refine MetricFlow’s API layers, some users may find it easier to set up their own custom service layers for managing query requests. This is not currently recommended, as the API boundaries around MetricFlow are not sufficiently well-defined for broad-based community use
 
@@ -18,7 +18,7 @@ As we refine MetricFlow’s API layers, some users may find it easier to set up 
 
 <DetailsToggle alt_header="Why is my query limited to 100 rows in the Cloud CLI?">
 
-The default `limit` for query issues from the <Constant name="cloud_cli" /> is 100 rows. We set this default to prevent returning unnecessarily large data sets as the <Constant name="cloud_cli" /> is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
+The default `limit` for query issues from the <Constant name="platform_cli" /> is 100 rows. We set this default to prevent returning unnecessarily large data sets as the <Constant name="platform_cli" /> is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
   
 However, you can change this limit if needed by setting the `--limit` option in your query. For example, to return 1000 rows, you can run `dbt sl list metrics --limit 1000`.
 
@@ -34,7 +34,7 @@ Beyond the technical challenges that could be overcome, we see Metrics as the le
 
 <DetailsToggle alt_header="Can I create tables in my data platform using MetricFlow?">
 
-You can use the upcoming feature, Exports, which will allow you to create a [pre-defined](/docs/build/saved-queries) MetricFlow query as a table in your data platform. This feature will be available to <Constant name="cloud" /> customers only. This is because MetricFlow is primarily for query rendering while dispatching the relevant query and performing any DDL is the domain of the service layer on top of MetricFlow.
+You can use the upcoming feature, Exports, which will allow you to create a [pre-defined](/docs/build/saved-queries) MetricFlow query as a table in your data platform. This feature will be available to <Constant name="dbt" /> customers only. This is because MetricFlow is primarily for query rendering while dispatching the relevant query and performing any DDL is the domain of the service layer on top of MetricFlow.
 
 </DetailsToggle>
 

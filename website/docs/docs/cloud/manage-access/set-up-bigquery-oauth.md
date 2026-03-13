@@ -19,7 +19,7 @@ The <Constant name="dbt_platform" /> supports [OAuth](https://cloud.google.com/b
 
 ## Set up BigQuery native OAuth
 
-When BigQuery OAuth is enabled for a <Constant name="dbt_platform" /> project, all <Constant name="dbt_platform" /> developers must authenticate with BigQuery to access development tools, such as the <Constant name="cloud_ide" />. 
+When BigQuery OAuth is enabled for a <Constant name="dbt_platform" /> project, all <Constant name="dbt_platform" /> developers must authenticate with BigQuery to access development tools, such as the <Constant name="studio_ide" />. 
 
 
 To set up BigQuery OAuth in the <Constant name="dbt_platform" />, a BigQuery admin must:
@@ -27,7 +27,7 @@ To set up BigQuery OAuth in the <Constant name="dbt_platform" />, a BigQuery adm
 2. [Create a BigQuery OAuth 2.0 client ID and secret](#creating-a-bigquery-oauth-20-client-id-and-secret) in BigQuery.
 3. [Configure the connection](/docs/cloud/manage-access/set-up-bigquery-oauth#configure-the-connection-in-dbt) in the <Constant name="dbt_platform" />.
 
-To use BigQuery in the <Constant name="cloud_ide" />, all developers must:
+To use BigQuery in the <Constant name="studio_ide" />, all developers must:
 1. [Authenticate to BigQuery](#authenticating-to-bigquery) in the their profile credentials.
 
 ### Locate the redirect URI value
@@ -80,7 +80,7 @@ Now that you have an OAuth app set up in BigQuery, you'll need to add the client
  3. Enter the BigQuery token URI. The default value is `https://oauth2.googleapis.com/token`. 
 
 ### Authenticating to BigQuery
-Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> project, each <Constant name="dbt_platform" />user will need to authenticate with BigQuery in order to use the <Constant name="cloud_ide" />. To do so:
+Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> project, each <Constant name="dbt_platform" />user will need to authenticate with BigQuery in order to use the <Constant name="studio_ide" />. To do so:
 
 1. Navigate to your account name, above your profile icon on the left side panel.
 2. Select **Account settings** from the menu.
@@ -104,9 +104,8 @@ Select **Allow**. This redirects you back to the <Constant name="dbt_platform" /
 
 ## Set up BigQuery Workload Identity Federation <Lifecycle status= "managed, Preview" /> 
 
-Workload Identity Federation (WIF) allows application workloads, running externally to the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF with Microsoft Entra ID as the OAuth identity provider (IdP). 
-
-You can also use external OAuth IdPs (including Microsoft Entra ID) for WIF connections with [Semantic Layer queries](/docs/use-dbt-semantic-layer/dbt-sl). If you need additional IdP support, please contact your account team.
+Workload Identity Federation (WIF) allows application workloads, running outside the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF. 
+Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
 ### 1. Set up Entra ID
 
@@ -194,8 +193,6 @@ To get started, create a new connection in the <Constant name="dbt_platform" />:
         - Set this up in the same connection as the one you're using for WIF under **`OAuth2.0 settings`**
     - Service JSON.
         - You must create a separate connection with the Service JSON configuration.
-    - External OAuth.
-        - You can use external OAuth providers for Semantic Layer queries.
 
 ### 6. Set up project
 
@@ -217,10 +214,6 @@ When you set your environment connection to the WIF configuration, you will then
     Example: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts<serviceaccountemail>:generateAccessToken`
 
 If you don't already have a job based on the deployment environment with a connection set up for WIF, you should create one now. Once you've configured it with the preferred settings, run the job.
-
-### 8. Configure Semantic Layer credentials
-
-If you want to use WIF authentication for Semantic Layer queries, follow the steps in [Administer the Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl). When configuring your Semantic Layer credentials, select the connection with the WIF configuration you created in [step 5](#5-create-connections-in-dbt).
 
 ## FAQs
 

@@ -22,7 +22,7 @@ Freshness model configurations are only available for the dbt Fusion engine. Ref
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness):
-      build_after:  # build this model no more often than every X amount of time, as long as it has new data. Available only on dbt platform Enterprise tiers. 
+      build_after: # default build frequency for models in this project, as long as they have new data. Available only on dbt platform Enterprise tiers. 
         count: <positive_integer>
         period: minute | hour | day
         updates_on: any | all # optional config, default is `any`

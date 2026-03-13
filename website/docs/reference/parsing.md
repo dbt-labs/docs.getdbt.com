@@ -5,7 +5,7 @@ description: "Read this guide to understand the project parsing configuration in
 
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)
-- Partial parsing [profile config](/docs/core/connect-data-platform/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
+- Partial parsing [profile config](/docs/local/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
 - Parsing [CLI flags](/reference/global-configs/parsing)
 
 ## What is parsing?
@@ -71,7 +71,7 @@ At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `co
 
 The static parser is **on** by default. We believe it can offer *some* speed up to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](/reference/global-configs/parsing).
 
-For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The static parser is at least 3x faster than a full Jinja render. Based on testing with data from <Constant name="cloud" />, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.
+For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The static parser is at least 3x faster than a full Jinja render. Based on testing with data from <Constant name="dbt" />, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.
 
 ## Experimental parser
 

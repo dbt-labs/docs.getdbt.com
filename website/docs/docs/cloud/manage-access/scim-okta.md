@@ -20,7 +20,7 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
 
 ## Set up Okta
 
-1. Log in to your Okta account and locate the app configured for the <Constant name="cloud" /> SSO integration.
+1. Log in to your Okta account and locate the app configured for the <Constant name="dbt" /> SSO integration.
 2. Navigate to the **General** tab and ensure **Enable SCIM provisioning** is selected or the **Provisioning** tab will not be displayed. 
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-provisioned.png" width="60%" title="Enable SCIM provisioning in Okta." />
 3. Open the **Provisioning** tab and select **Integration**.
@@ -31,7 +31,7 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
     - **Push Groups**
     - **Import New Users and Profile Updates** (Optional for users created before SSO/SCIM setup)
 6. From the **Authentication mode** dropdown, select **HTTP Header**.
-7. In the **Authorization** section, enter the token from <Constant name="cloud" /> into the **Bearer** field.
+7. In the **Authorization** section, enter the token from <Constant name="dbt" /> into the **Bearer** field.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />
 8. Ensure the following provisioning actions are selected:
     - **Create Users**
@@ -45,12 +45,15 @@ You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_p
 
 ## SCIM username format
 
-SCIM requires the username to be in the email address format. If your Okta configurations map the `Username` field to a different attribute, SCIM user provisioning will fail. To get around this without altering your user profiles, set your Okta app config to `Email`:
+For <Constant name="dbt_platform" /> SCIM with Okta, `userName` **must be the email address format**. <Constant name="dbt_platform" /> uses `userName` to look up existing users during SCIM sync. If Okta sends another format (such as an Okta internal ID like `00u...` or an employee ID), <Constant name="dbt_platform" /> cannot match the existing user, and provisioning will fail.
+
+If your Okta configurations map the `Username` field to a different attribute, set your Okta app config to `Email`:
 
 1. Open the SAML app created for the dbt integration.
 2. In the **Sign on** tab, click **Edit** in the **Settings** pane.
 3. Set the **Application username format** field to **Email**.
 4. Click **Save**.
+
 
 ## SCIM license mapping
 
@@ -58,12 +61,12 @@ To automate seat assignments in Okta for users as they are provisioned, see [Man
 
 ## Existing Okta integrations
 
-If you are adding SCIM to an existing Okta integration in <Constant name="cloud" /> (as opposed to setting up SCIM and SSO concurrently for the first time), be aware of the following behavior:
+If you are adding SCIM to an existing Okta integration in <Constant name="dbt" /> (as opposed to setting up SCIM and SSO concurrently for the first time), be aware of the following behavior:
 
-- Users and groups already synced to <Constant name="cloud" /> will become SCIM-managed once you complete the SCIM configuration.
-- (Recommended) Import and manage existing <Constant name="cloud" /> groups and users with Okta's **Import Groups** and **Import Users** features. Update the groups in your IdP with the same naming convention used for <Constant name="cloud" /> groups. New users, groups, and changes to existing profiles will be automatically imported into <Constant name="cloud" />.
+- Users and groups already synced to <Constant name="dbt" /> will become SCIM-managed once you complete the SCIM configuration.
+- (Recommended) Import and manage existing <Constant name="dbt" /> groups and users with Okta's **Import Groups** and **Import Users** features. Update the groups in your IdP with the same naming convention used for <Constant name="dbt" /> groups. New users, groups, and changes to existing profiles will be automatically imported into <Constant name="dbt" />.
     - Ensure the **Import users and profile updates** and **Import Groups** boxes are selected under the **Provisioning settings** tab in the Okta SCIM configuration.
-    - Use **Import Users** to sync all users from <Constant name="cloud" />, including previously deleted users, if you need to re-provision those users. 
+    - Use **Import Users** to sync all users from <Constant name="dbt" />, including previously deleted users, if you need to re-provision those users. 
     - Read more about this feature in the [Okta documentation](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
 
 To set license type for users as they are provisioned, see [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).

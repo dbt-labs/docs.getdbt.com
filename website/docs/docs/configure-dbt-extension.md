@@ -31,7 +31,7 @@ The steps differ slightly depending on whether you use <Constant name="dbt_platf
 In this section, we'll walk you through the steps to prepare your local setup for the dbt VS Code extension. If you're a <Constant name="dbt_platform" /> user that installed the VS Code extension, follow these steps. If you're a self-hosted user, you most likely already have a local setup and environment variables but can confirm using these steps.
 
 1. [Clone](https://code.visualstudio.com/docs/sourcecontrol/overview#_cloning-a-repository) your dbt project repository from your Git provider to your local machine. If you use <Constant name="dbt_platform" />, clone the same repo connected to your project.
-2. Ensure you have a dbt [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml). This file defines your data warehouse connection. If you don't have one, run `dbt init` in the terminal to configure your adapter. 
+2. Ensure you have a dbt [`profiles.yml` file](/docs/local/profiles.yml). This file defines your data warehouse connection. If you don't have one, run `dbt init` in the terminal to configure your adapter. 
 3. Validate your `profiles.yml` and project configuration by running `dbt debug`.
 4. Add a `dbt_cloud.yml` file from the <Constant name="dbt_platform" /> Account settings:
    - Navigate to **Your profile** -> **VS Code Extension** -> **Download credentials**.
@@ -125,7 +125,7 @@ The following steps will explain how to configure environment variables using Po
 
 #### About `.env` file support
 
-The [<Constant name="fusion"/> CLI](/docs/fusion/install-fusion-cli) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions. 
+The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions. 
 
 Here are some considerations when defining environment variables in the `.env` file:
 
@@ -241,7 +241,7 @@ To configure environment variables in the terminal session:
 
 
 ## dbt extension settings
-<!-- moved content from website/docs/docs/fusion/install-fusion-cli.md to here -->
+<!-- moved content from website/docs/docs/local/install-dbt?version=2#get-started.md to here -->
 
 After installing the dbt extension and configuring your local setup, you may want to configure it to better fit your development workflow:
 
