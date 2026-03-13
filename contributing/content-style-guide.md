@@ -65,6 +65,7 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 - Copilot
 
 **Do not capitalize these features:**
+- dbt platform
 - models
 - environments
 - configs
@@ -73,7 +74,7 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 
 ### Third-party brands
 
-Use official branding. Update when vendors rebrand.
+We have many official and unofficial partners in the world of dbt and we must respect their branding. Use official branding. Update when vendors rebrand.
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
@@ -83,7 +84,7 @@ Use official branding. Update when vendors rebrand.
 
 ### Acronyms and initialisms
 
-Use all caps unless another standard exists:
+Use all caps unless another standard exists (such as in code blocks):
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
@@ -94,7 +95,6 @@ Use all caps unless another standard exists:
 
 **Exception:** File extensions use lowercase (`.sql`, `.yml`) or inside code blocks (```yaml)
 
----
 
 ## File and folder structure
 
@@ -128,7 +128,7 @@ Use all caps unless another standard exists:
 | External link | `[Title](https://www.example.com)` |
 | Internal link | `[Title](/docs/folder/file-name)` |
 | Anchor link (same page) | `[Title](#section-name)` |
-| Section link (other page) | `[Title](/docs/folder/file-name#section-name)` |
+| Anchor link (other page) | `[Title](/docs/folder/file-name#section-name)` |
 
 **Valid path prefixes:**
 - `/docs/`
