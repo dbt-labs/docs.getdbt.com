@@ -92,10 +92,24 @@ Connectors allow you to connect your operators to create dbt models. Once you've
 
 Each operator has a configuration side panel that opens when you click on it. The configuration panel allows you to configure the operator, review the current model, preview changes, view the SQL code for the operator, and delete the operator.
 
-The configuration side panel has the following:
-- Configure tab &mdash; This section allows you to configure the operator to your specified requirements, such as using the built-in AI code generator to generate SQL.
-- Input tab &mdash; This section allows you to view the data for the current source table. Not available for model operators.
-- Output tab &mdash; This section allows you to preview the data for the modified source model.
-- Code &mdash; This section allows you to view the underlying SQL code for the data transformation.
+The configuration side panel has the following tabs:
+
+- **Configure** &mdash; Configure the operator to your specified requirements, such as using the built-in AI code generator to generate SQL.
+- **Input** &mdash; View the data for the current source table. Not available for model operators.
+- **Output** &mdash; Preview data results and [profile column details](#output-tab-and-data-profiling) for this operator's transformation.
+- **Code** &mdash; View the underlying SQL code for the data transformation.
 
 <Lightbox src="/img/docs/dbt-cloud/canvas/config-panel.png" width="90%" title="A sleek drag-and-drop canvas interface that allows you to create or modify dbt SQL models." />
+
+### Output tab and data profiling
+
+The **Output** tab is one of the most powerful features in <Constant name="canvas" />, giving you instant visibility into how your data transforms at each step:
+
+- **Row count** &mdash; See the exact number of rows produced by each operator. This helps you immediately identify unexpected data changes, such as:
+  - Row explosion from joins (indicating possible missing join conditions)
+  - Excessive filtering (catching overly restrictive WHERE clauses)
+  - Unexpected duplicates from unions or other operations
+- **Column details** &mdash; View all columns in the output, including their names and data types.
+- **Data preview** &mdash; See sample values from your transformed data without running a full build.
+
+This step-by-step visibility helps you validate transformations as you build, catching issues early in the development process rather than after deployment.
