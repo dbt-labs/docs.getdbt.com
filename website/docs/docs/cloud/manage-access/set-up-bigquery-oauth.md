@@ -228,7 +228,17 @@ When connecting a BigQuery account, you may successfully sign in to Google and a
 
 This can happen when your Google Workspace organization has restricted which third-party applications can access Google services. Even though Google allowed you to sign in and view the consent screen, the organization's security policy blocked the final step of issuing credentials to the <Constant name="dbt_platform" />.
 
-The BigQuery OAuth connection requires access to Google's `bigquery`, `cloud-platform`, and `drive` APIs. Google classifies these as [restricted scopes](https://support.google.com/cloud/answer/9110914), meaning your organization's Google Workspace administrator must explicitly allow the application.
+#### Why this affects BigQuery OAuth
+
+Google classifies OAuth scopes into tiers: non-sensitive, sensitive, and restricted. Applications that only request non-sensitive scopes (such as basic sign-in) typically work without additional admin approval. The BigQuery OAuth connection requires scopes that Google classifies as [restricted](https://support.google.com/cloud/answer/9110914), which always require explicit admin trust regardless of your organization's default policy for third-party apps.
+
+The restricted scopes requested by the BigQuery OAuth connection are:
+
+- `bigquery` — required to run queries and access BigQuery resources
+- `cloud-platform` — required for cross-project BigQuery access and service interoperability
+- `drive` — required to support [BigQuery external tables over Google Drive](https://cloud.google.com/bigquery/docs/external-data-drive)
+
+This is why other applications you use may connect without this approval step — they likely request only non-sensitive or sensitive scopes that don't trigger the same restriction.
 
 #### How to resolve this
 
