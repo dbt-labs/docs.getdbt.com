@@ -80,14 +80,13 @@ data_tests:
 <TabItem value="property-yaml">
 
 ```yaml
-
 <resource_type>:
   - name: <resource_name>
     data_tests:
       - <test_name>: # # Actual name of the test. For example, dbt_utils.equality
           name: # Human friendly name for the test. For example, equality_fct_test_coverage
           [description](/reference/resource-properties/description): "markdown formatting"
-          arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+          arguments: # Available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
             <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [fail_calc](/reference/resource-configs/fail_calc): <string>
@@ -97,14 +96,16 @@ data_tests:
             [warn_if](/reference/resource-configs/severity): <string>
             [store_failures](/reference/resource-configs/store_failures): true | false
             [where](/reference/resource-configs/where): <string>
+            # Available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
+            [sql_header](/reference/resource-configs/sql_header): <string> 
 
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
         data_tests:
           - <test_name>:
-              name: 
+              name:
               [description](/reference/resource-properties/description): "markdown formatting"
-              arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+              arguments: # Available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
                 <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [fail_calc](/reference/resource-configs/fail_calc): <string>
@@ -114,9 +115,13 @@ data_tests:
                 [warn_if](/reference/resource-configs/severity): <string>
                 [store_failures](/reference/resource-configs/store_failures): true | false
                 [where](/reference/resource-configs/where): <string>
+                # Available in v1.12 and higher. Requires enabling the `require_sql_header_in_test_configs` flag.
+                [sql_header](/reference/resource-configs/sql_header): <string> 
 ```
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
+
+Starting in <Constant name="core" /> v1.12, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level of your `properties.yml`. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` in your data tests.
 
 
 </TabItem>
@@ -344,4 +349,28 @@ data_tests:
 </File>
 
 For more information refer to [Add a description to a data test](/reference/resource-properties/description#add-a-description-to-a-data-test).
+
+<VersionBlock firstVersion="1.12">
+
+#### Set `sql_header` in a generic data test
+
+When the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests) flag is enabled, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test so that the specified SQL runs before the test executes (for example, to set session parameters or add a comment):
+
+<File name="models/properties.yml">
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null:
+              name: not_null_orders_order_id
+              config:
+                sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+</File>
+
+</VersionBlock>
 
