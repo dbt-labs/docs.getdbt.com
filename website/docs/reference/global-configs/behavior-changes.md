@@ -81,6 +81,7 @@ flags:
   require_unique_project_resource_names: False
   require_ref_searches_node_package_before_root: False
   require_valid_schema_from_generate_schema_name: False
+  require_sql_header_in_test_configs: False
 ```
 
 </File>
@@ -105,6 +106,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
+| [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 
 #### dbt adapter behavior changes
 
@@ -478,4 +480,30 @@ To resolve this, update your macro to return a valid schema name (`target.schema
 ```
 
 </File>
+
+### `sql_header` in data tests
+
+Set the `require_sql_header_in_test_configs` flag to `True` to enable support for the [`sql_header`](/reference/resource-configs/sql_header) config for generic data tests. When enabled, you can set `sql_header` in the `config` of a generic data test at the model or column level in your `properties.yml` file. You can use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
+
+For example:
+
+<File name="models/properties.yml">
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null:
+              name: not_null_orders_order_id
+              config:
+                sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+</File>
+
+
+
+For more information, refer to [Data test configurations](/reference/data-test-configs).
 
