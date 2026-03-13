@@ -41,17 +41,15 @@ To create a dbt SQL model, click on **Create a new model** and perform the follo
 
 <Constant name="canvas" /> lets you inspect your data at every transformation step, making it easy to build confidence in your models before deploying them:
 
-1. **Check row counts** &mdash; After adding each operator, click on it and view the **Output** tab to see the row count. This immediately reveals:
+- **Check row counts:** After adding each operator, click on it and view the **Output** tab to see the row count. This immediately reveals:
    - Joins that unexpectedly multiply rows (possible missing join keys)
    - Filters that remove too much data (overly restrictive conditions)
    - Aggregations that produce unexpected groupings
-
-2. **Review column output** &mdash; The Output tab displays all columns with their data types, helping you verify that:
+- **Review column output:** The Output tab displays all columns with their data types, helping you verify that:
    - Expected columns are present after joins or transformations
    - Data types are correct (especially after formulas or aggregations)
    - Column names are as expected
-
-3. **Preview sample data** &mdash; View actual data values to confirm your transformations work correctly before running a full build.
+- **Preview sample data:** View actual data values to confirm your transformations work correctly before running a full build.
 
 This step-by-step validation helps you catch issues early and understand exactly how each operator transforms your data.
 
