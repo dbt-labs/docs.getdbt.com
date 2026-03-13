@@ -15,13 +15,6 @@ keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 
 <Constant name="copilot" /> embeds AI-driven assistance across every stage of the [analytics development life cycle (ADLC)](https://www.getdbt.com/resources/guides/the-analytics-development-lifecycle) and harnesses rich metadata—capturing relationships, lineage, and context  &mdash; so you can deliver refined, trusted data products at speed.
 
-<Constant name="copilot" /> includes:
-
-- [**dbt Agents**](/docs/dbt-ai/dbt-agents) &mdash; Autonomous agents like the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and [Analyst agent](/docs/dbt-ai/analyst-agent) that build, refactor, and validate models, generate [documentation](/docs/build/documentation), [tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), [semantic models](/docs/build/semantic-models), and answer data questions &mdash; all from natural language prompts. <Lifecycle status="beta,managed,managed_plus" />
-- [**Inline editing**](/docs/cloud/use-dbt-copilot) &mdash; Generate and edit SQL directly in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), build visual models in the [<Constant name="canvas" />](/docs/cloud/build-canvas-copilot), and query data in [<Constant name="insights" />](/docs/explore/dbt-insights).
-
-To learn about prompt best practices, check out the [Prompt cookbook](/guides/prompt-cookbook).
-
 :::tip
 <Constant name="copilot" /> is available on Starter, Enterprise, and Enterprise+ accounts. [Book a demo](https://www.getdbt.com/contact) to see how AI-driven development can streamline your workflow.
 :::

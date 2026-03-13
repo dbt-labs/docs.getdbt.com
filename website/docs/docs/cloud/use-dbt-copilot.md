@@ -15,14 +15,13 @@ Use <Constant name="copilot" /> to generate documentation, tests, semantic model
 
 </IntroText>
 
-This page covers <Constant name="copilot" />'s inline AI features:
+<Constant name="copilot" /> includes the following capabilities:
 
-- [Generate resources](#generate-resources) &mdash; Save time by using <Constant name="copilot" />'s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
-- [Generate and edit SQL inline](#generate-and-edit-sql-inline) &mdash; Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
-- [Build visual models](#build-visual-models) &mdash; Use <Constant name="copilot" /> to generate models in [<Constant name="canvas" />](/docs/cloud/use-canvas) with natural language prompts.
-- [Build queries](#build-queries) &mdash; Use <Constant name="copilot" /> to generate queries in [<Constant name="insights" />](/docs/explore/dbt-insights) for exploratory data analysis using natural language prompts.
-
-<Constant name="copilot" /> also supports autonomous, multi-step workflows &mdash; like building new models end-to-end, refactoring existing models, or analyzing data with natural language &mdash; see [dbt Agents](/docs/dbt-ai/dbt-agents). Agents like the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and [Analyst agent](/docs/dbt-ai/analyst-agent) are available in the same Copilot panel.
+- [Generate resources](#generate-resources): Save time by using <Constant name="copilot" />'s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+- [Generate and edit SQL inline](#generate-and-edit-sql-inline): Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+- [Build visual models](#build-visual-models): Use <Constant name="copilot" /> to generate models in [<Constant name="canvas" />](/docs/cloud/use-canvas) with natural language prompts.
+- [Build queries](#build-queries): Use <Constant name="copilot" /> to generate queries in [<Constant name="insights" />](/docs/explore/dbt-insights) for exploratory data analysis using natural language prompts.
+- [dbt Agents](/docs/dbt-ai/dbt-agents): Delegate entire tasks like building new models end-to-end, refactoring existing models, or analyzing data with natural language &mdash; reducing context-switching and letting you stay in flow. Agents like the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and [Analyst agent](/docs/dbt-ai/analyst-agent) are available in the same <Constant name="copilot" /> panel.
 
 :::tip
 Check out our [dbt Copilot on-demand course](https://learn.getdbt.com/learn/course/dbt-copilot/welcome-to-dbt-copilot/welcome-5-mins) to learn how to use <Constant name="copilot" /> to generate resources, and more!

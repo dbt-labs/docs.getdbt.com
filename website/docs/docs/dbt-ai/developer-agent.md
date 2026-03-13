@@ -11,18 +11,17 @@ import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 # Developer agent <Lifecycle status="beta,managed,managed_plus"/>
 
 <IntroText>
-The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />, purpose-built to streamline the developer experience. As an agentic capability within <Constant name="copilot" />, it can write, refactor, and validate dbt models using your project's structured context &mdash; including lineage, metadata, governance, and the <Constant name="semantic_layer" />.
+The <Constant name="dev_agent" /> is the next evolution of <Constant 
+name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Generate or refactor models, tests, and documentation from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
 </IntroText>
 
-While <Constant name="copilot" /> is the AI-powered product surface you interact with across the <Constant name="dbt_platform" />, the <Constant name="dev_agent" /> is the DevEx-focused workflow within it &mdash; designed to help you move faster by generating or refactoring models, tests, and documentation from natural language prompts, while keeping every change auditable and aligned with your dbt project.
-
-The <Constant name="dev_agent" /> supports the following use cases:
+Use the <Constant name="dev_agent" /> to:
 
 - **Generate semantic models, tests, and docs**: Scaffold YAML definitions from existing models and save time on manual setup.
-- **Build or modify models**: Create new or modify existing dbt models from natural language descriptions of the transformation or logic you need.
-- **Light refactors**: Rename columns, change materializations, or adjust logic. The agent also keeps associated YAML files in sync with any changes it makes.
+- **Build or modify models**: Create or update dbt models from natural language descriptions of the transformation or logic you need.
+- **Light refactors**: Rename columns, change materializations, or adjust logic. The agent keeps associated YAML files in sync.
 
-The <Constant name="dev_agent" /> always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) &mdash; a curated collection of instructions and scripts managed by dbt Labs covering analytics engineering, semantic layer, testing, platform operations, and more. These skills are available to the agent out of the box, so you don't need to configure or maintain them! 🎉
+The agent always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions managed by dbt Labs. These skills are available out of the box &mdash; no configuration needed! 🎉
 
 ## Prerequisites
 
@@ -75,13 +74,13 @@ The <Constant name="dev_agent" /> operates in two modes:
 | Mode | Behavior |
 |------|----------|
 | **Ask** (default) | The agent drafts edits to files. You must approve each file change before it is persisted. Best when you want tight control over what gets saved to your branch. |
-| **Code** | The agent drafts and automatically edits files without per-file approval. Best for faster iteration when you're confident in the prompt. |
-
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask mode, requesting approval before persisting file edits." />
-
+| **Code** | The agent drafts and automatically edits files without per-file approval. Best for faster iteration when you're confident in the prompt. | 
 </SimpleTable>
 
-You can switch between modes at any time.
+You can switch between modes at any time by clicking the **Agent mode** button in the <Constant name="copilot" /> panel.
+
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask mode, requesting approval before making file edits." />
+
 
 #### Reviewing agent suggestions
 
