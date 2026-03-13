@@ -8,7 +8,7 @@ pagination_prev: null
 
 Learn about versioning for the <Constant name="core"/> engine (Python-based CLI). If you run the <Constant name="core"/> engine locally (for example, using `pip`), then this page is for you. <Constant name="core"/> releases follow [semantic versioning](https://semver.org/).
 
-If you're using <Constant name="dbt_platform" /> (including the <Constant name="cloud_cli"/>, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features before they’re available in <Constant name="core" />.
+If you're using <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>, you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features before they’re available in <Constant name="core" />.
 
 :::note
 If you want to use the <Constant name="fusion_engine"/>, locally or in <Constant name="dbt_platform"/>, then read [Get Started](/docs/local/install-dbt?version=2).
@@ -22,13 +22,13 @@ If you manage your own <Constant name="core" /> versions locally, read on. <Cons
 
 ### Further reading
 
-- [Choosing a <Constant name="core" /> version in <Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how you can use <Constant name="core" /> versions in <Constant name="cloud" />.
+- [Choosing a <Constant name="core" /> version in <Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how you can use <Constant name="core" /> versions in <Constant name="dbt" />.
 - [How to install <Constant name="core" />](/docs/local/install-dbt): Learn about installing <Constant name="core" />.
 - [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version): Restrict your project to only work with a range of <Constant name="core" /> versions, or use the currently running version.
 
 ## End-of-life versions
 
-Once a <Constant name="core" /> version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="cloud" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
+Once a <Constant name="core" /> version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
 
@@ -37,7 +37,7 @@ dbt supports each minor version (for example, v1.8) for _one year_ from its init
 After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window. After the one-year window ends, the version reaches **end of life** and no longer receives patches.
 
 While a minor version is officially supported:
-- You can use it in <Constant name="cloud" />. For more on <Constant name="cloud" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- You can use it in <Constant name="dbt" />. For more on <Constant name="dbt" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - You can select it from the version dropdown on this website, to see documentation that is accurate for use with that minor version.
 
 For upcoming releases, refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones).
