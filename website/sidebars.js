@@ -36,7 +36,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/access-regions-ip-addresses",
         "docs/cloud/about-cloud/tenancy",
       ],
-    }, // About dbt Cloud directory
+    }, // About dbt platform directory
     {
       type: "category",
       label: "Supported data platforms",
