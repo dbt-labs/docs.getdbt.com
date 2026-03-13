@@ -568,6 +568,8 @@ Callout content here.
 
 ## Contributing
 
+Your feedback helps drive us forward. At dbt Labs, we want you to get involved if you see areas in the documentation that need improvement. That might include becoming a docs contributor or simply filing a GitHub issue so we know where to look. We have an incredible community of contributors, and our documents reflect that.
+
 Your feedback improves these docs. To contribute:
 - File a [GitHub issue](https://github.com/dbt-labs/docs.getdbt.com/issues)
 - Submit a pull request
