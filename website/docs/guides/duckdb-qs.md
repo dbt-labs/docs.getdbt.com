@@ -233,7 +233,7 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 </Tabs>
 
 
-## Verify local storage
+## Local storage
 
 DuckDB stores your data in a local `.duckdb` file on your machine. The location of this file is defined by the `path` field in your [`profiles.yml`](/docs/local/profiles.yml).
 
