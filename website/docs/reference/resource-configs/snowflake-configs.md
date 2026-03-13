@@ -385,7 +385,7 @@ Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.
 
 ### Transient (dynamic tables)
 
-The Snowflake adapter supports creating [transient dynamic tables](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table), which are created without a [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe) and can reduce storage costs. To create a dynamic table as transient, set `transient: true` in the model configuration.
+You can create dynamic tables as transient to reduce storage costs. Transient dynamic tables do not use Snowflake's [Fail-safe](https://docs.snowflake.com/en/user-guide/data-failsafe) period, so they consume less storage than permanent dynamic tables. To create a dynamic table as transient, set `transient: true` in the model configuration.
 
 If you want all dynamic tables to be transient by default (without setting `transient: true` on each one), enable the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag in your `dbt_project.yml`. This flag defaults to `False`, meaning dynamic tables are created as permanent by default.
 
