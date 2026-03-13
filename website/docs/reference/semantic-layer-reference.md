@@ -9,7 +9,7 @@ keywords:
   - dimensions configuration
 ---
 
-You can use this <Constant name="semantic_layer" /> configuration reference to learn about every property and option for semantic models, metrics, and dimensions that belong to the full YAML spec.
+The <Constant name="semantic_layer" /> YAML spec defines every property and option for semantic models, metrics, and dimensions. Use it when you need the complete, authoritative list of what you can configure. For example, configurations when defining new objects, validating YAML, or troubleshooting config errors.
 
 Because this reference provides information about both the *latest spec* (model-embedded) and the *legacy spec* (standalone YAML), you'll need to select the appropriate version from the version picker. [Read the build docs](/docs/build/semantic-models) to find out which applies to your environment. To convert from the legacy spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
@@ -20,7 +20,7 @@ import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability
 
 ## Property reference
 
-Read the full property reference for each resource. Use the version picker on each page to see *latest spec (model YAML)* or *legacy spec (standalone YAML)* content:
+The property reference pages document each resource type in detail so you can look up allowed values, syntax, and behavior for every property in the full YAML spec. Use the version picker on each page to see *latest spec (model YAML)* or *legacy spec (standalone YAML)* content:
 
 - [Semantic model properties](/reference/semantic-model-properties)
 - [Metric properties](/reference/metric-properties)
