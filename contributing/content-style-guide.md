@@ -92,7 +92,7 @@ Use all caps unless another standard exists:
 | json | JSON |
 | DBT | dbt |
 
-**Exception:** File extensions use lowercase (`.sql`, `.yml`).
+**Exception:** File extensions use lowercase (`.sql`, `.yml`) or inside code blocks (```yaml)
 
 ---
 
