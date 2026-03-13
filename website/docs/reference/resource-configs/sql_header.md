@@ -21,7 +21,7 @@ The primary function of `set_sql_header` is fairly limited. It's intended to:
     { label: 'Models', value: 'models', },
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
-    { label: 'Properties YAML file', value: 'properties', },
+    { label: 'Property file', value: 'property-yaml', },
   ]
 }>
 <TabItem value="models">
