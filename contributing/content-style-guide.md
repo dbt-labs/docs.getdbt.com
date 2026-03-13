@@ -403,7 +403,7 @@ Explain placeholders in the preceding paragraph.
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| `https://docs.getdbt.com` | [dbt Labs docs](https://docs.getdbt.com) |
+| `https://some.site.com` | [Some site](https://some.site.com) |
 | [Click here](url) | [dbt Labs docs](url) |
 | Visit our website | Read the [setup guide](/docs/setup) |
 
