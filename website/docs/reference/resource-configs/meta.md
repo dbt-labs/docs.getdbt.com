@@ -212,6 +212,8 @@ The `meta` config is not currently supported for analyses.
 
 <TabItem value="macros">
 
+You can set `meta` at the top level or under `config` for macros. When both are provided, dbt merges the values, with `config` taking precedence for overlapping keys. For more information, refer to [Macro properties](/reference/macro-properties).
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -224,15 +226,16 @@ macros:
 <File name='macros/schema.yml'>
 
 ```yml
-
 [macros](/reference/macro-properties):
-  - name: macro_name
-    config:
-      meta: {<dictionary>} # changed to config in v1.10
-
+  - name: macro_top_level
+    meta: {<dictionary>}
     arguments:
       - name: argument_name
-
+  - name: macro_with_config
+    config:
+      meta: {<dictionary>}
+    arguments:
+      - name: argument_name
 ```
 
 </File>

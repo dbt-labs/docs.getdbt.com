@@ -142,18 +142,21 @@ analyses:
 
 <TabItem value="macros">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more info.
+You can set `docs` at the top level or under `config` for macros. When both are provided, dbt merges the values, with `config` taking precedence for overlapping keys. The `docs` property is not available for macros in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more information.
 
 <File name='macros/schema.yml'>
 
 ```yml
-
 macros:
-  - name: macro_name
+  - name: macro_top_level
+    docs:
+      show: true | false
+  - name: macro_with_config
     config:
-      docs: # changed to config in v1.10
+      docs:
         show: true | false
 ```
+
 </File>
 
 </TabItem>
