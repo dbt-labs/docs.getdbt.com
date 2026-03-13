@@ -70,7 +70,6 @@ flags:
   require_explicit_package_overrides_for_builtin_materializations: True
   require_resource_names_without_spaces: True
   source_freshness_run_project_hooks: True
-  restrict_direct_pg_catalog_access: False
   skip_nodes_if_on_run_start_fails: False
   state_modified_compare_more_unrendered_values: False
   require_yaml_configuration_for_mf_time_spines: False
@@ -83,6 +82,7 @@ flags:
   require_ref_searches_node_package_before_root: False
   require_valid_schema_from_generate_schema_name: False
   enable_truthy_nulls_equals_macro: False
+  require_sql_header_in_test_configs: False
 ```
 
 </File>
@@ -108,6 +108,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
+| [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 
 
 #### dbt adapter behavior changes
@@ -121,10 +122,11 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [use_managed_iceberg](/reference/global-configs/databricks-changes#use-managed-iceberg)  | Databricks 1.11.0  |  1.12.0                                                     | - |
 | [use_materialization_v2](/reference/global-configs/databricks-changes#use-restructured-materializations)      | Databricks 1.10.0                  | TBD| - |
 | [use_replace_on_for_insert_overwrite](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy)   | Databricks 1.11.0  | 1.11.0  | - |
-| [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) | Redshift 1.9.0 | TBD | - |
+| [enable_truthy_nulls_equals_macro](/reference/global-configs/snowflake-changes#the-enable_truthy_nulls_equals_macro-flag) | Snowflake 1.9.0 | TBD | - |
 | [redshift_skip_autocommit_transaction_statements](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) | Redshift 1.12.0 | TBD | - |
 | [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | TBD | - |
 | [bigquery_reject_wildcard_metadata_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) | BigQuery 1.12.0 | TBD | - |
+| [snowflake_default_transient_dynamic_tables](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) | Snowflake 1.12.0 | TBD | - |
 
 When the <Constant name="dbt" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 
@@ -500,4 +502,30 @@ To resolve this, update your macro to return a valid schema name (`target.schema
 ```
 
 </File>
+
+### `sql_header` in data tests
+
+Set the `require_sql_header_in_test_configs` flag to `True` to enable support for the [`sql_header`](/reference/resource-configs/sql_header) config for generic data tests. When enabled, you can set `sql_header` in the `config` of a generic data test at the model or column level in your `properties.yml` file. You can use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
+
+For example:
+
+<File name="models/properties.yml">
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null:
+              name: not_null_orders_order_id
+              config:
+                sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+</File>
+
+
+
+For more information, refer to [Data test configurations](/reference/data-test-configs).
 
