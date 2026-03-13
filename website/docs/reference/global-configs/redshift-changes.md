@@ -6,9 +6,11 @@ sidebar: "Redshift"
 
 The following are the current [behavior change flags](/docs/reference/global-configs/behavior-changes.md#behavior-change-flags) that are specific to `dbt-redshift`:
 
+<SimpleTable>
 | Flag                          | `dbt-redshift`: Intro | `dbt-redshift`: Maturity | Status |
 | ----------------------------- | --------------------- | ------------------------ | ------ |
 | [`redshift_skip_autocommit_transaction_statements`](#redshift_skip_autocommit_transaction_statements-flag) | 1.12.0 | TBD | Active |
+</SimpleTable>
 
 <!--
 ## `restrict_direct_pg_catalog_access` flag
