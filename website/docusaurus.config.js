@@ -371,6 +371,11 @@ var siteSettings = {
     [
       "@signalwire/docusaurus-plugin-llms-txt",
       {
+        generate: {
+          enableMarkdownFiles: true,
+          enableLlmsFullTxt: true,
+          relativePaths: false,
+        },
         processing: {
           beforeDefaultRehypePlugins: [rehypeCodeLanguage],
         },
