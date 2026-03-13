@@ -5,11 +5,27 @@ id: "statement-blocks"
 description: "SQL queries that hit database and return results to your Jinja context."
 ---
 
+<VersionBlock lastVersion="1.99">
+
 :::tip Recommendation
 
 We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_query) instead of `statement` blocks. The `run_query` macro provides a more convenient way to run queries and fetch their results by wrapping `statement` blocks. You can use this macro to write more concise code that is easier to maintain.
 
 :::
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+:::tip When to use statement blocks in Fusion
+
+For queries where you need to fetch results, you can use either `statement` blocks with `fetch_result=True` or the [`run_query` macro](/reference/dbt-jinja-functions/run_query).
+
+For DDL or utility operations (like `OPTIMIZE`, `VACUUM`, or maintenance queries) where you don't need the result set, use `statement` blocks with `fetch_result=False`. This avoids issues with <Constant name="fusion" />'s strict type checking, which can fail when processing result sets that contain null values in columns declared as non-nullable.
+
+:::
+
+</VersionBlock>
 
 `statement`s are SQL queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
 
@@ -107,3 +123,45 @@ The contents of the returned `data` field is a matrix. It contains a list rows, 
 ```
 
 </File>
+
+<VersionBlock firstVersion="2.0">
+
+## Fire and forget operations
+
+For DDL or utility operations where you don't need the result set, set `fetch_result=False`. This is the recommended pattern for operations like `OPTIMIZE` or `VACUUM` on Databricks, which return result sets that may contain null values in non-nullable columns.
+
+<File name='macros/optimize_table.sql'>
+
+```jinja
+{% macro optimize_table(table, zorder_fields=[]) %}
+  {% set zorder_str = zorder_fields | join(', ') %}
+
+  {% set query %}
+    OPTIMIZE {{ table }}
+    {% if zorder_str | length > 0 %}
+      ZORDER BY ({{ zorder_str }})
+    {% endif %}
+  {% endset %}
+
+  {% call statement('optimize', fetch_result=False) %}
+    {{ query }}
+  {% endcall %}
+{% endmacro %}
+```
+
+</File>
+
+You can use this macro in a post-hook:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    +post-hook:
+      - "{{ optimize_table(this, ['customer_id', 'order_date']) }}"
+```
+
+</File>
+
+</VersionBlock>
