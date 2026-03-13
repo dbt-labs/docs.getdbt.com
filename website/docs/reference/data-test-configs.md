@@ -121,7 +121,7 @@ data_tests:
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
 
-Starting <Constant name="core" /> v1.12, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level of your `properties.yml`. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` in your data tests.
+Starting in <Constant name="core" /> v1.12, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level of your `properties.yml`. Enable the [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-test-configs) flag to use `config.sql_header` in your data tests.
 
 
 </TabItem>
