@@ -101,7 +101,7 @@ Use all caps unless another standard exists:
 ### File naming rules
 
 1. Use lowercase with hyphens (`kebab-case`)
-2. Keep names short—they appear in the URL
+2. Keep names short. They appear in the URL
 3. Be descriptive but concise
 4. Avoid redundant words
 
@@ -115,7 +115,7 @@ Use all caps unless another standard exists:
 - Edit `sidebar.js` only when adding or removing pages
 - The left sidebar (leftbar) is defined in `sidebar.js`
 - The right sidebar (page TOC) generates automatically from H2 (##) and H3 (###) headings
-- Expect merge conflicts in `sidebar.js`—review carefully and accept other contributors' changes
+- Expect merge conflicts in `sidebar.js`. Review carefully and accept other contributors' changes
 
 ---
 
@@ -127,7 +127,7 @@ Use all caps unless another standard exists:
 |---------|--------|
 | External link | `[Title](https://www.example.com)` |
 | Internal link | `[Title](/docs/folder/file-name)` |
-| Section link (same page) | `[Title](#section-name)` |
+| Anchor link (same page) | `[Title](#section-name)` |
 | Section link (other page) | `[Title](/docs/folder/file-name#section-name)` |
 
 **Valid path prefixes:**
