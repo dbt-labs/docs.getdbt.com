@@ -11,18 +11,18 @@ The following fields are required when creating a connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [set up pages](/docs/core/connect-data-platform/about-core-connections) to find the hostname for your adapter. | Postgres: `xxx.us-east-1.amazonaws.com` |
+| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to the [set up pages](/docs/local/connect-data-platform/about-dbt-connections) for adapter-specific details. | Postgres: `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
-**Note**: When you set up a Postgres connection in <Constant name="cloud" />, SSL-related parameters aren't available as inputs. 
+**Note**: When you set up a Postgres connection in <Constant name="dbt" />, SSL-related parameters aren't available as inputs. 
 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Postgres connection"/>
 
 ### Authentication Parameters
 
-For authentication, <Constant name="cloud" /> users can use **Database username and password** for Postgres and Postgres-compatible databases. For more information on what is supported, check out the database specific setup page for limitations and helpful tips. 
+For authentication, <Constant name="dbt" /> users can use **Database username and password** for Postgres and Postgres-compatible databases. For more information on what is supported, check out the database specific setup page for limitations and helpful tips. 
 
 The following table contains the parameters for the database (password-based) connection method.
 
@@ -51,13 +51,13 @@ When setting up a database connection using an SSH tunnel, you need the followin
 - A bastion host (or jump server) that runs the SSH protocol, acting as a secure entry point.
 - The database itself (such as a Postgres cluster).
 
-<Constant name="cloud" /> uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
+<Constant name="dbt" /> uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
 
 Tunnel failures usually happen because:
 
 - The SSH daemon times out if it's idle for too long.
 - The load balancer cuts off the connection if it's idle.
-- <Constant name="cloud" /> tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
+- <Constant name="dbt" /> tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
 
 Bastion hosts might have additional SSH settings to disconnect inactive clients after several checks without a response. By default, it checks three times.
 

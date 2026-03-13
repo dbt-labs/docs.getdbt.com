@@ -49,7 +49,6 @@ This credential controls the physical access to underlying data accessed by the 
 ##### 2. Configure credential
    - In the **1. Add credentials** section, enter the credentials specific to your data platform that you want the Semantic Layer to use.
    - Use credentials with minimal privileges. The Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
-   - For BigQuery, you can use [Workload Identity Federation with external OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation) for Semantic Layer queries.
    - <SLEnvVars/>
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.png" width="55%" title="Add credentials and map them to a service token. " />
@@ -64,7 +63,7 @@ This credential controls the physical access to underlying data accessed by the 
 - Starter plans can create multiple service tokens that link to a single underlying credential, but each project can only have one credential.
 - All Enterprise plans can [add multiple credentials](#4-add-more-credentials) and map those to service tokens for tailored access.
 
-<a href="https://www.getdbt.com/contact">Book a free live demo</a> to discover the full potential of <Constant name="cloud" /> Enterprise and higher plans.
+<a href="https://www.getdbt.com/contact">Book a free live demo</a> to discover the full potential of <Constant name="dbt" /> Enterprise and higher plans.
 :::
 
 #### Configure development credentials and create a personal token
@@ -92,7 +91,7 @@ You can use the generated PAT as the authentication method for <Constant name="s
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.png" width="50%" title="After configuring, you'll be provided with the connection details to connect to you downstream tools." />
 
 ### 4. Add more credentials <Lifecycle status="managed_plus,managed" />
-All <Constant name="cloud" /> Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams, which can then be shared to relevant teams for BI connection setup. These credentials control the physical access to underlying data accessed by the Semantic Layer.
+All <Constant name="dbt" /> Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams, which can then be shared to relevant teams for BI connection setup. These credentials control the physical access to underlying data accessed by the Semantic Layer.
 
 We recommend configuring credentials and service tokens to reflect your teams and their roles. For example, create tokens or credentials that align with your team's needs, such as providing access to finance-related schemas to the Finance team.
 
@@ -109,7 +108,7 @@ We recommend configuring credentials and service tokens to reflect your teams an
    <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.png" width="55%" title="Add credentials and map them to a service token. " />
 
 #### 2. Map service tokens to credentials
-- In the **2. Map new service token** section, [map a service token to the credential](/docs/use-dbt-semantic-layer/setup-sl#map-service-tokens-to-credentials) you configured in the previous step. <Constant name="cloud" /> automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
+- In the **2. Map new service token** section, [map a service token to the credential](/docs/use-dbt-semantic-layer/setup-sl#map-service-tokens-to-credentials) you configured in the previous step. <Constant name="dbt" /> automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
 - To add another service token during configuration, click **Add Service Token**. 
 - You can link more service tokens to the same credential later on in the **Semantic Layer Configuration Details** page. To add another service token to an existing Semantic Layer configuration, click **Add service token** under the **Linked service tokens** section.
 - Click **Save** to link the service token to the credential. Remember to copy and save the service token securely, as it won't be viewable again after generation.

@@ -6,11 +6,11 @@ id: "set-up-databricks-oauth"
 
 # Set up Databricks OAuth <Lifecycle status="managed, managed_plus" />
 
-<Constant name="cloud" /> supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for dbt enterprise users. When you enable Databricks OAuth for a <Constant name="cloud" /> project, all <Constant name="cloud" /> developers must authenticate with Databricks in order to use the <Constant name="cloud_ide" />. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
+<Constant name="dbt" /> supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for dbt enterprise users. When you enable Databricks OAuth for a <Constant name="dbt" /> project, all <Constant name="dbt" /> developers must authenticate with Databricks in order to use the <Constant name="studio_ide" />. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
 
 
 Current limitation:
-- The current experience requires the <Constant name="cloud_ide" /> to be restarted every hour (access tokens expire after 1 hour - [workaround](https://docs.databricks.com/en/integrations/manage-oauth.html#override-the-default-token-lifetime-policy-for-dbt-core-power-bi-or-tableau-desktop))
+- The current experience requires the <Constant name="studio_ide" /> to be restarted every hour (access tokens expire after 1 hour - [workaround](https://docs.databricks.com/en/integrations/manage-oauth.html#override-the-default-token-lifetime-policy-for-dbt-core-power-bi-or-tableau-desktop))
  
 
 ### Configure Databricks OAuth (Databricks admin)
@@ -31,7 +31,7 @@ To get started, you will need to [add dbt as an OAuth application](https://docs.
    - The refresh token time-to-live (TTL) in minutes. Default: 10080.
 4. Select **Generate a client secret**. Copy and securely store the client secret. The client secret will not be available later.
 
-You can use the following table to set up the redirect URLs for your application with <Constant name="cloud" />:
+You can use the following table to set up the redirect URLs for your application with <Constant name="dbt" />:
 
 | Region | Redirect URLs |
 | ------ | ----- |
@@ -44,9 +44,9 @@ You can use the following table to set up the redirect URLs for your application
 
 ### Configure the Connection in dbt (dbt project admin)
 
-Now that you have an OAuth app set up in Databricks, you'll need to add the client ID and secret to <Constant name="cloud" />. To do so:
+Now that you have an OAuth app set up in Databricks, you'll need to add the client ID and secret to <Constant name="dbt" />. To do so:
 
-1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
+1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 2. Select **Projects** from the menu.
 3. Choose your project from the list.
 4. Click **Connections** and select the Databricks connection.
@@ -57,9 +57,9 @@ Now that you have an OAuth app set up in Databricks, you'll need to add the clie
 
 ### Authenticating to Databricks (Studio IDE developer)
 
-Once the Databricks connection via OAuth is set up for a <Constant name="cloud" /> project, each <Constant name="cloud" /> user will need to authenticate with Databricks in order to use the <Constant name="cloud_ide" />. To do so:
+Once the Databricks connection via OAuth is set up for a <Constant name="dbt" /> project, each <Constant name="dbt" /> user will need to authenticate with Databricks in order to use the <Constant name="studio_ide" />. To do so:
 
-1. From <Constant name="cloud" />, click on your account name in the left side menu and select **Account settings**.
+1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 2. Under **Your profile**, select **Credentials**.
 3. Choose your project from the list and click **Edit**.
 4. Select `OAuth` as the authentication method, and click **Save**.
@@ -67,4 +67,4 @@ Once the Databricks connection via OAuth is set up for a <Constant name="cloud" 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth-user.png" title="Connecting to Databricks from an IDE user profile" />
 
-You will then be redirected to Databricks and asked to approve the connection. This redirects you back to <Constant name="cloud" />. You should now be an authenticated Databricks user, ready to use the <Constant name="cloud_ide" />.
+You will then be redirected to Databricks and asked to approve the connection. This redirects you back to <Constant name="dbt" />. You should now be an authenticated Databricks user, ready to use the <Constant name="studio_ide" />.

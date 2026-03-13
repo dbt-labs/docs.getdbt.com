@@ -8,7 +8,7 @@ If you're receiving a `Failed ALPN` error when trying to connect the dbt Semanti
 
 The root cause is typically the proxy interfering with the TLS handshake as the <Constant name="semantic_layer" /> uses gRPC/HTTP2 for connectivity. To resolve this:
 
-- If your proxy supports gRPC/HTTP2 but isn't configured to allow ALPN, adjust its settings accordingly to allow ALPN. Or create an exception for the <Constant name="cloud" /> domain.
-- If your proxy does not support gRPC/HTTP2, add an SSL interception exception for the <Constant name="cloud" /> domain in your proxy settings
+- If your proxy supports gRPC/HTTP2 but isn't configured to allow ALPN, adjust its settings accordingly to allow ALPN. Or create an exception for the <Constant name="dbt" /> domain.
+- If your proxy does not support gRPC/HTTP2, add an SSL interception exception for the <Constant name="dbt" /> domain in your proxy settings
 
 This should help in successfully establishing the connection without the Failed ALPN error.
