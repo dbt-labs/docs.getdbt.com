@@ -32,5 +32,4 @@ Some adapters can display behavior changes when certain flags are enabled. The f
     body="Behavior changes for the Snowflake adapter."
     link="reference/global-configs/snowflake-changes"
     icon="snowflake"/>
-
 </div>
