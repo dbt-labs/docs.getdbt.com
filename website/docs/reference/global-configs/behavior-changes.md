@@ -107,7 +107,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
-| [require_sql_header_in_test_configs](#sql_header-in-data-tests) | TBD* | TBD* | 1.12.0 | TBD* | - |
+| [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 
 #### dbt adapter behavior changes
 
