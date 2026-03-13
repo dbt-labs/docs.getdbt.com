@@ -30,6 +30,20 @@ The following tools integrate with the dbt Semantic Layer:
 
   <div className="card-container">
     <Card
+      title="Omni"
+      link="https://docs.omni.co/integrations/dbt/semantic-layer"
+      body="Connect Omni to the dbt Semantic Layer to query trusted metrics directly within your Omni data model."
+      icon="omni"/>
+      <a href="https://docs.omni.co/integrations/dbt/semantic-layer"
+      className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <Icon name='fa-external-link' />
+    </a>
+  </div>
+
+  <div className="card-container">
+    <Card
       title="Dot"
       link="https://docs.getdot.ai/dot/integrations/dbt-semantic-layer"
       body="Enable everyone to analyze data with AI in Slack or Teams."

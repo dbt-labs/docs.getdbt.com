@@ -10,11 +10,11 @@ pagination_prev: null
 
 <IntroText>
 
-Use <Constant name="cloud" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="cloud" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
+Use <Constant name="dbt" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="dbt" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
 
 </IntroText>
 
-The <Constant name="dbt_platform" /> offers the easiest and most reliable way to run your dbt project in production. Effortlessly promote high quality code from development to production and build fresh data assets that your business intelligence tools and end users query to make business decisions. <Term id="deploying">Deploying</Term> with <Constant name="cloud" /> lets you:
+The <Constant name="dbt_platform" /> offers the easiest and most reliable way to run your dbt project in production. Effortlessly promote high quality code from development to production and build fresh data assets that your business intelligence tools and end users query to make business decisions. <Term id="deploying">Deploying</Term> with <Constant name="dbt" /> lets you:
 - Keep production data fresh on a timely basis
 - Ensure CI and production pipelines are efficient 
 - Identify the root cause of failures in deployment environments
@@ -22,12 +22,12 @@ The <Constant name="dbt_platform" /> offers the easiest and most reliable way to
 - Gain visibility into the [health](/docs/explore/data-tile) of deployment jobs, models, and tests
 - Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
 - [Visualize](/docs/cloud-integrations/downstream-exposures-tableau) and [orchestrate](/docs/cloud-integrations/orchestrate-exposures) downstream exposures to understand how models are used in downstream tools and proactively refresh the underlying data sources during scheduled dbt jobs. <Lifecycle status="managed,managed_plus" />
-- Use [<Constant name="cloud" />'s Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
-- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="cloud" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="managed_plus" /> <Lifecycle status="Preview"/>
+- Use [<Constant name="dbt" />'s Git repository caching](/docs/cloud/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
+- Use [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="dbt" /> artifacts into the <Constant name="dbt_platform" /> for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="managed_plus" /> <Lifecycle status="Preview"/>
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
-Learn how to use <Constant name="cloud" />'s features to help your team ship timely and quality production data more easily.
+Learn how to use <Constant name="dbt" />'s features to help your team ship timely and quality production data more easily.
 ## Deploy with dbt
 
 <div className="grid--3-col">
@@ -155,7 +155,7 @@ Learn how to use <Constant name="cloud" />'s features to help your team ship tim
 
 ## Run dbt in production
 
-If you want to run dbt jobs on a schedule, you can use tools such as <Constant name="cloud" />, Airflow, Prefect, Dagster, automation server, or Cron.-->
+If you want to run dbt jobs on a schedule, you can use tools such as <Constant name="dbt" />, Airflow, Prefect, Dagster, automation server, or Cron.-->
 
 ## Related docs
 

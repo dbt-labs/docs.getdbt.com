@@ -12,13 +12,13 @@ image: /img/docs/dbt-cloud/canvas/canvas.png
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 
-The <Constant name="visual_editor" /> interface contains an operator toolbar, operators, canvas, built-in AI, and more to help you access and transform data through a seamless drag-and-drop dbt model creation experience in <Constant name="cloud" />.
+The <Constant name="canvas" /> interface contains an operator toolbar, operators, canvas, built-in AI, and more to help you access and transform data through a seamless drag-and-drop dbt model creation experience in <Constant name="dbt" />.
 
 </p>
 
-This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="visual_editor" /> landscape with ease.
+This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="canvas" /> landscape with ease.
 
-The <Constant name="visual_editor" /> interface is composed of:
+The <Constant name="canvas" /> interface is composed of:
 
 - **Navigation bars** &mdash; The top and ledft-side navigation bars contain options for switching between models in the workspace, opening existing or creating new models, uploading CSV data, previewing data and runs, and viewing helpful shortcuts.
 - **Operator toolbar** &mdash; Located at the top of the canvas area, the toolbar displays all the node categories available, as well as tools to help you develop:
@@ -69,7 +69,7 @@ If you have any feedback on additional operators that you might need, we'd love 
 
 ## Canvas
 
-<Constant name="visual_editor" /> has a sleek drag-and-drop interface for creating and modifying dbt SQL models. It's like a digital whiteboard space for easily viewing and delivering trustworthy data. Use the canvas to:
+<Constant name="canvas" /> has a sleek drag-and-drop interface for creating and modifying dbt SQL models. It's like a digital whiteboard space for easily viewing and delivering trustworthy data. Use the canvas to:
 
 - Drag-and-drop operators to create and configure your model(s)
 - Generate SQL code using the built-in AI generator

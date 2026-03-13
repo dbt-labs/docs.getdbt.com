@@ -7,6 +7,7 @@ pagination_next: "docs/fusion/about-fusion"
 pagination_prev: "docs/introduction"
 ---
 
+# dbt Fusion engine <Lifecycle status="preview" />
 
 <IntroText><Constant name="fusion_engine" /> is the next-generation engine built in Rust, that powers development across the <Constant name="dbt_platform" /> (formerly dbt Cloud), and local development in VS Code and Cursor, and the CLI.</IntroText>
 

@@ -42,17 +42,14 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</Tabs>
 
 :::important UDF support
-When developing UDFs, it's important to understand the following support limitations:
-
-- Python UDFs aren't yet supported in <Constant name="fusion" />.
-- Additional languages (for example, Java, JavaScript, Scala) aren't currently supported.
+Additional languages (for example, Java, JavaScript, Scala) aren't currently supported when developing UDFs.
 
 See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
 :::
 
 ## Defining UDFs in dbt
 
-You can define SQL and Python UDFs in dbt. Python UDFs are currently supported in Snowflake and BigQuery when using <Constant name="core" />. 
+You can define SQL and Python UDFs in dbt. Python UDFs are supported in Snowflake and BigQuery when using <Constant name="core" /> or <Constant name="fusion" />. 
 
 Follow these steps to define UDFs in dbt:
 
@@ -377,8 +374,7 @@ For more information about selecting UDFs, see the examples in [Node selector me
 
 ## Limitations
 - Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported. 
-- Creating Python UDFs are currently supported in Snowflake and BigQuery only. Other warehouses aren't yet supported.
-- Support for Python UDFs in <Constant name="fusion" /> is not yet available. Read the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for the latest updates.
+- Python UDFs are supported in Snowflake and BigQuery only (when using <Constant name="core" /> or <Constant name="fusion" />). Other warehouses aren't yet supported for Python UDFs.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
 
 ## Related FAQs

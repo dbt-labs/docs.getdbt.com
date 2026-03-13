@@ -6,7 +6,7 @@ id: sao-difference-core
 
 ---
 
-In <Constant name="core" /> , running with the selectors `state:modified+` and `source_status:fresher+` builds models that either:
+In <Constant name="core" />, running with the selectors `state:modified+` and `source_status:fresher+` builds models that either:
 
 - Have changed since the prior run (`state:modified+`)
 - Have upstream sources that are fresher than in the prior run (`source_status:fresher+`)

@@ -27,7 +27,7 @@ unit_tests:
         format: dict
         rows:
           - {id: 1, name: gerda}
-          - {id: 2, b: michelle}    
+          - {id: 2, name: michelle}    
 
 ```
 

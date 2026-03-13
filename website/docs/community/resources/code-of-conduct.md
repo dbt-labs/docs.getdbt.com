@@ -102,8 +102,8 @@ Participants asked to stop any harassing behavior are expected to comply immedia
 
 If a participant engages in harassing behavior, the dbt Community Admin team may take any action they deem appropriate, up to and including expulsion from all dbt Community spaces and identification of the participant as a harasser to other dbt Community members or the general public.
 
-## Coalesce and other events
-We reserve the right to prohibit certain directly competitive companies from attending and / or sponsoring Coalesce and other dbt Labs-hosted events. 
+## dbt Summit and other events
+We reserve the right to prohibit certain directly competitive companies from attending and / or sponsoring dbt Summit and other dbt Labs-hosted events. 
 
 While we actively support the broader ecosystem around dbt, it is not the right business decision for us to allow directly competitive companies to market to or sell to our users and customers at events that we invest very significant company resources into hosting. 
 

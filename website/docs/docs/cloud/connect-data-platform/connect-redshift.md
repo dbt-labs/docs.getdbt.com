@@ -4,18 +4,20 @@ id: connect-redshift
 description: "Setup instructions for connecting Redshift to dbt"
 sidebar_label: "Connect Redshift"
 ---
+
+# Connect Redshift <ProductCard text="Fusion compatible" />
  
-dbt platform supports connecting to Redshift. 
+<Constant name="dbt_platform" /> supports connecting to Redshift. 
 
 The following fields are required when creating a connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [set up pages](/docs/core/connect-data-platform/about-core-connections) to find the hostname for your adapter. | Redshift: `hostname.region.redshift.amazonaws.com` |
+| Host Name | The hostname of the database to connect to. This can either be a hostname or an IP address. Refer to [set up pages](/docs/local/connect-data-platform/about-dbt-connections) to find the hostname for your adapter. | Redshift: `hostname.region.redshift.amazonaws.com` |
 | Port | Usually 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
-**Note**: When you set up a Redshift connection in <Constant name="cloud" />, SSL-related parameters aren't available as inputs. 
+**Note**: When you set up a Redshift connection in <Constant name="dbt" />, SSL-related parameters aren't available as inputs. 
 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
@@ -65,16 +67,15 @@ secret_access_key: '{{ env_var(''DBT_ENV_SECRET_ACCESS_KEY'') }}'
 
 Both `DBT_ENV_ACCESS_KEY_ID` and `DBT_ENV_SECRET_ACCESS_KEY` will need [to be assigned](/docs/build/environment-variables) for every environment leveraging extended attributes as such.
 
-### Connecting via an SSH Tunnel
+### Connecting using an SSH Tunnel
 
 import BastionServer from '/snippets/_bastion-server.md';
 
 <BastionServer redshift='Redshift' />
 
-
 ## Configuration
 
-To optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
+To optimize performance with data platform-specific configurations in <Constant name="dbt" />, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
 
 To grant users or roles database permissions (access rights and privileges), refer to the [Redshift permissions](/reference/database-permissions/redshift-permissions) page.
 
@@ -87,13 +88,13 @@ When setting up a database connection using an SSH tunnel, you need the followin
 - A bastion host (or jump server) that runs the SSH protocol, acting as a secure entry point.
 - The database itself (such as a Redshift cluster).
 
-<Constant name="cloud" /> uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
+<Constant name="dbt" /> uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
 
 Tunnel failures usually happen because:
 
 - The SSH daemon times out if it's idle for too long.
 - The load balancer cuts off the connection if it's idle.
-- <Constant name="cloud" /> tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
+- <Constant name="dbt" /> tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
 
 Bastion hosts might have additional SSH settings to disconnect inactive clients after several checks without a response. By default, it checks three times.
 

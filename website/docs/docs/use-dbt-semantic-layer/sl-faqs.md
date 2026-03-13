@@ -7,7 +7,7 @@ tags: [Semantic Layer]
 pagination_next: null
 ---
 
-The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) is a <Constant name="cloud" /> offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
+The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) is a <Constant name="dbt" /> offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
 
 The <Constant name="semantic_layer" /> offers:
 
@@ -89,12 +89,12 @@ Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-ve
 
 <Expandable alt_header="Does dbt Semantic Layer require a specific dbt plan?">
 
-Yes, <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer. Certain features like caching and using multiple credentials are available for Enterprise and Enterprise+ plans.
+Yes, <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer. Certain features like caching and using multiple credentials are available for Enterprise and Enterprise+ plans.
 </Expandable>
 
 <Expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt Core?">
 
-The dbt Semantic Layer is proprietary to <Constant name="cloud" />, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a <Constant name="cloud" /> plan.
+The dbt Semantic Layer is proprietary to <Constant name="dbt" />, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a <Constant name="dbt" /> plan.
 
 dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/cloud-integrations/avail-sl-integrations) to access metrics dynamically.
 
@@ -151,7 +151,7 @@ Yes it does.
 
 <Expandable alt_header="Where is MetricFlow hosted? How do queries pass through MetricFlow and dbt and back to the end user?">
 
-MetricFlow is hosted in <Constant name="cloud" />. Requests from the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) are routed from our API gateway to MetricFlow, which generates the SQL to compute what's requested by the user. MetricFlow hands the SQL back to our gateway, which then executes it against the data platform.
+MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) are routed from our API gateway to MetricFlow, which generates the SQL to compute what's requested by the user. MetricFlow hands the SQL back to our gateway, which then executes it against the data platform.
 </Expandable>
 
 <Expandable alt_header="How do I configure the dbt Semantic Layer?">
@@ -159,7 +159,7 @@ MetricFlow is hosted in <Constant name="cloud" />. Requests from the [Semantic L
 1. You define [semantic models](/docs/build/semantic-models) in YAML files that describe your data, including entities (for joins), measures (with aggregation types as a building block to your metrics), and dimensions (to slice and dice your metrics).
 
 2. Then you build your metrics on top of these semantic models. This is all done in `.yml` configurations alongside your dbt models in your projects.
-3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="cloud" />.
+3. Once you've defined your metrics and semantic models, you can [configure the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in <Constant name="dbt" />.
 
 Read our [dbt Semantic Layer quickstart](/guides/sl-snowflake-qs) guide for more information.
 
@@ -313,7 +313,3 @@ Semantic layer credentials are different than the credentials you use to run dbt
 Currently, semantic models can be created from dbt models that live across projects ([dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)). In the future, users will also be able to use mesh concepts on semantic objects and define metrics across dbt projects.
 </Expandable>
 
-<Expandable alt_header="How do I migrate from the legacy Semantic Layer?">
-
-If you're using the legacy Semantic Layer, we highly recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/sl-migration) for more info.
-</Expandable>

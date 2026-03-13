@@ -150,7 +150,7 @@ colin_rogers:
   page: true
 dave_connors:
   image_url: /img/blog/authors/dconnors.jpeg
-  title: Staff Developer Experience Advocate at dbt Labs
+  title: Product Manager at dbt Labs
   socials:
     github: dave-connors-3
     linkedin: daveconnors3
@@ -272,7 +272,7 @@ jade_milaney:
   page: true
 jason_ganz:
   image_url: /img/blog/authors/jasnonaz.jpeg
-  title: Developer Experience at dbt Labs
+  title: Director of Community, Developer Experience & AI at dbt Labs
   socials:
     x: jasnonaz
   name: Jason Ganz
@@ -319,7 +319,7 @@ joel_labes:
     bluesky: https://bsky.app/profile/joellab.es
   name: Joel Labes
   page: true
-  title: Senior Developer Experience Advocate at dbt Labs
+  title: Staff Developer Experience Advocate at dbt Labs
 jonathan_natkins:
   description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
   image_url: /img/blog/authors/jonathan-natkins.jpeg

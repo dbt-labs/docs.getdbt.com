@@ -5,7 +5,7 @@ id: "invite-users"
 sidebar: "Invite users"
 ---
 
-<Constant name="cloud" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="cloud" /> customers on Starter, Enterprise, and Enterprise+ plans.
+<Constant name="dbt" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="dbt" /> customers on Starter, Enterprise, and Enterprise+ plans.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ You must have proper permissions to invite new users:
 
 ## Invite new users
 
-1. In your <Constant name="cloud" /> account, select your account name in the bottom left corner. Then select **Account settings**.
+1. In your <Constant name="dbt" /> account, select your account name in the bottom left corner. Then select **Account settings**.
 2. Under **Settings**, select **Users**.
 3. Click on **Invite users**.
 
@@ -33,10 +33,10 @@ You must have proper permissions to invite new users:
 ## User experience
 
 :::info Email verification
-Email verification is mandatory for all new users in <Constant name="cloud" />, including using Single Sign-On (SSO)⁠⁠. Automatic provisioning without email verification is not allowed. This is a security requirement that cannot be bypassed.
+Email verification is mandatory for all new users in <Constant name="dbt" />, including using Single Sign-On (SSO)⁠⁠. Automatic provisioning without email verification is not allowed. This is a security requirement that cannot be bypassed.
 :::
 
-<Constant name="cloud" /> generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure that traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/access-regions-ip-addresses).
+<Constant name="dbt" /> generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure that traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
 The email contains a link to create an account. When the user clicks on this link, they will be brought to one of two screens depending on whether SSO is configured or not.
 
@@ -60,6 +60,10 @@ If SSO is configured for the environment, the user must:
 2. Click the option to join the account.
 3. A confirmation screen appears, with a link to authenticate against the company's identity provider. Click **Authenticate with your enterprise login**.
 
+:::info Complete the SSO flow
+Accepting the invite doesn't fully complete the process. The user _must_ log in using SSO to redeem the invite and access the account.
+:::
+
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-user-invite.png" width="60%" title="User invitation with SSO configured"/>
 
 </TabItem>
@@ -67,7 +71,7 @@ If SSO is configured for the environment, the user must:
 </Tabs>
 
 
-Once the user completes this process, their email and user information will populate in the **Users** screen in <Constant name="cloud" />.
+Once the user completes this process, their email and user information will populate in the **Users** screen in <Constant name="dbt" />.
 
 ## FAQ
 

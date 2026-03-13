@@ -4,27 +4,27 @@ sidebar_label: "dbt Catalog FAQs"
 description: "Learn more with the FAQs about dbt Catalog, how it works, how to interact with it, and more."
 ---
 
-[<Constant name="explorer" />](/docs/explore/explore-projects) is <Constant name="cloud" />’s new knowledge base and lineage visualization experience. It offers an interactive and high-level view of your company’s entire data estate, where you can dive deep into the context you need to understand and improve lineage so your teams can trust the data they’re using to make decisions.
+[<Constant name="catalog" />](/docs/explore/explore-projects) is <Constant name="dbt" />’s new knowledge base and lineage visualization experience. It offers an interactive and high-level view of your company’s entire data estate, where you can dive deep into the context you need to understand and improve lineage so your teams can trust the data they’re using to make decisions.
 
 ## Overview
 
 <Expandable alt_header="How does dbt Catalog help with data quality?" >
 
-<Constant name="explorer" /> makes it easy and intuitive to understand your entire lineage &mdash; from data source to the reporting layer &mdash; so you can troubleshoot, improve, and optimize your pipelines. With built-in features like project recommendations and model performance analysis, you can be sure you have appropriate test and documentation coverage across your estate and quickly spot and remediate slow-running models. With column-level lineage, you can quickly identify the potential downstream impacts of table changes or work backwards to quickly understand the root cause of an incident. <Constant name="explorer" /> gives teams the insights they need to improve data quality proactively, ensuring pipelines stay performant and data trust remains solid.
+<Constant name="catalog" /> makes it easy and intuitive to understand your entire lineage &mdash; from data source to the reporting layer &mdash; so you can troubleshoot, improve, and optimize your pipelines. With built-in features like project recommendations and model performance analysis, you can be sure you have appropriate test and documentation coverage across your estate and quickly spot and remediate slow-running models. With column-level lineage, you can quickly identify the potential downstream impacts of table changes or work backwards to quickly understand the root cause of an incident. <Constant name="catalog" /> gives teams the insights they need to improve data quality proactively, ensuring pipelines stay performant and data trust remains solid.
 
 </Expandable>
 
 <Expandable alt_header="How is dbt Catalog priced?" >
 
-<Constant name="explorer" /> is generally available to all regions and deployment types on all <Constant name="cloud" /> [Enterprise-tier and Starter plans](https://www.getdbt.com/). Certain features within <Constant name="explorer" />, such as project recommendations, multi-project lineage, column-level lineage, and more are only available on the Enterprise and Enterprise+ plans.
+<Constant name="catalog" /> is generally available to all regions and deployment types on all <Constant name="dbt" /> [Enterprise-tier and Starter plans](https://www.getdbt.com/). Certain features within <Constant name="catalog" />, such as project recommendations, multi-project lineage, column-level lineage, and more are only available on the Enterprise and Enterprise+ plans.
 
-<Constant name="explorer" /> can be accessed by users with developer and read-only seats.
+<Constant name="catalog" /> can be accessed by users with developer and read-only seats.
 
 </Expandable>
 
 <Expandable alt_header="What happened to dbt Docs?" >
 
-<Constant name="explorer" /> is the default documentation experience for <Constant name="cloud" /> customers. dbt Docs is still available but doesn't offer the same speed, metadata, or visibility as <Constant name="explorer" /> and will become a legacy feature.
+<Constant name="catalog" /> is the default documentation experience for <Constant name="dbt" /> customers. dbt Docs is still available but doesn't offer the same speed, metadata, or visibility as <Constant name="catalog" /> and will become a legacy feature.
 
 </Expandable>
 
@@ -32,39 +32,39 @@ description: "Learn more with the FAQs about dbt Catalog, how it works, how to i
 
 <Expandable alt_header="Can I use dbt Catalog on-premises or with my self-hosted dbt Core deployment?" >
 
-No. <Constant name="explorer" /> and all of its features are only available as a <Constant name="cloud" /> user experience. <Constant name="explorer" /> reflects the metadata from your <Constant name="cloud" /> project(s) and their runs. 
+No. <Constant name="catalog" /> and all of its features are only available as a <Constant name="dbt" /> user experience. <Constant name="catalog" /> reflects the metadata from your <Constant name="dbt" /> project(s) and their runs. 
 
 </Expandable>
 
 <Expandable alt_header="How does dbt Catalog support dbt environments?" >
 
-<Constant name="explorer" /> supports a production or staging [deployment environment](/docs/deploy/deploy-environments) for each project you want to explore. It defaults to the latest production or staging state of a project. Users can only assign one production and one staging environment per <Constant name="cloud" /> project.
+<Constant name="catalog" /> supports a production or staging [deployment environment](/docs/deploy/deploy-environments) for each project you want to explore. It defaults to the latest production or staging state of a project. Users can only assign one production and one staging environment per <Constant name="dbt" /> project.
 
-Support for development (<Constant name="cloud_cli" /> and <Constant name="cloud_ide" />) environments is coming soon.
+Support for development (<Constant name="platform_cli" /> and <Constant name="studio_ide" />) environments is coming soon.
 
 </Expandable>
 
 <Expandable alt_header="How do I get started in Catalog? How does it update?" >
 
-Simply select **Explore** from the <Constant name="cloud" /> top navigation bar. <Constant name="explorer" /> automatically updates after each <Constant name="cloud" /> run in the given project’s environment (production, by default). The dbt commands you run within the environment will generate and update the metadata in <Constant name="explorer" />, so make sure to run the correct combination of commands within the jobs of the environment; for more details, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
+Simply select **Catalog** from the <Constant name="dbt" /> top navigation bar. <Constant name="catalog" /> automatically updates after each <Constant name="dbt" /> run in the given project’s environment (production, by default). The dbt commands you run within the environment will generate and update the metadata in <Constant name="catalog" />, so make sure to run the correct combination of commands within the jobs of the environment; for more details, refer to [Generate metadata](/docs/explore/explore-projects#generate-metadata). 
 
 </Expandable>
 
 <Expandable alt_header="Is it possible to export dbt lineage to an external system or catalog?" >
 
-Yes. The lineage that powers <Constant name="explorer" /> is also available through the Discovery API.
+Yes. The lineage that powers <Constant name="catalog" /> is also available through the Discovery API.
 
 </Expandable>
 
 <Expandable alt_header="How does dbt Catalog integrate with third-party tools to show end-to-end lineage?" >
 
-<Constant name="explorer" /> reflects all the lineage defined within the dbt project. Our vision for <Constant name="explorer" /> is to incorporate additional metadata from external tools like data loaders (sources) and BI/analytics tools (exposures) integrated with <Constant name="cloud" />, all seamlessly incorporated into the lineage of the <Constant name="cloud" /> project.
+<Constant name="catalog" /> reflects all the lineage defined within the dbt project. Our vision for <Constant name="catalog" /> is to incorporate additional metadata from external tools like data loaders (sources) and BI/analytics tools (exposures) integrated with <Constant name="dbt" />, all seamlessly incorporated into the lineage of the <Constant name="dbt" /> project.
 
 </Expandable>
 
 <Expandable alt_header="Why did previously visible data in dbt Catalog disappear?" >
 
-<Constant name="explorer" /> automatically deletes stale metadata after 3 months if no jobs were run to refresh it. To avoid this, make sure you schedule jobs to run more frequently than 3 months with the necessary commands.
+<Constant name="catalog" /> automatically deletes stale metadata after 3 months if no jobs were run to refresh it. To avoid this, make sure you schedule jobs to run more frequently than 3 months with the necessary commands.
 
 </Expandable>
 
@@ -84,25 +84,25 @@ Resource search capabilities include using keywords, partial strings (fuzzy sear
 
 <Expandable alt_header="Can I view model execution information for a job that is currently being run?" >
 
-<Constant name="cloud" /> updates the performance charts and metrics after a job run. 
+<Constant name="dbt" /> updates the performance and metrics after a job run. However, **Model performance** charts only display data for _completed_ UTC days. This means that runs from the current UTC day won't appear in the charts until the UTC day changes (midnight UTC). For example, if you're in US Pacific time, you won't see the current day's runs reflected until 4:00 PM PT.
 
 </Expandable>
 
 <Expandable alt_header="Can I analyze the number of successful model runs within a month?" >
 
-A chart of models built by month is available in the<Constant name="cloud" /> dashboard. 
+A chart of models built by month is available in the<Constant name="dbt" /> dashboard. 
 
 </Expandable>
 
 <Expandable alt_header="Can model or column descriptions be edited within dbt?" >
 
-Yes. Today, you can edit descriptions in the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" /> by changing the YAML files within the dbt project. In the future, <Constant name="explorer" /> will support more ways of editing descriptions. 
+Yes. Today, you can edit descriptions in the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> by changing the YAML files within the dbt project. In the future, <Constant name="catalog" /> will support more ways of editing descriptions. 
 
 </Expandable>
 
 <Expandable alt_header="Where do recommendations come from? Can they be customized?" >
 
-Recommendations largely mirror the best practice rules from the `dbt_project_evaluator` package. At this time, recommendations can’t be customized. In the future, <Constant name="explorer" /> will likely support recommendation customization capabilities (for example, in project code). 
+Recommendations largely mirror the best practice rules from the `dbt_project_evaluator` package. At this time, recommendations can’t be customized. In the future, <Constant name="catalog" /> will likely support recommendation customization capabilities (for example, in project code). 
 
 </Expandable>
 
@@ -110,7 +110,7 @@ Recommendations largely mirror the best practice rules from the `dbt_project_eva
 
 <Expandable alt_header="What are the best use cases for column-level lineage in dbt Catalog?" >
 
-Column-level lineage in <Constant name="explorer" /> can be used to improve many data development workflows, including:
+Column-level lineage in <Constant name="catalog" /> can be used to improve many data development workflows, including:
 
 - **Audit** &mdash; Visualize how data moves through and is used in your dbt project
 - **Root cause** &mdash; Improve time to detect and resolve data quality issues, tracking back to the source
@@ -140,7 +140,7 @@ Yes, a reused column, labeled as passthrough or rename, inherits its description
 
 <Expandable alt_header="Is column-level lineage also available in the development tab?" >
 
-Not currently, but we plan to incorporate column-level awareness across features in <Constant name="cloud" /> in the future.
+Not currently, but we plan to incorporate column-level awareness across features in <Constant name="dbt" /> in the future.
 
 </Expandable>
 
@@ -148,25 +148,25 @@ Not currently, but we plan to incorporate column-level awareness across features
 
 <Expandable alt_header="How can non-developers interact with dbt Catalog?" >
 
-Read-only users can consume metadata in <Constant name="explorer" />. More bespoke experiences and exploration avenues for analysts and less-technical contributors will be provided in the future. 
+Read-only users can consume metadata in <Constant name="catalog" />. More bespoke experiences and exploration avenues for analysts and less-technical contributors will be provided in the future. 
 
 </Expandable>
 
 <Expandable alt_header="Does dbt Catalog require a specific dbt plan?" >
 
-<Constant name="explorer" /> is available on dbt Starter and all Enterprise plans. Certain features within <Constant name="explorer" />, like project recommendations, multi-project lineage, column-level lineage, and more are only available on the Enterprise and Enterprise+ plans. 
+<Constant name="catalog" /> is available on dbt Starter and all Enterprise plans. Certain features within <Constant name="catalog" />, like project recommendations, multi-project lineage, column-level lineage, and more are only available on the Enterprise and Enterprise+ plans. 
 
 </Expandable>
 
 <Expandable alt_header="Will dbt Core users be able to leverage any of these new dbt Catalog features?" >
 
-No. <Constant name="explorer" /> is a <Constant name="cloud" />-only product experience.
+No. <Constant name="catalog" /> is a <Constant name="dbt" />-only product experience.
 
 </Expandable>
 
 <Expandable alt_header="Is it possible to access dbt Catalog using a read-only license?" >
 
-Yes, users with read-only access can use the <Constant name="explorer" />. Specific feature availability within <Constant name="explorer" /> will depend on your <Constant name="cloud" /> plan. 
+Yes, users with read-only access can use the <Constant name="catalog" />. Specific feature availability within <Constant name="catalog" /> will depend on your <Constant name="dbt" /> plan. 
 
 </Expandable>
 
@@ -178,8 +178,8 @@ The ability to embed and share views is being evaluated as a potential future ca
 
 <Expandable alt_header=" Is dbt Catalog accessible from other areas inside dbt?" >
 
-Yes, you can [access <Constant name="explorer" /> from various <Constant name="cloud" /> features](/docs/explore/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
+Yes, you can [access <Constant name="catalog" /> from various <Constant name="dbt" /> features](/docs/explore/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
 
-While the primary way to access <Constant name="explorer" /> is through the **Explore** link in the navigation, you can also access it from the [<Constant name="cloud_ide" />](/docs/explore/access-from-dbt-cloud#dbt-cloud-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-cloud#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-cloud#model-timing-tab-in-jobs).
+While the primary way to access <Constant name="catalog" /> is through the **Catalog** link in the navigation, you can also access it from the [<Constant name="studio_ide" />](/docs/explore/access-from-dbt-cloud#dbt-cloud-ide), [the lineage tab in jobs](/docs/explore/access-from-dbt-cloud#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/explore/access-from-dbt-cloud#model-timing-tab-in-jobs).
 
 </Expandable>

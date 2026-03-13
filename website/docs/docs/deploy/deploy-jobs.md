@@ -4,7 +4,7 @@ description: "Learn how to create and schedule deploy jobs in dbt for the schedu
 tags: [scheduler]
 ---
 
-You can use deploy jobs to build production data assets. Deploy jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in <Constant name="cloud" /> will have an entry in the job's run history and a detailed run overview, which provides you with:
+You can use deploy jobs to build production data assets. Deploy jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in <Constant name="dbt" /> will have an entry in the job's run history and a detailed run overview, which provides you with:
 
 - Job trigger type
 - Commit SHA
@@ -18,13 +18,23 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 ## Prerequisites
 
-- You must have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
-    - For the [Trigger on job completion](#trigger-on-job-completion) feature, your <Constant name="cloud" /> account must be on the [Starter or an Enterprise-tier](https://www.getdbt.com/pricing/) plan.
+- You must have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
+    - For the [Trigger on job completion](#trigger-on-job-completion) feature, your <Constant name="dbt" /> account must be on the [Starter or an Enterprise-tier](https://www.getdbt.com/pricing/) plan.
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments). 
 
 ## Create and schedule jobs {#create-and-schedule-jobs}
+
+:::info
+
+<Constant name="dbt" /> uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (UTC) for all jobs, including those configured with cron. It does not adjust for your local timezone or daylight saving time. For example:
+
+- 0 means 12am (midnight) UTC
+- 12 means 12pm (afternoon) UTC
+- 23 means 11pm UTC
+
+:::
 
 1. On your deployment environment page, click **Create job** > **Deploy job** to create a new deploy job. 
 2. Options in the **Job settings** section:
@@ -50,14 +60,14 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
     - **Run timeout** &mdash; Cancel the deploy job if the run time exceeds the timeout value. 
-    - **Compare changes against** &mdash; By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let <Constant name="cloud" /> know what it should compare the changes against.  
+    - **Compare changes against** &mdash; By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let <Constant name="dbt" /> know what it should compare the changes against.  
 
     :::info
-    Older versions of <Constant name="cloud" /> only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. While deferral to an environment is more efficient as <Constant name="cloud" /> will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ deploy jobs that run in the deferred environment, <Constant name="cloud" /> will get a more accurate, latest project representation state.
+    Older versions of <Constant name="dbt" /> only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. While deferral to an environment is more efficient as <Constant name="dbt" /> will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ deploy jobs that run in the deferred environment, <Constant name="dbt" /> will get a more accurate, latest project representation state.
     :::
 
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
-    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
+    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/profiles.yml#understanding-threads). Increase the thread count to increase model execution concurrency.
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
 
@@ -71,31 +81,22 @@ Under **Timing**, you can either use regular intervals for jobs that need to run
 
 - **Specific hours** &mdash; Use this option to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. Job runs will always be consistent between both hours and days, so if your job runs at 00:05, 12:05, and 23:05 UTC, it will run at these same hours each day. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
 
-
-:::info
-
-<Constant name="cloud" /> uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (UTC) and does not account for translations to your specific timezone or take into consideration daylight savings time. For example:
-
-- 0 means 12am (midnight) UTC
-- 12 means 12pm (afternoon) UTC
-- 23 means 11pm UTC
-
-:::
-
 ### Cron schedule
 
 To fully customize the scheduling of your job, choose the **Cron schedule** option and use cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
 
+**Note:** Cron schedules in <Constant name="dbt" /> use UTC and don't convert to your local timezone or adjust for daylight saving time.
+
 **Cron frequency**
 
-To enhance performance, job scheduling frequencies vary by <Constant name="cloud" /> plan:
+To enhance performance, job scheduling frequencies vary by <Constant name="dbt" /> plan:
 
-- Developer plans: <Constant name="cloud" /> sets a minimum interval of every 10 minutes for scheduling jobs. This means scheduling jobs to run more frequently, or at less than 10 minute intervals, is not supported.
+- Developer plans: <Constant name="dbt" /> sets a minimum interval of every 10 minutes for scheduling jobs. This means scheduling jobs to run more frequently, or at less than 10 minute intervals, is not supported.
 - Starter, Enterprise, and Enterprise+ plans: No restrictions on job execution frequency.
 
 **Examples**
 
-Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and return their plain English translations. The <Constant name="cloud" /> job scheduler supports using `L` to schedule jobs on the last day of the month.
+Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and return their plain English translations. The <Constant name="dbt" /> job scheduler supports using `L` to schedule jobs on the last day of the month.
 
 Examples of cron job schedules:
 
@@ -112,6 +113,7 @@ Examples of cron job schedules:
 - `0 12 L * *`: At 12:00 PM (afternoon), on the last day of the month.
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
+- `0 4 * * MON#1`: At 4:00 AM on the first Monday of every month.
 
 ### Trigger on job completion  <Lifecycle status="self_service,managed,managed_plus" />
 To _chain_ deploy jobs together:

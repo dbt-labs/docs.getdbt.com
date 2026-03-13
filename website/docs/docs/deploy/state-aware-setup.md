@@ -22,11 +22,12 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 To use state-aware orchestration, make sure you meet these prerequisites:
 
-- You must have a <Constant name="cloud" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/cloud/manage-access/seats-and-users).
+- You must have a <Constant name="dbt" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/cloud/manage-access/seats-and-users).
 - You have updated the environment that will run state-aware orchestration to the dbt Fusion engine. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
-- You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only. 
+- You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only.
+- You must use a deploy job. Continuous integration (CI) and merge jobs currently do not support state-aware orchestration.
 - (Optional) To customize behavior, you have configured your model or source data with [advanced configurations](#advanced-configurations).
 
 :::info
@@ -73,7 +74,7 @@ To create a state-aware job:
     - **Environment variables**: Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
     - **Target name**: Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
     - **Run timeout**: Cancel the deploy job if the run time exceeds the timeout value. 
-    - **Compare changes against**: By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let <Constant name="cloud" /> know what it should compare the changes against. 
+    - **Compare changes against**: By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let <Constant name="dbt" /> know what it should compare the changes against. 
 
 7. Click **Save**. 
 
@@ -121,15 +122,63 @@ You can optionally configure state-aware orchestration when you want to fine-tun
 
 - **Defining source freshness:**
 
-  By default, dbt uses metadata from the data warehouse. You can instead:
-  * Specify a custom column and dbt will go to that column in the table instead
-  * Specify a custom SQL statement to define what freshness means
+  By default, dbt uses metadata from the data warehouse to automatically detect when source data changes. Freshness configuration is not required for state-aware orchestration to work.
+  
+  You can optionally configure source freshness if you want to:
+  - Receive alerts when sources don't update within your expected Service Level Agreement (SLA) using `warn_after`/`error_after`.
+  - Specify a custom column using `loaded_at_field`.
+  - Specify a custom SQL statement using `loaded_at_query` to define what freshness means.
 
   Not all source freshness is equal — especially with partial ingestion pipelines. You may want to delay a model build until your sources have received a larger volume of data or until a specific time window has passed.
 
   You can define what "fresh" means on a source-by-source basis using a custom freshness query. This lets you:
   - Add a time difference to account for late-arriving data
   - Delay freshness detection until a threshold is reached (for example, number of records or hours of data)
+
+  The following examples show how to configure a source so that state-aware orchestration detects new upstream data only when your custom condition is met.
+
+  <Tabs>
+  <TabItem value="loaded_at_field" label="loaded_at_field">
+  State-aware orchestration treats the source as fresh when the maximum value of the `loaded_at_field` column changes since the previous run:
+
+  <File name="models/sources.yml">
+
+  ```yaml
+  sources:
+    - name: jaffle_shop
+      config:
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        loaded_at_field: _etl_loaded_at
+  ```
+
+  </File>
+
+  </TabItem>
+  <TabItem value="loaded_at_query" label="loaded_at_query">
+
+  To define freshness with custom SQL, use `loaded_at_query`. State-aware orchestration runs the query to get a single timestamp. When that value changes compared to the previous run, the source is considered fresh.
+
+  <File name="models/sources.yml">
+
+  ```yaml
+  sources:
+    - name: raw_orders
+      tables:
+        - name: orders
+          loaded_at_query: |
+            select max(ingested_at)
+            from {{ this }}
+            where ingested_at >= current_timestamp - interval '3 days'
+  ```
+
+  In this example, dbt runs the custom `loaded_at_query` to get a single timestamp &mdash; the latest `ingested_at` within the last three days. On each run, dbt compares this new maximum timestamp to the value from the previous run. If the maximum timestamp is newer, state-aware orchestration considers the source to have fresh data and may trigger rebuilds.
+
+  </File>
+
+  </TabItem>
+  </Tabs>
 
 - **Reducing model build frequency**
 
@@ -194,7 +243,7 @@ loaded_at_query: |
 
 Let's use an example to illustrate how to customize our project so a model and its parent model are rebuilt only if they haven't been refreshed in the past 4 hours &mdash; even if a job runs more frequently than that.
 
-A Jaffle shop has recently expanded globally and wanted to make savings. To reduce spend, they found out about <Constant name="cloud" />'s state-aware orchestration and want to rebuild models only when needed. Maggie &mdash; the analytics engineer &mdash; wants to configure her dbt `jaffle_shop` project to only rebuild certain models if they haven't been refreshed in the last 4 hours, even if a job runs more often than that. 
+A Jaffle shop has recently expanded globally and wanted to make savings. To reduce spend, they found out about <Constant name="dbt" />'s state-aware orchestration and want to rebuild models only when needed. Maggie &mdash; the analytics engineer &mdash; wants to configure her dbt `jaffle_shop` project to only rebuild certain models if they haven't been refreshed in the last 4 hours, even if a job runs more often than that. 
 
 To do this, she uses the model `freshness` config. This config helps state-aware orchestration decide _when_ a model should be rebuilt. 
 
@@ -270,7 +319,7 @@ With this config, dbt:
 - Checks if there's new data in the upstream sources
 - Checks when `dim_wizards` and `dim_worlds` were last built
 
-If any new data is available _and_ at least 4 hours have passed, <Constant name="cloud" /> rebuilds the models.
+If any new data is available _and_ at least 4 hours have passed, <Constant name="dbt" /> rebuilds the models.
 
 You can override freshness rules set at higher levels in your dbt project. For example, in the project YAML file, you set:
 
@@ -326,18 +375,6 @@ If you want to exclude a model from the freshness rule set at a higher level, se
 </File>
 
 This way, if either `dim_wizards` or `dim_worlds` has fresh upstream data and enough time passed, dbt rebuilds the models. This method helps when the need for fresher data outweighs the costs.
-
-## Limitation
-
-The following section lists considerations when using state-aware-orchestration:
-
-### Deleted tables
-
-If a table was deleted in the warehouse, and neither the model’s code nor the data it depends on has changed, state-aware orchestration does not detect a change and will not rebuild the table. This is because dbt decides what to build based on code and data changes, not by checking whether every table still exists. To build the table, you have the following options:
-
-- **Clear cache and rebuild**: Go to **Orchestration** > **Environments** and click **Clear cache**. The next run will rebuild all models from a clean state.
-
-- **Temporarily disable state-aware orchestration**: Go to **Orchestration** > **Jobs**. Select your job and click **Edit**. Under **Enable Fusion cost optimization features**, disable **State-aware orchestration** and click **Save**. Run the job to force a full build, then re‑enable the feature after the run.
 
 ## Related docs
 
