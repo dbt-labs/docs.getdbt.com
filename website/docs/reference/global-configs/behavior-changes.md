@@ -101,7 +101,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              | ✅ |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              | ✅ |
 | [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            | - |
-| [enable_truthy_nulls_equals_macro](#null-safe-equality-equals-macro) | 2025.02 | TBD* | 1.9.0 | TBD* | - |
+| [enable_truthy_nulls_equals_macro](#null-safe-equality) | 2025.02 | TBD* | 1.9.0 | TBD* | - |
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | - |
 | [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            | - |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 | - |
@@ -122,7 +122,6 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [use_managed_iceberg](/reference/global-configs/databricks-changes#use-managed-iceberg)  | Databricks 1.11.0  |  1.12.0                                                     | - |
 | [use_materialization_v2](/reference/global-configs/databricks-changes#use-restructured-materializations)      | Databricks 1.10.0                  | TBD| - |
 | [use_replace_on_for_insert_overwrite](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy)   | Databricks 1.11.0  | 1.11.0  | - |
-| [enable_truthy_nulls_equals_macro](/reference/global-configs/snowflake-changes#the-enable_truthy_nulls_equals_macro-flag) | Snowflake 1.9.0 | TBD | - |
 | [redshift_skip_autocommit_transaction_statements](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) | Redshift 1.12.0 | TBD | - |
 | [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | TBD | - |
 | [bigquery_reject_wildcard_metadata_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) | BigQuery 1.12.0 | TBD | - |
