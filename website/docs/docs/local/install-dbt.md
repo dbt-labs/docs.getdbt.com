@@ -585,7 +585,7 @@ To install in editable mode, such as while contributing, use `python -m pip inst
 
 ### Upgrading dbt Core
 
-dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/dbt-versions-upgrade) highlighting the changes required for each [minor and major release](/docs/dbt-versions/dbt-versions).
+dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade) highlighting the changes required for each [minor and major release](/docs/dbt-versions/dbt-versions).
 
 - [Upgrade `pip`](/docs/local/install-dbt)
 

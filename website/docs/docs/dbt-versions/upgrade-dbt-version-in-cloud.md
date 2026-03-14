@@ -48,7 +48,7 @@ Configure your project to use a different dbt version than what's configured in 
 
 dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion), a ground-up rebuild of dbt. This is currently in private preview on the dbt platform. Eligible customers can update environments to Fusion using the same workflows as v1.x, but remember:
 - If you don't see the `Latest Fusion` release track as an option, you should check with your dbt Labs account team about eligibility.
-- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/dbt-versions-upgrade/upgrading-to-fusion).
+- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
 - Make sure you're using a supported adapter and authentication method:
   <FusionDWH /> 
 - Once you upgrade your development environment(s) to `Latest Fusion`, every user will have to restart the IDE.
@@ -140,7 +140,7 @@ For more on version support and future releases, see [Understanding <Constant na
 
 ### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/dbt-versions-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-legacy-versions-under-10).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/core-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-legacy-versions-under-10).
 
 ### Testing your changes before upgrading
 
