@@ -88,13 +88,13 @@ If your organization has multiple dbt projects, we recommend starting your upgra
 
 To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="dbt" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="dbt" />](/blog/latest-dbt-stability).
 
-If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
 dbt Labs has extended the critical support period of <Constant name="core" /> v1.7 for <Constant name="dbt" /> Enterprise-tier customers to March 2025. At that point, we will be encouraging all customers to select a Release Track for ongoing updates in <Constant name="dbt" />.
 
 <Expandable alt_header="I'm using an older version of dbt in the dbt platform. What should I do? What happens if I do nothing?" >
 
-If you're running dbt version v1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version v1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
 dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enterprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 
@@ -108,7 +108,7 @@ If you are upgrading from a very old unsupported version of dbt Core, you may ru
 - [v1.1] Customers on BigQuery should be aware that <Constant name="dbt" /> sets a default [per-model timeout](/docs/local/connect-data-platform/bigquery-setup#job_execution_timeout_seconds) of 5 minutes. You may override this config in your connection details. Older versions of dbt (including v1.0) did not appropriately respect this timeout configuration.
 - [v1.3] Customers with non-dbt `.py` files defined within their project directories, such as `models/`. Since v1.3, dbt expects these files be valid [Python models](/docs/build/python-models). The customer needs to move these files out of their `models/` directory, or ignore them via `.dbtignore`
 - [v1.5] Customers who have `--m` in their job definitions, instead of `-m` or `--models`. This autocompletion (`--m[odels]` for `--models`) has never been officially documented or supported. It was an implicit behavior of argparse (CLI library used in dbt-core v1.0-1.4) that is not supported by `click` (the CLI library used in dbt-core since v1.5+).
-- [v1.5] Empty invalid `tests` config start raising a validation error](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5). Replace empty `tests` config with `tests: []` or remove it altogether.
+- [v1.5] Empty invalid `tests` config start raising a validation error](/docs/dbt-versions/dbt-versions-upgrade/Older%20versions/upgrading-to-v1.5). Replace empty `tests` config with `tests: []` or remove it altogether.
 - [v1.6] Performance optimization to `load_result` means you cannot call it on the same query result multiple times. Instead, save it to a local variable once, and reuse that variable (context: [dbt-core#7371](https://github.com/dbt-labs/dbt-core/pull/7371)
 
 You should [contact dbt support](/docs/dbt-support#dbt-cloud-support) to request an extension, during which you will need to make those updates.

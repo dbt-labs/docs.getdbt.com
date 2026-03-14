@@ -1419,6 +1419,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions/dbt-versions",
+      "permanent": true
+    },
+    {
       "source": "/best-practices/how-we-mesh/mesh-4-faqs",
       "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
       "permanent": true
@@ -3038,7 +3043,7 @@
     },
     {
       "source": "/docs/core-versions",
-      "destination": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions/dbt-versions",
       "permanent": true
     },
     {
