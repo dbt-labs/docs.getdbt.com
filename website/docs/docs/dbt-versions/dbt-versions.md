@@ -31,7 +31,7 @@ The <Constant name="fusion_engine"/> uses semantic versioning starting with vers
 | Channel | Description | Stability |
 |---------|-------------|-----------|
 | `latest` | The stable, "known good" version | ✅ Recommended for most users |
-| `canary` | The latest officially released version | ⚠️ May be unstable |
+| `canary` | The latest officially released version | ⚠️ Most recent stable version but still undergoing thorough testing |
 | `dev` | The latest development build | ❌ May not have passed all tests |
 
 Run `dbt system update` to get the latest stable release, or specify a channel with `dbt system update --version canary`.
