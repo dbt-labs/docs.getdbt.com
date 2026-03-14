@@ -88,13 +88,13 @@ If your organization has multiple dbt projects, we recommend starting your upgra
 
 To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to <Constant name="dbt" />, we recommend that you read our blog post: [How we're making sure you can confidently switch to the \"Latest\" release track in <Constant name="dbt" />](/blog/latest-dbt-stability).
 
-If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version 1.6 or older, please know that your version of <Constant name="core" /> has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
 dbt Labs has extended the critical support period of <Constant name="core" /> v1.7 for <Constant name="dbt" /> Enterprise-tier customers to March 2025. At that point, we will be encouraging all customers to select a Release Track for ongoing updates in <Constant name="dbt" />.
 
 <Expandable alt_header="I'm using an older version of dbt in the dbt platform. What should I do? What happens if I do nothing?" >
 
-If you're running dbt version v1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
+If you're running dbt version v1.6 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible.
 
 dbt Labs has extended the "Critical Support" period of dbt Core v1.7 for dbt Enterprise-tier customers while we work through the migration with those customers to Release Tracks. In the meantime, this means that v1.7 will continue to be accessible in dbt for Enterprise customers, jobs and environments on v1.7 for those customers will not be automatically migrated to "Latest," and dbt Labs will continue to fix critical bugs and security issues.
 

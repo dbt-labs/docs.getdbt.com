@@ -11,7 +11,7 @@ The `--version` command-line flag returns information about the currently instal
 
 
 ## Versioning
-To learn more about release versioning for <Constant name="core" />, refer to [How <Constant name="core" /> uses semantic versioning](/docs/dbt-versions/dbt-versions#how-dbt-core-uses-semantic-versioning). 
+To learn more about release versioning for <Constant name="core" />, refer to [How <Constant name="core" /> uses semantic versioning](/docs/dbt-versions#how-dbt-core-uses-semantic-versioning). 
 
 If using a [<Constant name="dbt" /> release track](/docs/dbt-versions/cloud-release-tracks), which provide ongoing updates to dbt, then `dbt_version` represents the release version of dbt in <Constant name="dbt" />. This also follows semantic versioning guidelines, using the `YYYY.M.D+<suffix>` format. The year, month, and day represent the date the version was built (for example, `2024.10.8+996c6a8`). The suffix provides an additional unique identification for each build.
 

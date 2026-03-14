@@ -136,7 +136,7 @@ Starting with v1.0, <Constant name="dbt" /> will ensure that you're always using
   - auto-upgrading users to the subsequent minor version when critical support ends
 --->
 
-For more on version support and future releases, see [Understanding <Constant name="core" /> versions](/docs/dbt-versions/dbt-versions).
+For more on version support and future releases, see [Understanding <Constant name="core" /> versions](/docs/dbt-versions).
 
 ### Need help upgrading?
 

@@ -35,6 +35,6 @@ Configure environments to tell <Constant name="dbt" /> or <Constant name="core" 
 
 - [<Constant name="dbt" /> environment best practices](/guides/set-up-ci)
 - [Deployment environments](/docs/deploy/deploy-environments)
-- [About <Constant name="core" /> versions](/docs/dbt-versions/dbt-versions)
+- [About <Constant name="core" /> versions](/docs/dbt-versions)
 - [Set Environment variables in <Constant name="dbt" />](/docs/build/environment-variables#special-environment-variables)
 - [Use Environment variables in jinja](/reference/dbt-jinja-functions/env_var)

@@ -15,7 +15,7 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 <Card
     title="About dbt Core versions"
     body="Information about how dbt Core is versioned and how to target those versions."
-    link="/docs/dbt-versions/dbt-versions"
+    link="/docs/dbt-versions"
     icon="dbt-bit"/>
 
 <Card
