@@ -10,8 +10,6 @@ Both dbt engines &mdash; the <Constant name="fusion_engine"/> (Rust-based) and <
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/cloud-release-tracks) automatically keep you up to date and provide early access to new features.
 
-<VersionBlock firstVersion="2.0">
-
 ## dbt Fusion engine versioning
 
 The <Constant name="fusion_engine"/> uses semantic versioning starting with version 2.0. To install or update <Constant name="fusion"/>, see [Install dbt](/docs/local/install-dbt?version=2).
@@ -53,10 +51,6 @@ dbt Fusion 2.0.0-preview.126
 - [Fusion releases](/docs/fusion/fusion-releases): View current versions and release history.
 - [Get started with Fusion](/docs/fusion/get-started-fusion): Learn about <Constant name="fusion" /> features and migration.
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.99">
-
 ## dbt Core versioning
 
 The <Constant name="core"/> engine uses semantic versioning for the 1.x release series. To install or update <Constant name="core"/>, see [Install dbt](/docs/local/install-dbt?version=1).
@@ -65,37 +59,9 @@ The <Constant name="core"/> engine uses semantic versioning for the 1.x release 
 
 <Snippet path="core-versions-table" />
 
-### Further reading
+### How dbt Core uses semantic versioning
 
-- [Choosing a <Constant name="core" /> version in <Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how to use <Constant name="core" /> versions in <Constant name="dbt" />.
-- [Install <Constant name="core" />](/docs/local/install-dbt?version=1): Install or update <Constant name="core" />.
-- [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version): Restrict your project to work with a specific range of versions.
-
-## End-of-life versions
-
-Once a <Constant name="core" /> version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [<Constant name="core" />](/docs/local/install-dbt#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
-
-## Current version support
-
-dbt supports each minor version (for example, v1.8) for _one year_ from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
-
-After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window. After the one-year window ends, the version reaches **end of life** and no longer receives patches.
-
-While a minor version is officially supported:
-- You can use it in <Constant name="dbt" />. For more on <Constant name="dbt" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-- You can select it from the version dropdown on this website to see documentation that is accurate for use with that minor version.
-
-For upcoming releases, refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones).
-
-## Upgrading
-
-Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
-
-dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
-
-## How dbt Core uses semantic versioning
-
-<Constant name="core" /> follows [semantic versioning](https://semver.org/):
+dbt follows [semantic versioning](https://semver.org/):
 
 - **Major versions** (for example, v1 to v2) may include breaking changes. Deprecated functionality will stop working.
 - **Minor versions** (for example, v1.8 to v1.9) add features and are backwards compatible. They will not break project code that relies on documented functionality.
@@ -133,5 +99,31 @@ You can also find the registered adapter version in [logs](/reference/global-con
 
 Refer to [Supported data platforms](/docs/supported-data-platforms) for the full list of adapters.
 
-</VersionBlock>
+
+### Further reading
+
+- [Choosing a <Constant name="core" /> version in <Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud): Learn how to use <Constant name="core" /> versions in <Constant name="dbt" />.
+- [Install <Constant name="core" />](/docs/local/install-dbt?version=1): Install or update <Constant name="core" />.
+- [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version): Restrict your project to work with a specific range of versions.
+
+## End-of-life versions
+
+Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-version-in-cloud), [<Constant name="fusion" />](/docs/local/install-dbt?version=2#update-fusion) [<Constant name="core" />](/docs/local/install-dbt?version=1#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
+
+## Current version support
+
+dbt supports each minor version (for example, v1.8) for _one year_ from its initial release. During that window, we release patches with bug fixes and security updates. When we refer to a minor version, we mean its latest available patch (v1.8.x).
+
+After a newer minor version ships, the previous one transitions to **critical support** (security and installation fixes only) for the remainder of its one-year window. After the one-year window ends, the version reaches **end of life** and no longer receives patches.
+
+While a minor version is officially supported:
+- You can use it in <Constant name="dbt" />. For more on <Constant name="dbt" /> versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- You can select it from the version dropdown on this website to see documentation that is accurate for use with that minor version.
+
+## Upgrading
+
+Upgrade to new patch versions as soon as they're available. Upgrade to new minor versions when you're ready because you can only get some features and fixes on the latest minor version.
+
+dbt makes all versions available as prereleases before the final release. For minor versions, we aim to release one or more betas 4+ weeks before the final release so you can try new features and share feedback. Release candidates are available about two weeks before the final release for testing in production-like environments. Refer to the [`dbt-fusion` milestones](https://github.com/dbt-labs/dbt-fusion/milestones) or [`dbt-core` milestones](https://github.com/dbt-labs/dbt-core/milestones) for details.
+
 
