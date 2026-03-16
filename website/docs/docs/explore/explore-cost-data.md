@@ -59,11 +59,13 @@ The project dashboard includes the following tabs that help you analyze cost and
 
 - **Cost**: Shows the estimated build cost reduction when using state-aware orchestration.
 - **Query run time**: Shows the estimated reduction in build time when using state-aware orchestration.
-- **Model builds**: Shows the number of models built versus models reused by state-aware orchestration.
+- **Builds**: Shows the number of assets built versus reused by state-aware orchestration. Use the **Asset type** dropdown on the chart to filter by **Models**, **Tests**, or **All**.
 - **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
+
+On the **Cost**, **Usage**, **Query run time**, and **Builds** tabs, use the **Asset type** dropdown on each chart to filter the data by **Models**, **Tests**, or **All**. Your selection is remembered separately for each tab.
 
 ### Table view
 
@@ -102,17 +104,19 @@ To access job details, select your project in the main menu and go to **Orchestr
 
 ### Filters
 
-For **Run duration**, **Cost**, **Model builds**, and **Usage** tabs, you can customize the cost data you want to view by:
+For **Run duration**, **Cost**, **Builds**, and **Usage** tabs, you can customize the cost data you want to view by:
 
 - **Last**: 30 days, 60 days, 90 days, 6 months, or 1 year
 - **View**: Daily, Weekly, Monthly
+
+On the **Cost**, **Usage**, **Query run time**, and **Builds** tabs, use the **Asset type** dropdown on each chart to filter the data by **Models**, **Tests**, or **All**. Your selection is stored per tab, so you can view models on one tab and tests on another without changing the other tab’s filter.
 
 ### Visualization tabs
 
 - **Runs**: Displays the success rate and run duration in minutes for recent runs. You can select a time period with options for **Last week**, **Last 14 days**, and **Last 30 days**.
 - **Query run time**: Shows the estimated query execution time and the reduction in run duration from state-aware orchestration.
 - **Cost**: Shows the estimated build cost reduction when using state-aware orchestration.
-- **Model builds**: Shows the number of models built versus models reused by state-aware orchestration.
+- **Builds**: Shows the number of assets built versus reused by state-aware orchestration. Use the **Asset type** dropdown on the chart to filter by **Models**, **Tests**, or **All**.
 - **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
@@ -120,7 +124,7 @@ For **Run duration**, **Cost**, **Model builds**, and **Usage** tabs, you can cu
 
 ### Table view 
 
-For **Run duration**, **Cost**, **Model builds**, and **Usage** tabs, you can access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
+For **Run duration**, **Cost**, **Builds**, and **Usage** tabs, you can access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
 
 import TableView2 from '/snippets/_table-view.md';
 
