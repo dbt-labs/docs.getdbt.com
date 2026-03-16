@@ -108,7 +108,6 @@ For **Runs**, **Usage**, **Query run time**, and **Builds** tabs, you can custom
 - **Last**: 30 days, 60 days, 90 days, 6 months, or 1 year
 - **View**: Daily, Weekly, Monthly
 
-
 ### Visualization tabs
 
 - **Runs**: Displays the success rate and run duration in minutes for recent runs. You can select a time period with options for **Last week**, **Last 14 days**, and **Last 30 days**.
