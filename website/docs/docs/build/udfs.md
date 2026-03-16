@@ -151,8 +151,7 @@ Follow these steps to define UDFs in dbt:
       - [BigQuery](https://cloud.google.com/bigquery/docs/user-defined-functions-python): `3.11`
     - [`entry_point`](/reference/resource-configs/entry-point) &mdash; Specify the Python function to be called.
     <br></br>
-    You can specify third-party Python packages for your Python UDF using the optional `packages`
-    config. Set it to a list of package names (for example, `packages: ["numpy", "pandas"]`). The warehouse installs these packages when creating the UDF, allowing your UDF to use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before using them.
+    You can specify public third-party Python packages for your Python UDF using the optional `packages` config. The warehouse installs these packages when creating the UDF, allowing your UDF to use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before using them.
 
     :::info Beta feature
     The `packages` config is a beta feature in <Constant name="core" /> v1.12.
