@@ -105,11 +105,11 @@ The configuration side panel has the following tabs:
 
 The **Output** tab is one of the most powerful features in <Constant name="canvas" />, giving you instant visibility into how your data transforms at each step:
 
-- **Row count** &mdash; See the exact number of rows produced by each operator. This helps you immediately identify unexpected data changes, such as:
+- **Row count**: See the exact number of rows produced by each operator. This helps you immediately identify unexpected data changes, such as:
   - Row explosion from joins (indicating possible missing join conditions)
   - Excessive filtering (catching overly restrictive WHERE clauses)
   - Unexpected duplicates from unions or other operations
-- **Column details** &mdash; View all columns in the output, including their names and data types.
-- **Data preview** &mdash; See sample values from your transformed data without running a full build.
+- **Column details**: View all columns in the output, including their names and data types.
+- **Data preview**: See sample values from your transformed data without running a full build.
 
 This step-by-step visibility helps you validate transformations as you build, catching issues early in the development process rather than after deployment.
