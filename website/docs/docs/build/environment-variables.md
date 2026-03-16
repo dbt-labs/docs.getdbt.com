@@ -105,7 +105,7 @@ Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additio
 
 ### Special environment variables
 
-Environment variables define different behavior in different runtime environments such as development, production, and [continuous integration](/docs/deploy/continuous-integration?version=1.11), or different behavior for different users in development (based on personal preferences).
+Environment variables define different behavior in different runtime environments such as development, production, and [continuous integration](/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
 
 Aside from dbt's built-in special environment variables and [dbt global flags](/reference/global-configs/about-global-configs) (which can be set using `DBT_<FLAG_NAME>`; refer to [Available flags](/reference/global-configs/about-global-configs#available-flags)), environment variable names and values are defined per project. Custom variable names must use the [required prefixes](/docs/build/environment-variables?version=1.11) (`DBT_`, `DBT_ENV_SECRET_`, or `DBT_ENV_CUSTOM_ENV_`). There is no global, exhaustive list of all possible environment variables.
 
