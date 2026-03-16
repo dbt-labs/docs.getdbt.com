@@ -284,12 +284,11 @@ A common mistake is pasting a full URL instead of the value. These variables exp
 
 ```bash
 # ✅ Correct
-DBT_HOST=cloud.getdbt.com
+DBT_HOST=cloud.getdbt.com            # https://cloud.getdbt.com also works
 DBT_PROD_ENV_ID=54321
 DBT_USER_ID=123
 
-# ❌ Wrong — don't include https:// or full URLs
-DBT_HOST=https://cloud.getdbt.com
+# ❌ Wrong — IDs must be numeric, not full URLs
 DBT_PROD_ENV_ID=https://cloud.getdbt.com/deploy/12345/projects/67890/environments/54321
 DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 ```

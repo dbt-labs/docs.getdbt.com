@@ -20,7 +20,9 @@ This quickstart connects dbt MCP to your <Constant name="dbt_platform"/> account
 
 <TabItem value="oauth" label="OAuth">
 
-OAuth is the fastest setup for <Constant name="dbt_platform"/> Enterprise and Enterprise+ accounts &mdash; no tokens to copy or manage. A browser window opens to authenticate the first time you connect.
+OAuth is the fastest setup for <Constant name="dbt_platform"/> Enterprise and Enterprise+ accounts &mdash; no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
+
+OAuth is currently available with the local MCP server only. For [remote MCP server](/docs/dbt-ai/setup-remote-mcp) setups, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#setup-instructions).
 
 <StaticSubdomainRequired />
 
@@ -29,16 +31,8 @@ OAuth is the fastest setup for <Constant name="dbt_platform"/> Enterprise and En
 1. Log in to your <Constant name="dbt_platform"/> account.
 2. Go to **Account settings** and copy your **Access URL** (for example, `abc123.us1.dbt.com`).
 
-:::warning Use the hostname only, not a full URL
-`DBT_HOST` expects a hostname — don't include `https://`:
-
-```bash
-# ✅ Correct
-DBT_HOST=abc123.us1.dbt.com
-
-# ❌ Wrong
-DBT_HOST=https://abc123.us1.dbt.com
-```
+:::tip DBT_HOST format
+`DBT_HOST` accepts both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com`.
 :::
 
 :::tip Multi-cell accounts
@@ -193,12 +187,11 @@ These variables expect hostnames or numeric IDs — not full URLs:
 
 ```bash
 # ✅ Correct
-DBT_HOST=cloud.getdbt.com
+DBT_HOST=cloud.getdbt.com            # https://cloud.getdbt.com also works
 DBT_PROD_ENV_ID=54321
 DBT_USER_ID=123
 
-# ❌ Wrong — don't include https:// or paste URLs
-DBT_HOST=https://cloud.getdbt.com
+# ❌ Wrong — IDs must be numeric, not full URLs
 DBT_PROD_ENV_ID=https://cloud.getdbt.com/deploy/12345/projects/67890/environments/54321
 DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 ```
@@ -322,6 +315,8 @@ Add `-e DBT_DEV_ENV_ID=...` and `-e DBT_USER_ID=...` if you use `execute_sql`; a
   }
 }
 ```
+
+4. Save `mcp.json` and restart VS Code.  
 
 </TabItem>
 

@@ -81,7 +81,13 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
 2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template.
    :::tip IDs are integers, not URLs
-   `PROD-ID`, `USER-ID`, and `DEV-ID` must be numeric IDs (for example, `54321`), not full URLs. Only the `url` field should contain `https://`.
+   `DBT_PROD_ENV_ID`, `DBT_USER_ID`, and `DBT_DEV_ENV_ID` must be numeric IDs (for example, `54321`), not full URLs. 
+
+   `DBT_HOST` field accepts the `https://` prefix and without the `https://` prefix. The following are valid examples:
+   ```bash
+   DBT_HOST=https://ab123.us1.dbt.com
+   DBT_HOST=ab123.us1.dbt.com
+   ```
    :::
 3. Save, and now you have access to the dbt MCP server!
 

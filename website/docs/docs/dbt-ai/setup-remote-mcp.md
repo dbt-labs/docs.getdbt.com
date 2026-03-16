@@ -104,9 +104,9 @@ Example configuration:
         "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
         "headers": {
          "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
-          "x-dbt-prod-environment-id": "PROD-ID",
-          "x-dbt-user-id": "USER-ID",
-          "x-dbt-dev-environment-id": "DEV-ID"
+          "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+          "x-dbt-user-id": "DBT_USER_ID",
+          "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
         }
       }
     }

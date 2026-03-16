@@ -24,7 +24,7 @@ These variables are required for <Constant name="dbt_platform"/> features (Seman
 
 | Variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses) (without `https://`). Default: `cloud.getdbt.com`. <br /> <br />For multi-cell accounts, use the base hostname (for example, `us1.dbt.com`) and set `MULTICELL_ACCOUNT_PREFIX` separately (for example, `abc123`). |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`. Default: `cloud.getdbt.com`. <br /> <br />For multi-cell accounts, use the base hostname (for example, `us1.dbt.com`) and set `MULTICELL_ACCOUNT_PREFIX` separately (for example, `abc123`). |
 | `MULTICELL_ACCOUNT_PREFIX` | Required for multi-cell | Your account prefix (for example, `abc123` from `abc123.us1.dbt.com`). Do not include this in `DBT_HOST`. |
 | `DBT_TOKEN` | Required | A service token or Personal Access Token (PAT). <br /> <br />The `execute_sql` tool requires a PAT — service tokens _do not_ work for that tool. |
 | `DBT_PROD_ENV_ID` | Required | Your production environment ID (numeric integer). |
@@ -36,7 +36,9 @@ See [Finding your IDs](/docs/dbt-ai/mcp-find-ids) for step-by-step instructions 
 
 ## Tool configuration
 
-dbt MCP has two modes for controlling which tools are available: disable mode (default) and enable mode (allowlist).
+dbt MCP has two modes for controlling which tools are available: disable mode (default) and enable mode (allowlist). 
+
+Toolsets may grow over time as new capabilities are added. The naming pattern generalizes to `DISABLE_{TOOLSET}=` and `DBT_MCP_ENABLE_{TOOLSET}=`, so new toolsets follow the same convention. For the latest list of toolset names, refer to the tables below or the [dbt-mcp README](https://github.com/dbt-labs/dbt-mcp).
 
 :::tip Which mode should I use?
 - **Disable mode:** Use when you want most tools available and only need to turn a few off.
@@ -93,8 +95,9 @@ When multiple variables are set, they're evaluated in this order (highest priori
 4. Toolset disable (`DISABLE_*=true`)
 5. Default behavior
 
-## Logging
+## Logging and debugging
 
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DBT_MCP_LOG_LEVEL` | `INFO` | Log level for the MCP server. Options: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. Set to `DEBUG` temporarily to diagnose issues. |
+| `MCP_TRANSPORT` | `stdio` | Transport protocol. Set to `streamable-http` for local debugging only (for example, attaching a Python debugger). See the [dbt-mcp CONTRIBUTING guide](https://github.com/dbt-labs/dbt-mcp/blob/main/CONTRIBUTING.md). |

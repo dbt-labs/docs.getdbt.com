@@ -12,6 +12,9 @@ Claude is an AI assistant from Anthropic with two primary interfaces:
 - [Claude for desktop](https://claude.ai/download): A GUI with MCP support for file access and commands as well as basic coding features
 - [Claude Code](https://www.anthropic.com/claude-code): A terminal/IDE tool for development
 
+You don't need to clone the dbt-mcp repository &mdash; install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the configs below). Only clone the repository if you want to [contribute to dbt MCP](https://github.com/dbt-labs/dbt-mcp/issues).
+
+
 ## Claude Desktop
 
 <StaticSubdomainRequired />
@@ -30,10 +33,6 @@ To add advanced configurations:
 2. In the Settings window, navigate to the **Developer** tab in the left sidebar. This section contains options for configuring MCP servers and other developer features.
 3. Click the **Edit Config** button and open the configuration file with a text editor.
 4. Add your server configuration based on your use case. Choose the [correct JSON structure](https://modelcontextprotocol.io/quickstart/user#installing-the-filesystem-server) from the following options:
-
-    :::tip
-    You do not need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the config below); cloning is only for contributing.
-    :::
 
     <Expandable alt_header="Local MCP with OAuth">
 
@@ -77,7 +76,7 @@ To add advanced configurations:
     Using the `env` field (single-file configuration):
 
     :::tip IDs are integers, not URLs
-    `DBT_HOST` should be a hostname only (no `https://`). `DBT_PROD_ENV_ID`, `DBT_DEV_ENV_ID`, and `DBT_USER_ID` must be numeric IDs (for example, `54321`), not full URLs copied from your browser.
+    `DBT_PROD_ENV_ID`, `DBT_DEV_ENV_ID`, and `DBT_USER_ID` must be numeric IDs (for example, `54321`), not full URLs copied from your browser. `DBT_HOST` accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`.
     :::
 
     ```json

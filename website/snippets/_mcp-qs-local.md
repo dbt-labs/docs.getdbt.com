@@ -3,8 +3,6 @@ import MCPFaqServerNotStarting from '/snippets/_mcp-faq-server-not-starting.md';
 
 This quickstart walks you through connecting dbt MCP to your local dbt project. This setup gives you dbt CLI tools (`run`, `build`, `test`, `compile`, and more) inside your AI assistant. If you'd like to connect to <Constant name="dbt_platform"/> with the CLI, see the [OAuth quickstart](/docs/dbt-ai/mcp-quickstart-oauth).
 
-**Time to complete:** ~5 minutes
-
 :::tip No clone required
 You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` — it fetches and runs dbt-mcp for you.
 :::

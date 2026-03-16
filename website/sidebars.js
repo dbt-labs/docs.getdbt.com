@@ -882,7 +882,7 @@ const sidebarSettings = {
         "docs/dbt-ai/about-mcp",
         {
           type: "category",
-          label: "Quickstarts",
+          label: "Get started",
           collapsed: true,
           link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
           items: [

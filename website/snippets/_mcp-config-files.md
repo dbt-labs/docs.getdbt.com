@@ -20,7 +20,7 @@ When you use only the dbt platform, the CLI tools are automatically disabled. Yo
 }
 ```
 
-**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Don't include `https://`. This enables OAuth authentication without requiring local dbt installation.
+**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com` are accepted. This enables OAuth authentication without requiring local dbt installation.
 
 </TabItem>
 
@@ -46,7 +46,7 @@ The `DBT_PROJECT_DIR` and `DBT_PATH` fields are required for CLI access. You can
 }
 ```
 
-**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Don't include `https://`. This enables OAuth authentication.
+**Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com` are accepted. This enables OAuth authentication.
 
 </TabItem>
 

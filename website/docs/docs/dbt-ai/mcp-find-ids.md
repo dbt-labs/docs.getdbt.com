@@ -8,29 +8,27 @@ id: "mcp-find-ids"
 Several dbt MCP environment variables and headers require numeric IDs from your <Constant name="dbt_platform"/> account. This guide shows exactly where to find each one.
 
 :::warning Use numeric IDs, not full URLs
-These variables expect integers or hostnames — not URLs. A common mistake is copying the URL from your browser address bar.
+ID variables expect integers, not URLs. A common mistake is copying the URL from your browser address bar.
 
 ```bash
 # ✅ Correct
+DBT_HOST=cloud.getdbt.com            # https://cloud.getdbt.com also works
 DBT_PROD_ENV_ID=54321
 DBT_USER_ID=123
-DBT_HOST=cloud.getdbt.com
 
-# ❌ Wrong — these are URLs, not IDs
+# ❌ Wrong — IDs must be numeric, not full URLs
 DBT_PROD_ENV_ID=https://cloud.getdbt.com/deploy/12345/projects/67890/environments/54321
 DBT_USER_ID=https://cloud.getdbt.com/settings/profile
-DBT_HOST=https://cloud.getdbt.com
 ```
 :::
 
 ## DBT_HOST (account hostname) {#dbt-host}
 
-Your hostname is the domain you use to access <Constant name="dbt_platform"/>, without `https://`.
+Your hostname is the domain you use to access <Constant name="dbt_platform"/>. Both `cloud.getdbt.com` and `https://cloud.getdbt.com` are accepted.
 
 1. Log in to your <Constant name="dbt_platform"/> account.
 2. Go to **Account settings**.
 3. Copy the **Access URL** value.
-4. Remove the `https://` prefix — use only the hostname.
 
 | Account type | Example Access URL | DBT_HOST value |
 | --- | --- | --- |
