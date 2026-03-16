@@ -19,7 +19,7 @@ You can migrate your projects from using the `dbt-spark` adapter to using the [d
 
 ### Prerequisite
 
-- For <Constant name="cloud" />, you need administrative (admin) privileges to migrate dbt projects.
+- For <Constant name="dbt" />, you need administrative (admin) privileges to migrate dbt projects.
 
 ### Simpler authentication
 
@@ -51,7 +51,7 @@ You can migrate your projects to the Databricks-specific adapter from the generi
 
 The migration to the `dbt-databricks` adapter from `dbt-spark` shouldn't cause any downtime for production jobs. dbt Labs recommends that you schedule the connection change when usage of the IDE is light to avoid disrupting your team.
 
-To update your Databricks connection in <Constant name="cloud" />:
+To update your Databricks connection in <Constant name="dbt" />:
 
 1. Select **Account Settings** in the main navigation bar.
 2. On the **Projects** tab, find the project you want to migrate to the dbt-databricks adapter.
@@ -64,17 +64,17 @@ To update your Databricks connection in <Constant name="cloud" />:
     3. (optional) catalog name
 7. Click **Save**.
 
-Everyone in your organization who uses <Constant name="cloud" /> must refresh the <Constant name="cloud_ide" /> before starting work again. It should refresh in less than a minute.
+Everyone in your organization who uses <Constant name="dbt" /> must refresh the <Constant name="studio_ide" /> before starting work again. It should refresh in less than a minute.
 
 ## Configure your credentials
 
-When you update the Databricks connection in <Constant name="cloud" />, your team will not lose their credentials. This makes migrating easier since it only requires you to delete the Databricks connection and re-add the cluster or endpoint information.
+When you update the Databricks connection in <Constant name="dbt" />, your team will not lose their credentials. This makes migrating easier since it only requires you to delete the Databricks connection and re-add the cluster or endpoint information.
 
 These credentials will not get lost when there's a successful connection to Databricks using the `dbt-spark` ODBC method:
 
-- The credentials you supplied to <Constant name="cloud" /> to connect to your Databricks workspace.
-- The personal access tokens your team added in their <Constant name="cloud" /> profile so they can develop in the <Constant name="cloud_ide" /> for a given project.
-- The access token you added for each deployment environment so <Constant name="cloud" /> can connect to Databricks during production jobs.
+- The credentials you supplied to <Constant name="dbt" /> to connect to your Databricks workspace.
+- The personal access tokens your team added in their <Constant name="dbt" /> profile so they can develop in the <Constant name="studio_ide" /> for a given project.
+- The access token you added for each deployment environment so <Constant name="dbt" /> can connect to Databricks during production jobs.
 
 ## Migrate dbt projects in dbt Core
 

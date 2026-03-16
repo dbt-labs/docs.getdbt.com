@@ -7,13 +7,13 @@ pagination_next: null
 pagination_prev: null
 ---
 
-To set up and configure environment-level permissions, you must have write permissions to the **Groups & Licenses** settings of your <Constant name="cloud" /> account. For more information about roles and permissions, check out [User permissions and licenses](/docs/cloud/manage-access/seats-and-users).
+To set up and configure environment-level permissions, you must have write permissions to the **Groups & Licenses** settings of your <Constant name="dbt" /> account. For more information about roles and permissions, check out [User permissions and licenses](/docs/cloud/manage-access/seats-and-users).
 
 Environment-level permissions are not the same as account-level [role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) and are configured separately from those workflows.
 
 ## Setup instructions
 
-In your <Constant name="cloud" /> account:
+In your <Constant name="dbt" /> account:
 
 1. Click your account name, above your profile icon on the left side panel. Then select **Account settings**.
 2. Select **Groups & Licenses**. We recommend deleting the default `Owner`, `Member`, and `Everyone` groups and, instead, assigning users to your organizational groups to avoid granting them unnecessary elevated privileges.

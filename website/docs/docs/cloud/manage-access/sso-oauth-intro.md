@@ -17,7 +17,7 @@ These features are available on Enterprise and Enterprise+ plans and are typical
 
 ## SSO
 
-Lets users log in to <Constant name="cloud" /> with your identity provider (IdP) instead of a password. Supports Just-in-Time provisioning and IdP-initiated login. *For admins setting up Okta, Microsoft Entra ID, Google Workspace, or SAML 2.0.*
+Lets users log in to <Constant name="dbt" /> with your identity provider (IdP) instead of a password. Supports Just-in-Time provisioning and IdP-initiated login. *For admins setting up Okta, Microsoft Entra ID, Google Workspace, or SAML 2.0.*
 
 - [Single sign-on (SSO) overview](/docs/cloud/manage-access/sso-overview) &mdash; How SSO works and prerequisites
 - [Migrating to Auth0 for SSO](/docs/cloud/manage-access/auth0-migration)
@@ -28,15 +28,15 @@ Lets users log in to <Constant name="cloud" /> with your identity provider (IdP)
 
 ## SCIM
 
-Automates user and group provisioning from your IdP into <Constant name="cloud" /> (and, with Okta, license assignment). *For admins using Okta or Microsoft Entra ID who want to sync users and groups.*
+Automates user and group provisioning from your IdP into <Constant name="dbt" /> (and, with Okta, license assignment). *For admins using Okta or Microsoft Entra ID who want to sync users and groups.*
 
-- [Set up SCIM](/docs/cloud/manage-access/scim) &mdash; Prerequisites and enabling SCIM in <Constant name="cloud" />
+- [Set up SCIM](/docs/cloud/manage-access/scim) &mdash; Prerequisites and enabling SCIM in <Constant name="dbt" />
 - [Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta) (includes [license management](/docs/cloud/manage-access/scim-manage-user-licenses))
 - [Set up SCIM with Entra ID](/docs/cloud/manage-access/scim-entra-id)
 
 ## Connection OAuth {#connection-oauth}
 
-Connection OAuth is for authenticating to your data platform (like Snowflake, BigQuery), which is different from SSO, which handles user login to <Constant name="dbt_platform" />. It lets developers authorize their development credentials with a data platform using that platform's login instead of storing passwords in <Constant name="cloud" />. *For admins and developers connecting to supported data platforms.*
+Connection OAuth is for authenticating to your data platform (like Snowflake, BigQuery), which is different from SSO, which handles user login to <Constant name="dbt_platform" />. It lets developers authorize their development credentials with a data platform using that platform's login instead of storing passwords in <Constant name="dbt" />. *For admins and developers connecting to supported data platforms.*
 
 - [OAuth overview](/docs/cloud/manage-access/oauth-intro) &mdash; What's available by platform
 - [Set up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth)

@@ -19,7 +19,7 @@ The <Constant name="dbt_platform" /> supports [OAuth](https://cloud.google.com/b
 
 ## Set up BigQuery native OAuth
 
-When BigQuery OAuth is enabled for a <Constant name="dbt_platform" /> project, all <Constant name="dbt_platform" /> developers must authenticate with BigQuery to access development tools, such as the <Constant name="cloud_ide" />. 
+When BigQuery OAuth is enabled for a <Constant name="dbt_platform" /> project, all <Constant name="dbt_platform" /> developers must authenticate with BigQuery to access development tools, such as the <Constant name="studio_ide" />. 
 
 
 To set up BigQuery OAuth in the <Constant name="dbt_platform" />, a BigQuery admin must:
@@ -27,8 +27,8 @@ To set up BigQuery OAuth in the <Constant name="dbt_platform" />, a BigQuery adm
 2. [Create a BigQuery OAuth 2.0 client ID and secret](#creating-a-bigquery-oauth-20-client-id-and-secret) in BigQuery.
 3. [Configure the connection](/docs/cloud/manage-access/set-up-bigquery-oauth#configure-the-connection-in-dbt) in the <Constant name="dbt_platform" />.
 
-To use BigQuery in the <Constant name="cloud_ide" />, all developers must:
-1. [Authenticate to BigQuery](#authenticating-to-bigquery) in the their profile credentials.
+To use BigQuery in the <Constant name="studio_ide" />, all developers must:
+1. [Authenticate to BigQuery](#authenticating-to-bigquery) in their profile credentials.
 
 ### Locate the redirect URI value
 To get started, locate the connection's redirect URI for configuring BigQuery OAuth. To do so:
@@ -80,7 +80,7 @@ Now that you have an OAuth app set up in BigQuery, you'll need to add the client
  3. Enter the BigQuery token URI. The default value is `https://oauth2.googleapis.com/token`. 
 
 ### Authenticating to BigQuery
-Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> project, each <Constant name="dbt_platform" />user will need to authenticate with BigQuery in order to use the <Constant name="cloud_ide" />. To do so:
+Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> project, each <Constant name="dbt_platform" /> user will need to authenticate with BigQuery in order to use the <Constant name="studio_ide" />. To do so:
 
 1. Navigate to your account name, above your profile icon on the left side panel.
 2. Select **Account settings** from the menu.
@@ -219,3 +219,55 @@ If you don't already have a job based on the deployment environment with a conne
 
 <FAQ path="Warehouse/bq-oauth-drive-scope" />
 
+
+## Troubleshooting
+
+The following section provides troubleshooting steps for common issues with BigQuery OAuth connections.
+
+#### Connection fails after granting Google permissions
+
+When connecting a BigQuery account, you may successfully sign in to Google and approve the requested permissions, but then see an error page (like `403 Account restricted`) instead of returning to the <Constant name="dbt_platform" />. This typically appears as a server error message rather than the credentials page you started from.
+
+This can happen when your Google Workspace organization restricts which third-party applications can access Google services. Even though Google allowed you to sign in and view the consent screen, the organization's security policy blocked the final step of issuing credentials to the <Constant name="dbt_platform" />.
+
+This troubleshooting section will explain Why this happens, how to resolve it, and what to do if it keeps happening.
+
+<Expandable alt_header="1. Why this affects BigQuery OAuth">
+
+Google classifies OAuth scopes into three tiers: non-sensitive, sensitive, and restricted. Applications that only request non-sensitive scopes (such as basic sign-in) typically work without additional admin approval. The BigQuery OAuth connection requires scopes that Google classifies as [restricted](https://support.google.com/cloud/answer/9110914), which always require explicit admin trust regardless of your organization's default policy for third-party apps.
+
+The BigQuery OAuth connection requests these restricted scopes:
+
+- `bigquery` &mdash; Required to run queries and access BigQuery resources
+- `cloud-platform` &mdash; Required for cross-project BigQuery access and service interoperability
+- `drive` &mdash; Required to support [BigQuery external tables over Google Drive](https://cloud.google.com/bigquery/docs/external-data-drive)
+
+Other applications you use may connect without this approval step because they likely request only non-sensitive or sensitive scopes that don't trigger the same restriction.
+
+</Expandable>
+
+<Expandable alt_header="2. How to resolve it">
+
+Your Google Workspace administrator must trust the OAuth client ID that your <Constant name="dbt_platform" /> BigQuery connection uses. Find this client ID in the <Constant name="dbt_platform" /> under **Account settings** > **Connections** > your BigQuery connection > **OAuth 2.0 Settings**.
+
+Once you have the client ID, ask your Google Workspace administrator to:
+
+1. Sign in to the [Google Workspace Admin Console](https://admin.google.com).
+2. Navigate to **Security** > **Access and data control** > **API controls** > **Manage third-party app access**.
+3. Click **Add app** > **OAuth App Name Or Client ID**.
+4. Enter the client ID from your <Constant name="dbt_platform" /> BigQuery connection.
+5. Set the access level to **Trusted**.
+6. Apply the setting to the relevant organizational unit or the entire organization.
+
+After the administrator completes these steps, retry the BigQuery connection from your credentials page in the <Constant name="dbt_platform" />.
+
+For more details, see Google's documentation on [controlling third-party app access to Google Workspace data](https://support.google.com/a/answer/7281227).
+
+</Expandable>
+
+<Expandable alt_header="3. If the issue persists">
+
+If the connection still fails after your administrator trusts the OAuth client in Google Workspace, ask your GCP project administrator to check whether a Google Cloud [Organization Policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview) restricts external OAuth clients. The relevant constraint is `constraints/iam.allowedExternalOAuthClients`.
+
+If neither of these steps resolves the issue, contact [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) with the approximate time of the failed connection attempt and the email address you used to authenticate with Google.
+</Expandable>
