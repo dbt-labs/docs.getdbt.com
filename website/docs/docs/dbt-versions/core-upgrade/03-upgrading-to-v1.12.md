@@ -38,7 +38,7 @@ You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in
 
 ### `packages` config for Python UDFs <Lifecycle status="beta" />
 
-You can specify public third-party Python packages for your Python UDF using the optional `packages` config. The warehouse installs these packages when creating the UDF, allowing your UDF to use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference page.
+You can specify public third-party PyPI packages for your Python UDF using the optional `packages` config. The warehouse installs these packages when creating the UDF, allowing your UDF to use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference page.
 
 ### Managing changes to legacy behaviors
 
