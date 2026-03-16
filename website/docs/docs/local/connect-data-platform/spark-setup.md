@@ -74,7 +74,7 @@ For detailed configuration options, refer to the [Spark configuration](/referenc
 
 # Connect Apache Spark to dbt Core
 
-<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/spark-setup?version=2" /> connection also available.
 
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />
