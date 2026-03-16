@@ -6,9 +6,9 @@ id: delete-users
 
 ---
 
-To delete a user in <Constant name="cloud" />, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
+To delete a user in <Constant name="dbt" />, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
 
-1. From <Constant name="cloud" />, click on your account name in the left side menu and, select **Account settings**.
+1. From <Constant name="dbt" />, click on your account name in the left side menu and, select **Account settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" title="Navigate to account settings" />
 
@@ -27,4 +27,4 @@ import LicenseCount from '/snippets/_license-count.md';
 
 ## Related docs
 
-- [<Constant name="cloud" /> licenses](/docs/cloud/manage-access/seats-and-users#licenses)
+- [<Constant name="dbt" /> licenses](/docs/cloud/manage-access/seats-and-users#licenses)

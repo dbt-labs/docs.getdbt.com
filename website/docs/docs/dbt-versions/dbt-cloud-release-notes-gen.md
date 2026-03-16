@@ -8,7 +8,7 @@ pagination_prev: null
 unlisted: true
 ---
 
-<Constant name="cloud" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
+<Constant name="dbt" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
 
 - **New:** New products and features
 - **Enhancement:** Performance improvements and feature enhancements
@@ -17,6 +17,60 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+
+## March 11, 2026
+
+## New
+
+### Deployment and Configuration
+
+- **Self-serve Snowflake private endpoint requests:** You can request a new Snowflake private endpoint from account settings by pasting the output from `SELECT SYSTEM$GET_PRIVATELINK_CONFIG();`, then track request status in the private endpoints table. This is available for Enterprise Business Critical accounts only, and please contact your account manager to enable. For other connection types, contact support@dbtlabs.com.
+
+## Enhancements
+
+### Orchestration and Run Status
+
+- **Run retries support dbt Fusion runs:** You can now retry failed runs as long as your environment is on dbt Core version `1.6` or higher or dbt Fusion.
+
+### Integrations
+
+- **More reliable Slack notifications:** Slack channel discovery and notifications now retry on Slack rate limits to reduce dropped messages during busy periods.
+
+### APIs, Identity, and Administration
+
+- **Improved OpenAPI typing for large integers:** OpenAPI schemas now mark 64-bit integer fields as `format: int64` to improve generated client types.
+
+- **Clearer credentials schemas:** Credentials OpenAPI docs now use a `type` discriminator (`postgres`, `redshift`, `snowflake`, `bigquery`, and `adapter`) to improve code generation and request validation.
+
+## Fixes
+
+### Orchestration and Run Status
+
+- **More reliable job search:** Searching jobs with numeric terms (for example, `12`) no longer triggers API validation errors, so you can load job lists reliably.
+
+- **Clearer cross-project publication errors:** When dbt platform cannot fetch a publication artifact for an upstream project declared in `dependencies.yml`, you now see which project is missing an artifact and guidance to run the upstream environment at least once.
+
+### Integrations
+
+- **More accurate Microsoft Teams notification triggers:** Microsoft Teams notifications now use the correct trigger event type for each notification, so you see the expected run outcome context in the message.
+
+### APIs, Identity, and Administration
+
+- **More accurate error responses during permission checks:** You now receive more accurate errors from permission checks, and underlying service errors surface instead of being reported as authorization failures.
+
+### Deployment and Configuration
+
+- **Clearer private endpoint validation errors:** Creating a private endpoint now returns a `400` error with a clear message when `snowflake_output` is malformed or not valid JSON.
+
+## Behavior Changes
+
+### Orchestration and Run Status
+
+- **Model timing unavailable for dbt Fusion runs:** You now see an informational notice instead of the Model timing chart for dbt Fusion runs because dbt Fusion handles threading differently.
+
+### APIs, Identity, and Administration
+
+- **System for Cross-domain Identity Management (SCIM) `id` fields are now strings:** SCIM schema discovery now reports `id` fields as strings for users and groups.
 
 ## March 4, 2026
 

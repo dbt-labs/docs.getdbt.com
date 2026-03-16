@@ -29,7 +29,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 <SlSetUp/>
 
 <!--
-1. Create a new environment in <Constant name="cloud" /> by selecting **Deploy** and then **Environments**.
+1. Create a new environment in <Constant name="dbt" /> by selecting **Deploy** and then **Environments**.
 2. Select **dbt Version 1.6** (or the latest) and enter your deployment credentials.
 3. To configure the new Semantic Layer, you must have a successful run in your new environment. We recommend running `dbt ls` since `dbt build` won’t succeed until you’ve created and defined semantic models and metrics.
 4. To enable the <Constant name="semantic_layer" />, go to the **Account Settings** page and then select the specific project you want to enable the <Constant name="semantic_layer" /> for.
