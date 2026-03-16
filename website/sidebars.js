@@ -875,7 +875,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "dbt MCP",
+      label: "dbt MCP server",
       collapsed: true,
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
