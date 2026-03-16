@@ -19,9 +19,9 @@ We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_qu
 
 :::tip When to use statement blocks in Fusion
 
-For queries where you need to fetch results, you can use either `statement` blocks with `fetch_result=True` or the [`run_query` macro](/reference/dbt-jinja-functions/run_query).
+For queries where you need to fetch results (for example, when your macro or Jinja code needs to use data returned from the database), you can use either `statement` blocks with `fetch_result=True` or the [`run_query` macro](/reference/dbt-jinja-functions/run_query).
 
-For DDL or utility operations (like `OPTIMIZE`, `VACUUM`, or maintenance queries) where you don't need the result set, use `statement` blocks with `fetch_result=False`. This avoids issues with <Constant name="fusion" />'s strict type checking, which can fail when processing result sets that contain null values in columns declared as non-nullable.
+For <Term id="ddl" /> or utility operations (like `OPTIMIZE`, `VACUUM`, or maintenance queries), use `statement` blocks with `fetch_result=False` when you don't need to access the results in Jinja. This avoids issues with <Constant name="fusion" />'s strict type checking, which can fail when processing result sets that contain `NULL` values in columns declared as non-nullable.
 
 :::
 

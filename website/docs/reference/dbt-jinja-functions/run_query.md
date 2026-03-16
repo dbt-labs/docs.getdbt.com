@@ -18,7 +18,7 @@ Returns a [Table](https://agate.readthedocs.io/page/api/table.html) object with 
 
 ## Fusion type checking
 
-The <Constant name="fusion_engine" /> processes result sets with strict null checking. This can cause failures when using `run_query` for DDL or utility operations (like `OPTIMIZE`, `VACUUM`, or maintenance queries) that return result sets with null values in columns declared as non-nullable.
+The <Constant name="fusion_engine" /> processes result sets with strict null checking. This can cause failures when using `run_query` for <Term id="ddl" /> or utility operations (like `OPTIMIZE`, `VACUUM`, or maintenance queries) that return result sets with null values in columns declared as non-nullable.
 
 For "fire and forget" operations where you don't need the result set, use a [statement block](/reference/dbt-jinja-functions/statement-blocks) with `fetch_result=False` instead:
 
