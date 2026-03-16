@@ -110,7 +110,7 @@ DBT_ACCOUNT_ID=your-account-id
 DBT_TOKEN=your-service-token
 DBT_PROJECT_DIR=/path/to/your/dbt/project
 DBT_PATH=/path/to/your/dbt/executable
-MULTICELL_ACCOUNT_PREFIX=your-account-prefix
+DBT_HOST_PREFIX=your-account-prefix
 ```
 You will need this file for integrating with MCP-compatible tools.
 
@@ -118,8 +118,8 @@ You will need this file for integrating with MCP-compatible tools.
 
 | Environment Variable     | Required                               | Description                                                                                                                                                                                                                                                                                                                 |
 | ------------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DBT_HOST`               | Required                               | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For Multi-cell accounts, exclude the account prefix from the hostname. The default is `cloud.getdbt.com`.                                                                                    |
-| MULTICELL_ACCOUNT_PREFIX | Only required for Multi-cell instances | Set your Multi-cell account prefix here (not in DBT_HOST). If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses).                                                                                                 |
+| `DBT_HOST`               | Required                               | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For multi-cell accounts, exclude the account prefix from the hostname and set it in `DBT_HOST_PREFIX` instead. The default is `cloud.getdbt.com`.                                                                                    |
+| `DBT_HOST_PREFIX` | Only required for multi-cell instances | Your account prefix (for example, `abc123` from `abc123.us1.dbt.com`). Do not include this in `DBT_HOST`. If you are not using a multi-cell account, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses).                                                                                                 |
 | DBT_TOKEN                | Required                               | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
 | DBT_ACCOUNT_ID           | Required for Administrative API tools  | Your [dbt account ID](/faqs/Accounts/find-user-id)                                                                                                                                                                                                                                                                          |
 | DBT_PROD_ENV_ID          | Required                               | Your <Constant name="dbt_platform" /> production environment ID                                                                                                                                                                                                                                                             |
@@ -131,18 +131,18 @@ You will need this file for integrating with MCP-compatible tools.
 ✅ **Correct configuration:**
 ```bash
 DBT_HOST=us1.dbt.com
-MULTICELL_ACCOUNT_PREFIX=abc123
+DBT_HOST_PREFIX=abc123
 ```
 
 ❌ **Incorrect configuration (common mistake):**
 ```bash
 DBT_HOST=abc123.us1.dbt.com  # Don't include prefix in host!
-# MULTICELL_ACCOUNT_PREFIX not set
+# DBT_HOST_PREFIX not set
 ```
 
 If your full URL is `abc123.us1.dbt.com`, separate it as:
 - `DBT_HOST=us1.dbt.com`
-- `MULTICELL_ACCOUNT_PREFIX=abc123`
+- `DBT_HOST_PREFIX=abc123`
 
 ## dbt CLI settings
 
