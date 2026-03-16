@@ -36,7 +36,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/access-regions-ip-addresses",
         "docs/cloud/about-cloud/tenancy",
       ],
-    }, // About dbt Cloud directory
+    }, // About dbt platform directory
     {
       type: "category",
       label: "Supported data platforms",
@@ -849,31 +849,33 @@ const sidebarSettings = {
         "docs/dbt-ai/about-dbt-ai",
     {
       type: "category",
-      label: "dbt Agents",
-      collapsed: true,
-      link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
-      items: [
-        "docs/dbt-ai/dbt-agents",
-        "docs/dbt-ai/analyst-agent",
-      ],
-    },
-    {
-      type: "category",
       label: "dbt Copilot",
       collapsed: true,
-      link: { type: "doc", id: "docs/cloud/dbt-copilot" },
+      link: { type: "doc", id: "docs/cloud/dbt-copilot-overview" },
       items: [
+        "docs/cloud/dbt-copilot-overview",
         "docs/cloud/dbt-copilot",
         "docs/cloud/enable-dbt-copilot",
         "docs/cloud/use-dbt-copilot",
         "docs/cloud/copilot-styleguide",
         "docs/cloud/copilot-chat-in-studio",
         "docs/cloud/dbt-copilot-faqs",
+        {
+          type: "category",
+          label: "dbt Agents",
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
+          items: [
+            "docs/dbt-ai/dbt-agents",
+            "docs/dbt-ai/analyst-agent",
+            "docs/dbt-ai/developer-agent",
+          ],
+        },
       ],
     },
     {
       type: "category",
-      label: "dbt MCP",
+      label: "dbt MCP server",
       collapsed: true,
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
