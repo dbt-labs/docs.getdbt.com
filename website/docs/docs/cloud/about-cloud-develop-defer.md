@@ -13,7 +13,7 @@ Both the <Constant name="studio_ide" /> and the <Constant name="dbt" /> CLI enab
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
-When using `--defer`, <Constant name="cloud" /> will follow this order of execution for resolving `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls.
+When using `--defer`, <Constant name="dbt" /> will follow this order of execution for resolving `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls.
 
 1. If a development version of a deferred relation exists, dbt preferentially uses the development database location when resolving the reference.
 2. If a development version doesn't exist, dbt uses the staging locations of parent relations based on metadata from the staging environment.
