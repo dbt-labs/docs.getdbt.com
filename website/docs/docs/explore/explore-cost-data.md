@@ -103,12 +103,11 @@ To access job details, select your project in the main menu and go to **Orchestr
 
 ### Filters
 
-For **Run duration**, **Cost**, **Builds**, and **Usage** tabs, you can customize the cost data you want to view by:
+For **Runs**, **Usage**, **Query run time**, and **Builds** tabs, you can customize the cost data you want to view by:
 
 - **Last**: 30 days, 60 days, 90 days, 6 months, or 1 year
 - **View**: Daily, Weekly, Monthly
 
-On the **Cost**, **Usage**, **Query run time**, and **Builds** tabs, use the **Asset type** dropdown on each chart to filter the data by **Models**, **Tests**, or **All**. Your selection is stored per tab, so you can view models on one tab and tests on another without changing the other tab’s filter.
 
 ### Visualization tabs
 
