@@ -23,14 +23,14 @@ The <Constant name="dbt_platform" /> can connect with a variety of data platform
 | [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino) | ✅ | ❌ |
 | [Teradata](/docs/cloud/connect-data-platform/connect-teradata) <Lifecycle status="preview" /> | ✅ | ❌ |
 
-To connect to your database in <Constant name="cloud" />:
+To connect to your database in <Constant name="dbt" />:
 
 1. Click your account name at the bottom of the left-side menu and click **Account settings**.
 2. Select **Connections** from the top left, and from there, click **New connection**.
 
 <Lightbox src="/img/docs/connect-data-platform/choose-a-connection.png" title="Choose a connection"/>
 
-These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="cloud" />. For more detailed guides, which include demo project data, read our [Quickstart guides](/guides).
+These connection instructions provide the basic fields required for configuring a data platform connection in <Constant name="dbt" />. For more detailed guides, which include demo project data, read our [Quickstart guides](/guides).
 
 ### Supported authentication methods
 
@@ -66,7 +66,7 @@ As shown in the image, a project with 2 environments can target between 1 and 2 
 
 ### Migration from project-level connections to account-level connections
 
-Rolling out account-level connections will not require any interruption of service in your current usage (<Constant name="cloud_ide" />, CLI, jobs, and so on.).
+Rolling out account-level connections will not require any interruption of service in your current usage (<Constant name="studio_ide" />, CLI, jobs, and so on.).
 
 :::info Why am I prompted to configure a development environment?
 If your project did not previously have a development environment, you may be redirected to the project setup page. Your project is still intact. Choose a connection for your new development environment, and you can view all your environments again.
@@ -102,14 +102,14 @@ Please consider the following actions, as the steps you take will depend on the 
 - Normalization
   - Understand how new connections should be created to avoid local overrides. If you currently use extended attributes to override the warehouse instance in your production environment - you should instead create a new connection for that instance, and wire your production environment to it, removing the need for the local overrides
   - Create new connections, update relevant environments to target these connections, removing now unecessary local overrides (which may not be all of them!)
-  - Test the new wiring by triggering jobs or starting <Constant name="cloud_ide" /> sessions
+  - Test the new wiring by triggering jobs or starting <Constant name="studio_ide" /> sessions
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-5.png" width="60%" title="Connections normalized"/>
 
 ## IP Restrictions
 
-<Constant name="cloud" /> will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page.
+<Constant name="dbt" /> will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page.
 
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
-Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the <Constant name="cloud" /> API. Using the <Constant name="cloud" /> API requires allowing the `cloud.getdbt.com` subdomain. For more on the <Constant name="cloud" /> architecture, see [Deployment architecture](/docs/cloud/about-cloud/architecture).
+Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the <Constant name="dbt" /> API. Using the <Constant name="dbt" /> API requires allowing the `cloud.getdbt.com` subdomain. For more on the <Constant name="dbt" /> architecture, see [Deployment architecture](/docs/cloud/about-cloud/architecture).

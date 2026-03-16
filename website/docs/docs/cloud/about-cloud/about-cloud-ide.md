@@ -5,9 +5,9 @@ description: "about dbt Studio Integrated Development Environment"
 sidebar_label: About dbt Studio IDE
 ---
 
-The <Constant name="cloud" /> integrated development environment (<Constant name="cloud_ide" />) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud <Constant name="cloud_ide" />, you can compile dbt code into SQL and run it against your database directly.
+The <Constant name="dbt" /> integrated development environment (<Constant name="studio_ide" />) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud <Constant name="studio_ide" />, you can compile dbt code into SQL and run it against your database directly.
 
-With the Cloud <Constant name="cloud_ide" />, you can:
+With the Cloud <Constant name="studio_ide" />, you can:
 
 - Write modular SQL models with select statements and the ref() function,
 - Compile dbt code into SQL and execute it against your database directly,
@@ -22,9 +22,9 @@ With the Cloud <Constant name="cloud_ide" />, you can:
 
 <Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.png" width="85%" title="The Studio IDE in dark mode"/>
 
-For more information, read the complete [Cloud <Constant name="cloud_ide" /> guide](/docs/cloud/studio-ide/develop-in-studio).
+For more information, read the complete [Cloud <Constant name="studio_ide" /> guide](/docs/cloud/studio-ide/develop-in-studio).
 
 ## Related docs
 
-- [<Constant name="cloud_ide" /> user interface](/docs/cloud/studio-ide/ide-user-interface)
+- [<Constant name="studio_ide" /> user interface](/docs/cloud/studio-ide/ide-user-interface)
 - [Keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts)
