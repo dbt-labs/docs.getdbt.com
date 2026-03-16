@@ -65,7 +65,6 @@ The project dashboard includes the following tabs that help you analyze cost and
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
 
-
 ### Table view
 
 Access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
