@@ -7,7 +7,7 @@ pagination_next: "docs/about-dbt-extension"
 ---
 
 
-[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build, run, and test models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> they've edited, without having to first run and build all the models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> that come before them (upstream parents). dbt powers this by using a production manifest for comparison, and resolves `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls with upstream production artifacts. 
+[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build, run, and test models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> they've edited, without having to build and run all the models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> that come before them (upstream parents). dbt powers this by using a production manifest for comparison and resolves `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls with upstream production artifacts.
 
 Both the <Constant name="studio_ide" /> and the <Constant name="dbt" /> CLI enable users to natively defer to production metadata directly in their development workflows. 
 
