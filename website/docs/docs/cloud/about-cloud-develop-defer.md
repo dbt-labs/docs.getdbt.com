@@ -23,7 +23,7 @@ When using `--defer`, <Constant name="dbt" /> will follow this order of executio
 
 For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 
-If you require additional controls over production data, create a [Staging environment](/docs/deploy/deploy-environments#staging-environment) and dbt will use that, rather than the Production environment, to resolve `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls.
+If you require additional controls over production data, create a [staging environment](/docs/deploy/deploy-environments#staging-environment), and dbt will use that, rather than the production environment, to resolve `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls.
 
 ## Required setup
 
@@ -41,7 +41,7 @@ The defer feature in the <Constant name="studio_ide" /> won't work if a Staging 
 
 To enable defer in the <Constant name="studio_ide" />, toggle the **Defer to staging/production** button on the command bar. Once enabled, <Constant name="dbt" /> will:
 
-1. Pull down the most recent manifest from the Staging or Production environment for comparison
+1. Pull down the most recent manifest from the staging or production environment for comparison
 2. Pass the `--defer` flag to the command (for any command that accepts the flag)
 
 For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model runs. Any `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls resolve to the staging or production location of the referenced models<VersionBlock firstVersion="1.11"> and user-defined functions</VersionBlock>.
