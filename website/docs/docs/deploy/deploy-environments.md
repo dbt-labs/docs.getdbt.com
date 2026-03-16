@@ -82,7 +82,7 @@ There is exactly one source (`sensitive_source`), and all downstream dbt models 
 
 **Faster development enabled by deferral:** If `Project B` also has a staging deployment, then references to unbuilt upstream models<VersionBlock firstVersion="1.11"> and [user-defined functions (UDFs)](/docs/build/udfs)</VersionBlock> within `Project B` will resolve to that environment using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> in production. This saves developers time and warehouse spend, while preserving clear separation of environments.
 
-Finally, the Staging environment has its own view in [<Constant name="catalog" />](/docs/explore/explore-projects), giving you a full view of your prod and pre-prod data.
+Finally, the staging environment has its own view in [<Constant name="catalog" />](/docs/explore/explore-projects), giving you a full view of your prod and pre-prod data.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 
