@@ -42,7 +42,14 @@ dbt MCP has two modes for controlling which tools are available: disable mode (d
 - **Disable mode:** Use when you want most tools available and only need to turn a few off.
 - **Enable mode:** Use when you want only a specific set of tools available.
 
-Do not mix both modes for the same toolset.
+Do not mix both modes for the same toolset. For example avoid this pattern:
+
+```bash
+# ❌ Mixing modes leads to unpredictable behavior
+DISABLE_SEMANTIC_LAYER=false
+DBT_MCP_ENABLE_SEMANTIC_LAYER=true
+
+Also avoid empty `DBT_MCP_ENABLE_*=` lines as they activate enable mode and will silently disable all other toolsets.
 :::
 
 ### Disable mode (default)
