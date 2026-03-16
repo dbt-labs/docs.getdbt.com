@@ -7,7 +7,7 @@ import MCPFaqToolsetDisabled from '/snippets/_mcp-faq-toolset-disabled.md';
 import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
 import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
 
-This quickstart connects dbt MCP to your <Constant name="dbt_platform"/> account. Choose _OAuth_ (available for Enteprise and Enterprise+ accounts) or _Tokens_ (more control, better for shared setups).
+This quickstart connects dbt MCP to your <Constant name="dbt_platform"/> account. Choose _OAuth_ (available for Enterprise and Enterprise+ accounts) or _Tokens_ (more control, better for shared setups).
 
 ## Prerequisites
 
