@@ -90,7 +90,7 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     </Tabs>
 
-    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in next step (Step 2). 
+    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in the next step (Step 2). 
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file. For example:
 
@@ -150,9 +150,15 @@ Follow these steps to define UDFs in dbt:
       - [Snowflake](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-introduction): `3.10`, `3.11`, `3.12`, and `3.13`
       - [BigQuery](https://cloud.google.com/bigquery/docs/user-defined-functions-python): `3.11`
     - [`entry_point`](/reference/resource-configs/entry-point) &mdash; Specify the Python function to be called.
+    <br></br>
+    You can specify third-party Python packages for your Python UDF using the optional `packages`
+    config. Set it to a list of package names (for example, `packages: ["numpy", "pandas"]`). The warehouse installs these packages when creating the UDF, allowing your UDF to use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before using them.
 
+    :::info Beta feature
+    The `packages` config is a beta feature in <Constant name="core" /> v1.12.
+    :::
     
-    For example:
+    The following example shows a Python UDF with the required configs (`runtime_version`, `entry_point`), the optional `packages` config, and other common properties:
 
     <File name='functions/schema.yml'>
 
@@ -163,6 +169,9 @@ Follow these steps to define UDFs in dbt:
           config:
             runtime_version: "3.11"   # required
             entry_point: main         # required
+            packages:                 # optional, Python UDFs only
+              - numpy
+              - pandas==1.5.0
             schema: udf_schema
             database: udf_db
             volatility: deterministic  
@@ -275,6 +284,7 @@ Follow these steps to define UDFs in dbt:
       RETURNS INTEGER
       LANGUAGE PYTHON
       RUNTIME_VERSION = '3.11'
+      PACKAGES = ('numpy', 'pandas==1.5.0')
       HANDLER = 'main'
     AS $$
     import re
@@ -289,7 +299,7 @@ Follow these steps to define UDFs in dbt:
     CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
     RETURNS INT64
     LANGUAGE python
-    OPTIONS(runtime_version="python-3.11", entry_point="main")
+    OPTIONS(runtime_version="python-3.11", entry_point="main", libraries=["numpy", "pandas==1.5.0"])
     AS r'''
       import re
       def main(a_string):

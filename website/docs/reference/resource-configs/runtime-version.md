@@ -45,5 +45,6 @@ functions:
 - [Type](/reference/resource-configs/type)
 - [Volatility](/reference/resource-configs/volatility)
 - [entry_point](/reference/resource-configs/entry-point)
+- [packages](/reference/resource-configs/packages)
 - [Arguments](/reference/resource-properties/function-arguments)
 - [Returns](/reference/resource-properties/returns)

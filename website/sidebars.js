@@ -1413,6 +1413,7 @@ const sidebarSettings = {
             "reference/resource-configs/volatility",
             "reference/resource-configs/runtime-version",
             "reference/resource-configs/entry-point",
+            "reference/resource-configs/packages",
             "reference/resource-properties/returns",
             "reference/resource-properties/function-arguments",
           ],

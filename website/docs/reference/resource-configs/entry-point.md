@@ -81,5 +81,6 @@ functions:
 - [Type](/reference/resource-configs/type)
 - [Volatility](/reference/resource-configs/volatility)
 - [runtime_version](/reference/resource-configs/runtime-version)
+- [packages](/reference/resource-configs/packages)
 - [Arguments](/reference/resource-properties/function-arguments)
 - [Returns](/reference/resource-properties/returns)
