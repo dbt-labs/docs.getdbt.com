@@ -19,20 +19,21 @@ meta:
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Apache Spark to Fusion <Lifecycle status="preview" />
+# Connect Apache Spark to Fusion <Lifecycle status="beta" />
 
-The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects.
+The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. <Constant name="fusion" /> only supports Spark 3.
 
 ## Fusion and Spark
 
 <Constant name="fusion" /> uses the Databricks SQL dialect for [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) when working with Spark. This means your Spark SQL is validated using Databricks SQL semantics, providing comprehensive error checking and SQL comprehension features.
 
-### Authentication
+
+## Authentication
 
 The Spark adapter in <Constant name="fusion" /> supports:
 - Service Account / User Token authentication
 
-### Configuration
+## Configure Fusion
 
 Configure your Spark connection in `profiles.yml`:
 
@@ -50,9 +51,20 @@ your_profile_name:
       host: [yourorg.sparkhost.com]
       token: [abc123]
       cluster: [cluster id]
+      platform_hint: aws_emr_serverless # or aws_emr_eks
 ```
 
 </File>
+
+| Profile field | Required | Description | Example |
+| --- | --- | --- | --- |
+| `method` | Yes | Connection method. Use `odbc` for Databricks or other ODBC-compatible Spark hosts. Fusion also supports Thrift and Livy for other Spark deployments. | `odbc` |
+| `driver` | Yes | Path to the ODBC driver. Download the [Databricks ODBC driver](https://databricks.com/spark/odbc-driver-download) for Databricks connections. | `/opt/simba/spark/lib/64/libsparkodbc_sb64.so` |
+| `schema` | Yes | The database or schema name where dbt will create and query objects. | `analytics` |
+| `host` | Yes | Hostname of the Spark cluster or Databricks workspace. | `yourorg.sparkhost.com` |
+| `token` | Yes | Authentication token (for example, Databricks personal access token or service account token). | `dapi123...` |
+| `cluster` | Yes (for ODBC with cluster) | The cluster ID when connecting to a Databricks interactive cluster. Use `endpoint` instead for a SQL warehouse. | `1234-567890-abc12345` |
+| `platform_hint` | No | Hints to <Constant name="fusion" /> which Spark platform you use. Used to validate required `server_side_parameters`. Accepted values: `aws_emr_serverless`, `aws_emr_eks`. If omitted, Fusion assumes a generic Spark cluster. | `aws_emr_eks` |
 
 For detailed configuration options, refer to the [Spark configuration](/reference/resource-configs/spark-configs) page.
 
