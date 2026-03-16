@@ -104,6 +104,7 @@ To access job details, select your project in the main menu and go to **Orchestr
 
 For **Runs**, **Usage**, **Query run time**, and **Builds** tabs, you can customize the cost data you want to view by:
 
+- **Last**: Week, 14 days, 30 days (Runs tab only)
 - **Last**: 30 days, 60 days, 90 days, 6 months, or 1 year
 - **View**: Daily, Weekly, Monthly
 
