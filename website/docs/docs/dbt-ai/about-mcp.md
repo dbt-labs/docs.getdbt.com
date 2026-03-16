@@ -1,17 +1,15 @@
 ---
-title: "dbt Model Context Protocol"
-sidebar_label: "Model Context Protocol"
+title: "dbt Model Context Protocol server"
+sidebar_label: "dbt MCP server"
 description: "Learn about the dbt MCP server"
 id: "about-mcp"
 ---
 
 import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
 
-# About dbt Model Context Protocol (MCP)
+# About dbt Model Context Protocol (MCP) server
 
-<IntroText>
-
-The [dbt Model Context Protocol (MCP) server](https://github.com/dbt-labs/dbt-mcp) provides a standardized framework that enables users to seamlessly integrate AI applications with dbt-managed data assets regardless of the underlying data platforms. This ensures consistent, governed access to models, metrics, lineage, and freshness across various AI tools.
+The [dbt MCP server](https://github.com/dbt-labs/dbt-mcp) provides a standardized framework that lets you integrate AI applications with dbt‑managed data assets across different data platforms. This ensures consistent, governed access to models, metrics, lineage, and freshness across your AI tools.
 
 </IntroText>
 

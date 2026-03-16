@@ -4,6 +4,7 @@ id: "dbt-agents"
 description: "Learn about the AI agents available in dbt to automate and accelerate analytics workflows"
 sidebar_label: "dbt Agents overview"
 tags: [AI, Agents]
+image: /img/docs/dbt-cloud/copilot-agent.png
 ---
 
 # dbt Agents overview <Lifecycle status="beta,managed,managed_plus"/>
