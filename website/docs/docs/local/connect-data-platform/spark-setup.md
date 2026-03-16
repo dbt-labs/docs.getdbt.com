@@ -21,7 +21,7 @@ meta:
 
 # Connect Apache Spark to Fusion <Lifecycle status="beta" />
 
-The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. <Constant name="fusion" /> only supports Apache Spark 3.0.
+The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster compilation and execution for your Spark-based dbt projects. Currently, <Constant name="fusion" /> only supports Apache Spark 3.0.
 
 ## Fusion and Spark
 
