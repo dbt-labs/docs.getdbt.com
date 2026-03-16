@@ -55,17 +55,16 @@ You can customize the cost data you want to view by:
 
 ### Visualization tabs
 
-The project dashboard includes the following tabs that help you analyze cost and optimization trends over time:
+The project dashboard includes the following tabs that help you analyze cost and optimization trends over time.  Use the **Assets** dropdown on the chart to filter by **Models**, **Tests**, or **All**.
 
 - **Cost**: Shows the estimated build cost reduction when using state-aware orchestration.
 - **Query run time**: Shows the estimated reduction in build time when using state-aware orchestration.
-- **Builds**: Shows the number of assets built versus reused by state-aware orchestration. Use the **Asset type** dropdown on the chart to filter by **Models**, **Tests**, or **All**.
+- **Builds**: Shows the number of assets built versus reused by state-aware orchestration.
 - **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
 
-On the **Cost**, **Usage**, **Query run time**, and **Builds** tabs, use the **Asset type** dropdown on each chart to filter the data by **Models**, **Tests**, or **All**. Your selection is remembered separately for each tab.
 
 ### Table view
 
