@@ -59,7 +59,7 @@ The project dashboard includes the following tabs that help you analyze cost and
 
 - **Cost**: Shows the estimated build cost reduction when using state-aware orchestration.
 - **Query run time**: Shows the estimated reduction in build time when using state-aware orchestration.
-- **Builds**: Shows the number of assets built versus reused by state-aware orchestration.
+- **Builds**: Shows total builds split into number of assets rebuilt and assets reused by state-aware orchestration.
 - **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
