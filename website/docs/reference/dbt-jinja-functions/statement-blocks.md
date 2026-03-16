@@ -128,7 +128,7 @@ The contents of the returned `data` field is a matrix. It contains a list rows, 
 
 ## Fire and forget operations
 
-For DDL or utility operations where you don't need the result set, set `fetch_result=False`. This is the recommended pattern for operations like `OPTIMIZE` or `VACUUM` on Databricks, which return result sets that may contain null values in non-nullable columns.
+For <Term id="ddl" /> or utility operations where you don't need the results (because you don't use the returned rows in Jinja), set `fetch_result=False`. This is the recommended pattern for operations like `OPTIMIZE` or `VACUUM` on Databricks, which return result sets that may contain null values in non-nullable columns.
 
 <File name='macros/optimize_table.sql'>
 
