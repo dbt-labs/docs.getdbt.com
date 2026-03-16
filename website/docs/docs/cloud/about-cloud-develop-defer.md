@@ -7,13 +7,13 @@ pagination_next: "docs/about-dbt-extension"
 ---
 
 
-[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build, run, and test models and functions they've edited, without having to first run and build all the models and functions that come before them (upstream parents). dbt powers this by using a production manifest for comparison, and resolves `{{ ref() }}` and `{{ function() }}` calls with upstream production artifacts (models and user-defined functions). 
+[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build, run, and test models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> they've edited, without having to first run and build all the models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> that come before them (upstream parents). dbt powers this by using a production manifest for comparison, and resolves `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls with upstream production artifacts. 
 
 Both the <Constant name="studio_ide" /> and the <Constant name="dbt" /> CLI enable users to natively defer to production metadata directly in their development workflows. 
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
-When using `--defer`, <Constant name="cloud" /> will follow this order of execution for resolving `{{ ref() }}` and `{{ function() }}` calls.
+When using `--defer`, <Constant name="cloud" /> will follow this order of execution for resolving `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls.
 
 1. If a development version of a deferred relation exists, dbt preferentially uses the development database location when resolving the reference.
 2. If a development version doesn't exist, dbt uses the staging locations of parent relations based on metadata from the staging environment.
@@ -23,7 +23,7 @@ When using `--defer`, <Constant name="cloud" /> will follow this order of execut
 
 For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 
-If you require additional controls over production data, create a [Staging environment](/docs/deploy/deploy-environments#staging-environment) and dbt will use that, rather than the Production environment, to resolve `{{ ref() }}` and `{{ function() }}` calls.
+If you require additional controls over production data, create a [Staging environment](/docs/deploy/deploy-environments#staging-environment) and dbt will use that, rather than the Production environment, to resolve `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls.
 
 ## Required setup
 
@@ -44,7 +44,7 @@ To enable defer in the <Constant name="studio_ide" />, toggle the **Defer to sta
 1. Pull down the most recent manifest from the Staging or Production environment for comparison
 2. Pass the `--defer` flag to the command (for any command that accepts the flag)
 
-For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model runs. Any `{{ ref() }}` and `{{ function() }}` calls resolve to the staging or production location of the referenced models and user-defined functions.
+For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model runs. Any `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls resolve to the staging or production location of the referenced models<VersionBlock firstVersion="1.11"> and user-defined functions</VersionBlock>.
 
 <Lightbox src="/img/docs/dbt-cloud/defer-toggle.png" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
 

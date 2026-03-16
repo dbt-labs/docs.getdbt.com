@@ -2,7 +2,7 @@
 title: "Defer"
 ---
 
-Defer is a powerful feature that makes it possible to run a subset of models, tests, or functions in a [sandbox environment](/docs/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
+Defer is a powerful feature that makes it possible to run a subset of <VersionBlock lastVersion="1.10">models or tests</VersionBlock><VersionBlock firstVersion="1.11">models, tests, or functions</VersionBlock> in a [sandbox environment](/docs/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
@@ -26,14 +26,18 @@ dbt test --select [...] --defer --state path/to/artifacts
 
 By default, dbt uses the [`target`](/reference/dbt-jinja-functions/target) namespace to resolve `ref` calls.
 
-When `--defer` is enabled, dbt resolves `ref` and `function` calls using the state manifest instead, but only if:
+When `--defer` is enabled, dbt resolves `ref`<VersionBlock firstVersion="1.11"> and `function`</VersionBlock> calls using the state manifest instead, but only if:
 
 1. The node isn’t among the selected nodes, _and_
 2. It doesn’t exist in the database (or `--favor-state` is used).
 
 Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls. 
 
+<VersionBlock firstVersion="1.11">
+
 [User-defined functions (UDFs)](/docs/build/udfs) referenced using `{{ function('...') }}` are deferred under the same conditions. When deferred, `function()` resolves to the function definition in the state manifest if the UDF is not selected or not built in the current target.
+
+</VersionBlock>
 
 :::info
 
