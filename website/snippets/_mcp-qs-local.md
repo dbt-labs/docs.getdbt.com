@@ -13,6 +13,8 @@ You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral
 - A local dbt project (the folder containing your `dbt_project.yml` file)
 - dbt installed locally (<Constant name="dbt_core"/>, <Constant name="fusion_engine"/>, or <Constant name="platform_cli"/>)
 
+For the full list of environment variables and how to enable or disable toolsets, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+
 ## Step 1: Find your paths
 
 You need two values before configuring your MCP client:

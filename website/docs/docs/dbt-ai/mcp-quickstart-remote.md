@@ -44,4 +44,4 @@ In your MCP client config, set the server `url` to `https://YOUR_DBT_HOST_URL/ap
 - **For `execute_sql` or <Constant name="fusion" /> tools:** Also add `x-dbt-dev-environment-id` and `x-dbt-user-id`
 - Use numeric IDs in headers, not full URLs copied from your browser.
 
-For the complete list of headers, Cursor and other client examples, and optional headers, see [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp).
+For the complete list of headers, Cursor and other client examples, and optional headers, see [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp). For local MCP, configuration uses environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).

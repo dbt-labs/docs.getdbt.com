@@ -112,3 +112,5 @@ Example configuration:
     }
   }
   ```
+
+For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).

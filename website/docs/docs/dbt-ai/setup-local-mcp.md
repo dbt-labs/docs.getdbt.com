@@ -138,7 +138,7 @@ After completing this setup, skip to [Test your configuration](#optional-test-yo
 
 ### Environment variable configuration
 
-If you need to configure multiple environment variables or prefer to manage them separately, you can use an `.env` file or pass them inline. You only need to supply the variables relevant to your setup &mdash; dbt CLI variables for CLI-only use, or <Constant name="dbt_platform" /> variables for platform features.
+If you need to configure multiple environment variables or prefer to manage them separately, you can use an `.env` file or pass them inline. You only need to supply the variables relevant to your setup &mdash; dbt CLI variables for CLI-only use, or <Constant name="dbt_platform" /> variables for platform features. For the complete list of variables, enabling or disabling toolsets, and logging options, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
 :::tip Where to put the `.env` file
 Create the `.env` file in your _dbt project root_ (the same folder as `dbt_project.yml`). When referencing it with `--env-file`, always _use an absolute path_ so your MCP client can find it reliably. For example, `/absolute/path/to/your-dbt-project/.env`.

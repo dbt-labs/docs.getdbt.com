@@ -33,6 +33,8 @@ To get started, choose the quick start that matches your setup:
 | Use MCP with zero local install (to query data only; no running dbt commands). Uses [remote MCP server](#remote-mcp-server). | [Use MCP with zero install](/docs/dbt-ai/mcp-quickstart-remote) |
 </SimpleTable>
 
+To configure or disable specific tools (local MCP), see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+
 ## Server access
 
 You can use the dbt MCP server in the following ways:
@@ -95,4 +97,5 @@ We have also created integration guides for the following clients:
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
 
 ## Resources
+- [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) &mdash; full list of variables and tool configuration for local MCP
 - For more information, refer to our blog on [Introducing the dbt MCP Server](/blog/introducing-dbt-mcp-server#getting-started).
