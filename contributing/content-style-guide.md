@@ -178,7 +178,7 @@ Use code font for:
 - Git branch names (`main`)
 - Commands (`ghe-cluster-status`)
 - Arguments, parameters, keys
-- adapter names (`dbt-snowflake`)
+- Adapter names (`dbt-snowflake`)
 
 **Do not:**
 - Combine multiple text decorations
