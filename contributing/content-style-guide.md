@@ -420,7 +420,7 @@ Explain placeholders in the preceding paragraph. For example, you'd explain CLUS
 | [Click here](url) | [dbt Labs docs](url) |
 | Visit our website | Read the [setup guide](/docs/setup) |
 
-**Acceptable verbs:** visit, read, refer to, see
+**Acceptable verbs:** visit, read, refer to
 
 ### Link destinations to avoid
 
