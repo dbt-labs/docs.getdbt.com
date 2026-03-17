@@ -166,7 +166,7 @@ env var instead.
 
 #### ConfigLogPathDeprecation warning resolution
 
-Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI flag `--log-path` or environment variable <VersionBlock lastVersion="1.10">`DBT_LOG_PATH`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_LOG_PATH`</VersionBlock> [as documented here](/reference/global-configs/logs#log-and-target-paths)
+Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI flag `--log-path` or environment variable <VersionBlock lastVersion="1.10">`DBT_LOG_PATH`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_LOG_PATH`</VersionBlock> [as documented here](/reference/global-configs/logs#log-and-target-paths).
 
 
 ### ConfigSourcePathDeprecation

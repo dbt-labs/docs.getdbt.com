@@ -23,7 +23,7 @@ dbt run
 
 <VersionBlock firstVersion="1.11">
 
-Environment variables for the dbt engine use the `DBT_ENGINE_` prefix. For a list of all dbt environment variables you can set, refer to [Available flags](/reference/global-configs/about-global-configs#available-flags).
+Environment variables use the `DBT_ENGINE_` prefix. For a list of all dbt environment variables you can set, refer to [Available flags](/reference/global-configs/about-global-configs#available-flags).
 
 <File name='Env var'>
 

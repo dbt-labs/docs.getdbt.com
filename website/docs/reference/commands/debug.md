@@ -106,7 +106,7 @@ Options:
  --log-path PATH         
                 Configure the 'log-path'. Only applies this
                 setting for the current run. Overrides the
-                `DBT_LOG_PATH` (v1.10 and earlier) or `DBT_ENGINE_LOG_PATH` (v1.11 or later) when set.
+                'DBT_LOG_PATH' (v1.10 and earlier) or 'DBT_ENGINE_LOG_PATH' (v1.11 or later) when set.
 
  --partial-parse / --no-partial-parse
                 Allow for partial parsing by looking for and

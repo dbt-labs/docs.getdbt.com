@@ -234,7 +234,7 @@ For example, if your static subdomain is `abc123.us1.dbt.com`, your command woul
 
 ```shell
 claude mcp add dbt \
--e DBT_HOST=abc123.us1.dbt.com \
+-e DBT_HOST=abc123.us1.dbt.com \ # this is the static subdomain
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
@@ -246,7 +246,7 @@ claude mcp add dbt \
 
 ```shell
 claude mcp add dbt \
--e DBT_ENGINE_HOST=abc123.us1.dbt.com \
+-e DBT_ENGINE_HOST=abc123.us1.dbt.com \ # this is the static subdomain
 -e DBT_ENGINE_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp

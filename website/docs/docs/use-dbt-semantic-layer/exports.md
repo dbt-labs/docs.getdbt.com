@@ -2,7 +2,7 @@
 title: "Write queries with exports"
 description: "Use exports to write tables to the data platform on a schedule."
 sidebar_label: "Write queries with exports"
-keywords: [DBT_INCLUDE_SAVED_QUERY, DBT_EXPORT_SAVED_QUERIES, DBT_ENGINE_EXPORT_SAVED_QUERIES, exports, dbt, Semantic Layer]
+keywords: [DBT_ENGINE_INCLUDE_SAVED_QUERY, DBT_ENGINE_EXPORT_SAVED_QUERIES, exports, dbt, Semantic Layer]
 ---
 
 # Write queries with exports <Lifecycle status="self_service,managed,managed_plus" />
