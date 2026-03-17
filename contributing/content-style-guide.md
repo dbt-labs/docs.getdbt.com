@@ -63,6 +63,8 @@ Plan tiers (capitalize): Developer, Starter, Enterprise, Enterprise+
 - Orchestrator
 - Semantic Layer
 - Copilot
+- dbt MCP server
+- dbt Agents
 
 **Do not capitalize these features:**
 - dbt platform
