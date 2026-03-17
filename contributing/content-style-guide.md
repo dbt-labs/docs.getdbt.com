@@ -284,7 +284,10 @@ Bold section names. Avoid "panel" and "pane."
 - Content becomes hard to read
 - Cells require excessive text
 - Mobile display suffers
-
+- The content is step-by-step
+- There are only one or two items
+- It isn’t meant for side-by-side comparison
+- A list or headings would be clearer
 **Alternative formats:** Definition lists, separate subsections, tabs, separate pages.
 
 ---
