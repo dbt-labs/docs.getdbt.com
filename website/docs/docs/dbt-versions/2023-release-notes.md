@@ -729,7 +729,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     ## 🎯 Core projects
 
     - See what’s coming up [in Core v 1.6](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.6%22)!
-    - We turned the `profiles.yml` [page](/docs/local/profiles.yml) into a landing page, added more context to profile.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
+    - We turned the `profiles.yml` [page](/docs/local/profiles.yml) into a landing page, added more context to profiles.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 

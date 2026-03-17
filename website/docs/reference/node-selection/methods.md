@@ -314,17 +314,31 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
 
+<VersionBlock lastVersion="1.10">
+
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
 dbt source freshness # must be run again to compare current to previous state
 dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+# You can also set the DBT_ENGINE_STATE environment variable instead of the --state flag.
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
+```
+
+</VersionBlock>
+
 ### state
 
 **N.B.** [State-based selection](/reference/node-selection/state-selection) is a powerful, complex feature. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
-The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or <VersionBlock lastVersion="1.10">`DBT_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_STATE`</VersionBlock> environment variable.
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
