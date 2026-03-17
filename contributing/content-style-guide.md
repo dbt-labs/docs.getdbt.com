@@ -182,7 +182,7 @@ Use code font for:
 
 **Do not:**
 - Combine multiple text decorations
-- Use inline links within command names
+- Use inline links within command names (❌ Use [`dbt run`](/docs/commands/run) to build your models.
 
 ---
 
