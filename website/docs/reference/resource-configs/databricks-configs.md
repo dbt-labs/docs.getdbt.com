@@ -917,7 +917,7 @@ This is also the compute that will be used for tasks not associated with a parti
 
 To take advantage of this capability, you will need to add compute blocks to your profile:
 
-<File name='profile.yml'>
+<File name='profiles.yml'>
 
 ```yaml
 
@@ -1126,7 +1126,7 @@ You can set query tags at the connection level in your profile or at the model l
 
 #### Connection-level query tags
 
-To set query tags for all queries in a connection, add the `query_tags` parameter to your `profile.yml` file as a JSON string:
+To set query tags for all queries in a connection, add the `query_tags` parameter to your `profiles.yml` file as a JSON string:
 
 <File name='~/.dbt/profiles.yml'>
 

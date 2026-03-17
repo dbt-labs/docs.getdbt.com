@@ -440,12 +440,12 @@ dbt_test:
 </Tabs>
 
 :::info Note
-Starting with `dbt-oracle==1.0.2`, it is **optional** to set the `database` name in `profile.yml`
+Starting with `dbt-oracle==1.0.2`, it is **optional** to set the `database` name in `profiles.yml`
 
-Starting with `dbt-oracle==1.8.0` database key in `profile.yml` is **still optional for all but one** of the dbt-oracle workflows.
-if `database` is missing in `profile.yml` the generated catalog used for project documentation will be empty.
+Starting with `dbt-oracle==1.8.0` database key in `profiles.yml` is **still optional for all but one** of the dbt-oracle workflows.
+if `database` is missing in `profiles.yml` the generated catalog used for project documentation will be empty.
 
-From `dbt-oracle==1.8`, we detect that `database` key is missing from `profile.yml` and issue a warning to add it for catalog generation. The warning message also shows the database name that dbt-oracle expects. That way users don't have to worry about "what" the database name is and "how" to get it.
+From `dbt-oracle==1.8`, we detect that `database` key is missing from `profiles.yml` and issue a warning to add it for catalog generation. The warning message also shows the database name that dbt-oracle expects. That way users don't have to worry about "what" the database name is and "how" to get it.
 :::
 
 ### Quoting configuration
