@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="cloud" /> release notes for recent and historical changes. Release notes fall into one of the following categories:
+<Constant name="dbt" /> release notes for recent and historical changes. Release notes fall into one of the following categories:
 
 - **New:** New products and features
 - **Enhancement:** Performance improvements and feature enhancements
@@ -19,7 +19,12 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## March 2026
 
 - **New:** On <Constant name="core" /> v1.11+ and the <Constant name="dbt_platform" /> **Latest** release track, engine configuration environment variables use the `DBT_ENGINE_` prefix (for example, `DBT_STATE` is now `DBT_ENGINE_STATE`, `DBT_PROJECT_DIR` is now `DBT_ENGINE_PROJECT_DIR`). The previous names remain supported for backward compatibility. For the full mapping, see [About flags (global configs)](/reference/global-configs/about-global-configs).
-
+- **Enhancement:** [Deferral](/reference/node-selection/defer) now supports [user-defined functions (UDFs)](/docs/build/udfs). When you run a dbt command with `--defer` and `--state`, dbt resolves `function()` calls from the state manifest. This lets you run models that depend on UDFs without first building those UDFs in your current target.
+- **Fix**: Status messages that exceed the 1024 character limit are now automatically truncated to prevent validation errors and run timeouts. Previously, long status messages could cause runs to fail with unhandled exceptions or result in lost status information. The system now logs when truncation occurs to help identify and optimize verbose status messages.
+- **Fix:** Resolved an issue where [retrying failed runs](/docs/deploy/retry-jobs) that were triggered from Git tags would use the wrong commit. Previously, when runs were triggered from Git tags instead of branches, the system would enter a detached HEAD state, causing retries to use the latest commit on HEAD rather than the original tagged commit. The fix now correctly preserves and uses the original Git tag reference when retrying runs, ensuring consistency between the initial run and any retries.
+- **New**: The [dbt MCP server](/docs/dbt-ai/about-mcp?version=2.0#product-docs) now includes product docs tools (`search_product_docs` and `get_product_doc_pages`) that let your AI assistant search and fetch pages from docs.getdbt.com in real time. Get responses grounded in the latest official dbt documentation rather than relying on training data or web searches, so you can stay in your development flow and trust the answers.  This allows you to stay in your development flow and trust. These tools are enabled by default with no additional configuration. Restart your MCP server if you don't see the product docs tools in your MCP config. For more information, see [the dbt MCP repo](https://github.com/dbt-labs/dbt-mcp?tab=readme-ov-file#product-docs).
+- **Enhancement**: The Model Timing tab displays an informative banner for <Constant name="fusion_engine" /> runs instead of the timing chart. The banner explains "Model timing is not yet available for Fusion runs" and provides context about threading differences. Non-Fusion runs continue to show the timing chart normally.
+- **Behavior change**: [Snowflake plans to increase](https://docs.snowflake.com/en/release-notes/bcr-bundles/un-bundled/bcr-2118) the default column size for string and binary data types in May 2026. `dbt-snowflake` versions below v1.10.6 may fail to build certain incremental models when this change is deployed. [Assess impact and take any required actions](/reference/resource-configs/snowflake-configs#assess-impact-and-required-actions).
 - **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on the <Constant name="dbt_platform" /> **Latest** release track. For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
 
@@ -31,7 +36,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Enhancement:** After a user accepts an email [invite](/docs/cloud/manage-access/invite-users) to access an [SSO-protected](/docs/cloud/manage-access/sso-overview) <Constant name="dbt_platform"/> account, the UI now prompts them to log in with SSO to complete the process. This replaces the previous "Joined successfully" message, helping avoid confusion when users accept an invite but do not complete the SSO login flow.
 - **New:** [Profiles](/docs/cloud/about-profiles) let you define and manage connections, credentials, and attributes for deployment environments at the project level. dbt automatically creates profiles for existing projects and environments based on the current configurations, so you don't need to take any action. This is being rolled out in phases during the coming weeks.
 - **New**: [Python UDFs](/docs/build/udfs) are now supported and available in <Constant name="fusion_engine" /> when using Snowflake or BigQuery.
-- **Enhancement:** Minor enhancements and UI updates to the <Constant name="cloud_ide" />, file explorer that replicate the VS Code IDE experience.
+- **Enhancement:** Minor enhancements and UI updates to the <Constant name="studio_ide" />, file explorer that replicate the VS Code IDE experience.
 - **Enhancement:** Profile creation now displays specific validation error messages (such as "Profile keys cannot contain spaces or special characters") instead of generic error text, making it easier to identify and fix configuration issues.
 - **Private beta**: [Cost Insights](/docs/explore/cost-insights) shows estimated warehouse compute costs and run times for your dbt projects and models, directly in the <Constant name="dbt_platform" />. It highlights cost reductions and efficiency gains from optimizations like [state-aware orchestration](/docs/deploy/state-aware-about) across your project dashboard, model pages, and job details. See [Set up Cost Insights](/docs/explore/set-up-cost-insights) and [Explore cost data](/docs/explore/explore-cost-data) to learn more.
 - **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) now supports [Omni](https://docs.omni.co/integrations/dbt/semantic-layer) as a partner integration. For more info, see [Available integrations](/docs/cloud-integrations/avail-sl-integrations).
@@ -45,9 +50,9 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 
 ## January 2026
 
-- **Enhancement:** The `defer-env-id` setting for choosing which deployment environment to defer to is [now available](/docs/cloud/about-cloud-develop-defer#defer-environment) in the <Constant name="cloud_ide" />. Previously, this configuration only worked for the <Constant name="cloud_cli" />
-- **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="query_page" /> is now in beta. 
-  - dbt <Constant name="copilot" />'s AI assistant in <Constant name="query_page" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
+- **Enhancement:** The `defer-env-id` setting for choosing which deployment environment to defer to is [now available](/docs/cloud/about-cloud-develop-defer#defer-environment) in the <Constant name="studio_ide" />. Previously, this configuration only worked for the <Constant name="platform_cli" />
+- **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="insights" /> is now in beta. 
+  - dbt <Constant name="copilot" />'s AI assistant in <Constant name="insights" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
 - **Enhancement:** The [Studio IDE](/docs/cloud/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands. This feature is being rolled out in phases and will become available to all <Constant name="dbt_platform" /> accounts by mid-February. 
 - **Enhancement:** [State-aware orchestration](/docs/deploy/state-aware-about) improvements:
   - When a model fails a data test, state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state to ensure dbt reevaluates data quality issues.
@@ -55,7 +60,7 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 
   State-aware orchestration is in private preview. See the [prerequisites for using the feature](/docs/deploy/state-aware-setup#prerequisites).
 - **Enhancement:** [dbt <Constant name="copilot" />](/docs/cloud/dbt-copilot) correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
-- **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files as well as <Term id="lsp" />-powered features. For more information, refer to [Install <Constant name="fusion"/> CLI](/docs/fusion/install-fusion-cli#environment-variables). 
+- **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files as well as <Term id="lsp" />-powered features. For more information, refer to [Install <Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started#environment-variables). 
 - **New**: The new <Constant name="semantic_layer"/>  YAML specification creates an open standard for defining metrics and dimensions that works across multiple platforms. The new spec is now live in the <Constant name="fusion_engine" />.
   
   Key changes:
@@ -65,5 +70,5 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 
   For an overview of the changes and steps how to migrate to the latest YAML spec, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 - **Fix:** Debug logs in the **Run summary** tab are now properly truncated to improve performance and user interface responsiveness. Previously, debug logs were not truncated correctly, causing slower page loads. You can access the full debug logs by clicking **Download > Download all debug logs**. For more information, see [Run visibility](/docs/deploy/run-visibility#run-summary-tab).
-- **New:** The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="query_page" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.
+- **New:** The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.
 - **Enhancement**: Eligible <Constant name="dbt_platform" /> accounts in the <Constant name="fusion" /> private preview can now use [Exposures](/docs/cloud-integrations/downstream-exposures). 

@@ -7,7 +7,7 @@ Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — thi
 
 - dbt uses [YAML](https://yaml.org/) in a few different places. If you're new to YAML, it would be worth learning how arrays, dictionaries, and strings are represented.
 - By default, dbt looks for the `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> environment variable.
-- Specify your <Constant name="cloud" /> project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. Find your project ID in your <Constant name="cloud" /> project URL: For example, in `https://YOUR_ACCESS_URL/11/projects/123456`, the project ID is `123456`.
+- Specify your <Constant name="dbt" /> project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. Find your project ID in your <Constant name="dbt" /> project URL: For example, in `https://YOUR_ACCESS_URL/11/projects/123456`, the project ID is `123456`.
 
 
 - Note, you can't set up a "property" in the `dbt_project.yml` file if it's not a config (an example is [macros](/reference/macro-properties)). This applies to all types of resources. Refer to [Configs and properties](/reference/configs-and-properties) for more detail.

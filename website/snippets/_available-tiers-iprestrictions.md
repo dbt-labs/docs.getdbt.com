@@ -1,6 +1,6 @@
 :::info Available to certain Enterprise tiers
 
-Organizations can configure IP restrictions using the following <Constant name="cloud" /> Enterprise tiers:
+Organizations can configure IP restrictions using the following <Constant name="dbt" /> Enterprise tiers:
  * Business Critical 
  * Virtual Private
 

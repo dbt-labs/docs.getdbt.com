@@ -315,7 +315,7 @@ unit_tests:
       - input: ref('ephemeral_model')
         format: sql
         rows: |
-          select 1 as id, 'emily' as name
+          select 1 as id, 'emily' as first_name
     expect:
       rows:
         - {id: 1, first_name: emily}

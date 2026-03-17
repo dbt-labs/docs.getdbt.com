@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Archived release notes for <Constant name="cloud" /> from 2023
+Archived release notes for <Constant name="dbt" /> from 2023
 
 ## December 2023
 
@@ -31,7 +31,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
 - <Expandable alt_header='External attributes'>
 
-    The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/core/connect-data-platform/profiles.yml) value.
+    The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/local/profiles.yml) value.
 
     To learn more, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
 
@@ -207,7 +207,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## 🎯 Core projects
 
     - Deprecated dbt Core v1.0 and v1.1 from the docs.
-    - Added configuration instructions for the [AWS Glue](/docs/core/connect-data-platform/glue-setup) community plugin.
+    - Added configuration instructions for the [AWS Glue](/docs/local/connect-data-platform/glue-setup) community plugin.
     - Revised the dbt Core quickstart, making it easier to follow. Divided this guide into steps that align with the [other guides](/guides/manual-install?step=1).
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
@@ -237,7 +237,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     The dbt Semantic Layer is available to [dbt Cloud Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on dbt v1.6 or higher. 
     - Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/cloud/billing#what-counts-as-a-queried-metric) for more information.
-    - <Constant name="cloud" /> Developer plans and <Constant name="core" /> users can define metrics but won't be able to query them with integrated tools.
+    - <Constant name="dbt" /> Developer plans and <Constant name="core" /> users can define metrics but won't be able to query them with integrated tools.
 
   </Expandable>
 
@@ -249,7 +249,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     With two types of jobs, instead of one generic type, we can better guide you through the setup flow. Best practices are built into the default settings so you can go from curious to being set up in seconds.
 
-    And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the <Constant name="git" /> pull request (PR) code and what’s running in production more efficiently with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in <Constant name="cloud" />](/docs/deploy/continuous-integration). 
+    And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the <Constant name="git" /> pull request (PR) code and what’s running in production more efficiently with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in <Constant name="dbt" />](/docs/deploy/continuous-integration). 
 
     Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
 
@@ -270,9 +270,9 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     If you used the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint but didn't set `"triggers":triggers.git_provider_webhook`, the job was misclassified as a deploy job and you must re-create it as described in [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api).
 
-        If you used the <Constant name="cloud" /> UI but didn't enable the **Run on Pull Requests** option that was in the **Continuous Integration** (CI) tab, the job was misclassified as a deploy job and you must re-create it as described in [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs).
+        If you used the <Constant name="dbt" /> UI but didn't enable the **Run on Pull Requests** option that was in the **Continuous Integration** (CI) tab, the job was misclassified as a deploy job and you must re-create it as described in [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs).
 
-        To check for the job type, review your CI jobs in <Constant name="cloud" />'s [Run History](/docs/deploy/run-visibility#run-history) and check for the **CI Job** tag below the job name. If it doesn't have this tag, it was misclassified and you need to re-create the job.
+        To check for the job type, review your CI jobs in <Constant name="dbt" />'s [Run History](/docs/deploy/run-visibility#run-history) and check for the **CI Job** tag below the job name. If it doesn't have this tag, it was misclassified and you need to re-create the job.
 
     **CI update phase 3 &mdash; Update: Improved automatic deletion of temporary schemas** 
 
@@ -526,7 +526,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     Something to note, each running job occupies a run slot for its duration, and if all slots are occupied, jobs will queue accordingly.
 
-    For more feature details, refer to the [<Constant name="cloud" /> pricing page](https://www.getdbt.com/pricing/).
+    For more feature details, refer to the [<Constant name="dbt" /> pricing page](https://www.getdbt.com/pricing/).
 
     Note, Team accounts created after July 2023 benefit from unlimited job concurrency:
     - Legacy Team accounts have a fixed number of run slots.
@@ -564,13 +564,13 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     <Lightbox src="/img/docs/release-notes/ci-checks.png" width="75%" title="CI checks directly from within Git"/>
 
-    What separates <Constant name="cloud" /> CI from other CI providers is its ability to keep track of state of what’s running in your production environment, so that when you run a CI job, only the modified data assets in your pull request and their downstream dependencies get built and tested in a staging schema. <Constant name="cloud" /> aims to make each CI check as efficient as possible, so as to not waste any data warehouse resources. As soon as the CI run completes, its status posts directly back to the PR in GitHub, GitLab, or Azure DevOps, depending on which <Constant name="git" /> provider you’re using. Teams can set up guardrails to let only PRs with successful CI checks be approved for merging, and the peer review process is greatly streamlined because <Constant name="cloud" /> does the first testing pass. 
+    What separates <Constant name="dbt" /> CI from other CI providers is its ability to keep track of state of what’s running in your production environment, so that when you run a CI job, only the modified data assets in your pull request and their downstream dependencies get built and tested in a staging schema. <Constant name="dbt" /> aims to make each CI check as efficient as possible, so as to not waste any data warehouse resources. As soon as the CI run completes, its status posts directly back to the PR in GitHub, GitLab, or Azure DevOps, depending on which <Constant name="git" /> provider you’re using. Teams can set up guardrails to let only PRs with successful CI checks be approved for merging, and the peer review process is greatly streamlined because <Constant name="dbt" /> does the first testing pass. 
 
-    We're excited to introduce a few critical capabilities to <Constant name="cloud" /> CI that will improve productivity and collaboration in your team’s testing and integration workflow. As of this week, you can now:
+    We're excited to introduce a few critical capabilities to <Constant name="dbt" /> CI that will improve productivity and collaboration in your team’s testing and integration workflow. As of this week, you can now:
 
     - **Run multiple CI checks in parallel**. If more than one contributor makes changes to the same dbt project in dbt Cloud in short succession, the later arriving CI check no longer has to wait for the first check to complete. Both checks will execute concurrently.
 
-    - **Automatically cancel stale CI runs**. If you push multiple commits to the same PR, <Constant name="cloud" /> will cancel older, now-out-of-date CI checks automatically. No resources wasted on checking stale code.
+    - **Automatically cancel stale CI runs**. If you push multiple commits to the same PR, <Constant name="dbt" /> will cancel older, now-out-of-date CI checks automatically. No resources wasted on checking stale code.
 
     - **Run CI checks without blocking production runs**. CI checks will no longer consume run slots, meaning you can have as many CI checks running as you want, without impeding your production jobs.
 
@@ -599,7 +599,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## ☁ Cloud projects
 
     - We clarified the nuances of [CI and CI jobs](/docs/deploy/continuous-integration), updated the [Scheduler content](/docs/deploy/job-scheduler), added two new pages for the job settings and run visibility, moved the project state page to the [Syntax page](/reference/node-selection/syntax), and provided a landing page for [Deploying with Cloud](/docs/deploy/jobs) to help readers navigate the content better.
-    - We reformatted the [Supported data platforms page](/docs/supported-data-platforms) by adding dbt Cloud to the page, splitting it into multiple pages, using cards to display verified adapters, and moving the [Warehouse setup pages](/docs/core/connect-data-platform/about-core-connections) to the Docs section. 
+    - We reformatted the [Supported data platforms page](/docs/supported-data-platforms) by adding dbt Cloud to the page, splitting it into multiple pages, using cards to display verified adapters, and moving the [Warehouse setup pages](/docs/local/connect-data-platform/about-dbt-connections) to the Docs section. 
     - We launched a new [Lint and format page](/docs/cloud/studio-ide/lint-format), which highlights the awesome new dbt Cloud IDE linting/formatting function.
     - We enabled a connection between [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes) and the dbt Slack community. This means new dbt Cloud release notes are automatically sent to the slack community [#dbt-cloud channel](https://getdbt.slack.com/archives/CMZ2V0X8V) via RSS feed, keeping users up to date with changes that may affect them. 
     - We’ve added two new docs links in the dbt Cloud Job settings user interface (UI). This will provide additional guidance and help users succeed when setting up a dbt Cloud job: [job commands](/docs/deploy/job-commands) and job triggers.    
@@ -680,7 +680,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     dbt Labs is making a change to the metadata retrieval policy for Run History in dbt Cloud. 
 
-    **Beginning June 1, 2023,** developers on the <Constant name="cloud" /> multi-tenant application will be able to self-serve access to their account’s run history through the <Constant name="cloud" /> user interface (UI) and API for only 365 days, on a rolling basis. Older run history will be available for download by reaching out to Customer Support. We're seeking to minimize the amount of metadata we store while maximizing application performance. 
+    **Beginning June 1, 2023,** developers on the <Constant name="dbt" /> multi-tenant application will be able to self-serve access to their account’s run history through the <Constant name="dbt" /> user interface (UI) and API for only 365 days, on a rolling basis. Older run history will be available for download by reaching out to Customer Support. We're seeking to minimize the amount of metadata we store while maximizing application performance. 
 
     Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](/dbt-cloud/api-v2#/operations/List%20Runs) will return information on runs, artifacts, logs, and run steps only for the past 365 days.  Additionally, the run history displayed in the dbt Cloud UI will only show runs for the past 365 days.  
 
@@ -712,7 +712,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
 
     ## 🔎 Discoverability
 
-    - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/core/connect-data-platform/profiles.yml) by adding a callout on several key pages.
+    - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/local/profiles.yml) by adding a callout on several key pages.
     - Fleshed out the [model Jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
     - Added a new [Quickstarts landing page](/guides). This new format sets up for future iterations that will include filtering! But for now, we are excited you can step through quickstarts in a focused way.
 
@@ -729,7 +729,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     ## 🎯 Core projects
 
     - See what’s coming up [in Core v 1.6](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aissue+label%3A%22dbt-core+v1.6%22)!
-    - We turned the `profiles.yml` [page](/docs/core/connect-data-platform/profiles.yml) into a landing page, added more context to profile.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
+    - We turned the `profiles.yml` [page](/docs/local/profiles.yml) into a landing page, added more context to profile.yml page, and moved the ‘About CLI’ higher up in the `Set up dbt` section.
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
@@ -833,7 +833,7 @@ Archived release notes for <Constant name="cloud" /> from 2023
     - Added Starburst/Trino adapter docs, including:
   * [dbt Cloud quickstart guide](/guides/starburst-galaxy), 
   * [connection page](/docs/cloud/connect-data-platform/connect-starburst-trino), 
-  * [set up page](/docs/core/connect-data-platform/trino-setup), and [config page](/reference/resource-configs/trino-configs). 
+  * [set up page](/docs/local/connect-data-platform/trino-setup), and [config page](/reference/resource-configs/trino-configs). 
     - Enhanced [dbt Cloud jobs page](/docs/deploy/jobs) and section to include conceptual info on the queue time, improvements made around it, and about failed jobs. 
     - Check out the April dbt [Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes)
 

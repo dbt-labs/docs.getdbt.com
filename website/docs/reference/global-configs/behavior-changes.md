@@ -48,7 +48,7 @@ The following are **not** behavior changes:
 - dbt updates the language of human-friendly messages in log events.
 - dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#non-breaking-changes)).
 
-The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of <Constant name="cloud" /> and patch releases of <Constant name="core" />.
+The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of <Constant name="dbt" /> and patch releases of <Constant name="core" />.
 
 By contrast, behavior change migrations happen slowly, over the course of months, facilitated by behavior change flags. The flags are loosely coupled to the specific dbt runtime version. By setting flags, users have control over opting in (and later opting out) of these changes.
 
@@ -56,7 +56,7 @@ By contrast, behavior change migrations happen slowly, over the course of months
 
 These flags _must_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, which means they should be defined in version control and modified through pull or merge requests, with the same testing and peer review.
 
-The following example displays the current flags and their current default values in the latest <Constant name="cloud" /> and <Constant name="core" /> versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you've opted out of, until you either:
+The following example displays the current flags and their current default values in the latest <Constant name="dbt" /> and <Constant name="core" /> versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you've opted out of, until you either:
 
 - Resolve the issue (by switching the flag to `True`)
 - Silence the warnings using the `warn_error_options.silence` flag
@@ -70,7 +70,6 @@ flags:
   require_explicit_package_overrides_for_builtin_materializations: True
   require_resource_names_without_spaces: True
   source_freshness_run_project_hooks: True
-  restrict_direct_pg_catalog_access: False
   skip_nodes_if_on_run_start_fails: False
   state_modified_compare_more_unrendered_values: False
   require_yaml_configuration_for_mf_time_spines: False
@@ -82,15 +81,17 @@ flags:
   require_unique_project_resource_names: False
   require_ref_searches_node_package_before_root: False
   require_valid_schema_from_generate_schema_name: False
+  enable_truthy_nulls_equals_macro: False
+  require_sql_header_in_test_configs: False
 ```
 
 </File>
 
 #### dbt Core behavior changes
 
-This table outlines which month of the **Latest** release track in <Constant name="cloud" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
+This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
-| Flag                                                            | <Constant name="cloud" /> **Latest**: Intro | <Constant name="cloud" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | Removed in Fusion |
+| Flag                                                            | <Constant name="dbt" /> **Latest**: Intro | <Constant name="dbt" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | Removed in Fusion |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|---------------|
 | [require_explicit_package_overrides_for_builtin_materializations](#package-override-for-built-in-materialization) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             | ✅|
 | [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | 2025.05                | 1.8.0           | 1.10.0             | ✅ |
@@ -100,12 +101,15 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              | ✅ |
 | [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              | ✅ |
 | [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            | - |
+| [enable_truthy_nulls_equals_macro](#null-safe-equality) | 2025.02 | TBD* | 1.9.0 | TBD* | - |
 | [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | - |
 | [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            | - |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 | - |
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
+| [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
+
 
 #### dbt adapter behavior changes
 
@@ -115,14 +119,15 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | ----------------------------- | ----------------------- | -------------------------- |-----------------|
 | [use_info_schema_for_columns](/reference/global-configs/databricks-changes#use-information-schema-for-columns) | Databricks 1.9.0                   | TBD | ✅ |
 | [use_user_folder_for_python](/reference/global-configs/databricks-changes#use-users-folder-for-python-model-notebooks)  | Databricks 1.9.0                   | TBD  | ✅ |
+| [use_managed_iceberg](/reference/global-configs/databricks-changes#use-managed-iceberg)  | Databricks 1.11.0  |  1.12.0                                                     | - |
 | [use_materialization_v2](/reference/global-configs/databricks-changes#use-restructured-materializations)      | Databricks 1.10.0                  | TBD| - |
-| [enable_truthy_nulls_equals_macro](/reference/global-configs/snowflake-changes#the-enable_truthy_nulls_equals_macro-flag) | Snowflake 1.9.0 | TBD | - |
-| [restrict_direct_pg_catalog_access](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) | Redshift 1.9.0 | TBD | - |
+| [use_replace_on_for_insert_overwrite](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy)   | Databricks 1.11.0  | 1.11.0  | - |
 | [redshift_skip_autocommit_transaction_statements](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) | Redshift 1.12.0 | TBD | - |
 | [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | TBD | - |
 | [bigquery_reject_wildcard_metadata_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) | BigQuery 1.12.0 | TBD | - |
+| [snowflake_default_transient_dynamic_tables](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) | Snowflake 1.12.0 | TBD | - |
 
-When the <Constant name="cloud" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
+When the <Constant name="dbt" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
 - Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
@@ -218,7 +223,7 @@ Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment va
 
 ### Cumulative metrics
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="cloud" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -231,7 +236,7 @@ Use the following metric configured with the syntax before v1.9 as an example:
 
 ```
 
-If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="cloud" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
+If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
 
 ```bash
 
@@ -264,6 +269,25 @@ Once the metric is updated, it will work as expected:
         window: 7 days
 
 ```
+
+### Null-safe equality (equals macro) {#null-safe-equality}
+
+The `enable_truthy_nulls_equals_macro` flag is `False` by default. Setting it to `True` in your `dbt_project.yml` enables null-safe equality in the dbt [equals](/reference/dbt-jinja-functions/cross-database-macros#equals) macro, which is used in incremental and snapshot materializations.
+
+By default, the `equals()` macro follows SQL's [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`.
+
+When the `enable_truthy_nulls_equals_macro` flag is enabled, the `equals()` macro uses the semantics of the [`IS NOT DISTINCT FROM`](https://modern-sql.com/feature/is-distinct-from) operator with two `NULL` values treated as equal.
+
+To enable the flag, add it under `flags` in `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  enable_truthy_nulls_equals_macro: true
+```
+
+</File>
 
 ### Macro argument validation
 
@@ -477,4 +501,30 @@ To resolve this, update your macro to return a valid schema name (`target.schema
 ```
 
 </File>
+
+### `sql_header` in data tests
+
+Set the `require_sql_header_in_test_configs` flag to `True` to enable support for the [`sql_header`](/reference/resource-configs/sql_header) config for generic data tests. When enabled, you can set `sql_header` in the `config` of a generic data test at the model or column level in your `properties.yml` file. You can use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
+
+For example:
+
+<File name="models/properties.yml">
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null:
+              name: not_null_orders_order_id
+              config:
+                sql_header: "-- SQL_HEADER_TEST_MARKER"
+```
+
+</File>
+
+
+
+For more information, refer to [Data test configurations](/reference/data-test-configs).
 
