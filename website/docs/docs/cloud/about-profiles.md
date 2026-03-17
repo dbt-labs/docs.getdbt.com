@@ -13,15 +13,15 @@ pagination_prev: null
 
 Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](/dbt-cloud/api-v3#/operations/List%20Profiles).
 
-### Environment profiles table
+## Environment profiles table
 
 On an environment's **Settings** page, the **Connection profiles** section lists the profiles assigned to that environment:
 
-- **Profile name**: Click a profile name to open the view/edit drawer (view or edit mode). In view mode there is no separate action column; use the profile name to open and view a profile.
+- **Profile name**: Click a profile name to open the view/edit drawer. In view mode, there’s no separate action column, so use the profile name to open and view a profile.
 - **Connection**: Click the connection to open the [connection details](/docs/cloud/connect-data-platform/about-connections#connection-management) page in a new tab.
 - **Edit mode**: Click **Edit** to switch to edit mode. Use the **swap icon** (change profile) next to a profile to assign a different profile to that row.
 
-#### Considerations
+### Considerations
 - Profiles don't apply to development environments because of the unique configurations and individual credentials applied.
 - The <Constant name="semantic_layer" /> configuration isn't supported with profiles yet. 
 
@@ -56,7 +56,7 @@ To create a new profile:
 2. Click an available deployment environment.
 3. Click **Settings**, then click **Edit**.
 4. Navigate to the **Connection profiles** section and click **Edit**.
-5. Click the **swap icon** (change profile) next to an existing profile row, then select **Create new profile** from the **Profile** dropdown.
+5. Click the **swap icon** (change profile) in the **Connection profiles** row, then select **Create new profile** from the **Profile** dropdown.
 
 <Lightbox src="/img/docs/dbt-cloud/profile-from-environment.png" width="60%" title="Creating a profile from the environment settings." />
 
