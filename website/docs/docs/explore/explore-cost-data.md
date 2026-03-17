@@ -122,7 +122,7 @@ For **Cost**, **Usage**, **Query run time**, and **Builds** tabs, you can custom
 
 ### Table view 
 
-For **Run duration**, **Cost**, **Builds**, and **Usage** tabs, you can access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
+For **Cost**, **Usage**, **Query run time**, and **Builds** tabs, you can access the table view by clicking **Show table**, which provides detailed optimization data such as models reused, usage reduction, and cost reduction.
 
 import TableView2 from '/snippets/_table-view.md';
 
