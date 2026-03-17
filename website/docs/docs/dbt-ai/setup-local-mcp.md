@@ -37,11 +37,13 @@ After completing OAuth setup, skip to [Test your configuration](#optional-test-y
 
 ### CLI only (no dbt platform)
 
-This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.
+This option runs the MCP server locally and connects it to your local dbt project using <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> and `DBT_PATH`.
 
 If you're using the <Constant name="core" /> or <Constant name="fusion" /> CLI and don't need access to <Constant name="dbt_platform" /> features (Discovery API, Semantic Layer, Administrative API), you can set up local MCP with just your dbt project information.
 
 Add this configuration to your MCP client (refer to the specific [integration guides](#set-up-your-mcp-client) for exact file locations):
+
+<VersionBlock lastVersion="1.10">
 
 ```json
 {
@@ -58,13 +60,34 @@ Add this configuration to your MCP client (refer to the specific [integration gu
 }
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"],
+      "env": {
+        "DBT_ENGINE_PROJECT_DIR": "/path/to/your/dbt/project",
+        "DBT_PATH": "/path/to/your/dbt/executable"
+      }
+    }
+  }
+}
+```
+
+</VersionBlock>
+
 #### Locating your paths
 
 Follow the appropriate instructions for your OS to locate your path:
 
 <Expandable alt_header="macOS/Linux" >
 
-- **DBT_PROJECT_DIR**: The full path to your dbt project folder
+- <VersionBlock lastVersion="1.10">**DBT_PROJECT_DIR**</VersionBlock><VersionBlock firstVersion="1.11">**DBT_ENGINE_PROJECT_DIR**</VersionBlock>: The full path to your dbt project folder
    - Example: `/Users/yourname/dbt-projects/my_project`
    - This is the folder containing your `dbt_project.yml` file.
 
@@ -79,7 +102,7 @@ Follow the appropriate instructions for your OS to locate your path:
 
 <Expandable alt_header="Windows" >
 
-- **DBT_PROJECT_DIR**: The full path to your dbt project folder
+- <VersionBlock lastVersion="1.10">**DBT_PROJECT_DIR**</VersionBlock><VersionBlock firstVersion="1.11">**DBT_ENGINE_PROJECT_DIR**</VersionBlock>: The full path to your dbt project folder
    - Example: `C:\Users\yourname\dbt-projects\my_project`
    - This is the folder containing your `dbt_project.yml` file.
    - Use forward slashes or escaped backslashes: `C:/Users/yourname/dbt-projects/my_project`
@@ -101,6 +124,8 @@ If you need to configure multiple environment variables or prefer to manage them
 
 Here is an example of the file:
 
+<VersionBlock lastVersion="1.10">
+
 ```code
 DBT_HOST=cloud.getdbt.com
 DBT_PROD_ENV_ID=your-production-environment-id
@@ -112,21 +137,58 @@ DBT_PROJECT_DIR=/path/to/your/dbt/project
 DBT_PATH=/path/to/your/dbt/executable
 DBT_HOST_PREFIX=your-account-prefix
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```code
+DBT_ENGINE_HOST=cloud.getdbt.com
+DBT_PROD_ENV_ID=your-production-environment-id
+DBT_DEV_ENV_ID=your-development-environment-id
+DBT_USER_ID=your-user-id
+DBT_ACCOUNT_ID=your-account-id
+DBT_TOKEN=your-service-token
+DBT_ENGINE_PROJECT_DIR=/path/to/your/dbt/project
+DBT_PATH=/path/to/your/dbt/executable
+DBT_HOST_PREFIX=your-account-prefix
+```
+
+</VersionBlock>
+
 You will need this file for integrating with MCP-compatible tools.
 
 ## API and SQL tool settings
+
+<VersionBlock lastVersion="1.10">
 
 | Environment Variable     | Required                               | Description                                                                                                                                                                                                                                                                                                                 |
 | ------------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `DBT_HOST`               | Required                               | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For multi-cell accounts, exclude the account prefix from the hostname and set it in `DBT_HOST_PREFIX` instead. The default is `cloud.getdbt.com`.                                                                                    |
 | `DBT_HOST_PREFIX` | Only required for multi-cell instances | Your account prefix (for example, `abc123` from `abc123.us1.dbt.com`). Don't include this in `DBT_HOST`. If you're not using a multi-cell account, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses).                                                                                                 |
-| DBT_TOKEN                | Required                               | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
-| DBT_ACCOUNT_ID           | Required for Administrative API tools  | Your [dbt account ID](/faqs/Accounts/find-user-id)                                                                                                                                                                                                                                                                          |
-| DBT_PROD_ENV_ID          | Required                               | Your <Constant name="dbt_platform" /> production environment ID                                                                                                                                                                                                                                                             |
-| DBT_DEV_ENV_ID           | Optional                               | Your <Constant name="dbt_platform" /> development environment ID                                                                                                                                                                                                                                                            |
-| DBT_USER_ID              | Optional                               | Your <Constant name="dbt_platform" /> user ID ([docs](/faqs/Accounts/find-user-id))                                                                                                                                                                                                                                         |
+| `DBT_TOKEN`                | Required                               | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| `DBT_ACCOUNT_ID`           | Required for Administrative API tools  | Your [dbt account ID](/faqs/Accounts/find-user-id)                                                                                                                                                                                                                                                                          |
+| `DBT_PROD_ENV_ID`          | Required                               | Your <Constant name="dbt_platform" /> production environment ID                                                                                                                                                                                                                                                             |
+| `DBT_DEV_ENV_ID`           | Optional                               | Your <Constant name="dbt_platform" /> development environment ID                                                                                                                                                                                                                                                            |
+| `DBT_USER_ID`              | Optional                               | Your <Constant name="dbt_platform" /> user ID ([docs](/faqs/Accounts/find-user-id))                                                                                                                                                                                                                                         |
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+| Environment Variable     | Required                               | Description                                                                                                                                                                                                                                                                                                                 |
+| ------------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DBT_ENGINE_HOST`               | Required                               | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For multi-cell accounts, exclude the account prefix from the hostname and set it in `DBT_HOST_PREFIX` instead. The default is `cloud.getdbt.com`.                                                                                    |
+| `DBT_HOST_PREFIX` | Only required for multi-cell instances | Your account prefix (for example, `abc123` from `abc123.us1.dbt.com`). Don't include this in `DBT_ENGINE_HOST`. If you're not using a multi-cell account, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses).                                                                                                 |
+| `DBT_TOKEN`                | Required                               | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: When using the Semantic Layer, it is recommended to use a personal access token. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| `DBT_ACCOUNT_ID`           | Required for Administrative API tools  | Your [dbt account ID](/faqs/Accounts/find-user-id)                                                                                                                                                                                                                                                                          |
+| `DBT_PROD_ENV_ID`          | Required                               | Your <Constant name="dbt_platform" /> production environment ID                                                                                                                                                                                                                                                             |
+| `DBT_DEV_ENV_ID`           | Optional                               | Your <Constant name="dbt_platform" /> development environment ID                                                                                                                                                                                                                                                            |
+| `DBT_USER_ID`              | Optional                               | Your <Constant name="dbt_platform" /> user ID ([docs](/faqs/Accounts/find-user-id))                                                                                                                                                                                                                                         |
+</VersionBlock>
 
 **Multi-cell configuration examples:**
+
+<VersionBlock lastVersion="1.10">
 
 ✅ **Correct configuration:**
 ```bash
@@ -144,15 +206,51 @@ If your full URL is `abc123.us1.dbt.com`, separate it as:
 - `DBT_HOST=us1.dbt.com`
 - `DBT_HOST_PREFIX=abc123`
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+✅ **Correct configuration:**
+```bash
+DBT_ENGINE_HOST=us1.dbt.com
+DBT_HOST_PREFIX=abc123
+```
+
+❌ **Incorrect configuration (common mistake):**
+```bash
+DBT_ENGINE_HOST=abc123.us1.dbt.com  # Don't include prefix in host!
+# DBT_HOST_PREFIX not set
+```
+
+If your full URL is `abc123.us1.dbt.com`, separate it as:
+- `DBT_ENGINE_HOST=us1.dbt.com`
+- `DBT_HOST_PREFIX=abc123`
+
+</VersionBlock>
+
 ## dbt CLI settings
 
 The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
 
+<VersionBlock lastVersion="1.10">
+
 | Environment Variable | Required | Description                                                                                                                                                          | Example                                                                         |
 | -------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `DBT_PROJECT_DIR`    | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file.                              | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame`   |
-| DBT_PATH             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
-| DBT_CLI_TIMEOUT      | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.                                                                                     | Defaults to 60 seconds.                                                         |
+| `DBT_PATH`             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
+| `DBT_CLI_TIMEOUT`      | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.                                                                                     | Defaults to 60 seconds.                                                         |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+| Environment Variable | Required | Description                                                                                                                                                          | Example                                                                         |
+| -------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `DBT_ENGINE_PROJECT_DIR`    | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file.                              | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame`   |
+| `DBT_PATH`             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
+| `DBT_CLI_TIMEOUT`      | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.                                                                                     | Defaults to 60 seconds.                                                         |
+
+</VersionBlock>
 
 ### Locating your `DBT_PATH`
 
@@ -184,7 +282,7 @@ Example output: `C:\Python39\Scripts\dbt.exe`
 
 - You can set any environment variable supported by your dbt executable, like [the ones supported in <Constant name="core" />](/reference/global-configs/about-global-configs#available-flags).
 - dbt MCP respects the standard environment variables and flags for usage tracking mentioned [here](/reference/global-configs/usage-stats).
-- `DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}'` is automatically set so that the MCP server knows if no node is selected when running a dbt command. You can overwrite it if needed, but it provides a better experience when calling dbt from the MCP server, ensuring the tool selects valid nodes.
+- <VersionBlock lastVersion="1.10">`DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}'`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}'`</VersionBlock> is automatically set so that the MCP server knows if no node is selected when running a dbt command. You can overwrite it if needed, but it provides a better experience when calling dbt from the MCP server, ensuring the tool selects valid nodes.
 
 ## Disabling tools
 
@@ -206,6 +304,8 @@ You can disable the following tool access on the local `dbt-mcp`:
 
 The recommended way to configure your MCP client is to use the `env` field in your JSON configuration file. This keeps all configuration in one file:
 
+<VersionBlock lastVersion="1.10">
+
 ```json
 {
   "mcpServers": {
@@ -223,6 +323,30 @@ The recommended way to configure your MCP client is to use the `env` field in yo
   }
 }
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"],
+      "env": {
+        "DBT_ENGINE_HOST": "cloud.getdbt.com",
+        "DBT_TOKEN": "your-token-here",
+        "DBT_PROD_ENV_ID": "12345",
+        "DBT_ENGINE_PROJECT_DIR": "/path/to/project",
+        "DBT_PATH": "/path/to/dbt"
+      }
+    }
+  }
+}
+```
+
+</VersionBlock>
 
 #### Using an `.env` file
 
@@ -246,11 +370,26 @@ However, this approach requires managing two files instead of one.
 In your command line tool, run the following to test your setup:
 
 **If using the `env` field in JSON:**
+
+<VersionBlock lastVersion="1.10">
+
 ```bash
 export DBT_PROJECT_DIR=/path/to/project
 export DBT_PATH=/path/to/dbt
 uvx dbt-mcp
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+export DBT_ENGINE_PROJECT_DIR=/path/to/project
+export DBT_PATH=/path/to/dbt
+uvx dbt-mcp
+```
+
+</VersionBlock>
 
 **If using an `.env` file:**
 ```bash
