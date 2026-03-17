@@ -23,6 +23,7 @@ To enable dbt to privately connect to your BigQuery project via PSC, the regiona
 ```
 Subject: New Multi-Tenant GCP PSC Request
 - Type: BigQuery
+- <Constant name="dbt_platform" /> account URL:
 - BigQuery project region: 
 - dbt GCP multi-tenant environment:
 ```
