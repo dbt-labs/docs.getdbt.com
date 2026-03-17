@@ -888,6 +888,7 @@ const sidebarSettings = {
           items: [
             "docs/dbt-ai/mcp-quickstart-oauth",
             "docs/dbt-ai/mcp-quickstart-cli",
+            "docs/dbt-ai/mcp-quickstart-remote",
           ],
         },
         {

@@ -7,12 +7,15 @@ import MCPFaqToolsetDisabled from '/snippets/_mcp-faq-toolset-disabled.md';
 import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
 import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
 
-This quickstart connects dbt MCP server to your <Constant name="dbt_platform"/> account. Choose _OAuth_ (available for Enterprise and Enterprise+ accounts) or _Tokens_ (more control, better for shared setups).
+
+This quickstart uses the local MCP server: it runs on your machine using `uvx dbt-mcp`, connects to your <Constant name="dbt_platform"/> for <Constant name="semantic_layer"/>, Discovery, and SQL, and optionally runs local dbt CLI. For local CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli). 
+
+Choose _OAuth_ (available for Enterprise and Enterprise+ accounts) or _Tokens_ (more control, better for shared setups).
 
 ## Prerequisites
 
+- [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
-- [Install uv](https://docs.astral.sh/uv/getting-started/installation/) (not required for Claude Desktop)
 
 ## Step 1: Choose your auth method and configure
 
@@ -143,9 +146,9 @@ Replace `YOUR-ACCESS-URL` with your Access URL (for example, `abc123.us1.dbt.com
 
 </Tabs>
 
-<Expandable alt_header="Optional: add local CLI commands">
+#### Optional: Add local CLI commands
 
-To also run dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more), add these two variables to your `env` block:
+To also run <Constant name="platform_cli"/> commands (`dbt run`, `dbt build`, `dbt test`, and more), add these two variables to your `env` block:
 
 ```json
 "DBT_PROJECT_DIR": "/path/to/your/dbt/project",
@@ -154,7 +157,6 @@ To also run dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more), add
 
 Find `DBT_PATH` by running `which dbt` (macOS/Linux) or `where dbt` (Windows). `DBT_PROJECT_DIR` is the folder containing your `dbt_project.yml`.
 
-</Expandable>
 
 </TabItem>
 
@@ -378,8 +380,8 @@ With the platform setup, your AI assistant can use:
 
 For the complete tool list, see [Available tools](/docs/dbt-ai/mcp-available-tools).
 
-:::tip Looking for CLI-only setup?
-If you don't need platform features and just want to run dbt commands locally, see [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli).
+:::tip Looking for local CLI only?
+If you only need to run dbt commands locally (with or without a <Constant name="dbt_platform"/> account), see [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli).
 :::
 
 ## Troubleshooting

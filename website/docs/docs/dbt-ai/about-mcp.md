@@ -28,17 +28,15 @@ To get started, choose the quick start that matches your setup:
 <SimpleTable>
 | I want to... | Quickstart |
 | --- | --- |
-| Connect to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL) | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |
-| Use <Constant name="platform_cli"/> commands locally, without or with a <Constant name="dbt_platform" /> account| [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |
+| Connect to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL). Uses [local MCP server](#local-mcp-server). | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |
+| Use <Constant name="platform_cli"/> commands locally, without or with a <Constant name="dbt_platform" /> account. Uses [local MCP server](#local-mcp-server).| [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |
+| Use MCP with zero local install (to query data only; no running dbt commands). Uses [remote MCP server](#remote-mcp-server). | [Use MCP with zero install](/docs/dbt-ai/mcp-quickstart-remote) |
 </SimpleTable>
-
-Not sure which to pick? Start with [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) — it covers both OAuth and token-based auth, with an option to add CLI commands.
-
-Looking for a zero-install option? The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects via HTTP with no local installation required.
 
 ## Server access
 
-You can use the dbt MCP server in the following ways: 
+You can use the dbt MCP server in the following ways:
+
 - [Local MCP server](#local-mcp-server) &mdash; runs locally on your machine and requires installing `uvx` (which installs dbt-mcp locally) and then running `uvx dbt-mcp` to start the server. No need to clone the repo unless you want to contribute to [dbt MCP server](https://github.com/dbt-labs/dbt-mcp).
 - [Remote MCP server](#remote-mcp-server) &mdash; uses an HTTP connection and makes calls to dbt-mcp hosted on the managed <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
 
@@ -54,7 +52,7 @@ The [local MCP server](/docs/dbt-ai/setup-local-mcp) runs on your machine and re
 
 ### Remote MCP server
 
-The remote MCP server from dbt offers data consumption use cases without local setup.
+The remote MCP server from dbt offers data consumption use cases without local setup. It doesn't support local development or <Constant name="platform_cli"/> commands; use the [local MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
 
 The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant name="dbt_platform" /> via HTTP and requires no local installation. This option is useful when:
 - You either don’t want to install, or are restricted from installing, additional software on your system.
@@ -73,17 +71,19 @@ The following tool list is available for your MCP server and is auto-fetched fro
 ### Supported tools by MCP server type
 The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
 
+Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote supports <Constant name="semantic_layer" />, SQL, Discovery, and <Constant name="fusion" /> tools only.
+
 Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
 | Tools | Local | Remote |
 | --- | --- | --- |
-| dbt CLI  | ✅ | ❌ |
-| Semantic Layer | ✅ | ✅ |
+| <Constant name="platform_cli"/> commands  | ✅ | ❌ |
+| <Constant name="semantic_layer" /> | ✅ | ✅ |
 | SQL  | ✅ | ✅ |
 | Metadata Discovery| ✅ | ✅ |
 | Administrative API | ✅ | ❌ |
 | Codegen Tools | ✅ | ❌ |
-| Fusion Tools | ✅ | ✅ |
+| <Constant name="fusion" /> Tools | ✅ | ✅ |
 
 ## MCP integrations
 
