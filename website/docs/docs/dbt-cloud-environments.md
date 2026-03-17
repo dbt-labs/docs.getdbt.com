@@ -9,7 +9,7 @@ An environment determines how <Constant name="dbt" /> will execute your project 
 
 Critically, in order to execute dbt, environments define three variables:
 
-1. The version of <Constant name="core" /> that will be used to run your project
+1. The version of <Constant name="dbt" /> that will be used to run your project
 2. The warehouse connection information (including the target database/schema settings)
 3. The version of your code to execute
 
@@ -29,9 +29,9 @@ import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
 To create a new <Constant name="dbt" /> development environment:
 
-1. Navigate to **Deploy** -> **Environments** 
-2. Click **Create Environment**.
-3. Select **Development** as the environment type.
+1. Navigate to **Orchestration** > **Environments**.
+2. Click **+ Create Environment**.
+3. Select **Development** as the environment type. You can only create one Development environment for a project.
 4. Fill in the fields under **General Settings** and **Development Credentials**.
 5. Click **Save** to create the environment.
 
@@ -48,6 +48,12 @@ Deployment environments in <Constant name="dbt" /> are necessary to execute sche
 Even though you can have many environments, only one of them can be the "main" deployment environment. This would be considered your "production" environment and represents your project's "source of truth", meaning it's where your most reliable and final data transformations live.
 
 To learn more about <Constant name="dbt" /> deployment environments and how to configure them, refer to the [Deployment environments](/docs/deploy/deploy-environments) page. For our best practices guide, read [<Constant name="dbt" /> environment best practices](/guides/set-up-ci) for more info.
+
+## Change environment settings
+
+import ChangeEnvironment from '/snippets/_change-environment.md';
+
+<ChangeEnvironment />
 
 ## Delete an environment
 
