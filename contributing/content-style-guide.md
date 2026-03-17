@@ -124,6 +124,7 @@ Use all caps unless another standard exists (such as in code blocks):
 - The right sidebar (page TOC) generates automatically from H2 (##) and H3 (###) headings
 - Expect merge conflicts in `sidebar.js`. Review carefully and accept other contributors' changes
 - Ensure content is placed into proper directory (/docs, /guides, /reference, etc.)
+- Keep sidebar ordering consistent with the existing content hierarchy
 
 ---
 
