@@ -9,13 +9,15 @@ import McpToolsFromReadme from '/snippets/_mcp-tools-from-readme.md';
 
 # About dbt Model Context Protocol (MCP) server
 
+<IntroText>
+
 The [dbt MCP server](https://github.com/dbt-labs/dbt-mcp) provides a standardized framework that lets you integrate AI applications with dbt‑managed data assets across different data platforms. This ensures consistent, governed access to models, metrics, lineage, and freshness across your AI tools.
 
 </IntroText>
 
 As AI becomes more deeply integrated into data workflows, dbt users need a seamless way to access and integrate dbt's structured metadata and execution context effectively. This page provides an overview of dbt's MCP Server, which exposes this context, supporting use cases such as conversational access to data, agent-driven automation of dbt workflows, and AI-assisted development.
 
-The MCP server provides access to the dbt CLI, [API](/docs/dbt-cloud-apis/overview), the [Discovery API](/docs/dbt-cloud-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
+The MCP server provides access to the <Constant name="platform_cli"/>, [API](/docs/dbt-cloud-apis/overview), the [Discovery API](/docs/dbt-cloud-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
@@ -27,7 +29,7 @@ To get started, choose the quick start that matches your setup:
 | I want to... | Quickstart |
 | --- | --- |
 | Connect to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL) | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |
-| Use dbt CLI commands locally (no platform account needed) | [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |
+| Use <Constant name="platform_cli"/> commands locally, without or with a <Constant name="dbt_platform" /> account| [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |
 </SimpleTable>
 
 Not sure which to pick? Start with [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) — it covers both OAuth and token-based auth, with an option to add CLI commands.
@@ -37,7 +39,7 @@ Looking for a zero-install option? The [remote MCP server](/docs/dbt-ai/setup-re
 ## Server access
 
 You can use the dbt MCP server in the following ways: 
-- [Local MCP server](#local-mcp-server) &mdash; runs locally on your machine and requires installing `uvx` (which installs dbt-mcp locally) and then running `uvx dbt-mcp` to start the server. You don't need to clone the repository unless you want to contribute to dbt MCP.
+- [Local MCP server](#local-mcp-server) &mdash; runs locally on your machine and requires installing `uvx` (which installs dbt-mcp locally) and then running `uvx dbt-mcp` to start the server. No need to clone the repo unless you want to contribute to [dbt MCP server](https://github.com/dbt-labs/dbt-mcp).
 - [Remote MCP server](#remote-mcp-server) &mdash; uses an HTTP connection and makes calls to dbt-mcp hosted on the managed <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
 
 ### Local MCP server
@@ -47,7 +49,7 @@ The local MCP server provides the best experience for development workflows, lik
 The [local MCP server](/docs/dbt-ai/setup-local-mcp) runs on your machine and requires installing `uvx` (which installs dbt-mcp locally) and then running `uvx dbt-mcp` to start the server. You don't need to clone the repository unless you want to contribute to dbt MCP. The local MCP server provides:
 - Full access to dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more)
 - Support for <Constant name="core" />, <Constant name="platform_cli" />, and <Constant name="fusion_engine" />
-- Ability to work with local dbt projects without requiring a <Constant name="dbt_platform" /> account
+- Ability to work with local dbt projects with or without a <Constant name="dbt_platform" /> account
 - Optional integration with <Constant name="dbt_platform" /> APIs for metadata discovery and Semantic Layer access
 
 ### Remote MCP server

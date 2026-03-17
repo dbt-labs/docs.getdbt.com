@@ -1,7 +1,7 @@
 import MCPFaqUvx from '/snippets/_mcp-faq-uvx.md';
 import MCPFaqServerNotStarting from '/snippets/_mcp-faq-server-not-starting.md';
 
-This quickstart walks you through connecting dbt MCP to your local dbt project. This setup gives you dbt CLI tools (`run`, `build`, `test`, `compile`, and more) inside your AI assistant. If you'd like to connect to <Constant name="dbt_platform"/> with the CLI, see the [OAuth quickstart](/docs/dbt-ai/mcp-quickstart-oauth).
+This quickstart walks you through connecting dbt MCP server to your local dbt project. This setup gives you dbt CLI tools (`run`, `build`, `test`, `compile`, and more) inside your AI assistant. If you'd like to connect to <Constant name="dbt_platform"/> with the CLI, see the [OAuth quickstart](/docs/dbt-ai/mcp-quickstart-oauth).
 
 :::tip No clone required
 You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` — it fetches and runs dbt-mcp for you.
@@ -11,7 +11,7 @@ You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A local dbt project (the folder containing your `dbt_project.yml` file)
-- dbt installed locally (dbt Core, dbt Fusion, or dbt Cloud CLI)
+- dbt installed locally (<Constant name="dbt_core"/>, <Constant name="fusion_engine"/>, or <Constant name="platform_cli"/>)
 
 ## Step 1: Find your paths
 
@@ -47,7 +47,7 @@ cd
 # Example output: C:\Users\yourname\projects\my_dbt_project
 ```
 
-**Note:** Use forward slashes in your configuration: `C:/Python39/Scripts/dbt.exe`
+Note: Use forward slashes in your configuration: `C:/Python39/Scripts/dbt.exe`
 
 </TabItem>
 
@@ -104,7 +104,7 @@ claude mcp add dbt \
 
 Click the link below with Cursor open to auto-configure:
 
-[Add dbt Core or Fusion to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
+[Add <Constant name="dbt_core"/> or <Constant name="fusion"/> to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
 
 After clicking:
 1. Update `DBT_PROJECT_DIR` with the full path to your dbt project.
@@ -164,7 +164,7 @@ With CLI-only setup, your AI assistant can use:
 - Model lineage and node details from your local project
 - Codegen tools (when enabled — see [Environment variables reference](/docs/dbt-ai/mcp-environment-variables))
 
-Platform features like Semantic Layer, Discovery API, and metadata queries require a dbt platform account. To add them, see [Connect to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth).
+Platform features like <Constant name="semantic_layer" />, Discovery API, and metadata queries require a <Constant name="dbt_platform" /> account. To add them, see [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth).
 
 ## Troubleshooting
 
@@ -184,5 +184,5 @@ For all troubleshooting topics, see [MCP troubleshooting](/docs/dbt-ai/mcp-troub
 
 ## Next steps
 
-- Add dbt platform features: see [Connect to dbt platform](/docs/dbt-ai/mcp-quickstart-oauth)
+- Add <Constant name="dbt_platform" /> features: see [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth)
 - Configure toolsets or disable specific tools: see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables)
