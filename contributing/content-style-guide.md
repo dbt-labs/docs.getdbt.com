@@ -521,6 +521,7 @@ Avoid Latin abbreviations. Use plain language:
 | e.g. | for example, like |
 | etc. | and more, and so forth |
 | N.B. | note |
+| via  | using, through |
 
 ### Product terminology
 
