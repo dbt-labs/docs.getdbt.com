@@ -103,7 +103,7 @@ To access job details, select your project in the main menu and go to **Orchestr
 
 ### Filters
 
-In the **Runs** tab, use the **Last** filter to view data from the past week, 14 days, or 30 days.
+For the **Runs** tab, you can use the **Last** filter to view data from the past week, 14 days, or 30 days.
 
 For **Cost**, **Usage**, **Query run time**, and **Builds** tabs, you can customize the cost data you want to view by:
 
