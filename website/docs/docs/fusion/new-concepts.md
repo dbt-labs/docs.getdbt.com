@@ -210,7 +210,7 @@ models:
 
 #### strict mode inheritance
 
-Unlike `baseline` or `off`, `strict` mode doesn't propagate to downstream models. This means that if you set a model to `strict`, its downstream models will not inherit `strict` mode unless you set them explicitly. To make all models `strict`, you must set `+static_analysis: strict` on root models first, or use the project-wide config in the next section at the project level.
+Unlike `baseline` or `off`, `strict` mode doesn't propagate to downstream models. If you configure a model as `strict`, its downstream models won't inherit `strict` mode unless you set them explicitly. To make all models `strict`, you must set `+static_analysis: strict` on root models first, or use the project-wide config in the next section at the project level.
 
 For example, in A → B → C with a default of `baseline`, configuring A (a root node) as `strict` makes only A `strict` &mdash; B and C remain baseline unless configured. To make the full chain `strict`, set `+static_analysis: strict` on each relevant model or group, or use a project-wide setting.
 
