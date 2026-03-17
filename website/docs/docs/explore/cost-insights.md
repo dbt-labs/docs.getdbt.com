@@ -21,7 +21,7 @@ With Cost Insights, you can see:
 - **How much your dbt models cost to run**: See the compute cost and times for each model and job in your warehouse's native units.
 - **The cost reductions from using state-aware orchestration**: Understand the cost reduction when state-aware orchestration reuses unchanged models.
 - **Cost trends over time**: Track your warehouse spend and optimization impact across your dbt projects.
-- **Filter by asset type**: On Cost Insights charts (Cost, Usage, Query run time, Builds), use the **Asset type** dropdown to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
+- **Filter by asset type**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
 
 
 
