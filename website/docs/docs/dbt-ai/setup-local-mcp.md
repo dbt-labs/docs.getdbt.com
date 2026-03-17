@@ -240,7 +240,7 @@ The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /
 | `DBT_PATH`             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
 | `DBT_CLI_TIMEOUT`      | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.                                                                                     | Defaults to 60 seconds.                                                         |
 
-<VersionBlock>
+</VersionBlock>
 
 <VersionBlock firstVersion="1.11">
 
@@ -250,7 +250,7 @@ The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /
 | `DBT_PATH`             | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="platform_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
 | `DBT_CLI_TIMEOUT`      | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands.                                                                                     | Defaults to 60 seconds.                                                         |
 
-<VersionBlock>
+</VersionBlock>
 
 ### Locating your `DBT_PATH`
 
