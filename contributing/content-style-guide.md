@@ -463,6 +463,7 @@ Every image must include descriptive alt text for screen readers.
 - Exclude URL and bookmark bars
 - Use generic names (John Doe, Jane Doe) in account fields
 - Capture only the relevant area 
+- Crop to the relevant UI area only
 
 ### Callout annotations
 
