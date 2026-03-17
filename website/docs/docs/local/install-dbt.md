@@ -128,7 +128,7 @@ For supported adapters, refer to [Fusion requirements](/docs/fusion/supported-fe
    ```
 
 :::note
-We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable, and dbt won't search your project root if you're running commands from a different directory location.
+We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> environment variable, and dbt won't search your project root if you're running commands from a different directory location.
 :::
 
 ### Precedence order
@@ -148,7 +148,7 @@ For more details on managing environment variables locally, refer to [Configure 
 
 ## profiles.yml location
 
-<Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the `DBT_PROFILES_DIR` environment variable or `profiles.yml` in arbitrary working directories.
+<Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or `profiles.yml` in arbitrary working directories.
 
 For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/profiles.yml#location-of-profilesyml).
 
