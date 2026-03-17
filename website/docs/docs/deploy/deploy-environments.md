@@ -89,7 +89,6 @@ Finally, the staging environment has its own view in [<Constant name="catalog" /
 
 ### Create a Staging environment
 
-In the <Constant name="dbt" />, navigate to **Orchestration** > **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. The option will be greyed out if you already have a development environment.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-staging-environment.png" width="85%" title="Create a staging environment" />
 
