@@ -387,7 +387,8 @@ my-redshift-db:
       cluster_id: CLUSTER_ID
 ```
 
-Explain placeholders in the preceding paragraph.
+Explain placeholders in the preceding paragraph. For example, you'd explain CLUSTER_ID:
+> Replace CLUSTER_ID with the ID assigned to this cluster.
 
 ---
 
