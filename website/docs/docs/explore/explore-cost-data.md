@@ -114,7 +114,7 @@ For **Cost**, **Usage**, **Query run time**, and **Builds** tabs, you can custom
 - **Runs**: Displays the success rate and run duration in minutes for recent runs. You can select a time period with options for **Last week**, **Last 14 days**, and **Last 30 days**.
 - **Query run time**: Shows the estimated query execution time and the reduction in run duration from state-aware orchestration.
 - **Cost**: Shows the estimated build cost reduction when using state-aware orchestration.
-- **Builds**: Shows the number of assets built versus reused by state-aware orchestration. Use the **Asset type** dropdown on the chart to filter by **Models**, **Tests**, or **All**.
+- **Builds**: Shows the number of assets built versus reused by state-aware orchestration.
 - **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
