@@ -105,7 +105,12 @@ Use all caps unless another standard exists (such as in code blocks):
 1. Use lowercase with hyphens (`kebab-case`)
 2. Keep names short. They appear in the URL
 3. Be descriptive but concise
-4. Avoid redundant words
+4. Avoid redundant words:
+| ❌ Redundant (avoid) | ✅  Prefer |
+|----------------------|-----------|
+| `users_model.sql`     | `users.sql` or `user_orders.sql` |
+| `macros_utils.sql`     | `utils.sql` |
+| `schema_schema.yml` | `schema.yml` |
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
