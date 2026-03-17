@@ -137,7 +137,7 @@ Use all caps unless another standard exists (such as in code blocks):
 | External link | `[Title](https://www.example.com)` |
 | Internal link | `[Title](/docs/folder/file-name)` |
 | Anchor link (same page) | `[Title](#section-name)` |
-| Anchor link (other page) | `[Title](/docs/folder/file-name#section-name)` |
+| Relative link (other page) | `[Title](/docs/folder/file-name#section-name)` |
 
 **Valid path prefixes:**
 - `/docs/`
