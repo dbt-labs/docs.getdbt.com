@@ -169,7 +169,7 @@ The <Constant name="fusion_engine" /> (strict mode):
 
 You can modify the way static analysis is applied for specific models in your project. The static analysis configuration cascades from most strict to least strict. Going downstream in your lineage, a model can keep the same mode or relax it &mdash; it can't be stricter than its parent. 
 
-Setting a model to `strict` does not automatically make its downstreams strict; they keep the project default unless you set them explicitly. For the full rules and examples, see [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
+Setting `static_analysis: strict` on a model does not automatically set `strict` for downstream models; they keep the project default unless you set them explicitly. For rules and examples, refer to [strict mode inheritance](#strict-mode-inheritance) and [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
 
 The [`static_analysis`](/reference/resource-configs/static-analysis) config options are:
 
@@ -212,7 +212,7 @@ models:
 
 Unlike `baseline` or `off`, `strict` mode doesn't propagate to downstream models. This means that if you set a model to `strict`, its downstream models will not inherit `strict` mode unless you set them explicitly. To make all models `strict`, you must set `+static_analysis: strict` on root models first, or use the project-wide config in the next section at the project level.
 
-For example, in A → B → C with a default of `baseline`, setting `strict` on A (a root node) makes only A `strict` &mdash; B and C remain `baseline` unless configured. To make the full chain strict, set `+static_analysis: strict` on each relevant model or group, or use a project-wide setting.
+For example, in A → B → C with a default of `baseline`, configuring A (a root node) as `strict` makes only A `strict` &mdash; B and C remain baseline unless configured. To make the full chain `strict`, set `+static_analysis: strict` on each relevant model or group, or use a project-wide setting.
 
 This approach lets you gain the benefits of strict validation where possible while keeping the flexibility of baseline analysis for models that aren't yet compatible.
 
@@ -222,7 +222,7 @@ Refer to [CLI options](/reference/global-configs/command-line-options) and [Conf
 
 ##### Configure strict for the entire project
 
-Many teams want to enable strict mode for the whole project and all packages. You can do this by setting `+static_analysis: strict` under each resource type in `dbt_project.yml` for your project name (and for any package names if you want those to be strict too):
+Many teams want to enable `strict` mode for the whole project and all packages. You can do this by setting `+static_analysis: strict` under each resource type in `dbt_project.yml` for your project name (and for any package names if you want those to be strict too):
 
 <File name='dbt_project.yml'>
 
@@ -258,7 +258,7 @@ analyses:
 
 </File>
 
-Use your project name in place of `my_project` — that's the same value as the `name:` key at the top of `dbt_project.yml` (for example, `jaffle_shop`). To apply strict to a package as well, add another entry under each resource type using the package name as the key; for example, under `models:` add `your_package_name:` with `+static_analysis: strict` beneath it.
+Use your project name in place of `my_project` — that's the same value as the `name:` key at the top of `dbt_project.yml` (for example, `jaffle_shop`). To apply `strict` to a package as well, add another entry under each resource type using the package name as the key; for example, under `models:` add `your_package_name:` with `+static_analysis: strict` beneath it.
 
 ##### Disable static analysis for all models in a package:
 
