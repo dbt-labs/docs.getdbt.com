@@ -140,7 +140,7 @@ Before you begin, make sure to review the following requirements:
 Subject: New Azure Self-hosted Private Link Request
 - Type: Self-hosted Private Link
 - Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
-- dbt_platform account URL:
+- dbt platform account URL:
 - Private Link Service Alias:
 - Custom DNS (if HTTPS/TLS)
     - DNS record:

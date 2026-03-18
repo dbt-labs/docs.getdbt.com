@@ -41,7 +41,7 @@ SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 ```
 Subject: New Multi-Tenant Azure PrivateLink Request
 - Type: Snowflake
-- dbt_platform account URL:
+- dbt platform account URL:
 - The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
   - Enable Internal Stage Private Link? Y/N (If Y, output must include `privatelink-internal-stage`)

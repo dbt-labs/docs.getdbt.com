@@ -123,7 +123,7 @@ Before you begin, make sure to review the following requirements:
 ```
 Subject: New GCP Self-hosted Private Service Connect Request
 - Type: Self-hosted PSC
-- dbt_platform account URL:
+- dbt platform account URL:
 - Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
 - Service Attachment URI:
 - Custom DNS (if HTTPS/TLS)

@@ -26,7 +26,7 @@ From your Azure portal:
     ```
       Subject: New Azure Multi-Tenant Private Link Request
     - Type: Azure Synapse
-    - dbt_platform account URL:
+    - dbt platform account URL:
     - Server name:
     - Azure Synapse workspace resource ID:
     - dbt Azure multi-tenant environment (EMEA):

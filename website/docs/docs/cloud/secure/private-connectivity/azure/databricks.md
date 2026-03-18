@@ -25,7 +25,7 @@ The following steps walk you through the setup of a Databricks Azure Private Lin
     ```
       Subject: New Azure Multi-Tenant Private Link Request
     - Type: Databricks
-    - dbt_platform account URL:
+    - dbt platform account URL:
     - Databricks instance name:
     - Azure Databricks Workspace URL (for example, adb-################.##.azuredatabricks.net)
     - Databricks Azure resource ID:

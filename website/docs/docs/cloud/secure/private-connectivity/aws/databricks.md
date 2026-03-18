@@ -27,7 +27,7 @@ The following steps walk you through the setup of a Databricks AWS PrivateLink e
     ```
     Subject: New AWS Multi-Tenant PrivateLink Request
     - Type: Databricks
-    - dbt_platform account URL:
+    - dbt platform account URL:
     - Databricks instance name:
     - Databricks cluster AWS Region (for example, us-east-1, eu-west-2):
     - dbt AWS multi-tenant environment (US, EMEA, AU):
