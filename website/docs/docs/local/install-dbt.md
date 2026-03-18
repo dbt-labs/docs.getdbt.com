@@ -343,7 +343,7 @@ python -m pip install dbt-core
 
 ## Change dbt Core versions
 
-You can upgrade or downgrade versions of dbt Core by using the `--upgrade` option on the command line (CLI). For more information, see [Best practices for upgrading in Core versions](/docs/dbt-versions/core#best-practices-for-upgrading).
+You can upgrade or downgrade versions of dbt Core by using the `--upgrade` option on the command line (CLI). For more information, see [Best practices for upgrading in Core versions](/docs/dbt-versions#best-practices-for-upgrading).
 
 To upgrade dbt to the latest version:
 
@@ -476,7 +476,7 @@ You might also be able to use Docker to install and develop locally if you don't
 
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site.
 * You understand which database adapter(s) you need. For more information, see [About dbt adapters](/docs/local/install-dbt#about-dbt-data-platforms-and-adapters).
-* You understand how <Constant name="core" /> is versioned. For more information, see [About <Constant name="core" /> versions](/docs/dbt-versions/core).
+* You understand how <Constant name="core" /> is versioned. For more information, see [About <Constant name="core" /> versions](/docs/dbt-versions).
 * You have a general understanding of the dbt, dbt workflow, developing locally in the command line interface (CLI). For more information, see [About dbt](/docs/introduction#how-do-i-use-dbt).
 
 ### Install a dbt Docker image from Github Packages
@@ -585,7 +585,7 @@ To install in editable mode, such as while contributing, use `python -m pip inst
 
 ### Upgrading dbt Core
 
-dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade) highlighting the changes required for each [minor and major release](/docs/dbt-versions/core).
+dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade) highlighting the changes required for each [minor and major release](/docs/dbt-versions).
 
 - [Upgrade `pip`](/docs/local/install-dbt)
 
