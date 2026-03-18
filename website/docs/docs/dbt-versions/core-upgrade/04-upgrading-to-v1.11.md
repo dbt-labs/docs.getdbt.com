@@ -39,9 +39,13 @@ Key features include:
 - **Execution**: Create, update, and rename UDFs as part of DAG execution using `dbt build --select "resource_type:function"`
 - **DAG integration**: When executing `dbt build`, UDFs are built before models that reference them, ensuring proper dependency management.
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
+- **Deferral**: When you run a dbt command with `--defer` and `--state`, `function()` calls resolve to the UDF in the state manifest, so you can run models that depend on UDFs without building those UDFs first.
 
 Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/udfs).
 
+### `DBT_ENGINE_` prefix for environment variables
+
+Engine configuration environment variables use the `DBT_ENGINE_` prefix. For example, `DBT_STATE` becomes `DBT_ENGINE_STATE`, `DBT_PROJECT_DIR` becomes `DBT_ENGINE_PROJECT_DIR`, and so on. Refer to [About flags (global configs)](/reference/global-configs/about-global-configs) for the full mapping.
 
 ### Managing changes to legacy behaviors
 

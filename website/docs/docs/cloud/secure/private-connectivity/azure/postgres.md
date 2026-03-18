@@ -26,6 +26,7 @@ From your Azure portal:
     ```
       Subject: New Azure Multi-Tenant Private Link Request
     - Type: Azure Database for Postgres Flexible Server
+    - dbt platform account URL:
     - Postgres Flexible Server name:
     - Azure Database for Postgres Flexible Server resource ID:
     - dbt Azure multi-tenant environment (EMEA):
