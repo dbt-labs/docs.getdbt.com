@@ -39,6 +39,7 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
 ```
 Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
 - Type: Snowflake
+- dbt platform account URL:
 - SYSTEM$GET_PRIVATELINK_CONFIG output:
 - *Use privatelink-account-url or regionless-privatelink-account-url?:
 - **Create Internal Stage PrivateLink endpoint? (Y/N): 
