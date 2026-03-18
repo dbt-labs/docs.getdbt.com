@@ -40,7 +40,7 @@ Enter your _development_ (not deployment) credentials with the following fields:
 
 ### Temporary credentials
 
-If you prefer to not store long-lived IAM user AWS Access Key ID in the <Constant name="dbt_platform" /> user interface (UI), you can use `aws_session_token`, a [AWS security token service (STS) temporary credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html), instead. This way, access mirrors a user's long-term access key credentials (user or role).
+If you prefer to not store long-lived IAM user AWS Access Key ID and AWS Secret Access Key in the <Constant name="dbt_platform" />, you can use `aws_session_token`, which is part of [temporary AWS Security Token Service (STS) credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html), instead. This approach mirrors a user or role’s long-term permissions.
 
 If you choose this route, make sure you enter:
 - The AWS Access Key ID and AWS Secret Access Key in the [development environment settings](/docs/dbt-cloud-environments#create-a-development-environment) in the <Constant name="dbt_platform" /> user interface (UI).
