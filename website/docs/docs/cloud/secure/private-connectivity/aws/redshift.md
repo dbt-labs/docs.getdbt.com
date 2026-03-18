@@ -59,7 +59,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
        ```
        Subject: New Multi-Tenant PrivateLink Request
        - Type: Redshift-managed - Serverless
-       - dbt_platform account URL:
+       - dbt platform account URL:
        - Redshift workgroup name:
        - Redshift workgroup AWS account ID:
        - Redshift workgroup AWS Region (for example, us-east-1, eu-west-2):
