@@ -79,6 +79,12 @@ To map the attributes that will sync with dbt:
 
 You can now begin assigning users to your SCIM app in Entra ID!
 
+:::info SSO and SCIM username
+When you use both SSO and SCIM with Entra ID, map SCIM **UserName** to **userPrincipalName** (or the same Entra attribute users use to sign in to <Constant name="dbt_platform" />). Set **emails[type eq "work"].value** to that same source.  
+
+SCIM needs the values to match so provisioning aligns with SSO; if **UserName** and **emails[type eq "work"].value** don't match, users may not sync or match correctly.
+:::
+
 ## Assign users to SCIM app
 
 The following steps go over how to assign users/groups to the SCIM app. Refer to Microsoft's [official instructions for assigning users or groups to an Enterprise App in Entra ID](https://learn.microsoft.com/en-us/azure/databricks/admin/users-groups/scim/aad#step-3-assign-users-and-groups-to-the-application) to learn more. Although the article is written for Databricks, the steps are identical.
