@@ -78,7 +78,7 @@ You configure profiles when you create a deployment environment. For accounts th
 
 To assign a different profile, update the deployment environment settings:
 
-1. From the main menu, click **Orchestration** and select **Environments**.
+1. From the left navigation, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
 3. Click **Settings**, then click **Edit**.
 4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
