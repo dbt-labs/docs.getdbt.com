@@ -24,7 +24,7 @@ The following extension features help you get more done, fast:
   - If you use Cursor, the lineage tab works best in Editor mode and doesn't render in Agent mode. If you're in Agent mode and the lineage tab isn't rendering, just switch to Editor mode to view your project's table and column lineage.
 - **[View compiled code](#view-compiled-code):** Get a live view of the SQL code your models will build alongside your dbt code.
 - **[Build flexibly](#build-flexibly):** Use the command palette to build models with complex selectors.
-- **[Compare changes](#compare-changes):**<Lifecycle status="beta" /> Compare changes you make during development by comparing your current working copy against your `manifest.json` (for example, your last production state) — directly in your editor.
+- **[Compare changes](#compare-changes-in-development):**<Lifecycle status="beta" /> Compare changes you make during development by comparing your current working copy against your `manifest.json` (for example, your last production state) — directly in your editor.
  
 ## Live error detection
 
