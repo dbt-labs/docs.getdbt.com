@@ -6,11 +6,11 @@ Defer is a powerful feature that makes it possible to run a subset of <VersionBl
 
 <Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
-Defer requires a manifest from a previous dbt invocation. Provide the path using the `--state flag` or by setting the `DBT_STATE` environment variable. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/reference/node-selection/state-selection).
+Defer requires a manifest from a previous dbt invocation. Provide the path using the `--state flag` or by setting the <VersionBlock lastVersion="1.10">`DBT_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_STATE`</VersionBlock> environment variable. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/reference/node-selection/state-selection).
 
 For some use cases, you can use `dbt clone` to achieve similar functionality. For more details, refer to [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral).
 
-It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to:
+It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/<VersionBlock lastVersion="1.10">`DBT_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_STATE`</VersionBlock> and `--defer-state`/<VersionBlock lastVersion="1.10">`DBT_DEFER_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_DEFER_STATE`</VersionBlock>. This enables more granular control in cases where you want to:
 
 - Compare against logical state from one environment or past point in time
 - Defer to applied state from a different environment or point in time
@@ -47,7 +47,7 @@ When using defer, you may be selecting from production datasets, development dat
 
 :::
 
-Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). Refer to [Continuous integration](/docs/deploy/continuous-integration) for more information.
+Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (<VersionBlock lastVersion="1.10">`DBT_DEFER` and `DBT_STATE`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_DEFER` and `DBT_ENGINE_STATE`</VersionBlock>). Refer to [Continuous integration](/docs/deploy/continuous-integration) for more information.
 
 
 #### Favor state
