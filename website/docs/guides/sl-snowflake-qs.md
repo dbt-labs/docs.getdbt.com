@@ -23,20 +23,20 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Introduction
 
-The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your dbt project and query them in <Constant name="cloud" /> with [MetricFlow commands](/docs/build/metricflow-commands).
+The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your dbt project and query them in <Constant name="dbt" /> with [MetricFlow commands](/docs/build/metricflow-commands).
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-This quickstart guide is designed for <Constant name="cloud" /> users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the <Constant name="semantic_layer" /> in a <Constant name="cloud" /> project, and querying metrics in Google Sheets. 
+This quickstart guide is designed for <Constant name="dbt" /> users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the <Constant name="semantic_layer" /> in a <Constant name="dbt" /> project, and querying metrics in Google Sheets. 
 
 If you're on different data platforms, you can also follow this guide and will need to modify the setup for the specific platform. See the [users on different platforms](#for-users-on-different-data-platforms) section for more information.
 
 ### Prerequisites
 
-- You need a [<Constant name="cloud" />](https://www.getdbt.com/signup/) Trial, Starter, or Enterprise-tier account for all deployments. 
-- Have the correct [<Constant name="cloud" /> license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) based on your plan:
+- You need a [<Constant name="dbt" />](https://www.getdbt.com/signup/) Trial, Starter, or Enterprise-tier account for all deployments. 
+- Have the correct [<Constant name="dbt" /> license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) based on your plan:
   <DetailsToggle alt_header="More info on license and permissions">  
   
   - Enterprise-tier &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
@@ -48,7 +48,7 @@ If you're on different data platforms, you can also follow this guide and will n
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, and refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
-- Complete the [Quickstart for <Constant name="cloud" /> and Snowflake](snowflake-qs.md) guide. 
+- Complete the [Quickstart for <Constant name="dbt" /> and Snowflake](snowflake-qs.md) guide. 
 - Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
 
 
@@ -67,7 +67,7 @@ Open a new tab and follow these quick steps for account setup and data loading i
 - [Step 2: Create a new GCP project](/guides/bigquery?step=2)
 - [Step 3: Create BigQuery dataset](/guides/bigquery?step=3)
 - [Step 4: Generate BigQuery credentials](/guides/bigquery?step=4)
-- [Step 5: Connect <Constant name="cloud" /> to BigQuery](/guides/bigquery?step=5)
+- [Step 5: Connect <Constant name="dbt" /> to BigQuery](/guides/bigquery?step=5)
 
 </TabItem>
 
@@ -77,7 +77,7 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 - [Step 2: Create a Databricks workspace](/guides/databricks?step=2)
 - [Step 3: Load data](/guides/databricks?step=3)
-- [Step 4: Connect <Constant name="cloud" /> to Databricks](/guides/databricks?step=4)
+- [Step 4: Connect <Constant name="dbt" /> to Databricks](/guides/databricks?step=4)
 
 </TabItem>
 
@@ -86,7 +86,7 @@ Open a new tab and follow these quick steps for account setup and data loading i
 Open a new tab and follow these quick steps for account setup and data loading instructions:
 
 - [Step 2: Load data into your Microsoft Fabric warehouse](/guides/microsoft-fabric?step=2)
-- [Step 3: Connect <Constant name="cloud" /> to Microsoft Fabric](/guides/microsoft-fabric?step=3)
+- [Step 3: Connect <Constant name="dbt" /> to Microsoft Fabric](/guides/microsoft-fabric?step=3)
 
 </TabItem>
 
@@ -96,7 +96,7 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 - [Step 2: Create a Redshift cluster](/guides/redshift?step=2)
 - [Step 3: Load data](/guides/redshift?step=3)
-- [Step 4: Connect <Constant name="cloud" /> to Redshift](/guides/redshift?step=3)
+- [Step 4: Connect <Constant name="dbt" /> to Redshift](/guides/redshift?step=3)
 
 </TabItem>
 
@@ -107,7 +107,7 @@ Open a new tab and follow these quick steps for account setup and data loading i
 - [Step 2: Load data to an Amazon S3 bucket](/guides/starburst-galaxy?step=2)
 - [Step 3: Connect Starburst Galaxy to Amazon S3 bucket data](/guides/starburst-galaxy?step=3)
 - [Step 4: Create tables with Starburst Galaxy](/guides/starburst-galaxy?step=4)
-- [Step 5: Connect <Constant name="cloud" /> to Starburst Galaxy](/guides/starburst-galaxy?step=5)
+- [Step 5: Connect <Constant name="dbt" /> to Starburst Galaxy](/guides/starburst-galaxy?step=5)
 
 </TabItem>
 
@@ -129,7 +129,7 @@ import LoadData from '/snippets/_load-data.md';
 
 ## Connect dbt to Snowflake
 
-There are two ways to connect <Constant name="cloud" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="cloud" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="cloud" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="cloud" /> setup flow, dbt Labs recommends connecting manually.
+There are two ways to connect <Constant name="dbt" /> to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your <Constant name="dbt" /> account from within your new Snowflake trial account. The second option is to create your <Constant name="dbt" /> account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the <Constant name="dbt" /> setup flow, dbt Labs recommends connecting manually.
 
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>
@@ -156,9 +156,9 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
 
-4. After the new tab loads, you will see a form. If you already created a <Constant name="cloud" /> account, you will be asked to provide an account name. If you haven't created an account, you will be asked to provide an account name and password.
+4. After the new tab loads, you will see a form. If you already created a <Constant name="dbt" /> account, you will be asked to provide an account name. If you haven't created an account, you will be asked to provide an account name and password.
 
-5. After you have filled out the form and clicked **Complete Registration**, you will be logged into <Constant name="cloud" /> automatically.
+5. After you have filled out the form and clicked **Complete Registration**, you will be logged into <Constant name="dbt" /> automatically.
 
 6. Click your account name in the left side menu and select **Account settings**, choose the "Partner Connect Trial" project, and select **snowflake** in the overview table. Select **Edit** and update the **Database** field to `analytics` and the **Warehouse** field to `transforming`.
 
@@ -170,7 +170,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 <TabItem value="manual-connect" label="Connect manually">
 
 
-1. Create a new project in <Constant name="cloud" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
+1. Create a new project in <Constant name="dbt" />. Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. In the **Configure your development environment** section, click the **Connection** dropdown menu and select **Add new connection**. This directs you to the connection configuration settings. 
 4. In the **Type** section, select **Snowflake**.
@@ -195,13 +195,13 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 10. Enter your **Development credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
     * **Password** &mdash; The password you set when creating your Snowflake account.
-    * **Schema** &mdash; You’ll notice that the schema name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="cloud_ide" />.
+    * **Schema** &mdash; You’ll notice that the schema name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="studio_ide" />.
     * **Target name** &mdash; Leave as the default.
-    * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="cloud" /> will make to build models concurrently.
+    * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="dbt" /> will make to build models concurrently.
 
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake Development Credentials" />
 
-11. Click **Test connection**. This verifies that <Constant name="cloud" /> can access your Snowflake account.
+11. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Snowflake account.
 12. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Snowflake settings and credentials.
 
 </TabItem>
@@ -209,7 +209,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 ## Set up dbt project
 
-In this section, you will set up a <Constant name="cloud" /> managed repository and initialize your dbt project to start developing.
+In this section, you will set up a <Constant name="dbt" /> managed repository and initialize your dbt project to start developing.
 
 ### Set up a dbt managed repository 
 If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/cloud/git/managed-repository). Otherwise, you will need to create your repository connection. 
@@ -217,15 +217,15 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 <Snippet path="tutorial-managed-repo" />
 
 ### Initialize your dbt project
-This guide assumes you use the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
+This guide assumes you use the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
-Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" /> using the <Constant name="cloud_ide" />:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" /> using the <Constant name="studio_ide" />:
 
-1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add a new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Delete the models/examples folder in the **File <Constant name="explorer" />**.
+    - Delete the models/examples folder in the **File <Constant name="catalog" />**.
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:
       ```sql
       select * from raw.jaffle_shop.customers
@@ -239,10 +239,10 @@ The next step is to build your project. This involves adding sources, staging mo
 
 [Sources](/docs/build/sources) in dbt are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable.
 
-You have two options for working with files in the <Constant name="cloud_ide" />:
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - **Create a new branch (recommended)** &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch, use this option. The <Constant name="cloud_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
+- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch, use this option. The <Constant name="studio_ide" /> prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
 
 Name the new branch `build-project`.
 
@@ -446,7 +446,7 @@ In this section, you'll learn about [semantic model](/guides/sl-snowflake-qs?ste
 
 ### About semantic models
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 [Semantic models](/docs/build/semantic-models) contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
@@ -481,7 +481,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 [Semantic models](/docs/build/semantic-models) contain many object types (such as entities, simple metrics, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
@@ -520,7 +520,7 @@ models:
 
 ### Semantic model components
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
@@ -530,7 +530,7 @@ The following sections explain [dimensions](/docs/build/dimensions), [entities](
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [simple metrics](/docs/build/metrics-overview#simple-metrics) in more detail, showing how they each play a role in semantic models.
 
@@ -546,7 +546,7 @@ The following sections explain [dimensions](/docs/build/dimensions), [entities](
 
 Add entities to your `fct_orders.yml` semantic model file:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -571,7 +571,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/fct_orders.yml'>
 
@@ -605,7 +605,7 @@ models:
 
 Add dimensions to your `fct_orders.yml` semantic model file:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name='models/metrics/fct_orders.yml'>
 
 ```yaml
@@ -634,7 +634,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/fct_orders.yml'>
 
@@ -667,7 +667,7 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ### Measures
 
@@ -722,7 +722,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ### Simple metrics
 
@@ -813,7 +813,7 @@ There are different types of metrics you can configure:
 - [Simple metrics](/docs/build/metrics-overview#simple-metrics) &mdash; Directly reference a single column expression within a semantic model, without any additional columns involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 - [Ratio metrics](/docs/build/metrics-overview#ratio-metrics) &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
-Once you've created your semantic models, it's time to start referencing those <VersionBlock lastVersion="1.99">measures</VersionBlock><VersionBlock firstVersion="2.0">simple metrics</VersionBlock> you made to create some metrics:
+Once you've created your semantic models, it's time to start referencing those <VersionBlock lastVersion="1.11">measures</VersionBlock><VersionBlock firstVersion="1.12">simple metrics</VersionBlock> you made to create some metrics:
 
 1. Add metrics to your `fct_orders.yml` file:
 
@@ -821,7 +821,7 @@ Once you've created your semantic models, it's time to start referencing those <
 Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
 :::
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -925,7 +925,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/fct_orders.yml'>
 
@@ -1013,12 +1013,12 @@ models:
 
 ### Add second semantic model to your project
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, measures, and metrics.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, and metrics.
 </VersionBlock>
 
@@ -1029,7 +1029,7 @@ After setting up your orders model:
 1. Create the file `dim_customers.yml`.
 2. Copy the following code into the file and click **Save**.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 <File name='models/metrics/dim_customers.yml'>
 
@@ -1084,7 +1084,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/dim_customers.yml'>
 
@@ -1330,9 +1330,9 @@ Great job on completing the comprehensive <Constant name="semantic_layer" /> gui
 
 You've learned how to:
 
-- Set up your Snowflake environment and <Constant name="cloud" />, including creating worksheets and loading data.
-- Connect and configure <Constant name="cloud" /> with Snowflake.
-- Build, test, and manage <Constant name="cloud" /> projects, focusing on metrics and semantic layers.
+- Set up your Snowflake environment and <Constant name="dbt" />, including creating worksheets and loading data.
+- Connect and configure <Constant name="dbt" /> with Snowflake.
+- Build, test, and manage <Constant name="dbt" /> projects, focusing on metrics and semantic layers.
 - Run production jobs and query metrics with our available integrations.
 
 For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), [implementing <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer), and more.

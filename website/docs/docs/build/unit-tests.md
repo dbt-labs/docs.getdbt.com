@@ -57,7 +57,7 @@ You should unit test a model:
 
 dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
 
-Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPES` environment variable to exclude unit tests from your production builds and save compute. 
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the <VersionBlock lastVersion="1.10">`DBT_EXCLUDE_RESOURCE_TYPES`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_EXCLUDE_RESOURCE_TYPES`</VersionBlock> environment variable to exclude unit tests from your production builds and save compute. 
 
 ## Unit testing a model
 
@@ -315,7 +315,7 @@ unit_tests:
       - input: ref('ephemeral_model')
         format: sql
         rows: |
-          select 1 as id, 'emily' as name
+          select 1 as id, 'emily' as first_name
     expect:
       rows:
         - {id: 1, first_name: emily}

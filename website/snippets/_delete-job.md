@@ -1,4 +1,4 @@
-To delete a job or multiple jobs in <Constant name="cloud" />:
+To delete a job or multiple jobs in <Constant name="dbt" />:
 
 1. Click **Deploy** on the navigation header.
 2. Click **Jobs** and select the job you want to delete. 

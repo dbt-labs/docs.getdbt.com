@@ -16,7 +16,7 @@ Conversion metrics are different from [ratio metrics](/docs/build/ratio) because
 
 The specification for conversion metrics is as follows:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 :::tip
 Note that we use dot notation (`.`) to indicate whether a parameter is nested within another parameter. For example, `base_measure.name` means the `name` parameter is nested under `base_measure`.
@@ -48,7 +48,7 @@ Note that we use dot notation (`.`) to indicate whether a parameter is nested wi
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 | Parameter | Description | Required | Type |
 | --- | --- | --- | --- |
@@ -81,7 +81,7 @@ Refer to [additional settings](#additional-settings) to learn how to customize c
 
 The following code example displays the complete specification for conversion metrics and details how they're applied:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 metrics:
@@ -110,7 +110,7 @@ metrics:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name="models/file_name.yml" >
 
@@ -169,7 +169,7 @@ Records completed orders with `USER_ID` and `REFERRER_ID`.
 
 Next, define a conversion metric as follows:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: visit_to_buy_conversion_rate_7d
@@ -189,7 +189,7 @@ Next, define a conversion metric as follows:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -313,7 +313,7 @@ You now have a dataset where every conversion is connected to a visit event. To 
 
 ### Step 4: Aggregate and calculate
 
-Now that you’ve tied each conversion event to a visit, you can calculate the aggregated conversions and opportunities <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock>. Then, you can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
+Now that you’ve tied each conversion event to a visit, you can calculate the aggregated conversions and opportunities <VersionBlock lastVersion="1.11">measure</VersionBlock><VersionBlock firstVersion="1.12">simple metric</VersionBlock>. Then, you can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
 
 ```sql
 select
@@ -363,7 +363,7 @@ Use the following additional settings to customize your conversion metrics:
 
 To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: visit_to_buy_conversion_rate_7_day_window
@@ -384,7 +384,7 @@ To return zero in the final data set, you can set the value of a null conversion
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 metrics:
@@ -426,7 +426,7 @@ Use the conversion calculation parameter to either show the raw number of conver
 
 You can change the default to display the number of conversions by setting the `calculation: conversion` parameter:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: visit_to_buy_conversions_1_week_window
@@ -447,7 +447,7 @@ You can change the default to display the number of conversions by setting the `
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 metrics:
@@ -481,7 +481,7 @@ Back to the initial questions, you want to see how many customers viewed an item
 
 In this case, you want to set `product_id` as the constant property. You can specify this in the configs as follows:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: view_item_detail_to_purchase_with_same_item
@@ -503,7 +503,7 @@ In this case, you want to set `product_id` as the constant property. You can spe
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 metrics:

@@ -8,7 +8,7 @@ pagination_prev: null
 unlisted: true
 ---
 
-<Constant name="cloud" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
+<Constant name="dbt" /> Single-tenant release notes for weekly updates. Release notes fall into one of these categories:
 
 - **New:** New products and features
 - **Enhancement:** Performance improvements and feature enhancements
@@ -18,13 +18,112 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
-## February 25, 2026
+## March 11, 2026
 
 ## New
 
-### Semantic Layer
+### Deployment and Configuration
 
-- **BigQuery Workload Identity Federation authentication for external OAuth**: You can now connect to BigQuery using Workload Identity Federation (WIF) with External OAuth, including Microsoft Entra ID-backed flows, for Semantic Layer queries. For setup instructions, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#Set-up-bigquery-workload-identity-federation).
+- **Self-serve Snowflake private endpoint requests:** You can request a new Snowflake private endpoint from account settings by pasting the output from `SELECT SYSTEM$GET_PRIVATELINK_CONFIG();`, then track request status in the private endpoints table. This is available for Enterprise Business Critical accounts only, and please contact your account manager to enable. For other connection types, contact support@dbtlabs.com.
+
+## Enhancements
+
+### Orchestration and Run Status
+
+- **Run retries support dbt Fusion runs:** You can now retry failed runs as long as your environment is on dbt Core version `1.6` or higher or dbt Fusion.
+
+### Integrations
+
+- **More reliable Slack notifications:** Slack channel discovery and notifications now retry on Slack rate limits to reduce dropped messages during busy periods.
+
+### APIs, Identity, and Administration
+
+- **Improved OpenAPI typing for large integers:** OpenAPI schemas now mark 64-bit integer fields as `format: int64` to improve generated client types.
+
+- **Clearer credentials schemas:** Credentials OpenAPI docs now use a `type` discriminator (`postgres`, `redshift`, `snowflake`, `bigquery`, and `adapter`) to improve code generation and request validation.
+
+## Fixes
+
+### Orchestration and Run Status
+
+- **More reliable job search:** Searching jobs with numeric terms (for example, `12`) no longer triggers API validation errors, so you can load job lists reliably.
+
+- **Clearer cross-project publication errors:** When dbt platform cannot fetch a publication artifact for an upstream project declared in `dependencies.yml`, you now see which project is missing an artifact and guidance to run the upstream environment at least once.
+
+### Integrations
+
+- **More accurate Microsoft Teams notification triggers:** Microsoft Teams notifications now use the correct trigger event type for each notification, so you see the expected run outcome context in the message.
+
+### APIs, Identity, and Administration
+
+- **More accurate error responses during permission checks:** You now receive more accurate errors from permission checks, and underlying service errors surface instead of being reported as authorization failures.
+
+### Deployment and Configuration
+
+- **Clearer private endpoint validation errors:** Creating a private endpoint now returns a `400` error with a clear message when `snowflake_output` is malformed or not valid JSON.
+
+## Behavior Changes
+
+### Orchestration and Run Status
+
+- **Model timing unavailable for dbt Fusion runs:** You now see an informational notice instead of the Model timing chart for dbt Fusion runs because dbt Fusion handles threading differently.
+
+### APIs, Identity, and Administration
+
+- **System for Cross-domain Identity Management (SCIM) `id` fields are now strings:** SCIM schema discovery now reports `id` fields as strings for users and groups.
+
+## March 4, 2026
+
+## Enhancements
+
+### Orchestration and Run Status
+
+- **Clearer SAO description**: Job settings now describe state-aware orchestration (SAO) as only building models when data or code changes are detected.
+- **Direct links for cost optimization setup**: Fusion cost optimization settings now link to account-level Cost Insights settings and setup documentation so you can validate cost data and savings.
+
+### APIs, Identity, and Administration
+
+- **Confirmation when enabling manual SCIM updates**: When you enable manual updates for System for Cross-domain Identity Management (SCIM), dbt platform now asks you to confirm so you do not accidentally allow changes outside your identity provider.
+- **More reliable SCIM group provisioning**: SCIM has been updated so that when a SCIM-provisioned user with an expired invite is added to a SCIM-managed group through a SCIM request, the invite is automatically resent during group assignment. This helps prevent errors caused by unaccepted invites.
+
+### dbt platform
+
+- **Project names and descriptions handle empty values better**: Projects with missing names now show as “Untitled Project,” and you can save project descriptions as empty.
+
+### Studio IDE
+
+- **Removed non-functional “Open Settings” actions**: Studio IDE no longer shows “Open Settings” buttons in editor notifications because Studio IDE does not expose VS Code settings, and the action would not help you resolve issues.
+
+## Fixes
+
+### Catalog
+
+- **More reliable file tree loading**: Catalog no longer gets stuck loading the file tree on initial page load.
+- **Clearer trust signals**: Trust signals now suppress less-severe upstream-source issues when a more severe issue is present, so badges and messages are easier to interpret.
+
+### Integrations
+
+- **Clearer deploy key decryption errors**: When dbt platform cannot decrypt a deploy key, you now get a clearer failure instead of a generic git credentials error.
+
+### Studio IDE
+
+- **Cleaner LSP disconnects**: If authentication fails when you connect to the Language Server Protocol (LSP) WebSocket, the connection now closes cleanly instead of failing with an internal server error, so you should see fewer unexpected disconnects.
+- **Improved timeout handling and authentication stability**: Reduced environment setup timeouts and resolved intermittent authentication failures during busy periods.
+- **Clearer invalid credentials error**: If your development connection credentials are invalid, you now see a clearer error message to help you diagnose the issue faster.
+
+## Behavior Changes
+
+### Orchestration and Run Status
+
+- **`versionless` dbt version is no longer accepted**: dbt platform now treats `versionless` as deprecated and updates existing environments and jobs to use `latest`. If you set `dbt_version` in an API integration or automation, update it to send `latest` instead.
+
+### Webhooks
+
+- **Account identifier required for run-based notifications**: If you send events that include a `run_id`, you must also provide an `account_identifier` so the service can validate and resolve the correct account before dispatch. If `account_identifier` is missing, the event fails instead of falling back to a `run_id`-only lookup.
+
+## February 25, 2026
+
+## New
 
 ### Catalog
 
@@ -61,12 +160,6 @@ Release notes are grouped by date for single-tenant environments.
 ### APIs, Identity, and Administration
 
 - **Project deletion now supported in Admin v2 and v3 Projects APIs**: Projects APIs now explicitly support DELETE with stricter permission checks.
-
-## Fixes
-
-### Semantic Layer
-
-- **Automatic token refresh for BigQuery Workload Identity Federation failures**: For WIF-authenticated BigQuery connections, the gateway now refreshes access tokens on common expiration failures and recycles pooled connections to reduce authentication outages.
 
 ## Behavior Changes
 

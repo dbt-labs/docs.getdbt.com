@@ -12,7 +12,7 @@ import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages />
 
-The following steps walk you through the setup of a GCP BigQuery [Private Service Connect](https://cloud.google.com/vpc/docs/private-service-connect) (PSC) endpoint in a <Constant name="cloud" /> multi-tenant environment.
+The following steps walk you through the setup of a GCP BigQuery [Private Service Connect](https://cloud.google.com/vpc/docs/private-service-connect) (PSC) endpoint in a <Constant name="dbt" /> multi-tenant environment.
 
 <CloudProviders type='BigQuery' />
 
@@ -23,6 +23,7 @@ To enable dbt to privately connect to your BigQuery project via PSC, the regiona
 ```
 Subject: New Multi-Tenant GCP PSC Request
 - Type: BigQuery
+- dbt platform account URL:
 - BigQuery project region: 
 - dbt GCP multi-tenant environment:
 ```

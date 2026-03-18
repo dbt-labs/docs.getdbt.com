@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.8.latest/CHANGELOG.md)
-- [<Constant name="core" /> CLI Installation guide](/docs/core/installation-overview)
+- [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading
@@ -17,7 +17,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## Release tracks 
 
-Starting in 2024, <Constant name="cloud" /> provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
 
 ## New and changed features and functionality
 
@@ -39,6 +39,10 @@ pip install dbt-core dbt-snowflake
 ```
 
 For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and `dbt-snowflake`. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
+
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
 
 ### Unit Tests
 
@@ -104,7 +108,7 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
-- Custom defaults of [global config flags](/reference/global-configs/about-global-configs) should be set in the `flags` dictionary in [`dbt_project.yml`](/reference/dbt_project.yml), instead of in [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml). Support for `profiles.yml` has been deprecated.
+- Custom defaults of [global config flags](/reference/global-configs/about-global-configs) should be set in the `flags` dictionary in [`dbt_project.yml`](/reference/dbt_project.yml), instead of in [`profiles.yml`](/docs/local/profiles.yml). Support for `profiles.yml` has been deprecated.
 - New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
 - To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
 - Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.

@@ -8,7 +8,7 @@ id: checking-logs
 
 To check out the SQL that dbt is running, you can look in:
 
-* <Constant name="cloud" />:
+* <Constant name="dbt" />:
   * Within the run output, click on a model name, and then select "Details"
 * <Constant name="core" />:
   * The `target/compiled/` directory for compiled `select` statements
