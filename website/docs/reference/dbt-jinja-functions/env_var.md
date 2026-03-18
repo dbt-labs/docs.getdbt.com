@@ -100,7 +100,7 @@ select 1 as id
 
 ### dbt platform usage
 
-If you are using the <Constant name="dbt_platform" />, environment variables must be:
+If you're using <Constant name="dbt_platform" />, environment variables must be:
 - Prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`)
 - Uppercased
 - Case sensitive
