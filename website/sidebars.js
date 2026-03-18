@@ -303,7 +303,7 @@ const sidebarSettings = {
           items: [
             "docs/local/install-dbt",
             "docs/local/profiles.yml",
-            "docs/local/connect-data-platform/connection-profiles",
+            "docs/local/connection-profiles",
             "docs/local/dbt-core-environments",
             {
               type: "category",
