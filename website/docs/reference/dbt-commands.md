@@ -26,7 +26,7 @@ dbt commands can be `read` or `write` commands:
 
 ## Available commands
 
-The following sections outline the commands supported by dbt and their relevant flags. They are available in all tools and all [supported versions](/docs/dbt-versions/core) unless noted otherwise. You can run these commands in your specific tool by prefixing them with `dbt` &mdash; for example, to run the `test` command, type `dbt test`.
+The following sections outline the commands supported by dbt and their relevant flags. They are available in all tools and all [supported versions](/docs/dbt-versions) unless noted otherwise. You can run these commands in your specific tool by prefixing them with `dbt` &mdash; for example, to run the `test` command, type `dbt test`.
 
 For information about selecting models on the command line, refer to [Model selection syntax](/reference/node-selection/syntax).
 
@@ -39,28 +39,28 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 
 | Command | Description | Parallel execution |  <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
-| [build](/reference/commands/build) | Builds and tests all selected resources (models, seeds, tests, and more) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) | 
-| cancel | Cancels the most recent invocation. | N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [clone](/reference/commands/clone) | Clones selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) <br /> <Constant name="fusion" /> uses [`--write-catalog`](/reference/commands/cmd-docs) flag instead |
-| [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
-| help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions/core) |
-| [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions/core) |
-| [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
-| [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [run](/reference/commands/run) | Runs the models in a project |   ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [run-operation](/reference/commands/run-operation) | Invokes a macro, including running arbitrary maintenance SQL against the database | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [seed](/reference/commands/seed) | Loads CSV files into the database |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [show](/reference/commands/show) | Previews table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
-| [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
+| [build](/reference/commands/build) | Builds and tests all selected resources (models, seeds, tests, and more) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) | 
+| cancel | Cancels the most recent invocation. | N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
+| [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [clone](/reference/commands/clone) | Clones selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
+| [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> uses [`--write-catalog`](/reference/commands/cmd-docs) flag instead |
+| [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions) |
+| [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
+| [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
+| [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
+| [run](/reference/commands/run) | Runs the models in a project |   ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [run-operation](/reference/commands/run-operation) | Invokes a macro, including running arbitrary maintenance SQL against the database | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [seed](/reference/commands/seed) | Loads CSV files into the database |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [show](/reference/commands/show) | Previews table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions) |
+| [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
 
-Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="platform_cli" /> version. (Not applicable for the <Constant name="studio_ide" />). Available on all [supported versions](/docs/dbt-versions/core).
+Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="platform_cli" /> version. (Not applicable for the <Constant name="studio_ide" />). Available on all [supported versions](/docs/dbt-versions).
