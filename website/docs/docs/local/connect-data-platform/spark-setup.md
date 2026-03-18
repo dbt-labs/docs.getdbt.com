@@ -74,7 +74,7 @@ your_profile_name:
 | `host` | Yes | Hostname of the Spark cluster or Databricks workspace. | `yourorg.sparkhost.com` |
 | `platform_hint` | No | Hints to <Constant name="fusion" /> which Spark platform you use. Used to validate required `server_side_parameters`. Accepted values: `aws_emr_serverless`, `aws_emr_eks`. If omitted, Fusion assumes a generic Spark cluster. | `aws_emr_eks` |
 | `server_side_parameters` | No | Spark session parameters passed to the cluster. Required keys when using `platform_hint`:<br/>- For `aws_emr_serverless`, include `emr-serverless.session.executionRoleArn`.<br/>- For `aws_emr_eks`, include `spark.kubernetes.namespace`. | See [example profiles](#example-profiles). |
-| `livy.server.session.ttl` | No | When using `method: livy`, configures how long a session can remain idle before it is terminated. |  |
+| `livy.server.session.ttl` | No | When using `method: livy`, configures how long a session can remain idle before it is terminated. | `300` |
 
 ### Example profiles
 
