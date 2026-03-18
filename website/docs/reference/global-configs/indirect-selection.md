@@ -54,12 +54,27 @@ Or you can run tests that only refer to selected nodes using an environment vari
 
 <File name='Env var'>
 
+<VersionBlock lastVersion="1.10">
+
 ```text
 
 $ export DBT_INDIRECT_SELECTION=cautious
 dbt run
 
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```text
+
+$ export DBT_ENGINE_INDIRECT_SELECTION=cautious
+dbt run
+
+```
+
+</VersionBlock>
 
 </File>
 
