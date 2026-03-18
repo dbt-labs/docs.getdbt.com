@@ -328,7 +328,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='Removing prerelease versions'>
 
-    Previously, when dbt Labs released a new [version](/docs/dbt-versions/core#how-dbt-core-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
+    Previously, when dbt Labs released a new [version](/docs/dbt-versions#how-dbt-core-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
 
     To see which version you are currently using and to upgrade, select **Deploy** in the top navigation bar and select **Environments**. Choose the preferred environment and click **Settings**. Click **Edit** to make a change to the current dbt version. dbt Labs recommends always using the latest version whenever possible to take advantage of new features and functionality. 
 
@@ -863,7 +863,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     
     Any environments or jobs configured with a dbt version lower than 1.0 were automatically updated to dbt v1.4, which is the latest minor version available on dbt Cloud.
 
-    For more info on dbt versions, releases, and dbt Cloud support timeline, refer to [About dbt Core versions](/docs/dbt-versions/core#latest-releases).
+    For more info on dbt versions, releases, and dbt Cloud support timeline, refer to [About dbt Core versions](/docs/dbt-versions#latest-releases).
 
     Refer to some additional info and resources to help you upgrade your dbt version:
 
