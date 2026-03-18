@@ -23,7 +23,7 @@
     - MFA
   </Expandable>
 
-  <Expandable alt_header="Apache Spark">
+  <Expandable alt_header="Apache Spark (Fusion CLI only)">
     - Thrift
       - Simple Authentication and Security Layer (SASL) PLAIN
       - No SASL (NOSASL) 
