@@ -23,4 +23,14 @@
     - MFA
   </Expandable>
 
+  <Expandable alt_header="Apache Spark (Fusion CLI only)">
+    - Thrift
+      - Simple Authentication and Security Layer (SASL) PLAIN
+      - No SASL (NOSASL) 
+    - Livy
+      - Basic authentication (username and password)
+      - When deployed on Amazon Web Services (AWS): AWS Signature Version 4
+        - Supports authentication using single sign-on, service accounts, or user tokens
+  </Expandable>
+
 <!-- <Expandable alt_header="Supported data platforms"> -->
