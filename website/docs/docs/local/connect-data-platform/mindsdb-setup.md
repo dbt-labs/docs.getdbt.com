@@ -28,7 +28,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Configurations
 
-Basic `profile.yml` for connecting to MindsDB:
+Basic `profiles.yml` for connecting to MindsDB:
 
 ```yml
 mindsdb:
