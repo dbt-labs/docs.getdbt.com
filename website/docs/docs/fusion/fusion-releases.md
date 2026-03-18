@@ -27,7 +27,7 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 | Channel | Description | Stability |
 |---------|-------------|-----------|
 | `latest` | The known `good` stable version | ✅ Recommended for production |
-| `canary` | The latest version to be officially released | ⚠️ May be unstable when it differs from `latest` |
+| `canary` | The latest version to be officially released | ⚠️ Most recent stable version but still undergoing thorough testing |
 | `dev` | The latest development build | ❌ May be unstable; may not have passed all internal tests |
 
 <details>
