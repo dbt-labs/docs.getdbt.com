@@ -459,11 +459,12 @@ Every image must include descriptive alt text for screen readers.
 
 ### Screenshot rules
 
-- Redact all PII (names, emails, phone numbers) and sensitive info (like account numbers,  internal IDs, tokens, environment details)
+- Redact all PII (names, emails, phone numbers) and sensitive info (like account numbers, internal IDs, tokens, environment details)
 - Exclude URL and bookmark bars
 - Use generic names (John Doe, Jane Doe) in account fields
 - Capture only the relevant area 
 - Crop to the relevant UI area only
+- Use a consistent theme (default / light)
 
 ### Callout annotations
 
