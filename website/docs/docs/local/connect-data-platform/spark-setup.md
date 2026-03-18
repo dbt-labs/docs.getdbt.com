@@ -25,13 +25,20 @@ The <Constant name="fusion_engine" /> supports Apache Spark, enabling faster com
 
 ## Fusion and Spark
 
-<Constant name="fusion" /> uses the Databricks SQL dialect for [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) when working with Spark. This means your Spark SQL is validated using Databricks SQL semantics, providing comprehensive error checking and SQL comprehension features.
+<Constant name="fusion" /> uses the Databricks SQL dialect for [static analysis](/docs/fusion/new-concepts#principles-of-static-analysis) when working with Spark. Databricks SQL is a superset of Spark SQL, so your SQL is validated with Databricks semantics. This provides comprehensive error checking and SQL comprehension features. A dedicated Spark SQL dialect for static analysis is planned for a future release.
 
 
 ## Authentication
 
 The Spark adapter in <Constant name="fusion" /> supports:
-- Service Account / User Token authentication
+
+- Thrift
+  - Simple Authentication and Security Layer (SASL) PLAIN
+  - No SASL (NOSASL) 
+- Livy
+  - Basic authentication (username and password)
+  - When deployed on Amazon Web Services (AWS): AWS Signature Version 4
+    - Supports authentication using single sign-on, service accounts, or user tokens
 
 ## Configure Fusion
 
@@ -45,26 +52,136 @@ your_profile_name:
   outputs:
     dev:
       type: spark
-      method: odbc
-      driver: [path/to/driver]
+      method: [thrift | http | livy]
+      port: [port number]
+      auth: [authentication method]
       schema: [database/schema name]
       host: [yourorg.sparkhost.com]
-      token: [abc123]
-      cluster: [cluster id]
-      platform_hint: aws_emr_serverless # or aws_emr_eks
+      platform_hint: [aws_emr_serverless | aws_emr_eks]  # optional
+      server_side_parameters:  # optional; required keys depend on platform_hint
+        "[key]": "[value]"
+      livy.server.session.ttl: [seconds]  # optional; when using method: livy
 ```
 
 </File>
 
 | Profile field | Required | Description | Example |
 | --- | --- | --- | --- |
-| `method` | Yes | Connection method. Use `odbc` for Databricks or other ODBC-compatible Spark hosts. Fusion also supports Thrift and Livy for other Spark deployments. | `odbc` |
-| `driver` | Yes | Path to the ODBC driver. Download the [Databricks ODBC driver](https://databricks.com/spark/odbc-driver-download) for Databricks connections. | `/opt/simba/spark/lib/64/libsparkodbc_sb64.so` |
+| `method` | Yes | Connection method. Accepted values: `thrift`, `http`, or `livy`. | `thrift` |
+| `port` | Yes | Port number for the connection. | `443` |
+| `auth` | Yes | Authentication method. | `SASL PLAIN`, `NOSASL`, `AWS_SIGV4`  |
 | `schema` | Yes | The database or schema name where dbt will create and query objects. | `analytics` |
 | `host` | Yes | Hostname of the Spark cluster or Databricks workspace. | `yourorg.sparkhost.com` |
-| `token` | Yes | Authentication token (for example, Databricks personal access token or service account token). | `dapi123...` |
-| `cluster` | Yes (for ODBC with cluster) | The cluster ID when connecting to a Databricks interactive cluster. Use `endpoint` instead for a SQL warehouse. | `1234-567890-abc12345` |
 | `platform_hint` | No | Hints to <Constant name="fusion" /> which Spark platform you use. Used to validate required `server_side_parameters`. Accepted values: `aws_emr_serverless`, `aws_emr_eks`. If omitted, Fusion assumes a generic Spark cluster. | `aws_emr_eks` |
+| `server_side_parameters` | No | Spark session parameters passed to the cluster. Required keys when using `platform_hint`:<br/>- For `aws_emr_serverless`, include `emr-serverless.session.executionRoleArn`.<br/>- For `aws_emr_eks`, include `spark.kubernetes.namespace`. | See [example profiles](#example-profiles). |
+| `livy.server.session.ttl` | No | When using `method: livy`, configures how long a session can remain idle before it is terminated. |  |
+
+### Example profiles
+
+<Tabs>
+
+<TabItem value="thrift-binary" label="Thrift (binary)">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+spark-local-thrift-binary:
+  target: spark
+  outputs:
+    spark:
+      type: spark
+      method: thrift
+      port: 10000
+      auth: NOSASL
+      host: localhost
+      schema: my_schema
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="thrift-http" label="Thrift (HTTP)">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+spark-local-thrift-http:
+  target: spark
+  outputs:
+    spark:
+      type: spark
+      method: http
+      port: 443
+      auth: NOSASL
+      # Omit the protocol scheme to use HTTPS. For HTTP, use a host like http://localhost
+      host: localhost
+      schema: my_schema
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="emr-serverless" label="AWS EMR Serverless">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+spark-emr-serverless:
+  target: spark
+  outputs:
+    spark:
+      type: spark
+      method: livy
+      auth: AWS_SIGV4
+      port: 443
+      host: "YOUR_APPLICATION_ID.livy.emr-serverless-services.us-east-1.amazonaws.com"
+      schema: my_schema
+      platform_hint: aws_emr_serverless
+      server_side_parameters:
+        "spark.driver.memory": "1g"
+        "spark.driver.cores": 1
+        "spark.executor.memory": "1g"
+        "spark.executor.cores": 1
+        # Required by EMR Serverless when using platform_hint: aws_emr_serverless
+        "emr-serverless.session.executionRoleArn": "arn:aws:iam::YOUR_AWS_ACCOUNT:role/YOUR_ROLE"
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="emr-eks" label="AWS EMR on EKS">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+spark-emr-eks:
+  target: spark
+  outputs:
+    spark:
+      type: spark
+      method: livy
+      auth: AWS_SIGV4
+      port: 443
+      host: "https://my-spark-cluster.com"
+      schema: my_schema
+      platform_hint: aws_emr_eks
+      server_side_parameters:
+        # Required by EMR on EKS when using platform_hint: aws_emr_eks
+        "spark.kubernetes.namespace": "emr-jobs"
+        "spark.driver.memory": "1g"
+        "spark.driver.cores": 1
+        "spark.executor.memory": "8g"
+        "spark.executor.cores": 4
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 For detailed configuration options, refer to the [Spark configuration](/reference/resource-configs/spark-configs) page.
 
