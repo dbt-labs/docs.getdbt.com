@@ -300,7 +300,7 @@
     },
     {
       "source": "/docs/fusion/connect-data-platform-fusion/connection-profiles",
-      "destination": "/docs/local/profiles.yml",
+      "destination": "/docs/local/connect-data-platform/connection-profiles",
       "permanent": true
     },
     {
