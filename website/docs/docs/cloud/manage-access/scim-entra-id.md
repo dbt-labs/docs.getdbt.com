@@ -75,15 +75,16 @@ To map the attributes that will sync with dbt:
     - **externalid:** `mailNickname`
     - **emails[type eq "work"].primary** 
      <Lightbox src="/img/docs/dbt-cloud/access-control/attribute-list.png" width="60%" title="Edit the attributes so they match the list as shown." />
+
+    :::info SSO and SCIM username
+    When you use both SSO and SCIM with Entra ID, map SCIM **UserName** to **userPrincipalName** (or the same Entra attribute users use to sign in to <Constant name="dbt_platform" />). Set **emails[type eq "work"].value** to that same source.  
+    
+    SCIM needs the values to match so provisioning aligns with SSO; if **UserName** and **emails[type eq "work"].value** don't match, users may not sync or match correctly.
+    :::
+
 11. Click **Save**.
 
 You can now begin assigning users to your SCIM app in Entra ID!
-
-:::info SSO and SCIM username
-When you use both SSO and SCIM with Entra ID, map SCIM **UserName** to **userPrincipalName** (or the same Entra attribute users use to sign in to <Constant name="dbt_platform" />). Set **emails[type eq "work"].value** to that same source.  
-
-SCIM needs the values to match so provisioning aligns with SSO; if **UserName** and **emails[type eq "work"].value** don't match, users may not sync or match correctly.
-:::
 
 ## Assign users to SCIM app
 
