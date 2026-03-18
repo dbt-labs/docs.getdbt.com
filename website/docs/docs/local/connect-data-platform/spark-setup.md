@@ -59,8 +59,7 @@ your_profile_name:
       host: [yourorg.sparkhost.com]
       platform_hint: [aws_emr_serverless | aws_emr_eks]  # optional
       server_side_parameters:  # optional; required keys depend on platform_hint
-        "[key]": "[value]"
-      livy.server.session.ttl: [seconds]  # optional; when using method: livy
+        livy.server.session.ttl: [seconds]  # optional; when using method: livy
 ```
 
 </File>
@@ -73,8 +72,7 @@ your_profile_name:
 | `schema` | Yes | The database or schema name where dbt will create and query objects. | `analytics` |
 | `host` | Yes | Hostname of the Spark cluster or Databricks workspace. | `yourorg.sparkhost.com` |
 | `platform_hint` | No | Hints to <Constant name="fusion" /> which Spark platform you use. Used to validate required `server_side_parameters`. Accepted values: `aws_emr_serverless`, `aws_emr_eks`. If omitted, Fusion assumes a generic Spark cluster. | `aws_emr_eks` |
-| `server_side_parameters` | No | Spark session parameters passed to the cluster. Required keys when using `platform_hint`:<br/>- For `aws_emr_serverless`, include `emr-serverless.session.executionRoleArn`.<br/>- For `aws_emr_eks`, include `spark.kubernetes.namespace`. | See [example profiles](#example-profiles). |
-| `livy.server.session.ttl` | No | When using `method: livy`, configures how long a session can remain idle before it is terminated. | `300` |
+| `server_side_parameters` | No | Spark session parameters passed to the cluster. <br/><br/>Required keys when using `platform_hint`:<br/>- For `aws_emr_serverless`, use `emr-serverless.session.executionRoleArn`.<br/>- For `aws_emr_eks`, use `spark.kubernetes.namespace`.<br/><br/>When using `method: livy`, you can set `livy.server.session.ttl` to configure how long a session can remain idle before it is terminated. | See [example profiles](#example-profiles). |
 
 ### Example profiles
 
