@@ -35,7 +35,7 @@ To configure Snowflake instances hosted on GCP for [Private Service Connect](htt
 ```
 Subject: New Multi-Tenant GCP PSC Request
 - Type: Snowflake
-- <Constant name="dbt_platform" /> account URL:
+- dbt_platform account URL:
 - SYSTEM$GET_PRIVATELINK_CONFIG output:
 - *Use privatelink-account-url or regionless-privatelink-account-url?: 
 - dbt GCP multi-tenant environment:
