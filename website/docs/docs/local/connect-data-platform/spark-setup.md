@@ -52,14 +52,14 @@ your_profile_name:
   outputs:
     dev:
       type: spark
-      method: [thrift | http | livy]
-      port: [port number]
-      auth: [authentication method]
-      schema: [database/schema name]
-      host: [yourorg.sparkhost.com]
-      platform_hint: [aws_emr_serverless | aws_emr_eks]  # optional
-      server_side_parameters:  # optional; required keys depend on platform_hint
-        livy.server.session.ttl: [seconds]  # optional; when using method: livy
+      method: CONNECTION_METHOD # thrift, http, or livy
+      port: PORT_NUMBER
+      auth: AUTH_METHOD
+      schema: SCHEMA_NAME
+      host: HOSTNAME
+      platform_hint: PLATFORM_HINT # optional; aws_emr_serverless or aws_emr_eks
+      server_side_parameters: # optional; required keys depend on platform_hint
+        livy.server.session.ttl: SESSION_TTL_SECONDS # optional when using method: livy
 ```
 
 </File>
@@ -71,7 +71,7 @@ your_profile_name:
 | `auth` | Yes | Authentication method. | `SASL PLAIN`, `NOSASL`, `AWS_SIGV4`  |
 | `schema` | Yes | The database or schema name where dbt will create and query objects. | `analytics` |
 | `host` | Yes | Hostname of the Spark cluster or Databricks workspace. | `yourorg.sparkhost.com` |
-| `platform_hint` | No | Hints to <Constant name="fusion" /> which Spark platform you use. <Constant name="fusion" /> uses this to validate required `server_side_parameters`. Accepted values: `aws_emr_serverless`, `aws_emr_eks`. If omitted, <Constant name="fusion" /> assumes a generic Spark cluster. |
+| `platform_hint` | No | Hints to <Constant name="fusion" /> which Spark platform you use. <Constant name="fusion" /> uses this to validate required `server_side_parameters`. Accepted values: `aws_emr_serverless`, `aws_emr_eks`. If omitted, <Constant name="fusion" /> assumes a generic Spark cluster. | `aws_emr_serverless` |
 | `server_side_parameters` | No | Spark session parameters passed to the cluster. <br/><br/>Required keys when using `platform_hint`:<br/>- For `aws_emr_serverless`, use `emr-serverless.session.executionRoleArn`.<br/>- For `aws_emr_eks`, use `spark.kubernetes.namespace`.<br/><br/>When using `method: livy`, you can set `livy.server.session.ttl` to configure how long a session can remain idle before it is terminated. | Refer to [example profiles](#example-profiles). |
 
 ### Example profiles
