@@ -13,8 +13,8 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 <div className="grid--3-col">
 
 <Card
-    title="About dbt Core versions"
-    body="Information about how dbt Core is versioned and how to target those versions."
+    title="About dbt versions"
+    body="Learn about semantic versioning for dbt engines, and how long those versions are supported."
     link="/docs/dbt-versions"
     icon="dbt-bit"/>
 
