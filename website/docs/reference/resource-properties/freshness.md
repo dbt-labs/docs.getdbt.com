@@ -1,3 +1,5 @@
+import WarehouseMetadataSourceFreshness from '/snippets/_warehouse-metadata-source-freshness.md';
+
 <Tabs>
 <TabItem value="yml" label="Project file">
 
@@ -83,6 +85,8 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
 - [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
+
+<WarehouseMetadataSourceFreshness />
 
 <VersionBlock firstVersion="1.12">
 :::note Wildcard table identifiers

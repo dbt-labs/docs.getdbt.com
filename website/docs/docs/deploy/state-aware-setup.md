@@ -86,12 +86,13 @@ You can see which models dbt builds in the run summary logs. Models that weren't
 ## Delete a job
 
 import DeleteJob from '/snippets/_delete-job.md';
+import WarehouseMetadataSourceFreshness from '/snippets/_warehouse-metadata-source-freshness.md';
 
 <DeleteJob/>
 
 ## Advanced configurations
 
-By default, we use the warehouse metadata to check if sources (or upstream models in the case of Mesh) are fresh. For more advanced use cases, dbt provides other options that enable you to specify what gets run by state-aware orchestration. 
+By default, dbt uses warehouse metadata to check if sources (or upstream models in the case of Mesh) are fresh. For more advanced use cases, dbt provides other options that enable you to specify what gets run by state-aware orchestration. 
 
 You can use the following optional parameters to customize your state-aware orchestration:
 
@@ -115,6 +116,8 @@ Some notes when using `loaded_at_field` or `loaded_at_query`:
 - If a source is a view in the data warehouse, dbt can’t track updates from the warehouse metadata when the view changes. Without a `loaded_at_field` or `loaded_at_query`, dbt treats the source as "always fresh” and emits a warning during freshness checks. To check freshness for sources that are views, add a `loaded_at_field` or `loaded_at_query` to your configuration.
 
 To learn more about model freshness and `build_after`, refer to [model `freshness` config](/reference/resource-configs/freshness). To learn more about source and upstream model freshness configs, refer to [resource `freshness` config](/reference/resource-properties/freshness).
+
+<WarehouseMetadataSourceFreshness />
 
 ### Customizing behavior
 
