@@ -54,6 +54,9 @@ If your Okta configurations map the `Username` field to a different attribute, s
 3. Set the **Application username format** field to **Email**.
 4. Click **Save**.
 
+:::info SSO and SCIM username
+When you use both SSO and SCIM with Okta, the SAML **Application username** format must be **Email**. SCIM requires `userName` in email address format, and it must be the same value as the email attribute so users match between SSO and provisioning.
+:::
 
 ## SCIM license mapping
 

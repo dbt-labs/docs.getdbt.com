@@ -98,19 +98,11 @@ exports.versionedPages = [
     lastVersion: "1.11",
   },
   {
-    page: "docs/local/connect-data-platform/spark-setup",
-    lastVersion: "1.99",
-  },
-  {
     page: "docs/local/connect-data-platform/fabric-setup",
     lastVersion: "1.99",
   },
   {
     page: "docs/local/connect-data-platform/fabricspark-setup",
-    lastVersion: "1.99",
-  },
-  {
-    page: "docs/local/connect-data-platform/connection-profiles",
     lastVersion: "1.99",
   },
   {

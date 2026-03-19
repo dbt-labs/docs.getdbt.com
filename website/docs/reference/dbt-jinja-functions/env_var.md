@@ -2,7 +2,7 @@
 title: " About env_var function"
 sidebar_label: "env_var"
 id: "env_var"
-description: "Incorporate environment variables using `en_var` function."
+description: "Incorporate environment variables using `env_var` function."
 ---
 
 import Envvarsecrets from '/snippets/_env-var-secrets.md'; 
