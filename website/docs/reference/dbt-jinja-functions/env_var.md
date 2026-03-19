@@ -105,5 +105,5 @@ If you're using <Constant name="dbt_platform" />, environment variables must be:
 - Uppercase
 - Case-sensitive
 
-When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in the platform UI.
+When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must exactly match the variable defined in the <Constant name="dbt_platform" /> user interface.
 
