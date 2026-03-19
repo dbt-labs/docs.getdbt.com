@@ -1,4 +1,4 @@
-There are four license types in <Constant name="cloud" />:
+There are four license types in <Constant name="dbt" />:
 
 - **Analyst** &mdash;  Available on [Enterprise and Enterprise+ plans only](https://www.getdbt.com/pricing). Requires developer seat license purchase.
   - User can be granted _any_ permission sets.
@@ -8,7 +8,7 @@ There are four license types in <Constant name="cloud" />:
   - _IT licensed users do not inherit rights from any permission sets_. 
   - Every IT licensed user has the same access across the account, regardless of the group permissions assigned.
 - **Read-Only** &mdash; Available on [Starter, Enterprise, and Enterprise+ plans only](https://www.getdbt.com/pricing).
-  - User has read-only permissions applied to all <Constant name="cloud" /> resources. 
-  - Intended to view the [artifacts](/docs/deploy/artifacts) and the [deploy](/docs/deploy/deployments) section (jobs, runs, schedules) in a <Constant name="cloud" /> account, but can’t make changes. 
+  - User has read-only permissions applied to all <Constant name="dbt" /> resources. 
+  - Intended to view the [artifacts](/docs/deploy/artifacts) and the [deploy](/docs/deploy/deployments) section (jobs, runs, schedules) in a <Constant name="dbt" /> account, but can’t make changes. 
   - _Read-only licensed users do not inherit rights from any permission sets_. 
   - Every read-only licensed user has the same access across the account, regardless of the group permissions assigned.

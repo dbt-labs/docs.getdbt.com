@@ -6,7 +6,7 @@ description: "Explore your data, models, and other resources in dbt"
 hide_table_of_contents: true
 ---
 
-<Constant name="cloud" /> provides a variety of tools for you to explore your data, models, and other resources. Many of the features you'd traditionally use your data warehouse services to explore are at your fingertips in your <Constant name="cloud" /> account.
+<Constant name="dbt" /> provides a variety of tools for you to explore your data, models, and other resources. Many of the features you'd traditionally use your data warehouse services to explore are at your fingertips in your <Constant name="dbt" /> account.
 
 <div className="grid--3-col">
 
@@ -40,6 +40,6 @@ Some features are only available on [selected plans](https://www.getdbt.com/pric
 
 ## Related docs
 
-- [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
+- [<Constant name="dbt" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
 - [Reference material](/reference/references-overview)

@@ -1,8 +1,8 @@
 ## View downstream exposures
 
-After setting up downstream exposures in <Constant name="cloud" />, you can view them in [<Constant name="explorer" />](/docs/explore/explore-projects) for a richer experience.
+After setting up downstream exposures in <Constant name="dbt" />, you can view them in [<Constant name="catalog" />](/docs/explore/explore-projects) for a richer experience.
 
-Navigate to <Constant name="explorer" /> by selecting **Catalog** from the top-level navigation. From the **Overview** page, you can view downstream exposures from a couple of places:
+Navigate to <Constant name="catalog" /> by selecting **Catalog** from the top-level navigation. From the **Overview** page, you can view downstream exposures from a couple of places:
 
 <!-- no toc -->
 - [Exposures menu](#exposures-menu)

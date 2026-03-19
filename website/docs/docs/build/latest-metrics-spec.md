@@ -579,7 +579,7 @@ metrics:
 
 ## Migrating to the latest spec
 
-Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="cloud_ide" />.
+Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="studio_ide" />.
 
 import CopilotLimitation from '/snippets/_copilot-limitation.md';
 
@@ -642,13 +642,13 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
 
 ### Using the Studio IDE
 
-Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
+Convert your metrics in the <Constant name="studio_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
 
-1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
+1. Navigate to the <Constant name="studio_ide" /> by clicking **Studio** in the left menu.
 2. Make sure to save and commit your work before proceeding. The autofix command may overwrite any unsaved changes.
-3. In the <Constant name="cloud_ide" />, run the following command:
+3. In the <Constant name="studio_ide" />, run the following command:
 
     ```bash
     dbt-autofix deprecations --semantic-layer
     ```
-4. Click **Commit and sync** in the top left of the <Constant name="cloud_ide" /> to commit these changes to the project repository.
+4. Click **Commit and sync** in the top left of the <Constant name="studio_ide" /> to commit these changes to the project repository.
