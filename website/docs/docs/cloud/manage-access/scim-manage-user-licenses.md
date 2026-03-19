@@ -103,7 +103,7 @@ To add the attribute for license types to your Okta environment:
 
     The **Analyst** license is only available on [select plans](/docs/cloud/manage-access/seats-and-users).
 
-    - **Attribute type:** Personal
+    - **Attribute type:** Group
 
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-license-attributes.png" width="60%" title="Enter the fields as they appear in the image. Ensure the cases match." />
 
@@ -120,7 +120,7 @@ To automate seat assignments in Okta, use the Profile Editor to map Okta group m
    - `dbt_read_only`
 
 2. Within the dbt app Profile Editor in Okta, create mapping rules for Okta users to dbt app users:
-   - **Attribute:** `licenseType`
+   - **Attribute:** `licenseType` 
    - **Logic (Expression):** `isMemberOfGroupName("dbt_developers") ? 'developer' : 'read_only')`
    - **Default behavior:** Users not in the `dbt_developers` group will default to Read-Only.
 
