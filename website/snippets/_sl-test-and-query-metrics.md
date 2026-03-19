@@ -32,7 +32,7 @@ When you make changes to metrics, make sure to run `dbt parse` at a minimum to u
 5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, to query the `order_total` and `order_count` (both metrics), and then group them by the `order_date` (dimension), you would run:
 
    ```sql
-   dbt sl query --metrics order_total,order_count --group-by order_date
+   dbt sl query --metrics order_total,order_count --group-by order_id__order_date
    ```
 6. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--compile` in the command line.
 7. Commit and merge the code changes that contain the metric definitions.
