@@ -34,9 +34,7 @@ To add advanced configurations:
 3. Click the **Edit Config** button and open the configuration file with a text editor.
 4. Add your server configuration based on your use case. Choose the [correct JSON structure](https://modelcontextprotocol.io/quickstart/user#installing-the-filesystem-server) from the following options:
 
-    <Expandable alt_header="Local MCP with OAuth">
-
-    #### Local MCP with <Constant name="dbt_platform"/> authentication <Lifecycle status="managed, managed_plus" />
+  <Expandable alt_header="Local MCP with OAuth" lifecycle="managed,managed_plus">
 
     Configuration for users who want seamless OAuth authentication with the <Constant name="dbt_platform" />
 
@@ -98,6 +96,7 @@ To add advanced configurations:
     ```
 
     Using an `.env` file (use an absolute path to `.env` in your dbt project root):
+
     ```json
     {
       "mcpServers": {

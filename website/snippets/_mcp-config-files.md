@@ -1,6 +1,6 @@
 <Tabs>
 
-<TabItem value="dbt platform only">
+<TabItem value="platform-only" label="dbt platform only">
 
 This option is for users who only want dbt platform features (Discovery API, Semantic Layer, job management) without local CLI commands.
 
@@ -24,7 +24,7 @@ When you use only the dbt platform, the CLI tools are automatically disabled. Yo
 
 </TabItem>
 
-<TabItem value="dbt platform + CLI">
+<TabItem value="platform-cli" label="dbt platform + CLI">
 
 This option is for users who want both dbt CLI commands and dbt platform features (Discovery API, Semantic Layer, job management).
 

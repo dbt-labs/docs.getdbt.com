@@ -15,11 +15,18 @@ The [dbt MCP server](https://github.com/dbt-labs/dbt-mcp) provides a standardize
 
 </IntroText>
 
-As AI becomes more deeply integrated into data workflows, dbt users need a seamless way to access and integrate dbt's structured metadata and execution context effectively. This page provides an overview of dbt's MCP Server, which exposes this context, supporting use cases such as conversational access to data, agent-driven automation of dbt workflows, and AI-assisted development.
+To help with dbt, assistants need your project metadata and, when you allow it, supported actions such as CLI runs, platform APIs, and <Constant name="semantic_layer" /> queries. The dbt MCP server exposes those to MCP clients and supports use cases such as conversational access to data, agentic automation for dbt workflows, and AI-assisted development. This page covers local and remote setups, available tools, and how to get started.
 
 The MCP server provides access to the <Constant name="platform_cli"/>, [API](/docs/dbt-cloud-apis/overview), the [Discovery API](/docs/dbt-cloud-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
+
+The dbt MCP server comes in two flavors: local and remote.
+
+- [Local MCP server](#local-mcp-server): runs locally on your machine and requires installing `uvx` (which installs dbt-mcp locally).
+- [Remote MCP server](#remote-mcp-server): uses an HTTP connection and makes calls to dbt-mcp hosted on the managed <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
+
+For more details on the server types, refer to [Server access](#server-access).
 
 ## Get started
 
@@ -28,9 +35,9 @@ To get started, choose the quick start that matches your setup:
 <SimpleTable>
 | I want to... | Quickstart |
 | --- | --- |
-| Connect to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL). Uses [local MCP server](#local-mcp-server). | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |
-| Use <Constant name="platform_cli"/> commands locally, without or with a <Constant name="dbt_platform" /> account. Uses [local MCP server](#local-mcp-server).| [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |
-| Use MCP with zero local install (to query data only; no running dbt commands). Uses [remote MCP server](#remote-mcp-server). | [Use MCP with zero install](/docs/dbt-ai/mcp-quickstart-remote) |
+| Query data and run <Constant name="platform_cli"/> commands locally while connected to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL, Codegen). Uses [local MCP server](#local-mcp-server). | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |
+| Run <Constant name="platform_cli"/> commands locally, with or without a <Constant name="dbt_platform" /> account; with an account, also query data and explore metadata through the same server. Uses [local MCP server](#local-mcp-server). | [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |
+| Use MCP with zero local install (query data only through hosted tools; no <Constant name="platform_cli"/> commands). Uses [remote MCP server](#remote-mcp-server). | [Use MCP with zero install](/docs/dbt-ai/mcp-quickstart-remote) |
 </SimpleTable>
 
 To configure or disable specific tools (local MCP), see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
@@ -69,23 +76,6 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 The following tool list is available for your MCP server and is auto-fetched from the [dbt MCP server README on GitHub](https://github.com/dbt-labs/dbt-mcp#tools) when the docs are built, so it stays in sync with each release.
 
 <McpToolsFromReadme />
-
-### Supported tools by MCP server type
-The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
-
-Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote supports <Constant name="semantic_layer" />, SQL, Discovery, and <Constant name="fusion" /> tools only.
-
-Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
-
-| Tools | Local | Remote |
-| --- | --- | --- |
-| <Constant name="platform_cli"/> commands  | ✅ | ❌ |
-| <Constant name="semantic_layer" /> | ✅ | ✅ |
-| SQL  | ✅ | ✅ |
-| Metadata Discovery| ✅ | ✅ |
-| Administrative API | ✅ | ❌ |
-| Codegen Tools | ✅ | ❌ |
-| <Constant name="fusion" /> Tools | ✅ | ✅ |
 
 ## MCP integrations
 

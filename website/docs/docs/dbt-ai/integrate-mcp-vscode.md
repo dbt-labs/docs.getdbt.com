@@ -82,7 +82,7 @@ To get started, in VS Code:
 
     <Expandable alt_header="Local MCP with .env">
 
-    For advanced users who need custom environment variables or service token authentication. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`.
+    For advanced users who need custom environment variables or service token authentication. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`. Refer to the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for the complete list of available environment variables for the local MCP server.
 
     Using the `env` field (single-file configuration):
 
@@ -139,7 +139,7 @@ Now, you can access the dbt MCP server in VS Code through interfaces like GitHub
 
 This section contains troubleshooting steps for errors you might encounter when integrating VS Code with MCP.
 
-<Expandable alt_header="Cannot find `uvx` executable" >
+<Expandable alt_header="Cannot find `uvx` executable">
 
 If you see errors like `Could not connect to MCP server dbt` or `spawn uvx ENOENT`, VS Code may be unable to find the `uvx` executable.
 

@@ -55,7 +55,7 @@ After clicking:
 
 ### Custom environment variables
 
-If you need custom environment variable configuration or prefer to use service tokens:
+Use this method if you need custom environment variables or prefer to use service tokens. Refer to the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for the complete list of available environment variables for the local MCP server.
 
 1. Click the following link with Cursor open:
 
