@@ -22,23 +22,31 @@ import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability
 
 Dimensions are defined at the column level.
 
-### Available dimension properties (latest spec)
+### Column-level placement (latest spec)
 
-| Property / location | Type | Required | Description |
-|---------------------|------|----------|-------------|
-| `dimension:` (on column) | block | — | Block on a model column. |
-| `dimension.type` | string | Yes | `time` or `categorical`. |
-| `dimension.name` | string | No | Unique within the semantic model; defaults to column name. |
-| `dimension.description` | string | No | Documentation for the dimension. |
-| `dimension.label` | string | No | Display value in downstream tools. |
-| `dimension.config` | object | No | Metadata and config. |
-| `granularity:` (on column) | string | Yes (time only) | Time grain (for example, `day`, `week`, `month`). Required on the column for time dimensions. |
-| `derived_semantics.dimensions` | array | No | Derived dimensions with an `expr`. |
-| `validity_params` (time) | object | No | SCD-style validity (for example, `is_start`, `is_end`). |
+These keys sit on a **column** under the semantic model’s `columns:` list — they are not nested inside the `dimension:` object. 
 
-- **Column-level:** Under the model's `columns:` list, each column can have a `dimension:` block with *time* or *categorical* type, and optional `name`, `description`, `label`, `config`.
+| Location | Type | Required | Description |
+|----------|------|----------|-------------|
+| `dimension:` | block or shorthand | Yes (to define a dimension) | Attaches a dimension to the column. Use a mapping (`dimension:` with `type`, etc.) or the shorthand `dimension: categorical` / `dimension: time`. |
+| `granularity:` | string | Yes for **time** dimensions | Time grain of the underlying column data (for example, `day`, `week`, `month`). Place `granularity:` on the column next to `dimension:`, not inside the `dimension:` block. For **categorical** dimensions, `granularity` is not meaningful; if it appears in YAML, validation should surface an error. |
+
+### Properties inside the `dimension:` block (latest spec)
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `type` | string | Yes | `time` or `categorical`. |
+| `name` | string | No | Unique within the semantic model; defaults to column name. |
+| `description` | string | No | Documentation for the dimension. |
+| `label` | string | No | Display value in downstream tools. |
+| `is_partition` | boolean | No | Whether this dimension is a partition dimension for the model (supported for time and categorical dimensions in YAML). |
+| `config` | object | No | Metadata and config. |
+| `validity_params` | object | No | For **time** dimensions: SCD-style validity (for example, `is_start`, `is_end`). |
+
+**Derived dimensions:** To define dimensions with an `expr` that is not tied to a single column, use the semantic model’s optional `derived_semantics.dimensions` list. That structure is part of the [semantic model](/reference/semantic-model-properties) configuration (alongside `columns:`), not a property nested under a column’s `dimension:` block. See [Semantic models](/docs/build/semantic-models) and [Dimensions](/docs/build/dimensions) for examples.
+
+- **Column-level:** Under the model's `columns:` list, each column can have a `dimension:` block with *time* or *categorical* type, and optional `name`, `description`, `label`, `is_partition`, `config`.
 - **Time dimensions:** The column must also have a top-level `granularity:` (for example, `day`).
-- **Derived dimensions:** Use optional `derived_semantics.dimensions` with an `expr`.
 - **Validity (SCD):** Time dimensions can specify `validity_params` (for example, `is_start`, `is_end`).
 
 For the full structure and examples, see [Dimensions](/docs/build/dimensions).
@@ -58,6 +66,7 @@ Dimensions are defined in a top-level `dimensions:` list on the semantic model.
 | name | string | Yes | Unique within the semantic model. Displayed in downstream tools; can act as alias when `expr` differs. |
 | type | string | Yes | `time` or `categorical`. |
 | type_params | object | Yes (time only) | For time dimensions (for example, `time_granularity`, `is_primary`, `time_partitioning_granularity`). Omitted for categorical. |
+| is_partition | boolean | No | Whether this dimension is a partition dimension for the model. |
 | description | string | No | Documentation for the dimension. |
 | expr | string | No | Column or SQL expression. Defaults to the dimension name if omitted. |
 | label | string | No | Display value in downstream tools. |
@@ -72,6 +81,7 @@ dimensions:
     type_params:                 # Required for time
       time_granularity: day | week | month | quarter | year
       is_primary: true | false
+    is_partition: true | false   # Optional
     description: <string>        # Optional
     expr: <column_or_sql>        # Optional, defaults to name
     label: <display_name>        # Optional

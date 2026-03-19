@@ -24,14 +24,14 @@ The property reference pages document each resource type in detail so you can lo
 
 - [Semantic model properties](/reference/semantic-model-properties)
 - [Metric properties](/reference/metric-properties)
-- [Dimension properties](/reference/dimension-properties)
+- [Dimension properties](/reference/dimension-properties) — for the latest spec, distinguishes **column-level** keys (`dimension:`, `granularity:`) from **properties inside** the `dimension:` block; use the version picker on that page for legacy standalone `dimensions:` fields.
 
 ## Where to define <Constant name="semantic_layer" /> objects
 
 | Object | Latest spec (model YAML) | Legacy spec (standalone YAML) |
 |--------|--------------------------|------------------------------|
 | **Semantic models** | Top-level `semantic_model:` block under [models](/reference/model-properties). | Top-level `semantic_models:` list. |
-| **Metrics** | For metrics that only depend on the same semantic model, list them alongside `semantic_model:` and `columns:` (not nested under semantic_model). <br /> <br /> For metrics that depend on metrics or dimensions from a different semantic model, define them under a top-level `metrics:` block (For example, `outside models:`). This can be in the same YAML file or a separate one. | Top-level `metrics:` key in standalone YAML. |
+| **Metrics** | For metrics that only depend on the same semantic model, nest them directly under each model in `models:` (but not nested under `semantic_model`). <br /> <br /> For metrics that depend on metrics or dimensions from a different semantic model, define them under a top-level `metrics:` block (For example, `outside models:`). This can be in the same YAML file or a separate one. | Top-level `metrics:` key in standalone YAML. |
 | **Dimensions** | `dimension:` blocks on model columns (and optional `derived_semantics.dimensions`). Defined within a model's semantic layer configuration. | `dimensions:` list on the semantic model. Defined within a model's semantic layer configuration. |
 
 ## Related documentation
