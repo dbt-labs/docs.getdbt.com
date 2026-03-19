@@ -8,8 +8,8 @@
 
 <Card
     title="Apache Spark"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Core </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
-    pills='["dbt platform", "dbt Core"]'
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in the dbt platform </a> <br /></li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Core </a> </li><li><a href='/docs/local/connect-data-platform/spark-setup'>Install with dbt Fusion </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
+    pills='["dbt platform", "dbt Core", "Fusion"]'
     icon="apache-spark"/>
 
  <Card

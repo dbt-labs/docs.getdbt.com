@@ -30,7 +30,7 @@ For more details on the server types, refer to [Server access](#server-access).
 
 ## Get started
 
-To get started, choose the quick start that matches your setup:
+To get started, choose the quickstart that matches your setup:
 
 <SimpleTable>
 | I want to... | Quickstart |
@@ -70,6 +70,23 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
+
+### Supported tools by MCP server type
+The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
+
+Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote MCP supports <Constant name="semantic_layer" />, SQL, Discovery, and <Constant name="fusion" /> tools only.
+
+Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
+
+| Tools | Local | Remote |
+| --- | --- | --- |
+| <Constant name="platform_cli"/> commands  | ✅ | ❌ |
+| <Constant name="semantic_layer" /> | ✅ | ✅ |
+| SQL  | ✅ | ✅ |
+| Metadata Discovery| ✅ | ✅ |
+| Administrative API | ✅ | ❌ |
+| Codegen Tools | ✅ | ❌ |
+| <Constant name="fusion" /> Tools | ✅ | ✅ |
 
 ## Available tools
 

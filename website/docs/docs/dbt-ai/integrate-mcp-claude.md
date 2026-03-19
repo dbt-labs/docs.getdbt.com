@@ -61,6 +61,8 @@ To add advanced configurations:
     }
     ```
 
+
+
     Finding your paths:
     - **DBT_PROJECT_DIR**: Full path to the folder containing your `dbt_project.yml` file
     - **DBT_PATH**: Find by running `which dbt` in Terminal (macOS/Linux) or `where dbt` (Windows) in Powershell
@@ -77,6 +79,7 @@ To add advanced configurations:
     `DBT_PROD_ENV_ID`, `DBT_DEV_ENV_ID`, and `DBT_USER_ID` must be numeric IDs (for example, `54321`), not full URLs copied from your browser. `DBT_HOST` accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`.
     :::
 
+    Using an `.env` file (use an absolute path to `.env` in your dbt project root):
     ```json
     {
       "mcpServers": {
@@ -95,8 +98,7 @@ To add advanced configurations:
     }
     ```
 
-    Using an `.env` file (use an absolute path to `.env` in your dbt project root):
-
+    Using an .env file (alternative):
     ```json
     {
       "mcpServers": {
@@ -136,12 +138,14 @@ In your Claude Code set up, run one of these commands based on your use case. Be
 
 For <Constant name="core" /> or <Constant name="fusion" /> only (no <Constant name="dbt_platform" /> account):
 
+
 ```shell
 claude mcp add dbt \
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
 ```
+
 
 </TabItem>
 <TabItem value="oauth" label="OAuth with dbt platform">
@@ -156,16 +160,21 @@ claude mcp add dbt \
 -- uvx dbt-mcp
 ```
 
+
+
 Replacing `your-host-with-subdomain`, `path/to/your/dbt/project`, and `path/to/your/dbt/executable` with your actual static subdomain, project path, and dbt executable path.
 
 For example, if your static subdomain is `abc123.us1.dbt.com`, your command would look like this:
+
 ```shell
 claude mcp add dbt \
--e DBT_HOST=abc123.us1.dbt.com \ ## this is the static subdomain
+-e DBT_HOST=abc123.us1.dbt.com \ # this is the static subdomain
 -e DBT_PROJECT_DIR=/path/to/your/dbt/project \
 -e DBT_PATH=/path/to/your/dbt/executable \
 -- uvx dbt-mcp
 ```
+
+
 </TabItem>
 </Tabs>
 
