@@ -10,7 +10,7 @@ keywords:
   - MetricFlow
 ---
 
-Semantic models define the structure that MetricFlow uses to build the semantic graph. in the *latest spec*, they can be declared as a top-level `semantic_model:` block on a [model](/reference/model-properties). In the *legacy spec*, we used standalone YAML. For more information, refer to [Semantic models](/docs/build/semantic-models).
+Semantic models define the structure that MetricFlow uses to build the semantic graph. In the *latest spec*, they can be declared as a top-level `semantic_model:` block on a [model](/reference/model-properties). In the *legacy spec*, we used standalone YAML. For more information, refer to [Semantic models](/docs/build/semantic-models).
 
 import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability-versioned.md';
 
