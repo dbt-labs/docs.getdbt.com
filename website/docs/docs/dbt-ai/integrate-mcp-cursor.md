@@ -29,7 +29,7 @@ Local configuration for users who only want to use dbt CLI commands with <Consta
 [Add dbt Core or Fusion to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
 
 After clicking:
-1. Update `DBT_PROJECT_DIR` with the full path to your dbt project (the folder containing `dbt_project.yml`).
+1. Update <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> with the full path to your dbt project (the folder containing `dbt_project.yml`).
 2. Update `DBT_PATH` with the full path to your dbt executable:
    - macOS/Linux: Run `which dbt` in Terminal.
    - Windows: Run `where dbt` in Command Prompt or PowerShell.
@@ -46,7 +46,7 @@ Configuration settings for users who want OAuth authentication with the <Constan
 
 After clicking:
 1. Replace `<your-dbt-host-with-custom-subdomain>` with your actual host (for example, `abc123.us1.dbt.com`).
-2. (For <Constant name="dbt_platform" /> + CLI) Update `DBT_PROJECT_DIR` and `DBT_PATH` as described above.
+2. (For <Constant name="dbt_platform" /> + CLI) Update <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> and `DBT_PATH` as described above.
 3. Save the configuration.
 
 </TabItem>

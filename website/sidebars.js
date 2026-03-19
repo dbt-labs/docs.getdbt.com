@@ -303,6 +303,7 @@ const sidebarSettings = {
           items: [
             "docs/local/install-dbt",
             "docs/local/profiles.yml",
+            "docs/local/connection-profiles",
             "docs/local/dbt-core-environments",
             {
               type: "category",
@@ -980,7 +981,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/about-versions" },
       items: [
         "docs/dbt-versions/about-versions",
-        "docs/dbt-versions/core",
+        "docs/dbt-versions/dbt-versions",
         "docs/dbt-versions/cloud-release-tracks",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
         "docs/dbt-versions/product-lifecycles",

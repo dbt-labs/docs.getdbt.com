@@ -55,6 +55,8 @@ To get started, in VS Code:
 
     For users who only want to use dbt CLI commands with <Constant name="core" /> or <Constant name="fusion" />
 
+    <VersionBlock lastVersion="1.10">
+
     ```json
     {
       "servers": {
@@ -70,8 +72,29 @@ To get started, in VS Code:
     }
     ```
 
+    </VersionBlock>
+
+    <VersionBlock firstVersion="1.11">
+
+    ```json
+    {
+      "servers": {
+        "dbt": {
+          "command": "uvx",
+          "args": ["dbt-mcp"],
+          "env": {
+            "DBT_ENGINE_PROJECT_DIR": "/path/to/your/dbt/project",
+            "DBT_PATH": "/path/to/your/dbt/executable"
+          }
+        }
+      }
+    }
+    ```
+
+    </VersionBlock>
+
     **Finding your paths:**
-    - **DBT_PROJECT_DIR**: Full path to the folder containing your `dbt_project.yml` file
+    - <VersionBlock lastVersion="1.10">**DBT_PROJECT_DIR**</VersionBlock><VersionBlock firstVersion="1.11">**DBT_ENGINE_PROJECT_DIR**</VersionBlock>: Full path to the folder containing your `dbt_project.yml` file
       - macOS/Linux: Run `pwd` from your project folder.
       - Windows: Run `cd` from your project folder in Command Prompt.
     - **DBT_PATH**: Path to dbt executable
@@ -89,6 +112,8 @@ To get started, in VS Code:
     :::tip IDs are integers, not URLs
     `DBT_PROD_ENV_ID`, `DBT_DEV_ENV_ID`, and `DBT_USER_ID` must be numeric IDs (for example, `54321`), not full URLs copied from your browser. `DBT_HOST` accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`.
     :::
+
+    <VersionBlock lastVersion="1.10">
 
     ```json
     {
@@ -108,7 +133,35 @@ To get started, in VS Code:
     }
     ```
 
+<<<<<<< update/refactor-mcp
     Using an `.env` file (use an absolute path to `.env` in your dbt project root):
+=======
+    </VersionBlock>
+
+    <VersionBlock firstVersion="1.11">
+
+    ```json
+    {
+      "servers": {
+        "dbt": {
+          "command": "uvx",
+          "args": ["dbt-mcp"],
+          "env": {
+            "DBT_ENGINE_HOST": "cloud.getdbt.com",
+            "DBT_TOKEN": "your-token-here",
+            "DBT_PROD_ENV_ID": "12345",
+            "DBT_ENGINE_PROJECT_DIR": "/path/to/project",
+            "DBT_PATH": "/path/to/dbt"
+          }
+        }
+      }
+    }
+    ```
+
+    </VersionBlock>
+
+    Using an `.env` file (alternative - two-file configuration):
+>>>>>>> current
 
     ```json
     {
@@ -180,7 +233,7 @@ Check the MCP server status:
 3. Click on the server to see detailed logs.
 
 Common issues:
-- Missing or incorrect paths for `DBT_PROJECT_DIR` or `DBT_PATH`
+- Missing or incorrect paths for <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> or `DBT_PATH`
 - Invalid authentication tokens
 - Missing required environment variables
 
