@@ -7,7 +7,7 @@ import PropsCallout from '/snippets/_config-prop-callout.md';
 
 You can declare macro properties in any `properties.yml` file. <PropsCallout title={frontMatter.title}/> 
 
-Macros support a `config` block. You can define `meta` and `docs` at the top level or within `config`. When both are provided, dbt merges the values, with those defined in `config` taking precedence for overlapping keys. This aligns macro properties with other resources and allows config-level overrides in patches.
+Macros support a `config` block. You can define `meta` and `docs` within `config`. 
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deep in sub-folders.
 
@@ -34,31 +34,12 @@ macros:
 
 </File>
 
-## Examples
+## Example
 
 <File name='macros/schema.yml'>
 
 ```yaml
-macros: # top-level docs and meta
-  - name: format_date
-    description: Formats a date column for reporting.
-    docs:
-      show: false
-    meta:
-      team: marketing
-    arguments:
-      - name: column_name
-        type: column
-        description: The date column to format
-```
-
-</File>
-
-
-<File name='macros/schema.yml'>
-
-```yaml
-macros: # config-level docs and meta
+macros:
   - name: cents_to_dollars
     description: Converts a numeric column from cents to dollars.
     config:
