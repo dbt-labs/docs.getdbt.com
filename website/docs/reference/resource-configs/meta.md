@@ -228,8 +228,8 @@ macros:
 ```yml
 [macros](/reference/macro-properties):
   - name: macro_name
-    config: # changed to config in v1.11
-      meta: {<dictionary>}
+    config: 
+      meta: {<dictionary>} # changed to config in v1.11
     arguments:
       - name: argument_name
 ```

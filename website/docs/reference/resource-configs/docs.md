@@ -149,8 +149,8 @@ You can use the `docs` property in YAML files, _except_ in `dbt_project.yml`. Fo
 ```yml
 macros:
   - name: macro_name
-    config: # changed to config in v1.11
-      docs:
+    config: 
+      docs: # changed to config in v1.11
         show: true | false
 ```
 
