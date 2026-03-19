@@ -24,7 +24,7 @@ Dimensions are defined at the column level.
 
 ### Column-level placement (latest spec)
 
-These keys sit on a **column** under the semantic model’s `columns:` list — they are not nested inside the `dimension:` object. 
+Add these keys to a **column** under the semantic model’s `columns:` list — they are not nested inside the `dimension:` object.
 
 | Location | Type | Required | Description |
 |----------|------|----------|-------------|
@@ -49,7 +49,7 @@ These keys sit on a **column** under the semantic model’s `columns:` list — 
 - **Time dimensions:** The column must also have a top-level `granularity:` (for example, `day`).
 - **Validity (SCD):** Time dimensions can specify `validity_params` (for example, `is_start`, `is_end`).
 
-For the full structure and examples, see [Dimensions](/docs/build/dimensions).
+For concepts and usage patterns, refer to [Dimensions](/docs/build/dimensions). For the latest spec, refer to [Semantic models](/docs/build/semantic-models).
 
 </VersionBlock>
 

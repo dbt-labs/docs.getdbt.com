@@ -40,18 +40,18 @@ In the latest YAML spec, you can define metrics on a model that has semantic mod
 
 | Metric type | Key properties |
 |-------------|-----------------|
-| All | name, type, description, label |
-| [Simple](/docs/build/simple) | agg, expr, time_granularity, agg_time_dimension, hidden, join_to_timespine, fill_nulls_with; optionally config, non_additive_dimension |
+| All | name, type, description, label, hidden, filter, config |
+| [Simple](/docs/build/simple) | agg, expr, time_granularity, agg_time_dimension, join_to_timespine, fill_nulls_with; optionally non_additive_dimension |
 | [Derived](/docs/build/derived) | expr, input_metrics (each with optional alias, filter, offset_window) |
 | [Ratio](/docs/build/ratio) | numerator, denominator (each a metric name or a dict with name, filter, alias) |
 | [Conversion](/docs/build/conversion) | entity, calculation, base_metric, conversion_metric, window; optional constant_properties |
 | [Cumulative](/docs/build/cumulative) | input_metric, window, grain_to_date, period_agg |
 
-**Cross-model metrics:** Metrics under a model's `metrics:` list can only reference that semantic model. Metrics that depend on other semantic models (for example, cross-model cumulative, ratio, derived, or conversion) go in a top-level `metrics:` block (outside `models:`). This can live in the same YAML file or a separate file. 
+**Cross-model metrics:** Metrics under a model's `metrics:` list can only reference that semantic model. Metrics that depend on other semantic models (for example, cross-model cumulative, ratio, derived, or conversion) go in a top-level `metrics:` block (outside `models:`). This can live in the same YAML file or a separate file.
 
 **Note:** For the legacy spec, all metrics were defined in standalone YAML; there was no model-level `metrics:` list.
 
-Refer to [Creating metrics](/docs/build/metrics-overview) and [Semantic models](/docs/build/semantic-models) for the exact YAML structure and examples.
+For the latest spec, refer to [Semantic models](/docs/build/semantic-models). For metric types, `type_params`, and more examples, refer to [Creating metrics](/docs/build/metrics-overview).
 
 </VersionBlock>
 
