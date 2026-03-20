@@ -178,7 +178,7 @@ Ensure that the domain name under which user accounts exist in Azure matches the
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
 
 ## Learn more by video
-The following video explain how to set up SSO with Microsoft Entra ID:
+The following video explains how to set up SSO with Microsoft Entra ID:
 
 <video width="100%" height="100%" playsinline controls>
   <source src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-dbt-entra-id.mp4" type="video/mp4" />
