@@ -9,9 +9,11 @@ id: "cmd-docs"
 
 `dbt docs` has two supported subcommands: `generate` and `serve`.
 
-### dbt docs generate
+:::tip <Constant name="fusion_engine" /> users
+When using the <Constant name="fusion_engine" />, documentation metadata is written using the `--write-catalog` flag during `dbt build`, instead of running `dbt docs generate`. For details, refer to [Supported features](/docs/fusion/supported-features).
+:::
 
-The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of the `dbt docs generate` command for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. This flag is fully Fusion native and significantly more performant.
+### dbt docs generate
 
 The command is responsible for generating your project's documentation website by:
 
@@ -114,11 +116,7 @@ As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the 
 
 <VersionBlock firstVersion="2.0">
 
-:::tip Viewing docs with the <Constant name="fusion_engine" />
-With <Constant name="fusion" />, you explore your project documentation in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) rather than running `dbt docs generate` and `dbt docs serve`. Run `dbt build` (optionally with the [`--write-catalog`](/reference/commands/cmd-docs?version=2.0#--write-catalog-flag) flag to hydrate metadata), then open <Constant name="catalog" /> to browse your project and docs.
-
-Refer to [Fusion supported features](/docs/fusion/supported-features) for more information.
-:::
+With <Constant name="fusion_engine" />, use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to browse project documentation instead of `dbt docs generate` and `dbt docs serve`.
 
 ## --write-catalog flag
 

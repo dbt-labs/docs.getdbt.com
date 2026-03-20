@@ -11,16 +11,6 @@ hide_table_of_contents: true
 
 <div style={{maxWidth: '900px'}}>
 
-:::info This quickstart is for <Constant name="core" />
-
-This guide is specifically for using <Constant name="core" /> (the Python-based dbt engine) from the command line. If you're looking to get started with the <Constant name="fusion_engine" />, use one of the following resources instead:
-
-- [Quickstart for the <Constant name="fusion_engine" />](/guides/fusion)
-- [Install <Constant name="fusion" /> locally](/docs/local/install-dbt?version=2.0)
-- [Fusion supported features](/docs/fusion/supported-features)
-
-:::
-<br />
 ## Introduction
 
 When you use <Constant name="core" /> to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
