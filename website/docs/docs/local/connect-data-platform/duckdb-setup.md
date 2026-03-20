@@ -83,7 +83,7 @@ duckdb_local_storage_test:
 
 This configuration tells DuckDB to create (or reuse) a file named `local.duckdb` in the directory where you run dbt.
 
-From your project directory, run the commands:
+From your project directory, run these commands:
 
 ```shell
 dbt debug
