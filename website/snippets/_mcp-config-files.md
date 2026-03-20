@@ -98,7 +98,6 @@ The <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlo
 </VersionBlock>
 
 **Note:** Replace `<your-dbt-host-with-custom-subdomain>` with your actual host (for example, `https://abc123.us1.dbt.com`). This enables OAuth authentication.
->>>>>>> current
 
 </TabItem>
 
