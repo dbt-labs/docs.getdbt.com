@@ -18,7 +18,7 @@ meta:
 
 :::info Community plugin
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+Some functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
 
