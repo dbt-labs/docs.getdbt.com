@@ -133,9 +133,7 @@ To get started, in VS Code:
     }
     ```
 
-<<<<<<< update/refactor-mcp
     Using an `.env` file (use an absolute path to `.env` in your dbt project root):
-=======
     </VersionBlock>
 
     <VersionBlock firstVersion="1.11">
@@ -161,7 +159,6 @@ To get started, in VS Code:
     </VersionBlock>
 
     Using an `.env` file (alternative - two-file configuration):
->>>>>>> current
 
     ```json
     {
