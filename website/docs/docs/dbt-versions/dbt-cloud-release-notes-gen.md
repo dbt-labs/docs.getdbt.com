@@ -50,16 +50,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Copilot entry stays available during lockouts:** If dbt Copilot is temporarily locked for your account, you can still open Copilot from Insights to see lock details.
 
-### Cost insights
-
-- **Clearer Cost Insights messaging without permissions:** Cost Insights now shows updated informational copy when you do not have the required cost permissions.
-
-- **More usable Cost Insights charts:** Cost and run charts now support a selector control, align selectors with chart titles, and update default model build labels for clearer reporting.
-
-- **Newest-first table sorting:** Chart tables now sort by date descending (newest first) by default, so you see the latest data without re-sorting.
-
-- **More informative Cost Insights connection status:** The Cost Insights connection badge can now reflect whether cost data has been processed, and it provides clearer tooltip messaging when processing is still pending.
-
 ### Orchestration and Run Status
 
 - **Run metadata includes triggering and canceling actors:** Run details now include who triggered or canceled a run (user or service token), which helps you audit run activity.
@@ -125,12 +115,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Copilot chat no longer gets stuck loading:** Insights now clears the Copilot chat loading state reliably after responses complete or error, so you can keep chatting without refreshing the page.
 
 - **More reliable Copilot handoff starts:** When you arrive in Insights with a Copilot handoff message, Insights now starts the handoff once and clears stale handoff state when you navigate directly.
-
-### Cost insights
-
-- **Correct Cost Insights visibility for ineligible projects:** Cost Insights no longer shows for projects that are not eligible, so you do not see cost UI when you are unable to use it.
-
-- **Consistent chart time ranges:** The usage chart now matches the time range shown by other charts, so you get consistent comparisons across views.
 
 ### Integrations
 
