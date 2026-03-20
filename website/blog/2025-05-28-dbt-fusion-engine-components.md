@@ -60,7 +60,7 @@ As long as you comply with the [three restrictions in ELv2](http://www.getdbt.co
 
 Artifact type: Precompiled binary
 
-How to access: download following the instructions [here](/docs/fusion/install-fusion-cli)
+How to access: download following the instructions [here](/docs/local/install-dbt?version=2#get-started)
 
 License: ELv2
 
@@ -81,7 +81,7 @@ As long as you comply with the three restrictions in ELv2,
 
 Artifact type: Precompiled binary and managed service
 
-Available at: [Download binary](/docs/fusion/install-fusion-cli) and [sign up for the service](http://getdbt.com/signup)
+Available at: [Download binary](/docs/local/install-dbt?version=2#get-started) and [sign up for the service](http://getdbt.com/signup)
 
 License: ELv2 (binary) and Proprietary (service)
 

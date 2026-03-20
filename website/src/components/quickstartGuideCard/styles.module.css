@@ -219,3 +219,20 @@
   border-radius: 5px;
   z-index: 9999;
 }
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.productBadge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+}
+
+.recently_updated {
+  font-size: 0.75rem;
+  color: var(--color-green-blue);
+  font-weight: 500;
+}

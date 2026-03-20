@@ -199,7 +199,7 @@ limit 10
 You don't need to write everything from scratch. Pull in documentation, definitions, and sample data you already have—it helps <Constant name="copilot" /> understand your specific business context.
 
 :::tip dbt Insights integration
-When using <Constant name="copilot" /> in [<Constant name="query_page" />](/docs/explore/dbt-insights), you can easily cross-reference between <Constant name="copilot" />'s generated SQL and metadata from [dbt Catalog](/docs/explore/explore-projects). This embedded integration makes it seamless to access documentation, definitions, and sample data while building queries.
+When using <Constant name="copilot" /> in [<Constant name="insights" />](/docs/explore/dbt-insights), you can easily cross-reference between <Constant name="copilot" />'s generated SQL and metadata from [dbt Catalog](/docs/explore/explore-projects). This embedded integration makes it seamless to access documentation, definitions, and sample data while building queries.
 :::
 
 ### Define your business rules
@@ -242,7 +242,7 @@ on customer_id. Filter to the last 30 days for preview only.
 
 Fast-track your semantic layer strategy with AI-generated YAML using <Constant name="copilot" />.
 
-<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/build-canvas-copilot), and [<Constant name="query_page" />](/docs/explore/dbt-insights).
+<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/cloud/build-canvas-copilot), and [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 These features understand your model's structure and generate YAML in the correct location.
 

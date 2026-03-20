@@ -7,7 +7,7 @@ When using the dbt Semantic Layer in a [dbt Mesh](/best-practices/how-we-mesh/me
 #### Usage example 
 For example, let's say you have a public model (`fct_orders`) that lives in the `jaffle_finance` project. As you build your semantic model, use the following syntax to ref the model:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name="models/metrics/semantic_model_name.yml">
 
 ```yaml
@@ -29,7 +29,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 <!--insert new yaml spec-->
 </VersionBlock>
 

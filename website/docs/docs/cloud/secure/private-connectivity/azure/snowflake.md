@@ -10,12 +10,12 @@ import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
-The following steps walk you through the setup of an Azure-hosted Snowflake Private Link endpoint in a <Constant name="cloud" /> multi-tenant environment.
+The following steps walk you through the setup of an Azure-hosted Snowflake Private Link endpoint in a <Constant name="dbt" /> multi-tenant environment.
 
 <CloudProviders type='Snowflake' />
 
 :::note Snowflake OAuth with Private Link
-Users connecting to Snowflake using [Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) over an Azure Private Link connection from <Constant name="cloud" /> also require access to a Private Link endpoint from their local workstation. Where possible, use [Snowflake External OAuth](/docs/cloud/manage-access/snowflake-external-oauth) instead to bypass this limitation.
+Users connecting to Snowflake using [Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) over an Azure Private Link connection from <Constant name="dbt" /> also require access to a Private Link endpoint from their local workstation. Where possible, use [Snowflake External OAuth](/docs/cloud/manage-access/snowflake-external-oauth) instead to bypass this limitation.
 
 Snowflake docs:
 >Currently, for any given Snowflake account, SSO works with only one account URL at a time: either the public account URL or the URL associated with the private connectivity service
@@ -41,6 +41,7 @@ SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 ```
 Subject: New Multi-Tenant Azure PrivateLink Request
 - Type: Snowflake
+- dbt platform account URL:
 - The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
   - Enable Internal Stage Private Link? Y/N (If Y, output must include `privatelink-internal-stage`)
@@ -64,7 +65,7 @@ SELECT SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( 'AZURE_PRIVATE_ENDPOINT_RESOU
 ```
 
 ## Configuring network policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="cloud" />. 
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
 
 ### Find the endpoint Azure Link ID
 
@@ -97,7 +98,7 @@ Open the Snowflake UI and take the following steps:
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
 
-9. In the **Network Policy** tab, edit the policy to which you want to add the rule. This could be your account-level policy or one specific to the users connecting from <Constant name="cloud" />.
+9. In the **Network Policy** tab, edit the policy to which you want to add the rule. This could be your account-level policy or one specific to the users connecting from <Constant name="dbt" />.
 
 
 10. Add the new rule to the allowed list and click **Update Network Policy**.
@@ -106,7 +107,7 @@ Open the Snowflake UI and take the following steps:
 
 ### Using SQL
 
-For quick and automated setup of network rules via SQL in Snowflake, the following commands allow you to create and configure access rules for <Constant name="cloud" />. These SQL examples demonstrate how to add a network rule and update your network policy accordingly.
+For quick and automated setup of network rules via SQL in Snowflake, the following commands allow you to create and configure access rules for <Constant name="dbt" />. These SQL examples demonstrate how to add a network rule and update your network policy accordingly.
 
 1. Create a new network rule with the following SQL:
 ```sql

@@ -25,7 +25,7 @@ Let's say you have three metrics:
 - `website_visits` and `leads`
 - and a derived metric called `leads_to_website_visit` that calculates the ratio of leads to site visits.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 On the days when there are no conversions, you can set the value for leads to zero by adding the `fill_nulls_with` parameter to the measure input on the leads metric:
 
@@ -56,7 +56,7 @@ metrics:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 On the days when there are no conversions, you can set the value for leads to zero by adding the `fill_nulls_with` parameter to the leads metric:
 
@@ -113,7 +113,7 @@ Although there are no days without visits, there are days without leads. After a
 
 ### Use join_to_timespine for derived and ratio metrics
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 To ensure you have a complete set of data for every and daily coverage for metrics calculated from other metrics, you can use `join_to_timespine` to fill null values for `derived` and `ratio` metrics. These metrics are built from other metrics (other calculations), not direct measures (raw data), requiring MetricFlow to have an extra subquery layer to render the metric. The subquery nesting is as follows:
 
@@ -126,7 +126,7 @@ Because `coalesce` isn't applied to the third, subquery layer for `derived` or `
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 To ensure you have a complete set of data for every and daily coverage for metrics calculated from other metrics, you can use `join_to_timespine` to fill null values for `derived` and `ratio` metrics. These metrics are built from other metrics (other calculations), not direct aggregations, requiring MetricFlow to have an extra subquery layer to render the metric. The subquery nesting is as follows:
 
@@ -141,7 +141,7 @@ Note you can use `join_to_timespine` with simple metrics as well if you want to 
 
 ### Fill null values for derived and ratio metrics
 
-To fill null values for derived and ratio metrics, you can link them with a time spine to ensure daily data coverage. As mentioned in [the previous section](#use-join_to_timespine-for-derived-and-ratio-metrics), this is because `derived` and `ratio` metrics take *metrics* as inputs<VersionBlock lastVersion="1.99"> instead of *measures*</VersionBlock>.
+To fill null values for derived and ratio metrics, you can link them with a time spine to ensure daily data coverage. As mentioned in [the previous section](#use-join_to_timespine-for-derived-and-ratio-metrics), this is because `derived` and `ratio` metrics take *metrics* as inputs<VersionBlock lastVersion="1.11"> instead of *measures*</VersionBlock>.
 
 For example, the following structure leaves nulls in the final results (`leads_to_website_visit` column) because `COALESCE` isn't applied at the third outer rendering layer for the final metric calculation in `derived` metrics:
 
@@ -151,9 +151,9 @@ For example, the following structure leaves nulls in the final results (`leads_t
 | 2024-01-02 | 37 | 0 | null |
 | 2024-01-03 | 79 | 8 | .1 |
 
-To display a zero value for `leads_to_website_visit` for `2024-01-02`, you would join the `leads` metric to a time spine model to ensure a value for each day. You can do this by adding `join_to_timespine` to the <VersionBlock lastVersion="1.99">`measure` parameter</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> in the `leads` metric configuration:
+To display a zero value for `leads_to_website_visit` for `2024-01-02`, you would join the `leads` metric to a time spine model to ensure a value for each day. You can do this by adding `join_to_timespine` to the <VersionBlock lastVersion="1.11">`measure` parameter</VersionBlock><VersionBlock firstVersion="1.12">simple metric</VersionBlock> in the `leads` metric configuration:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name='models/metrics/leads.yml'>
 
 ```yaml
@@ -169,7 +169,7 @@ To display a zero value for `leads_to_website_visit` for `2024-01-02`, you would
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 <File name='models/leads.yml'>
 

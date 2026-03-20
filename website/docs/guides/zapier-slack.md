@@ -14,23 +14,23 @@ level: 'Advanced'
 
 ## Introduction
 
-This guide will show you how to set up an integration between <Constant name="cloud" /> jobs and Slack using [<Constant name="cloud" /> webhooks](/docs/deploy/webhooks) and Zapier. It builds on the native [native Slack integration](/docs/deploy/job-notifications#slack-notifications) by attaching error message details of models and tests in a thread. 
+This guide will show you how to set up an integration between <Constant name="dbt" /> jobs and Slack using [<Constant name="dbt" /> webhooks](/docs/deploy/webhooks) and Zapier. It builds on the native [native Slack integration](/docs/deploy/job-notifications#slack-notifications) by attaching error message details of models and tests in a thread. 
 
 Note: Because there is not a webhook for Run Cancelled, you may want to keep the standard Slack integration installed to receive those notifications. You could also use the [alternative integration](#alternate-approach) that augments the native integration without replacing it.
 
-When a <Constant name="cloud" /> job finishes running, the integration will:
+When a <Constant name="dbt" /> job finishes running, the integration will:
 
  - Receive a webhook notification in Zapier
- - Extract the results from the <Constant name="cloud" /> admin API
+ - Extract the results from the <Constant name="dbt" /> admin API
  - Post a brief summary of the run to a Slack channel
  - Create a threaded message attached to that post which contains any reasons that the job failed
 
-![Screenshot of a message in Slack showing a summary of a <Constant name="cloud" /> run which failed](/img/guides/orchestration/webhooks/zapier-slack/slack-thread-example.png)
+![Screenshot of a message in Slack showing a summary of a <Constant name="dbt" /> run which failed](/img/guides/orchestration/webhooks/zapier-slack/slack-thread-example.png)
 
 ### Prerequisites
 
 In order to set up the integration, you should have familiarity with:
-- [<Constant name="cloud" /> webhooks](/docs/deploy/webhooks)
+- [<Constant name="dbt" /> webhooks](/docs/deploy/webhooks)
 - Zapier
 
 ## Create a new Zap in Zapier
@@ -44,12 +44,12 @@ See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subsc
 
 Remember the Webhook Secret Key for later.
 
-Once you've tested the endpoint in <Constant name="cloud" />, go back to Zapier and click **Test Trigger**. This creates a sample webhook body based on the test event <Constant name="cloud" /> sent.
+Once you've tested the endpoint in <Constant name="dbt" />, go back to Zapier and click **Test Trigger**. This creates a sample webhook body based on the test event <Constant name="dbt" /> sent.
 
 The sample body's values are hardcoded and not reflective of your project, but they give Zapier a correctly-shaped object during development. 
 
 ## Store secrets 
-In the next step, you will need the Webhook Secret Key from the prior step, and a <Constant name="cloud" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens). 
+In the next step, you will need the Webhook Secret Key from the prior step, and a <Constant name="dbt" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps). This prevents your keys from being displayed as plaintext in the Zap code. You can access them with the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
@@ -63,7 +63,7 @@ In the **Set up action** section, add two items to **Input Data**: `raw_body` an
 
 ![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
 
-In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="cloud" /> secret.
+In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="dbt" /> secret.
 
 This example code validates the authenticity of the request, extracts the run logs for the completed job from the Admin API, and then builds two messages: a summary message containing the outcome of each step and its duration, and a message for inclusion in a thread displaying any error messages extracted from the end-of-invocation logs created by <Constant name="core" />.
 
@@ -86,7 +86,7 @@ api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 signature = hmac.new(hook_secret.encode('utf-8'), raw_body.encode('utf-8'), hashlib.sha256).hexdigest()
 
 if signature != auth_header:
-  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="cloud" />.")
+  raise Exception("Calculated signature doesn't match contents of the Authorization header. This webhook may not have been sent from <Constant name="dbt" />.")
 
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 
@@ -184,7 +184,7 @@ When you're done testing your Zap, make sure that your `run_id` and `account_id`
 
 ## Alternately, use a dbt app Slack message to trigger Zapier
 
-Instead of using a webhook as your trigger, you can keep the existing <Constant name="cloud" /> app installed in your Slack workspace and use its messages being posted to your channel as the trigger. In this case, you can skip validating the webhook and only need to load the context from the thread. 
+Instead of using a webhook as your trigger, you can keep the existing <Constant name="dbt" /> app installed in your Slack workspace and use its messages being posted to your channel as the trigger. In this case, you can skip validating the webhook and only need to load the context from the thread. 
 
 ### 1. Create a new Zap in Zapier
 Use **Slack** as the initiating app, and **New Message Posted to Channel** as the Trigger. In the **Trigger** section, select the channel where your Slack alerts are being posted, and set **Trigger for Bot Messages?** to **Yes**.
@@ -197,7 +197,7 @@ Test your Zap to find an example record. You might need to load additional sampl
 Add a **Filter** step with the following conditions: 
 - **1. Text contains failed on Job**
 - **1. User Is Bot Is true**
-- **1. User Name Exactly matches <Constant name="cloud" />**
+- **1. User Name Exactly matches <Constant name="dbt" />**
 
 ![Screenshot of the Zapier UI, showing the correctly configured Filter step](/img/guides/orchestration/webhooks/zapier-slack/message-trigger-filter.png)
 
@@ -209,12 +209,12 @@ Add a **Format** step with the **Event** of **Text**, and the Action **Extract N
 Test your step and validate that the run ID has been correctly extracted.
 
 ### 4. Add a Delay
-Sometimes <Constant name="cloud" /> posts the message about the run failing before the run's artifacts are available through the API. For this reason, it's recommended to add a brief delay to increase the likelihood that the data is available. On certain plans, Zapier will automatically retry a job that fails from to a 404 error, but its standdown period is longer than is normally necessary so the context will be missing from your thread for longer. 
+Sometimes <Constant name="dbt" /> posts the message about the run failing before the run's artifacts are available through the API. For this reason, it's recommended to add a brief delay to increase the likelihood that the data is available. On certain plans, Zapier will automatically retry a job that fails from to a 404 error, but its standdown period is longer than is normally necessary so the context will be missing from your thread for longer. 
 
 A one-minute delay is generally sufficient. 
 
 ### 5. Store secrets
-In the next step, you will need either a <Constant name="cloud" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens). 
+In the next step, you will need either a <Constant name="dbt" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps). This prevents your keys from being displayed as plaintext in the Zap code. You can access them with the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
@@ -229,7 +229,7 @@ If you haven't already got one, go to [https://zapier.com/app/connections/storag
 Choose **Run Python** as the Event. Run the following code: 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
-store.set('DBT_CLOUD_SERVICE_TOKEN', 'abc123') #replace with your <Constant name="cloud" /> API token
+store.set('DBT_CLOUD_SERVICE_TOKEN', 'abc123') #replace with your <Constant name="dbt" /> API token
 ```
 Test the step. You can delete this Action when the test succeeds. The key will remain stored as long as it is accessed at least once every three months.
 
@@ -239,12 +239,12 @@ Select **Code by Zapier** as the App, and **Run Python** as the Event.
 
 This step is very similar to the one described in the main example, but you can skip a lot of the initial validation work. 
 
-In the **Action** section, add two items to **Input Data**: `run_id` and `account_id`. Map those to the `3. Output` property and your hardcoded <Constant name="cloud" /> Account ID, respectively.
+In the **Action** section, add two items to **Input Data**: `run_id` and `account_id`. Map those to the `3. Output` property and your hardcoded <Constant name="dbt" /> Account ID, respectively.
 
 ![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-slack/code-example-alternate.png)
 
 
-In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="cloud" /> secret.
+In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your <Constant name="dbt" /> secret.
 
 This example code extracts the run logs for the completed job from the Admin API, and then builds a message displaying any error messages extracted from the end-of-invocation logs created by <Constant name="core" /> (which will be posted in a thread).
 
