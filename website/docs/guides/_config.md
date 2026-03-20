@@ -26,7 +26,7 @@ categories:
       - fusion-package-compat
       - airflow-and-dbt-cloud
       - adapter-creation
-      - core-to-cloud-1
+      - core-migration-1
       - create-new-materializations
       - customize-schema-alias
       - refactoring-legacy-sql

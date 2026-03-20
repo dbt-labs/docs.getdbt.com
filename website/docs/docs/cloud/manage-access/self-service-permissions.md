@@ -5,13 +5,13 @@ sidebar_label: "Starter permissions"
 id: "self-service-permissions"
 ---
 
-Self-service Starter accounts are a quick and easy way to get <Constant name="cloud" /> up and running for a small team. 
+Self-service Starter accounts are a quick and easy way to get <Constant name="dbt" /> up and running for a small team. 
 
 For teams looking to scale and access advanced features like SSO, group management, and support for larger user bases, upgrading to an [Enterprise-tier](/docs/cloud/manage-access/enterprise-permissions) account unlocks these capabilities &mdash; if you're interested in upgrading, contact [dbt Labs today](https://www.getdbt.com/contact).
 
 ## Groups and permissions
 
-Groups determine a user's permission and there are three groups are available for the Starter plan <Constant name="cloud" /> accounts: Owner, Member, and Everyone. The first Owner user is the person who created the <Constant name="cloud" /> account. 
+Groups determine a user's permission and there are three groups are available for the Starter plan <Constant name="dbt" /> accounts: Owner, Member, and Everyone. The first Owner user is the person who created the <Constant name="dbt" /> account. 
 
 New users are added to the Member and Everyone groups when they onboard but this can be changed when the invitation is created. These groups only affect users with a [Developer license](#licenses) assigned. 
 
@@ -19,16 +19,16 @@ The group access permissions are as follows:
 
 - **Owner** &mdash; Full access to account features.
 - **Member** &mdash; Robust access to the account with restrictions on features that can alter billing or security.
-- **Everyone** &mdash; A catch-all group for all users in the account. This group does not have any permission assignments beyond the user's profile. Users must be assigned to either the Member or Owner group to work in <Constant name="cloud" />. 
+- **Everyone** &mdash; A catch-all group for all users in the account. This group does not have any permission assignments beyond the user's profile. Users must be assigned to either the Member or Owner group to work in <Constant name="dbt" />. 
 
 ## Licenses
 
-You assign licenses to every user onboarded into <Constant name="cloud" />. You only assign Developer-licensed users to the Owner and Member groups. The groups have no impact on Read-only or IT licensed users.
+You assign licenses to every user onboarded into <Constant name="dbt" />. You only assign Developer-licensed users to the Owner and Member groups. The groups have no impact on Read-only or IT licensed users.
 
 There are three license types:
 
 - **Developer** &mdash; The default license. Developer licenses don't restrict access to any features, so users with this license should be assigned to either the Owner or Member group. You're allotted up to 8 developer licenses per account.
-- **Read-Only** &mdash; Read-only access to your project, including environments <Constant name="explorer" />. Doesn't have access to account settings at all. Functions the same regardless of group assignments. You're allotted up to 5 read-only licenses per account.
+- **Read-Only** &mdash; Read-only access to your project, including environments <Constant name="catalog" />. Doesn't have access to account settings at all. Functions the same regardless of group assignments. You're allotted up to 5 read-only licenses per account.
 - **IT** &mdash; Partial access to the account settings including users, integrations, billing, and API settings. Cannot create or edit connects or access the project at all. Functions the same regardless of group assignments. You're allocated 1 seat per account.
 
 See [Seats and Users](/docs/cloud/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
@@ -47,8 +47,8 @@ Key:
 
 Permissions:
 
-* [Account-level permissions](#account-permissions-for-account-roles) &mdash; Permissions related to management of the <Constant name="cloud" /> account. For example, billing and account settings.
-* [Project-level permissions](#project-permissions-for-account-roles) &mdash; Permissions related to the projects in <Constant name="cloud" />. For example, <Constant name="explorer" /> and the <Constant name="cloud_ide" />.
+* [Account-level permissions](#account-permissions-for-account-roles) &mdash; Permissions related to management of the <Constant name="dbt" /> account. For example, billing and account settings.
+* [Project-level permissions](#project-permissions-for-account-roles) &mdash; Permissions related to the projects in <Constant name="dbt" />. For example, <Constant name="catalog" /> and the <Constant name="studio_ide" />.
 
 The following tables outline the access that users have if they are assigned a Developer license and the Owner or Member group, Read-only license, or IT license.
 
@@ -74,10 +74,10 @@ The following tables outline the access that users have if they are assigned a D
 | Connections             |   W   |    W    |    R      |      W      |
 | Credentials             |   W   |    W    |    R      |      -      |
 | Custom env. variables   |   W   |    W    |    R      |      -      |
-| Develop (<Constant name="cloud_ide" /> or <Constant name="cloud" /> CLI)| W |  W    |    -      |      -      |
+| Develop (<Constant name="studio_ide" /> or <Constant name="dbt" /> CLI)| W |  W    |    -      |      -      |
 | Environments            |   W   |    W    |    R      |      -      |
 | Jobs                    |   W   |    W    |    R      |      -      |
-| <Constant name="explorer" />            |   W   |    W    |    R      |      -      |
+| <Constant name="catalog" />            |   W   |    W    |    R      |      -      |
 | Permissions             |   W   |    R    |    -      |      -      |
 | Profile                 |   W   |    W    |    R      |      -      |
 | Projects                |   W   |    W    |    R      |      -      |

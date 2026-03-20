@@ -44,6 +44,21 @@
       "permanent": true
     },
     {
+      "source": "/guides/core-cloud-2",
+      "destination": "/guides/core-migration-2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-to-cloud-1",
+      "destination": "/guides/core-migration-1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-to-cloud-3",
+      "destination": "/guides/core-migration-3",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/secure/secure-your-tenant",
       "destination": "/docs/cloud/secure/about-network-security",
       "permanent": true
@@ -285,7 +300,7 @@
     },
     {
       "source": "/docs/fusion/connect-data-platform-fusion/connection-profiles",
-      "destination": "/docs/local/profiles.yml",
+      "destination": "/docs/local/connection-profiles",
       "permanent": true
     },
     {
@@ -1401,6 +1416,11 @@
     {
       "source": "/docs/dbt-versions/versionless-cloud",
       "destination": "/docs/dbt-versions/cloud-release-tracks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions",
       "permanent": true
     },
     {
@@ -3023,7 +3043,7 @@
     },
     {
       "source": "/docs/core-versions",
-      "destination": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions",
       "permanent": true
     },
     {

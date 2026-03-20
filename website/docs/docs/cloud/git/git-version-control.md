@@ -16,7 +16,7 @@ In a distributed version control system, every developer has a full copy of the 
 
 <Constant name="git" /> allows developers see the entire timeline of their changes, decisions, and progression of any project in one place. From the moment they access the history of a project, the developer has all the context they need to understand it and start contributing.
 
-When you develop in the command line interface (CLI) or Cloud  integrated development environment (<Constant name="cloud_ide" />), you can leverage <Constant name="git" /> directly to version control your code. To use version control, make sure you are connected to a <Constant name="git" /> repository in the CLI or Cloud <Constant name="cloud_ide" />. 
+When you develop in the command line interface (CLI) or Cloud  integrated development environment (<Constant name="studio_ide" />), you can leverage <Constant name="git" /> directly to version control your code. To use version control, make sure you are connected to a <Constant name="git" /> repository in the CLI or Cloud <Constant name="studio_ide" />. 
 
 
 ## Related docs

@@ -7,11 +7,11 @@ pagination_next: "docs/cloud/about-cloud-develop-defer"
 intro_text: "Develop dbt projects using the dbt platform, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
 ---
 
-You can develop in your browser using a <Constant name="cloud" />-powered command line interface (CLI), an integrated development environment (<Constant name="cloud_ide" />), or <Constant name="visual_editor" />.
+You can develop in your browser using a <Constant name="dbt" />-powered command line interface (CLI), an integrated development environment (<Constant name="studio_ide" />), or <Constant name="canvas" />.
 
 ## Getting started
 
-To get started, you'll need a [<Constant name="cloud" />](https://www.getdbt.com/signup) account and a developer license. For a more comprehensive guide about developing in dbt, refer to the [quickstart guides](/docs/get-started-dbt).
+To get started, you'll need a [<Constant name="dbt" />](https://www.getdbt.com/signup) account and a developer license. For a more comprehensive guide about developing in dbt, refer to the [quickstart guides](/docs/get-started-dbt).
 
 Choose the option that best fits your needs:
 
