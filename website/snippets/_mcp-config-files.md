@@ -22,9 +22,7 @@ When you use only the dbt platform, the CLI tools are automatically disabled. Yo
 }
 ```
 
-<<<<<<< update/refactor-mcp
 **Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com` are accepted. This enables OAuth authentication without requiring local dbt installation.
-=======
 </VersionBlock>
 
 <VersionBlock firstVersion="1.11">
@@ -46,7 +44,6 @@ When you use only the dbt platform, the CLI tools are automatically disabled. Yo
 </VersionBlock>
 
 **Note:** Replace `<your-dbt-host-with-custom-subdomain>` with your actual host (for example, `abc123.us1.dbt.com`). This enables OAuth authentication without requiring local dbt installation.
->>>>>>> current
 
 </TabItem>
 
