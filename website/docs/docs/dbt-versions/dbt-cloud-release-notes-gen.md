@@ -38,7 +38,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Lighter default file context:** Copilot now references your active file by path instead of automatically attaching the file contents, which reduces message size and improves chat reliability.
 
-- **Run `dbt-autofix` from Copilot and agents:** Copilot can run `dbt-autofix` commands (with confirmation) and stream the output into chat, and Studio IDE agents can run `dbt-autofix` via `run_autofix` for bulk deprecation fixes and migrations.
+- **Run `dbt-autofix` from Copilot and agents:** Copilot can run `dbt-autofix` commands (with confirmation) and stream the output into chat, and Studio IDE agents can run `dbt-autofix` using `run_autofix` for bulk deprecation fixes and migrations.
 
 ### Catalog
 
@@ -66,7 +66,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Deployment and Configuration
 
-- **Longer project descriptions:** You can now add project descriptions up to 1,024 characters.
+- **Longer project descriptions:** You can now add project descriptions of up to 1,024 characters.
 
 - **Connection links in profiles:** You can now open a connection directly from the connection profile table in a new tab.
 
