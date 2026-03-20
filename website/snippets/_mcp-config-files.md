@@ -74,9 +74,7 @@ The <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlo
 }
 ```
 
-<<<<<<< update/refactor-mcp
 **Note:** Replace `YOUR-ACCESS-URL` with your Access URL hostname (for example, `abc123.us1.dbt.com`). Both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com` are accepted. This enables OAuth authentication.
-=======
 </VersionBlock>
 
 <VersionBlock firstVersion="1.11">
