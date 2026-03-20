@@ -37,7 +37,7 @@ To build a <Constant name="semantic_layer" /> integration:
 
 The dbt Semantic Layer APIs authenticate with `environmentId`, `SERVICE_TOKEN`, and `host`.
 
-We recommend you provide users with separate input fields with these components for authentication (<Constant name="cloud" /> will surface these parameters for the user). 
+We recommend you provide users with separate input fields with these components for authentication (<Constant name="dbt" /> will surface these parameters for the user). 
 
 ### Exposing metadata to dbt Labs 
 

@@ -1,6 +1,6 @@
 ## GCP private connectivity matrix
 
-The following charts outline private connectivity options for GCP deployments of <Constant name="cloud" /> ([multi-tenant](/docs/cloud/about-cloud/tenancy)).
+The following charts outline private connectivity options for GCP deployments of <Constant name="dbt" /> ([multi-tenant](/docs/cloud/about-cloud/tenancy)).
 
 **Legend:**
 - ✅ = Available
@@ -19,7 +19,7 @@ These tables indicate whether private connectivity can be established to specifi
 
 ### Connecting the dbt platform to managed services (Egress)
 
-<Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
+<Constant name="dbt" /> can establish private connections to managed data platforms and cloud-native services.
 
 | Service | MT | Setup guide |
 |---------|-----|-------------|

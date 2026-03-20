@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "prestart": "npm run prepare",
+    "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js",
     "start": "docusaurus start",
+    "prebuild": "node scripts/fetch-mcp-readme-tools.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",

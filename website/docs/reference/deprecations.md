@@ -39,11 +39,11 @@ Summary of encountered deprecations:
 
 ### The dbt platform
 
-If you're using <Constant name="cloud" />, you can view deprecation warnings from the **Dashboard** area of your account.
+If you're using <Constant name="dbt" />, you can view deprecation warnings from the **Dashboard** area of your account.
 
     <Lightbox src="/img/docs/dbt-cloud/deprecation-warnings.png" title="The deprecation warnings listed on the dbt dashboard." />
 
-Click into a job to view more details and locate the deprecation warnings in the logs (or run the `parse` command with flags from the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />).
+Click into a job to view more details and locate the deprecation warnings in the logs (or run the `parse` command with flags from the <Constant name="studio_ide" /> or <Constant name="platform_cli" />).
 
     <Lightbox src="/img/docs/dbt-cloud/deprecation-list.png" title="Deprecation warnings listed in the logs." />
 
@@ -51,7 +51,7 @@ Click into a job to view more details and locate the deprecation warnings in the
 
 Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started. 
 
-**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="cloud" />.
+**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="dbt" />.
 
 
 ## List of Deprecation Warnings
@@ -137,6 +137,9 @@ Change `data-paths` to `seed-paths` in your `dbt_project.yml`.
 Example:
 
 <File name='CLI'>
+
+<VersionBlock lastVersion="1.10">
+
 ```bash
 23:39:18  [WARNING]: Deprecated functionality
 The `log-path` config in `dbt_project.yml` has been deprecated and will no
@@ -144,11 +147,26 @@ longer be supported in a future version of dbt-core. If you wish to write dbt
 logs to a custom directory, please use the --log-path CLI flag or DBT_LOG_PATH
 env var instead.
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+23:39:18  [WARNING]: Deprecated functionality
+The `log-path` config in `dbt_project.yml` has been deprecated and will no
+longer be supported in a future version of dbt-core. If you wish to write dbt
+logs to a custom directory, please use the --log-path CLI flag or DBT_ENGINE_LOG_PATH
+env var instead.
+```
+
+</VersionBlock>
+
 </File>
 
 #### ConfigLogPathDeprecation warning resolution
 
-Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI flag `--log-path` or environment variable `DBT_LOG_PATH`  [as documented here](/reference/global-configs/logs#log-and-target-paths)
+Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI flag `--log-path` or environment variable <VersionBlock lastVersion="1.10">`DBT_LOG_PATH`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_LOG_PATH`</VersionBlock> [as documented here](/reference/global-configs/logs#log-and-target-paths).
 
 
 ### ConfigSourcePathDeprecation
@@ -177,6 +195,9 @@ In [dbt 1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5)
 Example:
 
 <File name='CLI'>
+
+<VersionBlock lastVersion="1.10">
+
 ```bash
 23:22:01  [WARNING]: Deprecated functionality
 The `target-path` config in `dbt_project.yml` has been deprecated and will no
@@ -184,11 +205,26 @@ longer be supported in a future version of dbt-core. If you wish to write dbt
 artifacts to a custom directory, please use the --target-path CLI flag or
 DBT_TARGET_PATH env var instead.
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+23:22:01  [WARNING]: Deprecated functionality
+The `target-path` config in `dbt_project.yml` has been deprecated and will no
+longer be supported in a future version of dbt-core. If you wish to write dbt
+artifacts to a custom directory, please use the --target-path CLI flag or
+DBT_ENGINE_TARGET_PATH env var instead.
+```
+
+</VersionBlock>
+
 </File>
 
 #### ConfigTargetPathDeprecation warning resolution
 
-Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable [`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths).
+Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable <VersionBlock lastVersion="1.10">[`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths)</VersionBlock><VersionBlock firstVersion="1.11">[`DBT_ENGINE_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths)</VersionBlock>.
 
 ### CustomKeyInConfigDeprecation
 
@@ -351,7 +387,7 @@ Rename one of the conflicting resources to ensure all names are unique.
 
 This warning is raised when two identical keys exist in the `profiles.yml`. 
 
-Previously, if identical keys existed in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml), dbt would use the last configuration listed in the file. 
+Previously, if identical keys existed in the [`profiles.yml` file](/docs/local/profiles.yml), dbt would use the last configuration listed in the file. 
 
 <File name='profiles.yml'>
 

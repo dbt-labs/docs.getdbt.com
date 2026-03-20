@@ -7,22 +7,22 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Environment-level permissions give <Constant name="cloud" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment give users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
+Environment-level permissions give <Constant name="dbt" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment give users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
 
 For configuration instructions, check out the [setup page](/docs/cloud/manage-access/environment-permissions-setup).
 
 ## Current limitations
 
-Environment-level permissions give <Constant name="cloud" /> admins more flexibility to protect their environments, but it's important to understand that there are some limitations to this feature, so those admins can make informed decisions about granting access.
+Environment-level permissions give <Constant name="dbt" /> admins more flexibility to protect their environments, but it's important to understand that there are some limitations to this feature, so those admins can make informed decisions about granting access.
 
-- Environment-level permissions do not allow you to create custom roles and permissions for each resource type in <Constant name="cloud" />.
+- Environment-level permissions do not allow you to create custom roles and permissions for each resource type in <Constant name="dbt" />.
 - You can only select environment types, and can’t specify a particular environment within a project.
-- You can't select specific resources within environments. <Constant name="cloud" /> jobs and runs are environment resources.
+- You can't select specific resources within environments. <Constant name="dbt" /> jobs and runs are environment resources.
     - For example, you can't specify that a user only has access to jobs but not runs. Access to a given environment gives the user access to everything within that environment.
 
 ## Environments and roles
 
-<Constant name="cloud" /> has four different environment types per project: 
+<Constant name="dbt" /> has four different environment types per project: 
 
 - **Production** &mdash; Primary deployment environment. Only one unique Production env per project.
 - **Development** &mdash; Developer testing environment. Only one unique Development env per project.

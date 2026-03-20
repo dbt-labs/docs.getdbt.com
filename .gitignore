@@ -22,3 +22,6 @@ website/i18n/*
 
 # Local Vercel folder
 .vercel
+
+# Auto-generated at build time by scripts/fetch-mcp-readme-tools.js
+website/snippets/_mcp-tools-from-readme.md
