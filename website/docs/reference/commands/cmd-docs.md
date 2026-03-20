@@ -13,7 +13,7 @@ id: "cmd-docs"
 
 The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of the `dbt docs generate` command for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. This flag is fully Fusion native and significantly more performant.
 
-The command is responsible for generating your project's documentation website by
+The command is responsible for generating your project's documentation website by:
 
 1. Copying the website `index.html` file into the `target/` directory.
 2. Compiling the resources in your project, so that their `compiled_code` will be included in [`manifest.json`](/reference/artifacts/manifest-json).
