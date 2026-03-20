@@ -13,7 +13,15 @@ pagination_prev: null
 
 Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](/dbt-cloud/api-v3#/operations/List%20Profiles).
 
-#### Considerations
+## Environment profiles table
+
+On an environment's **Settings** page, the **Connection profiles** section lists the profiles assigned to that environment:
+
+- **Profile name**: Click a profile name to open the view/edit drawer. In view mode, there’s no separate action column, so use the profile name to open and view a profile.
+- **Connection**: Click the connection to open the [connection details](/docs/cloud/connect-data-platform/about-connections#connection-management) page in a new tab.
+- **Edit mode**: Click **Edit** to switch to edit mode. Use the **swap icon** <img src="/img/docs/deploy/swap-icon.png" alt="Swap icon" style={{ verticalAlign: 'middle', height: '1em' }} /> next to a profile row to assign a different profile.
+
+### Considerations
 - Profiles don't apply to development environments because of the unique configurations and individual credentials applied.
 - The <Constant name="semantic_layer" /> configuration isn't supported with profiles yet. 
 
@@ -39,16 +47,18 @@ To create a new profile:
 
 <Lightbox src="/img/docs/dbt-cloud/profile-from-project.png" width="60%" title="Creating a profile from project settings." />
 
-
 </TabItem>
 
 <TabItem value="From environment settings" >
 
 1. From the main menu, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
-3. Click **Settings**, then click **Edit**.
-4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
-5. Click the **Profile** dropdown and select **Create new profile**.
+3. Click **Settings**.
+4. Click **Edit** to switch to edit mode, then scroll to the **Connection profiles** section.
+5. Click the **swap icon** <img src="/img/docs/deploy/swap-icon.png" alt="Swap icon" style={{ verticalAlign: 'middle', height: '1em' }} /> next to the profile row you want to change.
+6. Select **Add new profile** from the **Profile** dropdown.
+7. Click **Create profile**.
+8. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/profile-from-environment.png" width="60%" title="Creating a profile from the environment settings." />
 
@@ -78,11 +88,14 @@ You configure profiles when you create a deployment environment. For accounts th
 
 To assign a different profile, update the deployment environment settings:
 
-1. From the main menu, click **Orchestration** and select **Environments**.
+1. From the left navigation, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
-3. Click **Settings**, then click **Edit**.
-4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
-5. Click the **Profile** dropdown and select the new profile to assign.
+3. Click **Settings**.
+4. Click **Edit** to switch to edit mode, then scroll to the **Connection profiles** section.
+5. Click the **swap icon** <img src="/img/docs/deploy/swap-icon.png" alt="Swap icon" style={{ verticalAlign: 'middle', height: '1em' }} /> next to the profile row you want to change.
+6. Select the new profile from the **Profile** dropdown.
+7. Click **Assign profile**.
+8. Click **Save**.
 
 ## Permissions and access to profiles
 
