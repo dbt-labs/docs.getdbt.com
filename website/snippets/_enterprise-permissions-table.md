@@ -1,8 +1,8 @@
 
 Permissions:
 
-* **Account-level permissions** &mdash; Permissions related to the management of the <Constant name="cloud" /> account. For example, billing and account settings.
-* **Project-level permissions** &mdash; Permissions related to the projects in <Constant name="cloud" />. For example, repos and access to the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />.
+* **Account-level permissions** &mdash; Permissions related to the management of the <Constant name="dbt" /> account. For example, billing and account settings.
+* **Project-level permissions** &mdash; Permissions related to the projects in <Constant name="dbt" />. For example, repos and access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 :::note
 
@@ -12,7 +12,7 @@ Some permissions sets have read-only access to environment settings that can be 
 
 ### Account permissions
 
-Account permission sets enable you to manage the <Constant name="cloud" /> account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** permission set is the highest level of access you can assign.
+Account permission sets enable you to manage the <Constant name="dbt" /> account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** permission set is the highest level of access you can assign.
 
 Key:
 
@@ -66,7 +66,7 @@ Key:
 
 ### Project permissions
 
-The project permission sets enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />, but may also provide some account-level permissions.
+The project permission sets enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the <Constant name="studio_ide" /> or <Constant name="platform_cli" />, but may also provide some account-level permissions.
 
 Key:
 

@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "prestart": "npm run prepare",
+    "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js",
     "start": "docusaurus start",
+    "prebuild": "node scripts/fetch-mcp-readme-tools.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
@@ -11,6 +12,7 @@
     "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^6.27.1",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/faster": "^3.7.0",
     "@docusaurus/plugin-ideal-image": "^3.7.0",

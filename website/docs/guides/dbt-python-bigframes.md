@@ -26,7 +26,7 @@ BigQuery DataFrames is an open source Python package that transpiles pandas and 
 ### Prerequisites
 
 - A [Google Cloud account](https://cloud.google.com/free) 
-- A [<Constant name="cloud" /> account](https://www.getdbt.com/signup/) 
+- A [<Constant name="dbt" /> account](https://www.getdbt.com/signup/) 
 - Basic to intermediate SQL and python.
 - Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://learn.getdbt.com).
 

@@ -6,7 +6,7 @@ sidebar_label: "Lint and format"
 tags: [IDE]
 ---
 
-Enhance your development workflow by integrating with popular linters and formatters like [SQLFluff](https://sqlfluff.com/), [sqlfmt](http://sqlfmt.com/), [Black](https://black.readthedocs.io/en/latest/), and [Prettier](https://prettier.io/). Leverage these powerful tools directly in the <Constant name="cloud_ide" /> without interrupting your development flow.
+Enhance your development workflow by integrating with popular linters and formatters like [SQLFluff](https://sqlfluff.com/), [sqlfmt](http://sqlfmt.com/), [Black](https://black.readthedocs.io/en/latest/), and [Prettier](https://prettier.io/). Leverage these powerful tools directly in the <Constant name="studio_ide" /> without interrupting your development flow.
 
 <details>
 <summary>What are linters and formatters? </summary>
@@ -14,7 +14,7 @@ Linters analyze code for errors, bugs, and style issues, while formatters fix st
 </details>
 
 
-In the <Constant name="cloud_ide" />, you can perform linting, auto-fix, and formatting on five different file types:
+In the <Constant name="studio_ide" />, you can perform linting, auto-fix, and formatting on five different file types:
  
 - SQL &mdash; [Lint](#lint) and fix with SQLFluff, and [format](#format) with sqlfmt
 - YAML, Markdown, and JSON &mdash; Format with Prettier
@@ -40,27 +40,28 @@ By default, the IDE uses sqlfmt rules to format your code, making it convenient 
 
 ## Lint
 
-With the <Constant name="cloud_ide" />, you can seamlessly use [SQLFluff](https://sqlfluff.com/), a configurable SQL linter, to warn you of complex functions, syntax, formatting, and compilation errors. This integration allows you to run checks, fix, and display any code errors directly within the Cloud <Constant name="cloud_ide" />:
+With the <Constant name="studio_ide" />, you can seamlessly use [SQLFluff](https://sqlfluff.com/), a configurable SQL linter, to warn you of complex functions, syntax, formatting, and compilation errors. This integration allows you to run checks, fix, and display any code errors directly within the Cloud <Constant name="studio_ide" />:
 
 - Works with Jinja and SQL.
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
-- Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the <Constant name="cloud_ide" />).
+- Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the <Constant name="studio_ide" />).
 - Displays a **Code Quality** tab to view code errors, provides code quality visibility and management.
 
-:::info Ephemeral models not supported
-Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
+:::info Linting considerations
+- The <Constant name="studio_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **Latest Fusion** release track. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
+- Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
 :::
 
 ### Enable linting
 
-Linting is available on all branches, including your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+Linting is available on all branches, including your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. To enable linting, open a `.sql` file and click the **Code Quality** tab.
 2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/studio-ide/ide-user-interface#console-section), below the **File editor**. 
 3. In the code quality tool config pop-up, you have the option to select **sqlfluff** or **sqlfmt**. 
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
 5. Once you've selected the **sqlfluff** radio button, go back to the console section (below the **File editor**) to select the **Lint** or **Fix** dropdown button:
-    - **Lint** button &mdash; Displays linting issues in the <Constant name="cloud_ide" /> as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving. Click **Lint** again to rerun linting.
+    - **Lint** button &mdash; Displays linting issues in the <Constant name="studio_ide" /> as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving. Click **Lint** again to rerun linting.
     - **Fix** button &mdash; Automatically fixes linting errors in the **File editor**. When fixing is complete, you'll see a message confirming the outcome. 
     - Use the **Code Quality** tab to view and debug any code errors.
 
@@ -68,13 +69,13 @@ Linting is available on all branches, including your protected primary git branc
 
 ### Lint multiple files
 
-You can lint multiple SQL files at once, depending on how you are working with dbt. The behavior differs between the <Constant name="cloud_ide" />, <Constant name="core" />, and the <Constant name="cloud_cli" />.
+You can lint multiple SQL files at once, depending on how you are working with dbt. The behavior differs between the <Constant name="studio_ide" />, <Constant name="core" />, and the <Constant name="platform_cli" />.
 
-- **<Constant name="cloud_ide" />:** By default, linting runs against all modified `.sql` files in your project on your current branch. See [Snapshot linting](#snapshot-linting) for more information.
+- **<Constant name="studio_ide" />:** By default, linting runs against all modified `.sql` files in your project on your current branch. See [Snapshot linting](#snapshot-linting) for more information.
 
 - **<Constant name="core" />:** Does not include a built-in linter. To lint SQL files in your project, use a third-party linter such as SQLFluff configured to use the [dbt templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html). You can lint multiple files by specifying one or more file or directory paths as arguments to the command.
 
-- **<Constant name="cloud_cli" />:** Supports the same linting [commands](/docs/cloud/configure-cloud-cli#lint-sql-files) as <Constant name="core" />:
+- **<Constant name="platform_cli" />:** Supports the same linting [commands](/docs/cloud/configure-cloud-cli#lint-sql-files) as <Constant name="core" />:
 
     ```
     dbt sqlfluff lint [PATHS]... [flags]
@@ -94,15 +95,15 @@ To configure your own linting rules:
 2. Name the file `.sqlfluff` (make sure you add the `.` before `sqlfluff`).
 3. [Create](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#new-project-configuration) and add your custom config code. 
 4. Save and commit your changes.
-5. Restart the <Constant name="cloud_ide" />.
+5. Restart the <Constant name="studio_ide" />.
 6. Test it out and happy linting!
 
 #### Snapshot linting
-By default, <Constant name="cloud" /> lints all modified `.sql` files in your project, including snapshots. [Snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but their SQL isn't lintable and can cause errors during linting.
+By default, <Constant name="dbt" /> lints all modified `.sql` files in your project, including snapshots. [Snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but their SQL isn't lintable and can cause errors during linting.
 
 To prevent SQLFluff from linting snapshot files, add the snapshots directory to your `.sqlfluffignore` file (for example `snapshots/`).
 
-Note that you should explicitly exclude snapshots in your `.sqlfluffignore` file since <Constant name="cloud" /> doesn't automatically ignore snapshots on the backend.
+Note that you should explicitly exclude snapshots in your `.sqlfluffignore` file since <Constant name="dbt" /> doesn't automatically ignore snapshots on the backend.
 
 ### Configure dbtonic linting rules
 
@@ -159,22 +160,22 @@ For more info on styling best practices, refer to [How we style our SQL](/best-p
 
 ## Format
 
-In the <Constant name="cloud_ide" />, you can format your code to match style guides with a click of a button. The <Constant name="cloud_ide" /> integrates with formatters like sqlfmt, Prettier, and Black to automatically format code on five different file types &mdash; SQL, YAML, Markdown, Python, and JSON:
+In the <Constant name="studio_ide" />, you can format your code to match style guides with a click of a button. The <Constant name="studio_ide" /> integrates with formatters like sqlfmt, Prettier, and Black to automatically format code on five different file types &mdash; SQL, YAML, Markdown, Python, and JSON:
 
 - SQL &mdash; Format with [sqlfmt](http://sqlfmt.com/), which provides one way to format your dbt SQL and Jinja.
-    - **Note**: Custom sqlfmt configuration in the <Constant name="cloud_ide" /> is not supported.
+    - **Note**: Custom sqlfmt configuration in the <Constant name="studio_ide" /> is not supported.
 - YAML, Markdown, and JSON &mdash; Format with [Prettier](https://prettier.io/). 
 - Python &mdash; Format with [Black](https://black.readthedocs.io/en/latest/).
 
-The Cloud <Constant name="cloud_ide" /> formatting integrations take care of manual tasks like code formatting, enabling you to focus on creating quality data models, collaborating, and driving impactful results.
+The Cloud <Constant name="studio_ide" /> formatting integrations take care of manual tasks like code formatting, enabling you to focus on creating quality data models, collaborating, and driving impactful results.
 
 ### Format SQL
 
-To format your SQL code, <Constant name="cloud" /> integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja.
+To format your SQL code, <Constant name="dbt" /> integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja.
 
-By default, the <Constant name="cloud_ide" /> uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named .sqlfluff in the root directory of your dbt project, the <Constant name="cloud_ide" /> will default to SQLFluff rules instead.
+By default, the <Constant name="studio_ide" /> uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named .sqlfluff in the root directory of your dbt project, the <Constant name="studio_ide" /> will default to SQLFluff rules instead.
 
-Formatting is available on all branches, including your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+Formatting is available on all branches, including your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. Open a `.sql` file and click on the **Code Quality** tab.
 2. Click on the **`</> Config`** button on the right side of the console.
@@ -187,7 +188,7 @@ Formatting is available on all branches, including your protected primary git br
 
 ### Format YAML, Markdown, JSON
 
-To format your YAML, Markdown, or JSON code, <Constant name="cloud" /> integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter. Formatting is available on all branches, including your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+To format your YAML, Markdown, or JSON code, <Constant name="dbt" /> integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter. Formatting is available on all branches, including your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. Open a `.yml`, `.md`, or `.json` file.
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
@@ -201,7 +202,7 @@ For more info on the order of precedence and how to configure files, refer to [P
 
 ### Format Python
 
-To format your Python code, <Constant name="cloud" /> integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter. Formatting is available on all branches, including your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+To format your Python code, <Constant name="dbt" /> integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter. Formatting is available on all branches, including your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. Open a `.py` file.
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
@@ -241,7 +242,7 @@ Currently, running SQLFluff commands from the terminal isn't supported.
 </DetailsToggle>
 
 <DetailsToggle alt_header="What are some considerations when using dbt linting?">
-Currently, the <Constant name="cloud_ide" /> can lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large, taking more than 60 seconds for the <Constant name="cloud" /> backend to process, you will see an 'Unable to complete linting this file' error. 
+Currently, the <Constant name="studio_ide" /> can lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large, taking more than 60 seconds for the <Constant name="dbt" /> backend to process, you will see an 'Unable to complete linting this file' error. 
 
 To avoid this, break up your model into smaller models (files) so that they are less complex to lint or fix. Note that linting is simpler than fixing so there may be cases where a file can be linted but not fixed. 
 

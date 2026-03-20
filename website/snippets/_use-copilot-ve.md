@@ -1,11 +1,11 @@
-To begin building models with natural language prompts in the <Constant name="visual_editor" />:
+To begin building models with natural language prompts in the <Constant name="canvas" />:
 
-1. Click on the **dbt Copilot** icon in <Constant name="visual_editor" /> menu.
+1. Click on the **dbt Copilot** icon in <Constant name="canvas" /> menu.
 2. In the dbt Copilot prompt box, enter your prompt in natural language for <Constant name="copilot" /> to build the model(s) you want. You can also reference existing models using the `@` symbol. For example, to build a model that calculates the total price of orders, you can enter `@orders` in the prompt and it'll pull in and reference the `orders` model.
 3. Click **Generate** and dbt Copilot generates a summary of the model(s) you want to build. 
    - To start over, click on the **+** icon. To close the prompt box, click **X**.
    <Lightbox src="/img/docs/dbt-cloud/copilot-generate.jpg" width="40%" title="Enter a prompt in the dbt Copilot prompt box to build models using natural language" />
-4. Click **Apply** to generate the model(s) in the <Constant name="visual_editor" />.
+4. Click **Apply** to generate the model(s) in the <Constant name="canvas" />.
 5. dbt Copilot displays a visual "diff" view to help you compare the proposed changes with your existing code. Review the diff view in the canvas to see the generated operators built by<Constant name="copilot" />:
    - White: Located in the top of the canvas and means existing set up or blank canvas that will be removed or replaced by the suggested changes.
    - Green: Located in the bottom of the canvas and means new code that will be added if you accept the suggestion. <br / >

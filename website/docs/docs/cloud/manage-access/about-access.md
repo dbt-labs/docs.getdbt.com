@@ -21,13 +21,13 @@ For model-specific access and their availability across projects, refer to [Mode
 
 # About user access
 
-You can regulate access to <Constant name="cloud" /> by various measures, including licenses, groups, permissions, and role-based access control (RBAC). To understand the possible approaches to user access to <Constant name="cloud" /> features and functionality, you should first know how we approach users and groups.
+You can regulate access to <Constant name="dbt" /> by various measures, including licenses, groups, permissions, and role-based access control (RBAC). To understand the possible approaches to user access to <Constant name="dbt" /> features and functionality, you should first know how we approach users and groups.
 
 ## Users
 
-Individual users in <Constant name="cloud" /> can be people you [manually invite](/docs/cloud/manage-access/invite-users) or grant access via an external identity provider (IdP), such as Microsoft Entra ID, Okta, or Google Workspace.
+Individual users in <Constant name="dbt" /> can be people you [manually invite](/docs/cloud/manage-access/invite-users) or grant access via an external identity provider (IdP), such as Microsoft Entra ID, Okta, or Google Workspace.
 
-In either scenario, when you add a user to <Constant name="cloud" />, they are assigned a [license](#licenses). You assign licenses at the individual user or group levels. When you manually invite a user, you will assign the license in the invitation window.
+In either scenario, when you add a user to <Constant name="dbt" />, they are assigned a [license](#licenses). You assign licenses at the individual user or group levels. When you manually invite a user, you will assign the license in the invitation window.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/license-dropdown.png" width="40%" title="Example of the license dropdown in the user invitation window." />
 
@@ -48,19 +48,19 @@ User passwords must meet the following criteria:
 
 ## Groups
 
-Groups in <Constant name="cloud" /> serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignments of permissions easier. 
+Groups in <Constant name="dbt" /> serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignments of permissions easier. 
 
 The permissions available depends on whether you're on an [Enterprise-tier](/docs/cloud/manage-access/enterprise-permissions) or [self-service Starter](/docs/cloud/manage-access/self-service-permissions) plan.
 
-- Admins use groups in <Constant name="cloud" /> to assign [licenses](#licenses) and [permissions](#permissions). 
+- Admins use groups in <Constant name="dbt" /> to assign [licenses](#licenses) and [permissions](#permissions). 
 - The permissions are more granular than licenses, and you only assign them at the group level; _you can’t assign permissions at the user level._
-- Every user in <Constant name="cloud" /> must be assigned to at least one group.
+- Every user in <Constant name="dbt" /> must be assigned to at least one group.
 
-There are three default groups available as soon as you create your <Constant name="cloud" /> account (the person who created the account is added to all three automatically):
+There are three default groups available as soon as you create your <Constant name="dbt" /> account (the person who created the account is added to all three automatically):
 
 - **Owner:** This group is for individuals responsible for the entire account and will give them elevated account admin privileges. You cannot change the permissions. 
-- **Member:** This group is for the general members of your organization. Default permissions are broad, restricting only access to features that can alter billing or security. By default, <Constant name="cloud" /> adds new users to this group.
-- **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, <Constant name="cloud" /> adds new users to this group.
+- **Member:** This group is for the general members of your organization. Default permissions are broad, restricting only access to features that can alter billing or security. By default, <Constant name="dbt" /> adds new users to this group.
+- **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, <Constant name="dbt" /> adds new users to this group.
 
 :::note default group permissions
 
@@ -75,7 +75,7 @@ Default groups are automatically provisioned for all accounts to simplify the in
 ### Create new groups <Lifecycle status="managed,managed_plus" />
 
 - Create new groups from the **Groups & Licenses** section of the **Account settings**.
-- If you use an external IdP for SSO, you can sync those SSO groups to <Constant name="cloud" /> from the **Group details** pane when creating or editing existing groups.
+- If you use an external IdP for SSO, you can sync those SSO groups to <Constant name="dbt" /> from the **Group details** pane when creating or editing existing groups.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/new-group.png" width="60%" title="Example the new group pane in the account settings." />
 
@@ -109,11 +109,11 @@ Only use **Environment write access** settings when you intend to grant users th
 
 ### SSO mappings <Lifecycle status="managed,managed_plus" />
 
-SSO Mappings connect an identity provider (IdP) group membership to a <Constant name="cloud" /> group. When users log into <Constant name="cloud" /> via a supported identity provider, their IdP group memberships sync with <Constant name="cloud" />. Upon logging in successfully, the user's group memberships (and permissions) will automatically adjust within <Constant name="cloud" />.
+SSO Mappings connect an identity provider (IdP) group membership to a <Constant name="dbt" /> group. When users log into <Constant name="dbt" /> via a supported identity provider, their IdP group memberships sync with <Constant name="dbt" />. Upon logging in successfully, the user's group memberships (and permissions) will automatically adjust within <Constant name="dbt" />.
 
 :::tip Creating SSO Mappings
 
-While <Constant name="cloud" /> supports mapping multiple IdP groups to a single <Constant name="cloud" /> group, we recommend using a 1:1 mapping to make administration as simple as possible. Use the same names for your <Constant name="cloud" /> groups and your IdP groups.
+While <Constant name="dbt" /> supports mapping multiple IdP groups to a single <Constant name="dbt" /> group, we recommend using a 1:1 mapping to make administration as simple as possible. Use the same names for your <Constant name="dbt" /> groups and your IdP groups.
 
 :::
 
@@ -126,15 +126,15 @@ Create an SSO mapping in the group view:
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-mapping.png" width="60%" title="Example of an SSO group mapped to a dbt group." />
 
-Refer to [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to <Constant name="cloud" /> groups.
+Refer to [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to <Constant name="dbt" /> groups.
 
 ## Grant access
 
-<Constant name="cloud" /> users have both a license (assigned to an individual user or by group membership) and permissions (by group membership only) that determine what actions they can take. Licenses are account-wide, and permissions provide more granular access or restrictions to specific features.
+<Constant name="dbt" /> users have both a license (assigned to an individual user or by group membership) and permissions (by group membership only) that determine what actions they can take. Licenses are account-wide, and permissions provide more granular access or restrictions to specific features.
 
 ### Licenses
 
-Every user in <Constant name="cloud" /> will have a license assigned. Licenses consume "seats" which impact how your account is [billed](/docs/cloud/billing), depending on your [service plan](https://www.getdbt.com/pricing).
+Every user in <Constant name="dbt" /> will have a license assigned. Licenses consume "seats" which impact how your account is [billed](/docs/cloud/billing), depending on your [service plan](https://www.getdbt.com/pricing).
 
 <LicenseTypes/>
 
@@ -148,7 +148,7 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 ### Permissions
 
-Permissions determine what a developer-licensed user can do in your <Constant name="cloud" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
+Permissions determine what a developer-licensed user can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
 
 The permissions available depends on whether you're on an [Enterprise, Enterprise+](/docs/cloud/manage-access/enterprise-permissions), or [self-service Starter](/docs/cloud/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
 
@@ -160,15 +160,15 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 
 ## Role-based access control <Lifecycle status="managed,managed_plus" />
 
-Role-based access control (RBAC) allows you to grant users access to features and functionality based on their group membership. With this method, you can grant users varying access levels to different projects and environments. You can take access and security to the next level by integrating <Constant name="cloud" /> with a third-party identity provider (IdP) to grant users access when they authenticate with your SSO or OAuth service.
+Role-based access control (RBAC) allows you to grant users access to features and functionality based on their group membership. With this method, you can grant users varying access levels to different projects and environments. You can take access and security to the next level by integrating <Constant name="dbt" /> with a third-party identity provider (IdP) to grant users access when they authenticate with your SSO or OAuth service.
 
 There are a few things you need to know before you configure RBAC for SSO users:
 - New SSO users join any groups with the **Add all new users by default** option enabled. By default, the `Everyone` and `Member` groups have this option enabled. Disable this option across all groups for the best RBAC experience.
 - You must have the appropriate SSO groups configured in the group details SSO section. If the SSO group name does not match _exactly_, users will not be placed in the group correctly. 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-window-details.png" width="60%" title="The Group details SSO section with a group configured." />
-- dbt Labs recommends that your <Constant name="cloud" /> group names match the IdP group names.
+- dbt Labs recommends that your <Constant name="dbt" /> group names match the IdP group names.
 
-Let's say you have a new employee being onboarded into your organization using [Okta](/docs/cloud/manage-access/set-up-sso-okta) as the IdP and <Constant name="cloud" /> groups with SSO mappings. In this scenario, users are working on `The Big Project` and a new analyst named `Euclid Ean` is joining the group.
+Let's say you have a new employee being onboarded into your organization using [Okta](/docs/cloud/manage-access/set-up-sso-okta) as the IdP and <Constant name="dbt" /> groups with SSO mappings. In this scenario, users are working on `The Big Project` and a new analyst named `Euclid Ean` is joining the group.
 
 Check out the following example configurations for an idea of how you can implement RBAC for your organization (these examples assume you have already configured [SSO](/docs/cloud/manage-access/sso-overview)):
 
@@ -186,7 +186,7 @@ Configure the group attribute statements the `dbt` application in Okta. The grou
 
 <Expandable alt_header="dbt configuration"> 
 
-You and your <Constant name="cloud" /> admin team configure the groups in your account's settings: 
+You and your <Constant name="dbt" /> admin team configure the groups in your account's settings: 
 1. Navigate to the **Account settings** and click **Groups & Licenses** on the left-side menu. 
 2. Click **Create group** or select an existing group and click **Edit**.
 3. Enter the group name in the **SSO** field.
@@ -202,7 +202,7 @@ Euclid is limited to the `Analyst` role, the `Jaffle Shop` project, and the `Dev
 
 Euclid takes the following steps to log in: 
 
-1. Access the SSO URL or the <Constant name="cloud" /> app in their Okta account. The URL can be found on the **SSO & SCIM** configuration page in the **Account settings**. 
+1. Access the SSO URL or the <Constant name="dbt" /> app in their Okta account. The URL can be found on the **SSO & SCIM** configuration page in the **Account settings**. 
 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login-url.png" width="60%" title="The SSO login URL in the account settings." />
 
@@ -234,17 +234,17 @@ The `Production` environment is visible, but it is `read-only`, and they have fu
 
 </Expandable>
 
-With RBAC configured, you now have granular control over user access to features across <Constant name="cloud" />.
+With RBAC configured, you now have granular control over user access to features across <Constant name="dbt" />.
 
 ### SCIM license management
 
-As part of the SSO configuration for supported IdPs, you can also configure the [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) settings to add a layer of security to your user lifecycle management. As part of this process, you can integrate user license distribution into the user provisioning process through your IdP. See the [SCIM license management instructions](/docs/cloud/manage-access/scim#manage-user-licenses-with-scim) for more information.
+As part of the SSO configuration for supported IdPs, you can also configure the [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) settings to add a layer of security to your user lifecycle management. As part of this process, you can integrate user license distribution into the user provisioning process through your IdP. See the [SCIM license management instructions](/docs/cloud/manage-access/scim-manage-user-licenses) for more information.
 
 ## FAQs
 
 <Expandable alt_header="When are IdP group memberships updated for SSO Mapped groups?">
 
-Group memberships are updated whenever a user logs into <Constant name="cloud" /> via a supported SSO provider. If you've changed group memberships in your identity provider or <Constant name="cloud" />, ask your users to log back into <Constant name="cloud" /> to synchronize these group memberships.
+Group memberships are updated whenever a user logs into <Constant name="dbt" /> via a supported SSO provider. If you've changed group memberships in your identity provider or <Constant name="dbt" />, ask your users to log back into <Constant name="dbt" /> to synchronize these group memberships.
 
 </Expandable>
 
@@ -268,7 +268,7 @@ Don't try to edit your own user, as this isn't allowed for security reasons. You
 
 <Expandable alt_header="How do I add or remove users?">
 
-Each <Constant name="cloud" /> plan has a base number of Developer and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+Each <Constant name="dbt" /> plan has a base number of Developer and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
   - If you're on an Enterprise or Enterprise+ plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
   - If you're on a Starter plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
 

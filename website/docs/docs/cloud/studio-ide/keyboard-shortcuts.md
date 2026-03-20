@@ -5,9 +5,9 @@ sidebar_label: "Keyboard shortcuts"
 ---
 
 
-The <Constant name="cloud_ide" /> provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. 
+The <Constant name="studio_ide" /> provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. 
 
-Use this <Constant name="cloud_ide" />  page to help you quickly reference some common operations.
+Use this <Constant name="studio_ide" />  page to help you quickly reference some common operations.
 
 | Shortcut description | macOS | Windows |
 |--------|----------------|------------------|
@@ -18,12 +18,12 @@ Use this <Constant name="cloud_ide" />  page to help you quickly reference some 
 | Compile code. | Command-Shift-Enter | Control-Shift-Enter |
 | Reveal a list of dbt functions in the editor. | Enter two underscores `__` | Enter two underscores  `__` |
 | Open the command palette to invoke dbt commands and actions.  | Command-P / Command-Shift-P | Control-P / Control-Shift-P |
-| Multi-edit in the editor by selecting multiple lines. | Option-Click / Shift-Option-Command / Shift-Option-Click  | Hold Alt and Click |
+| Multi-edit in the editor by selecting multiple lines. | Option-Click / Shift-Option-Command / Shift-Option-Click  | Alt-Click / Shift-Alt-Click |
 | Open the [**Invocation History Drawer**](/docs/cloud/studio-ide/ide-user-interface#invocation-history) located at the bottom of the IDE.  | Control-backtick (or Control + `)  | Control-backtick (or Ctrl + `) | 
 | Add a block comment to the selected code. SQL files will use the Jinja syntax `({# #})` rather than the SQL one `(/* */)`. | Shift-Option-A | Shift-Alt-A |
 
 ## Related docs
 
 - [Quickstart guide](/guides)
-- [About <Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features)
+- [About <Constant name="dbt" />](/docs/cloud/about-cloud/dbt-cloud-features)
 - [Develop in the Cloud](/docs/cloud/studio-ide/develop-in-studio)

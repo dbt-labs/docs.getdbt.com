@@ -70,7 +70,7 @@ There are three primary functions of the dbt MCP server today.
 
 ❓Do I need to be a dbt Cloud customer to use the dbt MCP server?
 
-- No - there is functionality for both <Constant name="cloud" /> and dbt Core users included in the MCP. Over time, Cloud-specific services will be built into the MCP server where they provide differentiated value.
+- No - there is functionality for both <Constant name="dbt" /> and dbt Core users included in the MCP. Over time, Cloud-specific services will be built into the MCP server where they provide differentiated value.
 
 Let’s walk through examples of these and why each of them can be helpful in human driven and agent driven use cases:
 
