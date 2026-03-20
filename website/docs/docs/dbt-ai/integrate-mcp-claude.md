@@ -27,8 +27,9 @@ To configure Claude Desktop to use the dbt MCP server:
 5. Ask Claude a data-related question and see dbt MCP in action!
 
 ### Advanced configuration with Claude Desktop
+Use advanced configuration when you want to define the dbt MCP server yourself in Claude’s configuration file: the same JSON where Claude stores every MCP server, under `mcpServers`, with fields such as `command`, `args`, and `env`. See the [MCP install pattern](https://modelcontextprotocol.io/quickstart/user#installing-the-filesystem-server) for more information.
 
-To add advanced configurations:
+To open the configuration file and add or replace the dbt MCP server entry:
 1. Go to the Claude settings and select **Settings…**.
 2. In the Settings window, navigate to the **Developer** tab in the left sidebar. This section contains options for configuring MCP servers and other developer features.
 3. Click the **Edit Config** button and open the configuration file with a text editor.
