@@ -34,7 +34,7 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ### Compiled SQL for snapshots <Lifecycle status="beta" />
 
-`dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, and analyses. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file no longer share one compiled path.
+`dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path.
 
 For more information, refer to [About dbt compile](/reference/commands/compile).
 
