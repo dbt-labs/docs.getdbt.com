@@ -157,6 +157,14 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
     Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
     ```
 
+    <VersionBlock firstVersion="1.12">
+    :::tip Compiled SQL for snapshots<Lifecycle status="beta" />
+    Starting <Constant name="core" /> v1.12, you can inspect the SQL generated for this snapshot by running [`dbt compile`](/reference/commands/compile) or `dbt compile --select orders_snapshot`. 
+
+    Open the compiled SQL in `target/compiled/` to inspect or debug the generated queries. Each snapshot is compiled into its own SQL file, even if multiple snapshots are defined in the same source file.
+    :::
+    </VersionBlock>
+
 5. Inspect the results by selecting from the table dbt created (`analytics.snapshots.orders_snapshot`). After the first run, you should see the results of your query, plus the [snapshot meta fields](#snapshot-meta-fields) as described later on.
 
 6. Run the `dbt snapshot` command again and inspect the results. If any records have been updated, the snapshot should reflect this.

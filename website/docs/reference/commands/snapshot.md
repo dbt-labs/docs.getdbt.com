@@ -24,3 +24,11 @@ optional arguments:
   --exclude EXCLUDE [EXCLUDE ...]
                         Specify the snapshots to exclude in the run.
 ```
+
+<VersionBlock firstVersion="1.12">
+
+## Compiled SQL for snapshots <Lifecycle status="beta" />
+
+You can use [`dbt compile`](/reference/commands/compile) to generate compiled SQL for snapshots without executing them. dbt writes compiled snapshot SQL to `target/compiled/` (one file per snapshot).
+
+</VersionBlock>
