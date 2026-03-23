@@ -16,7 +16,7 @@ The `--print / --no-print` and `--printer-width` CLI flags are not supported in 
 
 ### Suppress `print()` messages in stdout
 
-By default, dbt includes [`print()`](/reference/dbt-jinja-functions/print) messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
+By default, dbt includes [`print()`](/reference/dbt-jinja-functions/print) messages in standard out (stdout). You can use the <VersionBlock lastVersion="1.10">`DBT_PRINT`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PRINT`</VersionBlock> environment variable to prevent these messages from showing up in stdout.
 
 :::warning Syntax deprecation
 

@@ -145,7 +145,7 @@ Runtime Error
 
 ## Disabling version checks
 
-To suppress failures to to incompatible dbt versions, supply the `--no-version-check` flag to `dbt run`.
+To suppress failures to incompatible dbt versions, supply the `--no-version-check` flag to `dbt run`.
 ```
 $ dbt run --no-version-check
 Running with dbt=1.5.0
