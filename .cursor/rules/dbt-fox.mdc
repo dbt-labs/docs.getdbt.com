@@ -1,0 +1,6 @@
+---
+description: Use when the user says "dbt docs fox" or asks to test, validate, or check whether a dbt feature works as documented.
+alwaysApply: false
+---
+
+Follow the instructions in `.claude/skills/testing-features/SKILL.md` to run the test.

@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+# dbt-docs-fox — AI-powered dbt feature testing for the docs team
+# First time setup: bash dbt-docs-fox install
+# Usage: dbt docs fox <your request in plain English>
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SKILL_FILE="$SCRIPT_DIR/.claude/skills/testing-features/SKILL.md"
+CONFIG_FILE="$HOME/.dbt-docs-fox/config"
+
+# ── install ──────────────────────────────────────────────────────────────────
+
+do_install() {
+  echo ""
+  echo "  Installing dbt docs fox..."
+  echo ""
+
+  # 1. Make this script executable and symlink to PATH
+  chmod +x "$SCRIPT_DIR/dbt-docs-fox"
+  LOCAL_BIN="$HOME/.local/bin"
+  mkdir -p "$LOCAL_BIN"
+  ln -sf "$SCRIPT_DIR/dbt-docs-fox" "$LOCAL_BIN/dbt-docs-fox"
+  echo "  ✓ dbt-docs-fox linked to $LOCAL_BIN"
+
+  # 2. Install Claude skills to ~/.claude/skills/
+  SKILLS_DIR="$SCRIPT_DIR/.claude/skills"
+  TARGET_DIR="$HOME/.claude/skills"
+  INSTALLED=0
+  for skill_dir in "$SKILLS_DIR"/*/; do
+    [[ ! -f "$skill_dir/SKILL.md" ]] && continue
+    skill_name="$(basename "$skill_dir")"
+    dest="$TARGET_DIR/$skill_name"
+    mkdir -p "$dest"
+    cp "$skill_dir/SKILL.md" "$dest/SKILL.md"
+    echo "  ✓ Installed Claude skill: $skill_name"
+    ((INSTALLED++))
+  done
+  [[ $INSTALLED -eq 0 ]] && echo "  ✓ Claude skills already up to date"
+
+  # 3. Configure Notion MCP for Claude Code
+  CLAUDE_SETTINGS="$HOME/.claude/settings.json"
+  if ! grep -q "mcp.notion.com" "$CLAUDE_SETTINGS" 2>/dev/null; then
+    mkdir -p "$(dirname "$CLAUDE_SETTINGS")"
+    if [[ -f "$CLAUDE_SETTINGS" ]] && [[ -s "$CLAUDE_SETTINGS" ]]; then
+      python3 -c "
+import json
+path = '$CLAUDE_SETTINGS'
+d = json.load(open(path))
+d.setdefault('mcpServers', {})['Notion'] = {'url': 'https://mcp.notion.com/mcp', 'headers': {}}
+json.dump(d, open(path, 'w'), indent=2)
+" 2>/dev/null
+    else
+      cat >"$CLAUDE_SETTINGS" <<'EOJSON'
+{
+  "mcpServers": {
+    "Notion": {
+      "url": "https://mcp.notion.com/mcp",
+      "headers": {}
+    }
+  }
+}
+EOJSON
+    fi
+    echo "  ✓ Notion MCP configured (first use opens browser to authenticate)"
+  else
+    echo "  ✓ Notion MCP already configured"
+  fi
+
+  echo ""
+  echo "  All done! Open a new terminal tab, then try:"
+  echo ""
+  echo "    dbt-docs-fox --help"
+  echo ""
+  echo "  Or in any AI tool (Claude, Cursor, etc.):"
+  echo ""
+  echo "    dbt docs fox test if snapshots work on snowflake"
+  echo ""
+  echo "  Restart Claude Code for skills to take effect."
+  echo ""
+}
+
+# ── helpers ───────────────────────────────────────────────────────────────────
+
+# Load persisted config if it exists
+if [[ -f "$CONFIG_FILE" ]]; then
+  # shellcheck source=/dev/null
+  source "$CONFIG_FILE"
+fi
+
+print_help() {
+  cat <<EOF
+dbt docs fox — AI-powered dbt feature testing
+
+Usage:
+  bash dbt-docs-fox install             First-time setup
+  dbt-docs-fox <request>                Test a feature
+  dbt-docs-fox --help                   Show this help
+  dbt-docs-fox --config                 Show saved config
+  dbt-docs-fox --config-reset           Clear saved config
+
+Examples:
+  dbt-docs-fox test if python udfs work on fusion and snowflake
+  dbt-docs-fox validate code examples in docs/build/snapshots.md
+  dbt-docs-fox check if incremental models work with merge strategy on bigquery
+
+Or in any AI chat / agent UI:
+  "dbt docs fox test if python models work on bigquery"
+
+The AI will:
+  1. Search the local docs codebase (website/docs/, website/snippets/)
+  2. Use your saved defaults for adapter, schema, database (or ask if not set)
+  3. Scaffold a minimal test project and run dbt commands
+  4. Validate results in your warehouse
+  5. Write a testing summary next to your draft doc and post it to Notion
+
+Saved config: $CONFIG_FILE
+EOF
+}
+
+save_config() {
+  mkdir -p "$(dirname "$CONFIG_FILE")"
+  cat >"$CONFIG_FILE" <<EOF
+# dbt-docs-fox local config — not tracked by git
+# Edit directly or run: dbt-docs-fox --config-reset
+DBT_FOX_ADAPTER="${DBT_FOX_ADAPTER:-}"
+DBT_FOX_DATABASE="${DBT_FOX_DATABASE:-}"
+DBT_FOX_SCHEMA="${DBT_FOX_SCHEMA:-}"
+DBT_FOX_PROFILE="${DBT_FOX_PROFILE:-}"
+EOF
+  echo "  ✓ Config saved to $CONFIG_FILE"
+}
+
+prompt_for_config() {
+  echo ""
+  echo "  Setting up your defaults (saved locally, never committed):"
+  echo ""
+  read -r -p "  Adapter (snowflake/bigquery/postgres/etc.) [${DBT_FOX_ADAPTER:-}]: " input
+  DBT_FOX_ADAPTER="${input:-${DBT_FOX_ADAPTER:-}}"
+  read -r -p "  Database [${DBT_FOX_DATABASE:-}]: " input
+  DBT_FOX_DATABASE="${input:-${DBT_FOX_DATABASE:-}}"
+  read -r -p "  Schema [${DBT_FOX_SCHEMA:-}]: " input
+  DBT_FOX_SCHEMA="${input:-${DBT_FOX_SCHEMA:-}}"
+  read -r -p "  dbt profile name [${DBT_FOX_PROFILE:-}]: " input
+  DBT_FOX_PROFILE="${input:-${DBT_FOX_PROFILE:-}}"
+  save_config
+  echo ""
+}
+
+# ── subcommands ───────────────────────────────────────────────────────────────
+
+case "${1:-}" in
+  install)       do_install; exit 0 ;;
+  --config)
+    [[ -f "$CONFIG_FILE" ]] && cat "$CONFIG_FILE" || echo "No saved config. Run a test to set it up."
+    exit 0 ;;
+  --config-reset)
+    rm -f "$CONFIG_FILE"
+    echo "Config cleared. You'll be prompted on the next run."
+    exit 0 ;;
+  --help|-h|"")  print_help; exit 0 ;;
+esac
+
+# ── run ───────────────────────────────────────────────────────────────────────
+
+[[ -z "${DBT_FOX_ADAPTER:-}" ]] && prompt_for_config
+
+PROMPT="$*"
+CONFIG_CONTEXT=""
+[[ -n "${DBT_FOX_ADAPTER:-}" ]] && CONFIG_CONTEXT+="Adapter: $DBT_FOX_ADAPTER"$'\n'
+[[ -n "${DBT_FOX_DATABASE:-}" ]] && CONFIG_CONTEXT+="Database: $DBT_FOX_DATABASE"$'\n'
+[[ -n "${DBT_FOX_SCHEMA:-}" ]]   && CONFIG_CONTEXT+="Schema: $DBT_FOX_SCHEMA"$'\n'
+[[ -n "${DBT_FOX_PROFILE:-}" ]]  && CONFIG_CONTEXT+="Profile: $DBT_FOX_PROFILE"$'\n'
+
+AI_CMD=""
+command -v claude &>/dev/null && AI_CMD="claude"
+
+if [[ -n "$AI_CMD" ]] && [[ -f "$SKILL_FILE" ]]; then
+  printf '%s\n\n---\nUser defaults (pre-filled, confirm before use):\n%s\nUser request: %s\n' \
+    "$(cat "$SKILL_FILE")" "$CONFIG_CONTEXT" "$PROMPT" | "$AI_CMD" --print
+else
+  cat <<EOF
+
+No AI CLI detected. Open your AI assistant and say:
+  "dbt docs fox $PROMPT"
+
+Your saved config: $CONFIG_FILE
+AI instructions:   $SKILL_FILE
+
+Or install the Claude CLI and rerun: dbt-docs-fox $PROMPT
+EOF
+fi
