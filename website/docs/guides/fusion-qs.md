@@ -99,7 +99,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 
 ### Verify the <Constant name="fusion_engine" /> installation
 
-1. After installation, open a new command-line window to confirm that <Constant name="fusion" /> was installed correctly by checking the version.
+1. After installation, open a new command-line window to confirm that <Constant name="fusion" /> installed correctly by checking the version.
     ```bash
     dbt --version
     ```
