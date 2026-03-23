@@ -1,5 +1,5 @@
 ---
-title: " About env_var function"
+title: "About env_var function"
 sidebar_label: "env_var"
 id: "env_var"
 description: "Incorporate environment variables using `env_var` function."
@@ -9,7 +9,7 @@ import Envvarsecrets from '/snippets/_env-var-secrets.md';
 
 <Envvarsecrets />
 
-If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
+If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [deployment credentials](/docs/deploy/deploy-environments#deployment-credentials) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
 
 ### Converting env_vars
 
@@ -100,5 +100,10 @@ select 1 as id
 
 ### dbt platform usage
 
-If you are using <Constant name="dbt" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="dbt" /> must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`). Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="dbt" />'s UI.
+If you're using <Constant name="dbt_platform" />, environment variables must be:
+- Prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`)
+- Uppercase
+- Case-sensitive
+
+When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must exactly match the variable defined in the <Constant name="dbt_platform" /> user interface.
 
