@@ -23,7 +23,7 @@ import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability
 
 ## Latest spec (model YAML)
 
-In the latest YAML spec, you can define metrics on a model that has semantic modeling enabled. Add a top-level *metrics* list alongside *semantic_model* and *columns* (metrics are not nested under semantic_model). Type-specific settings are top-level keys on each metric.
+In the latest YAML spec, you can define metrics on a model that has semantic modeling enabled. Add a top-level `metrics` list alongside `semantic_model` and `columns` (metrics are not nested under `semantic_model`). Type-specific settings are top-level keys on each metric.
 
 ### Available metric properties (latest spec)
 
