@@ -9,7 +9,7 @@ dbt uses the Python [`sqlparse`](https://pypi.org/project/sqlparse/) library whe
 
 You can use the `--sqlparse` flag to adjust how `sqlparse` groups tokens. This maps to the grouping limits described in the [sqlparse Security and Performance Considerations](https://sqlparse.readthedocs.io/en/latest/api.html#security-and-performance-considerations).
 
-Supported keys are:
+Supported keys:
 
 <SimpleTable>
 | Key | What it does |
