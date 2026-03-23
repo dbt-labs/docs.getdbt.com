@@ -12,9 +12,15 @@ CONFIG_FILE="$HOME/.dbt-docs-fox/config"
 # ── install ──────────────────────────────────────────────────────────────────
 
 do_install() {
-  echo ""
-  echo "  Installing dbt docs fox..."
-  echo ""
+  cat <<'EOF'
+
+   ▄▄ ▄▄               ▄▄                       ▄▄
+   ██ ██     ██        ██                      ██
+▄████ ████▄ ▀██▀▀   ▄████ ▄███▄ ▄████ ▄█▀▀▀   ▀██▀ ▄███▄ ██ ██
+██ ██ ██ ██  ██     ██ ██ ██ ██ ██    ▀███▄    ██  ██ ██  ███
+▀████ ████▀  ██     ▀████ ▀███▀ ▀████ ▄▄▄█▀    ██  ▀███▀ ██ ██
+
+EOF
 
   # 1. Make this script executable and symlink to PATH
   chmod +x "$SCRIPT_DIR/dbt-docs-fox"
