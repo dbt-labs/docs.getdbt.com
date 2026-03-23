@@ -376,7 +376,7 @@ To specify the [entities](/docs/build/entities) in your model, use their columns
 
 ### Entities
 
-To specify the [entities](/docs/build/entities) in your mode, add an `entity` block at the column level with `type` set to primary, foreign, unique, or natural. Optionally, provide `name` and `expr` when the join key’s name differs from the column.
+To specify the [entities](/docs/build/entities) in your model, add an `entity` block at the column level with `type` set to primary, foreign, unique, or natural. Optionally, provide `name` and `expr` when the join key’s name differs from the column.
 
 </VersionBlock>
 
