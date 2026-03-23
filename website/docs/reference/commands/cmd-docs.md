@@ -112,7 +112,7 @@ As of 1.8.1, the default host is `127.0.0.1`. For versions 1.8.0 and prior, the 
 
 <VersionBlock firstVersion="2.0">
 
-The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of the `dbt docs generate` command for generating your [`catalog.json`](/reference/artifacts/catalog-json) file and hydrating metadata. This flag is fully Fusion native and significantly more performant.
+In <Constant name="fusion" /> workflows, `dbt docs generate` and `dbt docs serve` are not the primary path for viewing docs. Generate metadata with `dbtf build --write-catalog`, and in <Constant name="dbt_platform" />, view it in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
 
 ## --write-catalog flag
 
