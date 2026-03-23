@@ -145,7 +145,7 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
     ```bash
     dbtf build
     ```
-    After running `dbtf build`, use [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs) to browse your project documentation. With the <Constant name="fusion_engine" />, generate docs metadata using [`--write-catalog`](/reference/commands/cmd-docs?version=2.0#--write-catalog-flag) instead of `dbt docs generate`.
+    With the <Constant name="fusion_engine" />, generate docs metadata in <Constant name="platform_cli" /> with `dbtf build --write-catalog`; if you use dbt platform, you can browse that metadata in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
 
 This will:
 - Load example data into your warehouse
