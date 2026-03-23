@@ -1,3 +1,5 @@
+<Expandable alt_header="Server not starting">
+
 **Symptoms:** The MCP server shows as disconnected or unavailable in your client.
 
 **Diagnosis:** Check the server logs:
@@ -11,3 +13,4 @@
 - Missing or incorrect `DBT_PROJECT_DIR` or `DBT_PATH` — verify the paths exist and are absolute paths.
 - Invalid or expired authentication tokens — generate a new token and update your config.
 - Missing required environment variables for the toolset you're trying to use — see [Tool requirements](/docs/dbt-ai/setup-local-mcp#tool-requirements-at-a-glance).
+</Expandable>

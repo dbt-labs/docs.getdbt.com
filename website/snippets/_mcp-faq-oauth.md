@@ -1,3 +1,5 @@
+<Expandable alt_header="OAuth login not initiating">
+
 **Symptoms:** The OAuth browser window never opens, or authentication appears to hang.
 
 **Cause:** dbt MCP uses a lock file to avoid repeated authentication. If a previous session left the lock file in place, it can block new authentication attempts.
@@ -9,3 +11,4 @@
    - macOS/Linux: `rm -f ~/.dbt/mcp.yml ~/.dbt/mcp.lock`
    - Windows: `Remove-Item -Force $env:USERPROFILE\.dbt\mcp.yml, $env:USERPROFILE\.dbt\mcp.lock`
 3. Restart your client and try connecting again.
+</Expandable>

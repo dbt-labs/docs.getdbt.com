@@ -881,6 +881,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
         "docs/dbt-ai/about-mcp",
+        "docs/dbt-ai/mcp-available-tools",
         {
           type: "category",
           label: "Get started",
@@ -913,7 +914,6 @@ const sidebarSettings = {
             "docs/dbt-ai/integrate-mcp-vscode",
           ],
         },
-        "docs/dbt-ai/mcp-available-tools",
         "docs/dbt-ai/mcp-troubleshooting",
       ],
     },

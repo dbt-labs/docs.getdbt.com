@@ -14,36 +14,27 @@ import MCPFaqToolsetDisabled from '/snippets/_mcp-faq-toolset-disabled.md';
 import MCPFaqUrlsVsIds from '/snippets/_mcp-faq-urls-vs-ids.md';
 import MCPFaqMulticell from '/snippets/_mcp-faq-multicell.md';
 
-This page consolidates troubleshooting steps for all dbt MCP setups.
-
-## Can't find the `uvx` executable
+This page consolidates troubleshooting steps for all dbt MCP setups. For specific troubleshooting steps for your AI client, see the troubleshooting sections in the [Get started](/docs/dbt-ai/mcp-quickstart-oauth) and [Setup and config](/docs/dbt-ai/setup-local-mcp) pages.
 
 <MCPFaqUvx />
 
-## OAuth login not initiating
 
 <MCPFaqOauth />
 
-## Server not starting
 
 <MCPFaqServerNotStarting />
 
-## Configuration not working in WSL (VS Code)
 
 <MCPFaqWsl />
 
-## `execute_sql` tool not working
 
 <MCPFaqExecuteSql />
 
-## Toolset unavailable or showing as disabled
 
 <MCPFaqToolsetDisabled />
 
-## Pasting full URLs instead of IDs
 
 <MCPFaqUrlsVsIds />
 
-## Multi-cell account connection issues
 
 <MCPFaqMulticell />

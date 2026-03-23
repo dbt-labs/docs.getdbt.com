@@ -90,18 +90,18 @@ Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited dep
 
 ## Available tools
 
-The following tool list is available for your MCP server and is auto-fetched from the [dbt MCP server README on GitHub](https://github.com/dbt-labs/dbt-mcp#tools) when the docs are built, so it stays in sync with each release.
+The dbt MCP server has access to many tools related to development, deployment, and discovery &mdash; like CLI 
 
-<McpToolsFromReadme />
+A full list of tools is available for your MCP server and is auto-fetched from the [dbt MCP server README on GitHub](https://github.com/dbt-labs/dbt-mcp#tools) when the docs are built, so it stays in sync with each release. 
+
+To view the full list of tools, see [Available tools](/docs/dbt-ai/mcp-available-tools).
 
 ## MCP integrations
 
-The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports token authentication and tool use capabilities.
-
-We have also created integration guides for the following clients:
+The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports token authentication and tool use capabilities. We have created integration guides for the following clients:
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
-- [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
+- [VS Code](/docs/dbt-ai/integrate-mcp-vscode).
 
 ## Resources
 - [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) &mdash; full list of variables and tool configuration for local MCP

@@ -1,3 +1,5 @@
+<Expandable alt_header="Can't find the uvx executable">
+
 **Symptoms:** Error messages like `Could not connect to MCP server dbt-mcp`, `Error: spawn uvx ENOENT`, or `spawn uvx ENOENT` in your MCP client.
 
 **Cause:** Your MCP client (like Claude desktop) can't find `uvx` in its PATH because it starts with a limited environment.
@@ -25,3 +27,5 @@
 Example on macOS with Homebrew: `"command": "/opt/homebrew/bin/uvx"`
 
 For VS Code (`mcp.json`), the same fix applies — replace `uvx` with its full path in the `command` field.
+
+</Expandable>
