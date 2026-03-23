@@ -111,9 +111,6 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```bash
     dbt-fusion 2.0.0-preview.45
     ```
-:::tip
-Use `dbt` as your default command. If you already have another dbt command-line tool installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
-:::
 
 ### Install the dbt VS Code extension
 
@@ -130,7 +127,7 @@ The dbt VS Code extension is available in the [Visual Studio extension marketpla
 ## Initialize the Jaffle Shop project
 Now let's create your first dbt project powered by <Constant name="fusion" />!
 
-1. Run `dbt init` in your terminal from the directory where you want to create the project. It creates an example project and walks you through setting up a connection profile.
+1. Run `dbt init` in your terminal from the directory where you want to create the project. The `dbt init` command creates an example project and walks you through setting up a connection profile.
    - If you *do not* have a connection profile that you want to use, start with `dbt init` and use the prompts to configure a profile:
     - If you already have a connection profile that you want to use, use the `--skip-profile-setup` flag then edit the generated `dbt_project.yml` to replace `profile: jaffle_shop` with `profile: <YOUR-PROFILE-NAME>`.
 
