@@ -61,6 +61,10 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Installation
 
+:::tip
+Use `dbt` as your default command. If you already have another dbt command-line tool installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
+:::
+
 It's easy to think of the <Constant name="fusion_engine" /> and the dbt extension as two different products, but they're a powerful combo that works together to unlock the full potential of dbt. Think of the <Constant name="fusion_engine" /> as exactly that — an engine. The dbt extension and VS Code are the chassis, and together they form a powerful vehicle for transforming your data. 
 
 :::info
