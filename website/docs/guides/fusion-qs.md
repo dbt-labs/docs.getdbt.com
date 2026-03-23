@@ -108,7 +108,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     dbt-fusion 2.0.0-preview.45
     ```
 :::tip
-Use `dbt` by default. If you already have another dbt CLI installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
+Use `dbt` as your default command. If you already have another dbt command-line tool installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
 :::
 
 ### Install the dbt VS Code extension
