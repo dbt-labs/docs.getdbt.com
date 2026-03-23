@@ -106,7 +106,7 @@ The `--target` flag allows you to run the same dbt project against different env
 
 <FilterableTable>
 
-| Flag name | Type | Default | Supported in project? | Environment variable | <div style={{width:'400px'}}>CLI options</div> | Supported in <Constant name="cloud_cli" />? |
+| Flag name | Type | Default | Supported in project? | Environment variable | <div style={{width:'400px'}}>CLI options</div> | Supported in dbt platform CLI? |
 |-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
 | [cache_selected_only](/reference/global-configs/cache) | boolean | False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only`, `--no-cache-selected-only` | ✅ |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | boolean | True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only, --no-clean-project-files-only` | ❌ |
@@ -139,6 +139,7 @@ The `--target` flag allows you to run the same dbt project against different env
 | [sample](/docs/build/sample-flag) | string | None | ❌ | `DBT_ENGINE_SAMPLE` | `--sample` | ✅ |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | boolean | True | ✅ | `DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats`, `--no-send-anonymous-usage-stats` | ❌ |
 | [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | boolean | True | ✅ | ❌ | ❌ | ❌ |
+| [sqlparse](/reference/global-configs/sqlparse) | YAML map | `MAX_GROUPING_DEPTH` and `MAX_GROUPING_TOKENS` set to `null` | ❌ | `DBT_ENGINE_SQLPARSE` | `--sqlparse` | ❌ |
 | [state](/reference/node-selection/defer) | path | none | ❌ | `DBT_ENGINE_STATE`, `DBT_ENGINE_DEFER_STATE` | `--state`, `--defer-state` | ❌ |
 | [static_parser](/reference/global-configs/parsing#static-parser) | boolean | True | ✅ | `DBT_ENGINE_STATIC_PARSER` | `--static-parser`, `--no-static-parser` | ❌ |
 | [store_failures](/reference/resource-configs/store_failures) | boolean | False | ✅ (as resource config) | `DBT_ENGINE_STORE_FAILURES` | `--store-failures`, `--no-store-failures` | ✅ |
