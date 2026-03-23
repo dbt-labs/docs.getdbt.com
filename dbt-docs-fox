@@ -86,6 +86,30 @@ EOJSON
   echo ""
 }
 
+# ── uninstall ────────────────────────────────────────────────────────────────
+
+do_uninstall() {
+  echo ""
+  echo "  Uninstalling dbt docs fox..."
+  echo ""
+
+  # Remove symlink
+  [[ -L "$HOME/.local/bin/dbt-docs-fox" ]] && rm "$HOME/.local/bin/dbt-docs-fox" && echo "  ✓ Removed ~/.local/bin/dbt-docs-fox"
+
+  # Remove saved config
+  [[ -d "$HOME/.dbt-docs-fox" ]] && rm -rf "$HOME/.dbt-docs-fox" && echo "  ✓ Removed ~/.dbt-docs-fox"
+
+  # Remove Claude skills
+  for skill in testing-features converting-notion-to-docusaurus-blog; do
+    dest="$HOME/.claude/skills/$skill"
+    [[ -d "$dest" ]] && rm -rf "$dest" && echo "  ✓ Removed Claude skill: $skill"
+  done
+
+  echo ""
+  echo "  Done. Run 'bash dbt-docs-fox install' to reinstall."
+  echo ""
+}
+
 # ── helpers ───────────────────────────────────────────────────────────────────
 
 # Load persisted config if it exists
@@ -100,6 +124,7 @@ dbt docs fox — AI-powered dbt feature testing
 
 Usage:
   bash dbt-docs-fox install             First-time setup
+  bash dbt-docs-fox uninstall           Remove all installed files
   dbt-docs-fox <request>                Test a feature
   dbt-docs-fox --help                   Show this help
   dbt-docs-fox --config                 Show saved config
@@ -157,6 +182,7 @@ prompt_for_config() {
 
 case "${1:-}" in
   install)       do_install; exit 0 ;;
+  uninstall)     do_uninstall; exit 0 ;;
   --config)
     [[ -f "$CONFIG_FILE" ]] && cat "$CONFIG_FILE" || echo "No saved config. Run a test to set it up."
     exit 0 ;;
