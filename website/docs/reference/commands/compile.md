@@ -25,15 +25,9 @@ You can find these compiled SQL files in the `target/` directory of your dbt pro
 
 The `compile` command is useful for:
 
-- Visually inspecting the compiled output of model files. This is useful for validating complex Jinja logic or macro usage.
+- Visually inspecting the compiled output of resource files. This is useful for validating complex Jinja logic or macro usage.
 - Manually running compiled SQL. While debugging a model or [data test](/docs/build/data-tests), it's often useful to execute the underlying `select` statement to find the source of the bug.
 - Compiling `analysis` files. Read more about analysis files [here](/docs/build/analyses).
-<VersionBlock firstVersion="1.11">
-- Compiling [user-defined functions](/docs/build/udfs) to validate how they render for your warehouse.
-</VersionBlock>
-<VersionBlock firstVersion="1.12">
-- Inspecting compiled snapshot SQL. This helps validate Jinja and macro usage in [snapshots](/docs/build/snapshots). For snapshots, dbt writes one compiled SQL file per snapshot name under `target/compiled/`. If multiple snapshot blocks are defined in the same source file, each block still gets its own output path (named from the snapshot), so compiled files do not overwrite each other.
-</VersionBlock>
 
 Some common misconceptions:
 - `dbt compile` is _not_ a pre-requisite of `dbt run`, or other building commands. Those commands will handle compilation themselves.
