@@ -7,6 +7,10 @@ description: "Use `run_query` macro to run queries and fetch results."
 
 The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](/reference/dbt-jinja-functions/statement-blocks), which is more flexible, but also more complicated to use.
 
+<VersionBlock firstVersion="2.0">
+If you need to execute SQL without fetching results, such as `alter` statements and other <Term id="ddl" /> or <Term id="dml" /> statements, use [`run_query_as`](/reference/dbt-jinja-functions/run_query_as) with `fetch_result=False`.
+</VersionBlock>
+
 __Args__:
  * `sql`: The SQL query to execute
 
@@ -84,7 +88,11 @@ group by 1
 </File>
 
 
-You can also use `run_query` to perform SQL queries that aren't select statements.
+You can also use `run_query` to perform SQL queries that aren't `select` statements.
+
+<VersionBlock firstVersion="2.0">
+If you need explicit control over whether dbt fetches results for one of these statements, use [`run_query_as`](/reference/dbt-jinja-functions/run_query_as). This is useful for statements such as `alter`, where you may want `fetch_result=False`.
+</VersionBlock>
 
 <File name='macros/run_vacuum.sql'>
 

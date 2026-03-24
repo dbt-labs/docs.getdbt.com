@@ -297,6 +297,10 @@ exports.versionedPages = [
     page: "reference/global-configs/sqlparse",
     firstVersion: "1.11",
   },
+  {
+    page: "reference/dbt-jinja-functions/run_query_as",
+    firstVersion: "2.0",
+  },
 ];
 
 /**
