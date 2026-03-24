@@ -11,9 +11,10 @@ The `dbt-confluent` adapter supports the following materializations and configur
 | Materialization | Description |
 |---|---|
 | `view` | Creates a Flink SQL temporary view. Dropped and recreated on each `dbt run`. Views exist only for the duration of the Flink session and are not persisted. |
+| `table` | Creates a Flink SQL table backed by a Kafka topic. Requires `--full-refresh` to recreate if the table already exists. |
 | `materialized_view` | Creates a Flink SQL materialized view. Always dropped and recreated on each `dbt run`. |
 | `streaming_table` | Creates a Flink SQL table and a long-running `INSERT INTO` statement that continuously writes query results to the table. Requires `--full-refresh` to recreate if the table already exists. |
-| `streaming_source` | Creates a Flink SQL table backed by an external connector (for example, a Kafka source connector). Requires the `connector` config. Requires `--full-refresh` to recreate if the table already exists. |
+| `streaming_source` | Creates a Flink SQL table backed by a connector (for example, `faker` for mock data or `confluent` for Kafka topics). Requires the `connector` config. Requires `--full-refresh` to recreate if the table already exists. |
 
 ### Unsupported materializations
 
@@ -53,29 +54,32 @@ WHERE status = 'completed'
 
 | Config | Type | Description |
 |---|---|---|
-| `with` | `dict` | A dictionary of Flink SQL table options passed to the `WITH` clause of the `CREATE TABLE` statement. Use this to set Kafka topic properties like `changelog.mode`, `kafka.retention.time`, `key.format`, `value.format`, and others. |
+| `with` | `dict` | A dictionary of Confluent Cloud Flink SQL table options passed to the `WITH` clause of the `CREATE TABLE` statement. Common options include `changelog.mode` (`append`, `upsert`, `retract`), `kafka.retention.time`, `key.format`, `value.format`, `scan.startup.mode`, and others. See the [CREATE TABLE WITH options](https://docs.confluent.io/cloud/current/flink/reference/statements/create-table.html#with-options) reference for the full list. |
 
 ### `streaming_source`
 
-The `streaming_source` materialization creates a table backed by an external connector. The `connector` config is **required**.
+The `streaming_source` materialization creates a table backed by a connector. The `connector` config is **required**. In Confluent Cloud, valid connector values include `confluent` (Kafka topics, the default), `faker` (mock data generation), and external table connectors for AI search.
 
-<File name='models/my_source.sql'>
+<File name='models/my_fake_orders.sql'>
 
 ```sql
 {{
   config(
     materialized='streaming_source',
+    connector='faker',
     with={
-      'kafka.retention.time': '30 d',
-      'scan.startup.mode': 'earliest-offset'
+      'rows-per-second': '1',
+      'number-of-rows': '100',
+      'changelog.mode': 'append',
     }
   )
 }}
 
-order_id STRING,
-customer_id STRING,
-order_date TIMESTAMP(3),
-total_amount DECIMAL(10, 2)
+order_id BIGINT,
+price DECIMAL(10, 2),
+order_time TIMESTAMP(3),
+WATERMARK FOR order_time AS order_time - INTERVAL '5' SECOND,
+PRIMARY KEY(order_id) NOT ENFORCED
 ```
 
 </File>
@@ -84,8 +88,8 @@ total_amount DECIMAL(10, 2)
 
 | Config | Type | Required | Description |
 |---|---|---|---|
-| `connector` | `string` | Yes | The connector type for the source table (for example, `kafka`). Passed as the `'connector'` property in the `WITH` clause. |
-| `with` | `dict` | No | Additional table options passed to the `WITH` clause, alongside the connector. |
+| `connector` | `string` | Yes | The connector type for the source table. Valid values in Confluent Cloud include `confluent` (Kafka topics), `faker` (mock data), and external AI search connectors. |
+| `with` | `dict` | No | Additional table options passed to the `WITH` clause, alongside the connector. Valid options depend on the connector type. |
 
 ### `materialized_view`
 
