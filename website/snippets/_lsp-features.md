@@ -9,6 +9,7 @@
 | Go-to definition             | ✅                          | ✅          | ❌        |
 | Go-to reference              | ✅                          | ✅          | ❌        |
 | Incremental compilation      | ✅                          | ✅          | ❌        |
+| Lazy compilation             | ✅                          | ✅          | ❌        |
 | Preview query results        | ✅                          | N/A         | ❌        |
 | Problems tab                 | ✅                          | ✅          | ❌        |
 | Propagate column renames     | ✅                          | ❌          | ❌        |
