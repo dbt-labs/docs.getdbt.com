@@ -16,7 +16,7 @@ These variables are required to use dbt CLI commands through MCP.
 | `DBT_PROJECT_DIR` | Required | Full path to your dbt project folder (the folder containing `dbt_project.yml`). |
 | `DBT_PATH` | Required | Full path to your dbt executable. Find it by running `which dbt` (macOS/Linux) or `where dbt` (Windows). |
 | `DBT_PROFILES_DIR` | Optional | Path to a custom `profiles.yml` directory. Defaults to `~/.dbt/`. |
-| `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt CLI commands time out. Defaults to `60`. |
+| `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt CLI commands time out. Defaults to `60`. Compile runs the whole project, so large projects may need a higher limit to avoid timeouts. |
 
 ## dbt platform
 
