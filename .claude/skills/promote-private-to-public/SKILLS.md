@@ -37,9 +37,9 @@
                                                     
   If either fails, ask the user to configure the missing remote.
                                                                                                       
-  2. Gather inputs
+  ### 2. Gather inputs
                                                                                                       
-  Ask the user:                                     
+  Ask the user:
   - Private branch — which branch to promote? (default: current branch from
   git branch --show-current)                                                                          
   - Public branch name — what to name the branch on the public repo?
@@ -51,12 +51,12 @@
                                                                                                       
   Show a confirmation summary and ask the user to confirm before proceeding.                          
                                                                                                       
-  3. Fetch remotes
+  ### 3. Fetch remotes
    ```bash                                                                             
   git fetch origin current                          
   git fetch private_docs <private-branch>                                                             
    ```
-  4a. Squash mode (recommended)                                                                       
+  ### 4a. Squash mode (recommended)                                                                       
                                                     
   Check for an empty diff first:                                                                      
   git diff origin/current...private_docs/<private-branch>
@@ -74,9 +74,9 @@
   git add -A                                                         
   git commit -m "<commit-message>"                                                                    
   git push -u origin <public-branch>
-   ```
-                                                                                                      
-  4b. Full history mode                             
+   ```  
+   
+  ### 4b. Full history mode                             
    ```bash                                                                                      
   git fetch private_docs <private-branch>
   git checkout -b <public-branch> private_docs/<private-branch>                                       
@@ -88,7 +88,7 @@
   manually, then run:            
   `git push -u origin <public-branch>`
                                                     
-  5. Open the PR
+  ### 5. Open the PR
                                                                                                       
   Construct the PR URL:
   https://github.com/dbt-labs/docs.getdbt.com/compare/<public-branch>?expand=1                        
@@ -102,7 +102,7 @@
   - After the public PR merges: comment on the docs-internal PR with the public
   PR link, then click Close (do not merge it)                                                         
                                                                                                       
-  If something goes wrong
+  ## If something goes wrong
                                                                                                       
   - "Working tree has uncommitted changes" — commit or stash, then retry                              
   - "No differences found" — the branch may already be in sync with
@@ -112,7 +112,7 @@
   - Remote not configured — run git remote -v to check; add the missing
   remote with git remote add <name> <url>                                                             
                                                     
-  Fallback                                                                                            
+  ## Fallback                                                                                            
                                                     
   If you prefer to run this manually without AI assistance:                                           
   `./scripts/promote-private-to-public.sh`
