@@ -20,7 +20,9 @@ Supported keys:
 
 <br></br>
 
-Each value must be an integer or `null`. The default value for both keys is `null`. Setting a key to `null` leaves the limit unset.
+Each key accepts a single value: an integer or `null`. The default value for both keys is `null`, which means dbt does not apply a custom limit.
+
+`sqlparse` enforces built-in limits (`MAX_GROUPING_DEPTH = 100` and `MAX_GROUPING_TOKENS = 10000`) to prevent excessive resource usage. Setting a value to `null` disables the limit entirely.
 
 For example, the following command sets both grouping limits:
 
@@ -28,13 +30,13 @@ For example, the following command sets both grouping limits:
 dbt compile --sqlparse '{"MAX_GROUPING_DEPTH": 200, "MAX_GROUPING_TOKENS": 20000}'
 ```
 
-You can configure only one key to set a single limit. Any unspecified key defaults to `null`. In the following example, only the depth limit is raised to `500`; `MAX_GROUPING_TOKENS` is not set, so `sqlparse` does not apply a custom token limit for this run.
+You can configure only one key to set a single limit. Any unspecified key defaults to `null`. In the following example, only the depth limit is raised to `500`; `MAX_GROUPING_TOKENS` is not set, so `sqlparse` does not apply a token limit for this run.
 
 ```bash
 dbt compile --sqlparse '{"MAX_GROUPING_DEPTH": 500}'
 ```
 
-If no keys are provided, both limits remain unset (`null`), and `sqlparse` does not apply any custom grouping limits.
+If no keys are provided, both limits remain unset (`null`), and `sqlparse` does not apply any grouping limits.
 
 You can use `--sqlparse` with the following commands:
 
