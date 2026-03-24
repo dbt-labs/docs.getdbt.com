@@ -34,6 +34,8 @@ You can configure only one key to set a single limit. Any unspecified key defaul
 dbt compile --sqlparse '{"MAX_GROUPING_DEPTH": 500}'
 ```
 
+If no keys are provided, both limits remain unset (`null`), and `sqlparse` does not apply any custom grouping limits.
+
 You can use `--sqlparse` with the following commands:
 
 - [`dbt compile`](/reference/commands/compile)
