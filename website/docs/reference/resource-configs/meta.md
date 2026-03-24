@@ -2,7 +2,6 @@
 resource_types: all
 datatype: "{<dictionary>}"
 default_value: {}
-hide_table_of_contents: true
 ---
 
 <Tabs
