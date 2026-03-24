@@ -11,10 +11,10 @@ import SetUpPages from '/snippets/_available-tiers-private-connection.md';
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
 
-AWS PrivateLink enables secure, private connectivity between <Constant name="cloud" /> and your self-hosted services. These services may include version control systems (VCS), data warehouses, or any other applications you manage. With PrivateLink, you do not need to expose your service to the public internet. All communication occurs over a private network, significantly enhancing security. For more details, refer to the [AWS PrivateLink documentation](https://docs.aws.amazon.com/vpc/latest/privatelink/).
+AWS PrivateLink enables secure, private connectivity between <Constant name="dbt" /> and your self-hosted services. These services may include version control systems (VCS), data warehouses, or any other applications you manage. With PrivateLink, you do not need to expose your service to the public internet. All communication occurs over a private network, significantly enhancing security. For more details, refer to the [AWS PrivateLink documentation](https://docs.aws.amazon.com/vpc/latest/privatelink/).
 
 ## What this guide covers
-The focus of this guide is not on any particular service or backend architecture, but on the [Endpoint Service](#terminology) that interconnects <Constant name="cloud" /> with your self-hosted service. This process should be standard across most use cases.
+The focus of this guide is not on any particular service or backend architecture, but on the [Endpoint Service](#terminology) that interconnects <Constant name="dbt" /> with your self-hosted service. This process should be standard across most use cases.
 
 <!-- TODO: Add architecture diagram showing scope of guide -->
 <Lightbox src="/img/docs/dbt-cloud/aws-self-hosted-privatelink/scope-of-guide.png" width="90%" title="The scope of this guide" />
@@ -29,7 +29,7 @@ This guide is intended for cloud network administrators or engineers responsible
 ## Terminology
 This guide uses several important terms related to AWS PrivateLink. Understanding these definitions will help ensure successful implementation. For a more detailed explanation of these concepts, refer to the [AWS PrivateLink documentation](https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html).
 
-- **Consumer:** In this context, the Consumer is <Constant name="cloud" />, which creates a VPC Endpoint to connect to your Endpoint Service.
+- **Consumer:** In this context, the Consumer is <Constant name="dbt" />, which creates a VPC Endpoint to connect to your Endpoint Service.
 - **Service provider:** Your organization, which owns and operates the service behind the Network Load Balancer and creates the Endpoint Service.
 - **Endpoint Service:** The AWS resource that exposes your service to consumers, allowing them to create VPC Endpoints to access it. This is tied to a Network Load Balancer.
 - **Service Name:** A globally unique identifier for your Endpoint Service (format: `com.amazonaws.vpce.region.vpce-svc-xxx`). You share this with dbt Support to establish the connection.
@@ -117,6 +117,7 @@ For more details, see [Update the security groups for your Network Load Balancer
 Subject: New AWS Self-hosted PrivateLink Request
 - Type: Self-hosted PrivateLink
 - Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
+- dbt platform account URL:
 - VPC Endpoint Service Name:
 - Custom DNS (if HTTPS/TLS)
     - DNS record:
@@ -130,7 +131,7 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 ## Troubleshooting
 
-If the PrivateLink endpoint has been provisioned and configured in <Constant name="cloud" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt and your service.
+If the PrivateLink endpoint has been provisioned and configured in <Constant name="dbt" /> but connectivity is still failing, check the following in your networking setup to ensure requests and responses can be successfully routed between dbt and your service.
 
 ### Configuration checklist
 
@@ -144,7 +145,7 @@ If the PrivateLink endpoint has been provisioned and configured in <Constant nam
 
 2. **NLB listener and target group**
 
-   Check that there is a Listener connected to the NLB that matches the port that <Constant name="cloud" /> is trying to connect to. This Listener must have a configured action to forward to a Target Group with targets that point to your service. At least one (but preferably all) of these targets must be **Healthy**. Unhealthy targets could suggest that the service is down or that the service is protected by a security group that doesn't allow requests from the NLB.
+   Check that there is a Listener connected to the NLB that matches the port that <Constant name="dbt" /> is trying to connect to. This Listener must have a configured action to forward to a Target Group with targets that point to your service. At least one (but preferably all) of these targets must be **Healthy**. Unhealthy targets could suggest that the service is down or that the service is protected by a security group that doesn't allow requests from the NLB.
 
 3. **Cross-zone load balancing**
 
@@ -160,7 +161,7 @@ If the PrivateLink endpoint has been provisioned and configured in <Constant nam
 
 ### Monitoring
 
-To help isolate connection issues over a PrivateLink connection from <Constant name="cloud" />, there are a few monitoring sources that can be used to verify request activity. Requests must first be sent to the endpoint to see anything in the monitoring. [Contact dbt Support](/community/resources/getting-help#dbt-cloud-support) to understand when connection testing occurred or request new connection attempts. Use these times to correlate with activity in the following monitoring sources.
+To help isolate connection issues over a PrivateLink connection from <Constant name="dbt" />, there are a few monitoring sources that can be used to verify request activity. Requests must first be sent to the endpoint to see anything in the monitoring. [Contact dbt Support](/community/resources/getting-help#dbt-cloud-support) to understand when connection testing occurred or request new connection attempts. Use these times to correlate with activity in the following monitoring sources.
 
 #### VPC Endpoint Service monitoring
 

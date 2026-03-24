@@ -2,7 +2,7 @@
 title: "About profiles.yml"
 description: "The dbt profiles.yml file contains the connection details for your data warehouse."
 id: profiles.yml
-pagination_next: "docs/local/connect-data-platform/connection-profiles"
+pagination_next: "docs/local/connection-profiles"
 ---
 import ProfilesYml from '/snippets/_profiles.yml.md';
 
@@ -11,4 +11,4 @@ import ProfilesYml from '/snippets/_profiles.yml.md';
 ## Related docs
 
 - [Install dbt](/docs/local/install-dbt)
-- [Connection profiles](/docs/local/profiles.yml)
+- [Connection profiles](/docs/local/connection-profiles)

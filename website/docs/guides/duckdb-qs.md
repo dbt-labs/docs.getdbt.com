@@ -39,7 +39,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Prerequisites
 
-- When using DuckDB with <Constant name="core" />, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in <Constant name="cloud" />.
+- When using DuckDB with <Constant name="core" />, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in <Constant name="dbt" />.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
@@ -233,8 +233,29 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 </Tabs>
 
 
+## Local storage
 
+DuckDB stores your data in a local `.duckdb` file on your machine. The location of this file is defined by the `path` field in your [`profiles.yml`](/docs/local/profiles.yml).
 
+In this quickstart, the project is configured to use a file named `jaffle_shop.duckdb`. After running `dbt build`, you can confirm that the database file was created by running the following command:
+
+```shell
+ls -lah *.duckdb
+```
+
+You should see a `jaffle_shop.duckdb` file in your project directory. This file contains the tables and views built by dbt and persists between runs.
+
+If you delete the file:
+
+```shell
+rm *.duckdb
+```
+
+Running `dbt build` again will recreate it.
+
+:::note
+If you use a relative path (such as `./local.duckdb`), the file is created relative to the directory where you run dbt.
+:::
 
 
 
@@ -262,7 +283,7 @@ Now that you have <Constant name="core" />, DuckDB, and the Jaffle Shop data up 
 - The [About projects](/docs/build/projects) page guides you through the structure of a dbt project and its components.
 - [dbt command reference](/reference/dbt-commands) explains the various commands available and what they do.
 - [dbt Labs courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
-- Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [<Constant name="cloud" />](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
+- Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [<Constant name="dbt" />](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
 - Check out the other [quickstart guides](/guides?tags=Quickstart) to begin integrating into your existing data warehouse.
 
 Additionally, with your new understanding of the basics of using DuckDB, consider optimizing your setup by [documenting your project](/guides/duckdb#document-your-project), [commit your changes](/guides/duckdb#commit-your-changes) and, [schedule a job](/guides/duckdb#schedule-a-job). 

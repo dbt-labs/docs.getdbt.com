@@ -13,9 +13,9 @@ To review actions performed by people in your organization, dbt provides logs of
 
 You must be an **Account Admin** or an **Account Viewer** to access the audit log and this feature is only available on Enterprise plans.
 
-The <Constant name="cloud" /> audit log stores all the events that occurred in your organization in real-time, including:
+The <Constant name="dbt" /> audit log stores all the events that occurred in your organization in real-time, including:
 
-- For events within 90 days, the <Constant name="cloud" /> audit log has a selectable date range that lists events triggered.
+- For events within 90 days, the <Constant name="dbt" /> audit log has a selectable date range that lists events triggered.
 - For events beyond 90 days, **Account Admins** and **Account Viewers** can [export all events](#exporting-logs) by using **Export All**.
 
 Note that the retention period for events in the audit log is at least 12 months. 
@@ -51,11 +51,11 @@ The event details provide the key factors of an event:
 | event_context        | This key will be different for each event and will match the event_type. This data will include all the details about the object(s) that was changed. |
 | id                   | Unique ID of the event                        |
 | service              | Service that carried out the action           |
-| source               | Source of the event - <Constant name="cloud" /> UI or API     |
+| source               | Source of the event - <Constant name="dbt" /> UI or API     |
 
 ## Audit log events
 
-The audit log supports various events for different objects in <Constant name="cloud" />. You will find events for authentication, environment, jobs, service tokens, groups, user, project, permissions, license, connection, repository, and credentials.
+The audit log supports various events for different objects in <Constant name="dbt" />. You will find events for authentication, environment, jobs, service tokens, groups, user, project, permissions, license, connection, repository, and credentials.
 
 ### Authentication
 
@@ -166,7 +166,7 @@ The audit log supports various events for different objects in <Constant name="c
 
 | Event Name                       | Event Type                    | Description            |
 | -------------------------------- | ----------------------------- | -----------------------|
-| GitLab Application Changed        | gitlab_application.changed    | GitLab configuration in <Constant name="cloud" /> changed |
+| GitLab Application Changed        | gitlab_application.changed    | GitLab configuration in <Constant name="dbt" /> changed |
 
 ### Webhooks
 
@@ -235,7 +235,7 @@ You can search the audit log to find a specific event or actor, which is limited
 
 You can use the audit log to export all historical audit results for security, compliance, and analysis purposes. Events in the audit log are retained for at least 12 months.
 
-- **For events within 90 days** &mdash; <Constant name="cloud" /> will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
+- **For events within 90 days** &mdash; <Constant name="dbt" /> will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
 
 - **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin or Account Viewer will receive an email link to download a CSV file of all the events that occurred in your organization.
 

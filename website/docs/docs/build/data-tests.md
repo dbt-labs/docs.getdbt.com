@@ -195,7 +195,7 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 
 ```
 3. Check out the SQL dbt is running by either:
-   * **<Constant name="cloud" />:** checking the Details tab.
+   * **<Constant name="dbt" />:** checking the Details tab.
    * **dbt Core:** checking the `target/compiled` directory
 
 

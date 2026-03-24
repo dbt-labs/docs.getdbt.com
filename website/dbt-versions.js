@@ -11,7 +11,7 @@
  * @property {boolean} isPrerelease Boolean used for showing the prerelease banner
  * @property {string} customDisplay Allows setting a custom display name for the current version
  *
- * customDisplay for dbt Cloud should be a version ahead of latest dbt Core release (GA or beta).
+ * customDisplay for dbt platform should be a version ahead of latest dbt Core release (GA or beta).
  */
 exports.versions = [
   {
@@ -98,19 +98,11 @@ exports.versionedPages = [
     lastVersion: "1.11",
   },
   {
-    page: "docs/local/connect-data-platform/spark-setup",
-    lastVersion: "1.99",
-  },
-  {
     page: "docs/local/connect-data-platform/fabric-setup",
     lastVersion: "1.99",
   },
   {
     page: "docs/local/connect-data-platform/fabricspark-setup",
-    lastVersion: "1.99",
-  },
-  {
-    page: "docs/local/connect-data-platform/connection-profiles",
     lastVersion: "1.99",
   },
   {
@@ -300,6 +292,10 @@ exports.versionedPages = [
   {
     page: "reference/global-configs/cache",
     lastVersion: "1.99",
+  },
+  {
+    page: "reference/global-configs/sqlparse",
+    firstVersion: "1.11",
   },
 ];
 

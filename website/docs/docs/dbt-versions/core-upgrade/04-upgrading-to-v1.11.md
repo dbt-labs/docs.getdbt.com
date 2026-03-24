@@ -17,7 +17,7 @@ displayed_sidebar: "docs"
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-Starting in 2024, <Constant name="cloud" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="cloud" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.11 final release.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.11 final release.
 
 We continue to recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
 
@@ -39,9 +39,13 @@ Key features include:
 - **Execution**: Create, update, and rename UDFs as part of DAG execution using `dbt build --select "resource_type:function"`
 - **DAG integration**: When executing `dbt build`, UDFs are built before models that reference them, ensuring proper dependency management.
 - **New `function()` macro**: Reference UDFs in your models using the `{{ function('function_name') }}` Jinja macro.
+- **Deferral**: When you run a dbt command with `--defer` and `--state`, `function()` calls resolve to the UDF in the state manifest, so you can run models that depend on UDFs without building those UDFs first.
 
 Read more about UDFs, including prerequisites and how to define and use them in the [UDF documentation](/docs/build/udfs).
 
+### `DBT_ENGINE_` prefix for environment variables
+
+Engine configuration environment variables use the `DBT_ENGINE_` prefix. For example, `DBT_STATE` becomes `DBT_ENGINE_STATE`, `DBT_PROJECT_DIR` becomes `DBT_ENGINE_PROJECT_DIR`, and so on. Refer to [About flags (global configs)](/reference/global-configs/about-global-configs) for the full mapping.
 
 ### Managing changes to legacy behaviors
 
@@ -132,6 +136,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ## Quick hits
 
 You will find these quick hits in dbt Core v1.11:
+- The [`--sqlparse`](/reference/global-configs/sqlparse) flag sets [`sqlparse`](https://sqlparse.readthedocs.io/en/latest/api.html#security-and-performance-considerations) `MAX_GROUPING_DEPTH` and `MAX_GROUPING_TOKENS` when dbt parses SQL during compilation.
 - The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
 - Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
 - When a model is disabled, unit tests for that model are automatically disabled as well.
