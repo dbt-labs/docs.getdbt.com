@@ -106,7 +106,7 @@ The `--target` flag allows you to run the same dbt project against different env
 
 <FilterableTable>
 
-| Flag name | Type | Default | Supported in project? | Environment variable | <div style={{width:'400px'}}>CLI options</div> | Supported in dbt platform CLI? |
+| Flag name | Type | Default | Supported in project? | Environment variable | <div style={{width:'400px'}}>CLI options</div> | Supported in <Constant name="platform_cli"/>? |
 |-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
 | [cache_selected_only](/reference/global-configs/cache) | boolean | False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only`, `--no-cache-selected-only` | ✅ |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | boolean | True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only, --no-clean-project-files-only` | ❌ |
