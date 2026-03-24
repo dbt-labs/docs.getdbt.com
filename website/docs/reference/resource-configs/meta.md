@@ -173,7 +173,60 @@ See [configs and properties](/reference/configs-and-properties) for details.
 
 <TabItem value="tests">
 
-You can't add YAML `meta` configs for [generic tests](/docs/build/data-tests#generic-data-tests). However, you can add `meta` properties to [singular tests](/docs/build/data-tests#singular-data-tests) using `config()` at the top of the test file. 
+Use the `meta` field to add metadata to [generic](/docs/build/data-tests#generic-data-tests) or [singular tests](/docs/build/data-tests#singular-data-tests). `meta` accepts key-value pairs, is compiled into `manifest.json`, and appears in auto-generated documentation.
+
+**Generic data tests**
+Add meta under the config block in your YAML properties file:
+
+<File name="models/properties.yml"/>
+```yaml
+models:
+  - name: my_model
+    columns:
+      - name: my_column
+        data_tests:
+          - unique:
+              config:
+                meta:
+                  owner: "docs team"
+ ```
+</File>
+
+Or set defaults in `dbt_project.yml`:
+<File name="dbt_project.yml"/>
+```yaml
+data_tests:
+  my_project:
+    +meta:
+      owner: "docs team"
+ ```
+</File>
+
+**Singular data tests**
+
+Add meta in the SQL test file using `config()`:
+
+<File name="tests/my_singular_test.sql"/>
+```sql
+{{ config(meta={'owner': 'docs team'}) }}
+
+select * from {{ ref('my_model') }}
+where my_column is null
+```
+</File>
+
+Or document in `tests/schema.yml`:
+
+<File name="tests/properties.yml"/>
+
+```yaml
+data_tests:
+  - name: my_singular_test
+    config:
+      meta:
+        owner: "analytics_team"
+```
+</File>
 
 </TabItem>
 
