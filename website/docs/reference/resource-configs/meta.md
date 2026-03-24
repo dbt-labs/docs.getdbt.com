@@ -860,7 +860,7 @@ semantic-models:
 
 ### Add meta to generic and singular data tests
 
-This example uses property files for [generic data tests](/docs/build/data-tests#generic-data-tests), and `config()` in SQL for [singular data tests](/docs/build/data-tests#singular-data-tests). You can also set defaults in `dbt_project.yml` or `tests/properties.yml`.
+The following examples show how to add `meta` to [generic data tests](/docs/build/data-tests#generic-data-tests) in a `properties.yml` file, and to [singular data tests](/docs/build/data-tests#singular-data-tests) using `config()`. You can also set defaults in `dbt_project.yml` or `tests/properties.yml`.
 
 <Tabs>
 <TabItem value="generic" label="Generic data test">
