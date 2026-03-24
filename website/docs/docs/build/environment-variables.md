@@ -91,7 +91,7 @@ There are some known issues with partial parsing of a project and changing envir
 
 If you are using the dbt VS Code extension, you can set environment variables locally in your shell profile (`~/.zshrc` or `~/.bashrc`) or in a `.env` file at the root level of your dbt project.
 
-For more information, refer to the [Configure the dbt VS Code extension](/docs/configure-dbt-extension#set-environment-variables-locally).
+For more information, refer to [Configure the dbt VS Code extension](/docs/configure-dbt-extension#set-environment-variables-locally).
 
 ### Handling secrets
 
