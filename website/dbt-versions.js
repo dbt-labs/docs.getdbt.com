@@ -293,6 +293,10 @@ exports.versionedPages = [
     page: "reference/global-configs/cache",
     lastVersion: "1.99",
   },
+  {
+    page: "reference/global-configs/sqlparse",
+    firstVersion: "1.11",
+  },
 ];
 
 /**
