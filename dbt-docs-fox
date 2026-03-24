@@ -141,9 +141,9 @@ Or in any AI chat / agent UI:
 The AI will:
   1. Search the local docs codebase (website/docs/, website/snippets/)
   2. Use your saved defaults for adapter, schema, database (or ask if not set)
-  3. Scaffold a minimal test project and run dbt commands
+  3. Scaffold a minimal test project (including .venv + dbt-fox-env.sh), run dbt commands
   4. Validate results in your warehouse
-  5. Write a testing summary next to your draft doc and post it to Notion
+  5. Write a testing summary (with cd/file links and source .../dbt-fox-env.sh) next to your draft doc and post it to Notion
 
 Saved config: $CONFIG_FILE
 EOF

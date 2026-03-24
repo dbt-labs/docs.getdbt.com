@@ -147,6 +147,45 @@ feature_test:
 
 **`packages.yml`** — only if the feature requires packages (e.g. dbt-utils). Run `dbt deps` if created.
 
+**Local Python environment (`.venv`) — create for every scaffold**
+
+After writing project files, create a virtual environment in the project root so writers can reproduce commands without touching their global install:
+
+```bash
+cd /tmp/dbt-feature-test-<feature-name>/
+python3 -m venv .venv
+# Windows (cmd): .venv\Scripts\activate.bat
+# Windows (PowerShell): .venv\Scripts\Activate.ps1
+source .venv/bin/activate   # macOS / Linux
+pip install "dbt-<adapter>"  # e.g. dbt-snowflake, dbt-bigquery, dbt-duckdb — match Step 1
+```
+
+If `pip install` fails (network, air-gapped), note that in the summary and still write `dbt-fox-env.sh` so the user can fix the venv later.
+
+**`dbt-fox-env.sh`** — always write this file in the project root (executable: `chmod +x dbt-fox-env.sh`). Writers use **`source`** so their shell changes directory and activates the venv:
+
+```bash
+#!/usr/bin/env bash
+# dbt docs fox — cd into this test project and activate .venv
+# Usage: source /absolute/path/to/dbt-feature-test-<slug>/dbt-fox-env.sh
+if [[ -n "${BASH_SOURCE[0]:-}" ]]; then
+  _FOX_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+else
+  _FOX_DIR="$(cd "$(dirname "$0")" && pwd)"
+fi
+cd "$_FOX_DIR" || exit 1
+unset _FOX_DIR
+if [[ -f .venv/bin/activate ]]; then
+  # shellcheck disable=SC1091
+  source .venv/bin/activate
+  echo "dbt docs fox: venv active in $(pwd)"
+else
+  echo "dbt docs fox: no .venv here — run: python3 -m venv .venv && pip install dbt-<adapter>" >&2
+fi
+```
+
+When running dbt yourself during the test, prefer invoking dbt from this `.venv` (`./.venv/bin/dbt`) so the writer sees the same versions.
+
 Show the user every file created with its full contents before proceeding.
 
 ---
@@ -250,6 +289,17 @@ Write the completed report to **both** locations:
 
 Always write to both. Tell the user where the permanent copy lives.
 
+**Navigation and environment — required in every summary**
+
+Fill in the **Open this test project locally** section of the report template (below) with real paths:
+
+- **Absolute path** to `/tmp/dbt-feature-test-<slug>/` (always use the full path, not `~`).
+- **`file://` hyperlink** to the project directory for macOS/Linux: `file:///tmp/dbt-feature-test-<slug>/` (three slashes after `file:`). In Cursor or VS Code, the writer can also use **File → Open Folder** and paste the same absolute path. Clickable `file://` links work in many local Markdown previews; they do **not** activate a venv (that is not technically possible via a link).
+- **Docs repo path:** when the session is in the docs repository, run `git rev-parse --show-toplevel` once and substitute that absolute path in **Return to the docs repository** so the writer can `cd` back in one paste.
+- **One-liner for venv:** always include `source <absolute-path>/dbt-fox-env.sh` pointing at the helper script created in Step 3.
+
+Clarify in the summary: opening a folder or a `file://` link does not run `source`; the writer must run the `source .../dbt-fox-env.sh` line in a terminal (or `cd` + `source .venv/bin/activate` manually).
+
 **Tone:** Write as if a teammate ran all of this and is reporting back. Not a formal test log — a clear, friendly explanation of what happened. The writer should feel like they tested it themselves.
 
 After writing the report files, post a summary entry to the team's Notion tracking database using the Notion MCP tool.
@@ -348,6 +398,34 @@ Example format:
 - ⚠️ The `merge` strategy requires `unique_key` — the doc example is missing this
 - 🐛 Python UDFs fail on dbt Core with error: "..." — Fusion-only for now
 - 💡 Add a note that this requires dbt 1.5+
+
+## Open this test project locally
+
+**Project directory:** `/tmp/dbt-feature-test-<slug>/`  
+**Open in Finder / file browser (macOS):** [folder](file:///tmp/dbt-feature-test-<slug>/) — paste the same path into **File → Open Folder** in Cursor or VS Code if the link does not open.
+
+**Enter the project and activate `.venv` (recommended — one command):**
+
+```bash
+source /tmp/dbt-feature-test-<slug>/dbt-fox-env.sh
+```
+
+**Or step by step:**
+
+```bash
+cd /tmp/dbt-feature-test-<slug>/
+source .venv/bin/activate
+```
+
+**Return to the docs repository** (path from `git rev-parse --show-toplevel` when this run was started from the repo clone):
+
+```bash
+cd <ABSOLUTE_PATH_TO_DOCS_REPO>
+```
+
+**Note:** Clicking a `file://` link or opening the folder only opens files; it does not activate Python. Use `source .../dbt-fox-env.sh` or `source .venv/bin/activate` in the terminal where you run `dbt`.
+
+---
 
 ## How to run this yourself
 
