@@ -28,7 +28,7 @@ For example, the following command sets both grouping limits:
 dbt compile --sqlparse '{"MAX_GROUPING_DEPTH": 200, "MAX_GROUPING_TOKENS": 20000}'
 ```
 
-You can configure only one key to set a single limit. Any unspecified key defaults to `null`. In the following example, only the depth limit is raised to `500`; `MAX_GROUPING_TOKENS` is not set, so sqlparse does not apply a custom token limit for this run.
+You can configure only one key to set a single limit. Any unspecified key defaults to `null`. In the following example, only the depth limit is raised to `500`; `MAX_GROUPING_TOKENS` is not set, so `sqlparse` does not apply a custom token limit for this run.
 
 ```bash
 dbt compile --sqlparse '{"MAX_GROUPING_DEPTH": 500}'
