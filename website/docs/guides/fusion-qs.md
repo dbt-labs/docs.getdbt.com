@@ -70,6 +70,7 @@ It's easy to think of the <Constant name="fusion_engine" /> and the dbt extensio
 :::info
 - You can install the <Constant name="fusion_engine" /> and use it standalone with the CLI.
 - You *cannot* use the dbt extension without <Constant name="fusion" /> installed.
+- Use `dbt` as your default command. If you already have another dbt command-line tool installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
 :::
 
 The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started) and [extension](/docs/install-dbt-extension) installation guides:
