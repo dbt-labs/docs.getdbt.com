@@ -176,7 +176,7 @@ Use the `meta` field to add metadata to [generic](/docs/build/data-tests#generic
 
 **Generic data tests**
 
-Add meta under the config block in your YAML properties file:
+Add `meta` under the `config` block in your `properties.yml` file:
 
 <File name="models/properties.yml">
   
