@@ -207,7 +207,7 @@ data_tests:
 
 **Singular data tests**
 
-Add meta in the SQL test file using `config()`:
+Add `meta` in the SQL test file using `config()`:
 
 <File name="tests/my_singular_test.sql">
 
