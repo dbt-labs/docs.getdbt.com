@@ -63,7 +63,8 @@ Progress:
 [ ] Step 5  Compile (pre-flight)
 [ ] Step 6  Run commands
 [ ] Step 7  Validate in warehouse
-[ ] Step 8  Write testing summary
+[ ] Step 8a Write testing summary (markdown files)
+[ ] Step 8b Post row to Notion (docs PR testing database)
 ```
 
 Mark each `[x]` as it completes. Mark `[!]` with a one-line reason if a step fails.
@@ -232,7 +233,9 @@ SELECT COUNT(*) FROM <database>.<schema>.<model_name>;
 
 ---
 
-## Step 8: Write the testing summary
+## Step 8: Write the testing summary and post to Notion
+
+### Step 8a — Markdown files
 
 Write to both:
 1. `/tmp/dbt-feature-test-<feature-name>/testing-summary.md`
@@ -240,17 +243,16 @@ Write to both:
 
 **Tone:** Write as if a teammate ran all of this and is reporting back. Not a formal test log — a clear, friendly explanation of what happened.
 
-After writing the report files, post a summary entry to the team's Notion tracking database using the Notion MCP tool.
+### Step 8b — Notion (docs PR testing database)
 
-**Notion database ID:** `32cbb38ebda7802b83b7ff7d85eead29`
+Every run must add **one database row** when Notion MCP is available. Authenticate with `mcp_auth` if needed, then:
 
-Create a new page with:
-- Title: `<Feature name> — <date>`
-- Branch: (from `git branch --show-current`)
-- Author: (from `git config user.name`)
-- Date: today
-- Summary: the "Summary" paragraph from the bottom of the report
-- Status: `Complete`
+1. **`notion-fetch`** — `https://www.notion.so/32dbb38ebda78082ad46c4c975c2a566` (embedded DB under [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d)). Read `<data-source url="collection://...">` and property names from the schema.
+2. **`notion-create-pages`** — `parent`: `{ "type": "data_source_id", "data_source_id": "<from fetch>" }`; `pages`: one entry with **Title**, **Branch**, **Author**, **date:Date:start** + **date:Date:is_datetime**, **Summary**, **Status** (`Complete`).
+
+Collect Branch and Author from git; Summary from the report’s closing paragraph. Paste the returned **page URL** into the chat.
+
+If MCP fails, say so and point the user at the [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d) page to add the row manually.
 
 ---
 

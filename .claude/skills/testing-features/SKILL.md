@@ -67,7 +67,8 @@ Progress:
 [ ] Step 5  Compile (pre-flight)
 [ ] Step 6  Run commands
 [ ] Step 7  Validate in warehouse
-[ ] Step 8  Write testing summary
+[ ] Step 8a Write testing summary (markdown files)
+[ ] Step 8b Post row to Notion (docs PR testing database)
 ```
 
 Mark each `[x]` as it completes. Mark `[!]` with a one-line reason if a step fails.
@@ -279,7 +280,9 @@ Record: each query run, and whether the result matched expectations from Step 2.
 
 ---
 
-## Step 8: Write the testing summary
+## Step 8: Write the testing summary and post to Notion
+
+### Step 8a — Markdown files
 
 Write the completed report to **both** locations:
 
@@ -301,25 +304,40 @@ Clarify in the summary: opening a folder or a `file://` link does not run `sourc
 
 **Tone:** Write as if a teammate ran all of this and is reporting back. Not a formal test log — a clear, friendly explanation of what happened. The writer should feel like they tested it themselves.
 
-After writing the report files, post a summary entry to the team's Notion tracking database using the Notion MCP tool.
+### Step 8b — Notion database row (required when Notion MCP works)
 
-**Notion database ID:** `32cbb38ebda7802b83b7ff7d85eead29`
+Every testing summary must also become **one row** in the **docs PR testing** database. Use the **Notion MCP** (authenticate with `mcp_auth` if needed).
 
-Collect these values before posting:
-- **Branch name:** run `git branch --show-current`
-- **Author:** run `git config user.name`
-- **Date:** today's date
-- **Summary:** the "Summary" paragraph from the bottom of the report
+**Where to post**
 
-Create a new page in the database with these properties:
-- Title: `<Feature name> — <date>`
-- Branch: `<branch name>`
-- Author: `<author>`
-- Date: `<date>`
-- Summary: `<summary paragraph>`
-- Status: `Complete`
+- **Hub page (human-readable):** [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d)
+- **Embedded database URL (use with MCP `fetch`):** `https://www.notion.so/32dbb38ebda78082ad46c4c975c2a566`
+- **Database ID:** `32dbb38ebda78082ad46c4c975c2a566`
 
-If the Notion MCP is unavailable or returns an auth error, skip this step and tell the user: "Notion posting skipped — check that your Notion MCP token is configured in ~/.claude/settings.json."
+**MCP workflow**
+
+1. Call **`notion-fetch`** with the **database URL** above (or the hub page URL — the response lists `<database>` and `<data-source url="collection://...">` tags).
+2. Read the data source **schema** from the fetch result. Property names must match exactly (including `date:Date:start` / `date:Date:is_datetime` for the Date column).
+3. Call **`notion-create-pages`** with:
+   - `parent`: `{ "type": "data_source_id", "data_source_id": "<uuid from collection://...>" }`
+   - `pages`: one object with `properties` for each column.
+
+**Values to collect before posting**
+
+- **Title:** `<Feature name> — <date>` (maps to the title column **Title**)
+- **Branch:** `git branch --show-current`
+- **Author:** `git config user.name`
+- **Date:** set `date:Date:start` to today (ISO date, e.g. `2026-03-24`) and `date:Date:is_datetime` to `0` unless you need time precision
+- **Summary:** the **Summary** paragraph from the bottom of the report
+- **Status:** `Complete`
+
+If the schema differs (for example after columns are renamed in Notion), follow the **fetch** output, not this list.
+
+**After posting:** Paste the **new page URL** returned by `notion-create-pages` into the chat so the writer can open the row.
+
+**If Notion MCP is unavailable** (no server, auth error, or user declined): skip Step 8b, say so explicitly, and remind the user to connect Notion MCP in Cursor or Claude Code settings and add the row manually to [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d).
+
+**Spot-check:** Optionally open the database and confirm the new row appears next to prior entries.
 
 ---
 
