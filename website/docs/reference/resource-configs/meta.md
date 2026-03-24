@@ -561,6 +561,7 @@ To demonstrate how to use the `meta` config, here are some examples:
   - [Assign owner and favorite\_color in the dbt\_project.yml as a config property](#assign-owner-and-favorite_color-in-the-dbt_projectyml-as-a-config-property)
   - [Assign meta to semantic model](#assign-meta-to-semantic-model)
   - [Assign meta to dimensions, measures, entities](#assign-meta-to-dimensions-measures-entities)
+  - [Add meta to generic and singular data tests](#add-meta-to-generic-and-singular-data-tests)
   - [Access meta values in Python models](#access-meta-values-in-python-models)
 
 
@@ -856,6 +857,48 @@ semantic-models:
 </TabItem>
 </Tabs>
 </VersionBlock>
+
+### Add meta to generic and singular data tests
+
+This example uses property files for [generic data tests](/docs/build/data-tests#generic-data-tests), and `config()` in SQL for [singular data tests](/docs/build/data-tests#singular-data-tests). You can also set `config.meta` in [`tests/properties.yml`](/reference/data-test-configs) as well.
+
+<Tabs>
+<TabItem value="generic" label="Generic data test">
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null:
+              config:
+                meta:
+                  owner: "@data_team"
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="singular" label="Singular data test">
+
+<File name='tests/assert_order_ids.sql'>
+
+```sql
+{{ config(meta={'owner': '@data_team'}) }}
+
+select *
+from {{ ref('orders') }}
+where order_id is null
+```
+
+</File>
+
+</TabItem>
+</Tabs>
 
 ### Access meta values in Python models
 
