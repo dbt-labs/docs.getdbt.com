@@ -178,7 +178,8 @@ Use the `meta` field to add metadata to [generic](/docs/build/data-tests#generic
 **Generic data tests**
 Add meta under the config block in your YAML properties file:
 
-<File name="models/properties.yml"/>
+<File name="models/properties.yml">
+  
 ```yaml
 models:
   - name: my_model
@@ -193,7 +194,9 @@ models:
 </File>
 
 Or set defaults in `dbt_project.yml`:
-<File name="dbt_project.yml"/>
+
+<File name="dbt_project.yml">
+
 ```yaml
 data_tests:
   my_project:
@@ -206,7 +209,8 @@ data_tests:
 
 Add meta in the SQL test file using `config()`:
 
-<File name="tests/my_singular_test.sql"/>
+<File name="tests/my_singular_test.sql">
+
 ```sql
 {{ config(meta={'owner': 'docs team'}) }}
 
@@ -217,7 +221,7 @@ where my_column is null
 
 Or document in `tests/schema.yml`:
 
-<File name="tests/properties.yml"/>
+<File name="tests/properties.yml">
 
 ```yaml
 data_tests:
