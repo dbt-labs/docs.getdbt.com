@@ -1563,6 +1563,7 @@ const sidebarSettings = {
                 "reference/global-configs/indirect-selection",
                 "reference/global-configs/json-artifacts",
                 "reference/global-configs/parsing",
+                "reference/global-configs/sqlparse",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
                 "reference/global-configs/resource-type",
