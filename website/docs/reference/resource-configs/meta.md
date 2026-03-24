@@ -2,7 +2,6 @@
 resource_types: all
 datatype: "{<dictionary>}"
 default_value: {}
-hide_table_of_contents: true
 ---
 
 <Tabs
@@ -173,7 +172,65 @@ See [configs and properties](/reference/configs-and-properties) for details.
 
 <TabItem value="tests">
 
-You can't add YAML `meta` configs for [generic tests](/docs/build/data-tests#generic-data-tests). However, you can add a `meta` config to [singular tests](/docs/build/data-tests#singular-data-tests) using `config()` at the top of the test file. 
+Use the `meta` field to add metadata to [generic](/docs/build/data-tests#generic-data-tests) or [singular tests](/docs/build/data-tests#singular-data-tests). `meta` accepts key-value pairs, is compiled into `manifest.json`, and appears in auto-generated documentation.
+
+**Generic data tests**
+
+Add `meta` under the `config` block in your `properties.yml` file:
+
+<File name="models/properties.yml">
+  
+```yaml
+models:
+  - name: my_model
+    columns:
+      - name: my_column
+        data_tests:
+          - unique:
+              config:
+                meta:
+                  owner: "docs team"
+ ```
+</File>
+
+Or set defaults in `dbt_project.yml`:
+
+<File name="dbt_project.yml">
+
+```yaml
+data_tests:
+  my_project:
+    +meta:
+      owner: "docs team"
+ ```
+</File>
+
+**Singular data tests**
+
+Add `meta` in the SQL test file using `config()`:
+
+<File name="tests/my_singular_test.sql">
+
+```sql
+{{ config(meta={'owner': 'docs team'}) }}
+
+select * from {{ ref('my_model') }}
+where my_column is null
+```
+</File>
+
+Or document in `tests/properties.yml`:
+
+<File name="tests/properties.yml">
+
+```yaml
+data_tests:
+  - name: my_singular_test
+    config:
+      meta:
+        owner: "analytics_team"
+```
+</File>
 
 </TabItem>
 
@@ -501,6 +558,7 @@ To demonstrate how to use the `meta` config, here are some examples:
   - [Assign owner and favorite\_color in the dbt\_project.yml as a config property](#assign-owner-and-favorite_color-in-the-dbt_projectyml-as-a-config-property)
   - [Assign meta to semantic model](#assign-meta-to-semantic-model)
   - [Assign meta to dimensions, measures, entities](#assign-meta-to-dimensions-measures-entities)
+  - [Add meta to generic and singular data tests](#add-meta-to-generic-and-singular-data-tests)
   - [Access meta values in Python models](#access-meta-values-in-python-models)
 
 
@@ -796,6 +854,48 @@ semantic-models:
 </TabItem>
 </Tabs>
 </VersionBlock>
+
+### Add meta to generic and singular data tests
+
+The following examples show how to add `meta` to [generic data tests](/docs/build/data-tests#generic-data-tests) in a `properties.yml` file, and to [singular data tests](/docs/build/data-tests#singular-data-tests) using `config()`. You can also set defaults in `dbt_project.yml` or `tests/properties.yml`.
+
+<Tabs>
+<TabItem value="generic" label="Generic data test">
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null:
+              config:
+                meta:
+                  owner: "@data_team"
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="singular" label="Singular data test">
+
+<File name='tests/assert_order_ids.sql'>
+
+```sql
+{{ config(meta={'owner': '@data_team'}) }}
+
+select *
+from {{ ref('orders') }}
+where order_id is null
+```
+
+</File>
+
+</TabItem>
+</Tabs>
 
 ### Access meta values in Python models
 
