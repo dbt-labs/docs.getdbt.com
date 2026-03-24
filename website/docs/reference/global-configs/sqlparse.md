@@ -5,7 +5,7 @@ sidebar: "sqlparse"
 description: "Configure sqlparse grouping limits when dbt compiles SQL."
 ---
 
-dbt uses the Python [`sqlparse`](https://pypi.org/project/sqlparse/) library when it parses SQL. For large or complex queries, you may need to tune how `sqlparse` groups tokens to avoid performance issues or parsing limits.
+dbt uses the Python [`sqlparse`](https://pypi.org/project/sqlparse/) library when it parses SQL. For large or complex queries, you may need to adjust how `sqlparse` groups tokens to avoid performance issues or parsing limits.
 
 You can use the `--sqlparse` flag to adjust how `sqlparse` groups tokens. This maps to the grouping limits described in the [sqlparse Security and Performance Considerations](https://sqlparse.readthedocs.io/en/latest/api.html#security-and-performance-considerations).
 
@@ -14,18 +14,24 @@ Supported keys:
 <SimpleTable>
 | Key | What it does |
 | --- | --- |
-| `MAX_GROUPING_DEPTH` | Maximum recursion depth during token grouping |
-| `MAX_GROUPING_TOKENS` | Maximum number of tokens processed in a single grouping operation |
+| `MAX_GROUPING_DEPTH` | Sets the maximum nesting depth when grouping tokens |
+| `MAX_GROUPING_TOKENS` | Sets the maximum number of tokens that can be grouped at once |
 </SimpleTable>
 
 <br></br>
 
-Each value must be an integer. The default for both keys is `null`. Setting a key to `null` leaves the limit unset.
+Each value must be an integer or `null`. The default value for both keys is `null`. Setting a key to `null` leaves the limit unset.
 
 For example, the following command sets both grouping limits:
 
 ```bash
 dbt compile --sqlparse '{"MAX_GROUPING_DEPTH": 200, "MAX_GROUPING_TOKENS": 20000}'
+```
+
+You can configure only one key to set a single limit. Any unspecified key defaults to `null`. In the following example, only the depth limit is raised to `500`; `MAX_GROUPING_TOKENS` is not set, so sqlparse does not apply a custom token limit for this run.
+
+```bash
+dbt compile --sqlparse '{"MAX_GROUPING_DEPTH": 500}'
 ```
 
 You can use `--sqlparse` with the following commands:
