@@ -1,6 +1,337 @@
 ---
-description: Use when the user says "dbt docs fox" or asks to test, validate, or check whether a dbt feature works as documented.
+description: Use when the user asks to test, validate, or check whether a dbt feature works as documented. Sets up a minimal dbt project, runs commands across engines, validates results in the warehouse, and produces a testing summary report.
 alwaysApply: false
 ---
 
-Follow the instructions in `.claude/skills/testing-features/SKILL.md` to run the test.
+# Testing dbt Features
+
+## Overview
+
+When the docs team asks to test or validate a dbt feature, this skill runs the test. It searches the local docs codebase to understand the feature, scaffolds a minimal dbt project, runs dbt commands across engines, validates results in the warehouse, and writes a clear testing summary the writer can read.
+
+## Trigger conditions
+
+- User asks to "test", "validate", or "check" a dbt feature
+- User provides a path to a draft doc and wants to verify the code examples work
+- User wants a "testing summary" before publishing a doc
+
+---
+
+## Step 1: Parse request and gather inputs
+
+Extract from the user's request:
+- **Feature or topic** — what are we testing? (e.g. "python udfs", "incremental models", "snapshots")
+- **Doc path** — did they mention a specific file? (e.g. `website/docs/docs/build/snapshots.md`)
+- **Engines** — did they mention specific engines? (dbt Core, dbt Fusion, dbt platform)
+- **Adapter** — did they mention a warehouse? (Snowflake, BigQuery, Postgres, etc.)
+
+**Check for saved defaults first.** Look for a `~/.dbt-docs-fox/config` file. If present, source the values (adapter, database, schema, profile) and use them without re-asking. If a value is missing, ask for it.
+
+**Check the prompt for overrides.** If the user mentions a specific database, schema, adapter, or profile in their request, use that value instead of the saved default — no need to ask. After the run, if any values differed from what was saved, write the new values to `~/.dbt-docs-fox/config`:
+
+```bash
+mkdir -p ~/.dbt-docs-fox
+cat > ~/.dbt-docs-fox/config <<EOF
+# dbt-docs-fox local config — not tracked by git
+DBT_FOX_ADAPTER="<adapter>"
+DBT_FOX_DATABASE="<database>"
+DBT_FOX_SCHEMA="<schema>"
+DBT_FOX_PROFILE="<profile>"
+EOF
+```
+
+Ask the user only for values not already provided by defaults or the prompt:
+- **Adapter** — which warehouse are you testing against?
+- **Test schema** — what schema should test artifacts be written to? (e.g. `MY_FEATURE_TEST`)
+- **Database** — which database?
+- **Profile** — check `~/.dbt/profiles.yml`. If found, ask which profile/target. If not, prompt for connection details.
+- **Engines** — which engines to test: dbt Core (`dbt`), dbt Fusion (`dbtf`), dbt platform CLI, or all available? Check with `which dbt` and `which dbtf`.
+
+Show a confirmation summary and progress checklist before proceeding:
+
+```
+## dbt docs fox — Test plan: <feature name>
+Adapter:    <adapter>
+Engine(s):  dbt Fusion / dbt Core / dbt platform CLI
+Schema:     DATABASE.SCHEMA
+Profile:    <profile name>
+
+Progress:
+[ ] Step 2  Research feature in local docs
+[ ] Step 3  Scaffold dbt project
+[ ] Step 4  Verify connection
+[ ] Step 5  Compile (pre-flight)
+[ ] Step 6  Run commands
+[ ] Step 7  Validate in warehouse
+[ ] Step 8  Write testing summary
+```
+
+Mark each `[x]` as it completes. Mark `[!]` with a one-line reason if a step fails.
+
+---
+
+## Step 2: Research the feature
+
+**Primary source — search the local docs codebase first:**
+
+Search `website/docs/` and `website/snippets/` for content related to the feature. This is the authoritative source — use what's here before looking anywhere else.
+
+- If the user gave a doc path, read that file directly
+- Search by feature name (e.g. `grep -r "python udf" website/docs/` or glob for relevant files)
+- Read the full page(s) and any snippets referenced in them
+- Look for: syntax, config options, code examples, version caveats, adapter-specific behavior
+
+**Fallback — fetch from the live site:**
+
+If the local codebase doesn't have sufficient detail, fetch from `https://docs.getdbt.com`. Common paths:
+
+| Topic | Path |
+|-------|------|
+| Model configs | `/reference/model-configs` |
+| Python models | `/docs/build/python-models` |
+| Snapshots | `/docs/build/snapshots` |
+| Sources | `/docs/build/sources` |
+| Generic tests | `/docs/build/data-tests` |
+| Macros | `/docs/build/jinja-macros` |
+| dbt_project.yml | `/reference/dbt_project.yml` |
+| Node selection | `/reference/node-selection/syntax` |
+
+**Extract from the research:**
+- All code examples (SQL, Python, YAML, shell commands), grouped by type
+- Testable claims: "this command produces X", "this config enables Y"
+- dbt resources involved: models, macros, UDFs, sources, snapshots, tests, seeds
+- Expected outputs: what should appear in the warehouse after running
+- Version or adapter caveats
+
+Show the extraction to the user before building the project.
+
+---
+
+## Step 3: Scaffold the dbt project
+
+Create the test project at `/tmp/dbt-feature-test-<feature-name>/` (slugified, e.g. `dbt-feature-test-python-udfs`).
+
+**`dbt_project.yml`** (minimal):
+```yaml
+name: feature_test
+version: '1.0.0'
+profile: feature_test
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+models:
+  feature_test:
+    +materialized: table
+```
+
+**`profiles.yml`** — use the adapter and credentials from Step 1:
+
+```yaml
+feature_test:
+  target: dev
+  outputs:
+    dev:
+      type: <adapter>          # snowflake, bigquery, postgres, etc.
+      # ... adapter-specific fields from user's input
+      schema: <schema>
+      database: <database>
+```
+
+**`models/`**, **`macros/`**, **`tests/`**, **`seeds/`** — create files from the code examples extracted in Step 2. Adapt examples minimally to be runnable.
+
+**`packages.yml`** — only if the feature requires packages. Run `dbt deps` if created.
+
+**Local Python environment (`.venv`) — create for every scaffold:**
+
+```bash
+cd /tmp/dbt-feature-test-<feature-name>/
+python3 -m venv .venv
+source .venv/bin/activate   # macOS / Linux
+pip install "dbt-<adapter>"
+```
+
+**`dbt-fox-env.sh`** — always write this file in the project root (executable: `chmod +x dbt-fox-env.sh`):
+
+```bash
+#!/usr/bin/env bash
+# Usage: source /absolute/path/to/dbt-feature-test-<slug>/dbt-fox-env.sh
+if [[ -n "${BASH_SOURCE[0]:-}" ]]; then
+  _FOX_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+else
+  _FOX_DIR="$(cd "$(dirname "$0")" && pwd)"
+fi
+cd "$_FOX_DIR" || exit 1
+unset _FOX_DIR
+if [[ -f .venv/bin/activate ]]; then
+  source .venv/bin/activate
+  echo "dbt docs fox: venv active in $(pwd)"
+else
+  echo "dbt docs fox: no .venv here — run: python3 -m venv .venv && pip install dbt-<adapter>" >&2
+fi
+```
+
+Show the user every file created with its full contents before proceeding.
+
+---
+
+## Step 4: Verify connection
+
+```bash
+dbtf show --inline "SELECT 1 AS ok" --project-dir . --profiles-dir . 2>&1
+```
+
+- If it returns a result row: proceed
+- If it fails: run `dbt debug --project-dir . --profiles-dir .` to diagnose
+
+Do not proceed until connectivity is confirmed.
+
+---
+
+## Step 5: Compile (pre-flight check)
+
+```bash
+# dbt Core
+dbt compile --project-dir . --profiles-dir . 2>&1 | tee output/core-compile.txt
+
+# dbt Fusion
+dbtf compile --project-dir . --profiles-dir . 2>&1 | tee output/fusion-compile.txt
+```
+
+Never attempt `dbt run` on a project that doesn't compile.
+
+---
+
+## Step 6: Run commands
+
+Run for all requested engines simultaneously:
+
+```bash
+dbt run --select <model> --project-dir . --profiles-dir .
+dbtf run --select <model> --project-dir . --profiles-dir .
+dbt build --select <model> --project-dir . --profiles-dir .
+dbtf build --select <model> --project-dir . --profiles-dir .
+```
+
+Capture full stdout/stderr for each engine to `output/<engine>-<command>.txt`. Note behavioral differences between engines.
+
+---
+
+## Step 7: Validate in warehouse
+
+```sql
+-- Does the table/view exist?
+SHOW TABLES LIKE '<model_name>' IN SCHEMA <database>.<schema>;
+
+-- Sample rows
+SELECT * FROM <database>.<schema>.<model_name> LIMIT 5;
+
+-- Row count
+SELECT COUNT(*) FROM <database>.<schema>.<model_name>;
+```
+
+---
+
+## Step 8: Write the testing summary
+
+Write to both:
+1. `/tmp/dbt-feature-test-<feature-name>/testing-summary.md`
+2. Next to the draft doc — `testing-summary-<feature-name>.md` in the same directory
+
+**Tone:** Write as if a teammate ran all of this and is reporting back. Not a formal test log — a clear, friendly explanation of what happened.
+
+After writing the report files, post a summary entry to the team's Notion tracking database using the Notion MCP tool.
+
+**Notion database ID:** `32cbb38ebda7802b83b7ff7d85eead29`
+
+Create a new page with:
+- Title: `<Feature name> — <date>`
+- Branch: (from `git branch --show-current`)
+- Author: (from `git config user.name`)
+- Date: today
+- Summary: the "Summary" paragraph from the bottom of the report
+- Status: `Complete`
+
+---
+
+## Report template
+
+```markdown
+# Testing summary: <Feature name>
+
+**Date:** <date>
+**What I tested:** <one-sentence description>
+**Doc used:** <file path or "searched codebase for <feature>">
+**Engines:** <list>
+**Adapter:** <adapter>
+**Schema:** <DATABASE.SCHEMA>
+
+---
+
+## What I tested and why
+
+<2-3 sentences: what the feature does, why the doc team needs to test it, what the test set out to prove.>
+
+## What I set up
+
+<Every file created, with full contents in code blocks.>
+
+## Commands I ran
+
+<Each command as a copy-pasteable code block.>
+
+## What happened
+
+### dbt Core
+- **Status:** ✅ Pass / ⚠️ Warning / ❌ Fail
+- **Key output:**
+  ```
+  <paste the most relevant output lines>
+  ```
+
+### dbt Fusion (if tested)
+- **Status:** ✅ / ⚠️ / ❌
+- **Difference from Core:** <if any>
+
+## What I checked in the warehouse
+
+<Exact SQL queries and results.>
+
+## Bugs and issues found
+
+| What happened | Type | Diagnosis | Outcome |
+|---------------|------|-----------|---------|
+
+## What this means for your doc
+
+- ✅ What works exactly as documented
+- ⚠️ What needs a caveat
+- 🐛 Any bugs found
+- 💡 Suggestions for the doc
+
+## Open this test project locally
+
+**Enter the project and activate `.venv`:**
+
+```bash
+source /tmp/dbt-feature-test-<slug>/dbt-fox-env.sh
+```
+
+## Summary
+
+<One paragraph. What works, what doesn't, what to include in the doc.>
+```
+
+---
+
+## Reference: Engine command comparison
+
+| Operation | dbt Core | dbt Fusion |
+|-----------|----------|------------|
+| Run models | `dbt run` | `dbtf run` |
+| Run tests | `dbt test` | `dbtf test` |
+| Compile | `dbt compile` | `dbtf compile` |
+| Run macro | `dbt run-operation` | `dbtf run-operation` |
+| Install packages | `dbt deps` | `dbtf deps` |
+
+Always pass `--project-dir` and `--profiles-dir` explicitly.

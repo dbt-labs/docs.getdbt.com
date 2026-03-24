@@ -1,17 +1,16 @@
 ---
 name: testing-features
-description: Use when the user says "dbt docs fox ..." or asks to test, validate, or check whether a dbt feature works. Sets up a minimal dbt project, runs commands across engines, validates results in the warehouse, and produces a testing summary report.
+description: Use when the user asks to test, validate, or check whether a dbt feature works. Sets up a minimal dbt project, runs commands across engines, validates results in the warehouse, and produces a testing summary report.
 ---
 
-# dbt docs fox — Testing dbt Features
+# Testing dbt Features
 
 ## Overview
 
-When the docs team says "dbt docs fox test if X works" or "dbt docs fox validate the examples in this doc", this skill runs the test. It searches the local docs codebase to understand the feature, scaffolds a minimal dbt project, runs dbt commands across engines, validates results in the warehouse, and writes a clear testing summary the writer can read.
+When the docs team asks to test or validate a dbt feature, this skill runs the test. It searches the local docs codebase to understand the feature, scaffolds a minimal dbt project, runs dbt commands across engines, validates results in the warehouse, and writes a clear testing summary the writer can read.
 
 ## Trigger conditions
 
-- User says "dbt docs fox ..." (any freeform request)
 - User asks to "test", "validate", or "check" a dbt feature
 - User provides a path to a draft doc and wants to verify the code examples work
 - User wants a "testing summary" before publishing a doc

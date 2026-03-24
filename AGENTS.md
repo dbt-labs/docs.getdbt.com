@@ -392,6 +392,18 @@ SVG icons live in two locations (for light + dark mode):
 - **Linting**: ESLint with markdown plugin, pre-commit via Husky
 - **Vale**: Style linting config at `.vale.ini`
 
+## Docs team AI workflows
+
+These Claude skills and Cursor rules are available in this repo. Use them by describing what you need in any AI tool (Claude Code, Cursor, etc.) — no commands to memorize. 
+
+| What you need | What to say |
+|---------------|-------------|
+| Test a dbt feature against a warehouse | "test if [feature] works on [adapter]" or "validate the examples in [doc path]" |
+| Convert a Notion export to a blog post | "convert this Notion export to a blog post" + provide the path |
+| Promote a docs-internal branch to public | "promote my private branch [name] to public" (run from the docs-internal repo) |
+
+Skills are defined in `.claude/skills/`. Cursor rules are defined in `.cursor/rules/`. They activate automatically when Claude or Cursor detects a matching request.
+
 ## Common tasks
 
 ### Add a new docs page
