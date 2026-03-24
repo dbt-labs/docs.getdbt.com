@@ -176,6 +176,7 @@ See [configs and properties](/reference/configs-and-properties) for details.
 Use the `meta` field to add metadata to [generic](/docs/build/data-tests#generic-data-tests) or [singular tests](/docs/build/data-tests#singular-data-tests). `meta` accepts key-value pairs, is compiled into `manifest.json`, and appears in auto-generated documentation.
 
 **Generic data tests**
+
 Add meta under the config block in your YAML properties file:
 
 <File name="models/properties.yml">
@@ -219,7 +220,7 @@ where my_column is null
 ```
 </File>
 
-Or document in `tests/schema.yml`:
+Or document in `tests/properties.yml`:
 
 <File name="tests/properties.yml">
 
