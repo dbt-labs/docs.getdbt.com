@@ -98,7 +98,7 @@ The command accesses the data platform to cache-related metadata, and to run int
 - `--no-introspect` to disable [introspective queries](/faqs/Warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a resource's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example:`dbt compile --no-introspect`.
 
 :::caution Resources that use introspective queries
-Compiled SQL for resources that use introspective queries may depend on metadata from your warehouse. As a result, compilation may be incomplete or may differ depending on the state of that metadata.
+Compiled SQL for resources that use introspective queries may depend on metadata from your warehouse. Compilation may be incomplete or may differ depending on the state of that metadata.
 :::
 
 ### FAQs
