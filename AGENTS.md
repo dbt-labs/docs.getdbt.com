@@ -398,7 +398,7 @@ These Claude skills and Cursor rules are available in this repo. Use them by des
 
 | What you need | What to say |
 | --- | --- |
-| Test a dbt feature against a warehouse | "test if [feature] works on [adapter]" or "validate the examples in [doc path]" — Summaries go to **`/tmp/dbt-feature-test-.../testing-summary.md`** and the **[docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d)** Notion database, not a permanent file in this repo. |
+| Test a dbt feature against a warehouse | "test if [feature] works on [adapter]" or "validate the examples in [doc path]" — Scratch projects use **`dbt-cloud.project-id: 372475`** (fallback **`283328`** if Cloud project access fails). Summaries go to **`/tmp/.../testing-summary.md`** and **[docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d)** (Notion), not a permanent repo file. |
 | Convert a Notion export to a blog post | "convert this Notion export to a blog post" + provide the path |
 | Promote a docs-internal branch to public | "promote my private branch [name] to public" (run from the docs-internal repo) |
 

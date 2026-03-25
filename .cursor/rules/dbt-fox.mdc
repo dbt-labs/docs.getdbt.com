@@ -112,6 +112,15 @@ Show the extraction to the user before building the project.
 
 Create the test project at `/tmp/dbt-feature-test-<feature-name>/` (slugified, e.g. `dbt-feature-test-python-udfs`).
 
+**`dbt-cloud` (docs team defaults)** — in every `dbt_project.yml`, include:
+
+```yaml
+dbt-cloud:
+  project-id: 372475   # default
+```
+
+**Fallback Cloud project** — if connection fails with a **wrong / inaccessible Cloud project** error, swap to `project-id: 283328` and retry once. Honor a user-supplied `project-id` if they override in chat. See [dbt_project.yml](https://docs.getdbt.com/reference/dbt_project.yml).
+
 **`dbt_project.yml`** (minimal):
 ```yaml
 name: feature_test
@@ -121,6 +130,10 @@ model-paths: ["models"]
 macro-paths: ["macros"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
+
+dbt-cloud:
+  project-id: 372475
+
 models:
   feature_test:
     +materialized: table
@@ -183,7 +196,7 @@ dbtf show --inline "SELECT 1 AS ok" --project-dir . --profiles-dir . 2>&1
 ```
 
 - If it returns a result row: proceed
-- If it fails: run `dbt debug --project-dir . --profiles-dir .` to diagnose
+- If it fails: run `dbt debug --project-dir . --profiles-dir .` to diagnose. If the failure looks Cloud **project**-related, try **`dbt-cloud.project-id: 283328`** once, then ask the user.
 
 Do not proceed until connectivity is confirmed.
 

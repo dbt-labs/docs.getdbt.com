@@ -116,7 +116,16 @@ Show the extraction to the user before building the project.
 
 Create the test project at `/tmp/dbt-feature-test-<feature-name>/` (slugified, e.g. `dbt-feature-test-python-udfs`).
 
-**`dbt_project.yml`** (minimal):
+**Default dbt platform project (docs team)** — always include a top-level **`dbt-cloud`** block in `dbt_project.yml` so **dbt platform CLI** and **platform-connected** runs target our org project. Use this order:
+
+| Priority | project-id | When to use |
+| --- | --- | --- |
+| Default | 372475 | Every scratch project unless the user overrides the ID in chat. |
+| Fallback | 283328 | Step 4 fails with wrong or inaccessible Cloud **project** (access, not found, entitlement): swap `project-id`, retry once, then ask the user. |
+
+If the user names a different `project-id` in the request, use their value instead. Pure **local** dbt Core with only `profiles.yml` may ignore `dbt-cloud`; keeping it present is still correct for writers who use the Cloud CLI. See [Configure the dbt CLI](https://docs.getdbt.com/docs/cloud/configure-cloud-cli) and [`dbt_project.yml`](https://docs.getdbt.com/reference/dbt_project.yml).
+
+**`dbt_project.yml`** (minimal — **default `project-id` shown**):
 ```yaml
 name: feature_test
 version: '1.0.0'
@@ -125,6 +134,10 @@ model-paths: ["models"]
 macro-paths: ["macros"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
+
+dbt-cloud:
+  project-id: 372475
+
 models:
   feature_test:
     +materialized: table
@@ -201,7 +214,7 @@ dbtf show --inline "SELECT 1 AS ok" --project-dir . --profiles-dir . 2>&1
 - If it returns a result row: connection confirmed — proceed
 - If it fails: run `dbt debug --project-dir . --profiles-dir .` to diagnose
 
-If connection fails: show the exact error, ask the user for corrected credentials, update `profiles.yml`, and retry. Do not proceed until connectivity is confirmed.
+If connection fails: show the exact error. If it looks like a **dbt Cloud project** issue and `dbt_project.yml` still has `372475`, update **`dbt-cloud.project-id`** to **`283328`**, retry **once**, then escalate if still failing. Otherwise ask the user for corrected credentials, update `profiles.yml`, and retry. Do not proceed until connectivity is confirmed.
 
 If packages are needed: run `dbt deps` before proceeding.
 
