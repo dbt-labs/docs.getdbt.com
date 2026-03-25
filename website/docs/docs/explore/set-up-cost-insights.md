@@ -72,9 +72,9 @@ For more information on how to assign permissions to users, refer to [About user
         - Access to a [Unity Catalog workspace](https://docs.databricks.com/aws/en/admin/system-tables/#requirements)
         - `USE` permissions on the catalog and schema
         - `SELECT` permissions on the following system tables:
-            - [`system.billing`](https://docs.databricks.com/aws/en/admin/system-tables/billing)
-            - [`system.pricing`](https://docs.databricks.com/aws/en/admin/system-tables/pricing)
-            - [`system.query_history`](https://docs.databricks.com/aws/en/admin/system-tables/query-history)
+            - [`system.billing.usage`](https://docs.databricks.com/aws/en/admin/system-tables/billing)
+            - [`system.billing.list_prices`](https://docs.databricks.com/aws/en/admin/system-tables/pricing)
+            - [`system.query.history`](https://docs.databricks.com/aws/en/admin/system-tables/query-history)
         
         For more information, see the Databricks documentation on [granting access to system tables](https://docs.databricks.com/aws/en/admin/system-tables/#grant-access-to-system-tables).
         </Expandable>
