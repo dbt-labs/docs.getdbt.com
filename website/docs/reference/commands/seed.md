@@ -11,9 +11,11 @@ Seeds are configured in the `dbt_project.yml` file, where you can define options
 This section covers common `dbt seed` results (artifacts and CLI output) and options you might use when running seeds.
 
 Use artifacts when you want to inspect or troubleshoot what happened during execution.
-- Artifacts: Running `dbt seed` produces dbt execution artifacts, including `run_results.json` for executed seeds. For details on what’s included and how to interpret it, refer to [Run results JSON file](/reference/artifacts/run-results-json).
+- Artifacts: Running `dbt seed` produces dbt execution artifacts, including `run_results.json` for executed seeds. For details on what’s included and how to interpret it, refer to [Run results JSON file](/reference/artifacts/run-results-json).<br />
+
 Use resource selection when you want to run only a subset of seeds.
-- Selecting resources: For advanced selection patterns (tags, paths, graph operators, and more), read [Syntax overview](/reference/node-selection/syntax).
+- Selecting resources: For advanced selection patterns (tags, paths, graph operators, and more), read [Syntax overview](/reference/node-selection/syntax).<br />
+
 Use global flags when you want to control command behavior, logging, and runtime settings.
 - Flags: `dbt seed` supports dbt global flags. For the full list, refer to [Command line options](/reference/global-configs/command-line-options) and [Available flags](/reference/global-configs/about-global-configs#available-flags).
 
