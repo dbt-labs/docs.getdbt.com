@@ -8,7 +8,7 @@ Seeds are configured in the `dbt_project.yml` file, where you can define options
 
 ## Overview
 
-This section covers common `dbt seed` outputs and options you might use when running seeds.
+This section covers common `dbt seed` results (artifacts and CLI output) and options you might use when running seeds.
 
 - Artifacts: Running `dbt seed` produces dbt execution artifacts, including `run_results.json` for executed seeds. For details on what’s included and how to interpret it, refer to [Run results JSON file](/reference/artifacts/run-results-json).
 - Selecting resources: For advanced selection patterns (tags, paths, graph operators, and more), read [Syntax overview](/reference/node-selection/syntax).
