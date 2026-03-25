@@ -33,13 +33,12 @@ OAuth is currently available with the local MCP server only. For [remote MCP ser
 2. Go to **Account settings** and copy your **Access URL** (for example, `abc123.us1.dbt.com`). 
 
 :::tip Multi-cell and DBT_HOST format
-The `DBT_HOST` field accepts both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com`.
+- The `DBT_HOST` field accepts both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com`.
 
-If your Access URL is `abc123.us1.dbt.com`, split it into two variables:
-- `DBT_HOST=us1.dbt.com`
-- `MULTICELL_ACCOUNT_PREFIX=abc123`
-
-Don't include the account prefix in `DBT_HOST`. For more details, see [multi-cell configuration examples](/docs/dbt-ai/setup-local-mcp#api-and-sql-tool-settings).
+- If your Access URL is `abc123.us1.dbt.com`, split it into two variables:
+  - `DBT_HOST=us1.dbt.com`
+  - `MULTICELL_ACCOUNT_PREFIX=abc123`
+  Don't include the account prefix in `DBT_HOST`. For more details, see [multi-cell configuration examples](/docs/dbt-ai/setup-local-mcp#api-and-sql-tool-settings).
 :::
 
 #### Add the config to your MCP client
