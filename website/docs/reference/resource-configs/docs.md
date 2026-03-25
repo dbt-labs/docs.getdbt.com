@@ -53,7 +53,7 @@ models:
 
 <TabItem value="sources">
 
-The `docs` config is not available for sources.
+The `docs` config isn’t supported for sources.
 
 </TabItem>
 
