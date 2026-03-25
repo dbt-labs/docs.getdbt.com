@@ -30,6 +30,7 @@ Key:
 | Auth provider            | W             | -             | -                   | -                    | -                       | -               | W              | R      |
 | Billing                  | W             | W             | -                   | -                    | -                       | -               | -              | R      |
 | Connections              | W             | -             | R†                  | R                    | -                       | W               | -              | -      |
+| Cost Insights            | R             | -             | W                   | R                    | -                       | R               | -              | R      |
 | Groups                   | W             | -             | -                   | -                    | -                       | R               | W              | R      |
 | Invitations              | W             | -             | -                   | -                    | -                       | W               | W              | R      |
 | IP restrictions          | W             | -             | -                   | -                    | -                       | -               | W              | R      |
@@ -44,7 +45,7 @@ Key:
 
 \* Permission sets with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
 
-† Cost Insights Admin can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
+† **Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
 
 #### Project access for account permissions
@@ -54,6 +55,7 @@ Key:
 |:-----------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Environment credentials      | W             | -             | -                   | -                    | W               | -              | R      |
 | Custom env. variables        | W             | -             | -                   | -                    | W               | -              | R      |
+| Cost Insights                | R             | -             | W                   | R                    | R               | -              | R      |
 | Data platform configurations | W             | -             | -                   | -                    | W               | -              | R      |
 | Develop (IDE or CLI)         | W             | -             | -                   | -                    | W               | -              | -      |
 | Environments                 | W             | -             | -                   | -                    | W               | -              | R      |
@@ -83,7 +85,8 @@ Key:
 | Account settings         |   R   |    -    |         -           |          -           |       R        |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
 | Auth provider            |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Billing                  |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Connections              |   R   |    R    |         R†          |          R           |       R        |     R     |     R     |     R     |     -       |      -      |    -     |        -       |      R      |     R      |
+| Connections              |   R   |    R    |         R*          |          R           |       R        |     R     |     R     |     R     |     -       |      -      |    -     |        -       |      R      |     R      |
+| Cost Insights            |   -   |    -    |         W           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
 | Groups                   |   R   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
 | Invitations              |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      R      |     R      |
 | Licenses                 |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      -      |     R      |
@@ -94,7 +97,7 @@ Key:
 | Webhooks                 |   W   |    -    |         -           |          -           |       -        |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 </FilterableTable>
 
-† Cost Insights Admin can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
+\* **Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
 #### Project access for project permissions
 
@@ -103,6 +106,7 @@ Key:
 |--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
 | Environment credentials  |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
 | Custom env. variables    |   W   |    W#  |         -           |          -           |       W        |     W#    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
+| Cost Insights            |   -   |    -    |         W           |          R           |       R        |     -     |      -       |     R     |     R     |      -      |      -      |                  -                      |       -        |     -       |     R      |
 | Data platform configs    |   W   |    W    |         -           |          -           |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
 | Develop (IDE or CLI)     |   W   |    W    |         -           |          -           |       -        |     W     |      -       |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
 | Environments             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      -      |      R      |                  -                      |       -        |     R       |     R      |
