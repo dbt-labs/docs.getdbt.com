@@ -163,7 +163,9 @@ macros:
 Note that for backwards compatibility, `docs` is supported as a top-level key, but without the capabilities of config inheritance.
 
 ## Definition
-You can use the `docs` config to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
+You can use the `docs` config to provide documentation-specific configuration for resources. It supports the following attributes:
+- `show`: Controls whether nodes appears in the auto-generated documentation website.
+- `node_color`: Controls the colors of nodes displayed in the DAG. This is supported for models, seeds, snapshots, and analyses. Other node types are not supported.
 
 **Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
