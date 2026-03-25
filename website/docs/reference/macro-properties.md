@@ -5,7 +5,7 @@ id: macro-properties
 
 import PropsCallout from '/snippets/_config-prop-callout.md';
 
-You can declare macro properties and configs `.yml` files in your project. <PropsCallout title={frontMatter.title}/> 
+You can declare macro properties and configs in `.yml` files in your project. <PropsCallout title={frontMatter.title}/> 
 
 Macros support a `config` block. You can define `meta` and `docs` within `config`. 
 
