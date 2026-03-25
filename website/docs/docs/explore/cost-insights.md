@@ -176,7 +176,7 @@ Keep the following in mind when using Cost Insights:
 - The data collection job processes completed calendar days only. It does not include the current day because warehouse usage data may still be incomplete.
     - Jobs that ran yesterday (or earlier) will have cost data available after the next daily refresh.
     - Jobs that ran today will not have cost data until the following day’s refresh, regardless of what time they ran. 
-- If you don’t see cost data for a recent job, make sure at least one full calendar day has passed since it ran. The **Updated** badge in the Cost Insights section shows when the last refresh occurred.
+- If you don’t see cost data for a recent job, make sure at least one full calendar day has passed since it ran. The **Updated** badge in the **Cost Insights** section shows when the last refresh occurred.
 - You need sufficient [permissions](/docs/explore/set-up-cost-insights#assign-required-permissions) to query warehouse metadata tables.
 
 **Cost accuracy**
