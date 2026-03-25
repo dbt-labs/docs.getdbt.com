@@ -34,3 +34,14 @@ Refer to the following database permission pages for more info on examples and h
 - [Postgres](/reference/database-permissions/postgres-permissions)
 - [Redshift](/reference/database-permissions/redshift-permissions)
 - [Snowflake](/reference/database-permissions/snowflake-permissions)
+
+### Fusion engine warehouse privileges
+
+When projects run on the <Constant name="fusion_engine" /> (Fusion CLI or a Fusion-supported connection on the <Constant name="dbt_platform" />), use the **Warehouse permissions** sections in the Fusion adapter setup guides for detailed privilege tables:
+
+- [Snowflake](/docs/fusion/connect-data-platform-fusion/snowflake-setup#warehouse-permissions)
+- [BigQuery](/docs/fusion/connect-data-platform-fusion/bigquery-setup#warehouse-permissions)
+- [Redshift](/docs/fusion/connect-data-platform-fusion/redshift-setup#warehouse-permissions)
+- [Databricks](/docs/fusion/connect-data-platform-fusion/databricks-setup#warehouse-permissions)
+
+The same snippets are included on each platform **Connect** page under **Warehouse permissions for the Fusion engine**.

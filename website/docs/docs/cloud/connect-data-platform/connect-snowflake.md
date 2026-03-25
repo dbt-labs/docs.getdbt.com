@@ -15,6 +15,14 @@ Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permi
 
 :::
 
+## Warehouse permissions for Fusion
+
+import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+
+<FusionSnowflakeWarehousePerms />
+
+For role examples in Snowflake, see [Snowflake permissions](/reference/database-permissions/snowflake-permissions).
+
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 <SnowflakeColumn />
