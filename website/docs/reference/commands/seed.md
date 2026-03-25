@@ -68,7 +68,7 @@ Use `--full-refresh` to force a full reload of seed data (rather than an increme
 
 For information about configuring seeds (for example, column types and quoting behavior), refer to [Seed configurations](/reference/seed-configs).
 
-## Related content
+## Related docs
 
 - [Seed configurations](/reference/seed-configs)
 - [Add Seeds to your DAG](/docs/build/seeds)
