@@ -67,7 +67,7 @@ Progress:
 [ ] Step 5  Compile (pre-flight)
 [ ] Step 6  Run commands
 [ ] Step 7  Validate in warehouse
-[ ] Step 8a Write testing summary (markdown files)
+[ ] Step 8a Write `/tmp/.../testing-summary.md` (no repo copy)
 [ ] Step 8b Post row to Notion (docs PR testing database)
 ```
 
@@ -282,14 +282,13 @@ Record: each query run, and whether the result matched expectations from Step 2.
 
 ## Step 8: Write the testing summary and post to Notion
 
-### Step 8a — Markdown files
+### Step 8a — Markdown file (temporary only)
 
-Write the completed report to **both** locations:
+Write the completed report to:
 
-1. **`/tmp/dbt-feature-test-<feature-name>/testing-summary.md`** — working copy (will be deleted on reboot or after ~3 days)
-2. **Next to the draft doc** — permanent copy, named `testing-summary-<feature-name>.md` in the same directory as the doc file. If no doc path was given, ask the user where to save it.
+**`/tmp/dbt-feature-test-<feature-name>/testing-summary.md`**
 
-Always write to both. Tell the user where the permanent copy lives.
+That path is the only markdown artifact (`/tmp` may be cleared on reboot). **Do not** write `testing-summary-*.md` into the docs repo or next to draft docs — the **Notion** row (Step 8b) is the durable record for the team. Tell the user the absolute path to the temp file and that details also live in Notion.
 
 **Navigation and environment — required in every summary**
 
@@ -306,7 +305,7 @@ Clarify in the summary: opening a folder or a `file://` link does not run `sourc
 
 ### Step 8b — Notion database row (required when Notion MCP works)
 
-Every testing summary must also become **one row** in the **docs PR testing** database. Use the **Notion MCP** (authenticate with `mcp_auth` if needed).
+Every testing summary must also become **one row** in the **docs PR testing** database. **Always** run Step 8b after Step 8a unless the Notion MCP is unavailable — do not end the run without a Notion row when MCP is available (the temp markdown alone is not enough for the team). Use the **Notion MCP** (authenticate with `mcp_auth` if needed).
 
 **Where to post**
 

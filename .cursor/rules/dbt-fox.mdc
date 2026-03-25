@@ -63,7 +63,7 @@ Progress:
 [ ] Step 5  Compile (pre-flight)
 [ ] Step 6  Run commands
 [ ] Step 7  Validate in warehouse
-[ ] Step 8a Write testing summary (markdown files)
+[ ] Step 8a Write `/tmp/.../testing-summary.md` (no repo copy)
 [ ] Step 8b Post row to Notion (docs PR testing database)
 ```
 
@@ -235,17 +235,15 @@ SELECT COUNT(*) FROM <database>.<schema>.<model_name>;
 
 ## Step 8: Write the testing summary and post to Notion
 
-### Step 8a — Markdown files
+### Step 8a — Markdown file (temporary only)
 
-Write to both:
-1. `/tmp/dbt-feature-test-<feature-name>/testing-summary.md`
-2. Next to the draft doc — `testing-summary-<feature-name>.md` in the same directory
+Write **`/tmp/dbt-feature-test-<feature-name>/testing-summary.md`** only. Do not add `testing-summary-*.md` to the docs repo; **Notion** (Step 8b) is the shared record.
 
 **Tone:** Write as if a teammate ran all of this and is reporting back. Not a formal test log — a clear, friendly explanation of what happened.
 
 ### Step 8b — Notion (docs PR testing database)
 
-Every run must add **one database row** when Notion MCP is available. Authenticate with `mcp_auth` if needed, then:
+Always run Step 8b immediately after Step 8a. Every run must add **one database row** when Notion MCP is available — temp markdown alone is not sufficient for the team. Authenticate with `mcp_auth` if needed, then:
 
 1. **`notion-fetch`** — `https://www.notion.so/32dbb38ebda78082ad46c4c975c2a566` (embedded DB under [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d)). Read `<data-source url="collection://...">` and property names from the schema.
 2. **`notion-create-pages`** — `parent`: `{ "type": "data_source_id", "data_source_id": "<from fetch>" }`; `pages`: one entry with **Title**, **Branch**, **Author**, **date:Date:start** + **date:Date:is_datetime**, **Summary**, **Status** (`Complete`).
