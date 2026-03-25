@@ -4,15 +4,24 @@ sidebar_label: "seed"
 id: "seed"
 ---
 
-The `dbt seed` command will load `csv` files located in the `seed-paths` directory of your dbt project into your <Term id="data-warehouse" />.
+Seeds are configured in the `dbt_project.yml` file, where you can define options like seed file directories and column interpretation. The `dbt seed` command then loads CSV files from your project’s `seed-paths` into your <Term id="data-warehouse" />, creating relations that you can reference in downstream models.
 
+## Details
 
-### Selecting seeds to run
+This section covers common `dbt seed` outputs and options you might use when running seeds.
 
-Specific seeds can be run using the `--select` flag to `dbt seed`. Example:
+- Artifacts: Running `dbt seed` produces dbt execution artifacts, including `run_results.json` for executed seeds. For details on what’s included and how to interpret it, refer to [Run results JSON file](/reference/artifacts/run-results-json).
+- Selecting resources: For advanced selection patterns (tags, paths, graph operators, and more), read [Syntax overview](/reference/node-selection/syntax).
+- Flags: `dbt seed` supports dbt global flags. For the full list, refer to [Command line options](/reference/global-configs/command-line-options) and [Available flags](/reference/global-configs/about-global-configs#available-flags).
 
-```
-$ dbt seed --select "country_codes"
+## Selecting seeds to run
+
+Specific seeds can be run using the `--select` flag to `dbt seed`. 
+
+Example output:
+
+```shell
+dbt seed --select "country_codes"
 Found 2 models, 3 tests, 0 archives, 0 analyses, 53 macros, 0 operations, 2 seed files
 
 14:46:15 | Concurrency: 1 threads (target='dev')
@@ -23,4 +32,46 @@ Found 2 models, 3 tests, 0 archives, 0 analyses, 53 macros, 0 operations, 2 seed
 14:46:16 | Finished running 1 seed in 0.14s.
 ```
 
-For information about configuring seeds (for example, column types and quoting behavior), see [Seed configurations](/reference/seed-configs).
+Examples of common `dbt seed` invocations:
+
+```shell
+# Run all seeds
+dbt seed
+
+# Run one seed
+dbt seed --select "country_codes"
+
+# Rebuild selected seeds from scratch
+dbt seed --select "country_codes state_codes" --full-refresh
+```
+
+### The --full-refresh flag
+
+Use `--full-refresh` to force a full reload of seed data (rather than an incremental update) when you need to rebuild seed tables from scratch. This is useful when:
+
+- You want to force a clean reload of seed data:
+
+  ```shell
+  dbt seed --full-refresh
+  ```
+
+- You have changed the seed structure (for example, column names or types):
+
+  ```shell
+  dbt seed --select "country_codes" --full-refresh
+  ```
+
+- You need consistent behavior across environments after a seed change:
+
+  ```shell
+  dbt seed --select "country_codes state_codes" --full-refresh
+  ```
+
+For information about configuring seeds (for example, column types and quoting behavior), refer to [Seed configurations](/reference/seed-configs).
+
+## Related content
+
+- [Seed configurations](/reference/seed-configs)
+- [Add Seeds to your DAG](/docs/build/seeds)
+- [Syntax overview](/reference/node-selection/syntax)
+- [`dbt build` command](/reference/commands/build)
