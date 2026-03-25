@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# Promote work from docs-internal (private_docs) to docs.getdbt.com (origin).
-# Run from any directory inside your local clone (with both remotes configured).
-# No arguments needed — the script will prompt you for everything.
+# Promote work from docs-internal (PRIVATE_REMOTE) to docs.getdbt.com (PUBLIC_REMOTE).
+# Requires: git, a clean working tree when applying patches, both remotes, mktemp.
+# Optional: GitHub CLI (gh) creates a draft PR after push; without gh you get a compare URL instead.
+# Optional: open (macOS) or xdg-open (many Linux distros) for “open in browser”.
+# No arguments — the script prompts for everything.
 set -euo pipefail
 
 PUBLIC_REMOTE="${PUBLIC_REMOTE:-origin}"
@@ -36,16 +38,98 @@ current_branch() {
   git branch --show-current
 }
 
-open_pr_url() {
+# Resolves owner/repo from PUBLIC_REMOTE (https, git@, or ssh://).
+get_public_repo_slug() {
+  local url raw
+  url="$(git remote get-url "$PUBLIC_REMOTE")"
+  raw="${url%.git}"
+  raw="${raw%/}"
+  if [[ "$raw" =~ ^git@github\.com: ]]; then
+    echo "${raw#git@github.com:}"
+  elif [[ "$raw" =~ ^https://github\.com/ ]]; then
+    echo "${raw#https://github.com/}"
+  elif [[ "$raw" =~ ^ssh://git@github\.com/ ]]; then
+    echo "${raw#ssh://git@github.com/}"
+  else
+    die "Cannot parse GitHub owner/repo from ${PUBLIC_REMOTE} URL: ${url}\n  Expected github.com (https or git@)."
+  fi
+}
+
+open_url_maybe() {
+  local url="$1"
+  if command -v open >/dev/null 2>&1; then
+    open "$url"
+  elif command -v xdg-open >/dev/null 2>&1; then
+    xdg-open "$url"
+  fi
+}
+
+# Prints compare URL and optionally opens the browser (fallback when gh is unavailable).
+open_compare_url() {
   local branch="$1"
-  local url="https://github.com/dbt-labs/docs.getdbt.com/compare/${branch}?expand=1"
+  local slug url
+  slug="$(get_public_repo_slug)"
+  url="https://github.com/${slug}/compare/${branch}?expand=1"
   echo ""
   echo -e "${BOLD}Open your PR here:${RESET}"
   echo -e "  ${CYAN}${url}${RESET}"
-  # Try to open in browser automatically
-  if command -v open >/dev/null 2>&1; then
+  echo "  Set base branch to ${BASE_BRANCH} on GitHub, then create the PR (Draft if you want)."
+  if command -v open >/dev/null 2>&1 || command -v xdg-open >/dev/null 2>&1; then
     read -rp "  Open in browser? [Y/n] " yn
-    [[ "${yn,,}" != "n" ]] && open "$url"
+    [[ "${yn,,}" != "n" ]] && open_url_maybe "$url"
+  fi
+}
+
+# Creates a draft PR with GitHub CLI when possible; otherwise open_compare_url.
+# Set PROMOTE_NO_GH=1 to always skip gh and only show the compare URL.
+create_draft_pr_or_open_compare() {
+  local branch="$1"
+  local title="$2"
+  local title_line repo_slug body_file pr_url
+
+  title_line="${title%%$'\n'*}"
+
+  if [[ -n "${PROMOTE_NO_GH:-}" ]]; then
+    info "PROMOTE_NO_GH=1 — skipping GitHub CLI (optional). Use the compare link below."
+    open_compare_url "$branch"
+    return
+  fi
+
+  if ! command -v gh >/dev/null 2>&1; then
+    warn "GitHub CLI (gh) not installed — automatic draft PR skipped. This is optional; use the compare link instead (or install gh for draft PRs)."
+    open_compare_url "$branch"
+    return
+  fi
+
+  repo_slug="$(get_public_repo_slug)"
+  body_file="$(mktemp)"
+
+  cat >"$body_file" <<'EOF'
+Promoted from docs-internal.
+
+Before marking ready for review: finish the description and request reviewers.
+
+After this PR merges: on the docs-internal pull request, comment with a link to this PR, then choose **Close** (do not merge the internal PR).
+EOF
+
+  echo ""
+  info "Creating draft PR on ${repo_slug} (base: ${BASE_BRANCH}, head: ${branch})..."
+  if pr_url="$(gh pr create \
+    --repo "$repo_slug" \
+    --base "$BASE_BRANCH" \
+    --head "$branch" \
+    --title "$title_line" \
+    --body-file "$body_file" \
+    --draft 2>&1)"; then
+    rm -f "$body_file"
+    ok "Draft PR created"
+    echo "$pr_url"
+  else
+    rm -f "$body_file"
+    warn "Could not create a draft PR with gh."
+    warn "Check: gh auth status, repo access, or whether a PR for this branch already exists."
+    [[ -n "$pr_url" ]] && echo "$pr_url" >&2
+    open_compare_url "$branch"
   fi
 }
 
@@ -121,7 +205,7 @@ cmd_squash() {
   git push -u "$PUBLIC_REMOTE" "$public_branch" -q
   ok "Pushed"
 
-  open_pr_url "$public_branch"
+  create_draft_pr_or_open_compare "$public_branch" "$message"
 }
 
 # ── History mode ──────────────────────────────────────────────────────────────
@@ -168,7 +252,7 @@ cmd_history() {
   git push -u "$PUBLIC_REMOTE" "$branch" -q
   ok "Pushed"
 
-  open_pr_url "$branch"
+  create_draft_pr_or_open_compare "$branch" "Promote ${branch} from docs-internal"
 }
 
 # ── Entry point ───────────────────────────────────────────────────────────────
