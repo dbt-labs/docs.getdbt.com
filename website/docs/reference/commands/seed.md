@@ -18,7 +18,6 @@ This section covers common `dbt seed` outputs and options you might use when run
 
 Specific seeds can be run using the `--select` flag to `dbt seed`. 
 
-Example output:
 
 ```shell
 dbt seed --select "country_codes"
