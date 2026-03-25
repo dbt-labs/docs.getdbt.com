@@ -3,7 +3,7 @@ description: Use when the user asks to test, validate, or check whether a dbt fe
 alwaysApply: false
 ---
 
-# Testing dbt Features
+# Testing dbt features
 
 ## Overview
 
@@ -269,11 +269,13 @@ If MCP fails, say so and point the user at the [docs PR testing](https://www.not
 
 ## Report template
 
+Fill in every section. Do not leave placeholders.
+
 ```markdown
 # Testing summary: <Feature name>
 
 **Date:** <date>
-**What I tested:** <one-sentence description>
+**What I tested:** <one-sentence description of the request>
 **Doc used:** <file path or "searched codebase for <feature>">
 **Engines:** <list>
 **Adapter:** <adapter>
@@ -283,15 +285,18 @@ If MCP fails, say so and point the user at the [docs PR testing](https://www.not
 
 ## What I tested and why
 
-<2-3 sentences: what the feature does, why the doc team needs to test it, what the test set out to prove.>
+<2-3 sentences: what the feature does, why the doc team needs to test it,
+what the test set out to prove. Written for a writer, not an engineer.>
 
 ## What I set up
 
-<Every file created, with full contents in code blocks.>
+<Show every file created, with full contents in code blocks. Explain any
+adaptations made from the doc examples — e.g. "I filled in the placeholder
+table name with a real reference.">
 
 ## Commands I ran
 
-<Each command as a copy-pasteable code block.>
+<List each command as a copy-pasteable code block, with the engine and what it was testing.>
 
 ## What happened
 
@@ -301,38 +306,81 @@ If MCP fails, say so and point the user at the [docs PR testing](https://www.not
   ```
   <paste the most relevant output lines>
   ```
+- **Full output:** `output/core-run.txt`
 
 ### dbt Fusion (if tested)
 - **Status:** ✅ / ⚠️ / ❌
+- **Key output:**
+  ```
+  <paste>
+  ```
 - **Difference from Core:** <if any>
+
+### dbt platform (if tested)
+- **Status:** ✅ / ⚠️ / ❌
+- **Notes:** <any>
 
 ## What I checked in the warehouse
 
-<Exact SQL queries and results.>
+<Show the exact SQL queries run and their results. Be specific: "I ran
+SELECT COUNT(*) and got 3 rows, which matches what the doc says.">
 
 ## Bugs and issues found
 
 | What happened | Type | Diagnosis | Outcome |
 |---------------|------|-----------|---------|
+| <error> | Bug / Limitation / Config / Environment | <what caused it> | ✅ Fixed / ❌ Unresolved / 🐛 Confirmed bug |
 
 ## What this means for your doc
 
-- ✅ What works exactly as documented
-- ⚠️ What needs a caveat
-- 🐛 Any bugs found
-- 💡 Suggestions for the doc
+<Plain language. What works exactly as documented? What doesn't? What caveats
+should the writer add? Any bugs to flag or work around? Open questions?>
+
+Example format:
+- ✅ The basic syntax works on both Core and Fusion
+- ⚠️ The `merge` strategy requires `unique_key` — the doc example is missing this
+- 🐛 Python UDFs fail on dbt Core with error: "..." — Fusion-only for now
+- 💡 Add a note that this requires dbt 1.5+
 
 ## Open this test project locally
 
-**Enter the project and activate `.venv`:**
+**Project directory:** `/tmp/dbt-feature-test-<slug>/`  
+**Open in Finder / file browser (macOS):** [folder](file:///tmp/dbt-feature-test-<slug>/) — paste the same path into **File → Open Folder** in Cursor or VS Code if the link does not open.
+
+**Enter the project and activate `.venv` (recommended — one command):**
 
 ```bash
 source /tmp/dbt-feature-test-<slug>/dbt-fox-env.sh
 ```
 
+**Or step by step:**
+
+```bash
+cd /tmp/dbt-feature-test-<slug>/
+source .venv/bin/activate
+```
+
+**Return to the docs repository** (path from `git rev-parse --show-toplevel` when this run was started from the repo clone):
+
+```bash
+cd <ABSOLUTE_PATH_TO_DOCS_REPO>
+```
+
+**Note:** Clicking a `file://` link or opening the folder only opens files; it does not activate Python. Use `source .../dbt-fox-env.sh` or `source .venv/bin/activate` in the terminal where you run `dbt`.
+
+---
+
+## How to run this yourself
+
+If you want to reproduce this test:
+
+1. <step-by-step, written for a technical writer, not an engineer>
+2. ...
+
 ## Summary
 
-<One paragraph. What works, what doesn't, what to include in the doc.>
+<One paragraph. What works, what doesn't, what to include in the doc,
+what to flag or avoid. Written like a Slack message to a teammate.>
 ```
 
 ---

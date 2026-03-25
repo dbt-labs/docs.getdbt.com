@@ -3,7 +3,7 @@ name: testing-features
 description: Use when the user asks to test, validate, or check whether a dbt feature works. Sets up a minimal dbt project, runs commands across engines, validates results in the warehouse, and produces a testing summary report.
 ---
 
-# Testing dbt Features
+# Testing dbt features
 
 ## Overview
 
