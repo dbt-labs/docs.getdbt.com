@@ -172,7 +172,7 @@ Keep the following in mind when using Cost Insights:
 
 **Data collection and refresh**
 - Cost Insights uses your platform metadata credentials to access warehouse system tables. No separate credentials are needed beyond the platform metadata setup.
-- Cost data is calculated _once per day_ by a scheduled job that runs at approximately 17:00 UTC (12:00 ET).
+- Cost data is calculated _once per day_ by a scheduled job that runs at approximately 17:00 UTC.
 - The data collection job processes completed calendar days only. It does not include the current day because warehouse usage data may still be incomplete.
     - Jobs that ran yesterday (or earlier) will have cost data available after the next daily refresh.
     - Jobs that ran today will not have cost data until the following day’s refresh, regardless of what time they ran. 
