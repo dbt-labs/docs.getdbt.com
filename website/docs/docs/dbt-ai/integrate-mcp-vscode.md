@@ -36,6 +36,10 @@ To get started, in VS Code:
 
 5. Add your server configuration (`dbt`) to the provided `mcp.json` file as one of the servers:
 
+    :::tip
+    You do not need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the config below); cloning is only for contributing.
+    :::
+
     <Expandable alt_header="Local MCP with dbt platform OAuth" >
 
 
@@ -101,9 +105,13 @@ To get started, in VS Code:
 
     <Expandable alt_header="Local MCP with .env">
 
-    For advanced users who need custom environment variables or service token authentication
+    For advanced users who need custom environment variables or service token authentication. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`. Refer to the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for the complete list of available environment variables for the local MCP server.
 
-    Using the `env` field (recommended - single-file configuration):
+    Using the `env` field (single-file configuration):
+
+    :::tip IDs are integers, not URLs
+    `DBT_PROD_ENV_ID`, `DBT_DEV_ENV_ID`, and `DBT_USER_ID` must be numeric IDs (for example, `54321`), not full URLs copied from your browser. `DBT_HOST` accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`.
+    :::
 
     <VersionBlock lastVersion="1.10">
 
@@ -125,6 +133,7 @@ To get started, in VS Code:
     }
     ```
 
+    Using an `.env` file (use an absolute path to `.env` in your dbt project root):
     </VersionBlock>
 
     <VersionBlock firstVersion="1.11">
@@ -156,7 +165,11 @@ To get started, in VS Code:
       "servers": {
         "dbt": {
           "command": "uvx",
-          "args": ["--env-file", "/path/to/.env", "dbt-mcp"]
+          "args": [
+            "--env-file",
+            "/absolute/path/to/your-dbt-project/.env",
+            "dbt-mcp"
+          ]
         }
       }
     }
@@ -176,7 +189,7 @@ Now, you can access the dbt MCP server in VS Code through interfaces like GitHub
 
 This section contains troubleshooting steps for errors you might encounter when integrating VS Code with MCP.
 
-<Expandable alt_header="Cannot find `uvx` executable" >
+<Expandable alt_header="Cannot find `uvx` executable">
 
 If you see errors like `Could not connect to MCP server dbt` or `spawn uvx ENOENT`, VS Code may be unable to find the `uvx` executable.
 
