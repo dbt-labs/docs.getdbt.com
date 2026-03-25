@@ -136,6 +136,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ## Quick hits
 
 You will find these quick hits in dbt Core v1.11:
+- The [`--sqlparse`](/reference/global-configs/sqlparse) flag sets [`sqlparse`](https://sqlparse.readthedocs.io/en/latest/api.html#security-and-performance-considerations) `MAX_GROUPING_DEPTH` and `MAX_GROUPING_TOKENS` when dbt parses SQL during compilation.
 - The `dbt ls` command can now write out nested keys. This makes it easier to debug and troubleshoot your project. Example: `dbt ls --output json --output-keys config.materialized`
 - Manifest metadata now includes `run_started_at`, providing better tracking of when dbt runs were initiated.
 - When a model is disabled, unit tests for that model are automatically disabled as well.
