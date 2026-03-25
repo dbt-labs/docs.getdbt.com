@@ -14,7 +14,7 @@ This section covers common `dbt seed` outputs and options you might use when run
 - Selecting resources: For advanced selection patterns (tags, paths, graph operators, and more), read [Syntax overview](/reference/node-selection/syntax).
 - Flags: `dbt seed` supports dbt global flags. For the full list, refer to [Command line options](/reference/global-configs/command-line-options) and [Available flags](/reference/global-configs/about-global-configs#available-flags).
 
-## Selecting seeds to run
+## Selecting seeds
 
 Specific seeds can be run using the `--select` flag to `dbt seed`. 
 
