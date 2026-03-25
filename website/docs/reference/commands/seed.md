@@ -6,7 +6,7 @@ id: "seed"
 
 Seeds are configured in the `dbt_project.yml` file, where you can define options like seed file directories and column interpretation. The `dbt seed` command then loads CSV files from your project’s `seed-paths` into your <Term id="data-warehouse" />, creating relations that you can reference in downstream models.
 
-## Details
+## Overview
 
 This section covers common `dbt seed` outputs and options you might use when running seeds.
 
