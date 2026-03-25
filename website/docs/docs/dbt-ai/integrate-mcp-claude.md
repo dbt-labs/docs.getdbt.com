@@ -70,7 +70,7 @@ Put your `dbt` server under the top-level `mcpServers` key. The following expand
 <McpClaudeLocalJsonExpandables />
 
 :::note About `claude mcp add`
-The Claude Code CLI can register MCP servers with `claude mcp add`, which typically writes _user-level_ configuration. For dbt MCP, we recommend `.mcp.json` in your repository so the setup is project-scoped and easier to share and troubleshoot.
+The Claude Code CLI can register MCP servers with `claude mcp add`, which typically writes local-level configuration. This is still on a per-project basis, but the config is written in the users root directory config (`~/.claude.json`). This is not obvious and hard to keep track of. For dbt MCP, we recommend `.mcp.json` in your repository so the setup is project-scoped and easier to share and troubleshoot.
 :::
 
 ## Troubleshooting

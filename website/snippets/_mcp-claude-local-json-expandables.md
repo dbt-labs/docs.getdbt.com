@@ -36,7 +36,7 @@ Finding your paths:
 
 <Expandable alt_header="Local MCP with .env">
 
-Advanced configuration for users who need custom environment variables. Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`.
+Advanced configuration for users who need custom [environment variables](/docs/dbt-ai/mcp-environment-variables). Put your `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`) and use an absolute path with `--env-file`.
 
 Using the `env` field (single-file configuration):
 
