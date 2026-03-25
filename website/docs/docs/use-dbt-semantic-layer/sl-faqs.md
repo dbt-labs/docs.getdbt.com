@@ -290,7 +290,7 @@ Currently, the credentials you configure when setting up the dbt Semantic Layer 
 
 ## Implementation
 
-<Expandable alt_header="How can I implement dbt Mesh with the dbt Semantic Layer">
+<Expandable alt_header="How can I implement dbt Mesh with the dbt Semantic Layer?">
 
 import SLMeshFAQs from '/snippets/_sl-dbt-mesh-faq.md';
 
@@ -311,5 +311,11 @@ Semantic layer credentials are different than the credentials you use to run dbt
 <Expandable alt_header="How does the dbt Semantic Layer support a dbt Mesh architecture design?">
 
 Currently, semantic models can be created from dbt models that live across projects ([dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)). In the future, users will also be able to use mesh concepts on semantic objects and define metrics across dbt projects.
+
+<VersionBlock firstVersion="1.12">
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
+</VersionBlock>
 </Expandable>
 
