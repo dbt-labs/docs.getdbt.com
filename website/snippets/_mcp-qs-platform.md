@@ -32,7 +32,7 @@ OAuth is currently available with the local MCP server only. For [remote MCP ser
 1. Log in to your <Constant name="dbt_platform"/> account.
 2. Go to **Account settings** and copy your **Access URL** (for example, `abc123.us1.dbt.com`). 
 
-:::tip Multi-cell and `DBT_HOST` format
+:::tip Multi-cell and DBT_HOST format
 The `DBT_HOST` field accepts both `abc123.us1.dbt.com` and `https://abc123.us1.dbt.com`.
 
 If your Access URL is `abc123.us1.dbt.com`, split it into two variables:
