@@ -142,7 +142,7 @@ analyses:
 
 <TabItem value="macros">
 
-Configure `docs` for macros using the `config` block within the macro definition. Refer to [Macro properties](/reference/macro-properties) for more information.
+You can configure `docs` for macros in the `config` block under `macros:` in your YAML file. Refer to [Macro properties](/reference/macro-properties) for more information.
 
 <File name='macros/schema.yml'>
 
