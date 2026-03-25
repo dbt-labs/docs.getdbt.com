@@ -16,7 +16,7 @@ This section covers common `dbt seed` results (artifacts and CLI output) and opt
 
 ## Selecting seeds
 
-Specific seeds can be run using the `--select` flag to `dbt seed`. 
+You can run specific seeds using the `--select` flag when executing the `dbt seed` command. For example: 
 
 
 ```shell
