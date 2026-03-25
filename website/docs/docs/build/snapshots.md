@@ -12,6 +12,7 @@ id: "snapshots"
 - [`snapshot` command](/reference/commands/snapshot)
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
+import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
 
 <CourseCallout resource="Snapshots" 
 url="https://learn.getdbt.com/courses/snapshots"
@@ -88,6 +89,7 @@ The following table outlines the configurations available for snapshots:
 - Developers can still set a custom location with [`schema`](/reference/resource-configs/schema) and [`database`](/reference/resource-configs/database)  configs, consistent with other resource types.
 - A number of other configurations are also supported (for example, `tags` and `post-hook`). For the complete list, refer to [Snapshot configurations](/reference/snapshot-configs).
 - You can configure snapshots from both the `dbt_project.yml` file and a `config` block. For more information, refer to the [configuration docs](/reference/snapshot-configs).
+- Starting <Constant name="core" /> v1.12, you can inspect the SQL generated for snapshots by running [`dbt compile`](/reference/commands/compile). You can find compiled SQL files in the `target/compiled/` directory of your dbt project.
 
 ### Add a snapshot to your project
 
@@ -156,6 +158,8 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
     Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
     ```
+
+    <SnapshotCompiledSql />
 
 5. Inspect the results by selecting from the table dbt created (`analytics.snapshots.orders_snapshot`). After the first run, you should see the results of your query, plus the [snapshot meta fields](#snapshot-meta-fields) as described later on.
 
