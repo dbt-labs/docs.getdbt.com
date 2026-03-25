@@ -12,7 +12,7 @@ import AboutCloud from '/snippets/_test-tenancy.md';
 
 The Multi Tenant (SaaS) deployment environment refers to the SaaS <Constant name="dbt" /> application hosted by dbt Labs. This is the most commonly used deployment and is completely managed and maintained by dbt Labs, the makers of dbt. As a SaaS product, a user can quickly [create an account](https://www.getdbt.com/signup/) on our North American servers and get started using the dbt and related services immediately. _If your organization requires cloud services hosted on EMEA or APAC regions_, please [contact us](https://www.getdbt.com/contact/). The deployments are hosted on AWS or Azure and are always kept up to date with the currently supported dbt versions, software updates, and bug fixes.
 
-### Cell-based hosting (multi-cell) {#cell-based-hosting-multi-cell}
+#### Multi-cell hosting
 
 Multi-cell (also called cell-based hosting) means your <Constant name="dbt_platform" /> account runs in a cell: a defined slice of our shared SaaS stack with its own capacity, scaling, and status boundaries. Cells segment how we run multi-tenant infrastructure at scale; you remain on the same multi-tenant product managed by dbt Labs. Cell-based hosting is different to [single tenant](#single-tenant) in that it doesn't give you a dedicated VPC or isolated cloud account by itself.
 
