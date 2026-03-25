@@ -122,7 +122,7 @@ snapshots:
 
 <TabItem value="analyses">
 
-You can configure `docs` for analyses using the `config` block within the analysis definition. Refer to [Analysis properties](/reference/analysis-properties) for more information.
+You can configure `docs` for analyses in the `config` block under `analyses:` in your YAML file. Refer to [Analysis properties](/reference/analysis-properties) for more information.
 
 
 <File name='analysis/schema.yml'>
