@@ -7,7 +7,7 @@ id: "mcp-quickstart-remote"
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
-The remote MCP server connects to <Constant name="dbt_platform"/> via HTTP. No local installation is required &mdash; you configure your MCP client with a URL and headers instead of running `uvx dbt-mcp`.
+The remote MCP server connects to <Constant name="dbt_platform"/> using HTTP. No local installation is required &mdash; you configure your MCP client with a URL and headers instead of running `uvx dbt-mcp`.
 
 ## When to use remote MCP
 
@@ -25,7 +25,7 @@ Local development and agentic workflows (for example, running dbt commands like 
 Follow these steps to set up the remote MCP server:
 
 ### 1. Enable AI features
-Ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
+In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
@@ -45,3 +45,5 @@ In your MCP client config, set the server `url` to `https://YOUR_DBT_HOST_URL/ap
 - Use numeric IDs in headers, not full URLs copied from your browser.
 
 For the complete list of headers, Cursor and other client examples, and optional headers, see [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp). For local MCP, configuration uses environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+
+Once you have configured your MCP client, you can test your setup by asking your AI assistant a data-related question (for example, _"What models are in my dbt project?"_ or _"What metrics are defined in my Semantic Layer?"_). If dbt MCP is working, the response will use your dbt metadata.
