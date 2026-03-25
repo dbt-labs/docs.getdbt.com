@@ -11,11 +11,9 @@ The latest Semantic Layer specification creates an open standard for defining me
 
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization. 
 
-:::info Availability
-The new YAML spec is currently available in the <Constant name="fusion_engine" /> and the <Constant name="dbt_platform" /> **Latest** release track. Coming soon to <Constant name="core" /> v1.12. 
+import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability.md';
 
-For more information about availability, reach out to your account manager or post in the [#dbt-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/). 
-:::
+<LatestYamlSpecAvailability />
 
 ## Changes in the latest spec 
 
@@ -60,6 +58,10 @@ semantic_models:
 </div>
 
 </div>
+
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
 
 ### Entities and dimensions
 

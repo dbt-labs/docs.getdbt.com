@@ -17,8 +17,9 @@ To view the full list of supported options in your terminal, run:
 ```
 dbt snapshot --help
 ```
-
 Use `--select` or `--exclude` to choose which snapshots run. For selection syntax, refer to [Node selection syntax](/reference/node-selection/syntax). For other flags (such as `--threads`, `--target`, and logging options), see [About flags (global configs)](/reference/global-configs/about-global-configs).
 
+import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
 
+<SnapshotCompiledSql />
 
