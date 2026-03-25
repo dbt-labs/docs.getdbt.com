@@ -76,43 +76,45 @@ Key:
 #### Account access for project permissions
 
 <FilterableTable>
-| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
-| Account settings         |   R   |    -    |      R         |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
-| Auth provider            |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Billing                  |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Connections              |   R   |    R    |      R         |     R     |     R     |     R     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Groups                   |   R   |    -    |      R         |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Invitations              |   W   |    R    |      R         |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      R      |     R      |
-| Licenses                 |   W   |    R    |      R         |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      -      |     R      |
-| Members                  |   W   |    -    |      R         |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Project (create)         |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Public models            |   R   |    R    |      R         |     R     |     R     |     R     |     -       |      R      |     R    |        R       |      R      |     R      |
-| Service tokens           |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Webhooks                 |   W   |    -    |      -         |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
+| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
+| Account settings         |   R   |    -    |      R         |     -     |     R     |     -     |     -       |      -      |      -      |    -     |        -       |      -      |     R      |
+| Auth provider            |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |      -      |    -     |        -       |      -      |     -      |
+| Billing                  |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |      -      |    -     |        -       |      -      |     -      |
+| Connections              |   R   |    R    |      R         |     R     |     R     |     R     |     R       |      -      |      -      |    -     |        -       |      R      |     R      |
+| Groups                   |   R   |    -    |      R         |     R     |     R     |     -     |     -       |      -      |      -      |    -     |        -       |      R      |     R      |
+| Invitations              |   W   |    R    |      R         |     R     |     R     |     R     |     R       |      -      |      R      |    -     |        -       |      R      |     R      |
+| Licenses                 |   W   |    R    |      R         |     R     |     R     |     R     |     R       |      -      |      R      |    -     |        -       |      -      |     R      |
+| Members                  |   W   |    -    |      R         |     R     |     R     |     -     |     -       |      -      |      -      |    -     |        -       |      R      |     R      |
+| Project (create)         |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |      -      |    -     |        -       |      -      |     -      |
+| Public models            |   R   |    R    |      R         |     R     |     R     |     R     |     R       |      -      |      R      |     R    |        R       |      R      |     R      |
+| Service tokens           |   -   |    -    |      -         |     -     |     -     |     -     |     -       |      -      |      -      |    -     |        -       |      -      |     -      |
+| Webhooks                 |   W   |    -    |      -         |     W     |     -     |     -     |     -       |      -      |      -      |    -     |        -       |      -      |     -      |
 </FilterableTable>
 
 #### Project access for project permissions
 
 <FilterableTable>
-|Project-level permission  | Admin | Analyst | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
-| Environment credentials  |   W   |    R    |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
-| Custom env. variables    |   W   |    W#  |       W         |     W#    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
-| Data platform configs    |   W   |    W    |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
-| Develop (IDE or CLI)     |   W   |    W    |       -        |     W     |      -       |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
-| Environments             |   W   |    R    |       R        |     R     |      -       |     R     |     W     |      -      |      R      |                  -                      |       -        |     R       |     R      |
-| Fusion upgrade           |   -   |    -    |      -         |     -     |      W       |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Jobs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |      R      |      R      |                  -                      |       -        |     R       |     R*     |
-| Metadata GraphQL API access| R   |    R    |       R        |     R     |      -       |     R     |     R     |      -      |      R      |                  R                      |       -        |     R       |     R      |
-| Permissions              |   W   |    -    |       R        |     R     |      -       |     R     |     -     |      -      |      -      |                  -                      |       -        |     -       |     R      |
-| Projects                 |   W   |    R    |       W        |     R     |      -       |     W     |     R     |      -      |      R      |                  -                      |       -        |     R       |     W      |
-| Repositories             |   W   |    R    |       R        |     R     |      -       |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |
-| Runs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R*     |
-| Semantic Layer config    |   W   |    R    |       W        |     R     |      -       |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |
+|Project-level permission  | Admin | Analyst | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
+| Environment credentials  |   W   |    R    |       W        |     R     |      -       |     R     |     W     |     R       |    -        |      -      |                  -                      |        -       |     R       |     R      |
+| Custom env. variables    |   W   |    W#  |       W         |     W#    |      -       |     W     |     W     |     W†      |     -       |      R      |                  -                      |        -       |     R       |     W      |
+| Data platform configs    |   W   |    W    |       W        |     W     |      -       |     R     |     W     |     -       |     -       |      -      |                  -                      |       -        |     R       |     R      |
+| Develop (IDE or CLI)     |   W   |    W    |       -        |     W     |      -       |     -     |     -     |     -       |     -       |      -      |                  -                      |       -        |     -       |      -     |
+| Environments             |   W   |    R    |       R        |     R     |      -       |     R     |     W     |     R       |      -      |      R      |                  -                      |       -        |     R       |     R      |
+| Fusion upgrade           |   -   |    -    |      -         |     -     |      W       |     -     |     -     |     -       |     -       |      -      |    -     |        -       |      -      |     -      |
+| Jobs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |     W*      |      R      |      R      |                  -                      |       -        |     R       |     R*     |
+| Metadata GraphQL API access| R   |    R    |       R        |     R     |      -       |     R     |     R     |     R       |      -      |      R      |                  R                      |       -        |     R       |     R      |
+| Permissions              |   W   |    -    |       R        |     R     |      -       |     R     |     -     |     -       |      -      |      -      |                  -                      |       -        |     -       |     R      |
+| Projects                 |   W   |    R    |       W        |     R     |      -       |     W     |     R     |     R       |      -      |      R      |                  -                      |       -        |     R       |     W      |
+| Repositories             |   W   |    R    |       R        |     R     |      -       |     W     |     -     |     -       |      -      |      -      |                  -                      |       -        |     R       |     R      |
+| Runs                     |   W   |    R*   |       R*       |     R*    |      -       |     R*    |     W     |     W       |      W      |      R      |                  -                      |       -        |     R       |     R*     |
+| Semantic Layer config    |   W   |    R    |       W        |     R     |      -       |     R     |     R     |     -       |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
 </FilterableTable>
 
 \* These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
 
 \# Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.
+
+\† Custom env. variables for the `Job creator` role allow job-scope overrides only. Project-level and environment-level environment variable writes require `environments_write`, which is not included in this permission set.

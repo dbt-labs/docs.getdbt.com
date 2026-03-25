@@ -159,9 +159,22 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Job creator">
+
+Job creator is a project-level permission set for users who need to create and manage dbt jobs scoped to specific environment tiers (for example, staging) without the ability to modify environment infrastructure. It fills the gap between Job runner (can only trigger runs) and Job admin (can create jobs but also controls environments).
+
+Notable features:
+- Job creator is a project-level set.
+- Can create and edit jobs — but only within the environment categories assigned at the group or service token level (for example, `staging`). This is set via **Environment write access** at assignment time.
+- Can trigger runs in any environment, unconditionally — regardless of environment category assignment.
+- Can set environment variable overrides at the job level. Project-level and environment-level environment variable writes require `environments_write`, which this permission set does not include.
+- Cannot create, delete, or reconfigure environments (`environments_write` is intentionally absent).
+- Read-only access to connections, credentials, environments, integrations, metadata, profiles, and projects.
+
+</Expandable>
 <Expandable alt_header="Job runner">
 
-Job runner is a specialized permission set for users who need access to run jobs and view the outcomes. 
+Job runner is a specialized permission set for users who need access to run jobs and view the outcomes.
 
 Notable features:
 - Job runner is a project-level set.
