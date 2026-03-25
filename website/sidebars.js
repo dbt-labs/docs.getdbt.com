@@ -505,6 +505,7 @@ const sidebarSettings = {
               label: "Quickstart with the dbt Semantic Layer",
               href: `/guides/sl-snowflake-qs`,
             },
+            "reference/semantic-layer-reference",
             {
               type: "category",
               label: "About MetricFlow",
@@ -1405,6 +1406,24 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "For semantic models",
+          link: { type: "doc", id: "reference/semantic-model-properties" },
+          items: ["reference/semantic-model-properties"],
+        },
+        {
+          type: "category",
+          label: "For metrics",
+          link: { type: "doc", id: "reference/metric-properties" },
+          items: ["reference/metric-properties"],
+        },
+        {
+          type: "category",
+          label: "For dimensions",
+          link: { type: "doc", id: "reference/dimension-properties" },
+          items: ["reference/dimension-properties"],
+        },
+        {
+          type: "category",
           label: "For functions",
           link: { type: "doc", id: "reference/function-properties" },
           items: [
@@ -1545,6 +1564,7 @@ const sidebarSettings = {
                 "reference/global-configs/indirect-selection",
                 "reference/global-configs/json-artifacts",
                 "reference/global-configs/parsing",
+                "reference/global-configs/sqlparse",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
                 "reference/global-configs/resource-type",
