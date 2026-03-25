@@ -44,7 +44,7 @@ dbt seed --select "country_codes"
 dbt seed --select "country_codes state_codes" --full-refresh
 ```
 
-### The --full-refresh flag
+## The --full-refresh flag
 
 Use `--full-refresh` to force a full reload of seed data (rather than an incremental update) when you need to rebuild seed tables from scratch. This is useful when:
 
