@@ -23,7 +23,7 @@ There are four types of possible seat licenses:
 * **IT** &mdash; for access to specific features related to account management (for example, configuring git integration).
 * **Read-Only** &mdash; for access to view certain documents and reports.
 
-\* The Analyst license type is not available for new purchase.
+\* The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ### What counts as a Successful Model Built?
 

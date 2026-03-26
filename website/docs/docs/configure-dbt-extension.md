@@ -24,7 +24,7 @@ The steps differ slightly depending on whether you use <Constant name="dbt_platf
 - <Constant name="fusion_engine" /> installed
 - Downloaded and installed the dbt VS Code extension
 - Basic understanding of [Git workflows](/docs/cloud/git/version-control-basics) and [dbt project structure](/best-practices/how-we-structure/1-guide-overview)
-- [Developer or analyst license](https://www.getdbt.com/pricing)\* if you're using <Constant name="dbt_platform" />. Note, the Analyst license type is not available for new purchase.
+- [Developer or analyst license](https://www.getdbt.com/pricing)\* if you're using <Constant name="dbt_platform" />. Note, the [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## Prepare your local setup 
 

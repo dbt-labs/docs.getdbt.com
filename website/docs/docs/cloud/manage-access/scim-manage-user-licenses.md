@@ -17,7 +17,7 @@ SCIM license mapping is currently only supported for Okta. For other providers, 
 Before you enable SCIM license mapping:
 - **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration), or using SCIM.
 - **Best practice**: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or single sign-on (SSO) mapping changes.
-- **Analyst license**: Only available on [select plans](/docs/cloud/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account. The Analyst license type is not available for new purchase.
+- **Analyst license**: Only available on [select plans](/docs/cloud/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account. The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## Enable SCIM license mapping
 
