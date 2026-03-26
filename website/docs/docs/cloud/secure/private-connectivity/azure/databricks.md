@@ -28,7 +28,8 @@ The following steps walk you through the setup of a Databricks Azure Private Lin
     - dbt platform account URL:
     - Databricks instance name:
     - Azure Databricks Workspace URL (for example, adb-################.##.azuredatabricks.net)
-    - Databricks Azure resource ID:  /subscriptions/SUB_ID/resourceGroups/RG/providers/Microsoft.Databricks/workspaces/WORKSPACE_NAME (use the full ARM resource ID, replacing SUB_ID, RG, and WORKSPACE_NAME with your values)
+    - Databricks Azure resource ID:  /subscriptions/SUB_ID/resourceGroups/RG/providers/Microsoft.Databricks/workspaces/WORKSPACE_NAME
+        - For the Databricks Azure resource ID, use the full ARM resource ID, replacing SUB_ID, RG, and WORKSPACE_NAME with your values
     - dbt Azure multi-tenant environment (EMEA):
     - Azure Databricks workspace region (like WestEurope, NorthEurope):
     ```
