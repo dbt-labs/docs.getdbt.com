@@ -101,7 +101,7 @@ To add the attribute for license types to your Okta environment:
         | **Developer**| `developer` |
         | **Read Only**| `read_only` |
 
-    The **Analyst** license is only available on [select plans](/docs/cloud/manage-access/seats-and-users). It is not currently available for purchase.
+    The **Analyst** license is only available on [select plans](/docs/cloud/manage-access/seats-and-users). It is not available for new purchase.
 
     - **Attribute type:** Group
 

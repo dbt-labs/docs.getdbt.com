@@ -14,4 +14,4 @@ There are four license types in <Constant name="dbt" />:
   - _Read-only licensed users do not inherit rights from any permission sets_. 
   - Every read-only licensed user has the same access across the account, regardless of the group permissions assigned.
 
-\* The Analyst license is not currently available for purchase.
+\* The Analyst license type is not available for new purchase.

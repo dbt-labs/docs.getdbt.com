@@ -28,7 +28,7 @@ The user's assigned license determines the specific capabilities they can access
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
 
-*The Analyst license is not currently available for purchase.
+*The Analyst license type is not available for new purchase.
 
 **Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward developer seat usage. 
 
