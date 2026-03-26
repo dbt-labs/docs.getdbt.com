@@ -28,6 +28,11 @@ andrew_escay:
     x: _aescay
   name: Andrew Escay
   page: true
+anna_lee:
+  image_url: /img/blog/authors/anna-lee.jpeg
+  title: Software Engineer at dbt Labs
+  name: Anna Lee
+  page: true
 arthur_marcon:
   description: Arthur Marcon is an Analytics Engineer at Indicium, helping data-driven companies transition to the modern data analytics stack in the cloud through dbt. Arthur is also an enthusiast of technology and innovation. He is mainly interested in how data plays a key role to enable companies to achieve their full innovative and technological potential. Outside of work, he is a movie aficionado, and likes to hit the gym and read Agatha Christie's novels.
   image_url: /img/blog/authors/arthur-marcon.png
@@ -411,6 +416,11 @@ mikael_thorup:
   image_url: /img/blog/authors/mikael-thorup.jpeg
   title: Senior Analytics Engineer at Lunar
   name: Mikael Thorup
+  page: true
+mila_page:
+  image_url: /img/blog/authors/mila-page.jpeg
+  title: Senior Software Engineer at dbt Labs
+  name: Mila Page
   page: true
 nate_sooter:
   image_url: /img/blog/authors/nate-sooter.jpeg
