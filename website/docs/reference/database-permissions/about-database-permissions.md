@@ -34,4 +34,3 @@ Refer to the following database permission pages for more info on examples and h
 - [Postgres](/reference/database-permissions/postgres-permissions)
 - [Redshift](/reference/database-permissions/redshift-permissions)
 - [Snowflake](/reference/database-permissions/snowflake-permissions)
-
