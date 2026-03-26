@@ -18,6 +18,14 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## March 25, 2026
+
+## New
+
+### APIs, Identity, and Administration
+
+- **Job Creator enterprise permission set:** Enterprise accounts can now assign the `Job Creator` permission set to groups and service tokens. Job Creator fills the gap between Job runner (can only trigger runs) and Job admin (full environment control): users can create and edit jobs scoped to specific environment categories (for example, `staging`) and trigger runs in any environment unconditionally, without `environments_write` access. See [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for details.
+
 ## March 18, 2026
 
 ## Enhancements
