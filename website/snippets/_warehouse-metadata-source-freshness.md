@@ -1,6 +1,6 @@
 ### Warehouse metadata used for source freshness
 
-When you do not set `loaded_at_field` or `loaded_at_query`, state-aware orchestration and the `dbt source freshness` command use adapter-specific warehouse metadata to detect when source data changed. The exact table or column used varies by warehouse.
+When you do not set `loaded_at_field` or `loaded_at_query`, [state-aware orchestration](/docs/deploy/state-aware-about) and the `dbt source freshness` command use adapter-specific warehouse metadata to detect when source data changed. The exact table or column used varies by warehouse.
 
 | Warehouse | Metadata table | Column |
 | --------- | -------------- | ------ |

@@ -42,5 +42,5 @@ It's important that your freshness jobs run frequently enough to snapshot data l
 ## Further reading
 
 - Refer to [Artifacts](/docs/deploy/artifacts) for more info on how to create <Constant name="dbt" /> artifacts, share links to the latest documentation, and share source freshness reports with your team.
-- For state-aware orchestration and per-warehouse metadata details (which tables or columns each adapter uses for source freshness), see [Warehouse metadata used for source freshness](/docs/deploy/state-aware-setup#warehouse-metadata-used-for-source-freshness).
+- To know which tables or columns each adapter uses for source freshness, see [Warehouse metadata used for source freshness](/reference/resource-properties/freshness#warehouse-metadata-used-for-source-freshness).
 - Source freshness for Snowflake is calculated using the `LAST_ALTERED` column. Read about the limitations in [Snowflake configs](/reference/resource-configs/snowflake-configs#source-freshness-known-limitation).
