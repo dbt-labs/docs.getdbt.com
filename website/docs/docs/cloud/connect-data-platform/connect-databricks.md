@@ -36,6 +36,8 @@ import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissi
 
 <FusionDatabricksWarehousePerms />
 
+## Connection fields
+
 To set up the Databricks connection, supply the following fields:
 
 | Field | Description | Examples |
