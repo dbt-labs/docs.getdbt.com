@@ -199,7 +199,9 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 
 ## Integrated tool access
 
-Users with a [developer license](/docs/cloud/manage-access/about-user-access#license-based-access-control) or an analyst seat can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files, in <Constant name="insights" /> to query it, or in <Constant name="canvas" /> for visual editing.
+Users with a [developer license](/docs/cloud/manage-access/about-user-access#license-based-access-control) or an analyst seat\* can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files, in <Constant name="insights" /> to query it, or in <Constant name="canvas" /> for visual editing.
+
+\* The Analyst license is not currently available for purchase.
 
 ## View model versions
 
