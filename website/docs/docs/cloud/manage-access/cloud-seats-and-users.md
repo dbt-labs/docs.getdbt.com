@@ -21,8 +21,8 @@ The user's assigned license determines the specific capabilities they can access
 | Use the <Constant name="dbt" /> CLI | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
-| API access (create personal access tokens) | ✅ | ✅ | ✅ |
-| API access (create service tokens) | ✅ | ❌ | ❌ |
+| API access <br />(create personal access tokens) | ✅ | ✅ | ✅ |
+| API access <br />(create service tokens) | ✅ | ❌ | ❌ |
 | Use [<Constant name="catalog" />](/docs/explore/explore-projects) | ✅  | ✅ | ❌  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
