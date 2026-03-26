@@ -15,7 +15,7 @@ In <Constant name="dbt" />, _licenses_ are used to allocate users to your accoun
 
 The user's assigned license determines the specific capabilities they can access in <Constant name="dbt" />.
 
-| Functionality | <div style={{width:'125px'}}>Developer or Analyst Users**</div> | <div style={{width:'125px'}}>Read-Only Users</div> |<div style={{width:'125px'}}> IT Users*</div> |
+| Functionality | <div style={{width:'125px'}}>Developer or Analyst users** *</div> | <div style={{width:'125px'}}>Read-Only users</div> |<div style={{width:'125px'}}> IT users \*</div> |
 | ------------- | -------------- | --------------- | -------- |
 | Use the <Constant name="studio_ide" /> | ✅ | ❌ | ❌ |
 | Use the <Constant name="dbt" /> CLI | ✅ | ❌ | ❌ |
@@ -27,8 +27,9 @@ The user's assigned license determines the specific capabilities they can access
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
 
-*Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward seat usage. 
-**The Analyst license is not currently available for purchase.
+*The Analyst license is not currently available for purchase.
+
+**Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward seat usage. 
 
 ## Licenses
 
