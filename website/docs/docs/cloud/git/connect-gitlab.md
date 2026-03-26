@@ -22,7 +22,7 @@ Requires a [GitLab Premium or Ultimate account](https://about.gitlab.com/pricing
 
 
 Depending on your plan, use these steps to integrate GitLab in <Constant name="dbt" />:
-- The Developer or Starter plans, read these [instructions](#for-dbt-developer-and-starter-plans).
+- For the Developer or Starter plans, follow these [instructions](#for-dbt-developer-and-starter-plans).
 - The Enterprise or Enterprise+ plan, jump ahead to these [instructions](#for-the-dbt-enterprise-plans).
 
 ## For dbt Developer and Starter plans
