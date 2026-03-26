@@ -15,7 +15,7 @@ In <Constant name="dbt" />, _licenses_ are used to allocate users to your accoun
 
 The user's assigned license determines the specific capabilities they can access in <Constant name="dbt" />.
 
-| Functionality | <div style={{width:'125px'}}>Developer or Analyst users** *</div> | <div style={{width:'125px'}}>Read-Only users</div> |<div style={{width:'125px'}}> IT users \*</div> |
+| Functionality | <div style={{width:'125px'}}>Developer or Analyst license** *</div> | <div style={{width:'125px'}}>Read-Only users</div> |<div style={{width:'125px'}}> IT license \*</div> |
 | ------------- | -------------- | --------------- | -------- |
 | Use the <Constant name="studio_ide" /> | ✅ | ❌ | ❌ |
 | Use the <Constant name="dbt" /> CLI | ✅ | ❌ | ❌ |
