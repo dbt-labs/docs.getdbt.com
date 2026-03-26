@@ -133,8 +133,8 @@ with page_views as (
     select * from (
         -- filtered on configured event_time
         select * from "analytics"."page_views"
-        where page_view_start >= '2024-10-01 00:00:00'  -- Oct 1
-        and page_view_start < '2024-10-02 00:00:00'
+        where session_start >= '2024-10-01 00:00:00'  -- Oct 1
+        and session_start < '2024-10-02 00:00:00'
     )
 
 ),
@@ -163,8 +163,8 @@ with page_views as (
     select * from (
         -- filtered on configured event_time
         select * from "analytics"."page_views"
-        where page_view_start >= '2024-10-02 00:00:00'  -- Oct 2
-        and page_view_start < '2024-10-03 00:00:00'
+        where session_start >= '2024-10-02 00:00:00'  -- Oct 2
+        and session_start < '2024-10-03 00:00:00'
     )
 
 ),
