@@ -297,7 +297,7 @@ selectors:
 The `selector` method returns the complete set of nodes returned by the named selector.
 
 <VersionBlock firstVersion="1.12">
-If selector definitions reference each other in a cycle, dbt raises an error. For example, the following selector inheritance is invalid:
+If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` error at runtime. For example, the following selector inheritance is invalid:
 
 ```yml
 selectors:
@@ -328,6 +328,6 @@ In dbt, [`select`](/reference/node-selection/syntax#how-does-selection-work) and
 Notes:
 - You can combine `--select` with `--exclude` for ad-hoc selection of nodes.
 - The `--select` and `--selector` syntax both provide the same overall functions for node selection. Using [graph operators](/reference/node-selection/graph-operators) (such as `+`, `@`.) and [set operators](/reference/node-selection/set-operators) (such as `union` and `intersection`) in `--select` is the same as YAML-based configs in `--selector`.
-- If you use `--selector` together with `--select` or `--exclude`, dbt only applies `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises a warning when `--selector` is combined with `--select` or `--exclude`.
+- If you use `--selector` together with `--select` or `--exclude`, dbt only applies `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises the `SelectExcludeIgnoredWithSelectorWarning` warning when `--selector` is combined with `--select` or `--exclude`.
 
 For additional examples, check out [this GitHub Gist](https://gist.github.com/jeremyyeo/1aeca767e2a4f157b07955d58f8078f7).
