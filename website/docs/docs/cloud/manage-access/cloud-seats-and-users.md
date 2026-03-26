@@ -30,7 +30,7 @@ The user's assigned license determines the specific capabilities they can access
 
 *The Analyst license is not currently available for purchase.
 
-**Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward seat usage. 
+**Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward developer seat usage. 
 
 ## Licenses
 
