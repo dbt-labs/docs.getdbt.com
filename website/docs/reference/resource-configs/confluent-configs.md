@@ -11,13 +11,13 @@ The `dbt-confluent` adapter supports the following materializations and configur
 | Materialization | Description |
 |---|---|
 | `view` | Creates a Flink SQL temporary view. Dropped and recreated on each `dbt run`. Views exist only for the duration of the Flink session and are not persisted. |
-| `table` | Creates a Flink SQL table backed by a Kafka topic. Requires `--full-refresh` to recreate if the table already exists. |
-| `materialized_view` | Creates a Flink SQL materialized view. Always dropped and recreated on each `dbt run`. |
 | `streaming_table` | Creates a Flink SQL table and a long-running `INSERT INTO` statement that continuously writes query results to the table. Requires `--full-refresh` to recreate if the table already exists. |
 | `streaming_source` | Creates a Flink SQL table backed by a connector (for example, `faker` for mock data or `confluent` for Kafka topics). Requires the `connector` config. Requires `--full-refresh` to recreate if the table already exists. |
 
 ### Unsupported materializations
 
+- **`table`**: Not officially support. Coming soon.
+- **`materialized_view`**: Not supported. Use streaming table instead.
 - **`incremental`**: Not supported. Confluent Cloud Flink SQL does not support the merge/upsert patterns that dbt incremental models require.
 - **`snapshot`**: Not supported. Flink SQL does not provide the transaction operations (`MERGE`, `UPDATE` with CTEs) required for dbt snapshots.
 
@@ -90,25 +90,6 @@ PRIMARY KEY(order_id) NOT ENFORCED
 |---|---|---|---|
 | `connector` | `string` | Yes | The connector type for the source table. Valid values in Confluent Cloud include `confluent` (Kafka topics), `faker` (mock data), and external AI search connectors. |
 | `with` | `dict` | No | Additional table options passed to the `WITH` clause, alongside the connector. Valid options depend on the connector type. |
-
-### `materialized_view`
-
-The `materialized_view` materialization creates a Flink SQL materialized view. Unlike `streaming_table` and `table`, materialized views are **always dropped and recreated** on each `dbt run` &mdash; the `--full-refresh` flag is not required.
-
-```sql
-{{
-  config(
-    materialized='materialized_view'
-  )
-}}
-
-SELECT
-  customer_id,
-  COUNT(*) AS order_count,
-  SUM(total_amount) AS total_spent
-FROM {{ ref('orders') }}
-GROUP BY customer_id
-```
 
 ## Stateful behavior and `--full-refresh`
 
