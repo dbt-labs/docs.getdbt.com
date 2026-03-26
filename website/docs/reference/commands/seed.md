@@ -10,7 +10,7 @@ Seeds are configured in the `dbt_project.yml` file, where you can define options
 
 This section covers common `dbt seed` results (artifacts and CLI output) and options you might use when running seeds.
 
-Use artifacts when you want to inspect or troubleshoot what happened during execution.
+Use artifacts when you want to inspect or troubleshoot what happened during execution:
 - Artifacts: Running `dbt seed` produces dbt execution artifacts, including `run_results.json` for executed seeds. For details on what’s included and how to interpret it, refer to [Run results JSON file](/reference/artifacts/run-results-json).<br />
 
 Use resource selection when you want to run only a subset of seeds.
