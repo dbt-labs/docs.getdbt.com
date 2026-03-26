@@ -93,7 +93,7 @@ PRIMARY KEY(order_id) NOT ENFORCED
 
 ## Stateful behavior and `--full-refresh`
 
-Confluent Cloud Flink SQL tables are stateful, long-running resources. The `streaming_table`, `table`, and `streaming_source` materializations behave differently from traditional batch-oriented dbt materializations:
+Confluent Cloud Flink SQL tables are stateful, long-running resources. The `streaming_table` and `streaming_source` materializations behave differently from traditional batch-oriented dbt materializations:
 
 - **First run**: The table is created and (for `streaming_table`) a continuously running `INSERT INTO` statement begins populating it.
 - **Subsequent runs without `--full-refresh`**: If the table already exists, `dbt run` raises an error. This prevents accidentally dropping a table that has accumulated state or has downstream consumers.
