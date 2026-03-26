@@ -17,6 +17,8 @@ import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permission
 
 For example SQL grants in Redshift, refer to [Redshift permissions](/reference/database-permissions/redshift-permissions).
 
+## Connection fields
+
 The following fields are required when creating a connection:
 
 | Field | Description | Examples |
