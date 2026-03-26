@@ -15,6 +15,10 @@ Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permi
 
 :::
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 ## Warehouse permissions for Fusion
 
 import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
@@ -23,9 +27,7 @@ import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissio
 
 For role examples in Snowflake, see [Snowflake permissions](/reference/database-permissions/snowflake-permissions).
 
-import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
-
-<SnowflakeColumn />
+## Connection fields
 
 The following fields are required when creating a Snowflake connection:
 
