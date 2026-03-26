@@ -9,7 +9,7 @@ Environment variables can be used to customize the behavior of a dbt project dep
 
 :::info Environment Variable Naming and Prefixing
 
-Environment variables in <Constant name="dbt" /> must be prefixed with either `DBT_`, `DBT_ENV_SECRET_`, or `DBT_ENV_CUSTOM_ENV_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="dbt" />'s UI.
+Environment variables in <Constant name="dbt" /> must be prefixed with either `DBT_`, `DBT_ENV_SECRET_`, or `DBT_ENV_CUSTOM_ENV_`. Environment variable keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="dbt" />'s UI.
 
 :::
 
@@ -44,7 +44,7 @@ To set environment variables at the project and environment level, click **Orche
 
 You'll notice there is a **Project default** column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
 
-To the right of the **Project default** column, you can see all your environments. Values set at the environmental level take priority over the project-level default value. This is where you can tell <Constant name="dbt" /> to interpret an environment value differently in your Staging vs. Production environment, as an example.
+To the right of the **Project default** column, you can see all your environments. Values set at the environment level take priority over the project-level default value. This is where you can tell <Constant name="dbt" /> to interpret an environment value differently in your staging versus production environment, as an example.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
@@ -63,8 +63,8 @@ Every job runs in a specific deployment environment, and by default, a job will 
 #### Overriding environment variables at the personal level
 
 You can also set a personal value override for an environment variable when you develop in the dbt-integrated developer environment (<Constant name="studio_ide" />). By default, <Constant name="dbt" /> uses environment variable values set in the project's development environment. To see and override these values, from <Constant name="dbt" />:
-1. Click on your account name in the left side menu and select **Account settings**. 
-2. Under the **Your profile** section, click **Credentials** and then select your project. 
+1. Click on your account name in the left side menu and select **Account settings**.
+2. Under the **Your profile** section, click **Credentials** and then select your project.
 3. Scroll to the **Environment variables** section and click **Edit** to make the necessary changes.
 
 To supply an override, developers can edit and specify a different value to use. These values will be respected in the <Constant name="studio_ide" /> both for the Results and Compiled SQL tabs.
@@ -79,7 +79,7 @@ If you have not set a project level default value for every environment variable
 If you change the value of an environment variable mid-session while using the <Constant name="studio_ide" />, you may have to refresh the <Constant name="studio_ide" /> for the change to take effect.
 :::
 
-To refresh the <Constant name="studio_ide" /> mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the <Constant name="studio_ide" />. A new modal will pop up, and you should select the **Restart IDE** button. This load your environment variables values into your development environment.
+To refresh the <Constant name="studio_ide" /> mid-development, click on either the green 'ready' signal or the red 'compilation error' message at the bottom right corner of the <Constant name="studio_ide" />. A new modal will pop up, and you should select the **Restart IDE** button. This loads your environment variable values into your development environment.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/refresh-ide.png" title="Refreshing IDE mid-session"/>
 
@@ -93,7 +93,7 @@ For more information, refer to [Configure the dbt VS Code extension](/docs/confi
 
 ### Handling secrets
 
-While all environment variables are encrypted at rest in <Constant name="dbt" />, <Constant name="dbt" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in <Constant name="dbt" />, you can prefix the key with `DBT_ENV_SECRET`. 
+While all environment variables are encrypted at rest in <Constant name="dbt" />, <Constant name="dbt" /> has additional capabilities for managing environment variables with secret or otherwise sensitive values. If you want a particular environment variable to be scrubbed from all logs and error messages, in addition to obfuscating the value in <Constant name="dbt" />, you can prefix the key with `DBT_ENV_SECRET_`.
 
 Environment variables prefixed with `DBT_ENV_SECRET_` are protected with additional security controls. They are encrypted at rest using an encryption key (for example, AWS KMS when your deployment is hosted on AWS) and can only be accessed by decrypting them with that key. Decryption is restricted to specific flows where the value is required, such as when a job runs. Secret keys are never written to logs or error messages and are obfuscated in <Constant name="dbt" />, so they are not exposed in the UI or artifacts, and are only available to dbt at runtime as needed.
 
@@ -114,7 +114,7 @@ The following environment variable is set automatically for the <Constant name="
   - Doesn't require restarting the <Constant name="studio_ide" /> after a branch change.
   - Currently not available in the [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation).
 
-Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) ( `{{ env_var ('DBT_CLOUD_GIT_BRANCH') }}` ).
+Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) (`{{ env_var('DBT_CLOUD_GIT_BRANCH') }}`).
 
 #### dbt platform context
 
