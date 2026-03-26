@@ -2,6 +2,7 @@ There are four license types in <Constant name="dbt" />:
 
 - **Analyst**\* &mdash;  Available on [Enterprise and Enterprise+ plans only](https://www.getdbt.com/pricing).
   - User can be granted _any_ permission sets.
+  - \* The Analyst license type is not available for new purchase.
 - **Developer** &mdash; User can be granted _any_ permission sets.
 - **IT** &mdash; Available on [Starter, Enterprise, and Enterprise+ plans only](https://www.getdbt.com/pricing). User has Security Admin and Billing Admin [permissions](/docs/cloud/manage-access/enterprise-permissions#permission-sets) applied, as well as permissions to edit **Connections** in the **Account settings** page.
   - Can manage users, groups, connections, and licenses, among other permissions. 
