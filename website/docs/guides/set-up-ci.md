@@ -53,6 +53,8 @@ In the Execution Settings, your command will be preset to `dbt build --select st
 
 To be able to find modified nodes, dbt needs to have something to compare against. <Constant name="dbt" /> uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
 
+If you point CI at a non-production environment (staging, QA, UAT, or similar) that runs many jobs, comparison manifests can change unpredictably, or lag behind merges to your integration branch (for example, `develop`).
+
 :::info Use CI to test your metrics
 If you've [built semantic nodes](/docs/build/build-metrics-intro) in your dbt project, you can [validate them in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 :::
@@ -68,6 +70,10 @@ To test your new flow, create a new branch in the <Constant name="studio_ide" />
 - If you make a new commit while a CI run based on older code is in progress, it will be automatically canceled and replaced with the fresh code.
 - An unlimited number of CI jobs can run at once. If 10 developers all commit code to different PRs at the same time, each person will get their own schema containing their changes. Once each PR is merged, <Constant name="dbt" /> will drop that schema.
 - CI jobs will never block a production run.
+
+## Keep comparison manifests stable {#keep-comparison-manifests-stable}
+
+Deferring to Production is straightforward when one primary deploy job owns artifacts and merges are infrequent. With high merge volume, Production’s manifest can still move while other pull requests stay open, so CI may select extra `state:modified` nodes until those branches incorporate the latest merges (or you add a fast merge-triggered `dbt parse`). Busy staging, QA, or UAT environments add another failure mode as many jobs with different settings overwrite `manifest.json`. Any deferred environment can also be stale for a short window right after a merge until the next successful run refreshes artifacts.
 
 ## Enforce best practices with dbt project evaluator
 
