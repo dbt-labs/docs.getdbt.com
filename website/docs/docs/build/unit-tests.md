@@ -12,19 +12,11 @@ keywords:
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
-There is an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
+There is an additional type of test in dbt: unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
-## Before you begin
+import UnitTestsPrereqs from '/snippets/_unit-tests-prereqs.md';
 
-- We currently only support unit testing SQL models.
-- We currently only support adding unit tests to models in your _current_ project.
-- We currently _don't_ support unit testing models that use the [`materialized view`](/docs/build/materializations#materialized-view) materialization.
-- We currently _don't_ support unit testing models that use recursive SQL.
-- We currently _don't_ support unit testing models that use introspective queries.
-- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
-- Unit tests must be defined in a YML file in your [`models/` directory](/reference/project-configs/model-paths).
-- Table names must be aliased in order to unit test `join` logic.
-- Include all [`ref`](/reference/dbt-jinja-functions/ref) or [`source`](/reference/dbt-jinja-functions/source) model references in the unit test configuration as `input`s to avoid "node not found" errors during compilation.
+<UnitTestsPrereqs />
 
 #### Adapter-specific caveats
 - You must specify all fields in a BigQuery `STRUCT` in a unit test. You cannot use only a subset of fields in a `STRUCT`.
@@ -112,16 +104,19 @@ unit_tests:
     model: dim_customers
     given:
       - input: ref('stg_customers')
+        format: dict
         rows:
           - {email: cool@example.com,    email_top_level_domain: example.com}
           - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
           - {email: badgmail.com,        email_top_level_domain: gmail.com}
           - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
+        format: dict
         rows:
           - {tld: example.com}
           - {tld: gmail.com}
     expect:
+      format: dict
       rows:
         - {email: cool@example.com,    is_valid_email_address: true}
         - {email: cool@unknown.com,    is_valid_email_address: false}
@@ -132,6 +127,61 @@ unit_tests:
 </file>
 
 The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. Store your fixture files in a `fixtures` subdirectory in any of your [test paths](/reference/project-configs/test-paths). For example, `tests/fixtures/my_unit_test_fixture.sql`. 
+
+The following examples show how to define mock data and expected output using `csv` and `sql`.
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address__csv
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        format: dict
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        format: csv
+        rows: |
+          tld
+          example.com
+          gmail.com
+    expect:
+      format: csv
+      fixture: valid_email_address_fixture_output
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address__sql
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        format: dict
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        format: sql
+        rows: |
+          select 'example.com' as tld union all
+          select 'gmail.com' as tld
+    expect:
+      format: sql
+      fixture: valid_email_address_fixture_output
+```
+
+</File>
 
 When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
@@ -226,7 +276,7 @@ Your model is now ready for production! Adding this unit test helped catch an is
 When configuring your unit test, you can override the output of macros, vars, or environment variables. This enables you to unit test your incremental models in "full refresh" and "incremental" modes.
 
 :::note
-Incremental models need to exist in the database first before running unit tests or doing a `dbt build`. Use the [`--empty` flag](/reference/commands/build#the---empty-flag) to build an empty version of the models to save warehouse spend. You can also optionally select only your incremental models using the [`--select` flag](/reference/node-selection/syntax#shorthand).
+Incremental models need to exist in the database before running unit tests or doing a `dbt build`. Use the [`--empty` flag](/reference/commands/build#the---empty-flag) to build an empty version of the models to save warehouse spend. You can also optionally select only your incremental models using the [`--select` flag](/reference/node-selection/syntax#shorthand).
 
   ```shell
   dbt run --select "config.materialized:incremental" --empty
@@ -260,7 +310,7 @@ where event_time > (select max(event_time) from {{ this }})
 
 You can define unit tests on `my_incremental_model` to ensure your incremental logic is working as expected:
 
-```yml
+```yaml
 
 unit_tests:
   - name: my_incremental_model_full_refresh_mode
@@ -307,7 +357,7 @@ There is currently no way to unit test whether the dbt framework inserted/merged
 
 If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
 
-```yml
+```yaml
 unit_tests:
   - name: my_unit_test
     model: dim_customers
