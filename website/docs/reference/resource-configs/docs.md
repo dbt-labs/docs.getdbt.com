@@ -53,13 +53,13 @@ models:
 
 <TabItem value="sources">
 
-This property is not implemented for sources.
+The `docs` config isn’t supported for sources.
 
 </TabItem>
 
 <TabItem value="seeds">
 
-You can use the docs property in YAML files, including the `dbt_project.yml`:
+You can use the `docs` config in YAML files, including the `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
@@ -90,7 +90,7 @@ seeds:
 
 <TabItem value="snapshots">
 
-You can use the docs property in YAML files, including the `dbt_project.yml`:
+You can use the `docs` config in YAML files, including the `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
@@ -122,7 +122,7 @@ snapshots:
 
 <TabItem value="analyses">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Analysis properties](/reference/analysis-properties) for more info.
+You can configure `docs` for analyses in the `config` block under `analyses:` in your YAML file. Refer to [Analysis properties](/reference/analysis-properties) for more information.
 
 
 <File name='analysis/schema.yml'>
@@ -142,18 +142,18 @@ analyses:
 
 <TabItem value="macros">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more info.
+You can configure `docs` for macros in the `config` block under `macros:` in your YAML file. Refer to [Macro properties](/reference/macro-properties) for more information.
 
 <File name='macros/schema.yml'>
 
 ```yml
-
 macros:
   - name: macro_name
-    config:
-      docs: # changed to config in v1.10
+    config: 
+      docs: # changed to config in v1.11
         show: true | false
 ```
+
 </File>
 
 </TabItem>
@@ -163,7 +163,9 @@ macros:
 Note that for backwards compatibility, `docs` is supported as a top-level key, but without the capabilities of config inheritance.
 
 ## Definition
-The `docs` property can be used to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
+You can use the `docs` config to provide documentation-specific configuration for resources. It supports the following attributes:
+- `show`: Controls whether nodes appears in the auto-generated documentation website.
+- `node_color`: Controls the colors of nodes displayed in the DAG. This is supported for models, seeds, snapshots, and analyses. Other node types are not supported.
 
 **Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
