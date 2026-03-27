@@ -59,6 +59,10 @@ semantic_models:
 
 </div>
 
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
+
 ### Entities and dimensions
 
 Entities and dimensions are defined directly under columns, creating a 1:1 relationship between the physical columns and their semantic definitions.
