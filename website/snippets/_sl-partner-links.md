@@ -45,10 +45,10 @@ The following tools integrate with the dbt Semantic Layer:
   <div className="card-container">
     <Card
       title="Dot"
-      link="https://docs.getdot.ai/dot/integrations/dbt-semantic-layer"
+      link="https://docs.getdot.ai/integrations/semantic-layers/dbt-semantic-layer"
       body="Enable everyone to analyze data with AI in Slack or Teams."
       icon="dot-ai"/>
-      <a href="https://docs.getdot.ai/dot/integrations/dbt-semantic-layer"
+      <a href="https://docs.getdot.ai/integrations/semantic-layers/dbt-semantic-layer"
       className="external-link"
       target="_blank"
       rel="noopener noreferrer">

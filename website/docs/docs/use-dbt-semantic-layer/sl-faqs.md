@@ -246,7 +246,7 @@ Yes! You can validate your semantic nodes (semantic models, metrics, saved queri
 
 <Expandable alt_header="What integrations are supported today?">
 
-There are a number of data applications that have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
+There are a number of data applications that have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, Dot, and Mode, among others.
 
 Refer to [Available integrations](/docs/cloud-integrations/avail-sl-integrations) for more information.
 
