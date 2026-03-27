@@ -65,7 +65,7 @@ Key:
 | Projects                     | W             | -             | R                   | R                    | W               | R              | R      |
 | Repositories                 | W             | -             | -                   | -                    | W               | -              | R      |
 | Runs                         | W             | -             | -                   | -                    | W               | -              | R      |
-| Semantic Layer config        | W             | -             | -                   | -                    | W               | v              | R      |
+| Semantic Layer config        | W             | -             | -                   | -                    | W               | -              | R      |
 </FilterableTable>
 
 ### Project permissions
