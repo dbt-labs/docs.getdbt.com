@@ -4,7 +4,11 @@ sidebar_label: "seed"
 id: "seed"
 ---
 
-Seeds are configured in the `dbt_project.yml` file, where you can define options like seed file directories and column interpretation. The `dbt seed` command then loads CSV files from your project’s `seed-paths` into your <Term id="data-warehouse" />, creating relations that you can reference in downstream models.
+The `dbt seed` command loads static CSV files from your project’s `seed-paths` into your <Term id="data-warehouse" /> as tables. Use seeds for small, version-controlled reference datasets you want to keep alongside your project such as country codes, region mappings, or a list of business-defined categories.
+
+After you load seeds, you can reference the resulting tables in downstream models, and rerun `dbt seed` when the CSVs change.
+
+Seeds are configured in the `dbt_project.yml` file, where you can define options like seed file directories and column interpretation. The `dbt seed` command then loads those CSVs into your warehouse so you can reference them in downstream models.
 
 ## Overview
 
