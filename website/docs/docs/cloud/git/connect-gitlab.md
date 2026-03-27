@@ -27,7 +27,7 @@ Depending on your plan, use these steps to integrate GitLab in <Constant name="d
 
 ## For dbt Developer and Starter plans
 
-Before you can work with GitLab repositories in <Constant name="dbt" />, you’ll need to connect your GitLab account to your user profile. This allows <Constant name="dbt" /> to authenticate your actions when interacting with Git repositories. Make sure to read the [Requirements and limitations](#requirements-and-limitations) of the Starter and Developer plans before you connect your account.
+Before you can work with GitLab repositories in <Constant name="dbt" />, you’ll need to connect your GitLab account to your user profile. This allows <Constant name="dbt" /> to authenticate your actions when interacting with Git repositories. Make sure to read the [requirements and limitations](#requirements-and-limitations) of the Starter and Developer plans before you connect your account.
 
 To connect your GitLab account:
 1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**. 
