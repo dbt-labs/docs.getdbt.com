@@ -17,11 +17,11 @@ Last November, at dbt Summit, Jeremy introduced dbt’s multi-platform Iceberg c
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bRJJkeJkUsE?si=mQTD3jUNpPqvwrJb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-With them, Snowflake can seamlessly query and write Iceberg tables to catalogs in other platforms. We wanted to push those claims to their limit and did so by exploring the interconnectivity of Databricks Unity Catalog and Snowflake.
+What intrigued us most was the promised interconnectivity of Databricks Unity Catalog and Snowflake catalog-linked databases.
 
-AI’s all the rage, but another little revolution is taking shape: Teams are breaking their data storage out of vendor-specific platforms. The Iceberg table format and Iceberg REST catalogs are the emerging standards powering that flexibility.
+AI’s all the rage, but another little revolution is taking shape: Teams are breaking their data storage out of vendor-specific platforms. For months, we have been chatting with users excited to adopt Iceberg as a core pillar of their data architecture. The Iceberg table format and Iceberg REST catalogs are the emerging standards powering that flexibility. 
 
-We have been chatting for months with users excited to adopt Iceberg as a core pillar of their data architecture. For dbt’s part, we see two opportunities to power this little revolution.
+For dbt’s part, this shows up in two concrete use cases:
 
 - **dbt projects at scale**: Teams share one logical database, with many schemas and hundreds to thousands of tables
 - **Cross-platform mesh**: One project in Snowflake, one in Databricks, sharing data without juggling manual refreshes or metadata pointers
@@ -52,29 +52,29 @@ At these scales, catalog behavior, metadata operations, and refresh mechanics re
 
 Using TPC-H queries over large benchmarking datasets, we found that once data is visible and up to date, querying those Iceberg tables from Snowflake is as fast as you’d want in any reasonable analytics workflow. Databricks querying the same data from the owning side is speedy too.
 
-The catch is that “read performance” is really only half the story. In practice, what users experience is not “how fast is this query,” but “am I even querying the latest thing?” When freshness slips, CLDs stop feeling like a pipe and start feeling like waiting for a package held up in customs.
+The catch is that “read performance” is really only half the story. In practice, what users experience is not “how fast is this query,” but “am I even querying fresh data?” When freshness slips, CLDs stop feeling like a pipe and start feeling like waiting for a package held up in customs.
 
 ## Writes and change at scale: The compute bottleneck {#writes-and-changes-at-scale}
 
-When Snowflake is the one making lots of changes (creating tables, updating metadata, producing many Iceberg commits), the limiting factor quickly becomes the write path. In a dbt-shaped workload—many small/medium table operations rather than one giant append—this can make runs slow and sometimes fragile under contention. This can lead to outright failures that claim your table no longer exists.
+When Snowflake is the one making lots of changes (creating tables, updating metadata, producing many Iceberg commits), the job runs the query against the upstream Databricks objects. A query might take twice as long, but the data is synchronized across both platforms. Write throughput becomes the limiting factor. In a dbt-shaped workload—many small/medium table operations rather than one giant append—this can make runs slow and sometimes fragile under contention. This can lead to outright failures claiming your table no longer exists.
 
-When Databricks is making changes, writes are the same as ordinary Databricks Iceberg writes. Snowflake’s ability to reflect those changes is unpredictable.
+Now, when Databricks is making changes, writes are the same as in any ordinary Databricks workflow. The difficulty becomes Snowflake's ability to reflect those changes.
 
 ## The biggest finding: As scale increases, refresh latency does too {#the-biggest-finding}
 
-CLDs promise fast syncing. We found this is relatively true at small and medium scales, but at large scale, we observed that changes in Databricks to synchronize with the external Iceberg tables in Snowflake lagged dramatically, sometimes 2x longer than expected. When we dialed things up to 500k tables, the refresh on Snowflake for a trivial Databricks `INSERT` could take close to two days to propagate. Some tables seemed to get “stuck” until we learned how to manually nudge refresh forward (including hacking refresh-related settings to jog the system — we hear the fine folks at Snowflake have ergonomic improvements on the way).
+CLDs promise fast syncing. We found this is relatively true at small and medium scales. However, at larger scales, we observed that changes made by Databricks could take far longer than advertised on the tin to synchronize. Generally, we experienced auto-refresh waits 2x longer than expected. When we dialed things up to 500k tables, the refresh on Snowflake for a trivial Databricks `INSERT` could take two days to propagate. Some tables seemed to get “stuck.” Now, we eventually learned how to manually force refreshes for individual objects (i.e. hacking refresh-related settings to jog the system). But, we found it difficult to predict when data updates would propagate from Databricks back to Snowflake (the good news is that we hear the fine folks at Snowflake have ergonomic improvements on the way). We mostly operated on a gut feeling of when data would arrive.
 
-Ultimately, the question of whether and how you should adopt Snowflake CLDs comes down to scale and latency:
+Mulling over our experiences, we believe the question of whether and how you should adopt Snowflake CLDs comes down to scale and latency:
 
 1. How many Iceberg tables are you syncing across multiple engines?
-2. Do your workflows require that Snowflake has a near-real-time view of externally managed Iceberg? Or can you treat it as a view that might be stale, accept eventual consistency, and live without clear guarantees unless you build your own monitoring and manual playbook?
+2. Do your workflows require that Snowflake has a near-real-time view of externally managed Iceberg? Or can you treat it as a view that might be stale, accept eventual consistency, and live without clear guarantees unless you build your own manual playbook and monitoring framework?
 
 ## Interoperability friction: Why it’s not just the metadata {#interoperability-friction}
 
 Two non-performance issues showed up quickly:
 
 - Naming, quoting, and casing differences become friction points when dbt is generating objects that need to be understood identically by two engines. Our deep dive has given us ideas for dbt to abstract over these ergonomic challenges. In the future, users shouldn’t need to memorize the casing/quoting rules of every catalog/engine combo. For now, unfortunately, that’s just the cost of doing platform-agnostic business.
-- Metadata and refresh behavior become part of your job. You’re managing tables and the system that decides when tables “exist.” And those show iceberg tables queries are slow.
+- Metadata and refresh behavior become part of your job. You’re managing tables and the system that decides when tables “exist.” And those `show iceberg tables` queries are slow.
 
 ## The takeaway
 
@@ -82,4 +82,4 @@ CLDs work—up to a point. They solve recurring problems about keeping data conn
 
 For us, that can unlock some very exciting capabilities within customers’ dbt workflows—cross-platform mesh, external sources, and maybe even running the same dbt project / DAG against multiple warehouses. We believe that Iceberg integrations will continue to improve, becoming more performant and easier to use. We need only look to the past year of features (like CLDs!) to be excited for what’s coming in the next.
 
-We’d be remiss to end without thanks to the Unity Catalog team for their half of the story.
+And finally, we can’t close without giving a nod to the Unity Catalog team for partnering with Snowflake on this killer feature.
