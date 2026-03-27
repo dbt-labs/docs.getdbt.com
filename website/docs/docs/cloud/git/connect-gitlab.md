@@ -107,7 +107,7 @@ After you authorize the request, you’ll be redirected back to <Constant name="
 
 ### Personally authenticating with GitLab
 
-<Constant name="dbt" /> developers on the Enterprise or Enterprise+ plan must each connect their GitLab profiles to <Constant name="dbt" />, as every developer's read/write access for the dbt repo is checked in the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI.
+<Constant name="dbt" /> developers on the Enterprise or Enterprise+ plan must each connect their GitLab profiles to <Constant name="dbt" />, as every developer's read/write access for the dbt repo is checked in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 To connect a personal GitLab account:
 
