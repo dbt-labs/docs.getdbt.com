@@ -82,7 +82,7 @@ To create a group-owned OAuth application in GitLab:
 | **Scopes** | ✅ api |
 <br />
 3. Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
-4. Click **Save application**. GitLab will generate an **Application ID** and **Secret**. These values remain available even if you close the app screen, so you can return to copy them later.
+4. Click **Save application**. GitLab will generate an **Application ID** and **Secret**. These values remain available even if you close the app screen, so you can return to save them later.
 
 If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added the appropriate GitLab CIDRs to your IP restriction rules, or else the GitLab connection will fail.
 
