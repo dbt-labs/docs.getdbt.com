@@ -4,7 +4,7 @@ sidebar_label: "seed"
 id: "seed"
 ---
 
-The `dbt seed` command loads static CSV files from your project’s `seed-paths` into your <Term id="data-warehouse" /> as tables. Use seeds for small, version-controlled reference datasets you want to keep alongside your project such as country codes, region mappings, or a list of business-defined categories.
+The `dbt seed` command loads static CSV files from your project’s `seed-paths` into your <Term id="data-warehouse" /> as tables. Use seeds for small, version-controlled reference datasets you want to keep alongside your project, such as country codes, region mappings, or a list of business-defined categories.
 
 After you load seeds, you can reference the resulting tables in downstream models, and rerun `dbt seed` when the CSVs change.
 
