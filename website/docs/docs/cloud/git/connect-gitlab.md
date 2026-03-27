@@ -91,7 +91,7 @@ The application form in GitLab should look as follows when completed:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/gitlab app.png" title="GitLab group owned application form"/>
 
-Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values remain available if you close the app screen, so you can return to copy them later.
+Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values remain available even if you close the app screen, so you can return to save them later.
 
 If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added the appropriate GitLab CIDRs to your IP restriction rules, or else the GitLab connection will fail.
 
