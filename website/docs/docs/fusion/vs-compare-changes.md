@@ -50,7 +50,7 @@ To use compare changes in development, follow these steps:
    - Command palette: Open the VS Code command palette (Shift + Command + P (Mac) / Ctrl + Shift + P (Windows/Linux)) and search for the [**dbt: Compare changes**](vscode://dbtLabsInc/dbt.compareModel) 
    - Bottom panel: Click the **Compare** tab and then click the **Compare** button.
   
-    <Lightbox src="/img/fusion/connect-adapters/vsce-compare-changes.png" width="90%" title="Compare changes in development" />
+    <Lightbox src="/img/fusion/connect-adapters/vs-compare-changes.png" width="90%" title="Compare changes in development" />
 4. Once you click the **Compare** button, the extension will execute a `dbt build` command to build the model and then runs the comparison. The [**Compare** tab](#compare-tab) displays the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
 5. Once you've compared changes and see the changes in the **Compare** tab, you can then decide to commit your changes or continue editing.
 
