@@ -113,7 +113,7 @@ To connect a personal GitLab account:
 
 1. From <Constant name="dbt" />, click on your account name in the left-side menu and select **Account settings**.
 2. Select **Personal profile** under the **Your profile** section.
-3. Scroll down to **Linked accounts**.
+3. Go to **Linked accounts**.
 4. If your GitLab account is not connected, you’ll see "No connected account". Select **Link** to begin the setup process.
 5. In GitLab, when an authorization prompt appears, select the option to authorize <Constant name="dbt" />.
 
