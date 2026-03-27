@@ -36,7 +36,7 @@ The following table compares the features available in <Constant name="dbt" /> a
 | Query dimension, entity, and metric metadata  through the CLI | ✅ | ✅ |
 | Query metrics and dimensions through semantic APIs (ADBC, GQL)  | ❌ | ✅ |
 | Connect to downstream integrations (Tableau, Hex, Dot, Mode, Google Sheets, and so on) | ❌ | ✅ |
-| Create and run Exports to save metrics queries as tables in your data platform. | ❌ | ✅ |
+| Create and run Exports to save metrics queries as tables in your data platform | ❌ | ✅ |
 
 ## Related docs
 - [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
