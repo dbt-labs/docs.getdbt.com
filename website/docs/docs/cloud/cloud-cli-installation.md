@@ -12,7 +12,7 @@ The <Constant name="dbt_platform" /> natively supports developing using a comman
 
 :::note CLI compatibility
 
-The dbt CLI is a <Constant name="dbt_platform" /> tool available to users on any [available plan](https://www.getdbt.com/pricing). It is not compatible with existing installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs.
+The dbt CLI is a <Constant name="dbt_platform" /> tool available to users on any [available plan](https://www.getdbt.com/pricing). It's intended for use only with the <Constant name="dbt_platform" /> and may conflict with local installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. 
 
 :::
 
