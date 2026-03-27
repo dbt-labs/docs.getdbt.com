@@ -7,7 +7,7 @@ Before connecting, these objects must exist or be accessible:
 | Object | Purpose |
 | --- | --- |
 | **Workspace** | Your Databricks workspace URL (host) |
-| **SQL warehouse or cluster** | Compute resource (via `http_path`) |
+| **SQL warehouse or cluster** | Compute resource (using `http_path`) |
 | **Catalog** | Unity Catalog or Hive Metastore catalog |
 | **Schema** | Target schema within the catalog |
 | **User or service principal** | Identity for authentication |
