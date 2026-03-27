@@ -29,7 +29,7 @@ andrew_escay:
   name: Andrew Escay
   page: true
 anna_lee:
-  image_url: /img/blog/authors/anna-lee.jpeg
+  image_url: /img/blog/authors/anna-lee.png
   title: Software Engineer at dbt Labs
   name: Anna Lee
   page: true
@@ -418,7 +418,7 @@ mikael_thorup:
   name: Mikael Thorup
   page: true
 mila_page:
-  image_url: /img/blog/authors/mila-page.jpeg
+  image_url: /img/blog/authors/mila-page.png
   title: Senior Software Engineer at dbt Labs
   name: Mila Page
   page: true
