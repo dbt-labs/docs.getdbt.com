@@ -90,7 +90,7 @@ If you're a Business Critical customer using [IP restrictions](/docs/cloud/secur
 
 After you've created your GitLab application, add it to <Constant name="dbt" />:
 
-1. In <Constant name="dbt" />, go to **Account settings** → **Integrations**, then expand the GitLab section.
+1. In <Constant name="dbt" />, go to **Account settings** > **Integrations**, then expand the GitLab section.
 2. Enter the following values:
     | Field | Value |
     | ------ | ----- |
