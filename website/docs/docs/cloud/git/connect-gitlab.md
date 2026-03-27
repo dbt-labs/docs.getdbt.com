@@ -108,7 +108,7 @@ In <Constant name="dbt" />, input the following values:
 | **Application ID** | *copy value from GitLab app* |
 | **Secret** | *copy value from GitLab app* |
 
-Note, if you have a special hosted version of GitLab, modify the **GitLab Instance** to use the hostname provided for your organization instead, for example `https://gitlab.yourgreatcompany.com/`.
+Note, if you have a special hosted version of GitLab, modify the **GitLab Instance** to use the hostname provided for your organization instead (for example, `https://gitlab.yourgreatcompany.com/`).
 
 Once the form is complete in <Constant name="dbt" />, click **Save**.
 
