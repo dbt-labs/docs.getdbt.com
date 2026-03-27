@@ -30,7 +30,7 @@ Key:
 | Auth provider            | W             | -             | -                   | -                    | -                       | -               | W              | R      |
 | Billing                  | W             | W             | -                   | -                    | -                       | -               | -              | R      |
 | Connections              | W             | -             | R†                  | R                    | -                       | W               | -              | -      |
-| Cost Insights            | R             | -             | W                   | R                    | -                       | R               | -              | R      |
+| Cost Insights            | R             | -             | R                   | R                    | -                       | R               | -              | R      |
 | Groups                   | W             | -             | -                   | -                    | -                       | R               | W              | R      |
 | Invitations              | W             | -             | -                   | -                    | -                       | W               | W              | R      |
 | IP restrictions          | W             | -             | -                   | -                    | -                       | -               | W              | R      |
@@ -55,7 +55,7 @@ Key:
 |:-----------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Environment credentials      | W             | -             | -                   | -                    | W               | -              | R      |
 | Custom env. variables        | W             | -             | -                   | -                    | W               | -              | R      |
-| Cost Insights                | R             | -             | W                   | R                    | R               | -              | R      |
+| Cost Insights                | R             | -             | R                   | R                    | R               | -              | R      |
 | Data platform configurations | W             | -             | -                   | -                    | W               | -              | R      |
 | Develop (IDE or CLI)         | W             | -             | -                   | -                    | W               | -              | -      |
 | Environments                 | W             | -             | -                   | -                    | W               | -              | R      |
@@ -86,7 +86,7 @@ Key:
 | Auth provider            |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Billing                  |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Connections              |   R   |    R    |         R*          |          R           |       R        |     R     |     R     |     R     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Cost Insights            |   -   |    -    |         W           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
+| Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
 | Groups                   |   R   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
 | Invitations              |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      R      |     R      |
 | Licenses                 |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      -      |     R      |
@@ -106,7 +106,7 @@ Key:
 |--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
 | Environment credentials  |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
 | Custom env. variables    |   W   |    W#  |         -           |          -           |       W        |     W#    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
-| Cost Insights            |   -   |    -    |         W           |          R           |       R        |     -     |      -       |     R     |     R     |      -      |      -      |                  -                      |       -        |     -       |     R      |
+| Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |      -       |     R     |     R     |      -      |      -      |                  -                      |       -        |     -       |     R      |
 | Data platform configs    |   W   |    W    |         -           |          -           |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
 | Develop (IDE or CLI)     |   W   |    W    |         -           |          -           |       -        |     W     |      -       |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
 | Environments             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      -      |      R      |                  -                      |       -        |     R       |     R      |

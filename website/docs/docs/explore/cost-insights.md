@@ -172,12 +172,12 @@ Keep the following in mind when using Cost Insights:
 
 **Data collection and refresh**
 - Cost Insights uses your platform metadata credentials to access warehouse system tables. No separate credentials are needed beyond the platform metadata setup.
+    - You need sufficient [permissions](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) to query warehouse metadata tables.
 - Cost data is calculated _once per day_ by a scheduled job that runs at approximately 17:00 UTC.
 - The data collection job processes completed calendar days only. It does not include the current day because warehouse usage data may still be incomplete.
     - Jobs that ran yesterday (or earlier) will have cost data available after the next daily refresh.
     - Jobs that ran today will not have cost data until the following day’s refresh, regardless of what time they ran. 
 - If you don’t see cost data for a recent job, make sure at least one full calendar day has passed since it ran. The **Updated** badge in the **Cost Insights** section shows when the last refresh occurred.
-- You need sufficient [permissions](/docs/explore/set-up-cost-insights#assign-required-permissions) to query warehouse metadata tables.
 
 **Cost accuracy**
 - dbt calculates costs using warehouse-reported usage data and applies default credit or compute costs based on standard warehouse pricing.
