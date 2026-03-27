@@ -101,7 +101,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 
 1. After installation, open a new command-line window to confirm that <Constant name="fusion" /> was installed correctly by checking the version. 
     ```bash
-    dbtf --version
+    dbt --version
     ```
 2. You should see output similar to the following:
     ```bash
@@ -131,10 +131,10 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
     - If you already have a connection profile that you want to use, use the `--skip-profile-setup` flag then edit the generated `dbt_project.yml` to replace `profile: jaffle_shop` with `profile: <YOUR-PROFILE-NAME>`.
 
         ```bash
-        dbtf init --skip-profile-setup
+        dbt init --skip-profile-setup
         ```
 
-    - If you created new credentials through the interactive prompts, `init` automatically runs `dbtf debug` at the end. This ensures the newly created profile establishes a valid connection with the database.
+    - If you created new credentials through the interactive prompts, `init` automatically runs `dbt debug` at the end. This ensures the newly created profile establishes a valid connection with the database.
 
 2. Change directories into your newly created project:
     ```bash
@@ -143,14 +143,17 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
 
 3. Build your dbt project (which includes creating example data):
     ```bash
-    dbtf build
+    dbt build
     ```
-    With the <Constant name="fusion_engine" />, generate docs metadata in <Constant name="platform_cli" /> with `dbtf build --write-catalog`(`dbtf build` alone does not generate docs metadata); if you use <Constant name="dbt_platform" />, you can browse that metadata in [<Constant name="catalog" />](/docs/explore/build-and-view-your-docs).
 
-This will:
-- Load example data into your warehouse
-- Create, build, and test models
-- Verify your dbt environment is fully operational
+    #### Viewing metadata in Catalog
+
+    Run `dbt build --write-catalog` locally to generate docs metadata (`dbt build` alone does not generate docs metadata). To view that metadata in <Constant name="catalog" />, run a job in <Constant name="dbt_platform" /> so the metadata is uploaded. For details, refer to [Platform behavior](/reference/commands/cmd-docs?version=2.0#platform-behavior).
+
+    This will:
+    - Load example data into your warehouse
+    - Create, build, and test models
+    - Verify your dbt environment is fully operational
 
 ## Explore with the dbt VS Code extension
 
