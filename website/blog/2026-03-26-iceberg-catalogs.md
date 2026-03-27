@@ -48,6 +48,8 @@ At these scales, catalog behavior, metadata operations, and refresh mechanics re
 2. **Writing at scale:** How does performance change when you’re creating/updating lots of tables and querying big sums of metadata?
 3. **Freshness under change:** When one platform updates data, how reliably and quickly does the other see it?
 
+We've published our full testing regimen and detailed findings, for anyone who wants to take a deeper look: https://github.com/dbt-labs/snow-dbx-iceberg-benchmark
+
 ## Reads at scale: Good performance, but only after platforms sync {#reads-at-scale}
 
 Using TPC-H queries over large benchmarking datasets, we found that once data is visible and up to date, querying those Iceberg tables from Snowflake is as fast as you’d want in any reasonable analytics workflow. Databricks querying the same data from the owning side is speedy too.
@@ -80,6 +82,6 @@ Two non-performance issues showed up quickly:
 
 CLDs work—up to a point. They solve recurring problems about keeping data connected across platforms. If the number of tables or update volume is very large (on the order of tens of thousands), the pattern stops being a useful abstraction. The same goes if you depend on per-second precision for synchronizing writes. But until you approach that edge, CLDs really do make it possible to treat external Iceberg catalogs like any other database.
 
-For us, that can unlock some very exciting capabilities within customers’ dbt workflows—cross-platform mesh, external sources, and maybe even running the same dbt project / DAG against multiple warehouses. We believe that Iceberg integrations will continue to improve, becoming more performant and easier to use. We need only look to the past year of features (like CLDs!) to be excited for what’s coming in the next.
+For us, that can unlock some very exciting capabilities within customers’ dbt workflows—cross-platform mesh, external sources, and maybe even running the same dbt project / DAG against multiple warehouses. We believe that Iceberg integrations will continue to improve, becoming more performant and easier to use. We need only look to the past year of features (including Snowflake CLDs and Databricks' native managed Iceberg tables, the two features that made this story possible) to be excited for what’s coming in the next one.
 
 And finally, we can’t close without giving a nod to the Unity Catalog team for partnering with Snowflake on this killer feature.
