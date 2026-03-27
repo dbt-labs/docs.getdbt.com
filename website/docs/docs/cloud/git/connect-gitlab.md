@@ -8,7 +8,7 @@ id: "connect-gitlab"
 Connecting your GitLab account to <Constant name="dbt" /> provides convenience and another layer of security to <Constant name="dbt" />:
 - Import new GitLab repos with a couple of clicks during <Constant name="dbt" /> project setup.
 - Clone repos using HTTPS rather than SSH.
-- Carry GitLab user permissions through to <Constant name="dbt" /> and <Constant name="dbt" /> CLI git actions.
+- Carry GitLab user permissions through to <Constant name="dbt" /> and <Constant name="platform_cli" /> git actions.
 - Trigger [continuous integration](/docs/deploy/continuous-integration) builds when merge requests are opened in GitLab.
 
 :::info
