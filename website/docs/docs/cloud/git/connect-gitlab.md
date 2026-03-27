@@ -32,7 +32,7 @@ Before you can work with GitLab repositories in <Constant name="dbt" />, you’l
 To connect your GitLab account:
 1. From <Constant name="dbt" />, click on your account name in the left-side menu and select **Account settings**.
 2. Select **Personal profile** under the **Your profile** section.
-3. Scroll down to **Linked accounts**.
+3. Go to **Linked accounts**.
 4. Click **Link** to the right of your GitLab account.
 5. In GitLab, when an authorization prompt appears, select the option to authorize <Constant name="dbt" />.
 
