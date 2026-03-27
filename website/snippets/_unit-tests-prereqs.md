@@ -10,4 +10,4 @@
 - Table names must be aliased in order to unit test `join` logic.
 - Include all [`ref`](/reference/dbt-jinja-functions/ref) or [`source`](/reference/dbt-jinja-functions/source) model references in the unit test configuration as `input`s to avoid "node not found" errors during compilation.
 
-Unit tests are discovered from `model-paths`, so define them alongside your models in your `model/` directory &mdash;;  not in the `tests/` directory. The `tests/` directory is reserved for [data tests](link to data tests url) only.
+Unit tests are discovered from `model-paths` (by default, the `models/` directory), so define them alongside your models in a `.yml` file under your `model-paths`. Don't define unit test YAML in the `tests/` directory, which is reserved for [data tests](/docs/build/data-tests).

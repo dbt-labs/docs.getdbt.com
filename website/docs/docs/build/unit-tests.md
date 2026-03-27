@@ -104,16 +104,19 @@ unit_tests:
     model: dim_customers
     given:
       - input: ref('stg_customers')
+        format: dict
         rows:
           - {email: cool@example.com,    email_top_level_domain: example.com}
           - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
           - {email: badgmail.com,        email_top_level_domain: gmail.com}
           - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
+        format: dict
         rows:
           - {tld: example.com}
           - {tld: gmail.com}
     expect:
+      format: dict
       rows:
         - {email: cool@example.com,    is_valid_email_address: true}
         - {email: cool@unknown.com,    is_valid_email_address: false}
@@ -124,6 +127,61 @@ unit_tests:
 </file>
 
 The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. Store your fixture files in a `fixtures` subdirectory in any of your [test paths](/reference/project-configs/test-paths). For example, `tests/fixtures/my_unit_test_fixture.sql`. 
+
+The following examples show how to define mock data and expected output using `csv` and `sql`.
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address__csv
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        format: dict
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        format: csv
+        rows: |
+          tld
+          example.com
+          gmail.com
+    expect:
+      format: csv
+      fixture: valid_email_address_fixture_output
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yaml
+unit_tests:
+  - name: test_is_valid_email_address__sql
+    model: dim_customers
+    given:
+      - input: ref('stg_customers')
+        format: dict
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        format: sql
+        rows: |
+          select 'example.com' as tld union all
+          select 'gmail.com' as tld
+    expect:
+      format: sql
+      fixture: valid_email_address_fixture_output
+```
+
+</File>
 
 When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
