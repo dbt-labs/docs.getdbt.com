@@ -111,7 +111,7 @@ dbt run --select "selector:staging,tag:nightly"
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
-Note that when you're using `--selector`, dbt ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises the `SelectExcludeIgnoredWithSelectorWarning` warning when `--selector` is combined with `--select` or `--exclude`.
+Note that when you're using `--selector`, dbt ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when `--selector` is combined with `--select` or `--exclude`.
 
 The `--select` and `--selector` arguments are similar in that they both allow you to select resources. To understand the difference between `--select` and `--selector` arguments, see [this section](/reference/node-selection/yaml-selectors#difference-between---select-and---selector) for more details.
 

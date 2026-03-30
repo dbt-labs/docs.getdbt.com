@@ -301,7 +301,7 @@ dbt list --select "+semantic_model:orders"  # list your semantic model named "or
 The `selector` method is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-The `selector` method selects the nodes defined by a named [YAML selector](/reference/node-selection/yaml-selectors) in `selectors.yml`. You can use it in `--select` or `--exclude` strings so you can compose a named selector with other [methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators).
+The `selector` method selects the nodes defined by a named [YAML selector](/reference/node-selection/yaml-selectors) in `selectors.yml`. Use it in `--select` or `--exclude` strings so you can compose a named selector with other [methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators).
 
 ```bash
 dbt run --select "selector:my_selector"          # same node set as `dbt run --selector my_selector`
@@ -316,7 +316,7 @@ When you use `--selector` together with `--select` or `--exclude`, dbt only uses
 
 When you use `--select` or `--exclude`, dbt does not apply any default selector. To include a selector in the selection, you must explicitly reference it using the `selector:` method.
 
-If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` error at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
+If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
 
 </VersionBlock>
 
