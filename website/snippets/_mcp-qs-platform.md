@@ -23,7 +23,7 @@ This quickstart uses the local MCP server: it runs on your machine using `uvx db
 
 OAuth is the fastest setup for <Constant name="dbt_platform"/> Enterprise and Enterprise+ accounts &mdash; no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
 
-OAuth is currently available with the local MCP server only. For [remote MCP server](/docs/dbt-ai/setup-remote-mcp) setups, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#setup-instructions).
+For OAuth _without_ a local install, use the [remote MCP server](/docs/dbt-ai/mcp-quickstart-remote) (Enterprise and Enterprise+, private beta). If your client does not support OAuth or you need token-based access, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#token-based-authentication).
 
 <StaticSubdomainRequired />
 

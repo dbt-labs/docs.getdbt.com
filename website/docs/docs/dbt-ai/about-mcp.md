@@ -17,6 +17,8 @@ The [dbt MCP server](https://github.com/dbt-labs/dbt-mcp) provides a standardize
 
 To help with dbt, assistants need your project metadata and, when you allow it, supported actions such as CLI runs, platform APIs, and <Constant name="semantic_layer" /> queries. The dbt MCP server exposes those to MCP clients and supports use cases such as conversational access to data, agentic automation for dbt workflows, and AI-assisted development. This page covers local and remote setups, available tools, and how to get started.
 
+OAuth is one way to authenticate to <Constant name="dbt_platform"/> for supported experiences (including MCP, local and remote where available). Additional integrations may be offered over time.
+
 The MCP server provides access to the <Constant name="platform_cli"/>, [API](/docs/dbt-cloud-apis/overview), the [Discovery API](/docs/dbt-cloud-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
@@ -98,7 +100,7 @@ To view the full list of tools, see [Available tools](/docs/dbt-ai/mcp-available
 
 ## MCP integrations
 
-The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports token authentication and tool use capabilities. We have created integration guides for the following clients:
+The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports OAuth or token authentication and tool use capabilities, depending on your setup. We have created integration guides for the following clients:
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode).

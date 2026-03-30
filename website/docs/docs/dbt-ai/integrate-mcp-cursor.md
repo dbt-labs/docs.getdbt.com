@@ -75,11 +75,15 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
 ## Set up with remote dbt MCP server
 
+Remote MCP supports **OAuth** (Enterprise and Enterprise+, private beta) or **token-based** headers. For OAuth, the MCP URL is `https://<Access URL>/api/ai/v1/mcp` (from **Account settings**). For prerequisites, flow, and limitations, see [Use Remote MCP quickstart](/docs/dbt-ai/mcp-quickstart-remote) and [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+
+The deeplink below configures **token-based** authentication (URL and headers).
+
 1. Click the following application link with Cursor open:
 
     [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJ1cmwiOiJodHRwczovLzxob3N0Pi9hcGkvYWkvdjEvbWNwLyIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6InRva2VuIDx0b2tlbj4iLCJ4LWRidC1wcm9kLWVudmlyb25tZW50LWlkIjoiPHByb2QtaWQ%252BIn19)
 
-2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template.
+2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template. Use `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp` as the server URL (no trailing slash).
    :::tip IDs are integers, not URLs
    `DBT_PROD_ENV_ID`, `DBT_USER_ID`, and `DBT_DEV_ENV_ID` must be numeric IDs (for example, `54321`), not full URLs. 
 
