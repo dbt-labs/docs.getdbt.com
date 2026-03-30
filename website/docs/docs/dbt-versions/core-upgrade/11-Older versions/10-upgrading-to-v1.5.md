@@ -44,18 +44,18 @@ The following env vars have been renamed, for consistency with the convention fo
 
 As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
-An empty `tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `tests:` key, or by setting it to an empty list explicitly:
+An empty `data_tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `data_tests:` key, or by setting it to an empty list explicitly:
 ```yml
 #  ❌ this will raise an error
 models:
   - name: my_model
-    tests:
+    data_tests:
     config: ...
 
 # ✅ this is fine
 models:
   - name: my_model
-    tests: [] # todo! add tests later
+    data_tests: [] # todo! add tests later
     config: ...
 ```
 
