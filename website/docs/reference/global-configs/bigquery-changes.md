@@ -15,9 +15,7 @@ With `bigquery_use_batch_source_freshness` enabled, dbt determines freshness fro
 
 When you configure a `loaded_at_field` on a source, dbt runs a column-based freshness check for that source instead of metadata-based freshness.
 
-However, if `loaded_at_field` is set on _all_ sources, freshness will fail
-with a compilation error (`list object has no element 0` in
-`get_relation_last_modified`). This occurs because the `bigquery_use_batch_source_freshness` flag assumes at least one source uses metadata-based freshness; configuring `loaded_at_field` on all sources breaks this assumption.
+However, if `loaded_at_field` is set on _all_ sources, freshness will fail with a compilation error (`list object has no element 0` in `get_relation_last_modified`). This occurs because the `bigquery_use_batch_source_freshness` flag assumes at least one source uses metadata-based freshness; configuring `loaded_at_field` on all sources breaks this assumption.
 
 To avoid this, remove `loaded_at_field` from any sources you want checked using batch freshness.
 :::
