@@ -12,6 +12,7 @@ id: "snapshots"
 - [`snapshot` command](/reference/commands/snapshot)
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
+import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
 
 <CourseCallout resource="Snapshots" 
 url="https://learn.getdbt.com/courses/snapshots"
@@ -88,6 +89,7 @@ The following table outlines the configurations available for snapshots:
 - Developers can still set a custom location with [`schema`](/reference/resource-configs/schema) and [`database`](/reference/resource-configs/database)  configs, consistent with other resource types.
 - A number of other configurations are also supported (for example, `tags` and `post-hook`). For the complete list, refer to [Snapshot configurations](/reference/snapshot-configs).
 - You can configure snapshots from both the `dbt_project.yml` file and a `config` block. For more information, refer to the [configuration docs](/reference/snapshot-configs).
+- Starting <Constant name="core" /> v1.12, you can inspect the SQL generated for snapshots by running [`dbt compile`](/reference/commands/compile). You can find compiled SQL files in the `target/compiled/` directory of your dbt project.
 
 ### Add a snapshot to your project
 
@@ -156,6 +158,8 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
     Done. PASS=2 ERROR=0 SKIP=0 TOTAL=1
     ```
+
+    <SnapshotCompiledSql />
 
 5. Inspect the results by selecting from the table dbt created (`analytics.snapshots.orders_snapshot`). After the first run, you should see the results of your query, plus the [snapshot meta fields](#snapshot-meta-fields) as described later on.
 
@@ -397,7 +401,7 @@ The resulting table will look like this:
 
 Snapshot <Term id="table">tables</Term> will be created as a clone of your source dataset, plus some additional meta-fields*.
 
-In <Constant name="core" /> v1.9+ (or available sooner in [the **Latest** release track in <Constant name="cloud" />](/docs/dbt-versions/cloud-release-tracks)):
+In <Constant name="core" /> v1.9+ (or available sooner in [the **Latest** release track in <Constant name="dbt" />](/docs/dbt-versions/cloud-release-tracks)):
 - These column names can be customized to your team or organizational conventions using the [`snapshot_meta_column_names`](/reference/resource-configs/snapshot_meta_column_names) config.
 - Use the [`dbt_valid_to_current` config](/reference/resource-configs/dbt_valid_to_current) to set a custom indicator for the value of `dbt_valid_to` in current snapshot records (like a future date such as `9999-12-31`). By default, this value is `NULL`. When set, dbt will use this specified value instead of `NULL` for `dbt_valid_to` for current records in the snapshot table.
 - Use the [`hard_deletes`](/reference/resource-configs/hard-deletes) config to track deleted records as new rows with the `dbt_is_deleted` meta field when using the `hard_deletes='new_record'` field.

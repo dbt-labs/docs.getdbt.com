@@ -65,7 +65,9 @@ from {{ ref('my_model') }}
 
 ## Definition
 
-You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [rendering strategies](/docs/fusion/new-concepts#rendering-strategies) for more information on how the <Constant name="fusion_engine" /> renders models.
+You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Priciples of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
+
+Setting a model to `strict` does not automatically set `strict` for downstream models; they keep the project default unless you configure them explicitly. For more information and examples, refer to [strict mode inheritance](/docs/fusion/new-concepts#strict-mode-inheritance).
 
 The following values are available for `static_analysis`:
 

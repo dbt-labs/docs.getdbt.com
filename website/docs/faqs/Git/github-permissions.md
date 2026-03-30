@@ -4,13 +4,13 @@ description: "GitHub and dbt permissions error"
 sidebar_label: "GitHub and dbt permissions error"
 ---
 
-If you see the error `This account needs to accept the latest permissions for the dbt GitHub App` in <Constant name="cloud" /> &mdash; this usually occurs when the permissions for the <Constant name="cloud" /> GitHub App are out-of-date.
+If you see the error `This account needs to accept the latest permissions for the dbt GitHub App` in <Constant name="dbt" /> &mdash; this usually occurs when the permissions for the <Constant name="dbt" /> GitHub App are out-of-date.
 
-To solve this issue, you'll need to update the permissions for the <Constant name="cloud" /> GitHub App in your GitHub account. This FAQ shares a couple of ways you can do it.
+To solve this issue, you'll need to update the permissions for the <Constant name="dbt" /> GitHub App in your GitHub account. This FAQ shares a couple of ways you can do it.
 
 ## Update permissions
 
-A GitHub organization admin will need to update the permissions in GitHub for the <Constant name="cloud" /> GitHub App. If you're not the admin, reach out to your organization admin to request this. 
+A GitHub organization admin will need to update the permissions in GitHub for the <Constant name="dbt" /> GitHub App. If you're not the admin, reach out to your organization admin to request this. 
 
 1. Navigate to your GitHub account. Click on the top right profile icon and then **Settings** (or personal if using a non-organization account).
 
@@ -24,13 +24,13 @@ A GitHub organization admin will need to update the permissions in GitHub for th
 
 For more info on GitHub permissions, refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
 
-Alternatively, try [disconnecting your GitHub account](#disconnect-github) in <Constant name="cloud" />, detailed in the following section.
+Alternatively, try [disconnecting your GitHub account](#disconnect-github) in <Constant name="dbt" />, detailed in the following section.
 
 ## Disconnect GitHub
 
-Disconnect the GitHub and <Constant name="cloud" /> integration in <Constant name="cloud" />.
+Disconnect the GitHub and <Constant name="dbt" /> integration in <Constant name="dbt" />.
 
-1. In <Constant name="cloud" />, go to **Account Settings**.
+1. In <Constant name="dbt" />, go to **Account Settings**.
 2. In **Projects**, select the project experiencing the issue.
 3. Click the repository link under **Repository**.
 4. In the **Repository details** page, click **Edit**.

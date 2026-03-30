@@ -4,31 +4,31 @@ sidebar_label: "Account integrations"
 description: "Learn how to configure account integrations for your dbt account."
 ---
 
-The following sections describe the different **Account integrations** available from your <Constant name="cloud" /> account under the account **Settings** section.
+The following sections describe the different **Account integrations** available from your <Constant name="dbt" /> account under the account **Settings** section.
 
 <Lightbox src="/img/docs/dbt-cloud/account-integrations.png" title="Example of Account integrations from the sidebar" /> 
 
 ## Git integrations
 
-Connect your <Constant name="cloud" /> account to your <Constant name="git" /> provider to enable <Constant name="cloud" /> users to authenticate your personal accounts. <Constant name="cloud" /> will perform <Constant name="git" /> actions on behalf of your authenticated self, against repositories to which you have access according to your <Constant name="git" /> provider permissions.
+Connect your <Constant name="dbt" /> account to your <Constant name="git" /> provider to enable <Constant name="dbt" /> users to authenticate your personal accounts. <Constant name="dbt" /> will perform <Constant name="git" /> actions on behalf of your authenticated self, against repositories to which you have access according to your <Constant name="git" /> provider permissions.
 
 To configure a <Constant name="git" /> account integration:
 1. Navigate to **Account settings** in the side menu.
 2. Under the **Settings** section, click on **Integrations**.
 3. Click on the <Constant name="git" /> provider from the list and select the **Pencil** icon to the right of the provider.
-4. <Constant name="cloud" /> [natively connects](/docs/cloud/git/git-configuration-in-dbt-cloud) to the following <Constant name="git" /> providers:
+4. <Constant name="dbt" /> [natively connects](/docs/cloud/git/git-configuration-in-dbt-cloud) to the following <Constant name="git" /> providers:
 
    - [GitHub](/docs/cloud/git/connect-github)
    - [GitLab](/docs/cloud/git/connect-gitlab)
    - [Azure DevOps](/docs/cloud/git/connect-azure-devops) <Lifecycle status="managed,managed_plus" />
 
-You can connect your <Constant name="cloud" /> account to additional <Constant name="git" /> providers by importing a git repository from any valid git URL. Refer to [Import a git repository](/docs/cloud/git/import-a-project-by-git-url) for more information.
+You can connect your <Constant name="dbt" /> account to additional <Constant name="git" /> providers by importing a git repository from any valid git URL. Refer to [Import a git repository](/docs/cloud/git/import-a-project-by-git-url) for more information.
 
 <Lightbox src="/img/docs/dbt-cloud/account-integration-git.png" width="85%" title="Example of the Git integration page" />
 
 ## OAuth integrations
 
-Connect your <Constant name="cloud" /> account to an OAuth provider that are integrated with <Constant name="cloud" />. 
+Connect your <Constant name="dbt" /> account to an OAuth provider that are integrated with <Constant name="dbt" />. 
 
 To configure an OAuth account integration:
 1. Navigate to **Account settings** in the side menu.

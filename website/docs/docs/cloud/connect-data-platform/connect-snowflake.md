@@ -9,24 +9,28 @@ sidebar_label: "Connect Snowflake"
 
 :::note
 
-<Constant name="cloud" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
+<Constant name="dbt" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
 
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake.
 
 :::
 
-The following fields are required when creating a Snowflake connection
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
+The following fields are required when creating a Snowflake connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Account | The Snowflake account to connect to. Take a look [here](/docs/core/connect-data-platform/snowflake-setup#account) to determine what the account field should look like based on your region.| <Snippet path="snowflake-acct-name" /> |
+| Account | The Snowflake account to connect to. Take a look [here](/docs/local/connect-data-platform/snowflake-setup#account) to determine what the account field should look like based on your region.| <Snippet path="snowflake-acct-name" /> |
 | Role | A mandatory field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="cloud" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
 
 ### Username and password with MFA
 
@@ -53,7 +57,7 @@ Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing)
 The `Username / Password` auth method is the simplest way to authenticate
 Development credentials in a dbt project. Simply enter your Snowflake
 username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
-to authenticate <Constant name="cloud" /> to run queries against Snowflake on behalf of a Snowflake user.
+to authenticate <Constant name="dbt" /> to run queries against Snowflake on behalf of a Snowflake user.
 
 `Username / Password` authentication is not supported for deployment credentials because MFA is required. In deployment environments, use [keypair](/docs/cloud/connect-data-platform/connect-snowflake#key-pair) authentication instead.
 
@@ -61,14 +65,14 @@ to authenticate <Constant name="cloud" /> to run queries against Snowflake on be
 <Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
 
 **Prerequisites:**
-- A development environment in a <Constant name="cloud" /> project
+- A development environment in a <Constant name="dbt" /> project
 - The Duo authentication app
 - Admin access to Snowflake (if MFA settings haven't already been applied to the account)
-- [Admin (write) access](/docs/cloud/manage-access/seats-and-users) to <Constant name="cloud" /> environments
+- [Admin (write) access](/docs/cloud/manage-access/seats-and-users) to <Constant name="dbt" /> environments
 
 [MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all `Username / Password` logins. Snowflake's MFA support is powered by the Duo Security service.
 
-- In <Constant name="cloud" />, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
+- In <Constant name="dbt" />, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
 
    ```yaml
   authenticator: username_password_mfa
@@ -87,15 +91,15 @@ to authenticate <Constant name="cloud" /> to run queries against Snowflake on be
 
 **Available in:** Development environments,  Deployment environments
 
-The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a <Constant name="cloud" /> project.
+The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a <Constant name="dbt" /> project.
 
-1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in <Constant name="cloud" />:
+1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in <Constant name="dbt" />:
 
    ```sql
    alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';   
    ```
 
-2. Finally, set the **Private Key** and **Private Key Passphrase** fields in the **Credentials** page to finish configuring <Constant name="cloud" /> to authenticate with Snowflake using a key pair.
+2. Finally, set the **Private Key** and **Private Key Passphrase** fields in the **Credentials** page to finish configuring <Constant name="dbt" /> to authenticate with Snowflake using a key pair.
    - **Note:** Unencrypted private keys are permitted. Use a passphrase only if needed. dbt can specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
    - Specifying a private key using an [environment variable](/docs/build/environment-variables) (for example, `{{ env_var('DBT_PRIVATE_KEY') }}`) is not supported. 
 
@@ -123,15 +127,15 @@ import FusionKeyPair from '/snippets/_fusion-key-pair.md';
 
 **Available in:** Development environments, Enterprise-tier plans only
 
-The OAuth auth method permits <Constant name="cloud" /> to run development queries on behalf of
-a Snowflake user without the configuration of Snowflake password in <Constant name="cloud" />. 
+The OAuth auth method permits <Constant name="dbt" /> to run development queries on behalf of
+a Snowflake user without the configuration of Snowflake password in <Constant name="dbt" />. 
 
-For more information on configuring a Snowflake OAuth connection in <Constant name="cloud" />, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
+For more information on configuring a Snowflake OAuth connection in <Constant name="dbt" />, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
 
 ## Configuration
 
-To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="dbt" />, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
 
 ### Custom domain URL
 
@@ -150,18 +154,18 @@ If you're receiving a `Could not deserialize key data` or `JWT token` error, ref
 
 <DetailsToggle alt_header="Error: `Could not deserialize key data`">
 
-Possible cause and solution for the error "Could not deserialize key data" in <Constant name="cloud" />.
+Possible cause and solution for the error "Could not deserialize key data" in <Constant name="dbt" />.
 - This could be because of mistakes like not copying correctly, missing dashes, or leaving out commented lines.
 
 **Solution**:
-- You can copy the key from its source and paste it into a text editor to verify it before using it in <Constant name="cloud" />.
+- You can copy the key from its source and paste it into a text editor to verify it before using it in <Constant name="dbt" />.
 
 </DetailsToggle>
 
 <DetailsToggle alt_header="Error: `JWT token`">
 
-Possible cause and solution for the error "JWT token" in <Constant name="cloud" />.
-- This could be a transient issue between Snowflake and <Constant name="cloud" />. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in <Constant name="cloud" />.
+Possible cause and solution for the error "JWT token" in <Constant name="dbt" />.
+- This could be a transient issue between Snowflake and <Constant name="dbt" />. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in <Constant name="dbt" />.
 - The public key was not entered correctly in Snowflake.
 
 **Solutions**
