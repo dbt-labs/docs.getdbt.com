@@ -25,11 +25,11 @@ Key:
 
 | Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Project creator | Security admin | Viewer |
 |:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:---------------:|:--------------:|:------:|
-| Account settings*        | W             | -             | -                   | -                    | -                       | R               | R              | R      |
+| Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | R               | R              | R      |
 | Audit logs               | R             | -             | -                   | -                    | -                       | -               | R              | R      |
 | Auth provider            | W             | -             | -                   | -                    | -                       | -               | W              | R      |
 | Billing                  | W             | W             | -                   | -                    | -                       | -               | -              | R      |
-| Connections              | W             | -             | R<sup>*</sup>       | R                    | -                       | W               | -              | -      |
+| Connections              | W             | -             | R<sup>**</sup>       | R                    | -                       | W               | -              | -      |
 | Cost Insights            | R             | -             | R                   | R                    | -                       | R               | -              | R      |
 | Groups                   | W             | -             | -                   | -                    | -                       | R               | W              | R      |
 | Invitations              | W             | -             | -                   | -                    | -                       | W               | W              | R      |
@@ -43,9 +43,9 @@ Key:
 | Webhooks                 | W             | -             | -                   | -                    | -                       | -               | -              | -      |
 </FilterableTable>
 
-Permission sets with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
+<sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).
 
-<sup>*</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
+<sup>**</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
 
 #### Project access for account permissions
