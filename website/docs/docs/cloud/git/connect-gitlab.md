@@ -108,7 +108,7 @@ After you authorize the request, you’ll be redirected back to <Constant name="
 
 ### Personally authenticating with GitLab
 
-<Constant name="dbt" /> developers on the Enterprise or Enterprise+ plan must each connect their GitLab profiles to <Constant name="dbt" />, as every developer's read/write access for the dbt repo is checked in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
+<Constant name="dbt" /> developers on the Enterprise or Enterprise+ plan must each connect their GitLab profiles to <Constant name="dbt" />, as every developer's read/write access for the <Constant name="dbt" /> repo is checked in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
 To connect a personal GitLab account:
 
@@ -116,7 +116,7 @@ To connect a personal GitLab account:
 2. Select **Personal profile** under the **Your profile** section.
 3. Go to **Linked accounts**.
 4. If your GitLab account is not connected, you’ll see "No connected account". Select **Link** to begin the setup process.
-5. In GitLab, when an authorization prompt appears, select the option to authorize <Constant name="dbt" />.
+5. In GitLab, sign in if prompted. When an authorization prompt appears, select the option to authorize <Constant name="dbt" />.
 
 Once you approve authorization, you will be redirected to <Constant name="dbt" />, and you should see your connected account. You're now ready to start developing in the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI.
 
