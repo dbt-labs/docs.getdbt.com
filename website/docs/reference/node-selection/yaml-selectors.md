@@ -299,7 +299,7 @@ The `selector` method returns the complete set of nodes returned by the named se
 <VersionBlock firstVersion="1.12">
 If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` error at runtime. For example, the following selector inheritance is invalid:
 
-```yml
+```yaml
 selectors:
   - name: selector_a
     definition:
