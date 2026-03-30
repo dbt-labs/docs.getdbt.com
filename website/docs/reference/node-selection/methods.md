@@ -314,7 +314,7 @@ dbt run --select "selector:staging" --exclude "selector:exclude_tests"
 
 When you use `--selector` together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises the `SelectExcludeIgnoredWithSelectorWarning` warning when `--selector` is combined with `--select` or `--exclude`. If you want to combine a selector with `--select` or `--exclude`, use the `selector:` method instead.
 
-When you use `--select` or `--exclude`, dbt does not apply any default selector. To include a selector in the selection, you must explicitly reference it using the `selector:` method.
+When you run an "unqualified" command (without `--select`, `--exclude`, or `--selector`), dbt applies the [default selector](/reference/node-selection/yaml-selectors#default) if you have defined one in `selectors.yml`. When you use `--select`, `--exclude`, or `--selector`, dbt ignores the default selector. To include a selector in a `--select` or `--exclude` string, you must explicitly reference it using the `selector:` method.
 
 If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
 
