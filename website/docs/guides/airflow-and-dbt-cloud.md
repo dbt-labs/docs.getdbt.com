@@ -33,8 +33,8 @@ You’ll also gain a better understanding of how this will:
 ## Prerequisites
 
 - [<Constant name="cloud" /> Enterprise or Enterprise+ account](https://www.getdbt.com/pricing/)
-- Service Account token if you have [IT license (with admins access)](/docs/cloud/manage-access/enterprise-permissions)). Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
-- [PAT Token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens#create-a-personal-access-token) if you have developer license.
+- Service account token if you have [Developer license (with admins access)](/docs/cloud/manage-access/enterprise-permissions)). Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens) and [here](/docs/cloud/manage-access/seats-and-users?version=2.0).
+- [Personal access token (PAT)](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens#create-a-personal-access-token) if you have developer, IT, or Read-only license.
 - A [free Docker account](https://hub.docker.com/signup) in order to sign in to Docker Desktop, which will be installed in the initial setup.
 - A local digital scratchpad for temporarily copy-pasting API keys and URLs
 
@@ -107,7 +107,7 @@ For more information about cloning GitHub repositories, refer to "[Cloning a rep
 
 [Create a service token](/docs/dbt-cloud-apis/service-tokens) with `Job Admin` privileges from within <Constant name="cloud" />. Ensure that you save a copy of the token, as you won’t be able to access this later.
 
-As an alternative, you can [create a personal account token if have a Developer license](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens#create-a-personal-access-token).
+As an alternative, you can [create a PAT](/docs/dbt-cloud-apis/user-tokens#create-a-personal-access-token) if you have a Developer, IT, or Read-only license.
 
 <WistiaVideo id="amubh6qmwq" paddingTweak="62.25%" />
 
