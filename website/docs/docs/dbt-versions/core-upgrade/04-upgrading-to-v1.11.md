@@ -120,7 +120,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 ### BigQuery
 
-- To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`. **Note:** `loaded_at_field` is ignored when batch freshness is enabled. If configured broadly (for example, at the source level), it may cause compilation errors.
+- To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`.
 
 ### Redshift
 
