@@ -316,7 +316,7 @@ When you use `--selector` together with `--select` or `--exclude`, dbt only uses
 
 When you use `--select` or `--exclude`, dbt does not apply any default selector. To include a selector in the selection, you must explicitly reference it using the `selector:` method.
 
-If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` error at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
+If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
 
 </VersionBlock>
 
