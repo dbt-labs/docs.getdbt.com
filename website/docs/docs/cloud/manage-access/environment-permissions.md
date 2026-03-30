@@ -37,9 +37,11 @@ Environment write permissions can be specified for the following roles:
 
 - Analyst
 - Database admin
-- Developer (Previous default write access for all environments. The new default is read access for environments unless access is specified)
-- <Constant name="git" /> admin
+- Developer<sup>*</sup>
+- Git admin
 - Team admin
+
+<sup>*</sup>The `Developer` permission set has read-only access to environment settings. However, when it is added to a group, the **Environment write access** field defaults to `All environments`, thereby granting it elevated permissions. The other roles are restricted from environment write access by default. 
 
 Depending on your current group mappings, you may have to update roles to ensure users have the correct access level to environments. 
 
