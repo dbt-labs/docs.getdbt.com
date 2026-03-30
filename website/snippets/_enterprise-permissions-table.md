@@ -75,7 +75,7 @@ The project permission sets enable you to work within the projects in various ca
 Key:
 
 * **(W)rite** &mdash; Create new or modify existing. Includes `send`, `create`, `delete`, `allocate`, `modify`, and `develop`.
-* **(R)ead** &mdash; Can view but can not create or change any fields.
+* **(R)ead** &mdash; Can view but cannot create or change any fields.
 
 #### Account access for project permissions
 
@@ -121,6 +121,6 @@ Key:
 
 </FilterableTable>
 
-\* These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
+\* These permissions are `R`ead-only by default. On a group, **Environment write access** defaults to `All environments`, which can grant broader access. To limit which environments a role can use, see [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
 
 \# Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.
