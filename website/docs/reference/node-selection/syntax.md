@@ -102,7 +102,7 @@ dbt run --select "tag:nightly my_model finance.base.*"
 dbt run --select "path:marts/finance,tag:nightly,config.materialized:table"
 
 # combine a named selector with another method
-dbt run --select "selector:staging tag:nightly"
+dbt run --select "selector:staging,tag:nightly"
 ```
 
 </TabItem>
