@@ -4,6 +4,8 @@ sidebar_label: "Account settings"
 description: "Learn how to enable account settings for your dbt users."
 ---
 
+import UniversalLogin from '/snippets/_universal-login.md';
+
 The following sections describe the different **Account settings** available from your <Constant name="dbt" /> account in the sidebar (under your account name on the lower left-hand side). 
 
 <Lightbox src="/img/docs/dbt-cloud/example-sidebar-account-settings.png" title="Example of Account settings from the sidebar" /> 
@@ -48,6 +50,10 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 <Lightbox src="/img/docs/deploy/account-settings-partial-parsing.png" width="85%" title="Example of the Enable partial parsing between deployment runs option" />
 
 ## Account access and enablement
+
+### Enable universal login url {#enable-universal-login-url}
+
+<UniversalLogin />
 
 ### Enabling dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
