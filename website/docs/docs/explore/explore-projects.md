@@ -47,7 +47,7 @@ We create dbt metadata and pull external metadata. <Constant name="catalog" /> u
 Navigate the <Constant name="catalog" /> overview page to access your project's resources and metadata. The page includes the following sections:
 
 - **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
-- **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/explore/model-performance), [project recommendations](/docs/explore/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
+- **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/explore/model-performance) <Lifecycle status="managed,managed_plus" /> and [project recommendations](/docs/explore/project-recommendations) <Lifecycle status="managed,managed_plus" /> in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
     - Find your project recommendations within your project's landing page.*
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
@@ -63,6 +63,10 @@ When using global navigation and searching across your projects, the following p
 - Your project access permissions determine which dbt projects appear in the left-hand menu of the global navigation.
 - In <Constant name="catalog" /> searches, we use soft access controls, you'll see all matching resources in search results, with clear indicators for items you don't have access to.
 - For external metadata, the global platform credential controls which resources metadata users can discover. See [External metadata ingestion](/docs/explore/external-metadata-ingestion) for more details.
+
+:::note Plan-based feature availability
+While <Constant name="catalog" /> is available to all Starter, Enterprise, and Enterprise+ plans, certain features are only available on Enterprise and Enterprise+ plans. This includes Model Performance, project recommendations, multi-project lineage, and column-level lineage. Refer to [dbt Catalog FAQs](/docs/explore/dbt-explorer-faqs#does-dbt-catalog-require-a-specific-dbt-plan) for more details.
+:::
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 

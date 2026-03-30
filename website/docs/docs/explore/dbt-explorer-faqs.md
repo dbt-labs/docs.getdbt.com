@@ -154,7 +154,14 @@ Read-only users can consume metadata in <Constant name="catalog" />. More bespok
 
 <Expandable alt_header="Does dbt Catalog require a specific dbt plan?" >
 
-<Constant name="catalog" /> is available on dbt Starter and all Enterprise plans. Certain features within <Constant name="catalog" />, like project recommendations, multi-project lineage, column-level lineage, and more are only available on the Enterprise and Enterprise+ plans. 
+<Constant name="catalog" /> is available on dbt Starter and all Enterprise plans. Certain features within <Constant name="catalog" /> are only available on Enterprise and Enterprise+ plans, including:
+
+- **Model Performance** &mdash; Run history, model performance charts, and execution analytics
+- **Project recommendations** &mdash; Best practice suggestions powered by `dbt_project_evaluator` rules
+- **Multi-project lineage** &mdash; Lineage visualization across multiple dbt projects
+- **Column-level lineage** &mdash; Granular lineage tracking at the column level
+
+If you previously had access to Model Performance or Recommendations on a Starter plan and no longer do, this reflects a change in feature availability by plan tier.
 
 </Expandable>
 
