@@ -28,6 +28,38 @@ To centrally define a group in your project, there are two options:
   ```
 
 
+### Group properties
+
+The following properties are available when defining a group:
+
+| Property | Required | Description |
+|----------|----------|-------------|
+| `name` | Required | A unique name for the group within the project. Used to assign resources via the [`group` config](/reference/resource-configs/group). |
+| `owner` | Required | Identifies who is responsible for the group. Must include either `name` or `email`. |
+| `description` | Optional | <VersionBlock firstVersion="1.10">A human-readable description of the group's purpose. Supports markdown and the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).</VersionBlock><VersionBlock lastVersion="1.9">Not supported in this version.</VersionBlock> |
+| `config.meta` | Optional | <VersionBlock firstVersion="1.10">A dictionary of arbitrary key-value metadata about the group. Useful for storing information like cost center, data classification, or team contact details.</VersionBlock><VersionBlock lastVersion="1.9">Not supported in this version.</VersionBlock> |
+
+<VersionBlock firstVersion="1.10">
+
+<File name='models/marts/finance/finance.yml'>
+
+```yaml
+groups:
+  - name: finance
+    description: "All finance-related models owned by the Finance team."
+    owner:
+      email: finance@jaffleshop.com
+    config:
+      meta:
+        data_owner: Finance team
+        cost_center: finance
+        data_classification: sensitive
+```
+
+</File>
+
+</VersionBlock>
+
 ### Adding a model to a group
 
 Use the `group` configuration to add one or more models to a group.

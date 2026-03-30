@@ -15,6 +15,7 @@ description: "This guide explains how to use the description key to add YAML des
     { label: 'Macros', value: 'macros', },
     { label: 'Data tests', value: 'data_tests', },
     { label: 'Unit tests', value: 'unit_tests', },
+    { label: 'Groups', value: 'groups', },
   ]
 }>
 <TabItem value="models">
@@ -209,6 +210,34 @@ unit_tests:
 
 </TabItem>
 
+<TabItem value="groups">
+
+<VersionBlock firstVersion="1.10">
+
+<File name='models/schema.yml'>
+
+```yml
+
+groups:
+  - name: group_name
+    description: markdown_string
+    owner:
+      email: owner@example.com
+
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.9">
+
+The `description` property is not supported on groups in dbt Core v1.9 and earlier.
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -223,6 +252,7 @@ A user-defined description used to document:
 - macros, and macro arguments
 - data tests, and data test columns
 - unit tests for models
+- groups (dbt Core v1.10+)
 
 These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="catalog" />](/docs/explore/explore-projects)). 
 
