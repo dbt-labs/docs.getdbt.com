@@ -34,7 +34,7 @@ To connect your GitLab account:
 2. Select **Personal profile** under the **Your profile** section.
 3. Go to **Linked accounts**.
 4. Click **Link** to the right of your GitLab account.
-5. When you click **Link**, you will be redirected to GitLab and prompted to sign into your account. GitLab will then ask for your explicit authorization:
+5. In GitLab, sign in if prompted. When an authorization prompt appears, select the option to authorize <Constant name="dbt" />.
 
 After you authorize the request, you’ll be redirected back to <Constant name="dbt" />, and you'll see that your account has been linked to your profile.
 
@@ -79,9 +79,10 @@ To create a group-owned OAuth application in GitLab:
     | **Redirect URI** | `https://YOUR_ACCESS_URL/complete/gitlab` |
     | **Confidential** | ✅ |
     | **Scopes** | ✅ api |
-<br />
-3. For the **Redirect URI** field, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
-4. Click **Save application**. GitLab will generate an **Application ID** and **Secret**. These values remain available even if you close the app screen, so you can return to save them later.
+
+    For the **Redirect URI** field, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+
+3. Click **Save application**. GitLab will generate an **Application ID** and **Secret**. These values remain available even if you close the app screen, so you can return to save them later.
 
 If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added the appropriate GitLab CIDRs to your IP restriction rules, or else the GitLab connection will fail.
 
@@ -97,10 +98,11 @@ After you've created your GitLab application, add it to <Constant name="dbt" />:
     | **Application ID** | *copy value from GitLab app* |
     | **Secret** | *copy value from GitLab app* |
 
-If you use a self-hosted GitLab instance, set **GitLab Instance** to your organization’s GitLab hostname (for example, `https://gitlab.yourgreatcompany.com`).
+    If you use a self-hosted GitLab instance, set **GitLab Instance** to your organization’s GitLab hostname (for example, `https://gitlab.yourgreatcompany.com`).
 
 3. Click **Save**.
-4. In GitLab, sign in if prompted. Then, when an authorization prompt appears, select the option to authorize <Constant name="dbt" />.
+4. You will then be redirected to GitLab and prompted to sign in.
+5. When an authorization prompt appears, select the option to authorize <Constant name="dbt" />.
 
 After you authorize the request, you’ll be redirected back to <Constant name="dbt" />. Your integration is now ready for developers on your team to [personally authenticate with GitLab](#personally-authenticating-with-gitlab).
 
