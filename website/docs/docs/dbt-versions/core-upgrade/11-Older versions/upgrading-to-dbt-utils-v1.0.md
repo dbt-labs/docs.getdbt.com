@@ -64,14 +64,14 @@ You can not assume one behavior or the other, as each project can customize its 
 
 models:
   - name: old_syntax
-    data_tests:
+    tests:
       - dbt_utils.expression_is_true:
           expression: "col_a + col_b = total"
           #replace this...
-          condition: "created_at > '2018-12-31'"
+          condition: "created_at > '2018-12-31'" 
 
   - name: new_syntax
-    data_tests:
+    tests:
       - dbt_utils.expression_is_true:
           expression: "col_a + col_b = total"
           # ...with this...
