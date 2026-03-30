@@ -129,37 +129,33 @@ export const Feedback = () => {
         {selectedFeedback !== null && (
           <>
             {!hasSubmitted && (
-            <div className={styles.feedbackInput}>
-              <textarea
-                placeholder="Tell us what you think..."
-                value={textFeedback}
-                onChange={handleTextChange}
-                disabled={hasSubmitted && submissionStatus === "success"}
+              <div className={styles.feedbackInput}>
+                <div className={styles.feedbackTypeGroup}>
+                  <span className={styles.feedbackTypeLabel}>What is this feedback about?</span>
+                  <div className={styles.feedbackTypeButtons}>
+                    <button
+                      type="button"
+                      className={`${styles.feedbackTypeButton} ${feedbackType === "docs" ? styles.feedbackTypeButtonSelected : ""}`}
+                      onClick={() => setFeedbackType("docs")}
+                    >
+                      Docs
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.feedbackTypeButton} ${feedbackType === "product" ? styles.feedbackTypeButtonSelected : ""}`}
+                      onClick={() => setFeedbackType("product")}
+                    >
+                      Product
+                    </button>
+                  </div>
+                </div>
+                <textarea
+                  placeholder="Tell us what you think..."
+                  value={textFeedback}
+                  onChange={handleTextChange}
+                  disabled={hasSubmitted && submissionStatus === "success"}
                   maxLength={2000}
                 />
-              <div className={styles.feedbackTypeGroup}>
-                <span className={styles.feedbackTypeLabel}>Is this feedback about the docs or the product?</span>
-                <label className={styles.feedbackTypeOption}>
-                  <input
-                    type="radio"
-                    name="feedbackType"
-                    value="docs"
-                    checked={feedbackType === "docs"}
-                    onChange={() => setFeedbackType("docs")}
-                  />
-                  Docs
-                </label>
-                <label className={styles.feedbackTypeOption}>
-                  <input
-                    type="radio"
-                    name="feedbackType"
-                    value="product"
-                    checked={feedbackType === "product"}
-                    onChange={() => setFeedbackType("product")}
-                  />
-                  Product
-                </label>
-              </div>
               </div>
             )}
             {submissionStatus === "loading" ? (

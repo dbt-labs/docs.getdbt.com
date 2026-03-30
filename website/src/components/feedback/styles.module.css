@@ -120,32 +120,52 @@ html[data-theme="dark"] .feedbackContainer .feedbackSubmitButton:hover:not(:disa
 outline-offset: 2px;      
 }
 
-/* Feedback Type Radio Group */
+/* Feedback Type Toggle Group */
 .feedbackContainer .feedbackTypeGroup {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .feedbackContainer .feedbackTypeLabel {
   font-size: 0.875rem;
+  font-weight: 500;
   color: var(--ifm-heading-color);
-  width: 100%;
 }
 
-.feedbackContainer .feedbackTypeOption {
+.feedbackContainer .feedbackTypeButtons {
   display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.875rem;
-  cursor: pointer;
+  gap: 0.5rem;
 }
 
-.feedbackContainer .feedbackTypeOption input[type="radio"] {
-  accent-color: var(--ifm-color-primary);
+.feedbackContainer .feedbackTypeButton {
+  background-color: transparent;
+  color: var(--ifm-heading-color);
+  border: 1px solid var(--color-neutral-primary);
+  border-radius: 2rem;
+  padding: 0.25rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.feedbackContainer .feedbackTypeButton:hover {
+  background-color: var(--color-neutral-secondary);
+  border-color: var(--color-neutral-secondary);
+  color: var(--color-white);
+}
+
+.feedbackContainer .feedbackTypeButton:focus {
+  outline: 2px solid var(--color-coalesce-purple-600);
+  outline-offset: 2px;
+}
+
+.feedbackContainer .feedbackTypeButtonSelected {
+  background-color: var(--color-neutral-secondary);
+  border-color: var(--color-neutral-secondary);
+  color: var(--color-white);
 }
 
 /* Submission Status */
@@ -199,6 +219,24 @@ html[data-theme="dark"] {
  .feedbackContainer .feedbackInput textarea {
   border: 1px solid var(--color-white);
   color: var(--color-white);
+}
+
+ .feedbackContainer .feedbackTypeButton {
+  background-color: var(--color-neutral-primary);
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+ .feedbackContainer .feedbackTypeButton:hover {
+  background-color: color-mix(in oklab,var(--color-white)60%,transparent);
+  border-color: var(--color-white);
+  color: var(--color-neutral-primary);
+}
+
+ .feedbackContainer .feedbackTypeButtonSelected {
+  background-color: color-mix(in oklab,var(--color-white)60%,transparent);
+  border-color: var(--color-white);
+  color: var(--color-neutral-primary);
 }
 
 }
