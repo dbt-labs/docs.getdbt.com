@@ -13,6 +13,7 @@ import { validateTextInput } from "../../utils/validate-text-input";
 export const Feedback = () => {
   const [submissionStatus, setSubmissionStatus] = useState(null);
   const [selectedFeedback, setSelectedFeedback] = useState(null);
+  const [feedbackType, setFeedbackType] = useState(null);
   const [textFeedback, setTextFeedback] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [validationError, setValidationError] = useState("");
@@ -78,6 +79,7 @@ export const Feedback = () => {
           },
           body: JSON.stringify({
             is_positive: selectedFeedback,
+            feedback_type: feedbackType,
             message: textFeedback.trim(),
             page_url: window.location.href,
             recaptcha_token: token,
@@ -135,6 +137,29 @@ export const Feedback = () => {
                 disabled={hasSubmitted && submissionStatus === "success"}
                   maxLength={2000}
                 />
+              <div className={styles.feedbackTypeGroup}>
+                <span className={styles.feedbackTypeLabel}>Is this feedback about the docs or the product?</span>
+                <label className={styles.feedbackTypeOption}>
+                  <input
+                    type="radio"
+                    name="feedbackType"
+                    value="docs"
+                    checked={feedbackType === "docs"}
+                    onChange={() => setFeedbackType("docs")}
+                  />
+                  Docs
+                </label>
+                <label className={styles.feedbackTypeOption}>
+                  <input
+                    type="radio"
+                    name="feedbackType"
+                    value="product"
+                    checked={feedbackType === "product"}
+                    onChange={() => setFeedbackType("product")}
+                  />
+                  Product
+                </label>
+              </div>
               </div>
             )}
             {submissionStatus === "loading" ? (

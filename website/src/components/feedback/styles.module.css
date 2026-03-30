@@ -120,6 +120,34 @@ html[data-theme="dark"] .feedbackContainer .feedbackSubmitButton:hover:not(:disa
 outline-offset: 2px;      
 }
 
+/* Feedback Type Radio Group */
+.feedbackContainer .feedbackTypeGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.feedbackContainer .feedbackTypeLabel {
+  font-size: 0.875rem;
+  color: var(--ifm-heading-color);
+  width: 100%;
+}
+
+.feedbackContainer .feedbackTypeOption {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.feedbackContainer .feedbackTypeOption input[type="radio"] {
+  accent-color: var(--ifm-color-primary);
+  cursor: pointer;
+}
+
 /* Submission Status */
 .feedbackContainer .feedbackMessage {
   font-size: 0.9rem;
@@ -172,4 +200,5 @@ html[data-theme="dark"] {
   border: 1px solid var(--color-white);
   color: var(--color-white);
 }
+
 }
