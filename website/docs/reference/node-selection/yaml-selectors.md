@@ -27,7 +27,7 @@ selectors:
 
 <VersionBlock firstVersion="1.12">
 
-Starting in dbt Core v1.12, you can reference a named selector from `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`).
+Starting in <Constant name="core" /> v1.12, you can reference a named selector from `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`).
 
 </VersionBlock>
 
