@@ -25,7 +25,7 @@ When you set this configuration:
 
 You should pin to a major release. See [pin to a range](#pin-to-a-range) for more details. If this configuration isn't specified, no version check will occur.
 
-:::info <Constant name="cloud" /> release tracks 
+:::info <Constant name="dbt" /> release tracks 
 
 <Snippet path="_config-dbt-version-check" />
 
@@ -145,7 +145,7 @@ Runtime Error
 
 ## Disabling version checks
 
-To suppress failures to to incompatible dbt versions, supply the `--no-version-check` flag to `dbt run`.
+To suppress failures to incompatible dbt versions, supply the `--no-version-check` flag to `dbt run`.
 ```
 $ dbt run --no-version-check
 Running with dbt=1.5.0

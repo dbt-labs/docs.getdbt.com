@@ -5,7 +5,7 @@ description: "Configure network security for dbt Cloud"
 sidebar_label: "About network security"
 ---
 
-Network security in <Constant name="cloud" /> gives you control over how traffic flows between dbt and your infrastructure. Choose the approach that best fits your security requirements.
+Network security in <Constant name="dbt" /> gives you control over how traffic flows between dbt and your infrastructure. Choose the approach that best fits your security requirements.
 
 ## Choose your connectivity approach
 

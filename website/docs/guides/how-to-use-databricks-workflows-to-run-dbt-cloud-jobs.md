@@ -15,25 +15,25 @@ level: 'Intermediate'
 
 ## Introduction
 
-Using Databricks workflows to call the <Constant name="cloud" /> job API can be useful for several reasons:
+Using Databricks workflows to call the <Constant name="dbt" /> job API can be useful for several reasons:
 
-1. **Integration with other ETL processes** &mdash; If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a <Constant name="cloud" /> job after those processes are done.
-2. **Utilizes <Constant name="cloud" /> jobs features &mdash;** <Constant name="cloud" /> gives the ability to monitor job progress, manage historical logs and documentation, optimize model timing, and much [more](/docs/deploy/deploy-jobs).
-3. [**Separation of concerns &mdash;**](https://en.wikipedia.org/wiki/Separation_of_concerns) Detailed logs for dbt jobs in the <Constant name="cloud" /> environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
-4. **Custom job triggering &mdash;** Use a Databricks workflow to trigger <Constant name="cloud" /> jobs based on custom conditions or logic that aren't natively supported by <Constant name="cloud" />'s scheduling feature. This can give you more flexibility in terms of when and how your <Constant name="cloud" /> jobs run.
+1. **Integration with other ETL processes** &mdash; If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a <Constant name="dbt" /> job after those processes are done.
+2. **Utilizes <Constant name="dbt" /> jobs features &mdash;** <Constant name="dbt" /> gives the ability to monitor job progress, manage historical logs and documentation, optimize model timing, and much [more](/docs/deploy/deploy-jobs).
+3. [**Separation of concerns &mdash;**](https://en.wikipedia.org/wiki/Separation_of_concerns) Detailed logs for dbt jobs in the <Constant name="dbt" /> environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
+4. **Custom job triggering &mdash;** Use a Databricks workflow to trigger <Constant name="dbt" /> jobs based on custom conditions or logic that aren't natively supported by <Constant name="dbt" />'s scheduling feature. This can give you more flexibility in terms of when and how your <Constant name="dbt" /> jobs run.
 
 ### Prerequisites
 
-- Active [Enterprise or Enterprise+ <Constant name="cloud" /> account](https://www.getdbt.com/pricing/)
-- You must have a configured and existing [<Constant name="cloud" /> deploy job](/docs/deploy/deploy-jobs)
+- Active [Enterprise or Enterprise+ <Constant name="dbt" /> account](https://www.getdbt.com/pricing/)
+- You must have a configured and existing [<Constant name="dbt" /> deploy job](/docs/deploy/deploy-jobs)
 - Active Databricks account with access to [Data Science and Engineering workspace](https://docs.databricks.com/workspace-index.html) and [Manage secrets](https://docs.databricks.com/security/secrets/index.html)
 - [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html)
   - **Note**: You only need to set up your authentication. Once you have set up your Host and Token and are able to run `databricks workspace ls /Users/<someone@example.com>`, you can proceed with the rest of this guide.
 
 ## Set up a Databricks secret scope
 
-1. Retrieve **[personal access token](/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from <Constant name="cloud" />
-2. Set up a **Databricks secret scope**, which is used to securely store your <Constant name="cloud" /> API key. 
+1. Retrieve **[personal access token](/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from <Constant name="dbt" />
+2. Set up a **Databricks secret scope**, which is used to securely store your <Constant name="dbt" /> API key. 
 
 3. Enter the **following commands** in your terminal:
 
@@ -45,14 +45,14 @@ databricks secrets put --scope  <YOUR_SECRET_SCOPE> --key  <YOUR_SECRET_KEY> --s
 
 4. Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with your own unique identifiers. Click [here](https://docs.databricks.com/security/secrets/index.html) for more information on secrets.
 
-5. Replace **`<YOUR_DBT_CLOUD_API_KEY>`** with the actual API key value that you copied from <Constant name="cloud" /> in step 1.
+5. Replace **`<YOUR_DBT_CLOUD_API_KEY>`** with the actual API key value that you copied from <Constant name="dbt" /> in step 1.
 
 
 ## Create a Databricks Python notebook
 
-1. [Create a **Databricks Python notebook**](https://docs.databricks.com/notebooks/notebooks-manage.html), which executes a Python script that calls the <Constant name="cloud" /> job API. 
+1. [Create a **Databricks Python notebook**](https://docs.databricks.com/notebooks/notebooks-manage.html), which executes a Python script that calls the <Constant name="dbt" /> job API. 
 
-2. Write a **Python script** that utilizes the `requests` library to make an HTTP POST request to the <Constant name="cloud" /> job API endpoint using the required parameters. Here's an example script:
+2. Write a **Python script** that utilizes the `requests` library to make an HTTP POST request to the <Constant name="dbt" /> job API endpoint using the required parameters. Here's an example script:
 
 ```python
 import enum
@@ -83,7 +83,7 @@ def _trigger_job() -> int:
         url=f"https://{base_url}/api/v2/accounts/{account_id}/jobs/{job_id}/run/",
         headers={'Authorization': f"Token {api_key}"},
         json={
-            # Optionally pass a description that can be viewed within the <Constant name="cloud" /> API.
+            # Optionally pass a description that can be viewed within the <Constant name="dbt" /> API.
             # See the API docs for additional parameters that can be passed in,
             # including `schema_override` 
             'cause': f"Triggered by Databricks Workflows.",
@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
 4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
-    * To find these values, navigate to <Constant name="cloud" />, select **Deploy -> Jobs**.  Select the Job you want to run and copy the URL. For example: `https://YOUR_ACCESS_URL/deploy/000000/projects/111111/jobs/222222`
+    * To find these values, navigate to <Constant name="dbt" />, select **Deploy -> Jobs**.  Select the Job you want to run and copy the URL. For example: `https://YOUR_ACCESS_URL/deploy/000000/projects/111111/jobs/222222`
     and therefore valid code would be:
 
 Your URL is structured `https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/projects/<YOUR_PROJECT_ID>/jobs/<YOUR_JOB_ID>`
@@ -142,7 +142,7 @@ Your URL is structured `https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/project
 
 6. In the widget, **enter your `job_id`** from step 4.
 
-7. **Run the Notebook again** to trigger the <Constant name="cloud" /> job. Your results should look similar to the following:
+7. **Run the Notebook again** to trigger the <Constant name="dbt" /> job. Your results should look similar to the following:
 
 ```bash
 job_run_id = 123456
@@ -161,7 +161,7 @@ DbtJobRunStatus.RUNNING
 DbtJobRunStatus.SUCCESS
 ```
 
-You can cancel the job from <Constant name="cloud" /> if necessary.
+You can cancel the job from <Constant name="dbt" /> if necessary.
 
 ## Configure the workflows to run the dbt jobs
 
@@ -202,8 +202,8 @@ You can set up workflows directly from the notebook OR by adding this notebook t
 </TabItem>
 </Tabs>
 
-Multiple Workflow tasks can be set up using the same notebook by configuring the `job_id` parameter to point to different <Constant name="cloud" /> jobs. 
+Multiple Workflow tasks can be set up using the same notebook by configuring the `job_id` parameter to point to different <Constant name="dbt" /> jobs. 
 
-Using Databricks workflows to access the <Constant name="cloud" /> job API can improve integration of your data pipeline processes and enable scheduling of more complex workflows.
+Using Databricks workflows to access the <Constant name="dbt" /> job API can improve integration of your data pipeline processes and enable scheduling of more complex workflows.
 
 </div>

@@ -5,6 +5,10 @@ description: "Snowflake Configurations - Read this in-depth guide to learn about
 tags: ['Snowflake', 'dbt Fusion', 'dbt Core']
 ---
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 ## Iceberg table format
 
 Our Snowflake Iceberg table content has moved to a [new page](/docs/mesh/iceberg/snowflake-iceberg-support)!
@@ -110,7 +114,7 @@ models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.11">
+<VersionBlock lastVersion="1.11">
 
 | Parameter          | Type       | Required | Default     | Change Monitoring Support |
 |--------------------|------------|----------|-------------|---------------------------|
@@ -209,6 +213,109 @@ models:
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.12">
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+| [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
+| [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
+| [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
+| [`immutable_where`](#immutable-where)     | `<string>` | no       | `None` | alter   |
+| [`transient`](#transient-dynamic-tables)     | `<boolean>` | no       | `False` | full refresh   |
+
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
+    { label: 'SQL file config', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+    [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
+    [+](/reference/resource-configs/plus-prefix)[immutable_where](#immutable-where): <condition>
+    [+](/reference/resource-configs/plus-prefix)[transient](#transient-dynamic-tables): true | false
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL 
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+      [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
+      [immutable_where](#immutable-where): <condition>
+      [transient](#transient-dynamic-tables): true | false
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="dynamic_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
+    [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
+    [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
+    [immutable_where](#immutable-where)="<condition>",
+    [transient](#transient-dynamic-tables)=true | false,
+
+) }}
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
+
 Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
 ### Target lag
@@ -271,6 +378,34 @@ from {{ source('raw', 'events') }}
 - You can alter changes to `immutable_where` without a full refresh.
 
 Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-immutability-constraints).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+### Transient (dynamic tables)
+
+You can create dynamic tables as transient to reduce storage costs. Transient dynamic tables do not use Snowflake's [Fail-safe](https://docs.snowflake.com/en/user-guide/data-failsafe) period, so they consume less storage than permanent dynamic tables. To create a dynamic table as transient, set `transient: true` in the model configuration.
+
+If you want all dynamic tables to be transient by default (without setting `transient: true` on each one), enable the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag in your `dbt_project.yml`. This flag defaults to `False`, meaning dynamic tables are created as permanent by default.
+
+**Key points:**
+- Setting `transient: true` creates the dynamic table with the `TRANSIENT` keyword in the `CREATE DYNAMIC TABLE` statement.
+- Snowflake does not support changing the transient property on an existing dynamic table. Changing `transient` from `true` to `false` or vice versa triggers a full table recreation.
+- To make all new dynamic tables transient by default when `transient` is not specified, enable the `snowflake_default_transient_dynamic_tables` flag in your `dbt_project.yml`.
+
+For example:
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+    target_lag='1 hour',
+    transient=true
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
 
 </VersionBlock>
 
@@ -381,7 +516,7 @@ select * from ...
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
 dbt supports setting a default query tag for the duration of its Snowflake connections in
-[your profile](/docs/core/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
+[your profile](/docs/local/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
 a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 <File name='dbt_project.yml'>
@@ -677,7 +812,7 @@ For more information on using this configuration, refer to [Snowflake's document
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/docs/core/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/docs/local/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
 
 [Tests](/docs/build/data-tests) also supports the `snowflake_warehouse` configuration. This can be useful when you want to you run tests on a different Snowflake virtual warehouse than the one used to build models, for example, using a smaller warehouse for lightweight data tests while models run on a larger warehouse.
 

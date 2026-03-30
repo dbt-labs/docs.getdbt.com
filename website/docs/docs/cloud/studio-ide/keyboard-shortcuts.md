@@ -5,9 +5,9 @@ sidebar_label: "Keyboard shortcuts"
 ---
 
 
-The <Constant name="cloud_ide" /> provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. 
+The <Constant name="studio_ide" /> provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. 
 
-Use this <Constant name="cloud_ide" />  page to help you quickly reference some common operations.
+Use this <Constant name="studio_ide" />  page to help you quickly reference some common operations.
 
 | Shortcut description | macOS | Windows |
 |--------|----------------|------------------|
@@ -25,5 +25,5 @@ Use this <Constant name="cloud_ide" />  page to help you quickly reference some 
 ## Related docs
 
 - [Quickstart guide](/guides)
-- [About <Constant name="cloud" />](/docs/cloud/about-cloud/dbt-cloud-features)
+- [About <Constant name="dbt" />](/docs/cloud/about-cloud/dbt-cloud-features)
 - [Develop in the Cloud](/docs/cloud/studio-ide/develop-in-studio)

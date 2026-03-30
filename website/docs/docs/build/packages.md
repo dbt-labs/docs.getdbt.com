@@ -105,7 +105,7 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
 
-Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the `DBT_PACKAGE_HUB_URL` environment variable.
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the <VersionBlock lastVersion="1.10">`DBT_PACKAGE_HUB_URL`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PACKAGE_HUB_URL`</VersionBlock> environment variable.
 
 #### Prerelease versions
 
@@ -189,12 +189,12 @@ Native private packages let you install packages from [supported](#prerequisites
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
     - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
   - [GitLab](/docs/cloud/git/connect-gitlab)
-    - Every GitLab repo with private packages must also be a <Constant name="cloud" /> project. 
+    - Every GitLab repo with private packages must also be a <Constant name="dbt" /> project. 
 - If using <Constant name="fusion" /> locally, you must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="cloud" /> Git integration without having to provision an access token or create a <Constant name="cloud" /> environment variable. 
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="dbt" /> Git integration without having to provision an access token or create a <Constant name="dbt" /> environment variable. 
 
 
 <File name="packages.yml">
@@ -237,7 +237,7 @@ packages:
 
 Add the `provider` key when:
 - You are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />.
-- You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/fusion/install-fusion-cli) or the [VS Code extension](/docs/fusion/install-dbt-extension)) (required).
+- You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2#get-started) or the [VS Code extension](/docs/local/install-dbt?version=2#get-started)) (required).
 
 ```yaml
 packages:
@@ -289,8 +289,8 @@ If you're using the <Constant name="dbt_platform" />, the SSH key method will no
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
-:::info <Constant name="cloud" /> usage
-If you are using <Constant name="cloud" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="cloud" /> must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="cloud" />'s UI.
+:::info <Constant name="dbt" /> usage
+If you are using <Constant name="dbt" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="dbt" /> must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="dbt" />'s UI.
 :::
 
 In GitHub:

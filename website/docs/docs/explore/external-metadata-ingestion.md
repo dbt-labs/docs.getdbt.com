@@ -8,7 +8,7 @@ description: "Connect directly to your data warehouse, giving you visibility int
 
 <IntroText>
 
-With external metadata ingestion, you can connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="explorer" />.
+With external metadata ingestion, you can connect directly to your data warehouse, giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="catalog" />.
 
 </IntroText>
 
@@ -16,13 +16,13 @@ With external metadata ingestion, you can connect directly to your data warehous
 Currently, external metadata ingestion is supported for Snowflake only.
 :::
   
-External metadata credentials enable ingestion of metadata that exists *outside* your dbt runs like tables, views, or cost information; typically at a higher level than what dbt environments access. This is useful for enriching <Constant name="explorer" /> with warehouse-native insights (for example, Snowflake views or access patterns) and creating a unified discovery experience.
+External metadata credentials enable ingestion of metadata that exists *outside* your dbt runs like tables, views, or cost information; typically at a higher level than what dbt environments access. This is useful for enriching <Constant name="catalog" /> with warehouse-native insights (for example, Snowflake views or access patterns) and creating a unified discovery experience.
 
 These credentials are configured separately from dbt environment credentials and are scoped at the account level, not the project level.
 
 ## Prerequisites
 
-- Have a <Constant name="cloud" /> account on the [Enterprise or Enterprise+](https://www.getdbt.com/pricing) plan.
+- Have a <Constant name="dbt" /> account on the [Enterprise or Enterprise+](https://www.getdbt.com/pricing) plan.
 - You must be an [account admin with permission](/docs/cloud/manage-access/enterprise-permissions#account-admin) to edit connections.
     - The credentials must have [sufficient read-level access to fetch metadata](/docs/explore/external-metadata-ingestion#configuration-instructions).
 - Have [**global navigation**](/docs/explore/explore-projects#catalog-overview) enabled.
@@ -35,7 +35,7 @@ These credentials are configured separately from dbt environment credentials and
 
 1. Click your account name at the bottom of the left-side menu and click **[Account settings](/docs/cloud/account-settings)**.
 2. Under Account information, go to **Settings** and click **Edit** at the top right corner of the page.
-3. Select the **Ingest external metadata in dbt <Constant name="explorer" /> (formerly dbt Explorer)** option (if not already enabled).
+3. Select the **Ingest external metadata in dbt <Constant name="catalog" /> (formerly dbt Explorer)** option (if not already enabled).
 
 ### Configure the warehouse connection
 
@@ -46,7 +46,7 @@ These credentials are configured separately from dbt environment credentials and
     - Enter the necessary credentials. These should have warehouse-level visibility across relevant databases and schemas.
     - If you have multiple connections that reference the same account identifier, you will only be prompted to add platform metadata credentials to one of them. Other connections using the same account identifier will display a message indicating that platform metadata credentials are already configured. 
 5. Select the **External metadata ingestion** option.
-    - This allows metadata from this connection to populate the <Constant name="explorer" />.
+    - This allows metadata from this connection to populate the <Constant name="catalog" />.
     - *Optional*: Enable additional features such as **cost optimization** in the **Features** section under **Platform metadata credentials**.
 6. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
@@ -143,7 +143,7 @@ GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE TO ROLE dbt_metadata_role;
 
 The following are best practices for external metadata ingestion, designed to ensure consistent, reliable, and scalable integration of metadata from third-party systems.
 
-- <Constant name="explorer" /> unifies the shared resources between dbt and Snowflake. For example, if there’s a Snowflake table that represents a dbt model, these are represented as a single resource in <Constant name="explorer" />. In order for proper unification to occur, the same connection must be used by both the [production environment](/docs/deploy/deploy-environments#set-as-production-environment) and the external metadata ingestion credential.
+- <Constant name="catalog" /> unifies the shared resources between dbt and Snowflake. For example, if there’s a Snowflake table that represents a dbt model, these are represented as a single resource in <Constant name="catalog" />. In order for proper unification to occur, the same connection must be used by both the [production environment](/docs/deploy/deploy-environments#set-as-production-environment) and the external metadata ingestion credential.
 - Avoid duplicates: Use one metadata connection per platform if possible (for example, one for Snowflake, one for BigQuery).
     - Having multiple connections pointing to the same warehouse can cause duplicate metadata.
 - Align with dbt environment: To unify asset lineage and metadata, ensure the same warehouse connection is used by both the dbt environment and the external metadata ingestion.

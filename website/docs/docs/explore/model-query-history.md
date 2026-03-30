@@ -35,15 +35,15 @@ Model query history for Snowflake users is **only available for Enterprise tier 
 
 To access the features, you should meet the following:
 
-1. You have a <Constant name="cloud" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
+1. You have a <Constant name="dbt" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
 2. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
-3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in <Constant name="cloud" /> to edit project settings or production environment settings.
+3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in <Constant name="dbt" /> to edit project settings or production environment settings.
 4. Use Snowflake or BigQuery as your data warehouse and can enable [query history permissions](#snowflake-model-query-history) or work with an admin to do so. Support for additional data platforms coming soon.
    - For Snowflake users: You **must** have a Snowflake Enterprise tier or higher subscription.
 
 ## Enable query history in dbt
 
-To enable model query history in <Constant name="cloud" />, follow these steps:
+To enable model query history in <Constant name="dbt" />, follow these steps:
 
 1. Navigate to **Orchestration** and then **Environments**.
 2. Select the environment marked **PROD** and click **Settings**.
@@ -52,11 +52,11 @@ To enable model query history in <Constant name="cloud" />, follow these steps:
 5. Click the **Enable query history** box to enable. 
 6. **Save** your settings.
 
-<Constant name="cloud" /> automatically enables query history for brand new environments. If query history fails to retrieve data, <Constant name="cloud" /> automatically disables it to prevent unintended warehouse costs.
-   - If the failure is temporary (like a network timeout), <Constant name="cloud" /> may retry.
-   - If the problem keeps happening (for example, missing permissions), <Constant name="cloud" /> turns off query history so customers don’t waste warehouse compute.
+<Constant name="dbt" /> automatically enables query history for brand new environments. If query history fails to retrieve data, <Constant name="dbt" /> automatically disables it to prevent unintended warehouse costs.
+   - If the failure is temporary (like a network timeout), <Constant name="dbt" /> may retry.
+   - If the problem keeps happening (for example, missing permissions), <Constant name="dbt" /> turns off query history so customers don’t waste warehouse compute.
    
-   To turn it back on, click **Test Permissions** in **Environment settings**. If the test succeeds, <Constant name="cloud" /> re-enables the environment.
+   To turn it back on, click **Test Permissions** in **Environment settings**. If the test succeeds, <Constant name="dbt" /> re-enables the environment.
 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/enable-query-history.png" width="95%" title="Enable query history in your environment settings." />
@@ -65,9 +65,9 @@ To enable model query history in <Constant name="cloud" />, follow these steps:
 
 ## Credential permissions
 
-This section explains the permissions and steps you need to enable and view model query history in <Constant name="explorer" />.
+This section explains the permissions and steps you need to enable and view model query history in <Constant name="catalog" />.
 
-The model query history feature uses the credentials in your production environment to gather metadata from your data warehouse’s query logs. This means you may need elevated permissions with the warehouse. Before making any changes to your data platform permissions, confirm the configured permissions in <Constant name="cloud" />:
+The model query history feature uses the credentials in your production environment to gather metadata from your data warehouse’s query logs. This means you may need elevated permissions with the warehouse. Before making any changes to your data platform permissions, confirm the configured permissions in <Constant name="dbt" />:
 
 1. Navigate to **Deploy** and then **Environments**.
 2. Select the Environment marked **PROD** and click **Settings**.
@@ -93,14 +93,14 @@ The model query history uses metadata from the [`INFORMATION_SCHEMA.JOBS` view](
 
 ## View query history in Explorer
 
-To enhance your discovery, you can view your model query history in various locations within <Constant name="explorer" />:
+To enhance your discovery, you can view your model query history in various locations within <Constant name="catalog" />:
 - [View from Performance charts](#view-from-performance-charts)
 - [View from Project lineage](#view-from-project-lineage)
 - [View from Model list](#view-from-model-list)
 
 ### View from Performance charts
 
-1. Navigate to <Constant name="explorer" /> by clicking **Catalog** in the navigation.
+1. Navigate to <Constant name="catalog" /> by clicking **Catalog** in the navigation.
 2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the **Most consumed models**.
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 
