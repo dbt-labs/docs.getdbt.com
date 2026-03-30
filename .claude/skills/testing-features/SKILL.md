@@ -7,7 +7,13 @@ description: Use when the user asks to test, validate, or check whether a dbt fe
 
 ## Overview
 
-When the docs team asks to test or validate a dbt feature, this skill runs the test. It searches the local docs codebase to understand the feature, scaffolds a minimal dbt project, runs dbt commands across engines, validates results in the warehouse, and writes a clear testing summary the writer can read.
+When the docs team asks to test or validate a dbt feature, this skill runs the test. It searches the local docs codebase to understand the feature, scaffolds a minimal dbt project, runs dbt commands across engines, validates results in the warehouse, and writes a clear testing summary the writer can read.  §§§
+
+Always use or fetch the following to ensure dbt best practices and accurate dbt information:
+- https://github.com/dbt-labs/dbt-agent-skills to fetch dbt agent skills and model best practices. Also use to fetch documentation and code examples.
+- dbt MCP server to fetch dbt documentation and code examples
+- dbt documentation and code examples from the local docs codebase
+- dbt documentation and code examples from the live dbt documentation at https://docs.getdbt.com as a last resort,
 
 ## Trigger conditions
 
@@ -17,7 +23,7 @@ When the docs team asks to test or validate a dbt feature, this skill runs the t
 
 ---
 
-## Step 1: Parse request and gather inputs
+## Step 1: Parse request and gather inputsq1
 
 Extract from the user's request:
 - **Feature or topic** — what are we testing? (e.g. "python udfs", "incremental models", "snapshots")
