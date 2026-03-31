@@ -433,7 +433,7 @@ select * from {{ source('raw', 'events') }}
 **Key points:**
 - If `snowflake_initialization_warehouse` is not set, Snowflake uses `snowflake_warehouse` for both initialization and regular refreshes.
 - You can change `snowflake_initialization_warehouse` on an existing dynamic table without a full refresh.
-- To unset the initialization warehouse and revert to the default behavior, set it to `None`.
+- To revert to the default behavior after setting an initialization warehouse, either remove the `snowflake_initialization_warehouse` parameter from your model configuration or explicitly set it to `None`.
 
 Learn more about `INITIALIZATION_WAREHOUSE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-warehouses).
 
