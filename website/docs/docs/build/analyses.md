@@ -52,6 +52,7 @@ analyses:
   - name: running_total_by_account
     description: Calculates the running total of adjusted amounts per account over time.
     config:
+      enabled: true
       docs:
         show: true
         node_color: purple

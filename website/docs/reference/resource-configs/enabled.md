@@ -223,6 +223,17 @@ sources:
 
 <TabItem value="analyses">
 
+<File name='analyses/<filename>.yml'>
+
+```yaml
+analyses:
+  - name: <analysis_name>
+    config:
+      enabled: true | false
+```
+
+</File>
+
 To configure analyses at the project and folder level, set the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) flag to `True` in your `dbt_project.yml`.
 
 <File name='dbt_project.yml'>
@@ -233,6 +244,33 @@ flags:
 
 analyses:
   +enabled: true | false
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_corrected_analysis_fqns: true
+
+analyses:  
+  your_project:
+    +enabled: false  # disable all analyses by default
+    my_subfolder:
+      +enabled: true  # enable a specific subfolder
+```
+</File>
+
+
+
+<File name='analyses/<filename>.yml'>
+
+```yaml
+analyses:
+  - name: <analysis_name>
+    config:
+      enabled: true | false
 ```
 
 </File>
