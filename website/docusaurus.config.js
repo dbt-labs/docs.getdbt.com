@@ -17,7 +17,7 @@ if (process?.env?.VERCEL_ENV === "preview" && process?.env?.VERCEL_BRANCH_URL) {
 
 const GIT_BRANCH = process?.env?.VERCEL_GIT_COMMIT_REF;
 
-let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
+let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME, OPTIMIZELY_ID } = process.env;
 
 let metatags = [];
 // If not `current` and not `main` branch, do not index site
@@ -49,6 +49,19 @@ var siteSettings = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
+  headTags: [
+    // Load Optimizely synchronously (no async/defer) so experiments apply
+    // before page content renders, preventing a flash of unexperimented content.
+    ...(OPTIMIZELY_ID ? [
+      {
+        tagName: 'script',
+        attributes: {
+          src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
+          type: 'text/javascript',
+        },
+      }
+    ] : []),
+  ],
   themeConfig: {
     docs: {
       sidebar: {
