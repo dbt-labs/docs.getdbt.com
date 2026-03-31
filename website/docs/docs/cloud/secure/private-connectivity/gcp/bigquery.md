@@ -22,12 +22,14 @@ To enable dbt to privately connect to your BigQuery project via PSC, the regiona
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
-**Subject:** New Multi-Tenant GCP PSC Request
+```text
+Subject: New Multi-Tenant GCP PSC Request
 
-- **Type:** BigQuery
-- **dbt platform account URL:**
-- **BigQuery project region:**
-- **dbt GCP multi-tenant environment:**
+- Type: BigQuery
+- dbt platform account URL:
+- BigQuery project region:
+- dbt GCP multi-tenant environment:
+```
 
 </Expandable>
 

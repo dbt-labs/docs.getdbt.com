@@ -40,14 +40,16 @@ SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
-**Subject:** New Multi-Tenant Azure PrivateLink Request
+```text
+Subject: New Multi-Tenant Azure PrivateLink Request
 
-- **Type:** Snowflake
-- **dbt platform account URL:**
-- **The output from SYSTEM$GET_PRIVATELINK_CONFIG:**
+- Type: Snowflake
+- dbt platform account URL:
+- The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
-  - Enable Internal Stage Private Link? Y/N (If Y, output must include `privatelink-internal-stage`)
-- **dbt Azure multi-tenant environment** (EMEA):
+  - Enable Internal Stage Private Link? Y/N (If Y, output must include privatelink-internal-stage)
+- dbt Azure multi-tenant environment (EMEA):
+```
 
 </Expandable>
 

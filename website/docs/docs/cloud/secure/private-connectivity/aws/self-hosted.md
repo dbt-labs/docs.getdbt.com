@@ -115,17 +115,18 @@ For more details, see [Update the security groups for your Network Load Balancer
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
-**Subject:** New AWS Self-hosted PrivateLink Request
+```text
+Subject: New AWS Self-hosted PrivateLink Request
 
-- **Type:** Self-hosted PrivateLink
-- **Platform/Service** (for example, Postgres, Starburst, Spark, GitLab, etc.):
+- Type: Self-hosted PrivateLink
+- Platform/Service (for example, Postgres, Starburst, Spark, GitLab, etc.):
 - **dbt platform account URL:**
-- **VPC Endpoint Service Name:**
-- **Custom DNS (if HTTPS/TLS):**
+- VPC Endpoint Service Name:
+- Custom DNS (if HTTPS/TLS):
   - DNS record:
-- **Service Region** (for example, us-east-1, eu-west-2):
-- **dbt AWS environment** (US, EMEA, AU):
-
+- Service Region (for example, us-east-1, eu-west-2):
+- dbt AWS environment (US, EMEA, AU):
+```
 </Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';

@@ -26,14 +26,16 @@ From your Azure portal:
 
    <Expandable alt_header="Support request email template" is_open={true}>
 
-   **Subject:** New Azure Multi-Tenant Private Link Request
+   ```text
+   Subject: New Azure Multi-Tenant Private Link Request
 
-   - **Type:** Azure Database for Postgres Flexible Server
-   - **dbt platform account URL:**
-   - **Postgres Flexible Server name:**
-   - **Azure Database for Postgres Flexible Server resource ID:**
-   - **dbt Azure multi-tenant environment** (EMEA):
-   - **Azure Postgres server region** (for example, WestEurope, NorthEurope):
+   - Type: Azure Database for Postgres Flexible Server
+   - dbt platform account URL:
+   - Postgres Flexible Server name:
+   - Azure Database for Postgres Flexible Server resource ID:
+   - dbt Azure multi-tenant environment (EMEA):
+   - Azure Postgres server region (for example, WestEurope, NorthEurope):
+   ```
 
    </Expandable>
 5. Once our Support team confirms the endpoint has been created, navigate to the Azure Database for Postgres Flexible Server in the Azure Portal and browse to **Settings** > **Networking**. In the **Private Endpoints** section, highlight the `dbt` named option and select **Approve**. Confirm with dbt Support that the connection has been approved so they can validate the connection and make it available for use in <Constant name="dbt" />.

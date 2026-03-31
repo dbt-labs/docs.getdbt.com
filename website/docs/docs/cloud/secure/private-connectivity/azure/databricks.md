@@ -25,16 +25,18 @@ The following steps walk you through the setup of a Databricks Azure Private Lin
 
    <Expandable alt_header="Support request email template" is_open={true}>
 
-   **Subject:** New Azure Multi-Tenant Private Link Request
+   ```text
+   Subject: New Azure Multi-Tenant Private Link Request
 
-   - **Type:** Databricks
-   - **dbt platform account URL:**
-   - **Databricks instance name:**
-   - **Azure Databricks Workspace URL** (for example, `adb-################.##.azuredatabricks.net`)
-   - **Databricks Azure resource ID:** `/subscriptions/SUB_ID/resourceGroups/RG/providers/Microsoft.Databricks/workspaces/WORKSPACE_NAME`
-     - Use the full ARM resource ID, replacing `SUB_ID`, `RG`, and `WORKSPACE_NAME` with your values
-   - **dbt Azure multi-tenant environment (EMEA):**
-   - **Azure Databricks workspace region** (for example, `WestEurope`, `NorthEurope`)
+   - Type: Databricks
+   - dbt platform account URL:
+   - Databricks instance name:
+   - Azure Databricks Workspace URL (for example, adb-################.##.azuredatabricks.net)
+   - Databricks Azure resource ID: /subscriptions/SUB_ID/resourceGroups/RG/providers/Microsoft.Databricks/workspaces/WORKSPACE_NAME
+     - Use the full ARM resource ID, replacing SUB_ID, RG, and WORKSPACE_NAME with your values
+   - dbt Azure multi-tenant environment (EMEA):
+   - Azure Databricks workspace region (for example, WestEurope, NorthEurope)
+   ```
 
    </Expandable>
 

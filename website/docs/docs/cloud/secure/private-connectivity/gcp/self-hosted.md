@@ -122,16 +122,18 @@ Before you begin, make sure to review the following requirements:
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
-**Subject:** New GCP Self-hosted Private Service Connect Request
+```text
+Subject: New GCP Self-hosted Private Service Connect Request
 
-- **Type:** Self-hosted PSC
-- **dbt platform account URL:**
-- **Platform/Service** (for example, Postgres, Starburst, Spark, GitLab, etc.):
-- **Service Attachment URI:**
-- **Custom DNS (if HTTPS/TLS):**
+- Type: Self-hosted PSC
+- dbt platform account URL:
+- Platform/Service (for example, Postgres, Starburst, Spark, GitLab, etc.):
+- Service Attachment URI:
+- Custom DNS (if HTTPS/TLS):
   - DNS record:
-- **Service Region** (for example, us-east1, us-central1):
-- **dbt GCP environment** (US):
+- Service Region (for example, us-east1, us-central1):
+- dbt GCP environment (US):
+```
 
 </Expandable>
 

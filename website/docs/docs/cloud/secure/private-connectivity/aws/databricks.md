@@ -27,13 +27,15 @@ The following steps walk you through the setup of a Databricks AWS PrivateLink e
 
    <Expandable alt_header="Support request email template" is_open={true}>
 
-   **Subject:** New AWS Multi-Tenant PrivateLink Request
+   ```text
+   Subject: New AWS Multi-Tenant PrivateLink Request
 
-   - **Type:** Databricks
-   - **dbt platform account URL:**
-   - **Databricks instance name:**
-   - **Databricks cluster AWS Region** (for example, us-east-1, eu-west-2):
-   - **dbt AWS multi-tenant environment** (US, EMEA, AU):
+   - Type: Databricks
+   - dbt platform account URL:
+   - Databricks instance name:
+   - Databricks cluster AWS Region (for example, us-east-1, eu-west-2):
+   - dbt AWS multi-tenant environment (US, EMEA, AU):
+   ```
 
    </Expandable>
     <PrivateLinkSLA />
