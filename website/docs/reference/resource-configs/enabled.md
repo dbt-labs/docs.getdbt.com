@@ -263,18 +263,6 @@ analyses:
 </File>
 
 
-
-<File name='analyses/<filename>.yml'>
-
-```yaml
-analyses:
-  - name: <analysis_name>
-    config:
-      enabled: true | false
-```
-
-</File>
-
 </TabItem>
 
 <TabItem value="metrics">
