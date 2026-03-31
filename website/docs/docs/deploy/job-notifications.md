@@ -12,32 +12,32 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
 - **Is canceled** option &mdash; A job run is canceled.
 
 ### Notification options
-<!-- temp list for now until private betas go ga -->
+<!-- temp list for now until betas go ga -->
 
 <Constant name="dbt_platform" /> currently supports the following notification channels:
 
 - [Email](#email-notifications) &mdash; Available for all users
 - [Slack (user-linked)](#slack-notifications) &mdash; Available for all users
-- [Slack (account-level)](#slack-notifications-account)  &mdash; Available in private beta. To request access, contact your account manager.
-- [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in private beta. To request access, contact your account manager.
+- [Slack (account-level)](#slack-notifications-account)  &mdash; Available in beta. To request access, contact your account manager.
+- [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in beta. To request access, contact your account manager.
 
-:::info Microsoft Teams without the private beta
-If you don’t have access to the native Microsoft Teams integration (private beta), you can still send job notifications to a Teams channel by using the channel’s email address as an external email, as explained in the next section, Email notifications.
+:::info Microsoft Teams without the beta
+If you don’t have access to the native Microsoft Teams integration (available in beta), you can still send job notifications to a Teams channel by using the channel’s email address as an external email, as explained in the next section, Email notifications.
 :::
 
 ## Email notifications
 
-You can receive email alerts about jobs by configuring the <Constant name="cloud" /> email notification settings.
+You can receive email alerts about jobs by configuring the <Constant name="dbt" /> email notification settings.
 
 ### Prerequisites 
-- You must be either a _developer user_ or an _account admin_ to configure email notifications in <Constant name="cloud" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
+- You must be either a _developer user_ or an _account admin_ to configure email notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
     - As a developer user, you can set up email notifications for yourself. 
     - As an account admin, you can set up notifications for yourself and other team members. 
 
 ### Configure email notifications
 
 1. Select your profile icon and then click **Notification settings**. 
-2. By default, <Constant name="cloud" /> sends notifications to the email address that's in your **User profile** page.
+2. By default, <Constant name="dbt" /> sends notifications to the email address that's in your **User profile** page.
 
     If you're an account admin, you can choose a different email address to receive notifications:
     1. Under Job notifications, click the **Notification email** dropdown.
@@ -46,7 +46,7 @@ You can receive email alerts about jobs by configuring the <Constant name="cloud
     3. To add an external email address, click the **Notification email** dropdown
     4. Click **Add external email**.
     5. Enter the email address, and click Add user.
-       After adding an external email, it becomes available for selection in the **Notification email** dropdown list. External emails can be addresses that are outside of your <Constant name="cloud" /> account and also for third-party integrations like [channels in Microsoft Teams](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca) and [PagerDuty email integration](https://support.pagerduty.com/docs/email-integration-guide).
+       After adding an external email, it becomes available for selection in the **Notification email** dropdown list. External emails can be addresses that are outside of your <Constant name="dbt" /> account and also for third-party integrations like [channels in Microsoft Teams](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca) and [PagerDuty email integration](https://support.pagerduty.com/docs/email-integration-guide).
        :::note
        External emails and their notification settings persist until edited or removed even if you remove the admin who added them from the account.
        :::
@@ -83,9 +83,9 @@ You can send dbt job [notification emails](#configure-email-notifications) direc
 8. Click **Edit**, select the job statuses you want. Then click **Save** to save.
 
 ## Slack notifications (user) {#slack-notifications}
-You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="cloud" /> Slack notification settings. <Constant name="cloud" /> integrates with Slack via OAuth to ensure secure authentication.
+You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="dbt" /> Slack notification settings. <Constant name="dbt" /> integrates with Slack via OAuth to ensure secure authentication.
 
-This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in private beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the private beta features.
+This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the beta features.
 
 :::note 
 Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
@@ -96,7 +96,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 ### Prerequisites 
 - You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
-- You must be an account admin to configure Slack notifications in <Constant name="cloud" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
+- You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
 - The integration only supports _public_ channels in the Slack workspace. 
 
 ### Set up the Slack integration
@@ -113,7 +113,7 @@ If you're already logged in to Slack, the handshake only requires allowing the a
 
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
-1. Complete the field defining the Slack workspace you want to integrate with <Constant name="cloud" />.
+1. Complete the field defining the Slack workspace you want to integrate with <Constant name="dbt" />.
     <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="60%" title="Define the workspace"/>
 2. Sign in with an existing identity or use the email address and password. 
 3. Once you have authenticated successfully, accept the permissions.
@@ -138,11 +138,13 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 ### Disable the Slack integration
 
 1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
-1. Click the trash can icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
+1. Click the **X** icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
 
-## Slack notifications (account) <Lifecycle status="private_beta" />  {#slack-notifications-account}
+## Slack notifications (account) <Lifecycle status="beta" />  {#slack-notifications-account}
+
 :::info
-Configuring Slack notifications at the account level is currently available in private beta. To request access, contact your account manager. Only refer to these instructions if you have access to the private beta feature.
+Configuring Slack notifications at the account level is currently available in beta. To request access, contact your account manager. Only refer to these instructions if you have access to the beta feature.
+
 :::
 
 Integrate Slack with <Constant name="dbt_platform" /> at the account level to receive job notifications in Slack. dbt integrates with Slack via OAuth to ensure secure authentication. 
@@ -153,16 +155,25 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 
 - You have a Slack workspace that you want to receive job notifications from.
 - A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
+- Install the official <Constant name="dbt_platform"/> Slack app using the [steps outlined in the next section](#set-up-the-slack-integration-1).
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
 - The integration only supports _public_ channels in the Slack workspace. 
 
-After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to a [group](/docs/cloud/manage-access/about-user-access#groups) with **Account Admin**, **Owner**, or **Member** permissions. IT licenses don't have access to configure Slack job notifications.
+After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to the **Account Admin**, **Owner**, or **Member** default [groups](/docs/cloud/manage-access/about-user-access#groups). IT licenses don't have access to configure Slack job notifications.
 
 ### Set up the Slack integration
 
-1. Select **Account settings** and then select **Integrations** from the left sidebar.
-2. Locate the **OAuth** section with the Slack application and click **Link**.
-    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
+The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
+
+To use the beta Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+
+1. Go to **Account settings** > **Integrations** > **OAuth**.
+2. Click the **X** icon next to Slack and select **Unlink**.
+3. In the same OAuth section, click **Link** to connect the official Slack app.
+
+Until you do this, the account-level Slack option will not appear.
+
+    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="85%" title="Link for the Slack app"/>
 
 ### Logged in to Slack
 
@@ -200,19 +211,19 @@ That's it! Your Slack channel is now set up to receive dbt job notifications at 
 In this step, you'll disable the Slack integration and remove the account-level Slack credentials. You can always re-enable the integration by following the [Set up the Slack integration](#set-up-the-slack-integration-1) steps.
 
 1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
-2. Click the x icon (on the far right of the Slack integration) and click **Unlink**.
+2. Click the **X** icon (on the far right of the Slack integration) and click **Unlink**.
     - This removes the account-level Slack credentials. All Slack notifications that rely on the account-level integration will stop sending.
     - If any legacy, user-linked Slack integrations still exist, those notifications may continue until the legacy link is removed. We recommend migrating to the new account-level app and removing legacy links.
 
-## Microsoft Teams notifications <Lifecycle status="private_beta" />
+## Microsoft Teams notifications <Lifecycle status="beta" />
 
 :::info
-Configuring Microsoft Teams notifications is currently in private beta. To request access, contact your account manager.
+Configuring Microsoft Teams notifications is currently in beta. To request access, contact your account manager.
 :::
 
 You can receive Microsoft Teams alerts for your dbt jobs by connecting your Teams account to the <Constant name="dbt_platform" />, and configuring your notification preferences. 
 
-dbt integrates with Teams through Microsoft Entra to provide secure authentication. Only refer to these instructions if you have access to the private beta feature.
+dbt integrates with Teams through Microsoft Entra to provide secure authentication. Only refer to these instructions if you have access to the beta feature.
 
 ### Prerequisites
 

@@ -1,6 +1,7 @@
 import path from "path";
 import math from "remark-math";
 import katex from "rehype-katex";
+import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 const { themes } = require('prism-react-renderer')
 
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
@@ -16,7 +17,7 @@ if (process?.env?.VERCEL_ENV === "preview" && process?.env?.VERCEL_BRANCH_URL) {
 
 const GIT_BRANCH = process?.env?.VERCEL_GIT_COMMIT_REF;
 
-let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
+let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME, OPTIMIZELY_ID } = process.env;
 
 let metatags = [];
 // If not `current` and not `main` branch, do not index site
@@ -48,6 +49,19 @@ var siteSettings = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
+  headTags: [
+    // Load Optimizely synchronously (no async/defer) so experiments apply
+    // before page content renders, preventing a flash of unexperimented content.
+    ...(OPTIMIZELY_ID ? [
+      {
+        tagName: 'script',
+        attributes: {
+          src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
+          type: 'text/javascript',
+        },
+      }
+    ] : []),
+  ],
   themeConfig: {
     docs: {
       sidebar: {
@@ -70,14 +84,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "dbt-workshop",
+      id: "fast-track-workshop",
       content:
-        "Help us find out what's next for data teams by taking the 2026 State of Analytics Engineering survey",
+        "Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLSdbOMc5kT8rFUGHryEO2RcJEzwF9xr_qWE3CHBbOcQpnilyIg/viewform",
+      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
@@ -359,6 +373,7 @@ var siteSettings = {
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),
+    path.resolve("plugins/buildFusionReleases"),
     [
       "vercel-analytics",
       {
@@ -373,6 +388,9 @@ var siteSettings = {
           enableMarkdownFiles: true,
           enableLlmsFullTxt: true,
           relativePaths: false,
+        },
+        processing: {
+          beforeDefaultRehypePlugins: [rehypeCodeLanguage],
         },
         include: {
           includeBlog: false,
@@ -434,37 +452,25 @@ var siteSettings = {
                   ],
                 },
                 {
-                  id: "dbt-core-and-fusion",
-                  name: "dbt Core and Fusion",
+                  id: "install-dbt",
+                  name: "dbt local installation",
                   routes: [
-                    { route: "/docs/about-dbt-install" },
-                    { route: "/docs/core/dbt-core-environments" },
+                    { route: "/docs/local/install-dbt" },
+                    { route: "/docs/local/dbt-core-environments" },
                   ],
                   subsections: [
                     {
-                      id: "install-dbt-fusion-engine",
+                      id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
                       routes: [
                         { route: "/docs/fusion/about-fusion-install" },
-                        { route: "/docs/fusion/install-dbt-extension" },
-                        { route: "/docs/fusion/install-fusion-cli" },
-                      ],
-                    },
-                    {
-                      id: "install-dbt-core",
-                      name: "Install dbt Core",
-                      routes: [
-                        { route: "/docs/core/installation-overview" },
-                        { route: "/docs/core/docker-install" },
-                        { route: "/docs/core/pip-install" },
-                        { route: "/docs/core/source-install" },
                       ],
                     },
                     {
                       id: "core-connect-data-platform",
                       name: "Connect data platform",
                       routes: [
-                        { route: "/docs/core/connect-data-platform/**" },
+                        { route: "/docs/local/connect-data-platform/**" },
                       ],
                     },
                   ],
@@ -511,7 +517,6 @@ var siteSettings = {
     "/js/headerLinkCopy.js",
     "/js/gtm.js",
     "/js/onetrust.js",
-    "/js/mutiny.js",
     "/js/hide-forethought.js",
     {
       src: "https://www.google.com/recaptcha/api.js?render=6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
@@ -556,7 +561,7 @@ var siteSettings = {
 if (versions) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
-    position: "right",
+    position: "left",
     className: "nav-versioning",
     items: [
       ...versions.reduce((acc, version) => {

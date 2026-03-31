@@ -6,13 +6,13 @@ sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
 ---
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the <Constant name="semantic_layer" />, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the <Constant name="semantic_layer" />, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [simple metrics](/docs/build/simple) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
@@ -26,7 +26,7 @@ Groups are defined within semantic models, alongside entities and measures, and 
 
 All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique within the same semantic model.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -52,7 +52,7 @@ dimensions:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 | Parameter | Description | Required | Type |
 | --------- | ----------- | ---- | ---- |
@@ -85,7 +85,7 @@ models:
 
 Refer to the following example to see how dimensions are used in a semantic model:
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 ```yaml
 semantic_models:
@@ -121,7 +121,7 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -174,7 +174,7 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimension `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
 
@@ -195,7 +195,7 @@ semantic_model:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Dimensions are bound to the primary entity of the semantic model they are defined in. 
 
@@ -276,12 +276,12 @@ dimensions:
 
 ## Time
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Time has additional parameters specified under the `type_params` section. When you query one or more metrics, the default time dimension for each metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimension's name. 
 
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Time dimensions no longer use `type_params`. 
 - For dimensions defined on a column entry, add the column’s `granularity` at the column level. 
@@ -300,7 +300,7 @@ dbt sl query --metrics users_created,users_deleted --group-by metric_time__year 
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-You can set `is_partition` for time to define specific time spans. <VersionBlock lastVersion="1.99">Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (daily, weekly, and so on).</VersionBlock>
+You can set `is_partition` for time to define specific time spans. <VersionBlock lastVersion="1.11">Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (daily, weekly, and so on).</VersionBlock>
 
 <Tabs queryString="dimension">
 
@@ -308,7 +308,7 @@ You can set `is_partition` for time to define specific time spans. <VersionBlock
 
 Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the <Constant name="semantic_layer" /> uses this parameter to ensure that the correct dimensional values are joined to measures. 
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 ```yaml
 dimensions: 
@@ -340,7 +340,7 @@ measures:
     agg: sum
 ```
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -389,7 +389,7 @@ models:
 
 <TabItem value="time_gran" label="time_granularity">
 
-<VersionBlock firstVersion="1.9" lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.11">
 
 `time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
@@ -437,7 +437,7 @@ measures:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 `granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
@@ -502,13 +502,13 @@ models:
 
 ### SCD Type II
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 :::caution
 Currently, semantic models with SCD Type II dimensions cannot contain measures.
 :::
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 :::caution
 Currently, semantic models with SCD Type II dimensions cannot contain simple metrics.
 :::
@@ -518,7 +518,7 @@ MetricFlow supports joins against dimensions values in a semantic model built on
 
 #### Basic structure
 
-SCD Type II are groups that change values at a coarser time granularity. SCD Type II tables typically have two time columns that indicate the validity period of a dimension: `valid_from` (or `tier_start`) and `valid_to` (or `tier_end`). This creates a range of valid rows with different dimension values for a metric<VersionBlock lastVersion="1.99"> or measure</VersionBlock>.
+SCD Type II are groups that change values at a coarser time granularity. SCD Type II tables typically have two time columns that indicate the validity period of a dimension: `valid_from` (or `tier_start`) and `valid_to` (or `tier_end`). This creates a range of valid rows with different dimension values for a metric<VersionBlock lastVersion="1.11"> or measure</VersionBlock>.
 
 MetricFlow associates the metric with the earliest available dimension value within a coarser time window, such as a month. By default, it uses the group valid at the start of this time granularity.
 
@@ -542,7 +542,7 @@ When configuring an SCD Type II table in a semantic model, use `validity_params`
 
 Here’s an example configuration:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 - name: tier_start #  The name of the dimension.
@@ -564,7 +564,7 @@ Here’s an example configuration:
 ```
 
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -647,7 +647,7 @@ As mentioned earlier, the `validity_params` include two important arguments that
 Additionally, the entity is tagged as `natural` to differentiate it from a `primary` entity. In a `primary` entity, each entity value has one row. In contrast, a `natural` entity has one row for each combination of entity value and its validity period.
 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml 
 semantic_models:
@@ -687,7 +687,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -733,7 +733,7 @@ models:
 
 The following code represents a separate semantic model that holds a fact table for `transactions`:  
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 semantic_models: 
@@ -783,7 +783,7 @@ semantic_models:
 ```
 
 </VersionBlock>
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:

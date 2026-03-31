@@ -10,13 +10,13 @@ pagination_prev: null
 
 This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the <Constant name="semantic_layer" />, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
-MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="cloud" /> or <Constant name="core" />.
+MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in <Constant name="dbt" /> or <Constant name="core" />.
 
 
 ## Prerequisites
 Before you start, consider the following guidelines:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
@@ -25,7 +25,7 @@ Before you start, consider the following guidelines:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 - Define metrics in YAML and query them using the [latest metric specifications](/docs/build/semantic-models).
 - Available on the [<Constant name="fusion_engine"/>](/docs/fusion/install-fusion) or [dbt Latest](/docs/dbt-versions/cloud-release-tracks) in the <Constant name="dbt_platform" />.
@@ -66,47 +66,50 @@ When MetricFlow generates a metric, it uses its SQL engine to figure out the bes
 
 ### Semantic models 
 
-Semantic models are the starting points of data and correspond to models in your dbt project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
+Semantic models are the starting points of your data and correspond to models in your dbt project. You can create multiple semantic models from each model. Semantic models have metadata, like a data table, that define important information such as the table name and primary keys for the graph to be navigated correctly.
 
 For a semantic model, there are three main pieces of metadata:
 
-* [Entities](/docs/build/entities) &mdash; The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
-* [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
-<VersionBlock lastVersion="1.99">
-* [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
+* [Entities](/docs/build/entities): The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
+* [Dimensions](/docs/build/dimensions): These are the ways you want to group or slice/dice your metrics.
+<VersionBlock lastVersion="1.11">
+* [Measures](/docs/build/measures): The aggregation functions that give you a numeric result and can be used to create your metrics.
+</VersionBlock>
+<VersionBlock firstVersion="1.12">
+* [Simple metrics](/docs/build/simple): Metrics that directly reference a single column expression within a semantic model, without any additional columns involved.
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 </VersionBlock>
 
 ### Metrics 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures and various aggregation types, such as average, sum, and count distinct, to create metrics. Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 Metrics, which is a key concept, are functions that combine simple metrics, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses various aggregation types, such as average, sum, and count distinct, to create metrics. Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
 </VersionBlock>
 
 MetricFlow supports different metric types:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
-- [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
-- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a <VersionBlock lastVersion="1.99">measure</VersionBlock><VersionBlock firstVersion="2.0">simple metric</VersionBlock> over a given window.
-- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
-- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure.
+- [Conversion](/docs/build/conversion): Tracks when a base event and a subsequent conversion event occurs for an entity within a set time period.
+- [Cumulative](/docs/build/cumulative): Aggregates a measure over a given window.
+- [Derived](/docs/build/derived): Defines a metric as an expression of other metrics, which allows you to do calculations on top of metrics.
+- [Ratio](/docs/build/ratio): Defines a metric as the ratio of two measures, such as revenue per customer.
+- [Simple](/docs/build/simple): Defines a metric that directly references a single measure.
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
-- [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
-- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a simple metric over a given window.
-- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two simple metrics, like revenue per customer.
-- [Simple](/docs/build/simple) &mdash; Metrics defined as simple aggregations over a particular dataset.
+<VersionBlock firstVersion="1.12">
+- [Conversion](/docs/build/conversion): Tracks when a base event and a subsequent conversion event occurs for an entity within a set time period.
+- [Cumulative](/docs/build/cumulative): Aggregates a simple metric over a given window.
+- [Derived](/docs/build/derived): Defines a metric as an expression of other metrics, which allows you to do calculations on top of metrics.
+- [Ratio](/docs/build/ratio): Defines a metric as the ratio of two simple metrics, such as revenue per customer.
+- [Simple](/docs/build/simple): Defines a metric that directly references a single column expression within a semantic model.
 </VersionBlock> 
 
 ## Use case
@@ -123,9 +126,9 @@ The following example data is based on the Jaffle Shop repo. You can view the co
 To make this more concrete, consider the metric `order_total`, which is defined using the SQL expression:
 
 `select sum(order_total) as order_total from orders` 
-This expression calculates the total revenue for all orders by summing the order_total column in the orders table. In a business setting, the metric order_total is often calculated according to different categories, such as"
+This expression calculates the total revenue for all orders by summing the `order_total` column in the orders table. In a business setting, the metric `order_total` is often calculated according to different categories, such as:
 - Time, for example `date_trunc(ordered_at, 'day')`
-- Order Type, using `is_food_order` dimension from the `orders` table.
+- Order Type, using `is_food_order` dimension from the `orders` table
 
 ### Calculate metrics
 
@@ -155,12 +158,12 @@ group by 1, 2
 </TabItem>
 <TabItem value="metricflow" label="Calculate with MetricFlow">
 
-In the following three example tabs, use MetricFlow to define a semantic model that uses order_total as a metric and a sample schema to create consistent and accurate results &mdash; eliminating confusion, code duplication, and streamlining your workflow.
+In the following three example tabs, use MetricFlow to define a semantic model that uses `order_total` as a metric and a sample schema to create consistent and accurate results &mdash; eliminating confusion, code duplication, and streamlining your workflow.
 
 <Tabs>
 <TabItem value="example1" label="Revenue example">
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
 
@@ -211,7 +214,7 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 In this example, a simple metric named `order_total` is defined on the `orders` model and semantic model. The metric sums the `order_total` column. The time dimension `metric_time` provides daily granularity and can be rolled up to weekly or monthly periods.
 
@@ -290,9 +293,9 @@ models:
 </TabItem>
 <TabItem value="example2" label="More dimensions example">
 
-Similarly, you could then add additional dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue order_total. 
+Similarly, you can add additional dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue `order_total`. 
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 semantic_models:
@@ -322,7 +325,7 @@ semantic_models:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -382,7 +385,7 @@ models:
 </TabItem>
 <TabItem value="example3" label="Advanced example">
 
-Imagine an even more complex metric is needed, like the amount of money earned each day from food orders from returning customers. Without MetricFlow the data practitioner's original SQL might look like this:
+Imagine an even more complex metric is needed, such as the amount of money earned each day from food orders from returning customers. Without MetricFlow, the data practitioner's original SQL might look like this:
 
 ```sql
 select
@@ -402,9 +405,9 @@ group by 1
 ```
 
 
-MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
+MetricFlow simplifies the SQL process through metric YAML configurations as shown below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 metrics:
@@ -420,7 +423,7 @@ metrics:
 ```
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -537,7 +540,7 @@ metrics:
 
 <DetailsToggle alt_header="Do my datasets need to be normalized?">
 
-Not at all! While a cleaned and well-modeled data set can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets. 
+Not at all! While a cleaned and well-modeled dataset can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets. 
 
 It's recommended that you apply quality data consistency, such as filtering bad data, normalizing common objects, and data modeling of keys and tables, in upstream applications. The <Constant name="semantic_layer" /> is more efficient at doing data denormalization instead of normalization.
 
@@ -549,20 +552,20 @@ If you have not invested in data consistency, that is okay. The <Constant name="
 
 MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.
 </DetailsToggle>
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <DetailsToggle alt_header="Why not just make metrics the same as measures?">
-One principle of MetricFlow is to reduce the duplication of logic sometimes referred to as Don't Repeat Yourself(DRY).
+One principle of MetricFlow is to reduce the duplication of logic, sometimes referred to as Don't Repeat Yourself (DRY).
 
-Many metrics are constructed from reused measures and in some cases constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other).
+Many metrics are constructed from reused measures, and in some cases, they are constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other).
 
 Additionally, not all metrics are constructed off of measures. As an example, a conversion metric is likely defined as the presence or absence of an event record after some other event record.
 
 </DetailsToggle>
 </VersionBlock>
 <DetailsToggle alt_header="How does the dbt Semantic Layer handle joins?">
-The dbt <Constant name="semantic_layer" />, powered by MetricFlow,  builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentation on join types.
+The dbt <Constant name="semantic_layer" />, powered by MetricFlow, builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed, see the documentation on [join types](/docs/build/join-logic#types-of-joins).
 
-Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.
+Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps users navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.
 </DetailsToggle>
 
 <DetailsToggle alt_header="Are entities and join keys the same thing?">
@@ -570,7 +573,7 @@ If it helps you to think of entities as join keys, that is very reasonable. Enti
 </DetailsToggle>
 
 <DetailsToggle alt_header="Can a table without a primary or unique entities have dimensions?">
-Yes, but because a dimension is considered an attribute of the primary or unique ent of the table, they are only usable by the metrics that are defined in that table. They cannot be joined to metrics from other tables. This is common in event logs.
+Yes, but because a dimension is considered an attribute of the primary or unique entity of the table, they are only usable by the metrics that are defined in that table. They cannot be joined to metrics from other tables. This is common in event logs.
 </DetailsToggle>
 
 ## Related docs

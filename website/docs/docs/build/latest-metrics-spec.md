@@ -9,7 +9,11 @@ tags: [Metrics, Semantic Layer, Fusion]
 
 The latest Semantic Layer specification creates an open standard for defining metrics and dimensions that works across multiple platforms. It simplifies authorship by embedding semantic annotations alongside each model, replacing measures with simple metrics, and promoting frequently used options to top-level keys. 
 
-With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization.
+With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization. 
+
+import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability.md';
+
+<LatestYamlSpecAvailability />
 
 ## Changes in the latest spec 
 
@@ -54,6 +58,10 @@ semantic_models:
 </div>
 
 </div>
+
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
 
 ### Entities and dimensions
 
@@ -575,7 +583,7 @@ metrics:
 
 ## Migrating to the latest spec
 
-Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="cloud_ide" />.
+Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="studio_ide" />.
 
 import CopilotLimitation from '/snippets/_copilot-limitation.md';
 
@@ -593,10 +601,20 @@ To update packages, a package maintainer should:
 
 2. Validate the changes by running:
 
+  - For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
+
     ```bash
     dbt parse
-    dbt sl validate  # For dbt platform and Fusion users in IDE / Cloud CLI
-    mf validate-configs # For Fusion CLI users not connected to dbt platform and using local MetricFlow
+    dbt sl validate
+    ```
+
+    When using `dbt sl validate` locally, the command validates your local semantic manifest, and not the platform's manifest. This means your uncommitted local changes are included in the validation.
+
+  - For Fusion CLI users not connected to dbt platform and using local MetricFlow:
+
+    ```bash
+    dbt parse
+    mf validate-configs
     ```
 
 3. Release a new version of the package with the updated metrics definitions.
@@ -628,13 +646,13 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
 
 ### Using the Studio IDE
 
-Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
+Convert your metrics in the <Constant name="studio_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
 
-1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
+1. Navigate to the <Constant name="studio_ide" /> by clicking **Studio** in the left menu.
 2. Make sure to save and commit your work before proceeding. The autofix command may overwrite any unsaved changes.
-3. In the <Constant name="cloud_ide" />, run the following command:
+3. In the <Constant name="studio_ide" />, run the following command:
 
     ```bash
     dbt-autofix deprecations --semantic-layer
     ```
-4. Click **Commit and sync** in the top left of the <Constant name="cloud_ide" /> to commit these changes to the project repository.
+4. Click **Commit and sync** in the top left of the <Constant name="studio_ide" /> to commit these changes to the project repository.

@@ -62,7 +62,7 @@ Test the **Latest** release track for your individual account without changing t
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Override dbt version in your account settings"/>
 
-5. Launch the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" /> and test your normal development workflows.
+5. Launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and test your normal development workflows.
 6. Verify the override is active by running any dbt command and checking the **System Logs**. The first line should show `Running with dbt=` and your selected version. If the version number is `v1.11` or higher, you're on the right path to <Constant name="fusion" /> readiness.
 
 If everything works as expected, proceed to the next step to start upgrading your environments. If you encounter deprecation warnings, don't fear! We'll address those [later in this guide](/guides/prepare-fusion-upgrade?step=4). If you encounter errors, revert to your previous version and refer to the [version upgrade guides](/docs/dbt-versions/core-upgrade) to resolve any differences between your current version and the latest available <Constant name="core" /> version.
@@ -111,7 +111,7 @@ While environments control the dbt version for most scenarios, some older job co
 
 ## Resolve all deprecation warnings
 
-<Constant name="fusion" /> enforces strict validation and won't accept deprecated code that currently generates warnings in <Constant name="core" />. You must resolve all deprecation warnings before upgrading to <Constant name="fusion" />. Fortunately, the autofix tool in the <Constant name="cloud_ide" /> can automatically resolve most common deprecations for you.
+<Constant name="fusion" /> enforces strict validation and won't accept deprecated code that currently generates warnings in <Constant name="core" />. You must resolve all deprecation warnings before upgrading to <Constant name="fusion" />. Fortunately, the autofix tool in the <Constant name="studio_ide" /> can automatically resolve most common deprecations for you.
 
 :::tip VS Code extension
 
@@ -140,7 +140,7 @@ In addition to deprecations, the autofix tool attempts to upgrade packages to th
 
 Before running the autofix tool, create a new branch to isolate your changes:
 
-1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left-side menu.
+1. Navigate to the <Constant name="studio_ide" /> by clicking **Studio** in the left-side menu.
 2. Click the **Version control** panel (git branch icon) on the left sidebar.
 3. Click **Create branch** and name it something descriptive like `fusion-deprecation-fixes`.
 4. Click **Create** to switch to your new branch.
@@ -155,7 +155,7 @@ The autofix tool will modify files in your project. Make sure to commit or stash
 
 Now you're ready to scan for and automatically fix deprecation warnings:
 
-1. Click the **three-dot menu** in the bottom right corner of the <Constant name="cloud_ide" />.
+1. Click the **three-dot menu** in the bottom right corner of the <Constant name="studio_ide" />.
 2. Select **Check & fix deprecations**.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu"/>
@@ -250,7 +250,7 @@ import FusionPackageCompatibility from '/snippets/_fusion-package-compatibility.
 
 Identify which packages your project uses:
 
-1. In the <Constant name="cloud_ide" />, open your project's root directory.
+1. In the <Constant name="studio_ide" />, open your project's root directory.
 2. Look for either `packages.yml` or `dependencies.yml` file.
 3. Review the list of packages and their current versions.
 
@@ -291,7 +291,7 @@ packages:
 
 Update your `packages.yml` or `dependencies.yml` file with the latest compatible versions:
 
-1. In the <Constant name="cloud_ide" />, open your `packages.yml` or `dependencies.yml` file.
+1. In the <Constant name="studio_ide" />, open your `packages.yml` or `dependencies.yml` file.
 2. Update each package version to the latest compatible version.
 3. Save the file.
 
@@ -317,7 +317,7 @@ Update your `packages.yml` or `dependencies.yml` file with the latest compatible
 
 After updating your package versions, install them:
 
-1. In the <Constant name="cloud_ide" /> command line, run:
+1. In the <Constant name="studio_ide" /> command line, run:
    ```bash
    dbt deps --upgrade
    ```
@@ -380,8 +380,6 @@ Start by understanding which features have limited or no support in <Constant na
 Visit the [Fusion supported features page](/docs/fusion/supported-features#limitations) and review the limitations table to see features that may affect your project.
 
 Common limitations include:
-- **Python models:** Not currently supported (Fusion cannot parse Python to extract dependencies)
-- **Microbatch incremental strategy:**  Not yet available
 - **Model-level notifications:** Job-level notifications work, model-level don't yet
 - **Semantic Layer development:** Active semantic model development should stay on <Constant name="core" />
 - **SQLFluff linting:** Not integrated yet (though linting will be built into <Constant name="fusion" /> directly)
@@ -391,9 +389,9 @@ Common limitations include:
 Check if your project uses any features with limited support. For example:
 
 1. Check for Python models:
-   - In the <Constant name="cloud_ide" />, look in your `models/` directory
+   - Python models for Snowflake, BigQuery, and Databricks are supported in <Constant name="fusion" />. If you use Python models on other data platforms, confirm [Fusion support](/docs/fusion/supported-features) for your data platform.
+   - In the <Constant name="studio_ide" />, look in your `models/` directory
    - Search for files with `.py` extensions
-   - If found, you'll need to either remove them or keep those models on <Constant name="core" />
 
 2. Review your `dbt_project.yml` for specific configurations:
    - Look for `store_failures` settings
@@ -403,7 +401,7 @@ Check if your project uses any features with limited support. For example:
 3. Check your job configurations:
    - Review any jobs using `--fail-fast` flag
    - Identify jobs using `--store-failures`
-   - Note any Advanced CI "compare changes" workflows
+   - Note that [Advanced CI (dbt compare in orchestration)](/docs/deploy/advanced-ci) is supported in <Constant name="fusion" />.
 
 4. Review model governance settings:
    - Search for models with `deprecation_date` set
@@ -414,7 +412,7 @@ Check if your project uses any features with limited support. For example:
 For each limitation that affects your project, determine its criticality:
 
 - **Critical features:** Features your project can't function without:
-    - If Python models are essential, you may need to wait or refactor them to SQL
+    - Python models for Snowflake, BigQuery, and Databricks are supported in <Constant name="fusion" />. If you use Python models on other data platforms, confirm [Fusion support](/docs/fusion/supported-features) for your data platform.
     - If Semantic Layer development is active, continue those workloads on <Constant name="core" />
 
 - **Nice-to-have features:** Features that improve workflows but aren't blockers:
@@ -458,7 +456,7 @@ Based on your assessment, decide how to handle each limitation:
 
 Create a record of limitations affecting your project:
 
-1. In your <Constant name="cloud_ide" />, create a document (like `FUSION_MIGRATION.md`) listing:
+1. In your <Constant name="studio_ide" />, create a document (like `FUSION_MIGRATION.md`) listing:
    - Features your project uses that <Constant name="fusion" /> doesn't fully support
    - Which models or jobs are affected
    - Your mitigation strategy for each limitation

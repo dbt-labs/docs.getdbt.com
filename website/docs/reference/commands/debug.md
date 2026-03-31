@@ -20,11 +20,11 @@ By default, `dbt debug` validates:
 
 ## Flags
 
-Most of the `dbt debug` flags apply to the <Constant name="core" /> CLI. Some flags also work in <Constant name="cloud_cli" />, but only `--connection` is supported in the <Constant name="cloud_ide" />.
+Most of the `dbt debug` flags apply to the <Constant name="core" /> CLI. Some flags also work in <Constant name="platform_cli" />, but only `--connection` is supported in the <Constant name="studio_ide" />.
 
 - <Constant name="core" /> CLI: Supports all flags.
-- <Constant name="cloud_ide" />: Only supports dbt `debug` and `dbt debug --connection`.
-- <Constant name="cloud_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment) command to interact with your <Constant name="cloud" /> environment. 
+- <Constant name="studio_ide" />: Only supports dbt `debug` and `dbt debug --connection`.
+- <Constant name="platform_cli" />: Only supports dbt `debug` and `dbt debug --connection`. You can also use the [`dbt environment`](/reference/commands/dbt-environment) command to interact with your <Constant name="dbt" /> environment. 
 
 `dbt debug` supports the following flags in your terminal when using the command line interface (CLI):
 
@@ -106,7 +106,7 @@ Options:
  --log-path PATH         
                 Configure the 'log-path'. Only applies this
                 setting for the current run. Overrides the
-                'DBT_LOG_PATH' if it is set.
+                'DBT_LOG_PATH' (v1.10 and earlier) or 'DBT_ENGINE_LOG_PATH' (v1.11 or later) when set.
 
  --partial-parse / --no-partial-parse
                 Allow for partial parsing by looking for and
@@ -254,7 +254,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-Test the connection in the <Constant name="cloud_ide" />:
+Test the connection in the <Constant name="studio_ide" />:
 
 ```text
 dbt debug --connection
