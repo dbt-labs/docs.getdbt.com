@@ -83,6 +83,7 @@ flags:
   require_valid_schema_from_generate_schema_name: False
   enable_truthy_nulls_equals_macro: False
   require_sql_header_in_test_configs: False
+  require_corrected_analysis_fqns: False
 ```
 
 </File>
@@ -109,6 +110,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
 | [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
+| [require_corrected_analysis_fqns](#project-level-configuration-for-analyses) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 
 
 #### dbt adapter behavior changes
@@ -527,4 +529,39 @@ models:
 
 
 For more information, refer to [Data test configurations](/reference/data-test-configs).
+
+### Project-level configuration for analyses <Lifecycle status="beta" />
+
+Previously, project-level configuration for analyses in `dbt_project.yml` (such as `analyses: +enabled: false`) was silently ignored. Fully qualified names (FQNs) for analyses also contained an extra `analyses` path segment that was inconsistent with other resource types.
+
+When `require_corrected_analysis_fqns` is set to `True`, dbt:
+- Routes analysis configurations from the `analyses` block in `dbt_project.yml`, enabling project-level and folder-level configurations to take effect.
+- Removes the extra FQN segment so that analysis FQNs are consistent with other resource types (for example, `your_project.subdirectory.analysis_name` instead of `your_project.analyses.subdirectory.analysis_name`).
+
+To enable project-level analysis configuration, set the flag to `True` and add an `analyses` block in your `dbt_project.yml`. Note that `enabled` is the only config supported for project-level configuration of analyses. For example:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_corrected_analysis_fqns: true
+
+analyses:
+  +enabled: true  # enable all analyses by default
+```
+</File>
+
+You can also configure analyses at the folder level by nesting subfolders under your project name in the `analyses` block.
+
+<File name='dbt_project.yml'>
+
+```yaml
+analyses:
+  your_project:
+    +enabled: false  # disable all analyses by default
+    my_subfolder:
+      +enabled: true  # enable a specific subfolder
+```
+
+</File>
 

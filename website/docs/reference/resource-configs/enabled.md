@@ -14,6 +14,7 @@ default_value: true
     { label: 'Tests', value: 'tests', },
     { label: 'Unit tests', value: 'unit tests', },
     { label: 'Sources', value: 'sources', },
+    { label: 'Analyses', value: 'analyses', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
@@ -217,6 +218,24 @@ sources:
 
 </File>
 
+
+</TabItem>
+
+<TabItem value="analyses">
+
+To configure analyses at the project and folder level, set the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) flag to `True` in your `dbt_project.yml`.
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_corrected_analysis_fqns: true
+
+analyses:
+  +enabled: true | false
+```
+
+</File>
 
 </TabItem>
 
