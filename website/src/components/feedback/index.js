@@ -132,21 +132,31 @@ export const Feedback = () => {
               <div className={styles.feedbackInput}>
                 <div className={styles.feedbackTypeGroup}>
                   <span className={styles.feedbackTypeLabel}>What is this feedback about?</span>
-                  <div className={styles.feedbackTypeButtons}>
-                    <button
-                      type="button"
-                      className={`${styles.feedbackTypeButton} ${feedbackType === "docs" ? styles.feedbackTypeButtonSelected : ""}`}
-                      onClick={() => setFeedbackType("docs")}
-                    >
+                  <div className={styles.feedbackTypeRadioList}>
+                    <label className={`${styles.feedbackTypeRadioItem} ${feedbackType === "docs" ? styles.feedbackTypeRadioItemSelected : ""}`}>
+                      <input
+                        type="radio"
+                        name="feedbackType"
+                        value="docs"
+                        checked={feedbackType === "docs"}
+                        onChange={() => setFeedbackType("docs")}
+                        className={styles.feedbackTypeRadioInput}
+                      />
+                      <span className={styles.feedbackTypeRadioCustom} />
                       Docs
-                    </button>
-                    <button
-                      type="button"
-                      className={`${styles.feedbackTypeButton} ${feedbackType === "product" ? styles.feedbackTypeButtonSelected : ""}`}
-                      onClick={() => setFeedbackType("product")}
-                    >
-                      Product
-                    </button>
+                    </label>
+                    <label className={`${styles.feedbackTypeRadioItem} ${feedbackType === "product" ? styles.feedbackTypeRadioItemSelected : ""}`}>
+                      <input
+                        type="radio"
+                        name="feedbackType"
+                        value="product"
+                        checked={feedbackType === "product"}
+                        onChange={() => setFeedbackType("product")}
+                        className={styles.feedbackTypeRadioInput}
+                      />
+                      <span className={styles.feedbackTypeRadioCustom} />
+                      dbt
+                    </label>
                   </div>
                 </div>
                 <textarea
