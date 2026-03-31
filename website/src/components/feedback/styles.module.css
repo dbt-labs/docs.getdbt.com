@@ -180,7 +180,6 @@ outline-offset: 2px;
 .feedbackContainer .feedbackTypeRadioItemSelected .feedbackTypeRadioCustom {
   border-color: var(--color-coalesce-purple-600);
   background-color: var(--color-coalesce-purple-600);
-  box-shadow: inset 0 0 0 3px var(--ifm-background-color);
 }
 
 .feedbackContainer .feedbackTypeRadioInput:focus-visible ~ .feedbackTypeRadioCustom {
@@ -243,6 +242,11 @@ html[data-theme="dark"] {
 
  .feedbackContainer .feedbackTypeRadioCustom {
   border-color: var(--color-white);
+}
+
+ .feedbackContainer .feedbackTypeRadioItemSelected .feedbackTypeRadioCustom {
+  border-color: #FE6706;
+  background-color: #FE6706;
 }
 
 }
