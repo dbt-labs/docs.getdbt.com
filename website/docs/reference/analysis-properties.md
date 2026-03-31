@@ -58,6 +58,8 @@ analyses:
   +[enabled](/reference/resource-configs/enabled): true | false
 ```
 
+</File>
+
 You can also configure analyses at the folder level by nesting subfolders under your project name in the `analyses` block.
 
 <File name='dbt_project.yml'>
