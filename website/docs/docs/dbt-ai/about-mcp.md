@@ -53,7 +53,7 @@ The dbt MCP server has access to many parts of the dbt experience related to dev
 | Semantic Layer | ✅ | ✅ |
 | SQL  | ✅ | ✅ |
 | Metadata Discovery| ✅ | ✅ |
-| Administrative API | ✅ | ❌ |
+| Administrative API | ✅ | ✅ |
 | Codegen Tools | ✅ | ❌ |
 | Fusion Tools | ✅ | ✅ |
 
