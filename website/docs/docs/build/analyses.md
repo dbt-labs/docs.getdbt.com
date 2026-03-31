@@ -90,6 +90,8 @@ analyses:
       +enabled: false  # disable a specific subfolder
 ```
 
+</File>
+
 </VersionBlock>
 
 ## Compiling analyses
