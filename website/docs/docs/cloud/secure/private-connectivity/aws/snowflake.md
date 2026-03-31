@@ -36,15 +36,18 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
 
 3. Add the required information to the following template and submit your request to  [dbt Support](/docs/dbt-support#dbt-cloud-support):
 
-```
-Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
-- Type: Snowflake
-- dbt platform account URL:
-- SYSTEM$GET_PRIVATELINK_CONFIG output:
-- *Use privatelink-account-url or regionless-privatelink-account-url?:
-- **Create Internal Stage PrivateLink endpoint? (Y/N): 
-- dbt AWS multi-tenant environment (US, EMEA, AU):
-```
+<Expandable alt_header="Support request email template" is_open={true}>
+
+**Subject:** New Multi-Tenant (Azure or AWS) PrivateLink Request
+
+- **Type:** Snowflake
+- **dbt platform account URL:**
+- **SYSTEM$GET_PRIVATELINK_CONFIG output:**
+- **\*Use privatelink-account-url or regionless-privatelink-account-url?:**
+- **\*\*Create Internal Stage PrivateLink endpoint? (Y/N):**
+- **dbt AWS multi-tenant environment** (US, EMEA, AU):
+
+</Expandable>
 _*By default, <Constant name="dbt" /> will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
 
 _** Internal Stage PrivateLink must be [enabled on the Snowflake account](https://docs.snowflake.com/en/user-guide/private-internal-stages-aws#prerequisites) to use this feature_

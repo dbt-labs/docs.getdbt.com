@@ -136,17 +136,20 @@ Before you begin, make sure to review the following requirements:
 
 11. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
 
-```
-Subject: New Azure Self-hosted Private Link Request
-- Type: Self-hosted Private Link
-- Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
-- dbt platform account URL:
-- Private Link Service Alias:
-- Custom DNS (if HTTPS/TLS)
-    - DNS record:
-- Service Region: (for example, East US, West Europe)
-- dbt Azure environment (EMEA):
-```
+<Expandable alt_header="Support request email template" is_open={true}>
+
+**Subject:** New Azure Self-hosted Private Link Request
+
+- **Type:** Self-hosted Private Link
+- **Platform/Service** (for example, Postgres, Starburst, Spark, GitLab, etc.):
+- **dbt platform account URL:**
+- **Private Link Service Alias:**
+- **Custom DNS (if HTTPS/TLS):**
+  - DNS record:
+- **Service Region** (for example, East US, West Europe):
+- **dbt Azure environment** (EMEA):
+
+</Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 

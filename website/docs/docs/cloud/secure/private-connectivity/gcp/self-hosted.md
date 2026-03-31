@@ -120,17 +120,20 @@ Before you begin, make sure to review the following requirements:
 
 12. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
 
-```
-Subject: New GCP Self-hosted Private Service Connect Request
-- Type: Self-hosted PSC
-- dbt platform account URL:
-- Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
-- Service Attachment URI:
-- Custom DNS (if HTTPS/TLS)
-    - DNS record:
-- Service Region: (for example, us-east1, us-central1)
-- dbt GCP environment (US):
-```
+<Expandable alt_header="Support request email template" is_open={true}>
+
+**Subject:** New GCP Self-hosted Private Service Connect Request
+
+- **Type:** Self-hosted PSC
+- **dbt platform account URL:**
+- **Platform/Service** (for example, Postgres, Starburst, Spark, GitLab, etc.):
+- **Service Attachment URI:**
+- **Custom DNS (if HTTPS/TLS):**
+  - DNS record:
+- **Service Region** (for example, us-east1, us-central1):
+- **dbt GCP environment** (US):
+
+</Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
