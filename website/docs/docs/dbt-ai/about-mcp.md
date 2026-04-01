@@ -74,7 +74,7 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 ### Supported tools by MCP server type
 The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
 
-Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote MCP supports <Constant name="semantic_layer" />, SQL, Discovery, and <Constant name="fusion" /> tools only.
+Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote MCP supports <Constant name="semantic_layer" />, SQL, Discovery, Administrative API, and <Constant name="fusion" /> tools only.
 
 Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
