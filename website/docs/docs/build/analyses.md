@@ -78,7 +78,7 @@ For more information, refer to [Analysis properties](/reference/analysis-propert
 The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-You can also configure analyses at the project level in `dbt_project.yml`, including enabling or disabling them by folder.
+You can also configure analyses at the project level in `dbt_project.yml`.
 
 <AnalysesProjectLevelConfig />
 
