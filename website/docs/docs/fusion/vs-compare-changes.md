@@ -1,8 +1,8 @@
 ---
-title: "Compare changes locally"
+title: "Compare changes locally with your dbt platform account"
 id: "vs-compare-changes"
-description: "Compare how code edits will change your data while you develop in locally with the dbt VS Code extension — without waiting on CI."
-sidebar_label: "Compare changes"
+description: "Compare how code edits will change your data while you develop your dbt platform project locally with the dbt VS Code extension."
+sidebar_label: "Compare changes locally"
 ---
 
 # Compare changes in local development <Lifecycle status="beta,managed,managed_plus" />
@@ -13,11 +13,11 @@ Compare changes in local development, powered by <Constant name="fusion_engine" 
 
 The dbt VS Code extension, powered by the <Constant name="fusion_engine"/>, can preview and compare changes to your data caused by your local edits (like added/removed rows and so on) &mdash; directly in your editor and without waiting on CI. The dbt extension supports VS Code, Cursor, and Windsurf.
 
-Use compare changes to check impact early and catch changes before you open a PR or run a [CI job](/docs/deploy/ci-jobs):
-- For example, when refactoring logic, adding or removing columns, or verifying a join modification doesn't change the data's output. 
+Use compare changes to check impact early and validate changes before you open a PR or run a [CI job](/docs/deploy/ci-jobs):
+- Validate outputs are correct when refactoring logic, adding or removing columns, or implementing join modifications. 
 - It compares your current working copy against your `manifest.json` (for example, your last production state) and shows changes to primary keys, rows, and columns in the **Compare** tab. 
 
-This is [different from Advanced CI compare changes](#how-this-differs-from-advanced-ci), which runs at the PR stage in deployment rather than locally during development
+The dbt VS Code extension's compare changes feature is different from the [Advanced CI compare changes feature](#how-this-differs-from-advanced-ci), which runs at the PR stage in deployment rather than locally during development.
 
 Compare changes in development is available for models only. Support for seeds, snapshots, ephemeral models, and Python models is coming soon.
 
@@ -26,15 +26,15 @@ Compare changes in development is available for models only. Support for seeds, 
 ## Prerequisites
 
 - You have a dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) account.
-- Installed the [dbt VS Code extension](/docs/install-dbt-extension) and the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion) in your editor.
-- Enabled [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) in your <Constant name="dbt_platform" /> account.
-- Use a <Constant name="fusion" /> supported data platform: BigQuery, Databricks, Redshift, or Snowflake. Support for additional data platforms coming soon.
-- A local `dbt_cloud.yml` file in your `.dbt` directory (for example, `~/.dbt/dbt_cloud.yml` on macOS and Linux). [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account. The extension reads `dbt_cloud.yml` to authenticate. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />.
-- If you've configured [automatic deferral](/docs/cloud/about-cloud-develop-defer), you need a successful job run. To use compare changes manually without a successful job run, copy the [`manifest.json` file](/reference/artifacts/manifest-json?version=2.0) into a folder and set the State directory in the [dbt extension settings](/docs/configure-dbt-extension#dbt-extension-settings) to that folder.
+- You've Installed the [dbt VS Code extension](/docs/install-dbt-extension) to your code editor and have a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion).
+- You've enabled [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) in your <Constant name="dbt_platform" /> account.
+- You use a <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements).
+- You have a `dbt_cloud.yml` file in your local `.dbt` directory (for example, `~/.dbt/dbt_cloud.yml` on macOS and Linux). [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account. The extension reads `dbt_cloud.yml` to authenticate. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />.
+- You have a successful job run if you've configured [automatic deferral](/docs/cloud/about-cloud-develop-defer). To use compare changes manually without a successful job run, copy the [`manifest.json` file](/reference/artifacts/manifest-json?version=2.0) into a folder and set the `State` directory in the [dbt extension settings](/docs/configure-dbt-extension#dbt-extension-settings) to that folder.
 
 #### How this differs from Advanced CI
 
-This compare changes feature applies to development only. If you're looking to compare changes between your production environment and the pull request’s latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
+The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request’s latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
@@ -46,7 +46,7 @@ To use compare changes in development, follow these steps:
 
 1. Open a SQL model file in your editor.
 2. Make some changes to the model, like adding a new column or modifying an existing one (for example, `left_join_customers` to `right_join_customers`).
-3. Run compare changes in the [VS Code interface](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) in the following ways:
+3. Run compare changes in the [VS Code interface](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette):
    - Command palette: Open the VS Code command palette (Shift + Command + P (Mac) / Ctrl + Shift + P (Windows/Linux)) and search for the [**dbt: Compare changes**](vscode://dbtLabsInc/dbt.compareModel) 
    - Bottom panel: Click the **Compare** tab and then click the **Compare** button.
   
@@ -66,7 +66,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 ## How it works
 
-Compare changes in development works by comparing two materialized models in your warehouse — it does not compare SQL file contents. Specifically, it compares the model built in your dev schema (determined by your active profile) against the model referenced in your `manifest.json` (for example, your last production state). Both sides of the comparison are always warehouse tables, not source files.
+Compare changes in development works by comparing two materialized models in your warehouse. Specifically, it compares the model built in your dev schema (determined by your active profile) against the model referenced in your `manifest.json` (for example, your last production state). Both sides of the comparison are always warehouse tables; it does not compare SQL file contents.
 
   - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually production). This allows Fusion to auto-download the deferred manifest and use that as your baseline state.
   - If you're manually setting a state directory: You can manually point the extension to a manifest.json (for example, copied from another environment) without needing a job run.
