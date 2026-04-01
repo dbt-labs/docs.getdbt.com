@@ -27,17 +27,21 @@ Compare changes in development is available for models only. Support for seeds, 
 <Lightbox src="/img/docs/extension/vs-compare-changes.png" width="100%" title="Make changes to a model and see the changes in the Compare tab" />
 
 ## Prerequisites
-To use the dbt VS Code extension compare changes feature:
-- You have a dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) <Constant name="dbt_platform" /> account.
-- You've Installed the [dbt VS Code extension](/docs/install-dbt-extension) to your code editor and have a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion).
-- You've enabled [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) in your <Constant name="dbt_platform" /> account.
-- You use a <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements).
-- You have a `dbt_cloud.yml` file in your local `.dbt` directory (for example, `~/.dbt/dbt_cloud.yml` on macOS and Linux). [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account. The extension reads `dbt_cloud.yml` to authenticate. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />.
-- You have [automatic deferral](/docs/cloud/about-cloud-develop-defer) configured with at least one successful job run, or a [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) available as a baseline. See [How it works](#how-it-works) for details.
+
+## Prerequisites
+
+To use the dbt VS Code extension compare changes feature, you need:
+
+- A dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) <Constant name="dbt_platform" /> account
+- A <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements) (BigQuery, Databricks, Redshift, or Snowflake)
+- The [dbt VS Code extension](/docs/install-dbt-extension) installed with a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
+- [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) enabled in your <Constant name="dbt_platform" /> account
+- A `dbt_cloud.yml` file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux). The extension uses this to authenticate with <Constant name="dbt_platform" />. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />. [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account.
+- A baseline state to compare your changes against. See [How it works](#how-it-works) to choose between [automatic deferral](/docs/cloud/about-cloud-develop-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
 
 #### How this differs from Advanced CI
 
-The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request’s latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
+The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
@@ -47,7 +51,7 @@ import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
 Compare changes in development works by comparing two materialized models in your warehouse. Specifically, it compares the model built in your dev schema (determined by your active profile) against the model referenced in your `manifest.json` (for example, your last production state). Both sides of the comparison are always warehouse tables; it does not compare SQL file contents.
 
-  - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually production). This allows <Constant name="fusion" /> to auto-download the deferred manifest and use that as your baseline state.
+  - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually staging or production). This allows <Constant name="fusion" /> to auto-download the deferred manifest and use that as your baseline state to compare against.
   - If you're manually setting a `state` directory: You can manually point the extension to a `manifest.json` (for example, copied from another environment) without needing a job run.
 
 ## Use compare changes
@@ -83,11 +87,12 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 <Expandable alt_header="Is this using my warehouse credits?"> 
   Yes. Because the comparison runs in your development environment using your dev credentials, it will use your warehouse’s compute.
 </Expandable>
-<Expandable alt_header="Do I need to run dbt build every time I make a change?"> 
+<Expandable alt_header="Do I need to run dbt build every time I make a change?">
 
-  No. The baseline for comparison comes from the model already built by a job in your deferred environment (auto-defer or a manually configured state) — not from a local `dbt build`. As long as that job-built state exists, you can edit your model locally and run **Compare** without running any build yourself.
+  No. When you click **Compare**, the extension builds the model into your development schema automatically, so you don’t need to run `dbt build` yourself. It then compares that development build against the version in your deferred environment (usually staging or production).
 
-  If the model hasn’t been built by a job in your deferred environment yet, the comparison can’t run. For more details on how defer and state work, see [Defer to production](/docs/cloud/about-cloud-develop-defer).
+  If the model hasn’t been built yet in your deferred environment, the comparison can’t run. For more details, see [Defer to production](/docs/cloud/about-cloud-develop-defer).
+
 </Expandable>
 
 ## Related docs
