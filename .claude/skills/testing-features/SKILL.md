@@ -7,13 +7,19 @@ description: Use when the user asks to test, validate, or check whether a dbt fe
 
 ## Overview
 
-When the docs team asks to test or validate a dbt feature, this skill runs the test. It searches the local docs codebase to understand the feature, scaffolds a minimal dbt project, runs dbt commands across engines, validates results in the warehouse, and writes a clear testing summary the writer can read.  §§§
+When the docs team asks to test or validate a dbt feature, this skill runs the test. It searches the local docs codebase to understand the feature, scaffolds a minimal dbt project, runs dbt commands across engines, validates results in the warehouse, and writes a clear testing summary the writer can read.
 
-Always use or fetch the following to ensure dbt best practices and accurate dbt information:
-- https://github.com/dbt-labs/dbt-agent-skills to fetch dbt agent skills and model best practices. Also use to fetch documentation and code examples.
-- dbt MCP server to fetch dbt documentation and code examples
-- dbt documentation and code examples from the local docs codebase
-- dbt documentation and code examples from the live dbt documentation at https://docs.getdbt.com as a last resort,
+Always follow dbt best practices when building projects. Use the following sources, in priority order:
+
+1. **dbt-agent-skills plugin** — provides dbt coding standards, model patterns, and best practices that apply to every scaffold. Install once:
+   - Claude Code: `/plugin marketplace add dbt-labs/dbt-agent-skills`
+   - Cursor: install via the [dbt-agent-skills repo](https://github.com/dbt-labs/dbt-agent-skills) `.cursor-plugin/` config
+   Once installed, the skills load automatically — no manual invocation needed.
+2. **dbt MCP server** — for live dbt documentation and code examples
+3. **Local docs codebase** — `website/docs/` and `website/snippets/` for the feature being tested
+4. **Live dbt documentation** — `https://docs.getdbt.com` as a last resort
+
+If dbt-agent-skills is not installed, fetch `https://github.com/dbt-labs/dbt-agent-skills` directly and read the relevant `skills/dbt/` markdown files before scaffolding.
 
 ## Trigger conditions
 
@@ -23,7 +29,7 @@ Always use or fetch the following to ensure dbt best practices and accurate dbt 
 
 ---
 
-## Step 1: Parse request and gather inputsq1
+## Step 1: Parse request and gather inputs
 
 Extract from the user's request:
 - **Feature or topic** — what are we testing? (e.g. "python udfs", "incremental models", "snapshots")
@@ -31,9 +37,51 @@ Extract from the user's request:
 - **Engines** — did they mention specific engines? (dbt Core, dbt Fusion, dbt platform)
 - **Adapter** — did they mention a warehouse? (Snowflake, BigQuery, Postgres, etc.)
 
-**Check for saved defaults first.** If the request came via `dbt-docs-fox`, defaults may have been passed in a "User defaults" block above the request. Use those values directly without re-asking. If a value is missing or the user ran this directly in an AI chat, ask for it.
+**Check for saved defaults first.** Look for `~/.dbt-docs-fox/config`. If it exists, read the values and use them without re-asking. If the file does not exist, this is a first run — show the setup prompt below.
 
-**Check the prompt for overrides.** If the user mentions a specific database, schema, adapter, or profile in their request, use that value instead of the saved default — no need to ask. After the run, if any values differed from what was saved, write the new values to `~/.dbt-docs-fox/config`:
+**First-run setup (no config file found):**
+
+Display this prompt exactly, filling in any values already known from the user's request. Leave a blank after the colon for values that need input. Values in `[brackets]` are defaults — the user can press Enter or type to override.
+
+```
+dbt docs fox — First-run setup
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This saves your connection details so you never have
+to enter them again. To reset later: rm ~/.dbt-docs-fox/config
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Adapter        (snowflake/bigquery/postgres/duckdb):
+  Database       :
+  Schema         [DBT_FEATURE_TEST]:
+  Profile        :
+  Account ID     (dbt platform → Account settings → Account info):
+  Project ID     [372475] (dbt platform → Account settings → Projects):
+  Engines        [all] (core / fusion / platform / all):
+```
+
+Wait for the user to fill in all fields. If they skip a field, re-prompt for just that value before continuing. Once all values are provided, show a confirmation:
+
+```
+┌─ Confirm setup ──────────────────────────────────┐
+│  Adapter:     <adapter>                           │
+│  Database:    <database>                          │
+│  Schema:      <schema>                            │
+│  Profile:     <profile>                           │
+│  Account ID:  <account_id>                        │
+│  Project ID:  <project_id>                        │
+│  Engines:     <engines>                           │
+└──────────────────────────────────────────────────┘
+Look good? [Y/n]
+```
+
+If the user confirms, write the config and show:
+
+```
+✔  Saved to ~/.dbt-docs-fox/config
+   You won't need to enter these again.
+```
+
+Config file written:
 
 ```bash
 mkdir -p ~/.dbt-docs-fox
@@ -43,19 +91,19 @@ DBT_FOX_ADAPTER="<adapter>"
 DBT_FOX_DATABASE="<database>"
 DBT_FOX_SCHEMA="<schema>"
 DBT_FOX_PROFILE="<profile>"
+DBT_FOX_ACCOUNT_ID="<account_id>"
+DBT_FOX_PROJECT_ID="<project_id>"
 EOF
 ```
 
-Then tell the user: "I've updated your saved defaults to use `<DATABASE>.<SCHEMA>`."
+**Returning user — config exists:** Read values silently and proceed. If the user mentions a specific override in their request, use that value for this run. If any values changed, update the config and show:
 
-The config is saved locally at `~/.dbt-docs-fox/config` (never in the repo). To reset it manually, the user can run `dbt-docs-fox --config-reset`.
+```
+↻  Updated ~/.dbt-docs-fox/config
+   Changed: <field> → <new value>
+```
 
-Ask the user only for values not already provided by defaults or the prompt:
-- **Adapter** — which warehouse are you testing against?
-- **Test schema** — what schema should test artifacts be written to? (e.g. `MY_FEATURE_TEST`)
-- **Database** — which database?
-- **Profile** — check `~/.dbt/profiles.yml`. If found, ask which profile/target. If not, prompt for connection details.
-- **Engines** — which engines to test: dbt Core (`dbt`), dbt Fusion (`dbtf`), dbt platform CLI, or all available? Check with `which dbt` and `which dbtf`.
+**Ask only for values missing from both config and prompt.**
 
 Show a confirmation summary and progress checklist before proceeding:
 
@@ -65,6 +113,8 @@ Adapter:    <adapter>
 Engine(s):  dbt Fusion / dbt Core / dbt platform CLI
 Schema:     DATABASE.SCHEMA
 Profile:    <profile name>
+Account ID: <account_id>
+Project ID: <project_id>
 
 Progress:
 [ ] Step 2  Research feature in local docs
@@ -75,6 +125,7 @@ Progress:
 [ ] Step 7  Validate in warehouse
 [ ] Step 8a Write `/tmp/.../testing-summary.md` (no repo copy)
 [ ] Step 8b Post row to Notion (docs PR testing database)
+[ ] Step 9  Clean up /tmp project (ask user)
 ```
 
 Mark each `[x]` as it completes. Mark `[!]` with a one-line reason if a step fails.
@@ -122,14 +173,17 @@ Show the extraction to the user before building the project.
 
 Create the test project at `/tmp/dbt-feature-test-<feature-name>/` (slugified, e.g. `dbt-feature-test-python-udfs`).
 
-**Default dbt platform project (docs team)** — always include a top-level **`dbt-cloud`** block in `dbt_project.yml` so **dbt platform CLI** and **platform-connected** runs target our org project. Use this order:
+**Default dbt platform project (docs team)** — always include a top-level **`dbt-cloud`** block in `dbt_project.yml` so **dbt platform CLI** and **platform-connected** runs target the right org project.
+
+Use the `DBT_FOX_PROJECT_ID` saved in `~/.dbt-docs-fox/config` (set during first-run setup). If no config exists yet, use `372475` as the docs-team default. If Step 4 fails with a wrong/inaccessible Cloud project error, try `283328` once, then ask the user.
 
 | Priority | project-id | When to use |
 | --- | --- | --- |
-| Default | 372475 | Every scratch project unless the user overrides the ID in chat. |
-| Fallback | 283328 | Step 4 fails with wrong or inaccessible Cloud **project** (access, not found, entitlement): swap `project-id`, retry once, then ask the user. |
+| Saved default | from `~/.dbt-docs-fox/config` | Every scratch project. |
+| Docs-team fallback | 372475 | No config saved yet. |
+| Secondary fallback | 283328 | Step 4 fails with project access error — retry once, then ask. |
 
-If the user names a different `project-id` in the request, use their value instead. Pure **local** dbt Core with only `profiles.yml` may ignore `dbt-cloud`; keeping it present is still correct for writers who use the Cloud CLI. See [Configure the dbt CLI](https://docs.getdbt.com/docs/cloud/configure-cloud-cli) and [`dbt_project.yml`](https://docs.getdbt.com/reference/dbt_project.yml).
+Pure **local** dbt Core with only `profiles.yml` may ignore `dbt-cloud`; keeping it present is still correct for writers who use the Cloud CLI. See [Configure the dbt CLI](https://docs.getdbt.com/docs/cloud/configure-cloud-cli) and [`dbt_project.yml`](https://docs.getdbt.com/reference/dbt_project.yml).
 
 **`dbt_project.yml`** (minimal — **default `project-id` shown**):
 ```yaml
@@ -163,6 +217,8 @@ feature_test:
 ```
 
 **`models/`**, **`macros/`**, **`tests/`**, **`seeds/`** — create files from the code examples extracted in Step 2. Adapt examples minimally to be runnable (fill in placeholder names with real references if needed).
+
+Apply dbt-agent-skills best practices when writing these files: correct model structure, naming conventions, config placement, ref/source usage, and test patterns. If the plugin is active, the relevant skill loads automatically. If not, read `skills/dbt/` from the [dbt-agent-skills repo](https://github.com/dbt-labs/dbt-agent-skills) before writing.
 
 **`packages.yml`** — only if the feature requires packages (e.g. dbt-utils). Run `dbt deps` if created.
 
@@ -220,7 +276,7 @@ dbtf show --inline "SELECT 1 AS ok" --project-dir . --profiles-dir . 2>&1
 - If it returns a result row: connection confirmed — proceed
 - If it fails: run `dbt debug --project-dir . --profiles-dir .` to diagnose
 
-If connection fails: show the exact error. If it looks like a **dbt Cloud project** issue and `dbt_project.yml` still has `372475`, update **`dbt-cloud.project-id`** to **`283328`**, retry **once**, then escalate if still failing. Otherwise ask the user for corrected credentials, update `profiles.yml`, and retry. Do not proceed until connectivity is confirmed.
+If connection fails: show the exact error. If it looks like a **dbt platform project** issue and `dbt_project.yml` still has `372475`, update **`dbt-cloud.project-id`** to **`283328`**, retry **once**, then escalate if still failing. Otherwise ask the user for corrected credentials, update `profiles.yml`, and retry. Do not proceed until connectivity is confirmed.
 
 If packages are needed: run `dbt deps` before proceeding.
 
@@ -356,6 +412,34 @@ If the schema differs (for example after columns are renamed in Notion), follow 
 **If Notion MCP is unavailable** (no server, auth error, or user declined): skip Step 8b, say so explicitly, and remind the user to connect Notion MCP in Cursor or Claude Code settings and add the row manually to [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d).
 
 **Spot-check:** Optionally open the database and confirm the new row appears next to prior entries.
+
+---
+
+## Step 9: Clean up
+
+After Step 8 is complete, ask the user:
+
+```
+🧹 Clean up test project?
+
+   /tmp/dbt-feature-test-<slug>/
+
+   This will permanently delete the project directory,
+   including all models, outputs, and the .venv.
+   Your Notion row is the permanent record of this test.
+
+   Delete? [Y/n]
+```
+
+**If yes:**
+```bash
+rm -rf /tmp/dbt-feature-test-<slug>/
+```
+Then confirm: `✔  Deleted /tmp/dbt-feature-test-<slug>/`
+
+**If no:** Tell the user the path and note that `/tmp` may be cleared automatically on reboot.
+
+**Never delete anything in the docs repo.** The test project lives entirely in `/tmp/` and is the only thing subject to cleanup. The docs repo is always left untouched.
 
 ---
 
