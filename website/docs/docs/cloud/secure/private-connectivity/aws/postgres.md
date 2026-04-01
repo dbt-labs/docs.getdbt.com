@@ -73,15 +73,21 @@ Once the VPC Endpoint Service is provisioned, you can find the service name in t
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
 ### 4. Submit your request to dbt Support
-Add the required information to the template below and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
-```
+Add the required information to the template below and submit your request to [dbt Support](mailto:support@getdbt.com):
+
+<Expandable alt_header="Support request email template" is_open={true}>
+
+```text
 Subject: New Multi-Tenant PrivateLink Request
+
 - Type: Postgres Interface-type
 - dbt platform account URL:
 - VPC Endpoint Service Name:
 - Postgres server AWS Region (for example, us-east-1, eu-west-2):
 - dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
+
+</Expandable>
 
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
