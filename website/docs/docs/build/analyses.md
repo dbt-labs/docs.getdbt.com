@@ -5,6 +5,8 @@ id: "analyses"
 pagination_next: null
 ---
 
+import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
+
 ## Overview
 
 dbt's notion of `models` makes it easy for data teams to version control and collaborate on data transformations. Sometimes though, a certain SQL statement doesn't quite fit into the mold of a dbt model. These more "analytical" SQL files can be versioned inside of your dbt project using the `analysis` functionality of dbt.
@@ -76,7 +78,9 @@ For more information, refer to [Analysis properties](/reference/analysis-propert
 The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-You can also configure analyses at the project level in `dbt_project.yml`, including enabling or disabling them by folder. This requires enabling the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) behavior change flag. This applies to existing analyses in the `analyses/` folder &mdash; for example, setting `+enabled: false` disables them all.
+You can also configure analyses at the project level in `dbt_project.yml`, including enabling or disabling them by folder.
+
+<AnalysesProjectLevelConfig />
 
 <File name='dbt_project.yml'>
 
@@ -105,8 +109,6 @@ analyses:
 ```
 
 </File>
-
-Note that file-level `{{ config() }}` and individual `.yml` configurations take precedence over project-level settings.
 
 </VersionBlock>
 

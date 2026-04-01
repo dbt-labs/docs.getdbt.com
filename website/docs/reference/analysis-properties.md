@@ -3,6 +3,7 @@ title: Analysis properties
 ---
 
 import PropsCallout from '/snippets/_config-prop-callout.md';
+import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
 
 <VersionBlock lastVersion="1.11">
 
@@ -43,7 +44,7 @@ analyses:
 
 <VersionBlock firstVersion="1.12">
 
-You can also configure analyses at the project level in `dbt_project.yml`. This applies to existing analyses in the `analyses/` folder &mdash; for example, setting `+enabled: false` disables them all. Refer to [Analyses](/docs/build/analyses#project-level-configuration) for more information.
+<AnalysesProjectLevelConfig />
 
 :::info Beta feature
 The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.

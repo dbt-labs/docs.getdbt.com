@@ -6,6 +6,7 @@ intro_text: "Behavior change flags let you control when to adopt new runtime beh
 ---
 
 import StateModified from '/snippets/_state-modified-compare.md';
+import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
 
 :::info How this relates to other changes
 
@@ -542,9 +543,7 @@ When `require_corrected_analysis_fqns` is set to `True`, dbt:
 - Routes analysis configurations from the `analyses` block in `dbt_project.yml`, enabling project-level and folder-level configurations to take effect.
 - Removes the extra FQN segment so that analysis FQNs are consistent with other resource types (for example, `your_project.subdirectory.analysis_name` instead of `your_project.analyses.subdirectory.analysis_name`).
 
-To enable project-level analysis configuration, set the flag to `True` and add an `analyses` block in your `dbt_project.yml`. This applies to existing analyses in the `analyses/` folder &mdash; for example, setting `+enabled: false` disables them all.
-
-For example:
+<AnalysesProjectLevelConfig />
 
 <File name='dbt_project.yml'>
 
@@ -574,5 +573,5 @@ analyses:
 
 </File>
 
-Note that file-level `{{ config() }}` and individual `.yml` configurations take precedence over project-level settings. For more information, refer to [Analyses](/docs/build/analyses) and [Analysis properties](/reference/analysis-properties).
+For more information, refer to [Analyses](/docs/build/analyses) and [Analysis properties](/reference/analysis-properties).
 
