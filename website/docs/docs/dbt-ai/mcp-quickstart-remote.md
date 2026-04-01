@@ -15,7 +15,7 @@ Remote MCP is a good fit when:
 
 - You don't want to or can't install software (`uvx`, dbt-mcp) on your machine.
 - Your use case is _consumption-based_: querying metrics, exploring metadata, viewing lineage, or running SQL via the platform.
-- You need <Constant name="semantic_layer"/> and Discovery API access without a local dbt project.
+- You need <Constant name="semantic_layer"/>, Administrative, and Discovery APIs access without a local dbt project.
 
 :::info Local development requires local MCP
 Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the dbt CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
