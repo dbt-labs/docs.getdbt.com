@@ -35,7 +35,9 @@ You can view and download in-progress and historical logs for your dbt runs. Thi
 
 <VersionBlock lastVersion="1.99">
 
-When a job on the <Constant name="core" /> engine finishes, selecting a step opens the **System logs**. At the top, a summary shows how many errors, warnings, deprecations, and successes appear in that step’s output.
+When a job on the <Constant name="core" /> engine finishes, selecting a step opens the **System logs**. At the top, a summary shows how many errors, warnings, deprecations, skips, and successes appear in that step’s output.
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/system-logs.png" width="80%" title="System logs summary" />
 
 :::note
 Counts displayed in the system logs are produced with regular expression matching on the log text. This means you may see more errors or warnings than there are nodes with failures or warnings.
@@ -55,6 +57,8 @@ When a job on the <Constant name="fusion_engine" /> finishes, selecting a step d
 - **Running**
 - **Skipped**
 - **No-op**
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/fusion-logs.png" width="80%" title="Structured logs in Fusion" />
 
 </VersionBlock>
 
