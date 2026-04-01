@@ -91,7 +91,7 @@ The model query history uses metadata from the [`INFORMATION_SCHEMA.JOBS` view](
 - If you use a BigQuery provided role, we recommend `roles/bigquery.resourceViewer`.
 - If you use a custom role, ensure it includes the `bigquery.jobs.listAll permission`.
 
-## View query history in Explorer
+## View query history in Catalog
 
 To enhance your discovery, you can view your model query history in various locations within <Constant name="catalog" />:
 - [View from Performance charts](#view-from-performance-charts)
