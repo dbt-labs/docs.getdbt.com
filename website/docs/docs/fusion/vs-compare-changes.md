@@ -86,9 +86,6 @@ Compare changes in development works by comparing two materialized models in you
   - After that, you can edit your model and run **Compare** without rebuilding every time.
   - If your model is invalid (for example, it has errors or breaking schema changes), dbt can't build it, so the comparison can't run until the model builds successfully.
 </Expandable>
-<Expandable alt_header="Does compare changes work with Python models?"> 
-  Not yet, but Python models are expected to work once Fusion support is available because compare changes only relies on the resulting table in the warehouse.
-</Expandable>
 
 ## Related docs
 - [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes)
