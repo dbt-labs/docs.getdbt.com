@@ -76,7 +76,7 @@ For more information, refer to [Analysis properties](/reference/analysis-propert
 The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-You can also configure analyses at the project level in `dbt_project.yml`, including enabling or disabling them by folder. This requires enabling the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) behavior change flag. Note that `enabled` is the only config supported for project-level configuration of analyses.
+You can also configure analyses at the project level in `dbt_project.yml`, including enabling or disabling them by folder. This requires enabling the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) behavior change flag. This applies to existing analyses in the `analyses/` folder &mdash; for example, setting `+enabled: false` disables them all.
 
 <File name='dbt_project.yml'>
 
@@ -85,7 +85,7 @@ flags:
   require_corrected_analysis_fqns: true
 
 analyses:
-  +enabled: true
+  +enabled: false
 ```
 </File>
 
@@ -105,6 +105,8 @@ analyses:
 ```
 
 </File>
+
+Note that file-level `{{ config() }}` and individual `.yml` configurations take precedence over project-level settings.
 
 </VersionBlock>
 

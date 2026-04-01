@@ -532,13 +532,19 @@ For more information, refer to [Data test configurations](/reference/data-test-c
 
 ### Project-level configuration for analyses <Lifecycle status="beta" />
 
-Previously, project-level configuration for analyses in `dbt_project.yml` (such as `analyses: +enabled: false`) was silently ignored. Fully qualified names (FQNs) for analyses also contained an extra `analyses` path segment that was inconsistent with other resource types.
+:::info Beta feature
+The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+Previously, project-level configuration for [analyses](/docs/build/analyses) in `dbt_project.yml` was silently ignored. Fully qualified names (FQNs) for analyses also contained an extra `analyses` path segment that was inconsistent with other resource types.
 
 When `require_corrected_analysis_fqns` is set to `True`, dbt:
 - Routes analysis configurations from the `analyses` block in `dbt_project.yml`, enabling project-level and folder-level configurations to take effect.
 - Removes the extra FQN segment so that analysis FQNs are consistent with other resource types (for example, `your_project.subdirectory.analysis_name` instead of `your_project.analyses.subdirectory.analysis_name`).
 
-To enable project-level analysis configuration, set the flag to `True` and add an `analyses` block in your `dbt_project.yml`. Note that `enabled` is the only config supported for project-level configuration of analyses. For example:
+To enable project-level analysis configuration, set the flag to `True` and add an `analyses` block in your `dbt_project.yml`. This applies to existing analyses in the `analyses/` folder &mdash; for example, setting `+enabled: false` disables them all.
+
+For example:
 
 <File name='dbt_project.yml'>
 
@@ -547,7 +553,7 @@ flags:
   require_corrected_analysis_fqns: true
 
 analyses:
-  +enabled: true  # enable all analyses by default
+  +enabled: false  # disable all analyses by default
 ```
 </File>
 
@@ -567,4 +573,6 @@ analyses:
 ```
 
 </File>
+
+Note that file-level `{{ config() }}` and individual `.yml` configurations take precedence over project-level settings. For more information, refer to [Analyses](/docs/build/analyses) and [Analysis properties](/reference/analysis-properties).
 

@@ -43,7 +43,7 @@ analyses:
 
 <VersionBlock firstVersion="1.12">
 
-You can also configure analyses at the project level in `dbt_project.yml`. Note that `enabled` is the only config supported for project-level configuration of analyses. Refer to [Analyses](/docs/build/analyses#project-level-configuration) for more information.
+You can also configure analyses at the project level in `dbt_project.yml`. This applies to existing analyses in the `analyses/` folder &mdash; for example, setting `+enabled: false` disables them all. Refer to [Analyses](/docs/build/analyses#project-level-configuration) for more information.
 
 :::info Beta feature
 The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
