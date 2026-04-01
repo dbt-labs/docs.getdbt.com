@@ -11,7 +11,7 @@ The `run_query` macro provides a convenient way to run queries and fetch their r
 `run_query` can run during `dbt compile` and `dbt docs generate`, including when you don't expect it. Any DML inside `run_query` can execute unintentionally. Refer to [Preventing unintended DML execution](#preventing-unintended-dml-execution) for details.
 :::
 
-## __Args__
+## Args
 
  * `sql`: The SQL query to execute
 
