@@ -556,6 +556,9 @@ You can also configure analyses at the folder level by nesting subfolders under 
 <File name='dbt_project.yml'>
 
 ```yaml
+flags:
+  require_corrected_analysis_fqns: true
+
 analyses:
   your_project:
     +enabled: false  # disable all analyses by default
