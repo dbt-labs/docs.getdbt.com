@@ -14,7 +14,7 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 
 <VersionBlock firstVersion="1.12">
 
-We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](/reference/project-configs/analysis-paths) configuration. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `analyses/` directory.
+We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](/reference/project-configs/analysis-paths) configuration. You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `analyses/` or `models/` directory.
 
 </VersionBlock>
 
