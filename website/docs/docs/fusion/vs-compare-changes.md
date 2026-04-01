@@ -11,7 +11,8 @@ sidebar_label: "Compare changes locally"
 Compare changes in local development, powered by <Constant name="fusion_engine" />, is available in beta for the VS Code extension.
 :::
 
-The dbt VS Code extension, powered by the <Constant name="fusion_engine"/>, can preview and compare changes to your data caused by your local edits (like added/removed rows and so on) &mdash; directly in your editor and without waiting on CI. The dbt extension supports VS Code, Cursor, and Windsurf.
+The dbt VS Code extension previews and compares how your local edits affect your data in your <Constant name="dbt_platform"/> account &mdash;  including added/removed rows and join verification &mdash;  without waiting on CI.
+- 
 
 Use compare changes to check impact early and validate changes before you open a PR or run a [CI job](/docs/deploy/ci-jobs):
 - Validate outputs are correct when refactoring logic, adding or removing columns, or implementing join modifications. 
