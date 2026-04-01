@@ -11,6 +11,7 @@ import CompareChangesTable from '/snippets/_compare-changes-table.md';
 # Advanced CI <Lifecycle status="managed,managed_plus" />
 
 [Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. 
+
 By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
 
 :::info How to enable this feature
@@ -26,35 +27,9 @@ You can opt into Advanced CI in <Constant name="dbt" />. Please refer to [Accoun
 
 ## Compare changes feature {#compare-changes}
 
-:::tip Compare changes in development
+For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  1
 
-You can use compare changes in development to preview data changes caused by your local edits (like added/removed rows and so on) directly in your editor, and without waiting on CI. Compare changes in development is available through the dbt VS Code extension, which is powered by the <Constant name="fusion_engine"/>.
-
-For more details on how to use this feature, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
-
-<div data-force-black-text="true">
-<style>{`
-  div[data-force-black-text="true"] details summary,
-  div[data-force-black-text="true"] details summary * {
-    color: #000000 !important;
-  }
-  div[data-force-black-text="true"] details summary span::before {
-    border-color: #000000 !important;
-  }
-`}</style>
-<Expandable alt_header="Differences between compare changes in development and Advanced CI compare changes">
-
-<CompareChangesTable />
-
-</Expandable>
-</div>
-
-:::
-
-
-For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
-
-You can also compare changes in development. For more details, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
+You can also compare changes in development. For more details, see [Compare changes in local development]
 
 dbt reports the comparison differences in:
 
@@ -62,6 +37,18 @@ dbt reports the comparison differences in:
 - **The pull request from your <Constant name="git" /> provider** &mdash; Shows a summary of the changes as a <Constant name="git" /> comment.
 
 <Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="55%" title="Example of the Compare tab" />
+
+#### Compare changes in development
+
+You can compare changes locally in development to preview data changes caused by your local edits (for example, added/removed rows or joins) directly in your editor, and without waiting on CI. Compare changes in development is available through the dbt VS Code extension, which is powered by the <Constant name="fusion_engine"/>.
+
+For more details on how to use this feature, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
+
+<Expandable alt_header="Differences between compare changes in development and Advanced CI compare changes">
+
+<CompareChangesTable />
+
+</Expandable>
 
 ### Optimizing comparisons
 
@@ -95,8 +82,6 @@ The compare changes feature uses the same credentials as the CI job, as defined 
 If using dynamic data masking in the data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. dbt Labs recommends limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
 
 <Lightbox src="/img/docs/deploy/compare-credentials.png" width="60%" title="Example of credentials in the user settings" />
-
-
 
 ## Troubleshooting
 
