@@ -12,9 +12,7 @@ The <Constant name="dbt_platform" /> natively supports developing using a comman
 
 :::note CLI compatibility
 
-The dbt CLI is a <Constant name="dbt_platform" /> tool available to users on any [available plan](https://www.getdbt.com/pricing). If your dbt Cloud project uses Fusion as its engine, the platform CLI will automatically use Fusion for remote execution — no separate Fusion install is required.
-
-However, if you also have <Constant name="core" /> or the <Constant name="fusion_engine" /> CLI installed locally, note that all three tools use the `dbt` command. You'll need to configure aliases or use explicit binary paths to invoke the right tool. See the [FAQs](#faqs) below for guidance.
+The dbt CLI is a <Constant name="dbt_platform" /> tool available to users on any [available plan](https://www.getdbt.com/pricing). It is not compatible with existing installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs.
 
 :::
 
