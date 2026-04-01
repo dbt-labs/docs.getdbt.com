@@ -27,7 +27,7 @@ Compare changes in development is available for models only. Support for seeds, 
 <Lightbox src="/img/docs/extension/vs-compare-changes.gif" width="100%" title="Make changes to a model and see the changes in the Compare tab" />
 
 ## Prerequisites
-
+To use the dbt VS Code extension compare changes feature:
 - You have a dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) account.
 - You've Installed the [dbt VS Code extension](/docs/install-dbt-extension) to your code editor and have a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion).
 - You've enabled [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) in your <Constant name="dbt_platform" /> account.
