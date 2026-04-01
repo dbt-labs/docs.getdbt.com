@@ -12,7 +12,6 @@ This feature is in beta and rolling out to VS Code extension users on a <Constan
 :::
 
 The dbt VS Code extension previews and compares how your local edits affect your data in your <Constant name="dbt_platform"/> account &mdash;  including added/removed rows and join verification &mdash;  without waiting on CI.
-- 
 
 Use compare changes to check impact early and validate changes before you open a PR or run a [CI job](/docs/deploy/ci-jobs):
 - Validate outputs are correct when refactoring logic, adding or removing columns, or implementing join modifications. 
