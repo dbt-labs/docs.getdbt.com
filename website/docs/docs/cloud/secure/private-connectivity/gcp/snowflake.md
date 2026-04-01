@@ -30,7 +30,7 @@ To configure Snowflake instances hosted on GCP for [Private Service Connect](htt
 
 1. Run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
-2. Add the required information to the following template and submit your request to  [dbt Support](/docs/dbt-support#dbt-cloud-support):
+2. Add the required information to the following template and submit your request to  [dbt Support](mailto:support@getdbt.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 

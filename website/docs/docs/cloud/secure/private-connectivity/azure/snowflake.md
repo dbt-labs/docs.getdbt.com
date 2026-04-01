@@ -36,7 +36,7 @@ SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 
 ```
 
-2. Add the required information to the following template and submit your request to  [dbt Support](/docs/dbt-support#dbt-cloud-support):
+2. Add the required information to the following template and submit your request to  [dbt Support](mailto:support@getdbt.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
