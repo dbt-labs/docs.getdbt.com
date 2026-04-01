@@ -28,7 +28,7 @@ You can opt into Advanced CI in <Constant name="dbt" />. Please refer to [Accoun
 
 :::tip Compare changes in development
 
-You can also use compare changes in development to preview changes to your data caused by your local edits (like added/removed rows and so on) &mdash; directly in your editor and without waiting on CI. Compare changes in development is available through the dbt VS Code extension, which is powered by the <Constant name="fusion_engine"/>.
+You can use compare changes in development to preview data changes caused by your local edits (like added/removed rows and so on) directly in your editor, and without waiting on CI. Compare changes in development is available through the dbt VS Code extension, which is powered by the <Constant name="fusion_engine"/>.
 
 For more details on how to use this feature, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
 
