@@ -27,8 +27,6 @@ Compare changes in development is available for models only. Support for seeds, 
 
 ## Prerequisites
 
-## Prerequisites
-
 To use the dbt VS Code extension compare changes feature, you need:
 
 - A dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) <Constant name="dbt_platform" /> account
@@ -38,6 +36,13 @@ To use the dbt VS Code extension compare changes feature, you need:
 - A `dbt_cloud.yml` file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux). The extension uses this to authenticate with <Constant name="dbt_platform" />. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />. [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account.
 - A baseline state to compare your changes against. See [How it works](#how-it-works) to choose between [automatic deferral](/docs/cloud/about-cloud-develop-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
 
+## How it works
+
+Compare changes in development works by comparing two materialized models in your warehouse. Specifically, it compares the model built in your dev schema (determined by your active profile) against the model referenced in your `manifest.json` (for example, your last production state). Both sides of the comparison are always warehouse tables; it does not compare SQL file contents.
+
+  - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually staging or production). This allows <Constant name="fusion" /> to auto-download the deferred manifest and use that as your baseline state to compare against.
+  - If you're manually setting a `state` directory: You can manually point the extension to a `manifest.json` (for example, copied from another environment) without needing a job run.
+
 #### How this differs from Advanced CI
 
 The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
@@ -45,13 +50,6 @@ The dbt VS Code extension's compare changes feature applies only to your local d
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
 <CompareChangesTable />
-
-## How it works
-
-Compare changes in development works by comparing two materialized models in your warehouse. Specifically, it compares the model built in your dev schema (determined by your active profile) against the model referenced in your `manifest.json` (for example, your last production state). Both sides of the comparison are always warehouse tables; it does not compare SQL file contents.
-
-  - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually staging or production). This allows <Constant name="fusion" /> to auto-download the deferred manifest and use that as your baseline state to compare against.
-  - If you're manually setting a `state` directory: You can manually point the extension to a `manifest.json` (for example, copied from another environment) without needing a job run.
 
 ## Use compare changes
 
