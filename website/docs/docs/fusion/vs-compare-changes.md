@@ -20,7 +20,9 @@ Use compare changes to check impact early and validate changes before you open a
 
 The dbt VS Code extension's compare changes feature is different from the [Advanced CI compare changes feature](#how-this-differs-from-advanced-ci), which runs at the PR stage in deployment rather than locally during development.
 
+:::info
 Compare changes in development is available for models only. Support for seeds, snapshots, ephemeral models, and Python models is coming soon.
+:::
 
 <Lightbox src="/img/docs/extension/vs-compare-changes.gif" width="100%" title="Make changes to a model and see the changes in the Compare tab" />
 
