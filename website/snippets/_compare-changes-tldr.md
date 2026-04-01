@@ -4,4 +4,4 @@ You can use compare changes, powered by the <Constant name="fusion_engine"/>,  i
 
 For more details on how to use this feature, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
 
-<Lightbox src="/img/docs/extension/vs-compare-changes.gif" width="100%" title="Example of the Compare tab" />
+<Lightbox src="/img/docs/extension/vs-compare-changes.png" width="100%" title="Example of the Compare tab" />
