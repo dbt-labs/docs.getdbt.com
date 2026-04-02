@@ -16,16 +16,18 @@ This page offers comprehensive definitions and terminology of user interface ele
 
 The <Constant name="studio_ide" /> streamlines your workflow, and features a popular user interface layout with files and folders on the left, editor on the right, and command and console information at the bottom. 
 
+#### The side menu
+
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-side-menu.png" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
 
-1. **<Constant name="git" /> repository link &mdash;** The <Constant name="git" /> repository link, located on the upper left of the <Constant name="studio_ide" />, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
+1. **<Constant name="git" /> repository link:** The <Constant name="git" /> repository link, located on the upper left of the <Constant name="studio_ide" />, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
     * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant <Constant name="dbt" /> accounts.
 
-2. **Documentation site button &mdash;** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
+2. **Documentation site button:** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
 
-3. [**Version Control**](#editing-features) &mdash; The <Constant name="studio_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
+3. [**Version Control**](#editing-features): The <Constant name="studio_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
 
-4. **File explorer &mdash;** The File explorer shows the filetree of your repository. You can:
+4. **File explorer:** The File explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the file editor. 
     - Click and drag files between directories to move files. 
     - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
@@ -35,13 +37,39 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
       * Added (A) — The <Constant name="studio_ide" /> detects added files
       * Deleted (D) — The <Constant name="studio_ide" /> detects deleted files.
 
+#### The command and status bar
+
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.png" width="100%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
-5. **Command bar &mdash;**  The Command bar, located in the lower left of the <Constant name="studio_ide" />, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
+5. **Command bar:**  The Command bar, located in the lower left of the <Constant name="studio_ide" />, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
-6. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in <Constant name="dbt" />](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
+6. **Defer menu:** The **Defer menu** allows developers to configure the deferral environment:
+    - **Development environment:** Same as turning defer off. Build all upstream models using only the Development environment.
+    - **dbt default behavior:** Uses the Staging environment if it's configured, otherwise uses Production.
+    - **Custom environment:** Select the defer environment from any available in the project.
 
-7. **Status button &mdash;** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current <Constant name="studio_ide" /> status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [<Constant name="studio_ide" /> Status modal](#modals-and-menus), simply click on this button.
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/defer-menu.png" width="60%" title="Set the `defer` environment."/>
+
+Refer to [Using defer in <Constant name="dbt" />](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
+
+7. **Status:** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current connection statuses to both the warehouse and the dbt language server status (if you're on <Constant name="fusion" />). It includes shortcuts to environment settings and developer credentials.
+
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/server-status.png" width="60%" title="View the connection statuses for your account."/>
+
+8. **dbt version:** The current version of dbt running in your development environment. You can set a **Personal version override** that changes the dbt version for only your development environment. 
+
+     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-version.png" width="60%" title="View and set the development environment version."/> 
+
+9. **Additional tools:** Project status and an options menu with additional actions and information about the <Constant name="studio_ide" />:
+    - **Project status:** If there are any errors or warnings outstanding in the development runs, the number of them will populate in this area. Clicking on them will take you to the **Problems** tab.
+    - **Options menu:** Access the options menu by clicking the three-dot menu located at the bottom right corner of the <Constant name="studio_ide" />. This menu contains global options:
+      - **View status details:** View more detailed information about your connection status.
+      - **Restart Studio:** You will lose any unsaved information.
+      - **Reinstall dependencies:** Overwrites project dependencies with a fresh installation.
+      - **Clean dbt project:** Runs the [`dbt clean` command](/reference/commands/clean) for your project.
+      - **Autofix deprecation warnings:** Runs the dbt [autofix tool](/docs/cloud/studio-ide/autofix-deprecations). Helps prepare for <Constant name="fusion" /> upgrade. 
+      
+      <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-menu.png" width="60%" title="IDE menu with additional information and actions."/> 
 
 ## Search bar and command palette
 
@@ -237,16 +265,3 @@ Use menus and modals to interact with <Constant name="studio_ide" /> and access 
 #### Revert Uncommitted Changes modal
   The Revert Uncommitted Changes modal is how users revert changes in the IDE. This is accessible via the `Revert File` option above the Version Control Options menu, or via the Git Actions button when there are saved, uncommitted changes in the IDE.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/revert-uncommitted-changes-with-save.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
-
-#### <Constant name="studio_ide" /> Options menu
-  Access the <Constant name="studio_ide" /> Options menu by clicking the three-dot menu located at the bottom right corner of the <Constant name="studio_ide" />. This menu contains global options:
-
-  * View status details, including the <Constant name="studio_ide" /> Status modal
-  * Restart the <Constant name="studio_ide" />
-  * Reinstall dependencies
-  * Clean dbt project
-  * [Check & fix deprecations](/docs/cloud/studio-ide/autofix-deprecations)
-  * Rollback your repo to remote to refresh your git state and view status details
-  
-
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the IDE options menu to switch to dark or light mode, restart the IDE, rollback to remote, or view the IDE status"/>
