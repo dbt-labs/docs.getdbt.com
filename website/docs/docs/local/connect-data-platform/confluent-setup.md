@@ -28,7 +28,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to Confluent Cloud with dbt-confluent
 
-The `dbt-confluent` adapter connects to [Confluent Cloud for Apache Flink](https://docs.confluent.io/cloud/current/flink/overview.html), a fully managed stream processing service. dbt models are deployed as Flink SQL statements that run continuously on Confluent Cloud.
+The `dbt-confluent` adapter connects to [Confluent Cloud for Apache Flink](https://docs.confluent.io/cloud/current/flink/overview.html), a fully managed stream processing service. dbt models are [deployed as Flink SQL statements](https://docs.confluent.io/cloud/current/flink/operate-and-deploy/deploy-flink-dbt.html) that run continuously on Confluent Cloud.
 
 ### Prerequisites
 
