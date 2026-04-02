@@ -30,7 +30,7 @@ Compare changes in development is available for models only. Support for seeds, 
 
 To use the dbt VS Code extension compare changes feature, you need:
 
-- A dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) <Constant name="dbt_platform" /> account
+- A <Constant name="dbt_platform" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing) account
 - A <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements) (BigQuery, Databricks, Redshift, or Snowflake)
 - The [dbt VS Code extension](/docs/install-dbt-extension) installed with a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
 - [Advanced CI features](/docs/cloud/account-settings#enabling-advanced-ci-features) enabled in your <Constant name="dbt_platform" /> account
