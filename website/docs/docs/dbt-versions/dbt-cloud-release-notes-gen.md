@@ -64,7 +64,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **`github_installation_id` and `github_webhook_id` support large values**: These repository fields have been promoted from 32-bit to 64-bit integers (`BigIntegerField`) to accommodate GitHub installation and webhook IDs that exceed the 32-bit integer range.
 
-## Behavior Changes
+## Behavior changes
 
 ### APIs, Identity, and Administration
 
