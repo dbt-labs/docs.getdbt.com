@@ -5,7 +5,7 @@ id: "run_query"
 description: "Use the `run_query` macro to run queries and fetch results; learn when it runs against the warehouse (including during `dbt docs generate`) and how to guard DML with `flags.WHICH`."
 ---
 
-The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](/reference/dbt-jinja-functions/statement-blocks), which is more flexible, but also more complicated to use. If you are new to `run_query`, refer to the Getting Started guide section on [using Jinja](/guides/using-jinja#dynamically-retrieve-the-list-of-payment-methods) for an example of working with the results of the `run_query` macro.
+The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](/reference/dbt-jinja-functions/statement-blocks), which is more flexible, but also more complicated to use. If you are new to `run_query`, refer to the [using Jinja guide](/guides/using-jinja?step=8) for an example of working with the results of the `run_query` macro (step 8).
 
 :::warning
 `run_query` can run during `dbt compile` and `dbt docs generate`, including when you don't expect it. Any DML inside `run_query` can execute unintentionally. Refer to [Preventing unintended DML execution](#preventing-unintended-dml-execution) for details.
