@@ -3,7 +3,7 @@ title: "Set operators"
 description: "Union and intersection set operators for dbt --select and --exclude."
 ---
 
-Union and intersection combine <Term id="selector-expression">selector expressions</Term> when you list multiple arguments for `--select` or `--exclude`. A selector expression defines a subset of nodes in your project (models, tests, seeds, and other resource types) so you do not have to run the entire DAG. For the full selection language and for named selectors in `selectors.yml`, refer to [Syntax overview](/reference/node-selection/syntax) and [YAML selectors](/reference/node-selection/yaml-selectors).
+Unions and intersections combine <Term id="selector-expression">selector expressions</Term> when you list multiple arguments for `--select` or `--exclude`. A selector expression defines a subset of nodes in your project (models, tests, seeds, and other resource types) so you do not have to run the entire DAG. For the full selection language and for named selectors in `selectors.yml`, refer to [Syntax overview](/reference/node-selection/syntax) and [YAML selectors](/reference/node-selection/yaml-selectors).
 
 ## Unions
 
@@ -11,17 +11,17 @@ A union merges the node sets from several selector expressions: every resource t
 
 With unions, you can pass multiple arguments separated by spaces (space-delimited). dbt resolves each argument using the normal selection rules ([selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and so on), then combines the results. If more than one argument matches the same node, that node still appears only once in the final selection (there are no duplicates).
 
-This is different from an [intersection](#intersections), where comma-separated arguments with no spaces between them require a resource to satisfy _all_ criteria at once.
-
-Run `snowplow_sessions`, all ancestors of `snowplow_sessions`, `fct_orders`, and all ancestors of `fct_orders`:
+For example, the following command unions two selector expressions. Each uses `+` to include a model and its ancestors, and the space between them merges both sets:
 
 ```bash
 dbt run --select "+snowplow_sessions +fct_orders"
 ```
 
+That differs from an [intersection](#intersections), where comma-separated arguments with no spaces between them require a resource to satisfy _all_ criteria at once.
+
 ## Intersections
 
-An intersection keeps only the nodes that appear in every selector result: a resource must match every comma-separated argument to stay selected. If it does not match any one of those arguments, it is excluded from the final set.
+An intersection keeps only the nodes that appear in every selector result; a resource must match every comma-separated argument to stay selected. If it does not match any one of those arguments, it is excluded from the final set.
 
 Use commas with no spaces between them to request an intersection when you pass multiple arguments to `--select` or `--exclude`. Spaces between arguments still mean a [union](#unions). dbt resolves each argument using the normal selection rules ([selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and so on), then keeps only resources that satisfy _all_ of them. The order of comma-separated arguments does not change the final set.
 
