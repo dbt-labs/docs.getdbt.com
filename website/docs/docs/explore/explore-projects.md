@@ -50,7 +50,7 @@ We create dbt metadata and pull external metadata. <Constant name="catalog" /> u
 Navigate the <Constant name="catalog" /> overview page to access your project's resources and metadata. The page includes the following sections:
 
 - **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
-- **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/explore/model-performance) and [project recommendations](/docs/explore/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
+- **Sidebar** &mdash; Use the left sidebar to browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar. You can also browse model [performance](/docs/explore/model-performance) and [project recommendations](/docs/explore/project-recommendations) depending on your plan. Refer to [Availability by plan[(#availability-by-plan) for more info.
     - Find your project recommendations within your project's landing page.*
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
