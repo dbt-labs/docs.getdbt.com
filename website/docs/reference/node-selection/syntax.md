@@ -58,7 +58,7 @@ The `--select` flag accepts one or more arguments. Each argument can be one of:
 1. a package name
 2. a model name
 3. a fully-qualified path to a directory of models
-4. a selection method (`path:`, `tag:`, `config:`, `test_type:`, `test_name:`)
+4. a selection method (`path:`, `tag:`, `config:`, `test_type:`, `test_name:`, `selector:`)
 
 Examples:
 
@@ -70,8 +70,8 @@ dbt run --select "my_package.some_model" # run a specific model in a specific pa
 dbt run --select "tag:nightly"           # run models with the "nightly" tag
 dbt run --select "path/to/models"        # run models contained in path/to/models
 dbt run --select "path/to/my_model.sql"  # run a specific model by its path
+dbt run --select "selector:my_selector"  # run the node set defined by the named selector in selectors.yml; available starting v1.12
 ```
-
 </TabItem>
 
 <TabItem value="subset" label="Examples of subsets of nodes">
@@ -100,6 +100,9 @@ dbt run --select "tag:nightly my_model finance.base.*"
 
 # use methods and intersections for more complex selectors
 dbt run --select "path:marts/finance,tag:nightly,config.materialized:table"
+
+# combine a named selector with another method
+dbt run --select "selector:staging,tag:nightly"
 ```
 
 </TabItem>
@@ -108,7 +111,7 @@ dbt run --select "path:marts/finance,tag:nightly,config.materialized:table"
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
-Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
+Note that when you're using `--selector`, dbt ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when `--selector` is combined with `--select` or `--exclude`.
 
 The `--select` and `--selector` arguments are similar in that they both allow you to select resources. To understand the difference between `--select` and `--selector` arguments, see [this section](/reference/node-selection/yaml-selectors#difference-between---select-and---selector) for more details.
 
