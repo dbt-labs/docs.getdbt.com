@@ -18,6 +18,58 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## April 1, 2026
+
+## New
+
+### Studio IDE
+
+- **Fuzzy file path search**: Studio IDE now supports fuzzy file path search that finds files in your project using partial name matching. You can filter by glob patterns, set a result limit, and receive ordered results with a total match count, making it faster to navigate large projects.
+
+### dbt platform
+
+- **OAuth consent endpoint for Connected Auth**: A new `/oauth/consent` endpoint enables the Connected Auth OAuth flow, supporting user consent decisions (approve and deny), project-level resource boundaries, and authorization code issuance. This feature is in private beta. To request access, contact your account manager.
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Persistent agent mode across sessions**: The Studio agent now remembers your last-used mode (Ask or Code) across browser sessions, so you no longer need to reselect it each time you open the IDE.
+
+### Studio IDE
+
+- **More accurate file search results**: File search now validates each result against the filesystem before returning matches. Files that have been deleted locally but not yet staged are no longer included in search results.
+
+- **No unexpected git pulls on the primary branch**: Removes behavior where the IDE server automatically pulled changes from your primary branch during git status checks, which could cause unintended overwrites for projects using trunk-based development.
+
+### Orchestration and Run Status
+
+- **Teradata column-level lineage support**: Adds Teradata to the SQL dialect adapter map, enabling column-level lineage parsing for dbt projects using the Teradata adapter.
+
+### APIs, Identity, and Administration
+
+- **Fusion status includes readiness and migration availability**: Adds fields indicating availability of readiness and migration features.
+
+- **Faster account feature flag propagation**: Account feature flag changes now take effect within 60 seconds instead of up to one hour. You should see feature toggles apply more promptly across your account.
+
+### Webhooks
+
+- **Notification delivery reliability improvements**: Reduced the likelihood of delayed notifications (webhooks, email, Slack, and Teams) in certain third-party/system disruption scenarios.
+
+## Fixes
+
+### APIs, Identity, and Administration
+
+- **GitHub webhook secret null check before signature validation**: The GitHub webhook endpoint now correctly checks for a null webhook secret before attempting to validate the request signature, preventing a crash when a repository's webhook secret is not set.
+
+- **`github_installation_id` and `github_webhook_id` support large values**: These repository fields have been promoted from 32-bit to 64-bit integers (`BigIntegerField`) to accommodate GitHub installation and webhook IDs that exceed the 32-bit integer range.
+
+## Behavior Changes
+
+### APIs, Identity, and Administration
+
+- **Fusion migration gated by API availability**: The Fusion migration checklist, the Enable Fusion Environments page, and the "Enable Fusion" button in Studio IDE now use the `is_migration_available` field from the Fusion status API instead of the legacy `orc2609ShowFusionToggle` feature flag. Fusion migration UI is shown only when the backend has marked the project as ready for migration.
+
 ## March 25, 2026
 
 ## New
