@@ -6,7 +6,7 @@ datatype: "string"
 
 import CreationPrecedence from '/snippets/_creation-precedence.md';
 
-::::info
+:::info
 This functionality is currently only supported for [materialized views](/docs/build/materializations#materialized-view) on a subset of adapters.
 ::::
 
