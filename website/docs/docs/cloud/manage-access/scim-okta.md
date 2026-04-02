@@ -20,26 +20,30 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
 
 ## Set up Okta
 
-1. Log in to your Okta account and locate the app configured for the <Constant name="dbt" /> SSO integration.
-2. Navigate to the **General** tab and ensure **Enable SCIM provisioning** is selected or the **Provisioning** tab will not be displayed. 
-    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-provisioned.png" width="60%" title="Enable SCIM provisioning in Okta." />
-3. Open the **Provisioning** tab and select **Integration**.
-4. Enter the **SCIM base URL** from [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) in the first field, then enter your preferred **Unique identifier field for users** &mdash; we recommend `userName`.
-5. Select the boxes for the following **Supported provisioning actions**:
+1. Log in to your Okta account and select **Applications** from the sidebar. Find the active app configured for the <Constant name="dbt" /> SSO integration and click on it. 
+2. Click on the app and navigate to the **General** tab.
+3. In **App Settings**, click **Edit** and make sure you check the **SCIM** checkbox on the **Provisioning** row to enable SCIM provisioning. 
+4. Click **Save** and the **Provisioning** tab will now be visible.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-provisioned.png" width="80%" title="Enable SCIM provisioning in Okta." />
+5. Open the **Provisioning** tab and select **Integration**.
+6. Click **Edit** and enter the **SCIM base URL** from [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) in the first field, then enter your preferred **Unique identifier field for users** &mdash; we recommend `userName`.
+7. Select the boxes for the following **Supported provisioning actions**:
     - **Push New Users**
     - **Push Profile Updates**
     - **Push Groups**
     - **Import New Users and Profile Updates** (Optional for users created before SSO/SCIM setup)
-6. From the **Authentication mode** dropdown, select **HTTP Header**.
-7. In the **Authorization** section, enter the token from <Constant name="dbt" /> into the **Bearer** field.
-    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />
-8. Ensure the following provisioning actions are selected:
+8. From the **Authentication mode** dropdown, select **HTTP Header**.
+9. In the **Authorization** section, enter the token from <Constant name="dbt" /> into the **Bearer** field.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="80%" title="The completed SCIM configuration in the Okta app." />
+10. Click **Save** to test the connection and you will be taken to the **Provisioning** tab.
+11. Click **Edit** and ensure the following provisioning actions are selected:
     - **Create Users**
     - **Update User Attributes**
     - **Deactivate Users**
-    <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning-actions.png" width="60%" title="Ensure the users are properly provisioned with these settings." />
+    <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning-actions.png" width="70%" title="Ensure the users are properly provisioned with these settings." />
 
-9. Test the connection and click **Save** once completed. 
+12. Click **Save** to complete the provisioning configuration. 
+13. To complete your group setup, go to the **Push Groups** tab and make sure you push your Okta groups to <Constant name="dbt_platform" />. Doing this will 'push' the groups to <Constant name="dbt_platform" /> so they can appear there and be managed. Once groups are pushed, an admin must go to <Constant name="dbt_platform" /> and assign the [required permissions](/docs/cloud/manage-access/enterprise-permissions) to each group.
 
 You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_platform" />. You can [manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses) to set license type for users as they are provisioned.
 
