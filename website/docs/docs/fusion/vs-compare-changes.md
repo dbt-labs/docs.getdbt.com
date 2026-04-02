@@ -44,16 +44,6 @@ Compare changes in development works by comparing two materialized models in you
   - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually staging or production). This allows <Constant name="fusion" /> to auto-download the deferred manifest and use that as your baseline state to compare against.
   - If you're manually setting a `state` directory: You can manually point the extension to a `manifest.json` (for example, copied from another environment) without needing a job run. <br />
 
-<Expandable alt_header="How is this different from Advanced CI compare changes?">
-
-The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
-
-import CompareChangesTable from '/snippets/_compare-changes-table.md';
-
-<CompareChangesTable />
-
-</Expandable>
-
 ## Use compare changes
 
 To use compare changes in development, follow these steps:
@@ -95,5 +85,15 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 </Expandable>
 
+
+<Expandable alt_header="How is this different from Advanced CI compare changes?">
+
+The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
+
+import CompareChangesTable from '/snippets/_compare-changes-table.md';
+
+<CompareChangesTable />
+
+</Expandable>
 ## Related docs
 - [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes)
