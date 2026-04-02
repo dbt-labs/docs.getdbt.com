@@ -139,6 +139,10 @@ sql-rendering:
   displayText: SQL rendering
   hoverSnippet: The dbt Core engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the Fusion engine instead to better understand your SQL structure.
 
+selector-expression:
+  displayText: selector expression
+  hoverSnippet: An expression that defines a set of nodes in your dbt project (models, tests, seeds, sources, and other resource types) to include or exclude. You pass selector expressions to flags such as --select and --exclude, or define them as named selectors in selectors.yml.
+
 subquery:
   displayText: subquery
   hoverSnippet: A subquery is a query within another query. Subqueries are often used when you need to process data in multiple steps.
