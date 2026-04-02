@@ -64,7 +64,7 @@ When using global navigation and searching across your projects, the following p
 - In <Constant name="catalog" /> searches, we use soft access controls, you'll see all matching resources in search results, with clear indicators for items you don't have access to.
 - For external metadata, the global platform credential controls which resources metadata users can discover. See [External metadata ingestion](/docs/explore/external-metadata-ingestion) for more details.
 
-### Feature availability by plan
+### Availability by plan
 
 <Constant name="catalog" /> is available on all Starter, Enterprise, and Enterprise+ plans. However, certain features are only available on Enterprise and Enterprise+ plans:
 
