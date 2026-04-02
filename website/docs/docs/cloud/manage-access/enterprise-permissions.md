@@ -159,17 +159,33 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Environment admin">
+
+Environment admin is a project-level permission set for users who need to manage environment settings (such as dbt version, connections, and extended attributes) scoped to specific environment tiers, in addition to creating and running jobs within those environments. It extends Job creator with environment editing capabilities.
+
+Notable features:
+- Environment admin is a project-level set with **environment-level scoping**.
+- Can **edit existing environments** within the assigned environment categories or specific environments — including dbt version, connection, extended attributes, and environment-level environment variables.
+- Cannot **create** new environments — environment creation requires full Admin or Account admin permissions.
+- Cannot **delete** environments — environment deletion requires full Admin or Account admin permissions.
+- Cannot **change deployment types** on environments — this prevents promoting a staging environment to production, which would escalate the user's own access scope.
+- Can create and edit jobs within assigned environments (same as Job creator).
+- Can trigger runs within assigned environments (same as Job creator).
+- Supports scoping by environment category (for example, `staging`, `production`) and/or by specific environment ID.
+
+</Expandable>
 <Expandable alt_header="Job creator">
 
 Job creator is a project-level permission set for users who need to create and manage dbt jobs scoped to specific environment tiers (for example, staging) without the ability to modify environment infrastructure. It fills the gap between Job runner (can only trigger runs) and Job admin (can create jobs but also controls environments).
 
 Notable features:
-- Job creator is a project-level set.
-- Can create and edit jobs — but only within the environment categories assigned at the group or service token level (for example, `staging`). This is set via **Environment write access** at assignment time.
-- Can trigger runs in any environment, unconditionally — regardless of environment category assignment.
+- Job creator is a project-level set with **environment-level scoping**.
+- Can create and edit jobs — but only within the environment categories or specific environments assigned at the group or service token level (for example, `staging`). This is set via **Environment write access** at assignment time.
+- Can trigger runs — but only within the assigned environment scope. A Job creator scoped to staging cannot trigger runs on production jobs.
 - Can set environment variable overrides at the job level. Project-level and environment-level environment variable writes require `environments_write`, which this permission set does not include.
 - Cannot create, delete, or reconfigure environments (`environments_write` is intentionally absent).
 - Read-only access to connections, credentials, environments, integrations, metadata, profiles, and projects.
+- Supports scoping by environment category (for example, `staging`, `production`) and/or by specific environment ID.
 
 </Expandable>
 <Expandable alt_header="Job runner">
@@ -177,21 +193,21 @@ Notable features:
 Job runner is a specialized permission set for users who need access to run jobs and view the outcomes.
 
 Notable features:
-- Job runner is a project-level set.
-- Can run jobs.
-- Has read-only access to jobs, including status and results.
-- No other access to <Constant name="dbt" /> features. 
+- Job runner is a project-level set with **environment-level scoping**.
+- Can trigger runs — scoped to the environment categories or specific environments assigned at the group or service token level. Existing Job runner grants are automatically set to "All environments" for backward compatibility.
+- Has read-only access to jobs, environments, and run results.
+- Supports scoping by environment category (for example, `staging`, `production`) and/or by specific environment ID.
 
 </Expandable>
 <Expandable alt_header="Job viewer">
 
-Job viewer enables users to monitor and review job executions within <Constant name="dbt" />. Users with this role can see jobs’ status, logs, and outcomes but cannot initiate or modify them. 
+Job viewer enables users to monitor and review job executions within <Constant name="dbt" />. Users with this role can see jobs’ status, logs, and outcomes but cannot initiate or modify them.
 
 Notable features:
-- Job viewer is a project-level set.
-- Read-only access to job results, status, and logs.
-- No other access to <Constant name="dbt" /> features. 
+- Job viewer is a project-level set with **environment-level scoping**.
+- Read-only access to job results, status, and logs — scoped to the environment categories or specific environments assigned at the group or service token level. Existing Job viewer grants are automatically set to "All environments" for backward compatibility.
 - Can access <Constant name="catalog" />.
+- Supports scoping by environment category (for example, `staging`, `production`) and/or by specific environment ID.
 
 </Expandable>
 
