@@ -2,13 +2,13 @@
 title: "About run_query macro"
 sidebar_label: "run_query"
 id: "run_query"
-description: "Use the `run_query` macro to run queries and fetch results; learn when it runs against the warehouse (including during `dbt docs generate`) and how to guard DML with `flags.WHICH`."
+description: "Use the `run_query` macro to run queries and fetch results; learn when it runs against the warehouse during compilation and `dbt docs generate`, and how to scope side-effecting SQL with `flags.WHICH`."
 ---
 
 The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](/reference/dbt-jinja-functions/statement-blocks), which is more flexible, but also more complicated to use. If you are new to `run_query`, refer to the [using Jinja guide](/guides/using-jinja?step=8) for an example of working with the results of the `run_query` macro (step 8).
 
 :::warning
-`run_query` can run during `dbt compile` and `dbt docs generate`, including when you don't expect it. Any DML inside `run_query` can execute unintentionally. Refer to [Preventing unintended DML execution](#preventing-unintended-dml-execution) for details.
+[`run_query`](/reference/dbt-jinja-functions/run_query) runs SQL against the warehouse whenever dbt **compiles** your project with a live connection, including during [`dbt compile`](/reference/commands/compile) and [`dbt docs generate`](/reference/commands/cmd-docs) (by default). This is **expected** because compilation resolves your Jinja and macros. If you put **DML** or other side-effecting statements inside `run_query`, they run in those workflows too unless you scope them, for example using [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich). Refer to [How `run_query` runs during compilation and `dbt docs generate`](#run-query-compilation-and-docs).
 :::
 
 ## Args
@@ -104,7 +104,7 @@ You can also use `run_query` to perform SQL queries that aren't select statement
 </File>
 
 
-Use the `length` filter to verify whether `run_query` returned any rows or not. Make sure to wrap the logic in an [if execute](/reference/dbt-jinja-functions/execute) block to avoid unexpected behavior during parsing.
+Use the `length` filter to verify whether `run_query` returned any rows or not. Wrap the logic in an [if execute](/reference/dbt-jinja-functions/execute) block so `run_query` does not run during parsing, when [`execute`](/reference/dbt-jinja-functions/execute) is `False`.
 
 ```sql
 {% if execute %}
@@ -117,23 +117,26 @@ Use the `length` filter to verify whether `run_query` returned any rows or not. 
 {% endif %}
 ```
 
-## Preventing unintended DML execution {#preventing-unintended-dml-execution}
+## How `run_query` runs during compilation and `dbt docs generate` {#run-query-compilation-and-docs}
 
-`run_query()` executes SQL against your warehouse whenever dbt compiles with a live connection — not just during `dbt run` or `dbt build`. This means DML statements inside `run_query()` can run unintentionally during `dbt docs generate` or `dbt compile`.
+When dbt **compiles** models and other resources with a **live warehouse connection**, it evaluates your Jinja and runs any `run_query()` calls that your project reaches. That is normal: introspective macros need the warehouse the same way other compilation steps do. Compilation happens during **`dbt run`** and **`dbt build`**, and also during **`dbt compile`**, **`dbt docs generate`** (when compilation runs), and other commands that compile the project—not only during steps where you might picture dbt "building" tables.
 
-[`dbt docs generate`](/reference/commands/cmd-docs) compiles your project by default (unless you pass [`--no-compile`](/reference/commands/cmd-docs)). That means `run_query()` inside models or macros can run during documentation generation, even when the resource is not part of a `dbt run` selection or another build step you expected.
+[`dbt docs generate`](/reference/commands/cmd-docs) **compiles your project by default** (unless you pass [`--no-compile`](/reference/commands/cmd-docs)). So `run_query()` runs during documentation generation under the same rules as other compile workflows, including for resources that are not part of a particular `dbt run` selection.
 
-### Why `{% if execute %}` isn't enough
+### `execute` is `True` during compilation
 
-The [`execute`](/reference/dbt-jinja-functions/execute) variable is `True` during compilation, so guards like `{% if execute %}` or `{% if execute and is_incremental() %}` won't prevent `run_query()` from firing during [`dbt docs generate`](/reference/commands/cmd-docs) or [`dbt compile`](/reference/commands/compile). Because `execute` is still `True` in those contexts, **DML** statements (`DELETE`, `INSERT`, `UPDATE`, and similar) can run unintentionally from jobs that only run `dbt docs generate` or other commands that compile with a connection.
+The [`execute`](/reference/dbt-jinja-functions/execute) context variable is **`True`** whenever dbt compiles with a connection, not only while materializing models during **`dbt run`**. A guard like `{% if execute %}` **still allows** `run_query()` to run during [`dbt docs generate`](/reference/commands/cmd-docs) and [`dbt compile`](/reference/commands/compile), because those commands compile your project. Patterns such as `{% if execute and is_incremental() %}` change when incremental **model SQL** runs, but they do not turn off compilation itself—so they do not, on their own, skip `run_query()` during docs or compile unless your Jinja never calls it in those paths.
 
-### Use `flags.WHICH` to restrict execution
+If you want **DML** (`DELETE`, `INSERT`, `UPDATE`, and similar) or other side-effecting SQL to run only for certain dbt commands, add another condition, for example [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich).
 
-Combine [`execute`](/reference/dbt-jinja-functions/execute) with [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich) to limit DML to the commands where you actually intend it to run. For example, allow DML only during `run` or `build`, and exclude `docs`, `compile`, and any other commands where you don't want that behavior. Refer to the `flags.WHICH` table for the full list of command values.
+### Scope side-effecting SQL with `flags.WHICH`
+
+Combine [`execute`](/reference/dbt-jinja-functions/execute) with [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich) so DML runs only when the active command is one you want (`run`, `build`, and so on), and not when dbt is compiling for `docs`, `compile`, or other commands where side effects would be surprising. Refer to the `flags.WHICH` table for the full list of command values.
+
 ```sql
 {% if execute and flags.WHICH in ['run', 'build'] %}
   {% do run_query('delete from my_scratch_table where session_id = ...') %}
 {% endif %}
 ```
 
-Adjust the allowlist to match the commands where your macro is intended to run.
+Adjust the list of commands to match where your macro should run.
