@@ -63,7 +63,7 @@ Every job runs in a specific deployment environment, and by default, a job will 
 #### Overriding environment variables at the personal level
 
 You can also set a personal value override for an environment variable when you develop in the dbt-integrated developer environment (<Constant name="studio_ide" />). By default, <Constant name="dbt" /> uses environment variable values set in the project's development environment. To see and override these values, from <Constant name="dbt" />:
-1. Click on your account name in the left side menu and select **Account settings**.
+1. Click your account name in the left side menu and select **Account settings**.
 2. Under the **Your profile** section, click **Credentials** and then select your project.
 3. Scroll to the **Environment variables** section and click **Edit** to make the necessary changes.
 
