@@ -3,6 +3,7 @@ title: "Compare changes locally with your dbt platform account"
 id: "vs-compare-changes"
 description: "Compare how code edits will change your data while you develop your dbt platform project locally with the dbt VS Code extension."
 sidebar_label: "Compare changes locally"
+image: /img/docs/extension/vs-compare-changes-tab.png
 ---
 
 # Compare changes in local development <Lifecycle status="beta,managed,managed_plus" />
@@ -41,15 +42,17 @@ To use the dbt VS Code extension compare changes feature, you need:
 Compare changes in development works by comparing two materialized models in your warehouse. Specifically, it compares the model built in your dev schema (determined by your active profile) against the model referenced in your `manifest.json` (for example, your last production state). Both sides of the comparison are always warehouse tables; it does not compare SQL file contents.
 
   - If you're using <Constant name="dbt_platform" />'s deferral (recommended): You need at least one successful job run in the environment you are deferring to (usually staging or production). This allows <Constant name="fusion" /> to auto-download the deferred manifest and use that as your baseline state to compare against.
-  - If you're manually setting a `state` directory: You can manually point the extension to a `manifest.json` (for example, copied from another environment) without needing a job run.
+  - If you're manually setting a `state` directory: You can manually point the extension to a `manifest.json` (for example, copied from another environment) without needing a job run. <br />
 
-#### How this differs from Advanced CI
+<Expandable alt_header="How is this different from Advanced CI compare changes?">
 
 The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
 <CompareChangesTable />
+
+</Expandable>
 
 ## Use compare changes
 
@@ -61,14 +64,14 @@ To use compare changes in development, follow these steps:
    - Command palette: Open the VS Code command palette (Shift + Command + P (Mac) / Ctrl + Shift + P (Windows/Linux)) and search for the [**dbt: Compare changes**](vscode://dbtLabsInc/dbt.compareModel) 
    - Bottom panel: Click the **Compare** tab and then click the **Compare** button.
   
-    <Lightbox src="/img/fusion/connect-adapters/vs-compare-changes.png" width="90%" title="Compare changes in development" />
+    <Lightbox src="/img/docs/extension/vs-compare-changes-options.png" width="90%" title="Compare changes in development" />
 4. Once you click the **Compare** button, the extension will execute a `dbt build` command to build the model you're working on and then runs the comparison. The [**Compare** tab](#compare-tab) displays the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
 5. Once you've compared changes and see the changes in the **Compare** tab, you can then decide to commit your changes or continue editing.
 
 ## Compare tab results
 The **Compare** tab displays the changes to the data's primary keys, rows, and columns. Clicking the tabs will display more details about the changes, like specific columns that were added or modified.
 
-<Lightbox src="/img/docs/extension/compare-changes-dev-tab.jpg" width="100%" title="Example of the Compare tab" />
+<Lightbox src="/img/docs/extension/vs-compare-changes-tab.png" width="100%" title="Example of the Compare tab" />
 
 - **Overview tab**: High-level summary about the changes to the models, such as the number of primary keys that were added or removed, rows modified, and so on. It will also include the relation between models that were added or modified.
 - **Primary keys tab**: Details about the changes to the records.
