@@ -46,7 +46,7 @@ The following properties are available when defining a group:
 ```yaml
 groups:
   - name: finance
-    description: "All finance-related models owned by the Finance team."
+    description: "All models owned by the Finance team."
     owner:
       email: finance@jaffleshop.com
     config:
