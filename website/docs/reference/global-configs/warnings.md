@@ -97,9 +97,22 @@ Some of the examples use `NoNodesForSelectionCriteria`, which is a specific warn
   ```
 
 - This promotes only `NoNodesForSelectionCriteria` as an error, using an environment variable:
+
+  <VersionBlock lastVersion="1.10">
+
   ```text
   DBT_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}' dbt run
   ```
+
+  </VersionBlock>
+
+  <VersionBlock firstVersion="1.11">
+
+  ```text
+  DBT_ENGINE_WARN_ERROR_OPTIONS='{"error": ["NoNodesForSelectionCriteria"]}' dbt run
+  ```
+
+  </VersionBlock>
 
 Values for `error`, `warn`, and/or `silence` should be passed on as arrays. For example, `dbt run --warn-error-options '{"error": "all", "warn": ["NoNodesForSelectionCriteria"]}'` not `dbt run --warn-error-options '{"error": "all", "warn": "NoNodesForSelectionCriteria"}'`.
 
@@ -132,12 +145,25 @@ dbt run --warn-error-options '{"error": "*"}'
 
 ##### using environment variables
 
+<VersionBlock lastVersion="1.10">
 
 ```bash 
 WARN_ERROR=true dbt run 
 DBT_WARN_ERROR_OPTIONS='{"error": "all"}' dbt run 
 DBT_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run 
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash 
+WARN_ERROR=true dbt run 
+DBT_ENGINE_WARN_ERROR_OPTIONS='{"error": "all"}' dbt run 
+DBT_ENGINE_WARN_ERROR_OPTIONS='{"error": "*"}' dbt run 
+```
+
+</VersionBlock>
 
   
 :::caution

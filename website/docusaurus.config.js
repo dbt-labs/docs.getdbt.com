@@ -17,7 +17,7 @@ if (process?.env?.VERCEL_ENV === "preview" && process?.env?.VERCEL_BRANCH_URL) {
 
 const GIT_BRANCH = process?.env?.VERCEL_GIT_COMMIT_REF;
 
-let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
+let { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME, OPTIMIZELY_ID } = process.env;
 
 let metatags = [];
 // If not `current` and not `main` branch, do not index site
@@ -49,6 +49,19 @@ var siteSettings = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
+  headTags: [
+    // Load Optimizely synchronously (no async/defer) so experiments apply
+    // before page content renders, preventing a flash of unexperimented content.
+    ...(OPTIMIZELY_ID ? [
+      {
+        tagName: 'script',
+        attributes: {
+          src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
+          type: 'text/javascript',
+        },
+      }
+    ] : []),
+  ],
   themeConfig: {
     docs: {
       sidebar: {
@@ -439,37 +452,25 @@ var siteSettings = {
                   ],
                 },
                 {
-                  id: "dbt-core-and-fusion",
-                  name: "dbt Core and Fusion",
+                  id: "install-dbt",
+                  name: "dbt local installation",
                   routes: [
-                    { route: "/docs/about-dbt-install" },
-                    { route: "/docs/core/dbt-core-environments" },
+                    { route: "/docs/local/install-dbt" },
+                    { route: "/docs/local/dbt-core-environments" },
                   ],
                   subsections: [
                     {
-                      id: "install-dbt-fusion-engine",
+                      id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
                       routes: [
                         { route: "/docs/fusion/about-fusion-install" },
-                        { route: "/docs/fusion/install-dbt-extension" },
-                        { route: "/docs/fusion/install-fusion-cli" },
-                      ],
-                    },
-                    {
-                      id: "install-dbt-core",
-                      name: "Install dbt Core",
-                      routes: [
-                        { route: "/docs/core/installation-overview" },
-                        { route: "/docs/core/docker-install" },
-                        { route: "/docs/core/pip-install" },
-                        { route: "/docs/core/source-install" },
                       ],
                     },
                     {
                       id: "core-connect-data-platform",
                       name: "Connect data platform",
                       routes: [
-                        { route: "/docs/core/connect-data-platform/**" },
+                        { route: "/docs/local/connect-data-platform/**" },
                       ],
                     },
                   ],
@@ -560,7 +561,7 @@ var siteSettings = {
 if (versions) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
-    position: "right",
+    position: "left",
     className: "nav-versioning",
     items: [
       ...versions.reduce((acc, version) => {

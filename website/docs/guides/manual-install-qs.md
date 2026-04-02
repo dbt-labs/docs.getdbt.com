@@ -15,13 +15,13 @@ hide_table_of_contents: true
 
 When you use <Constant name="core" /> to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
 
-If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="cloud_ide" />), refer to the [<Constant name="cloud" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) &mdash; a <Constant name="cloud" /> powered command line.
+If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="studio_ide" />), refer to the [<Constant name="dbt" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) &mdash; a <Constant name="dbt" /> powered command line.
 
 ### Prerequisites
 
 * To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
-* Install <Constant name="core" /> using the [installation instructions](/docs/core/installation-overview) for your operating system.
-* Complete appropriate Setting up and Loading data steps in the Quickstart for <Constant name="cloud" /> series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
+* Install <Constant name="core" /> using the [installation instructions](/docs/local/install-dbt) for your operating system.
+* Complete appropriate Setting up and Loading data steps in the Quickstart for <Constant name="dbt" /> series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 ### Create a starter project
@@ -100,7 +100,7 @@ models:
 
 ## Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connect-data-platform/connection-profiles), which is a YAML file with all the connection details to your warehouse. 
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/local/profiles.yml), which is a YAML file with all the connection details to your warehouse. 
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
@@ -467,7 +467,7 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using <Constant name="cloud" /> as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
+We recommend using <Constant name="dbt" /> as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
 
 For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
 
