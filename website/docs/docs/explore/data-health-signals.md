@@ -6,7 +6,8 @@ description: "Learn how data health signals offer a quick, at-a-glance view of d
 image: /img/docs/collaborate/dbt-explorer/data-health-signal.jpg
 ---
 
-# Data health signals <Lifecycle status="preview" />
+# Data health signals <Lifecycle status="preview,starter,managed,managed_plus" />
+
 Data health signals offer a quick, at-a-glance view of data health when browsing your resources in <Constant name="catalog" />. They keep you informed on the status of your resource's health using the indicators **Healthy**, **Caution**, **Degraded**, or **Unknown**.
 
 Note,  we don’t calculate data health for non-dbt resources.
