@@ -7,6 +7,9 @@ pagination_next: "docs/explore/data-health-signals"
 pagination_prev: null
 ---
  
+
+# Discover data with Catalog <Lifecycle status="starter,managed,managed_plus" />
+
 <IntroText>
 
 With <Constant name="catalog" />, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics), their <Term id="data-lineage">lineage</Term>, and [model consumption](/docs/explore/view-downstream-exposures) to gain a better understanding of its latest production state.
