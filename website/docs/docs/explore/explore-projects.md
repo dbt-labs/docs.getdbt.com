@@ -7,6 +7,9 @@ pagination_next: "docs/explore/data-health-signals"
 pagination_prev: null
 ---
  
+
+# Discover data with Catalog <Lifecycle status="starter,managed,managed_plus" />
+
 <IntroText>
 
 With <Constant name="catalog" />, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics), their <Term id="data-lineage">lineage</Term>, and [model consumption](/docs/explore/view-downstream-exposures) to gain a better understanding of its latest production state.
@@ -47,7 +50,7 @@ We create dbt metadata and pull external metadata. <Constant name="catalog" /> u
 Navigate the <Constant name="catalog" /> overview page to access your project's resources and metadata. The page includes the following sections:
 
 - **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
-- **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/explore/model-performance), [project recommendations](/docs/explore/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
+- **Sidebar** &mdash; Use the left sidebar to browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar. You can also browse model [performance](/docs/explore/model-performance) and [project recommendations](/docs/explore/project-recommendations) depending on your plan. Refer to [Availability by plan[(#availability-by-plan) for more info.
     - Find your project recommendations within your project's landing page.*
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
@@ -63,6 +66,24 @@ When using global navigation and searching across your projects, the following p
 - Your project access permissions determine which dbt projects appear in the left-hand menu of the global navigation.
 - In <Constant name="catalog" /> searches, we use soft access controls, you'll see all matching resources in search results, with clear indicators for items you don't have access to.
 - For external metadata, the global platform credential controls which resources metadata users can discover. See [External metadata ingestion](/docs/explore/external-metadata-ingestion) for more details.
+
+### Availability by plan
+
+<Constant name="catalog" /> is available on all Starter, Enterprise, and Enterprise+ plans. However, certain features are only available on Enterprise and Enterprise+ plans:
+
+| Feature | Starter | Enterprise | Enterprise+ |
+|---------|:-------:|:----------:|:-----------:|
+| Core lineage & resource browsing | ✅ | ✅ | ✅ |
+| [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
+| [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
+| [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
+| [Project recommendations](/docs/explore/project-recommendations) | ❌ | ✅ | ✅ |
+| [Column-level lineage](/docs/explore/column-level-lineage) | ❌ | ✅ | ✅ |
+| [Multi-project lineage](/docs/explore/explore-multiple-projects) | ❌ | ✅ | ✅ |
+| [Model query history](/docs/explore/model-query-history) | ❌ | ✅ | ✅ |
+| [Downstream exposures](/docs/explore/view-downstream-exposures) | ❌ | ✅ | ✅ |
+| [Data health tile](/docs/explore/data-tile) | ❌ | ✅ | ✅ |
+| [External metadata ingestion](/docs/explore/external-metadata-ingestion) | ❌ | ✅ | ✅ |
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
