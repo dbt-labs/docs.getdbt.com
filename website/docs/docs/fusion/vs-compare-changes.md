@@ -9,7 +9,7 @@ image: /img/docs/extension/vs-compare-changes-tab.png
 # Compare changes in local development <Lifecycle status="beta,managed,managed_plus" />
 
 :::info
-This feature is in beta and rolling out to VS Code extension users on <Constant name="dbt_platform" /> Enterprise or Enterprise+ accounts.
+This feature is in beta and rolling out to dbt VS Code extension users on <Constant name="dbt_platform" /> Enterprise or Enterprise+ accounts.
 :::
 
 The dbt VS Code extension previews and compares how your local edits affect your data in your <Constant name="dbt_platform"/> account &mdash;  including added/removed rows and join verification &mdash;  without waiting on CI.
