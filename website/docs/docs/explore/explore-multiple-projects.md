@@ -54,7 +54,7 @@ From the account-level lineage graph, you can:
 
 - Click the **Lineage view** icon (in the graph’s upper right corner) to view the cross-project lineage graph.
 - Click the **List view** icon (in the graph’s upper right corner) to view the project list.
-    - Select a project from the **Projects** tab to switch to that project’s main **Explore** page.
+    - Select a project from the **Projects** tab to switch to that project’s main **<Constant name="catalog" />** page.
     - Select a model from the **Public Models** tab to view the [model’s details page](/docs/explore/explore-projects#view-resource-details).
     - Perform searches on your projects with the search bar.
 - Select a project node in the graph (double-clicking) to switch to that particular project’s lineage graph.
