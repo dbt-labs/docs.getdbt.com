@@ -8,7 +8,7 @@ import CreationPrecedence from '/snippets/_creation-precedence.md';
 
 :::info
 This functionality is currently only supported for [materialized views](/docs/build/materializations#materialized-view) on a subset of adapters.
-::::
+:::
 
 The `on_configuration_change` config has three settings:
 - `apply` (default) &mdash; Attempt to update the existing database object if possible, avoiding a complete rebuild.
