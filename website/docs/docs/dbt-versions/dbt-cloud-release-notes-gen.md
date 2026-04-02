@@ -42,7 +42,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **No unexpected git pulls on the primary branch**: Removes behavior where the IDE server automatically pulled changes from your primary branch during git status checks, which could cause unintended overwrites for projects using trunk-based development.
 
-### Orchestration and Run Status
+### Orchestration and run status
 
 - **Teradata column-level lineage support**: Adds Teradata to the SQL dialect adapter map, enabling column-level lineage parsing for dbt projects using the Teradata adapter.
 
