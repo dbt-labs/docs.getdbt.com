@@ -222,7 +222,7 @@ Notable features:
 - Security admin is an account-level set. 
 - Can create and edit users and groups and assign licenses.
 - Can create and edit authentication and SSO settings. 
-- Can create and edit IP restrictions and service tokens, as well as manage user access controls. 
+- Can create and edit IP restrictions, view service tokens, and manage user access controls. 
 - No access to jobs, runs, environments, or the IDE.
   
 </Expandable>
