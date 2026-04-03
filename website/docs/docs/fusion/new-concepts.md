@@ -164,6 +164,7 @@ The <Constant name="fusion_engine" /> (strict mode):
 
 - Renders and statically analyzes all models before execution begins.
 - Guarantees nothing runs until the entire project is proven valid.
+- Parses `CREATE FUNCTION` in [`sql_header`](/reference/resource-configs/sql_header) and in [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) hooks, then registers those UDFs so strict compilation can resolve calls to them. **`baseline`** and **`off`** do not register UDFs this way. See [User-defined functions (UDFs) in `strict` mode](/reference/resource-configs/static-analysis#user-defined-functions-udfs-in-strict-mode).
 
 ## Configuring `static_analysis`
 
