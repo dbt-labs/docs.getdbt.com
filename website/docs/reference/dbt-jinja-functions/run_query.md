@@ -127,11 +127,11 @@ When dbt *compiles* models and other resources with a live warehouse connection,
 
 The [`execute`](/reference/dbt-jinja-functions/execute) context variable is `True` whenever dbt compiles with a connection, not only while materializing models during `dbt run`. A guard like `{% if execute %}` still allows `run_query()` to run during [`dbt docs generate`](/reference/commands/cmd-docs) and [`dbt compile`](/reference/commands/compile), because those commands compile your project. Patterns such as `{% if execute and is_incremental() %}` change when incremental model SQL runs, but they do not turn off compilation itself—so they do not, on their own, skip `run_query()` during docs or compile unless your Jinja never calls it in those paths.
 
-If you want **DML** (`DELETE`, `INSERT`, `UPDATE`, and similar) or other side-effecting SQL to run only for certain dbt commands, add another condition, for example [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich).
+If you want <Term id="dml" /> or other side-effecting SQL to run only for certain dbt commands, add another condition, for example [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich).
 
 ### Scope side-effecting SQL with `flags.WHICH`
 
-Combine [`execute`](/reference/dbt-jinja-functions/execute) with [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich) so DML runs only when the active command is one you want (`run`, `build`, and so on), and not when dbt is compiling for `docs`, `compile`, or other commands where side effects would be surprising. Refer to the `flags.WHICH` table for the full list of command values.
+Combine [`execute`](/reference/dbt-jinja-functions/execute) with [`flags.WHICH`](/reference/dbt-jinja-functions/flags#flagswhich) so <Term id="dml" /> runs only when the active command is one you want (`run`, `build`, and so on), and not when dbt is compiling for `docs`, `compile`, or other commands where side effects would be surprising. Refer to the `flags.WHICH` table for the full list of command values.
 
 ```sql
 {% if execute and flags.WHICH in ['run', 'build'] %}
