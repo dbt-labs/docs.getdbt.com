@@ -18,6 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## April 2026
 
+- **Enhancement:** The Studio IDE now validates dbt YAML using <Constant name="fusion" /> aligned JSON Schema from [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) across [dbt platform release tracks](/docs/dbt-versions/cloud-release-tracks), including for development environments on <Constant name="core" />. This improves autocomplete and structural feedback in the editor. Diagnostics can occasionally disagree with what your environment accepts; use dbt runs and previews as the source of truth. For context, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec) and [dbt YAML validation in Studio](/docs/cloud/studio-ide/develop-in-studio#dbt-yaml-validation). This will be a phased rollout starting the week of April 6th.
 - **Enhancement:** The Studio IDE status bar now offers more control, more detailed information, and quicker access to settings for deferral, dbt version, and project status. For more information, see the [Studio IDE docs](/docs/cloud/studio-ide/ide-user-interface#the-command-and-status-bar). These updates roll out in phases to existing accounts starting April 6.
 
 ## March 2026
