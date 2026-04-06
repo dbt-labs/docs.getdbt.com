@@ -15,6 +15,12 @@ import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability
 
 <LatestYamlSpecAvailability />
 
+:::note Studio IDE YAML validation
+The <Constant name="studio_ide" /> validates dbt YAML using JSON Schema from the [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project. Those definitions are aligned with the <Constant name="fusion_engine" /> and apply across [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/cloud-release-tracks), including when your development environment is still running <Constant name="core" />. The intent is to keep editor assistance and diagnostics aligned with the direction of dbt and to fix schema gaps as they are reported.
+
+If the editor flags YAML as invalid but <Constant name="dbt" /> commands succeed in your environment, treat your runs, compile, and preview results as the source of truth. Share examples with [dbt Support](mailto:support@getdbt.com) or your account team so the schema can be updated.
+:::
+
 ## Changes in the latest spec 
 
 This section highlights the key updates in the latest metrics spec and compares them to the legacy spec.
