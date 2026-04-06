@@ -27,6 +27,14 @@ The Redshift adapter for Fusion supports the following [authentication methods](
 - Password
 - IAM profile
 
+## Warehouse permissions
+
+import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
+
+<FusionRedshiftWarehousePerms />
+
+For example SQL grants in Redshift, refer to [Redshift permissions](/reference/database-permissions/redshift-permissions).
+
 ## Configure Fusion
 
 Executing `dbt init` in your CLI will prompt for the following fields:

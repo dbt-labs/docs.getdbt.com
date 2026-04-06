@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Environment-level permissions give <Constant name="dbt" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment give users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
+Environment-level permissions give <Constant name="dbt" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment gives users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
 
 For configuration instructions, check out the [setup page](/docs/cloud/manage-access/environment-permissions-setup).
 
@@ -37,9 +37,12 @@ Environment write permissions can be specified for the following roles:
 
 - Analyst
 - Database admin
-- Developer (Previous default write access for all environments. The new default is read access for environments unless access is specified)
-- <Constant name="git" /> admin
+- Developer<sup>*</sup>
+- Git admin
 - Team admin
+
+<sup>*</sup> In the [enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) table, the `Developer` role has read-only access to environment settings, but when added to a group, the **Environment write access** field defaults to `All environments`, which grants broader environment permissions than the table implies. The `Analyst`, `Database admin`, `Git admin`, and `Team admin` roles get **Read-only environment access** by default unless you specify different access under **Environment write access** for that group.
+
 
 Depending on your current group mappings, you may have to update roles to ensure users have the correct access level to environments. 
 
