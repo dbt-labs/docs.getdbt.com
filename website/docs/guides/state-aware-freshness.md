@@ -54,11 +54,11 @@ Configure freshness at the source level. This applies to all tables in that sour
 ```yaml
 sources:
   - name: raw
-    loaded_at_field: _etl_loaded_at
     config:
       freshness:
         warn_after: {count: 12, period: hour}
         error_after: {count: 24, period: hour}
+      loaded_at_field: _etl_loaded_at
 ```
 
 This configuration:
@@ -222,11 +222,11 @@ Here's a balanced, cost-efficient configuration that works well for most teams:
 ```yaml
 sources:
   - name: raw
-    loaded_at_field: _etl_loaded_at
     config:
       freshness:
         warn_after: {count: 12, period: hour}
         error_after: {count: 24, period: hour}
+      loaded_at_field: _etl_loaded_at
 ```
 
 ### Models configuration
