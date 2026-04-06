@@ -1,4 +1,4 @@
-Groups are defined in `.yml` files, nested under a `groups:` key. <VersionBlock firstVersion="1.10">You can add a `description` and a `meta` config to add more information about the group.</VersionBlock>
+Groups are defined in `.yml` files, nested under a `groups:` key. In version 1.10 and higher, you can add a `description` and a `meta` config to add more information about the group.
 
 
 <VersionBlock lastVersion="1.9">

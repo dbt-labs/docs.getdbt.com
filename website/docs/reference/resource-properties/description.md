@@ -212,7 +212,6 @@ unit_tests:
 
 <TabItem value="groups">
 
-<VersionBlock firstVersion="1.10">
 
 <File name='models/schema.yml'>
 
@@ -220,7 +219,7 @@ unit_tests:
 
 groups:
   - name: group_name
-    description: markdown_string
+    description: markdown_string  # Supported in v1.10 and later
     owner:
       email: owner@example.com
 
@@ -230,11 +229,8 @@ groups:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.9">
 
-The `description` property is not supported on groups in dbt Core v1.9 and earlier.
 
-</VersionBlock>
 
 </TabItem>
 
