@@ -206,6 +206,8 @@ To validate _all_ semantic nodes in your project, add the following command to d
 
 This usually means the comparison manifest does not line up with your branch’s commits. Another job overwrote `manifest.json` with different settings, Production (or another deferred environment) advanced after someone else merged while your pull request stayed open, or the manifest is stale right after a merge. Built-in deferral targets an environment, not a hand-picked job ID.
 
+To resolve this, merge or rebase the latest base branch into your pull request so your branch includes recent merges. To refresh the comparison manifest without waiting on a long deploy, use a [merge job](/docs/deploy/merge-jobs) in the same environment your CI job defers to. For example, one that runs `dbt parse --no-partial-parse` (or [`dbt compile`](/reference/commands/compile)) immediately after merges.
+
 </DetailsToggle>
 
 <DetailsToggle alt_header="CI jobs aren't triggering occasionally when opening a PR using the Azure DevOps (ADO) integration">
