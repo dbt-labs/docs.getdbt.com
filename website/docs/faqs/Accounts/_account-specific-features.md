@@ -17,7 +17,7 @@ This document provides a comprehensive overview of account-specific features in 
 
 [<Constant name="copilot" />](/docs/cloud/dbt-copilot) is an AI-powered assistant designed to accelerate your development workflow and help you focus on delivering high-quality data.
 
-<Constant name="copilot" /> is available to all users in <Constant name="dbt" /> but limits are imposed according to plan type. Have a look at [dbt Cloud's pricing](https://www.getdbt.com/pricing) for more information.
+<Constant name="copilot" /> is available to all users in <Constant name="dbt" /> but limits are imposed according to plan type. Have a look at [dbt's pricing](https://www.getdbt.com/pricing) for more information.
 
 ## Copilot features
 

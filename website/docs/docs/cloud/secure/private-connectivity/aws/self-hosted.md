@@ -53,7 +53,7 @@ Before you begin, make sure to review the following requirements:
 
 3. **dbt AWS Account ARN**
 
-    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt AWS account ARN. You will need this in order to allow dbt to connect to your Endpoint Service.
+    - Contact [dbt Support](mailto:support@getdbt.com) to obtain the dbt AWS account ARN. You will need this in order to allow dbt to connect to your Endpoint Service.
 
 
 ## Additional NLB configuration
@@ -73,7 +73,7 @@ You have two options:
 | Option | Description |
 |--------|-------------|
 | **Disable enforcement** (recommended) | Turn off security group enforcement for PrivateLink traffic. This is the simplest approach and doesn't require knowledge of dbt's internal CIDRs. In the AWS Console: NLB → Security → Edit → Clear **Enforce inbound rules on PrivateLink traffic**. |
-| **Add dbt CIDRs to inbound rules** | If your use case requires security group enforcement on PrivateLink traffic, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the internal CIDR ranges to add to your NLB's security group inbound rules. |
+| **Add dbt CIDRs to inbound rules** | If your use case requires security group enforcement on PrivateLink traffic, [contact dbt Support](mailto:support@getdbt.com) to obtain the internal CIDR ranges to add to your NLB's security group inbound rules. |
 
 For more details, see [Update the security groups for your Network Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-security-groups.html).
 
@@ -111,18 +111,23 @@ For more details, see [Update the security groups for your Network Load Balancer
 
 ### Providing dbt Support with connection details
 
-8. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
+8. Add the required information to the template below, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
-```
+<Expandable alt_header="Support request email template" is_open={true}>
+
+```text
 Subject: New AWS Self-hosted PrivateLink Request
+
 - Type: Self-hosted PrivateLink
-- Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
+- Platform/Service (for example, Postgres, Starburst, Spark, GitLab, etc.):
+- **dbt platform account URL:**
 - VPC Endpoint Service Name:
-- Custom DNS (if HTTPS/TLS)
-    - DNS record:
-- Service Region: (for example, us-east-1, eu-west-2)
+- Custom DNS (if HTTPS/TLS):
+  - DNS record:
+- Service Region (for example, us-east-1, eu-west-2):
 - dbt AWS environment (US, EMEA, AU):
 ```
+</Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
@@ -160,7 +165,7 @@ If the PrivateLink endpoint has been provisioned and configured in <Constant nam
 
 ### Monitoring
 
-To help isolate connection issues over a PrivateLink connection from <Constant name="dbt" />, there are a few monitoring sources that can be used to verify request activity. Requests must first be sent to the endpoint to see anything in the monitoring. [Contact dbt Support](/community/resources/getting-help#dbt-cloud-support) to understand when connection testing occurred or request new connection attempts. Use these times to correlate with activity in the following monitoring sources.
+To help isolate connection issues over a PrivateLink connection from <Constant name="dbt" />, there are a few monitoring sources that can be used to verify request activity. Requests must first be sent to the endpoint to see anything in the monitoring. [Contact dbt Support](mailto:support@getdbt.com) to understand when connection testing occurred or request new connection attempts. Use these times to correlate with activity in the following monitoring sources.
 
 #### VPC Endpoint Service monitoring
 

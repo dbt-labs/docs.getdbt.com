@@ -17,7 +17,7 @@ SCIM license mapping is currently only supported for Okta. For other providers, 
 Before you enable SCIM license mapping:
 - **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration), or using SCIM.
 - **Best practice**: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or single sign-on (SSO) mapping changes.
-- **Analyst license**: Only available on [select plans](/docs/cloud/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account.
+- **Analyst license**: Only available on [select plans](/docs/cloud/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account. The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## Enable SCIM license mapping
 
@@ -101,9 +101,9 @@ To add the attribute for license types to your Okta environment:
         | **Developer**| `developer` |
         | **Read Only**| `read_only` |
 
-    The **Analyst** license is only available on [select plans](/docs/cloud/manage-access/seats-and-users).
+    The **Analyst** license is only available on [select plans](/docs/cloud/manage-access/seats-and-users). It is not available for new purchase.
 
-    - **Attribute type:** Personal
+    - **Attribute type:** Group
 
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-license-attributes.png" width="60%" title="Enter the fields as they appear in the image. Ensure the cases match." />
 
@@ -120,8 +120,8 @@ To automate seat assignments in Okta, use the Profile Editor to map Okta group m
    - `dbt_read_only`
 
 2. Within the dbt app Profile Editor in Okta, create mapping rules for Okta users to dbt app users:
-   - **Attribute:** `licenseType`
-   - **Logic (Expression):** `IIF(isMemberOf("dbt_developers"), "developer", "read_only")`
+   - **Attribute:** `licenseType` 
+   - **Logic (Expression):** `(isMemberOfGroupName("dbt_developers") ? 'developer' : 'read_only')`
    - **Default behavior:** Users not in the `dbt_developers` group will default to Read-Only.
 
 Adding or removing users from these Okta groups automatically updates their dbt app profile and triggers a SCIM update to synchronize the `licenseType` in <Constant name="dbt" />. Admins also have the option of using **Manual Push** in the Okta app to synchronize the changes.

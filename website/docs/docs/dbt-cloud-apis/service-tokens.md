@@ -57,7 +57,8 @@ Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissio
 - Job Runner
 - Job Viewer
 - Manage marketplace apps
-- Metadata Only 
+- Metadata Only
+- Read-only
 - <Constant name="semantic_layer" /> Only 
 - Security Admin
 - Stakeholder

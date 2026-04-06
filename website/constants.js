@@ -21,5 +21,7 @@ export const CONSTANTS = {
   mesh: 'Mesh',
   orchestrator: 'Orchestrator',
   copilot: 'Copilot',
+  dev_agent: 'Developer agent',
   semantic_layer: 'Semantic Layer'
+
 }

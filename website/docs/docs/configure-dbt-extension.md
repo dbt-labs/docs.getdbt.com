@@ -24,7 +24,7 @@ The steps differ slightly depending on whether you use <Constant name="dbt_platf
 - <Constant name="fusion_engine" /> installed
 - Downloaded and installed the dbt VS Code extension
 - Basic understanding of [Git workflows](/docs/cloud/git/version-control-basics) and [dbt project structure](/best-practices/how-we-structure/1-guide-overview)
-- [Developer or analyst license](https://www.getdbt.com/pricing) if you're using <Constant name="dbt_platform" />
+- [Developer or analyst license](https://www.getdbt.com/pricing)\* if you're using <Constant name="dbt_platform" />. Note, the [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## Prepare your local setup 
 
@@ -130,7 +130,7 @@ The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-starte
 Here are some considerations when defining environment variables in the `.env` file:
 
 - The `.env` file provides a convenient way to set environment variables that work across both the CLI and the extension.
-- We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable, and dbt won't search your project root if you're running commands from a different directory location.
+- We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> environment variable, and dbt won't search your project root if you're running commands from a different directory location.
 - Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to your repo.
 - Order of precedence: Environment variables set directly in your shell (such as `export DBT_ENV_VAR=value`) take precedence over values defined in the `.env` file.
 

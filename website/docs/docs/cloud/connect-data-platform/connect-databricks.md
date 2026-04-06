@@ -30,6 +30,13 @@ To learn how to optimize performance with data platform-specific configurations 
 
 To grant users or roles database permissions (access rights and privileges), refer to the [example permissions](/reference/database-permissions/databricks-permissions) page.
 
+## Warehouse permissions for Fusion
+
+import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+
+<FusionDatabricksWarehousePerms />
+
+## Connection fields
 
 To set up the Databricks connection, supply the following fields:
 

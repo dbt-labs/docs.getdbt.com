@@ -22,15 +22,22 @@ From your Azure portal:
 2. From the workspace overview, click **JSON view**. 
 3. Copy the value in the **Resource ID** field at the top of the pane.  
     The path format is: `/subscriptions/<subscription_uuid>/resourceGroups/<resource_group_name>/providers/Microsoft.Synapse/workspaces/<workspace_name>`.
-4. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](/docs/dbt-support#dbt-cloud-support): 
-    ```
-      Subject: New Azure Multi-Tenant Private Link Request
-    - Type: Azure Synapse
-    - Server name:
-    - Azure Synapse workspace resource ID:
-    - dbt Azure multi-tenant environment (EMEA):
-    - Azure Synapse workspace region (for example, WestEurope, NorthEurope):
-    ```
+4. Add the required information to the following template and submit your Azure Private Link request to [dbt Support](mailto:support@getdbt.com):
+
+   <Expandable alt_header="Support request email template" is_open={true}>
+
+   ```text
+   Subject: New Azure Multi-Tenant Private Link Request
+
+   - Type: Azure Synapse
+   - dbt platform account URL:
+   - Server name:
+   - Azure Synapse workspace resource ID:
+   - dbt Azure multi-tenant environment (EMEA):
+   - Azure Synapse workspace region (for example, WestEurope, NorthEurope):
+   ```
+
+   </Expandable>
 5. Once our Support team confirms the endpoint has been created, navigate to the Azure Synapse workspace in the Azure Portal and browse to **Security** > **Private endpoint connections**. In the **Private endpoint connections** table, highlight the `dbt` named option and select **Approve**. Confirm with dbt Support that the connection has been approved so they can validate the connection and make it available for use in <Constant name="dbt" />.
 
 

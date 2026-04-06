@@ -53,7 +53,7 @@ Before you begin, make sure to review the following requirements:
 
 3. **dbt GCP Project ID**
 
-    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt GCP project ID. You will need this in order to share your service attachment with the dbt platform.
+    - Contact [dbt Support](mailto:support@getdbt.com) to obtain the dbt GCP project ID. You will need this in order to share your service attachment with the dbt platform.
 
 
 ## Instructions
@@ -118,18 +118,24 @@ Before you begin, make sure to review the following requirements:
 
 ### Providing dbt Support with connection details
 
-12. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
+12. Add the required information to the template below, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
-```
+<Expandable alt_header="Support request email template" is_open={true}>
+
+```text
 Subject: New GCP Self-hosted Private Service Connect Request
+
 - Type: Self-hosted PSC
-- Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
+- dbt platform account URL:
+- Platform/Service (for example, Postgres, Starburst, Spark, GitLab, etc.):
 - Service Attachment URI:
-- Custom DNS (if HTTPS/TLS)
-    - DNS record:
-- Service Region: (for example, us-east1, us-central1)
+- Custom DNS (if HTTPS/TLS):
+  - DNS record:
+- Service Region (for example, us-east1, us-central1):
 - dbt GCP environment (US):
 ```
+
+</Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 

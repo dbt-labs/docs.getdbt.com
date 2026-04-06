@@ -53,7 +53,7 @@ Before you begin, make sure to review the following requirements:
 
 3. **dbt Azure Subscription ID**
 
-    - Contact [dbt Support](/community/resources/getting-help#dbt-cloud-support) to obtain the dbt Azure subscription ID. You will need this in order to allow dbt to connect to your Private Link Service.
+    - Contact [dbt Support](mailto:support@getdbt.com) to obtain the dbt Azure subscription ID. You will need this in order to allow dbt to connect to your Private Link Service.
 
 
 ## Instructions
@@ -134,18 +134,24 @@ Before you begin, make sure to review the following requirements:
 
 ### Providing dbt Support with connection details
 
-11. Add the required information to the template below, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
+11. Add the required information to the template below, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
-```
+<Expandable alt_header="Support request email template" is_open={true}>
+
+```text
 Subject: New Azure Self-hosted Private Link Request
+
 - Type: Self-hosted Private Link
-- Platform/Service: (for example, Postgres, Starburst, Spark, GitLab, etc.)
+- Platform/Service (for example, Postgres, Starburst, Spark, GitLab, etc.):
+- dbt platform account URL:
 - Private Link Service Alias:
-- Custom DNS (if HTTPS/TLS)
-    - DNS record:
-- Service Region: (for example, East US, West Europe)
+- Custom DNS (if HTTPS/TLS):
+  - DNS record:
+- Service Region (for example, East US, West Europe):
 - dbt Azure environment (EMEA):
 ```
+
+</Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 

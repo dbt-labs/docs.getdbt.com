@@ -36,16 +36,22 @@ SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 
 ```
 
-2. Add the required information to the following template and submit your request to  [dbt Support](/docs/dbt-support#dbt-cloud-support): 
+2. Add the required information to the following template and submit your request to  [dbt Support](mailto:support@getdbt.com):
 
-```
+<Expandable alt_header="Support request email template" is_open={true}>
+
+```text
 Subject: New Multi-Tenant Azure PrivateLink Request
+
 - Type: Snowflake
+- dbt platform account URL:
 - The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
-  - Enable Internal Stage Private Link? Y/N (If Y, output must include `privatelink-internal-stage`)
+  - Enable Internal Stage Private Link? Y/N (If Y, output must include privatelink-internal-stage)
 - dbt Azure multi-tenant environment (EMEA):
 ```
+
+</Expandable>
 
 3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
 

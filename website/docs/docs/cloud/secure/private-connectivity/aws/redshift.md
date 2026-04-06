@@ -36,33 +36,47 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink2.png" title="Redshift granted accounts"/>
 
-3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to <Constant name="dbt" /> Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](/community/resources/getting-help#dbt-cloud-support)._
+3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to <Constant name="dbt" /> Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](mailto:support@getdbt.com)._
 
-4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](/community/resources/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
+4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](mailto:support@getdbt.com) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" title="Redshift grant access"/>
 
-5. Add the required information to the following template, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
+5. Add the required information to the following template, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
    - **Standard Redshift**
-       ```
-       Subject: New Multi-Tenant PrivateLink Request
-       - Type: Redshift-managed
-       - Redshift cluster name:
-       - Redshift cluster AWS account ID:
-       - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
-       - <Constant name="dbt" /> multi-tenant environment (US, EMEA, AU):
-       ```
+
+     <Expandable alt_header="Support request email template" is_open={true}>
+
+     ```text
+     Subject: New Multi-Tenant PrivateLink Request
+
+     - Type: Redshift-managed
+     - dbt platform account URL:
+     - Redshift cluster name:
+     - Redshift cluster AWS account ID:
+     - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
+     - dbt multi-tenant environment (US, EMEA, AU):
+     ```
+
+     </Expandable>
 
    - **Redshift Serverless**
-       ```
-       Subject: New Multi-Tenant PrivateLink Request
-       - Type: Redshift-managed - Serverless
-       - Redshift workgroup name:
-       - Redshift workgroup AWS account ID:
-       - Redshift workgroup AWS Region (for example, us-east-1, eu-west-2):
-       - <Constant name="dbt" /> multi-tenant environment (US, EMEA, AU):
-       ```
+
+     <Expandable alt_header="Support request email template" is_open={true}>
+
+     ```text
+     Subject: New Multi-Tenant PrivateLink Request
+
+     - Type: Redshift-managed - Serverless
+     - dbt platform account URL:
+     - Redshift workgroup name:
+     - Redshift workgroup AWS account ID:
+     - Redshift workgroup AWS Region (for example, us-east-1, eu-west-2):
+     - dbt multi-tenant environment (US, EMEA, AU):
+     ```
+
+     </Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
@@ -121,14 +135,21 @@ Once the VPC Endpoint Service is provisioned, you can find the service name in t
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" title="Get service name field value"/>
 
 ### 4. Submit your request to dbt Support
-Add the required information to the template below and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
-```
+Add the required information to the template below and submit your request to [dbt Support](mailto:support@getdbt.com):
+
+<Expandable alt_header="Support request email template" is_open={true}>
+
+```text
 Subject: New Multi-Tenant PrivateLink Request
+
 - Type: Redshift Interface-type
+- dbt platform account URL:
 - VPC Endpoint Service Name:
 - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
 - dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
+
+</Expandable>
 
 <PrivateLinkSLA />
 
