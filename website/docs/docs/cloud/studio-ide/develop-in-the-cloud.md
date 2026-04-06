@@ -76,9 +76,9 @@ The <Constant name="studio_ide" /> comes with **CodeGenCodeLens**, a powerful fe
 
 ### dbt YAML validation
 
-The <Constant name="studio_ide" /> uses JSON Schema from the open source [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project to power YAML completion, structure checks, and inline diagnostics. The schemas are aligned with the <Constant name="fusion_engine" /> specification and are used across [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/cloud-release-tracks), even when your development environment is running <Constant name="core" />.
+The <Constant name="studio_ide" /> uses JSON Schema from the open source [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project to power YAML completion, structure checks, and inline diagnostics. These schemas are aligned with the <Constant name="fusion_engine" /> specification and apply across [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/cloud-release-tracks), even when your development environment is running <Constant name="core" />.
 
-Editor warnings reflect the schema, not necessarily every edge of what a given environment accepts. If a warning looks wrong but <Constant name="dbt" /> runs and previews succeed, trust your project commands and report the discrepancy so the schema can be improved. For background on the latest Semantic Layer YAML shape (including metrics and semantic models), see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
+If a warning looks wrong but <Constant name="dbt" /> commands succeed, trust your project commands and report the discrepancy so the schema can be improved. For background on the latest Semantic Layer YAML shape, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
 ## Get started with the Studio IDE
 
