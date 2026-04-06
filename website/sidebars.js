@@ -303,6 +303,7 @@ const sidebarSettings = {
           items: [
             "docs/local/install-dbt",
             "docs/local/profiles.yml",
+            "docs/local/connection-profiles",
             "docs/local/dbt-core-environments",
             {
               type: "category",
@@ -399,6 +400,7 @@ const sidebarSettings = {
             "docs/dbt-extension-features",
             "docs/install-dbt-extension",
             "docs/configure-dbt-extension",
+            "docs/fusion/vs-compare-changes",
           ],
         },
         {
@@ -504,6 +506,7 @@ const sidebarSettings = {
               label: "Quickstart with the dbt Semantic Layer",
               href: `/guides/sl-snowflake-qs`,
             },
+            "reference/semantic-layer-reference",
             {
               type: "category",
               label: "About MetricFlow",
@@ -880,11 +883,40 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
         "docs/dbt-ai/about-mcp",
-        "docs/dbt-ai/setup-local-mcp",
-        "docs/dbt-ai/setup-remote-mcp",
-        "docs/dbt-ai/integrate-mcp-vscode",
-        "docs/dbt-ai/integrate-mcp-cursor",
-        "docs/dbt-ai/integrate-mcp-claude",
+        "docs/dbt-ai/mcp-available-tools",
+        {
+          type: "category",
+          label: "Get started",
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
+          items: [
+            "docs/dbt-ai/mcp-quickstart-oauth",
+            "docs/dbt-ai/mcp-quickstart-cli",
+            "docs/dbt-ai/mcp-quickstart-remote",
+          ],
+        },
+        {
+          type: "category",
+          label: "Setup and configuration",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/setup-local-mcp",
+            "docs/dbt-ai/setup-remote-mcp",
+            "docs/dbt-ai/mcp-environment-variables",
+            "docs/dbt-ai/mcp-find-ids",
+          ],
+        },
+        {
+          type: "category",
+          label: "Integrations",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/integrate-mcp-claude",
+            "docs/dbt-ai/integrate-mcp-cursor",
+            "docs/dbt-ai/integrate-mcp-vscode",
+          ],
+        },
+        "docs/dbt-ai/mcp-troubleshooting",
       ],
     },
     {
@@ -951,7 +983,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/about-versions" },
       items: [
         "docs/dbt-versions/about-versions",
-        "docs/dbt-versions/core",
+        "docs/dbt-versions/dbt-versions",
         "docs/dbt-versions/cloud-release-tracks",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
         "docs/dbt-versions/product-lifecycles",
@@ -1404,6 +1436,24 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "For semantic models",
+          link: { type: "doc", id: "reference/semantic-model-properties" },
+          items: ["reference/semantic-model-properties"],
+        },
+        {
+          type: "category",
+          label: "For metrics",
+          link: { type: "doc", id: "reference/metric-properties" },
+          items: ["reference/metric-properties"],
+        },
+        {
+          type: "category",
+          label: "For dimensions",
+          link: { type: "doc", id: "reference/dimension-properties" },
+          items: ["reference/dimension-properties"],
+        },
+        {
+          type: "category",
           label: "For functions",
           link: { type: "doc", id: "reference/function-properties" },
           items: [
@@ -1543,6 +1593,7 @@ const sidebarSettings = {
                 "reference/global-configs/indirect-selection",
                 "reference/global-configs/json-artifacts",
                 "reference/global-configs/parsing",
+                "reference/global-configs/sqlparse",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
                 "reference/global-configs/resource-type",
