@@ -44,8 +44,8 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 5. **Command bar:**  The Command bar, located in the lower left of the <Constant name="studio_ide" />, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
 6. **Defer menu:** The **Defer menu** allows developers to configure the deferral environment:
-    - **Development environment:** Same as turning defer off. Build all upstream models using only the Development environment.
-    - **dbt default behavior:** Uses the Staging environment if it's configured, otherwise uses Production.
+    - **Development environment:** Same as turning defer off. Build all upstream models using only the Development environment. Useful for testing in isolation.
+    - **dbt default behavior:** Uses the Staging environment if it's configured, otherwise uses Production. Recommended configuration for most use cases.
     - **Custom environment:** Select the defer environment from any available in the project.
 
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/defer-menu.png" width="60%" title="Set the `defer` environment."/>
