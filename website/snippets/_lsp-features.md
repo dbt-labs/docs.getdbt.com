@@ -4,6 +4,7 @@
 | Autocomplete ref/source args | ✅                          | ✅          | ✅        |
 | CTE Preview                  | ✅                          | ✅          | ✅        |
 | Column-level lineage         | ✅                          | ❌          | ❌        |
+| Compare changes locally      | ✅*                         | ❌          | ❌        |
 | Command palette              | ✅                          | N/A         | ❌        |
 | Error detection              | ✅                          | ✅          | ✅        |
 | Go-to definition             | ✅                          | ✅          | ❌        |
@@ -17,3 +18,5 @@
 | Show compiled SQL            | ✅                          | ✅          | ❌        |
 | View table lineage           | ✅                          | N/A         | ❌        |
 | Warning detection            | ✅                          | ✅          | ❌        |
+
+_* Requires a dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) account._
