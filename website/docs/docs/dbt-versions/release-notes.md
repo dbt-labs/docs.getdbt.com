@@ -16,6 +16,10 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+## April 2026
+
+- **Enhancement:** The Studio IDE status bar now offers more control, more detailed information, and quicker access to settings for deferral, dbt version, and project status. For more information, see the [Studio IDE docs](/docs/cloud/studio-ide/ide-user-interface#the-command-and-status-bar). These updates roll out in phases to existing accounts starting April 6.
+
 ## March 2026
 
 - **Enhancement:** The environment [Connection profiles](/docs/cloud/about-profiles#environment-profiles-table) page has been updated. The profile name is now a clickable button that opens the view/edit drawer, the Connection column links to the connection details page in a new tab, and in edit mode a **swap icon** button lets you change the assigned profile. The previous ellipsis menu has been removed. For details, refer to [About profiles](/docs/cloud/about-profiles).
