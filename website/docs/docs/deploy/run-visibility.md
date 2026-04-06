@@ -49,7 +49,7 @@ To verify the actual count, use the up and down buttons on each status to naviga
 
 <VersionBlock firstVersion="2.0">
 
-When a job on the <Constant name="fusion_engine" /> finishes, selecting a step displays a structured logs view showing the status of each resource. Nodes are classified into the following categories, and you can expand each node to view its log details.
+When a job on the <Constant name="fusion_engine" /> finishes, selecting a step displays a structured logs view showing the status of each resource. Nodes are classified into the following categories, and you can expand each node to view its log details:
 - **Success**
 - **Reused**
 - **Failed**
