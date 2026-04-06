@@ -37,9 +37,8 @@ The following properties are available when defining a group:
 | `name` | Required | A unique name for the group within the project. Used to assign resources via the [`group` config](/reference/resource-configs/group). |
 | `owner` | Required | Identifies who is responsible for the group. Must include either `name` or `email`. |
 | `description` | Optional | <VersionBlock firstVersion="1.10">A human readable description of the group's purpose. Supports markdown and the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).</VersionBlock><VersionBlock lastVersion="1.9">Not supported in this version.</VersionBlock> |
-| `config.meta` | Optional | <VersionBlock firstVersion="1.10">A dictionary of arbitrary key/value metadata about the group. Useful for storing information like cost center, data classification, or team contact details.</VersionBlock><VersionBlock lastVersion="1.9">Not supported in this version.</VersionBlock> |
+| `config.meta` | Optional | A dictionary of arbitrary key/value metadata about the group. Useful for storing information such as cost centers, data classifications, or team contact details.
 
-<VersionBlock firstVersion="1.10">
 
 <File name='models/marts/finance/finance.yml'>
 
@@ -58,7 +57,6 @@ groups:
 
 </File>
 
-</VersionBlock>
 
 ### Adding a model to a group
 

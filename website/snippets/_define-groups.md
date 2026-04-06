@@ -31,6 +31,7 @@ groups:
       meta: # optional
         data_owner: Finance team
         cost_center: finance
+        data_classification: sensitive
 ```
 
 </File>
