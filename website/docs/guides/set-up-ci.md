@@ -73,7 +73,7 @@ To test your new flow, create a new branch in the <Constant name="studio_ide" />
 
 ## Keep comparison manifests stable {#keep-comparison-manifests-stable}
 
-Deferring to Production is straightforward when one primary deploy job owns artifacts and merges are infrequent. With high merge volume, Production’s manifest can still move while other pull requests stay open, so CI may select extra `state:modified` nodes until those branches incorporate the latest merges (or you add a fast merge triggered `dbt parse` in the deferred environment (see [Merge jobs](/docs/deploy/merge-jobs)). Busy staging, QA, or UAT environments add another failure mode as many jobs with different settings overwrite `manifest.json`. Any deferred environment can also be stale for a short window right after a merge until the next successful run refreshes artifacts.
+Deferring to Production is straightforward when one primary deploy job owns artifacts and merges are infrequent. With high merge volume, Production’s manifest can still move while other pull requests stay open, so CI may select extra `state:modified` nodes until those branches incorporate the latest merges (or you add a fast [merge triggered](/docs/deploy/merge-jobs) `dbt parse` in the deferred environment). Busy staging, QA, or UAT environments add another failure mode as many jobs with different settings overwrite `manifest.json`. Any deferred environment can also be stale for a short window right after a merge until the next successful run refreshes artifacts.
 
 ## Enforce best practices with dbt project evaluator
 
