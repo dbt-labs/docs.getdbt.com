@@ -53,7 +53,7 @@ Both methods have their place. But where exactly does each one shine, and where 
 
 ## The benchmark
 
-We ran our experiment against the [ACME Insurance benchmark](https://github.com/datadotworld/cwd-benchmark-data) originally created by Juan Sequeda et al from data.world, a semi-complex dataset meant to mimic real-world analytical problems. 11 questions, each run 20 times, across multiple LLMs.
+We ran our experiment against the [ACME Insurance benchmark](https://github.com/datadotworld/cwd-benchmark-data) originally created by Juan Sequeda, et al., from data.world, a semi-complex dataset meant to mimic real-world analytical problems. 11 questions, each run 20 times, across multiple LLMs.
 
 We tested four configurations:
 
