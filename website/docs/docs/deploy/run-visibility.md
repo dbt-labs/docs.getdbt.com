@@ -66,7 +66,7 @@ For more information about each status, refer to [Telemetry and observability](h
 
 When a job on the <Constant name="fusion_engine" /> fails, the run details page displays a **Debug on Fusion** banner. Click **Debug on Fusion** to open the <Constant name="studio_ide" /> with Fusion enabled, so you can reproduce and investigate the failure interactively.
 
-Before opening the <Constant name="studio_ide" />, dbt automatically sets your `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion`. The button is disabled while this setting is being applied and shows a _Preparing Fusion debug..._ state. If the override fails to save, an inline error message is displayed.
+Before opening the <Constant name="studio_ide" />, dbt sets your environment variable to `latest-fusion` so you can debug using Fusion. 
 
 </VersionBlock>
 
