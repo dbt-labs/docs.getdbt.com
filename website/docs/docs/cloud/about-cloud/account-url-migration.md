@@ -12,6 +12,8 @@ Account-scoped access URLs are being assigned to <Constant name="dbt_platform" /
 - Old: `https://cloud.getdbt.com`
 - New: `https://abc123.dbt.com` (account-specific) where `abc123` is your account's unique identifier and `dbt.com` is the new domain.
 
+<Lightbox src="/img/docs/dbt-cloud/access-control/access-urls.png" width="80%" title="Example of the account-scoped access URLs for a multi-tenant account" />
+
 ## What does this mean for me?
 
 You'll receive an email and in-app notification when your account is scheduled for new access URL assignment. When the change takes effect, you'll be automatically redirected to your `dbt.com` access URL. Log in remains the same, but you'll be redirected to your new access URL. The `getdbt.com` access URL will continue to support integrations until November 1, 2026 unless otherwise specified. 
@@ -40,6 +42,8 @@ The following summarizes what will and won't change when your account-scoped acc
 ## Finding your new access URLs
 
 Once the details of your new access URL are available, you can find them in **Account settings** → **Access URLs**. Each account on your instance has its own URL.
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/access-urls.png" width="80%" title="Example of the account-scoped access URLs for a multi-tenant account" />
 
 ## Integration checklist
 
