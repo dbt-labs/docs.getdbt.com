@@ -39,7 +39,7 @@ In 2023, [we ran a benchmark](https://roundup.getdbt.com/p/semantic-layer-as-the
 - **Data modeling quality matters enormously for both approaches.** Adding even minimal modeling on top of raw tables improved results across the board.
 - **Our recommendation:** Text-to-SQL for ad hoc analyses and smaller datasets. Semantic Layer for enterprise use where accuracy is critical and datasets are large, complex, or messy.
 
-These numbers will keep improving, but we expect the underlying principles to have staying power. **If you just want to try the benchmark yourself or see more detailed data and costs associated, head to [the repo](https://github.com/dbt-labs/dbt-llm-sl-bench).** Otherwise, keep reading for the full methodology and what we learned.
+These numbers will keep improving, but we expect the underlying principles to have staying power. **If you just want to try the benchmark yourself or see more detailed data and the associated costs, head to [the repo](https://github.com/dbt-labs/dbt-llm-sl-bench).** Otherwise, keep reading for the full methodology and what we learned.
 
 ## How the two approaches actually work
 
@@ -47,26 +47,26 @@ Before we get into the numbers, a quick refresher on what's happening under the 
 
 **Text-to-SQL** is the more straightforward pattern. You provide an LLM with some amount of schema information and ask it to generate a SQL query that answers a natural language question. The LLM has to infer the semantics of your data from structural clues: table names, column names, relationships. It then writes a query from scratch every time. This makes it flexible (any question is fair game as long as the data exists), but also fragile. The LLM might join tables incorrectly, misinterpret a column's meaning, or produce a query that runs successfully but returns wrong results. There's no guardrail between the question and the generated SQL.
 
-Ontology-driven approaches, like the **dbt Semantic Layer**, work differently. Instead of asking the LLM to write raw SQL, you define a structured ontology (metrics, dimensions, entities, and the relationships between them) that encodes your business logic. The LLM's job is then reduced to decomposing a natural language question into the correct combination of metrics and dimensions. dbt's Semantic Layer uses its engine MetricFlow to handle the actual query generation deterministically. This means the LLM can't produce an incorrect join or a bad aggregation: if it picks the right metric and dimensions, the query is guaranteed to be correct. Perhaps more importantly, it can't produce _correct looking numbers that are subtly different across runs_: the logic is codified and deterministic. The trade-off is coverage: the Semantic Layer can only answer questions that fall within the scope of what's been modeled.
+Ontology-driven approaches, like the **dbt Semantic Layer**, work differently. Instead of asking the LLM to write raw SQL, you define a structured ontology (metrics, dimensions, entities, and the relationships between them) that encodes your business logic. The LLM's job is then reduced to decomposing a natural language question into the correct combination of metrics and dimensions. dbt's Semantic Layer uses its engine MetricFlow to handle the actual query generation deterministically. This means the LLM can't produce an incorrect join or a bad aggregation: if it picks the right metric and dimensions, the query is guaranteed to be correct. Perhaps more importantly, it can't produce _correct-looking numbers that are subtly different across runs_: the logic is codified and deterministic. The trade-off is coverage: the Semantic Layer can only answer questions that fall within the scope of what's been modeled.
 
 Both methods have their place. But where exactly does each one shine, and where does it fall down? We tested it.
 
 ## The benchmark
 
-We ran our experiment against the [ACME Insurance benchmark](https://github.com/datadotworld/cwd-benchmark-data) originally created by Juan Sequeda, et al., from data.world, a semi-complex dataset meant to mimic real-world analytical problems. 11 questions, each run 20 times, across multiple LLMs.
+We ran our experiment against the [ACME Insurance benchmark](https://github.com/datadotworld/cwd-benchmark-data) originally created by Juan Sequeda et al. from data.world, a semi-complex dataset meant to mimic real-world analytical problems. 11 questions, each run 20 times, across multiple LLMs.
 
 We tested four configurations:
 
 - **Text-to-SQL:** The agent gets schema information and writes queries from scratch.
 - **Minimal Semantic Layer:** A light-touch dbt project on top of the original (highly normalized) tables.
 - **Modeled Semantic Layer:** A reworked project with proper modeling conforming to dbt best practices.
-- **Text-to-SQL on top of modeled data**: The agent is asked to create queries from scratch but it now has access to the same new models created for the previous use case.
+- **Text-to-SQL on top of modeled data:** The agent is asked to create queries from scratch but it now has access to the same new models created for the previous use case.
 
 <Lightbox src="/img/blog/2026-04-07-semantic-layer-vs-text-to-sql-2026/benchmark-configurations.png" width="85%" alt="Diagram showing the four benchmark configurations: Text-to-SQL, Minimal Semantic Layer, Modeled Semantic Layer, and Text-to-SQL on modeled data" />
 
 The most "real world" comparison for dbt users is text-to-SQL vs. Semantic Layer on the modeled project. An important caveat: to make text-to-SQL work, we loaded the entire schema as context, which isn't practical for larger datasets. Keep that in mind as you read the numbers.
 
-## Which model should you use? (It matters less than you'd think)
+## Which model should you use? (It matters less than you'd think) {#which-model-should-you-use}
 
 Before running the full benchmark, we wanted to know: does the choice of model or reasoning effort level make a meaningful difference?
 
@@ -100,14 +100,14 @@ We tested Opus 4.6, Sonnet 4.6, GPT-5.3 Codex, and GPT-5.2 (GPT-5.4 wasn't avail
 <br />
 
 
-The short answer: **for Semantic Layer queries, it barely matters.** Most models hit 100% or near regardless of reasoning effort. The task is specific enough and the context is clearly enough defined that throwing more reasoning tokens at it doesn't help.
+The short answer: **for Semantic Layer queries, it barely matters.** Most models hit 100% or near regardless of reasoning effort. The task is specific enough and the context is clear enough that throwing more reasoning tokens at it doesn't help.
 
 What _does_ change with increased reasoning is speed, and not in the direction you want. GPT models on `xhigh` averaged over 20 seconds per query vs. 8 seconds on `high`, with no meaningful accuracy improvement. For Anthropic models, reasoning effort changed neither results nor latency.
 
 A few surprises:
 
-- **Sonnet 4.6 outperformed Opus 4.6** in our use case
-- **GPT-5.3 Codex and GPT-5.2 performed similarly**
+- Sonnet 4.6 outperformed Opus 4.6 in our use case
+- GPT-5.3 Codex and GPT-5.2 performed similarly
 - The biggest model isn't always the best model for structured data tasks
 
 Based on this, we ran the full benchmark on Sonnet 4.6 and GPT-5.3 Codex with default reasoning levels.
@@ -168,7 +168,7 @@ The results speak for themselves. With just 3 additional models, the Semantic La
 
 (We also ran this on GPT-5.2, but the results were notably weaker: 68% Text-to-SQL accuracy vs. 84.1% with GPT-5.3 Codex.)
 
-## So which should you use?
+## Which should you use?
 
 The answer isn't text-to-SQL _vs._ Semantic Layer. It's both, for different things.
 
