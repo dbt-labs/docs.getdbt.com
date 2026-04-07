@@ -64,7 +64,7 @@ For more information about each status, refer to [Telemetry and observability](h
 
 #### Debugging a failed Fusion run
 
-When a job on the <Constant name="fusion_engine" /> fails, the run details page displays a **Debug on Fusion** banner. Click **Debug on Fusion** to open the <Constant name="studio_ide" /> with Fusion enabled, so you can reproduce and investigate the failure interactively.
+When a job on the <Constant name="fusion_engine" /> fails, the run details page displays a This run failed on Fusion banner. You can click **Debug this in Studio** and select **Debug on Fusion** to open the <Constant name="studio_ide" /> with Fusion enabled, so you can reproduce and investigate the failure interactively.
 
 Before opening the <Constant name="studio_ide" />, dbt sets your environment variable to `latest-fusion` so you can debug using Fusion. 
 
