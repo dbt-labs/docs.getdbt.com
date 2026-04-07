@@ -35,7 +35,7 @@ You can view and download in-progress and historical logs for your dbt runs. Thi
 
 <VersionBlock lastVersion="1.99">
 
-When a job on the <Constant name="core" /> engine finishes, selecting a step opens the **System logs**. At the top, a summary shows how many errors, warnings, deprecations, skips, and successes appear in that step’s output.
+When a job on the <Constant name="core" /> engine finishes, selecting a step opens the **System logs**. At the top, a summary shows how many errors, warnings, deprecations, skips, and successes appear in that step's output.
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/system-logs.png" width="80%" title="System logs summary" />
 
@@ -61,6 +61,12 @@ When a job on the <Constant name="fusion_engine" /> finishes, selecting a step d
 For more information about each status, refer to [Telemetry and observability](https://docs.getdbt.com/docs/fusion/telemetry#node-outcome).
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/fusion-logs.png" width="80%" title="Structured logs in Fusion" />
+
+#### Debugging a failed Fusion run
+
+When a job on the <Constant name="fusion_engine" /> fails, the run details page displays a **Debug on Fusion** banner. Click **Debug on Fusion** to open the <Constant name="studio_ide" /> with Fusion enabled, so you can reproduce and investigate the failure interactively.
+
+Before opening the <Constant name="studio_ide" />, dbt automatically sets your `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion`. The button is disabled while this setting is being applied and shows a _Preparing Fusion debug..._ state. If the override fails to save, an inline error message is displayed.
 
 </VersionBlock>
 
@@ -113,4 +119,3 @@ From the **Modified** section, you can view the following:
 To view the dependencies and relationships of the resources in your project more closely, click **View in <Constant name="catalog" />** to launch [<Constant name="catalog" />](/docs/explore/explore-projects). 
 
 <Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
-
