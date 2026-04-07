@@ -15,7 +15,7 @@ import LSPFeatures from '/snippets/_lsp-features.md';
 
 ## Lazy compilation
 
-The dbt language server uses on-demand compilation, also called lazy compilation. it compiles only the nodes it needs to answer questions about the file you are working in, instead of blocking on a full project compile first. That improves performance because you get editor features for your active file much sooner.
+The dbt language server uses on-demand compilation, also called lazy compilation. It compiles only the nodes it needs to answer questions about the file you are working in, instead of blocking on a full project compile first. That improves performance because you get editor features for your active file much sooner.
 
 ### What compiles first
 
