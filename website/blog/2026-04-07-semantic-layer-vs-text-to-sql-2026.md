@@ -100,7 +100,7 @@ We tested Opus 4.6, Sonnet 4.6, GPT-5.3 Codex, and GPT-5.2 (GPT-5.4 wasn't avail
 <br />
 
 
-The short answer: **for Semantic Layer queries, it barely matters.** Most models hit 100% or near regardless of reasoning effort. The task is specific enough and the context clearly enough defined that throwing more reasoning tokens at it doesn't help.
+The short answer: **for Semantic Layer queries, it barely matters.** Most models hit 100% or near regardless of reasoning effort. The task is specific enough and the context is clearly enough defined that throwing more reasoning tokens at it doesn't help.
 
 What _does_ change with increased reasoning is speed, and not in the direction you want. GPT models on `xhigh` averaged over 20 seconds per query vs. 8 seconds on `high`, with no meaningful accuracy improvement. For Anthropic models, reasoning effort changed neither results nor latency.
 
