@@ -29,6 +29,12 @@ The Databricks adapter for Fusion supports the following [authentication methods
 - Service Principal token (for service users)
 - OAuth
 
+## Warehouse permissions for Fusion
+
+import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+
+<FusionDatabricksWarehousePerms />
+
 ## Databricks configuration details
 
 The <Constant name="fusion_engine" /> `dbt-databricks` adapter is the only supported connection method for Databricks.

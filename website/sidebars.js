@@ -400,6 +400,7 @@ const sidebarSettings = {
             "docs/dbt-extension-features",
             "docs/install-dbt-extension",
             "docs/configure-dbt-extension",
+            "docs/fusion/vs-compare-changes",
           ],
         },
         {

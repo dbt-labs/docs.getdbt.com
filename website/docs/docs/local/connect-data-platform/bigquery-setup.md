@@ -25,20 +25,11 @@ The BigQuery adapter for Fusion supports the following [authentication methods](
 - Service account (JSON file)
 - gcloud OAuth
 
-## BigQuery permissions
+## Warehouse permissions
 
-dbt user accounts need the following permissions to read from and create tables and views in a BigQuery project:
+import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
 
-- BigQuery Data Editor
-- BigQuery User
-- BigQuery Read Session User (New in Fusion. For Storage Read API access)
-
-For BigQuery DataFrames, users need these additional permissions:
-- BigQuery Job User
-- BigQuery Read Session User
-- Notebook Runtime User
-- Code Creator
-- colabEnterpriseUser
+<FusionBigQueryWarehousePerms />
 
 ## Configure Fusion
 
