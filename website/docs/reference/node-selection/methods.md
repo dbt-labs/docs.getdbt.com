@@ -7,12 +7,6 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
-<Expandable alt_header="Differences between --select and --selector">
-
-The `--select` and `--selector` arguments sound similar, but they are different. To understand the difference, see [Differences between `--select` and `--selector`](/reference/node-selection/yaml-selectors#difference-between---select-and---selector).
-
-</Expandable>
-
 import UsingCommas from '/snippets/_using-commas.md';
 
 <UsingCommas />

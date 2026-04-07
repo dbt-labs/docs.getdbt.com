@@ -281,7 +281,7 @@ Running tests for views in every job run can help keep data quality intact and s
     ```
     
 4. Save the file and commit it to your project.
-5. Modify your dbt jobs to include `--selector skip_views_but_test_views`.
+5. Modify your dbt jobs to include <VersionBlock lastVersion="1.11">`--selector skip_views_but_test_views`</VersionBlock><VersionBlock firstVersion="1.12">`--select selector:skip_views_but_test_views`</VersionBlock>.
 
 #### Build only changed views
 
