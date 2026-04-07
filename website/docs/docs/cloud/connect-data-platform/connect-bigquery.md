@@ -13,6 +13,12 @@ import BigQueryPerms from '/snippets/_bigquery-permissions.md';
 
 <BigQueryPerms />
 
+## Warehouse permissions for Fusion
+
+import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
+
+<FusionBigQueryWarehousePerms />
+
 ## Authentication
 
 <Constant name="dbt" /> supports different authentication methods depending on your environment and plan type:
