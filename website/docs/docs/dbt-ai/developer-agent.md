@@ -25,7 +25,7 @@ The agent always has access to the latest dbt-recommended guidance through [dbt 
 
 ## Prerequisites
 
-- An Enterprise-tier plan &mdash; Contact your account manager for access.
+- An Enterprise-tier plan
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
 - A [development environment](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
 - [Account access to <Constant name="copilot" /> features](/docs/cloud/enable-dbt-copilot).
@@ -34,7 +34,6 @@ The agent always has access to the latest dbt-recommended guidance through [dbt 
 
 - The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) only. It's not available in VS Code or the <Constant name="platform_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
-- It does not retain conversation context between sessions. If you close the <Constant name="studio_ide" />, the conversation resets. If you saved any file changes the agent made, those changes will remain in your branch. Unsaved changes are lost.
 - Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask** mode if you want to approve each file change before it is persisted.
 - You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
 
@@ -99,8 +98,6 @@ To validate or run models during a session, the agent may request to run dbt com
 ```
 dbt compile --select model_name
 ```
-
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-invoke-dbt.png" width="95%" title="The Developer agent requesting permission to run a dbt command." />
 
 You can select one of the following options:
 
