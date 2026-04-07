@@ -26,11 +26,23 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 We continue to recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
 
-```sql
+```bash
 python3 -m pip install dbt-core dbt-snowflake
 ```
 
 ## New and changed features and functionality
+
+### `selector` method for named YAML selectors <Lifecycle status="beta" />
+
+You can reference a named selector from `selectors.yml` inside `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`). This makes it easier to compose reusable YAML selectors with other [selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators) on the command line without duplicating logic.
+
+When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt also raises a warning when these flags are combined. If you want to combine a selector with `--select` or `--exclude`, use the new `selector:` method instead.
+
+### Compiled SQL for snapshots <Lifecycle status="beta" />
+
+`dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path.
+
+For more information, refer to [About dbt compile](/reference/commands/compile).
 
 ### Support for `vars.yml` <Lifecycle status="beta" />
 
@@ -49,6 +61,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
+- You can use the [`snowflake_initialization_warehouse`](/reference/resource-configs/snowflake-configs#initialization-warehouse) parameter to specify a warehouse for the initial build and reinitialization of a dynamic table, separate from `snowflake_warehouse` which is used for regular incremental refreshes.
 - You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. 
 
     When `transient` is not set on a model, the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default. Set this flag to `True` to make all dynamic tables transient by default.
@@ -66,3 +79,4 @@ You can read more about each of these behavior changes in the following links:
 ## Quick hits
 
 **Coming soon**
+

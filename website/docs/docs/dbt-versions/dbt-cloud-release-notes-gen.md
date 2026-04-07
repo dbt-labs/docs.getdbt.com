@@ -18,6 +18,108 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## April 1, 2026
+
+## New
+
+### Studio IDE
+
+- **Fuzzy file path search**: Studio IDE now supports fuzzy file path search that finds files in your project using partial name matching. You can filter by glob patterns, set a result limit, and receive ordered results with a total match count, making it faster to navigate large projects.
+
+### dbt platform
+
+- **OAuth consent endpoint for Connected Auth**: A new `/oauth/consent` endpoint enables the Connected Auth OAuth flow, supporting user consent decisions (approve and deny), project-level resource boundaries, and authorization code issuance. This feature is in private beta. To request access, contact your account manager.
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Persistent agent mode across sessions**: The Studio agent now remembers your last-used mode (Ask or Code) across browser sessions, so you no longer need to reselect it each time you open the IDE.
+
+### Studio IDE
+
+- **More accurate file search results**: File search now validates each result against the filesystem before returning matches. Files that have been deleted locally but not yet staged are no longer included in search results.
+
+- **No unexpected git pulls on the primary branch**: Removes behavior where the IDE server automatically pulled changes from your primary branch during git status checks, which could cause unintended overwrites for projects using trunk-based development.
+
+### Orchestration and run status
+
+- **Teradata column-level lineage support**: Adds Teradata to the SQL dialect adapter map, enabling column-level lineage parsing for dbt projects using the Teradata adapter.
+
+### APIs, Identity, and Administration
+
+- **Fusion status includes readiness and migration availability**: Adds fields indicating availability of readiness and migration features.
+
+- **Faster account feature flag propagation**: Account feature flag changes now take effect within 60 seconds instead of up to one hour. You should see feature toggles apply more promptly across your account.
+
+### Webhooks
+
+- **Notification delivery reliability improvements**: Reduced the likelihood of delayed notifications (webhooks, email, Slack, and Teams) in certain third-party/system disruption scenarios.
+
+## Fixes
+
+### APIs, Identity, and Administration
+
+- **GitHub webhook secret null check before signature validation**: The GitHub webhook endpoint now correctly checks for a null webhook secret before attempting to validate the request signature, preventing a crash when a repository's webhook secret is not set.
+
+- **`github_installation_id` and `github_webhook_id` support large values**: These repository fields have been promoted from 32-bit to 64-bit integers (`BigIntegerField`) to accommodate GitHub installation and webhook IDs that exceed the 32-bit integer range.
+
+## Behavior changes
+
+### APIs, Identity, and Administration
+
+- **Fusion migration gated by API availability**: The Fusion migration checklist, the Enable Fusion Environments page, and the "Enable Fusion" button in Studio IDE now use the `is_migration_available` field from the Fusion status API instead of the legacy `orc2609ShowFusionToggle` feature flag. Fusion migration UI is shown only when the backend has marked the project as ready for migration.
+
+## March 25, 2026
+
+## New
+
+### Orchestration and Run Status
+
+- **Fusion run error banner**: When a run using the dbt Fusion engine fails, a banner now appears on the run details page with options to debug the failure in Studio IDE. If dbt Copilot is enabled, you can also open a guided fix-with-Copilot workflow directly from the banner. Contact your account manager to enable.
+
+## Enhancements
+
+### Studio IDE
+
+- **Consistent console pane default size**: The bottom console pane now opens at a preferred size of 33% of the available space, providing a more consistent default layout.
+
+- **Faster text search results**: File search now reports results incrementally on a per-file basis rather than per-match line, reducing memory pressure and improving perceived responsiveness during large searches.
+
+- **Smarter bulk-edit file handling**: When Studio IDE applies multi-file edits (for example, from dbt Copilot agent tasks), it now only updates editor models for files that are already open. Previously, every edited file was opened in a new tab, which cluttered the editor.
+
+### Deployment and Configuration
+
+- **Fusion migration enablement via project API**: You can now set `fusion_migration_enabled` on a project via the project update API. Enabling it requires the `fusion_readiness_write` permission, and the project must meet all readiness prerequisites (supported adapter, supported dbt version, a successful run, and eligible jobs).
+
+- **Filter jobs by Fusion readiness**: The jobs list endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts an `is_fusion_ready` boolean query parameter. When `true`, it returns only conformant or override-ready jobs; when `false`, it returns only non-ready jobs. You can also include `fusion_readiness` in the `include_related` parameter to surface Fusion readiness details alongside the job response.
+
+- **Platform metadata credentials form opens immediately**: When adding platform metadata credentials for a connection, the credential form is now shown immediately instead of requiring you to click an "Add credentials" button first.
+
+## Fixes
+
+### Catalog
+
+- **Accurate resource counts on environment switch**: Fixes a bug where resource counts in the navigation tree were not refreshed when switching environments. You should now see up-to-date counts after changing the active environment.
+
+### Orchestration and Run Status
+
+- **Stuck runs are now cancelled**: A new cleanup job detects runs and run steps that have exceeded the maximum allowed duration and marks them as `CANCELLED`, preventing stale in-progress states from accumulating
+
+### Semantic Layer
+
+- **More reliable Snowflake connections after warehouse auto-resume**: The Semantic Layer Gateway now retries the initial connection when a Snowflake warehouse is waking up from auto-suspend, instead of failing immediately. You should see fewer connection errors when querying the Semantic Layer after a period of inactivity.
+
+### APIs, Identity, and Administration
+
+- **Large group permission sync no longer silently truncated**: Fixed an issue where group permission sync could miss updates for groups with many permissions.
+
+## Behavior Changes
+
+### Studio IDE
+
+- **Fusion OpenTelemetry log rendering always enabled**: Studio IDE now enables Fusion OpenTelemetry (OTel) log rendering for all invocations running on a Fusion core version, removing the previous feature flag requirement. If you are running a Fusion core version, you automatically receive OTel-based log output without any additional configuration.
+
 ## March 18, 2026
 
 ## Enhancements

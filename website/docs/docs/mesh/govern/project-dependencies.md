@@ -112,6 +112,14 @@ with monthly_revenue as (
 
 </File>
 
+
+
+<VersionBlock firstVersion="1.12">
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
+</VersionBlock>
+
 #### Cycle detection
 
 import CycleDetection from '/snippets/_mesh-cycle-detection.md';
