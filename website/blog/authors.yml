@@ -55,7 +55,7 @@ bennie_regenold:
   page: true
 benoit_perigaud:
   image_url: /img/blog/authors/benoit-perigaud.jpeg
-  title: Staff Analytics Engineer at dbt Labs
+  title: Staff Developer Experience Advocate at dbt Labs
   socials:
     linkedin: benoit-perigaud
   name: Benoit Perigaud
