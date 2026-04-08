@@ -20,7 +20,7 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
 
 ## Set up Okta
 
-1. Log in to your Okta account and select **Applications** from the sidebar. Find the active app configured for the <Constant name="dbt" /> SSO integration and click on it. 
+1. Log in to your Okta account and select **Applications** from the sidebar. Open the application you configured for SSO. 
 2. Click on the app and navigate to the **General** tab.
 3. In **App Settings**, click **Edit** and make sure you check the **SCIM** checkbox on the **Provisioning** row to enable SCIM provisioning. 
 4. Click **Save** and the **Provisioning** tab will now be visible.
