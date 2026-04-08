@@ -73,11 +73,16 @@ select * from {{ ref('my_model') }}
 
 ### An exception
 
-There is one exception to this rule: curlies inside of curlies are acceptable in hooks (ie. `on-run-start`, `on-run-end`, `pre-hook`, and `post-hook`).
+There is one exception to this rule: curlies inside of curlies are acceptable (and often required) in hooks (`on-run-start`, `on-run-end`, `pre-hook`, and `post-hook`).
 
 Code like this is both valid, and encouraged:
-```
+```sql
 {{ config(post_hook="grant select on {{ this }} to role bi_role") }}
 ```
 
-So why are curlies inside of curlies allowed in this case? Here, we actually _want_ the string literal `"grant select on {{ this }} ..."` to be saved as the configuration value for the post-hook in this model. This string will be re-rendered when the model runs, resulting in a sensible SQL expression like `grant select on "schema"."table"....` being executed against the database. These hooks are a special exception to the rule stated above.
+So why are curlies inside of curlies allowed in this case? Here, we actually _want_ the string literal `"grant select on {{ this }} ..."` to be saved as the configuration value for the post-hook. This string will be re-rendered when the model runs (at execution time), resulting in a correct SQL expression like `grant select on "schema"."table"....` being executed against the database.
+
+This is called a late-rendering hook. The hook string is stored during the parse phase and only evaluated when dbt actually executes the model. At that point, context variables like `{{ this }}`, `{{ ref() }}`, and `{{ source() }}` are fully resolved with the correct database, schema, and relation name.
+
+For more information, see [Late-rendering in hooks](/reference/resource-configs/pre-hook-post-hook#late-rendering-in-hooks).
+
