@@ -144,7 +144,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `role`  | None | Optional, user identifier of the current session |
 | `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
-| `ra3_node`  | true | Optional, default `False`. Enables cross-database sources |
+| `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Acts as an alias for `datasharing`; setting `ra3_node: true` enables `SVV_*` metadata queries. Kept for backwards compatibility; use `datasharing` for new projects instead. |
+| `datasharing` | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html) by using Redshift's native `SVV_*` system views for metadata queries instead of PostgreSQL catalog tables. Available in `dbt-redshift v1.11.0rc1` and later. |
 | `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
 | `retry_all`  | true | Allows dbt to retry all statements in a query|
@@ -205,8 +206,9 @@ company-name:
       # Optional Redshift configs:
       sslmode: prefer
       role: None
-      ra3_node: true 
-      autocommit: true 
+      ra3_node: true
+      datasharing: true
+      autocommit: true
       threads: 4
       connect_timeout: None
 
@@ -260,10 +262,11 @@ If you receive the "You must specify a region" error when using IAM Authenticati
       connect_timeout: None 
       [retries](#retries): 1 
       role: None
-      sslmode: prefer 
-      ra3_node: true  
-      autocommit: true  
-      autocreate: true  
+      sslmode: prefer
+      ra3_node: true
+      datasharing: true
+      autocommit: true
+      autocreate: true
       db_groups: ['ANALYSTS']
 
 ```
@@ -334,6 +337,58 @@ profile-to-my-RS-target:
 </File>
 
 To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
+
+### `datasharing`
+
+Previously, the Redshift adapter used PostgreSQL-compatible catalog tables (for example, `pg_*`, `information_schema`) for metadata operations such as listing relations, schemas, and columns. These tables only surface objects within the currently connected database, which prevents cross-database operations needed for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html).
+
+Starting `dbt-redshift v1.11.0rc1`, you can set `datasharing: true` in your `profiles.yml` to enable cross-database and cross-cluster access. When enabled, `dbt-redshift` switches metadata queries to Redshift's native `SVV_*` system views. You can then materialize models into a database or cluster other than the one specified in your profile using `{{ config(database='other_db') }}`.
+
+Example configuration:
+
+<File name='profiles.yml'>
+
+```yml
+company-name:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      host: hostname.region.redshift.amazonaws.com
+      ...
+      datasharing: true  # default: false
+```
+
+</File>
+
+Once enabled, you can materialize a model into a different database by setting `database` in the model config. For example:
+
+```sql
+{{ config(database='other_db') }}
+
+select * from {{ ref('my_model') }}
+```
+
+The following macros switch to `SVV_*` sources when `datasharing: true`:
+
+| Macro | Without `datasharing` | With `datasharing` |
+|-------|-----------------------|-------------------|
+| `list_relations_without_caching` | `information_schema.tables` | `SVV_ALL_TABLES` |
+| `list_schemas`, `check_schema_exists` | `pg_namespace` | `SVV_ALL_SCHEMAS` |
+| `get_columns_in_relation` | `information_schema.columns` | `SVV_ALL_COLUMNS` |
+| Catalog queries | `pg_class`, `pg_tables`, `pg_views` | `SVV_ALL_TABLES` |
+| `get_relation_last_modified` | `information_schema.tables` | `SVV_ALL_TABLES` |
+| Materialized view describe | `information_schema.columns` | `SVV_ALL_COLUMNS` |
+
+Setting `ra3_node: true` also enables this behavior and is kept for backwards compatibility. For new projects, use `datasharing: true` instead.
+
+Take note of the following limitations when using `datasharing`:
+
+- Creating views (including materialized views) in another database is not supported.
+- Source freshness checks can have a lag of up to 5 minutes.
+- Metadata queries are limited to 10,000 rows. If a database has more than 10,000 schemas, or a schema has more than 10,000 tables, dbt returns metadata errors.
+- Cross-database writes require the `SNAPSHOT` transaction isolation level.
+- For views that reference tables in another database, define them as [late-binding views](/reference/resource-configs/redshift-configs#late-binding-views).
 
 ### Deprecated `profile` parameters in 1.5
 
