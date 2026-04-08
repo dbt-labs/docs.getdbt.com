@@ -12,7 +12,7 @@ Account-scoped access URLs are being assigned to <Constant name="dbt_platform" /
 - Old: `https://cloud.getdbt.com`
 - - New: `https://abc123.dbt.com`, `https://abc123.jp1.dbt.com`, [and so on](/docs/cloud/about-cloud/access-regions-ip-addresses) (account-specific, where `abc123` is your account's unique identifier)
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/access-urls.png" width="80%" title="Example of the account-scoped access URLs for a multi-tenant account" />
+<Lightbox src="/img/docs/dbt-cloud/access-url.png" width="80%" title="Example of the account-scoped access URLs for a multi-tenant account" />
 
 ## What does this mean for me?
 
@@ -43,7 +43,7 @@ The following summarizes what will and won't change when your account-scoped acc
 
 Once the details of your new access URL are available, you can find them in **Account settings** → **Access URLs**. Each account on your instance has its own URL.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/access-urls.png" width="80%" title="Example of the account-scoped access URLs for a multi-tenant account" />
+<Lightbox src="/img/docs/dbt-cloud/access-url.png" width="80%" title="Example of the account-scoped access URLs for a multi-tenant account" />
 
 ## Integration checklist
 
