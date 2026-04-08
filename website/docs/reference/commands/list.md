@@ -29,9 +29,6 @@ See [resource selection syntax](/reference/node-selection/syntax) for more infor
 <VersionBlock lastVersion="1.11">
 - `--selector`: This flag specifies one named selector, defined in a `selectors.yml` file.
 </VersionBlock>
-<VersionBlock firstVersion="1.12">
-- `--selector` (legacy): This flag specifies one named selector, defined in a `selectors.yml` file. Starting in v1.12, use the [`selector:` method](/reference/node-selection/methods#selector) with `--select` instead (for example, `--select selector:my_selector`).
-</VersionBlock>
 - `--output`: This flag controls the format of output from the `dbt ls` command.
 - `--output-keys`: If `--output json`, this flag controls which node properties are included in the output.
 

@@ -270,6 +270,14 @@ If I run a command that defines its own selection criteria (through `--select`, 
 
 <VersionBlock firstVersion="1.12">
 If I run a command that defines its own selection criteria (through `--select` or `--exclude`), dbt will ignore the default selector and use the flag criteria instead. It will not try to combine the two.
+
+If you want to apply both, use the `selector:` method with `--select` to reference the default selector alongside other criteria. For example:
+
+```
+dbt build --select selector:root_project_only tag:nightly
+```
+
+For more information, refer to [Using `selector:` with `--select`](#using-selector-with---select).
 </VersionBlock>
 
 Only one selector may set `default: true` for a given invocation; otherwise, dbt will return an error. You may use a Jinja expression to adjust the value of `default` depending on the environment, however:
@@ -354,15 +362,12 @@ For additional examples, check out [this GitHub Gist](https://gist.github.com/je
 
 ## Using `selector:` with `--select`
 
-Starting in dbt Core v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when the legacy `--selector` flag is combined with `--select` or `--exclude`. Use the [`selector:` method](/reference/node-selection/methods#selector) directly within `--select` to reference a predefined selector alongside other selection criteria.
+Starting in dbt Core v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when the legacy `--selector` flag is combined with `--select` or `--exclude`. Use the [`selector:` method](/reference/node-selection/methods#selector) directly with `--select` to reference a predefined selector alongside other selection criteria.
 
-<SimpleTable>
-| | `--select` with `selector:` method |
-| ------- | ----------------------------------- |
-| Definition | References a predefined selector from `selectors.yml` within `--select`. |
-| Usage | Combines reusable selector logic with other `--select` criteria or `--exclude`. |
-| Flexibility | Most flexible — reusable logic with ad-hoc filtering in a single command. |
-| Example | `dbt run --select selector:nightly_diet_snowplow tag:nightly`<br />(runs models from the `nightly_diet_snowplow` selector that also have the `nightly` tag). |
-</SimpleTable>
+For example: 
+
+```
+dbt run --select selector:nightly_diet_snowplow tag:nightly
+```
 
 </VersionBlock>
