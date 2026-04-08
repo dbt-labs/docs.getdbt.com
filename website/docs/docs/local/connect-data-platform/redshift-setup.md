@@ -380,7 +380,7 @@ The following macros switch to `SVV_*` sources when `datasharing: true`:
 | `get_relation_last_modified` | `information_schema.tables` | `SVV_ALL_TABLES` |
 | Materialized view describe | `information_schema.columns` | `SVV_ALL_COLUMNS` |
 
-Setting `ra3_node: true` also enables this behavior and is kept for backwards compatibility. For new projects, use `datasharing: true` instead.
+`ra3_node: true` also enables this behavior and is supported for backwards compatibility. For new projects, use `datasharing: true` instead.
 
 Take note of the following limitations when using `datasharing`:
 
