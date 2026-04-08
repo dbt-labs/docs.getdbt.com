@@ -7,10 +7,10 @@ pagination_prev: null
 unlisted: true
 ---
 
-Account-scoped access URLs are being assigned to <Constant name="dbt_platform" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. [Access URLs](/docs/cloud/about-cloud/access-regions-ip-addresses) are moving from the `getdbt.com` domain to `dbt.com`, and each account will receive its own unique URL rather than sharing a deployment-level URL.
+Account-scoped access URLs are being assigned to <Constant name="dbt_platform" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. [Access URLs](/docs/cloud/about-cloud/access-regions-ip-addresses) are moving from the `getdbt.com` domain to `dbt.com`, and each account will receive its own unique URL rather than sharing a deployment-level URL &mdash; across all regions. For example:
 
 - Old: `https://cloud.getdbt.com`
-- New: `https://abc123.dbt.com` (account-specific) where `abc123` is your account's unique identifier and `dbt.com` is the new domain.
+- - New: `https://abc123.dbt.com`, `https://abc123.jp1.dbt.com`, [and so on](/docs/cloud/about-cloud/access-regions-ip-addresses) (account-specific, where `abc123` is your account's unique identifier)
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/access-urls.png" width="80%" title="Example of the account-scoped access URLs for a multi-tenant account" />
 
