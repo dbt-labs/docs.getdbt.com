@@ -25,7 +25,7 @@ The agent always has access to the latest dbt-recommended guidance through [dbt 
 
 ## Prerequisites
 
-- An Enterprise-tier plan &mdash; Contact your account manager for access.
+- An Enterprise-tier plan
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
 - A [development environment](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
 - [Account access to <Constant name="copilot" /> features](/docs/cloud/enable-dbt-copilot).
@@ -34,8 +34,7 @@ The agent always has access to the latest dbt-recommended guidance through [dbt 
 
 - The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) only. It's not available in VS Code or the <Constant name="platform_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
-- It does not retain conversation context between sessions. If you close the <Constant name="studio_ide" />, the conversation resets. If you saved any file changes the agent made, those changes will remain in your branch. Unsaved changes are lost.
-- Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask** mode if you want to approve each file change before it is persisted.
+- Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
 - You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
 
 ## Using the Developer agent
@@ -57,9 +56,9 @@ For more details on the <Constant name="dev_agent" /> and how it works, see the 
 The <Constant name="copilot" /> panel contains:
 
 1. **Quick actions** (center): The <Constant name="studio_ide" /> surfaces quick actions at the top of the panel to help you get started with common tasks, like generating documentation, semantic models, tests, and metrics. When selected, the text field is pre-filled with a prompt for the selected action. These quick actions may evolve over time as new capabilities are added.
-2. **Agent mode button** (bottom left): Switch between **Ask** and **Code** mode. Click the button to change modes.
-3. **Model context** (bottom left, next to mode): Shows the currently open file. Use `@` in the text field to reference a different model. Click **x** to remove the model context.
-4. **Text input field** (bottom right): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a model as context. This scopes the agent's changes to that resource.
+2. **Agent mode button** (bottom left): Switch between **Ask for approval** and **Edit files automatically** mode. Click the button to change modes.
+3. **Model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different model. Click **x** to remove the model context.
+4. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a model as context. This scopes the agent's changes to that resource.
 5. **Start over** (top right): Resets the current session. When you click this button, a confirmation prompt appears. Click **Start over** to confirm, or **Cancel** to return to your current conversation. You cannot undo this action.
 6. **Stop** or **Enter** (bottom right): Press **Enter** to submit your prompt. Press **Stop** to stop the current session and agent processing. You cannot undo this action. 
 
@@ -73,13 +72,13 @@ The <Constant name="dev_agent" /> operates in two modes:
 
 | Mode | Behavior |
 |------|----------|
-| **Ask** (default) | The agent drafts edits to files. You must approve each file change before it is persisted. Best when you want tight control over what gets saved to your branch. |
-| **Code** | The agent drafts and automatically edits files without per-file approval. Best for faster iteration when you're confident in the prompt. | 
+| **Ask for approval** (default) | The agent drafts edits to files. You must approve each file change before it is persisted. Best when you want tight control over what gets saved to your branch. |
+| **Edit files automatically** | The agent drafts and automatically edits files without per-file approval. Best for faster iteration when you're confident in the prompt. | 
 </SimpleTable>
 
 You can switch between modes at any time by clicking the **Agent mode** button in the <Constant name="copilot" /> panel.
 
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask mode, requesting approval before making file edits." />
+<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask for approval mode, requesting approval before making file edits." />
 
 
 #### Reviewing agent suggestions
@@ -99,8 +98,6 @@ To validate or run models during a session, the agent may request to run dbt com
 ```
 dbt compile --select model_name
 ```
-
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-invoke-dbt.png" width="95%" title="The Developer agent requesting permission to run a dbt command." />
 
 You can select one of the following options:
 
