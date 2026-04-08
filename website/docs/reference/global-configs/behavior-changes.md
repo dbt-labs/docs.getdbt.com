@@ -540,7 +540,7 @@ The project-level configuration for analyses is a beta feature in <Constant name
 Previously, project-level configuration for [analyses](/docs/build/analyses) in `dbt_project.yml` was silently ignored. Fully qualified names (FQNs) for analyses also contained an extra `analyses` path segment that was inconsistent with other resource types.
 
 When `require_corrected_analysis_fqns` is set to `True`, dbt:
-- Routes analysis configurations from the `analyses` block in `dbt_project.yml`, enabling project-level and folder-level configurations to take effect.
+- Routes analysis configurations from the `analyses` block in `dbt_project.yml`, enabling project-level configurations to take effect.
 - Removes the extra FQN segment so that analysis FQNs are consistent with other resource types (for example, `your_project.subdirectory.analysis_name` instead of `your_project.analyses.subdirectory.analysis_name`).
 
 <AnalysesProjectLevelConfig />
@@ -552,25 +552,8 @@ flags:
   require_corrected_analysis_fqns: true
 
 analyses:
-  +enabled: false  # disable all analyses by default
+  +enabled: true | false
 ```
-</File>
-
-You can also configure analyses at the folder level by nesting subfolders under your project name in the `analyses` block.
-
-<File name='dbt_project.yml'>
-
-```yaml
-flags:
-  require_corrected_analysis_fqns: true
-
-analyses:
-  your_project:
-    +enabled: false  # disable all analyses by default
-    my_subfolder:
-      +enabled: true  # enable a specific subfolder
-```
-
 </File>
 
 For more information, refer to [Analyses](/docs/build/analyses) and [Analysis properties](/reference/analysis-properties).

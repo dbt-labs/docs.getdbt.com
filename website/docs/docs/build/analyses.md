@@ -89,25 +89,8 @@ flags:
   require_corrected_analysis_fqns: true
 
 analyses:
-  +enabled: false
+  +enabled: true | false
 ```
-</File>
-
-You can also configure analyses at the folder level by nesting subfolders under your project name in the `analyses` block.
-
-<File name='dbt_project.yml'>
-
-```yaml
-flags:
-  require_corrected_analysis_fqns: true
-
-analyses:
-  your_project:
-    +enabled: false  # disable all analyses by default
-    my_subfolder:
-      +enabled: true  # enable a specific subfolder
-```
-
 </File>
 
 </VersionBlock>

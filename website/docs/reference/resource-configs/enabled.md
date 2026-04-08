@@ -248,21 +248,6 @@ analyses:
 
 </File>
 
-<File name='dbt_project.yml'>
-
-```yaml
-flags:
-  require_corrected_analysis_fqns: true
-
-analyses:  
-  your_project:
-    +enabled: false  # disable all analyses by default
-    my_subfolder:
-      +enabled: true  # enable a specific subfolder
-```
-</File>
-
-
 </TabItem>
 
 <TabItem value="metrics">
