@@ -124,7 +124,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 ### Redshift
 
-- The new `datasharing` profile credential (default `false`) migrates metadata queries from PostgreSQL catalog tables (`pg_*`, `information_schema`) to Redshift's native `SVV_*` system views (`SVV_ALL_TABLES`, `SVV_ALL_COLUMNS`, `SVV_ALL_SCHEMAS`). This is required for cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Setting `ra3_node: true` in your `profiles.yml` also enables this behavior. See [Redshift setup](/docs/local/connect-data-platform/redshift-setup) for configuration details.
+- The new `datasharing` profile credential migrates metadata queries from PostgreSQL catalog tables (`pg_*`, `information_schema`) to Redshift's native `SVV_*` system views (for example, `SVV_ALL_TABLES`, `SVV_ALL_COLUMNS`, `SVV_ALL_SCHEMAS`). This enables cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup) for configuration details.
 - The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#the-redshift_skip_autocommit_transaction_statements-flag) flag is now `True` by default. When `autocommit=True` (the default since dbt-redshift 1.5), dbt now skips sending unnecessary `BEGIN`/`COMMIT`/`ROLLBACK` statements, improving performance by reducing round trips to Redshift. To preserve the legacy behavior, set the flag to `False`.
 
 ### Spark
