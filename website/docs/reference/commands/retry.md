@@ -4,11 +4,64 @@ sidebar_label: "retry"
 id: "retry"
 ---
 
-`dbt retry` re-executes the last `dbt` command from the node point of failure. 
+
+`dbt retry` re-executes the last `dbt` command from the node point of failure.
 - If no nodes are executed before the failure (for example, if a run failed early due to a warehouse connection or permission errors), `dbt retry` won't run anything since there's no recorded nodes to retry from.
 - In these cases, we recommend checking your [`run_results.json` file](/reference/artifacts/run-results-json) and manually re-running the full job so the nodes build. 
 - Once some nodes have run, you can use `dbt retry` to re-execute from any new point of failure.
 - If the previously executed command completed successfully, `dbt retry` will finish as `no operation`. 
+
+## Retry flags
+
+`dbt retry` accepts the following flags:
+
+| Flag | Description |
+|------|-------------|
+| `--threads <int>` | Override the number of threads used in the original run |
+| `--vars '<yaml>'` | Override variables from the original run |
+| `--target <target>` | Override the target from the original run |
+| `--profile <profile>` | Override the profile from the original run |
+| `--profiles-dir <path>` | Path to the directory containing `profiles.yml` |
+| `--project-dir <path>` | Path to the directory containing `dbt_project.yml` |
+| `--target-path <path>` | Override the target directory path |
+| `--state <path>` | Path to a directory containing `run_results.json` from a previous run (defaults to the target directory) |
+| `--full-refresh` | Override incremental models to run as full refreshes |
+
+All other flags (selectors, `--select`, `--exclude`, etc.) are inherited from the original command and cannot be overridden.
+
+### Examples
+
+Basic retry re-runs failed nodes from the previous command:
+```shell
+dbt retry
+```
+
+Retry using a specific target:
+```shell
+dbt retry --target prod
+```
+
+Retry with more threads:
+```shell
+dbt retry --threads 8
+```
+
+Retry with variable overrides:
+```shell
+dbt retry --vars '{"my_var": "new_value"}'
+```
+
+Retry using run results from a different directory (for example, from CI artifacts):
+```shell
+dbt retry --state path/to/previous/run
+```
+
+Retry with full refresh for incremental models:
+```shell
+dbt retry --full-refresh
+```
+
+## Supported commands
 
 Retry works with the following commands:
 
