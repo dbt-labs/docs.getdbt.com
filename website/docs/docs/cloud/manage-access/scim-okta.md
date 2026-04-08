@@ -32,7 +32,7 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
     - **Push Profile Updates**
     - **Push Groups**
     - **Import New Users and Profile Updates** (Optional for users created before SSO/SCIM setup)
-8. From the **Authentication mode** dropdown, select **HTTP Header**.
+8. For **Authentication mode** dropdown, select **HTTP Header**.
 9. In the **Authorization** section, enter the token from <Constant name="dbt" /> into the **Bearer** field.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="80%" title="The completed SCIM configuration in the Okta app." />
 10. Click **Save** to test the connection and you will be taken to the **Provisioning** tab.
