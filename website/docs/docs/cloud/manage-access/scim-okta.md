@@ -26,7 +26,7 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
 4. Click **Save** and the **Provisioning** tab will now be visible.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-provisioned.png" width="80%" title="Enable SCIM provisioning in Okta." />
 5. Open the **Provisioning** tab and select **Integration**.
-6. Click **Edit** and enter the **SCIM base URL** from [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) in the first field, then enter your preferred **Unique identifier field for users** &mdash; we recommend `userName`.
+6. Click **Edit** and enter the **SCIM base URL** from [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) in the first field. For **Unique identifier field for users**, we recommend `userName`.
 7. Select the boxes for the following **Supported provisioning actions**:
     - **Push New Users**
     - **Push Profile Updates**
