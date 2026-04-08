@@ -53,7 +53,7 @@ All dbt Labs managed integrations will be updated automatically, which consists 
 | Network allowlists | Add new access URLs to your allowlist policies |
 | Inbound webhooks | Update access URLs in your webhook configurations |
 | [SCIM (Okta)](/docs/cloud/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
-| Admin API, Discovery API, Semantic Layer API | Update access URLs in your API clients |
+| [API integrations](/docs/dbt-cloud-apis/overview) | Update access URLs in your API clients |
 | [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) | Update access URLs in your Terraform configuration |
 | Browser Bookmarks | Update personal and shared bookmarks |
 
@@ -61,7 +61,7 @@ All dbt Labs managed integrations will be updated automatically, which consists 
 
 <Expandable alt_header="Why are access URLs changing?">
 
-We are transitioning from generic instance URLs to account-specific URLs to enhance your experience and strengthen security. This change provides more descriptive URLs to improve <Constant name="dbt" /> URL management, and enables stronger cookie and token policies to protect account data.
+We are transitioning from generic region URLs to account-specific URLs to enhance your experience and strengthen security. This change provides more descriptive URLs to improve <Constant name="dbt" /> URL management, and enables stronger cookie and token policies to protect account data.
 
 </Expandable>
 
