@@ -64,7 +64,8 @@ Improvements include:
 - **Semantic model dependencies**: When a semantic model references a disabled or missing model, dbt raises a `CompilationError` instead of an `IndexError`.
 <Expandable alt_header="More scenarios with exception handling improvements">
 
-- A string concatenation in a `doc()` argument (such as `doc('foo' ~ 'bar')`) is skipped for doc block resolution instead of crashing with an `AttributeError`. A Jinja variable (such as `doc(my_variable)`) raises a `DocTargetNotFoundError`.
+- A string concatenation in a `doc()` argument (such as `doc('foo' ~ 'bar')`) is skipped for doc block resolution instead of crashing with an `AttributeError`. 
+- A Jinja variable (such as `doc(my_variable)`) raises a `DocTargetNotFoundError`.
 - When a `meta` value in `schema.yml` references an undefined Jinja variable, dbt converts it to `None` instead of raising a `TypeError` during partial parse.
 - When `sources`, `tables`, `exposure` tags, or `packages` are set to `null`, dbt treats them as an empty list instead of raising a `TypeError`.
 - When a model with custom contract constraints is evaluated during `state:modified` selection, dbt returns `None` for unknown constraint types instead of raising a `KeyError`.
