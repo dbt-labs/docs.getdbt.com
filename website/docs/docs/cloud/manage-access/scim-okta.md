@@ -43,7 +43,7 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
     <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning-actions.png" width="70%" title="Ensure the users are properly provisioned with these settings." />
 
 12. Click **Save** to complete the provisioning configuration. 
-13. To complete your group setup, go to the **Push Groups** tab and make sure you push your Okta groups to <Constant name="dbt_platform" />. Doing this will 'push' the groups to <Constant name="dbt_platform" /> so they can appear there and be managed. Once groups are pushed, an admin must go to <Constant name="dbt_platform" /> and assign the [required permissions](/docs/cloud/manage-access/enterprise-permissions) to each group.
+13. To complete your group setup, go to **Push Groups** and push your Okta groups to <Constant name="dbt_platform" />. This makes the groups available in <Constant name="dbt_platform" />. Then, an admin must assign the [required permissions](/docs/cloud/manage-access/enterprise-permissions) to each group.
 
 You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_platform" />. You can [manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses) to set license type for users as they are provisioned.
 
