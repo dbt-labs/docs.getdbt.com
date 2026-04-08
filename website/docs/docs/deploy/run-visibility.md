@@ -33,7 +33,7 @@ An example of a completed run with a configuration for a [job completion trigger
 
 You can view and download in-progress and historical logs for your dbt runs. This makes it easier for you to debug errors more efficiently.
 
-For in-progress steps, dbt only displays the tail of the log output &mdash; up to the last 1,000 lines or 0.5 MB, whichever comes first. This applies to both console and debug logs.
+For in-progress steps, <Constant name="dbt_platform" /> only displays the tail of the log output &mdash; up to the last 1,000 lines or 0.5 MB, whichever comes first. This applies to both console and debug logs.
 - When logs are truncated, a notice appears at the top of the log. Because only the tail is displayed, a resource that is still running may not appear in the logs until it completes and its output reaches the tail.
 - When a step is complete, the full log is available. 
 
