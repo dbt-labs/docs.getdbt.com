@@ -389,9 +389,6 @@ var siteSettings = {
           enableLlmsFullTxt: true,
           relativePaths: false,
         },
-        markdown: {
-          includeVersionedDocs: true,
-        },
         processing: {
           beforeDefaultRehypePlugins: [rehypeCodeLanguage],
         },
@@ -399,6 +396,7 @@ var siteSettings = {
           includeBlog: false,
           includePages: false,
           includeDocs: true,
+          includeVersionedDocs: true,
         },
         // Content organization
         structure: {
