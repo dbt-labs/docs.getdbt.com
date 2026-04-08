@@ -54,7 +54,7 @@ You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in
 
 Previously, some internal failures surfaced as Python errors (for example, `AttributeError`, `KeyError`, `IndexError`, `RuntimeError`), which could be difficult to understand. In <Constant name="core" /> v1.12, these are replaced with dbt errors (such as `CompilationError` and `ParsingError`) that include a clear error message. When you need the full Python error output for debugging, use `--debug` or check the logs.
 
-Improvements include:
+Key improvements:
 
 - **Cleaner default output**: Built-in Python exceptions (`Exception`, `ValueError`, `RuntimeError`) are replaced with dbt errors, so dbt no longer treats them as internal errors or displays unnecessary stack traces.
 - **Parsing and config validation**: Invalid field values raise a `ParsingError` instead of a raw `InvalidFieldValue` exception when applying `dbt_project.yml` configs to resources. In a generic data test, a `config` value that is a string or a number instead of a set of key-value pairs raises a `TestConfigNotDictError`.
@@ -64,7 +64,7 @@ Improvements include:
 - **Semantic model dependencies**: When a semantic model references a disabled or missing model, dbt raises a `CompilationError` instead of an `IndexError`.
 <Expandable alt_header="More scenarios with exception handling improvements">
 
-- A string concatenation in a `doc()` argument (such as `doc('foo' ~ 'bar')`) is skipped for doc block resolution instead of crashing with an `AttributeError`. 
+- A string concatenation in a `doc()` argument (such as `doc('foo' ~ 'bar')`) is skipped during doc block resolution instead of crashing with an `AttributeError`. 
 - A Jinja variable (such as `doc(my_variable)`) raises a `DocTargetNotFoundError`.
 - When a `meta` value in `schema.yml` references an undefined Jinja variable, dbt converts it to `None` instead of raising a `TypeError` during partial parse.
 - When `sources`, `tables`, `exposure` tags, or `packages` are set to `null`, dbt treats them as an empty list instead of raising a `TypeError`.
