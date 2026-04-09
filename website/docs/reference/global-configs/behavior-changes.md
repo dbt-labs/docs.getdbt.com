@@ -539,9 +539,9 @@ The project-level configuration for analyses is a beta feature in <Constant name
 
 Previously, project-level configuration for [analyses](/docs/build/analyses) in `dbt_project.yml` was silently ignored. Fully qualified names (FQNs) for analyses also contained an extra `analyses` path segment that was inconsistent with other resource types.
 
-When `require_corrected_analysis_fqns` is set to `True`, dbt:
+When `require_corrected_analysis_fqns` is set to `true`, dbt:
 - Routes analysis configurations from the `analyses` block in `dbt_project.yml`, enabling project-level configurations to take effect.
-- Removes the extra FQN segment so that analysis FQNs are consistent with other resource types (for example, `your_project.subdirectory.analysis_name` instead of `your_project.analyses.subdirectory.analysis_name`).
+- Removes the extra FQN segment so that analysis FQNs are consistent with other resource types (for example, `your_project.my_analysis` instead of `your_project.analyses.my_analysis`).
 
 <AnalysesProjectLevelConfig />
 
