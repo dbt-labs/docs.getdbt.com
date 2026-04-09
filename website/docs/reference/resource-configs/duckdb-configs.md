@@ -26,7 +26,7 @@ your_profile_name:
 
 This will run your dbt-duckdb pipeline against the [DuckDB](https://www.duckdb.org) file at the specified `path`, persisting relations across runs.
 
-If you omit the `path` field, it is automatically set to the special value `:memory:`, and the database will run in-memory without persistence, meaning all relations will be lost after your run completes.
+If you omit the `path` field, it is automatically set to the special value `:memory:` and the database will run in-memory without persistence, meaning all relations will be lost after your run completes.
 
 
 `dbt-duckdb` adds the `database` property: its value is automatically set to the basename of the file in the path argument with the suffix removed. For example, if the path is `/tmp/a/dbfile.duckdb`, the `database` field will be set to `dbfile`.
