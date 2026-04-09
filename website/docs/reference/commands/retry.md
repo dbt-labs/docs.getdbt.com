@@ -55,11 +55,7 @@ Run `dbt retry --help` for the full list your build exposes.
 
 Unlike `dbt retry` with <Constant name="core" />, <Constant name="fusion" /> lets you narrow what gets retried using [`--select`](/reference/node-selection/syntax), [`--exclude`](/reference/node-selection/syntax), and [`--selector`](/reference/node-selection/yaml-selectors). Those arguments override the prior invocation’s selection set for the retry run instead of only inheriting it.
 
-### Examples
-
-```shell
-dbtf retry
-```
+#### Examples
 
 ```shell
 dbtf retry --select my_model+
