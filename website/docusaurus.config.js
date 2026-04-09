@@ -84,14 +84,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "fast-track-workshop",
+      id: "agent-skills-webinar",
       content:
-        "Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!",
+        "Join our free webinar on April 22 &amp; 23: Ship smarter agents with dbt Agent Skills. Learn to build production-ready AI agents on your data layer.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/ship-smarter-agents-building-for-production-with-dbt-agent-skills/?utm_medium=internal&utm_source=docs&utm_campaign=_&utm_content=themed-webinar____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "original-dbt-athena-maintainers",
