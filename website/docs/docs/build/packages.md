@@ -189,7 +189,7 @@ Native private packages let you install packages from [supported](#prerequisites
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
     - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
   - [GitLab](/docs/cloud/git/connect-gitlab)
-    - Every GitLab repo with private packages must also be a <Constant name="dbt" /> project. 
+    - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project. 
 - If using <Constant name="fusion" /> locally, you must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
