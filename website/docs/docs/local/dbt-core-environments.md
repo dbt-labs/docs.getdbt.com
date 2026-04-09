@@ -184,7 +184,7 @@ Sometimes schema-level separation is insufficient. For example:
 - Compliance requirements prevent dev and prod data from sharing an account.
 - You want to use a lower-spec warehouse tier for development.
 
-To target a different **database**, update the `dbname` (Postgres/Redshift) or `database` (Snowflake/BigQuery) field per target in your profile:
+To target a different database, update the `dbname` (Postgres/Redshift) or `database` (Snowflake/BigQuery) field per target in your profile:
 
 ```yaml
 my_project:
@@ -207,7 +207,7 @@ my_project:
       ...
 ```
 
-To target a different **account or cluster entirely**, change the `account` (Snowflake), `host` (Postgres/Redshift), or project (BigQuery) value per target:
+To target a different account or cluster entirely, change the `account` (Snowflake), `host` (Postgres/Redshift), or `project` (BigQuery) value per target:
 
 ```yaml
 my_project:
