@@ -86,7 +86,7 @@ var siteSettings = {
     announcementBar: {
       id: "agent-skills-webinar",
       content:
-        "Join our free webinar on April 22 & 23: Ship smarter agents with dbt Agent Skills. Learn to build production-ready AI agents on your data layer.",
+        "Join our free webinar on April 22 &amp; 23: Ship smarter agents with dbt Agent Skills. Learn to build production-ready AI agents on your data layer.",
       isCloseable: true,
     },
     announcementBarActive: true,
