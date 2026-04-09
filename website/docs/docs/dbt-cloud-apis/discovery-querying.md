@@ -62,24 +62,20 @@ There are several illustrative example queries on this page. For more examples, 
 
 ## Discovery API endpoints
 
-Find your Discovery API endpoint in **Account settings** under **Access URLs** in <Constant name="dbt_platform"/>. The format depends on your deployment type:
-
+Find your Discovery API endpoint in **Account settings** under **Access URLs** in <Constant name="dbt_platform"/>. The format depends on your deployment type and region:
 
 <SimpleTable>
 | Deployment type | Discovery API URL |
 | --------------- | ------------------- |
-| North America multi-tenant | https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql |
-| EMEA multi-tenant | https://metadata.emea.dbt.com/graphql |
-| APAC multi-tenant | https://metadata.au.dbt.com/graphql |
-| Single-tenant | https://metadata.YOUR_ACCESS_URL/graphql |
+| Multi-tenant | `https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql` |
+| Single-tenant | `https://YOUR_ACCOUNT_PREFIX.metadata.ROUTING_SUBDOMAIN.dbt.com/graphql` |
 </SimpleTable>
 
-- Replace the following placeholders with your actual values:
-  - `YOUR_ACCOUNT_PREFIX` with your account identifier
-  - `REGION` with your deployment region (`us1` for AWS, `us2` for Azure, `us3` for GCP)
-  - `YOUR_ACCESS_URL` with your specific access URL from [Access URLs](/docs/cloud/about-cloud/access-regions-ip-addresses)
-
-For example, if you're on North America AWS with account prefix `abc123`, your Discovery API URL is `https://abc123.metadata.us1.dbt.com/graphql`.
+- Replace the following placeholders with your actual values. Refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information on the regions and subdomains:
+  - `YOUR_ACCOUNT_PREFIX` with your account identifier (found in **Account settings** under **Access URLs**)
+  - `REGION` with your deployment region (`us1` for North America AWS, `us2` for Azure, `us3` for GCP, `emea` for EMEA, `au` for APAC)
+  - `ROUTING_SUBDOMAIN` with your single-tenant routing subdomain (typically your company name. Please contact your account team if unsure)
+  - For example, if you're on North America AWS with account prefix `abc123`, your Discovery API URL is `https://abc123.metadata.us1.dbt.com/graphql`.
 
 ## Reasonable use
 
