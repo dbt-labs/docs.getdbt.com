@@ -15,17 +15,17 @@ id: "retry"
 
 `dbt retry` accepts the following flags:
 
-| Flag | Description |
-|------|-------------|
-| `--threads <int>` | Override the number of threads used in the original run |
-| `--vars '<yaml>'` | Override variables from the original run |
-| `--target <target>` | Override the target from the original run |
-| `--profile <profile>` | Override the profile from the original run |
-| `--profiles-dir <path>` | Path to the directory containing `profiles.yml` |
-| `--project-dir <path>` | Path to the directory containing `dbt_project.yml` |
-| `--target-path <path>` | Override the target directory path |
-| `--state <path>` | Path to a directory containing `run_results.json` from a previous run (defaults to the target directory) |
-| `--full-refresh` | Override incremental models to run as full refreshes |
+| Flag | Input value | Description | Example |
+|------|-------------|-------------|---------|
+| `--threads` | int | Override the number of threads used in the original run | `--threads 8` |
+| `--vars` | yaml | Override variables from the original run | `--vars '{"my_var": "new_value"}'` |
+| `--target` | target | Override the target from the original run | `--target prod` |
+| `--profile` | profile | Override the profile from the original run | `--profile jaffle_shop` |
+| `--profiles-dir` | path | Path to the directory containing `profiles.yml` | `--profiles-dir ~/.dbt` |
+| `--project-dir` | path | Path to the directory containing `dbt_project.yml` | `--project-dir .` |
+| `--target-path` | path | Override the target directory path | `--target-path target` |
+| `--state` | path | Path to a directory containing `run_results.json` from a previous run (defaults to the target directory) | `--state path/to/previous/run` |
+| `--full-refresh` | — | Override incremental models to run as full refreshes | `--full-refresh` |
 
 All other flags (selectors, `--select`, `--exclude`, etc.) are inherited from the original command and cannot be overridden.
 
