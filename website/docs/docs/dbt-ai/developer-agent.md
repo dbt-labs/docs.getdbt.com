@@ -28,7 +28,7 @@ The agent always has access to the latest dbt-recommended guidance through [dbt 
 - An Enterprise-tier plan
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
 - A [development environment](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
-- [Account access to <Constant name="copilot" /> features](/docs/cloud/enable-dbt-copilot).
+- [Account access](/docs/cloud/enable-dbt-copilot) to <Constant name="copilot" /> features.
 
 #### Availability and considerations
 
