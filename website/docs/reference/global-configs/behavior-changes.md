@@ -68,23 +68,23 @@ Here's an example of the available behavior change flags with their default valu
 
 ```yml
 flags:
-  require_explicit_package_overrides_for_builtin_materializations: True
-  require_resource_names_without_spaces: True
-  source_freshness_run_project_hooks: True
-  skip_nodes_if_on_run_start_fails: False
-  state_modified_compare_more_unrendered_values: False
-  require_yaml_configuration_for_mf_time_spines: False
-  require_batched_execution_for_custom_microbatch_strategy: False
-  require_nested_cumulative_type_params: False
-  validate_macro_args: False
-  require_all_warnings_handled_by_warn_error: False
-  require_generic_test_arguments_property: True
-  require_unique_project_resource_names: False
-  require_ref_searches_node_package_before_root: False
-  require_valid_schema_from_generate_schema_name: False
-  enable_truthy_nulls_equals_macro: False
-  require_sql_header_in_test_configs: False
-  require_corrected_analysis_fqns: False
+  require_explicit_package_overrides_for_builtin_materializations: true
+  require_resource_names_without_spaces: true
+  source_freshness_run_project_hooks: true
+  skip_nodes_if_on_run_start_fails: false
+  state_modified_compare_more_unrendered_values: false
+  require_yaml_configuration_for_mf_time_spines: false
+  require_batched_execution_for_custom_microbatch_strategy: false
+  require_nested_cumulative_type_params: false
+  validate_macro_args: false
+  require_all_warnings_handled_by_warn_error: false
+  require_generic_test_arguments_property: true
+  require_unique_project_resource_names: false
+  require_ref_searches_node_package_before_root: false
+  require_valid_schema_from_generate_schema_name: false
+  enable_truthy_nulls_equals_macro: false
+  require_sql_header_in_test_configs: false
+  require_corrected_analysis_fqns: false
 ```
 
 </File>
