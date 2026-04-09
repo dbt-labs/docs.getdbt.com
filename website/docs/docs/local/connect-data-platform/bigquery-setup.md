@@ -694,9 +694,9 @@ The `submission_method` profile field controls how dbt submits Python model jobs
 
 | `submission_method` | Description |
 |---------------------|-------------|
-| `serverless` (default) | Runs jobs on Dataproc Serverless with no cluster management required |
-| `cluster` | Runs jobs on an existing Dataproc cluster |
-| `bigframes` | Runs jobs using [BigQuery DataFrames](https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction). No Spark setup required |
+| `serverless` (default) | Runs jobs on [Dataproc Serverless](/docs/local/connect-data-platform/bigquery-setup#dataproc-serverless) with no cluster management required |
+| `cluster` | Runs jobs on an existing [Dataproc cluster](/docs/local/connect-data-platform/bigquery-setup#dataproc-cluster) |
+| `bigframes` | Runs jobs using [BigQuery DataFrames](/docs/local/connect-data-platform/bigquery-setup#bigframes). No Spark setup required |
 
 #### Dataproc cluster
 
