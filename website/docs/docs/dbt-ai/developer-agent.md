@@ -21,7 +21,7 @@ Use the <Constant name="dev_agent" /> to:
 - **Build or modify models**: Create or update dbt models from natural language descriptions of the transformation or logic you need.
 - **Light refactors**: Rename columns, change materializations, or adjust logic. The agent keeps associated YAML files in sync.
 
-The agent always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions managed by dbt Labs. These skills are available out of the box &mdash; no configuration needed! 🎉
+The agent always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions managed by dbt Labs. These skills are available out of the box &mdash; no configuration needed! 🎉 
 
 ## Prerequisites
 
@@ -32,10 +32,11 @@ The agent always has access to the latest dbt-recommended guidance through [dbt 
 
 #### Availability and considerations
 
-- The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) only. It's not available in VS Code or the <Constant name="platform_cli" />.
+- The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) only and for all [deployment types](/docs/cloud/about-cloud/tenancy?version=2.0). It's not available in VS Code or the <Constant name="platform_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
 - Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
 - You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
+- Retaining chat history isn't supported for single tenant deployments yet. 
 
 ## Using the Developer agent
 
