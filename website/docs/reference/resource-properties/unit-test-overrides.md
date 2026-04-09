@@ -40,8 +40,6 @@ When configuring your unit test, you can override the output of [macros](/docs/b
 
 You can override the output of any macro in your unit test definition. Overrides apply only to macros, variables, and environment variables that are called directly within the model being unit tested. If a macro, variable, or environment variable is only referenced indirectly (for example, inside a macro that your model calls), the override will not be applied.
 
-
-
 If the model you're unit testing uses these macros, you must override them:
   - [`is_incremental`](/docs/build/incremental-models#understand-the-is_incremental-macro): If you're unit testing an incremental model, you must explicitly set `is_incremental` to `true` or `false`. See more docs on unit testing incremental models [here](/docs/build/unit-tests#unit-testing-incremental-models). 
 
