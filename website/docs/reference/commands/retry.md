@@ -21,7 +21,7 @@ If you use the [<Constant name="dbt_platform" /> CLI](/docs/cloud/cloud-cli-inst
 
 <VersionBlock lastVersion="1.99">
 
-When you run `dbt retry` with the <Constant name="core" /> engine, the following flags are supported:
+The following flags are supported when you run `dbt retry` with the <Constant name="core" /> engine:
 
 | Flag | Input value | Description | Example |
 |------|-------------|-------------|---------|
@@ -34,12 +34,13 @@ When you run `dbt retry` with the <Constant name="core" /> engine, the following
 | <code style={{ whiteSpace: 'nowrap' }}>--target-path</code> | path | Override the target directory path | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --target-path target</code> |
 | <code style={{ whiteSpace: 'nowrap' }}>--state</code> | path | Path to a directory containing `run_results.json` from a previous run (defaults to the target directory) | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --state path/to/previous/run</code> |
 | <code style={{ whiteSpace: 'nowrap' }}>--full-refresh</code> | — | Override incremental models to run as full refreshes | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --full-refresh</code> |
-
+<br />
+Run `dbt retry --help` for the full list of flags available.
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
-When you run `dbt retry` with the <Constant name="fusion_engine" />, the following flags are supported:
+The following flags are supported when you run `dbt retry` with the <Constant name="fusion_engine" />:
 
 | Flag | Input value | Description | Example |
 |------|-------------|-------------|---------|
@@ -51,7 +52,8 @@ When you run `dbt retry` with the <Constant name="fusion_engine" />, the followi
 | <code style={{ whiteSpace: 'nowrap' }}>--target-path</code> | path | The output directory for all produced assets | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --target-path target</code> |
 | <code style={{ whiteSpace: 'nowrap' }}>--vars</code> | vars | Variables for the project (use the format shown in the CLI help) | <code style={{ whiteSpace: 'nowrap' }}>{`dbt retry --vars '{"my_var": "new_value"}'`}</code> |
 
-Run `dbt retry --help` for the full list that your build exposes.
+<br />
+Run `dbt retry --help` for the full list of flags available.
 
 ### Fusion node selection
 
