@@ -16,10 +16,10 @@ The <Constant name="dev_agent" /> is the next evolution of <Constant name="copil
   
 The <Constant name="dev_agent" /> is designed to support the full dbt development lifecycle &mdash; from initial model creation to testing, documentation, and semantic layer definition. Some examples of what you can do:
 
-- Build or modify models: Create or update dbt models from natural language descriptions of the transformation or logic you need.
-- Generate tests, docs, and semantic models: Scaffold YAML definitions from existing models, define and validate semantic metrics, and save time on manual setup.
-- Refactor and maintain your project: Rename columns, change materializations, adjust logic, or add advanced data quality tests &mdash; the agent keeps associated YAML files in sync.
-- Explore and query your project: Ask questions about your DAG, query <Constant name="catalog"/>, and surface lineage and metadata to inform your development.
+- Build or modify models from natural language descriptions of the transformation or logic you need.
+- Automatically generate and validate YAML definitions for tests, documentation, and semantic models directly from your existing dbt models, eliminating manual setup.
+- Make targeted changes to your project such as renaming columns, changing materializations, adjusting logic, or adding advanced data quality tests — while the agent keeps associated YAML files in sync.
+- Explore your project with the agent by asking questions about your DAG, querying the <Constant name="catalog"/>, and surfacing lineage and metadata to guide your development.
 
 The agent comes with the following out of the box — no configuration needed! 🎉
 
