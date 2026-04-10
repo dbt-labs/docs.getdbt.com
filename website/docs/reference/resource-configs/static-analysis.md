@@ -132,7 +132,7 @@ snapshots:
 
 ## Definition
 
-You can configure `static_analysis` for [models](/docs/build/sql-models), [tests](/docs/build/data-tests), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots).
+You can configure `static_analysis` for [models](/docs/build/sql-models), [data tests](/docs/build/data-tests), [seeds](/docs/build/seeds), and [snapshots](/docs/build/snapshots).
 
 You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
 
