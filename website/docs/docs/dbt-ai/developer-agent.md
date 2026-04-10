@@ -24,7 +24,7 @@ The <Constant name="dev_agent" /> is designed to support the full dbt developmen
 The agent comes with the following out of the box — no configuration needed! 🎉
 
 - [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills): A curated collection of dbt-recommended guidance and instructions, managed by dbt Labs and always up to date.
-- [dbt MCP server Product docs toolset](/docs/dbt-ai/mcp-available-tools#product-docs): Enables the agent to search and fetch content directly from dbt's official documentation at docs.getdbt.com.
+- [dbt MCP server Product docs toolset](/docs/dbt-ai/mcp-available-tools#product-docs): Enables the agent to search and fetch content directly from dbt's official documentation at [docs.getdbt.com](https://docs.getdbt.com/).
 
 ## Prerequisites
 
