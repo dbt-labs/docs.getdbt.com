@@ -34,7 +34,7 @@ The <Constant name="platform_cli" /> is available in all [deployment regions](/d
 - If you installed the <Constant name="core" /> CLI in a virtual environment, deactivate that environment or create an alias for the platform CLI before you run platform CLI commands.
 - If you installed the <Constant name="fusion" /> CLI locally, create an alias for the platform CLI before you run platform CLI commands.
 
-See the [FAQs](#faqs) for more information about managing multiple dbt CLI tools and creating an alias.
+Refer to the [FAQs](#faqs) for more information about managing multiple dbt CLI tools and creating an alias.
 
 ## Install dbt CLI
 
