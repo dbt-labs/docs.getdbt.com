@@ -12,7 +12,7 @@ The <Constant name="dbt_platform" /> natively supports developing using a comman
 
 :::note CLI compatibility
 
-The dbt CLI is a <Constant name="dbt_platform" /> tool available to users on any [available plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with local installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. See [FAQs](#faqs) for more information.
+The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool available to users on any [plan](https://www.getdbt.com/pricing). It is intended for use only with the <Constant name="dbt_platform" /> and may conflict with local installations of the <Constant name="core" /> or <Constant name="fusion_engine" /> CLIs. Refer to the [FAQs](#faqs) for more information.
 
 :::
 
@@ -30,7 +30,7 @@ dbt commands run against the platform's infrastructure and benefit from:
 
 The <Constant name="platform_cli" /> is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
 
-- For the best dbt CLI experience, install the platform CLI on a machine that doesn't already have the <Constant name="core" /> or <Constant name="fusion" /> CLI installed.
+- For the best <Constant name="platform_cli" /> experience, install the platform CLI on a machine that doesn't already have the <Constant name="core" /> or <Constant name="fusion" /> CLI installed.
 - If you installed the <Constant name="core" /> CLI in a virtual environment, deactivate that environment or create an alias for the platform CLI before you run platform CLI commands.
 - If you installed the <Constant name="fusion" /> CLI locally, create an alias for the platform CLI before you run platform CLI commands.
 
