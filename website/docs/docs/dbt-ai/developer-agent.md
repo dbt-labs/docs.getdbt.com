@@ -11,17 +11,20 @@ import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 # Developer agent <Lifecycle status="beta,managed,managed_plus"/>
 
 <IntroText>
-The <Constant name="dev_agent" /> is the next evolution of <Constant 
-name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Generate or refactor models, tests, and documentation from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
+The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Build, refactor, test, document, and explore your dbt project from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
 </IntroText>
+  
+The <Constant name="dev_agent" /> is designed to support the full dbt development lifecycle &mdash; from initial model creation to testing, documentation, and semantic layer definition. Some examples of what you can do:
 
-Use the <Constant name="dev_agent" /> to:
+- Build or modify models: Create or update dbt models from natural language descriptions of the transformation or logic you need.
+- Generate tests, docs, and semantic models: Scaffold YAML definitions from existing models, define and validate semantic metrics, and save time on manual setup.
+- Refactor and maintain your project: Rename columns, change materializations, adjust logic, or add advanced data quality tests &mdash; the agent keeps associated YAML files in sync.
+- Explore and query your project: Ask questions about your DAG, query <Constant name="catalog"/>, and surface lineage and metadata to inform your development.
 
-- **Generate semantic models, tests, and docs**: Scaffold YAML definitions from existing models and save time on manual setup.
-- **Build or modify models**: Create or update dbt models from natural language descriptions of the transformation or logic you need.
-- **Light refactors**: Rename columns, change materializations, or adjust logic. The agent keeps associated YAML files in sync.
+The agent comes with the following out of the box — no configuration needed! 🎉
 
-The agent always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions managed by dbt Labs. These skills are available out of the box &mdash; no configuration needed! 🎉 
+- [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills): A curated collection of dbt-recommended guidance and instructions, managed by dbt Labs and always up to date.
+- [dbt MCP server Product docs toolset](/docs/dbt-ai/mcp-available-tools#product-docs): Enables the agent to search and fetch content directly from dbt's official documentation at docs.getdbt.com.
 
 ## Prerequisites
 
