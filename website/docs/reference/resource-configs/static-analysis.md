@@ -2,6 +2,7 @@
 resource_types: [models, tests, seeds, snapshots]
 title: "static_analysis"
 description: "Use the static_analysis config to control how the Fusion engine performs static SQL analysis for models, tests, seeds, and snapshots."
+intro_text: "static_analysis controls how the Fusion engine analyzes SQL at compile time for models, tests, seeds, and snapshots."
 datatype: string
 default_value: baseline
 sidebar_label: "static_analysis"
@@ -12,6 +13,8 @@ sidebar_label: "static_analysis"
 The `static_analysis` config is available in the <Constant name="fusion_engine"/> only. It isn't available in <Constant name="core" /> and will be ignored. To upgrade to <Constant name="fusion"/>, refer to [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion).
 
 :::
+
+The `static_analysis` config sets how the <Constant name="fusion_engine" /> validates SQL before execution—using `strict` analysis, a `baseline` that balances checks with compatibility, or `off` to skip analysis when needed. You can find supported configuration locations for each resource type.
 
 <Tabs>
 
