@@ -81,7 +81,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Fusion run error banner always visible on run details**: The Fusion run error banner on the run details page is now shown to all eligible users without requiring a separate feature flag.
 
 ## April 1, 2026
 
