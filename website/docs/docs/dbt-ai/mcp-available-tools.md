@@ -18,7 +18,7 @@ The following sections list every tool by category, along with which server type
 | [Semantic Layer](#semantic-layer) | ✅ | ✅ |
 | [SQL](#sql)  | ✅ | ✅ |
 | [Metadata Discovery](#metadata-discovery) | ✅ | ✅ |
-| [Administrative API](#administrative-api) | ✅ | ❌ |
+| [Administrative API](#administrative-api) | ✅ | ✅ |
 | [Codegen Tools](#codegen-tools) | ✅ | ❌ |
 | [Fusion Tools](#fusion-tools-remote) | ✅ | ✅ |
 
