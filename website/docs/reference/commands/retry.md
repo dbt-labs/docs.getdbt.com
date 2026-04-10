@@ -4,14 +4,16 @@ sidebar_label: "retry"
 id: "retry"
 ---
 
-Retry re-executes the last invocation from the point of failure. Use `dbt retry` with <Constant name="core" />, the <Constant name="fusion_engine" />, or the [<Constant name="dbt_platform" /> CLI](/docs/cloud/cloud-cli-installation).
+Retry re-executes the last invocation from the point of failure.
 
-- If no nodes are executed before the failure (for example, if a run failed early due to a warehouse connection or permission errors), retry won't run anything since there's no recorded nodes to retry from.
+- If no nodes are executed before the failure (for example, if a run failed early due to a warehouse connection or permission errors), retry won't run anything since there are no recorded nodes to retry from.
 - In these cases, we recommend checking your [`run_results.json` file](/reference/artifacts/run-results-json) and manually re-running the full job so the nodes build. 
 - Once some nodes have run, you can use retry to re-execute from any new point of failure.
 - If the previously executed command completed successfully, retry will finish as `no operation`. 
 
 ## Retry flags
+
+The `dbt retry` flags apply when you use a local dbt installation or the <Constant name="studio_ide" />.
 
 :::note dbt platform CLI
 If you use the [<Constant name="dbt_platform" /> CLI](/docs/cloud/cloud-cli-installation) against your cloud environment, `dbt retry` accepts only a small subset of overrides—typically `--threads`, `--vars`, and related options. Use `dbt retry --help` on your machine for the exact list your CLI build supports.
@@ -19,37 +21,37 @@ If you use the [<Constant name="dbt_platform" /> CLI](/docs/cloud/cloud-cli-inst
 
 <VersionBlock lastVersion="1.99">
 
-When you run `dbt retry` with a local [<Constant name="core" /> installation](/docs/local/install-dbt), the following flags are supported:
+When you run `dbt retry` with the <Constant name="core" /> engine, the following flags are supported:
 
 | Flag | Input value | Description | Example |
 |------|-------------|-------------|---------|
-| `--threads` | int | Override the number of threads used in the original run | `--threads 8` |
-| `--vars` | yaml | Override variables from the original run | `--vars '{"my_var": "new_value"}'` |
-| `--target` | target | Override the target from the original run | `--target prod` |
-| `--profile` | profile | Override the profile from the original run | `--profile jaffle_shop` |
-| `--profiles-dir` | path | Path to the directory containing `profiles.yml` | `--profiles-dir ~/.dbt` |
-| `--project-dir` | path | Path to the directory containing `dbt_project.yml` | `--project-dir .` |
-| `--target-path` | path | Override the target directory path | `--target-path target` |
-| `--state` | path | Path to a directory containing `run_results.json` from a previous run (defaults to the target directory) | `--state path/to/previous/run` |
-| `--full-refresh` | — | Override incremental models to run as full refreshes | `--full-refresh` |
+| <code style={{ whiteSpace: 'nowrap' }}>--threads</code> | int | Override the number of threads used in the original run | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --threads 8</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--vars</code> | YAML | Override variables from the original run | <code style={{ whiteSpace: 'nowrap' }}>{`dbt retry --vars '{"my_var": "new_value"}'`}</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--target</code> | target | Override the target from the original run | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --target prod</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--profile</code> | profile | Override the profile from the original run | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --profile jaffle_shop</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--profiles-dir</code> | path | Path to the directory containing `profiles.yml` | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --profiles-dir ~/.dbt</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--project-dir</code> | path | Path to the directory containing `dbt_project.yml` | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --project-dir .</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--target-path</code> | path | Override the target directory path | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --target-path target</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--state</code> | path | Path to a directory containing `run_results.json` from a previous run (defaults to the target directory) | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --state path/to/previous/run</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--full-refresh</code> | — | Override incremental models to run as full refreshes | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --full-refresh</code> |
 
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
-When you run `dbt retry` with a local [<Constant name="fusion" /> installation](/docs/local/install-dbt), the following flags are supported:
+When you run `dbt retry` with the <Constant name="fusion_engine" />, the following flags are supported:
 
 | Flag | Input value | Description | Example |
 |------|-------------|-------------|---------|
-| `-t`, `--target` | target | The target to execute | `dbtf retry -t prod` |
-| `--project-dir` | path | The directory to load the dbt project from | `dbtf retry --project-dir .` |
-| `--profile` | profile | The profile to use | `dbtf retry --profile jaffle_shop` |
-| `--profiles-dir` | path | The directory to load the profiles from | `dbtf retry --profiles-dir ~/.dbt` |
-| `--packages-install-path` | path | The directory to install packages | `dbtf retry --packages-install-path dbt_packages` |
-| `--target-path` | path | The output directory for all produced assets | `dbtf retry --target-path target` |
-| `--vars` | vars | Variables for the project (serialized as in the CLI help) | `dbtf retry --vars '{"my_var": "new_value"}'` |
+| <code style={{ whiteSpace: 'nowrap' }}>-t, --target</code> | target | The target to execute | <code style={{ whiteSpace: 'nowrap' }}>dbt retry -t prod</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--project-dir</code> | path | The directory to load the dbt project from | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --project-dir .</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--profile</code> | profile | The profile to use | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --profile jaffle_shop</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--profiles-dir</code> | path | The directory to load the profiles from | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --profiles-dir ~/.dbt</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--packages-install-path</code> | path | The directory to install packages | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --packages-install-path dbt_packages</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--target-path</code> | path | The output directory for all produced assets | <code style={{ whiteSpace: 'nowrap' }}>dbt retry --target-path target</code> |
+| <code style={{ whiteSpace: 'nowrap' }}>--vars</code> | vars | Variables for the project (use the format shown in the CLI help) | <code style={{ whiteSpace: 'nowrap' }}>{`dbt retry --vars '{"my_var": "new_value"}'`}</code> |
 
-Run `dbt retry --help` for the full list your build exposes.
+Run `dbt retry --help` for the full list that your build exposes.
 
 ### Fusion node selection
 
@@ -58,11 +60,11 @@ Unlike `dbt retry` with <Constant name="core" />, <Constant name="fusion" /> let
 #### Examples
 
 ```shell
-dbtf retry --select my_model+
+dbt retry --select my_model+
 ```
 
 ```shell
-dbtf retry --exclude package:analytics --selector nightly_models
+dbt retry --exclude package:analytics --selector nightly_models
 ```
 
 </VersionBlock>
@@ -81,7 +83,7 @@ Retry works with the following commands:
 - [`run`](/reference/commands/run)
 - [`run-operation`](/reference/commands/run-operation)
 
-Retry references [run_results.json](/reference/artifacts/run-results-json) to determine where to start. Executing retry without correcting the previous failures will garner <Term id="idempotent" /> results.
+Retry references [run_results.json](/reference/artifacts/run-results-json) to determine where to start. Executing retry without correcting the previous failures yields <Term id="idempotent" /> results.
 
 <VersionBlock lastVersion="1.99">
 
@@ -105,7 +107,7 @@ Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 348 macros
 Nothing to do. Try checking your model configs and model specification args
 ```
 
-Example of when `dbt run` encounters a syntax error in a model: 
+Example of when `dbt run` encounters a syntax error in a model:
 
 ```shell
 Running with dbt=1.6.1
@@ -170,4 +172,4 @@ Completed successfully
 Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
 ```
 
-In each scenario `dbt retry` picks up from the error rather than running all of the upstream dependencies again. 
+In each scenario `dbt retry` picks up from the error rather than running all of the upstream dependencies again.
