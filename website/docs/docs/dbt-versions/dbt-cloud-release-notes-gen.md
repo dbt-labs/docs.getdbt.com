@@ -78,7 +78,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Resource counts refresh on environment switch**: Fixes a bug where resource counts on the project landing page were not updated when switching environments.
 
-### Orchestration and run status
 
 
 ## April 1, 2026
