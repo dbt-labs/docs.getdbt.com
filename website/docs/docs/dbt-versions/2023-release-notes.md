@@ -320,7 +320,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
-    * Check out how these community members use the dbt community in the [Community spotlight](/community/spotlight). 
+    * Learn how to [join the dbt community](/community/join).
     * Blog posts published this summer include [Optimizing Materialized Views with dbt](/blog/announcing-materialized-views),  [Data Vault 2.0 with dbt Cloud](/blog/data-vault-with-dbt-cloud), and [Create dbt Documentation and Tests 10x faster with ChatGPT](/blog/create-dbt-documentation-10x-faster-with-ChatGPT) 
     - We now have two new best practice guides: [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) and [Set up Continuous Integration](/guides/set-up-ci).
 
