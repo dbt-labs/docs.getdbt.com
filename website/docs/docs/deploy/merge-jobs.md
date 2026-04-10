@@ -6,7 +6,9 @@ description: "Learn how to trigger a dbt job run when a Git pull request merges.
 
 # Merge jobs in dbt <Lifecycle status="self_service,managed" />
 
-You can set up a merge job to implement a continuous deployment (CD) workflow in <Constant name="dbt" />. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This workflow creates a seamless development experience where changes made in code will automatically update production data. Also, you can use this workflow for running `dbt compile` to update your environment's manifest so subsequent CI job runs are more performant.
+You can set up a merge job to implement a continuous deployment (CD) workflow in <Constant name="dbt" />. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This workflow creates a seamless development experience where changes made in code will automatically update production data.
+
+You can also use a merge job to refresh an environment’s `manifest.json` so downstream [CI jobs](/docs/deploy/ci-jobs) stay fast. For example, run [`dbt compile`](/reference/commands/compile) or, to avoid warehouse work entirely, [`dbt parse --no-partial-parse`](/reference/commands/parse) in a dedicated environment—the same one your CI jobs defer to under **Compare changes against**, so the manifest those pull request runs compare against updates quickly. Use the same base branch that environment tracks (for example, `main` or a [custom branch](/faqs/Environments/custom-branch-settings) such as `develop`). If merge also kicks off a long `dbt build`, consider a separate merge triggered job that runs _only_ `dbt parse --no-partial-parse` so the manifest updates before the build finishes.
 
 By using CD in <Constant name="dbt" />, you can take advantage of deferral to build only the edited model and any downstream changes. With merge jobs, state will be updated almost instantly, always giving the most up-to-date state information in [<Constant name="catalog" />](/docs/explore/explore-projects).
 
