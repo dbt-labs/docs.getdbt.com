@@ -10,12 +10,18 @@ function Events() {
     <Layout>
         <Head>
           <title>dbt Community events</title>
-          <meta name="description" content="Join us for upcoming meetups, conferences, or office hours with the dbt Labs team." />
+          <meta name="description" content="Browse upcoming and on-demand dbt Labs webinars, workshops, and community sessions." />
         </Head>
         <div className="container events-page">
            <section>
-            <h1>Upcoming dbt Community events</h1>
-            <p>Join us for upcoming meetups, conferences, or office hours with the dbt Labs team. Events are online unless explicitly listed as in-person.</p>
+            <h1>Community events & webinars</h1>
+            <p>
+              Upcoming and on-demand sessions from dbt Labs, including workshops and community programming. The schedule below is hosted on{' '}
+              <a href="https://www.getdbt.com/resources/webinars" target="_blank" rel="noopener noreferrer">
+                getdbt.com
+              </a>
+              .
+            </p>
 
             <EventsFeed />
            </section>
