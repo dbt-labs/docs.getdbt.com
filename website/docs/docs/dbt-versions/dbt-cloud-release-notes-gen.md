@@ -49,7 +49,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Revert personal dbt version override**: Adds an "Edit / Revert" action to the version override option in the environment popover. Clicking "Revert" opens a confirmation modal that removes your personal dbt version override and restarts the session.
 
-- **Fusion personal override notification**: Displays a dismissible notification when your session starts with a Fusion personal version override active, so you know you can revert it from the command bar at any time.
 
 - **Fusion Language Server Protocol connection status**: The server status popover now shows the Language Server Protocol (LSP) connection status — Connected, Connecting, Disconnected, or Error — when running in Fusion mode, giving you a more accurate picture of the session state.
 
