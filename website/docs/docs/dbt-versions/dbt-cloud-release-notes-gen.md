@@ -63,7 +63,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Insights
 
-- **Fusion status column in account insights table**: The account insights table now shows a "Fusion status" column when the Fusion readiness flow is available for your account. The column displays one of four states — On Fusion, Start upgrade, Partial-Fusion, or Non-Fusion — based on each project's readiness and migration progress. Projects that are ready to upgrade show a "Start upgrade" button that navigates directly to the project home page. Contact your account manager to enable.
+- **Fusion status column in account insights table**: Look for a "Fusion status" column in your account insights table when the Fusion readiness flow is available for your account. You'll see one of four states: On Fusion, Start upgrade, Partial-Fusion, or Non-Fusion — based on each project's readiness and migration progress. Projects that are ready to upgrade show a "Start upgrade" button that navigates directly to the project home page. Contact your account manager to enable.
 
 ## Fixes
 
