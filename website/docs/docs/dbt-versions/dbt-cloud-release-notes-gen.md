@@ -36,7 +36,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **Fusion upgrade card on project home**: Projects eligible for the dbt Fusion engine now display an upgrade card on the project home page. The card shows a Fusion eligibility checklist, highlights any ineligible jobs, and lets authorized users begin upgrading to Fusion. This feature is in preview. Contact your account manager to enable.
 
 ## Enhancements
 
