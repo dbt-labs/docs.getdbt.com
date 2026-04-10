@@ -50,7 +50,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Revert personal dbt version override**: Adds an "Edit / Revert" action to the version override option in the environment popover. Clicking "Revert" opens a confirmation modal that removes your personal dbt version override and restarts the session.
 
 
-- **Fusion Language Server Protocol connection status**: The server status popover now shows the Language Server Protocol (LSP) connection status — Connected, Connecting, Disconnected, or Error — when running in Fusion mode, giving you a more accurate picture of the session state.
 
 - **Improved file context pill in dbt Copilot**: Moves the active-file context pill to above the text input for greater visibility. When you remove the file context, a "Use current file as context" affordance appears so you can restore it without switching tabs.
 
