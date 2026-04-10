@@ -24,7 +24,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt Copilot and agents
 
-- **Admin API tools for MCP**: The dbt Model Context Protocol (MCP) server now exposes Admin API tools, including `list_jobs`, `list_projects`, `get_job_details`, `trigger_job_run`, `cancel_job_run`, `retry_job_run`, `get_job_run_details`, `get_job_run_error`, `list_job_run_artifacts`, and `get_job_run_artifact`. These tools let MCP clients list, inspect, trigger, cancel, and retry dbt jobs and runs directly from connected AI assistants. Contact your account manager to enable.
+- **Admin API tools for MCP remote server**: The dbt MCP remote server now includes Admin API tools, including `list_jobs`, `list_projects`, `get_job_details`, `trigger_job_run`, `cancel_job_run`, `retry_job_run`, `get_job_run_details`, `get_job_run_error`, `list_job_run_artifacts`, and `get_job_run_artifact`. These tools let MCP clients list, inspect, trigger, cancel, and retry dbt jobs and runs directly from connected AI assistants. Contact your account manager to enable.
 
 ### dbt platform
 
