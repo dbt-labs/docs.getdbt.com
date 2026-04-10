@@ -57,7 +57,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Reused test status in DAG lens**: State-Aware Orchestration (SAO) test runs that reuse prior results now display with a "reused" icon in the DAG test status lens, matching the existing model run status behavior.
 
-- **Fusion enablement call-to-action updated**: The "Enable Fusion" banner button now navigates to the project dashboard page instead of the legacy enable-fusion-environments page, reflecting the current Fusion onboarding flow.
 
 - **Function resource type support in selectors**: The `function` resource type is now recognized in dbt selectors and the resource node type map, enabling correct filtering and navigation for function resources in Catalog.
 
