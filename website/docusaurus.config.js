@@ -196,8 +196,14 @@ var siteSettings = {
               to: "/community/forum",
             },
             {
+              label: "Webinars",
+              href: "https://www.getdbt.com/resources/webinars",
+              target: "_blank",
+            },
+            {
               label: "Events",
-              to: "/community/events",
+              href: "https://www.getdbt.com/events",
+              target: "_blank",
             },
           ],
         },

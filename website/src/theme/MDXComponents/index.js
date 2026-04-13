@@ -31,7 +31,6 @@ import YoutubeVideo from '@site/src/components/youtube';
 import WistiaVideo from '@site/src/components/wistia';
 import VersionBlock from '@site/src/components/versionBlock';
 import Term from '@site/src/components/term';
-import EventsFeed from '@site/src/components/events';
 import { DiscourseFeed, DiscourseHelpFeed } from '@site/src/components/discourse';
 import Hero from '@site/src/components/hero'
 import Card from '@site/src/components/card'
@@ -90,7 +89,6 @@ const MDXComponents = {
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
   Term: Term,
-  EventsFeed: EventsFeed,
   DiscourseFeed: DiscourseFeed,
   DiscourseHelpFeed: DiscourseHelpFeed,
   dbtEditor: dbtEditor,

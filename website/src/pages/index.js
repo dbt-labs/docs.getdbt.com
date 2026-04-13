@@ -252,10 +252,18 @@ function Home() {
                   icon="message"
                 />
                 <Card
-                  title="Events and Meetups"
-                  body="Join local and global dbt meetups."
-                  link="/community/events"
+                  title="Webinars"
+                  body="Upcoming and on-demand sessions from dbt Labs."
+                  link="https://www.getdbt.com/resources/webinars"
+                  icon="calendar"
+                  target="_blank"
+                />
+                <Card
+                  title="Events"
+                  body="Meetups, conferences, and community gatherings."
+                  link="https://www.getdbt.com/events"
                   icon="globe"
+                  target="_blank"
                 />
                 <Card
                   title="Courses & Tutorials"
