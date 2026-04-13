@@ -49,8 +49,8 @@ These credentials are configured separately from dbt environment credentials and
     - If you have multiple connections that reference the same account identifier, you will only be prompted to configure platform metadata ingestion for one of them. Other connections using the same account identifier will display a message indicating that platform metadata ingestion is already configured.
 6. Select the **External metadata ingestion** option.
     - This allows metadata from this connection to populate the <Constant name="catalog" />.
-    - *Optional*: Enable additional features such as **cost optimization** in the **Features** section under **Platform metadata credentials**.
-6. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
+    - *Optional*: Enable additional features such as **Cost optimization** in the **Features** section under **Platform metadata credentials**.
+7. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
       - **Note:** To include all databases or schemas, enter `.*`  in the **Allow** field.
     - It is strongly recommended to filter by certain schemas. See [Important considerations](/docs/explore/external-metadata-ingestion#important-considerations) for more information.
