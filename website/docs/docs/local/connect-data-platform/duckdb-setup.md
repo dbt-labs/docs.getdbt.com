@@ -24,6 +24,10 @@ DuckDB with <Constant name="fusion_engine" /> is the easiest way to get a dbt pr
 
 The `dbt-duckdb` adapter is available in the <Constant name="fusion" /> CLI. To access the adapter, [install dbt Fusion](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2#get-started) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
 
+## Authentication
+
+<!--need more info-->
+
 ## Configure Fusion
 
 To connect dbt to DuckDB, set up your `profiles.yml`. Refer to the following configuration:
