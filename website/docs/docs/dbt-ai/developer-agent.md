@@ -11,31 +11,35 @@ import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 # Developer agent <Lifecycle status="beta,managed,managed_plus"/>
 
 <IntroText>
-The <Constant name="dev_agent" /> is the next evolution of <Constant 
-name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Generate or refactor models, tests, and documentation from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
+The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Build, refactor, test, document, and explore your dbt project from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
 </IntroText>
+  
+The <Constant name="dev_agent" /> is designed to support the full dbt development lifecycle &mdash; from initial model creation to testing, documentation, and semantic layer definition. Some examples of what you can do:
 
-Use the <Constant name="dev_agent" /> to:
+- Build or modify models from natural language descriptions of the transformation or logic you need.
+- Automatically generate and validate YAML definitions for tests, documentation, and semantic models directly from your existing dbt models, eliminating manual setup.
+- Make targeted changes to your project such as renaming columns, changing materializations, adjusting logic, or adding advanced data quality tests — while the agent keeps associated YAML files in sync.
+- Explore your project with the agent by asking questions about your DAG, querying the <Constant name="catalog"/>, and surfacing lineage and metadata to guide your development.
 
-- **Generate semantic models, tests, and docs**: Scaffold YAML definitions from existing models and save time on manual setup.
-- **Build or modify models**: Create or update dbt models from natural language descriptions of the transformation or logic you need.
-- **Light refactors**: Rename columns, change materializations, or adjust logic. The agent keeps associated YAML files in sync.
+The agent comes with the following out of the box — no configuration needed! 🎉
 
-The agent always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), a curated collection of instructions managed by dbt Labs. These skills are available out of the box &mdash; no configuration needed! 🎉
+- [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills): A curated collection of dbt-recommended guidance and instructions, managed by dbt Labs and always up to date.
+- [dbt MCP server Product docs toolset](/docs/dbt-ai/mcp-available-tools#product-docs): Enables the agent to search and fetch content directly from dbt's official documentation at [docs.getdbt.com](https://docs.getdbt.com/).
 
 ## Prerequisites
 
 - An Enterprise-tier plan
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
 - A [development environment](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
-- [Account access to <Constant name="copilot" /> features](/docs/cloud/enable-dbt-copilot).
+- [Account access](/docs/cloud/enable-dbt-copilot) to <Constant name="copilot" /> features.
 
 #### Availability and considerations
 
-- The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) only. It's not available in VS Code or the <Constant name="platform_cli" />.
+- The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) only and for all [deployment types](/docs/cloud/about-cloud/tenancy?version=2.0). It's not available in VS Code or the <Constant name="platform_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
 - Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
 - You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
+- Retaining chat history isn't supported for single tenant deployments yet. We recommend you save important info manually between sessions.
 
 ## Using the Developer agent
 
