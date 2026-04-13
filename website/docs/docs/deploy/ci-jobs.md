@@ -56,8 +56,9 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 
     - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows <Constant name="dbt" /> to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
 
-      :::info
-      Older versions of <Constant name="dbt" /> only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. Deferral to an environment is more efficient as <Constant name="dbt" /> will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ [deploy jobs](/docs/deploy/deploy-jobs) that run in the deferred environment, <Constant name="dbt" /> will get a more accurate, latest project representation state.
+
+      :::caution Comparison manifests
+      The latest successful run in the environment can come from _any_ job that updates artifacts there. If many jobs run with different settings, your CI comparison state can change in ways that are hard to predict. Even when you defer to Production, a merge or deploy that refreshes the manifest while other pull requests are open can make those runs see unrelated `state:modified` nodes until branches are updated.
       :::
 
     - **Run timeout** &mdash; Cancel the CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources. If you enable the **dbt compare** option, the timeout value defaults to `3600` (one hour) to prevent long-running comparisons. 
@@ -72,6 +73,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt UI"/>
+
 
 ### Example of CI check in pull request {#example-ci-check}
 The following is an example of a CI check in a GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the <Constant name="dbt" /> section takes you to the relevant CI run in <Constant name="dbt" />.
@@ -199,6 +201,14 @@ To validate _all_ semantic nodes in your project, add the following command to d
 ## Troubleshooting
 
 <FAQ path="Troubleshooting/gitlab-webhook"/>
+
+<DetailsToggle alt_header="CI selects or fails on models that are not in my pull request">
+
+This usually means the comparison manifest does not line up with your branch’s commits. Another job overwrote `manifest.json` with different settings, Production (or another deferred environment) advanced after someone else merged while your pull request stayed open, or the manifest is stale right after a merge. Built-in deferral targets an environment, not a hand-picked job ID.
+
+To resolve this, merge or rebase the latest base branch into your pull request so your branch includes recent merges. To refresh the comparison manifest without waiting on a long deploy, use a [merge job](/docs/deploy/merge-jobs) in the same environment your CI job defers to. For example, one that runs `dbt parse --no-partial-parse` (or [`dbt compile`](/reference/commands/compile)) immediately after merges.
+
+</DetailsToggle>
 
 <DetailsToggle alt_header="CI jobs aren't triggering occasionally when opening a PR using the Azure DevOps (ADO) integration">
 
