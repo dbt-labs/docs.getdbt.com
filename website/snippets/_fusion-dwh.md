@@ -9,7 +9,11 @@
     - Service Account / User Token
     - Native OAuth
   </Expandable>
-
+<!--Placeholder for authentication options
+  <Expandable alt_header="DuckDB (Fusion CLI only)">
+    - 
+  </Expandable>
+-->
   <Expandable alt_header="Redshift">
     - Username / Password
     - IAM profile

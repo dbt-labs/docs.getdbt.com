@@ -16,6 +16,93 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
+<VersionBlock firstVersion="2.0">
+
+# Connect DuckDB to Fusion <Lifecycle status="beta" />
+
+DuckDB with <Constant name="fusion_engine" /> is the easiest way to get a dbt project running locally &mdash; no warehouse account or credentials required. [DuckDB](http://duckdb.org) is an embedded database that runs entirely in-process, so dbt connects directly to a local `.duckdb` file with no additional setup.
+
+The `dbt-duckdb` adapter is available in the <Constant name="fusion" /> CLI. To access the adapter, [install dbt Fusion](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2#get-started) as the development interface. <Constant name="dbt_platform" /> support coming soon. 
+
+## Configure Fusion
+
+To connect dbt to DuckDB, set up your `profiles.yml`. Refer to the following configuration:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /path/to/database_name.duckdb
+      schema: main   # optional; defaults to main
+      threads: 4     # optional
+```
+
+</File>
+
+You can load [DuckDB extensions](https://duckdb.org/docs/extensions/overview) and set additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) in `extensions` and `settings`. For example, to connect to S3 and read/write Parquet files:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /path/to/database_name.duckdb
+      extensions:
+        - httpfs
+        - parquet
+      settings:
+        s3_region: my-aws-region
+        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
+        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
+```
+
+</File>
+
+You can also connect <Constant name="fusion" /> to a MotherDuck-hosted database by setting path to a MotherDuck connection string. For example:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "md:my_db?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
+      threads: 4
+```
+
+</File>
+
+| Profile field | Required | Description | Example |
+| --- | --- | --- | --- |
+| `type` | Yes | The adapter type. | `duckdb` |
+| `path` | Yes | Path to the DuckDB database file on your local file system. Created automatically if it does not exist. By default, the path is relative to your `profiles.yml` file location. | `./jaffle_shop.duckdb` |
+| `schema` | No | The schema name where dbt creates objects. | Default: `main` |
+| `threads` | No | Number of threads dbt uses when building models concurrently. | Default: `1` |
+| `extensions` | No | List of [DuckDB extensions](https://duckdb.org/docs/extensions/overview) to load at startup. | `httpfs`, `parquet` |
+| `settings` | No | Map of [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) to set at startup, including options from loaded extensions. | `s3_region: us-east-1` |
+
+## Limitations
+
+The following features are not yet fully supported in the DuckDB adapter for <Constant name="fusion" />:
+
+- **Nested types:** `LIST`, `MAP`, and `STRUCT` types are not yet supported.
+- **PIVOT and UNPIVOT:** Binder implementation is minimal.
+- **ASOF and POSITIONAL joins:** These join types are bound as cross joins, which is sufficient for lineage and type resolution.
+- **Custom types and enums:** `CREATE TYPE` and `ENUM` type definitions are not yet supported.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
 :::info Community plugin
 
 Some functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
@@ -104,3 +191,5 @@ Running `dbt run` again will recreate it.
 :::note
 If you use a relative path (for example, `./local.duckdb`), the database file is created relative to the directory where you execute dbt. You can also use an absolute path (for example, `/Users/yourname/project/local.duckdb`) to ensure the database file is always written to a specific location.
 :::
+
+</VersionBlock>
