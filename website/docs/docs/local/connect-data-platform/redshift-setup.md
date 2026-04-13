@@ -373,12 +373,12 @@ The following macros switch to `SHOW` commands when `datasharing: true`:
 
 | Macro | Without `datasharing` | With `datasharing` |
 |-------|-----------------------|-------------------|
-| `list_relations_without_caching` | `information_schema.tables` | `SVV_ALL_TABLES` |
-| `list_schemas`, `check_schema_exists` | `pg_namespace` | `SVV_ALL_SCHEMAS` |
-| `get_columns_in_relation` | `information_schema.columns` | `SVV_ALL_COLUMNS` |
-| Catalog queries | `pg_class`, `pg_tables`, `pg_views` | `SVV_ALL_TABLES` |
-| `get_relation_last_modified` | `information_schema.tables` | `SVV_ALL_TABLES` |
-| Materialized view describe | `information_schema.columns` | `SVV_ALL_COLUMNS` |
+| `list_relations_without_caching` | `information_schema.tables` | `SHOW TABLES FROM SCHEMA` |
+| `list_schemas`, `check_schema_exists` | `pg_namespace` | `SHOW SCHEMAS FROM DATABASE` |
+| `get_columns_in_relation` | `information_schema.columns` | `SHOW COLUMNS FROM TABLE` |
+| Catalog queries | `pg_class`, `pg_tables`, `pg_views` | `SHOW TABLES FROM SCHEMA + svv_redshift_columns` |
+| `get_relation_last_modified` | `information_schema.tables` | `SHOW TABLES FROM SCHEMA` |
+| Grants | `pg_user`, `has_table_privilege()` | `SHOW GRANTS ON TABLE` |
 
 `ra3_node: true` also enables this behavior and is supported for backwards compatibility. For new projects, use `datasharing: true` instead.
 
