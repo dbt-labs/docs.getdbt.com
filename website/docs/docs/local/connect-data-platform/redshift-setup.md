@@ -144,7 +144,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `role`  | None | Optional, user identifier of the current session |
 | `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
-| `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Acts as an alias for `datasharing`; setting `ra3_node: true` enables `SVV_*` metadata queries. Kept for backwards compatibility; use `datasharing` for new projects instead. |
+| `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Kept for backwards compatibility; use `datasharing` for new projects instead. |
 | `datasharing` | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift v1.11.0rc1` and later. |
 | `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
