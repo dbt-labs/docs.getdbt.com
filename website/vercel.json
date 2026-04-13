@@ -41,6 +41,13 @@
     {
       "source": "/community/events",
       "destination": "https://www.getdbt.com/events",
+      "source": "/community/spotlight",
+      "destination": "/community/join",
+      "permanent": true
+    },
+    {
+      "source": "/community/spotlight/:path*",
+      "destination": "/community/join",
       "permanent": true
     },
     { 
