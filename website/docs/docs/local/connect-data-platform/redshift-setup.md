@@ -342,7 +342,7 @@ To run certain macros with autocommit, load the profile with autocommit using th
 
 Previously, the Redshift adapter used PostgreSQL-compatible catalog tables (for example, `pg_*`, `information_schema`) for metadata operations such as listing relations, schemas, and columns. These tables only surface objects within the currently connected database, which prevents cross-database operations needed for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html).
 
-Starting `dbt-redshift v1.11.0rc1`, you can set `datasharing: true` in your `profiles.yml` to enable cross-database and cross-cluster access. When enabled, `dbt-redshift` switches metadata queries to Redshift's native `SVV_*` system views. You can then materialize models into a database or cluster other than the one specified in your profile using `{{ config(database='other_db') }}`.
+Starting `dbt-redshift v1.11.0rc1`, you can set `datasharing: true` in your `profiles.yml` to enable cross-database and cross-cluster access. When enabled, `dbt-redshift` switches metadata queries to Redshift's native `SHOW` system commands. You can then materialize models into a database or cluster other than the one specified in your profile using `{{ config(database='other_db') }}`.
 
 Example configuration:
 
