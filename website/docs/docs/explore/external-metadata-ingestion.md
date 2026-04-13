@@ -27,7 +27,7 @@ These credentials are configured separately from dbt environment credentials and
     - The credentials must have [sufficient read-level access to fetch metadata](/docs/explore/external-metadata-ingestion#configuration-instructions).
 - Have [**global navigation**](/docs/explore/explore-projects#catalog-overview) enabled.
 - Use Snowflake as your data platform.
-- Stayed tuned! Coming very soon, there’ll be support in future for other adapters!
+- Support for additional adapters is coming soon!
 
 ## Configuration instructions
 
@@ -42,16 +42,18 @@ These credentials are configured separately from dbt environment credentials and
 1. Go to **Account settings**.
 2. Click **Connections** from the left-hand side panel.
 3. Select an existing connection or create a [**New connection**](/docs/cloud/connect-data-platform/connect-snowflake) where you want to ingest metadata from.
-4. Scroll to the bottom of the page and click **Add credentials** in **Platform metadata credentials**.
+4. Scroll to the **Platform metadata credentials** section.
+    - If platform metadata ingestion is not configured yet, the credentials form opens by default.
     - Enter the necessary credentials. These should have warehouse-level visibility across relevant databases and schemas.
-    - If you have multiple connections that reference the same account identifier, you will only be prompted to add platform metadata credentials to one of them. Other connections using the same account identifier will display a message indicating that platform metadata credentials are already configured. 
+    - If you previously canceled and see **Add credentials**, click it to reopen the form.
+    - If you have multiple connections that reference the same account identifier, you will only be prompted to configure platform metadata ingestion for one of them. Other connections using the same account identifier will display a message indicating that platform metadata ingestion is already configured.
 5. Select the **External metadata ingestion** option.
     - This allows metadata from this connection to populate the <Constant name="catalog" />.
     - *Optional*: Enable additional features such as **cost optimization** in the **Features** section under **Platform metadata credentials**.
 6. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
       - **Note:** To include all databases or schemas, enter `.*`  in the **Allow** field.
-    - It is strongly recommend to filter by certain schemas. See [Important considerations](/docs/explore/external-metadata-ingestion#important-considerations) for more information.
+    - It is strongly recommended to filter by certain schemas. See [Important considerations](/docs/explore/external-metadata-ingestion#important-considerations) for more information.
     - These fields accept CSV-formatted regular expressions:
         - Example: `DIM` matches `DIM_ORDERS` and `DIMENSION_TABLE` (basic "contains" match).
         - Wildcards are supported. For example: `DIM*` matches `DIM_ORDERS` and `DIM_PRODUCTS`.
@@ -72,13 +74,13 @@ CREATE OR REPLACE ROLE dbt_metadata_role;
 GRANT USAGE ON WAREHOUSE "<your-warehouse>" TO ROLE dbt_metadata_role;
 ```
 
-If your warehouse needs to be restarted for metadata ingestions (doesn't have auto-resume enabled), you may need to grant `OPERATE` permissions to the role as well. 
+If your warehouse needs to be restarted for metadata ingestion (doesn't have auto-resume enabled), you may need to grant `OPERATE` permissions to the role as well. 
 If you do not already have a user, create a dbt-specific user for metadata access. Replace `<your-password>` with a strong password and `<your-warehouse>` with the warehouse name used above:
 
 ```sql
 CREATE USER dbt_metadata_user
   DISPLAY_NAME = 'dbt Metadata Integration'
-  PASSWORD = 'our-password>'
+  PASSWORD = '<your-password>'
   DEFAULT_ROLE = dbt_metadata_role
   TYPE = 'LEGACY_SERVICE'
   DEFAULT_WAREHOUSE = '<your-warehouse>';
