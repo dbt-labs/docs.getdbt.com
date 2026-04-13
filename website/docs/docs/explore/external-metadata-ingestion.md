@@ -45,7 +45,7 @@ These credentials are configured separately from dbt environment credentials and
 4. Scroll to the **Platform metadata credentials** section.
     - If platform metadata ingestion is not yet configured, the credentials form is immediately in edit mode.
     - Enter the necessary credentials. These should have warehouse-level visibility across relevant databases and schemas.
-    - If you previously canceled and see **Add credentials**, click it to reopen the form.
+    - If you previously canceled and see **Add credentials**, click the button to reopen the form.
     - If you have multiple connections that reference the same account identifier, you will only be prompted to configure platform metadata ingestion for one of them. Other connections using the same account identifier will display a message indicating that platform metadata ingestion is already configured.
 5. Select the **External metadata ingestion** option.
     - This allows metadata from this connection to populate the <Constant name="catalog" />.
