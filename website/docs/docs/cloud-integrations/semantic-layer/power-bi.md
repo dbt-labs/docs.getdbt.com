@@ -12,7 +12,7 @@ The Power BI integration enables you to query the <Constant name="semantic_layer
 :::info
 This integration is currently in preview. Production readiness depends on Microsoft's participation in the Open Semantic Interoperability (OSI) standard.
 
-Using Power BI? You can help shape the future of this integration. [Ask your Microsoft rep about OSI support!](https://support.microsoft.com/en-us/contactus/)
+Using Power BI? You can help shape the future of this integration. Ask your Microsoft rep about OSI support!
 :::
 
 ## Prerequisites
