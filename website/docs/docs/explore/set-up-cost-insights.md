@@ -53,7 +53,6 @@ For more information on how to assign permissions to users, refer to [About user
            - If no platform metadata credentials are configured yet, the credentials form is immediately in edit mode.
            - If you previously canceled the form and see **Add credentials**, click the button to reopen the form.
            ```
-    2. If no platform metadata credentials are configured yet, the credentials form opens by default.
     3. Add credentials with permissions to the warehouse tables. Expand each connection to see the permissions required.
     4. If you previously canceled and see **Add credentials**, click it to reopen the form.
 
