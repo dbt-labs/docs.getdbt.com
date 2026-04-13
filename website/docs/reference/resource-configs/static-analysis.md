@@ -200,7 +200,7 @@ See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
 
 ## Examples
 
-The following examples show how to disable static analysis for all models in a package, for a single model, and for a model that uses a custom UDF, and how to configure static analysis for tests, seeds, and snapshots.
+The following examples show how to disable or configure `static_analysis` for different scenarios:
 
 <!-- no toc -->
 - [Disable static analysis for all models in a package](#disable-static-analysis-for-all-models-in-a-package)
