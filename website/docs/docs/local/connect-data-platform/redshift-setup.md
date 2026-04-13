@@ -369,7 +369,7 @@ Once enabled, you can materialize a model into a different database by setting `
 select * from {{ ref('my_model') }}
 ```
 
-The following macros switch to `SVV_*` sources when `datasharing: true`:
+The following macros switch to `SHOW` commands when `datasharing: true`:
 
 | Macro | Without `datasharing` | With `datasharing` |
 |-------|-----------------------|-------------------|
