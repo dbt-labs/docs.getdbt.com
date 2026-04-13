@@ -73,7 +73,7 @@ Find your Discovery API endpoint in **Account settings** under **Access URLs** i
 
 - Replace the following placeholders with your actual values. Refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information on the regions and subdomains:
   - `ACCOUNT_PREFIX` with your account identifier (found in **Account settings** under **Access URLs**)
-  - `REGION` with your deployment region (`us1` for North America AWS, `us2` for Azure, `us3` for GCP, `emea` for EMEA, `au` for APAC)
+  - `REGION` with your deployment region (for example, `us1` for North America AWS, `eu1` for EMEA, `jp1` for Japan, `au1` for APAC, and so on)
   - `ROUTING_SUBDOMAIN` with your single-tenant routing subdomain (typically your company name. Please contact your account team if unsure)
   - For example, if you're on North America AWS with account prefix `abc123`, your Discovery API URL is `https://abc123.metadata.us1.dbt.com/graphql`.
 
