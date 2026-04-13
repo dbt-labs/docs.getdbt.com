@@ -9,6 +9,16 @@ sidebar_label: "Connect Redshift"
  
 <Constant name="dbt_platform" /> supports connecting to Redshift. 
 
+## Warehouse permissions for Fusion
+
+import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
+
+<FusionRedshiftWarehousePerms />
+
+For example SQL grants in Redshift, refer to [Redshift permissions](/reference/database-permissions/redshift-permissions).
+
+## Connection fields
+
 The following fields are required when creating a connection:
 
 | Field | Description | Examples |

@@ -25,20 +25,11 @@ The BigQuery adapter for Fusion supports the following [authentication methods](
 - Service account (JSON file)
 - gcloud OAuth
 
-## BigQuery permissions
+## Warehouse permissions
 
-dbt user accounts need the following permissions to read from and create tables and views in a BigQuery project:
+import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
 
-- BigQuery Data Editor
-- BigQuery User
-- BigQuery Read Session User (New in Fusion. For Storage Read API access)
-
-For BigQuery DataFrames, users need these additional permissions:
-- BigQuery Job User
-- BigQuery Read Session User
-- Notebook Runtime User
-- Code Creator
-- colabEnterpriseUser
+<FusionBigQueryWarehousePerms />
 
 ## Configure Fusion
 
@@ -699,7 +690,17 @@ import BigQueryDataproc from '/snippets/_bigquery-dataproc.md';
 
 <BigQueryDataproc />
 
-Then, add the bucket name, cluster name, and cluster region to your connection profile:
+The `submission_method` profile field controls how dbt submits Python model jobs. There are three supported values:
+
+| `submission_method` | Description |
+|---------------------|-------------|
+| `serverless` (default) | Runs jobs on [Dataproc Serverless](/docs/local/connect-data-platform/bigquery-setup#dataproc-serverless) with no cluster management required |
+| `cluster` | Runs jobs on an existing [Dataproc cluster](/docs/local/connect-data-platform/bigquery-setup#dataproc-cluster) |
+| `bigframes` | Runs jobs using [BigQuery DataFrames](/docs/local/connect-data-platform/bigquery-setup#bigframes). No Spark setup required |
+
+#### Dataproc cluster
+
+Add the bucket name, cluster name, and cluster region to your connection profile:
 
 ```yaml
 my-profile:
@@ -710,14 +711,17 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      
+
       # for dbt Python models to be run on a Dataproc cluster
+      submission_method: cluster
       gcs_bucket: dbt-python
       dataproc_cluster_name: dbt-python
       dataproc_region: us-central1
 ```
 
-Alternatively, Dataproc Serverless can be used:
+#### Dataproc Serverless
+
+Dataproc Serverless is the default `submission_method`. It requires no cluster management and supports optional batch configuration:
 
 ```yaml
 my-profile:
@@ -728,11 +732,11 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      
+
       # for dbt Python models to be run on Dataproc Serverless
+      submission_method: serverless
       gcs_bucket: dbt-python
       dataproc_region: us-central1
-      submission_method: serverless
       dataproc_batch:
         batch_id: MY_CUSTOM_BATCH_ID # Supported in v1.7+
         environment_config:
@@ -749,6 +753,26 @@ my-profile:
 ```
 
 For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
+
+#### BigFrames
+
+[BigQuery DataFrames](https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction) lets you run Python models using APIs directly in BigQuery without setting up Spark. Refer to the [dbt Python models with BigFrames](/guides/dbt-python-bigframes) guide for full setup instructions.
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+
+      # for dbt Python models to be run using BigQuery DataFrames
+      submission_method: bigframes
+      gcs_bucket: dbt-python
+      dataproc_region: us-central1
+```
 
 
 

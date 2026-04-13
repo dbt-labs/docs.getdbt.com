@@ -52,6 +52,9 @@ The following example is a list of all available configurations in the `dbt_proj
   [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cli): environment_id # Optional
   [account-host](/docs/cloud/about-cloud/access-regions-ip-addresses): account-host # Defaults to 'cloud.getdbt.com'; Required if use a different Access URL
 
+[analyses](/docs/build/analyses): # Requires the require_corrected_analysis_fqns flag; available starting v1.12
+  [<analysis-configs>](/reference/analysis-properties)
+
 [exposures](/docs/build/exposures):
   +[enabled](/reference/resource-configs/enabled): true | false
 

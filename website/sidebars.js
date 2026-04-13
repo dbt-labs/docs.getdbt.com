@@ -400,6 +400,7 @@ const sidebarSettings = {
             "docs/dbt-extension-features",
             "docs/install-dbt-extension",
             "docs/configure-dbt-extension",
+            "docs/fusion/vs-compare-changes",
           ],
         },
         {
@@ -1823,11 +1824,6 @@ const sidebarSettings = {
       type: "link",
       label: "Community forum",
       href: "/community/forum",
-    },
-    {
-      type: "link",
-      label: "Events",
-      href: "/community/events",
     },
     {
       type: "category",
