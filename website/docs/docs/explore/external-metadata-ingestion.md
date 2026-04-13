@@ -43,14 +43,14 @@ These credentials are configured separately from dbt environment credentials and
 2. Click **Connections** from the left-hand side panel.
 3. Select an existing connection or create a [**New connection**](/docs/cloud/connect-data-platform/connect-snowflake) where you want to ingest metadata from.
 4. Scroll to the **Platform metadata credentials** section.
-    - If platform metadata ingestion is not configured yet, the credentials form opens by default.
+5. If platform metadata ingestion is not yet configured, the credentials form is immediately in edit mode.
     - Enter the necessary credentials. These should have warehouse-level visibility across relevant databases and schemas.
-    - If you previously canceled and see **Add credentials**, click it to reopen the form.
+    - If you previously canceled and see **Add credentials**, click the button to reopen the form.
     - If you have multiple connections that reference the same account identifier, you will only be prompted to configure platform metadata ingestion for one of them. Other connections using the same account identifier will display a message indicating that platform metadata ingestion is already configured.
-5. Select the **External metadata ingestion** option.
+6. Select the **External metadata ingestion** option.
     - This allows metadata from this connection to populate the <Constant name="catalog" />.
-    - *Optional*: Enable additional features such as **cost optimization** in the **Features** section under **Platform metadata credentials**.
-6. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
+    - *Optional*: Enable additional features such as **Cost optimization** in the **Features** section under **Platform metadata credentials**.
+7. Under **Catalog filters**, apply filters to restrict which metadata is ingested:
     - You can filter by **database**, **schema**, **table**, or **view**.
       - **Note:** To include all databases or schemas, enter `.*`  in the **Allow** field.
     - It is strongly recommended to filter by certain schemas. See [Important considerations](/docs/explore/external-metadata-ingestion#important-considerations) for more information.

@@ -18,7 +18,7 @@ Before setting up Cost Insights, ensure you have:
 - An administrator role.
 - A supported data warehouse: Snowflake, BigQuery, or Databricks.
 
-To set up Cost Insights, following these steps:
+To set up Cost Insights, follow these steps:
 
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
@@ -49,10 +49,10 @@ For more information on how to assign permissions to users, refer to [About user
 2. Under **Settings**, go to **Connections**.
 3. Select an existing connection or create a new connection for the project where you want to enable Cost Insights.
 4. Configure platform metadata credentials for your connection.
-    1. Go to the **Platform metadata credentials** section.
-    2. If no platform metadata credentials are configured yet, the credentials form opens by default.
-    3. Add credentials with permissions to the warehouse tables. Expand each connection to see the permissions required.
-    4. If you previously canceled and see **Add credentials**, click it to reopen the form.
+5. Go to the **Platform metadata credentials** section.
+6. If no platform metadata credentials are configured yet, the credentials form is immediately in edit mode.
+    - Add credentials with permissions to the warehouse tables. Expand each connection to see the permissions required.
+    - If you previously canceled and see **Add credentials**, click the button to reopen the form.
 
         <Expandable alt_header="Snowflake">
         - `read` permissions to the [`ORGANIZATION_USAGE`](https://docs.snowflake.com/en/sql-reference/organization-usage) and [`ACCOUNT_USAGE`](https://docs.snowflake.com/en/sql-reference/account-usage) schemas
@@ -82,8 +82,8 @@ For more information on how to assign permissions to users, refer to [About user
         </Expandable>
 
         If you have multiple connections that reference the same account identifier, you will only be prompted to add platform metadata credentials to one of them. Other connections using the same account identifier will display a message indicating that platform metadata credentials are already configured.
-5. Verify that **Cost Insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
-6. Click **Save**.
+7. Verify that **Cost Insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
+8. Click **Save**.
 
 ## Configure Cost Insights settings (optional)
 
