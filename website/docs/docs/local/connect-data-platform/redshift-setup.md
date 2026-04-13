@@ -376,7 +376,7 @@ The following macros switch to `SHOW` commands when `datasharing: true`:
 | `list_relations_without_caching` | `information_schema.tables` | `SHOW TABLES FROM SCHEMA` |
 | `list_schemas`, `check_schema_exists` | `pg_namespace` | `SHOW SCHEMAS FROM DATABASE` |
 | `get_columns_in_relation` | `information_schema.columns` | `SHOW COLUMNS FROM TABLE` |
-| Catalog queries | `pg_class`, `pg_tables`, `pg_views` | `SHOW TABLES FROM SCHEMA + svv_redshift_columns` |
+| Catalog queries | `pg_class`, `pg_tables`, `pg_views` | `SHOW TABLES FROM SCHEMA` + `SVV_REDSHIFT_COLUMNS` |
 | `get_relation_last_modified` | `information_schema.tables` | `SHOW TABLES FROM SCHEMA` |
 | Grants | `pg_user`, `has_table_privilege()` | `SHOW GRANTS ON TABLE` |
 
