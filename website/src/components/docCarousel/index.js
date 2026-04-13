@@ -5,7 +5,7 @@ import { Navigation, Pagination } from 'swiper';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-function DocCarousel({ slidesPerView = 3, autoHeight = false, children }) {
+function DocCarousel({ slidesPerView = 3, autoHeight = true, children }) {
     if ( !children?.length > 0 ){      
         return false
     }

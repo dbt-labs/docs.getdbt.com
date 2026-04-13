@@ -5,15 +5,17 @@ description: "Setup instructions for connecting Databricks to dbt"
 sidebar_label: "Connect Databricks"
 ---
 
+# Connect Databricks <ProductCard text="Fusion compatible" />
+
 The dbt-databricks adapter is maintained by the Databricks team. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark has been deprecated.
 
 ## About the dbt-databricks adapter
 
-dbt-databricks is compatible with the following versions of <Constant name="core" /> in <Constant name="cloud" /> with varying degrees of functionality. 
+dbt-databricks is compatible with the following versions of <Constant name="core" /> in <Constant name="dbt" /> with varying degrees of functionality. 
 
 | Feature | dbt Versions |
 | ----- | ----------- | 
-| dbt-databricks | Available starting with dbt 1.0 in <Constant name="cloud" />|
+| dbt-databricks | Available starting with dbt 1.0 in <Constant name="dbt" />|
 | Unity Catalog | Available starting with dbt 1.1 | 
 | Python models | Available starting with dbt 1.3 |
 
@@ -24,10 +26,17 @@ The dbt-databricks adapter is more opinionated, guiding users to an improved exp
 - **Support for Unity Catalog:**
 Unity Catalog allows Databricks users to centrally manage all data assets, simplifying access management and improving search and query performance. Databricks users can now get three-part data hierarchies – catalog, schema, model name – which solves a longstanding friction point in data organization and governance.
 
-To learn how to optimize performance with data platform-specific configurations in <Constant name="cloud" />, refer to [Databricks-specific configuration](/reference/resource-configs/databricks-configs).
+To learn how to optimize performance with data platform-specific configurations in <Constant name="dbt" />, refer to [Databricks-specific configuration](/reference/resource-configs/databricks-configs).
 
 To grant users or roles database permissions (access rights and privileges), refer to the [example permissions](/reference/database-permissions/databricks-permissions) page.
 
+## Warehouse permissions for Fusion
+
+import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+
+<FusionDatabricksWarehousePerms />
+
+## Connection fields
 
 To set up the Databricks connection, supply the following fields:
 

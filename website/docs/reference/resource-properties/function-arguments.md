@@ -4,7 +4,6 @@ sidebar_label: "arguments"
 id: function-arguments
 ---
 <VersionCallout version="1.11" /> 
-import ArgumentsShared from '/snippets/_arguments-shared.md';
 
 <File name='functions/<filename>.yml'>
 
@@ -24,7 +23,7 @@ functions:
 
 ## Definition
 
-<ArgumentsShared />
+The `arguments` property is used to define the parameters that a resource can accept. Each argument can have a `name`, a `data_type` field, and optional properties such as `description` and `default_value`.
 
 For **functions**, you can add `arguments` to a [function property](/reference/function-properties), which defines the parameters for user-defined functions (UDFs) in your warehouse. The `data_type` for function arguments is warehouse-specific (for example, `STRING`, `VARCHAR`, `INTEGER`) and should match the data types supported by your data platform.
 

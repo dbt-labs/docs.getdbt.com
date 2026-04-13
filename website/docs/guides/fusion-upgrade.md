@@ -41,17 +41,17 @@ Once you complete the <Constant name="fusion" /> migration, your team will benef
 
 Before upgrading your development environment, confirm:
 
-- Your project is on the `Latest` release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-fusion-upgrade))
+- Your project is on the **Latest** release track (completed in [Part 1: Preparing to upgrade](/guides/prepare-fusion-upgrade))
 - Your project must be using a supported adapter and auth method.    
     <FusionAdapters/>
 - You have a developer license in <Constant name="dbt_platform" />
 - <Constant name="fusion" /> has been enabled for your account
-- You have appropriate permissions to modify environments (see [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) if restricted)
+- You have appropriate permissions to modify environments (see [Assign upgrade access](https://docs.getdbt.com/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) if restricted)
 
 
 ## Upgrade your development environment
 
-With your project prepared and tested on the `Latest` release track, you're ready to upgrade your development environment to <Constant name="fusion" />. The <Constant name="dbt_platform" /> provides a guided upgrade assistant that walks you through the process and helps validate your project is <Constant name="fusion" /> ready.
+With your project prepared and tested on the **Latest** release track, you're ready to upgrade your development environment to <Constant name="fusion" />. The <Constant name="dbt_platform" /> provides a guided upgrade assistant that walks you through the process and helps validate your project is <Constant name="fusion" /> ready.
 
 :::tip Start with development
 
@@ -85,13 +85,13 @@ Launch the <Constant name="fusion" /> upgrade workflow from your project:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the Fusion upgrade from the project homepage"/>
 
-You'll be redirected to the <Constant name="cloud_ide" /> with the upgrade assistant visible at the top.
+You'll be redirected to the <Constant name="studio_ide" /> with the upgrade assistant visible at the top.
 
 ### Step 2: Check for deprecation warnings
 
 Even if you resolved deprecations in Part 1, run a final check to ensure nothing was missed:
 
-1. At the top of the <Constant name="cloud_ide" />, click **Check deprecation warnings**.
+1. At the top of the <Constant name="studio_ide" />, click **Check deprecation warnings**.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/check-deprecations.png" width="60%" title="Check for deprecation warnings in your project"/>
 
@@ -131,7 +131,7 @@ If the autofix tool can't resolve all deprecations automatically, you'll need to
 
 After you resolve all deprecations, upgrade your development environment:
 
-1. Click the **Enable Fusion** button at the top of the <Constant name="cloud_ide" />.
+1. Click the **Enable Fusion** button at the top of the <Constant name="studio_ide" />.
 2. Confirm the upgrade when prompted.
 3. Wait for the environment to update (this typically takes just a few seconds).
 
@@ -141,14 +141,14 @@ Your development environment is now running on <Constant name="fusion" />!
 
 After upgrading, all users need to restart their IDE to connect to the new <Constant name="fusion" />-powered environment:
 
-1. If you're currently in the <Constant name="cloud_ide" />, refresh your browser window.
+1. If you're currently in the <Constant name="studio_ide" />, refresh your browser window.
 2. Notify your team members that they also need to restart their IDEs.
 
 ### Step 6: Verify the upgrade
 
 Confirm your development environment is running <Constant name="fusion" />:
 
-1. Open or create a dbt model file in the <Constant name="cloud_ide" />.
+1. Open or create a dbt model file in the <Constant name="studio_ide" />.
 2. Look for <Constant name="fusion" />-powered [features](/docs/fusion/supported-features#features-and-capabilities):
    - Faster parsing and compilation times
    - Enhanced SQL validation and error messages
@@ -268,7 +268,7 @@ If you encounter problems in staging:
 - Test the same models in your development environment to isolate the problem.
 - Contact [dbt Support](/docs/dbt-support) or your account team for assistance.
 
-You can revert the staging environment to `Latest` release track while investigating.
+You can revert the staging environment to **Latest** release track while investigating.
 
 :::
 
@@ -293,7 +293,7 @@ Congratulations! You've successfully upgraded development and staging environmen
 Upgrading production is a critical operation. While <Constant name="fusion" /> is production ready and has been thoroughly tested in your dev and staging environments, follow these best practices:
 - Plan the upgrade during a low-traffic window to minimize impact.
 - Notify stakeholders about the maintenance window.
-- Have a rollback plan ready (reverting to `Latest` release track).
+- Have a rollback plan ready (reverting to **Latest** release track).
 - Monitor closely for the first few job runs after upgrading.
 
 :::
@@ -429,7 +429,7 @@ If you encounter critical issues in production, you can revert your dbt version:
 
 :::info Rollback impact
 
-Rolling back to `Latest` will disable <Constant name="fusion" />-specific features like state-aware orchestration. Only rollback if you're experiencing production-critical issues.
+Rolling back to **Latest** will disable <Constant name="fusion" />-specific features like state-aware orchestration. Only rollback if you're experiencing production-critical issues.
 
 :::
 

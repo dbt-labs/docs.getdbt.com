@@ -80,11 +80,7 @@ Example usage:
 
 ## config.meta_get
 
-<VersionBlock lastVersion="1.10">
-
-This functionality is new in <Constant name="core" /> v1.11 and the <Constant name="fusion_engine" />.
-
-</VersionBlock>
+This functionality is available starting in <Constant name="core" /> v1.10 and in the <Constant name="fusion_engine" />.
 
 __Args__:
 
@@ -119,11 +115,7 @@ models:
 
 ## config.meta_require
 
-<VersionBlock lastVersion="1.10">
-
-This functionality is new in <Constant name="core" /> v1.11 and the <Constant name="fusion_engine" />.
-
-</VersionBlock>
+This functionality is available starting in <Constant name="core" /> v1.10 and in the <Constant name="fusion_engine" />.
 
 __Args__:
 

@@ -28,6 +28,11 @@ andrew_escay:
     x: _aescay
   name: Andrew Escay
   page: true
+anna_lee:
+  image_url: /img/blog/authors/anna-lee.png
+  title: Software Engineer at dbt Labs
+  name: Anna Lee
+  page: true
 arthur_marcon:
   description: Arthur Marcon is an Analytics Engineer at Indicium, helping data-driven companies transition to the modern data analytics stack in the cloud through dbt. Arthur is also an enthusiast of technology and innovation. He is mainly interested in how data plays a key role to enable companies to achieve their full innovative and technological potential. Outside of work, he is a movie aficionado, and likes to hit the gym and read Agatha Christie's novels.
   image_url: /img/blog/authors/arthur-marcon.png
@@ -50,7 +55,7 @@ bennie_regenold:
   page: true
 benoit_perigaud:
   image_url: /img/blog/authors/benoit-perigaud.jpeg
-  title: Staff Analytics Engineer at dbt Labs
+  title: Staff Developer Experience Advocate at dbt Labs
   socials:
     linkedin: benoit-perigaud
   name: Benoit Perigaud
@@ -150,7 +155,7 @@ colin_rogers:
   page: true
 dave_connors:
   image_url: /img/blog/authors/dconnors.jpeg
-  title: Staff Developer Experience Advocate at dbt Labs
+  title: Product Manager at dbt Labs
   socials:
     github: dave-connors-3
     linkedin: daveconnors3
@@ -272,7 +277,7 @@ jade_milaney:
   page: true
 jason_ganz:
   image_url: /img/blog/authors/jasnonaz.jpeg
-  title: Developer Experience at dbt Labs
+  title: Director of Community, Developer Experience & AI at dbt Labs
   socials:
     x: jasnonaz
   name: Jason Ganz
@@ -319,7 +324,7 @@ joel_labes:
     bluesky: https://bsky.app/profile/joellab.es
   name: Joel Labes
   page: true
-  title: Senior Developer Experience Advocate at dbt Labs
+  title: Staff Developer Experience Advocate at dbt Labs
 jonathan_natkins:
   description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
   image_url: /img/blog/authors/jonathan-natkins.jpeg
@@ -411,6 +416,11 @@ mikael_thorup:
   image_url: /img/blog/authors/mikael-thorup.jpeg
   title: Senior Analytics Engineer at Lunar
   name: Mikael Thorup
+  page: true
+mila_page:
+  image_url: /img/blog/authors/mila-page.png
+  title: Senior Software Engineer at dbt Labs
+  name: Mila Page
   page: true
 nate_sooter:
   image_url: /img/blog/authors/nate-sooter.jpeg

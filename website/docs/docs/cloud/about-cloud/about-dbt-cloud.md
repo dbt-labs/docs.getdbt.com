@@ -10,9 +10,9 @@ pagination_prev: null
 
 <Constant name="dbt_platform" /> (formerly dbt Cloud) is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI.
 
-In addition to providing a hosted architecture for running dbt across your organization, <Constant name="cloud" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring and alerting, an integrated development environment (<Constant name="cloud_ide" />), and allows you to develop and run dbt commands from your local command line interface (CLI) or code editor.
+In addition to providing a hosted architecture for running dbt across your organization, <Constant name="dbt" /> comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring and alerting, an integrated development environment (<Constant name="studio_ide" />), and allows you to develop and run dbt commands from your local command line interface (CLI) or code editor.
 
-<Constant name="cloud" />'s [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14-day trial](https://www.getdbt.com/signup/)! 
+<Constant name="dbt" />'s [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14-day trial](https://www.getdbt.com/signup/)! 
 
 <div className="grid--3-col">
 
@@ -124,6 +124,6 @@ In addition to providing a hosted architecture for running dbt across your organ
 
 ## Related docs
 
-- [<Constant name="cloud" /> plans and pricing](https://www.getdbt.com/pricing/)
+- [<Constant name="dbt" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
-- [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio)
+- [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio)

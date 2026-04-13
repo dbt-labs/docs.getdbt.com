@@ -6,7 +6,13 @@ sidebar: "Indirect selection"
 
 import IndirSelect from '/snippets/_indirect-selection-definitions.md';
 
-Use the `--indirect-selection` flag to `dbt test` or `dbt build` to configure which tests to run for the nodes you specify. You can set this as a CLI flag or an environment variable. In dbt Core, you can also configure user configurations in [YAML selectors](/reference/node-selection/yaml-selectors) or in the `flags:` block of `dbt_project.yml`, which sets project-level flags.
+Indirect selection determines which tests to run when you select models or other resources. It applies to tests that are related to your selected resources through relationships in your DAG &mdash; for example, tests on upstream or downstream models, or tests that reference multiple models.
+
+Use the `--indirect-selection` flag with `dbt test` or `dbt build` to configure this behavior. You can set this as a CLI flag or an environment variable. In dbt <Constant name="core"/>, you can also configure user configurations in [YAML selectors](/reference/node-selection/yaml-selectors) or in the `flags:` block of `dbt_project.yml`, which sets project-level flags.
+
+:::tip Indirect selection happens by default
+Even without explicitly using the [`--indirect-selection` flag](/reference/node-selection/test-selection-examples?indirect-selection-mode=eager#indirect-selection), dbt uses indirect selection when you run commands like `dbt test --select "stg_model_a+"`. The default mode is `eager`, which runs all tests that reference your selected models. For example, `dbt test --select model_b` will run tests defined on `model_b`, as well as tests defined on upstream models if those tests reference `model_b`. 
+:::
 
 When all flags are set, the order of precedence is as follows. Refer to [About global configs](/reference/global-configs/about-global-configs) for more details:
 
@@ -14,7 +20,7 @@ When all flags are set, the order of precedence is as follows. Refer to [About g
 1. Environment variables
 1. User configurations
 
-You can set the flag to: `empty`, `buildable`, `cautious`, or `eager` (default). By default, dbt indirectly selects all tests if they touch any resource you select. Learn more about these options in [Indirect selection in Test selection examples](/reference/node-selection/test-selection-examples?indirect-selection-mode=eager#indirect-selection).
+You can set the flag to: `empty`, `buildable`, `cautious`, or `eager` (default). Learn more about these options in [Indirect selection in Test selection examples](/reference/node-selection/test-selection-examples?indirect-selection-mode=eager#indirect-selection).
 
 <IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
 
@@ -48,12 +54,27 @@ Or you can run tests that only refer to selected nodes using an environment vari
 
 <File name='Env var'>
 
+<VersionBlock lastVersion="1.10">
+
 ```text
 
 $ export DBT_INDIRECT_SELECTION=cautious
 dbt run
 
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```text
+
+$ export DBT_ENGINE_INDIRECT_SELECTION=cautious
+dbt run
+
+```
+
+</VersionBlock>
 
 </File>
 

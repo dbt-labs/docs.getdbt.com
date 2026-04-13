@@ -7,13 +7,13 @@ import LoginSlug from '/snippets/_login-slug.md';
 
 # Set up SSO with SAML 2.0 <Lifecycle status="managed, managed_plus" />
 
-<Constant name="cloud" /> Enterprise-tier plans support single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
+<Constant name="dbt" /> Enterprise-tier plans support single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
 Currently supported features include:
 * IdP-initiated SSO
 * SP-initiated SSO
 * Just-in-time provisioning
 
-This document details the steps to integrate <Constant name="cloud" /> with an identity
+This document details the steps to integrate <Constant name="dbt" /> with an identity
 provider in order to configure Single Sign On and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control).
 
 ## Auth0 URIs
@@ -34,7 +34,7 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
 2. When promoted, configure the application with the following details:
    - **Platform:** Web
    - **Sign on method:** SAML 2.0
-   - **App name:** <Constant name="cloud" />
+   - **App name:** <Constant name="dbt" />
    - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 #### Configuring the application
@@ -49,7 +49,7 @@ When prompted for the SAML 2.0 application configurations, supply the following 
 * Audience URI (SP Entity ID): `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login URL slug}`
 - Relay State: `<login URL slug>` (Note: Relay state may be shown as optional in the IdP settings; it is _required_ for the dbt SSO configuration.) 
 
-Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="cloud" />. [SCIM configuration](/docs/cloud/manage-access/scim) requires `NameID` and `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute. We recommend using the following values:
+Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="dbt" />. [SCIM configuration](/docs/cloud/manage-access/scim) requires `NameID` and `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute. We recommend using the following values:
 
 
 | name | name format | value | description |
@@ -59,11 +59,11 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 | last_name | Unspecified | user.last_name | The user's last name |
 | NameID | Unspecified | ID | The user's unchanging ID |
 
-`NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but <Constant name="cloud" /> creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
+`NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but <Constant name="dbt" /> creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
 
-<Constant name="cloud" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
-on group mappings from the IdP to assign <Constant name="cloud" /> users to <Constant name="cloud" /> groups. To
-use role-based access control in <Constant name="cloud" />, also configure your identity
+<Constant name="dbt" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
+on group mappings from the IdP to assign <Constant name="dbt" /> users to <Constant name="dbt" /> groups. To
+use role-based access control in <Constant name="dbt" />, also configure your identity
 provider to provide group membership information in user attribute called
 `groups`:
 
@@ -73,7 +73,7 @@ provider to provide group membership information in user attribute called
 
 :::info Note
 You may use a restricted group attribute statement to limit the groups set
-to <Constant name="cloud" /> for each authenticated user. For example, if all of your <Constant name="cloud" /> groups start
+to <Constant name="dbt" /> for each authenticated user. For example, if all of your <Constant name="dbt" /> groups start
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
 :::
 
@@ -81,7 +81,7 @@ with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_C
 
 After confirming your details, the IdP should show you the following values for
 the new SAML 2.0 integration. Keep these values somewhere safe, as you will need
-them to complete setup in <Constant name="cloud" />.
+them to complete setup in <Constant name="dbt" />.
 
 - Identity Provider Issuer
 - Identity Provider SSO Url
@@ -111,7 +111,7 @@ them to complete setup in <Constant name="cloud" />.
 
 ### Finish setup
 
-After creating the application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+After creating the application, follow the instructions in the [<Constant name="dbt" /> setup](#dbt-setup)
 section to complete the integration.
 
 ## Okta integration
@@ -145,7 +145,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 1. On the **General Settings** page, enter the following details:
 
-   * **App name**: <Constant name="cloud" />
+   * **App name**: <Constant name="dbt" />
    * **App logo** (optional): You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing),
      and upload it to Okta to use as the logo for this app.
 
@@ -171,7 +171,7 @@ You can use the instructions in this section to configure Okta as your identity 
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
 2. Map your organization's Okta User and Group Attributes to the format that
-<Constant name="cloud" /> expects by using the Attribute Statements and Group Attribute Statements forms. [SCIM configuration](/docs/cloud/manage-access/scim) requires `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute.
+<Constant name="dbt" /> expects by using the Attribute Statements and Group Attribute Statements forms. [SCIM configuration](/docs/cloud/manage-access/scim) requires `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute.
 
 3. The following table illustrates expected User Attribute Statements:
 
@@ -188,7 +188,7 @@ You can use the instructions in this section to configure Okta as your identity 
    | `groups` | Unspecified | Matches regex | `.*`  | _The groups that the user belongs to_ |
 
 You can instead use a more restrictive Group Attribute Statement than the
-example shown in the previous steps. For example, if all of your <Constant name="cloud" /> groups start with
+example shown in the previous steps. For example, if all of your <Constant name="dbt" /> groups start with
 `DBT_CLOUD_`, you may use a filter like `Starts With: DBT_CLOUD_`. **Okta
 only returns 100 groups for each user, so if your users belong to more than 100
 IdP groups, you will need to use a more restrictive filter**. Please contact
@@ -218,8 +218,8 @@ app.
 ### View setup instructions
 
 1. On the next page, click **View Setup Instructions**.
-2. In the steps below, you'll supply these values in your <Constant name="cloud" /> Account Settings to complete
-the integration between Okta and <Constant name="cloud" />.
+2. In the steps below, you'll supply these values in your <Constant name="dbt" /> Account Settings to complete
+the integration between Okta and <Constant name="dbt" />.
 
 <Lightbox
     collapsed={true}
@@ -233,7 +233,7 @@ the integration between Okta and <Constant name="cloud" />.
     title="Application setup instructions"
 />
 
-3. After creating the Okta application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+3. After creating the Okta application, follow the instructions in the [<Constant name="dbt" /> setup](#dbt-setup)
 section to complete the integration.
 
 ## Google integration
@@ -267,7 +267,7 @@ Use this section if you are configuring Google as your identity provider.
 5. Select the **Signed response** checkbox.
 6. The default **Name ID** is the primary email. Multi-value input is not supported.  If your user profile has a unique, stable value that will persist across email address changes, it's best to use that; otherwise, email will work.
 7. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
-<Constant name="cloud" /> expects.
+<Constant name="dbt" /> expects.
 8. Click **Add another mapping** to map additional attributes.
 
 Expected **Attributes**:
@@ -278,7 +278,7 @@ Expected **Attributes**:
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
 
-9. To use [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) in <Constant name="cloud" />,  enter the groups in the **Group membership** field during configuration:
+9. To use [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) in <Constant name="dbt" />,  enter the groups in the **Group membership** field during configuration:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
@@ -299,7 +299,7 @@ Expected **Attributes**:
 
 ### Finish setup
 
-After creating the Google application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+After creating the Google application, follow the instructions in the [<Constant name="dbt" /> setup](#dbt-setup)
 
 ## Microsoft Entra ID (formerly Azure AD) integration
 
@@ -311,12 +311,12 @@ If you're using Microsoft Entra ID (formerly Azure AD), the instructions below w
 
 <LoginSlug />
 
-Follow these steps to set up single sign-on (SSO) with <Constant name="cloud" />:
+Follow these steps to set up single sign-on (SSO) with <Constant name="dbt" />:
 
 1. Log into your Azure account.
 2. In the Entra ID portal, select **Enterprise applications** and click **+ New application**.
 3. Select **Create your own application**.
-4. Name the application "<Constant name="cloud" />" or another descriptive name.
+4. Name the application "<Constant name="dbt" />" or another descriptive name.
 5. Select **Integrate any other application you don't find in the gallery (Non-gallery)** as the application type.
 6. Click **Create**.
 7. You can find the new application by clicking **Enterprise applications** and selecting **All applications**.
@@ -368,9 +368,9 @@ From the Set up Single Sign-On with SAML page:
 
 ### Finish setup
 
-9. After creating the Azure application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup) section to complete the integration. The names for fields in <Constant name="cloud" /> vary from those in the Entra ID app. They're mapped as follows:
+9. After creating the Azure application, follow the instructions in the [<Constant name="dbt" /> setup](#dbt-setup) section to complete the integration. The names for fields in <Constant name="dbt" /> vary from those in the Entra ID app. They're mapped as follows:
 
-   | <Constant name="cloud" /> field | Corresponding Entra ID field |
+   | <Constant name="dbt" /> field | Corresponding Entra ID field |
    | ----- | ----- |
    | **Identity Provider SSO URL** | Login URL |
    | **Identity Provider Issuer** | Microsoft Entra Identifier |
@@ -392,7 +392,7 @@ To configure OneLogin, you will need **Administrator** access.
 2. Configure the application with the following details:
    - **Platform:** Web
    - **Sign on method:** SAML 2.0
-   - **App name:** <Constant name="cloud" />
+   - **App name:** <Constant name="dbt" />
    - **App logo (optional):** You can optionally [download the dbt logo](https://drive.google.com/file/d/1fnsWHRu2a_UkJBJgkZtqt99x5bSyf3Aw/view?usp=sharing), and use as the logo for this app.
 
 ### Configure SAML settings
@@ -415,9 +415,9 @@ We recommend using the following values:
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
 
-<Constant name="cloud" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
-on group mappings from the IdP to assign <Constant name="cloud" /> users to <Constant name="cloud" /> groups. To
-use role-based access control in <Constant name="cloud" />, also configure OneLogin to provide group membership information in user attribute called
+<Constant name="dbt" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
+on group mappings from the IdP to assign <Constant name="dbt" /> users to <Constant name="dbt" /> groups. To
+use role-based access control in <Constant name="dbt" />, also configure OneLogin to provide group membership information in user attribute called
 `groups`:
 
 | name | name format | value | description |
@@ -428,7 +428,7 @@ use role-based access control in <Constant name="cloud" />, also configure OneLo
 ### Collect integration secrets
 
 5. After confirming your details, go to the **SSO tab**. OneLogin should show you the following values for
-the new integration. Keep these values somewhere safe, as you will need them to complete setup in <Constant name="cloud" />.
+the new integration. Keep these values somewhere safe, as you will need them to complete setup in <Constant name="dbt" />.
 
 - Issuer URL
 - SAML 2.0 Endpoint (HTTP)
@@ -458,14 +458,14 @@ the new integration. Keep these values somewhere safe, as you will need them to 
 
 ### Finish setup
 
-6. After creating the OneLogin application, follow the instructions in the [<Constant name="cloud" /> Setup](#dbt-cloud-setup)
+6. After creating the OneLogin application, follow the instructions in the [<Constant name="dbt" /> setup](#dbt-setup)
 section to complete the integration.
 
-## dbt Setup
+## dbt setup
 
 ### Providing IdP values to dbt
 
-To complete setup, follow the steps below in <Constant name="cloud" />:
+To complete setup, follow the steps below in <Constant name="dbt" />:
 
 1. Navigate to the **Account Settings** and then click on **Single Sign On**.
 2. Click **Edit** on the upper right corner.
@@ -476,21 +476,21 @@ To complete setup, follow the steps below in <Constant name="cloud" />:
    | Log&nbsp;in&nbsp;with | SAML 2.0 |
    | Identity&nbsp;Provider&nbsp;SSO&nbsp;Url | Paste the **Identity Provider Single Sign-On URL** shown in the IdP setup instructions |
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
-   | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into <Constant name="cloud" /> for uninterrupted application access. |
+   | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
   
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
         title="Configuring the application in dbt" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
-5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to <Constant name="cloud" /> from the IdP directly.
+5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to <Constant name="dbt" /> from the IdP directly.
 
 ### Additional configuration options
 
 The **Single sign-on** section also contains additional configuration options which are located after the credentials fields.
 
-- **Sign SAML Auth Request:** <Constant name="cloud" /> will sign SAML requests sent to your identity provider when users attempt to log in.  Metadata for configuring this in your identity provider can be downloaded from the value shown in **SAML Metadata URL**.  We recommend leaving this disabled for most situations.
+- **Sign SAML Auth Request:** <Constant name="dbt" /> will sign SAML requests sent to your identity provider when users attempt to log in.  Metadata for configuring this in your identity provider can be downloaded from the value shown in **SAML Metadata URL**.  We recommend leaving this disabled for most situations.
 
-- **Attribute Mappings:** Associate SAML attributes that <Constant name="cloud" /> needs with attributes your identity provider includes in SAML assertions.  The value must be a valid JSON object with the `email`, `first_name`, `last_name`, or `groups` keys and values that are strings or lists of strings.  For example, if your identity provider is unable to include an `email` attribute in assertions, but does include one called `EmailAddress`, then **Attribute Mappings** should be set to `{ "email": "EmailAddress" }`. The mappings are only needed if you cannot configure attributes as specified in the instructions on this page. If you can, the default value of `{}` is acceptable.
+- **Attribute Mappings:** Associate SAML attributes that <Constant name="dbt" /> needs with attributes your identity provider includes in SAML assertions.  The value must be a valid JSON object with the `email`, `first_name`, `last_name`, or `groups` keys and values that are strings or lists of strings.  For example, if your identity provider is unable to include an `email` attribute in assertions, but does include one called `EmailAddress`, then **Attribute Mappings** should be set to `{ "email": "EmailAddress" }`. The mappings are only needed if you cannot configure attributes as specified in the instructions on this page. If you can, the default value of `{}` is acceptable.
 
 <Snippet path="login_url_note" />
 

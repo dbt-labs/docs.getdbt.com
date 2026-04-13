@@ -5,6 +5,10 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-8-refactor-a-rollup"
 ---
 
+import NewSLYAMLCallout from '/snippets/_new-sl-yaml-callout.md';
+
+<NewSLYAMLCallout />
+
 ## Files and Folders
 
 The first thing you need to establish is how you’re going to consistently structure your code. There are two recommend best practices to choose from:

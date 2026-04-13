@@ -1,7 +1,8 @@
-import React, { useState, useMemo, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useLayoutEffect, useContext } from 'react';
 import Markdown from 'markdown-to-jsx';
 import getSvgIcon from '../../utils/get-svg-icon';
 import styles from './styles.module.css';
+import { SimpleTableContext } from '../simpleTable';
 
 const stripMarkdown = (text) => {
   if (!text) return '';
@@ -119,6 +120,9 @@ const parseTableFromDOM = (tableElement) => {
 };
 
 const FilterableTable = ({ children }) => {
+  // Check if we're inside a SimpleTable wrapper
+  const isSimpleTable = useContext(SimpleTableContext);
+  
   const tableRef = useRef(null);
   const [tableData, setTableData] = useState({ headers: [], data: [], columnAlignments: [] });
   const [openFilterIndex, setOpenFilterIndex] = useState(null);
@@ -356,6 +360,55 @@ const FilterableTable = ({ children }) => {
   const hasActiveColumnFilter = (colIndex) => {
     return (columnFilters[colIndex] || []).length > 0;
   };
+
+  // If we're in a SimpleTable context, render as a plain table
+  if (isSimpleTable) {
+    return (
+      <>
+        <table ref={tableRef} style={{ display: 'none' }}>
+          {children}
+        </table>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <thead>
+            <tr>
+              {headers.map((header, index) => (
+                <th 
+                  key={index}
+                  style={{ 
+                    textAlign: columnAlignments[index] || 'left',
+                    padding: '0.75rem',
+                    border: '1px solid var(--ifm-table-border-color)',
+                    backgroundColor: 'var(--ifm-table-head-background)',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  <Markdown>{header}</Markdown>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {initialData.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.cells.map((cell, cellIndex) => (
+                  <td 
+                    key={cellIndex}
+                    style={{ 
+                      textAlign: columnAlignments[cellIndex] || 'left',
+                      padding: '0.75rem',
+                      border: '1px solid var(--ifm-table-border-color)'
+                    }}
+                  >
+                    <Markdown>{cell}</Markdown>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    );
+  }
 
   return (
     <div className={styles.filterableTableContainer}>
