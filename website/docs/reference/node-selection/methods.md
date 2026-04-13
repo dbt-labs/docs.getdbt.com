@@ -7,12 +7,6 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
-<Expandable alt_header="Differences between --select and --selector">
-
-The `--select` and `--selector` arguments sound similar, but they are different. To understand the difference, see [Differences between `--select` and `--selector`](/reference/node-selection/yaml-selectors#difference-between---select-and---selector).
-
-</Expandable>
-
 import UsingCommas from '/snippets/_using-commas.md';
 
 <UsingCommas />
@@ -285,14 +279,6 @@ dbt list --select "saved_query:*"                    # list all saved queries
 dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
 
-### semantic_model
-
-The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
-
-```bash
-dbt list --select "semantic_model:*"        # list all semantic models 
-dbt list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
-```
 <VersionBlock firstVersion="1.12">
 
 ### selector
@@ -314,11 +300,20 @@ dbt run --select "selector:staging" --exclude "selector:exclude_tests"
 
 When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when `--selector` is combined with `--select` or `--exclude`. If you want to combine a selector with these flags, use the `selector:` method instead.
 
-When you run an "unqualified" command (without `--select`, `--exclude`, or `--selector`), dbt applies the [default selector](/reference/node-selection/yaml-selectors#default) if you have defined one in `selectors.yml`. When you use `--select`, `--exclude`, or `--selector`, dbt ignores the default selector. To include a selector in a `--select` or `--exclude` string, you must explicitly reference it using the `selector:` method.
+When you run an "unqualified" command (without `--select` or `--exclude`), dbt applies the [default selector](/reference/node-selection/yaml-selectors#default) if you have defined one in `selectors.yml`. When you use `--select` or `--exclude`, dbt ignores the default selector. To include a selector in a `--select` or `--exclude` string, you must explicitly reference it using the `selector:` method.
 
 If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
 
 </VersionBlock>
+
+### semantic_model
+
+The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
+
+```bash
+dbt list --select "semantic_model:*"        # list all semantic models 
+dbt list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
+```
 
 ### source
 The `source` method is used to select models that select from a specified [source](/docs/build/sources#using-sources). Use in conjunction with the `+` operator.
