@@ -5,7 +5,7 @@ dbt user accounts need the following permissions to read from and create tables 
 For BigQuery with <Constant name="fusion_engine" />, users also need:
 - BigQuery Read Session User (for Storage Read API access)
 
-To use the Query History feature, add:
+To use the [Query History](/docs/explore/model-query-history#bigquery-model-query-history) feature, add:
 - BigQuery Resource Viewer
 
 For BigQuery DataFrames, users need these additional permissions:
