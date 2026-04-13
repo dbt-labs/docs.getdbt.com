@@ -38,6 +38,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/community/events",
+      "destination": "https://www.getdbt.com/events",
+      "permanent": true
+    },
     { 
       "source": "/guides/sl-migration",
       "destination": "/docs/build/latest-metrics-spec",
