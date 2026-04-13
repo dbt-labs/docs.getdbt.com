@@ -18,7 +18,7 @@ Before setting up Cost Insights, ensure you have:
 - An administrator role.
 - A supported data warehouse: Snowflake, BigQuery, or Databricks.
 
-To set up Cost Insights, following these steps:
+To set up Cost Insights, follow these steps:
 
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
