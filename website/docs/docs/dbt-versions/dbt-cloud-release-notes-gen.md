@@ -18,6 +18,68 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## April 8, 2026
+
+## New
+
+### dbt Copilot and agents
+
+- **Admin API tools for MCP remote server**: The dbt MCP remote server now includes Admin API tools, including `list_jobs`, `list_projects`, `get_job_details`, `trigger_job_run`, `cancel_job_run`, `retry_job_run`, `get_job_run_details`, `get_job_run_error`, `list_job_run_artifacts`, and `get_job_run_artifact`. These tools let MCP clients list, inspect, trigger, cancel, and retry dbt jobs and runs directly from connected AI assistants. Contact your account manager to enable.
+
+### dbt platform
+
+- **OAuth consent page**: A new OAuth consent page lets you authorize third-party applications (for example, dbt MCP) to access your dbt platform account. You can select which permissions and projects to grant, then approve or deny the request.
+
+### Catalog
+
+- **Performance tab on test and snapshot detail pages**: Test and snapshot detail pages now include a Performance tab showing cost insights data — including cost, usage, build time, and build count charts — matching the existing model performance experience.
+
+### Orchestration and run status
+
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Smarter validation after file edits**: The Studio DevAgent now selects the lightest appropriate validation check after each change — for example, skipping compilation for description-only edits and running `dbt parse` for project config changes — instead of always running a full `dbt compile`. This reduces unnecessary round-trips and keeps iteration faster.
+
+### Studio IDE
+
+- **Deferral environment selector**: Replaces the simple defer-to-production toggle with a popover that lets you choose between your development environment, dbt's default deferral behavior (staging if available, otherwise production), or a specific custom environment. A badge in the command bar shows your current deferral target at a glance.
+
+- **Revert personal dbt version override**: Adds an "Edit / Revert" action to the version override option in the environment popover. Clicking "Revert" opens a confirmation modal that removes your personal dbt version override and restarts the session.
+
+
+
+- **Improved file context pill in dbt Copilot**: Moves the active-file context pill to above the text input for greater visibility. When you remove the file context, a "Use current file as context" affordance appears so you can restore it without switching tabs.
+
+### Catalog
+
+- **Reused test status in DAG lens**: State-Aware Orchestration (SAO) test runs that reuse prior results now display with a "reused" icon in the DAG test status lens, matching the existing model run status behavior.
+
+
+- **Function resource type support in selectors**: The `function` resource type is now recognized in dbt selectors and the resource node type map, enabling correct filtering and navigation for function resources in Catalog.
+
+### Insights
+
+- **Fusion status column in account insights table**: Look for a "Fusion status" column in your account insights table when the Fusion readiness flow is available for your account. You'll see one of four states: On Fusion, Start upgrade, Partial-Fusion, or Non-Fusion — based on each project's readiness and migration progress. Projects that are ready to upgrade show a "Start upgrade" button that navigates directly to the project home page. Contact your account manager to enable.
+
+## Fixes
+
+### Studio IDE
+
+- **Parse status no longer shows error badge during Fusion compilation**: In Fusion mode, the parse status badge no longer switches to an error state solely because diagnostic errors are present. The badge now correctly reflects compilation progress and completion independent of diagnostic counts.
+
+- **Clearer authentication errors for rejected git connections**: Adds "remote rejected authentication" as a recognized, non-retryable git authentication error. You will now see a clear authentication failure message instead of a misleading retry loop when your git provider rejects your credentials.
+
+### Catalog
+
+- **Reused models no longer flagged as stale**: Models with a `last_run_status` of `reused` are no longer marked stale even when their last execution date exceeds 30 days. This prevents false health issue warnings for models that were intentionally reused rather than re-executed.
+
+- **Resource counts refresh on environment switch**: Fixes a bug where resource counts on the project landing page were not updated when switching environments.
+
+
+
 ## April 1, 2026
 
 ## New
