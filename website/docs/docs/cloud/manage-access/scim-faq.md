@@ -1,5 +1,5 @@
 ---
-title: "SCIM FAQ and troubleshooting"
+title: "SCIM FAQs and troubleshooting"
 description: "Common questions and troubleshooting for SCIM provisioning in dbt platform"
 id: "scim-faq"
 sidebar: "SCIM FAQ and troubleshooting"
@@ -9,7 +9,7 @@ sidebar: "SCIM FAQ and troubleshooting"
 
 Find answers to common questions about configuring and using SCIM provisioning in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 
-## FAQ
+## FAQs
 
 <Expandable alt_header="Do the userName and email.value fields have to point to the same value in SCIM?">
 

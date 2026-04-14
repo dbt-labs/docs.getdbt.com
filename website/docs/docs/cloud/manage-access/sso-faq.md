@@ -1,5 +1,5 @@
 ---
-title: "SSO FAQ and troubleshooting"
+title: "SSO FAQs and troubleshooting"
 description: "Common questions and troubleshooting for single sign-on (SSO) in dbt platform"
 id: "sso-faq"
 sidebar: "SSO FAQ and troubleshooting"
@@ -9,7 +9,7 @@ sidebar: "SSO FAQ and troubleshooting"
 
 Find answers to common questions about configuring and using single sign-on (SSO) in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 
-## Frequently asked questions
+## FAQs
 
 <Expandable alt_header="Do SSO group mappings apply to SCIM-managed users?">
 
