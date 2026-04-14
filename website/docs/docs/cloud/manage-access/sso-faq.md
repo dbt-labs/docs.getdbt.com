@@ -1,19 +1,19 @@
 ---
 title: "SSO FAQ and troubleshooting"
-description: "Common questions and troubleshooting for single sign-on (SSO) in dbt Cloud"
+description: "Common questions and troubleshooting for single sign-on (SSO) in dbt platform"
 id: "sso-faq"
 sidebar: "SSO FAQ and troubleshooting"
 ---
 
 # SSO FAQ and troubleshooting <Lifecycle status="managed, managed_plus" />
 
-Find answers to common questions about configuring and using single sign-on (SSO) in dbt Cloud, plus guidance for resolving common issues.
+Find answers to common questions about configuring and using single sign-on (SSO) in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 
 ## Frequently asked questions
 
 <Expandable alt_header="Do SSO group mappings apply to SCIM-managed users?">
 
-No. When SCIM is enabled, SSO group mappings are bypassed entirely for users who are provisioned and managed through SCIM. Group membership for SCIM-managed users is controlled by your IdP — dbt Cloud will not apply SSO group mapping rules on top of SCIM-provisioned group assignments.
+No. When SCIM is enabled, SSO group mappings are bypassed entirely for users who are provisioned and managed through SCIM. Group membership for SCIM-managed users is controlled by your IdP — <Constant name="dbt_platform" /> will not apply SSO group mapping rules on top of SCIM-provisioned group assignments.
 
 This means that if you have a dbt group with SSO group mappings configured, those mappings will only apply to users who authenticate via SSO and are **not** SCIM-managed.
 
@@ -22,7 +22,7 @@ This means that if you have a dbt group with SSO group mappings configured, thos
 {/* TODO: Needs engineering verification before publishing — confirm exact field label and whether a screenshot is available */}
 <Expandable alt_header="Where do I find my Auth0 URI for configuring SSO?">
 
-Your Auth0 URI is displayed on the **Single Sign-On** settings page in dbt Cloud under **Account settings → Single Sign-On**. When you begin the SSO setup flow and select your provider (for example, SAML 2.0 or Microsoft Entra ID), the page will show your IdP values. These are the values you share with your identity provider (IdP) administrator to configure the enterprise application on their end.
+Your Auth0 URI is displayed on the **Single Sign-On** settings page in <Constant name="dbt_platform" /> under **Account settings → Single Sign-On**. When you begin the SSO setup flow and select your provider (for example, SAML 2.0 or Microsoft Entra ID), the page will show your IdP values. These are the values you share with your identity provider (IdP) administrator to configure the enterprise application on their end.
 
 The Auth0 URI is **not** the same as your SCIM Base URL, though they share a similar domain pattern. Use the value shown on the SSO settings page directly — do not copy it from the SCIM section.
 
@@ -33,7 +33,7 @@ The Auth0 URI is **not** the same as your SCIM Base URL, though they share a sim
 
 The SSO slug — which forms the basis of your `Entity ID` and `ACS URL` — is auto-generated the first time you access the SSO setup flow. If you navigate away from the setup page without saving and then return, a new slug may be generated, changing these values.
 
-This is a common issue when different teams manage the dbt Cloud setup and the IdP configuration. For example, if your team retrieves the `AUTH0_URI` and `AUTH0_ENTITYID` to send to an Entra ID administrator, then navigates away before the admin finishes their side, a new slug may be generated when you return.
+This is a common issue when different teams manage the <Constant name="dbt_platform" /> setup and the IdP configuration. For example, if your team retrieves the `AUTH0_URI` and `AUTH0_ENTITYID` to send to an Entra ID administrator, then navigates away before the admin finishes their side, a new slug may be generated when you return.
 
 **To avoid this:** Once you have opened the SSO setup page and noted your `AUTH0_URI` and `AUTH0_ENTITYID`, complete both sides of the configuration before saving. If you need to pause, take note of the current slug and confirm it hasn't changed before submitting.
 
@@ -64,7 +64,7 @@ Our documentation lists `User.Read` and `GroupMember.Read.All` as the required p
 {/* TODO: Needs engineering sign-off — DO NOT publish until confirmed. Answer is inferred from system behavior, not explicitly confirmed by engineering. See also: SCIM FAQ for the same question. */}
 <Expandable alt_header="Can I use different IdPs for SSO and SCIM?">
 
-SSO and SCIM are configured independently in dbt Cloud, but they need to be compatible. Using different providers for SSO and SCIM (for example, Okta for SSO and Microsoft Entra ID for SCIM) is not a supported configuration. This can cause unintended behavior if there are discrepancies between the IdPs.
+SSO and SCIM are configured independently in <Constant name="dbt_platform" />, but they need to be compatible. Using different providers for SSO and SCIM (for example, Okta for SSO and Microsoft Entra ID for SCIM) is not a supported configuration. This can cause unintended behavior if there are discrepancies between the IdPs.
 
 If your organization has separate IdPs for authentication and directory management, contact your account team to discuss your options.
 
@@ -95,11 +95,11 @@ If a user logs in via a regional root URL (for example, `au.dbt.com` or `eu2.dbt
 {/* TODO: Needs engineering verification before publishing — the specific customer case was unresolved; confirm the common causes listed are exhaustive */}
 <Expandable alt_header='"Access Denied" redirect after a successful SAML authentication'>
 
-The SAML assertion is completing successfully on the IdP side, but dbt Cloud is rejecting the response. This is almost always caused by a mismatch between the values configured in the IdP and the values dbt Cloud expects.
+The SAML assertion is completing successfully on the IdP side, but <Constant name="dbt_platform" /> is rejecting the response. This is almost always caused by a mismatch between the values configured in the IdP and the values <Constant name="dbt_platform" /> expects.
 
 **Common causes:**
 
-- The **Issuer** in the SAML response doesn't match the connection identifier in Auth0. Check that the Entity ID configured in your IdP matches the one shown in dbt Cloud's SSO settings.
+- The **Issuer** in the SAML response doesn't match the connection identifier in Auth0. Check that the Entity ID configured in your IdP matches the one shown in <Constant name="dbt_platform" />'s SSO settings.
 - The **ACS URL** or **Audience** in the IdP app was set up with an old slug that has since changed.
 - The **NameID format** is set to a value Auth0 doesn't accept. Use `email` or `persistent` format.
 
@@ -121,6 +121,6 @@ This occurs when Entra ID requires admin consent for the permissions the dbt SSO
 {/* TODO: Needs engineering sign-off — DO NOT publish until confirmed. Root cause was never reproduced or confirmed in Datadog. Steps below are best-effort guidance only. */}
 <Expandable alt_header='"This SSO endpoint is disabled. Please contact your administrator to have them update your IdP SSO settings to use Auth0 instead."'>
 
-This error appears when your IdP is misconfigured and the callback URL is pointing to dbt Cloud instead of Auth0. Your admin will need to update the IdP configuration and ensure it uses all the correct IdP values provided in **Account settings → Single Sign-On**.
+This error appears when your IdP is misconfigured and the callback URL is pointing to <Constant name="dbt_platform" /> instead of Auth0. Your admin will need to update the IdP configuration and ensure it uses all the correct IdP values provided in **Account settings → Single Sign-On**.
 
 </Expandable>

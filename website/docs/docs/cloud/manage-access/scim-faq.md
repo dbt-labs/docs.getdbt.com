@@ -1,19 +1,19 @@
 ---
 title: "SCIM FAQ and troubleshooting"
-description: "Common questions and troubleshooting for SCIM provisioning in dbt Cloud"
+description: "Common questions and troubleshooting for SCIM provisioning in dbt platform"
 id: "scim-faq"
 sidebar: "SCIM FAQ and troubleshooting"
 ---
 
 # SCIM FAQ and troubleshooting <Lifecycle status="managed, managed_plus" />
 
-Find answers to common questions about configuring and using SCIM provisioning in dbt Cloud, plus guidance for resolving common issues.
+Find answers to common questions about configuring and using SCIM provisioning in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 
-## Frequently asked questions
+## FAQ
 
 <Expandable alt_header="Do the userName and email.value fields have to point to the same value in SCIM?">
 
-Yes. They must match the email value on the user object in your IdP that's used to log into dbt Cloud. If they don't match, a validation error will occur during user provisioning.
+Yes. They must match the email value on the user object in your IdP that's used to log into <Constant name="dbt_platform" />. If they don't match, a validation error will occur during user provisioning.
 
 </Expandable>
 
@@ -21,34 +21,34 @@ Yes. They must match the email value on the user object in your IdP that's used 
 
 #### Entra ID
 
-Once SCIM provisioning is configured in Entra (Azure AD) according to the schema requirements, provisioning begins automatically. Entra will sync users and groups assigned to the Entra app with dbt Cloud.
+Once SCIM provisioning is configured in Entra (Azure AD) according to the schema requirements, provisioning begins automatically. Entra will sync users and groups assigned to the Entra app with <Constant name="dbt_platform" />.
 
 **For users:**
-- Matching is based on the `userName` (and `email.value`) field, which should be set to the user's email — the same email used in dbt Cloud and expected at login.
-- If a user with that email already exists in dbt Cloud, they will be linked and become SCIM-managed.
+- Matching is based on the `userName` (and `email.value`) field, which should be set to the user's email — the same email used in <Constant name="dbt_platform" /> and expected at login.
+- If a user with that email already exists in <Constant name="dbt_platform" />, they will be linked and become SCIM-managed.
 - If no matching user exists, a new user will be provisioned and invited via email.
 
 **For groups:**
 - Matching is based on the group name.
-- If a group with the same name exists in dbt Cloud, it will be linked and become SCIM-managed.
+- If a group with the same name exists in <Constant name="dbt_platform" />, it will be linked and become SCIM-managed.
 - If no match exists, a new group will be created via SCIM.
 
 **Important considerations:**
 - Entra does not support importing existing users or groups into the app for SCIM — users and groups must already exist in Entra and be assigned to the app.
-- To ensure users and groups become SCIM-managed, they must exist in both Entra and dbt Cloud with matching identifiers (email for users, name for groups).
+- To ensure users and groups become SCIM-managed, they must exist in both Entra and <Constant name="dbt_platform" /> with matching identifiers (email for users, name for groups).
 - After setup, ongoing syncs automatically provision and manage any newly assigned users or groups in Entra.
 
 #### Okta
 
 SCIM provisioning with Okta differs from Entra in that it does not perform continuous full syncs. Instead, provisioning is initiated manually for the initial setup and then continues incrementally as changes are made.
 
-When SCIM is enabled on an existing Okta SSO application, you must trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This performs a one-time synchronization of users to dbt Cloud. Okta does not provide a native way to re-run this full sync, so reprocessing typically requires removing and re-adding users.
+When SCIM is enabled on an existing Okta SSO application, you must trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This performs a one-time synchronization of users to <Constant name="dbt_platform" />. Okta does not provide a native way to re-run this full sync, so reprocessing typically requires removing and re-adding users.
 
-User matching is based on the `userName` (email) field. This field must match the email used by the user in dbt Cloud. If a matching user exists, they will be linked and become SCIM-managed. If no match is found, a new user will be provisioned. Alternatively, if users exist in dbt Cloud but not in Okta, they can be imported into Okta to ensure alignment between the two systems.
+User matching is based on the `userName` (email) field. This field must match the email used by the user in <Constant name="dbt_platform" />. If a matching user exists, they will be linked and become SCIM-managed. If no match is found, a new user will be provisioned. Alternatively, if users exist in <Constant name="dbt_platform" /> but not in Okta, they can be imported into Okta to ensure alignment between the two systems.
 
-After the initial provisioning, any new users assigned to the Okta app will be automatically provisioned into dbt Cloud. Once users are in sync, group memberships can be managed via Okta's Push Groups feature, which allows groups and their memberships to be pushed into dbt Cloud.
+After the initial provisioning, any new users assigned to the Okta app will be automatically provisioned into <Constant name="dbt_platform" />. Once users are in sync, group memberships can be managed via Okta's Push Groups feature, which allows groups and their memberships to be pushed into <Constant name="dbt_platform" />.
 
-For new Okta SSO applications with no assigned users, you can either manually assign users to the app (which will trigger provisioning), or import users from dbt Cloud into Okta before syncing. Ensuring that users exist in both systems and that their emails match is critical for proper linking and avoiding duplicate user creation.
+For new Okta SSO applications with no assigned users, you can either manually assign users to the app (which will trigger provisioning), or import users from <Constant name="dbt_platform" /> into Okta before syncing. Ensuring that users exist in both systems and that their emails match is critical for proper linking and avoiding duplicate user creation.
 
 For larger rollouts, consider working with your IdP admin to plan based on your setup and [SCIM license mapping](/docs/cloud/manage-access/scim-manage-user-licenses) to reduce manual steps.
 
@@ -67,8 +67,8 @@ This means that if you have a dbt group with SSO mappings, those mappings will n
 
 The **Allow Manual Updates** toggle controls whether an admin can manually update SCIM-managed entities, including the ability to send invites.
 
-- **Disabled (default):** All user and group management is deferred entirely to your IdP. Manual changes in dbt Cloud to SCIM-managed users are blocked. This is the recommended setting, as any manual changes made while enabled can be overridden by subsequent SCIM requests.
-- **Enabled:** Admins can make manual changes to users in dbt Cloud alongside SCIM. This can be useful during initial setup and testing, but manual changes do not prevent SCIM from overriding them.
+- **Disabled (default):** All user and group management is deferred entirely to your IdP. Manual changes in <Constant name="dbt_platform" /> to SCIM-managed users are blocked. This is the recommended setting, as any manual changes made while enabled can be overridden by subsequent SCIM requests.
+- **Enabled:** Admins can make manual changes to users in <Constant name="dbt_platform" /> alongside SCIM. This can be useful during initial setup and testing, but manual changes do not prevent SCIM from overriding them.
 
 We recommend keeping **Allow Manual Updates** disabled to ensure SCIM-managed entities stay in sync with the IdP.
 
@@ -77,16 +77,16 @@ We recommend keeping **Allow Manual Updates** disabled to ensure SCIM-managed en
 {/* TODO: Needs engineering verification before publishing — confirm behavior across both Okta and Entra and that the Entra "push only" note is still accurate */}
 <Expandable alt_header="What happens to existing users and groups when I enable SCIM?">
 
-Existing users and groups in dbt Cloud are **not** automatically converted to SCIM-managed status when you first enable SCIM. Your IdP will only manage users that have been explicitly assigned to the dbt Cloud application in their IdP and provisioned via SCIM.
+Existing users and groups in <Constant name="dbt_platform" /> are **not** automatically converted to SCIM-managed status when you first enable SCIM. Your IdP will only manage users that have been explicitly assigned to the <Constant name="dbt_platform" /> application in their IdP and provisioned via SCIM.
 
-To bring existing users under SCIM management, assign them to the dbt Cloud app in your IdP and trigger a sync. Until a user is provisioned via SCIM, they remain unmanaged and are unaffected by SCIM sync operations.
+To bring existing users under SCIM management, assign them to the <Constant name="dbt_platform" /> app in your IdP and trigger a sync. Until a user is provisioned via SCIM, they remain unmanaged and are unaffected by SCIM sync operations.
 
 </Expandable>
 
 {/* TODO: Needs engineering verification before publishing — confirm the email confirmation flow described is current */}
 <Expandable alt_header="What happens when a user's email address changes in my IdP when SCIM is enabled?">
 
-If the user is SCIM-managed, when their email is updated in the IdP, dbt Cloud will receive a request via SCIM to update their email. An email will be sent to the new address to confirm the change. Once accepted, the user's email will be officially updated in dbt Cloud.
+If the user is SCIM-managed, when their email is updated in the IdP, <Constant name="dbt_platform" /> will receive a request via SCIM to update their email. An email will be sent to the new address to confirm the change. Once accepted, the user's email will be officially updated in <Constant name="dbt_platform" />.
 
 </Expandable>
 
@@ -112,42 +112,42 @@ This is not a recommended configuration. SSO and SCIM should be configured using
 
 <Expandable alt_header='"All users must have licenses on the account" error'>
 
-This error occurs when a SCIM group push includes a user who has not yet been licensed in dbt Cloud — typically because the user hasn't accepted their invitation yet.
+This error occurs when a SCIM group push includes a user who has not yet been licensed in <Constant name="dbt_platform" /> — typically because the user hasn't accepted their invitation yet.
 
 **Steps to resolve:**
 
 1. Identify the user(s) causing the error from your IdP's provisioning logs.
-2. Check whether those users have accepted their dbt Cloud invitation. Users are not licensed until they complete this step.
+2. Check whether those users have accepted their <Constant name="dbt_platform" /> invitation. Users are not licensed until they complete this step.
 3. Once the user accepts their invitation and logs in, retry the group push from your IdP.
-4. If the invitation has expired, remove the user from the push group temporarily, re-invite them via dbt Cloud, have them accept, and then re-add them to the push group.
+4. If the invitation has expired, remove the user from the push group temporarily, re-invite them via <Constant name="dbt_platform" />, have them accept, and then re-add them to the push group.
 
 </Expandable>
 
 {/* TODO: Needs engineering verification before publishing — confirm the Entra "push only" behavior is still accurate and that there is no import option */}
 <Expandable alt_header="Existing users and groups are not becoming SCIM-managed after enabling SCIM">
 
-After enabling SCIM and completing the initial sync, pre-existing dbt Cloud users and groups do not show as SCIM-managed.
+After enabling SCIM and completing the initial sync, pre-existing <Constant name="dbt_platform" /> users and groups do not show as SCIM-managed.
 
-**Why this happens:** SCIM provisioning creates a managed association between an IdP identity and a dbt Cloud user record. Users created before SCIM was enabled do not have this association unless the IdP explicitly provisions them via SCIM.
+**Why this happens:** SCIM provisioning creates a managed association between an IdP identity and a <Constant name="dbt_platform" /> user record. Users created before SCIM was enabled do not have this association unless the IdP explicitly provisions them via SCIM.
 
 **Steps to resolve:**
 
-1. In your IdP, assign existing users to the dbt Cloud SCIM application.
+1. In your IdP, assign existing users to the <Constant name="dbt_platform" /> SCIM application.
 2. Trigger a provisioning sync. The IdP will attempt to match existing users by their `userName` (typically email address) and establish the SCIM-managed link.
 3. For Entra ID, note that the provisioning sync is one-way (push only) — there is no import option to pull existing dbt users into Entra as a managed identity.
-4. If users are not being matched correctly after a sync, confirm that the `userName` attribute in your IdP matches the email address on the user's dbt Cloud account exactly, including case.
+4. If users are not being matched correctly after a sync, confirm that the `userName` attribute in your IdP matches the email address on the user's <Constant name="dbt_platform" /> account exactly, including case.
 
 </Expandable>
 
 {/* TODO: Needs engineering verification before publishing — confirm the AzureActiveDirectory service tag approach is still current and that the Admin API method is supported */}
 <Expandable alt_header="Azure SCIM provisioning fails due to IP allowlisting">
 
-If your dbt Cloud account has **IP restrictions** enabled, Azure's SCIM provisioning requests may be blocked because Azure's provisioning service IPs rotate approximately every two weeks and cannot be statically allowlisted.
+If your <Constant name="dbt_platform" /> account has **IP restrictions** enabled, Azure's SCIM provisioning requests may be blocked because Azure's provisioning service IPs rotate approximately every two weeks and cannot be statically allowlisted.
 
 **Recommended approach:**
 
 1. Filter to the `AzureActiveDirectory` service tag in [Azure's published IP ranges JSON](https://www.microsoft.com/en-us/download/details.aspx?id=56519) rather than allowlisting all Azure IPs.
-2. Use the dbt Cloud Admin API with a service token to programmatically update your IP allowlist on a schedule (for example, a weekly script that pulls the current `AzureActiveDirectory` ranges and updates your allowlist via the API).
+2. Use the <Constant name="dbt_platform" /> Admin API with a service token to programmatically update your IP allowlist on a schedule (for example, a weekly script that pulls the current `AzureActiveDirectory` ranges and updates your allowlist via the API).
 
 Contact [support@getdbt.com](mailto:support@getdbt.com) for guidance on using the Admin API for allowlist management.
 
