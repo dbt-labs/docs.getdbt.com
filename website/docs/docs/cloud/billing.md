@@ -18,10 +18,12 @@ Usage is based on the number of [Successful Models Built](#what-counts-as-a-succ
 ### What counts as a seat license?
 You can learn more about allocating users to your account in [Users and licenses](/docs/cloud/manage-access/seats-and-users).
 There are four types of possible seat licenses:
-* **Analyst** &mdash; for permission sets assigned and shared amongst those who don't need day-to-day access. Requires developer seat license purchase.
+* **Analyst**\* &mdash; for permission sets assigned and shared amongst those who don't need day-to-day access.
 * **Developer** &mdash; for permission sets that require day-to-day interaction with the <Constant name="dbt_platform" />.
-* **IT** &mdash; for access to specific features related to account management (for example, configuring git integration). 
+* **IT** &mdash; for access to specific features related to account management (for example, configuring git integration).
 * **Read-Only** &mdash; for access to view certain documents and reports.
+
+\* The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ### What counts as a Successful Model Built?
 
@@ -279,7 +281,7 @@ Running tests for views in every job run can help keep data quality intact and s
     ```
     
 4. Save the file and commit it to your project.
-5. Modify your dbt jobs to include `--selector skip_views_but_test_views`.
+5. Modify your dbt jobs to include <VersionBlock lastVersion="1.11">`dbt run --selector skip_views_but_test_views`</VersionBlock><VersionBlock firstVersion="1.12">`dbt run --select selector:skip_views_but_test_views`</VersionBlock>.
 
 #### Build only changed views
 

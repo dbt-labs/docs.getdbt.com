@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.css'
-import axios from 'axios'
 import sanitizeHtml from 'sanitize-html';
 
 export const DiscourseBlogComments = ({title,slug}) => {
@@ -8,7 +7,6 @@ export const DiscourseBlogComments = ({title,slug}) => {
     const DISCOURSE_TOPIC_ENDPOINT = `https://discourse.getdbt.com/t/`
     const commentsToLoad = 6
 
-    const [postSlug, setPostSlug] = useState(slug)
     const [comments, setComments] = useState([])
     const [topicId, setTopicId] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -19,30 +17,30 @@ export const DiscourseBlogComments = ({title,slug}) => {
     const loadMoreComments = () => {
       setNext(next + commentsToLoad)
     }
-  
+
     useEffect(() => {
       let isMounted = true
-      
-      setPostSlug(slug)
-  
+
       const fetchData = async () => {
         try {
 
           const endpoint = `/api/get-discourse-comments?title=${title}&slug=${slug}`
-        
-          const { data } = await axios.get(endpoint)
-  
+
+          const response = await fetch(endpoint)
+
           // Set error state if data not available
-          if(!data) throw new Error('Unable to get latest topics.')
-  
+          if (!response.ok) throw new Error('Unable to get latest topics.')
+
+          const data = await response.json()
+
           // Set topics count
           if(isMounted && data) {
             setComments(data.comments)
             setTopicId(data.topicId)
             setLoading(false)
-            
+
           }
-          
+
         } catch(err) {
           setIsError(true)
           setLoading(false)
@@ -53,8 +51,8 @@ export const DiscourseBlogComments = ({title,slug}) => {
       return () => {
         isMounted = false
       }
-      
-    }, [postSlug])
+
+    }, [slug])
 
     const resultData = () => {
       if (loading) {

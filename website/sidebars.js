@@ -400,6 +400,7 @@ const sidebarSettings = {
             "docs/dbt-extension-features",
             "docs/install-dbt-extension",
             "docs/configure-dbt-extension",
+            "docs/fusion/vs-compare-changes",
           ],
         },
         {
@@ -882,11 +883,40 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
       items: [
         "docs/dbt-ai/about-mcp",
-        "docs/dbt-ai/setup-local-mcp",
-        "docs/dbt-ai/setup-remote-mcp",
-        "docs/dbt-ai/integrate-mcp-vscode",
-        "docs/dbt-ai/integrate-mcp-cursor",
-        "docs/dbt-ai/integrate-mcp-claude",
+        "docs/dbt-ai/mcp-available-tools",
+        {
+          type: "category",
+          label: "Get started",
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
+          items: [
+            "docs/dbt-ai/mcp-quickstart-oauth",
+            "docs/dbt-ai/mcp-quickstart-cli",
+            "docs/dbt-ai/mcp-quickstart-remote",
+          ],
+        },
+        {
+          type: "category",
+          label: "Setup and configuration",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/setup-local-mcp",
+            "docs/dbt-ai/setup-remote-mcp",
+            "docs/dbt-ai/mcp-environment-variables",
+            "docs/dbt-ai/mcp-find-ids",
+          ],
+        },
+        {
+          type: "category",
+          label: "Integrations",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/integrate-mcp-claude",
+            "docs/dbt-ai/integrate-mcp-cursor",
+            "docs/dbt-ai/integrate-mcp-vscode",
+          ],
+        },
+        "docs/dbt-ai/mcp-troubleshooting",
       ],
     },
     {
@@ -1795,11 +1825,6 @@ const sidebarSettings = {
       type: "link",
       label: "Community forum",
       href: "/community/forum",
-    },
-    {
-      type: "link",
-      label: "Events",
-      href: "/community/events",
     },
     {
       type: "category",

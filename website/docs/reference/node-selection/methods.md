@@ -7,12 +7,6 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
-<Expandable alt_header="Differences between --select and --selector">
-
-The `--select` and `--selector` arguments sound similar, but they are different. To understand the difference, see [Differences between `--select` and `--selector`](/reference/node-selection/yaml-selectors#difference-between---select-and---selector).
-
-</Expandable>
-
 import UsingCommas from '/snippets/_using-commas.md';
 
 <UsingCommas />
@@ -284,6 +278,33 @@ The `saved_query` method selects [saved queries](/docs/build/saved-queries).
 dbt list --select "saved_query:*"                    # list all saved queries 
 dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
+
+<VersionBlock firstVersion="1.12">
+
+### selector
+
+:::info Beta feature
+The `selector` method is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+The `selector` method selects the nodes defined by a named [YAML selector](/reference/node-selection/yaml-selectors) in `selectors.yml`. Use it in `--select` or `--exclude` strings so you can compose a named selector with other [methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators).
+
+```bash
+dbt run --select "selector:my_selector"          # same node set as `dbt run --selector my_selector`
+dbt build --select "selector:staging selector:nightly"   # union (space-separated)
+dbt build --select "selector:staging,selector:nightly"   # intersection (comma-separated)
+dbt build --select "1+selector:staging"                  # graph operators
+dbt build --select "selector:staging tag:nightly"        # combine with other methods
+dbt run --select "selector:staging" --exclude "selector:exclude_tests"
+```
+
+When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when `--selector` is combined with `--select` or `--exclude`. If you want to combine a selector with these flags, use the `selector:` method instead.
+
+When you run an "unqualified" command (without `--select` or `--exclude`), dbt applies the [default selector](/reference/node-selection/yaml-selectors#default) if you have defined one in `selectors.yml`. When you use `--select` or `--exclude`, dbt ignores the default selector. To include a selector in a `--select` or `--exclude` string, you must explicitly reference it using the `selector:` method.
+
+If selector definitions reference each other in a cycle, dbt raises the `DbtRecursionError` at runtime. For more information, refer to [Selector inheritance](/reference/node-selection/yaml-selectors#selector-inheritance).
+
+</VersionBlock>
 
 ### semantic_model
 

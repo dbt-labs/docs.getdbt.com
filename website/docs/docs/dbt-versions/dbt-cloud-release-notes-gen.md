@@ -18,6 +18,170 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## April 8, 2026
+
+## New
+
+### dbt Copilot and agents
+
+- **Admin API tools for MCP remote server**: The dbt MCP remote server now includes Admin API tools, including `list_jobs`, `list_projects`, `get_job_details`, `trigger_job_run`, `cancel_job_run`, `retry_job_run`, `get_job_run_details`, `get_job_run_error`, `list_job_run_artifacts`, and `get_job_run_artifact`. These tools let MCP clients list, inspect, trigger, cancel, and retry dbt jobs and runs directly from connected AI assistants. Contact your account manager to enable.
+
+### dbt platform
+
+- **OAuth consent page**: A new OAuth consent page lets you authorize third-party applications (for example, dbt MCP) to access your dbt platform account. You can select which permissions and projects to grant, then approve or deny the request.
+
+### Catalog
+
+- **Performance tab on test and snapshot detail pages**: Test and snapshot detail pages now include a Performance tab showing cost insights data — including cost, usage, build time, and build count charts — matching the existing model performance experience.
+
+### Orchestration and run status
+
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Smarter validation after file edits**: The Studio DevAgent now selects the lightest appropriate validation check after each change — for example, skipping compilation for description-only edits and running `dbt parse` for project config changes — instead of always running a full `dbt compile`. This reduces unnecessary round-trips and keeps iteration faster.
+
+### Studio IDE
+
+- **Deferral environment selector**: Replaces the simple defer-to-production toggle with a popover that lets you choose between your development environment, dbt's default deferral behavior (staging if available, otherwise production), or a specific custom environment. A badge in the command bar shows your current deferral target at a glance.
+
+- **Revert personal dbt version override**: Adds an "Edit / Revert" action to the version override option in the environment popover. Clicking "Revert" opens a confirmation modal that removes your personal dbt version override and restarts the session.
+
+
+
+- **Improved file context pill in dbt Copilot**: Moves the active-file context pill to above the text input for greater visibility. When you remove the file context, a "Use current file as context" affordance appears so you can restore it without switching tabs.
+
+### Catalog
+
+- **Reused test status in DAG lens**: State-Aware Orchestration (SAO) test runs that reuse prior results now display with a "reused" icon in the DAG test status lens, matching the existing model run status behavior.
+
+
+- **Function resource type support in selectors**: The `function` resource type is now recognized in dbt selectors and the resource node type map, enabling correct filtering and navigation for function resources in Catalog.
+
+### Insights
+
+- **Fusion status column in account insights table**: Look for a "Fusion status" column in your account insights table when the Fusion readiness flow is available for your account. You'll see one of four states: On Fusion, Start upgrade, Partial-Fusion, or Non-Fusion — based on each project's readiness and migration progress. Projects that are ready to upgrade show a "Start upgrade" button that navigates directly to the project home page. Contact your account manager to enable.
+
+## Fixes
+
+### Studio IDE
+
+- **Parse status no longer shows error badge during Fusion compilation**: In Fusion mode, the parse status badge no longer switches to an error state solely because diagnostic errors are present. The badge now correctly reflects compilation progress and completion independent of diagnostic counts.
+
+- **Clearer authentication errors for rejected git connections**: Adds "remote rejected authentication" as a recognized, non-retryable git authentication error. You will now see a clear authentication failure message instead of a misleading retry loop when your git provider rejects your credentials.
+
+### Catalog
+
+- **Reused models no longer flagged as stale**: Models with a `last_run_status` of `reused` are no longer marked stale even when their last execution date exceeds 30 days. This prevents false health issue warnings for models that were intentionally reused rather than re-executed.
+
+- **Resource counts refresh on environment switch**: Fixes a bug where resource counts on the project landing page were not updated when switching environments.
+
+
+
+## April 1, 2026
+
+## New
+
+### Studio IDE
+
+- **Fuzzy file path search**: Studio IDE now supports fuzzy file path search that finds files in your project using partial name matching. You can filter by glob patterns, set a result limit, and receive ordered results with a total match count, making it faster to navigate large projects.
+
+### dbt platform
+
+- **OAuth consent endpoint for Connected Auth**: A new `/oauth/consent` endpoint enables the Connected Auth OAuth flow, supporting user consent decisions (approve and deny), project-level resource boundaries, and authorization code issuance. This feature is in private beta. To request access, contact your account manager.
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Persistent agent mode across sessions**: The Studio agent now remembers your last-used mode (Ask or Code) across browser sessions, so you no longer need to reselect it each time you open the IDE.
+
+### Studio IDE
+
+- **More accurate file search results**: File search now validates each result against the filesystem before returning matches. Files that have been deleted locally but not yet staged are no longer included in search results.
+
+- **No unexpected git pulls on the primary branch**: Removes behavior where the IDE server automatically pulled changes from your primary branch during git status checks, which could cause unintended overwrites for projects using trunk-based development.
+
+### Orchestration and run status
+
+- **Teradata column-level lineage support**: Adds Teradata to the SQL dialect adapter map, enabling column-level lineage parsing for dbt projects using the Teradata adapter.
+
+### APIs, Identity, and Administration
+
+- **Fusion status includes readiness and migration availability**: Adds fields indicating availability of readiness and migration features.
+
+- **Faster account feature flag propagation**: Account feature flag changes now take effect within 60 seconds instead of up to one hour. You should see feature toggles apply more promptly across your account.
+
+### Webhooks
+
+- **Notification delivery reliability improvements**: Reduced the likelihood of delayed notifications (webhooks, email, Slack, and Teams) in certain third-party/system disruption scenarios.
+
+## Fixes
+
+### APIs, Identity, and Administration
+
+- **GitHub webhook secret null check before signature validation**: The GitHub webhook endpoint now correctly checks for a null webhook secret before attempting to validate the request signature, preventing a crash when a repository's webhook secret is not set.
+
+- **`github_installation_id` and `github_webhook_id` support large values**: These repository fields have been promoted from 32-bit to 64-bit integers (`BigIntegerField`) to accommodate GitHub installation and webhook IDs that exceed the 32-bit integer range.
+
+## Behavior changes
+
+### APIs, Identity, and Administration
+
+- **Fusion migration gated by API availability**: The Fusion migration checklist, the Enable Fusion Environments page, and the "Enable Fusion" button in Studio IDE now use the `is_migration_available` field from the Fusion status API instead of the legacy `orc2609ShowFusionToggle` feature flag. Fusion migration UI is shown only when the backend has marked the project as ready for migration.
+
+## March 25, 2026
+
+## New
+
+### Orchestration and Run Status
+
+- **Fusion run error banner**: When a run using the dbt Fusion engine fails, a banner now appears on the run details page with options to debug the failure in Studio IDE. If dbt Copilot is enabled, you can also open a guided fix-with-Copilot workflow directly from the banner. Contact your account manager to enable.
+
+## Enhancements
+
+### Studio IDE
+
+- **Consistent console pane default size**: The bottom console pane now opens at a preferred size of 33% of the available space, providing a more consistent default layout.
+
+- **Faster text search results**: File search now reports results incrementally on a per-file basis rather than per-match line, reducing memory pressure and improving perceived responsiveness during large searches.
+
+- **Smarter bulk-edit file handling**: When Studio IDE applies multi-file edits (for example, from dbt Copilot agent tasks), it now only updates editor models for files that are already open. Previously, every edited file was opened in a new tab, which cluttered the editor.
+
+### Deployment and Configuration
+
+- **Fusion migration enablement via project API**: You can now set `fusion_migration_enabled` on a project via the project update API. Enabling it requires the `fusion_readiness_write` permission, and the project must meet all readiness prerequisites (supported adapter, supported dbt version, a successful run, and eligible jobs).
+
+- **Filter jobs by Fusion readiness**: The jobs list endpoint (`GET /api/v2/accounts/{account_id}/jobs/`) now accepts an `is_fusion_ready` boolean query parameter. When `true`, it returns only conformant or override-ready jobs; when `false`, it returns only non-ready jobs. You can also include `fusion_readiness` in the `include_related` parameter to surface Fusion readiness details alongside the job response.
+
+- **Platform metadata credentials form opens immediately**: When adding platform metadata credentials for a connection, the credential form is now shown immediately instead of requiring you to click an "Add credentials" button first.
+
+## Fixes
+
+### Catalog
+
+- **Accurate resource counts on environment switch**: Fixes a bug where resource counts in the navigation tree were not refreshed when switching environments. You should now see up-to-date counts after changing the active environment.
+
+### Orchestration and Run Status
+
+- **Stuck runs are now cancelled**: A new cleanup job detects runs and run steps that have exceeded the maximum allowed duration and marks them as `CANCELLED`, preventing stale in-progress states from accumulating
+
+### Semantic Layer
+
+- **More reliable Snowflake connections after warehouse auto-resume**: The Semantic Layer Gateway now retries the initial connection when a Snowflake warehouse is waking up from auto-suspend, instead of failing immediately. You should see fewer connection errors when querying the Semantic Layer after a period of inactivity.
+
+### APIs, Identity, and Administration
+
+- **Large group permission sync no longer silently truncated**: Fixed an issue where group permission sync could miss updates for groups with many permissions.
+
+## Behavior Changes
+
+### Studio IDE
+
+- **Fusion OpenTelemetry log rendering always enabled**: Studio IDE now enables Fusion OpenTelemetry (OTel) log rendering for all invocations running on a Fusion core version, removing the previous feature flag requirement. If you are running a Fusion core version, you automatically receive OTel-based log output without any additional configuration.
+
 ## March 18, 2026
 
 ## Enhancements
