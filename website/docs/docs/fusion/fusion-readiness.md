@@ -63,9 +63,9 @@ Your project may implement features that <Constant name="fusion" /> currently [l
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
 - [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
+  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for Fusion. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
 - [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available).
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
-- [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for Fusion. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 
