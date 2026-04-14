@@ -6,6 +6,7 @@ intro_text: "Behavior change flags let you control when to adopt new runtime beh
 ---
 
 import StateModified from '/snippets/_state-modified-compare.md';
+import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
 
 :::info How this relates to other changes
 
@@ -39,14 +40,14 @@ Examples of behavior changes:
 - dbt begins raising a validation _error_ that it didn't previously.
 - dbt changes the signature of a built-in macro. Your project has a custom reimplementation of that macro. This could lead to errors, because your custom reimplementation will be passed arguments it cannot accept.
 - A dbt adapter renames or removes a method that was previously available on the `{{ adapter }}` object in the dbt-Jinja context.
-- dbt makes a breaking change to contracted metadata artifacts by deleting a required field, changing the name or type of an existing field, or removing the default value of an existing field ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#breaking-changes)).
+- dbt makes a breaking change to contracted metadata artifacts by deleting a required field, changing the name or type of an existing field, or removing the default value of an existing field ([README](https://github.com/dbt-labs/dbt-core/blob/main/docs/arch/7_Artifacts.md#breaking-changes)).
 - dbt removes one of the fields from [structured logs](/reference/events-logging#structured-logging).
 
 The following are **not** behavior changes:
 - Fixing a bug where the previous behavior was defective, undesirable, or undocumented.
 - dbt begins raising a _warning_ that it didn't previously.
 - dbt updates the language of human-friendly messages in log events.
-- dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#non-breaking-changes)).
+- dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/main/docs/arch/7_Artifacts.md#non-breaking-changes)).
 
 The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of <Constant name="dbt" /> and patch releases of <Constant name="core" />.
 
@@ -67,22 +68,23 @@ Here's an example of the available behavior change flags with their default valu
 
 ```yml
 flags:
-  require_explicit_package_overrides_for_builtin_materializations: True
-  require_resource_names_without_spaces: True
-  source_freshness_run_project_hooks: True
-  skip_nodes_if_on_run_start_fails: False
-  state_modified_compare_more_unrendered_values: False
-  require_yaml_configuration_for_mf_time_spines: False
-  require_batched_execution_for_custom_microbatch_strategy: False
-  require_nested_cumulative_type_params: False
-  validate_macro_args: False
-  require_all_warnings_handled_by_warn_error: False
-  require_generic_test_arguments_property: True
-  require_unique_project_resource_names: False
-  require_ref_searches_node_package_before_root: False
-  require_valid_schema_from_generate_schema_name: False
-  enable_truthy_nulls_equals_macro: False
-  require_sql_header_in_test_configs: False
+  require_explicit_package_overrides_for_builtin_materializations: true
+  require_resource_names_without_spaces: true
+  source_freshness_run_project_hooks: true
+  skip_nodes_if_on_run_start_fails: false
+  state_modified_compare_more_unrendered_values: false
+  require_yaml_configuration_for_mf_time_spines: false
+  require_batched_execution_for_custom_microbatch_strategy: false
+  require_nested_cumulative_type_params: false
+  validate_macro_args: false
+  require_all_warnings_handled_by_warn_error: false
+  require_generic_test_arguments_property: true
+  require_unique_project_resource_names: false
+  require_ref_searches_node_package_before_root: false
+  require_valid_schema_from_generate_schema_name: false
+  enable_truthy_nulls_equals_macro: false
+  require_sql_header_in_test_configs: false
+  require_corrected_analysis_fqns: false
 ```
 
 </File>
@@ -109,6 +111,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
 | [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
+| [require_corrected_analysis_fqns](#project-level-configuration-for-analyses) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 
 
 #### dbt adapter behavior changes
@@ -527,4 +530,31 @@ models:
 
 
 For more information, refer to [Data test configurations](/reference/data-test-configs).
+
+### Project-level configuration for analyses <Lifecycle status="beta" />
+
+:::info Beta feature
+The project-level configuration for analyses is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+Previously, project-level configuration for [analyses](/docs/build/analyses) in `dbt_project.yml` was silently ignored. Fully qualified names (FQNs) for analyses also contained an extra `analyses` path segment that was inconsistent with other resource types.
+
+When `require_corrected_analysis_fqns` is set to `true`, dbt:
+- Routes analysis configurations from the `analyses` block in `dbt_project.yml`, enabling project-level configurations to take effect.
+- Removes the extra FQN segment so that analysis FQNs are consistent with other resource types (for example, `your_project.my_analysis` instead of `your_project.analyses.my_analysis`).
+
+<AnalysesProjectLevelConfig />
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_corrected_analysis_fqns: true
+
+analyses:
+  +enabled: true | false
+```
+</File>
+
+For more information, refer to [Analyses](/docs/build/analyses) and [Analysis properties](/reference/analysis-properties).
 
