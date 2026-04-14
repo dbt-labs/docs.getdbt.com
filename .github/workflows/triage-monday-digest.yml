@@ -40,6 +40,7 @@ jobs:
       - name: Run monday-digest skill
         uses: anthropics/claude-code-action@beta
         with:
+          mode: agent
           use_bedrock: true
           direct_prompt: |
             Read triage/TRIAGE_AGENTS.md and triage/config.json, then execute the monday-digest skill exactly as documented in .claude/skills/monday-digest/SKILL.md.

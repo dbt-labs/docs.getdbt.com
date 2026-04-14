@@ -59,6 +59,7 @@ jobs:
       - name: Run triage-new-issue skill
         uses: anthropics/claude-code-action@beta
         with:
+          mode: agent
           use_bedrock: true
           github_token: ${{ secrets.DOCS_AI_AGENT }}
           direct_prompt: ${{ steps.build_prompt.outputs.prompt }}
