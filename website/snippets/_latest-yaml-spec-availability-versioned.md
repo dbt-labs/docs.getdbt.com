@@ -1,7 +1,9 @@
 :::info Availability
-The latest YAML spec is available in the <Constant name="dbt_platform" /> **Latest** release track and the <Constant name="fusion_engine" />.
+The latest YAML spec is supported in the following environments:
 
-Support in <Constant name="core" /> is planned for v1.12.
+- **<Constant name="dbt_platform" /> (Latest release track):** Available now
+- **<Constant name="fusion_engine" />:** Available now
+- **<Constant name="core" />:** Support coming in v1.12 (May 2025)
 
 For more information, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 :::
