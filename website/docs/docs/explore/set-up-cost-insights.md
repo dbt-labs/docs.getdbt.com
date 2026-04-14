@@ -82,7 +82,7 @@ For more information on how to assign permissions to users, refer to [About user
         </Expandable>
 
         If you have multiple connections that reference the same account identifier, you will only be prompted to add platform metadata credentials to one of them. Other connections using the same account identifier will display a message indicating that platform metadata credentials are already configured.
-5. Verify that **Cost Insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
+5. Verify that **Cost insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
 6. Click **Save**.
 
 ## Configure Cost Insights settings (optional)
