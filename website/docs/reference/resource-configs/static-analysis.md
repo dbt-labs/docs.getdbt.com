@@ -70,6 +70,8 @@ models:
   - name: model_name
     data_tests:
       - not_null:
+          arguments:
+            column_name: your_column_name
           config:
             static_analysis: strict | baseline | off
 ```
@@ -285,6 +287,8 @@ models:
   - name: my_model
     data_tests:
       - not_null:
+          arguments:
+            column_name: order_id
           config:
             static_analysis: off
 ```
