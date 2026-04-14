@@ -7,6 +7,7 @@ pagination_next: "docs/cloud/manage-access/enterprise-permissions"
 pagination_prev: null
 ---
 
+
 import LicenseTypes from '/snippets/_cloud-license-types.md';
 
 In <Constant name="dbt" />, _licenses_ are used to allocate users to your account. 
@@ -162,7 +163,7 @@ If your account is connected to an Identity Provider (IdP) for [Single Sign On](
 
 When a user belongs to multiple IdP groups, the Developer license takes precedence. The following table shows how group membership determines the assigned license:
 
-| In a Developer-mapped group? | In a Read-Only-mapped group? | License assigned |
+| In a Developer license-mapped group? | In a Read-Only license-mapped group? | License assigned |
 |---|---|---|
 | No | No | Developer (default) |
 | No | Yes | Read-Only |
