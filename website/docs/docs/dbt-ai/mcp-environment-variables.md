@@ -95,6 +95,14 @@ When multiple variables are set, they're evaluated in this order (highest priori
 4. Toolset disable (`DISABLE_*=true`)
 5. Default behavior
 
+## Semantic Layer
+
+These variables control the behavior of Semantic Layer tools.
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `DBT_MCP_SL_METRICS_RELATED_MAX` | `10` | Maximum number of metrics for which `list_metrics` also returns dimension and entity names inline, reducing the number of tool calls needed to answer data questions. When the metric count is at or below this value, dimensions and entities are embedded directly in the `list_metrics` response. When above this value, only metric names are returned and the LLM calls `get_dimensions`/`get_entities` separately. Set to `0` to always return metrics only and never inline dimension or entity data. |
+
 ## Logging and debugging
 
 | Variable | Default | Description |
