@@ -1,0 +1,566 @@
+---
+description: Use when the user asks to test, validate, or check whether a dbt feature works as documented. Prompts the user to choose their setup (DuckDB, Platform CLI, or custom adapter), scaffolds a minimal dbt project, runs dbt commands, validates results, and produces a testing summary and Notion row.
+alwaysApply: false
+---
+
+# Testing dbt features
+
+## Overview
+
+When the docs team asks to test or validate a dbt feature, this skill runs the test. It searches the local docs codebase to understand the feature, asks how you want to run the test, scaffolds a minimal dbt project in `/tmp/`, runs dbt commands, and writes a clear testing summary the writer can read and reproduce manually.
+
+Always follow dbt best practices when building test projects. Use the following sources, in priority order:
+
+1. **Local docs codebase** — `website/docs/` and `website/snippets/` for the feature being tested
+2. **dbt MCP server** — for live dbt documentation and code examples
+3. **Live dbt documentation** — `https://docs.getdbt.com` as a fallback
+
+## Trigger conditions
+
+- User asks to "test", "validate", or "check" a dbt feature
+- User provides a path to a draft doc and wants to verify the code examples work
+- User wants a "testing summary" before publishing a doc
+
+---
+
+## Step 1: Parse request and choose setup
+
+Extract from the user's request:
+- **Feature or topic** — what are we testing? (e.g. "snapshots", "incremental models", "python udfs")
+- **Doc path** — did they mention a specific file? (e.g. `website/docs/docs/build/snapshots.md`)
+
+**Check `~/.dbt-docs-fox/config` for a saved default.** If found, pre-fill that as the default choice in the prompt below. If not found, default to `[1]`.
+
+**Always show the setup chooser** — even for returning users (their saved choice is shown as the pre-filled default):
+
+```
+dbt docs fox — How do you want to run this test?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [1] Local + DuckDB      ← fastest, no credentials needed
+                            good for: SQL models, snapshots, tests, macros,
+                            most standard dbt features
+  [2] dbt Platform CLI    ← runs against your real warehouse
+                            good for: adapter-specific features, UDFs,
+                            Python models, full integration tests
+                            (requires one-time dbt_cloud.yml setup)
+
+  [other] Custom adapter  ← type snowflake / bigquery / postgres / etc.
+                            to bring your own warehouse credentials
+
+Pick [<saved default or 1>]:
+```
+
+After the user picks, save their choice to `~/.dbt-docs-fox/config` as the new default.
+
+**For choice [2] — Platform CLI only:** check whether `~/.dbt/dbt_cloud.yml` exists.
+
+- **File exists** → ask for project ID one time (default `372475` for the docs team). Save to config. Proceed.
+- **File missing** → show setup instructions and stop. Tell the user to re-run this skill after completing setup:
+
+```
+One-time setup — takes about 30 seconds
+─────────────────────────────────────────────────
+1. Open dbt Cloud in your browser
+2. Click your avatar (top-right) → Profile settings → CLI
+3. Click "Download dbt_cloud.yml"
+4. In your terminal, run:
+   mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
+5. Re-run this skill — you won't see this prompt again.
+─────────────────────────────────────────────────
+```
+
+**For [other] — Custom adapter:** prompt for adapter name, database, schema, and credentials. Same save-to-config flow as the current skill.
+
+**After setup is confirmed,** show a progress checklist and proceed:
+
+```
+## dbt docs fox — Test plan: <feature name>
+Setup:      <DuckDB / dbt Platform (project 372475) / <Adapter>>
+Schema:     <DATABASE.SCHEMA or "DuckDB local (dev.duckdb)">
+
+Progress:
+[ ] Step 2  Research feature in local docs
+[ ] Step 3  Scaffold dbt project
+[ ] Step 4  Verify connection
+[ ] Step 5  Compile (pre-flight)
+[ ] Step 6  Run commands
+[ ] Step 7  Validate results
+[ ] Step 8a Write /tmp/.../testing-summary.md
+[ ] Step 8b Post row to Notion (docs PR testing database)
+[ ] Step 9  Clean up /tmp project (ask user)
+```
+
+Mark each `[x]` as it completes. Mark `[!]` with a one-line reason if a step fails.
+
+---
+
+## Step 2: Research the feature
+
+**Primary source — search the local docs codebase first:**
+
+Search `website/docs/` and `website/snippets/` for content related to the feature.
+
+- If the user gave a doc path, read that file directly
+- Otherwise search by feature name (e.g. glob for relevant files, grep for the feature keyword)
+- Read the full page(s) and any snippets referenced in them
+- Look for: syntax, config options, code examples, version caveats, adapter-specific behavior
+
+**Fallback — fetch from the live site:**
+
+If the local codebase doesn't have sufficient detail, fetch from `https://docs.getdbt.com`. Common paths:
+
+| Topic | Path |
+|-------|------|
+| Model configs | `/reference/model-configs` |
+| Python models | `/docs/build/python-models` |
+| Snapshots | `/docs/build/snapshots` |
+| Sources | `/docs/build/sources` |
+| Generic tests | `/docs/build/data-tests` |
+| Macros | `/docs/build/jinja-macros` |
+| dbt_project.yml | `/reference/dbt_project.yml` |
+| Node selection | `/reference/node-selection/syntax` |
+
+**Extract from the research:**
+- All code examples (SQL, Python, YAML, shell commands), grouped by type
+- Testable claims: "this command produces X", "this config enables Y"
+- dbt resources involved: models, macros, UDFs, sources, snapshots, tests, seeds
+- Expected outputs: what should appear after running
+- Version or adapter caveats
+
+Show the extraction to the user before building the project.
+
+---
+
+## Step 3: Scaffold the dbt project
+
+Create the test project at `/tmp/dbt-feature-test-<feature-name>/` (slugified, e.g. `dbt-feature-test-snapshots`).
+
+**Always create a Python virtual environment and the `dbt-fox-env.sh` helper script** — regardless of setup path. Writers use `source dbt-fox-env.sh` to enter the project and activate the venv in one command.
+
+### Path A — DuckDB
+
+`profiles.yml`:
+```yaml
+feature_test:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DBT_FOX_DUCKDB_PATH', 'dev.duckdb') }}"
+      schema: main
+```
+
+`dbt_project.yml` (minimal, no `dbt-cloud` block needed):
+```yaml
+name: feature_test
+version: '1.0.0'
+profile: feature_test
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+
+models:
+  feature_test:
+    +materialized: table
+```
+
+Install in venv:
+```bash
+pip install dbt-duckdb
+```
+
+Note for summary: "Tested locally with DuckDB — behavior is equivalent for standard SQL features. Adapter-specific behavior (e.g. Snowflake UDFs) was not tested."
+
+### Path B — dbt Platform CLI
+
+`dbt_project.yml` (include `dbt-cloud` block, no `profiles.yml` needed):
+```yaml
+name: feature_test
+version: '1.0.0'
+profile: feature_test
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+
+dbt-cloud:
+  project-id: <project_id>
+
+models:
+  feature_test:
+    +materialized: table
+```
+
+Install in venv:
+```bash
+pip install dbt-core
+```
+
+The Platform CLI reads `~/.dbt/dbt_cloud.yml` for credentials — no adapter package or `profiles.yml` needed.
+
+### Path C — Custom adapter
+
+`profiles.yml` using the adapter and credentials from Step 1:
+```yaml
+feature_test:
+  target: dev
+  outputs:
+    dev:
+      type: <adapter>
+      # ... adapter-specific fields
+      schema: <schema>
+      database: <database>
+```
+
+`dbt_project.yml` — include `dbt-cloud.project-id` if the user also uses Platform CLI; otherwise omit it.
+
+Install in venv:
+```bash
+pip install dbt-<adapter>   # e.g. dbt-snowflake, dbt-bigquery, dbt-duckdb
+```
+
+---
+
+### Python virtual environment (all paths)
+
+After writing project files, create and activate a venv:
+
+```bash
+cd /tmp/dbt-feature-test-<slug>/
+python3 -m venv .venv
+source .venv/bin/activate   # macOS / Linux
+pip install <adapter-package>
+```
+
+**`dbt-fox-env.sh`** — always write this file in the project root (executable: `chmod +x dbt-fox-env.sh`):
+
+```bash
+#!/usr/bin/env bash
+# dbt docs fox — cd into this test project and activate .venv
+# Usage: source /absolute/path/to/dbt-feature-test-<slug>/dbt-fox-env.sh
+if [[ -n "${BASH_SOURCE[0]:-}" ]]; then
+  _FOX_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+else
+  _FOX_DIR="$(cd "$(dirname "$0")" && pwd)"
+fi
+cd "$_FOX_DIR" || exit 1
+unset _FOX_DIR
+if [[ -f .venv/bin/activate ]]; then
+  source .venv/bin/activate
+  echo "dbt docs fox: venv active in $(pwd)"
+else
+  echo "dbt docs fox: no .venv here — run: python3 -m venv .venv && pip install dbt-<adapter>" >&2
+fi
+```
+
+**`packages.yml`** — only if the feature requires packages (e.g. dbt-utils). Run `dbt deps` if created.
+
+Show every file created with its full contents before proceeding.
+
+---
+
+## Step 4: Verify connection
+
+Run a lightweight check before a full test:
+
+**DuckDB:**
+```bash
+dbt show --inline "SELECT 1 AS ok" --project-dir . --profiles-dir .
+```
+This always succeeds if the venv is correct — if it fails, the issue is the venv or dbt-duckdb install.
+
+**Platform CLI:**
+```bash
+dbt debug --project-dir . --profiles-dir .
+```
+If this fails with a Cloud connection error, check that `~/.dbt/dbt_cloud.yml` is present and the project ID is accessible. If the project ID (`372475`) fails, try `283328` once, then ask the user.
+
+**Custom adapter:**
+```bash
+dbt debug --project-dir . --profiles-dir .
+```
+If it fails, show the exact error. Ask the user for corrected credentials, update `profiles.yml`, and retry.
+
+Do not proceed until connectivity is confirmed.
+
+If packages are needed: run `dbt deps` before proceeding.
+
+---
+
+## Step 5: Compile (pre-flight check)
+
+Compile the project without running against the warehouse. This catches syntax errors cheaply.
+
+```bash
+dbt compile --project-dir . --profiles-dir . 2>&1 | tee output/compile.txt
+```
+
+If dbt Fusion is also being tested:
+```bash
+dbtf compile --project-dir . --profiles-dir . 2>&1 | tee output/fusion-compile.txt
+```
+
+- If compile succeeds: proceed to Step 6
+- If compile fails: fix the error before running
+
+---
+
+## Step 6: Run commands
+
+Run the feature commands. Common patterns:
+
+```bash
+# Run models
+dbt run --select <model> --project-dir . --profiles-dir .
+
+# Build (models + tests)
+dbt build --select <model> --project-dir . --profiles-dir .
+
+# Snapshot
+dbt snapshot --project-dir . --profiles-dir .
+
+# Run macro
+dbt run-operation <macro> --project-dir . --profiles-dir .
+```
+
+If Fusion is being tested, run the same commands with `dbtf` in parallel.
+
+Capture full stdout/stderr for each command to `output/<command>.txt`.
+
+Record: command run, exit code, key output lines, warnings, errors, behavioral differences between engines if applicable.
+
+---
+
+## Step 7: Validate results
+
+Confirm that the expected outputs exist and contain correct data.
+
+**DuckDB:** Use `dbt show` with inline SQL to query the local `.duckdb` file:
+```bash
+dbt show --inline "SELECT * FROM main.<model_name> LIMIT 5" --project-dir . --profiles-dir .
+dbt show --inline "SELECT COUNT(*) FROM main.<model_name>" --project-dir . --profiles-dir .
+```
+
+**Warehouse paths (Platform, custom):** Query the warehouse directly:
+```sql
+-- Does the table/view exist?
+SHOW TABLES LIKE '<model_name>' IN SCHEMA <database>.<schema>;
+
+-- Sample rows
+SELECT * FROM <database>.<schema>.<model_name> LIMIT 5;
+
+-- Row count
+SELECT COUNT(*) FROM <database>.<schema>.<model_name>;
+```
+
+Record: each query run, and whether the result matched expectations from Step 2.
+
+---
+
+## Step 8: Write the testing summary and post to Notion
+
+### Step 8a — Markdown file (temporary only)
+
+Write the completed report to:
+
+**`/tmp/dbt-feature-test-<feature-name>/testing-summary.md`**
+
+That path is the only markdown artifact (`/tmp` may be cleared on reboot). **Do not** write `testing-summary.md` into the docs repo — the **Notion** row (Step 8b) is the durable record for the team. Tell the user the absolute path to the temp file.
+
+**Navigation and environment — required in every summary**
+
+Fill in the **Open this test project locally** section with real paths:
+
+- **Absolute path** to `/tmp/dbt-feature-test-<slug>/` (always full path, not `~`)
+- **`file://` hyperlink** for macOS/Linux: `file:///tmp/dbt-feature-test-<slug>/`
+- **Docs repo path:** run `git rev-parse --show-toplevel` and include the `cd` command so writers can return to the docs repo
+- **One-liner for venv:** `source <absolute-path>/dbt-fox-env.sh`
+
+**Tone:** Write as if a teammate ran all of this and is reporting back. Not a formal test log — a clear, friendly explanation of what happened. The writer should feel like they tested it themselves and could walk someone else through it.
+
+### Step 8b — Notion database row (required when Notion MCP works)
+
+Every testing summary must also become **one row** in the **docs PR testing** database. **Always** run Step 8b after Step 8a unless the Notion MCP is unavailable — do not end the run without a Notion row when MCP is available (the temp markdown alone is not enough for the team). Use the **Notion MCP** (authenticate with `mcp_auth` if needed).
+
+**Where to post**
+
+- **Hub page (human-readable):** [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d)
+- **Embedded database URL (use with MCP `fetch`):** `https://www.notion.so/32dbb38ebda78082ad46c4c975c2a566`
+- **Database ID:** `32dbb38ebda78082ad46c4c975c2a566`
+
+**MCP workflow**
+
+1. Call **`notion-fetch`** with the **database URL** above (or the hub page URL — the response lists `<database>` and `<data-source url="collection://...">` tags).
+2. Read the data source **schema** from the fetch result. Property names must match exactly (including `date:Date:start` / `date:Date:is_datetime` for the Date column).
+3. Call **`notion-create-pages`** with:
+   - `parent`: `{ "type": "data_source_id", "data_source_id": "<uuid from collection://...>" }`
+   - `pages`: one object with `properties` for each column.
+
+**Values to collect before posting**
+
+- **Title:** `<Feature name> — <date>` (maps to the title column **Title**)
+- **Branch:** `git branch --show-current`
+- **Author:** `git config user.name`
+- **Date:** set `date:Date:start` to today (ISO date, e.g. `2026-04-14`) and `date:Date:is_datetime` to `0` unless you need time precision
+- **Summary:** the **Summary** paragraph from the bottom of the report
+- **Status:** `Complete`
+
+If the schema differs (for example after columns are renamed in Notion), follow the **fetch** output, not this list.
+
+**After posting:** Paste the **new page URL** returned by `notion-create-pages` into the chat so the writer can open the row.
+
+**If Notion MCP is unavailable** (no server, auth error, or user declined): skip Step 8b, say so explicitly, and remind the user to connect Notion MCP in Cursor or Claude Code settings and add the row manually to [docs PR testing](https://www.notion.so/dbtlabs/docs-pr-testing-32dbb38ebda780ccbbe1f25d6e9c4b4d).
+
+**Spot-check:** Optionally open the database and confirm the new row appears next to prior entries.
+
+---
+
+## Step 9: Clean up
+
+After Step 8 is complete, ask the user:
+
+```
+🧹 Clean up test project?
+
+   /tmp/dbt-feature-test-<slug>/
+
+   This will permanently delete the project directory,
+   including all models, outputs, and the .venv.
+   Your Notion row is the permanent record of this test.
+
+   Delete? [Y/n]
+```
+
+**If yes:**
+```bash
+rm -rf /tmp/dbt-feature-test-<slug>/
+```
+Then confirm: `✔  Deleted /tmp/dbt-feature-test-<slug>/`
+
+**If no:** Tell the user the path and note that `/tmp` may be cleared automatically on reboot.
+
+**Never delete anything in the docs repo.** The test project lives entirely in `/tmp/` and is the only thing subject to cleanup.
+
+---
+
+## Report template
+
+Fill in every section. Do not leave placeholders.
+
+```markdown
+# Testing summary: <Feature name>
+
+**Date:** <date>
+**What I tested:** <one-sentence description of the request>
+**Doc used:** <file path or "searched codebase for <feature>">
+**Setup:** <Local + DuckDB / dbt Platform (project <id>) / <Adapter> + credentials>
+**Schema:** <DATABASE.SCHEMA or "DuckDB local (dev.duckdb)">
+
+---
+
+## What I tested and why
+
+<2-3 sentences: what the feature does, why the doc team needs to test it,
+what the test set out to prove. Written for a writer, not an engineer.>
+
+## What I set up
+
+<Show every file created, with full contents in code blocks. Explain any
+adaptations made from the doc examples — e.g. "I filled in the placeholder
+table name with a real reference.">
+
+## Commands I ran
+
+<List each command as a copy-pasteable code block, with what it was testing.>
+
+## What happened
+
+- **Status:** ✅ Pass / ⚠️ Warning / ❌ Fail
+- **Key output:**
+  ```
+  <paste the most relevant output lines>
+  ```
+- **Full output:** `output/<command>.txt`
+
+<If multiple engines were tested, add a section per engine and note any differences.>
+
+## What I checked
+
+<Show the exact queries or `dbt show` commands run and their results. Be specific:
+"I ran SELECT COUNT(*) and got 3 rows, which matches what the doc says.">
+
+## Bugs and issues found
+
+| What happened | Type | Diagnosis | Outcome |
+|---------------|------|-----------|---------|
+| <error> | Bug / Limitation / Config / Environment | <what caused it> | ✅ Fixed / ❌ Unresolved / 🐛 Confirmed bug |
+
+## What this means for your doc
+
+<Plain language. What works exactly as documented? What doesn't? What caveats
+should the writer add? Any bugs to flag or work around? Open questions?>
+
+Example format:
+- ✅ The basic syntax works as documented
+- ⚠️ The `merge` strategy requires `unique_key` — the doc example is missing this
+- 🐛 Python UDFs fail on dbt Core — Fusion-only for now
+- 💡 Add a note that this requires dbt 1.5+
+
+## Open this test project locally
+
+**Project directory:** `/tmp/dbt-feature-test-<slug>/`
+**Open in Finder (macOS):** [folder](file:///tmp/dbt-feature-test-<slug>/) — or paste path into File → Open Folder in Cursor or VS Code.
+
+**Enter the project and activate the venv (one command):**
+
+```bash
+source /tmp/dbt-feature-test-<slug>/dbt-fox-env.sh
+```
+
+**Or step by step:**
+
+```bash
+cd /tmp/dbt-feature-test-<slug>/
+source .venv/bin/activate
+```
+
+**Return to the docs repository:**
+
+```bash
+cd <ABSOLUTE_PATH_TO_DOCS_REPO>
+```
+
+**Note:** Opening a folder or clicking a `file://` link does not activate the venv — run `source .../dbt-fox-env.sh` in the terminal where you run `dbt`.
+
+---
+
+## How to run this yourself
+
+1. `source /tmp/dbt-feature-test-<slug>/dbt-fox-env.sh`
+2. <step-by-step, written for a technical writer, not an engineer>
+3. ...
+
+## Summary
+
+<One paragraph. What works, what doesn't, what to include in the doc,
+what to flag or avoid. Written like a Slack message to a teammate.>
+```
+
+---
+
+## Reference: Command quick-reference
+
+| Operation | dbt Core / DuckDB / Platform | dbt Fusion |
+|-----------|------------------------------|------------|
+| Run models | `dbt run` | `dbtf run` |
+| Run tests | `dbt test` | `dbtf test` |
+| Compile | `dbt compile` | `dbtf compile` |
+| Debug | `dbt debug` | `dbtf debug` |
+| Run macro | `dbt run-operation` | `dbtf run-operation` |
+| Install packages | `dbt deps` | `dbtf deps` |
+| Show inline query | `dbt show --inline "..."` | `dbtf show --inline "..."` |
+| Snapshot | `dbt snapshot` | `dbtf snapshot` |
+
+Always pass `--project-dir .` and `--profiles-dir .` explicitly.
