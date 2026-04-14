@@ -379,7 +379,6 @@ The following macros switch to `SHOW` commands when `datasharing: true`:
 | Catalog queries | `pg_class`, `pg_tables`, `pg_views` | `SHOW TABLES FROM SCHEMA` + `SVV_REDSHIFT_COLUMNS` |
 | `get_relation_last_modified` | `information_schema.tables` | `SHOW TABLES FROM SCHEMA` |
 | Grants | `pg_user`, `has_table_privilege()` | `SHOW GRANTS ON TABLE` |
-
 <br /><br />
 `ra3_node: true` also enables this behavior and is supported for backwards compatibility. For new projects, use `datasharing: true` instead.
 
