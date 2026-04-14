@@ -50,6 +50,7 @@ jobs:
           direct_prompt: |
             Read triage/TRIAGE_AGENTS.md and triage/config.json, then execute the /score-issues skill exactly as documented in .claude/skills/score-issues/SKILL.md.
             Write results to triage/state/scores.json and triage/state/last_run.json.
+          github_token: ${{ secrets.DOCS_AI_AGENT }}
           allowed_tools: >
             mcp__github__list_issues,
             mcp__github__issue_read,

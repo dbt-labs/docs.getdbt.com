@@ -44,6 +44,7 @@ jobs:
           direct_prompt: |
             Read triage/TRIAGE_AGENTS.md and triage/config.json, then execute the monday-digest skill exactly as documented in .claude/skills/monday-digest/SKILL.md.
             If triage/state/scores.json is missing or older than 24 hours, run the score-issues skill first (see .claude/skills/score-issues/SKILL.md), then send the digest.
+          github_token: ${{ secrets.DOCS_AI_AGENT }}
           allowed_tools: >
             mcp__github__list_issues,
             mcp__github__issue_read,
