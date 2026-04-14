@@ -11,17 +11,20 @@ This page is a condensed reference for all environment variables used by the loc
 
 These variables are required to use dbt CLI commands through MCP.
 
+<SimpleTable>
 | Variable | Required | Description |
 | --- | --- | --- |
 | `DBT_PROJECT_DIR` | Required | Full path to your dbt project folder (the folder containing `dbt_project.yml`). |
 | `DBT_PATH` | Required | Full path to your dbt executable. Find it by running `which dbt` (macOS/Linux) or `where dbt` (Windows). |
 | `DBT_PROFILES_DIR` | Optional | Path to a custom `profiles.yml` directory. Defaults to `~/.dbt/`. |
 | `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt CLI commands time out. Defaults to `60`. Compile runs the whole project, so large projects may need a higher limit to avoid timeouts. |
+</SimpleTable>
 
 ## dbt platform
 
 These variables are required for <Constant name="dbt_platform"/> features (Semantic Layer, Discovery API, Admin API, SQL execution).
 
+<SimpleTable>
 | Variable | Required | Description |
 | --- | --- | --- |
 | `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`. Default: `cloud.getdbt.com`. <br /> <br />For multi-cell accounts, use the base hostname (for example, `us1.dbt.com`) and set `MULTICELL_ACCOUNT_PREFIX` separately (for example, `abc123`). |
@@ -31,6 +34,7 @@ These variables are required for <Constant name="dbt_platform"/> features (Seman
 | `DBT_DEV_ENV_ID` | Required for `execute_sql` | Your development environment ID (numeric integer). |
 | `DBT_USER_ID` | Required for `execute_sql` | Your numeric user ID. |
 | `DBT_ACCOUNT_ID` | Required for Admin API | Your numeric account ID. |
+</SimpleTable>
 
 See [Finding your IDs](/docs/dbt-ai/mcp-find-ids) for step-by-step instructions on locating each value.
 
@@ -50,7 +54,7 @@ Do not mix both modes for the same toolset. For example avoid this pattern:
 # ❌ Mixing modes leads to unpredictable behavior
 DISABLE_SEMANTIC_LAYER=false
 DBT_MCP_ENABLE_SEMANTIC_LAYER=true
-
+```
 Also avoid empty `DBT_MCP_ENABLE_*=` lines as they activate enable mode and will silently disable all other toolsets.
 :::
 
@@ -58,6 +62,7 @@ Also avoid empty `DBT_MCP_ENABLE_*=` lines as they activate enable mode and will
 
 All tools are available by default. To disable a toolset, set any of the following variables to `true` in your MCP client configuration:
 
+<SimpleTable>
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DISABLE_DBT_CLI` | `false` | Disable dbt CLI tools. |
@@ -69,11 +74,13 @@ All tools are available by default. To disable a toolset, set any of the followi
 | `DISABLE_LSP` | `false` | Disable LSP/Fusion tools. |
 | `DISABLE_MCP_SERVER_METADATA` | `true` | Server metadata tools are disabled by default. Set to `false` to enable. |
 | `DISABLE_TOOLS` | `""` | Comma-separated list of specific tool names to disable. |
+</SimpleTable>
 
 ### Enable mode (allowlist)
 
 If any `DBT_MCP_ENABLE_*` variable is set, only the explicitly enabled toolsets are active:
 
+<SimpleTable>
 | Variable | Description |
 | --- | --- |
 | `DBT_MCP_ENABLE_DBT_CLI` | Set to `true` to enable dbt CLI tools. |
@@ -84,6 +91,7 @@ If any `DBT_MCP_ENABLE_*` variable is set, only the explicitly enabled toolsets 
 | `DBT_MCP_ENABLE_DBT_CODEGEN` | Set to `true` to enable codegen tools. |
 | `DBT_MCP_ENABLE_LSP` | Set to `true` to enable LSP/Fusion tools. |
 | `DBT_MCP_ENABLE_TOOLS` | Comma-separated list of specific tool names to enable. |
+</SimpleTable>
 
 ### Precedence
 
@@ -99,13 +107,17 @@ When multiple variables are set, they're evaluated in this order (highest priori
 
 These variables control the behavior of Semantic Layer tools.
 
+<SimpleTable>
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DBT_MCP_SL_METRICS_RELATED_MAX` | `10` | Maximum number of metrics for which `list_metrics` also returns dimension and entity names inline, reducing the number of tool calls needed to answer data questions. When the metric count is at or below this value, dimensions and entities are embedded directly in the `list_metrics` response. When above this value, only metric names are returned and the LLM calls `get_dimensions`/`get_entities` separately. Set to `0` to always return metrics only and never inline dimension or entity data. |
+</SimpleTable>
 
 ## Logging and debugging
 
+<SimpleTable>
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DBT_MCP_LOG_LEVEL` | `INFO` | Log level for the MCP server. Options: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. Set to `DEBUG` temporarily to diagnose issues. |
 | `MCP_TRANSPORT` | `stdio` | Transport protocol. Set to `streamable-http` for local debugging only (for example, attaching a Python debugger). See the [dbt-mcp CONTRIBUTING guide](https://github.com/dbt-labs/dbt-mcp/blob/main/CONTRIBUTING.md). |
+</SimpleTable>
