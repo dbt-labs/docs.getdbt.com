@@ -73,4 +73,8 @@ If you have any non-admin users logging into <Constant name="dbt" /> with a pass
 2. Alert all <Constant name="dbt" /> users that they won’t be able to use a password for logging in anymore unless they are already an Admin with a password.
 3. We **DO NOT** recommend promoting any users to Admins just to preserve password-based logins because you will reduce security of your <Constant name="dbt" /> environment.
 
+## FAQ and troubleshooting
+
+For common questions and troubleshooting guidance, see [SSO FAQ and troubleshooting](/docs/cloud/manage-access/sso-faq).
+
 
