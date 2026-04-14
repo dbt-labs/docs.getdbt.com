@@ -101,6 +101,7 @@ Example configuration:
   {
     "mcpServers": {
       "dbt": {
+      "type": "http",
         "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
         "headers": {
          "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
