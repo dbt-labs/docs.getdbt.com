@@ -1,0 +1,73 @@
+name: Triage — Auto-triage New Issues
+
+# Polls dbt-labs/docs.getdbt.com every 15 minutes for issues opened in the
+# last 20 minutes that don't yet have the triage-bot label. Posts an AI
+# triage comment and applies the label.
+#
+# Runs from docs-internal (private) so Claude's reasoning and API keys
+# never appear in the public repo's CI logs.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # every 15 minutes
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Triage a specific issue number (leave empty for auto-poll)'
+        required: false
+        type: string
+
+jobs:
+  triage-new-issues:
+    name: Triage new issues on docs.getdbt.com
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout docs-internal
+        uses: actions/checkout@v4
+
+      - name: Configure Claude Code MCP servers (Runlayer)
+        run: |
+          mkdir -p ~/.claude
+          cat > ~/.claude/mcp_servers.json << 'EOF'
+          {
+            "mcpServers": {
+              "runlayer": {
+                "command": "npx",
+                "args": ["-y", "@runlayer/mcp-server"],
+                "env": {
+                  "RUNLAYER_CLIENT_ID": "${{ secrets.RUNLAYER_CLIENT_ID }}",
+                  "RUNLAYER_CLIENT_SECRET": "${{ secrets.RUNLAYER_CLIENT_SECRET }}"
+                }
+              }
+            }
+          }
+          EOF
+
+      - name: Build prompt
+        id: build_prompt
+        run: |
+          if [ -n "${{ inputs.issue_number }}" ]; then
+            PROMPT="Read triage/TRIAGE_AGENTS.md and triage/config.json, then execute the triage-new-issue skill as documented in .claude/skills/triage-new-issue/SKILL.md for issue number ${{ inputs.issue_number }} on dbt-labs/docs.getdbt.com."
+          else
+            PROMPT="Read triage/TRIAGE_AGENTS.md and triage/config.json, then execute the triage-new-issue skill as documented in .claude/skills/triage-new-issue/SKILL.md. Auto-poll mode: check dbt-labs/docs.getdbt.com for issues opened in the last 20 minutes without the triage-bot label."
+          fi
+          echo "prompt=$PROMPT" >> $GITHUB_OUTPUT
+
+      - name: Run triage-new-issue skill
+        uses: anthropics/claude-code-action@beta
+        with:
+          use_bedrock: true
+          direct_prompt: ${{ steps.build_prompt.outputs.prompt }}
+          allowed_tools: >
+            mcp__github__list_issues,
+            mcp__github__issue_read,
+            mcp__github__add_issue_comment,
+            mcp__github__label_write,
+            Read
+          timeout_minutes: 10
+        env:
+          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEDROCK_TOKEN }}
+          AWS_REGION: us-east-1
