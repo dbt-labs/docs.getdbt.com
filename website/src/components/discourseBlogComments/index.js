@@ -13,6 +13,8 @@ export const DiscourseBlogComments = ({title,slug}) => {
     const [isError, setIsError] = useState(false)
     const [next, setNext] = useState(commentsToLoad)
 
+    // Generate preview
+
     // Handle loading more comments
     const loadMoreComments = () => {
       setNext(next + commentsToLoad)
