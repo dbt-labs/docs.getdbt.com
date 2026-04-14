@@ -1,11 +1,8 @@
 name: Triage — Monday Slack Digest
 
-# Sends the weekly docs triage digest to Slack every Monday at 9am ET (13:00 UTC).
-# Can be triggered manually from the Actions tab for ad-hoc digests.
-
 on:
   schedule:
-    - cron: '0 13 * * 1'  # 13:00 UTC every Monday (9am ET)
+    - cron: '0 13 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -19,41 +16,19 @@ jobs:
       - name: Checkout docs-internal
         uses: actions/checkout@v4
 
-      - name: Configure Claude Code MCP servers (Runlayer)
-        run: |
-          mkdir -p ~/.claude
-          cat > ~/.claude/mcp_servers.json << 'EOF'
-          {
-            "mcpServers": {
-              "runlayer": {
-                "command": "npx",
-                "args": ["-y", "@runlayer/mcp-server"],
-                "env": {
-                  "RUNLAYER_CLIENT_ID": "${{ secrets.RUNLAYER_CLIENT_ID }}",
-                  "RUNLAYER_CLIENT_SECRET": "${{ secrets.RUNLAYER_CLIENT_SECRET }}"
-                }
-              }
-            }
-          }
-          EOF
-
-      - name: Run monday-digest skill
-        uses: anthropics/claude-code-action@beta
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          mode: agent
-          use_bedrock: true
-          direct_prompt: |
-            Read triage/TRIAGE_AGENTS.md and triage/config.json, then execute the monday-digest skill exactly as documented in .claude/skills/monday-digest/SKILL.md.
-            If triage/state/scores.json is missing or older than 24 hours, run the score-issues skill first (see .claude/skills/score-issues/SKILL.md), then send the digest.
-          github_token: ${{ secrets.DOCS_AI_AGENT }}
-          allowed_tools: >
-            mcp__github__list_issues,
-            mcp__github__issue_read,
-            mcp__slack__slack_send_message,
-            Read,
-            Write,
-            Bash
-          timeout_minutes: 20
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install claude-agent-sdk httpx
+
+      - name: Run digest agent
+        run: |
+          python triage/agent.py "Read triage/TRIAGE_AGENTS.md and triage/config.json, then execute the monday-digest skill exactly as documented in .claude/skills/monday-digest/SKILL.md. If triage/state/scores.json is missing or older than 24 hours, run the score-issues skill first (see .claude/skills/score-issues/SKILL.md), then send the digest."
         env:
-          AWS_BEARER_TOKEN_BEDROCK: ${{ secrets.AWS_BEDROCK_TOKEN }}
-          AWS_REGION: us-east-1
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RUNLAYER_CLIENT_ID: ${{ secrets.RUNLAYER_CLIENT_ID }}
+          RUNLAYER_CLIENT_SECRET: ${{ secrets.RUNLAYER_CLIENT_SECRET }}
+          RUNLAYER_MCP_SERVER_ID: ${{ secrets.RUNLAYER_MCP_SERVER_ID }}
