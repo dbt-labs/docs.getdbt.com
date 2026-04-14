@@ -82,7 +82,7 @@ For more information on how to assign permissions to users, refer to [About user
         For more information, refer to the Databricks documentation on [granting access to system tables](https://docs.databricks.com/aws/en/admin/system-tables/#grant-access-to-system-tables).
         </Expandable>
 
-5. Verify that **Cost Insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
+5. Verify that **Cost insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
 6. Click **Save**.
 
 ## Configure Cost Insights settings (optional)
