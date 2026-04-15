@@ -5,7 +5,7 @@ id: "scim-faq"
 sidebar: "SCIM FAQ and troubleshooting"
 ---
 
-# SCIM FAQ and troubleshooting <Lifecycle status="managed, managed_plus" />
+# SCIM FAQs and troubleshooting <Lifecycle status="managed, managed_plus" />
 
 Find answers to common questions about configuring and using SCIM provisioning in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 
