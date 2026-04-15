@@ -44,9 +44,16 @@ Unlike Entra ID, Okta does not run continuous full syncs. You trigger initial pr
 
 When you enable SCIM on an existing Okta SSO app, trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This runs a one-time sync of users to <Constant name="dbt_platform" />. Okta doesn't provide a native way to re-run this full sync &mdash; which means reprocessing typically requires removing and re-adding users.
 
-User matching is based on the `userName` (email) field, which must match the email used in <Constant name="dbt_platform" />. If a match is found, the user is linked and becomes SCIM-managed. If not, a new user is provisioned. If users exist in <Constant name="dbt_platform" /> but not in Okta, you can import them into Okta to keep both systems aligned.
+**For users:**
+User matching is based on the `userName` (email) field, which must match the email used in <Constant name="dbt_platform"/>:
 
-After the initial sync, new users assigned to the Okta app are automatically provisioned into <Constant name="dbt_platform" />. Group memberships can then be managed through Okta's Push Groups feature, which allows groups and their memberships to be pushed into <Constant name="dbt_platform" />.
+- If a match is found, Okta links the user and marks them as SCIM-managed.
+- If no match is found, Okta provisions a new user.
+- If users exist in <Constant name="dbt_platform"/> but not in Okta, you can import them into Okta to keep both systems aligned.
+
+**For groups:**
+- After initial user sync, assign new users to the Okta app to provision them automatically into <Constant name="dbt_platform" />.
+- Manage group memberships with Okta's Push Groups feature, which pushes groups and memberships into <Constant name="dbt_platform" />.
 
 For new Okta SSO applications with no assigned users, either manually assign users to the app to trigger provisioning, or import users from <Constant name="dbt_platform" /> into Okta first. Users must exist in both systems with matching emails to link correctly and avoid duplicates.
 
@@ -69,7 +76,7 @@ This means that if you have a dbt group with SSO mappings, those mappings will n
 The **Allow manual updates** toggle determines whether admins can manually modify SCIM-managed users and groups in <Constant name="dbt_platform" />, including sending invites.
 
 
-- **Disabled (default):** All user and group management is deferred entirely to your IdP. Manual changes in <Constant name="dbt_platform" /> to SCIM-managed users are blocked. This is the recommended setting, as any manual changes made while enabled can be overridden by subsequent SCIM requests.
+- **Disabled (default)**: Your IdP remains the source of truth for SCIM-managed users and groups. Manual changes to SCIM-managed users in <Constant name="dbt_platform"/> are blocked. This is the recommended setting because any manual changes made while enabled can be overwritten by later SCIM updates.
 - **Enabled:** Admins can make manual changes to users in <Constant name="dbt_platform" /> alongside SCIM. This can be useful during initial setup and testing, but manual changes do not prevent SCIM from overriding them.
 
 </Expandable>
