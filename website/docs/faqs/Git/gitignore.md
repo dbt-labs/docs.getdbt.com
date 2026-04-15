@@ -21,10 +21,11 @@ To resolve issues with your `gitignore` file, adding the correct entries won't a
 3. Open the new or existing `gitignore` file, and add the following:
 
 ```bash
-# ✅ Correct 
+# ✅ Correct
 target/
 dbt_packages/
 logs/
+.env
 # legacy -- renamed to dbt_packages in dbt v1
 dbt_modules/
 ```
@@ -75,6 +76,7 @@ When permissions allow it, it's possible to edit the `.gitignore` directly on th
 target/
 dbt_packages/
 logs/
+.env
 # legacy -- renamed to dbt_packages in dbt v1
 dbt_modules/
 ```
@@ -105,6 +107,7 @@ If you can't edit the `.gitignore` directly on the main branch of your repo, fol
 target/
 dbt_packages/
 logs/
+.env
 # legacy -- renamed to dbt_packages in dbt v1
 dbt_modules/
 ```

@@ -11,6 +11,46 @@ import Envvarsecrets from '/snippets/_env-var-secrets.md';
 
 If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [deployment credentials](/docs/deploy/deploy-environments#deployment-credentials) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
 
+### `.env` file
+
+When running dbt locally (<Constant name="core"/>, [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started), and dbt VS Code extension), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` &mdash; `.env` values will not override variables already set in your shell.
+
+Create a `.env` file in your project root and define variables using `KEY=value` syntax:
+
+<File name='.env'>
+
+```bash
+DBT_USER=alice
+DBT_PASSWORD=supersecret
+DBT_SCHEMA=dbt_alice
+```
+
+</File>
+
+Reference them in your `profiles.yml` using `env_var()`:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      schema: "{{ env_var('DBT_SCHEMA') }}"
+      port: 5432
+      threads: 4
+```
+
+</File>
+
+:::caution
+New projects created with `dbt init` include `.env` in the default `.gitignore`. If you're adding a `.env` file to an existing project, make sure to add `.env` to your `.gitignore` to avoid accidentally committing secrets.
+:::
+
 ### Converting env_vars
 
 Environment variables are always strings. When using them for configurations that expect integers or booleans, you must explicitly convert the value to the correct type.
