@@ -33,11 +33,17 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 <TabItem value="core" label="dbt Core">
 
 <Constant name="core"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
-
+<VersionBlock lastVersion="1.10">
 1. `--profiles-dir` flag
-2. <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable 
+2. `DBT_PROFILES_DIR` environment variable
 3. Current working directory
-4. `~/.dbt/` directory (Recommended location)
+4. `~/.dbt/` directory (Recommended location)</VersionBlock>
+<VersionBlock firstVersion="1.11">
+1. `--profiles-dir` flag
+2. `DBT_ENGINE_PROFILES_DIR` environment variable
+3. `DBT_PROFILES_DIR` environment variable (discouraged)
+4. Current working directory
+5. `~/.dbt/` directory (Recommended location)</VersionBlock>
 
 Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or a `profiles.yml` file in the current working directory. These options aren't currently supported in <Constant name="fusion"/>.
 
