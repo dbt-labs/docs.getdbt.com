@@ -13,7 +13,7 @@ Find answers to common questions about configuring and using SCIM provisioning i
 
 <Expandable alt_header="Do the userName and email.value fields have to point to the same value in SCIM?">
 
-Yes. They must match the email value on the user object in your IdP that's used to sign in to <Constant name="dbt_platform" />. If they don't match, a validation error will occur during user provisioning.
+Yes. Both must match the email address the user uses to sign in to <Constant name="dbt_platform" /> (email value on the user object in your IdP that's used to sign in). If they don't match, a validation error will occur during provisioning.
 
 </Expandable>
 
@@ -40,15 +40,15 @@ Once SCIM provisioning is configured in Entra according to the schema requiremen
 
 #### Okta
 
-SCIM provisioning with Okta differs from Entra in that it does not perform continuous full syncs. Instead, provisioning is initiated manually for the initial setup and then continues incrementally as changes are made.
+Unlike Entra, Okta does not perform continuous full syncs. Provisioning is triggered manually for the initial setup and then continues incrementally as changes are made.
 
-When SCIM is enabled on an existing Okta SSO application, you must trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This performs a one-time synchronization of users to <Constant name="dbt_platform" />. Okta does not provide a native way to re-run this full sync, so reprocessing typically requires removing and re-adding users.
+When SCIM is enabled on an existing Okta SSO application, trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This performs a one-time sync of users to <Constant name="dbt_platform" />. Okta doesn't provide a native way to re-run this full sync &mdash; which means reprocessing typically requires removing and re-adding users.
 
-User matching is based on the `userName` (email) field. This field must match the email used by the user in <Constant name="dbt_platform" />. If a matching user exists, they will be linked and become SCIM-managed. If no match is found, a new user will be provisioned. Alternatively, if users exist in <Constant name="dbt_platform" /> but not in Okta, they can be imported into Okta to ensure alignment between the two systems.
+User matching is based on the `userName` (email) field, which must match the email used in <Constant name="dbt_platform" />. If a match is found, the user is linked and becomes SCIM-managed. If not, a new user is provisioned. If users exist in <Constant name="dbt_platform" /> but not in Okta, you can import them into Okta to keep both systems aligned.
 
-After the initial provisioning, any new users assigned to the Okta app will be automatically provisioned into <Constant name="dbt_platform" />. Once users are in sync, group memberships can be managed through Okta's Push Groups feature, which allows groups and their memberships to be pushed into <Constant name="dbt_platform" />.
+After the initial sync, new users assigned to the Okta app are automatically provisioned into <Constant name="dbt_platform" />. Group memberships can then be managed through Okta's Push Groups feature, which allows groups and their memberships to be pushed into <Constant name="dbt_platform" />.
 
-For new Okta SSO applications with no assigned users, you can either manually assign users to the app (which will trigger provisioning), or import users from <Constant name="dbt_platform" /> into Okta before syncing. Ensuring that users exist in both systems and that their emails match is critical for proper linking and avoiding duplicate user creation.
+For new Okta SSO applications with no assigned users, either manually assign users to the app to trigger provisioning, or import users from <Constant name="dbt_platform" /> into Okta first. Users must exist in both systems with matching emails to link correctly and avoid duplicates.
 
 For larger rollouts, consider working with your IdP admin to plan based on your setup and [SCIM license mapping](/docs/cloud/manage-access/scim-manage-user-licenses) to reduce manual steps.
 
@@ -56,7 +56,9 @@ For larger rollouts, consider working with your IdP admin to plan based on your 
 
 <Expandable alt_header="Do SSO group mappings still apply when SCIM is enabled?">
 
-No. For users who are provisioned and managed through SCIM, SSO group mappings are bypassed entirely. Group membership for SCIM-managed users is controlled by your IdP. SSO group mappings only apply to users who authenticate through SSO and are not SCIM-managed.
+No. SSO group mappings are bypassed for SCIM-managed users. Group membership is controlled entirely by your IdP.
+
+SSO group mappings only apply to users who authenticate with SSO and are not SCIM-managed.
 
 This means that if you have a dbt group with SSO mappings, those mappings will not be applied to users who have been provisioned through SCIM.
 
@@ -73,21 +75,21 @@ The **Allow manual updates** toggle controls whether an admin can manually updat
 
 <Expandable alt_header="What happens to existing users and groups when I enable SCIM?">
 
-Existing users and groups in <Constant name="dbt_platform" /> are not automatically converted to SCIM-managed status when you first enable SCIM. Your IdP will only manage users that have been explicitly assigned to the <Constant name="dbt_platform" /> application in their IdP and provisioned with SCIM.
+Enabling SCIM does not automatically convert existing users and groups to SCIM-managed status. Your IdP only manages users who have been explicitly assigned to the app and provisioned through SCIM.
 
-To bring existing users under SCIM management, assign them to the <Constant name="dbt_platform" /> app in your IdP and trigger a sync. Until a user is provisioned with SCIM, they remain unmanaged and are unaffected by SCIM sync operations.
+To bring existing users under SCIM management, assign them to the <Constant name="dbt_platform" /> app in your IdP and trigger a sync. Until a user is provisioned through SCIM, they remain unmanaged and are unaffected by SCIM sync operations.
 
 </Expandable>
 
 <Expandable alt_header="What happens when a user's email address changes in my IdP when SCIM is enabled?">
 
-If the user is SCIM-managed, when their email is updated in the IdP, <Constant name="dbt_platform" /> will receive a request from SCIM to update their email. An email will be sent to the new address to confirm the change. Once accepted, the user's email will be updated in <Constant name="dbt_platform" />.
+When a SCIM-managed user's email is updated in the IdP, <Constant name="dbt_platform" /> receives a SCIM request to update it. A confirmation email is sent to the new address, and once accepted, the change takes effect in <Constant name="dbt_platform" />.
 
 </Expandable>
 
 <Expandable alt_header="Does SCIM support automatic license assignment?">
 
-SCIM license mapping is supported for Okta. It is not supported for Microsoft Entra ID — however, SSO license mapping is supported for Entra ID and can be configured that way.
+SCIM license mapping is supported for Okta. It is not supported for Microsoft Entra ID, though SSO license mapping is available as an alternative.
 
 For Okta license mapping setup, see [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
 
@@ -95,7 +97,9 @@ For Okta license mapping setup, see [Manage user licenses with SCIM](/docs/cloud
 
 <Expandable alt_header="Can I use Okta for SSO and Entra ID for SCIM (or vice versa)?">
 
-This is not a recommended configuration. SSO and SCIM should be configured using the same IdP to avoid discrepancies in user state between SCIM and SSO, which could cause unintended behavior. If your organization has separate IdPs for authentication and directory management, contact your account team to discuss your options.
+SSO and SCIM should be configured using the same IdP. Using different providers — for example, Okta for SSO and Entra ID for SCIM &mdash; can cause discrepancies in user state and unintended behavior.
+
+If your organization uses separate IdPs for authentication and directory management, contact your account team to discuss your options.
 
 </Expandable>
 
@@ -105,14 +109,14 @@ This is not a recommended configuration. SSO and SCIM should be configured using
 
 <Expandable alt_header='"All users must have licenses on the account" error'>
 
-This error occurs when a SCIM group push includes a user who has not yet been licensed in <Constant name="dbt_platform" /> — typically because the user hasn't accepted their invitation yet.
+This error occurs when a SCIM group push includes a user who hasn't been licensed in <Constant name="dbt_platform" /> yet &mdash; typically because they haven't accepted their invitation.
 
 **Steps to resolve:**
 
 1. Identify the user(s) causing the error from your IdP's provisioning logs.
 2. Check whether those users have accepted their <Constant name="dbt_platform" /> invitation. Users are not licensed until they complete this step.
-3. Once the user accepts their invitation and signs in, retry the group push from your IdP.
-4. If the invitation has expired, remove the user from the push group temporarily, re-invite them using <Constant name="dbt_platform" />, have them accept, and then re-add them to the push group.
+3. Once the user accepts and signs in, retry the group push from your IdP.
+4. If the invitation has expired, remove the user from the push group temporarily, re-invite them using <Constant name="dbt_platform" />, have them accept, then re-add them to the group.
 
 </Expandable>
 
@@ -120,25 +124,25 @@ This error occurs when a SCIM group push includes a user who has not yet been li
 
 After enabling SCIM and completing the initial sync, pre-existing <Constant name="dbt_platform" /> users and groups do not show as SCIM-managed.
 
-**Why this happens:** SCIM provisioning creates a managed association between an IdP identity and a <Constant name="dbt_platform" /> user record. Users created before SCIM was enabled do not have this association unless the IdP explicitly provisions them through SCIM.
+**Why this happens:** SCIM provisioning links an IdP identity to a <Constant name="dbt_platform" /> user record. Users created before SCIM was enabled don't have this link unless the IdP explicitly provisions them through SCIM.
 
 **Steps to resolve:**
 
 1. In your IdP, assign existing users to the <Constant name="dbt_platform" /> SCIM application.
-2. Trigger a provisioning sync. The IdP will attempt to match existing users by their `userName` (typically email address) and establish the SCIM-managed link.
+2. Trigger a provisioning sync. The IdP will attempt to match users by their `userName` (typically their email address) and establish the SCIM-managed link.
 3. For Entra ID, note that the provisioning sync is one-way (push only) — there is no import option to pull existing dbt users into Entra as a managed identity.
-4. If users are not being matched correctly after a sync, confirm that the `userName` attribute in your IdP matches the email address on the user's <Constant name="dbt_platform" /> account exactly, including case.
+4. If users aren't being matched correctly after a sync, confirm that the `userName` attribute in your IdP exactly matches the email on the user's <Constant name="dbt_platform" /> account, including case.
 
 </Expandable>
 
 <Expandable alt_header="Azure SCIM provisioning fails due to IP allowlisting">
 
-If your <Constant name="dbt_platform" /> account has **IP restrictions** enabled, Azure's SCIM provisioning requests may be blocked because Azure's provisioning service IPs rotate approximately every two weeks and cannot be statically allowlisted.
+If your <Constant name="dbt_platform" /> account has **IP restrictions** enabled, Azure's SCIM provisioning requests may be blocked. Azure's provisioning service IPs rotate approximately every two weeks and can't be statically allowlisted.
 
 **Recommended approach:**
 
 1. Filter to the `AzureActiveDirectory` service tag in [Azure's published IP ranges JSON](https://www.microsoft.com/en-us/download/details.aspx?id=56519) rather than allowlisting all Azure IPs.
-2. Use the <Constant name="dbt_platform" /> Admin API with a service token to programmatically update your IP allowlist on a schedule (for example, a weekly script that pulls the current `AzureActiveDirectory` ranges and updates your allowlist through the API).
+2. Use the <Constant name="dbt_platform" /> Admin API with a service token to update your IP allowlist on a schedule &mdash; for example, a weekly script that pulls the current `AzureActiveDirectory` ranges and updates your allowlist through the API.
 
 Contact [support@getdbt.com](mailto:support@getdbt.com) for guidance on using the Admin API for allowlist management.
 
