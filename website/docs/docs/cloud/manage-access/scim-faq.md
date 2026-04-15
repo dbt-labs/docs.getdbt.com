@@ -66,7 +66,8 @@ This means that if you have a dbt group with SSO mappings, those mappings will n
 
 <Expandable alt_header='What does "Allow manual updates" mean?'>
 
-The **Allow manual updates** toggle controls whether an admin can manually update SCIM-managed entities, including the ability to send invites.
+The **Allow manual updates** toggle determines whether admins can manually modify SCIM-managed users and groups in <Constant name="dbt_platform" />, including sending invites.
+
 
 - **Disabled (default):** All user and group management is deferred entirely to your IdP. Manual changes in <Constant name="dbt_platform" /> to SCIM-managed users are blocked. This is the recommended setting, as any manual changes made while enabled can be overridden by subsequent SCIM requests.
 - **Enabled:** Admins can make manual changes to users in <Constant name="dbt_platform" /> alongside SCIM. This can be useful during initial setup and testing, but manual changes do not prevent SCIM from overriding them.
@@ -89,9 +90,9 @@ When a SCIM-managed user's email is updated in the IdP, <Constant name="dbt_plat
 
 <Expandable alt_header="Does SCIM support automatic license assignment?">
 
-SCIM license mapping is supported for Okta. It is not supported for Microsoft Entra ID, though SSO license mapping is available as an alternative.
+SCIM license mapping is supported for Okta. It is not supported for Microsoft Entra ID. For Entra ID, use [SSO license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration)
 
-For Okta license mapping setup, see [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
+For Okta license mapping setup, refer to [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
 
 </Expandable>
 

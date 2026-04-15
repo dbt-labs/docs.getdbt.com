@@ -197,7 +197,7 @@ Now that you've set up SSO with Okta, you can [set up SCIM](/docs/cloud/manage-a
 
 ## FAQ and troubleshooting
 
-For common questions and troubleshooting guidance — including issues with email verification, MFA prompts, and SSO group mapping behavior — see [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+For common questions and troubleshooting guidance — including issues with email verification, MFA prompts, and SSO group mapping behavior — refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
 
 ## Learn more
 

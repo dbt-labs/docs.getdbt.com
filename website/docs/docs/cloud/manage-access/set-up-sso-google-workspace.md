@@ -127,7 +127,7 @@ permissions to access Groups in your GSuite account. Either request that your
 GSuite user is granted the ability to request groups from an administrator, or
 have an administrator log into <Constant name="dbt" /> and authorize the GSuite integration.
 
-For additional troubleshooting — including email verification issues, MFA double prompts, and SSO enforcement behavior — see [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+For additional troubleshooting — including email verification issues, MFA double prompts, and SSO enforcement behavior — refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
 
 ## Learn more
 

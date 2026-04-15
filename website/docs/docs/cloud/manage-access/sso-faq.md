@@ -5,7 +5,7 @@ id: "sso-faq"
 sidebar: "SSO FAQ and troubleshooting"
 ---
 
-# SSO FAQ and troubleshooting <Lifecycle status="managed, managed_plus" />
+# SSO FAQs and troubleshooting <Lifecycle status="managed, managed_plus" />
 
 Find answers to common questions about configuring and using single sign-on (SSO) in <Constant name="dbt_platform" />, plus guidance for resolving common issues.
 
@@ -13,7 +13,7 @@ Find answers to common questions about configuring and using single sign-on (SSO
 
 <Expandable alt_header="Do SSO group mappings apply to SCIM-managed users?">
 
-No. When SCIM is enabled, SSO group mappings are bypassed for SCIM-managed users. Group membership is controlled entirely by your IdP.
+No. When SCIM is enabled, SSO group mappings do not apply to SCIM-managed users. Group membership is controlled entirely by your IdP.
 
 
 This means that if you have a dbt group with SSO group mappings configured, those mappings will only apply to users who authenticate with SSO and are not SCIM-managed
@@ -34,9 +34,9 @@ The Auth0 URI is not the same as your SCIM Base URL, though they share a similar
 
 Your `Entity ID` and `ACS URL` are based on an SSO slug that's generated the first time you open the SSO setup flow. If you navigate away without saving and return, a new slug may be generated, changing these values.
 
-This commonly happens when different teams handle the <Constant name="dbt_platform" /> setup and the IdP configuration. For example, if you retrieve `AUTH0_URI` and `AUTH0_ENTITYID` to send to your Entra ID admin, then navigate away before they finish, a new slug may be generated when you return.
+This often happens when one team collects values from <Constant name="dbt_platform" /> and another team configures the IdP. For example, if you send `AUTH0_URI` and `AUTH0_ENTITYID` to your Entra ID admin, then leave the setup flow before they finish, the slug can change when you return.
 
-To avoid this, once you have opened the SSO setup page and noted your `AUTH0_URI` and `AUTH0_ENTITYID`, keep both sides of the configuration open until you've saved. If you need to pause, note the current slug and confirm it hasn't changed before you submit.
+To avoid this, once you have opened the SSO setup page and noted your `AUTH0_URI` and `AUTH0_ENTITYID`, keep both configurations open until you save. If you need to pause, record the current slug and confirm it has not changed before you submit.
 
 :::caution
 If your Entity ID changes after your IdP has already been configured, you will need to update the enterprise application in your IdP with the new values and re-test the connection. Deleted SSO configurations cannot have their original slug restored.
@@ -74,7 +74,7 @@ If your organization uses separate IdPs for authentication and directory managem
 
 <Expandable alt_header="User is stuck on the email verification screen — no verification email received">
 
-When a user signs in to a dbt account through SSO for the first time, a verification email is sent to confirm their identity. If the email is not received, it's usually caused by one of the following:
+When a user signs in to a <Constant name="dbt_platform" /> account through SSO for the first time, a verification email is sent to confirm their identity. If the email is not received, it's usually caused by one of the following:
 
 - **Email security tools (Proofpoint, Outlook Safe Links, etc.)** may follow the verification link automatically before the user clicks it, consuming the one-time token and causing it to expire. Contact your IT or email security team to allowlist dbt verification link domains.
 - **The email is being suppressed** in our email delivery provider. Contact [support@getdbt.com](mailto:support@getdbt.com) to check delivery logs for the affected address.
@@ -85,7 +85,7 @@ When a user signs in to a dbt account through SSO for the first time, a verifica
 
 If a user signs in with a regional root URL (for example, `au.dbt.com` or `eu2.dbt.com`) instead of their account-specific URL (for example, `abc123.au.dbt.com`), they may be redirected through two separate Auth0 flows, resulting in a second MFA prompt.
 
-Advise users to bookmark and sign in with their account-specific URL. If MFA is only prompted once there, this is expected behavior. Enabling "Remember this device for 30 days" on the first MFA prompt also suppresses the second prompt when using a regional root URL.
+Ask users to bookmark and sign in with their account-specific URL. If MFA is only prompted once there, this is expected behavior. Enabling "Remember this device for 30 days" on the first MFA prompt also suppresses the second prompt when using a regional root URL.
 
 </Expandable>
 
@@ -107,7 +107,7 @@ This occurs when tenant-level admin consent hasn't been granted for the dbt SSO 
 
 **Steps to resolve:**
 
-1. Have an Entra ID admin navigate to **Azure portal → Enterprise Applications → [your dbt app] → Permissions**.
+1. Have an Entra ID admin navigate to **Azure portal → Enterprise Applications → Your dbt application → Permissions**.
 2. Click **Grant admin consent** for the organization. This grants consent on behalf of all users in the tenant and prevents the prompt from appearing for new users going forward.
 3. Once granted, have the affected users retry signing in.
 

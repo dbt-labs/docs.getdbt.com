@@ -75,6 +75,6 @@ If you have any non-admin users logging into <Constant name="dbt" /> with a pass
 
 ## FAQ and troubleshooting
 
-For common questions and troubleshooting guidance, see [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+For common questions and troubleshooting guidance, refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
 
 
