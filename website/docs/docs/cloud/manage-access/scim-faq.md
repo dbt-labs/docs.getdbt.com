@@ -21,7 +21,7 @@ Yes. Both must match the email address the user uses to sign in to <Constant nam
 
 #### Entra ID
 
-Once SCIM provisioning is configured in Entra according to the schema requirements, provisioning begins automatically. Entra will sync users and groups assigned to the Entra app with <Constant name="dbt_platform" />.
+Once SCIM provisioning is configured in Entra ID according to the schema requirements, provisioning begins automatically. Entra ID will sync users and groups assigned to the Entra app with <Constant name="dbt_platform" />.
 
 **For users:**
 - Matching is based on the `userName` (and `email.value`) field, which should be set to the user's email — the same email used in <Constant name="dbt_platform" /> and expected at sign-in.
