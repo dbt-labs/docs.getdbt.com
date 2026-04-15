@@ -361,7 +361,7 @@ If you specify `target_lag` without explicitly setting `scheduler`, dbt sets `sc
 :::
 
 **Key points:**
-- `target_lag` can only be used when `scheduler` is set to `ENABLE`. Setting `target_lag` when `scheduler='DISABLE'` results in an error.
+- You can only use `target_lag` when `scheduler` is set to `ENABLE`. Setting `target_lag` when `scheduler: DISABLE'` results in an error.
 - When `scheduler: DISABLE`, a manual refresh does _not_ automatically refresh upstream dynamic table dependencies. This creates an isolation boundary, allowing dbt to manage specific table refreshes without triggering the entire pipeline. In contrast, `ENABLE` cascades refreshes across the dependency graph.
 - If a dynamic table with `scheduler: DISABLE` depends on other dynamic tables, those upstream tables will not be refreshed when the downstream table is refreshed. dbt must manage the refresh order explicitly.
 
