@@ -13,7 +13,7 @@ Find answers to common questions about configuring and using SCIM provisioning i
 
 <Expandable alt_header="Do the userName and email.value fields have to point to the same value in SCIM?">
 
-Yes. They must match the email value on the user object in your IdP that's used to log into <Constant name="dbt_platform" />. If they don't match, a validation error will occur during user provisioning.
+Yes. They must match the email value on the user object in your IdP that's used to sign in to <Constant name="dbt_platform" />. If they don't match, a validation error will occur during user provisioning.
 
 </Expandable>
 
@@ -24,7 +24,7 @@ Yes. They must match the email value on the user object in your IdP that's used 
 Once SCIM provisioning is configured in Entra according to the schema requirements, provisioning begins automatically. Entra will sync users and groups assigned to the Entra app with <Constant name="dbt_platform" />.
 
 **For users:**
-- Matching is based on the `userName` (and `email.value`) field, which should be set to the user's email — the same email used in <Constant name="dbt_platform" /> and expected at login.
+- Matching is based on the `userName` (and `email.value`) field, which should be set to the user's email — the same email used in <Constant name="dbt_platform" /> and expected at sign-in.
 - If a user with that email already exists in <Constant name="dbt_platform" />, they will be linked and become SCIM-managed.
 - If no matching user exists, a new user will be provisioned and invited through email.
 
@@ -56,7 +56,7 @@ For larger rollouts, consider working with your IdP admin to plan based on your 
 
 <Expandable alt_header="Do SSO group mappings still apply when SCIM is enabled?">
 
-No. For users who are provisioned and managed through SCIM, SSO group mappings are bypassed entirely. Group membership for SCIM-managed users is controlled by your IdP. SSO group mappings only apply to users who authenticate through SSO and are **not** SCIM-managed.
+No. For users who are provisioned and managed through SCIM, SSO group mappings are bypassed entirely. Group membership for SCIM-managed users is controlled by your IdP. SSO group mappings only apply to users who authenticate through SSO and are not SCIM-managed.
 
 This means that if you have a dbt group with SSO mappings, those mappings will not be applied to users who have been provisioned through SCIM.
 
@@ -71,32 +71,28 @@ The **Allow manual updates** toggle controls whether an admin can manually updat
 
 </Expandable>
 
-{/* TODO: Needs engineering verification before publishing — confirm behavior across both Okta and Entra and that the Entra "push only" note is still accurate */}
 <Expandable alt_header="What happens to existing users and groups when I enable SCIM?">
 
-Existing users and groups in <Constant name="dbt_platform" /> are **not** automatically converted to SCIM-managed status when you first enable SCIM. Your IdP will only manage users that have been explicitly assigned to the <Constant name="dbt_platform" /> application in their IdP and provisioned with SCIM.
+Existing users and groups in <Constant name="dbt_platform" /> are not automatically converted to SCIM-managed status when you first enable SCIM. Your IdP will only manage users that have been explicitly assigned to the <Constant name="dbt_platform" /> application in their IdP and provisioned with SCIM.
 
 To bring existing users under SCIM management, assign them to the <Constant name="dbt_platform" /> app in your IdP and trigger a sync. Until a user is provisioned with SCIM, they remain unmanaged and are unaffected by SCIM sync operations.
 
 </Expandable>
 
-{/* TODO: Needs engineering verification before publishing — confirm the email confirmation flow described is current */}
 <Expandable alt_header="What happens when a user's email address changes in my IdP when SCIM is enabled?">
 
-If the user is SCIM-managed, when their email is updated in the IdP, <Constant name="dbt_platform" /> will receive a request from SCIM to update their email. An email will be sent to the new address to confirm the change. Once accepted, the user's email will be officially updated in <Constant name="dbt_platform" />.
+If the user is SCIM-managed, when their email is updated in the IdP, <Constant name="dbt_platform" /> will receive a request from SCIM to update their email. An email will be sent to the new address to confirm the change. Once accepted, the user's email will be updated in <Constant name="dbt_platform" />.
 
 </Expandable>
 
-{/* TODO: Needs engineering verification before publishing — the Entra ID license mapping sentence is incomplete in the source. Confirm whether Entra supports license mapping at all, or only via SSO license mapping. Add correct links once confirmed. */}
 <Expandable alt_header="Does SCIM support automatic license assignment?">
 
-SCIM license mapping is supported for **Okta**. It is not supported for **Microsoft Entra ID** — however, SSO license mapping is supported for Entra ID and can be configured that way.
+SCIM license mapping is supported for Okta. It is not supported for Microsoft Entra ID — however, SSO license mapping is supported for Entra ID and can be configured that way.
 
 For Okta license mapping setup, see [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
 
 </Expandable>
 
-{/* TODO: Needs engineering sign-off — DO NOT publish until confirmed. Answer is inferred from system behavior, not explicitly confirmed by engineering. See also: SSO FAQ for the same question. */}
 <Expandable alt_header="Can I use Okta for SSO and Entra ID for SCIM (or vice versa)?">
 
 This is not a recommended configuration. SSO and SCIM should be configured using the same IdP to avoid discrepancies in user state between SCIM and SSO, which could cause unintended behavior. If your organization has separate IdPs for authentication and directory management, contact your account team to discuss your options.
@@ -115,12 +111,11 @@ This error occurs when a SCIM group push includes a user who has not yet been li
 
 1. Identify the user(s) causing the error from your IdP's provisioning logs.
 2. Check whether those users have accepted their <Constant name="dbt_platform" /> invitation. Users are not licensed until they complete this step.
-3. Once the user accepts their invitation and logs in, retry the group push from your IdP.
+3. Once the user accepts their invitation and signs in, retry the group push from your IdP.
 4. If the invitation has expired, remove the user from the push group temporarily, re-invite them using <Constant name="dbt_platform" />, have them accept, and then re-add them to the push group.
 
 </Expandable>
 
-{/* TODO: Needs engineering verification before publishing — confirm the Entra "push only" behavior is still accurate and that there is no import option */}
 <Expandable alt_header="Existing users and groups are not becoming SCIM-managed after enabling SCIM">
 
 After enabling SCIM and completing the initial sync, pre-existing <Constant name="dbt_platform" /> users and groups do not show as SCIM-managed.
@@ -136,7 +131,6 @@ After enabling SCIM and completing the initial sync, pre-existing <Constant name
 
 </Expandable>
 
-{/* TODO: Needs engineering verification before publishing — confirm the AzureActiveDirectory service tag approach is still current and that the Admin API method is supported */}
 <Expandable alt_header="Azure SCIM provisioning fails due to IP allowlisting">
 
 If your <Constant name="dbt_platform" /> account has **IP restrictions** enabled, Azure's SCIM provisioning requests may be blocked because Azure's provisioning service IPs rotate approximately every two weeks and cannot be statically allowlisted.
