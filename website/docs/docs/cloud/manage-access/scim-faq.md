@@ -34,13 +34,13 @@ Once SCIM provisioning is configured in Entra ID according to the schema require
 - If no match exists, a new group will be created through SCIM.
 
 **Important considerations:**
-- Entra does not support importing existing users or groups into the app for SCIM — users and groups must already exist in Entra and be assigned to the app.
+- Entra ID does not support importing existing users or groups into the app for SCIM — users and groups must already exist in Entra ID and be assigned to the app.
 - To ensure users and groups become SCIM-managed, they must exist in both Entra and <Constant name="dbt_platform" /> with matching identifiers (email for users, name for groups).
 - After setup, ongoing syncs automatically provision and manage any newly assigned users or groups in Entra.
 
 #### Okta
 
-Unlike Entra, Okta does not perform continuous full syncs. Provisioning is triggered manually for the initial setup and then continues incrementally as changes are made.
+Unlike Entra ID, Okta does not run continuous full syncs. You trigger initial provisioning manually, then Okta continues provisioning incrementally as changes are made.
 
 When you enable SCIM on an existing Okta SSO app, trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This runs a one-time sync of users to <Constant name="dbt_platform" />. Okta doesn't provide a native way to re-run this full sync &mdash; which means reprocessing typically requires removing and re-adding users.
 
@@ -56,7 +56,7 @@ For larger rollouts, consider working with your IdP admin to plan based on your 
 
 <Expandable alt_header="Do SSO group mappings still apply when SCIM is enabled?">
 
-No. SSO group mappings are bypassed for SCIM-managed users. Group membership is controlled entirely by your IdP.
+No. SSO group mappings do not apply to SCIM-managed users. For SCIM-managed users, group membership is controlled by your IdP.
 
 SSO group mappings only apply to users who authenticate with SSO and are not SCIM-managed.
 
