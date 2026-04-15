@@ -15,7 +15,7 @@ Find answers to common questions about configuring and using single sign-on (SSO
 
 No. When SCIM is enabled, SSO group mappings are bypassed entirely for users who are provisioned and managed through SCIM. Group membership for SCIM-managed users is controlled by your IdP — <Constant name="dbt_platform" /> will not apply SSO group mapping rules on top of SCIM-provisioned group assignments.
 
-This means that if you have a dbt group with SSO group mappings configured, those mappings will only apply to users who authenticate via SSO and are **not** SCIM-managed.
+This means that if you have a dbt group with SSO group mappings configured, those mappings will only apply to users who authenticate with SSO and are **not** SCIM-managed.
 
 </Expandable>
 
@@ -49,7 +49,7 @@ If your Entity ID changes after your IdP has already been configured, you will n
 Yes. Account admins can enable the **Require SSO** option in **Account settings → Single Sign-On** to prevent users from authenticating with a username and password.
 
 :::caution
-Before enabling SSO enforcement, ensure that at least one account admin can successfully log in via SSO. If SSO is misconfigured and enforcement is enabled, admins may be locked out of the account. Contact [support@getdbt.com](mailto:support@getdbt.com) if this occurs.
+Before enabling SSO enforcement, ensure that at least one account admin can successfully log in through SSO. If SSO is misconfigured and enforcement is enabled, admins may be locked out of the account. Contact [support@getdbt.com](mailto:support@getdbt.com) if this occurs.
 :::
 
 </Expandable>
@@ -76,7 +76,7 @@ If your organization has separate IdPs for authentication and directory manageme
 
 <Expandable alt_header="User is stuck on the email verification screen — no verification email received">
 
-When a user logs into a dbt account via SSO for the first time, a verification email is sent to confirm their identity. If the email is not received, this is usually caused by one of the following:
+When a user logs into a dbt account through SSO for the first time, a verification email is sent to confirm their identity. If the email is not received, this is usually caused by one of the following:
 
 - **Email security tools (Proofpoint, Outlook Safe Links, etc.)** are following the verification link before the user clicks it, consuming the one-time token and causing it to expire. Contact your IT or email security team to allowlist dbt verification link domains.
 - **The email is being suppressed** in our email delivery provider. Contact [support@getdbt.com](mailto:support@getdbt.com) to check delivery logs for the affected address.
@@ -86,9 +86,9 @@ When a user logs into a dbt account via SSO for the first time, a verification e
 {/* TODO: Needs engineering verification before publishing — confirm whether the "Remember this device for 30 days" workaround fully addresses the second MFA prompt */}
 <Expandable alt_header="Users are prompted for MFA twice when logging in">
 
-If a user logs in via a regional root URL (for example, `au.dbt.com` or `eu2.dbt.com`) instead of their account-specific URL (for example, `abc123.au.dbt.com`), they may be redirected through two separate Auth0 flows, causing a second MFA prompt.
+If a user logs in with a regional root URL (for example, `au.dbt.com` or `eu2.dbt.com`) instead of their account-specific URL (for example, `abc123.au.dbt.com`), they may be redirected through two separate Auth0 flows, causing a second MFA prompt.
 
-**Workaround:** Advise users to bookmark and log in via their account-specific URL. If MFA is only prompted once at the account-specific URL, this is expected behavior and not a bug. Enabling "Remember this device for 30 days" on the first MFA prompt also suppresses the second prompt when using the regional root URL.
+**Workaround:** Advise users to bookmark and log in with their account-specific URL. If MFA is only prompted once at the account-specific URL, this is expected behavior and not a bug. Enabling "Remember this device for 30 days" on the first MFA prompt also suppresses the second prompt when using the regional root URL.
 
 </Expandable>
 

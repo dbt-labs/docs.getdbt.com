@@ -15,7 +15,7 @@ To configure SCIM in your <Constant name="dbt" /> environment:
 - You must be on an [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing).
 - You must use Okta or Entra ID as your SSO provider and have it connected in the dbt platform.
 - You must have [permissions](/docs/cloud/manage-access/enterprise-permissions) to configure the account settings in <Constant name="dbt_platform" /> and change application settings in [Okta](https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm).
-- If you have IP restrictions enabled, you must add [Okta's IPs](https://help.okta.com/en-us/content/topics/security/ip-address-allow-listing.htm) to your allowlist.
+- If you have IP restrictions enabled, you must add [Okta's IPs](https://help.okta.com/en-us/content/topics/security/ip-address-allow-listing.htm) to your allowlist. If you're using Entra ID with IP restrictions enabled, see [Azure SCIM provisioning fails due to IP allowlisting](/docs/cloud/manage-access/scim-faq) in the SCIM FAQ.
 
 ### Supported features
 
@@ -29,7 +29,7 @@ The currently available supported features for SCIM are:
 When SCIM is enabled, the following functionality will change:
 - Users are not automatically added to default groups
 - Manual actions such as inviting users, updating user information and updating group memberships are disabled by default
-- SSO group mappings are disabled in favor of SCIM group management
+- SSO group mappings are disabled in favor of SCIM group management. Refer to [Do SSO group mappings still apply when SCIM is enabled?](/docs/cloud/manage-access/scim-faq) for details
 
 To overwrite these updates to functionality with SCIM enabled, enable manual updates as part of the SCIM configuration (not recommended).
 
@@ -62,7 +62,7 @@ To retrieve the necessary <Constant name="dbt" /> configurations for use in Okta
 7. Copy the token and record it securely, as _it will not be available again after you close the window_. You must create a new token if you lose the current one.
     <Lightbox src="/img/docs/dbt-cloud/access-control/copy-scim-token.png" width="60%" title="Give your token and identifier." />
 8. (Optional) Manual updates are turned off by default for all SCIM-managed entities, including the ability to invite new users manually. This ensures SCIM-managed entities stay in sync with the IdP, and we recommend keeping this setting disabled.
-   - However, if you need to make manual updates (like update group membership for a SCIM-managed group), you can enable this setting by clicking **Allow manual updates** and confirming the **Allow manual updates** pop up.
+   - However, if you need to make manual updates (like update group membership for a SCIM-managed group), you can enable this setting by clicking **Allow manual updates** and confirming the **Allow manual updates** pop up. For more details on this setting, see [What does "Allow manual updates" mean?](/docs/cloud/manage-access/scim-faq) in the SCIM FAQ.
     <Lightbox src="/img/docs/dbt-cloud/access-control/scim-manual-updates.png" width="70%" title="Enabling manual updates in SCIM settings." />
 
 ## Next steps
