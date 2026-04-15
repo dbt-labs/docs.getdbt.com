@@ -349,7 +349,7 @@ Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/e
 ### Scheduler
 
 The `scheduler` parameter controls whether the dynamic table is refreshed by Snowflake's background scheduler or by an external orchestrator (for example, dbt). Snowflake accepts two options:
-- **ENABLE** &mdash; Snowflake's built-in scheduler automatically refreshes the dynamic table based on the defined `target_lag`. Refreshes cascade across the dependency graph to maintain snapshot consistency. `target_lag` is **required** in this mode.
+- **ENABLE** &mdash; Snowflake's built-in scheduler automatically refreshes the dynamic table based on the defined `target_lag`. Refreshes cascade across the dependency graph to maintain snapshot consistency. Setting `target_lag` is _required_ when using this option. 
 - **DISABLE** &mdash; The dynamic table is excluded from automatic Snowflake background refresh. Refreshing must be triggered manually or through orchestration external to Snowflake (for example, by a `dbt run` that executes `ALTER DYNAMIC TABLE ... REFRESH`). `target_lag` **cannot** be set in this mode.
 
 :::info dbt default differs from Snowflake's native default
