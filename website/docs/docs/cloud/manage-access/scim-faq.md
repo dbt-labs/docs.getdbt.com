@@ -62,7 +62,6 @@ This means that if you have a dbt group with SSO mappings, those mappings will n
 
 </Expandable>
 
-{/* TODO: Needs engineering verification before publishing — confirm the toggle behavior description is accurate, especially around the "Enabled" state partial sentence in the source */}
 <Expandable alt_header='What does "Allow manual updates" mean?'>
 
 The **Allow manual updates** toggle controls whether an admin can manually update SCIM-managed entities, including the ability to send invites.
