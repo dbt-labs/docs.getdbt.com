@@ -76,7 +76,7 @@ If your organization uses separate IdPs for authentication and directory managem
 
 When a user signs in to a <Constant name="dbt_platform" /> account through SSO for the first time, a verification email is sent to confirm their identity. If the email is not received, it's usually caused by one of the following:
 
-- **Email security tools (Proofpoint, Outlook Safe Links, etc.)** may follow the verification link automatically before the user clicks it, consuming the one-time token and causing it to expire. Contact your IT or email security team to allowlist dbt verification link domains.
+- **Email security tools (for example, Proofpoint and Outlook Safe Links)** may follow the verification link automatically before the user clicks it, consuming the one-time token and causing it to expire. Contact your IT or email security team to allowlist dbt verification link domains.
 - **The email is being suppressed** in our email delivery provider. Contact [support@getdbt.com](mailto:support@getdbt.com) to check delivery logs for the affected address.
 
 </Expandable>
