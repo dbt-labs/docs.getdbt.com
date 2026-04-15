@@ -106,4 +106,4 @@ The following steps go over how to assign users/groups to the SCIM app. Refer to
 
 ## FAQ and troubleshooting
 
-For common questions about SCIM provisioning with Entra ID — including onboarding workflows, attribute matching, IP allowlisting issues, and troubleshooting — see [SCIM FAQs and troubleshooting](/docs/cloud/manage-access/scim-faq).
+For common questions about SCIM provisioning with Entra ID — including onboarding workflows, attribute matching, IP allowlisting issues, and troubleshooting — refer to [SCIM FAQs and troubleshooting](/docs/cloud/manage-access/scim-faq).
