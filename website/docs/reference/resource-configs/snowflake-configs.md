@@ -337,7 +337,7 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 :::caution target_lag requires scheduler to be enabled
 `target_lag` is only applicable when [`scheduler`](#scheduler) is effectively set to `ENABLE`. You cannot set `target_lag` when `scheduler='DISABLE'`.
 
-In dbt, if neither `target_lag` nor `scheduler` is provided, dbt defaults to `scheduler='DISABLE'` and manages refresh itself. If you specify `target_lag` and omit `scheduler`, dbt implicitly sets `scheduler='ENABLE'`, which opts into Snowflake-managed scheduling.
+In dbt, if neither `target_lag` nor `scheduler` is specified, dbt defaults to `scheduler: DISABLE` and manages refreshes itself. If you specify `target_lag` without `scheduler`, dbt implicitly sets `scheduler: ENABLE`, which opts into Snowflake-managed scheduling.
 :::
 
 </VersionBlock>
