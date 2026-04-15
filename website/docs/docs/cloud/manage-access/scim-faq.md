@@ -42,7 +42,7 @@ Once SCIM provisioning is configured in Entra according to the schema requiremen
 
 Unlike Entra, Okta does not perform continuous full syncs. Provisioning is triggered manually for the initial setup and then continues incrementally as changes are made.
 
-When SCIM is enabled on an existing Okta SSO application, trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This performs a one-time sync of users to <Constant name="dbt_platform" />. Okta doesn't provide a native way to re-run this full sync &mdash; which means reprocessing typically requires removing and re-adding users.
+When you enable SCIM on an existing Okta SSO app, trigger the initial sync (if there are existing users in the Okta app) using the **Provision Users** button in the Okta Assignments tab. This runs a one-time sync of users to <Constant name="dbt_platform" />. Okta doesn't provide a native way to re-run this full sync &mdash; which means reprocessing typically requires removing and re-adding users.
 
 User matching is based on the `userName` (email) field, which must match the email used in <Constant name="dbt_platform" />. If a match is found, the user is linked and becomes SCIM-managed. If not, a new user is provisioned. If users exist in <Constant name="dbt_platform" /> but not in Okta, you can import them into Okta to keep both systems aligned.
 
