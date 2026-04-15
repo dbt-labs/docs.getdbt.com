@@ -71,4 +71,4 @@ Configure SCIM for your identity provider and optionally manage licenses:
 
 - **[Set up SCIM with Okta](/docs/cloud/manage-access/scim-okta)** &mdash; User and group provisioning, profile updates, and [license management](/docs/cloud/manage-access/scim-manage-user-licenses) (Okta only).
 - **[Set up SCIM with Entra ID](/docs/cloud/manage-access/scim-entra-id)** &mdash; User and group provisioning and profile updates, plus assigning users to the SCIM app.
-- **[SCIM FAQ and troubleshooting](/docs/cloud/manage-access/scim-faq)** &mdash; Common questions and troubleshooting for SCIM provisioning.
+- **[SCIM FAQs and troubleshooting](/docs/cloud/manage-access/scim-faq)** &mdash; Common questions and troubleshooting for SCIM provisioning.
