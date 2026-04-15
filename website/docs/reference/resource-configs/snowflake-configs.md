@@ -389,7 +389,7 @@ To enable Snowflake-managed scheduling with a target lag:
 select * from {{ source('raw', 'events') }}
 ```
 
-Learn more about `SCHEDULER` in [Snowflake's docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table#optional-parameters).
+Learn more about `scheduler` in [Snowflake's docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table#optional-parameters).
 
 </VersionBlock>
 
