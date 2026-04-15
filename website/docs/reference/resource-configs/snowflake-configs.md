@@ -363,7 +363,7 @@ If you specify `target_lag` without explicitly setting `scheduler`, dbt sets `sc
 **Key points:**
 - `target_lag` can only be used when `scheduler` is set to `ENABLE`. Setting `target_lag` when `scheduler='DISABLE'` results in an error.
 - When `scheduler='DISABLE'`, a manual refresh does **not** automatically refresh upstream dynamic table dependencies. This creates an isolation boundary, allowing dbt to manage specific table refreshes without triggering the entire pipeline. This is unlike `ENABLE` mode, where Snowflake cascades refreshes across the dependency graph.
-- If a dynamic table with `scheduler='DISABLE'` depends on other dynamic tables, those upstream tables will not be refreshed when the downstream table is refreshed. The orchestrator (dbt) must manage the refresh order explicitly.
+- If a dynamic table with `scheduler: DISABLE` depends on other dynamic tables, those upstream tables will not be refreshed when the downstream table is refreshed. dbt must manage the refresh order explicitly.
 
 For example, to let dbt manage refreshes (default behavior):
 
