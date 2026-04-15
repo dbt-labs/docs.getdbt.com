@@ -49,7 +49,7 @@ When ADE-bench is asked to solve a task, the test harness prepares the data envi
 2. **Run task-specific setup script.** Because a lot of data teams' actual work involves fixing something that is broken—data arrives in the database in a malformed state; dbt models get out of sync with one another; we all know these horrors—tasks can also include pre-test scripts that modify just that task's data environment. Most commonly, these scripts introduced errors that we wanted the agent to fix, or deleted models we wanted to ask the agent to create.
 3. **Give the sandbox to the agent.** An AI agent is given the project, the database, and its task. ADE-bench then waits for the agent to say it's done.
 4. **Snapshot the agent's changes.** Once the agent stops working, ADE-bench takes a snapshot of all of the changes the agent made. These get presented in a diff in the final results.
-5. **Score the result.** The changes are evaluated. ADE-bench includes a number of default test types, like comparing a table to solution key, or checking for the existence of a dbt model.
+5. **Score the result.** The changes are evaluated. ADE-bench includes a number of default test types, like comparing a table to a solution key, or checking for the existence of a dbt model.
 6. **Clean everything up.** ADE-bench records the results of all the tests, logs the agent's work, and then deletes the container.
 
 For much more detail on how ADE-bench runs and how it can be configured, you can find additional documentation on [GitHub](https://github.com/dbt-labs/ade-bench).
@@ -92,7 +92,7 @@ There are two complications with this, however. First, internal benchmarks are i
 
 Right now, hundreds of data teams are trying to figure out what works and what doesn't. There are surely lots of variants in those efforts—different agents, different setups, different prompts, different problem domains—but most data teams have much more important day jobs to do. To that end, we hope that ADE-bench can be a useful start. Teams can replace our tasks with their own, and use clones of their own database and dbt repo to design their own tests.
 
-If you want to do this, the [tools-ade-bench](https://getdbt.slack.com/archives/C0A2FTCKTME) channel in the [dbt Community Slack](https://getdbt.com/community) is a good place to get started.
+If you want to do this, the [#tools-ade-bench](https://getdbt.slack.com/archives/C0A2FTCKTME) channel in the [dbt Community Slack](https://getdbt.com/community) is a good place to get started.
 
 ## How to make your own tasks
 
