@@ -68,7 +68,7 @@ The <Constant name="fusion" /> upgrade assistant is controlled by two account-le
 The upgrade assistant and readiness panel only appear after an account admin enables this setting:
 
 1. Navigate to **Account settings** → **Account**.
-2. Click **Edit** and scroll to the **Fusion** section.
+2. Click **Edit** and scroll to the **Settings** section.
 3. Click the checkbox next to **Enable Fusion readiness & upgrade features**.
 4. Click **Save**.
 
@@ -450,10 +450,6 @@ If you encounter critical issues in production, you can revert your dbt version:
 Rolling back to **Latest** will disable <Constant name="fusion" />-specific features like state-aware orchestration. Only rollback if you're experiencing production-critical issues.
 
 :::
-
-#### Admin rollback controls
-
-For eligible Enterprise accounts, dbt Labs provides additional rollback controls in **Account settings** → **Account**. If your account has this feature enabled, admins will see a **Revert to fusion fallback** button that rolls all <Constant name="fusion" /> environments back to a `fusion-fallback` release track, and a **Roll forward to current** button to return to `fusion-extended`. A confirmation dialog requires typing "Rollback" before proceeding. Contact your account manager or [dbt Support](/docs/dbt-support) if you need to use this capability.
 
 ## Next steps
 
