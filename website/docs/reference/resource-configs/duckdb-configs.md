@@ -2,9 +2,12 @@
 title: "DuckDB configurations"
 id: "duckdb-configs"
 description: "Reference for DuckDB-specific configurations in dbt-duckdb, including secrets, DuckLake, external files, incremental strategies, and more."
+tags: ['DuckDB', 'dbt Core']
 ---
 
-These configurations are specific to `dbt-duckdb`. For profile setup and connection options, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
+These configurations are specific to `dbt-duckdb`. For profile setup and connection options, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup). For general dbt concepts, refer to [Materializations](/docs/build/materializations) and [Incremental models](/docs/build/incremental-models).
+
+Where a feature requires a minimum `dbt-duckdb` package version, this page calls that out inline.
 
 ## Secrets manager
 
@@ -415,3 +418,9 @@ python -m dbt.adapters.duckdb.cli --profile my_profile
 ```
 
 The shell provides access to all standard dbt commands (`run`, `test`, `build`, `seed`, `snapshot`, `compile`, `parse`, `debug`, `deps`, `list`) and supports model name autocompletion if you install the optional `iterfzf` package.
+
+## More information
+
+- For connection modes and profile setup, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
+- For adapter source code and plugins, refer to the [`dbt-duckdb` repository](https://github.com/duckdb/dbt-duckdb). For adapter release notes, refer to the [`dbt-duckdb` releases page](https://github.com/duckdb/dbt-duckdb/releases).
+- For core dbt concepts used on this page, refer to [Materializations](/docs/build/materializations), [Incremental models](/docs/build/incremental-models), and [Python models](/docs/build/python-models).
