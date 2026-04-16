@@ -181,7 +181,7 @@ Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because rem
 </Expandable>
 
 <Expandable alt_header="My new column isn’t showing up in my incremental model">
-**What went wrong:** If a model has an enforced contract and is materialized as `incremental`, you must also set `on_schema_change` to `append_new_columns` or `fail`. Otherwise, adding a new column can create a mismatch between the YAML-defined contract and the actual table schema.
+**What went wrong:** Contracts on incremental models are supported when `on_schema_change` is set to `append_new_columns` or `fail`. If you add a new column but don’t set `on_schema_change` (or set it to `ignore`), dbt doesn’t add that column to the existing table, which can create a mismatch between the YAML-defined contract and the actual table schema.
 
 **Solution:** Set `on_schema_change: append_new_columns` (or `fail`) for contracted incremental models. For details, refer to [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
 </Expandable>
@@ -189,7 +189,7 @@ Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because rem
 <Expandable alt_header="A column disappeared from my incremental model table">
 **What went wrong:** `sync_all_columns` “adds any new columns to the existing table, and removes any columns that are now missing,” so a column can be removed from the target table if it’s missing from the new model query.
 
-**Solution:** For contracted incremental models, use `append_new_columns` (or `fail`) rather than `sync_all_columns`, because removing existing columns is a breaking change for contracted models. For details, refer to [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
+**Solution:** For contracted incremental models, use `append_new_columns` (or `fail`) rather than `sync_all_columns`. Removing existing columns is a breaking change for contracted models. For details, refer to [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
 </Expandable>
 
 <Expandable alt_header="I’m getting a data type mismatch I didn’t expect">
