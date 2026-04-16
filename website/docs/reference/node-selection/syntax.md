@@ -163,6 +163,3 @@ dbt ls --select "source_status:fresher+" # Shows sources updated since the last 
 dbt ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
 dbt ls --select "result:<status>+" state:modified+ --state ./<dbt-artifact-path> # Lists nodes that match certain [result statuses](/reference/node-selection/syntax#the-result-status) and are modified.
 ```
-
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="node-selection"/>
