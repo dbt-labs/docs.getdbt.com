@@ -204,7 +204,7 @@ flags:
       - 1078   # FreshnessConfigProblem
 ```
 
-A subset of legacy <Constant name="core" /> event names are also accepted as aliases and mapped to their corresponding <Constant name="fusion" /> codes. Any value that is not a recognized numeric code, supported legacy event name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup. This is a deliberate change from <Constant name="core" />, which silently ignored unknown values.
+A subset of legacy <Constant name="core" /> event names are also accepted as aliases and mapped to their corresponding <Constant name="fusion" /> codes. Any value that is not a recognized numeric code, supported legacy event name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup.
 
 ### Supported legacy dbt-core event name aliases
 
