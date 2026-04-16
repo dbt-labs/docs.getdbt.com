@@ -50,6 +50,11 @@
       "destination": "/community/join",
       "permanent": true
     },
+    {
+      "source": "/community/forum",
+      "destination": "https://discourse.getdbt.com/",
+      "permanent": true
+    },
     { 
       "source": "/guides/sl-migration",
       "destination": "/docs/build/latest-metrics-spec",
