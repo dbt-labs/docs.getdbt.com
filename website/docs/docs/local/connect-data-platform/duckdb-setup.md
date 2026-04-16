@@ -29,13 +29,13 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to DuckDB with dbt-duckdb
 
-[DuckDB](http://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. The only configuration parameter that is required in your profile (in addition to `type: duckdb`) is the `path` field, which should refer to a path on your local filesystem where you would like the DuckDB database file (and it's associated write-ahead log) to be written. You can also specify the `schema` parameter if you would like to use a schema besides the default (which is called `main`).
+[DuckDB](https://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. The only required configuration parameter in your profile (in addition to `type: duckdb`) is `path`, which should point to the location on your filesystem where you want DuckDB to write the database file and its associated write-ahead log. You can also specify `schema` if you want to use a schema other than the default, `main`.
 
 There is also a `database` field defined in the `DuckDBCredentials` class for consistency with the parent `Credentials` class, but it defaults to `main` and setting it to be something else will likely cause strange things to happen that cannot be fully predicted, so please avoid changing it.
 
-As of version 1.2.3, you can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set any additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) via the `settings` field, including options that are supported in any loaded extensions. 
+In version 1.2.3 and later, you can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) in the `settings` field, including options supported by loaded extensions.
 
-For example, to be able to connect to `s3` and read/write `parquet` files using an AWS access key and secret, your profile would look something like this:
+For example, to connect to `s3` and read and write `parquet` files using an AWS access key and secret, use a profile like this:
 
 <File name='profiles.yml'>
 
