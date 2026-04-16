@@ -220,7 +220,7 @@ Each row lists a canonical <Constant name="fusion" /> warning code and the legac
 | 1078 | `FreshnessConfigProblem` | A source has no freshness configuration; freshness check was skipped |
 | 1084 | `WarnStateTargetEqual` | The `--state` and `--target` directories are the same path |
 | 1086 | `WEOIncludeExcludeDeprecation` | Deprecated `include`/`exclude` keys were used in `warn_error_options`; use `error`/`warn` instead |
-| _(no code)_ | `LogTestResult` | A data test result (pass/warn/fail); matched by name only |
+| _no code_ | `LogTestResult` | A data test result (pass/warn/fail); matched by name only |
 
 ### Unsupported Core event names
 
