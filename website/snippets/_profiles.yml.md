@@ -120,8 +120,6 @@ my_second_project_profile:
 
 Use environment variables to keep sensitive credentials out of your `profiles.yml` file. Check out the [env_var](/reference/dbt-jinja-functions/env_var) reference for more information.
 
-When setting local environment variables, it is recommended to create a `.env` file in your project root. <Constant name="core"/>, [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started), and dbt VS Code extension automatically load environment variables from the this file. Add `.env` to your `.gitignore` to keep credentials out of version control. Shell environment variables take precedence over `.env` values.
-
 Example:
 
 <File name='~/.dbt/profiles.yml'>
@@ -143,6 +141,8 @@ my_profile:
 ```
 
 </File>
+
+You can create a `.env` file in your project root to set local environment variables. <Constant name="core"/>, <Constant name="fusion"/> CLI, and the VS Code extension all load environment variables automatically from your current working directory. New projects created with `dbt init` include `.env` in the default `.gitignore`. If you're adding a `.env` file to an existing project, add `.env` to your `.gitignore` to keep credentials out of version control. Shell environment variables take precedence over `.env` values.
 
 ## User config
 
