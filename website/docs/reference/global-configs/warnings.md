@@ -184,6 +184,12 @@ This means that if a new warning is introduced in a future version of <Constant 
 
 The <Constant name="fusion_engine" /> fully supports `warn_error_options`. This section describes important differences from <Constant name="core" /> behavior.
 
+Existing dbt-core event names fall into three categories:
+
+- **Supported** Mapped to similar <Constant name="fusion" /> warning and behave approximately the same.
+- **Won't be supported:** Those that we deliberately decided to not ever support.
+- **Not supported yet:** Parsed, but do nothing yet.
+
 ### Warning codes in Fusion
 
 In <Constant name="fusion" />, every warning has a numeric error code (for example, `1600`, `1074`, `1085`). Numeric codes are the canonical configuration key and you can use them directly in `warn_error_options`:
@@ -200,11 +206,11 @@ flags:
 
 A subset of legacy <Constant name="core" /> event names are also accepted as aliases and mapped to their corresponding <Constant name="fusion" /> codes. Any value that is not a recognized numeric code, supported legacy event name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup. This is a deliberate change from <Constant name="core" />, which silently ignored unknown values.
 
-### Supported legacy dbt-Core event name aliases
+### Supported legacy dbt-core event name aliases
 
 Each row lists a canonical <Constant name="fusion" /> warning code and the legacy <Constant name="core" /> event name that <Constant name="fusion" /> accepts as an alias. You can use either the numeric code or the event name in your `warn_error_options` configuration:
 
-| Fusion code | dbt-Core event name | Description |
+| Fusion code | dbt-core event name | Description |
 |---|---|---|
 | 1601 | `NoNodesSelected` | No nodes selected |
 | 1601 | `NothingToDo` | No nodes selected (alias) |
@@ -223,27 +229,36 @@ Each row lists a canonical <Constant name="fusion" /> warning code and the legac
 
 ### Unsupported Core event names
 
-Only the legacy names in [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) are valid string aliases in <Constant name="fusion" />. There are many other <Constant name="core" /> warning event names; if you put one of those in `warn_error_options`, <Constant name="fusion" /> fails at startup, as described in [Warning codes in Fusion](#warning-codes-in-fusion).
+Only the legacy names in [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) are valid string aliases in <Constant name="fusion" />. There are many other <Constant name="core" /> warning event names; if you put one of those in `warn_error_options`, <Constant name="fusion" /> will throw a warning at startup.
 
-The table below is not a complete list of unsupported names. It only includes <Constant name="core" /> event names that <Constant name="fusion" /> recognizes by name so it can emit a startup warning explaining why the entry has no effect and prompting you to remove it: the underlying <Constant name="core" /> behavior was removed, replaced, or made unconditional in <Constant name="fusion" />. Many other unsupported <Constant name="core" /> names are not listed here; they still fail startup validation when used in `warn_error_options`.
+The table below is not a complete list of unsupported names. It only includes <Constant name="core" /> event names that <Constant name="fusion" /> recognizes by name so it can emit a startup warning explaining why the entry has no effect and prompting you to remove it: the underlying <Constant name="core" /> behavior was removed, replaced, or made unconditional in <Constant name="fusion" />. Many other unsupported <Constant name="core" /> names are not listed here; they still warn during startup validation when used in `warn_error_options`.
 
 | dbt-Core event name | Reason not supported |
 |---|---|
-| `MicrobatchMacroOutsideOfBatchesDeprecation` | Fusion only supports the new behavior (hard error) |
-| `GenerateSchemaNameNullValueDeprecation` | Fusion only supports the new behavior (hard error) |
-| `SeedExceedsLimitSamePath` / `SeedIncreased` | Artifact of partial parsing, which Fusion does not use |
+| `MicrobatchMacroOutsideOfBatchesDeprecation` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
+| `SeedExceedsLimitSamePath` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
+| `SeedIncreased` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
+| `GenerateSchemaNameNullValueDeprecation` | Fusion only supports the newer behavior-change flag, where this case is a hard error. |
+| `GenericSemanticLayerDeprecation` | Fusion already implements the new semantic layer spec, so this legacy warning no longer applies. |
+| `MFCumulativeTypeParamsDeprecation` | Fusion already implements the new semantic layer spec, so this legacy warning no longer applies. |
+| `MFTimespineWithoutYamlConfigurationDeprecation` | Fusion already implements the new semantic layer spec, so this legacy warning no longer applies. |
+| `MetricAttributesRenamed` | Fusion already implements the new semantic layer spec, so this legacy warning no longer applies. |
+| `TimeDimensionsRequireGranularityDeprecation` | Fusion already implements the new semantic layer spec, so this legacy warning no longer applies. |
+| `SourceFreshnessProjectHooksNotRun` | Fusion already uses the newer source freshness behavior, so this legacy warning does not apply. |
+| `SemanticValidationFailure` | Fusion does not support semantic models, so this warning does not apply. |
+| `ValidationWarning` | Fusion already validates allowed YAML keys strictly, so this warning would be redundant. |
+| `PackageMaterializationOverrideDeprecation` | Fusion already enforces the latest behavior, which prevents packages from overriding built-in materializations. |
+| `TestsConfigDeprecation` | Fusion does not surface this warning by default, which matches current dbt Core behavior. |
+| `ProjectFlagsMovedDeprecation` | Fusion already errors on this configuration, which matches newer dbt Core behavior. |
+| `ConfigSourcePathDeprecation` | This is now fully deprecated in Fusion. |
+| `ConfigLogPathDeprecation` | This is now fully deprecated in Fusion. |
+| `ConfigTargetPathDeprecation` | This is now fully deprecated in Fusion. |
+| `ConfigDataPathDeprecation` | This is now fully deprecated in Fusion. |
+| `EnvironmentVariableNamespaceDeprecation` | Fusion reserves the `DBT_ENGINE_` prefix and rejects unknown environment variables that use it. |
+| `UnusedTables` | Fusion does not allow source overrides, so packages must disable a source explicitly instead. |
+| `WrongResourceSchemaFile` | Fusion reports this case under `NoNodeForYamlKey` instead. |
 | `PackageInstallPathDeprecation` | Deprecation from 5+ years ago; not implemented |
 | `InternalDeprecation` | Internal Python adapter API; not applicable to Fusion |
-| `SourceFreshnessProjectHooksNotRun` | Fusion already runs hooks on source freshness; not needed |
-| `SemanticValidationFailure` | Semantic models are not supported in Fusion |
-| `ValidationWarning` | Fusion's strict YAML parsing already rejects invalid keys |
-| `PackageMaterializationOverrideDeprecation` | Fusion enforces the new behavior; packages cannot override built-in materializations |
-| `TestsConfigDeprecation` | No longer emitted by default; Fusion follows suit |
-| `ProjectFlagsMovedDeprecation` | Fusion errors on this, modeling the newest dbt-Core behavior |
-| `ConfigSourcePathDeprecation` / `ConfigLogPathDeprecation` / `ConfigTargetPathDeprecation` / `ConfigDataPathDeprecation` | Deprecations that happened far enough in the past to not be relevant |
-| `EnvironmentVariableNamespaceDeprecation` | Fusion errors on environment variables starting with `DBT_ENGINE` |
-| `UnusedTables` | Fusion does not allow source overrides |
-| `WrongResourceSchemaFile` | Fusion emits `NoNodeForYamlKey` (dbt1005) instead, due to parallelism at parse time |
 
 ### Warnings that are hard errors in Fusion
 
@@ -259,24 +274,10 @@ Some <Constant name="core" /> warning names correspond to behaviors that <Consta
 | `GenericJSONSchemaValidationDeprecation` | JSON schema validation failures are hard parse errors | `SerializationError` |
 | `DuplicateNameDistinctNodeTypesDeprecation` | Caught as a hard error during node resolution | `SchemaError` |
 
-### The `StaticAnalysis` warning group
+### Enabling `--warn-error` with static analysis in `baseline` mode
 
-When running in `baseline` mode, <Constant name="fusion" />'s SQL comprehension engine emits static analysis diagnostics (type errors, unresolved references, implicit coercions, etc.) as warnings. These are grouped under the `StaticAnalysis` category, which maps to all <Constant name="fusion" /> frontend warning codes below 1000.
-
-You can promote all static analysis diagnostics to errors in CI using:
-
-```yaml
-flags:
-  warn_error_options:
-    error:
-      - StaticAnalysis
-```
-
-Or use a numeric code range to target specific static analysis diagnostic types. See [Configuring `static_analysis`](/docs/fusion/new-concepts#configuring-static_analysis) for more on how static analysis modes work.
-
-:::caution Enabling `--warn-error` with static analysis in `baseline` mode
 If your project emits static analysis warnings and you use `--warn-error` (which promotes all warnings to errors), your project may fail unexpectedly. We recommend explicitly listing the warning categories you want to enforce rather than using `error: all` when `baseline` mode is active.
-:::
+
 
 ### Deprecated `include` and `exclude` keys
 
