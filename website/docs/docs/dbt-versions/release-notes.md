@@ -16,6 +16,8 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
+
 ## April 2026
 
 - **Enhancement:** You can now use arrays as values for keys in the <Constant name="dbt_platform" /> extended attributes YAML editor. For example, `db_groups: [db_editor, db_viewer]` is now valid. Previously, array values were only supported using the API. For more information, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
