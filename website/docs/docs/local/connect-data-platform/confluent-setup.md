@@ -2,7 +2,7 @@
 title: "Connect Confluent Cloud to dbt Core"
 sidebar_label: "Confluent Cloud"
 id: "confluent-setup"
-description: "Read this guide to learn how to set up dbt with Confluent Cloud for Apache Flink."
+description: "Set up dbt Core with Confluent Cloud for Apache Flink using the dbt-confluent adapter."
 meta:
   maintained_by: Confluent
   authors: "Confluent"
@@ -19,7 +19,7 @@ meta:
 
 :::info Community plugin
 
-Some core functionality may be limited. If you're interested in contributing, see the source code for the repository listed below.
+Some features may be limited. To contribute, refer to the source repository below.
 :::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -28,7 +28,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to Confluent Cloud with dbt-confluent
 
-The `dbt-confluent` adapter connects to [Confluent Cloud for Apache Flink](https://docs.confluent.io/cloud/current/flink/overview.html), a fully managed stream processing service. dbt models are [deployed as Flink SQL statements](https://docs.confluent.io/cloud/current/flink/operate-and-deploy/deploy-flink-dbt.html) that run continuously on Confluent Cloud.
+Use the `dbt-confluent` adapter to connect to [Confluent Cloud for Apache Flink](https://docs.confluent.io/cloud/current/flink/overview.html), a fully managed stream processing service. The adapter [deploys dbt models as Flink SQL statements](https://docs.confluent.io/cloud/current/flink/operate-and-deploy/deploy-flink-dbt.html) that run continuously on Confluent Cloud.
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@ pip install dbt-confluent
 
 ### Configuring your profile
 
-Confluent Cloud targets should be set up using the following configuration in your `profiles.yml` file.
+Add the following configuration to your `profiles.yml` file to define Confluent Cloud targets.
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -83,14 +83,14 @@ my_confluent_project:
 | `dbname` | Yes | The Kafka cluster name within the environment. Maps to the Flink SQL database. |
 | `flink_api_key` | Yes | A Flink API key for authenticating with Confluent Cloud. Use `env_var` to avoid storing secrets in plain text. |
 | `flink_api_secret` | Yes | The corresponding Flink API secret. Use `env_var` to avoid storing secrets in plain text. |
-| `execution_mode` | No | The default execution mode for statements. One of: `streaming_query` (default), `streaming_ddl`, `snapshot`, `snapshot_ddl`. |
-| `statement_name_prefix` | No | A prefix prepended to each Flink statement name. Default: `dbt-confluent-`. |
-| `statement_label` | No | A label applied to all Flink statements for filtering in the Confluent Cloud Console. Default: `dbt-confluent`. |
-| `threads` | No | The number of concurrent models dbt runs in parallel. Default: `1`. |
+| `execution_mode` | No | Sets the default execution mode for statements. One of: `streaming_query` (default), `streaming_ddl`, `snapshot`, `snapshot_ddl`. |
+| `statement_name_prefix` | No | Adds a prefix to each Flink statement name. Default: `dbt-confluent-`. |
+| `statement_label` | No | Applies a label to all Flink statements so you can filter them in the Confluent Cloud Console. Default: `dbt-confluent`. |
+| `threads` | No | Sets how many models dbt runs concurrently. Default: `1`. |
 
 ### Understanding Confluent Cloud concepts
 
-In Confluent Cloud for Apache Flink, the mapping between dbt and Flink SQL concepts is:
+In Confluent Cloud for Apache Flink, dbt concepts map to Flink SQL as follows:
 
 | dbt concept | Confluent Cloud / Flink SQL concept |
 |---|---|
@@ -101,7 +101,7 @@ In Confluent Cloud for Apache Flink, the mapping between dbt and Flink SQL conce
 
 ### Environment variables
 
-You can use environment variables to configure your profile, which is the recommended approach for CI/CD pipelines:
+Use environment variables to configure your profile, especially in CI/CD pipelines:
 
 ```bash
 export CONFLUENT_FLINK_API_KEY=your-api-key
