@@ -66,7 +66,7 @@ your_profile_name:
 
 </File>
 
-You can use a relative path (resolved from where you run dbt) or an absolute path. `dbt-duckdb` automatically sets the `database` property to the basename of the file with the suffix removed (for example, `/tmp/a/dbfile.duckdb` sets `database` to `dbfile`).
+You can use a relative path (resolved relative to your `profiles.yml` file) or an absolute path. `dbt-duckdb` automatically sets the `database` property to the basename of the file with the suffix removed (for example, `/tmp/a/dbfile.duckdb` sets `database` to `dbfile`).
 
 ### MotherDuck
 
