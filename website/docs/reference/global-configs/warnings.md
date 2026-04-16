@@ -226,7 +226,7 @@ Each row lists a canonical <Constant name="fusion" /> warning code and the legac
 
 Only the legacy names in [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) are valid string aliases in <Constant name="fusion" />. There are many other <Constant name="core" /> warning event names; if you put one of those in `warn_error_options`, <Constant name="fusion" /> fails at startup, as described in [Warning codes in Fusion](#warning-codes-in-fusion).
 
-The table below is not a complete list of unsupported names. It only includes Core event names that <Constant name="fusion" /> recognizes by name so it can emit a startup warning explaining why the entry has no effect and prompting you to remove it: the underlying <Constant name="core" /> behavior was removed, replaced, or made unconditional in <Constant name="fusion" />. Many other unsupported Core names are not listed here; they still fail startup validation when used in `warn_error_options`.
+The table below is not a complete list of unsupported names. It only includes <Constant name="core" /> event names that <Constant name="fusion" /> recognizes by name so it can emit a startup warning explaining why the entry has no effect and prompting you to remove it: the underlying <Constant name="core" /> behavior was removed, replaced, or made unconditional in <Constant name="fusion" />. Many other unsupported <Constant name="core" /> names are not listed here; they still fail startup validation when used in `warn_error_options`.
 
 | dbt-Core event name | Reason not supported |
 |---|---|
