@@ -55,12 +55,12 @@ The following table shows the different options and when to use them:
 | Location | Affects | Session state | When to use |
 |-----------|----------|-----------|-----------|
 | [**Shell profile** ](#configure-at-the-os-or-shell-level)| Terminal  | ✅ Permanent | Variables needed globally across all projects and terminal sessions.|
-| [**`.env` file**](#about-env-file-support) | Terminal + extension menus + <Term id="lsp" /> | ✅ Permanent (per project) | Project-specific variables. Works across <Constant name="core"/>, <Constant name="fusion"/> CLI, and the VS Code extension. |
+| [**`.env` file**](#about-env-file-support) | Terminal + extension menus + <Term id="lsp" /> | ✅ Permanent (per project) | Project-specific variables. Works across <Constant name="core"/>, <Constant name="fusion"/> CLI, and the dbt VS Code extension. |
 | [**VS Code/Cursor settings**](#configure-in-the-vs-code-extension-settings) | Extension menus + <Term id="lsp" /> | ✅ Per VS Code/Cursor profile | Editor-only workflows using the extension menu actions. |
 | [**Terminal session**](#configure-in-the-terminal-session)  | Current terminal only | ❌ Temporary | One-off testing. |
 
 :::tip
-A `.env` file in your project root works across <Constant name="core"/>, <Constant name="fusion"/> CLI, and the VS Code extension, so you only need to define your variables in one place.
+- If you want to use both the VS Code extension menus and terminal to run dbt commands, define your variables in the shell profile and VS Code/Cursor settings so they remain active in the terminal globally and in VS Code/Cursor.
 :::
 
 ### Configure at the OS or shell level
