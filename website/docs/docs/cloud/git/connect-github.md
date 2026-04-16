@@ -14,7 +14,7 @@ Connecting your GitHub account to <Constant name="dbt" /> provides convenience a
 :::note GitHub Enterprise Cloud (`ghe.com`) domains
 If your organization uses GitHub Enterprise Cloud hosted on a `ghe.com` domain, native GitHub App connectivity is not supported. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies.
 
-If you can't complete the native GitHub connection flow, use [importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) with SSH/deploy keys instead.
+To connect a ghe.com-hosted repository, use [importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) with SSH/deploy keys instead. Note that your organization's SSH URL configuration may require additional steps.
 
 Some native integration features are unavailable when using the git URL method. For additional help with your specific setup, contact [dbt Support](mailto:support@getdbt.com) or your <Constant name="dbt" /> account team.
 :::
