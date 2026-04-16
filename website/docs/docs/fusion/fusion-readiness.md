@@ -9,6 +9,12 @@ pagination_prev: null
 
 The <Constant name="fusion_engine" /> is here! We currently offer it as a [private preview](/docs/dbt-versions/product-lifecycles#the-dbt-platform) on the <Constant name="dbt_platform" />. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
 
+:::note Enable the Fusion readiness panel
+
+The Fusion readiness panel in the <Constant name="dbt_platform" /> — which shows each project's eligibility status and blockers — is only visible after an account admin enables **Enable Fusion readiness & upgrade features** in **Account settings** → **Account**. You can work through this checklist at any time, but you'll need that setting enabled to track your readiness status in the UI. See [Enable Fusion readiness features](/guides/prepare-fusion-upgrade?step=2) for setup steps.
+
+:::
+
 ## Preparing for Fusion
 
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
