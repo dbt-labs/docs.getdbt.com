@@ -17,7 +17,7 @@ When running dbt locally ([<Constant name="fusion"/> CLI](/docs/local/install-db
 
 Note that dbt loads the `.env` file from the current working directory, not from the directory specified by `--project-dir`. If you run dbt from a different directory than your project root, the `.env` file must be in the directory where you run the command.
 
-Create a `.env` file in your project root and define variables using `KEY=value` syntax. For example:
+Create a `.env` file (typically at the root of your dbt project) and define variables using `KEY=value` syntax. For example:
 
 <File name='.env'>
 
