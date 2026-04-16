@@ -157,7 +157,7 @@ Follow these steps to define UDFs in dbt:
     The `packages` config is a beta feature in <Constant name="core" /> v1.12.
     :::
     
-    The following example shows a Python UDF with the required configs (`runtime_version`, `entry_point`), the optional `packages` config, and other common properties:
+    The following example shows a Python UDF with the required configs (`runtime_version`, `entry_point`), the optional `packages` config, and other common configs:
 
     <File name='functions/schema.yml'>
 
