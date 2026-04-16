@@ -34,7 +34,7 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ### `.env` file for environment variables <Lifecycle status="beta" />
 
-When running commands locally, <Constant name="core" /> automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [`.env` file](/reference/dbt-jinja-functions/env_var#env-file).
+When running commands locally, <Constant name="core" /> automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. For more information, refer to [Configure your local development](/docs/configure-dbt-extension) and [About env_var function](/reference/dbt-jinja-functions/env_var#env-file).
 
 ### `selector` method for named YAML selectors <Lifecycle status="beta" />
 

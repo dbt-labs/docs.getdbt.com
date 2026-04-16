@@ -13,16 +13,18 @@ If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are presen
 
 ### `.env` file
 
-When running dbt locally (<Constant name="core"/>, [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started), and dbt VS Code extension), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` &mdash; `.env` values will not override variables already set in your shell.
+When running dbt locally ([<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started), dbt VS Code extension, and <Constant name="core"/>), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` &mdash; `.env` values will not override variables already set in your shell.
 
-Create a `.env` file in your project root and define variables using `KEY=value` syntax:
+Note that dbt loads the `.env` file from the current working directory, not from the directory specified by `--project-dir`. If you run dbt from a different directory than your project root, the `.env` file must be in the directory where you run the command.
+
+Create a `.env` file in your project root and define variables using `KEY=value` syntax. For example:
 
 <File name='.env'>
 
 ```bash
-DBT_USER=alice
-DBT_PASSWORD=supersecret
-DBT_SCHEMA=dbt_alice
+DBT_USER=user
+DBT_PASSWORD=password
+DBT_SCHEMA=dbt_schema
 ```
 
 </File>

@@ -142,7 +142,7 @@ my_profile:
 
 </File>
 
-You can create a `.env` file in your project root to set local environment variables. <Constant name="core"/>, <Constant name="fusion"/> CLI, and the VS Code extension all load environment variables automatically from your current working directory. New projects created with `dbt init` include `.env` in the default `.gitignore`. If you're adding a `.env` file to an existing project, add `.env` to your `.gitignore` to keep credentials out of version control. Shell environment variables take precedence over `.env` values.
+You can create a `.env` file in your project root to set local environment variables. The <Constant name="fusion"/> CLI, the dbt VS Code extension, and <Constant name="core"/> all load environment variables automatically from your current working directory. New projects created with `dbt init` include `.env` in the default `.gitignore`. If you're adding a `.env` file to an existing project, add `.env` to `.gitignore` to keep credentials out of version control. Shell environment variables take precedence over `.env` values. For more information, refer to [Configure your local development](/docs/configure-dbt-extension).
 
 ## User config
 
