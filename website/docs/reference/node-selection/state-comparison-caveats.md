@@ -8,6 +8,31 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 The [`state:` selection method](/reference/node-selection/methods#state) is a powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
 
+### False positives
+
+:::warning False positives are the most common issue with state selection
+
+A false positive occurs when dbt marks a model as `state:modified` even though you didn't change it. This typically happens when your model uses environment-aware logic — like `target.name`, `env_var()`, or `var()` — in its configuration or SQL. Because dbt compares *rendered* values between the current environment and the state manifest, a model compiled in `dev` will look different from the same model compiled in `prod`, triggering a spurious modification.
+
+:::
+
+**Example:** Consider a model that customizes its schema based on the target environment:
+
+```sql
+-- models/my_model.sql
+{{ config(schema='dbt_' ~ target.name) }}
+
+select * from {{ ref('other_model') }}
+```
+
+When this model is compiled in `dev`, the schema resolves to `dbt_dev`. In `prod`, it resolves to `dbt_prod`. If your CI job runs `state:modified` against a production manifest, dbt sees `dbt_dev` vs `dbt_prod` and flags the model as modified — even though nothing actually changed.
+
+The same false-positive behavior can occur with `env_var()` calls in model configs, `var()` values that differ between environments, or any other logic that renders differently depending on where dbt is run.
+
+**Fix:** Set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `true`. This tells dbt to compare the *unrendered* (pre-compiled) config values instead of the rendered ones, eliminating most environment-driven false positives.
+
+<StateModified features={'/snippets/_state-modified-compare.md'}/>
+
 ### Seeds
 
 dbt stores a file hash of seed files that are &lt;1 MiB in size. If the contents of these seeds is modified, the seed will be included in `state:modified`.
@@ -56,16 +81,6 @@ import Overwritesthemanifest from '/snippets/_overwrites-the-manifest.md';
 import Recommendationoverwritesthemanifest from '/snippets/_recommendation-overwriting-manifest.md'; 
 
 <Recommendationoverwritesthemanifest />
-
-### False positives
-
-<VersionBlock firstVersion="1.9">
-
-To reduce false positives during `state:modified` selection due to env-aware logic, you can set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`.
-
-<StateModified features={'/snippets/_state-modified-compare.md'}/>
-
-</VersionBlock>
 
 ### Final note
 
