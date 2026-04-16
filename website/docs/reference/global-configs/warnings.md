@@ -233,7 +233,7 @@ Only the legacy names in [Supported legacy dbt-Core event name aliases](#support
 
 The table below is not a complete list of unsupported names. It only includes <Constant name="core" /> event names that <Constant name="fusion" /> recognizes by name so it can emit a startup warning explaining why the entry has no effect and prompting you to remove it: the underlying <Constant name="core" /> behavior was removed, replaced, or made unconditional in <Constant name="fusion" />. Many other unsupported <Constant name="core" /> names are not listed here; they still warn during startup validation when used in `warn_error_options`.
 
-| dbt-Core event name | Reason not supported |
+| dbt-core event name | Message |
 |---|---|
 | `MicrobatchMacroOutsideOfBatchesDeprecation` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
 | `SeedExceedsLimitSamePath` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
