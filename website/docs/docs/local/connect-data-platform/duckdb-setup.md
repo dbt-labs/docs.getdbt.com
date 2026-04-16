@@ -27,15 +27,101 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 <SetUpPages meta={frontMatter.meta} />
 
 
-## Connecting to DuckDB with dbt-duckdb
+## Connecting to DuckDB
 
-[DuckDB](https://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. The only required configuration parameter in your profile (in addition to `type: duckdb`) is `path`, which should point to the location on your filesystem where you want DuckDB to write the database file and its associated write-ahead log. You can also specify `schema` if you want to use a schema other than the default, `main`.
+[DuckDB](https://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. There are several ways to connect dbt to DuckDB depending on where you want your data to live.
 
-There is also a `database` field defined in the `DuckDBCredentials` class for consistency with the parent `Credentials` class, but it defaults to `main` and setting it to be something else will likely cause strange things to happen that cannot be fully predicted, so please avoid changing it.
+### In-memory
 
-In version 1.2.3 and later, you can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) in the `settings` field, including options supported by loaded extensions.
+The simplest configuration requires only `type: duckdb` in your profile. This runs an in-memory database &mdash; all data is lost after the run completes. This is useful for testing pipelines and for workflows that operate purely on external CSV, Parquet, or JSON files.
 
-For example, to connect to `s3` and read and write `parquet` files using an AWS access key and secret, use a profile like this:
+<File name='profiles.yml'>
+
+```yaml
+default:
+  outputs:
+    dev:
+      type: duckdb
+  target: dev
+```
+
+</File>
+
+### Local file
+
+To persist data between runs, set `path` to a `.duckdb` file on your local filesystem. DuckDB will create the file automatically if it doesn't exist.
+
+<File name='profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: './my_project.duckdb'
+      schema: main   # optional; defaults to main
+      threads: 4     # optional
+```
+
+</File>
+
+You can use a relative path (resolved from where you run dbt) or an absolute path. `dbt-duckdb` automatically sets the `database` property to the basename of the file with the suffix removed (for example, `/tmp/a/dbfile.duckdb` sets `database` to `dbfile`).
+
+### MotherDuck
+
+In `dbt-duckdb 1.5.2` and later, you can connect to a DuckDB instance running on [MotherDuck](https://motherduck.com) by setting `path` to an `md:` connection string:
+
+<File name='profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "md:my_db?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
+      threads: 4
+```
+
+</File>
+
+MotherDuck databases generally work the same way as local DuckDB databases, with a few differences described in [MotherDuck's documentation](https://motherduck.com/docs/architecture-and-capabilities#considerations-and-limitations). MotherDuck preloads common DuckDB extensions but does not support loading custom extensions or user-defined functions.
+
+### Attaching additional databases
+
+DuckDB supports [attaching additional databases](https://duckdb.org/docs/sql/statements/attach.html) so you can read and write from multiple databases. Configure additional databases via the `attach` argument in your profile:
+
+<File name='profiles.yml'>
+
+```yaml
+default:
+  outputs:
+    dev:
+      type: duckdb
+      path: /tmp/dbt.duckdb
+      attach:
+        - path: /tmp/other.duckdb
+        - path: ./yet/another.duckdb
+          alias: yet_another
+        - path: s3://yep/even/this/works.duckdb
+          read_only: true
+        - path: sqlite.db
+          type: sqlite
+        - path: postgresql://username@hostname/dbname
+          type: postgres
+  target: dev
+```
+
+</File>
+
+Attached databases can be referred to by the basename of the file (minus its suffix) or by an `alias` you specify. The `type` argument supports `duckdb`, `sqlite`, and `postgres`. You can also pass arbitrary options via the `options` dictionary &mdash; refer to [Arbitrary ATTACH options](/reference/resource-configs/duckdb-configs#arbitrary-attach-options) for details.
+
+For DuckLake, use `ducklake:` for local databases; for MotherDuck-managed DuckLake, use `md:` with `is_ducklake: true`. Refer to the [DuckLake configuration](/reference/resource-configs/duckdb-configs#ducklake) section for details.
+
+## Extensions
+
+You can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set any additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) via the `settings` field.
 
 <File name='profiles.yml'>
 
@@ -57,50 +143,16 @@ your_profile_name:
 
 </File>
 
-### Local storage
+You can also configure extensions from outside the core extension repository (such as a community extension) by specifying a `name`/`repo` pair:
 
-When using dbt with DuckDB, the `path` field in your [`profiles.yml`](/docs/local/profiles.yml) determines where the DuckDB database file is stored on your local filesystem. You can provide an absolute path or a relative path (which will be resolved relative to your dbt project root).
-
-If you provide a filesystem path ending in `.duckdb`, DuckDB will:
-
-- Create the file automatically if it does not exist
-- Write tables and views into that file when you execute [`dbt run`](/reference/commands/run)
-- Persist data between runs
-
-The following is an example of a profile configured to create and connect to a local DuckDB database using a relative path:
-
-<File name='profiles.yml'>
-```yaml
-duckdb_local_storage_test:
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: "./local.duckdb"
-      threads: 4
-```
-</File>
-
-This configuration tells DuckDB to create (or reuse) a file named `local.duckdb` in the directory where you run dbt.
-
-From your project directory, run these commands:
-
-```shell
-dbt debug
-dbt run
-ls -lah local.duckdb
+```yml
+extensions:
+  - httpfs
+  - parquet
+  - name: h3
+    repo: community
+  - name: uc_catalog
+    repo: core_nightly
 ```
 
-After executing `dbt run`, you should see a file named `local.duckdb` in your project directory. This file contains the tables and views built by dbt.
-
-If you delete the file:
-
-```shell
-rm local.duckdb
-```
-
-Running `dbt run` again will recreate it.
-
-:::note
-If you use a relative path (for example, `./local.duckdb`), the database file is created relative to the directory where you execute dbt. You can also use an absolute path (for example, `/Users/yourname/project/local.duckdb`) to ensure the database file is always written to a specific location.
-:::
+For configuring cloud storage access using DuckDB's Secrets Manager or fsspec filesystems, refer to the [DuckDB configurations](/reference/resource-configs/duckdb-configs) page.

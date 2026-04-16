@@ -1,118 +1,14 @@
 ---
 title: "DuckDB configurations"
 id: "duckdb-configs"
-description: "Reference the profile settings, external file options, incremental strategies, and other configs available in dbt-duckdb."
+description: "Reference for DuckDB-specific configurations in dbt-duckdb, including secrets, DuckLake, external files, incremental strategies, and more."
 ---
 
-Use these settings to configure `dbt-duckdb` for DuckDB, MotherDuck, DuckLake, external files, and more.
+These configurations are specific to `dbt-duckdb`. For profile setup and connection options, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
 
-## Set up your profile
+## Secrets manager
 
-Use the following `profiles.yml` settings with `dbt-duckdb`:
-
-```yml
-your_profile_name:
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: 'file_path/database_name.duckdb'
-      extensions:
-        - httpfs
-        - parquet
-      settings:
-        s3_region: my-aws-region
-        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
-        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
-```
-
-This profile runs `dbt-duckdb` against the [DuckDB](https://www.duckdb.org) file specified in `path` and persists relations across runs.
-
-Omitting the `path` field sets it to `:memory:`, which means the database runs in-memory and all data is lost after your run completes.
-
-`dbt-duckdb` automatically sets the `database` property to the basename of the file in the `path` argument with the suffix removed. For example, if the path is `/tmp/a/dbfile.duckdb`, the `database` field will be set to `dbfile`. If you are running in `:memory:` mode, then `database` is set to `memory`.
-
-## Use MotherDuck
-
-In `dbt-duckdb 1.5.2` and later, you can connect to a DuckDB instance running on [MotherDuck](https://motherduck.com) by setting `path` to an `md:` connection string, just as you would with the DuckDB CLI or Python API.
-
-MotherDuck databases generally work the same way as local DuckDB databases, with a few differences:
-
-- MotherDuck is compatible with specific client DuckDB versions as described in [MotherDuck's documentation](https://motherduck.com/docs/architecture-and-capabilities#considerations-and-limitations).
-- MotherDuck preloads a set of common DuckDB extensions, but it does not support loading custom extensions or user-defined functions.
-
-### DuckLake on MotherDuck
-
-In `dbt-duckdb 1.9.6` and later, you can connect to [hosted DuckLake on MotherDuck](https://motherduck.com/blog/ducklake-motherduck/) by creating a DuckLake on MotherDuck and then setting `is_ducklake: true` in `profiles.yml`.
-
-First, create your DuckLake database in MotherDuck:
-
-```sql
-CREATE DATABASE my_ducklake
-  (TYPE ducklake, DATA_PATH 's3://...')
-```
-
-Then configure your profile with the DuckLake database attached:
-
-```yml
-default:
-  outputs:
-    dev:
-      type: duckdb
-      path: "md:my_db?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
-      attach:
-        - path: "md:my_ducklake"
-          is_ducklake: true
-  target: dev
-```
-
-DuckLake must be identified with `is_ducklake: true` so that safe DDL operations are applied by dbt.
-
-## Configure extensions, settings, and filesystems
-
-You can install and load any core [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set any additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) via the `settings` field, including options that are supported in loaded extensions.
-
-You can also configure extensions from outside the core extension repository (such as a community extension) by configuring the extension as a `name`/`repo` pair:
-
-```yml
-default:
-  outputs:
-    dev:
-      type: duckdb
-      path: /tmp/dbt.duckdb
-      extensions:
-        - httpfs
-        - parquet
-        - name: h3
-          repo: community
-        - name: uc_catalog
-          repo: core_nightly
-  target: dev
-```
-
-In `dbt-duckdb 1.4.1` and later, you can experimentally use DuckDB filesystems implemented via [fsspec](https://duckdb.org/docs/guides/python/filesystems.html). The `fsspec` library supports a [variety of cloud data storage systems](https://filesystem-spec.readthedocs.io/en/latest/api.html#other-known-implementations), including S3, GCS, and Azure Blob Storage. To use an `fsspec` implementation with `dbt-duckdb`, install the relevant Python modules and configure your profile like this:
-
-```yml
-default:
-  outputs:
-    dev:
-      type: duckdb
-      path: /tmp/dbt.duckdb
-      filesystems:
-        - fs: s3
-          anon: false
-          key: "{{ env_var('S3_ACCESS_KEY_ID') }}"
-          secret: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
-          client_kwargs:
-            endpoint_url: "http://localhost:4566"
-  target: dev
-```
-
-The `filesystems` property takes a list of configurations. Each entry must include an `fs` property that identifies the `fsspec` protocol to load, such as `s3`, `gcs`, or `abfs`. Each entry can also include additional key-value pairs to configure that `fsspec` implementation.
-
-## Use the Secrets Manager
-
-To use the [DuckDB Secrets Manager](https://duckdb.org/docs/configuration/secrets_manager.html), configure the `secrets` field. For example, to connect to S3 and read and write Parquet files with an AWS access key and secret, use a profile like this:
+Use the [DuckDB Secrets Manager](https://duckdb.org/docs/configuration/secrets_manager.html) to manage credentials for cloud storage. Configure the `secrets` field in your profile:
 
 ```yml
 default:
@@ -133,21 +29,12 @@ default:
 
 ### Fetch credentials from context
 
-Instead of specifying the credentials through the settings block, you can also use the `credential_chain` secret provider. This means that you can use any supported mechanism from AWS to obtain credentials (for example, web identity tokens). You can read more about [secret providers in the DuckDB documentation](https://duckdb.org/docs/configuration/secrets_manager.html#secret-providers). To use the `credential_chain` provider and automatically fetch credentials from AWS, specify the `provider` in the `secrets` key:
+Instead of specifying credentials directly, you can use the `credential_chain` secret provider to use any supported AWS mechanism (for example, web identity tokens). Refer to the [DuckDB secret providers documentation](https://duckdb.org/docs/configuration/secrets_manager.html#secret-providers) for details.
 
 ```yml
-default:
-  outputs:
-    dev:
-      type: duckdb
-      path: /tmp/dbt.duckdb
-      extensions:
-        - httpfs
-        - parquet
-      secrets:
-        - type: s3
-          provider: credential_chain
-  target: dev
+secrets:
+  - type: s3
+    provider: credential_chain
 ```
 
 ### Scoped credentials by storage prefix
@@ -155,29 +42,23 @@ default:
 Secrets can be scoped so that different storage paths use different credentials:
 
 ```yml
-default:
-  outputs:
-    dev:
-      type: duckdb
-      path: /tmp/dbt.duckdb
-      extensions:
-        - httpfs
-        - parquet
-      secrets:
-        - type: s3
-          provider: credential_chain
-          scope: [ "s3://bucket-in-eu-region", "s3://bucket-2-in-eu-region" ]
-          region: "eu-central-1"
-        - type: s3
-          region: us-west-2
-          scope: "s3://bucket-in-us-region"
+secrets:
+  - type: s3
+    provider: credential_chain
+    scope: [ "s3://bucket-in-eu-region", "s3://bucket-2-in-eu-region" ]
+    region: "eu-central-1"
+  - type: s3
+    region: us-west-2
+    scope: "s3://bucket-in-us-region"
 ```
 
-When fetching a secret for a path, the secret scopes are compared to the path, returning the matching secret for the path. In the case of multiple matching secrets, the longest prefix is chosen.
+When fetching a secret for a path, the secret scopes are compared to the path. In the case of multiple matching secrets, the longest prefix is chosen.
 
-## Attach additional databases
+## Cloud storage with fsspec
 
-DuckDB supports [attaching additional databases](https://duckdb.org/docs/sql/statements/attach.html) to your `dbt-duckdb` run so that you can read and write from multiple databases. Additional databases may be configured via the `attach` argument in your profile:
+In `dbt-duckdb 1.4.1` and later, you can experimentally use DuckDB filesystems implemented via [fsspec](https://duckdb.org/docs/guides/python/filesystems.html). The `fsspec` library supports [a variety of cloud data storage systems](https://filesystem-spec.readthedocs.io/en/latest/api.html#other-known-implementations), including S3, GCS, and Azure Blob Storage.
+
+To use an `fsspec` implementation, install the relevant Python modules and configure `filesystems` in your profile:
 
 ```yml
 default:
@@ -185,42 +66,25 @@ default:
     dev:
       type: duckdb
       path: /tmp/dbt.duckdb
-      attach:
-        - path: /tmp/other.duckdb
-        - path: ./yet/another.duckdb
-          alias: yet_another
-        - path: s3://yep/even/this/works.duckdb
-          read_only: true
-        - path: sqlite.db
-          type: sqlite
-        - path: postgresql://username@hostname/dbname
-          type: postgres
+      filesystems:
+        - fs: s3
+          anon: false
+          key: "{{ env_var('S3_ACCESS_KEY_ID') }}"
+          secret: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
+          client_kwargs:
+            endpoint_url: "http://localhost:4566"
   target: dev
 ```
 
-The attached databases may be referred to in your dbt sources and models by either:
+Each entry must include an `fs` property that identifies the `fsspec` protocol to load (`s3`, `gcs`, `abfs`, etc.) and can include additional key-value pairs to configure that implementation.
 
-- The basename of the database file, minus its suffix (for example `/tmp/other.duckdb` is the `other` database and `s3://yep/even/this/works.duckdb` is the `works` database).
-- By an alias you specify (the `./yet/another.duckdb` database in the above configuration is referred to as `yet_another` instead of `another`).
-
-These additional databases do not necessarily have to be DuckDB files. DuckDB's storage and catalog engines are pluggable. You can indicate the type of the database you are connecting to via the `type` argument, which currently supports `duckdb`, `sqlite`, and `postgres`.
-
-For DuckLake, use `ducklake:` for local databases; for MotherDuck-managed DuckLake, use `md:` with `is_ducklake: true`:
-
-```yml
-attach:
-  - path: "ducklake:my_ducklake.ddb"
-  - path: "md:my_other_ducklake"
-    is_ducklake: true
-```
-
-### Arbitrary ATTACH options
+## Arbitrary ATTACH options
 
 You can use the `options` dictionary to pass any additional key-value pairs to DuckDB's `ATTACH` statement. This allows you to take advantage of new DuckDB features without waiting for explicit support in `dbt-duckdb`:
 
 ```yml
 attach:
-  - path: /tmp/db1.db
+  - path: /tmp/db1.sqlite
     type: sqlite
     read_only: true
   - path: /tmp/special.duckdb
@@ -232,55 +96,71 @@ attach:
 
 If you specify the same option in both a direct field (`type`, `secret`, `read_only`) and in the `options` dict, `dbt-duckdb` will raise an error to prevent conflicts.
 
-## Use plugins
+## DuckLake
 
-`dbt-duckdb` has its own [plugin](https://github.com/duckdb/dbt-duckdb/blob/master/dbt/adapters/duckdb/plugins/__init__.py) system to enable advanced users to extend dbt-duckdb with additional functionality, including:
-- Defining custom Python UDFs on the DuckDB database connection so that they can be used in your SQL models.
-- Loading source data from Excel, Google Sheets, or SQLAlchemy tables.
+[DuckLake](https://ducklake.select) is a table format that provides ACID transactions and time travel for DuckDB. You can use DuckLake with both local databases and MotherDuck.
 
-To configure a plugin for use in your dbt project, use the `plugins` property on the profile:
+### DuckLake on MotherDuck
+
+In `dbt-duckdb 1.9.6` and later, you can connect to [hosted DuckLake on MotherDuck](https://motherduck.com/blog/ducklake-motherduck/) by creating a DuckLake database and setting `is_ducklake: true`:
+
+First, create your DuckLake database in MotherDuck:
+
+```sql
+CREATE DATABASE my_ducklake
+  (TYPE ducklake, DATA_PATH 's3://...')
+```
+
+Then configure your profile:
 
 ```yml
 default:
   outputs:
     dev:
       type: duckdb
-      path: /tmp/dbt.duckdb
-      plugins:
-        - module: gsheet
-          config:
-            method: oauth
-        - module: sqlalchemy
-          alias: sql
-          config:
-            connection_url: "{{ env_var('DBT_ENV_SECRET_SQLALCHEMY_URI') }}"
-        - module: path.to.custom_udf_module
+      path: "md:my_db?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
+      attach:
+        - path: "md:my_ducklake"
+          is_ducklake: true
+  target: dev
 ```
 
-Every plugin must have a `module` property that indicates where the plugin class to load is defined. There are a [set of built-in plugins](https://github.com/duckdb/dbt-duckdb/blob/master/dbt/adapters/duckdb/plugins) you can define, that may be referenced by their base filename (`excel` or `gsheet`), while user-defined plugins should be referred to by their full module path name (such as a `lib.my.custom` module that defines a class named `Plugin`).
+DuckLake must be identified with `is_ducklake: true` so that safe DDL operations are applied by dbt.
 
-Each plugin instance has a name for logging and reference purposes that defaults to the name of the module but that may be overridden by the user by setting the `alias` property in the configuration. Modules may be initialized using an arbitrary set of key-value pairs that are defined in the `config` dictionary.
+For local DuckLake, use `ducklake:` in the path:
 
-Using plugins may require you to add additional dependencies to the Python environment that your dbt-duckdb pipeline runs in:
+```yml
+attach:
+  - path: "ducklake:my_ducklake.ddb"
+```
 
-- `excel` depends on `pandas`, and `openpyxl` or `xlsxwriter` to perform writes
-- `gsheet` depends on `gspread` and `pandas`
-- `iceberg` depends on `pyiceberg` and Python >= 3.10
-- `sqlalchemy` depends on `pandas`, `sqlalchemy`, and the driver(s) you need
-- `delta` depends on `deltalake` (experimental)
+### DuckLake table partitioning
 
-### Write your own plugins
+For DuckLake-backed tables (including MotherDuck-managed DuckLake), you can configure physical partitioning for `table` or `incremental` models using `partitioned_by`:
 
-Defining your own `dbt-duckdb` plugin requires creating a Python module that defines a class named `Plugin` that inherits from `dbt.adapters.duckdb.plugins.BasePlugin`. There are four methods that may be implemented:
+```sql
+{{ config(materialized='table', partitioned_by=['year', 'month']) }}
 
-1. `initialize` &mdash; Takes in the `config` dictionary for the plugin defined in the profile. Called once when the `Plugin` class is created.
-2. `configure_connection` &mdash; Takes a `DuckDBPyConnection` object and can perform additional configuration, like defining custom user-defined functions.
-3. `load` &mdash; Takes a `SourceConfig` instance and can optionally return a DataFrame-like object that DuckDB knows how to turn into a table.
-4. `store` &mdash; Takes a `TargetConfig` instance for an `external` materialization and can perform additional operations once the file is written (for example, registering with AWS Glue or uploading to an external database).
+select
+  *,
+  year(event_time) as year,
+  month(event_time) as month
+from {{ ref('upstream_model') }}
+```
 
-Refer to the [built-in plugins](https://github.com/duckdb/dbt-duckdb/tree/master/dbt/adapters/duckdb/plugins) for examples.
+`partition_by` is accepted as an alias for `partitioned_by`. This setting is only applied for DuckLake relations; on non-DuckLake targets it is ignored with a warning.
 
-## Use Python models
+DuckLake applies partitioning via `ALTER TABLE ... SET PARTITIONED BY (...)`, and partitioning only affects new data. For first builds or full refreshes, `dbt-duckdb` creates an empty table, sets partitioning, then inserts data so the initial load is partitioned. Refer to the [DuckLake partitioning documentation](https://ducklake.select/docs/stable/duckdb/advanced_features/partitioning) for more details.
+
+## Plugins
+
+`dbt-duckdb` has a [plugin system](https://github.com/duckdb/dbt-duckdb#configuring-dbt-duckdb-plugins) for extending the adapter with custom Python UDFs, loading source data from Excel/Google Sheets/SQLAlchemy, and more. For details on configuring and writing plugins, refer to the [dbt-duckdb documentation on plugins](https://github.com/duckdb/dbt-duckdb#configuring-dbt-duckdb-plugins).
+
+:::info dbt Core only
+Plugins are a `dbt-duckdb` feature and are not supported in <Constant name="fusion" /> or <Constant name="dbt_platform" />.
+:::
+
+## Python models
 
 dbt supports [Python models](/docs/build/python-models) in `dbt Core` 1.3 and later. In `dbt-duckdb`, Python models run in the same process that owns the DuckDB connection. The `.py` file is loaded as a Python module using [`importlib`](https://docs.python.org/3/library/importlib.html), the `model` function is called with a `dbt` object (containing `ref` and `source` information) and a `DuckDBPyConnection` object, and the returned object is materialized as a table.
 
@@ -311,7 +191,7 @@ def model(dbt, session):
 
 The profile setting `module_paths` allows you to specify a list of paths on the filesystem that contain additional Python modules that should be added to the Python process's `sys.path`. This allows you to include additional helper Python modules in your dbt projects that can be accessed by the running dbt process and used to define custom dbt-duckdb plugins or library code for Python models.
 
-## Work with external files
+## External files
 
 One of DuckDB's most powerful features is its ability to read and write CSV, JSON, and Parquet files directly, without needing to import/export them from the database first.
 
@@ -398,7 +278,7 @@ If the `location` argument is not specified, the external file will be named aft
 
 Incremental materialization strategies are not supported for `external` models.
 
-### Registering external models
+### Register external models
 
 When using `:memory:` as the DuckDB database, subsequent dbt runs can fail when selecting a subset of models that depend on external tables. This is because external files are only registered as DuckDB views when they are created, not when they are referenced. To overcome this issue, use the `register_upstream_external_models` macro at the beginning of a run:
 
@@ -407,7 +287,7 @@ on-run-start:
   - "{{ register_upstream_external_models() }}"
 ```
 
-## Use the `table_function` materialization
+## `table_function` materialization
 
 `dbt-duckdb` provides a custom `table_function` materialization to use DuckDB's [Table Function / Table Macro](https://duckdb.org/docs/sql/statements/create_macro.html) feature to provide parameterized views.
 
@@ -455,7 +335,7 @@ Example invocation with parameters:
 select * from {{ ref("my_table_function_with_parameters") }}(1, 2)
 ```
 
-## Use incremental strategies
+## Incremental strategies
 
 `dbt-duckdb` supports the `delete+insert`, `append`, `merge`, and `microbatch` strategies for incremental table models.
 
@@ -518,25 +398,7 @@ The `microbatch` strategy requires `dbt Core` 1.9 or later and runs incremental 
 Microbatching might not always be the best option from a performance perspective. DuckDB operates on row groups, not physical partitions (unless you have explicitly partitioned data in a DuckLake). Be sure to test different amounts of threads to match your use case.
 :::
 
-## Configure DuckLake table partitioning
-
-For DuckLake-backed tables (including MotherDuck-managed DuckLake), you can configure physical partitioning for `table` or `incremental` models using `partitioned_by`:
-
-```sql
-{{ config(materialized='table', partitioned_by=['year', 'month']) }}
-
-select
-  *,
-  year(event_time) as year,
-  month(event_time) as month
-from {{ ref('upstream_model') }}
-```
-
-`partition_by` is accepted as an alias for `partitioned_by`. This setting is only applied for DuckLake relations; on non-DuckLake targets it is ignored with a warning.
-
-DuckLake applies partitioning via `ALTER TABLE ... SET PARTITIONED BY (...)`, and partitioning only affects new data. For first builds or full refreshes, `dbt-duckdb` creates an empty table, sets partitioning, then inserts data so the initial load is partitioned. Refer to the [DuckLake partitioning documentation](https://ducklake.select/docs/stable/duckdb/advanced_features/partitioning) for more details.
-
-## Use the interactive shell
+## Interactive shell
 
 In `dbt-duckdb` 1.9.3 and later, the interactive shell lets you run dbt commands and query the DuckDB database in an integrated CLI environment. The shell automatically launches the [DuckDB UI](https://duckdb.org/2025/03/12/duckdb-ui.html), which gives you a visual interface to explore your data while you work with your dbt models.
 
