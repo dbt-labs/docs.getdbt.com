@@ -84,7 +84,19 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```
     Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
 </TabItem>
-<TabItem value="windows" label="Windows (PowerShell)">
+<TabItem value="windows-winget" label="Windows (winget)">
+
+1. Run the following command in your terminal to install the <Constant name="fusion_engine" /> CLI:
+    ```shell
+    winget install dbtLabs.dbtFusion
+    ```
+2. To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
+    ```powershell
+    Start-Process powershell
+    ```
+    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
+</TabItem>
+<TabItem value="windows-powershell" label="Windows (PowerShell)">
 
 1. Run the following command in PowerShell to install the <Constant name="fusion_engine" /> CLI:
     ```powershell
