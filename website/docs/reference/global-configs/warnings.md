@@ -202,7 +202,7 @@ A subset of legacy <Constant name="core" /> event names are also accepted as ali
 
 ### Supported legacy dbt-Core event name aliases
 
-The following <Constant name="core" /> event names are recognized by Fusion and map to specific <Constant name="fusion" /> warning codes. You can use either the event name or the numeric code in your `warn_error_options` configuration:
+The following <Constant name="core" /> event names are recognized by <Constant name="fusion" /> and map to specific <Constant name="fusion" /> warning codes. You can use either the event name or the numeric code in your `warn_error_options` configuration:
 
 | dbt-Core event name | Fusion code | Description |
 |---|---|---|
@@ -210,18 +210,17 @@ The following <Constant name="core" /> event names are recognized by Fusion and 
 | `NoNodesSelected` | 1601 | No nodes selected |
 | `NothingToDo` | 1601 | No nodes selected (alias) |
 | `NodeNotFoundOrDisabled` | 1087 | A test or exposure dependency references a missing or disabled node |
-| `DeprecatedModel` | — | A model marked as deprecated is referenced |
-| `DeprecatedReference` | — | A reference to a deprecated model is made |
-| `UpcomingReferenceDeprecation` | — | A model with a future deprecation date is referenced |
+| `DeprecatedModel` | 1085 | A model has passed its deprecation date and should be removed |
+| `DeprecatedReference` | 1072 | A reference to a model that has already been deprecated |
+| `UpcomingReferenceDeprecation` | 1073 | A reference to a model that will be deprecated on a future date |
 | `JinjaLogWarning` | 1074 | Jinja `exceptions.warn()` called in a macro |
 | `SnapshotTimestampWarning` | 1075 | Snapshot timestamp column type mismatch |
-| `PackageRedirectDeprecation` | 1076 | A package has been redirected to a new name |
-| `DepsUnpinned` | — | A git dependency uses an unpinned ref (`HEAD`, `main`, or `master`) |
-| `FreshnessConfigProblem` | 1078 | Source has no freshness configuration |
-| `WarnStateTargetEqual` | 1084 | State and target directories are the same |
-| `PackageNodeDependsOnRootProjectNode` | 1085 | A package node references a root-project node |
-| `WEOIncludeExcludeDeprecation` | 1086 | Deprecated `include`/`exclude` keys used in `warn_error_options` |
-| `LogTestResult` | — | A test result (pass/warn/fail) is logged |
+| `PackageRedirectDeprecation` | 1076 | A package has been redirected to a new name; update your `packages.yml` |
+| `DepsUnpinned` | 1077 | A git-sourced package uses an unpinned revision (`HEAD`, `main`, or `master`) |
+| `FreshnessConfigProblem` | 1078 | A source has no freshness configuration; freshness check was skipped |
+| `WarnStateTargetEqual` | 1084 | The `--state` and `--target` directories are the same path |
+| `WEOIncludeExcludeDeprecation` | 1086 | Deprecated `include`/`exclude` keys were used in `warn_error_options`; use `error`/`warn` instead |
+| `LogTestResult` | _(no code)_ | A data test result (pass/warn/fail); matched by name only |
 
 ### Unsupported Core event names
 
@@ -259,18 +258,17 @@ Some <Constant name="core" /> warning names correspond to behaviors that <Consta
 | `GenericJSONSchemaValidationDeprecation` | JSON schema validation failures are hard parse errors | `SerializationError` |
 | `DuplicateNameDistinctNodeTypesDeprecation` | Caught as a hard error during node resolution | `SchemaError` |
 
-### Fusion native warnings
+### Fusion-native warnings
 
-<Constant name="fusion" /> introduces warnings with no equivalent in <Constant name="core" />. These are configurable via `warn_error_options` using their numeric codes:
+<Constant name="fusion" /> introduces warnings with no direct equivalent in <Constant name="core" />. Most of these appear in the [Supported legacy aliases](#supported-legacy-dbt-core-event-name-aliases) table above with their numeric codes. A few additional ones worth calling out:
 
-| Warning | Code | Description |
-|---|---|---|
-| `PackageDbtVersionIncompatible` | — | A package declares a `require-dbt-version` constraint that excludes Fusion 2.x. Fusion warns instead of hard-erroring to avoid blocking adoption of packages written for Core 1.x. Promote to error with `warn_error_options` if you want to enforce strict compatibility. |
-| `DepsFoundDuplicatePackage` | — | A duplicate package name was found in dependencies. Fusion silently picks the first entry; this warning surfaces the conflict. |
-| `PackageParsingCompatibility` | — | A dependency package contains YAML that Fusion cannot parse (strict key or schema violations that <Constant name="core" /> silently ignored). The first failure per package per invocation is shown as a rollup; use `--show-all-deprecations` to see individual failures. |
-| `StaticAnalysisDeprecation` | 1703 | A deprecated `static_analysis:` value (`on` or `unsafe`) was used in project config, node config, or CLI arguments. Scheduled removal May 2026; use `strict` instead. |
+| Code | Description |
+|---|---|
+| 1703 | A deprecated `static_analysis:` value (`on` or `unsafe`) was used in project config, node config, or CLI args. Alias: `StaticAnalysisDeprecation`. Scheduled removal May 2026 — use `strict` instead. |
 
-**Note:** `DepsNotifyUpdatesAvailable` (newer package version available) was downgraded from a warning to an informational log in <Constant name="fusion" />. It is no longer configurable via `warn_error_options`.
+**`PackageParsingCompatibility`** — when a dependency package contains YAML that <Constant name="fusion" /> cannot parse (strict key or schema violations that <Constant name="core" /> silently ignored), Fusion emits a rollup warning: *"Package `{name}` issued one or more compatibility warnings."* Subsequent failures from the same package in the same invocation are suppressed unless `--show-all-deprecations` is set. Setting this to `error` in `warn_error_options` bypasses the rollup and produces one hard error per incompatible package. Setting it to `silence` suppresses the message entirely.
+
+**Note:** `DepsNotifyUpdatesAvailable` (newer package version available, previously code 1065) was downgraded to an informational log in <Constant name="fusion" /> (code 1088). It can no longer be promoted to an error via `warn_error_options`.
 
 ### The `StaticAnalysis` warning group
 
