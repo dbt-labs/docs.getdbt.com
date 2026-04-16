@@ -11,7 +11,7 @@ Find answers to common questions about configuring and using SCIM provisioning i
 
 ## FAQs
 
-<Expandable alt_header="Do the userName and email.value fields have to point to the same value in SCIM?">
+<Expandable alt_header="Do the userName and email.value fields have to be the same value for SCIM to work?">
 
 Yes. Both must match the email address the user uses to sign in to <Constant name="dbt_platform" /> (email value on the user object in your IdP that's used to sign in). If they don't match, a validation error will occur during provisioning.
 
@@ -85,7 +85,7 @@ The **Allow manual updates** toggle determines whether admins can manually modif
 
 Enabling SCIM does not automatically convert existing users and groups to SCIM-managed status. Your IdP only manages users who have been explicitly assigned to the app and provisioned through SCIM.
 
-To bring existing users under SCIM management, assign them to the <Constant name="dbt_platform" /> app in your IdP and trigger a sync. Until a user is provisioned through SCIM, they remain unmanaged and are unaffected by SCIM sync operations.
+To bring existing users and groups under SCIM management, assign them to the <Constant name="dbt_platform" /> app in your IdP and trigger a sync. Until a user is provisioned through SCIM, they remain unmanaged and are unaffected by SCIM sync operations.
 
 </Expandable>
 
@@ -115,7 +115,7 @@ If your organization uses separate IdPs for authentication and directory managem
 
 ## Troubleshooting
 
-<Expandable alt_header='"All users must have licenses on the account" error'>
+<Expandable alt_header='There is a "All users must have licenses on the account" error'>
 
 This error occurs when a SCIM group push includes a user who hasn't been licensed in <Constant name="dbt_platform" /> yet &mdash; typically because they haven't accepted their invitation.
 
@@ -138,14 +138,16 @@ After enabling SCIM and completing the initial sync, pre-existing <Constant name
 
 1. In your IdP, assign existing users to the <Constant name="dbt_platform" /> SCIM application.
 2. Trigger a provisioning sync. The IdP will attempt to match users by their `userName` (typically their email address) and establish the SCIM-managed link.
-3. For Entra ID, note that the provisioning sync is one-way (push only) — there is no import option to pull existing dbt users into Entra as a managed identity.
-4. If users aren't being matched correctly after a sync, confirm that the `userName` attribute in your IdP exactly matches the email on the user's <Constant name="dbt_platform" /> account, including case.
+    :::info Entra ID note
+    For Entra ID, note that the provisioning sync is one-way (push only) — there is no import option to pull existing dbt users into Entra as a managed identity.
+    :::
+4. If users aren't being matched correctly after a sync, confirm that the `userName` and `email.value` attributes in your IdP exactly match the email on the user's <Constant name="dbt_platform" /> account, including case.
 
 </Expandable>
 
-<Expandable alt_header="Azure SCIM provisioning fails due to IP allowlisting">
+<Expandable alt_header="Entra SCIM provisioning fails due to IP allowlisting">
 
-If your <Constant name="dbt_platform" /> account has **IP restrictions** enabled, Azure's SCIM provisioning requests may be blocked. Azure's provisioning service IPs rotate approximately every two weeks and can't be statically allowlisted.
+If your <Constant name="dbt_platform" /> account has **IP restrictions** enabled, Entra's SCIM provisioning requests may be blocked. Azure's provisioning service IPs rotate approximately every two weeks and can't be statically allowlisted.
 
 **Recommended approach:**
 

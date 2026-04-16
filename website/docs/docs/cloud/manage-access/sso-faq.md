@@ -30,23 +30,10 @@ The Auth0 URI is not the same as your SCIM Base URL, though they share a similar
 
 </Expandable>
 
-<Expandable alt_header="Why does my Entity ID or ACS URL change when I re-enter the SSO setup?">
-
-Your `Entity ID` and `ACS URL` are based on an SSO slug that's generated the first time you open the SSO setup flow. If you navigate away without saving and return, a new slug may be generated, changing these values.
-
-This often happens when one team collects values from <Constant name="dbt_platform" /> and another team configures the IdP. For example, if you send `AUTH0_URI` and `AUTH0_ENTITYID` to your Entra ID admin, then leave the setup flow before they finish, the slug can change when you return.
-
-To avoid this, once you have opened the SSO setup page and noted your `AUTH0_URI` and `AUTH0_ENTITYID`, keep both configurations open until you save. If you need to pause, record the current slug and confirm it has not changed before you submit.
-
-:::caution
-If your Entity ID changes after your IdP has already been configured, you will need to update the enterprise application in your IdP with the new values and re-test the connection. Deleted SSO configurations cannot have their original slug restored.
-:::
-
-</Expandable>
 
 <Expandable alt_header="Can I disable password logins for SSO users?">
 
-Yes. Account admins can enable the **Require SSO** option in **Account settings → Single Sign-On** to prevent password-based sign-in.
+When SSO is configured, it enforces SSO-only logins for the account. However, if [**Allow password logins for account administrators**](/docs/cloud/manage-access/sso-overview?version=1.12#sso-enforcement) is enabled, account admins and IT-licensed users can still sign in with email and password.
 
 :::caution
 Before enabling SSO enforcement, ensure that at least one account admin can successfully sign in through SSO. If SSO is misconfigured and enforcement is enabled, admins may be locked out of the account. Contact [support@getdbt.com](mailto:support@getdbt.com) if this occurs.
@@ -83,7 +70,7 @@ When a user signs in to a <Constant name="dbt_platform" /> account through SSO f
 
 <Expandable alt_header="Users are prompted for MFA twice when signing in">
 
-If a user signs in with a regional root URL (for example, `au.dbt.com` or `eu2.dbt.com`) instead of their account-specific URL (for example, `abc123.au.dbt.com`), they may be redirected through two separate Auth0 flows, resulting in a second MFA prompt.
+If a user signs in with a regional root URL (for example, `au.dbt.com` or `eu2.dbt.com`) instead of their account-specific URL (for example, `abc123.au.dbt.com`), they may be redirected to an account with an active license, which can result in a second MFA prompt if they haven't remembered their device.
 
 Ask users to bookmark and sign in with their account-specific URL. If MFA is only prompted once there, this is expected behavior. Enabling "Remember this device for 30 days" on the first MFA prompt also suppresses the second prompt when using a regional root URL.
 
@@ -93,11 +80,7 @@ Ask users to bookmark and sign in with their account-specific URL. If MFA is onl
 
 The SAML assertion succeeds on the IdP side, but <Constant name="dbt_platform" /> is rejecting the response. This is almost always caused by a mismatch between the values configured in the IdP and what <Constant name="dbt_platform" /> expects.
 
-**Common causes:**
-
-- The **Issuer** in the SAML response doesn't match the connection identifier in Auth0. Verify that the Entity ID in your IdP matches the one shown in <Constant name="dbt_platform" />'s SSO settings.
-- The **ACS URL** or **Audience** in the IdP app was set up with an old slug that has since changed.
-- The **NameID format** is set to a value Auth0 doesn't accept. Use `email` or `persistent` format.
+To resolve, verify all the SSO configuration values in <Constant name="dbt_platform" /> match what was configured in your IdP
 
 </Expandable>
 
@@ -115,6 +98,6 @@ This occurs when tenant-level admin consent hasn't been granted for the dbt SSO 
 
 <Expandable alt_header='"This SSO endpoint is disabled. Please contact your administrator to have them update your IdP SSO settings to use Auth0 instead."'>
 
-This error appears when your IdP is misconfigured and the callback URL is pointing to <Constant name="dbt_platform" /> instead of Auth0. Your admin needs to update the IdP configuration to use the correct IdP values from **Account settings → Single Sign-On**.
+This error message appears after a successful login when your IdP is misconfigured and the callback URL is pointing to <Constant name="dbt_platform" /> instead of Auth0. Your admin needs to update the IdP configuration to use the correct IdP values from **Account settings → Single Sign-On**.
 
 </Expandable>
