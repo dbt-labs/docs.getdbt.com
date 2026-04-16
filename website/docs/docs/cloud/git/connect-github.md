@@ -16,7 +16,7 @@ If your organization uses GitHub Enterprise Cloud with a `ghe.com` domain, nativ
 
 If you can't complete the native GitHub connection flow, use [importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) with SSH/deploy keys instead.
 
-Some native integration features are limited when using the git URL method. For environment-specific guidance, contact [dbt Support](mailto:support@getdbt.com) or your <Constant name="dbt" /> account team.
+Some native integration features are unavailable when using the git URL method. For additional help with your specific setup, contact [dbt Support](mailto:support@getdbt.com) or your <Constant name="dbt" /> account team.
 :::
 
 ## Prerequisites
