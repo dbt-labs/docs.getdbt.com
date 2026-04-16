@@ -16,6 +16,84 @@ meta:
   config_page: '/reference/resource-configs/duckdb-configs'
 ---
 
+<VersionBlock firstVersion="2.0">
+
+## Connect DuckDB to Fusion <Lifecycle status="beta" />
+
+DuckDB with <Constant name="fusion_engine" /> is the easiest way to get a dbt project running locally &mdash; no warehouse account or credentials required. [DuckDB](https://duckdb.org) is an embedded database that runs entirely in-process, so dbt connects directly to a local `.duckdb` file with no additional setup.
+
+DuckDB does not require authentication &mdash; it runs locally on your machine.
+
+### Installation
+
+The DuckDB adapter is built into the <Constant name="fusion" /> CLI. To get started, [install dbt Fusion](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2#get-started) as the development interface.
+
+#### DuckDB driver and extensions {#driver-and-extensions}
+
+<Constant name="fusion" /> ships with a built-in DuckDB driver. However, this bundled driver **does not support loading DuckDB extensions** (such as `httpfs`, `parquet`, `spatial`, etc.).
+
+To use DuckDB extensions with <Constant name="fusion" />, install `libduckdb` on your system. <Constant name="fusion" /> checks for a system-installed DuckDB driver first and falls back to the bundled driver if none is found.
+
+You can install DuckDB from the [official DuckDB installation page](https://duckdb.org/docs/installation/). Once installed, extensions listed in your `profiles.yml` will load normally.
+
+### Configure your profile
+
+To connect dbt to DuckDB, set up your `profiles.yml`. The only required field (besides `type: duckdb`) is `path`:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+your_profile_name:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /path/to/database_name.duckdb
+      schema: main   # optional; defaults to main
+      threads: 4     # optional
+```
+
+</File>
+
+| Profile field | Required | Description | Example |
+| --- | --- | --- | --- |
+| `type` | Yes | The adapter type. | `duckdb` |
+| `path` | Yes | Path to the DuckDB database file. Created automatically if it doesn't exist. Use `:memory:` for an in-memory database. | `./jaffle_shop.duckdb` |
+| `schema` | No | The schema name where dbt creates objects. | Default: `main` |
+| `threads` | No | Number of threads dbt uses when building models concurrently. | Default: `1` |
+| `extensions` | No | List of [DuckDB extensions](https://duckdb.org/docs/extensions/overview) to load at startup. Requires a [system-installed DuckDB driver](#driver-and-extensions). | `httpfs`, `parquet` |
+| `settings` | No | Map of [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) to set at startup. | `s3_region: us-east-1` |
+
+For detailed configuration options (MotherDuck, extensions, secrets, attach, external files, and more), refer to [DuckDB configurations](/reference/resource-configs/duckdb-configs).
+
+### Limitations
+
+The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features available in the `dbt-duckdb` adapter for dbt Core are not yet supported.
+
+**Adapter features not yet supported** &mdash; Track progress in [dbt-fusion#1593](https://github.com/dbt-labs/dbt-fusion/issues/1593):
+- Python models
+- External source reads via `external_location`
+- External materialization
+- Seeds and seed configs (including `+all_varchar`)
+- Plugins, `module_paths`, and custom UDF loading
+- `table_function` materialization
+
+**Current SQL analysis gaps** &mdash; Track progress in [dbt-fusion#1464](https://github.com/dbt-labs/dbt-fusion/issues/1464):
+- Nested types (`LIST`, `MAP`, `STRUCT`)
+- `PIVOT` and `UNPIVOT`
+- `ASOF` and `POSITIONAL` joins
+- Custom types and enums (`CREATE TYPE`, `ENUM`)
+
+#### Static analysis and local flat files
+
+<Constant name="fusion_engine" /> performs static analysis on your SQL models to determine column types and lineage without executing queries. If your models reference local flat files (CSV, Parquet, or JSON) through DuckDB's `read_csv()`, `read_parquet()`, or `read_json()` functions, <Constant name="fusion" /> may not be able to infer the schema of those files at analysis time. As a result, you may see type-resolution warnings or compilation errors even when the query would succeed at runtime.
+
+<!-- TODO: link to concept page for static analysis and discussion page when available -->
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.99">
+
 :::info Community plugin
 
 Some functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
@@ -26,6 +104,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+</VersionBlock>
 
 ## Connecting to DuckDB
 

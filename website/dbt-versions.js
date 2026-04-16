@@ -145,10 +145,8 @@ exports.versionedPages = [
     page: "docs/local/connect-data-platform/dremio-setup",
     lastVersion: "1.99",
   },
-  {
-    page: "docs/local/connect-data-platform/duckdb-setup",
-    lastVersion: "1.99",
-  },
+  // DuckDB is available on both Core (1.x) and Fusion (2.0+)
+
   {
     page: "docs/local/connect-data-platform/exasol-setup",
     lastVersion: "1.99",
