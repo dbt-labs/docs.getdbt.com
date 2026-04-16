@@ -195,36 +195,38 @@ flags:
       - 1600   # NoNodesForSelectionCriteria
       - 1074   # JinjaLogWarning / exceptions.warn()
     silence:
-      - 1088   # Package update available (informational)
+      - 1078   # FreshnessConfigProblem
 ```
 
 A subset of legacy <Constant name="core" /> event names are also accepted as aliases and mapped to their corresponding <Constant name="fusion" /> codes. Any value that is not a recognized numeric code, supported legacy event name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup. This is a deliberate change from <Constant name="core" />, which silently ignored unknown values.
 
 ### Supported legacy dbt-Core event name aliases
 
-The following <Constant name="core" /> event names are recognized by <Constant name="fusion" /> and map to specific <Constant name="fusion" /> warning codes. You can use either the event name or the numeric code in your `warn_error_options` configuration:
+Each row lists a canonical <Constant name="fusion" /> warning code and the legacy <Constant name="core" /> event name that <Constant name="fusion" /> accepts as an alias. You can use either the numeric code or the event name in your `warn_error_options` configuration:
 
-| dbt-Core event name | Fusion code | Description |
+| Fusion code | dbt-Core event name | Description |
 |---|---|---|
-| `NoNodesForSelectionCriteria` | 1600 | `--select` criteria matched no nodes |
-| `NoNodesSelected` | 1601 | No nodes selected |
-| `NothingToDo` | 1601 | No nodes selected (alias) |
-| `NodeNotFoundOrDisabled` | 1087 | A test or exposure dependency references a missing or disabled node |
-| `DeprecatedModel` | 1085 | A model has passed its deprecation date and should be removed |
-| `DeprecatedReference` | 1072 | A reference to a model that has already been deprecated |
-| `UpcomingReferenceDeprecation` | 1073 | A reference to a model that will be deprecated on a future date |
-| `JinjaLogWarning` | 1074 | Jinja `exceptions.warn()` called in a macro |
-| `SnapshotTimestampWarning` | 1075 | Snapshot timestamp column type mismatch |
-| `PackageRedirectDeprecation` | 1076 | A package has been redirected to a new name; update your `packages.yml` |
-| `DepsUnpinned` | 1077 | A git-sourced package uses an unpinned revision (`HEAD`, `main`, or `master`) |
-| `FreshnessConfigProblem` | 1078 | A source has no freshness configuration; freshness check was skipped |
-| `WarnStateTargetEqual` | 1084 | The `--state` and `--target` directories are the same path |
-| `WEOIncludeExcludeDeprecation` | 1086 | Deprecated `include`/`exclude` keys were used in `warn_error_options`; use `error`/`warn` instead |
-| `LogTestResult` | _(no code)_ | A data test result (pass/warn/fail); matched by name only |
+| 1600 | `NoNodesForSelectionCriteria` | `--select` criteria matched no nodes |
+| 1601 | `NoNodesSelected` | No nodes selected |
+| 1601 | `NothingToDo` | No nodes selected (alias) |
+| 1087 | `NodeNotFoundOrDisabled` | A test or exposure dependency references a missing or disabled node |
+| 1085 | `DeprecatedModel` | A model has passed its deprecation date and should be removed |
+| 1072 | `DeprecatedReference` | A reference to a model that has already been deprecated |
+| 1073 | `UpcomingReferenceDeprecation` | A reference to a model that will be deprecated on a future date |
+| 1074 | `JinjaLogWarning` | Jinja `exceptions.warn()` called in a macro |
+| 1075 | `SnapshotTimestampWarning` | Snapshot timestamp column type mismatch |
+| 1076 | `PackageRedirectDeprecation` | A package has been redirected to a new name; update your `packages.yml` |
+| 1077 | `DepsUnpinned` | A git-sourced package uses an unpinned revision (`HEAD`, `main`, or `master`) |
+| 1078 | `FreshnessConfigProblem` | A source has no freshness configuration; freshness check was skipped |
+| 1084 | `WarnStateTargetEqual` | The `--state` and `--target` directories are the same path |
+| 1086 | `WEOIncludeExcludeDeprecation` | Deprecated `include`/`exclude` keys were used in `warn_error_options`; use `error`/`warn` instead |
+| _(no code)_ | `LogTestResult` | A data test result (pass/warn/fail); matched by name only |
 
 ### Unsupported Core event names
 
-When you reference a <Constant name="core" /> event name that <Constant name="fusion" /> will never support, <Constant name="fusion" /> emits a startup warning explaining why and prompts you to remove the entry. These names are recognized but intentionally have no effect in <Constant name="fusion" /> because the underlying behavior has either been removed, replaced, or is enforced unconditionally:
+Only the legacy names in [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) are valid string aliases in <Constant name="fusion" />. There are many other <Constant name="core" /> warning event names; if you put one of those in `warn_error_options`, <Constant name="fusion" /> fails at startup, as described in [Warning codes in Fusion](#warning-codes-in-fusion).
+
+The table below is not a complete list of unsupported names. It only includes Core event names that <Constant name="fusion" /> recognizes by name so it can emit a startup warning explaining why the entry has no effect and prompting you to remove it: the underlying <Constant name="core" /> behavior was removed, replaced, or made unconditional in <Constant name="fusion" />. Many other unsupported Core names are not listed here; they still fail startup validation when used in `warn_error_options`.
 
 | dbt-Core event name | Reason not supported |
 |---|---|
@@ -257,18 +259,6 @@ Some <Constant name="core" /> warning names correspond to behaviors that <Consta
 | `InvalidValueForField` | Field value failures are surfaced as hard parse errors via deserialization | `SerializationError` |
 | `GenericJSONSchemaValidationDeprecation` | JSON schema validation failures are hard parse errors | `SerializationError` |
 | `DuplicateNameDistinctNodeTypesDeprecation` | Caught as a hard error during node resolution | `SchemaError` |
-
-### Fusion-native warnings
-
-<Constant name="fusion" /> introduces warnings with no direct equivalent in <Constant name="core" />. Most of these appear in the [Supported legacy aliases](#supported-legacy-dbt-core-event-name-aliases) table above with their numeric codes. A few additional ones worth calling out:
-
-| Code | Description |
-|---|---|
-| 1703 | A deprecated `static_analysis:` value (`on` or `unsafe`) was used in project config, node config, or CLI args. Alias: `StaticAnalysisDeprecation`. Scheduled removal May 2026 — use `strict` instead. |
-
-**`PackageParsingCompatibility`** — when a dependency package contains YAML that <Constant name="fusion" /> cannot parse (strict key or schema violations that <Constant name="core" /> silently ignored), Fusion emits a rollup warning: *"Package `{name}` issued one or more compatibility warnings."* Subsequent failures from the same package in the same invocation are suppressed unless `--show-all-deprecations` is set. Setting this to `error` in `warn_error_options` bypasses the rollup and produces one hard error per incompatible package. Setting it to `silence` suppresses the message entirely.
-
-**Note:** `DepsNotifyUpdatesAvailable` (newer package version available, previously code 1065) was downgraded to an informational log in <Constant name="fusion" /> (code 1088). It can no longer be promoted to an error via `warn_error_options`.
 
 ### The `StaticAnalysis` warning group
 
