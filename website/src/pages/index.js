@@ -248,8 +248,9 @@ function Home() {
                 <Card
                   title="Answer a question on Discourse"
                   body="Help someone solve a real problem—and build your reputation doing it."
-                  link="/community/forum"
+                  link="https://discourse.getdbt.com/"
                   icon="message"
+                  target="_blank"
                 />
                 <Card
                   title="Webinars"

@@ -16,9 +16,12 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
+For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
+
 ## April 2026
 
 - **Fix:** [`state:modified`](/reference/node-selection/methods#state) now detects changes to [UDF](/docs/build/udfs) properties (such as `arguments` and `returns`) defined in `.yml` files. Previously, only changes to the SQL or Python function body were detected.
+- **Enhancement:** You can now use arrays as values for keys in the <Constant name="dbt_platform" /> extended attributes YAML editor. For example, `db_groups: [db_editor, db_viewer]` is now valid. Previously, array values were only supported using the API. For more information, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
 - **New**: The Redshift adapter now supports a `datasharing` profile credential on the <Constant name="dbt_platform" /> **Latest** release track. When set to `true`, dbt uses Redshift's native `SHOW` commands (for example, `SHOW TABLES`, `SHOW COLUMNS`, `SHOW SCHEMAS`) for metadata queries instead of PostgreSQL catalog tables, enabling cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For more information, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).
 - **Enhancement:** When a connection does not have platform metadata credentials configured yet, the credentials form now renders in edit mode immediately &mdash; you no longer need to click **Add credentials** first. If you cancel, the **Add credentials** button appears so you can return to the form. Existing connections with configured platform metadata credentials are unaffected. Refer to [Configure the warehouse connection](/docs/explore/external-metadata-ingestion#configure-the-warehouse-connection) for more information.
 - **New**: The [dbt Remote dbt MCP server](/docs/dbt-ai/about-mcp?version=2.0) now supports Admin API calls! This allows users to troubleshoot job-related errors in agents like Claude and Cursor.
