@@ -180,46 +180,16 @@ Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because rem
 **Solution:** Ensure the `name`, `data_type`, and number of columns in the contract match the columns in the model’s definition. For details, refer to the [contract docs](/reference/resource-configs/contract).
 </Expandable>
 
-<Expandable alt_header="I got an error and don’t know where it failed">
-**What went wrong:** Debugging slows down if you don’t distinguish whether an error happened during parsing/compilation versus SQL execution.
-
-**Solution:** Use the error type and step mapping in the docs (`Runtime`, `Compilation`, `Dependency`, `Database`) to identify where the failure occurred, then debug accordingly. For details, refer to [Debug errors](/guides/debug-errors#types-of-errors).
-</Expandable>
-
-<Expandable alt_header="I need help debugging this model">
-**What went wrong:** If you don’t inspect the compiled/executed SQL and full logs, you miss the exact query dbt ran and the surrounding context.
-
-**Solution:** Use `target/compiled` (select statements), `target/run` (SQL dbt executes to build models), and `logs/dbt.log` (all queries plus verbose logging; recent errors at the bottom). For details, refer to [How can I see the SQL that dbt is running?](/faqs/Runs/checking-logs), [Events and logs](/reference/events-logging), and [Debug errors](/guides/debug-errors).
-</Expandable>
-
-<Expandable alt_header="My incremental model is creating duplicates">
-**What went wrong:** Without `unique_key`, most adapters use append-only behavior. With a `unique_key` that isn’t truly unique (or contains nulls), incremental runs may fail to match rows and can generate duplicates.
-
-**Solution:** Define `unique_key` to enable updating existing rows instead of just appending, and ensure the key columns do not contain nulls (the docs suggest using `coalesce(...)` or defining a surrogate key). If you’re having issues, double-check the key is truly unique in both the existing table and the new incremental rows. For details, refer to [Defining a unique key](/docs/build/incremental-models#defining-a-unique-key).
-</Expandable>
-
-<Expandable alt_header="My incremental filter isn’t selecting the rows I expect">
-**What went wrong:** `is_incremental()` controls whether incremental-only filtering is applied; if the filter logic is off, you may not be transforming the intended subset of rows on incremental runs.
-
-**Solution:** Implement your incremental-run filter inside an `is_incremental()` block, and ensure the model SQL is valid whether `is_incremental()` evaluates to `True` or `False` (the docs include examples using [`{{ this }}`](/reference/dbt-jinja-functions/this) to filter based on the existing target table). For details, refer to [Understand the is_incremental() macro](/docs/build/incremental-models#understand-the-is_incremental-macro).
-</Expandable>
-
 <Expandable alt_header="My new column isn’t showing up in my incremental model">
-**What went wrong:** With `on_schema_change: ignore` (the default behavior), or if you don’t set `on_schema_change` at all, adding a column to an incremental model and running `dbt run` won’t add that column to the existing target table.
+**What went wrong:** If a model has an enforced contract and is materialized as `incremental`, you must also set `on_schema_change` to `append_new_columns` or `fail`. Otherwise, adding a new column can create a mismatch between the YAML-defined contract and the actual table schema.
 
-**Solution:** Set `on_schema_change` to control how dbt handles schema changes (`fail`, `append_new_columns`, or `sync_all_columns`). Note that none of these options backfill values for old records in newly added columns—if you need that, the docs recommend manual updates or triggering a `--full-refresh`. For details, refer to [What if the columns of my incremental model change?](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) and the contract docs section on [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
+**Solution:** Set `on_schema_change: append_new_columns` (or `fail`) for contracted incremental models. For details, refer to [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
 </Expandable>
 
 <Expandable alt_header="A column disappeared from my incremental model table">
 **What went wrong:** `sync_all_columns` “adds any new columns to the existing table, and removes any columns that are now missing,” so a column can be removed from the target table if it’s missing from the new model query.
 
-**Solution:** Use a non-destructive option like `append_new_columns` when you only want to add columns. For contracted models, the contract docs explain why you should use `append_new_columns` or `fail` rather than `sync_all_columns`. For details, refer to [What if the columns of my incremental model change?](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) and the contract docs section on [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
-</Expandable>
-
-<Expandable alt_header="My SQL changed, but old rows didn’t update">
-**What went wrong:** If incremental model logic changes, new-row transformations can diverge from historical transformations stored in the existing target table.
-
-**Solution:** Rebuild the incremental model from scratch using the `--full-refresh` flag (the docs explain this drops the existing target table before rebuilding). For details, refer to [How do I rebuild an incremental model?](/docs/build/incremental-models#how-do-i-rebuild-an-incremental-model).
+**Solution:** For contracted incremental models, use `append_new_columns` (or `fail`) rather than `sync_all_columns`, because removing existing columns is a breaking change for contracted models. For details, refer to [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
 </Expandable>
 
 <Expandable alt_header="I’m getting a data type mismatch I didn’t expect">
