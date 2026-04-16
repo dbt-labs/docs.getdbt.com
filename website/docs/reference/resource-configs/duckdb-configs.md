@@ -6,7 +6,7 @@ id: "duckdb-configs"
 
 ## Profile
 
-<Constant name="cloud" /> users don't have to create their own profiles.yml file. dbt-duckdb [profiles](/docs/core/connect-data-platform/duckdb-setup#connecting-to-duckdb-with-dbt-duckdb) should be set up as follows:
+<Constant name="dbt" /> users don't have to create their own profiles.yml file. dbt-duckdb [profiles](/docs/local/connect-data-platform/duckdb-setup#connecting-to-duckdb-with-dbt-duckdb) should be set up as follows:
 
 ```yml
 your_profile_name:
@@ -24,9 +24,9 @@ your_profile_name:
         s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
 ```
 
-This will run your dbt-duckdb pipeline against an in-memory [DuckDB](https://www.duckdb.org) database that will not be persisted after your run completes.
+This will run your dbt-duckdb pipeline against the [DuckDB](https://www.duckdb.org) file at the specified `path`, persisting relations across runs.
 
-To have your dbt pipeline persist relations in a DuckDB file, set the path field in your profile to the path of the DuckDB file that you would like to read and write on your local filesystem. (If the path is not specified, the path is automatically set to the special value `:memory:` and the database will run in-memory, without persistence).
+Omitting the `path` field sets it to `:memory:`, which means the database runs in-memory and all data is lost after your run completes. This means all relations disappear after your run completes and nothing is saved.
 
 
 `dbt-duckdb` adds the `database` property: its value is automatically set to the basename of the file in the path argument with the suffix removed. For example, if the path is `/tmp/a/dbfile.duckdb`, the `database` field will be set to `dbfile`.

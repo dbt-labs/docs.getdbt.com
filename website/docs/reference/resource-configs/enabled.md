@@ -14,6 +14,7 @@ default_value: true
     { label: 'Tests', value: 'tests', },
     { label: 'Unit tests', value: 'unit tests', },
     { label: 'Sources', value: 'sources', },
+    { label: 'Analyses', value: 'analyses', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
@@ -220,6 +221,35 @@ sources:
 
 </TabItem>
 
+<TabItem value="analyses">
+
+<File name='analyses/<filename>.yml'>
+
+```yaml
+analyses:
+  - name: <analysis_name>
+    config:
+      enabled: true | false
+```
+
+</File>
+
+To configure analyses at the project level, set the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) flag to `true` in your `dbt_project.yml`.
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_corrected_analysis_fqns: true
+
+analyses:
+  +enabled: true | false
+```
+
+</File>
+
+</TabItem>
+
 <TabItem value="metrics">
 
 <File name='dbt_project.yml'>
@@ -284,7 +314,7 @@ semantic-models:
 
 </File>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 <File name='models/semantic_models.yml'>
 
 ```yaml
@@ -297,7 +327,7 @@ semantic_models:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 <File name='models/file_name.yml'>
 
 ```yaml

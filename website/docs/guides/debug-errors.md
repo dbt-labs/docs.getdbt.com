@@ -22,7 +22,7 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/compiled` directory contains `select` statements that you can run in any query editor.
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
-    - **<Constant name="cloud" /> users**: Use the above, or the `Details` tab in the command output.
+    - **<Constant name="dbt" /> users**: Use the above, or the `Details` tab in the command output.
     - **<Constant name="core" /> users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](/community/resources/getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
 
@@ -39,7 +39,7 @@ Below, we've listed some of common errors. It's useful to understand what dbt is
 Let's dive into some of these errors and how to debug 👇. Note: not all errors are covered here!
 
 ## Runtime Errors
-_Note: If you're using the <Constant name="cloud_ide" /> to work on your project, you're unlikely to encounter these errors._
+_Note: If you're using the <Constant name="studio_ide" /> to work on your project, you're unlikely to encounter these errors._
 
 ### Not a dbt project
 
@@ -107,7 +107,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/core/connect-data-platform/profiles.yml)
+  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/local/profiles.yml)
 
 
 </details>
@@ -189,7 +189,7 @@ hello: world # this is not allowed
 
 ## Compilation Errors
 
-_Note: if you're using the <Constant name="cloud_ide" /> to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For <Constant name="core" /> users, these won't get picked up until you run `dbt run` or `dbt compile`._
+_Note: if you're using the <Constant name="studio_ide" /> to work on your dbt project, this error often shows as a red bar in your command prompt as you work on your dbt project. For <Constant name="core" /> users, these won't get picked up until you run `dbt run` or `dbt compile`._
 
 
 ### Invalid `ref` function
@@ -343,10 +343,10 @@ Database Error in model customers (models/customers.sql)
 
 90% of the time, there's a mistake in the SQL of your model. To fix this:
 1. Open the offending file:
-    - **<Constant name="cloud" />:** Open the model (in this case `models/customers.sql` as per the error message)
+    - **<Constant name="dbt" />:** Open the model (in this case `models/customers.sql` as per the error message)
     - **<Constant name="core" />:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
-    - **<Constant name="cloud" />:** Use the `Preview` button from the model file
+    - **<Constant name="dbt" />:** Use the `Preview` button from the model file
     - **<Constant name="core" />:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
 3. Fix the mistake.
 4. Rerun the failed model.
@@ -358,7 +358,7 @@ In some cases, these errors might occur as a result of queries that dbt runs "be
 - For incremental models, and snapshots: merge, update and insert statements
 
 In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
-- **<Constant name="cloud" />**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
+- **<Constant name="dbt" />**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
 - **<Constant name="core" />**: Open the `logs/dbt.log` file.
 
 :::tip Isolating errors in the logs
@@ -369,7 +369,7 @@ If you're hitting a strange `Database Error`, it can be a good idea to clean out
 ## Common pitfalls
 
 ### `Preview` vs. `dbt run`
-_(<Constant name="cloud_ide" /> users only)_
+_(<Constant name="studio_ide" /> users only)_
 
 There's two interfaces that look similar:
 - The `Preview` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
@@ -379,7 +379,7 @@ Using the `Preview` button is useful when developing models and you want to visu
 
 
 ### Forgetting to save files before running
-We've all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the <Constant name="cloud_ide" />, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
+We've all been there. dbt uses the last-saved version of a file when you execute a command. In most code editors, and in the <Constant name="studio_ide" />, a dot next to a filename indicates that a file has unsaved changes. Make sure you hit `cmd + s` (or equivalent) before running any dbt commands — over time it becomes muscle memory.
 
 ### Editing compiled files
 _(More likely for <Constant name="core" /> users)_

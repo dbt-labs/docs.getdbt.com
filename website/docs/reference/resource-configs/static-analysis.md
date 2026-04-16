@@ -65,7 +65,9 @@ from {{ ref('my_model') }}
 
 ## Definition
 
-You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [rendering strategies](/docs/fusion/new-concepts#rendering-strategies) for more information on how the <Constant name="fusion_engine" /> renders models.
+You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
+
+Setting a model to `strict` does not automatically set `strict` for downstream models; they keep the project default unless you configure them explicitly. For more information and examples, refer to [strict mode inheritance](/docs/fusion/new-concepts#strict-mode-inheritance).
 
 The following values are available for `static_analysis`:
 
@@ -79,7 +81,40 @@ The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use
 
 :::
 
-A model is _only_ eligible for static analysis if all of its parents are also eligible.
+### User-defined functions (UDFs) in `strict` mode
+
+When `static_analysis: strict` is in effect, the <Constant name="fusion_engine" /> parses `CREATE FUNCTION` statements from [`sql_header`](/reference/resource-configs/sql_header) and from [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) project hooks, registers those UDFs in the compiler registry, and makes them available during strict static compilation. The `baseline` and `off` modes don't perform this UDF registration for static analysis.
+
+A model’s `sql_header` can include multiple statements. <Constant name="fusion" /> registers UDFs from `CREATE FUNCTION` statements and ignores other statements for this step.
+
+If strict analysis still cannot resolve a UDF, set [`static_analysis: off`](/reference/resource-configs/static-analysis#disable-static-analysis-in-sql-for-a-model-using-a-custom-udf) on the affected models.
+
+### How static analysis modes cascade
+
+Two rules determine how `static_analysis` modes apply in a lineage:
+- Eligibility rule: A model is eligible for static analysis only if all of its "parents" are eligible (by parents, we mean the models that are upstream of the current model in the lineage).
+- Strictness rule: A "child" model cannot be stricter than its parent (by child, we mean the models that are downstream of the current model in the lineage).
+
+The static analysis configuration cascades from most strict to least strict. Here's the strictness hierarchy:
+`strict` → `baseline` → `off`
+
+**Allowed downstream by parent mode**<br /> 
+When going downstream in your lineage, you can keep the same mode or relax it; but you cannot make a child stricter than its parent. The following table shows the allowed downstream modes by parent mode:
+
+<SimpleTable>
+| Parent mode | Child can be |
+|-------------|--------------|
+| `strict`    | `strict`, `baseline`, or `off` |
+| `baseline`  | `baseline` or `off` (not `strict`) |
+| `off`       | `off` only |
+</SimpleTable>
+
+For example, for the lineage Model A → Model B → Model C:
+
+- If Model A is `baseline`, you _cannot_ set Model B to `strict`
+- If Model A is `strict`, you _can_ set Model B to `baseline`
+
+This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements.
 
 Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/fusion/new-concepts). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
 

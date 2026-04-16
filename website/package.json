@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "prestart": "npm run prepare",
+    "prestart": "npm run prepare && node scripts/fetch-mcp-readme-tools.js",
     "start": "docusaurus start",
+    "prebuild": "node scripts/fetch-mcp-readme-tools.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
@@ -11,6 +12,7 @@
     "cleanup-duplicates": "node scripts/cleanup_duplicate_constants.js"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^6.27.1",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/faster": "^3.7.0",
     "@docusaurus/plugin-ideal-image": "^3.7.0",
@@ -78,6 +80,7 @@
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
+    "jest-environment-jsdom": "^30.3.0",
     "lint-staged": "^13.1.2",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
@@ -94,11 +97,16 @@
       "^.+\\.(js|jsx)$": "@swc/jest"
     },
     "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "url": "http://localhost/"
+    },
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.js"
     ],
     "moduleNameMapper": {
-      "\\.css$": "<rootDir>/static/css/__mocks__/styleMock.js"
+      "\\.css$": "<rootDir>/static/css/__mocks__/styleMock.js",
+      "^@docusaurus/router$": "<rootDir>/src/__mocks__/@docusaurus/router.js",
+      "^@docusaurus/useGlobalData$": "<rootDir>/src/__mocks__/@docusaurus/useGlobalData.js"
     }
   },
   "version": "0.0.0",

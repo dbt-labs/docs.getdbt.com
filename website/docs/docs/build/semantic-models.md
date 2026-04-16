@@ -15,7 +15,7 @@ import CopilotBeta from '/snippets/_dbt-copilot-avail.md';
 
 Semantic models are the foundation for data definition in MetricFlow, which powers the <Constant name="semantic_layer" />:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 - Think of semantic models as nodes connected by entities in a semantic graph.
 - MetricFlow uses YAML configuration files to create this graph for querying metrics.
@@ -27,7 +27,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 - Think of semantic models as nodes connected by entities in a semantic graph. You can configure this graph by making metadata annotations on your dbt models to describe their usage in metric calculations. 
 - MetricFlow uses YAML configuration files to create this graph for querying metrics.
@@ -43,7 +43,7 @@ import SLCourses from '/snippets/\_sl-course.md';
 
 Here we describe the Semantic model components with examples:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 | Component    | Description      | Required     |  Type     | 
 | ------------ | ---------------- | -------- | -------- | 
@@ -59,12 +59,11 @@ Here we describe the Semantic model components with examples:
 | `config`   | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configs. | Optional | Dict |
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 | Component    | Description      | Required     |  Type     | 
 | ------------ | ---------------- | -------- | -------- | 
 | [Name](#name)     | Choose a name for the semantic model. Avoid using double underscores (\_\_) in the name as they're not supported. Defaults to value of the model name.  | Optional | String |
-| [Description](#description)    | 	Includes important details in the description.   | Optional | String |
 | [Time dimension](#time-dimension) | Only `agg_time_dimension` is supported.    | Required |  Dict |
 | [Entities](#entities)         | Define entities at the column level. For any column that serves as a join key, add an entity block under the column with `type` set to primary, foreign, unique, or natural. Optionally include name, description, label, config, or use expr when the join key differs from the column. | Required | List | 
 | [Primary Entity](#primary-entity) | If a column declares an entity with `type: primary`, you don’t need `primary_entity`. If no column is primary, set the top-level `primary_entity` to name the model’s primary entity. | Optional | String | 
@@ -81,7 +80,7 @@ Here we describe the Semantic model components with examples:
 
 The complete spec for semantic models is below:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 semantic_models:
@@ -103,7 +102,7 @@ semantic_models:
 You can refer to the [best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) for more info on project structuring.
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -111,9 +110,8 @@ models:
     semantic_model:
       enabled: true
       name: the_name_of_the_semantic_model # Optional: semantic model name, defaults to model name
-      description: same as always # Optional
-    
-    agg_time_dimension: dimension_name # Required 
+
+    agg_time_dimension: dimension_name # Required
 
     # Entities, dimensions defined at column level
     columns:
@@ -145,7 +143,7 @@ models:
 
 The following example displays a complete configuration and detailed descriptions of each field:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 semantic_models:
@@ -204,7 +202,7 @@ semantic_models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -277,7 +275,7 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) [`config`](/reference/resource-properties/config) property in either the schema file or at the project level:
 
@@ -309,7 +307,7 @@ For more information on `dbt_project.yml` and config naming conventions, see the
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) [`config`](/reference/resource-properties/config) property in the schema file: <!--check if project level is still supported-->
 
@@ -326,70 +324,70 @@ models:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ### Name
 
 Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time. Avoid using double underscores (\_\_) in the name as they're not supported.
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ### Name
 
 Define the name of the semantic model. If not provided, this defaults to the value of the model name. Avoid using double underscores (\_\_) in the name as they're not supported.
 </VersionBlock>
 
+<VersionBlock lastVersion="1.11">
+
 ### Description
 
 Includes important details of the semantic model. This description will primarily be used by other configuration contributors. You can use the pipe operator `(|)` to include multiple lines in the description.
-
-<VersionBlock lastVersion="1.99">
 
 ### Model
 
 Specify the dbt model for the semantic model using the [`ref` function](/reference/dbt-jinja-functions/ref).
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ### Defaults
 
 Defaults for the semantic model. Currently only `agg_time_dimension`. `agg_time_dimension` represents the default time dimensions for measures. This can be overridden by adding the `agg_time_dimension` key directly to a measure - see [Dimensions](/docs/build/dimensions) for examples.
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ### Time dimension
 
 `agg_time_dimension` represents the default time dimensions for simple metrics. This can be overridden by adding the `agg_time_dimension` key directly to a simple metric - see [Dimensions](/docs/build/dimensions) for examples.
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ### Entities
 
 To specify the [entities](/docs/build/entities) in your model, use their columns as join keys and indicate their `type` as primary, foreign, or unique keys with the type parameter.
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ### Entities
 
-To specify the [entities](/docs/build/entities) in your mode, add an `entity` block at the column level with `type` set to primary, foreign, unique, or natural. Optionally, provide `name` and `expr` when the join key’s name differs from the column.
+To specify the [entities](/docs/build/entities) in your model, add an `entity` block at the column level with `type` set to primary, foreign, unique, or natural. Optionally, provide `name` and `expr` when the join key’s name differs from the column.
 
 </VersionBlock>
 
 
 ### Primary entity
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 MetricFlow requires that all dimensions be tied to an entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity: entity_name` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 MetricFlow requires that all dimensions be tied to an entity to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity under the column that serves as the key by adding `type: primary`. If no column is marked as primary, set a top-level `primary_entity` to name the model’s primary entity. The primary entity doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation.
 
@@ -397,7 +395,7 @@ MetricFlow requires that all dimensions be tied to an entity to guarantee unique
 
 You can define a primary entity using the following configs:
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ```yaml
 semantic_model:
@@ -415,7 +413,7 @@ semantic_model:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ```yaml
 models:
@@ -487,7 +485,7 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 [Dimensions](/docs/build/dimensions) are different ways to organize or look at data. They are effectively the group by parameters for metrics. For example, you might group data by things like region, country, or job title.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 MetricFlow takes a dynamic approach when making dimensions available for metrics. Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the dimensions you need and constructs any joins necessary to reach the requested dimensions at query time. The advantage of this approach is that you don't need to set up a system that pre-materializes every possible way to group data, which can be time-consuming and prone to errors. Instead, you define the dimensions (group by parameters) you're interested in within the semantic model, and they will automatically be made available for valid metrics.
 
@@ -505,7 +503,7 @@ For semantic models with a measure, you must have a [primary time group](/docs/b
 </VersionBlock>
 
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 MetricFlow takes a dynamic approach when making dimensions available for metrics. Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the dimensions you need and constructs any joins necessary to reach the requested dimensions at query time. The advantage of this approach is that you don't need to set up a system that pre-materializes every possible way to group data, which can be time-consuming and prone to errors. Instead, you define dimensions within the semantic model by nesting them under columns, and they will automatically be made available for valid metrics.
 
@@ -521,7 +519,7 @@ For semantic models that define metrics, include at least one time dimension col
 :::
 </VersionBlock>
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 ### Measures
 
@@ -535,7 +533,7 @@ import MeasuresParameters from '/snippets/\_sl-measures-parameters.md';
 
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 ### `derived_semantics` in dimensions and entities
 
@@ -555,7 +553,7 @@ import SetUpPages from '/snippets/\_metrics-dependencies.md';
 
 ## Related docs
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock lastVersion="1.11">
 
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Dimensions](/docs/build/dimensions)
@@ -564,7 +562,7 @@ import SetUpPages from '/snippets/\_metrics-dependencies.md';
 - [<Constant name="semantic_layer" /> best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro)
 </VersionBlock>
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Dimensions](/docs/build/dimensions)

@@ -13,11 +13,11 @@ import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
 
 <SetUpPages features={'/snippets/_available-tiers-iprestrictions.md'}/>
 
-IP restrictions help control which IP addresses can connect to <Constant name="cloud" />. They allow <Constant name="cloud" /> customers to meet security and compliance controls by only allowing approved IPs to connect to their <Constant name="cloud" /> environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
+IP restrictions help control which IP addresses can connect to <Constant name="dbt" />. They allow <Constant name="dbt" /> customers to meet security and compliance controls by only allowing approved IPs to connect to their <Constant name="dbt" /> environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
 
 ## Configuring IP restrictions
 
-To configure IP restrictions, go to **Account Settings** → **IP Restrictions**. IP restrictions provide two methods for determining which IPs can access <Constant name="cloud" />: an allowlist and a blocklist. IPs in the allowlist can access <Constant name="cloud" />, and IPs in the blocklist are blocked from accessing <Constant name="cloud" />. You can use IP restrictions for a range of use cases, including:
+To configure IP restrictions, go to **Account Settings** → **IP Restrictions**. IP restrictions provide two methods for determining which IPs can access <Constant name="dbt" />: an allowlist and a blocklist. IPs in the allowlist can access <Constant name="dbt" />, and IPs in the blocklist are blocked from accessing <Constant name="dbt" />. You can use IP restrictions for a range of use cases, including:
 
 - Allow only corporate VPN traffic and deny all other traffic
 - Deny IPs flagged by the security team
@@ -25,7 +25,7 @@ To configure IP restrictions, go to **Account Settings** → **IP Restrictions**
 
 IP restrictions block all service tokens, user requests made through the API (using personal user tokens), and the UI if they come from blocked IP addresses.
 
-For any version control system integrations (GitHub, GitLab, ADO, and others) inbound into <Constant name="cloud" />, ensure you add their IP addresses to the allowed list.
+For any version control system integrations (GitHub, GitLab, ADO, and others) inbound into <Constant name="dbt" />, ensure you add their IP addresses to the allowed list.
 
 ### Allowing IPs
 
@@ -45,7 +45,7 @@ Add multiple IP ranges by clicking the **Add IP range** button to create a new t
 
 Simply adding the IP ranges does not enforce IP restrictions. For more information, refer to the [Enabling restrictions](#enabling-restrictions) section.
 
-If you only want to allow the IP ranges added to this list and deny all other requests, you don't need to add a blocklist. By default, if you only add an allowlist, <Constant name="cloud" /> only allows IPs in the allowable range and denies all other IPs. However, you can add a blocklist if you want to deny specific IP addresses within your allowlist CIDR range.
+If you only want to allow the IP ranges added to this list and deny all other requests, you don't need to add a blocklist. By default, if you only add an allowlist, <Constant name="dbt" /> only allows IPs in the allowable range and denies all other IPs. However, you can add a blocklist if you want to deny specific IP addresses within your allowlist CIDR range.
 
 ### Blocking IPs (deny)
 
@@ -73,7 +73,7 @@ You can put an IP range on one list and then a sub-range or IP address that is p
 
 Once you finish adding all your ranges, you can enable IP restrictions by selecting **Enable IP restrictions** and clicking **Save**. If your IP address is in any of the blocklist ranges, you can't save or enable IP restrictions &mdash; this prevents accidental account lockouts. If you get locked out due to IP changes on your end, reach out to support@getdbt.com.
 
-Once enabled, when someone attempts to access <Constant name="cloud" /> from a restricted IP, they encounter one of the following messages depending on whether they use email and password or SSO login:
+Once enabled, when someone attempts to access <Constant name="dbt" /> from a restricted IP, they encounter one of the following messages depending on whether they use email and password or SSO login:
 
 - For email logins: "Access denied! Please contact your admin for more details."
 - For SSO logins: "Access denied! Please contact your admin for more details." on a dbt login page
