@@ -497,3 +497,5 @@ The **Single sign-on** section also contains additional configuration options wh
 ### Setting up RBAC
 
 After configuring an identity provider, you will be able to set up [role-based access control](/docs/cloud/manage-access/enterprise-permissions) for your account.
+
+For common questions and troubleshooting — including "Access Denied" after SAML authentication, ACS URL or Entity ID changes, and email verification issues — refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
