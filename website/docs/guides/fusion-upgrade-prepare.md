@@ -41,6 +41,54 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 :::
 
+## Enable Fusion readiness features
+
+Before your team can view <Constant name="fusion" /> readiness status or access the upgrade assistant, an account admin must enable the Fusion readiness experience in your account settings. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
+
+:::info Admin action required
+
+This step requires account admin-level access in <Constant name="dbt_platform" />.
+
+:::
+
+### Step 1: Enable the readiness toggle
+
+1. Click your account name in the left sidebar and select **Account settings**.
+2. Navigate to the **Account** screen and click **Edit**.
+3. Scroll to the **Fusion** section and click the checkbox next to **Enable Fusion readiness & upgrade features**.
+4. Click **Save**.
+
+Once enabled:
+- All admins and developers can see each project's Fusion readiness status, including which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
+- Admins can initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing permissions).
+
+### Step 2: Restrict upgrade access (optional)
+
+By default, any user who can see the upgrade assistant can use it to initiate an upgrade. To limit upgrade execution to designated users, you can enable an additional access control toggle.
+
+:::note Enterprise only
+
+The **Enable restricted Fusion upgrade permissions** toggle is only available to Enterprise accounts that have been granted this entitlement. Contact your account manager if you need this capability.
+
+:::
+
+1. In the same **Account** settings screen, click the checkbox next to **Enable restricted Fusion upgrade permissions**.
+2. Click **Save**.
+
+When enabled, only users assigned the **Fusion admin** permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, see [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+
+### Using the Fusion readiness panel
+
+With the readiness experience enabled, you can monitor your project's eligibility as you work through the preparation steps below. The panel shows which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
+
+Common ineligibility reasons include:
+- Jobs not on the **Latest** release track
+- Unresolved deprecation warnings
+- Packages incompatible with <Constant name="fusion" />
+- Jobs that haven't run in the last 7 days or have recent failures
+
+As you complete the steps in this guide, check the readiness panel to see your eligibility improve.
+
 ## Upgrade to the latest dbt Core version
 
 Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/cloud-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
