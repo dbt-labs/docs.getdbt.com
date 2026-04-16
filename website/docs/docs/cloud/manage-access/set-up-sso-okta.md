@@ -195,6 +195,10 @@ Now you have completed setting up SSO with Okta, the next steps will be to set u
 Now that you've set up SSO with Okta, you can [set up SCIM](/docs/cloud/manage-access/scim-okta) to automate user and group provisioning (and license assignment for Okta).
 :::
 
+## FAQ and troubleshooting
+
+For common questions and troubleshooting guidance — including issues with email verification, MFA prompts, and SSO group mapping behavior — refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+
 ## Learn more
 
 <WistiaVideo id="xtmk0rrk5k" paddingTweak="62.25%" />
