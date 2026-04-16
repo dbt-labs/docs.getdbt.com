@@ -87,7 +87,7 @@ Use the [debug](/reference/dbt-jinja-functions/debug-method) command to validate
 
 ## Understanding targets in profiles
 
-dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt environments](/docs/core/dbt-core-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt environments](/docs/local/dbt-core-environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 
@@ -175,7 +175,7 @@ For more information, check out [using threads](/docs/running-a-dbt-project/usin
 2. Project root directory
 3. `~/.dbt/` directory
 
-Note that <Constant name="fusion"/> doesn't currently support the `DBT_PROFILES_DIR` environment variable or setting the `profiles.yml` in the current working directory. 
+Note that <Constant name="fusion"/> doesn't currently support the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or setting the `profiles.yml` in the current working directory. 
 
 </TabItem>
 <TabItem value="core" label="dbt Core">
@@ -183,7 +183,7 @@ Note that <Constant name="fusion"/> doesn't currently support the `DBT_PROFILES_
 <Constant name="core"/> determines the parent directory for `profiles.yml` using the following precedence:
 
 1. `--profiles-dir` option
-2. `DBT_PROFILES_DIR` environment variable
+2. <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable
 3. current working directory
 4. `~/.dbt/` directory
 
@@ -214,12 +214,25 @@ $ dbt run --profiles-dir path/to/directory
 
 If using this method, the `--profiles-dir` option needs to be provided every time you run a dbt command.
 
-### 2. Use the `DBT_PROFILES_DIR` environment variable to change the default location (dbt Core only)
+### 2. Use the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable to change the default location (dbt Core only)
 
 Setting this environment variable tells <Constant name="core" /> to look for your `profiles.yml` file in the specified directory instead of the default location. You can specify this by running:
+
+<VersionBlock lastVersion="1.10">
+
 ```
 $ export DBT_PROFILES_DIR=path/to/directory
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```
+$ export DBT_ENGINE_PROFILES_DIR=path/to/directory
+```
+
+</VersionBlock>
 
 Note: This environment variable isn't supported in <Constant name="fusion"/>.
 

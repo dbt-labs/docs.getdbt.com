@@ -22,8 +22,8 @@ This guide will demonstrate how to build a data lakehouse with <Constant name="c
 
 * You must have a [Dremio Cloud](https://docs.dremio.com/cloud/) account.
 * You must have Python 3 installed.
-* You must have <Constant name="core" /> v1.5 or newer [installed](//docs/core/installation-overview). 
-* You must have the Dremio adapter 1.5.0 or newer [installed and configured](/docs/core/connect-data-platform/dremio-setup) for Dremio Cloud.
+* You must have <Constant name="core" /> v1.5 or newer [installed](//docs/local/install-dbt). 
+* You must have the Dremio adapter 1.5.0 or newer [installed and configured](/docs/local/connect-data-platform/dremio-setup) for Dremio Cloud.
 * You must have basic working knowledge of <Constant name="git" /> and the command line interface (CLI).
 
 ## Validate your environment 
@@ -57,7 +57,7 @@ Plugins:
 
 1. Clone the Dremio <Constant name="core" /> sample project from the [GitHub repo](https://github.com/dremio-brock/DremioDBTSample/tree/master/dremioSamples).
 
-2. In your integrated development environment (<Constant name="cloud_ide" />), open the relation.py file in the Dremio adapter directory:
+2. In your integrated development environment (<Constant name="studio_ide" />), open the relation.py file in the Dremio adapter directory:
   `$HOME/Library/Python/3.9/lib/python/site-packages/dbt/adapters/dremio/relation.py`
 
 3. Find and update lines 51 and 52 to match the following syntax:
@@ -143,7 +143,7 @@ dremioSamples:
 
 ```
 
-Now that you have a running environment and a completed job, you can view the data in Dremio and expand your code. This is a snapshot of the project structure in an <Constant name="cloud_ide" />:
+Now that you have a running environment and a completed job, you can view the data in Dremio and expand your code. This is a snapshot of the project structure in an <Constant name="studio_ide" />:
 
 <Lightbox src="/img/guides/dremio/dremio-cloned-repo.png" title="Cloned repo in an IDE"/>
 

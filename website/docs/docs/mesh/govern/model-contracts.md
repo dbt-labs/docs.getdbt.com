@@ -80,99 +80,9 @@ When building a model with a defined contract, dbt will do two things differentl
 
 ## Platform constraint support
 
-Select the adapter-specific tab for more information on [constraint](/reference/resource-properties/constraints) support across platforms. Constraints fall into three categories based on definability and platform enforcement:
+import ConstraintsTable from '/snippets/_constraints-table.md'; 
 
-- **Definable and enforced** &mdash; The model won't build if it violates the constraint.
-- **Definable and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if building the model violates the constraint. This constraint exists for metadata purposes only. This approach is more typical in cloud data warehouses than in transactional databases, where strict rule enforcement is more common.
-- **Not definable and not enforced** &mdash; You can't specify the type of constraint for the platform.
-
-
-
-<Tabs>
-
-<TabItem value="Redshift" label="Redshift">
-
-| Constraint type | Definable       | Enforced         |
-|:----------------|:-------------:|:------------------:|
-| not_null        | ✅ | ✅ |
-| primary_key     | ✅ | ❌ |
-| foreign_key     | ✅ | ❌ |
-| unique          | ✅ | ❌ |
-| check           | ❌ | ❌ |
-
-</TabItem>
-<TabItem value="Snowflake" label="Snowflake">
-
-| Constraint type | Definable     | Enforced |
-|:----------------|:-------------:|:---------------------:|
-| not_null        | ✅  | ✅ |
-| primary_key     | ✅  | ❌ |
-| foreign_key     | ✅  | ❌ |
-| unique          | ✅  | ❌ |
-| check           | ❌  | ❌ |
-
-</TabItem>
-<TabItem value="BigQuery" label="BigQuery">
-
-| Constraint type | Definable     | Enforced |
-|:-----------------|:-------------:|:---------------------:|
-| not_null        | ✅ | ✅  |
-| primary_key     | ✅ | ❌  |
-| foreign_key     | ✅ | ❌  |
-| unique          | ❌ | ❌  |
-| check           | ❌ | ❌  |
-
-</TabItem>
-<TabItem value="Postgres" label="Postgres">
-
-| Constraint type | Definable     | Enforced |
-|:----------------|:-------------:|:--------------------:|
-| not_null        | ✅  |	✅  |
-| primary_key     | ✅  |	✅  |
-| foreign_key     | ✅  |	✅  |
-| unique          | ✅  |	✅  |
-| check           | ✅  |	✅  |
-
-</TabItem>
-<TabItem value="Spark" label="Spark">
-
-Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the _model contract_ since they can't be enforced at build time. This table will change as the features evolve.
-
-| Constraint type | Definable    | Enforced |
-|:----------------|:------------:|:---------------------:|
-| not_null        |	✅  | ❌ |
-| primary_key     |	✅  | ❌ |
-| foreign_key     |	✅  | ❌ |
-| unique          |	✅  | ❌ |
-| check           |	✅  | ❌ |
-
-</TabItem>
-<TabItem value="Databricks" label="Databricks">
-
-Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the _model contract_ since they can't be enforced at build time. This table will change as the features evolve.
-
-| Constraint type | Definable     | Enforced |
-|:----------------|:-------------:|:---------------------:|
-| not_null        |	✅  | ✅ |
-| primary_key     | ✅  | ❌ |
-| foreign_key     |	✅  | ❌ |
-| unique          |	❌  | ❌ |
-| check           |	✅  | ✅ |
-
-</TabItem>
-<TabItem value="Athena" label="Athena">
-
-| Constraint type | Definable     | Enforced |
-|:----------------|:-------------:|:---------------------:|
-| not_null        |	❌  | ❌ |
-| primary_key     | ❌  | ❌ |
-| foreign_key     |	❌  | ❌ |
-| unique          |	❌  | ❌ |
-| check           |	❌  | ❌ |
-
-</TabItem>
-</Tabs>
-
+<ConstraintsTable />
 
 ## FAQs
 
@@ -197,10 +107,9 @@ In some cases, you can replace a data test with its equivalent constraint. This 
 
 ### Do I need to define every column for a contract?
 
-Currently, dbt contracts apply to **all** columns defined in a model, and they require declaring explicit expectations about **all** of those columns. The explicit declaration of a contract is not an accident—it's very much the intent of this feature.
+Yes. dbt contracts apply to _all_ columns defined in a model, and they require declaring explicit expectations about _all_ of those columns. The explicit declaration of a contract is not an accident &mdash; it's very much the intent of this feature.
 
-At the same time, for models with many columns, we understand that this can mean a _lot_ of yaml. We are investigating the feasibility of supporting "inferred" contracts. This would enable you to define constraints and strict data typing for a subset of columns, while still detecting breaking changes on other columns by comparing against the same model in production. This isn't the same as a "partial" contract, because all columns in the model are still checked at runtime, and matched up with what's defined _explicitly_ in your yaml contract or _implicitly_ with the comparison state. If you're interested in "inferred" contract, please upvote or comment on [<Constant name="core" />#7432](https://github.com/dbt-labs/dbt-core/issues/7432).
-
+At the same time, for models with many columns, we understand that this can mean a _lot_ of YAML. See [dbt-core#11764](https://github.com/dbt-labs/dbt-core/issues/11764) for discussion of potential approaches to generate and update model contract definitions.
 
 ### How are breaking changes handled?
 

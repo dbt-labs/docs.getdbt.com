@@ -7,9 +7,23 @@ pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. You assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and can reuse those profiles in other deployment environments within the same project.
+<IntroText>
+<Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. 
+</IntroText>
 
-Because of the unique configurations and individual credentials applied, profiles don't apply to development environments.
+Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](/dbt-cloud/api-v3#/operations/List%20Profiles).
+
+## Environment profiles table
+
+On an environment's **Settings** page, the **Connection profiles** section lists the profiles assigned to that environment:
+
+- **Profile name**: Click a profile name to open the view/edit drawer. In view mode, there’s no separate action column, so use the profile name to open and view a profile.
+- **Connection**: Click the connection to open the [connection details](/docs/cloud/connect-data-platform/about-connections#connection-management) page in a new tab.
+- **Edit mode**: Click **Edit** to switch to edit mode. Use the **swap icon** <img src="/img/docs/deploy/swap-icon.png" alt="Swap icon" style={{ verticalAlign: 'middle', height: '1em' }} /> next to a profile row to assign a different profile.
+
+### Considerations
+- Profiles don't apply to development environments because of the unique configurations and individual credentials applied.
+- The <Constant name="semantic_layer" /> configuration isn't supported with profiles yet. 
 
 ## Create a profile
 
@@ -33,16 +47,18 @@ To create a new profile:
 
 <Lightbox src="/img/docs/dbt-cloud/profile-from-project.png" width="60%" title="Creating a profile from project settings." />
 
-
 </TabItem>
 
 <TabItem value="From environment settings" >
 
 1. From the main menu, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
-3. Click **Settings**, then click **Edit**.
-4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
-5. Click the **Profile** dropdown and select **Create new profile**.
+3. Click **Settings**.
+4. Click **Edit** to switch to edit mode, then scroll to the **Connection profiles** section.
+5. Click the **swap icon** <img src="/img/docs/deploy/swap-icon.png" alt="Swap icon" style={{ verticalAlign: 'middle', height: '1em' }} /> next to the profile row you want to change.
+6. Select **Add new profile** from the **Profile** dropdown.
+7. Click **Create profile**.
+8. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/profile-from-environment.png" width="60%" title="Creating a profile from the environment settings." />
 
@@ -59,7 +75,9 @@ The following steps are the same regardless of which approach you take:
     - Has no consecutive dashes or underscores
 2. From **Connection details**, select a connection from the list of available [global connections](/docs/cloud/connect-data-platform/about-connections#connection-management) or add a new connection. 
 3. Configure the **Deployment credentials** for your warehouse connection.
-4. Add any [**Extended attributes**](/docs/dbt-cloud-environments#extended-attributes) you need.
+4. Add any [**Extended attributes**](/docs/dbt-cloud-environments#extended-attributes) you need. If you use [`env_var()`](/reference/dbt-jinja-functions/env_var) in Extended Attributes, the referenced environment variables must be _project-scoped_ in order to work with connection tests. Since profiles are environment-agnostic, environment-scoped variables are not available during connection tests.
+
+   To set a project-scoped variable, go to **Orchestration** > **Environments** > **Environment variables**, and enter a value in the **Project default** column. Learn more in [environment variables](/docs/build/environment-variables?version=2.0#setting-environment-variables).
 5. Click **Save** at the top of the screen. 
 
 <Lightbox src="/img/docs/dbt-cloud/profile-sample.png" width="60%" title="Sample of a configured profile." />
@@ -72,11 +90,22 @@ You configure profiles when you create a deployment environment. For accounts th
 
 To assign a different profile, update the deployment environment settings:
 
-1. From the main menu, click **Orchestration** and select **Environments**.
+1. From the left navigation, click **Orchestration** and select **Environments**.
 2. Click an available deployment environment.
-3. Click **Settings**, then click **Edit**.
-4. Navigate to the **Connection profiles** section, click the three-dot menu next to an existing profile, and select **Change profile**.
-5. Click the **Profile** dropdown and select the new profile to assign.
+3. Click **Settings**.
+4. Click **Edit** to switch to edit mode, then scroll to the **Connection profiles** section.
+5. Click the **swap icon** <img src="/img/docs/deploy/swap-icon.png" alt="Swap icon" style={{ verticalAlign: 'middle', height: '1em' }} /> next to the profile row you want to change.
+6. Select the new profile from the **Profile** dropdown.
+7. Click **Assign profile**.
+8. Click **Save**.
+
+## Permissions and access to profiles
+
+Profiles are created at the project level. Only users with permission to edit the project can create profiles and anyone with permission to create or edit deployment environments in that project can assign that profile and its credentials to those environments.
+
+To avoid unintended access, only grant permission sets like **Job Admin** or **Project Admin** to users who should have access to all credentials in a project. Be mindful that profiles created at the project level can be used to configure credentials for any deployment environment in that project.
+
+For more information on permission sets, see [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
 
 ## FAQs
 
@@ -103,5 +132,11 @@ Any profiles using those settings automatically update with the new information.
 Existing APIs continue to work and automatically map to a profile behind the scenes. You won't need to take any manual action unless you use APIs to create a deployment environment with no credentials configured. This is a rare occurrence unique to APIs, but it's the only scenario where dbt wouldn't create a profile.
 
 Profile-specific APIs are available. Check out our [API documentation](/docs/dbt-cloud-apis/overview) for more information.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="Does the Semantic Layer support profiles?">
+
+<Constant name="semantic_layer" /> configuration isn't supported with profiles yet.
 
 </DetailsToggle>

@@ -1,6 +1,6 @@
 ## Private connectivity feature matrix
 
-The following charts outline private connectivity options across <Constant name="cloud" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) deployments.
+The following charts outline private connectivity options across <Constant name="dbt" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) deployments.
 
 **Legend:**
 
@@ -27,7 +27,7 @@ These tables use updated terminology for clarity:
 
 ### Connecting to dbt Cloud
 
-Your services can connect to <Constant name="cloud" /> over private connectivity. This is available on Single-Tenant deployments only. All connections to dbt Cloud use the <Term id="dbt-provisioned">dbt-provisioned</Term> model.
+Your services can connect to <Constant name="dbt" /> over private connectivity. This is available on Single-Tenant deployments only. All connections to dbt Cloud use the <Term id="dbt-provisioned">dbt-provisioned</Term> model.
 
 <table>
   <thead>
@@ -39,7 +39,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
   </thead>
   <tbody>
     <tr>
-      <td>Private <Constant name="cloud" /> access</td>
+      <td>Private <Constant name="dbt" /> access</td>
       <td>✅</td>
       <td>✅</td>
     </tr>
@@ -55,7 +55,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 ### Connecting dbt Cloud to managed services
 
-<Constant name="cloud" /> can establish private connections to managed data platforms and cloud-native services.
+<Constant name="dbt" /> can establish private connections to managed data platforms and cloud-native services.
 
 <table>
   <thead>
@@ -172,7 +172,7 @@ Your services can connect to <Constant name="cloud" /> over private connectivity
 
 ### Connecting dbt Cloud to self-hosted services
 
-<Constant name="cloud" /> can establish private connections to your self-hosted services. All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
+<Constant name="dbt" /> can establish private connections to your self-hosted services. All self-hosted connections use the <Term id="customer-provisioned">customer-provisioned</Term> model.
 
 <table>
   <thead>

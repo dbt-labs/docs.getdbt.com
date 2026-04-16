@@ -36,24 +36,24 @@ Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `re
 
 ## Requirements to use the GraphQL API
 
-- A <Constant name="cloud" /> project on dbt v1.6 or higher
+- A <Constant name="dbt" /> project on dbt v1.6 or higher
 - Metrics are defined and configured
-- A <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions or a [personal access token](/docs/dbt-cloud-apis/user-tokens)
+- A <Constant name="dbt" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions or a [personal access token](/docs/dbt-cloud-apis/user-tokens)
 
 ## Using the GraphQL API
 
-If you're a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [set up](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
+If you're a dbt user or partner with access to <Constant name="dbt" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [set up](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
 Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
 
-Authentication uses either a <Constant name="cloud" /> [service account token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
+Authentication uses either a <Constant name="dbt" /> [service account token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
 
 ```shell
 {"Authorization": "Bearer <AUTHENTICATION TOKEN>"}
 ```
 
-Each GQL request also requires a <Constant name="cloud" /> `environmentId`. The API uses both the service or personal token in the header and `environmentId` for authentication.
+Each GQL request also requires a <Constant name="dbt" /> `environmentId`. The API uses both the service or personal token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
@@ -243,7 +243,7 @@ MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 ```
 
 #### Metric type parameters
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.12">
 ```graphql
 MetricTypeParams {
   numerator: MetricInput
