@@ -28,7 +28,7 @@ This will run your dbt-duckdb pipeline against the [DuckDB](https://www.duckdb.o
 
 Omitting the `path` field sets it to `:memory:`, which means the database runs in-memory and all data is lost after your run completes.
 
-`dbt-duckdb` automatically sets the `database` property to the basename of the file in the `path` argument with the suffix removed. For example, if the path is `/tmp/a/dbfile.duckdb`, the `database` field will be set to `dbfile`. If you are running in in-memory mode, then `database` is set to `memory`.
+`dbt-duckdb` automatically sets the `database` property to the basename of the file in the `path` argument with the suffix removed. For example, if the path is `/tmp/a/dbfile.duckdb`, the `database` field will be set to `dbfile`. If you are running in `:memory:` mode, then `database` is set to `memory`.
 
 ## Using MotherDuck
 
@@ -217,7 +217,7 @@ You can use the `options` dictionary to pass any additional key-value pairs to D
 
 ```yml
 attach:
-  - path: /tmp/db1.duckdb
+  - path: /tmp/db1.db
     type: sqlite
     read_only: true
   - path: /tmp/special.duckdb
