@@ -69,7 +69,7 @@ To automate seat assignments in Okta for users as they are provisioned, see [Man
 
 ## Existing Okta integrations
 
-If you are adding SCIM to an existing Okta integration in <Constant name="dbt" /> (as opposed to setting up SCIM and SSO concurrently for the first time), be aware of the following behavior:
+If you are adding SCIM to an existing Okta integration in <Constant name="dbt_platform" /> (as opposed to setting up SCIM and SSO concurrently for the first time), be aware of the following behavior. Refer to [SCIM FAQ](/docs/cloud/manage-access/scim-faq) for more details on what happens to pre-existing users:
 
 - Users and groups already synced to <Constant name="dbt" /> will become SCIM-managed once you complete the SCIM configuration.
 - (Recommended) Import and manage existing <Constant name="dbt" /> groups and users with Okta's **Import Groups** and **Import Users** features. Update the groups in your IdP with the same naming convention used for <Constant name="dbt" /> groups. New users, groups, and changes to existing profiles will be automatically imported into <Constant name="dbt" />.
@@ -78,3 +78,7 @@ If you are adding SCIM to an existing Okta integration in <Constant name="dbt" /
     - Read more about this feature in the [Okta documentation](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
 
 To set license type for users as they are provisioned, see [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
+
+## FAQ and troubleshooting
+
+For common questions about SCIM provisioning with Okta — including onboarding workflows, SSO group mapping behavior, and troubleshooting, refer to [SCIM FAQs and troubleshooting](/docs/cloud/manage-access/scim-faq).
