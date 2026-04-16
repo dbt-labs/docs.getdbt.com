@@ -156,3 +156,9 @@ extensions:
 ```
 
 For configuring cloud storage access using DuckDB's Secrets Manager or fsspec filesystems, refer to the [DuckDB configurations](/reference/resource-configs/duckdb-configs) page.
+
+## More information
+
+Find DuckDB-specific configuration information in the [DuckDB adapter reference guide](/reference/resource-configs/duckdb-configs).
+
+For adapter source code, refer to the [`dbt-duckdb` repository](https://github.com/duckdb/dbt-duckdb). For adapter release notes, refer to the [`dbt-duckdb` releases page](https://github.com/duckdb/dbt-duckdb/releases).
