@@ -355,7 +355,7 @@ The `scheduler` parameter controls whether the dynamic table is refreshed by Sno
 :::info dbt default differs from Snowflake's native default
 In Snowflake's native DDL, omitting `SCHEDULER` defaults to `ENABLE`, and `TARGET_LAG` is required.
 
-In dbt, the default is **`DISABLE`**. If you do not specify `scheduler` or `target_lag`, dbt creates the dynamic table with `SCHEDULER = DISABLE` and takes responsibility for triggering refreshes during model execution.
+In dbt, the default value is `DISABLE`. If neither `scheduler` nor `target_lag` is specified, dbt creates the dynamic table with `scheduler: DISABLE` and manages refreshes directly.
 
 If you specify `target_lag` without explicitly setting `scheduler`, dbt sets `scheduler: ENABLE`.
 :::
