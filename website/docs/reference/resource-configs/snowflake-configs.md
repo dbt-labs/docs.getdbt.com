@@ -334,10 +334,12 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 
 <VersionBlock firstVersion="1.12">
 
-:::caution target_lag requires scheduler to be enabled
-`target_lag` is only applicable when [`scheduler`](#scheduler) is effectively set to `ENABLE`. You cannot set `target_lag` when `scheduler='DISABLE'`.
+:::caution target_lag and scheduler interaction
+How dbt resolves `target_lag` depends on the `scheduler` setting:
 
-In dbt, if neither `target_lag` nor `scheduler` is specified, dbt defaults to `scheduler: DISABLE` and manages refreshes itself. If you specify `target_lag` without `scheduler`, dbt implicitly sets `scheduler: ENABLE`, which opts into Snowflake-managed scheduling.
+- **`target_lag` set, `scheduler` is `ENABLE` or omitted** &mdash; Snowflake manages refreshes automatically to meet the specified lag. If `scheduler` is omitted, dbt sets it to `ENABLE`.
+- **`target_lag` not set, `scheduler` is `DISABLE` or omitted** &mdash; dbt manages refreshes during model execution. If `scheduler` is omitted, dbt sets it to `DISABLE`.
+- **`target_lag` set + `scheduler: DISABLE`**, or **`target_lag` not set + `scheduler: ENABLE`** &mdash; These are **invalid combinations**. `DISABLE` does not accept a target lag, and `ENABLE` requires one. Dbt raises an error in both cases.
 :::
 
 </VersionBlock>
@@ -350,7 +352,7 @@ Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/e
 
 The `scheduler` parameter controls whether the dynamic table is refreshed by Snowflake's background scheduler or by an external orchestrator (for example, dbt). Snowflake accepts two options:
 - **ENABLE** &mdash; Snowflake's built-in scheduler automatically refreshes the dynamic table based on the defined `target_lag`. Refreshes cascade across the dependency graph to maintain snapshot consistency. Setting `target_lag` is _required_ when using this option. 
-- **DISABLE** &mdash; The dynamic table is excluded from automatic Snowflake background refresh. Refreshing must be triggered manually or through orchestration external to Snowflake (for example, by a `dbt run` that executes `ALTER DYNAMIC TABLE ... REFRESH`). `target_lag` **cannot** be set in this mode.
+- **DISABLE** &mdash; The dynamic table is excluded from Snowflake's automatic background refresh. You must trigger refreshes manually or through orchestration external to Snowflake (for example, by a `dbt run` that executes `ALTER DYNAMIC TABLE ... REFRESH`). When this option is explicitly set, specifying `target_lag` results in an error.
 
 :::info dbt default differs from Snowflake's native default
 In Snowflake's native DDL, omitting `SCHEDULER` defaults to `ENABLE`, and `TARGET_LAG` is required.
@@ -361,7 +363,7 @@ If you specify `target_lag` without explicitly setting `scheduler`, dbt sets `sc
 :::
 
 **Key points:**
-- You can only use `target_lag` when `scheduler` is set to `ENABLE`. Setting `target_lag` when `scheduler: DISABLE'` results in an error.
+- Explicitly setting `scheduler: DISABLE` together with `target_lag` results in an error. If you omit `scheduler` and provide `target_lag`, dbt resolves the conflict by setting `scheduler: ENABLE` automatically.
 - When `scheduler: DISABLE`, a manual refresh does _not_ automatically refresh upstream dynamic table dependencies. This creates an isolation boundary, allowing dbt to manage specific table refreshes without triggering the entire pipeline. In contrast, `ENABLE` cascades refreshes across the dependency graph.
 - If a dynamic table with `scheduler: DISABLE` depends on other dynamic tables, those upstream tables will not be refreshed when the downstream table is refreshed. dbt must manage the refresh order explicitly.
 
