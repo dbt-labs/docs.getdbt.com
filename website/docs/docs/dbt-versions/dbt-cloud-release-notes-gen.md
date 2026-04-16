@@ -28,6 +28,10 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Health-aware search ranking**: Healthy dbt resources (those with no detected issues) now rank higher in search results than resources with unresolved issues when text relevance is otherwise equivalent.
 
+### Studio IDE
+
+- **Keyboard shortcut to open Commands tab**: Press `Ctrl+\`` to open the Commands tab directly from the editor.
+
 ### Orchestration and run status
 
 - **Clearer Fusion job eligibility messages**: Fusion eligibility reason messages are rewritten to be shorter and more actionable. For example, unsupported adapters now read "This job uses an adapter that's not currently available on the Fusion engine" and jobs not on Latest now read "This job uses a dbt version that's not tested for Fusion eligibility."
@@ -35,8 +39,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Fusion eligibility confirmation modal**: Clicking "Run once on Fusion" on a job now opens a confirmation modal before triggering the run, showing the environment name and a warning that job commands will execute in that environment.
 
 - **Improved `dbt ls` and `dbt list` run log status (dbt Fusion engine only):**: Run steps that execute `dbt ls` or `dbt list` now show node results with a no-op status instead of "unknown," reducing confusion in run logs for list operations.
-
-- **New Fusion release tracks in version dropdowns**: `fusion-compatible`, `fusion-extended`, and `fusion-fallback` are available as selectable dbt version options in environment, job, and run filter dropdowns when enabled. Contact your account manager to enable.
 
 ### dbt platform
 
@@ -57,6 +59,12 @@ Release notes are grouped by date for single-tenant environments.
 - **Snowflake PrivateLink supports reusing existing interface endpoints**: When creating a Snowflake PrivateLink connection, you can now supply an optional `interface_endpoint_id` to attach a new profile to an existing interface endpoint rather than always creating a new one. The endpoint must be in `Available` status; a `409 Conflict` is returned otherwise. Contact your account manager to enable.
 
 ## Fixes
+
+### Studio IDE
+
+- **New folders in Git Controls now expand correctly**: Files inside a newly created folder are now listed individually in the Git Controls panel. Previously, a new folder appeared as a single unexpanded entry rather than showing the files it contained.
+  
+-  **Parent folder hint shown for all new files**: Files created inside a new folder now always display the parent folder name as a hint in the Git Controls panel, even when the file name is unique across all changed files.
 
 ### APIs, Identity, and Administration
 
