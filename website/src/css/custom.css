@@ -2252,9 +2252,8 @@ button .DocSearch-Button-Keys {
   text-decoration: underline;
 }
 
-/* Discourse Forum & Events Page */
-.events-page section,
-section.discourse-forum-page {
+/* Events Page */
+.events-page section {
   padding: 4rem 0;
 }
 
