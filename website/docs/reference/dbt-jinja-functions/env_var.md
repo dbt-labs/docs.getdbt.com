@@ -11,7 +11,7 @@ import Envvarsecrets from '/snippets/_env-var-secrets.md';
 
 If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [deployment credentials](/docs/deploy/deploy-environments#deployment-credentials) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
 
-### `.env` file
+### Using the `.env` file
 
 When running dbt locally ([<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started), dbt VS Code extension, and <Constant name="core"/>), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` &mdash; `.env` values will not override variables already set in your shell.
 
