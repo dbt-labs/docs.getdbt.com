@@ -192,5 +192,3 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 {% endfor %}
 ```
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="wee"/>
