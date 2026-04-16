@@ -55,7 +55,7 @@ The following table shows the different options and when to use them:
 | Location | Affects | Session state | When to use |
 |-----------|----------|-----------|-----------|
 | [**Shell profile** ](#configure-at-the-os-or-shell-level)| Terminal  | ✅ Permanent | Variables needed globally across all projects and terminal sessions.|
-| [**`.env` file**](#about-env-file-support) | Terminal + extension menus + <Term id="lsp" /> | ✅ Permanent (per project) | Project-specific variables. Works across <Constant name="core"/>, <Constant name="fusion"/> CLI, and the dbt VS Code extension. |
+| [**`.env` file**](#about-env-file-support) | Terminal + extension menus + <Term id="lsp" /> | ✅ Permanent (per project) | Project-specific variables. Works across <Constant name="fusion"/> CLI, the dbt VS Code extension, and <Constant name="core"/>. |
 | [**VS Code/Cursor settings**](#configure-in-the-vs-code-extension-settings) | Extension menus + <Term id="lsp" /> | ✅ Per VS Code/Cursor profile | Editor-only workflows using the extension menu actions. |
 | [**Terminal session**](#configure-in-the-terminal-session)  | Current terminal only | ❌ Temporary | One-off testing. |
 
