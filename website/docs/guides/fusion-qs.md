@@ -96,7 +96,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```
     Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
 </TabItem>
-<TabItem value="windows-powershell" label="Windows (PowerShell)">
+<TabItem value="windows" label="Windows (PowerShell)">
 
 1. Run the following command in PowerShell to install the <Constant name="fusion_engine" /> CLI:
     ```powershell
