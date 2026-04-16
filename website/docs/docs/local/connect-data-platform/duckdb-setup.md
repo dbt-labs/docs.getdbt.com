@@ -1,5 +1,5 @@
 ---
-title: "Connect DuckDB to dbt Core"
+title: "DuckDB setup"
 sidebar_label: "DuckDB"
 description: "Read this guide to learn about the DuckDB warehouse setup in dbt."
 meta:
@@ -18,7 +18,7 @@ meta:
 
 <VersionBlock firstVersion="2.0">
 
-## Connect DuckDB to Fusion <Lifecycle status="beta" />
+# Connect DuckDB to Fusion <Lifecycle status="beta" />
 
 DuckDB with <Constant name="fusion_engine" /> is the easiest way to get a dbt project running locally &mdash; no warehouse account or credentials required. [DuckDB](https://duckdb.org) is an embedded database that runs entirely in-process, so dbt connects directly to a local `.duckdb` file with no additional setup.
 
@@ -93,6 +93,8 @@ The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features avai
 </VersionBlock>
 
 <VersionBlock lastVersion="1.99">
+
+# Connect DuckDB to dbt Core
 
 :::info Community plugin
 
