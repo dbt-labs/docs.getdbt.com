@@ -40,7 +40,7 @@ Warnings that should be treated as errors can be specified through the `error` p
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, warning codes are numeric (for example, `1600`, `1074`) rather than the event class names used in <Constant name="core" />. <Constant name="fusion" /> uses numeric codes as the canonical configuration key, with a subset of legacy <Constant name="core" /> event names supported as aliases. You can find <Constant name="fusion" /> warning codes using the `--log-format json` flag, which includes the numeric code in the `code` field of each log entry. See [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) for the full list of supported event name aliases.
+In the <Constant name="fusion_engine" />, warning codes are numeric (for example, `1600`, `1074`) rather than the event class names used in <Constant name="core" />. <Constant name="fusion" /> uses numeric codes as the canonical configuration key, with a subset of legacy <Constant name="core" /> event names supported as aliases. The <Constant name="fusion" /> warning codes will be present in any warnings displayed and you can also find them using the `--log-format json` flag, which includes the numeric code in the `code` field of each log entry. See [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) for the full list of supported event name aliases.
 
 </VersionBlock>
 
@@ -192,7 +192,7 @@ In <Constant name="fusion" />, every warning has a numeric error code (for examp
 flags:
   warn_error_options:
     error:
-      - 1600   # NoNodesForSelectionCriteria
+      - 1601   # NothingToDo
       - 1074   # JinjaLogWarning / exceptions.warn()
     silence:
       - 1078   # FreshnessConfigProblem
@@ -206,7 +206,6 @@ Each row lists a canonical <Constant name="fusion" /> warning code and the legac
 
 | Fusion code | dbt-Core event name | Description |
 |---|---|---|
-| 1600 | `NoNodesForSelectionCriteria` | `--select` criteria matched no nodes |
 | 1601 | `NoNodesSelected` | No nodes selected |
 | 1601 | `NothingToDo` | No nodes selected (alias) |
 | 1087 | `NodeNotFoundOrDisabled` | A test or exposure dependency references a missing or disabled node |
@@ -248,7 +247,7 @@ The table below is not a complete list of unsupported names. It only includes <C
 
 ### Warnings that are hard errors in Fusion
 
-Some <Constant name="core" /> warning names correspond to behaviors that <Constant name="fusion" /> enforces unconditionally as parse errors. If you reference these names in `warn_error_options`, <Constant name="fusion" /> emits a startup warning explaining that the entry has no effect. You can carry over your `warn_error_options` config from <Constant name="core" /> without breaking, but these configs do nothing:
+Some <Constant name="core" /> warning names correspond to behaviors that <Constant name="fusion" /> enforces unconditionally as parse errors. If you reference these names in `warn_error_options`, <Constant name="fusion" /> emits a startup warning explaining that the entry has no effect. You can carry over your `warn_error_options` config from <Constant name="core" /> without breaking, but these configs do nothing (They will throw a warning as `unsupported` and should be removed from the config):
 
 | dbt-Core event name | Fusion behavior | Fusion error code |
 |---|---|---|
@@ -281,7 +280,7 @@ If your project emits static analysis warnings and you use `--warn-error` (which
 
 ### Deprecated `include` and `exclude` keys
 
-The legacy `include` and `exclude` fields for `warn_error_options` (deprecated in dbt Core v1.8) are not supported in <Constant name="fusion" />. If you use them, <Constant name="fusion" /> emits a `WEOIncludeExcludeDeprecation` warning (code 1086) and ignores the deprecated keys. Migrate to `error`, `warn`, and `silence` instead:
+The legacy `include` and `exclude` fields for `warn_error_options` were deprecated in dbt Core v1.8 but are still supported in <Constant name="fusion" />. If you use them, <Constant name="fusion" /> emits a `WEOIncludeExcludeDeprecation` warning (code 1086) and ignores the deprecated keys. Migrate to `error`, `warn`, and `silence` instead:
 
 ```yaml
 # Before (Core ≤1.7)
