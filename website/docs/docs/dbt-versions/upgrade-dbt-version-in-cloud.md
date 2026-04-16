@@ -70,20 +70,33 @@ To take advantage of the upgrade assistant, you'll need to meet the following pr
 
 #### Assign access to upgrade
 
-By default, all users can view the <Constant name="fusion" /> upgrade workflows. The actions they can take will ultimately be limited by their assigned permissions and access to environments. You can fine-tune who can access the upgrade with the combination of a new account setting and the `Fusion admin` permission set.
+The <Constant name="fusion" /> upgrade assistant and readiness panel are controlled by two account-level settings that an admin must configure.
 
-From your **Account settings**:
+**Step 1: Enable Fusion readiness features (required)**
+
+The upgrade assistant and readiness panel only appear after enabling this setting. From your **Account settings**:
+
 1. Navigate to the **Account** screen.
-2. Click **Edit** and scroll to the bottom, and click the box next to **Enable Fusion migration** permissions.
-3. Click **Save**.
+2. Click **Edit** and scroll to the **Fusion** section.
+3. Click the box next to **Enable Fusion readiness & upgrade features**.
+4. Click **Save**.
 
-  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/fusion-migration-permissions.png" width="60%" title="Limit access to the Fusion upgrade workflows."/>
+Once enabled, all admins and developers can see each project's Fusion readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions).
 
-This hides the <Constant name="fusion" /> upgrade workflow from users who don't have the `Fusion admin` permission set, including the highest levels of admin access. To grant access to the upgrade workflows to specific projects and/or specific users:
+**Step 2: Restrict upgrade access (optional, Enterprise only)**
+
+By default, any user who can see the upgrade assistant can use it. To restrict upgrade execution to users with the `Fusion admin` permission set, enable this additional setting. From your **Account settings**:
+
+1. Navigate to the **Account** screen.
+2. Click **Edit** and scroll to the **Fusion** section.
+3. Click the box next to **Enable restricted Fusion upgrade permissions**.
+4. Click **Save**.
+
+This hides the <Constant name="fusion" /> upgrade workflow from users who don't have the `Fusion admin` permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
 1. Navigate to an existing group in your **Account settings** and click **Edit**, or click [**Create group**](/docs/cloud/manage-access/about-user-access#create-new-groups) to create a new one.
-3. Scroll to the **Access and permissions** section and click **Add permission**.
-4. Select the **Fusion admin** permission set from the dropdown and then select the project(s) you want the users to access. 
-5. Click **Save**.
+2. Scroll to the **Access and permissions** section and click **Add permission**.
+3. Select the **Fusion admin** permission set from the dropdown and then select the project(s) you want the users to access. 
+4. Click **Save**.
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin to groups and projects."/>
 
