@@ -1821,11 +1821,6 @@ const sidebarSettings = {
       ],
     },
     {
-      type: "link",
-      label: "Community forum",
-      href: "/community/forum",
-    },
-    {
       type: "category",
       label: "Additional resources",
       items: [
