@@ -68,6 +68,14 @@ username: alice
 password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'
 ```
 
+You can also use arrays as values for keys. For example, to pass a list of database groups:
+
+```yaml
+db_groups:
+  - db_editor
+  - db_viewer
+```
+
 #### Extended Attributes don't mask secret values
 
 - We recommend you avoid setting secret values to prevent visibility in the text box and logs. A common workaround is to wrap extended attributes in [environment variables](/docs/build/environment-variables). In the earlier example, `password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'` will get a value from the `DBT_ENV_SECRET_PASSWORD` environment variable at runtime.
