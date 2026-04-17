@@ -36,6 +36,8 @@ This feature isn't available for Azure or GCP. If you don't see **Private endpoi
 
 This section walks you through the process of requesting a new Snowflake PrivateLink endpoint in <Constant name="dbt_platform" />. 
 
+You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the `ACCOUNTADMIN` permission set can perform this step.
+
 1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
 2. In the **Private endpoints** table, review your existing endpoints. The table shows all private endpoints in your account (including non-Snowflake ones) with the following details:
    - **Name**
