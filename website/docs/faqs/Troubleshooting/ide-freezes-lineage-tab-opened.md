@@ -63,7 +63,7 @@ This workaround is browser-dependent. In DevTools, select the Local Storage orig
 
 If freezing continues after trying these workarounds, [contact dbt Support](mailto:support@getdbt.com) and include:
 - A HAR file (refer to [How to generate HAR files](/faqs/Troubleshooting/generate-har-file))
-  - Your account URL
+- Your account URL
   - Browser and version
   - Approximate number of open model tabs
   - Whether the issue happens only when the **Lineage** tab is active
