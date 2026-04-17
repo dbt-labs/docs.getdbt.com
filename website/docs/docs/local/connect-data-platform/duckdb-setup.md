@@ -70,6 +70,11 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 [DuckDB](https://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. There are several ways to connect dbt to DuckDB depending on where you want your data to live.
 
+- [In-memory](#in-memory)
+- [Local file](#local-file)
+- [MotherDuck](#motherduck)
+- [Attaching additional databases](#attaching-additional-databases)
+
 Configure your `profiles.yml` using the examples below. `type: duckdb` is always required. Use `path` for local files or MotherDuck connection strings, and use `:memory:` or omit `path` for an in-memory database.
 
 | Profile field | Description | Example |
@@ -101,7 +106,7 @@ default:
 
 ### Local file
 
-To persist data between runs, set `path` to a `.duckdb` file on your local filesystem. DuckDB will create the file automatically if it doesn't exist.
+To persist data between runs, set `path` to a `.duckdb` file on your local filesystem. DuckDB creates the file automatically if it doesn't exist.
 
 <File name='profiles.yml'>
 
@@ -142,7 +147,7 @@ MotherDuck databases generally work the same way as local DuckDB databases, with
 
 ### Attaching additional databases
 
-DuckDB supports [attaching additional databases](https://duckdb.org/docs/sql/statements/attach.html) so you can read and write from multiple databases. Configure additional databases via the `attach` argument in your profile:
+DuckDB supports [attaching additional databases](https://duckdb.org/docs/sql/statements/attach.html) so you can read and write from multiple databases. Configure additional databases using the `attach` argument in your profile:
 
 <File name='profiles.yml'>
 
@@ -167,9 +172,9 @@ default:
 
 </File>
 
-Attached databases can be referred to by the basename of the file (minus its suffix) or by an `alias` you specify. The `type` argument supports `duckdb`, `sqlite`, and `postgres`. You can also pass arbitrary options via the `options` dictionary &mdash; refer to [Arbitrary ATTACH options](/reference/resource-configs/duckdb-configs#arbitrary-attach-options) for details.
+You can refer to attached databases by the basename of the file (without its suffix) or by an `alias` you specify. The `type` argument supports `duckdb`, `sqlite`, and `postgres`. You can also pass arbitrary options using the `options` dictionary &mdash; refer to [Arbitrary ATTACH options](/reference/resource-configs/duckdb-configs#arbitrary-attach-options) for details.
 
-For DuckLake, use `ducklake:` for local databases; for MotherDuck-managed DuckLake, use `md:` with `is_ducklake: true`. Refer to the [DuckLake configuration](/reference/resource-configs/duckdb-configs#ducklake) section for details.
+For DuckLake, use `ducklake:` for local databases. For MotherDuck-managed DuckLake, use `md:` with `is_ducklake: true`. Refer to the [DuckLake configuration](/reference/resource-configs/duckdb-configs#ducklake) section for details.
 
 ## Extensions
 
