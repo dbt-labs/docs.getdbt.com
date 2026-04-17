@@ -53,6 +53,8 @@ The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features avai
 
 # Connect DuckDB to dbt Core
 
+<ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/duckdb-setup?version=2" /> connection also available.
+
 :::info Community plugin
 
 Some functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
