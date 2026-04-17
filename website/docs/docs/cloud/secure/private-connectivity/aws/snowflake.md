@@ -63,6 +63,10 @@ You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support req
 10. Proceed to the **Connections** page and following the steps in the [Create connection in dbt](#create-connection-in-dbt) section to configure PrivateLink. 
 Once you configure PrivateLink on the **Connections** page, you'll see the new endpoint appear under **Private endpoints → Associated connections**.
 
+:::note DNS propagation
+If the connection test fails immediately after setup, this is expected &mdash; it doesn't mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
+:::
+
 #### Duplicate endpoint requests
 
 If you submit a request using a VPCE ID that matches an existing endpoint, <Constant name="dbt_platform"/> displays an **Endpoint already exists** popup with two options:
@@ -130,10 +134,6 @@ Once <Constant name="dbt" /> Support completes the configuration, you can start 
 3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
-
-:::note DNS propagation
-If the connection test fails immediately after setup, this is expected — it does not mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
-:::
 
 ## Configuring internal stage PrivateLink in <Constant name="dbt" />
 
