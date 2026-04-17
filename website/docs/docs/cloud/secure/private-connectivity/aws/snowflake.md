@@ -58,7 +58,7 @@ This section walks you through the process of requesting a new Snowflake Private
     <Lightbox src="/img/docs/dbt-cloud/private-endpoint-config.png" title="Endpoint request form showing Provider type, SQL command snippet, and Snowflake output fields"/>
 
 9. After submission, a confirmation popup appears (for example, **Endpoint request submitted**). From the popup, you can request another endpoint or return to **Private endpoints** to track request status.
-10. Proceed to the **Connections** page adn following the steps in the [Create connection in dbt](#create-connection-in-dbt) section to configure PrivateLink. 
+10. Proceed to the **Connections** page and following the steps in the [Create connection in dbt](#create-connection-in-dbt) section to configure PrivateLink. 
 Once you configure PrivateLink on the **Connections** page, you'll see the new endpoint appear under **Private endpoints → Associated connections**.
 
 #### Duplicate endpoint requests
