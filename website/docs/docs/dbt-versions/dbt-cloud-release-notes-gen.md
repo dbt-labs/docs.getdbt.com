@@ -24,7 +24,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **Health and run status search filters**: The `AccountSearchQueryFilter` input now accepts `health` and `runStatus` filter arrays. Use `health` to narrow results by health status (`healthy`, `caution`, `degraded`, or `unknown`) and `runStatus` to filter by last run outcome (`success`, `error`, `skipped`, or `reused`). Multiple values within each filter are combined with OR logic.
+- **Health and run status search filters**: The `AccountSearchQueryFilter` input now accepts `health` and `runStatus` filter arrays. Use `health` to narrow results by health status (`healthy`, `caution`, `degraded`, or `unknown`) and `runStatus` to filter by last run outcome (`success`, `error`, `skipped`, or `reused`). Multiple values within each filter are combined with `OR` logic.
 
 - **Health-aware search ranking**: Healthy dbt resources (those with no detected issues) now rank higher in search results than resources with unresolved issues when text relevance is otherwise equivalent.
 
