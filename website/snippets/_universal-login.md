@@ -1,9 +1,5 @@
-:::info Universal login
-
 The [https://login.dbt.com](https://login.dbt.com) URL is the recommended way to sign in to <Constant name="dbt_platform"/>. Once you enter your email, dbt sends a verification code to your email to verify it. Once you verify your email, you can see the accounts you have access to across instances and select an account to open. For a full explanation of the login process, refer to [Log in to dbt platform](/docs/cloud/about-cloud/login).
 
 You can also open your account using your **Access URL** from **Account settings** if you already know it (see [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses)).
 
 Account administrators can turn account discovery on or off with **Enable global account discovery** in [Account settings](/docs/cloud/account-settings#enable-global-account-discovery). When account discovery is disabled, users sign in using the account **Access URL** and their existing [SSO](/docs/cloud/manage-access/sso-overview) configuration, if applicable.
-
-:::
