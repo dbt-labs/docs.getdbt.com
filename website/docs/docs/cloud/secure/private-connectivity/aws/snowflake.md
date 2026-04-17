@@ -88,7 +88,7 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
    - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
    - Provide them with your <Constant name="dbt" /> account ID along with any other information requested in the article.
      - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
-   - You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support request.
+   - You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the `ACCOUNTADMIN` permission set can perform this step.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
@@ -128,6 +128,10 @@ Once <Constant name="dbt" /> Support completes the configuration, you can start 
 3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
+
+:::note DNS propagation
+If the connection test fails immediately after setup, this is expected — it does not mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
+:::
 
 ## Configuring internal stage PrivateLink in <Constant name="dbt" />
 
