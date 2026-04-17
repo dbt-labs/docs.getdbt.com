@@ -157,6 +157,10 @@ Not at all! You can use <Constant name="dbt" /> when you sign up for the <a href
 Refer to <a href="https://www.getdbt.com/pricing/">dbt pricing plans</a> for more details.
 </DetailsToggle>
 
+<DetailsToggle alt_header="What should I do if the Studio IDE freezes when I open the Lineage tab?">
+If the <Constant name="studio_ide" /> freezes with two or more models open and the **Lineage** tab active, refer to [Studio IDE freezes when opening the Lineage tab](/faqs/Troubleshooting/ide-freezes-lineage-tab-opened) for workarounds and troubleshooting steps.
+</DetailsToggle>
+
 <DetailsToggle alt_header="Can I be a contributor to dbt">
 As a proprietary product, <Constant name="dbt" />'s source code isn't available for community contributions. If you want to build something in the dbt ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a dbt package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
 </DetailsToggle>

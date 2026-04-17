@@ -5,41 +5,29 @@ sidebar_label: "Studio IDE freezes when opening the Lineage tab"
 id: studio-ide-freezes-lineage-tab
 ---
 
-If the <Constant name="studio_ide" /> freezes or becomes unresponsive when you have two or more models open and the **Lineage** tab is active, use the workarounds in this guide.
+If the <Constant name="studio_ide" /> freezes with two or more models open and the **Lineage** tab active, use the following workarounds.
 
-## Common reasons
+### Why this happens
 
-The <Constant name="studio_ide" /> may freeze when:
-- You have two or more models open, and
-- The **Lineage** tab is open or loads automatically.
-
-This is more likely when at least one model is large and the DAG takes longer to load.
+The <Constant name="studio_ide" /> can freeze when the **Lineage** tab is open or loads automatically, and when two or more models are open, especially if one model has a large or slow-loading <Term id="dag" />.
 
 ## What you might observe
 
-- The editor becomes unresponsive for a period of time.
+- The editor becomes unresponsive.
 - After a few minutes, your browser may display a **Wait** or **Exit** dialog.
 
 ## Workaround 1: Avoid the Lineage tab on startup
 
 1. Refresh the page.
 2. Keep the console focused on another tab (for example, **Results** or **Compiled code**) instead of **Lineage**.
-3. Open **Lineage** only when needed, and consider closing extra model tabs first.
+3. Close extra model tabs before opening **Lineage**.
+4. Open **Lineage** only when needed.
 
 ## Workaround 2: Clear Local Storage for your account URL
 
 This workaround is browser-dependent. In DevTools, select the Local Storage origin that matches the URL in your browser address bar. For example, your account access URL might look like `https://ab123.us1.dbt.com`.
 
-### Google Chrome
-
-1. Open the <Constant name="dbt_platform" /> page that’s freezing.
-2. Open DevTools (right-click the page and select **Inspect**).
-3. Click the **Application** tab.
-4. In the left sidebar, expand **Storage** → **Local Storage**.
-5. Right-click the origin that matches your current URL (for example, `https://ab123.us1.dbt.com`) and select **Clear**.
-6. Refresh the page and sign in again if prompted.
-
-### Microsoft Edge
+### Google Chrome and Microsoft Edge
 
 1. Open the <Constant name="dbt_platform" /> page that’s freezing.
 2. Open DevTools (right-click the page and select **Inspect**).
@@ -71,14 +59,11 @@ This workaround is browser-dependent. In DevTools, select the Local Storage orig
 6. Delete the Local Storage entries for that origin.
 7. Refresh the page and sign in again if prompted.
 
-## If the issue persists
+## Need more help?
 
-If you still see freezing after trying the workarounds:
-
-- Capture a HAR file and share it with [dbt support](/docs/dbt-support):
-  - Refer to [How to generate HAR files](/faqs/Troubleshooting/generate-har-file)
-- Contact Support and include:
+If freezing continues after trying these workarounds, [contact dbt Support](mailto:support@getdbt.com) and include:
+- A HAR file (refer to [How to generate HAR files](/faqs/Troubleshooting/generate-har-file))
   - Your account URL
-  - Browser + version
+  - Browser and version
   - Approximate number of open model tabs
   - Whether the issue happens only when the **Lineage** tab is active
