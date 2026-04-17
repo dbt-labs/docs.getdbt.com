@@ -38,7 +38,7 @@ For connection examples and shared profile settings, refer to [Connecting to Duc
 
 ### Limitations
 
-The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features available in the `dbt-duckdb` adapter for dbt Core are not yet supported.
+The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features available in the `dbt-duckdb` adapter for <Constant name="core" /> are not yet supported.
 
 - Current adapter feature parity work is tracked in [dbt-fusion#1593](https://github.com/dbt-labs/dbt-fusion/issues/1593).
 - Current SQL analysis gaps are tracked in [dbt-fusion#1464](https://github.com/dbt-labs/dbt-fusion/issues/1464).
