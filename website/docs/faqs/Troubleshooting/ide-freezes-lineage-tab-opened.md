@@ -65,5 +65,5 @@ If freezing continues after trying these workarounds, [contact dbt Support](mail
 - A HAR file (refer to [How to generate HAR files](/faqs/Troubleshooting/generate-har-file))
 - Your account URL
 - Browser and version
-  - Approximate number of open model tabs
+- Approximate number of open model tabs
   - Whether the issue happens only when the **Lineage** tab is active
