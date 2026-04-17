@@ -391,7 +391,6 @@ To enable Snowflake-managed scheduling with a target lag:
 {{ config(
     materialized='dynamic_table',
     snowflake_warehouse='MY_WH',
-    scheduler='ENABLE',
     target_lag='5 minutes',
 ) }}
 
