@@ -166,24 +166,41 @@ SnowflakeDynamicTableConfig.__init__() missing 6 required positional arguments: 
 ```
 Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`. 
 
-## Semantic View
-[Snowflake's Semantic View](https://docs.snowflake.com/user-guide/views-semantic/overview) offers a powerful, native schema object for centralizing key metric definitions, directly addressing the core issue of fragmented metric logic that erodes data trust across various BI and analytics environments.
+## Semantic Views
+[Snowflake Semantic Views](https://docs.snowflake.com/en/user-guide/views-semantic/overview) provide a native schema object for centralizing metric definitions and reducing fragmented metric logic across BI and analytics tools.
 
-The [dbt_semantic_view package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/) allows developers to fully integrate the governance of their Snowflake Semantic Views into their existing dbt workflows, thereby extending dbt's strengths in version control, testing, and CI/CD directly to their centralized semantic layer.
+Use the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/) to define and manage Snowflake Semantic Views in your dbt project. This lets you keep Semantic View definitions in version control and apply your existing testing and CI/CD workflows to your <Constant name="semantic_layer" />.
 
-### Install the Package
-Import the package in `packages.yml`.
-```cmd
+### Install the package
+:::note Prerequisite
+This package requires `dbt` version `>=1.0.0, <2.0.0`. For the latest compatibility details, refer to the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/).
+:::
+
+Add `dbt_semantic_view` to your `packages.yml` file:
+
+```yaml
 packages:
   - package: Snowflake-Labs/dbt_semantic_view
+    version: 1.0.3
 ```
-> Please refer to the [package hub page: dbt_semantic_view](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/) for detailed installation instructions.
+
+Run `dbt deps` to install package dependencies:
+
+```shell
+dbt deps
+```
+
+Verify the package was installed by confirming `dbt_semantic_view` is present in your `dbt_packages/` directory.
 
 ### Highlighted features
-- Materialize models with Semantic View
 
-Define and manage the full structure of the Snowflake Semantic View, including its entities, relationships, and precise metric logic (FACTS, DIMENSIONS, METRICS), using familiar dbt project files.
-> The example below is adapted from [Getting Started with Snowflake Semantic View](https://quickstarts.snowflake.com/guide/snowflake-semantic-view/index.html?index=..%2F..index#3).
+The `dbt_semantic_view` package includes the following features for defining and managing Snowflake Semantic Views in dbt projects.
+
+#### Materialize models as Snowflake Semantic Views
+
+Use the `semantic_view` materialization to define Snowflake Semantic Views in dbt, including tables, relationships, facts, dimensions, and metrics.
+
+The example below is adapted from [Getting Started with Snowflake Semantic View](https://quickstarts.snowflake.com/guide/snowflake-semantic-view/index.html?index=..%2F..index#3).
 ```sql
 {{ config(materialized='semantic_view') }}
 
@@ -206,7 +223,7 @@ relationships (
 facts (
     ITEM.COST as i_wholesale_cost,
     ITEM.PRICE as i_current_price,
-    STORE.TAX_RATE as S_TAX_PRECENTAGE,
+    STORE.TAX_RATE as S_TAX_PERCENTAGE,
     STORESALES.SALES_QUANTITY as SS_QUANTITY
 )
 dimensions (
@@ -244,9 +261,11 @@ metrics (
 )
 ```
 
-- Reference Semantic Views in other dbt models
+When you run dbt, this model compiles to a Snowflake `CREATE SEMANTIC VIEW` statement.
 
-While referencing external Semantic Views via `source()` remains supported, the new materialization introduces native support for the `ref()` function. This crucial feature allows internally defined Semantic Views to be treated as first-class foundational components in your DAG, simplifying metric consumption for all downstream dbt models.
+#### Reference Semantic Views in other dbt models
+
+Use `ref()` for Semantic Views defined in your dbt project, and use `source()` for existing external Semantic Views.
 
 ```sql
 {{ config(materialized='view') }}
@@ -271,22 +290,23 @@ select * from semantic_view(
 
 ```
 
-- Privilege Management: 
+#### Manage privileges with `copy_grants`
 
-Streamline governance by automatically propagating grants and privileges with `COPY GRANTS` from the Semantic View to dependent roles using dbt's native configuration.
+Use `copy_grants` to apply Snowflake `COPY GRANTS` behavior to Semantic Views.
 
 In `dbt_project.yml`:
-```yml
+```yaml
 models:
   project_name:
     +copy_grants: true
 ```
 
 In `models/my_materialized_semantic_view.yml`:
-```yml
+```yaml
 models:
-  config:
-    copy_grants: true
+  - name: my_materialized_semantic_view
+    config:
+      copy_grants: true
 ```
 
 In `models/my_materialized_semantic_view.sql` config specification:
