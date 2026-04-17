@@ -158,7 +158,7 @@ Refer to <a href="https://www.getdbt.com/pricing/">dbt pricing plans</a> for mor
 </DetailsToggle>
 
 <DetailsToggle alt_header="What should I do if the Studio IDE freezes when I open the Lineage tab?">
-If the <Constant name="studio_ide" /> freezes with two or more models open and the **Lineage** tab active, especially when a model has a large or slow-loading DAG, refer to [Studio IDE freezes when opening the Lineage tab](/faqs/Troubleshooting/ide-freezes-lineage-tab-opened) for workarounds and troubleshooting steps.
+If the <Constant name="studio_ide" /> freezes with two or more models open and the **Lineage** tab active, especially when a model has a large or slow-loading DAG, refer to [Studio IDE freezes when opening the Lineage tab](/faqs/Troubleshooting/studio-ide-freezes-lineage-tab) for workarounds and troubleshooting steps.
 </DetailsToggle>
 
 <DetailsToggle alt_header="Can I be a contributor to dbt">
