@@ -33,7 +33,8 @@ Your hostname is the domain you use to access <Constant name="dbt_platform"/>. B
 | Account type | Example Access URL | DBT_HOST value |
 | --- | --- | --- |
 | US multi-tenant | `cloud.getdbt.com` | `cloud.getdbt.com` |
-| Multi-cell | `abc123.us1.dbt.com` | `us1.dbt.com` (set `MULTICELL_ACCOUNT_PREFIX=abc123`) |
+| Multi-cell | `abc123.us1.dbt.com` | `abc123.us1.dbt.com` |
+| Multi-tenant with static subdomain | `abc123.us1.dbt.com` | `abc123.us1.dbt.com` |
 | Single-tenant | `your-company.getdbt.com` | `your-company.getdbt.com` |
 
 For more information on regions and hosting, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).

@@ -5,7 +5,7 @@ description: "Condensed reference for all dbt MCP environment variables."
 id: "mcp-environment-variables"
 ---
 
-This page is a condensed reference for all environment variables used by the local dbt MCP server. For full detail on each variable (including examples and multi-cell configuration), see [Set up local MCP](/docs/dbt-ai/setup-local-mcp).
+This page is a condensed reference for all environment variables used by the local dbt MCP server. For full detail on each variable (including examples), see [Set up local MCP](/docs/dbt-ai/setup-local-mcp).
 
 ## Local CLI
 
@@ -27,13 +27,12 @@ These variables are required for <Constant name="dbt_platform"/> features (Seman
 <SimpleTable>
 | Variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`. Default: `cloud.getdbt.com`. <br /> <br />For multi-cell accounts, use the base hostname (for example, `us1.dbt.com`) and set `MULTICELL_ACCOUNT_PREFIX` separately (for example, `abc123`). |
-| `MULTICELL_ACCOUNT_PREFIX` | Required for multi-cell | Your account prefix (for example, `abc123` from `abc123.us1.dbt.com`). Do not include this in `DBT_HOST`. |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` and `https://cloud.getdbt.com`. Default: `cloud.getdbt.com`. <br /> <br />For multi-cell and multi-tenant accounts with a static subdomain, include the full hostname — for example, `DBT_HOST=abc123.us1.dbt.com`. You no longer need to separate the prefix using `MULTICELL_ACCOUNT_PREFIX`. |
 | `DBT_TOKEN` | Required | A service token or Personal Access Token (PAT). <br /> <br />The `execute_sql` tool requires a PAT — service tokens _do not_ work for that tool. |
 | `DBT_PROD_ENV_ID` | Required | Your production environment ID (numeric integer). |
 | `DBT_DEV_ENV_ID` | Required for `execute_sql` | Your development environment ID (numeric integer). |
 | `DBT_USER_ID` | Required for `execute_sql` | Your numeric user ID. |
-| `DBT_ACCOUNT_ID` | Required for Admin API | Your numeric account ID. |
+| `DBT_ACCOUNT_ID` | Required for Admin API and PAT-based auth | Your numeric account ID. Required when using a Personal Access Token (PAT) as your `DBT_TOKEN`. |
 </SimpleTable>
 
 See [Finding your IDs](/docs/dbt-ai/mcp-find-ids) for step-by-step instructions on locating each value.
