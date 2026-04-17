@@ -9,7 +9,7 @@ If the <Constant name="studio_ide" /> freezes with two or more models open and t
 
 ### Why this happens
 
-The <Constant name="studio_ide" /> can freeze when the **Lineage** tab is open or loads automatically, and when two or more models are open, especially if one model has a large or slow-loading <Term id="dag" />.
+The <Constant name="studio_ide" /> can freeze when the **Lineage** tab is open or loads automatically, and when two or more models are open, especially if a model has a large or slow-loading <Term id="dag" />.
 
 ## What you might observe
 
