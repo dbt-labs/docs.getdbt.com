@@ -20,7 +20,13 @@ meta:
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Databricks to Fusion <Lifecycle status='preview' />
+# Connect Databricks to Fusion <Lifecycle status='private_preview' />
+
+:::note private preview
+
+The Databricks adapter is supported on the <Constant name="fusion_engine" />, but due to it's status as `Private Preview` it might not register as a supported adapter in some workflows in the <Constant name="dbt_platform" /> interface.
+
+:::
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
