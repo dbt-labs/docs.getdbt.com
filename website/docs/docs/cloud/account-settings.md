@@ -4,8 +4,6 @@ sidebar_label: "Account settings"
 description: "Learn how to enable account settings for your dbt users."
 ---
 
-import UniversalLogin from '/snippets/_universal-login.md';
-
 The following sections describe the different **Account settings** available from your <Constant name="dbt" /> account in the sidebar (under your account name on the lower left-hand side). 
 
 <Lightbox src="/img/docs/dbt-cloud/example-sidebar-account-settings.png" title="Example of Account settings from the sidebar" /> 
@@ -51,10 +49,6 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 ## Account access and enablement
 
-### Enable universal login url {#enable-universal-login-url}
-
-<UniversalLogin />
-
 ### Enabling dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
 
 [<Constant name="copilot" />](/docs/cloud/dbt-copilot) is an AI-powered assistant fully integrated into your dbt experience and is designed to accelerate your analytics workflows.
@@ -79,6 +73,17 @@ You can bring [external metadata](/docs/explore/external-metadata-ingestion) int
 
 To use external metadata ingestion, you must be an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="catalog" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option from your account settings. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
 
+### Enable global account discovery
+
+When **Enable global account discovery** is on, users can discover all accounts associated with their email address at login. Users still access accounts using their credentials or the account's designated auth method (for example, SSO).
+
+:::note
+`login.dbt.com` is currently available for multi-tenant accounts with an account-specific domain (for example, `abc123.us1.dbt.com`). Support for single-tenant accounts is coming soon. In the meantime, single-tenant users can sign in directly using their account **Access URL**.
+:::
+
+Disabling this setting means users must know their [account URL](/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account) to log in; they will not see a list of accounts at login.
+
+To change this setting, select or clear the **Enable global account discovery** option in your account settings. If you disable it, a confirmation pop-up box explains that users will need the account URL to log in and access the account.
 
 ## Project settings history
 

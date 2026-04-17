@@ -6,6 +6,6 @@ For SSO with your identity provider using your account **login URL slug**, you c
 
 `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`
 
-Account administrators can turn universal login on or off with **Enable universal login url** in [Account settings](/docs/cloud/account-settings#enable-universal-login-url).
+Account administrators can turn account discovery on or off with **Enable global account discovery** in [Account settings](/docs/cloud/account-settings#enable-global-account-discovery).
 
 :::

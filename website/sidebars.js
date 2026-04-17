@@ -31,6 +31,7 @@ const sidebarSettings = {
       items: [
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/browsers",
+        "docs/cloud/about-cloud/login",
         "docs/cloud/about-cloud/change-your-dbt-cloud-theme",
         "docs/cloud/about-cloud/dbt-cloud-features",
         "docs/cloud/about-cloud/access-regions-ip-addresses",
