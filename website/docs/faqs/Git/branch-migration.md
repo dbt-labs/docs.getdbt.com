@@ -24,7 +24,7 @@ For steps to disconnect and reconnect your repository in the <Constant name="dbt
 
 </Expandable>
 
-<Expandable alt_header="New repository">
+<Expandable alt_header="Branches missing after creating a new repository">
 
 Branches may not appear after you create a new repository.
 
