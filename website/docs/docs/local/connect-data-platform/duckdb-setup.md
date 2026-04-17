@@ -32,63 +32,21 @@ The DuckDB adapter is built into the <Constant name="fusion" /> CLI. To get star
 
 <Constant name="fusion" /> ships with a built-in DuckDB driver. However, this bundled driver **does not support loading DuckDB extensions** (such as `httpfs`, `parquet`, `spatial`, etc.).
 
-To use DuckDB extensions with <Constant name="fusion" />, install `libduckdb` on your system. <Constant name="fusion" /> checks for a system-installed DuckDB driver first and falls back to the bundled driver if none is found.
+To use DuckDB extensions with <Constant name="fusion" />, install the DuckDB driver with [`dbc`](https://docs.columnar.tech/dbc/#__tabbed_2_4). <Constant name="fusion" /> checks for a system-installed DuckDB driver first and falls back to the bundled driver if none is found.
 
-You can install DuckDB from the [official DuckDB installation page](https://duckdb.org/docs/installation/). Once installed, extensions listed in your `profiles.yml` will load normally.
-
-### Configure your profile
-
-To connect dbt to DuckDB, set up your `profiles.yml`. The only required field (besides `type: duckdb`) is `path`:
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-your_profile_name:
-  target: dev
-  outputs:
-    dev:
-      type: duckdb
-      path: /path/to/database_name.duckdb
-      schema: main   # optional; defaults to main
-      threads: 4     # optional
-```
-
-</File>
-
-| Profile field | Required | Description | Example |
-| --- | --- | --- | --- |
-| `type` | Yes | The adapter type. | `duckdb` |
-| `path` | Yes | Path to the DuckDB database file. Created automatically if it doesn't exist. Use `:memory:` for an in-memory database. | `./jaffle_shop.duckdb` |
-| `schema` | No | The schema name where dbt creates objects. | Default: `main` |
-| `threads` | No | Number of threads dbt uses when building models concurrently. | Default: `1` |
-| `extensions` | No | List of [DuckDB extensions](https://duckdb.org/docs/extensions/overview) to load at startup. Requires a [system-installed DuckDB driver](#driver-and-extensions). | `httpfs`, `parquet` |
-| `settings` | No | Map of [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) to set at startup. | `s3_region: us-east-1` |
-
-For detailed configuration options (MotherDuck, extensions, secrets, attach, external files, and more), refer to [DuckDB configurations](/reference/resource-configs/duckdb-configs).
+For connection examples and shared profile settings, refer to [Connecting to DuckDB](#connecting-to-duckdb).
 
 ### Limitations
 
 The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features available in the `dbt-duckdb` adapter for dbt Core are not yet supported.
 
-**Adapter features not yet supported** &mdash; Track progress in [dbt-fusion#1593](https://github.com/dbt-labs/dbt-fusion/issues/1593):
-- Python models
-- External source reads via `external_location`
-- External materialization
-- Seeds and seed configs (including `+all_varchar`)
-- Plugins, `module_paths`, and custom UDF loading
-- `table_function` materialization
+Current adapter feature parity work is tracked in [dbt-fusion#1593](https://github.com/dbt-labs/dbt-fusion/issues/1593).
 
-**Current SQL analysis gaps** &mdash; Track progress in [dbt-fusion#1464](https://github.com/dbt-labs/dbt-fusion/issues/1464):
-- Nested types (`LIST`, `MAP`, `STRUCT`)
-- `PIVOT` and `UNPIVOT`
-- `ASOF` and `POSITIONAL` joins
-- Custom types and enums (`CREATE TYPE`, `ENUM`)
+Current SQL analysis gaps are tracked in [dbt-fusion#1464](https://github.com/dbt-labs/dbt-fusion/issues/1464).
 
 #### Static analysis and local flat files
 
-<Constant name="fusion_engine" /> performs static analysis on your SQL models to determine column types and lineage without executing queries. If your models reference local flat files (CSV, Parquet, or JSON) through DuckDB's `read_csv()`, `read_parquet()`, or `read_json()` functions, <Constant name="fusion" /> may not be able to infer the schema of those files at analysis time. As a result, you may see type-resolution warnings or compilation errors even when the query would succeed at runtime.
-
-<!-- TODO: link to concept page for static analysis and discussion page when available -->
+<Constant name="fusion_engine" /> performs static analysis on your SQL models to determine column types and lineage without executing queries. If your models reference local flat files (CSV, Parquet, or JSON) through DuckDB's `read_csv()`, `read_parquet()`, or `read_json()` functions, <Constant name="fusion" /> may not be able to infer the schema of those files at analysis time. As a result, you may see type-resolution warnings or compilation errors even when the query would succeed at runtime. To learn more, refer to [New concepts](/docs/fusion/new-concepts).
 
 </VersionBlock>
 
@@ -111,6 +69,19 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 ## Connecting to DuckDB
 
 [DuckDB](https://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. There are several ways to connect dbt to DuckDB depending on where you want your data to live.
+
+Configure your `profiles.yml` using the examples below. `type: duckdb` is always required. Use `path` for local files or MotherDuck connection strings, and use `:memory:` or omit `path` for an in-memory database.
+
+| Profile field | Description | Example |
+| --- | --- | --- |
+| `type` | The adapter type. | `duckdb` |
+| `path` | Path to a DuckDB database file, a MotherDuck `md:` connection string, or `:memory:` for an in-memory database. | `./jaffle_shop.duckdb` |
+| `schema` | The schema name where dbt creates objects. | `main` |
+| `threads` | Number of threads dbt uses when building models concurrently. | `4` |
+| `extensions` | List of [DuckDB extensions](https://duckdb.org/docs/extensions/overview) to load at startup. | `httpfs`, `parquet` |
+| `settings` | Map of [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) to set at startup. | `s3_region: us-east-1` |
+
+If you're using <Constant name="fusion" />, loading extensions requires the DuckDB driver described above.
 
 ### In-memory
 

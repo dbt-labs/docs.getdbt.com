@@ -83,7 +83,7 @@ Each entry must include an `fs` property that identifies the `fsspec` protocol t
 
 ## Arbitrary ATTACH options
 
-You can use the `options` dictionary to pass any additional key-value pairs to DuckDB's `ATTACH` statement. This allows you to take advantage of new DuckDB features without waiting for explicit support in `dbt-duckdb`:
+For the basic `attach` profile syntax, refer to [Connecting to DuckDB](/docs/local/connect-data-platform/duckdb-setup#attaching-additional-databases). Use the `options` dictionary when you need to pass additional key-value pairs to DuckDB's `ATTACH` statement:
 
 ```yml
 attach:
@@ -154,6 +154,8 @@ from {{ ref('upstream_model') }}
 `partition_by` is accepted as an alias for `partitioned_by`. This setting is only applied for DuckLake relations; on non-DuckLake targets it is ignored with a warning.
 
 DuckLake applies partitioning via `ALTER TABLE ... SET PARTITIONED BY (...)`, and partitioning only affects new data. For first builds or full refreshes, `dbt-duckdb` creates an empty table, sets partitioning, then inserts data so the initial load is partitioned. Refer to the [DuckLake partitioning documentation](https://ducklake.select/docs/stable/duckdb/advanced_features/partitioning) for more details.
+
+<VersionBlock lastVersion="1.99">
 
 ## Plugins
 
@@ -337,6 +339,8 @@ Example invocation with parameters:
 ```sql
 select * from {{ ref("my_table_function_with_parameters") }}(1, 2)
 ```
+
+</VersionBlock>
 
 ## Incremental strategies
 

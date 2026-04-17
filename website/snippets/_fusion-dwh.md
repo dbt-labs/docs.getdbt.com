@@ -10,10 +10,6 @@
     - Native OAuth
   </Expandable>
 
-  <Expandable alt_header="DuckDB (Fusion CLI only)">
-    - No authentication required &mdash; DuckDB runs locally
-  </Expandable>
-
   <Expandable alt_header="Redshift">
     - Username / Password
     - IAM profile
