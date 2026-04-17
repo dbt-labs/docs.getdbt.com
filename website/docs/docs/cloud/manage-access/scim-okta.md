@@ -20,26 +20,31 @@ System for Cross-Domain Identity Management (SCIM) [license mapping](/docs/cloud
 
 ## Set up Okta
 
-1. Log in to your Okta account and locate the app configured for the <Constant name="dbt" /> SSO integration.
-2. Navigate to the **General** tab and ensure **Enable SCIM provisioning** is selected or the **Provisioning** tab will not be displayed. 
-    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-provisioned.png" width="60%" title="Enable SCIM provisioning in Okta." />
-3. Open the **Provisioning** tab and select **Integration**.
-4. Enter the **SCIM base URL** from [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) in the first field, then enter your preferred **Unique identifier field for users** &mdash; we recommend `userName`.
-5. Select the boxes for the following **Supported provisioning actions**:
+1. Log in to your Okta account and select **Applications** from the sidebar. Open the application you configured for SSO. 
+2. Click on the app and navigate to the **General** tab.
+3. In **App Settings**, click **Edit** and make sure you check the **SCIM** checkbox on the **Provisioning** row to enable SCIM provisioning. 
+4. Click **Save** and the **Provisioning** tab will now be visible.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-provisioned.png" width="80%" title="Enable SCIM provisioning in Okta." />
+5. Open the **Provisioning** tab and select **Integration**.
+6. Click **Edit** and enter the **SCIM base URL** from [Set up SCIM](/docs/cloud/manage-access/scim#set-up-dbt) in the first field. For **Unique identifier field for users**, we recommend `userName`.
+7. Under **Supported provisioning actions**, select:
     - **Push New Users**
     - **Push Profile Updates**
     - **Push Groups**
     - **Import New Users and Profile Updates** (Optional for users created before SSO/SCIM setup)
-6. From the **Authentication mode** dropdown, select **HTTP Header**.
-7. In the **Authorization** section, enter the token from <Constant name="dbt" /> into the **Bearer** field.
-    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="60%" title="The completed SCIM configuration in the Okta app." />
-8. Ensure the following provisioning actions are selected:
+    - **Import Groups** (Optional)
+8. For **Authentication mode** dropdown, select **HTTP Header**.
+9. In the **Authorization** section, enter the token from <Constant name="dbt" /> into the **Bearer** field.
+    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-okta-config.png" width="80%" title="The completed SCIM configuration in the Okta app." />
+10. Click **Save** to test the connection and you will be taken to the **Provisioning** tab.
+11. Click **Edit** and ensure the following provisioning actions are selected:
     - **Create Users**
     - **Update User Attributes**
     - **Deactivate Users**
-    <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning-actions.png" width="60%" title="Ensure the users are properly provisioned with these settings." />
+    <Lightbox src="/img/docs/dbt-cloud/access-control/provisioning-actions.png" width="70%" title="Ensure the users are properly provisioned with these settings." />
 
-9. Test the connection and click **Save** once completed. 
+12. Click **Save** to complete the provisioning configuration. 
+13. To complete your group setup, go to **Push Groups** and push your Okta groups to <Constant name="dbt_platform" />. This makes the groups available in <Constant name="dbt_platform" />. Then, an admin must assign the [required permissions](/docs/cloud/manage-access/enterprise-permissions) to each group.
 
 You've now configured SCIM for the Okta SSO integration in <Constant name="dbt_platform" />. You can [manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses) to set license type for users as they are provisioned.
 
@@ -64,7 +69,7 @@ To automate seat assignments in Okta for users as they are provisioned, see [Man
 
 ## Existing Okta integrations
 
-If you are adding SCIM to an existing Okta integration in <Constant name="dbt" /> (as opposed to setting up SCIM and SSO concurrently for the first time), be aware of the following behavior:
+If you are adding SCIM to an existing Okta integration in <Constant name="dbt_platform" /> (as opposed to setting up SCIM and SSO concurrently for the first time), be aware of the following behavior. Refer to [SCIM FAQ](/docs/cloud/manage-access/scim-faq) for more details on what happens to pre-existing users:
 
 - Users and groups already synced to <Constant name="dbt" /> will become SCIM-managed once you complete the SCIM configuration.
 - (Recommended) Import and manage existing <Constant name="dbt" /> groups and users with Okta's **Import Groups** and **Import Users** features. Update the groups in your IdP with the same naming convention used for <Constant name="dbt" /> groups. New users, groups, and changes to existing profiles will be automatically imported into <Constant name="dbt" />.
@@ -73,3 +78,7 @@ If you are adding SCIM to an existing Okta integration in <Constant name="dbt" /
     - Read more about this feature in the [Okta documentation](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-groups-app-provisioning.htm).
 
 To set license type for users as they are provisioned, see [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
+
+## FAQ and troubleshooting
+
+For common questions about SCIM provisioning with Okta — including onboarding workflows, SSO group mapping behavior, and troubleshooting, refer to [SCIM FAQs and troubleshooting](/docs/cloud/manage-access/scim-faq).

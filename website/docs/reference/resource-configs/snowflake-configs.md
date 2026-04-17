@@ -218,8 +218,10 @@ models:
 | Parameter          | Type       | Required | Default     | Change Monitoring Support |
 |--------------------|------------|----------|-------------|---------------------------|
 | [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
-| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`target_lag`](#target-lag)      | `<string>` | no      |        | alter          |
+| [`scheduler`](#scheduler)       | `<string>` | no       | `DISABLE`   | alter          |
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+| [`snowflake_initialization_warehouse`](#initialization-warehouse)   | `<string>` | no       | `None`      | alter  |
 | [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
 | [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
 | [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
@@ -247,7 +249,9 @@ models:
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[scheduler](#scheduler): ENABLE | DISABLE
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
     [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
@@ -273,9 +277,11 @@ models:
       [materialized](/reference/resource-configs/materialized): dynamic_table
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [target_lag](#target-lag): downstream | <time-delta>
+      [scheduler](#scheduler): ENABLE | DISABLE
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL 
-      [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+      [snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE
       [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
       [immutable_where](#immutable-where): <condition>
       [transient](#transient-dynamic-tables): true | false
@@ -297,7 +303,9 @@ models:
     [materialized](/reference/resource-configs/materialized)="dynamic_table",
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [scheduler](#scheduler)="ENABLE" | "DISABLE",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [snowflake_initialization_warehouse](#initialization-warehouse)="<warehouse-name>",
     [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
     [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
     [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
@@ -324,7 +332,75 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 - **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
 - **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
 
+<VersionBlock firstVersion="1.12">
+
+#### How `target_lag` interacts with `scheduler`
+
+`target_lag` works with [`scheduler`](#scheduler) to determine how dynamic table refreshes are managed:
+
+<SimpleTable>
+
+| `target_lag` | `scheduler` | Behavior |
+|---|---|---|
+| Set | `ENABLE` or omitted | Snowflake manages refreshes automatically. If `scheduler` is omitted, dbt defaults to `ENABLE`. |
+| Not set | `DISABLE` or omitted | dbt manages refreshes during model execution. If `scheduler` is omitted, dbt defaults to `DISABLE`. |
+| Set | `DISABLE` | Invalid: `DISABLE` does not accept `target_lag`. dbt raises an error. |
+| Not set | `ENABLE` | Invalid: `ENABLE` requires `target_lag`. dbt raises an error. |
+
+</SimpleTable>
+
+</VersionBlock>
+
 Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag). Please note that Snowflake supports a target lag of 1 minute or longer.
+
+<VersionBlock firstVersion="1.12">
+
+### Scheduler
+
+The `scheduler` parameter controls whether the dynamic table is refreshed by Snowflake's background scheduler or by an external orchestrator (for example, dbt). Snowflake accepts two options:
+- **ENABLE** &mdash; Snowflake's built-in scheduler automatically refreshes the dynamic table based on the defined `target_lag`. Refreshes cascade across the dependency graph to maintain snapshot consistency. Setting `target_lag` is _required_ when using this option. 
+- **DISABLE** &mdash; The dynamic table is excluded from Snowflake's automatic background refresh. You must trigger refreshes manually or through orchestration external to Snowflake (for example, by a `dbt run` that executes `ALTER DYNAMIC TABLE ... REFRESH`). When this option is explicitly set, specifying `target_lag` results in an error.
+
+:::info dbt default differs from Snowflake's native default
+In Snowflake's native DDL, omitting `SCHEDULER` defaults to `ENABLE`, and `TARGET_LAG` is required.
+
+In dbt, the default value is `DISABLE`. If neither `scheduler` nor `target_lag` is specified, dbt creates the dynamic table with `scheduler: DISABLE` and manages refreshes directly.
+
+If you specify `target_lag` without explicitly setting `scheduler`, dbt sets `scheduler: ENABLE`.
+:::
+
+**Key points:**
+- Explicitly setting `scheduler: DISABLE` together with `target_lag` results in an error. If you omit `scheduler` and provide `target_lag`, dbt resolves the conflict by setting `scheduler: ENABLE` automatically.
+- When `scheduler: DISABLE`, a manual refresh does _not_ automatically refresh upstream dynamic table dependencies. This creates an isolation boundary, allowing dbt to manage specific table refreshes without triggering the entire pipeline. In contrast, `ENABLE` cascades refreshes across the dependency graph.
+- If a dynamic table with `scheduler: DISABLE` depends on other dynamic tables, those upstream tables will not be refreshed when the downstream table is refreshed. dbt must manage the refresh order explicitly.
+
+For example, to let dbt manage refreshes (default behavior):
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+To enable Snowflake-managed scheduling with a target lag:
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+    scheduler='ENABLE',
+    target_lag='5 minutes',
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+Learn more about `scheduler` in [Snowflake's docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table#optional-parameters).
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -406,6 +482,32 @@ For example:
 
 select * from {{ source('raw', 'events') }}
 ```
+
+### Initialization warehouse
+
+Snowflake supports an `INITIALIZATION_WAREHOUSE` parameter that specifies which virtual warehouse to use when initializing or reinitializing a dynamic table. 
+
+Starting `dbt-snowflake` v1.12, you can use the `snowflake_initialization_warehouse` parameter to configure this. This is separate from the `snowflake_warehouse` parameter used for regular incremental refreshes. By setting `snowflake_initialization_warehouse`, you can use a larger warehouse for the initial build and reinitialization, while keeping `snowflake_warehouse` smaller for regular refreshes.
+
+To configure the `snowflake_initialization_warehouse` parameter, refer to the following example:
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='COMPUTE_WH',
+    snowflake_initialization_warehouse='LARGE_WH',
+    target_lag='1 minute'
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+**Key points:**
+- If `snowflake_initialization_warehouse` is not set, Snowflake uses `snowflake_warehouse` for both initialization and regular refreshes.
+- You can change `snowflake_initialization_warehouse` on an existing dynamic table without a full refresh.
+- To revert to the default behavior after setting an initialization warehouse, either remove the `snowflake_initialization_warehouse` parameter from your model configuration or explicitly set it to `None`.
+
+Learn more about `INITIALIZATION_WAREHOUSE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-warehouses).
 
 </VersionBlock>
 

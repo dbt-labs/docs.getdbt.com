@@ -10,6 +10,16 @@ The `bigquery_use_batch_source_freshness` flag is `False` by default. Setting it
 
 Setting this flag to `True` improves the performance of the `source freshness` command significantly, especially when a project contains a large (1000+) number of sources.
 
+:::caution Using `loaded_at_field` with batch freshness
+With `bigquery_use_batch_source_freshness` enabled, dbt determines freshness from BigQuery metadata tables.
+
+When you configure a `loaded_at_field` on a source, dbt runs a column-based freshness check for that source instead of metadata-based freshness.
+
+However, if `loaded_at_field` is set on _all_ sources, freshness fails with a compilation error (`list object has no element 0` in `get_relation_last_modified`). This occurs because the `bigquery_use_batch_source_freshness` flag assumes at least one source uses metadata-based freshness; configuring `loaded_at_field` on all sources breaks this assumption.
+
+To avoid this, remove `loaded_at_field` from any sources you want checked using batch freshness.
+:::
+
 <VersionBlock firstVersion="1.12">
 
 ## The `bigquery_reject_wildcard_metadata_source_freshness` flag

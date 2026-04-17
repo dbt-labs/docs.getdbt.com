@@ -76,7 +76,9 @@ The <Constant name="studio_ide" /> comes with **CodeGenCodeLens**, a powerful fe
 
 ### dbt YAML validation
 
-Use dbt-jsonschema to validate dbt YAML files, helping you leverage the autocomplete and assistance capabilities of the <Constant name="studio_ide" />. This also provides immediate feedback on YAML file structure and syntax, helping you make sure your project configurations meet the required standards.
+The <Constant name="studio_ide" /> uses JSON Schema from the open source [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project to power YAML completion, structure checks, and inline diagnostics. These schemas are aligned with the <Constant name="fusion_engine" /> specification and apply across [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/cloud-release-tracks), even when your development environment is running <Constant name="core" />.
+
+If a warning looks wrong but <Constant name="dbt" /> commands succeed, trust your project commands and report the discrepancy so the schema can be improved. For background on the latest Semantic Layer YAML shape, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
 ## Get started with the Studio IDE
 
