@@ -283,8 +283,8 @@ Follow these steps to define UDFs in dbt:
       RETURNS INTEGER
       LANGUAGE PYTHON
       RUNTIME_VERSION = '3.11'
-      PACKAGES = ('numpy', 'pandas==1.5.0')
       HANDLER = 'main'
+      PACKAGES = ('numpy', 'pandas==1.5.0')
     AS $$
     import re
     def main(a_string):
@@ -298,7 +298,11 @@ Follow these steps to define UDFs in dbt:
     CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
     RETURNS INT64
     LANGUAGE python
-    OPTIONS(runtime_version="python-3.11", entry_point="main", libraries=["numpy", "pandas==1.5.0"])
+    OPTIONS(
+      runtime_version = "python-3.11",
+      entry_point = "main",
+      packages = ['numpy', 'pandas==1.5.0']
+    )
     AS r'''
       import re
       def main(a_string):
