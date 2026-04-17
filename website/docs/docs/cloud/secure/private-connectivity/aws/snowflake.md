@@ -29,8 +29,11 @@ This section walks you through the setup of an AWS-hosted Snowflake PrivateLink 
 ### Self-serve private endpoints <Lifecycle status="private_beta" />
 
 :::note
-Self-serve private endpoints are currently in private beta for Snowflake on AWS. This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead.
+Self-serve private endpoints are currently in private beta for Snowflake on AWS. To join the beta, please reach out to your account manager. 
+
+This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead.
 :::
+
 This section walks you through the process of requesting a new Snowflake PrivateLink endpoint in <Constant name="dbt_platform" />. 
 
 1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
