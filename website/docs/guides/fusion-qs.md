@@ -88,7 +88,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 
 1. Run the following command in your terminal to install the <Constant name="fusion_engine" /> CLI:
     ```shell
-    winget install dbtLabs.dbtFusion
+    winget install dbt
     ```
 2. To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
     ```powershell

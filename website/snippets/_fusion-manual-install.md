@@ -25,7 +25,7 @@ If you already have the <Constant name="fusion_engine" /> installed, you can ski
     Run the following command in your terminal:
 
     ```shell
-    winget install dbtLabs.dbtFusion
+    winget install dbt
     ```
 
     To use `dbtf` immediately after installation, reload your shell so that the new `Path` is recognized:
