@@ -294,7 +294,7 @@ DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 
 **Multi-cell and static subdomain configuration example:**
 
-✅ **Correct configuration (as of v1.14.0):**
+✅ **Correct configuration:**
 ```bash
 DBT_HOST=abc123.us1.dbt.com  # Use the full hostname including the prefix
 DBT_ACCOUNT_ID=12345          # Required when using PAT-based auth
