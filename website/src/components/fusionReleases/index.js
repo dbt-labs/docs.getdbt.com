@@ -2,6 +2,18 @@ import React, { useState, useMemo } from "react";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import styles from "./styles.module.css";
 
+const CHANGELOG_BASE =
+  "https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md";
+
+function versionToAnchor(version) {
+  // GitHub heading anchor: lowercase, strip leading "v", remove non-word/non-hyphen chars, spaces→hyphens
+  return version
+    .replace(/^v/, "")
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+}
+
 const CHANNEL_LABELS = {
   dev: "Dev",
   canary: "Canary",
@@ -67,8 +79,14 @@ function VersionCards({ versions }) {
         {channels.map(([channel, info]) => (
           <div key={channel} className={styles.versionCard}>
             <h4>{CHANNEL_LABELS[channel] || channel}</h4>
-            <code>{info.tag}</code>
-            <span className={styles.versionDate}>{info.date}</span>
+            <a
+              href={`${CHANGELOG_BASE}#${versionToAnchor(info.tag)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code>{info.tag}</code>
+            </a>
+            <span className={styles.versionDate}>{info.date}</span> 
           </div>
         ))}
       </div>
@@ -93,10 +111,19 @@ function ReleaseItem({ version, data }) {
       ? latestRelease.reason
       : JSON.stringify(latestRelease.reason));
 
+  const changelogUrl = `${CHANGELOG_BASE}#${versionToAnchor(version)}`;
+
   return (
     <div className={styles.releaseItem}>
       <div className={styles.releaseHeader}>
-        <span className={styles.versionTag}>{version}</span>
+        <a
+          href={changelogUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.versionTag}
+        >
+          {version}
+        </a>
         {data.known_bad ? (
           <span className={styles.badgeBad}>Known Bad</span>
         ) : (
