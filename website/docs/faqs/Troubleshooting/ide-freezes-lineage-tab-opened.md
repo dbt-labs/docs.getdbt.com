@@ -66,4 +66,4 @@ If freezing continues after trying these workarounds, [contact dbt Support](mail
 - Your account URL
 - Browser and version
 - Approximate number of open model tabs
-  - Whether the issue happens only when the **Lineage** tab is active
+- Whether the issue happens only when the **Lineage** tab is active
