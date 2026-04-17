@@ -70,7 +70,7 @@ To take advantage of the upgrade assistant, you'll need to meet the following pr
 
 #### Assign access to upgrade
 
-The <Constant name="fusion" /> upgrade assistant and readiness panel are controlled by two account-level settings that an admin must configure.
+The <Constant name="fusion" /> readiness & upgrade flow are controlled by two account-level settings that an admin must configure.
 
 Step 1: Enable Fusion readiness features (required)
 
@@ -81,11 +81,11 @@ The upgrade assistant and readiness panel only appear after enabling this settin
 3. Click the box next to **Enable Fusion readiness & upgrade features**.
 4. Click **Save**.
 
-Once enabled, all admins and developers can see each project's Fusion readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions).
+Once enabled, all admins and developers can see each project's Fusion readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
 
 Step 2: Restrict upgrade access (optional, Enterprise/Enteprise Plus only)
 
-By default, any user who can see the upgrade assistant can use it. To restrict upgrade execution to users with the `Fusion admin` permission set, enable this additional setting. From your **Account settings**:
+By default, all admins and developer-licensed users can access the <Constant name="fusion" /> readiness & upgrade flow. To restrict upgrade execution to users with the `Fusion admin` permission set, enable this additional setting. From your **Account settings**:
 
 1. Navigate to the **Account** screen.
 2. Click **Edit** and scroll to the **Settings** section.

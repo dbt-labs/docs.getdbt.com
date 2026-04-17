@@ -11,7 +11,7 @@ The <Constant name="fusion_engine" /> is here! We currently offer it as a [priva
 
 :::note Enable the Fusion readiness panel
 
-The Fusion readiness panel in the <Constant name="dbt_platform" />, which shows each project's eligibility status and blockers, is only visible after an account admin enables **Enable Fusion readiness & upgrade features** in **Account settings** → **Account**. You can work through this checklist at any time, but you'll need that setting enabled to track your readiness status in the UI. See [Enable Fusion readiness features](/guides/prepare-fusion-upgrade?step=2) for setup steps.
+The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" />, which shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically turned on for your account yet, an account admin can manually enable the **Enable Fusion readiness & upgrade features** in **Account settings** → **Account**. See [Enable Fusion readiness features](/guides/prepare-fusion-upgrade?step=2) for setup steps.
 
 :::
 

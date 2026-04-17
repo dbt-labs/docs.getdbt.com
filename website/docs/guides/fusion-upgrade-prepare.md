@@ -43,7 +43,7 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 ## Enable Fusion readiness features
 
-Before your team can view <Constant name="fusion" /> readiness status or access the upgrade assistant, an account admin must enable the <Constant name="fusion" /> readiness experience in your account settings. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
+The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" />, which shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically turned on for your account yet, an account admin can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
 
 ### Step 1: Enable the readiness toggle
 
@@ -73,7 +73,7 @@ The **Enable restricted Fusion upgrade permissions** toggle is only available to
 
 When enabled, only users assigned the `Fusion admin` permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, see [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
 
-### Using the Fusion readiness panel
+### The Fusion readiness panel
 
 With the readiness experience enabled, you can monitor your project's eligibility as you work through the preparation steps below. The panel shows which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
 
