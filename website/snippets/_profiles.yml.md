@@ -47,7 +47,7 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 
 1. `--profiles-dir` flag
 2. `DBT_ENGINE_PROFILES_DIR` environment variable
-3. `DBT_PROFILES_DIR` legacy environment variable (discouraged)
+3. `DBT_PROFILES_DIR` environment variable (legacy variable but supported for backward compatibility)
 4. Current working directory
 5. `~/.dbt/` directory (Recommended location)
 
