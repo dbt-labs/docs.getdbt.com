@@ -66,10 +66,6 @@ Release notes are grouped by date for single-tenant environments.
   
 -  **Parent folder hint shown for all new files**: Files created inside a new folder now always display the parent folder name as a hint in the Git Controls panel, even when the file name is unique across all changed files.
 
-### APIs, Identity, and Administration
-
-- **Deadlock responses return 503 instead of 500**: Database deadlocks now return a `503 Service Unavailable` response rather than an unhandled `500` error, allowing clients to retry safely.
-
 ## April 8, 2026
 
 ## New
