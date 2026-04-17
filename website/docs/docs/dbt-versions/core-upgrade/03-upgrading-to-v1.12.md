@@ -85,7 +85,9 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
-- You can configure the [`scheduler`](/reference/resource-configs/snowflake-configs#scheduler) parameter on Snowflake dynamic tables to control whether Snowflake manages refresh scheduling (`ENABLE`) or dbt does (`DISABLE`). When `scheduler` is set to `ENABLE`, `target_lag` is required. For more information, refer to [Snowflake configurations](/reference/resource-configs/snowflake-configs#scheduler).
+- You can configure the [`scheduler`](/reference/resource-configs/snowflake-configs#scheduler) parameter on Snowflake dynamic tables to control how refreshes are managed. Setting it to `ENABLE` lets Snowflake automatically refresh the dynamic table, while `DISABLE` means dbt manages refreshes during model execution. When `scheduler` is set to `ENABLE`, you must also specify [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag). 
+
+    By default, dbt sets `scheduler` to `DISABLE` (unlike Snowflake’s native default of `ENABLE`), so dbt controls the refresh schedule unless you explicitly opt in to Snowflake’s scheduler.
 - You can use the [`snowflake_initialization_warehouse`](/reference/resource-configs/snowflake-configs#initialization-warehouse) parameter to specify a warehouse for the initial build and reinitialization of a dynamic table, separate from `snowflake_warehouse` which is used for regular incremental refreshes.
 - You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. 
 
