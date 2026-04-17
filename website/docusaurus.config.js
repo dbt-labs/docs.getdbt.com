@@ -92,9 +92,6 @@ var siteSettings = {
     announcementBarActive: true,
     announcementBarLink:
       "https://www.getdbt.com/resources/webinars/ship-smarter-agents-building-for-production-with-dbt-agent-skills/?utm_medium=internal&utm_source=docs&utm_campaign=_&utm_content=themed-webinar____&utm_term=all_all__",
-    // Set community spotlight member on homepage
-    // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "original-dbt-athena-maintainers",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -196,15 +193,17 @@ var siteSettings = {
             },
             {
               label: "Community forum",
-              to: "/community/forum",
+              href: "https://discourse.getdbt.com/",
+            },
+            {
+              label: "Webinars",
+              href: "https://www.getdbt.com/resources/webinars",
+              target: "_blank",
             },
             {
               label: "Events",
-              to: "/community/events",
-            },
-            {
-              label: "Spotlight",
-              to: "/community/spotlight",
+              href: "https://www.getdbt.com/events",
+              target: "_blank",
             },
           ],
         },
@@ -280,7 +279,7 @@ var siteSettings = {
               <a href='/community/join'>Join the Community</a>
               <a href="/community/contribute">Become a Contributor</a>
               <a href="https://hub.getdbt.com/" target="_blank">Open Source dbt Packages</a>
-              <a href="/community/forum">Community Forum</a>
+              <a href="https://discourse.getdbt.com/" target="_blank" rel="noreferrer noopener">Community Forum</a>
             </div>
             <div class="footer-grid-item">
               <h5 class="heading-5">Support</h5>
@@ -369,7 +368,6 @@ var siteSettings = {
       path.resolve("plugins/buildGlobalData"),
       { versionedPages, versionedCategories },
     ],
-    path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),

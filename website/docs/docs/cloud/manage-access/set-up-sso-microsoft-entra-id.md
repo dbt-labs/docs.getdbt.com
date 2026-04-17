@@ -106,7 +106,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 | Microsoft Graph | Delegated | `GroupMember.Read.All` | Yes |
 | Microsoft Graph | Delegated | `Directory.AccessAsUser.All` | Optional — may be required if users are assigned to > 200 groups |
 
-The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`.  
+The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`. 
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
 
@@ -176,6 +176,8 @@ Now that you've set up SSO with Entra ID, you can [set up SCIM](/docs/cloud/mana
 Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
+
+For additional troubleshooting &mdash; including "Admin consent required" prompts for new users, "Access Denied" after SAML authentication, and issues with Entity ID or ACS URL changes &mdash; refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
 
 ## Learn more by video
 The following video explains how to set up SSO with Microsoft Entra ID:

@@ -17,6 +17,38 @@ The `run_query` macro provides a convenient way to run queries and fetch their r
 
 Returns a [Table](https://agate.readthedocs.io/page/api/table.html) object with the result of the query. If the specified query does not return results (for example, a <Term id="ddl" />, <Term id="dml" />, or maintenance query), then the return value will be `none`.
 
+<VersionBlock firstVersion="2.0">
+
+## Fusion type checking
+
+The <Constant name="fusion_engine" /> processes result sets with more strict null checking. This can cause failures when using `run_query` for <Term id="ddl" /> or maintenance operations (like `OPTIMIZE`, `VACUUM`). When a given result set returns null values in columns declared as non-nullable, fusion will fail - whereas dbt Core would silently ignore it.
+
+For "fire and forget" operations where you don't need the result set, use a [statement block](/reference/dbt-jinja-functions/statement-blocks) with `fetch_result=False` instead, as highlighted in this Databricks example:
+
+```jinja
+{% macro run_optimize(table, zorder_fields) %}
+  {% set zorder_str = zorder_fields | join(', ') %}
+
+  {% set query %}
+    OPTIMIZE {{ table }}
+    {% if zorder_str | length > 0 %}
+      ZORDER BY ({{ zorder_str }})
+    {% endif %}
+  {% endset %}
+
+  {% call statement('optimize', fetch_result=False) %}
+    {{ query }}
+  {% endcall %}
+{% endmacro %}
+```
+
+
+
+</VersionBlock>
+
+:::info Using run_query for the first time?
+Check out the section of the Getting Started guide on [using Jinja](/guides/using-jinja#dynamically-retrieve-the-list-of-payment-methods) for an example of working with the results of the `run_query` macro!
+:::
 **Note:** The `run_query` macro will not begin a transaction automatically - if you wish to run your query inside of a transaction, please use `begin` and `commit` statements as appropriate.
 
 ### Examples
