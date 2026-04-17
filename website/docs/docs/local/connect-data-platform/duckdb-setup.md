@@ -24,15 +24,15 @@ DuckDB with <Constant name="fusion_engine" /> is the easiest way to get a dbt pr
 
 DuckDB does not require authentication &mdash; it runs locally on your machine.
 
-### Installation
+### Installing dbt-duckdb
 
 The DuckDB adapter is built into the <Constant name="fusion" /> CLI. To get started, [install dbt Fusion](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2#get-started) as the development interface.
 
 #### DuckDB driver and extensions {#driver-and-extensions}
 
-<Constant name="fusion" /> ships with a built-in DuckDB driver. However, this bundled driver **does not support loading DuckDB extensions** (such as `httpfs`, `parquet`, `spatial`, etc.).
+<Constant name="fusion" /> ships with a built-in DuckDB driver. However, this bundled driver does _not_ support loading DuckDB extensions (for example, `httpfs`, `parquet`, or `spatial`).
 
-To use DuckDB extensions with <Constant name="fusion" />, install the DuckDB driver with [`dbc`](https://docs.columnar.tech/dbc/#__tabbed_2_4). <Constant name="fusion" /> checks for a system-installed DuckDB driver first and falls back to the bundled driver if none is found.
+To use [DuckDB extensions](https://duckdb.org/docs/current/extensions/overview) with <Constant name="fusion" />, install the DuckDB driver with [`dbc`](https://docs.columnar.tech/dbc/#__tabbed_2_4). <Constant name="fusion" /> checks for a system-installed DuckDB driver first and falls back to the bundled driver if none is found.
 
 For connection examples and shared profile settings, refer to [Connecting to DuckDB](#connecting-to-duckdb).
 
@@ -40,9 +40,8 @@ For connection examples and shared profile settings, refer to [Connecting to Duc
 
 The DuckDB adapter for <Constant name="fusion" /> is in beta. Some features available in the `dbt-duckdb` adapter for dbt Core are not yet supported.
 
-Current adapter feature parity work is tracked in [dbt-fusion#1593](https://github.com/dbt-labs/dbt-fusion/issues/1593).
-
-Current SQL analysis gaps are tracked in [dbt-fusion#1464](https://github.com/dbt-labs/dbt-fusion/issues/1464).
+- Current adapter feature parity work is tracked in [dbt-fusion#1593](https://github.com/dbt-labs/dbt-fusion/issues/1593).
+- Current SQL analysis gaps are tracked in [dbt-fusion#1464](https://github.com/dbt-labs/dbt-fusion/issues/1464).
 
 #### Static analysis and local flat files
 
@@ -75,7 +74,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 - [MotherDuck](#motherduck)
 - [Attaching additional databases](#attaching-additional-databases)
 
-Configure your `profiles.yml` using the examples below. `type: duckdb` is always required. Use `path` for local files or MotherDuck connection strings, and use `:memory:` or omit `path` for an in-memory database.
+Configure your `profiles.yml` using the following examples. `type: duckdb` is _always_ required. Use `path` for local files or MotherDuck connection strings, and use `:memory:` or omit `path` for an in-memory database.
 
 | Profile field | Description | Example |
 | --- | --- | --- |
@@ -86,7 +85,7 @@ Configure your `profiles.yml` using the examples below. `type: duckdb` is always
 | `extensions` | List of [DuckDB extensions](https://duckdb.org/docs/extensions/overview) to load at startup. | `httpfs`, `parquet` |
 | `settings` | Map of [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) to set at startup. | `s3_region: us-east-1` |
 
-If you're using <Constant name="fusion" />, loading extensions requires the DuckDB driver described above.
+If you're using <Constant name="fusion" />, loading extensions requires you to install the DuckDB driver with [`dbc`](https://docs.columnar.tech/dbc/#__tabbed_2_4). Refer to [DuckDB driver and extensions](#driver-and-extensions) for details.
 
 ### In-memory
 
@@ -178,7 +177,7 @@ For DuckLake, use `ducklake:` for local databases. For MotherDuck-managed DuckLa
 
 ## Extensions
 
-You can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set any additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) via the `settings` field.
+You can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set any additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) in the `settings` field.
 
 <File name='profiles.yml'>
 
