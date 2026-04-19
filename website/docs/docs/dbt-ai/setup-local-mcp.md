@@ -35,7 +35,7 @@ Use this table to understand what each toolset needs and whether it works with o
 :::note Toolsets auto-disable when required variables are missing
 If a required variable is not set, dbt-mcp will automatically disable that toolset rather than error. For example, if `DBT_PROJECT_DIR` or `DBT_PATH` is not configured, the dbt CLI toolset won't be available. To confirm which toolsets are active, set `DBT_MCP_LOG_LEVEL=DEBUG` in your environment and check the [server logs](#debug-configurations).
 
-For platform toolsets (Semantic Layer, Discovery API, Admin API), if `DBT_HOST` is not configured and your MCP client supports [elicitation](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation), dbt-mcp will prompt you to enter your host interactively on the first tool call. See [Interactive setup (elicitation)](#interactive-setup) for details.
+For platform toolsets (Semantic Layer, Discovery API, Admin API), if `DBT_HOST` is not configured and your MCP client supports [elicitation](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation#elicitation), dbt-mcp will prompt you to enter your host interactively on the first tool call. See [Interactive setup (elicitation)](#interactive-setup) for details.
 :::
 
 ## Prerequisites
