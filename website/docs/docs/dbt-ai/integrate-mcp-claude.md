@@ -54,12 +54,16 @@ You can set up Claude Code with both the local and remote `dbt-mcp` server. We r
 
 ### Set up with local dbt MCP server
 
-1. Follow [Set up local MCP](/docs/dbt-ai/setup-local-mcp) and choose the configuration that matches your use case: 
+Claude Code supports [elicitation](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation), so you can use the simplest possible config &mdash; no environment variables needed. dbt-mcp will prompt you for your <Constant name="dbt_platform" /> host and start OAuth on the first tool call. See [Interactive setup](/docs/dbt-ai/setup-local-mcp#interactive-setup) for details.
+
+If you prefer to pre-configure environment variables, follow [Set up local MCP](/docs/dbt-ai/setup-local-mcp) and choose the configuration that matches your use case: 
    - OAuth with the <Constant name="dbt_platform" />
    - [CLI only](/docs/dbt-ai/setup-local-mcp#cli-only)
    - [environment variables](/docs/dbt-ai/setup-local-mcp#environment-variable-configuration) (including an `.env` file with `--env-file` for `dbt-mcp`, if you use that pattern).
-2. Add the same `dbt` server definition to `.mcp.json` at your project root (the repository root for your workspace). Claude Code loads MCP servers from this file. 
-3. Use the same `mcpServers` JSON shape as in [Set up local MCP](/docs/dbt-ai/setup-local-mcp) (`command`, `args`, and `env`, or `args` with `--env-file`), matching the patterns in next [Example config in `.mcp.json`](#example-config-in-mcpjson) section.
+
+Then:
+1. Add the same `dbt` server definition to `.mcp.json` at your project root (the repository root for your workspace). Claude Code loads MCP servers from this file. 
+2. Use the same `mcpServers` JSON shape as in [Set up local MCP](/docs/dbt-ai/setup-local-mcp) (`command`, `args`, and `env`, or `args` with `--env-file`), matching the patterns in next [Example config in `.mcp.json`](#example-config-in-mcpjson) section.
 
 If you already completed local MCP setup for another client, reuse that `dbt` entry in `.mcp.json` &mdash; you don't need a second, separate registration step for Claude Code.
 

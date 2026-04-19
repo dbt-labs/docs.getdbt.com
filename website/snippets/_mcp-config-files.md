@@ -6,6 +6,8 @@ This option is for users who only want dbt platform features (Discovery API, Sem
 
 When you use only the dbt platform, the CLI tools are automatically disabled. You can find the `DBT_HOST` field value in your dbt platform account information under **Access URLs**.
 
+**Tip:** If your MCP client supports [elicitation](/docs/dbt-ai/setup-local-mcp#interactive-setup) (like Claude Code), you can omit `DBT_HOST` and dbt-mcp will prompt you interactively on the first tool call.
+
 
 ```json
 {

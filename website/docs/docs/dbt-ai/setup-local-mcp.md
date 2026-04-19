@@ -33,7 +33,9 @@ Use this table to understand what each toolset needs and whether it works with o
 | LSP / Fusion | `DBT_PROJECT_DIR`, `DBT_PATH`, and the dbt VS Code extension | Yes | Yes |
 
 :::note Toolsets auto-disable when required variables are missing
-If a required variable is not set, dbt-mcp will automatically disable that toolset rather than error. For example, if `DBT_HOST` is not configured, the Semantic Layer, Discovery, and Admin API toolsets won't be available. To confirm which toolsets are active, set `DBT_MCP_LOG_LEVEL=DEBUG` in your environment and check the [server logs](#debug-configurations).
+If a required variable is not set, dbt-mcp will automatically disable that toolset rather than error. For example, if `DBT_PROJECT_DIR` or `DBT_PATH` is not configured, the dbt CLI toolset won't be available. To confirm which toolsets are active, set `DBT_MCP_LOG_LEVEL=DEBUG` in your environment and check the [server logs](#debug-configurations).
+
+For platform toolsets (Semantic Layer, Discovery API, Admin API), if `DBT_HOST` is not configured and your MCP client supports [elicitation](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation), dbt-mcp will prompt you to enter your host interactively on the first tool call. See [Interactive setup (elicitation)](#interactive-setup) for details.
 :::
 
 ## Prerequisites
@@ -75,6 +77,35 @@ Once configured, your session connects to the <Constant name="dbt_platform"/> ac
 <Lightbox src="/img/mcp/select-project.png" width="60%" title="Select your dbt platform project"/>
 
 After completing OAuth setup, skip to [Test your configuration](#optional-test-your-configuration).
+
+### Interactive setup (elicitation) {#interactive-setup}
+
+If your MCP client supports [elicitation](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation), you can skip pre-configuring `DBT_HOST` entirely. dbt-mcp will prompt you to enter your host the first time you call a platform tool.
+
+This is the simplest setup for platform features &mdash; no environment variables needed upfront:
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"]
+    }
+  }
+}
+```
+
+When you call a platform tool (like `get_all_models`), dbt-mcp will:
+
+1. Display a form asking for your <Constant name="dbt_platform" /> host (for example, `ab123.us1.dbt.com`).
+2. Start the OAuth authentication flow in your browser.
+3. Persist the host to `~/.dbt/mcp-config.yml` so you won't be prompted again.
+
+:::info Client support
+Elicitation is supported in [Claude Code](https://www.anthropic.com/claude-code). Claude Desktop and other clients that don't support elicitation will fall back to requiring `DBT_HOST` as an environment variable.
+:::
+
+After completing interactive setup, skip to [Test your configuration](#optional-test-your-configuration).
 
 ### CLI only (no dbt platform) {#cli-only}
 
@@ -271,7 +302,7 @@ uvx dbt-mcp
 
 | Environment variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For Multi-cell accounts, exclude the account prefix from the hostname. The default is `cloud.getdbt.com`. |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). **Important:** For Multi-cell accounts, exclude the account prefix from the hostname. The default is `cloud.getdbt.com`. If your MCP client supports [elicitation](#interactive-setup), this is prompted interactively when not set. |
 | `MULTICELL_ACCOUNT_PREFIX` | Only required for Multi-cell instances | Set your Multi-cell account prefix here (not in DBT_HOST). If you are not using Multi-cell, don't set this value. You can learn more about regions and hosting [here](/docs/cloud/about-cloud/access-regions-ip-addresses). |
 | `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
 | `DBT_ACCOUNT_ID` | Required for Administrative API tools | Your [dbt account ID](/faqs/Accounts/find-user-id) |
