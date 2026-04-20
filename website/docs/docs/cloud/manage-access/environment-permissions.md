@@ -7,35 +7,42 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Environment-level permissions give <Constant name="cloud" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment give users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
+Environment-level permissions give <Constant name="dbt" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment gives users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
 
 For configuration instructions, check out the [setup page](/docs/cloud/manage-access/environment-permissions-setup).
 
 ## Current limitations
 
-Environment-level permissions give <Constant name="cloud" /> admins more flexibility to protect their environments, but it's important to understand that there are some limitations to this feature, so those admins can make informed decisions about granting access.
+Environment-level permissions give <Constant name="dbt" /> admins more flexibility to protect their environments, but it's important to understand that there are some limitations to this feature, so those admins can make informed decisions about granting access.
 
-- Environment-level permissions do not allow you to create custom roles and permissions for each resource type in <Constant name="cloud" />.
+- Environment-level permissions do not allow you to create custom roles and permissions for each resource type in <Constant name="dbt" />.
 - You can only select environment types, and can’t specify a particular environment within a project.
-- You can't select specific resources within environments. <Constant name="cloud" /> jobs and runs are environment resources.
+- You can't select specific resources within environments. <Constant name="dbt" /> jobs and runs are environment resources.
     - For example, you can't specify that a user only has access to jobs but not runs. Access to a given environment gives the user access to everything within that environment.
 
 ## Environments and roles
 
-<Constant name="cloud" /> has four different environment types per project: 
+<Constant name="dbt" /> has four different environment types per project: 
 
 - **Production** &mdash; Primary deployment environment. Only one unique Production env per project.
 - **Development** &mdash; Developer testing environment. Only one unique Development env per project.
 - **Staging** &mdash; Pre-prod environment that sits between development and production. Only one unique Staging env per project.
 - **General** &mdash; Mixed use environments. No limit on the number per project. 
 
+### Environment write permissions
+
+Environment write permissions grant access to create, edit, and delete runs and jobs within an environment. However, they don't grant users access to create or delete environments themselves. See [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about elevated permission sets. 
+
 Environment write permissions can be specified for the following roles:
 
 - Analyst
 - Database admin
-- Developer (Previous default write access for all environments. The new default is read access for environments unless access is specified)
-- <Constant name="git" /> admin
+- Developer<sup>*</sup>
+- Git admin
 - Team admin
+
+<sup>*</sup> In the [enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) table, the `Developer` role has read-only access to environment settings, but when added to a group, the **Environment write access** field defaults to `All environments`, which grants broader environment permissions than the table implies. The `Analyst`, `Database admin`, `Git admin`, and `Team admin` roles get **Read-only environment access** by default unless you specify different access under **Environment write access** for that group.
+
 
 Depending on your current group mappings, you may have to update roles to ensure users have the correct access level to environments. 
 

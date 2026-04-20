@@ -209,7 +209,15 @@ When you set `table_format` to `iceberg`, the `use_managed_iceberg` flag control
 
 ## Use `replace on` for `insert_overwrite` strategy
 
-The `use_replace_on_for_insert_overwrite` flag is only relevant when using incremental models with the `insert_overwrite` strategy on SQL warehouses. The flag is `True` by default and results in using the [`insert into ... replace on`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) syntax to perform dynamic partition/cluster overwrites, which is the same behavior as in cluster computes. When the flag is set to `False`, `insert_overwrite` will truncate the entire table when used with SQL warehouses. The flag is not relevant for cluster computes because the `insert_overwrite`'s behavior has always been dynamic partition/cluster overwrites in cluster computes.
+The `use_replace_on_for_insert_overwrite` flag controls which SQL syntax dbt generates for incremental models using the `insert_overwrite` strategy. This flag defaults to `True` by default and results in using the [`insert into ... replace on`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) syntax to perform dynamic partition/cluster overwrites, which is the same behavior as in cluster computes. When the flag is set to `False`, `insert_overwrite` will truncate the entire table when used with SQL warehouses. The flag is not relevant for cluster computes because the `insert_overwrite`'s behavior has always been dynamic partition/cluster overwrites in cluster computes.
+
+<SimpleTable>
+
+| Flag value | SQL generated | Description |
+|---|---|---|
+| `True` (default) | [`INSERT INTO ... REPLACE ON`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) | Uses the latest, recommended Databricks syntax to replace matching partitions.  |
+| `False` | `INSERT OVERWRITE` | Uses the older Spark syntax to overwrite partitions. Depends on Spark session settings.|  <br />
+</SimpleTable>
 
 If you previously relied on this behavior to get full table replacement without dropping existing metadata, that behavior continues to exist with the flag set to `True`, provided you do not use any partitions or liquid clustering clusters.
 These data layout optimizations only tend to have a significant effect for tables that are approximately 1 TB large or greater, at which point regular replacement of all of the data is probably not the best approach.

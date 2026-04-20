@@ -1,19 +1,19 @@
 ---
 title: "Deprecations"
+intro_text: "Deprecations are about features in your project code (models, configs, syntax) that will stop working in future versions."
 ---
 
 :::note
 
-Deprecated functionality still works in the v1.10 release, but it is no longer supported and will be removed in a future version.  
+Deprecated functionality still works in the v1.10 release but is no longer supported and will be removed in a future version. Deprecations currently show as warnings but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)), but will cause errors after upgrading if not addressed. 
 
-This means the deprecated features only present a warning but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)). 
+Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-When the functionality is eventually removed, it will cause errors in your dbt runs after you upgrade if the deprecations are not addressed.
-
+Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)? You must resolve all deprecations listed on this page before upgrading.
 
 :::
 
-As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. Although it’s just a warning for now, it is important to resolve any deprecation warnings in your project to enable you to work with more safety, feedback, and confidence going forward.
+As dbt runs, it generates different categories of [events](/reference/events-logging), one of which is _deprecations_. Deprecations are a special type of warning that lets you know that there are problems in parts of your project that will result in breaking changes in a future version of dbt. Although it's just a warning for now, it is important to resolve any deprecation warnings in your project to enable you to work with more safety, feedback, and confidence going forward.
 
 ## Identify deprecation warnings
 
@@ -39,11 +39,11 @@ Summary of encountered deprecations:
 
 ### The dbt platform
 
-If you're using <Constant name="cloud" />, you can view deprecation warnings from the **Dashboard** area of your account.
+If you're using <Constant name="dbt" />, you can view deprecation warnings from the **Dashboard** area of your account.
 
     <Lightbox src="/img/docs/dbt-cloud/deprecation-warnings.png" title="The deprecation warnings listed on the dbt dashboard." />
 
-Click into a job to view more details and locate the deprecation warnings in the logs (or run the `parse` command with flags from the <Constant name="cloud_ide" /> or <Constant name="cloud_cli" />).
+Click into a job to view more details and locate the deprecation warnings in the logs (or run the `parse` command with flags from the <Constant name="studio_ide" /> or <Constant name="platform_cli" />).
 
     <Lightbox src="/img/docs/dbt-cloud/deprecation-list.png" title="Deprecation warnings listed in the logs." />
 
@@ -51,7 +51,7 @@ Click into a job to view more details and locate the deprecation warnings in the
 
 Some deprecations can be automatically fixed with a script. Read more about it in [this dbt blog post](https://www.getdbt.com/blog/how-to-get-ready-for-the-new-dbt-engine#:~:text=2.%20Resolve%20deprecation%20warnings). [Download the script](https://github.com/dbt-labs/dbt-autofix) and follow the installation instructions to get started. 
 
-**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="cloud" />.
+**Coming soon**: The IDE will soon have an interface for running this same script to remediate deprecation warnings in <Constant name="dbt" />.
 
 
 ## List of Deprecation Warnings
@@ -137,6 +137,9 @@ Change `data-paths` to `seed-paths` in your `dbt_project.yml`.
 Example:
 
 <File name='CLI'>
+
+<VersionBlock lastVersion="1.10">
+
 ```bash
 23:39:18  [WARNING]: Deprecated functionality
 The `log-path` config in `dbt_project.yml` has been deprecated and will no
@@ -144,11 +147,26 @@ longer be supported in a future version of dbt-core. If you wish to write dbt
 logs to a custom directory, please use the --log-path CLI flag or DBT_LOG_PATH
 env var instead.
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+23:39:18  [WARNING]: Deprecated functionality
+The `log-path` config in `dbt_project.yml` has been deprecated and will no
+longer be supported in a future version of dbt-core. If you wish to write dbt
+logs to a custom directory, please use the --log-path CLI flag or DBT_ENGINE_LOG_PATH
+env var instead.
+```
+
+</VersionBlock>
+
 </File>
 
 #### ConfigLogPathDeprecation warning resolution
 
-Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI flag `--log-path` or environment variable `DBT_LOG_PATH`  [as documented here](/reference/global-configs/logs#log-and-target-paths)
+Remove `log-path` from your `dbt_project.yml` and specify it via either the CLI flag `--log-path` or environment variable <VersionBlock lastVersion="1.10">`DBT_LOG_PATH`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_LOG_PATH`</VersionBlock> [as documented here](/reference/global-configs/logs#log-and-target-paths).
 
 
 ### ConfigSourcePathDeprecation
@@ -177,6 +195,9 @@ In [dbt 1.5](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.5)
 Example:
 
 <File name='CLI'>
+
+<VersionBlock lastVersion="1.10">
+
 ```bash
 23:22:01  [WARNING]: Deprecated functionality
 The `target-path` config in `dbt_project.yml` has been deprecated and will no
@@ -184,11 +205,26 @@ longer be supported in a future version of dbt-core. If you wish to write dbt
 artifacts to a custom directory, please use the --target-path CLI flag or
 DBT_TARGET_PATH env var instead.
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.11">
+
+```bash
+23:22:01  [WARNING]: Deprecated functionality
+The `target-path` config in `dbt_project.yml` has been deprecated and will no
+longer be supported in a future version of dbt-core. If you wish to write dbt
+artifacts to a custom directory, please use the --target-path CLI flag or
+DBT_ENGINE_TARGET_PATH env var instead.
+```
+
+</VersionBlock>
+
 </File>
 
 #### ConfigTargetPathDeprecation warning resolution
 
-Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable [`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths).
+Remove `target-path` from your `dbt_project.yml` and specify it via either the CLI flag `--target-path` or environment variable <VersionBlock lastVersion="1.10">[`DBT_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths)</VersionBlock><VersionBlock firstVersion="1.11">[`DBT_ENGINE_TARGET_PATH`](/reference/global-configs/logs#log-and-target-paths)</VersionBlock>.
 
 ### CustomKeyInConfigDeprecation
 
@@ -273,6 +309,7 @@ After configs are nested:
 {% set my_custom_config = config.get('meta').custom_config_key %}
 ```
 
+
 ### CustomOutputPathInSourceFreshnessDeprecation
 
 dbt has deprecated the `--output` (or `-o`) flag for overriding the location of source freshness results from the `sources.json` file destination.
@@ -336,11 +373,21 @@ config:
 
 </File>
 
+### DuplicateNameDistinctNodeTypesDeprecation
+
+dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `False`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
+
+When the `require_unique_project_resource_names` flag is set to `True`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-changes#unique-project-resource-names).
+
+#### DuplicateNameDistinctNodeTypesDeprecation warning resolution
+
+Rename one of the conflicting resources to ensure all names are unique.
+
 ### DuplicateYAMLKeysDeprecation
 
 This warning is raised when two identical keys exist in the `profiles.yml`. 
 
-Previously, if identical keys existed in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml), dbt would use the last configuration listed in the file. 
+Previously, if identical keys existed in the [`profiles.yml` file](/docs/local/profiles.yml), dbt would use the last configuration listed in the file. 
 
 <File name='profiles.yml'>
 
@@ -395,6 +442,30 @@ dbt-core.
 #### ExposureNameDeprecation warning resolution
 
 Ensure your exposure names only contain letters, numbers, and underscores. A more human-readable name can be put in the [`label`](/reference/exposure-properties#overview) property of exposures.
+
+### GenerateSchemaNameNullValueDeprecation
+
+dbt raises this deprecation warning when a custom `generate_schema_name` macro returns a `null` value. Returning `null` schema names can lead to invalid or unpredictable behavior.
+
+This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name) is set to `False`. When the flag is set to `True`, dbt raises an error during parsing.
+
+#### GenerateSchemaNameNullValueDeprecation warning resolution
+
+If your project defines a `generate_schema_name` macro, update the macro to return a valid schema name. For example:
+
+<File name='macros/get_custom_schema.sql'>
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- if custom_schema_name is none -%}
+        {{ return(target.schema) }}
+    {%- else -%}
+        {{ custom_schema_name | trim }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>
 
 ### GenericJSONSchemaValidationDeprecation
 
@@ -591,7 +662,7 @@ instead.
 
 #### ModulesItertoolsUsageDeprecation warning resolution
 
-If you are currently using functions from the `itertools` module within Jinja SQL templates, use the available built-in [dbt functions](/reference/dbt-jinja-functions) and [Jinja methods](/docs/build/jinja-macros) instead.
+If you are currently using functions from the `itertools` module within Jinja SQL templates, use the available built-in [dbt functions](/reference/dbt-jinja-functions-context-variables) and [Jinja methods](/docs/build/jinja-macros) instead.
 
 For example, the following SQL file:
 

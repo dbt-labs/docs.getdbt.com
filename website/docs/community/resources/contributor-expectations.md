@@ -126,7 +126,7 @@ Some of the most common labels are explained below:
 
 #### <Constant name="core" />
 
-Both bug fixes and backwards-compatible new features will be included in the [next minor release of <Constant name="core" />](/docs/dbt-versions/core#how-dbt-core-uses-semantic-versioning). Fixes for regressions and net-new bugs that were present in the minor version's original release will be backported to versions with [active support](/docs/dbt-versions/core). Other bug fixes may be backported when we have high confidence that they're narrowly scoped and won't cause unintended side effects.
+Both bug fixes and backwards-compatible new features will be included in the [next minor release of <Constant name="core" />](/docs/dbt-versions#how-dbt-core-uses-semantic-versioning). Fixes for regressions and net-new bugs that were present in the minor version's original release will be backported to versions with [active support](/docs/dbt-versions). Other bug fixes may be backported when we have high confidence that they're narrowly scoped and won't cause unintended side effects.
 
 ####  dbt Fusion engine
 

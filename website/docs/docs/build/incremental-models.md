@@ -6,6 +6,10 @@ keywords: ["incremental models", "incremental materialization","incremental", "m
 intro_text: "Learn how to configure and optimize incremental models when developing in dbt."
 ---
 
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
+
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
 Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time dbt ran. As such, on each dbt run, your model gets built incrementally.
@@ -166,7 +170,7 @@ To force dbt to rebuild the entire incremental model from scratch, use the `--fu
 $ dbt run --full-refresh --select my_incremental_model+
 ```
 
-It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
+The trailing `+` in the command above will also run all downstream models that depend on `my_incremental_model`. If any of those downstream dependencies are also incremental models, they will be fully refreshed as well. 
 
 You can optionally use the [`full_refresh config`](/reference/resource-configs/full_refresh) to set a resource to always or never full-refresh at the project or resource level. If specified as true or false, the `full_refresh` config will take precedence over the presence or absence of the `--full-refresh` flag.
 
@@ -226,5 +230,3 @@ If you remove a column from your incremental model and execute a `dbt run`, `dbt
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="incremental"/>

@@ -15,13 +15,13 @@ Since GraphQL describes the data in the API, the schema displayed in the GraphQL
 
 ## Authorization
 
-Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). <Constant name="cloud" /> admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
+Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). <Constant name="dbt" /> admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
 
-Once you've created a token, you can use it in the Authorization header of requests to the <Constant name="cloud" /> Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used instead of `Token` in the Authorization header. Both syntaxes are equivalent.
+Once you've created a token, you can use it in the Authorization header of requests to the <Constant name="dbt" /> Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used instead of `Token` in the Authorization header. Both syntaxes are equivalent.
 
 ## Access the Discovery API
 
-1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. <Constant name="cloud" /> Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
+1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. <Constant name="dbt" /> Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
 
 2. Find the API URL to use from the [Discovery API endpoints](#discovery-api-endpoints) table.
 
@@ -56,27 +56,32 @@ response = requests.post(
 metadata = response.json()['data'][ENDPOINT]
 ```
 
-Every query will require an environment ID or job ID. You can get the ID from a <Constant name="cloud" /> URL or using the Admin API.
+Every query will require an environment ID or job ID. You can get the ID from a <Constant name="dbt" /> URL or using the Admin API.
 
 There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
 
 ## Discovery API endpoints
 
-The following are the endpoints for accessing the Discovery API. Use the one that's appropriate for your region and plan.
+Find your Discovery API endpoint in **Account settings** under **Access URLs** in <Constant name="dbt_platform"/>. The format depends on your deployment type and region:
 
-| Deployment type |	Discovery API URL |
+<SimpleTable>
+| Deployment type | Discovery API URL |
 | --------------- | ------------------- |
-| North America multi-tenant	|	https://metadata.cloud.getdbt.com/graphql |
-| EMEA multi-tenant	|	https://metadata.emea.dbt.com/graphql |
-| APAC multi-tenant	|	https://metadata.au.dbt.com/graphql |
-| Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
-| Single-tenant | `https://metadata.YOUR_ACCESS_URL/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.|
+| Multi-tenant | `https://ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql` |
+| Single-tenant | `https://ACCOUNT_PREFIX.metadata.ROUTING_SUBDOMAIN.dbt.com/graphql` |
+</SimpleTable>
+
+- Replace the following placeholders with your actual values. Refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information on the regions and subdomains:
+  - `ACCOUNT_PREFIX` with your account identifier (found in **Account settings** under **Access URLs**)
+  - `REGION` with your deployment region (for example, `us1` for North America AWS, `eu1` for EMEA, `jp1` for Japan, `au1` for APAC, and so on)
+  - `ROUTING_SUBDOMAIN` with your single-tenant routing subdomain (typically your company name. Please contact your account team if unsure)
+  - For example, if you're on North America AWS with account prefix `abc123`, your Discovery API URL is `https://abc123.metadata.us1.dbt.com/graphql`.
 
 ## Reasonable use
 
 Discovery (GraphQL) API usage is subject to request rate and response size limits to maintain the performance and stability of the metadata platform and prevent abuse.
 
-Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="cloud" /> project.
+Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a <Constant name="dbt" /> project.
 
 ## Retention limits
 You can use the Discovery API to query data from the previous two months. For example, if today was April 1st, you could query data back to February 1st.
@@ -163,7 +168,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 ### Pagination
 
-Querying large datasets can impact performance on multiple functions in the API pipeline. Pagination eases the burden by returning smaller data sets one page at a time. This is useful for returning a particular portion of the dataset or the entire dataset piece-by-piece to enhance performance. <Constant name="cloud" /> utilizes cursor-based pagination, which makes it easy to return pages of constantly changing data.
+Querying large datasets can impact performance on multiple functions in the API pipeline. Pagination eases the burden by returning smaller data sets one page at a time. This is useful for returning a particular portion of the dataset or the entire dataset piece-by-piece to enhance performance. <Constant name="dbt" /> utilizes cursor-based pagination, which makes it easy to return pages of constantly changing data.
 
 Use the `PageInfo` object to return information about the page. The available fields are:
 

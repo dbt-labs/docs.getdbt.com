@@ -21,7 +21,7 @@ And once you have a time spine, you need to configure it in YAML to tell MetricF
 MetricFlow requires you to define at least one dbt model which provides a time-spine, and then specify (in YAML) the columns to be used for time-based joins. This means you need to:
 
 - Define at least one [time spine](#example-time-spine-tables) at whichever granularity needed for your metrics (like daily or hourly). You can optionally define additional tables for coarser grains (like monthly or yearly).
-- [Configure each time spine in a YAML file](#configuring-time-spine-in-yaml) to define how MetricFlow recognizes and uses its columns.
+- [Configure each time spine in a properties YAML file](#configuring-time-spine-in-yaml) to define how MetricFlow recognizes and uses its columns.
 
 Note that you can't have overlapping time spines.
 
@@ -98,7 +98,7 @@ This example creates a time spine at an hourly grain and a daily grain: `time_sp
   - It needs to reference a column defined under the `columns` key, in this case, `date_hour` and `date_day`, respectively.
   - It sets the granularity at the column-level using the `granularity` key, in this case, `hour` and `day`, respectively. 
 - MetricFlow will use the `standard_granularity_column` as the join key when joining the time spine table to another source table.
-- [The `custom_granularities` field](#custom-calendar), (available in <Constant name="cloud" /> Latest and dbt Core v1.9 and higher) lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
+- [The `custom_granularities` field](#custom-calendar), (available in <Constant name="dbt" /> Latest and dbt Core v1.9 and higher) lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
   - The `column_name` field must reference a column that exists in the same model.
 
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
@@ -107,7 +107,7 @@ For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/j
 
 If you already have a SQL model that defines your time spine, you can reference that model directly in the YAML file. If you don't have a SQL model that defines your time spine, add one before proceeding to the following steps. 
 
-1. Add the following configuration to a new or existing YAML file using the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. Name the YAML file whatever you want (for example, `util/_models.yml`):
+1. Add the following configuration to a new or existing properties YAML file using the [`models` key](/reference/model-properties) for the time spine in your `models/` directory. Name the properties YAML file whatever you want (for example, `util/_models.yml`):
 
   <File name="models/_models.yml">
 

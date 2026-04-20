@@ -6,8 +6,8 @@ intro_text: "Set up dbt to notify model owners through email about issues in you
 
 Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-cloud-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
 
-- `Success` and `Fails` for models
-- `Warning`, `Success`, and `Fails` for tests
+- **Success** and **Fails** for models
+- **Warning**, **Success**, and **Fails** for tests
 
 With model-level notifications, model owners can be the first ones to know about issues before anyone else (like the stakeholders). 
 
@@ -21,7 +21,7 @@ To be timely and keep the number of notifications to a reasonable amount when mu
 Create configuration YAML files in your project for dbt to send notifications about the status of your models and tests in your deployment environments.
 
 ## Prerequisites
-- Your <Constant name="cloud" /> administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
+- Your <Constant name="dbt" /> administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
 - Your deployment environment(s) must be on a [release track](/docs/dbt-versions/cloud-release-tracks) instead of a legacy <Constant name="core" /> version.
 
 ## Configure groups
@@ -42,30 +42,37 @@ groups:
       # Email is required to receive model-level notifications, additional properties are also allowed.
       name: "Finance team"
       email: finance@dbtlabs.com
-      favorite_food: donuts
 
   - name: marketing
     owner:
       name: "Marketing team"
       email: marketing@dbtlabs.com
-      favorite_food: jaffles
+    config:
+      meta:
+        slack: '#marketing-team'
 
 # Example of multiple emails supported
-  - name: docs
+  - name: documentation team
     owner:
-      name: "Documentation team"
+      name: "Docs team"
       email: 
         - docs@dbtlabs.com
         - community@dbtlabs.com
         - product@dbtlabs.com
-      favorite_food: pizza
+    config:
+      meta:
+        slack: '#docs-fox'
 
 ```
 
 </File>
 
 :::tip
-The `owner` key is flexible and accepts arbitrary inputs in addition to the required `email` field. For example, you could include a custom field like `favorite_food` to add context about the team.
+The `owner` field supports `name` and `email`, which are required values. 
+
+Additional arbitrary fields (such as `favorite_food`) are deprecated and will no longer be allowed in a future release.
+
+To store additional metadata (like Slack channels, team info, or custom attributes), use `config.meta` instead.
 :::
 
 ## Attach groups to models
@@ -119,13 +126,14 @@ Attaching a group to a model also encompasses its tests, so you will also receiv
 
 ## Enable access to model notifications 
 
-Provide <Constant name="cloud" /> account members the ability to configure and receive alerts about issues with models or tests that are encountered during job runs.  
+Provide <Constant name="dbt" /> account members the ability to configure and receive alerts about issues with models or tests that are encountered during job runs.  
 
-To use model-level notifications, your <Constant name="cloud" /> account must have access to the feature. Ask your <Constant name="cloud" /> administrator to enable this feature for account members by following these steps:
+To use model-level notifications, your <Constant name="dbt" /> account must have access to the feature. Ask your <Constant name="dbt" /> administrator to enable this feature for account members by following these steps:
 
 1. Navigate to **Notification settings** from your profile name in the sidebar (lower left-hand side). 
 2. From **Email notifications**, enable the setting **Enable group/owner notifications on models** under the **Model notifications** section. Then, specify which statuses to receive notifications about (Success, Warning, and/or Fails). 
+3. Click **Save**.
 
   <Lightbox src="/img/docs/dbt-cloud/example-enable-model-notifications.png" title="Example of the setting Enable group/owner notifications on models" /> 
 
-3. Click **Save**.
+

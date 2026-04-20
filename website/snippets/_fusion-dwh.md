@@ -2,7 +2,7 @@
     - Service Account / User Token
     - Native OAuth
     - External OAuth
-    - [Required permissions](/docs/core/connect-data-platform/bigquery-setup#required-permissions)
+    - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
   <Expandable alt_header="Databricks">
@@ -21,6 +21,16 @@
     - External OAuth
     - Key pair using a modern PKCS#8 method
     - MFA
+  </Expandable>
+
+  <Expandable alt_header="Apache Spark (Fusion CLI only)">
+    - Thrift
+      - Simple Authentication and Security Layer (SASL) PLAIN
+      - No SASL (NOSASL) 
+    - Livy
+      - Basic authentication (username and password)
+      - When deployed on Amazon Web Services (AWS): AWS Signature Version 4
+        - Supports authentication using single sign-on, service accounts, or user tokens
   </Expandable>
 
 <!-- <Expandable alt_header="Supported data platforms"> -->

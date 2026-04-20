@@ -21,7 +21,7 @@ dbt Labs partners can use the JDBC API to build integrations in their tools with
 
 ## Using the JDBC API
 
-If you are a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right JDBC connection parameters described in this document.
+If you are a dbt user or partner with access to <Constant name="dbt" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right JDBC connection parameters described in this document.
 
 You *may* be able to use our JDBC API with tools that do not have an official integration with the <Constant name="semantic_layer" />. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the <Constant name="semantic_layer" /> API.
 
@@ -31,7 +31,7 @@ Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `re
 
 ## Authentication
 
-<Constant name="cloud" /> authorizes requests to the <Constant name="semantic_layer" /> API. You need to provide an Environment ID, Host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens) or [personal access tokens](/docs/dbt-cloud-apis/user-tokens).
+<Constant name="dbt" /> authorizes requests to the <Constant name="semantic_layer" /> API. You need to provide an Environment ID, Host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens) or [personal access tokens](/docs/dbt-cloud-apis/user-tokens).
 
 ## Connection parameters
 
@@ -46,9 +46,9 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 | JDBC parameter | Description | Example |
 | -------------- | ----------- | ------- |
 | `jdbc:arrow-flight-sql://` | The protocol for the JDBC driver.  | `jdbc:arrow-flight-sql://` |
-| `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your account's <Constant name="cloud" /> region. You must always add the `semantic-layer` prefix before the access URL.  | For <Constant name="cloud" /> deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
-| `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the <Constant name="cloud" /> URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
-| `AUTHENTICATION_TOKEN` | You can use either a <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” and "Metadata Only" permissions or a <Constant name="cloud" /> [personal access token](/docs/dbt-cloud-apis/user-tokens). Create a new service or personal token on the **Account Settings** page. | `token=AUTHENTICATION_TOKEN` |
+| `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your account's <Constant name="dbt" /> region. You must always add the `semantic-layer` prefix before the access URL.  | For <Constant name="dbt" /> deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
+| `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the <Constant name="dbt" /> URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
+| `AUTHENTICATION_TOKEN` | You can use either a <Constant name="dbt" /> [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” and "Metadata Only" permissions or a <Constant name="dbt" /> [personal access token](/docs/dbt-cloud-apis/user-tokens). Create a new service or personal token on the **Account Settings** page. | `token=AUTHENTICATION_TOKEN` |
 
 *Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable at the end or beginning of the JDBC URL `&disableCertificateVerification=true`.
 
@@ -125,19 +125,7 @@ select NAME, QUERYABLE_GRANULARITIES from {{
 
 </Expandable>
 
-<Expandable alt_header="Fetch primary time dimension names">
-
-It may be useful in your application to expose the names of the time dimensions that represent metric_time or the common thread across all metrics.
-
-You can first query the metrics() argument to fetch a list of measures, then use the measures() call which will return the name(s) of the time dimensions that make up metric time.
-
-```bash
-select * from {{
-    semantic_layer.measures(metrics=['orders'])
-}}
-```
-
-</Expandable>
+<VersionBlock lastVersion="1.11">
 
 <Expandable alt_header="Fetch metrics by substring search">
 
@@ -150,6 +138,7 @@ select * from {{ semantic_layer.metrics(search='order') }}
 If no substring is provided, the query returns all metrics.
 
 </Expandable> 
+</VersionBlock>
 
 <Expandable alt_header="Paginate metadata calls">
 
@@ -224,7 +213,7 @@ To query values, the following parameters are available. Your query must have _e
 
 ### Note on time dimensions and `metric_time`
 
-You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
+You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for any metric's default aggregation time dimension. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
 
 You can look at a single metric or hundreds of metrics, and if you group by `metric_time`, it will always give you the correct time series.
 
@@ -342,58 +331,7 @@ Where Filters have a few objects that you can use:
 - `Entity()` &mdash;  Used for entities like primary and foreign keys - `Entity('order_id')`.
 
 
-For `TimeDimension()`, the grain is only required in the `WHERE` filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
-
-For example, consider this Semantic model and Metric config, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
-
-```yaml
-semantic_model:
-  name: my_model_source
-
-defaults:
-  agg_time_dimension: created_month
-  measures:
-    - name: measure_0
-      agg: sum
-    - name: measure_1
-      agg: sum
-      agg_time_dimension: order_year
-  dimensions:
-    - name: created_month
-      type: time
-      type_params:
-        time_granularity: month
-    - name: order_year
-      type: time
-      type_params:
-        time_granularity: year
-
-metrics:
-  - name: metric_0
-    description: A metric with a month grain.
-    type: simple
-    type_params:
-      measure: measure_0
-  - name: metric_1
-    description: A metric with a year grain.
-    type: simple
-    type_params:
-      measure: measure_1
-
-```
-
-Assuming the user is querying `metric_0` and `metric_1` together in a single request, a valid `WHERE` filter would be:
-
-  * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
-
-Invalid filters would be:
-
-  * `"{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
-
-  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` &mdash; `metric_1` is not available at a month grain.
-
-
-- Use the following example to query using a `where` filter with the string format:
+You can use the following example to query using a `where` filter with the string format:
 
 ```bash
 select * from {{
@@ -580,4 +518,3 @@ So for example, if the `time_dimension_name` is `ds` and the granularity level i
 ## Related docs
 
 - [<Constant name="semantic_layer" /> integration best practices](/guides/sl-partner-integration-guide)
-

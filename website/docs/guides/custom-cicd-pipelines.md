@@ -17,7 +17,7 @@ keywords:
 
 ## Introduction
 
-One of the core tenets of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using <Constant name="cloud" />’s [webhook functionality](/docs/deploy/continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization needs additional functionality, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project and trigger a <Constant name="cloud" /> job via the API.
+One of the core tenets of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using <Constant name="dbt" />’s [webhook functionality](/docs/deploy/continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization needs additional functionality, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project and trigger a <Constant name="dbt" /> job via the API.
 
 A note on parlance in this article since each code hosting platform uses different terms for similar concepts. The terms `pull request` (PR) and `merge request` (MR) are used interchangeably to mean the process of merging one branch into another branch.
 
@@ -49,7 +49,7 @@ Additionally, if you’re using the free tier of GitLab you can still follow thi
 
 This guide provides details for multiple code hosting platforms. Where steps are unique, they are presented without a selection option. If code is specific to a platform (i.e. GitHub, GitLab, Bitbucket) you will see a selection option for each.
 
-Pipelines can be triggered by various events. The [<Constant name="cloud" /> webhook](/docs/deploy/continuous-integration) process already triggers a run if you want to run your jobs on a merge request, so this guide focuses on running pipelines for every push and when PRs are merged. Since pushes happen frequently in a project, we’ll keep this job super simple and fast by linting with SQLFluff. The pipeline that runs on merge requests will run less frequently, and can be used to call the <Constant name="cloud" /> API to trigger a specific job. This can be helpful if you have specific requirements that need to happen when code is updated in production, like running a `--full-refresh` on all impacted incremental models.
+Pipelines can be triggered by various events. The [<Constant name="dbt" /> webhook](/docs/deploy/continuous-integration) process already triggers a run if you want to run your jobs on a merge request, so this guide focuses on running pipelines for every push and when PRs are merged. Since pushes happen frequently in a project, we’ll keep this job super simple and fast by linting with SQLFluff. The pipeline that runs on merge requests will run less frequently, and can be used to call the <Constant name="dbt" /> API to trigger a specific job. This can be helpful if you have specific requirements that need to happen when code is updated in production, like running a `--full-refresh` on all impacted incremental models.
 
 Here’s a quick look at what this pipeline will accomplish:
 
@@ -57,21 +57,21 @@ Here’s a quick look at what this pipeline will accomplish:
 
 ## Run a dbt job on merge
 
-This job will take a bit more to setup, but is a good example of how to call the <Constant name="cloud" /> API from a CI/CD pipeline. The concepts presented here can be generalized and used in whatever way best suits your use case.
+This job will take a bit more to setup, but is a good example of how to call the <Constant name="dbt" /> API from a CI/CD pipeline. The concepts presented here can be generalized and used in whatever way best suits your use case.
 
 :::tip Run on merge
 
-If your <Constant name="git" /> provider has a native integration with <Constant name="cloud" />, you can take advantage of setting up [Merge jobs](/docs/deploy/merge-jobs) in the UI.
+If your <Constant name="git" /> provider has a native integration with <Constant name="dbt" />, you can take advantage of setting up [Merge jobs](/docs/deploy/merge-jobs) in the UI.
 
 :::
 
-The setup below shows how to call the <Constant name="cloud" /> API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
+The setup below shows how to call the <Constant name="dbt" /> API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
 
 ### 1. Get your dbt API key
 
 When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
 
-1. Log in to your <Constant name="cloud" /> account.
+1. Log in to your <Constant name="dbt" /> account.
 2. Click your account name at the bottom left-hand menu and go to **Account settings**.
 3. Click [**Service tokens**](/docs/dbt-cloud-apis/service-tokens) on the left.
 4. Click **+ Create service token** to create a new token specifically for CI/CD API calls.
@@ -109,7 +109,7 @@ This next part will happen in you code hosting platform. We need to save your AP
 - Towards the middle of the screen, click the *New repository secret* button.
 - It will ask you for a name, so let’s call ours `DBT_API_KEY`.
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Secret* section, paste in the key you copied from <Constant name="cloud" />.
+- In the *Secret* section, paste in the key you copied from <Constant name="dbt" />.
 - Click *Add secret* and you’re all set!
 
 ** A quick note on security: while using a repository secret is the most straightforward way to setup this secret, there are other options available to you in GitHub. They’re beyond the scope of this guide, but could be helpful if you need to create a more secure environment for running actions. Checkout GitHub’s documentation on secrets [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets).*
@@ -127,7 +127,7 @@ Here’s a video showing these steps:
 - Under the *Variables* section, click *Expand,* then click *Add variable*
 - It will ask you for a name, so let’s call ours `DBT_API_KEY`
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from <Constant name="cloud" />
+- In the *Value* section, paste in the key you copied from <Constant name="dbt" />
 - Make sure the check box next to *Protect variable* is unchecked, and the box next to *Mask variable* is selected (see below)
   - “Protected” means that the variable is only available in pipelines that run on protected branches or protected tags - that won’t work for us because we want to run this pipeline on multiple branches. “Masked” means that it will be available to your pipeline runner, but will be masked in the logs.
 
@@ -150,7 +150,7 @@ In Azure:
 - Click on *Variables* and then *New variable*
 - In the *Name* field, enter the `DBT_API_KEY`
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from <Constant name="cloud" />
+- In the *Value* section, paste in the key you copied from <Constant name="dbt" />
 - Make sure the check box next to *Keep this value secret* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
 - Click *OK* and then *Save* to save the variable
 - Save your new Azure pipeline
@@ -167,7 +167,7 @@ In Bitbucket:
 - Scroll to the bottom of the left menu, and select *Repository variables*
 - In the *Name* field, input `DBT_API_KEY`
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from <Constant name="cloud" />
+- In the *Value* section, paste in the key you copied from <Constant name="dbt" />
 - Make sure the check box next to *Secured* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
 - Click *Add* to save the variable
 
@@ -191,7 +191,7 @@ my_awesome_project
 │   └── run_and_monitor_dbt_job.py
 ```
 
-This Python file has everything you need to call the <Constant name="cloud" /> API, but requires a few inputs (see snip below). Those inputs are fed to this script through environment variables that will be defined in the next step.
+This Python file has everything you need to call the <Constant name="dbt" /> API, but requires a few inputs (see snip below). Those inputs are fed to this script through environment variables that will be defined in the next step.
 
 ```python
 #------------------------------------------------------------------------------
@@ -209,7 +209,7 @@ job_id          = os.environ['DBT_PR_JOB_ID'] # no default here, just throw an e
 
 **Required input:**
 
-In order to call the <Constant name="cloud" /> API, there are a few pieces of info the script needs. The easiest way to get these values is to open up the job you want to run in <Constant name="cloud" />. The URL when you’re inside the job has all the values you need:
+In order to call the <Constant name="dbt" /> API, there are a few pieces of info the script needs. The easiest way to get these values is to open up the job you want to run in <Constant name="dbt" />. The URL when you’re inside the job has all the values you need:
 
 - `DBT_ACCOUNT_ID` - this is the number just after `accounts/` in the URL
 - `DBT_PROJECT_ID` - this is the number just after `projects/` in the URL
@@ -230,7 +230,7 @@ In order to call the <Constant name="cloud" /> API, there are a few pieces of in
 }>
 <TabItem value="github">
 
-For this new job, we'll add a file for the <Constant name="cloud" /> API call named `dbt_run_on_merge.yml`.
+For this new job, we'll add a file for the <Constant name="dbt" /> API call named `dbt_run_on_merge.yml`.
 
 ```yaml
 my_awesome_project
@@ -473,9 +473,9 @@ pipelines:
 
 ### 5. Test your new action
 
-Now that you have a shiny new action, it’s time to test it out! Since this change is setup to only run on merges to your default branch, you’ll need to create and merge this change into your main branch. Once you do that, you’ll see a new pipeline job has been triggered to run the <Constant name="cloud" /> job you assigned in the variables section.
+Now that you have a shiny new action, it’s time to test it out! Since this change is setup to only run on merges to your default branch, you’ll need to create and merge this change into your main branch. Once you do that, you’ll see a new pipeline job has been triggered to run the <Constant name="dbt" /> job you assigned in the variables section.
 
-Additionally, you’ll see the job in the run history of <Constant name="cloud" />. It should be fairly easy to spot because it will say it was triggered by the API, and the *INFO* section will have the branch you used for this guide.
+Additionally, you’ll see the job in the run history of <Constant name="dbt" />. It should be fairly easy to spot because it will say it was triggered by the API, and the *INFO* section will have the branch you used for this guide.
 
 <Tabs
   defaultValue="github"
@@ -518,11 +518,11 @@ Additionally, you’ll see the job in the run history of <Constant name="cloud" 
 
 ## Run a dbt job on pull request
 
-If your git provider is not one with a native integration with <Constant name="cloud" />, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a <Constant name="cloud" /> job when a pull request (PR) is created.
+If your git provider is not one with a native integration with <Constant name="dbt" />, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a <Constant name="dbt" /> job when a pull request (PR) is created.
 
 :::tip Run on PR
 
-If your git provider has a native integration with <Constant name="cloud" />, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
+If your git provider has a native integration with <Constant name="dbt" />, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
 This section is only for those projects that connect to their git repository using an SSH key.
 
 :::
@@ -542,13 +542,13 @@ The setup for this pipeline will use the same steps as the prior page. Before mo
 For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the prior step. The YAML file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
 
 **What is this pipeline going to do?**  
-The setup below will trigger a <Constant name="cloud" /> job to run every time a PR is opened in this repository. It will also run a fresh version of the pipeline for every commit that is made on the PR until it is merged.
+The setup below will trigger a <Constant name="dbt" /> job to run every time a PR is opened in this repository. It will also run a fresh version of the pipeline for every commit that is made on the PR until it is merged.
 For example: If you open a PR, it will run the pipeline. If you then decide additional changes are needed, and commit/push to the PR branch, a new pipeline will run with the updated code.  
 
 The following variables control this job:
 
-- `DBT_JOB_BRANCH`: Tells the <Constant name="cloud" /> job to run the code in the branch that created this PR
-- `DBT_JOB_SCHEMA_OVERRIDE`: Tells the <Constant name="cloud" /> job to run this into a custom target schema
+- `DBT_JOB_BRANCH`: Tells the <Constant name="dbt" /> job to run the code in the branch that created this PR
+- `DBT_JOB_SCHEMA_OVERRIDE`: Tells the <Constant name="dbt" /> job to run this into a custom target schema
   - The format of this will look like: `DBT_CLOUD_PR_{REPO_KEY}_{PR_NUMBER}`
 
 ```yaml
@@ -594,14 +594,14 @@ Bitbucket pipeline:
 ![dbt run on PR job in Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-run-on-pr.png)
 
 dbt job:
-![<Constant name="cloud" /> job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-dbt-cloud-pr.png)
+![<Constant name="dbt" /> job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/bitbucket-dbt-cloud-pr.png)
 
 </TabItem>
 </Tabs>
 
 ### 3. Handle those extra schemas in your database
 
-As noted above, when the PR job runs it will create a new schema based on the PR. To avoid having your database overwhelmed with PR schemas, consider adding a "cleanup" job to your <Constant name="cloud" /> account. This job can run on a scheduled basis to cleanup any PR schemas that haven't been updated/used recently.
+As noted above, when the PR job runs it will create a new schema based on the PR. To avoid having your database overwhelmed with PR schemas, consider adding a "cleanup" job to your <Constant name="dbt" /> account. This job can run on a scheduled basis to cleanup any PR schemas that haven't been updated/used recently.
 
 Add this as a macro to your project. It takes 2 arguments that lets you control which schema get dropped:
 
@@ -643,14 +643,14 @@ Add this as a macro to your project. It takes 2 arguments that lets you control 
 {% endmacro %}
 ```
 
-This macro goes into a <Constant name="cloud" /> job that is run on a schedule. The command will look like this (text below for copy/paste):
-![<Constant name="cloud" /> job showing the run operation command for the cleanup macro](/img/guides/orchestration/custom-cicd-pipelines/dbt-macro-cleanup-pr.png)
+This macro goes into a <Constant name="dbt" /> job that is run on a schedule. The command will look like this (text below for copy/paste):
+![<Constant name="dbt" /> job showing the run operation command for the cleanup macro](/img/guides/orchestration/custom-cicd-pipelines/dbt-macro-cleanup-pr.png)
 `dbt run-operation pr_schema_cleanup --args "{ 'database_to_clean': 'development','age_in_days':15}"`
 
 ## Consider risk of conflicts when using multiple orchestration tools
 
-Running <Constant name="cloud" /> jobs through a CI/CD pipeline is a form of job orchestration. If you also run jobs using <Constant name="cloud" />’s built in scheduler, you now have 2 orchestration tools running jobs. The risk with this is that you could run into conflicts - you can imagine a case where you are triggering a pipeline on certain actions and running scheduled jobs in <Constant name="cloud" />, you would probably run into job clashes. The more tools you have, the more you have to make sure everything talks to each other.
+Running <Constant name="dbt" /> jobs through a CI/CD pipeline is a form of job orchestration. If you also run jobs using <Constant name="dbt" />’s built in scheduler, you now have 2 orchestration tools running jobs. The risk with this is that you could run into conflicts - you can imagine a case where you are triggering a pipeline on certain actions and running scheduled jobs in <Constant name="dbt" />, you would probably run into job clashes. The more tools you have, the more you have to make sure everything talks to each other.
 
-That being said, if **the only reason you want to use pipelines is for adding a lint check or run on merge**, you might decide the pros outweigh the cons, and as such you want to go with a hybrid approach. Just keep in mind that if two processes try and run the same job at the same time, <Constant name="cloud" /> will queue the jobs and run one after the other. It’s a balancing act but can be accomplished with diligence to ensure you’re orchestrating jobs in a manner that does not conflict.
+That being said, if **the only reason you want to use pipelines is for adding a lint check or run on merge**, you might decide the pros outweigh the cons, and as such you want to go with a hybrid approach. Just keep in mind that if two processes try and run the same job at the same time, <Constant name="dbt" /> will queue the jobs and run one after the other. It’s a balancing act but can be accomplished with diligence to ensure you’re orchestrating jobs in a manner that does not conflict.
 
 </div>

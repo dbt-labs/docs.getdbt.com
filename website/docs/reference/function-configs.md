@@ -19,8 +19,8 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
   ]
 }>
 <TabItem value="project-yaml">
@@ -30,7 +30,7 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 ```yml
 functions:
   [<resource-path>](/reference/resource-configs/resource-path):
-    # Function-specific configs are defined in the property file
+    # Function-specific configs are defined in the properties YAML file
     # See functions/schema.yml examples below
 
 ```
@@ -80,8 +80,8 @@ Functions support `database`, `schema`, and `alias` configurations just like mod
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
-    { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Project YAML file', value: 'project-yaml', },
+    { label: 'Properties YAML file', value: 'property-yaml', },
   ]
 }>
 

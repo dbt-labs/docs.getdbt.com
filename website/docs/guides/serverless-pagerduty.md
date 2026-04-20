@@ -14,18 +14,18 @@ level: 'Advanced'
 
 ## Introduction
 
-This guide will teach you how to build and host a basic Python app which will monitor <Constant name="cloud" /> jobs and create PagerDuty alarms based on failure. To do this, when a <Constant name="cloud" /> job completes it will:
+This guide will teach you how to build and host a basic Python app which will monitor <Constant name="dbt" /> jobs and create PagerDuty alarms based on failure. To do this, when a <Constant name="dbt" /> job completes it will:
  - Check for any failed nodes (e.g. non-passing tests or errored models), and
  - create a PagerDuty alarm based on those nodes by calling the PagerDuty Events API. Events are deduplicated per run ID.
 
 ![Screenshot of the PagerDuty UI, showing an alarm created by invalid SQL in a dbt model](/img/guides/orchestration/webhooks/serverless-pagerduty/pagerduty-example-alarm.png)
 
-In this example, we will use fly.io for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://adem.sh/blog/tutorial-fastapi-aws-lambda-serverless) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
+In this example, we will use fly.io for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://ademoverflow.com/en/posts/tutorial-fastapi-aws-lambda-serverless/) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
 ### Prerequisites
 
 This guide assumes some familiarity with:
-- [<Constant name="cloud" /> Webhooks](/docs/deploy/webhooks)
+- [<Constant name="dbt" /> Webhooks](/docs/deploy/webhooks)
 - CLI apps
 - Deploying code to a serverless code runner like fly.io or AWS Lambda
 
@@ -112,8 +112,8 @@ Make note of the Webhook Secret Key for later.
 
 ## Store secrets
 The application requires three secrets to be set, using these names:
-- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="cloud" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
-- `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the <Constant name="cloud" /> webhook you created earlier.
+- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="dbt" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
+- `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the <Constant name="dbt" /> webhook you created earlier.
 - `PD_ROUTING_KEY`: the integration key for the PagerDuty integration you created earlier.
 
 Set these secrets as follows, replacing `abc123` etc with actual values:
@@ -123,6 +123,6 @@ flyctl secrets set DBT_CLOUD_SERVICE_TOKEN=abc123 DBT_CLOUD_AUTH_TOKEN=def456 PD
 
 ## Deploy your app
 
-After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the <Constant name="cloud" /> webhook settings and click **Test Endpoint**.
+After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the <Constant name="dbt" /> webhook settings and click **Test Endpoint**.
 
 </div>

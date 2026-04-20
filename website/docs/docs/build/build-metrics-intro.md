@@ -11,15 +11,29 @@ pagination_prev: null
 
 Use MetricFlow in dbt to centrally define your metrics. As a key component of the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
+For a complete list of configuration options and property specs, see the [Semantic Layer reference](/reference/semantic-layer-reference).
+
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="50%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 MetricFlow allows you to:
 - Intuitively define metrics in your dbt project
-- Develop from your preferred environment, whether that's the [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation), [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [<Constant name="core" />](/docs/core/installation-overview)
+- Develop from your preferred environment, whether that's the [dbt platform CLI](/docs/cloud/cloud-cli-installation), [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), or [<Constant name="core" />](/docs/local/install-dbt)
 - Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
-- Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
+- Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
 
 <div className="grid--3-col">
+
+  <Card
+    title="Semantic Layer reference"
+    body="Complete, exhaustive configuration reference for semantic models, metrics, and dimensions."
+    link="/reference/semantic-layer-reference"
+    icon="dbt-bit"/>
+
+  <Card
+    title="Migrate to the latest YAML spec"
+    body="Learn how to migrate from the legacy metrics YAML spec to the latest metrics YAML spec."
+    link="/docs/build/latest-metrics-spec"
+    icon="dbt-bit"/>
 
  <Card
     title="Quickstart for the dbt Semantic Layer"
@@ -41,7 +55,7 @@ MetricFlow allows you to:
 
   <Card
     title="Metrics"
-    body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
+    body="Define metrics in your dbt project using different metric types in YAML files."
     link="/docs/build/metrics-overview"
     icon="dbt-bit"/>
   

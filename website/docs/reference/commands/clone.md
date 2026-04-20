@@ -13,7 +13,7 @@ The `dbt clone` command clones selected nodes from the [specified state](/refere
 The `clone` command is useful for:
 - blue/green continuous deployment (on data warehouses that support zero-copy cloning tables)
 - cloning current production state into development schema(s)
-- handling incremental models in <Constant name="cloud" /> CI jobs (on data warehouses that support zero-copy cloning tables)
+- handling incremental models in <Constant name="dbt" /> CI jobs (on data warehouses that support zero-copy cloning tables)
 - testing code changes on downstream dependencies in your BI tool
 
 
@@ -37,15 +37,15 @@ Unlike deferral, `dbt clone` requires some compute and creation of additional ob
 
 For example, by creating actual data warehouse objects, `dbt clone` allows you to test out your code changes on downstream dependencies _outside of dbt_ (such as a BI tool). 
 
-As another example, you could `clone` your modified incremental models as the first step of your <Constant name="cloud" /> CI job to prevent costly `full-refresh` builds for warehouses that support zero-copy cloning.
+As another example, you could `clone` your modified incremental models as the first step of your <Constant name="dbt" /> CI job to prevent costly `full-refresh` builds for warehouses that support zero-copy cloning.
 
 ## Cloning in dbt
 
-You can clone nodes between states in <Constant name="cloud" /> using the `dbt clone` command. This is available in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and the [<Constant name="cloud_cli" />](/docs/cloud/cloud-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in <Constant name="cloud" />, read [Using defer in <Constant name="cloud" />](/docs/cloud/about-cloud-develop-defer).
+You can clone nodes between states in <Constant name="dbt" /> using the `dbt clone` command. This is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) and the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in <Constant name="dbt" />, read [Using defer in <Constant name="dbt" />](/docs/cloud/about-cloud-develop-defer).
 
-- **Using <Constant name="cloud_cli" />** &mdash; The `dbt clone` command in the <Constant name="cloud_cli" /> automatically includes the `--defer` flag. This means you can use the `dbt clone` command without any additional setup.
+- **Using <Constant name="platform_cli" />** &mdash; The `dbt clone` command in the <Constant name="platform_cli" /> automatically includes the `--defer` flag. This means you can use the `dbt clone` command without any additional setup.
 
-- **Using <Constant name="cloud_ide" />** &mdash; To use the `dbt clone` command in the <Constant name="cloud_ide" />, follow these steps before running the `dbt clone` command:
+- **Using <Constant name="studio_ide" />** &mdash; To use the `dbt clone` command in the <Constant name="studio_ide" />, follow these steps before running the `dbt clone` command:
 
   - Set up your **Production environment** and have a successful job run.
   - Enable **Defer to production** by toggling the switch in the lower-right corner of the command bar.

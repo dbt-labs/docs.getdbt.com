@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.mutinyhq.com https://*.getdbt.com"
+          "value": "img-src 'self' data: https: https://*.optimizely.com; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; frame-ancestors 'self' https://*.getdbt.com"
         },
         {
           "key": "Strict-Transport-Security",
@@ -39,6 +39,198 @@
   ],
   "redirects": [
     {
+      "source": "/community/events",
+      "destination": "https://www.getdbt.com/events",
+      "source": "/community/spotlight",
+      "destination": "/community/join",
+      "permanent": true
+    },
+    {
+      "source": "/community/spotlight/:path*",
+      "destination": "/community/join",
+      "permanent": true
+    },
+    {
+      "source": "/community/forum",
+      "destination": "https://discourse.getdbt.com/",
+      "permanent": true
+    },
+    { 
+      "source": "/guides/sl-migration",
+      "destination": "/docs/build/latest-metrics-spec",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-cloud-2",
+      "destination": "/guides/core-migration-2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-to-cloud-1",
+      "destination": "/guides/core-migration-1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-to-cloud-3",
+      "destination": "/guides/core-migration-3",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/secure-your-tenant",
+      "destination": "/docs/cloud/secure/about-network-security",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/network-security",
+      "destination": "/docs/cloud/secure/about-network-security",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/aws/:path*",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/azure/:path*",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/gcp/:path*",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/databricks-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-databricks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/redshift-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-redshift",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/postgres-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-postgres",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/vcs-privatelink",
+      "destination": "/docs/cloud/secure/private-connectivity/aws/aws-self-hosted",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/databricks-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-databricks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-postgres-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-postgres",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-synapse-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-synapse",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/az-self-hosted-private-link",
+      "destination": "/docs/cloud/secure/private-connectivity/azure/azure-self-hosted",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/snowflake-psc",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/gcp-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/bigquery-psc",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/gcp-bigquery",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/secure/gcp-self-hosted-psc",
+      "destination": "/docs/cloud/secure/private-connectivity/gcp/gcp-self-hosted",
+      "permanent": true
+    },
+    {
+      "source": "/guides/coalesce-fusion-platform-qs",
+      "destination": "/guides/fusion",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/metrics-spec-fusion",
+      "destination": "/docs/build/latest-metrics-spec",
+      "permanent": true
+    },
+    {
+      "source": "/reference/dbt-jinja-functions",
+      "destination": "/reference/dbt-jinja-functions-context-variables",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/cost-management",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+      "destination": "/docs/cloud/studio-ide/develop-in-studio",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/autofix-deprecations",
+      "destination": "/docs/cloud/studio-ide/autofix-deprecations",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/develop-copilot",
+      "destination": "/docs/cloud/studio-ide/develop-copilot",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/git-commit-signing",
+      "destination": "/docs/cloud/studio-ide/git-commit-signing",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/ide-user-interface",
+      "destination": "/docs/cloud/studio-ide/ide-user-interface",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
+      "destination": "/docs/cloud/studio-ide/keyboard-shortcuts",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide/lint-format",
+      "destination": "/docs/cloud/studio-ide/lint-format",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/install-fusion",
+      "destination": "/docs/fusion/get-started-fusion",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/manage-access/external-oauth",
       "destination": "/docs/cloud/manage-access/sso-overview",
       "permanent": true
@@ -49,23 +241,408 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/about-core-setup",
-      "destination": "/docs/about-dbt-install",
+      "source": "/docs/local/about-core-setup",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/about-dbt-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/install-dbt-extension",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/install-fusion-cli",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/local/installation-overview",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/local/pip-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/local/docker-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/local/source-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/about-fusion-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/connect-data-platform-fusion/snowflake-setup",
+      "destination": "/docs/local/connect-data-platform/snowflake-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/connect-data-platform-fusion/databricks-setup",
+      "destination": "/docs/local/connect-data-platform/databricks-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/connect-data-platform-fusion/redshift-setup",
+      "destination": "/docs/local/connect-data-platform/redshift-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/connect-data-platform-fusion/bigquery-setup",
+      "destination": "/docs/local/connect-data-platform/bigquery-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/connect-data-platform-fusion/salesforce-data-cloud-setup",
+      "destination": "/docs/local/connect-data-platform/salesforce-data-cloud-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/connect-data-platform-fusion/profiles.yml",
+      "destination": "/docs/local/profiles.yml",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fusion/connect-data-platform-fusion/connection-profiles",
+      "destination": "/docs/local/connection-profiles",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/dbt-core-environments",
+      "destination": "/docs/local/dbt-core-environments",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/pip-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/docker-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/source-install",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/installation-overview",
+      "destination": "/docs/local/install-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/about-core-connections",
+      "destination": "/docs/local/connect-data-platform/about-dbt-connections",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/profiles.yml",
+      "destination": "/docs/local/profiles.yml",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/connection-profiles",
+      "destination": "/docs/local/profiles.yml",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/snowflake-setup",
+      "destination": "/docs/local/connect-data-platform/snowflake-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/databricks-setup",
+      "destination": "/docs/local/connect-data-platform/databricks-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/redshift-setup",
+      "destination": "/docs/local/connect-data-platform/redshift-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/bigquery-setup",
+      "destination": "/docs/local/connect-data-platform/bigquery-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/salesforce-data-cloud-setup",
+      "destination": "/docs/local/connect-data-platform/salesforce-data-cloud-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/spark-setup",
+      "destination": "/docs/local/connect-data-platform/spark-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/fabric-setup",
+      "destination": "/docs/local/connect-data-platform/fabric-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/fabricspark-setup",
+      "destination": "/docs/local/connect-data-platform/fabricspark-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/postgres-setup",
+      "destination": "/docs/local/connect-data-platform/postgres-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/alloydb-setup",
+      "destination": "/docs/local/connect-data-platform/alloydb-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/athena-setup",
+      "destination": "/docs/local/connect-data-platform/athena-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/azuresynapse-setup",
+      "destination": "/docs/local/connect-data-platform/azuresynapse-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/clickhouse-setup",
+      "destination": "/docs/local/connect-data-platform/clickhouse-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/cratedb-setup",
+      "destination": "/docs/local/connect-data-platform/cratedb-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/databend-setup",
+      "destination": "/docs/local/connect-data-platform/databend-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/decodable-setup",
+      "destination": "/docs/local/connect-data-platform/decodable-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/deltastream-setup",
+      "destination": "/docs/local/connect-data-platform/deltastream-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/doris-setup",
+      "destination": "/docs/local/connect-data-platform/doris-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/dremio-setup",
+      "destination": "/docs/local/connect-data-platform/dremio-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/duckdb-setup",
+      "destination": "/docs/local/connect-data-platform/duckdb-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/exasol-setup",
+      "destination": "/docs/local/connect-data-platform/exasol-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/extrica-setup",
+      "destination": "/docs/local/connect-data-platform/extrica-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/firebolt-setup",
+      "destination": "/docs/local/connect-data-platform/firebolt-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/glue-setup",
+      "destination": "/docs/local/connect-data-platform/glue-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/greenplum-setup",
+      "destination": "/docs/local/connect-data-platform/greenplum-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/hive-setup",
+      "destination": "/docs/local/connect-data-platform/hive-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/hologres-setup",
+      "destination": "/docs/local/connect-data-platform/hologres-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/ibmdb2-setup",
+      "destination": "/docs/local/connect-data-platform/ibmdb2-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/ibmnetezza-setup",
+      "destination": "/docs/local/connect-data-platform/ibmnetezza-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/impala-setup",
+      "destination": "/docs/local/connect-data-platform/impala-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/infer-setup",
+      "destination": "/docs/local/connect-data-platform/infer-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/iomete-setup",
+      "destination": "/docs/local/connect-data-platform/iomete-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/lakebase-setup",
+      "destination": "/docs/local/connect-data-platform/lakebase-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/layer-setup",
+      "destination": "/docs/local/connect-data-platform/layer-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/materialize-setup",
+      "destination": "/docs/local/connect-data-platform/materialize-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/maxcompute-setup",
+      "destination": "/docs/local/connect-data-platform/maxcompute-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/mindsdb-setup",
+      "destination": "/docs/local/connect-data-platform/mindsdb-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/mssql-setup",
+      "destination": "/docs/local/connect-data-platform/mssql-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/mysql-setup",
+      "destination": "/docs/local/connect-data-platform/mysql-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/oracle-setup",
+      "destination": "/docs/local/connect-data-platform/oracle-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/risingwave-setup",
+      "destination": "/docs/local/connect-data-platform/risingwave-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/rockset-setup",
+      "destination": "/docs/local/connect-data-platform/rockset-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/singlestore-setup",
+      "destination": "/docs/local/connect-data-platform/singlestore-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/sqlite-setup",
+      "destination": "/docs/local/connect-data-platform/sqlite-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/starrocks-setup",
+      "destination": "/docs/local/connect-data-platform/starrocks-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/teradata-setup",
+      "destination": "/docs/local/connect-data-platform/teradata-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/tidb-setup",
+      "destination": "/docs/local/connect-data-platform/tidb-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/trino-setup",
+      "destination": "/docs/local/connect-data-platform/trino-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/upsolver-setup",
+      "destination": "/docs/local/connect-data-platform/upsolver-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/vertica-setup",
+      "destination": "/docs/local/connect-data-platform/vertica-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/watsonx-presto-setup",
+      "destination": "/docs/local/connect-data-platform/watsonx-presto-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/watsonx-spark-setup",
+      "destination": "/docs/local/connect-data-platform/watsonx-spark-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/ydb-setup",
+      "destination": "/docs/local/connect-data-platform/ydb-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/yellowbrick-setup",
+      "destination": "/docs/local/connect-data-platform/yellowbrick-setup",
       "permanent": true
     },
     {
       "source": "/docs/cloud/secure/about-privatelink",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
       "source": "/docs/cloud/privatelink/about-privatelink",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
       "source": "/docs/cloud/privatelink/about-private-link",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
@@ -240,7 +817,7 @@
     },
     {
       "source": "/docs/cloud/secure/about-privatelink",
-      "destination": "/docs/cloud/secure/about-private-connectivity",
+      "destination": "/docs/cloud/secure/private-connectivity/private-connectivity",
       "permanent": true
     },
     {
@@ -785,7 +1362,12 @@
     },
     {
       "source": "/faqs/Troubleshooting/access_token_error",
-      "destination": "/faqs/Troubleshooting/auth-expired-error",
+      "destination": "/faqs/Troubleshooting/refresh-snowflake-oauth-credentials",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Troubleshooting/auth-expired-error",
+      "destination": "/faqs/Troubleshooting/refresh-snowflake-oauth-credentials",
       "permanent": true
     },
     {
@@ -799,7 +1381,7 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/connect-data-platform/fal-setup",
+      "source": "/docs/local/connect-data-platform/fal-setup",
       "destination": "https://github.com/fal-ai/dbt-fal",
       "permanent": true
     },
@@ -854,6 +1436,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions",
+      "permanent": true
+    },
+    {
       "source": "/best-practices/how-we-mesh/mesh-4-faqs",
       "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
       "permanent": true
@@ -904,8 +1491,8 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/homebrew-install",
-      "destination": "/docs/core/installation-overview",
+      "source": "/docs/local/homebrew-install",
+      "destination": "/docs/local/installation-overview",
       "permanent": true
     },
     {
@@ -950,7 +1537,7 @@
     },
     {
       "source": "/reference/profiles.yml",
-      "destination": "/docs/core/connect-data-platform/profiles.yml",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {
@@ -994,8 +1581,8 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/installation",
-      "destination": "/docs/core/installation-overview",
+      "source": "/docs/local/installation",
+      "destination": "/docs/local/installation-overview",
       "permanent": true
     },
     {
@@ -1004,8 +1591,8 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/about-dbt-core",
-      "destination": "/docs/core/installation-overview",
+      "source": "/docs/local/about-dbt-core",
+      "destination": "/docs/local/installation-overview",
       "permanent": true
     },
     {
@@ -1020,7 +1607,7 @@
     },
     {
       "source": "/dbt-cli/cli-overview",
-      "destination": "/docs/core/about-dbt-core",
+      "destination": "/docs/local/about-dbt-core",
       "permanent": true
     },
     {
@@ -1111,7 +1698,7 @@
     },
     {
       "source": "/guides/migration/sl-migration",
-      "destination": "/guides/sl-migration",
+      "destination": "/docs/build/latest-metrics-spec",
       "permanent": true
     },
     {
@@ -1256,8 +1843,8 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/about-the-cli",
-      "destination": "/docs/core/about-dbt-core",
+      "source": "/docs/local/about-the-cli",
+      "destination": "/docs/local/about-dbt-core",
       "permanent": true
     },
     {
@@ -1337,7 +1924,7 @@
     },
     {
       "source": "/docs/collaborate/environments/dbt-core-environments",
-      "destination": "/docs/core/dbt-core-environments",
+      "destination": "/docs/local/dbt-core-environments",
       "permanent": true
     },
     {
@@ -1451,13 +2038,13 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/connection-profiles",
-      "destination": "/docs/core/connect-data-platform/connection-profiles",
+      "source": "/docs/local/connection-profiles",
+      "destination": "/docs/local/profiles.yml",
       "permanent": true
     },
     {
       "source": "/reference/warehouse-setups/:path*",
-      "destination": "/docs/core/connect-data-platform/:path*",
+      "destination": "/docs/local/connect-data-platform/:path*",
       "permanent": true
     },
     {
@@ -1546,7 +2133,7 @@
       "permanent": true
     },
     {
-      "source": "/docs/core/connection-profiles#understanding-threads",
+      "source": "/docs/local/connection-profiles#understanding-threads",
       "destination": "/docs/running-a-dbt-project/using-threads",
       "permanent": true
     },
@@ -1702,37 +2289,37 @@
     },
     {
       "source": "/docs/get-started/installation",
-      "destination": "/docs/core/installation",
+      "destination": "/docs/local/installation",
       "permanent": true
     },
     {
       "source": "/docs/get-started/about-the-cli",
-      "destination": "/docs/core/about-the-cli",
+      "destination": "/docs/local/about-the-cli",
       "permanent": true
     },
     {
       "source": "/docs/get-started/homebrew-install",
-      "destination": "/docs/core/homebrew-install",
+      "destination": "/docs/local/homebrew-install",
       "permanent": true
     },
     {
       "source": "/docs/get-started/pip-install",
-      "destination": "/docs/core/pip-install",
+      "destination": "/docs/local/install-dbt",
       "permanent": true
     },
     {
       "source": "/docs/get-started/docker-install",
-      "destination": "/docs/core/docker-install",
+      "destination": "/docs/local/docker-install",
       "permanent": true
     },
     {
       "source": "/docs/get-started/source-install",
-      "destination": "/docs/core/source-install",
+      "destination": "/docs/local/source-install",
       "permanent": true
     },
     {
       "source": "/docs/get-started/connection-profiles",
-      "destination": "/docs/core/connection-profiles",
+      "destination": "/docs/local/connection-profiles",
       "permanent": true
     },
     {
@@ -2473,7 +3060,7 @@
     },
     {
       "source": "/docs/core-versions",
-      "destination": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions",
       "permanent": true
     },
     {
@@ -3078,7 +3665,7 @@
     },
     {
       "source": "/docs/installation",
-      "destination": "/docs/core/installation",
+      "destination": "/docs/local/installation",
       "permanent": true
     },
     {
@@ -4284,7 +4871,7 @@
     },
     {
       "source": "/v0.15/docs/configure-your-profile",
-      "destination": "/docs/core/connection-profiles",
+      "destination": "/docs/local/connection-profiles",
       "permanent": true
     },
     {

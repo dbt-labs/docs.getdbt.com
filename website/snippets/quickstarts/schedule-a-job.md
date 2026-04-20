@@ -18,14 +18,14 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="dbt" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 
 1. From the main menu, go to **Orchestration** > **Environments**.
 2. Click **Create environment**.
 3. In the **Name** field, write the name of your deployment environment. For example, "Production."
-4. In the **dbt Version** field, select the latest version from the dropdown.
+4. The **dbt version** will default to the latest available. We recommend all new projects run on the latest version of dbt. 
 5. Under **Deployment connection**, enter the name of the dataset you want to use as the target, such as "Analytics". This will allow dbt to build and work with that dataset. For some data warehouses, the target dataset may be referred to as a "schema".
 6. Click **Save**.
 

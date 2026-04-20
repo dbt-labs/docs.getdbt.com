@@ -12,7 +12,7 @@ datatype: int
 
 Configure a `lookback` window to reprocess additional batches during [microbatch incremental model](/docs/build/incremental-microbatch) runs. It processes X batches up to the latest bookmark (the last successfully processed data point) to capture late-arriving records.  
 
-Set the `lookback` to an integer greater than or equal to zero. The default value is `1`.  You can configure `lookback` for a [microbatch incremental model](/docs/build/incremental-microbatch) in your `dbt_project.yml` file, property YAML file, or config block.
+Set the `lookback` to an integer greater than or equal to zero. The default value is `1`.  You can configure `lookback` for a [microbatch incremental model](/docs/build/incremental-microbatch) in your project YAML file (`dbt_project.yml`), properties YAML file (`models/properties.yml`), or SQL file config.
 
 ## Examples
 
@@ -30,7 +30,7 @@ models:
 ```
 </File>
 
-Example in a properties YAML file:
+Example in a property file:
 
 <File name='models/properties.yml'>
 
@@ -43,7 +43,7 @@ models:
 
 </File>
 
-Example in SQL model config block:
+Example in SQL config block:
 
 <File name="models/user_sessions.sql">
 

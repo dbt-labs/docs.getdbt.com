@@ -1,6 +1,7 @@
 :local(.link) :local(.headerText) {
-    color: var(--ifm-link-color);
+    color: var(--color-neutral-primary);
     text-decoration: none;
+    font-weight: 600;
     transition: text-decoration 0.3s; /* Smooth transition */
 }
 
@@ -8,6 +9,10 @@
 :local(.link:focus) :local(.headerText) {
     text-decoration: underline;
     cursor: pointer;
+}
+
+:local(html[data-theme='dark'] .link) :local(.headerText) {
+    color: var(--color-white);
 }
 
 :local(.disclaimer) {
@@ -43,11 +48,11 @@
     margin-left: 2em;
     margin-bottom: 10px;
     padding: 20px;
-    background-color: var(--color-coalesce-purple-100);
+    background-color: transparent;
 }
 
 :local(html[data-theme='dark'] .body) {
-  background: var(--color-coalesce-purple-950);
+  background: transparent;
 }
 
 :local(.body > p:last-child) {

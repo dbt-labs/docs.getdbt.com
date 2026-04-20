@@ -1,0 +1,83 @@
+name: Docs total pages badge (gist)
+
+on:
+  push:
+    branches: ["current"]     
+    paths:
+      - "website/**"
+      - "**/*.md"
+      - "**/*.mdx"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  make-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure jq
+        run: |
+          command -v jq >/dev/null || { sudo apt-get update && sudo apt-get install -y jq; }
+
+      - name: Count .md + .mdx in website/docs
+        id: count
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Debug: Check if directory exists
+          echo "Checking directory..."
+          ls -la website/ || echo "website/ directory not found"
+          [ -d "website/docs" ] && echo "website/docs exists" || echo "website/docs does NOT exist"
+          
+          # Count function with better error handling
+          count() {
+            if [ ! -d "$1" ]; then
+              echo "Warning: Directory $1 does not exist" >&2
+              echo 0
+              return
+            fi
+            local result
+            result=$(find "$1" -type f \( -iname "*.md" -o -iname "*.mdx" \) 2>/dev/null | wc -l | tr -d ' \n')
+            echo "${result:-0}"
+          }
+          
+          DOCS=$(count website/docs)
+          TOTAL=$DOCS
+          echo "Docs: $DOCS"
+          echo "TOTAL: $TOTAL"
+          
+          # Verify total is a valid number
+          if ! [[ "$TOTAL" =~ ^[0-9]+$ ]]; then
+            echo "Error: Total is not a valid number: $TOTAL"
+            exit 1
+          fi
+          
+          if [ "$TOTAL" -eq 0 ]; then
+            echo "Warning: Total count is 0. This might indicate a problem."
+          fi
+          
+          echo "total=${TOTAL}" >> "$GITHUB_OUTPUT"
+          echo "Set output total=${TOTAL}"
+
+      - name: Verify count output
+        run: |
+          echo "Count output value: ${{ steps.count.outputs.total }}"
+          if [ -z "${{ steps.count.outputs.total }}" ]; then
+            echo "Error: Count output is empty!"
+            exit 1
+          fi
+
+      - name: Update badge JSON in Gist
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gistID: 618181e9b63cd72035c4eef203705cec
+          filename: docs_total.json
+          label: docs total
+          message: ${{ steps.count.outputs.total }}
+          color: informational
+          cacheSeconds: 3600
+
+          
