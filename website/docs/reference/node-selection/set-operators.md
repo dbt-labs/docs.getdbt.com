@@ -17,7 +17,7 @@ For example, the following command combines two selector expressions. Each uses 
 dbt run --select "+snowplow_sessions +fct_orders"
 ```
 
-That differs from an [intersection](#intersections), where comma-separated arguments with no spaces between them require a resource to satisfy _all_ criteria at once.
+This behavior differs from an [intersection](#intersections), where comma-separated arguments with no spaces between them require a resource to satisfy _all_ criteria at once.
 
 ## Intersections
 
