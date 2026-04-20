@@ -23,7 +23,7 @@ This behavior differs from an [intersection](#intersections), where comma-separa
 
 An intersection keeps only the nodes that match every selector expression; a resource must satisfy _all_ comma-separated arguments to remain in the final set.
 
-Use commas with no spaces between them to request an intersection when you pass multiple arguments to `--select` or `--exclude`. Spaces between arguments still mean a [union](#unions). dbt resolves each argument using the normal selection rules ([selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and so on), then keeps only resources that satisfy _all_ of them. The order of comma-separated arguments does not change the final set.
+Use commas with no spaces between arguments to define an intersection when you pass multiple arguments to `--select` or `--exclude`. Spaces between arguments still mean a [union](#unions). dbt resolves each argument using the normal selection rules ([selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and other selection syntax), then keeps only resources that satisfy all of them. The order of comma-separated arguments does not change the final set.
 
 Select shared upstream nodes (common ancestors of `snowplow_sessions` and `fct_orders`):
 
