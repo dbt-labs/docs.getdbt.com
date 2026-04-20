@@ -43,7 +43,7 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 ## Enable Fusion readiness features
 
-The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" />, which shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically turned on for your account yet, an account admin can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
+The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
 
 ### Step 1: Enable the readiness toggle
 
@@ -51,7 +51,7 @@ This step requires account admin access in <Constant name="dbt_platform" />:
 
 1. Click your account name in the left sidebar and select **Account settings**.
 2. Navigate to the **Account** screen and click **Edit**.
-3. Scroll to the **Settings** section and click the checkbox next to **Enable Fusion readiness & upgrade features**.
+3. Scroll to the **Settings** section and select the checkbox next to **Enable Fusion readiness & upgrade features**.
 4. Click **Save**.
 
 Once enabled:
@@ -62,16 +62,16 @@ Once enabled:
 
 By default, any user who can see the upgrade assistant can use it to initiate an upgrade. To limit upgrade execution to designated users, you can enable an additional access control toggle.
 
-:::note Enterprise only
+:::note Enterprise tier accounts only
 
 The **Enable restricted Fusion upgrade permissions** toggle is only available to Enterprise/Enterprise+ accounts that have been granted this entitlement. Contact your account manager if you need this capability.
 
 :::
 
-1. In the same **Account** settings screen, click the checkbox next to **Enable restricted Fusion upgrade permissions**.
+1. In the same **Account** settings screen, select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 2. Click **Save**.
 
-When enabled, only users assigned the `Fusion admin` permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, see [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+When enabled, only users assigned the [`Fusion admin`](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
 
 ### The Fusion readiness panel
 
@@ -80,9 +80,9 @@ With the readiness experience enabled, you can monitor your project's eligibilit
 <Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The Fusion readiness checklist"/>
 
 Common ineligibility reasons include:
-- Environment(s) not on the **Latest** release track
+- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available]
 - Not using a [supported data platform](/docs/fusion/supported-features?version=2.0#requirements)
-- Project doesn't have at least one succesful job run
+- Project doesn't have at least one successful job run
 - Jobs that haven't run in the last 7 days or have recent failures
 
 As you complete the steps in this guide, check the readiness panel to see your eligibility improve.

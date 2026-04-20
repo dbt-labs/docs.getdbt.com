@@ -61,7 +61,7 @@ Always upgrade your development environment first before moving to production. T
 
 ### Assign upgrade access (optional)
 
-The <Constant name="fusion" /> upgrade assistant is controlled by two account-level settings. An account admin must first enable the readiness experience, and can optionally restrict which users can execute the upgrade.
+The <Constant name="fusion" /> upgrade assistant is controlled by two account-level settings. An [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) must first enable the readiness experience, and can optionally restrict which users can execute the upgrade.
 
 #### Enable the Fusion readiness experience
 
@@ -69,7 +69,7 @@ The upgrade assistant and readiness panel only appear after an account admin ena
 
 1. Navigate to **Account settings** → **Account**.
 2. Click **Edit** and scroll to the **Settings** section.
-3. Click the checkbox next to **Enable Fusion readiness & upgrade features**.
+3. Select the checkbox next to **Enable Fusion readiness & upgrade features**.
 4. Click **Save**.
 
 Once enabled, all users can see the readiness panel and the **Start Fusion upgrade** assistant (subject to their existing permissions).
@@ -79,7 +79,7 @@ Once enabled, all users can see the readiness panel and the **Start Fusion upgra
 By default, any user who can see the upgrade assistant can use it. To restrict upgrade execution to designated users:
 
 1. In **Account settings** → **Account**, click **Edit**.
-2. Click the checkbox next to **Enable restricted Fusion upgrade permissions**.
+2. Select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 3. Click **Save**.
 
 When this is enabled, only users with the **Fusion admin** [permission set](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) can execute upgrades. To assign this permission:
@@ -391,7 +391,7 @@ Repeat this for all production jobs to maximize cost savings. For more details, 
 
 :::tip Dropped tables and views
 
-If using state-aware orchestration, dbt doesn't detect a change if a table or view is dropped outside of dbt, as the cache is unique to each dbt platform environment. This means state-aware orchestration will not rebuild that model until either there is new data or a change in the code that the model uses.
+If you use state-aware orchestration, dbt doesn't detect changes when a table or view is dropped outside of dbt because the cache is unique to each dbt platform environment. As a result, state-aware orchestration won't rebuild that model until there is new data or a code change in the model.
 
 To circumvent this limitation: 
 - Use the **Clear cache** button on the target Environment page to force a full rebuild (acts like a reset), or
