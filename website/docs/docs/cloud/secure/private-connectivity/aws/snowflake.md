@@ -22,19 +22,89 @@ import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md';
 
 ## Configure AWS PrivateLink
 
+This section walks you through the setup of an AWS-hosted Snowflake PrivateLink endpoint in a <Constant name="dbt_platform" />. You can set up in two ways:
+- [Self-serve private endpoints](#self-serve-private-endpoints): Self-serve configuration of Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> user interface. Currently in private beta. 
+- [Support-led setup](#support-led-setup): Requires contacting dbt Support to configure Snowflake PrivateLink endpoints. Non-self service configuration of Snowflake PrivateLink endpoints. 
+
+### Self-serve private endpoints <Lifecycle status="private_beta" />
+
+:::note
+Self-serve private endpoints are currently in private beta for Snowflake on AWS. To join the beta, please reach out to your account manager. 
+
+This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead.
+:::
+
+This section walks you through the process of requesting a new Snowflake PrivateLink endpoint in <Constant name="dbt_platform" />. 
+
+##### Prerequisites
+- You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) permission sets in <Constant name="dbt_platform"/>. Additionally, users with an IT license are able to create private endpoints in <Constant name="dbt_platform"/>.
+- You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
+
+#### Request a new private endpoint
+
+1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
+2. In the **Private endpoints** table, review your existing endpoints. The table shows all private endpoints in your account (including non-Snowflake ones) with the following details:
+   - **Name**
+   - **Connection type** (for example, Snowflake)
+   - **URL**
+   - **Connectivity status** (for example, **Success** or **Unknown**)
+   - **Connections** — the number of <Constant name="dbt_platform" /> connections using the endpoint
+
+   You can search by **Name** or **URL**. You can only _create_ new endpoints for Snowflake at this time. To delete an endpoint, contact [dbt Support](mailto:support@getdbt.com).
+
+    <Lightbox src="/img/docs/dbt-cloud/private-endpoint-page.png" title="Private endpoints table showing existing endpoints, connectivity status, and the Request new button"/>
+
+3. To request a new endpoint, click **Request new**.
+4. Under **Provider type**, confirm **Snowflake** is selected. Currently other endpoint providers aren't supported, contact [dbt Support](mailto:support@getdbt.com) if you need to connect to a different service.
+5. Copy the SQL command in the **SQL command snippet** section.
+6. Go to Snowflake and run the SQL command snippet you copied from <Constant name="dbt_platform" />: `SELECT SYSTEM$GET_PRIVATELINK_CONFIG();`
+7. Copy the output from Snowflake and return to <Constant name="dbt_platform" /> to paste it into the **Snowflake output** field. If the output is correct, you'll see an inline **Output looks good** type message below the text box. If there's an error, review the message and make any updates as necessary.
+8. Click **Submit request**.
+
+    <Lightbox src="/img/docs/dbt-cloud/private-endpoint-config.png" title="Endpoint request form showing Provider type, SQL command snippet, and Snowflake output fields"/>
+
+9. After submission, a confirmation popup appears (for example, **Endpoint request submitted**). From the popup, you can request another endpoint or return to **Private endpoints** to track request status.
+10. Proceed to the **Connections** page and following the steps in the [Create connection in dbt](#create-connection-in-dbt) section to configure PrivateLink. 
+Once you configure PrivateLink on the **Connections** page, you'll see the new endpoint appear under **Private endpoints → Associated connections**.
+
+:::note DNS propagation
+If the connection test fails immediately after setup, this is expected &mdash; it doesn't mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
+:::
+
+#### Duplicate endpoint requests
+
+If you submit a request using a VPCE ID that matches an existing endpoint, <Constant name="dbt_platform"/> displays an **Endpoint already exists** popup with two options:
+
+- **Reuse existing interface endpoint** (default, recommended) — Links the new private endpoint to an already-approved interface endpoint. Use this option when your VPCE is already approved to avoid duplicating infrastructure.
+- **Create new interface endpoint** — Creates a new interface endpoint with its own network policy. Use this only if you need a distinct network policy configuration.
+
+Select your preferred option and click **Confirm & Submit**.
+
+  <Lightbox src="/img/docs/dbt-cloud/endpoint-exists.png" width="70%" title="Endpoint already exists popup with options to create a new interface endpoint or re-use an existing one"/>
+
+#### Troubleshooting and errors
+
+If an endpoint request fails, <Constant name="dbt_platform"/> displays error details that are safe to share externally.
+
+If you see a failure state without clear next steps, collect the request details (endpoint name, creation time, status, and the Snowflake output you provided) and contact [dbt Support](mailto:support@getdbt.com).
+
+### Support-led setup {#support-led-setup}
+
+If **Private endpoints** is not available in your account settings, configure Snowflake PrivateLink by following these steps and submitting a request to dbt Support.
+
 To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.amazon.com/privatelink):
 
 1. Open a support case with Snowflake to allow access from the <Constant name="dbt" /> AWS account.
    - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
    - Provide them with your <Constant name="dbt" /> account ID along with any other information requested in the article.
      - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
-   - You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support request.
+   - You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
 2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
-3. Add the required information to the following template and submit your request to  [dbt Support](mailto:support@getdbt.com):
+3. Add the required information to the following template and submit your request to [dbt Support](mailto:support@getdbt.com):
 
 <Expandable alt_header="Support request email template" is_open={true}>
 
