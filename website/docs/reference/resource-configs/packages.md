@@ -21,7 +21,7 @@ functions:
 
 ## Definition
 
-When creating Python UDFs, you can specify public third-party PyPI packages for your Python UDF using the optional `packages` config. In this config, you can list package names (for example, `numpy`, `pandas`) and you can pin versions (for example, `pandas==1.5.0`). The warehouse installs these packages when creating the UDF, allowing your UDF to use functionality from external Python libraries.
+When creating Python UDFs, you can use the optional `packages` config to specify public third-party PyPI packages. You can list package names (for example, `numpy` and `pandas`) and pin versions (for example, `pandas==1.5.0`). The warehouse installs these packages when it creates the UDF, so your UDF can use functionality from external Python libraries.
 
 On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before using them.
 
