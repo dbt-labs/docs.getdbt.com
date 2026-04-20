@@ -9,7 +9,7 @@ Unions and intersections combine <Term id="selector-expression">selector express
 
 A union merges the node sets from several selector expressions; every resource that matches _any_ of those expressions is kept. In other words, union behaves like OR across the arguments you pass to `--select` or `--exclude`.
 
-With unions, you can pass multiple arguments separated by spaces (space-delimited). dbt resolves each argument using the normal selection rules ([selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and other selection syntax), then combines the results. If more than one argument matches the same node, that node still appears only once in the final selection (there are no duplicates).
+With unions, you can pass multiple arguments separated by spaces (space-delimited). dbt resolves each argument using the normal selection rules ([selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and other selection syntax), then combines the results. If more than one argument matches the same node, that node appears only once in the final selection.
 
 For example, the following command combines two selector expressions. Each uses `+` to include a model and its ancestors, and the space between them merges both sets:
 
