@@ -83,7 +83,7 @@ The upgrade assistant and readiness panel only appear after enabling this settin
 
 Once enabled, all admins and developers can see each project's Fusion readiness status and which jobs are eligible or ineligible for <Constant name="fusion" />. Admins can also initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing user permissions). Developer-licensed users will have access to debug tools to help make projects <Constant name="fusion" /> eligible in both development and production environments.
 
-Step 2: Restrict upgrade access (optional, Enterprise/Enteprise Plus only)
+Step 2: Restrict upgrade access (optional, Enterprise/Enterprise+ only)
 
 By default, all admins and developer-licensed users can access the <Constant name="fusion" /> readiness & upgrade flow. To restrict upgrade execution to users with the `Fusion admin` permission set, enable this additional setting. From your **Account settings**:
 
@@ -92,10 +92,10 @@ By default, all admins and developer-licensed users can access the <Constant nam
 3. Click the box next to **Enable restricted Fusion upgrade permissions**.
 4. Click **Save**.
 
-This hides the <Constant name="fusion" /> upgrade workflow from users who don't have the `Fusion admin` permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
+This hides the <Constant name="fusion" /> upgrade workflows from users who don't have the [`Fusion admin`](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) permission set. To grant access to the upgrade workflows to specific projects and/or specific users:
 1. Navigate to an existing group in your **Account settings** and click **Edit**, or click [**Create group**](/docs/cloud/manage-access/about-user-access#create-new-groups) to create a new one.
 2. Scroll to the **Access and permissions** section and click **Add permission**.
-3. Select the **Fusion admin** permission set from the dropdown and then select the project(s) you want the users to access. 
+3. Select the **Fusion admin** permission set from the dropdown, then select the project(s) you want the users to access. 
 4. Click **Save**.
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin to groups and projects."/>
