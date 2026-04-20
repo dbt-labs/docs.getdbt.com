@@ -167,16 +167,16 @@ SnowflakeDynamicTableConfig.__init__() missing 6 required positional arguments: 
 Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`. 
 
 ## Semantic Views
-[Snowflake Semantic Views](https://docs.snowflake.com/en/user-guide/views-semantic/overview) provide a native schema object for centralizing metric definitions and reducing fragmented metric logic across BI and analytics tools.
+[Snowflake Semantic Views](https://docs.snowflake.com/en/user-guide/views-semantic/overview) provide a native schema-level object for centralizing metric definitions and reducing fragmented metric logic across BI and analytics tools.
 
 Use the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/) to define and manage Snowflake Semantic Views in your dbt project. This lets you keep Semantic View definitions in version control and apply your existing testing and CI/CD workflows to your <Constant name="semantic_layer" />.
 
 ### Install the package
 :::note Prerequisite
 - This package requires `dbt` version `>=1.0.0, <2.0.0`. For the latest compatibility details, refer to the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/).
-- Your Snowflake account supports Semantic Views
-- Your role has permission to create semantic views
-- You are writing to a database and schema where you have create privileges
+- Your Snowflake account supports Semantic Views.
+- Your role has permission to create Semantic Views.
+- You can write to a database and schema where you have create privileges.
 :::
 
 Add `dbt_semantic_view` to your `packages.yml` file:
@@ -262,7 +262,7 @@ metrics (
     STORESALES.TOTALCOST as SUM(item.cost),
     STORESALES.TOTALSALESPRICE as SUM(SS_SALES_PRICE),
     STORESALES.TOTALSALESQUANTITY as SUM(SS_QUANTITY)
-        WITH SYNONYMS = ( 'total sales quantity', 'total sales amount')
+        WITH SYNONYMS = ('total sales quantity', 'total sales amount')
 )
 ```
 
@@ -292,46 +292,6 @@ select * from semantic_view(
   DIMENSIONS ...
   WHERE ...
 )
-
-```
-
-#### Manage privileges with `copy_grants`
-
-Use `copy_grants` to apply Snowflake `COPY GRANTS` behavior to Semantic Views.
-
-In `dbt_project.yml`:
-```yaml
-models:
-  project_name:
-    +copy_grants: true
-```
-
-In `models/my_materialized_semantic_view.yml`:
-```yaml
-models:
-  - name: my_materialized_semantic_view
-    config:
-      copy_grants: true
-```
-
-In `models/my_materialized_semantic_view.sql` config specification:
-```sql
-{{
-  config(
-    materialized='semantic_view',
-    copy_grants=true
-  )
-}}
-```
-
-In `models/my_materialized_semantic_view.sql` SQL definition:
-```sql
-TABLES(...)
-RELATIONSHIPS(...)
-FACTS(...)
-DIMENSIONS(...)
-METRICS(...)
-COPY GRANTS
 ```
 
 ## Temporary tables
