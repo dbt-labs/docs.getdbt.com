@@ -141,7 +141,7 @@ sql-rendering:
 
 selector-expression:
   displayText: selector expression
-  hoverSnippet: An expression that defines a set of nodes in your dbt project (models, tests, seeds, sources, and other resource types) to include or exclude. You pass selector expressions to flags such as --select and --exclude, or define them as named selectors in selectors.yml.
+  hoverSnippet: An expression used with --select and --exclude to include or exclude specific nodes in your dbt project.
 
 subquery:
   displayText: subquery
