@@ -36,24 +36,24 @@ Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `re
 
 ## Requirements to use the GraphQL API
 
-- A <Constant name="cloud" /> project on dbt v1.6 or higher
+- A <Constant name="dbt" /> project on dbt v1.6 or higher
 - Metrics are defined and configured
-- A <Constant name="cloud" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions or a [personal access token](/docs/dbt-cloud-apis/user-tokens)
+- A <Constant name="dbt" /> [service token](/docs/dbt-cloud-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions or a [personal access token](/docs/dbt-cloud-apis/user-tokens)
 
 ## Using the GraphQL API
 
-If you're a dbt user or partner with access to <Constant name="cloud" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [set up](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
+If you're a dbt user or partner with access to <Constant name="dbt" /> and the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl), you can [set up](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the <Constant name="semantic_layer" /> and obtaining the right GQL connection parameters described in this document. 
 
 Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
 
-Authentication uses either a <Constant name="cloud" /> [service account token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
+Authentication uses either a <Constant name="dbt" /> [service account token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
 
 ```shell
 {"Authorization": "Bearer <AUTHENTICATION TOKEN>"}
 ```
 
-Each GQL request also requires a <Constant name="cloud" /> `environmentId`. The API uses both the service or personal token in the header and `environmentId` for authentication.
+Each GQL request also requires a <Constant name="dbt" /> `environmentId`. The API uses both the service or personal token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
@@ -160,6 +160,7 @@ You can also optionally access it from the metrics endpoint:
 }
 ```
 
+<VersionBlock lastVersion="1.9">
 #### Fetch measures
 
 ```graphql
@@ -185,6 +186,7 @@ You can also optionally access it from the metrics endpoint:
   }
 }
 ```
+</VersionBlock>
 
 #### Fetch entities
 
@@ -241,6 +243,19 @@ MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 ```
 
 #### Metric type parameters
+<VersionBlock firstVersion="1.12">
+```graphql
+MetricTypeParams {
+  numerator: MetricInput
+  denominator: MetricInput
+  expr: String
+  window: MetricTimeWindow
+  grainToDate: TimeGranularity
+  metrics: [MetricInput!]
+}
+```
+</VersionBlock>
+<VersionBlock lastVersion="1.9">
 
 ```graphql
 MetricTypeParams {
@@ -254,6 +269,8 @@ MetricTypeParams {
   metrics: [MetricInput!]
 }
 ```
+
+</VersionBlock>
 
 #### Dimension types
 
@@ -611,57 +628,6 @@ mutation {
     }
 }
 ```
-
-For both `TimeDimension()`, the grain is only required in the `where` filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
-
-#### Example
-
-For example, consider this semantic model and metric configuration, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
-
-```yaml
-semantic_model:
-  name: my_model_source
-
-defaults:
-  agg_time_dimension: created_month
-  measures:
-    - name: measure_0
-      agg: sum
-    - name: measure_1
-      agg: sum
-      agg_time_dimension: order_year
-  dimensions:
-    - name: created_month
-      type: time
-      type_params:
-        time_granularity: month
-    - name: order_year
-      type: time
-      type_params:
-        time_granularity: year
-
-metrics:
-  - name: metric_0
-    description: A metric with a month grain.
-    type: simple
-    type_params:
-      measure: measure_0
-  - name: metric_1
-    description: A metric with a year grain.
-    type: simple
-    type_params:
-      measure: measure_1
-```
-
-Assuming the user is querying `metric_0` and `metric_1` together, the following are valid or invalid filters:
-
-| <div style={{width:'200px'}}>Example</div> | <div style={{width:'250px'}}>Filter</div> |
-| ------- | ------ |
-| ✅ <br />   Valid filter| `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`  |
-| ❌ <br /> Invalid filter | ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"`  <br /><br /> Metrics in the query are defined based on measures with different grains.  |
-❌ <br /> Invalid filter | `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` <br /><br />  `metric_1` is not available at a month grain. |
-
-
 
 #### Multi-hop joins
 

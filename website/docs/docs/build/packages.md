@@ -105,7 +105,7 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
 
-Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the `DBT_PACKAGE_HUB_URL` environment variable.
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the <VersionBlock lastVersion="1.10">`DBT_PACKAGE_HUB_URL`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PACKAGE_HUB_URL`</VersionBlock> environment variable.
 
 #### Prerelease versions
 
@@ -175,7 +175,10 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 ### Native private packages <Lifecycle status='beta'/> 
 
-<Constant name="cloud" /> supports private packages from [supported](#prerequisites) <Constant name="git" /> repos leveraging an existing [configuration](/docs/cloud/git/git-configuration-in-dbt-cloud) in your environment. Previously, you had to configure a [token](#git-token-method) to retrieve packages from your private repos.
+Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. This simplifies setup and reduces credential management.
+
+- <Constant name="dbt_platform" />: Uses your existing <Constant name="git" /> [integration](/docs/cloud/git/git-configuration-in-dbt-cloud) for authentication.
+- <Constant name="fusion" /> locally: Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
 
 #### Prerequisites
 
@@ -185,12 +188,13 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
   - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
     - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
-  - [Gitlab](/docs/cloud/git/connect-gitlab)
-    - Every Gitlab repo with private packages must also be a <Constant name="cloud" /> project. 
+  - [GitLab](/docs/cloud/git/connect-gitlab)
+    - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project.
+- If using <Constant name="fusion" /> locally, you must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="cloud" /> Git integration without having to provision an access token or create a <Constant name="cloud" /> environment variable. 
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="dbt" /> Git integration without having to provision an access token or create a <Constant name="dbt" /> environment variable. 
 
 
 <File name="packages.yml">
@@ -229,20 +233,34 @@ packages:
   
 ```
 
-If you are using multiple <Constant name="git" /> integrations or using the dbt Fusion engine, add the provider key:
+#### Using the `provider` key
+
+Add the `provider` key when:
+- You are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />.
+- You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2#get-started) or the [VS Code extension](/docs/local/install-dbt?version=2#get-started)) (required).
 
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo
-    provider: "github" # GitHub and Azure are currently supported. GitLab is coming soon.
-
+    provider: "github" # Supported values: "github", "gitlab", "azure_devops"
 ```
 
-With this method, you can retrieve private packages from an integrated <Constant name="git" /> provider without any additional steps to connect.
+<Constant name="fusion" /> uses the `provider` value to construct the correct SSH URL for cloning, based on the provider:
 
-Using `provider` with Fusion carries the expectation that you have a SSH key configured on your machine to use for git cloning.
+| Provider | SSH URL format |
+| --- | --- |
+| `github` | `git@github.com:org/repo.git` |
+| `gitlab` | `git@gitlab.com:org/repo.git` |
+| `azure_devops` | `git@ssh.dev.azure.com:v3/org/repo` |
 
-### SSH key method (command line only)
+<Constant name="fusion" /> relies on your system's SSH configuration to authenticate and clone the private repository. If `git clone` works on your system for the private package repo, the private package install should work too.
+
+### SSH key method (CLI only)
+
+:::note
+This method uses the `git:` key with a full SSH URL, which is different from [native private packages](#native-private-packages) that use the `private:` key. For most use cases, native private packages is the recommended approach as it simplifies setup.
+:::
+
 If you're using the Command Line, private packages can be cloned via SSH and an SSH key.
 
 When you use SSH keys to authenticate to your git remote server, you don’t need to supply your username and password each time. Read more about SSH keys, how to generate them, and how to add them to your git provider here: [Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) and [GitLab](https://docs.gitlab.com/ee/user/ssh.html).
@@ -257,22 +275,22 @@ packages:
 
 </File>
 
-If you're using the <Constant name="dbt_platform" />, the SSH key method will not work, but you can use the [HTTPS <Constant name="git" /> Token Method](/docs/build/packages#git-token-method).
+If you're using the <Constant name="dbt_platform" />, the SSH key method will not work, but you can use [native private packages](#native-private-packages) or the [HTTPS <Constant name="git" /> Token Method](/docs/build/packages#git-token-method).
 
 
 ### Git token method
 
 :::note
 
-<Constant name="cloud" /> has [native support](#native-private-packages) for <Constant name="git" /> hosted private packages with GitHub and Azure DevOps (GitLab coming soon). If you are using a supported [integrated <Constant name="git" /> environment](/docs/cloud/git/git-configuration-in-dbt-cloud), you no longer need to configure <Constant name="git" /> tokens to retrieve private packages. 
+[Native private packages](#native-private-packages) is the recommended approach for GitHub, GitLab, and Azure DevOps. The git token method is still functional in both <Constant name="fusion" /> and the <Constant name="dbt_platform" />, but requires provisioning a personal access token. It can be useful as a fallback if you need to unblock yourself.
 
 :::
 
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
-:::info <Constant name="cloud" /> usage
-If you are using <Constant name="cloud" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="cloud" /> must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="cloud" />'s UI.
+:::info <Constant name="dbt" /> usage
+If you are using <Constant name="dbt" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="dbt" /> must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="dbt" />'s UI.
 :::
 
 In GitHub:
@@ -382,9 +400,14 @@ There are a few specific use cases where we recommend using a "local" package:
 2. **Testing changes** &mdash; To test changes in one project or package within the context of a downstream project or package that uses it. By temporarily switching the installation to a "local" package, you can make changes to the former and immediately test them in the latter for quicker iteration. This is similar to [editable installs](https://pip.pypa.io/en/stable/topics/local-project-installs/) in Python.
 3. **Nested project** &mdash; When you have a nested project that defines fixtures and tests for a project of utility macros, like [the integration tests within the `dbt-utils` package](https://github.com/dbt-labs/dbt-utils/tree/main/integration_tests).
 
-
 ## What packages are available?
-Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt packages!
+To see the library of published dbt packages, check out the [dbt package hub](https://hub.getdbt.com)!
+
+## Fusion package compatibility
+
+import FusionSupportedPackages from '/snippets/_fusion-supported-packages.md';
+
+<FusionSupportedPackages />
 
 ## Advanced package configuration
 ### Updating a package
@@ -436,7 +459,7 @@ seeds:
 
 For example, when using a dataset specific package, you may need to configure variables for the names of the tables that contain your raw data.
 
-Configurations made in your `dbt_project.yml` file will override any configurations in a package (either in the `dbt_project.yml` file of the package, or in config blocks).
+Configurations made in your project YAML file (`dbt_project.yml`) will override any configurations in a package (either in the project YAML file of the package, or in config blocks).
 
 ### Specifying unpinned Git packages
 If your project specifies an "unpinned" <Constant name="git" /> package, you may see a warning like:
@@ -456,3 +479,12 @@ packages:
 ```
 
 </File>
+
+## Troubleshooting
+
+If you encounter errors while working with dbt packages, see the following FAQs:
+
+<FAQ path="Troubleshooting/runtime-packages.yml" />
+<FAQ path="Troubleshooting/dispatch-could-not-find-package" />
+
+

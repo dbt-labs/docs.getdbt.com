@@ -20,8 +20,8 @@ A dbt model can be created as a Doris view and configured using the following sy
 groupId="config-view"
 defaultValue="project-yaml"
 values={[
-{ label: 'Project file', value: 'project-yaml', },
-{ label: 'Config block', value: 'config', },
+{ label: 'Project YAML file', value: 'project-yaml', },
+{ label: 'SQL file config', value: 'config', },
 ]
 }>
 
@@ -56,8 +56,8 @@ A dbt model can be created as a [Doris table](https://doris.apache.org/docs/sql-
 groupId="config-table"
 defaultValue="project-yaml"
 values={[
-{ label: 'Project file', value: 'project-yaml', },
-{ label: 'Config block', value: 'config', },
+{ label: 'Project YAML file', value: 'project-yaml', },
+{ label: 'SQL file config', value: 'config', },
 ]
 }>
 
@@ -123,8 +123,8 @@ An incremental Doris table, item table model must be 'unique' and is configured 
 groupId="config-incremental"
 defaultValue="project-yaml"
 values={[
-{ label: 'Project file', value: 'project-yaml', },
-{ label: 'Config block', value: 'config', },
+{ label: 'Project YAML file', value: 'project-yaml', },
+{ label: 'SQL file config', value: 'config', },
 ]}
 >
 

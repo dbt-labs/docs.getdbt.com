@@ -444,3 +444,8 @@ We expect to develop more opinionated recommendations as teams start adopting mo
 - When bumping the `latest_version`, migrate the SQL and YAML accordingly.
 
 In the example above, the third point might be tricky. It's easier to _exclude_ `country_name`, than it is to add it back in. Instead, we might need to keep around the full original logic for `dim_customers_v1`—but materialize it as a `view`, to minimize the data warehouse cost of building it. If downstream queriers see slightly degraded performance, it's still significantly better than broken queries, and all the more reason to migrate to the new "latest" version.
+
+## Coordinate model versioning
+Safely releasing a new model version requires coordination between model producers (who build the models) and model consumers (who depend on them).
+
+For practical guidance on how producers and consumers should communicate, test, and roll out versioned models across projects, refer to [Coordinating model versions best practices](/best-practices/how-we-mesh/mesh-6-coordinate-versions).

@@ -8,14 +8,14 @@ tags: [Metrics, Semantic Layer]
 
 Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. Saved queries are nodes and visible in the dbt <Term id="dag" />.
 
-Saved queries serve as the foundational building block, allowing you to [configure exports](#configure-exports) in your saved query configuration. Exports takes this functionality a step further by enabling you to [schedule and write saved queries](/docs/use-dbt-semantic-layer/exports) directly within your data platform using [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler).
+Saved queries serve as the foundational building block, allowing you to [configure exports](#configure-exports) in your saved query configuration. Exports takes this functionality a step further by enabling you to [schedule and write saved queries](/docs/use-dbt-semantic-layer/exports) directly within your data platform using [<Constant name="dbt" />'s job scheduler](/docs/deploy/job-scheduler).
 
 ## Parameters
 
 To create a saved query, refer to the following table parameters.
 
 :::tip
-Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
+Note that we use dot notation (`.`) to indicate whether a parameter is nested within another parameter. For example, `query_params.metrics` means the `metrics` parameter is nested under `query_params`.
 :::
 
 <!-- For versions 1.9 and higher -->
@@ -27,19 +27,19 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `description`     | String      | Required     | A description of the saved query.     |
 | `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
 | `config`     | String      |  Optional     |  Use the [`config`](/reference/resource-properties/config) property to specify configurations for your saved query. Supports `cache`, [`enabled`](/reference/resource-configs/enabled), `export_as`, [`group`](/reference/resource-configs/group), [`meta`](/reference/resource-configs/meta), [`tags`](/reference/resource-configs/tags), and [`schema`](/reference/resource-configs/schema)  configurations.   |
-| `config::cache::enabled`     | Object      | Optional     |  An object with a sub-key used to specify if a saved query should populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts sub-key `true` or `false`. Defaults to `false` |
+| `config.cache.enabled`     | Object      | Optional     |  An object with a sub-key used to specify if a saved query should populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts sub-key `true` or `false`. Defaults to `false` |
 | `limit`     | Integer    | Optional     |  The maximum number of rows to return. |
 | `order_by`  | String     | Optional     |  The metrics and group bys to order the query by. |
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
-| `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
-| `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
-| `query_params::where`        | List or String | Optional  | A list of strings that may include the `Dimension` or `TimeDimension` objects. |
+| `query_params.metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
+| `query_params.group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
+| `query_params.where`        | List or String | Optional  | A list of strings that may include the `Dimension` or `TimeDimension` objects. |
 | `exports`     | List or Structure | Optional    | A list of exports to be specified within the exports structure.     |
-| `exports::name`       | String               | Required     | Name of the export object.      |
-| `exports::config`     | List or Structure     | Required     | A [`config`](/reference/resource-properties/config) property for any parameters specifying the export.  |
-| `exports::config::export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
-| `exports::config::schema`   | String   | Optional    | The [schema](/reference/resource-configs/schema) for creating the table or view. This option cannot be used for caching.   |
-| `exports::config::alias`  | String     | Optional    | The table [alias](/reference/resource-configs/alias) used to write to the table or view.  This option cannot be used for caching.  | 
+| `exports.name`       | String               | Required     | Name of the export object.      |
+| `exports.config`     | List or Structure     | Required     | A [`config`](/reference/resource-properties/config) property for any parameters specifying the export.  |
+| `exports.config.export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
+| `exports.config.schema`   | String   | Optional    | The [schema](/reference/resource-configs/schema) for creating the table or view. This option cannot be used for caching.   |
+| `exports.config.alias`  | String     | Optional    | The table [alias](/reference/resource-configs/alias) used to write to the table or view.  This option cannot be used for caching.  | 
 
 </VersionBlock>
 
@@ -49,7 +49,7 @@ If you use multiple metrics in a saved query, then you will only be able to refe
 
 Use saved queries to define and manage common <Constant name="semantic_layer" /> queries in YAML, including metrics and dimensions. Saved queries enable you to organize and reuse common MetricFlow queries within dbt projects. For example, you can group related metrics together for better organization, and include commonly used dimensions and filters.
 
-In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the <Constant name="cloud" /> job scheduler to cache common queries, speed up performance, and reduce compute costs.
+In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the <Constant name="dbt" /> job scheduler to cache common queries, speed up performance, and reduce compute costs.
 
 <!-- For versions 1.9 and higher -->
 
@@ -131,7 +131,7 @@ To build `saved_queries`:
 
 Exports are an additional configuration added to a saved query. They define _how_ to write a saved query, along with the schema and table name.
 
-Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration file (the same file as your metric definitions). This will also allow you to [run exports](#run-exports) automatically within your data platform using [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler).
+Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration file (the same file as your metric definitions). This will also allow you to [run exports](#run-exports) automatically within your data platform using [<Constant name="dbt" />'s job scheduler](/docs/deploy/job-scheduler).
 
 The following is an example of a saved query with an export:
 
@@ -173,7 +173,7 @@ saved_queries:
 
 ## Run exports
 
-Once you've configured exports, you can now take things a step further by running exports to automatically write saved queries within your data platform using [<Constant name="cloud" />'s job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [<Constant name="cloud" />'s <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
+Once you've configured exports, you can now take things a step further by running exports to automatically write saved queries within your data platform using [<Constant name="dbt" />'s job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [<Constant name="dbt" />'s <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
 
 For more information on how to run exports, refer to the [Exports](/docs/use-dbt-semantic-layer/exports) documentation.
 

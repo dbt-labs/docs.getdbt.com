@@ -855,7 +855,7 @@ tests/functional/test_example.py .X                                  [100%]
 
 You can find more ways to run tests, along with a full command reference, in the [pytest usage docs](https://docs.pytest.org/how-to/usage.html).
 
-We've found the `-s` flag (or `--capture=no`) helpful to print logs from the underlying dbt invocations, and to step into an interactive debugger if you've added one. You can also use environment variables to set [global dbt configs](/reference/global-configs/about-global-configs), such as `DBT_DEBUG` (to show debug-level logs).
+We've found the `-s` flag (or `--capture=no`) helpful to print logs from the underlying dbt invocations, and to step into an interactive debugger if you've added one. You can also use environment variables to set [global dbt configs](/reference/global-configs/about-global-configs), such as <VersionBlock lastVersion="1.10">`DBT_DEBUG`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_DEBUG`</VersionBlock> (to show debug-level logs).
 
 ### Testing this adapter
 
@@ -1214,12 +1214,12 @@ To contribute, all you will have to do make the changes listed in the table belo
 
 | How To...    | File to change within `/website/docs/`     | Action | <div style={{width:'200px'}}>Info to include</div>         |
 |--------------|--------------------------------------------|--------|-------------------------|
-| Connect              | `/docs/core/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.             |
+| Connect              | `/docs/local/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.             |
 | Configure            | `reference/resource-configs/{MY-DATA-PLATFORM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? e.g. table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
 | Discover and Install | `docs/supported-data-platforms.md`                                 | Modify | Is it a vendor- or community- supported adapter? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
 | Add link to sidebar  | `website/sidebars.js`                                        | Modify | Add the document id to the correct location in the sidebar menu                                                                                                                                      |
 
-For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-setup.md` and add it to the `/website/docs/core/connect-data-platform/` directory.
+For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-setup.md` and add it to the `/website/docs/local/connect-data-platform/` directory.
 
 ### Example PRs to add new adapter documentation
 

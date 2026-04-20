@@ -10,7 +10,7 @@ import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-war
 dbt supports materializing the table in Iceberg table format in two different ways:
 
 - The model configuration field `table_format = 'iceberg'` (legacy)
-- Catalog integration can be configured in the SQL config (inside the `.sql` model file), property file (model folder), or project file ([`dbt_project.yml`](/reference/dbt_project.yml)) 
+- Catalog integration can be configured in a config block (inside the `.sql` model file), properties YAML file (model folder), or project YAML file ([`dbt_project.yml`](/reference/dbt_project.yml)) 
 
 :::info Catalog integration configuration
 
@@ -265,7 +265,7 @@ catalogs:
 
 ```
 
-2. Add the `catalog_name` config parameter in either the SQL config (inside the .sql model file), property file (model folder), or your `dbt_project.yml`. <br />
+2. Add the `catalog_name` config parameter in either a config block (inside the .sql model file), properties YAML file (model folder), or your project YAML file (`dbt_project.yml`). <br />
 <br />An example of `iceberg_model.sql`:
 
 ```sql
@@ -287,8 +287,6 @@ select * from {{ ref('jaffle_shop_customers') }}
 For more information, refer to our documentation on [Snowflake configurations](/reference/resource-configs/snowflake-configs).
 
 ### Limitations
-
-For external catalogs, Snowflake only supports `read`, which means it can query the table but cannot insert or modify data. 
 
 The syncing experience will be different depending on the catalog you choose. Some catalogs are automatically refreshed, and you can set parameters to do so with your catalog integration. Other catalogs might require a separate job to manage the metadata sync. 
 
@@ -416,8 +414,8 @@ For example, in the following model config, `base_location_root`=`bar` overrides
 config(
     materialized='table',
     catalog_name='catalog_horizon',
-    'base_location_root': 'foo',
-    'base_location_subpath': 'bar',
+    base_location_root='foo',
+    base_location_subpath='bar',
     adapter_properties={
       'base_location_root': 'bar',
     },

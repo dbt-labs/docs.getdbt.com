@@ -44,14 +44,14 @@ DeltaStream supports several unique materialization types that align with its st
 
 Creates a traditional batch table for aggregated data:
 
-**Project file configuration:**
+**Project YAML file configuration:**
 ```yaml
 models:
   <resource-path>:
     +materialized: table
 ```
 
-**Config block configuration:**
+**SQL configuration:**
 ```sql
 {{ config(materialized = "table") }}
 
@@ -66,7 +66,7 @@ GROUP BY date
 
 Creates a continuous streaming transformation:
 
-**Project file configuration:**
+**Project YAML file configuration:**
 ```yaml
 models:
   <resource-path>:
@@ -79,7 +79,7 @@ models:
       timestamp: 'event_time'
 ```
 
-**Config block configuration:**
+**SQL configuration:**
 ```sql
 {{ config(
     materialized='stream',
@@ -115,7 +115,7 @@ WHERE action = 'purchase'
 
 Captures changes in the data stream:
 
-**Project file configuration:**
+**Project YAML file configuration:**
 ```yaml
 models:
   <resource-path>:
@@ -126,7 +126,7 @@ models:
     +primary_key: [column_name]
 ```
 
-**Config block configuration:**
+**SQL configuration:**
 ```sql
 {{ config(
     materialized='changelog',
@@ -157,7 +157,7 @@ FROM {{ ref('orders_stream') }}
 
 Creates a continuously updated view:
 
-**Config block configuration:**
+**SQL configuration:**
 ```sql
 {{ config(materialized='materialized_view') }}
 
@@ -563,7 +563,7 @@ The adapter provides seamless file attachment for function sources and descripto
 
 Creates a function source from a JAR file containing Java functions:
 
-**Config block configuration:**
+**SQL configuration:**
 
 ```sql
 {{ config(
@@ -581,7 +581,7 @@ SELECT 1 as placeholder
 
 Creates a descriptor source from compiled protocol buffer descriptor files:
 
-**Config block configuration:**
+**SQL configuration:**
 
 ```sql
 {{ config(
@@ -608,7 +608,7 @@ protoc --descriptor_set_out=schemas/my_schemas.desc schemas/my_schemas.proto
 
 Creates a user-defined function that references a function source:
 
-**Config block configuration:**
+**SQL configuration:**
 
 ```sql
 {{ config(
@@ -631,7 +631,7 @@ SELECT 1 as placeholder
 
 Creates a schema registry connection:
 
-**Config block configuration:**
+**SQL configuration:**
 
 ```sql
 {{ config(

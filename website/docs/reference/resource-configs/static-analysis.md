@@ -3,26 +3,26 @@ resource_types: [models]
 title: "static_analysis"
 description: "Use static_analysis config to control how the Fusion engine performs static SQL analysis for models."
 datatype: string
-default_value: on
+default_value: baseline
 sidebar_label: "static_analysis"
 ---
 
 :::info
 
-The `static_analysis` config is available in the <Constant name="fusion_engine"/> only. It isn't available in <Constant name="core" /> and will be ignored. To upgrade to <Constant name="fusion"/>, refer to [Install <Constant name="fusion"/>](/docs/fusion/install-fusion).
+The `static_analysis` config is available in the <Constant name="fusion_engine"/> only. It isn't available in <Constant name="core" /> and will be ignored. To upgrade to <Constant name="fusion"/>, refer to [Get started with <Constant name="fusion"/>](/docs/fusion/get-started-fusion).
 
 :::
 
 <Tabs>
 
-<TabItem value="dbt_project.yml" label="Project file">
+<TabItem value="dbt_project.yml" label="Project YAML file">
 
 <File name='dbt_project.yml'>
 
 ```yml
 models:
   [resource-path](/reference/resource-configs/resource-path):
-    +static_analysis: on | unsafe | off
+    +static_analysis: strict | baseline | off
 
 ```
 
@@ -30,7 +30,7 @@ models:
 
 </TabItem>
 
-<TabItem value="Property file">
+<TabItem value="Properties YAML file">
 
 <File name='models/filename.yml'>
 
@@ -38,18 +38,18 @@ models:
 models:
   - name: model_name
     [config](/reference/resource-properties/config):
-      static_analysis: on | unsafe | off
+      static_analysis: strict | baseline | off
 ```
 
 </File>
 </TabItem>
 
-<TabItem value="SQL config">
+<TabItem value="SQL file config">
 
 <File name='models/model_name.sql'>
 
 ```sql
-{{ config(static_analysis='on' | 'unsafe' | 'off') }}
+{{ config(static_analysis='strict' | 'baseline' | 'off') }}
 
 select 
   user_id,
@@ -65,15 +65,56 @@ from {{ ref('my_model') }}
 
 ## Definition
 
-You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your `dbt_project.yml` file, model YAML file, or in the `config` block of your model file. Refer to [rendering strategies](/docs/fusion/new-concepts#rendering-strategies) for more information on how the <Constant name="fusion_engine" /> renders models.
+You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
+
+Setting a model to `strict` does not automatically set `strict` for downstream models; they keep the project default unless you configure them explicitly. For more information and examples, refer to [strict mode inheritance](/docs/fusion/new-concepts#strict-mode-inheritance).
 
 The following values are available for `static_analysis`:
 
-- `on`: Statically analyze SQL ahead-of-time (AOT). Default for non-introspective models, depends on AOT rendering.
-- `unsafe`: Statically analyze SQL just-in-time (JIT). The default for when a model (or any of its parents) uses introspective queries. JIT analysis still catches most SQL errors, but [analysis happens]( /docs/fusion/new-concepts#static-analysis-and-introspective-queries) after some upstream execution.
+- `baseline` (default): Statically analyze SQL. This is the recommended starting point for users transitioning from <Constant name="core" />, providing a smooth migration experience while still catching most SQL errors. You can incrementally opt-in to stricter analysis over time.
+- `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis for this model and its descendants.
 
-A model is _only_ eligible for static analysis if all of its parents are also eligible.
+:::caution Deprecated values
+
+The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
+
+:::
+
+### User-defined functions (UDFs) in `strict` mode
+
+When `static_analysis: strict` is in effect, the <Constant name="fusion_engine" /> parses `CREATE FUNCTION` statements from [`sql_header`](/reference/resource-configs/sql_header) and from [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) project hooks, registers those UDFs in the compiler registry, and makes them available during strict static compilation. The `baseline` and `off` modes don't perform this UDF registration for static analysis.
+
+A model’s `sql_header` can include multiple statements. <Constant name="fusion" /> registers UDFs from `CREATE FUNCTION` statements and ignores other statements for this step.
+
+If strict analysis still cannot resolve a UDF, set [`static_analysis: off`](/reference/resource-configs/static-analysis#disable-static-analysis-in-sql-for-a-model-using-a-custom-udf) on the affected models.
+
+### How static analysis modes cascade
+
+Two rules determine how `static_analysis` modes apply in a lineage:
+- Eligibility rule: A model is eligible for static analysis only if all of its "parents" are eligible (by parents, we mean the models that are upstream of the current model in the lineage).
+- Strictness rule: A "child" model cannot be stricter than its parent (by child, we mean the models that are downstream of the current model in the lineage).
+
+The static analysis configuration cascades from most strict to least strict. Here's the strictness hierarchy:
+`strict` → `baseline` → `off`
+
+**Allowed downstream by parent mode**<br /> 
+When going downstream in your lineage, you can keep the same mode or relax it; but you cannot make a child stricter than its parent. The following table shows the allowed downstream modes by parent mode:
+
+<SimpleTable>
+| Parent mode | Child can be |
+|-------------|--------------|
+| `strict`    | `strict`, `baseline`, or `off` |
+| `baseline`  | `baseline` or `off` (not `strict`) |
+| `off`       | `off` only |
+</SimpleTable>
+
+For example, for the lineage Model A → Model B → Model C:
+
+- If Model A is `baseline`, you _cannot_ set Model B to `strict`
+- If Model A is `strict`, you _can_ set Model B to `baseline`
+
+This makes sure that stricter validation requirements don't apply downstream when parent models haven't met those requirements.
 
 Refer to the Fusion concepts page for deeper discussion and visuals: [New concepts](/docs/fusion/new-concepts). For more info on the JSON schema, refer to the [dbt-jsonschema file](https://github.com/dbt-labs/dbt-jsonschema/blob/1e2c1536fbdd421e49c8b65c51de619e3cd313ff/schemas/latest_fusion/dbt_project-latest-fusion.json#L4689).
 
@@ -83,7 +124,7 @@ You can override model-level configuration for a run using the following CLI fla
 
 ```bash
 dbt run --static-analysis off # disable static analysis for all models
-dbt run --static-analysis unsafe # use JIT analysis for all models
+dbt run --static-analysis baseline # use baseline analysis for all models
 ```
 
 See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).

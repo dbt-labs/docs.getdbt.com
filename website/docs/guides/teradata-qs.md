@@ -11,11 +11,11 @@ hide_table_of_contents: true
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with Teradata Vantage. It will show you how to:
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with Teradata Vantage. It will show you how to:
 
 - Create a new Teradata Clearscape instance
 - Load sample data into your Teradata Database
-- Connect <Constant name="cloud" /> to Teradata.
+- Connect <Constant name="dbt" /> to Teradata.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -27,7 +27,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a [<Constant name="cloud" /> account](https://www.getdbt.com/signup/).
+- You have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/).
 - You have access to a Teradata Vantage instance. You can provision one for free at https://clearscape.teradata.com. See [the ClearScape Analytics Experience guide](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/) for details.
 
 ### Related content
@@ -43,9 +43,9 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 The following steps will guide you through how to get the data stored as CSV files in a public S3 bucket and insert it into the tables.
 
-:::tip SQL <Constant name="cloud_ide" />
+:::tip SQL <Constant name="studio_ide" />
 
-If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL <Constant name="cloud_ide" /> handy, use the JupyterLab bundled with your database to execute SQL:
+If you created your Teradata Vantage database instance at https://clearscape.teradata.com and you don't have an SQL <Constant name="studio_ide" /> handy, use the JupyterLab bundled with your database to execute SQL:
 
 1. Navigate to [ClearScape Analytics Experience dashboard](https://clearscape.teradata.com/dashboard) and click the **Run Demos** button. The demo will launch JupyterLab.
 
@@ -104,7 +104,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 ## Connect dbt to Teradata
 
-1. Create a new project in <Constant name="cloud" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
+1. Create a new project in <Constant name="dbt" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**. 
 2. Enter a project name and click **Continue**.
 3. In the **Configure your development environment** section, click the **Connection** dropdown menu and select **Add new connection**.
 4. In the **Type** section, select **Teradata**.
@@ -124,7 +124,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
   
    <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata Development Credentials" />
 
-10. Click **Test Connection** to verify that <Constant name="cloud" /> can access your Teradata Vantage instance.
+10. Click **Test Connection** to verify that <Constant name="dbt" /> can access your Teradata Vantage instance.
 11. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Teradata settings and credentials.
 
 ## Set up a dbt managed repository
@@ -133,9 +133,9 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
 
 ## Initialize your dbt project​ and start developing
 
-Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project** to build out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` to create the first commit to your managed repo. Once you’ve created the commit, you can open a branch to add new dbt code.
 
@@ -181,10 +181,10 @@ You can now delete the files that dbt created when you initialized the project:
 
 ## Build your first model
 
-You have two options for working with files in the <Constant name="cloud_ide" />:
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, lint files, or execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will receive a prompt to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 
@@ -271,7 +271,7 @@ By default, everything gets created as a view. You can override that at the dire
       ```
 
       </File>
-    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config block to:
+    - Configure `jaffle_shop` so everything in it will be materialized as a table; and configure `example` so everything in it will be materialized as a view. Update your `models` config in the project YAML file to:
 
       <File name='dbt_project.yml'>
 
@@ -492,7 +492,7 @@ Adding [data tests](/docs/build/data-tests) to a project helps validate that you
 
 To add data tests to your project:
 
-1. Create a new YAML file in the `models` directory, named `models/schema.yml`
+1. Create a new properties YAML file in the `models` directory, named `models/schema.yml`
 2. Add the following contents to the file:
 
     <File name='models/schema.yml'>
@@ -640,7 +640,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 
 ## Deploy dbt
 
-Use <Constant name="cloud" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+Use <Constant name="dbt" />'s Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
 
 ### Create a deployment environment
 

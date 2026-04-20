@@ -28,6 +28,7 @@ functions:
       - name: <string> # required if arguments is specified
         data_type: <string> # required if arguments is specified, warehouse-specific
         description: <markdown_string> # optional
+        default_value: <string | boolean | integer> # optional, available in Snowflake and Postgres
       - name: ... # declare additional arguments
     [returns](/reference/resource-properties/returns): # required
       data_type: <string> # required, warehouse-specific

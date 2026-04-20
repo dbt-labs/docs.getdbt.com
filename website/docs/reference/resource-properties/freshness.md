@@ -64,6 +64,9 @@ A freshness block is used to define the acceptable amount of time between the mo
 
 In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
 
+- `warn_after`: Duration (for example, 12 hours) after which dbt raises a warning if the most recent available data is older than this threshold.
+- `error_after`: Duration (for example, 24 hours) after which dbt fails the freshness check if the most recent available data is older than this threshold.
+
 In most cases, the `loaded_at_field` is required. Some adapters support calculating source freshness from the warehouse metadata tables and can exclude the `loaded_at_field`. <VersionBlock firstVersion="1.10">Alternatively, you can define `loaded_at_query` to use custom SQL expression to calculate the timestamp.</VersionBlock>
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
@@ -81,6 +84,16 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
 - [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
 
+<VersionBlock firstVersion="1.12">
+:::note Wildcard table identifiers
+On BigQuery, metadata-based freshness checks are not reliable for sources defined with wildcard table identifiers (for example, `events_*`).
+
+To prevent incorrect freshness results, enable the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag in your `dbt_project.yml`. When enabled, dbt raises an error if metadata-based freshness is used with a wildcard table identifier.
+
+To calculate freshness for wildcard tables, configure [`loaded_at_field`](#loaded_at_field) to use query-based freshness checks instead.
+:::
+</VersionBlock>
+
 Freshness blocks are applied hierarchically:
 - A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source.
 - A `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
@@ -96,20 +109,60 @@ In state-aware orchestration, dbt uses the warehouse metadata by default to chec
 Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.
 <br/><br/>A column name (or expression) that returns a timestamp indicating freshness.
 
+Examples:
+
+```yml
+sources:
+  - name: inventory_updates
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: updated_at
+```
+
 If using a date field, you may have to cast it to a timestamp:
 ```yml
-loaded_at_field: "completed_date::timestamp"
+sources:
+  - name: work_orders
+    description: |
+      Work orders from ERP. The completed_date column is stored as DATE but we need to compare it as a timestamp for freshness checks.
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "completed_date::timestamp"
 ```
 
 Or, depending on your SQL variant:
 ```yml
-loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
+sources:
+  - name: purchase_orders
+    description: |
+      Purchase orders. The completed_date is stored as VARCHAR in 'YYYY-MM-DD' format. Use CAST for explicit conversion.
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
 ```
 
 If using a non-UTC timestamp, cast it to UTC first:
 
 ```yml
-loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
+sources:
+  - name: customer_transactions
+    description: |
+      Customer transactions recorded in Sydney local time. Converting to UTC for consistent freshness comparison across sources in different timezones.
+    config:
+      freshness:
+        error_after:
+          count: 24
+          period: hour
+      loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
 ```
 
 <VersionBlock firstVersion="1.10">

@@ -5,16 +5,9 @@ import Card from '@site/src/components/card';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/p/blog-archive-f05.json';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useDateTimeFormat } from '@docusaurus/theme-common/internal';
-import { getSpotlightMember } from '../utils/get-spotlight-member';
 import Link from '@docusaurus/Link';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import StructuredData from '@site/src/components/StructuredData';
-
-const bannerAnimation = require('@site/static/img/banner-white.svg');
-
-function getBanner() {
-  return { __html: bannerAnimation };
-}
 
 function Home() {
   // Use same date formatting as in theme's BlogPostItem component
@@ -43,28 +36,7 @@ function Home() {
       return accumulator;
     }, []);
 
-  const featuredResource = {
-    title: 'How we structure our dbt projects',
-    description:
-      'Our hands-on learnings for how to structure your dbt project for success and gain insights into the principles of analytics engineering.',
-    link: '/best-practices/how-we-structure/1-guide-overview',
-    image: '/img/structure-dbt-projects.png',
-    sectionTitle: 'Featured resource',
-  };
-
-  // Set spotlightSection to featuredResource by default
-  let spotlightSection = featuredResource;
-
-  // Check if featured community spotlight member set in Docusaurus config
   const { siteConfig } = useDocusaurusContext();
-  let communitySpotlightMember =
-    siteConfig?.themeConfig?.communitySpotlightMember || null;
-
-  // Get spotlight member by ID or date if available
-  const spotlightMember = getSpotlightMember(communitySpotlightMember);
-  if (spotlightMember) {
-    spotlightSection = spotlightMember;
-  }
 
   // note: we've removed the in-hero search input so that we can rely on navbar DocSearch (⌘K) only.
 
@@ -101,7 +73,7 @@ function Home() {
                   <Link
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
-                    to="/docs/install-dbt-extension">
+                    to="/docs/local/install-dbt?version=2#installation">
                       <span>Install dbt VS Code extension + Fusion</span>
                       </Link>
                 </div>
@@ -133,7 +105,7 @@ function Home() {
                   title="Move to the dbt platform"
                   tag="Guide"
                   body="Migrate from dbt Core to the powerful, lightning fast dbt platform today!"
-                  link="/guides/core-to-cloud-1?step=1"
+                  link="/guides/core-migration-1?step=1"
                   icon="tool"
                 />
               </div>
@@ -193,7 +165,7 @@ function Home() {
                 <Card
                   title="Studio IDE"
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
-                  link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide"
+                  link="/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide"
                   icon="dashboard"
                 />
                 <Card
@@ -276,14 +248,23 @@ function Home() {
                 <Card
                   title="Answer a question on Discourse"
                   body="Help someone solve a real problem—and build your reputation doing it."
-                  link="/community/forum"
+                  link="https://discourse.getdbt.com/"
                   icon="message"
+                  target="_blank"
                 />
                 <Card
-                  title="Events and Meetups"
-                  body="Join local and global dbt meetups."
-                  link="/community/events"
+                  title="Webinars"
+                  body="Upcoming and on-demand sessions from dbt Labs."
+                  link="https://www.getdbt.com/resources/webinars"
+                  icon="calendar"
+                  target="_blank"
+                />
+                <Card
+                  title="Events"
+                  body="Meetups, conferences, and community gatherings."
+                  link="https://www.getdbt.com/events"
                   icon="globe"
+                  target="_blank"
                 />
                 <Card
                   title="Courses & Tutorials"
@@ -311,11 +292,6 @@ function Home() {
             </div>
           </section>
         </div>
-
-        <div
-          className="banner-animation"
-          dangerouslySetInnerHTML={getBanner()}
-        ></div>
       </Layout>
     </>
   );

@@ -24,10 +24,8 @@ These introspective queries include:
 
 - Populating the relation cache. For more information, refer to the [Create new materializations](/guides/create-new-materializations) guide. Caching speeds up the metadata checks, including whether an [incremental model](/docs/build/incremental-models) already exists in the data platform. 
 - Resolving [macros](/docs/build/jinja-macros#macros), such as `run_query` or `dbt_utils.get_column_values` that you're using to template out your SQL. This is because dbt needs to run those queries during model SQL compilation. 
+- [`dbt docs generate`](/reference/commands/cmd-docs) compiles your project by default (unless you pass [`--no-compile`](/reference/commands/cmd-docs)), so introspective macros such as [`run_query`](/reference/dbt-jinja-functions/run_query) run against the warehouse during documentation builds the same way they do during other compile workflows. Refer to [`run_query`](/reference/dbt-jinja-functions/run_query) for how that works and for using `flags.WHICH` when you want to limit<Term id="dml" /> or other side-effecting SQL to specific dbt commands.
 
 Without a data platform connection, dbt can't perform these introspective queries and won't be able to generate the compiled SQL needed for the next steps in the dbt workflow. You can [`parse`](/reference/commands/parse) a project and use the [`list`](/reference/commands/list) resources in the project, without an internet or data platform connection. Parsing a project is enough to produce a [manifest](/reference/artifacts/manifest-json), however, keep in mind that the written-out manifest won't include compiled SQL.
 
-To configure a project, you do need a [connection profile](/docs/core/connect-data-platform/connection-profiles) (`profiles.yml` if using the CLI). You need this file because the project's configuration depends on its contents. For example, you may need to use [`{{target}}`](/reference/dbt-jinja-functions/target) for conditional configs or know what platform you're running against so that you can choose the right flavor of SQL. 
-
-
-
+To configure a project, you do need a [connection profile](/docs/local/profiles.yml) (`profiles.yml` if using the CLI). You need this file because the project's configuration depends on its contents. For example, you may need to use [`{{target}}`](/reference/dbt-jinja-functions/target) for conditional configs or know what platform you're running against so that you can choose the right flavor of SQL. 

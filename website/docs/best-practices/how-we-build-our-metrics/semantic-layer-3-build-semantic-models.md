@@ -5,6 +5,10 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics"
 ---
 
+import NewSLYAMLCallout from '/snippets/_new-sl-yaml-callout.md';
+
+<NewSLYAMLCallout />
+
 ## How to build a semantic model
 
 A semantic model is the <Constant name="semantic_layer" /> equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.

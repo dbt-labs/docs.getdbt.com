@@ -1,12 +1,12 @@
 ---
-title: Can I add tests and descriptions in a config block?
-description: "Types of properties defined in config blocks"
+title: Can I add tests and descriptions in a SQL config block?
+description: "Types of properties defined in SQL config blocks"
 sidebar_label: 'Types of properties defined in config blocks'
 id: properties-not-in-config
 
 ---
 
-dbt has the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
+dbt has the ability to define node configs in YAML files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
 
 Certain properties are special, because:
 - They have a unique Jinja rendering context

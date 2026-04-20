@@ -5,11 +5,11 @@ sidebar_label: 'Receiving unknown error in the IDE'
 
 ---
 
-If you're seeing the following error when you launch the <Constant name="cloud_ide" />, it could be due to a few scenarios but, commonly, it indicates a missing repository:
+If you're seeing the following error when you launch the <Constant name="studio_ide" />, it could be due to a few scenarios but, commonly, it indicates a missing repository:
 
 ```shell
 
-Your <Constant name="cloud_ide" /> session experienced an unknown error and was terminated. Please contact support.
+Your <Constant name="studio_ide" /> session experienced an unknown error and was terminated. Please contact support.
 
 ```
 

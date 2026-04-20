@@ -8,7 +8,7 @@ description: "Answers to common questions about dbt Copilot."
 Read about common questions about <Constant name="copilot" /> to understand how it works and how it can help you.
 </IntroText>
 
-<Constant name="copilot" /> is an AI-powered assistant fully integrated into your <Constant name="cloud" /> experience that handles the tedious tasks, speeds up workflows, and ensures consistency, helping you deliver exceptional data products faster.
+<Constant name="copilot" /> is an AI-powered assistant fully integrated into your <Constant name="dbt" /> experience that handles the tedious tasks, speeds up workflows, and ensures consistency, helping you deliver exceptional data products faster.
 
 dbt Labs is committed to protecting your privacy and data. This page provides information about how <Constant name="copilot" /> handles your data. For more information, check out the [dbt Labs AI development principles](https://www.getdbt.com/legal/ai-principles) page.
 
@@ -16,19 +16,17 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <Expandable alt_header="What is dbt Copilot?">
 
-<Constant name="copilot" /> is a powerful AI-powered assistant that's fully integrated into your <Constant name="cloud" /> experience and designed to accelerate your analytics workflows. <Constant name="copilot" /> embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
+<Constant name="copilot" /> is a powerful AI-powered assistant that's fully integrated into your <Constant name="dbt" /> experience and designed to accelerate your analytics workflows. <Constant name="copilot" /> embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
 
-With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/use-canvas), and [<Constant name="query_page" />](/docs/explore/dbt-insights).
-
-<Constant name="copilot"/> is optimized for OpenAI's `gpt-3.x`, `gpt-4o`, `gpt-4.1-[mini|nano]`, and `gpt-4.5` (deprecated by OpenAI) models. Other models, like `o1` and `o2`, are not supported and will not work with <Constant name="copilot"/>.
+With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/cloud/use-canvas), and [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 </Expandable>
 
 <Expandable alt_header="Where can I find dbt Copilot?">
 
-<Constant name="copilot" /> is available in the [<Constant name="cloud_ide" />](/docs/cloud/dbt-cloud-ide/develop-copilot), [<Constant name="visual_editor" />](/docs/cloud/use-canvas), and [<Constant name="query_page" />](/docs/explore/dbt-insights). Future releases will bring <Constant name="copilot" /> to even more parts of the <Constant name="cloud" /> application!
+<Constant name="copilot" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/cloud/use-canvas), and [<Constant name="insights" />](/docs/explore/dbt-insights). Future releases will bring <Constant name="copilot" /> to even more parts of the <Constant name="dbt" /> application!
 
-To use <Constant name="copilot" />, you must have a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) and administrative privileges to opt-in to the feature for your team.
+To use <Constant name="copilot" />, you must have a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) and administrative privileges to opt-in to the feature for your team.
 
 Certain features like [BYOK](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/cloud/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
 
@@ -52,7 +50,7 @@ with a click of a button and ensuring data privacy and security.
 
 <Expandable alt_header="Who has access to dbt Copilot?" >
 
-When enabled by an admin, <Constant name="copilot" /> is available on a <Constant name="cloud" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) to all <Constant name="cloud" /> [developer license users](/docs/cloud/manage-access/seats-and-users).
+When enabled by an admin, <Constant name="copilot" /> is available on a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) to all <Constant name="dbt" /> [developer license users](/docs/cloud/manage-access/seats-and-users).
 
 </Expandable>
 
@@ -115,10 +113,10 @@ Clients who signed with terms after January 2024 don't need additional terms pri
 
 <Constant name="copilot" /> has the following considerations to keep in mind:
 
-- <Constant name="copilot" /> is not available in the <Constant name="cloud_cli" />.
-- <Constant name="copilot" /> is not available in the <Constant name="cloud" /> API.
+- <Constant name="copilot" /> is not available in the <Constant name="platform_cli" />.
+- <Constant name="copilot" /> is not available in the <Constant name="dbt" /> API.
 
-Future releases are planned that may bring <Constant name="copilot" /> to even more parts of the <Constant name="cloud" /> application.
+Future releases are planned that may bring <Constant name="copilot" /> to even more parts of the <Constant name="dbt" /> application.
 
 </Expandable>
 

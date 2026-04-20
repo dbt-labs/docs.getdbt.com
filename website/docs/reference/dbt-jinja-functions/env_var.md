@@ -1,29 +1,48 @@
 ---
-title: " About env_var function"
+title: "About env_var function"
 sidebar_label: "env_var"
 id: "env_var"
-description: "Incorporate environment variables using `en_var` function."
+description: "Incorporate environment variables using `env_var` function."
 ---
 
 import Envvarsecrets from '/snippets/_env-var-secrets.md'; 
 
 <Envvarsecrets />
 
-If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
+If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [deployment credentials](/docs/deploy/deploy-environments#deployment-credentials) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
 
-:::info Integer Environment Variables
-If passing an environment variable for a property that uses an integer type (for example, `port`, `threads`), be sure to add a filter to the Jinja expression, as shown here. Otherwise, dbt will raise an `['threads']: '1' is not of type 'integer'` error.
-`{{ env_var('DBT_THREADS') | int }}` or `{{ env_var('DB_PORT') | as_number }}` 
+### Converting env_vars
+
+Environment variables are always strings. When using them for configurations that expect integers or booleans, you must explicitly convert the value to the correct type.
+
+Use a Jinja filter to convert the string to the correct type:
+
+- **Integers** &mdash; Convert the string to a number using the `int` or [`as_number`](/reference/dbt-jinja-functions/as_number) filter to avoid errors like `'1' is not of type 'integer'`. For example, `"{{ env_var('DBT_THREADS') | int }}"` or `"{{ env_var('DB_PORT') | as_number }}"`.
+
+- **Booleans** &mdash; Convert the string to a boolean explicitly using the [`as_bool`](/reference/dbt-jinja-functions/as_bool) filter. For example, `"{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"`.
+
+For boolean defaults, use capitalized `True` or `False`. Using lowercase `true` or `false` will be treated as a string and can result in unexpected results.
+
+For example, to disable [`persist_docs`](/reference/resource-configs/persist_docs) using environment variables:
+
+<File name='dbt_project.yml'>
+
+```yml
++persist_docs:
+  relation: "{{ env_var('DBT_PERSIST_DOCS_RELATION', False) | as_bool }}"
+  columns: "{{ env_var('DBT_PERSIST_DOCS_COLUMNS', False) | as_bool }}"
+```
+</File>
+
+:::caution Quoting, curly brackets, & you
+
+Be sure to quote the entire Jinja string. Otherwise, the YAML parser will be confused by the Jinja curly brackets.
 
 :::
 
-:::caution Quoting, Curly Brackets, & You
+### Default values
 
-Be sure to quote the entire Jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
-
-:::
-
-`env_var` accepts a second, optional argument for default value, like so:
+You can also provide a default value as a second argument:
 
 <File name='dbt_project.yml'>
 
@@ -81,5 +100,10 @@ select 1 as id
 
 ### dbt platform usage
 
-If you are using <Constant name="cloud" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="cloud" /> must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`). Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="cloud" />'s UI.
+If you're using <Constant name="dbt_platform" />, environment variables must be:
+- Prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`)
+- Uppercase
+- Case-sensitive
+
+When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must exactly match the variable defined in the <Constant name="dbt_platform" /> user interface.
 
