@@ -173,7 +173,10 @@ Use the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_
 
 ### Install the package
 :::note Prerequisite
-This package requires `dbt` version `>=1.0.0, <2.0.0`. For the latest compatibility details, refer to the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/).
+- This package requires `dbt` version `>=1.0.0, <2.0.0`. For the latest compatibility details, refer to the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/).
+- Your Snowflake account supports Semantic Views
+- Your role has permission to create semantic views
+- You are writing to a database and schema where you have create privileges
 :::
 
 Add `dbt_semantic_view` to your `packages.yml` file:
@@ -199,6 +202,8 @@ The `dbt_semantic_view` package includes the following features for defining and
 #### Materialize models as Snowflake Semantic Views
 
 Use the `semantic_view` materialization to define Snowflake Semantic Views in dbt, including tables, relationships, facts, dimensions, and metrics.
+
+Semantic view models use Snowflake’s semantic view syntax (for example, `TABLES`, `DIMENSIONS`, and `METRICS`) rather than a standard `SELECT` query.
 
 The example below is adapted from [Getting Started with Snowflake Semantic View](https://quickstarts.snowflake.com/guide/snowflake-semantic-view/index.html?index=..%2F..index#3).
 ```sql
