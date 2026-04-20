@@ -25,7 +25,7 @@ When creating Python UDFs, you can use the optional `packages` config to specify
 
 On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before you can use them.
 
-Python UDFs are currently supported in Snowflake and BigQuery. Each warehouse uses a different mechanism for specifying packages. For example:
+Python UDFs are currently supported in Snowflake and BigQuery. Each warehouse uses a different mechanism to specify packages. For example:
 
 <Tabs
   defaultValue="snowflake"
