@@ -36,7 +36,11 @@ This feature isn't available for Azure or GCP. If you don't see **Private endpoi
 
 This section walks you through the process of requesting a new Snowflake PrivateLink endpoint in <Constant name="dbt_platform" />. 
 
-You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the `ACCOUNTADMIN` permission set can perform this step.
+##### Prerequisites
+
+You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the Account admin or Project creator permission set can perform this step.
+
+#### Request a new v private endpoint
 
 1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
 2. In the **Private endpoints** table, review your existing endpoints. The table shows all private endpoints in your account (including non-Snowflake ones) with the following details:
@@ -94,7 +98,7 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
    - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
    - Provide them with your <Constant name="dbt" /> account ID along with any other information requested in the article.
      - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
-   - You need `ACCOUNTADMIN` access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the `ACCOUNTADMIN` permission set can perform this step.
+   - You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the Account admin or Project cretor permission set can perform this step.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
