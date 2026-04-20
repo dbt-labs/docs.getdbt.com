@@ -2252,9 +2252,8 @@ button .DocSearch-Button-Keys {
   text-decoration: underline;
 }
 
-/* Discourse Forum & Events Page */
-.events-page section,
-section.discourse-forum-page {
+/* Events Page */
+.events-page section {
   padding: 4rem 0;
 }
 
@@ -2583,16 +2582,6 @@ section.discourse-forum-page {
 
 .justify-content-center {
   justify-content: center !important;
-}
-
-/* Community Spotlight Page */
-#spotlight-members-section {
-  padding: 3rem 0;
-
-}
-
-.community-spotlight-hero p {
-  font-size: 1.25rem;
 }
 
 /* Sidebar collapse button */

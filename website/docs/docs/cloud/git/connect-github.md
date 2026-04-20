@@ -11,6 +11,14 @@ Connecting your GitHub account to <Constant name="dbt" /> provides convenience a
 - Clone repos using HTTPS rather than SSH.
 - Trigger [Continuous integration](/docs/deploy/continuous-integration)(CI) builds when pull requests are opened in GitHub.
 
+:::note GitHub Enterprise Cloud (`ghe.com`) domains
+If your organization uses GitHub Enterprise Cloud hosted on a `ghe.com` domain, native GitHub App connectivity is not supported. Note that `ghe.com` accounts are cloud-managed (not on-premises), but this limitation still applies.
+
+To connect a ghe.com-hosted repository, use [importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) with SSH/deploy keys instead. Note that your organization's SSH URL configuration may require additional steps.
+
+Some native integration features are unavailable when using the git URL method. For additional help with your specific setup, contact [dbt Support](mailto:support@getdbt.com) or your <Constant name="dbt" /> account team.
+:::
+
 ## Prerequisites
 
 - For On-Premises GitHub deployment, reference [importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) to set up your connection instead. Some git features are [limited](/docs/cloud/git/import-a-project-by-git-url#limited-integration) with this setup.
