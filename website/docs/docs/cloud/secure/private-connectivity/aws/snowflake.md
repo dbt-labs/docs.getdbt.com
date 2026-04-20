@@ -38,7 +38,8 @@ This section walks you through the process of requesting a new Snowflake Private
 
 ##### Prerequisites
 
-You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the Account admin or Project creator permission set can perform this step.
+- You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the Account admin or Project creator permission set can perform this step.
+- You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
 
 #### Request a new v private endpoint
 
@@ -99,6 +100,7 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
    - Provide them with your <Constant name="dbt" /> account ID along with any other information requested in the article.
      - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
    - You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) access to the Snowflake instance to submit a support request. Any user with a Developer or IT license paired with the Account admin or Project cretor permission set can perform this step.
+   - You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
