@@ -76,6 +76,35 @@ Once configured, your session connects to the <Constant name="dbt_platform"/> ac
 
 After completing OAuth setup, skip to [Test your configuration](#optional-test-your-configuration).
 
+### Interactive setup (elicitation) {#interactive-setup}
+
+If your MCP client supports [elicitation](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation#elicitation), you can skip pre-configuring `DBT_HOST` entirely. dbt-mcp will prompt you to enter your host the first time you call a platform tool.
+
+This is the simplest setup for platform features &mdash; no environment variables needed upfront:
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"]
+    }
+  }
+}
+```
+
+When you call a platform tool (like `get_all_models`), dbt-mcp will:
+
+1. Display a form asking for your <Constant name="dbt_platform" /> host (for example, `ab123.us1.dbt.com`).
+2. Start the OAuth authentication flow in your browser.
+3. Persist the host to `~/.dbt/mcp-config.yml` so you won't be prompted again.
+
+:::info Client support
+Elicitation is supported in [Claude Code](https://www.anthropic.com/claude-code). Claude Desktop and other clients that don't support elicitation will continue to require `DBT_HOST` as an environment variable.
+:::
+
+After completing interactive setup, skip to [Test your configuration](#optional-test-your-configuration).
+
 ### CLI only (no dbt platform) {#cli-only}
 
 This option runs the MCP server locally and connects it to your local dbt project using `DBT_PROJECT_DIR` and `DBT_PATH`.

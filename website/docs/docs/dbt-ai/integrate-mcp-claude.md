@@ -54,6 +54,10 @@ You can set up Claude Code with both the local and remote `dbt-mcp` server. We r
 
 ### Set up with local dbt MCP server
 
+:::tip Zero-config setup with elicitation
+Claude Code supports [elicitation](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation#elicitation), so you can add dbt-mcp with no environment variables. dbt-mcp will prompt you for your <Constant name="dbt_platform" /> host on the first tool call. See [Interactive setup](/docs/dbt-ai/setup-local-mcp#interactive-setup) for details.
+:::
+
 1. Follow [Set up local MCP](/docs/dbt-ai/setup-local-mcp) and choose the configuration that matches your use case: 
    - OAuth with the <Constant name="dbt_platform" />
    - [CLI only](/docs/dbt-ai/setup-local-mcp#cli-only)
