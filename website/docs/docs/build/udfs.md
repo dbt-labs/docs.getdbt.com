@@ -90,7 +90,7 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     </Tabs>
 
-    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in the next step (Step 2). 
+    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in step 2. 
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file. For example:
 
