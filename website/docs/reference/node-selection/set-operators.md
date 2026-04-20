@@ -45,7 +45,7 @@ dbt run --select "marts.finance,tag:nightly"
 
 ## Combining unions and intersections
 
-You can combine unions and intersections in a single `--select` or `--exclude` value. dbt evaluates each space-delimited argument on its own; commas with no spaces still create intersections within that argument. Joining two expressions with a space unions their results, so you can intersect to narrow one slice of the graph while still including another slice in the same run. That reduces how much of the project runs compared to a broader selection, without dropping nodes you still need.
+You can combine unions and intersections in a single `--select` or `--exclude` value. dbt evaluates each space-delimited argument independently; within each argument, commas with no spaces create an intersection. A space between two arguments combines their results into a union, letting you apply different filtering logic to different subsets of your project in a single command.
 
 For example, the following command unions two intersections: shared upstream nodes for `snowplow_sessions` and `fct_orders`, and models under `marts/finance` tagged `nightly`.
 
