@@ -47,7 +47,7 @@ dbt run --select "marts.finance,tag:nightly"
 
 You can combine unions and intersections in a single `--select` or `--exclude` value. dbt evaluates each space-delimited argument independently; within each argument, commas with no spaces create an intersection. A space between two arguments combines their results into a union, letting you apply different filtering logic to different subsets of your project in a single command.
 
-For example, the following command unions two intersections: shared upstream nodes for `snowplow_sessions` and `fct_orders`, and models under `marts/finance` tagged `nightly`.
+For example, the following command combines two intersections: shared upstream nodes for `snowplow_sessions` and `fct_orders`, and models under `marts/finance` tagged `nightly`:
 
 ```bash
 dbt run --select "+snowplow_sessions,+fct_orders marts.finance,tag:nightly"
