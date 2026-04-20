@@ -5,13 +5,36 @@ import styles from "./styles.module.css";
 const CHANGELOG_BASE =
   "https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md";
 
-function versionToAnchor(version) {
-  // GitHub heading anchor: lowercase, strip leading "v", remove non-word/non-hyphen chars, spaces→hyphens
+/**
+ * Fragment for a Fusion release version, matching GitHub’s autolink for the
+ * corresponding `## {version}` heading in CHANGELOG.md (e.g. `2.0.0-preview.172` → `200-preview172`).
+ */
+function versionToChangelogFragment(version) {
   return version
-    .replace(/^v/, "")
+    .replace(/^v/i, "")
     .toLowerCase()
     .replace(/[^\w\s-]/g, "")
     .replace(/\s+/g, "-");
+}
+
+function changelogUrlForVersion(version) {
+  return `${CHANGELOG_BASE}#${versionToChangelogFragment(version)}`;
+}
+
+/** Fusion versions that should show a “release candidate” label in the UI. */
+const FUSION_RELEASE_CANDIDATE_VERSIONS = new Set(["2.0.0-preview.173"]);
+
+function isFusionReleaseCandidateVersion(version) {
+  if (!version || typeof version !== "string") return false;
+  const normalized = version.replace(/^v/i, "").toLowerCase();
+  return FUSION_RELEASE_CANDIDATE_VERSIONS.has(normalized);
+}
+
+function ReleaseCandidateLabel({ version }) {
+  if (!isFusionReleaseCandidateVersion(version)) return null;
+  return (
+    <span className={styles.releaseCandidateBadge}>release candidate</span>
+  );
 }
 
 const CHANNEL_LABELS = {
@@ -79,13 +102,17 @@ function VersionCards({ versions }) {
         {channels.map(([channel, info]) => (
           <div key={channel} className={styles.versionCard}>
             <h4>{CHANNEL_LABELS[channel] || channel}</h4>
-            <a
-              href={`${CHANGELOG_BASE}#${versionToAnchor(info.tag)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <code>{info.tag}</code>
-            </a>
+            <div className={styles.versionCardVersionRow}>
+              <a
+                href={changelogUrlForVersion(info.tag)}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View this version in the dbt Fusion changelog"
+              >
+                <code>{info.tag}</code>
+              </a>
+              <ReleaseCandidateLabel version={info.tag} />
+            </div>
             <span className={styles.versionDate}>{info.date}</span> 
           </div>
         ))}
@@ -111,19 +138,19 @@ function ReleaseItem({ version, data }) {
       ? latestRelease.reason
       : JSON.stringify(latestRelease.reason));
 
-  const changelogUrl = `${CHANGELOG_BASE}#${versionToAnchor(version)}`;
-
   return (
     <div className={styles.releaseItem}>
       <div className={styles.releaseHeader}>
         <a
-          href={changelogUrl}
+          href={changelogUrlForVersion(version)}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.versionTag}
+          title="View this release in the dbt Fusion changelog"
         >
           {version}
         </a>
+        <ReleaseCandidateLabel version={version} />
         {data.known_bad ? (
           <span className={styles.badgeBad}>Known Bad</span>
         ) : (
