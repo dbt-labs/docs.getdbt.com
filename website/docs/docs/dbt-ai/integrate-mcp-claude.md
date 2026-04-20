@@ -54,16 +54,22 @@ You can set up Claude Code with both the local and remote `dbt-mcp` server. We r
 
 ### Set up with local dbt MCP server
 
-Claude Code supports [elicitation](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation#elicitation), so you can use the simplest possible config &mdash; no environment variables needed. dbt-mcp will prompt you for your <Constant name="dbt_platform" /> host and start OAuth on the first tool call. See [Interactive setup](/docs/dbt-ai/setup-local-mcp#interactive-setup) for details.
+Claude Code supports [elicitation](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation#elicitation), so you can use the simplest possible config &mdash; no environment variables needed. Add this to `.mcp.json` at your project root and dbt-mcp will prompt you for your <Constant name="dbt_platform" /> host on the first tool call:
 
-If you prefer to pre-configure environment variables, follow [Set up local MCP](/docs/dbt-ai/setup-local-mcp) and choose the configuration that matches your use case: 
-   - OAuth with the <Constant name="dbt_platform" />
-   - [CLI only](/docs/dbt-ai/setup-local-mcp#cli-only)
-   - [environment variables](/docs/dbt-ai/setup-local-mcp#environment-variable-configuration) (including an `.env` file with `--env-file` for `dbt-mcp`, if you use that pattern).
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"]
+    }
+  }
+}
+```
 
-Then:
-1. Add the same `dbt` server definition to `.mcp.json` at your project root (the repository root for your workspace). Claude Code loads MCP servers from this file. 
-2. Use the same `mcpServers` JSON shape as in [Set up local MCP](/docs/dbt-ai/setup-local-mcp) (`command`, `args`, and `env`, or `args` with `--env-file`), matching the patterns in next [Example config in `.mcp.json`](#example-config-in-mcpjson) section.
+See [Interactive setup](/docs/dbt-ai/setup-local-mcp#interactive-setup) for details on how the flow works.
+
+If you prefer to pre-configure environment variables, follow [Set up local MCP](/docs/dbt-ai/setup-local-mcp) and add the matching config to `.mcp.json`. See [Example config in `.mcp.json`](#example-config-in-mcpjson) below for the full patterns.
 
 If you already completed local MCP setup for another client, reuse that `dbt` entry in `.mcp.json` &mdash; you don't need a second, separate registration step for Claude Code.
 
