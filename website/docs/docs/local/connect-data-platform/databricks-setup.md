@@ -24,7 +24,7 @@ meta:
 
 :::note private preview
 
-The Databricks adapter is supported on the <Constant name="fusion_engine" />, but due to it's status as `Private Preview` it might not register as a supported adapter in some workflows in the <Constant name="dbt_platform" /> interface.
+The Databricks adapter is supported on the <Constant name="fusion_engine" />, but due to its status as `Private Preview`, you might not see it as a supported adapter in some <Constant name="dbt_platform" /> interface workflows.
 
 :::
 
