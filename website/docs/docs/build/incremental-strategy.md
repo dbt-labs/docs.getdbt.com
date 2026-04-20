@@ -292,5 +292,3 @@ To use the `merge_null_safe` custom incremental strategy from the `example` pack
 
 </File>
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="incremental"/>

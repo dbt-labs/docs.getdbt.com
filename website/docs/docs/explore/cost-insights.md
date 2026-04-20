@@ -23,13 +23,21 @@ With Cost Insights, you can see:
 - **Cost trends over time**: Track your warehouse spend and optimization impact across your dbt projects.
 - **Filter by asset type**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
 
-
-
 The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of state-aware optimizations across various dimensions:
 
 - [Project dashboard](/docs/explore/explore-cost-data#project-dashboard)
 - [Catalog on Model page](/docs/explore/explore-cost-data#model-performance-in-catalog)
 - [Job details page](/docs/explore/explore-cost-data#job-details) 
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
+
+<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>
+
+<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
+
+</DocCarousel>
 
 ## Prerequisities
 
