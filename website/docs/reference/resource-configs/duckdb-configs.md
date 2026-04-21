@@ -418,6 +418,8 @@ The `microbatch` strategy requires <Constant name="core" /> 1.9 or later and run
 Microbatching might not always be the best option from a performance perspective. DuckDB operates on row groups, not physical partitions (unless you have explicitly partitioned data in a DuckLake). Be sure to test different amounts of threads to match your use case.
 :::
 
+<VersionBlock lastVersion="1.99">
+
 ## Interactive shell
 
 In `dbt-duckdb` 1.9.3 and later, the interactive shell lets you run dbt commands and query the DuckDB database in an integrated CLI environment. The shell automatically launches the [DuckDB UI](https://duckdb.org/2025/03/12/duckdb-ui.html), which gives you a visual interface to explore your data while you work with your dbt models.
@@ -435,6 +437,8 @@ python -m dbt.adapters.duckdb.cli --profile my_profile
 ```
 
 The shell provides access to all standard dbt commands (`run`, `test`, `build`, `seed`, `snapshot`, `compile`, `parse`, `debug`, `deps`, `list`) and supports model name autocompletion if you install the optional `iterfzf` package.
+
+</VersionBlock>
 
 ## More information
 
