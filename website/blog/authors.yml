@@ -53,9 +53,16 @@ bennie_regenold:
     linkedin: benjaminregenold
   name: Bennie Regenold
   page: true
+benn_stancil:
+  image_url: /img/blog/authors/benn-stancil.png
+  title: Founder at Mode
+  name: Benn Stancil
+  socials:
+    website: https://benn.website/
+  page: true
 benoit_perigaud:
   image_url: /img/blog/authors/benoit-perigaud.jpeg
-  title: Staff Analytics Engineer at dbt Labs
+  title: Staff Developer Experience Advocate at dbt Labs
   socials:
     linkedin: benoit-perigaud
   name: Benoit Perigaud

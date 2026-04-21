@@ -65,7 +65,7 @@ from {{ ref('my_model') }}
 
 ## Definition
 
-You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Priciples of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
+You can configure if and when the <Constant name="fusion_engine" /> performs static SQL analysis for a model. Configure the `static_analysis` config in your project YAML file (`dbt_project.yml`), model properties YAML file, or in a SQL config block in your model file. Refer to [Principles of static analysis](/docs/fusion/new-concepts?version=1.12#principles-of-static-analysis) for more information on the different modes of static analysis.
 
 Setting a model to `strict` does not automatically set `strict` for downstream models; they keep the project default unless you configure them explicitly. For more information and examples, refer to [strict mode inheritance](/docs/fusion/new-concepts#strict-mode-inheritance).
 
@@ -80,6 +80,14 @@ The following values are available for `static_analysis`:
 The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
 
 :::
+
+### User-defined functions (UDFs) in `strict` mode
+
+When `static_analysis: strict` is in effect, the <Constant name="fusion_engine" /> parses `CREATE FUNCTION` statements from [`sql_header`](/reference/resource-configs/sql_header) and from [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) project hooks, registers those UDFs in the compiler registry, and makes them available during strict static compilation. The `baseline` and `off` modes don't perform this UDF registration for static analysis.
+
+A model’s `sql_header` can include multiple statements. <Constant name="fusion" /> registers UDFs from `CREATE FUNCTION` statements and ignores other statements for this step.
+
+If strict analysis still cannot resolve a UDF, set [`static_analysis: off`](/reference/resource-configs/static-analysis#disable-static-analysis-in-sql-for-a-model-using-a-custom-udf) on the affected models.
 
 ### How static analysis modes cascade
 

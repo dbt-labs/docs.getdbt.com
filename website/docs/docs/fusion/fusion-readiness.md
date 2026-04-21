@@ -9,6 +9,12 @@ pagination_prev: null
 
 The <Constant name="fusion_engine" /> is here! We currently offer it as a [private preview](/docs/dbt-versions/product-lifecycles#the-dbt-platform) on the <Constant name="dbt_platform" />. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
 
+:::note Enable the Fusion readiness panel
+
+The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) can manually enable the **Enable Fusion readiness & upgrade features** in **Account settings** → **Account**. Refer to [Enable Fusion readiness features](/guides/prepare-fusion-upgrade?step=2) for setup steps.
+
+:::
+
 ## Preparing for Fusion
 
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
@@ -25,7 +31,7 @@ You must resolve deprecations while your projects are on a <Constant name="core"
 
 Start a new branch to begin resolving deprecation warnings using one of the following methods:
 
-- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/cloud/studio-ide/autofix-deprecations). You can run the autofix tool on the **Compatible** or **Latest** release track.
+- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/cloud/studio-ide/autofix-deprecations). You can run the autofix tool on the **Compatible** or **Latest** release track.
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
 
@@ -63,6 +69,7 @@ Your project may implement features that <Constant name="fusion" /> currently [l
 We determine <Constant name="fusion" /> eligibility using data from your job runs. 
 
 - [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
+  - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for Fusion. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
 - [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available).
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 

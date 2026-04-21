@@ -158,6 +158,7 @@ const sidebarSettings = {
                         "docs/cloud/manage-access/set-up-sso-okta",
                         "docs/cloud/manage-access/set-up-sso-google-workspace",
                         "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
+                        "docs/cloud/manage-access/sso-faq",
                       ],
                     },
                     {
@@ -172,6 +173,7 @@ const sidebarSettings = {
                         "docs/cloud/manage-access/scim-entra-id",
                         "docs/cloud/manage-access/scim-okta",
                         "docs/cloud/manage-access/scim-manage-user-licenses",
+                        "docs/cloud/manage-access/scim-faq",
                       ],
                     },
                     {
@@ -400,6 +402,7 @@ const sidebarSettings = {
             "docs/dbt-extension-features",
             "docs/install-dbt-extension",
             "docs/configure-dbt-extension",
+            "docs/fusion/vs-compare-changes",
           ],
         },
         {
@@ -1818,16 +1821,6 @@ const sidebarSettings = {
         "community/contributing/contributing-online-community",
         "community/contributing/contributing-realtime-events",
       ],
-    },
-    {
-      type: "link",
-      label: "Community forum",
-      href: "/community/forum",
-    },
-    {
-      type: "link",
-      label: "Events",
-      href: "/community/events",
     },
     {
       type: "category",

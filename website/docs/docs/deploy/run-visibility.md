@@ -31,7 +31,44 @@ An example of a completed run with a configuration for a [job completion trigger
 
 ### Run summary tab
 
-You can view and download in-progress and historical logs for your dbt runs. This makes it easier for you to debug errors more efficiently. 
+You can view and download in-progress and historical logs for your dbt runs. This makes it easier for you to debug errors more efficiently.
+
+For in-progress steps, <Constant name="dbt_platform" /> only displays the tail of the log output &mdash; up to the last 1,000 lines or 0.5 MB, whichever comes first. This applies to both console and debug logs.
+- When logs are truncated, a notice appears at the top of the log. Because only the tail is displayed, a resource that is still running may not appear in the logs until it completes and its output reaches the tail.
+- When a step is complete, the full log is available. 
+
+<VersionBlock lastVersion="1.99">
+
+When a job on the <Constant name="core" /> engine finishes, selecting a step opens the **System logs**. At the top, a summary shows how many errors, warnings, deprecations, skips, and successes appear in that step’s output.
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/system-logs.png" width="80%" title="System logs summary" />
+
+:::note
+Counts displayed in the system logs are produced with regular expression matching on the log text. This means you may see more errors or warnings than there are nodes with failures or warnings.
+
+To verify the actual count, use the up and down buttons on each status to navigate to each matching line.
+:::
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
+
+When a job on the <Constant name="fusion_engine" /> finishes, selecting a step displays a structured logs view showing the status of each resource. Nodes are classified into the following categories, and you can expand each node to view its log details:
+- **Success**
+- **Reused**
+- **Failed**
+- **Warning**
+- **Running**
+- **Skipped**
+- **No-op**
+
+For more information about each status, refer to [Telemetry and observability](https://docs.getdbt.com/docs/fusion/telemetry#node-outcome).
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/fusion-logs.png" width="80%" title="Structured logs in Fusion" />
+
+</VersionBlock>
+
+#### Downloading logs
 
 - To download logs for an individual step, select the step in the **Run summary** tab and click **Download** > **Download logs**. 
 - Note that when viewing debug logs, the log output is truncated. To view and export all debug logs for an individual step, click **Download** > **Download all debug logs**.

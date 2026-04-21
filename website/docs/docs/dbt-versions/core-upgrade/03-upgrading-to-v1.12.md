@@ -48,6 +48,29 @@ For more information, refer to [About dbt compile](/reference/commands/compile).
 
 You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in-varsyml) file, located at the project root, to define project variables. This keeps variable definitions in one place and helps simplify `dbt_project.yml`. Variables defined in `vars.yml` are parsed _before_ `dbt_project.yml`, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. You can continue to define variables in `dbt_project.yml` as before, but you cannot define variables in both files. For details and precedence, refer to [Project variables](/docs/build/project-variables).
 
+### Improved exception handling and error messages
+
+<Constant name="core" /> v1.12 improves exception handling so error messages are clearer and stack traces are easier to interpret.
+
+Previously, some internal failures surfaced as Python errors (for example, `AttributeError`, `KeyError`, `IndexError`, `RuntimeError`), which could be difficult to understand. In <Constant name="core" /> v1.12, these are replaced with dbt errors (such as `CompilationError` and `ParsingError`) that include a clear error message. When you need the full Python error output for debugging, use `--debug` or check the logs.
+
+Key improvements:
+
+- **Cleaner default output**: Built-in Python exceptions (`Exception`, `ValueError`, `RuntimeError`) are replaced with dbt errors, so dbt no longer treats them as internal errors or displays unnecessary stack traces.
+- **Parsing and config validation**: Invalid field values raise a `ParsingError` instead of a raw `InvalidFieldValue` exception when applying `dbt_project.yml` configs to resources. In a generic data test, a `config` value that is a string or a number instead of a set of key-value pairs raises a `TestConfigNotDictError`.
+- **Snapshot validation**: When snapshot validation fails, dbt shows the relevant error message and omits the long Python error output.
+- **`dbt run-operation`**: When a `run-operation` call fails, the exception message is included in `run_results.json`, which makes failures easier to inspect.
+- **Cycle detection**: Dependency graph cycles raise a `CompilationError` instead of the built-in `RuntimeError`.
+- **Semantic model dependencies**: When a semantic model references a disabled or missing model, dbt raises a `CompilationError` instead of an `IndexError`.
+<Expandable alt_header="More scenarios with exception handling improvements">
+
+- A string concatenation in a `doc()` argument (such as `doc('foo' ~ 'bar')`) is skipped during doc block resolution instead of crashing with an `AttributeError`. 
+- A Jinja variable (such as `doc(my_variable)`) raises a `DocTargetNotFoundError`.
+- When a `meta` value in `schema.yml` references an undefined Jinja variable, dbt converts it to `None` instead of raising a `TypeError` during partial parse.
+- When `sources`, `tables`, `exposure` tags, or `packages` are set to `null`, dbt treats them as an empty list instead of raising a `TypeError`.
+- When a model with custom contract constraints is evaluated during `state:modified` selection, dbt returns `None` for unknown constraint types instead of raising a `KeyError`.
+</Expandable>
+
 ### Managing changes to legacy behaviors
 
 <Constant name="core" /> v1.12 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
@@ -56,11 +79,15 @@ You can read more about each of these behavior changes in the following links:
 
 - (Introduced, disabled by default) [`require_valid_schema_from_generate_schema_name`](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name). This flag is set to `False` by default. With this setting, dbt raises the [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value. When set to `True`, dbt enforces stricter validation and raises a parsing error instead of a warning.
 - (Introduced, disabled by default) [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests). When set to `True`, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level in your `properties.yml` file. For more information, refer to [Data test configurations](/reference/data-test-configs).
+- (Introduced, disabled by default) [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses). When set to `true`, dbt applies project-level analysis configuration from `dbt_project.yml`. Previously, dbt silently ignored this configuration. This flag also corrects fully qualified names (FQNs) of analyses by removing the extra path segment, making them consistent with other resource types (for example, `your_project.my_analysis` instead of `your_project.analyses.my_analysis`). For more information, refer to [Analyses](/docs/build/analyses).
 
 ## Adapter-specific features and functionalities
 
 ### Snowflake
 
+- You can configure the [`scheduler`](/reference/resource-configs/snowflake-configs#scheduler) parameter on Snowflake dynamic tables to control how refreshes are managed. Setting it to `ENABLE` lets Snowflake automatically refresh the dynamic table, while `DISABLE` means dbt manages refreshes during model execution. When `scheduler` is set to `ENABLE`, you must also specify [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag). 
+
+    By default, dbt sets `scheduler` to `DISABLE` (unlike Snowflake’s native default of `ENABLE`), so dbt controls the refresh schedule unless you explicitly opt in to Snowflake’s scheduler. If you specify `target_lag` without setting `scheduler`, dbt automatically sets `scheduler` to `ENABLE`.
 - You can use the [`snowflake_initialization_warehouse`](/reference/resource-configs/snowflake-configs#initialization-warehouse) parameter to specify a warehouse for the initial build and reinitialization of a dynamic table, separate from `snowflake_warehouse` which is used for regular incremental refreshes.
 - You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. 
 
