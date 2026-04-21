@@ -409,6 +409,71 @@ Once you've verified the updated packages work correctly:
 2. Add a commit message like "Upgrade dbt packages for Fusion compatibility".
 3. Click **Commit and sync**.
 
+## Update your jobs
+
+Use the <Constant name="fusion" /> readiness panel to validate your jobs against the <Constant name="fusion_engine" /> and fix any issues you find.
+
+### Review your jobs
+
+The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status:
+
+1. Open the jobs list using either path:
+   - From the main menu, go to **Orchestration** → **Jobs**.
+   - From the readiness panel, click **Review jobs**.
+   <Lightbox src="/img/fusion/review-jobs.png" width="60%" title="Shortcut to review your jobs from the readiness panel"/>
+2. Find the <Constant name="fusion" /> eligibility column to the right of your jobs. Click **Review job** next to any job that is ineligible or has an unknown eligibility status.
+   <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them Fusion eligible."/>
+3. Click **Debug on Fusion** and choose one of the following:
+   - [Debug in Studio](#debug-in-studio)
+   - [Debug in Studio with Copilot](#debug-in-studio-with-copilot)
+   - [Run once on Fusion](#run-once-on-fusion)
+
+:::note
+If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
+:::
+
+#### Debug in Studio
+
+In the <Constant name="cloud_ide" />, run <Constant name="fusion" /> in your development environment to review project warnings and errors:
+
+1. Click **Debug in Studio**. The <Constant name="cloud_ide" /> opens and the **Problems** tab appears.
+
+2. dbt sets only your development environment to <Constant name="fusion" />.
+
+<Lightbox src="/img/fusion/fusion-ide.png" width="60%" title="Running Fusion in development"/>
+
+3. Review the warnings or errors in the **Problems** tab.
+4. Fix the issues directly or run the [autofix tool](/docs/cloud/studio-ide/autofix-deprecations).
+5. When the project runs with no warnings or errors, publish your changes.
+6. After you merge the changes, wait for the job to run again or run it manually.
+
+#### Debug in Studio with Copilot <Lifecycle status="beta" size="80%" />
+
+If you have access to Copilot, use it to fix warnings or errors in the <Constant name="cloud_ide" />:
+
+1. Click **Debug in Studio with Copilot**.
+2. dbt redirects you to the <Constant name="cloud_ide" /> and sets your development environment to <Constant name="fusion" />.
+3. Copilot opens with this prompt: "I need help fixing Fusion compatibility issues in this project. Please investigate and resolve any deprecation warnings or incompatibilities. Please use the migrating-dbt-core-to-fusion skill to guide this."
+
+   <Lightbox src="/img/fusion/migration-prompt.png" width="60%" title="The Fusion migration prompt in Copilot"/>
+
+4. Approve Copilot's permission requests so it can run the commands it needs.
+5. When the project runs with no warnings or errors, publish your changes.
+6. After you merge the changes, wait for the job to run again or run it manually.
+
+#### Run once on Fusion
+
+When you are confident a job is ready for <Constant name="fusion" />, you can run it once on the engine without changing environment-wide settings:
+
+1. Click **Run once on Fusion**.
+2. The job window opens and dbt runs the job on <Constant name="fusion" /> without changing other jobs or environment settings.
+3. When the job succeeds, click **Override eligibility status** to update the eligibility status.
+   <Lightbox src="/img/fusion/eligibility-status.png" width="60%" title="Override the eligibility status of a successful job."/>
+
+Congratulations! You have validated <Constant name="fusion" /> eligibility for your jobs.
+
+<Lightbox src="/img/fusion/fusion-eligible.png" width="60%" title="Your job is now ready for Fusion!"/>
+
 ## What's next? 
 
 With limitations identified and addressed, you've completed all the preparation steps. Your project is now ready to upgrade to <Constant name="fusion" />!
