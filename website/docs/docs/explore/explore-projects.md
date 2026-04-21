@@ -77,7 +77,7 @@ When using global navigation and searching across your projects, the following p
 | Core lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
-| [ERD view](/docs/explore/explore-projects#explore-your-projects-erd-view) <Lifecycle status="Alpha" /> | ✅ | ✅ | ✅ |
+| [ERD view](#explore-your-projects-erd-view) <Lifecycle status="Alpha" /> | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
 | [Project recommendations](/docs/explore/project-recommendations) | ❌ | ✅ | ✅ |
 | [Column-level lineage](/docs/explore/column-level-lineage) | ❌ | ✅ | ✅ |
