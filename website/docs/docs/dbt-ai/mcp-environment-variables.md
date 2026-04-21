@@ -36,7 +36,7 @@ These variables are required for <Constant name="dbt_platform"/> features (Seman
 </SimpleTable>
 
 :::note Legacy prefix variables
-`MULTICELL_ACCOUNT_PREFIX` and `DBT_HOST_PREFIX` are legacy environment variables. They are backwards compatible — if you already have them set, they will continue to work. However, the recommended approach is to set the full hostname directly in `DBT_HOST` (for example, `DBT_HOST=abc123.us1.dbt.com`).
+`MULTICELL_ACCOUNT_PREFIX` and `DBT_HOST_PREFIX` are legacy environment variables. They are backwards compatible &mdash; if you already have them set, they will continue to work. However, the recommended approach is to set the full hostname directly in `DBT_HOST` (for example, `DBT_HOST=abc123.us1.dbt.com`).
 :::
 
 See [Finding your IDs](/docs/dbt-ai/mcp-find-ids) for step-by-step instructions on locating each value.
