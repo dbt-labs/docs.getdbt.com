@@ -1,3 +1,5 @@
+import EnvFileBeta from '/snippets/_env-file-beta.md';
+
 If you're using dbt from the command line, you need a `profiles.yml` file that contains the connection details for your data platform.
 
 :::note dbt platform accounts
