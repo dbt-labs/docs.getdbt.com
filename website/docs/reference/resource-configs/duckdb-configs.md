@@ -7,7 +7,7 @@ tags: ['DuckDB', 'dbt Core']
 
 These configurations are specific to `dbt-duckdb`. For profile setup and connection options, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup). For general dbt concepts, refer to [Materializations](/docs/build/materializations) and [Incremental models](/docs/build/incremental-models).
 
-Where a feature requires a minimum `dbt-duckdb` package version, this page calls that out inline.
+Some features require a minimum version of `dbt-duckdb`. Version requirements are noted inline throughout this page.
 
 ## Secrets manager
 
@@ -97,45 +97,47 @@ attach:
       enable_fsst: true
 ```
 
-If you specify the same option in both a direct field (`type`, `secret`, `read_only`) and in the `options` dict, `dbt-duckdb` will raise an error to prevent conflicts.
+If you specify the same option in both a direct field (`type`, `secret`, `read_only`) and in the `options` dict, `dbt-duckdb` raises an error to prevent conflicts.
 
 ## DuckLake
 
-[DuckLake](https://ducklake.select) is a table format that provides ACID transactions and time travel for DuckDB. You can use DuckLake with both local databases and MotherDuck.
+[DuckLake](https://ducklake.select) is a table format that provides <Term id="acid" /> transactions and time travel for DuckDB. You can use DuckLake with both local databases and MotherDuck.
 
 ### DuckLake on MotherDuck
 
-In `dbt-duckdb 1.9.6` and later, you can connect to [hosted DuckLake on MotherDuck](https://motherduck.com/blog/ducklake-motherduck/) by creating a DuckLake database and setting `is_ducklake: true`:
+In `dbt-duckdb 1.9.6` and later, you can connect to [hosted DuckLake on MotherDuck](https://motherduck.com/blog/ducklake-motherduck/) by creating a DuckLake database and setting `is_ducklake: true`.
 
-First, create your DuckLake database in MotherDuck:
+To set up DuckLake on MotherDuck:
 
-```sql
-CREATE DATABASE my_ducklake
-  (TYPE ducklake, DATA_PATH 's3://...')
-```
+1. Create your DuckLake database in MotherDuck:
 
-Then configure your profile:
+  ```sql
+  CREATE DATABASE my_ducklake
+    (TYPE ducklake, DATA_PATH 's3://...')
+  ```
 
-```yml
-default:
-  outputs:
-    dev:
-      type: duckdb
-      path: "md:my_db?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
-      attach:
-        - path: "md:my_ducklake"
-          is_ducklake: true
-  target: dev
-```
+2. Configure your profile:
 
-DuckLake must be identified with `is_ducklake: true` so that safe DDL operations are applied by dbt.
+  ```yml
+  default:
+    outputs:
+      dev:
+        type: duckdb
+        path: "md:my_db?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
+        attach:
+          - path: "md:my_ducklake"
+            is_ducklake: true
+    target: dev
+  ```
 
-For local DuckLake, use `ducklake:` in the path:
+  You must identify DuckLake must with `is_ducklake: true` so that dbt applies safe DDL operations.
 
-```yml
-attach:
-  - path: "ducklake:my_ducklake.ddb"
-```
+  For local DuckLake, use `ducklake:` in the path:
+
+  ```yml
+  attach:
+    - path: "ducklake:my_ducklake.ddb"
+  ```
 
 ### DuckLake table partitioning
 
@@ -151,9 +153,9 @@ select
 from {{ ref('upstream_model') }}
 ```
 
-`partition_by` is accepted as an alias for `partitioned_by`. This setting is only applied for DuckLake relations; on non-DuckLake targets it is ignored with a warning.
+`partition_by` is accepted as an alias for `partitioned_by`. This setting is only applied for DuckLake relations; on non-DuckLake targets, it is ignored with a warning.
 
-DuckLake applies partitioning via `ALTER TABLE ... SET PARTITIONED BY (...)`, and partitioning only affects new data. For first builds or full refreshes, `dbt-duckdb` creates an empty table, sets partitioning, then inserts data so the initial load is partitioned. Refer to the [DuckLake partitioning documentation](https://ducklake.select/docs/stable/duckdb/advanced_features/partitioning) for more details.
+DuckLake applies partitioning using `ALTER TABLE ... SET PARTITIONED BY (...)`, and partitioning only affects new data. For first builds or full refreshes, `dbt-duckdb` creates an empty table, sets partitioning, then inserts data so the initial load is partitioned. Refer to the [DuckLake partitioning documentation](https://ducklake.select/docs/stable/duckdb/advanced_features/partitioning) for more details.
 
 <VersionBlock lastVersion="1.99">
 
@@ -162,14 +164,14 @@ DuckLake applies partitioning via `ALTER TABLE ... SET PARTITIONED BY (...)`, an
 `dbt-duckdb` has a [plugin system](https://github.com/duckdb/dbt-duckdb#configuring-dbt-duckdb-plugins) for extending the adapter with custom Python UDFs, loading source data from Excel/Google Sheets/SQLAlchemy, and more. For details on configuring and writing plugins, refer to the [dbt-duckdb documentation on plugins](https://github.com/duckdb/dbt-duckdb#configuring-dbt-duckdb-plugins).
 
 :::info dbt Core only
-Plugins are a `dbt-duckdb` feature and are not supported in <Constant name="fusion" /> or <Constant name="dbt_platform" />.
+Plugins are a `dbt-duckdb` feature and are not supported in <Constant name="fusion_engine" /> or <Constant name="dbt_platform" />.
 :::
 
 ## Python models
 
-dbt supports [Python models](/docs/build/python-models) in `dbt Core` 1.3 and later. In `dbt-duckdb`, Python models run in the same process that owns the DuckDB connection. The `.py` file is loaded as a Python module using [`importlib`](https://docs.python.org/3/library/importlib.html), the `model` function is called with a `dbt` object (containing `ref` and `source` information) and a `DuckDBPyConnection` object, and the returned object is materialized as a table.
+dbt supports [Python models](/docs/build/python-models) in <Constant name="core" /> 1.3 and later. In `dbt-duckdb`, Python models run in the same process that owns the DuckDB connection. The `.py` file is loaded as a Python module using [`importlib`](https://docs.python.org/3/library/importlib.html), the `model` function is called with a `dbt` object (containing `ref` and `source` information) and a `DuckDBPyConnection` object, and the returned object is materialized as a table.
 
-The value of `dbt.ref` and `dbt.source` inside a Python model will be a [DuckDB Relation](https://duckdb.org/docs/api/python/reference/) object that can be converted into a Pandas/Polars DataFrame or an Arrow table. The return value can be any object DuckDB knows how to turn into a table, including a Pandas/Polars DataFrame, a DuckDB Relation, or an Arrow Table, Dataset, RecordBatchReader, or Scanner.
+The value of `dbt.ref` and `dbt.source` inside a Python model will be a [DuckDB Relation](https://duckdb.org/docs/api/python/reference/) object that you can convert into a Pandas/Polars DataFrame or an Arrow table. The return value can be any object DuckDB knows how to turn into a table, including a Pandas/Polars DataFrame, a DuckDB Relation, or an Arrow Table, Dataset, RecordBatchReader, or Scanner.
 
 ### Process data in batches
 
@@ -194,47 +196,49 @@ def model(dbt, session):
 
 ### Use local Python modules
 
-The profile setting `module_paths` allows you to specify a list of paths on the filesystem that contain additional Python modules that should be added to the Python process's `sys.path`. This allows you to include additional helper Python modules in your dbt projects that can be accessed by the running dbt process and used to define custom dbt-duckdb plugins or library code for Python models.
+The `module_paths` profile setting lets you specify a list of filesystem paths containing additional Python modules. These paths are added to the dbt process's `sys.path`, which makes the modules importable within dbt. You can use this to include helper code in your project, such as custom `dbt-duckdb` plugins or shared libraries for Python models.
 
 ## External files
 
-One of DuckDB's most powerful features is its ability to read and write CSV, JSON, and Parquet files directly, without needing to import/export them from the database first.
+One of DuckDB's most powerful features is its ability to read and write CSV, JSON, and Parquet files directly, without needing to import or export them from the database first.
 
 ### Read from external files
 
-You may reference external files in your dbt models either directly or as dbt sources by configuring the `external_location` in either the `meta` or the `config` option on the source definition. Settings under `meta` will be propagated to the documentation generated via `dbt docs generate`, but settings under `config` will not be.
+You may reference external files in your dbt models either directly or as dbt sources by configuring `external_location` either under `config.meta` or as a direct `config.external_location` on the source definition. Settings under `config.meta` are propagated to the documentation generated by `dbt docs generate`, but direct `config.external_location` settings are not.
 
 ```yml
 sources:
   - name: external_source
-    meta:
-      external_location: "s3://my-bucket/my-sources/{name}.parquet"
+    config:
+      meta:
+        external_location: "s3://my-bucket/my-sources/{name}.parquet"
     tables:
       - name: source1
       - name: source2
 ```
 
-Here, the `meta` setting on `external_source` defines `external_location` as an f-string that lets you express a pattern for the location of any table defined for that source. For example, a dbt model like:
+Here, `config.meta.external_location` on `external_source` defines an f-string pattern for the location of any table defined for that source. For example, a dbt model like:
 
 ```sql
 SELECT *
 FROM {{ source('external_source', 'source1') }}
 ```
 
-will be compiled as:
+Will be compiled as:
 
 ```sql
 SELECT *
 FROM 's3://my-bucket/my-sources/source1.parquet'
 ```
 
-If one of the source tables deviates from the pattern, the `external_location` can also be set on the table itself:
+If one of the source tables deviates from the pattern, you can also set the `external_location` on the table itself:
 
 ```yml
 sources:
   - name: external_source
-    meta:
-      external_location: "s3://my-bucket/my-sources/{name}.parquet"
+    config:
+      meta:
+        external_location: "s3://my-bucket/my-sources/{name}.parquet"
     tables:
       - name: source1
       - name: source2
@@ -258,7 +262,7 @@ The `formatter` configuration option indicates whether to use `newstyle` string 
 
 ### Write to external files
 
-You can create dbt models backed by external files via the `external` materialization strategy:
+You can create dbt models backed by external files through the `external` materialization strategy:
 
 ```sql
 {{ config(materialized='external', location='local/directory/file.parquet') }}
@@ -271,15 +275,15 @@ LEFT JOIN {{ source('upstream', 'source') }} s USING (id)
 | Option | Default | Description |
 | --- | --- | --- |
 | `location` | `external_location` macro | The path to write the external materialization to. |
-| `format` | `parquet` | The format of the external file (parquet, csv, or json). |
+| `format` | `parquet` | The format of the external file (`parquet`, `csv`, or `json`). |
 | `delimiter` | `,` | For CSV files, the delimiter to use for fields. |
-| `options` | None | Any other options to pass to DuckDB's `COPY` operation (for example `partition_by`, `codec`, etc). |
-| `glue_register` | `false` | If true, try to register the file created by this model with the AWS Glue Catalog. |
+| `options` | None | Any other options to pass to DuckDB's `COPY` operation (for example, `partition_by`, `codec`). |
+| `glue_register` | `false` | If `true`, try to register the file created by this model with the AWS Glue Catalog. |
 | `glue_database` | `default` | The name of the AWS Glue database to register the model with. |
 
-If the `location` argument is specified, it must be a filename (or S3 bucket/path), and `dbt-duckdb` will attempt to infer the `format` argument from the file extension of the `location` if the `format` argument is unspecified.
+- If the `location` argument is specified, it must be a filename (or S3 bucket/path), and `dbt-duckdb` will attempt to infer the `format` argument from the file extension of the `location` if the `format` argument is unspecified.
 
-If the `location` argument is not specified, the external file will be named after the `model.sql` (or `model.py`) file that defined it with an extension that matches the `format` argument. By default, external files are created relative to the current working directory. You can change the default directory (or S3 bucket/prefix) by specifying the `external_root` setting in your DuckDB profile.
+- If the `location` argument is not specified, the external file will be named after the `model.sql` (or `model.py`) file that defined it with an extension that matches the `format` argument. By default, external files are created relative to the current working directory. You can change the default directory (or S3 bucket/prefix) by specifying the `external_root` setting in your DuckDB profile.
 
 Incremental materialization strategies are not supported for `external` models.
 
@@ -301,7 +305,7 @@ Benefits of using `table_function`:
 - Parameters can force filter pushdown.
 - Functions can provide advanced features like dynamic SQL.
 
-Example `table_function` creation with 0 parameters:
+Example `table_function` creation with zero parameters:
 
 ```sql
 {{
@@ -312,13 +316,13 @@ Example `table_function` creation with 0 parameters:
 select * from {{ ref("example_table") }}
 ```
 
-Example invocation (parentheses are required even with 0 parameters):
+Example invocation (parentheses are required even with zero parameters):
 
 ```sql
 select * from {{ ref("my_table_function") }}()
 ```
 
-Example `table_function` with 2 parameters:
+Example `table_function` with two parameters:
 
 ```sql
 {{
@@ -344,26 +348,33 @@ select * from {{ ref("my_table_function_with_parameters") }}(1, 2)
 
 ## Incremental strategies
 
-`dbt-duckdb` supports the `delete+insert`, `append`, `merge`, and `microbatch` strategies for incremental table models.
+`dbt-duckdb` supports the following strategies for incremental table models:
+
+- [`append`](#append-strategy)
+- [`delete+insert`](#deleteinsert-strategy)
+- [`merge`](#merge-strategy)
+- [`microbatch`](#microbatch-strategy)
 
 ### Append strategy
 
 | Configuration | Type | Default | Description |
 | --- | --- | --- | --- |
-| `incremental_predicates` | list | null | SQL conditions to filter which records get appended. |
+| `incremental_predicates` | `<list>` | null | SQL conditions to filter which records get appended. |
 
 ### Delete+insert strategy
 
 | Configuration | Type | Default | Description |
 | --- | --- | --- | --- |
-| `unique_key` | string/list | required | Column(s) used to identify records for deletion. |
-| `incremental_predicates` | list | null | SQL conditions to filter the delete and insert operations. |
+| `unique_key` | `<string>`/`<list>` | — | Required. Columns used to identify records for deletion. |
+| `incremental_predicates` | `<list>` | null | SQL conditions to filter the delete and insert operations. |
 
 ### Merge strategy
 
-The `merge` strategy requires DuckDB >= 1.4.0 and provides access to DuckDB's native `MERGE` statement.
+The `merge` strategy requires DuckDB 1.4.0 or later and provides access to DuckDB's native `MERGE` statement.
 
-**Basic configuration** &mdash; When you specify only `unique_key`, `dbt-duckdb` uses DuckDB's `UPDATE BY NAME` and `INSERT BY NAME` operations, which automatically match columns by name:
+**Basic configuration**
+
+When you specify only `unique_key`, `dbt-duckdb` uses DuckDB's `UPDATE BY NAME` and `INSERT BY NAME` operations, which automatically match columns by name:
 
 ```yml
 models:
@@ -374,17 +385,19 @@ models:
       unique_key: id
 ```
 
-**Enhanced configuration** &mdash; Additional options for finer control:
+**Enhanced configuration**
+
+Additional options for finer control:
 
 | Configuration | Type | Default | Description |
 | --- | --- | --- | --- |
-| `unique_key` | string/list | required | Column(s) used for the MERGE join condition. |
-| `incremental_predicates` | list | null | Additional SQL conditions to filter the MERGE operation. |
-| `merge_update_condition` | string | null | SQL condition to control when matched records are updated. |
-| `merge_insert_condition` | string | null | SQL condition to control when unmatched records are inserted. |
-| `merge_update_columns` | list | null | Specific columns to update. |
-| `merge_exclude_columns` | list | null | Columns to exclude from updates. |
-| `merge_update_set_expressions` | dict | null | Custom expressions for column updates. |
+| `unique_key` | `<string/list>` | — | Required. Columns used for the MERGE join condition. |
+| `incremental_predicates` | `<list>` | null | Additional SQL conditions to filter the MERGE operation. |
+| `merge_update_condition` | `<string>` | null | SQL condition to control when matched records are updated. |
+| `merge_insert_condition` | `<string>` | null | SQL condition to control when unmatched records are inserted. |
+| `merge_update_columns` | `<list>` | null | Specific columns to update. |
+| `merge_exclude_columns` | `<list>` | null | Columns to exclude from updates. |
+| `merge_update_set_expressions` | `<dict>` | null | Custom expressions for column updates. |
 
 For maximum flexibility, use `merge_clauses` to define custom `when_matched` and `when_not_matched` behaviors. When using DuckLake, MERGE statements are limited to a single UPDATE or DELETE action in `when_matched` clauses due to DuckLake's current MERGE implementation constraints.
 
@@ -392,14 +405,14 @@ In conditions and expressions, use `DBT_INTERNAL_SOURCE` to reference the incomi
 
 ### Microbatch strategy
 
-The `microbatch` strategy requires `dbt Core` 1.9 or later and runs incremental builds in time-based batches using a configured `event_time` column.
+The `microbatch` strategy requires <Constant name="core" /> 1.9 or later and runs incremental builds in time-based batches using a configured `event_time` column.
 
 | Configuration | Type | Default | Description |
 | --- | --- | --- | --- |
-| `event_time` | string | required | Name of the timestamp column used for microbatch windowing. |
-| `begin` | string | required | Start time for batching (for example `2025-01-01`). |
-| `batch_size` | string | required | Batch grain (for example `day`, `hour`). |
-| `incremental_predicates` | list | null | Optional additional predicates applied within each batch. |
+| `event_time` | `<string>` | — | Required. Name of the timestamp column used for microbatch windowing. |
+| `begin` | `<string>` | — | Required. Start time for batching (for example, `2025-01-01`). |
+| `batch_size` | `<string>` | — | Required. Batch grain (for example, `day`, `hour`). |
+| `incremental_predicates` | `<list>` | null | Optional additional predicates applied within each batch. |
 
 :::tip
 Microbatching might not always be the best option from a performance perspective. DuckDB operates on row groups, not physical partitions (unless you have explicitly partitioned data in a DuckLake). Be sure to test different amounts of threads to match your use case.
@@ -427,4 +440,4 @@ The shell provides access to all standard dbt commands (`run`, `test`, `build`, 
 
 - For connection modes and profile setup, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
 - For adapter source code and plugins, refer to the [`dbt-duckdb` repository](https://github.com/duckdb/dbt-duckdb). For adapter release notes, refer to the [`dbt-duckdb` releases page](https://github.com/duckdb/dbt-duckdb/releases).
-- For core dbt concepts used on this page, refer to [Materializations](/docs/build/materializations), [Incremental models](/docs/build/incremental-models), and [Python models](/docs/build/python-models).
+- For <Constant name="core" /> concepts used on this page, refer to [Materializations](/docs/build/materializations), [Incremental models](/docs/build/incremental-models), and [Python models](/docs/build/python-models).
