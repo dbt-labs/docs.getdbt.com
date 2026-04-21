@@ -5,6 +5,7 @@ id: profiles.yml
 ---
 
 import ProfilesYml from '/snippets/_profiles.yml.md';
+import EnvFileBeta from '/snippets/_env-file-beta.md';
 
 <ProfilesYml />
 

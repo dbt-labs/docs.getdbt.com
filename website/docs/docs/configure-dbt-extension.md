@@ -55,12 +55,11 @@ The following table shows the different options and when to use them:
 | Location | Affects | Session state | When to use |
 |-----------|----------|-----------|-----------|
 | [**Shell profile** ](#configure-at-the-os-or-shell-level)| Terminal  | ✅ Permanent | Variables needed globally across all projects and terminal sessions.|
-| [**`.env` file**](#about-env-file-support) | Terminal + extension menus + <Term id="lsp" /> | ✅ Permanent (per project) | Project-specific variables. Works across <Constant name="fusion"/> CLI, the dbt VS Code extension, and <Constant name="core"/>. |
 | [**VS Code/Cursor settings**](#configure-in-the-vs-code-extension-settings) | Extension menus + <Term id="lsp" /> | ✅ Per VS Code/Cursor profile | Editor-only workflows using the extension menu actions. |
 | [**Terminal session**](#configure-in-the-terminal-session)  | Current terminal only | ❌ Temporary | One-off testing. |
 
 :::tip
-If you want to use both the VS Code extension menus and terminal to run dbt commands, define your variables in the shell profile and VS Code/Cursor settings so they remain active in the terminal globally and in VS Code/Cursor.
+If you want to use both the VS Code extension menus and terminal to run dbt commands, define your variables in the `shell` profile and VS Code/Cursor settings so they remain active in the terminal globally and in VS Code/Cursor.
 :::
 
 ### Configure at the OS or shell level
@@ -126,7 +125,7 @@ The following steps will explain how to configure environment variables using Po
 
 #### About `.env` file support
 
-The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started), the dbt VS Code extension, and <Constant name="core"/> can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions.
+The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions.
 
 Here are some considerations when defining environment variables in the `.env` file:
 
