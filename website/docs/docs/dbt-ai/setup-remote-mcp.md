@@ -157,7 +157,7 @@ Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeri
 </Tabs>
 
 :::note Other clients
-For other MCP clients (Codex, Windsurf, etc.), refer to your client's MCP configuration docs for the correct key format.
+For other MCP clients (Codex, Windsurf, and so on.), refer to your client's MCP configuration docs for the correct key format.
 :::
 
 For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
