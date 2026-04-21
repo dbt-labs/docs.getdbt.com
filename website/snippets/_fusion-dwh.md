@@ -33,4 +33,8 @@
         - Supports authentication using single sign-on, service accounts, or user tokens
   </Expandable>
 
+  <Expandable alt_header="DuckDB (Fusion CLI only)">
+    DuckDB does not require authentication &mdash; it runs locally on your machine.
+  </Expandable>
+
 <!-- <Expandable alt_header="Supported data platforms"> -->

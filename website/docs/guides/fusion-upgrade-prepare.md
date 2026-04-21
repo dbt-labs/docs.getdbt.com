@@ -41,6 +41,52 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 :::
 
+## Enable Fusion readiness features
+
+The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
+
+### Step 1: Enable the readiness toggle
+
+This step requires account admin access in <Constant name="dbt_platform" />:
+
+1. Click your account name in the left sidebar and select **Account settings**.
+2. Navigate to the **Account** screen and click **Edit**.
+3. Scroll to the **Settings** section and select the checkbox next to **Enable Fusion readiness & upgrade features**.
+4. Click **Save**.
+
+Once enabled:
+- All admins and developers can see each project's <Constant name="fusion" /> readiness status, including which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
+- Admins can initiate the <Constant name="fusion" /> upgrade from development environments, environment settings, and job settings (subject to existing permissions).
+
+### Step 2: Restrict upgrade access (optional)
+
+By default, any user who can see the upgrade assistant can use it to initiate an upgrade. To limit upgrade execution to designated users, you can enable an additional access control toggle.
+
+:::note Enterprise tier accounts only
+
+The **Enable restricted Fusion upgrade permissions** toggle is only available to Enterprise/Enterprise+ accounts that have been granted this entitlement. Contact your account manager if you need this capability.
+
+:::
+
+1. In the same **Account** settings screen, select the checkbox next to **Enable restricted Fusion upgrade permissions**.
+2. Click **Save**.
+
+When enabled, only users assigned the [`Fusion admin`](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+
+### The Fusion readiness panel
+
+With the readiness experience enabled, you can monitor your project's eligibility as you work through the preparation steps below. The panel shows which jobs are eligible or ineligible for <Constant name="fusion" /> and why.
+
+<Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The Fusion readiness checklist"/>
+
+Common ineligibility reasons include:
+- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available]
+- Not using a [supported data platform](/docs/fusion/supported-features?version=2.0#requirements)
+- Project doesn't have at least one successful job run
+- Jobs that haven't run in the last 7 days or have recent failures
+
+As you complete the steps in this guide, check the readiness panel to see your eligibility improve.
+
 ## Upgrade to the latest dbt Core version
 
 Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/cloud-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
@@ -362,116 +408,6 @@ Once you've verified the updated packages work correctly:
 
 2. Add a commit message like "Upgrade dbt packages for Fusion compatibility".
 3. Click **Commit and sync**.
-
-## Check for known Fusion limitations
-
-While <Constant name="fusion" /> supports most of <Constant name="core" />'s capabilities, some features have limited support or are still in development. Before upgrading, review your project to identify any features that <Constant name="fusion" /> doesn't yet fully support. This allows you to plan accordingly &mdash; whether that means removing non-critical features, implementing workarounds, or waiting for specific features to become available.
-
-:::note Fusion is rapidly evolving
-
-Many limitations are being addressed as <Constant name="fusion" /> moves toward General Availability. You can track progress on specific features through the [dbt-fusion GitHub milestones](https://github.com/dbt-labs/dbt-fusion/milestones) and stay updated via the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements).
-
-:::
-
-### Step 1: Review the limitations table
-
-Start by understanding which features have limited or no support in <Constant name="fusion" />:
-
-Visit the [Fusion supported features page](/docs/fusion/supported-features#limitations) and review the limitations table to see features that may affect your project.
-
-Common limitations include:
-- **Model-level notifications:** Job-level notifications work, model-level don't yet
-- **Semantic Layer development:** Active semantic model development should stay on <Constant name="core" />
-- **SQLFluff linting:** Not integrated yet (though linting will be built into <Constant name="fusion" /> directly)
-
-### Step 2: Search your project for limited features
-
-Check if your project uses any features with limited support. For example:
-
-1. Check for Python models:
-   - Python models for Snowflake, BigQuery, and Databricks are supported in <Constant name="fusion" />. If you use Python models on other data platforms, confirm [Fusion support](/docs/fusion/supported-features) for your data platform.
-   - In the <Constant name="studio_ide" />, look in your `models/` directory
-   - Search for files with `.py` extensions
-
-2. Review your `dbt_project.yml` for specific configurations:
-   - Look for `store_failures` settings
-   - Check for custom materializations beyond `view`, `table`, and `incremental`
-   - Review any `warn-error` or `warn-error-options` configurations
-
-3. Check your job configurations:
-   - Review any jobs using `--fail-fast` flag
-   - Identify jobs using `--store-failures`
-   - Note that [Advanced CI (dbt compare in orchestration)](/docs/deploy/advanced-ci) is supported in <Constant name="fusion" />.
-
-4. Review model governance settings:
-   - Search for models with `deprecation_date` set
-   - Note these may not generate deprecation warnings yet in <Constant name="fusion" />
-
-### Step 3: Assess the impact
-
-For each limitation that affects your project, determine its criticality:
-
-- **Critical features:** Features your project can't function without:
-    - Python models for Snowflake, BigQuery, and Databricks are supported in <Constant name="fusion" />. If you use Python models on other data platforms, confirm [Fusion support](/docs/fusion/supported-features) for your data platform.
-    - If Semantic Layer development is active, continue those workloads on <Constant name="core" />
-
-- **Nice-to-have features:** Features that improve workflows but aren't blockers:
-    - Model-level notifications can be replaced with job-level notifications temporarily
-    - SQLFluff linting can continue running with <Constant name="core" /> in CI
-
-- **Minimal impact:** Features you can easily work around:
-    - `--fail-fast` can be removed from job commands
-    - `--store-failures` can be disabled temporarily
-
-### Step 4: Create an action plan
-
-Based on your assessment, decide how to handle each limitation:
-
-- Remove non-critical features:
-
-    Temporarily disable features you can live without:
-   
-   Before (in model config): 
-
-   ```SQL
-   {{ config(
-     materialized='incremental',
-     store_failures=true
-   ) }}
-   ```
-   
-   After:
-   ```SQL
-   {{ config(
-     materialized='incremental'
-   ) }}
-   ```
-- Implement workarounds for low-impact features.
-   - Use job-level notifications instead of model-level
-   - Run SQLFluff linting separately in CI with <Constant name="core" />
-   - Use standard state selection instead of granular subselectors
-
-
-### Step 5: Document your findings
-
-Create a record of limitations affecting your project:
-
-1. In your <Constant name="studio_ide" />, create a document (like `FUSION_MIGRATION.md`) listing:
-   - Features your project uses that <Constant name="fusion" /> doesn't fully support
-   - Which models or jobs are affected
-   - Your mitigation strategy for each limitation
-   - GitHub issue links to track when features become available
-
-2. It's critical that your teams understand the limitations so share this document with your stakeholders.
-
-### Step 6: Track feature progress
-
-Stay up-to-date with feature availability:
-
-1. Subscribe to relevant GitHub issues for features you need (linked in the [limitations table](/docs/fusion/supported-features#limitations)).
-2. Follow the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for updates.
-3. Check the [dbt-fusion milestones](https://github.com/dbt-labs/dbt-fusion/milestones) to see release timelines.
-
 
 ## What's next? 
 
