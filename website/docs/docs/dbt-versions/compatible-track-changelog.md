@@ -25,18 +25,18 @@ dbt-core==1.11.8
 dbt-adapters==1.22.10
 dbt-common==1.37.3
 dbt-extractor==0.6.0
-dbt-semantic-interfaces==0.10.5
+dbt-semantic-interfaces==0.9.0
 dbt-sl-sdk[sync]==0.13.2
 
 # adapters
 dbt-athena==1.10.0
-dbt-bigquery==1.11.0
+dbt-bigquery==1.11.1
 dbt-databricks==1.11.7
 dbt-fabric==1.9.4
 dbt-postgres==1.10.0
-dbt-redshift==1.11.0
-dbt-snowflake==1.11.0
-dbt-spark==1.10.0
+dbt-redshift==1.10.1
+dbt-snowflake==1.11.4
+dbt-spark==1.10.1
 dbt-synapse==1.8.4
 dbt-teradata==1.10.2
 dbt-trino==1.10.1
@@ -47,13 +47,13 @@ Changelogs:
 - [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
 - [dbt-common 1.37.3](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
 - [dbt-athena 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-athena/CHANGELOG.md)
-- [dbt-bigquery 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
+- [dbt-bigquery 1.11.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-bigquery/CHANGELOG.md)
 - [dbt-databricks 1.11.7](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
 - [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
 - [dbt-postgres 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-postgres/CHANGELOG.md)
-- [dbt-redshift 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
-- [dbt-snowflake 1.11.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
-- [dbt-spark 1.10.0](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
+- [dbt-redshift 1.10.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-redshift/CHANGELOG.md)
+- [dbt-snowflake 1.11.4](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-snowflake/CHANGELOG.md)
+- [dbt-spark 1.10.1](https://github.com/dbt-labs/dbt-adapters/blob/stable/dbt-spark/CHANGELOG.md)
 - [dbt-synapse 1.8.4](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
 - [dbt-teradata 1.10.2](https://github.com/Teradata/dbt-teradata/releases/tag/v1.10.2)
 - [dbt-trino 1.10.1](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
