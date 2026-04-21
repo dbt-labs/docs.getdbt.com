@@ -114,12 +114,24 @@ Model query history uses the `SYS_QUERY_HISTORY` and `SYS_QUERY_DETAIL` system v
 
 Without one of these, model query history won't display data from other users. For more information, refer to the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/dg/cm_chap_system-tables.html#c_visibility-of-data).
 
+##### Redshift considerations
+
+Redshift model query history is derived from physical table scans (`SYS_QUERY_DETAIL` where `step_name = 'scan'`). This means usage data reflects a high-quality signal rather than an exact query count.
+
+Because Redshift expands regular views at execution time, scans are attributed to underlying base tables and view names do not appear in scan metadata. Materialized views do not have this limitation. Keep the following in mind when reviewing usage data:
+
+- Models materialized as `view` will likely show zero usage.
+- Models materialized as `table` or `incremental` work correctly.
+- `ephemeral` models cannot be attributed.
+
+If your project relies heavily on views, usage may appear lower than expected. This is a known limitation of scan-based attribution, not missing data.
+
 #### Databricks model query history <Lifecycle status="beta" />
 
 Model query history uses two Unity Catalog system tables: `system.query.history` and `system.access.table_lineage`. Before granting access, confirm the following prerequisites are met:
 
-- Your account has at least one Unity Catalog-enabled workspace.
-- The metastore is on Privilege Model Version 1.0.
+- Your account has at least one Unity Catalog-enabled workspace. Users that are still on the legacy Hive Metastore cannot use model query history.
+- The metastore is on Privilege Model Version 1.0. For more information, refer to [Unity Catalog privileges reference](https://docs.databricks.com/aws/en/data-governance/unity-catalog/access-control/privileges-reference).
 - The `access` and `query` schemas are enabled in the `system` catalog. A Databricks account admin can enable them under **Account Console** > **Settings** > **System tables**.
 
 Grant the service principal used in your production environment the following privileges:
@@ -137,6 +149,17 @@ GRANT SELECT ON TABLE system.query.history TO `<your-service-principal>`;
 :::
 
 For more information, refer to the [Databricks Unity Catalog privileges documentation](https://docs.databricks.com/aws/en/data-governance/unity-catalog/manage-privileges/privileges).
+
+##### Databricks considerations
+
+Keep the following in mind when using model query history with Databricks:
+
+- **Usage data may be incomplete**. Databricks does not capture lineage for all queries, so some queries may not appear in usage data. This is a known Databricks limitation. For more information, refer to [Databricks ineage system tables](https://docs.databricks.com/aws/en/admin/system-tables/lineage).
+- **Lineage data is not real-time**. `system.access.table_lineage` is updated throughout the day with no guaranteed timeframe. Delays of up to 24 hours are possible.
+- **Views may produce inconsistent lineage records**. Materialized views and streaming tables are included in lineage events. Standard views may or may not produce lineage records depending on how Databricks Unity Catalog resolves them.
+- **Statement text encryption affects query filtering**. If statement text encryption is enabled in Databricks, `statement_text` in `system.query.history` will be `NULL`. In this case, dbt test queries cannot be filtered and may be counted as user queries.
+- **Serverless compute lineage may be incomplete**. `system.query.history` includes queries from SQL warehouses and serverless compute, but lineage attribution for serverless executions may not always be captured.
+
 
 ## View query history in Catalog
 
