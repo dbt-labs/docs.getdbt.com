@@ -1,21 +1,21 @@
-   <Expandable alt_header="BigQuery" lifecycle="preview">  
+   <Expandable alt_header="BigQuery" lifecycle="preview" size="80%">  
     - Service Account / User Token
     - Native OAuth
     - External OAuth
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
-  <Expandable alt_header="Databricks" lifecycle="private_preview">
+  <Expandable alt_header="Databricks" lifecycle="private_preview" size="80%">
     - Service Account / User Token
     - Native OAuth
   </Expandable>
 
-  <Expandable alt_header="Redshift" lifecycle="preview">
+  <Expandable alt_header="Redshift" lifecycle="preview" size="80%">
     - Username / Password
     - IAM profile
   </Expandable>
   
-  <Expandable alt_header="Snowflake" lifecycle="preview">
+  <Expandable alt_header="Snowflake" lifecycle="preview" size="80%">
     - Username / Password
     - Native OAuth
     - External OAuth
@@ -23,7 +23,7 @@
     - MFA
   </Expandable>
 
-  <Expandable alt_header="Apache Spark (Fusion CLI only)" lifecycle="preview">
+  <Expandable alt_header="Apache Spark (Fusion CLI only)" lifecycle="preview" size="80%">
     - Thrift
       - Simple Authentication and Security Layer (SASL) PLAIN
       - No SASL (NOSASL) 
