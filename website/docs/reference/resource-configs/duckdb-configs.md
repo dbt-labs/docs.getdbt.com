@@ -418,7 +418,7 @@ The `microbatch` strategy requires <Constant name="core" /> 1.9 or later and run
 Microbatching might not always be the best option from a performance perspective. DuckDB operates on row groups, not physical partitions (unless you have explicitly partitioned data in a DuckLake). Be sure to test different amounts of threads to match your use case.
 :::
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 ## Interactive shell
 
