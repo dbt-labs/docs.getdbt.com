@@ -8,7 +8,7 @@ tags: [AI, Agents, Studio]
 
 import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 
-# Developer agent <Lifecycle status="beta,managed,managed_plus"/>
+# Developer agent <Lifecycle status="preview,managed,managed_plus"/>
 
 <IntroText>
 The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Build, refactor, test, document, and explore your dbt project from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
