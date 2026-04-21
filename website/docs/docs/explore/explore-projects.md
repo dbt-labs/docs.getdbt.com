@@ -53,7 +53,7 @@ Navigate the <Constant name="catalog" /> overview page to access your project's 
 - **Sidebar** &mdash; Use the left sidebar to browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar. You can also browse model [performance](/docs/explore/model-performance) and [project recommendations](/docs/explore/project-recommendations) depending on your plan. Refer to [Availability by plan](#availability-by-plan) for more info.
     - Find your project recommendations within your project's landing page.*
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
-- [**ERD view**](/docs/explore/explore-projects#explore-your-projects-erd-view) — Explore structural relationships between models to understand potential join paths and connecting keys for analysis. <Lifecycle status="alpha" />
+- **ERD view** &mdash; Explore structural relationships between models to understand potential join paths and connecting keys for analysis. <Lifecycle status="Alpha" />
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
 - **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/mesh/govern/model-access#access-modifiers) in your project. You can also navigate to all public models in your account through this view.
 - **Model query history** &mdash; Use [model query history](/docs/explore/model-query-history) to track consumption queries on your models for deeper insights.
@@ -77,7 +77,7 @@ When using global navigation and searching across your projects, the following p
 | Core lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
-| [ERD view](/docs/explore/explore-projects#explore-your-projects-erd-view) <Lifecycle status="alpha" /> | ✅ | ✅ | ✅ |
+| [ERD view](/docs/explore/explore-projects#explore-your-projects-erd-view) <Lifecycle status="Alpha" /> | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
 | [Project recommendations](/docs/explore/project-recommendations) | ❌ | ✅ | ✅ |
 | [Column-level lineage](/docs/explore/column-level-lineage) | ❌ | ✅ | ✅ |
@@ -137,7 +137,7 @@ Example of exploring a model in the project's lineage graph:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of full lineage graph" />
 
-## Explore your project's ERD view <Lifecycle status="alpha" />
+## Explore your project's ERD view <Lifecycle status="Alpha" />
 
 [Entity relationship diagrams (ERD)](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) in <Constant name="catalog" /> help you understand how models relate structurally. This includes which models can be joined and which keys connect them. ERD complements lineage by showing relationship paths for analysis, not only transformation dependencies.
 
