@@ -86,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "agent-skills-webinar",
+      id: "state-of-analytics-engineering-virtual-event",
       content:
-        "Join our free webinar on April 22 &amp; 23: Ship smarter agents with dbt Agent Skills. Learn to build production-ready AI agents on your data layer.",
+        "Join us for the 2026 State of Analytics Engineering Virtual Event on April 29 with live Q&A and giveaways!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/ship-smarter-agents-building-for-production-with-dbt-agent-skills/?utm_medium=internal&utm_source=docs&utm_campaign=_&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtua[…]ineering_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
