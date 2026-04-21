@@ -51,7 +51,7 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
 | [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
-| [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> In run logs, list-only node results can appear as `no-op` when no terminal status is produced. |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
