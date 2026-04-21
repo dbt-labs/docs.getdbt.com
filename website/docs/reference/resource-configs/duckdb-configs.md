@@ -157,7 +157,7 @@ from {{ ref('upstream_model') }}
 
 DuckLake applies partitioning using `ALTER TABLE ... SET PARTITIONED BY (...)`, and partitioning only affects new data. For first builds or full refreshes, `dbt-duckdb` creates an empty table, sets partitioning, then inserts data so the initial load is partitioned. Refer to the [DuckLake partitioning documentation](https://ducklake.select/docs/stable/duckdb/advanced_features/partitioning) for more details.
 
-<VersionBlock lastVersion="1.99">
+<VersionBlock firstVersion="1.9" lastVersion="1.99">
 
 ## Plugins
 
