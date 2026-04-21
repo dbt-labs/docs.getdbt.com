@@ -69,14 +69,14 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to DuckDB
 
-[DuckDB](https://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. There are several ways to connect dbt to DuckDB depending on where you want your data to live.
+[DuckDB](https://duckdb.org) is an embedded database, similar to SQLite, but designed for OLAP-style analytics instead of OLTP. There are several ways to connect dbt to DuckDB depending on where you want your data to live. Configure your `profiles.yml` using the examples in the following sections:
 
 - [In-memory](#in-memory)
 - [Local file](#local-file)
 - [MotherDuck](#motherduck)
 - [Attaching additional databases](#attaching-additional-databases)
 
-Configure your `profiles.yml` using the following examples. `type: duckdb` is _always_ required. Use `path` for local files or MotherDuck connection strings, and use `:memory:` or omit `path` for an in-memory database.
+Refer to the following table for the fields to use in your `profiles.yml`. `type: duckdb` is _always_ required. Use `path` for local files or MotherDuck connection strings, and use `:memory:` or omit `path` for an in-memory database.
 
 | Profile field | Description | Example |
 | --- | --- | --- |
