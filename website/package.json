@@ -57,9 +57,6 @@
     "swiper": "^8.4.3",
     "url-loader": "^4.1.1"
   },
-  "optionalDependencies": {
-    "@dbt-labs/react-dbt-dag": "0.8.7"
-  },
   "devDependencies": {
     "@docusaurus/eslint-plugin": "3.7.0",
     "@swc/core": "^1.2.174",
