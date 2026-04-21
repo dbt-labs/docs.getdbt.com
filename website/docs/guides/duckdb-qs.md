@@ -16,6 +16,7 @@ tags: ['dbt Core','Quickstart']
 
 In this quickstart guide, you'll learn how to use <Constant name="core" /> with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
+This guide covers DuckDB with <Constant name="core" /> command-line interface (CLI). For Fusion-specific DuckDB setup, refer to [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup?version=2).
 
 This guide will demonstrate how to: 
 
@@ -39,7 +40,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Prerequisites
 
-- This quickstart covers DuckDB with <Constant name="core" /> and the dbt command-line interface (CLI). For Fusion-specific DuckDB setup, refer to [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup?version=2.0).
+- When using DuckDB with <Constant name="core" />, you'll need to use the CLI. Currently, DuckDB is not supported in <Constant name="dbt_platform" />.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
