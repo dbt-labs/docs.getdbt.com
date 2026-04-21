@@ -10,6 +10,48 @@ Each monthly **Compatible** release includes functionality matching up-to-date o
 
 For more information, see [release tracks](/docs/dbt-versions/cloud-release-tracks).
 
+## April 2026
+
+Release date: April 21, 2026
+
+### dbt cloud-based platform
+
+This compatible release includes functionality from the following versions of dbt Core OSS:
+
+```
+dbt-core==1.11.8
+
+# shared interfaces
+dbt-adapters==1.22.10
+dbt-common==1.37.3
+dbt-semantic-interfaces==0.10.5
+
+# adapters
+dbt-athena==1.10.0
+dbt-bigquery==1.11.0
+dbt-databricks==1.11.7
+dbt-extractor==0.6.0
+dbt-fabric==1.9.4
+dbt-postgres==1.10.0
+dbt-redshift==1.11.0
+dbt-sl-sdk[sync]==0.13.2
+dbt-snowflake==1.11.0
+dbt-spark==1.10.0
+dbt-synapse==1.8.4
+dbt-teradata==1.10.2
+dbt-trino==1.10.1
+```
+
+Changelogs:
+- [dbt-core 1.11.8](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
+- [dbt-adapters 1.22.10](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-adapters/CHANGELOG.md)
+- [dbt-common 1.37.3](https://github.com/dbt-labs/dbt-common/blob/main/CHANGELOG.md)
+- [dbt-databricks 1.11.7](https://github.com/databricks/dbt-databricks/blob/main/CHANGELOG.md)
+- [dbt-fabric 1.9.4](https://github.com/microsoft/dbt-fabric/releases/tag/v1.9.4)
+- [dbt-synapse 1.8.4](https://github.com/microsoft/dbt-synapse/blob/v1.8.latest/CHANGELOG.md)
+- [dbt-teradata 1.10.2](https://github.com/Teradata/dbt-teradata/releases/tag/v1.10.2)
+- [dbt-trino 1.10.1](https://github.com/starburstdata/dbt-trino/blob/master/CHANGELOG.md)
+
 ## December 2025
 
 Release date: December 9, 2025
