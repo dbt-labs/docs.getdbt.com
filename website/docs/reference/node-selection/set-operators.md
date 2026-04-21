@@ -25,6 +25,8 @@ An intersection keeps only the nodes that match every selector expression; a res
 
 Use commas with no spaces between arguments to define an intersection when you pass multiple arguments to `--select` or `--exclude`. Spaces between arguments still mean a [union](#unions). dbt resolves each argument using the normal selection rules ([selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and other selection syntax), then keeps only resources that satisfy all of them. The order of comma-separated arguments does not change the final set.
 
+The following examples show intersections:
+
 Select shared upstream nodes (common ancestors of `snowplow_sessions` and `fct_orders`):
 
 ```bash
@@ -45,9 +47,13 @@ dbt run --select "marts.finance,tag:nightly"
 
 ## Combining unions and intersections
 
-You can combine unions and intersections in a single `--select` or `--exclude` value. dbt evaluates each space-delimited argument independently; within each argument, commas with no spaces create an intersection. A space between two arguments combines their results into a union, letting you apply different filtering logic to different subsets of your project in a single command.
+You can combine unions and intersections in a single `--select` or `--exclude` value to build complex selections in one command. dbt evaluates each space-delimited argument independently: commas with no spaces within an argument define an intersection, and a space between arguments combines their results as a union. Combining both operators lets you apply different filtering logic to different subsets of your project at once.
 
-For example, the following command combines two intersections: shared upstream nodes for `snowplow_sessions` and `fct_orders`, and models under `marts/finance` tagged `nightly`:
+For example, the following command contains two space-separated arguments, each defining an intersection:
+- `+snowplow_sessions,+fct_orders` selects nodes that are upstream of both `snowplow_sessions` and `fct_orders`.
+- `marts.finance,tag:nightly` selects models under the `marts/finance` path that are tagged `nightly`.
+
+The space between those arguments creates a union and combines both results into one selection:
 
 ```bash
 dbt run --select "+snowplow_sessions,+fct_orders marts.finance,tag:nightly"
