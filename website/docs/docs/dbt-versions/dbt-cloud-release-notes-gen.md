@@ -288,7 +288,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Studio IDE
 
 - **Correct defer behavior when using environment ID**: Fixes a bug where defer was not applied when a `defer_env_id` was set directly, rather than through the default deferral environment setting. Previews and compiles now correctly defer when you specify a defer environment ID.
-  <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/886b8960080bad1aaf3a7ec4d3a53b3f4c140827...41e3d84796b6159e0a720fb85ca7f8bfb3ae3cd1` -->
+  <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/886b8960080bad1aaf3a7ec4d3a53b3f4c140827...41e3d84796b6159e0a720fb85ca7f8bfb3ae3cd1` ❌-->
 
 - **Prevent stale file content in the editor**: Updates the file cache-control header from `must-revalidate` to `no-cache`, ensuring the editor always fetches the latest version of a file rather than serving a cached copy.
   <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/886b8960080bad1aaf3a7ec4d3a53b3f4c140827...41e3d84796b6159e0a720fb85ca7f8bfb3ae3cd1` -->
