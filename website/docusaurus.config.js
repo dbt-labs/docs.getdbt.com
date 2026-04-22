@@ -52,15 +52,17 @@ var siteSettings = {
   headTags: [
     // Load Optimizely synchronously (no async/defer) so experiments apply
     // before page content renders, preventing a flash of unexperimented content.
-    ...(OPTIMIZELY_ID ? [
-      {
-        tagName: 'script',
-        attributes: {
-          src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
-          type: 'text/javascript',
-        },
-      }
-    ] : []),
+    ...(OPTIMIZELY_ID
+      ? [
+          {
+            tagName: "script",
+            attributes: {
+              src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
+              type: "text/javascript",
+            },
+          },
+        ]
+      : []),
   ],
   themeConfig: {
     docs: {
@@ -193,7 +195,7 @@ var siteSettings = {
             },
             {
               label: "Community forum",
-              to: "/community/forum",
+              href: "https://discourse.getdbt.com/",
             },
             {
               label: "Webinars",
@@ -279,7 +281,7 @@ var siteSettings = {
               <a href='/community/join'>Join the Community</a>
               <a href="/community/contribute">Become a Contributor</a>
               <a href="https://hub.getdbt.com/" target="_blank">Open Source dbt Packages</a>
-              <a href="/community/forum">Community Forum</a>
+              <a href="https://discourse.getdbt.com/" target="_blank" rel="noreferrer noopener">Community Forum</a>
             </div>
             <div class="footer-grid-item">
               <h5 class="heading-5">Support</h5>
@@ -432,7 +434,9 @@ var siteSettings = {
                     {
                       id: "connect-data-platform",
                       name: "Connect data platform",
-                      routes: [{ route: "/docs/cloud/connect-data-platform/**" }],
+                      routes: [
+                        { route: "/docs/cloud/connect-data-platform/**" },
+                      ],
                     },
                     {
                       id: "manage-access",
@@ -462,9 +466,7 @@ var siteSettings = {
                     {
                       id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
-                      routes: [
-                        { route: "/docs/fusion/about-fusion-install" },
-                      ],
+                      routes: [{ route: "/docs/fusion/about-fusion-install" }],
                     },
                     {
                       id: "core-connect-data-platform",
@@ -519,7 +521,7 @@ var siteSettings = {
     "/js/onetrust.js",
     "/js/hide-forethought.js",
     {
-      src: "https://www.google.com/recaptcha/api.js?render=6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
+      src: "https://www.google.com/recaptcha/api.js?render=6LdcbMEsAAAAAOMzfSqbwkS5beDLJBxqIedWFz6M",
       async: true,
       defer: true,
     },
