@@ -146,10 +146,6 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
-    page: "docs/local/connect-data-platform/duckdb-setup",
-    lastVersion: "1.99",
-  },
-  {
     page: "docs/local/connect-data-platform/exasol-setup",
     lastVersion: "1.99",
   },
