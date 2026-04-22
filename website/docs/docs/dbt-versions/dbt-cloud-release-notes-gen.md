@@ -86,10 +86,10 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
 
 - **Debug on Fusion menu**: The single "Run once on Fusion" button on the job details page and job list has been replaced with a "Debug on Fusion" menu that offers "Debug in Studio," "Run once on Fusion," and (when dbt Copilot is enabled) "Debug in Studio with Copilot" options.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 - **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same "Debug on Fusion" menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 - **Redesigned Fusion run success banner**: After a successful Fusion run, the banner now highlights that the run succeeded on Fusion, explains how to mark the job as eligible, and includes a link back to jobs with unknown eligibility. The override call to action is only shown when all eligibility conditions are met.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
