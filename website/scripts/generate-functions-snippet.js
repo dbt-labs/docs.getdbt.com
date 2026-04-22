@@ -18,8 +18,8 @@ const SNIPPETS_DIR = path.join(__dirname, '..', 'snippets');
 
 function buildTable(functions) {
   const header = [
-    '| <div style={{width:"120px"}}>Function</div> | Category | L2 typechecking | L3 local exec | Availability | Docs |',
-    '|------|----------|:---------------:|:-------------:|--------------|------|',
+    '| <div style={{width:"120px"}}>Function</div> | Category | Fusion typechecking | Availability | Docs |',
+    '|------|----------|:-------------------:|--------------|------|',
   ].join('\n');
 
   const escape = (s) => s
@@ -32,12 +32,11 @@ function buildTable(functions) {
 
   const rows = functions.map((f) => {
     const l2 = f.fusion_typecheck ? '✓' : '—';
-    const l3 = f.fusion_local_exec ? '✓' : '—';
     const safeName = escape(f.name);
     // Wrap in a constrained span so the column stays narrow regardless of table-layout.
     // title= shows the full name on hover when it's truncated.
     const nameCell = `<span style={{display:"inline-block",maxWidth:"240px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",verticalAlign:"middle"}} title="${safeName}">${safeName}</span>`;
-    return `| ${nameCell} | ${escape(f.category)} | ${l2} | ${l3} | ${f.preview_status} | [docs](${f.docs_url}) |`;
+    return `| ${nameCell} | ${escape(f.category)} | ${l2} | ${f.preview_status} | [docs](${f.docs_url}) |`;
   });
 
   return [header, ...rows].join('\n');

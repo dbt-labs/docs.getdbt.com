@@ -7,12 +7,9 @@ tags: ['Snowflake', 'dbt Fusion']
 
 import SnowflakeFunctionsTable from '/snippets/_functions-table-snowflake.md';
 
-dbt Fusion performs static analysis on your SQL at two levels:
+When `static_analysis: strict` is enabled, dbt Fusion validates that function arguments match the expected types directly in the CLI and VS Code extension.
 
-- **L2 — typechecking (`static_analysis: strict`)** &mdash; validates that function arguments match the expected types. Available in the CLI and VS Code extension.
-- **L3 — local execution (Enterprise)** &mdash; runs the function locally to return the exact results Snowflake would produce, without a warehouse connection.
-
-The table below shows every Snowflake built-in SQL function and its Fusion support level. Use the search box and filter dropdowns to narrow by function name, category, or support status.
+The table below shows every Snowflake built-in SQL function and whether Fusion supports typechecking for it. Use the search box and filter dropdowns to narrow by function name, category, or support status.
 
 :::info Refreshed daily
 This table is updated automatically each day by scraping [docs.snowflake.com](https://docs.snowflake.com/en/sql-reference/functions-all) and cross-referencing it with the Fusion function support list. If you notice a discrepancy, [open an issue](https://github.com/dbt-labs/dbt-fusion/issues/new?labels=SQL_understanding).
