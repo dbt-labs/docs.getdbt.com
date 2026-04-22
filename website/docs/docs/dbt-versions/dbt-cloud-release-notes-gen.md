@@ -134,9 +134,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt platform
 
-- **New URL shown in access URL migration banner**: The account URL migration notification now displays your new access URL (for example, `abc123.acme.dbt.com`) inline instead of linking to account settings, and includes a link to the migration guide.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
-
 - **`account:read` scope on OAuth consent page**: The OAuth consent page now displays a "View account information" scope option, which grants view-only access to account details including project and environment information.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
