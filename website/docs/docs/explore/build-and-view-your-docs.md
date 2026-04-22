@@ -15,6 +15,8 @@ This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Consta
 
 ## Set up a documentation job
 
+This section will not be required for Fusion jobs moving forward. Manually adding a job step that runs `dbt docs generate` and/or using the checkbox in **Execution Settings** will not be necessary as execution commands (`run`, `build`, `seed`, `snapshot`) in platform Fusion jobs will trigger metadata generation automatically.
+
 <Constant name="catalog" /> uses the [metadata](/docs/explore/explore-projects#generate-metadata) generated after each job run in the production or staging environment, ensuring it always has the latest project results. To view richer metadata, you can set up documentation for a job in <Constant name="dbt" /> when you edit your job settings or create a new job.
 
 Configure the job to [generate metadata](/docs/explore/explore-projects#generate-metadata) when it runs. If you want to view column and statistics for models, sources, and snapshots in <Constant name="catalog" />, then this step is necessary.
