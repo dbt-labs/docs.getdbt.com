@@ -239,7 +239,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
 
 - **PrivateLink endpoint pending status**: A new `pending` connectivity status is available for PrivateLink endpoints, in addition to the existing `success` and `failed` states.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
 - **Feature flags use production environment for all single-tenant deployments**: LaunchDarkly feature flags now consistently use the `production` environment key for all production single-tenant deployments. Previously, single-tenant production deployments incorrectly used the `pr` environment, which could result in feature flag values not matching expectations.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
