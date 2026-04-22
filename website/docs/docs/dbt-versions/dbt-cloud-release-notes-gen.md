@@ -37,7 +37,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...`, `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` ❌-->
 
 - **Fusion fallback mode for accounts**: Accounts can now be set to Fusion fallback mode via the Accounts API. When enabled, environments using the `fusion-extended` track automatically fall back to the `fusion-fallback` track. This setting is restricted to business critical accounts with the Fusion release tracks feature flag enabled. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **Automatic catalog generation for Fusion build commands**: When enabled, dbt Fusion build commands (`dbt run`, `dbt build`, and similar) automatically append `--write-catalog` to generate catalog metadata as part of the run. The separate `docs generate` step becomes a no-op for Fusion runs when this flag is active. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` -->
