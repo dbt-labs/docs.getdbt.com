@@ -134,7 +134,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Orchestration and Run Status
 
 - **Project-level memory override for runs**: Runs now use a project-level pod memory request (`pod_memory_request_mebibytes`) when set, falling back to the account-level setting. This allows finer-grained memory allocation per project for large or memory-intensive workloads.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **Fusion eligibility toggle replaces dropdown filter**: The jobs list Fusion eligibility dropdown filter has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
