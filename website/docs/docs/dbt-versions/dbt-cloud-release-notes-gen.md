@@ -58,7 +58,7 @@ Release notes are grouped by date for single-tenant environments.
 ### dbt platform
 
 - **`account_identifier` in registration response**: The registration endpoint now returns the `account_identifier` field alongside `account_id` and `account_url` in the response payload, making it easier to construct account-specific URLs after registration.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 ---
 
