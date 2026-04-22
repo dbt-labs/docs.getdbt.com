@@ -20,47 +20,20 @@ Release notes are grouped by date for single-tenant environments.
 
 ## April 22, 2026
 
-```markdown
 ## New
 
-### APIs, Identity, and Administration
-
-- **OAuth client registration API**: Accounts can now register manual OAuth clients (public clients using Proof Key for Code Exchange (PKCE)) via the new `oauth-manual-registrations/` and `oauth-client-registrations/<pk>/` endpoints. Use these endpoints to list, create, retrieve, and delete OAuth server client registrations scoped to your account.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
-### Orchestration and Run Status
-
-- **Hybrid job type**: A new `hybrid` job type is available for jobs that are triggered and executed externally, outside of the dbt platform. Hybrid jobs cannot have schedules, triggers, execute steps, deferral, or cost optimization features, and can only be created in hybrid projects.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
-- **Fusion release tracks**: Three new dbt version release tracks — `fusion-fallback`, `fusion-extended`, and `fusion-compatible` — are available for accounts on eligible plans. These tracks follow the dbt Fusion engine release cadence and are available to enterprise and starter plan accounts. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...`, `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` ❌-->
-
-- **Fusion fallback mode for accounts**: Accounts can now be set to Fusion fallback mode via the Accounts API. When enabled, environments using the `fusion-extended` track automatically fall back to the `fusion-fallback` track. This setting is restricted to business critical accounts with the Fusion release tracks feature flag enabled. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
+### Orchestration and run status
 
 - **Automatic catalog generation for Fusion build commands**: When enabled, dbt Fusion build commands (`dbt run`, `dbt build`, and similar) automatically append `--write-catalog` to generate catalog metadata as part of the run. The separate `docs generate` step becomes a no-op for Fusion runs when this flag is active. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` -->
-
-### Webhooks
-
-- **Non-blocking webhook test events**: The webhook subscription test endpoint now returns an `event_id` immediately rather than waiting for a delivery result. Use the webhook event receipt endpoint with the returned `event_id` to check delivery status asynchronously.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 ### Catalog
 
 - **Health and run status filters in catalog search**: The catalog search sidebar now includes Health and Last Run Status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (success, error, skipped, reused).
   <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
 
-- **Tag search field**: Tag is now a searchable field in the advanced search panel. You can filter results by tag matches, and matching tags appear as highlighted pills in search results.
+- **Tag search field**: Tag is now a searchable field in the advanced search panel. You can filter results by tag matches
   <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` -->
-
-### dbt platform
-
-- **`account_identifier` in registration response**: The registration endpoint now returns the `account_identifier` field alongside `account_id` and `account_url` in the response payload, making it easier to construct account-specific URLs after registration.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
----
 
 ## Enhancements
 
@@ -68,9 +41,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Anthropic Claude model support**: dbt Copilot and agents now support Anthropic Claude models (`claude-sonnet-4-6` and `claude-haiku-4-5`) as Bring Your Own Key (BYOK) providers. You can configure an Anthropic API key the same way you configure OpenAI keys, and the platform automatically routes requests to the correct provider.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Anthropic connection verification**: The connection verification endpoint now accepts `anthropic` as a key type, so you can validate an Anthropic API key directly from the dbt platform before using it.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` ❌-->
 
 - **Multi-project Model Context Protocol support**: The remote Model Context Protocol (MCP) server now automatically serves multi-project Semantic Layer tooling to accounts with more than one active project, and single-project tooling to all others. Accounts using dbt platform JWT tokens with the multi-project feature flag enabled benefit from this automatically. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
@@ -110,17 +80,8 @@ Release notes are grouped by date for single-tenant environments.
 - **More reliable IDE session startup for single-tenant**: Studio IDE session startup now correctly scopes environment and develop request lookups to the current account. This resolves potential cross-account mismatches on single-tenant deployments where the account cannot always be inferred from the subdomain.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
 
-- **System-theme support always enabled**: The theme provider now always enables system preference detection, so users with a system-based color scheme no longer need to set a specific preference to activate it.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
-
-- **Faster theme correction on load**: Studio IDE now corrects an incorrect color theme before the editor becomes visible, eliminating the flash of wrong color that could occur while preferences were loading.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
-
 - **More reliable dark mode on initial load**: Studio IDE caches your resolved color preference in local storage and applies it immediately on the next page load, before the user-preferences API responds. This prevents a flash of incorrect theme during the loading window.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
-
-- **Clearer LSP connection status**: The server status badge now shows "Connecting" while the LSP connection is being established in Fusion environments, so you can distinguish between a connecting and an errored state at a glance.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
 
 - **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, Commands or Lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ✅-->
@@ -128,13 +89,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Compile button after deprecation autofix in Fusion**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ✅-->
 
-- **Deferred environment ID for command execution**: When you specify a deferral environment, Studio IDE now also sends the `defer` options object alongside `defer_env_id`, ensuring deferral is applied correctly on the server side.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
-
-### Orchestration and Run Status
-
-- **Project-level memory override for runs**: Runs now use a project-level pod memory request (`pod_memory_request_mebibytes`) when set, falling back to the account-level setting. This allows finer-grained memory allocation per project for large or memory-intensive workloads.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
+### Orchestration and run status
 
 - **Fusion eligibility toggle replaces dropdown filter**: The jobs list Fusion eligibility dropdown filter has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
@@ -151,20 +106,11 @@ Release notes are grouped by date for single-tenant environments.
 - **Redesigned Fusion run success banner**: After a successful Fusion run, the banner now highlights that the run succeeded on Fusion, explains how to mark the job as eligible, and includes a link back to jobs with unknown eligibility. The override call to action is only shown when all eligibility conditions are met.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
 
-- **Fusion error banner inside run step drawer**: The Fusion run error banner now also appears inside the run step drawer when a Fusion run fails, so you can access debug options without leaving the step detail view.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
-
-- **Fusion release track versions gated per account**: Fusion release track versions (`fusion-compatible`, `fusion-extended`, `fusion-fallback`) in environment and job version dropdowns are now shown or hidden based on per-account feature flags rather than a single global flag.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
-
 - **Model execution notifications for dbt Fusion runs**: dbt Fusion runs now process group ownership metadata from OpenTelemetry (OTel) logs and publish model execution notifications for grouped models and tests. If your project uses dbt groups with owner email addresses defined, you will now receive run notifications for those nodes when running with dbt Fusion.
   <!-- PRs: `https://github.com/dbt-labs/orc-cancel/...`, `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
 
 - **Per-account control over Fusion system updates**: A new feature flag (`ORC_ENABLE_FUSION_SYSTEM_UPDATES`) allows the `fs system update` step to be disabled on a per-account basis. When disabled, runs use the binary pre-installed in the dispatch image instead of fetching the latest release at run time. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
-
-- **More granular Fusion release track routing**: The orchestrator now routes each Fusion run to the correct pre-installed binary (`fusion-compatible`, `fusion-extended`, or `fusion-fallback`) based on the dbt version selected for the run. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-dispatch/...`, `https://github.com/dbt-labs/orc-run-ingest/...` ❌-->
 
 - **CADI account-scoped run log paths**: Run step logs are now stored under account-identifier-scoped object storage paths for accounts with account-identifier pathing enabled, improving log isolation. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/orc-run-ingest/...` -->
@@ -172,32 +118,21 @@ Release notes are grouped by date for single-tenant environments.
 ### Webhooks
 
 - **Webhook test flow uses receipt polling**: Testing a webhook subscription now triggers a test event and polls for the delivery receipt, showing the actual HTTP status code and error from the endpoint response. A 60-second timeout is applied, with a clear timeout message if the endpoint does not respond in time.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 - **Webhook receipt endpoint returns 404 for pending events**: The webhook event receipt endpoint now returns a `404` response when a delivery record has not yet been written (for example, when the notification system has not yet processed the event), rather than returning an incomplete record.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
 - **Corrected status code for timed-out webhook deliveries**: Webhook delivery history records now show `504` as the HTTP status code when a delivery timed out (previously stored as `0`), improving accuracy in the delivery history view.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
 - **Webhook event history note always visible**: The note that event history is limited to the past 7 days now appears on the webhook events history page unconditionally.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 ### Integrations
 
 - **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt Cloud bot invited for notifications to be delivered. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...`, `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
-
-- **Multi-domain support for Google Workspace Single Sign-On**: Google Workspace (G Suite) Single Sign-On (SSO) connections now support comma-separated values in the domain field. The first domain becomes the primary, and additional domains are registered as `domain_aliases` on the Auth0 connection, enabling SSO from multiple email domains.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
-### APIs, Identity, and Administration
-
-- **SSO provider slug synced to Account Discovery**: Account Discovery now receives the SSO auth provider slug for each account, enabling downstream consumers to direct users to the correct SSO login. Changes to the SSO configuration also trigger a re-sync.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
-- **`GetPermissionedResources` gRPC endpoint re-enabled**: The `GetPermissionedResources` endpoint on the AuthZ gRPC service is now fully implemented and returns project or account resources based on the caller's permissions. Previously this endpoint returned `UNIMPLEMENTED`.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...`, `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
 ### Catalog
 
@@ -208,10 +143,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
 
 - **Clearer ERD relationship details panel**: The relationship details side panel now shows a "Relationship Details" title for confirmed relationships (relationship tests and Semantic Layer joins) and reserves the "Review Relationship" title and approve/dismiss actions for inferred relationships only.
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` -->
-
-- **Fusion jobs auto-publish Catalog metadata**: When enabled, a banner warns that `dbt docs generate`-only jobs are no longer necessary because Fusion jobs publish Catalog metadata automatically during build and run. Job settings also replace the "Generate docs on run" checkbox with an informational section for Fusion environments. Please contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
 
 ### Insights
 
@@ -223,17 +155,8 @@ Release notes are grouped by date for single-tenant environments.
 - **New URL shown in access URL migration banner**: The account URL migration notification now displays your new access URL (for example, `abc123.acme.dbt.com`) inline instead of linking to account settings, and includes a link to the migration guide.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
 
-- **Account identifier included in VS Code registration redirect**: The VS Code registration flow now passes the `account_identifier` parameter in the redirect URL when available, enabling more precise account resolution in the extension.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
-
 - **`account:read` scope on OAuth consent page**: The OAuth consent page now displays a "View account information" scope option, which grants view-only access to account details including project and environment information.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
-
-- **Warn notification tooltip clarified**: The tooltip on the Warns column in notification settings now clarifies that a job showing "success" in the interface can still trigger a warn notification if test or freshness steps logged warnings.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
-
-- **Private endpoint dropdown shows cloud resource ID**: The reuse interface endpoint modal now displays each endpoint's cloud resource ID (for example, `vpce-abc123`) in the dropdown label so you can identify the correct endpoint before reusing it.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **New environment creation defaults to production only after data loads**: When creating a new deployment environment, the form now waits until the production environment query completes before applying any default, preventing a brief incorrect default that prompted you to replace an existing production environment.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
@@ -241,36 +164,8 @@ Release notes are grouped by date for single-tenant environments.
 - **PrivateLink endpoint pending status**: A new `pending` connectivity status is available for PrivateLink endpoints, in addition to the existing `success` and `failed` states.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
-- **Feature flags use production environment for all single-tenant deployments**: LaunchDarkly feature flags now consistently use the `production` environment key for all production single-tenant deployments. Previously, single-tenant production deployments incorrectly used the `pr` environment, which could result in feature flag values not matching expectations.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
 - **`fusion_readiness_read` permission added to Member role**: The Member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
-
-### Deployment and Configuration
-
-- **Reduced ingestion lock hold time**: Artifact downloads can now occur before acquiring the ingestion lock, shortening the window during which concurrent ingestion attempts are deferred. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/codex-workflows/...` -->
-
-- **Improved Redshift cost insights throughput**: The Redshift cost query now uses a JSON-based approach instead of `UNION ALL SELECT` rows when building query metadata. This keeps query plan size constant regardless of batch size, eliminating timeouts during Redshift's query preparation phase. The per-query batch size also increases from 1,500 to 5,000 rows.
-  <!-- PRs: `https://github.com/dbt-labs/codex-workflows/...` -->
-
-- **More complete account migration for run history**: Account migrations now export all run history and terminal run steps for an account, regardless of environment, job, or time window filters. Previously, run history and run steps could be excluded by migration filters, resulting in incomplete data at the destination.
-  <!-- PRs: `https://github.com/dbt-labs/codex-workflows/...` -->
-
-- **User credentials soft-deleted on development environment removal**: When a development environment is deleted, associated user credentials are now soft-deleted automatically. This unblocks the uniqueness constraint so users can create new credentials after a replacement development environment is configured.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
-- **Azure DevOps private packages scoped to org level**: The Azure DevOps token scope for private package resolution is now at the organization level rather than the project level, matching the actual scope of the Azure AD service principal token. The wildcard URL pattern is updated to `{org}/{project}/_git/{repo}` to support repositories across projects in the same org.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
-
-- **Faster run history queries**: New database indexes on the `run_history` and `run_steps` tables support filtering by environment, job, dbt version, and terminal run step status. You should see faster load times for run history views filtered by environment or job.
-  <!-- PRs: `https://github.com/dbt-labs/codex-workflows/...` -->
-
-- **Optional blocking of outbound GitHub requests from worker pods**: A new `block_github_requests` configuration option lets operators redirect GitHub domains to an unroutable address within worker pods, preventing direct access to GitHub from dbt invocations. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli-server/...` -->
-
----
 
 ## Fixes
 
@@ -287,15 +182,8 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Studio IDE
 
-- **Correct defer behavior when using environment ID**: Fixes a bug where defer was not applied when a `defer_env_id` was set directly, rather than through the default deferral environment setting. Previews and compiles now correctly defer when you specify a defer environment ID.
-  <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/886b8960080bad1aaf3a7ec4d3a53b3f4c140827...41e3d84796b6159e0a720fb85ca7f8bfb3ae3cd1` ❌-->
-
 - **Prevent stale file content in the editor**: Updates the file cache-control header from `must-revalidate` to `no-cache`, ensuring the editor always fetches the latest version of a file rather than serving a cached copy.
   <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/886b8960080bad1aaf3a7ec4d3a53b3f4c140827...41e3d84796b6159e0a720fb85ca7f8bfb3ae3cd1` -->
-
-- **Stale loading indicator on connection test**: The server status popover no longer shows a loading spinner when no connection test has been run yet. This prevents the status badge from incorrectly appearing as loading on first open.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea ❌
-
 
 ## April 15, 2026
 
