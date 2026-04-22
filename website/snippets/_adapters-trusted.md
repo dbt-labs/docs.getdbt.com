@@ -43,6 +43,12 @@
     icon="databricks"/>
 
 <Card
+    title="DuckDB"
+    body="<ul><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=1'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=2'>Install with dbt Fusion </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-duckdb><img src=https://badge.fury.io/py/dbt-duckdb.svg/></a>"
+    pills='["dbt Core", "Fusion"]'
+    icon="duckdb-seeklogo"/>
+
+<Card
     title="Dremio"
     body="<ul><li><a href='/docs/local/connect-data-platform/dremio-setup'>Install with dbt Core  </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/></a>"
     pills='["dbt Core"]'
