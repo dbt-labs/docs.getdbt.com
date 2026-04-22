@@ -164,7 +164,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
 
 - **More granular Fusion release track routing**: The orchestrator now routes each Fusion run to the correct pre-installed binary (`fusion-compatible`, `fusion-extended`, or `fusion-fallback`) based on the dbt version selected for the run. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-dispatch/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-dispatch/...`, `https://github.com/dbt-labs/orc-run-ingest/...` ❌-->
 
 - **CADI account-scoped run log paths**: Run step logs are now stored under account-identifier-scoped object storage paths for accounts with account-identifier pathing enabled, improving log isolation. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/orc-run-ingest/...` -->
