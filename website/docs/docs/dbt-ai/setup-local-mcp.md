@@ -292,7 +292,7 @@ DBT_USER_ID=https://cloud.getdbt.com/settings/profile
 ```
 :::
 
-**Multi-cell and static subdomain configuration example:**
+**Subdomain prefix configuration example:**
 
 ✅ **Correct configuration:**
 ```bash
@@ -300,7 +300,7 @@ DBT_HOST=abc123.us1.dbt.com  # Use the full hostname including the prefix
 DBT_ACCOUNT_ID=12345          # Required when using PAT-based auth
 ```
 
-You don't need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`. This applies to both multi-cell accounts and multi-tenant accounts with a static subdomain.
+You don't need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`.
 
 ## dbt CLI settings
 
