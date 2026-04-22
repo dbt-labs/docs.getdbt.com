@@ -158,6 +158,7 @@ const sidebarSettings = {
                         "docs/cloud/manage-access/set-up-sso-okta",
                         "docs/cloud/manage-access/set-up-sso-google-workspace",
                         "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
+                        "docs/cloud/manage-access/sso-faq",
                       ],
                     },
                     {
@@ -172,6 +173,7 @@ const sidebarSettings = {
                         "docs/cloud/manage-access/scim-entra-id",
                         "docs/cloud/manage-access/scim-okta",
                         "docs/cloud/manage-access/scim-manage-user-licenses",
+                        "docs/cloud/manage-access/scim-faq",
                       ],
                     },
                     {
@@ -1463,6 +1465,7 @@ const sidebarSettings = {
             "reference/resource-configs/volatility",
             "reference/resource-configs/runtime-version",
             "reference/resource-configs/entry-point",
+            "reference/resource-configs/packages",
             "reference/resource-properties/returns",
             "reference/resource-properties/function-arguments",
           ],
