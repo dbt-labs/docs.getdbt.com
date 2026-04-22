@@ -227,7 +227,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **`account:read` scope on OAuth consent page**: The OAuth consent page now displays a "View account information" scope option, which grants view-only access to account details including project and environment information.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 - **Warn notification tooltip clarified**: The tooltip on the Warns column in notification settings now clarifies that a job showing "success" in the interface can still trigger a warn notification if test or freshness steps logged warnings.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
