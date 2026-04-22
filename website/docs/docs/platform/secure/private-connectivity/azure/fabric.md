@@ -118,12 +118,6 @@ Once dbt Support confirms the private endpoint has been created on our side:
 4. Click **Approve**.
 5. Confirm with dbt Support that the connection has been approved so they can validate it and make it available in <Constant name="dbt" />.
 
-:::note Use the private SQL hostname
-After the connection is approved, dbt Support will provide a **private SQL hostname** for your Fabric warehouse. This is a hash-based hostname (for example, `5xxoty...k3ri.z18.datawarehouse.fabric.microsoft.com`) that routes SQL traffic through the private endpoint.
-
-**Do not use the SQL connection string shown in the Fabric portal.** The default hostname displayed there (formatted as `<warehouse-guid>.datawarehouse.fabric.microsoft.com`) resolves to a public IP address and will not route through the private endpoint. Only the hash-based hostname provided by dbt Support is routable over Private Link.
-:::
-
 ## Create connection in dbt
 
 Once dbt Support confirms the endpoint is available, configure the connection in <Constant name="dbt" />:
