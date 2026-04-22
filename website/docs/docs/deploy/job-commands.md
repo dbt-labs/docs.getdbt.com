@@ -36,7 +36,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/ex
 
 **Generate docs on run** checkbox &mdash; <Constant name="dbt" /> executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. For jobs running on the <Constant name="fusion_engine" />, manually configuring `dbt docs generate` using the checkbox will no longer be required in the future. Read [Set up documentation job](/docs/explore/build-and-view-your-docs) for more information.
 
-**Run source freshness** checkbox** &mdash; <Constant name="dbt" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more information.
+**Run source freshness** checkbox &mdash; <Constant name="dbt" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more information.
 
 ### Command list
 
