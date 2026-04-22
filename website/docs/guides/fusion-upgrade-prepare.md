@@ -421,7 +421,7 @@ The readiness panel shows how many jobs are ineligible for <Constant name="fusio
    - From the main menu, go to **Orchestration** → **Jobs**.
    - From the readiness panel, click **Review jobs**.
    <Lightbox src="/img/fusion/review-jobs.png" width="60%" title="Shortcut to review your jobs from the readiness panel"/>
-2. Find the <Constant name="fusion" /> eligibility column to the right of your jobs. Click **Review job** next to any job that is ineligible or has an unknown eligibility status.
+2. Find the <Constant name="fusion" /> eligibility icon to the right of your jobs. Click **Review job** for  any job that is ineligible or has an unknown eligibility status.
    <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them Fusion eligible."/>
 3. Click **Debug on Fusion** and choose one of the following:
    - [Debug in Studio](#debug-in-studio)
