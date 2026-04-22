@@ -417,6 +417,10 @@ Use the <Constant name="fusion" /> readiness panel to validate your jobs against
 
 The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status:
 
+:::note
+If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
+:::
+
 1. Open the jobs list using either path:
    - From the main menu, go to **Orchestration** → **Jobs**.
    - From the readiness panel, click **Review jobs**.
@@ -428,9 +432,6 @@ The readiness panel shows how many jobs are ineligible for <Constant name="fusio
    - [Debug in Studio with Copilot](#debug-in-studio-with-copilot)
    - [Run once on Fusion](#run-once-on-fusion)
 
-:::note
-If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
-:::
 
 #### Debug in Studio
 
@@ -444,8 +445,9 @@ In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your de
 
 3. Review the warnings or errors in the **Problems** tab.
 4. Fix the issues directly or run the [autofix tool](/docs/cloud/studio-ide/autofix-deprecations).
-5. When the project runs with no warnings or errors, publish your changes.
-6. After you merge the changes, wait for the job to run again or run it manually.
+5. Provide Copilot with any additional information it requests and provide guidance on the preferred steps and actions it should take. 
+6. When the project runs with no warnings or errors, commit and publish your changes.
+7. After you merge the changes, wait for the job to run again or run it manually.
 
 #### Debug in Studio with Copilot <Lifecycle status="beta" size="80%" />
 
