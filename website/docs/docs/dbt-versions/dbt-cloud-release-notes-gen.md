@@ -111,7 +111,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
 
 - **System-theme support always enabled**: The theme provider now always enables system preference detection, so users with a system-based color scheme no longer need to set a specific preference to activate it.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
+  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
 
 - **Faster theme correction on load**: Studio IDE now corrects an incorrect color theme before the editor becomes visible, eliminating the flash of wrong color that could occur while preferences were loading.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
