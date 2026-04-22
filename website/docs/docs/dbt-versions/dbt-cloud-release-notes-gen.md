@@ -189,7 +189,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...`, `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
 
 - **Multi-domain support for Google Workspace Single Sign-On**: Google Workspace (G Suite) Single Sign-On (SSO) connections now support comma-separated values in the domain field. The first domain becomes the primary, and additional domains are registered as `domain_aliases` on the Auth0 connection, enabling SSO from multiple email domains.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 ### APIs, Identity, and Administration
 
