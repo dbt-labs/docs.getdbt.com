@@ -116,17 +116,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt Cloud bot invited for notifications to be delivered. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...`, `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
-### Catalog
-
-- **Clickable relationship edges in the ERD view**: All edge types in the Entity Relationship Diagram (ERD) view now open a details panel when clicked, not just inferred edges. Edges also display a hover tooltip showing the relationship source and confidence level.
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` 🤔-->
-
-- **Improved ERD overlay controls**: The ERD overlay controls panel now shows tooltips explaining each relationship source, disables toggles when no edges of that type exist, and displays a summary count of models and relationships. The layout direction has been updated to left-to-right for better readability.
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` 🤔-->
-
-- **Clearer ERD relationship details panel**: The relationship details side panel now shows a "Relationship Details" title for confirmed relationships (relationship tests and Semantic Layer joins) and reserves the "Review Relationship" title and approve/dismiss actions for inferred relationships only.
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` 🤔-->
-
 ### Insights
 
 - **Faster model build count queries**: Insights now uses pre-computed build counts for model success and reuse metrics, significantly reducing query time for model builds daily counts and account environment insights views. You should see more responsive load times and fewer timeouts when viewing model build history.
