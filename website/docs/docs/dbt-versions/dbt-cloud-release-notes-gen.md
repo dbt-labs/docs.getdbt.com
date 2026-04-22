@@ -42,22 +42,10 @@ Release notes are grouped by date for single-tenant environments.
 - **Anthropic Claude model support**: dbt Copilot and agents now support Anthropic Claude models (`claude-sonnet-4-6` and `claude-haiku-4-5`) as Bring Your Own Key (BYOK) providers. You can configure an Anthropic API key the same way you configure OpenAI keys, and the platform automatically routes requests to the correct provider.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
 
-- **Multi-project Model Context Protocol support**: The remote Model Context Protocol (MCP) server now automatically serves multi-project Semantic Layer tooling to accounts with more than one active project, and single-project tooling to all others. Accounts using dbt platform JWT tokens with the multi-project feature flag enabled benefit from this automatically. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Admin API tools in the dbt Copilot agent**: The dbt Copilot agent in Studio IDE can now surface admin API tools — including `list_jobs`, `list_projects`, `trigger_job_run`, `cancel_job_run`, `retry_job_run`, and related run detail tools — when the feature flag is enabled. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Pagination for conversation history**: The list conversations endpoint now accepts `limit` and `offset` query parameters and includes those values in the response. This lets you page through conversation history for accounts with many saved conversations.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
 - **More resilient Semantic Layer metrics listing**: The `list_metrics` tool now includes dimension and entity names inline when the total metric count is below the configured threshold (default: 10), reducing the number of follow-up tool calls needed to answer analytical questions.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
 
 - **Improved agent instructions for dbt syntax**: The Studio IDE agent prompt now includes clearer guidance on modern dbt syntax (`data_tests:` instead of `tests:`, `--select` instead of `--models`), Fusion-specific YAML rules, better scope judgment for analytical questions, and smarter skill placement when no file location is specified.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Workspace root listing for `list_directory`**: Calling `list_directory` with no path, an empty string, or whitespace now lists the workspace root instead of raising an error. This makes the tool more convenient when exploring a project from the top level.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
 
 - **Fusion upgrade Copilot handoff includes run context**: When selecting "Debug in Studio with Copilot" from the Debug on Fusion menu, Copilot now receives the run ID, job ID, environment ID, and branch name as context so it can provide more targeted upgrade assistance.
@@ -80,7 +68,7 @@ Release notes are grouped by date for single-tenant environments.
 - **More reliable IDE session startup for single-tenant**: Studio IDE session startup now correctly scopes environment and develop request lookups to the current account. This resolves potential cross-account mismatches on single-tenant deployments where the account cannot always be inferred from the subdomain.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
 
-- **More reliable dark mode on initial load**: Studio IDE caches your resolved color preference in local storage and applies it immediately on the next page load, before the user-preferences API responds. This prevents a flash of incorrect theme during the loading window.
+- **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to aid in incorrect theming when user-preferences is slow to respond.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
 
 - **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, Commands or Lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
@@ -108,12 +96,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Model execution notifications for dbt Fusion runs**: dbt Fusion runs now process group ownership metadata from OpenTelemetry (OTel) logs and publish model execution notifications for grouped models and tests. If your project uses dbt groups with owner email addresses defined, you will now receive run notifications for those nodes when running with dbt Fusion.
   <!-- PRs: `https://github.com/dbt-labs/orc-cancel/...`, `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
-
-- **Per-account control over Fusion system updates**: A new feature flag (`ORC_ENABLE_FUSION_SYSTEM_UPDATES`) allows the `fs system update` step to be disabled on a per-account basis. When disabled, runs use the binary pre-installed in the dispatch image instead of fetching the latest release at run time. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
-
-- **CADI account-scoped run log paths**: Run step logs are now stored under account-identifier-scoped object storage paths for accounts with account-identifier pathing enabled, improving log isolation. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/orc-run-ingest/...` -->
 
 ### Webhooks
 
@@ -171,13 +153,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt Copilot and agents
 
-- **More stable database connection pool**: The Postgres connection pool used for conversation checkpointing now enables TCP keepalives and enforces a maximum idle time, reducing dropped connections for long-running or infrequent agent sessions.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Correct model routing for Azure OpenAI Responses API**: Azure OpenAI deployments now correctly pass the deployment name as the `model` field when using the Responses API, preventing misrouted requests when the deployment name differs from the model name.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Permission-aware tool filtering on MCP tool calls**: The remote MCP server now enforces permission-based tool filtering at the time of each tool call, not just at list time. This prevents unauthorized tool execution for actors whose permissions changed between listing and calling tools.
+- **Correct model routing for Azure OpenAI Responses API (BYOK customers)**: Azure OpenAI deployments now correctly pass the deployment name as the `model` field when using the Responses API, preventing misrouted requests when the deployment name differs from the model name.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
 
 ### Studio IDE
