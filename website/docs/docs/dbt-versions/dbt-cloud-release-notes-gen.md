@@ -262,7 +262,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **Azure DevOps private packages scoped to org level**: The Azure DevOps token scope for private package resolution is now at the organization level rather than the project level, matching the actual scope of the Azure AD service principal token. The wildcard URL pattern is updated to `{org}/{project}/_git/{repo}` to support repositories across projects in the same org.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **Faster run history queries**: New database indexes on the `run_history` and `run_steps` tables support filtering by environment, job, dbt version, and terminal run step status. You should see faster load times for run history views filtered by environment or job.
   <!-- PRs: `https://github.com/dbt-labs/codex-workflows/...` -->
