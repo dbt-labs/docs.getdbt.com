@@ -197,7 +197,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **`GetPermissionedResources` gRPC endpoint re-enabled**: The `GetPermissionedResources` endpoint on the AuthZ gRPC service is now fully implemented and returns project or account resources based on the caller's permissions. Previously this endpoint returned `UNIMPLEMENTED`.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 ### Catalog
 
