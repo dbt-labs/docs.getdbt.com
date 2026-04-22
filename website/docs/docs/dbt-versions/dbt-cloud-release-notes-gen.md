@@ -70,7 +70,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
 
 - **Anthropic connection verification**: The connection verification endpoint now accepts `anthropic` as a key type, so you can validate an Anthropic API key directly from the dbt platform before using it.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
+  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` ❌-->
 
 - **Multi-project Model Context Protocol support**: The remote Model Context Protocol (MCP) server now automatically serves multi-project Semantic Layer tooling to accounts with more than one active project, and single-project tooling to all others. Accounts using dbt platform JWT tokens with the multi-project feature flag enabled benefit from this automatically. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
