@@ -93,7 +93,7 @@ var siteSettings = {
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtua[…]ineering_aw&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtual-event/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_state-analytics-engineering_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
