@@ -114,7 +114,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
 
 - **Faster theme correction on load**: Studio IDE now corrects an incorrect color theme before the editor becomes visible, eliminating the flash of wrong color that could occur while preferences were loading.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
+  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
 
 - **More reliable dark mode on initial load**: Studio IDE caches your resolved color preference in local storage and applies it immediately on the next page load, before the user-preferences API responds. This prevents a flash of incorrect theme during the loading window.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
