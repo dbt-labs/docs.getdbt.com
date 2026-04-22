@@ -294,7 +294,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/886b8960080bad1aaf3a7ec4d3a53b3f4c140827...41e3d84796b6159e0a720fb85ca7f8bfb3ae3cd1` -->
 
 - **Stale loading indicator on connection test**: The server status popover no longer shows a loading spinner when no connection test has been run yet. This prevents the status badge from incorrectly appearing as loading on first open.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea
+  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea ❌
 
 
 ## April 15, 2026
