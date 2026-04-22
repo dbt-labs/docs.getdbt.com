@@ -1,6 +1,6 @@
 /**
  * Scrapes built-in SQL functions for one or all configured data platforms,
- * cross-references each with dbt-fusion's typechecking support (dbt-labs/fs),
+ * cross-references each with dbt Fusion's typechecking support list,
  * and writes per-platform JSON to website/static/data/functions/<platform>.json.
  *
  * Usage:
@@ -12,8 +12,10 @@
  * Not for prebuild/prestart — makes external network calls.
  *
  * Requires: node-html-parser, js-yaml (devDependencies)
- * Env vars:  GITHUB_TOKEN  (required to read dbt-labs/fs; the default
- *                           GITHUB_TOKEN in Actions has read access)
+ * Env vars (set as GitHub Actions secrets):
+ *   FUSION_REPO_TOKEN   — PAT with read access to the Fusion functions repo
+ *   FUSION_REPO         — owner/repo of the Fusion functions source
+ *   FUSION_BASE_PATH    — base path within that repo to the per-platform YAML files
  */
 
 const fs = require('fs');
@@ -32,7 +34,8 @@ const YAML_SCHEMA = yaml.DEFAULT_SCHEMA.extend([
   makeTagType('sequence'),
 ]);
 
-const FS_REPO = 'dbt-labs/fs';
+const FUSION_REPO = process.env.FUSION_REPO;
+const FUSION_BASE_PATH = process.env.FUSION_BASE_PATH;
 const OUT_DIR = path.join(__dirname, '..', 'static', 'data', 'functions');
 
 // ---------------------------------------------------------------------------
@@ -52,7 +55,8 @@ async function fetchGitHubFile(repoPath, filePath, token) {
   const headers = { 'User-Agent': 'dbt-docs-bot/1.0', Accept: 'application/vnd.github.raw+json' };
   if (token) headers['Authorization'] = `token ${token}`;
   const res = await fetch(apiUrl, { headers });
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${apiUrl}`);
+  // Intentionally omit the URL from the error to avoid leaking repo details in logs
+  if (!res.ok) throw new Error(`HTTP ${res.status} fetching fusion function list`);
   return res.text();
 }
 
@@ -67,27 +71,18 @@ function parseFusionYaml(yamlText) {
   // Use the custom schema so !rust, !datafusion etc. don't throw
   yaml.loadAll(yamlText, (doc) => { if (doc) docs.push(doc); }, { schema: YAML_SCHEMA });
 
-  const supported = new Map(); // name (uppercase) → { typecheck, localExec }
+  const supported = new Set(); // uppercased names with typechecking support
 
   for (const doc of docs) {
     const fn = doc?.function;
     if (!fn?.name) continue;
-
     // Skip internal helpers (prefixed with _)
     if (fn.name.startsWith('_')) continue;
-
-    const key = fn.name.toUpperCase();
-    const existing = supported.get(key) || { typecheck: false, localExec: false };
-
     // Any entry in the YAML means L2 typechecking is supported
-    existing.typecheck = true;
-    // implemented-by is a tagged value ({tag, value}) when present — indicates L3
-    if (fn['implemented-by'] != null) existing.localExec = true;
-
-    supported.set(key, existing);
+    supported.add(fn.name.toUpperCase());
   }
 
-  return supported; // Map<name, {typecheck, localExec}>
+  return supported;
 }
 
 // ---------------------------------------------------------------------------
@@ -115,7 +110,7 @@ function validate(platform, functions) {
   const typecheckCount = functions.filter((f) => f.fusion_typecheck).length;
   if (typecheckCount === 0) {
     throw new Error(
-      `[${platform.id}] No fusion-supported functions found — check functions.sdf.yml parsing`
+      `[${platform.id}] No fusion-supported functions found — check YAML parsing`
     );
   }
 
@@ -128,11 +123,7 @@ function validate(platform, functions) {
     }
   }
 
-  const localExecCount = functions.filter((f) => f.fusion_local_exec).length;
-  console.log(
-    `  ✓ ${functions.length} functions, ${typecheckCount} with L2 typechecking, ` +
-    `${localExecCount} with L3 local execution`
-  );
+  console.log(`  ✓ ${functions.length} functions, ${typecheckCount} with typechecking support`);
 }
 
 // ---------------------------------------------------------------------------
@@ -145,28 +136,28 @@ async function processPlatform(platform, token) {
   const scraped = platform.parseHtml(html);
   console.log(`[${platform.id}] Parsed ${scraped.length} functions from docs`);
 
-  console.log(`[${platform.id}] Fetching fusion support from dbt-labs/fs: ${platform.fsYamlPath}`);
-  let fusionMap = new Map();
+  console.log(`[${platform.id}] Fetching Fusion typechecking support list`);
+  let fusionSupported = new Set();
   try {
-    const yaml = await fetchGitHubFile(FS_REPO, platform.fsYamlPath, token);
-    fusionMap = parseFusionYaml(yaml);
-    console.log(`[${platform.id}] Parsed ${fusionMap.size} unique function names from fusion YAML`);
+    if (!FUSION_REPO || !FUSION_BASE_PATH) {
+      throw new Error('FUSION_REPO and FUSION_BASE_PATH env vars must be set');
+    }
+    const yamlPath = `${FUSION_BASE_PATH}/${platform.id}/functions.sdf.yml`;
+    const yamlText = await fetchGitHubFile(FUSION_REPO, yamlPath, token);
+    fusionSupported = parseFusionYaml(yamlText);
+    console.log(`[${platform.id}] Parsed ${fusionSupported.size} supported function names`);
   } catch (err) {
-    console.warn(`[${platform.id}] Warning: could not fetch fusion YAML: ${err.message}`);
-    console.warn(`[${platform.id}] fusion_typecheck and fusion_local_exec will be false for all entries`);
+    console.warn(`[${platform.id}] Warning: could not fetch Fusion support list: ${err.message}`);
+    console.warn(`[${platform.id}] fusion_typecheck will be false for all entries`);
   }
 
-  const merged = scraped.map((fn) => {
-    const fusion = fusionMap.get(fn.name) || { typecheck: false, localExec: false };
-    return {
-      name: fn.name,
-      category: fn.category,
-      docs_url: fn.docs_url,
-      preview_status: fn.preview_status,
-      fusion_typecheck: fusion.typecheck,   // L2: argument type validation
-      fusion_local_exec: fusion.localExec, // L3: local execution (Enterprise)
-    };
-  });
+  const merged = scraped.map((fn) => ({
+    name: fn.name,
+    category: fn.category,
+    docs_url: fn.docs_url,
+    preview_status: fn.preview_status,
+    fusion_typecheck: fusionSupported.has(fn.name),
+  }));
 
   merged.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
 
@@ -192,8 +183,8 @@ async function processPlatform(platform, token) {
 // ---------------------------------------------------------------------------
 
 async function main() {
-  const token = process.env.GITHUB_TOKEN;
-  if (!token) console.warn('Warning: GITHUB_TOKEN not set — dbt-labs/fs may be inaccessible');
+  const token = process.env.FUSION_REPO_TOKEN;
+  if (!token) console.warn('Warning: FUSION_REPO_TOKEN not set — Fusion support list will be unavailable');
 
   const args = process.argv.slice(2);
   const targets = args.length

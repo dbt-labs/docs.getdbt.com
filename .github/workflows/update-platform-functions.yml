@@ -48,7 +48,9 @@ jobs:
         if: steps.should_run.outputs.run == 'true'
         run: node website/scripts/fetch-platform-functions.js ${{ matrix.platform }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FUSION_REPO_TOKEN: ${{ secrets.FUSION_REPO_TOKEN }}
+          FUSION_REPO: ${{ secrets.FUSION_REPO }}
+          FUSION_BASE_PATH: ${{ secrets.FUSION_BASE_PATH }}
 
       - name: Commit updated data if changed
         if: steps.should_run.outputs.run == 'true'

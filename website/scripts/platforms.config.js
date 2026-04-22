@@ -2,16 +2,16 @@
  * Per-platform configuration for function support data collection.
  *
  * Each entry describes:
- *  - id:             Machine identifier (matches the directory name in dbt-labs/fs)
- *  - name:           Display name used in docs and logs
- *  - functionsUrl:   URL of the platform's "all functions" reference page to scrape
- *  - fsYamlPath:     Path within dbt-labs/fs to the functions.sdf.yml for this platform
- *  - parseHtml:      Function that receives the HTML string and returns
- *                    [{name, category, docs_url, preview_status}]
+ *  - id:           Machine identifier used as the platform key and directory name
+ *  - name:         Display name used in docs and logs
+ *  - functionsUrl: URL of the platform's "all functions" reference page to scrape
+ *  - parseHtml:    Function that receives the HTML string and returns
+ *                  [{name, category, docs_url, preview_status}]
  *
- * To add a new platform: add an entry here and implement a parseHtml function.
- * The fetch and snippet-generation scripts are fully generic — no other files need
- * to change.
+ * To add a new platform: add one entry here and implement a parseHtml function.
+ * The fetch and snippet-generation scripts are fully generic — no other files change.
+ * The Fusion typechecking source is configured via environment variables in the
+ * GitHub Action (FUSION_REPO and FUSION_BASE_PATH) and is not stored here.
  */
 
 const { parse: parseHtml } = require('node-html-parser');
@@ -111,7 +111,6 @@ const PLATFORMS = [
     id: 'snowflake',
     name: 'Snowflake',
     functionsUrl: 'https://docs.snowflake.com/en/sql-reference/functions-all',
-    fsYamlPath: 'crates/sdf-sql-functions/assets/snowflake/functions.sdf.yml',
     parseHtml(html) {
       return scrapeSnowflakeFlatTable(html);
     },
@@ -120,7 +119,6 @@ const PLATFORMS = [
     id: 'databricks',
     name: 'Databricks',
     functionsUrl: 'https://docs.databricks.com/en/sql/language-manual/sql-ref-functions-builtin-alpha.html',
-    fsYamlPath: 'crates/sdf-sql-functions/assets/databricks/functions.sdf.yml',
     parseHtml(html) {
       const root = parseHtml(html);
       const functions = [];
@@ -143,7 +141,6 @@ const PLATFORMS = [
     id: 'redshift',
     name: 'Amazon Redshift',
     functionsUrl: 'https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html',
-    fsYamlPath: 'crates/sdf-sql-functions/assets/redshift/functions.sdf.yml',
     parseHtml(html) {
       // Redshift docs use a <div class="highlights"> with links grouped by category
       const root = parseHtml(html);
@@ -177,7 +174,6 @@ const PLATFORMS = [
     id: 'bigquery',
     name: 'BigQuery',
     functionsUrl: 'https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators',
-    fsYamlPath: 'crates/sdf-sql-functions/assets/bigquery/functions.sdf.yml',
     parseHtml(html) {
       return scrapeHeadingTablePage(
         html,
@@ -190,7 +186,6 @@ const PLATFORMS = [
     id: 'trino',
     name: 'Trino',
     functionsUrl: 'https://trino.io/docs/current/functions.html',
-    fsYamlPath: 'crates/sdf-sql-functions/assets/trino/functions.sdf.yml',
     parseHtml(html) {
       return scrapeHeadingTablePage(html, 'https://trino.io', /^(see also|related)/i);
     },
@@ -199,7 +194,6 @@ const PLATFORMS = [
     id: 'duckdb',
     name: 'DuckDB',
     functionsUrl: 'https://duckdb.org/docs/sql/functions/overview',
-    fsYamlPath: 'crates/sdf-sql-functions/assets/duckdb/functions.sdf.yml',
     parseHtml(html) {
       return scrapeHeadingTablePage(html, 'https://duckdb.org', /^(see also|related)/i);
     },
