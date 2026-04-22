@@ -1,4 +1,8 @@
 ---
+acid:
+  displayText: ACID
+  hoverSnippet: Atomicity, Consistency, Isolation, and Durability
+
 ade-bench:
   displayText: ADE-bench
   hoverSnippet: The Analytics and Data Engineering benchmark, a framework for evaluating AI agents on data tasks with highly realistic testing environments.
