@@ -7,9 +7,9 @@ tags: [AI, Agents]
 image: /img/docs/dbt-cloud/copilot-agent.png
 ---
 
-# dbt Agents overview <Lifecycle status="beta,managed,managed_plus"/>
+# dbt Agents overview <Lifecycle status="beta,self_service,managed,managed_plus"/>
 
-[dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
+[dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [Starter and dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
 :::info 
 Some dbt Agents are in preview or beta; others are coming soon. Contact your account manager for early access.
@@ -41,9 +41,9 @@ dbt offers several specialized agents, each designed for specific workflows in t
 
 The following agents are available. Contact your account manager for early access to agents that are in beta or coming soon.
 
-#### Analyst agent <Lifecycle status="beta"/>
+#### Analyst agent <Lifecycle status="beta,managed,managed_plus"/>
 
-Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="insights" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
+Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="insights" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). Available on Enterprise-tiered plans.
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
