@@ -77,6 +77,8 @@ Use `--full-refresh` to force a full reload of seed data (rather than an increme
 
 For information about configuring seeds (for example, column types and quoting behavior), refer to [Seed configurations](/reference/seed-configs).
 
+<VersionBlock firstVersion="1.12">
+
 ## The --empty flag
 
 Use `--empty` to create seed tables with the correct schema but without loading any data. dbt infers column names and types from the CSV file but inserts zero rows. This is useful when:
@@ -94,6 +96,8 @@ Use `--empty` to create seed tables with the correct schema but without loading 
   ```
 
 For more details, refer to [The empty flag](/docs/build/empty-flag).
+
+</VersionBlock>
 
 ## Related docs
 
