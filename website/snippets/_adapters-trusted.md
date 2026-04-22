@@ -44,7 +44,7 @@
 
 <Card
     title="DuckDB"
-    body="<ul><li><a href='/docs/local/connect-data-platform/duckdb-setup'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/duckdb-setup'>Install with dbt Fusion </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-duckdb><img src=https://badge.fury.io/py/dbt-duckdb.svg/></a>"
+    body="<ul><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=1'>Install with dbt Core </a> <br /></li><li><a href='/docs/local/connect-data-platform/duckdb-setup?version=2'>Install with dbt Fusion </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-duckdb><img src=https://badge.fury.io/py/dbt-duckdb.svg/></a>"
     pills='["dbt Core", "Fusion"]'
     icon="duckdb-seeklogo"/>
 
