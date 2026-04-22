@@ -22,8 +22,8 @@ For autonomous model generation, refactoring, and multi-step workflows in the <C
 
 The <Constant name="dev_agent" /> is accessible from the Copilot panel. Switch to **Ask** or **Code** mode to activate the agent.
 
-<div style={{maxWidth: '90%', margin: '20px -5%'}}>
-<video width="100%" style={{minHeight: '500px'}} controls autoPlay muted loop playsInline>
+<div style={{maxWidth: '100%', margin: '20px 0'}}>
+<video width="100%" controls autoPlay muted loop playsInline>
   <source src="/img/docs/dbt-cloud/dev-agent.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
