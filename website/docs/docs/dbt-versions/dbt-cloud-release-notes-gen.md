@@ -245,7 +245,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **`fusion_readiness_read` permission added to Member role**: The Member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
 ### Deployment and Configuration
 
