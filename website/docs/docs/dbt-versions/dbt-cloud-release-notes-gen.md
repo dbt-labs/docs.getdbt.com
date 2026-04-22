@@ -34,7 +34,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **Fusion release tracks**: Three new dbt version release tracks — `fusion-fallback`, `fusion-extended`, and `fusion-compatible` — are available for accounts on eligible plans. These tracks follow the dbt Fusion engine release cadence and are available to enterprise and starter plan accounts. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...`, `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...`, `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` ❌-->
 
 - **Fusion fallback mode for accounts**: Accounts can now be set to Fusion fallback mode via the Accounts API. When enabled, environments using the `fusion-extended` track automatically fall back to the `fusion-fallback` track. This setting is restricted to business critical accounts with the Fusion release tracks feature flag enabled. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
