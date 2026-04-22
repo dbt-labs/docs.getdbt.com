@@ -122,16 +122,14 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Fusion admin">
 
-This permission set is used exclusively to enable users to interact with the Fusion upgrade workflows. We recommend limiting this permission to users and projects that are Fusion-ready. 
+This permission set enables users to interact with <Constant name="fusion"/> upgrade workflows. We recommend limiting this permission to users who are actively [working on migrating](/guides/upgrade-to-fusion?step=1) a project to <Constant name="fusion"/>.
 
-By default, all users can access the Fusion upgrade experience and perform upgrades based on their existing permissions. When the Fusion upgrade permissions setting is enabled (when you see a check mark), only users with the fusion admin or account admin permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
+By default, all users can access the <Constant name="fusion"/> upgrade experience. When the upgrade permissions setting is enabled, only users with the **Fusion admin** or **Account admin** permission set can perform upgrades. If the setting is disabled (no check mark), upgrades are not restricted.
 
-When upgrade permissions are enabled:
+- **Fusion admin** &mdash; Assign to user accounts only. Cannot be assigned to service tokens.
+- **Account admin** &mdash; Assign to user accounts or service tokens. Allows both users and service tokens to perform upgrades.
 
-- **Fusion admin** &mdash; Assign to user accounts. This permission cannot be assigned to service tokens.
-- **Account admin** &mdash; Assign to users or service tokens. This permission allows both users and service tokens to perform upgrades.
-
-See the [dbt platform Fusion upgrade](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine) docs for more information.
+For more information, refer to [Upgrade to dbt <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine).
 
 </Expandable>
 <Expandable alt_header="Git admin">
