@@ -434,9 +434,9 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
 
 #### Debug in Studio
 
-In the <Constant name="cloud_ide" />, run <Constant name="fusion" /> in your development environment to review project warnings and errors:
+In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your development environment to review project warnings and errors:
 
-1. Click **Debug in Studio**. The <Constant name="cloud_ide" /> opens and the **Problems** tab appears.
+1. Click **Debug in Studio**. The <Constant name="studio_ide" /> opens and selects the **Problems** tab.
 
 2. dbt sets only your development environment to <Constant name="fusion" />.
 
@@ -449,10 +449,10 @@ In the <Constant name="cloud_ide" />, run <Constant name="fusion" /> in your dev
 
 #### Debug in Studio with Copilot <Lifecycle status="beta" size="80%" />
 
-If you have access to Copilot, use it to fix warnings or errors in the <Constant name="cloud_ide" />:
+If you have access to Copilot, use it to fix warnings or errors in the <Constant name="studio_ide" />:
 
 1. Click **Debug in Studio with Copilot**.
-2. dbt redirects you to the <Constant name="cloud_ide" /> and sets your development environment to <Constant name="fusion" />.
+2. dbt redirects you to the <Constant name="studio_ide" /> and sets your development environment to <Constant name="fusion" />.
 3. Copilot opens with this prompt: "I need help fixing Fusion compatibility issues in this project. Please investigate and resolve any deprecation warnings or incompatibilities. Please use the migrating-dbt-core-to-fusion skill to guide this."
 
    <Lightbox src="/img/fusion/migration-prompt.png" width="60%" title="The Fusion migration prompt in Copilot"/>
