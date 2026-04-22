@@ -148,7 +148,7 @@ When using dbt locally, you can also store environment variables in a `.env` fil
 
 <EnvFileBeta />
 
-To keep credentials out of version control, add `.env` to your `.gitignore` file &mdash; new projects created with `dbt init` include this by default.
+To keep credentials out of version control, add `.env` to your `.gitignore` file &mdash; new projects on v1.12 and higher created with `dbt init` include this by default.
 
 ## User config
 
