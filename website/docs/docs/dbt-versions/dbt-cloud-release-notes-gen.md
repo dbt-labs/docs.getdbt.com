@@ -202,7 +202,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Catalog
 
 - **Clickable relationship edges in the ERD view**: All edge types in the Entity Relationship Diagram (ERD) view now open a details panel when clicked, not just inferred edges. Edges also display a hover tooltip showing the relationship source and confidence level.
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
 
 - **Improved ERD overlay controls**: The ERD overlay controls panel now shows tooltips explaining each relationship source, disables toggles when no edges of that type exist, and displays a summary count of models and relationships. The layout direction has been updated to left-to-right for better readability.
   <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` -->
