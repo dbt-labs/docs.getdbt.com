@@ -50,7 +50,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Catalog
 
 - **Health and run status filters in catalog search**: The catalog search sidebar now includes Health and Last Run Status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (success, error, skipped, reused).
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
 
 - **Tag search field**: Tag is now a searchable field in the advanced search panel. You can filter results by tag matches, and matching tags appear as highlighted pills in search results.
   <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` -->
