@@ -122,10 +122,10 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` 🤔-->
 
 - **Improved ERD overlay controls**: The ERD overlay controls panel now shows tooltips explaining each relationship source, disables toggles when no edges of that type exist, and displays a summary count of models and relationships. The layout direction has been updated to left-to-right for better readability.
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
+  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` 🤔-->
 
 - **Clearer ERD relationship details panel**: The relationship details side panel now shows a "Relationship Details" title for confirmed relationships (relationship tests and Semantic Layer joins) and reserves the "Review Relationship" title and approve/dismiss actions for inferred relationships only.
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
+  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` 🤔-->
 
 ### Insights
 
