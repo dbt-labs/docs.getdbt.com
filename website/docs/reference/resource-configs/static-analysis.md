@@ -263,7 +263,7 @@ from {{ ref('my_model') }}
 
 </File>
 
-#### Configure static analysis for tests
+#### Configure static analysis for data tests
 
 This example shows how to set static analysis for all tests in a project using `dbt_project.yml`.
 
@@ -277,7 +277,7 @@ data_tests:
 
 </File>
 
-To configure static analysis for a specific test on a model:
+To configure static analysis for a specific data test on a model:
 
 <File name='models/filename.yml'>
 
