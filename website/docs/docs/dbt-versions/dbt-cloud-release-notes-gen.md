@@ -123,7 +123,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
 
 - **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, Commands or Lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
+  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ✅-->
 
 - **Compile button after deprecation autofix in Fusion**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
