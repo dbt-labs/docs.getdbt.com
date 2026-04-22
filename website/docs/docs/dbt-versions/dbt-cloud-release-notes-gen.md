@@ -155,7 +155,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **Fusion release track versions gated per account**: Fusion release track versions (`fusion-compatible`, `fusion-extended`, `fusion-fallback`) in environment and job version dropdowns are now shown or hidden based on per-account feature flags rather than a single global flag.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **Model execution notifications for dbt Fusion runs**: dbt Fusion runs now process group ownership metadata from OpenTelemetry (OTel) logs and publish model execution notifications for grouped models and tests. If your project uses dbt groups with owner email addresses defined, you will now receive run notifications for those nodes when running with dbt Fusion.
   <!-- PRs: `https://github.com/dbt-labs/orc-cancel/...`, `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
