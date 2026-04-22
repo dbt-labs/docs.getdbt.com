@@ -45,7 +45,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Webhooks
 
 - **Non-blocking webhook test events**: The webhook subscription test endpoint now returns an `event_id` immediately rather than waiting for a delivery result. Use the webhook event receipt endpoint with the returned `event_id` to check delivery status asynchronously.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 ### Catalog
 
