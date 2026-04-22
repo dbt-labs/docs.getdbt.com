@@ -129,7 +129,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ✅-->
 
 - **Deferred environment ID for command execution**: When you specify a deferral environment, Studio IDE now also sends the `defer` options object alongside `defer_env_id`, ensuring deferral is applied correctly on the server side.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
+  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ❌-->
 
 ### Orchestration and Run Status
 
