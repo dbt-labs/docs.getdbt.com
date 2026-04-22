@@ -28,7 +28,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 
 ## Prerequisites
 
-- An Enterprise-tier plan
+- A Starter or Enterprise-tiered plan
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
 - A [development environment](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
 - [Account access](/docs/cloud/enable-dbt-copilot) to <Constant name="copilot" /> features.
