@@ -8,7 +8,7 @@ tags: [AI, Agents, Studio]
 
 import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 
-# Developer agent <Lifecycle status="beta,managed,managed_plus"/>
+# Developer agent <Lifecycle status="preview,self_service,managed,managed_plus"/>
 
 <IntroText>
 The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Build, refactor, test, document, and explore your dbt project from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
@@ -28,7 +28,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 
 ## Prerequisites
 
-- An Enterprise-tier plan
+- A Starter or Enterprise-tiered plan
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
 - A [development environment](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
 - [Account access](/docs/cloud/enable-dbt-copilot) to <Constant name="copilot" /> features.
