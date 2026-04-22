@@ -230,7 +230,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 - **Warn notification tooltip clarified**: The tooltip on the Warns column in notification settings now clarifies that a job showing "success" in the interface can still trigger a warn notification if test or freshness steps logged warnings.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **Private endpoint dropdown shows cloud resource ID**: The reuse interface endpoint modal now displays each endpoint's cloud resource ID (for example, `vpce-abc123`) in the dropdown label so you can identify the correct endpoint before reusing it.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
