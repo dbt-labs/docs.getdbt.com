@@ -26,7 +26,7 @@ Release notes are grouped by date for single-tenant environments.
 ### APIs, Identity, and Administration
 
 - **OAuth client registration API**: Accounts can now register manual OAuth clients (public clients using Proof Key for Code Exchange (PKCE)) via the new `oauth-manual-registrations/` and `oauth-client-registrations/<pk>/` endpoints. Use these endpoints to list, create, retrieve, and delete OAuth server client registrations scoped to your account.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 ### Orchestration and Run Status
 
