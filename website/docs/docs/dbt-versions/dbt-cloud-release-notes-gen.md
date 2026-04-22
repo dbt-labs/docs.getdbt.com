@@ -31,7 +31,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Orchestration and Run Status
 
 - **Hybrid job type**: A new `hybrid` job type is available for jobs that are triggered and executed externally, outside of the dbt platform. Hybrid jobs cannot have schedules, triggers, execute steps, deferral, or cost optimization features, and can only be created in hybrid projects.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ❌-->
 
 - **Fusion release tracks**: Three new dbt version release tracks — `fusion-fallback`, `fusion-extended`, and `fusion-compatible` — are available for accounts on eligible plans. These tracks follow the dbt Fusion engine release cadence and are available to enterprise and starter plan accounts. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...`, `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` -->
