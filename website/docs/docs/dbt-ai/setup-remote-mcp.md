@@ -78,7 +78,7 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
 
 4. After establishing which headers you need, you can follow the [examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
 
-The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. You can use this example Cursor configuration, replacing `YOUR_DBT_HOST_URL`, `YOUR_DBT_ACCESS_TOKEN`, `PROD-ID`, `USER-ID`, and `DEV-ID` with your information:
+The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. Configuration varies by client — select your tool below and replace the placeholder values with your own:
 
 :::warning Use numeric IDs, not full URLs
 Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeric IDs, not full URLs. The host in the `url` field should include `https://`, but ID headers must be integers only:
@@ -95,22 +95,69 @@ Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeri
 ```
 :::
 
-Example configuration:
+<Tabs>
+<TabItem value="claude" label="Claude Code">
 
-  ```json
-  {
-    "mcpServers": {
-      "dbt": {
-        "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
-        "headers": {
-         "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
-          "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
-          "x-dbt-user-id": "DBT_USER_ID",
-          "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
-        }
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
       }
     }
   }
-  ```
+}
+```
+
+</TabItem>
+<TabItem value="cursor" label="Cursor">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="gemini" label="Gemini">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "httpUrl": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::note Other clients
+For other MCP clients (Codex, Windsurf, and so on.), refer to your client's MCP configuration docs for the correct key format.
+:::
 
 For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
