@@ -94,7 +94,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```powershell
     Start-Process powershell
     ```
-    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
+    You can also close and reopen your shell window. This will load the updated environment settings into the new session.
 </TabItem>
 <TabItem value="windows" label="Windows (PowerShell)">
 

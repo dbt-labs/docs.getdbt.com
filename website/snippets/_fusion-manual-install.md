@@ -34,7 +34,7 @@ If you already have the <Constant name="fusion_engine" /> installed, you can ski
     Start-Process powershell
     ```
 
-    Or, close and reopen your terminal. This will load the updated environment settings into the new session.
+  You can also close and reopen your terminal. This will load the updated environment settings into the new session.
 
     </TabItem>
     <TabItem value="windows" label="Windows (PowerShell)">
