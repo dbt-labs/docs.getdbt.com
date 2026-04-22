@@ -51,7 +51,7 @@ The `Microsoft.Fabric` resource provider must be registered in your Azure subscr
 
 1. In the [Azure portal](https://portal.azure.com), navigate to your **Subscription** → **Settings** → **Resource providers**.
 2. Search for `Microsoft.Fabric`.
-3. Select it and click **Re-register**. Wait for the status to change to **Registered**.
+3. Select it and click **Register** (or **Re-register** if already registered). Wait for the status to change to **Registered**.
 
 ### 4. Create the Private Link Service resource
 
