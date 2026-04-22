@@ -32,7 +32,6 @@ Your hostname is the domain you use to access <Constant name="dbt_platform"/>. B
 
 | Account type | Example Access URL | DBT_HOST value |
 | --- | --- | --- |
-| US multi-tenant | `cloud.getdbt.com` | `cloud.getdbt.com` |
 | Multi-cell | `abc123.us1.dbt.com` | `abc123.us1.dbt.com` |
 | Multi-tenant with static subdomain | `abc123.us1.dbt.com` | `abc123.us1.dbt.com` |
 | Single-tenant | `your-company.getdbt.com` | `your-company.getdbt.com` |
