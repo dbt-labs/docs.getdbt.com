@@ -109,5 +109,5 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
-**Coming soon**
+- `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.
 
