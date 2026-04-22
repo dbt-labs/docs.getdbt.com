@@ -152,7 +152,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
 
 - **Fusion error banner inside run step drawer**: The Fusion run error banner now also appears inside the run step drawer when a Fusion run fails, so you can access debug options without leaving the step detail view.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **Fusion release track versions gated per account**: Fusion release track versions (`fusion-compatible`, `fusion-extended`, `fusion-fallback`) in environment and job version dropdowns are now shown or hidden based on per-account feature flags rather than a single global flag.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
