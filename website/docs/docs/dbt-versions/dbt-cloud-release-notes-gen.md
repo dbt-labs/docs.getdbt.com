@@ -233,7 +233,7 @@ Release notes are grouped by date for single-tenant environments.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **Private endpoint dropdown shows cloud resource ID**: The reuse interface endpoint modal now displays each endpoint's cloud resource ID (for example, `vpce-abc123`) in the dropdown label so you can identify the correct endpoint before reusing it.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ❌-->
 
 - **New environment creation defaults to production only after data loads**: When creating a new deployment environment, the form now waits until the production environment query completes before applying any default, preventing a brief incorrect default that prompted you to replace an existing production environment.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
