@@ -6,20 +6,19 @@ sidebar: "resource type"
 
 <VersionBlock firstVersion="1.9">
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, and `dbt list` commands.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, `dbt test`*, and `dbt list` commands.
 
-:::note Filtering test types with `dbt test`
-Use the `test_type` selector with `dbt test` to run only unit tests or data tests — this works across all engines (<Constant name="core" /> and <Constant name="fusion" />):
+***Filtering test types with `dbt test`**
 
-- `dbt test --select test_type:unit` — runs only unit tests
-- `dbt test --select test_type:data` — runs only data tests
+Use the `test_type` selector to filter test types with `dbt test` &mdash; it works across all engines:
 
-In <Constant name="core" /> (v1.9+), you can also use `--resource-type` with `dbt test`:
+- `dbt test --select test_type:unit` &mdash; runs only unit tests
+- `dbt test --select test_type:data` &mdash; runs only data tests
 
-- `dbt test --resource-type unit_test` — runs only unit tests
-- `dbt test --resource-type test` — runs only data tests
+If you're using <Constant name="core" /> v1.9+, you can also use `--resource-type`:
 
-When using <Constant name="fusion"/>, use the `test_type` selector instead of the `--resource-type` flag. The `--resource-type` flag isn't supported with `dbt test` in <Constant name="fusion"/>.
+- `dbt test --resource-type unit_test` &mdash; runs only unit tests
+- `dbt test --resource-type test` &mdash; runs only data tests
 
 For more examples, see [test selection examples](/reference/node-selection/test-selection-examples).
 :::
