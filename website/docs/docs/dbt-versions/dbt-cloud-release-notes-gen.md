@@ -22,51 +22,17 @@ Release notes are grouped by date for single-tenant environments.
 
 ## New
 
-### Orchestration and run status
-
-- **Automatic catalog generation for Fusion build commands**: When enabled, dbt Fusion build commands (`dbt run`, `dbt build`, and similar) automatically append `--write-catalog` to generate catalog metadata as part of the run. The separate `docs generate` step becomes a no-op for Fusion runs when this flag is active. Contact your account manager to enable.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-orc/compare/04f62d68156fd5fa97cc3f0633b3c68e5ff13427...ffcaae0af364101d1919efe78a35916d27a2737b` -->
-
 ### Catalog
 
 - **Health and run status filters in catalog search**: The catalog search sidebar now includes Health and Last Run Status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (success, error, skipped, reused).
   <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
 
 - **Tag search field**: Tag is now a searchable field in the advanced search panel. You can filter results by tag matches
-  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/metadata-ui/...` ✅-->
 
 ## Enhancements
 
-### dbt Copilot and agents
-
-- **Anthropic Claude model support**: dbt Copilot and agents now support Anthropic Claude models (`claude-sonnet-4-6` and `claude-haiku-4-5`) as Bring Your Own Key (BYOK) providers. You can configure an Anthropic API key the same way you configure OpenAI keys, and the platform automatically routes requests to the correct provider.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **More resilient Semantic Layer metrics listing**: The `list_metrics` tool now includes dimension and entity names inline when the total metric count is below the configured threshold (default: 10), reducing the number of follow-up tool calls needed to answer analytical questions.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Improved agent instructions for dbt syntax**: The Studio IDE agent prompt now includes clearer guidance on modern dbt syntax (`data_tests:` instead of `tests:`, `--select` instead of `--models`), Fusion-specific YAML rules, better scope judgment for analytical questions, and smarter skill placement when no file location is specified.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-- **Fusion upgrade Copilot handoff includes run context**: When selecting "Debug in Studio with Copilot" from the Debug on Fusion menu, Copilot now receives the run ID, job ID, environment ID, and branch name as context so it can provide more targeted upgrade assistance.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
-
-- **More reliable tool availability**: The `invoke_dbt`, `get_dbt_logs`, and `run_autofix` Copilot tools are now always registered regardless of server or connection status. Instead of being removed from the tool list when dbt commands are unavailable, they return an informative message explaining why the command could not run, so the agent can relay the reason to you.
-  <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` -->
-
 ### Studio IDE
-
-- **Improved Language Server Protocol startup**: The Language Server Protocol (LSP) process now launches using `dbt lsp` (the unified dbt Fusion binary) instead of the separate `dbt-lsp` binary, simplifying the runtime dependency footprint and ensuring the LSP and dbt share a consistent version.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli-server/...` -->
-
-- **Increased request size limit for LSP connections**: The worker now sets a 1 MB maximum event size for WebSocket connections. This prevents `400` errors when large Base64-encoded environment variable payloads are passed to the LSP.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli-server/...` -->
-
-- **Defer state available for all current Fusion builds**: The minimum-version check that previously blocked older dbt Fusion builds from using the `--state` (defer) flag has been removed. All current builds now receive defer state automatically when a defer environment is configured.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud-cli-server/...` -->
-
-- **More reliable IDE session startup for single-tenant**: Studio IDE session startup now correctly scopes environment and develop request lookups to the current account. This resolves potential cross-account mismatches on single-tenant deployments where the account cannot always be inferred from the subdomain.
-  <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` -->
 
 - **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to aid in incorrect theming when user-preferences is slow to respond.
   <!-- PRs: `https://github.com/dbt-labs/studio/compare/eff26fd8bdbe29d951eba85ef26e0efb4f9b4d91...c7540db32e5907cea5015002847218416fc74de5` ✅-->
@@ -80,22 +46,13 @@ Release notes are grouped by date for single-tenant environments.
 ### Orchestration and run status
 
 - **Fusion eligibility toggle replaces dropdown filter**: The jobs list Fusion eligibility dropdown filter has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
-
-- **Fusion eligibility badges on job list**: With Fusion eligibility views enabled, jobs now display a green "Fusion eligible" badge for ready jobs, a warning "Fusion eligibility unknown" badge for non-ready jobs, and a "Review job" button for users with write permissions to investigate and take action.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
+  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 - **Debug on Fusion menu**: The single "Run once on Fusion" button on the job details page and job list has been replaced with a "Debug on Fusion" menu that offers "Debug in Studio," "Run once on Fusion," and (when dbt Copilot is enabled) "Debug in Studio with Copilot" options.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
 
 - **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same "Debug on Fusion" menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
-
-- **Redesigned Fusion run success banner**: After a successful Fusion run, the banner now highlights that the run succeeded on Fusion, explains how to mark the job as eligible, and includes a link back to jobs with unknown eligibility. The override call to action is only shown when all eligibility conditions are met.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
-
-- **Model execution notifications for dbt Fusion runs**: dbt Fusion runs now process group ownership metadata from OpenTelemetry (OTel) logs and publish model execution notifications for grouped models and tests. If your project uses dbt groups with owner email addresses defined, you will now receive run notifications for those nodes when running with dbt Fusion.
-  <!-- PRs: `https://github.com/dbt-labs/orc-cancel/...`, `https://github.com/dbt-labs/orc-cold-dispatcher/...`, `https://github.com/dbt-labs/orc-run-ingest/...` -->
 
 ### Webhooks
 
@@ -116,18 +73,10 @@ Release notes are grouped by date for single-tenant environments.
 - **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt Cloud bot invited for notifications to be delivered. Contact your account manager to enable.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...`, `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
 
-### Insights
-
-- **Faster model build count queries**: Insights now uses pre-computed build counts for model success and reuse metrics, significantly reducing query time for model builds daily counts and account environment insights views. You should see more responsive load times and fewer timeouts when viewing model build history.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-artifacts-internal-api/compare/fc6bf0d5dddaceccdaee639bbda473bbc1a60252...08f64d32a2b595f00b61da1a638bf814492efdd5` -->
-
 ### dbt platform
 
 - **`account:read` scope on OAuth consent page**: The OAuth consent page now displays a "View account information" scope option, which grants view-only access to account details including project and environment information.
   <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` ✅-->
-
-- **New environment creation defaults to production only after data loads**: When creating a new deployment environment, the form now waits until the production environment query completes before applying any default, preventing a brief incorrect default that prompted you to replace an existing production environment.
-  <!-- PRs: `https://github.com/dbt-labs/cloud-ui/pull/...` -->
 
 - **PrivateLink endpoint pending status**: A new `pending` connectivity status is available for PrivateLink endpoints, in addition to the existing `success` and `failed` states.
   <!-- PRs: `https://github.com/dbt-labs/dbt-cloud/pull/...` ✅-->
@@ -140,12 +89,7 @@ Release notes are grouped by date for single-tenant environments.
 ### dbt Copilot and agents
 
 - **Correct model routing for Azure OpenAI Responses API (BYOK customers)**: Azure OpenAI deployments now correctly pass the deployment name as the `model` field when using the Responses API, preventing misrouted requests when the deployment name differs from the model name.
-  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` -->
-
-### Studio IDE
-
-- **Prevent stale file content in the editor**: Updates the file cache-control header from `must-revalidate` to `no-cache`, ensuring the editor always fetches the latest version of a file rather than serving a cached copy.
-  <!-- PRs: `https://github.com/dbt-labs/ide-server/compare/886b8960080bad1aaf3a7ec4d3a53b3f4c140827...41e3d84796b6159e0a720fb85ca7f8bfb3ae3cd1` -->
+  <!-- PRs: `https://github.com/dbt-labs/ai-codegen-api/compare/a01c413df8631aee77ed89aeb0e3de6412d54489...a815a32293ecc80fbe7f453160fbec074c999b30` ✅-->
 
 ## April 15, 2026
 
