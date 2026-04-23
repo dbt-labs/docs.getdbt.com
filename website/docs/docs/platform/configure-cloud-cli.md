@@ -11,14 +11,14 @@ import LongSession from '/snippets/_long-sessions-cli.md';
 Learn how to configure the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project to run dbt commands, like `dbt environment show` to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
 - Secure credential storage in the <Constant name="dbt_platform" />.
-- [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your project's production environment.
+- [Automatic deferral](/docs/platform/about-cloud-develop-defer) of build artifacts to your project's production environment.
 - Speedier, lower-cost builds.
 - Support for <Constant name="mesh" /> ([cross-project ref](/docs/mesh/govern/project-dependencies)), and more.
 
 ## Prerequisites
 
 - You must set up a project in <Constant name="dbt" />.
-  - **Note** &mdash; If you're using the <Constant name="platform_cli" />, you can connect to your [data platform](/docs/cloud/connect-data-platform/about-connections) directly in the <Constant name="dbt_platform" /> interface and don't need a [`profiles.yml`](/docs/local/profiles.yml) file. 
+  - **Note** &mdash; If you're using the <Constant name="platform_cli" />, you can connect to your [data platform](/docs/platform/connect-data-platform/about-connections) directly in the <Constant name="dbt_platform" /> interface and don't need a [`profiles.yml`](/docs/local/profiles.yml) file. 
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="platform_cli" /> will use these credentials, stored securely in <Constant name="dbt" />, to communicate with your data platform.
 - You must be on dbt version 1.5 or higher. Refer to [<Constant name="dbt" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
 

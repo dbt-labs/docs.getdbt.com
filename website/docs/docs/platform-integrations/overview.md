@@ -29,7 +29,7 @@ Many data applications integrate with <Constant name="dbt" />, enabling you to l
 <Card
     title="dbt Semantic layer integrations"
     body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
-    link="/docs/cloud-integrations/avail-sl-integrations"
+    link="/docs/platform-integrations/avail-sl-integrations"
     icon="dbt-bit"/>
 
 </div>

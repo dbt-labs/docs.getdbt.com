@@ -33,7 +33,7 @@ The Auth0 URI is not the same as your SCIM Base URL, though they share a similar
 
 <Expandable alt_header="Can I disable password logins for SSO users?">
 
-When SSO is configured, it enforces SSO-only logins for the account. However, if [**Allow password logins for account administrators**](/docs/cloud/manage-access/sso-overview?version=1.12#sso-enforcement) is enabled, account admins and IT-licensed users can still sign in with email and password.
+When SSO is configured, it enforces SSO-only logins for the account. However, if [**Allow password logins for account administrators**](/docs/platform/manage-access/sso-overview?version=1.12#sso-enforcement) is enabled, account admins and IT-licensed users can still sign in with email and password.
 
 :::caution
 Before enabling SSO enforcement, ensure that at least one account admin can successfully sign in through SSO. If SSO is misconfigured and enforcement is enabled, admins may be locked out of the account. Contact [support@getdbt.com](mailto:support@getdbt.com) if this occurs.

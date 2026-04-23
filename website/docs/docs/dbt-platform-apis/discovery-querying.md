@@ -5,7 +5,7 @@ sidebar_label: "Query the Discovery API"
 pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 ---
 
-The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.
+The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-platform-apis/discovery-api) for an introduction.
 
 Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a default [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. However, you can also use any GraphQL client of your choice to query the API.
 
@@ -15,17 +15,17 @@ Since GraphQL describes the data in the API, the schema displayed in the GraphQL
 
 ## Authorization
 
-Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). <Constant name="dbt" /> admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
+Currently, authorization of requests takes place [using a service token](/docs/dbt-platform-apis/service-tokens). <Constant name="dbt" /> admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
 
 Once you've created a token, you can use it in the Authorization header of requests to the <Constant name="dbt" /> Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used instead of `Token` in the Authorization header. Both syntaxes are equivalent.
 
 ## Access the Discovery API
 
-1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. <Constant name="dbt" /> Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
+1. Create a [service account token](/docs/dbt-platform-apis/service-tokens) to authorize requests. <Constant name="dbt" /> Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
 
 2. Find the API URL to use from the [Discovery API endpoints](#discovery-api-endpoints) table.
 
-3. For specific query points, refer to the [schema documentation](/docs/dbt-cloud-apis/discovery-schema-job).
+3. For specific query points, refer to the [schema documentation](/docs/dbt-platform-apis/discovery-schema-job).
 
 ## Run queries using HTTP requests
 
@@ -58,7 +58,7 @@ metadata = response.json()['data'][ENDPOINT]
 
 Every query will require an environment ID or job ID. You can get the ID from a <Constant name="dbt" /> URL or using the Admin API.
 
-There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
+There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-platform-apis/discovery-use-cases-and-examples).
 
 ## Discovery API endpoints
 
@@ -71,7 +71,7 @@ Find your Discovery API endpoint in **Account settings** under **Access URLs** i
 | Single-tenant | `https://ACCOUNT_PREFIX.metadata.ROUTING_SUBDOMAIN.dbt.com/graphql` |
 </SimpleTable>
 
-- Replace the following placeholders with your actual values. Refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information on the regions and subdomains:
+- Replace the following placeholders with your actual values. Refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for more information on the regions and subdomains:
   - `ACCOUNT_PREFIX` with your account identifier (found in **Account settings** under **Access URLs**)
   - `REGION` with your deployment region (for example, `us1` for North America AWS, `eu1` for EMEA, `jp1` for Japan, `au1` for APAC, and so on)
   - `ROUTING_SUBDOMAIN` with your single-tenant routing subdomain (typically your company name. Please contact your account team if unsure)
@@ -105,14 +105,14 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 <br />
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql_header.jpg" width="85%" title="Enter the header key and Bearer auth token values"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/graphql_header.jpg" width="85%" title="Enter the header key and Bearer auth token values"/>
 
 1. Run your query by clicking the blue query button in the top right of the **Operation** editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
 <!-- TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
 
 ### Fragments
 
@@ -201,7 +201,7 @@ totalCount # Total number of records across all pages
 
 ### Filters
 
-Filtering helps to narrow down the results of an API query. If you want to query and return only models and tests that are failing or find models that are taking too long to run, you can fetch execution details such as [`executionTime`](/docs/dbt-cloud-apis/discovery-schema-job-models#fields), [`runElapsedTime`](/docs/dbt-cloud-apis/discovery-schema-job-models#fields), or [`status`](/docs/dbt-cloud-apis/discovery-schema-job-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
+Filtering helps to narrow down the results of an API query. If you want to query and return only models and tests that are failing or find models that are taking too long to run, you can fetch execution details such as [`executionTime`](/docs/dbt-platform-apis/discovery-schema-job-models#fields), [`runElapsedTime`](/docs/dbt-platform-apis/discovery-schema-job-models#fields), or [`status`](/docs/dbt-platform-apis/discovery-schema-job-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
 
 Below is an example that filters for results of models that have succeeded on their `lastRunStatus`:
 
@@ -243,5 +243,5 @@ query ModelsAndTests($environmentId: BigInt!, $first: Int!) {
 
 ## Related content
 
-- [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
-- [Schema](/docs/dbt-cloud-apis/discovery-schema-job)
+- [Use cases and examples for the Discovery API](/docs/dbt-platform-apis/discovery-use-cases-and-examples)
+- [Schema](/docs/dbt-platform-apis/discovery-schema-job)

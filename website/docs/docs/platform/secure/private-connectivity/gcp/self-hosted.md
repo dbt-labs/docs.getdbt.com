@@ -18,7 +18,7 @@ GCP Private Service Connect (PSC) enables secure, private connectivity between <
 ## What this guide covers
 The focus of this guide is not on any particular service or [Backend](#terminology) architecture, but on the [Service Attachment](#terminology) that interconnects <Constant name="dbt" /> with your self-hosted service. This attachment process should be standard across most use cases.
 
-<Lightbox src="/img/docs/dbt-cloud/gcp-self-hosted-psc/scope-of-guide.png" width="90%" title="The scope of this guide" />
+<Lightbox src="/img/docs/dbt-platform/gcp-self-hosted-psc/scope-of-guide.png" width="90%" title="The scope of this guide" />
 
 :::note Out of scope
 This guide does not cover the configuration or troubleshooting of your self-hosted service, load balancer, or backend health, due to the virtually limitless ways these environments can be configured. While dbt Support may assist with such issues on a best-effort basis, we recommend engaging [Google Cloud Support](https://cloud.google.com/support) to expedite resolution.
@@ -76,7 +76,7 @@ Before you begin, make sure to review the following requirements:
 
     e. Click **Add** to create the subnet
 
-<Lightbox src="/img/docs/dbt-cloud/gcp-self-hosted-psc/service-attach-subnet-creation.png" width="90%" title="Screenshot of step 6: Subnet creation for PSC Service Attachment" />
+<Lightbox src="/img/docs/dbt-platform/gcp-self-hosted-psc/service-attach-subnet-creation.png" width="90%" title="Screenshot of step 6: Subnet creation for PSC Service Attachment" />
 
 ### Create a service attachment
 7. After the subnet creation for the service attachment has completed, in the search field at the top-middle of the console, search for **Private Service Connect**, and click on its product page.
@@ -109,12 +109,12 @@ Before you begin, make sure to review the following requirements:
 
     i. Click **Add service**
 
-<Lightbox src="/img/docs/dbt-cloud/gcp-self-hosted-psc/service-attach-creation.png" width="90%" title="Screenshot of step 9: Creation of PSC Service Attachment" />
+<Lightbox src="/img/docs/dbt-platform/gcp-self-hosted-psc/service-attach-creation.png" width="90%" title="Screenshot of step 9: Creation of PSC Service Attachment" />
 
 10. After the Published Service attachment has been created, click on it to open its details page.
 11. Copy the **Service attachment** URI (_not_ the Service attachment ID).
 
-<Lightbox src="/img/docs/dbt-cloud/gcp-self-hosted-psc/service-attach-details.png" width="90%" title="Screenshot of step 11: Copy the Service attachment URI" />
+<Lightbox src="/img/docs/dbt-platform/gcp-self-hosted-psc/service-attach-details.png" width="90%" title="Screenshot of step 11: Copy the Service attachment URI" />
 
 ### Providing dbt Support with connection details
 

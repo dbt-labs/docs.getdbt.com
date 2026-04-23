@@ -51,7 +51,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - **Scheme:** Internal
     - **IP address type:** IPv4
     - **Network mapping:** Choose the VPC that the VPC Endpoint Service and NLB are being deployed in, and choose subnets from at least two Availability Zones.
-    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC endpoint service must either not have an associated security group, or the security group must have a rule that allows requests from the appropriate <Constant name="dbt" /> **private CIDR(s)**. Note that _this is different_ than the static public IPs listed on the <Constant name="dbt" /> [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page. dbt Support can provide the correct private CIDR(s) upon request. If necessary, until you can refine the rule to the smaller CIDR provided by dbt, allow connectivity by temporarily adding an allow rule of `10.0.0.0/8`.
+    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC endpoint service must either not have an associated security group, or the security group must have a rule that allows requests from the appropriate <Constant name="dbt" /> **private CIDR(s)**. Note that _this is different_ than the static public IPs listed on the <Constant name="dbt" /> [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) page. dbt Support can provide the correct private CIDR(s) upon request. If necessary, until you can refine the rule to the smaller CIDR provided by dbt, allow connectivity by temporarily adding an allow rule of `10.0.0.0/8`.
     - **Listeners:** Create one listener per target group that maps the appropriate incoming port to the corresponding target group ([details](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)).
 - **VPC Endpoint Service** &mdash; Attach to the newly created NLB.
     - Acceptance required (optional) &mdash; Requires you to [accept our connection request](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests) after dbt creates the endpoint.
@@ -64,13 +64,13 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
  - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
-<Lightbox src="/img/docs/dbt-cloud/privatelink-allow-principals.png" width="70%" title="Enter ARN"/>
+<Lightbox src="/img/docs/dbt-platform/privatelink-allow-principals.png" width="70%" title="Enter ARN"/>
 
 ### 3. Obtain VPC endpoint service name
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="dbt" /> support.
 
-<Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
+<Lightbox src="/img/docs/dbt-platform/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
 ### 4. Submit your request to dbt Support
 Add the required information to the template below and submit your request to [dbt Support](mailto:support@getdbt.com):
@@ -98,7 +98,7 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 When you receive notification that the resources are provisioned within the <Constant name="dbt" /> environment, you must accept the endpoint connection (unless the VPC endpoint service is set to auto-accept connection requests). You can accept requests through the AWS console, as shown below, or through the AWS CLI.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
+<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
 
 ## Create connection in dbt
 

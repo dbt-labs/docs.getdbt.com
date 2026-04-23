@@ -30,14 +30,14 @@ import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permission
     - Service JSON
     - BigQuery Workload Identity Federation (WIF) <Lifecycle status="managed" />
 
-These authentication methods are set up in the [global connections account settings](/docs/cloud/connect-data-platform/about-connections), rather than single sign-on or integration settings. 
+These authentication methods are set up in the [global connections account settings](/docs/platform/connect-data-platform/about-connections), rather than single sign-on or integration settings. 
 
 When you create a new BigQuery connection, you will be presented with two schema options for the connection (both use the same adapter):
 
 - **BigQuery:** Supports all connection types (Use this option)
 - **BigQuery (Legacy):**  Supports all connection types except for WIF (Deprecated feature. Do not use.)
 
-All new connections should use the **BigQuery** option as **BigQuery (Legacy)** will be deprecated. To update existing connections and credentials in an environment to use the new BigQuery option, first, use the [APIs](/docs/dbt-cloud-apis/admin-cloud-api) to remove the configurations. 
+All new connections should use the **BigQuery** option as **BigQuery (Legacy)** will be deprecated. To update existing connections and credentials in an environment to use the new BigQuery option, first, use the [APIs](/docs/dbt-platform-apis/admin-cloud-api) to remove the configurations. 
 
 ### JSON keyfile
 
@@ -73,12 +73,12 @@ In addition to these fields, two other optional fields can be configured in a Bi
 | Location | The [location](https://cloud.google.com/bigquery/docs/locations) where dbt should create datasets. | `US`, `EU` |
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>
+<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>
 
 ### BigQuery OAuth
 **Available in:** Development environments, Enterprise-tier plans only
 
-The OAuth auth method permits <Constant name="dbt" /> to run queries on behalf of a BigQuery user or workload without storing the BigQuery service account keyfile in <Constant name="dbt" />. However, the JSON must still be provided, or fields must be manually filled out to complete the configuration in dbt Cloud. Those values do not have to be real for this bypass to work (for example, they can be `N/A`). For more information on the initial configuration of a BigQuery OAuth connection in <Constant name="dbt" />>, please see [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
+The OAuth auth method permits <Constant name="dbt" /> to run queries on behalf of a BigQuery user or workload without storing the BigQuery service account keyfile in <Constant name="dbt" />. However, the JSON must still be provided, or fields must be manually filled out to complete the configuration in dbt Cloud. Those values do not have to be real for this bypass to work (for example, they can be `N/A`). For more information on the initial configuration of a BigQuery OAuth connection in <Constant name="dbt" />>, please see [the docs on setting up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth).
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your Profile in <Constant name="dbt" />.
 
@@ -91,7 +91,7 @@ If you're using BigQuery WIF, we recommend using it with BigQuery OAuth. Otherwi
 
 **Available in:** Deployment environments
 
-The BigQuery WIF auth method permits <Constant name="dbt" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="dbt" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="dbt" />, refer to [Set up BigQuery Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
+The BigQuery WIF auth method permits <Constant name="dbt" /> to run deployment queries as a service account without configuring a BigQuery service account keyfile in <Constant name="dbt" />. For more information on the initial configuration of a BigQuery WIF connection in <Constant name="dbt" />, refer to [Set up BigQuery Workload Identity Federation](/docs/platform/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation).
 
 ## Configuration
 
@@ -234,7 +234,7 @@ This region must match the location of your BigQuery dataset if you want to use 
 
 ### Account level connections and credential management
 
-You can re-use connections across multiple projects with [global connections](/docs/cloud/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can use multiple connections inside of a single project (to handle dev, staging, production, and more).
+You can re-use connections across multiple projects with [global connections](/docs/platform/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can use multiple connections inside of a single project (to handle dev, staging, production, and more).
 
 BigQuery connections in <Constant name="dbt" /> currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
 
@@ -245,7 +245,7 @@ For a project, you will first create an environment variable to store the secret
     - Create a new _secret_ [environment variable](/docs/build/environment-variables#handling-secrets) to handle the private key: `DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY`
     - Fill in the private key value according the environment
 
-    To automate your deployment, use the following [admin API request](/dbt-cloud/api-v3#/operations/Create%20Projects%20Environment%20Variables%20Bulk), with `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-cloud-apis/authentication):
+    To automate your deployment, use the following [admin API request](/dbt-cloud/api-v3#/operations/Create%20Projects%20Environment%20Variables%20Bulk), with `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-platform-apis/authentication):
 
     ```shell
     curl --request POST \
@@ -301,7 +301,7 @@ For a project, you will first create an environment variable to store the secret
     execution_project: buck-stops-here-456
     ```
 
-    To automate your deployment, you first need to [create the extended attributes payload](/dbt-cloud/api-v3#/operations/Create%20Extended%20Attributes) for a given project, and then [assign it](/dbt-cloud/api-v3#/operations/Update%20Environment) to a specific environment. With `XXXXX` as your account number, `YYYYY` as your project number, and `ZZZZZ` as your [API token](/docs/dbt-cloud-apis/authentication):
+    To automate your deployment, you first need to [create the extended attributes payload](/dbt-cloud/api-v3#/operations/Create%20Extended%20Attributes) for a given project, and then [assign it](/dbt-cloud/api-v3#/operations/Update%20Environment) to a specific environment. With `XXXXX` as your account number, `YYYYY` as your project number, and `ZZZZZ` as your [API token](/docs/dbt-platform-apis/authentication):
 
     ```shell
     curl --request POST \

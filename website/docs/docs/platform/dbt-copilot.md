@@ -19,15 +19,15 @@ keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 <Constant name="copilot" /> is available on Starter, Enterprise, and Enterprise+ accounts. [Book a demo](https://www.getdbt.com/contact) to see how AI-driven development can streamline your workflow.
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
 
 ## How dbt Copilot works
 
 <Constant name="copilot" /> enhances efficiency by automating repetitive tasks while ensuring data privacy and security. It works as follows:
 
 - Access <Constant name="copilot" /> through:
-  - The [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot) to generate documentation, tests, semantic models. Access the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) from the same Copilot panel to build, refactor, and validate models end-to-end.
-  - The [<Constant name="canvas" /> ](/docs/cloud/build-canvas-copilot) to generate SQL code using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
+  - The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-copilot) to generate documentation, tests, semantic models. Access the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) from the same Copilot panel to build, refactor, and validate models end-to-end.
+  - The [<Constant name="canvas" /> ](/docs/platform/build-canvas-copilot) to generate SQL code using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
   - The [<Constant name="insights" />](/docs/explore/dbt-insights) to generate SQL queries for analysis using natural language prompts. <Lifecycle status="managed,managed_plus" /> 
 - <Constant name="copilot" /> gathers metadata (like column names, model SQL, documentation) but never accesses row-level warehouse data.
 - The metadata and user prompts are sent to the AI provider (in this case, OpenAI) through API calls for processing.

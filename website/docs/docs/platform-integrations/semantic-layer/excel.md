@@ -15,7 +15,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Excel 
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You need a Microsoft Excel account with access to install add-ons.
 - You have a [<Constant name="dbt" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
-- You have a [service token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.
+- You have a [service token](/docs/dbt-platform-apis/service-tokens) or a [personal access token](/docs/dbt-platform-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.
 - You must have a <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 :::tip
@@ -30,7 +30,7 @@ The <Constant name="semantic_layer" /> Microsoft Excel integration is available 
 
 1. In Excel, authenticate with your Host, <Constant name="dbt" /> Environment ID, and service token.
    - Access your Environment ID, Host, and URLs in your <Constant name="semantic_layer" /> settings. Generate a service token in the <Constant name="semantic_layer" /> settings or **API tokens** settings. Alternatively, you can also create a personal access token by going to **API tokens** > **Personal tokens**. 
-   <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.png" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
+   <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-and-gsheets.png" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
 
 2. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions). To cancel a query while running, press the **Cancel** button.
 
@@ -41,7 +41,7 @@ type="Microsoft Excel"
 bullet_1="Results that take longer than one minute to load into Excel will fail. This limit only applies to the loading process, not the time it takes for the data platform to run the query."
 bullet_2="If you're using this extension, make sure you're signed into Microsoft with the same Excel profile you used to set up the Add-In. Log in with one profile at a time as using multiple  profiles at once might cause issues."
 bullet_3="Note that only standard granularities are currently available, custom time granularities aren't currently supported for this integration."
-queryBuilder="/img/docs/dbt-cloud/semantic-layer/query-builder.png"
+queryBuilder="/img/docs/dbt-platform/semantic-layer/query-builder.png"
 />
 
 ## FAQs

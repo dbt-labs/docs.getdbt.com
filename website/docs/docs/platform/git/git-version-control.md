@@ -11,7 +11,7 @@ A [version control](https://en.wikipedia.org/wiki/Version_control) system allows
 
 In a distributed version control system, every developer has a full copy of the project and project history. <Constant name="git" /> is one of the most popular distributed version control systems and is commonly used for both open source and commercial software development, with great benefits for individuals, teams and businesses.
 
-![<Constant name="git" /> overview](/img/docs/dbt-cloud/cloud-ide/git-overview.png)
+![<Constant name="git" /> overview](/img/docs/dbt-platform/cloud-ide/git-overview.png)
 
 
 <Constant name="git" /> allows developers see the entire timeline of their changes, decisions, and progression of any project in one place. From the moment they access the history of a project, the developer has all the context they need to understand it and start contributing.
@@ -20,8 +20,8 @@ When you develop in the command line interface (CLI) or Cloud  integrated develo
 
 
 ## Related docs
-- [Version control basics](/docs/cloud/git/version-control-basics)
-- [Merge conflicts](/docs/cloud/git/merge-conflicts) 
-- [Connect to GitHub](/docs/cloud/git/connect-github)
-- [Connect to GitLab](/docs/cloud/git/connect-gitlab)
-- [Connect to Azure DevOps](/docs/cloud/git/connect-azure-devops)
+- [Version control basics](/docs/platform/git/version-control-basics)
+- [Merge conflicts](/docs/platform/git/merge-conflicts) 
+- [Connect to GitHub](/docs/platform/git/connect-github)
+- [Connect to GitLab](/docs/platform/git/connect-gitlab)
+- [Connect to Azure DevOps](/docs/platform/git/connect-azure-devops)

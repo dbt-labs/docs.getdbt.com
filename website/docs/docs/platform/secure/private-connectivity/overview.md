@@ -27,21 +27,21 @@ Select your cloud platform to view private connectivity options, support matrix,
 <Card
     title="AWS"
     body="Amazon Web Services PrivateLink"
-    link="/docs/cloud/secure/private-connectivity/aws/aws-overview"
+    link="/docs/platform/secure/private-connectivity/aws/aws-overview"
     icon="dbt-bit"
 />
 
 <Card
     title="Azure"
     body="Microsoft Azure Private Link"
-    link="/docs/cloud/secure/private-connectivity/azure/azure-overview"
+    link="/docs/platform/secure/private-connectivity/azure/azure-overview"
     icon="dbt-bit"
 />
 
 <Card
     title="GCP"
     body="Google Cloud Platform Private Service Connect"
-    link="/docs/cloud/secure/private-connectivity/gcp/gcp-overview"
+    link="/docs/platform/secure/private-connectivity/gcp/gcp-overview"
     icon="dbt-bit"
 />
 

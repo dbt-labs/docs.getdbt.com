@@ -13,14 +13,14 @@ import SetUpPages from '/snippets/_available-enterprise-only.md';
 
 <SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
 
-The <Constant name="dbt" /> Enterprise and Enterprise+ plans support a number of pre-built permission sets to help manage access controls within a <Constant name="dbt" /> account. See the docs on [access control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access control (RBAC).
+The <Constant name="dbt" /> Enterprise and Enterprise+ plans support a number of pre-built permission sets to help manage access controls within a <Constant name="dbt" /> account. See the docs on [access control](/docs/platform/manage-access/about-user-access) for more information on Role-Based access control (RBAC).
 
 
 ## Permission sets
 
 The following permission sets are available for assignment in all <Constant name="dbt" /> Enterprise-tier accounts. They can be granted to <Constant name="dbt" /> groups and then to users. A <Constant name="dbt" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
 
-Access to <Constant name="dbt" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/cloud/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
+Access to <Constant name="dbt" /> features and functionality is split into `account-level` and `project-level` permission sets. Account-level permissions are primarily for account administration (inviting users, configuring SSO, and creating groups). Project-level permissions are for the configuration and maintenance of the projects themselves (configuring environments, accessing IDE, and running jobs). Account permission sets may have access to project features, and project permission sets may have access to account features. Check out the [permissions tables](/docs/platform/manage-access/enterprise-permissions#account-permissions) to compare sets and their access. 
 
 <Expandable alt_header="Account admin">
 
@@ -110,7 +110,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Developer">
 
-The Developer permission set is intended for users who build and maintain dbt models under development and manage production behavior. This is the primary permission set for users working in the IDE and should not be conflated with the [Developer license](/docs/cloud/manage-access/seats-and-users#licenses).
+The Developer permission set is intended for users who build and maintain dbt models under development and manage production behavior. This is the primary permission set for users working in the IDE and should not be conflated with the [Developer license](/docs/platform/manage-access/seats-and-users#licenses).
 
 Notable features:
 - Developer is a project-level set.
@@ -151,7 +151,7 @@ Job admin is an administrative permission set for users who create, run, and man
 Notable features:
 - Job admin is a project-level set.
 - Job admins can create and edit jobs, runs, environment variables, and data warehouse configs. 
-- Job admins can set up project integrations, including [Tableau lineage](/docs/cloud-integrations/semantic-layer/tableau).
+- Job admins can set up project integrations, including [Tableau lineage](/docs/platform-integrations/semantic-layer/tableau).
 - Read-only access to project configs. 
 - Read-only access to connections and public models.
 - Can access <Constant name="catalog" />.
@@ -191,7 +191,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Metadata (Discovery API only)">
 
-Metadata is intended to be a read-only [Discovery API](/docs/dbt-cloud-apis/discovery-api) integration permission set. 
+Metadata is intended to be a read-only [Discovery API](/docs/dbt-platform-apis/discovery-api) integration permission set. 
 
 Notable features:
 - Metadata is a project-level set.
@@ -214,7 +214,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Security admin">
 
-Security admins have limited access to the security settings and policies for the <Constant name="dbt" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. The [IT license-type](/docs/cloud/manage-access/seats-and-users#licenses) includes this permission set by default. 
+Security admins have limited access to the security settings and policies for the <Constant name="dbt" /> account. This is intended for members of a security team who need to ensure compliance with security standards and oversee the implementation of best security practices across the account. The [IT license-type](/docs/platform/manage-access/seats-and-users#licenses) includes this permission set by default. 
 
 Notable features:
 - Security admin is an account-level set. 
@@ -260,7 +260,7 @@ Notable features:
 <Expandable alt_header="Viewer">
 The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
 
-The Viewer permission set is frequently paired with the [Read-only license-type](/docs/cloud/manage-access/seats-and-users).
+The Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
 
 Notable features:
 - Viewer is an account-level set.
@@ -279,7 +279,7 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 ## Additional resources
 
-- [Grant users access](/docs/cloud/manage-access/about-user-access#grant-access)
-- [Role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-)
-- [Environment-level permissions](/docs/cloud/manage-access/environment-permissions)
+- [Grant users access](/docs/platform/manage-access/about-user-access#grant-access)
+- [Role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-)
+- [Environment-level permissions](/docs/platform/manage-access/environment-permissions)
 

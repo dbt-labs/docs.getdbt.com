@@ -16,9 +16,9 @@ If you have a monorepo with several dbt projects, opening a single pull request 
    - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your <Constant name="dbt" /> account must be on the [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/).
    - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/cloud-release-tracks) and to <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts. You should have [SQLFluff configured](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) in your project. SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
 - [Advanced CI](/docs/deploy/advanced-ci) features:
-   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your <Constant name="dbt" /> account must be on an [Enterprise-tier plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [<Constant name="dbt" /> administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
-- Set up a [connection with your <Constant name="git" /> provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets <Constant name="dbt" /> run jobs on your behalf for job triggering.
-   - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
+   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your <Constant name="dbt" /> account must be on an [Enterprise-tier plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [<Constant name="dbt" /> administrator to enable](/docs/platform/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
+- Set up a [connection with your <Constant name="git" /> provider](/docs/platform/git/git-configuration-in-dbt-cloud). This integration lets <Constant name="dbt" /> run jobs on your behalf for job triggering.
+   - If you're using a native [GitLab](/docs/platform/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
 import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
 
@@ -72,22 +72,22 @@ To make CI job creation easier, many options on the **CI job** page are set to d
    - **Generate docs on run** &mdash; Enable this if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this job runs. This is disabled by default since testing doc generation on every CI check is not a recommended practice.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
-   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt UI"/>
+   <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt UI"/>
 
 
 ### Example of CI check in pull request {#example-ci-check}
 The following is an example of a CI check in a GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the <Constant name="dbt" /> section takes you to the relevant CI run in <Constant name="dbt" />.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
 
 ### Example of CI report in pull request <Lifecycle status="preview" /> {#example-ci-report}
 The following is an example of a CI report in a GitHub pull request, which is shown when the **dbt compare** option is enabled for the CI job. It displays a high-level summary of the models that changed from the pull request.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
 
 ## Trigger a CI job with the API <Lifecycle status="managed,managed_plus" />
 
-If you're not using <Constant name="dbt" />’s native <Constant name="git" /> integration with [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) to trigger a CI job to run. However, <Constant name="dbt" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
+If you're not using <Constant name="dbt" />’s native <Constant name="git" /> integration with [GitHub](/docs/platform/git/connect-github), [GitLab](/docs/platform/git/connect-gitlab), or [Azure DevOps](/docs/platform/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-platform-apis/admin-cloud-api) to trigger a CI job to run. However, <Constant name="dbt" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
 
 
 
@@ -113,7 +113,7 @@ Automatically test your semantic nodes (metrics, semantic models, and saved quer
 
 To do this, add the command `dbt sl validate --select state:modified+` in the CI job. This ensures the validation of modified semantic nodes and their downstream dependencies.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/sl-ci-job.png" width="90%" title="Semantic validations in CI workflow" />
+<Lightbox src="/img/docs/dbt-platform/deployment/sl-ci-job.png" width="90%" title="Semantic validations in CI workflow" />
 
 #### Benefits
 - Testing semantic nodes in a CI job supports deferral and selection of semantic nodes.
@@ -130,7 +130,7 @@ To learn how to set this up, refer to the following steps:
 
 There are additional commands and use cases described in the [next section](#use-cases), such as validating all semantic nodes, validating specific semantic nodes, and so on.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.png" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
+<Lightbox src="/img/docs/dbt-platform/deployment/ci-dbt-sl-validate-downstream.png" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
 
 ### Use cases
 
@@ -152,7 +152,7 @@ Before running semantic validations, <Constant name="dbt" /> must build the modi
 
 For semantic nodes and models that aren't downstream of modified models, <Constant name="dbt" /> defers to the production models.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.png" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
+<Lightbox src="/img/docs/dbt-platform/deployment/ci-dbt-sl-validate-downstream.png" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
 
 </Expandable>
 
@@ -164,7 +164,7 @@ To only validate modified semantic nodes, use the following command (with [state
 dbt sl validate --select state:modified+
 ```
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-modified.png" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
+<Lightbox src="/img/docs/dbt-platform/deployment/ci-dbt-sl-validate-modified.png" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
 
 This will only validate semantic nodes. It will use the defer state set configured in your orchestration job, deferring to your production models.
 
@@ -178,7 +178,7 @@ Use the selector syntax to select the _specific_ semantic node(s) you want to va
 dbt sl validate --select metric:revenue
 ```
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-select.png" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
+<Lightbox src="/img/docs/dbt-platform/deployment/ci-dbt-sl-validate-select.png" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
 
 In this example, the CI job will validate the selected `metric:revenue` semantic node. To select multiple semantic nodes, use the selector syntax: `dbt sl validate --select metric:revenue metric:customers`.
 
@@ -194,7 +194,7 @@ To validate _all_ semantic nodes in your project, add the following command to d
    dbt sl validate
    ```
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-all.png" width="90%" title="Validate all semantic nodes in your CI job by adding the command: 'dbt sl validate' in your job execution settings." />
+<Lightbox src="/img/docs/dbt-platform/deployment/ci-dbt-sl-validate-all.png" width="90%" title="Validate all semantic nodes in your CI job by adding the command: 'dbt sl validate' in your job execution settings." />
 
 </Expandable>
 
@@ -267,7 +267,7 @@ Double-check that your PR isn't trying to merge using a commit that belongs to a
 
 <DetailsToggle alt_header="CI job not triggering for Virtual Private dbt users"> 
 
-To trigger jobs on <Constant name="dbt" /> using the [API](/docs/dbt-cloud-apis/admin-cloud-api), your Git provider needs to connect to your <Constant name="dbt" /> account.
+To trigger jobs on <Constant name="dbt" /> using the [API](/docs/dbt-platform-apis/admin-cloud-api), your Git provider needs to connect to your <Constant name="dbt" /> account.
 
 If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.
 </DetailsToggle>

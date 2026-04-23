@@ -37,7 +37,7 @@ This feature isn't available for Azure or GCP. If you don't see **Private endpoi
 This section walks you through the process of requesting a new Snowflake PrivateLink endpoint in <Constant name="dbt_platform" />. 
 
 ##### Prerequisites
-- You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) permission sets in <Constant name="dbt_platform"/>. Additionally, users with an IT license are able to create private endpoints in <Constant name="dbt_platform"/>.
+- You need [Account admin](/docs/platform/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/platform/manage-access/enterprise-permissions?version=2.0#project-creator) permission sets in <Constant name="dbt_platform"/>. Additionally, users with an IT license are able to create private endpoints in <Constant name="dbt_platform"/>.
 - You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
 
 #### Request a new private endpoint
@@ -52,7 +52,7 @@ This section walks you through the process of requesting a new Snowflake Private
 
    You can search by **Name** or **URL**. You can only _create_ new endpoints for Snowflake at this time. To delete an endpoint, contact [dbt Support](mailto:support@getdbt.com).
 
-    <Lightbox src="/img/docs/dbt-cloud/private-endpoint-page.png" title="Private endpoints table showing existing endpoints, connectivity status, and the Request new button"/>
+    <Lightbox src="/img/docs/dbt-platform/private-endpoint-page.png" title="Private endpoints table showing existing endpoints, connectivity status, and the Request new button"/>
 
 3. To request a new endpoint, click **Request new**.
 4. Under **Provider type**, confirm **Snowflake** is selected. Currently other endpoint providers aren't supported, contact [dbt Support](mailto:support@getdbt.com) if you need to connect to a different service.
@@ -61,7 +61,7 @@ This section walks you through the process of requesting a new Snowflake Private
 7. Copy the output from Snowflake and return to <Constant name="dbt_platform" /> to paste it into the **Snowflake output** field. If the output is correct, you'll see an inline **Output looks good** type message below the text box. If there's an error, review the message and make any updates as necessary.
 8. Click **Submit request**.
 
-    <Lightbox src="/img/docs/dbt-cloud/private-endpoint-config.png" title="Endpoint request form showing Provider type, SQL command snippet, and Snowflake output fields"/>
+    <Lightbox src="/img/docs/dbt-platform/private-endpoint-config.png" title="Endpoint request form showing Provider type, SQL command snippet, and Snowflake output fields"/>
 
 9. After submission, a confirmation popup appears (for example, **Endpoint request submitted**). From the popup, you can request another endpoint or return to **Private endpoints** to track request status.
 10. Proceed to the **Connections** page and following the steps in the [Create connection in dbt](#create-connection-in-dbt) section to configure PrivateLink. 
@@ -80,7 +80,7 @@ If you submit a request using a VPCE ID that matches an existing endpoint, <Cons
 
 Select your preferred option and click **Confirm & Submit**.
 
-  <Lightbox src="/img/docs/dbt-cloud/endpoint-exists.png" width="70%" title="Endpoint already exists popup with options to create a new interface endpoint or re-use an existing one"/>
+  <Lightbox src="/img/docs/dbt-platform/endpoint-exists.png" width="70%" title="Endpoint already exists popup with options to create a new interface endpoint or re-use an existing one"/>
 
 #### Troubleshooting and errors
 
@@ -100,7 +100,7 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
      - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
    - You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
 
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
+<Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
 2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
@@ -151,7 +151,7 @@ s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.ama
 ```
 4. Save the changes.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflake-internal-stage-dns.png" title="Internal Stage DNS"/>
+<Lightbox src="/img/docs/dbt-platform/snowflake-internal-stage-dns.png" title="Internal Stage DNS"/>
 
 ## Configuring network policies
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
@@ -175,13 +175,13 @@ Open the Snowflake UI and take the following steps:
 7. Type the VPCE ID provided by <Constant name="dbt" /> Support into the identifier box and press **Enter**.
 8. Click **Create Network Rule**.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
+<Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink2.png" title="Create Network Rule"/>
 
 9. In the **Network Policy** tab, edit the policy you want to add the rule to. This could be your account-level policy or a policy specific to the users connecting from <Constant name="dbt" />.
 
 10. Add the new rule to the allowed list and click **Update Network Policy**.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink3.png" title="Update Network Policy"/>
+<Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink3.png" title="Update Network Policy"/>
 
 ### Using SQL
 

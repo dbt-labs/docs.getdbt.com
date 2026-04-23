@@ -40,7 +40,7 @@ The following fields are required when creating a Snowflake connection:
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
 
 ### Username and password with MFA
 
@@ -69,16 +69,16 @@ Development credentials in a dbt project. Simply enter your Snowflake
 username (specifically, the `login_name`) and the corresponding user's Snowflake `password`
 to authenticate <Constant name="dbt" /> to run queries against Snowflake on behalf of a Snowflake user.
 
-`Username / Password` authentication is not supported for deployment credentials because MFA is required. In deployment environments, use [keypair](/docs/cloud/connect-data-platform/connect-snowflake#key-pair) authentication instead.
+`Username / Password` authentication is not supported for deployment credentials because MFA is required. In deployment environments, use [keypair](/docs/platform/connect-data-platform/connect-snowflake#key-pair) authentication instead.
 
 **Note**: The *Schema** field in the **Developer Credentials** section is required.
-<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
+<Lightbox src="/img/docs/dbt-platform/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
 
 **Prerequisites:**
 - A development environment in a <Constant name="dbt" /> project
 - The Duo authentication app
 - Admin access to Snowflake (if MFA settings haven't already been applied to the account)
-- [Admin (write) access](/docs/cloud/manage-access/seats-and-users) to <Constant name="dbt" /> environments
+- [Admin (write) access](/docs/platform/manage-access/seats-and-users) to <Constant name="dbt" /> environments
 
 [MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all `Username / Password` logins. Snowflake's MFA support is powered by the Duo Security service.
 
@@ -95,7 +95,7 @@ to authenticate <Constant name="dbt" /> to run queries against Snowflake on beha
   connect_retries: 0
   ```
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
+<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
 
 ### Key pair
 
@@ -125,7 +125,7 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 -----END ENCRYPTED PRIVATE KEY-----
 ```
 
-   <Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
+   <Lightbox src="/img/docs/dbt-platform/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
 
 #### Fusion key pair
 
@@ -140,8 +140,8 @@ import FusionKeyPair from '/snippets/_fusion-key-pair.md';
 The OAuth auth method permits <Constant name="dbt" /> to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in <Constant name="dbt" />. 
 
-For more information on configuring a Snowflake OAuth connection in <Constant name="dbt" />, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
+For more information on configuring a Snowflake OAuth connection in <Constant name="dbt" />, please see [the docs on setting up Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth).
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
 
 ## Configuration
 

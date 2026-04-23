@@ -25,14 +25,14 @@ For help, contact the dbt Support Team at [support@getdbt.com](mailto:support@ge
 We highly recommended you take these actions:
 
 - Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations might be voided during the migration. You can resend user invitations after the migration is complete.
-- Commit unsaved changes in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).  Unsaved changes might be lost during migration.
-- Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they will be unavailable from <Constant name="dbt" /> after the migration is complete. Logs older than 90 days while within the data retention period are not deleted, but you will have to work with the dbt Labs Customer Support team to recover.
+- Commit unsaved changes in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).  Unsaved changes might be lost during migration.
+- Export and download [audit logs](/docs/platform/manage-access/audit-log) older than 90 days, as they will be unavailable from <Constant name="dbt" /> after the migration is complete. Logs older than 90 days while within the data retention period are not deleted, but you will have to work with the dbt Labs Customer Support team to recover.
 
 ## Required actions
 
 These actions are required to prevent users from losing access <Constant name="dbt" />:
 
-- If you still need to, complete [Auth0 migration for SSO](/docs/cloud/manage-access/auth0-migration) before your scheduled migration date to avoid service disruptions. If you've completed the Auth0 migration, your account SSO configurations will be transferred automatically. 
+- If you still need to, complete [Auth0 migration for SSO](/docs/platform/manage-access/auth0-migration) before your scheduled migration date to avoid service disruptions. If you've completed the Auth0 migration, your account SSO configurations will be transferred automatically. 
 - Update your IP allow lists. <Constant name="dbt" /> will be using new IPs to access your warehouse post-migration. Allow inbound traffic from all of the following new IPs in your firewall and include them in any database grants:
 
     - `52.3.77.232` 
@@ -45,7 +45,7 @@ These actions are required to prevent users from losing access <Constant name="d
 
 All runs available in <Constant name="dbt"/> will be migrated with your account. This includes metadata about the run, like its status, execution start time, and duration. However, the individual steps associated with a run will not be migrated with your account. Therefore, the <Constant name="dbt"/> commands executed during a run, along with their logs and artifact files, will not be available in <Constant name="dbt"/> after your migration.
 
-The [Discovery API](/docs/dbt-cloud-apis/discovery-api) will contain a subset of data after your account has been migrated. Metadata generated in the past 7 days will be migrated with your account. A maximum of 20 runs will be available when querying the [job object](/docs/dbt-cloud-apis/discovery-schema-job) after migration.
+The [Discovery API](/docs/dbt-platform-apis/discovery-api) will contain a subset of data after your account has been migrated. Metadata generated in the past 7 days will be migrated with your account. A maximum of 20 runs will be available when querying the [job object](/docs/dbt-platform-apis/discovery-schema-job) after migration.
 
 ## Post-migration​
 
@@ -55,7 +55,7 @@ Use one of these two URL login options:
 
 - `us1.dbt.com.` If you were previously logging in with a username and password at `cloud.getdbt.com`, you should instead plan to log in at us1.dbt.com. The original URL will still work, but you’ll have to click through to be redirected upon login. If you have single sign-on configured, you will use the unique URL listed in the SSO account settings (ex: `ACCOUNT_PREFIX.us1.dbt.com`).
 - `ACCOUNT_PREFIX.us1.dbt.com`: A unique URL specifically for your account. If you belong to multiple accounts, each will have a unique URL available as long as they have been migrated to multi-cell. 
-Check out [access, regions, and IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information.
+Check out [access, regions, and IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for more information.
 
 Remove the following old IP addresses from your firewall and database grants: 
 

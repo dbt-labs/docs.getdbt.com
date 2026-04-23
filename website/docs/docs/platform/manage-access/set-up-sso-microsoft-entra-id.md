@@ -10,7 +10,7 @@ sidebar_label: "Set up SSO with Microsoft Entra ID"
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). 
 
 :::info SCIM available for Entra ID
-After setting up single sign-on (SSO), you can [set up System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim-entra-id) with Entra ID to automate user and group provisioning. 
+After setting up single sign-on (SSO), you can [set up System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim-entra-id) with Entra ID to automate user and group provisioning. 
 :::
 
 Currently supported SSO features include:
@@ -30,7 +30,7 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 1. Under **Manage**, select **App registrations**.
 2. Click **+ New Registration** to begin creating a new application registration.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" width="80%" title="Creating a new app registration"/>
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-app-registration-empty.png" width="80%" title="Creating a new app registration"/>
 
 3. Supply configurations for the **Name** and **Supported account types** fields as shown in the following table:
 
@@ -39,7 +39,7 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 | **Name** | <Constant name="dbt" /> |
 | **Supported account types** | Accounts in this organizational directory only _(single tenant)_ |
 
-4. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/cloud/manage-access/sso-overview#auth0-uris) for your region and plan.
+4. Configure the **Redirect URI**. The table below shows the appropriate Redirect URI values for single-tenant and multi-tenant Entra ID app deployments. For most enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/platform/manage-access/sso-overview#auth0-uris) for your region and plan.
 
 **Note:** Your dbt platform tenancy has no bearing on this setting. This Entra ID app setting controls app access:
      - **Single-tenant:** Only users from your Entra ID tenant can access the app.
@@ -50,7 +50,7 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 | Single-tenant _(recommended)_ | `https://YOUR_AUTH0_URI/login/callback` |
 | Multi-tenant | `https://YOUR_AUTH0_URI/login/callback` |
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" width="70%" title="Configuring a new app registration"/>
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" width="70%" title="Configuring a new app registration"/>
 
 5. Save the App registration to continue setting up Microsoft Entra ID SSO.
 
@@ -63,7 +63,7 @@ Depending on your Microsoft Entra ID settings, your App Registration page might 
 
 7. Click **+ Add platform** and enter a Redirect URI for your application. See step 4 above for more information on the correct Redirect URI value for your <Constant name="dbt" /> application.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
 ### Azure &lt;-&gt; dbt User and Group mapping
 
@@ -88,7 +88,7 @@ Once you've registered the application, the next step is to assign users to it. 
 11. Click **Add User/Group**.
 12. Assign additional users and groups as needed.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
 
 :::info User assignment required?
 Under **Properties** check the toggle setting for **User assignment required?** and confirm it aligns to your requirements. Most customers will want this toggled to **Yes** so that only users/groups explicitly assigned to <Constant name="dbt" /> will be able to sign in. If this setting is toggled to **No** any user will be able to access the application if they have a direct link to the application per [Microsoft Entra ID Documentation](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/assign-user-or-group-access-portal#configure-an-application-to-require-user-assignment)
@@ -110,7 +110,7 @@ The default scope only requires `User.Read` and `GroupMember.Read.All`. If you a
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-permissions-overview.png" title="Configuring application permissions" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-permissions-overview.png" title="Configuring application permissions" />
 
 ### Creating a client secret
 
@@ -121,15 +121,15 @@ The default scope only requires `User.Read` and `GroupMember.Read.All`. If you a
 21. Click **Add** to finish creating the client secret value (not the client secret ID).
 22. Record the generated client secret somewhere safe. Later in the setup process, we'll use this client secret in <Constant name="dbt" /> to finish configuring the integration.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-config.png" title="Configuring certificates & secrets" />
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-secret-saved.png" title="Recording the client secret" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-secret-config.png" title="Configuring certificates & secrets" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-secret-saved.png" title="Recording the client secret" />
 
 ### Collect client credentials
 
 23. Navigate to the **Overview** page for the app registration.
 24. Note the **Application (client) ID** and **Directory (tenant) ID** shown in this form and record them along with your client secret. We'll use these keys in the steps below to finish configuring the integration in <Constant name="dbt" />.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-overview.png" title="Collecting credentials. Store these somewhere safe" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-overview.png" title="Collecting credentials. Store these somewhere safe" />
 
 ## Configuring dbt
 
@@ -149,7 +149,7 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
 
 28.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
 
@@ -165,23 +165,23 @@ The **Single sign-on** section also contains additional configuration options wh
 
 ## Setting up RBAC
 Now you have completed setting up SSO with Entra ID, the next steps will be to set up
-[RBAC groups](/docs/cloud/manage-access/enterprise-permissions) to complete your access control configuration.
+[RBAC groups](/docs/platform/manage-access/enterprise-permissions) to complete your access control configuration.
 
 :::tip Set up SCIM
-Now that you've set up SSO with Entra ID, you can [set up SCIM](/docs/cloud/manage-access/scim-entra-id) to automate user and group provisioning.
+Now that you've set up SSO with Entra ID, you can [set up SCIM](/docs/platform/manage-access/scim-entra-id) to automate user and group provisioning.
 :::
 
 ## Troubleshooting tips
 
 Ensure that the domain name under which user accounts exist in Azure matches the domain you supplied in [Supplying credentials](#supplying-credentials) when you configured SSO.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/azure/azure-get-domain.png" title="Obtaining the user domain from Azure" />
 
-For additional troubleshooting &mdash; including "Admin consent required" prompts for new users, "Access Denied" after SAML authentication, and issues with Entity ID or ACS URL changes &mdash; refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+For additional troubleshooting &mdash; including "Admin consent required" prompts for new users, "Access Denied" after SAML authentication, and issues with Entity ID or ACS URL changes &mdash; refer to [SSO FAQs and troubleshooting](/docs/platform/manage-access/sso-faq).
 
 ## Learn more by video
 The following video explains how to set up SSO with Microsoft Entra ID:
 
 <video width="100%" height="100%" playsinline controls>
-  <source src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-dbt-entra-id.mp4" type="video/mp4" />
+  <source src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/sso-dbt-entra-id.mp4" type="video/mp4" />
 </video>

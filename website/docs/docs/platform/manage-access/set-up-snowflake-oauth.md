@@ -8,7 +8,7 @@ id: "set-up-snowflake-oauth"
 
 :::info Subdomain migration
 
-We're migrating <Constant name="dbt_platform" /> [multi-tenant accounts worldwide](/docs/cloud/about-cloud/access-regions-ip-addresses) to static subdomains. After the migration, you’ll be automatically redirected from your original URL (for example, `cloud.getdbt.com`) to the new URL static subdomain (for example, `abc123.us1.dbt.com`), which you can find in your account settings. If your organization has network allow listing, add the `us1.dbt.com` domain to your allow list. 
+We're migrating <Constant name="dbt_platform" /> [multi-tenant accounts worldwide](/docs/platform/about-platform/access-regions-ip-addresses) to static subdomains. After the migration, you’ll be automatically redirected from your original URL (for example, `cloud.getdbt.com`) to the new URL static subdomain (for example, `abc123.us1.dbt.com`), which you can find in your account settings. If your organization has network allow listing, add the `us1.dbt.com` domain to your allow list. 
 
 The migration may require additional actions in your Snowflake account. See [subdomain migration](#subdomain-migration) for more information.
 
@@ -36,7 +36,7 @@ To get started, copy the connection's redirect URI from <Constant name="dbt" />:
 1. Copy the **Redirect URI** to use in the later steps.
 
 <Lightbox
-	src="/img/docs/dbt-cloud/dbt-cloud-enterprise/snowflake-oauth-redirect-uri.png"
+	src="/img/docs/dbt-platform/dbt-cloud-enterprise/snowflake-oauth-redirect-uri.png"
 	title="Locate the Snowflake OAuth redirect URI"
 	alt="The OAuth method and Redirect URI inputs for a Snowflake connection in dbt."
 />
@@ -45,7 +45,7 @@ To get started, copy the connection's redirect URI from <Constant name="dbt" />:
 
 In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). 
 
-In the following `CREATE OR REPLACE SECURITY INTEGRATION` example query, replace `<REDIRECT_URI>` value with the Redirect URI (also referred to as the [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses)) copied in <Constant name="dbt" />. To locate the Redirect URI, refer to the previous [locate the redirect URI value](#locate-the-redirect-uri-value) section.
+In the following `CREATE OR REPLACE SECURITY INTEGRATION` example query, replace `<REDIRECT_URI>` value with the Redirect URI (also referred to as the [access URL](/docs/platform/about-platform/access-regions-ip-addresses)) copied in <Constant name="dbt" />. To locate the Redirect URI, refer to the previous [locate the redirect URI value](#locate-the-redirect-uri-value) section.
 
 Important: If you’re using secondary roles, you must include `OAUTH_USE_SECONDARY_ROLES = 'IMPLICIT';` in the statement.
 
@@ -102,7 +102,7 @@ To complete the creation of your connection in <Constant name="dbt" />:
 2. Edit the connection and enter the Client ID and Client Secret.
 3. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt" />
 
 ### Authorize developer credentials
 
@@ -110,7 +110,7 @@ Once Snowflake SSO is enabled, users on the project will be able to configure th
 
 ### SSO OAuth flow diagram
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
 
 Once a user has authorized <Constant name="dbt" /> with Snowflake via their identity provider, Snowflake will return a Refresh Token to the <Constant name="dbt" /> application. <Constant name="dbt" /> is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the <Constant name="studio_ide" /> on behalf of users.
 
@@ -121,12 +121,12 @@ If you are planning to set up the same Snowflake account to different <Constant 
 
 ## Subdomain migration
 
-If you're a [multi-tenant account](/docs/cloud/about-cloud/access-regions-ip-addresses) being migrated to a static subdomain, you may need to take additional action in your Snowflake account to prevent service disruptions.
+If you're a [multi-tenant account](/docs/platform/about-platform/access-regions-ip-addresses) being migrated to a static subdomain, you may need to take additional action in your Snowflake account to prevent service disruptions.
 
 Snowflake limits each security integration (`CREATE SECURITY INTEGRATION … TYPE = OAUTH`) to a single redirect URI. If you configured your OAuth integration with `cloud.getdbt.com`, you must take one of two courses of action: 
 
-- **Configure an additional security integration:** In your Snowflake account, you will have one with the original URL (for example, `cloud.getdbt.com/complete/snowflake`) as the redirect URI, and another using the new static subdomain. Refer to our [regions & IP addresses page](/docs/cloud/about-cloud/access-regions-ip-addresses) for a complete list of the original domains in your region (marked as "multi-tenant" on the chart).
-- **Use a single security integration:** Create one that uses the new static subdomain as the redirect URI. In this scenario, you must recreate all of your [existing connections](/docs/cloud/connect-data-platform/about-connections#connection-management).
+- **Configure an additional security integration:** In your Snowflake account, you will have one with the original URL (for example, `cloud.getdbt.com/complete/snowflake`) as the redirect URI, and another using the new static subdomain. Refer to our [regions & IP addresses page](/docs/platform/about-platform/access-regions-ip-addresses) for a complete list of the original domains in your region (marked as "multi-tenant" on the chart).
+- **Use a single security integration:** Create one that uses the new static subdomain as the redirect URI. In this scenario, you must recreate all of your [existing connections](/docs/platform/connect-data-platform/about-connections#connection-management).
 
 ### Troubleshooting
 
@@ -147,7 +147,7 @@ This error might be because of a configuration issue in the Snowflake OAuth flow
 
 <Expandable alt_header="Server error 500">
 
-If you experience a 500 server error when redirected from Snowflake to <Constant name="dbt" />, double-check that you have allow-listed [<Constant name="dbt" />'s IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses), or [VPC Endpoint ID (for PrivateLink connections)](/docs/cloud/secure/private-connectivity/aws/aws-snowflake#configuring-network-policies), on a Snowflake account level.
+If you experience a 500 server error when redirected from Snowflake to <Constant name="dbt" />, double-check that you have allow-listed [<Constant name="dbt" />'s IP addresses](/docs/platform/about-platform/access-regions-ip-addresses), or [VPC Endpoint ID (for PrivateLink connections)](/docs/platform/secure/private-connectivity/aws/aws-snowflake#configuring-network-policies), on a Snowflake account level.
 
 Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to allow list.
 

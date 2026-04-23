@@ -26,7 +26,7 @@ You can only have one of the three MFA methods configured per user. These are en
 
 1. Navigate to the **Account settings** and under **Your profile** click on **Password & Security**. Click **Enroll** next to the preferred method.
     
-<Lightbox src="/img/docs/dbt-cloud/mfa-enrollment.png" title="List of available MFA enrollment methods in dbt." />
+<Lightbox src="/img/docs/dbt-platform/mfa-enrollment.png" title="List of available MFA enrollment methods in dbt." />
 
 Choose the next steps based on your preferred enrollment selection:
 
@@ -34,11 +34,11 @@ Choose the next steps based on your preferred enrollment selection:
 
 2. Select the +1 country code, enter your phone number in the field, and click **Continue**.
 
-<Lightbox src="/img/docs/dbt-cloud/sms-enter-phone.png" width="60%" title="The phone number selection, including a dropdown for country code." />
+<Lightbox src="/img/docs/dbt-platform/sms-enter-phone.png" width="60%" title="The phone number selection, including a dropdown for country code." />
 
 3. You will receive an SMS message with a six digit code. Enter the code in <Constant name="dbt" />.
 
-<Lightbox src="/img/docs/dbt-cloud/enter-code.png" width="60%" title="Enter the 6-digit code." />
+<Lightbox src="/img/docs/dbt-platform/enter-code.png" width="60%" title="Enter the 6-digit code." />
 
 </Expandable>
 
@@ -46,7 +46,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 2. Open your preferred authentication app (like Google Authenticator) and scan the QR code.
 
-<Lightbox src="/img/docs/dbt-cloud/scan-qr.png" title="Example of the user generated QR code." />
+<Lightbox src="/img/docs/dbt-platform/scan-qr.png" title="Example of the user generated QR code." />
 
 3. Enter the code provide for "dbt Labs: YOUR_EMAIL_ADDRESS" from your authenticator app into the the field in <Constant name="dbt" />.
 
@@ -56,7 +56,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 2. Follow the instructions in the modal window and click **Use security key**.
 
-<Lightbox src="/img/docs/dbt-cloud/create-security-key.png" title="Example of the Security Key activation window." />
+<Lightbox src="/img/docs/dbt-platform/create-security-key.png" title="Example of the Security Key activation window." />
 
 3. Scan the QR code or insert and touch activate your USB key to begin the process. Follow the on-screen prompts.
 

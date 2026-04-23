@@ -26,15 +26,15 @@ By default, the IDE uses sqlfmt rules to format your code, making it convenient 
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfluff.gif" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/sqlfluff.gif" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sql-popup.png" width="95%" title="Use the config button to select your tool."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/ide-sql-popup.png" width="95%" title="Use the config button to select your tool."/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.png" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/ide-sqlfluff-config.png" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
 
 </DocCarousel>
 
@@ -57,7 +57,7 @@ With the <Constant name="studio_ide" />, you can seamlessly use [SQLFluff](https
 Linting is available on all branches, including your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. To enable linting, open a `.sql` file and click the **Code Quality** tab.
-2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/studio-ide/ide-user-interface#console-section), below the **File editor**. 
+2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/platform/studio-ide/ide-user-interface#console-section), below the **File editor**. 
 3. In the code quality tool config pop-up, you have the option to select **sqlfluff** or **sqlfmt**. 
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
 5. Once you've selected the **sqlfluff** radio button, go back to the console section (below the **File editor**) to select the **Lint** or **Fix** dropdown button:
@@ -65,7 +65,7 @@ Linting is available on all branches, including your protected primary git branc
     - **Fix** button &mdash; Automatically fixes linting errors in the **File editor**. When fixing is complete, you'll see a message confirming the outcome. 
     - Use the **Code Quality** tab to view and debug any code errors.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-lint-format-console.gif" width="90%" title="Use the Lint or Fix button in the console section to lint or auto-fix your code."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/ide-lint-format-console.gif" width="90%" title="Use the Lint or Fix button in the console section to lint or auto-fix your code."/>
 
 ### Lint multiple files
 
@@ -75,7 +75,7 @@ You can lint multiple SQL files at once, depending on how you are working with d
 
 - **<Constant name="core" />:** Does not include a built-in linter. To lint SQL files in your project, use a third-party linter such as SQLFluff configured to use the [dbt templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html). You can lint multiple files by specifying one or more file or directory paths as arguments to the command.
 
-- **<Constant name="platform_cli" />:** Supports the same linting [commands](/docs/cloud/configure-cloud-cli#lint-sql-files) as <Constant name="core" />:
+- **<Constant name="platform_cli" />:** Supports the same linting [commands](/docs/platform/configure-cloud-cli#lint-sql-files) as <Constant name="core" />:
 
     ```
     dbt sqlfluff lint [PATHS]... [flags]
@@ -156,7 +156,7 @@ group_by_and_order_by_style = implicit
 
 For more info on styling best practices, refer to [How we style our SQL](/best-practices/how-we-style/2-how-we-style-our-sql).
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.png" width="90%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/ide-sqlfluff-config.png" width="90%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
 
 ## Format
 
@@ -184,7 +184,7 @@ Formatting is available on all branches, including your protected primary git br
 5. Once you've selected the **sqlfmt** radio button, go to the console section (located below the **File editor**) to select the **Format** button.
 6. The **Format** button auto-formats your code in the **File editor**. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfmt.gif" width="90%" title="Use sqlfmt to format your SQL code."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/sqlfmt.gif" width="90%" title="Use sqlfmt to format your SQL code."/>
 
 ### Format YAML, Markdown, JSON
 
@@ -194,7 +194,7 @@ To format your YAML, Markdown, or JSON code, <Constant name="dbt" /> integrates 
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
 3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="90%" title="Format YAML, Markdown, and JSON files using Prettier."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/prettier.gif" width="90%" title="Format YAML, Markdown, and JSON files using Prettier."/>
 
 You can add a configuration file to customize formatting rules for YAML, Markdown, or JSON files using Prettier. The IDE looks for the configuration file based on an order of precedence. For example, it first checks for a "prettier" key in your `package.json` file.
 
@@ -208,7 +208,7 @@ To format your Python code, <Constant name="dbt" /> integrates with [Black](http
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
 3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/python-black.gif" width="80%" title="Format Python files using Black."/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/python-black.gif" width="80%" title="Format Python files using Black."/>
 
 ## FAQs
 
@@ -250,6 +250,6 @@ To avoid this, break up your model into smaller models (files) so that they are 
 
 ## Related docs
 
-- [User interface](/docs/cloud/studio-ide/ide-user-interface)
-- [Keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts)
+- [User interface](/docs/platform/studio-ide/ide-user-interface)
+- [Keyboard shortcuts](/docs/platform/studio-ide/keyboard-shortcuts)
 - [SQL linting in CI jobs](/docs/deploy/continuous-integration#sql-linting) 

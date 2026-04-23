@@ -20,7 +20,7 @@ Choose the option that best fits your needs:
   <Card
     title="dbt CLI"
     body="Allows you to develop and run dbt commands from your local command line or code editor against your dbt development environment."
-    link="/docs/cloud/cloud-cli-installation"
+    link="/docs/platform/cloud-cli-installation"
     icon="dbt-bit"/>
 
   <Card
@@ -34,13 +34,13 @@ Choose the option that best fits your needs:
   <Card
     title="dbt Studio IDE"
     body="Develop dbt projects directly in your browser with seamless SQL compilation and an intuitive, visual workflow."
-    link="/docs/cloud/studio-ide/develop-in-studio"
+    link="/docs/platform/studio-ide/develop-in-studio"
     icon="dashboard"/>
 
    <Card
     title="dbt Canvas"
     body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
-    link="/docs/cloud/canvas"
+    link="/docs/platform/canvas"
     icon="canvas"/>
 
 

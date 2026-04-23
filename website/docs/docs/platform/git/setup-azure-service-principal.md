@@ -15,7 +15,7 @@ If this is your first time setting up an Entra app as a service principal, refer
 
 :::
 
-To use <Constant name="dbt" />'s native integration with Azure DevOps, an account admin needs to set up a Microsoft Entra ID app as a service principal. We recommend setting up a separate [Entra ID application than used for SSO](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id).
+To use <Constant name="dbt" />'s native integration with Azure DevOps, an account admin needs to set up a Microsoft Entra ID app as a service principal. We recommend setting up a separate [Entra ID application than used for SSO](/docs/platform/manage-access/set-up-sso-microsoft-entra-id).
 
 The application's service principal represents the Entra ID application object. While a "service user" represents a real user in Azure with an Entra ID (and an applicable license), the "service principal" is a secure identity used by an application to access Azure resources unattended. The service principal authenticates with a client ID and secret rather than a username and password (or any other form of user auth). Service principals are the [Microsoft recommended method](https://learn.microsoft.com/en-us/entra/architecture/secure-service-accounts#types-of-microsoft-entra-service-accounts) for authenticating apps. 
 
@@ -24,7 +24,7 @@ The application's service principal represents the Entra ID application object. 
 2. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 3. [Add your Entra ID app to <Constant name="dbt" />](#connect-your-microsoft-entra-id-app-to-dbt).
 
-Once the Microsoft Entra ID app is added to <Constant name="dbt" />, it will act as a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in <Constant name="dbt" /> such as deployment runs and CI. The <Constant name="dbt" /> developers can then personally authenticate in <Constant name="dbt" /> from Azure DevOps. For more, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
+Once the Microsoft Entra ID app is added to <Constant name="dbt" />, it will act as a [service principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser), which will be used to power headless actions in <Constant name="dbt" /> such as deployment runs and CI. The <Constant name="dbt" /> developers can then personally authenticate in <Constant name="dbt" /> from Azure DevOps. For more, see [Authenticate with Azure DevOps](/docs/platform/git/authenticate-azure).
 
 The following personas are required to complete the steps on this page:
 - Microsoft Entra ID admin
@@ -50,7 +50,7 @@ Many customers ask why they need to select Multitenant instead of Single Tenant,
 
 Here's what your app should look like before registering it:
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering a Microsoft Entra ID app"/>
+<Lightbox src="/img/docs/dbt-platform/connecting-azure-devops/AD app.png" title="Registering a Microsoft Entra ID app"/>
 
 ## Create a client secret
 
@@ -71,7 +71,7 @@ After you've created the app, you need to verify whether it has a service princi
 3. Click the app for the <Constant name="dbt" /> and Azure DevOps integration.
 4. Locate the **Managed application in local directory** field and, if it has the option, click **Create Service Principal**. If the field is already populated, a service principal has already been assigned.  
 
-    <Lightbox src="/img/docs/cloud-integrations/create-service-principal.png" width="80%" title="Example of the 'Create Service Principal' option highlighted ."/>
+    <Lightbox src="/img/docs/platform-integrations/create-service-principal.png" width="80%" title="Example of the 'Create Service Principal' option highlighted ."/>
 
 ## Add permissions to your service principal
 
@@ -102,7 +102,7 @@ Navigate to **Organization settings** --> **Microsoft Entra** --> **Connect Dire
 4. In the **Add to projects** field, click the boxes for any projects you want to include (or select all).
 5. Set the **Azure DevOps Groups** to **Project Administrator**.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/add-service-principal.png" width="80%" title="Example setup with the service principal added as a user."/>
+<Lightbox src="/img/docs/dbt-platform/connecting-azure-devops/add-service-principal.png" width="80%" title="Example setup with the service principal added as a user."/>
 
 ## Connect your Microsoft Entra ID app to dbt
 
@@ -121,9 +121,9 @@ To create the configuration:
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
     - **Client Secret**: Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it into the **Client Secret** field in <Constant name="dbt" />. Entra ID admins are responsible for the expiration of the app secret, and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
-        <Lightbox src="/img/docs/cloud-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt."/>
+        <Lightbox src="/img/docs/platform-integrations/service-principal-fields.png" title="Fields for adding Entra ID app to dbt."/>
 
-Your Microsoft Entra ID app should now be added to your <Constant name="dbt" /> Account. People on your team who want to develop in the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
+Your Microsoft Entra ID app should now be added to your <Constant name="dbt" /> Account. People on your team who want to develop in the <Constant name="studio_ide" /> or <Constant name="dbt" /> CLI can now personally [authorize Azure DevOps from their profiles](/docs/platform/git/authenticate-azure).
 
 
 ## Migrate to service principal
@@ -164,7 +164,7 @@ If your <Constant name="dbt" /> app does not have a service principal, take the 
 3. Click the app for the <Constant name="dbt" /> and Azure DevOps integration.
 4. Locate the **Managed application in local directory** field and click **Create Service Principal**. 
 
-    <Lightbox src="/img/docs/cloud-integrations/create-service-principal.png" width="80%" title="Example of the 'Create Service Principal' option highlighted ."/>
+    <Lightbox src="/img/docs/platform-integrations/create-service-principal.png" width="80%" title="Example of the 'Create Service Principal' option highlighted ."/>
 
 5. Follow the instructions to [add permissions](#add-permissions-to-your-service-principal) to your service principal.
 6. Follow the instructions to [connect DevOps to your app](#connect-azure-devops-to-your-new-app).

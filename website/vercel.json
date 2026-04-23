@@ -4988,6 +4988,46 @@
       "source": "/report-a-problem",
       "destination": "https://www.getdbt.com/report-a-problem",
       "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud/:path*",
+      "destination": "/docs/platform/about-platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/:path*",
+      "destination": "/docs/platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud-integrations/:path*",
+      "destination": "/docs/platform-integrations/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/:path*",
+      "destination": "/docs/dbt-platform-apis/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/img/docs/dbt-cloud/:path*",
+      "destination": "/img/docs/dbt-platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/img/docs/cloud-integrations/:path*",
+      "destination": "/img/docs/platform-integrations/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/img/quickstarts/dbt-cloud/:path*",
+      "destination": "/img/quickstarts/dbt-platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/img/guides/orchestration/airflow-and-dbt-cloud/:path*",
+      "destination": "/img/guides/orchestration/airflow-and-dbt-platform/:path*",
+      "permanent": true
     }
   ]
 }

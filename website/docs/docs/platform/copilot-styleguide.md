@@ -31,7 +31,7 @@ Note, by creating a `dbt-styleguide.md` for <Constant name="copilot" />, you are
 1. Open a file in the <Constant name="studio_ide" />.
 2. Click **<Constant name="copilot" />** in the toolbar.
 3. Select **Generate ... Style guide** from the menu.
-<Lightbox src="/img/docs/dbt-cloud/generate-styleguide.png" title="Generate styleguide in Copilot" /> 
+<Lightbox src="/img/docs/dbt-platform/generate-styleguide.png" title="Generate styleguide in Copilot" /> 
 4. The style guide template appears in the <Constant name="studio_ide" />. Click **Save**. 
       `dbt-styleguide.md` is added at the root level of your project.
 
@@ -45,9 +45,9 @@ If there is an existing `dbt-styleguide.md` file and you attempt to generate a n
 - **Restore** &mdash; Revert to the latest version from <Constant name="dbt_platform" />.
 - **Edit** &mdash; Modify the existing style guide manually.
 
-<Lightbox src="/img/docs/dbt-cloud/styleguide-exists.png" title="Styleguide exists" />
+<Lightbox src="/img/docs/dbt-platform/styleguide-exists.png" title="Styleguide exists" />
 
 ## Further reading
 
-- [About dbt Copilot](/docs/cloud/dbt-copilot)
+- [About dbt Copilot](/docs/platform/dbt-copilot)
 - [How we style our dbt projects](/best-practices/how-we-style/0-how-we-style-our-dbt-projects)

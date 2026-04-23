@@ -17,7 +17,7 @@ Azure Private Link enables secure, private connectivity between <Constant name="
 The focus of this guide is not on any particular service or backend architecture, but on the [Private Link Service](#terminology) that interconnects <Constant name="dbt" /> with your self-hosted service. This process should be standard across most use cases.
 
 <!-- TODO: Add architecture diagram showing scope of guide -->
-<Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/scope-of-guide.png" width="90%" title="The scope of this guide" />
+<Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/scope-of-guide.png" width="90%" title="The scope of this guide" />
 
 :::note Out of scope
 This guide does not cover the configuration or troubleshooting of your self-hosted service, load balancer, or backend pool health, due to the virtually limitless ways these environments can be configured. While dbt Support may assist with such issues on a best-effort basis, we recommend engaging [Azure Support](https://azure.microsoft.com/en-us/support/) to expedite resolution.
@@ -85,8 +85,8 @@ Before you begin, make sure to review the following requirements:
 
     j. Click **Add** to create the subnet.
 
-<Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/vnet-search.png" width="90%" title="Screenshot of step 3: Search for VNet of self-hosted service" />
-<Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/nat-subnet-creation.png" width="90%" title="Screenshot of steps 4-5: NAT Subnet creation for Private Link Service" />
+<Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/vnet-search.png" width="90%" title="Screenshot of step 3: Search for VNet of self-hosted service" />
+<Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/nat-subnet-creation.png" width="90%" title="Screenshot of steps 4-5: NAT Subnet creation for Private Link Service" />
 
 ### Create a Private Link service
 6. After the subnet creation has completed, in the search field at the top-middle of the portal, search for **Private link services**, and click on its page.
@@ -124,13 +124,13 @@ Before you begin, make sure to review the following requirements:
     l. Click **Next: Review + create**, then **Create**
 
 <!-- TODO: Add screenshot of Private Link Service creation -->
-<Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/privatelink-service-creation.png" width="90%" title="Screenshot of step 8: Creation of Azure Private Link Service" />
+<Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/privatelink-service-creation.png" width="90%" title="Screenshot of step 8: Creation of Azure Private Link Service" />
 
 9. After the Private Link Service has been created, click on it to open its details page.
 10. Copy the **Alias** value (this is the identifier you'll share with dbt Support).
 
 <!-- TODO: Add screenshot of Private Link Service details page showing Alias -->
-<Lightbox src="/img/docs/dbt-cloud/az-self-hosted-privatelink/alias-info.png" width="90%" title="Screenshot of step 10: Copy the Private Link Service Alias" />
+<Lightbox src="/img/docs/dbt-platform/az-self-hosted-privatelink/alias-info.png" width="90%" title="Screenshot of step 10: Copy the Private Link Service Alias" />
 
 ### Providing dbt Support with connection details
 

@@ -22,10 +22,10 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
 To use state-aware orchestration, make sure you meet these prerequisites:
 
-- You must have a <Constant name="dbt" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/cloud/manage-access/seats-and-users).
+- You must have a <Constant name="dbt" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/platform/manage-access/seats-and-users).
 - You have updated the environment that will run state-aware orchestration to the dbt Fusion engine. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
-- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
-- You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
+- You must have a dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections).
+- You must have [access permission](/docs/platform/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments) that is production or staging only.
 - You must use a deploy job. Continuous integration (CI) and merge jobs currently do not support state-aware orchestration.
 - (Optional) To customize behavior, you have configured your model or source data with [advanced configurations](#advanced-configurations).
@@ -55,7 +55,7 @@ To create a state-aware job:
     - **Environment**: By default, it’s set to the deployment environment you created the state-aware job from.
 3. Options in the **Execution settings** and **Triggers** sections:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
 - **Execution settings** section:
      - **Commands**: By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
@@ -81,7 +81,7 @@ To create a state-aware job:
 You can see which models dbt builds in the run summary logs. Models that weren't rebuilt during the run are tagged as **Reused** with context about why dbt skipped rebuilding them (and saving you unnecessary compute!). You can also see the reused models under the **Reused** tab.
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/SAO_logs_view.png" width="90%" title="Example logs for state-aware orchestration"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/SAO_logs_view.png" width="90%" title="Example logs for state-aware orchestration"/>
 
 ## Delete a job
 

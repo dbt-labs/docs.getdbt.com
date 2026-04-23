@@ -28,19 +28,19 @@ You can use the <Constant name="semantic_layer" /> for a variety of tools and ap
 <Card
     title="GraphQL API"
     body="Use GraphQL to query metrics and dimensions in downstream tools."
-    link="/docs/dbt-cloud-apis/sl-graphql"
+    link="/docs/dbt-platform-apis/sl-graphql"
     icon="dbt-bit"/>
 
 <Card
     title="JDBC API"
     body="Use a JDBC driver to query metrics and dimensions in downstream tools, while also providing standard metadata functionality."
-    link="/docs/dbt-cloud-apis/sl-jdbc"
+    link="/docs/dbt-platform-apis/sl-jdbc"
     icon="dbt-bit"/>
 
 <Card
     title="Python SDK"
     body="Use the Python SDK to interact with the dbt Semantic Layer using Python."
-    link="/docs/dbt-cloud-apis/sl-python"
+    link="/docs/dbt-platform-apis/sl-python"
     icon="dbt-bit"/>
 
 </div>

@@ -49,7 +49,7 @@ If you're using async frameworks like [FastAPI](https://fastapi.tiangolo.com/) o
 </Tabs>
 
 ## Usage
-To run operations against the <Constant name="semantic_layer" /> APIs, instantiate (create an instance of) a `SemanticLayerClient` with your specific [API connection parameters](/docs/dbt-cloud-apis/sl-api-overview):
+To run operations against the <Constant name="semantic_layer" /> APIs, instantiate (create an instance of) a `SemanticLayerClient` with your specific [API connection parameters](/docs/dbt-platform-apis/sl-api-overview):
 
 ```python
 from dbtsl import SemanticLayerClient

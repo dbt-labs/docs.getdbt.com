@@ -31,7 +31,7 @@ Check out some common git terms below that you might encounter when developing:
 
 ## The git button in the Cloud IDE
 
-You can perform git tasks with the git button in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio). The following are descriptions of each git button command and what they do:
+You can perform git tasks with the git button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio). The following are descriptions of each git button command and what they do:
 
 | Name | Actions |
 | --- | --- |
@@ -50,7 +50,7 @@ You can perform git tasks with the git button in the [<Constant name="studio_ide
 
 Merge conflicts often occur when multiple users are concurrently making edits to the same section in the same file. This makes it difficult for <Constant name="git" /> to determine which change should be kept.
 
-Refer to [merge conflicts](/docs/cloud/git/merge-conflicts) to learn how to resolve merge conflicts.
+Refer to [merge conflicts](/docs/platform/git/merge-conflicts) to learn how to resolve merge conflicts.
 
 ## The .gitignore file
 

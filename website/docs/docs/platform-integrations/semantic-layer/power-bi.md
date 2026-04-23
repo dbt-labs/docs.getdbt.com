@@ -21,7 +21,7 @@ Using Power BI? You can help shape the future of this integration. Ask your Micr
 - You are on a supported [<Constant name="dbt" /> release track](/docs/dbt-versions/cloud-release-tracks) or on dbt v1.6 or higher.
 - You installed [Power BI Desktop or Power BI On-premises Data Gateway](https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-custom-connectors).
   - Power BI Service doesn't natively support custom connectors. To use the connector in Power BI Service, you must install and configure it on an On-premises Data Gateway.
-- You need your [<Constant name="dbt" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and a [service token](/docs/dbt-cloud-apis/service-tokens) or a [personal access token](/docs/dbt-cloud-apis/user-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
+- You need your [<Constant name="dbt" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and a [service token](/docs/dbt-platform-apis/service-tokens) or a [personal access token](/docs/dbt-platform-apis/user-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
 - You must have a <Constant name="dbt" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 import SLCourses from '/snippets/_sl-course.md';
@@ -87,10 +87,10 @@ To configure project credentials in Power BI Desktop:
    Make sure you select **DirectQuery** under **Data Connectivity mode** since the <Constant name="semantic_layer" /> connector does not support **Import** mode. See [Considerations](#considerations) for more details. 
    :::
 5. Click **OK** to proceed.
-   <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-directquery.jpg" title="Select DirectQuery mode" />
+   <Lightbox src="/img/docs/platform-integrations/sl-pbi/pbi-directquery.jpg" title="Select DirectQuery mode" />
 6. On the next screen, paste your service or personal token and then click **Connect**.
 7. You should see a side pane with a few "virtual" tables. `ALL` represents all of your defined semantic layer objects. The other tables represent each of your saved queries. Select the one you want to load into your dashboard. Then click **Load**.
-   <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-sidepanel.jpg" title="Select tables in the side panel" />
+   <Lightbox src="/img/docs/platform-integrations/sl-pbi/pbi-sidepanel.jpg" title="Select tables in the side panel" />
 
 Now that you've configured the connector, you can configure published reports in the next section to use the connector.
 
@@ -99,16 +99,16 @@ Now that you've configured the connector, you can configure published reports in
 After publishing a report and the first time you hit **Publish** on a given report, configure Power BI Service to use your organization’s On-premises Data Gateway to access data from the <Constant name="semantic_layer" />:
 
 1. On the top right, click on **Settings > Power BI settings**.
-   <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-settings.jpg" title="Navigate to Settings > Power BI Settings" />
+   <Lightbox src="/img/docs/platform-integrations/sl-pbi/pbi-settings.jpg" title="Navigate to Settings > Power BI Settings" />
 2. Navigate to the **Semantic models** tab and select your report on the sidebar on the left.
 3. Under **Gateway and cloud connections**, select the **On-premises Data Gateway** where your IT admin has installed the <Constant name="semantic_layer" /> connector. 
    - If the Status is **Not configured correctly**, you’ll have to configure it.
-   <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-gateway-cloud-connections.jpg" title="Configure the gateway connection" />
+   <Lightbox src="/img/docs/platform-integrations/sl-pbi/pbi-gateway-cloud-connections.jpg" title="Configure the gateway connection" />
 4. Click on the arrow under **Actions** and then, click on **Manually add to gateway**.
-   <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-manual-gateway.jpg" title="Manually add to gateway" />
+   <Lightbox src="/img/docs/platform-integrations/sl-pbi/pbi-manual-gateway.jpg" title="Manually add to gateway" />
 5. Provide a name for your connection and enter your connection details. 
    - Set the connection as **Encrypted** (Required). Failing to do so will result in the <Constant name="semantic_layer" /> servers rejecting the connection.
-   <Lightbox src="/img/docs/cloud-integrations/sl-pbi/pbi-encrypted.jpg" title="Set the connection as Encrypted" />
+   <Lightbox src="/img/docs/platform-integrations/sl-pbi/pbi-encrypted.jpg" title="Set the connection as Encrypted" />
 6. Click **Create**. This will run a connection test (unless you choose to skip it). If the connection succeeds, the connection will be saved.
 
 You can now go back to your published report on Power BI Service to assert data loads as expected.
@@ -127,7 +127,7 @@ These tables do not actually map to an underlying table in your data warehouse. 
 - Generates SQL to query your existing tables. 
 - Returns data back to Power BI, which doesn’t know any of this happened.
 
-<Lightbox src="/img/docs/cloud-integrations/sl-pbi/sl-pbi.jpg" width="90%" title="Power BI integration diagram" />
+<Lightbox src="/img/docs/platform-integrations/sl-pbi/sl-pbi.jpg" width="90%" title="Power BI integration diagram" />
 
 This allows for very flexible analytics workflows, like drag and drop metrics and slice by dimensions and entities &mdash; the <Constant name="semantic_layer" /> will generate the appropriate SQL to actually query your data source for you.
 

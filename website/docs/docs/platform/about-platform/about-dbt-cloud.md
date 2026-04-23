@@ -19,25 +19,25 @@ In addition to providing a hosted architecture for running dbt across your organ
 <Card
     title="dbt CLI"
     body="Use the CLI for the dbt platform to develop, test, run, and version control dbt projects and commands, directly from the command line."
-    link="/docs/cloud/cloud-cli-installation"
+    link="/docs/platform/cloud-cli-installation"
     icon="dbt-bit"/>
 
 <Card
     title="dbt Studio IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
-    link="/docs/cloud/studio-ide/develop-in-studio"
+    link="/docs/platform/studio-ide/develop-in-studio"
     icon="dbt-bit"/>
 
 <Card
     title="dbt Canvas"
     body="Develop with Canvas, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt."
-    link="/docs/cloud/canvas"
+    link="/docs/platform/canvas"
     icon="dbt-bit"/>
 
 <Card
     title="dbt Copilot*"
     body="Use dbt Copilot to generate documentation, tests, semantic models, metrics, and SQL code from scratch, giving you the flexibility to modify or fix generated code."
-    link="/docs/cloud/dbt-copilot"
+    link="/docs/platform/dbt-copilot"
     icon="copilot"/>
 
 <Card
@@ -73,7 +73,7 @@ In addition to providing a hosted architecture for running dbt across your organ
    <Card
     title="Supports GitHub, GitLab, AzureDevOps"
     body="Seamlessly connect your git account to the dbt platform and provide another layer of security to dbt. Import new repositories, trigger continuous integration, clone repos using HTTPS, and more!"
-    link="/docs/cloud/git/connect-github"
+    link="/docs/platform/git/connect-github"
     icon="dbt-bit"/>
 
    <Card
@@ -91,7 +91,7 @@ In addition to providing a hosted architecture for running dbt across your organ
   <Card
    title="Visualize and orchestrate exposures*"
    body="Configure downstream exposures automatically from dashboards and understand how models are used in downstream tools. Proactively refresh the underlying data sources during scheduled dbt jobs."
-   link="/docs/cloud-integrations/downstream-exposures"
+   link="/docs/platform-integrations/downstream-exposures"
    icon="dbt-bit"/>
 
    <Card
@@ -103,7 +103,7 @@ In addition to providing a hosted architecture for running dbt across your organ
    <Card
     title="Discovery API*"
     body="Enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt serves a GraphQL API, which supports arbitrary queries."
-    link="/docs/dbt-cloud-apis/discovery-api"
+    link="/docs/dbt-platform-apis/discovery-api"
     icon="dbt-bit"/>
 
   <Card
@@ -126,4 +126,4 @@ In addition to providing a hosted architecture for running dbt across your organ
 
 - [<Constant name="dbt" /> plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/get-started-dbt)
-- [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio)
+- [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)

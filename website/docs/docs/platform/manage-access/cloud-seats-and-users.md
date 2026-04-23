@@ -29,7 +29,7 @@ The user's assigned license determines the specific capabilities they can access
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
 
-*The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
+*The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 **Available on Starter, Enterprise, and Enterprise+ plans only. IT seats are limited to 1 seat per Starter or Enterprise-tier account and don't count toward developer seat usage. 
 
@@ -49,24 +49,24 @@ The following tabs detail steps on how to modify your user license count:
 
 <TabItem value="enterprise" label="Enterprise-tier plans">
 
-If you're on an Enterprise-tier plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
+If you're on an Enterprise-tier plan and have the correct [permissions](/docs/platform/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
 
 - To remove a user, click on your account name in the left side menu, click **Account settings** and select **Users**.
   - Select the user you want to remove, click **Edit**, and then **Delete**. 
   - This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 
 - To add a user, go to **Account Settings** and select **Users**. 
-  - Click the [**Invite Users**](/docs/cloud/manage-access/invite-users) button. 
-  - For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-).
+  - Click the [**Invite Users**](/docs/platform/manage-access/invite-users) button. 
+  - For fine-grained permission configuration, refer to [Role based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-).
 
 
 </TabItem>
 
 <TabItem value="starter" label="Starter plans">
 
-If you're on a Starter plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. 
+If you're on a Starter plan and have the correct [permissions](/docs/platform/manage-access/self-service-permissions), you can add or remove developers. 
 
-Refer to [Self-service Starter account permissions](/docs/cloud/manage-access/self-service-permissions#licenses) for more information on the number of each license type included in the Starter plan.
+Refer to [Self-service Starter account permissions](/docs/platform/manage-access/self-service-permissions#licenses) for more information on the number of each license type included in the Starter plan.
 
 You'll need to make two changes:
 
@@ -82,16 +82,16 @@ To add a user in <Constant name="dbt" />, you must be an account owner or have a
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" width="75%" title="Navigate to Account settings" />
+<Lightbox src="/img/docs/dbt-platform/Navigate-to-account-settings.png" width="75%" title="Navigate to Account settings" />
 
 2. In **Account Settings**, select **Billing**. 
 3. Under **Billing details**, enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing address** section. Leaving these blank won't allow you to save your changes.
 4. Press **Update Payment Information** to save your changes.
 
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.png" width="75%" title="Navigate to Account settings -> Billing to modify billing seat count" />
+<Lightbox src="/img/docs/dbt-platform/faq-account-settings-billing.png" width="75%" title="Navigate to Account settings -> Billing to modify billing seat count" />
 
 
-Now that you've updated your billing, you can now [invite users](/docs/cloud/manage-access/invite-users) to join your <Constant name="dbt" /> account:
+Now that you've updated your billing, you can now [invite users](/docs/platform/manage-access/invite-users) to join your <Constant name="dbt" /> account:
 
 Great work! After completing those these steps, your <Constant name="dbt" /> user count and billing count should now be the same.
 </TabItem>
@@ -102,19 +102,19 @@ To delete a user in <Constant name="dbt" />, you must be an account owner or hav
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 
-<Lightbox src="/img/docs/dbt-cloud/Navigate-to-account-settings.png" width="85%" title="Navigate to Account settings" />
+<Lightbox src="/img/docs/dbt-platform/Navigate-to-account-settings.png" width="85%" title="Navigate to Account settings" />
 
 2. In **Account settings**, select **Users**.
 3. Select the user you want to delete, then click **Edit**. 
 4. Click **Delete** in the bottom left. Click **Confirm Delete** to immediately delete the user without additional password prompts. This action cannot be undone. However, you can re-invite the user with the same information if the deletion was made in error. 
 
-<Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="75%" title="Deleting a user" />
+<Lightbox src="/img/docs/dbt-platform/delete_user_20221023.gif" width="75%" title="Deleting a user" />
 
 import LicenseCount from '/snippets/_license-count.md';
 
 <LicenseCount/>
         
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.png" width="75%" title="The Billing** page in your **Account settings" />
+<Lightbox src="/img/docs/dbt-platform/faq-account-settings-billing.png" width="75%" title="The Billing** page in your **Account settings" />
 
 Great work! After completing these steps, your <Constant name="dbt" /> user count and billing count should now be the same.
 
@@ -126,7 +126,7 @@ Great work! After completing these steps, your <Constant name="dbt" /> user coun
 
 ## Managing license types
 
-Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. Alternatively, with [SSO configuration](/docs/cloud/manage-access/sso-overview) and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
+Licenses can be assigned to users individually or through group membership. To assign a license via group membership, you can manually add a user to a group during the invitation process or assign them to a group after they’ve enrolled in <Constant name="dbt" />. Alternatively, with [SSO configuration](/docs/platform/manage-access/sso-overview) and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control-) (Enterprise-tier only), users can be automatically assigned to groups. By default, new users in an account are assigned a Developer license.
 
 ### Manual configuration
 
@@ -138,11 +138,11 @@ To manually assign a specific type of license to a user on your team:
 
 **Note:** You will need to have an available license ready to allocate for the user. If your account does not have an available license to allocate, you will need to add more licenses to your plan to complete the license change.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/license-manual.png" width="55%" title="Manually assigning licenses"/>
 
 ### Mapped configuration <Lifecycle status="managed,managed_plus" /> 
 
-If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user groups to specific license types in <Constant name="dbt" />. For SCIM-based license mapping with Okta, see [Automated license mapping](/docs/cloud/manage-access/scim-manage-user-licenses#automated-license-mapping).
+If your account is connected to an Identity Provider (IdP) for [Single Sign On](/docs/platform/manage-access/sso-overview), you can automatically map IdP user groups to specific license types in <Constant name="dbt" />. For SCIM-based license mapping with Okta, see [Automated license mapping](/docs/platform/manage-access/scim-manage-user-licenses#automated-license-mapping).
 
 #### Configure license mappings
 
@@ -151,7 +151,7 @@ If your account is connected to an Identity Provider (IdP) for [Single Sign On](
 3. Create or edit SSO mappings for both Read-Only and Developer license types.
 4. Enter a comma-separated list of **IdP group names** that should receive each license type.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/license-mapping.png" width="65%" title="Configuring IdP group license mapping"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/license-mapping.png" width="65%" title="Configuring IdP group license mapping"/>
 
 #### Fundamental licensing rules
 
@@ -176,4 +176,4 @@ If a user's IdP groups do not match _any_ license type mappings, <Constant name=
 
 ## Granular permissioning
 
-<Constant name="dbt" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/cloud/manage-access/about-user-access) for more information on Enterprise permissioning.
+<Constant name="dbt" /> Enterprise-tier plans support role-based access controls for configuring granular in-app permissions. See [access control](/docs/platform/manage-access/about-user-access) for more information on Enterprise permissioning.

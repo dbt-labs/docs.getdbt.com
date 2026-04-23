@@ -14,14 +14,14 @@ Network security in <Constant name="dbt" /> gives you control over how traffic f
 <Card
     title="Over the public internet"
     body="Use IP restrictions to limit which IP addresses can access dbt Cloud or your data platform."
-    link="/docs/cloud/secure/ip-restrictions"
+    link="/docs/platform/secure/ip-restrictions"
     icon="dbt-bit"
 />
 
 <Card
     title="Over a private network"
     body="Use your cloud provider's private connectivity technology to keep traffic off the public internet entirely."
-    link="/docs/cloud/secure/private-connectivity/private-connectivity"
+    link="/docs/platform/secure/private-connectivity/private-connectivity"
     icon="dbt-bit"
 />
 

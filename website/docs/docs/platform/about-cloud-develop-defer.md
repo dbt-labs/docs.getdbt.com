@@ -46,7 +46,7 @@ To enable defer in the <Constant name="studio_ide" />, toggle the **Defer to sta
 
 For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model runs. Any `{{ ref() }}`<VersionBlock firstVersion="1.11"> and `{{ function() }}`</VersionBlock> calls resolve to the staging or production location of the referenced models<VersionBlock firstVersion="1.11"> and user-defined functions</VersionBlock>.
 
-<Lightbox src="/img/docs/dbt-cloud/defer-toggle.png" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
+<Lightbox src="/img/docs/dbt-platform/defer-toggle.png" width="100%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
 
 ### Defer in dbt CLI
 
@@ -56,7 +56,7 @@ One key difference between using `--defer` in the <Constant name="platform_cli" 
 
 The <Constant name="studio_ide" /> and <Constant name="platform_cli" /> both offer additional flexibility by letting you choose the source environment for deferral artifacts. You can manually set a `defer-env-id` key in either your `dbt_project.yml` (<Constant name="platform_cli" /> and <Constant name="studio_ide" />) or `dbt_cloud.yml`(<Constant name="platform_cli" /> only) file. By default, dbt will prefer metadata from the project's "Staging" environment (if defined). Otherwise, it uses "Production."
 
-<Lightbox src="/img/docs/dbt-cloud/defer-env-id.png" width="100%" title="Set the defer environment and the target name will change in the UI."/>
+<Lightbox src="/img/docs/dbt-platform/defer-env-id.png" width="100%" title="Set the defer environment and the target name will change in the UI."/>
 
 <File name="dbt_cloud.yml">
 

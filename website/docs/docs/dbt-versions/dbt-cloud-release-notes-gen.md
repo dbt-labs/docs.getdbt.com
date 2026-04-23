@@ -923,7 +923,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.  
 
 - **Canvas**
-  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/cloud/use-canvas#upload-data-to-canvas) flow.  
+  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/platform/use-canvas#upload-data-to-canvas) flow.  
 
 ## January 21, 2026
 
@@ -957,7 +957,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Fixes
 
 - **AI-assisted workflows**
-  - **Enhancement:** [dbt <Constant name="copilot" />](/docs/cloud/dbt-copilot) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
+  - **Enhancement:** [dbt <Constant name="copilot" />](/docs/platform/dbt-copilot) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
 
 - **Catalog & lineage**
   - **Fixes missing auto-generated exposures in model lineage**: Auto-generated exposures now appear correctly in lineage views.

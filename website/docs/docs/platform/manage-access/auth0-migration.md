@@ -9,7 +9,7 @@ description: "Required actions for migrating to Auth0 for SSO services on dbt."
 
 dbt Labs is partnering with Auth0 to bring enhanced features to <Constant name="dbt" />'s single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by <Constant name="dbt" />. These changes will require some action from customers with SSO configured in <Constant name="dbt" /> today, and this guide will outline the necessary changes for each environment. 
 
-If you have not yet configured SSO in <Constant name="dbt" />, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Microsoft Entra ID (formerly Azure AD)](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) single sign-on services.
+If you have not yet configured SSO in <Constant name="dbt" />, refer instead to our setup guides for [SAML](/docs/platform/manage-access/set-up-sso-saml-2.0), [Okta](/docs/platform/manage-access/set-up-sso-okta), [Google Workspace](/docs/platform/manage-access/set-up-sso-google-workspace), or [Microsoft Entra ID (formerly Azure AD)](/docs/platform/manage-access/set-up-sso-microsoft-entra-id) single sign-on services.
 
 ## Start the migration
 
@@ -29,7 +29,7 @@ There are two fields in the SSO settings that you need for the migration:
 
 
 
-Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. You can just skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
+Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. You can just skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/platform/manage-access/sso-overview).
 
 
 ## SAML 2.0
@@ -48,11 +48,11 @@ Below are sample steps to update. You must complete all of them to ensure uninte
 
 Here is an example of an updated SAML 2.0 setup in Okta.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-config.png" title="Okta configuration with new URL"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/new-okta-config.png" title="Okta configuration with new URL"/>
 
 2. Save the configuration, and your SAML settings will look something like this:
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
 
 3. Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone._
 
@@ -74,11 +74,11 @@ The new values for these fields can be found in <Constant name="dbt" /> by navig
     - Entra ID **Identifier (Entity ID)** = <Constant name="dbt" /> **Audience URI (SP Entity ID)**
     - Entra ID **Reply URL (Assertion Consumer Service URL)** = <Constant name="dbt" /> **Single sign-on URL**
 
-    <Lightbox src="/img/docs/dbt-cloud/access-control/edit-entra-saml.png" width="90%" title="Editing the SAML configuration window in Entra ID"/>
+    <Lightbox src="/img/docs/dbt-platform/access-control/edit-entra-saml.png" width="90%" title="Editing the SAML configuration window in Entra ID"/>
 
 4. Save the fields and the completed configuration will look something like this: 
 
-    <Lightbox src="/img/docs/dbt-cloud/access-control/entra-id-saml.png" width="90%" title="Completed configuration of the SAML fields in Entra ID"/>
+    <Lightbox src="/img/docs/dbt-platform/access-control/entra-id-saml.png" width="90%" title="Completed configuration of the SAML fields in Entra ID"/>
 
 3. Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone._
 
@@ -92,15 +92,15 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 1. Click **App Registrations** on the left side menu. 
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/aad-app-registration.png" title="Select App Registrations"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/aad-app-registration.png" title="Select App Registrations"/>
 
 2. Select the proper **<Constant name="dbt" />** app (name may vary) from the list. From the app overview, click on the hyperlink next to **Redirect URI**
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/app-overview.png" title="Click the Redirect URI hyperlink"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/app-overview.png" title="Click the Redirect URI hyperlink"/>
 
 3. In the **Web** pane with **Redirect URIs**, click **Add URI** and enter the appropriate `https://<YOUR_AUTH0_URI>/login/callback`. Save the settings and verify it is counted in the updated app overview.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
 4. Navigate to the <Constant name="dbt" /> environment and open the **Account settings**. Click the **SSO & SCIM** option from the left-side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Microsoft Entra ID. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
 
@@ -119,11 +119,11 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 1. Open the [Google Cloud console](https://console.cloud.google.com/) and select the project with your <Constant name="dbt" /> single sign-on settings. From the project page **Quick Access**, select **APIs and Services**
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/google-cloud-sso.png" title="Google Cloud Console"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/google-cloud-sso.png" title="Google Cloud Console"/>
 
 2. Click **Credentials** from the left side pane and click the appropriate name from **OAuth 2.0 Client IDs**
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/sso-project.png" title="Select the OAuth 2.0 Client ID"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/sso-project.png" title="Select the OAuth 2.0 Client ID"/>
 
 3. In the **Client ID for Web application** window, find the **Authorized Redirect URIs** field and click **Add URI** and enter `https://<YOUR_AUTH0_URI>/login/callback`.
 

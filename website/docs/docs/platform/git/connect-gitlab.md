@@ -70,7 +70,7 @@ For more detail, GitLab has a [guide for creating a Group Application](https://d
 To create a group-owned OAuth application in GitLab:
 1. In GitLab, navigate to your group settings and select **Applications**.
 
-    <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/gitlab nav.gif" title="GitLab application navigation"/>
+    <Lightbox src="/img/docs/dbt-platform/connecting-gitlab/gitlab nav.gif" title="GitLab application navigation"/>
 
 2. When creating your group application, enter the following:
     | Field | Value |
@@ -80,11 +80,11 @@ To create a group-owned OAuth application in GitLab:
     | **Confidential** | ✅ |
     | **Scopes** | ✅ api |
 
-    For the **Redirect URI** field, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+    For the **Redirect URI** field, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan.
 
 3. Click **Save application**. GitLab will generate an **Application ID** and **Secret**. These values remain available even if you close the app screen, so you can return to save them later.
 
-If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added the appropriate GitLab CIDRs to your IP restriction rules, or else the GitLab connection will fail.
+If you're a Business Critical customer using [IP restrictions](/docs/platform/secure/ip-restrictions), ensure you've added the appropriate GitLab CIDRs to your IP restriction rules, or else the GitLab connection will fail.
 
 ### Adding the GitLab OAuth application to dbt
 

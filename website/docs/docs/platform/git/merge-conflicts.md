@@ -4,7 +4,7 @@ id: "merge-conflicts"
 pagination_next: null
 ---
 
-[Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for <Constant name="git" /> to decide what changes to incorporate in the final merge.  
+[Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for <Constant name="git" /> to decide what changes to incorporate in the final merge.  
 
 The merge conflict process provides users the ability to choose which lines of code they'd like to preserve and commit.  This document will show you how to resolve merge conflicts in the <Constant name="studio_ide" />.
 
@@ -35,9 +35,9 @@ The <Constant name="studio_ide" /> will display:
 - The file name colored in red in the **Changes** section, with a warning icon.
 - If you press commit without resolving the conflict, the <Constant name="studio_ide" /> will prompt a pop up box with a list which files need to be resolved.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/merge-conflict.png" title="Conflicting section that needs resolution will be highlighted"/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/merge-conflict.png" title="Conflicting section that needs resolution will be highlighted"/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-without-resolve.png" title="Pop up box when you commit without resolving the conflict"/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/commit-without-resolve.png" title="Pop up box when you commit without resolving the conflict"/>
 
 
 ## Resolve merge conflicts
@@ -51,7 +51,7 @@ You can seamlessly resolve merge conflicts that involve competing line changes i
 6. Repeat this process for every file that has a merge conflict.
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/resolve-conflict.png" title="Choosing lines of code to preserve"/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/resolve-conflict.png" title="Choosing lines of code to preserve"/>
 
 :::info Edit conflict files
 - If you open the conflict file under **Changes**, the file name will display something like `model.sql (last commit)` and is fully read-only and cannot be edited. <br />
@@ -67,6 +67,6 @@ When you've resolved all the merge conflicts, the last step would be to commit t
 3. The <Constant name="studio_ide" /> will return to its normal state and you can continue developing! 
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-resolve.png" title="Conflict has been resolved"/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/commit-resolve.png" title="Conflict has been resolved"/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-changes.png" title="Commit Changes pop up box to commit your changes"/>
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/commit-changes.png" title="Commit Changes pop up box to commit your changes"/>

@@ -9,7 +9,7 @@ unlisted: true
 
 # Set up the dbt Snowflake Native App <Lifecycle status='preview' />
 
-The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: <Constant name="catalog" />, the **Copilot** chatbot, and <Constant name="dbt" />'s orchestration observability features. 
+The [dbt Snowflake Native App](/docs/platform-integrations/snowflake-native-app) enables these features within the Snowflake user interface: <Constant name="catalog" />, the **Copilot** chatbot, and <Constant name="dbt" />'s orchestration observability features. 
 
 Configure both <Constant name="dbt" /> and Snowflake to set up this integration. The high-level steps are described as follows: 
 
@@ -30,7 +30,7 @@ The following are the prerequisites for <Constant name="dbt" /> and Snowflake.
 
 - You must have a <Constant name="dbt" /> account on an Enterprise-tier plan that's in an AWS Region or Azure region. If you don't already have one, please [contact us](mailto:sales_snowflake_marketplace@dbtlabs.com) to get started.
     - Currently, <Constant name="semantic_layer" /> is unavailable for Azure ST instances and the **Copilot** chatbot will not function in the dbt Snowflake Native App without it. 
-- Your <Constant name="dbt" /> account must have permission to create a [service token](/docs/dbt-cloud-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
+- Your <Constant name="dbt" /> account must have permission to create a [service token](/docs/dbt-platform-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions).
 - There's a <Constant name="dbt" /> project with [<Constant name="semantic_layer" /> configured](/docs/use-dbt-semantic-layer/setup-sl) and metrics declared. 
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment).
     - There has been at least one successful job run that includes a `docs generate` step in the deployment environment.
@@ -54,7 +54,7 @@ Configure <Constant name="dbt" /> and Snowflake Cortex to power the **Copilot** 
     1. In the **Project details** panel, click the **Edit <Constant name="semantic_layer" /> Configuration** link (which is below the **GraphQL URL** option). 
 1. In the **<Constant name="semantic_layer" /> Configuration Details** panel, identify the Snowflake credentials (which you'll use to access Snowflake Cortex) and the environment against which the <Constant name="semantic_layer" /> is run. Save the username, role, and the environment in a temporary location to use later on. 
 
-    <Lightbox src="/img/docs/cloud-integrations/semantic_layer_configuration.png" width="100%" title="Semantic Layer credentials"/>
+    <Lightbox src="/img/docs/platform-integrations/semantic_layer_configuration.png" width="100%" title="Semantic Layer credentials"/>
 
 1. In Snowflake, verify that your SL and deployment user has been granted permission to use Snowflake Cortex. For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
     
@@ -82,11 +82,11 @@ Collect the following pieces of information from <Constant name="dbt" /> to set 
 
     The following is an example of granting the permission sets to all projects:
 
-    <Lightbox src="/img/docs/cloud-integrations/example-snowflake-native-app-service-token.png" title="Example of a new service token for the dbt Snowflake Native App"/>
+    <Lightbox src="/img/docs/platform-integrations/example-snowflake-native-app-service-token.png" title="Example of a new service token for the dbt Snowflake Native App"/>
 
 1. From the left sidebar, select **Account** and save this information in a temporary location to use later during Native App configuration:
     - **Account ID** &mdash; A numerical string representing your <Constant name="dbt" /> account.
-    - **Access URL** &mdash; If you have a North America multi-tenant account, use `cloud.getdbt.com` as the access URL. For all other regions, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) and look up the access URL you should use in the table. 
+    - **Access URL** &mdash; If you have a North America multi-tenant account, use `cloud.getdbt.com` as the access URL. For all other regions, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) and look up the access URL you should use in the table. 
 
 ## Install the dbt Snowflake Native App
 1. Browse to the listing for the dbt Snowflake Native App: 
@@ -111,7 +111,7 @@ Collect the following pieces of information from <Constant name="dbt" /> to set 
 
     The following is an example of the dbt Snowflake Native App after configuration:
 
-    <Lightbox src="/img/docs/cloud-integrations/example-dbt-snowflake-native-app.png" title="Example of the dbt Snowflake Native App"/>
+    <Lightbox src="/img/docs/platform-integrations/example-dbt-snowflake-native-app.png" title="Example of the dbt Snowflake Native App"/>
 
 ## Verify the app installed successfully
 
@@ -124,7 +124,7 @@ To verify the app installed successfully, select any of the following from the s
 
 The following is an example of the **Copilot** chatbot with the suggested prompts near the top: 
 
-<Lightbox src="/img/docs/cloud-integrations/example-ask-dbt-native-app.png" title="Example of the Copilot chatbot"/>
+<Lightbox src="/img/docs/platform-integrations/example-ask-dbt-native-app.png" title="Example of the Copilot chatbot"/>
 
 
 ## Onboard new users

@@ -7,7 +7,7 @@ pagination_prev: null
 unlisted: true
 ---
 
-Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-cloud-apis/overview) on the **dbt.com** domain rather than sharing generic **getdbt.com** region URLs. For example:
+Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-platform-apis/overview) on the **dbt.com** domain rather than sharing generic **getdbt.com** region URLs. For example:
 
 - Old: `https://cloud.getdbt.com`
 - New: `https://ab123.us1.dbt.com`
@@ -19,7 +19,7 @@ If your account has been assigned a new access URL, please review the [migration
 If your account has not been assigned a new access URL, you will receive an email and in-app notification with a scheduled assignment date. When the change takes effect, you'll be automatically redirected to your **dbt.com** account-specific access URL. Account sign-in remains the same. Both the new **dbt.com** and **getdbt.com** region URLs will support integrations according to the dates on the [migration timeline](#migration-timeline).
 
 :::info
-Before assignment, if your organization uses network allowlisting, add the **dbt.com** domain to your allowlists. For single-tenant accounts, there will be no change to IP addresses. For multi-tenant accounts, refer to [Access, Regions, & IP Addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for updated IPs.
+Before assignment, if your organization uses network allowlisting, add the **dbt.com** domain to your allowlists. For single-tenant accounts, there will be no change to IP addresses. For multi-tenant accounts, refer to [Access, Regions, & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses) for updated IPs.
 :::
 
 ## Migration timeline
@@ -40,20 +40,20 @@ All dbt Labs managed integrations will be updated automatically, which consists 
 
 | Integration | Action required |
 |---|---|
-| [Google Workspace SSO](/docs/cloud/manage-access/set-up-sso-google-workspace#creating-credentials) | Update or add OAuth Client |
-| [Azure ADO OAuth SSO](/docs/cloud/git/setup-service-principal) | Update or add App Registration |
-| [GitLab (dbt Labs app)](/docs/cloud/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
-| [GitLab (bring-your-own app)](/docs/cloud/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
+| [Google Workspace SSO](/docs/platform/manage-access/set-up-sso-google-workspace#creating-credentials) | Update or add OAuth Client |
+| [Azure ADO OAuth SSO](/docs/platform/git/setup-service-principal) | Update or add App Registration |
+| [GitLab (dbt Labs app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
+| [GitLab (bring-your-own app)](/docs/platform/git/connect-gitlab#setting-up-a-gitlab-oauth-application) | Update or add GL Group Application with new Redirect URI |
 | GitHub On-premises | Contact [dbt Labs Support](mailto:support@getdbt.com) |
-| [Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth#subdomain-migration) | Update or add Security Integration; update dbt connection |
-| [Snowflake External OAuth](/docs/cloud/manage-access/snowflake-external-oauth#identity-provider-configuration) | Update Redirect URI in your IdP application |
-| [Databricks OAuth](/docs/cloud/manage-access/set-up-databricks-oauth) | Update Redirect URLs or add a new Connection; update dbt connection |
-| [BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth) | Update Redirect URI or add a new Connection; update dbt connection |
-| [Redshift External OAuth](/docs/cloud/manage-access/redshift-external-oauth) | Update Redirect URI in your IdP application |
+| [Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth#subdomain-migration) | Update or add Security Integration; update dbt connection |
+| [Snowflake External OAuth](/docs/platform/manage-access/snowflake-external-oauth#identity-provider-configuration) | Update Redirect URI in your IdP application |
+| [Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth) | Update Redirect URLs or add a new Connection; update dbt connection |
+| [BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth) | Update Redirect URI or add a new Connection; update dbt connection |
+| [Redshift External OAuth](/docs/platform/manage-access/redshift-external-oauth) | Update Redirect URI in your IdP application |
 | Network allowlists | Add new access URLs to your allowlist policies |
 | Inbound webhooks | Update access URLs in your webhook configurations |
-| [SCIM (Okta)](/docs/cloud/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
-| [API integrations](/docs/dbt-cloud-apis/overview) | Update access URLs in your API clients |
+| [SCIM (Okta)](/docs/platform/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
+| [API integrations](/docs/dbt-platform-apis/overview) | Update access URLs in your API clients |
 | [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) | Update access URLs in your Terraform configuration |
 | Browser Bookmarks | Update personal and shared bookmarks |
 
@@ -67,13 +67,13 @@ We are transitioning from generic region URLs to account-specific URLs to enhanc
 
 <Expandable alt_header="How do I know if my account has new access URLs?">
 
-Sign in to your <Constant name="dbt_platform" /> account. If your browser location has `dbt.com`, your account has been assigned a new access URL. If your browser location has `getdbt.com`, your account has not been assigned a new access URL. You may refer to [API Access URLs](/docs/cloud/about-cloud/access-regions-ip-addresses#api-access-urls).
+Sign in to your <Constant name="dbt_platform" /> account. If your browser location has `dbt.com`, your account has been assigned a new access URL. If your browser location has `getdbt.com`, your account has not been assigned a new access URL. You may refer to [API Access URLs](/docs/platform/about-platform/access-regions-ip-addresses#api-access-urls).
 
 </Expandable>
 
 <Expandable alt_header="How do I find my account's new access URLs?">
 
-Refer to [API Access URLs](/docs/cloud/about-cloud/access-regions-ip-addresses#api-access-urls).
+Refer to [API Access URLs](/docs/platform/about-platform/access-regions-ip-addresses#api-access-urls).
 
 </Expandable>
 

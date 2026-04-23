@@ -14,11 +14,11 @@ You can use service account tokens for system-level integrations that do not run
 * Developer and Starter plans can apply  <Constant name="semantic_layer" /> permissions set to service tokens.
 * Legacy Team plans can apply Account Admin, Member, Job Admin, Read-Only, Metadata, and <Constant name="semantic_layer" /> permissions set to service tokens.
 
-You can assign as many permission sets as needed to one token. For more on permissions sets, see "[Enterprise Permissions](/docs/cloud/manage-access/enterprise-permissions)."
+You can assign as many permission sets as needed to one token. For more on permissions sets, see "[Enterprise Permissions](/docs/platform/manage-access/enterprise-permissions)."
 
 ## Generate service account tokens
 
-You can generate service tokens if you have a Developer [license](/docs/cloud/manage-access/seats-and-users) and account admin [permissions](/docs/cloud/manage-access/about-user-access#permission-sets). To create a service token in <Constant name="dbt" />, follow these steps:
+You can generate service tokens if you have a Developer [license](/docs/platform/manage-access/seats-and-users) and account admin [permissions](/docs/platform/manage-access/about-user-access#permission-sets). To create a service token in <Constant name="dbt" />, follow these steps:
 
 1. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 2. On the left sidebar, click on **Service Tokens**.
@@ -31,7 +31,7 @@ You can assign service account tokens to any permission set available in <Consta
 
 ### Team plans using service account tokens
 
-The following permissions can be assigned to a service account token on a Team plan. Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about these roles. 
+The following permissions can be assigned to a service account token on a Team plan. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information about these roles. 
 
 - Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role."
 - Billing Admin
@@ -43,7 +43,7 @@ The following permissions can be assigned to a service account token on a Team p
 
 ### Enterprise plans using service account tokens
 
-Refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) for more information about these roles. 
+Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information about these roles. 
 
 - Account Admin &mdash; Account Admin service tokens have full `read + write` access to an account, so please use them with caution. 
 - Account Viewer

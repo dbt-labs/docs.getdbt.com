@@ -5,7 +5,7 @@ id: "access-regions-ip-addresses"
 description: "Available regions and ip addresses"
 ---
 
-<Constant name="dbt" /> is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions across the following service providers:
+<Constant name="dbt" /> is [hosted](/docs/platform/about-platform/architecture) in multiple regions across the following service providers:
 
 - [Amazon Web Services](#AWS)
 - [Google Cloud Platform](#GCP)
@@ -60,7 +60,7 @@ To log into <Constant name="dbt" />, use the URL that applies to your environmen
 - **US multi-tenant:** Use your unique URL that starts with your account prefix, followed by `us1.dbt.com`. For example, `abc123.us1.dbt.com`. You can also use `cloud.getdbt.com`, but this URL will be removed in the future. 
     - If you are unsure of your access URL, navigate to `us1.dbt.com` and enter your <Constant name="dbt" /> credentials. If you are a member of a single account, you will be logged in, and your URL will be displayed in the browser. If you are a member of multiple accounts, you will be presented with a list of options, along with the appropriate login URLs for each.
 
-    <Lightbox src="/img/docs/dbt-cloud/find-account.png" width="60%" title="dbt accounts" />
+    <Lightbox src="/img/docs/dbt-platform/find-account.png" width="60%" title="dbt accounts" />
 
 - **EMEA multi-tenant:** Use `emea.dbt.com`.
 - **APAC multi-tenant:** Use `au.dbt.com`.
@@ -86,7 +86,7 @@ There are two ways to view your <Constant name="dbt" /> IP addresses:
 
 <Constant name="dbt" /> accounts with cell-based account prefixes have unique access URLs for account APIs. These URLs can be found in your **Account settings** below the **Account information** pane.
 
-<Lightbox src="/img/docs/dbt-cloud/access-urls.png" title="Access URLs in the account settings" />
+<Lightbox src="/img/docs/dbt-platform/access-urls.png" title="Access URLs in the account settings" />
 
 These URLs are unique to each account and begin with the same prefix as the URL used to [access your account](#accessing-your-account). The URLs cover the following APIs:
 
@@ -95,4 +95,4 @@ These URLs are unique to each account and begin with the same prefix as the URL 
 - <Constant name="semantic_layer" /> GraphQL API
 - Discovery API 
 
-Learn more about these features in our [API documentation](/docs/dbt-cloud-apis/overview).
+Learn more about these features in our [API documentation](/docs/dbt-platform-apis/overview).

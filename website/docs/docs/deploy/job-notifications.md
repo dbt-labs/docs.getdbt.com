@@ -31,7 +31,7 @@ If you don’t have access to the native Microsoft Teams integration (available 
 You can receive email alerts about jobs by configuring the <Constant name="dbt" /> email notification settings.
 
 ### Prerequisites 
-- You must be either a _developer user_ or an _account admin_ to configure email notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
+- You must be either a _developer user_ or an _account admin_ to configure email notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
     - As a developer user, you can set up email notifications for yourself. 
     - As an account admin, you can set up notifications for yourself and other team members. 
 
@@ -97,28 +97,28 @@ If there has been a change in user roles or Slack permissions where you no longe
 ### Prerequisites 
 - You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
-- You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
+- You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
 - The integration only supports _public_ channels in the Slack workspace. 
 
 ### Set up the Slack integration
 
 1. Select **Account settings** and then select **Integrations** from the left sidebar. 
 1. Locate the **OAuth** section with the Slack application and click **Link**.
-   <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
+   <Lightbox src="/img/docs/dbt-platform/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
 
 #### Logged in to Slack
 If you're already logged in to Slack, the handshake only requires allowing the app access. If you're a member of multiple workspaces, you can select the appropriate workspace from the dropdown menu in the upper right corner.
-   <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
+   <Lightbox src="/img/docs/dbt-platform/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
 
 #### Logged out
 
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
 1. Complete the field defining the Slack workspace you want to integrate with <Constant name="dbt" />.
-    <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="60%" title="Define the workspace"/>
+    <Lightbox src="/img/docs/dbt-platform/define-workspace.png" width="60%" title="Define the workspace"/>
 2. Sign in with an existing identity or use the email address and password. 
 3. Once you have authenticated successfully, accept the permissions.
-    <Lightbox src="/img/docs/dbt-cloud/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
+    <Lightbox src="/img/docs/dbt-platform/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
 
 ### Configure Slack notifications
 
@@ -160,7 +160,7 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
 - The integration only supports _public_ channels in the Slack workspace. 
 
-After an account admin links the Slack app for the account, [any licensed user](/docs/cloud/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to the **Account Admin**, **Owner**, or **Member** default [groups](/docs/cloud/manage-access/about-user-access#groups). IT licenses don't have access to configure Slack job notifications.
+After an account admin links the Slack app for the account, [any licensed user](/docs/platform/manage-access/seats-and-users) in the account can configure Slack job notifications so long as they are assigned to the **Account Admin**, **Owner**, or **Member** default [groups](/docs/platform/manage-access/about-user-access#groups). IT licenses don't have access to configure Slack job notifications.
 
 ### Set up the Slack integration
 
@@ -174,23 +174,23 @@ To use the beta Slack notifications, you must unlink the old Slack app and then 
 
 Until you do this, the account-level Slack option will not appear.
 
-    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="85%" title="Link for the Slack app"/>
+    <Lightbox src="/img/docs/dbt-platform/Link-your-Slack-Profile.png" width="85%" title="Link for the Slack app"/>
 
 ### Logged in to Slack
 
 If you're already logged in to Slack, the integration only requires allowing the app access. If you're a member of multiple workspaces, you can select the appropriate workspace from the dropdown menu in the upper right corner.
-    <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
+    <Lightbox src="/img/docs/dbt-platform/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
 
 ### Logged out
 
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
 1. Complete the field defining the Slack workspace you want to integrate with dbt.
-    <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="60%" title="Define the workspace"/>
+    <Lightbox src="/img/docs/dbt-platform/define-workspace.png" width="60%" title="Define the workspace"/>
 
 2. Sign in with an existing identity or use the email address and password.
 3. Once you have authenticated successfully, accept the permissions.
-    <Lightbox src="/img/docs/dbt-cloud/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
+    <Lightbox src="/img/docs/dbt-platform/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
 
 ### Configure Slack notifications
 Configure the Slack channel you want to receive job notifications from.

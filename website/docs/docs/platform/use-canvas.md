@@ -5,7 +5,7 @@ sidebar_label: "Edit and create dbt models"
 description: "Access and use Canvas to create or edit dbt models through a visual, drag-and-drop experience inside of dbt." 
 pagination_prev: "docs/cloud/canvas-interface"
 pagination_next: "docs/cloud/build-canvas-copilot"
-image: /img/docs/dbt-cloud/canvas/canvas.png
+image: /img/docs/dbt-platform/canvas/canvas.png
 ---
 
 import Prerequisites from '/snippets/_canvas-prerequisites.md';
@@ -28,7 +28,7 @@ Access **<Constant name="canvas" />** at any time from the left-side menu.
 
 To create a dbt SQL model, click on **Create a new model** and perform the following steps. Note that you can't create source models in <Constant name="canvas" />. This is because you need to have production run with sources already created.
 
-1. Drag an [operator](/docs/cloud/canvas-interface#operators) from the operator toolbar and drop it onto the canvas.
+1. Drag an [operator](/docs/platform/canvas-interface#operators) from the operator toolbar and drop it onto the canvas.
 2. Click on the operator to open its configuration panel.
 3. View the **Output** and **SQL Code** tabs. 
 	- Each operator has an Output tab that allows you to preview the data from that configured node.
@@ -52,7 +52,7 @@ To edit an existing model:
 
 This will allow you to select the model you'd like to edit.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/edit-model.png" width="90%" title="Edit a model using the 'Edit a model' button." />
+<Lightbox src="/img/docs/dbt-platform/canvas/edit-model.png" width="90%" title="Edit a model using the 'Edit a model' button." />
 
 ## Upload data to Canvas
 

@@ -44,7 +44,7 @@ If you prefer to not store long-lived IAM user AWS Access Key ID and AWS Secret 
 
 To use temporary credentials:
 1. Enter the **AWS Access Key ID** and **AWS Secret Access Key** in the [development environment settings](/docs/dbt-cloud-environments#create-a-development-environment) in the <Constant name="dbt_platform" /> user interface (UI).
-2. Since the `aws_session_token` isn't available as a UI field in <Constant name="dbt_platform" />, add it using [Extended attributes](/docs/dbt-cloud-environments#extended-attributes) in the environment settings or [<Constant name="dbt_platform" /> profiles](/docs/cloud/about-profiles). 
+2. Since the `aws_session_token` isn't available as a UI field in <Constant name="dbt_platform" />, add it using [Extended attributes](/docs/dbt-cloud-environments#extended-attributes) in the environment settings or [<Constant name="dbt_platform" /> profiles](/docs/platform/about-profiles). 
 
       When you set the `aws_session_token` in **Extended attributes**, the key is case-sensitive and must be exactly `aws_session_token`.
 

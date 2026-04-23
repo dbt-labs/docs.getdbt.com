@@ -20,7 +20,7 @@ Whether you're generating code, tests, and documentation with inline AI assistan
 <Card
     title="dbt Copilot"
     body="dbt's AI experience — bringing inline code assistance and autonomous agents (like the Developer agent) together across your analytics development lifecycle."
-    link="/docs/cloud/dbt-copilot-overview"
+    link="/docs/platform/dbt-copilot-overview"
     icon="dbt-copilot"/>
 
 <Card

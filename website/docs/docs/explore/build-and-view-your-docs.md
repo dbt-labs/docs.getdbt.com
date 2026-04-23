@@ -28,7 +28,7 @@ To set up a job to generate docs:
 1. In the top left, click **Deploy** and select **Jobs**.
 2. Create a new job or select an existing job and click **Settings**.
 3. Under **Execution Settings**, select **Generate docs on run** and click **Save**.
-   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-job-execution-settings.png" width="100%" title="Setting up a job to generate documentation"/>
+   <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/documentation-job-execution-settings.png" width="100%" title="Setting up a job to generate documentation"/>
 
 *Note, for dbt Docs users you need to configure the job to generate docs when it runs, then manually link that job to your project. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.*
 
@@ -59,7 +59,7 @@ You configure project documentation to generate documentation when the job you s
 2. Navigate to **Projects** and select the project that needs documentation.
 3. Click **Edit**.
 4. Under **Artifacts**, select the job that should generate docs when it runs and click **Save**.
-   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" width="100%" title="Configuring project documentation"/>
+   <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/documentation-project-details.png" width="100%" title="Configuring project documentation"/>
 
 :::tip Use <Constant name="catalog" /> for a richer documentation experience
 For a richer and more interactive experience, try out [<Constant name="catalog" />](/docs/explore/explore-projects), available on [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing/). It includes map layers of your DAG, keyword search, interacts with the <Constant name="studio_ide" />, model performance, project recommendations, and more.

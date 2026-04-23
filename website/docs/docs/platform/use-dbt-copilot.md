@@ -17,9 +17,9 @@ Use <Constant name="copilot" /> to generate documentation, tests, semantic model
 
 <Constant name="copilot" /> includes the following capabilities:
 
-- [Generate resources](#generate-resources): Save time by using <Constant name="copilot" />'s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
-- [Generate and edit SQL inline](#generate-and-edit-sql-inline): Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
-- [Build visual models](#build-visual-models): Use <Constant name="copilot" /> to generate models in [<Constant name="canvas" />](/docs/cloud/use-canvas) with natural language prompts.
+- [Generate resources](#generate-resources): Save time by using <Constant name="copilot" />'s generation button to generate documentation, tests, and semantic model files during your development in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
+- [Generate and edit SQL inline](#generate-and-edit-sql-inline): Use natural language prompts to generate SQL code from scratch or to edit existing SQL file by using keyboard shortcuts or highlighting code in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
+- [Build visual models](#build-visual-models): Use <Constant name="copilot" /> to generate models in [<Constant name="canvas" />](/docs/platform/use-canvas) with natural language prompts.
 - [Build queries](#build-queries): Use <Constant name="copilot" /> to generate queries in [<Constant name="insights" />](/docs/explore/dbt-insights) for exploratory data analysis using natural language prompts.
 - [dbt Agents](/docs/dbt-ai/dbt-agents): Delegate entire tasks like building new models end-to-end, refactoring existing models, or analyzing data with natural language &mdash; reducing context-switching and letting you stay in flow. Agents like the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and [Analyst agent](/docs/dbt-ai/analyst-agent) are available in the same <Constant name="copilot" /> panel.
 
@@ -39,7 +39,7 @@ To learn about prompt best practices, check out the [Prompt cookbook](/guides/pr
 
 ## Build visual models
 
-<Constant name="copilot" /> seamlessly integrates with the [<Constant name="canvas" />](/docs/cloud/canvas), a drag-and-drop experience that helps you build your visual models using natural language prompts. Before you begin, make sure you can [access the <Constant name="canvas" />](/docs/cloud/use-canvas#access-canvas).
+<Constant name="copilot" /> seamlessly integrates with the [<Constant name="canvas" />](/docs/platform/canvas), a drag-and-drop experience that helps you build your visual models using natural language prompts. Before you begin, make sure you can [access the <Constant name="canvas" />](/docs/platform/use-canvas#access-canvas).
 
 <CopilotVE/>
 

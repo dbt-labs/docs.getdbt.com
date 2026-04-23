@@ -25,7 +25,7 @@ For performance use cases, people typically query the historical or latest appli
 
 It’s helpful to understand how long it takes to build models (tables) and tests to execute during a dbt run. Longer model build times result in higher infrastructure costs and fresh data arriving later to stakeholders. Analyses like these can be in observability tools or ad-hoc queries, like in a notebook.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/model-timing.png" width="200%" title="Model timing visualization in dbt"/>
 
 <details>
 <summary>Example query with code</summary>
@@ -158,10 +158,10 @@ plt.show()
 
 Plotting examples:
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/plot-of-runelapsedtime.png" width="80%" title="The plot of runElapsedTime over time"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/plot-of-runelapsedtime.png" width="80%" title="The plot of runElapsedTime over time"/>
 
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/plot-of-executiontime.png" width="80%" title="The plot of executionTime over time"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/plot-of-executiontime.png" width="80%" title="The plot of executionTime over time"/>
 
 </details>
 
@@ -488,7 +488,7 @@ def create_freshness_graph(models_df, sources_df):
 
 Graph example:
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/lineage-graph-with-freshness-info.png" width="75%" title="A lineage graph with source freshness information"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/lineage-graph-with-freshness-info.png" width="75%" title="A lineage graph with source freshness information"/>
 
 </details>
 
@@ -497,7 +497,7 @@ Graph example:
 
 Checking [source freshness](/docs/build/sources#source-data-freshness) allows you to ensure that sources loaded and used in your dbt project are compliant with expectations. The API provides the latest metadata about source loading and information about the freshness check criteria.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/source-freshness-page.png" width="75%" title="Source freshness page in dbt"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/source-freshness-page.png" width="75%" title="Source freshness page in dbt"/>
 
 <details>
 <summary>Example query</summary>
@@ -679,7 +679,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 Lineage, enabled by the `ref` function, is at the core of dbt. Understanding lineage provides many benefits, such as understanding the structure and relationships of datasets (and metrics) and performing impact-and-root-cause analyses to resolve or present issues given changes to definitions or source data. With the Discovery API, you can construct lineage using the `parents` nodes or its `children` and query the entire upstream lineage using `ancestors`.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/example-dag.png" width="80%" title="Example of a DAG"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/example-dag.png" width="80%" title="Example of a DAG"/>
 
 <details>
 <summary>Example query with code</summary>
@@ -897,7 +897,7 @@ plot_generic_graph(G)
 
 Graph example:
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/lineage-graph.png" width="75%" title="A lineage graph"/>
+<Lightbox src="/img/docs/dbt-platform/discovery-api/lineage-graph.png" width="75%" title="A lineage graph"/>
 
 
 </details>
@@ -1199,4 +1199,4 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 ## Related docs
 
-- [Query Discovery API](/docs/dbt-cloud-apis/discovery-querying)
+- [Query Discovery API](/docs/dbt-platform-apis/discovery-querying)

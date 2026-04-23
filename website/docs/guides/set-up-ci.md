@@ -120,7 +120,7 @@ If you create a seed to exclude groups of models from a specific test, remember 
 
 ## Run linting checks with SQLFluff
 
-By [linting](/docs/cloud/studio-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
+By [linting](/docs/platform/studio-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
 
 Seamlessly enable [SQL linting for your CI job](/docs/deploy/continuous-integration#sql-linting) in <Constant name="dbt" /> to invoke [SQLFluff](https://docs.sqlfluff.com/en/stable/), a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors.
 
@@ -341,7 +341,7 @@ As noted above, this branch will outlive any individual feature, and will be the
 
 See [Custom branch behavior](/docs/dbt-cloud-environments#custom-branch-behavior). Setting `qa` as your custom branch ensures that the IDE creates new branches and PRs with the correct target, instead of using `main`.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
+<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
 
 ### 3. Create a new QA environment
 

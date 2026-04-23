@@ -17,7 +17,7 @@ import AboutExternal from '/snippets/_about-external-oauth.md';
 
 The process of setting up external OAuth will require a little bit of back-and-forth between your <Constant name="dbt" />, IdP, and data warehouse accounts, and having them open in multiple browser tabs will help speed up the configuration process:
 
-- **<Constant name="dbt" />:** You’ll primarily be working in the **Account settings** —> **Integrations** page. You will need [proper permission](/docs/cloud/manage-access/enterprise-permissions) to set up the integration and create the connections.
+- **<Constant name="dbt" />:** You’ll primarily be working in the **Account settings** —> **Integrations** page. You will need [proper permission](/docs/platform/manage-access/enterprise-permissions) to set up the integration and create the connections.
 - **Identity providers:**
    - **Okta:** You’ll be working in multiple areas of the Okta account, but you can start in the **Applications** section. You will need permissions to [create an application](https://help.okta.com/en-us/content/topics/security/custom-admin-role/about-role-permissions.htm#Application_permissions) and an [authorization server](https://help.okta.com/en-us/content/topics/security/custom-admin-role/about-role-permissions.htm#Authorization_server_permissions).
    - **Entra ID** An admin with access to create [Entra ID apps](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/custom-available-permissions) who is also a user in the data warehouse is required. 
@@ -43,20 +43,20 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 2. Scroll down to **Custom integrations** and click **Add integrations**
 3. Leave this window open. You can set the **Integration type** to Okta and note the **Redirect URI** at the bottom of the page. Copy this to your clipboard for use in the next steps.
 
-<Lightbox src="/img/docs/dbt-cloud/callback-uri.png" width="60%" title="Copy the callback URI at the bottom of the integration page in dbt." />
+<Lightbox src="/img/docs/dbt-platform/callback-uri.png" width="60%" title="Copy the callback URI at the bottom of the integration page in dbt." />
 
 ### 2. Create the Okta app
 
 1. Expand the **Applications** section from the Okta dashboard and click **Applications.** Click the **Create app integration** button.
 2. Select **OIDC** as the sign-in method and **Web applications** as the application type. Click **Next**.
 
-<Lightbox src="/img/docs/dbt-cloud/create-okta-app.png" width="60%" title="The Okta app creation window with OIDC and Web Application selected." />
+<Lightbox src="/img/docs/dbt-platform/create-okta-app.png" width="60%" title="The Okta app creation window with OIDC and Web Application selected." />
 
 3. Give the application an appropriate name, something like “External OAuth app for <Constant name="dbt" />,” that will make it easily identifiable.
 4. In the **Grant type** section, enable the **Refresh token** option.
 5. Scroll down to the **Sign-in redirect URIs** option. You’ll need to paste the redirect URI you gathered from <Constant name="dbt" /> in step 1.3.
 
-<Lightbox src="/img/docs/dbt-cloud/configure-okta-app.png" width="60%" title="The Okta app configuration window with the sign-in redirect URI configured to the dbt value." />
+<Lightbox src="/img/docs/dbt-platform/configure-okta-app.png" width="60%" title="The Okta app configuration window with the sign-in redirect URI configured to the dbt value." />
 
 6. Save the app configuration. You’ll come back to it, but move on to the next steps for now.
 
@@ -65,29 +65,29 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 1. Expand the **Security** section and click **API** from the Okta sidebar menu.
 2. On the API screen, click **Add authorization server**. Give the authorization server a name (a nickname for your data warehouse account would be appropriate). For the **Audience** field, copy and paste your data warehouse login URL. Give the server an appropriate description and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/create-okta-api.png" width="60%" title="The Okta API window with the Audience value set." />
+<Lightbox src="/img/docs/dbt-platform/create-okta-api.png" width="60%" title="The Okta API window with the Audience value set." />
 
 3. On the authorization server config screen, open the **Metadata URI** in a new tab. You’ll need information from this screen in later steps.
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-uri.png" width="60%" title="The Okta API settings page with the metadata URI highlighted." />
+<Lightbox src="/img/docs/dbt-platform/metadata-uri.png" width="60%" title="The Okta API settings page with the metadata URI highlighted." />
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-example.png" width="60%" title="Sample output of the metadata URI." />
+<Lightbox src="/img/docs/dbt-platform/metadata-example.png" width="60%" title="Sample output of the metadata URI." />
 
 4. Click on the **Scopes** tab and **Add scope**. In the **Name** field, add `session:role-any`. (Optional) Configure **Display phrase** and **Description** and click **Create**.
 
-<Lightbox src="/img/docs/dbt-cloud/add-api-scope.png" width="60%" title="API scope configured in the Add Scope window." />
+<Lightbox src="/img/docs/dbt-platform/add-api-scope.png" width="60%" title="API scope configured in the Add Scope window." />
 
 5. Open the **Access policies** tab and click **Add policy**. Give the policy a **Name** and **Description** and set **Assign to** as **The following clients**. Start typing the name of the app you created in step 2.3, and you’ll see it autofill. Select the app and click **Create Policy**.
 
-<Lightbox src="/img/docs/dbt-cloud/add-api-assignment.png" width="60%" title="Assignment field autofilling the value." />
+<Lightbox src="/img/docs/dbt-platform/add-api-assignment.png" width="60%" title="Assignment field autofilling the value." />
 
 6. On the **access policy** screen, click **Add rule**.
 
-<Lightbox src="/img/docs/dbt-cloud/add-api-rule.png" width="60%" title="API Add rule button highlighted." />
+<Lightbox src="/img/docs/dbt-platform/add-api-rule.png" width="60%" title="API Add rule button highlighted." />
 
 7. Give the rule a descriptive name and scroll down to **token lifetimes**. Configure the **Access token lifetime is**, **Refresh token lifetime is**, and **but will expire if not used every** settings according to your organizational policies. We recommend the defaults of 1 hour and 90 days. Stricter rules increase the odds of your users having to re-authenticate.
 
-<Lightbox src="/img/docs/dbt-cloud/configure-token-lifetime.png" width="60%" title="Token lifetime settings in the API rule window." />
+<Lightbox src="/img/docs/dbt-platform/configure-token-lifetime.png" width="60%" title="Token lifetime settings in the API rule window." />
 
 8. Navigate back to the **Settings** tab and leave it open in your browser. You’ll need some of the information in later steps.
 
@@ -102,9 +102,9 @@ Configure the Okta application and APIs in accordance with your Amazon configs.
 1. Navigate back to the <Constant name="dbt" /> **Account settings** —> **Integrations** page you were on at the beginning. It’s time to start filling out all of the fields.
    1. `Integration name`: Give the integration a descriptive name that includes identifying information about the Okta environment so future users won’t have to guess where it belongs.
    2. `Client ID` and `Client secrets`: Retrieve these from the Okta application page.
-   <Lightbox src="/img/docs/dbt-cloud/gather-clientid-secret.png" width="60%" title="The client ID and secret highlighted in the Okta app." />
+   <Lightbox src="/img/docs/dbt-platform/gather-clientid-secret.png" width="60%" title="The client ID and secret highlighted in the Okta app." />
    3. Authorize URL and Token URL: Found in the metadata URI.
-   <Lightbox src="/img/docs/dbt-cloud/gather-authorization-token-endpoints.png" width="60%" title="The authorize and token URLs highlighted in the metadata URI." />
+   <Lightbox src="/img/docs/dbt-platform/gather-authorization-token-endpoints.png" width="60%" title="The authorize and token URLs highlighted in the metadata URI." />
 
 2. **Save** the configuration
 
@@ -116,13 +116,13 @@ Configure the Okta application and APIs in accordance with your Amazon configs.
 2. Configure the `Account`, `Database`, and `Warehouse` as you normally would, and for the `OAuth method`, select the external OAuth you just created.
 
 
-<Lightbox src="/img/docs/dbt-cloud/configure-new-connection.png" width="60%" title="The new configuration window in dbt with the External OAuth showing as an option." />
+<Lightbox src="/img/docs/dbt-platform/configure-new-connection.png" width="60%" title="The new configuration window in dbt with the External OAuth showing as an option." />
 
 
 3. Scroll down to the **External OAuth** configurations box and select the config from the list.
 
 
-<Lightbox src="/img/docs/dbt-cloud/select-oauth-config.png" width="60%" title="The new connection displayed in the External OAuth Configurations box." />
+<Lightbox src="/img/docs/dbt-platform/select-oauth-config.png" width="60%" title="The new connection displayed in the External OAuth Configurations box." />
 
 4. **Save** the connection, and you have now configured External OAuth with Okta!
 
@@ -152,7 +152,7 @@ In your Entra ID account:
 3. Click **Add** next to **Application ID URI**. The field will automatically populate. 
 4. Click **Save**.
 
-   <Lightbox src="/img/docs/dbt-cloud/create-resource-server.png" width="60%" title="Create the Entra ID resource server." />
+   <Lightbox src="/img/docs/dbt-platform/create-resource-server.png" width="60%" title="Create the Entra ID resource server." />
 
 5. Record the `value` field for use in a future step.
 6. From the same screen, click **Add scope**:
@@ -172,7 +172,7 @@ In your Entra ID account:
     4. Click **Register**.
 2. From the app overview page, click **API permissions** from the left menu, and click **Add permission**.
 
-   <Lightbox src="/img/docs/dbt-cloud/add-permission-entra.png" width="60%" title="Add permissions to the Entra ID app." />
+   <Lightbox src="/img/docs/dbt-platform/add-permission-entra.png" width="60%" title="Add permissions to the Entra ID app." />
 
 3. From the pop-out screen, click **APIs my organization uses**, search for the resource server name from the previous steps, and click it.
 4. Ensure the box for the **Permissions** `dbt-redshift` is enabled and click **Add permissions**.
@@ -218,7 +218,7 @@ The following steps are outlined per [this blog post](https://aws.amazon.com/blo
 
 To start, select **IAM Identity Center connection** from the Amazon Redshift console menu.
 
-   <Lightbox src="/img/docs/dbt-cloud/redshift-idc.png" width="60%" title="The AWS Redshift console." />
+   <Lightbox src="/img/docs/dbt-platform/redshift-idc.png" width="60%" title="The AWS Redshift console." />
 
 1. Select the Amazon Redshift application that you created as part of the setup.
 2. Select the **Client connections tab** and choose **Edit**.

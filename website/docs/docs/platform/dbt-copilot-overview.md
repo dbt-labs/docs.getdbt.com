@@ -21,7 +21,7 @@ From generating SQL and documentation with a single click, to delegating complex
 <Constant name="copilot" /> includes the following capabilities:
 
 #### Inline assistance <Lifecycle status="self_service,managed,managed_plus" />
-- **[Inline assistance](/docs/cloud/dbt-copilot)** &mdash; Generate code, documentation, tests, semantic models, and SQL with a single click &mdash; available in the <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />.
+- **[Inline assistance](/docs/platform/dbt-copilot)** &mdash; Generate code, documentation, tests, semantic models, and SQL with a single click &mdash; available in the <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />.
 
 #### dbt Agents <Lifecycle status="beta,managed,managed_plus" />
 - [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) &mdash; Write or refactor models, generate tests, and validate changes from natural language, all within the <Constant name="studio_ide" />.

@@ -11,8 +11,8 @@ sidebar: "Invite users"
 
 You must have proper permissions to invite new users:
 
-- [**Starter accounts**](/docs/cloud/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
-- [**Enterprise-tier accounts**](/docs/cloud/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
+- [**Starter accounts**](/docs/platform/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
+- [**Enterprise-tier accounts**](/docs/platform/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
 - The admin inviting the users must have a `developer` or `IT` license.
 
 ## Invite new users
@@ -21,7 +21,7 @@ You must have proper permissions to invite new users:
 2. Under **Settings**, select **Users**.
 3. Click on **Invite users**.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/invite-users.png" width="60%" title="The invite users pane"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/invite-users.png" width="60%" title="The invite users pane"/>
 
 4. In the **Email Addresses** field, enter the email addresses of the users you want to invite separated by a comma, semicolon, or a new line.
 5. Select the license type for the batch of users from the **License** dropdown.
@@ -36,11 +36,11 @@ You must have proper permissions to invite new users:
 Email verification is mandatory for all new users in <Constant name="dbt" />, including using Single Sign-On (SSO)⁠⁠. Automatic provisioning without email verification is not allowed. This is a security requirement that cannot be bypassed.
 :::
 
-<Constant name="dbt" /> generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure that traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/access-regions-ip-addresses).
+<Constant name="dbt" /> generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure that traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/platform/about-platform/access-regions-ip-addresses).
 
 The email contains a link to create an account. When the user clicks on this link, they will be brought to one of two screens depending on whether SSO is configured or not.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/email-invite.png" width="60%" title="Example or an email invitation"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/email-invite.png" width="60%" title="Example or an email invitation"/>
 
 <Tabs>
 
@@ -48,7 +48,7 @@ The email contains a link to create an account. When the user clicks on this lin
 
 The default settings send the email, the user clicks the link, and is prompted to create their account:
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/default-user-invite.png" width="60%" title="Default user invitation"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/default-user-invite.png" width="60%" title="Default user invitation"/>
 
 </TabItem>
 
@@ -64,7 +64,7 @@ If SSO is configured for the environment, the user must:
 Accepting the invite doesn't fully complete the process. The user _must_ log in using SSO to redeem the invite and access the account.
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/sso-user-invite.png" width="60%" title="User invitation with SSO configured"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/sso-user-invite.png" width="60%" title="User invitation with SSO configured"/>
 
 </TabItem>
 
@@ -111,7 +111,7 @@ From the **Users** page, click on the invite record, and you will be presented w
 
 From the **Users** page, click on the invite record, and you will be presented with the option to revoke it. Once revoked, generate a new invitation to the correct email address.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/resend-invite.png" width="60%" title="Resend or revoke the users invitation"/>
+<Lightbox src="/img/docs/dbt-platform/access-control/resend-invite.png" width="60%" title="Resend or revoke the users invitation"/>
 
 </DetailsToggle>
 

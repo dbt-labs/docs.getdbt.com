@@ -22,8 +22,8 @@ Connect your Azure DevOps cloud account in <Constant name="dbt" /> to unlock new
 
 Currently, there are multiple methods for integrating Azure DevOps with <Constant name="dbt" />. The following methods are available to all accounts: 
 
-- [**Service principal (recommended)**](/docs/cloud/git/setup-service-principal)
-- [**Service user (legacy)**](/docs/cloud/git/setup-service-user)
-- [**Service user to service principal migration**](/docs/cloud/git/setup-service-principal#migrate-to-service-principal)
+- [**Service principal (recommended)**](/docs/platform/git/setup-service-principal)
+- [**Service user (legacy)**](/docs/platform/git/setup-service-user)
+- [**Service user to service principal migration**](/docs/platform/git/setup-service-principal#migrate-to-service-principal)
 
 No matter which approach you take, you will need admins for <Constant name="dbt" />, Azure Entra ID, and Azure DevOps to complete the integration. For more information, follow the setup guide that's right for you. 

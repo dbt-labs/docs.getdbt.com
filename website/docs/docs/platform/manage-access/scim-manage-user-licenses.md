@@ -10,19 +10,19 @@ sidebar_label: "Manage user licenses with SCIM"
 You can manage user license assignments using System for Cross-Domain Identity Management (SCIM) and a user attribute in Okta, so the license type is set as users are provisioned and onboarded.
 
 :::info SCIM license mapping available for Okta only
-SCIM license mapping is currently only supported for Okta. For other providers, use [SSO license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration) or manage [licenses](/docs/cloud/manage-access/seats-and-users) in the <Constant name="dbt_platform" /> user interface.
+SCIM license mapping is currently only supported for Okta. For other providers, use [SSO license mapping](/docs/platform/manage-access/seats-and-users#mapped-configuration) or manage [licenses](/docs/platform/manage-access/seats-and-users) in the <Constant name="dbt_platform" /> user interface.
 :::
 
 #### Considerations
 Before you enable SCIM license mapping:
-- **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration), or using SCIM.
+- **Default license**: New users are assigned a Developer license unless you change it manually using [SSO license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration), or using SCIM.
 - **Best practice**: Use one source of truth for license assignment (either <Constant name="dbt_platform" /> or SCIM). Don't mix SCIM license management with manual or single sign-on (SSO) mapping changes.
-- **Analyst license**: Only available on [select plans](/docs/cloud/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account. The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
+- **Analyst license**: Only available on [select plans](/docs/platform/manage-access/seats-and-users). Assigning this license using SCIM will return an error if that license type isn't available for your account. The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## Enable SCIM license mapping
 
 To use license management using SCIM, go to your **Account settings** > **SSO & SCIM**. Under the **SCIM** section, enable **Manage user licenses with SCIM**. This setting enforces license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.
-<Lightbox src="/img/docs/dbt-cloud/access-control/scim-managed-licenses.png" width="60%" title="Enable SCIM managed user license distribution." />
+<Lightbox src="/img/docs/dbt-platform/access-control/scim-managed-licenses.png" width="60%" title="Enable SCIM managed user license distribution." />
 
 We recommend that you complete the setup instructions for your identity provider (IdP) prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="dbt" /> will be ignored.
 
@@ -48,7 +48,7 @@ After creating and syncing your specific IdP groups, remove users from these def
 
 ## Automated license mapping
 
-Automating license assignments is available for Okta only. It's a common strategy to reduce administrative overhead. For SSO-based license mapping (for example, Entra ID), see [Mapped configuration](/docs/cloud/manage-access/seats-and-users#mapped-configuration).
+Automating license assignments is available for Okta only. It's a common strategy to reduce administrative overhead. For SSO-based license mapping (for example, Entra ID), see [Mapped configuration](/docs/platform/manage-access/seats-and-users#mapped-configuration).
 
 #### Define IdP groups
 
@@ -101,15 +101,15 @@ To add the attribute for license types to your Okta environment:
         | **Developer**| `developer` |
         | **Read Only**| `read_only` |
 
-    The **Analyst** license is only available on [select plans](/docs/cloud/manage-access/seats-and-users). It is not available for new purchase.
+    The **Analyst** license is only available on [select plans](/docs/platform/manage-access/seats-and-users). It is not available for new purchase.
 
     - **Attribute type:** Group
 
-    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-license-attributes.png" width="60%" title="Enter the fields as they appear in the image. Ensure the cases match." />
+    <Lightbox src="/img/docs/dbt-platform/access-control/scim-license-attributes.png" width="60%" title="Enter the fields as they appear in the image. Ensure the cases match." />
 
 4. **Save** the attribute mapping.
 Users can now have license types set in their profiles and when they are being provisioned.
-    <Lightbox src="/img/docs/dbt-cloud/access-control/scim-license-provisioning.png" width="60%" title="Set the license type for the user in their Okta profile." />
+    <Lightbox src="/img/docs/dbt-platform/access-control/scim-license-provisioning.png" width="60%" title="Set the license type for the user in their Okta profile." />
 
 ## Automate license assignments with Okta groups
 

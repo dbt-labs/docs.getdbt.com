@@ -22,7 +22,7 @@ By moving your environments and jobs to release tracks you can get all the funct
 | **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
 
-To configure an environment in the [dbt Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
+To configure an environment in the [dbt Admin API](/docs/dbt-platform-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
 - `latest-fusion` <Lifecycle status="private_preview" />
 - `latest`
 - `compatible`

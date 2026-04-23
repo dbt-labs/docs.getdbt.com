@@ -14,7 +14,7 @@ Currently supported features include:
 * Just-in-time provisioning
 
 This document details the steps to integrate <Constant name="dbt" /> with an identity
-provider in order to configure Single Sign On and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control).
+provider in order to configure Single Sign On and [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control).
 
 ## Auth0 URIs
 
@@ -49,7 +49,7 @@ When prompted for the SAML 2.0 application configurations, supply the following 
 * Audience URI (SP Entity ID): `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login URL slug}`
 - Relay State: `<login URL slug>` (Note: Relay state may be shown as optional in the IdP settings; it is _required_ for the dbt SSO configuration.) 
 
-Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="dbt" />. [SCIM configuration](/docs/cloud/manage-access/scim) requires `NameID` and `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute. We recommend using the following values:
+Additionally, you may configure the IdP attributes passed from your identity provider into <Constant name="dbt" />. [SCIM configuration](/docs/platform/manage-access/scim) requires `NameID` and `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute. We recommend using the following values:
 
 
 | name | name format | value | description |
@@ -61,7 +61,7 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 
 `NameID` values can be persistent (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`) rather than unspecified if your IdP supports these values.  Using an email address for `NameID` will work, but <Constant name="dbt" /> creates an entirely new user if that email address changes.  Configuring a value that will not change, even if the user's email address does, is a best practice.
 
-<Constant name="dbt" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
+<Constant name="dbt" />'s [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign <Constant name="dbt" /> users to <Constant name="dbt" /> groups. To
 use role-based access control in <Constant name="dbt" />, also configure your identity
 provider to provide group membership information in user attribute called
@@ -121,7 +121,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-1-new-app.png"
     title="Create a new app"
 />
 
@@ -133,7 +133,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
     title="Configure a new app"
 />
 
@@ -153,7 +153,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
     title="Configure the app's General Settings"
 />
 
@@ -168,10 +168,10 @@ You can use the instructions in this section to configure Okta as your identity 
    * **Application username**: `Custom` / `user.getInternalProperty("id")`
    * **Update Application username on**: `Create and update`
 
-  <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
+  <Lightbox collapsed={false} src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
 2. Map your organization's Okta User and Group Attributes to the format that
-<Constant name="dbt" /> expects by using the Attribute Statements and Group Attribute Statements forms. [SCIM configuration](/docs/cloud/manage-access/scim) requires `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute.
+<Constant name="dbt" /> expects by using the Attribute Statements and Group Attribute Statements forms. [SCIM configuration](/docs/platform/manage-access/scim) requires `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute.
 
 3. The following table illustrates expected User Attribute Statements:
 
@@ -196,7 +196,7 @@ support if you have any questions.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
     title="Configure the app's User and Group Attribute Statements"
 />
 
@@ -211,7 +211,7 @@ app.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-4-feedback.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-4-feedback.png"
     title="Finishing setup in Okta"
 />
 
@@ -223,13 +223,13 @@ the integration between Okta and <Constant name="dbt" />.
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
     title="Viewing the configured application"
 />
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-instructions.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-5-instructions.png"
     title="Application setup instructions"
 />
 
@@ -278,7 +278,7 @@ Expected **Attributes**:
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
 
-9. To use [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) in <Constant name="dbt" />,  enter the groups in the **Group membership** field during configuration:
+9. To use [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control) in <Constant name="dbt" />,  enter the groups in the **Group membership** field during configuration:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
@@ -323,14 +323,14 @@ Follow these steps to set up single sign-on (SSO) with <Constant name="dbt" />:
 8. Click the application you just created.
 9. Select **Single sign-on** under Manage in the left navigation.
 10. Click **Set up single sign on** under Getting Started.
-<Lightbox src="/img/docs/dbt-cloud/access-control/single-sign-on-overview.jpg" width="75%" title="In your Overview page, select 'Set up single sign on" />
+<Lightbox src="/img/docs/dbt-platform/access-control/single-sign-on-overview.jpg" width="75%" title="In your Overview page, select 'Set up single sign on" />
 
 11.  Click **SAML** in "Select a single sign-on method" section.
-<Lightbox src="/img/docs/dbt-cloud/access-control/saml.jpg" width="75%" title="Select the 'SAML' card in the 'Seelct a single sign-on method' section. " />
+<Lightbox src="/img/docs/dbt-platform/access-control/saml.jpg" width="75%" title="Select the 'SAML' card in the 'Seelct a single sign-on method' section. " />
 
 12.   Click **Edit** in the Basic SAML Configuration section.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/basic-saml.jpg" width="75%" title="In the 'Set up Single Sign-On with SAML' page, click 'Edit' in the 'Basic SAML Configuration' card"  />
+<Lightbox src="/img/docs/dbt-platform/access-control/basic-saml.jpg" width="75%" title="In the 'Set up Single Sign-On with SAML' page, click 'Edit' in the 'Basic SAML Configuration' card"  />
 
 13. Use the following table to complete the required fields and connect to dbt:
 
@@ -415,7 +415,7 @@ We recommend using the following values:
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
 
-<Constant name="dbt" />'s [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
+<Constant name="dbt" />'s [role-based access control](/docs/platform/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign <Constant name="dbt" /> users to <Constant name="dbt" /> groups. To
 use role-based access control in <Constant name="dbt" />, also configure OneLogin to provide group membership information in user attribute called
 `groups`:
@@ -478,7 +478,7 @@ To complete setup, follow the steps below in <Constant name="dbt" />:
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
    | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
   
-    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+    <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
         title="Configuring the application in dbt" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
@@ -496,6 +496,6 @@ The **Single sign-on** section also contains additional configuration options wh
 
 ### Setting up RBAC
 
-After configuring an identity provider, you will be able to set up [role-based access control](/docs/cloud/manage-access/enterprise-permissions) for your account.
+After configuring an identity provider, you will be able to set up [role-based access control](/docs/platform/manage-access/enterprise-permissions) for your account.
 
-For common questions and troubleshooting — including "Access Denied" after SAML authentication, ACS URL or Entity ID changes, and email verification issues — refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+For common questions and troubleshooting — including "Access Denied" after SAML authentication, ACS URL or Entity ID changes, and email verification issues — refer to [SSO FAQs and troubleshooting](/docs/platform/manage-access/sso-faq).

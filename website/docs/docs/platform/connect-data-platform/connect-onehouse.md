@@ -10,7 +10,7 @@ pagination_next: null
 <Constant name="dbt" /> supports connecting to [Onehouse SQL](https://www.onehouse.ai/product/quanton) using the Apache Spark Connector with the Thrift method.
 
 :::note
-Connect to a Onehouse SQL Cluster with the [dbt-spark](/docs/cloud/connect-data-platform/connect-apache-spark) adapter.**
+Connect to a Onehouse SQL Cluster with the [dbt-spark](/docs/platform/connect-data-platform/connect-apache-spark) adapter.**
 :::
 
 ## Requirements

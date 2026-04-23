@@ -15,7 +15,7 @@ The following steps walk you through the setup of an Azure-hosted Snowflake Priv
 <CloudProviders type='Snowflake' />
 
 :::note Snowflake OAuth with Private Link
-Users connecting to Snowflake using [Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) over an Azure Private Link connection from <Constant name="dbt" /> also require access to a Private Link endpoint from their local workstation. Where possible, use [Snowflake External OAuth](/docs/cloud/manage-access/snowflake-external-oauth) instead to bypass this limitation.
+Users connecting to Snowflake using [Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth) over an Azure Private Link connection from <Constant name="dbt" /> also require access to a Private Link endpoint from their local workstation. Where possible, use [Snowflake External OAuth](/docs/platform/manage-access/snowflake-external-oauth) instead to bypass this limitation.
 
 Snowflake docs:
 >Currently, for any given Snowflake account, SSO works with only one account URL at a time: either the public account URL or the URL associated with the private connectivity service
@@ -101,14 +101,14 @@ Open the Snowflake UI and take the following steps:
 7. In the identifier box, type the Azure Link ID obtained in the previous section and press **Enter**.
 8. Click **Create Network Rule**.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
+<Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink2.png" title="Create Network Rule"/>
 
 9. In the **Network Policy** tab, edit the policy to which you want to add the rule. This could be your account-level policy or one specific to the users connecting from <Constant name="dbt" />.
 
 
 10. Add the new rule to the allowed list and click **Update Network Policy**.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink3.png" title="Update Network Policy"/>
+<Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink3.png" title="Update Network Policy"/>
 
 ### Using SQL
 

@@ -18,7 +18,7 @@ The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framewo
 
 These experiences enable you to extend what's been built with <Constant name="dbt" /> to users who have traditionally worked downstream from the dbt project, such as BI analysts and technical stakeholders. 
 
-For installation instructions, refer to [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
+For installation instructions, refer to [Set up the dbt Snowflake Native App](/docs/platform-integrations/set-up-snowflake-native-app).
 
 ## Architecture
 
@@ -32,12 +32,12 @@ There are three tools connected to the operation of the dbt Snowflake Native App
 
 The following diagram provides an illustration of the architecture:
 
-<Lightbox src="/img/docs/cloud-integrations/architecture-dbt-snowflake-native-app.png" title="Architecture of dbt and Snowflake integration"/>
+<Lightbox src="/img/docs/platform-integrations/architecture-dbt-snowflake-native-app.png" title="Architecture of dbt and Snowflake integration"/>
 
 
 ## Access
 
-Log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. The Snowflake user must have a corresponding <Constant name="dbt" /> user with a _[developer license](/docs/cloud/manage-access/seats-and-users)_. Previously, this wasn't a requirement during the feature [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
+Log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. The Snowflake user must have a corresponding <Constant name="dbt" /> user with a _[developer license](/docs/platform/manage-access/seats-and-users)_. Previously, this wasn't a requirement during the feature [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
 
 If your Snowflake Native App is already configured, you will be prompted to [link credentials](#link-credentials) the next time you access <Constant name="dbt" /> from the app. This is a one-time process.
 
@@ -50,13 +50,13 @@ If you're interested, please [contact us](mailto:sales_snowflake_marketplace@dbt
 If you have any questions about the dbt Snowflake Native App, you may [contact our Support team](mailto:dbt-snowflake-marketplace@dbtlabs.com) for help. Please provide information about your installation of the Native App, including your <Constant name="dbt" /> account ID and Snowflake account identifier. 
 
 ## Limitations
-- The Native app does not support <Constant name="dbt" /> accounts with [IP Restrictions](/docs/cloud/secure/ip-restrictions) enabled. 
+- The Native app does not support <Constant name="dbt" /> accounts with [IP Restrictions](/docs/platform/secure/ip-restrictions) enabled. 
 
 ## Link credentials
 
-Every Snowflake user accessing the Native app must also have <Constant name="dbt" /> account access with a [developer or read-only license](/docs/cloud/manage-access/seats-and-users). Feature access will be dependent on their <Constant name="dbt" /> license type.
+Every Snowflake user accessing the Native app must also have <Constant name="dbt" /> account access with a [developer or read-only license](/docs/platform/manage-access/seats-and-users). Feature access will be dependent on their <Constant name="dbt" /> license type.
 
-For existing accounts with the Snowflake Native App configured, users will be prompted to authenticate with <Constant name="dbt" /> the next time they log in. This is a one-time process if they have a user in <Constant name="dbt" />. If they don’t have a <Constant name="dbt" /> user, they will be denied access, and an admin will need to [create one](/docs/cloud/manage-access/invite-users). 
+For existing accounts with the Snowflake Native App configured, users will be prompted to authenticate with <Constant name="dbt" /> the next time they log in. This is a one-time process if they have a user in <Constant name="dbt" />. If they don’t have a <Constant name="dbt" /> user, they will be denied access, and an admin will need to [create one](/docs/platform/manage-access/invite-users). 
 
 1. When you attempt to access the <Constant name="dbt" /> platform from the Snowflake Native App, you will be prompted to link your account.
 

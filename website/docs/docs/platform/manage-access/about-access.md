@@ -25,19 +25,19 @@ You can regulate access to <Constant name="dbt" /> by various measures, includin
 
 ## Users
 
-Individual users in <Constant name="dbt" /> can be people you [manually invite](/docs/cloud/manage-access/invite-users) or grant access via an external identity provider (IdP), such as Microsoft Entra ID, Okta, or Google Workspace.
+Individual users in <Constant name="dbt" /> can be people you [manually invite](/docs/platform/manage-access/invite-users) or grant access via an external identity provider (IdP), such as Microsoft Entra ID, Okta, or Google Workspace.
 
 In either scenario, when you add a user to <Constant name="dbt" />, they are assigned a [license](#licenses). You assign licenses at the individual user or group levels. When you manually invite a user, you will assign the license in the invitation window.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/license-dropdown.png" width="40%" title="Example of the license dropdown in the user invitation window." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/license-dropdown.png" width="40%" title="Example of the license dropdown in the user invitation window." />
 
 You can edit an existing user's license by navigating to the **Users** section of the **Account settings**, clicking on a user, and clicking **Edit** on the user pane. Delete users from this same window to free up licenses for new users.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-user.png" width="40%" title="Example of the user information window in the user directory" />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/edit-user.png" width="40%" title="Example of the user information window in the user directory" />
 
 ### User passwords
 
-By default, new users will be prompted to set a password for their account. All plan tiers support and enforce [multi-factor authentication](/docs/cloud/manage-access/mfa) for users with password logins. However, they will still need to configure their password before configuring MFA. Enterprise tier accounts can configure [SSO](#sso-mappings) and advanced authentication measures. Developer and Starter plans only support user passwords with MFA. 
+By default, new users will be prompted to set a password for their account. All plan tiers support and enforce [multi-factor authentication](/docs/platform/manage-access/mfa) for users with password logins. However, they will still need to configure their password before configuring MFA. Enterprise tier accounts can configure [SSO](#sso-mappings) and advanced authentication measures. Developer and Starter plans only support user passwords with MFA. 
 
 User passwords must meet the following criteria:
 
@@ -50,7 +50,7 @@ User passwords must meet the following criteria:
 
 Groups in <Constant name="dbt" /> serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignments of permissions easier. 
 
-The permissions available depends on whether you're on an [Enterprise-tier](/docs/cloud/manage-access/enterprise-permissions) or [self-service Starter](/docs/cloud/manage-access/self-service-permissions) plan.
+The permissions available depends on whether you're on an [Enterprise-tier](/docs/platform/manage-access/enterprise-permissions) or [self-service Starter](/docs/platform/manage-access/self-service-permissions) plan.
 
 - Admins use groups in <Constant name="dbt" /> to assign [licenses](#licenses) and [permissions](#permissions). 
 - The permissions are more granular than licenses, and you only assign them at the group level; _you can’t assign permissions at the user level._
@@ -65,8 +65,8 @@ There are three default groups available as soon as you create your <Constant na
 :::note default group permissions
 
 The `Owner` and `Member` groups have default permission sets:
-- **Starter plan:** The `Owner` and `Member` groups use the `Owner` and `Member` [permission sets](/docs/cloud/manage-access/self-service-permissions#table-of-groups-licenses-and-permissions), respectively.
-- **Enterprise plans:** By default, dbt assigns the `Owner` group an [`Account Admin`](/docs/cloud/manage-access/enterprise-permissions#account-admin) permission set, and the `Member` group a `Member` permission set, which doesn't appear in the settings, but has the same privileges as the [`Admin`](/docs/cloud/manage-access/enterprise-permissions#admin) permission set.
+- **Starter plan:** The `Owner` and `Member` groups use the `Owner` and `Member` [permission sets](/docs/platform/manage-access/self-service-permissions#table-of-groups-licenses-and-permissions), respectively.
+- **Enterprise plans:** By default, dbt assigns the `Owner` group an [`Account Admin`](/docs/platform/manage-access/enterprise-permissions#account-admin) permission set, and the `Member` group a `Member` permission set, which doesn't appear in the settings, but has the same privileges as the [`Admin`](/docs/platform/manage-access/enterprise-permissions#admin) permission set.
 
 :::
 
@@ -77,7 +77,7 @@ Default groups are automatically provisioned for all accounts to simplify the in
 - Create new groups from the **Groups & Licenses** section of the **Account settings**.
 - If you use an external IdP for SSO, you can sync those SSO groups to <Constant name="dbt" /> from the **Group details** pane when creating or editing existing groups.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/new-group.png" width="60%" title="Example the new group pane in the account settings." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/new-group.png" width="60%" title="Example the new group pane in the account settings." />
 
 :::important
 
@@ -95,7 +95,7 @@ The **Access & Permissions** section of a group is where you can assign users th
 
 This setup provides you with the flexibility to determine the level of access users in any given group will have. For example, you might allow one group of analysts to edit jobs in their project, but only let them view related projects, or you could grant admin-level access to a team that owns a specific project while keeping others restricted to read-only.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sample-access-policy.png" width="60%" title="Assign a variety of roles and access permissions to user groups." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/sample-access-policy.png" width="60%" title="Assign a variety of roles and access permissions to user groups." />
 
 #### Environment write access
 
@@ -103,7 +103,7 @@ Some permission sets grant users read-only access to environment settings that c
 
 In the following example, the `analyst` permission set, which by default has read-only access to jobs, is assigned to the group across all projects; however, the **Environment write access** is set to `All Environments`.  This grants all users in this group the ability to create, edit, and delete jobs across all environments and projects. 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-write.png" width="60%" title="Users assigned environment write access will be able to edit environment settings." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/environment-write.png" width="60%" title="Users assigned environment write access will be able to edit environment settings." />
 
 Only use **Environment write access** settings when you intend to grant users the ability to edit environments. To grant users only the permissions inherent to their set, leave this setting blank (all boxes unchecked).
 
@@ -124,7 +124,7 @@ Create an SSO mapping in the group view:
 3. In the **Users** section, ensure the **Add all users by default** option is disabled.
 4. Save the group configuration. New SSO users will be added to the group upon login, and existing users will be added to the group upon their next login. 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-mapping.png" width="60%" title="Example of an SSO group mapped to a dbt group." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/sso-mapping.png" width="60%" title="Example of an SSO group mapped to a dbt group." />
 
 Refer to [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to <Constant name="dbt" /> groups.
 
@@ -134,13 +134,13 @@ Refer to [role-based access control](#role-based-access-control) for more inform
 
 ### Licenses
 
-Every user in <Constant name="dbt" /> will have a license assigned. Licenses consume "seats" which impact how your account is [billed](/docs/cloud/billing), depending on your [service plan](https://www.getdbt.com/pricing).
+Every user in <Constant name="dbt" /> will have a license assigned. Licenses consume "seats" which impact how your account is [billed](/docs/platform/billing), depending on your [service plan](https://www.getdbt.com/pricing).
 
 <LicenseTypes/>
 
 Developer licenses will make up a majority of the users in your environment and have the highest impact on billing, so it's important to monitor how many you have at any given time.
 
-For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users)
+For more information on these license types, see [Seats & Users](/docs/platform/manage-access/seats-and-users)
 
 import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
@@ -150,13 +150,13 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 Permissions determine what a developer-licensed user can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
 
-The permissions available depends on whether you're on an [Enterprise, Enterprise+](/docs/cloud/manage-access/enterprise-permissions), or [self-service Starter](/docs/cloud/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
+The permissions available depends on whether you're on an [Enterprise, Enterprise+](/docs/platform/manage-access/enterprise-permissions), or [self-service Starter](/docs/platform/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example permissions dropdown while editing an existing group." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example permissions dropdown while editing an existing group." />
 
-Some permissions (those that don't grant full access, like admins) allow groups to be "assigned" to specific projects and environments only. Read about [environment-level permissions](/docs/cloud/manage-access/environment-permissions-setup) for more information on restricting environment access.
+Some permissions (those that don't grant full access, like admins) allow groups to be "assigned" to specific projects and environments only. Read about [environment-level permissions](/docs/platform/manage-access/environment-permissions-setup) for more information on restricting environment access.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
 ## Role-based access control <Lifecycle status="managed,managed_plus" />
 
@@ -165,22 +165,22 @@ Role-based access control (RBAC) allows you to grant users access to features an
 There are a few things you need to know before you configure RBAC for SSO users:
 - New SSO users join any groups with the **Add all new users by default** option enabled. By default, the `Everyone` and `Member` groups have this option enabled. Disable this option across all groups for the best RBAC experience.
 - You must have the appropriate SSO groups configured in the group details SSO section. If the SSO group name does not match _exactly_, users will not be placed in the group correctly. 
-  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-window-details.png" width="60%" title="The Group details SSO section with a group configured." />
+  <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/sso-window-details.png" width="60%" title="The Group details SSO section with a group configured." />
 - dbt Labs recommends that your <Constant name="dbt" /> group names match the IdP group names.
 
-Let's say you have a new employee being onboarded into your organization using [Okta](/docs/cloud/manage-access/set-up-sso-okta) as the IdP and <Constant name="dbt" /> groups with SSO mappings. In this scenario, users are working on `The Big Project` and a new analyst named `Euclid Ean` is joining the group.
+Let's say you have a new employee being onboarded into your organization using [Okta](/docs/platform/manage-access/set-up-sso-okta) as the IdP and <Constant name="dbt" /> groups with SSO mappings. In this scenario, users are working on `The Big Project` and a new analyst named `Euclid Ean` is joining the group.
 
-Check out the following example configurations for an idea of how you can implement RBAC for your organization (these examples assume you have already configured [SSO](/docs/cloud/manage-access/sso-overview)):
+Check out the following example configurations for an idea of how you can implement RBAC for your organization (these examples assume you have already configured [SSO](/docs/platform/manage-access/sso-overview)):
 
 <Expandable alt_header="Okta configuration"> 
 
 You and your IdP team add `Euclid Ean` to your Okta environment and assign them to the `dbt` SSO app via a group called `The Big Project`. 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/okta-group-config.png" width="60%" title="The user in the group in Okta." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/okta-group-config.png" width="60%" title="The user in the group in Okta." />
 
 Configure the group attribute statements the `dbt` application in Okta. The group statements in the following example are set to the group name exactly (`The Big Project`), but yours will likely be a much broader configuration. Companies often use the same prefix across all dbt groups in their IdP. For example `DBT_GROUP_`
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-attributes.png" width="60%" title="Group attributes set in the dbt SAML 2.0 app in Okta." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/group-attributes.png" width="60%" title="Group attributes set in the dbt SAML 2.0 app in Okta." />
 
 </Expandable>
 
@@ -190,9 +190,9 @@ You and your <Constant name="dbt" /> admin team configure the groups in your acc
 1. Navigate to the **Account settings** and click **Groups & Licenses** on the left-side menu. 
 2. Click **Create group** or select an existing group and click **Edit**.
 3. Enter the group name in the **SSO** field.
-4. Configure the **Access and permissions** fields to your needs. Select a [permission set](/docs/cloud/manage-access/enterprise-permissions), the project they can access, and [environment-level access](/docs/cloud/manage-access/environment-permissions).
+4. Configure the **Access and permissions** fields to your needs. Select a [permission set](/docs/platform/manage-access/enterprise-permissions), the project they can access, and [environment-level access](/docs/platform/manage-access/environment-permissions).
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/dbt-cloud-group-config.png" width="60%" title="The group configuration with SSO field filled out in dbt." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/dbt-cloud-group-config.png" width="60%" title="The group configuration with SSO field filled out in dbt." />
 
 Euclid is limited to the `Analyst` role, the `Jaffle Shop` project, and the `Development`, `Staging`, and `General` environments of that project. Euclid has no access to the `Production` environment in their role. 
 
@@ -204,33 +204,33 @@ Euclid takes the following steps to log in:
 
 1. Access the SSO URL or the <Constant name="dbt" /> app in their Okta account. The URL can be found on the **SSO & SCIM** configuration page in the **Account settings**. 
 
-  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login-url.png" width="60%" title="The SSO login URL in the account settings." />
+  <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/sso-login-url.png" width="60%" title="The SSO login URL in the account settings." />
 
 2. Log in with their Okta credentials.
 
-  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login.png" width="60%" title="The SSO login screen when using Okta as the identity provider." />
+  <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/sso-login.png" width="60%" title="The SSO login screen when using Okta as the identity provider." />
 
 3. Since it's their first time logging in with SSO, Euclid Ean is presented with a message and no option to move forward until they check the email address associated with their Okta account. 
 
-  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/post-login-screen.png" width="60%" title="The screen users see after their first SSO login." />
+  <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/post-login-screen.png" width="60%" title="The screen users see after their first SSO login." />
 
 4. They now open their email and click the link to join dbt Labs.
 
-  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sample-email.png" width="60%" title="The email the user receives on first SSO login." />
+  <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/sample-email.png" width="60%" title="The email the user receives on first SSO login." />
 
 5. Their email address is now verified. They click **Authenticate with your enterprise login**, which completes the process. 
 
-    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/email-verified.png" width="60%" title="The confirmation that the email address is verified." />
+    <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/email-verified.png" width="60%" title="The confirmation that the email address is verified." />
 
 Euclid is now logged in to their account. They only have access to the `Jaffle Shop` project. Under **Orchestration**, they can configure development credentials.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/orchestration-environments.png" width="60%" title="The Orchestration page with the environments." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/orchestration-environments.png" width="60%" title="The Orchestration page with the environments." />
 
 The `Production` environment is visible, but it is `read-only`, and they have full access in the `Staging` environment. 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/production-restricted.png" width="60%" title="The Production environment landing page with read-only access." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/production-restricted.png" width="60%" title="The Production environment landing page with read-only access." />
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/staging-access.png" width="60%" title="The Staging environment landing page with full access." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/staging-access.png" width="60%" title="The Staging environment landing page with full access." />
 
 </Expandable>
 
@@ -238,7 +238,7 @@ With RBAC configured, you now have granular control over user access to features
 
 ### SCIM license management
 
-As part of the SSO configuration for supported IdPs, you can also configure the [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) settings to add a layer of security to your user lifecycle management. As part of this process, you can integrate user license distribution into the user provisioning process through your IdP. See the [SCIM license management instructions](/docs/cloud/manage-access/scim-manage-user-licenses) for more information.
+As part of the SSO configuration for supported IdPs, you can also configure the [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) settings to add a layer of security to your user lifecycle management. As part of this process, you can integrate user license distribution into the user provisioning process through your IdP. See the [SCIM license management instructions](/docs/platform/manage-access/scim-manage-user-licenses) for more information.
 
 ## FAQs
 
@@ -256,7 +256,7 @@ Yes, see the documentation on [Manual Assignment](#manual-assignment) above for 
 
 <Expandable alt_header="Can I configure a user's license type based on IdP attributes?">
 
-Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types) for more information.
+Yes, see the docs on [managing license types](/docs/platform/manage-access/seats-and-users#managing-license-types) for more information.
 
 </Expandable>
 
@@ -269,10 +269,10 @@ Don't try to edit your own user, as this isn't allowed for security reasons. You
 <Expandable alt_header="How do I add or remove users?">
 
 Each <Constant name="dbt" /> plan has a base number of Developer and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
-  - If you're on an Enterprise or Enterprise+ plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
-  - If you're on a Starter plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
+  - If you're on an Enterprise or Enterprise+ plan and have the correct [permissions](/docs/platform/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
+  - If you're on a Starter plan and have the correct [permissions](/docs/platform/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
 
-For detailed steps, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users#licenses).
+For detailed steps, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users#licenses).
 
 </Expandable>
 

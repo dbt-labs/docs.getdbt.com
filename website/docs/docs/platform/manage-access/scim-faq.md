@@ -57,7 +57,7 @@ User matching is based on the `userName` (email) field, which must match the ema
 
 For new Okta SSO applications with no assigned users, either manually assign users to the app to trigger provisioning, or import users from <Constant name="dbt_platform" /> into Okta first. Users must exist in both systems with matching emails to link correctly and avoid duplicates.
 
-For larger rollouts, consider working with your IdP admin to plan based on your setup and [SCIM license mapping](/docs/cloud/manage-access/scim-manage-user-licenses) to reduce manual steps.
+For larger rollouts, consider working with your IdP admin to plan based on your setup and [SCIM license mapping](/docs/platform/manage-access/scim-manage-user-licenses) to reduce manual steps.
 
 </Expandable>
 
@@ -97,9 +97,9 @@ When a SCIM-managed user's email is updated in the IdP, <Constant name="dbt_plat
 
 <Expandable alt_header="Does SCIM support automatic license assignment?">
 
-SCIM license mapping is supported for Okta. It is not supported for Microsoft Entra ID. For Entra ID, use [SSO license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration)
+SCIM license mapping is supported for Okta. It is not supported for Microsoft Entra ID. For Entra ID, use [SSO license mapping](/docs/platform/manage-access/seats-and-users#mapped-configuration)
 
-For Okta license mapping setup, refer to [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
+For Okta license mapping setup, refer to [Manage user licenses with SCIM](/docs/platform/manage-access/scim-manage-user-licenses).
 
 </Expandable>
 

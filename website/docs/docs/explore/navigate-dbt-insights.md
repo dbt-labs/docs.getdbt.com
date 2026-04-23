@@ -31,9 +31,9 @@ The Query console menu is located at the top right of the Query editor. It conta
 
 - **Bookmark** button &mdash; Save your frequently used SQL queries as favorites for easier access.
   - When you click **Bookmark**, a **Bookmark Query Details** modal (pop up box) will appear where you can add a **Title** and **Description**.
-  - Let [<Constant name="copilot" />](/docs/cloud/dbt-copilot) do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
+  - Let [<Constant name="copilot" />](/docs/platform/dbt-copilot) do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
   - Access the newly created bookmark from the **Bookmark** icon in the [Query console sidebar menu](#query-console-sidebar-menu). 
- - **Develop**: Open the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="canvas" />](/docs/cloud/canvas) to continue editing your SQL query.
+ - **Develop**: Open the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="canvas" />](/docs/platform/canvas) to continue editing your SQL query.
 - **Run** button &mdash; Run your SQL query and view the results in the **Data** tab.
 
 ## Semantic Layer querying
@@ -110,7 +110,7 @@ View past queries, their statuses (All, Success, Error, or Pending), start time,
 
 ### dbt Copilot
 
-Use [dbt <Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to modify or generate queries using natural language prompts or to chat with the Analyst agent to gather insights about your data. There are two ways you can use dbt <Constant name="copilot" /> in <Constant name="insights" /> to interact with your data:
+Use [dbt <Constant name="copilot" />'s AI assistant](/docs/platform/dbt-copilot) to modify or generate queries using natural language prompts or to chat with the Analyst agent to gather insights about your data. There are two ways you can use dbt <Constant name="copilot" /> in <Constant name="insights" /> to interact with your data:
 
 <Lightbox src="/img/docs/dbt-insights/insights-copilot-tabs.png" width="50%" title="dbt Copilot in Insights" />
 
@@ -134,9 +134,9 @@ Use [dbt <Constant name="copilot" />'s AI assistant](/docs/cloud/dbt-copilot) to
 
   The agent can loop through these steps multiple times if it hasn't reached a complete answer, allowing for complex, multi-step analysis.⁠
 
-  For more information, see [Analyze data with the Analyst agent](/docs/cloud/use-dbt-copilot#analyze-data-with-the-analyst-agent).
+  For more information, see [Analyze data with the Analyst agent](/docs/platform/use-dbt-copilot#analyze-data-with-the-analyst-agent).
 
-- **Generate SQL** - Build queries in <Constant name="insights" /> with natural language prompts to explore and query data with an intuitive, context-rich interface. For more information, see [Build queries](/docs/cloud/use-dbt-copilot#build-queries).
+- **Generate SQL** - Build queries in <Constant name="insights" /> with natural language prompts to explore and query data with an intuitive, context-rich interface. For more information, see [Build queries](/docs/platform/use-dbt-copilot#build-queries).
 
 ## LSP features
 

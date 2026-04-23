@@ -24,7 +24,7 @@ For multi-step workflows like building new models end-to-end, refactoring existi
 - Must have a [<Constant name="dbt" /> Starter, Enterprise or Enterprise+ account](https://www.getdbt.com/pricing).
 - Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
 - <Constant name="copilot" /> enabled for your account.
-    - Admins must [enable <Constant name="copilot" />](/docs/cloud/enable-dbt-copilot#enable-dbt-copilot) (and opt-in to AI features, if required) in your dbt Cloud project settings.
+    - Admins must [enable <Constant name="copilot" />](/docs/platform/enable-dbt-copilot#enable-dbt-copilot) (and opt-in to AI features, if required) in your dbt Cloud project settings.
 
 ## Copilot chat overview
 This section covers the different ways you can use <Constant name="copilot" /> chat in <Constant name="studio_ide" />.
@@ -45,7 +45,7 @@ To generate SQL queries:
 1. Navigate to the **<Constant name="copilot" />** button in the <Constant name="studio_ide" />
 2. Select **[*] SQL** from the menu
 
-<Lightbox src="/img/docs/dbt-cloud/copilot-chat-generate-sql.png" width="70%" title="SQL option."/> 
+<Lightbox src="/img/docs/dbt-platform/copilot-chat-generate-sql.png" width="70%" title="SQL option."/> 
 
 </TabItem>
 
@@ -57,9 +57,9 @@ This model mention capability is designed to provide a much more project-aware e
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/copilot-chat-mention-model-menu-open.png" width="75%" title="Mention model with menu open." />
+<Lightbox src="/img/docs/dbt-platform/copilot-chat-mention-model-menu-open.png" width="75%" title="Mention model with menu open." />
 
-<Lightbox src="/img/docs/dbt-cloud/copilot-chat-mention-model-menu-select.png" width="75%" title="Mention model after selecting from menu."/>
+<Lightbox src="/img/docs/dbt-platform/copilot-chat-mention-model-menu-select.png" width="75%" title="Mention model after selecting from menu."/>
 
 </DocCarousel>
 
@@ -77,7 +77,7 @@ The **Add** button lets you append <Constant name="copilot" />'s output, while *
 
 Note, if the file is empty, you'll only see **Add** as an option, since there's nothing to replace.
 
-<Lightbox src="/img/docs/dbt-cloud/copilot-chat-add-replace.png" width="70%" title="Add and replace buttons."/> 
+<Lightbox src="/img/docs/dbt-platform/copilot-chat-add-replace.png" width="70%" title="Add and replace buttons."/> 
 
 </TabItem>
 </Tabs>

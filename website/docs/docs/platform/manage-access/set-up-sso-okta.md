@@ -8,7 +8,7 @@ id: "set-up-sso-okta"
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on via Okta (using SAML).
 
 :::info SCIM available for Okta
-After setting up single sign-on (SSO), you can [set up System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim-okta) with Okta to automate user and group provisioning, and license assignment. 
+After setting up single sign-on (SSO), you can [set up System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim-okta) with Okta to automate user and group provisioning, and license assignment. 
 :::
 
 Currently supported SSO features include:
@@ -29,7 +29,7 @@ First, log into your Okta account. Using the Admin dashboard, create a new app.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-1-new-app.png"
     title="Create a new app"
 />
 
@@ -41,7 +41,7 @@ Click **Create** to continue the setup process.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
     title="Configure a new app"
 />
 
@@ -57,13 +57,13 @@ Click **Next** to continue.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
     title="Configure the app's General Settings"
 />
 
 ### Configure SAML Settings
 
-The SAML Settings page configures how Okta and <Constant name="dbt" /> communicate. You will want to use an [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+The SAML Settings page configures how Okta and <Constant name="dbt" /> communicate. You will want to use an [appropriate Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan.
 
 import LoginSlug from '/snippets/_login-slug.md';
 
@@ -80,7 +80,7 @@ import LoginSlug from '/snippets/_login-slug.md';
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png"
     title="Configure the app's SAML Settings"
 />
 
@@ -119,7 +119,7 @@ support if you have any questions.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
     title="Configure the app's User and Group Attribute Statements"
 />
 
@@ -133,7 +133,7 @@ app.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-4-feedback.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-4-feedback.png"
     title="Finishing setup in Okta"
 />
 
@@ -145,13 +145,13 @@ the integration between Okta and <Constant name="dbt" />.
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
     title="Viewing the configured application"
 />
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-instructions.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-5-instructions.png"
     title="Application setup instructions"
 />
 
@@ -175,7 +175,7 @@ Settings. Next, click the **Edit** button and supply the following SSO details:
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
     title="Configuring the application in dbt"
 />
 
@@ -189,15 +189,15 @@ Settings. Next, click the **Edit** button and supply the following SSO details:
 
 ## Setting up RBAC
 Now you have completed setting up SSO with Okta, the next steps will be to set up
-[RBAC groups](/docs/cloud/manage-access/about-user-access#role-based-access-control-) to complete your access control configuration.
+[RBAC groups](/docs/platform/manage-access/about-user-access#role-based-access-control-) to complete your access control configuration.
 
 :::tip Set up SCIM
-Now that you've set up SSO with Okta, you can [set up SCIM](/docs/cloud/manage-access/scim-okta) to automate user and group provisioning (and license assignment for Okta).
+Now that you've set up SSO with Okta, you can [set up SCIM](/docs/platform/manage-access/scim-okta) to automate user and group provisioning (and license assignment for Okta).
 :::
 
 ## FAQ and troubleshooting
 
-For common questions and troubleshooting guidance — including issues with email verification, MFA prompts, and SSO group mapping behavior — refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+For common questions and troubleshooting guidance — including issues with email verification, MFA prompts, and SSO group mapping behavior — refer to [SSO FAQs and troubleshooting](/docs/platform/manage-access/sso-faq).
 
 ## Learn more
 

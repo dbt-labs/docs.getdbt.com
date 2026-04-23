@@ -7,7 +7,7 @@ id: "self-service-permissions"
 
 Self-service Starter accounts are a quick and easy way to get <Constant name="dbt" /> up and running for a small team. 
 
-For teams looking to scale and access advanced features like SSO, group management, and support for larger user bases, upgrading to an [Enterprise-tier](/docs/cloud/manage-access/enterprise-permissions) account unlocks these capabilities &mdash; if you're interested in upgrading, contact [dbt Labs today](https://www.getdbt.com/contact).
+For teams looking to scale and access advanced features like SSO, group management, and support for larger user bases, upgrading to an [Enterprise-tier](/docs/platform/manage-access/enterprise-permissions) account unlocks these capabilities &mdash; if you're interested in upgrading, contact [dbt Labs today](https://www.getdbt.com/contact).
 
 ## Groups and permissions
 
@@ -31,7 +31,7 @@ There are three license types:
 - **Read-Only** &mdash; Read-only access to your project, including environments <Constant name="catalog" />. Doesn't have access to account settings at all. Functions the same regardless of group assignments. You're allotted up to 5 read-only licenses per account.
 - **IT** &mdash; Partial access to the account settings including users, integrations, billing, and API settings. Cannot create or edit connects or access the project at all. Functions the same regardless of group assignments. You're allocated 1 seat per account.
 
-See [Seats and Users](/docs/cloud/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
+See [Seats and Users](/docs/platform/manage-access/seats-and-users) for more information on the impact of licenses on these permissions.
 
 import LicenseOverrideNote from '/snippets/_license-override-note.md';
 

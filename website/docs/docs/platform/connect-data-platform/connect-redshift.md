@@ -30,7 +30,7 @@ The following fields are required when creating a connection:
 **Note**: When you set up a Redshift connection in <Constant name="dbt" />, SSL-related parameters aren't available as inputs. 
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
+<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
 
 ### Authentication Parameters
 
@@ -38,7 +38,7 @@ See the following supported authentication methods for Redshift:
 
 - Username and password
 - SSH tunneling
-- Identity Center via [external Oauth](/docs/cloud/manage-access/redshift-external-oauth)
+- Identity Center via [external Oauth](/docs/platform/manage-access/redshift-external-oauth)
 - IAM User authentication via [extended attributes](/docs/dbt-cloud-environments#extended-attributes)
 
 On the <Constant name="dbt_platform" />, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox.

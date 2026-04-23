@@ -18,17 +18,17 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <Constant name="copilot" /> is a powerful AI-powered assistant that's fully integrated into your <Constant name="dbt" /> experience and designed to accelerate your analytics workflows. <Constant name="copilot" /> embeds AI-driven assistance across every stage of the analytics development life cycle (ADLC), empowering data practitioners to deliver data products faster, improve data quality, and enhance data accessibility. 
 
-With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/cloud/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/cloud/use-canvas), and [<Constant name="insights" />](/docs/explore/dbt-insights).
+With automatic code generation, let <Constant name="copilot" /> [generate code](/docs/platform/use-dbt-copilot) using natural language, and [generate documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/platform/use-canvas), and [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 </Expandable>
 
 <Expandable alt_header="Where can I find dbt Copilot?">
 
-<Constant name="copilot" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/cloud/use-canvas), and [<Constant name="insights" />](/docs/explore/dbt-insights). Future releases will bring <Constant name="copilot" /> to even more parts of the <Constant name="dbt" /> application!
+<Constant name="copilot" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/platform/use-canvas), and [<Constant name="insights" />](/docs/explore/dbt-insights). Future releases will bring <Constant name="copilot" /> to even more parts of the <Constant name="dbt" /> application!
 
 To use <Constant name="copilot" />, you must have a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) and administrative privileges to opt-in to the feature for your team.
 
-Certain features like [BYOK](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/cloud/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
+Certain features like [BYOK](/docs/platform/enable-dbt-copilot#bringing-your-own-openai-api-key-byok), [natural prompts in Canvas](/docs/platform/build-canvas-copilot), and more are only available on Enterprise and Enterprise+ plans.
 
 </Expandable>
 
@@ -42,7 +42,7 @@ Use <Constant name="copilot" /> to:
 
 with a click of a button and ensuring data privacy and security.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
+<Lightbox src="/img/docs/dbt-platform/cloud-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
 
 </Expandable>
 
@@ -50,13 +50,13 @@ with a click of a button and ensuring data privacy and security.
 
 <Expandable alt_header="Who has access to dbt Copilot?" >
 
-When enabled by an admin, <Constant name="copilot" /> is available on a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) to all <Constant name="dbt" /> [developer license users](/docs/cloud/manage-access/seats-and-users).
+When enabled by an admin, <Constant name="copilot" /> is available on a <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ account](https://www.getdbt.com/contact) to all <Constant name="dbt" /> [developer license users](/docs/platform/manage-access/seats-and-users).
 
 </Expandable>
 
 <Expandable alt_header="Is dbt Copilot available for all deployment types?">
 
-Yes, <Constant name="copilot" /> is powered by ai-codegen-api, which is deployed everywhere including [multi-tenant and single-tenant deployments](/docs/cloud/about-cloud/access-regions-ip-addresses).
+Yes, <Constant name="copilot" /> is powered by ai-codegen-api, which is deployed everywhere including [multi-tenant and single-tenant deployments](/docs/platform/about-platform/access-regions-ip-addresses).
 
 </Expandable>
 
@@ -70,7 +70,7 @@ Yes, <Constant name="copilot" /> is powered by ai-codegen-api, which is deployed
 
 <Expandable alt_header="Which model providers does dbt Copilot use?">
 
-dbt Labs works with OpenAI to build and operationalize <Constant name="copilot" />. Enterprise-tier accounts can [supply their own OpenAI keys](/docs/cloud/enable-dbt-copilot#bringing-your-own-openai-api-key-byok).
+dbt Labs works with OpenAI to build and operationalize <Constant name="copilot" />. Enterprise-tier accounts can [supply their own OpenAI keys](/docs/platform/enable-dbt-copilot#bringing-your-own-openai-api-key-byok).
 
 </Expandable>
 

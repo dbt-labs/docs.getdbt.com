@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-<Constant name="dbt" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/access-regions-ip-addresses) worldwide, <Constant name="dbt_platform" /> is the fastest and easiest way to begin transforming your data.
+<Constant name="dbt" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/platform/about-platform/access-regions-ip-addresses) worldwide, <Constant name="dbt_platform" /> is the fastest and easiest way to begin transforming your data.
 
 ## How does dbt pricing work?
 
@@ -16,14 +16,14 @@ As a customer, you pay for the number of seats you have and the amount of usage 
 Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, <Constant name="semantic_layer" /> [Queried Metrics](#what-counts-as-a-queried-metric) subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
 
 ### What counts as a seat license?
-You can learn more about allocating users to your account in [Users and licenses](/docs/cloud/manage-access/seats-and-users).
+You can learn more about allocating users to your account in [Users and licenses](/docs/platform/manage-access/seats-and-users).
 There are four types of possible seat licenses:
 * **Analyst**\* &mdash; for permission sets assigned and shared amongst those who don't need day-to-day access.
 * **Developer** &mdash; for permission sets that require day-to-day interaction with the <Constant name="dbt_platform" />.
 * **IT** &mdash; for access to specific features related to account management (for example, configuring git integration).
 * **Read-Only** &mdash; for access to view certain documents and reports.
 
-\* The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
+\* The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ### What counts as a Successful Model Built?
 
@@ -163,12 +163,12 @@ Under Bring Your Own Key (BYOK), usage is not tracked by <Constant name="copilot
 
 To view the usage in your account:
 
-1. Navigate to [**Account settings**](/docs/cloud/account-settings).
+1. Navigate to [**Account settings**](/docs/platform/account-settings).
 
 2. Select **Billing** under the Settings header.
 3. On the billing page, click **<Constant name="copilot" />** to view your usage.
 
-<Lightbox src="/img/docs/dbt-cloud/view-usage-in-copilot.gif" title="View usage in Copilot" />
+<Lightbox src="/img/docs/dbt-platform/view-usage-in-copilot.gif" title="View usage in Copilot" />
 
 
 ## Plans and Billing
@@ -222,7 +222,7 @@ From <Constant name="dbt" />, click on your account name in the left side menu a
 
 Every plan automatically sends email alerts when 75%, 90%, and 100% of usage estimates have been reached.
 - Starter plan &mdash; All users within the Owner group receive alerts. 
-- Enterprise-tier plans &mdash; All users with the Account Admin and Billing Admin [permission sets](/docs/cloud/manage-access/enterprise-permissions#permission-sets) receive alerts. 
+- Enterprise-tier plans &mdash; All users with the Account Admin and Billing Admin [permission sets](/docs/platform/manage-access/enterprise-permissions#permission-sets) receive alerts. 
 
 Users cannot opt out of these emails. To have additional users to receive these alert emails, assign them the applicable permissions mentioned earlier. Note that your usage may already be higher than the percentage indicated in the alert due to your usage pattern and minor latency times.
 

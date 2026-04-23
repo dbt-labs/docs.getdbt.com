@@ -10,7 +10,7 @@ pagination_prev: null
 This overview explains how users are provisioned in <Constant name="dbt" /> via single sign-on (SSO).
 <Constant name="dbt" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. 
 
-To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
+To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ The diagram below explains the basic process by which users are provisioned in <
 - **User Exists?**: This step checks if the user already exist in <Constant name="dbt" />'s user database.
   - **Yes**: If so, skip the user creation process
   - **No**: If so, create a new entry in the <Constant name="dbt" /> database for the new user.
-- **Create <Constant name="dbt" /> User**: This will create a new entry in the <Constant name="dbt" /> database for the new user. This user record contains the user's email address, first and last name, and any IdP attributes (for example, groups) passed along from the Identity Provider. <Constant name="dbt" /> will send a verification email, and the user must follow the steps in the [User experience section](/docs/cloud/manage-access/invite-users#user-experience) to use SSO in <Constant name="dbt" />.
+- **Create <Constant name="dbt" /> User**: This will create a new entry in the <Constant name="dbt" /> database for the new user. This user record contains the user's email address, first and last name, and any IdP attributes (for example, groups) passed along from the Identity Provider. <Constant name="dbt" /> will send a verification email, and the user must follow the steps in the [User experience section](/docs/platform/manage-access/invite-users#user-experience) to use SSO in <Constant name="dbt" />.
 - **Attach Matching Accounts**: <Constant name="dbt" /> find all of the accounts configured to match the SSO config used by this user to log in, and then create a user license record mapping the user to the account. This step will also delete any licenses that the user should not have based on the current SSO config.
 - **Attach Matching Permissions (Groups)**: <Constant name="dbt" /> iterates through the groups on the matching accounts, and find all that fit one of the below categories:
   - Have an SSO mapping group that is assigned to the user
@@ -46,7 +46,7 @@ Then, assign all of these (and only these) to the user license. This step will a
 - **<Constant name="dbt" /> Application**: After these steps, the user is redirected into the <Constant name="dbt" /> application, and they can begin to use the application normally.
 
 :::note License and permission mappings use IdP groups
-License type mappings and SSO group mappings are based on **IdP group** membership (groups in your identity provider), not <Constant name="dbt_platform" /> group names. When configuring [license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration) or group assignments, use the group names and memberships from your IdP.
+License type mappings and SSO group mappings are based on **IdP group** membership (groups in your identity provider), not <Constant name="dbt_platform" /> group names. When configuring [license mappings](/docs/platform/manage-access/seats-and-users#mapped-configuration) or group assignments, use the group names and memberships from your IdP.
 :::
 
 ## SSO enforcement
@@ -75,6 +75,6 @@ If you have any non-admin users logging into <Constant name="dbt" /> with a pass
 
 ## FAQ and troubleshooting
 
-For common questions and troubleshooting guidance, refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
+For common questions and troubleshooting guidance, refer to [SSO FAQs and troubleshooting](/docs/platform/manage-access/sso-faq).
 
 

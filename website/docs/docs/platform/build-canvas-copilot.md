@@ -11,7 +11,7 @@ Use <Constant name="copilot" /> to build visual models in the <Constant name="ca
 
 </IntroText>
 
-[<Constant name="copilot" />](/docs/cloud/dbt-copilot) seamlessly integrates with [<Constant name="canvas" />](/docs/cloud/canvas), a drag-and-drop experience that helps you with build your visual models using natural language prompts. Before you begin, make sure you can access [<Constant name="canvas" />](/docs/cloud/use-canvas#access-canvas).
+[<Constant name="copilot" />](/docs/platform/dbt-copilot) seamlessly integrates with [<Constant name="canvas" />](/docs/platform/canvas), a drag-and-drop experience that helps you with build your visual models using natural language prompts. Before you begin, make sure you can access [<Constant name="canvas" />](/docs/platform/use-canvas#access-canvas).
 
 import CopilotVE from '/snippets/_use-copilot-ve.md';
 

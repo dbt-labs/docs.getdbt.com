@@ -16,7 +16,7 @@ The Multi Tenant (SaaS) deployment environment refers to the SaaS <Constant name
 
 Multi-cell (also called cell-based hosting) means your <Constant name="dbt_platform" /> account runs in a cell: a defined slice of our shared SaaS stack with its own capacity, scaling, and status boundaries. Cells segment how we run multi-tenant infrastructure at scale; you still remain on the same multi-tenant product managed by dbt Labs. Cell-based hosting is different from [single tenant](#single-tenant) in that it doesn't provide a dedicated virtual private cloud (VPC) or isolated cloud account on its own.
 
-Generally, your plan and the features available to you stay the same as for other multi-tenant accounts in your managed cloud provider and region (see [Available features](#available-features)). The main differences are in some setup details, such as the URL you use to sign in, which IP addresses to allow, and which status page to monitor if something goes wrong in your cell. See the [API access URLs](/docs/cloud/about-cloud/access-regions-ip-addresses#api-access-urls) section for more information.
+Generally, your plan and the features available to you stay the same as for other multi-tenant accounts in your managed cloud provider and region (see [Available features](#available-features)). The main differences are in some setup details, such as the URL you use to sign in, which IP addresses to allow, and which status page to monitor if something goes wrong in your cell. See the [API access URLs](/docs/platform/about-platform/access-regions-ip-addresses#api-access-urls) section for more information.
 
 ## Single tenant
 
