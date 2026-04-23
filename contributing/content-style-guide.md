@@ -114,7 +114,7 @@ Use all caps unless another standard exists (such as in code blocks):
 
 | ❌ Avoid | ✅ Use |
 |----------|--------|
-| `/docs/deploy/how-we-think-about-architecture` | `/docs/platform/about-cloud/architecture` |
+| `/docs/deploy/how-we-think-about-architecture` | `docs/platform/about-platform/architecture` |
 | `getting-started-with-dbt-setup.md` | `dbt-setup.md` |
 
 ### Sidebar configuration
@@ -404,7 +404,7 @@ Explain placeholders in the preceding paragraph. For example, you'd explain CLUS
 
 **Example:**
 ```markdown
-[Regions & IP Addresses](/docs/platform/about-cloud/access-regions-ip-addresses)
+[Regions & IP Addresses](docs/platform/about-platform/access-regions-ip-addresses)
 ```
 
 **Section links:**

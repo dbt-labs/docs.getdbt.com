@@ -11,7 +11,7 @@ import LongSession from '/snippets/_long-sessions-cli.md';
 Learn how to configure the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project to run dbt commands, like `dbt environment show` to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
 - Secure credential storage in the <Constant name="dbt_platform" />.
-- [Automatic deferral](/docs/platform/about-cloud-develop-defer) of build artifacts to your project's production environment.
+- [Automatic deferral](docs/platform/about-platform-develop-defer) of build artifacts to your project's production environment.
 - Speedier, lower-cost builds.
 - Support for <Constant name="mesh" /> ([cross-project ref](/docs/mesh/govern/project-dependencies)), and more.
 

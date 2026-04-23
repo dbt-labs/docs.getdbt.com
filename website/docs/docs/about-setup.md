@@ -22,7 +22,7 @@ To begin configuring dbt now, select the option that is right for you.
 <Card
     title="dbt platform setup"
     body="Learn how to connect to a data platform, integrate with secure authentication methods, and configure a sync with a git repo."
-    link="/docs/platform/about-cloud-setup"
+    link="docs/platform/about-platform-setup"
     icon="dbt-bit"/>
 
 <Card

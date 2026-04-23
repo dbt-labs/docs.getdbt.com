@@ -68,7 +68,7 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 
 ## January 2026
 
-- **Enhancement:** The `defer-env-id` setting for choosing which deployment environment to defer to is [now available](/docs/platform/about-cloud-develop-defer#defer-environment) in the <Constant name="studio_ide" />. Previously, this configuration only worked for the <Constant name="platform_cli" />
+- **Enhancement:** The `defer-env-id` setting for choosing which deployment environment to defer to is [now available](docs/platform/about-platform-develop-defer#defer-environment) in the <Constant name="studio_ide" />. Previously, this configuration only worked for the <Constant name="platform_cli" />
 - **Beta:** The [Analyst agent](/docs/explore/navigate-dbt-insights#dbt-copilot) in dbt <Constant name="insights" /> is now in beta. 
   - dbt <Constant name="copilot" />'s AI assistant in <Constant name="insights" /> now uses a dropdown menu to select between **Agent** and **Generate SQL**, replacing the previous tab interface.
 - **Enhancement:** The [Studio IDE](/docs/platform/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands. This feature is being rolled out in phases and will become available to all <Constant name="dbt_platform" /> accounts by mid-February. 
