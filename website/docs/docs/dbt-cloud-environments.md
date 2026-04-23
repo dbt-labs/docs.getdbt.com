@@ -2,7 +2,7 @@
 title: "dbt environments"
 id: "dbt-cloud-environments"
 description: "Learn about dbt's development environment to execute your project in the IDE"
-pagination_next: "docs/cloud/migration"
+pagination_next: "docs/platform/migration"
 ---
 
 An environment determines how <Constant name="dbt" /> will execute your project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
