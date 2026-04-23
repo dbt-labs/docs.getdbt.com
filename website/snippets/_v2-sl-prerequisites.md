@@ -1,4 +1,4 @@
-- Have a <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ account. Available on all [tenant configurations](docs/platform/about-platform/tenancy).
+- Have a <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ account. Available on all [tenant configurations](/docs/platform/about-platform/tenancy).
 - Ensure your production and development environments are on a [supported dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - Use Snowflake, BigQuery, Databricks, Redshift, Postgres, or Trino.
 -  Create a successful run in the environment where you configure the <Constant name="semantic_layer" />.

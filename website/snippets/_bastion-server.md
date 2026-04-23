@@ -43,7 +43,7 @@ To configure a connection using an SSH tunnel:
 
 To configure the SSH tunnel in <Constant name="dbt" />, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that <Constant name="dbt" /> will connect to. Review the following steps:
 
-1. Verify the bastion server has its network security rules set up to accept connections from the [<Constant name="dbt" /> IP addresses](docs/platform/about-platform/access-regions-ip-addresses) on whatever port you configured.
+1. Verify the bastion server has its network security rules set up to accept connections from the [<Constant name="dbt" /> IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) on whatever port you configured.
 2. Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud`:
     
     ```shell

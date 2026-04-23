@@ -1,7 +1,7 @@
 Configuring automatic downstream exposures with Tableau have the following considerations:
 
 - You can only connect to a single Tableau site on the same server.
-- If you're using Tableau Server, you need to [allowlist <Constant name="dbt" />'s IP addresses](docs/platform/about-platform/access-regions-ip-addresses) for your <Constant name="dbt" /> region.
+- If you're using Tableau Server, you need to [allowlist <Constant name="dbt" />'s IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for your <Constant name="dbt" /> region.
 - Tableau dashboards built using custom SQL queries aren't supported.
 - Downstream exposures sync automatically _once per day_ or when a user updates the selected collections.
 - <Expandable alt_header="The database fully qualified names (FQNs) in Tableau must match those in the dbt build.">

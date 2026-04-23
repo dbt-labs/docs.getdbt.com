@@ -1,12 +1,12 @@
 ## Azure private connectivity matrix
 
-The following charts outline private connectivity options for Azure deployments of <Constant name="dbt" /> ([multi-tenant and single-tenant](docs/platform/about-platform/tenancy)).
+The following charts outline private connectivity options for Azure deployments of <Constant name="dbt" /> ([multi-tenant and single-tenant](/docs/platform/about-platform/tenancy)).
 
 **Legend:**
 - ✅ = Available
 - ❌ = Not currently available
 
-_Tenancy:_ MT (multi-tenant) and ST (single-tenant) — [learn more about tenancy](docs/platform/about-platform/tenancy).
+_Tenancy:_ MT (multi-tenant) and ST (single-tenant) — [learn more about tenancy](/docs/platform/about-platform/tenancy).
 
 :::note About the following matrix tables
 These tables indicate whether private connectivity can be established to specific services, considering major factors such as the network and basic auth layers. dbt has validated these configurations using common deployment patterns and typical use cases. However, individual configurations may vary. If you encounter issues or have questions about your environment, [contact dbt Support](/community/resources/getting-help#dbt-cloud-support) for guidance.
