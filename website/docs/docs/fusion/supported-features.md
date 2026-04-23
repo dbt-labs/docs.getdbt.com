@@ -80,6 +80,8 @@ In this table, self-hosted means it's open-source/source-available and runs on y
 | Governance (PII/PHI tracking) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 | CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 
+For a full reference of Snowflake functions with Fusion typechecking support, see [Snowflake function typechecking support](/reference/resource-configs/snowflake-function-typechecking).
+
 <sup>1</sup> Support for other <Constant name="dbt_platform" /> and <Term id="lsp"/> features, like Column-level lineage, is coming soon. See [About LSP](/docs/about-dbt-lsp) for a more detailed comparison of dbt development environments.<br />
 <sup>2</sup> The [dbt VS Code extension](/docs/about-dbt-extension) is usable in VS Code, Cursor, Windsurf, and other VS Code–based editors.
 
