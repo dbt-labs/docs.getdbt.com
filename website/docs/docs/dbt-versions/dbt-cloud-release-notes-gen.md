@@ -24,7 +24,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **Health and run status filters in catalog search**: The catalog search sidebar now includes Health and Last Run Status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (success, error, skipped, reused).
+- **Health and run status filters in catalog search**: The catalog search sidebar now includes health and last run status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (`success`, `error`, `skipped`, `reused`).
 
 - **Tag search field**: Tag is now a searchable field in the advanced search panel. You can filter results by tag matches
 
@@ -34,7 +34,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to aid in incorrect theming when user-preferences is slow to respond.
 
-- **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, Commands or Lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
+- **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, commands or lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
 
 - **Compile button after deprecation autofix in Fusion**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
 
@@ -42,9 +42,9 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Fusion eligibility toggle replaces dropdown filter**: The jobs list Fusion eligibility dropdown filter has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
 
-- **Debug on Fusion menu**: The single "Run once on Fusion" button on the job details page and job list has been replaced with a "Debug on Fusion" menu that offers "Debug in Studio," "Run once on Fusion," and (when dbt Copilot is enabled) "Debug in Studio with Copilot" options.
+- **Debug on Fusion menu**: The single **Run once on Fusion** button on the job details page and job list has been replaced with a **Debug on Fusion** menu that offers **Debug in Studio**, **Run once on Fusion**, and (when dbt Copilot is enabled) **Debug in Studio with Copilot** options.
 
-- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same "Debug on Fusion" menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
+- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same **Debug on Fusion** menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
 
 ### Webhooks
 
@@ -66,7 +66,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **PrivateLink endpoint pending status**: A new `pending` connectivity status is available for PrivateLink endpoints, in addition to the existing `success` and `failed` states.
 
-- **`fusion_readiness_read` permission added to Member role**: The Member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
+- **`fusion_readiness_read` permission added to Member role**: The member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
 
 ## Fixes
 
