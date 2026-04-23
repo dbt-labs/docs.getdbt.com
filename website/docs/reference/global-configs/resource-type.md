@@ -8,7 +8,7 @@ sidebar: "resource type"
 
 The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, `dbt test`*, and `dbt list` commands.
 
-*<Expandable alt_header="Filtering test types with dbt test"/>
+*<Expandable alt_header="Filtering test types with dbt test">
 
 Use the `test_type` selector to filter test types with `dbt test` &mdash; it works across all engines:
 
