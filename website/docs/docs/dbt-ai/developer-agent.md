@@ -53,7 +53,12 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 <span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>Example of using the Developer agent to refactor a model in the Studio IDE.</span>
 </div>
 
-For more details on the <Constant name="dev_agent" /> and how it works, see the following sections.
+For more details on the <Constant name="dev_agent" /> and how it works, see the following sections:
+
+- [Panel controls](#panel-controls)
+- [Agent modes](#agent-modes)
+- [Reviewing agent suggestions](#reviewing-agent-suggestions)
+- [Grantning command permissions](#grantning-command-permissions)
 
 #### Panel controls
 
@@ -115,6 +120,14 @@ You can select one of the following options:
 
 </SimpleTable>
 
+## Fusion migration workflow {#fusion-migration-workflow}
+
+import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
+
+<FusionMigrationWorkflow />
+
+For more on how to prepare your project for <Constant name="fusion" /> and what to do when you hit compatibility errors, see the [Fusion readiness checklist](/docs/fusion/fusion-readiness) and the [Upgrade to Fusion guides](/guides/prepare-fusion-upgrade).
+
 ## Writing effective prompts
 
 Good prompts include the _scope_ (which models or area of the project), the _intent_ (the transformation or business logic you want), and any _constraints_ (naming conventions, materialization, tests). Here are a few examples:
@@ -130,6 +143,7 @@ For detailed guidance, patterns, and more examples across SQL, documentation, te
 ## Related docs
 
 - [dbt Agents overview](/docs/dbt-ai/dbt-agents)
+- [Fusion readiness checklist](/docs/fusion/fusion-readiness)
 - [Develop with dbt Copilot](/docs/cloud/studio-ide/develop-copilot)
 - [Prompt cookbook](/guides/prompt-cookbook)
 - [Semantic models](/docs/build/semantic-models)
