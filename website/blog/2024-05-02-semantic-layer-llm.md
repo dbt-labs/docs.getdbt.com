@@ -74,7 +74,7 @@ grant usage on warehouse <warehouse_name> to role public;
 -- change the role name in the above commands.
 ```
 
-Additionally, you’ll need to set up a network rule, an external access integration, and a UDF that makes a request to the dbt Cloud Semantic Layer.  Be mindful of the values you have in your network rule and UDF - they'll need to correspond to the host where your dbt Cloud account is [deployed](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
+Additionally, you’ll need to set up a network rule, an external access integration, and a UDF that makes a request to the dbt Cloud Semantic Layer.  Be mindful of the values you have in your network rule and UDF - they'll need to correspond to the host where your dbt Cloud account is [deployed](https://docs.getdbt.com/docs/dbt-platform-apis/sl-graphql#dbt-semantic-layer-graphql-api).
 
 ```sql
 grant create network rule on schema <database_name>.<schema_name> to role public;
@@ -173,7 +173,7 @@ grant usage on function retrieve_sl_metadata() to role public;
 
 Couple of things to note about the code above:
 
-- Make sure you update the code to include your environment ID and your URL that’s specific to your [deployment type](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
+- Make sure you update the code to include your environment ID and your URL that’s specific to your [deployment type](https://docs.getdbt.com/docs/dbt-platform-apis/sl-graphql#dbt-semantic-layer-graphql-api).
 You could modify the function to accept arguments for payload, variables, query, etc. to make it more dynamic and satisfy other use cases outside of this one.
 - Once the data has been returned, we’re going to use streamlit’s [session state](https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state) feature to store the dbt project’s defined metrics and dimensions.  This feature will allow us to make multiple calls without having to continually retrieve this metadata.
 

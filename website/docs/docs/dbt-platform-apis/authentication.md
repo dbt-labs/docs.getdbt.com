@@ -1,7 +1,7 @@
 ---
 title: "Authentication tokens"
 description: "Learn how to authenticate with user tokens and service account tokens "
-pagination_next: "docs/dbt-cloud-apis/user-tokens"
+pagination_next: "docs/dbt-platform-apis/user-tokens"
 pagination_prev: null
 ---
 

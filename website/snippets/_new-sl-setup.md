@@ -30,7 +30,7 @@ There are two options for setting up <Constant name="semantic_layer" /> using AP
 
 #### Add a credential and create service tokens
 
-The first option is to use [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication which are tied to an underlying data platform credential that you configure. The credential configured is used to execute queries that the Semantic Layer issues against your data platform. 
+The first option is to use [service tokens](/docs/dbt-platform-apis/service-tokens) for authentication which are tied to an underlying data platform credential that you configure. The credential configured is used to execute queries that the Semantic Layer issues against your data platform. 
 
 This credential controls the physical access to underlying data accessed by the Semantic Layer, and all access policies set in the data platform for this credential will be respected.
 
@@ -68,7 +68,7 @@ This credential controls the physical access to underlying data accessed by the 
 
 #### Configure development credentials and create a personal token
 
-Using [personal access tokens (PATs)](/docs/dbt-cloud-apis/user-tokens) is also a supported authentication method for the dbt <Constant name="semantic_layer" />. This enables user-level authentication, reducing the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. 
+Using [personal access tokens (PATs)](/docs/dbt-platform-apis/user-tokens) is also a supported authentication method for the dbt <Constant name="semantic_layer" />. This enables user-level authentication, reducing the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. 
 
 To use PATs in <Constant name="semantic_layer" />:
 
@@ -78,9 +78,9 @@ To use PATs in <Constant name="semantic_layer" />:
    3. Click **Edit**.
    4. Go to **Development credentials** and enter your details. 
    5. Click **Save**.
-2. [Create a personal access token](/docs/dbt-cloud-apis/user-tokens). Make sure to copy the token. 
+2. [Create a personal access token](/docs/dbt-platform-apis/user-tokens). Make sure to copy the token. 
 
-You can use the generated PAT as the authentication method for <Constant name="semantic_layer" /> [APIs](/docs/dbt-cloud-apis/sl-api-overview) and [integrations](/docs/cloud-integrations/avail-sl-integrations). 
+You can use the generated PAT as the authentication method for <Constant name="semantic_layer" /> [APIs](/docs/dbt-platform-apis/sl-api-overview) and [integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
 ### 3. View connection detail
 1. Go back to the **Project details** page for connection details to connect to downstream tools.

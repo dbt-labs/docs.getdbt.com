@@ -2,7 +2,7 @@
 
 - If your git provider has a [native <Constant name="dbt" /> integration](/docs/cloud/git/git-configuration-in-dbt-cloud), you can seamlessly set up [continuous integration (CI)](/docs/deploy/ci-jobs) jobs directly within <Constant name="dbt" />. 
 
-- For providers without native integration, you can still use the [Git clone method](/docs/cloud/git/import-a-project-by-git-url) to import your git URL and leverage the [<Constant name="dbt" /> Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) to trigger a CI job to run.
+- For providers without native integration, you can still use the [Git clone method](/docs/cloud/git/import-a-project-by-git-url) to import your git URL and leverage the [<Constant name="dbt" /> Administrative API](/docs/dbt-platform-apis/admin-cloud-api) to trigger a CI job to run.
 
 The following table outlines the available integration options and their corresponding capabilities.
 

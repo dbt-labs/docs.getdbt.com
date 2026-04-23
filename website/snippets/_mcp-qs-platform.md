@@ -370,7 +370,7 @@ With the platform setup, your AI assistant can use:
 - Semantic Layer queries
 - Metadata Discovery (model lineage, test results, source freshness)
 - Admin API (trigger jobs, list runs, get artifacts)
-- SQL execution and text-to-SQL (requires a [PAT](/docs/dbt-cloud-apis/user-tokens))
+- SQL execution and text-to-SQL (requires a [PAT](/docs/dbt-platform-apis/user-tokens))
 - All dbt CLI commands if you added `DBT_PROJECT_DIR` and `DBT_PATH`
 
 For the complete tool list, see [Available tools](/docs/dbt-ai/mcp-available-tools).

@@ -4,7 +4,7 @@ id: sl-api-overview
 description: "Integrate and query metrics and dimensions in downstream tools using the Semantic Layer APIs"
 tags: [Semantic Layer, API]
 hide_table_of_contents: true
-pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
+pagination_next: "docs/dbt-platform-apis/sl-jdbc"
 ---
 
 # Semantic Layer APIs <Lifecycle status="self_service,managed,managed_plus" />

@@ -1,6 +1,6 @@
 ---
 title: "About the Discovery API"
-pagination_next: "docs/dbt-cloud-apis/discovery-use-cases-and-examples"
+pagination_next: "docs/dbt-platform-apis/discovery-use-cases-and-examples"
 ---
 
 # About the Discovery API <Lifecycle status="self_service,managed,managed_plus" />

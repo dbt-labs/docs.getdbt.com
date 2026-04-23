@@ -2,7 +2,7 @@
 title: "APIs Overview"
 description: "Learn how dbt accounts on the Enterprise-tier plans can query the dbt APIs."
 id: "overview"
-pagination_next: "docs/dbt-cloud-apis/user-tokens"
+pagination_next: "docs/dbt-platform-apis/user-tokens"
 pagination_prev: null
 ---
 
