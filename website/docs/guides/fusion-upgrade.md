@@ -367,6 +367,10 @@ Validate the upgrade by running a job:
 
 If the job succeeds, your production upgrade is successful!
 
+import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+
+<FusionReadinessPanel />
+
 ### Step 5: Enable state-aware orchestration (optional but recommended) <Lifecycle status="Enterprise, Enterprise+"/>
 
 One of <Constant name="fusion" />'s most powerful features is [state-aware orchestration](/docs/deploy/state-aware-about), which automatically determines which models need rebuilding based on code or data changes. This can reduce warehouse costs by 30% or more.
