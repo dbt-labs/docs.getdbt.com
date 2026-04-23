@@ -1,7 +1,7 @@
    <Expandable alt_header="BigQuery">  
     - Service Account / User Token
     - Native OAuth
-    - External OAuth
+    - External OAuth (Workload Identity Federation is not currently supported in dbt Fusion — coming soon)
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
