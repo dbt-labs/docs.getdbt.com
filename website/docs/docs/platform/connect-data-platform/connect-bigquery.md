@@ -73,7 +73,7 @@ In addition to these fields, two other optional fields can be configured in a Bi
 | Location | The [location](https://cloud.google.com/bigquery/docs/locations) where dbt should create datasets. | `US`, `EU` |
 
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/bigquery-connection.png" title="A valid BigQuery connection"/>
 
 ### BigQuery OAuth
 **Available in:** Development environments, Enterprise-tier plans only

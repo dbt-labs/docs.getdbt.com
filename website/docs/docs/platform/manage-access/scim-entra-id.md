@@ -93,16 +93,16 @@ The following steps go over how to assign users/groups to the SCIM app. Refer to
 1. Navigate to Enterprise applications and select the SCIM app.
 2. Go to **Manage** > **Provisioning**.
 3. To synchronize Microsoft Entra ID users and groups to dbt, click **Start provisioning**.
-    <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/scim-entraid-start-provision.png" width="80%" title="Start provisioning to synchronize users and groups." />
+    <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/scim-entraid-start-provision.png" width="80%" title="Start provisioning to synchronize users and groups." />
 4. Navigate back to the SCIM app's overview page and go to **Manage** > **Users and groups**.
 5. Click **Add user/group** and select the users and groups. 
-       <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/scim-entraid-add-users.png" width="80%" title="Add user/group." />
+       <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/scim-entraid-add-users.png" width="80%" title="Add user/group." />
 6. Click the **Assign** button.
 7. Wait a few minutes. In the <Constant name="dbt_platform" />, confirm the users and groups exist in your dbt account.
     - Users and groups that you add and assign will automatically be provisioned to your dbt account when Microsoft Entra ID schedules the next sync.
     - By enabling provisioning, you immediately trigger the initial Microsoft Entra ID sync. Subsequent syncs are triggered every 20-40 minutes, depending on the number of users and groups in the application. Refer to Microsoft Entra ID's [Provisioning tips](https://learn.microsoft.com/en-us/azure/databricks/admin/users-groups/scim/aad#provisioning-tips) documentation for more information.
     - You can also prompt a manual provisioning outside of the cycle by clicking **Restart provisioning**.
-    <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/access-control/scim-entraid-manual.png" width="80%" title="Prompt manual provisioning." />
+    <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/scim-entraid-manual.png" width="80%" title="Prompt manual provisioning." />
 
 ## FAQ and troubleshooting
 

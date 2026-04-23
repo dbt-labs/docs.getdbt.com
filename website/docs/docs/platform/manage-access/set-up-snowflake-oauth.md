@@ -36,7 +36,7 @@ To get started, copy the connection's redirect URI from <Constant name="dbt" />:
 1. Copy the **Redirect URI** to use in the later steps.
 
 <Lightbox
-	src="/img/docs/dbt-platform/dbt-cloud-enterprise/snowflake-oauth-redirect-uri.png"
+	src="/img/docs/dbt-platform/dbt-platform-enterprise/snowflake-oauth-redirect-uri.png"
 	title="Locate the Snowflake OAuth redirect URI"
 	alt="The OAuth method and Redirect URI inputs for a Snowflake connection in dbt."
 />
@@ -102,7 +102,7 @@ To complete the creation of your connection in <Constant name="dbt" />:
 2. Edit the connection and enter the Client ID and Client Secret.
 3. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt" />
+<Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt" />
 
 ### Authorize developer credentials
 
@@ -110,7 +110,7 @@ Once Snowflake SSO is enabled, users on the project will be able to configure th
 
 ### SSO OAuth flow diagram
 
-<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
+<Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
 
 Once a user has authorized <Constant name="dbt" /> with Snowflake via their identity provider, Snowflake will return a Refresh Token to the <Constant name="dbt" /> application. <Constant name="dbt" /> is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the <Constant name="studio_ide" /> on behalf of users.
 

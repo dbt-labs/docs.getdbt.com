@@ -37,7 +37,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     The **Extended Attributes** text box is available from your environment's settings page: 
 
-    <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/extended-attributes.png" width="85%" title="Example of the Extended attributes text box" />
+    <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/extended-attributes.png" width="85%" title="Example of the Extended attributes text box" />
 
   </Expandable>
 
@@ -548,11 +548,11 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     <DocCarousel slidesPerView={1}>
 
-    <Lightbox src="/img/docs/dbt-platform/cloud-ide/sqlfluff.gif" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
+    <Lightbox src="/img/docs/dbt-platform/platform-ide/sqlfluff.gif" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
 
-    <Lightbox src="/img/docs/dbt-platform/cloud-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
+    <Lightbox src="/img/docs/dbt-platform/platform-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
 
-    <Lightbox src="/img/docs/dbt-platform/cloud-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
+    <Lightbox src="/img/docs/dbt-platform/platform-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
 
     </DocCarousel>
 

@@ -72,18 +72,18 @@ To make CI job creation easier, many options on the **CI job** page are set to d
    - **Generate docs on run** &mdash; Enable this if you want to [generate project docs](/docs/explore/build-and-view-your-docs) when this job runs. This is disabled by default since testing doc generation on every CI check is not a recommended practice.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
-   <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt UI"/>
+   <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt UI"/>
 
 
 ### Example of CI check in pull request {#example-ci-check}
 The following is an example of a CI check in a GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the <Constant name="dbt" /> section takes you to the relevant CI run in <Constant name="dbt" />.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
 
 ### Example of CI report in pull request <Lifecycle status="preview" /> {#example-ci-report}
 The following is an example of a CI report in a GitHub pull request, which is shown when the **dbt compare** option is enabled for the CI job. It displays a high-level summary of the models that changed from the pull request.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
 
 ## Trigger a CI job with the API <Lifecycle status="managed,managed_plus" />
 

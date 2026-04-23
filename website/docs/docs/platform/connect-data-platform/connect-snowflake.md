@@ -95,7 +95,7 @@ to authenticate <Constant name="dbt" /> to run queries against Snowflake on beha
   connect_retries: 0
   ```
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/extended-attributes-mfa.png" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
 
 ### Key pair
 
@@ -141,7 +141,7 @@ The OAuth auth method permits <Constant name="dbt" /> to run development queries
 a Snowflake user without the configuration of Snowflake password in <Constant name="dbt" />. 
 
 For more information on configuring a Snowflake OAuth connection in <Constant name="dbt" />, please see [the docs on setting up Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth).
-<Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
+<Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
 
 ## Configuration
 

@@ -98,7 +98,7 @@ import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
 When you receive notification that the resources are provisioned within the <Constant name="dbt" /> environment, you must accept the endpoint connection (unless the VPC endpoint service is set to auto-accept connection requests). You can accept requests through the AWS console, as shown below, or through the AWS CLI.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/accept-request.png" width="80%" title="Accept the connection request" />
 
 ## Create connection in dbt
 

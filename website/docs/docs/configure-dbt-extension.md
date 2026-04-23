@@ -42,7 +42,7 @@ In this section, we'll walk you through the steps to prepare your local setup fo
    - <Constant name="core" /> users: This has likely already been configured.
 6. (Optional) If your project uses environment variables, [find them](/docs/build/environment-variables#setting-and-overriding-environment-variables) in the <Constant name="dbt_platform" /> and [set them](#set-environment-variables-locally) in VS Code or Cursor.
    - <Constant name="dbt_platform" /> users: Copy any environment variables from **Deploy → Environments → Environment variables** tab in <Constant name="dbt_platform" />.  Masked secrets are hidden.  Work with your admin to get those values.  
-    <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
+    <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
 
 ## Set environment variables locally
 

@@ -86,7 +86,7 @@ We often leverage the following when customizing these macros:
 - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](/reference/dbt-jinja-functions/target). 
 
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/Environment Variables/custom-schema-env-var.png" title="Custom schema environmental variables target name." />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/custom-schema-env-var.png" title="Custom schema environmental variables target name." />
 
 To allow the database/schema/object name to depend on the current branch, you can use the out-of-the-box `DBT_CLOUD_GIT_BRANCH` environment variable in <Constant name="dbt" /> [special environment variables](/docs/build/environment-variables#special-environment-variables).
 
@@ -512,13 +512,13 @@ We prefer to use [environment variables](/docs/build/environment-variables) over
 - `target.name` cannot be set at the environment-level. Therefore, every job within the environment must explicitly specify the `target.name` override. If the job does not have the appropriate `target.name` value set, the database/schema/alias may not resolve properly. Alternatively, environment variable values are inherited by the jobs within their corresponding environment. The environment variable values can also be overwritten within the jobs if needed.
 
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/custom-schema-env-var-targetname.png" title="Customize schema alias env var."/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/custom-schema-env-var-targetname.png" title="Customize schema alias env var."/>
 
 
 - `target.name` requires every developer to input the same value (often ‘dev’) into the target name section of their project development credentials. If a developer doesn’t have the appropriate target name value set, their database/schema/alias may not resolve properly. 
 
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/development-credentials.png" title="Development credentials." width="60%" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/development-credentials.png" title="Development credentials." width="60%" />
 
 
 ### Always enforce custom schemas

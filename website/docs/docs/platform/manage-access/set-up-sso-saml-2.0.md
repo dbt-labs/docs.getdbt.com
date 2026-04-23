@@ -121,7 +121,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-1-new-app.png"
+    src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-1-new-app.png"
     title="Create a new app"
 />
 
@@ -133,7 +133,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
+    src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-1-new-app-create.png"
     title="Configure a new app"
 />
 
@@ -153,7 +153,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
+    src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-2-general-settings.png"
     title="Configure the app's General Settings"
 />
 
@@ -168,7 +168,7 @@ You can use the instructions in this section to configure Okta as your identity 
    * **Application username**: `Custom` / `user.getInternalProperty("id")`
    * **Update Application username on**: `Create and update`
 
-  <Lightbox collapsed={false} src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
+  <Lightbox collapsed={false} src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
 2. Map your organization's Okta User and Group Attributes to the format that
 <Constant name="dbt" /> expects by using the Attribute Statements and Group Attribute Statements forms. [SCIM configuration](/docs/platform/manage-access/scim) requires `email` to associate logins with the correct user. If you're using license mapping for groups, you need to additionally configure the `groups` attribute.
@@ -196,7 +196,7 @@ support if you have any questions.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
+    src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-3-saml-settings-bottom.png"
     title="Configure the app's User and Group Attribute Statements"
 />
 
@@ -211,7 +211,7 @@ app.
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-4-feedback.png"
+    src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-4-feedback.png"
     title="Finishing setup in Okta"
 />
 
@@ -223,13 +223,13 @@ the integration between Okta and <Constant name="dbt" />.
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
+    src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-5-view-instructions.png"
     title="Viewing the configured application"
 />
 
 <Lightbox
     collapsed={true}
-    src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-5-instructions.png"
+    src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-5-instructions.png"
     title="Application setup instructions"
 />
 
@@ -478,7 +478,7 @@ To complete setup, follow the steps below in <Constant name="dbt" />:
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
    | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
   
-    <Lightbox src="/img/docs/dbt-platform/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+    <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/okta/okta-6-setup-integration.png"
         title="Configuring the application in dbt" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.

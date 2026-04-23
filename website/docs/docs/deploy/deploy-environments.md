@@ -29,13 +29,13 @@ We highly recommend using the `Production` environment type for the final, sourc
 
 To create a new <Constant name="dbt" /> deployment environment, navigate to **Orchestration** > **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. The option will be greyed out if you already have a development environment.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/create-deploy-env.png" width="85%" title="Navigate to Orchestration > Environments to create a deployment environment" />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/create-deploy-env.png" width="85%" title="Navigate to Orchestration > Environments to create a deployment environment" />
 
 ### Set as production environment
 
 In <Constant name="dbt" />, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like <Constant name="catalog" /> and cross-project references. It acts as the source of truth for the project's production state in <Constant name="dbt" />.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
 
 ### Semantic Layer
 
@@ -90,7 +90,7 @@ Finally, the staging environment has its own view in [<Constant name="catalog" /
 ### Create a Staging environment
 
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/create-staging-environment.png" width="85%" title="Create a staging environment" />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/create-staging-environment.png" width="85%" title="Create a staging environment" />
 
 
 Follow the steps outlined in [deployment credentials](#deployment-connection) to complete the remainder of the environment setup.

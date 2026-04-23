@@ -55,7 +55,7 @@ To create a state-aware job:
     - **Environment**: By default, it’s set to the deployment environment you created the state-aware job from.
 3. Options in the **Execution settings** and **Triggers** sections:
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
 - **Execution settings** section:
      - **Commands**: By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
@@ -81,7 +81,7 @@ To create a state-aware job:
 You can see which models dbt builds in the run summary logs. Models that weren't rebuilt during the run are tagged as **Reused** with context about why dbt skipped rebuilding them (and saving you unnecessary compute!). You can also see the reused models under the **Reused** tab.
 
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/SAO_logs_view.png" width="90%" title="Example logs for state-aware orchestration"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/SAO_logs_view.png" width="90%" title="Example logs for state-aware orchestration"/>
 
 ## Delete a job
 

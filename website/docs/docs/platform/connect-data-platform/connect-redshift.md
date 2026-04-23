@@ -30,7 +30,7 @@ The following fields are required when creating a connection:
 **Note**: When you set up a Redshift connection in <Constant name="dbt" />, SSL-related parameters aren't available as inputs. 
 
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
 
 ### Authentication Parameters
 

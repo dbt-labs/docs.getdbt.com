@@ -341,7 +341,7 @@ As noted above, this branch will outlive any individual feature, and will be the
 
 See [Custom branch behavior](/docs/dbt-cloud-environments#custom-branch-behavior). Setting `qa` as your custom branch ensures that the IDE creates new branches and PRs with the correct target, instead of using `main`.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
 
 ### 3. Create a new QA environment
 

@@ -106,7 +106,7 @@ Test the **Latest** release track for your individual account without changing t
 3. In the side panel, click **Edit** and scroll to **User development settings**.
 4. Select **Latest** from the **dbt version** dropdown and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Override dbt version in your account settings"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-override-version.png" width="60%" title="Override dbt version in your account settings"/>
 
 5. Launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and test your normal development workflows.
 6. Verify the override is active by running any dbt command and checking the **System Logs**. The first line should show `Running with dbt=` and your selected version. If the version number is `v1.11` or higher, you're on the right path to <Constant name="fusion" /> readiness.
@@ -122,7 +122,7 @@ After successfully testing your individual development environment with the over
 3. Click the **dbt version** dropdown and select **Latest**.
 4. Click **Save** to apply the changes.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/choosing-dbt-version/select-development.png" width="90%" title="Upgrade development environment to Latest dbt Core release track"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/select-development.png" width="90%" title="Upgrade development environment to Latest dbt Core release track"/>
 
 :::info Remove your override
 
@@ -204,13 +204,13 @@ Now you're ready to scan for and automatically fix deprecation warnings:
 1. Click the **three-dot menu** in the bottom right corner of the <Constant name="studio_ide" />.
 2. Select **Check & fix deprecations**.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu"/>
 
 The tool runs `dbt parse --show-all-deprecations --no-partial-parse` to identify all deprecations in your project. This may take a few moments depending on your project size.
 
 3. When parsing completes, view the results in the **Command history** panel in the bottom left.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-ide/command-history.png" width="90%" title="View command history and deprecation results"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/command-history.png" width="90%" title="View command history and deprecation results"/>
 
 ### Step 3: Review and apply autofixes
 
@@ -219,17 +219,17 @@ After the deprecation scan completes, review the findings and apply automatic fi
 1. In the **Command history** panel, review the list of deprecation warnings.
 2. Click the **Autofix warnings** button to proceed.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-ide/autofix-button.png" width="90%" title="Click Autofix warnings to resolve deprecations automatically"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Click Autofix warnings to resolve deprecations automatically"/>
 
 3. In the **Proceed with autofix** dialog, review the warning and click **Continue**.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-ide/proceed-with-autofix.png" width="90%" title="Confirm autofix operation"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/proceed-with-autofix.png" width="90%" title="Confirm autofix operation"/>
 
 The tool automatically modifies your project files to resolve fixable deprecations, then runs another parse to identify any remaining warnings.
 
 4. When complete, a success message appears. Click **Review changes**.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-ide/autofix-success.png" width="90%" title="Autofix complete"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-success.png" width="90%" title="Autofix complete"/>
 
 ### Step 4: Verify the changes
 

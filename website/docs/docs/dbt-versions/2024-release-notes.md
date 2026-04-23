@@ -253,7 +253,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 
   To learn more about the new setting, refer to [Release Tracks](/docs/dbt-versions/cloud-release-tracks) for details. 
 
-  <Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Latest setting"/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Latest setting"/>
 
   </Expandable>
 
@@ -265,7 +265,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 
   You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production.
 
-  <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
+  <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
 
   </Expandable>
   
@@ -320,7 +320,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 
   An example of the **Triggers** section when creating the job:  
 
-  <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
+  <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
   </Expandable>
 
@@ -332,7 +332,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 
   To learn more about the new setting, refer to [Release Tracks](/docs/dbt-versions/cloud-release-tracks) for details. 
 
-  <Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Latest setting"/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Latest setting"/>
 
   </Expandable>
 
@@ -343,7 +343,7 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 
   Use the **dbt version** dropdown to specify the version to override with. It's available on your project's credentials page in the **User development settings** section. For example:
 
-  <Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
+  <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
   </Expandable>
 
@@ -359,15 +359,15 @@ The following features are new or enhanced as part of our [<Constant name="dbt" 
 
   <DocCarousel slidesPerView={1}>
 
-  <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/read-only.png" width="75%" title="Previous read-only experience"/>
+  <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/read-only.png" width="75%" title="Previous read-only experience"/>
 
-  <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/protected.png" width="75%" title="New protected experience"/>
+  <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/protected.png" width="75%" title="New protected experience"/>
 
   </DocCarousel>
 
   When you make a commit while on the primary branch, a modal window will open prompting you to create a new branch and enter a commit message:
 
-  <Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/create-new-branch.png" width="75%" title="Create new branch window"/>
+  <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/create-new-branch.png" width="75%" title="Create new branch window"/>
 
   </Expandable>
 

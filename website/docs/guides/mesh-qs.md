@@ -104,7 +104,7 @@ To set a production environment:
 6. Click **Test Connection** to confirm the deployment connection.
 6. Click **Save** to create a production environment.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
 
 
 ## Set up a foundational project

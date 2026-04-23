@@ -3,7 +3,7 @@ title: "Change your dbt theme"
 id: change-your-dbt-cloud-theme
 description: "Learn about theme switching in dbt"
 sidebar_label: Change your dbt theme
-image: /img/docs/dbt-platform/using-dbt-cloud/light-vs-dark.png
+image: /img/docs/dbt-platform/using-dbt-platform/light-vs-dark.png
 ---
 
 # Change your dbt theme 
@@ -23,7 +23,7 @@ To switch to dark mode in the <Constant name="dbt" /> UI, follow these steps:
 1. Navigate to your account name at the bottom left of your account.
 2. Under **Theme**, select **Dark**.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/dark-mode.png" width="70%" title="Enable dark mode" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dark-mode.png" width="70%" title="Enable dark mode" />
 
 And that’s it! 🎉 Your chosen selected theme will follow you across all devices.
 

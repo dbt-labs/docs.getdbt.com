@@ -41,7 +41,7 @@ branch configured in the environment) in your <Constant name="git" /> repo, this
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/profiles.yml#understanding-threads). Increase the thread count to increase model execution concurrency.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-create-merge-job.png" title="Example of creating a merge job"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-create-merge-job.png" title="Example of creating a merge job"/>
 
 ## Verify push events in Git
 
@@ -51,7 +51,7 @@ Merge jobs require push events so make sure they've been enabled in your <Consta
 
 The following is a GitHub example of when the push events are already set: 
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-github-push-events.png" title="Example of the Pushes option enabled in the GitHub settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-github-push-events.png" title="Example of the Pushes option enabled in the GitHub settings"/>
 
 </Expandable>
 
@@ -59,7 +59,7 @@ The following is a GitHub example of when the push events are already set:
 
 The following is a GitLab example of when the push events are already set:
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-gitlab-push-events.png" title="Example of the Push events option enabled in the GitLab settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-gitlab-push-events.png" title="Example of the Push events option enabled in the GitLab settings"/>
 
 </Expandable>
 
@@ -67,6 +67,6 @@ The following is a GitLab example of when the push events are already set:
 
 The following is an example of creating a new **Code pushed** trigger in Azure DevOps. Create a new service hooks subscription when code pushed events haven't been set: 
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/example-azuredevops-new-event.png" title="Example of creating a new trigger to push events in Azure Devops"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-azuredevops-new-event.png" title="Example of creating a new trigger to push events in Azure Devops"/>
 
 </Expandable>

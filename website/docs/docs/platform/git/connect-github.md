@@ -42,13 +42,13 @@ To connect your <Constant name="dbt" /> account to your GitHub account:
 
 3. Scroll down to **Linked accounts**.
 
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/connecting-github/github-connect-1.png" width= "80%" title="Navigated to Linked Accounts under your profile"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/github-connect-1.png" width= "80%" title="Navigated to Linked Accounts under your profile"/>
 
 4. In the **Linked accounts** section, set up your GitHub account connection to <Constant name="dbt" /> by clicking **Link** to the right of GitHub. This redirects you to your account on GitHub where you will be asked to install and configure the <Constant name="dbt" /> application. 
 
 5. Select the GitHub organization and repositories <Constant name="dbt" /> should access.
 
-   <Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/connecting-github/github-app-install.png" width="50%" title="Installing the dbt application into a GitHub organization"/>
+   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/github-app-install.png" width="50%" title="Installing the dbt application into a GitHub organization"/>
 
 6. Assign the <Constant name="dbt" /> GitHub App the following permissions:
    - Read access to metadata
@@ -64,7 +64,7 @@ To connect your <Constant name="dbt" /> account to your GitHub account:
 
 ## Limiting repository access in GitHub
 If you are your GitHub organization owner, you can also configure the <Constant name="dbt" /> GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in <Constant name="dbt" /> to start this process.
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/connecting-github/configure-github.png" title="Configuring the dbt app"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/configure-github.png" title="Configuring the dbt app"/>
 
 ## Authenticate your personal GitHub account
 
@@ -87,7 +87,7 @@ To connect a personal GitHub account:
 3. Scroll down to **Linked accounts**. If your GitHub account is not connected, you’ll see "No connected account". 
 
 4. Select **Link** to begin the setup process. You’ll be redirected to GitHub, and asked to authorize <Constant name="dbt" /> in a grant screen.
-<Lightbox src="/img/docs/dbt-platform/cloud-configuring-dbt-cloud/connecting-github/github-auth.png" title="Authorizing the dbt app for developers"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connecting-github/github-auth.png" title="Authorizing the dbt app for developers"/>
 
 5. Once you approve authorization, you will be redirected to <Constant name="dbt" />, and you should now see your connected account. 
 

@@ -149,7 +149,7 @@ Learn how to use <Constant name="dbt" />'s features to help your team ship timel
 
 <Lightbox src="/img/docs/dbt-platform/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
 
-<Lightbox src ="/img/docs/dbt-platform/using-dbt-cloud/job-commands.gif" width="95%" title="Setting up a job and configuring checkbox and dbt commands"/>
+<Lightbox src ="/img/docs/dbt-platform/using-dbt-platform/job-commands.gif" width="95%" title="Setting up a job and configuring checkbox and dbt commands"/>
 
 </DocCarousel>
 

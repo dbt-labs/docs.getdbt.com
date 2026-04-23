@@ -39,7 +39,7 @@ To get started, locate the connection's redirect URI for configuring BigQuery OA
 4. Click the BigQuery connection.
 5. Locate the **Redirect URI** field under the **Development OAuth** section. Copy this value to your clipboard to use later on.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret-02.png" title="Accessing the BigQuery OAuth configuration in dbt" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/BQ-auth/dbt-cloud-bq-id-secret-02.png" title="Accessing the BigQuery OAuth configuration in dbt" />
 
 ### Creating a BigQuery OAuth 2.0 client ID and secret
 
@@ -53,7 +53,7 @@ To get started, you need to create a client ID and secret for [authentication](h
 
 1. In the BigQuery console, navigate to **APIs & Services** and select **Credentials**:
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-nav.gif" title="BigQuery navigation to credentials" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/BQ-auth/BQ-nav.gif" title="BigQuery navigation to credentials" />
 
 On the **Credentials** page, you can see your existing keys, client IDs, and service accounts.
 
@@ -71,7 +71,7 @@ On the **Credentials** page, you can see your existing keys, client IDs, and ser
 <br />
 6. Click **Create** to create the BigQuery OAuth app and see the app client ID and secret values. These values are available even if you close the app screen, so this isn't the only chance you have to save them.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/bq-oauth-app-02.png" title="Create an OAuth app in BigQuery" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/BQ-auth/bq-oauth-app-02.png" title="Create an OAuth app in BigQuery" />
 
 ### Configure the Connection in dbt
 Now that you have an OAuth app set up in BigQuery, you'll need to add the client ID and secret to the <Constant name="dbt_platform" />. To do so:
@@ -98,7 +98,7 @@ Once the BigQuery OAuth app is set up for a <Constant name="dbt_platform" /> pro
 </DocCarousel>
 
 You will then be redirected to BigQuery and asked to approve the drive, cloud platform, and BigQuery scopes, unless the connection is less privileged.
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" width="60%" title="BigQuery access request" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/BQ-auth/BQ-access.png" width="60%" title="BigQuery access request" />
 
 Select **Allow**. This redirects you back to the <Constant name="dbt_platform" />. You are now an authenticated BigQuery user and can begin accessing dbt development tools. 
 

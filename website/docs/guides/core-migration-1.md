@@ -174,7 +174,7 @@ In dbt Core, environment variables, or the [`env_var` function](/reference/dbt-j
   - If your <Constant name="core" /> environment variables don't follow this naming convention, perform a ["find and replace"](/docs/platform/studio-ide/develop-in-studio#dbt-cloud-ide-features) in your project to make sure all references to these environment variables contain the proper naming conventions.
 - <Constant name="dbt" /> secures environment variables that enable more flexible configuration of data warehouse connections or git provider integrations, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET`to obscure them in logs and the UI.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
 ### dbt environment variables order of precedence
 Environment variables in <Constant name="dbt" /> are managed with a clear [order of precedence](/docs/build/environment-variables#setting-and-overriding-environment-variables), allowing users to define values at four levels (highest to lowest order of precedence):
@@ -183,7 +183,7 @@ Environment variables in <Constant name="dbt" /> are managed with a clear [order
    - A project-wide default value, which can be overridden by the environment level, job level, or personal override.
    - The optional default argument supplied to the `env_var` Jinja function in the code. _Lowest precedence_
   
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
 ### Set environment variables in dbt
 
@@ -229,7 +229,7 @@ Explore these additional configurations to optimize your <Constant name="dbt" />
 
 Building a custom solution to efficiently check code upon pull requests is complicated. With <Constant name="dbt" />, you can enable [continuous integration / continuous deployment (CI/CD)](/docs/deploy/continuous-integration) and configure <Constant name="dbt" /> to run your dbt projects in a temporary schema when new commits are pushed to open pull requests.
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-cloud/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt"/>
 
 This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool for data practitioners.
 
