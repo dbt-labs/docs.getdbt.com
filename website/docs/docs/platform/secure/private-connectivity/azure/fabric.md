@@ -20,7 +20,15 @@ Microsoft Fabric offers two private connectivity models. Only **workspace-level 
 
 ## Prerequisites
 
-Before configuring Private Link, complete the following steps in your Microsoft Fabric environment:
+Before configuring Private Link, make sure you have the following:
+
+- You have Fabric Administrator access
+- You have an Azure subscription with permission to register resource providers and deploy templates
+- You have a Fabric workspace already created
+- You have a service principal set up with the right Fabric permissions (Member or Contributor on the workspace, and Fabric APIs enabled in the Admin portal)
+
+## Configure Fabric Private Link
+Complete the following steps in your Microsoft Fabric and Azure environments before submitting a request to dbt.
 
 ### 1. Enable the workspace-level Private Link tenant setting
 
@@ -40,7 +48,7 @@ A Fabric Administrator must enable workspace-level private link for your tenant 
 4. Click **Save**.
 
 :::caution Restricting inbound access may block your own access
-When you select this option, only connections from approved IP addresses and workspace-level private links are allowed. If you or your team need to continue accessing this workspace from the Fabric portal, add your organization's public IP addresses before saving. Consult your network administrator if you are unsure which IP ranges to include.
+When you select this option, only connections from approved IP addresses and workspace-level private links are allowed. If you or your team need to continue accessing this workspace from the Fabric portal, add your organization's public IP addresses before saving. Consult your network administrator if you're unsure which IP ranges to include.
 
 If you get locked out, a Fabric Administrator can restore access by navigating to the [Admin portal](https://app.fabric.microsoft.com/admin-portal) → **Tenant settings** → **Advanced networking** → **Configure workspace-level inbound network rules** and toggling the setting to **Disabled**. This reverts all workspaces to their previous network configuration.
 :::
@@ -57,10 +65,12 @@ The `Microsoft.Fabric` resource provider must be registered in your Azure subscr
 
 Fabric workspace-level Private Link uses a dedicated Azure resource (`Microsoft.Fabric/privateLinkServicesForFabric`) to expose your workspace as a private endpoint target. This resource is not available in the Azure portal marketplace, so you must deploy it using a custom template.
 
-1. Find your Fabric workspace ID from the workspace URL: `https://app.fabric.microsoft.com/groups/<workspace-id>`. Find your Microsoft Entra Directory (tenant) ID from the [Azure portal](https://portal.azure.com) → **Microsoft Entra ID** → **Overview** → **Tenant ID**. This is the same Directory (tenant) ID used for service principal authentication.
+1. Locate the two IDs you'll need:
+   - **Workspace ID**: found in the workspace URL — `https://app.fabric.microsoft.com/groups/<workspace-id>`
+   - **Tenant ID**: found in the [Azure portal](https://portal.azure.com) under **Microsoft Entra ID** → **Overview** → **Tenant ID**. This is the same Directory (tenant) ID used for service principal authentication.
 2. In the [Azure portal](https://portal.azure.com), search for **Deploy a custom template** and select it.
 3. Click **Build your own template in the editor**.
-4. Paste the following template into the editor. Replace `<workspace-name>`, `<workspace-id>`, and `<tenant-id>` (your Microsoft Entra Directory (tenant) ID) with your values, then click **Save**:
+4. Paste the following template into the editor. Replace `<workspace-name>`, `<workspace-id>`, and `<tenant-id>` with your values, then click **Save**:
 
    ```json
    {
@@ -124,7 +134,7 @@ Once dbt Support confirms the endpoint is available, configure the connection in
 
 1. Navigate to **Settings** → **Create new project** → select **Microsoft Fabric**.
 2. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**.
-3. Select the private endpoint from the dropdown. This will populate the **Server** field with the private SQL hostname provided by dbt Support.
+3. Select the private endpoint from the dropdown. This populates the **Server** field with the private SQL hostname provided by dbt Support.
 4. Configure the remaining connection details:
 
    | Field | Value |
