@@ -52,15 +52,17 @@ var siteSettings = {
   headTags: [
     // Load Optimizely synchronously (no async/defer) so experiments apply
     // before page content renders, preventing a flash of unexperimented content.
-    ...(OPTIMIZELY_ID ? [
-      {
-        tagName: 'script',
-        attributes: {
-          src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
-          type: 'text/javascript',
-        },
-      }
-    ] : []),
+    ...(OPTIMIZELY_ID
+      ? [
+          {
+            tagName: "script",
+            attributes: {
+              src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
+              type: "text/javascript",
+            },
+          },
+        ]
+      : []),
   ],
   themeConfig: {
     docs: {
@@ -84,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "agent-skills-webinar",
+      id: "state-of-analytics-engineering-virtual-event",
       content:
-        "Join our free webinar on April 22 &amp; 23: Ship smarter agents with dbt Agent Skills. Learn to build production-ready AI agents on your data layer.",
+        "Join us for the 2026 State of Analytics Engineering Virtual Event on April 29 with live Q&A and giveaways!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/ship-smarter-agents-building-for-production-with-dbt-agent-skills/?utm_medium=internal&utm_source=docs&utm_campaign=_&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtual-event/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_state-analytics-engineering_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -432,7 +434,9 @@ var siteSettings = {
                     {
                       id: "connect-data-platform",
                       name: "Connect data platform",
-                      routes: [{ route: "/docs/cloud/connect-data-platform/**" }],
+                      routes: [
+                        { route: "/docs/cloud/connect-data-platform/**" },
+                      ],
                     },
                     {
                       id: "manage-access",
@@ -462,9 +466,7 @@ var siteSettings = {
                     {
                       id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
-                      routes: [
-                        { route: "/docs/fusion/about-fusion-install" },
-                      ],
+                      routes: [{ route: "/docs/fusion/about-fusion-install" }],
                     },
                     {
                       id: "core-connect-data-platform",
@@ -519,7 +521,7 @@ var siteSettings = {
     "/js/onetrust.js",
     "/js/hide-forethought.js",
     {
-      src: "https://www.google.com/recaptcha/api.js?render=6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
+      src: "https://www.google.com/recaptcha/api.js?render=6LdcbMEsAAAAAOMzfSqbwkS5beDLJBxqIedWFz6M",
       async: true,
       defer: true,
     },
