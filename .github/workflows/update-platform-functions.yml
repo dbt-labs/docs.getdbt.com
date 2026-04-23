@@ -52,6 +52,12 @@ jobs:
           FUSION_REPO: ${{ secrets.FUSION_REPO }}
           FUSION_BASE_PATH: ${{ secrets.FUSION_BASE_PATH }}
 
+      - name: Open Fusion gap issues for new functions
+        if: steps.should_run.outputs.run == 'true'
+        run: node website/scripts/create-fusion-gap-issues.js ${{ matrix.platform }}
+        env:
+          FUSION_ISSUES_TOKEN: ${{ secrets.FUSION_ISSUES_TOKEN }}
+
       - name: Commit updated data if changed
         if: steps.should_run.outputs.run == 'true'
         run: |
