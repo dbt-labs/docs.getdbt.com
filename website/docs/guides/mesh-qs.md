@@ -59,7 +59,7 @@ In this section, you'll create two new, empty projects in <Constant name="dbt" /
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: **Jaffle | Data Analytics** and **Jaffle | Finance**.
 
-To [create](docs/platform/about-platform-setup) a new project in <Constant name="dbt" />:
+To [create](/docs/platform/about-platform-setup) a new project in <Constant name="dbt" />:
 
 1. From **Account settings**, go to **Projects**. Click **New project**.
 2. Enter a project name and click **Continue**.

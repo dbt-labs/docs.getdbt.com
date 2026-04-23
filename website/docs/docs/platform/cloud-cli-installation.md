@@ -19,7 +19,7 @@ The <Constant name="platform_cli" /> is a <Constant name="dbt_platform" /> tool 
 dbt commands run against the platform's infrastructure and benefit from:
 
 * Secure credential storage in the <Constant name="dbt_platform" />
-* [Automatic deferral](docs/platform/about-platform-develop-defer) of build artifacts to your project's production environment 
+* [Automatic deferral](/docs/platform/about-platform-develop-defer) of build artifacts to your project's production environment 
 * Speedier, lower-cost builds
 * Support for dbt Mesh ([cross-project `ref`](/docs/mesh/govern/project-dependencies))
 * Significant platform improvements, to be released over the coming months
