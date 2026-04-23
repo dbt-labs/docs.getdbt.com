@@ -104,7 +104,7 @@ Select **Allow**. This redirects you back to the <Constant name="dbt_platform" /
 
 ## Set up BigQuery Workload Identity Federation <Lifecycle status= "managed" /> 
 
-:::note dbt Fusion
+:::info WIF not supported in <Constant name="fusion"/>
 Workload Identity Federation (WIF) is not currently supported in <Constant name="fusion"/>. If you're using <Constant name="fusion"/>, use a Service Account or Native OAuth connection instead. Support is coming soon.
 :::
 
