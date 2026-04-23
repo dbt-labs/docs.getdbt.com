@@ -32,4 +32,3 @@ dbt run --select path/to/your_model --empty
 
 dbt will build and execute the SQL, resulting in an empty schema in the data warehouse.
 
-
