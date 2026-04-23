@@ -108,7 +108,7 @@ Workload Identity Federation (WIF) allows application workloads, running outside
 Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
 :::info WIF not supported in <Constant name="fusion_engine"/>
-WIF is not currently supported in [<Constant name="fusion"/](/docs/fusion/supported-features?version=2.0#bigquery)>. If you're using the <Constant name="fusion_engine"/>, use Native OAuth connection instead. Support for WIF is coming soon.
+WIF is not currently supported in [<Constant name="fusion"/>](/docs/fusion/supported-features?version=2.0#bigquery). Use a [Native OAuth connection](#set-up-bigquery-native-oauth) or service account instead. Support for WIF is coming soon.
 :::
 
 ### 1. Set up Entra ID
