@@ -144,8 +144,8 @@ To run only data tests (excluding unit tests) when using `dbt test`, use the `te
 <File name='Usage'>
 
 ```text
-dbt test --select test_type:data # dbt Core and dbt Fusion engines
-dbt test --resource-type test # dbt Core only
+dbt test --select test_type:data -- dbt Core and dbt Fusion engines
+dbt test --resource-type test -- dbt Core only
 ```
 
 </File>
@@ -188,8 +188,8 @@ To exclude unit tests when using `dbt test`, use the `test_type` selector to run
 <File name='Usage'>
 
 ```text
-dbt test --select test_type:data # dbt Core and dbt Fusion engines
-dbt test --exclude-resource-type unit_test # dbt Core only
+dbt test --select test_type:data -- dbt Core and dbt Fusion engines
+dbt test --exclude-resource-type unit_test -- dbt Core only
 ```
 
 </File>
