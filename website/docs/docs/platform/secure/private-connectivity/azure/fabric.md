@@ -66,11 +66,11 @@ The `Microsoft.Fabric` resource provider must be registered in your Azure subscr
 Fabric workspace-level Private Link uses a dedicated Azure resource (`Microsoft.Fabric/privateLinkServicesForFabric`) to expose your workspace as a private endpoint target. This resource is not available in the Azure portal marketplace, so you must deploy it using a custom template.
 
 1. Locate the two IDs you'll need:
-   - **Workspace ID**: found in the workspace URL — `https://app.fabric.microsoft.com/groups/<workspace-id>`
+   - **Workspace ID**: found in the workspace URL — `https://app.fabric.microsoft.com/groups/WORKSPACE_ID`. Replace `WORKSPACE_ID` with your value.
    - **Tenant ID**: found in the [Azure portal](https://portal.azure.com) under **Microsoft Entra ID** → **Overview** → **Tenant ID**. This is the same Directory (tenant) ID used for service principal authentication.
 2. In the [Azure portal](https://portal.azure.com), search for **Deploy a custom template** and select it.
 3. Click **Build your own template in the editor**.
-4. Paste the following template into the editor. Replace `<workspace-name>`, `<workspace-id>`, and `<tenant-id>` with your values, then click **Save**:
+4. Paste the following template into the editor. Replace `WORKSPACE_NAME`, `WORKSPACE_ID`, and `TENANT_ID` with your values, then click **Save**:
 
    ```json
    {
@@ -80,11 +80,11 @@ Fabric workspace-level Private Link uses a dedicated Azure resource (`Microsoft.
        {
          "type": "Microsoft.Fabric/privateLinkServicesForFabric",
          "apiVersion": "2024-06-01",
-         "name": "<workspace-name>-pls",
+         "name": "WORKSPACE_NAME-pls",
          "location": "global",
          "properties": {
-           "tenantId": "<tenant-id>",
-           "workspaceId": "<workspace-id>"
+           "tenantId": "TENANT_ID",
+           "workspaceId": "WORKSPACE_ID"
          }
        }
      ]
@@ -95,8 +95,7 @@ Fabric workspace-level Private Link uses a dedicated Azure resource (`Microsoft.
 6. Once the deployment completes, navigate to your **resource group** and select **Manage view** → **Show hidden types** to reveal the Private Link Service resource. Click the resource to open it and copy the **Resource ID** from the overview page. You will need the Resource ID to submit your Private Link request.
 
    The Resource ID path format is:
-   `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Fabric/privateLinkServicesForFabric/<name>`
-
+   `/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP/providers/Microsoft.Fabric/privateLinkServicesForFabric/NAME`
 
 ## Submit a Private Link request to dbt
 
@@ -111,10 +110,12 @@ Subject: New Azure Multi-Tenant Private Link Request
 - dbt platform account URL:
 - Fabric workspace name:
 - Fabric Private Link Service resource ID:
-  /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Fabric/privateLinkServicesForFabric/<name>
+  /subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP/providers/Microsoft.Fabric/privateLinkServicesForFabric/NAME
 - dbt Azure multi-tenant environment (EMEA):
 - Azure region of your Fabric workspace (for example, centralus, westeurope):
 ```
+
+Make sure you replace `SUBSCRIPTION_ID`, `RESOURCE_GROUP`, and `NAME` with your values.
 
 </Expandable>
 
