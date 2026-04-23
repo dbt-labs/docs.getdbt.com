@@ -112,4 +112,5 @@ You can read more about each of these behavior changes in the following links:
 - New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
 - To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
 - Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.
+- The `--select` flag now reliably limits `catalog.json` to the selected nodes in all projects, regardless of project size. In earlier versions, node selectors were ignored for projects with 100 or more nodes, and sources were omitted from `catalog.json` entirely when more than 100 nodes were selected. 
 
