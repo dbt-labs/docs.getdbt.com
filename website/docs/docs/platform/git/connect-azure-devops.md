@@ -1,7 +1,7 @@
 ---
 title: "Connect to Azure DevOps"
 id: "connect-azure-devops"
-pagination_next: "docs/cloud/git/setup-service-principal"
+pagination_next: "docs/platform/git/setup-service-principal"
 ---
 
 # Connect to Azure DevOps <Lifecycle status="managed,managed_plus" />

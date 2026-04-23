@@ -4,7 +4,7 @@ id: develop-in-studio
 description: "Develop, test, run, and build in the Studio IDE. You can compile dbt code into SQL and run it against your database directly"
 sidebar_label: About the IDE
 tags: [IDE]
-pagination_next: "docs/cloud/studio-ide/keyboard-shortcuts"
+pagination_next: "docs/platform/studio-ide/keyboard-shortcuts"
 pagination_prev: null
 ---
 

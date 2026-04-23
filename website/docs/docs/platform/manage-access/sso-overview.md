@@ -1,7 +1,7 @@
 ---
 title: "Single sign-on (SSO) Overview"
 id: "sso-overview"
-pagination_next: "docs/cloud/manage-access/set-up-sso-saml-2.0"
+pagination_next: "docs/platform/manage-access/set-up-sso-saml-2.0"
 pagination_prev: null
 ---
 

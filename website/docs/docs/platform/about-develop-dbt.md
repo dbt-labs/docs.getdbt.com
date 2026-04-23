@@ -3,7 +3,7 @@ title: Develop with dbt
 id: about-develop-dbt
 description: "Learn how to develop your dbt projects using dbt."
 sidebar_label: "Develop with dbt" 
-pagination_next: "docs/cloud/about-cloud-develop-defer"
+pagination_next: "docs/platform/about-cloud-develop-defer"
 intro_text: "Develop dbt projects using the dbt platform, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
 ---
 

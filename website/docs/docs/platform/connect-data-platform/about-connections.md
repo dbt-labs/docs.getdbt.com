@@ -3,7 +3,7 @@ title: "About data platform connections"
 id: about-connections
 description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
-pagination_next: "docs/cloud/connect-data-platform/connect-apache-spark"
+pagination_next: "docs/platform/connect-data-platform/connect-apache-spark"
 pagination_prev: null
 ---
 The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. Expand the sections below to know the supported data platforms for <Constant name="core" /> and the <Constant name="fusion_engine" />: 

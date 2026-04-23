@@ -6,25 +6,25 @@ The following tools integrate with the dbt Semantic Layer:
 
 <Card
     title="Power BI"
-    link="/docs/cloud-integrations/semantic-layer/power-bi"
+    link="/docs/platform-integrations/semantic-layer/power-bi"
     body="Use reports to query the dbt Semantic Layer with Power BI and produce dashboards with trusted data."
     icon="pbi"/>
 
  <Card
     title="Tableau"
-    link="/docs/cloud-integrations/semantic-layer/tableau"
+    link="/docs/platform-integrations/semantic-layer/tableau"
     body="Learn how to connect to Tableau for querying metrics and collaborating with your team."
     icon="tableau-software"/>
   
   <Card
     title="Google Sheets"
-    link="/docs/cloud-integrations/semantic-layer/gsheets"
+    link="/docs/platform-integrations/semantic-layer/gsheets"
     body="Discover how to connect to Google Sheets for querying metrics and collaborating with your team."
     icon="google-sheets-logo-icon"/>
 
   <Card
     title="Microsoft Excel"
-    link="/docs/cloud-integrations/semantic-layer/excel"
+    link="/docs/platform-integrations/semantic-layer/excel"
     body="Connect to Microsoft Excel to query metrics and collaborate with your team. Available for Excel Desktop or Excel Online."
     icon="excel"/>
 

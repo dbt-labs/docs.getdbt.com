@@ -3,7 +3,7 @@ title: "Users and licenses"
 description: "Learn how dbt administrators can use licenses and seats to control access in a dbt account."
 id: "seats-and-users"
 sidebar: "Users and licenses"
-pagination_next: "docs/cloud/manage-access/enterprise-permissions"
+pagination_next: "docs/platform/manage-access/enterprise-permissions"
 pagination_prev: null
 ---
 

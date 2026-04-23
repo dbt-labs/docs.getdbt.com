@@ -79,12 +79,12 @@ db_groups:
 #### Extended Attributes don't mask secret values
 
 - We recommend you avoid setting secret values to prevent visibility in the text box and logs. A common workaround is to wrap extended attributes in [environment variables](/docs/build/environment-variables). In the earlier example, `password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'` will get a value from the `DBT_ENV_SECRET_PASSWORD` environment variable at runtime.
-- If you're using [profiles](/docs/cloud/about-profiles) for deployment environments, any `env_var` references in Extended Attributes must use _project-scoped_ environment variables. Since profiles are environment-agnostic, environment-scoped variables aren't available during connection tests. Jobs run normally since they have a real environment, but connection tests will fail if the referenced variable is only set at the environment level.
+- If you're using [profiles](/docs/platform/about-profiles) for deployment environments, any `env_var` references in Extended Attributes must use _project-scoped_ environment variables. Since profiles are environment-agnostic, environment-scoped variables aren't available during connection tests. Jobs run normally since they have a real environment, but connection tests will fail if the referenced variable is only set at the environment level.
   
   To set a project-scoped variable, go to **Orchestration** > **Environments** > **Environment variables**, and set a value in the **Project default** column. This value applies across all environments in the project, making it available to profiles during connection tests. See [environment variables](/docs/build/environment-variables?version=2.0#setting-environment-variables) for more information.
 
 #### How extended attributes work
-If you're developing in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), extended attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
+If you're developing in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), extended attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
 - If the attribute exists in another source (such as your project settings), it will replace its value (like environment-level values) in the profile. It also overrides any custom environment variables (if not itself wired using the syntax described for secrets above)
 

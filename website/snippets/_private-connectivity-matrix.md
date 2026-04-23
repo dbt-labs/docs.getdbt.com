@@ -1,6 +1,6 @@
 ## Private connectivity feature matrix
 
-The following charts outline private connectivity options across <Constant name="dbt" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) deployments.
+The following charts outline private connectivity options across <Constant name="dbt" /> [multi-tenant (MT) and single-tenant (ST)](/docs/platform/about-cloud/tenancy) deployments.
 
 **Legend:**
 

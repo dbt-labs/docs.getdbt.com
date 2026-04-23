@@ -2,7 +2,7 @@
 title: "About user access in dbt"
 description: "Learn how dbt administrators can use dbt's permissioning model to control user-level access in a dbt account."
 id: "about-user-access"
-pagination_next: "docs/cloud/manage-access/seats-and-users"
+pagination_next: "docs/platform/manage-access/seats-and-users"
 pagination_prev: null
 ---
 

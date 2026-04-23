@@ -1,6 +1,6 @@
 import SLEnvVars from '/snippets/_sl-env-vars.md';
 
-You must be part of the Owner group and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/enterprise-permissions) to administer the Semantic Layer at the environment and project level.
+You must be part of the Owner group and have the correct [license](/docs/platform/manage-access/seats-and-users) and [permissions](/docs/platform/manage-access/enterprise-permissions) to administer the Semantic Layer at the environment and project level.
 - Enterprise+ and Enterprise plan:
   - Developer license with Account Admin permissions, or
   - Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
@@ -80,13 +80,13 @@ To use PATs in <Constant name="semantic_layer" />:
    5. Click **Save**.
 2. [Create a personal access token](/docs/dbt-platform-apis/user-tokens). Make sure to copy the token. 
 
-You can use the generated PAT as the authentication method for <Constant name="semantic_layer" /> [APIs](/docs/dbt-platform-apis/sl-api-overview) and [integrations](/docs/cloud-integrations/avail-sl-integrations). 
+You can use the generated PAT as the authentication method for <Constant name="semantic_layer" /> [APIs](/docs/dbt-platform-apis/sl-api-overview) and [integrations](/docs/platform-integrations/avail-sl-integrations). 
 
 ### 3. View connection detail
 1. Go back to the **Project details** page for connection details to connect to downstream tools.
 2. Copy and share the Environment ID, service or personal token, Host, as well as the service or personal token name to the relevant teams for BI connection setup. If your tool uses the GraphQL API, save the GraphQL API host information instead of the JDBC URL. 
 
-    For info on how to connect to other integrations, refer to [Available integrations](/docs/cloud-integrations/avail-sl-integrations).
+    For info on how to connect to other integrations, refer to [Available integrations](/docs/platform-integrations/avail-sl-integrations).
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.png" width="50%" title="After configuring, you'll be provided with the connection details to connect to you downstream tools." />
 
@@ -138,7 +138,7 @@ To re-enable the dbt Semantic Layer setup in the future, you will need to recrea
  The following are the additional flexible configurations for Semantic Layer credentials.
 
 ### Map service tokens to credentials
-- After configuring your environment, you can map additional service tokens to the same credential if you have the required [permissions](/docs/cloud/manage-access/about-user-access#permission-sets).
+- After configuring your environment, you can map additional service tokens to the same credential if you have the required [permissions](/docs/platform/manage-access/about-user-access#permission-sets).
 - Go to the **Credentials & service tokens** page and click the **+Add Service Token** button in the **Linked Service Tokens** section.
 - Type the service token name and select the permission set you need (Semantic Layer Only and Metadata Only).
 - Click **Save** to link the service token to the credential.

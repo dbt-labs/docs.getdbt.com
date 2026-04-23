@@ -3,7 +3,7 @@ title: "About dbt Canvas"
 id: canvas      
 sidebar_label: "About dbt Canvas" 
 description: "dbt Canvas enables you to quickly create and visualize dbt models through a visual, drag-and-drop experience inside of dbt." 
-pagination_next: "docs/cloud/canvas-interface"
+pagination_next: "docs/platform/canvas-interface"
 pagination_prev: null
 image: /img/docs/dbt-platform/canvas/canvas.png
 ---

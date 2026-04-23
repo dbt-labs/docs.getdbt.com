@@ -2,7 +2,7 @@
 title: "About dbt integrations"
 sidebar_label: "About dbt integrations"
 pagination_prev: null
-pagination_next: "docs/cloud-integrations/downstream-exposures"
+pagination_next: "docs/platform-integrations/downstream-exposures"
 hide_table_of_contents: true
 ---
 
@@ -23,7 +23,7 @@ Many data applications integrate with <Constant name="dbt" />, enabling you to l
 <Card
     title="Visualize and orchestrate downstream exposures"
     body="Configure downstream exposures automatically from dashboards and understand how models are used in downstream tools. Proactively refresh the underlying data sources during scheduled dbt jobs."
-    link="docs/cloud-integrations/downstream-exposures"
+    link="docs/platform-integrations/downstream-exposures"
     icon="dbt-bit"/>
 
 <Card

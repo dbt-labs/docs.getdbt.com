@@ -2,7 +2,7 @@
 title: "Configure Git in dbt"
 description: "Learn about the Git providers supported in dbt"
 hide_table_of_contents: true
-pagination_next: "docs/cloud/git/managed-repository"
+pagination_next: "docs/platform/git/managed-repository"
 ---
 
 [Version control](/docs/platform/git/version-control-basics) &mdash; a system that allows you and your teammates to work safely and simultaneously on a single project &mdash; is an essential part of the dbt workflow. It enables teams to collaborate effectively and maintain a history of changes to their dbt projects. 

@@ -4,7 +4,7 @@ id: audit-log
 description: "You can troubleshoot possible issues and provide security audits by reviewing event activity in your organization."
 sidebar_label: "Audit log"
 pagination_next: null
-pagination_prev: "docs/cloud/manage-access/about-user-access"
+pagination_prev: "docs/platform/manage-access/about-user-access"
 ---
 
 # dbt audit log <Lifecycle status="managed,managed_plus" />

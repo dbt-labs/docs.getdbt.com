@@ -3,7 +3,7 @@ title: Install dbt CLI
 sidebar_label: "Installation"
 id: cloud-cli-installation
 description: "Instructions for installing and configuring dbt platform's CLI tool."
-pagination_next: "docs/cloud/configure-cloud-cli"
+pagination_next: "docs/platform/configure-cloud-cli"
 ---
 
 import LongSession from '/snippets/_long-sessions-cli.md';

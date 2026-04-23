@@ -3,8 +3,8 @@ title: "Navigate the interface"
 id: canvas-interface      
 sidebar_label: "Navigate the interface" 
 description: "The dbt Canvas interface contains an operator toolbar, operators, and a canvas to help you access and transform data through a seamless drag-and-drop dbt model creation experience in dbt." 
-pagination_next: "docs/cloud/use-canvas"
-pagination_prev: "docs/cloud/canvas"
+pagination_next: "docs/platform/use-canvas"
+pagination_prev: "docs/platform/canvas"
 image: /img/docs/dbt-platform/canvas/canvas.png
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Set up the dbt Snowflake Native App"
 description: "Learn how to set up the dbt Snowflake Native App"
-pagination_prev: "docs/cloud-integrations/snowflake-native-app"
+pagination_prev: "docs/platform-integrations/snowflake-native-app"
 pagination_next: null
 unlisted: true
 
