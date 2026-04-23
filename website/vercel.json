@@ -2124,7 +2124,7 @@
     },
     {
       "source": "/docs/dbt-cloud-apis/metadata-api",
-      "destination": "/docs/dbt-cloud-apis/discovery-api",
+      "destination": "/docs/dbt-platform-apis/discovery-api",
       "permanent": true
     },
     {

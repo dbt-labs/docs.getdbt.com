@@ -1,7 +1,7 @@
 ---
 title: "dbt Administrative API"
 id: "admin-cloud-api"
-pagination_next: "docs/dbt-cloud-apis/discovery-api"
+pagination_next: "docs/dbt-platform-apis/discovery-api"
 ---
 
 # dbt Administrative API <Lifecycle status="self_service,managed,managed_plus" />
