@@ -17,21 +17,31 @@ Test selection is powerful, and we know it can be tricky. To that end, we've inc
 
 ### Direct selection
 
-Run generic tests only:
-
-
-  ```bash
-    dbt test --select "test_type:generic"
-  ```
-
-Run singular tests only:
-
+Run unit tests only:
 
   ```bash
-    dbt test --select "test_type:singular"
+  dbt test --select "test_type:unit"
   ```
 
-In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
+Run all data tests only (includes both generic and singular):
+
+  ```bash
+  dbt test --select "test_type:data"
+  ```
+
+Run generic data tests only:
+
+  ```bash
+  dbt test --select "test_type:generic"
+  ```
+
+Run singular data tests only:
+
+  ```bash
+  dbt test --select "test_type:singular"
+  ```
+
+In all cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection. The `test_type` selector works across all engines (<Constant name="core" /> and <Constant name="fusion" />).
 
 ### Indirect selection
 

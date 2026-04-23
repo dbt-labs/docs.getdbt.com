@@ -6,7 +6,23 @@ sidebar: "resource type"
 
 <VersionBlock firstVersion="1.9">
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` commands.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build`, `dbt clone`, and `dbt list` commands.
+
+:::note Filtering test types with `dbt test`
+Use the `test_type` selector with `dbt test` to run only unit tests or data tests — this works across all engines (<Constant name="core" /> and <Constant name="fusion" />):
+
+- `dbt test --select test_type:unit` — runs only unit tests
+- `dbt test --select test_type:data` — runs only data tests
+
+In <Constant name="core" /> (v1.9+), you can also use `--resource-type` with `dbt test`:
+
+- `dbt test --resource-type unit_test` — runs only unit tests
+- `dbt test --resource-type test` — runs only data tests
+
+When using <Constant name="fusion"/>, use the `test_type` selector instead of the `--resource-type` flag. The `--resource-type` flag isn't supported with `dbt test` in <Constant name="fusion"/>.
+
+For more examples, see [test selection examples](/reference/node-selection/test-selection-examples).
+:::
 
 </VersionBlock>
 
@@ -122,14 +138,15 @@ dbt build --resource-type test
 
 <VersionBlock firstVersion="1.9">
 
-### Include all data tests during testing
+### Include only data tests during testing
 
-Use the following command to only include data tests when running tests:
+To run only data tests (excluding unit tests) when using `dbt test`, use the `test_type` selector:
 
 <File name='Usage'>
 
 ```text
-dbt test --resource-type test
+dbt test --select test_type:data # dbt Core and dbt Fusion engines
+dbt test --resource-type test # dbt Core only
 ```
 
 </File>
@@ -165,14 +182,15 @@ dbt build --exclude-resource-type unit_test
 
 <VersionBlock firstVersion="1.9">
 
-### Exclude all unit tests during testing
+### Exclude unit tests during testing
 
-Use the following command to exclude unit tests when running tests:
+To exclude unit tests when using `dbt test`, use the `test_type` selector to run only data tests:
 
 <File name='Usage'>
 
 ```text
-dbt test --exclude-resource-type unit_test
+dbt test --select test_type:data # dbt Core and dbt Fusion engines
+dbt test --exclude-resource-type unit_test # dbt Core only
 ```
 
 </File>
