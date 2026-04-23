@@ -280,7 +280,7 @@ To run data tests while excluding unit tests, use the `test_type` selector &mdas
 dbt test --select "test_type:data"
 ```
 
-In <Constant name="core" /> (v1.9+), you can also use `dbt test --resource-type test`. For more options, see [test selection examples](/reference/node-selection/test-selection-examples).
+In <Constant name="core" /> (v1.9+), you can also use `dbt test --resource-type test`. For more options, refer to [test selection examples](/reference/node-selection/test-selection-examples).
 
 ## Storing data test failures
 
