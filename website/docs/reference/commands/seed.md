@@ -95,7 +95,7 @@ Use `--empty` to create seed tables with the correct schema but without loading 
   dbt seed --select "country_codes" --empty
   ```
 
-For more details, refer to [The empty flag](/docs/build/empty-flag).
+For more information, refer to [The empty flag](/docs/build/empty-flag).
 
 </VersionBlock>
 

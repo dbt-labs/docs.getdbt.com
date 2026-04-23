@@ -32,13 +32,4 @@ dbt run --select path/to/your_model --empty
 
 dbt will build and execute the SQL, resulting in an empty schema in the data warehouse.
 
-<VersionBlock firstVersion="1.12">
-
-Create seed tables with correct schema but no data:
-
-```
-dbt seed --empty
-```
-
-</VersionBlock>
 
