@@ -5,11 +5,7 @@ The <Constant name="fusion" /> migration workflow is accessible through the <Con
 :::
 
 1. From the job list, click the **Review job** button for a job with a successful run.
-
-   :::note
-   If you don't see the **Review job** button, enable the **Show Fusion eligibility** toggle in the job list.
-   :::
-
+   - If you don't see the **Review job** button, enable the **Show Fusion eligibility** toggle in the job list.
 2. In the **<Constant name="fusion"/> eligibility unknown for this job** pop-up, click **Debug in Studio with Copilot**.
 3. dbt redirects you to the <Constant name="studio_ide" /> and sets your personal development environment to <Constant name="fusion" />.
 4. <Constant name="copilot" /> opens and automatically triggers the <Constant name="fusion" /> migration skill with this prompt:
