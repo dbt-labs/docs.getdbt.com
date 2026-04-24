@@ -62,7 +62,7 @@ License type mappings and SSO group mappings are based on **IdP group** membersh
 
 ### How should non-admin users log in?
 
-Non-admin users that currently login with a password will no longer be able to do so. They must sign in using [https://login.dbt.com](https://login.dbt.com), the dbt Enterprise Login URL for your account, or an identity provider (IdP). For example, Okta, Microsoft Entra ID (formerly Azure AD), etc.
+Non-admin users that currently login with a password can no longer do so. They must sign in using [https://login.dbt.com](https://login.dbt.com), the dbt Enterprise Login URL for your account, or an identity provider (IdP), for example, Okta or Microsoft Entra ID (formerly Azure AD).
 
 ### Security best practices
 
