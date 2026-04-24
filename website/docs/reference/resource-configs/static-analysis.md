@@ -16,7 +16,7 @@ The `static_analysis` config is available in the <Constant name="fusion_engine"/
 
 The `static_analysis` config sets how the <Constant name="fusion_engine" /> validates SQL before execution—using `strict` analysis, a `baseline` that balances checks with compatibility, or `off` to skip analysis when needed. You can find supported configuration locations for each resource type.
 
-To see which Snowflake functions support typechecking in strict mode, see [Snowflake function support](/reference/resource-configs/snowflake-function-support).
+To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support)
 
 <Tabs>
 
