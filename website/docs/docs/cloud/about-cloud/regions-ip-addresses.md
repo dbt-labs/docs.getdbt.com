@@ -77,7 +77,7 @@ There are two ways to view your <Constant name="dbt_platform" /> IP addresses:
 
 <Constant name="dbt_platform" /> is hosted on AWS, Azure, and the Google Cloud Platform (GCP). While we can offer static URLs for access, we cannot provide a list of IP addresses to configure connections due to the nature of these cloud services.
 
-* Dynamic IP addresses &mdash; <Constant name="dbt_platform" /> offers static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. The cloud service provider manages the IP ranges and may change them according to their operational and security needs.
+* Dynamic IP addresses &mdash; <Constant name="dbt_platform" /> provides static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses can change occasionally. Cloud providers manage these IP ranges and may update them based on operational and security needs.
 
 * Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you use <Constant name="dbt_platform" /> services using hostnames. Hostnames provide a consistent reference point like `abc123.us1.dbt.com`, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
 
