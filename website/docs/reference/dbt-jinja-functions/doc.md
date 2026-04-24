@@ -107,31 +107,24 @@ Compilation Error
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, duplicate docs blocks emit a warning during parsing. Even though parsing can finish, you should still resolve the duplicate name to avoid ambiguity. For more information, refer to [Stricter evaluation of duplicate docs blocks](/docs/dbt-versions/core-upgrade/upgrading-to-fusion?version=2.0#stricter-evaluation-of-duplicate-docs-blocks).
+In the <Constant name="fusion_engine" />, duplicate docs block names are not allowed. If duplicates are found, dbt reports the conflicting files. Rename one block so each docs block name is unique. For more information, refer to [Stricter evaluation of duplicate docs blocks](/docs/dbt-versions/core-upgrade/upgrading-to-fusion?version=2.0#stricter-evaluation-of-duplicate-docs-blocks).
 
 <File name="models/docs/example.md">
 
 ```
-{% docs customer_id %}
+{% docs docs_block_title %}
 A reusable customer identifier.
 {% enddocs %}
 
-{% docs customer_id %}
+{% docs docs_block_title %}
 A different definition for customer id.
 {% enddocs %}
 ```
 
 </File>
 
-```shell
-~/.local/bin/dbt parse
-dbt-fusion 2.0.0-preview.168
-   Loading ~/.dbt/profiles.yml
-=================== Errors and Warnings ===================
-warning: dbt9002: dbt found two docs with the same name: 'customer_id' in files: 'models/docs/example.md' and 'models/docs/example.md'
-  --> models/docs/example.md
-==================== Execution Summary ====================
-Finished 'parse' with 1 warning for target 'dev' [693ms]
+```bash
+dbt found two docs with the same name: 'docs_block_title' in files: 'models/crm/_crm.md' and 'models/docs/crm/business_class_marketing.md'
 ```
 
 </VersionBlock>
