@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-The [https://login.dbt.com](https://login.dbt.com) URL is the universal entry point for <Constant name="dbt_platform"/>. It sits outside any specific account and maps your identity (email) to the accounts you can access across all instances and regions.
+[https://login.dbt.com](https://login.dbt.com) is the universal entry point for <Constant name="dbt_platform"/>. It sits outside any specific account and maps your email to the accounts you can access across instances and regions.
 
 You can also sign in directly using your account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses) if you already know it (like `abc123.us1.dbt.com`). Refer to [Access, Regions, & IP Addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for the full list of access URLs by region.
 
