@@ -9,11 +9,9 @@ pagination_prev: null
 
 The <Constant name="fusion_engine" /> is here! We currently offer it as a [private preview](/docs/dbt-versions/product-lifecycles#the-dbt-platform) on the <Constant name="dbt_platform" />. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
 
-:::note Enable the Fusion readiness panel
+import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
 
-The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) can manually enable the **Enable Fusion readiness & upgrade features** in **Account settings** → **Account**. Refer to [Enable Fusion readiness features](/guides/prepare-fusion-upgrade?step=2) for setup steps.
-
-:::
+<FusionReadinessPanel />
 
 ## Preparing for Fusion
 
@@ -83,3 +81,4 @@ The <Constant name="fusion_engine" /> remains in private preview and we currentl
 - [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to learn about the new features and functionality that impact your dbt projects.
 - [ ] Monitor progress and get insight into the development process by reading the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements).
 - [ ] Catch up on the [cost savings potential](https://www.getdbt.com/blog/announcing-state-aware-orchestration) of Fusion-powered [state-aware orchestration](https://docs.getdbt.com/docs/deploy/state-aware-about) (hint: 30%+ reduction in warehouse spend!)
+

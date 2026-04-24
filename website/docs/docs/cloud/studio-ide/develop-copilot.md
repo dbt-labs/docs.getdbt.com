@@ -16,14 +16,14 @@ This page describes how to use <Constant name="copilot" /> in the <Constant name
 
 Use [<Constant name="copilot" />](/docs/cloud/dbt-copilot) in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) to generate documentation, tests, semantic models, metrics, and SQL code from scratch &mdash; making it easier for you to build your dbt project, accelerate your development, and focus on high-level tasks. For information about using <Constant name="copilot" /> in the [<Constant name="canvas" />](/docs/cloud/canvas), see [Build with <Constant name="copilot" />](/docs/cloud/build-canvas-copilot).
 
-## Developer agent <Lifecycle status="beta" />
+## Developer agent <Lifecycle status="beta,self_service,managed,managed_plus" />
 
 For autonomous model generation, refactoring, and multi-step workflows in the <Constant name="studio_ide" />, see the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent). 
 
 The <Constant name="dev_agent" /> is accessible from the Copilot panel. Switch to **Ask** or **Code** mode to activate the agent.
 
-<div style={{maxWidth: '130%', margin: '20px -10%'}}>
-<video width="100%" style={{minHeight: '500px'}} controls autoPlay muted loop playsInline>
+<div style={{maxWidth: '100%', margin: '20px 0'}}>
+<video width="100%" controls autoPlay muted loop playsInline>
   <source src="/img/docs/dbt-cloud/dev-agent.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
