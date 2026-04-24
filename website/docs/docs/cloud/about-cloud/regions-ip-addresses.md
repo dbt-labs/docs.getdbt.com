@@ -85,7 +85,7 @@ There are two ways to view your <Constant name="dbt_platform" /> IP addresses:
 
 ## API Access URLs
 
-<Constant name="dbt_platform" /> accounts with cell-based account prefixes have unique access URLs for account APIs. These URLs can be found in your **Account settings** below the **Account information** pane.
+For <Constant name="dbt_platform" /> accounts with cell-based account prefixes, account API access URLs are unique per account. You can find these URLs in **Account settings**, under **Account information**.
 
 <Lightbox src="/img/docs/dbt-cloud/access-urls.png" title="Access URLs in the account settings" />
 
