@@ -8,7 +8,7 @@ pagination_prev: null
 
 [https://login.dbt.com](https://login.dbt.com) is the universal entry point for <Constant name="dbt_platform"/>. It sits outside any specific account and maps your email to the accounts you can access across instances and regions.
 
-You can also sign in directly using your account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses) if you already know it (like `abc123.us1.dbt.com`). Refer to [Access, Regions, & IP Addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for the full list of access URLs by region.
+You can also sign in directly with your account **Access URL** if you already know it, for example, `abc123.us1.dbt.com`. Refer to [Access, regions, and IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for the full list of access URLs by region.
 
 :::note
 `login.dbt.com` is currently available for multi-tenant accounts with an account-specific domain (for example, `abc123.us1.dbt.com`). Support for single-tenant accounts is coming soon. In the meantime, single-tenant users can sign in directly using their account **Access URL** (like `MY_COMPANY.us1.dbt.com`).
