@@ -78,6 +78,7 @@ To use external metadata ingestion, you must be an [account admin](/docs/cloud/m
 When **Enable global account discovery** is on, users can discover all accounts associated with their email address at login. Users still access accounts using their credentials or the account's designated auth method (for example, SSO). Refer to [Log in to dbt platform](/docs/cloud/about-cloud/login) for more info.
 
 import UniversalLoginST from '/snippets/_universal-login-st.md';
+
 <UniversalLoginST />
 
 Disabling this setting means users must know their [account URL](/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account) to log in; they will not see a list of accounts at login.
