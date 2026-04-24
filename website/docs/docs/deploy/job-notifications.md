@@ -208,6 +208,26 @@ Configure the Slack channel you want to receive job notifications from.
 
 That's it! Your Slack channel is now set up to receive dbt job notifications at the account level. This integration is now available throughout the account for all licensed users.
 
+### Migrating legacy Slack notification settings
+
+If you previously configured Slack notifications with the legacy integration, you may see a migration banner on the **Slack notifications** page.
+
+<Lightbox src="/img/docs/deploy/migrating-legacy-slack-notifications.png" width="100%" title="Example of the Slack migration banner"/>
+
+The banner appears when all of the following are true:
+
+- You have existing legacy (v1) Slack notification settings.
+- Your account is connected to the new Slack app (v2 OAuth is linked).
+- You do not have any v2 Slack notification settings yet.
+
+To migrate your settings, click **Migrate settings**. dbt copies your legacy Slack notification settings to the new Slack app.
+
+You can click **Dismiss** to hide the banner for your current session. The banner appears again when you reload the page unless migration has completed successfully.
+
+After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup. Invite the dbt bot to each listed private channel so notifications can be delivered.
+
+When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
+
 ### Disable the Slack integration
 In this step, you'll disable the Slack integration and remove the account-level Slack credentials. You can always re-enable the integration by following the [Set up the Slack integration](#set-up-the-slack-integration-1) steps.
 
