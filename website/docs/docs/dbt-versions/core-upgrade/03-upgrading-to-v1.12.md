@@ -32,6 +32,10 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ## New and changed features and functionality
 
+### `.env` file for environment variables <Lifecycle status="beta" />
+
+<Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
+
 ### `packages` config for Python UDFs <Lifecycle status="beta" />
 
 You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
