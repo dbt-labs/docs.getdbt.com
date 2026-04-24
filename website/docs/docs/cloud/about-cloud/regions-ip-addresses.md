@@ -56,7 +56,7 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 
 ## Accessing your account
 
-The recommended way to sign in is [https://login.dbt.com](https://login.dbt.com). Enter your email, verify it, and select the account you want to open from the list of accounts associated with your email. For more information about the login process, refer to [Log in to dbt platform](/docs/cloud/about-cloud/login).
+The recommended way to sign in to <Constant name="dbt_platform"/> is [https://login.dbt.com](https://login.dbt.com). Enter your email, verify it, and select the account you want to open from the list of accounts associated with your email. For more information about the login process, refer to [Log in to dbt platform](/docs/cloud/about-cloud/login).
 
 If you already know your account **Access URL**, you can sign in directly. Your access URL depends on your region and tenancy:
 
