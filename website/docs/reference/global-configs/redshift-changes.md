@@ -28,7 +28,7 @@ The `redshift_skip_autocommit_transaction_statements` flag is `False` by default
 
 When `autocommit=True` (the default since `dbt-redshift 1.5`), each statement is automatically committed by the driver. By default, dbt still sends explicit `BEGIN` / `COMMIT` / `ROLLBACK` statements, which are unnecessary and add extra round trips to Redshift.
 
-When you set the `redshift_skip_autocommit_transaction_statements` flag set to `True`, dbt skips sending transaction management statements when autocommit is enabled, reducing unnecessary round trips and improving performance.
+When you set the `redshift_skip_autocommit_transaction_statements` to `True`, dbt skips sending transaction management statements when autocommit is enabled, reducing unnecessary round trips and improving performance.
 
 #### Key behaviors
 
