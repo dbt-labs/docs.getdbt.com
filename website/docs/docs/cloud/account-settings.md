@@ -75,7 +75,7 @@ To use external metadata ingestion, you must be an [account admin](/docs/cloud/m
 
 ### Enable global account discovery
 
-When **Enable global account discovery** is on, users can discover all accounts associated with their email address at login. Users still access accounts using their credentials or the account's designated auth method (for example, SSO).
+When **Enable global account discovery** is on, users can discover all accounts associated with their email address at login. Users still access accounts using their credentials or the account's designated auth method (for example, SSO). Refer to [Log in to dbt platform](/docs/cloud/about-cloud/login) for more info.
 
 :::note
 `login.dbt.com` is currently available for multi-tenant accounts with an account-specific domain (for example, `abc123.us1.dbt.com`). Support for single-tenant accounts is coming soon. In the meantime, single-tenant users can sign in directly using their account **Access URL**.
