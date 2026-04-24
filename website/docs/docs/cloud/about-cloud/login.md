@@ -31,9 +31,14 @@ OAuth clients such as [<Constant name="platform_cli"/>](/docs/cloud/cloud-cli-in
 If no accounts are found for your email, contact [dbt Support](mailto:support@getdbt.com) or your account admin. You can also sign in directly at your account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses).
 :::
 
-<video width="100%" height="100%" playsinline muted controls>
-  <source src="/img/docs/dbt-cloud/login.mp4" type="video/mp4" />
-</video>
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src src="/img/docs/dbt-cloud/login-email-page.png" width="85%" title="Login to dbt platform using the login.dbt.com page."/>
+
+<Lightbox src src="/img/docs/dbt-cloud/login-email-verify-code.png" width="85%" title="Verify code to login to dbt platform"/>
+
+<Lightbox src src="/img/docs/dbt-cloud/login-account-list.png" width="85%" title="Select account to login to dbt platform"/>
+</DocCarousel>
 
 ## SSO behavior
 
