@@ -18,12 +18,14 @@ OAuth clients such as [<Constant name="platform_cli"/>](/docs/cloud/cloud-cli-in
 
 ## How login works
 
-1. Enter your email. <Constant name="dbt_platform"/> looks up which accounts are associated with your email address.
-2. dbt emails you a verification code. Enter it to confirm your identity. This code expires in 5 minutes or after 3 attempts.
-3. Once you verify:
+1. Go to [https://login.dbt.com](https://login.dbt.com) and enter your email.
+2. Enter you email and you will receive a verification code to log in if you have access to a dbt account. If you don't have a dbt account, you can create one on the same login page.
+3. Check your email for the verification code and enter it in the login.dbt.com page to confirm you identity. The code expires in 5 minutes or after 3 attempts.
+   - If you didn't receive a code, check your spam folder or request a new one. You may not receive a verification code if your email is not associated with a dbt account.
+4. Once you verify, <Constant name="dbt_platform"/> looks up which accounts are associated with your email address:
     - If you have access to multiple accounts, you see a list of accounts including their region and tenancy. Select the one you want to open.
     - If you have access to only one account, you're redirected to that account directly.
-4. Authenticate using the method configured for that account (password, SSO, or MFA).
+5. Authenticate using the method configured for that account (password, SSO, or MFA).
 
 :::note
 If no accounts are found for your email, contact [dbt Support](mailto:support@getdbt.com) or your account admin. You can also sign in directly at your account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses).
