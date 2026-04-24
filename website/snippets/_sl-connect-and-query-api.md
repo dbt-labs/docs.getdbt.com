@@ -7,4 +7,4 @@ To query your metrics using Google Sheets:
    - Query a metric, like `order_total`, and filter it with a dimension, like `order_date`. 
    - You can also use the `group_by` parameter to group your metrics by a specific dimension.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-gsheets.jpg" width="90%" title="Use the dbt Semantic Layer's Google Sheet integration to query metrics with a Query Builder menu."  />
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-gsheets.jpg" width="90%" title="Use the dbt Semantic Layer's Google Sheet integration to query metrics with a Query Builder menu."  />

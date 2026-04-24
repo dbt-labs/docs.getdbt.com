@@ -8,7 +8,7 @@ To configure a connection using an SSH tunnel:
 4. Enter the hostname, username, and port for the bastion server.
 
 <Lightbox
-  src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png"
+  src="/img/docs/dbt-platform/platform-configuring-dbt-platform/postgres-redshift-ssh-tunnel.png"
   width="70%"
   title="A public key is generated after saving"
 />
