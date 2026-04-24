@@ -1,5 +1,6 @@
 ---
 title: "Supported Snowflake functions in dbt Fusion"
+sidebar_label: "Snowflake functions in Fusion"
 id: "snowflake-function-support"
 description: "Check which Snowflake built-in SQL functions dbt Fusion can typecheck during static analysis."
 tags: ['Snowflake', 'dbt Fusion', 'static_analysis']
