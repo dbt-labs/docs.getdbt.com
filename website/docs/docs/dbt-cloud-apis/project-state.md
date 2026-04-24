@@ -22,17 +22,14 @@ A node’s _applied state_ refers to the node’s actual state after it has been
 
 The applied state includes execution info, which contains metadata about how the node arrived in the applied state. The fields within `executionInfo` track two related but distinct concepts:
 
-- **Most recent run attempt** — reflects the latest run regardless of outcome (success, error, or skip).
-- **Most recent successful materialization** — reflects the last run in which the node was actually built in the data warehouse. When a run errors, the node isn't rebuilt, so these fields remain pinned to the prior successful run.
+| Concept | Description | Fields |
+|---------|-------------|--------|
+| Most recent run attempt | The latest run regardless of outcome (success, error, or skip) | `lastRunId`, `lastRunStatus`, `lastRunError`, `lastRunGeneratedAt`, `lastJobDefinitionId` |
+| Most recent successful materialization | The last run in which the node was built in the data warehouse. <br /> When a run errors out, the node isn't rebuilt, so these fields remain pinned to the prior successful run. |`executeStartedAt`, `executeCompletedAt`, `executionTime`, `runGeneratedAt`, `lastSuccessRunId`, `lastSuccessJobDefinitionId` |
 
-| Concept | Fields |
-|---|---|
-| Most recent run attempt | `lastRunId`, `lastRunStatus`, `lastRunError`, `lastRunGeneratedAt`, `lastJobDefinitionId` |
-| Most recent successful materialization | `executeStartedAt`, `executeCompletedAt`, `executionTime`, `runGeneratedAt`, `lastSuccessRunId`, `lastSuccessJobDefinitionId` |
+For example, if a model's most recent run errors out, `lastRunStatus` will be `error` and `lastRunGeneratedAt` will reference that failed run, while `executeCompletedAt` and `lastSuccessRunId` will still reference the prior run in which the model was successfully materialized.
 
-For example, if a model's most recent run errored, `lastRunStatus` will be `error` and `lastRunGeneratedAt` will point at that failed run, while `executeCompletedAt` and `lastSuccessRunId` will still reference the prior run in which the model was successfully materialized.
-
-Here’s how you’d query and compare the definition  vs. applied state of a model using the Discovery API: 
+Here’s how you can query and compare the definition  vs. applied state of a model using the Discovery API: 
 
 ```graphql
 query Compare($environmentId: Int!, $first: Int!) {
