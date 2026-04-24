@@ -14,7 +14,7 @@ This overview explains how users are provisioned in <Constant name="dbt" /> via 
 
 <UniversalLogin />
 
-For SSO, users also use your account **Access URL** or **dbt Enterprise Login URL** as described in this page.
+For SSO, users also use your account **Access URL** or **dbt Enterprise Login URL**, as described in this page.
 
 To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
 
