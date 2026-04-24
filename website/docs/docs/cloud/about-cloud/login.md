@@ -53,7 +53,8 @@ External clients that integrate with <Constant name="dbt_platform"/> use OAuth t
 
 Account administrators can control whether users can discover an account through `login.dbt.com`. 
 
-- When account admins turn on the **Enable global account discovery** option in [Account settings](/docs/cloud/account-settings#enable-global-account-discovery) in <Constant name="dbt_platform" />, users will be able to find the account by entering their email at `login.dbt.com`. 
+1. In <Constant name="dbt_platform" />, account admins can go to [**Account settings**](/docs/cloud/account-settings#enable-global-account-discovery) and scroll to **Settings**. 
+2. Navigate to the bottom and check the **Enable global account discovery** option to allow users will be able to find the account by entering their email at `login.dbt.com`.   
 - When an admin turns off the option, users must know their account **Access URL** to sign in and won't see the account in the discovery list.
 
 To change this setting, go to **Account settings** and select or clear **Enable global account discovery**. For details, refer to [Account settings](/docs/cloud/account-settings#enable-global-account-discovery).
