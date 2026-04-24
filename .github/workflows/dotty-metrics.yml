@@ -1,0 +1,23 @@
+name: Dotty Metrics Dashboard
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Every Monday at 8am UTC
+  workflow_dispatch:       # Manual trigger from GitHub Actions UI
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Dotty metrics aggregator
+        run: node scripts/dotty-metrics.js
+        env:
+          GH_TOKEN: ${{ secrets.FA_ASSISTANT_CI_WORKFLOW_PAT_TOKEN }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_PAGE_ID: ${{ secrets.DOTTY_METRICS_NOTION_PAGE_ID }}
