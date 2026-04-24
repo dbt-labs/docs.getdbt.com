@@ -445,23 +445,14 @@ In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your de
 
 3. Review the warnings or errors in the **Problems** tab.
 4. Fix the issues directly or run the [autofix tool](/docs/cloud/studio-ide/autofix-deprecations).
-5. Provide Copilot with any additional information it requests and provide guidance on the preferred steps and actions it should take. 
-6. When the project runs with no warnings or errors, commit and publish your changes.
-7. After you merge the changes, wait for the job to run again or run it manually.
+5. When the project runs with no warnings or errors, commit and publish your changes.
+6. After you merge the changes, wait for the job to run again or run it manually.
 
 #### Debug in Studio with Copilot <Lifecycle status="beta" size="80%" />
 
-If you have access to Copilot, use it to fix warnings or errors in the <Constant name="studio_ide" />:
+import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
-1. Click **Debug in Studio with Copilot**.
-2. dbt redirects you to the <Constant name="studio_ide" /> and sets your development environment to <Constant name="fusion" />.
-3. Copilot opens with this prompt: "I need help fixing Fusion compatibility issues in this project. Please investigate and resolve any deprecation warnings or incompatibilities. Please use the migrating-dbt-core-to-fusion skill to guide this."
-
-   <Lightbox src="/img/fusion/migration-prompt.png" width="60%" title="The Fusion migration prompt in Copilot"/>
-
-4. Approve Copilot's permission requests so it can run the commands it needs.
-5. When the project runs with no warnings or errors, publish your changes.
-6. After you merge the changes, wait for the job to run again or run it manually.
+<FusionMigrationWorkflow />
 
 #### Run once on Fusion
 
