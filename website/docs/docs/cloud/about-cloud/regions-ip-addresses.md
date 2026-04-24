@@ -79,7 +79,7 @@ There are two ways to view your <Constant name="dbt_platform" /> IP addresses:
 
 * Dynamic IP addresses &mdash; <Constant name="dbt_platform" /> provides static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses can change occasionally. Cloud providers manage these IP ranges and may update them based on operational and security needs.
 
-* Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you use <Constant name="dbt_platform" /> services using hostnames. Hostnames provide a consistent reference point like `abc123.us1.dbt.com`, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
+* Using hostnames for consistent access &mdash; To ensure uninterrupted access, use <Constant name="dbt_platform" /> hostnames. Hostnames provide a consistent reference point, such as `abc123.us1.dbt.com`, even if underlying IP addresses change. This aligns with an industry-standard practice used by platforms such as Snowflake.
 
 * Optimizing VPN connections &mdash; You should integrate a proxy alongside VPN for users who leverage VPN connections. This strategy enables steady IP addresses for your connections, facilitating smooth traffic flow through the VPN and onward to <Constant name="dbt_platform" />. By employing a proxy and a VPN, you can direct traffic through the VPN and then to <Constant name="dbt_platform" />. It's crucial to set up the proxy if you need to integrate with additional services.
 
