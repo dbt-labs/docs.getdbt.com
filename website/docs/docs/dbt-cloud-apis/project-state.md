@@ -20,7 +20,17 @@ In a dbt project, the state of a node _definition_ represents the configuration,
 
 A node’s _applied state_ refers to the node’s actual state after it has been successfully executed in the DAG; for example, models are executed; thus, their state is applied to the data warehouse via `dbt run` or `dbt build`. It changes whenever a node is executed. This state represents the result of the transformations and the actual data stored in the database, which for models can be a table or a view based on the defined logic.
 
-The applied state includes execution info, which contains metadata about how the node arrived in the applied state: the most recent execution (successful or attempted), such as when it began, its status, and how long it took.
+The applied state includes execution info, which contains metadata about how the node arrived in the applied state. The fields within `executionInfo` track two related but distinct concepts:
+
+- **Most recent run attempt** — reflects the latest run regardless of outcome (success, error, or skip).
+- **Most recent successful materialization** — reflects the last run in which the node was actually built in the data warehouse. When a run errors, the node isn't rebuilt, so these fields remain pinned to the prior successful run.
+
+| Concept | Fields |
+|---|---|
+| Most recent run attempt | `lastRunId`, `lastRunStatus`, `lastRunError`, `lastRunGeneratedAt`, `lastJobDefinitionId` |
+| Most recent successful materialization | `executeStartedAt`, `executeCompletedAt`, `executionTime`, `runGeneratedAt`, `lastSuccessRunId`, `lastSuccessJobDefinitionId` |
+
+For example, if a model's most recent run errored, `lastRunStatus` will be `error` and `lastRunGeneratedAt` will point at that failed run, while `executeCompletedAt` and `lastSuccessRunId` will still reference the prior run in which the model was successfully materialized.
 
 Here’s how you’d query and compare the definition  vs. applied state of a model using the Discovery API: 
 
