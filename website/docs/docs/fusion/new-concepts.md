@@ -88,7 +88,7 @@ VS Code extension features by static analysis configuration:
 | Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
 :::tip Supported Snowflake functions
-To see which Snowflake functions support typechecking in strict mode, see [Snowflake function typechecking support](/reference/resource-configs/snowflake-function-typechecking).
+To see which Snowflake functions support typechecking in strict mode, see [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 :::
 
 :::tip CodeLens visibility
