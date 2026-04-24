@@ -115,8 +115,8 @@ module.exports = function buildRSSFeedsPlugin() {
   return {
     name: 'docusaurus-build-rss-feeds-plugin',
     async loadContent() {
-      if (process.env.VERCEL_ENV !== 'production') {
-        console.log('RSS Feeds are only generated in production. Skipping creation of RSS Feed.')
+      if (!process.env.VERCEL_ENV) {
+        console.log('RSS Feeds are only generated on Vercel. Skipping creation of RSS Feed.')
         return null
       }
 
