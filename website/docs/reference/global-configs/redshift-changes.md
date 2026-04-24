@@ -24,15 +24,15 @@ While you shouldn't notice any behavior changes due to this change, however, to 
 
 ## `redshift_skip_autocommit_transaction_statements` flag
 
-The `redshift_skip_autocommit_transaction_statements` flag is `True` by default.
+The `redshift_skip_autocommit_transaction_statements` flag is `False` by default, preserving legacy transaction behavior.
 
-When `autocommit=True` (the default since `dbt-redshift 1.5`), each statement is automatically committed by the driver. Previously, dbt still sent explicit `BEGIN` / `COMMIT` / `ROLLBACK` statements, which were unnecessary and added extra round trips to Redshift.
+When `autocommit=True` (the default since `dbt-redshift 1.5`), each statement is automatically committed by the driver. By default, dbt still sends explicit `BEGIN` / `COMMIT` / `ROLLBACK` statements, which are unnecessary and add extra round trips to Redshift.
 
-With the `redshift_skip_autocommit_transaction_statements` flag enabled, dbt skips sending transaction management statements when you enable autocommit, reducing unnecessary round trips and improving performance.
+When you set the `redshift_skip_autocommit_transaction_statements` flag set to `True`, dbt skips sending transaction management statements when autocommit is enabled, reducing unnecessary round trips and improving performance.
 
 #### Key behaviors
 
-When both the flag and autocommit are `True`:
+When the flag is `True` and autocommit is `True`:
 
 - `begin()` skips sending `BEGIN`
 - `commit()` skips sending `COMMIT`
@@ -40,15 +40,15 @@ When both the flag and autocommit are `True`:
 
 dbt still maintains its internal `transaction_open` state to preserve compatibility with dbt’s transaction tracking, even when actual statements are skipped.
 
-### Preserving legacy behavior
+### Enabling the optimization
 
-To preserve the legacy behavior of sending `BEGIN`/`COMMIT`/`ROLLBACK` statements even when autocommit is enabled, set the flag to `False` in your `dbt_project.yml`:
+To skip unnecessary transaction statements when autocommit is enabled, set the flag to `True` in your `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
 ```yaml
 flags:
-  redshift_skip_autocommit_transaction_statements: false
+  redshift_skip_autocommit_transaction_statements: true
 ```
 
 </File>
@@ -56,5 +56,5 @@ flags:
 ### Backward compatibility
 
 - **`autocommit=False`**: Unchanged. Explicit transactions still work as before regardless of this flag.
-- **`autocommit=True` with flag (default)**: Skips unnecessary transaction statements for better performance.
-- **`autocommit=True` without flag**: Sends `BEGIN`/`COMMIT`/`ROLLBACK` (legacy behavior).
+- **`autocommit=True` with flag set to `True`**: Skips unnecessary transaction statements for better performance.
+- **`autocommit=True` with flag set to `False` (default)**: Sends `BEGIN`/`COMMIT`/`ROLLBACK` statements (legacy behavior).
