@@ -11,7 +11,7 @@ The [https://login.dbt.com](https://login.dbt.com) URL is the universal entry po
 You can also sign in directly using your account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses) if you already know it (like `abc123.us1.dbt.com`). Refer to [Access, Regions, & IP Addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for the full list of access URLs by region.
 
 :::note
-`login.dbt.com` is currently available for multi-tenant accounts with an account-specific domain (for example, `abc123.us1.dbt.com`). Support for single-tenant accounts is coming soon. In the meantime, single-tenant users can sign in directly using their account **Access URL** (like `abc123.us1.dbt.com`).
+`login.dbt.com` is currently available for multi-tenant accounts with an account-specific domain (for example, `abc123.us1.dbt.com`). Support for single-tenant accounts is coming soon. In the meantime, single-tenant users can sign in directly using their account **Access URL** (like `MY_COMPANY.us1.dbt.com`).
 
 OAuth clients such as [<Constant name="platform_cli"/>](/docs/cloud/cloud-cli-installation), the [dbt VS Code extension](/docs/about-dbt-extension?version=2.0), and [dbt MCP](/docs/dbt-ai/about-mcp) have not yet been updated to use `login.dbt.com` and continue to authenticate through their account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses).
 :::
