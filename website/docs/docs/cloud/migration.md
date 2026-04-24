@@ -53,7 +53,7 @@ Complete all of these items to ensure your <Constant name="dbt" /> resources and
 
 Use one of these URL login options:
 
-- [https://login.dbt.com](https://login.dbt.com) &mdash; Universal login shows accounts you can access across instances. Account administrators can enable or disable this path with **Enable global account discovery** in [Account settings](/docs/cloud/account-settings#enable-global-account-discovery).
+- [https://login.dbt.com](https://login.dbt.com): Universal login shows the accounts you can access across instances. Account administrators can enable or disable this path with **Enable global account discovery** in [Account settings](/docs/cloud/account-settings#enable-global-account-discovery).
 - `us1.dbt.com`: If you previously signed in with a username and password at `cloud.getdbt.com`, plan to sign in at `us1.dbt.com` instead. The original URL still works, but you need to click through to continue after sign-in. If SSO is configured, use the unique URL listed in your SSO account settings, for example, `ACCOUNT_PREFIX.us1.dbt.com`.
 - `ACCOUNT_PREFIX.us1.dbt.com`: A unique URL specifically for your account. If you belong to multiple accounts, each will have a unique URL available as long as they have been migrated to multi-cell. 
 Check out [access, regions, and IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for more information.
