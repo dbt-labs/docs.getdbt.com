@@ -6,15 +6,13 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import UniversalLoginST from '/snippets/_universal-login-st.md';
+
 [https://login.dbt.com](https://login.dbt.com) is the universal entry point for <Constant name="dbt_platform"/>. It sits outside any specific account and maps your email to the accounts you can access across instances and regions.
 
 You can also sign in directly with your account **Access URL** if you already know it, for example, `abc123.us1.dbt.com`. Refer to [Access, regions, and IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for the full list of access URLs by region.
 
-:::note
-`login.dbt.com` is currently available for multi-tenant accounts with an account-specific domain (for example, `abc123.us1.dbt.com`). Support for single-tenant accounts is coming soon. In the meantime, single-tenant users can sign in directly using their account **Access URL** (like `MY_COMPANY.us1.dbt.com`).
-
-OAuth clients such as [<Constant name="platform_cli"/>](/docs/cloud/cloud-cli-installation), the [dbt VS Code extension](/docs/about-dbt-extension?version=2.0), and [dbt MCP](/docs/dbt-ai/about-mcp) have not yet been updated to use `login.dbt.com` and continue to authenticate through their account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses).
-:::
+<UniversalLoginST />
 
 ## How login works
 
