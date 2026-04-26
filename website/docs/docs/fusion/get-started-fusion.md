@@ -61,4 +61,11 @@ Upgrade your existing projects to the <Constant name="fusion_engine" /> and lear
     icon="dbt-bit"
     lifecycle="private_preview"/>
 
+<Card
+    title="Guide: Platform and local workflows"
+    body="Learn how to keep credentials, environment variables, and Fusion versions in sync between dbt Platform and local development."
+    link="/guides/fusion-platform-local-workflow"
+    icon="dbt-bit"
+    lifecycle="preview"/>
+
 </div>
