@@ -224,7 +224,7 @@ To migrate your settings, click **Migrate settings**. dbt copies your legacy Sla
 
 You can click **Dismiss** to hide the banner for your current session. The banner appears again when you reload the page unless migration has completed successfully.
 
-After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup. Invite the dbt bot to each listed private channel so notifications can be delivered.
+After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup. Invite the dbt Platform app to each listed private channel so notifications can be delivered.
 
 When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
 
