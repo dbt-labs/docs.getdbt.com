@@ -157,7 +157,7 @@ Keep the following in mind when using model query history with Databricks:
 - **Usage data may be incomplete**. Databricks does not capture lineage for all queries, so some queries may not appear in usage data. This is a known Databricks limitation. For more information, refer to [Databricks lineage system tables](https://docs.databricks.com/aws/en/admin/system-tables/lineage).
 - **Lineage data is not real-time**. `system.access.table_lineage` is updated throughout the day with no guaranteed timeframe. Delays of up to 24 hours are possible.
 - **Views may produce inconsistent lineage records**. Materialized views and streaming tables are included in lineage events. Standard views may or may not produce lineage records depending on how Databricks Unity Catalog resolves them.
-- **Statement text encryption affects query filtering**. If statement text encryption is enabled in Databricks, `statement_text` in `system.query.history` will be `NULL`. In this case, dbt test queries cannot be filtered and may be counted as user queries.
+- **Statement text encryption affects query filtering**. If statement text encryption is enabled in Databricks, `statement_text` in `system.query.history` is `NULL`. In this case, dbt test queries cannot be filtered and may be counted as user queries.
 - **Serverless compute lineage may be incomplete**. `system.query.history` includes queries from SQL warehouses and serverless compute, but lineage attribution for serverless executions may not always be captured.
 
 
