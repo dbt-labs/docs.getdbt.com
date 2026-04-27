@@ -220,7 +220,7 @@ The banner appears when all of the following are true:
 - Your account is connected to the <Constant name="dbt_platform" /> app (v2 OAuth is linked).
 - You do not have any v2 Slack notification settings yet.
 
-To migrate your settings, click **Migrate settings**. dbt copies your legacy Slack notification settings to the <Constant name="dbt_platform" /> app.
+To migrate your settings, click **Migrate settings** button in the banner. dbt copies your legacy Slack notification settings to the updated <Constant name="dbt_platform" /> app.
 
 You can click **Dismiss** to hide the banner for your current session. The banner appears again when you reload the page unless migration has completed successfully.
 
