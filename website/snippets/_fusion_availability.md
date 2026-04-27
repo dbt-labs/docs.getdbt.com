@@ -1,5 +1,5 @@
 :::tip Free to use
-The Fusion CLI and VS Code extension are free to download and use — no dbt platform subscription required. Fusion in the dbt platform is also available in private preview across **all plan tiers**, including the free Developer plan. [Get started](/guides/fusion) or [install the VS Code extension](/docs/about-dbt-extension).
+The <Constant name="fusion"/> CLI and dbt VS Code extension are free to download and use &mdash; no <Constant name="dbt_platform"/> subscription required. <Constant name="fusion"/> in the<Constant name="dbt_platform"/> is also available in private preview across **all plan tiers**, including the free Developer plan. [Get started](/guides/fusion) or [install the VS Code extension](/docs/about-dbt-extension).
 :::
 
 :::info Not sure where to start?
