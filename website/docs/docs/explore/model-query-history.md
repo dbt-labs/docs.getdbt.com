@@ -121,7 +121,7 @@ Redshift model query history is derived from physical table scans (`SYS_QUERY_DE
 Because Redshift expands regular views at execution time, scans are attributed to underlying base tables and view names do not appear in scan metadata. Materialized views do not have this limitation. Keep the following in mind when reviewing usage data:
 
 - Models materialized as `view` will likely show zero usage.
-- Models materialized as `table` or `incremental` work correctly.
+- Models materialized as `table` or `incremental` are attributed correctly.
 - `ephemeral` models cannot be attributed.
 
 If your project relies heavily on views, usage may appear lower than expected. This is a known limitation of scan-based attribution rather than missing data.
