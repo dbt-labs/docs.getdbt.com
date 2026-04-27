@@ -232,8 +232,8 @@ When Fusion detects upstream projects defined in your `dependencies.yml`, it aut
 You'll see these lines in your logs when this is happening:
 
 ```
-Downloading  publication artifact for <upstream_project> (resolving cross-project refs)
-Downloaded   publication artifact for <upstream_project> to <path> (resolving cross-project refs)
+Downloading publication artifact for <upstream_project> (resolving cross-project refs)
+Downloaded publication artifact for <upstream_project> to <path> (resolving cross-project refs)
 ```
 
 Fusion caches downloaded publication artifacts for up to one hour, so subsequent runs in the same session skip the download and resolve refs from the local cache.
