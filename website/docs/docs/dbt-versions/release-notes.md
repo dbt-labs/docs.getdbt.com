@@ -20,7 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## April 2026
 
-- **Beta**: [Model query history](/docs/explore/model-query-history) now supports Databricks and Redshift. Refer to [Credential permissions](/docs/explore/model-query-history#credential-permissions) for more information.
+- **Beta**: [Model query history](/docs/explore/model-query-history) now also supports Databricks and Redshift. Refer to [Credential permissions](/docs/explore/model-query-history#credential-permissions) for more information.
 - **Beta**: DuckDB is now supported in the <Constant name="fusion_engine" /> CLI, which lets you run local dbt projects without a warehouse account. For more information, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
 - **New**: You can now configure Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> without contacting dbt Support, available in private beta. Go to **Account settings → Integrations → Private endpoints** to request and manage Snowflake PrivateLink endpoints on AWS. This feature is available for Snowflake on AWS only. For more information, refer to [AWS PrivateLink for Snowflake](/docs/cloud/secure/private-connectivity/aws/aws-snowflake?version=1.12).
 - **Enhancement:** You can now use arrays as values for keys in the <Constant name="dbt_platform" /> extended attributes YAML editor. For example, `db_groups: [db_editor, db_viewer]` is now valid. Previously, array values were only supported using the API. For more information, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
