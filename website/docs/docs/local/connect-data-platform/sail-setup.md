@@ -1,5 +1,6 @@
 ---
 title: "Sail setup"
+sidebar_label: "Sail"
 description: "Read this guide to learn about the Sail setup in dbt."
 id: "sail-setup"
 meta:
