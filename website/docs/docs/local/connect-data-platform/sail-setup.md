@@ -26,8 +26,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 `dbt-sail` supports two connection modes:
 
-- `embedded` &mdash; starts a Sail server in-process via [`pysail`](https://pypi.org/project/pysail/). No external server required.
-- `remote` &mdash; connects to an already-running Sail server via Spark Connect.
+- `embedded` - starts a Sail server in-process via [`pysail`](https://pypi.org/project/pysail/). No external server required.
+- `remote` - connects to an already-running Sail server via Spark Connect.
 
 ## Profile configuration
 
@@ -50,11 +50,11 @@ your_profile_name:
 
 | Field | Description | Required? | Default |
 | ----- | ----------- | --------- | ------- |
-| `type` | Must be `sail`. | Required | &mdash; |
-| `mode` | Connection mode. Either `embedded` or `remote`. | Required | &mdash; |
+| `type` | Must be `sail`. | Required | - |
+| `mode` | Connection mode. Either `embedded` or `remote`. | Required | - |
 | `host` | Hostname of the Sail server. Required for `remote` mode. | Required for `remote` | `127.0.0.1` (embedded) |
 | `port` | Spark Connect port on the Sail server. Used by `remote` mode. | Optional | `50051` |
-| `schema` | Default schema where dbt builds objects. | Required | &mdash; |
+| `schema` | Default schema where dbt builds objects. | Required | - |
 | `threads` | Number of threads for dbt to use. | Optional | `1` |
 | `server_side_parameters` | Map of parameters passed through to the underlying Spark session. | Optional | `{}` |
 
