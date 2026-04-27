@@ -26,14 +26,14 @@ While you shouldn't notice any behavior changes due to this change, however, to 
 
 Available starting `dbt-redshift` 1.12.0.
 
-The `redshift_skip_autocommit_transaction_statements` flag controls whether dbt sends explicit `BEGIN`, `COMMIT`, and `ROLLBACK` statements to Amazon Redshift when the connection runs with autocommit enabled. Since `dbt-redshift` 1.5, the default Redshift connection uses `autocommit=True`, so the driver already commits each statement. In that setup, the statements are redundant with autocommit and add extra round trips to Redshift.
+The `redshift_skip_autocommit_transaction_statements` flag controls whether dbt sends explicit [`BEGIN`](https://docs.aws.amazon.com/redshift/latest/dg/r_BEGIN.html), [`COMMIT`](https://docs.aws.amazon.com/redshift/latest/dg/r_COMMIT.html), and [`ROLLBACK`](https://docs.aws.amazon.com/redshift/latest/dg/r_ROLLBACK.html) statements to Amazon Redshift when the connection runs with autocommit enabled. Since `dbt-redshift` 1.5, the default Redshift connection uses `autocommit=True`, so the driver already commits each statement. In that setup, the statements are redundant with autocommit and add extra round trips to Redshift.
 
 - When set to `False` (default), dbt sends `BEGIN`, `COMMIT`, and `ROLLBACK` statements (legacy behavior).
-- When set to `True`, dbt skips the following transaction statements, which can reduce round trips and improve performance:
+- When set to `True`, dbt does not send `BEGIN`, `COMMIT`, or `ROLLBACK` statements to Redshift, which can reduce round trips and improve performance. dbt still calls `begin()`, `commit()`, and `rollback_if_open()` on the connection, but no longer issues the matching SQL:
 
-  - `begin()` does not send `BEGIN`.
-  - `commit()` does not send `COMMIT`.
-  - `rollback_if_open()` does not send `ROLLBACK`.
+  - `begin()` is invoked, but dbt does not execute `BEGIN` on Redshift.
+  - `commit()` is invoked, but dbt does not execute `COMMIT` on Redshift.
+  - `rollback_if_open()` is invoked, but dbt does not execute `ROLLBACK` on Redshift.
 
 dbt still maintains its internal `transaction_open` state so transaction tracking remains consistent even when those SQL statements are skipped.
 
