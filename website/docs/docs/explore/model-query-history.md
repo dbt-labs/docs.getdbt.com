@@ -124,7 +124,7 @@ Because Redshift expands regular views at execution time, scans are attributed t
 - Models materialized as `table` or `incremental` work correctly.
 - `ephemeral` models cannot be attributed.
 
-If your project relies heavily on views, usage may appear lower than expected. This is a known limitation of scan-based attribution, not missing data.
+If your project relies heavily on views, usage may appear lower than expected. This is a known limitation of scan-based attribution rather than missing data.
 
 #### Databricks model query history <Lifecycle status="beta" />
 
