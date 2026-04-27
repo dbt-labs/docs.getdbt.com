@@ -602,7 +602,7 @@ Release date: February 12, 2025
 
 ### dbt Cloud 
 
-These changes reflect capabilities that are only available in <Constant name="cloud" />.
+These changes reflect capabilities that are only available in <Constant name="dbt" />.
 
 ### Features
 
@@ -659,7 +659,7 @@ Release date: January 14, 2025
 
 ### dbt Cloud 
 
-These changes reflect capabilities that are only available in <Constant name="cloud" />.
+These changes reflect capabilities that are only available in <Constant name="dbt" />.
 
 ### Features
 

@@ -18,7 +18,7 @@ This page shows release information for preview builds of <Constant name="fusion
 
 Track current versions and full release history for the <Constant name="fusion_engine" />. This data updates live from dbt release channels.
 
-For detailed information about each release, refer to the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
+Each of the versions on this page links to the matching section in the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md) on GitHub.
 
 ## Release channels
 
@@ -27,7 +27,7 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 | Channel | Description | Stability |
 |---------|-------------|-----------|
 | `latest` | The known `good` stable version | ✅ Recommended for production |
-| `canary` | The latest version to be officially released | ⚠️ May be unstable when it differs from `latest` |
+| `canary` | The latest version to be officially released | ⚠️ Most recent stable version but still undergoing thorough testing |
 | `dev` | The latest development build | ❌ May be unstable; may not have passed all internal tests |
 
 <details>

@@ -12,21 +12,37 @@ The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted 
 The remote MCP server is the ideal choice when:
 - You don't want to or are restricted from installing additional software (`uvx`, `dbt-mcp`) on your system.
 - Your primary use case is _consumption-based_: querying metrics, exploring metadata, viewing lineage.
-- You need access to <Constant name="semantic_layer"/> and Discovery APIs without maintaining a local dbt project.
+- You need access to <Constant name="semantic_layer"/>, Administrative, and Discovery APIs without maintaining a local dbt project.
 - You don't need to execute CLI commands. Remote MCP does not support dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more). If you need to execute dbt CLI commands, use the [local MCP server](/docs/dbt-ai/setup-local-mcp) instead.
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
 
+## Choose your auth method
+
+Use this table to choose the right token type before you start:
+
+| If you need... | Use... |
+| --- | --- |
+| Fastest first-time setup | **OAuth** (if supported by your client) |
+| `execute_sql` tool | **Personal Access Token (PAT)**. Service tokens _do not_ work for `execute_sql` |
+| Shared or team setup | **Service token** |
+| CI or automation | **Service token** |
+
+:::warning `execute_sql` requires a PAT
+The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) in the `Authorization` header when using this tool.
+:::
+
 ## Setup instructions
 
 1. Ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
-2. Obtain the following information from dbt platform:
+2. Obtain the following information from <Constant name="dbt_platform"/>:
 
-  - **dbt Cloud host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
+  - **<Constant name="dbt_platform"/> host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
   - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
-  - **Token**: Generate either a personal access token or a service token. In terms of permissions, to fully utilize remote MCP, it must be configured with Semantic Layer and Developer permissions. Note: to use functionality that requires the `x-dbt-user-id` header, a personal access token is required.
+  - **Token**: Generate either a personal access token or a service token. To fully utilize remote MCP, the token must have Semantic Layer and Developer permissions. 
+  - If you plan to use `execute_sql`, you must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens). Service tokens _do not_ work for this tool. For other tools that require `x-dbt-user-id`, a PAT is also required.
 
 3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 
@@ -49,7 +65,7 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
 
   | Header | Required | Description |
   | --- | --- | --- |
-  | x-dbt-dev-environment-id | Required| Your dbt platform development environment ID |
+  | x-dbt-dev-environment-id | Required| Your <Constant name="dbt_platform"/> development environment ID |
   | x-dbt-user-id | Required | Your <Constant name="dbt_platform"/> user ID ([see docs](/faqs/Accounts/find-user-id)) |
   | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, <Constant name="fusion"/> tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
 
@@ -62,20 +78,86 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
 
 4. After establishing which headers you need, you can follow the [examples](https://github.com/dbt-labs/dbt-mcp/tree/main/examples) to create your own agent. 
 
-The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. You can use this example Cursor configuration, replacing `YOUR_DBT_HOST_URL`, `YOUR_DBT_ACCESS_TOKEN`, `PROD-ID`, `USER-ID`, and `DEV-ID` with your information:
+The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. Configuration varies by client — select your tool below and replace the placeholder values with your own:
 
-  ```
-  {
-    "mcpServers": {
-      "dbt": {
-        "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
-        "headers": {
-         "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
-          "x-dbt-prod-environment-id": "PROD-ID",
-          "x-dbt-user-id": "USER-ID",
-          "x-dbt-dev-environment-id": "DEV-ID"
-        }
+:::warning Use numeric IDs, not full URLs
+Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeric IDs, not full URLs. The host in the `url` field should include `https://`, but ID headers must be integers only:
+
+```bash
+# ✅ Correct
+"url": "https://cloud.getdbt.com/api/ai/v1/mcp/"
+"x-dbt-prod-environment-id": "54321"
+"x-dbt-user-id": "123"
+
+# ❌ Wrong — don't paste full URLs into ID headers
+"x-dbt-prod-environment-id": "https://cloud.getdbt.com/deploy/12345/projects/67890/environments/54321"
+"x-dbt-user-id": "https://cloud.getdbt.com/settings/profile"
+```
+:::
+
+<Tabs>
+<TabItem value="claude" label="Claude Code">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
       }
     }
   }
-  ```
+}
+```
+
+</TabItem>
+<TabItem value="cursor" label="Cursor">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="gemini" label="Gemini">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "httpUrl": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::note Other clients
+For other MCP clients (Codex, Windsurf, and so on.), refer to your client's MCP configuration docs for the correct key format.
+:::
+
+For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).

@@ -64,7 +64,6 @@ Here we describe the Semantic model components with examples:
 | Component    | Description      | Required     |  Type     | 
 | ------------ | ---------------- | -------- | -------- | 
 | [Name](#name)     | Choose a name for the semantic model. Avoid using double underscores (\_\_) in the name as they're not supported. Defaults to value of the model name.  | Optional | String |
-| [Description](#description)    | 	Includes important details in the description.   | Optional | String |
 | [Time dimension](#time-dimension) | Only `agg_time_dimension` is supported.    | Required |  Dict |
 | [Entities](#entities)         | Define entities at the column level. For any column that serves as a join key, add an entity block under the column with `type` set to primary, foreign, unique, or natural. Optionally include name, description, label, config, or use expr when the join key differs from the column. | Required | List | 
 | [Primary Entity](#primary-entity) | If a column declares an entity with `type: primary`, you don’t need `primary_entity`. If no column is primary, set the top-level `primary_entity` to name the model’s primary entity. | Optional | String | 
@@ -111,9 +110,8 @@ models:
     semantic_model:
       enabled: true
       name: the_name_of_the_semantic_model # Optional: semantic model name, defaults to model name
-      description: same as always # Optional
-    
-    agg_time_dimension: dimension_name # Required 
+
+    agg_time_dimension: dimension_name # Required
 
     # Entities, dimensions defined at column level
     columns:
@@ -340,11 +338,11 @@ Define the name of the semantic model. You must define a unique name for the sem
 Define the name of the semantic model. If not provided, this defaults to the value of the model name. Avoid using double underscores (\_\_) in the name as they're not supported.
 </VersionBlock>
 
+<VersionBlock lastVersion="1.11">
+
 ### Description
 
 Includes important details of the semantic model. This description will primarily be used by other configuration contributors. You can use the pipe operator `(|)` to include multiple lines in the description.
-
-<VersionBlock lastVersion="1.11">
 
 ### Model
 
@@ -376,7 +374,7 @@ To specify the [entities](/docs/build/entities) in your model, use their columns
 
 ### Entities
 
-To specify the [entities](/docs/build/entities) in your mode, add an `entity` block at the column level with `type` set to primary, foreign, unique, or natural. Optionally, provide `name` and `expr` when the join key’s name differs from the column.
+To specify the [entities](/docs/build/entities) in your model, add an `entity` block at the column level with `type` set to primary, foreign, unique, or natural. Optionally, provide `name` and `expr` when the join key’s name differs from the column.
 
 </VersionBlock>
 

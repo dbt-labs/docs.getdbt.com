@@ -126,10 +126,10 @@ sources:
     - name: my_first_model
       columns:
         - name: customer_id
-          tests: &customer_id_tests
+          data_tests: &customer_id_tests
             - not_null
             - unique
 
         - name: order_id
-          tests: *customer_id_tests
+          data_tests: *customer_id_tests
   ```

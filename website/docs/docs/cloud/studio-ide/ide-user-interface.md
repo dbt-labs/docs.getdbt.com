@@ -6,46 +6,74 @@ sidebar_label: User interface
 tags: [IDE]
 ---
 
-The [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="cloud_ide" /> to compile dbt code into SQL and run it against your database directly — no command line required!
+The [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) is a tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the <Constant name="studio_ide" /> to compile dbt code into SQL and run it against your database directly — no command line required!
 
-This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="cloud_ide" /> landscape with ease.
+This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="studio_ide" /> landscape with ease.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.png" width="90%" title="The Studio IDE layout includes version control on the upper left, files/folders and search on the left, editor on the right, command palette at the top, and command/console at the bottom"/>
 
 ## Basic layout
 
-The <Constant name="cloud_ide" /> streamlines your workflow, and features a popular user interface layout with files and folders on the left, editor on the right, and command and console information at the bottom. 
+The <Constant name="studio_ide" /> streamlines your workflow, and features a popular user interface layout with files and folders on the left, editor on the right, and command and console information at the bottom. 
+
+#### The side menu
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-side-menu.png" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
 
-1. **<Constant name="git" /> repository link &mdash;** The <Constant name="git" /> repository link, located on the upper left of the <Constant name="cloud_ide" />, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
-    * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant <Constant name="cloud" /> accounts.
+1. **<Constant name="git" /> repository link:** The <Constant name="git" /> repository link, located on the upper left of the <Constant name="studio_ide" />, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
+    * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant <Constant name="dbt" /> accounts.
 
-2. **Documentation site button &mdash;** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
+2. **Documentation site button:** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
 
-3. [**Version Control**](#editing-features) &mdash; The <Constant name="cloud_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
+3. [**Version Control**](#editing-features): The <Constant name="studio_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
 
-4. **File explorer &mdash;** The File explorer shows the filetree of your repository. You can:
+4. **File explorer:** The File explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the file editor. 
     - Click and drag files between directories to move files. 
     - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
     - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
-      * Unsaved (•) — The <Constant name="cloud_ide" /> detects unsaved changes to your file/folder
-      * Modification (M) — The <Constant name="cloud_ide" /> detects a modification of existing files/folders
-      * Added (A) — The <Constant name="cloud_ide" /> detects added files
-      * Deleted (D) — The <Constant name="cloud_ide" /> detects deleted files.
+      * Unsaved (•) — The <Constant name="studio_ide" /> detects unsaved changes to your file/folder
+      * Modification (M) — The <Constant name="studio_ide" /> detects a modification of existing files/folders
+      * Added (A) — The <Constant name="studio_ide" /> detects added files
+      * Deleted (D) — The <Constant name="studio_ide" /> detects deleted files.
+
+#### The command and status bar
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.png" width="100%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
-5. **Command bar &mdash;**  The Command bar, located in the lower left of the <Constant name="cloud_ide" />, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
+5. **Command bar:**  The Command bar, located in the lower left of the <Constant name="studio_ide" />, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
-6. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in <Constant name="cloud" />](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
+6. **Defer menu:** The **Defer menu** allows developers to configure the deferral environment:
+    - **Development environment:** Same as turning defer off. Build all upstream models using only the Development environment. Useful for testing in isolation.
+    - **dbt default behavior:** Uses the Staging environment if it's configured, otherwise uses Production. Recommended configuration for most use cases.
+    - **Custom environment:** Select the defer environment from any available in the project.
 
-7. **Status button &mdash;** The <Constant name="cloud_ide" /> Status button, located on the lower right of the <Constant name="cloud_ide" />, displays the current <Constant name="cloud_ide" /> status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [<Constant name="cloud_ide" /> Status modal](#modals-and-menus), simply click on this button.
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/defer-menu.png" width="60%" title="Set the `defer` environment."/>
+
+Refer to [Using defer in <Constant name="dbt" />](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
+
+7. **Status:** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current connection statuses to both the warehouse and the dbt [language server (LSP)](/docs/about-dbt-lsp) status if you're on <Constant name="fusion" /> or the engine server status if you're on <Constant name="core" />. It includes shortcuts to environment settings and developer credentials.
+
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/server-status.png" width="60%" title="View the connection statuses for your account."/>
+
+8. **dbt version:** The current version of dbt running in your development environment. You can set a **Personal version override** that changes the dbt version for only your development environment. 
+
+     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-version.png" width="60%" title="View and set the development environment version."/> 
+
+9. **Additional tools:** Project status and an options menu with additional actions and information about the <Constant name="studio_ide" />:
+    - **Project status:** If there are any errors or warnings outstanding in the development runs, the number of them will populate in this area. Clicking on them will take you to the **Problems** tab.
+    - **Options menu:** Access the options menu by clicking the three-dot menu located at the bottom right corner of the <Constant name="studio_ide" />. This menu contains global options:
+      - **View status details:** View more detailed information about your connection status.
+      - **Restart Studio:** You will lose any unsaved information.
+      - **Reinstall dependencies:** Overwrites project dependencies with a fresh installation.
+      - **Clean dbt project:** Runs the [`dbt clean` command](/reference/commands/clean) for your project.
+      - **Autofix deprecation warnings:** Runs the dbt [autofix tool](/docs/cloud/studio-ide/autofix-deprecations). Helps prepare for <Constant name="fusion" /> upgrade. 
+      
+      <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-menu.png" width="60%" title="IDE menu with additional information and actions."/> 
 
 ## Search bar and command palette
 
-The <Constant name="cloud_ide" /> provides tools to help you quickly navigate your project's files, find information, run commands, and replace syntax with just a few clicks in a layout that's familiar to users of popular IDEs.
+The <Constant name="studio_ide" /> provides tools to help you quickly navigate your project's files, find information, run commands, and replace syntax with just a few clicks in a layout that's familiar to users of popular IDEs.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/search-and-command.png" width="90%" title="Use the search bar and command palette to quickly navigate your file tree and open tabs."/>
 
@@ -92,11 +120,11 @@ The command palette enhances navigation of your dbt project, enabling you to sea
 
 ## Editing features
 
-The <Constant name="cloud_ide" /> features some delightful tools and layouts to make it easier for you to write dbt code and collaborate with teammates. 
+The <Constant name="studio_ide" /> features some delightful tools and layouts to make it easier for you to write dbt code and collaborate with teammates. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.png" width="90%" title="Use the file editor, version control section, and save button during your development workflow"/>
 
-1. **File editor &mdash;** The file editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute dbt commands in your protected primary git branch. Since the <Constant name="cloud_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+1. **File editor &mdash;** The file editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute dbt commands in your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
     * Use intuitive [keyboard shortcuts](/docs/cloud/studio-ide/keyboard-shortcuts) to make development easier for you and your team.
 
@@ -136,7 +164,7 @@ The console section, located below the file editor, includes various console tab
 
 <details>
 <summary>Row limits in IDE</summary>
-The <Constant name="cloud_ide" /> returns default row limits, however, you can also specify the number of records returned. Refer to the following sub-bullets for more info: <br /><br />
+The <Constant name="studio_ide" /> returns default row limits, however, you can also specify the number of records returned. Refer to the following sub-bullets for more info: <br /><br />
 <ul>
 <li><b>500-row limit:</b> To prevent the IDE from returning too much data and causing browser problems, dbt automatically sets a 500-row limit when using the <b>Preview Button</b>. You can modify this by adding <code>limit your_number</code> at the end of your SQL statement. For example, <code>SELECT * FROM</code> table <code>limit 100</code> will return up to 100 rows. Remember that you must write the <code>limit your_number</code> explicitly and cannot derive it from a macro.</li>
 <li><b>Change row limit default:</b> In dbt version 1.6 or higher, you can change the default limit of 500 rows shown in the <b>Results</b> tab when you run a query. To adjust the setting you can click on <b>Change row display</b> next to the displayed rows. Keep in mind that you can't set it higher than 10,000 rows. If you refresh the page or close your development session, the default limit will go back to 500 rows.</li>
@@ -153,7 +181,7 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/cloud/studio-ide/lint-format) on the active file in the file editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Copilot** &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is a powerful artificial intelligence engine that generates documentation, data-tests, metrics, and semantic models for you. <Lifecycle status="self_service,managed,managed_plus" />
+5. **dbt Copilot** &mdash; [dbt Copilot](/docs/cloud/dbt-copilot) is an AI assistant integrated into the <Constant name="studio_ide" />. Use the quick-action buttons to generate documentation, tests, semantic models, and metrics with a single click. The Copilot panel also provides access to the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent), which applies natural language prompts to generate or refactor models, semantic models, tests, and documentation autonomously. Select **Ask** or **Code** mode in the bottom toolbar to activate the <Constant name="dev_agent" />. <Lifecycle status="self_service,managed,managed_plus" />
 
 6. **Commands tab** &mdash; View the most recently run [dbt commands](/reference/dbt-commands) from your current IDE session, their results, and relevant system logs.
 
@@ -186,7 +214,7 @@ You can open the drawer in multiple ways:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-inv-history-drawer.png" width="90%" title="The Invocation History Drawer returns a log and detail of all your dbt invocations."/>
 
-1. **Invocation History list &mdash;** The left-hand panel of the Invocation History Drawer displays a list of previous invocations in the <Constant name="cloud_ide" />, including the command, branch name, command status, and elapsed time.
+1. **Invocation History list &mdash;** The left-hand panel of the Invocation History Drawer displays a list of previous invocations in the <Constant name="studio_ide" />, including the command, branch name, command status, and elapsed time.
 
 2. **Invocation Summary &mdash;** The Invocation Summary, located above **System Logs**, displays information about a selected command from the Invocation History list, such as the command, its status (`Running` if it's still running), the git branch that was active during the command, and the time the command was invoked.
 
@@ -204,18 +232,18 @@ You can open the drawer in multiple ways:
 
 ## Modals and Menus
 
-Use menus and modals to interact with <Constant name="cloud_ide" /> and access useful options to help your development workflow. 
+Use menus and modals to interact with <Constant name="studio_ide" /> and access useful options to help your development workflow. 
 
 #### Editor tab menu
   To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/editor-tab-menu-with-save.png" width="90%" title=" Right-click a tab to view the Editor tab menu options"/>
 
 #### Global command shortcut
-  The global command shortcut provides helpful shortcuts to interact with the <Constant name="cloud_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
+  The global command shortcut provides helpful shortcuts to interact with the <Constant name="studio_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
-#### <Constant name="cloud_ide" /> Status modal
-  The <Constant name="cloud_ide" /> Status modal shows the current error message and debug logs for the server. This also contains an option to restart the <Constant name="cloud_ide" />. Open this by clicking on the <Constant name="cloud_ide" /> Status button.
+#### <Constant name="studio_ide" /> Status modal
+  The <Constant name="studio_ide" /> Status modal shows the current error message and debug logs for the server. This also contains an option to restart the <Constant name="studio_ide" />. Open this by clicking on the <Constant name="studio_ide" /> Status button.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-status-modal-with-save.png" width="60%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 #### Commit to a new branch
@@ -227,7 +255,7 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-changes-modal.png" width="90%" title="The Commit Changes modal is how users commit changes to their branch."/>
 
 #### Change Branch modal
-  The Change Branch modal allows users to switch git branches in the <Constant name="cloud_ide" />. It can be accessed through the **Change Branch** link or the **<Constant name="git" /> actions** button under the **Version control** menu.
+  The Change Branch modal allows users to switch git branches in the <Constant name="studio_ide" />. It can be accessed through the **Change Branch** link or the **<Constant name="git" /> actions** button under the **Version control** menu.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/change-branch-modal.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
 
 #### Prune branches modal
@@ -237,16 +265,3 @@ Use menus and modals to interact with <Constant name="cloud_ide" /> and access u
 #### Revert Uncommitted Changes modal
   The Revert Uncommitted Changes modal is how users revert changes in the IDE. This is accessible via the `Revert File` option above the Version Control Options menu, or via the Git Actions button when there are saved, uncommitted changes in the IDE.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/revert-uncommitted-changes-with-save.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
-
-#### <Constant name="cloud_ide" /> Options menu
-  Access the <Constant name="cloud_ide" /> Options menu by clicking the three-dot menu located at the bottom right corner of the <Constant name="cloud_ide" />. This menu contains global options:
-
-  * View status details, including the <Constant name="cloud_ide" /> Status modal
-  * Restart the <Constant name="cloud_ide" />
-  * Reinstall dependencies
-  * Clean dbt project
-  * [Check & fix deprecations](/docs/cloud/studio-ide/autofix-deprecations)
-  * Rollback your repo to remote to refresh your git state and view status details
-  
-
-  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the IDE options menu to switch to dark or light mode, restart the IDE, rollback to remote, or view the IDE status"/>

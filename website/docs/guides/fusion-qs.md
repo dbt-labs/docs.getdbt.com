@@ -31,7 +31,7 @@ This quickstart guide will get you from zero to running your first dbt project w
 
 | Environment | How to use <Constant name="fusion" /> |
 |--------------|-------------------|
-| **<Constant name="cloud_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine). |
+| **<Constant name="studio_ide" />** | <Constant name="fusion" /> is automatically enabled; just [upgrade your environment(s)](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine). |
 | **dbt CLI (local)** | [Install <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started) locally following this guide. |
 | **VS Code / Cursor IDE** | [Install the dbt extension](/docs/install-dbt-extension) to unlock <Constant name="fusion" />'s interactive power in your editor. |
 
@@ -66,6 +66,7 @@ It's easy to think of the <Constant name="fusion_engine" /> and the dbt extensio
 :::info
 - You can install the <Constant name="fusion_engine" /> and use it standalone with the CLI.
 - You *cannot* use the dbt extension without <Constant name="fusion" /> installed.
+- Use `dbt` as your default command. If you already have another dbt command-line tool installed (such as the <Constant name="platform_cli" /> or <Constant name="core" />), you can use `dbtf` as an unambiguous alias for <Constant name="fusion" />.
 :::
 
 The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started) and [extension](/docs/install-dbt-extension) installation guides:
@@ -73,11 +74,11 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 <Tabs queryString="installation">
 <TabItem value="mac-linux" label="macOS & Linux">
 
-1. Run the following command in the terminal to install the `dbtf` binary — <Constant name="fusion" />’s CLI command.
+1. Run the following command in the terminal to install the <Constant name="fusion_engine" /> CLI.
     ```shell
     curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
     ```
-2. To use `dbtf` immediately after installation, reload your shell so that the new `$PATH` is recognized:
+2. To use `dbt` immediately after installation, reload your shell so that the new `$PATH` is recognized:
     ```shell
     exec $SHELL
     ```
@@ -85,11 +86,11 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 </TabItem>
 <TabItem value="windows" label="Windows (PowerShell)">
 
-1. Run the following command in PowerShell to install the `dbtf` binary:
+1. Run the following command in PowerShell to install the <Constant name="fusion_engine" /> CLI:
     ```powershell
     irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
     ```
-2. To use `dbtf` immediately after installation, reload your shell so that the new `Path` is recognized:
+2. To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
     ```powershell
     Start-Process powershell
     ```
@@ -99,17 +100,14 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 
 ### Verify the <Constant name="fusion_engine" /> installation
 
-1. After installation, open a new command-line window to confirm that <Constant name="fusion" /> was installed correctly by checking the version. 
+1. After installation, open a new command-line window to confirm that <Constant name="fusion" /> installed correctly by checking the version.
     ```bash
-    dbtf --version
+    dbt --version
     ```
 2. You should see output similar to the following:
     ```bash
     dbt-fusion 2.0.0-preview.45
     ```
-:::tip
-You can run these commands using `dbt`, or use `dbtf` as an unambiguous alias for <Constant name="fusion" />, if you have another dbt CLI installed on your machine.
-:::
 
 ### Install the dbt VS Code extension
 
@@ -126,15 +124,15 @@ The dbt VS Code extension is available in the [Visual Studio extension marketpla
 ## Initialize the Jaffle Shop project
 Now let's create your first dbt project powered by <Constant name="fusion" />!
 
-1. Run `dbt init` to set up an example project and configure a database connection profile.
+1. Run `dbt init` in your terminal from the directory where you want to create the project. The `dbt init` command creates an example project and walks you through setting up a connection profile.
    - If you *do not* have a connection profile that you want to use, start with `dbt init` and use the prompts to configure a profile:
     - If you already have a connection profile that you want to use, use the `--skip-profile-setup` flag then edit the generated `dbt_project.yml` to replace `profile: jaffle_shop` with `profile: <YOUR-PROFILE-NAME>`.
 
         ```bash
-        dbtf init --skip-profile-setup
+        dbt init --skip-profile-setup
         ```
 
-    - If you created new credentials through the interactive prompts, `init` automatically runs `dbtf debug` at the end. This ensures the newly created profile establishes a valid connection with the database.
+    - If you created new credentials through the interactive prompts, `init` automatically runs `dbt debug` at the end. This ensures the newly created profile establishes a valid connection with the database.
 
 2. Change directories into your newly created project:
     ```bash
@@ -143,7 +141,7 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
 
 3. Build your dbt project (which includes creating example data):
     ```bash
-    dbtf build
+    dbt build
     ```
 
 This will:
@@ -166,7 +164,7 @@ Want to see <Constant name="fusion" /> in action? Check out the following video 
   />
 </div>
 
-Now that your project works, open it in VS Code and see Fusion in action:
+Now that your project works, open it in VS Code and see <Constant name="fusion" /> in action:
 
 1. In VS Code, open the **View** menu and click **Command Palette**. Enter **Workspaces: Add Folder to Workspace**.
 2. Select your `jaffle_shop` folder.

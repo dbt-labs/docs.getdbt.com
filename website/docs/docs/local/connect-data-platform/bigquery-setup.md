@@ -25,20 +25,11 @@ The BigQuery adapter for Fusion supports the following [authentication methods](
 - Service account (JSON file)
 - gcloud OAuth
 
-## BigQuery permissions
+## Warehouse permissions
 
-dbt user accounts need the following permissions to read from and create tables and views in a BigQuery project:
+import FusionBigQueryWarehousePerms from '/snippets/_fusion-warehouse-permissions-bigquery.md';
 
-- BigQuery Data Editor
-- BigQuery User
-- BigQuery Read Session User (New in Fusion. For Storage Read API access)
-
-For BigQuery DataFrames, users need these additional permissions:
-- BigQuery Job User
-- BigQuery Read Session User
-- Notebook Runtime User
-- Code Creator
-- colabEnterpriseUser
+<FusionBigQueryWarehousePerms />
 
 ## Configure Fusion
 
@@ -339,28 +330,15 @@ Some queries inevitably fail, at different points in process. To handle these ca
 
 #### job_execution_timeout_seconds
 
-Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete, after being submitted successfully. Of the four configurations that control timeout and retries, this one is the most common to use.
-
-:::info Renamed config
-
 In older versions of `dbt-bigquery`, this same config was called `timeout_seconds`.
 
-:::
-  
-No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set). When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
+Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete after successfully submitting them. Of the four configurations that control timeout and retries, this one is the most common to use.
 
-```
- Operation did not complete within the designated timeout.
-```
+<VersionBlock lastVersion="1.11">
 
-:::caution Note
+You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs.
 
-The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. 
-Normally, BigQuery keeps running the job even if this timeout is reached, however `dbt-bigquery` will send a request to BigQuery to cancel it.
-
-:::
-  
-You can change the timeout seconds for the job execution step by configuring `job_execution_timeout_seconds` in the BigQuery profile:
+For example:
 
 ```yaml
 my-profile:
@@ -373,6 +351,106 @@ my-profile:
       dataset: my_dataset
       job_execution_timeout_seconds: 600 # 10 minutes
 ```
+
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+You can set the `job_execution_timeout_seconds` config in your BigQuery profile. The value set at the profile level becomes the default and applies to all runs. To override this default value, you can set the config individually per model, snapshot, seed, or test.
+
+- Profile-level configuration:
+
+  ```yaml
+  my-profile:
+    target: dev
+    outputs:
+      dev:
+        type: bigquery
+        method: oauth
+        project: abc-123
+        dataset: my_dataset
+        job_execution_timeout_seconds: 600 # 10 minutes
+  ```
+
+- Resource-level configuration:
+
+  <Tabs>
+  <TabItem value="model" label="Models">
+
+  <File name='my_model.sql'>
+
+  ```sql
+  {{ config(job_execution_timeout_seconds=600) }}
+  SELECT ...
+  ```
+
+  </File>
+
+  <File name='schema.yml'>
+
+  ```yaml
+  models:
+    - name: my_model
+      config:
+        job_execution_timeout_seconds: 600
+  ```
+
+  </File>
+
+  </TabItem>
+  <TabItem value="seeds" label="Seeds">
+
+  ```yaml
+  seeds:
+    - name: my_seed
+      config:
+        job_execution_timeout_seconds: 600
+  ```
+
+  For seeds, the timeout applies to the SQL that runs after the CSV is uploaded. The upload step uses the profile-level timeout.
+
+  </TabItem>
+  <TabItem value="snapshots" label="Snapshots">
+
+  ```yaml
+  snapshots:
+    - name: my_snapshot
+      config:
+        job_execution_timeout_seconds: 600
+  ```
+
+  </TabItem>
+  <TabItem value="tests" label="Tests">
+
+  ```yaml
+  models:
+    - name: my_model
+      columns:
+        - name: id
+          data_tests:
+            - unique:
+                config:
+                  job_execution_timeout_seconds: 600
+  ```
+
+  </TabItem>
+  </Tabs>
+
+</VersionBlock>
+  
+No timeout is set by default. For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set. When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than the configured number of seconds to finish, the `dbt-bigquery` adapter will run into an exception:
+
+```
+ Operation did not complete within the designated timeout.
+```
+
+:::caution Note
+
+The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. 
+Normally, BigQuery keeps running the job even if this timeout is reached; however, `dbt-bigquery` will send a request to BigQuery to cancel it.
+
+:::
 
 import JobTimeout from '/snippets/_bigquery-timeout.md';
 
@@ -612,7 +690,17 @@ import BigQueryDataproc from '/snippets/_bigquery-dataproc.md';
 
 <BigQueryDataproc />
 
-Then, add the bucket name, cluster name, and cluster region to your connection profile:
+The `submission_method` profile field controls how dbt submits Python model jobs. There are three supported values:
+
+| `submission_method` | Description |
+|---------------------|-------------|
+| `serverless` (default) | Runs jobs on [Dataproc Serverless](/docs/local/connect-data-platform/bigquery-setup#dataproc-serverless) with no cluster management required |
+| `cluster` | Runs jobs on an existing [Dataproc cluster](/docs/local/connect-data-platform/bigquery-setup#dataproc-cluster) |
+| `bigframes` | Runs jobs using [BigQuery DataFrames](/docs/local/connect-data-platform/bigquery-setup#bigframes). No Spark setup required |
+
+#### Dataproc cluster
+
+Add the bucket name, cluster name, and cluster region to your connection profile:
 
 ```yaml
 my-profile:
@@ -623,14 +711,17 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      
+
       # for dbt Python models to be run on a Dataproc cluster
+      submission_method: cluster
       gcs_bucket: dbt-python
       dataproc_cluster_name: dbt-python
       dataproc_region: us-central1
 ```
 
-Alternatively, Dataproc Serverless can be used:
+#### Dataproc Serverless
+
+Dataproc Serverless is the default `submission_method`. It requires no cluster management and supports optional batch configuration:
 
 ```yaml
 my-profile:
@@ -641,11 +732,11 @@ my-profile:
       method: oauth
       project: abc-123
       dataset: my_dataset
-      
+
       # for dbt Python models to be run on Dataproc Serverless
+      submission_method: serverless
       gcs_bucket: dbt-python
       dataproc_region: us-central1
-      submission_method: serverless
       dataproc_batch:
         batch_id: MY_CUSTOM_BATCH_ID # Supported in v1.7+
         environment_config:
@@ -662,6 +753,26 @@ my-profile:
 ```
 
 For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
+
+#### BigFrames
+
+[BigQuery DataFrames](https://cloud.google.com/bigquery/docs/bigquery-dataframes-introduction) lets you run Python models using APIs directly in BigQuery without setting up Spark. Refer to the [dbt Python models with BigFrames](/guides/dbt-python-bigframes) guide for full setup instructions.
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+
+      # for dbt Python models to be run using BigQuery DataFrames
+      submission_method: bigframes
+      gcs_bucket: dbt-python
+      dataproc_region: us-central1
+```
 
 
 

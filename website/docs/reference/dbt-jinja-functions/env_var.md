@@ -1,15 +1,62 @@
 ---
-title: " About env_var function"
+title: "About env_var function"
 sidebar_label: "env_var"
 id: "env_var"
-description: "Incorporate environment variables using `en_var` function."
+description: "Incorporate environment variables using `env_var` function."
 ---
 
-import Envvarsecrets from '/snippets/_env-var-secrets.md'; 
+import Envvarsecrets from '/snippets/_env-var-secrets.md';
+import EnvFileBeta from '/snippets/_env-file-beta.md';
+import EnvFileConsiderations from '/snippets/_env-file-considerations.md';
 
 <Envvarsecrets />
 
-If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, then these variables will be pulled into the profile as expected. If any environment variables are not set, then dbt will raise a compilation error.
+If the `DBT_USER` and `DBT_ENV_SECRET_PASSWORD` environment variables are present when dbt is invoked, dbt will use these variables in your connection configuration &mdash; for example, in `profiles.yml` when running locally, or in [deployment credentials](/docs/deploy/deploy-environments#deployment-credentials) if you have a <Constant name="dbt_platform" /> project. If your project references environment variables that aren't set, dbt will raise a compilation error.
+
+
+<VersionBlock firstVersion="1.12">
+
+### Using the `.env` file
+
+<EnvFileBeta />
+
+When running dbt locally ([<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started), dbt VS Code extension, and <Constant name="core"/> v1.12), dbt automatically loads environment variables from a `.env` file in your current working directory (where you run the dbt command). Shell environment variables take precedence over values in `.env` &mdash; `.env` values will not override variables already set in your shell.
+
+Create a `.env` file (typically at the root of your dbt project) and define variables using `KEY=value` syntax. For example:
+
+<File name='.env'>
+
+```bash
+DBT_USER=user
+DBT_PASSWORD=password
+DBT_SCHEMA=dbt_schema
+```
+
+</File>
+
+Reference them in your `profiles.yml` using `env_var()`:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      schema: "{{ env_var('DBT_SCHEMA') }}"
+      port: 5432
+      threads: 4
+```
+
+</File>
+
+<EnvFileConsiderations />
+
+</VersionBlock>
 
 ### Converting env_vars
 
@@ -100,5 +147,10 @@ select 1 as id
 
 ### dbt platform usage
 
-If you are using <Constant name="cloud" />, you must adhere to the naming conventions for environment variables. Environment variables in <Constant name="cloud" /> must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`). Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in <Constant name="cloud" />'s UI.
+If you're using <Constant name="dbt_platform" />, environment variables must be:
+- Prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`)
+- Uppercase
+- Case-sensitive
+
+When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must exactly match the variable defined in the <Constant name="dbt_platform" /> user interface.
 

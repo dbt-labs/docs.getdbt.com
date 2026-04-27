@@ -1,1 +1,3 @@
-The **Model performance** section in <Constant name="explorer" /> displays historical trends to help you identify optimization opportunities and understand model resource consumption. 
+The **Model performance** section in <Constant name="catalog" /> displays historical trends to help you identify optimization opportunities and understand model resource consumption. 
+
+<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>

@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.getdbt.com"
+          "value": "img-src 'self' data: https: https://*.optimizely.com; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; frame-ancestors 'self' https://*.getdbt.com"
         },
         {
           "key": "Strict-Transport-Security",
@@ -38,9 +38,41 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/community/events",
+      "destination": "https://www.getdbt.com/events",
+      "source": "/community/spotlight",
+      "destination": "/community/join",
+      "permanent": true
+    },
+    {
+      "source": "/community/spotlight/:path*",
+      "destination": "/community/join",
+      "permanent": true
+    },
+    {
+      "source": "/community/forum",
+      "destination": "https://discourse.getdbt.com/",
+      "permanent": true
+    },
     { 
       "source": "/guides/sl-migration",
       "destination": "/docs/build/latest-metrics-spec",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-cloud-2",
+      "destination": "/guides/core-migration-2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-to-cloud-1",
+      "destination": "/guides/core-migration-1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/core-to-cloud-3",
+      "destination": "/guides/core-migration-3",
       "permanent": true
     },
     {
@@ -285,7 +317,7 @@
     },
     {
       "source": "/docs/fusion/connect-data-platform-fusion/connection-profiles",
-      "destination": "/docs/local/profiles.yml",
+      "destination": "/docs/local/connection-profiles",
       "permanent": true
     },
     {
@@ -1401,6 +1433,11 @@
     {
       "source": "/docs/dbt-versions/versionless-cloud",
       "destination": "/docs/dbt-versions/cloud-release-tracks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions",
       "permanent": true
     },
     {
@@ -3023,7 +3060,7 @@
     },
     {
       "source": "/docs/core-versions",
-      "destination": "/docs/dbt-versions/core",
+      "destination": "/docs/dbt-versions",
       "permanent": true
     },
     {

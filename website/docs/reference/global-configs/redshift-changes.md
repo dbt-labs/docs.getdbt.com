@@ -6,11 +6,13 @@ sidebar: "Redshift"
 
 The following are the current [behavior change flags](/docs/reference/global-configs/behavior-changes.md#behavior-change-flags) that are specific to `dbt-redshift`:
 
+<SimpleTable>
 | Flag                          | `dbt-redshift`: Intro | `dbt-redshift`: Maturity | Status |
 | ----------------------------- | --------------------- | ------------------------ | ------ |
-| [`restrict_direct_pg_catalog_access`](#restrict_direct_pg_catalog_access-flag) | 1.9.0 | TBD | Active |
 | [`redshift_skip_autocommit_transaction_statements`](#redshift_skip_autocommit_transaction_statements-flag) | 1.12.0 | TBD | Active |
+</SimpleTable>
 
+<!--
 ## `restrict_direct_pg_catalog_access` flag
 
 Originally, the `dbt-redshift` adapter was built on top of the `dbt-postgres` adapter and used Postgres tables for metadata access. When this flag is enabled, the adapter uses the Redshift API (through the Python client) if available, or queries Redshift's `information_schema` tables instead of using the `pg_` tables _for some metadata queries_.
@@ -18,40 +20,36 @@ Originally, the `dbt-redshift` adapter was built on top of the `dbt-postgres` ad
 Note that this flag does not apply to all metadata queries emitted by the adapter. For example, a list relations query may continue to query `information_schema` even when the flag is disabled.
 
 While you shouldn't notice any behavior changes due to this change, however, to be cautious dbt Labs is gating it behind a behavior-change flag and encouraging you to test it before it becoming the default.
+-->
 
-## `redshift_skip_autocommit_transaction_statements` flag
+## The `redshift_skip_autocommit_transaction_statements` flag {#redshift_skip_autocommit_transaction_statements-flag}
 
-The `redshift_skip_autocommit_transaction_statements` flag is `True` by default.
+Available starting `dbt-redshift` 1.12.0.
 
-When `autocommit=True` (the default since `dbt-redshift 1.5`), each statement is automatically committed by the driver. Previously, dbt still sent explicit `BEGIN` / `COMMIT` / `ROLLBACK` statements, which were unnecessary and added extra round trips to Redshift.
+The `redshift_skip_autocommit_transaction_statements` flag controls whether dbt sends explicit [`BEGIN`](https://docs.aws.amazon.com/redshift/latest/dg/r_BEGIN.html), [`COMMIT`](https://docs.aws.amazon.com/redshift/latest/dg/r_COMMIT.html), and [`ROLLBACK`](https://docs.aws.amazon.com/redshift/latest/dg/r_ROLLBACK.html) statements to Amazon Redshift when autocommit is enabled. Since `dbt-redshift` 1.5, the default Redshift connection uses `autocommit=True`, so the driver already commits each statement. In that setup, the statements are redundant when autocommit is enabled and add extra round trips to Redshift.
 
-With the `redshift_skip_autocommit_transaction_statements` flag enabled, dbt skips sending transaction management statements when you enable autocommit, reducing unnecessary round trips and improving performance.
+- When set to `False` (default), dbt sends `BEGIN`, `COMMIT`, and `ROLLBACK` statements (legacy behavior).
+- When set to `True`, dbt does not send `BEGIN`, `COMMIT`, or `ROLLBACK` statements to Redshift, which can reduce round trips and improve performance. dbt still calls `begin()`, `commit()`, and `rollback_if_open()` on the connection, but no longer issues the matching SQL:
 
-#### Key behaviors
+  - `begin()` is invoked, but dbt does not execute `BEGIN` on Redshift.
+  - `commit()` is invoked, but dbt does not execute `COMMIT` on Redshift.
+  - `rollback_if_open()` is invoked, but dbt does not execute `ROLLBACK` on Redshift.
 
-When both the flag and autocommit are `True`:
+dbt still maintains its internal `transaction_open` state so transaction tracking remains consistent even when those SQL statements are skipped.
 
-- `begin()` skips sending `BEGIN`
-- `commit()` skips sending `COMMIT`
-- `rollback_if_open()` skips sending `ROLLBACK`
-
-dbt still maintains its internal `transaction_open` state to preserve compatibility with dbt’s transaction tracking, even when actual statements are skipped.
-
-### Preserving legacy behavior
-
-To preserve the legacy behavior of sending `BEGIN`/`COMMIT`/`ROLLBACK` statements even when autocommit is enabled, set the flag to `False` in your `dbt_project.yml`:
+To skip unnecessary transaction statements when `autocommit` is enabled, set the flag to `True` in your `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
 ```yaml
 flags:
-  redshift_skip_autocommit_transaction_statements: false
+  redshift_skip_autocommit_transaction_statements: true
 ```
 
 </File>
 
-### Backward compatibility
+### How this flag interacts with `autocommit`
 
-- **`autocommit=False`**: Unchanged. Explicit transactions still work as before regardless of this flag.
-- **`autocommit=True` with flag (default)**: Skips unnecessary transaction statements for better performance.
-- **`autocommit=True` without flag**: Sends `BEGIN`/`COMMIT`/`ROLLBACK` (legacy behavior).
+- If the connection uses `autocommit=False`, dbt’s explicit transaction behavior is unchanged.
+- If the connection uses `autocommit=True` (default) and the flag is `False` (default), dbt still sends `BEGIN`, `COMMIT`, and `ROLLBACK`.
+- If the connection uses `autocommit=True` and the flag is `True`, dbt skips those statements.

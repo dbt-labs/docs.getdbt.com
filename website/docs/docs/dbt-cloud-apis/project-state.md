@@ -2,13 +2,13 @@
 title: "Project state in dbt"
 ---
 
-<Constant name="cloud" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-cloud-apis/discovery-querying) in the metadata platform.
+<Constant name="dbt" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-cloud-apis/discovery-querying) in the metadata platform.
 
 With the implementation of the `environment` endpoint in the Discovery API, we've introduced the idea of multiple states. The Discovery API provides a single API endpoint that returns the latest state of models, sources, and other nodes in the DAG. 
 
-A single [deployment environment](/docs/environments-in-dbt) should represent the production state of a given <Constant name="cloud" /> project.
+A single [deployment environment](/docs/environments-in-dbt) should represent the production state of a given <Constant name="dbt" /> project.
 
-There are two states that can be queried in <Constant name="cloud" />:
+There are two states that can be queried in <Constant name="dbt" />:
 
 - **Applied state** refers to what exists in the data warehouse after a successful `dbt run`. The model build succeeds and now exists as a table in the warehouse.
     
@@ -20,9 +20,16 @@ In a dbt project, the state of a node _definition_ represents the configuration,
 
 A node’s _applied state_ refers to the node’s actual state after it has been successfully executed in the DAG; for example, models are executed; thus, their state is applied to the data warehouse via `dbt run` or `dbt build`. It changes whenever a node is executed. This state represents the result of the transformations and the actual data stored in the database, which for models can be a table or a view based on the defined logic.
 
-The applied state includes execution info, which contains metadata about how the node arrived in the applied state: the most recent execution (successful or attempted), such as when it began, its status, and how long it took.
+The applied state includes execution info, which contains metadata about how the node arrived in the applied state. The fields within `executionInfo` track two related but distinct concepts:
 
-Here’s how you’d query and compare the definition  vs. applied state of a model using the Discovery API: 
+| Concept | Description | Fields |
+|---------|-------------|--------|
+| Most recent run attempt | The latest run regardless of outcome (success, error, or skip) | `lastRunId`, `lastRunStatus`, `lastRunError`, `lastRunGeneratedAt`, `lastJobDefinitionId` |
+| Most recent successful materialization | The last run in which the node was built in the data warehouse. <br /> When a run errors out, the node isn't rebuilt, so these fields remain pinned to the prior successful run. |`executeStartedAt`, `executeCompletedAt`, `executionTime`, `runGeneratedAt`, `lastSuccessRunId`, `lastSuccessJobDefinitionId` |
+
+For example, if a model's most recent run errors out, `lastRunStatus` will be `error` and `lastRunGeneratedAt` will reference that failed run, while `executeCompletedAt` and `lastSuccessRunId` will still reference the prior run in which the model was successfully materialized.
+
+Here’s how you can query and compare the definition  vs. applied state of a model using the Discovery API: 
 
 ```graphql
 query Compare($environmentId: Int!, $first: Int!) {
@@ -80,12 +87,12 @@ The following table shows the states of dbt nodes and how they are affected by t
 
 ## Caveats about state/metadata updates 
 
-Over time, Cloud Artifacts will provide information to maintain state for features/services in <Constant name="cloud" /> and enable you to access state in <Constant name="cloud" /> and its downstream ecosystem. Cloud Artifacts is currently focused on the latest production state, but this focus will evolve.
+Over time, Cloud Artifacts will provide information to maintain state for features/services in <Constant name="dbt" /> and enable you to access state in <Constant name="dbt" /> and its downstream ecosystem. Cloud Artifacts is currently focused on the latest production state, but this focus will evolve.
 
 Here are some limitations of the state representation in the Discovery API:
 
 - Users must access the default production environment to know the latest state of a project.
 - The API gets the definition from the latest manifest generated in a given deployment environment, but that often won’t reflect the latest project code state.
-- Compiled code results may be outdated depending on <Constant name="cloud" /> run step order and failures.
+- Compiled code results may be outdated depending on <Constant name="dbt" /> run step order and failures.
 - Catalog info can be outdated, or incomplete (in the applied state), based on if/when `docs generate` was last run.
 - Source freshness checks can be out of date (in the applied state) depending on when the command was last run, and it’s not included in `build`. 

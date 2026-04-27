@@ -48,7 +48,7 @@ Note that we have removed some deprecated features and introduced more rigorous 
 <Constant name="core" /> (built on Python) supports <Term id="sql-rendering" /> but lacks SQL parsing and modern editor features powered by <Constant name="fusion_engine" /> and the <Term id="lsp"/>. 
 
 :::tip 
-<Constant name="dbt_platform" /> customers using <Constant name="fusion" /> can [develop across multiple development surfaces](/docs/fusion/fusion-availability), including  <Constant name="cloud_ide"/> and VS Code with the dbt extension. 
+<Constant name="dbt_platform" /> customers using <Constant name="fusion" /> can [develop across multiple development surfaces](/docs/fusion/fusion-availability), including  <Constant name="studio_ide"/> and VS Code with the dbt extension. 
 
 <Constant name="dbt_platform" /> [features](/docs/cloud/about-cloud/dbt-cloud-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
 :::

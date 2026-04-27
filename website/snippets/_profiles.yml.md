@@ -1,3 +1,5 @@
+import EnvFileBeta from '/snippets/_env-file-beta.md';
+
 If you're using dbt from the command line, you need a `profiles.yml` file that contains the connection details for your data platform.
 
 :::note dbt platform accounts
@@ -35,11 +37,11 @@ Only one `profiles.yml` file is required and it can manage multiple projects and
 <Constant name="core"/> searches for the parent directory of `profiles.yml` in the following order and uses the first location it finds:
 
 1. `--profiles-dir` flag
-2. `DBT_PROFILES_DIR` environment variable 
+2. <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable 
 3. Current working directory
 4. `~/.dbt/` directory (Recommended location)
 
-Note: <Constant name="core"/> supports using the `DBT_PROFILES_DIR` environment variable or a `profiles.yml` file in the current working directory. These options aren't currently supported in <Constant name="fusion"/>.
+Note: <Constant name="core"/> supports using the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or a `profiles.yml` file in the current working directory. These options aren't currently supported in <Constant name="fusion"/>.
 
 </TabItem>
 </Tabs>
@@ -118,7 +120,7 @@ my_second_project_profile:
 
 ### Environment variables
 
-Use environment variables to keep sensitive credentials out of your `profiles.yml` file. Check out the [env_var](/reference/dbt-jinja-functions/env_var) reference for more information. 
+Use environment variables to keep sensitive credentials out of your `profiles.yml` file. Check out the [env_var](/reference/dbt-jinja-functions/env_var) reference for more information.
 
 Example:
 
@@ -141,6 +143,12 @@ my_profile:
 ```
 
 </File>
+
+When using dbt locally, you can also store environment variables in a `.env` file in your project root instead of setting them directly in your shell. The <Constant name="fusion"/> CLI, the dbt VS Code extension, and <Constant name="core"/> v1.12+ automatically load the `.env` file from your current working directory. Environment variables set in your shell take precedence over values in the `.env` file. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
+
+<EnvFileBeta />
+
+To keep credentials out of version control, add `.env` to your `.gitignore` file &mdash; new projects on v1.12 and higher created with `dbt init` include this by default.
 
 ## User config
 

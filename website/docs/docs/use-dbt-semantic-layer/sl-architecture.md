@@ -21,22 +21,22 @@ The <Constant name="semantic_layer" /> includes the following components:
 | --- | --- | :---: | :---: | :---: | :---: | :---: |
 | **[MetricFlow](/docs/build/about-metricflow)** | MetricFlow in dbt allows users to centrally define their semantic models and metrics with YAML specifications. | ✅ | ✅ | ✅ |  ✅  | [Apache 2.0 license](https://github.com/dbt-labs/metricflow/blob/main/LICENSE)|
 | **dbt Semantic interfaces**| A configuration spec for defining metrics, dimensions, and how they link to each other. The [dbt-semantic-interfaces](https://github.com/dbt-labs/dbt-semantic-interfaces) is available under Apache 2.0. | ✅ | ✅ | ✅ | ✅ | [Apache 2.0 license](https://github.com/dbt-labs/dbt-semantic-interfaces/blob/main/LICENSE) |
-| **Service layer** | Coordinates query requests and dispatching the relevant metric query to the target query engine. This is provided through <Constant name="cloud" /> and is available to all users on dbt version 1.6 or later. The service layer includes a Gateway service for executing SQL against the data platform. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Starter, Enterprise, Enterprise+)|
+| **Service layer** | Coordinates query requests and dispatching the relevant metric query to the target query engine. This is provided through <Constant name="dbt" /> and is available to all users on dbt version 1.6 or later. The service layer includes a Gateway service for executing SQL against the data platform. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Starter, Enterprise, Enterprise+)|
 | **[<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview)** | The interfaces allow users to submit metric queries using GraphQL and JDBC APIs. They also serve as the foundation for building first-class integrations with various tools. | ❌ | ❌ | ✅ | ✅ | Proprietary, Cloud (Starter, Enterprise, Enterprise+)|
 
 ## Feature comparison
 
-The following table compares the features available in <Constant name="cloud" /> and source available in <Constant name="core" />:
+The following table compares the features available in <Constant name="dbt" /> and source available in <Constant name="core" />:
 
-| Feature | MetricFlow Source available | <Constant name="semantic_layer" /> with <Constant name="cloud" /> |
+| Feature | MetricFlow Source available | <Constant name="semantic_layer" /> with <Constant name="dbt" /> |
 | ----- | :------: | :------: |
 | Define metrics and semantic models in dbt using the MetricFlow spec | ✅ | ✅ |
 | Generate SQL from a set of config files | ✅ | ✅ |
 | Query metrics and dimensions through the command line interface (CLI) | ✅ | ✅ |
 | Query dimension, entity, and metric metadata  through the CLI | ✅ | ✅ |
 | Query metrics and dimensions through semantic APIs (ADBC, GQL)  | ❌ | ✅ |
-| Connect to downstream integrations (Tableau, Hex, Mode, Google Sheets, and so on.) | ❌ | ✅ |
-| Create and run Exports to save metrics queries as tables in your data platform. | ❌ | ✅ |
+| Connect to downstream integrations (Tableau, Hex, Dot, Mode, Google Sheets, and so on) | ❌ | ✅ |
+| Create and run Exports to save metrics queries as tables in your data platform | ❌ | ✅ |
 
 ## Related docs
 - [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

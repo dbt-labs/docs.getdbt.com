@@ -33,6 +33,14 @@ The Snowflake adapter for Fusion supports the following [authentication methods]
 [Snowflake is deprecating single-access password login](https://docs.snowflake.com/en/user-guide/security-mfa-rollout). Individual developers should use MFA or SSO instead of password authentication. Password-based login remains supported for service users (Snowflake user type: `LEGACY_SERVICE`).
 :::
 
+## Warehouse permissions
+
+import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+
+<FusionSnowflakeWarehousePerms />
+
+For role examples and SQL grants in Snowflake, you can also refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions).
+
 ## Snowflake configuration details
 
 The information required for configuring the Snowflake adapter can be found conveniently in your Snowflake account menu:
@@ -196,6 +204,10 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta}/>
+
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
 
 
 ## Authentication Methods

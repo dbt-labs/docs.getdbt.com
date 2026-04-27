@@ -18,7 +18,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 - [Redshift-managed PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html)
 - [Redshift Interface-type PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/security-private-link.html)
 
-<Constant name="cloud" /> supports both types of endpoints, but there are several [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, determine which type is right for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
+<Constant name="dbt" /> supports both types of endpoints, but there are several [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, determine which type is right for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
 
 <CloudProviders type='Redshift' />
 
@@ -36,33 +36,47 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink2.png" title="Redshift granted accounts"/>
 
-3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to <Constant name="cloud" /> Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](/community/resources/getting-help#dbt-cloud-support)._
+3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to <Constant name="dbt" /> Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](mailto:support@getdbt.com)._
 
-4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](/community/resources/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
+4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](mailto:support@getdbt.com) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" title="Redshift grant access"/>
 
-5. Add the required information to the following template, and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
+5. Add the required information to the following template, and submit your request to [dbt Support](mailto:support@getdbt.com):
 
    - **Standard Redshift**
-       ```
-       Subject: New Multi-Tenant PrivateLink Request
-       - Type: Redshift-managed
-       - Redshift cluster name:
-       - Redshift cluster AWS account ID:
-       - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
-       - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
-       ```
+
+     <Expandable alt_header="Support request email template" is_open={true}>
+
+     ```text
+     Subject: New Multi-Tenant PrivateLink Request
+
+     - Type: Redshift-managed
+     - dbt platform account URL:
+     - Redshift cluster name:
+     - Redshift cluster AWS account ID:
+     - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
+     - dbt multi-tenant environment (US, EMEA, AU):
+     ```
+
+     </Expandable>
 
    - **Redshift Serverless**
-       ```
-       Subject: New Multi-Tenant PrivateLink Request
-       - Type: Redshift-managed - Serverless
-       - Redshift workgroup name:
-       - Redshift workgroup AWS account ID:
-       - Redshift workgroup AWS Region (for example, us-east-1, eu-west-2):
-       - <Constant name="cloud" /> multi-tenant environment (US, EMEA, AU):
-       ```
+
+     <Expandable alt_header="Support request email template" is_open={true}>
+
+     ```text
+     Subject: New Multi-Tenant PrivateLink Request
+
+     - Type: Redshift-managed - Serverless
+     - dbt platform account URL:
+     - Redshift workgroup name:
+     - Redshift workgroup AWS account ID:
+     - Redshift workgroup AWS Region (for example, us-east-1, eu-west-2):
+     - dbt multi-tenant environment (US, EMEA, AU):
+     ```
+
+     </Expandable>
 
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 
@@ -99,7 +113,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - **Scheme:** Internal
     - **IP address type:** IPv4
     - **Network mapping:** Choose the VPC that the VPC Endpoint Service and NLB are being deployed in, and choose subnets from at least two Availability Zones.
-    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC endpoint service must either not have an associated security group, or the security group must have a rule that allows requests from the appropriate <Constant name="cloud" /> **private CIDR(s)**. Note that _this is different_ than the static public IPs listed on the <Constant name="cloud" /> [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page. dbt Support can provide the correct private CIDR(s) upon request. If necessary, until you can refine the rule to the smaller CIDR provided by dbt, allow connectivity by temporarily adding an allow rule of `10.0.0.0/8`.
+    - **Security Groups:** The Network Load Balancer (NLB) associated with the VPC endpoint service must either not have an associated security group, or the security group must have a rule that allows requests from the appropriate <Constant name="dbt" /> **private CIDR(s)**. Note that _this is different_ than the static public IPs listed on the <Constant name="dbt" /> [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page. dbt Support can provide the correct private CIDR(s) upon request. If necessary, until you can refine the rule to the smaller CIDR provided by dbt, allow connectivity by temporarily adding an allow rule of `10.0.0.0/8`.
     - **Listeners:** Create one listener per target group that maps the appropriate incoming port to the corresponding target group ([details](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)).
 - **VPC Endpoint Service** &mdash; Attach to the newly created NLB.
     - Acceptance required (optional) &mdash; Requires you to [accept our connection request](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests) after dbt creates the endpoint.
@@ -116,25 +130,32 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
 ### 3. Obtain VPC endpoint service name
 
-Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="cloud" /> support.
+Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to <Constant name="dbt" /> support.
 
 <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" title="Get service name field value"/>
 
 ### 4. Submit your request to dbt Support
-Add the required information to the template below and submit your request to [dbt Support](/community/resources/getting-help#dbt-cloud-support):
-```
+Add the required information to the template below and submit your request to [dbt Support](mailto:support@getdbt.com):
+
+<Expandable alt_header="Support request email template" is_open={true}>
+
+```text
 Subject: New Multi-Tenant PrivateLink Request
+
 - Type: Redshift Interface-type
+- dbt platform account URL:
 - VPC Endpoint Service Name:
 - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
 - dbt AWS multi-tenant environment (US, EMEA, AU):
 ```
 
+</Expandable>
+
 <PrivateLinkSLA />
 
 ## Create connection in dbt
 
-Once <Constant name="cloud" /> Support completes the configuration, you can start creating new connections using PrivateLink.
+Once <Constant name="dbt" /> Support completes the configuration, you can start creating new connections using PrivateLink.
 
 1. Navigate to **Settings** → **Create new project** → select **Redshift**.
 2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 

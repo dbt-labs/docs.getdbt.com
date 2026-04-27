@@ -55,7 +55,7 @@ When running a job, a structured logs view shows which models were built, skippe
 
 ## Reused tag in the Latest status lens
 
-Lineage lenses are interactive visual filters in [dbt <Constant name="explorer" />](/docs/explore/explore-projects#lenses) that show additional context on your lineage graph to understand how resources are defined or performing. When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value. If you're significantly zoomed out, only the tags and their colors are visible in the graph.
+Lineage lenses are interactive visual filters in [dbt <Constant name="catalog" />](/docs/explore/explore-projects#lenses) that show additional context on your lineage graph to understand how resources are defined or performing. When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value. If you're significantly zoomed out, only the tags and their colors are visible in the graph.
 
 The **Latest status** lens shows the status from the latest execution of the resource in the current environment. When you use this lens to view your lineage, models that were reused from state-aware orchestration are tagged with **Reused**. 
 

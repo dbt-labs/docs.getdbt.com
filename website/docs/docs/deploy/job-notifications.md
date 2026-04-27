@@ -4,10 +4,11 @@ id: "job-notifications"
 description: "Set up notifications in dbt to receive email or Slack alerts about job run status."
 ---
 
-Set up notifications in <Constant name="dbt_platform" /> to receive alerts about the status of a job run. You can choose to be notified by one or more of the following job run statuses: 
+Set up notifications in <Constant name="dbt_platform" /> to receive alerts about the outcome of a job run. You can choose to be notified by one or more of the following job run outcomes:
 
 - **Succeeds** option &mdash; A job run completed successfully with no warnings or errors.
-- **Warns** option &mdash; A job run encountered warnings from [data tests](/docs/build/data-tests) or [source freshness](/docs/deploy/source-freshness) checks (if applicable).
+- **Warns** option &mdash; A job run encountered warnings from [data tests](/docs/build/data-tests) or [source freshness](/docs/deploy/source-freshness) checks. 
+  - This notification is triggered by warning-level log lines from those steps, not the job's overall run status. A job that shows "success" in the user interface can still trigger a warn notification if test or freshness steps logged warnings.
 - **Fails** option &mdash; A job run failed to complete. 
 - **Is canceled** option &mdash; A job run is canceled.
 
@@ -27,17 +28,17 @@ If you don’t have access to the native Microsoft Teams integration (available 
 
 ## Email notifications
 
-You can receive email alerts about jobs by configuring the <Constant name="cloud" /> email notification settings.
+You can receive email alerts about jobs by configuring the <Constant name="dbt" /> email notification settings.
 
 ### Prerequisites 
-- You must be either a _developer user_ or an _account admin_ to configure email notifications in <Constant name="cloud" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
+- You must be either a _developer user_ or an _account admin_ to configure email notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
     - As a developer user, you can set up email notifications for yourself. 
     - As an account admin, you can set up notifications for yourself and other team members. 
 
 ### Configure email notifications
 
 1. Select your profile icon and then click **Notification settings**. 
-2. By default, <Constant name="cloud" /> sends notifications to the email address that's in your **User profile** page.
+2. By default, <Constant name="dbt" /> sends notifications to the email address that's in your **User profile** page.
 
     If you're an account admin, you can choose a different email address to receive notifications:
     1. Under Job notifications, click the **Notification email** dropdown.
@@ -46,7 +47,7 @@ You can receive email alerts about jobs by configuring the <Constant name="cloud
     3. To add an external email address, click the **Notification email** dropdown
     4. Click **Add external email**.
     5. Enter the email address, and click Add user.
-       After adding an external email, it becomes available for selection in the **Notification email** dropdown list. External emails can be addresses that are outside of your <Constant name="cloud" /> account and also for third-party integrations like [channels in Microsoft Teams](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca) and [PagerDuty email integration](https://support.pagerduty.com/docs/email-integration-guide).
+       After adding an external email, it becomes available for selection in the **Notification email** dropdown list. External emails can be addresses that are outside of your <Constant name="dbt" /> account and also for third-party integrations like [channels in Microsoft Teams](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca) and [PagerDuty email integration](https://support.pagerduty.com/docs/email-integration-guide).
        :::note
        External emails and their notification settings persist until edited or removed even if you remove the admin who added them from the account.
        :::
@@ -83,7 +84,7 @@ You can send dbt job [notification emails](#configure-email-notifications) direc
 8. Click **Edit**, select the job statuses you want. Then click **Save** to save.
 
 ## Slack notifications (user) {#slack-notifications}
-You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="cloud" /> Slack notification settings. <Constant name="cloud" /> integrates with Slack via OAuth to ensure secure authentication.
+You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="dbt" /> Slack notification settings. <Constant name="dbt" /> integrates with Slack via OAuth to ensure secure authentication.
 
 This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the beta features.
 
@@ -96,7 +97,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 ### Prerequisites 
 - You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
-- You must be an account admin to configure Slack notifications in <Constant name="cloud" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
+- You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
 - The integration only supports _public_ channels in the Slack workspace. 
 
 ### Set up the Slack integration
@@ -113,7 +114,7 @@ If you're already logged in to Slack, the handshake only requires allowing the a
 
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
-1. Complete the field defining the Slack workspace you want to integrate with <Constant name="cloud" />.
+1. Complete the field defining the Slack workspace you want to integrate with <Constant name="dbt" />.
     <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="60%" title="Define the workspace"/>
 2. Sign in with an existing identity or use the email address and password. 
 3. Once you have authenticated successfully, accept the permissions.

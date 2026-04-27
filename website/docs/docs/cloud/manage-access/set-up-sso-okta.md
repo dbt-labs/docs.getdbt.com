@@ -5,7 +5,7 @@ id: "set-up-sso-okta"
 
 # Set up SSO with Okta <Lifecycle status="managed, managed_plus" />
 
-<Constant name="cloud" /> Enterprise-tier plans support single-sign on via Okta (using SAML).
+<Constant name="dbt" /> Enterprise-tier plans support single-sign on via Okta (using SAML).
 
 :::info SCIM available for Okta
 After setting up single sign-on (SSO), you can [set up System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim-okta) with Okta to automate user and group provisioning, and license assignment. 
@@ -17,7 +17,7 @@ Currently supported SSO features include:
 * SP-initiated SSO
 * Just-in-time provisioning
 
-This guide outlines the setup process for authenticating to <Constant name="cloud" /> with Okta.
+This guide outlines the setup process for authenticating to <Constant name="dbt" /> with Okta.
 
 ## Configuration in Okta
 
@@ -49,7 +49,7 @@ Click **Create** to continue the setup process.
 
 On the **General Settings** page, enter the following details::
 
-* **App name**: <Constant name="cloud" />
+* **App name**: <Constant name="dbt" />
 * **App logo** (optional): You can optionally [download the dbt logo](https://cdn.sanity.io/images/wl0ndo6t/main/333fef4fc72db6f1ce4d1bc0789f355b4f0bbaa2-1280x1280.png),
   and upload it to Okta to use as the logo for this app.
 
@@ -63,7 +63,7 @@ Click **Next** to continue.
 
 ### Configure SAML Settings
 
-The SAML Settings page configures how Okta and <Constant name="cloud" /> communicate. You will want to use an [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+The SAML Settings page configures how Okta and <Constant name="dbt" /> communicate. You will want to use an [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
 import LoginSlug from '/snippets/_login-slug.md';
 
@@ -86,13 +86,13 @@ import LoginSlug from '/snippets/_login-slug.md';
 
 :::info Application username configuration
 The **Application username** setting depends on whether you plan to use SCIM or not:
-- **SSO only:** Use a unique value such as `Custom` / `user.getInternalProperty("id")` (recommended in earlier steps)
-- **SSO and SCIM:** Use `Email` format instead, as SCIM requires the username to be in email address format
+- **SSO only:** Use a unique value such as `Custom` / `user.getInternalProperty("id")` (recommended in earlier steps).
+- **SSO and SCIM:** Use **Email** format. SCIM requires the username to be in email address format and to be the same value as the email attribute.
 :::
 
 Use the **Attribute Statements** and **Group Attribute Statements** forms to
 map your organization's Okta User and Group Attributes to the format that
-<Constant name="cloud" /> expects.
+<Constant name="dbt" /> expects.
 
 Expected **User Attribute Statements**:
 
@@ -111,7 +111,7 @@ Expected **Group Attribute Statements**:
 
 
 **Note:** You may use a more restrictive Group Attribute Statement than the
-example shown above. For example, if all of your <Constant name="cloud" /> groups start with
+example shown above. For example, if all of your <Constant name="dbt" /> groups start with
 `DBT_CLOUD_`, you may use a filter like `Starts With: DBT_CLOUD_`. **Okta
 only returns 100 groups for each user, so if your users belong to more than 100
 IdP groups, you will need to use a more restrictive filter**. Please contact
@@ -140,8 +140,8 @@ app.
 ### View setup instructions
 
 On the next page, click **View Setup Instructions**. In the steps below,
-you'll supply these values in your <Constant name="cloud" /> Account Settings to complete
-the integration between Okta and <Constant name="cloud" />.
+you'll supply these values in your <Constant name="dbt" /> Account Settings to complete
+the integration between Okta and <Constant name="dbt" />.
 
 <Lightbox
     collapsed={true}
@@ -157,7 +157,7 @@ the integration between Okta and <Constant name="cloud" />.
 
 ## Configuration in dbt
 
-To complete setup, follow the steps below in <Constant name="cloud" />.
+To complete setup, follow the steps below in <Constant name="dbt" />.
 
 ### Supplying credentials
 
@@ -170,7 +170,7 @@ Settings. Next, click the **Edit** button and supply the following SSO details:
 | **Log&nbsp;in&nbsp;with** | Okta |
 | **Identity&nbsp;Provider&nbsp;SSO&nbsp;Url** | Paste the **Identity Provider Single Sign-On URL** shown in the Okta setup instructions |
 | **Identity&nbsp;Provider&nbsp;Issuer** | Paste the **Identity Provider Issuer** shown in the Okta setup instructions |
-| **X.509&nbsp;Certificate** | Paste the **X.509 Certificate** shown in the Okta setup instructions; <br />**Note:** When the certificate expires, an Okta admin will have to generate a new one to be pasted into <Constant name="cloud" /> for uninterrupted application access. |
+| **X.509&nbsp;Certificate** | Paste the **X.509 Certificate** shown in the Okta setup instructions; <br />**Note:** When the certificate expires, an Okta admin will have to generate a new one to be pasted into <Constant name="dbt" /> for uninterrupted application access. |
 
 
 <Lightbox
@@ -182,7 +182,7 @@ Settings. Next, click the **Edit** button and supply the following SSO details:
 21. Click **Save** to complete setup for the Okta integration. From
     here, you can navigate to the URL generated for your account's _slug_ to
     test logging in with Okta. Additionally, users added the Okta app
-    will be able to log in to <Constant name="cloud" /> from Okta directly.
+    will be able to log in to <Constant name="dbt" /> from Okta directly.
 
 <Snippet path="login_url_note" />
 
@@ -194,6 +194,10 @@ Now you have completed setting up SSO with Okta, the next steps will be to set u
 :::tip Set up SCIM
 Now that you've set up SSO with Okta, you can [set up SCIM](/docs/cloud/manage-access/scim-okta) to automate user and group provisioning (and license assignment for Okta).
 :::
+
+## FAQ and troubleshooting
+
+For common questions and troubleshooting guidance — including issues with email verification, MFA prompts, and SSO group mapping behavior — refer to [SSO FAQs and troubleshooting](/docs/cloud/manage-access/sso-faq).
 
 ## Learn more
 
