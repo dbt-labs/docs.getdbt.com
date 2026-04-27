@@ -35,7 +35,7 @@ The `redshift_skip_autocommit_transaction_statements` flag controls whether dbt 
   - `commit()` does not send `COMMIT`.
   - `rollback_if_open()` does not send `ROLLBACK`.
 
-dbt still maintains its internal `transaction_open` state so that transaction tracking in dbt stays consistent, even when those statements are skipped.
+dbt still maintains its internal `transaction_open` state so transaction tracking remains consistent even when those SQL statements are skipped.
 
 To skip unnecessary transaction statements when autocommit is enabled, set the flag to `True` in your `dbt_project.yml`:
 
