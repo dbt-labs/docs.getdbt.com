@@ -217,14 +217,16 @@ If you previously configured Slack notifications with the legacy integration, yo
 The banner appears when all of the following are true:
 
 - You have existing legacy (v1) Slack notification settings.
-- Your account is connected to the new Slack app (v2 OAuth is linked).
+- Your account is connected to the <Constant name="dbt_platform" /> app (v2 OAuth is linked).
 - You do not have any v2 Slack notification settings yet.
 
-To migrate your settings, click **Migrate settings**. dbt copies your legacy Slack notification settings to the new Slack app.
+To migrate your settings, click **Migrate settings**. dbt copies your legacy Slack notification settings to the <Constant name="dbt_platform" /> app.
 
 You can click **Dismiss** to hide the banner for your current session. The banner appears again when you reload the page unless migration has completed successfully.
 
-After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup. Invite the dbt Platform app to each listed private channel so notifications can be delivered.
+After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup. Invite the <Constant name="dbt_platform" /> app to each listed private channel so notifications can be delivered.
+
+<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of private channel invite guidance for the dbt Platform app"/>
 
 When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
 
