@@ -130,7 +130,7 @@ If your project relies heavily on views, usage may appear lower than expected. T
 
 Model query history uses two Unity Catalog system tables: `system.query.history` and `system.access.table_lineage`. Before granting access, confirm the following prerequisites are met:
 
-- Your account has at least one Unity Catalog-enabled workspace. Users that are still on the legacy Hive Metastore cannot use model query history.
+- Your account has at least one Unity Catalog-enabled workspace. Users who are still on the legacy Hive Metastore cannot use model query history.
 - The metastore is on Privilege Model Version 1.0. For more information, refer to [Unity Catalog privileges reference](https://docs.databricks.com/aws/en/data-governance/unity-catalog/access-control/privileges-reference).
 - The `access` and `query` schemas are enabled in the `system` catalog. A Databricks account admin can enable them under **Account Console** > **Settings** > **System tables**.
 
