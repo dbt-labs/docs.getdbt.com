@@ -3,7 +3,7 @@ title: "Developing with Fusion: dbt Platform and local workflows"
 id: "fusion-platform-local-workflow"
 level: 'Intermediate'
 icon: 'zap'
-hide_table_of_contents: false
+hide_table_of_contents: true
 tags: ['dbt Fusion engine', 'dbt platform', 'Local development']
 recently_updated: true
 ---
