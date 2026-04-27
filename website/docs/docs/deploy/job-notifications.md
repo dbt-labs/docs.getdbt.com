@@ -226,7 +226,7 @@ You can click **Dismiss** to hide the banner for your current session. The banne
 
 After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup. Invite the <Constant name="dbt_platform" /> app to each listed private channel so notifications can be delivered.
 
-<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of private channel invite guidance for the dbt Platform app"/>
+<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of private channel invite guidance for the dbt platform app"/>
 
 When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
 
