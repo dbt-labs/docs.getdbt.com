@@ -20,9 +20,21 @@ To find and fix deprecations:
 6. When the command history opens, click the **Autofix warnings** button:
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-button.png" width="90%" title="Learn what deprecations need to be auto fixed"/>
 7. When the **Proceed with autofix** dialog opens, click **Continue** to begin resolving project deprecations and start a follow-up parse to show remaining deprecations.
-    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/> 
-8. Once complete, a success message appears. Click **Review changes** to verify the changes.
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Proceed with autofix"/>
+8. Once complete, a success message appears.
+
+    <VersionBlock lastVersion="1.99">
+    Click **Review changes** to verify the changes.
     <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-success.png" width="90%" title="Success"/>
+    </VersionBlock>
+
+    <VersionBlock firstVersion="2.0">
+    After a successful `dbt parse` command, you'll see a **Compile** button to the right of the **Successfully resolved** result. Use **Compile** to compile your project from the results panel. 
+    <Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-success-fusion-compile.png" width="90%" title="Autofix success with Compile in the Fusion flow"/>
+
+    If successful, you'll see a **Successfully compiled** result. If you see any errors, review them and make any necessary changes.
+    </VersionBlock>
+
 9. Click **Commit and sync** in the top left of <Constant name="studio_ide" /> to commit these changes to the project repository.
 10. You are now ready to enable Fusion if you [meet the requirements](/docs/fusion/supported-features#requirements)!
 
