@@ -93,7 +93,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
-- You can set the [`iceberg_version`](/docs/mesh/iceberg/snowflake-iceberg-support#adapter-properties) config on Snowflake Iceberg tables to control which Iceberg format version Snowflake uses. Set it to `3` to use Iceberg V3, which improves `VARIANT` type support and makes row-level changes more efficient by tracking deletions separately instead of rewriting data. The default value is `2`. You can't change this value after table creation.
+- You can set the [`iceberg_version`](/docs/mesh/iceberg/snowflake-iceberg-support#adapter-properties) config on Snowflake Iceberg tables to control which Iceberg format version Snowflake uses. Set it to `3` to use Iceberg V3, which improves `VARIANT` type support and makes row-level changes more efficient by tracking deletions separately instead of rewriting data. The default value is `2`. Note that you can't change the value of `iceberg_version` after table creation.
 - You can configure the [`scheduler`](/reference/resource-configs/snowflake-configs#scheduler) parameter on Snowflake dynamic tables to control how refreshes are managed. Setting it to `ENABLE` lets Snowflake automatically refresh the dynamic table, while `DISABLE` means dbt manages refreshes during model execution. When `scheduler` is set to `ENABLE`, you must also specify [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag). 
 
     By default, dbt sets `scheduler` to `DISABLE` (unlike Snowflake’s native default of `ENABLE`), so dbt controls the refresh schedule unless you explicitly opt in to Snowflake’s scheduler. If you specify `target_lag` without setting `scheduler`, dbt automatically sets `scheduler` to `ENABLE`.
