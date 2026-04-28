@@ -103,7 +103,7 @@ my_profile:
       schema: "{{ env_var('DBT_MY_SCHEMA') }}"
 ```
 
-For a full walkthrough of `.env` file usage and variable precedence, see [Environment variables](/docs/local/install-dbt?version=2#environment-variables).
+For a full walkthrough of `.env` file usage and variable precedence, see [Environment variables](/docs/build/environment-variables) for more information on where to find your configured variables and [Set environment variables locally](/docs/configure-dbt-extension?version=2.0#set-environment-variables-locally) for local configuration instructions.
 
 :::tip Add .env to .gitignore
 Add `.env` to your `.gitignore` to prevent credentials from being committed. Running `dbt init` will do this automatically.
