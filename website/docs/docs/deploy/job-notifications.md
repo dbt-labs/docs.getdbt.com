@@ -214,19 +214,33 @@ If you previously configured Slack notifications with the legacy integration, yo
 
 <Lightbox src="/img/docs/deploy/migrating-legacy-slack-notifications.png" width="100%" title="Example of the Slack migration banner"/>
 
+Before you can migrate settings, you must unlink the legacy Slack integration and link the <Constant name="dbt_platform" /> app. Unlinking the legacy integration is a manual step, and only one Slack app can be linked at a time.
+
 The banner appears when all of the following are true:
 
-- You have existing legacy (v1) Slack notification settings.
-- Your account is connected to the <Constant name="dbt_platform" /> app (v2 OAuth is linked).
-- You do not have any v2 Slack notification settings yet.
+- You have notification settings from a previous Slack integration.
+- Your account is connected to the <Constant name="dbt_platform" /> app.
+- You have not configured Slack notification settings with the <Constant name="dbt_platform" /> app yet.
 
-To migrate your settings, click **Migrate settings**. dbt copies your legacy Slack notification settings to the <Constant name="dbt_platform" /> app.
+The <Constant name="dbt_platform" /> Slack app sends job notifications to _public_ channels in your workspace. Private channels are different: notifications are not delivered there until you invite the <Constant name="dbt_platform" /> app to each private channel you use.
 
-You can click **Dismiss** to hide the banner for your current session. The banner appears again when you reload the page unless migration has completed successfully.
+Migration copies your existing Slack notification settings to the <Constant name="dbt_platform" /> app, including:
 
-After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup. Invite the <Constant name="dbt_platform" /> app to each listed private channel so notifications can be delivered.
+- Your selected **Notification channel**
+- Your selected **Environment**
+- Your selected jobs
+- Your notification toggles (for example, **Succeeds**, **Warns**, **Fails**, and **Is canceled**)
 
-<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of private channel invite guidance for the dbt Platform app"/>
+If any of your notification channels are private, invite the <Constant name="dbt_platform" /> app to those channels after migrating, or use the list dbt may show you after migration, so notifications can be delivered.
+
+To migrate your settings:
+
+1. Click **Migrate settings** to migrate your settings to the <Constant name="dbt_platform" /> app.
+2. Click **Dismiss** to hide the banner for your current session. The banner appears again when you reload the page unless migration has completed successfully.
+
+After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup.
+
+<Lightbox src="/img/docs/deploy/dbt-platform-slack-invite.png" width="100%" title="Example of private channel invite guidance for the dbt platform app"/>
 
 When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
 
