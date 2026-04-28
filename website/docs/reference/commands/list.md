@@ -7,7 +7,9 @@ id: "list"
 
 The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](/reference/commands/run). `dbt list` is an alias for `dbt ls`. While `dbt ls` will read your [connection profile](/docs/local/profiles.yml) to resolve [`target`](/reference/dbt-jinja-functions/target)-specific logic, this command will not connect to your database or run any queries.
 
-In <Constant name="dbt_platform" /> run logs, nodes returned by `dbt ls` or `dbt list` can appear as `noop` when there is no terminal execution status. `noop` means dbt identified the node during selection, but did not run it.
+<VersionBlock firstVersion="2.0">
+In <Constant name="dbt_platform" /> run logs, `dbt ls` and `dbt list` node results for <Constant name="fusion_engine" /> runs can appear as **No-op** when there is no terminal execution status. This replaces **Unknown** and indicates dbt selected the node but did not run it.
+</VersionBlock>
 
 ### Usage
 ```
