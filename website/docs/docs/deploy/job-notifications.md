@@ -160,7 +160,7 @@ After an account admin links the Slack app for the account, [any licensed user](
 
 The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
 
-To use the Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+To use Slack notifications, you must unlink the old Slack app and then connect the new official app: 
 
 1. Go to **Account settings** > **Integrations** > **OAuth**.
 2. Click the **X** icon next to Slack and select **Unlink**.
