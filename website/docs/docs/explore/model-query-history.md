@@ -39,7 +39,7 @@ To access the features, you should meet the following requirements:
 1. You have a <Constant name="dbt" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
 2. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in <Constant name="dbt" /> to edit project settings or production environment settings.
-4. You use Snowflake, BigQuery, Redshift, or Databricks as your data warehouse and can enable [query history permissions](#snowflake-model-query-history) or work with an admin to do so.
+4. You use Snowflake, BigQuery, Redshift, or Databricks as your data warehouse and can enable [query history permissions](#credential-permissions) or work with an admin to do so.
    - For Snowflake users: You must have a Snowflake Enterprise-tier or higher subscription.
 
 ## Enable query history in dbt
@@ -137,11 +137,11 @@ Model query history uses two Unity Catalog system tables: `system.query.history`
 Grant the service principal used in your production environment the following privileges:
 
 ```sql
-GRANT USE CATALOG ON CATALOG system TO `<your-service-principal>`;
-GRANT USE SCHEMA ON SCHEMA system.access TO `<your-service-principal>`;
-GRANT USE SCHEMA ON SCHEMA system.query TO `<your-service-principal>`;
-GRANT SELECT ON TABLE system.access.table_lineage TO `<your-service-principal>`;
-GRANT SELECT ON TABLE system.query.history TO `<your-service-principal>`;
+GRANT USE CATALOG ON CATALOG system TO `<YOUR_SERVICE_PRINCIPAL>`;
+GRANT USE SCHEMA ON SCHEMA system.access TO `<YOUR_SERVICE_PRINCIPAL>`;
+GRANT USE SCHEMA ON SCHEMA system.query TO `<YOUR_SERVICE_PRINCIPAL>`;
+GRANT SELECT ON TABLE system.access.table_lineage TO `<YOUR_SERVICE_PRINCIPAL>`;
+GRANT SELECT ON TABLE system.query.history TO `<YOUR_SERVICE_PRINCIPAL>`;
 ```
 
 :::note
