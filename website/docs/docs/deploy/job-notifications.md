@@ -214,7 +214,14 @@ If you previously configured Slack notifications with the legacy integration, yo
 
 <Lightbox src="/img/docs/deploy/migrating-legacy-slack-notifications.png" width="100%" title="Example of the Slack migration banner"/>
 
-Before you can migrate settings, you must unlink the legacy Slack integration and link the <Constant name="dbt_platform" /> app. Unlinking the legacy integration is a manual step, and only one Slack app can be linked at a time.
+The banner appears when all of the following are true:
+
+- You have notification settings from a previous Slack integration.
+- Your account is connected to the <Constant name="dbt_platform" /> app.
+- You have not yet configured Slack notifications with the <Constant name="dbt_platform" /> app.
+
+Before migrating, you must unlink the legacy Slack integration and link the <Constant name="dbt_platform" /> app. Unlinking the legacy integration is a manual step, and only one Slack app can be linked at a time.
+
 
 The banner appears when all of the following are true:
 
