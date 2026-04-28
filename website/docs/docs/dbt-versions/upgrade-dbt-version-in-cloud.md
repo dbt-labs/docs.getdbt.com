@@ -117,6 +117,10 @@ To begin the process of upgrading to <Constant name="fusion" /> with the assista
 
 Now that you've upgraded your development environment to <Constant name="Fusion" />, you're ready to start the process of upgrading your Production, Staging, and General environments. Follow your organization's standard procedures and use the [release tracks](#release-tracks) to upgrade.
 
+import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+
+<FusionReadinessPanel />
+
 <FusionUpgradeSteps />
 
 ## Jobs
