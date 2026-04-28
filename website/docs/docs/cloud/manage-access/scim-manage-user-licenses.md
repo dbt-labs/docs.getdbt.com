@@ -26,10 +26,10 @@ To use license management using SCIM, go to your **Account settings** > **SSO & 
 
 We recommend that you complete the setup instructions for your identity provider (IdP) prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="dbt" /> will be ignored.
 
-:::caution Microsoft Entra ID users
-Do not enable **Manage user licenses with SCIM** if you use Microsoft Entra ID. SCIM-native license attributes are not supported for Entra ID, so enabling this toggle would disable your existing SSO license mappings without a replacement, leaving users without license mapping.
+:::info Microsoft Entra ID users
+Do not enable the **Manage user licenses with SCIM** if you use Microsoft Entra ID. SCIM-native license attributes aren't supported for Entra ID, so enabling this toggle would disable your existing SSO license mappings without a replacement, leaving users without license mapping.
 
-Instead, keep this toggle **disabled** and use [SSO-based AD group → license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration). This approach works alongside an active Entra ID SCIM configuration.
+Instead, keep this toggle _disabled_ and use [SSO-based AD group → license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration). This setup works alongside an active Entra ID SCIM configuration.
 :::
 
 The recommended steps for migrating to SCIM license mapping are as follows:
