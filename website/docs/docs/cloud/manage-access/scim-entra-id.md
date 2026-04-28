@@ -9,9 +9,9 @@ sidebar_label: "Set up SCIM with Entra ID"
 
 <Constant name="dbt_platform" /> supports System for Cross-Domain Identity Management (SCIM) with Microsoft Entra ID for user and group provisioning and profile updates.
 
-SCIM-native license mapping (using a SCIM attribute, as supported with Okta) isn't available for Microsoft Entra ID. However, you can still use [SSO-based AD group → license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration) alongside an active Entra ID SCIM setup.
+SCIM-native license mapping (using a SCIM attribute, as supported with Okta) isn't available for Microsoft Entra ID. However, you can still use [SSO-based Active Directory group → license mapping](/docs/cloud/manage-access/seats-and-users#mapped-configuration) alongside an active Entra ID SCIM setup.
 
-Whe you use the SSO-based AD group → license mapping setup, keep the **Manage user licenses with SCIM** (found in **Account settings -> SSO & SCIM**) toggle disabled. Turning it on tells <Constant name="dbt_platform" /> to ignore existing SSO license mappings, which would remove license mapping entirely for Entra ID users.
+When you use the SSO-based Active Directory group → license mapping setup, keep the **Manage user licenses with SCIM** (found in **Account settings -> SSO & SCIM**) toggle disabled. Turning it on tells <Constant name="dbt_platform" /> to ignore existing SSO license mappings, which would remove license mapping entirely for Entra ID users.
 
 ## Prerequisites
 - Available on [Enterprise or Enterprise+ plans](https://www.getdbt.com/pricing).
