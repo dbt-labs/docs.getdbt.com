@@ -83,7 +83,7 @@ For information about configuring seeds (for example, column types and quoting b
 
 Use `--empty` to create seed tables with the correct schema but without loading any data. dbt infers column names and types from the CSV file but inserts zero rows. This is useful in development or CI environments where downstream models and unit tests need the table structure to exist without the overhead of loading full datasets. For example:
 
-- You need the table structure for downstream models or unit tests without loading data:
+- Build schema-only seed tables so downstream models and unit tests can compile and run:
 
   ```shell
   dbt seed --empty
