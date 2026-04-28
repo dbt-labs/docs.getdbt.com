@@ -231,7 +231,18 @@ The banner appears when all of the following are true:
 
 The <Constant name="dbt_platform" /> Slack app sends job notifications to _public_ channels in your workspace. Private channels are different: notifications are not delivered there until you invite the <Constant name="dbt_platform" /> app to each private channel you use.
 
-Migration copies your existing Slack notification settings to the <Constant name="dbt_platform" /> app, including:
+
+1. Click **Migrate settings** to copy your existing settings to the <Constant name="dbt_platform" /> app, including:
+
+  - Your selected **Notification channel** and **Environment**
+  - Your selected jobs
+  - Your notification toggles (for example, **Succeeds**, **Warns**, **Fails**, and **Is canceled**)
+
+2. Click **Dismiss** to hide the banner for your current session &mdash; it reappears on reload until migration completes.
+3 After migration, if needed, dbt shows an informational message listing private Slack channels that still need setup.
+  - If any of your channels are private, invite the <Constant name="dbt_platform" /> app to each one after migrating so notifications can be delivered. 
+  
+When migration succeeds, dbt hides the banner and refreshes your Slack notification settings. If migration fails, the banner remains so you can try again.
 
 - Your selected **Notification channel**
 - Your selected **Environment**
