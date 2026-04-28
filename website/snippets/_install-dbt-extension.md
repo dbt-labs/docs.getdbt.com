@@ -57,24 +57,27 @@ You're all set up with the dbt extension! The next steps are:
 
 ## Getting started
 
-Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear in the sidebar. Click it to open the **Get Started** panel — a persistent, always-on setup companion available in both VS Code and Cursor. 
+Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear in the sidebar. Click it to open the **Get started** panel &mdash; a persistent, always-on setup companion available in both VS Code and Cursor. 
 
-Unlike the previous one-time walkthrough experience, the Get Started panel continuously monitors your environment and surfaces the single most important next action. As new Fusion releases ship or your project changes, the panel resurfaces relevant steps automatically.
+The Get started panel continuously monitors your environment and surfaces the single most important next action. As new Fusion releases ship or your project changes, the panel resurfaces relevant steps automatically.
 
-<Lightbox src="/img/docs/extension/vsce-get-started-panel.png" width="60%" title="The new Get Started panel in VS Code showing the four setup steps, with the active step highlighted as an orange CTA button."/>
+<Lightbox src="/img/docs/extension/vsce-get-started.png" width="100%" title="The Get started panel in VS Code showing the four setup steps, with the active step highlighted as an orange CTA button."/>
 
 The panel guides you through four setup steps in order, showing only what's relevant to your current state:
 
-1. **Install or update Fusion engine** — Detects whether the Fusion binary is missing or outdated and installs or updates it automatically with a single click.
-2. **Open your dbt project** — Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
-3. **Check Fusion compatibility** — Guides you through upgrading your project to Fusion. You can choose between two paths:
-    - **Agentic migration** (recommended for Cursor users): Automatically kicks off the core-to-Fusion migration via Copilot or Cursor — no CLI commands needed. Requires Copilot or Cursor. 
-    - **Manual CLI onboarding**: Runs the [Fusion upgrade](#upgrade-to-fusion) workflow in your terminal. See [Upgrade to Fusion](#upgrade-to-fusion) for details.
-4. **Register** — Confirms you've registered your email to use the extension beyond the 14-day trial period. See [Register the extension](#register-the-extension).
+1. **Install or update <Constant name="fusion_engine" />**: Detects whether the <Constant name="fusion_engine" /> binary is missing or outdated and installs or updates it automatically with a single click.
+2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
+3. **Check Fusion compatibility**: Guides you through upgrading your project to Fusion. When you click this step, you can choose between two paths:
+    - **Start with an agent**: Installs the **Migrate dbt Core to Fusion** agent skill to your editor's skill folder
+        - This opens your AI chat (Copilot or Cursor) with a migration prompt pre-filled. 
+        - A notification will confirm: _"We'll install the Migrate dbt Core to Fusion agent skill to the editor's skill folder. Then we'll open your AI chat with a prompt to start the migration."_
+        - Click **Install & open chat** to proceed &mdash; the chat opens with the prompt already loaded, so you just press enter and the agent handles the migration. No CLI commands needed. Requires Copilot or Cursor.
+    - **Start manually in CLI**: Runs the [Fusion upgrade](#upgrade-to-fusion) workflow in your terminal. See [Upgrade to Fusion](#upgrade-to-fusion) for details.
+4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day grace period. See [Register the extension](#register-the-extension).
 
 When all four steps are complete, the panel shows a green **Extension setup complete** button.
 
-<Lightbox src="/img/docs/extension/vsce-get-started-complete.png" width="60%" title="The Get Started panel showing Extension setup complete with all four steps checked."/>
+<Lightbox src="/img/docs/extension/vsce-get-started-complete.png" width="100%" title="The Get started panel showing Extension setup complete with all four steps checked."/>
 
 ## Upgrade to Fusion
 
@@ -84,24 +87,26 @@ If you are already running the <Constant name="fusion_engine" />, you must be on
 
 :::
 
-The dbt extension provides two ways to upgrade your project to Fusion from the **Get Started** panel:
+The dbt extension provides two ways to upgrade your project to Fusion from the **Get started** panel:
 
-- **Agentic migration** — Automatically runs the core-to-Fusion migration via Copilot or Cursor without any CLI steps. Select this option in the **Check Fusion compatibility** step of the Get Started panel. Requires Copilot or Cursor.
+- **Agentic migration** — Automatically runs the core-to-Fusion migration via Copilot or Cursor without any CLI steps. Select this option in the **Check Fusion compatibility** step of the Get started panel. Requires Copilot or Cursor.
 - **Manual CLI onboarding** — Walks you through the upgrade interactively in your terminal. Use this if you prefer the CLI or don't have Copilot or Cursor.
 
 ### Manual CLI onboarding
 
-To start the manual upgrade, open a CLI window and run:
+You can manually update your project to <Constant name="fusion" /> in a couple of ways:
 
-```
-dbt init --fusion-upgrade
-```
+- Triggering the manual flow from the **Get started** panel by selecting the **Manual CLI onboarding** option in the **Check Fusion compatibility** step.
+- Running the following command in your terminal:
 
-You can also trigger the manual flow from the **Get Started** panel by selecting the **Manual CLI onboarding** option in the **Check Fusion compatibility** step.
+    ```
+    dbt init --fusion-upgrade
+    ```
+    <br />
 
-    <Lightbox src="/img/docs/extension/fusion-onboarding-experience.png" width="80%" title="The dbt extension help pane and upgrade assistant." /> 
+    <Lightbox src="/img/docs/extension/vsce-manual-upgrade.png" width="100%" title="The dbt extension Get started panel and upgrade assistant." /> 
 
-This starts the upgrade tool and guides you through the Fusion upgrade with a series of prompts:
+This starts the upgrade tool and guides you through the <Constant name="fusion" />  upgrade with a series of prompts:
 - **Do you have an existing dbt platform account?**: If you answer `Y`, you will be given instructions for downloading your dbt platform profile to register the extension. An `N` answer will skip to the next step.
 - **Ready to run a dbtf init?** (If there is no `profiles.yml` file present): You will go through the dbt configuration processes, including connecting to your data warehouse. 
 - **Ready to run a dbtf debug?** (If there is an existing `profiles.yml` file): Validates that your project is configured correctly and can connect to your data warehouse.
