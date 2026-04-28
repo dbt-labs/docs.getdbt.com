@@ -79,7 +79,7 @@ A [<Constant name="dbt" /> account admin](/docs/platform/manage-access/enterpris
 <Lightbox src="/img/docs/deploy/hp-existing-project.jpg" width="80%" title="Hybrid project for an existing project" />
 
 ### Generate service token and artifact upload values
-A <Constant name="dbt" /> admin should perform these steps to generate a [service token](/docs/dbt-platform-apis/service-tokens#enterprise-plans-using-service-account-tokens) (with both **Job Runner** _and_ **Job Viewer** permissions) and copy the values needed to configure a <Constant name="core" /> project so it's ready to upload generated artifacts to <Constant name="dbt" />.
+A <Constant name="dbt" /> admin should perform these steps to generate a [service token](/docs/dbt-apis/service-tokens#enterprise-plans-using-service-account-tokens) (with both **Job Runner** _and_ **Job Viewer** permissions) and copy the values needed to configure a <Constant name="core" /> project so it's ready to upload generated artifacts to <Constant name="dbt" />.
 
 The <Constant name="dbt" /> admin should share the values with a <Constant name="core" /> user.
 

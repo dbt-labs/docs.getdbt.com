@@ -30,7 +30,7 @@ Data health tiles rely on [exposures](/docs/build/exposures) to surface data hea
 ## Prerequisites
 
 - You must have a <Constant name="dbt" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/).
-- You must be an account admin to set up [service tokens](/docs/dbt-platform-apis/service-tokens#permissions-for-service-account-tokens).
+- You must be an account admin to set up [service tokens](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
 - You must have [develop permissions](/docs/platform/manage-access/seats-and-users).
 - You have [exposures](/docs/build/exposures) defined in your project:
   -  If using manual exposures, they must be explicitly defined in your YAML files.
@@ -58,14 +58,14 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 
 ## Embed in your dashboard
 
-Once you’ve navigated to the exposure in <Constant name="catalog" />, you’ll need to set up your data health tile and [service token](/docs/dbt-platform-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
+Once you’ve navigated to the exposure in <Constant name="catalog" />, you’ll need to set up your data health tile and [service token](/docs/dbt-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
 
 Follow these steps to set up your data health tile:
 
 1. Go to **Account settings** in <Constant name="dbt" />.
 2. Select **API tokens** in the left sidebar and then **Service tokens**.
 3. Click on **Create service token** and give it a name.
-4. Select the [**Metadata Only**](/docs/dbt-platform-apis/service-tokens) permission. This token will be used to embed the tile in your dashboard in the later steps.
+4. Select the [**Metadata Only**](/docs/dbt-apis/service-tokens) permission. This token will be used to embed the tile in your dashboard in the later steps.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.jpg" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
 
 5. Copy the **Metadata Only** token and save it in a secure location. You'll need it token in the next steps.
@@ -188,7 +188,7 @@ The default experience is the [environment-based data health tile](#view-exposur
 This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile.
 
 <Expandable alt_header="Job-based data health">  
-In <Constant name="dbt" />, the [Discovery API](/docs/dbt-platform-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
+In <Constant name="dbt" />, the [Discovery API](/docs/dbt-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
 
 #### Functionality
 The dashboard status tile looks like this:
@@ -206,7 +206,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in th
 
 In order to set up your dashboard status tile, here is what you need:
 
-1. **Metadata Only token.**  You can learn how to set up a Metadata-Only token [here](/docs/dbt-platform-apis/service-tokens).
+1. **Metadata Only token.**  You can learn how to set up a Metadata-Only token [here](/docs/dbt-apis/service-tokens).
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](/docs/build/exposures).
 

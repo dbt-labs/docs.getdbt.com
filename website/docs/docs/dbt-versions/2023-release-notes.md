@@ -119,7 +119,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='dbt Cloud APIs'>
 
-    Beginning December 1, 2023, the [Administrative API](/docs/dbt-platform-apis/admin-cloud-api) v2 and v3 will expect you to limit all "list" or `GET` API methods to 100 results per API request. This limit enhances the efficiency and stability of our services. If you need to handle more than 100 results, then use the `limit` and `offset` query parameters to paginate those results; otherwise, you will receive an error. 
+    Beginning December 1, 2023, the [Administrative API](/docs/dbt-apis/admin-cloud-api) v2 and v3 will expect you to limit all "list" or `GET` API methods to 100 results per API request. This limit enhances the efficiency and stability of our services. If you need to handle more than 100 results, then use the `limit` and `offset` query parameters to paginate those results; otherwise, you will receive an error. 
 
     This maximum limit applies to [multi-tenant instances](/docs/platform/about-platform/access-regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
@@ -200,7 +200,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - Continuous integration jobs are now generally available and no longer in beta!
     - Added [Postgres PrivateLink set up page](/docs/platform/secure/private-connectivity/aws/aws-postgres)
     - Published beta docs for [dbt Explorer](/docs/explore/explore-projects).
-    - Added a new Semantic Layer [GraphQL API doc](/docs/dbt-platform-apis/sl-graphql) and updated the [integration docs](/docs/platform-integrations/avail-sl-integrations) to include Hex. Responded to dbt community feedback and clarified Metricflow use cases for dbt Core and dbt Cloud.
+    - Added a new Semantic Layer [GraphQL API doc](/docs/dbt-apis/sl-graphql) and updated the [integration docs](/docs/platform-integrations/avail-sl-integrations) to include Hex. Responded to dbt community feedback and clarified Metricflow use cases for dbt Core and dbt Cloud.
     - Added an [FAQ](/faqs/Git/git-migration) describing how to migrate from one git provider to another in dbt Cloud.
     - Clarified an example and added a [troubleshooting section](/docs/platform/connect-data-platform/connect-snowflake#troubleshooting) to Snowflake connection docs to address common errors and provide solutions.
 
@@ -229,7 +229,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     It aims to bring the best of modeling and semantics to downstream applications by introducing:
 
     - Brand new [integrations](/docs/platform-integrations/avail-sl-integrations) such as Tableau, Google Sheets, Hex, Mode, and Lightdash.
-    - New [Semantic Layer APIs](/docs/dbt-platform-apis/sl-api-overview) using GraphQL and JDBC to query metrics and build integrations.
+    - New [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) using GraphQL and JDBC to query metrics and build integrations.
     - dbt Cloud [multi-tenant regional](/docs/platform/about-platform/access-regions-ip-addresses) support for North America, EMEA, and APAC. Single-tenant support coming soon.
     - Coming soon &mdash; Schedule exports (a way to build tables in your data platform) as part of your dbt Cloud job. Use the APIs to call an export, then access them in your preferred BI tool.  
 
@@ -309,9 +309,9 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     * The **What’s new?** product update widget is back in the dbt Cloud UI! The Docs team will begin updating the content to keep you informed about new features.
     * Launched the re-released [Semantic Layer beta docs](/docs/use-dbt-semantic-layer/dbt-sl), which introduces users to the new API, new guide to set up MetricFlow and the new Semantic Layer, as well as revamp the ‘Use the dbt Semantic Layer’ section for users.
-    * Updated [Admin API v2 and v3](/docs/dbt-platform-apis/admin-cloud-api) to help you understand the differences between them and which version includes the endpoints you use.
+    * Updated [Admin API v2 and v3](/docs/dbt-apis/admin-cloud-api) to help you understand the differences between them and which version includes the endpoints you use.
     * To improve discoverability, the docs team made changes to the [deploy dbt sidebar](/docs/deploy/deployments). We added cards and aligned better with the dbt Cloud UI and the way it’s used.
-    * Deprecated legacy job schemas in the [Discovery API](/docs/dbt-platform-apis/discovery-api).
+    * Deprecated legacy job schemas in the [Discovery API](/docs/dbt-apis/discovery-api).
     * Added a page to describe [experimental and beta features](/docs/dbt-versions/experimental-features) in dbt Cloud and what you need to know about them.
     * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-cloud-environments#extended-attributes-beta), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
     ## 🎯 Core projects
@@ -338,7 +338,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='Deprecation of endpoints in the Discovery API'>
 
-    dbt Labs has deprecated and will be deprecating certain query patterns and replacing them with new conventions to enhance the performance of the dbt Cloud [Discovery API](/docs/dbt-platform-apis/discovery-api). 
+    dbt Labs has deprecated and will be deprecating certain query patterns and replacing them with new conventions to enhance the performance of the dbt Cloud [Discovery API](/docs/dbt-apis/discovery-api). 
 
     All these changes will be in effect on _September 7, 2023_. 
 
@@ -580,7 +580,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='Admin API'>
 
-    dbt Labs updated the docs for the [dbt Cloud Administrative API](/docs/dbt-platform-apis/admin-cloud-api) and they are now available for both [v2](/dbt-cloud/api-v2#/) and [v3](/dbt-cloud/api-v3#/). 
+    dbt Labs updated the docs for the [dbt Cloud Administrative API](/docs/dbt-apis/admin-cloud-api) and they are now available for both [v2](/dbt-cloud/api-v2#/) and [v3](/dbt-cloud/api-v3#/). 
 
     - Now using Spotlight for improved UI and UX.
     - All endpoints are now documented for v2 and v3. Added automation to the docs so they remain up to date.  
@@ -606,7 +606,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - We added information related to the newly created [IT license](/docs/platform/manage-access/about-user-access#license-based-access-control), available for Team and Enterprise plans. 
     - We added a new [Supported browser page](/docs/platform/about-platform/browsers), which lists the recommended browsers for dbt Cloud.
     - We launched a new page informing users of [new Experimental features option](/docs/dbt-versions/experimental-features) in dbt Cloud.
-    - We worked with dbt Engineering to help publish new beta versions of the dbt [dbt Cloud Administrative API docs](/docs/dbt-platform-apis/admin-cloud-api). 
+    - We worked with dbt Engineering to help publish new beta versions of the dbt [dbt Cloud Administrative API docs](/docs/dbt-apis/admin-cloud-api). 
 
     ## 🎯 Core projects
 
@@ -722,9 +722,9 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - Launched a sparkling new [dbt Cloud Scheduler page](/docs/deploy/job-scheduler) ✨! We went from previously having little content around the scheduler to a subsection that breaks down the awesome scheduler features and how it works.
     - Updated the [dbt Cloud user license page](/docs/platform/manage-access/seats-and-users#licenses) to clarify how to add or remove cloud users.
     - Shipped these Discovery API docs to coincide with the launch of the Discovery API:
-      - [About the Discovery API](/docs/dbt-platform-apis/discovery-api)
-      - [Use cases and examples for the Discovery API](/docs/dbt-platform-apis/discovery-use-cases-and-examples)
-      - [Query the Discovery API](/docs/dbt-platform-apis/discovery-querying)
+      - [About the Discovery API](/docs/dbt-apis/discovery-api)
+      - [Use cases and examples for the Discovery API](/docs/dbt-apis/discovery-use-cases-and-examples)
+      - [Query the Discovery API](/docs/dbt-apis/discovery-querying)
 
     ## 🎯 Core projects
 
@@ -825,7 +825,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     ## 🔎 Discoverability
 
-    - [API docs](/docs/dbt-platform-apis/overview) now live in the left sidebar to improve discoverability.
+    - [API docs](/docs/dbt-apis/overview) now live in the left sidebar to improve discoverability.
     - [The deploy dbt jobs sidebar](/docs/deploy/deployments) has had a glow up 💅 that splits the ‘about deployment’ into two paths (deploy w dbt cloud and deploy w other tools), adds more info about the dbt cloud scheduler, its features, and how to create a job, adds ADF deployment guidance. We hope the changes improve the user experience and provide users with guidance when deploying with other tools.
 
     ## ☁ Cloud projects

@@ -49,7 +49,7 @@ Exports offer many benefits and it's important to note some use cases that fall 
 - Business users may still struggle to consume from tens, hundreds, or thousands of tables, and choosing the right one can be a challenge.
 - Business users may also make mistakes when aggregating and filtering from the pre-built tables.
 
-For these use cases, use the dynamic [<Constant name="semantic_layer" /> APIs](/docs/dbt-platform-apis/sl-api-overview) instead of exports.
+For these use cases, use the dynamic [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) instead of exports.
 
 ## Run exports
 

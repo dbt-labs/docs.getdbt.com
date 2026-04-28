@@ -1197,7 +1197,7 @@ This page will guide you on how to connect and use the following integrations to
   
 The <Constant name="semantic_layer" /> enables you to connect and query your metric with various available tools like [PowerBI](/docs/platform-integrations/semantic-layer/power-bi), [Google Sheets](/docs/platform-integrations/semantic-layer/gsheets), [Hex](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration), [Microsoft Excel](/docs/platform-integrations/semantic-layer/excel), [Tableau](/docs/platform-integrations/semantic-layer/tableau), and more. 
 
-Query metrics using other tools such as [first-class integrations](/docs/platform-integrations/avail-sl-integrations), [<Constant name="semantic_layer" />  APIs](/docs/dbt-platform-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integrations.
+Query metrics using other tools such as [first-class integrations](/docs/platform-integrations/avail-sl-integrations), [<Constant name="semantic_layer" />  APIs](/docs/dbt-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integrations.
 
  ### Connect and query with Google Sheets
 
@@ -1300,7 +1300,7 @@ This section will guide you on how to use the Sigma integration to query your me
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-sigma-add-integration.png" width="70%" title="Click the '+ New project' button on the top right"/>
 
 8. In the **dbt Integration** section, fill out the required fields, and then hit save:
-- Your dbt [service account token](/docs/dbt-platform-apis/service-tokens) or [personal access tokens](/docs/dbt-platform-apis/user-tokens).
+- Your dbt [service account token](/docs/dbt-apis/service-tokens) or [personal access tokens](/docs/dbt-apis/user-tokens).
 - Your access URL of your existing Sigma dbt integration. Use `cloud.getdbt.com` as your access URL.
 - Your dbt Environment ID.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-sigma-add-info.png" width="50%" title="Click the '+ New project' button on the top right"/>

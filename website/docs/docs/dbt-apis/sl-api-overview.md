@@ -4,7 +4,7 @@ id: sl-api-overview
 description: "Integrate and query metrics and dimensions in downstream tools using the Semantic Layer APIs"
 tags: [Semantic Layer, API]
 hide_table_of_contents: true
-pagination_next: "docs/dbt-platform-apis/sl-jdbc"
+pagination_next: "docs/dbt-apis/sl-jdbc"
 ---
 
 # Semantic Layer APIs <Lifecycle status="self_service,managed,managed_plus" />
@@ -28,19 +28,19 @@ You can use the <Constant name="semantic_layer" /> for a variety of tools and ap
 <Card
     title="GraphQL API"
     body="Use GraphQL to query metrics and dimensions in downstream tools."
-    link="/docs/dbt-platform-apis/sl-graphql"
+    link="/docs/dbt-apis/sl-graphql"
     icon="dbt-bit"/>
 
 <Card
     title="JDBC API"
     body="Use a JDBC driver to query metrics and dimensions in downstream tools, while also providing standard metadata functionality."
-    link="/docs/dbt-platform-apis/sl-jdbc"
+    link="/docs/dbt-apis/sl-jdbc"
     icon="dbt-bit"/>
 
 <Card
     title="Python SDK"
     body="Use the Python SDK to interact with the dbt Semantic Layer using Python."
-    link="/docs/dbt-platform-apis/sl-python"
+    link="/docs/dbt-apis/sl-python"
     icon="dbt-bit"/>
 
 </div>

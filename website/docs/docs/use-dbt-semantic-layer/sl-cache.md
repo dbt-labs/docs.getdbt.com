@@ -131,7 +131,7 @@ After a successful job run, you can go back to your dashboard to experience the 
 
 If an upstream model has data in it that was created after the cache was created, <Constant name="dbt" /> invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and <Constant name="dbt" /> will write a new cache the next time your saved query runs.
 
-You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-platform-apis/sl-api-overview) using the `InvalidateCacheResult` field.
+You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) using the `InvalidateCacheResult` field.
 
 ## FAQs
 

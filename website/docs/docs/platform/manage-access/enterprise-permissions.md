@@ -191,7 +191,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Metadata (Discovery API only)">
 
-Metadata is intended to be a read-only [Discovery API](/docs/dbt-platform-apis/discovery-api) integration permission set. 
+Metadata is intended to be a read-only [Discovery API](/docs/dbt-apis/discovery-api) integration permission set. 
 
 Notable features:
 - Metadata is a project-level set.

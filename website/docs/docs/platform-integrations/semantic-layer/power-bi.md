@@ -21,7 +21,7 @@ Using Power BI? You can help shape the future of this integration. Ask your Micr
 - You are on a supported [<Constant name="dbt" /> release track](/docs/dbt-versions/cloud-release-tracks) or on dbt v1.6 or higher.
 - You installed [Power BI Desktop or Power BI On-premises Data Gateway](https://learn.microsoft.com/en-us/power-bi/connect-data/service-gateway-custom-connectors).
   - Power BI Service doesn't natively support custom connectors. To use the connector in Power BI Service, you must install and configure it on an On-premises Data Gateway.
-- You need your [<Constant name="dbt" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and a [service token](/docs/dbt-platform-apis/service-tokens) or a [personal access token](/docs/dbt-platform-apis/user-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
+- You need your [<Constant name="dbt" /> host](/docs/use-dbt-semantic-layer/setup-sl#3-view-connection-detail), [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer), and a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to log in. This account should be set up with the <Constant name="semantic_layer" />.
 - You must have a <Constant name="dbt" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 import SLCourses from '/snippets/_sl-course.md';

@@ -151,7 +151,7 @@ var siteSettings = {
           position: "right",
         },
         {
-          to: "/docs/dbt-platform-apis/overview",
+          to: "/docs/dbt-apis/overview",
           label: "APIs",
           position: "right",
         },
@@ -492,7 +492,7 @@ var siteSettings = {
             {
               id: "api-reference",
               name: "API Reference",
-              routes: [{ route: "/docs/dbt-platform-apis/**" }],
+              routes: [{ route: "/docs/dbt-apis/**" }],
             },
           ],
           siteTitle: "dbt Developer Hub",

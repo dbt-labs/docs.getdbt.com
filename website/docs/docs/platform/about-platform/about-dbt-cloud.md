@@ -103,7 +103,7 @@ In addition to providing a hosted architecture for running dbt across your organ
    <Card
     title="Discovery API*"
     body="Enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt serves a GraphQL API, which supports arbitrary queries."
-    link="/docs/dbt-platform-apis/discovery-api"
+    link="/docs/dbt-apis/discovery-api"
     icon="dbt-bit"/>
 
   <Card

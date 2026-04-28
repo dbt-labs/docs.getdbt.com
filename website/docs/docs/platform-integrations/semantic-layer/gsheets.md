@@ -14,7 +14,7 @@ The <Constant name="semantic_layer" /> offers a seamless integration with Google
 - You have [configured the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You need a Google account with access to Google Sheets and the ability to install Google add-ons.
 - You have a [<Constant name="dbt" /> Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
-- You have a [service token](/docs/dbt-platform-apis/service-tokens) or a [personal access token](/docs/dbt-platform-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.
+- You have a [service token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) to authenticate with from a <Constant name="dbt" /> account.
 - You must have a <Constant name="dbt" /> Starter or Enterprise-tier [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
 
 If you're using [IP restrictions](/docs/platform/secure/ip-restrictions), ensure you've added [Google’s IP addresses](https://www.gstatic.com/ipranges/goog.txt) to your IP allowlist. Otherwise, the Google Sheets connection will fail.

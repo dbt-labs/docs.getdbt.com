@@ -37,7 +37,7 @@ In this section, we'll walk you through the steps to prepare your local setup fo
 3. Validate your `profiles.yml` and project configuration by running `dbt debug`.
 4. Add a `dbt_cloud.yml` file from the <Constant name="dbt_platform" /> Account settings:
    - Navigate to **Your profile** -> **VS Code Extension** -> **Download credentials**.
-   - Download the `dbt_cloud.yml` file with your [**Personal access Token (PAT)**](/docs/dbt-platform-apis/user-tokens) included and place it in the `~/.dbt/` directory. This then registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
+   - Download the `dbt_cloud.yml` file with your [**Personal access Token (PAT)**](/docs/dbt-apis/user-tokens) included and place it in the `~/.dbt/` directory. This then registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
    - Check the `project_id` in your `dbt_project.yml` file matching the project you're working on.
 5. Confirm connection from your workstation (like running `dbt debug` in the terminal). Your local computer connects directly to your data warehouse and Git.  
    - <Constant name="dbt_platform" /> users: Ensure your laptop/VPN is allowed; <Constant name="dbt_platform" /> IPs no longer apply. Check with your admin if you have any issues.

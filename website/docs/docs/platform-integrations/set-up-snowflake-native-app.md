@@ -30,7 +30,7 @@ The following are the prerequisites for <Constant name="dbt" /> and Snowflake.
 
 - You must have a <Constant name="dbt" /> account on an Enterprise-tier plan that's in an AWS Region or Azure region. If you don't already have one, please [contact us](mailto:sales_snowflake_marketplace@dbtlabs.com) to get started.
     - Currently, <Constant name="semantic_layer" /> is unavailable for Azure ST instances and the **Copilot** chatbot will not function in the dbt Snowflake Native App without it. 
-- Your <Constant name="dbt" /> account must have permission to create a [service token](/docs/dbt-platform-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions).
+- Your <Constant name="dbt" /> account must have permission to create a [service token](/docs/dbt-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions).
 - There's a <Constant name="dbt" /> project with [<Constant name="semantic_layer" /> configured](/docs/use-dbt-semantic-layer/setup-sl) and metrics declared. 
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment).
     - There has been at least one successful job run that includes a `docs generate` step in the deployment environment.

@@ -91,9 +91,9 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 ## August 2025
 
 - **Fix**: Resolved a bug that caused [saved query](/docs/build/saved-queries) exports to fail during `dbt build` with `Unable to get saved_query` errors. 
-- **New**: The <Constant name="semantic_layer" /> GraphQL API now has a [`queryRecords`](/docs/dbt-platform-apis/sl-graphql#query-records) endpoint. With this endpoint, you can view the query history both for Insights and <Constant name="semantic_layer" /> queries.
+- **New**: The <Constant name="semantic_layer" /> GraphQL API now has a [`queryRecords`](/docs/dbt-apis/sl-graphql#query-records) endpoint. With this endpoint, you can view the query history both for Insights and <Constant name="semantic_layer" /> queries.
 - **Fix**: Resolved a bug that caused <Constant name="semantic_layer" /> queries with a trailing whitespace to produce an error. This issue mostly affected [Push.ai](https://docs.push.ai/data-sources/semantic-layers/dbt) users and is fixed now. 
-- **New**: You can now use [personal access tokens (PATs)](/docs/dbt-platform-apis/user-tokens) to authenticate in the Semantic Layer. This enables user-level authentication and reduces the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. For more information, see [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl).
+- **New**: You can now use [personal access tokens (PATs)](/docs/dbt-apis/user-tokens) to authenticate in the Semantic Layer. This enables user-level authentication and reduces the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. For more information, see [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl).
 
 ## July 2025
 
@@ -101,7 +101,7 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 - **Preview**: The [Semantic Layer Power BI integration](/docs/platform-integrations/semantic-layer/power-bi) is now available in Preview.
 - **Enhancement:** You can now use `limit` and `order_by` parameters when creating [saved queries](/docs/build/saved-queries). 
 - **Enhancement:** Users assigned IT [licenses](/docs/platform/manage-access/seats-and-users) can now edit and manage [global connections settings](/docs/platform/connect-data-platform/about-connections#connection-management).
-- **New**: Paginated [GraphQL](/docs/dbt-platform-apis/sl-graphql) endpoints for metadata queries in Semantic Layer are now available. This improves integration load times for large manifests. For more information, see [Metadata calls](/docs/dbt-platform-apis/sl-graphql#metadata-calls).
+- **New**: Paginated [GraphQL](/docs/dbt-apis/sl-graphql) endpoints for metadata queries in Semantic Layer are now available. This improves integration load times for large manifests. For more information, see [Metadata calls](/docs/dbt-apis/sl-graphql#metadata-calls).
 
 ## June 2025
 
@@ -116,7 +116,7 @@ Snowflake connections that use External OAuth for user credentials can now emit 
 - **New**: The <Constant name="semantic_layer" /> now supports Trino as a data platform. For more details, see [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl).
 - **New**: The dbt Fusion engine supports Databricks in beta.
 - **Enhancement**: Group owners can now specify multiple email addresses for model-level notifications, enabling broader team alerts. Previously, only a single email address was supported. Check out the [Configure groups](/docs/deploy/model-notifications#configure-groups) section to learn more.
-- **New**: The Semantic Layer GraphQL API now has a [`List a saved query`](/docs/dbt-platform-apis/sl-graphql#list-a-saved-query) endpoint.
+- **New**: The Semantic Layer GraphQL API now has a [`List a saved query`](/docs/dbt-apis/sl-graphql#list-a-saved-query) endpoint.
 
 ## May 2025
 
@@ -162,7 +162,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
 
 ## April 2025
 
-- **Enhancement**: The [Python SDK](/docs/dbt-platform-apis/sl-python) now supports lazy loading for large fields for `dimensions`, `entities`, and `measures` on `Metric` objects. For more information, see [Lazy loading for large fields](/docs/dbt-platform-apis/sl-python#lazy-loading-for-large-fields).
+- **Enhancement**: The [Python SDK](/docs/dbt-apis/sl-python) now supports lazy loading for large fields for `dimensions`, `entities`, and `measures` on `Metric` objects. For more information, see [Lazy loading for large fields](/docs/dbt-apis/sl-python#lazy-loading-for-large-fields).
 - **Enhancement**: The <Constant name="semantic_layer" /> now supports SSH tunneling for [Postgres](/docs/platform/connect-data-platform/connect-postgresql-alloydb#connecting-using-an-ssh-tunnel) or [Redshift](/docs/platform/connect-data-platform/connect-redshift#connecting-using-an-ssh-tunnel) connections. Refer to [Set up the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/setup-sl) for more information.
 - **Behavior change**: Users assigned the [`job admin` permission set](/docs/platform/manage-access/enterprise-permissions#job-admin) now have access to set up integrations for projects, including the [Tableau](/docs/platform-integrations/downstream-exposures-tableau) integration to populate downstream exposures.
 
@@ -191,16 +191,16 @@ The following features are new or enhanced as part of our [dbt Developer day](ht
 
 ## February 2025
 
-- **Enhancement**: The [Python SDK](/docs/dbt-platform-apis/sl-python) added a new timeout parameter to Semantic Layer client and to underlying GraphQL clients to specify timeouts. Set a timeout number or use the `total_timeout` parameter in the global `TimeoutOptions` to control connect, execute, and close timeouts granularly. `ExponentialBackoff.timeout_ms` is now deprecated.
+- **Enhancement**: The [Python SDK](/docs/dbt-apis/sl-python) added a new timeout parameter to Semantic Layer client and to underlying GraphQL clients to specify timeouts. Set a timeout number or use the `total_timeout` parameter in the global `TimeoutOptions` to control connect, execute, and close timeouts granularly. `ExponentialBackoff.timeout_ms` is now deprecated.
 - **New**: The [Azure DevOps](/docs/platform/git/connect-azure-devops) integration for <Constant name="git" /> now supports [Entra service principal apps](/docs/platform/git/setup-service-principal) on <Constant name="dbt" /> Enterprise accounts. Microsoft is enforcing MFA across user accounts, including service users, which will impact existing app integrations. This is a phased rollout, and dbt Labs recommends [migrating to a service principal](/docs/platform/git/setup-service-principal#migrate-to-service-principal) on existing integrations once the option becomes available in your account.
 - **New**: Added the `dbt invocation` command to the [dbt CLI](/docs/platform/cloud-cli-installation). This command allows you to view and manage active invocations, which are long-running sessions in the dbt CLI. For more information, see [dbt invocation](/reference/commands/invocation).
 - **New**: Users can now switch themes directly from the user menu, available [in Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). We have added support for **Light mode** (default), **Dark mode**, and automatic theme switching based on system preferences. The selected theme is stored in the user profile and will follow users across all devices.
   - Dark mode is currently available on the Developer plan and will be available for all [plans](https://www.getdbt.com/pricing) in the future. We’ll be rolling it out gradually, so stay tuned for updates. For more information, refer to [Change your <Constant name="dbt" /> theme](/docs/platform/about-platform/change-your-dbt-cloud-theme).
 - **Fix**: <Constant name="semantic_layer" /> errors in the Cloud IDE are now displayed with proper formatting, fixing an issue where newlines appeared broken or difficult to read. This fix ensures error messages are more user-friendly and easier to parse.
 - **Fix**: Fixed an issue where [saved queries](/docs/build/saved-queries) with no [exports](/docs/build/saved-queries#configure-exports) would fail with an `UnboundLocalError`. Previously, attempting to process a saved query without any exports would cause an error due to an undefined relation variable. Exports are optional, and this fix ensures saved queries without exports don't fail.
-- **New**: You can now query metric alias in <Constant name="semantic_layer" /> [GraphQL](/docs/dbt-platform-apis/sl-graphql) and [JDBC](/docs/dbt-platform-apis/sl-jdbc) APIs. 
-  - For the JDBC API, refer to [Query metric alias](/docs/dbt-platform-apis/sl-jdbc#query-metric-alias) for more information.
-  - For the GraphQL API, refer to [Query metric alias](/docs/dbt-platform-apis/sl-graphql#query-metric-alias) for more information.
+- **New**: You can now query metric alias in <Constant name="semantic_layer" /> [GraphQL](/docs/dbt-apis/sl-graphql) and [JDBC](/docs/dbt-apis/sl-jdbc) APIs. 
+  - For the JDBC API, refer to [Query metric alias](/docs/dbt-apis/sl-jdbc#query-metric-alias) for more information.
+  - For the GraphQL API, refer to [Query metric alias](/docs/dbt-apis/sl-graphql#query-metric-alias) for more information.
 - **Enhancement**: Added support to automatically refresh access tokens when Snowflake's SSO connection expires. Previously, users would get the following error: `Connection is not available, request timed out after 30000ms` and would have to wait 10 minutes to try again.
 - **Enhancement**: The [`dbt_version` format](/reference/commands/version#versioning) in dbt Cloud now better aligns with [semantic versioning rules](https://semver.org/). Leading zeroes have been removed from the month and day (`YYYY.M.D+<suffix>`). For example:
   - New format: `2024.10.8+996c6a8`

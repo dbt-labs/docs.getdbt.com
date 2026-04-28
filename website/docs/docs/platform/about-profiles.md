@@ -131,7 +131,7 @@ Any profiles using those settings automatically update with the new information.
 
 Existing APIs continue to work and automatically map to a profile behind the scenes. You won't need to take any manual action unless you use APIs to create a deployment environment with no credentials configured. This is a rare occurrence unique to APIs, but it's the only scenario where dbt wouldn't create a profile.
 
-Profile-specific APIs are available. Check out our [API documentation](/docs/dbt-platform-apis/overview) for more information.
+Profile-specific APIs are available. Check out our [API documentation](/docs/dbt-apis/overview) for more information.
 
 </DetailsToggle>
 

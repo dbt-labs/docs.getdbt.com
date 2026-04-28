@@ -96,7 +96,7 @@ Yes, <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.g
 
 The dbt Semantic Layer is proprietary to <Constant name="dbt" />, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a <Constant name="dbt" /> plan.
 
-dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-platform-apis/sl-api-overview) or [available integrations](/docs/platform-integrations/avail-sl-integrations) to access metrics dynamically.
+dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-apis/sl-api-overview) or [available integrations](/docs/platform-integrations/avail-sl-integrations) to access metrics dynamically.
 
 </Expandable>
 
@@ -121,7 +121,7 @@ With the dbt Semantic Layer, you don’t need to pre-join or build any tables; r
 
 <Expandable alt_header="Do I materialize anything when I define a semantic model?">
 
-No, you don't. When querying the dbt Semantic Layer through the [Semantic Layer APIs](/docs/dbt-platform-apis/sl-api-overview), you're not materializing any data by default.
+No, you don't. When querying the dbt Semantic Layer through the [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview), you're not materializing any data by default.
 
 The dbt Semantic Layer dynamically computes the metric using the underlying data tables. Then it returns the output to the end user.
 </Expandable>
@@ -151,7 +151,7 @@ Yes it does.
 
 <Expandable alt_header="Where is MetricFlow hosted? How do queries pass through MetricFlow and dbt and back to the end user?">
 
-MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Layer APIs](/docs/dbt-platform-apis/sl-api-overview) are routed from our API gateway to MetricFlow, which generates the SQL to compute what's requested by the user. MetricFlow hands the SQL back to our gateway, which then executes it against the data platform.
+MetricFlow is hosted in <Constant name="dbt" />. Requests from the [Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) are routed from our API gateway to MetricFlow, which generates the SQL to compute what's requested by the user. MetricFlow hands the SQL back to our gateway, which then executes it against the data platform.
 </Expandable>
 
 <Expandable alt_header="How do I configure the dbt Semantic Layer?">
@@ -278,9 +278,9 @@ Yes, all of our interfaces or APIs expose metric descriptions, which you can sur
 
 The dbt Semantic Layer uses service or personal tokens for authentication. 
 
-[Service tokens](/docs/dbt-platform-apis/service-tokens) are mapped to underlying data platform credentials. These credentials control physical access to the raw data. The credential configuration allows admins to create a credential and map it to service tokens, which can then be shared to relevant teams for BI connection setup. You can configure credentials and service tokens to reflect your teams and their roles.
+[Service tokens](/docs/dbt-apis/service-tokens) are mapped to underlying data platform credentials. These credentials control physical access to the raw data. The credential configuration allows admins to create a credential and map it to service tokens, which can then be shared to relevant teams for BI connection setup. You can configure credentials and service tokens to reflect your teams and their roles.
 
-Personal access tokens [(PATs)](/docs/dbt-platform-apis/user-tokens) enable user-level authentication. When you use PATs to authenticate, your personal development credentials are used when running queries against the Semantic Layer.
+Personal access tokens [(PATs)](/docs/dbt-apis/user-tokens) enable user-level authentication. When you use PATs to authenticate, your personal development credentials are used when running queries against the Semantic Layer.
 
 Currently, the credentials you configure when setting up the dbt Semantic Layer are used for every request. Any physical access policies you have tied to your credentials will be respected.
 

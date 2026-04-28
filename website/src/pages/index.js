@@ -188,7 +188,7 @@ function Home() {
               <div className="home-link-grid">
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Documentation</h4>
-                  <Link to="/docs/dbt-platform-apis/overview">API Docs</Link>
+                  <Link to="/docs/dbt-apis/overview">API Docs</Link>
                   <Link to="/docs/introduction">Product Docs</Link>
                   <Link to="/best-practices">Best Practices</Link>
                   <Link to="/docs/platform/dbt-copilot">Copilot</Link>

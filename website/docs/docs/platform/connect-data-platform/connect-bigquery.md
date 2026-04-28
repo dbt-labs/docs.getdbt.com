@@ -37,7 +37,7 @@ When you create a new BigQuery connection, you will be presented with two schema
 - **BigQuery:** Supports all connection types (Use this option)
 - **BigQuery (Legacy):**  Supports all connection types except for WIF (Deprecated feature. Do not use.)
 
-All new connections should use the **BigQuery** option as **BigQuery (Legacy)** will be deprecated. To update existing connections and credentials in an environment to use the new BigQuery option, first, use the [APIs](/docs/dbt-platform-apis/admin-cloud-api) to remove the configurations. 
+All new connections should use the **BigQuery** option as **BigQuery (Legacy)** will be deprecated. To update existing connections and credentials in an environment to use the new BigQuery option, first, use the [APIs](/docs/dbt-apis/admin-cloud-api) to remove the configurations. 
 
 ### JSON keyfile
 
@@ -245,7 +245,7 @@ For a project, you will first create an environment variable to store the secret
     - Create a new _secret_ [environment variable](/docs/build/environment-variables#handling-secrets) to handle the private key: `DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY`
     - Fill in the private key value according the environment
 
-    To automate your deployment, use the following [admin API request](/dbt-cloud/api-v3#/operations/Create%20Projects%20Environment%20Variables%20Bulk), with `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-platform-apis/authentication):
+    To automate your deployment, use the following [admin API request](/dbt-cloud/api-v3#/operations/Create%20Projects%20Environment%20Variables%20Bulk), with `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-apis/authentication):
 
     ```shell
     curl --request POST \
@@ -301,7 +301,7 @@ For a project, you will first create an environment variable to store the secret
     execution_project: buck-stops-here-456
     ```
 
-    To automate your deployment, you first need to [create the extended attributes payload](/dbt-cloud/api-v3#/operations/Create%20Extended%20Attributes) for a given project, and then [assign it](/dbt-cloud/api-v3#/operations/Update%20Environment) to a specific environment. With `XXXXX` as your account number, `YYYYY` as your project number, and `ZZZZZ` as your [API token](/docs/dbt-platform-apis/authentication):
+    To automate your deployment, you first need to [create the extended attributes payload](/dbt-cloud/api-v3#/operations/Create%20Extended%20Attributes) for a given project, and then [assign it](/dbt-cloud/api-v3#/operations/Update%20Environment) to a specific environment. With `XXXXX` as your account number, `YYYYY` as your project number, and `ZZZZZ` as your [API token](/docs/dbt-apis/authentication):
 
     ```shell
     curl --request POST \

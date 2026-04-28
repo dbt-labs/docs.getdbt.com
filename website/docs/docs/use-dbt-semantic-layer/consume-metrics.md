@@ -8,7 +8,7 @@ pagination_next: "docs/use-dbt-semantic-layer/sl-faqs"
 
 # Consume metrics from your Semantic Layer <Lifecycle status="self_service,managed,managed_plus" />
 
-After [deploying](/docs/use-dbt-semantic-layer/deploy-sl) your <Constant name="semantic_layer" />, the next important (and fun!) step is querying and consuming the metrics you’ve defined. This page links to key resources that guide you through the process of consuming metrics across different integrations, APIs, and tools, using various different [query syntaxes](/docs/dbt-platform-apis/sl-jdbc#querying-the-api-for-metric-metadata).
+After [deploying](/docs/use-dbt-semantic-layer/deploy-sl) your <Constant name="semantic_layer" />, the next important (and fun!) step is querying and consuming the metrics you’ve defined. This page links to key resources that guide you through the process of consuming metrics across different integrations, APIs, and tools, using various different [query syntaxes](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metric-metadata).
 
 Once your <Constant name="semantic_layer" /> is deployed, you can start querying your metrics using a variety of tools and APIs. Here are the main resources to get you started:
 
@@ -21,10 +21,10 @@ Integrate the <Constant name="semantic_layer" /> with a variety of business inte
 ### Query with APIs
 
 To leverage the full power of the <Constant name="semantic_layer" />, you can use the <Constant name="semantic_layer" /> APIs for querying metrics programmatically:
-- [<Constant name="semantic_layer" /> APIs](/docs/dbt-platform-apis/sl-api-overview) &mdash; Learn how to use the <Constant name="semantic_layer" /> APIs to query metrics in downstream tools, ensuring consistent and reliable data metrics.
-  - [JDBC API query syntax](/docs/dbt-platform-apis/sl-jdbc#querying-the-api-for-metric-metadata) &mdash; Dive into the syntax for querying metrics with the JDBC API, with examples and detailed instructions.
-  - [GraphQL API query syntax](/docs/dbt-platform-apis/sl-graphql#querying) &mdash; Learn the syntax for querying metrics via the GraphQL API, including examples and detailed instructions.
-  - [Python SDK](/docs/dbt-platform-apis/sl-python#usage-examples) &mdash; Use the Python SDK library to query metrics programmatically with Python.
+- [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) &mdash; Learn how to use the <Constant name="semantic_layer" /> APIs to query metrics in downstream tools, ensuring consistent and reliable data metrics.
+  - [JDBC API query syntax](/docs/dbt-apis/sl-jdbc#querying-the-api-for-metric-metadata) &mdash; Dive into the syntax for querying metrics with the JDBC API, with examples and detailed instructions.
+  - [GraphQL API query syntax](/docs/dbt-apis/sl-graphql#querying) &mdash; Learn the syntax for querying metrics via the GraphQL API, including examples and detailed instructions.
+  - [Python SDK](/docs/dbt-apis/sl-python#usage-examples) &mdash; Use the Python SDK library to query metrics programmatically with Python.
   
 ### Query during development
 

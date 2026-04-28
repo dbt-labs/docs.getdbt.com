@@ -1,6 +1,6 @@
 ---
 title: "About the Discovery API"
-pagination_next: "docs/dbt-platform-apis/discovery-use-cases-and-examples"
+pagination_next: "docs/dbt-apis/discovery-use-cases-and-examples"
 ---
 
 # About the Discovery API <Lifecycle status="self_service,managed,managed_plus" />
@@ -9,7 +9,7 @@ Every time <Constant name="dbt" /> runs a project, it generates and stores infor
 
 By leveraging the metadata in <Constant name="dbt" />, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization.
 
-You can access the Discovery API through [ad hoc queries](/docs/dbt-platform-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using <Constant name="dbt" /> features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles](/docs/explore/data-tile).
+You can access the Discovery API through [ad hoc queries](/docs/dbt-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using <Constant name="dbt" /> features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles](/docs/explore/data-tile).
 
 <Lightbox src="/img/docs/dbt-platform/discovery-api/discovery-api-figure.png" width="80%" title="A rich ecosystem for integration "/>
 
@@ -24,13 +24,13 @@ You can query the <Constant name="dbt" /> metadata:
 
 Click the following tabs to learn more about the API's use cases, the analysis you can do, and the results you can achieve by integrating with it.
 
-To use the API directly or integrate your tool with it, refer to [Uses case and examples](/docs/dbt-platform-apis/discovery-use-cases-and-examples) for detailed information.
+To use the API directly or integrate your tool with it, refer to [Uses case and examples](/docs/dbt-apis/discovery-use-cases-and-examples) for detailed information.
 
 <Tabs>
 
 <TabItem value="performance" label="Performance">
 
-Use the API to look at historical information like model build time to determine the health of your dbt projects. Finding inefficiencies in orchestration configurations can help decrease infrastructure costs and improve timeliness. To learn more about how to do this, refer to [Performance](/docs/dbt-platform-apis/discovery-use-cases-and-examples#performance).
+Use the API to look at historical information like model build time to determine the health of your dbt projects. Finding inefficiencies in orchestration configurations can help decrease infrastructure costs and improve timeliness. To learn more about how to do this, refer to [Performance](/docs/dbt-apis/discovery-use-cases-and-examples#performance).
 
 You can use, for example, the [model timing](/docs/deploy/run-visibility#model-timing) tab to help identify and optimize bottlenecks in model builds:
 
@@ -40,7 +40,7 @@ You can use, for example, the [model timing](/docs/deploy/run-visibility#model-t
 
 <TabItem value="quality" label="Quality">
 
-Use the API to determine if the data is accurate and up-to-date by monitoring test failures, source freshness, and run status. Accurate and reliable information is valuable for analytics, decisions, and monitoring to help prevent your organization from making bad decisions. To learn more about this, refer to [Quality](/docs/dbt-platform-apis/discovery-use-cases-and-examples#quality).
+Use the API to determine if the data is accurate and up-to-date by monitoring test failures, source freshness, and run status. Accurate and reliable information is valuable for analytics, decisions, and monitoring to help prevent your organization from making bad decisions. To learn more about this, refer to [Quality](/docs/dbt-apis/discovery-use-cases-and-examples#quality).
 
 When used with [webhooks](/docs/deploy/webhooks), it can also help with detecting, investigating, and alerting issues.
 
@@ -48,7 +48,7 @@ When used with [webhooks](/docs/deploy/webhooks), it can also help with detectin
 
 <TabItem value="discovery" label="Discovery">
 
-Use the API to find and understand dbt assets in integrated tools using information like model and metric definitions, and column information. For more details, refer to [Discovery](/docs/dbt-platform-apis/discovery-use-cases-and-examples#discovery).
+Use the API to find and understand dbt assets in integrated tools using information like model and metric definitions, and column information. For more details, refer to [Discovery](/docs/dbt-apis/discovery-use-cases-and-examples#discovery).
 
 Data producers must manage and organize data for stakeholders, while data consumers need to quickly and confidently analyze data on a large scale to make informed decisions that improve business outcomes and reduce organizational overhead. The API is useful for discovery data experiences in catalogs, analytics, apps, and machine learning (ML) tools. It can help you understand the origin and meaning of datasets for your analysis.
 
@@ -58,13 +58,13 @@ Data producers must manage and organize data for stakeholders, while data consum
 
 <TabItem value="governance" label="Governance">
 
-Use the API to review who developed the models and who uses them to help establish standard practices for better governance. For more details, refer to [Governance](/docs/dbt-platform-apis/discovery-use-cases-and-examples#governance).
+Use the API to review who developed the models and who uses them to help establish standard practices for better governance. For more details, refer to [Governance](/docs/dbt-apis/discovery-use-cases-and-examples#governance).
 
 </TabItem>
 
 <TabItem value="development" label="Development">
 
-Use the API to review dataset changes and uses by examining exposures, lineage, and dependencies. From the investigation, you can learn how to define and build more effective dbt projects. For more details, refer to [Development](/docs/dbt-platform-apis/discovery-use-cases-and-examples#development).
+Use the API to review dataset changes and uses by examining exposures, lineage, and dependencies. From the investigation, you can learn how to define and build more effective dbt projects. For more details, refer to [Development](/docs/dbt-apis/discovery-use-cases-and-examples#development).
 
 
 
@@ -77,7 +77,7 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 
 ## Types of project state
 
-You can query these two types of [project state](/docs/dbt-platform-apis/project-state) at the environment level:
+You can query these two types of [project state](/docs/dbt-apis/project-state) at the environment level:
 
 - **Definition** &mdash; The logical state of a dbt project’s [resources](/docs/build/projects) that update when the project is changed.
 - **Applied** &mdash; The output of successful dbt DAG execution that creates or describes the state of the database (for example: `dbt run`, `dbt test`, source freshness, and so on)
@@ -86,6 +86,6 @@ These states allow you to easily examine the difference between a model’s defi
 
 ## Related docs
 
-- [Use cases and examples for the Discovery API](/docs/dbt-platform-apis/discovery-use-cases-and-examples)
-- [Query the Discovery API](/docs/dbt-platform-apis/discovery-querying)
-- [Schema](/docs/dbt-platform-apis/discovery-schema-job)
+- [Use cases and examples for the Discovery API](/docs/dbt-apis/discovery-use-cases-and-examples)
+- [Query the Discovery API](/docs/dbt-apis/discovery-querying)
+- [Schema](/docs/dbt-apis/discovery-schema-job)

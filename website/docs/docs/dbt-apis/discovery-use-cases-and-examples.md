@@ -1199,4 +1199,4 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 ## Related docs
 
-- [Query Discovery API](/docs/dbt-platform-apis/discovery-querying)
+- [Query Discovery API](/docs/dbt-apis/discovery-querying)

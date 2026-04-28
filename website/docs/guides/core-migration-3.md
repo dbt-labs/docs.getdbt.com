@@ -141,14 +141,14 @@ Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/d
 
 ### Tips
 - Define semantic models and metrics once in <Constant name="dbt" /> with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
-- Use the [<Constant name="semantic_layer" /> APIs](/docs/dbt-platform-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
+- Use the [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
 - Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. [Available integrations](/docs/platform-integrations/avail-sl-integrations) include Tableau, Google Sheets, Hex, and more.
 - Use [exports](/docs/use-dbt-semantic-layer/exports) to write commonly used queries directly within your data platform, on a schedule.
 
 ### Caveats
 - <Constant name="semantic_layer" /> currently supports the Deployment environment for querying. Development querying experience coming soon.
 - Run queries/semantic layer commands in the <Constant name="dbt" /> CLI, however running queries/semantic layer commands in the <Constant name="studio_ide" /> isn't supported *yet.*
-- <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/platform/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-platform-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
+- <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/platform/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
 
 Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 

@@ -185,7 +185,7 @@ If a data quality issue does slip through, you also have the option of simply ro
 
 <DetailsToggle alt_header="How does dbt handle job run logs and can it feed them to standard monitoring tools, reports, etc.?">
 
-Yes, all of this metadata is accessible via the [<Constant name="dbt" /> Admin API](/docs/dbt-platform-apis/admin-cloud-api). This metadata can be fed into a monitoring tool, or used to create reports and dashboards. 
+Yes, all of this metadata is accessible via the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-cloud-api). This metadata can be fed into a monitoring tool, or used to create reports and dashboards. 
 
 We also expose some of this information in <Constant name="dbt" /> itself in [jobs](/docs/deploy/jobs), [environments](/docs/environments-in-dbt) and in [<Constant name="catalog" />](https://www.getdbt.com/product/dbt-explorer).
 

@@ -95,4 +95,4 @@ These URLs are unique to each account and begin with the same prefix as the URL 
 - <Constant name="semantic_layer" /> GraphQL API
 - Discovery API 
 
-Learn more about these features in our [API documentation](/docs/dbt-platform-apis/overview).
+Learn more about these features in our [API documentation](/docs/dbt-apis/overview).

@@ -87,7 +87,7 @@ The following is an example of a CI report in a GitHub pull request, which is sh
 
 ## Trigger a CI job with the API <Lifecycle status="managed,managed_plus" />
 
-If you're not using <Constant name="dbt" />’s native <Constant name="git" /> integration with [GitHub](/docs/platform/git/connect-github), [GitLab](/docs/platform/git/connect-gitlab), or [Azure DevOps](/docs/platform/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-platform-apis/admin-cloud-api) to trigger a CI job to run. However, <Constant name="dbt" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
+If you're not using <Constant name="dbt" />’s native <Constant name="git" /> integration with [GitHub](/docs/platform/git/connect-github), [GitLab](/docs/platform/git/connect-gitlab), or [Azure DevOps](/docs/platform/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-apis/admin-cloud-api) to trigger a CI job to run. However, <Constant name="dbt" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
 
 
 
@@ -267,7 +267,7 @@ Double-check that your PR isn't trying to merge using a commit that belongs to a
 
 <DetailsToggle alt_header="CI job not triggering for Virtual Private dbt users"> 
 
-To trigger jobs on <Constant name="dbt" /> using the [API](/docs/dbt-platform-apis/admin-cloud-api), your Git provider needs to connect to your <Constant name="dbt" /> account.
+To trigger jobs on <Constant name="dbt" /> using the [API](/docs/dbt-apis/admin-cloud-api), your Git provider needs to connect to your <Constant name="dbt" /> account.
 
 If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.
 </DetailsToggle>

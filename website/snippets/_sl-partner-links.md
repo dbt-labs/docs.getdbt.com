@@ -143,4 +143,4 @@ The following tools integrate with the dbt Semantic Layer:
 
 </div><br />
 
-Before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-platform-apis/service-tokens) to create **Semantic Layer Only** and **Metadata Only** permissions.
+Before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-apis/service-tokens) to create **Semantic Layer Only** and **Metadata Only** permissions.

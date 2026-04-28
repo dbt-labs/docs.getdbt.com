@@ -127,7 +127,7 @@ You can fetch run steps for an individual run with a GET request to the followin
 
 In order to make the metadata API more scalable and improve its latency, we’ve implemented data retention limits. The metadata API can now query data from the previous three months. For example, if today was March 1, you could query data back to January 1st.
 
-For more information, see [Metadata API](/docs/dbt-platform-apis/discovery-api)
+For more information, see [Metadata API](/docs/dbt-apis/discovery-api)
 
 ## August 2022
 
@@ -211,7 +211,7 @@ Love the DAG in the <Constant name="studio_ide" /> as much as we do? Now when yo
 
 ### Service tokens and bug fixes
 
-Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](/docs/dbt-platform-apis/service-tokens#permissions-for-service-account-tokens).
+Service tokens can now be assigned granular permissions to enforce least privilege access. If you're on Enterprise, you can assign any enterprise permission set to newly issued service tokens. If you're on Teams, you can assign the Job Admin permission set to newly issued service tokens. We highly recommend you re-issue service tokens with these new permissions to increase your security posture! See docs [here](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
 
 #### New products and features
 

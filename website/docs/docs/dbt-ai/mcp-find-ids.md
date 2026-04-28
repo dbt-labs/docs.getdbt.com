@@ -91,4 +91,4 @@ Used for shared or team setups. Better for CI/automation.
 2. Click **+ New token**, assign the required permissions, and copy the token value.
 3. For full MCP access, the service token needs at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions.
 
-For more information, see [User tokens (PAT)](/docs/dbt-platform-apis/user-tokens) and [Service tokens](/docs/dbt-platform-apis/service-tokens).
+For more information, see [User tokens (PAT)](/docs/dbt-apis/user-tokens) and [Service tokens](/docs/dbt-apis/service-tokens).

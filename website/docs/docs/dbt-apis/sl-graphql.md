@@ -38,7 +38,7 @@ Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `re
 
 - A <Constant name="dbt" /> project on dbt v1.6 or higher
 - Metrics are defined and configured
-- A <Constant name="dbt" /> [service token](/docs/dbt-platform-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions or a [personal access token](/docs/dbt-platform-apis/user-tokens)
+- A <Constant name="dbt" /> [service token](/docs/dbt-apis/service-tokens) with "<Constant name="semantic_layer" /> Only” and "Metadata Only" permissions or a [personal access token](/docs/dbt-apis/user-tokens)
 
 ## Using the GraphQL API
 
@@ -47,7 +47,7 @@ If you're a dbt user or partner with access to <Constant name="dbt" /> and the [
 Refer to [Get started with the <Constant name="semantic_layer" />](/guides/sl-snowflake-qs) for more info.
 
 
-Authentication uses either a <Constant name="dbt" /> [service account token](/docs/dbt-platform-apis/service-tokens) or a [personal access token](/docs/dbt-platform-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
+Authentication uses either a <Constant name="dbt" /> [service account token](/docs/dbt-apis/service-tokens) or a [personal access token](/docs/dbt-apis/user-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
 
 ```shell
 {"Authorization": "Bearer <AUTHENTICATION TOKEN>"}

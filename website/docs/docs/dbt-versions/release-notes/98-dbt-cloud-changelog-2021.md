@@ -37,7 +37,7 @@ We shipped environment variables in <Constant name="dbt" />. Environment variabl
 
 
 ## dbt Cloud v1.1.38 (October 27, 2021)
-Have you used the [Metadata API](/docs/dbt-platform-apis/discovery-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
+Have you used the [Metadata API](/docs/dbt-apis/discovery-api) yet? The Metadata API is available to customers on the Team and Enterprise plans, and with it, you can learn tons about your dbt project, if it's running dbt v0.19.0 or later. You can now query information about _any_ run, not just the last run of a job. Mo' data, mo' fun!
 
 
 ## dbt Cloud v1.1.37 (October 13, 2021)
@@ -93,7 +93,7 @@ We added a DAG in the <Constant name="studio_ide" />, so that you can see your m
 The Metadata API is now in GA! When <Constant name="dbt" /> invokes certain commands like run, test, seed, etc, dbt generates metadata in the form of [artifacts](/reference/artifacts/dbt-artifacts). These artifacts give you tons of information about project set up, run times, test details, compiled SQL, and so much more. Now <Constant name="dbt" /> serves a GraphQL API which supports arbitrary queries over these artifacts, so you can retrieve the metadata you want almost instantaneously.
 
 #### New products and features
-- The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](/docs/dbt-platform-apis/discovery-api).
+- The Metadata API is the start of our metadata product suite. Learn more about how to use the Metadata API [here](/docs/dbt-apis/discovery-api).
 - dbt Enterprise customers using GitHub now get better <Term id="grain">fine-grained</Term> access control in their dbt projects. dbt will enforce git permissions for every developer to ensure that read / write policies in GitHub carry through to the IDE.
 
 

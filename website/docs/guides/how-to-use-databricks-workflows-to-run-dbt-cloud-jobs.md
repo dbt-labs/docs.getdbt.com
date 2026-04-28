@@ -32,7 +32,7 @@ Using Databricks workflows to call the <Constant name="dbt" /> job API can be us
 
 ## Set up a Databricks secret scope
 
-1. Retrieve **[personal access token](/docs/dbt-platform-apis/user-tokens) **or **[Service account token](/docs/dbt-platform-apis/service-tokens#generating-service-account-tokens) **from <Constant name="dbt" />
+1. Retrieve **[personal access token](/docs/dbt-apis/user-tokens) **or **[Service account token](/docs/dbt-apis/service-tokens#generating-service-account-tokens) **from <Constant name="dbt" />
 2. Set up a **Databricks secret scope**, which is used to securely store your <Constant name="dbt" /> API key. 
 
 3. Enter the **following commands** in your terminal:

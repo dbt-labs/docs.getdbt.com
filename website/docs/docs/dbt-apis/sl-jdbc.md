@@ -31,7 +31,7 @@ Note that the <Constant name="semantic_layer" /> GraphQL API doesn't support `re
 
 ## Authentication
 
-<Constant name="dbt" /> authorizes requests to the <Constant name="semantic_layer" /> API. You need to provide an Environment ID, Host, and [service account tokens](/docs/dbt-platform-apis/service-tokens) or [personal access tokens](/docs/dbt-platform-apis/user-tokens).
+<Constant name="dbt" /> authorizes requests to the <Constant name="semantic_layer" /> API. You need to provide an Environment ID, Host, and [service account tokens](/docs/dbt-apis/service-tokens) or [personal access tokens](/docs/dbt-apis/user-tokens).
 
 ## Connection parameters
 
@@ -48,7 +48,7 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 | `jdbc:arrow-flight-sql://` | The protocol for the JDBC driver.  | `jdbc:arrow-flight-sql://` |
 | `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your account's <Constant name="dbt" /> region. You must always add the `semantic-layer` prefix before the access URL.  | For <Constant name="dbt" /> deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
 | `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the <Constant name="dbt" /> URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
-| `AUTHENTICATION_TOKEN` | You can use either a <Constant name="dbt" /> [service token](/docs/dbt-platform-apis/service-tokens) with “Semantic Layer Only” and "Metadata Only" permissions or a <Constant name="dbt" /> [personal access token](/docs/dbt-platform-apis/user-tokens). Create a new service or personal token on the **Account Settings** page. | `token=AUTHENTICATION_TOKEN` |
+| `AUTHENTICATION_TOKEN` | You can use either a <Constant name="dbt" /> [service token](/docs/dbt-apis/service-tokens) with “Semantic Layer Only” and "Metadata Only" permissions or a <Constant name="dbt" /> [personal access token](/docs/dbt-apis/user-tokens). Create a new service or personal token on the **Account Settings** page. | `token=AUTHENTICATION_TOKEN` |
 
 *Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable at the end or beginning of the JDBC URL `&disableCertificateVerification=true`.
 

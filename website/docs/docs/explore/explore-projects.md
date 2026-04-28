@@ -37,7 +37,7 @@ If your organization works in both dbt Core and Cloud, you can unify these workf
 
 Connect directly to your data warehouse with [external metadata ingestion](/docs/explore/external-metadata-ingestion), giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="catalog" />.
 
-We create dbt metadata and pull external metadata. <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-platform-apis/discovery-api) to display details about the state of your project. The available metadata depends on which [deployment environment](/docs/deploy/deploy-environments) you’ve designated as production or staging in your dbt project.
+We create dbt metadata and pull external metadata. <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display details about the state of your project. The available metadata depends on which [deployment environment](/docs/deploy/deploy-environments) you’ve designated as production or staging in your dbt project.
 
 ## Catalog overview 
 
@@ -99,7 +99,7 @@ If you don't see the project lineage graph immediately, click **Render Lineage**
 
 The nodes in the lineage graph represent the project's resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
-By default, <Constant name="catalog" /> shows the project's [applied state](/docs/dbt-platform-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
+By default, <Constant name="catalog" /> shows the project's [applied state](/docs/dbt-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
 
 To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, <Constant name="catalog" /> excludes these resources from the full lineage graph unless a search query returns them as results.
 
@@ -303,7 +303,7 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 - **Resources** tab &mdash; All resources in the project organized by type. Select any resource type in the list and all those resources in the project will display as a table in the main section of the page. For a description on the different resource types (like models, metrics, and so on), refer to [About dbt projects](/docs/build/projects).
   - [Data health signals](/docs/explore/data-health-signals) are visible to the right of the resource name under the **Health** column.
 - **File Tree** tab &mdash; All resources in the project organized by the file in which they are defined. This mirrors the file tree in your dbt project repository.
-- **Database** tab &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-platform-apis/project-state) of your project.
+- **Database** tab &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-apis/project-state) of your project.
 
 ## Integrated tool access
 

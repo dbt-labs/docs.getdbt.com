@@ -2,7 +2,7 @@
 title: "Project state in dbt"
 ---
 
-<Constant name="dbt" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-platform-apis/discovery-querying) in the metadata platform.
+<Constant name="dbt" /> provides a stateful way of deploying dbt. Artifacts are accessible programmatically via the [Discovery API](/docs/dbt-apis/discovery-querying) in the metadata platform.
 
 With the implementation of the `environment` endpoint in the Discovery API, we've introduced the idea of multiple states. The Discovery API provides a single API endpoint that returns the latest state of models, sources, and other nodes in the DAG. 
 

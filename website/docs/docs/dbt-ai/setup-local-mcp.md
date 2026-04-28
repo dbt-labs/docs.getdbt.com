@@ -53,7 +53,7 @@ If you're connecting to <Constant name="dbt_platform" /> features (<Constant nam
 | CI or automation | **Service token** |
 
 :::warning `execute_sql` requires a PAT
-The `execute_sql` tool does _not_ work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-platform-apis/user-tokens) for `DBT_TOKEN` when using this tool.
+The `execute_sql` tool does _not_ work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) for `DBT_TOKEN` when using this tool.
 :::
 
 ## Setup options
@@ -271,7 +271,7 @@ uvx dbt-mcp
 | Environment variable | Required | Description |
 | --- | --- | --- |
 | `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/platform/about-platform/access-regions-ip-addresses). The default is `cloud.getdbt.com`. For multi-cell and multi-tenant accounts with a static subdomain, use the full hostname — for example, `abc123.us1.dbt.com`. |
-| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-platform-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
 | `DBT_ACCOUNT_ID` | Required for Administrative API tools and PAT-based auth | Your [dbt account ID](/faqs/Accounts/find-user-id). Also required when using a Personal Access Token (PAT) as your `DBT_TOKEN`. |
 | `DBT_PROD_ENV_ID` | Required | Your <Constant name="dbt_platform" /> production environment ID |
 | `DBT_DEV_ENV_ID` | Optional | Your <Constant name="dbt_platform" /> development environment ID |

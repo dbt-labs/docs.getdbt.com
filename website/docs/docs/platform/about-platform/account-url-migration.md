@@ -7,7 +7,7 @@ pagination_prev: null
 unlisted: true
 ---
 
-Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-platform-apis/overview) on the **dbt.com** domain rather than sharing generic **getdbt.com** region URLs. For example:
+Account-specific access URLs are being assigned to <Constant name="dbt" /> accounts as part of our ongoing efforts to improve your experience and strengthen security. Each account will receive its own unique <Constant name="dbt_platform" /> and [API access URLs](/docs/dbt-apis/overview) on the **dbt.com** domain rather than sharing generic **getdbt.com** region URLs. For example:
 
 - Old: `https://cloud.getdbt.com`
 - New: `https://ab123.us1.dbt.com`
@@ -53,7 +53,7 @@ All dbt Labs managed integrations will be updated automatically, which consists 
 | Network allowlists | Add new access URLs to your allowlist policies |
 | Inbound webhooks | Update access URLs in your webhook configurations |
 | [SCIM (Okta)](/docs/platform/manage-access/scim#set-up-dbt-cloud) | Update the SCIM base URL in Okta |
-| [API integrations](/docs/dbt-platform-apis/overview) | Update access URLs in your API clients |
+| [API integrations](/docs/dbt-apis/overview) | Update access URLs in your API clients |
 | [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) | Update access URLs in your Terraform configuration |
 | Browser Bookmarks | Update personal and shared bookmarks |
 

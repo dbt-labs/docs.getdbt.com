@@ -221,7 +221,7 @@ Explore these additional configurations to optimize your <Constant name="dbt" />
 
 4. **Monitoring tools** &mdash; Use [monitoring tools](/docs/deploy/monitor-jobs) like run history, job retries, job chaining, dashboard status tiles, and more for a seamless orchestration experience.
 
-5. **API access** &mdash; Create [API auth tokens](/docs/dbt-platform-apis/authentication) and access to [<Constant name="dbt" /> APIs](/docs/dbt-platform-apis/overview) as needed.  <Lifecycle status="self_service,managed" />
+5. **API access** &mdash; Create [API auth tokens](/docs/dbt-apis/authentication) and access to [<Constant name="dbt" /> APIs](/docs/dbt-apis/overview) as needed.  <Lifecycle status="self_service,managed" />
 
 6. **<Constant name="catalog" />** &mdash; If you use [<Constant name="catalog" />](/docs/explore/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view models and their [metadata](/docs/explore/explore-projects#generate-metadata) in <Constant name="catalog" />. Running `dbt compile`  alone will not update model metadata. In addition, features like column-level lineage also requires catalog metadata produced through running `dbt docs generate`. <Lifecycle status="self_service,managed" />
 

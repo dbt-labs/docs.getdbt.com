@@ -1,7 +1,7 @@
 ---
 title: "Authentication tokens"
 description: "Learn how to authenticate with user tokens and service account tokens "
-pagination_next: "docs/dbt-platform-apis/user-tokens"
+pagination_next: "docs/dbt-apis/user-tokens"
 pagination_prev: null
 ---
 
@@ -10,13 +10,13 @@ pagination_prev: null
 <Card
     title="Personal access tokens"
     body="Learn about user tokens and how to use them to execute queries against the dbt API."
-    link="/docs/dbt-platform-apis/user-tokens"
+    link="/docs/dbt-apis/user-tokens"
     icon="dbt-bit"/>
 
 <Card
     title="Service account tokens"
     body="Learn how to use service account tokens to securely authenticate with dbt APIs for system-level integrations."
-    link="/docs/dbt-platform-apis/service-tokens"
+    link="/docs/dbt-apis/service-tokens"
     icon="dbt-bit"/>
 
 </div>

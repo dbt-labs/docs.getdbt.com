@@ -31,7 +31,7 @@ Use this table to choose the right token type before you start:
 | CI or automation | **Service token** |
 
 :::warning `execute_sql` requires a PAT
-The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-platform-apis/user-tokens) in the `Authorization` header when using this tool.
+The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) in the `Authorization` header when using this tool.
 :::
 
 ## Setup instructions
@@ -42,7 +42,7 @@ The `execute_sql` tool does **not** work with service tokens. You must use a [Pe
   - **<Constant name="dbt_platform"/> host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
   - **Production environment ID**: You can find this on the **Orchestration** page in the <Constant name="dbt_platform"/>. Use this to set an `x-dbt-prod-environment-id` header.
   - **Token**: Generate either a personal access token or a service token. To fully utilize remote MCP, the token must have Semantic Layer and Developer permissions. 
-  - If you plan to use `execute_sql`, you must use a [Personal Access Token (PAT)](/docs/dbt-platform-apis/user-tokens). Service tokens _do not_ work for this tool. For other tools that require `x-dbt-user-id`, a PAT is also required.
+  - If you plan to use `execute_sql`, you must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens). Service tokens _do not_ work for this tool. For other tools that require `x-dbt-user-id`, a PAT is also required.
 
 3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 
@@ -50,7 +50,7 @@ The `execute_sql` tool does **not** work with service tokens. You must use a [Pe
 
   | Header | Required | Description |
   | --- | --- | --- |
-  | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-platform-apis/user-tokens) or [service token](/docs/dbt-platform-apis/service-tokens) from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, we recommended to use a PAT. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
+  | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, we recommended to use a PAT. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
   | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID |
 
   **Additional configuration for SQL tools**

@@ -87,7 +87,7 @@ Refer to [<Constant name="dbt" /> architecture](/docs/platform/about-platform/ar
 ## Run cancellation for over-scheduled jobs
 
 :::info Scheduler won't cancel API-triggered jobs 
-The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-platform-apis/overview).
+The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-apis/overview).
 :::
 
 The <Constant name="dbt" /> scheduler prevents too many job runs from clogging the queue by canceling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue will grow faster than the scheduler can process the runs, leading to an ever-expanding queue with runs that don’t need to be processed (called _over-scheduled jobs_). 
