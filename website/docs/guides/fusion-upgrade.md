@@ -61,16 +61,34 @@ Always upgrade your development environment first before moving to production. T
 
 ### Assign upgrade access (optional)
 
-By default, the <Constant name="fusion" /> upgrade assistant is visible to all users, but account admins can restrict access using the **Fusion admin** [permission set](/docs/cloud/manage-access/enterprise-permissions#fusion-admin)
+The <Constant name="fusion" /> upgrade assistant is controlled by two account-level settings. An [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) must first enable the readiness experience, and can optionally restrict which users can execute the upgrade.
 
-To limit access to the upgrade workflow:
+#### Enable the Fusion readiness experience
 
-1. Navigate to **Account settings** in <Constant name="dbt_platform" />.
-2. Select **Groups** and choose the group to grant access.
-3. Click **Edit** and scroll to **Access and permissions**.
-4. Click **Add permission** and select **Fusion admin** from the dropdown.
-5. Select the project(s) users should access.
-6. Click **Save**.
+The upgrade assistant and readiness panel only appear after an account admin enables this setting:
+
+1. Navigate to **Account settings** → **Account**.
+2. Click **Edit** and scroll to the **Settings** section.
+3. Select the checkbox next to **Enable Fusion readiness & upgrade features**.
+4. Click **Save**.
+
+Once enabled, all users can see the readiness panel and the **Start Fusion upgrade** assistant (subject to their existing permissions).
+
+#### Restrict who can execute upgrades (optional, Enterprise only)
+
+By default, any user who can see the upgrade assistant can use it. To restrict upgrade execution to designated users:
+
+1. In **Account settings** → **Account**, click **Edit**.
+2. Select the checkbox next to **Enable restricted Fusion upgrade permissions**.
+3. Click **Save**.
+
+When this is enabled, only users with the **Fusion admin** [permission set](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) can execute upgrades. To assign this permission:
+
+1. Navigate to **Account settings** → **Groups** and choose the group to grant access.
+2. Click **Edit** and scroll to **Access and permissions**.
+3. Click **Add permission** and select **Fusion admin** from the dropdown.
+4. Select the project(s) users should access.
+5. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin permissions to groups"/>
 
@@ -349,6 +367,10 @@ Validate the upgrade by running a job:
 
 If the job succeeds, your production upgrade is successful!
 
+import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+
+<FusionReadinessPanel />
+
 ### Step 5: Enable state-aware orchestration (optional but recommended) <Lifecycle status="Enterprise, Enterprise+"/>
 
 One of <Constant name="fusion" />'s most powerful features is [state-aware orchestration](/docs/deploy/state-aware-about), which automatically determines which models need rebuilding based on code or data changes. This can reduce warehouse costs by 30% or more.
@@ -373,7 +395,7 @@ Repeat this for all production jobs to maximize cost savings. For more details, 
 
 :::tip Dropped tables and views
 
-If using state-aware orchestration, dbt doesn’t detect a change if a table or view is dropped outside of dbt, as the cache is unique to each dbt platform environment. This means state-aware orchestration will not rebuild that model until either there is new data or a change in the code that the model uses.
+If you use state-aware orchestration, dbt doesn't detect changes when a table or view is dropped outside of dbt because the cache is unique to each dbt platform environment. As a result, state-aware orchestration won't rebuild that model until there is new data or a code change in the model.
 
 To circumvent this limitation: 
 - Use the **Clear cache** button on the target Environment page to force a full rebuild (acts like a reset), or
