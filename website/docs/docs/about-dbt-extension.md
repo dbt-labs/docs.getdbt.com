@@ -127,6 +127,10 @@ We welcome feedback as we work to continuously improve the extension, and would 
 
 For more information regarding support and acceptable use of the dbt VS Code extension, refer to our [Acceptable Use Policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
 
+:::tip Developing locally as a <Constant name="dbt_platform"/> user?
+See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide for how to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync between your local extension and dbt Platform.
+:::
+
 import AboutFusion from '/snippets/_about-fusion.md';
 
 <AboutFusion />

@@ -10,25 +10,27 @@ recently_updated: true
 
 ## Introduction
 
-Hybrid dbt deployments are becoming increasingly common. <Constant name="fusion" /> adopters are frequently working in several places at once: in the <Constant name="dbt_platform" /> for production runs and IDE-based development, and locally using the dbt platform CLI or the dbt VS Code extension. 
+Hybrid dbt deployments are becoming increasingly common. <Constant name="fusion" /> adopters are frequently working in several places at once: in the <Constant name="dbt_platform" /> for production runs and IDE-based development, and locally using the <Constant name="dbt_platform"/> CLI or the dbt VS Code extension.
 
-Keeping these two environments in sync across credentials, environment variables, and engine versions is one of the first operational challenges teams encounter.
+These paths are fully supported for <Constant name="dbt_platform" /> users. Keeping the environments in sync across credentials, environment variables, and engine versions is one of the first operational challenges teams encounter.
 
 This guide walks through credentials, environment variables, <Constant name="fusion" /> versions, and Mesh or deferral, with concrete, copy-paste-ready steps to keep everything aligned.
 
 ## Prerequisites
 
 - You have a <Constant name="dbt_platform" /> account with at least one project using the <Constant name="fusion_engine" />.
-- You have either the [dbt platform CLI](/docs/cloud/cloud-cli-installation) or the [dbt VS Code extension + local Fusion CLI](/docs/local/install-dbt?version=2.0#installation) installed.
+- You have either the [dbt platform CLI](/docs/cloud/cloud-cli-installation) or the [dbt VS Code extension + local <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2.0#installation) installed.
 
 
 ## 1. Managing credentials
 
-How you authenticate to your data warehouse locally depends on which local tool you use.
+How you authenticate to your data warehouse locally depends on which local tool you use:
+- [dbt platform CLI](/guides/fusion-platform-local-workflow?step=3#dbt-platform-cli): For a CLI-only local development experience (without the dbt VS Code extension), use the dbt platform CLI with <Constant name="fusion"/> set as your platform release track. Warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically &mdash; no `profiles.yml` required.
+- [dbt VS Code extension](/guides/fusion-platform-local-workflow?step=3#dbt-vs-code-extension-profilesyml-required): For IDE-based local development, the dbt VS Code extension runs the <Constant name="fusion_engine" /> and its <Term id="lsp" /> features in a local process. This path requires a `profiles.yml` to connect directly to your warehouse.
 
 ### dbt platform CLI
 
-If you're <Constant name="dbt_platform" /> user who prefers developing locally, <Constant name="fusion" /> works natively with the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation). The <Constant name="platform_cli" /> authenticates using your <Constant name="dbt_platform" /> session. Your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
+The [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a CLI-only local workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
 For detailed installation instructions, refer to [Install the dbt CLI](/docs/cloud/cloud-cli-installation?version=1.10).
 
@@ -50,13 +52,13 @@ This is the lowest-friction path for teams that don't need full IDE integration 
 
 The dbt VS Code extension runs <Constant name="fusion" /> and its language server in a local process and connects directly to your warehouse. For this reason, you need a `profiles.yml` for local extension development sessions.
 
-Download your `dbt_cloud.yml` from your <Constant name="dbt_platform" /> **Account settings** (refer to [Register with dbt_cloud.yml](/docs/install-dbt-extension#register-with-dbt_cloudyml) for detailed instructions) and Fusion attempts to hydrate non-sensitive credential metadata from <Constant name="dbt_platform" /> automatically. To avoid manually recreating your warehouse configuration, use `dbt init`.
+Download your `dbt_cloud.yml` from your <Constant name="dbt_platform" /> **Account settings** (refer to [Register with dbt_cloud.yml](/docs/install-dbt-extension#register-with-dbt_cloudyml) for detailed instructions) and <Constant name="fusion" /> attempts to hydrate non-sensitive credential metadata from <Constant name="dbt_platform" /> automatically. To avoid manually recreating your warehouse configuration, use `dbt init`.
 
 ```shell
 dbt init
 ```
 
-Fusion pulls down fields such as your **username**, **role**, **warehouse**, **database**, and **schema**, but never sensitive values like passwords or tokens. If your authentication mechanism is passwordless (such as `externalbrowser` or SSO-based OAuth), <Constant name="fusion" /> configures that too, so you can work without storing secrets locally.
+<Constant name="fusion" /> pulls down fields such as your **username**, **role**, **warehouse**, **database**, and **schema**, but never sensitive values like passwords or tokens. If your authentication mechanism is passwordless (such as `externalbrowser` or SSO-based OAuth), <Constant name="fusion" /> configures that too, so you can work without storing secrets locally.
 
 :::note
 This hydration happens once during initial setup and does not stay in sync automatically. When your warehouse configuration changes in <Constant name="dbt_platform" />, run `dbt init` again to refresh your local `profiles.yml`.
@@ -105,14 +107,6 @@ my_profile:
 
 For a full walkthrough of `.env` file usage and variable precedence, see [Environment variables](/docs/build/environment-variables) for more information on where to find your configured variables and [Set environment variables locally](/docs/configure-dbt-extension?version=2.0#set-environment-variables-locally) for local configuration instructions.
 
-:::tip Add .env to .gitignore
-Add `.env` to your `.gitignore` to prevent credentials from being committed. Running `dbt init` will do this automatically.
-
-```shell
-echo ".env" >> .gitignore
-```
-:::
-
 ### Keeping platform and local variables in sync
 
 Environment variables in <Constant name="dbt_platform" /> and a local `.env` file don't sync automatically. 
@@ -132,7 +126,7 @@ cp .env.example .env
 ```
 
 :::warning Do not commit .env
-Fusion and the dbt VS Code extension only load from a file named exactly `.env`, so each developer needs their own copy. Make sure `.env` is in your `.gitignore` so credentials are never committed:
+<Constant name="fusion" /> and the dbt VS Code extension only load from a file named exactly `.env`, so each developer needs their own copy. Make sure `.env` is in your `.gitignore` so credentials are never committed. Running `dbt init` adds this automatically.
 
 ```shell
 echo ".env" >> .gitignore
@@ -153,11 +147,11 @@ The **Latest** release track on <Constant name="dbt_platform" /> updates continu
 
 ### Versions on the dbt platform
 
-On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **Latest**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [Fusion releases](/docs/fusion/fusion-releases).
+On <Constant name="dbt_platform" />, <Constant name="<Constant name="fusion" />" /> follows a versionless release track model. The default release track is **Latest**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/fusion/fusion-releases).
 
 ### Versions installed locally
 
-By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt?version=2#installation) installs the latest stable release, the same version that ships with the `Latest` release track on <Constant name="dbt_platform" />:
+By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt?version=2#installation) installs the latest stable release, the same version that ships with the **Latest** release track on <Constant name="dbt_platform" />:
 
 ```shell
 # macOS / Linux
@@ -183,7 +177,7 @@ Use a [VS Code dev container](https://code.visualstudio.com/docs/devcontainers/c
 Our friends at Brooklyn Data have published a ready-to-use <Constant name="fusion" /> dev container:
 
 - **Dev container template:** [brooklyn-data/dbt-fusion-devcontainer](https://github.com/brooklyn-data/dbt-fusion-devcontainer)
-- **Blog post:** [Why you should use dev containers with dbt Fusion](https://www.brooklyndata.co/ideas/2025/06/11/why-you-should-use-dev-containers-with-dbt-fusion)
+- **Blog post:** [Why you should use dev containers with dbt <Constant name="fusion" />](https://www.brooklyndata.co/ideas/2025/06/11/why-you-should-use-dev-containers-with-dbt-fusion)
 
 To get started with their template:
 
@@ -195,7 +189,7 @@ curl -fsSL https://raw.githubusercontent.com/brooklyn-data/dbt-fusion-devcontain
 Then open your project in VS Code and select **Reopen in Container** when prompted. VS Code builds the image and installs the latest stable <Constant name="fusion" /> release automatically.
 
 :::info Coming soon
-We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **Fusion Latest**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
+We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **<Constant name="fusion" /> Latest**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
 :::
 
 ### Without dev containers: update at the start of each session
@@ -262,18 +256,23 @@ Auto-deferral is also on by default. When a `dbt_cloud.yml` is present, <Constan
 
 ## Reference table
 
+The following table summarizes the key differences between the two local development paths covered in this guide:
+
+<SimpleTable>
+
 | Area | dbt platform CLI | dbt VS Code extension |
 |---|---|---|
 | **Credentials** | Managed through your <Constant name="dbt_platform" /> session, no `profiles.yml` needed | `profiles.yml` required; use `dbt init` to hydrate from <Constant name="dbt_platform" /> |
 | **Environment variables** | Same env vars as in <Constant name="dbt_platform" /> automatically | Use a `.env` file at the project root |
 | **Version management** | `dbt system update` to stay current | Dev container recommended for automatic sync |
 | **dbt Mesh / deferral** | Auto-enabled when `dbt_cloud.yml` present; `--no-defer` to disable | Auto-enabled when `dbt_cloud.yml` present; toggle off in extension settings |
+</SimpleTable>
 
 ## Related docs
 
-- [Install Fusion](/docs/local/install-dbt?version=2#installation)
+- [Install <Constant name="fusion" />](/docs/local/install-dbt?version=2#installation)
 - [dbt platform CLI installation](/docs/cloud/cloud-cli-installation)
-- [Fusion releases and release channels](/docs/fusion/fusion-releases)
+- [<Constant name="fusion" /> releases and release channels](/docs/fusion/fusion-releases)
 - [About profiles.yml](/docs/local/profiles.yml)
 - [Environment variables (local)](/docs/local/install-dbt?version=2#environment-variables)
 - [VS Code dev containers](https://code.visualstudio.com/docs/devcontainers/containers)
