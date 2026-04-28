@@ -8,6 +8,7 @@ categories:
       - fusion
       - prepare-fusion-upgrade
       - upgrade-to-fusion
+      - fusion-platform-local-workflow
 
   - title: Popular
     guides:
