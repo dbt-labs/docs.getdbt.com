@@ -291,9 +291,7 @@ catalogs:
     config(
         materialized='table',
         catalog_name='catalog_horizon',
-        adapter_properties={
-          'iceberg_version': 3,  # available in v1.12+
-        }
+        iceberg_version=3,  # available in v1.12+
     )
 }}
 
