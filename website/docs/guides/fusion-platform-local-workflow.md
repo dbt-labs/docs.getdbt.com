@@ -10,7 +10,7 @@ recently_updated: true
 
 ## Introduction
 
-Hybrid dbt deployments are becoming increasingly common. <Constant name="fusion" /> adopters are no different, frequently working in several places at once: in the <Constant name="dbt_platform" /> for production runs and IDE-based development, and locally using the dbt platform CLI or the dbt VS Code extension. 
+Hybrid dbt deployments are becoming increasingly common. <Constant name="fusion" /> adopters are frequently working in several places at once: in the <Constant name="dbt_platform" /> for production runs and IDE-based development, and locally using the dbt platform CLI or the dbt VS Code extension. 
 
 Keeping these two environments in sync across credentials, environment variables, and engine versions is one of the first operational challenges teams encounter.
 
