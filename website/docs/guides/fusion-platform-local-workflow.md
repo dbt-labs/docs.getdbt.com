@@ -147,7 +147,7 @@ The **Latest** release track on <Constant name="dbt_platform" /> updates continu
 
 ### Versions on the dbt platform
 
-On <Constant name="dbt_platform" />, <Constant name="<Constant name="fusion" />" /> follows a versionless release track model. The default release track is **Latest**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/fusion/fusion-releases).
+On <Constant name="dbt_platform" />, <Constant name="<Constant name="fusion" /> follows a versionless release track model. The default release track is **Latest**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/fusion/fusion-releases).
 
 ### Versions installed locally
 
