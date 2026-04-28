@@ -97,15 +97,12 @@ When a SCIM-managed user's email is updated in the IdP, <Constant name="dbt_plat
 
 <Expandable alt_header="Does SCIM support automatic license assignment?">
 
-SCIM-native license mapping (via a SCIM attribute) is supported for Okta only.
+SCIM-native license mapping (using a SCIM attribute) is supported for Okta only. For Okta license mapping setup, refer to [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
 
-For Microsoft Entra ID, SCIM-native license mapping is not available. You can, however, use SSO-based AD group → license mapping alongside an active Entra ID SCIM configuration. This approach works as long as **Manage user licenses with SCIM** (Account settings > **SSO & SCIM**) remains **disabled**. When that toggle is disabled, <Constant name="dbt_platform" /> continues to honor your [SSO license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration) based on Entra ID group membership.
+Althought Entra ID doesn't support SCIM-native license mapping, you can, however, use SSO-based AD group → license mapping alongside your Entra ID SCIM setup. This approach works so long as the **Manage user licenses with SCIM** toggle (found in **Account settings > SSO & SCIM**) toggle stays disabled. 
 
-:::caution
-If you enable **Manage user licenses with SCIM** for an Entra ID setup, <Constant name="dbt_platform" /> will ignore your existing SSO license mappings. Because SCIM-native license attributes are not supported for Entra ID, enabling the toggle effectively removes license mapping entirely for Entra ID users.
-:::
-
-For Okta license mapping setup, refer to [Manage user licenses with SCIM](/docs/cloud/manage-access/scim-manage-user-licenses).
+- Disabling the toggle means <Constant name="dbt_platform" /> continues to honor your [SSO license mappings](/docs/cloud/manage-access/seats-and-users#mapped-configuration) based on Entra ID group membership.
+- Enabling the toggle means <Constant name="dbt_platform" /> will ignore your existing SSO license mappings. Because SCIM-native license attributes are not supported for Entra ID, enabling the toggle effectively removes license mapping entirely for Entra ID users.
 
 </Expandable>
 
