@@ -89,7 +89,7 @@ Use `--empty` to create seed tables with the correct schema but without loading 
   dbt seed --empty
   ```
 
-- You want to create empty seed tables for a specific seed:
+- Target a specific seed when you only need one table's structure:
 
   ```shell
   dbt seed --select "country_codes" --empty
