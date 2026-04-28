@@ -226,9 +226,9 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 
 #### REST catalog
 
+<VersionBlock lastVersion="1.11">
 | Field | Required | Accepted values |
 | --- | --- | --- |
-<VersionBlock lastVersion="1.11">
 | `auto_refresh` | Optional | `True` or `False`    |
 | `catalog_linked_database` | Required for `catalog type: iceberg_rest` | Catalog-linked database name   |
 | `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
@@ -236,6 +236,8 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 | `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
 </VersionBlock>
 <VersionBlock firstVersion="1.12">
+| Field | Required | Accepted values |
+| --- | --- | --- |
 | `auto_refresh` | Optional | `True` or `False`    |
 | `catalog_linked_database` | Required for `catalog type: iceberg_rest` | Catalog-linked database name   |
 | `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
