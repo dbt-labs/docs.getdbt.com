@@ -17,4 +17,4 @@ The <Constant name="fusion" /> migration workflow is accessible through the <Con
 7. When the project compiles with no warnings or errors, commit and publish your changes.
 8. After you merge the changes, wait for the job to run again or run it manually on <Constant name="fusion"/>.
 
-<Lightbox src="/img/docs/dbt-cloud/fusion-migration-workflow.gif" width="95%" title="The Developer Agent's fusion migration workflow triaging and fixing Fusion compatibility errors in the Studio IDE." />
+<Lightbox src="/img/docs/dbt-platform/fusion-migration-workflow.gif" width="95%" title="The Developer Agent's fusion migration workflow triaging and fixing Fusion compatibility errors in the Studio IDE." />
