@@ -13,17 +13,16 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
 - **Is canceled** option &mdash; A job run is canceled.
 
 ### Notification options
-<!-- temp list for now until betas go ga -->
 
 <Constant name="dbt_platform" /> currently supports the following notification channels:
 
-- [Email](#email-notifications) &mdash; Available for all users
-- [Slack (user-linked)](#slack-notifications) &mdash; Available for all users
-- [Slack (account-level)](#slack-notifications-account)  &mdash; Available in beta. To request access, contact your account manager.
-- [Microsoft Teams](#microsoft-teams-notifications) &mdash; Available in beta. To request access, contact your account manager.
+- [Email](#email-notifications)
+- [Slack (user-linked)](#slack-notifications)
+- [Slack (account-level)](#slack-notifications-account)
+- [Microsoft Teams](#microsoft-teams-notifications)
 
-:::info Microsoft Teams without the beta
-If you don’t have access to the native Microsoft Teams integration (available in beta), you can still send job notifications to a Teams channel by using the channel’s email address as an external email, as explained in the next section, Email notifications.
+:::info Microsoft Teams
+If you can’t use the native Microsoft Teams integration, you can still send job notifications to a Teams channel by using the channel’s email address as an external email, as explained in the next section.
 :::
 
 ## Email notifications
@@ -86,7 +85,7 @@ You can send dbt job [notification emails](#configure-email-notifications) direc
 ## Slack notifications (user) {#slack-notifications}
 You can receive Slack alerts about jobs by setting up the Slack integration and then configuring the <Constant name="dbt" /> Slack notification settings. <Constant name="dbt" /> integrates with Slack via OAuth to ensure secure authentication.
 
-This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature, which is available only in beta. To request access, contact your account manager. Only refer to these instructions if you _don't_ have access to the beta features.
+This is the current Slack integration available for all users and set at the user level, not to be confused with the [Slack notifications at the account level](#slack-notifications-account) feature.
 
 :::note 
 Virtual Private Cloud (VPC) admins must [contact support](mailto:support@getdbt.com) to complete the Slack integration.
@@ -141,12 +140,7 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 1. Select **Account settings** and on the **Integrations** page, scroll to the **OAuth** section.
 1. Click the **X** icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
 
-## Slack notifications (account) <Lifecycle status="beta" />  {#slack-notifications-account}
-
-:::info
-Configuring Slack notifications at the account level is currently available in beta. To request access, contact your account manager. Only refer to these instructions if you have access to the beta feature.
-
-:::
+## Slack notifications (account) {#slack-notifications-account}
 
 Integrate Slack with <Constant name="dbt_platform" /> at the account level to receive job notifications in Slack. dbt integrates with Slack via OAuth to ensure secure authentication. 
 
@@ -166,7 +160,7 @@ After an account admin links the Slack app for the account, [any licensed user](
 
 The account-level Slack integration uses the official <Constant name="dbt_platform" /> Slack app, which is separate from the [user-linked Slack integration](#slack-notifications). 
 
-To use the beta Slack notifications, you must unlink the old Slack app and then connect the new official app: 
+To use Slack notifications, you must unlink the old Slack app and then connect the new official app: 
 
 1. Go to **Account settings** > **Integrations** > **OAuth**.
 2. Click the **X** icon next to Slack and select **Unlink**.
@@ -270,15 +264,11 @@ In this step, you'll disable the Slack integration and remove the account-level 
     - This removes the account-level Slack credentials. All Slack notifications that rely on the account-level integration will stop sending.
     - If any legacy, user-linked Slack integrations still exist, those notifications may continue until the legacy link is removed. We recommend migrating to the new account-level app and removing legacy links.
 
-## Microsoft Teams notifications <Lifecycle status="beta" />
-
-:::info
-Configuring Microsoft Teams notifications is currently in beta. To request access, contact your account manager.
-:::
+## Microsoft Teams notifications
 
 You can receive Microsoft Teams alerts for your dbt jobs by connecting your Teams account to the <Constant name="dbt_platform" />, and configuring your notification preferences. 
 
-dbt integrates with Teams through Microsoft Entra to provide secure authentication. Only refer to these instructions if you have access to the beta feature.
+dbt integrates with Teams through Microsoft Entra to authenticate securely when you link Teams and configure notification settings.
 
 ### Prerequisites
 
