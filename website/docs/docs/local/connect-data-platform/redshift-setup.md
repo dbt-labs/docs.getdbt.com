@@ -385,6 +385,7 @@ The following macros switch to `SHOW` commands when `datasharing: true`:
 Take note of the following limitations when using `datasharing`:
 
 - Creating views (including materialized views) in another database is not supported.
+- Grants on objects in another database are not supported.
 - Source freshness checks can have a lag of up to 5 minutes.
 - Metadata queries are limited to 10,000 rows. If a database has more than 10,000 schemas, or a schema has more than 10,000 tables, dbt runs can result in unexpected scenarios.
 - Cross-database writes require the `SNAPSHOT` transaction isolation level.
