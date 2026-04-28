@@ -251,8 +251,8 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 - **catalog_linked_database:** [Catalog-linked databases](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database) (CLD) in Snowflake ensures that Snowflake can automatically sync metadata (including namespaces and iceberg tables) from the external Iceberg Catalog and registers them as remote tables in the catalog-linked database. The reason we require the usage of Catalog-linked databases for building Iceberg tables with external catalogs is that without it, dbt will be unable to truly manage the table end-to-end. Snowflake does not support dropping the Iceberg table on non-CLDs in the external catalog; instead, it only allows unlinking the Snowflake table, which creates a discrepancy with how dbt expects to manage the materialized object.
 - **auto_refresh:** Specifies whether Snowflake should automatically poll the external Iceberg catalog for metadata updates. If `REFRESH_INTERVAL_SECONDS` isn’t set on the catalog integration, the default refresh interval is 30 seconds. 
 - **target_file_size:** Specifies a target Parquet file size. Default is `AUTO`.
-<VersionBlock firstVersion="1.12"> 
-- **iceberg_version:** Specifies the Iceberg format version for the table. Default value is `2`. Set to `3` for improved support for `VARIANT` data types and faster incremental operations. Version 3 uses [deletion vectors](https://docs.snowflake.com/en/user-guide/tables-iceberg-manage#tables-iceberg-deletion-vectors), which let Snowflake mark rows as deleted without rewriting the underlying data files, making incremental runs faster. Note that you can't change the Iceberg version after table creation. As an alternative, you can [configure the default Iceberg version](https://docs.snowflake.com/en/user-guide/tables-iceberg-v3-specification-support#configure-the-default-iceberg-version) at the account, database, or schema level in Snowflake.  
+<VersionBlock firstVersion="1.12">
+- **iceberg_version:** Specifies the Iceberg format version for the table. Default value is `2`. Set to `3` for improved support for `VARIANT` data types and faster incremental operations. Version 3 uses [deletion vectors](https://docs.snowflake.com/en/user-guide/tables-iceberg-manage#tables-iceberg-deletion-vectors), which let Snowflake mark rows as deleted without rewriting the underlying data files, making incremental runs faster. Note that you can't change the Iceberg version after table creation. As an alternative, you can [configure the default Iceberg version](https://docs.snowflake.com/en/user-guide/tables-iceberg-v3-specification-support#configure-the-default-iceberg-version) at the account, database, or schema level in Snowflake.
 </VersionBlock>
 
 You can set the following properties in model configurations under the `adapter_properties` field, or as top-level fields themselves. If present in both places, the value set under `adapter_properties` takes precedence. Refer to [Base location](#base-location) for more information.
@@ -276,6 +276,7 @@ catalogs:
         catalog_type: built_in
         adapter_properties:
           change_tracking: True
+          iceberg_version: 3  # available in v1.12+
 
 ```
 
@@ -287,8 +288,10 @@ catalogs:
 {{
     config(
         materialized='table',
-        catalog_name = 'catalog_horizon'
-
+        catalog_name='catalog_horizon',
+        adapter_properties={
+          'iceberg_version': 3,  # available in v1.12+
+        }
     )
 }}
 
@@ -334,6 +337,7 @@ To configure an Iceberg table materialization in dbt, refer to the example confi
     materialized = "table",
     table_format="iceberg",
     external_volume="s3_iceberg_snow",
+    iceberg_version=3,  # available in v1.12+
   )
 }}
 
