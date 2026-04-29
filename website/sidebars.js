@@ -5,7 +5,12 @@ const sidebarSettings = {
       value: 'About',
       className: 'sidebar-title',
     },
-    "docs/introduction",
+    {
+      type: "category",
+      label: "What is dbt?",
+      link: { type: "doc", id: "docs/introduction" },
+      items: ["docs/introduction", "docs/dbt-product-catalog"],
+    },
     {
       type: "category",
       label: "dbt Fusion engine",
