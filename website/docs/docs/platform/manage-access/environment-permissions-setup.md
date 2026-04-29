@@ -33,6 +33,12 @@ In your <Constant name="dbt" /> account:
     - Analyst
     - Developer
 
+   :::note
+   A group can have only one entry per permission set. If you add the same permission set more than once, <Constant name="dbt_platform" /> merges those entries into one permission set when you save the group.
+
+   To set up different project or environment access patterns for the same permission set, create separate groups and assign users to each group as needed.
+   :::
+
    Other permission sets are restricted because they have access to everything (for example, Account admin), or limitations prevent them from having write access to environments (for example, Account viewer).
 
    If you select a permission set that is not supported, the environment permission option will not appear.
