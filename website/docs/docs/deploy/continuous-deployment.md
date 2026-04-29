@@ -13,7 +13,7 @@ You can also implement continuous integration (CI) in <Constant name="dbt" />, w
 
 ## How merge jobs work
 
-When you set up merge jobs, <Constant name="dbt" /> listens for notifications from your [<Constant name="git" /> provider](/docs/platform/git/git-configuration-in-dbt-cloud) indicating that a PR has been merged. When <Constant name="dbt" /> receives one of these notifications, it enqueues a new run of the merge job.
+When you set up merge jobs, <Constant name="dbt" /> listens for notifications from your [<Constant name="git" /> provider](/docs/platform/git/configure-git) indicating that a PR has been merged. When <Constant name="dbt" /> receives one of these notifications, it enqueues a new run of the merge job.
 
 You can set up merge jobs to perform one of the following when a PR merges:
 

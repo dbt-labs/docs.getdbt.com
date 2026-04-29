@@ -101,7 +101,7 @@ During your first invocation of `dbt run`, dbt will create the developer schema 
 
 We need to give dbt a way to deploy code outside of development environments. To do so, we’ll use dbt [environments](/docs/environments-in-dbt) to define the production targets that end users will interact with.
 
-Core projects can use [targets in profiles](/docs/local/profiles.yml#understanding-targets-in-profiles) to separate environments. [<Constant name="dbt" /> environments](/docs/platform/studio-ide/develop-in-studio#set-up-and-access-the-cloud-ide) allow you to define environments via the UI and [schedule jobs](/guides/databricks#create-and-run-a-job) for specific environments.
+Core projects can use [targets in profiles](/docs/local/profiles.yml#understanding-targets-in-profiles) to separate environments. [<Constant name="dbt" /> environments](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) allow you to define environments via the UI and [schedule jobs](/guides/databricks#create-and-run-a-job) for specific environments.
 
 Let’s set up our deployment environment:
 

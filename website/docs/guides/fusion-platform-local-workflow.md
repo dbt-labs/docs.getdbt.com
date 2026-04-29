@@ -19,7 +19,7 @@ This guide walks through credentials, environment variables, <Constant name="fus
 ## Prerequisites
 
 - You have a <Constant name="dbt_platform" /> account with at least one project using the <Constant name="fusion_engine" />.
-- You have either the [dbt platform CLI](/docs/platform/cloud-cli-installation) or the [dbt VS Code extension + local <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2.0#installation) installed.
+- You have either the [dbt platform CLI](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension + local <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2.0#installation) installed.
 
 
 ## 1. Managing credentials
@@ -30,9 +30,9 @@ How you authenticate to your data warehouse locally depends on which local tool 
 
 ### dbt platform CLI
 
-The [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a CLI-only local workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
+The [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) is the lowest-friction path for <Constant name="dbt_platform" /> users who want a CLI-only local workflow without VS Code. It authenticates using your <Constant name="dbt_platform" /> session, and your warehouse credentials are managed centrally in <Constant name="dbt_platform" /> and passed through automatically.
 
-For detailed installation instructions, refer to [Install the dbt CLI](/docs/platform/cloud-cli-installation?version=1.10).
+For detailed installation instructions, refer to [Install the dbt CLI](/docs/platform/dbt-cli-installation?version=1.10).
 
 The dbt platform CLI is installed from your local command prompt. For example:
 
@@ -271,10 +271,10 @@ The following table summarizes the key differences between the two local develop
 ## Related docs
 
 - [Install <Constant name="fusion" />](/docs/local/install-dbt?version=2#installation)
-- [dbt platform CLI installation](/docs/platform/cloud-cli-installation)
+- [dbt platform CLI installation](/docs/platform/dbt-cli-installation)
 - [<Constant name="fusion" /> releases and release channels](/docs/fusion/fusion-releases)
 - [About profiles.yml](/docs/local/profiles.yml)
 - [Environment variables (local)](/docs/local/install-dbt?version=2#environment-variables)
 - [VS Code dev containers](https://code.visualstudio.com/docs/devcontainers/containers)
 - [dbt Mesh overview](/docs/mesh/about-mesh)
-- [Deferral in dbt](/docs/platform/about-cloud-develop-defer)
+- [Deferral in dbt](/docs/platform/about-defer)

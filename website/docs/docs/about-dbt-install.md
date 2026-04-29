@@ -25,5 +25,5 @@ pagination_prev: null
 - [Connect to a data platform](/docs/local/connect-data-platform/about-dbt-connections).
 - Learn [how to run your dbt projects](/docs/running-a-dbt-project/run-your-dbt-projects).
 
-If you're interested in using the <Constant name="dbt_platform" />, our feature-rich, browser-based UI, you can learn more in [About dbt set up](/docs/platform/about-cloud-setup).
+If you're interested in using the <Constant name="dbt_platform" />, our feature-rich, browser-based UI, you can learn more in [About dbt set up](/docs/platform/about-platform-setup).
 

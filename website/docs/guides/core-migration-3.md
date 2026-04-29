@@ -35,7 +35,7 @@ You may have already started your move to <Constant name="dbt" /> and are lookin
 In <Constant name="dbt" />, you can natively connect to your data platform and test its [connection](/docs/connect-adapters) with a click of a button. This is especially useful for users who are new to <Constant name="dbt" /> or are looking to streamline their connection setup. Here are some tips and caveats to consider:
 
 ### Tips
-- Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with <Constant name="dbt" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
+- Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-platform-version) and ensure team collaboration with <Constant name="dbt" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
 - <Constant name="dbt" /> supports a whole host of [cloud providers](/docs/platform/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
 - Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/local/profiles.yml) snippet in your <Constant name="dbt" /> environment settings. It gives you more control over environments (both deployment and development) and extends how <Constant name="dbt" /> connects to the data platform within a given environment.
   - For example, if you have a field in your `profiles.yml` that you’d like to add to the <Constant name="dbt" /> adapter user interface, you can use Extended Attributes to set it.
@@ -46,7 +46,7 @@ In <Constant name="dbt" />, you can natively connect to your data platform and t
 
 ## Development tools
 
-<Constant name="dbt" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) (local) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt projects.
+<Constant name="dbt" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) (local) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt projects.
 
 Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team's workflow, it's important to know who will prefer the <Constant name="studio_ide" /> and who might lean towards the <Constant name="dbt" /> CLI. This section aims to clarify these preferences.
 
@@ -65,8 +65,8 @@ A web-based interface for building, testing, running, and version-controlling db
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the <Constant name="studio_ide" />.
 - [Format or lint](/docs/platform/studio-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
-- Allows users to natively [defer to production](/docs/platform/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-cloud-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Allows users to natively [defer to production](/docs/platform/about-defer#defer-in-dbt-cli) metadata directly in their development workflows, reducing the number of objects.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-platform-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
 The <Constant name="studio_ide" /> provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the <Constant name="studio_ide" /> due to its focus on simplicity and ease of use:
 
@@ -88,8 +88,8 @@ When moving from dbt Core to <Constant name="dbt" />, make sure you check the `.
 **Key features**
 
 - Allows users to run dbt commands against their <Constant name="dbt" /> development environment from their local command line with minimal configuration.
-- Allows users to natively [defer to production](/docs/platform/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-cloud-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Allows users to natively [defer to production](/docs/platform/about-defer#defer-in-dbt-cli) metadata directly in their development workflows, reducing the number of objects.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-platform-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 - Able to use Visual Studio (VS) Code extensions
 
 ## Orchestration
@@ -129,7 +129,7 @@ Here are some tips and caveats to consider when using <Constant name="mesh" />:
   - **[Model contracts](/docs/mesh/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
 
 ### Caveats
-- To use cross-project references in dbt, each dbt project must correspond to just one <Constant name="dbt" /> project. We strongly discourage defining multiple projects for the same codebase, even if you're trying to manage access permissions, connect to different data warehouses, or separate production and non-production data.  While this was required historically, features like [Staging environments](/docs/dbt-cloud-environments#types-of-environments), Environment-level RBAC (_coming soon_), and [Extended attributes](/docs/dbt-cloud-environments#extended-attributes) will make it unnecessary.
+- To use cross-project references in dbt, each dbt project must correspond to just one <Constant name="dbt" /> project. We strongly discourage defining multiple projects for the same codebase, even if you're trying to manage access permissions, connect to different data warehouses, or separate production and non-production data.  While this was required historically, features like [Staging environments](/docs/dbt-platform-environments#types-of-environments), Environment-level RBAC (_coming soon_), and [Extended attributes](/docs/dbt-platform-environments#extended-attributes) will make it unnecessary.
 - Project dependencies are uni-directional, meaning they go in one direction. This means dbt checks for cycles across projects (circular dependencies) and raise errors if any are detected. However, we are considering support to allow projects to depend on each other in both directions in the future, with dbt still checking for node-level cycles while allowing cycles at the project level.
 - Everyone in the account can view public model metadata, which helps users find data products more easily. This is separate from who can access the actual data, which is controlled by permissions in the data warehouse. For use cases where even metadata about a reusable data asset is sensitive, we are [considering](https://github.com/dbt-labs/dbt-core/issues/9340) an optional extension of protected models.
 

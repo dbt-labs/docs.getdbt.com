@@ -3,7 +3,7 @@
 The <Constant name="fusion_engine" /> is currently available for installation in: 
 - [Local command line interface (CLI) tools](/docs/local/install-dbt?version=2#get-started) <Lifecycle status="preview" size="80%" />
 - [VS Code and Cursor with the dbt extension](/docs/install-dbt-extension) <Lifecycle status="preview" size="80%" />
-- [<Constant name="dbt_platform" /> environments](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine) <Lifecycle status="private_preview" size="80%" />
+- [<Constant name="dbt_platform" /> environments](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine) <Lifecycle status="private_preview" size="80%" />
 
 Join the conversation in our Community Slack channel [`#dbt-fusion-engine`](https://getdbt.slack.com/archives/C088YCAB6GH).
 

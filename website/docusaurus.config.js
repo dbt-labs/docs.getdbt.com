@@ -424,10 +424,10 @@ var siteSettings = {
                   id: "dbt-platform",
                   name: "dbt platform",
                   routes: [
-                    { route: "/docs/about-cloud-setup" },
+                    { route: "/docs/platform/about-platform-setup" },
                     { route: "/docs/platform/account-settings" },
                     { route: "/docs/platform/account-integrations" },
-                    { route: "/docs/dbt-cloud-environments" },
+                    { route: "/docs/dbt-platform-environments" },
                     { route: "/docs/platform/migration" },
                   ],
                   subsections: [

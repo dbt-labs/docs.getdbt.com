@@ -39,7 +39,7 @@ The following table summarizes the differences between visualizing and orchestra
 To orchestrate downstream exposures, you should meet the following:
 
 - [Configured downstream exposures](/docs/platform-integrations/downstream-exposures-tableau) and ensured desired exposures are included in your lineage.
-- Verified your environment and jobs are on a supported dbt [release track](/docs/dbt-versions/cloud-release-tracks).
+- Verified your environment and jobs are on a supported dbt [release track](/docs/dbt-versions/dbt-release-tracks).
 - Have a <Constant name="dbt" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
 - Created a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run.
 - Have [admin permissions](/docs/platform/manage-access/enterprise-permissions) in <Constant name="dbt" /> to edit project settings or production environment settings.

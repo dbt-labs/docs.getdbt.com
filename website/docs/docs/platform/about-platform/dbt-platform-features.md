@@ -1,6 +1,6 @@
 ---
 title: "The dbt platform features"
-id: "dbt-cloud-features"
+id: "dbt-platform-features"
 sidebar_label: "dbt platform features"
 description: "Explore dbt's features and learn why the dbt platform is the fastest way to deploy dbt"
 hide_table_of_contents: true
@@ -19,7 +19,7 @@ In addition to providing a hosted architecture for running dbt across your organ
 <Card
     title="dbt CLI"
     body="Use the CLI for the dbt platform to develop, test, run, and version control dbt projects and commands, directly from the command line."
-    link="/docs/platform/cloud-cli-installation"
+    link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>
 
 <Card

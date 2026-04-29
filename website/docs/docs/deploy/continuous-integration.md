@@ -62,7 +62,7 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 ### SQL linting <Lifecycle status="self_service,managed,managed_plus" />
 
-Available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/cloud-release-tracks) and <Constant name="dbt" /> Starter or Enterprise-tier accounts.
+Available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) and <Constant name="dbt" /> Starter or Enterprise-tier accounts.
 
 When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
 

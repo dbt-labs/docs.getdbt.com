@@ -652,7 +652,7 @@
     },
     {
       "source": "/docs/collaborate/access-from-dbt-cloud",
-      "destination": "/docs/explore/access-from-dbt-cloud",
+      "destination": "/docs/explore/access-from-dbt-platform",
       "permanent": true
     },
     {
@@ -1312,7 +1312,7 @@
     },
     {
       "source": "/docs/cloud/about-cloud/dark-mode",
-      "destination": "/docs/cloud/about-cloud/change-your-dbt-cloud-theme",
+      "destination": "/docs/platform/about-platform/change-your-dbt-theme",
       "permanent": true
     },
     {
@@ -1432,7 +1432,7 @@
     },
     {
       "source": "/docs/dbt-versions/versionless-cloud",
-      "destination": "/docs/dbt-versions/cloud-release-tracks",
+      "destination": "/docs/dbt-versions/dbt-release-tracks",
       "permanent": true
     },
     {
@@ -1477,7 +1477,7 @@
     },
     {
       "source": "/docs/deploy/deploy-environments#partial-parsing",
-      "destination": "/docs/dbt-cloud-environments#partial-parsing",
+      "destination": "/docs/dbt-platform-environments#partial-parsing",
       "permanent": true
     },
     {
@@ -1527,7 +1527,7 @@
     },
     {
       "source": "/docs/dbt-versions/upgrade-core-in-cloud",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -1739,7 +1739,7 @@
     },
     {
       "source": "/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
-      "destination": "/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
+      "destination": "/guides/databricks-workflows",
       "permanent": true
     },
     {
@@ -1919,7 +1919,7 @@
     },
     {
       "source": "/docs/collaborate/environments/dbt-cloud-environments",
-      "destination": "/docs/deploy/dbt-cloud-environments",
+      "destination": "/docs/dbt-platform-environments",
       "permanent": true
     },
     {
@@ -2465,7 +2465,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -2935,7 +2935,7 @@
     },
     {
       "source": "/docs/dbt-cloud/dbt-cloud-api/admin-cloud-api",
-      "destination": "/docs/dbt-cloud-apis/admin-cloud-api",
+      "destination": "/docs/dbt-apis/admin-api",
       "permanent": true
     },
     {
@@ -3055,7 +3055,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -3460,7 +3460,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
       "permanent": true
     },
     {
@@ -4356,7 +4356,7 @@
     },
     {
       "source": "/dbt-cloud/api-v4",
-      "destination": "/docs/dbt-cloud-apis/admin-cloud-api",
+      "destination": "/docs/dbt-apis/admin-api",
       "permanent": true
     },
     {

@@ -12,7 +12,7 @@ import FusionReleases from '/src/components/fusionReleases';
 
 :::note Preview feature
 
-This page shows release information for preview builds of <Constant name="fusion" /> only. When <Constant name="fusion" /> becomes generally available, these channels will transition to <Constant name="fusion" /> [release tracks](/docs/dbt-versions/cloud-release-tracks).
+This page shows release information for preview builds of <Constant name="fusion" /> only. When <Constant name="fusion" /> becomes generally available, these channels will transition to <Constant name="fusion" /> [release tracks](/docs/dbt-versions/dbt-release-tracks).
 
 :::
 
