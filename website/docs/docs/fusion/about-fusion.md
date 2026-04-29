@@ -28,7 +28,7 @@ Fusion is an entirely new piece of software, written in a different programming 
 
 Fusion contains mixture of source-available, proprietary, and open source code. That means:
 - dbt Labs publishes much of the source code in the [`dbt-fusion` repository](https://github.com/dbt-labs/dbt-fusion), where you can read the code and participate in community discussions.
-- The <Constant name="fusion"/> CLI and dbt VS Code extension are free to use. Some advanced capabilities — like state-aware orchestration and Advanced CI — are exclusively available for paying customers of the [<Constant name="dbt_platform"/>](https://www.getdbt.com/pricing). Refer to [supported features](/docs/fusion/supported-features#paid-features) for more information.
+- The <Constant name="fusion"/> CLI and dbt VS Code extension are free to use. Some advanced capabilities &mdash; like state-aware orchestration and Advanced CI &mdash; are exclusively available for [<Constant name="dbt_platform"/>](https://www.getdbt.com/pricing) paying customers. Refer to [supported features](/docs/fusion/supported-features#paid-features) for more information.
 
 Read more about the licensing for the dbt Fusion engine [here](http://www.getdbt.com/licenses-faq).
 
