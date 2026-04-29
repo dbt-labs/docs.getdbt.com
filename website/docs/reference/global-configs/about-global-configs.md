@@ -16,7 +16,7 @@ There is a significant overlap between dbt's flags and dbt's command line option
 - Certain flags can only be set in [`dbt_project.yml`](/reference/dbt_project.yml) and cannot be overridden for specific invocations by using CLI options.
 - If a CLI option is supported by specific commands, rather than supported by all commands ("global"), it is generally not considered to be a "flag".
 
-Looking for environment variables? Refer to [environment variable configs](/reference/global-configs/environment-variable-configs) for setup details and examples.
+You can configure flags in `dbt_project.yml`, environment variables, and CLI options. For details, refer to [environment variable configs](/reference/global-configs/environment-variable-configs).
 
 ### Setting flags
 
@@ -51,9 +51,13 @@ dbt build --target staging
 
 The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).
 
-The following table lists all the available flags in dbt, the type, default value, whether it can be set in the project file, the environment variable it corresponds to, and the CLI flags it corresponds to.
+Use this table to compare all available flags and how to configure them across interfaces:
 
-Use the **Env var** column to find the exact environment variable name for each flag. In general, v1.10 and earlier use the `DBT_` prefix, while v1.11+ uses the `DBT_ENGINE_` prefix.
+- **<Constant name="dbt_platform" /> CLI**: Indicates whether the flag is supported in <Constant name="dbt_platform" />.
+- **Type / default**: Shows the accepted value type and default.
+- **In project**: Indicates whether you can set the flag in `dbt_project.yml`.
+- **Env var**: Shows the corresponding environment variable name, when available. In general, v1.10 and earlier use the `DBT_` prefix, while v1.11+ uses the `DBT_ENGINE_` prefix.
+- **CLI flags**: Lists command-line options for setting the flag for a specific invocation.
 
 <VersionBlock lastVersion="1.10">
 
