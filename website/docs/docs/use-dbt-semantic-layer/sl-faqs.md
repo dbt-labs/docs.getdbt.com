@@ -58,7 +58,7 @@ The primary consideration is the flexibility and performance of the underlying q
 - A star schema data model offers more flexibility for dimensions that are available for a given metric, but will require more joins.
 - A fully denormalized data model is simpler, will be materialized to a specific grain, but won’t be able to join to other tables.
 
-While the dbt Semantic Layer will work for both cases, it's best to allow MetricFlow do handle some level of denormalization for you in order to provide more flexibility to metric consumers.
+While the dbt Semantic Layer will work for both cases, it's best to allow MetricFlow to handle some level of denormalization for you in order to provide more flexibility to metric consumers.
 </Expandable>
 
 <Expandable alt_header="How is the dbt Semantic Layer priced?">

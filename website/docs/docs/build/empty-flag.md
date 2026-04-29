@@ -14,7 +14,7 @@ The `--empty` flag is not currently available for Python models. If the flag is 
 
 :::
 
-During dbt development, you might want to validate that your models are semantically correct without the time-consuming cost of building the entire model in the data warehouse. The [`run`](/reference/commands/run) and [`build`](/reference/commands/build) commands support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+During dbt development, you might want to validate that your models are semantically correct without the time-consuming cost of building the entire model in the data warehouse. The [`run`](/reference/commands/run), [`build`](/reference/commands/build), [`snapshot`](/reference/commands/snapshot), and [`compile`](/reference/commands/compile) commands support the `--empty` flag. Starting in <Constant name="core" /> v1.12, [`seed`](/reference/commands/seed) also supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
 ### Examples
 
