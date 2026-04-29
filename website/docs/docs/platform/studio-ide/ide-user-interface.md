@@ -10,7 +10,7 @@ The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio
 
 This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the <Constant name="studio_ide" /> landscape with ease.
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-basic-layout.png" width="90%" title="The Studio IDE layout includes version control on the upper left, files/folders and search on the left, editor on the right, command palette at the top, and command/console at the bottom"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-basic-layout.png" width="90%" title="The Studio IDE layout includes version control on the upper left, files/folders and search on the left, editor on the right, command palette at the top, and command/console at the bottom"/>
 
 ## Basic layout
 
@@ -18,7 +18,7 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 
 #### The side menu
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-side-menu.png" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-side-menu.png" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
 
 1. **<Constant name="git" /> repository link:** The <Constant name="git" /> repository link, located on the upper left of the <Constant name="studio_ide" />, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
     * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant <Constant name="dbt" /> accounts.
@@ -39,7 +39,7 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 
 #### The command and status bar
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-command-bar.png" width="100%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-command-bar.png" width="100%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
 5. **Command bar:**  The Command bar, located in the lower left of the <Constant name="studio_ide" />, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
@@ -48,17 +48,17 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
     - **dbt default behavior:** Uses the Staging environment if it's configured, otherwise uses Production. Recommended configuration for most use cases.
     - **Custom environment:** Select the defer environment from any available in the project.
 
-    <Lightbox src="/img/docs/dbt-platform/studio-ide/defer-menu.png" width="60%" title="Set the `defer` environment."/>
+    <Lightbox src="/img/docs/dbt-platform/platform-ide/defer-menu.png" width="60%" title="Set the `defer` environment."/>
 
 Refer to [Using defer in <Constant name="dbt" />](/docs/platform/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
 
 7. **Status:** The <Constant name="studio_ide" /> Status button, located on the lower right of the <Constant name="studio_ide" />, displays the current connection statuses to both the warehouse and the dbt [language server (LSP)](/docs/about-dbt-lsp) status if you're on <Constant name="fusion" /> or the engine server status if you're on <Constant name="core" />. It includes shortcuts to environment settings and developer credentials.
 
-    <Lightbox src="/img/docs/dbt-platform/studio-ide/server-status.png" width="60%" title="View the connection statuses for your account."/>
+    <Lightbox src="/img/docs/dbt-platform/platform-ide/server-status.png" width="60%" title="View the connection statuses for your account."/>
 
 8. **dbt version:** The current version of dbt running in your development environment. You can set a **Personal version override** that changes the dbt version for only your development environment. 
 
-     <Lightbox src="/img/docs/dbt-platform/studio-ide/dbt-version.png" width="60%" title="View and set the development environment version."/> 
+     <Lightbox src="/img/docs/dbt-platform/platform-ide/dbt-version.png" width="60%" title="View and set the development environment version."/> 
 
 9. **Additional tools:** Project status and an options menu with additional actions and information about the <Constant name="studio_ide" />:
     - **Project status:** If there are any errors or warnings outstanding in the development runs, the number of them will populate in this area. Clicking on them will take you to the **Problems** tab.
@@ -69,13 +69,13 @@ Refer to [Using defer in <Constant name="dbt" />](/docs/platform/about-cloud-dev
       - **Clean dbt project:** Runs the [`dbt clean` command](/reference/commands/clean) for your project.
       - **Autofix deprecation warnings:** Runs the dbt [autofix tool](/docs/platform/studio-ide/autofix-deprecations). Helps prepare for <Constant name="fusion" /> upgrade. 
       
-      <Lightbox src="/img/docs/dbt-platform/studio-ide/ide-menu.png" width="60%" title="IDE menu with additional information and actions."/> 
+      <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-menu.png" width="60%" title="IDE menu with additional information and actions."/> 
 
 ## Search bar and command palette
 
 The <Constant name="studio_ide" /> provides tools to help you quickly navigate your project's files, find information, run commands, and replace syntax with just a few clicks in a layout that's familiar to users of popular IDEs.
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/search-and-command.png" width="90%" title="Use the search bar and command palette to quickly navigate your file tree and open tabs."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/search-and-command.png" width="90%" title="Use the search bar and command palette to quickly navigate your file tree and open tabs."/>
 
 1. [Search and replace](#search-and-replace)
 2. [Command palette](#command-palette)
@@ -84,7 +84,7 @@ The <Constant name="studio_ide" /> provides tools to help you quickly navigate y
 
 The search feature enables you to quickly find specific terms or phrases and replace them with the click of a button.
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/search-and-replace.png" width="50%" title="Search files for specific terms and quickly replace them." />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/search-and-replace.png" width="50%" title="Search files for specific terms and quickly replace them." />
 
 1. Toggle between **file tree** and **search** navigation.
 2. Search for words or phrases. Enhance the search to match case and/or whole words. You can also input replacement words or phrases. Click the icon next to the **Replace** field to replace all entries.
@@ -94,7 +94,7 @@ The search feature enables you to quickly find specific terms or phrases and rep
 
 The command palette enhances navigation of your dbt project, enabling you to search files, content, and symbols, show and run IDE commands, view recent files, and more. Click the command palette to view the available options. Actions supporting keyboard shortcuts display to the right of the text.
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/command-palette.png" width="90%" title="The command palette enables you to quickly navigate your project and run commands." />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/command-palette.png" width="90%" title="The command palette enables you to quickly navigate your project and run commands." />
 
 - **Go to File:** Search for files in your current project and open them in a new tab.
 - **Show and Run Commands:** View and run commands related to IDE navigation and settings. 
@@ -105,15 +105,15 @@ The command palette enhances navigation of your dbt project, enabling you to sea
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/go-to-file.png" width="90%" title="Go to File." />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/go-to-file.png" width="90%" title="Go to File." />
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/show-and-run-commands.png" width="90%" title="Show and Run Commands." />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/show-and-run-commands.png" width="90%" title="Show and Run Commands." />
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/search-for-text.png" width="90%" title="Search for text." />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/search-for-text.png" width="90%" title="Search for text." />
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/go-to-symbol.png" width="90%" title="Go to Symbol in Editor." />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/go-to-symbol.png" width="90%" title="Go to Symbol in Editor." />
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/more.png" width="90%" title="More." />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/more.png" width="90%" title="More." />
 
 
 </DocCarousel>
@@ -122,7 +122,7 @@ The command palette enhances navigation of your dbt project, enabling you to sea
 
 The <Constant name="studio_ide" /> features some delightful tools and layouts to make it easier for you to write dbt code and collaborate with teammates. 
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-editing.png" width="90%" title="Use the file editor, version control section, and save button during your development workflow"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-editing.png" width="90%" title="Use the file editor, version control section, and save button during your development workflow"/>
 
 1. **File editor &mdash;** The file editor is where you edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can edit, format, or lint files and execute dbt commands in your protected primary git branch. Since the <Constant name="studio_ide" /> prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
@@ -136,7 +136,7 @@ The <Constant name="studio_ide" /> features some delightful tools and layouts to
    -  You can also [resolve merge conflicts](/docs/platform/git/merge-conflicts) and for more info on git, refer to [Version control basics](/docs/platform/git/version-control-basics#the-git-button-in-the-cloud-ide).
    -  **Version Control Options menu &mdash;** The **Changes** section, under the <Constant name="git" /> actions button, lists all file changes since the last commit. You can click on a change to open the <Constant name="git" /> Diff View to see the inline changes. You can also right-click any file and use the file-specific options in the Version Control Options menu.
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/version-control-options-menu.png" width="60%" title="Right-click edited files to access Version Control Options menu"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/version-control-options-menu.png" width="60%" title="Right-click edited files to access Version Control Options menu"/>
 
 
   - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note that this won't delete the branch you're currently on. Pruning branches isn't available for [managed repositories](/docs/platform/git/managed-repository) because they don't have a typical remote setup, which prevents remote branch deletion. 
@@ -144,21 +144,21 @@ The <Constant name="studio_ide" /> features some delightful tools and layouts to
 ## Additional editing features
 
 - **Minimap &mdash;** A Minimap (code outline) gives you a high-level overview of your source code, which is useful for quick navigation and code understanding. A file's minimap is displayed on the upper-right side of the editor. To quickly jump to different sections of your file, click the shaded area.
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-minimap.png" width="90%" title="Use the Minimap for quick navigation and code understanding"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-minimap.png" width="90%" title="Use the Minimap for quick navigation and code understanding"/>
 
 - **<Constant name="git" /> Diff View &mdash;** Clicking on a file in the **Changes** section of the **Version Control Menu** will open the changed file with <Constant name="git" /> Diff view. The editor will show the previous version on the left and the in-line changes made on the right.
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-git-diff-view-with-save.png" width="90%" title="The Git Diff View displays the previous version on the left and the changes made on the right of the Editor"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-git-diff-view-with-save.png" width="90%" title="The Git Diff View displays the previous version on the left and the changes made on the right of the Editor"/>
 
 - **Markdown Preview console tab &mdash;** The Markdown Preview console tab shows a preview of your .md file's markdown code in your repository and updates it automatically as you edit your code.
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-markdown-with-save.png" width="90%" title="The Markdown Preview console tab renders markdown code below the Editor tab."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-markdown-with-save.png" width="90%" title="The Markdown Preview console tab renders markdown code below the Editor tab."/>
 
 - **CSV Preview console tab &mdash;** The CSV Preview console tab displays the data from your CSV file in a table, which updates automatically as you edit the file in your seed directory.
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-csv.png" width="90%" title="View CSV code in the CSV Preview console tab below the Editor tab."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-csv.png" width="90%" title="View CSV code in the CSV Preview console tab below the Editor tab."/>
 
 ## Console section
 
 The console section, located below the file editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the <Term id="dag" />. Refer to the following sub-bullets for more details on the console tabs and buttons.
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-console-overview.png" width="90%" title="The Console section is located below the file editor and has various tabs and buttons to help execute tasks"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-console-overview.png" width="90%" title="The Console section is located below the file editor and has various tabs and buttons to help execute tasks"/>
 
 1. **Preview button &mdash;** When you click on the **Preview** button, it runs the SQL in the active file editor regardless of whether you have saved it or not and sends the results to the **Results** console tab. You can preview a selected portion of saved or unsaved code by highlighting it and then clicking the **Preview** button.
 
@@ -186,22 +186,22 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 6. **Commands tab** &mdash; View the most recently run [dbt commands](/reference/dbt-commands) from your current IDE session, their results, and relevant system logs.
 
 7. **Problems tab** &mdash; You must be running the <Constant name="fusion_engine" /> to utilize the problems tab. Gain insights into problems with your dbt project that may prevent it from running properly in <Constant name="fusion" /> as you edit and before you execute runs. 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-problems-tab.png" width="90%" title="Preview results show up in the Results console tab"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-problems-tab.png" width="90%" title="Preview results show up in the Results console tab"/>
 
 8. **Results tab** &mdash; The Results console tab displays the most recent Preview results in tabular format. 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/results-console-tab.png" width="90%" title="Preview results show up in the Results console tab"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/results-console-tab.png" width="90%" title="Preview results show up in the Results console tab"/>
 
 9. **Code quality tab** &mdash; The Code quality tab displays the results of the linter on the active file in the File editor. It allows you to view code errors, provides code quality visibility and management, and displays the SQLFluff version used.
 
 10. **Compiled code tab &mdash;** The Compile generates the compiled code when the Compile button is executed. The Compiled code tab displays the compiled SQL code for the active file in the file editor.
-<Lightbox src="/img/docs/dbt-platform/studio-ide/compiled-code-console-tab.png" width="90%" title="Compile results show up in the Compiled Code tab"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/compiled-code-console-tab.png" width="90%" title="Compile results show up in the Compiled Code tab"/>
 
 11. **Lineage tab &mdash;** The Lineage tab in the file editor displays the active model's lineage or  <Term id="dag" />. By default, it shows two degrees of lineage in both directions (`2+model_name+2`), however, you can change it to +model+ (full DAG). To use the lineage:
     - Double-click a node in the DAG to open that file in a new tab
     - Expand or shrink the DAG using node selection syntax.
     - Note, the `--exclude` flag isn't supported.
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/lineage-console-tab.png" width="90%" title="View resource lineage in the Lineage tab"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/lineage-console-tab.png" width="90%" title="View resource lineage in the Lineage tab"/>
 
 ## Invocation history
 
@@ -212,7 +212,7 @@ You can open the drawer in multiple ways:
 - Typing a dbt command and pressing enter
 - Or pressing Control-backtick (or Ctrl + `)
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-inv-history-drawer.png" width="90%" title="The Invocation History Drawer returns a log and detail of all your dbt invocations."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-inv-history-drawer.png" width="90%" title="The Invocation History Drawer returns a log and detail of all your dbt invocations."/>
 
 1. **Invocation History list &mdash;** The left-hand panel of the Invocation History Drawer displays a list of previous invocations in the <Constant name="studio_ide" />, including the command, branch name, command status, and elapsed time.
 
@@ -222,7 +222,7 @@ You can open the drawer in multiple ways:
 
 4. **Command Control button &mdash;** Use the Command Control button, located on the right side, to control your invocation and cancel or rerun a selected run.
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-results.png" width="90%" title="The Invocation History list displays a list of previous invocations in the IDE"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-results.png" width="90%" title="The Invocation History list displays a list of previous invocations in the IDE"/>
 
 5. **Node Summary tab &mdash;** Clicking on the Results Status Tabs will filter the Node Status List based on their corresponding status. The available statuses are Pass (successful invocation of a node), Warn (test executed with a warning), Error (database error or test failure), Skip (nodes not run due to upstream error), and Queued (nodes that have not executed yet).
 
@@ -236,15 +236,15 @@ Use menus and modals to interact with <Constant name="studio_ide" /> and access 
 
 #### Editor tab menu
   To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.
-  <Lightbox src="/img/docs/dbt-platform/studio-ide/editor-tab-menu-with-save.png" width="90%" title=" Right-click a tab to view the Editor tab menu options"/>
+  <Lightbox src="/img/docs/dbt-platform/platform-ide/editor-tab-menu-with-save.png" width="90%" title=" Right-click a tab to view the Editor tab menu options"/>
 
 #### Global command shortcut
   The global command shortcut provides helpful shortcuts to interact with the <Constant name="studio_ide" />, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
-  <Lightbox src="/img/docs/dbt-platform/studio-ide/ide-global-command-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-global-command-palette-with-save.png" width="100%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 #### <Constant name="studio_ide" /> Status modal
   The <Constant name="studio_ide" /> Status modal shows the current error message and debug logs for the server. This also contains an option to restart the <Constant name="studio_ide" />. Open this by clicking on the <Constant name="studio_ide" /> Status button.
-  <Lightbox src="/img/docs/dbt-platform/studio-ide/ide-status-modal-with-save.png" width="60%" title="The Command History returns a log and detail of all your dbt invocations."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-status-modal-with-save.png" width="60%" title="The Command History returns a log and detail of all your dbt invocations."/>
 
 #### Commit to a new branch
   Edit directly on your protected primary git branch and commit those changes to a new branch when ready.
@@ -252,16 +252,16 @@ Use menus and modals to interact with <Constant name="studio_ide" /> and access 
 
 #### Commit Changes modal
   The Commit Changes modal is accessible via the <Constant name="git" /> Actions button to commit all changes or via the Version Control Options menu to commit individual changes. Once you enter a commit message, you can use the modal to commit and sync the selected changes.
-  <Lightbox src="/img/docs/dbt-platform/studio-ide/commit-changes-modal.png" width="90%" title="The Commit Changes modal is how users commit changes to their branch."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-ide/commit-changes-modal.png" width="90%" title="The Commit Changes modal is how users commit changes to their branch."/>
 
 #### Change Branch modal
   The Change Branch modal allows users to switch git branches in the <Constant name="studio_ide" />. It can be accessed through the **Change Branch** link or the **<Constant name="git" /> actions** button under the **Version control** menu.
-  <Lightbox src="/img/docs/dbt-platform/studio-ide/change-branch-modal.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-ide/change-branch-modal.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
 
 #### Prune branches modal
   The Prune branches modal allows users to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. This is accessible through the **<Constant name="git" /> actions** button under the [**Version control** menu](#editing-features). Note that this won't delete the branch you're currently on. Pruning branches isn't available for managed repositories because they don't have a typical remote setup, which prevents remote branch deletion.
-  <Lightbox src="/img/docs/dbt-platform/studio-ide/prune-branch-modal.png" width="60%" title="The Prune branches modal allows users to delete local branches that have already been deleted from the remote repository."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-ide/prune-branch-modal.png" width="60%" title="The Prune branches modal allows users to delete local branches that have already been deleted from the remote repository."/>
 
 #### Revert Uncommitted Changes modal
   The Revert Uncommitted Changes modal is how users revert changes in the IDE. This is accessible via the `Revert File` option above the Version Control Options menu, or via the Git Actions button when there are saved, uncommitted changes in the IDE.
-  <Lightbox src="/img/docs/dbt-platform/studio-ide/revert-uncommitted-changes-with-save.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
+  <Lightbox src="/img/docs/dbt-platform/platform-ide/revert-uncommitted-changes-with-save.png" width="90%" title="The Commit Changes modal is how users change their branch."/>

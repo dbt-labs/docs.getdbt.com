@@ -19,7 +19,7 @@ keywords: ["dbt Copilot", "dbt", "AI", "AI-powered", "dbt"]
 <Constant name="copilot" /> is available on Starter, Enterprise, and Enterprise+ accounts. [Book a demo](https://www.getdbt.com/contact) to see how AI-driven development can streamline your workflow.
 :::
 
-<Lightbox src="/img/docs/dbt-platform/studio-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
+<Lightbox src="/img/docs/dbt-platform/platform-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
 
 ## How dbt Copilot works
 
