@@ -404,7 +404,7 @@ Explain placeholders in the preceding paragraph. For example, you'd explain CLUS
 
 **Example:**
 ```markdown
-[Regions & IP Addresses](docs/platform/about-platform/access-regions-ip-addresses)
+[Regions & IP Addresses](/docs/platform/about-platform/access-regions-ip-addresses)
 ```
 
 **Section links:**
