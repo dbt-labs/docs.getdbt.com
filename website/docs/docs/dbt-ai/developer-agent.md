@@ -59,7 +59,7 @@ For more details on the <Constant name="dev_agent" /> and how it works, see the 
 - [Panel controls](#panel-controls)
 - [Agent modes](#agent-modes)
 - [Reviewing agent suggestions](#reviewing-agent-suggestions)
-- [Grantning command permissions](#grantning-command-permissions)
+- [Granting command permissions](#granting-command-permissions)
 
 #### Panel controls
 
@@ -121,7 +121,9 @@ You can select one of the following options:
 
 </SimpleTable>
 
-## Investigate and troubleshoot job failures <Lifecycle status="beta"/>
+## Debug job failures <Lifecycle status="beta"/>
+
+_Debugging job failures is currently in beta_
 
 The <Constant name="dev_agent" /> can investigate and troubleshoot dbt job and run failures directly from the <Constant name="studio_ide" />. This capability is powered by the [`troubleshooting-dbt-job-errors`](https://github.com/dbt-labs/dbt-agent-skills) skill in [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), which comes pre-configured with the agent — no setup required.
 
