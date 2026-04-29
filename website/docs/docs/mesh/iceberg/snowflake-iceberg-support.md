@@ -232,7 +232,7 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 | `auto_refresh` | Optional | `True` or `False`    |
 | `catalog_linked_database` | Required for `catalog type: iceberg_rest` | Catalog-linked database name   |
 | `catalog_linked_database_type` | Optional | Catalog-linked database type. For example, `glue`  |
-| `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
+| `max_data_extension_time_in_days` | Optional |  `0` to `90` (default: `14`)  |
 | `target_file_size` | Optional | Values like `'AUTO'`, `'16MB'`, `'32MB'`, `'64MB'`, `'128MB'`. Case-insensitive  |
 </VersionBlock>
 <VersionBlock firstVersion="1.12">
