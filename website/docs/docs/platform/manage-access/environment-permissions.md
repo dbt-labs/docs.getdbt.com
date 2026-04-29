@@ -19,7 +19,7 @@ Environment-level permissions give <Constant name="dbt" /> admins more flexibili
 - You can only select environment types, and can’t specify a particular environment within a project.
 - You can't select specific resources within environments. <Constant name="dbt" /> jobs and runs are environment resources.
     - For example, you can't specify that a user only has access to jobs but not runs. Access to a given environment gives the user access to everything within that environment.
-- A group can have only one entry per permission set. If you add the same permission set more than once, <Constant name="dbt_platform" /> merges those entries into one permission set when you save the group. For setup details, refer to [Set up environment-level permissions](/docs/cloud/manage-access/environment-permissions-setup).
+- A group can have only one entry per permission set. If you add the same permission set more than once, <Constant name="dbt_platform" /> merges those entries into one permission set when you save the group. For setup details, refer to [Set up environment-level permissions](/docs/platform/manage-access/environment-permissions-setup).
 
 ## Environments and roles
 
