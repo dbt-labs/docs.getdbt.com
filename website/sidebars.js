@@ -9,7 +9,7 @@ const sidebarSettings = {
       type: "category",
       label: "What is dbt?",
       link: { type: "doc", id: "docs/introduction" },
-      items: ["docs/introduction", "docs/dbt-product-catalog"],
+      items: ["docs/introduction", "docs/dbt-products"],
     },
     {
       type: "category",

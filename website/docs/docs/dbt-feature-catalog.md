@@ -1,8 +1,8 @@
 ---
-title: "dbt product catalog"
-id: "dbt-product-catalog"
+title: "dbt products"
+id: "dbt-products"
 description: "Glossary of major dbt features on the dbt platform and beyond, with lifecycle and plan availability."
-sidebar_label: "Product catalog"
+sidebar_label: "dbt products"
 pagination_prev: null
 pagination_next: null
 ---
