@@ -210,7 +210,7 @@ These are the additional configurations, unique to Snowflake, that can be suppli
 | `max_data_extension_time_in_days` | Optional |  `0` to `90` with a default of `14`  |
 | `storage_serialization_policy` | Optional | `COMPATIBLE` or `OPTIMIZED`     |
 | `base_location_root` | Optional | Relative path segment (for example, `'subpath1/subpath2'`) |
-| `base_location_subpath` | Optional | Relative path segment (like `'subpath1/subpath2'`), only configurable per-model |
+| `base_location_subpath` | Optional | Relative path segment (for example, `'subpath1/subpath2'`), only configurable per-model |
 </VersionBlock>
 <VersionBlock firstVersion="1.12">
 | Field | Required | Accepted values |
