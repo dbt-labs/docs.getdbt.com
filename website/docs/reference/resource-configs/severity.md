@@ -122,6 +122,7 @@ data_tests:
 ### Asserting an expected failure
 
 You can use `error_if` to assert an expected failure. This is useful in package integration tests, for example when validating that a generic test catches known-bad fixture data.
+
 In the following example, the test passes only when it returns one or more failing rows. If the test returns `0` rows, dbt raises an error because `0` satisfies `error_if: '<1'`.
 <File name='models/always_bad.yml'>
 
