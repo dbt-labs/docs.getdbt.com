@@ -4,7 +4,7 @@ The <Constant name="semantic_layer" /> is proprietary; however, some components 
 
 <Constant name="dbt" /> Developer or <Constant name="core" /> users can define metrics in their project, including a local <Constant name="core" /> project, using the <Constant name="studio_ide" />, <Constant name="platform_cli" />, or <Constant name="core" /> CLI. However, to experience the universal <Constant name="semantic_layer" /> and access those metrics using the API or downstream tools, users must be on a <Constant name="dbt" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing/) plan.
 
-Refer to <a href="https://docs.getdbt.com/docs/cloud/billing">Billing</a> for more information.
+Refer to <a href="https://docs.getdbt.com/docs/platform/billing">Billing</a> for more information.
 
 </DetailsToggle>
 
