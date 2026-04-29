@@ -38,7 +38,17 @@ This section walks you through the process of requesting a new Snowflake Private
 
 ##### Prerequisites
 - You need [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) permission sets in <Constant name="dbt_platform"/>. Additionally, users with an IT license are able to create private endpoints in <Constant name="dbt_platform"/>.
-- You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
+- You need to allowlist dbt Labs' AWS account in Snowflake.
+  - Open a support case with Snowflake to allow access from the <Constant name="dbt" /> AWS account.
+    - Snowflake prefers that the account owner opens the support case directly rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
+    - Provide them with your <Constant name="dbt" /> account ID along with any other information requested in the article.
+      - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
+    - You need [Snowflake's `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
+
+  <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
+
+- You have the `SYSTEM$GET_PRIVATELINK_CONFIG` output. 
+  - After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
 #### Request a new private endpoint
 
