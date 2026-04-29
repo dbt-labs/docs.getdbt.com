@@ -35,9 +35,9 @@ The <Constant name="studio_ide" /> will display:
 - The file name colored in red in the **Changes** section, with a warning icon.
 - If you press commit without resolving the conflict, the <Constant name="studio_ide" /> will prompt a pop up box with a list which files need to be resolved.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/merge-conflict.png" title="Conflicting section that needs resolution will be highlighted"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/merge-conflict.png" title="Conflicting section that needs resolution will be highlighted"/>
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/commit-without-resolve.png" title="Pop up box when you commit without resolving the conflict"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/commit-without-resolve.png" title="Pop up box when you commit without resolving the conflict"/>
 
 
 ## Resolve merge conflicts
@@ -51,7 +51,7 @@ You can seamlessly resolve merge conflicts that involve competing line changes i
 6. Repeat this process for every file that has a merge conflict.
 
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/resolve-conflict.png" title="Choosing lines of code to preserve"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/resolve-conflict.png" title="Choosing lines of code to preserve"/>
 
 :::info Edit conflict files
 - If you open the conflict file under **Changes**, the file name will display something like `model.sql (last commit)` and is fully read-only and cannot be edited. <br />
@@ -67,6 +67,6 @@ When you've resolved all the merge conflicts, the last step would be to commit t
 3. The <Constant name="studio_ide" /> will return to its normal state and you can continue developing! 
 
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/commit-resolve.png" title="Conflict has been resolved"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/commit-resolve.png" title="Conflict has been resolved"/>
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/commit-changes.png" title="Commit Changes pop up box to commit your changes"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/commit-changes.png" title="Commit Changes pop up box to commit your changes"/>

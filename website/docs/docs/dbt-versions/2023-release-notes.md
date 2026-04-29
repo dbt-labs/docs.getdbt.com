@@ -548,11 +548,11 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     <DocCarousel slidesPerView={1}>
 
-    <Lightbox src="/img/docs/dbt-platform/platform-ide/sqlfluff.gif" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
+    <Lightbox src="/img/docs/dbt-platform/studio-ide/sqlfluff.gif" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
 
-    <Lightbox src="/img/docs/dbt-platform/platform-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
+    <Lightbox src="/img/docs/dbt-platform/studio-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
 
-    <Lightbox src="/img/docs/dbt-platform/platform-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
+    <Lightbox src="/img/docs/dbt-platform/studio-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
 
     </DocCarousel>
 

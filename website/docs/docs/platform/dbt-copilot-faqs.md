@@ -42,7 +42,7 @@ Use <Constant name="copilot" /> to:
 
 with a click of a button and ensuring data privacy and security.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
+<Lightbox src="/img/docs/dbt-platform/studio-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
 
 </Expandable>
 

@@ -17,7 +17,7 @@ Access <Constant name="copilot" />'s AI prompt window using the keyboard shortcu
 - Enter your instructions to generate SQL code tailored to your needs using natural language.
 - Ask <Constant name="copilot" /> to fix the code or add a specific portion of the SQL file.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/copilot-sql-generation-prompt.png" width="90%" title="dbt Copilot's prompt window accessible by keyboard shortcut Cmd+B (Mac) or Ctrl+B (Windows)" />
+<Lightbox src="/img/docs/dbt-platform/studio-ide/copilot-sql-generation-prompt.png" width="90%" title="dbt Copilot's prompt window accessible by keyboard shortcut Cmd+B (Mac) or Ctrl+B (Windows)" />
 
 #### 2. Edit existing SQL code
 - Highlight a section of SQL code and press Cmd+B (Mac) or Ctrl+B (Windows) to open the prompt window for editing.
@@ -39,4 +39,4 @@ Access <Constant name="copilot" />'s AI prompt window using the keyboard shortcu
 
 Once you've accepted a suggestion, you can continue to use the prompt window to generate additional SQL code and commit your changes to the branch.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/copilot-sql-generation.gif" width="100%" title="Edit existing SQL code using dbt Copilot's prompt window accessible by keyboard shortcut Cmd+B (Mac) or Ctrl+B (Windows)" />
+<Lightbox src="/img/docs/dbt-platform/studio-ide/copilot-sql-generation.gif" width="100%" title="Edit existing SQL code using dbt Copilot's prompt window accessible by keyboard shortcut Cmd+B (Mac) or Ctrl+B (Windows)" />

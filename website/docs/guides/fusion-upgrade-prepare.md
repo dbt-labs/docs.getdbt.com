@@ -204,13 +204,13 @@ Now you're ready to scan for and automatically fix deprecation warnings:
 1. Click the **three-dot menu** in the bottom right corner of the <Constant name="studio_ide" />.
 2. Select **Check & fix deprecations**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu"/>
 
 The tool runs `dbt parse --show-all-deprecations --no-partial-parse` to identify all deprecations in your project. This may take a few moments depending on your project size.
 
 3. When parsing completes, view the results in the **Command history** panel in the bottom left.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/command-history.png" width="90%" title="View command history and deprecation results"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/command-history.png" width="90%" title="View command history and deprecation results"/>
 
 ### Step 3: Review and apply autofixes
 
@@ -219,17 +219,17 @@ After the deprecation scan completes, review the findings and apply automatic fi
 1. In the **Command history** panel, review the list of deprecation warnings.
 2. Click the **Autofix warnings** button to proceed.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Click Autofix warnings to resolve deprecations automatically"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/autofix-button.png" width="90%" title="Click Autofix warnings to resolve deprecations automatically"/>
 
 3. In the **Proceed with autofix** dialog, review the warning and click **Continue**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/proceed-with-autofix.png" width="90%" title="Confirm autofix operation"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/proceed-with-autofix.png" width="90%" title="Confirm autofix operation"/>
 
 The tool automatically modifies your project files to resolve fixable deprecations, then runs another parse to identify any remaining warnings.
 
 4. When complete, a success message appears. Click **Review changes**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-success.png" width="90%" title="Autofix complete"/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/autofix-success.png" width="90%" title="Autofix complete"/>
 
 ### Step 4: Verify the changes
 

@@ -25,9 +25,9 @@ These [features](#studio-ide-features) create a powerful editing environment for
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-basic-layout.png" width="85%" title="The Studio IDE includes version control, files/folders, an editor, a command/console, and more."/>
+<Lightbox src="/img/docs/dbt-platform/studio-ide/ide-basic-layout.png" width="85%" title="The Studio IDE includes version control, files/folders, an editor, a command/console, and more."/>
 
-<Lightbox src src="/img/docs/dbt-platform/platform-ide/cloud-ide-v2.png" width="85%" title="Enable dark mode for a great viewing experience in low-light environments."/>
+<Lightbox src src="/img/docs/dbt-platform/studio-ide/cloud-ide-v2.png" width="85%" title="Enable dark mode for a great viewing experience in low-light environments."/>
 </DocCarousel>
 
 :::tip Disable ad blockers
@@ -122,7 +122,7 @@ Nice job, you're ready to start developing and building models 🎉!
 
       - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
 
-      <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-unsaved-modal.png" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
+      <Lightbox src="/img/docs/dbt-platform/studio-ide/ide-unsaved-modal.png" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
 
       - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
       - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
