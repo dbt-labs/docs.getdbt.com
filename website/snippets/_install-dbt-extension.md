@@ -54,12 +54,11 @@ You're all set up with the dbt extension! The next steps are:
 - [Register the extension](#register-the-extension) with your email address or <Constant name="dbt_platform" /> account to continue using it beyond the trial period.
 - Review the [limitations and unsupported features](/docs/fusion/supported-features#limitations) if you haven't already.
 
-
 ## Getting started
 
 Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear in the sidebar. Click it to open the **Get started** panel &mdash; a persistent, always-on setup companion available in both VS Code and Cursor. 
 
-The Get started panel continuously monitors your environment and surfaces the single most important next action. As new Fusion releases ship or your project changes, the panel resurfaces relevant steps automatically.
+The Get started panel continuously monitors your environment and surfaces the single most important next action. As new <Constant name="fusion" /> releases ship or your project changes, the panel resurfaces relevant steps automatically.
 
 <Lightbox src="/img/docs/extension/vsce-get-started.png" width="100%" title="The Get started panel in VS Code showing the four setup steps, with the active step highlighted as an orange CTA button."/>
 
@@ -67,12 +66,12 @@ The panel guides you through four setup steps in order, showing only what's rele
 
 1. **Install or update <Constant name="fusion_engine" />**: Detects whether the <Constant name="fusion_engine" /> binary is missing or outdated and installs or updates it automatically with a single click.
 2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
-3. **Check Fusion compatibility**: Guides you through upgrading your project to Fusion. When you click this step, you can choose between two paths:
-    - **Start with an agent**: Installs the **Migrate dbt Core to Fusion** agent skill to your editor's skill folder
+3. **Check Fusion compatibility**: Guides you through upgrading your project to <Constant name="fusion" />. When you click this step, you can choose between two paths:
+    - **Start with an agent**: Installs the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill to your editor's skill folder
         - This opens your AI chat (Copilot or Cursor) with a migration prompt pre-filled. 
-        - A notification will confirm: _"We'll install the Migrate dbt Core to Fusion agent skill to the editor's skill folder. Then we'll open your AI chat with a prompt to start the migration."_
+        - A notification will confirm: _"We'll install the Migrate <Constant name="core" /> to <Constant name="fusion" /> agent skill to the editor's skill folder. Then we'll open your AI chat with a prompt to start the migration."_
         - Click **Install & open chat** to proceed &mdash; the chat opens with the prompt already loaded, so you just press enter and the agent handles the migration. No CLI commands needed. Requires Copilot or Cursor.
-    - **Start manually in CLI**: Runs the [Fusion upgrade](#upgrade-to-fusion) workflow in your terminal. See [Upgrade to Fusion](#upgrade-to-fusion) for details.
+    - **Start manually in CLI**: Runs the <Constant name="fusion" /> upgrade workflow in your terminal. Refer to [Upgrade to <Constant name="fusion" />](#upgrade-to-fusion) for more info.
 4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day grace period. See [Register the extension](#register-the-extension).
 
 When all four steps are complete, the panel shows a green **Extension setup complete** button.
