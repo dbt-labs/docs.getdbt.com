@@ -127,7 +127,7 @@ _Debugging job failures is currently in beta_
 
 The <Constant name="dev_agent" /> can investigate and troubleshoot dbt job and run failures directly from the <Constant name="studio_ide" />. This capability is powered by the `troubleshooting-dbt-job-errors` [dbt Agent Skill](https://github.com/dbt-labs/dbt-agent-skills), which comes pre-configured with the agent — no setup required.
 
-You can ask the agent questions like:
+You can ask the agent questions and issue commands like:
 
 - "What jobs have failed recently?"
 - "What is the root cause of the job failure?"
