@@ -64,6 +64,8 @@ The following example displays the current flags and their current default value
 
 Here's an example of the available behavior change flags with their default values:
 
+<VersionBlock lastVersion="1.11">
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -90,6 +92,38 @@ flags:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  require_explicit_package_overrides_for_builtin_materializations: true
+  require_resource_names_without_spaces: true
+  source_freshness_run_project_hooks: true
+  skip_nodes_if_on_run_start_fails: true
+  state_modified_compare_more_unrendered_values: true
+  require_yaml_configuration_for_mf_time_spines: true
+  require_batched_execution_for_custom_microbatch_strategy: true
+  require_nested_cumulative_type_params: true
+  validate_macro_args: true
+  require_all_warnings_handled_by_warn_error: true
+  require_generic_test_arguments_property: true
+  require_unique_project_resource_names: false
+  require_ref_searches_node_package_before_root: false
+  require_valid_schema_from_generate_schema_name: false
+  enable_truthy_nulls_equals_macro: false
+  require_sql_header_in_test_configs: false
+  require_corrected_analysis_fqns: false
+  require_source_and_semantic_model_names_without_spaces: false
+```
+
+</File>
+
+</VersionBlock>
+
 #### dbt Core behavior changes
 
 This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
@@ -99,14 +133,14 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_explicit_package_overrides_for_builtin_materializations](#package-override-for-built-in-materialization) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             | ✅|
 | [require_resource_names_without_spaces](#no-spaces-in-resource-names)                           | 2024.05          | 2025.05                | 1.8.0           | 1.10.0             | ✅ |
 | [source_freshness_run_project_hooks](#project-hooks-with-source-freshness)                              | 2024.03          | 2025.05                | 1.8.0           | 1.10.0             | ✅ |
-| [skip_nodes_if_on_run_start_fails](#failures-in-on-run-start-hooks)                                | 2024.10          | TBD*                | 1.9.0           | TBD*              | ✅ |
-| [state_modified_compare_more_unrendered_values](#source-definitions-for-state)                   | 2024.10          | TBD*                | 1.9.0           | TBD*              | ✅ |
-| [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | TBD*              | ✅ |
-| [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | TBD*              | ✅ |
-| [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | TBD*            | - |
+| [skip_nodes_if_on_run_start_fails](#failures-in-on-run-start-hooks)                                | 2024.10          | TBD*                | 1.9.0           | 1.12.0            | ✅ |
+| [state_modified_compare_more_unrendered_values](#source-definitions-for-state)                   | 2024.10          | TBD*                | 1.9.0           | 1.12.0            | ✅ |
+| [require_yaml_configuration_for_mf_time_spines](#metricflow-time-spine-yaml)                  | 2024.10          | TBD*                | 1.9.0           | 1.12.0            | ✅ |
+| [require_batched_execution_for_custom_microbatch_strategy](#custom-microbatch-strategy)                  | 2024.11         | TBD*                | 1.9.0           | 1.12.0            | ✅ |
+| [require_nested_cumulative_type_params](#cumulative-metrics)         |   2024.11         | TBD*                 | 1.9.0           | 1.12.0          | - |
 | [enable_truthy_nulls_equals_macro](#null-safe-equality) | 2025.02 | TBD* | 1.9.0 | TBD* | - |
-| [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | TBD*            | - |
-| [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | TBD*            | - |
+| [validate_macro_args](#macro-argument-validation)         | 2025.03           | TBD*                 | 1.10.0          | 1.12.0          | - |
+| [require_all_warnings_handled_by_warn_error](#warn-error-handler-for-all-warnings)         |   2025.06         | TBD*                 | 1.10.0          | 1.12.0          | - |
 | [require_generic_test_arguments_property](#generic-test-arguments-property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 | - |
 | [require_unique_project_resource_names](#unique-project-resource-names) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
 | [require_ref_searches_node_package_before_root](#package-ref-search-order) | 2025.12 | TBD* | 1.11.0 | TBD* | - |
@@ -139,9 +173,19 @@ When the <Constant name="dbt" /> Maturity is "TBD," it means we have not yet det
 
 ### Failures in on-run-start hooks
 
+<VersionBlock lastVersion="1.11">
+
 The flag is `False` by default.
 
-Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
+Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+The flag is `True` by default. dbt skips all selected resources from running if there is a failure on an `on-run-start` hook.
+
+</VersionBlock>
 
 ### Source definitions for state:modified
 
@@ -151,11 +195,19 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 :::
 
+<VersionBlock lastVersion="1.11">
+
 The flag is `False` by default.
 
-Set `state_modified_compare_more_unrendered_values` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
+Set `state_modified_compare_more_unrendered_values` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`). Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
 
-Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+The flag is `True` by default. dbt uses unrendered values for `state:modified` checks, reducing false positives when configs differ by target environment (for example, `prod` vs. `dev`). It persists `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
+
+</VersionBlock>
 
 ###  Package override for built-in materialization 
 
@@ -215,26 +267,62 @@ on-run-start:
 
 
 ### MetricFlow time spine YAML
+
+<VersionBlock lastVersion="1.11">
+
 The `require_yaml_configuration_for_mf_time_spines` flag is set to `False` by default.
 
-In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
+In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file. When the flag is `False`, dbt raises a deprecation warning if it detects a MetricFlow time spine configured in a SQL config block. 
 
-When the flag is set to `True`, dbt will continue to support the SQL file configuration. When the flag is set to `False`, dbt will raise a deprecation warning if it detects a MetricFlow time spine configured in a config block in a SQL file. 
+Set the flag to `True` to require YAML configuration.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+The `require_yaml_configuration_for_mf_time_spines` flag is set to `True` by default. dbt requires MetricFlow time spine configuration to use YAML. 
+
+Set the flag to `False` to allow legacy SQL file configuration &mdash; dbt raises a deprecation warning if it detects a time spine configured in a SQL config block.
+
+</VersionBlock>
 
 The MetricFlow properties YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details.
 
 ### Custom microbatch strategy
-The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `False` by default and is only relevant if you already have a custom microbatch macro in your project.  If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
 
-Set the flag is set to `True` if you have a custom microbatch macro set up in your project. When the flag is set to `True`, dbt will execute the custom microbatch strategy in batches. 
+<VersionBlock lastVersion="1.11">
 
-If you have a custom microbatch macro and the flag is left as `False`, dbt will issue a deprecation warning.
+The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `False` by default. This flag is only relevant if you already have a custom microbatch macro in your project. If you don't have a custom microbatch macro, you don't need to set this flag; dbt handles microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
+
+Set the flag to `True` if you have a custom microbatch macro set up in your project. When set to `True`, dbt executes the custom microbatch strategy in batches. If you have a custom microbatch macro and the flag is left as `False`, dbt raises a deprecation warning.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `True` by default. dbt executes custom microbatch strategies in batches. This flag is only relevant if your project has a custom microbatch macro; if it doesn't, dbt handles microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies). 
+
+Set the flag to `False` to disable batched execution for custom microbatch strategies.
+
+</VersionBlock>
 
 Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `True` to prevent unintended interactions with existing custom incremental strategies. But this is no longer necessary, as setting `DBT_EXPERMINENTAL_MICROBATCH` will no longer have an effect on runtime functionality.
 
 ### Cumulative metrics
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), <Constant name="core" /> v1.9 and newer.
+
+<VersionBlock lastVersion="1.11">
+
+The `require_nested_cumulative_type_params` flag is `False` by default. dbt warns users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set `require_nested_cumulative_type_params` to `True`.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+The `require_nested_cumulative_type_params` flag is `True` by default. dbt raises an error if cumulative metrics are improperly nested. To revert to a warning, set `require_nested_cumulative_type_params` to `False`.
+
+</VersionBlock>
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -247,7 +335,7 @@ Use the following metric configured with the syntax before v1.9 as an example:
 
 ```
 
-If you run `dbt parse` with that syntax on Core v1.9 or [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like: 
+If the flag is `False` and you run `dbt parse` with that syntax on <Constant name="core" /> v1.9+ or [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), you will receive a warning like:
 
 ```bash
 
@@ -302,11 +390,21 @@ flags:
 
 ### Macro argument validation
 
+<VersionBlock lastVersion="1.11">
+
 dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `False`, which means that dbt won't validate the names or types of documented macro arguments.
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+The `validate_macro_args` flag is set to `True` by default. dbt validates macro argument names and types during project parsing.
+
+</VersionBlock>
+
 In the past, dbt didn't enforce a standard vocabulary for the [`type`](/reference/resource-properties/arguments#type) field on macro arguments in YAML. Because of this, the `type` field was used for documentation only, and dbt didn't check that:
-- the argument names matched those in your macro
-- the argument types were valid or consistent with the macro's Jinja definition
+- The argument names matched those in your macro.
+- The argument types were valid or consistent with the macro's Jinja definition.
 
 Here's an example of a documented macro:
 <File name='macros/filename.yml'>
@@ -321,12 +419,12 @@ macros:
 ```
 </File>
 
-When you set the `validate_macro_args` flag to `True`, dbt will:
-- Validate macro arguments during project parsing.
-- Check that all argument names in your YAML match those in the macro definition.
-- Raise warnings if the names or types don't match.
-- Validate that the [`type` values follow the supported format](/reference/resource-properties/arguments#supported-types).
-- If no arguments are documented in the YAML, infer them from the macro and include them in the [`manifest.json` file](/reference/artifacts/manifest-json).
+When the `validate_macro_args` flag is `True`, dbt:
+- Validates macro arguments during project parsing.
+- Checks that all argument names in your YAML match those in the macro definition.
+- Raises warnings if the names or types don't match.
+- Validates that the [`type` values follow the supported format](/reference/resource-properties/arguments#supported-types).
+- Infers macro arguments from the macro definition if none are documented in the YAML, and includes them in the [`manifest.json` file](/reference/artifacts/manifest-json).
 
 <Expandable alt_header="When does validation occur?">
 
@@ -343,9 +441,11 @@ Macro argument validation runs during project parsing, not during macro executio
 
 ### Warn-error handler for all warnings
 
-By default, the `require_all_warnings_handled_by_warn_error` flag is set to `False`.
+<VersionBlock lastVersion="1.11">
 
-When you set `require_all_warnings_handled_by_warn_error` to `True`, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `False`, only some warnings are processed by the handler while others may bypass it.
+The `require_all_warnings_handled_by_warn_error` flag is set to `False` by default. Only some warnings are processed by the `--warn-error` / `--warn-error-options` handler, while others may bypass it. 
+
+Set the flag to `True` to route all warnings through the handler for consistent behavior when promoting warnings to errors or silencing them.
 
 Note that enabling this for projects that use `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may cause builds to fail on warnings that were previously ignored. We recommend enabling it gradually.
 
@@ -369,6 +469,17 @@ We recommend the following rollout plan when setting the `require_all_warnings_h
 5. Enable the flag in your production environment.
 
 </Expandable>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+The `require_all_warnings_handled_by_warn_error` flag is set to `True` by default. All warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. Projects using `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may see new build failures on warnings that were previously ignored. 
+
+Set the flag to `False` to restore the previous behavior, where some warnings bypass the handler.
+
+</VersionBlock>
+
 
 ### Generic test arguments property
 
