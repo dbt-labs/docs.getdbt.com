@@ -7,7 +7,7 @@ tags: [scheduler]
 ---
 
 :::info
-Use the [<Constant name="dev_agent"/>](/docs/dbt-ai/developer-agent) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes — powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
+Use the [<Constant name="dev_agent"/>](/docs/dbt-ai/developer-agent) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes  &mdash;  powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
 :::
 
 The job scheduler is the backbone of running jobs in <Constant name="dbt" />, bringing power and simplicity to building data pipelines in both continuous integration and production contexts. The scheduler frees teams from having to build and maintain their own infrastructure, and ensures the timeliness and reliability of data transformations.
