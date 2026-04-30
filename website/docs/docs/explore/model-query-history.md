@@ -36,10 +36,10 @@ Model query history is supported in the following data warehouses:
 
 To access the features, you should meet the following requirements:
 
-1. You have a <Constant name="dbt" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
-2. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
-3. You have [admin permissions](/docs/platform/manage-access/enterprise-permissions) in <Constant name="dbt" /> to edit project settings or production environment settings.
-4. You use Snowflake, BigQuery, Redshift, or Databricks as your data warehouse and can enable [query history permissions](#credential-permissions) or work with an admin to do so.
+- You have a <Constant name="dbt" /> account on an [Enterprise-tier plan](https://www.getdbt.com/pricing/). Single-tenant accounts should contact their account representative for setup.
+- You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
+- You have [admin permissions](/docs/platform/manage-access/enterprise-permissions) in <Constant name="dbt" /> to edit project settings or production environment settings.
+- You use Snowflake, BigQuery, Redshift, or Databricks as your data warehouse and can enable [query history permissions](#credential-permissions) or work with an admin to do so.
    - For Snowflake users: You must have a Snowflake Enterprise-tier or higher subscription.
 
 ## Enable query history in dbt
@@ -78,7 +78,7 @@ The model query history feature uses the credentials in your production environm
 
 4. Copy or cross reference those credential permissions with the warehouse permissions and grant your user the right permissions.
 
-#### Snowflake model query history
+### Snowflake model query history
 
 Model query history uses metadata tables available to [Snowflake Enterprise-tier](https://docs.snowflake.com/en/user-guide/intro-editions#enterprise-edition) accounts or higher: `QUERY_HISTORY` and `ACCESS_HISTORY`. The Snowflake user in the production environment must have the `GOVERNANCE_VIEWER` permission to view the data.
 
@@ -90,14 +90,14 @@ GRANT DATABASE ROLE SNOWFLAKE.GOVERNANCE_VIEWER TO ROLE <YOUR_DBT_CLOUD_DEPLOYME
 
 Without this grant, model query history won't display any data. For more information, refer to the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage#enabling-other-roles-to-use-schemas-in-the-snowflake-database). 
 
-#### BigQuery model query history
+### BigQuery model query history
 
 The model query history uses metadata from the [`INFORMATION_SCHEMA.JOBS` view](https://docs.cloud.google.com/bigquery/docs/information-schema-jobs) in BigQuery. To access the metadata, the production environment user must have the correct [IAM role](https://docs.cloud.google.com/bigquery/docs/access-control#bigquery.resourceViewer) or permission to access this data:
 
 - If you use a BigQuery provided role, we recommend `roles/bigquery.resourceViewer`.
 - If you use a custom role, ensure it includes the `bigquery.jobs.listAll permission`.
 
-#### Redshift model query history <Lifecycle status="beta" />
+### Redshift model query history<Lifecycle status="beta" />
 
 Model query history uses the `SYS_QUERY_HISTORY` and `SYS_QUERY_DETAIL` system views in Redshift. By default, users can only see their own queries in these views. To surface query history across all warehouse users, your database admin must grant the production environment credentials one of the following:
 
@@ -114,7 +114,7 @@ Model query history uses the `SYS_QUERY_HISTORY` and `SYS_QUERY_DETAIL` system v
 
 Without one of these, model query history won't display data from other users. For more information, refer to the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/dg/cm_chap_system-tables.html#c_visibility-of-data).
 
-##### Redshift considerations
+#### Redshift considerations
 
 Redshift model query history is derived from physical table scans (`SYS_QUERY_DETAIL` where `step_name = 'scan'`). This means usage data reflects a high-quality signal rather than an exact query count.
 
@@ -126,7 +126,7 @@ Because Redshift expands regular views at execution time, scans are attributed t
 
 If your project relies heavily on views, usage may appear lower than expected. This is a known limitation of scan-based attribution rather than missing data.
 
-#### Databricks model query history <Lifecycle status="beta" />
+### Databricks model query history <Lifecycle status="beta" />
 
 Model query history uses two Unity Catalog system tables: `system.query.history` and `system.access.table_lineage`. Before granting access, confirm the following prerequisites are met:
 
@@ -150,7 +150,7 @@ GRANT SELECT ON TABLE system.query.history TO `<YOUR_SERVICE_PRINCIPAL>`;
 
 For more information, refer to the [Databricks Unity Catalog privileges documentation](https://docs.databricks.com/aws/en/data-governance/unity-catalog/manage-privileges/privileges).
 
-##### Databricks considerations
+#### Databricks considerations
 
 Keep the following in mind when using model query history with Databricks:
 
