@@ -41,11 +41,11 @@ Summary of encountered deprecations:
 
 If you're using <Constant name="dbt" />, you can view deprecation warnings from the **Dashboard** area of your account.
 
-    <Lightbox src="/img/docs/dbt-cloud/deprecation-warnings.png" title="The deprecation warnings listed on the dbt dashboard." />
+    <Lightbox src="/img/docs/dbt-platform/deprecation-warnings.png" title="The deprecation warnings listed on the dbt dashboard." />
 
 Click into a job to view more details and locate the deprecation warnings in the logs (or run the `parse` command with flags from the <Constant name="studio_ide" /> or <Constant name="platform_cli" />).
 
-    <Lightbox src="/img/docs/dbt-cloud/deprecation-list.png" title="Deprecation warnings listed in the logs." />
+    <Lightbox src="/img/docs/dbt-platform/deprecation-list.png" title="Deprecation warnings listed in the logs." />
 
 ### Automatic remediation
 
