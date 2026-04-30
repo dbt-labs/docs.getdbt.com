@@ -131,8 +131,8 @@ Check out our [docs on external catalog support](/docs/mesh/iceberg/about-catalo
 With [hybrid projects](/docs/deploy/hybrid-projects), <Constant name="core"/> users working in the command line interface (CLI) can execute runs that seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="dbt"/>. This enhances hybrid <Constant name="core"/>/<Constant name="dbt"/> deployments by:
 
 - Fostering collaboration between <Constant name="dbt"/> + <Constant name="core"/> users by enabling them to visualize and perform [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) to models defined in <Constant name="core"/> projects. This feature unifies <Constant name="dbt"/> + <Constant name="core"/> workflows for a more connected dbt experience.
-- Giving <Constant name="dbt"/> and <Constant name="core"/> users insights into their models and assets in [<Constant name="catalog"/>](/docs/explore/explore-projects). To view <Constant name="catalog"/>, you must have have a [developer or read-only license](/docs/cloud/manage-access/seats-and-users).
-- (Coming soon) Enabling users working in the [<Constant name="canvas"/>](/docs/cloud/canvas) to build off of models already created by a central data team in <Constant name="core"/> rather than having to start from scratch.
+- Giving <Constant name="dbt"/> and <Constant name="core"/> users insights into their models and assets in [<Constant name="catalog"/>](/docs/explore/explore-projects). To view <Constant name="catalog"/>, you must have have a [developer or read-only license](/docs/platform/manage-access/seats-and-users).
+- (Coming soon) Enabling users working in the [<Constant name="canvas"/>](/docs/platform/canvas) to build off of models already created by a central data team in <Constant name="core"/> rather than having to start from scratch.
 
 Hybrid projects are available as a private beta to [<Constant name="dbt"/> Enterprise accounts](https://www.getdbt.com/pricing). Contact your account representative to register your interest in the beta.
 

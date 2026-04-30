@@ -9,7 +9,7 @@ Access <Constant name="catalog" /> from other features and products inside <Cons
 This page explains how to access <Constant name="catalog" /> from various <Constant name="dbt" /> features, including the <Constant name="studio_ide" /> and jobs. While the primary way to navigate to <Constant name="catalog" /> is by clicking **Catalog** in the navigation, you can also access it from other <Constant name="dbt" /> features.
 
 ### Studio IDE 
-You can enhance your project navigation and editing experience by directly accessing resources from the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) to <Constant name="catalog" /> for model, seed, or snapshot files. This workflow offers a seamless transition between the <Constant name="studio_ide" /> and <Constant name="catalog" />, allowing you to quickly navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
+You can enhance your project navigation and editing experience by directly accessing resources from the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) to <Constant name="catalog" /> for model, seed, or snapshot files. This workflow offers a seamless transition between the <Constant name="studio_ide" /> and <Constant name="catalog" />, allowing you to quickly navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
 
 #### Access Catalog from the IDE
 - In your model, seed, or snapshot file, click the **View in <Constant name="catalog" />** icon to the right of your file breadcrumb (under the file name tab). 

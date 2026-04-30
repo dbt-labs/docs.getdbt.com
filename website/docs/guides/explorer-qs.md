@@ -40,11 +40,11 @@ Now we’ll be creating your <Constant name="dbt" /> account and connecting it t
 8. Run each job you see by clicking on the job and then selecting **Run now**. This will run the *upstream* project job in both a production and staging environment.
 9. Toggle into the **Analytics project**. Go to the **Orchestration** tab and select **Jobs** from the dropdown menu. 
 10. Run each job you see by clicking on the job and then selecting **Run now**. This will run the *downstream* project job in both a production and staging environment.
- <Lightbox src="/img/quickstarts/dbt-cloud/run_job.png" width="80%" title="Run the jobs" />
+ <Lightbox src="/img/quickstarts/dbt-platform/run_job.png" width="80%" title="Run the jobs" />
    
 
 ## Performance
-<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Catalog's Performance tab" />
+<Lightbox src="/img/quickstarts/dbt-platform/explorer_performance_tab.png" width="100%" title="dbt Catalog's Performance tab" />
 <Constant name="catalog" /> will show you your project's most executed models, longest model executions, most failed models and tests, and most consumed models all in one place: The performance tab.
 
 ### Hands-On
@@ -62,7 +62,7 @@ With <Constant name="catalog" />, you can view your project's resources (such as
 
 Navigate and manage your projects within <Constant name="dbt" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
-<Lightbox src="/img/quickstarts/dbt-cloud/explorer_models_tab.png" width="100%" title="dbt Catalog's Models tab" />
+<Lightbox src="/img/quickstarts/dbt-platform/explorer_models_tab.png" width="100%" title="dbt Catalog's Models tab" />
 
 ### Hands-On
 - Explore the **Model** tab 
@@ -83,7 +83,7 @@ Navigate and manage your projects within <Constant name="dbt" /> to help you and
 - [Lenses](/docs/explore/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
   - Applying a lens adds tags to the nodes, showing metadata like layer values, with color coding to help you distinguish them.
 
- <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" width="100%" title="dbt Catalog's lineage graph" />
+ <Lightbox src="/img/quickstarts/dbt-platform/dbt_explorer_dag.png" width="100%" title="dbt Catalog's lineage graph" />
   
 - Use the [advanced search](/docs/explore/explore-projects#search-resources) feature to locate resources in your project. 
   - Perform hard searches and keyword searches. 
@@ -91,7 +91,7 @@ Navigate and manage your projects within <Constant name="dbt" /> to help you and
   - Apply filters to fully refine your search.
 - When searching for a column name, the results show all relational nodes containing that column in their schemas. 
 
- <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" width="100%" title="dbt Catalog's advanced search feature" />
+ <Lightbox src="/img/quickstarts/dbt-platform/dbt_explorer_advanced_search.png" width="100%" title="dbt Catalog's advanced search feature" />
 
 ### Hands-On
 - Explore **Project-Level lineage**
@@ -124,7 +124,7 @@ These recommendations are designed to build trust in your project and reduce con
 
 To learn more about the specific suggestions and the reasons behind them, check out [our docs](/docs/explore/project-recommendations).
 
-<Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Catalog's project recommendation tab" />
+<Lightbox src="/img/quickstarts/dbt-platform/dbt_explorer_project_recs.png" width="80%" title="dbt Catalog's project recommendation tab" />
 
 ### Hands-On
 - Review your project recommendations.
@@ -148,7 +148,7 @@ You've learned how to:
 For the next steps, you can check out the [<Constant name="catalog" /> documentation](/docs/explore/explore-projects) and [FAQs](/docs/explore/dbt-explorer-faqs) to learn more about how to use <Constant name="catalog" />.
 
 Keep an eye out for new features coming out soon, like:
-- [Visualize downstream exposures](/docs/cloud-integrations/downstream-exposures-tableau) integrations (like Tableau).
+- [Visualize downstream exposures](/docs/platform-integrations/downstream-exposures-tableau) integrations (like Tableau).
 - [Model query history](/docs/explore/model-query-history) for additional warehouses (like Redshift and Databricks)
 - Improvements to [data health tiles](/docs/explore/data-tile)
 

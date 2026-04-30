@@ -177,18 +177,18 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. This simplifies setup and reduces credential management.
 
-- <Constant name="dbt_platform" />: Uses your existing <Constant name="git" /> [integration](/docs/cloud/git/git-configuration-in-dbt-cloud) for authentication.
+- <Constant name="dbt_platform" />: Uses your existing <Constant name="git" /> [integration](/docs/platform/git/git-configuration-in-dbt-cloud) for authentication.
 - <Constant name="fusion" /> locally: Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
 
 #### Prerequisites
 
-- You must have the feature flag enabled. Contact your account team to request access.
 - To use native private packages, you must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
-  - [GitHub](/docs/cloud/git/connect-github)
-  - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
+  - **[GitHub](/docs/platform/git/connect-github)**
+  - **[Azure DevOps](/docs/platform/git/connect-azure-devops)**
     - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
     - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
-  - [GitLab](/docs/cloud/git/connect-gitlab)
+  - **[GitLab](/docs/platform/git/connect-gitlab)**
+    - You must have the feature flag enabled. Contact your account team to request access.
     - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project.
 - If using <Constant name="fusion" /> locally, you must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 

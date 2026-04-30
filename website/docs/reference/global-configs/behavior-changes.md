@@ -85,6 +85,7 @@ flags:
   enable_truthy_nulls_equals_macro: false
   require_sql_header_in_test_configs: false
   require_corrected_analysis_fqns: false
+  require_source_and_semantic_model_names_without_spaces: false
 ```
 
 </File>
@@ -112,6 +113,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_valid_schema_from_generate_schema_name](#valid-schema-from-generate_schema_name) | 2026.1 | TBD* | 1.12.0a1 | TBD* | - |
 | [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 | [require_corrected_analysis_fqns](#project-level-configuration-for-analyses) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
+| [require_source_and_semantic_model_names_without_spaces](#no-spaces-in-source-and-semantic-model-names) | 2026.4 | TBD* | 1.12.0 | TBD* | - |
 
 
 #### dbt adapter behavior changes
@@ -191,7 +193,13 @@ The names of dbt resources (for example, models) should contain letters, numbers
 
 </File>
 
-### Project hooks with source freshness 
+### No spaces in source and semantic model names
+
+The `require_source_and_semantic_model_names_without_spaces` flag is set to `False` by default.
+
+Source names and semantic model names should contain letters, numbers, and underscores &mdash; _not_ spaces. dbt raises the [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the `require_source_and_semantic_model_names_without_spaces` flag is set to `True`, dbt raises an error.
+
+### Project hooks with source freshness
 
 Set the `source_freshness_run_project_hooks` flag to include/exclude "project hooks" ([`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end)) in the `dbt source freshness` command execution. The flag is set to `True` (include) by default. 
 
