@@ -4990,6 +4990,101 @@
       "permanent": true
     },
     {
+      "source": "/docs/platform/about-platform/dbt-cloud-features",
+      "destination": "/docs/platform/about-platform/dbt-platform-features",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-platform/about-cloud-ide",
+      "destination": "/docs/platform/about-platform/about-studio-ide",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-platform/about-dbt-cloud",
+      "destination": "/docs/platform/about-platform/dbt-platform-features",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-platform/change-your-dbt-cloud-theme",
+      "destination": "/docs/platform/about-platform/change-your-dbt-theme",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/cloud-cli-installation",
+      "destination": "/docs/platform/dbt-cli-installation",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/configure-cloud-cli",
+      "destination": "/docs/platform/configure-dbt-cli",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/git/git-configuration-in-dbt-cloud",
+      "destination": "/docs/platform/git/configure-git",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/manage-access/cloud-seats-and-users",
+      "destination": "/docs/platform/manage-access/seats-and-users",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/studio-ide/develop-in-the-cloud",
+      "destination": "/docs/platform/studio-ide/develop-in-studio",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-cloud-ide/develop-in-the-cloud",
+      "destination": "/docs/platform/studio-ide/develop-in-studio",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/dbt-cloud-ide/:path*",
+      "destination": "/docs/platform/studio-ide/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-cloud-develop-defer",
+      "destination": "/docs/platform/about-defer",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform/about-cloud-setup",
+      "destination": "/docs/platform/about-platform-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/about-cloud-setup",
+      "destination": "/docs/platform/about-platform-setup",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/cloud-release-tracks",
+      "destination": "/docs/dbt-versions/dbt-release-tracks",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-platform-version",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-apis/admin-cloud-api",
+      "destination": "/docs/dbt-apis/admin-api",
+      "permanent": true
+    },
+    {
+      "source": "/docs/faqs/Accounts/cloud-upgrade-instructions",
+      "destination": "/docs/faqs/Accounts/platform-upgrade-instructions",
+      "permanent": true
+    },
+    {
+      "source": "/docs/faqs/Troubleshooting/long-sessions-cloud-cli",
+      "destination": "/docs/faqs/Troubleshooting/long-sessions-dbt-cli",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/about-cloud/:path*",
       "destination": "/docs/platform/about-platform/:path*",
       "permanent": true
