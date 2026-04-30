@@ -28,6 +28,13 @@ The user's assigned license determines the specific capabilities they can access
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/explore/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
+| Consume [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) metrics (via API or MCP) | ✅ | ✅ | ❌ |
+
+:::note Read-Only users and the Semantic Layer
+
+The "same access across the account" statement refers to <Constant name="dbt" /> platform features (Catalog, docs, job history). It does not limit Semantic Layer data access. Read-Only users can generate a [personal access token (PAT)](/docs/dbt-apis/user-tokens) and use it to query the Semantic Layer — data access is then controlled by their warehouse credentials.
+
+:::
 
 *The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
