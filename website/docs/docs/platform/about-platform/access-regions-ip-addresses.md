@@ -56,13 +56,11 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 
 ## Accessing your account
 
-The recommended way to sign in to <Constant name="dbt_platform"/> is [https://login.dbt.com](https://login.dbt.com). Enter your email, verify it, and select the account you want to open from the list of accounts associated with your email. For more information about the login process, refer to [Log in to dbt platform](/docs/cloud/about-cloud/login).
+The recommended way to sign in to <Constant name="dbt_platform"/> is [https://login.dbt.com](https://login.dbt.com). Enter your email, verify it, and select the account you want to open from the list of accounts associated with your email. For more information about the login process, refer to [Log in to dbt platform](/docs/platform/about-platform/login).
 
-<<<<<<< HEAD:website/docs/docs/cloud/about-cloud/regions-ip-addresses.md
 If you already know your account **Access URL**, you can sign in directly. Your access URL depends on your region and tenancy:
-=======
-    <Lightbox src="/img/docs/dbt-platform/find-account.png" width="60%" title="dbt accounts" />
->>>>>>> current:website/docs/docs/platform/about-platform/access-regions-ip-addresses.md
+
+<Lightbox src="/img/docs/dbt-platform/find-account.png" width="60%" title="dbt accounts" />
 
 - **US multi-tenant:** `ACCOUNT_PREFIX.us1.dbt.com` (for example, `abc123.us1.dbt.com`)
 - **EMEA multi-tenant:** `ACCOUNT_PREFIX.eu1.dbt.com` (for example, `abc123.eu1.dbt.com`)

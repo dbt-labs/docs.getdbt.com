@@ -12,15 +12,11 @@ import UniversalLogin from '/snippets/_universal-login.md';
 This overview explains how users are provisioned in <Constant name="dbt" /> via single sign-on (SSO).
 <Constant name="dbt" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. 
 
-<<<<<<< HEAD:website/docs/docs/cloud/manage-access/sso-overview.md
 <UniversalLogin />
 
 For SSO, users also use your account **Access URL** or **dbt Enterprise Login URL**, as described in this page.
 
-To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
-=======
 To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
->>>>>>> current:website/docs/docs/platform/manage-access/sso-overview.md
 
 ## Prerequisites
 

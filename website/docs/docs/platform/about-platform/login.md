@@ -10,7 +10,7 @@ import UniversalLoginST from '/snippets/_universal-login-st.md';
 
 [https://login.dbt.com](https://login.dbt.com) is the universal entry point for <Constant name="dbt_platform"/> accounts with a static access URL (for example, `abc123.us1.dbt.com`). It sits outside any specific account and maps your email to the accounts you can access across instances and regions.
 
-You can also sign in directly with your account **Access URL** if you already know it, for example, `abc123.us1.dbt.com`. Refer to [Access, regions, and IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) for the full list of access URLs by region.
+You can also sign in directly with your account **Access URL** if you already know it, for example, `abc123.us1.dbt.com`. Refer to [Access, regions, and IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for the full list of access URLs by region.
 
 <UniversalLoginST />
 
@@ -26,21 +26,21 @@ You can also sign in directly with your account **Access URL** if you already kn
 5. Authenticate using the method configured for that account (password, SSO, or MFA).
 
 :::note
-If no accounts are found for your email, contact [dbt Support](mailto:support@getdbt.com) or your account admin. You can also sign in directly at your account [**Access URL**](/docs/cloud/about-cloud/access-regions-ip-addresses).
+If no accounts are found for your email, contact [dbt Support](mailto:support@getdbt.com) or your account admin. You can also sign in directly at your account [**Access URL**](/docs/platform/about-platform/access-regions-ip-addresses).
 :::
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src src="/img/docs/dbt-cloud/login-email-page.png" width="85%" title="Login to dbt platform using the login.dbt.com page."/>
+<Lightbox src src="/img/docs/dbt-platform/login-email-page.png" width="85%" title="Login to dbt platform using the login.dbt.com page."/>
 
-<Lightbox src src="/img/docs/dbt-cloud/login-email-verify-code.png" width="85%" title="Verify code to login to dbt platform"/>
+<Lightbox src src="/img/docs/dbt-platform/login-email-verify-code.png" width="85%" title="Verify code to login to dbt platform"/>
 
-<Lightbox src src="/img/docs/dbt-cloud/login-account-list.png" width="85%" title="Select account to login to dbt platform"/>
+<Lightbox src src="/img/docs/dbt-platform/login-account-list.png" width="85%" title="Select account to login to dbt platform"/>
 </DocCarousel>
 
 ## SSO behavior
 
-After you select an account, <Constant name="dbt_platform"/> applies that account's authentication requirements. If SSO is enforced for the account, you'll be redirected to your identity provider (IdP) to complete authentication. Refer to [SSO overview](/docs/cloud/manage-access/sso-overview) for more information about SSO configuration.
+After you select an account, <Constant name="dbt_platform"/> applies that account's authentication requirements. If SSO is enforced for the account, you'll be redirected to your identity provider (IdP) to complete authentication. Refer to [SSO overview](/docs/platform/manage-access/sso-overview) for more information about SSO configuration.
 
 <!--
 OAuth and external clients
@@ -51,8 +51,8 @@ External clients that integrate with <Constant name="dbt_platform"/> use OAuth t
 
 Account administrators can control whether users can discover an account through `login.dbt.com`. 
 
-1. In <Constant name="dbt_platform" />, account admins can go to [**Account settings**](/docs/cloud/account-settings#enable-global-account-discovery) and scroll to **Settings**. 
+1. In <Constant name="dbt_platform" />, account admins can go to [**Account settings**](/docs/platform/account-settings#enable-global-account-discovery) and scroll to **Settings**. 
 2. Navigate to the bottom and check the **Enable global account discovery** option to allow users will be able to find the account by entering their email at `login.dbt.com`.   
 - When an admin turns off the option, users must know their account **Access URL** to sign in and won't see the account in the discovery list.
 
-To change this setting, go to **Account settings** and select or clear **Enable global account discovery**. For details, refer to [Account settings](/docs/cloud/account-settings#enable-global-account-discovery).
+To change this setting, go to **Account settings** and select or clear **Enable global account discovery**. For details, refer to [Account settings](/docs/platform/account-settings#enable-global-account-discovery).
