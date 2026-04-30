@@ -38,7 +38,7 @@ These features run in or alongside the <Constant name="dbt_platform" />:
 <br />Review estimated compute cost and runtime for models and projects to measure optimization impact.
 
 **[<Constant name="copilot" />](/docs/platform/studio-ide/develop-copilot)** <Lifecycle status="self_service,managed,managed_plus" />
-<br />Inline AI assistance to generate and edit SQL and resources in the <Constant name="studio_ide" />. 
+<br />Inline AI assistance to generate and edit SQL and resources in the <Constant name="studio_ide" />.
 
 **[<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent)** <Lifecycle status="beta,self_service,managed,managed_plus" />
 <br />Agentic development in the <Constant name="studio_ide" /> with auditable changes.
