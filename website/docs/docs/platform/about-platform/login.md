@@ -44,7 +44,7 @@ After you select an account, <Constant name="dbt_platform"/> applies that accoun
 
 <!--
 OAuth and external clients
-External clients that integrate with <Constant name="dbt_platform"/> use OAuth to authenticate &mdash; like [<Constant name="platform_cli"/>](/docs/cloud/cloud-cli-installation) and the [dbt VS Code extension](/docs/about-dbt-extension?version=2.0), and [dbt MCP](/docs/dbt-ai/about-mcp) &mdash; use `login.dbt.com` as the consistent redirect entry point. This means you go through the same account discovery and authentication flow regardless of which client initiates the login.
+External clients that integrate with <Constant name="dbt_platform"/> use OAuth to authenticate &mdash; like <Constant name="platform_cli"/> and the [dbt VS Code extension](/docs/about-dbt-extension?version=2.0), and [dbt MCP](/docs/dbt-ai/about-mcp) &mdash; use `login.dbt.com` as the consistent redirect entry point. This means you go through the same account discovery and authentication flow regardless of which client initiates the login.
 -->
 
 ## Admin settings
