@@ -7,6 +7,10 @@ pagination_next: "docs/deploy/deploy-jobs"
 hide_table_of_contents: true
 ---
 
+:::info
+Use the [<Constant name="dev_agent"/>](/docs/dbt-ai/developer-agent) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes — powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
+:::
+
 These are the available job types in <Constant name="dbt" />: 
 - [Deploy jobs](/docs/deploy/deploy-jobs) &mdash; Build production data assets. Runs on a schedule, by API, or after another job completes.
 - [Continuous integration (CI) jobs](/docs/deploy/continuous-integration) &mdash; Test and validate code changes before merging. Triggered by commit to a PR or by API.
