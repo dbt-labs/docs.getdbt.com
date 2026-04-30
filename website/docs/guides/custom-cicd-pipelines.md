@@ -69,11 +69,11 @@ The setup below shows how to call the <Constant name="dbt" /> API to run a job e
 
 ### 1. Get your dbt API key
 
-When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
+When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](/docs/dbt-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
 
 1. Log in to your <Constant name="dbt" /> account.
 2. Click your account name at the bottom left-hand menu and go to **Account settings**.
-3. Click [**Service tokens**](/docs/dbt-cloud-apis/service-tokens) on the left.
+3. Click [**Service tokens**](/docs/dbt-apis/service-tokens) on the left.
 4. Click **+ Create service token** to create a new token specifically for CI/CD API calls.
 5. Name your token something like “CICD Token”.
 6. Click the **+Add permission** button under **Access**, and grant this token the **Job Admin** permission.

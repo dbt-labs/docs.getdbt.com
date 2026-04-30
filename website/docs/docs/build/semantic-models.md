@@ -24,7 +24,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - Configure semantic models in a YAML file within your dbt project directory. Refer to the [best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) for more info on project structuring.
 - Organize them under a `metrics:` folder or within project sources as needed.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">

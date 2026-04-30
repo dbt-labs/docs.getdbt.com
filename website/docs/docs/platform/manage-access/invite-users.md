@@ -1,0 +1,117 @@
+---
+title: "Invite users to dbt"
+description: "Learn how to manually invite users to dbt"
+id: "invite-users"
+sidebar: "Invite users"
+---
+
+<Constant name="dbt" /> makes it easy to invite new users to your environment out of the box. This feature is available to all <Constant name="dbt" /> customers on Starter, Enterprise, and Enterprise+ plans.
+
+## Prerequisites
+
+You must have proper permissions to invite new users:
+
+- [**Starter accounts**](/docs/platform/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
+- [**Enterprise-tier accounts**](/docs/platform/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
+- The admin inviting the users must have a `developer` or `IT` license.
+
+## Invite new users
+
+1. In your <Constant name="dbt" /> account, select your account name in the bottom left corner. Then select **Account settings**.
+2. Under **Settings**, select **Users**.
+3. Click on **Invite users**.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/invite-users.png" width="60%" title="The invite users pane"/>
+
+4. In the **Email Addresses** field, enter the email addresses of the users you want to invite separated by a comma, semicolon, or a new line.
+5. Select the license type for the batch of users from the **License** dropdown.
+6. Select the group(s) you want the invitees to belong to.
+7. Click **Send invitations**.
+    - If the list of invitees exceeds the number of licenses your account has available, you will receive a warning when you click **Send Invitations** and the invitations will not be sent. 
+
+
+## User experience
+
+:::info Email verification
+Email verification is mandatory for all new users in <Constant name="dbt" />, including using Single Sign-On (SSO)⁠⁠. Automatic provisioning without email verification is not allowed. This is a security requirement that cannot be bypassed.
+:::
+
+<Constant name="dbt" /> generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure that traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/platform/about-platform/access-regions-ip-addresses).
+
+The email contains a link to create an account. When the user clicks on this link, they will be brought to one of two screens depending on whether SSO is configured or not.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/email-invite.png" width="60%" title="Example or an email invitation"/>
+
+<Tabs>
+
+<TabItem value="Local user">
+
+The default settings send the email, the user clicks the link, and is prompted to create their account:
+
+<Lightbox src="/img/docs/dbt-platform/access-control/default-user-invite.png" width="60%" title="Default user invitation"/>
+
+</TabItem>
+
+<TabItem value="SSO user">
+
+If SSO is configured for the environment, the user must:
+
+1. Click the link in the verification email.
+2. Click the option to join the account.
+3. A confirmation screen appears, with a link to authenticate against the company's identity provider. Click **Authenticate with your enterprise login**.
+
+:::info Complete the SSO flow
+Accepting the invite doesn't fully complete the process. The user _must_ log in using SSO to redeem the invite and access the account.
+:::
+
+<Lightbox src="/img/docs/dbt-platform/access-control/sso-user-invite.png" width="60%" title="User invitation with SSO configured"/>
+
+</TabItem>
+
+</Tabs>
+
+
+Once the user completes this process, their email and user information will populate in the **Users** screen in <Constant name="dbt" />.
+
+## FAQ
+
+<DetailsToggle alt_header="Is there a limit to the number of users I can invite?">
+
+Your ability to invite users is limited to the number of licenses you have available.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="What happens if I reinstate a deleted user?">
+
+If you invite a previously deleted user back to your account with the same email address, their personal profile information, including linked accounts, will persist (unless the user deleted the connection from the source account, like GitHub). 
+
+Any previously assigned permissions and access settings are reset, and you will have to reassign them.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="Why are users clicking the invitation link and getting an 'Invalid Invitation Code' error?">
+
+We have seen scenarios where embedded secure link technology (such as enterprise Outlook's [Safe Link](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-about?view=o365-worldwide) feature) can result in errors when clicking on the email link. Be sure to include the `getdbt.com` URL in the allowlists for these services.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="Can I have a mixture of users with SSO and username/password authentication?">
+
+Once SSO is enabled, you will no longer be able to add local users. If you have contractors or similar contingent workers, we recommend you add them to your SSO service.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="What happens if I need to resend the invitation?">
+
+From the **Users** page, click on the invite record, and you will be presented with the option to resend the invitation.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="What can I do if I entered an email address incorrectly?">
+
+From the **Users** page, click on the invite record, and you will be presented with the option to revoke it. Once revoked, generate a new invitation to the correct email address.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/resend-invite.png" width="60%" title="Resend or revoke the users invitation"/>
+
+</DetailsToggle>
+

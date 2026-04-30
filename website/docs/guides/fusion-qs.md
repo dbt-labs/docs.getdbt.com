@@ -42,7 +42,7 @@ To learn more about which tool is best for you, see the [Fusion availability](/d
 
 To take full advantage of this guide, you'll need to meet the following prerequisites:
 
-- You should have a basic understanding of [dbt projects](/docs/build/projects), [git workflows](/docs/cloud/git/git-version-control), and [data warehouse requirements](/docs/supported-data-platforms).
+- You should have a basic understanding of [dbt projects](/docs/build/projects), [git workflows](/docs/platform/git/git-version-control), and [data warehouse requirements](/docs/supported-data-platforms).
 - Make sure you're using a supported adapter and authentication method:
     <FusionDWH /> 
 - You need a macOS (Terminal), Linux, or Windows (Powershell) machine to run the <Constant name="fusion_engine" />. 

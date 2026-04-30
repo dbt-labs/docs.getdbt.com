@@ -7,7 +7,7 @@ description: "Define model access with group capabilities"
 
 :::info "Model access" is not "User access"
 
-**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in <Constant name="dbt" /> to manage permissions. Refer to [User access](/docs/cloud/manage-access/about-user-access) for more info.
+**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in <Constant name="dbt" /> to manage permissions. Refer to [User access](/docs/platform/manage-access/about-user-access) for more info.
 
 The two concepts will be closely related, as we develop multi-project collaboration workflows this year:
 - Users with access to develop in a dbt project can view and modify **all** models in that project, including private models.

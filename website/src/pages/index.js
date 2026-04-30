@@ -122,7 +122,7 @@ function Home() {
                 <Card
                   title="dbt Copilot"
                   body="AI-powered assistant that automates code, tests, and documentation in your workflow."
-                  link="/docs/cloud/dbt-copilot"
+                  link="/docs/platform/dbt-copilot"
                   icon="dbt-copilot"
                 />
                 <Card
@@ -147,7 +147,7 @@ function Home() {
                 <Card
                   title="dbt Canvas"
                   body="dbt Canvas helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation."
-                  link="/docs/cloud/canvas"
+                  link="/docs/platform/canvas"
                   icon="canvas"
                 />
                 <Card
@@ -165,7 +165,7 @@ function Home() {
                 <Card
                   title="Studio IDE"
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
-                  link="/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide"
+                  link="/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide"
                   icon="dashboard"
                 />
                 <Card
@@ -188,10 +188,10 @@ function Home() {
               <div className="home-link-grid">
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Documentation</h4>
-                  <Link to="/docs/dbt-cloud-apis/overview">API Docs</Link>
+                  <Link to="/docs/dbt-apis/overview">API Docs</Link>
                   <Link to="/docs/introduction">Product Docs</Link>
                   <Link to="/best-practices">Best Practices</Link>
-                  <Link to="/docs/cloud/dbt-copilot">Copilot</Link>
+                  <Link to="/docs/platform/dbt-copilot">Copilot</Link>
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Guides</h4>
