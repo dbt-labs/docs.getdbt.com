@@ -32,7 +32,7 @@ These features run in or alongside the <Constant name="dbt_platform" />:
 <br />REST and GraphQL APIs for administration, Discovery, the <Constant name="semantic_layer" />, and automation.
 
 **[<Constant name="canvas" />](/docs/platform/use-canvas)** <Lifecycle status="managed,managed_plus" />
-<br />Visual, drag-and-drop modeling in the <Constant name="dbt_platform" />. 
+<br />Visual, drag-and-drop modeling in the <Constant name="dbt_platform" />.
 
 **[Cost insights](/docs/explore/cost-insights)** <Lifecycle status="private_beta,managed,managed_plus" />
 <br />Review estimated compute cost and runtime for models and projects to measure optimization impact.
