@@ -86,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "state-of-analytics-engineering-virtual-event",
+      id: "the-launch-desk-live",
       content:
-        "Join us for the 2026 State of Analytics Engineering Virtual Event on April 29 with live Q&A and giveaways!",
+        "What&#39;s shipping in dbt? Find out at The Launch Desk Live &mdash; May 20. See the lineup and save your seat &#8594;",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtual-event/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_state-analytics-engineering_aw&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/the-launch-desk-live-what-s-shipping-in-dbt/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_the-launch-desk-live_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
