@@ -18,6 +18,110 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## April 22, 2026
+
+## New
+
+### Catalog
+
+- **Health and run status filters in catalog search**: The catalog search sidebar now includes health and last run status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (`success`, `error`, `skipped`, `reused`).
+
+- **Tag search field**: Tag is now a searchable field in the advanced search side panel. You can filter results by tag matches.
+
+## Enhancements
+
+### Studio IDE
+
+- **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to avoid incorrect theming when the user-preferences service is slow to respond.
+
+- **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, commands or lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
+
+- **Compile button after deprecation autofix in Fusion**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
+
+### Orchestration and run status
+
+- **Fusion eligibility toggle replaces dropdown filter**: The Fusion eligibility dropdown filter on the jobs list has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
+
+- **Debug on Fusion menu**: The single **Run once on Fusion** button on the job details page and job list has been replaced with a **Debug on Fusion** menu that offers **Debug in Studio**, **Run once on Fusion**, and (when dbt Copilot is enabled) **Debug in Studio with Copilot** options. Refer to [Prepare to upgrade to <Constant name="fusion"/>](https://docs.getdbt.com/guides/prepare-fusion-upgrade?step=7) for more info.
+
+- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same **Debug on Fusion** menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
+
+### Webhooks
+
+- **Webhook test flow uses receipt polling**: Testing a webhook subscription now triggers a test event and polls for the delivery receipt, showing the actual HTTP status code and error from the endpoint response. A 60-second timeout is applied, with a clear timeout message if the endpoint does not respond in time.
+
+- **Webhook receipt endpoint returns 404 for pending events**: The receipt endpoint for webhook events now returns a `404` response when a delivery record has not yet been written (for example, when the notification system has not yet processed the event), rather than returning an incomplete record.
+
+- **Corrected status code for timed-out webhook deliveries**: Webhook delivery history records now show `504` as the HTTP status code when a delivery timed out (previously stored as `0`), improving accuracy in the delivery history view.
+
+- **Webhook event history note always visible**: The note that event history is limited to the past 7 days now appears on the webhook events history page unconditionally.
+
+### Integrations
+
+- **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt Cloud bot invited for notifications to be delivered. Contact your account manager to enable.
+
+### dbt platform
+
+- **View account information scope on OAuth consent page**: The OAuth consent page now displays a "View account information" (`account:read`) scope option, which grants view-only access to account details including project and environment information.
+
+- **PrivateLink endpoint pending status**: A new `pending` connectivity status is available for PrivateLink endpoints, in addition to the existing `success` and `failed` states.
+
+- **Permission added to member role**: The member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
+
+## Fixes
+
+### dbt Copilot and agents
+
+- **Correct model routing for Azure OpenAI Responses API (BYOK customers)**: Azure OpenAI deployments now correctly pass the deployment name as the `model` field when using the Responses API, preventing misrouted requests when the deployment name differs from the model name.
+
+## April 15, 2026
+
+## Enhancements
+
+### Catalog
+
+- **Health and run status search filters**: The `AccountSearchQueryFilter` input now accepts `health` and `runStatus` filter arrays. Use `health` to narrow results by health status (`healthy`, `caution`, `degraded`, or `unknown`) and `runStatus` to filter by last run outcome (`success`, `error`, `skipped`, or `reused`). Multiple values within each filter are combined with `OR` logic.
+
+- **Health-aware search ranking**: Healthy dbt resources (those with no detected issues) now rank higher in search results than resources with unresolved issues when text relevance is otherwise equivalent.
+
+### Studio IDE
+
+- **Keyboard shortcut to open Commands tab**: Press `Ctrl+\`` to open the Commands tab directly from the editor.
+
+### Orchestration and run status
+
+- **Clearer Fusion job eligibility messages**: Fusion eligibility reason messages are rewritten to be shorter and more actionable. For example, unsupported adapters now read "This job uses an adapter that's not currently available on the Fusion engine" and jobs not on Latest now read "This job uses a dbt version that's not tested for Fusion eligibility."
+
+- **Fusion eligibility confirmation modal**: Clicking "Run once on Fusion" on a job now opens a confirmation modal before triggering the run, showing the environment name and a warning that job commands will execute in that environment.
+
+- **Improved `dbt ls` and `dbt list` run log status (dbt Fusion engine only):**: Run steps that execute `dbt ls` or `dbt list` now show node results with a no-op status instead of "unknown," reducing confusion in run logs for list operations.
+
+### dbt platform
+
+- **More descriptive Fusion readiness toggle**: The account-level setting to enable Fusion readiness and upgrade features now has an updated label ("Enable Fusion readiness & upgrade features") and a more detailed description explaining what the setting allows administrators and developers to do.
+
+- **Debug on Fusion navigates with version override**: The "Debug on Fusion" button (previously "Debug manually") on failed Fusion run banners now sets your personal `DBT_DEVELOP_CORE_VERSION` override to `latest-fusion` before opening Studio IDE, ensuring you open the IDE on the Fusion engine. A loading state is shown while the override saves, and an inline error is displayed if the save fails.
+
+### Deployment and configuration
+
+- **Private endpoint connectivity status column renamed**: The "Status" column in the private endpoints list is renamed to "Connectivity status" for clarity.
+
+- **Snowflake private endpoint validation shows specific missing fields**: When pasting Snowflake Private Link configuration output, the validation error now lists the specific required fields that are missing (for example, `privatelink-account-url`) rather than a generic message. Valid output now also shows a success indicator.
+
+- **YAML credential fields now accept array values**: Environment credential and connection forms that accept YAML Extended Attributes (for example, Redshift `db_groups`) now correctly validate arrays as values. Previously, array values were incorrectly rejected during client-side validation.
+
+### Integrations
+
+- **Snowflake PrivateLink supports reusing existing interface endpoints**: When creating a Snowflake PrivateLink connection, you can now supply an optional `interface_endpoint_id` to attach a new profile to an existing interface endpoint rather than always creating a new one. The endpoint must be in `Available` status; a `409 Conflict` is returned otherwise. Contact your account manager to enable.
+
+## Fixes
+
+### Studio IDE
+
+- **New folders in Git Controls now expand correctly**: Files inside a newly created folder are now listed individually in the Git Controls panel. Previously, a new folder appeared as a single unexpanded entry rather than showing the files it contained.
+  
+-  **Parent folder hint shown for all new files**: Files created inside a new folder now always display the parent folder name as a hint in the Git Controls panel, even when the file name is unique across all changed files.
+
 ## April 8, 2026
 
 ## New
@@ -819,7 +923,7 @@ Release notes are grouped by date for single-tenant environments.
   - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.  
 
 - **Canvas**
-  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/cloud/use-canvas#upload-data-to-canvas) flow.  
+  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/platform/use-canvas#upload-data-to-canvas) flow.  
 
 ## January 21, 2026
 
@@ -853,7 +957,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Fixes
 
 - **AI-assisted workflows**
-  - **Enhancement:** [dbt <Constant name="copilot" />](/docs/cloud/dbt-copilot) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
+  - **Enhancement:** [dbt <Constant name="copilot" />](/docs/platform/dbt-copilot) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
 
 - **Catalog & lineage**
   - **Fixes missing auto-generated exposures in model lineage**: Auto-generated exposures now appear correctly in lineage views.

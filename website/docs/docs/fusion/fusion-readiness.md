@@ -9,6 +9,10 @@ pagination_prev: null
 
 The <Constant name="fusion_engine" /> is here! We currently offer it as a [private preview](/docs/dbt-versions/product-lifecycles#the-dbt-platform) on the <Constant name="dbt_platform" />. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
 
+import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+
+<FusionReadinessPanel />
+
 ## Preparing for Fusion
 
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
@@ -25,7 +29,7 @@ You must resolve deprecations while your projects are on a <Constant name="core"
 
 Start a new branch to begin resolving deprecation warnings using one of the following methods:
 
-- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/cloud/studio-ide/autofix-deprecations). You can run the autofix tool on the **Compatible** or **Latest** release track.
+- [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/platform/studio-ide/autofix-deprecations). You can run the autofix tool on the **Compatible** or **Latest** release track.
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
 
@@ -77,3 +81,4 @@ The <Constant name="fusion_engine" /> remains in private preview and we currentl
 - [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to learn about the new features and functionality that impact your dbt projects.
 - [ ] Monitor progress and get insight into the development process by reading the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements).
 - [ ] Catch up on the [cost savings potential](https://www.getdbt.com/blog/announcing-state-aware-orchestration) of Fusion-powered [state-aware orchestration](https://docs.getdbt.com/docs/deploy/state-aware-about) (hint: 30%+ reduction in warehouse spend!)
+

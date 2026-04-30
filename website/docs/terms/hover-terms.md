@@ -1,4 +1,8 @@
 ---
+acid:
+  displayText: ACID
+  hoverSnippet: Atomicity, Consistency, Isolation, and Durability
+
 ade-bench:
   displayText: ADE-bench
   hoverSnippet: The Analytics and Data Engineering benchmark, a framework for evaluating AI agents on data tasks with highly realistic testing environments.
@@ -138,6 +142,10 @@ sql-expression:
 sql-rendering:
   displayText: SQL rendering
   hoverSnippet: The dbt Core engine takes SQL with Jinja, and renders all the macros present in the model to produce SQL that is ready to run against the database. For SQL parsing and compilation capabilities, use the Fusion engine instead to better understand your SQL structure.
+
+selector-expression:
+  displayText: selector expression
+  hoverSnippet: An expression used with --select and --exclude to include or exclude specific nodes in your dbt project.
 
 subquery:
   displayText: subquery
