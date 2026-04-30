@@ -68,7 +68,7 @@ The panel guides you through four setup steps in order, showing only what's rele
 2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
 3. **Check Fusion compatibility**: Guides you through upgrading your project to <Constant name="fusion" />. When you click this step, you can choose between two paths:
     - **Start with an agent**: Installs the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill to your editor's skill folder
-        - This opens your AI chat (Copilot or Cursor) with a migration prompt pre-filled. 
+        - This opens your AI chat (dbt Copilot or Cursor) with a migration prompt pre-filled. 
         - A notification will confirm: _"We'll install the Migrate <Constant name="core" /> to <Constant name="fusion" /> agent skill to the editor's skill folder. Then we'll open your AI chat with a prompt to start the migration."_
         - Click **Install & open chat** to proceed &mdash; the chat opens with the prompt already loaded, so you just press enter and the agent handles the migration. No CLI commands needed. Requires Copilot or Cursor.
     - **Start manually in CLI**: Runs the <Constant name="fusion" /> upgrade workflow in your terminal. Refer to [Upgrade to <Constant name="fusion" />](#upgrade-to-fusion) for more info.
