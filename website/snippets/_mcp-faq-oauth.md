@@ -11,4 +11,6 @@
    - macOS/Linux: `rm -f ~/.dbt/mcp.yml ~/.dbt/mcp.lock`
    - Windows: `Remove-Item -Force $env:USERPROFILE\.dbt\mcp.yml, $env:USERPROFILE\.dbt\mcp.lock`
 3. Restart your client and try connecting again.
+
+**Also check:** If the above steps don't resolve the issue, confirm that AI features are enabled on your account. OAuth requires AI features to be active. An account admin can enable them in **Account settings** → **Edit** → toggle on **Enable account access to dbt Copilot features**. See [Enable dbt Copilot](/docs/platform/enable-dbt-copilot).
 </Expandable>
