@@ -56,15 +56,15 @@ You're all set up with the dbt extension! The next steps are:
 
 ## Getting started
 
-Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear in the sidebar. Click it to open the **Get started** panel &mdash; a persistent, always-on setup companion available in both VS Code and Cursor. 
+Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear in the sidebar. Click it to open the **Get started** panel.
 
-The Get started panel continuously monitors your environment and surfaces the single most important next action. As new <Constant name="fusion" /> releases ship or your project changes, the panel resurfaces relevant steps automatically.
+The **Get started** panel is a persistent, always-on setup companion available in both VS Code and Cursor.  It continuously monitors your environment and surfaces the single most important next action. As new <Constant name="fusion" /> releases ship or your project changes, the panel resurfaces relevant steps automatically.
 
 <Lightbox src="/img/docs/extension/vsce-get-started.png" width="100%" title="The Get started panel in VS Code showing the four setup steps, with the active step highlighted as an orange CTA button."/>
 
 The panel guides you through four setup steps in order, showing only what's relevant to your current state:
 
-1. **Install or update <Constant name="fusion_engine" />**: Detects whether the <Constant name="fusion_engine" /> binary is missing or outdated and installs or updates it automatically with a single click.
+1. **Install or update <Constant name="fusion_engine" />**: Detects whether the <Constant name="fusion_engine" /> binary is missing or outdated and installs or updates it with a single click.
 2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
 3. **Check Fusion compatibility**: Guides you through upgrading your project to <Constant name="fusion" />. When you click this step, you can choose between two paths:
     - **Start with an agent**: Installs the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill to your editor's skill folder
@@ -72,7 +72,7 @@ The panel guides you through four setup steps in order, showing only what's rele
         - A notification will confirm: _"We'll install the Migrate <Constant name="core" /> to <Constant name="fusion" /> agent skill to the editor's skill folder. Then we'll open your AI chat with a prompt to start the migration."_
         - Click **Install & open chat** to proceed &mdash; the chat opens with the prompt already loaded, so you just press enter and the agent handles the migration. No CLI commands needed. Requires Copilot or Cursor.
     - **Start manually in CLI**: Runs the <Constant name="fusion" /> upgrade workflow in your terminal. Refer to [Upgrade to <Constant name="fusion" />](#upgrade-to-fusion) for more info.
-4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day grace period. See [Register the extension](#register-the-extension).
+4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day trial period. See [Register the extension](#register-the-extension).
 
 When all four steps are complete, the panel shows a green **Extension setup complete** button.
 
@@ -86,17 +86,17 @@ If you are already running the <Constant name="fusion_engine" />, you must be on
 
 :::
 
-The dbt extension provides two ways to upgrade your project to Fusion from the **Get started** panel:
+The dbt extension provides two ways to upgrade your project to <Constant name="fusion" /> from the **Get started** panel:
 
-- **Agentic migration** — Automatically runs the core-to-Fusion migration via Copilot or Cursor without any CLI steps. Select this option in the **Check Fusion compatibility** step of the Get started panel. Requires Copilot or Cursor.
-- **Manual CLI onboarding** — Walks you through the upgrade interactively in your terminal. Use this if you prefer the CLI or don't have Copilot or Cursor.
+- **Agentic migration** &mdash; Automatically runs the <Constant name="dbt_core" />-to-<Constant name="fusion" /> migration via dbt Copilot or Cursor without any CLI steps. Select this option in the **Check Fusion compatibility** step of the **Get started** panel. Requires Copilot or Cursor.
+- **Manual CLI onboarding** &mdash; Walks you through the upgrade interactively in your terminal. Use this if you prefer the CLI or don't have Copilot or Cursor.
 
 ### Manual CLI onboarding
 
 You can manually update your project to <Constant name="fusion" /> in a couple of ways:
 
-- Triggering the manual flow from the **Get started** panel by selecting the **Manual CLI onboarding** option in the **Check Fusion compatibility** step.
-- Running the following command in your terminal:
+- Trigger the manual flow from the **Get started** panel by selecting the **Manual CLI onboarding** option in the **Check Fusion compatibility** step.
+- Run the following command in your terminal:
 
     ```
     dbt init --fusion-upgrade
