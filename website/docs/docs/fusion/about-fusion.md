@@ -62,7 +62,7 @@ You can:
 - [Install the Fusion CLI](/docs/local/install-dbt?version=2#get-started) <Lifecycle status="preview" />
 
 
-Go straight to the [Quickstart](/guides/fusion) to _feel the Fusion_ as fast as possible.
+Go straight to the [Quickstart](/guides/fusion) to _feel the Fusion_ as fast as possible. If you're a <Constant name="dbt_platform"/> user and want to keep your local environment in sync with the platform, see the [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide.
 
 ## What's next?
 
