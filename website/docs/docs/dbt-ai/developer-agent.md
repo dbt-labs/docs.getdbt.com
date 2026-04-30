@@ -125,7 +125,7 @@ You can select one of the following options:
 
 _Debugging job failures is currently in beta_
 
-The <Constant name="dev_agent" /> can investigate and troubleshoot dbt job and run failures directly from the <Constant name="studio_ide" />. This capability is powered by the [`troubleshooting-dbt-job-errors`](https://github.com/dbt-labs/dbt-agent-skills) skill in [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills), which comes pre-configured with the agent — no setup required.
+The <Constant name="dev_agent" /> can investigate and troubleshoot dbt job and run failures directly from the <Constant name="studio_ide" />. This capability is powered by the `troubleshooting-dbt-job-errors` [dbt Agent Skill](https://github.com/dbt-labs/dbt-agent-skills), which comes pre-configured with the agent — no setup required.
 
 You can ask the agent questions like:
 
