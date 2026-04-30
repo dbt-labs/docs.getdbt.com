@@ -77,6 +77,28 @@ Use `--full-refresh` to force a full reload of seed data (rather than an increme
 
 For information about configuring seeds (for example, column types and quoting behavior), refer to [Seed configurations](/reference/seed-configs).
 
+<VersionBlock firstVersion="1.12">
+
+## The --empty flag
+
+Use `--empty` to create seed tables with the correct schema but without loading any data. dbt infers column names and types from the CSV file but inserts zero rows. This is useful in development or CI environments where downstream models and unit tests need the table structure to exist without the overhead of loading full datasets. For example:
+
+- Build schema-only seed tables so downstream models and unit tests can compile and run:
+
+  ```shell
+  dbt seed --empty
+  ```
+
+- Target a specific seed when you only need one table's structure:
+
+  ```shell
+  dbt seed --select "country_codes" --empty
+  ```
+
+For more information, refer to [The empty flag](/docs/build/empty-flag).
+
+</VersionBlock>
+
 ## Related docs
 
 - [Seed configurations](/reference/seed-configs)

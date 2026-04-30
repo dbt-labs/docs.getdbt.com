@@ -87,7 +87,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     );
     ```
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-azure-syn-analytics.png" width="80%" title="Example of loading data" />
+    <Lightbox src="/img/quickstarts/dbt-platform/example-load-data-azure-syn-analytics.png" width="80%" title="Example of loading data" />
 
 ## Connect dbt to Azure Synapse Analytics
 
