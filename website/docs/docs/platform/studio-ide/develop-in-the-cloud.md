@@ -1,0 +1,177 @@
+---
+title: "About the Studio IDE"
+id: develop-in-studio
+description: "Develop, test, run, and build in the Studio IDE. You can compile dbt code into SQL and run it against your database directly"
+sidebar_label: About the IDE
+tags: [IDE]
+pagination_next: "docs/platform/studio-ide/keyboard-shortcuts"
+pagination_prev: null
+---
+
+The <Constant name="dbt" /> integrated development environment (<Constant name="studio_ide" />) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
+
+The <Constant name="studio_ide" /> offers several [keyboard shortcuts](/docs/platform/studio-ide/keyboard-shortcuts) and [editing features](/docs/platform/studio-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
+
+- Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
+- AI copilot &mdash; Use [<Constant name="copilot" />](/docs/platform/dbt-copilot), an AI-powered assistant, to [generate code](/docs/platform/studio-ide/develop-copilot#generate-and-edit-code) using natural language prompts and [create resources](/docs/platform/studio-ide/develop-copilot#generate-resources) such as documentation, tests, and semantic models. With the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent), you can generate or refactor models from natural language with plan-based, auditable changes. See [Develop with <Constant name="copilot" />](/docs/platform/studio-ide/develop-copilot) for more details.
+- Auto-completion &mdash; Suggests table names, arguments, and column names as you type, saving time and reducing typos.
+- Code [formatting and linting](/docs/platform/studio-ide/lint-format) &mdash; Helps standardize and fix your SQL code effortlessly.
+- Navigation tools &mdash; Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
+- Version control &mdash; Manage code versions with a few clicks.
+- Project documentation &mdash; Generate and view your [project documentation](#build-and-document-your-projects) for your dbt project in real-time.
+- Build, test, and run button &mdash; Build, test, and run your project with a button click or by using the <Constant name="studio_ide" /> command bar.  
+
+These [features](#studio-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-basic-layout.png" width="85%" title="The Studio IDE includes version control, files/folders, an editor, a command/console, and more."/>
+
+<Lightbox src src="/img/docs/dbt-platform/platform-ide/cloud-ide-v2.png" width="85%" title="Enable dark mode for a great viewing experience in low-light environments."/>
+</DocCarousel>
+
+:::tip Disable ad blockers
+
+To improve your experience using <Constant name="dbt" />, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
+
+:::
+
+## Prerequisites
+
+- A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/platform/manage-access/seats-and-users)
+- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/platform/git/connect-github) or [Importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) for detailed setup instructions
+- A dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections)
+- A [development environment and development credentials](#get-started-with-the-studio-ide) set up
+- The environment must be on dbt version 1.0 or higher
+
+## Studio IDE features
+
+The <Constant name="studio_ide" /> comes with features that make it easier for you to develop, build, compile, run, and test data models. 
+
+To understand how to navigate the <Constant name="studio_ide" /> and its user interface elements, refer to the [<Constant name="studio_ide" /> user interface](/docs/platform/studio-ide/ide-user-interface) page.
+
+| Feature  |  Description |
+|---|---|
+| [**<Constant name="studio_ide" /> shortcuts**](/docs/platform/studio-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/platform/studio-ide/keyboard-shortcuts) in the <Constant name="studio_ide" /> by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
+| **IDE version control** | The <Constant name="studio_ide" /> version control section and git button allow you to apply the concept of [version control](/docs/platform/git/version-control-basics) to your project directly into the <Constant name="studio_ide" />. <br /><br /> - Create or change branches, execute git commands using the git button.<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/platform/git/merge-conflicts)<br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch.<br /> - Use Git diff view to view what has been changed in a file before you make a pull request.<br /> - Use the **Prune branches** [button](/docs/platform/studio-ide/ide-user-interface#prune-branches-modal) to delete local branches that have been deleted from the remote repository, keeping your branch management tidy.<br /> - Sign your [git commits](/docs/platform/studio-ide/git-commit-signing) to mark them as 'Verified'. <Lifecycle status="managed,managed_plus" /> |
+| **Preview and Compile button** | You can [compile or preview](/docs/platform/studio-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
+| [**<Constant name="copilot" />**](/docs/platform/studio-ide/develop-copilot)| A powerful AI-powered assistant that can [generate code](/docs/platform/studio-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/platform/studio-ide/develop-copilot#generate-resources) (like documentation, tests, metrics, and semantic models) for you &mdash; with the click of a button. <Lifecycle status="self_service,managed,managed_plus" />. |
+| [**<Constant name="dev_agent" />**](/docs/dbt-ai/developer-agent) | Autonomous AI agent in the <Constant name="studio_ide" /> that writes or refactors dbt models from natural language, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. <Lifecycle status="beta" />. |
+| **Build, test, and run button**  | Build, test, and run your project with the click of a button or by using the command bar.  
+| **Command bar** | You can enter and run commands from the command bar at the bottom of the <Constant name="studio_ide" />. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within <Constant name="dbt" />. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
+| **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the <Constant name="studio_ide" /> for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
+| **Organize tabs and files**  | - Move your tabs around to reorganize your work in the IDE <br /> - Right-click on a tab to view and select a list of actions, including duplicate files  <br /> - Close multiple, unsaved tabs to batch save your work <br /> - Double click files to rename files |
+| **Find and replace** | - Press Command-F or Control-F to open the find-and-replace bar in the upper right corner of the current file in the IDE. The IDE highlights your search results in the current file and code outline<br /> - You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches<br /> - Use the left arrow to replace the text with something else |
+| **Multiple selections**  | You can make multiple selections for small and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.<br /><br /> - Option-Command-Down arrow or Ctrl-Alt-Down arrow<br /> - Option-Command-Up arrow or Ctrl-Alt-Up arrow<br /> - Press Option and click on an area or Press Ctrl-Alt and click on an area<br /> 
+| **Lint and Format** | [Lint and format](/docs/platform/studio-ide/lint-format) your files with a click of a button, powered by SQLFluff, sqlfmt, Prettier, and Black.
+| **dbt autocomplete**  |  Autocomplete features to help you develop faster:<br /><br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var<br /> - Start typing a hyphen (-) to use in-line autocomplete in a YAML file<br /> - Automatically create models from dbt sources with a click of a button.  |
+| **<Term id="dag" /> in the IDE** | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. The default view is 2+model+2 (defaults to display 2 nodes away), however, you can change it to +model+ (full  <Term id="dag" />). Note the `--exclude` flag isn't supported. |
+| **Status bar** | This area provides you with useful information about your <Constant name="studio_ide" /> and project status. You also have additional options like enabling light or dark mode, restarting the <Constant name="studio_ide" />, or [recloning your repo](/docs/platform/git/version-control-basics).
+| **Dark mode**  | From the status bar in the <Constant name="studio_ide" />, enable dark mode for a great viewing experience in low-light environments. 
+
+
+### Code generation
+
+The <Constant name="studio_ide" /> comes with **CodeGenCodeLens**, a powerful feature that simplifies creating models from your sources with a click of a button. To use this feature, click on the  **Generate model** action next to each table in the source YAML file(s). It automatically creates a basic starting staging model for you to expand on. This feature helps streamline your workflow by automating the first steps of model generation.
+
+### dbt YAML validation
+
+The <Constant name="studio_ide" /> uses JSON Schema from the open source [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project to power YAML completion, structure checks, and inline diagnostics. These schemas are aligned with the <Constant name="fusion_engine" /> specification and apply across [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/cloud-release-tracks), even when your development environment is running <Constant name="core" />.
+
+If a warning looks wrong but <Constant name="dbt" /> commands succeed, trust your project commands and report the discrepancy so the schema can be improved. For background on the latest Semantic Layer YAML shape, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
+
+## Get started with the Studio IDE
+
+In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-cloud-environments). In the following steps, we outline how to set up developer credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
+
+The <Constant name="studio_ide" /> uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
+
+Set up your developer credentials:
+
+1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan.
+2. Select the relevant project in the list.
+3. Click **Edit** on the bottom right of the page.
+4. Enter the details under **Development Credentials**.
+5. Click **Save.**
+
+<Lightbox src="/img/docs/dbt-platform/refresh-ide/dev-credentials.png" width="85%" height="100" title="Configure developer credentials in your profile"/>
+
+6. Navigate to the <Constant name="studio_ide" /> by clicking **Studio** in the left menu.
+7. Initialize your project and familiarize yourself with the <Constant name="studio_ide" /> and its delightful [features](#studio-ide-features).
+
+Nice job, you're ready to start developing and building models 🎉!  
+
+### Considerations
+
+- To improve your experience using <Constant name="dbt" />, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
+- To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@getdbt.com) before running <Constant name="dbt" />.
+- The <Constant name="studio_ide" />'s idle session timeout is one hour.
+- <Expandable alt_header="About the start up process and work retention">
+  
+    The following sections describe the start-up process and work retention in the <Constant name="studio_ide" />.
+  
+  - #### Start-up process
+      There are three start-up states when using or launching the <Constant name="studio_ide" />:
+      - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
+      - **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for one hour. The environment automatically turns off one hour after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+      - **Hot start &mdash;** This is the state of resuming an existing or active develop session within one hour of the last activity. <br /><br />
+
+  - #### Work retention
+
+      The <Constant name="studio_ide" /> needs explicit action to save your changes. There are three ways your work is stored:
+
+      - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
+
+      <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-unsaved-modal.png" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
+
+      - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
+      - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
+
+  </Expandable>
+
+## Build and document your projects
+
+- **Build, compile, and run projects** &mdash; You can *build*, *compile*, *run*, and *test* dbt projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The <Constant name="studio_ide" /> will update in real time when you run models, tests, seeds, and operations.
+  - If a model or test fails, <Constant name="dbt" /> makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
+  - Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within <Constant name="dbt" />.
+  - Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the <Constant name="git" /> branch name. For example, using the branch name as a prefix for a development schema.
+  - Run [MetricFlow commands](/docs/build/metricflow-commands) to create and manage metrics in your project with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
+
+- **Generate your YAML configurations with <Constant name="copilot" />** &mdash; [dbt Copilot](/docs/platform/dbt-copilot) is a powerful artificial intelligence (AI) feature that helps automate development in <Constant name="dbt" />. It can [generate code](/docs/platform/studio-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/platform/studio-ide/develop-copilot#generate-resources) (like documentation, tests, metrics,and semantic models) for you directly in the <Constant name="studio_ide" />, so you can accomplish more in less time. <Lifecycle status="self_service,managed,managed_plus" /> 
+
+- **Build and view your project's docs** &mdash; The <Constant name="studio_ide" /> makes it possible to [build and view](/docs/explore/build-and-view-your-docs) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
+
+
+## Related docs
+
+- [How we style our dbt projects](/best-practices/how-we-style/0-how-we-style-our-dbt-projects)
+- [User interface](/docs/platform/studio-ide/ide-user-interface)
+- [Version control basics](/docs/platform/git/version-control-basics)
+- [dbt commands](/reference/dbt-commands)
+
+## FAQs
+
+<DetailsToggle alt_header="Is there a cost to using the Studio IDE?">
+Not at all! You can use <Constant name="dbt" /> when you sign up for the <a href="https://www.getdbt.com/pricing/">Free Developer plan</a>, which comes with one developer seat. If you'd like to access more features or have more developer seats, you can upgrade your account to the Starter, Enterprise, or Enterprise+ plan.<br />
+
+Refer to <a href="https://www.getdbt.com/pricing/">dbt pricing plans</a> for more details.
+</DetailsToggle>
+
+<DetailsToggle alt_header="What should I do if the Studio IDE freezes when I open the Lineage tab?">
+If the <Constant name="studio_ide" /> freezes with two or more models open and the **Lineage** tab active, especially when a model has a large or slow-loading DAG, refer to [Studio IDE freezes when opening the Lineage tab](/faqs/Troubleshooting/studio-ide-freezes-lineage-tab) for workarounds and troubleshooting steps.
+</DetailsToggle>
+
+<DetailsToggle alt_header="Can I be a contributor to dbt">
+As a proprietary product, <Constant name="dbt" />'s source code isn't available for community contributions. If you want to build something in the dbt ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a dbt package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
+</DetailsToggle>
+
+<DetailsToggle alt_header="What is the difference between developing on the Studio IDE, the dbt CLI, and dbt Core?">
+You can develop dbt using the web-based IDE in <Constant name="dbt" /> or on the command line interface using the <Constant name="platform_cli" /> or open-source <Constant name="core" />, all of which enable you to execute dbt commands. The key distinction between the <Constant name="platform_cli" /> and <Constant name="core" /> is the <Constant name="platform_cli" /> is tailored for <Constant name="dbt" />'s infrastructure and integrates with all its features:
+
+- <Constant name="studio_ide" />: <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-cloud-features"><Constant name="dbt" /></a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.
+
+- <Constant name="platform_cli" />: <a href="https://docs.getdbt.com/docs/platform/cloud-cli-installation">The <Constant name="platform_cli" /></a> allows you to run dbt commands against your dbt <Constant name="dbt" /> development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
+
+- <Constant name="core" />: <Constant name="core" /> is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that's freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
+
+</DetailsToggle>

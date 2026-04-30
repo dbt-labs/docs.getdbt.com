@@ -27,7 +27,7 @@ These variables are required for <Constant name="dbt_platform"/> features (Seman
 <SimpleTable>
 | Variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` (default) and `https://cloud.getdbt.com`. <br /> <br />Include the full hostname with subdomain — for example, `DBT_HOST=abc123.us1.dbt.com`. You no longer need to separate the prefix using `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`. |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform"/> [hostname](/docs/platform/about-platform/access-regions-ip-addresses). Accepts both `cloud.getdbt.com` (default) and `https://cloud.getdbt.com`. <br /> <br />Include the full hostname with subdomain — for example, `DBT_HOST=abc123.us1.dbt.com`. You no longer need to separate the prefix using `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`. |
 | `DBT_TOKEN` | Required | A service token or Personal Access Token (PAT). <br /> <br />The `execute_sql` tool requires a PAT — service tokens _do not_ work for that tool. |
 | `DBT_PROD_ENV_ID` | Required | Your production environment ID (numeric integer). |
 | `DBT_DEV_ENV_ID` | Required for `execute_sql` | Your development environment ID (numeric integer). |
