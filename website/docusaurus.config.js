@@ -88,7 +88,7 @@ var siteSettings = {
     announcementBar: {
       id: "the-launch-desk-live",
       content:
-        "What&#39;s shipping in dbt? Find out at The Launch Desk Live &mdash; May 20. See the lineup and save your seat &#8594;",
+        "What's shipping in dbt? Find out at The Launch Desk Live — May 20. Learn what's possible and what to prioritize in your stack.",
       isCloseable: true,
     },
     announcementBarActive: true,
