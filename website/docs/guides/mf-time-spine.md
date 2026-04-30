@@ -164,7 +164,7 @@ For the time spine you created, let's run it and preview the output if you haven
     ```
 
     This will output results similar to the following in the <Constant name="studio_ide" />:
-    <Lightbox src="/img/quickstarts/dbt-cloud/validate-mf-timespine-output.png" title="Validate the metrics and time spine output in the Studio IDE" />
+    <Lightbox src="/img/quickstarts/dbt-platform/validate-mf-timespine-output.png" title="Validate the metrics and time spine output in the Studio IDE" />
 
 5. Double check that the results are correct and returning the expected data.
 
