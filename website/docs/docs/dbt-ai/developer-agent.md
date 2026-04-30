@@ -134,7 +134,7 @@ You can ask the agent questions like:
 - "How can I fix the recent job failure?"
 - "Fix the job failure."
 
-The agent notes when your local project state may differ from the job — for example, if you're on a different branch or have uncommitted changes — so you have full context before acting on any suggested fix.
+The agent notes when your local project state may differ from the job — for example, if you're on a different branch or have uncommitted changes — so you have full context before acting on any suggested fixes.
 
 ## Fusion migration workflow {#fusion-migration-workflow}
 
