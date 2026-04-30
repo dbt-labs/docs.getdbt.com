@@ -133,7 +133,7 @@ After downloading the extension and installing the <Constant name="fusion_engine
 
 <Expandable alt_header="Understanding regions">
 
-Most users can sign in from the extension's browser registration page for the default `US1` region. If that works, you have an account in the default region and don't need to consider other [regions](/docs/cloud/about-cloud/access-regions-ip-addresses).
+Most users can sign in from the extension's browser registration page for the default `US1` region. If that works, you have an account in the default region and don't need to consider other [regions](/docs/platform/about-platform/access-regions-ip-addresses).
 
 Use a credential file (`dbt_cloud.yml`) instead of sign-in when:
 
