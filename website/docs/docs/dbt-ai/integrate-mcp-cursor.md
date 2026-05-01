@@ -39,7 +39,9 @@ After clicking:
 
 <TabItem value="OAuth with dbt platform">
 
-Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" /> <Lifecycle status="managed, managed_plus" />
+Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" /> <Lifecycle status="managed, managed_plus" />.
+
+Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
 
 - [<Constant name="dbt_platform"/> only](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJESVNBQkxFX0RCVF9DTEkiOiJ0cnVlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
 - [<Constant name="dbt_platform"/> + CLI](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
