@@ -50,7 +50,7 @@ When you collaborate on a dbt project with your team and open pull requests in t
 
 Each CI run writes to a dedicated, temporary schema that is tied to its pull request. That isolation lets <Constant name="dbt" /> execute CI runs _concurrently_ instead of _sequentially_. This differs from deployment <Constant name="dbt" /> jobs.
 
-No teammate has to wait for someone else’s CI run to finish before their own check can start. Concurrent CI checks help your whole team test and integrate dbt code faster.
+You don't have to wait for someone else’s CI run to finish before your own check can start. Concurrent CI checks help your whole team test and integrate dbt code faster.
 
 The following describes the conditions when CI checks are run concurrently and when they’re not:
 
