@@ -38,7 +38,7 @@ This section walks you through the process of requesting a new Snowflake Private
 
 ##### Prerequisites
 
-- [Account admin](/docs/cloud/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/cloud/manage-access/enterprise-permissions?version=2.0#project-creator) permission sets in <Constant name="dbt_platform"/>. Users with an IT license can also create private endpoints.
+- [Account admin](/docs/platform/manage-access/enterprise-permissions?version=2.0#account-admin) or [Project creator](/docs/platform/manage-access/enterprise-permissions?version=2.0#project-creator) permission sets in <Constant name="dbt_platform"/>. Users with an IT license can also create private endpoints.
 - [Snowflake `ACCOUNTADMIN` permissions](https://docs.snowflake.com/en/user-guide/security-access-control-overview#system-defined-roles).
 
 ##### Before you begin
@@ -51,7 +51,7 @@ Before requesting a private endpoint, allowlist <Constant name="dbt" /> Labs' AW
      - **AWS account ID**: `346425330055` &mdash; _Note: This account ID only applies to AWS <Constant name="dbt" /> multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs, contact [dbt Support](mailto:support@getdbt.com)._
 2. Wait for Snowflake to confirm access has been granted before proceeding.
 
-   <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
+   <Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
 #### Request a new private endpoint
 
