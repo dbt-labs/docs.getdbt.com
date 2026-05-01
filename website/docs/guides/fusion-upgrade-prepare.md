@@ -31,7 +31,7 @@ To follow the steps in this guide, you must meet the following prerequisites:
 
 - You're using a <Constant name="dbt_platform" /> account on any tier.
 - You have a developer license.
-- You have [proper permissions](/docs/cloud/manage-access/enterprise-permissions) to edit projects.
+- You have [proper permissions](/docs/platform/manage-access/enterprise-permissions) to edit projects.
 - Your project is using a <Constant name="fusion" /> supported adapter:
     <FusionAdapters/>
 
@@ -43,7 +43,7 @@ Start with smaller, newer, or more familiar projects first. This makes it easier
 
 ## Enable Fusion readiness features
 
-The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
+The <Constant name="fusion" /> readiness panel in the <Constant name="dbt_platform" /> and shows each project's eligibility status and blockers, is being rolled out in phases. If it hasn't been automatically enabled for your account yet, an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) can manually enable it. This lets admins and developers see which projects and jobs are eligible for <Constant name="fusion" />, identify blockers, and initiate the upgrade once preparation is complete.
 
 ### Step 1: Enable the readiness toggle
 
@@ -71,7 +71,7 @@ The **Enable restricted Fusion upgrade permissions** toggle is only available to
 1. In the same **Account** settings screen, select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 2. Click **Save**.
 
-When enabled, only users assigned the [`Fusion admin`](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
+When enabled, only users assigned the [`Fusion admin`](/docs/platform/manage-access/enterprise-permissions#fusion-admin) permission set (scoped to specific projects) can execute the upgrade. For instructions on assigning this permission, refer to [Assign upgrade access](/guides/upgrade-to-fusion?step=3#assign-upgrade-access-optional) in Part 2 of this guide.
 
 ### The Fusion readiness panel
 
@@ -106,7 +106,7 @@ Test the **Latest** release track for your individual account without changing t
 3. In the side panel, click **Edit** and scroll to **User development settings**.
 4. Select **Latest** from the **dbt version** dropdown and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Override dbt version in your account settings"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-override-version.png" width="60%" title="Override dbt version in your account settings"/>
 
 5. Launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and test your normal development workflows.
 6. Verify the override is active by running any dbt command and checking the **System Logs**. The first line should show `Running with dbt=` and your selected version. If the version number is `v1.11` or higher, you're on the right path to <Constant name="fusion" /> readiness.
@@ -122,7 +122,7 @@ After successfully testing your individual development environment with the over
 3. Click the **dbt version** dropdown and select **Latest**.
 4. Click **Save** to apply the changes.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/select-development.png" width="90%" title="Upgrade development environment to Latest dbt Core release track"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/select-development.png" width="90%" title="Upgrade development environment to Latest dbt Core release track"/>
 
 :::info Remove your override
 
@@ -204,13 +204,13 @@ Now you're ready to scan for and automatically fix deprecation warnings:
 1. Click the **three-dot menu** in the bottom right corner of the <Constant name="studio_ide" />.
 2. Select **Check & fix deprecations**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/ide-options-menu-with-save.png" width="90%" title="Access the Studio IDE options menu"/>
 
 The tool runs `dbt parse --show-all-deprecations --no-partial-parse` to identify all deprecations in your project. This may take a few moments depending on your project size.
 
 3. When parsing completes, view the results in the **Command history** panel in the bottom left.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/command-history.png" width="90%" title="View command history and deprecation results"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/command-history.png" width="90%" title="View command history and deprecation results"/>
 
 ### Step 3: Review and apply autofixes
 
@@ -219,17 +219,17 @@ After the deprecation scan completes, review the findings and apply automatic fi
 1. In the **Command history** panel, review the list of deprecation warnings.
 2. Click the **Autofix warnings** button to proceed.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-button.png" width="90%" title="Click Autofix warnings to resolve deprecations automatically"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-button.png" width="90%" title="Click Autofix warnings to resolve deprecations automatically"/>
 
 3. In the **Proceed with autofix** dialog, review the warning and click **Continue**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/proceed-with-autofix.png" width="90%" title="Confirm autofix operation"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/proceed-with-autofix.png" width="90%" title="Confirm autofix operation"/>
 
 The tool automatically modifies your project files to resolve fixable deprecations, then runs another parse to identify any remaining warnings.
 
 4. When complete, a success message appears. Click **Review changes**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/autofix-success.png" width="90%" title="Autofix complete"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/autofix-success.png" width="90%" title="Autofix complete"/>
 
 ### Step 4: Verify the changes
 
@@ -408,6 +408,64 @@ Once you've verified the updated packages work correctly:
 
 2. Add a commit message like "Upgrade dbt packages for Fusion compatibility".
 3. Click **Commit and sync**.
+
+## Update your jobs
+
+Use the <Constant name="fusion" /> readiness panel to validate your jobs against the <Constant name="fusion_engine" /> and fix any issues you find.
+
+### Review your jobs
+
+The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status:
+
+:::note
+If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
+:::
+
+1. Open the jobs list using either path:
+   - From the main menu, go to **Orchestration** → **Jobs**.
+   - From the readiness panel, click **Review jobs**.
+   <Lightbox src="/img/fusion/review-jobs.png" width="60%" title="Shortcut to review your jobs from the readiness panel"/>
+2. Find the <Constant name="fusion" /> eligibility icon to the right of your jobs. Click **Review job** for  any job that is ineligible or has an unknown eligibility status.
+   <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them Fusion eligible."/>
+3. Click **Debug on Fusion** and choose one of the following:
+   - [Debug in Studio](#debug-in-studio)
+   - [Debug in Studio with Copilot](#debug-in-studio-with-copilot)
+   - [Run once on Fusion](#run-once-on-fusion)
+
+
+#### Debug in Studio
+
+In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your development environment to review project warnings and errors:
+
+1. Click **Debug in Studio**. The <Constant name="studio_ide" /> opens and selects the **Problems** tab.
+
+2. dbt sets only your development environment to <Constant name="fusion" />.
+
+<Lightbox src="/img/fusion/fusion-ide.png" width="60%" title="Running Fusion in development"/>
+
+3. Review the warnings or errors in the **Problems** tab.
+4. Fix the issues directly or run the [autofix tool](/docs/platform/studio-ide/autofix-deprecations).
+5. When the project runs with no warnings or errors, commit and publish your changes.
+6. After you merge the changes, wait for the job to run again or run it manually.
+
+#### Debug in Studio with Copilot <Lifecycle status="beta" size="80%" />
+
+import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
+
+<FusionMigrationWorkflow />
+
+#### Run once on Fusion
+
+When you are confident a job is ready for <Constant name="fusion" />, you can run it once on the engine without changing environment-wide settings:
+
+1. Click **Run once on Fusion**.
+2. The job window opens and dbt runs the job on <Constant name="fusion" /> without changing other jobs or environment settings.
+3. When the job succeeds, click **Override eligibility status** to update the eligibility status.
+   <Lightbox src="/img/fusion/eligibility-status.png" width="60%" title="Override the eligibility status of a successful job."/>
+
+Congratulations! You have validated <Constant name="fusion" /> eligibility for your jobs.
+
+<Lightbox src="/img/fusion/fusion-eligible.png" width="60%" title="Your job is now ready for Fusion!"/>
 
 ## What's next? 
 

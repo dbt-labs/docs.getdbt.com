@@ -31,9 +31,9 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 ## Prerequisites 
 - You have a <Constant name="dbt" /> account that is on the [Starter or Enterprise-tier](https://www.getdbt.com/pricing/) plan. 
 - For `write` access to webhooks: 
-    - **Enterprise-tier plans** &mdash; Permission sets are the same for both API service tokens and the <Constant name="dbt" /> UI. You, or the API service token, must have the Account Admin, Admin, or Developer [permission set](/docs/cloud/manage-access/enterprise-permissions).  
-    - **Starter plan accounts** &mdash; For the <Constant name="dbt" /> UI, you need to have a [Developer license](/docs/cloud/manage-access/self-service-permissions).
-- You have a multi-tenant or an AWS single-tenant deployment model in <Constant name="dbt" />. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
+    - **Enterprise-tier plans** &mdash; Permission sets are the same for both API service tokens and the <Constant name="dbt" /> UI. You, or the API service token, must have the Account Admin, Admin, or Developer [permission set](/docs/platform/manage-access/enterprise-permissions).  
+    - **Starter plan accounts** &mdash; For the <Constant name="dbt" /> UI, you need to have a [Developer license](/docs/platform/manage-access/self-service-permissions).
+- You have a multi-tenant or an AWS single-tenant deployment model in <Constant name="dbt" />. For more information, refer to [Tenancy](/docs/platform/about-platform/tenancy).
 - Your destination system supports [Authorization headers](#troubleshooting).
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
@@ -54,7 +54,7 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 Note that <Constant name="dbt" /> automatically deactivates a webhook after 5 consecutive failed attempts to send events to your endpoint. To re-activate the webhook, locate it in the webhooks list and click the reactivate button to enable it and continue receiving events.
 :::
 
-To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
+To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
 
 ### Differences between completed and errored webhook events {#completed-errored-event-difference}
 The `job.run.errored` event is a subset of the `job.run.completed` events. If you subscribe to both, you will receive two notifications when your job encounters an error. However, <Constant name="dbt" /> triggers the two events at different times:
@@ -182,7 +182,7 @@ An example of a webhook payload for an errored run:
 You can use the <Constant name="dbt" /> API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
 
 :::info Access URLs
-<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise-tier plans can choose to have their account hosted in any one of these regions. For a complete list of available <Constant name="dbt" /> access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).   
+<Constant name="dbt" /> is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise-tier plans can choose to have their account hosted in any one of these regions. For a complete list of available <Constant name="dbt" /> access URLs, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).   
 :::
 
 ### List all webhook subscriptions

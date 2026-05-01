@@ -4,7 +4,7 @@ id: "job-commands"
 description: "How to use dbt commands to set tasks for your dbt jobs."
 ---
 
-A <Constant name="dbt" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
+A <Constant name="dbt" /> production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
 
 Each job allows you to:
 
@@ -19,7 +19,7 @@ Job commands are specific tasks executed by the job, and you can configure them 
 
 During a job run, the commands are "chained" together and executed as run steps. When you add a dbt command in the **Commands** section, you can expect different outcomes compared to the checkbox option.
 
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/job-commands.gif" width="85%" title="Configuring checkbox and commands list"/>
+<Lightbox src ="/img/docs/dbt-platform/using-dbt-platform/job-commands.gif" width="85%" title="Configuring checkbox and commands list"/>
 
 
 ### Built-in commands
@@ -28,15 +28,15 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 **Job outcome** &mdash; During a job run, the built-in commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fail-dbtdeps.png" width="85%" title="A failed job that had an error during the dbt deps run step."/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/fail-dbtdeps.png" width="85%" title="A failed job that had an error during the dbt deps run step."/>
 
 ### Checkbox commands
 
 For every job, you have the option to select the [Generate docs on run](/docs/explore/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
-**Job outcome Generate docs on run checkbox** &mdash; <Constant name="dbt" /> executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/explore/build-and-view-your-docs) for more info.
+**Generate docs on run** checkbox &mdash; <Constant name="dbt" /> executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. For jobs running on the <Constant name="fusion_engine" />, manually configuring `dbt docs generate` using the checkbox will no longer be required in the future. Read [Set up a documentation job](/docs/explore/build-and-view-your-docs#set-up-a-documentation-job) for more information.
 
-**Job outcome Source freshness checkbox** &mdash; <Constant name="dbt" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
+**Run source freshness** checkbox &mdash; <Constant name="dbt" /> executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more information.
 
 ### Command list
 
@@ -75,7 +75,7 @@ During a job run, the commands are "chained" together and executed as run steps.
 
 In the following example image, the first four run steps are successful. However, if the fifth run step (`dbt run --select state:modified+ --full-refresh --fail-fast`) fails, then the next run steps aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.png" width="85%" title="A failed job run that had an error during a run step"/>
+<Lightbox src ="/img/docs/dbt-platform/using-dbt-platform/skipped-jobs.png" width="85%" title="A failed job run that had an error during a run step"/>
 
 ## Job command failures
 
