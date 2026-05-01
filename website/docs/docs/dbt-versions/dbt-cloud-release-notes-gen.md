@@ -34,7 +34,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Finer-grained permissions on the Debug on Fusion menu**: The "Debug in Studio" and "Run once on Fusion" menu items are now independently disabled based on your permissions. If you lack the required permission for an action, that item shows a tooltip explaining why, while the other item remains available.
 
-- **Automatic dbt version override before "Debug in Studio"**: When you click "Debug in Studio," the dbt platform now automatically sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion` before opening the Studio IDE, so you no longer need to configure this manually.
+- **Automatic dbt version override before "Debug in Studio"**: When you click "Debug in Studio," dbt platform now automatically sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion` before opening the Studio IDE, so you no longer need to configure this manually.
 
 - **Clearer failure state for "Debug in Studio"**: If the preparation step before opening the Studio IDE fails, the button temporarily shows "Debug failed" in a red state for 5 seconds before resetting, so you know to try again rather than seeing a silent failure.
 
