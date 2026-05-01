@@ -6,7 +6,7 @@ Permissions:
 
 :::note
 
-Some permissions sets have read-only access to environment settings that can be overriden with more privileged access if the user is assigned to a group with [Environment write access](/docs/cloud/manage-access/about-user-access#environment-write-access) configured.
+Some permissions sets have read-only access to environment settings that can be overriden with more privileged access if the user is assigned to a group with [Environment write access](/docs/platform/manage-access/about-user-access#environment-write-access) configured.
 
 :::
 
@@ -121,6 +121,6 @@ Key:
 
 </FilterableTable>
 
-<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/cloud/manage-access/environment-permissions#environments-and-roles).
+<sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environments-and-roles).
 
 <sup>**</sup>Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.

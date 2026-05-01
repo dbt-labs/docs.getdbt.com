@@ -20,6 +20,7 @@ The <Constant name="dev_agent" /> is designed to support the full dbt developmen
 - Automatically generate and validate YAML definitions for tests, documentation, and semantic models directly from your existing dbt models, eliminating manual setup.
 - Make targeted changes to your project such as renaming columns, changing materializations, adjusting logic, or adding advanced data quality tests — while the agent keeps associated YAML files in sync.
 - Explore your project with the agent by asking questions about your DAG, querying the <Constant name="catalog"/>, and surfacing lineage and metadata to guide your development.
+- Investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes — powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills. <Lifecycle status="beta"/>
 
 The agent comes with the following out of the box — no configuration needed! 🎉
 
@@ -29,16 +30,17 @@ The agent comes with the following out of the box — no configuration needed! �
 ## Prerequisites
 
 - A Starter or Enterprise-tiered plan
-- A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
-- A [development environment](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
-- [Account access](/docs/cloud/enable-dbt-copilot) to <Constant name="copilot" /> features.
+- A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/platform/manage-access/seats-and-users).
+- A [development environment](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
+- [Account access](/docs/platform/enable-dbt-copilot) to <Constant name="copilot" /> features.
 
 #### Availability and considerations
 
-- The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) only and for all [deployment types](/docs/cloud/about-cloud/tenancy?version=2.0). It's not available in VS Code or the <Constant name="platform_cli" />.
+- The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only and for all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). It's not available in VS Code or the <Constant name="platform_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
 - Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
 - You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
+- Refreshing the same browser tab restores your active conversation so you don't lose your context. Opening a new tab, or returning after closing the tab, starts a new empty session.
 - Retaining chat history isn't supported for single tenant deployments yet. We recommend you save important info manually between sessions.
 
 ## Using the Developer agent
@@ -47,7 +49,7 @@ The agent comes with the following out of the box — no configuration needed! �
 
 <div style={{maxWidth: '100%', margin: '20px 0'}}>
 <video width="100%" controls autoPlay muted loop playsInline>
-  <source src="/img/docs/dbt-cloud/dev-agent.mp4" type="video/mp4" />
+  <source src="/img/docs/dbt-platform/dev-agent.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 <span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>Example of using the Developer agent to refactor a model in the Studio IDE.</span>
@@ -58,7 +60,7 @@ For more details on the <Constant name="dev_agent" /> and how it works, see the 
 - [Panel controls](#panel-controls)
 - [Agent modes](#agent-modes)
 - [Reviewing agent suggestions](#reviewing-agent-suggestions)
-- [Grantning command permissions](#grantning-command-permissions)
+- [Granting command permissions](#granting-command-permissions)
 
 #### Panel controls
 
@@ -71,7 +73,7 @@ The <Constant name="copilot" /> panel contains:
 5. **Start over** (top right): Resets the current session. When you click this button, a confirmation prompt appears. Click **Start over** to confirm, or **Cancel** to return to your current conversation. You cannot undo this action.
 6. **Stop** or **Enter** (bottom right): Press **Enter** to submit your prompt. Press **Stop** to stop the current session and agent processing. You cannot undo this action. 
 
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-copilot-panel.png" width="95%" title="The Copilot panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
+<Lightbox src="/img/docs/dbt-platform/dev-agent-copilot-panel.png" width="95%" title="The Copilot panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
 
 #### Agent modes
 
@@ -87,7 +89,7 @@ The <Constant name="dev_agent" /> operates in two modes:
 
 You can switch between modes at any time by clicking the **Agent mode** button in the <Constant name="copilot" /> panel.
 
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask for approval mode, requesting approval before making file edits." />
+<Lightbox src="/img/docs/dbt-platform/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask for approval mode, requesting approval before making file edits." />
 
 
 #### Reviewing agent suggestions
@@ -98,7 +100,7 @@ When the <Constant name="dev_agent" /> proposes code changes, you can review the
 - **Line indicators**: Added and removed lines are highlighted with line number indicators so you can see exactly what changed.
 - **Copy or open in editor**: Use the options in the top-right corner of the diff view to copy the suggestion or open it directly in the editor.
 
-<Lightbox src="/img/docs/dbt-cloud/dev-agent-code-suggestion.png" width="95%" title="The Developer agent displaying a diff of proposed YAML changes with line indicators and copy/open options." />
+<Lightbox src="/img/docs/dbt-platform/dev-agent-code-suggestion.png" width="95%" title="The Developer agent displaying a diff of proposed YAML changes with line indicators and copy/open options." />
 
 #### Granting command permissions
 
@@ -119,6 +121,23 @@ You can select one of the following options:
 | **No** | Denies the request. The agent will not run the command. |
 
 </SimpleTable>
+
+## Debug job failures <Lifecycle status="beta"/>
+
+:::info
+Debugging job failures with <Constant name="dev_agent"/> is currently in beta.
+:::
+
+The <Constant name="dev_agent" /> can investigate and troubleshoot dbt job and run failures directly from the <Constant name="studio_ide" />. This capability is powered by the `troubleshooting-dbt-job-errors` [dbt Agent Skill](https://github.com/dbt-labs/dbt-agent-skills), which comes pre-configured with the agent — no setup required.
+
+You can ask the agent questions and issue commands like:
+
+- "What jobs have failed recently?"
+- "What is the root cause of the job failure?"
+- "How can I fix the recent job failure?"
+- "Fix the job failure."
+
+The agent notes when your local project state may differ from the job — for example, if you're on a different branch or have uncommitted changes — so you have full context before acting on any suggested fixes.
 
 ## Fusion migration workflow {#fusion-migration-workflow}
 
@@ -144,7 +163,7 @@ For detailed guidance, patterns, and more examples across SQL, documentation, te
 
 - [dbt Agents overview](/docs/dbt-ai/dbt-agents)
 - [Fusion readiness checklist](/docs/fusion/fusion-readiness)
-- [Develop with dbt Copilot](/docs/cloud/studio-ide/develop-copilot)
+- [Develop with dbt Copilot](/docs/platform/studio-ide/develop-copilot)
 - [Prompt cookbook](/guides/prompt-cookbook)
 - [Semantic models](/docs/build/semantic-models)
 - [About dbt AI and intelligence](/docs/dbt-ai/about-dbt-ai)
