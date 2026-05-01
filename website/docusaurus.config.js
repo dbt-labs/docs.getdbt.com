@@ -86,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "placeholder",
+      id: "fast-track-to-dbt-workshop",
       content:
-      "Placeholder",
+      "Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!",
       isCloseable: true,
     },
-    announcementBarActive: false,
+    announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/",
+      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
