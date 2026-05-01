@@ -24,6 +24,6 @@ jobs:
       - name: Run Dotty metrics aggregator
         run: node scripts/dotty-metrics.js
         env:
-          GH_TOKEN: ${{ secrets.FA_ASSISTANT_CI_WORKFLOW_PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN_DASH }}
           RUNLAYER_API_TOKEN: ${{ secrets.RUNLAYER_API_TOKEN }}
           NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
