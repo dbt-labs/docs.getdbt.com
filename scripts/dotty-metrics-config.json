@@ -1,0 +1,7 @@
+{
+  "sourceRepos": [
+    "dbt-labs/cloud-ui",
+    "dbt-labs/studio",
+    "dbt-labs/dbt-ui"
+  ]
+}

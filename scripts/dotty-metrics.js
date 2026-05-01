@@ -20,8 +20,8 @@ if (!GH_TOKEN || !RUNLAYER_API_TOKEN || !NOTION_PAGE_ID) {
 
 const RUNLAYER_MCP_URL = 'https://dbt.runlayer.com/api/v1/proxy/24736211-1060-47e7-897e-fdf5a531a3d5/mcp';
 
-// Repos where Dotty/Cursor analysis workflow runs
-const SOURCE_REPOS = ['dbt-labs/cloud-ui', 'dbt-labs/studio', 'dbt-labs/dbt-ui'];
+// Repos where Dotty/Cursor analysis workflow runs — edit scripts/dotty-metrics-config.json to update
+const { sourceRepos: SOURCE_REPOS } = require('./dotty-metrics-config.json');
 
 // ─── GitHub helpers ────────────────────────────────────────────────────────────
 
