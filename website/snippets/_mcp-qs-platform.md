@@ -28,7 +28,7 @@ OAuth is currently available with the local MCP server only. For [remote MCP ser
 <StaticSubdomainRequired />
 
 :::note AI features required for OAuth
-OAuth authentication requires AI features to be enabled on your <Constant name="dbt_platform"/> account. An account admin must enable this before you can complete OAuth setup. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
+OAuth for MCP requires an account admin enable AI features on your <Constant name="dbt_platform"/> account before you can complete setup. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
 :::
 
 #### Find your Access URL
