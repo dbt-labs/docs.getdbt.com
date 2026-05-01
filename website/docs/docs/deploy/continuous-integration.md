@@ -46,7 +46,7 @@ The [<Constant name="dbt" /> scheduler](/docs/deploy/job-scheduler) executes CI 
 
 ### Concurrent CI checks <Lifecycle status="self_service,managed,managed_plus" />
 
-When teammates collaborate on the same dbt project and open pull requests in the same dbt repository, the same CI job can run for each qualifying event.
+When you collaborate on a dbt project with your team and open pull requests in the same dbt repository, the same CI job can run for each qualifying event.
 
 Each CI run writes to a dedicated, temporary schema that is tied to its pull request. That isolation lets <Constant name="dbt" /> execute CI runs _concurrently_ instead of _sequentially_. This differs from deployment <Constant name="dbt" /> jobs.
 
