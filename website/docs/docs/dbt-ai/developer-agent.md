@@ -40,6 +40,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
 - Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
 - You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
+- Refreshing the same browser tab restores your active conversation so you don't lose your context. Opening a new tab, or returning after closing the tab, starts a new empty session.
 - Retaining chat history isn't supported for single tenant deployments yet. We recommend you save important info manually between sessions.
 
 ## Using the Developer agent
