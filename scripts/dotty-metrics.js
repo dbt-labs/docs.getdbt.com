@@ -25,7 +25,7 @@ const SOURCE_REPOS = ['dbt-labs/cloud-ui', 'dbt-labs/studio', 'dbt-labs/dbt-ui']
 
 // ─── GitHub helpers ────────────────────────────────────────────────────────────
 
-async function ghFetch(path, options = {}) {
+async function ghFetch(path, options = {}, retries = 3) {
   const res = await fetch(`https://api.github.com${path}`, {
     ...options,
     headers: {
@@ -37,6 +37,10 @@ async function ghFetch(path, options = {}) {
   });
   if (!res.ok) {
     const body = await res.text();
+    if (retries > 0 && res.status >= 500) {
+      await new Promise(r => setTimeout(r, 2000));
+      return ghFetch(path, options, retries - 1);
+    }
     throw new Error(`GitHub API ${path} → ${res.status}: ${body}`);
   }
   return res.json();
