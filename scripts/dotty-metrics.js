@@ -46,9 +46,9 @@ async function ghFetch(path, options = {}, retries = 3) {
   return res.json();
 }
 
-// Sequential search with 300ms throttle to stay under GitHub's 30 req/min limit
+// Sequential search with 2s throttle to stay under GitHub's 30 req/min limit
 async function searchCount(query) {
-  await new Promise(r => setTimeout(r, 300));
+  await new Promise(r => setTimeout(r, 2000));
   const data = await ghFetch(`/search/issues?q=${encodeURIComponent(query)}&per_page=1`);
   return data.total_count;
 }
