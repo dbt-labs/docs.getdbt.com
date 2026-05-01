@@ -151,7 +151,7 @@ This will:
 
 ## Explore with the dbt VS Code extension
 
-The dbt VS Code extension compiles and builds your project with the <Constant name="fusion_engine" />, a powerful and blazing fast rebuild of dbt from the ground up. 
+The dbt VS Code extension (available for VS Code and Cursor) compiles and builds your project with the <Constant name="fusion_engine" />, a powerful and blazing fast rebuild of dbt from the ground up. 
 
 Want to see <Constant name="fusion" /> in action? Check out the following video to get a sense of how it works:
 
@@ -164,11 +164,12 @@ Want to see <Constant name="fusion" /> in action? Check out the following video 
   />
 </div>
 
-Now that your project works, open it in VS Code and see <Constant name="fusion" /> in action:
+Now that your project works, open it in VS Code or Cursor and see <Constant name="fusion" /> in action:
 
-1. In VS Code, open the **View** menu and click **Command Palette**. Enter **Workspaces: Add Folder to Workspace**.
+1. Open the **View** menu and click **Command Palette**. Enter **Workspaces: Add Folder to Workspace**.
 2. Select your `jaffle_shop` folder.
         If you don't add the root folder of the dbt project to the workspace, the [dbt language server](https://docs.getdbt.com/blog/dbt-fusion-engine-components#the-dbt-vs-code-extension-and-language-server) (LSP) will not run. The LSP enables features like autocomplete, hover info, and inline error highlights.
+3. Click the **dbt logo** in the sidebar to open the **Get started** panel. The panel detects your environment and surfaces the next setup step, including installing the <Constant name="fusion" /> binary, confirming your project is open, checking <Constant name="fusion" /> compatibility, and registering. If you haven't already upgraded your project to <Constant name="fusion" />, you can choose **Start with an agent** (Copilot or Cursor) or **Start manually in CLI** directly from the panel. For full details, see [Getting started](/docs/install-dbt-extension#getting-started).
 4. Open a model file to see the definition for the `orders` model. This is the model we'll use in all of the examples below.
     ```bash
         models/marts/orders.sql
