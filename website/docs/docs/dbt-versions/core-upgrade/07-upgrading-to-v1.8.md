@@ -23,23 +23,6 @@ Starting in 2024, <Constant name="dbt" /> provides the functionality from new ve
 
 Features and functionality new in dbt v1.8.
 
-### New dbt Core adapter installation procedure
-
-Before dbt Core v1.8, whenever you would `pip install` a data warehouse adapter for dbt, `pip` would automatically install `dbt-core` alongside it. The dbt adapter directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independent of `dbt-core`.
-
-Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ `dbt-core` _and_ the desired adapter. The new `pip` installation command should look like this:
-
-```shell
-pip install dbt-core dbt-ADAPTER_NAME
-```
-
-For example, you would use the following command if you use Snowflake:
-```shell
-pip install dbt-core dbt-snowflake
-```
-
-For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and `dbt-snowflake`. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
-
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 <SnowflakeColumn />
@@ -81,6 +64,12 @@ models:
 #### The `--empty` flag
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+
+#### dbt-core and adapters are decoupled
+
+Before dbt Core v1.8, dbt adapters directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independent of `dbt-core`. Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87), making it easier for us to maintain and independently evolve adapters going forward.
+
+For backwards compatibility, we have maintained the adapter packages' install-time dependencies on `dbt-core`. Even though they are technically not needed for adapter internals, users need both `dbt-core` and an adapter to execute dbt projects, and many users have been installing dbt with `pip install dbt-<adapter>` [since v1.0](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0#installation). That means `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and `dbt-snowflake`.
 
 ### Deprecated functionality
 
