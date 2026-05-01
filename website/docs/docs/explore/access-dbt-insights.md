@@ -20,14 +20,14 @@ Learn how to access <Constant name="insights" />, run queries, and view results.
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** tab
 - Use <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
-- Integrate with [<Constant name="copilot" />](/docs/cloud/dbt-copilot), [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), and [<Constant name="canvas" />](/docs/cloud/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
+- Integrate with [<Constant name="copilot" />](/docs/platform/dbt-copilot), [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), and [<Constant name="canvas" />](/docs/platform/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
 ## Access the dbt Insights interface
 
 Before accessing <Constant name="insights" />, ensure that the [prerequisites](/docs/explore/dbt-insights#prerequisites) are met.
 
 1. To access <Constant name="insights" />, select the **Insights** option in the navigation sidebar.
-2. If your [developer credentials](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) aren’t set up, <Constant name="insights" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
+2. If your [developer credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) aren’t set up, <Constant name="insights" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
 3. Once your credentials are set up, you can write, run, and edit SQL queries in the <Constant name="insights" /> editor for existing models in your project. 
 
 ## Run queries
@@ -70,7 +70,7 @@ Let's use an example to illustrate how to run queries in <Constant name="insight
     ```
 
 ### Use dbt Copilot 
-To make things easier, [use <Constant name="copilot" />](/docs/cloud/use-dbt-copilot#build-queries) to save time and explore other ways to analyze the data. <Constant name="copilot" /> can help you quickly update the query or generate a new one based on your prompt.
+To make things easier, [use <Constant name="copilot" />](/docs/platform/use-dbt-copilot#build-queries) to save time and explore other ways to analyze the data. <Constant name="copilot" /> can help you quickly update the query or generate a new one based on your prompt.
 
 1. Click the **<Constant name="copilot" />** icon in the Query console sidebar.
 2. In the dropdown menu above the <Constant name="copilot" /> prompt box, select **Generate SQL**.
@@ -96,7 +96,7 @@ From here, you can:
 - If you want to save the query, you can click **Save Insight** in the [query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to save it for future reference.
 
 :::tip Want to turn a query into a model?
-You can access the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="canvas" />](/docs/cloud/canvas) from the [Query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="dbt" />!
+You can access the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="canvas" />](/docs/platform/canvas) from the [Query console menu](/docs/explore/navigate-dbt-insights#query-console-menu) to promote your SQL into a reusable dbt model &mdash; all within <Constant name="dbt" />!
 :::
 
 ### View results

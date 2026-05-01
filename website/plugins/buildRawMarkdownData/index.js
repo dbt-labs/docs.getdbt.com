@@ -29,14 +29,33 @@ function extractFrontmatterId(content) {
   return null;
 }
 
-module.exports = function buildRawMarkdownDataPlugin() {
+/**
+ * Strip YAML frontmatter from markdown content, promoting the title to an H1.
+ * @param {string} content - Raw markdown content
+ * @returns {string} Content with frontmatter removed
+ */
+function removeFrontmatter(content) {
+  if (!content) return content;
+  const match = content.match(/^---\n([\s\S]*?)\n---\n?/);
+  if (!match) return content;
+  const titleMatch = match[1].match(/^title:\s*['"]?(.+?)['"]?\s*$/m);
+  const title = titleMatch ? titleMatch[1].replace(/^["']|["']$/g, '').trim() : null;
+  const rest = content.slice(match[0].length);
+  return title ? `# ${title}\n\n${rest}` : rest;
+}
+
+module.exports = function buildRawMarkdownDataPlugin(context) {
+  const siteDir = context?.siteDir;
+  // Captured in loadContent, used in postBuild
+  let pluginContent = null;
+
   return {
     name: 'docusaurus-build-raw-markdown-data-plugin',
     async loadContent() {
       // Get all markdown files from the docs directory
-      const docsDirectory = 'docs';
+      const docsDirectory = siteDir ? path.join(siteDir, 'docs') : 'docs';
       const rawMarkdownData = {};
-      const pathByIdMap = {}; // Maps: "directory/id" -> "directory/filename.md"
+      const pathByIdMap = {}; // Maps: "directory/id.ext" -> "directory/filename.ext"
 
       function scanDirectory(dir, basePath = '') {
         const files = fs.readdirSync(dir);
@@ -61,7 +80,6 @@ module.exports = function buildRawMarkdownDataPlugin() {
             const frontmatterId = extractFrontmatterId(content);
             if (frontmatterId) {
               // Create a lookup key: "directory/id.md" -> "directory/filename.md"
-              // Use the actual file extension instead of hardcoding .md
               const fileExtension = path.extname(file);
               const lookupKey = path.join(basePath, frontmatterId).replace(/\\/g, '/') + fileExtension;
               pathByIdMap[lookupKey] = relativePath;
@@ -73,18 +91,48 @@ module.exports = function buildRawMarkdownDataPlugin() {
       // Scan the docs directory (which contains the actual markdown files)
       scanDirectory(docsDirectory);
 
-      return { rawMarkdownData, pathByIdMap };
+      pluginContent = { rawMarkdownData, pathByIdMap };
+      return pluginContent;
     },
 
     async contentLoaded({ content, actions }) {
       const { setGlobalData } = actions;
 
-      // Make both the raw markdown data and ID mapping available globally
-      // IDs are used to get the content for the page based in the frontmatter id not the filename
+      // Make both the raw markdown data and ID mapping available globally.
+      // IDs are used to get the content for the page based on frontmatter id, not filename.
       setGlobalData({
         rawMarkdownData: content.rawMarkdownData,
         pathByIdMap: content.pathByIdMap,
       });
     },
+
+    async postBuild({ outDir }) {
+      if (!pluginContent) return;
+
+      const { rawMarkdownData, pathByIdMap } = pluginContent;
+      const written = new Set();
+
+      function writeMarkdownFile(outputFilePath, rawContent) {
+        if (written.has(outputFilePath)) return;
+        written.add(outputFilePath);
+        fs.mkdirSync(path.dirname(outputFilePath), { recursive: true });
+        fs.writeFileSync(outputFilePath, removeFrontmatter(rawContent), 'utf8');
+      }
+
+      // Write filename-based static .md files to the build output directory.
+      // e.g. /docs/local/install-dbt.md → served as plain text by the web server.
+      for (const [filePath, rawContent] of Object.entries(rawMarkdownData)) {
+        writeMarkdownFile(path.join(outDir, filePath), rawContent);
+      }
+
+      // Also write ID-based .md files so "page URL + .md" works for pages
+      // whose frontmatter id differs from the filename.
+      for (const [idPath, filePath] of Object.entries(pathByIdMap)) {
+        const rawContent = rawMarkdownData[filePath];
+        if (rawContent) {
+          writeMarkdownFile(path.join(outDir, idPath), rawContent);
+        }
+      }
+    },
   };
-}; 
+};

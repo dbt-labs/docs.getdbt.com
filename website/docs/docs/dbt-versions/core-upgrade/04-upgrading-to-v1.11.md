@@ -124,7 +124,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 
 ### Redshift
 
-- The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#the-redshift_skip_autocommit_transaction_statements-flag) flag is now `True` by default. When `autocommit=True` (the default since dbt-redshift 1.5), dbt now skips sending unnecessary `BEGIN`/`COMMIT`/`ROLLBACK` statements, improving performance by reducing round trips to Redshift. To preserve the legacy behavior, set the flag to `False`.
+- The new `datasharing` profile credential enables `dbt-redshift` to use Redshift-native metadata commands (`SHOW` commands such as `SHOW TABLES` and `SHOW COLUMNS`) instead of PostgreSQL catalog tables such as `pg_*` and `information_schema`. This supports cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).<Lifecycle status="beta" />
 
 ### Spark
 

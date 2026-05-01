@@ -218,7 +218,8 @@ models:
 | Parameter          | Type       | Required | Default     | Change Monitoring Support |
 |--------------------|------------|----------|-------------|---------------------------|
 | [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
-| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`target_lag`](#target-lag)      | `<string>` | no      |        | alter          |
+| [`scheduler`](#scheduler)       | `<string>` | no       | `DISABLE`   | alter          |
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
 | [`snowflake_initialization_warehouse`](#initialization-warehouse)   | `<string>` | no       | `None`      | alter  |
 | [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
@@ -248,6 +249,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[scheduler](#scheduler): ENABLE | DISABLE
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
@@ -275,6 +277,7 @@ models:
       [materialized](/reference/resource-configs/materialized): dynamic_table
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [target_lag](#target-lag): downstream | <time-delta>
+      [scheduler](#scheduler): ENABLE | DISABLE
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
       [snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
       [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
@@ -300,6 +303,7 @@ models:
     [materialized](/reference/resource-configs/materialized)="dynamic_table",
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [scheduler](#scheduler)="ENABLE" | "DISABLE",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
     [snowflake_initialization_warehouse](#initialization-warehouse)="<warehouse-name>",
     [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
@@ -328,7 +332,74 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 - **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
 - **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
 
+<VersionBlock firstVersion="1.12">
+
+#### How `target_lag` interacts with `scheduler`
+
+`target_lag` works with [`scheduler`](#scheduler) to determine how dynamic table refreshes are managed:
+
+<SimpleTable>
+
+| `target_lag` | `scheduler` | Behavior |
+|---|---|---|
+| Set | `ENABLE` or omitted | Snowflake manages refreshes automatically. If `scheduler` is omitted, dbt defaults to `ENABLE`. |
+| Not set | `DISABLE` or omitted | dbt manages refreshes during model execution. If `scheduler` is omitted, dbt defaults to `DISABLE`. |
+| Set | `DISABLE` | Invalid: `DISABLE` does not accept `target_lag`. dbt raises an error. |
+| Not set | `ENABLE` | Invalid: `ENABLE` requires `target_lag`. dbt raises an error. |
+
+</SimpleTable>
+
+</VersionBlock>
+
 Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag). Please note that Snowflake supports a target lag of 1 minute or longer.
+
+<VersionBlock firstVersion="1.12">
+
+### Scheduler
+
+The `scheduler` parameter controls whether the dynamic table is refreshed by Snowflake's background scheduler or by an external orchestrator (for example, dbt). Snowflake accepts two options:
+- **ENABLE** &mdash; Snowflake's built-in scheduler automatically refreshes the dynamic table based on the defined `target_lag`. Refreshes cascade across the dependency graph to maintain snapshot consistency. Setting `target_lag` is _required_ when using this option. 
+- **DISABLE** &mdash; The dynamic table is excluded from Snowflake's automatic background refresh. You must trigger refreshes manually or through orchestration external to Snowflake (for example, by a `dbt run` that executes `ALTER DYNAMIC TABLE ... REFRESH`). When this option is explicitly set, specifying `target_lag` results in an error.
+
+:::info dbt default differs from Snowflake's native default
+In Snowflake's native DDL, omitting `SCHEDULER` defaults to `ENABLE`, and `TARGET_LAG` is required.
+
+In dbt, the default value is `DISABLE`. If neither `scheduler` nor `target_lag` is specified, dbt creates the dynamic table with `scheduler: DISABLE` and manages refreshes directly.
+
+If you specify `target_lag` without explicitly setting `scheduler`, dbt sets `scheduler: ENABLE`.
+:::
+
+**Key points:**
+- Explicitly setting `scheduler: DISABLE` together with `target_lag` results in an error. If you omit `scheduler` and provide `target_lag`, dbt resolves the conflict by setting `scheduler: ENABLE` automatically.
+- When `scheduler: DISABLE`, a manual refresh does _not_ automatically refresh upstream dynamic table dependencies. This creates an isolation boundary, allowing dbt to manage specific table refreshes without triggering the entire pipeline. In contrast, `ENABLE` cascades refreshes across the dependency graph.
+- If a dynamic table with `scheduler: DISABLE` depends on other dynamic tables, those upstream tables will not be refreshed when the downstream table is refreshed. dbt must manage the refresh order explicitly.
+
+For example, to let dbt manage refreshes (default behavior):
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+To enable Snowflake-managed scheduling with a target lag:
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+    target_lag='5 minutes',
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+Learn more about `scheduler` in [Snowflake's docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table#optional-parameters).
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.9">
 
@@ -462,6 +533,134 @@ If your dynamic table model fails to rerun with the following error message afte
 SnowflakeDynamicTableConfig.__init__() missing 6 required positional arguments: 'name', 'schema_name', 'database_name', 'query', 'target_lag', and 'snowflake_warehouse'
 ```
 Ensure that `QUOTED_IDENTIFIERS_IGNORE_CASE` on your account is set to `FALSE`. 
+
+## Semantic Views
+[Snowflake Semantic Views](https://docs.snowflake.com/en/user-guide/views-semantic/overview) provide a native schema-level object for centralizing metric definitions and reducing fragmented metric logic across BI and analytics tools.
+
+Use the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/) to define and manage Snowflake Semantic Views in your dbt project. This lets you keep Semantic View definitions in version control and apply your existing testing and CI/CD workflows to your <Constant name="semantic_layer" />.
+
+### Install the package
+:::note Prerequisite
+- This package requires `dbt` version `>=1.0.0, <2.0.0`. For the latest compatibility details, refer to the [`dbt_semantic_view` package](https://hub.getdbt.com/Snowflake-Labs/dbt_semantic_view/latest/).
+- Your Snowflake account supports Semantic Views.
+- Your role has permission to create Semantic Views.
+- You can write to a database and schema where you have create privileges.
+:::
+
+Add `dbt_semantic_view` to your `packages.yml` file:
+
+```yaml
+packages:
+  - package: Snowflake-Labs/dbt_semantic_view
+    version: 1.0.3
+```
+
+Run `dbt deps` to install package dependencies:
+
+```shell
+dbt deps
+```
+
+Verify the package was installed by confirming `dbt_semantic_view` is present in your `dbt_packages/` directory.
+
+### Highlighted features
+
+The `dbt_semantic_view` package includes the following features for defining and managing Snowflake Semantic Views in dbt projects.
+
+#### Materialize models as Snowflake Semantic Views
+
+Use the `semantic_view` materialization to define Snowflake Semantic Views in dbt, including tables, relationships, facts, dimensions, and metrics.
+
+Semantic view models use Snowflake’s semantic view syntax (for example, `TABLES`, `DIMENSIONS`, and `METRICS`) rather than a standard `SELECT` query.
+
+The example below is adapted from [Getting Started with Snowflake Semantic View](https://quickstarts.snowflake.com/guide/snowflake-semantic-view/index.html?index=..%2F..index#3).
+```sql
+{{ config(materialized='semantic_view') }}
+
+tables (
+    CUSTOMER as {{ SOURCE('<SOURCE_NAME>', 'CUSTOMER') }} primary key (C_CUSTOMER_SK),
+    DATE as {{ SOURCE('<SOURCE_NAME>', 'DATE_DIM') }} primary key (D_DATE_SK),
+    DEMO as {{ SOURCE('<SOURCE_NAME>', 'CUSTOMER_DEMOGRAPHICS') }} primary key (CD_DEMO_SK),
+    ITEM as {{ SOURCE('<SOURCE_NAME>', 'ITEM') }} primary key (I_ITEM_SK),
+    STORE as {{ SOURCE('<SOURCE_NAME>', 'STORE') }} primary key (S_STORE_SK),
+    STORESALES as {{ SOURCE('<SOURCE_NAME>', 'STORESALES') }}
+    primary key (SS_SOLD_DATE_SK,SS_CDEMO_SK,SS_ITEM_SK,SS_STORE_SK,SS_CUSTOMER_SK)
+)
+relationships (
+    SALESTOCUSTOMER as STORESALES(SS_CUSTOMER_SK) references CUSTOMER(C_CUSTOMER_SK),
+    SALESTODATE as STORESALES(SS_SOLD_DATE_SK) references DATE(D_DATE_SK),
+    SALESTODEMO as STORESALES(SS_CDEMO_SK) references DEMO(CD_DEMO_SK),
+    SALESTOITEM as STORESALES(SS_ITEM_SK) references ITEM(I_ITEM_SK),
+    SALETOSTORE as STORESALES(SS_STORE_SK) references STORE(S_STORE_SK)
+)
+facts (
+    ITEM.COST as i_wholesale_cost,
+    ITEM.PRICE as i_current_price,
+    STORE.TAX_RATE as S_TAX_PERCENTAGE,
+    STORESALES.SALES_QUANTITY as SS_QUANTITY
+)
+dimensions (
+    CUSTOMER.BIRTHYEAR as C_BIRTH_YEAR,
+    CUSTOMER.COUNTRY as C_BIRTH_COUNTRY,
+    CUSTOMER.C_CUSTOMER_SK as c_customer_sk,
+    DATE.DATE as D_DATE,
+    DATE.D_DATE_SK as d_date_sk,
+    DATE.MONTH as D_MOY,
+    DATE.WEEK as D_WEEK_SEQ,
+    DATE.YEAR as D_YEAR,
+    DEMO.CD_DEMO_SK as cd_demo_sk,
+    DEMO.CREDIT_RATING as CD_CREDIT_RATING,
+    DEMO.MARITAL_STATUS as CD_MARITAL_STATUS,
+    ITEM.BRAND as I_BRAND,
+    ITEM.CATEGORY as I_CATEGORY,
+    ITEM.CLASS as I_CLASS,
+    ITEM.I_ITEM_SK as i_item_sk,
+    STORE.MARKET as S_MARKET_ID,
+    STORE.SQUAREFOOTAGE as S_FLOOR_SPACE,
+    STORE.STATE as S_STATE,
+    STORE.STORECOUNTRY as S_COUNTRY,
+    STORE.S_STORE_SK as s_store_sk,
+    STORESALES.SS_CDEMO_SK as ss_cdemo_sk,
+    STORESALES.SS_CUSTOMER_SK as ss_customer_sk,
+    STORESALES.SS_ITEM_SK as ss_item_sk,
+    STORESALES.SS_SOLD_DATE_SK as ss_sold_date_sk,
+    STORESALES.SS_STORE_SK as ss_store_sk
+)
+metrics (
+    STORESALES.TOTALCOST as SUM(item.cost),
+    STORESALES.TOTALSALESPRICE as SUM(SS_SALES_PRICE),
+    STORESALES.TOTALSALESQUANTITY as SUM(SS_QUANTITY)
+        WITH SYNONYMS = ('total sales quantity', 'total sales amount')
+)
+```
+
+When you run dbt, this model compiles to a Snowflake `CREATE SEMANTIC VIEW` statement.
+
+#### Reference Semantic Views in other dbt models
+
+Use `ref()` for Semantic Views defined in your dbt project, and use `source()` for existing external Semantic Views.
+
+```sql
+{{ config(materialized='view') }}
+
+select * from semantic_view(
+  {{ ref('<semantic_view_model_name>') }}
+  METRICS ...
+  DIMENSIONS ...
+  WHERE ...
+)
+```
+
+```sql
+{{ config(materialized='table') }}
+
+select * from semantic_view(
+  {{ source('<source_name>', '<semantic_view>') }}
+  METRICS ...
+  DIMENSIONS ...
+  WHERE ...
+)
+```
 
 ## Temporary tables
 

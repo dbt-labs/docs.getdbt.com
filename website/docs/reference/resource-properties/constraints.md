@@ -14,6 +14,12 @@ Before using constraints, ensure the following requirements are met:
 - **You use supported materializations** &mdash; Constraints only work on `table` and `incremental` models. Constraints are never applied on `ephemeral` models or those materialized as `view`. 
 - **You enforce a contract** &mdash; To use constraints, your model must declare and enforce a [contract](/reference/resource-configs/contract). This means you need to explicitly define the `data_type` for every column in your model's schema configuration.
 
+### Platform constraint support
+
+import ConstraintsTable from '/snippets/_constraints-table.md'; 
+
+<ConstraintsTable />
+
 ## Defining constraints
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.

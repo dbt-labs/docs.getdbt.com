@@ -230,5 +230,3 @@ If you remove a column from your incremental model and execute a `dbt run`, `dbt
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="incremental"/>

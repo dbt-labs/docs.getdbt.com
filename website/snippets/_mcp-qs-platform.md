@@ -14,6 +14,7 @@ This quickstart uses the local MCP server: it runs on your machine using `uvx db
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
+- If you're using OAuth, your account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
 
 ## Step 1: Choose your auth method and configure
 
@@ -370,7 +371,7 @@ With the platform setup, your AI assistant can use:
 - Semantic Layer queries
 - Metadata Discovery (model lineage, test results, source freshness)
 - Admin API (trigger jobs, list runs, get artifacts)
-- SQL execution and text-to-SQL (requires a [PAT](/docs/dbt-cloud-apis/user-tokens))
+- SQL execution and text-to-SQL (requires a [PAT](/docs/dbt-apis/user-tokens))
 - All dbt CLI commands if you added `DBT_PROJECT_DIR` and `DBT_PATH`
 
 For the complete tool list, see [Available tools](/docs/dbt-ai/mcp-available-tools).

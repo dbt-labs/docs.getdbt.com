@@ -32,6 +32,8 @@ import CostInsights from '/snippets/_cost-insights-sao.md';
 
 The Cost Insights section in your project dashboard gives you a high-level view of warehouse costs and the impact of optimization through state-aware orchestration.
 
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
+
 ### Access
 
 To go to your project dashboard, select your project in the main menu and click **Dashboard**.
@@ -96,6 +98,8 @@ import ModelPerformance from '/snippets/_model-performance.md';
 ## Job details
 
 The **Insights** section on the Job details page provides cost and performance data for individual jobs.
+
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
 
 ### Access
 
