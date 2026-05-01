@@ -29,7 +29,7 @@ import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
 
 dbt Labs recommends that you create your CI job in a dedicated <Constant name="dbt" /> [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. A separate CI environment improves isolation between your temporary CI schemas and production builds.
 
-Some teams trigger CI jobs for pull requests targeting a branch other than `main`. For example, if you use a long-lived staging branch, you can associate a CI environment with that branch via [custom branch](/faqs/Environments/custom-branch-settings) settings. Then the job in that environment runs only when someone opens PRs against that branch.
+You can trigger CI jobs for pull requests targeting a branch other than `main`. For example, if you use a long-lived staging branch, you can associate a CI environment with that branch via [custom branch](/faqs/Environments/custom-branch-settings) settings. Then the job in that environment runs only when someone opens PRs against that branch.
 
 To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
