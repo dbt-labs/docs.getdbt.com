@@ -88,7 +88,7 @@ var siteSettings = {
     announcementBar: {
       id: "fast-track-to-dbt-workshop",
       content:
-      "Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!",
+      "Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!",
       isCloseable: true,
     },
     announcementBarActive: true,
