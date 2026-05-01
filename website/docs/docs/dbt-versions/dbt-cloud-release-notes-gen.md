@@ -18,89 +18,39 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
-## April 29, 2026
-
-## Enhancements
-
-### dbt Copilot and agents
-
-- **Job investigation support in Studio agent**: The Studio IDE dev agent can now help you investigate and troubleshoot dbt job and run failures using the `troubleshooting-dbt-job-errors` skill. The agent notes when your local project state may differ from the job (for example, a different branch or uncommitted changes). This feature is currently in beta. Refer to [Debug job failures](/docs/dbt-ai/developer-agent?version=2.0#debug-job-failures) for more information.
-
-### Semantic Layer
-
-- **Semantic Layer MCP request size limit**: Semantic Layer requests through MCP are now capped at 10 MiB (previously unlimited) to improve infrastructure stability.
-
-### Orchestration and run status
-
-- **Finer-grained permissions on the Debug on Fusion menu**: The "Debug in Studio" and "Run once on Fusion" menu items are now independently disabled based on your permissions. If you lack the required permission for an action, that item shows a tooltip explaining why, while the other item remains available.
-
-- **Automatic dbt version override before "Debug in Studio"**: When you click "Debug in Studio," dbt platform now automatically sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion` before opening the Studio IDE, so you no longer need to configure this manually.
-
-- **Clearer failure state for "Debug in Studio"**: If the preparation step before opening the Studio IDE fails, the button temporarily shows "Debug failed" in a red state for 5 seconds before resetting, so you know to try again rather than seeing a silent failure.
-
-- **Fusion upgrade eligibility for projects with no jobs**: Projects with no jobs configured are now treated as eligible for Fusion. The upgrade card no longer requires a successful job run for such projects and instead shows "No jobs configured yet" under job eligibility.
-
-- **Confirmation pop-up before overriding Fusion eligibility**: Clicking "Override eligibility status" on the run details page now opens a confirmation pop-up before applying the override, preventing accidental changes.
-
-- **Fusion eligibility review button visible to all users**: The review button on the jobs list for jobs with unknown Fusion eligibility is now shown to all users regardless of run write permissions, so anyone can view the eligibility details modal.
-
-- **Model execution notifications for dbt Fusion runs**: The orchestrator now publishes model execution events for grouped models and tests when running with dbt Fusion's OpenTelemetry (OTel) log format, extending model notification support to Fusion-based runs.
-
-- **Structured logs available for externally ingested runs**: The run ingestion pipeline now detects and signals when structured dbt logs are present for a step, so logs appear correctly in the dbt platform for runs ingested from external executors.
-
-### Deployment and configuration
-
-- **Sticky submit bar on the create private endpoint form**: The Cancel and Save buttons on the create private endpoint page now stick to the bottom of the viewport so they remain accessible when scrolling through the form.
-
-- **Docs generation deprecation scoped to Fusion jobs only**: The "Generate docs on run" deprecation notice is now only shown for jobs running on a Fusion dbt version. Non-Fusion jobs continue to show the standard checkbox.
-
-## Fixes
-
-### dbt Copilot and agents
-
-- **Fixed errors with BYOK deployments that use OpenAI reasoning models**: Fixed request errors when using BYOK OpenAI and Azure OpenAI reasoning model endpoints.
-
-### Semantic Layer
-
-- **Custom metric granularities no longer rejected**: Metric manifest fields `granularity` and `offset_to_grain` now accept arbitrary string values instead of only a fixed enum. Projects using custom granularities such as `fiscal_year` will no longer fail ingestion.
-
-### Catalog
-
-- **Tag search field**: Tags are now a searchable field in the advanced search panel. You can filter results by tag matches. Filtering uses OR logic, returning assets that match any of the specified tags rather than requiring all tags to be present.
-
 ## April 22, 2026
 
 ## New
 
 ### Catalog
 
-- **Health and run status filters in catalog search**: The catalog search sidebar now includes health and last run status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (`success`, `error`, `skipped`, `reused`).
+- **Health and run status filters in catalog search**: The catalog search sidebar now includes Health and Last Run Status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (success, error, skipped, reused).
 
-- **Tag search field**: Tag is now a searchable field in the advanced search side panel. You can filter results by tag matches.
+- **Tag search field**: Tag is now a searchable field in the advanced search panel. You can filter results by tag matches
 
 ## Enhancements
 
 ### Studio IDE
 
-- **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to avoid incorrect theming when the user-preferences service is slow to respond.
+- **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to aid in incorrect theming when user-preferences is slow to respond.
 
-- **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, commands or lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
+- **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, Commands or Lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
 
 - **Compile button after deprecation autofix in Fusion**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
 
 ### Orchestration and run status
 
-- **Fusion eligibility toggle replaces dropdown filter**: The Fusion eligibility dropdown filter on the jobs list has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
+- **Fusion eligibility toggle replaces dropdown filter**: The jobs list Fusion eligibility dropdown filter has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
 
-- **Debug on Fusion menu**: The single **Run once on Fusion** button on the job details page and job list has been replaced with a **Debug on Fusion** menu that offers **Debug in Studio**, **Run once on Fusion**, and (when dbt Copilot is enabled) **Debug in Studio with Copilot** options. Refer to [Prepare to upgrade to <Constant name="fusion"/>](/guides/prepare-fusion-upgrade?step=7) for more information.
+- **Debug on Fusion menu**: The single "Run once on Fusion" button on the job details page and job list has been replaced with a "Debug on Fusion" menu that offers "Debug in Studio," "Run once on Fusion," and (when dbt Copilot is enabled) "Debug in Studio with Copilot" options.
 
-- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same **Debug on Fusion** menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
+- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same "Debug on Fusion" menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
 
 ### Webhooks
 
 - **Webhook test flow uses receipt polling**: Testing a webhook subscription now triggers a test event and polls for the delivery receipt, showing the actual HTTP status code and error from the endpoint response. A 60-second timeout is applied, with a clear timeout message if the endpoint does not respond in time.
 
-- **Webhook receipt endpoint returns 404 for pending events**: The receipt endpoint for webhook events now returns a `404` response when a delivery record has not yet been written (for example, when the notification system has not yet processed the event), rather than returning an incomplete record.
+- **Webhook receipt endpoint returns 404 for pending events**: The webhook event receipt endpoint now returns a `404` response when a delivery record has not yet been written (for example, when the notification system has not yet processed the event), rather than returning an incomplete record.
 
 - **Corrected status code for timed-out webhook deliveries**: Webhook delivery history records now show `504` as the HTTP status code when a delivery timed out (previously stored as `0`), improving accuracy in the delivery history view.
 
@@ -108,15 +58,15 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Integrations
 
-- **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt platform app invited for notifications to be delivered. Contact your account manager to enable.
+- **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt Cloud bot invited for notifications to be delivered. Contact your account manager to enable.
 
 ### dbt platform
 
-- **View account information scope on OAuth consent page**: The OAuth consent page now displays a "View account information" (`account:read`) scope option, which grants view-only access to account details including project and environment information.
+- **`account:read` scope on OAuth consent page**: The OAuth consent page now displays a "View account information" scope option, which grants view-only access to account details including project and environment information.
 
 - **PrivateLink endpoint pending status**: A new `pending` connectivity status is available for PrivateLink endpoints, in addition to the existing `success` and `failed` states.
 
-- **Permission added to member role**: The member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
+- **`fusion_readiness_read` permission added to Member role**: The Member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
 
 ## Fixes
 
