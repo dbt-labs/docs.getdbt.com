@@ -6,17 +6,19 @@
  * Dotty accuracy and docs backlog metrics, then updates a Notion dashboard page.
  *
  * Run locally:
- *   GH_TOKEN=ghp_... NOTION_TOKEN=secret_... NOTION_PAGE_ID=34cbb38ebda781f09d03d1e98527d6a8 node scripts/dotty-metrics.js
+ *   GH_TOKEN=ghp_... RUNLAYER_API_TOKEN=... NOTION_PAGE_ID=34cbb38ebda781f09d03d1e98527d6a8 node scripts/dotty-metrics.js
  */
 
 const GH_TOKEN = process.env.GH_TOKEN;
-const NOTION_TOKEN = process.env.NOTION_TOKEN;
+const RUNLAYER_API_TOKEN = process.env.RUNLAYER_API_TOKEN;
 const NOTION_PAGE_ID = process.env.NOTION_PAGE_ID;
 
-if (!GH_TOKEN || !NOTION_TOKEN || !NOTION_PAGE_ID) {
-  console.error('Missing required env vars: GH_TOKEN, NOTION_TOKEN, NOTION_PAGE_ID');
+if (!GH_TOKEN || !RUNLAYER_API_TOKEN || !NOTION_PAGE_ID) {
+  console.error('Missing required env vars: GH_TOKEN, RUNLAYER_API_TOKEN, NOTION_PAGE_ID');
   process.exit(1);
 }
+
+const RUNLAYER_MCP_URL = 'https://dbt.runlayer.com/api/v1/proxy/24736211-1060-47e7-897e-fdf5a531a3d5/mcp';
 
 // Repos where Dotty/Cursor analysis workflow runs
 const SOURCE_REPOS = ['dbt-labs/cloud-ui', 'dbt-labs/studio', 'dbt-labs/dbt-ui'];
@@ -218,138 +220,97 @@ async function getConfidenceMetadata() {
   return { confDist, featureFlagged, total };
 }
 
-// ─── 4. Notion updater ────────────────────────────────────────────────────────
+// ─── 4. Notion updater (via RunLayer MCP) ────────────────────────────────────
 
-async function notionFetch(path, options = {}) {
-  const res = await fetch(`https://api.notion.com/v1${path}`, {
-    ...options,
+async function runlayerCall(toolName, args) {
+  const res = await fetch(RUNLAYER_MCP_URL, {
+    method: 'POST',
     headers: {
-      Authorization: `Bearer ${NOTION_TOKEN}`,
-      'Notion-Version': '2022-06-28',
+      'x-runlayer-api-key': RUNLAYER_API_TOKEN,
       'Content-Type': 'application/json',
-      ...options.headers,
+      Accept: 'application/json, text/event-stream',
     },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      method: 'tools/call',
+      params: { name: toolName, arguments: args },
+      id: Date.now(),
+    }),
   });
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Notion API ${path} → ${res.status}: ${body}`);
+    throw new Error(`RunLayer MCP ${toolName} → ${res.status}: ${body}`);
   }
-  return res.json();
-}
-
-function makeHeading(text, level = 2) {
-  const type = level === 1 ? 'heading_1' : level === 2 ? 'heading_2' : 'heading_3';
-  return { object: 'block', type, [type]: { rich_text: [{ type: 'text', text: { content: text } }] } };
-}
-
-function makeParagraph(text) {
-  return { object: 'block', type: 'paragraph', paragraph: { rich_text: [{ type: 'text', text: { content: text } }] } };
-}
-
-function makeCallout(text, emoji = 'ℹ️') {
-  return {
-    object: 'block', type: 'callout',
-    callout: { rich_text: [{ type: 'text', text: { content: text } }], icon: { type: 'emoji', emoji } },
-  };
-}
-
-function makeTable(headers, rows) {
-  return {
-    object: 'block',
-    type: 'table',
-    table: {
-      table_width: headers.length,
-      has_column_header: true,
-      has_row_header: false,
-      children: [
-        {
-          object: 'block', type: 'table_row',
-          table_row: { cells: headers.map(h => [{ type: 'text', text: { content: h }, annotations: { bold: true } }]) },
-        },
-        ...rows.map(row => ({
-          object: 'block', type: 'table_row',
-          table_row: { cells: row.map(cell => [{ type: 'text', text: { content: String(cell) } }]) },
-        })),
-      ],
-    },
-  };
-}
-
-function makeDivider() {
-  return { object: 'block', type: 'divider', divider: {} };
+  const json = await res.json();
+  if (json.error) throw new Error(`RunLayer MCP ${toolName} error: ${JSON.stringify(json.error)}`);
+  return json.result;
 }
 
 async function updateNotionPage(searchMetrics, issueBacklog, confData) {
   const { repoMetrics, totals } = searchMetrics;
+  const repoNames = Object.keys(repoMetrics);
+  const repoValues = Object.values(repoMetrics);
   const updatedAt = new Date().toUTCString();
+  const pct = (n, total) => total ? ((n / total) * 100).toFixed(0) + '%' : 'N/A';
 
-  // Build all blocks
-  const blocks = [
-    makeCallout(`Auto-updated: ${updatedAt} — Do not edit the sections below`, '🤖'),
-    makeDivider(),
+  const sep = `|---|${repoNames.map(() => '---').join('|')}|---|`;
 
-    // Section 1: Summary table
-    makeHeading('📊 Summary (all time)'),
-    makeTable(
-      ['Metric', ...Object.keys(repoMetrics), 'Total'],
-      [
-        ['PRs analyzed (Dotty + Cursor)', ...Object.values(repoMetrics).map(r => r.totalAnalyzed), totals.totalAnalyzed],
-        ['↳ Dotty era (Apr 2026+)', ...Object.values(repoMetrics).map(r => r.totalDotty), Object.values(repoMetrics).reduce((s, r) => s + r.totalDotty, 0)],
-        ['↳ Cursor era (older workflow)', ...Object.values(repoMetrics).map(r => r.totalCursor), Object.values(repoMetrics).reduce((s, r) => s + r.totalCursor, 0)],
-        ['Classified customer-facing (Dotty)', ...Object.values(repoMetrics).map(r => r.cfDotty), totals.cfDotty],
-        ['Classified NOT customer-facing (Dotty)', ...Object.values(repoMetrics).map(r => r.notCfDotty), totals.notCfDotty],
-        ['Human corrections (Dotty era)', ...Object.values(repoMetrics).map(r => r.corrections), totals.corrections],
-        ['↳ False positives (CF label removed)', ...Object.values(repoMetrics).map(r => r.falsePositives), totals.falsePositives],
-        ['↳ False negatives (CF label added)', ...Object.values(repoMetrics).map(r => r.falseNegatives), totals.falseNegatives],
-        ['Accuracy rate (Dotty era)', ...Object.values(repoMetrics).map(r => r.accuracyRate), totals.accuracyRate],
-      ]
+  const md = [
+    `> 🤖 Auto-updated: ${updatedAt} — Do not edit the sections below`,
+    '',
+    '---',
+    '',
+    '## 📊 Summary (all time)',
+    '',
+    `| Metric | ${repoNames.join(' | ')} | Total |`,
+    sep,
+    `| PRs analyzed (Dotty + Cursor) | ${repoValues.map(r => r.totalAnalyzed).join(' | ')} | ${totals.totalAnalyzed} |`,
+    `| ↳ Dotty era (Apr 2026+) | ${repoValues.map(r => r.totalDotty).join(' | ')} | ${repoValues.reduce((s, r) => s + r.totalDotty, 0)} |`,
+    `| ↳ Cursor era (older workflow) | ${repoValues.map(r => r.totalCursor).join(' | ')} | ${repoValues.reduce((s, r) => s + r.totalCursor, 0)} |`,
+    `| Classified customer-facing (Dotty) | ${repoValues.map(r => r.cfDotty).join(' | ')} | ${totals.cfDotty} |`,
+    `| Classified NOT customer-facing (Dotty) | ${repoValues.map(r => r.notCfDotty).join(' | ')} | ${totals.notCfDotty} |`,
+    `| Human corrections (Dotty era) | ${repoValues.map(r => r.corrections).join(' | ')} | ${totals.corrections} |`,
+    `| ↳ False positives (CF label removed) | ${repoValues.map(r => r.falsePositives).join(' | ')} | ${totals.falsePositives} |`,
+    `| ↳ False negatives (CF label added) | ${repoValues.map(r => r.falseNegatives).join(' | ')} | ${totals.falseNegatives} |`,
+    `| Accuracy rate (Dotty era) | ${repoValues.map(r => r.accuracyRate).join(' | ')} | ${totals.accuracyRate} |`,
+    '',
+    '_Note: accuracy data is for Dotty era only (Cursor era corrections were not tracked)._',
+    '',
+    '---',
+    '',
+    '## 📅 Docs Issue Backlog (last 12 months)',
+    '',
+    `Total open: **${issueBacklog.totalOpen}** | Total closed: **${issueBacklog.totalClosed}** | Avg days to close: **${issueBacklog.avgDaysToClose}** | Median: **${issueBacklog.medianDaysToClose}**`,
+    '',
+    '| Month | Created | Closed | Outstanding |',
+    '|---|---|---|---|',
+    ...issueBacklog.sortedMonths.map(([month, data]) =>
+      `| ${month} | ${data.created} | ${data.closed} | ${data.created - data.closed} |`
     ),
-    makeParagraph(`Note: accuracy data is for Dotty era only (Cursor era corrections were not tracked).`),
-    makeDivider(),
+    '',
+    '---',
+    '',
+    '## 🎯 Confidence Distribution (confirmed customer-facing PRs)',
+    '',
+    `Based on ${confData.total} JSON files in central-release-notes (PRs merged with needs-docs label confirmed).`,
+    '',
+    '| Confidence level | Count | % of total |',
+    '|---|---|---|',
+    `| HIGH | ${confData.confDist.HIGH} | ${pct(confData.confDist.HIGH, confData.total)} |`,
+    `| MEDIUM | ${confData.confDist.MEDIUM} | ${pct(confData.confDist.MEDIUM, confData.total)} |`,
+    `| LOW | ${confData.confDist.LOW} | ${pct(confData.confDist.LOW, confData.total)} |`,
+    `| Feature-flagged PRs | ${confData.featureFlagged} | ${pct(confData.featureFlagged, confData.total)} |`,
+  ].join('\n');
 
-    // Section 2: Docs issue backlog
-    makeHeading('📅 Docs Issue Backlog (last 12 months)'),
-    makeParagraph(`Total open: ${issueBacklog.totalOpen}  |  Total closed: ${issueBacklog.totalClosed}  |  Avg days to close: ${issueBacklog.avgDaysToClose}  |  Median: ${issueBacklog.medianDaysToClose}`),
-    makeTable(
-      ['Month', 'Created', 'Closed', 'Outstanding'],
-      issueBacklog.sortedMonths.map(([month, data]) => [
-        month,
-        data.created,
-        data.closed,
-        data.created - data.closed,
-      ])
-    ),
-    makeDivider(),
-
-    // Section 3: Confidence distribution
-    makeHeading('🎯 Confidence Distribution (confirmed customer-facing PRs)'),
-    makeParagraph(`Based on ${confData.total} JSON files in central-release-notes (PRs merged with needs-docs label confirmed).`),
-    makeTable(
-      ['Confidence level', 'Count', '% of total'],
-      [
-        ['HIGH',    confData.confDist.HIGH,    confData.total ? ((confData.confDist.HIGH / confData.total) * 100).toFixed(0) + '%' : 'N/A'],
-        ['MEDIUM',  confData.confDist.MEDIUM,  confData.total ? ((confData.confDist.MEDIUM / confData.total) * 100).toFixed(0) + '%' : 'N/A'],
-        ['LOW',     confData.confDist.LOW,     confData.total ? ((confData.confDist.LOW / confData.total) * 100).toFixed(0) + '%' : 'N/A'],
-        ['Feature-flagged PRs', confData.featureFlagged, confData.total ? ((confData.featureFlagged / confData.total) * 100).toFixed(0) + '%' : 'N/A'],
-      ]
-    ),
-  ];
-
-  // Delete existing page children and replace
-  console.log('  Fetching existing Notion page blocks...');
-  const existing = await notionFetch(`/blocks/${NOTION_PAGE_ID}/children?page_size=100`);
-  for (const block of existing.results) {
-    await notionFetch(`/blocks/${block.id}`, { method: 'DELETE' });
-  }
-
-  // Append in batches of 100 (Notion API limit per request)
-  console.log(`  Appending ${blocks.length} blocks to Notion page...`);
-  for (let i = 0; i < blocks.length; i += 100) {
-    await notionFetch(`/blocks/${NOTION_PAGE_ID}/children`, {
-      method: 'PATCH',
-      body: JSON.stringify({ children: blocks.slice(i, i + 100) }),
-    });
-  }
+  console.log('  Replacing Notion page content via RunLayer MCP...');
+  await runlayerCall('notion-update-page', {
+    page_id: NOTION_PAGE_ID,
+    command: 'replace_content',
+    properties: {},
+    content_updates: [],
+    new_str: md,
+    allow_deleting_content: true,
+  });
 
   console.log(`  ✅ Notion page updated: https://www.notion.so/${NOTION_PAGE_ID.replace(/-/g, '')}`);
 }
