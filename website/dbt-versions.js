@@ -62,35 +62,35 @@ exports.versionedPages = [
     firstVersion: "1.9",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-apache-spark",
+    page: "docs/platform/connect-data-platform/connect-apache-spark",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-amazon-athena",
+    page: "docs/platform/connect-data-platform/connect-amazon-athena",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
+    page: "docs/platform/connect-data-platform/connect-azure-synapse-analytics",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-microsoft-fabric",
+    page: "docs/platform/connect-data-platform/connect-microsoft-fabric",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-onehouse",
+    page: "docs/platform/connect-data-platform/connect-onehouse",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-postgresql-alloydb",
+    page: "docs/platform/connect-data-platform/connect-postgresql-alloydb",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-starburst-trino",
+    page: "docs/platform/connect-data-platform/connect-starburst-trino",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-teradata",
+    page: "docs/platform/connect-data-platform/connect-teradata",
     lastVersion: "1.99",
   },
   {
@@ -143,10 +143,6 @@ exports.versionedPages = [
   },
   {
     page: "docs/local/connect-data-platform/dremio-setup",
-    lastVersion: "1.99",
-  },
-  {
-    page: "docs/local/connect-data-platform/duckdb-setup",
     lastVersion: "1.99",
   },
   {
@@ -292,6 +288,10 @@ exports.versionedPages = [
   {
     page: "reference/global-configs/cache",
     lastVersion: "1.99",
+  },
+  {
+    page: "reference/global-configs/sqlparse",
+    firstVersion: "1.11",
   },
 ];
 

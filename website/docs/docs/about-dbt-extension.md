@@ -27,7 +27,7 @@ Check out the [Fusion quickstart guide](/guides/fusion?step=1) to try the dbt VS
 
 ## Navigating the dbt extension
 
-Once the dbt VS Code extension has been installed, several visual enhancements will be added to your IDE to help you navigate the features and functionality. 
+Once the dbt VS Code extension has been installed, several visual enhancements will be added to your IDE to help you navigate the features and functionality. To read more about the features and functionality, see the [dbt extension features](/docs/dbt-extension-features).
 
 Check out the following video to see the features and functionality of the dbt VS Code extension:
 
@@ -126,6 +126,10 @@ For organizations that are not customers of the dbt platform, the best place for
 We welcome feedback as we work to continuously improve the extension, and would love to hear from you!
 
 For more information regarding support and acceptable use of the dbt VS Code extension, refer to our [Acceptable Use Policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup).
+
+:::tip Developing locally as a <Constant name="dbt_platform"/> user?
+See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide for how to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync between your local extension and <Constant name="dbt_platform"/>
+:::
 
 import AboutFusion from '/snippets/_about-fusion.md';
 

@@ -7,7 +7,7 @@ id: "version"
 The `--version` command-line flag returns information about the currently installed version of <Constant name="core" /> or the <Constant name="platform_cli" />. This flag is not supported when invoking dbt in other <Constant name="dbt" /> runtimes (for example, the IDE or scheduled runs).
 
 - **<Constant name="core" />** &mdash; Returns the installed version of <Constant name="core" /> and the versions of all installed adapters.
-- **<Constant name="platform_cli" />** &mdash; Returns the installed version of the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) and, for the other `dbt_version` values, the _latest_ version of the dbt runtime in <Constant name="dbt" />.
+- **<Constant name="platform_cli" />** &mdash; Returns the installed version of the [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation) and, for the other `dbt_version` values, the _latest_ version of the dbt runtime in <Constant name="dbt" />.
 
 
 ## Versioning

@@ -87,6 +87,10 @@ VS Code extension features by static analysis configuration:
 | Rich column lineage | ❌ | ❌ | ✅ |
 | Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
+:::tip Supported Snowflake functions
+To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support)
+:::
+
 :::tip CodeLens visibility
 The VS Code extension and Studio IDE provide CodeLens even when static analysis is off, giving you visibility into which models have static analysis disabled and why.
 :::
@@ -164,6 +168,7 @@ The <Constant name="fusion_engine" /> (strict mode):
 
 - Renders and statically analyzes all models before execution begins.
 - Guarantees nothing runs until the entire project is proven valid.
+- Parses `CREATE FUNCTION` in [`sql_header`](/reference/resource-configs/sql_header) and in [`on-run-start`](/reference/project-configs/on-run-start-on-run-end) hooks, then registers those UDFs so strict compilation can resolve calls to them. `baseline` and `off` don't register UDFs this way. See [User-defined functions (UDFs) in `strict` mode](/reference/resource-configs/static-analysis#user-defined-functions-udfs-in-strict-mode).
 
 ## Configuring `static_analysis`
 

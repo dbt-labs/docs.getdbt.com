@@ -32,7 +32,9 @@ You’ll also gain a better understanding of how this will:
 
 ## Prerequisites
 
-- [<Constant name="dbt" /> Enterprise or Enterprise+ account](https://www.getdbt.com/pricing/) (with [admin access](/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
+- [<Constant name="dbt_platform" /> Enterprise or Enterprise+ account](https://www.getdbt.com/pricing/) (with [admin access](/docs/platform/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens).
+- Service account token if you have [Developer license (with admins access)](/docs/platform/manage-access/enterprise-permissions)). Permissions for service tokens can be found [here](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens) and [here](/docs/platform/manage-access/seats-and-users?version=2.0).
+- [Personal access token (PAT)](https://docs.getdbt.com/docs/dbt-apis/user-tokens#create-a-personal-access-token) if you have developer, IT, or Read-only license.
 - A [free Docker account](https://hub.docker.com/signup) in order to sign in to Docker Desktop, which will be installed in the initial setup.
 - A local digital scratchpad for temporarily copy-pasting API keys and URLs
 
@@ -97,13 +99,15 @@ For more information about cloning GitHub repositories, refer to "[Cloning a rep
    - Username: admin
    - Password: admin
 
-   ![Airflow login screen](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-login.png)
+   ![Airflow login screen](/img/guides/orchestration/airflow-and-dbt-platform/airflow-login.png)
 
 <WistiaVideo id="2rzsjo0uml" paddingTweak="62.25%" />
 
 ## Create a dbt service token
 
-[Create a service token](/docs/dbt-cloud-apis/service-tokens) with `Job Admin` privileges from within <Constant name="dbt" />. Ensure that you save a copy of the token, as you won’t be able to access this later.
+[Create a service token](/docs/dbt-apis/service-tokens) with `Job Admin` privileges from within <Constant name="dbt" />. Ensure that you save a copy of the token, as you won’t be able to access this later.
+
+As an alternative, you can [create a PAT](/docs/dbt-apis/user-tokens#create-a-personal-access-token) if you have a Developer, IT, or Read-only license.
 
 <WistiaVideo id="amubh6qmwq" paddingTweak="62.25%" />
 
@@ -127,19 +131,19 @@ Now you have all the working pieces to get up and running with Airflow + <Consta
 
 1. From the Airflow interface, navigate to Admin and click on **Connections**
 
-    ![Airflow connections menu](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-connections-menu.png)
+    ![Airflow connections menu](/img/guides/orchestration/airflow-and-dbt-platform/airflow-connections-menu.png)
 
 2. Click on the `+` sign to add a new connection, then click on the drop down to search for the <Constant name="dbt" /> Connection Type.
 
-    ![Connection type](/img/guides/orchestration/airflow-and-dbt-cloud/connection-type.png)
+    ![Connection type](/img/guides/orchestration/airflow-and-dbt-platform/connection-type.png)
 
 3. Add in your connection details and your default <Constant name="dbt" /> account id. This is found in your <Constant name="dbt" /> URL after the accounts route section (`/accounts/{YOUR_ACCOUNT_ID}`), for example the account with id 16173 would see this in their URL: `https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/`
 
-    ![Connection type](/img/guides/orchestration/airflow-and-dbt-cloud/connection-type-configured.png)
+    ![Connection type](/img/guides/orchestration/airflow-and-dbt-platform/connection-type-configured.png)
 
 ## Update the placeholders in the sample code
 
- Add your `account_id` and `job_id` to the python file [dbt_cloud_run_job.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/dbt_cloud_run_job.py).
+ Add your `account_id` and `job_id` to the python file [run_dbt_cloud_job.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/run_dbt_cloud_job.py).
 
 Both IDs are included inside of the <Constant name="dbt" /> job URL as shown in the following snippets:
 
@@ -157,10 +161,10 @@ JOB_ID = "65767"
 
 Turn on the DAG and trigger it to run. Verify the job succeeded after running.
 
-![Airflow DAG](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-dag.png)
+![Airflow DAG](/img/guides/orchestration/airflow-and-dbt-platform/airflow-dag.png)
 
 Click **Monitor Job Run** to open the run details in <Constant name="dbt" />.
-![Task run instance](/img/guides/orchestration/airflow-and-dbt-cloud/task-run-instance.png)
+![Task run instance](/img/guides/orchestration/airflow-and-dbt-platform/task-run-instance.png)
 
 ## Cleaning up
 

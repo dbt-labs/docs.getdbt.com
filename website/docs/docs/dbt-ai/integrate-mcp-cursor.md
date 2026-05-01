@@ -39,10 +39,12 @@ After clicking:
 
 <TabItem value="OAuth with dbt platform">
 
-Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" /> <Lifecycle status="managed, managed_plus" />
+Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" /> <Lifecycle status="managed, managed_plus" />.
 
-- [dbt platform only](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJESVNBQkxFX0RCVF9DTEkiOiJ0cnVlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
-- [dbt platform + CLI](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
+Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
+
+- [<Constant name="dbt_platform"/> only](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJESVNBQkxFX0RCVF9DTEkiOiJ0cnVlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
+- [<Constant name="dbt_platform"/> + CLI](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX0hPU1QiOiJodHRwczovLzx5b3VyLWRidC1ob3N0LXdpdGgtY3VzdG9tLXN1YmRvbWFpbj4iLCJEQlRfUFJPSkVDVF9ESVIiOiIvcGF0aC90by9wcm9qZWN0IiwiREJUX1BBVEgiOiJwYXRoL3RvL2RidC9leGVjdXRhYmxlIn0sImNvbW1hbmQiOiJ1dngiLCJhcmdzIjpbImRidC1tY3AiXX0%3D)
 
 After clicking:
 1. Replace `<your-dbt-host-with-custom-subdomain>` with your actual host (for example, `abc123.us1.dbt.com`).
@@ -55,7 +57,7 @@ After clicking:
 
 ### Custom environment variables
 
-If you need custom environment variable configuration or prefer to use service tokens:
+Use this method if you need custom environment variables or prefer to use service tokens. Refer to the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for the complete list of available environment variables for the local MCP server.
 
 1. Click the following link with Cursor open:
 
@@ -66,11 +68,11 @@ If you need custom environment variable configuration or prefer to use service t
 
 #### Using an `.env` file
 
-If you prefer to manage environment variables in a separate file, click this link:
+If you prefer to manage environment variables in a separate file, put the `.env` file in your _dbt project root_ (same folder as `dbt_project.yml`). Click this link:
 
 [Add to Cursor (with .env file)](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt-mcp&config=eyJjb21tYW5kIjoidXZ4IC0tZW52LWZpbGUgPGVudi1maWxlLXBhdGg%252BIGRidC1tY3AifQ%3D%3D)
 
-Then update `<env-file-path>` with the full path to your `.env` file.
+Then update `env-file-path` with the absolute path to your `.env` file (for example, `/absolute/path/to/your-dbt-project/.env`).
 
 
 ## Set up with remote dbt MCP server
@@ -79,6 +81,15 @@ Then update `<env-file-path>` with the full path to your `.env` file.
 
     [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJ1cmwiOiJodHRwczovLzxob3N0Pi9hcGkvYWkvdjEvbWNwLyIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6InRva2VuIDx0b2tlbj4iLCJ4LWRidC1wcm9kLWVudmlyb25tZW50LWlkIjoiPHByb2QtaWQ%252BIn19)
 
-2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template. 
+2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template.
+   :::tip IDs are integers, not URLs
+   `DBT_PROD_ENV_ID`, `DBT_USER_ID`, and `DBT_DEV_ENV_ID` must be numeric IDs (for example, `54321`), not full URLs. 
+
+   `DBT_HOST` field accepts the `https://` prefix and without the `https://` prefix. The following are valid examples:
+   ```bash
+   DBT_HOST=https://ab123.us1.dbt.com
+   DBT_HOST=ab123.us1.dbt.com
+   ```
+   :::
 3. Save, and now you have access to the dbt MCP server!
 

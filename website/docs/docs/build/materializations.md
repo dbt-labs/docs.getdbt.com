@@ -267,6 +267,3 @@ def model(dbt, session):
 
 **Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="materialization"/>
-

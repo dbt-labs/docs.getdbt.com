@@ -23,13 +23,21 @@ With Cost Insights, you can see:
 - **Cost trends over time**: Track your warehouse spend and optimization impact across your dbt projects.
 - **Filter by asset type**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
 
-
-
 The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of state-aware optimizations across various dimensions:
 
 - [Project dashboard](/docs/explore/explore-cost-data#project-dashboard)
 - [Catalog on Model page](/docs/explore/explore-cost-data#model-performance-in-catalog)
 - [Job details page](/docs/explore/explore-cost-data#job-details) 
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
+
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>
+
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
+
+</DocCarousel>
 
 ## Prerequisities
 
@@ -172,8 +180,12 @@ Keep the following in mind when using Cost Insights:
 
 **Data collection and refresh**
 - Cost Insights uses your platform metadata credentials to access warehouse system tables. No separate credentials are needed beyond the platform metadata setup.
-- Cost data refreshes daily and reflects the previous day's usage, which means there is a lag of up to one day between when a job runs and when its cost data appears.
-- You need sufficient [permissions](/docs/explore/set-up-cost-insights#assign-required-permissions) to query warehouse metadata tables.
+    - You need sufficient [permissions](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) to query warehouse metadata tables.
+- Cost data is calculated _once per day_ by a scheduled job that runs at approximately 17:00 UTC.
+- The data collection job processes completed calendar days only. It does not include the current day because warehouse usage data may still be incomplete.
+    - Jobs that ran yesterday (or earlier) will have cost data available after the next daily refresh.
+    - Jobs that ran today will not have cost data until the following day’s refresh, regardless of what time they ran. 
+- If you don’t see cost data for a recent job, make sure at least one full calendar day has passed since it ran. The **Updated** badge in the **Cost Insights** section shows when the last refresh occurred.
 
 **Cost accuracy**
 - dbt calculates costs using warehouse-reported usage data and applies default credit or compute costs based on standard warehouse pricing.

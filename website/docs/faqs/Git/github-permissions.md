@@ -16,11 +16,11 @@ A GitHub organization admin will need to update the permissions in GitHub for th
 
 2. Then go to **Integrations** and then select **Applications** to identify any necessary permission changes. Note that a GitHub repository admin may not see the same permission request.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-applications.png" width="80%" title="Navigate to Application settings to identify permission changes." />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/github-applications.png" width="80%" title="Navigate to Application settings to identify permission changes." />
 
 3. Click on **Review request** and then click on the **Accept new permissions** button on the next page.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-review-request.png" width="80%" title="Grant access to the dbt app by accepting the new permissions." />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/github-review-request.png" width="80%" title="Grant access to the dbt app by accepting the new permissions." />
 
 For more info on GitHub permissions, refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
 
@@ -35,7 +35,7 @@ Disconnect the GitHub and <Constant name="dbt" /> integration in <Constant name=
 3. Click the repository link under **Repository**.
 4. In the **Repository details** page, click **Edit**.
 5. Click **Disconnect** to remove the GitHub integration.
-        <Lightbox src="/img/docs/dbt-cloud/disconnect-repo.png" title="Disconnect and reconnect your git repository in your dbt Account settings pages."/>
+        <Lightbox src="/img/docs/dbt-platform/disconnect-repo.png" title="Disconnect and reconnect your git repository in your dbt Account settings pages."/>
 6. Click **Confirm Disconnect**. 
 7. Return to your **Project details** page and reconnect your repository by clicking the **Configure Repository** link.
 8. Click **GitHub** and select your repository.

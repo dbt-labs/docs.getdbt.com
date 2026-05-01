@@ -35,6 +35,14 @@ Use the `--select` argument to limit the nodes included within `catalog.json`. W
 dbt docs generate --select +orders
 ```
 
+:::info Catalog query behavior for large projects
+
+When you select fewer than 100 nodes, dbt filters the catalog query at the database level using a `WHERE` clause on specific relation names, which is more performant. When you select 100 or more nodes, dbt queries all relations in the relevant schemas and then filters the results in memory.
+
+In both cases, the `catalog.json` output is post-filtered to include only the selected nodes (models, sources, and other resources).
+
+:::
+
 Use the `--no-compile` argument to skip re-compilation. When this flag is provided, `dbt docs generate` will skip step (2) described above. Note that dbt still runs certain special macros (like `generate_schema_name`) [during parsing](/reference/global-configs/parsing), even when compilation is skipped.
 
 **Example**:
@@ -65,7 +73,7 @@ dbt docs generate --static
 
 This command starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser. The webserver is rooted in your `target/` directory. Be sure to run `dbt docs generate` before `dbt docs serve` because the `generate` command produces a [catalog metadata artifact](/reference/artifacts/catalog-json) that the `serve` command depends upon. You will see an error message if the catalog is missing.
 
-Use the `dbt docs serve` command if you're developing locally with the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="core" />](/docs/local/install-dbt). The [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) doesn't support this command.
+Use the `dbt docs serve` command if you're developing locally with the [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation) or [<Constant name="core" />](/docs/local/install-dbt). The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) doesn't support this command.
 
 **Usage:**
 
@@ -100,7 +108,7 @@ dbt docs serve --port 8001
 You may specify a different host using the `--host` flag.
 
 :::info Note
-The `--host` flag is only available in the [<Constant name="core"/>](/docs/local/install-dbt). It's not supported in the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation).
+The `--host` flag is only available in the [<Constant name="core"/>](/docs/local/install-dbt). It's not supported in the [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation).
 :::
 
 **Example**:
