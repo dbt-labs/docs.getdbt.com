@@ -18,6 +18,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
 
+## May 2026
+
+- **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
+
 ## April 2026
 
 - **Fix:** Refreshing the same browser tab now restores your active <Constant name="dev_agent" /> conversation instead of showing the empty state. Opening a new tab, or returning after closing the tab, still starts in the empty state. The <Constant name="dev_agent" /> is currently in beta.
