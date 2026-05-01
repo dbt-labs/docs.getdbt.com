@@ -1,7 +1,8 @@
    <Expandable alt_header="BigQuery">  
     - Service Account / User Token
     - Native OAuth
-    - External OAuth
+    - External OAuth 
+      - [Workload Identity Federation](/docs/platform/manage-access/set-up-bigquery-oauth?version=1.12#set-up-bigquery-workload-identity-federation) isn't currently supported in <Constant name="fusion"/>. Use a [Native OAuth connection](/docs/platform/manage-access/set-up-bigquery-oauth#set-up-bigquery-native-oauth) or service account instead. Support coming soon.
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 

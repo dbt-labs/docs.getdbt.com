@@ -32,7 +32,7 @@ Using Databricks workflows to call the <Constant name="dbt" /> job API can be us
 
 ## Set up a Databricks secret scope
 
-1. Retrieve **[personal access token](/docs/dbt-cloud-apis/user-tokens) **or **[Service account token](/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from <Constant name="dbt" />
+1. Retrieve **[personal access token](/docs/dbt-apis/user-tokens) **or **[Service account token](/docs/dbt-apis/service-tokens#generating-service-account-tokens) **from <Constant name="dbt" />
 2. Set up a **Databricks secret scope**, which is used to securely store your <Constant name="dbt" /> API key. 
 
 3. Enter the **following commands** in your terminal:
@@ -127,7 +127,7 @@ if __name__ == '__main__':
 
 3. Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with the values you used [previously](#set-up-a-databricks-secret-scope)
 
-4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan.
 
     * To find these values, navigate to <Constant name="dbt" />, select **Deploy -> Jobs**.  Select the Job you want to run and copy the URL. For example: `https://YOUR_ACCESS_URL/deploy/000000/projects/111111/jobs/222222`
     and therefore valid code would be:

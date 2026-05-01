@@ -31,11 +31,11 @@ The Cost Insights section is available in different <Constant name="dbt_platform
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
 
 </DocCarousel>
 
