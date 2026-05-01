@@ -55,6 +55,8 @@ Before requesting a private endpoint, allowlist <Constant name="dbt" /> Labs' AW
 
 #### Request a new private endpoint
 
+After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS account in Snowflake, you can request a new private endpoint. Follow these steps to do so:
+
 1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
 2. In the **Private endpoints** table, review your existing endpoints. The table shows all private endpoints in your account (including non-Snowflake ones) with the following details:
    - **Name**
