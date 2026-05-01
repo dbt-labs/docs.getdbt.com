@@ -1,4 +1,4 @@
-name: Dotty Metrics Dashboard
+name: Dotty metrics dashboard
 
 on:
   schedule:
