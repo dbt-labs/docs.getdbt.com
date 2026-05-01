@@ -20,6 +20,7 @@ The <Constant name="dev_agent" /> is designed to support the full dbt developmen
 - Automatically generate and validate YAML definitions for tests, documentation, and semantic models directly from your existing dbt models, eliminating manual setup.
 - Make targeted changes to your project such as renaming columns, changing materializations, adjusting logic, or adding advanced data quality tests — while the agent keeps associated YAML files in sync.
 - Explore your project with the agent by asking questions about your DAG, querying the <Constant name="catalog"/>, and surfacing lineage and metadata to guide your development.
+- Investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes — powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills. <Lifecycle status="beta"/>
 
 The agent comes with the following out of the box — no configuration needed! 🎉
 
@@ -59,7 +60,7 @@ For more details on the <Constant name="dev_agent" /> and how it works, see the 
 - [Panel controls](#panel-controls)
 - [Agent modes](#agent-modes)
 - [Reviewing agent suggestions](#reviewing-agent-suggestions)
-- [Grantning command permissions](#grantning-command-permissions)
+- [Granting command permissions](#granting-command-permissions)
 
 #### Panel controls
 
@@ -120,6 +121,23 @@ You can select one of the following options:
 | **No** | Denies the request. The agent will not run the command. |
 
 </SimpleTable>
+
+## Debug job failures <Lifecycle status="beta"/>
+
+:::info
+Debugging job failures with <Constant name="dev_agent"/> is currently in beta.
+:::
+
+The <Constant name="dev_agent" /> can investigate and troubleshoot dbt job and run failures directly from the <Constant name="studio_ide" />. This capability is powered by the `troubleshooting-dbt-job-errors` [dbt Agent Skill](https://github.com/dbt-labs/dbt-agent-skills), which comes pre-configured with the agent — no setup required.
+
+You can ask the agent questions and issue commands like:
+
+- "What jobs have failed recently?"
+- "What is the root cause of the job failure?"
+- "How can I fix the recent job failure?"
+- "Fix the job failure."
+
+The agent notes when your local project state may differ from the job — for example, if you're on a different branch or have uncommitted changes — so you have full context before acting on any suggested fixes.
 
 ## Fusion migration workflow {#fusion-migration-workflow}
 
