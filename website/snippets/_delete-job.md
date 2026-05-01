@@ -6,7 +6,7 @@ To delete a job or multiple jobs in <Constant name="dbt" />:
 4. Scroll to the bottom of the page and click **Delete job** to delete the job. <br />
 
 <figure>
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/delete-job.png" width="100%" title="Delete a job"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/delete-job.png" width="100%" title="Delete a job"/>
 </figure>
 
 5. Confirm your action in the pop-up by clicking **Confirm delete** in the bottom right to delete the job immediately. This action cannot be undone. However, you can create a new job with the same information if the deletion was made in error. 

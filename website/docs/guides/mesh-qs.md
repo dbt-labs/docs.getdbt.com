@@ -59,7 +59,7 @@ In this section, you'll create two new, empty projects in <Constant name="dbt" /
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: **Jaffle | Data Analytics** and **Jaffle | Finance**.
 
-To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="dbt" />:
+To [create](/docs/platform/about-cloud-setup) a new project in <Constant name="dbt" />:
 
 1. From **Account settings**, go to **Projects**. Click **New project**.
 2. Enter a project name and click **Continue**.
@@ -104,14 +104,14 @@ To set a production environment:
 6. Click **Test Connection** to confirm the deployment connection.
 6. Click **Save** to create a production environment.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
 
 
 ## Set up a foundational project
 
 This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
-<Constant name="dbt" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) or in-browser [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+<Constant name="dbt" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) or in-browser [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="studio_ide" />.
 
@@ -640,6 +640,7 @@ Here are some additional resources to help you continue your journey:
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref)
 - [<Constant name="catalog" />](/docs/explore/explore-projects)
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — keep your local and platform environments in sync across credentials, env vars, and <Constant name="fusion"/> versions
 
 </ConfettiTrigger>
 
