@@ -187,7 +187,7 @@ Why `append_new_columns` (or `fail`) rather than `sync_all_columns`? Because rem
 </Expandable>
 
 <Expandable alt_header="A column disappeared from my incremental model table">
-**What went wrong:** `sync_all_columns` “adds any new columns to the existing table, and removes any columns that are now missing,” so a column can be removed from the target table if it’s missing from the new model query.
+**What went wrong:** `sync_all_columns` adds any new columns to the existing table, and removes any columns that are now missing, so a column can be removed from the target table if it’s missing from the new model query.
 
 **Solution:** For contracted incremental models, use `append_new_columns` (or `fail`) rather than `sync_all_columns`. Removing existing columns is a breaking change for contracted models. For details, refer to [Incremental models and `on_schema_change`](/reference/resource-configs/contract#incremental-models-and-on_schema_change).
 </Expandable>
