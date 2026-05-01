@@ -135,7 +135,7 @@ To learn how to set this up, refer to the following steps:
 3. Select the relevant job.
 4. Click **Settings**.
 5. Click **Edit**.
-6. Add the `dbt sl validate --select state:modified+` command under **Commands** in the **Execution settings** section. The command uses state selection and deferral to run validation on any semantic nodes downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models.
+6. Add the `dbt sl validate --select state:modified+` command to a **Commands** field in the **Execution settings** section. The command uses state selection and deferral to run validation on any semantic nodes downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models.
 7. Click **Save** to save your changes.
 
 There are additional commands and use cases described in the [next section](#use-cases), such as validating all semantic nodes, validating specific semantic nodes, and so on.
