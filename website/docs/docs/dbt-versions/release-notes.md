@@ -20,6 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## April 2026
 
+- **Enhancement:** The dbt VS Code extension's **Get started** panel has been redesigned and surfaces the exact next setup step you need to install the extension and <Constant name="fusion"/>. The new panel also supports a new **agentic migration** option that helps you upgrade your project to <Constant name="fusion"/>  automatically in Copilot or Cursor. For more info, see [Getting started](/docs/install-dbt-extension#getting-started).
 - **Beta**: [Model query history](/docs/explore/model-query-history) now also supports Databricks and Redshift. Refer to [Credential permissions](/docs/explore/model-query-history#credential-permissions) for more information.
 - **Enhancement:** [Slack notifications (account-level)](/docs/deploy/job-notifications#slack-notifications-account) and [Microsoft Teams notifications](/docs/deploy/job-notifications#microsoft-teams-notifications) are now generally available, enabling you to send job notifications directly to Slack channels configured at the account level, and to Teams channels.
 - **Enhancement:** When using the [dbt autofix](https://github.com/dbt-labs/dbt-autofix) tool in the <Constant name="studio_ide" />, you can now compile your project directly from the results panel after a successful `dbt parse`. Click **Compile** next to the **Successfully resolved** result to kick off a compile. For more information, refer to [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations).
