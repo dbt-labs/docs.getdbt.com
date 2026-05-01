@@ -20,6 +20,12 @@
     "dbt-labs/notifications-system",
     "dbt-labs/regional-service",
     "dbt-labs/scheduler",
-    "dbt-labs/semantic-layer-gateway"
-  ]
+    "dbt-labs/semantic-layer-gateway",
+    "dbt-labs/skyhook"
+  ],
+  "notionDatabases": {
+    "accuracy": null,
+    "backlog": null,
+    "confidence": null
+  }
 }
