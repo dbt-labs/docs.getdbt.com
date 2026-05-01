@@ -40,7 +40,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Fusion upgrade eligibility for projects with no jobs**: Projects with no jobs configured are now treated as eligible for Fusion. The upgrade card no longer requires a successful job run for such projects and instead shows "No jobs configured yet" under job eligibility.
 
-- **Confirmation modal before overriding Fusion eligibility**: Clicking "Override eligibility status" on the run details page now opens a confirmation modal before applying the override, preventing accidental changes.
+- **Confirmation pop-up before overriding Fusion eligibility**: Clicking "Override eligibility status" on the run details page now opens a confirmation pop-up before applying the override, preventing accidental changes.
 
 - **Fusion eligibility review button visible to all users**: The review button on the jobs list for jobs with unknown Fusion eligibility is now shown to all users regardless of run write permissions, so anyone can view the eligibility details modal.
 
