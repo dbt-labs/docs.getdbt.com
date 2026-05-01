@@ -521,7 +521,7 @@ var siteSettings = {
     "/js/onetrust.js",
     "/js/hide-forethought.js",
     {
-      src: "https://www.google.com/recaptcha/api.js?render=********",
+      src: "https://www.google.com/recaptcha/api.js?render=6LdcbMEsAAAAAOMzfSqbwkS5beDLJBxqIedWFz6M",
       async: true,
       defer: true,
     },
