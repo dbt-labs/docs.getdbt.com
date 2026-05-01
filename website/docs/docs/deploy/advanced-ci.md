@@ -27,9 +27,9 @@ You can opt into Advanced CI in <Constant name="dbt" />. Please refer to [Accoun
 
 ## Compare changes feature {#compare-changes}
 
-For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  1
+For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.
 
-You can also compare changes in development. For more details, see [Compare changes in local development]
+You can also compare changes in development. For more details, see [Compare changes in development](/docs/deploy/advanced-ci#compare-changes-in-development).
 
 dbt reports the comparison differences in:
 

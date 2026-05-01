@@ -1242,6 +1242,7 @@ const sidebarSettings = {
         "reference/resource-configs/data-cloud-configs",
         "reference/resource-configs/singlestore-configs",
         "reference/resource-configs/snowflake-configs",
+        "reference/resource-configs/snowflake-function-support",
         "reference/resource-configs/trino-configs",
         "reference/resource-configs/starrocks-configs",
         "reference/resource-configs/teradata-configs",
