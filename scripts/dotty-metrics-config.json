@@ -24,8 +24,8 @@
     "dbt-labs/skyhook"
   ],
   "notionDatabases": {
-    "accuracy": "b6950538-3928-4434-a8ba-863522cb6cf6",
-    "backlog": "452929e2-aa06-4e54-a999-d610316f0e15",
-    "confidence": "aba39de8-d4e1-49c3-ab3f-1c8a77d100fc"
+    "accuracy": null,
+    "backlog": null,
+    "confidence": null
   }
 }
