@@ -88,7 +88,7 @@ var siteSettings = {
     announcementBar: {
       id: "fast-track-to-dbt-workshop",
       content:
-      "Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!",
+      "Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!",
       isCloseable: true,
     },
     announcementBarActive: true,
@@ -239,7 +239,7 @@ var siteSettings = {
         {
           html: `
           <script 
-            src="https://solve-widget.forethought.ai/embed.js" id="forethought-widget-embed-script" data-api-key="9d421bf3-96b8-403e-9900-6fb059132264" 
+            src="https://solve-widget.forethought.ai/embed.js" id="forethought-widget-embed-script" data-api-key="********" 
             data-ft-workflow-tag="docs" 
             config-ft-greeting-message="Welcome to dbt Product docs! Ask a question."
             config-ft-widget-header-title = "Ask a question"
@@ -521,7 +521,7 @@ var siteSettings = {
     "/js/onetrust.js",
     "/js/hide-forethought.js",
     {
-      src: "https://www.google.com/recaptcha/api.js?render=6LdcbMEsAAAAAOMzfSqbwkS5beDLJBxqIedWFz6M",
+      src: "https://www.google.com/recaptcha/api.js?render=********",
       async: true,
       defer: true,
     },

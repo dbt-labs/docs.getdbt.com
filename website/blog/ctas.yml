@@ -8,7 +8,7 @@
 
 - name: fast_track_dbt_workshop
   header: Fast track to dbt workshop
-  subheader: Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!
+  subheader: Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!
   button_text: Register here
   url: https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=____&utm_term=all_all__
 
@@ -26,6 +26,6 @@
 
 - name: fast_track_to_dbt_workshop
   header: Fast track to dbt workshop
-  subheader: Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!
+  subheader: Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!
   button_text: Register here
   url: https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=themed-webinar____&utm_term=all_all__
