@@ -339,52 +339,46 @@ async function syncToNotionDatabases(searchMetrics, issueBacklog, confData) {
   const dbs = await ensureDatabases();
   const pct = (n, total) => total ? ((n / total) * 100).toFixed(0) + '%' : 'N/A';
 
+  // Accuracy DB is transposed: rows = metrics, columns = repo slugs + Total
   console.log('  Syncing accuracy database...');
-  const accuracyRows = [
-    ...Object.entries(repoMetrics).map(([repo, r]) => ({
-      'Repo': repo,
-      'PRs Analyzed': r.totalAnalyzed,
-      'Dotty Era': r.totalDotty,
-      'Cursor Era': r.totalCursor,
-      'Customer-Facing': r.cfDotty,
-      'Not Customer-Facing': r.notCfDotty,
-      'Corrections': r.corrections,
-      'False Positives': r.falsePositives,
-      'False Negatives': r.falseNegatives,
-      'Accuracy Rate': r.accuracyRate,
-    })),
-    {
-      'Repo': '⬤ Total',
-      'PRs Analyzed': totals.totalAnalyzed,
-      'Dotty Era': Object.values(repoMetrics).reduce((s, r) => s + r.totalDotty, 0),
-      'Cursor Era': Object.values(repoMetrics).reduce((s, r) => s + r.totalCursor, 0),
-      'Customer-Facing': totals.cfDotty,
-      'Not Customer-Facing': totals.notCfDotty,
-      'Corrections': totals.corrections,
-      'False Positives': totals.falsePositives,
-      'False Negatives': totals.falseNegatives,
-      'Accuracy Rate': totals.accuracyRate,
-    },
+  const metricDefs = [
+    { label: 'PRs Analyzed',      fn: r => r.totalAnalyzed,  total: totals.totalAnalyzed },
+    { label: 'Dotty Era',         fn: r => r.totalDotty,     total: Object.values(repoMetrics).reduce((s, r) => s + r.totalDotty, 0) },
+    { label: 'Cursor Era',        fn: r => r.totalCursor,    total: Object.values(repoMetrics).reduce((s, r) => s + r.totalCursor, 0) },
+    { label: 'Customer-Facing',   fn: r => r.cfDotty,        total: totals.cfDotty },
+    { label: 'Not Customer-Facing', fn: r => r.notCfDotty,   total: totals.notCfDotty },
+    { label: 'Corrections',       fn: r => r.corrections,    total: totals.corrections },
+    { label: 'False Positives',   fn: r => r.falsePositives, total: totals.falsePositives },
+    { label: 'False Negatives',   fn: r => r.falseNegatives, total: totals.falseNegatives },
+    { label: 'Accuracy Rate',     fn: r => r.accuracyRate,   total: totals.accuracyRate },
   ];
-  await upsertRows(dbs.accuracy, 'Repo', accuracyRows);
+  const accuracyRows = metricDefs.map(({ label, fn, total }) => {
+    const row = { 'Metric': label };
+    for (const [repo, r] of Object.entries(repoMetrics)) row[repo] = fn(r);
+    row['Total'] = total;
+    return row;
+  });
+  await upsertRows(dbs.accuracy, 'Metric', accuracyRows);
 
+  // Backlog DB: Month (title), Created, Closed, Outstanding — values as strings to match text columns
   console.log('  Syncing backlog database...');
   const backlogRows = issueBacklog.sortedMonths.map(([month, data]) => ({
     'Month': month,
-    'Created': data.created,
-    'Closed': data.closed,
-    'Outstanding': data.created - data.closed,
+    'Created': String(data.created),
+    'Closed': String(data.closed),
+    'Outstanding': String(data.created - data.closed),
   }));
   await upsertRows(dbs.backlog, 'Month', backlogRows);
 
+  // Confidence DB: "Confidence level" (title), "Count", "% of total" — column names match existing DB
   console.log('  Syncing confidence database...');
   const confRows = [
-    { 'Level': 'HIGH',            'Count': confData.confDist.HIGH,    'Percentage': pct(confData.confDist.HIGH, confData.total) },
-    { 'Level': 'MEDIUM',          'Count': confData.confDist.MEDIUM,  'Percentage': pct(confData.confDist.MEDIUM, confData.total) },
-    { 'Level': 'LOW',             'Count': confData.confDist.LOW,     'Percentage': pct(confData.confDist.LOW, confData.total) },
-    { 'Level': 'Feature-Flagged', 'Count': confData.featureFlagged,   'Percentage': pct(confData.featureFlagged, confData.total) },
+    { 'Confidence level': 'HIGH',            'Count': String(confData.confDist.HIGH),    '% of total': pct(confData.confDist.HIGH, confData.total) },
+    { 'Confidence level': 'MEDIUM',          'Count': String(confData.confDist.MEDIUM),  '% of total': pct(confData.confDist.MEDIUM, confData.total) },
+    { 'Confidence level': 'LOW',             'Count': String(confData.confDist.LOW),     '% of total': pct(confData.confDist.LOW, confData.total) },
+    { 'Confidence level': 'Feature-Flagged', 'Count': String(confData.featureFlagged),   '% of total': pct(confData.featureFlagged, confData.total) },
   ];
-  await upsertRows(dbs.confidence, 'Level', confRows);
+  await upsertRows(dbs.confidence, 'Confidence level', confRows);
 
   console.log(`  ✅ Notion databases updated: https://www.notion.so/${NOTION_PAGE_ID.replace(/-/g, '')}`);
 }
