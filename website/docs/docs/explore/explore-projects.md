@@ -302,6 +302,7 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 
 - **Resources** tab &mdash; All resources in the project organized by type. Select any resource type in the list and all those resources in the project will display as a table in the main section of the page. For a description on the different resource types (like models, metrics, and so on), refer to [About dbt projects](/docs/build/projects).
   - [Data health signals](/docs/explore/data-health-signals) are visible to the right of the resource name under the **Health** column.
+  - [User-defined functions (UDFs)](/docs/build/udfs) are available as the `function` resource type. Select **Functions** from the resource list to browse UDF nodes. Each function has a detail page with **General**, **Arguments**, and **Code** tabs. UDF nodes appear in mini-lineage on their detail page but are not shown in the main DAG or legend.
 - **File Tree** tab &mdash; All resources in the project organized by the file in which they are defined. This mirrors the file tree in your dbt project repository.
 - **Database** tab &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-apis/project-state) of your project.
 
