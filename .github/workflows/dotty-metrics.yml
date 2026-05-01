@@ -26,4 +26,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.FA_ASSISTANT_CI_WORKFLOW_PAT_TOKEN }}
           RUNLAYER_API_TOKEN: ${{ secrets.RUNLAYER_API_TOKEN }}
-          NOTION_PAGE_ID: ${{ secrets.DOTTY_METRICS_NOTION_PAGE_ID }}
+          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
