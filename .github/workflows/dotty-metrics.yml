@@ -9,7 +9,7 @@ on:
       - '**'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   update-dashboard:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Commit database IDs to config if created
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN_DASH }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if git diff --quiet scripts/dotty-metrics-config.json; then
             echo "No config changes"
