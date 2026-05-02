@@ -86,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "state-of-analytics-engineering-virtual-event",
+      id: "fast-track-to-dbt-workshop",
       content:
-        "Join us for the 2026 State of Analytics Engineering Virtual Event on April 29 with live Q&A and giveaways!",
+      "Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtual-event/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_state-analytics-engineering_aw&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -151,7 +151,7 @@ var siteSettings = {
           position: "right",
         },
         {
-          to: "/docs/dbt-cloud-apis/overview",
+          to: "/docs/dbt-apis/overview",
           label: "APIs",
           position: "right",
         },
@@ -425,33 +425,33 @@ var siteSettings = {
                   name: "dbt platform",
                   routes: [
                     { route: "/docs/about-cloud-setup" },
-                    { route: "/docs/cloud/account-settings" },
-                    { route: "/docs/cloud/account-integrations" },
+                    { route: "/docs/platform/account-settings" },
+                    { route: "/docs/platform/account-integrations" },
                     { route: "/docs/dbt-cloud-environments" },
-                    { route: "/docs/cloud/migration" },
+                    { route: "/docs/platform/migration" },
                   ],
                   subsections: [
                     {
                       id: "connect-data-platform",
                       name: "Connect data platform",
                       routes: [
-                        { route: "/docs/cloud/connect-data-platform/**" },
+                        { route: "/docs/platform/connect-data-platform/**" },
                       ],
                     },
                     {
                       id: "manage-access",
                       name: "Manage access",
-                      routes: [{ route: "/docs/cloud/manage-access/**" }],
+                      routes: [{ route: "/docs/platform/manage-access/**" }],
                     },
                     {
                       id: "git",
                       name: "Git",
-                      routes: [{ route: "/docs/cloud/git/**" }],
+                      routes: [{ route: "/docs/platform/git/**" }],
                     },
                     {
                       id: "secure",
                       name: "Secure",
-                      routes: [{ route: "/docs/cloud/secure/**" }],
+                      routes: [{ route: "/docs/platform/secure/**" }],
                     },
                   ],
                 },
@@ -487,12 +487,12 @@ var siteSettings = {
             {
               id: "platform",
               name: "Platform",
-              routes: [{ route: "/docs/cloud/**" }],
+              routes: [{ route: "/docs/platform/**" }],
             },
             {
               id: "api-reference",
               name: "API Reference",
-              routes: [{ route: "/docs/dbt-cloud-apis/**" }],
+              routes: [{ route: "/docs/dbt-apis/**" }],
             },
           ],
           siteTitle: "dbt Developer Hub",
