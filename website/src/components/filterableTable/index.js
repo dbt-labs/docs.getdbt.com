@@ -207,7 +207,7 @@ const FilterableTable = ({ children }) => {
       // Show filter if:
       // 1. Column has 1-20 unique values (good for dropdown)
       // 2. OR it's the first column (name/key column) with any number of values
-      if ((values.length >= 1 && values.length <= 20) || (colIndex === 0 && values.length >= 1)) {
+      if ((values.length >= 1 && values.length <= 50) || (colIndex === 0 && values.length >= 1)) {
         options[colIndex] = values;
       }
     });

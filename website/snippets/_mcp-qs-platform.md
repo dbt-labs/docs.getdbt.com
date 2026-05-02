@@ -14,6 +14,7 @@ This quickstart uses the local MCP server: it runs on your machine using `uvx db
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
+- If you're using OAuth, your account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
 
 ## Step 1: Choose your auth method and configure
 
