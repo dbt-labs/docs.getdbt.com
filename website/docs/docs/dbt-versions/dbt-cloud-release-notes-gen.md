@@ -18,6 +18,56 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## April 29, 2026
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Job investigation support in Studio agent**: The Studio IDE dev agent can now help you investigate and troubleshoot dbt job and run failures using the `troubleshooting-dbt-job-errors` skill. The agent notes when your local project state may differ from the job (for example, a different branch or uncommitted changes). This feature is currently in beta. Refer to [Debug job failures](/docs/dbt-ai/developer-agent?version=2.0#debug-job-failures) for more information.
+
+### Semantic Layer
+
+- **Semantic Layer MCP request size limit**: Semantic Layer requests through MCP are now capped at 10 MiB (previously unlimited) to improve infrastructure stability.
+
+### Orchestration and run status
+
+- **Finer-grained permissions on the Debug on Fusion menu**: The "Debug in Studio" and "Run once on Fusion" menu items are now independently disabled based on your permissions. If you lack the required permission for an action, that item shows a tooltip explaining why, while the other item remains available.
+
+- **Automatic dbt version override before "Debug in Studio"**: When you click "Debug in Studio," dbt platform now automatically sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion` before opening the Studio IDE, so you no longer need to configure this manually.
+
+- **Clearer failure state for "Debug in Studio"**: If the preparation step before opening the Studio IDE fails, the button temporarily shows "Debug failed" in a red state for 5 seconds before resetting, so you know to try again rather than seeing a silent failure.
+
+- **Fusion upgrade eligibility for projects with no jobs**: Projects with no jobs configured are now treated as eligible for Fusion. The upgrade card no longer requires a successful job run for such projects and instead shows "No jobs configured yet" under job eligibility.
+
+- **Confirmation pop-up before overriding Fusion eligibility**: Clicking "Override eligibility status" on the run details page now opens a confirmation pop-up before applying the override, preventing accidental changes.
+
+- **Fusion eligibility review button visible to all users**: The review button on the jobs list for jobs with unknown Fusion eligibility is now shown to all users regardless of run write permissions, so anyone can view the eligibility details modal.
+
+- **Model execution notifications for dbt Fusion runs**: The orchestrator now publishes model execution events for grouped models and tests when running with dbt Fusion's OpenTelemetry (OTel) log format, extending model notification support to Fusion-based runs.
+
+- **Structured logs available for externally ingested runs**: The run ingestion pipeline now detects and signals when structured dbt logs are present for a step, so logs appear correctly in the dbt platform for runs ingested from external executors.
+
+### Deployment and configuration
+
+- **Sticky submit bar on the create private endpoint form**: The Cancel and Save buttons on the create private endpoint page now stick to the bottom of the viewport so they remain accessible when scrolling through the form.
+
+- **Docs generation deprecation scoped to Fusion jobs only**: The "Generate docs on run" deprecation notice is now only shown for jobs running on a Fusion dbt version. Non-Fusion jobs continue to show the standard checkbox.
+
+## Fixes
+
+### dbt Copilot and agents
+
+- **Fixed errors with BYOK deployments that use OpenAI reasoning models**: Fixed request errors when using BYOK OpenAI and Azure OpenAI reasoning model endpoints.
+
+### Semantic Layer
+
+- **Custom metric granularities no longer rejected**: Metric manifest fields `granularity` and `offset_to_grain` now accept arbitrary string values instead of only a fixed enum. Projects using custom granularities such as `fiscal_year` will no longer fail ingestion.
+
+### Catalog
+
+- **Tag search field**: Tags are now a searchable field in the advanced search panel. You can filter results by tag matches. Filtering uses OR logic, returning assets that match any of the specified tags rather than requiring all tags to be present.
+
 ## April 22, 2026
 
 ## New
@@ -42,7 +92,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Fusion eligibility toggle replaces dropdown filter**: The Fusion eligibility dropdown filter on the jobs list has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
 
-- **Debug on Fusion menu**: The single **Run once on Fusion** button on the job details page and job list has been replaced with a **Debug on Fusion** menu that offers **Debug in Studio**, **Run once on Fusion**, and (when dbt Copilot is enabled) **Debug in Studio with Copilot** options. Refer to [Prepare to upgrade to <Constant name="fusion"/>](https://docs.getdbt.com/guides/prepare-fusion-upgrade?step=7) for more info.
+- **Debug on Fusion menu**: The single **Run once on Fusion** button on the job details page and job list has been replaced with a **Debug on Fusion** menu that offers **Debug in Studio**, **Run once on Fusion**, and (when dbt Copilot is enabled) **Debug in Studio with Copilot** options. Refer to [Prepare to upgrade to <Constant name="fusion"/>](/guides/prepare-fusion-upgrade?step=7) for more information.
 
 - **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same **Debug on Fusion** menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
 
@@ -58,7 +108,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Integrations
 
-- **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt Cloud bot invited for notifications to be delivered. Contact your account manager to enable.
+- **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt platform app invited for notifications to be delivered. Contact your account manager to enable.
 
 ### dbt platform
 
@@ -119,7 +169,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Studio IDE
 
 - **New folders in Git Controls now expand correctly**: Files inside a newly created folder are now listed individually in the Git Controls panel. Previously, a new folder appeared as a single unexpanded entry rather than showing the files it contained.
-  
+
 -  **Parent folder hint shown for all new files**: Files created inside a new folder now always display the parent folder name as a hint in the Git Controls panel, even when the file name is unique across all changed files.
 
 ## April 8, 2026
@@ -530,7 +580,7 @@ Release notes are grouped by date for single-tenant environments.
 - **Region labels now use backend display names**: Account Settings now shows the backend-provided region display name for clearer, more accurate region labeling.
 
 - **SCIM create group UI change**: Changes to our UI to improve the experience of managing groups with SCIM enabled.
- 
+
 - **Updated the post-invite message for SSO accounts**:  After a user accepts an invite, the UI now explains that they must log in using SSO to fully redeem the invite and access the account. This replaces the previous "Joined successfully" message and helps avoid confusion when users accept an invite but do not complete the SSO login flow.
 
 ### Studio IDE and Copilot
@@ -830,7 +880,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Studio IDE: More reliable artifact uploads to Microsoft Azure Blob Storage**: Fixes edge cases where gzipped artifacts (such as manifests) could fail to upload due to upload stream handling, improving upload reliability.
 
-- **Studio IDE: More stable language server protocol (LSP) sessions in workers**: Reduces noisy disconnect and cleanup errors when multiple websocket connections and processes map to the same invocation, improving session stability. 
+- **Studio IDE: More stable language server protocol (LSP) sessions in workers**: Reduces noisy disconnect and cleanup errors when multiple websocket connections and processes map to the same invocation, improving session stability.
 
 ### Catalog
 
@@ -877,53 +927,53 @@ Release notes are grouped by date for single-tenant environments.
 ### Orchestration and Run Status
 
 - **Orchestration: Cached and stale outcome status mapping updated**: Cached nodes are now consistently surfaced as Reused with clearer reasons, and stale outcomes are treated as errors, which can change the statuses operators see in run output and telemetry.
-  
+
 ## January 28, 2026
 
 ### New
 
 - **Canvas**
-  - **New two-step "upload source" API for more resilient uploads**: Use `POST /v1/workspaces/{workspace_id}/upload-source` to create an upload, then `PATCH /v1/workspaces/{workspace_id}/upload-source/{file_id}/process` to stream processing progress (SSE).  
+  - **New two-step "upload source" API for more resilient uploads**: Use `POST /v1/workspaces/{workspace_id}/upload-source` to create an upload, then `PATCH /v1/workspaces/{workspace_id}/upload-source/{file_id}/process` to stream processing progress (SSE).
 
 ### Enhancements
 
 - **Catalog & Search**
-  - **Improved search relevance and highlighting**: Ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).  
+  - **Improved search relevance and highlighting**: Ranking now boosts results by modeling layer, and highlighting is more consistent (including support for multiple highlight snippets per field).
 - **dbt platform**
-  - **Private endpoints details page**: The dbt platform now includes a Private Endpoint details view with endpoint properties, connectivity status, and associated projects.  
-  - **Fusion-aware default dbt version during setup**: Connection setup and environment creation can now default to `latest-fusion` for eligible projects.  
+  - **Private endpoints details page**: The dbt platform now includes a Private Endpoint details view with endpoint properties, connectivity status, and associated projects.
+  - **Fusion-aware default dbt version during setup**: Connection setup and environment creation can now default to `latest-fusion` for eligible projects.
 - **Studio IDE**
   - **Search and replace in files**: Adds a dedicated sidebar search experience. Please contact your account manager to enable.
-  - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.  
-  - **Editor UI polish**: Fixed multiple layout/styling issues for a more consistent editor experience.  
+  - **Autofix now includes package upgrades**: Upgrade flows can proceed from fixing deprecations into package upgrades in the same guided run.
+  - **Editor UI polish**: Fixed multiple layout/styling issues for a more consistent editor experience.
 
 ### Fixes
 
 - **dbt platform**
-  - **Run logs render ANSI/structured output more reliably**: Improved rendering and cleanup of escape sequences in step logs.  
-  - **More accurate source freshness status in multi-job environments**: Freshness status is preserved when a run lacks freshness results but freshness remains configured.  
-  - **More robust seed artifact ingestion**: Ingestion now tolerates missing/null `schema` fields in the manifest to avoid failures.  
+  - **Run logs render ANSI/structured output more reliably**: Improved rendering and cleanup of escape sequences in step logs.
+  - **More accurate source freshness status in multi-job environments**: Freshness status is preserved when a run lacks freshness results but freshness remains configured.
+  - **More robust seed artifact ingestion**: Ingestion now tolerates missing/null `schema` fields in the manifest to avoid failures.
 
 - **Studio IDE**
-  - **CLI project sync no longer fails on broken symlinks**: Sync skips missing symlink targets instead of failing the whole sync.  
-  - **IDE abort is clearer when a command is missing**: Aborting a command that no longer exists returns a specific "no-command-found" response.  
-  - **More robust inline command results**: Malformed inline commands no longer break result processing; `show --inline` with an empty result returns an empty preview table.  
+  - **CLI project sync no longer fails on broken symlinks**: Sync skips missing symlink targets instead of failing the whole sync.
+  - **IDE abort is clearer when a command is missing**: Aborting a command that no longer exists returns a specific "no-command-found" response.
+  - **More robust inline command results**: Malformed inline commands no longer break result processing; `show --inline` with an empty result returns an empty preview table.
 
 - **Canvas**
-  - **Clearer errors for duplicate uploaded-source names**: Creating an uploaded-source model with a duplicate name now returns HTTP 409 with an actionable message.  
-  - **Failed uploads are now visible via file state**: Uploaded-source processing records failure state instead of deleting the file record, improving retry/resume workflows.  
+  - **Clearer errors for duplicate uploaded-source names**: Creating an uploaded-source model with a duplicate name now returns HTTP 409 with an actionable message.
+  - **Failed uploads are now visible via file state**: Uploaded-source processing records failure state instead of deleting the file record, improving retry/resume workflows.
   - **Invocation status streaming reliability**: The invocation status SSE endpoint now correctly awaits the status stream.
 
 ### Behavior changes
 
 - **Catalog & Search**
-  - **Search highlight fields deprecated and highlights shape expanded**: `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated. `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).  
+  - **Search highlight fields deprecated and highlights shape expanded**: `AccountSearchHit.highlight` and `AccountSearchHit.matchedField` are deprecated. `AccountSearchHit.highlights` now supports multiple highlight snippets per field (arrays).
 
 - **dbt platform**
-  - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.  
+  - **Deprecations**: The "Adaptive" job type is deprecated. `last_checked_at` is deprecated and no longer populated in run responses.
 
 - **Canvas**
-  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/platform/use-canvas#upload-data-to-canvas) flow.  
+  - **Existing CSV upload SSE endpoint deprecated**: Migrate to the new two-step [upload source](/docs/platform/use-canvas#upload-data-to-canvas) flow.
 
 ## January 21, 2026
 
@@ -1042,14 +1092,14 @@ No changes of note this week.
 ### New
 
 - **AI Codegen**
-  - **File-aware LangGraph agents**: Analysts can now drop `@path` references in the bundled CLI to stream local files into `/private/v1/agents/run`, which are auto-rendered as text inside the run so copilots have the exact config or SQL snippet you referenced.  
+  - **File-aware LangGraph agents**: Analysts can now drop `@path` references in the bundled CLI to stream local files into `/private/v1/agents/run`, which are auto-rendered as text inside the run so copilots have the exact config or SQL snippet you referenced.
 
 
 - **dbt platform**
-  - **Slack Copilot feedback loops**: Copilot replies now carry inline "Did that answer your question?" buttons, so you can rate answers without leaving Slack.  
+  - **Slack Copilot feedback loops**: Copilot replies now carry inline "Did that answer your question?" buttons, so you can rate answers without leaving Slack.
 
 - **Codex workflows**
-  - **Databricks cost tracking for Model Cost Over Time**: A Databricks history provider and DBU-based cost query now surface daily model cost alongside Snowflake coverage, so Databricks tenants get unified FinOps reporting.  
+  - **Databricks cost tracking for Model Cost Over Time**: A Databricks history provider and DBU-based cost query now surface daily model cost alongside Snowflake coverage, so Databricks tenants get unified FinOps reporting.
 
 - **Canvas**
   - **CSV upload GA**: The CSV upload endpoint is now generally available.
@@ -1057,29 +1107,29 @@ No changes of note this week.
 ### Enhancements
 
 - **Cloud artifacts**
-  - **Better similar-model suggestions**: Attachment workflows now only recommend meaningfully related models.  
+  - **Better similar-model suggestions**: Attachment workflows now only recommend meaningfully related models.
 
 - **dbt platform**
-  - **Unified SSO & SCIM admin**: Settings consolidate SSO + SCIM, add an empty state for auto-generated slugs, and render read-only login URLs so admins can start configuration without touching slug fields.  
-  - **SCIM token management polish**: Token tables gain fixed pagination, inline search, consistent iconography, and clearer deletion warnings to avoid accidental cuts to live integrations.  
-  - **Twice the per-environment custom variables**: The v3 API/UI now allow up to 20 scoped environment variables before enforcing limits, giving larger projects more room for secrets.  
+  - **Unified SSO & SCIM admin**: Settings consolidate SSO + SCIM, add an empty state for auto-generated slugs, and render read-only login URLs so admins can start configuration without touching slug fields.
+  - **SCIM token management polish**: Token tables gain fixed pagination, inline search, consistent iconography, and clearer deletion warnings to avoid accidental cuts to live integrations.
+  - **Twice the per-environment custom variables**: The v3 API/UI now allow up to 20 scoped environment variables before enforcing limits, giving larger projects more room for secrets.
 
 - **Canvas**
-  - **Dialect-aware projection SQL**: SELECT * RENAME/EXCEPT support now respects each warehouse's syntax using schema metadata, so SQL previews and column metadata stay accurate across Snowflake, Databricks, BigQuery, and Redshift.  
+  - **Dialect-aware projection SQL**: SELECT * RENAME/EXCEPT support now respects each warehouse's syntax using schema metadata, so SQL previews and column metadata stay accurate across Snowflake, Databricks, BigQuery, and Redshift.
 
 ### Fixes
 
 - **dbt platform**
-  - **Webhook editor keeps job selections**: Default values are cached after the first render and stop resetting once the user edits the form, eliminating accidental job-list clearing while tabbing through fields.  
+  - **Webhook editor keeps job selections**: Default values are cached after the first render and stop resetting once the user edits the form, eliminating accidental job-list clearing while tabbing through fields.
 
 - **Codex GraphQL**
-  - **Exposure parents mirror the manifest**: `parentsModels` and `parentsSources` now derive from the manifest's `parents` list, so exposures with mixed upstreams display complete lineage in both the GraphQL API and UI.  
+  - **Exposure parents mirror the manifest**: `parentsModels` and `parentsSources` now derive from the manifest's `parents` list, so exposures with mixed upstreams display complete lineage in both the GraphQL API and UI.
 
 
 ### Behavior changes
 
 - **dbt platform**
-  - **Legacy Cost Management UI retired**: All cost management pages and hooks were removed, and platform metadata credentials now only expose catalog ingestion and Cost Insights toggles, eliminating dead-end controls.  
+  - **Legacy Cost Management UI retired**: All cost management pages and hooks were removed, and platform metadata credentials now only expose catalog ingestion and Cost Insights toggles, eliminating dead-end controls.
 
 
 ## December 17, 2025
@@ -1087,8 +1137,8 @@ No changes of note this week.
 ### New
 
 - **dbt platform**
-  - **Feature licensing service**: A new `/accounts/<id>/feature-licenses` endpoint issues short-lived JWTs that encode entitled features, and service/PAT authentication now checks that a caller holds an active license on the target account before any Fusion-enabled workflow runs. 
-  - **Databricks platform metadata credentials**: Databricks warehouses can register platform metadata credentials (token plus optional catalog), enabling catalog ingestion, metadata sharing, and Cost Insights pipelines without custom adapters. 
+  - **Feature licensing service**: A new `/accounts/<id>/feature-licenses` endpoint issues short-lived JWTs that encode entitled features, and service/PAT authentication now checks that a caller holds an active license on the target account before any Fusion-enabled workflow runs.
+  - **Databricks platform metadata credentials**: Databricks warehouses can register platform metadata credentials (token plus optional catalog), enabling catalog ingestion, metadata sharing, and Cost Insights pipelines without custom adapters.
 
 ### Enhancements
 
@@ -1099,7 +1149,7 @@ No changes of note this week.
   - **Freshness clarity & Studio navigation**: Source tiles respect the `meta5161ExpiredUnconfiguredSources` flag (showing warn/error thresholds) and "Open in IDE" links now point at `/studio/{accountId}/projects/{projectId}` to drop users directly into dbt Studio.
 
 - **Insights UI**
-  - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state. 
+  - **Copilot guardrails**: The Copilot listener now hydrates builder tabs only when a semantic-layer payload arrives, preventing plain-SQL replies from overwriting editor state.
 - **dbt CLI**
   - **Improved monorepo support for file sync and the IDE**:
     - File sync now anchors itself to the invocation directory, making monorepo structures behave more predictably.
@@ -1107,7 +1157,7 @@ No changes of note this week.
     - The IDE’s LSP and file sync now recognize dbt subdirectories properly.
     - Exclusion lists remain accurate even in multi-project repositories.
 - **Notifications system**
-  - **Webhook auditability**: Outbound calls now persist the exact JSON body in webhook history, making allowlisting and troubleshooting easier. 
+  - **Webhook auditability**: Outbound calls now persist the exact JSON body in webhook history, making allowlisting and troubleshooting easier.
 
 - **Studio**
   - **Git sidebar & file refresh parity**: The file tree now mirrors Cloud VCS statuses (including conflicts) and automatically invalidates caches after `dbt deps`/`dbt clean`, so new or removed files appear without a reload.
@@ -1116,36 +1166,36 @@ No changes of note this week.
 ### Fixes
 
 - **dbt platform**
-  - **Environment variable editor stability**: Editing one variable no longer backfills blank cells with previously edited values, preventing accidental overrides. 
-  - **Cost optimization indicator accuracy**: Job pages once again display “Cost optimization features” whenever Fusion actually runs (and gating conditions are met), so users see the right coverage status regardless of feature-flag permutations. 
+  - **Environment variable editor stability**: Editing one variable no longer backfills blank cells with previously edited values, preventing accidental overrides.
+  - **Cost optimization indicator accuracy**: Job pages once again display “Cost optimization features” whenever Fusion actually runs (and gating conditions are met), so users see the right coverage status regardless of feature-flag permutations.
 
 ### Behavior changes
 
 - **dbt platform**
-  - **Stronger tenant identity enforcement**: Service/PAT calls without an active license now fail authentication, Slack Copilot sessions build a scoped identity JWT for the invoking user, and SSO providers enforce auto-generated slugs (draft configs can’t be targeted), reducing misconfiguration risk. 
+  - **Stronger tenant identity enforcement**: Service/PAT calls without an active license now fail authentication, Slack Copilot sessions build a scoped identity JWT for the invoking user, and SSO providers enforce auto-generated slugs (draft configs can’t be targeted), reducing misconfiguration risk.
 
 - **dbt CLI**
-  - **User-isolated invocation history**: Every invocation lookup validates the caller’s user ID, preventing admins from accidentally reading another developer’s runs when multiple accounts share a CLI server. 
+  - **User-isolated invocation history**: Every invocation lookup validates the caller’s user ID, preventing admins from accidentally reading another developer’s runs when multiple accounts share a CLI server.
 - **IDE server**
   - **Enhanced security for support-assisted sessions:** Support impersonation sessions now restrict the execution of `show`, `run`, `build`, and `test` commands. Artifacts generated by `dbt show` are also short-lived and will automatically expire after 15 minutes to limit unintended data retention.
 
 - **dbt Orchestration**
-  - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks). 
+  - **Fusion compare support & new dependency**: Fusion tracks now treat `dbt compare` as a supported command (no more target-path hacks).
 
 ## December 10, 2025
 
 ### Enhancements
 
 - **AI codegen API**: Streaming middleware enforces request-scoped instrumentation across every AI endpoint, offload warehouse calls via threads, and expose human-readable tool names while gating keyword search behind feature flag for approved tenants.
-  
+
 - **dbt platform**
   - **Operations clarity**: Environment profile drawers link directly to connection settings and treat Snowflake fields as optional, while Compare Changes and run-step drawers now explain whether steps failed or were skipped so troubleshooting is faster.
   - **Collaboration & notifications**: Slack Copilot mentions are now more reliable, with hardened workers, support for CSV attachments, and improved logging. Webhook channels now accept longer URLs, handle “warning-only” subscriptions correctly, and automatically clean up corrupted job IDs.
   - **Profile & credential management**: Environment APIs accept `secondary_profile_ids`, run acquisition favors profile-backed credentials, and whoami/auth metrics are scrubbed so cross-platform profiles stay in sync.
 
 - **dbt CLI server**: Improved stability and performance for large projects.
-- **Studio IDE**: For dbt Fusion logging, node start and end times will now properly be displayed in command output. 
-- **Studio IDE**: Copilot Chat automatically appears anywhere AI entitlements exist, preview runs auto-cancel when nodes change, and keyboard shortcuts respect native keymaps with clear UI labels. 
+- **Studio IDE**: For dbt Fusion logging, node start and end times will now properly be displayed in command output.
+- **Studio IDE**: Copilot Chat automatically appears anywhere AI entitlements exist, preview runs auto-cancel when nodes change, and keyboard shortcuts respect native keymaps with clear UI labels.
 - **Studio IDE**: Tab view, console pane, and command drawer have been redesigned to enhance efficiency and multitasking.
 
 ### Fixes
@@ -1165,7 +1215,7 @@ No changes of note this week.
 - **dbt platform**
   - **Code Quality tab improvements**
     - Clearer lint/format actions (SQLFluff, Prettier), better empty states, visible Config button when applicable, and simplified logs retrieval.
-    - Applies to SQL, JSON, YAML, and Markdown workflows.  
+    - Applies to SQL, JSON, YAML, and Markdown workflows.
   - **Editor experience**
     - Upgraded editor for stability.
     - Improved container sizing/overflow.
