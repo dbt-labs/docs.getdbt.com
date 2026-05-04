@@ -42,7 +42,7 @@ Key changes in the new spec:
 - Measures are replaced with `type: simple` metrics defined within the model.
 - `type_params` is deprecated; its parameters are now top-level keys within each metric definition.
 
-For migration guidance and a comparison of the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
+For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
 
 ### `.env` file for environment variables <Lifecycle status="beta" />
 
