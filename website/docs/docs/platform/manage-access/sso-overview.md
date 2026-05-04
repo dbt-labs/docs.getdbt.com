@@ -5,10 +5,16 @@ pagination_next: "docs/platform/manage-access/set-up-sso-saml-2.0"
 pagination_prev: null
 ---
 
+import UniversalLogin from '/snippets/_universal-login.md';
+
 # Single sign-on (SSO) overview <Lifecycle status="managed, managed_plus" />
 
 This overview explains how users are provisioned in <Constant name="dbt" /> via single sign-on (SSO).
 <Constant name="dbt" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. 
+
+<UniversalLogin />
+
+For SSO, users also use your account **Access URL** or **dbt Enterprise Login URL**, as described in this page.
 
 To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
 
@@ -28,7 +34,7 @@ The diagram below explains the basic process by which users are provisioned in <
 
 #### Diagram Explanation
 
-- **Login Page**: The user accesses the <Constant name="dbt" /> login page, initiating the SSO flow.
+- **Login Page**: The user accesses the <Constant name="dbt" /> login experience for example [https://login.dbt.com](https://login.dbt.com), their account **Access URL**, or their **dbt Enterprise Login URL**, and initiates the SSO flow.
 - **IdP-Initiated Login**: The user accesses the <Constant name="dbt" /> login page within the Identity Provider by selecting the <Constant name="dbt" /> application. This will begin the IdP login flow.
 - **IdP Login Page**: The user is prompted to login to the Identity Provider. This will grant the <Constant name="dbt" /> application access to the details of their account.
 - **Login?**: The user can choose to continue or to abort the login process.
@@ -56,7 +62,7 @@ License type mappings and SSO group mappings are based on **IdP group** membersh
 
 ### How should non-admin users log in?
 
-Non-admin users that currently login with a password will no longer be able to do so. They must login using the dbt Enterprise Login URL or an identity provider (IdP). For example, Okta, Microsoft Entra ID (formerly Azure AD), etc.
+Non-admin users that currently login with a password can no longer do so. They must sign in using [https://login.dbt.com](https://login.dbt.com), the dbt Enterprise Login URL for your account, or an identity provider (IdP), for example, Okta or Microsoft Entra ID.
 
 ### Security best practices
 
