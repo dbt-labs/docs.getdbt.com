@@ -91,7 +91,7 @@ flags:
 
 Before enabling this flag, note the following:
 
-- **Cost:** `$__PARTITIONS_SUMMARY__` was free to query. `INFORMATION_SCHEMA.PARTITIONS` is billed per query at BigQuery's flat-rate pricing, not per-byte.
+- **Cost:** `$__PARTITIONS_SUMMARY__` is free to query. `INFORMATION_SCHEMA.PARTITIONS` is billed per query at BigQuery's flat-rate pricing, not per-byte.
 - **Column differences:** Only `partition_id` is compatible between the two sources. The legacy meta-table also returned `project_id`, `dataset_id`, `table_id`, `creation_time`, and `last_modified_time`. If you have custom macros that access those columns from `get_partitions_metadata()` results, you must update them.
 - **IAM permissions:** `INFORMATION_SCHEMA.PARTITIONS` requires `bigquery.tables.get` and `bigquery.tables.list` instead of `bigquery.tables.getData`. Custom IAM roles may need updating. Standard predefined roles (`roles/bigquery.dataViewer`, `roles/bigquery.dataEditor`, `roles/bigquery.admin`) already include all required permissions and are not affected.
 
