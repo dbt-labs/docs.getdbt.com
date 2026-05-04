@@ -6,6 +6,9 @@
  *   DEPLOYMENT_CONFIG_VALIDATOR_README_URL=https://raw.githubusercontent.com/org/repo/main/README.md
  *
  * README is stripped of its top-level H1 so the docs page can own the title (same idea as MCP Tools section omitting ## Tools).
+ *
+ * Content strategy (v1): embed the **full** upstream README (Option 1). If Product prefers a shorter page later,
+ * switch to a dedicated markdown file in the app repo and/or section extraction (parameterized heading), without changing the docs page shape.
  */
 
 const fs = require('fs');
@@ -14,7 +17,7 @@ const https = require('https');
 
 const README_URL =
   process.env.DEPLOYMENT_CONFIG_VALIDATOR_README_URL ||
-  'https://raw.githubusercontent.com/patkearns10/dbt_architectural_validator/main/README.md';
+  'https://raw.githubusercontent.com/dbt-labs/dbt_architecture_validator/main/README.md';
 
 const OUT_PATH = path.join(
   __dirname,
