@@ -20,6 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## May 2026
 
+- **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 
 ## April 2026
