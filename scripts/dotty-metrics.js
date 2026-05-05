@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Dotty Workflow Metrics Aggregator
+ * Dotty workflow metrics aggregator
  *
  * Queries GitHub (search API + issues API + central-release-notes repo) to compute
  * Dotty accuracy and docs backlog metrics, then syncs results to Notion databases.
