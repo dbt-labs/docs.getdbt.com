@@ -96,6 +96,8 @@ For more information on how to assign permissions to users, refer to [About user
 
         For more information, see the [Amazon Redshift documentation on enhanced query monitoring permissions](https://docs.aws.amazon.com/redshift/latest/mgmt/metrics-enhanced-query-monitoring.html#metrics-enhanced-query-monitoring-permissions).
 
+        dbt verifies cross-user visibility during the connection test. If the credentials can only see their own queries, the test fails and cost data will not be processed for that environment.
+
         :::note
         Pricing configuration is required for Amazon Redshift — there is no default value. Costs will appear as $0 until you configure a price. See [Configure Cost Insights settings](#configure-cost-insights-settings-optional) for instructions.
         :::

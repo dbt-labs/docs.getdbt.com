@@ -172,7 +172,11 @@ Cost Insights supports both Amazon Redshift Serverless and provisioned cluster d
     - `node_price_per_hour` - Your price per node per hour (from your configured value in Cost Insights settings).
 
 :::note
-Redshift cost attribution is per-query standalone — each query is attributed cost as if it exclusively occupied the cluster for its duration. When queries run concurrently, the sum of query-level costs may exceed your actual bill.
+**Cost attribution**: Redshift cost attribution is per-query standalone — each query is attributed cost as if it exclusively occupied the cluster for its duration. When queries run concurrently, the sum of query-level costs may exceed your actual bill.
+
+**Data retention**: Redshift system tables (`SYS_QUERY_HISTORY`, `SYS_SERVERLESS_USAGE`) retain only 7 days of history. Cost data for Redshift may cover a shorter window than other warehouses. dbt will calculate costs for whatever data is available within that window.
+
+**Pricing required**: There are no default price values for Redshift. Costs will appear as $0 until you configure `rpu_price_per_hour` (serverless) or `node_price_per_hour` (provisioned) in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
 :::
 
 </Expandable>
