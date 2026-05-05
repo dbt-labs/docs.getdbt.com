@@ -114,7 +114,7 @@ Use this table to compare all available flags and how to configure them across i
 <VersionBlock firstVersion="1.11">
 
 
-| Flag | <Constant name="dbt_platform" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
+| Flag | <Constant name="dbt" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
 |------|----------------|----------------|-------------|---------|-----------|
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |
