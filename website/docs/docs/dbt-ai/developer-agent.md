@@ -38,10 +38,11 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 
 - The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only and for all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). It's not available in VS Code or the <Constant name="platform_cli" />.
 - It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
-- Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
-- You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
+- You can delete individual conversations in your <Constant name="copilot" /> chat history. Click on a conversation in the conversation list to open the menu, select the three dots icon and choose **Delete**, and confirm. Deleting the conversation you're viewing clears the panel so you can start fresh. 
 - Refreshing the same browser tab restores your active conversation so you don't lose your context. Opening a new tab, or returning after closing the tab, starts a new empty session.
 - Retaining chat history isn't supported for single tenant deployments yet. We recommend you save important info manually between sessions.
+- Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
+- You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
 
 ## Using the Developer agent
 

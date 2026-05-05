@@ -22,6 +22,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 ## May 2026
 
 <Lifecycle status="New" size="65" /> The Fusion + Snowflake connection experience is now generally available on the dbt platform, refer to [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for more information.
+<Lifecycle status="Enhancement" size="65" /> Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (three dots → **Delete**). Deleting the open conversation clears the panel.
 
 ## April 2026
 
