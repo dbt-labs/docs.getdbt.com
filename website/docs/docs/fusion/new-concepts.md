@@ -87,6 +87,10 @@ VS Code extension features by static analysis configuration:
 | Rich column lineage | ❌ | ❌ | ✅ |
 | Detect data type and function signature errors | ❌ | ❌ | ✅ |
 
+:::tip Supported Snowflake functions
+To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support)
+:::
+
 :::tip CodeLens visibility
 The VS Code extension and Studio IDE provide CodeLens even when static analysis is off, giving you visibility into which models have static analysis disabled and why.
 :::

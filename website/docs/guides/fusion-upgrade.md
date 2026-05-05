@@ -61,7 +61,7 @@ Always upgrade your development environment first before moving to production. T
 
 ### Assign upgrade access (optional)
 
-The <Constant name="fusion" /> upgrade assistant is controlled by two account-level settings. An [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) must first enable the readiness experience, and can optionally restrict which users can execute the upgrade.
+The <Constant name="fusion" /> upgrade assistant is controlled by two account-level settings. An [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) must first enable the readiness experience, and can optionally restrict which users can execute the upgrade.
 
 #### Enable the Fusion readiness experience
 
@@ -82,7 +82,7 @@ By default, any user who can see the upgrade assistant can use it. To restrict u
 2. Select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 3. Click **Save**.
 
-When this is enabled, only users with the **Fusion admin** [permission set](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) can execute upgrades. To assign this permission:
+When this is enabled, only users with the **Fusion admin** [permission set](/docs/platform/manage-access/enterprise-permissions#fusion-admin) can execute upgrades. To assign this permission:
 
 1. Navigate to **Account settings** → **Groups** and choose the group to grant access.
 2. Click **Edit** and scroll to **Access and permissions**.
@@ -90,7 +90,7 @@ When this is enabled, only users with the **Fusion admin** [permission set](/doc
 4. Select the project(s) users should access.
 5. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin permissions to groups"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin permissions to groups"/>
 
 For more details on access control, see [Assign access to upgrade](/docs/dbt-versions/upgrade-dbt-version-in-cloud#assign-access-to-upgrade).
 
@@ -101,7 +101,7 @@ Launch the <Constant name="fusion" /> upgrade workflow from your project:
 1. Log into <Constant name="dbt_platform" /> and navigate to your project.
 2. From the project homepage or sidebar, click **Start Fusion upgrade** or **Get started**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the Fusion upgrade from the project homepage"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the Fusion upgrade from the project homepage"/>
 
 You'll be redirected to the <Constant name="studio_ide" /> with the upgrade assistant visible at the top.
 
@@ -111,7 +111,7 @@ Even if you resolved deprecations in Part 1, run a final check to ensure nothing
 
 1. At the top of the <Constant name="studio_ide" />, click **Check deprecation warnings**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/check-deprecations.png" width="60%" title="Check for deprecation warnings in your project"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Check for deprecation warnings in your project"/>
 
 2. Wait for the parse to complete (this may take a few moments depending on project size).
 3. Review the results:
@@ -135,9 +135,9 @@ If you find deprecation warnings, use the autofix tool to resolve them:
 5. Review the modified files in the **Version control** panel.
 6. If all warnings are resolved, you'll see a success message.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/autofix-success.png" width="60%" title="Success message when deprecations are resolved"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="Success message when deprecations are resolved"/>
 
-For detailed information about the autofix process, see [Fix deprecation warnings](/docs/cloud/studio-ide/autofix-deprecations).
+For detailed information about the autofix process, see [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations).
 
 :::info Manual fixes required?
 
@@ -234,7 +234,7 @@ Access the settings for your staging or intermediate environment:
 4. Click on your staging environment name to open its settings.
 5. Click the **Edit** button in the top right.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Navigate to environment settings"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Navigate to environment settings"/>
 
 ### Step 2: Update the dbt version
 
@@ -245,7 +245,7 @@ Change your staging environment to use the <Constant name="fusion" /> release tr
 3. Select **Latest Fusion** from the list.
 4. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion from the dbt version dropdown"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion from the dbt version dropdown"/>
 
 Your staging environment is now configured to use <Constant name="fusion" />! Any jobs associated with this environment will use <Constant name="fusion" /> on their next run.
 
@@ -336,7 +336,7 @@ Access your production environment configuration:
 4. Click on your production environment (typically marked with a **Production** badge).
 5. Click the **Edit** button in the top right.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Access production environment settings"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Access production environment settings"/>
 
 ### Step 3: Upgrade to Latest Fusion
 
@@ -348,7 +348,7 @@ Update your production environment to use <Constant name="fusion" />:
 4. Review your settings one final time to ensure everything is correct.
 5. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion for production"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion for production"/>
 
 Your production environment is now running on <Constant name="fusion" />!
 
@@ -367,11 +367,15 @@ Validate the upgrade by running a job:
 
 If the job succeeds, your production upgrade is successful!
 
+import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
+
+<FusionReadinessPanel />
+
 ### Step 5: Enable state-aware orchestration (optional but recommended) <Lifecycle status="Enterprise, Enterprise+"/>
 
 One of <Constant name="fusion" />'s most powerful features is [state-aware orchestration](/docs/deploy/state-aware-about), which automatically determines which models need rebuilding based on code or data changes. This can reduce warehouse costs by 30% or more.
 
-New jobs automatically have state-aware orchestration enabled in <Constant name="fusion" /> environments.
+State-aware orchestration is in private preview. To request access, contact your account manager. Once your account has access, new deploy jobs in <Constant name="fusion" /> environments are automatically state-aware.
 
 To enable it for existing jobs:
 
@@ -385,7 +389,7 @@ To enable it for existing jobs:
    - **Efficient testing**
 7. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Enable Fusion cost optimization features"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-triggers-section.png" width="90%" title="Enable Fusion cost optimization features"/>
 
 Repeat this for all production jobs to maximize cost savings. For more details, see [Setting up state-aware orchestration](/docs/deploy/state-aware-setup).
 
