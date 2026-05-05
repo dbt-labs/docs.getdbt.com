@@ -83,7 +83,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 
 For jobs that are eligible for <Constant name="fusion" /> in the readiness experience, **Run once on <Constant name="fusion" />** is replaced by a **Debug on <Constant name="fusion" />** dropdown.
 
-Use **Debug on <Constant name="fusion" />** from the <Constant name="fusion" /> eligibility banner or modal.
+Use **Debug on <Constant name="fusion" />** from the eligibility banner or modal.
 
 Use a debug option when you want to inspect or fix issues interactively in <Constant name="studio_ide" />. Use **Run once on <Constant name="fusion" />** when you want to validate execution behavior in a deployment context.
 
