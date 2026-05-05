@@ -169,7 +169,7 @@ Cost Insights supports both Amazon Redshift Serverless and provisioned cluster d
     Where:
     - `elapsed_time_hours` - Query execution time in hours. dbt sources this from `SYS_QUERY_HISTORY`.
     - `node_count` - Number of nodes in your cluster. dbt sources this from `STV_SLICES`.
-    - `node_price_per_hour` - Your price per node per hour (from your configured value in Cost Insights settings).
+    - `node_price_per_hour` - Your price per node per hour (from your configured value in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional)).
 
 **Additional considerations:**
 - **Data retention**: Redshift system tables (`SYS_QUERY_HISTORY`, `SYS_SERVERLESS_USAGE`) retain only 7 days of history. Cost data for Redshift may cover a shorter window than other warehouses. dbt calculates costs for whatever data is available within that window.
