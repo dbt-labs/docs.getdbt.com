@@ -79,6 +79,31 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 
+#### Debugging Fusion eligibility issues
+
+For jobs that are eligible for <Constant name="fusion" /> in the readiness experience, **Run once on <Constant name="fusion" />** is replaced by a **Debug on <Constant name="fusion" />** dropdown.
+
+Use **Debug on <Constant name="fusion" />** from the <Constant name="fusion" /> eligibility banner or modal.
+
+Use a debug option when you want to inspect or fix issues interactively in <Constant name="studio_ide" />. Use **Run once on <Constant name="fusion" />** when you want to validate execution behavior in a deployment context.
+
+:::note
+<Constant name="fusion" /> eligibility messaging appears as a banner or modal that explains whether a job is eligible for <Constant name="fusion" /> and why. If you don't see this messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/cloud/account-settings). For setup steps, refer to [Prepare for Fusion upgrade](/guides/prepare-fusion-upgrade).
+:::
+
+To locate this option:
+
+1. In your <Constant name="dbt_platform" /> account, click **Orchestration**.
+2. Click **Jobs**.
+3. Select a job that has <Constant name="fusion" /> eligibility messaging.
+4. In the <Constant name="fusion" /> eligibility banner or modal, click **Debug on <Constant name="fusion" />**.
+
+Use **Debug on <Constant name="fusion" />** to choose how to proceed:
+
+- **Debug in Studio** opens <Constant name="studio_ide" /> with <Constant name="fusion" /> debugging enabled so you can troubleshoot before running a full deployment.
+- **Debug in Studio with <Constant name="copilot" />** does the same, with <Constant name="copilot" /> support, when your account has AI features enabled.
+- **Run once on <Constant name="fusion" />** runs a one-time <Constant name="fusion" /> test run for the job.
+
 ### Stay informed about Fusion progress
 
 The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! Keep up-to-date with these resources: 
