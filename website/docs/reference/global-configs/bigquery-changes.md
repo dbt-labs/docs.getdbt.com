@@ -71,5 +71,29 @@ sources:
 
 </File>
 
+
+## The `bigquery_use_standard_sql_for_partitions` flag
+
+BigQuery is [deprecating legacy SQL starting June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). New Google Cloud Platform projects created after that date will not support legacy SQL. The `get_partitions_metadata()` macro currently uses legacy SQL with `$__PARTITIONS_SUMMARY__`, which will stop working after this deprecation.
+
+The `bigquery_use_standard_sql_for_partitions` flag controls whether dbt uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) instead of legacy SQL (`$__PARTITIONS_SUMMARY__`) when calling `get_partitions_metadata()`.
+
+By default, this flag is set to `False` and legacy SQL remains the default. To enable standard SQL, set the flag to `True` in your `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  bigquery_use_standard_sql_for_partitions: true
+```
+
+</File>
+
+Before enabling this flag, note the following:
+
+- **Cost:** `$__PARTITIONS_SUMMARY__` is free to query. `INFORMATION_SCHEMA.PARTITIONS` is billed per query at BigQuery's flat-rate pricing, not per-byte.
+- **Column differences:** Only `partition_id` is compatible between the two sources. The legacy meta-table also returned `project_id`, `dataset_id`, `table_id`, `creation_time`, and `last_modified_time`. If you have custom macros that access those columns from `get_partitions_metadata()` results, you must update them.
+- **IAM permissions:** `INFORMATION_SCHEMA.PARTITIONS` requires `bigquery.tables.get` and `bigquery.tables.list` instead of `bigquery.tables.getData`. Custom IAM roles may need updating. Standard predefined roles (`roles/bigquery.dataViewer`, `roles/bigquery.dataEditor`, `roles/bigquery.admin`) already include all required permissions and are not affected.
+
 </VersionBlock>
 
