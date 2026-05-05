@@ -65,8 +65,8 @@ The project dashboard includes the following tabs that help you analyze cost and
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
-    - Amazon Redshift Serverless: 
-    - Amazon Redshift Provisioned: 
+    - Amazon Redshift Serverless: Redshift Processing Units (RPU hours)
+    - Amazon Redshift Provisioned: Node hours
 - **Query run time**: Shows the estimated reduction in build time when using state-aware orchestration.
 - **Builds**: Shows total builds split into number of assets rebuilt and assets reused by state-aware orchestration.
 
@@ -125,6 +125,8 @@ For **Cost**, **Usage**, **Query run time**, and **Builds** tabs, you can custom
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
+    - Amazon Redshift Serverless: Redshift Processing Units (RPU hours)
+    - Amazon Redshift Provisioned: Node hours
 - **Query run time**: Shows the estimated query execution time and the reduction in run duration from state-aware orchestration.
 - **Builds**: Shows the number of assets built versus reused by state-aware orchestration.
 
