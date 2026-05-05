@@ -146,7 +146,7 @@ Cost Insights supports both Amazon Redshift Serverless and provisioned cluster d
 
 - **Redshift Serverless**
 
-    dbt estimates cost by identifying which RPU billing periods overlap with each query's execution time and attributing the proportional share of RPU-hours to the query.
+    dbt estimates cost by identifying which Redshift Processing Unit (RPU) billing periods overlap with each query's execution time and attributing the proportional share of RPU-hours to the query.
 
     Formula:
     ```
