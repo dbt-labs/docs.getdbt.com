@@ -56,35 +56,38 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 
 ## Accessing your account
 
-To log into <Constant name="dbt" />, use the URL that applies to your environment.  Your access URL used will depend on a few factors, including location and tenancy:
-- **US multi-tenant:** Use your unique URL that starts with your account prefix, followed by `us1.dbt.com`. For example, `abc123.us1.dbt.com`. You can also use `cloud.getdbt.com`, but this URL will be removed in the future. 
-    - If you are unsure of your access URL, navigate to `us1.dbt.com` and enter your <Constant name="dbt" /> credentials. If you are a member of a single account, you will be logged in, and your URL will be displayed in the browser. If you are a member of multiple accounts, you will be presented with a list of options, along with the appropriate login URLs for each.
+The recommended way to sign in to <Constant name="dbt_platform"/> is [https://login.dbt.com](https://login.dbt.com). Enter your email, verify it, and select the account you want to open from the list of accounts associated with your email. For more information about the login process, refer to [Log in to dbt platform](/docs/platform/about-platform/login).
 
-    <Lightbox src="/img/docs/dbt-platform/find-account.png" width="60%" title="dbt accounts" />
+If you already know your account **Access URL**, you can sign in directly. Your access URL depends on your region and tenancy:
 
-- **EMEA multi-tenant:** Use `emea.dbt.com`.
-- **APAC multi-tenant:** Use `au.dbt.com`.
+<Lightbox src="/img/docs/dbt-platform/find-account.png" width="60%" title="dbt accounts" />
+
+- **US multi-tenant:** `ACCOUNT_PREFIX.us1.dbt.com` (for example, `abc123.us1.dbt.com`)
+- **EMEA multi-tenant:** `ACCOUNT_PREFIX.eu1.dbt.com` (for example, `abc123.eu1.dbt.com`)
+- **APAC multi-tenant:** `ACCOUNT_PREFIX.au1.dbt.com` (for example, `abc123.au1.dbt.com`)
 - **Worldwide single-tenant and VPC:** Use the vanity URL provided during your onboarding.
+
+Refer to the [tables earlier](#AWS) for the full list of access URLs by region.
 
 ## Locating your dbt IP addresses
 
-There are two ways to view your <Constant name="dbt" /> IP addresses:
+There are two ways to view your <Constant name="dbt_platform" /> IP addresses:
 - If no projects exist in the account, create a new project, and the IP addresses will be displayed during the **Configure your environment** steps.
 - If you have an existing project, navigate to **Account Settings** and ensure you are in the **Projects** pane. Click on a project name, and the **Project Settings** window will open. Locate the **Connection** field and click on the name. Scroll down to the **Settings**, and the first text block lists your IP addresses. 
 
 ### Static IP addresses
 
-<Constant name="dbt" /> is hosted on AWS, Azure, and the Google Cloud Platform (GCP). While we can offer static URLs for access, we cannot provide a list of IP addresses to configure connections due to the nature of these cloud services.
+<Constant name="dbt_platform" /> is hosted on AWS, Azure, and the Google Cloud Platform (GCP). While we can offer static URLs for access, we cannot provide a list of IP addresses to configure connections due to the nature of these cloud services.
 
-* Dynamic IP addresses &mdash; <Constant name="dbt" /> offers static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. The cloud service provider manages the IP ranges and may change them according to their operational and security needs.
+* Dynamic IP addresses &mdash; <Constant name="dbt_platform" /> provides static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses can change occasionally. Cloud providers manage these IP ranges and may update them based on operational and security needs.
 
-* Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you use <Constant name="dbt" /> services using hostnames. Hostnames provide a consistent reference point, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
+* Using hostnames for consistent access &mdash; To ensure uninterrupted access, use <Constant name="dbt_platform" /> hostnames. Hostnames provide a consistent reference point, such as `abc123.us1.dbt.com`, even if underlying IP addresses change. This aligns with an industry-standard practice used by platforms such as Snowflake.
 
-* Optimizing VPN connections &mdash; You should integrate a proxy alongside VPN for users who leverage VPN connections. This strategy enables steady IP addresses for your connections, facilitating smooth traffic flow through the VPN and onward to <Constant name="dbt" />. By employing a proxy and a VPN, you can direct traffic through the VPN and then to <Constant name="dbt" />. It's crucial to set up the proxy if you need to integrate with additional services.
+* Optimizing VPN connections &mdash; You should integrate a proxy alongside VPN for users who leverage VPN connections. This strategy enables steady IP addresses for your connections, facilitating smooth traffic flow through the VPN and onward to <Constant name="dbt_platform" />. By employing a proxy and a VPN, you can direct traffic through the VPN and then to <Constant name="dbt_platform" />. It's crucial to set up the proxy if you need to integrate with additional services.
 
 ## API Access URLs
 
-<Constant name="dbt" /> accounts with cell-based account prefixes have unique access URLs for account APIs. These URLs can be found in your **Account settings** below the **Account information** pane.
+For <Constant name="dbt_platform" /> accounts with cell-based account prefixes, account API access URLs are unique per account. You can find these URLs in **Account settings**, under **Account information**.
 
 <Lightbox src="/img/docs/dbt-platform/access-urls.png" title="Access URLs in the account settings" />
 
