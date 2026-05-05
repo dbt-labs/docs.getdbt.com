@@ -576,9 +576,10 @@ Support for Jinja file extensions is a beta feature in <Constant name="core" /> 
 
 The `allow_jinja_file_extensions` flag is set to `False` by default.
 
-When set to `True`, dbt recognizes Jinja-style extension suffixes (for example,`.j2`, `.jinja`, and `.jinja2`) appended to `.sql` and `.md` files. This lets you use Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating. For example, a [docs block](/docs/build/documentation#using-docs-blocks) file named `my_docs.md.j2` is parsed identically to `my_docs.md`, and a model file named `my_model.sql.j2` is parsed as the model `my_model`.
+When set to `True`, dbt recognizes Jinja-style extension suffixes (for example,`.j2`, `.jinja`, and `.jinja2`) appended to `.sql` and `.md` files. This lets you use Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
 
-dbt strips the Jinja suffix when determining node names; resource names remain unchanged regardless of whether the Jinja suffix is present.
+dbt strips the Jinja suffix when determining node names; resource names remain unchanged regardless of whether the Jinja suffix is present. For example, a [docs block](/docs/build/documentation#using-docs-blocks) file named `my_docs.md.j2` is parsed identically to `my_docs.md`, and a model file named `my_model.sql.j2` is parsed as the model `my_model`.
+
 
 To enable the flag, add it under `flags` in `dbt_project.yml`:
 
