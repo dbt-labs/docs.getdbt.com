@@ -98,9 +98,7 @@ For more information on how to assign permissions to users, refer to [About user
 
         dbt verifies cross-user visibility during the connection test. If the credentials can only see their own queries, the test fails and cost data will not be processed for that environment.
 
-        :::note
         Pricing configuration is required for Amazon Redshift — there is no default value. Costs will appear as $0 until you configure a price. See [Configure Cost Insights settings](#configure-cost-insights-settings-optional) for instructions.
-        :::
         </Expandable>
 
 5. Verify that **Cost insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
@@ -116,7 +114,7 @@ By default, dbt uses standard warehouse pricing. If you have custom pricing cont
 | [BigQuery](https://cloud.google.com/bigquery/pricing) | `price_per_slot_hour` = $0.04, `price_per_tib` = $6.25 |
 | [Databricks](https://docs.databricks.com/aws/en/admin/system-tables/pricing) | dbt queries the `list_prices` system table directly, so there is no default value. |
 | [Amazon Redshift Serverless](https://aws.amazon.com/redshift/pricing/) | `rpu_price_per_hour` — no default value, must be configured. |
-| [Amazon Redshift Provisioned](https://aws.amazon.com/redshift/pricing/) | `node_price_per_hour` — no default value, must be configured. |
+| [Amazon Redshift Provisioned](https://aws.amazon.com/redshift/pricing/) | `node_price_per_hour` — no default value; costs appear as $0 until configured. |
 
 <br></br>
 

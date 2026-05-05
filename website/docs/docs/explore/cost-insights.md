@@ -155,7 +155,7 @@ Cost Insights supports both Amazon Redshift Serverless and provisioned cluster d
 
     Where:
     - `rpu_hours_per_query` - RPU-hours attributed to the query based on its proportional overlap with each billing period. dbt sources billing period data from `SYS_SERVERLESS_USAGE`. For more information, see the [Amazon Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html).
-    - `rpu_price_per_hour` - Your RPU price per hour (from your configured value in Cost Insights settings).
+    - `rpu_price_per_hour` - Your RPU price per hour (from your configured value in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional)).
 
 - **Redshift Provisioned**
 
@@ -172,11 +172,11 @@ Cost Insights supports both Amazon Redshift Serverless and provisioned cluster d
     - `node_price_per_hour` - Your price per node per hour (from your configured value in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional)).
 
 **Additional considerations:**
-- **Data retention**: Redshift system tables (`SYS_QUERY_HISTORY`, `SYS_SERVERLESS_USAGE`) retain only 7 days of history. Cost data for Redshift may cover a shorter window than other warehouses. dbt calculates costs for whatever data is available within that window.
+- **Data retention**: Redshift system tables (`SYS_QUERY_HISTORY`, `SYS_SERVERLESS_USAGE`) retain only seven days of history. Cost data for Redshift may cover a shorter window than other warehouses. dbt calculates costs for whatever data is available within that window.
 - **Pricing required**: There are no default price values for Redshift. Costs will appear as $0 until you configure `rpu_price_per_hour` (serverless) or `node_price_per_hour` (provisioned) in [Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
 
-:::note
-Redshift cost attribution is per-query standalone — each query is attributed cost as if it exclusively occupied the cluster for its duration. When queries run concurrently, the sum of query-level costs may exceed your actual bill.
+:::info Concurrent query costs
+Redshift attributes cost to each query as if it ran alone on the cluster. If queries run concurrently, the sum of individual query costs may exceed your actual bill.
 :::
 
 </Expandable>
