@@ -32,6 +32,18 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ## New and changed features and functionality
 
+### New Semantic Layer YAML spec
+
+<Constant name="core" /> v1.12 adds support for the latest Semantic Layer YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
+
+Key changes in the new spec:
+- `semantic_model` is nested directly under each model instead of being a standalone top-level key.
+- Entities and dimensions are defined at the column level.
+- Measures are replaced with `type: simple` metrics defined within the model.
+- `type_params` is deprecated; its parameters are now top-level keys within each metric definition.
+
+For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
+
 ### `.env` file for environment variables <Lifecycle status="beta" />
 
 <Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).

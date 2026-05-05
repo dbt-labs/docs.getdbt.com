@@ -18,6 +18,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
 
+## May 2026
+
+- **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
+
 ## April 2026
 
 - **New:** A universal login URL is available at [https://login.dbt.com](https://login.dbt.com), making it easier for you to view accounts you have access to across instances (regions and tenancies). This is currently available for multi-tenant accounts with an account-specific domain, and support for single-tenant accounts is coming soon. For more information, refer to [Log in to dbt platform](/docs/platform/about-platform/login).
