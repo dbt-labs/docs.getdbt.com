@@ -14,10 +14,6 @@ import FusionAdapters from '/snippets/_fusion-dwh.md';
 
 ## Introduction 
 
-import FusionPreview from '/snippets/_fusion-private-preview.md';
-
-<FusionPreview />
-
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and moving to it is the same as upgrading between <Constant name="core" /> versions in the <Constant name="dbt_platform" />. Once your project is <Constant name="fusion" /> ready, it's only a matter of pulling a few levers to make the move, but you have some flexibility in how you do so, especially in your development environments. 
 
 Once you complete the <Constant name="fusion" /> migration, your team will benefit from:
@@ -27,15 +23,6 @@ Once you complete the <Constant name="fusion" /> migration, your team will benef
 - 🔍 Enhanced SQL validation and error messages
 - 🚀 [State-aware orchestration](/docs/deploy/state-aware-about) for intelligent model rebuilding
 - 🛠️ Modern development tools
-
-:::info Fusion availability
-
-<Constant name="fusion" /> on the <Constant name="dbt_platform" /> is currently in `Private preview`. Enabling it for your account depends on your plan:
-
-- **Enteprise and Enterprise+ plans:** Contact your account manager to enable <Constant name="fusion" /> for your environment.
-- **Developer and Starter plans:** Complete the steps in the [Part 1: Prepare for upgrade](/guides/prepare-fusion-upgrade) guide to become <Constant name="fusion" /> eligible, and it will be enabled for your account automatically so you can start the upgrade processes.
-
-:::
 
 ## Prerequisites
 
