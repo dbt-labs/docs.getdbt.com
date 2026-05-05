@@ -52,20 +52,17 @@ Upgrade your existing projects to the <Constant name="fusion_engine" /> and lear
     body="Step-by-step guide to prepare your dbt platform projects for upgrading to Fusion."
     link="/guides/prepare-fusion-upgrade"
     icon="dbt-bit"
-    lifecycle="private_preview"/>
 
 <Card
     title="Guide: Upgrade to Fusion"
     body="Learn how to upgrade your eligible projects on the dbt platform to the Fusion engine with this comprehensive guide."
     link="/guides/upgrade-to-fusion"
     icon="dbt-bit"
-    lifecycle="private_preview"/>
 
 <Card
     title="Guide: dbt platform and local workflows"
     body="Learn how to keep credentials, environment variables, and Fusion versions in sync between dbt platform and local development."
     link="/guides/fusion-platform-local-workflow"
     icon="dbt-bit"
-    lifecycle="preview"/>
 
 </div>
