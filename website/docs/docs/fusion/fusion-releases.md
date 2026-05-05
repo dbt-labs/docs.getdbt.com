@@ -12,7 +12,7 @@ import FusionReleases from '/src/components/fusionReleases';
 
 :::note Fusion availability
 
-Fusion is now generally available for <Constant nam="dbt_platform" /> projects on Snowflake! It remains in preview for all other adapters and local installations.
+Fusion is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! It remains in preview for all other adapters and local installations.
 
 :::
 
