@@ -1,11 +1,15 @@
 ---
 title: "Continuous integration in dbt"
 sidebar_label: "Continuous integration"
-description: "You can set up continuous integration (CI) checks to test every single change prior to deploying the code to production just like in a software development workflow."
+description: "Learn how CI checks validate changes before you deploy code to production."
 pagination_next: "docs/deploy/advanced-ci"
 ---
 
-To implement a continuous integration (CI) workflow in <Constant name="dbt" />, you can set up automation that tests code changes by running [CI jobs](/docs/deploy/ci-jobs) before merging to production. <Constant name="dbt" /> tracks the state of what’s running in your production environment so, when you run a CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema. You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your <Constant name="git" /> provider as soon as a CI job completes. Additionally, you can enable settings in your <Constant name="git" /> provider that allow PRs only with successful CI checks to be approved for merging.  
+To implement a continuous integration (CI) workflow in <Constant name="dbt" />, you can set up automation that tests code changes by running [CI jobs](/docs/deploy/ci-jobs) before merging to production. <Constant name="dbt" /> tracks the state of what’s running in your production environment. When you run a CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema.
+
+You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your <Constant name="git" /> provider as soon as a CI job completes. Additionally, you can enable settings in your <Constant name="git" /> provider that allow PRs only with successful CI checks to be approved for merging.
+
+For workflows that promote changes after a PR merges (merge jobs or other deployment triggers, including triggering jobs manually or through APIs), refer to [Continuous deployment in <Constant name="dbt" />](/docs/deploy/continuous-deployment), including [merge jobs](/docs/deploy/merge-jobs).
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt"/>
 
@@ -21,9 +25,9 @@ When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name=
 
 <Constant name="dbt" /> builds and tests models, semantic models, metrics, and saved queries affected by the code change in a temporary schema, unique to the PR. This process ensures that the code builds without error and that it matches the expectations as defined by the project's dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/using_ci_dbt_cloud.png" width="90%"title="Viewing the temporary schema name for a run triggered by a PR"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/using_ci_dbt_cloud.png" width="90%" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
-When the CI run completes, you can view the run status directly from within the pull request. <Constant name="dbt" /> updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not. 
+When the CI run completes, you can view the run status directly from within the pull request. <Constant name="dbt" /> updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not.
 
 <Constant name="dbt" /> deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has schema customization using the [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macro, <Constant name="dbt" /> might not drop the temporary schema from your data warehouse. For more information, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
 
@@ -35,24 +39,28 @@ import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
 
 The [<Constant name="dbt" /> scheduler](/docs/deploy/job-scheduler) executes CI jobs differently from other deployment jobs in these important ways:
 
-- [**Concurrent CI checks**](#concurrent-ci-checks) &mdash; CI runs triggered by the same <Constant name="dbt" /> CI job execute concurrently (in parallel), when appropriate.
-- [**Smart cancellation of stale builds**](#smart-cancellation-of-stale-builds) &mdash; Automatically cancels stale, in-flight CI runs when there are new commits to the PR.
+- [**Concurrent CI checks**](#concurrent-ci-checks) &mdash; The scheduler can execute multiple CI runs from the same <Constant name="dbt" /> CI job concurrently (in parallel) when appropriate.
+- [**Smart cancellation of stale builds**](#smart-cancellation-of-stale-builds) &mdash; The scheduler cancels stale in-flight CI runs when you push new commits to the PR.
 - [**Run slot treatment**](#run-slot-treatment) &mdash; CI runs don't consume a run slot.
-- [**SQL linting**](#sql-linting) &mdash; When enabled, automatically lints all SQL files in your project as a run step before your CI job builds.
+- [**SQL linting**](#sql-linting) &mdash; When enabled, linting runs on all SQL files in your project as a step before your CI job builds.
 
 ### Concurrent CI checks <Lifecycle status="self_service,managed,managed_plus" />
 
-When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same CI job will get triggered. Since each run builds into a dedicated, temporary schema that’s tied to the pull request, <Constant name="dbt" /> can safely execute CI runs _concurrently_ instead of _sequentially_ (differing from what is done with deployment <Constant name="dbt" /> jobs). Because no one needs to wait for one CI run to finish before another one can start, with concurrent CI checks, your whole team can test and integrate dbt code faster.
+When you collaborate on a dbt project with your team and open pull requests in the same dbt repository, the same CI job can run for each qualifying event.
 
-The following describes the conditions when CI checks are run concurrently and when they’re not:  
+Each CI run writes to a dedicated, temporary schema that is tied to its pull request. That isolation lets <Constant name="dbt" /> execute CI runs _concurrently_ instead of _sequentially_. This differs from deployment <Constant name="dbt" /> jobs.
 
-- CI runs with different PR numbers execute concurrently. 
-- CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. <Constant name="dbt" /> will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation). 
-- CI runs with the same PR number and same commit SHA, originating from different <Constant name="dbt" /> projects will execute jobs concurrently. This can happen when two CI jobs are set up in different <Constant name="dbt" /> projects that share the same dbt repository.
+You don't have to wait for someone else’s CI run to finish before your own check can start. Concurrent CI checks help your whole team test and integrate dbt code faster.
+
+The following describes the conditions when CI checks are run concurrently and when they’re not:
+
+- CI runs with different PR numbers execute concurrently.
+- CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. <Constant name="dbt" /> will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation).
+- CI runs with the same PR number and same commit SHA can still execute concurrently when they come from different <Constant name="dbt" /> projects. This can happen when two CI jobs are set up in different <Constant name="dbt" /> projects that share the same dbt repository.
 
 ### Smart cancellation of stale builds <Lifecycle status="self_service,managed,managed_plus" />
 
-When you push a new commit to a PR, <Constant name="dbt" /> enqueues a new CI run for the latest commit and cancels any CI run that is (now) stale and still in flight. This can happen when you’re pushing new commits while a CI build is still in process and not yet done. By cancelling runs in a safe and deliberate way, <Constant name="dbt" /> helps improve productivity and reduce data platform spend on wasteful CI runs.
+When you push a new commit to a PR, <Constant name="dbt" /> enqueues a new CI run for the latest commit and cancels any CI run that is (now) stale and still in flight. This can happen when you’re pushing new commits while a CI build is still in process and not yet done. By canceling runs in a safe and deliberate way, <Constant name="dbt" /> helps improve productivity and reduce data platform spend on wasteful CI runs.
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-smart-cancel-job.png" width="70%" title="Example of an automatically canceled run"/>
 
@@ -64,17 +72,26 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 Available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/cloud-release-tracks) and <Constant name="dbt" /> Starter or Enterprise-tier accounts.
 
-When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
+When [enabled for your CI job](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt invokes [SQLFluff](https://sqlfluff.com/). SQLFluff is a modular, configurable SQL linter. It warns you about complex functions, syntax, formatting, and compilation errors.
 
-By default, SQL linting lints all the changed SQL files in your project (compared to the last deferred production state). Note that [snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files, but its SQL isn't lintable and can cause errors during linting. To prevent SQLFluff from linting snapshot files, add the snapshots directory to your `.sqlfluffignore` file (for example `snapshots/`). Refer to [snapshot linting](/docs/platform/studio-ide/lint-format#snapshot-linting) for more information.
+:::note SQLFluff and the Fusion engine
+SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, refer to [<Constant name="fusion" /> limitations](/docs/fusion/supported-features#limitations).
+:::
+
+By default, SQL linting lints all the changed SQL files in your project, compared to the last deferred production state.
+
+Note that [snapshots](/docs/build/snapshots) can be defined in YAML _and_ `.sql` files. Their SQL isn't lintable and can cause errors during linting.
+
+To prevent SQLFluff from linting snapshot files, add the snapshots directory to your `.sqlfluffignore` file (for example `snapshots/`). Refer to [snapshot linting](/docs/platform/studio-ide/lint-format#snapshot-linting) for more information.
 
 If the linter runs into errors, you can specify whether dbt should stop running the job on error or continue running it on error. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check.
 
-#### To configure SQLFluff linting:
+#### To configure SQLFluff linting
+
 You can optionally configure SQLFluff linting rules to override default linting behavior.
 
 - Use [SQLFluff Configuration Files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html#configuration-files) to override the default linting behavior in dbt.
 - Create a `.sqlfluff` configuration file in your project, add your linting rules to it, and <Constant name="dbt" /> will use them when linting.
     - When configuring, you can use `dbt` as the templater (for example, `templater = dbt`)
-    - If you’re using the <Constant name="studio_ide" />, <Constant name="dbt" /> CLI, or any other editor, refer to [Customize linting](/docs/platform/studio-ide/lint-format#customize-linting) for guidance on how to add the dbt-specific (or dbtonic) linting rules we use for own project.
+    - If you’re using the <Constant name="studio_ide" />, <Constant name="dbt" /> CLI, or any other editor, refer to [Customize linting](/docs/platform/studio-ide/lint-format#customize-linting) for guidance on how to add the dbt-specific (or dbtonic) linting rules we use for our own project.
 - For complete details, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation.

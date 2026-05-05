@@ -375,7 +375,7 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 One of <Constant name="fusion" />'s most powerful features is [state-aware orchestration](/docs/deploy/state-aware-about), which automatically determines which models need rebuilding based on code or data changes. This can reduce warehouse costs by 30% or more.
 
-New jobs automatically have state-aware orchestration enabled in <Constant name="fusion" /> environments.
+State-aware orchestration is in private preview. To request access, contact your account manager. Once your account has access, new deploy jobs in <Constant name="fusion" /> environments are automatically state-aware.
 
 To enable it for existing jobs:
 
