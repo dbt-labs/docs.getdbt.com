@@ -10,9 +10,9 @@ import FusionReleases from '/src/components/fusionReleases';
 
 # Fusion releases <Lifecycle status="preview" />
 
-:::note Preview feature
+:::note Fusion availability
 
-This page shows release information for preview builds of <Constant name="fusion" /> only. When <Constant name="fusion" /> becomes generally available, these channels will transition to <Constant name="fusion" /> [release tracks](/docs/dbt-versions/cloud-release-tracks).
+Fusion is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! It remains in preview for all other adapters and local installations.
 
 :::
 
