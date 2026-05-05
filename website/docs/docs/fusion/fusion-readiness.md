@@ -88,7 +88,7 @@ Use **Debug on <Constant name="fusion" />** from the eligibility banner or modal
 Use a debug option when you want to inspect or fix issues interactively in <Constant name="studio_ide" />. Use **Run once on <Constant name="fusion" />** when you want to validate execution behavior in a deployment context.
 
 :::note
-<Constant name="fusion" /> eligibility messaging appears as a banner or modal that explains whether a job is eligible for <Constant name="fusion" /> and why. If you don't see this messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/cloud/account-settings). For setup steps, refer to [Prepare for Fusion upgrade](/guides/prepare-fusion-upgrade).
+<Constant name="fusion" /> eligibility messaging appears as a banner or modal that explains whether a job is eligible for <Constant name="fusion" /> and why. If you don't see this messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Prepare for Fusion upgrade](/guides/prepare-fusion-upgrade).
 :::
 
 To locate this option:
