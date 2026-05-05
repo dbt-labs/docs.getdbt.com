@@ -463,6 +463,14 @@ ul.table-of-contents .hash-link::before {
   display: none;
 }
 
+/* dbt platform release notes: squarer pills for category badges (New / Enhancement / Fix / Behavior change) */
+.doc-release-notes-lifecycle .lifecycle[data-lifecycle-status="New"],
+.doc-release-notes-lifecycle .lifecycle[data-lifecycle-status="Enhancement"],
+.doc-release-notes-lifecycle .lifecycle[data-lifecycle-status="Fix"],
+.doc-release-notes-lifecycle .lifecycle[data-lifecycle-status="Behavior change"] {
+  border-radius: 5px;
+}
+
 pre {
   font-size: 14px !important;
 }

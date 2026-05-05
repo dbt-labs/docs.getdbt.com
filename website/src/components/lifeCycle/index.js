@@ -30,6 +30,13 @@ const statusColors = {
   preview: '#FE6703',
   private_preview: '#FE6703',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
+  // Release note category colors
+  'New': '#aad552',
+  'Enhancement': '#3ca5f9',
+  'Fix': '#bab2ff',
+  'Behavior change': '#ffcc25',
+  'Beta': '#bab2ff',
+  'Private beta': '#bab2ff',
 };
 
 const fontColors = {
@@ -103,6 +110,7 @@ export default function Lifecycle(props) {
               rel="noopener noreferrer"
               className={`${styles.lifecycle} lifecycle`}
               style={style}
+              data-lifecycle-status={status}
               title={`Go to ${url}`} // optional tooltip for better UX
             >
               {displayName}
@@ -116,6 +124,7 @@ export default function Lifecycle(props) {
             key={index}
             className={`${styles.lifecycle} lifecycle`}
             style={style}
+            data-lifecycle-status={status}
           >
             {displayName}
           </span>
