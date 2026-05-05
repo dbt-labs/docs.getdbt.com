@@ -140,6 +140,43 @@ DBUs_in_window * (query_runtime / total_query_runtime_in_window)
 dbt sums this across all overlapping windows to get `usage_per_query`.
 </Expandable>
 
+<Expandable alt_header="Amazon Redshift">
+
+Cost Insights supports both Amazon Redshift Serverless and provisioned cluster deployments. dbt detects your deployment type automatically when testing the connection.
+
+- **Redshift Serverless**
+
+    dbt estimates cost by identifying which RPU billing periods overlap with each query's execution time and attributing the proportional share of RPU-hours to the query.
+
+    Formula:
+    ```
+    rpu_hours_per_query * rpu_price_per_hour
+    ```
+
+    Where:
+    - `rpu_hours_per_query` - RPU-hours attributed to the query based on its proportional overlap with each billing period. dbt sources billing period data from `SYS_SERVERLESS_USAGE`. For more information, see the [Amazon Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html).
+    - `rpu_price_per_hour` - Your RPU price per hour (from your configured value in Cost Insights settings).
+
+- **Redshift Provisioned**
+
+    dbt estimates cost based on how long each query ran and how many nodes your cluster has.
+
+    Formula:
+    ```
+    elapsed_time_hours * node_count * node_price_per_hour
+    ```
+
+    Where:
+    - `elapsed_time_hours` - Query execution time in hours. dbt sources this from `SYS_QUERY_HISTORY`.
+    - `node_count` - Number of nodes in your cluster. dbt sources this from `STV_SLICES`.
+    - `node_price_per_hour` - Your price per node per hour (from your configured value in Cost Insights settings).
+
+:::note
+Redshift cost attribution is per-query standalone — each query is attributed cost as if it exclusively occupied the cluster for its duration. When queries run concurrently, the sum of query-level costs may exceed your actual bill.
+:::
+
+</Expandable>
+
 ### Cost reduction calculation
 
 dbt calculates cost reductions by comparing actual costs to what costs would have been _without model reuse_. To do this, dbt uses data from the last seven days (where available) and performs the following steps:

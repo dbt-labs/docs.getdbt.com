@@ -16,7 +16,7 @@ Before setting up Cost Insights, ensure you have:
 
 - A dbt account with <Constant name="fusion_engine" /> enabled. Contact your account manager to enable <Constant name="fusion" /> for your account.
 - An administrator role.
-- A supported data warehouse: Snowflake, BigQuery, or Databricks.
+- A supported data warehouse: Snowflake, BigQuery, Databricks, or Amazon Redshift.
 
 To set up Cost Insights, follow these steps:
 
@@ -82,6 +82,25 @@ For more information on how to assign permissions to users, refer to [About user
         For more information, refer to the Databricks documentation on [granting access to system tables](https://docs.databricks.com/aws/en/admin/system-tables/#grant-access-to-system-tables).
         </Expandable>
 
+        <Expandable alt_header="Amazon Redshift">
+        By default, Redshift users can only view their own queries. dbt must be able to query all users' queries in `SYS_QUERY_HISTORY` to attribute costs across your dbt runs. Grant one of the following to the platform metadata credentials user:
+
+        - **`sys:monitor` role** (recommended):
+            ```sql
+            GRANT ROLE sys:monitor TO <user>;
+            ```
+        - **Unrestricted syslog access**:
+            ```sql
+            ALTER USER <user> SYSLOG ACCESS UNRESTRICTED;
+            ```
+
+        For more information, see the [Amazon Redshift documentation on enhanced query monitoring permissions](https://docs.aws.amazon.com/redshift/latest/mgmt/metrics-enhanced-query-monitoring.html#metrics-enhanced-query-monitoring-permissions).
+
+        :::note
+        Pricing configuration is required for Amazon Redshift — there is no default value. Costs will appear as $0 until you configure a price. See [Configure Cost Insights settings](#configure-cost-insights-settings-optional) for instructions.
+        :::
+        </Expandable>
+
 5. Verify that **Cost insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
 6. Click **Save**.
 
@@ -94,6 +113,8 @@ By default, dbt uses standard warehouse pricing. If you have custom pricing cont
 | [Snowflake](https://www.snowflake.com/en/pricing-options/) | `price_per_credit` = $3 |
 | [BigQuery](https://cloud.google.com/bigquery/pricing) | `price_per_slot_hour` = $0.04, `price_per_tib` = $6.25 |
 | [Databricks](https://docs.databricks.com/aws/en/admin/system-tables/pricing) | dbt queries the `list_prices` system table directly, so there is no default value. |
+| [Amazon Redshift Serverless](https://aws.amazon.com/redshift/pricing/) | `rpu_price_per_hour` — no default value, must be configured. |
+| [Amazon Redshift Provisioned](https://aws.amazon.com/redshift/pricing/) | `node_price_per_hour` — no default value, must be configured. |
 
 <br></br>
 
