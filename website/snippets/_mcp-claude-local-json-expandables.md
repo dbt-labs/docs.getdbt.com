@@ -2,9 +2,7 @@ import MCPExample from '/snippets/_mcp-config-files.md';
 
 <Expandable alt_header="Local MCP with OAuth" lifecycle="managed,managed_plus">
 
-Configuration for users who want seamless OAuth authentication with the <Constant name="dbt_platform" />. 
-
-Before you begin, make sure your account admin enables AI features on your <Constant name="dbt_platform"/> account to use OAuth. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
+Configuration for users who want seamless OAuth authentication with the <Constant name="dbt_platform" />
 
 <MCPExample />
 

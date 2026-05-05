@@ -86,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "fast-track-to-dbt-workshop",
+      id: "the-launch-desk-live",
       content:
-      "Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!",
+        "What's shipping in dbt? Find out at The Launch Desk Live — May 20. Learn what's possible and what to prioritize in your stack.",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop",
+      "https://www.getdbt.com/resources/webinars/the-launch-desk-live-what-s-shipping-in-dbt/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_the-launch-desk-live_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -216,7 +216,7 @@ var siteSettings = {
           items: [
             {
               label: "Log in to dbt",
-              to: "https://login.dbt.com/",
+              to: "https://cloud.getdbt.com/",
               target: "_blank",
             },
             {

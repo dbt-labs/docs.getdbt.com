@@ -1,4 +1,4 @@
-   <Expandable alt_header="BigQuery" lifecycle="preview" lifecycle_size="75">  
+   <Expandable alt_header="BigQuery">  
     - Service Account / User Token
     - Native OAuth
     - External OAuth 
@@ -6,12 +6,12 @@
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
-  <Expandable alt_header="Databricks" lifecycle="private_preview" lifecycle_size="75">
+  <Expandable alt_header="Databricks">
     - Service Account / User Token
     - Native OAuth
   </Expandable>
 
-  <Expandable alt_header="Redshift" lifecycle="preview" lifecycle_size="75">
+  <Expandable alt_header="Redshift">
     - Username / Password
     - IAM profile
   </Expandable>
@@ -24,7 +24,7 @@
     - MFA
   </Expandable>
 
-  <Expandable alt_header="Apache Spark (Fusion CLI only)" lifecycle="beta" lifecycle_size="75">
+  <Expandable alt_header="Apache Spark (Fusion CLI only)">
     - Thrift
       - Simple Authentication and Security Layer (SASL) PLAIN
       - No SASL (NOSASL) 
@@ -34,7 +34,7 @@
         - Supports authentication using single sign-on, service accounts, or user tokens
   </Expandable>
 
-  <Expandable alt_header="DuckDB (Fusion CLI only)" lifecycle="beta" lifecycle_size="75">
+  <Expandable alt_header="DuckDB (Fusion CLI only)">
     DuckDB does not require authentication &mdash; it runs locally on your machine.
   </Expandable>
 
