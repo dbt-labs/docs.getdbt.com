@@ -664,11 +664,17 @@ select * from semantic_view(
 
 ## Temporary tables
 
-Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 
+Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time.
 
-However, some situations remain where a temporary table would achieve results faster or more safely. The `tmp_relation_type` configuration enables you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
+However, some situations remain where a temporary table would achieve results faster or more safely. The `tmp_relation_type` configuration enables you to opt in to temporary or transient tables for incremental builds. This is defined as part of the model configuration.
 
 To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
+
+`tmp_relation_type` accepts three values:
+
+- `view` (default): No database write for the tmp relation; fastest but not suitable for all strategies.
+- `table`: A session-scoped temporary table; not visible in the Snowflake catalog and isolated per session.
+- `transient`: A transient table; persists in the catalog, enabling [Snowflake native lineage tracking](https://docs.snowflake.com/en/user-guide/ui-snowsight-lineage), while avoiding the 7-day fail-safe storage costs of permanent tables. Supported with `delete+insert` and `microbatch` strategies.
 
 Defined in the project YAML:
 
@@ -681,7 +687,7 @@ name: my_project
 
 models:
   <resource-path>:
-    +tmp_relation_type: table | view ## If not defined, view is the default.
+    +tmp_relation_type: table | view | transient ## If not defined, view is the default.
   
 ```
 
@@ -691,12 +697,47 @@ In the configuration format for the model SQL file:
 
 <File name='dbt_model.sql'>
 
-```yaml
+```sql
 
 {{ config(
-    tmp_relation_type="table | view", ## If not defined, view is the default.
+    tmp_relation_type="table | view | transient", ## If not defined, view is the default.
 ) }}
 
+```
+
+</File>
+
+:::warning Concurrent run conflicts with `transient`
+
+When `tmp_relation_type` is set to `transient`, the tmp relation is a real table that persists in the target schema under a deterministic name. If multiple runs of the same incremental model execute concurrently in the same schema — for example, when developers share a target schema or when CI and production runs overlap — they can overwrite each other's tmp relation, causing data duplication or incorrect results.
+
+This risk depends on how schemas and databases are configured across developers and environments. To prevent conflicts, use [`snowflake__resolve_incremental_tmp_relation`](#avoiding-tmp-relation-conflicts) to route tmp relations to a schema that is unique per run or environment.
+
+:::
+
+### Avoiding tmp relation conflicts
+
+To prevent name collisions across concurrent runs, override the `snowflake__resolve_incremental_tmp_relation` dispatch macro to redirect the tmp relation to a dedicated schema:
+
+<File name='macros/snowflake_incremental.sql'>
+
+```sql
+{% macro snowflake__resolve_incremental_tmp_relation(tmp_relation) %}
+  {{ return(tmp_relation.incorporate(schema='scratch')) }}
+{% endmacro %}
+```
+
+</File>
+
+This macro receives the default tmp relation object and returns a modified version. Common overrides include appending a developer username, a CI job ID, or a target name to the schema to ensure isolation across concurrent runs. For example:
+
+<File name='macros/snowflake_incremental.sql'>
+
+```sql
+{% macro snowflake__resolve_incremental_tmp_relation(tmp_relation) %}
+  {%- set scratch_schema = target.schema ~ '_scratch_' ~ env_var('DBT_JOB_ID', target.name) -%}
+  {{ return(tmp_relation.incorporate(schema=scratch_schema)) }}
+{% endmacro %}
 ```
 
 </File>
