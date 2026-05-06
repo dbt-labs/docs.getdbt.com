@@ -37,7 +37,7 @@ The diagram below explains the basic process by which users are provisioned in <
 #### Diagram Explanation
 
 - **Login Page**: The user accesses the <Constant name="dbt" /> login experience (for example, [https://login.dbt.com](https://login.dbt.com)), their account **Access URL**, or their **dbt Enterprise Login URL**, and initiates the SSO flow.
-- **IdP-Initiated Login**: The user accesses the <Constant name="dbt" /> login page within the Identity Provider by selecting the <Constant name="dbt" /> application. This will begin the IdP login flow.
+- **IdP-Initiated Login**: The user accesses the <Constant name="dbt" /> login page within the Identity Provider by selecting the <Constant name="dbt" /> application. This starts the IdP login flow.
 - **IdP Login Page**: The user is prompted to log in to the Identity Provider. This grants the <Constant name="dbt" /> application access to the details of their account.
 - **Login?**: The user can choose to continue or to abort the login process.
   - **Yes**: The user logs in, grants the <Constant name="dbt" /> application, and continues.
