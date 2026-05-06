@@ -16,14 +16,14 @@ By moving your environments and jobs to release tracks you can get all the funct
 
 | Release track | Description | Plan availability | API value |
 | ------------- | ----------- | ----------------- | --------- |
-| **Latest Fusion**  | The latest build of the new engine for dbt, available to select accounts. | All plans <br /><Lifecycle status="private_preview" /> | `latest-fusion` |
+| **Latest Fusion**  | The latest build of the new engine for dbt, available to select accounts. | All plans <br /> | `latest-fusion` |
 | **Latest** | Provides a continuous release of the latest functionality in the <Constant name="dbt_platform" /> .<br /><br />Includes early access to new features of the dbt framework before they're available in <Constant name="core" />. | All plans | `latest` |
 | **Compatible** | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
 | **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
 
 To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
-- `latest-fusion` <Lifecycle status="private_preview" />
+- `latest-fusion`
 - `latest`
 - `compatible`
 - `extended`
