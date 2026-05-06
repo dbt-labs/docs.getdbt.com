@@ -12,7 +12,7 @@ image: /img/docs/dbt-platform/copilot-agent.png
 [dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [Starter and dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
 :::info 
-Some dbt Agents are in preview or beta; others are coming soon. Contact your account manager for early access.
+Some dbt Agents are in preview or beta; others are coming soon. Enterprise customers can contact your account manager for access or changes. Starter plan customers can contact [dbt Labs Support](mailto:support@getdbt.com). 
 
 See [available agents](#available-agents) to find out what's available.
 :::
