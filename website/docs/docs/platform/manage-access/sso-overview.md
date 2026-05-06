@@ -16,7 +16,7 @@ This overview explains how users are provisioned in <Constant name="dbt" /> usin
 
 For SSO, users also use your account **Access URL** or **dbt Enterprise Login URL**, as described in this page.
 
-In the <Constant name="dbt_platform" />, dbt assigns an SSO slug (an identifier used in your SSO login URL) to your SSO configuration. The slug is system-generated and read-only. Existing SSO configurations remain valid, but you can’t edit the slug. If you delete and recreate your SSO configuration, the new configuration will use a new system-generated slug.
+In the <Constant name="dbt_platform" />, dbt assigns an SSO slug (an identifier used in your SSO login URL) to your SSO configuration. The slug is system-generated and read-only. Existing SSO configurations remain valid, but you can’t edit the slug. If you delete and recreate your SSO configuration, the new configuration uses a new, system-generated slug.
 
 To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID).
 
