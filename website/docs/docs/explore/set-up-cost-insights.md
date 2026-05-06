@@ -105,7 +105,7 @@ For more information on how to assign permissions to users, refer to [About user
 
 ## Configure Cost Insights settings (optional)
 **Note:** This step is required for Amazon Redshift users. Without a configured price, costs will appear as $0.
-By default, dbt uses standard warehouse pricing. If you have custom pricing contracts, you can override these values _except_ for Databricks connections. The default values vary by warehouse:
+By default, dbt uses standard warehouse pricing, which you can override if you have custom pricing agreements. Databricks and Amazon Redshift do not have default values. The default values vary by warehouse:
 
 | Warehouse | Default values |
 |-----------|----------------|
