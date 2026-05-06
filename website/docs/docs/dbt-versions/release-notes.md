@@ -20,7 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## May 2026
 
-- **Enhancement:** The dbt VS Code extension install and registration docs now state that users without an existing account may be prompted to create an account during the same sign-in workflow.
+- **Enhancement:** The dbt VS Code extension [existing account sign-in flow](/docs/install-dbt-extension#existing-dbt-account) now supports account creation. If you sign in with an existing dbt user that doesn't have an associated dbt account, the registration flow prompts you to create one instead of requiring a separate workflow.
 - **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (three dots → **Delete**). Deleting the open conversation clears the panel.
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 
@@ -89,15 +89,4 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 
   State-aware orchestration is in private preview. refer to the [prerequisites for using the feature](/docs/deploy/state-aware-setup#prerequisites).
 - **Enhancement:** [dbt <Constant name="copilot" />](/docs/platform/dbt-copilot) correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
-- **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files as well as <Term id="lsp" />-powered features. For more information, refer to [Install <Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started#environment-variables). 
-- **New**: The new <Constant name="semantic_layer"/>  YAML specification creates an open standard for defining metrics and dimensions that works across multiple platforms. The new spec is now live in the <Constant name="fusion_engine" />.
-  
-  Key changes:
-  - Semantic models are now embedded within model YAML entries. This removes the need to manage YAML entries across multiple files.
-  - Measures are now simple metrics. 
-  - Frequently used options are now top-level keys, reducing YAML nesting depth.
-
-  For an overview of the changes and steps how to migrate to the latest YAML spec, check [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
-- **Fix:** Debug logs in the **Run summary** tab are now properly truncated to improve performance and user interface responsiveness. Previously, debug logs were not truncated correctly, causing slower page loads. You can access the full debug logs by clicking **Download > Download all debug logs**. For more information, review [Run visibility](/docs/deploy/run-visibility#run-summary-tab).
-- **New:** The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.
-- **Enhancement**: Eligible <Constant name="dbt_platform" /> accounts in the <Constant name="fusion" /> private preview can now use [Exposures](/docs/platform-integrations/downstream-exposures). 
+- **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `
