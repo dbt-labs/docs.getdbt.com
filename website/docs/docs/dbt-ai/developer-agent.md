@@ -39,7 +39,8 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 - **Where it runs:** Supported in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only, all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). Not supported in VS Code or the <Constant name="platform_cli" />.
 - **Engines:** Works with <Constant name="fusion_engine" /> and <Constant name="core" />.
 - **Conversations:** In the conversation list, open **More actions** menu (three dots) of the conversation you want to delete, then click **Delete** to remove one thread. Deleting the open thread clears the panel.
-- **Sessions:** Refreshing the same browser tab keeps your active session. A new tab, or returning after you closed the tab, starts empty. On single-tenant deployments, chat history isn't supported yet so save anything important yourself.
+- **Sessions:** Refreshing the same browser tab keeps your active session. A new tab, or returning after closing the tab, starts empty. 
+- **Chat history:** On single-tenant deployments, chat history isn't supported yet &mdash; save anything important before closing.
 - **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use **Ask for approval** to approve each file.
 - **Prompts:** Although you can't edit a prompt after you send it, you can click **Start over** (top right of the Copilot panel) to reset and send a new prompt.
 
