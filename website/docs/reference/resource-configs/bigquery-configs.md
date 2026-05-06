@@ -777,10 +777,6 @@ from {{ ref('events') }}
 By default, dbt-created tables never expire. You can configure certain model(s)
 to expire after a set number of hours by setting `hours_to_expiration`.
 
-:::info Note
-The `hours_to_expiration` only applies to initial creation of the underlying table. It doesn't reset for incremental models when they do another run.
-:::
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -801,6 +797,36 @@ models:
 ) }}
 
 select ...
+
+```
+
+</File>
+
+**Note:**
+The `hours_to_expiration` only applies to initial creation of the underlying table. It doesn't reset for incremental models when they do another run.
+To override this behaviour, you can call a macro in the +post-hook section that resets incremental tables
+
+**Example macro SQL:**
+
+```sql
+{% macro reset_expiration_for_incremental() %}
+  -- Check if the current model is being run incrementally
+  {% if is_incremental() %}
+    -- Set expiration timestamp for the table because it's only set on creation, not on merge
+    ALTER TABLE {{ this }} 
+        SET OPTIONS (expiration_timestamp = TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 336 HOUR))
+  {% else %}
+    SELECT 1;
+  {% endif %}
+{% endmacro %}
+```
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  my_project:
+    +post-hook:
+      - "{{ reset_expiration_for_incremental() }}"
 
 ```
 
