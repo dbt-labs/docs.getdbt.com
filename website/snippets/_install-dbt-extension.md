@@ -175,7 +175,7 @@ Use this if you have an existing dbt account &mdash; including older or inactive
 2. Click the registration prompt or open the command palette and type: **dbt: Register dbt extension.**
 3. In the browser registration form, select **Sign in** at the bottom of the form.
 4. Enter your email address associated with your dbt account and click **Continue**. If you don't remember your password, see [Recover your login](#recover-your-login) for help.
-5. You'll then have the option to select your existing dbt account.
+5. You'll then have the option to select your existing dbt account. If you don't have a dbt account, you will be prompted to create an account instead with your existing dbt user. 
 6. Select the account you want to use and click **Continue**.
 7. You should see a page confirming your successful registration. Close the tab and go back to your editor to continue the registration.
 
