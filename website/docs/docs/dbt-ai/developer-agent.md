@@ -56,6 +56,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 </div>
 
 For more details on the <Constant name="dev_agent" /> and how it works, click the following sections to open additional information.
+
 <Expandable alt_header="Panel controls">
 
 The <Constant name="copilot" /> panel contains:
