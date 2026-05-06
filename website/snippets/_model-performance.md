@@ -21,8 +21,8 @@ For **Cost insights**, **Usage**, and **Query run time** tabs, you can set the v
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
-    - Amazon Redshift Serverless: 
-    - Amazon Redshift Provisioned: 
+    - Amazon Redshift Serverless: Redshift Processing Unit hours (RPU-hours)
+    - Amazon Redshift Provisioned: Node-hours
 - **Query run time**: Shows the estimated query execution time and the reduction in run duration from state-aware orchestration.
 - **Build time**: Shows average execution time for the model and how it trends over the selected period.
 - **Build count**: Tracks how many times the model was built or reused, including any failures or errors.

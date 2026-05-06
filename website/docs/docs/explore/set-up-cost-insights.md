@@ -83,7 +83,7 @@ For more information on how to assign permissions to users, refer to [About user
         </Expandable>
 
         <Expandable alt_header="Amazon Redshift">
-        By default, Redshift users can only view their own queries. dbt must be able to query all users' queries in `SYS_QUERY_HISTORY` to attribute costs across your dbt runs. Grant one of the following to the platform metadata credentials user:
+        By default, Redshift users can only view their own queries. dbt must be able to query all users' queries in `SYS_QUERY_HISTORY` to attribute costs across your dbt runs. Grant one of the following permissions to the platform metadata credentials user:
 
         - **`sys:monitor` role** (recommended):
             ```sql
@@ -94,7 +94,7 @@ For more information on how to assign permissions to users, refer to [About user
             ALTER USER <user> SYSLOG ACCESS UNRESTRICTED;
             ```
 
-        For more information, see the [Amazon Redshift documentation on enhanced query monitoring permissions](https://docs.aws.amazon.com/redshift/latest/mgmt/metrics-enhanced-query-monitoring.html#metrics-enhanced-query-monitoring-permissions).
+        For more information, refer to the [Amazon Redshift documentation on enhanced query monitoring permissions](https://docs.aws.amazon.com/redshift/latest/mgmt/metrics-enhanced-query-monitoring.html#metrics-enhanced-query-monitoring-permissions).
 
         dbt verifies cross-user visibility during the connection test. If the credentials can only see their own queries, the test fails and cost data will not be processed for that environment.
 
@@ -104,7 +104,9 @@ For more information on how to assign permissions to users, refer to [About user
 6. Click **Save**.
 
 ## Configure Cost Insights settings (optional)
+
 **Note:** This step is required for Amazon Redshift users. Without a configured price, costs will appear as $0.
+
 By default, dbt uses standard warehouse pricing, which you can override if you have custom pricing agreements. Databricks and Amazon Redshift do not have default values. The default values vary by warehouse:
 
 | Warehouse | Default values |
