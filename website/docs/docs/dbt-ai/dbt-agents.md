@@ -7,7 +7,7 @@ tags: [AI, Agents]
 image: /img/docs/dbt-platform/copilot-agent.png
 ---
 
-# dbt Agents overview <Lifecycle status="beta,self_service,managed,managed_plus"/>
+# dbt Agents overview <Lifecycle status="self_service,managed,managed_plus"/>
 
 [dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [Starter and dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
