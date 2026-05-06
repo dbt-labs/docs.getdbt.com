@@ -13,7 +13,9 @@ import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 <IntroText>
 The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />. Describe what you need in natural language to build, refactor, test, and document your project &mdash; grounded in lineage, metadata, governance, and the <Constant name="semantic_layer" />, with every change auditable.
 </IntroText>
-  
+:::info 
+The <Constant name="dev_agent" /> is in preview as of May 6, 2026 for Starter and Enterprise plans. Enterprise plan customers can contact your account manager for changes. Starter plan customers can contact [dbt Labs Support](mailto:support@getdbt.com).
+:::  
 The <Constant name="dev_agent" /> is designed to support the full dbt development lifecycle &mdash; from initial model creation to testing, documentation, and semantic layer definition. Some examples of what you can do:
 
 - Build or change models using natural-language prompts about the logic you want.
