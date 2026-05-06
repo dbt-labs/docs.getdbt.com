@@ -201,11 +201,7 @@ Some considerations to keep in mind:
 - Skills are discovered at session start. If a skill is added mid-session, start a new chat.
 - If a custom skill and a built-in skill use the same name, the custom skill takes precedence.
 
-## Debug job failures <Lifecycle status="beta"/>
-
-:::info
-Debugging job failures with <Constant name="dev_agent"/> is currently in beta.
-:::
+## Debug job failures
 
 The <Constant name="dev_agent" /> can investigate and troubleshoot dbt job and run failures directly from the <Constant name="studio_ide" />. This capability is powered by the `troubleshooting-dbt-job-errors` [dbt Agent Skill](https://github.com/dbt-labs/dbt-agent-skills), which comes pre-configured with the agent — no setup required.
 
