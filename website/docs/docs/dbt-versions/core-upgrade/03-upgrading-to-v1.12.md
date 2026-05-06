@@ -32,6 +32,12 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ## New and changed features and functionality
 
+### Overloaded UDFs
+
+You can define multiple argument signatures for the same SQL UDF using the `overloads` block in your function YAML. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node, so they're built and retried together.
+
+For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and [`overloads`](/reference/resource-properties/overloads).
+
 ### New Semantic Layer YAML spec
 
 <Constant name="core" /> v1.12 adds support for the latest Semantic Layer YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.

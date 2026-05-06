@@ -116,6 +116,48 @@ Follow these steps to define UDFs in dbt:
           data_type: integer        # required 
     ```
     </File>
+
+    **Optional**: Starting <Constant name="core" /> v1.12, you can define multiple argument signatures for the same function using the `overloads` block for SQL UDFs. The database dispatches to the correct version based on the argument types at call time. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one DAG node.
+
+    :::info Beta feature
+    The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
+    :::
+
+    Refer to the following example of an `overloads` block:
+
+    <File name='functions/schema.yml'>
+
+    ```yml
+    functions:
+      - name: null_if_empty
+        arguments:
+          - name: val
+            data_type: varchar
+        returns:
+          data_type: varchar
+        overloads:
+          - defined_in: null_if_empty_array   # references functions/null_if_empty_array.sql
+            arguments:
+              - name: val
+                data_type: text[]
+            returns:
+              data_type: text[]
+    ```
+
+    </File>
+
+    Create a separate SQL file for each overload body:
+
+    <File name='functions/null_if_empty_array.sql'>
+
+    ```sql
+    CASE WHEN ARRAY_LENGTH(val) = 0 THEN NULL ELSE val END
+    ```
+
+    </File>
+
+    For more information, refer to [`overloads`](/reference/resource-properties/overloads).
+
     </TabItem>
 
     <!--other types not yet supported
@@ -345,7 +387,6 @@ When using [`--defer`](/reference/node-selection/defer), `function()` resolves t
 
 After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example) or its configurations, your changes will be applied to the UDF in the warehouse next time you `build`.
 
-
 ## Using UDFs in unit tests
 
 You can use [unit tests](/docs/build/unit-tests) to validate models that reference UDFs. Before running unit tests, make sure the function exists in your warehouse. To ensure that the function exists for a unit test, run:
@@ -388,9 +429,10 @@ Use the [`build` command](/reference/commands/build#functions) to select UDFs wh
 For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods#file).
 
 ## Limitations
-- Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported. 
+- Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported.
 - Python UDFs are supported in Snowflake and BigQuery only (when using <Constant name="core" /> or <Constant name="fusion" />). Other warehouses aren't yet supported for Python UDFs.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
+- The `overloads` block is only supported for SQL UDFs. Python UDFs do not support overloads.
 
 ## Related FAQs
 
