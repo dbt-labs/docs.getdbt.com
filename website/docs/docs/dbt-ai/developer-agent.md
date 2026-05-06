@@ -190,7 +190,7 @@ For edge cases, read `references/naming-conventions.md` in this skill folder bef
 To use a custom skill in the <Constant name="dev_agent" />:
 
 1. Prompt the agent with the task and reference the skill by name (for example, "Use `my-team-style` to refactor this model and update related YAML").
-- If needed, use `@` mentions to point to the skill file or supporting `.md` files directly.
+2. If needed, use `@` mentions to point to the skill file or supporting `.md` files directly.
 - Review and approve the proposed changes as usual in the Copilot panel.
 
 Some considerations to keep in mind:
