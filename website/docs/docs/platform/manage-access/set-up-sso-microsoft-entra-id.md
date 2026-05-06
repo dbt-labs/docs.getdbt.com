@@ -5,6 +5,8 @@ id: "set-up-sso-microsoft-entra-id"
 sidebar_label: "Set up SSO with Microsoft Entra ID"
 ---
 
+import LoginSlug from '/snippets/_login-slug.md';
+
 # Set up SSO with Microsoft Entra ID <Lifecycle status="managed, managed_plus" />
 
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). 
@@ -152,6 +154,8 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt" />
 
 28.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
+
+<LoginSlug />
 
 <Snippet path="login_url_note" />
 
