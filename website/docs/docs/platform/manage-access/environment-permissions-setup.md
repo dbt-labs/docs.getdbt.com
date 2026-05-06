@@ -33,12 +33,6 @@ In your <Constant name="dbt" /> account:
     - Analyst
     - Developer
 
-   :::note
-   A group can have only one entry per permission set. If you add the same permission set more than once, <Constant name="dbt_platform" /> merges those entries into one permission set when you save the group.
-
-   To set up different project or environment access patterns for the same permission set, create separate groups and assign users to each group as needed.
-   :::
-
    Other permission sets are restricted because they have access to everything (for example, Account admin), or limitations prevent them from having write access to environments (for example, Account viewer).
 
    If you select a permission set that is not supported, the environment permission option will not appear.
@@ -49,7 +43,9 @@ In your <Constant name="dbt" /> account:
 
 <Lightbox src="/img/docs/dbt-platform/environment-options.png" width="80%" title="A list of available environments with the Staging and General boxes selected."/>
 
-6. Save the Group settings. You're now setup and ready to assign users!
+6. If you need the same permission set with different project scope or environment write access, click **Add permission** again and configure another row. Each row can use the same permission set with different project and environment selections.
+
+7. Save the Group settings. You're now setup and ready to assign users!
 
 ## User experience
 
