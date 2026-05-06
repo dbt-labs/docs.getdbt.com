@@ -227,7 +227,7 @@ models:
 | [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
 | [`immutable_where`](#immutable-where)     | `<string>` | no       | `None` | alter   |
 | [`transient`](#transient-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
-| [`copy_grants`](#copying-grants)     | `<boolean>` | no       | `false` | full refresh   |
+| [`copy_grants`](#copy-grants-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
 
 
 <Tabs
