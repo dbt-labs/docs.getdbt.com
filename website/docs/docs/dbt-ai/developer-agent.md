@@ -42,7 +42,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 - **Sessions:** Refreshing the same browser tab keeps your active session. A new tab, or returning after closing the tab, starts empty. 
 - **Chat history:** On single-tenant deployments, chat history isn't supported yet &mdash; save anything important before closing.
 - **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use the **Ask for approval** mode to approve each file.
-- **Prompts:** Although you can't edit a prompt after you send it, you can click **Start over** (top right of the Copilot panel) to reset and send a new prompt.
+- **New chat:** Click **Start new Copilot chat** (top right of the Copilot panel) to begin a new session.
 
 ## Using the Developer agent
 
@@ -66,7 +66,7 @@ The <Constant name="copilot" /> panel contains:
 2. **Agent mode button** (bottom left): Switch between **Ask for approval** and **Edit files automatically** mode. Click the button to change modes.
 3. **Model context** (bottom left): Shows the currently open file. Use `@` in the text field to reference a different model. Click **x** to remove the model context.
 4. **Text input field** (bottom left): Type your prompt in the text field to describe what you want to build or change. Type `@` to select a model as context. This scopes the agent's changes to that resource.
-5. **Start over** (top right): Resets the current session. When you click this button, a confirmation prompt appears. Click **Start over** to confirm, or **Cancel** to return to your current conversation. You cannot undo this action.
+5. **Start new Copilot chat** (top right): Starts a new chat session.
 6. **Stop** or **Enter** (bottom right): Press **Enter** to submit your prompt. Press **Stop** to stop the current session and agent processing. You cannot undo this action. 
 
 <Lightbox src="/img/docs/dbt-platform/dev-agent-copilot-panel.png" width="95%" title="The Copilot panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
