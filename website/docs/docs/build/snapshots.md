@@ -176,7 +176,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 8.  Snapshots are only useful if you run them frequently &mdash; schedule the `dbt snapshot` command to run regularly.
 
-    Snapshots capture the state of your data at the time they run. If a record changes multiple times between snapshot runs, dbt may only record the state it observes at the time of the run, and intermediate changes won’t be captured. Choose a schedule that matches the change rate you need to analyze.
+    Snapshots capture the state of your data at the time they run. If a record changes multiple times between snapshot runs, snapshots may not record intermediate changes. Choose a schedule that matches the change rate you need to analyze.
 
 </VersionBlock>
 
@@ -252,7 +252,7 @@ Snapshot "strategies" define how dbt knows if a row has changed. There are two s
 ### Timestamp strategy (recommended)
 The `timestamp` strategy uses an `updated_at` field to determine if a row has changed. If the configured `updated_at` column for a row is more recent than the last time the snapshot ran, then dbt will invalidate the old record and record the new one. If the timestamps are unchanged, then dbt will not take any action.
 
-Because the `timestamp` strategy relies on the value of `updated_at` at run time, it may not capture multiple changes that occur between snapshot runs. If a row changes several times between runs, the snapshot will record at most one new version per run (based on the row state it can observe at that time and the latest `updated_at` value), but it won’t record each intermediate transition.
+Because the `timestamp` strategy relies on the value of `updated_at` at run time, it may not capture multiple changes that occur between snapshot runs. If a row changes several times between runs, the snapshot will record at most one new version per run (based on the row state it can observe at run time and the latest `updated_at` value), but it will not record each intermediate transition.
 
 Why timestamp is recommended?
 
