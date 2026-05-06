@@ -11,16 +11,16 @@ import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 # Developer agent <Lifecycle status="preview,self_service,managed,managed_plus"/>
 
 <IntroText>
-The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Build, refactor, test, document, and explore your dbt project from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
+The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />. Describe what you need in natural language to build, refactor, test, and document your project, grounded in lineage, metadata, governance, and the <Constant name="semantic_layer" /> &mdash; with every change auditable.
 </IntroText>
   
 The <Constant name="dev_agent" /> is designed to support the full dbt development lifecycle &mdash; from initial model creation to testing, documentation, and semantic layer definition. Some examples of what you can do:
 
-- Build or modify models from natural language descriptions of the transformation or logic you need.
-- Automatically generate and validate YAML definitions for tests, documentation, and semantic models directly from your existing dbt models, eliminating manual setup.
-- Make targeted changes to your project such as renaming columns, changing materializations, adjusting logic, or adding advanced data quality tests — while the agent keeps associated YAML files in sync.
-- Explore your project with the agent by asking questions about your DAG, querying the <Constant name="catalog"/>, and surfacing lineage and metadata to guide your development.
-- Investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes — powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills. <Lifecycle status="beta"/>
+- Build or change models from natural-language prompts about the logic you want.
+- Generate and validate YAML for tests, documentation, and semantic models from existing models, with less manual boilerplate.
+- Make scoped edits (renames, materializations, logic, stricter tests, and so on) while keeping related YAML in sync.
+- Explore the <Term id="dag" />, query the <Constant name="catalog"/>, and use lineage and metadata to steer your work.
+- Investigate job and run failures (errors, likely causes, fixes) using the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills. <Lifecycle status="beta"/>
 
 The agent comes with the following out of the box — no configuration needed! 🎉
 
@@ -36,13 +36,12 @@ The agent comes with the following out of the box — no configuration needed! �
 
 #### Availability and considerations
 
-- The <Constant name="dev_agent" /> is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only and for all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). It's not available in VS Code or the <Constant name="platform_cli" />.
-- It works across all engines (<Constant name="fusion_engine" /> and <Constant name="core" />).
-- You can delete individual conversations in your <Constant name="copilot" /> chat history. Click on a conversation in the conversation list to open the menu, select the three dots icon and choose **Delete**, and confirm. Deleting the conversation you're viewing clears the panel so you can start fresh. 
-- Refreshing the same browser tab restores your active conversation so you don't lose your context. Opening a new tab, or returning after closing the tab, starts a new empty session.
-- Retaining chat history isn't supported for single tenant deployments yet. We recommend you save important info manually between sessions.
-- Currently, **Plan** mode isn't supported. The <Constant name="dev_agent" /> drafts changes directly without showing a plan first. Use **Ask for approval** mode if you want to approve each file change before it is persisted.
-- You cannot edit a prompt after submitting it. To refine your request, click the **Start over** button located at the top right corner of the Copilot panel. This resets the session and you can submit a new prompt.
+- **Where it runs:** Supported in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) only, all [deployment types](/docs/platform/about-platform/tenancy?version=2.0). Not supported in VS Code or the <Constant name="platform_cli" />.
+- **Engines:** Works with <Constant name="fusion_engine" /> and <Constant name="core" />.
+- **Conversations:** In the conversation list, open the menu (three dots) → **Delete** to remove one thread; deleting the open thread clears the panel.
+- **Sessions:** Refreshing the same browser tab keeps your active session. A new tab, or returning after you closed the tab, starts empty. On single-tenant deployments, chat history isn't supported yet so save anything important yourself.
+- **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use **Ask for approval** to approve each file.
+- **Prompts:** Although you can't edit a prompt after you send it, you can click **Start over** (top right of the Copilot panel) to reset and send a new prompt.
 
 ## Using the Developer agent
 
@@ -56,15 +55,8 @@ The agent comes with the following out of the box — no configuration needed! �
 <span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>Example of using the Developer agent to refactor a model in the Studio IDE.</span>
 </div>
 
-For more details on the <Constant name="dev_agent" /> and how it works, see the following sections:
-
-- [Panel controls](#panel-controls)
-- [Agent modes](#agent-modes)
-- [Reviewing agent suggestions](#reviewing-agent-suggestions)
-- [Granting command permissions](#granting-command-permissions)
-- [Bringing your own skills](#bringing-your-own-skills)
-
-#### Panel controls
+For more details on the <Constant name="dev_agent" /> and how it works, click the following sections to open additional information.
+<Expandable alt_header="Panel controls">
 
 The <Constant name="copilot" /> panel contains:
 
@@ -77,7 +69,9 @@ The <Constant name="copilot" /> panel contains:
 
 <Lightbox src="/img/docs/dbt-platform/dev-agent-copilot-panel.png" width="95%" title="The Copilot panel in the Studio IDE showing quick-action buttons, text input field, and agent mode controls." />
 
-#### Agent modes
+</Expandable>
+
+<Expandable alt_header="Agent modes">
 
 The <Constant name="dev_agent" /> operates in two modes:
 
@@ -93,8 +87,9 @@ You can switch between modes at any time by clicking the **Agent mode** button i
 
 <Lightbox src="/img/docs/dbt-platform/dev-agent-ask-mode.png" width="95%" title="The Developer agent in Ask for approval mode, requesting approval before making file edits." />
 
+</Expandable>
 
-#### Reviewing agent suggestions
+<Expandable alt_header="Reviewing agent suggestions">
 
 When the <Constant name="dev_agent" /> proposes code changes, you can review them before they are committed to your project:
 
@@ -104,7 +99,9 @@ When the <Constant name="dev_agent" /> proposes code changes, you can review the
 
 <Lightbox src="/img/docs/dbt-platform/dev-agent-code-suggestion.png" width="95%" title="The Developer agent displaying a diff of proposed YAML changes with line indicators and copy/open options." />
 
-#### Granting command permissions
+</Expandable>
+
+<Expandable alt_header="Granting command permissions">
 
 To validate or run models during a session, the agent may request to run dbt commands such as `dbt compile` or `dbt build`. You'll be prompted to approve each request before it executes. For example, the agent might request to run:
 
@@ -124,16 +121,20 @@ You can select one of the following options:
 
 </SimpleTable>
 
+</Expandable>
+
 ## Bringing your own skills
 
 A skill is a reusable set of instructions that the agent can load to perform a specific workflow, such as applying your team's SQL patterns, modeling standards, or domain-specific logic. Skills help the <Constant name="dev_agent" /> produce more consistent results, reduce repeated prompt writing, and match the agent's generated changes with your team's conventions.
 
 To add custom skills to your project:
 
-1. Create a skill file at `skills/SKILL_NAME/SKILL.md` in your project.
+1. In <Constant name="studio_ide" />, create a skill file at `skills/SKILL_NAME/SKILL.md` in your project.
 2. Add clear instructions in `SKILL.md` for what the skill should do and when to use it.
 3. Optionally add supporting sub-files under the same skill folder (for example, `skills/SKILL_NAME/references/example.md`) that the agent can read when needed.
 4. Start a new agent session after adding or changing skills so the agent can pick up the updates.
+
+If a custom skill and a built-in skill use the same name, the custom skill takes precedence.
 
 Custom skills use the same [Agent Skills](https://agentskills.io/specification) format as [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) on GitHub. A typical `SKILL.md` includes:
 
@@ -143,7 +144,7 @@ Custom skills use the same [Agent Skills](https://agentskills.io/specification) 
 
 For a full production-style example, check out dbt's [`adding-dbt-unit-test` skill](https://github.com/dbt-labs/dbt-agent-skills/blob/main/skills/dbt/skills/adding-dbt-unit-test/SKILL.md).
 
-### Example folder layout
+#### Example folder layout
 
 The following example shows the recommended folder layout:
 
@@ -155,7 +156,7 @@ skills/
       naming-conventions.md
 ```
 
-### Example skill file
+#### Example skill file
 
 If you're new to skills, start with a small `SKILL.md` like the following, then grow it over time. Let's pretend Santi Corp is a plasticine manufacturer and their data practitioners want to apply their modeling conventions to all models in the project.
 
@@ -182,7 +183,7 @@ Use this skill whenever you are changing SQL or YAML under `models/` and the use
 For edge cases, read `references/naming-conventions.md` in this skill folder before proposing renames.
 ```
 
-### Running a custom skill
+#### Running a custom skill
 
 To use a custom skill in the <Constant name="dev_agent" />:
 
