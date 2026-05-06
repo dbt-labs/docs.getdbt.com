@@ -22,7 +22,7 @@ The <Constant name="dev_agent" /> is designed to support the full dbt developmen
 - Generate and validate YAML for tests, documentation, and semantic models from existing models, with less manual boilerplate.
 - Make scoped edits (renames, materializations, logic, stricter tests, and so on) while keeping related YAML in sync.
 - Explore the <Term id="dag" />, query the <Constant name="catalog"/>, and use lineage and metadata to guide your development. 
-- Investigate job and run failures (errors, likely causes, fixes) using the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills. <Lifecycle status="beta"/>
+- Investigate job and run failures (errors, likely causes, fixes) using the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
 
 The agent comes with the following out of the box — no configuration needed! 🎉
 
