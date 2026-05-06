@@ -47,6 +47,12 @@ Key:
 
 <sup>**</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
+::::note Credentials access
+Users can access the **Credentials** page under **Your profile** when they have `develop_access` or `user_credential_write` on at least one project.
+
+An admin can grant `user_credential_write` to any group, regardless of which permission set the group is assigned. Environment variable overrides and dbt version overrides still require `develop_access`.
+::::
+
 
 #### Project access for account permissions
 

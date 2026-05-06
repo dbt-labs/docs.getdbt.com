@@ -15,7 +15,6 @@ import SetUpPages from '/snippets/_available-enterprise-only.md';
 
 The <Constant name="dbt" /> Enterprise and Enterprise+ plans support a number of pre-built permission sets to help manage access controls within a <Constant name="dbt" /> account. See the docs on [access control](/docs/platform/manage-access/about-user-access) for more information on Role-Based access control (RBAC).
 
-
 ## Permission sets
 
 The following permission sets are available for assignment in all <Constant name="dbt" /> Enterprise-tier accounts. They can be granted to <Constant name="dbt" /> groups and then to users. A <Constant name="dbt" /> group can be associated with more than one permission set. Permission assignments with more access take precedence. 
