@@ -41,7 +41,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 - **Conversations:** In the conversation list, open **More actions** menu (three dots) of the conversation you want to delete, then click **Delete** to remove one thread. Deleting the open thread clears the panel.
 - **Sessions:** Refreshing the same browser tab keeps your active session. A new tab, or returning after closing the tab, starts empty. 
 - **Chat history:** On single-tenant deployments, chat history isn't supported yet &mdash; save anything important before closing.
-- **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use **Ask for approval** to approve each file.
+- **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use the **Ask for approval** mode to approve each file.
 - **Prompts:** Although you can't edit a prompt after you send it, you can click **Start over** (top right of the Copilot panel) to reset and send a new prompt.
 
 ## Using the Developer agent
