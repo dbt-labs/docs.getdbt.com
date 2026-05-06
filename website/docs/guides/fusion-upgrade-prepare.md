@@ -15,10 +15,6 @@ import FusionAdapters from '/snippets/_fusion-dwh.md';
 
 ## Introduction
 
-import FusionPreview from '/snippets/_fusion-private-preview.md';
-
-<FusionPreview />
-
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
 
 If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/fusion) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
