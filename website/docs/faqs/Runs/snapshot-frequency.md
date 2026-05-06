@@ -7,3 +7,5 @@ id: snapshot-frequency
 ---
 
 Snapshots are a batch-based approach to [change data capture](https://en.wikipedia.org/wiki/Change_data_capture). The `dbt snapshot` command must be run on a schedule to ensure that changes to tables are actually recorded! While individual use-cases may vary, snapshots are intended to be run between hourly and daily. If you find yourself snapshotting more frequently than that, consider if there isn't a more appropriate way to capture changes in your source data tables.
+
+Snapshots only observe row state at the time they run, so they may not capture intermediate changes that occur between snapshot runs. If a record changes multiple times between runs, dbt will record at most one new version per run, based on what it can observe at that time.
