@@ -133,16 +133,16 @@ To add custom skills to your project:
 
 1. In <Constant name="studio_ide" />, create a skill file at `skills/SKILL_NAME/SKILL.md` in your project.
 2. Add clear instructions in `SKILL.md` for what the skill should do and when to use it.
+  
+    Custom skills use the same [Agent Skills](https://agentskills.io/specification) format as [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) on GitHub. A typical `SKILL.md` includes:
+
+    - YAML frontmatter at minimum with `name` and `description` (optional fields allowed).
+    - Markdown body with sections for when to use the skill, workflow steps, and conventions.
+    - Optional `references/` files for extra detail the agent can load when needed.
 3. Optionally add supporting sub-files under the same skill folder (for example, `skills/SKILL_NAME/references/example.md`) that the agent can read when needed.
 4. Start a new agent session after adding or changing skills so the agent can pick up the updates.
 
 If a custom skill and a built-in skill use the same name, the custom skill takes precedence.
-
-Custom skills use the same [Agent Skills](https://agentskills.io/specification) format as [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) on GitHub. A typical `SKILL.md` includes:
-
-- YAML frontmatter at minimum with `name` and `description` (optional fields allowed).
-- Markdown body with sections for when to use the skill, workflow steps, and conventions.
-- Optional `references/` files for extra detail the agent can load when needed.
 
 For a full production-style example, check out dbt's [`adding-dbt-unit-test` skill](https://github.com/dbt-labs/dbt-agent-skills/blob/main/skills/dbt/skills/adding-dbt-unit-test/SKILL.md).
 
