@@ -21,6 +21,10 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
+### Packages
+
+- **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
+
 ### dbt Copilot and agents
 
 - **Preview**: The [Developer agent](/docs/dbt-ai/developer-agent) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/developer-agent).
