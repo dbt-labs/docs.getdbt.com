@@ -56,7 +56,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 <span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>Example of using the Developer agent to refactor a model in the Studio IDE.</span>
 </div>
 
-For more details on the <Constant name="dev_agent" /> and how it works, click the following sections to open additional information.
+For more details on the <Constant name="dev_agent" /> and how it works, expand the following sections to open additional information.
 
 <Expandable alt_header="Panel controls">
 
