@@ -8,7 +8,7 @@ tags: [AI, Agents, Studio]
 
 import DevAgent from '/snippets/_developer-agent-studio-setup.md';
 
-# Developer agent <Lifecycle status="beta,self_service,managed,managed_plus"/>
+# Developer agent <Lifecycle status="preview,self_service,managed,managed_plus"/>
 
 <IntroText>
 The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> and provides agentic capabilities to streamline the developer experience in the <Constant name="studio_ide" />. Build, refactor, test, document, and explore your dbt project from natural language &mdash; grounded in your project's lineage, metadata, governance, and <Constant name="semantic_layer" /> &mdash; while keeping every change auditable.
@@ -62,6 +62,7 @@ For more details on the <Constant name="dev_agent" /> and how it works, see the 
 - [Agent modes](#agent-modes)
 - [Reviewing agent suggestions](#reviewing-agent-suggestions)
 - [Granting command permissions](#granting-command-permissions)
+- [Bringing your own skills](#bringing-your-own-skills)
 
 #### Panel controls
 
@@ -122,6 +123,78 @@ You can select one of the following options:
 | **No** | Denies the request. The agent will not run the command. |
 
 </SimpleTable>
+
+## Bringing your own skills
+
+A skill is a reusable set of instructions that the agent can load to perform a specific workflow, such as applying your team's SQL patterns, modeling standards, or domain-specific logic. Skills help the <Constant name="dev_agent" /> produce more consistent results, reduce repeated prompt writing, and match the agent's generated changes with your team's conventions.
+
+To add custom skills to your project:
+
+1. Create a skill file at `skills/SKILL_NAME/SKILL.md` in your project.
+2. Add clear instructions in `SKILL.md` for what the skill should do and when to use it.
+3. Optionally add supporting sub-files under the same skill folder (for example, `skills/SKILL_NAME/references/example.md`) that the agent can read when needed.
+4. Start a new agent session after adding or changing skills so the agent can pick up the updates.
+
+Custom skills use the same [Agent Skills](https://agentskills.io/specification) format as [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) on GitHub. A typical `SKILL.md` includes:
+
+- YAML frontmatter at minimum with `name` and `description` (optional fields allowed).
+- Markdown body with sections for when to use the skill, workflow steps, and conventions.
+- Optional `references/` files for extra detail the agent can load when needed.
+
+For a full production-style example, check out dbt's [`adding-dbt-unit-test` skill](https://github.com/dbt-labs/dbt-agent-skills/blob/main/skills/dbt/skills/adding-dbt-unit-test/SKILL.md).
+
+### Example folder layout
+
+The following example shows the recommended folder layout:
+
+```text
+skills/
+  my-team-style/
+    SKILL.md
+    references/
+      naming-conventions.md
+```
+
+### Example skill file
+
+If you're new to skills, start with a small `SKILL.md` like the following, then grow it over time. Let's pretend Santi Corp is a plasticine manufacturer and their data practitioners want to apply their modeling conventions to all models in the project.
+
+```markdown
+---
+name: my-team-style
+description: Apply Santi Corp's modeling conventions when editing or creating dbt models. Use when the user asks for refactors, new models, or YAML in this project.
+---
+
+# My team style
+
+## When to use
+
+Use this skill whenever you are changing SQL or YAML under `models/` and the user did not override these rules.
+
+## Conventions
+
+- Staging models use prefix `stg_` and live in `models/staging/`.
+- Facts and dimensions use `fct_` and `dim_` prefixes respectively.
+- Document new columns in the same PR as the model change.
+
+## Optional detail
+
+For edge cases, read `references/naming-conventions.md` in this skill folder before proposing renames.
+```
+
+### Running a custom skill
+
+To use a custom skill in the <Constant name="dev_agent" />:
+
+- Prompt the agent with the task and reference the skill by name (for example, "Use `my-team-style` to refactor this model and update related YAML").
+- If needed, use `@` mentions to point to the skill file or supporting `.md` files directly.
+- Review and approve the proposed changes as usual in the Copilot panel.
+
+Some considerations to keep in mind:
+
+- Cross-project or package-style skill distribution isn't natively supported yet. To reuse a skill in another repo, copy the skill files manually.
+- Skills are discovered at session start. If a skill is added mid-session, start a new chat.
+- If a custom skill and a built-in skill use the same name, the custom skill takes precedence.
 
 ## Debug job failures <Lifecycle status="beta"/>
 
