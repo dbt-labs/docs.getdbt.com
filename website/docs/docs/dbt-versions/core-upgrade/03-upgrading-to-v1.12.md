@@ -32,6 +32,12 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ## New and changed features and functionality
 
+### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
+
+You can now pass a SQL or Jinja string directly to `dbt run-operation` using the `--sql` flag, without defining a macro first. The statement runs through the full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. When your SQL contains no Jinja, dbt skips manifest compilation entirely for faster execution.
+
+`--sql` cannot be combined with a macro name or `--args`. For more information, refer to [About dbt run-operation](/reference/commands/run-operation).
+
 ### New Semantic Layer YAML spec
 
 <Constant name="core" /> v1.12 adds support for the latest Semantic Layer YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
