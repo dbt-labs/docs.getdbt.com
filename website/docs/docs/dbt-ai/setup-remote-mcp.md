@@ -34,16 +34,16 @@ The remote MCP server is the ideal choice when:
 The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) in the `Authorization` header when using this tool with token-based authentication.
 :::
 
-## OAuth (remote MCP) {#oauth-remote-mcp}
+## OAuth (remote MCP) <Lifecycle status="private_beta,managed,managed_plus" /> {#oauth-remote-mcp}
 
 OAuth lets you connect to the remote MCP server without copying API tokens into your MCP client, when your client supports OAuth for HTTP-based MCP servers.
 
 <MCPRemoteOauthBetaCallout />
 
-### Requirements
+### Prerequisites
 
 - [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled for your account.
-- <Lifecycle status="managed, managed_plus" /> account and enrollment in the private beta (contact your account manager).
+- Enterprise or Enterprise+ account and join the private beta by contacting your account manager.
 - An MCP client that supports OAuth for remote (HTTP) MCP servers.
 - Your **Access URL** from **Account settings** in <Constant name="dbt_platform"/>.
 
@@ -51,7 +51,7 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 
 <MCPRemoteServerUrl />
 
-### Flow
+### How it works
 
 1. In your MCP client, add the remote MCP server using `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp` (see [MCP URL](#mcp-url)).
 2. When prompted, complete sign-in in the browser and approve access.
@@ -59,8 +59,7 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 
 ### Limitations
 
-- Remote MCP does not support local dbt CLI commands or local project access; use the [local MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
-- Tool support and any extra headers (for example for `execute_sql` or <Constant name="fusion" /> tools) depend on your client and session. If your client cannot supply required headers or tokens for a tool, use [token-based authentication](#token-based-authentication) for that workflow.
+- Remote MCP doesn't support local dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [local MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
 
 For client-specific steps, see the [integration guides](#integration-guides) at the end of this page.
 
@@ -145,9 +144,13 @@ Example configuration:
   }
   ```
 
+:::info Other clients
+For other MCP clients (Codex, Windsurf, and so on), refer to your client's MCP configuration docs for the correct key format.
+:::
+
 For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
-## Integration guides {#integration-guides}
+## Related docs
 
 Step-by-step client setup (including Cursor, VS Code, and Claude) is in:
 

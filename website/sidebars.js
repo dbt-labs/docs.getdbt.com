@@ -183,6 +183,7 @@ const sidebarSettings = {
                       },
                       items: [
                         "docs/cloud/manage-access/oauth-intro",
+                        "docs/cloud/manage-access/connect-apps-oauth",
                         "docs/cloud/manage-access/set-up-snowflake-oauth",
                         "docs/cloud/manage-access/set-up-databricks-oauth",
                         "docs/cloud/manage-access/set-up-bigquery-oauth",
