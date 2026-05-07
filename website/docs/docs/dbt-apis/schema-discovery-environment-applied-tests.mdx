@@ -17,9 +17,15 @@ When querying for `tests`, you can use the following arguments:
 
 <NodeArgsTable parent="AppliedState" name="tests" />
 
+:::note Deprecation: `lastKnownResult`
+
+The `lastKnownResult: TestStatus` scalar filter field is deprecated. Use `lastKnownResults: [TestStatus]` instead to filter tests by one or more result statuses. If you pass both fields in the same query, `lastKnownResults` takes precedence. An empty list `[]`, omitting `lastKnownResults`, or passing `null` applies no filter on last-known result. All tests are returned regardless of result status.
+
+:::
+
 ### Example query
 
-You can use the `environmentId` and filter by test types to return metadata for all tests in the environment:
+You can filter tests by one or more last-known result values using `lastKnownResults`. The following example returns tests whose last-known result is `error` or `fail`:
 
 ```graphql
 query {
@@ -27,12 +33,8 @@ query {
     applied {
       tests(
         filter: {
-          testTypes: [
-            GENERIC_DATA_TEST,
-            SINGULAR_DATA_TEST,
-            UNIT_TEST
-          ]
-        }, 
+          lastKnownResults: [error, fail]
+        },
         first: 100
       ) {
         edges {
@@ -44,6 +46,38 @@ query {
             resourceType
             testType
             given
+            lastKnownResult
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+You can combine `lastKnownResults` with other filters on `TestAppliedFilter`, such as `testTypes`:
+
+```graphql
+query {
+  environment(id: 834) {
+    applied {
+      tests(
+        filter: {
+          testTypes: [GENERIC_DATA_TEST, SINGULAR_DATA_TEST],
+          lastKnownResults: [fail]
+        },
+        first: 100
+      ) {
+        edges {
+          node {
+            name
+            model
+            description
+            expect
+            resourceType
+            testType
+            given
+            lastKnownResult
           }
         }
       }
@@ -61,4 +95,3 @@ When querying for `tests`, you can use the following fields:
 ### Key fields from nodes
 
 <SchemaTable nodeName="TestAppliedStateNode" />
-

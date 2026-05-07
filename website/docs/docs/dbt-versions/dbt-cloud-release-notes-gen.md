@@ -25,6 +25,10 @@ Release notes are grouped by date for single-tenant environments.
 
 - **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
 
+### Discovery API
+
+- **Enhancement:** You can now filter `environment.applied.tests` in the [Discovery API](/docs/dbt-apis/discovery-api) by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The previous `lastKnownResult` scalar field is still supported but deprecated — update your queries to use `lastKnownResults` going forward. For more information, refer to [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests).
+
 ### dbt Copilot and agents
 
 - **Preview**: The [Developer agent](/docs/dbt-ai/developer-agent) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/developer-agent).
