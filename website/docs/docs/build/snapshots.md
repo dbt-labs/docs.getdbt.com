@@ -13,6 +13,7 @@ id: "snapshots"
 
 import CourseCallout from '/snippets/_materialization-video-callout.md';
 import SnapshotCompiledSql from '/snippets/_snapshot-compiled-sql.md';
+import SnapshotRunIntervalLimitations from '/snippets/_snapshot-run-interval-limitations.md';
 
 <CourseCallout resource="Snapshots" 
 url="https://learn.getdbt.com/courses/snapshots"
@@ -176,7 +177,7 @@ To add a snapshot to your project follow these steps. For users on versions 1.8 
 
 8.  Snapshots are only useful if you run them frequently &mdash; schedule the `dbt snapshot` command to run regularly.
 
-    Snapshots capture the state of your data at the time they run. If a record changes multiple times between snapshot runs, snapshots may not record intermediate changes. Choose a schedule that matches the change rate you need to analyze.
+    <SnapshotRunIntervalLimitations />
 
 </VersionBlock>
 
