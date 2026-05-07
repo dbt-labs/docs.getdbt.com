@@ -20,7 +20,7 @@ The <Constant name="dbt_platform" /> has four <Constant name="fusion" /> release
 
 _`Fusion Stable` is the default for all new <Constant name="fusion" />-powered projects._
 
-| Release track | Cadence | Description | Plan availability | API value |
+| Release track | Cadence | Description | [Plan availability](https://www.getdbt.com/pricing) | API value |
 | ------------- | ------- | ----------- | ----------------- | --------- |
 | **Fusion Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `latest-fusion` |
 | **Fusion Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | Starter, Enterprise, Enterprise+ | `stable-fusion` |
