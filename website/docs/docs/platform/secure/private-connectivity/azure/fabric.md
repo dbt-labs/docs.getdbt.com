@@ -123,11 +123,16 @@ Make sure you replace `SUBSCRIPTION_ID`, `RESOURCE_GROUP`, and `NAME` with your 
 
 Once dbt Support confirms the private endpoint has been created on our side:
 
-1. In the [Azure portal](https://portal.azure.com), search for **Private Link** and select it.
-2. Under the **Private Link** section in the sidebar, select **Pending connections**.
-3. Select the connection from <Constant name="dbt" /> (the name will contain `dbt`).
-4. Click **Approve**.
-5. Confirm with dbt Support that the connection has been approved so they can validate it and make it available in <Constant name="dbt" />.
+1. In the [Azure portal](https://portal.azure.com), search for **Private Link** in the top search bar and select **Private Link Center**.
+2. In the left sidebar, select **Pending connections**.
+3. Verify the correct **Subscription** filter is selected (the subscription containing your Private Link Service resource).
+4. Select the connection from <Constant name="dbt" /> (the name will contain `dbt`).
+5. Click **Approve** and confirm.
+6. Confirm with dbt Support that the connection has been approved so they can validate it and make it available in <Constant name="dbt" />.
+
+:::tip Use Private Link Center, not the PLS resource
+Navigate to the **Private Link Center** service to approve the connection. The Fabric Private Link Service resource blade does not display pending connections. You must use **Private Link Center** → **Pending connections** to see and approve the connection from <Constant name="dbt" />.
+:::
 
 ## Create connection in dbt
 
