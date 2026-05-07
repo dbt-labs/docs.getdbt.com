@@ -57,5 +57,5 @@ Once you've completed the setup with dbt Support, you can configure a private en
 1. Navigate to **Settings** → **Create new project** → select **Teradata**.
 2. You will see two radio buttons: **Public** and **Private**. Select **Private**.
 3. Select the private endpoint from the dropdown by the display name you submitted in the support ticket (this automatically populates the **Host** field).
-4. Configure the remaining [Teradata connection details](/docs/platform/connect-data-platform/connect-teradata).
+4. Configure the remaining data platform details.
 5. Test your connection and save it.
