@@ -9,7 +9,7 @@ image: /img/docs/platform-integrations/auto-exposures/explorer-lineage2.jpg
 
 <IntroText>
 
-Use [dbt platform job scheduler](/docs/deploy/job-scheduler) to proactively refresh downstream exposures and the underlying data sources (extracts) that power your Tableau Workbooks.
+Use [<Constant name="dbt_platform" /> job scheduler](/docs/deploy/job-scheduler) to proactively refresh downstream exposures and the underlying data sources (extracts) that power your Tableau Workbooks.
 
 </IntroText>
 
