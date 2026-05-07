@@ -10,7 +10,7 @@ import FusionReleases from '/src/components/fusionReleases';
 
 # Fusion releases <Lifecycle status="preview" />
 
-:::note Preview feature
+:::note Fusion availability
 
 This page shows release information for local builds of <Constant name="fusion" /> only. <Constant name="fusion" /> releases on the <Constant name="dbt_platform" /> adhere to the [release tracks](/docs/dbt-versions/cloud-release-tracks) categories, giving you control over release cadence and stability.
 
