@@ -24,6 +24,9 @@ As a best practice, dbt Labs recommends that you test the upgrade in development
 
 To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the name of your release track:
 - `latest-fusion`
+- `fusion-stable`
+- `fusion-extended`
+- `fusion-fallback`
 - `latest` (default)
 - `compatible` (available to Starter, Enterprise, Enterprise+ plans)
 - `extended` (available to all Enterprise plans)
