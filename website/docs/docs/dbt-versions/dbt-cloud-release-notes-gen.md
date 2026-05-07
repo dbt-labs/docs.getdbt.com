@@ -17,6 +17,19 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## May 6, 2026
+
+## Enhancements
+
+### Packages
+
+- **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
+
+### dbt Copilot and agents
+
+- **Preview**: The [Developer agent](/docs/dbt-ai/developer-agent) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/developer-agent).
+- **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (**More actions** menu (three dots) > **Delete**). Deleting the open conversation clears the panel.
+- **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 
 ## April 22, 2026
 
