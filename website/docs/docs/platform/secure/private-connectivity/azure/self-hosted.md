@@ -7,9 +7,9 @@ sidebar_label: "Self-hosted services"
 
 # Configuring Azure Private Link for a self-hosted service <Lifecycle status="managed_plus" />
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 Azure Private Link enables secure, private connectivity between <Constant name="dbt" /> and your self-hosted services. These services may include version control systems (VCS), data warehouses, or any other applications you manage. With Private Link, you do not need to expose your service to the public internet. All communication occurs over a private network, significantly enhancing security. For more details, refer to the Azure [Private Link documentation](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview).
 
