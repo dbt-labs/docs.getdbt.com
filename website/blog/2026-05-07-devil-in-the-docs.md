@@ -93,6 +93,14 @@ Since we've added the docs toolsets in March, **428 unique dbt accounts** have r
 
 And it's growing fast: **338** docs-tool calls in March (the month they launched), **1,113** in April, and **887** already in the first week of May.
 
+<iframe
+  src="/charts/mcp-docs-usage.html"
+  width="100%"
+  height="500"
+  style="border: none; border-radius: 8px; overflow: hidden;"
+  title="dbt MCP docs-tool calls per month"
+/>
+
 And those calls are mostly coming from *agents* &mdash; autonomous, multi-step tools fetching the docs on a user's behalf while they work through a task. That's a different shape of usage than a chat assistant answering a one-off question: the docs aren't just being looked up, they're being pulled into the work itself.
 
 For analysts exploring a shared project, it means understanding what a model does without navigating to a separate tab. For teams working across different dbt setups, it means consistent, authoritative answers regardless of where they're working or who's asking. For the docs team, it means the work we put into writing and maintaining docs.getdbt.com is doing more than it was before &mdash; reaching users where they actually are.
