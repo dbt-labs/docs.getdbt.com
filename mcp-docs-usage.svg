@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <style><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+      text { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; }
+    ]]></style>
+
+    <!-- Clip for rounded-top bars -->
+    <clipPath id="roundedBar1">
+      <rect x="303" y="573" width="200" height="153" rx="6"/>
+    </clipPath>
+    <clipPath id="roundedBar2">
+      <rect x="750" y="250" width="200" height="476" rx="6"/>
+    </clipPath>
+    <clipPath id="roundedBar3">
+      <rect x="1197" y="344" width="200" height="382" rx="6"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <rect width="1600" height="900" fill="#0D0D0D"/>
+
+  <!-- ── HEADER ── -->
+
+  <!-- Title -->
+  <text x="80" y="96" font-size="26" font-weight="500" fill="#FFFFFF" letter-spacing="-0.4">dbt MCP docs-tool calls per month</text>
+  <!-- Subtitle -->
+  <text x="80" y="126" font-size="13" font-weight="400" fill="rgba(255,255,255,0.4)" letter-spacing="0">Since launch in March 2026</text>
+
+  <!-- Stat callout — top right -->
+  <text x="1520" y="86" font-size="11" font-weight="500" fill="rgba(255,255,255,0.35)" text-anchor="end" letter-spacing="1.2">UNIQUE dbt ACCOUNTS REACHED</text>
+  <text x="1520" y="132" font-size="52" font-weight="600" fill="#FE6703" text-anchor="end" letter-spacing="-2">428</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="156" x2="1520" y2="156" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- ── CHART AREA: x=180–1520, y=220–726, height=506px, max=1200 ── -->
+  <!-- Grid: 300-unit intervals -->
+  <!-- 1200 → y=220 | 900 → y=346 | 600 → y=472 | 300 → y=599 | 0 → y=726 -->
+
+  <line x1="180" y1="220" x2="1520" y2="220" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="180" y1="346" x2="1520" y2="346" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="180" y1="472" x2="1520" y2="472" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="180" y1="599" x2="1520" y2="599" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="180" y1="726" x2="1520" y2="726" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- Y-axis labels -->
+  <text x="164" y="224" font-size="11" fill="rgba(255,255,255,0.25)" text-anchor="end">1,200</text>
+  <text x="164" y="350" font-size="11" fill="rgba(255,255,255,0.25)" text-anchor="end">900</text>
+  <text x="164" y="476" font-size="11" fill="rgba(255,255,255,0.25)" text-anchor="end">600</text>
+  <text x="164" y="603" font-size="11" fill="rgba(255,255,255,0.25)" text-anchor="end">300</text>
+  <text x="164" y="730" font-size="11" fill="rgba(255,255,255,0.25)" text-anchor="end">0</text>
+
+  <!-- ── BAR CALCULATIONS ──
+    Height per unit: 506/1200 = 0.4217px
+    Bar zones (1340px / 3 = 446.7px): centers at 403, 850, 1297
+    Bar width: 220px → left edges at 293, 739, 1187
+
+    March  338 → h=142.6 → top y=726-143=583  (actually 726-(338*506/1200)=726-142.5=583.5 ≈ 584)
+    April 1113 → h=469.4 → top y=726-469=257  (726-(1113*506/1200)=726-469.4=256.6 ≈ 257)
+    May    887 → h=373.8 → top y=726-374=352  (726-(887*506/1200)=726-373.8=352.2 ≈ 352)
+  -->
+
+  <!-- BAR 1: March — muted, low volume -->
+  <!-- Rounded top: draw full rect with rx, then overlay square rect for bottom half -->
+  <rect x="293" y="584" width="220" height="142" fill="#FE6703" opacity="0.28" rx="6"/>
+  <rect x="293" y="626" width="220" height="100" fill="#FE6703" opacity="0.28" rx="0"/>
+
+  <!-- BAR 2: April — hero, full color -->
+  <rect x="739" y="257" width="220" height="469" fill="#FE6703" rx="6"/>
+  <rect x="739" y="357" width="220" height="369" fill="#FE6703" rx="0"/>
+
+  <!-- BAR 3: May — partial, medium opacity -->
+  <rect x="1187" y="352" width="220" height="374" fill="#FE6703" opacity="0.55" rx="6"/>
+  <rect x="1187" y="420" width="220" height="306" fill="#FE6703" opacity="0.55" rx="0"/>
+
+  <!-- ── VALUE LABELS ── -->
+  <text x="403" y="568" font-size="20" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">338</text>
+  <text x="850" y="241" font-size="20" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">1,113</text>
+  <text x="1297" y="336" font-size="20" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">887</text>
+
+  <!-- ── X-AXIS LABELS ── -->
+  <text x="403" y="762" font-size="13" font-weight="500" fill="rgba(255,255,255,0.7)" text-anchor="middle">March 2026</text>
+  <text x="403" y="782" font-size="11" font-weight="400" fill="rgba(255,255,255,0.28)" text-anchor="middle">launch month</text>
+
+  <text x="850" y="762" font-size="13" font-weight="500" fill="rgba(255,255,255,0.7)" text-anchor="middle">April 2026</text>
+
+  <text x="1297" y="762" font-size="13" font-weight="500" fill="rgba(255,255,255,0.7)" text-anchor="middle">May 2026</text>
+  <text x="1297" y="782" font-size="11" font-weight="400" fill="rgba(255,255,255,0.28)" text-anchor="middle">first week only (May 1–7)</text>
+
+  <!-- ── GROWTH BADGE ── -->
+  <rect x="570" y="384" width="68" height="22" fill="#FE6703" rx="11"/>
+  <text x="604" y="399" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">+229%</text>
+
+  <!-- Subtle connector lines -->
+  <line x1="503" y1="579" x2="569" y2="395" stroke="rgba(254,103,3,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="739" y1="257" x2="639" y2="395" stroke="rgba(254,103,3,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- ── FOOTER ── -->
+  <line x1="80" y1="840" x2="1520" y2="840" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="80" y="864" font-size="11" font-weight="400" fill="rgba(255,255,255,0.2)">Calls recorded via the dbt MCP server. May 2026 figures represent the first 7 days of the month only.</text>
+
+</svg>
