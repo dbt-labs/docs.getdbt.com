@@ -58,7 +58,7 @@ As mentioned above, we already had a solid foundation for AI-readable docs:
 - `docs.getdbt.com/llms-full.txt` — full docs content in a single file
 - `.md` suffix support on any docs page for clean markdown output
 - `AGENTS.md` file that lists how to access the docs via web requests
-- A published [`fetching-dbt-docs` skill](https://skills.sh/dbt-labs/dbt-agent-skills/fetching-dbt-docs) that teaches AI agents how to access our docs via web requests, installed across Claude Code, Copilot, Gemini CLI, Amp, and others
+- A published [`fetching-dbt-docs` skill](https://skills.sh/dbt-labs/dbt-agent-skills/fetching-dbt-docs) that teaches AI agents how to access our docs via web requests, installed across Claude Code, Copilot, Gemini CLI, and others
 
 The skill approach works great! But it relied on the agent knowing the skill existed, installing it, and performing web fetches as a workaround. We were curious to see what would help bring docs closer to users.
 
