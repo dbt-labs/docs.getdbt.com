@@ -19,7 +19,7 @@ When querying for `tests`, you can use the following arguments:
 
 :::note Deprecation: `lastKnownResult`
 
-The `lastKnownResult: TestStatus` scalar filter field is deprecated. Use `lastKnownResults: [TestStatus]` instead to filter tests by one or more result statuses. If you pass both fields in the same query, `lastKnownResults` takes precedence. An empty list `[]`, omitting `lastKnownResults`, or passing `null` applies no filter on last-known result. All tests are returned regardless of result status.
+The `lastKnownResult: TestStatus` single-value filter field is deprecated. Use `lastKnownResults: [TestStatus]` instead to filter tests by one or more result statuses. If you pass both fields in the same query, `lastKnownResults` takes precedence. An empty list `[]`, omitting `lastKnownResults`, or passing `null` applies no filter on last-known result. All tests are returned regardless of result status.
 
 :::
 

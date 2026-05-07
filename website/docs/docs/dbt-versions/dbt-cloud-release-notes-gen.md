@@ -27,7 +27,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Discovery API
 
-- **Enhancement:** You can now filter `environment.applied.tests` in the [Discovery API](/docs/dbt-apis/discovery-api) by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The previous `lastKnownResult` scalar field is still supported but deprecated — update your queries to use `lastKnownResults` going forward. For more information, refer to [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests).
+- **Enhancement:** You can now filter `environment.applied.tests` in the [Discovery API](/docs/dbt-apis/discovery-api) by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The previous single-value `lastKnownResult` filter field is still supported but deprecated — update your queries to use `lastKnownResults` going forward. For more information, refer to [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests).
 
 ### dbt Copilot and agents
 
