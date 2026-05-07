@@ -31,7 +31,7 @@ The private beta is for <Constant name="dbt" /> Enterprise accounts. Contact you
 
 :::tip Available in private beta
 
-Orchestrating exposures is currently available in private beta to <Constant name="dbt" /> Enterprise accounts. Your deployment environments and scheduled jobs must use [Latest](/docs/dbt-versions/cloud-release-tracks) with <Constant name="core" /> (not [Latest&nbsp;<Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks), the <Constant name="fusion_engine" /> preview). To join the beta, contact your account representative.
+Orchestrating exposures is currently available in private beta to <Constant name="dbt" /> Enterprise accounts. Your deployment environments and scheduled jobs must use [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine (not [Latest <Constant name="fusion" /> engine](/docs/dbt-versions/cloud-release-tracks)). To join the beta, contact your account representative.
 
 :::
 
