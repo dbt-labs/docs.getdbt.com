@@ -84,7 +84,7 @@ my_confluent_project:
 | `flink_api_key` | Yes | A Flink API key for authenticating with Confluent Cloud. Use `env_var` to avoid storing secrets in plain text. |
 | `flink_api_secret` | Yes | The corresponding Flink API secret. Use `env_var` to avoid storing secrets in plain text. |
 | `execution_mode` | No | Sets the default execution mode for statements. One of: `streaming_query` (default), `streaming_ddl`, `snapshot`, `snapshot_ddl`. |
-| `statement_name_prefix` | No | Adds a prefix to each Flink statement name. Default: `dbt-confluent-`. |
+| `statement_name_prefix` | No | Adds a prefix to each Flink statement name. Default: `dbt-`. |
 | `statement_label` | No | Applies a label to all Flink statements so you can filter them in the Confluent Cloud Console. Default: `dbt-confluent`. |
 | `threads` | No | Sets how many models dbt runs concurrently. Default: `1`. |
 

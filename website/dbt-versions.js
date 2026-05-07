@@ -122,6 +122,10 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
+    page: "docs/local/connect-data-platform/confluent-setup",
+    lastVersion: "1.99",
+  },
+  {
     page: "docs/local/connect-data-platform/cratedb-setup",
     lastVersion: "1.99",
   },

@@ -10,16 +10,17 @@ The `dbt-confluent` adapter supports the following materializations and configur
 
 | Materialization | Description |
 |---|---|
-| `view` | Creates a Flink SQL temporary view. Dropped and recreated on each `dbt run`. Views exist only for the duration of the Flink session and are not persisted. |
-| `streaming_table` | Creates a Flink SQL table and a long-running `INSERT INTO` statement that continuously writes query results to the table. Requires `--full-refresh` to recreate if the table already exists. |
-| `streaming_source` | Creates a Flink SQL table backed by a connector (for example, `faker` for mock data or `confluent` for Kafka topics). Requires the `connector` config. Requires `--full-refresh` to recreate if the table already exists. |
+| `view` | Drop-and-recreate Flink SQL view. |
+| `streaming_table` | Creates a Flink SQL table and a separate long-running `INSERT INTO` statement that continuously writes query results to the table. If the table already exists, the adapter checks for schema drift and skips creation; use `--full-refresh` to drop and recreate. |
+| `streaming_source` | Creates a Flink SQL table backed by a connector (for example, `faker` for mock data generation). Requires the `connector` config. The model SQL defines the column definitions. If the table already exists, the adapter checks for schema drift and skips creation; use `--full-refresh` to drop and recreate. |
+| `ephemeral` | Standard dbt CTE-based query fragment, not materialized in Flink. |
 
 ### Unsupported materializations
 
-- **`table`**: Not officially support. Coming soon.
-- **`materialized_view`**: Not supported. Use streaming table instead.
-- **`incremental`**: Not supported. Confluent Cloud Flink SQL does not support the merge/upsert patterns that dbt incremental models require.
-- **`snapshot`**: Not supported. Flink SQL does not provide the transaction operations (`MERGE`, `UPDATE` with CTEs) required for dbt snapshots.
+- **`table`**: Not officially supported. Coming soon.
+- **`materialized_view`**: Not supported. Use `streaming_table` instead.
+- **`incremental`**: Not supported. dbt's batch-incremental semantics do not map to Flink's continuous processing model. Use `streaming_table` instead.
+- **`snapshot`**: Not supported. Flink SQL lacks the batch operations (`MERGE`, `UPDATE`) required by dbt snapshots.
 
 ## Materialization-specific configurations
 
@@ -58,7 +59,7 @@ WHERE status = 'completed'
 
 ### `streaming_source`
 
-The `streaming_source` materialization creates a table backed by a connector. The `connector` config is **required**. In Confluent Cloud, valid connector values include `confluent` (Kafka topics, the default), `faker` (mock data generation), and external table connectors for AI search.
+The `streaming_source` materialization creates a table backed by a connector. The `connector` config is **required**. The model SQL defines the column definitions (rather than a `SELECT` query). In Confluent Cloud, valid connector values include `faker` (mock data generation) and external table connectors for AI search. See the [Confluent connector catalog](https://docs.confluent.io/cloud/current/connectors/index.html) and [Flink CREATE TABLE documentation](https://docs.confluent.io/cloud/current/flink/reference/statements/create-table.html) for available connectors and options.
 
 <File name='models/my_fake_orders.sql'>
 
@@ -88,7 +89,7 @@ PRIMARY KEY(order_id) NOT ENFORCED
 
 | Config | Type | Required | Description |
 |---|---|---|---|
-| `connector` | `string` | Yes | The connector type for the source table. Valid values in Confluent Cloud include `confluent` (Kafka topics), `faker` (mock data), and external AI search connectors. |
+| `connector` | `string` | Yes | The connector type for the source table. Valid values in Confluent Cloud include `faker` (mock data) and external AI search connectors. |
 | `with` | `dict` | No | Additional table options passed to the `WITH` clause, alongside the connector. Valid options depend on the connector type. |
 
 ## Stateful behavior and `--full-refresh`
@@ -96,7 +97,7 @@ PRIMARY KEY(order_id) NOT ENFORCED
 Confluent Cloud Flink SQL tables are stateful, long-running resources. The `streaming_table` and `streaming_source` materializations behave differently from traditional batch-oriented dbt materializations:
 
 - **First run**: The table is created and (for `streaming_table`) a continuously running `INSERT INTO` statement begins populating it.
-- **Subsequent runs without `--full-refresh`**: If the table already exists, `dbt run` raises an error. This prevents accidentally dropping a table that has accumulated state or has downstream consumers.
+- **Subsequent runs without `--full-refresh`**: If the table already exists, the adapter compares the existing column names, data types, and `WITH` options against the model. If nothing has drifted, the run skips the model to avoid dropping a table that has accumulated state or has downstream consumers. If drift is detected, the run fails with a compilation error. Drift detection can be disabled per model with `config(on_schema_drift='ignore')`.
 - **Runs with `--full-refresh`**: The existing table is dropped and recreated from scratch, reprocessing all data.
 
 Use `--full-refresh` when you need to change a table's schema, modify `WITH` options, or reprocess data from the beginning:
