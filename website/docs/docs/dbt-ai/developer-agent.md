@@ -125,6 +125,10 @@ You can select one of the following options:
 
 </SimpleTable>
 
+After you run a command, <Constant name="copilot" /> adds an icon and **Run by Copilot** tooltip to the <Constant name="studio_ide" /> [**Commands** tab](/docs/platform/studio-ide/ide-user-interface#console-section) results. This helps you distinguish agent-run commands from manually run commands in the run results and logs.
+
+<Lightbox src="/img/docs/dbt-platform/dev-agent-cmd-icon.png" width="95%" title="Commands run by the Developer agent appear in the Studio IDE Commands tab with a Copilot icon and 'Run by Copilot' tooltip." />
+
 </Expandable>
 
 ## Bringing your own skills
