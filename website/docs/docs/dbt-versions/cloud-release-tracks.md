@@ -14,9 +14,24 @@ By moving your environments and jobs to release tracks you can get all the funct
 
 ## Which release tracks are available?
 
+### Fusion release tracks
+
+The <Constant name="dbt_platform" /> has four <Constant name="fusion" /> release tracks available to give you control over stability vs. velocity. 
+
+_`Fusion Stable` is the default for all new <Constant name="fusion" />-powered projects._
+
+| Release track | Cadence | Description | [Plan availability](https://www.getdbt.com/pricing) | API value |
+| ------------- | ------- | ----------- | ----------------- | --------- |
+| **Fusion Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `latest-fusion` |
+| **Fusion Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | All plans | `stable-fusion` |
+| **Fusion Extended** | Monthly | The previous month's final Fusion Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `extended-fusion` |
+| **Fusion Fallback** | Monthly | The previous month's Fusion Extended release. Emergency rollback option for account admins. | Enterprise+ | `fallback-fusion` |
+
+
+### dbt Core release tracks
+
 | Release track | Description | Plan availability | API value |
 | ------------- | ----------- | ----------------- | --------- |
-| **Latest Fusion**  | The latest build of the new engine for dbt, available to select accounts. | All plans <br /> | `latest-fusion` |
 | **Latest** | Provides a continuous release of the latest functionality in the <Constant name="dbt_platform" /> .<br /><br />Includes early access to new features of the dbt framework before they're available in <Constant name="core" />. | All plans | `latest` |
 | **Compatible** | Provides a monthly release aligned with the most recent open source versions of dbt Core and adapters, plus functionality exclusively available in the dbt platform.<br /><br />See [Compatible track changelog](/docs/dbt-versions/compatible-track-changelog) for more information. |  Starter, Enterprise, Enterprise+ | `compatible` |
 | **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
@@ -24,11 +39,28 @@ By moving your environments and jobs to release tracks you can get all the funct
 
 To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
 - `latest-fusion`
+- `stable-fusion`
+- `extended-fusion`
+- `fallback-fusion`
 - `latest`
 - `compatible`
 - `extended`
 
 ## Which release track should I choose?
+
+### Fusion release tracks
+
+Choose **Fusion Stable** (the default for new projects) for a weekly release cadence that balances stability and feature access. This is the recommended starting point for most customers migrating to <Constant name="fusion_engine" />.
+
+Choose **Fusion Nightly** if you want the latest features and are comfortable with a daily release cadence. This track ideal for teams prioritizing the most recent features.
+
+Choose **Fusion Extended** if your team needs maximum stability and more time to test before updates roll out. This track generally lags Fusion Stable by one month and is available for Enterprise and Enterprise+ accounts.
+
+Choose **Fusion Fallback** as an emergency measure only. This is a temporary rollback option for Enterprise+ accounts, not for ongoing use.
+
+Account admins can set the org-wide default release track for new projects via a toggle in **Account Settings**. Individual project owners can then override that default per environment.
+
+### Mantle (dbt Core–based) release tracks
 
 Choose the **Latest** release track to continuously receive new features, fixes, performance improvements — latest & greatest dbt. This is the default for all customers on <Constant name="dbt" />.
 
@@ -36,13 +68,13 @@ Choose the **Compatible** and **Extended** release tracks if you need a less-fre
 
 ### Using the Fallback release track
 
-The **Fallback** release track provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. 
+The **Fallback** release track (for both Fusion and Mantle) provides an emergency rollback option for account admins if you suspect a regression in the "Extended" track. This is available only for <Constant name="fusion_engine" /> in Enterprise+ accounts.
 
-1. Enable it by going to **Account settings** 
-2. Click the **Fallback** release track button in the <Constant name="dbt_platform" /> interface, rather than through environment settings. 
-3. Fill in the details in the **Revert to Fallback** pop up to confirm and share any info with dbt Support.
+1. Go to **Account settings**
+2. Click the **Fallback** release track button in the <Constant name="dbt_platform" /> interface. This is not accessible through environment settings.
+3. Fill in the details in the **Revert to Fallback** pop-up to confirm and share information with dbt Support.
 
-Switching to **Fallback** alerts the dbt Support team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. You should return to "Extended" or "Compatible" once the issue is resolved.
+Switching to **Fallback** alerts the dbt Support team, who may reach out to help resolve the issue. This track is meant only as a temporary safety option to unblock you and not for ongoing use. Return to "Extended" or "Stable" (<Constant name="fusion" />) / "Compatible" (<Constant name="core" />) once the issue is resolved.
 <DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/docs/dbt-versions/rollback.png" width="80%" title="Fallback release track button in dbt platform"/>
@@ -54,16 +86,33 @@ Switching to **Fallback** alerts the dbt Support team, who may reach out to help
 
 ### Common architectures
 
-**Default** - Majority of customers on all plans
+#### Fusion release tracks
+
+**Default** &mdash; All plans
+- Prioritize a weekly release cadence that balances stability and new features
+- Leave all environments on the **Fusion Stable** release track (default for new projects at GA)
+
+**Velocity-focused** &mdash; All plans
+- Prioritize immediate access to the latest Fusion features and fixes
+- Configure all environments to use the **Fusion Nightly** release track
+
+**Cautious** &mdash; Enterprise, Enterprise+
+- Prioritize maximum stability and additional testing time
+- Configure production environments to use **Fusion Extended** (one month behind Stable)
+- Configure development environments to use **Fusion Stable** so developers get access to upcoming changes before they reach production
+
+#### Mantle (dbt Core–based) release tracks
+
+**Default** &mdash; Majority of customers on all plans
 - Prioritize immediate access to fixes and features
 - Leave all environments on the **Latest** release track (default configuration)
 
-**Hybrid** - Starter, Enterprise, Enterprise+
+**Hybrid** &mdash; Starter, Enterprise, Enterprise+
 - Prioritize ongoing compatibility between <Constant name="dbt" /> and <Constant name="core" /> for development & deployment using both products in the same dbt projects
 - Configure all environments to use the **Compatible** release track
 - Understand that new features will not be available until they are first released in <Constant name="core" /> OSS (several months after the **Latest** release track)
 
-**Cautious** - Enterprise, Enterprise+, Business Critical
+**Cautious** &mdash; Enterprise, Enterprise+, Business Critical
 - Prioritize "bake in" time for new features & fixes
 - Configure development & test environments to use the **Compatible** release track
 - Configure pre-production & production environments to use the **Extended** release track
