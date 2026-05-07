@@ -127,7 +127,7 @@ Docs blocks should be placed in files with a `.md` file extension. By default, d
 
 <VersionBlock firstVersion="1.12">
 
-Place docs blocks in files with a `.md`, `.md.j2`, `.md.jinja`, or `.md.jinja2` file extension. Note that Jinja-style extension suffixes such as `.md.j2`, `.md.jinja`, and `.md.jinja2` require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-changes#jinja-file-extensions) in your `dbt_project.yml`.
+Place docs blocks in files with a `.md`, `.md.j2`, `.md.jinja`, or `.md.jinja2` file extension. Note that using Jinja-style extension suffixes such as `.md.j2`, `.md.jinja`, and `.md.jinja2` require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-changes#jinja-file-extensions) in your `dbt_project.yml`.
 
 By default, dbt searches in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 
