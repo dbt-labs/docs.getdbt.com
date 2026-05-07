@@ -14,22 +14,7 @@
       background: #0D0D0D;
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
       color: #fff;
-      /* Tall enough to demo scroll trigger */
-      padding-top: 60vh;
     }
-
-    .scroll-hint {
-      position: fixed;
-      top: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 13px;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.04em;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-    .scroll-hint.hidden { opacity: 0; }
 
     .chart-section {
       width: 100%;
@@ -81,9 +66,7 @@
   </style>
 </head>
 <body>
-  <p class="scroll-hint" id="hint">↓ scroll to see the chart animate in</p>
-
-  <div class="chart-section">
+<div class="chart-section">
     <!--
       Chart area:  x=180–1520  (1340px wide)
                    y=220–726   (506px tall, max=1200)
@@ -191,14 +174,11 @@
 
   <script>
     const svg = document.querySelector('svg');
-    const hint = document.getElementById('hint');
     let triggered = false;
 
     function triggerAnimation() {
       if (triggered) return;
       triggered = true;
-
-      hint.classList.add('hidden');
 
       // Animate bars
       document.querySelectorAll('.bar').forEach(el => el.classList.add('go'));
