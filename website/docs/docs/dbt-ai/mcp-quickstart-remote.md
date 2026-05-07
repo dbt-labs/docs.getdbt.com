@@ -25,12 +25,12 @@ Local development and agentic workflows (for example, running dbt commands like 
 Follow these steps to set up the remote MCP server:
 
 ### 1. Enable AI features
-In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
+In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-copilot) turned on.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
 
-- **<Constant name="dbt_platform"/> host**: Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. See [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
+- **<Constant name="dbt_platform"/> host**: Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. See [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
 - **Production environment ID**: From **Orchestration** in <Constant name="dbt_platform"/>. You will use it as the `x-dbt-prod-environment-id` header.
 - **Token** &mdash; PAT or service token with Semantic Layer and Developer permissions.
 - **If you use `execute_sql`:** You must use a PAT, plus your development environment ID and user ID. See [Finding your IDs](/docs/dbt-ai/mcp-find-ids).

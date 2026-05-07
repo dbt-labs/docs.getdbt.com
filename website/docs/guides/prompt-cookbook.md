@@ -242,7 +242,7 @@ on customer_id. Filter to the last 30 days for preview only.
 
 Fast-track your semantic layer strategy with AI-generated YAML using <Constant name="copilot" />.
 
-<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/cloud/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/cloud/build-canvas-copilot), and [<Constant name="insights" />](/docs/explore/dbt-insights).
+<Constant name="dbt_platform" /> provides built-in generation buttons that automatically  [generate code](/docs/platform/use-dbt-copilot), [documentation](/docs/build/documentation), [data tests](/docs/build/data-tests), [metrics](/docs/build/metrics-overview), and [semantic models](/docs/build/semantic-models) for you with the click of a button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-copilot), [<Constant name="canvas" />](/docs/platform/build-canvas-copilot), and [<Constant name="insights" />](/docs/explore/dbt-insights).
 
 These features understand your model's structure and generate YAML in the correct location.
 
@@ -262,7 +262,7 @@ These built-in features automatically understand your model's columns, data type
 2. Use built-in buttons to add documentation, tests, and semantic models
 3. Refine the generated YAML as needed
 
-For more details, check out the [dbt Copilot](/docs/cloud/use-dbt-copilot) docs.
+For more details, check out the [dbt Copilot](/docs/platform/use-dbt-copilot) docs.
 
 ## Create reusable macros
 
@@ -415,11 +415,11 @@ The more you use <Constant name="copilot" />, the more you'll discover ways to a
 
 Check out the following docs to learn more about how to use <Constant name="copilot" />:
 
-- [About dbt Copilot](/docs/cloud/dbt-copilot)
-- [Generate resources](/docs/cloud/use-dbt-copilot#generate-resources)
-- [Generate and edit SQL inline](/docs/cloud/use-dbt-copilot#generate-and-edit-sql-inline)
-- [Build visual models](/docs/cloud/use-dbt-copilot#build-visual-models)
-- [Build queries](/docs/cloud/use-dbt-copilot#build-queries)
+- [About dbt Copilot](/docs/platform/dbt-copilot)
+- [Generate resources](/docs/platform/use-dbt-copilot#generate-resources)
+- [Generate and edit SQL inline](/docs/platform/use-dbt-copilot#generate-and-edit-sql-inline)
+- [Build visual models](/docs/platform/use-dbt-copilot#build-visual-models)
+- [Build queries](/docs/platform/use-dbt-copilot#build-queries)
 
 
 </ConfettiTrigger>
