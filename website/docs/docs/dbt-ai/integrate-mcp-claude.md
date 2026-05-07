@@ -19,7 +19,7 @@ You don't need to clone the dbt-mcp repository &mdash; install [uv](https://docs
 
 <StaticSubdomainRequired />
 
-OAuth and advanced JSON configurations use your [access URL with a static subdomain](/docs/cloud/about-cloud/access-regions-ip-addresses).
+OAuth and advanced JSON configurations use your [access URL with a static subdomain](/docs/platform/about-platform/access-regions-ip-addresses).
 
 To configure Claude Desktop to use the dbt MCP server:
 1. Go to the [latest dbt MCP release](https://github.com/dbt-labs/dbt-mcp/releases/latest) and download the `dbt-mcp.mcpb` file.
@@ -48,7 +48,7 @@ For debugging, you can find the Claude desktop logs at `~/Library/Logs/Claude` f
 
 ## Claude Code
 
-If you use OAuth in the JSON patterns mentioned in the next section, you need a [static subdomain](/docs/cloud/about-cloud/access-regions-ip-addresses) for your access URL (see the callout under [Claude Desktop](#claude-desktop) on this page).
+If you use OAuth in the JSON patterns mentioned in the next section, you need a [static subdomain](/docs/platform/about-platform/access-regions-ip-addresses) for your access URL (see the callout under [Claude Desktop](#claude-desktop) on this page).
 
 You can set up Claude Code with both the local and remote `dbt-mcp` server. We recommend using the local `dbt-mcp` for more developer-focused workloads. See the [About MCP](/docs/dbt-ai/about-mcp#server-access) page for more information about local and remote server features. For remote MCP with OAuth (Enterprise and Enterprise+, private beta), see [Connect apps with OAuth](/docs/cloud/manage-access/connect-apps-oauth) and [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
 

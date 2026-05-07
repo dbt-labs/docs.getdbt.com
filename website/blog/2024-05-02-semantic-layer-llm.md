@@ -74,7 +74,7 @@ grant usage on warehouse <warehouse_name> to role public;
 -- change the role name in the above commands.
 ```
 
-Additionally, you’ll need to set up a network rule, an external access integration, and a UDF that makes a request to the dbt Cloud Semantic Layer.  Be mindful of the values you have in your network rule and UDF - they'll need to correspond to the host where your dbt Cloud account is [deployed](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
+Additionally, you’ll need to set up a network rule, an external access integration, and a UDF that makes a request to the dbt Cloud Semantic Layer.  Be mindful of the values you have in your network rule and UDF - they'll need to correspond to the host where your dbt Cloud account is [deployed](https://docs.getdbt.com/docs/dbt-apis/sl-graphql#dbt-semantic-layer-graphql-api).
 
 ```sql
 grant create network rule on schema <database_name>.<schema_name> to role public;
@@ -173,7 +173,7 @@ grant usage on function retrieve_sl_metadata() to role public;
 
 Couple of things to note about the code above:
 
-- Make sure you update the code to include your environment ID and your URL that’s specific to your [deployment type](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
+- Make sure you update the code to include your environment ID and your URL that’s specific to your [deployment type](https://docs.getdbt.com/docs/dbt-apis/sl-graphql#dbt-semantic-layer-graphql-api).
 You could modify the function to accept arguments for payload, variables, query, etc. to make it more dynamic and satisfy other use cases outside of this one.
 - Once the data has been returned, we’re going to use streamlit’s [session state](https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state) feature to store the dbt project’s defined metrics and dimensions.  This feature will allow us to make multiple calls without having to continually retrieve this metadata.
 
@@ -293,6 +293,6 @@ grant usage on function submit_sl_request(string) to role public;
 
 ## Wrapping Up
 
-Building this application has been an absolute blast for multiple reasons.  First, we’ve been able to use it internally within the SA org to demonstrate how the semantic layer works.  It provides yet another [integration](https://docs.getdbt.com/docs/cloud-integrations/avail-sl-integrations) point that further drives home the fundamental value prop of using the Semantic Layer.  Secondly, and more importantly, it has served as an example to those customers thinking about (or being pushed to think about) how they can best utilize these technologies to further their goals.  Finally, I’ve been able to be heads down, hands on keyboard learning about all of these interesting technologies and stepping back into the role of builder is something I will never turn down!
+Building this application has been an absolute blast for multiple reasons.  First, we’ve been able to use it internally within the SA org to demonstrate how the semantic layer works.  It provides yet another [integration](https://docs.getdbt.com/docs/platform-integrations/avail-sl-integrations) point that further drives home the fundamental value prop of using the Semantic Layer.  Secondly, and more importantly, it has served as an example to those customers thinking about (or being pushed to think about) how they can best utilize these technologies to further their goals.  Finally, I’ve been able to be heads down, hands on keyboard learning about all of these interesting technologies and stepping back into the role of builder is something I will never turn down!
 
 Finally, to see the entire code, from Snowflake to Streamlit, check out the repo [here](https://github.com/dpguthrie/dbt-sl-cortex-streamlit-blog/tree/main?tab=readme-ov-file).

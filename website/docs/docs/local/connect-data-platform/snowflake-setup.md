@@ -21,7 +21,7 @@ meta:
 
 # Connect Snowflake to Fusion <Lifecycle status='preview' />
 
-You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
+You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
 The Snowflake adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
 - Password 
@@ -32,6 +32,14 @@ The Snowflake adapter for Fusion supports the following [authentication methods]
 :::note
 [Snowflake is deprecating single-access password login](https://docs.snowflake.com/en/user-guide/security-mfa-rollout). Individual developers should use MFA or SSO instead of password authentication. Password-based login remains supported for service users (Snowflake user type: `LEGACY_SERVICE`).
 :::
+
+## Warehouse permissions
+
+import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+
+<FusionSnowflakeWarehousePerms />
+
+For role examples and SQL grants in Snowflake, you can also refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions).
 
 ## Snowflake configuration details
 

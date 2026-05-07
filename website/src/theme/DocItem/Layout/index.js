@@ -196,6 +196,7 @@ function useDocTOC() {
   };
 }
 export default function DocItemLayout({children}) {
+  const location = useLocation();
   const docTOC = useDocTOC();
 
   // dbt Custom
@@ -207,7 +208,6 @@ export default function DocItemLayout({children}) {
   const { siteConfig } = useDocusaurusContext();
 
   // Construct full URL for structured data
-  const location = useLocation();
   const isGuidesRoute = location.pathname.includes('/guides/');
   const siteUrl = siteConfig?.url || '';
   const fullUrl = `${siteUrl}${location.pathname}${location.search}${location.hash}`;

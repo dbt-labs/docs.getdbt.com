@@ -17,7 +17,7 @@ Remote MCP is a good fit when:
 
 - You don't want to or can't install software (`uvx`, dbt-mcp) on your machine.
 - Your use case is _consumption-based_: querying metrics, exploring metadata, viewing lineage, or running SQL via the platform.
-- You need <Constant name="semantic_layer"/> and Discovery API access without a local dbt project.
+- You need <Constant name="semantic_layer"/>, Administrative, and Discovery APIs access without a local dbt project.
 
 :::info Local development requires local MCP
 Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the dbt CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
@@ -29,14 +29,14 @@ Follow these steps to set up the remote MCP server.
 
 ### 1. Enable AI features
 
-In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
+In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-copilot) turned on.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
 
-- **dbt platform host:** Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. See [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
-- **Production environment ID:** From **Orchestration** in <Constant name="dbt_platform"/>. You will use it as the `x-dbt-prod-environment-id` header.
-- **Token:** PAT or service token with Semantic Layer and Developer permissions.
+- **<Constant name="dbt_platform"/> host**: Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. See [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
+- **Production environment ID**: From **Orchestration** in <Constant name="dbt_platform"/>. You will use it as the `x-dbt-prod-environment-id` header.
+- **Token** &mdash; PAT or service token with Semantic Layer and Developer permissions.
 - **If you use `execute_sql`:** You must use a PAT, plus your development environment ID and user ID. See [Finding your IDs](/docs/dbt-ai/mcp-find-ids).
 
 ### 3. Choose authentication: OAuth or tokens

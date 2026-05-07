@@ -36,7 +36,7 @@ In <Constant name="dbt" />, you can natively connect to your data platform and t
 
 ### Tips
 - Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with <Constant name="dbt" />'s one-click feature, eliminating the need for manual updates and version discrepancies. Select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing updates, to always stay up to date with fixes and (optionally) get early access to new functionality for your dbt project.
-- <Constant name="dbt" /> supports a whole host of [cloud providers](/docs/cloud/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
+- <Constant name="dbt" /> supports a whole host of [cloud providers](/docs/platform/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
 - Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/local/profiles.yml) snippet in your <Constant name="dbt" /> environment settings. It gives you more control over environments (both deployment and development) and extends how <Constant name="dbt" /> connects to the data platform within a given environment.
   - For example, if you have a field in your `profiles.yml` that you’d like to add to the <Constant name="dbt" /> adapter user interface, you can use Extended Attributes to set it.
 
@@ -46,7 +46,7 @@ In <Constant name="dbt" />, you can natively connect to your data platform and t
 
 ## Development tools
 
-<Constant name="dbt" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) (local) or [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt projects.
+<Constant name="dbt" /> empowers data practitioners to develop in the tool of their choice. It ships with a [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) (local) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt projects.
 
 Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team's workflow, it's important to know who will prefer the <Constant name="studio_ide" /> and who might lean towards the <Constant name="dbt" /> CLI. This section aims to clarify these preferences.
 
@@ -64,9 +64,9 @@ A web-based interface for building, testing, running, and version-controlling db
 - The <Constant name="studio_ide" /> has simplified <Constant name="git" /> functionality:
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the <Constant name="studio_ide" />.
-- [Format or lint](/docs/cloud/studio-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
-- Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- [Format or lint](/docs/platform/studio-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
+- Allows users to natively [defer to production](/docs/platform/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-cloud-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
 The <Constant name="studio_ide" /> provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the <Constant name="studio_ide" /> due to its focus on simplicity and ease of use:
 
@@ -77,7 +77,7 @@ The <Constant name="studio_ide" /> provides a simplified interface that's access
 ### dbt CLI
 The <Constant name="dbt" /> CLI allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your <Constant name="dbt" /> development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
 
-When moving from dbt Core to <Constant name="dbt" />, make sure you check the `.gitignore` file contains the [necessary folders](/docs/cloud/git/version-control-basics#the-gitignore-file). dbt Core doesn't interact with git so <Constant name="dbt" /> doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, <Constant name="dbt" /> won't add any missing entries to the `.gitignore file`.
+When moving from dbt Core to <Constant name="dbt" />, make sure you check the `.gitignore` file contains the [necessary folders](/docs/platform/git/version-control-basics#the-gitignore-file). dbt Core doesn't interact with git so <Constant name="dbt" /> doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, <Constant name="dbt" /> won't add any missing entries to the `.gitignore file`.
 
 **Who might prefer the <Constant name="dbt" /> CLI?**
 
@@ -88,8 +88,8 @@ When moving from dbt Core to <Constant name="dbt" />, make sure you check the `.
 **Key features**
 
 - Allows users to run dbt commands against their <Constant name="dbt" /> development environment from their local command line with minimal configuration.
-- Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
-- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Allows users to natively [defer to production](/docs/platform/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/platform/about-platform/dbt-cloud-features) available in <Constant name="dbt" />'s infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 - Able to use Visual Studio (VS) Code extensions
 
 ## Orchestration
@@ -98,10 +98,10 @@ When moving from dbt Core to <Constant name="dbt" />, make sure you check the `.
 
 ### Tips
 
-- Enable [partial parsing](/docs/cloud/account-settings#partial-parsing) between jobs in <Constant name="dbt" /> to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
+- Enable [partial parsing](/docs/platform/account-settings#partial-parsing) between jobs in <Constant name="dbt" /> to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
 - [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
 - <Constant name="dbt" /> automatically [cancels](/docs/deploy/job-scheduler#run-cancellation-for-over-scheduled-jobs) a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
-- Protect you and your data freshness from third-party outages by enabling <Constant name="dbt" />'s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="managed,managed_plus" />
+- Protect you and your data freshness from third-party outages by enabling <Constant name="dbt" />'s [Git repository caching](/docs/platform/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="managed,managed_plus" />
 - [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across <Constant name="dbt" /> projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="self_service,managed" />
 - [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
 
@@ -141,14 +141,14 @@ Leverage the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/d
 
 ### Tips
 - Define semantic models and metrics once in <Constant name="dbt" /> with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
-- Use the [<Constant name="semantic_layer" /> APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
-- Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. [Available integrations](/docs/cloud-integrations/avail-sl-integrations) include Tableau, Google Sheets, Hex, and more.
+- Use the [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
+- Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. [Available integrations](/docs/platform-integrations/avail-sl-integrations) include Tableau, Google Sheets, Hex, and more.
 - Use [exports](/docs/use-dbt-semantic-layer/exports) to write commonly used queries directly within your data platform, on a schedule.
 
 ### Caveats
 - <Constant name="semantic_layer" /> currently supports the Deployment environment for querying. Development querying experience coming soon.
 - Run queries/semantic layer commands in the <Constant name="dbt" /> CLI, however running queries/semantic layer commands in the <Constant name="studio_ide" /> isn't supported *yet.*
-- <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
+- <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/platform/manage-access/sso-overview) for <Constant name="semantic_layer" /> [production credentials](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
 
 Refer to the [<Constant name="semantic_layer" /> FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
 

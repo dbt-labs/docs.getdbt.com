@@ -9,7 +9,7 @@ description: "Instructions for upgrading a dbt account after the trial ends."
 ## Prerequisites 
 
 Before you begin: 
-- You _must_ be part of the [Owner](/docs/cloud/manage-access/self-service-permissions) user group to make billing changes. Users not included in this group will not see these options.
+- You _must_ be part of the [Owner](/docs/platform/manage-access/self-service-permissions) user group to make billing changes. Users not included in this group will not see these options.
 - All amounts shown in <Constant name="dbt" /> are in U.S. Dollars (USD)   
 - When your trial expires, your account's default plan enrollment will be a Starter plan.
 
@@ -31,7 +31,7 @@ To unlock your account and select a plan, review the following guidance per plan
 2. Confirm your plan selection on the pop up message.
 3. This automatically unlocks your <Constant name="dbt" /> account, and you can now enjoy the benefits of the Developer plan. 🎉
 
-<Lightbox src="/img/docs/dbt-cloud/downgrade-dev-flow.gif"/>
+<Lightbox src="/img/docs/dbt-platform/downgrade-dev-flow.gif"/>
 
 #### Plan allocation
 
@@ -44,9 +44,9 @@ If you select a plan but have too many seats or projects for that plan (for exam
 3. Enter your payment information and seat purchases. Then click **Save**.
 4. This automatically unlocks your <Constant name="dbt" /> account, and you can now enjoy the benefits of the Starter plan. 🎉
 
-<Lightbox src="/img/docs/dbt-cloud/trial-team-flow.png"/>
+<Lightbox src="/img/docs/dbt-platform/trial-team-flow.png"/>
 
-<Lightbox src="/img/docs/dbt-cloud/trial-team-payments-flow.png"/>
+<Lightbox src="/img/docs/dbt-platform/trial-team-payments-flow.png"/>
 
 ### Enterprise plan
 
@@ -54,7 +54,7 @@ If you select a plan but have too many seats or projects for that plan (for exam
 2. Click **Contact Sales** on the right. This opens a chat window for you to contact the <Constant name="dbt" /> Support team, who will connect you to our Sales team.
 3. Once you submit your request, our Sales team will contact you with more information. 
 
-<Lightbox src="/img/docs/dbt-cloud/enterprise-upgrade.gif"/>
+<Lightbox src="/img/docs/dbt-platform/enterprise-upgrade.gif"/>
 
 4. Alternatively, you can [contact](https://www.getdbt.com/contact/) our Sales team directly to chat about how <Constant name="dbt" /> can help you and your team. 
 
@@ -65,7 +65,7 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
 <details>
   <summary>How does billing work?</summary>
 
-  Starter plans are billed monthly on the credit card used to sign up, based on <a href="/docs/cloud/billing">developer seat count and usage</a>. You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> &gt; <b>Billing page</b>.
+  Starter plans are billed monthly on the credit card used to sign up, based on <a href="/docs/platform/billing">developer seat count and usage</a>. You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> &gt; <b>Billing page</b>.
 
   Enterprise-tier plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan.
 
@@ -81,7 +81,7 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
 <details>
   <summary>Can I pay by invoice?</summary>
   
-  Currently, <Constant name="dbt" /> Starter plan payments must be made with a credit card, and by default they will be billed monthly based on the number of <a href="/docs/cloud/billing">developer seats and usage</a>.
+  Currently, <Constant name="dbt" /> Starter plan payments must be made with a credit card, and by default they will be billed monthly based on the number of <a href="/docs/platform/billing">developer seats and usage</a>.
   
   We don’t have any plans to do invoicing for Starter plan accounts in the near future, but we do currently support invoices for companies on the <Constant name="dbt" /> Enterprise-tier plan. Feel free to <a href="https://www.getdbt.com/contact/">contact</a> us to build your Enterprise pricing plan.
 

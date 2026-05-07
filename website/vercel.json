@@ -15,7 +15,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' data: https:; frame-ancestors 'self' https://*.getdbt.com"
+          "value": "img-src 'self' data: https: https://*.optimizely.com; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; frame-ancestors 'self' https://*.getdbt.com"
         },
         {
           "key": "Strict-Transport-Security",
@@ -38,6 +38,23 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/community/events",
+      "destination": "https://www.getdbt.com/events",
+      "source": "/community/spotlight",
+      "destination": "/community/join",
+      "permanent": true
+    },
+    {
+      "source": "/community/spotlight/:path*",
+      "destination": "/community/join",
+      "permanent": true
+    },
+    {
+      "source": "/community/forum",
+      "destination": "https://discourse.getdbt.com/",
+      "permanent": true
+    },
     { 
       "source": "/guides/sl-migration",
       "destination": "/docs/build/latest-metrics-spec",
@@ -2107,7 +2124,7 @@
     },
     {
       "source": "/docs/dbt-cloud-apis/metadata-api",
-      "destination": "/docs/dbt-cloud-apis/discovery-api",
+      "destination": "/docs/dbt-apis/discovery-api",
       "permanent": true
     },
     {
@@ -4970,6 +4987,26 @@
     {
       "source": "/report-a-problem",
       "destination": "https://www.getdbt.com/report-a-problem",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud/:path*",
+      "destination": "/docs/platform/about-platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/:path*",
+      "destination": "/docs/platform/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud-integrations/:path*",
+      "destination": "/docs/platform-integrations/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/:path*",
+      "destination": "/docs/dbt-apis/:path*",
       "permanent": true
     }
   ]

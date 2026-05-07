@@ -129,7 +129,7 @@ To set up your BigQuery DataFrames connection in the <Constant name="dbt_platfor
  
 This is required so that BigFrames jobs execute correctly.
 
-Refer to [Connect to BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) for more info on how to connect to BigQuery in the <Constant name="dbt_platform"/>.
+Refer to [Connect to BigQuery](/docs/platform/connect-data-platform/connect-bigquery) for more info on how to connect to BigQuery in the <Constant name="dbt_platform"/>.
 
 ## Create, configure, and execute your Python models
 

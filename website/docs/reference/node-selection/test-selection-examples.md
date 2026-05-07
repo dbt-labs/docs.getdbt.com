@@ -17,21 +17,33 @@ Test selection is powerful, and we know it can be tricky. To that end, we've inc
 
 ### Direct selection
 
-Run generic tests only:
+Use the `test_type` selector to run a specific category of tests without relying on model selection. This is useful when you want to isolate unit tests from data tests — for example, running only unit tests during development for fast feedback, or running only data tests in production where unit test compute isn't needed. The `test_type` selector works across all engines (<Constant name="core" /> and <Constant name="fusion" />).
 
-
-  ```bash
-    dbt test --select "test_type:generic"
-  ```
-
-Run singular tests only:
-
+**Run only unit tests** — use this during development or CI to validate SQL logic before materializing models:
 
   ```bash
-    dbt test --select "test_type:singular"
+  dbt test --select "test_type:unit"
   ```
 
-In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
+**Run all data tests** (includes both generic and singular) — use this to skip unit tests entirely, for example in production pipelines:
+
+  ```bash
+  dbt test --select "test_type:data"
+  ```
+
+**Run only generic data tests** — use this to run schema-level assertions defined in `.yml` files (such as `not_null` and `unique`), without running custom SQL test files:
+
+  ```bash
+  dbt test --select "test_type:generic"
+  ```
+
+**Run only singular data tests** — use this to run only custom SQL test files from your `tests/` directory, without running generic schema tests:
+
+  ```bash
+  dbt test --select "test_type:singular"
+  ```
+
+In all cases, `test_type` checks a property of the test itself — these are forms of "direct" test selection.
 
 ### Indirect selection
 

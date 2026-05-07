@@ -17,9 +17,7 @@ The [dbt MCP server](https://github.com/dbt-labs/dbt-mcp) provides a standardize
 
 To help with dbt, assistants need your project metadata and, when you allow it, supported actions such as CLI runs, platform APIs, and <Constant name="semantic_layer" /> queries. The dbt MCP server exposes those to MCP clients and supports use cases such as conversational access to data, agentic automation for dbt workflows, and AI-assisted development. This page covers local and remote setups, available tools, and how to get started.
 
-OAuth is one way to authenticate to <Constant name="dbt_platform"/> for supported experiences (including MCP, local and remote where available). Additional integrations may be offered over time.
-
-The MCP server provides access to the <Constant name="platform_cli"/>, [API](/docs/dbt-cloud-apis/overview), the [Discovery API](/docs/dbt-cloud-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
+The MCP server provides access to the <Constant name="platform_cli"/>, [API](/docs/dbt-apis/overview), the [Discovery API](/docs/dbt-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
@@ -76,9 +74,9 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 ### Supported tools by MCP server type
 The dbt MCP server has access to many parts of the dbt experience related to development, deployment, and discovery. Here are the categories of tools supported based on what form of the MCP server you connect to as well as detailed information on exact commands or queries available to the LLM.
 
-Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote MCP supports <Constant name="semantic_layer" />, SQL, Discovery, and <Constant name="fusion" /> tools only.
+Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote MCP supports <Constant name="semantic_layer" />, SQL, Discovery, Administrative API, and <Constant name="fusion" /> tools only.
 
-Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
+Note that access to the [dbt APIs](/docs/dbt-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
 | Tools | Local | Remote |
 | --- | --- | --- |
@@ -86,7 +84,7 @@ Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited dep
 | <Constant name="semantic_layer" /> | ✅ | ✅ |
 | SQL  | ✅ | ✅ |
 | Metadata Discovery| ✅ | ✅ |
-| Administrative API | ✅ | ❌ |
+| Administrative API | ✅ | ✅ |
 | Codegen Tools | ✅ | ❌ |
 | <Constant name="fusion" /> Tools | ✅ | ✅ |
 
