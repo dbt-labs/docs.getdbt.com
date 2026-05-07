@@ -230,8 +230,8 @@ models:
 | [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
 | [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
 | [`immutable_where`](#immutable-where)     | `<string>` | no       | `None` | alter   |
-| [`transient`](#transient-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
 | [`copy_grants`](#copy-grants-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
+| [`transient`](#transient-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
 
 
 <Tabs
@@ -261,8 +261,8 @@ models:
     [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
     [+](/reference/resource-configs/plus-prefix)[immutable_where](#immutable-where): <condition>
-    [+](/reference/resource-configs/plus-prefix)[transient](#transient-dynamic-tables): true | false
     [+](/reference/resource-configs/plus-prefix)[copy_grants](#copy-grants-dynamic-tables): true | false
+    [+](/reference/resource-configs/plus-prefix)[transient](#transient-dynamic-tables): true | false
 
 ```
 
@@ -290,8 +290,8 @@ models:
       [initialize](#initialize): ON_CREATE | ON_SCHEDULE
       [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
       [immutable_where](#immutable-where): <condition>
-      [transient](#transient-dynamic-tables): true | false
       [copy_grants](#copy-grants-dynamic-tables): true | false
+      [transient](#transient-dynamic-tables): true | false
 
 ```
 
@@ -317,8 +317,8 @@ models:
     [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
     [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
     [immutable_where](#immutable-where)="<condition>",
-    [transient](#transient-dynamic-tables)=true | false,
     [copy_grants](#copy-grants-dynamic-tables)=true | false,
+    [transient](#transient-dynamic-tables)=true | false,
 
 ) }}
 
