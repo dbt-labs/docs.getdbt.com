@@ -19,7 +19,7 @@ Use [<Constant name="dbt_platform" /> job scheduler](/docs/deploy/job-scheduler)
 
 Orchestrating downstream exposures _isn't_ available when your deployments use [Latest <Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks). Supported jobs must use [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine.
 
-On this track, the environment variables `DBT_ACTIVE_EXPOSURES` and `DBT_ACTIVE_EXPOSURES_BUILD_AFTER` have _no effect_: extracts are _not_ refreshed through this workflow and downstream exposure entries _don't_ appear in job logs.
+On the [Latest <Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks) release track (the <Constant name="fusion_engine" /> preview), orchestrating downstream exposures isn’t supported yet. Setting `DBT_ACTIVE_EXPOSURES` and `DBT_ACTIVE_EXPOSURES_BUILD_AFTER` won’t enable orchestration behavior (like Tableau extract refreshes) or the related job log entries.
 
 The private beta is for <Constant name="dbt" /> Enterprise accounts. Contact your account representative for access.
 
