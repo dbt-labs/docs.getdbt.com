@@ -4,11 +4,19 @@ title: Function properties
 
 <VersionCallout version="1.11" /> 
 
-Function properties can be declared in `.yml` files under a `functions` key.
+Function properties are the YAML properties you define for a [user-defined function (UDF)](/docs/build/udfs) in your project. In a schema YAML file (for example, `functions/schema.yml`), you name the function and specify information such as its description, configuration, arguments, and return type.
+
+The properties YAML file works with the function body you define in a corresponding SQL or Python file under `functions/`. When you run `dbt build`, dbt uses both files together to generate the `CREATE FUNCTION` statement.
+
+Declare function properties in a schema YAML file under the `functions:` key, with one list entry per function.
+
+Define properties (including `config`) per function, under each `- name: ...` entry. If you declare multiple functions, repeat the relevant properties for each function. You can't declare a single `config` block at the `functions` level.
+
+If multiple functions share the same `config` values, you can use YAML anchors and aliases to avoid repeating the same block.
 
 We recommend that you put them in the `functions/` directory. You can name these files `schema.yml` or `whatever_you_want.yml`, and nest them in subfolders within that directory.
 
-<File name='functions/<filename>.yml'>
+<File name='functions/file_name.yml'>
 
 ```yml
 
