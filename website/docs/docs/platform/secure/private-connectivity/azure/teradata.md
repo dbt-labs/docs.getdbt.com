@@ -53,6 +53,7 @@ The following steps walk you through the setup of a Teradata VantageCloud Azure 
 Once you've completed the setup with dbt Support, you can configure a private endpoint in <Constant name="dbt" />:
 
 1. Navigate to **Settings** → **Create new project** → select **Teradata**.
-2. In the **Host** field, enter the hostname provided by dbt Support.
-3. Configure the remaining [Teradata connection details](/docs/platform/connect-data-platform/connect-teradata).
-4. Test your connection and save it.
+2. You will see two radio buttons: **Public** and **Private**. Select **Private**.
+3. Select the private endpoint from the dropdown by the display name you submitted in the support ticket (this automatically populates the **Host** field).
+4. Configure the remaining [Teradata connection details](/docs/platform/connect-data-platform/connect-teradata).
+5. Test your connection and save it.
