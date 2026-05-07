@@ -97,7 +97,7 @@ And it's growing fast: **338** docs-tool calls in March (the month they launched
   src="/charts/mcp-docs-usage.html"
   width="100%"
   height="500"
-  style="border: none; border-radius: 8px; overflow: hidden;"
+  style={{border: 'none', borderRadius: '8px', overflow: 'hidden'}}
   title="dbt MCP docs-tool calls per month"
 />
 
