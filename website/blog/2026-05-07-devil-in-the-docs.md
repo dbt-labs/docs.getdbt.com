@@ -30,7 +30,7 @@ That was the [dbt MCP server's](/docs/dbt-ai/about-mcp) relationship with the do
 - The open source documentation at [docs.getdbt.com](https://docs.getdbt.com) is carefully maintained (by the docs team _and_ our amazing dbt community), up-to-date, and formatted for humans, of course. And now machine consumption: there's an `llms.txt` index, a full-content flat file, and markdown output on every page. We have an `AGENTS.md` file that lists how to access the docs via web requests. The source was solid and accessible.
 - The dbt MCP server &mdash; where dbt users interact with dbt through AI tools &mdash; couldn't reach any of it by default. It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, Fusion, Server Metadata. But none of them connected to the live docs by default. It didn't have our docs as its canonical source.
 
-So when an agent was asked *"how do I configure incremental models?"*, it might search online, pull from training data, or piece together an answer &mdash; but it wasn't grounded in the canonical source by default. A direct, native path to the docs didn't exist inside the server.
+So when an agent was asked *"how do I configure incremental models?"*, it could in theory reach the docs with its own browsing tools &mdash; but the experience was inconsistent. Sometimes it fetched a page, sometimes it leaned on training data or pieced an answer together; and when it _did_ fetch, it usually pulled rendered HTML rather than the markdown source &mdash; heavier, noisier, and less token-efficient. There was no direct, native path inside the server that pointed agents at the canonical docs in their cleanest form by default.
 
 <Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-meme.png" width="45%"title="Miranda mad at AI for hallucinating about incremental models (but for real an actual response I received from AI when I was adding the docs tools to the MCP server)" />
 
@@ -79,7 +79,7 @@ The dbt MCP server could already handle lineage lookups, test runs, Semantic Lay
 
 The workflow mirrors how a human would use the docs: search first to find what's relevant, then fetch the full content. The difference is that it happens inside whatever AI tool you're already using, without a context switching headache. 
 
-Alongside this, [dbt agent skills](https://skills.sh/dbt-labs/dbt-agent-skills) &mdash; including `fetching-dbt-docs` &mdash; remain the best path for agents not connected via MCP. The two complement each other: the skill proved the demand; the MCP tools are the native solution.
+Alongside this, [dbt agent skills](https://skills.sh/dbt-labs/dbt-agent-skills) remain the best path for agents not connected via MCP. The two complement each other: the skill proved the demand; the MCP tools are the native solution.
 
 ## What this changes day to day
 - Before: write a macro, hit an unfamiliar function, alt-tab to a browser, search docs, read the page, return to your editor, try to remember where you were. Or ask AI and get an answer that may not be grounded in the canonical, current docs.
