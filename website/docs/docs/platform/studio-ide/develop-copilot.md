@@ -16,7 +16,7 @@ This page describes how to use <Constant name="copilot" /> in the <Constant name
 
 Use [<Constant name="copilot" />](/docs/platform/dbt-copilot) in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) to generate documentation, tests, semantic models, metrics, and SQL code from scratch &mdash; making it easier for you to build your dbt project, accelerate your development, and focus on high-level tasks. For information about using <Constant name="copilot" /> in the [<Constant name="canvas" />](/docs/platform/canvas), see [Build with <Constant name="copilot" />](/docs/platform/build-canvas-copilot).
 
-## Developer agent <Lifecycle status="beta,self_service,managed,managed_plus" />
+## Developer agent <Lifecycle status="preview,self_service,managed,managed_plus" />
 
 For autonomous model generation, refactoring, and multi-step workflows in the <Constant name="studio_ide" />, see the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent). 
 
