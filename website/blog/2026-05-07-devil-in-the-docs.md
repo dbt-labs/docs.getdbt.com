@@ -28,7 +28,7 @@ Think of Andy in *The Devil Wears Prada* &mdash; constantly fielding requests fo
 That was the [dbt MCP server's](/docs/dbt-ai/about-mcp) relationship with the docs:
 
 - The open source documentation at [docs.getdbt.com](https://docs.getdbt.com) is carefully maintained (by the docs team _and_ our amazing dbt community), up-to-date, and formatted for humans, of course. And now machine consumption: there's an `llms.txt` index, a full-content flat file, and markdown output on every page. We have an `AGENTS.md` file that lists how to access the docs via web requests. The source was solid and accessible.
-- The dbt MCP server &mdash; where dbt users interact with dbt through AI tools &mdash; couldn't reach any of it by default. It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, Fusion, Server Metadata. But none of them connected to the live docs by default. It didn't have our docs as its canonical source.
+- The dbt MCP server &mdash; where dbt users interact with dbt through AI tools &mdash; couldn't reach any of it by default. It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, Fusion, Server Metadata. But none of them connected to the live docs by default. It didn't have our docs as its main source.
 
 So when an agent was asked *"how do I configure incremental models?"*, it could in theory reach the docs with its own browsing tools &mdash; but the experience was inconsistent. Sometimes it fetched a page, sometimes it leaned on training data or pieced an answer together; and when it _did_ fetch, it usually pulled rendered HTML rather than the markdown source &mdash; heavier, noisier, and less token-efficient. There was no direct, native path inside the server that pointed agents at the canonical docs in their cleanest form by default.
 
@@ -36,7 +36,7 @@ So when an agent was asked *"how do I configure incremental models?"*, it could 
 
 ## The research: using the data to make better decisions
 
-Earlier this year we'd been discussing docs data and how AI tools are now fetching them to answer questions. The term 'canonical docs' was mentioned and I struggled to understand what it meant and how it was different from the docs we were already building. But then [Google announced their new docs API and MCP server](https://developers.googleblog.com/introducing-the-developer-knowledge-api-and-mcp-server/) &mdash; then it clicked! Docs are now canonical and more important than ever in the AI era 💃💃💃!
+Earlier this year we'd been discussing docs data and how AI tools are now fetching them to answer questions. The term 'canonical docs' was mentioned and I struggled to understand what it meant and how it was different from the docs we were already building. But then [Google announced their new docs API and MCP server](https://developers.googleblog.com/introducing-the-developer-knowledge-api-and-mcp-server/) &mdash; then it clicked! Docs are now the source of truth (canonical source) and more important than ever in the AI era 💃💃💃!
 
 So we chatted about this and toyed with the idea of either:
 - Building a new docs MCP server, which meant starting from scratch and building all the infrastructure from the ground up
@@ -50,7 +50,7 @@ We ran some sql queries using the [dbt VS Code extension](/docs/install-dbt-exte
 - Adding the docs tools would be a natural extension of that and would be a great way to get the docs closer to users 
 - The dbt MCP server had eight toolset categories already but none of them could directly access docs.getdbt.com.
 - The dbt MCP server is open source and free, which also meant every user would get docs access automatically.
-- When an agent needed to answer *"how do I configure incremental models?"* &mdash; it might search the web or pull from training data, but there was no guaranteed path to the canonical, current source
+- When an agent needed to answer *"how do I configure incremental models?"* &mdash; it might search the web or pull from training data, but there was no guaranteed path to the main source of truth, the current docs.
 
 As mentioned above, we already had a solid foundation for AI-readable docs:
 
