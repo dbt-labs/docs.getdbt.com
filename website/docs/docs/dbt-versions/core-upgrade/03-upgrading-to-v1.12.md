@@ -106,7 +106,6 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
-- You can set [`copy_grants: true`](/reference/resource-configs/snowflake-configs#copy-grants-dynamic-tables) on a dynamic table to preserve existing object-level privileges when the table is recreated during a full refresh. When set to `false` (default), all previously granted permissions are dropped on recreation, requiring manual re-grants.
 - You can set the [`iceberg_version`](/docs/mesh/iceberg/snowflake-iceberg-support#adapter-properties) config on Snowflake Iceberg tables to control which Iceberg format version Snowflake uses. Set it to `3` to use Iceberg V3, which improves `VARIANT` type support and makes row-level changes more efficient by tracking deletions separately instead of rewriting data. The default value is `2`. Note that you cannot change the value of `iceberg_version` after table creation.
 - You can configure the [`scheduler`](/reference/resource-configs/snowflake-configs#scheduler) parameter on Snowflake dynamic tables to control how refreshes are managed. Setting it to `ENABLE` lets Snowflake automatically refresh the dynamic table, while `DISABLE` means dbt manages refreshes during model execution. When `scheduler` is set to `ENABLE`, you must also specify [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag). 
 

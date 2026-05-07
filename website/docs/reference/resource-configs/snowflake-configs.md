@@ -125,6 +125,7 @@ models:
 | [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
 | [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
 | [`immutable_where`](#immutable-where)     | `<string>` | no       | `None` | alter   |
+| [`copy_grants`](#copy-grants-dynamic-tables)     | `<boolean>` | no       | `false` | full refresh   |
 
 
 <Tabs
@@ -152,6 +153,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
     [+](/reference/resource-configs/plus-prefix)[immutable_where](#immutable-where): <condition>
+    [+](/reference/resource-configs/plus-prefix)[copy_grants](#copy-grants-dynamic-tables): true | false
 
 ```
 
@@ -177,6 +179,7 @@ models:
       [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
       [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
       [immutable_where](#immutable-where): <condition>
+      [copy_grants](#copy-grants-dynamic-tables): true | false
 
 ```
 
@@ -200,6 +203,7 @@ models:
     [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
     [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
     [immutable_where](#immutable-where)="<condition>",
+    [copy_grants](#copy-grants-dynamic-tables)=true | false,
 
 ) }}
 
@@ -458,6 +462,29 @@ from {{ source('raw', 'events') }}
 
 Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-immutability-constraints).
 
+### Copy grants (dynamic tables)
+
+Starting `dbt-snowflake` v1.11, you can use `copy_grants` to preserve existing object-level privileges when Snowflake recreates a dynamic table with `CREATE OR REPLACE`. When disabled, all previously granted permissions are dropped when the table is recreated, and downstream users or roles lose access until grants are manually re-applied.
+
+When you set `copy_grants: true` on a dynamic table, dbt adds the `COPY GRANTS` clause to the `CREATE OR REPLACE DYNAMIC TABLE` statement. This preserves existing object-level privileges on the table during full refreshes, so you don't need to re-grant access after the table is recreated.
+
+`copy_grants` only takes effect during a full refresh. It has no effect during incremental refreshes.
+
+To configure the `copy_grants` parameter, refer to the following example:
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='MY_WH',
+    target_lag='1 hour',
+    copy_grants=true
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+Learn more about `COPY GRANTS` in [Snowflake's docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
@@ -511,29 +538,6 @@ select * from {{ source('raw', 'events') }}
 - To revert to the default behavior after setting an initialization warehouse, either remove the `snowflake_initialization_warehouse` parameter from your model configuration or explicitly set it to `None`.
 
 Learn more about `INITIALIZATION_WAREHOUSE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-warehouses).
-
-### Copy grants (dynamic tables)
-
-Starting `dbt-snowflake` v1.12, you can use `copy_grants` to preserve existing object-level privileges when Snowflake recreates a dynamic table with `CREATE OR REPLACE`. When disabled, all previously granted permissions are dropped when the table is recreated, and downstream users or roles lose access until grants are manually re-applied.
-
-When you set `copy_grants: true` on a dynamic table, dbt adds the `COPY GRANTS` clause to the `CREATE OR REPLACE DYNAMIC TABLE` statement. This preserves existing object-level privileges on the table during full refreshes, so you don't need to re-grant access after the table is recreated.
-
-`copy_grants` only takes effect during a full refresh. It has no effect during incremental refreshes.
-
-To configure the `copy_grants` parameter, refer to the following example:
-
-```sql
-{{ config(
-    materialized='dynamic_table',
-    snowflake_warehouse='MY_WH',
-    target_lag='1 hour',
-    copy_grants=true
-) }}
-
-select * from {{ source('raw', 'events') }}
-```
-
-Learn more about `COPY GRANTS` in [Snowflake's docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
 
 </VersionBlock>
 
@@ -1175,7 +1179,7 @@ select * from index_sessions
 
 ## Copying grants
 
-When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables, <Term id="view">views</Term>, and [dynamic tables](#copy-grants-dynamic-tables) (`dbt-snowflake` v1.12 and later). The default value is `false`.
+When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables, <Term id="view">views</Term>, and [dynamic tables](#copy-grants-dynamic-tables) (`dbt-snowflake` v1.11 and later). The default value is `false`.
 
 <File name='dbt_project.yml'>
 
