@@ -17,7 +17,7 @@ Use [dbt platform job scheduler](/docs/deploy/job-scheduler) to proactively refr
 
 :::warning <Constant name="fusion" /> not supported for this beta
 
-Orchestrating downstream exposures <em>is not available</em> when your deployments use [Latest&nbsp;<Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks), the <Constant name="fusion_engine" /> preview. Supported jobs must use [Latest](/docs/dbt-versions/cloud-release-tracks) with <Constant name="core" />.
+Orchestrating downstream exposures _isn't_ available when your deployments use [Latest <Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks). Supported jobs must use [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine.
 
 On this track, the environment variables `DBT_ACTIVE_EXPOSURES` and `DBT_ACTIVE_EXPOSURES_BUILD_AFTER` have <em>no effect</em>: extracts are <em>not</em> refreshed through this workflow and downstream exposure entries <em>don't</em> appear in job logs.
 
