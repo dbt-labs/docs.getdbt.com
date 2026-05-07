@@ -70,7 +70,7 @@ To orchestrate downstream exposures, you should meet the following:
 
 ## Orchestrate downstream exposures
 
-To orchestrate downstream exposures and see refreshes happen automatically during scheduled jobs on [Latest](/docs/dbt-versions/cloud-release-tracks) with <Constant name="core" />:
+To orchestrate downstream exposures and see refreshes happen automatically during scheduled jobs on [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine:
 
 1. In the <Constant name="dbt" />, click **Deploy**, then **Environments**, and select the **Environment variables** tab.
 2. Click **Add variable** and set the [environment level variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) `DBT_ACTIVE_EXPOSURES` to `1` within the environment you want the refresh to happen.
