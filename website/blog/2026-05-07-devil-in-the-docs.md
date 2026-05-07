@@ -89,6 +89,12 @@ We also added the product docs toolset to dbt's [Developer agent](/docs/dbt-ai/d
 
 The Book arrived. No context switch required.
 
+Since we've added the docs toolsets in March, **428 unique dbt accounts** have reached for the docs through the dbt MCP server &mdash; and every one of those calls means that a user didn't have to leave their workflow to find the docs they needed. That's a win for users and a win for the docs team.
+
+And it's growing fast: **338** docs-tool calls in March (the month they launched), **1,113** in April, and **887** already in the first week of May.
+
+And those calls are mostly coming from *agents* &mdash; autonomous, multi-step tools fetching the docs on a user's behalf while they work through a task. That's a different shape of usage than a chat assistant answering a one-off question: the docs aren't just being looked up, they're being pulled into the work itself.
+
 For analysts exploring a shared project, it means understanding what a model does without navigating to a separate tab. For teams working across different dbt setups, it means consistent, authoritative answers regardless of where they're working or who's asking. For the docs team, it means the work we put into writing and maintaining docs.getdbt.com is doing more than it was before &mdash; reaching users where they actually are.
 
 <Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-wear-chanel.png" width="55%"title="Emily loving that users are faster using the dbt MCP server with the docs tools than without" />
@@ -99,7 +105,7 @@ This is the first page of many in this new chapter. But we're planning a few thi
 
 - **Version-aware docs fetching** &mdash; Right now these tools return current docs. A developer on dbt Core 1.10 asking about incremental strategies gets 2026 docs. Version-aware routing &mdash; returning the right page for the right dbt version &mdash; is the next meaningful improvement, and we're [working](https://github.com/dbt-labs/dbt-mcp/pull/638) through it now!
 - **Smarter search ranking** &mdash; Relevance is good. Relevance tuned to dbt-specific concepts and query patterns would be better.
-- **Coverage gaps as a signal** &mdash; MCP usage will surface which questions return weak results &mdash; pages that are missing, thin, or outdated. That's a direct signal for the docs team, and a feedback loop that didn't exist before.
+- **Coverage gaps as a signal** &mdash; usage data tells us which pages answer well and which leave users hunting. Spotting the missing, thin, or outdated ones and fixing them means cleaner answers the next time someone asks.
 - **A dedicated dbt docs MCP server** maybe? &mdash; It's not the right call right now &mdash; one coherent product with an active existing server is the right place to start &mdash; but in the future, maybe a standalone docs server could reach every MCP client regardless of whether they use the dbt MCP server at all?
 
 ## Give it a try!
