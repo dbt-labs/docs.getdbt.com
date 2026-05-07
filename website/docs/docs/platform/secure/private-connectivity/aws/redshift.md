@@ -56,7 +56,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
      - Redshift cluster name:
      - Redshift cluster AWS account ID:
      - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
-     - dbt multi-tenant environment (US, EMEA, AU):
+     - dbt multi-tenant environment (US, EMEA, AU, JP):
      ```
 
      </Expandable>
@@ -73,7 +73,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
      - Redshift workgroup name:
      - Redshift workgroup AWS account ID:
      - Redshift workgroup AWS Region (for example, us-east-1, eu-west-2):
-     - dbt multi-tenant environment (US, EMEA, AU):
+     - dbt multi-tenant environment (US, EMEA, AU, JP):
      ```
 
      </Expandable>
@@ -146,7 +146,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt platform account URL:
 - VPC Endpoint Service Name:
 - Redshift cluster AWS Region (for example, us-east-1, eu-west-2):
-- dbt AWS multi-tenant environment (US, EMEA, AU):
+- dbt AWS multi-tenant environment (US, EMEA, AU, JP):
 ```
 
 </Expandable>

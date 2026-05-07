@@ -6,6 +6,7 @@ sidebar_label: "Snowflake"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
@@ -48,10 +49,12 @@ Subject: New Multi-Tenant Azure PrivateLink Request
 - The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
   - Enable Internal Stage Private Link? Y/N (If Y, output must include privatelink-internal-stage)
-- dbt Azure multi-tenant environment (EMEA):
+- dbt Azure multi-tenant environment (US or EMEA):
 ```
 
 </Expandable>
+
+<PrivateLinkSLA />
 
 3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
 
