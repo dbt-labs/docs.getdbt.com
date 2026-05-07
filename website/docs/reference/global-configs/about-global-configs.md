@@ -3,17 +3,20 @@ title: "About flags (global configs)"
 id: "about-global-configs"
 sidebar: "About flags (global configs)"
 pagination_next: null
+description: "Configure dbt flags using dbt_project.yml, environment variables, and CLI options."
 ---
 
-In dbt, "flags" (also called "global configs") are configurations for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt about _what_ to run.
+In dbt, "flags" (also called "global configs" and often configured with [environment variables](/reference/global-configs/environment-variable-configs)) are settings for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt _what_ to run.
 
 Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. Flags are "global" configs because they are available for all dbt commands and they can be set in multiple places.
 
 You can use flags with the <Constant name="fusion_engine"/> or <Constant name="core"/> engine through the CLI during local development or in <Constant name="dbt_platform"/>.
 
 There is a significant overlap between dbt's flags and dbt's command line options, but there are differences:
-- Certain flags can only be set in [`dbt_project.yml`](/reference/dbt_project.yml) and cannot be overridden for specific invocations via CLI options.
+- Certain flags can only be set in [`dbt_project.yml`](/reference/dbt_project.yml) and cannot be overridden for specific invocations by using CLI options.
 - If a CLI option is supported by specific commands, rather than supported by all commands ("global"), it is generally not considered to be a "flag".
+
+You can configure flags in `dbt_project.yml`, environment variables, and CLI options. For details, refer to [environment variable configs](/reference/global-configs/environment-variable-configs).
 
 ### Setting flags
 
@@ -48,12 +51,18 @@ dbt build --target staging
 
 The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).
 
-The following table lists all the available flags in dbt, the type, default value, whether it can be set in the project file, the environment variable it corresponds to, and the CLI flags it corresponds to. 
+Use this table to compare all available flags and how to configure them across interfaces:
+
+- **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/cloud-cli-installation).
+- **Type / default**: Shows the accepted value type and default.
+- **In project**: Indicates whether you can set the flag in `dbt_project.yml`.
+- **Env var**: Shows the corresponding environment variable name, when available. In general, v1.10 and earlier use the `DBT_` prefix, while v1.11+ uses the `DBT_ENGINE_` prefix.
+- **CLI flags**: Lists command-line options for setting the flag for a specific invocation.
 
 <VersionBlock lastVersion="1.10">
 
 
-| Flag | dbt platform CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
+| Flag | <Constant name="dbt" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
 |------|----------------|----------------|-------------|---------|-----------|
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |
@@ -105,7 +114,7 @@ The following table lists all the available flags in dbt, the type, default valu
 <VersionBlock firstVersion="1.11">
 
 
-| Flag | dbt platform CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
+| Flag | <Constant name="dbt" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
 |------|----------------|----------------|-------------|---------|-----------|
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |

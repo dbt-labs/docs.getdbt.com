@@ -20,7 +20,13 @@ meta:
 
 <VersionBlock firstVersion="2.0">
 
-# Connect Databricks to Fusion <Lifecycle status='preview' />
+# Connect Databricks to Fusion <Lifecycle status='private_preview' />
+
+:::note private preview
+
+The Databricks adapter is supported on the <Constant name="fusion_engine" />, but due to its status as `Private Preview`, you might not see it as a supported adapter in some <Constant name="dbt_platform" /> interface workflows.
+
+:::
 
 You can configure the Databricks adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
 
@@ -28,6 +34,12 @@ The Databricks adapter for Fusion supports the following [authentication methods
 - Personal access token (for individual users)
 - Service Principal token (for service users)
 - OAuth
+
+## Warehouse permissions for Fusion
+
+import FusionDatabricksWarehousePerms from '/snippets/_fusion-warehouse-permissions-databricks.md';
+
+<FusionDatabricksWarehousePerms />
 
 ## Databricks configuration details
 

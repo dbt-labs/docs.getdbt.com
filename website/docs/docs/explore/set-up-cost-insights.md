@@ -1,7 +1,7 @@
 ---
 title: "Set up Cost Insights"
 sidebar_label: "Set up Cost Insights"
-description: "Learn how to set up Cost Insights to track warehouse compute costs and view realized savings from state-aware orchestration across your dbt projects and models." 
+description: "Learn how to set up Cost Insights to track warehouse compute costs and view realized savings from state-aware orchestration across your dbt projects and models."
 id: "set-up-cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reduction', 'cost optimization']
 ---
@@ -18,7 +18,7 @@ Before setting up Cost Insights, ensure you have:
 - An administrator role.
 - A supported data warehouse: Snowflake, BigQuery, or Databricks.
 
-To set up Cost Insights, refer to the following steps:
+To set up Cost Insights, follow these steps:
 
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
@@ -29,7 +29,7 @@ After completing these setup steps, you can view cost and optimization data acro
 
 ## Assign required permissions
 
-Users with the following [permission sets](/docs/cloud/manage-access/enterprise-permissions) can view cost data by default:
+Users with the following [permission sets](/docs/platform/manage-access/enterprise-permissions) can view cost data by default:
 
 - Account Admin
 - Account Viewer
@@ -41,16 +41,19 @@ Users with the following [permission sets](/docs/cloud/manage-access/enterprise-
 - Project Creator
 - Team Admin
 
-For more information on how to assign permissions to users, refer to [About user access](/docs/cloud/manage-access/about-user-access).
+For more information on how to assign permissions to users, refer to [About user access](/docs/platform/manage-access/about-user-access).
 
 ## Configure platform metadata credentials
 
 1. Click your account name at the bottom of the left-side menu and click **Account settings**.
-2. Under **Settings**, go to **Connections**. 
+2. Under **Settings**, go to **Connections**.
 3. Select an existing connection or create a new connection for the project where you want to enable Cost Insights.
-4. Enable platform metadata credentials for your connection.
-    1. Go to the **Platform metadata credentials** section and click **Add credentials**. 
-    2. Add credentials with permissions to the warehouse tables. Expand each connection to see the permissions required. 
+4. Configure platform metadata credentials for your connection.
+    1. Go to the **Platform metadata credentials** section. Depending on your current configuration, you may see one of the following:
+        - If no platform metadata credentials are configured yet, the credentials form is immediately in edit mode.
+        - If you previously canceled the form and see **Add credentials**, click the button to reopen the form.
+        - If you have multiple connections that reference the same account identifier, you will only be prompted to add platform metadata credentials to one of them. Other connections using the same account identifier will display a message indicating that platform metadata credentials are already configured.
+    2. Add credentials with permissions to the warehouse tables. Expand each connection to see the permissions required.
 
         <Expandable alt_header="Snowflake">
         - `read` permissions to the [`ORGANIZATION_USAGE`](https://docs.snowflake.com/en/sql-reference/organization-usage) and [`ACCOUNT_USAGE`](https://docs.snowflake.com/en/sql-reference/account-usage) schemas
@@ -75,12 +78,11 @@ For more information on how to assign permissions to users, refer to [About user
             - [`system.billing.usage`](https://docs.databricks.com/aws/en/admin/system-tables/billing)
             - [`system.billing.list_prices`](https://docs.databricks.com/aws/en/admin/system-tables/pricing)
             - [`system.query.history`](https://docs.databricks.com/aws/en/admin/system-tables/query-history)
-        
+
         For more information, refer to the Databricks documentation on [granting access to system tables](https://docs.databricks.com/aws/en/admin/system-tables/#grant-access-to-system-tables).
         </Expandable>
 
-        If you have multiple connections that reference the same account identifier, you will only be prompted to add platform metadata credentials to one of them. Other connections using the same account identifier will display a message indicating that credentials are already configured.
-5. Verify that **Cost Insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
+5. Verify that **Cost insights** is enabled under **Features**. This feature is enabled by default when you configure platform metadata credentials.
 6. Click **Save**.
 
 ## Configure Cost Insights settings (optional)
@@ -119,8 +121,8 @@ import CostInsights from '/snippets/_cost-insights-sao.md';
 To disable Cost Insights, you must have an administrator role.
 
 1. Click your account name at the bottom of the left-side menu and click **Account settings**.
-2. Under **Settings**, go to **Connections**. 
+2. Under **Settings**, go to **Connections**.
 3. Select the connection where you want to disable Cost Insights.
-4. Go to **Platform metadata credentials** and click **Edit**. 
+4. Go to **Platform metadata credentials** and click **Edit**.
 5. Go to the **Features** section and clear the **Cost Insights** option.
 6. Click **Save**.

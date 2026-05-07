@@ -3,34 +3,52 @@ title: "Advanced CI"
 id: "advanced-ci"
 sidebar_label: "Advanced CI"
 description: "Advanced CI enables developers to compare changes by demonstrating the changes the code produces."
-image: /img/docs/dbt-cloud/example-ci-compare-changes-tab.png
+image: /img/docs/dbt-platform/example-ci-compare-changes-tab.png
 ---
+
+import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
 # Advanced CI <Lifecycle status="managed,managed_plus" />
 
-[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
+[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. 
+
+By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing. 
 
 :::info How to enable this feature
 
-You can opt into Advanced CI in <Constant name="dbt" />. Please refer to [Account access to Advanced CI features](/docs/cloud/account-settings#account-access-to-advanced-ci-features) to learn how enable it in your <Constant name="dbt" /> account.
+You can opt into Advanced CI in <Constant name="dbt" />. Please refer to [Account access to Advanced CI features](/docs/platform/account-settings#account-access-to-advanced-ci-features) to learn how enable it in your <Constant name="dbt" /> account.
 
 :::
 
 ## Prerequisites
 - You have a <Constant name="dbt" /> Enterprise or Enterprise+ account.
-- You have [Advanced CI features](/docs/cloud/account-settings#account-access-to-advanced-features) enabled.
+- You have [Advanced CI features](/docs/platform/account-settings#account-access-to-advanced-features) enabled.
 - You use a supported data platform: BigQuery, Databricks, Postgres, Redshift, or Snowflake. Support for additional data platforms coming soon.
 
 ## Compare changes feature {#compare-changes}
 
-For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
+For [CI jobs](/docs/deploy/ci-jobs) that have the [**dbt compare** option enabled](/docs/deploy/ci-jobs#set-up-ci-jobs), <Constant name="dbt" /> compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.
+
+You can also compare changes in development. For more details, see [Compare changes in development](/docs/deploy/advanced-ci#compare-changes-in-development).
 
 dbt reports the comparison differences in:
 
 - **<Constant name="dbt" />** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
 - **The pull request from your <Constant name="git" /> provider** &mdash; Shows a summary of the changes as a <Constant name="git" /> comment.
 
-<Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
+<Lightbox src="/img/docs/dbt-platform/example-ci-compare-changes-tab.png" width="55%" title="Example of the Compare tab" />
+
+#### Compare changes in development
+
+You can compare changes locally in development to preview data changes caused by your local edits (for example, added/removed rows or joins) directly in your editor, and without waiting on CI. Compare changes in development is available through the dbt VS Code extension, which is powered by the <Constant name="fusion_engine"/>.
+
+For more details on how to use this feature, see [Compare changes in local development](/docs/fusion/vs-compare-changes).
+
+<Expandable alt_header="Differences between compare changes in development and Advanced CI compare changes">
+
+<CompareChangesTable />
+
+</Expandable>
 
 ### Optimizing comparisons
 

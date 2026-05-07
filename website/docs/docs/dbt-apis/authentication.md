@@ -1,0 +1,38 @@
+---
+title: "Authentication tokens"
+description: "Learn how to authenticate with user tokens and service account tokens "
+pagination_next: "docs/dbt-apis/user-tokens"
+pagination_prev: null
+---
+
+<div className="grid--2-col">
+
+<Card
+    title="Personal access tokens"
+    body="Learn about user tokens and how to use them to execute queries against the dbt API."
+    link="/docs/dbt-apis/user-tokens"
+    icon="dbt-bit"/>
+
+<Card
+    title="Service account tokens"
+    body="Learn how to use service account tokens to securely authenticate with dbt APIs for system-level integrations."
+    link="/docs/dbt-apis/service-tokens"
+    icon="dbt-bit"/>
+
+</div>
+
+## Types of API access tokens
+
+**Personal access tokens:** Preferred and secure way of accessing <Constant name="dbt" /> APIs on behalf of a user. PATs are scoped to an account and can be enhanced with more granularity and control. 
+
+**Service tokens:** Service tokens are similar to service accounts and are the preferred method to enable access on behalf of the <Constant name="dbt" /> account.
+
+### Which token type should you use
+
+You should use service tokens broadly for any production workflow where you need a service account. You should use PATs only for developmental workflows _or_ <Constant name="dbt" /> client workflows that require user context. The following examples show you when to use a personal access token (PAT) or a service token: 
+
+* **Connecting a partner integration to <Constant name="dbt" />** &mdash; Some examples include the [<Constant name="semantic_layer" /> Google Sheets integration](/docs/platform-integrations/avail-sl-integrations), Hightouch, Datafold, a custom app you’ve created, etc. These types of integrations should use a service token instead of a PAT because service tokens give you visibility, and you can scope them to only what the integration needs and ensure the least privilege. We highly recommend switching to a service token if you’re using a personal access token for these integrations today.
+* **Production Terraform** &mdash; Use a service token since this is a production workflow and is acting as a service account and not a user account. 
+* **<Constant name="platform_cli" />** &mdash; Use a PAT since the <Constant name="platform_cli" /> works within the context of a user (the user is making the requests and has to operate within the context of their user account).
+* **Testing a custom script and staging Terraform or Postman** &mdash; We recommend using a PAT as this is a developmental workflow and is scoped to the user making the changes. When you push this script or Terraform into production, use a service token instead.
+* **API endpoints requiring user context** &mdash; Use PATs to authenticate to any API endpoint that requires user context (for example, endpoints to create and update user credentials). 

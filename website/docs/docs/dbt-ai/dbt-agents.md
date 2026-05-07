@@ -4,15 +4,15 @@ id: "dbt-agents"
 description: "Learn about the AI agents available in dbt to automate and accelerate analytics workflows"
 sidebar_label: "dbt Agents overview"
 tags: [AI, Agents]
-image: /img/docs/dbt-cloud/copilot-agent.png
+image: /img/docs/dbt-platform/copilot-agent.png
 ---
 
-# dbt Agents overview <Lifecycle status="beta,managed,managed_plus"/>
+# dbt Agents overview <Lifecycle status="self_service,managed,managed_plus"/>
 
-[dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
+[dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [Starter and dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
 :::info 
-Some dbt Agents are in beta; others are coming soon. Contact your account manager for early access.
+Some dbt Agents are in preview or beta; others are coming soon. Enterprise customers can contact your account manager for access or changes. Starter plan customers can contact [dbt Labs Support](mailto:support@getdbt.com). 
 
 See [available agents](#available-agents) to find out what's available.
 :::
@@ -41,17 +41,17 @@ dbt offers several specialized agents, each designed for specific workflows in t
 
 The following agents are available. Contact your account manager for early access to agents that are in beta or coming soon.
 
-#### Analyst agent <Lifecycle status="beta"/>
+#### Analyst agent <Lifecycle status="beta,managed,managed_plus"/>
 
-Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="insights" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). 
+Use <Constant name="copilot" /> to analyze your data and get contextualized results in real time by asking natural language questions to the [<Constant name="insights" />](/docs/explore/dbt-insights) [Analyst agent](/docs/dbt-ai/analyst-agent). Available on Enterprise-tiered plans.
 
 Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). That means consistent, explainable results with transparent SQL, lineage, and policies.
 
 The Analyst agent is a beta feature. Enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
-#### Developer agent <Lifecycle status="beta,managed,managed_plus"/>
+#### Developer agent <Lifecycle status="preview,self_service,managed,managed_plus"/>
 
-The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />, purpose-built to streamline the developer experience. Describe the data product or change you want &mdash; the agent writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />, purpose-built to streamline the developer experience. Describe the data product or change you want &mdash; the agent writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 
 The agent always has access to the latest dbt-recommended guidance through [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) &mdash; curated instructions and scripts managed by dbt Labs, available out of the box with no configuration required.
 
@@ -75,7 +75,7 @@ Build your own custom agents and copilots with the local or remote dbt MCP serve
 
 - [About dbt AI and intelligence](/docs/dbt-ai/about-dbt-ai)
 - [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent)
-- [dbt Copilot](/docs/cloud/dbt-copilot)
+- [dbt Copilot](/docs/platform/dbt-copilot)
 - [dbt MCP server](/docs/dbt-ai/about-mcp)
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
 - [dbt Insights](/docs/explore/dbt-insights)
