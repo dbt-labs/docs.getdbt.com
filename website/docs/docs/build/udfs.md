@@ -125,7 +125,7 @@ Follow these steps to define UDFs in dbt:
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
     :::note Function configs are set per function
-    In a properties `.yml` file, you configure each function within its own `config` block under `functions:`. If you define multiple functions, repeat the relevant `config` values for each function (dbt doesn't support a shared `config` block at the `functions:` level). If several functions share the same config values, you can use YAML anchors and aliases to reduce duplication.
+    In a schema YAML file (for example, `functions/schema.yml`), you configure each function within its own `config` block under `functions:`. If you define multiple functions, repeat the relevant `config` values for each function (dbt doesn't support a shared `config` block at the `functions:` level). If several functions share the same config values, you can use YAML anchors and aliases to reduce duplication.
     :::
 
     <Tabs>
