@@ -22,10 +22,10 @@ _`Fusion Stable` is the default for all new <Constant name="fusion" />-powered p
 
 | Release track | Cadence | Description | [Plan availability](https://www.getdbt.com/pricing) | API value |
 | ------------- | ------- | ----------- | ----------------- | --------- |
-| **Fusion Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `latest-fusion` |
-| **Fusion Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | All plans | `stable-fusion` |
-| **Fusion Extended** | Monthly | The previous month's final Fusion Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `extended-fusion` |
-| **Fusion Fallback** | Monthly | The previous month's Fusion Extended release. Emergency rollback option for account admins. | Enterprise+ | `fallback-fusion` |
+| **Fusion Nightly** | Nightly | The latest nightly build. Includes early access to new features. | All plans | `fusion-nightly` |
+| **Fusion Stable** (default) | Weekly | A weekly release that balances stability and feature access. <br /> | All plans | `fusion-stable` |
+| **Fusion Extended** | Monthly | The previous month's final Fusion Stable release. Designed for those who want maximum stability and additional testing time. | Enterprise, Enterprise+ | `fusion-extended` |
+| **Fusion Fallback** | Monthly | The previous month's Fusion Extended release. Emergency rollback option for account admins. | Enterprise+ | `fusion-fallback` |
 
 
 ### dbt Core release tracks
@@ -38,10 +38,10 @@ _`Fusion Stable` is the default for all new <Constant name="fusion" />-powered p
 | **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
 
 To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
-- `latest-fusion`
-- `stable-fusion`
-- `extended-fusion`
-- `fallback-fusion`
+- `fusion-nightly`
+- `fusion-stable` (formerly `latest-fusion`)
+- `fusion-extended`
+- `fusion-fallback`
 - `latest`
 - `compatible`
 - `extended`

@@ -8,11 +8,11 @@ pagination_next: null
 
 # Configuring Databricks PrivateLink <Lifecycle status="managed_plus" />
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 The following steps walk you through the setup of a Databricks AWS PrivateLink endpoint in the <Constant name="dbt" /> multi-tenant environment.
 

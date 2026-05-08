@@ -9,9 +9,9 @@ sidebar_label: "Self-hosted services"
 
 
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 GCP Private Service Connect (PSC) enables secure, private connectivity between <Constant name="dbt" /> and your self-hosted services. These services may include version control systems (VCS), data warehouses, or any other applications you manage. With PSC, you do not need to expose your service to the public internet. All communication occurs over a private network, significantly enhancing security. For more details, refer to the GCP [Private Service Connect documentation](https://cloud.google.com/private-service-connect).
 

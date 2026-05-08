@@ -7,11 +7,11 @@ sidebar_label: "Teradata VantageCloud"
 
 # Configuring Teradata VantageCloud PrivateLink <Lifecycle status="managed_plus" />
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 The following steps walk you through the setup of a Teradata VantageCloud AWS PrivateLink endpoint in a <Constant name="dbt" /> multi-tenant environment.
 
