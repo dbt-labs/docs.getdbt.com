@@ -5,10 +5,10 @@ description: "Configure private connections for Azure deployments of the dbt pla
 sidebar_label: "About Azure Private Link"
 ---
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import AzureMatrix from '/snippets/_azure-private-connectivity-matrix.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 Azure Private Link enables secure, private connectivity between <Constant name="dbt" /> and your Azure-hosted services. With Private Link, traffic between dbt and your data platforms or self-hosted services stays within the Azure network and does not traverse the public internet.
 

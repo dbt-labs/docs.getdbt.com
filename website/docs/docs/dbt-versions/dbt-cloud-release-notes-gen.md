@@ -19,6 +19,18 @@ Release notes are grouped by date for single-tenant environments.
 
 ## May 6, 2026
 
+## New
+
+### dbt Copilot and agents
+
+- **Project instruction files in agent system prompt**: dbt Copilot now reads `AGENTS.md` and `CLAUDE.md` files at the root of your dbt project and injects their contents into the agent system prompt on every turn. Combined content must not exceed 64 KB.
+
+- **Subdirectory instruction file discovery**: The agent now surfaces a manifest of `AGENTS.md` and `CLAUDE.md` files found in project subdirectories and reads them on demand when working in the relevant subtree, keeping context loading efficient for large projects.
+
+### dbt platform
+
+- **Create account for unlicensed users**: Users with zero accounts can now create a new account directly from the regional account switcher. When enabled and a `create_account_url` is available, a "Create account" button appears on the account switcher for users with no accounts. Contact your account manager to enable.
+
 ## Enhancements
 
 ### Packages
@@ -30,6 +42,32 @@ Release notes are grouped by date for single-tenant environments.
 - **Preview**: The [Developer agent](/docs/dbt-ai/developer-agent) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/developer-agent).
 - **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (**More actions** menu (three dots) > **Delete**). Deleting the open conversation clears the panel.
 - **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
+
+### dbt platform
+
+- **Clearer message when account creation is disabled**: The `/accounts/new` page now renders an inline "Account creation is disabled" message instead of silently redirecting to the home page, preventing a redirect loop for users with zero accounts.
+
+- **Account feature changes emit audit log events**: When an account feature opt-in is toggled (for example, enabling catalog ingestion or advanced CI), an audit log event is now published recording the previous and new values.
+
+### APIs, Identity, and Administration
+
+- **Credentials page access with `user_credential_write` permission**: Users with the `user_credential_write` permission on any project can now access the Credentials settings page and edit their development credentials, even without a Developer-tier license or `develop_access`.
+
+## Fixes
+
+### dbt Copilot and agents
+
+- **Correct handling of `tool_call_chunk` content blocks**: Fixed a bug in single tenant environments that would occasionally block conversations from being able to be continued.
+
+## Behavior Changes
+
+### APIs, Identity, and Administration
+
+- **Single Sign-On configuration uses auto-generated slugs only**: The Single Sign-On (SSO) settings card now always uses server-assigned slugs. The manual slug input has been removed. All SSO configurations are created as drafts with an auto-generated slug before you fill in connection details.
+
+### Deployment and Configuration
+
+- **Fusion version detection uses strict catalog membership**: `isFusionDbtVersion` now only returns `true` for version strings that are explicit members of the known Fusion versions catalog (`latest-fusion`, `fusion-stable`, and so on). Previously, any string containing the word "fusion" was treated as a Fusion version. Custom or unknown version strings that happen to include "fusion" are no longer treated as Fusion versions.
 
 ## April 29, 2026
 

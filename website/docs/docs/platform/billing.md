@@ -114,6 +114,8 @@ Usage information is available to customers on consumption-based plans, and some
 
 A defined number of <Constant name="copilot" /> invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to Copilot functionality will be temporarily disabled until the start of the next billing cycle.
 
+The <Constant name="copilot"/> <Constant name="dev_agent"/> (public preview) currently draws from your available <Constant name="copilot"/> request allotment. Pricing and usage are subject to change.
+
 ### Usage and metering information 
 
 <Expandable alt_header="AI usage tracking by Copilot actions">
