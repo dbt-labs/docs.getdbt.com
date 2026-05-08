@@ -37,6 +37,12 @@ Starting in v1.0, partial parsing is **on** by default. In development, partial 
 
 The [`PARTIAL_PARSE` global config](/reference/global-configs/parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
 
+:::note <Constant name="fusion" /> and partial parsing
+
+In <Constant name="fusion" /> job runs, the `--partial-parse` and `--no-partial-parse` CLI flags are deprecated. Passing them (for example, from a <Constant name="core" /> command or script) may log deprecation warning `dbt1700`. The warning refers to the _flag_, not to whether the engine applies incremental parsing internally. Remove these flags from <Constant name="fusion" /> job commands. For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
+
+:::
+
 ### Known limitations
 
 Parse-time attributes (dependencies, configs, and resource properties) are resolved using the parse-time context. When partial parsing is enabled, and certain context variables change, those attributes will _not_ be re-resolved, and are likely to become stale.

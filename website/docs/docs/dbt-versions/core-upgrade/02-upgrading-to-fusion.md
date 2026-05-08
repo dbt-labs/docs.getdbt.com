@@ -139,6 +139,14 @@ If you pass `--models` as the value to `-s` (for example, `dbt run -s --models`)
 | `--inject-ephemeral-ctes` / `--no-inject-ephemeral-ctes` | | 
 | [`--partial-parse` / `--no-partial-parse`](/reference/parsing#partial-parsing)  | No action required |
 
+:::note `--partial-parse` and `--no-partial-parse`
+
+In <Constant name="fusion" /> job runs, these CLI flags are deprecated. If your job or script still passes `--no-partial-parse` (for example, from a <Constant name="core" /> workflow), <Constant name="fusion" /> may log deprecation warning `dbt1700`. The warning refers to the _flag_, not to whether the engine applies incremental parsing internally.
+
+To clear the warning, remove `--partial-parse` and `--no-partial-parse` from your Fusion job commands. You do not need these flags for <Constant name="fusion" /> to parse your project.
+
+:::
+
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 
 If a local package depends on a hub package that the root package also wants, `dbt deps` doesn't resolve conflicting versions in dbt Core v1; it will install whatever the root project requests.
