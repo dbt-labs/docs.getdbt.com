@@ -86,6 +86,7 @@ flags:
   require_sql_header_in_test_configs: false
   require_corrected_analysis_fqns: false
   require_source_and_semantic_model_names_without_spaces: false
+  allow_jinja_file_extensions: false
 ```
 
 </File>
@@ -114,6 +115,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_sql_header_in_test_configs](#sql_header-in-data-tests) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 | [require_corrected_analysis_fqns](#project-level-configuration-for-analyses) | 2026.3 | TBD* | 1.12.0 | TBD* | - |
 | [require_source_and_semantic_model_names_without_spaces](#no-spaces-in-source-and-semantic-model-names) | 2026.4 | TBD* | 1.12.0 | TBD* | - |
+| [allow_jinja_file_extensions](#jinja-file-extensions) | 2026.5 | TBD* | 1.12.0 | TBD* | - |
 
 
 #### dbt adapter behavior changes
@@ -565,4 +567,30 @@ analyses:
 </File>
 
 For more information, refer to [Analyses](/docs/build/analyses) and [Analysis properties](/reference/analysis-properties).
+
+### Jinja file extensions <Lifecycle status="beta" /> {#jinja-file-extensions}
+
+:::info Beta feature
+Support for Jinja file extensions is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+The `allow_jinja_file_extensions` flag is set to `false` by default.
+
+When set to `true`, dbt recognizes Jinja-style extension suffixes (for example,`.j2`, `.jinja`, and `.jinja2`) appended to `.sql` and `.md` files. This lets you use Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+
+dbt strips the Jinja suffix when determining node names; resource names remain unchanged regardless of whether the Jinja suffix is present. For example, a [docs block](/docs/build/documentation#using-docs-blocks) file named `my_docs.md.j2` is parsed identically to `my_docs.md`, and a model file named `my_model.sql.j2` is parsed as the model `my_model`.
+
+When this flag is `false` or unset, dbt ignores files with these suffixes without logging a warning. If you've already added schema properties for that file, you'll see a "Did not find matching node for patch warning on schema.yml" warning.
+
+
+To enable the flag, add it under `flags` in `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  allow_jinja_file_extensions: true
+```
+
+</File>
 
