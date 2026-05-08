@@ -298,16 +298,16 @@ alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
 
 ## Installing the adapter
 
-Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. Installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations.
+Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. 
 
 ```shell
-python -m pip install dbt-core dbt-ADAPTER_NAME
+python -m pip install dbt-ADAPTER_NAME
 ```
 
 For example, if using Postgres:
 
 ```shell
-python -m pip install dbt-core dbt-postgres
+python -m pip install dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
@@ -387,14 +387,14 @@ Note that using a prerelease version before the final, stable version means the 
 To install prerelease versions of dbt Core and your adapter, use this command (replace `dbt-adapter-name` with your adapter)
 
 ```shell
-python3 -m pip install --pre dbt-core dbt-adapter-name
+python3 -m pip install --pre dbt-adapter-name
 ```
 
 For example, if you're using Snowflake, you would use the command:
 
 
 ```shell
-python3 -m pip install --pre dbt-core dbt-snowflake
+python3 -m pip install --pre dbt-snowflake
 
 ```
 
@@ -435,7 +435,7 @@ which python
 
 
 ```shell
-python3 -m pip install --pre dbt-core dbt-adapter-name
+python3 -m pip install --pre dbt-adapter-name
 source .venv/bin/activate
 dbt --version
 ```
@@ -455,7 +455,7 @@ where python
 2. Install the prerelease using the following command:
 
 ```shell
-py -m pip install --pre dbt-core dbt-adapter-name
+py -m pip install --pre dbt-adapter-name
 .venv\Scripts\activate
 dbt --version
 ```
@@ -468,7 +468,7 @@ dbt --version
 
 <Constant name="core" /> and all adapter plugins maintained by dbt Labs are available as [Docker](https://docs.docker.com/) images, and distributed via [GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages) in a [public registry](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core).
 
-Using a prebuilt Docker image to install dbt Core in production has a few benefits: it already includes dbt-core, one or more database adapters, and pinned versions of all their dependencies. By contrast, `python -m pip install dbt-core dbt-<adapter>` takes longer to run, and will always install the latest compatible versions of every dependency.
+Using a prebuilt Docker image to install dbt Core in production has a few benefits: it already includes dbt-core, one or more database adapters, and pinned versions of all their dependencies. By contrast, `python -m pip install dbt-<adapter>` takes longer to run, and will always install the latest compatible versions of every dependency.
 
 You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install <Constant name="core" /> using pip instead.
 
