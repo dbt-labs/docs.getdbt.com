@@ -37,6 +37,10 @@ functions:
 
 ## Definition
 
+:::info Beta feature
+The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
+:::
+
 The `overloads` property lets you define multiple signatures for the same SQL UDF. The database dispatches to the correct version based on the argument types passed at call time.
 
 Each overload references a separate SQL file that contains its function body, and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built, retried, and selected together.

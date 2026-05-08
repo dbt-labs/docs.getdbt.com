@@ -94,11 +94,7 @@ Follow these steps to define UDFs in dbt:
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
-    **Optional**: Starting <Constant name="core" /> v1.12, you can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property for SQL UDFs. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one DAG node.
-
-    :::info Beta feature
-    The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
-    :::
+    **Optional**: For SQL UDFs, you can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
 
     <Tabs>
     <TabItem value="SQL">
@@ -230,7 +226,7 @@ Follow these steps to define UDFs in dbt:
 
      When you run `dbt build`, both the `functions/schema.yml` file and the corresponding SQL or Python file (for example, `functions/is_positive_int.sql` or `functions/is_positive_int.py`) work together to generate the `CREATE FUNCTION` statement.
      
-     The rendered `CREATE FUNCTION` statement depends on which adapter you're using. When you add [`overloads`](/reference/resource-properties/overloads) (available in <Constant name="core" /> v1.12+), dbt renders an additional `CREATE FUNCTION` statement for each overload using the same function name but different argument types. For example:
+     The rendered `CREATE FUNCTION` statement depends on which adapter you're using. When you use [`overloads`](/reference/resource-properties/overloads) (available in <Constant name="core" /> v1.12+), dbt renders an additional `CREATE FUNCTION` statement for each overload using the same function name but different argument types. For example:
 
     <Tabs>
 
