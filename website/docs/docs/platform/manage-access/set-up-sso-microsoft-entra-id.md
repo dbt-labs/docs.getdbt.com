@@ -5,6 +5,8 @@ id: "set-up-sso-microsoft-entra-id"
 sidebar_label: "Set up SSO with Microsoft Entra ID"
 ---
 
+import LoginSlug from '/snippets/_login-slug.md';
+
 # Set up SSO with Microsoft Entra ID <Lifecycle status="managed, managed_plus" />
 
 <Constant name="dbt" /> Enterprise-tier plans support single-sign on via Microsoft Entra ID (formerly Azure AD). 
@@ -136,6 +138,8 @@ The default scope only requires `User.Read` and `GroupMember.Read.All`. If you a
 To complete setup, follow the steps below in the <Constant name="dbt" /> application.
 
 ### Supplying credentials
+
+<LoginSlug />
 
 25. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 26. Click **SSO & SCIM** from the menu.
