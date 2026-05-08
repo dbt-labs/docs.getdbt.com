@@ -455,7 +455,7 @@ where python
 2. Install the prerelease using the following command:
 
 ```shell
-py -m pip install --pre dbt-adapter-name
+py -m pip install --pre dbt-ADAPTER_NAME
 .venv\Scripts\activate
 dbt --version
 ```
