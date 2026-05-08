@@ -384,7 +384,7 @@ Using a prerelease of an adapter has many benefits such as granting you early ac
 
 Note that using a prerelease version before the final, stable version means the version isn't fully optimized and can result in unexpected behavior. Additionally, frequent updates and patches during the prerelease phase may require extra time and effort to maintain. Furthermore, the `--pre flag` may install compatible prerelease versions of other dependencies, which could introduce additional instability.
 
-To install prerelease versions of dbt Core and your adapter, use this command (replace `dbt-adapter-name` with your adapter)
+To install prerelease versions of dbt Core and your adapter, use this command (replace `dbt-ADAPTER_NAME` with your adapter)
 
 ```shell
 python3 -m pip install --pre dbt-adapter-name
