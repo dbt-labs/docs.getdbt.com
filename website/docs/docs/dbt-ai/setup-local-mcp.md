@@ -39,7 +39,7 @@ If a required variable is not set, dbt-mcp will automatically disable that tools
 ## Prerequisites
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to be able to run `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment.
-- Have a local dbt project (if you want to use dbt CLI commands).
+- Have a local dbt project (if you want to use dbt commands).
 - If you're using [OAuth with <Constant name="dbt_platform"/>](#oauth-authentication-with-dbt-platform), your account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
 
 ## Choose your auth method
@@ -160,7 +160,7 @@ DBT_PATH=/path/to/your/dbt/executable
 </TabItem>
 <TabItem value="platform-only" label="dbt platform only">
 
-Use this if you only need <Constant name="dbt_platform" /> features and won't run dbt CLI commands:
+Use this if you only need <Constant name="dbt_platform" /> features and won't run dbt commands:
 
 ```code
 DBT_HOST=cloud.getdbt.com
@@ -303,7 +303,7 @@ DBT_ACCOUNT_ID=12345          # Required when using PAT-based auth
 
 You don't need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`.
 
-## dbt CLI settings
+## Environment variables
 
 The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
 
@@ -311,7 +311,7 @@ The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /
 | --- | --- | --- | --- |
 | `DBT_PROJECT_DIR` | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file. | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame` |
 | `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
-| `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands. | Defaults to 60 seconds. |
+| `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt commands. | Defaults to 60 seconds. |
 
 ### Locating your `DBT_PATH`
 
