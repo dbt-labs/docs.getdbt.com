@@ -6,10 +6,10 @@ sidebar_label: "Databricks"
 pagination_next: null
 ---
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 The following steps walk you through the setup of a Databricks Azure Private Link endpoint in the <Constant name="dbt" /> multi-tenant environment.
 

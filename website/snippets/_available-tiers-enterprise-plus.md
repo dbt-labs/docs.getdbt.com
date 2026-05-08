@@ -1,7 +1,6 @@
-
 :::info Available to certain Enterprise tiers
 
-The private connection feature is available on the following <Constant name="dbt" /> Enterprise tiers:
+This feature is available on the following <Constant name="dbt" /> Enterprise tiers:
  * Enterprise+
  * Virtual Private
 

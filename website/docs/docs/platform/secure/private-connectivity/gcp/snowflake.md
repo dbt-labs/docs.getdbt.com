@@ -7,10 +7,10 @@ sidebar_label: "Snowflake"
 
 # Configuring Snowflake Private Service Connect <Lifecycle status="managed_plus" />
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 The following steps walk you through the setup of a GCP Snowflake Private Service Connect (PSC) endpoint in a <Constant name="dbt" /> multi-tenant environment.
 
