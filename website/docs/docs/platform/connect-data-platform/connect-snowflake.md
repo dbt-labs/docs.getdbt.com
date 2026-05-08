@@ -7,13 +7,12 @@ sidebar_label: "Connect Snowflake"
 
 # Connect Snowflake <ProductCard text="Fusion compatible" />
 
-:::note
+:::important Snowflake enforcing strong authentication
 
-<Constant name="dbt_platform" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
-
-Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
+Starting August 31, 2026, password authentication will no longer be supported. Please update your environments to use key-pair or OAuth by that date to prevent service disruptions.
 
 :::
+
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
@@ -24,6 +23,14 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
 
 <FusionSnowflakeWarehousePerms />
+
+:::note
+
+<Constant name="dbt_platform" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
+
+Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
+
+:::
 
 For role examples in Snowflake, see [Snowflake permissions](/reference/database-permissions/snowflake-permissions).
 
@@ -40,7 +47,7 @@ The following fields are required when creating a Snowflake connection:
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile.
 
 ### Username and password with MFA
 
