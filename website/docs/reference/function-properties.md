@@ -35,7 +35,7 @@ functions:
       data_type: <string> # required, warehouse-specific
       description: <markdown_string> # optional
     [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs only, available in v1.12+
-      - defined_in: <string> # required, name of the SQL file containing this overload's body (without extension)
+      - defined_in: <string> # required, name of the SQL file containing this overload's body
         arguments: # optional
           - name: <string> # required if arguments is specified
             data_type: <string> # required if arguments is specified, warehouse-specific
