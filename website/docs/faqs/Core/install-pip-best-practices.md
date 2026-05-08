@@ -24,7 +24,7 @@ Managing Python local environments can be challenging! You can use these best pr
 
 <br />
 
-Note, dbt adapters and <Constant name="core" /> are versioned independently to making it easier for us to maintain and independently evolve adapters going forward. 
+Note, dbt adapters and <Constant name="core" /> are versioned independently to make it easier for us to maintain and independently evolve adapters going forward. 
 
 ### Using virtual environments
 
