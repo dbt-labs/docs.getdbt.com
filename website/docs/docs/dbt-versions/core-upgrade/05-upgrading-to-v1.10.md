@@ -17,12 +17,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.10! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.10 final release.
 
-For users of dbt Core, since v1.8, we recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
-
-```sql
-python3 -m pip install dbt-core dbt-snowflake
-```
-
 ## New and changed features and functionality
 
 New features and functionality available in <Constant name="core" /> v1.10
