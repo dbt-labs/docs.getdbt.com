@@ -119,9 +119,17 @@ In this example, a docs block named `table_events` is defined with some descript
 
 ### Placement
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock lastVersion="1.11">
 
 Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+Place docs blocks in `.md` files. You can also use Jinja-style extensions (`.md.j2`, `.md.jinja`, `.md.jinja2`), however these require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-changes#jinja-file-extensions) in your `dbt_project.yml`. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+
+By default, dbt searches in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)). You can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 
 </VersionBlock>
 
