@@ -15,13 +15,11 @@ meta:
   config_page: '/reference/resource-configs/snowflake-configs'
 ---
 
+import SnowflakeAuth from '/snippets/_snowflake-auth.md';
+
 # Snowflake setup <Lifecycle status='preview' />
 
-:::important Snowflake enforcing strong authentication
-
-Starting August 31, 2026, password authentication will no longer be supported. Please update your environments to use key-pair or OAuth by that date to prevent service disruptions.
-
-:::
+<SnowflakeAuth />
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 

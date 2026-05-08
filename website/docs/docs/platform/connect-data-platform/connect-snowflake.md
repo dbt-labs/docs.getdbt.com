@@ -5,14 +5,11 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
+import SnowflakeAuth from '/snippets/_snowflake-auth.md';
+
 # Connect Snowflake <ProductCard text="Fusion compatible" />
 
-:::important Snowflake enforcing strong authentication
-
-Starting August 31, 2026, password authentication will no longer be supported. Please update your environments to use key-pair or OAuth by that date to prevent service disruptions.
-
-:::
-
+<SnowflakeAuth />
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
