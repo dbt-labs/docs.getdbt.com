@@ -18,6 +18,18 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
 
+## May 2026
+
+- **New:** Fusion release tracks are now being rolled out across across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/cloud-release-tracks?version=2.0#fusion-release-tracks) for more information.
+- **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
+- **Fix:** [`state:modified`](/reference/node-selection/methods#state) now detects changes to [UDF](/docs/build/udfs) properties (such as `arguments` and `returns`) defined in `.yml` files. Previously, only changes to the SQL or Python function body were detected.
+- **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
+- **Preview**: The [Developer agent](/docs/dbt-ai/developer-agent) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/developer-agent).
+- **Behavior change:** When you set up single sign-on (SSO) in the <Constant name="dbt_platform" />, the SSO slug is now system-generated and read-only. Existing SSO configurations remain valid, but you can’t change the slug. If you delete and recreate your SSO configuration, the new configuration uses a new, system-generated slug. Refer to [Single sign-on overview](/docs/platform/manage-access/sso-overview) for more information.
+- **Enhancement:** The [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) now supports account creation. If you sign in with an existing dbt user that doesn't have an associated <Constant name="dbt_platform"/> account, the registration flow prompts you to create one instead of requiring a separate workflow.
+- **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (three dots → **Delete**). Deleting the open conversation clears the panel.
+- **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
+
 ## April 2026
 
 - **New:** A universal login URL is available at [https://login.dbt.com](https://login.dbt.com), making it easier for you to view accounts you have access to across instances (regions and tenancies). This is currently available for multi-tenant accounts with an account-specific domain, and support for single-tenant accounts is coming soon. For more information, refer to [Log in to dbt platform](/docs/platform/about-platform/login).

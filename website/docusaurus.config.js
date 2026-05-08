@@ -216,7 +216,7 @@ var siteSettings = {
           items: [
             {
               label: "Log in to dbt",
-              to: "https://cloud.getdbt.com/",
+              to: "https://login.dbt.com/",
               target: "_blank",
             },
             {
