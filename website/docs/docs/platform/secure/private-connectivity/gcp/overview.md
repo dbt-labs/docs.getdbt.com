@@ -5,10 +5,10 @@ description: "Configure private connections for GCP deployments of the dbt platf
 sidebar_label: "About GCP Private Service Connect"
 ---
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import GCPMatrix from '/snippets/_gcp-private-connectivity-matrix.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 GCP Private Service Connect enables secure, private connectivity between <Constant name="dbt" /> and your GCP-hosted services. With Private Service Connect, traffic between dbt and your data platforms or self-hosted services stays within the Google Cloud network and does not traverse the public internet.
 

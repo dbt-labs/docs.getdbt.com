@@ -60,7 +60,7 @@ The following are deprecation warnings in dbt today and the associated version n
 
 ### ArgumentsPropertyInGenericTestDeprecation
 
-dbt has deprecated the ability to specify a custom top-level property called `arguments` on generic tests. This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `False`.
+dbt has deprecated the ability to specify a custom top-level property called `arguments` on generic tests. This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `false`.
 
 #### ArgumentsPropertyInGenericTestDeprecation warning resolution
 
@@ -79,7 +79,7 @@ models:
 
 </File>
 
-You should set the `require_generic_test_arguments_property` flag to `True` and nest any keyword arguments to your test under the new `arguments` property:
+You should set the `require_generic_test_arguments_property` flag to `true` and nest any keyword arguments to your test under the new `arguments` property:
 
 <File name='model.yml'>
 
@@ -375,9 +375,9 @@ config:
 
 ### DuplicateNameDistinctNodeTypesDeprecation
 
-dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `False`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
+dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `false`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
 
-When the `require_unique_project_resource_names` flag is set to `True`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-changes#unique-project-resource-names).
+When the `require_unique_project_resource_names` flag is set to `true`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-changes#unique-project-resource-names).
 
 #### DuplicateNameDistinctNodeTypesDeprecation warning resolution
 
@@ -447,7 +447,7 @@ Ensure your exposure names only contain letters, numbers, and underscores. A mor
 
 dbt raises this deprecation warning when a custom `generate_schema_name` macro returns a `null` value. Returning `null` schema names can lead to invalid or unpredictable behavior.
 
-This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name) is set to `False`. When the flag is set to `True`, dbt raises an error during parsing.
+This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name) is set to `false`. When the flag is set to `true`, dbt raises an error during parsing.
 
 #### GenerateSchemaNameNullValueDeprecation warning resolution
 
@@ -522,7 +522,7 @@ Define your MetricFlow timespine in [YAML](/docs/build/metricflow-time-spine#cre
 
 dbt has deprecated specifiying keyword arguments as properties on custom generic data tests or data tests that use the [alternative `test_name` format](/docs/reference/resource-properties/data-tests.md#alternative-format-for-defining-tests). Instead, arguments to tests should be specified under the new `arguments` property.
 
-This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `True`.
+This deprecation warning is only raised when the behavior flag `require_generic_test_arguments_property` is set to `true`.
 
 
 #### MissingArgumentsPropertyInGenericTestDeprecation warning resolution

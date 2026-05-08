@@ -9,9 +9,9 @@ pagination_prev: null
 
 # Configuring public IP restrictions <Lifecycle status="managed_plus" />
 
-import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 
-<SetUpPages features={'/snippets/_available-tiers-iprestrictions.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 IP restrictions help control which IP addresses can connect to <Constant name="dbt" />. They allow <Constant name="dbt" /> customers to meet security and compliance controls by only allowing approved IPs to connect to their <Constant name="dbt" /> environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
 
