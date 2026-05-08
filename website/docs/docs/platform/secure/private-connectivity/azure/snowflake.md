@@ -42,7 +42,7 @@ SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 <Expandable alt_header="Support request email template" is_open={true}>
 
 ```text
-Subject: New Multi-Tenant Azure PrivateLink Request
+Subject: New Azure Multi-Tenant Private Link Request
 
 - Type: Snowflake
 - dbt platform account URL:
