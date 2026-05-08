@@ -94,3 +94,28 @@ select 1 as id
 </File>
 
 When `on_error` is set to `continue` on a model that fails, dbt runs its downstream models rather than skipping them. The failed model itself still appears as an error in the run results.
+
+## Behavior with multiple upstream models
+
+When a model has multiple upstream models, `skip_children` takes precedence over `continue`. If any failed upstream model uses `skip_children`, the downstream model is skipped &mdash; even if other failed upstream models use `continue`.
+
+For example, consider a DAG where `model_c` depends on both `model_a` and `model_b`:
+
+- `model_a` uses `on_error: skip_children`
+- `model_b` uses `on_error: continue`
+
+The following table shows how `model_c` behaves based on the outcome of its upstream models:
+
+<SimpleTable>
+
+| `model_a` result (`skip_children`) | `model_b` result (`continue`) | `model_c` behavior |
+|---|---|---|
+| Success | Success | Runs |
+| Error | Success | Skipped |
+| Success | Error | Runs |
+| Error | Error | Skipped |
+
+</SimpleTable>
+<br/>
+
+When `model_a` errors, `model_c` is always skipped because `model_a` uses `skip_children`. When only `model_b` errors, `model_c` still runs because `model_b` uses `continue`, which does not block downstream models.
