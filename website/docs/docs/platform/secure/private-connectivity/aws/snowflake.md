@@ -131,7 +131,7 @@ Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
 - SYSTEM$GET_PRIVATELINK_CONFIG output:
 - *Use privatelink-account-url or regionless-privatelink-account-url?:
 - **Create Internal Stage PrivateLink endpoint? (Y/N):
-- dbt AWS multi-tenant environment (US, EMEA, AU):
+- dbt AWS multi-tenant environment (US, EMEA, AU, JP):
 ```
 
 </Expandable>
