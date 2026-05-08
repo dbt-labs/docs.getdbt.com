@@ -32,6 +32,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## April 2026
 
+- **Enhancement:** In <Constant name="dbt_platform" /> run logs, `dbt ls` and `dbt list` now display node results as **No-op** instead of **Unknown** when using <Constant name="fusion_engine" />. Refer to [dbt ls (list)](/reference/commands/list) for more information.
 - **New:** A universal login URL is available at [https://login.dbt.com](https://login.dbt.com), making it easier for you to view accounts you have access to across instances (regions and tenancies). This is currently available for multi-tenant accounts with an account-specific domain, and support for single-tenant accounts is coming soon. For more information, refer to [Log in to dbt platform](/docs/platform/about-platform/login).
 - **Fix:** Refreshing the same browser tab now restores your active <Constant name="dev_agent" /> conversation instead of showing the empty state. Opening a new tab, or returning after closing the tab, still starts in the empty state. The <Constant name="dev_agent" /> is currently in beta.
 - **Enhancement:** The dbt VS Code extension's **Get started** panel has been redesigned and surfaces the exact next setup step you need to install the extension and <Constant name="fusion"/>. The new panel also supports a new **agentic migration** option that helps you upgrade your project to <Constant name="fusion"/>  automatically in Copilot or Cursor. For more info, see [Getting started](/docs/install-dbt-extension#getting-started).
