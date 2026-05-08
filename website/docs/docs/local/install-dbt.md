@@ -298,7 +298,7 @@ alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
 
 ## Installing the adapter
 
-Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. 
+Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. Installing an adapter automatically installs `dbt-core`.
 
 ```shell
 python -m pip install dbt-ADAPTER_NAME
