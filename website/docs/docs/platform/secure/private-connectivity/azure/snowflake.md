@@ -76,7 +76,7 @@ SELECT SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( 'AZURE_PRIVATE_ENDPOINT_RESOU
 
 Once dbt Support completes the configuration, you can start creating new connections using Private Link.
 
-1. Navigate to **Settings** → **Create new project** → select **Snowflake**.
+1. From **Account settings** → **Projects** click **+ New project** and select **Snowflake**.
 2. You will see two radio buttons: **Public** and **Private**. Select **Private**.
 3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
 4. Configure the remaining data platform details.
