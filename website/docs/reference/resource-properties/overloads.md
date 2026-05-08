@@ -57,7 +57,7 @@ dbt runs all overloads regardless of individual failures, so you get a complete 
 
 The name of the SQL file that contains this overload's function body, without the file extension. The file must exist in the `functions/` directory (or wherever your [`function-paths`](/reference/project-configs/function-paths) are configured).
 
-For example, `defined_in: null_if_empty_array` references `functions/null_if_empty_array.sql`.
+For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql`.
 
 Each overload must reference a unique SQL file. The root function's SQL file and all `defined_in` values must be distinct.
 
@@ -82,15 +82,17 @@ functions:
     returns:
       data_type: varchar
     overloads:
-      - defined_in: null_if_empty_array
+      - defined_in: null_if_empty_numeric
         arguments:
           - name: val
-            data_type: text[]
+            data_type: numeric
         returns:
-          data_type: text[]
+          data_type: numeric
 ```
 
 </File>
+
+Create a separate SQL file for each overload body. In this example, the base function handles empty strings, and the overload handles numeric values:
 
 <File name='functions/null_if_empty.sql'>
 
@@ -100,10 +102,10 @@ CASE WHEN val = '' THEN NULL ELSE val END
 
 </File>
 
-<File name='functions/null_if_empty_array.sql'>
+<File name='functions/null_if_empty_numeric.sql'>
 
 ```sql
-CASE WHEN ARRAY_LENGTH(val) = 0 THEN NULL ELSE val END
+CASE WHEN val = 0 THEN NULL ELSE val END
 ```
 
 </File>
@@ -113,4 +115,4 @@ CASE WHEN ARRAY_LENGTH(val) = 0 THEN NULL ELSE val END
 - [User-defined functions](/docs/build/udfs)
 - [Function properties](/reference/function-properties)
 - [Function arguments](/reference/resource-properties/function-arguments)
-- [Returns](/reference/resource-properties/returns)
+- [returns](/reference/resource-properties/returns)

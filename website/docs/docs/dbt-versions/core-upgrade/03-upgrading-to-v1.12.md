@@ -34,7 +34,7 @@ python3 -m pip install dbt-core dbt-snowflake
 
 ### Overloaded UDFs
 
-You can define multiple argument signatures for the same SQL UDF using the `overloads` block in your function YAML. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node, so they're built and retried together.
+You can define multiple argument signatures for the same SQL UDF using the `overloads` property in your function YAML. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node, so they're built and retried together.
 
 For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and [`overloads`](/reference/resource-properties/overloads).
 
