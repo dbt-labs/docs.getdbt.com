@@ -387,7 +387,7 @@ Note that using a prerelease version before the final, stable version means the 
 To install prerelease versions of dbt Core and your adapter, use this command (replace `dbt-ADAPTER_NAME` with your adapter)
 
 ```shell
-python3 -m pip install --pre dbt-adapter-name
+python3 -m pip install --pre dbt-ADAPTER_NAME
 ```
 
 For example, if you're using Snowflake, you would use the command:
