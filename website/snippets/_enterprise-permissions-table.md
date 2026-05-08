@@ -23,24 +23,26 @@ Key:
 
 <FilterableTable>
 
-| Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Project creator | Security admin | Viewer |
-|:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:---------------:|:--------------:|:------:|
-| Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | R               | R              | R      |
-| Audit logs               | R             | -             | -                   | -                    | -                       | -               | R              | R      |
-| Auth provider            | W             | -             | -                   | -                    | -                       | -               | W              | R      |
-| Billing                  | W             | W             | -                   | -                    | -                       | -               | -              | R      |
-| Connections              | W             | -             | R<sup>**</sup>       | R                    | -                       | W               | -              | -      |
-| Cost Insights            | R             | -             | R                   | R                    | -                       | R               | -              | R      |
-| Groups                   | W             | -             | -                   | -                    | -                       | R               | W              | R      |
-| Invitations              | W             | -             | -                   | -                    | -                       | W               | W              | R      |
-| IP restrictions          | W             | -             | -                   | -                    | -                       | -               | W              | R      |
-| Licenses                 | W             | -             | -                   | -                    | -                       | W               | W              | R      |
-| Marketplace app          | -             | -             | -                   | -                    | W                       | -               | -              | -      |
-| Members                  | W             | -             | -                   | -                    | -                       | W               | W              | R      |
-| Project (create)         | W             | -             | -                   | -                    | -                       | W               | -              | -      |
-| Public models            | R             | R             | -                   | -                    | -                       | R               | R              | R      |
-| Service tokens           | W             | -             | -                   | -                    | -                       | -               | R              | R      |
-| Webhooks                 | W             | -             | -                   | -                    | -                       | -               | -              | -      |
+| Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Viewer |
+|:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:--------------------:|:---------------:|:--------------:|:------:|
+| Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | -                    | R               | R              | R      |
+| Audit logs               | R             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
+| Auth provider            | W             | -             | -                   | -                    | -                       | -                    | -               | W              | R      |
+| Billing                  | W             | W             | -                   | -                    | -                       | -                    | -               | -              | R      |
+| Connections              | W             | -             | R<sup>**</sup>       | R                    | -                       | -                    | W               | -              | -      |
+| Cost Insights            | R             | -             | R                   | R                    | -                       | -                    | R               | -              | R      |
+| Groups                   | W             | -             | -                   | -                    | -                       | -                    | R               | W              | R      |
+| Invitations              | W             | -             | -                   | -                    | -                       | -                    | W               | W              | R      |
+| IP restrictions          | W             | -             | -                   | -                    | -                       | -                    | -               | W              | R      |
+| Job notifications        | W             | -             | -                   | -                    | -                       | W                    | -               | -              | R      |
+| Licenses                 | W             | -             | -                   | -                    | -                       | -                    | W               | W              | R      |
+| Marketplace app          | -             | -             | -                   | -                    | W                       | -                    | -               | -              | -      |
+| Members                  | W             | -             | -                   | -                    | -                       | R                    | W               | W              | R      |
+| OAuth configurations     | W             | -             | -                   | -                    | -                       | R                    | -               | -              | -      |
+| Project (create)         | W             | -             | -                   | -                    | -                       | -                    | W               | -              | -      |
+| Public models            | R             | R             | -                   | -                    | -                       | -                    | R               | R              | R      |
+| Service tokens           | W             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
+| Webhooks                 | W             | -             | -                   | -                    | -                       | -                    | -               | -              | -      |
 </FilterableTable>
 
 <sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings, including [setting up Slack notifications](/docs/deploy/job-notifications#slack-notifications).

@@ -25,6 +25,12 @@ Set up notifications in <Constant name="dbt_platform" /> to receive alerts about
 If you can’t use the native Microsoft Teams integration, you can still send job notifications to a Teams channel by using the channel’s email address as an external email, as explained in the next section.
 :::
 
+### Permissions for managing notifications
+
+Account admins can configure job notifications for any user, including external email recipients and Slack or Microsoft Teams channels. To delegate notification management without granting full Account Admin access, assign the **Notification Manager** account-level permission set, which grants read and write access to job notifications, read access to members (so the recipient picker can populate), and read access to OAuth configurations (to check the Slack integration status). Linking or unlinking the Slack and Microsoft Teams integrations remains Account Admin&ndash;only.
+
+For more details, refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions).
+
 ## Email notifications
 
 You can receive email alerts about jobs by configuring the <Constant name="dbt" /> email notification settings.

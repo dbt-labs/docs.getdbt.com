@@ -189,6 +189,18 @@ Notable features:
 - Not intended for general user/group assignment.
 
 </Expandable>
+<Expandable alt_header="Notification Manager">
+
+The Notification Manager permission set is intended for users who manage Slack and email job notifications without needing full Account Admin access. Pair it with another permission set (such as Developer) so the user can also work in their projects.
+
+Notable features:
+- Notification Manager is an account-level set.
+- Can read and write [job notifications](/docs/deploy/job-notifications), including Slack channels, account-level email recipients, and external email addresses.
+- Read-only access to members (so the recipient picker can populate) and to OAuth configurations (to check the Slack integration status).
+- Cannot link or unlink the Slack or Microsoft Teams integrations &mdash; those actions remain Account Admin&ndash;only.
+- No other access to <Constant name="dbt" /> features.
+
+</Expandable>
 <Expandable alt_header="Metadata (Discovery API only)">
 
 Metadata is intended to be a read-only [Discovery API](/docs/dbt-apis/discovery-api) integration permission set. 
