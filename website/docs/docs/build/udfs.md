@@ -94,7 +94,7 @@ Follow these steps to define UDFs in dbt:
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
-    **Optional**: Starting <Constant name="core" /> v1.12, you can define multiple argument signatures for the same function using the `overloads` property for SQL UDFs. The database dispatches to the correct version based on the argument types at call time. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one DAG node.
+    **Optional**: Starting <Constant name="core" /> v1.12, you can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property for SQL UDFs. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one DAG node.
 
     :::info Beta feature
     The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
