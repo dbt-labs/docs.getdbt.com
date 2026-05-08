@@ -65,7 +65,7 @@ models:
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
-#### dbt-core and adapters are decoupled
+### dbt-core and adapters are decoupled
 
 Before dbt Core v1.8, dbt adapters directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independent of `dbt-core`. Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87), making it easier for us to maintain and independently evolve adapters going forward.
 
