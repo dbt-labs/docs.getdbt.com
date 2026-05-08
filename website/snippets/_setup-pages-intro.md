@@ -14,7 +14,7 @@
 
 Use `pip` to install the adapter. Use the following command for installation:
 
-<code>python -m pip install dbt-ADAPTER_NAME {props.meta.pypi_package}</code>
+<code>python -m pip install {props.meta.pypi_package}</code>
 
 <h2> Configuring {props.meta.pypi_package} </h2>
 
