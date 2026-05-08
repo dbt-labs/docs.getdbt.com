@@ -20,7 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## April 2026
 
-- **Enhancement:** In <Constant name="dbt_platform" /> run logs, `dbt ls` and `dbt list` now display node results as **No-op** instead of **Unknown** when using the <Constant name="fusion_engine" />. Refer to [dbt ls (list)](/reference/commands/list) for more information.
+- **Enhancement:** In <Constant name="dbt_platform" /> run logs, `dbt ls` and `dbt list` now display node results as **No-op** instead of **Unknown** when using <Constant name="fusion_engine" />. Refer to [dbt ls (list)](/reference/commands/list) for more information.
 - **Enhancement:** [Slack notifications (account-level)](/docs/deploy/job-notifications#slack-notifications-account) and [Microsoft Teams notifications](/docs/deploy/job-notifications#microsoft-teams-notifications) are now generally available, enabling you to send job notifications directly to Slack channels configured at the account level, and to Teams channels.
 - **Enhancement:** When using the [dbt autofix](https://github.com/dbt-labs/dbt-autofix) tool in the <Constant name="studio_ide" />, you can now compile your project directly from the results panel after a successful `dbt parse`. Click **Compile** next to the **Successfully resolved** result to kick off a compile. For more information, refer to [Fix deprecation warnings](/docs/cloud/studio-ide/autofix-deprecations).
 - **Beta**: DuckDB is now supported in the <Constant name="fusion_engine" /> CLI, which lets you run local dbt projects without a warehouse account. For more information, refer to [Connect DuckDB](/docs/local/connect-data-platform/duckdb-setup).
