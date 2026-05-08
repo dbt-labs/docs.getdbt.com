@@ -26,7 +26,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### Overloaded UDFs
+### Overloaded UDFs <Lifecycle status="beta" />
 
 You can define multiple argument signatures for the same SQL UDF using the `overloads` property in your function YAML. Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node, so they're built and retried together.
 
