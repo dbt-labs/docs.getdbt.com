@@ -116,7 +116,7 @@ Follow these steps to define UDFs in dbt:
             default_value: "'1'"    # optional, available in Snowflake and Postgres
         returns:                    # required
           data_type: integer        # required
-        overloads:                  # optional
+        overloads:                  # optional, available in 1.12+
           - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.sql
             arguments:
               - name: a_num
