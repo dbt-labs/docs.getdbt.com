@@ -6,6 +6,7 @@ sidebar_label: "Azure Database for PostgreSQL Flexible Server"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
@@ -33,11 +34,14 @@ From your Azure portal:
    - dbt platform account URL:
    - Postgres Flexible Server name:
    - Azure Database for Postgres Flexible Server resource ID:
-   - dbt Azure multi-tenant environment (EMEA):
+   - dbt Azure multi-tenant environment (US or EMEA):
    - Azure Postgres server region (for example, WestEurope, NorthEurope):
    ```
 
    </Expandable>
+
+   <PrivateLinkSLA />
+
 5. Once our Support team confirms the endpoint has been created, navigate to the Azure Database for Postgres Flexible Server in the Azure Portal and browse to **Settings** > **Networking**. In the **Private Endpoints** section, highlight the `dbt` named option and select **Approve**. Confirm with dbt Support that the connection has been approved so they can validate the connection and make it available for use in <Constant name="dbt" />.
 
 

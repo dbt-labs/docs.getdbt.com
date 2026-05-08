@@ -6,6 +6,7 @@ sidebar_label: "Snowflake"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
@@ -41,17 +42,19 @@ SELECT SYSTEM$GET_PRIVATELINK_CONFIG();
 <Expandable alt_header="Support request email template" is_open={true}>
 
 ```text
-Subject: New Multi-Tenant Azure PrivateLink Request
+Subject: New Azure Multi-Tenant Private Link Request
 
 - Type: Snowflake
 - dbt platform account URL:
 - The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
   - Enable Internal Stage Private Link? Y/N (If Y, output must include privatelink-internal-stage)
-- dbt Azure multi-tenant environment (EMEA):
+- dbt Azure multi-tenant environment (US or EMEA):
 ```
 
 </Expandable>
+
+<PrivateLinkSLA />
 
 3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
 
@@ -68,6 +71,16 @@ USE ROLE ACCOUNTADMIN;
 SELECT SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( 'AZURE_PRIVATE_ENDPOINT_RESOURCE_ID' );
 
 ```
+
+## Create connection in dbt
+
+Once dbt Support completes the configuration, you can start creating new connections using Private Link.
+
+1. From **Account settings** → **Projects**, click **+ New project** and select **Snowflake**.
+2. You will see two radio buttons: **Public** and **Private**. Select **Private**.
+3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
+4. Configure the remaining data platform details.
+5. Test your connection and save it.
 
 ## Configuring network policies
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
