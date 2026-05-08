@@ -21,6 +21,10 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
+### Access and permissions
+
+- **New:** A **Notification Manager** account-level [permission set](/docs/platform/manage-access/enterprise-permissions) lets you delegate Slack and email [job notification](/docs/deploy/job-notifications) management without granting full Account Admin access. The set grants read and write access to job notifications, plus read access to members and OAuth configurations.
+
 ### Packages
 
 - **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
