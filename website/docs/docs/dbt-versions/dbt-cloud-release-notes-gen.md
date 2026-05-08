@@ -51,8 +51,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Single Sign-On configuration uses auto-generated slugs only**: The Single Sign-On (SSO) settings card now always uses server-assigned slugs. The manual slug input has been removed. All SSO configurations are created as drafts with an auto-generated slug before you fill in connection details.
-
 - **Credentials page access with `user_credential_write` permission**: Users with the `user_credential_write` permission on any project can now access the Credentials settings page and edit their development credentials, even without a Developer-tier license or `develop_access`.
 
 ## Fixes
@@ -62,6 +60,10 @@ Release notes are grouped by date for single-tenant environments.
 - **Correct handling of `tool_call_chunk` content blocks**: Fixed a bug in single tenant environments that would occasionally block conversations from being able to be continued.
 
 ## Behavior Changes
+
+### APIs, Identity, and Administration
+
+- **Single Sign-On configuration uses auto-generated slugs only**: The Single Sign-On (SSO) settings card now always uses server-assigned slugs. The manual slug input has been removed. All SSO configurations are created as drafts with an auto-generated slug before you fill in connection details.
 
 ### Deployment and Configuration
 
