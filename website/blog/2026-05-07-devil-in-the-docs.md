@@ -13,7 +13,7 @@ image: /img/blog/2026-04-30-the-devil-is-in-the-docs/devil-in-the-docsv2.png
 > *"By all means, move at a glacier's pace."*
 > — Miranda Priestly, *[The Devil Wears Prada](https://en.wikipedia.org/wiki/The_Devil_Wears_Prada_(film))*
 
-There's another scene in _The Devil Wears Prada_ that I think about more than that one. If you haven't seen it yet, I'll try not to spoil it for you. Miranda turns to Andy (Miranda's assistant) and explains, with complete "patience", that the [cerulean blue](https://en.wikipedia.org/wiki/Cerulean) in Andy's "lumpy sweater" didn't come out of thin air &mdash; it's traced back through fashion decisions made years earlier, by people who thought carefully about every choice. The sweater Andy bought from the store was the end of a long chain of deliberate _curation_. She just couldn't see it.
+There's another scene in _The Devil Wears Prada_ that I think about more than that one. If you haven't seen it yet, I'll try not to spoil it for you. Miranda turns to Andy (Miranda's assistant) and explains, with complete "patience", that the [cerulean blue](https://en.wikipedia.org/wiki/Cerulean) in Andy's "lumpy sweater" didn't come out of thin air &mdash; it's traced back through a chain of deliberate fashion decisions made years earlier, by people who thought carefully about every choice. The sweater Andy bought from the store was the end of a long chain of deliberate _curation_, carefully veiled behind a raw silk curtain.
 
 That's how I'd describe documentation, especially in the AI era. A user &mdash; could be a developer, analyst, data engineer &mdash; asks an AI tool a question and gets an answer. They don't _need_ to see every decision in the chain behind it: what to include, how to structure it, where the gaps are, what needs updating. But those decisions shape every answer they get. Somewhere upstream, a docs team is making careful, deliberate choices that ripple all the way down to the moment the answer lands in the user's editor.
 
@@ -30,7 +30,7 @@ That was the [dbt MCP server's](/docs/dbt-ai/about-mcp) relationship with the do
 - The open source documentation at [docs.getdbt.com](https://docs.getdbt.com) is carefully maintained (by the docs team _and_ our amazing dbt community), up-to-date, and formatted for humans, of course. And now machine consumption: there's an `llms.txt` index, a full-content flat file, and markdown output on every page. We have an `AGENTS.md` file that lists how to access the docs via web requests. The source was solid and accessible.
 - The dbt MCP server &mdash; where dbt users interact with dbt through AI tools &mdash; couldn't reach any of it by default. It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, Fusion, Server Metadata. But none of them connected to the live docs by default. It didn't have our docs as its main source.
 
-So when an agent was asked *"how do I configure incremental models?"*, it could in theory reach the docs with its own browsing tools &mdash; but the experience was inconsistent. Sometimes it fetched a page, sometimes it leaned on training data or pieced an answer together; and when it _did_ fetch, it usually pulled rendered HTML rather than the markdown source &mdash; heavier, noisier, and less token-efficient. There was no direct, native path inside the server that pointed agents at the canonical docs in their cleanest form by default.
+So when an agent was asked *"how do I configure incremental models?"*, it could in theory reach the docs with its own browsing tools, but the experience was inconsistent. Sometimes it fetched a page, sometimes it leaned on training data or pieced an answer together; and when it _did_ fetch, it usually pulled rendered HTML rather than the markdown source &mdash; heavier, noisier, and less token-efficient. There was no direct, native path inside the server that pointed agents at the canonical docs in their cleanest form by default.
 
 <Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-meme.png" width="45%"title="Miranda mad at AI for hallucinating about incremental models (but for real an actual response I received from AI when I was adding the docs tools to the MCP server)" />
 
@@ -46,11 +46,13 @@ So we chatted about this and toyed with the idea of either:
 But that still left us with the question of how to get the docs closer to users in a way that is easy to use and maintain.
 
 We ran some sql queries using the [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) and also used [Insights](/docs/explore/dbt-insights?version=2.0) for exploratory analysis in our internal dbt platform account:
-- We saw that the dbt MCP server had great adoption already and had a ton of the infrastructure in place
-- Adding the docs tools would be a natural extension of that and would be a great way to get the docs closer to users 
-- The dbt MCP server had eight toolset categories already but none of them could directly access docs.getdbt.com.
-- The dbt MCP server is open source and free, which also meant every user would get docs access automatically.
-- When an agent needed to answer *"how do I configure incremental models?"* &mdash; it might search the web or pull from training data, but there was no guaranteed path to the main source of truth, the current docs.
+
+We saw that the dbt MCP server had these benefits:
+- Great adoption already and had a ton of the infrastructure in place. Adding the docs tools would be a natural extension of that and would be a great way to get the docs closer to users
+- Eight toolset categories already but none of them could directly access docs.getdbt.com.
+- Open source and free, which also meant every user would get docs access automatically.
+
+But the problem was when an agent needed to answer *"how do I configure incremental models?"* &mdash; it might search the web or pull from training data, but there was no guaranteed path to the main source of truth, the current docs.
 
 As mentioned above, we already had a solid foundation for AI-readable docs:
 
@@ -111,10 +113,10 @@ For analysts exploring a shared project, it means understanding what a model doe
 
 This is the first page of many in this new chapter. But we're planning a few things for the next pages as we continue to try to improve the docs experience:
 
-- **Version-aware docs fetching** &mdash; Right now these tools return current docs. A developer on dbt Core 1.10 asking about incremental strategies gets 2026 docs. Version-aware routing &mdash; returning the right page for the right dbt version &mdash; is the next meaningful improvement, and we're [working](https://github.com/dbt-labs/dbt-mcp/pull/638) through it now!
-- **Smarter search ranking** &mdash; Relevance is good. Relevance tuned to dbt-specific concepts and query patterns would be better.
-- **Coverage gaps as a signal** &mdash; usage data tells us which pages answer well and which leave users hunting. Spotting the missing, thin, or outdated ones and fixing them means cleaner answers the next time someone asks.
-- **A dedicated dbt docs MCP server** maybe? &mdash; It's not the right call right now &mdash; one coherent product with an active existing server is the right place to start &mdash; but in the future, maybe a standalone docs server could reach every MCP client regardless of whether they use the dbt MCP server at all?
+- **Version-aware docs fetching**: Right now these tools return current docs. A developer on dbt Core 1.10 asking about incremental strategies gets 2026 docs. Version-aware routing &mdash; returning the right page for the right dbt version &mdash; is the next meaningful improvement, and we're [working](https://github.com/dbt-labs/dbt-mcp/pull/638) through it now!
+- **Smarter search ranking**: Relevance is good. Relevance tuned to dbt-specific concepts and query patterns would be better.
+- **Coverage gaps as a signal**: usage data tells us which pages answer well and which leave users hunting. Spotting the missing, thin, or outdated ones and fixing them means cleaner answers the next time someone asks.
+- **A dedicated dbt docs MCP server** maybe? It's not the right call right now &mdash; one coherent product with an active existing server is the right place to start &mdash; but in the future, maybe a standalone docs server could reach every MCP client regardless of whether they use the dbt MCP server at all?
 
 ## Give it a try!
 
