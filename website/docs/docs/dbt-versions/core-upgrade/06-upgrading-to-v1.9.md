@@ -85,16 +85,16 @@ We’ve made improvements to `state:modified` behaviors to help reduce the risk 
 
 ### Managing changes to legacy behaviors
 
-dbt Core v1.9 has a handful of new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
+dbt Core v1.9 has a handful of new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
-- (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-changes#behavior-change-flags). Set to `True` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks to reduce false positives due to environment-aware logic when selecting `state:modified`.
+- (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-changes#behavior-change-flags). Set to `true` to start persisting `unrendered_database` and `unrendered_schema` configs during source parsing, and do comparison on unrendered values during `state:modified` checks to reduce false positives due to environment-aware logic when selecting `state:modified`.
 - (Introduced, disabled by default) [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped.
     - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time.
 <!--- (Introduced, disabled by default) [[Redshift] `restrict_direct_pg_catalog_access`](/reference/global-configs/behavior-changes#redshift-restrict_direct_pg_catalog_access). If the flag is set the adapter will use the Redshift API (through the Python client) if available, or query Redshift's `information_schema` tables instead of using `pg_` tables.-->
-- (Introduced, disabled by default) [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-changes#cumulative-metrics). If the flag is set to `True`, users will receive an error instead of a warning if they're not properly formatting cumulative metrics using the new [`cumulative_type_params`](/docs/build/cumulative#parameters) nesting.
-- (Introduced, disabled by default) [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-changes#custom-microbatch-strategy). Set to `True` if you use a custom microbatch macro to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the microbatch strategy.
+- (Introduced, disabled by default) [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-changes#cumulative-metrics). If the flag is set to `true`, users will receive an error instead of a warning if they're not properly formatting cumulative metrics using the new [`cumulative_type_params`](/docs/build/cumulative#parameters) nesting.
+- (Introduced, disabled by default) [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-changes#custom-microbatch-strategy). Set to `true` if you use a custom microbatch macro to enable batched execution. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the microbatch strategy.
 
 ## Adapter-specific features and functionalities
 
