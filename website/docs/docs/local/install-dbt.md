@@ -435,7 +435,7 @@ which python
 
 
 ```shell
-python3 -m pip install --pre dbt-adapter-name
+python3 -m pip install --pre dbt-ADAPTER_NAME
 source .venv/bin/activate
 dbt --version
 ```
