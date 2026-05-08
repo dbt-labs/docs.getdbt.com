@@ -17,12 +17,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.10! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.10 final release.
 
-For users of dbt Core, since v1.8, we recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
-
-```sql
-python3 -m pip install dbt-core dbt-snowflake
-```
-
 ## New and changed features and functionality
 
 New features and functionality available in <Constant name="core" /> v1.10
@@ -131,8 +125,8 @@ Check out our [docs on external catalog support](/docs/mesh/iceberg/about-catalo
 With [hybrid projects](/docs/deploy/hybrid-projects), <Constant name="core"/> users working in the command line interface (CLI) can execute runs that seamlessly upload [artifacts](/reference/artifacts/dbt-artifacts) into <Constant name="dbt"/>. This enhances hybrid <Constant name="core"/>/<Constant name="dbt"/> deployments by:
 
 - Fostering collaboration between <Constant name="dbt"/> + <Constant name="core"/> users by enabling them to visualize and perform [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) to models defined in <Constant name="core"/> projects. This feature unifies <Constant name="dbt"/> + <Constant name="core"/> workflows for a more connected dbt experience.
-- Giving <Constant name="dbt"/> and <Constant name="core"/> users insights into their models and assets in [<Constant name="catalog"/>](/docs/explore/explore-projects). To view <Constant name="catalog"/>, you must have have a [developer or read-only license](/docs/cloud/manage-access/seats-and-users).
-- (Coming soon) Enabling users working in the [<Constant name="canvas"/>](/docs/cloud/canvas) to build off of models already created by a central data team in <Constant name="core"/> rather than having to start from scratch.
+- Giving <Constant name="dbt"/> and <Constant name="core"/> users insights into their models and assets in [<Constant name="catalog"/>](/docs/explore/explore-projects). To view <Constant name="catalog"/>, you must have have a [developer or read-only license](/docs/platform/manage-access/seats-and-users).
+- (Coming soon) Enabling users working in the [<Constant name="canvas"/>](/docs/platform/canvas) to build off of models already created by a central data team in <Constant name="core"/> rather than having to start from scratch.
 
 Hybrid projects are available as a private beta to [<Constant name="dbt"/> Enterprise accounts](https://www.getdbt.com/pricing). Contact your account representative to register your interest in the beta.
 
