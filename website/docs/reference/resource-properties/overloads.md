@@ -20,7 +20,7 @@ functions:
     returns:
       data_type: <string>
     overloads:
-      - defined_in: <string>       # required, name of the SQL file (without extension)
+      - defined_in: <string>       # required, name of the SQL file
         arguments:                 # optional
           - name: <arg name>       # required if arguments is specified
             data_type: <string>    # required if arguments is specified, warehouse-specific
@@ -41,7 +41,7 @@ functions:
 The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-The `overloads` property lets you define multiple signatures for the same SQL UDF. The database dispatches to the correct version based on the argument types passed at call time.
+The `overloads` property lets you define multiple argument signatures for the same SQL UDF. The database dispatches to the correct version based on the argument types passed at call time.
 
 Each overload references a separate SQL file that contains its function body, and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built, retried, and selected together.
 
@@ -57,21 +57,21 @@ dbt runs all overloads regardless of individual failures, so you get a complete 
 
 ## Properties
 
+Each entry in the `overloads` list supports the following properties.
+
 ### defined_in
 
-The name of the SQL file that contains this overload's function body, without the file extension. The file must exist in the `functions/` directory (or wherever your [`function-paths`](/reference/project-configs/function-paths) are configured).
-
-For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql`.
+The name of the SQL file that contains the overload's function body. The file must exist in the `functions/` directory. For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql`.
 
 Each overload must reference a unique SQL file. The root function's SQL file and all `defined_in` values must be distinct.
 
 ### arguments
 
-The argument list for this overload. Follows the same structure as [function arguments](/reference/resource-properties/function-arguments). Required if the overload accepts arguments.
+The argument list for the overload. Follows the same structure as [function arguments](/reference/resource-properties/function-arguments).
 
 ### returns
 
-The return type for this overload. Follows the same structure as [returns](/reference/resource-properties/returns). Required for every overload.
+The return type for the overload. Follows the same structure as [returns](/reference/resource-properties/returns).
 
 ## Example
 
