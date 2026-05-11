@@ -7,12 +7,12 @@ tags: [AI, Agents]
 image: /img/docs/dbt-platform/copilot-agent.png
 ---
 
-# dbt Agents overview <Lifecycle status="beta,self_service,managed,managed_plus"/>
+# dbt Agents overview <Lifecycle status="self_service,managed,managed_plus"/>
 
 [dbt Agents](https://www.getdbt.com/product/dbt-agents), available on [Starter and dbt Enterprise-tier plans](https://www.getdbt.com/pricing), are a suite of native AI agents that turn structured dbt context into auditable actions. These agents help you build, manage, and consume governed data at scale by bringing intelligence to every step of the analytics development lifecycle. 
 
 :::info 
-Some dbt Agents are in preview or beta; others are coming soon. Contact your account manager for early access.
+Some dbt Agents are in preview or beta; others are coming soon. Enterprise customers can contact your account manager for access or changes. Starter plan customers can contact [dbt Labs Support](mailto:support@getdbt.com). 
 
 See [available agents](#available-agents) to find out what's available.
 :::
@@ -49,7 +49,7 @@ Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/d
 
 The Analyst agent is a beta feature. Enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
-#### Developer agent <Lifecycle status="beta,managed,managed_plus"/>
+#### Developer agent <Lifecycle status="preview,self_service,managed,managed_plus"/>
 
 The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />, purpose-built to streamline the developer experience. Describe the data product or change you want &mdash; the agent writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 

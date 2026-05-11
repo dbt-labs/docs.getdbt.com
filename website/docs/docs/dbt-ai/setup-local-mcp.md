@@ -40,6 +40,7 @@ If a required variable is not set, dbt-mcp will automatically disable that tools
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to be able to run `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment.
 - Have a local dbt project (if you want to use dbt CLI commands).
+- If you're using [OAuth with <Constant name="dbt_platform"/>](#oauth-authentication-with-dbt-platform), your account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
 
 ## Choose your auth method
 
@@ -60,7 +61,7 @@ The `execute_sql` tool does _not_ work with service tokens. You must use a [Pers
 
 Choose the setup method that best fits your workflow:
 
-### OAuth authentication with <Constant name="dbt_platform"/> <Lifecycle status="managed, managed_plus" />
+### OAuth authentication with dbt platform <Lifecycle status="managed, managed_plus" />
 
 This method uses OAuth to authenticate with your <Constant name="dbt_platform" /> account. It's the simplest setup and doesn't require managing tokens or environment variables manually.
 

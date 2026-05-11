@@ -5,7 +5,7 @@ description: "Configure private connections for AWS deployments of the dbt platf
 sidebar_label: "About AWS PrivateLink"
 ---
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import AWSMatrix from '/snippets/_aws-private-connectivity-matrix.md';
 
 <SetUpPages />

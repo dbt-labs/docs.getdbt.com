@@ -73,6 +73,17 @@ You can bring [external metadata](/docs/explore/external-metadata-ingestion) int
 
 To use external metadata ingestion, you must be an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="catalog" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option from your account settings. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
 
+### Enable global account discovery
+
+When **Enable global account discovery** is on, users can discover all accounts associated with their email address at login. Users still access accounts using their credentials or the account's designated auth method (for example, SSO). Refer to [Log in to dbt platform](/docs/platform/about-platform/login) for more info.
+
+import UniversalLoginST from '/snippets/_universal-login-st.md';
+
+<UniversalLoginST />
+
+Disabling this setting means users must know their [account URL](/docs/platform/about-platform/access-regions-ip-addresses#accessing-your-account) to log in; they will not see a list of accounts at login.
+
+To change this setting, select or clear the **Enable global account discovery** option in your account settings. If you disable it, a confirmation pop-up box explains that users will need the account URL to log in and access the account.
 
 ## Project settings history
 

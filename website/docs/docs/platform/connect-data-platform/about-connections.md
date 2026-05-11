@@ -8,15 +8,15 @@ pagination_prev: null
 ---
 The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. Expand the sections below to know the supported data platforms for <Constant name="core" /> and the <Constant name="fusion_engine" />: 
 
-| Connection | Available on Latest   | Available on Fusion<Lifecycle status='private_preview' />|
+| Connection | Available on Latest   | Available on Fusion|
 |------------|:---------------------:|:---------------------:|
 | [AlloyDB](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
 | [Amazon Athena](/docs/platform/connect-data-platform/connect-amazon-athena) | ✅ | ❌ |
-| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | ✅ | ✅ |
+| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | ✅ | Preview |
 | [Apache Spark](/docs/platform/connect-data-platform/connect-apache-spark) | ✅ | ❌ |
 | [Azure Synapse Analytics](/docs/platform/connect-data-platform/connect-azure-synapse-analytics) | ✅ | ❌ |
-| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | ✅ | ✅ |
-| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ | ✅ |
+| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | ✅ | Private preview |
+| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ | Preview |
 | [Microsoft Fabric](/docs/platform/connect-data-platform/connect-microsoft-fabric) | ✅ | ❌ |
 | [PostgreSQL](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
 | [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ | ✅ |
