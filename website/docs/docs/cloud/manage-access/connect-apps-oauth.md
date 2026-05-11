@@ -44,7 +44,7 @@ To add a manually registered integration:
 
 1. Go to **Account settings** → **Integrations** → **App integrations**.
 2. Click **+ Add integration**.
-3. Complete the registration form. Each manually registered client receives a unique client ID for use with PKCE flows. No client secret is issued.
+3. Complete the registration form. Each manually registered client receives a unique client ID. Note that no client secret is issued, and the client must instead support the [PKCE extension (RFC 7636)](https://datatracker.ietf.org/doc/html/rfc7636).
 
 Manually registered clients appear in the **Manually registered** section.
 
