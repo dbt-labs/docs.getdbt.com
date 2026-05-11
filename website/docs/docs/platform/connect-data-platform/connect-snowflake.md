@@ -9,17 +9,9 @@ import SnowflakeAuth from '/snippets/_snowflake-auth.md';
 
 # Connect Snowflake <ProductCard text="Fusion compatible" />
 
-<SnowflakeAuth />
-
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 <SnowflakeColumn />
-
-## Warehouse permissions for Fusion
-
-import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
-
-<FusionSnowflakeWarehousePerms />
 
 :::note
 
@@ -28,6 +20,12 @@ import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissio
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
 :::
+
+## Warehouse permissions for Fusion
+
+import FusionSnowflakeWarehousePerms from '/snippets/_fusion-warehouse-permissions-snowflake.md';
+
+<FusionSnowflakeWarehousePerms />
 
 For role examples in Snowflake, see [Snowflake permissions](/reference/database-permissions/snowflake-permissions).
 
@@ -48,23 +46,7 @@ This section describes the different authentication methods for connecting <Cons
 
 ### Username and password with MFA
 
-:::info Snowflake authentication
-
-Starting November 2025, Snowflake will phase out single-factor password authentication, and multi-factor authentication (MFA) will be enforced.
-
-MFA will be required for all `Username / Password` authentication.
-
-To continue using key pair authentication, users should update any deployment environments currently using `Username / Password` by November 2025.
-
-Refer to [Snowflake's blog post](https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/) for more information.
-
-:::
-
-:::info Snowflake MFA plan availability
-
-Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing).
-
-:::
+<SnowflakeAuth />
 
 **Available in:** Development environments
 
