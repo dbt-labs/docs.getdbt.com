@@ -74,25 +74,23 @@ From the consent screen, the user can:
 
 Scopes available today include:
 
-- **View account information** &mdash; read-only access to account details such as project and environment settings.
-- **Query dbt Semantic Layer** &mdash; query project data using <Constant name="semantic_layer" /> metrics.
-- **View project metadata from dbt Catalog** &mdash; access model descriptions, column lineage, and other project metadata.
-- **Develop dbt models** &mdash; use development tooling, including the CLI, to make updates to dbt models.
-- **Run jobs** &mdash; view, edit, and re-trigger dbt jobs.
+- **View account information**:read-only access to account details such as project and environment settings.
+- **Query dbt Semantic Layer**: query project data using <Constant name="semantic_layer" /> metrics.
+- **View project metadata from dbt Catalog**: access model descriptions, column lineage, and other project metadata.
+- **Develop dbt models**: use development tooling, including the CLI, to make updates to dbt models.
+- **Run jobs**: view, edit, and re-trigger dbt jobs.
 
 ## Sessions and refresh tokens
 
-OAuth sessions use **refresh tokens with a 7-day inactivity window**. As long as the client requests a new access token at least once every 7 days, the session stays alive. After 7 days of inactivity, the refresh token expires and the user has to sign in again.
+OAuth sessions use refresh tokens with a 7-day inactivity window. As long as the client requests a new access token at least once every 7 days, the session stays alive. After 7 days of inactivity, the refresh token expires and the user has to sign in again.
 
 Users can opt out of automatic refresh at consent time by turning off **Keep session alive**.
 
 ## Revoke access
 
-To revoke an OAuth grant, the user disconnects dbt from their MCP client &mdash; for example, by removing the dbt connector in the client's settings.
+To revoke an OAuth grant, the user disconnects dbt from their MCP client &mdash; for example, by removing the dbt connector in the client's settings. We'll soon add the ability to revoke access in <Constant name="dbt_platform"/>.
 
 <Lightbox src="/img/docs/dbt-cloud/oauth-disconnect-client.png" title="MCP client connectors page with the option to remove the dbt connector" />
-
-A dedicated revoke UI in dbt account settings is planned for a future release.
 
 ## Audit logging
 
