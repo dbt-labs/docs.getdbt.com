@@ -464,11 +464,9 @@ Learn more about `IMMUTABLE WHERE` in [Snowflake's docs](https://docs.snowflake.
 
 ### Copy grants (dynamic tables)
 
-Starting `dbt-snowflake` v1.11, you can use `copy_grants` to preserve existing object-level privileges when Snowflake recreates a dynamic table with `CREATE OR REPLACE`. When disabled, all previously granted permissions are dropped when the table is recreated, and downstream users or roles lose access until grants are manually re-applied.
+Starting `dbt-snowflake` v1.11, you can use `copy_grants` to preserve existing object-level privileges when dbt generates a `CREATE OR REPLACE DYNAMIC TABLE` statement. When disabled, all previously granted permissions are dropped when the table is recreated, and downstream users or roles lose access until grants are manually re-applied.
 
-When you set `copy_grants: true` on a dynamic table, dbt adds the `COPY GRANTS` clause to the `CREATE OR REPLACE DYNAMIC TABLE` statement. This preserves existing object-level privileges on the table during full refreshes, so you don't need to re-grant access after the table is recreated.
-
-`copy_grants` only takes effect during a full refresh. It has no effect during incremental refreshes.
+When you set `copy_grants: true` on a dynamic table, dbt adds the `COPY GRANTS` clause to the `CREATE OR REPLACE DYNAMIC TABLE` statement. This preserves existing object-level privileges on the table during `--full-refresh` runs, so you don't need to re-grant access after the table is recreated.
 
 To configure the `copy_grants` parameter, refer to the following example:
 
