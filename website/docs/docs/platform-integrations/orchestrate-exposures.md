@@ -72,7 +72,7 @@ To orchestrate downstream exposures, you should meet the following:
 
 To orchestrate downstream exposures and see refreshes happen automatically during scheduled jobs on [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine:
 
-1. In the <Constant name="dbt" />, click **Deploy**, then **Environments**, and select the **Environment variables** tab.
+1. In the <Constant name="dbt_platform" />, click **Deploy**, then **Environments**, and select the **Environment variables** tab.
 2. Click **Add variable** and set the [environment level variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) `DBT_ACTIVE_EXPOSURES` to `1` within the environment you want the refresh to happen.
 3. Then set the `DBT_ACTIVE_EXPOSURES_BUILD_AFTER` to control the maximum refresh frequency (in minutes) you want between each exposure refresh.
 4. Set the variable to **1440** minutes (24 hours) by default. This means that downstream exposures won’t refresh Tableau extracts more often than this set interval, even if the related models run more frequently.
