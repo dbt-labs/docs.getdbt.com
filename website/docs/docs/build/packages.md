@@ -173,7 +173,7 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 
 ## Private packages
 
-### Native private packages <Lifecycle status='beta'/> 
+### Native private packages
 
 Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. This simplifies setup and reduces credential management.
 
@@ -185,10 +185,8 @@ Native private packages let you install packages from [supported](#prerequisites
 - To use native private packages, you must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
   - **[GitHub](/docs/platform/git/connect-github)**
   - **[Azure DevOps](/docs/platform/git/connect-azure-devops)**
-    - Private packages only work within a single Azure DevOps project. If your repositories are in different projects within the same organization, you can't reference them in the `private` key at this time.
-    - For Azure DevOps, use the `org/repo` path (not the `org_name/project_name/repo_name` path) with the project tier inherited from the integrated source repository.
+    - Use the `org/project/repo` path with the `ado` provider.
   - **[GitLab](/docs/platform/git/connect-gitlab)**
-    - You must have the feature flag enabled. Contact your account team to request access.
     - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project.
 - If using <Constant name="fusion" /> locally, you must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
@@ -209,17 +207,14 @@ packages:
 
 :::tip Azure DevOps considerations
 
-- Private packages currently only work if the package repository is in the same Azure DevOps project as the source repo.
-- Use the `org/repo` path (not the normal ADO `org_name/project_name/repo_name` path) in the `private` key. 
-- Repositories in different Azure DevOps projects is currently not supported until a future update.
-
-You can use private packages by specifying `org/repo` in the `private` key:
+- Use the `ado` provider and specify the `org/project/repo` path in the `private` key.
 
 <File name="packages.yml">
 
 ```yaml
 packages:
-  - private: my-org/my-repo # Works if your ADO source repo and package repo are in the same project
+  - private: my-org/my-project/my-repo
+    provider: "ado"
 ```
 </File>
 :::
@@ -242,7 +237,7 @@ Add the `provider` key when:
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo
-    provider: "github" # Supported values: "github", "gitlab", "azure_devops"
+    provider: "github" # Supported values: "github", "gitlab", "ado"
 ```
 
 <Constant name="fusion" /> uses the `provider` value to construct the correct SSH URL for cloning, based on the provider:
@@ -251,7 +246,7 @@ packages:
 | --- | --- |
 | `github` | `git@github.com:org/repo.git` |
 | `gitlab` | `git@gitlab.com:org/repo.git` |
-| `azure_devops` | `git@ssh.dev.azure.com:v3/org/repo` |
+| `ado` | `git@ssh.dev.azure.com:v3/org/project/repo` |
 
 <Constant name="fusion" /> relies on your system's SSH configuration to authenticate and clone the private repository. If `git clone` works on your system for the private package repo, the private package install should work too.
 
@@ -311,7 +306,7 @@ packages:
 
 </File>
 
-Read more about creating a GitHub Personal Access token [here](https://docs.github.com/en/enterprise-server@3.1/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token). You can also use a GitHub  App installation [token](https://docs.github.com/en/rest/reference/apps#create-an-installation-access-token-for-an-app).
+Read more about creating a GitHub Personal Access token [here](https://docs.github.com/en/enterprise-server@3.1/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token). You can also use a GitHub App installation [token](https://docs.github.com/en/rest/reference/apps#create-an-installation-access-token-for-an-app).
 
 In GitLab:
 

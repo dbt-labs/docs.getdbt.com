@@ -38,7 +38,7 @@ Your services can connect to <Constant name="dbt" /> over private connectivity u
 | Redshift Serverless | ✅ | ✅ | [View](/docs/platform/secure/private-connectivity/aws/aws-redshift) |
 | Amazon Athena w/ AWS Glue | ❌ | ✅ | |
 | AWS CodeCommit | ❌ | ✅ | |
-| Teradata VantageCloud | ✅ | ✅ | |
+| Teradata VantageCloud | ✅ | ✅ | [View](/docs/platform/secure/private-connectivity/aws/aws-teradata) |
 
 ---
 
