@@ -88,7 +88,7 @@ Job command failures can mean different things for different commands. Some comm
 - **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command executes resources in the DAG-specified order. If any upstream resource fails, all downstream resources are skipped, and the command exits with an error code of `1`. In <Constant name="core" /> v1.12+, you can set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to still attempt to run when that model fails.
 
 - **Selector failures**
-   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs/failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
+   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`--fail-fast`](/reference/global-configs/failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
 
    - If a selector doesn't match any nodes, it's not considered a failure.
 
