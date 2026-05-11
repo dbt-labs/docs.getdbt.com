@@ -125,7 +125,7 @@ Subject: New AWS Self-hosted PrivateLink Request
 - Custom DNS (if HTTPS/TLS):
   - DNS record:
 - Service Region (for example, us-east-1, eu-west-2):
-- dbt AWS environment (US, EMEA, AU):
+- dbt AWS environment (US, EMEA, AU, JP):
 ```
 </Expandable>
 

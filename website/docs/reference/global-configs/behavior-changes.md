@@ -57,9 +57,9 @@ By contrast, behavior change migrations happen slowly, over the course of months
 
 These flags _must_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, which means they should be defined in version control and modified through pull or merge requests, with the same testing and peer review.
 
-The following example displays the current flags and their current default values in the latest <Constant name="dbt" /> and <Constant name="core" /> versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you've opted out of, until you either:
+The following example displays the current flags and their current default values in the latest <Constant name="dbt" /> and <Constant name="core" /> versions. To opt out of a specific behavior change, set the values of the flag to `false` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you've opted out of, until you either:
 
-- Resolve the issue (by switching the flag to `True`)
+- Resolve the issue (by switching the flag to `true`)
 - Silence the warnings using the `warn_error_options.silence` flag
 
 Here's an example of the available behavior change flags with their default values:
@@ -136,14 +136,14 @@ This table outlines which version of the dbt adapter contains the behavior chang
 
 When the <Constant name="dbt" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 
-- Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
-- Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
+- Migrate your project to support the new behavior, and then set the flag to `true` to stop seeing the warnings.
+- Set the flag to `false`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 
 ### Failures in on-run-start hooks
 
-The flag is `False` by default.
+The flag is `false` by default.
 
-Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
+Set the `skip_nodes_if_on_run_start_fails` flag to `true` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
 
 ### Source definitions for state:modified
 
@@ -153,17 +153,17 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected r
 
 :::
 
-The flag is `False` by default.
+The flag is `false` by default.
 
-Set `state_modified_compare_more_unrendered_values` to `True` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
+Set `state_modified_compare_more_unrendered_values` to `true` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
 
-Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
+Setting the flag to `true` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
 
 ###  Package override for built-in materialization 
 
-Setting the `require_explicit_package_overrides_for_builtin_materializations` flag to `True` prevents this automatic override. 
+Setting the `require_explicit_package_overrides_for_builtin_materializations` flag to `true` prevents this automatic override. 
 
-We have deprecated the behavior where installed packages could override built-in materializations without your explicit opt-in. When this flag is set to `True`, a materialization defined in a package that matches the name of a built-in materialization will no longer be included in the search and resolution order. Unlike macros, materializations don't use the `search_order` defined in the project `dispatch` config.
+We have deprecated the behavior where installed packages could override built-in materializations without your explicit opt-in. When this flag is set to `true`, a materialization defined in a package that matches the name of a built-in materialization will no longer be included in the search and resolution order. Unlike macros, materializations don't use the `search_order` defined in the project `dispatch` config.
 
 The built-in materializations are `'view'`, `'table'`, `'incremental'`, `'materialized_view'` for models as well as `'test'`, `'unit'`, `'snapshot'`, `'seed'`, and `'clone'`.
 
@@ -185,7 +185,7 @@ In the future, we may extend the project-level [`dispatch` configuration](/refer
 
 The `require_resource_names_without_spaces` flag enforces using resource names without spaces. 
 
-The names of dbt resources (for example, models) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
+The names of dbt resources (for example, models) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `true`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
 
 <File name='models/model name with spaces.sql'>
 
@@ -197,13 +197,13 @@ The names of dbt resources (for example, models) should contain letters, numbers
 
 ### No spaces in source and semantic model names
 
-The `require_source_and_semantic_model_names_without_spaces` flag is set to `False` by default.
+The `require_source_and_semantic_model_names_without_spaces` flag is set to `false` by default.
 
-Source names and semantic model names should contain letters, numbers, and underscores &mdash; _not_ spaces. dbt raises the [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the `require_source_and_semantic_model_names_without_spaces` flag is set to `True`, dbt raises an error.
+Source names and semantic model names should contain letters, numbers, and underscores &mdash; _not_ spaces. dbt raises the [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the `require_source_and_semantic_model_names_without_spaces` flag is set to `true`, dbt raises an error.
 
 ### Project hooks with source freshness
 
-Set the `source_freshness_run_project_hooks` flag to include/exclude "project hooks" ([`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end)) in the `dbt source freshness` command execution. The flag is set to `True` (include) by default. 
+Set the `source_freshness_run_project_hooks` flag to include/exclude "project hooks" ([`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end)) in the `dbt source freshness` command execution. The flag is set to `true` (include) by default. 
 
 If you have a specific project [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end) hooks that should not run before/after `source freshness` command, you can add a conditional check to those hooks:
 
@@ -217,26 +217,26 @@ on-run-start:
 
 
 ### MetricFlow time spine YAML
-The `require_yaml_configuration_for_mf_time_spines` flag is set to `False` by default.
+The `require_yaml_configuration_for_mf_time_spines` flag is set to `false` by default.
 
 In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
 
-When the flag is set to `True`, dbt will continue to support the SQL file configuration. When the flag is set to `False`, dbt will raise a deprecation warning if it detects a MetricFlow time spine configured in a config block in a SQL file. 
+When the flag is set to `true`, dbt will continue to support the SQL file configuration. When the flag is set to `false`, dbt will raise a deprecation warning if it detects a MetricFlow time spine configured in a config block in a SQL file. 
 
 The MetricFlow properties YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details.
 
 ### Custom microbatch strategy
-The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `False` by default and is only relevant if you already have a custom microbatch macro in your project.  If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
+The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `false` by default and is only relevant if you already have a custom microbatch macro in your project.  If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
 
-Set the flag is set to `True` if you have a custom microbatch macro set up in your project. When the flag is set to `True`, dbt will execute the custom microbatch strategy in batches. 
+Set the flag is set to `true` if you have a custom microbatch macro set up in your project. When the flag is set to `true`, dbt will execute the custom microbatch strategy in batches. 
 
-If you have a custom microbatch macro and the flag is left as `False`, dbt will issue a deprecation warning.
+If you have a custom microbatch macro and the flag is left as `false`, dbt will issue a deprecation warning.
 
-Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `True` to prevent unintended interactions with existing custom incremental strategies. But this is no longer necessary, as setting `DBT_EXPERMINENTAL_MICROBATCH` will no longer have an effect on runtime functionality.
+Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` to prevent unintended interactions with existing custom incremental strategies. But this is no longer necessary, as setting `DBT_EXPERMINENTAL_MICROBATCH` will no longer have an effect on runtime functionality.
 
 ### Cumulative metrics
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `True`.
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `true`.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 
@@ -262,7 +262,7 @@ https://docs.getdbt.com/reference/global-configs/behavior-changes
 
 ```
 
-If you set `require_nested_cumulative_type_params` to `True` and re-run `dbt parse` you will now receive an error like:
+If you set `require_nested_cumulative_type_params` to `true` and re-run `dbt parse` you will now receive an error like:
 
 ```bash
 
@@ -285,7 +285,7 @@ Once the metric is updated, it will work as expected:
 
 ### Null-safe equality (equals macro) {#null-safe-equality}
 
-The `enable_truthy_nulls_equals_macro` flag is `False` by default. Setting it to `True` in your `dbt_project.yml` enables null-safe equality in the dbt [equals](/reference/dbt-jinja-functions/cross-database-macros#equals) macro, which is used in incremental and snapshot materializations.
+The `enable_truthy_nulls_equals_macro` flag is `false` by default. Setting it to `true` in your `dbt_project.yml` enables null-safe equality in the dbt [equals](/reference/dbt-jinja-functions/cross-database-macros#equals) macro, which is used in incremental and snapshot materializations.
 
 By default, the `equals()` macro follows SQL's [three-valued logic (3VL)](https://modern-sql.com/concept/three-valued-logic), so `NULL = NULL` evaluates to `UNKNOWN` rather than `TRUE`.
 
@@ -304,7 +304,7 @@ flags:
 
 ### Macro argument validation
 
-dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `False`, which means that dbt won't validate the names or types of documented macro arguments.
+dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `false`, which means that dbt won't validate the names or types of documented macro arguments.
 
 In the past, dbt didn't enforce a standard vocabulary for the [`type`](/reference/resource-properties/arguments#type) field on macro arguments in YAML. Because of this, the `type` field was used for documentation only, and dbt didn't check that:
 - the argument names matched those in your macro
@@ -323,7 +323,7 @@ macros:
 ```
 </File>
 
-When you set the `validate_macro_args` flag to `True`, dbt will:
+When you set the `validate_macro_args` flag to `true`, dbt will:
 - Validate macro arguments during project parsing.
 - Check that all argument names in your YAML match those in the macro definition.
 - Raise warnings if the names or types don't match.
@@ -345,15 +345,15 @@ Macro argument validation runs during project parsing, not during macro executio
 
 ### Warn-error handler for all warnings
 
-By default, the `require_all_warnings_handled_by_warn_error` flag is set to `False`.
+By default, the `require_all_warnings_handled_by_warn_error` flag is set to `false`.
 
-When you set `require_all_warnings_handled_by_warn_error` to `True`, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `False`, only some warnings are processed by the handler while others may bypass it.
+When you set `require_all_warnings_handled_by_warn_error` to `true`, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `false`, only some warnings are processed by the handler while others may bypass it.
 
 Note that enabling this for projects that use `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may cause builds to fail on warnings that were previously ignored. We recommend enabling it gradually.
 
 <Expandable alt_header="Recommended steps to enable the flag">
 
-We recommend the following rollout plan when setting the `require_all_warnings_handled_by_warn_error` flag to `True`:
+We recommend the following rollout plan when setting the `require_all_warnings_handled_by_warn_error` flag to `true`:
 
 1. Run a full build without partial parsing to surface parse-time warnings, and confirm it finishes successfully:
 
@@ -376,9 +376,9 @@ We recommend the following rollout plan when setting the `require_all_warnings_h
 
 dbt supports parsing key-value arguments that are inputs to generic tests when specified under the `arguments` property. In the past, dbt didn't support a way to clearly disambiguate between properties that were inputs to generic tests and framework configurations, and only accepted arguments as top-level properties.
 
-In **Latest**, the `require_generic_test_arguments_property` flag is set to `True` by default. In dbt Core versions prior to 1.10.8, the default value is `False`. Using the `arguments` property in test definitions is optional in either case.
+In **Latest**, the `require_generic_test_arguments_property` flag is set to `true` by default. In dbt Core versions prior to 1.10.8, the default value is `false`. Using the `arguments` property in test definitions is optional in either case.
 
-If you do use `arguments` while the flag is `False`, dbt will recognize it but raise the `ArgumentsPropertyInGenericTestDeprecation` warning. This warning lets you know that the flag will eventually default to `True` across all releases and will be parsed as keyword arguments to the data test.
+If you do use `arguments` while the flag is `false`, dbt will recognize it but raise the `ArgumentsPropertyInGenericTestDeprecation` warning. This warning lets you know that the flag will eventually default to `true` across all releases and will be parsed as keyword arguments to the data test.
 
 Here's an example using the new `arguments` property:
 
@@ -413,7 +413,7 @@ models:
 
 </File>
 
-When you set the `require_generic_test_arguments_property` flag to `True`, dbt will:
+When you set the `require_generic_test_arguments_property` flag to `true`, dbt will:
 - Parse any key-value pairs under `arguments` in generic tests as inputs to the generic test macro.
 - Raise a `MissingArgumentsPropertyInGenericTestDeprecation` warning if additional non-config arguments are specified outside of the `arguments` property.
 
@@ -421,7 +421,7 @@ When you set the `require_generic_test_arguments_property` flag to `True`, dbt w
 
 The `require_unique_project_resource_names` flag enforces uniqueness of resource names within the same package. dbt resources such as models, seeds, snapshots, analyses, tests, and functions share a common namespace. When two resources in the same package have the same name, dbt must decide which one a `ref()` or `source()` refers to. Previously, this check was not always enforced, which meant duplicate names could result in dbt referencing the wrong resource.
 
-The `require_unique_project_resource_names` flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error.
+The `require_unique_project_resource_names` flag is set to `false` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `true`, dbt raises a `DuplicateResourceNameError` error.
 
 For example, if your project contains a model and a seed named `sales`:
 
@@ -436,7 +436,7 @@ And a model contains:
 select * from {{ ref('sales') }}
 ```
 
-When the flag is set to `True`, dbt will raise:
+When the flag is set to `true`, dbt will raise:
 
 ```
 DuplicateResourceNameError: Found resources with the same name 'sales' in package 'project': 'model.project.sales' and 'seed.project.sales'. Please update one of the resources to have a unique name.
@@ -449,7 +449,7 @@ When this error is raised, you should rename one of the resources, or refactor t
 
 The `require_ref_searches_node_package_before_root` flag controls the search order when dbt resolves `ref()` calls defined within a package. 
 
-The flag is set to `False` by default in **Latest** and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. 
+The flag is set to `false` by default in **Latest** and <Constant name="core" /> v1.11. When dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. 
 
 For example, the following model in the package `my_package` is imported by the project `my_project`:
 
@@ -464,22 +464,22 @@ By default, dbt searches for `model_upstream` in this order:
 1. First in `my_project` (root project)
 2. Then in `my_package` (where the model is defined)
 
-When you set the `require_ref_searches_node_package_before_root` flag to `True`, dbt searches the package where the model is defined _before_ searching the root project.
+When you set the `require_ref_searches_node_package_before_root` flag to `true`, dbt searches the package where the model is defined _before_ searching the root project.
 
 Using the same example, dbt searches for `model_upstream` in this order:
 1. First in `my_package` (where the model is defined)
 2. Then in `my_project` (root project)
 
-The current default behavior is considered a [bug in dbt-core](https://github.com/dbt-labs/dbt-core/issues/11351) because it can _potentially_ lead to unexpected dependency cycles. However, because this is long-standing behavior, changing the default requires setting `require_ref_searches_node_package_before_root` to `True` to avoid breaking existing projects.
+The current default behavior is considered a [bug in dbt-core](https://github.com/dbt-labs/dbt-core/issues/11351) because it can _potentially_ lead to unexpected dependency cycles. However, because this is long-standing behavior, changing the default requires setting `require_ref_searches_node_package_before_root` to `true` to avoid breaking existing projects.
 
 
 ### Valid schema from `generate_schema_name`
 
 The `generate_schema_name` macro determines the schema where dbt creates models and other resources. Returning a `null` value from this macro can result in invalid schema names and lead to unpredictable behavior during dbt runs.
 
-The `require_valid_schema_from_generate_schema_name` behavior flag is set to `False` by default. When `False`, dbt raises the [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value.
+The `require_valid_schema_from_generate_schema_name` behavior flag is set to `false` by default. When `false`, dbt raises the [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value.
 
-When `require_valid_schema_from_generate_schema_name` is set to `True`, dbt enforces stricter validation and raises a parsing error.
+When `require_valid_schema_from_generate_schema_name` is set to `true`, dbt enforces stricter validation and raises a parsing error.
 
 For example, if your project has a custom `generate_schema_name` macro that returns `null`:
 
@@ -497,7 +497,7 @@ For example, if your project has a custom `generate_schema_name` macro that retu
 
 </File>
 
-With the default behavior, dbt raises a deprecation warning. When `require_valid_schema_from_generate_schema_name` is set to `True`, dbt raises an error.
+With the default behavior, dbt raises a deprecation warning. When `require_valid_schema_from_generate_schema_name` is set to `true`, dbt raises an error.
 
 To resolve this, update your macro to return a valid schema name (`target.schema` in this example):
 
@@ -517,7 +517,7 @@ To resolve this, update your macro to return a valid schema name (`target.schema
 
 ### `sql_header` in data tests
 
-Set the `require_sql_header_in_test_configs` flag to `True` to enable support for the [`sql_header`](/reference/resource-configs/sql_header) config for generic data tests. When enabled, you can set `sql_header` in the `config` of a generic data test at the model or column level in your `properties.yml` file. You can use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
+Set the `require_sql_header_in_test_configs` flag to `true` to enable support for the [`sql_header`](/reference/resource-configs/sql_header) config for generic data tests. When enabled, you can set `sql_header` in the `config` of a generic data test at the model or column level in your `properties.yml` file. You can use `sql_header` to define SQL that should run before the test executes (for example, to create temporary functions, to set session parameters, or to declare variables required by the test query). dbt runs this SQL before executing the test.
 
 For example:
 
