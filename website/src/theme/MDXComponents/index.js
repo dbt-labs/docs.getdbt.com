@@ -37,7 +37,6 @@ import Callout from '@site/src/components/callout'
 import BlogPostCard from '@site/src/components/blogPostCard';
 import DocCarousel from '@site/src/components/docCarousel';
 import PostCarousel from '@site/src/components/postCarousel';
-import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
 import ProductCard from '@site/src/components/productCard';
@@ -88,7 +87,6 @@ const MDXComponents = {
   YoutubeVideo: YoutubeVideo,
   VersionBlock: VersionBlock,
   Term: Term,
-  dbtEditor: dbtEditor,
   Icon: Icon,
   Lifecycle: Lifecycle,
   ProductCard: ProductCard,

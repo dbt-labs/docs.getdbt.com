@@ -28,7 +28,7 @@ Fusion is an entirely new piece of software, written in a different programming 
 
 Fusion contains mixture of source-available, proprietary, and open source code. That means:
 - dbt Labs publishes much of the source code in the [`dbt-fusion` repository](https://github.com/dbt-labs/dbt-fusion), where you can read the code and participate in community discussions.
-- Some Fusion capabilities are exclusively available for paying customers of the cloud-based [dbt platform](https://www.getdbt.com/signup). Refer to [supported features](/docs/fusion/supported-features#paid-features) for more information.
+- The local <Constant name="fusion"/> CLI and dbt VS Code extension are free to use. Some advanced capabilities, like state-aware orchestration and Advanced CI, are exclusively available for [<Constant name="dbt_platform"/>](https://www.getdbt.com/pricing) customers on specific plans. Refer to [supported features](/docs/fusion/supported-features#paid-features) for more information.
 
 Read more about the licensing for the dbt Fusion engine [here](http://www.getdbt.com/licenses-faq).
 
@@ -57,12 +57,12 @@ For more information, refer to [Using threads](/docs/running-a-dbt-project/using
 ### How to use Fusion
  
 You can:
-- Select Fusion from the [dropdown/toggle in the dbt platform](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine) <Lifecycle status="private_preview" />
+- Select Fusion from the [dropdown/toggle in the dbt platform](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine)
 - [Install the dbt extension for VSCode](/docs/install-dbt-extension) <Lifecycle status="preview" />
 - [Install the Fusion CLI](/docs/local/install-dbt?version=2#get-started) <Lifecycle status="preview" />
 
 
-Go straight to the [Quickstart](/guides/fusion) to _feel the Fusion_ as fast as possible.
+Go straight to the [Quickstart](/guides/fusion) to _feel the Fusion_ as fast as possible. If you're a <Constant name="dbt_platform"/> user and want to keep your local environment in sync with the platform, see the [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide.
 
 ## What's next?
 

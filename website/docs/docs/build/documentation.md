@@ -79,12 +79,12 @@ Generate documentation for your project by following these steps:
 2. Ensure you've created the models with `dbt run` or `dbt build` to view the documentation for all columns, not just those described in your project.
 3. Run the `dbt docs serve` [command](/reference/commands/cmd-docs#dbt-docs-serve) if you're developing locally to use these `.json` files to populate a local website.
 
-dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after it's generated:
+dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after they're generated:
 
-- [**dbt Docs**:](/docs/build/view-documentation#dbt-docs) A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core" /> or <Constant name="dbt" /> Developer plans.
+- [**dbt Docs**](/docs/build/view-documentation#dbt-docs): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core" /> or <Constant name="dbt" /> Developer plans.
 - [**<Constant name="catalog" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
 
-See [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
+Refer to [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
 
 ## Using docs blocks
 
@@ -104,7 +104,7 @@ To declare a docs block, use the Jinja `docs` tag. The name of a docs block can'
 
 This table contains clickstream events from the marketing website.
 
-The events in this table are recorded by [Snowplow](http://github.com/snowplow/snowplow) and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:
+The events in this table are recorded by [Snowplow](https://github.com/snowplow/snowplow) and piped into the warehouse on an hourly basis. The following pages of the marketing site are tracked:
  - /
  - /about
  - /team
@@ -119,9 +119,17 @@ In this example, a docs block named `table_events` is defined with some descript
 
 ### Placement
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock lastVersion="1.11">
 
 Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+Place docs blocks in `.md` files. You can also use Jinja-style extensions (`.md.j2`, `.md.jinja`, `.md.jinja2`), however these require setting [`allow_jinja_file_extensions: true`](/reference/global-configs/behavior-changes#jinja-file-extensions) in your `dbt_project.yml`. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+
+By default, dbt searches in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)). You can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 
 </VersionBlock>
 
@@ -150,7 +158,10 @@ In the resulting documentation, `'{{ doc("table_events") }}'` will be expanded t
 
 
 ## Setting a custom overview
-*Currently available for dbt Docs only.*
+
+:::info Availability
+This feature is available only in [dbt Docs](/docs/build/documentation), the generated documentation site for your dbt project.
+:::
 
 The "overview" shown in the dbt Docs website can be overridden by supplying your own docs block called `__overview__`. 
 
@@ -174,7 +185,6 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 </File>
 
 ### Custom project-level overviews
-*Currently available for dbt Docs only.*
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. 

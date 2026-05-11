@@ -90,7 +90,7 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     </Tabs>
 
-    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in next step (Step 2). 
+    **Note**: You can specify configs in a config block in the SQL file or in the corresponding properties YAML file in step 2. 
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file. For example:
 
@@ -150,9 +150,14 @@ Follow these steps to define UDFs in dbt:
       - [Snowflake](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-introduction): `3.10`, `3.11`, `3.12`, and `3.13`
       - [BigQuery](https://cloud.google.com/bigquery/docs/user-defined-functions-python): `3.11`
     - [`entry_point`](/reference/resource-configs/entry-point) &mdash; Specify the Python function to be called.
+    <br></br>
+    You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. List package names, such as `numpy` and `pandas`, and optionally pin versions, such as `pandas==1.5.0`. The warehouse installs these packages when it creates the UDF, so your UDF can use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before you can use them.
 
+    :::info Beta feature
+    The `packages` config is a beta feature in <Constant name="core" /> v1.12.
+    :::
     
-    For example:
+    The following example shows a Python UDF with the required configs (`runtime_version`, `entry_point`), the optional `packages` config, and other common configs:
 
     <File name='functions/schema.yml'>
 
@@ -163,6 +168,9 @@ Follow these steps to define UDFs in dbt:
           config:
             runtime_version: "3.11"   # required
             entry_point: main         # required
+            packages:                 # optional, Python UDFs only
+              - numpy
+              - pandas==1.5.0
             schema: udf_schema
             database: udf_db
             volatility: deterministic  
@@ -276,6 +284,7 @@ Follow these steps to define UDFs in dbt:
       LANGUAGE PYTHON
       RUNTIME_VERSION = '3.11'
       HANDLER = 'main'
+      PACKAGES = ('numpy', 'pandas==1.5.0')
     AS $$
     import re
     def main(a_string):
@@ -289,7 +298,11 @@ Follow these steps to define UDFs in dbt:
     CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
     RETURNS INT64
     LANGUAGE python
-    OPTIONS(runtime_version="python-3.11", entry_point="main")
+    OPTIONS(
+      runtime_version = "python-3.11",
+      entry_point = "main",
+      packages = ['numpy', 'pandas==1.5.0']
+    )
     AS r'''
       import re
       def main(a_string):
@@ -313,7 +326,7 @@ Follow these steps to define UDFs in dbt:
     ```
     </File>
 
-When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the UDF definition from the state manifest (for example, a production environment) if the function is not selected or not yet built in your target environment. This allows models that depend on UDFs to run successfully in [continuous integration](/docs/deploy/continuous-integration) and development workflows.
+    When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the existing UDF in the deferred environment (for example, production) if the function is not selected or not yet built in your target environment. This requires a state manifest specified using `--state` or an equivalent environment variable (such as `DBT_ENGINE_STATE`), which dbt uses to determine where to defer. This allows models that depend on UDFs to run successfully in [continuous integration](/docs/deploy/continuous-integration) and development workflows. For more information, refer to [Configure state selection](/reference/node-selection/configure-state).
 
 5. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
@@ -330,7 +343,7 @@ When using [`--defer`](/reference/node-selection/defer), `function()` resolves t
     In your DAG, a UDF node is created from the SQL/Python and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
    <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" width="85%" title="The DAG for the UDF node" />
 
-After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example) or its configurations, your changes will be applied to the UDF in the warehouse next time you `build`.
+After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you `build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
 
 
 ## Using UDFs in unit tests
