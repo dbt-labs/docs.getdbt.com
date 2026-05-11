@@ -81,7 +81,7 @@ In the following example image, the first four run steps are successful. However
 
 Job command failures can mean different things for different commands. Some common reasons why a job command may fail:
 
-- **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them. By default, if a model fails, its downstream models are also skipped. In <Constant name="core" /> v1.12+, you can set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to run despite the failure.
+- **Failure at `dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them. By default, if a model fails, its downstream models are also skipped. In <Constant name="core" /> v1.12+, you can set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to run despite the failure.
 
 - **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](/reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs/warnings), only an error stops the next step.
 
