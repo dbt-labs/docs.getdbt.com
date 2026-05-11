@@ -28,7 +28,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ### `on_error` model config <Lifecycle status="beta" />
 
-You can configure whether downstream models run when an upstream model fails using the [`on_error`](/reference/resource-configs/on_error) config. Set `on_error: continue` on a model to allow its downstream models to run even when it fails. By default (`skip_children`), dbt skips all downstream models on failure.
+You can configure whether downstream models run when an upstream model fails using the [`on_error`](/reference/resource-configs/on_error) config. Set `on_error: continue` on a model to allow its downstream models to still attempt to run even when it fails. By default (`skip_children`), dbt skips all downstream models on failure. Note that [`--fail-fast`](/reference/global-configs/failing-fast) takes precedence &mdash; runs with `--fail-fast` stop at the first failure, even if a model is configured with `on_error: continue`.
 
 ### New Semantic Layer YAML spec
 

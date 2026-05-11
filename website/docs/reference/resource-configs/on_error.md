@@ -95,6 +95,8 @@ select 1 as id
 
 When `on_error` is set to `continue` on a model that fails, dbt runs its downstream models rather than skipping them. The failed model itself still appears as an error in the run results.
 
+The [`--fail-fast`](/reference/global-configs/failing-fast) flag takes precedence over `on_error: continue`. When `--fail-fast` is set, dbt stops at the first failure and skips all remaining models, regardless of their `on_error` configuration. 
+
 ## Behavior with multiple upstream models
 
 When a model has multiple upstream models, `skip_children` takes precedence over `continue`. If any failed upstream model uses `skip_children`, the downstream model is skipped &mdash; even if other failed upstream models use `continue`.
