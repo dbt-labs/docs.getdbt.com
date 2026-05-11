@@ -47,7 +47,7 @@ dbt prints status lines to the terminal as the operation runs:
 
 The operation is named `inline_query` in logs. If the operation fails, the status line shows `ERROR` instead of `OK`.
 
-### When to use `--sql` vs. a macro
+### When to use `--sql` instead of a macro
 
 `--sql` is useful for:
 
