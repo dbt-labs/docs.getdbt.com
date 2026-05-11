@@ -156,7 +156,7 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
-- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise) — manages notifications across all projects without full Account Admin access
+- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise). This permission manages notifications across all projects without full Account Admin access
 
 IT licenses can't configure Slack job notifications. Only **Account Admins** can connect or disconnect the Slack workspace.
 
