@@ -68,6 +68,15 @@ The audit log supports various events for different objects in <Constant name="d
 | SSO Login Failed           | login.sso.failed               | User login via SSO failed                              |
 | SSO Login Succeeded        | login.sso.succeeded            | User successfully logged in via SSO                    |
 
+### OAuth clients
+
+These events cover the lifecycle of OAuth clients registered in **Account settings** &rarr; **Integrations** &rarr; **App integrations** (see [Connect apps with OAuth](/docs/cloud/manage-access/connect-apps-oauth)). Actions a user performs through an OAuth-connected client &mdash; for example, creating a job &mdash; are logged under the relevant event (such as `job_definition.added`) with the user as the actor.
+
+| Event Name              | Event Type                | Description                                                                 |
+| ----------------------- | ------------------------- | --------------------------------------------------------------------------- |
+| OAuth Client Registered | oauth_client.registered   | An OAuth client was registered, either manually by an admin or dynamically through [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591). |
+| OAuth Client Authorized | oauth_client.authorized   | A user completed the OAuth consent flow and authorized a client to access dbt on their behalf. |
+
 ### Environment
 
 | Event Name          | Event Type          | Description                          |
