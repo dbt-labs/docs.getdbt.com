@@ -34,7 +34,7 @@ Dynamically registered apps appear in the **Dynamically registered** table, whic
 | Created on | When the client was first registered |
 | Last used on | When the client last made an authenticated request |
 
-HOW TO REMOVE A DYNAMICALLY REGISTERED CLIENT??
+<!-- add info on how to disable dynamic client registration when it's live -->
 
 ### Manual registration
 
