@@ -1,4 +1,6 @@
-Use your **Access URL** from **Account settings** in <Constant name="dbt_platform"/>. Build the remote MCP endpoint as:
+You can copy your full **MCP URL** from **Account settings** → **Integrations** → **App integrations** in <Constant name="dbt_platform"/>, and paste it directly into your AI tool.
+
+To build it yourself, use your **Access URL** from **Account settings** in <Constant name="dbt_platform"/>. The remote MCP endpoint is:
 
 `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp`
 
