@@ -154,9 +154,11 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
 - The integration only supports _public_ channels in the Slack workspace. 
 
-After an account admin links the Slack app for the account, any licensed user in the account can configure Slack job notifications so long as they are assigned to the **Account Admin**, **Owner**, or **Member** default [groups](/docs/platform/manage-access/about-user-access#groups), or assigned to a group with the **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions). Notification Manager allows managing notifications across all projects on the account without requiring full Account Admin access. IT licenses don't have access to configure Slack job notifications.
+Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
+- The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
+- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise) — manages notifications across all projects without full Account Admin access
 
-Only users with the **Account Admin** permission set can connect or disconnect the Slack workspace integration.
+IT licenses can't configure Slack job notifications. Only **Account Admins** can connect or disconnect the Slack workspace.
 
 ### Set up the Slack integration
 
