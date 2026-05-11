@@ -50,6 +50,6 @@ Manually registered clients appear in the **Manually registered** section.
 
 ## Use with remote MCP
 
-When you connect an MCP client (like Claude or Cursor) to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. Clients that support dynamic registration (like Claude) complete this automatically — you'll see them appear in the **Dynamically registered** table after first use.
+When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. Clients that support dynamic registration (like Claude) complete this automatically — you'll see them appear in the **Dynamically registered** table after first use.
 
 For more information on remote MCP OAuth setup, see [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
