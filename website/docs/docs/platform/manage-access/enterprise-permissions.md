@@ -197,7 +197,7 @@ Notable features:
 - Notification Manager is an account-level set.
 - Can read and write [job notifications](/docs/deploy/job-notifications), including Slack channels, account-level email recipients, and external email addresses.
 - Read-only access to members (so the recipient picker can populate) and to OAuth configurations (to check the Slack integration status).
-- Cannot link or unlink the Slack or Microsoft Teams integrations &mdash; those actions remain Account Admin&ndash;only.
+- Cannot link or unlink the Slack or Microsoft Teams integrations &mdash; those actions remain Account Admin only.
 - No other access to <Constant name="dbt" /> features.
 
 </Expandable>
