@@ -56,8 +56,10 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 ### How it works
 
 1. In your MCP client, add the remote MCP server using `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp` (see [MCP URL](#mcp-url)).
-2. When prompted, complete sign-in in the browser and approve access.
-3. Return to your MCP client; subsequent requests use the OAuth session according to your client’s behavior.
+2. When prompted, complete sign-in in the browser and approve the requested scopes on the consent screen.
+3. Return to your MCP client; subsequent requests use the OAuth session according to your client's behavior.
+
+For details on scopes, sessions and refresh tokens, revoking access, and audit logging, see [Connect apps with OAuth](/docs/cloud/manage-access/connect-apps-oauth).
 
 ### Limitations
 

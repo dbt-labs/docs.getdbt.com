@@ -9,7 +9,7 @@ sidebar_label: "Connect apps with OAuth"
 
 The **App integrations** section in <Constant name="dbt_platform" /> lets admins manage OAuth 2.0 client registrations &mdash; a standard that lets external apps connect to dbt securely without sharing API tokens. Use it for:
 
-- AI tools that connect to the remote dbt MCP server (such as Claude, ChatGPT, or Gemini).
+- AI tools that connect to the remote dbt MCP server.
 - Your own API integrations built against <Constant name="dbt_platform" /> APIs, when you want end users to sign in with their dbt identity instead of distributing tokens.
 - Third-party apps and IDE extensions that support OAuth for connecting to dbt.
 
@@ -22,12 +22,12 @@ To access this section, go to **Account settings** → **Integrations** → **Ap
 ## Registration methods
 
 There are two ways you can register an app as an OAuth client:
-- [Dynamic registration](#dynamic-registration): Apps that support [Dynamic Client Registration (RFC 7591)](https://datatracker.ietf.org/doc/html/rfc7591) self-register automatically when a user connects them to dbt. No admin action is required. Most popular AI tools (Claude, ChatGPT) use dynamic registration.
-- [Manual registration](#manual-registration): For apps that don't support dynamic registration (for example, Salesforce agent or custom-built integrations), an admin can manually register an OAuth client.
+- [Dynamic registration](#dynamic-registration): Apps that support [Dynamic Client Registration (RFC 7591)](https://datatracker.ietf.org/doc/html/rfc7591) self-register automatically when a user connects them to dbt. No admin action is required.
+- [Manual registration](#manual-registration): For apps that don't support dynamic registration (for example, custom-built integrations), an admin can manually register an OAuth client.
 
 ### Dynamic registration
 
-Apps that support [Dynamic Client Registration (RFC 7591)](https://datatracker.ietf.org/doc/html/rfc7591) self-register automatically when a user connects them to dbt. No admin action is required. The most popular AI tools (Claude, ChatGPT) use dynamic registration.
+Apps that support [Dynamic Client Registration (RFC 7591)](https://datatracker.ietf.org/doc/html/rfc7591) self-register automatically when a user connects them to dbt. No admin action is required.
 
 Dynamically registered apps appear in the **Dynamically registered** table, which shows:
 
@@ -54,8 +54,55 @@ Manually registered clients appear in the **Manually registered** section.
 
 ## Use with remote MCP
 
-When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. Clients that support dynamic registration (like Claude) complete this automatically — you'll see them appear in the **Dynamically registered** table after first use.
+When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. Clients that support dynamic registration complete this automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
 
 The **App integrations** section will also display the full **MCP URL** for your account so you can copy it directly into your AI tool.
 
 For more information on remote MCP OAuth setup, see [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
+
+## Scopes and consent
+
+The first time a user connects an MCP client to dbt, dbt shows a consent screen listing the scopes the client is requesting. Scopes act as a **filter on the user's existing permissions** &mdash; they don't grant any new access. A user can only consent to scopes for permissions they already have in dbt.
+
+From the consent screen, the user can:
+
+- Approve or deny individual scopes.
+- Choose whether to grant access to **all projects** or only **selected projects**.
+- Toggle **Keep session alive** to control whether dbt automatically refreshes their session (see [Sessions and refresh tokens](#sessions-and-refresh-tokens)).
+
+<Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" title="OAuth consent screen showing requested scopes and project access" />
+
+Scopes available today include:
+
+- **View account information** &mdash; read-only access to account details such as project and environment settings.
+- **Query dbt Semantic Layer** &mdash; query project data using <Constant name="semantic_layer" /> metrics.
+- **View project metadata from dbt Catalog** &mdash; access model descriptions, column lineage, and other project metadata.
+- **Develop dbt models** &mdash; use development tooling, including the CLI, to make updates to dbt models.
+- **Run jobs** &mdash; view, edit, and re-trigger dbt jobs.
+
+## Sessions and refresh tokens
+
+OAuth sessions use **refresh tokens with a 7-day inactivity window**. As long as the client requests a new access token at least once every 7 days, the session stays alive. After 7 days of inactivity, the refresh token expires and the user has to sign in again.
+
+Users can opt out of automatic refresh at consent time by turning off **Keep session alive**.
+
+## Revoke access
+
+To revoke an OAuth grant, the user disconnects dbt from their MCP client &mdash; for example, by removing the dbt connector in the client's settings.
+
+<Lightbox src="/img/docs/dbt-cloud/oauth-disconnect-client.png" title="MCP client connectors page with the option to remove the dbt connector" />
+
+A dedicated revoke UI in dbt account settings is planned for a future release.
+
+## Audit logging
+
+OAuth-related events appear in the dbt [Audit log](/docs/platform/manage-access/audit-log) (**Account settings** &rarr; **Audit log**), so admins can see which clients were registered, which users authorized them, and what those users did through OAuth.
+
+Audited OAuth events include:
+
+- **Registering a client** (manual or dynamic).
+- **Authorizing a client** (a user completing the consent flow).
+
+Actions a user performs through an OAuth-connected client &mdash; for example, creating a job or running a model &mdash; appear in the audit log with the **user as the actor**, the same as actions taken through the dbt UI or with a personal access token.
+
+<Lightbox src="/img/docs/dbt-cloud/oauth-audit-log.png" title="Audit log entry for an action taken through an OAuth-connected client" />
