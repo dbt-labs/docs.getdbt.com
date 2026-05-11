@@ -17,6 +17,10 @@ Each <Constant name="dbt" /> user with a [Developer, Read-only, or IT license](
 
 PATs inherit the permissions of the user that created them. For example, if a developer-licensed user with Project Admin role access to specific projects creates a PAT, the token will get the Project Admin role with access to the same projects as the user. These tokens are also account-specific, so if a user has access to more than one <Constant name="dbt" /> account with the same email address, they need to create a unique PAT for each one of these accounts. 
 
+:::info Read-only users: Semantic Layer querying <Lifecycle status="private_beta" />
+Read-only seat users can use a PAT to query the dbt <Constant name="semantic_layer" /> once they've configured personal warehouse credentials. This is in private beta as of May 2026 &mdash; see [Set up the Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and contact your account manager to join.
+:::
+
 ## Create a personal access token
 
 Creating an account-scoped PAT requires only a few steps.
