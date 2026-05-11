@@ -27,13 +27,13 @@ Use this table to choose the right token type before you start:
 
 | If you need... | Use... |
 | --- | --- |
-| Read-only user access (private beta) | **OAuth ("login with dbt")** — see note below |
+| Read-only user access (private beta) | **OAuth ("login with dbt")**. Read the note below this table. |
 | `execute_sql` tool | **Personal Access Token (PAT)**. Service tokens _do not_ work for `execute_sql` |
 | Shared or team setup | **Service token** |
 | CI or automation | **Service token** |
 
 :::info Read-only users: "login with dbt" OAuth for Remote MCP <Lifecycle status="private_beta" />
-Read-only seat users can connect to the Remote MCP server using the "login with dbt" OAuth flow. Unlike PATs, OAuth tokens are short-lived and auto-refresh automatically, reducing credential management overhead. This flow is in private beta as of May 2026 — contact your account manager to join. Once enrolled, you can authenticate using the OAuth flow instead of manually configuring an `Authorization` header.
+Read-only seat users can connect to the Remote MCP server using the "login with dbt" OAuth flow. Unlike PATs, OAuth tokens are short-lived and auto-refresh automatically, reducing credential management overhead. This is in private beta as of May 2026. Contact your account manager to join. Once enrolled, you can authenticate using the OAuth flow instead of manually configuring an `Authorization` header.
 :::
 
 :::warning `execute_sql` requires a PAT

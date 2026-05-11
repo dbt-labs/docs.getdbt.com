@@ -5,4 +5,4 @@
    - **Note:** <Constant name="semantic_layer" /> supports querying in Deployment environments; development querying is coming soon.
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts powering the <Constant name="semantic_layer" />.  
 - Note that the <Constant name="semantic_layer" /> doesn't support using [Single sign-on (SSO)](/docs/platform/manage-access/sso-overview) for [production credentials](/docs/dbt-apis/service-tokens#permissions-for-service-account-tokens), though SSO is supported for development user accounts.
-- **Read-only seat users <Lifecycle status="private_beta" />:** Read-only users can set up personal warehouse credentials to query the Semantic Layer using a PAT. This capability is in private beta as of May 2026 — contact your account manager to join.
+- **Read-only seat users <Lifecycle status="private_beta" />:** Read-only users can set up personal warehouse credentials to query the Semantic Layer using a PAT. This capability is in private beta as of May 2026. Contact your account manager to join.
