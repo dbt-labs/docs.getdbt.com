@@ -14,7 +14,7 @@ These instructions are for integrating dbt MCP and VS Code. Before starting, ens
 - Installed VS Code with the latest updates
 - (For local MCP with CLI) Configured your dbt project paths
 
-For remote MCP with OAuth (Enterprise and Enterprise+, private beta), see [Connect apps with OAuth](/docs/cloud/manage-access/connect-apps-oauth) and [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
+For remote MCP with OAuth (Enterprise and Enterprise+, private beta), see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) and [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
 
 ## Set up with local dbt MCP server
 

@@ -70,7 +70,7 @@ The audit log supports various events for different objects in <Constant name="d
 
 ### OAuth clients
 
-These events cover the lifecycle of OAuth clients registered in **Account settings** &rarr; **Integrations** &rarr; **App integrations** (see [Connect apps with OAuth](/docs/cloud/manage-access/connect-apps-oauth)). Actions a user performs through an OAuth-connected client &mdash; for example, creating a job &mdash; are logged under the relevant event (such as `job_definition.added`) with the user as the actor.
+These events cover the lifecycle of OAuth clients registered in **Account settings** -> **Integrations** -> **App integrations** (check out [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth)). Actions a user performs through an OAuth-connected client &mdash; for example, creating a job &mdash; are logged under the relevant event (such as `job_definition.added`) with the user as the actor.
 
 | Event Name              | Event Type                | Description                                                                 |
 | ----------------------- | ------------------------- | --------------------------------------------------------------------------- |
