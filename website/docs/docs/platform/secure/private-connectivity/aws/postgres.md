@@ -84,7 +84,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt platform account URL:
 - VPC Endpoint Service Name:
 - Postgres server AWS Region (for example, us-east-1, eu-west-2):
-- dbt AWS multi-tenant environment (US, EMEA, AU):
+- dbt AWS multi-tenant environment (US, EMEA, AU, JP):
 ```
 
 </Expandable>
