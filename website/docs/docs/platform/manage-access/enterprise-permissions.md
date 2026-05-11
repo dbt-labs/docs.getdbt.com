@@ -202,7 +202,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Notification Manager">
 
-The Notification Manager permission set allows users to configure and manage Slack and email job notifications without requiring full Account Admin access. This is ideal for team leads or operations users who need to manage who receives job alerts.
+The Notification Manager permission set allows users to configure and manage Slack and email [job notifications](/docs/deploy/job-notifications) without requiring full Account Admin access. This is ideal for team leads or operations users who need to manage who receives job alerts.
 
 Notable features:
 - Notification Manager is an account-level set.
