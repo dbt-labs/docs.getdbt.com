@@ -201,7 +201,7 @@ The flag is `true` by default. dbt skips all selected resources from running if 
 
 The flag is `false` by default.
 
-Set `state_modified_compare_more_unrendered_values` to `true` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`). Setting the flag to `True` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
+Set `state_modified_compare_more_unrendered_values` to `true` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`). Setting the flag to `true` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
 
 </VersionBlock>
 
@@ -272,9 +272,9 @@ on-run-start:
 
 <VersionBlock lastVersion="1.11">
 
-The `require_yaml_configuration_for_mf_time_spines` flag is set to `False` by default.
+The `require_yaml_configuration_for_mf_time_spines` flag is set to `false` by default.
 
-In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file. When the flag is `False`, dbt raises a deprecation warning if it detects a MetricFlow time spine configured in a SQL config block. 
+In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file. When the flag is `false`, dbt raises a deprecation warning if it detects a MetricFlow time spine configured in a SQL config block. 
 
 Set the flag to `true` to require YAML configuration.
 
@@ -284,7 +284,7 @@ Set the flag to `true` to require YAML configuration.
 
 The `require_yaml_configuration_for_mf_time_spines` flag is set to `true` by default. dbt requires MetricFlow time spine configuration to use YAML. 
 
-Set the flag to `False` to allow legacy SQL file configuration &mdash; dbt raises a deprecation warning if it detects a time spine configured in a SQL config block.
+Set the flag to `false` to allow legacy SQL file configuration &mdash; dbt raises a deprecation warning if it detects a time spine configured in a SQL config block.
 
 </VersionBlock>
 
@@ -294,9 +294,9 @@ The MetricFlow properties YAML file should have the `time_spine:` field. Refer t
 
 <VersionBlock lastVersion="1.11">
 
-The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `False` by default. This flag is only relevant if you already have a custom microbatch macro in your project. If you don't have a custom microbatch macro, you don't need to set this flag; dbt handles microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
+The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `false` by default. This flag is only relevant if you already have a custom microbatch macro in your project. If you don't have a custom microbatch macro, you don't need to set this flag; dbt handles microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
 
-Set the flag to `true` if you have a custom microbatch macro set up in your project. When set to `true`, dbt executes the custom microbatch strategy in batches. If you have a custom microbatch macro and the flag is left as `False`, dbt raises a deprecation warning.
+Set the flag to `true` if you have a custom microbatch macro set up in your project. When set to `true`, dbt executes the custom microbatch strategy in batches. If you have a custom microbatch macro and the flag is left as `false`, dbt raises a deprecation warning.
 
 </VersionBlock>
 
@@ -304,7 +304,7 @@ Set the flag to `true` if you have a custom microbatch macro set up in your proj
 
 The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `true` by default. dbt executes custom microbatch strategies in batches. This flag is only relevant if your project has a custom microbatch macro; if it doesn't, dbt handles microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies). 
 
-Set the flag to `False` to disable batched execution for custom microbatch strategies.
+Set the flag to `false` to disable batched execution for custom microbatch strategies.
 
 </VersionBlock>
 
@@ -316,13 +316,13 @@ Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment va
 
 <VersionBlock lastVersion="1.11">
 
-The `require_nested_cumulative_type_params` flag is `False` by default. dbt warns users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set `require_nested_cumulative_type_params` to `True`.
+The `require_nested_cumulative_type_params` flag is `false` by default. dbt warns users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set `require_nested_cumulative_type_params` to `true`.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
 
-The `require_nested_cumulative_type_params` flag is `true` by default. dbt raises an error if cumulative metrics are improperly nested. To revert to a warning, set `require_nested_cumulative_type_params` to `False`.
+The `require_nested_cumulative_type_params` flag is `true` by default. dbt raises an error if cumulative metrics are improperly nested. To revert to a warning, set `require_nested_cumulative_type_params` to `false`.
 
 </VersionBlock>
 
@@ -394,13 +394,13 @@ flags:
 
 <VersionBlock lastVersion="1.11">
 
-dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `False`, which means that dbt won't validate the names or types of documented macro arguments.
+dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `false`, which means that dbt won't validate the names or types of documented macro arguments.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.12">
 
-The `validate_macro_args` flag is set to `True` by default. dbt validates macro argument names and types during project parsing.
+The `validate_macro_args` flag is set to `true` by default. dbt validates macro argument names and types during project parsing.
 
 </VersionBlock>
 
@@ -445,9 +445,9 @@ Macro argument validation runs during project parsing, not during macro executio
 
 <VersionBlock lastVersion="1.11">
 
-The `require_all_warnings_handled_by_warn_error` flag is set to `False` by default. Only some warnings are processed by the `--warn-error` / `--warn-error-options` handler, while others may bypass it. 
+The `require_all_warnings_handled_by_warn_error` flag is set to `false` by default. Only some warnings are processed by the `--warn-error` / `--warn-error-options` handler, while others may bypass it. 
 
-Set the flag to `True` to route all warnings through the handler for consistent behavior when promoting warnings to errors or silencing them.
+Set the flag to `true` to route all warnings through the handler for consistent behavior when promoting warnings to errors or silencing them.
 
 Note that enabling this for projects that use `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may cause builds to fail on warnings that were previously ignored. We recommend enabling it gradually.
 
