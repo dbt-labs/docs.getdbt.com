@@ -9,10 +9,10 @@ The following are the current [behavior change flags](/docs/reference/global-con
 | Flag                          | `dbt-databricks`: Intro | `dbt-databricks`: Maturity | Status |
 | ----------------------------- | ----------------------- | -------------------------- | ------ |
 | [`use_info_schema_for_columns`](#use-information-schema-for-columns) | 1.9.0                   | N/A                        | **Removed in 1.11.0** |
-| [`use_user_folder_for_python`](#use-users-folder-for-python-model-notebooks)  | 1.9.0                   | 1.11.0                     | Default changed to `True` |
+| [`use_user_folder_for_python`](#use-users-folder-for-python-model-notebooks)  | 1.9.0                   | 1.11.0                     | Default changed to `true` |
 | [`use_materialization_v2`](#use-restructured-materializations)      | 1.10.0                  | TBD                        | Active |
 | [`use_managed_iceberg`](#use-managed-iceberg)  | 1.11.0  |  1.12.0                                                     | Active |
-| [`use_replace_on_for_insert_overwrite`](#use-replace-on-for-insert_overwrite-strategy)   | 1.11.0   | 1.12.0                    | Active, defaults to `True` |
+| [`use_replace_on_for_insert_overwrite`](#use-replace-on-for-insert_overwrite-strategy)   | 1.11.0   | 1.12.0                    | Active, defaults to `true` |
 
 ## Use information schema for columns
 
@@ -26,9 +26,9 @@ If you're still using this flag in your project configuration, you can safely re
 
 ### Legacy documentation
 _This applies to dbt-databricks versions v1.11 and older_
-The `use_info_schema_for_columns` flag was `False` by default in versions 1.9 and 1.10.
+The `use_info_schema_for_columns` flag was `false` by default in versions 1.9 and 1.10.
 
-Setting this flag to `True` would use `information_schema` rather than `describe extended` to get column metadata for Unity Catalog tables. This setting helped avoid issues where `describe extended` truncates information when the type is a complex struct.
+Setting this flag to `true` would use `information_schema` rather than `describe extended` to get column metadata for Unity Catalog tables. This setting helped avoid issues where `describe extended` truncates information when the type is a complex struct.
 
 :::tip For complex types
 
@@ -41,18 +41,18 @@ The `variant` type might be a reasonable alternative in terms of performance, wh
 
 :::info Default changed in v1.11.0
 
-As of dbt-databricks v1.11.0, the `use_user_folder_for_python` flag defaults to **`True`**.
+As of dbt-databricks v1.11.0, the `use_user_folder_for_python` flag defaults to **`true`**.
 
 :::
 
 The `use_user_folder_for_python` flag controls where uploaded Python model notebooks are stored in Databricks:
 
-- **`True` (default in v1.11+)**: Notebooks are written to `/Users/{{current user}}/{{catalog}}/{{schema}}/`.
-- **`False` (default in v1.9-v1.10)**: Notebooks are written to `/Shared/dbt_python_models/{{schema}}/`.
+- **`true` (default in v1.11+)**: Notebooks are written to `/Users/{{current user}}/{{catalog}}/{{schema}}/`.
+- **`false` (default in v1.9-v1.10)**: Notebooks are written to `/Shared/dbt_python_models/{{schema}}/`.
 
 Databricks deprecated writing to the `Shared` folder as it doesn't align with governance best practices. Using user-specific folders provides better isolation, access control, and aligns with Unity Catalog security models.
 
-To preserve the legacy behavior for backward compatibility, you can explicitly set this flag to `False` in your `dbt_project.yml`:
+To preserve the legacy behavior for backward compatibility, you can explicitly set this flag to `false` in your `dbt_project.yml`:
 
 ```yaml
 flags:
@@ -61,16 +61,16 @@ flags:
 
 ## Use restructured materializations
 
-The `use_materialization_v2` flag is `False` by default and guards significant rewrites of the core materializations in `dbt-databricks` while they are still in an experimental stage.
+The `use_materialization_v2` flag is `false` by default and guards significant rewrites of the core materializations in `dbt-databricks` while they are still in an experimental stage.
 
-When set to `True`, `dbt-databricks` uses the updated logic for all model types (views, tables, incremental, seeds). It also enables additional, optional config options for more fine-tuned control:
+When set to `true`, `dbt-databricks` uses the updated logic for all model types (views, tables, incremental, seeds). It also enables additional, optional config options for more fine-tuned control:
 * `view_update_via_alter` &mdash; When enabled, this config attempts to update the view in place using alter view, instead of using create or replace to replace it.
 * `use_safer_relation_operation` &mdash; When enabled (and if `view_update_via_alter` isn't set), this config makes dbt model updates more safe by staging relations and using rename operations to ensure the live version of the table or view is not disrupted by failures.
 
 These configs aren't required to receive the core benefits of this flag &mdash; like better performance and column/constraint functionality &mdash; but they are gated behind the flag because they introduce more significant changes to how materializations behave.
 
-In v1.11.0, this flag will stay set to `False` by default. Based on feedback about the new materialization’s lack of atomicity (all-or-nothing updates), we won’t enable it automatically. We’ll explore other ways to achieve the same benefits without losing atomicity.
-Given feedback about lack of atomicity of the new materialization approach, we will not be flipping this flag to `True`.
+In v1.11.0, this flag will stay set to `false` by default. Based on feedback about the new materialization’s lack of atomicity (all-or-nothing updates), we won’t enable it automatically. We’ll explore other ways to achieve the same benefits without losing atomicity.
+Given feedback about lack of atomicity of the new materialization approach, we will not be flipping this flag to `true`.
 Instead, we will be investigating new ways to provide the same benefits while maintaining atomicity.
 
 ### Changes to the Seed materialization
@@ -79,7 +79,7 @@ The seeds materialization should have the smallest difference between the old an
 
 ### Changes to the View materialization
 
-With the `use_materialization_v2` flag set to `True`, there are two model configuration options that can customize how we handle the view materialization when we detect an existing relation at the target location.
+With the `use_materialization_v2` flag set to `true`, there are two model configuration options that can customize how we handle the view materialization when we detect an existing relation at the target location.
 
 * `view_update_via_alter` &mdash; Updates the view in place using alter view, instead of using create or replace to replace it. This allows continuity of history for the view, keeps the metadata, and helps with Unity Catalog compatibility. Here's an example of how to configure this:
 
@@ -150,7 +150,7 @@ The benefits though are improvements in performance, safety, and unblocking feat
 
 :::
 
-When `use_materialization_v2` is set to `True`, all materialization paths are updated. The key change is that table creation is separated from inserting rows into the table. This separation greatly improves performance for setting table comments, since adding comments at create time is faster than using separate `alter table` statements. It also resolves compatibility issues in Databricks, where creating and inserting in one step prevents setting comments.
+When `use_materialization_v2` is set to `true`, all materialization paths are updated. The key change is that table creation is separated from inserting rows into the table. This separation greatly improves performance for setting table comments, since adding comments at create time is faster than using separate `alter table` statements. It also resolves compatibility issues in Databricks, where creating and inserting in one step prevents setting comments.
 
 Additionally, this change makes it possible to support other column features &mdash; like column-level masks &mdash; that aren’t compatible with inserting data during creation. While these features aren’t included in version 1.10.0, they can now be added in future releases.
 
@@ -185,7 +185,7 @@ We’ve also added a new config: `incremental_apply_config_changes`.
 
 This config lets you control whether dbt should apply changes to things like `tags`, `tblproperties`, and comments during incremental runs. Many users wanted the capability to configure table metadata in Databricks &mdash; like AI-generated comments &mdash; without dbt overwriting them. Previously, dbt-databricks always applied detected changes during incremental runs.
 
-With the V2 materialization, you can now set `incremental_apply_config_changes` to `False` to stop that behavior. (It defaults to `True` to match the previous behavior.)
+With the V2 materialization, you can now set `incremental_apply_config_changes` to `false` to stop that behavior. (It defaults to `true` to match the previous behavior.)
 
 The following example shows how to configure this:
 
@@ -205,19 +205,19 @@ models:
 
 ## Use managed Iceberg
 
-When you set `table_format` to `iceberg`, the `use_managed_iceberg` flag controls how the table is created. By default, this flag is set to `False` and dbt creates a [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability) table. When set to `True`, dbt creates a [managed Iceberg](https://docs.databricks.com/aws/en/tables/managed) table.
+When you set `table_format` to `iceberg`, the `use_managed_iceberg` flag controls how the table is created. By default, this flag is set to `false` and dbt creates a [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability) table. When set to `true`, dbt creates a [managed Iceberg](https://docs.databricks.com/aws/en/tables/managed) table.
 
 ## Use `replace on` for `insert_overwrite` strategy
 
-The `use_replace_on_for_insert_overwrite` flag controls which SQL syntax dbt generates for incremental models using the `insert_overwrite` strategy. This flag defaults to `True` by default and results in using the [`insert into ... replace on`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) syntax to perform dynamic partition/cluster overwrites, which is the same behavior as in cluster computes. When the flag is set to `False`, `insert_overwrite` will truncate the entire table when used with SQL warehouses. The flag is not relevant for cluster computes because the `insert_overwrite`'s behavior has always been dynamic partition/cluster overwrites in cluster computes.
+The `use_replace_on_for_insert_overwrite` flag controls which SQL syntax dbt generates for incremental models using the `insert_overwrite` strategy. This flag defaults to `true` by default and results in using the [`insert into ... replace on`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) syntax to perform dynamic partition/cluster overwrites, which is the same behavior as in cluster computes. When the flag is set to `false`, `insert_overwrite` will truncate the entire table when used with SQL warehouses. The flag is not relevant for cluster computes because the `insert_overwrite`'s behavior has always been dynamic partition/cluster overwrites in cluster computes.
 
 <SimpleTable>
 
 | Flag value | SQL generated | Description |
 |---|---|---|
-| `True` (default) | [`INSERT INTO ... REPLACE ON`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) | Uses the latest, recommended Databricks syntax to replace matching partitions.  |
-| `False` | `INSERT OVERWRITE` | Uses the older Spark syntax to overwrite partitions. Depends on Spark session settings.|  <br />
+| `true` (default) | [`INSERT INTO ... REPLACE ON`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-dml-insert-into#replace-on) | Uses the latest, recommended Databricks syntax to replace matching partitions.  |
+| `false` | `INSERT OVERWRITE` | Uses the older Spark syntax to overwrite partitions. Depends on Spark session settings.|  <br />
 </SimpleTable>
 
-If you previously relied on this behavior to get full table replacement without dropping existing metadata, that behavior continues to exist with the flag set to `True`, provided you do not use any partitions or liquid clustering clusters.
+If you previously relied on this behavior to get full table replacement without dropping existing metadata, that behavior continues to exist with the flag set to `true`, provided you do not use any partitions or liquid clustering clusters.
 These data layout optimizations only tend to have a significant effect for tables that are approximately 1 TB large or greater, at which point regular replacement of all of the data is probably not the best approach.
