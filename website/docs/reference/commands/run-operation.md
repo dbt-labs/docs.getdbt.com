@@ -38,6 +38,8 @@ The `--sql` flag for `dbt run-operation` is a beta feature in <Constant name="co
 
 Starting <Constant name="core" /> v1.12, you can use the `--sql` flag to run SQL or Jinja directly against your target database &mdash; no macro definition required. This means you can use dbt's full Jinja context (for example, `ref()`, `source()`, `var()`, and `target`) directly in your SQL string. When your SQL contains no Jinja, dbt skips manifest compilation entirely, making execution faster.
 
+You cannot combine the `--sql` flag with a macro name or `--args`.
+
 dbt prints status lines to the terminal as the operation runs:
 
 ```
