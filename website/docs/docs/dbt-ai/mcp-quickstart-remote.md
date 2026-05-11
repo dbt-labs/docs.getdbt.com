@@ -43,11 +43,11 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 
 ### 3. Choose authentication: OAuth or tokens
 
-**OAuth (remote)** &mdash; No API tokens in your client config when your MCP client supports OAuth for remote servers. See [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp) for the full flow, requirements, and limitations.
+- **OAuth (remote)**: No API tokens in your client config when your MCP client supports OAuth for remote servers. See [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp) for the full flow, requirements, and limitations.
 
-<MCPRemoteOauthBetaCallout />
+  <MCPRemoteOauthBetaCallout />
 
-**Token-based** &mdash; Use a personal access token (PAT) or service token in the `Authorization` header. Required for some clients, automation, shared setups, and tools that need explicit tokens (for example `execute_sql` with a PAT).
+- **Token-based**: Use a personal access token (PAT) or service token in the `Authorization` header. Required for some clients, automation, shared setups, and tools that need explicit tokens (for example `execute_sql` with a PAT).
 
 ### 4. Get your MCP URL and IDs
 
