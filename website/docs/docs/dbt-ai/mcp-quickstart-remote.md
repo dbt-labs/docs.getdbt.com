@@ -9,7 +9,9 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 
-The remote MCP server connects to <Constant name="dbt_platform"/> using HTTP. You don't need local installation &mdash; just configure your MCP client with a URL and either OAuth or token-based headers instead of running `uvx dbt-mcp`.
+# Use dbt MCP with no local install <Lifecycle status="self_service,managed,managed_plus"/>
+
+The remote MCP server connects to <Constant name="dbt_platform"/> using HTTP. No local installation is required &mdash; you configure your MCP client with a URL and headers instead of running `uvx dbt-mcp`.
 
 ## When to use remote MCP
 

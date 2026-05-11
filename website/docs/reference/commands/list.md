@@ -7,6 +7,10 @@ id: "list"
 
 The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](/reference/commands/run). `dbt list` is an alias for `dbt ls`. While `dbt ls` will read your [connection profile](/docs/local/profiles.yml) to resolve [`target`](/reference/dbt-jinja-functions/target)-specific logic, this command will not connect to your database or run any queries.
 
+<VersionBlock firstVersion="2.0">
+In <Constant name="dbt_platform" /> run logs when using <Constant name="fusion_engine" />, `dbt ls` and `dbt list` node results can appear as **No-op** when there is no final status. This replaces **Unknown** and indicates that dbt selected the node but did not run it.
+</VersionBlock>
+
 ### Usage
 ```
 dbt ls
@@ -19,7 +23,7 @@ dbt ls
      [--output-keys KEY_NAME [KEY_NAME]]
 ```
 
-See [resource selection syntax](/reference/node-selection/syntax) for more information on how to select resources in dbt
+Refer to [resource selection syntax](/reference/node-selection/syntax) for more information on how to select resources in dbt
 
 **Arguments**:
 - `--resource-type`: This flag restricts the "resource types" returned by dbt in the `dbt ls` command. By default, all resource types are included in the results of `dbt ls` except for the analysis type.

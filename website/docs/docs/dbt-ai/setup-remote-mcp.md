@@ -5,9 +5,7 @@ description: "Learn how to set up the remote dbt-mcp server"
 id: "setup-remote-mcp"
 ---
 
-import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
-import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
-import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
+# Set up the remote MCP server <Lifecycle status="self_service,managed,managed_plus"/>
 
 The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
 

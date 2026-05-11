@@ -42,7 +42,7 @@ The agent comes with the following out of the box â€” no configuration needed! ð
 - **Engines:** Works with <Constant name="fusion_engine" /> and <Constant name="core" />.
 - **Conversations:** In the conversation list, open **More actions** menu (three dots) of the conversation you want to delete, then click **Delete** to remove one thread. Deleting the open thread clears the panel.
 - **Sessions:** Refreshing the same browser tab keeps your active session. A new tab, or returning after closing the tab, starts empty. 
-- **Chat history:** On single-tenant deployments, chat history isn't supported yet &mdash; save anything important before closing.
+- **Chat history:** Retained for 90 days only. Chat history isn't supported yet on single-tenant deployments, so save anything important before closing.
 - **Plan mode:** Not supported yet. The agent doesn't show a separate plan before applying changes, however you can use the **Ask for approval** mode to approve each file.
 - **New chat:** Click **Start new Copilot chat** (top right of the Copilot panel) to begin a new session.
 
@@ -124,6 +124,10 @@ You can select one of the following options:
 | **No** | Denies the request. The agent will not run the command. |
 
 </SimpleTable>
+
+After you run a command, <Constant name="copilot" /> adds an icon and **Run by Copilot** tooltip to the <Constant name="studio_ide" /> [**Commands** tab](/docs/platform/studio-ide/ide-user-interface#console-section) results. This helps you distinguish agent-run commands from manually run commands in the run results and logs.
+
+<Lightbox src="/img/docs/dbt-platform/dev-agent-cmd-icon.png" width="95%" title="Commands run by the Developer agent appear in the Studio IDE Commands tab with a Copilot icon and 'Run by Copilot' tooltip." />
 
 </Expandable>
 
