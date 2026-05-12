@@ -20,7 +20,7 @@ functions:
     returns:
       data_type: <string>
     overloads:
-      - defined_in: <string>       # required, name of the SQL file
+      - defined_in: <string>       # required, name of the SQL or Python file
         arguments:                 # optional
           - name: <arg name>       # required if arguments is specified
             data_type: <string>    # required if arguments is specified, warehouse-specific
@@ -41,11 +41,9 @@ functions:
 The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-The `overloads` property lets you define multiple argument signatures for the same SQL UDF. The database dispatches to the correct version based on the argument types passed at call time.
+The `overloads` property lets you define multiple argument signatures for the same UDF. The database dispatches to the correct version based on the argument types passed at call time. `overloads` is supported for SQL UDFs in Snowflake and Postgres and Python UDFs in Snowflake.
 
-Each overload references a separate SQL file that contains its function body, and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built, retried, and selected together.
-
-`overloads` is only supported for SQL UDFs in Snowflake and Postgres. Python UDFs do not support overloads.
+Each overload references a separate SQL or Python file that contains its function body, and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built, retried, and selected together.
 
 ## Behavior
 
@@ -53,7 +51,7 @@ dbt runs all overloads regardless of individual failures, so you get a complete 
 
 - If any overload fails, dbt marks the function node as `PARTIAL_SUCCESS` and skips downstream nodes.
 - [`dbt retry`](/reference/commands/retry) skips overloads that already succeeded and only re-runs the previously failed ones.
-- [`state:modified`](/reference/node-selection/methods#the-state-method) detects changes to any overload's SQL body, arguments, or return type and marks the root function node as modified.
+- [`state:modified`](/reference/node-selection/methods#the-state-method) detects changes to any overload's function body, arguments, or return type and marks the root function node as modified.
 
 ## Properties
 
@@ -61,9 +59,9 @@ Each entry in the `overloads` list supports the following properties.
 
 ### defined_in
 
-The name of the SQL file that contains the overload's function body. The file must exist in the `functions/` directory. For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql`.
+The name of the file (without extension) that contains the overload's function body. The file must exist in the `functions/` directory. For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql` for SQL UDFs or `functions/null_if_empty_numeric.py` for Python UDFs.
 
-Each overload must reference a unique SQL file. The root function's SQL file and all `defined_in` values must be distinct.
+Each overload must reference a unique file. The root function's file and all `defined_in` values must be distinct.
 
 ### arguments
 
@@ -74,6 +72,9 @@ The argument list for the overload. Follows the same structure as [function argu
 The return type for the overload. Follows the same structure as [returns](/reference/resource-properties/returns). If omitted, the overload inherits the return type of the root function.
 
 ## Example
+
+<Tabs>
+<TabItem value="SQL">
 
 <File name='functions/schema.yml'>
 
@@ -113,6 +114,56 @@ CASE WHEN val = 0 THEN NULL ELSE val END
 ```
 
 </File>
+
+</TabItem>
+<TabItem value="Python">
+
+<File name='functions/schema.yml'>
+
+```yml
+functions:
+  - name: null_if_empty
+    config:
+      runtime_version: "3.11"
+      entry_point: main
+    arguments:
+      - name: val
+        data_type: varchar
+    returns:
+      data_type: varchar
+    overloads:
+      - defined_in: null_if_empty_numeric
+        arguments:
+          - name: val
+            data_type: numeric
+        returns:
+          data_type: numeric
+```
+
+</File>
+
+Create a separate Python file for each overload body. In this example, the base function handles empty strings, and the overload handles numeric values:
+
+<File name='functions/null_if_empty.py'>
+
+```python
+def main(val):
+    return None if val == '' else val
+```
+
+</File>
+
+<File name='functions/null_if_empty_numeric.py'>
+
+```python
+def main(val):
+    return None if val == 0 else val
+```
+
+</File>
+
+</TabItem>
+</Tabs>
 
 ## Related documentation
 

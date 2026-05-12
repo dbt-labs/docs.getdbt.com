@@ -34,7 +34,7 @@ functions:
     [returns](/reference/resource-properties/returns): # required
       data_type: <string> # required, warehouse-specific
       description: <markdown_string> # optional
-    [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs only (Snowflake and Postgres), available in v1.12+
+    [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs (Snowflake and Postgres) and Python UDFs (Snowflake only), available in v1.12+
       - defined_in: <string> # required, name of the SQL file containing this overload's body
         arguments: # optional
           - name: <string> # required if arguments is specified

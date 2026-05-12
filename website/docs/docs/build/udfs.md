@@ -94,7 +94,7 @@ Follow these steps to define UDFs in dbt:
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
-    **Optional**: For SQL UDFs in Snowflake and Postgres, you can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
+    **Optional**: You can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). `overloads` is supported for SQL UDFs in Snowflake and Postgres, and for Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
 
     <Tabs>
     <TabItem value="SQL">
@@ -116,7 +116,7 @@ Follow these steps to define UDFs in dbt:
             default_value: "'1'"    # optional, available in Snowflake and Postgres
         returns:                    # required
           data_type: integer        # required
-        overloads:                  # optional, available in 1.12+
+        overloads:                  # optional, available in Snowflake and Postgres only from 1.12+
           - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.sql
             arguments:
               - name: a_num
@@ -201,7 +201,25 @@ Follow these steps to define UDFs in dbt:
               default_value: "'1'"     # optional, available in Snowflake and Postgres
           returns:                     # required
             data_type: integer         # required
+          overloads:                   # optional, available in Snowflake from 1.12+
+            - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.py
+              arguments:
+                - name: a_num
+                  data_type: numeric
+              returns:                 # optional, inherits from root function if omitted
+                data_type: integer
     ```
+    </File>
+
+    When using `overloads`, you need to create a separate Python file for each overload body:
+
+    <File name='functions/is_positive_int_numeric.py'>
+
+    ```python
+    def main(a_num):
+        return 1 if a_num > 0 else 0
+    ```
+
     </File>
     </TabItem>
     </Tabs>
@@ -339,6 +357,20 @@ Follow these steps to define UDFs in dbt:
       return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
     $$;
     ```
+
+    ```sql
+    -- Overload (is_positive_int_numeric.py)
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_num NUMERIC)
+      RETURNS INTEGER
+      LANGUAGE PYTHON
+      RUNTIME_VERSION = '3.11'
+      HANDLER = 'main'
+      PACKAGES = ('numpy', 'pandas==1.5.0')
+    AS $$
+    def main(a_num):
+      return 1 if a_num > 0 else 0
+    $$;
+    ```
     </TabItem>
 
     <TabItem value="BigQuery">
@@ -438,7 +470,7 @@ For more information about selecting UDFs, see the examples in [Node selector me
 - Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported.
 - Python UDFs are supported in Snowflake and BigQuery only (when using <Constant name="core" /> or <Constant name="fusion" />). Other warehouses aren't yet supported for Python UDFs.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
-- The `overloads` property is only supported for SQL UDFs in Snowflake and Postgres.
+- The `overloads` property is supported for SQL UDFs in Snowflake and Postgres, and for Python UDFs in Snowflake.
 
 ## Related FAQs
 
