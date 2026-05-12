@@ -63,14 +63,161 @@ Depending on your auth method, you may also need:
 
 ### 5. Configure your MCP client
 
-**OAuth:** Configure your client with the MCP URL from the previous step and follow your client’s OAuth flow (browser sign-in). Your MCP client must support OAuth for HTTP-based MCP servers. See [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+Configure your MCP client with the MCP URL and headers from the previous step.
 
-**Token-based:** In your MCP client config, set the server `url` to `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp` and add headers:
+<Tabs groupId="auth-method">
+<TabItem value="oauth" label="OAuth">
+
+Configure your client with the MCP URL from the previous step and follow your client's OAuth flow (browser sign-in). Your MCP client must support OAuth for HTTP-based MCP servers. For the full flow, scopes, and limitations, see [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+
+<Tabs groupId="client">
+<TabItem value="claude" label="Claude Code">
+
+Add this to `.mcp.json` at your project root:
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="cursor" label="Cursor">
+
+Add this to `.cursor/mcp.json` (or use the Cursor deeplink in [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor#set-up-with-remote-dbt-mcp-server)):
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="vscode" label="VS Code">
+
+Add this to `mcp.json` (run **MCP: Open Workspace Folder MCP Configuration** from the command palette). VS Code uses the `servers` key, not `mcpServers`:
+
+```json
+{
+  "servers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="token" label="Token-based">
+
+Set the server `url` to `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` and add the required headers:
 
 - **Required:** `Authorization` (value `Token YOUR_TOKEN` or `Bearer YOUR_TOKEN`), `x-dbt-prod-environment-id`
 - **For `execute_sql` or <Constant name="fusion" /> tools:** Also add `x-dbt-dev-environment-id` and `x-dbt-user-id`
 - Use numeric IDs in headers, not full URLs copied from your browser.
 
-For the complete list of headers, Cursor and other client examples, and optional headers, see [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp). For local MCP, configuration uses environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+<Tabs groupId="client">
+<TabItem value="claude" label="Claude Code">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="cursor" label="Cursor">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="vscode" label="VS Code">
+
+VS Code uses the `servers` key, not `mcpServers`:
+
+```json
+{
+  "servers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="gemini" label="Gemini">
+
+Gemini uses the `httpUrl` key instead of `url`:
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "httpUrl": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+- For the complete list of headers, Cursor and other client examples, and optional headers, see [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp). 
+- For local MCP, configuration uses environment variables; check out the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for more information.
 
 Once you have configured your MCP client, you can test your setup by asking your AI assistant a data-related question (for example, _"What models are in my dbt project?"_ or _"What metrics are defined in my Semantic Layer?"_). If dbt MCP is working, the response will use your dbt metadata.

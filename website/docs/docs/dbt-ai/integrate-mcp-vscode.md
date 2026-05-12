@@ -6,15 +6,16 @@ id: "integrate-mcp-vscode"
 ---
 
 import MCPExample from '/snippets/_mcp-config-files.md';
+import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
+import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
+import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 
 [Microsoft Visual Studio Code (VS Code)](https://code.visualstudio.com/mcp) is a powerful and popular integrated development environment (IDE).
 
-These instructions are for integrating dbt MCP and VS Code. Before starting, ensure you have:
-- Completed the [local MCP setup](/docs/dbt-ai/setup-local-mcp)
-- Installed VS Code with the latest updates
-- (For local MCP with CLI) Configured your dbt project paths
-
-For remote MCP with OAuth (Enterprise and Enterprise+, private beta), see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) and [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
+VS Code can connect to either the **local** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) or the **remote** dbt MCP server (HTTP, no install, consumption-focused). Before starting, make sure you have:
+- VS Code installed with the latest updates.
+- For local MCP: completed the [local MCP setup](/docs/dbt-ai/setup-local-mcp) and configured your dbt project paths.
+- For remote MCP: your **MCP URL** (or **Access URL**) from **Account settings** in <Constant name="dbt_platform" />.
 
 ## Set up with local dbt MCP server
 
@@ -188,6 +189,66 @@ To get started, in VS Code:
   <Lightbox src="/img/mcp/vscode_run_server_keywords_inline.png" width="60%" title="VS Code inline management" />
 
 Now, you can access the dbt MCP server in VS Code through interfaces like GitHub Copilot.
+
+## Set up with remote dbt MCP server
+
+The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `uvx` or local install needed. VS Code connects to it over HTTP from the same `mcp.json` you use for local servers.
+
+<MCPRemoteOauthBetaCallout />
+
+<MCPRemoteServerUrl />
+
+1. Open the command palette (`Control/Command + Shift + P`) and select one of:
+    - **MCP: Open Workspace Folder MCP Configuration** &mdash; for this workspace.
+    - **MCP: Open User Configuration** &mdash; for your user.
+2. Add a `dbt` entry under the top-level `servers` key. (VS Code uses `servers`, not `mcpServers`.) Pick the tab that matches your auth method:
+
+    <Tabs>
+    <TabItem value="oauth" label="OAuth (remote)">
+
+    OAuth removes the need to paste tokens into your config. VS Code opens a browser for sign-in and consent the first time the server connects.
+
+    ```json
+    {
+      "servers": {
+        "dbt": {
+          "type": "http",
+          "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
+        }
+      }
+    }
+    ```
+
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). For the full OAuth flow, scopes, and limitations, see [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+
+    </TabItem>
+    <TabItem value="token" label="Token-based">
+
+    Use token-based auth when your client doesn't yet support OAuth for HTTP MCP servers, or when you need a shared/CI setup.
+
+    ```json
+    {
+      "servers": {
+        "dbt": {
+          "type": "http",
+          "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+          "headers": {
+            "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+            "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+            "x-dbt-user-id": "DBT_USER_ID",
+            "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
+          }
+        }
+      }
+    }
+    ```
+
+    <MCPRemoteTokenHeaders />
+
+    </TabItem>
+    </Tabs>
+
+3. Save the file. Use **MCP: List Servers** from the command palette to start the server, then ask Copilot Chat a data-related question to confirm the connection.
 
 ## Troubleshooting
 
