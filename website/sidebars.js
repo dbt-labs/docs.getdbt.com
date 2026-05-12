@@ -863,11 +863,24 @@ const sidebarSettings = {
       items: [
         "docs/platform/dbt-copilot-overview",
         "docs/platform/dbt-copilot",
-        "docs/platform/enable-dbt-copilot",
-        "docs/platform/use-dbt-copilot",
-        "docs/platform/copilot-styleguide",
-        "docs/platform/copilot-chat-in-studio",
-        "docs/platform/dbt-copilot-faqs",
+        {
+          type: "category",
+          label: "Get started",
+          collapsed: true,
+          items: [
+            "docs/platform/enable-dbt-copilot",
+            "docs/platform/use-dbt-copilot",
+            "docs/platform/copilot-chat-in-studio",
+          ],
+        },
+        {
+          type: "category",
+          label: "Configure",
+          collapsed: true,
+          items: [
+            "docs/platform/copilot-styleguide",
+          ],
+        },
         {
           type: "category",
           label: "dbt Agents",
@@ -877,6 +890,14 @@ const sidebarSettings = {
             "docs/dbt-ai/dbt-agents",
             "docs/dbt-ai/analyst-agent",
             "docs/dbt-ai/developer-agent",
+          ],
+        },
+        {
+          type: "category",
+          label: "Reference",
+          collapsed: true,
+          items: [
+            "docs/platform/dbt-copilot-faqs",
           ],
         },
       ],
