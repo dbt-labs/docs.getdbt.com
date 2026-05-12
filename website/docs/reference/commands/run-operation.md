@@ -16,8 +16,8 @@ $ dbt run-operation [macro] --args '{args}'
 $ dbt run-operation --sql '{sql}'
  
   [macro]               Specify the macro to invoke. dbt will call this macro
-                        with the supplied arguments and then exit. Optional
-                        when --sql is provided.
+                        with the supplied arguments and then exit. Required
+                        unless --sql is provided. Cannot be used with --sql.
  
   --args ARGS           Supply arguments to the macro. This dictionary will be
                         mapped to the keyword arguments defined in the
