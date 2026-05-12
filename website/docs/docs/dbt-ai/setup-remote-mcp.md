@@ -7,6 +7,8 @@ id: "setup-remote-mcp"
 
 # Set up the remote MCP server <Lifecycle status="self_service,managed,managed_plus"/>
 
+<Lightbox src="/img/mcp/remote-dbt-mcp.png" title="Remote dbt MCP server architecture" />
+
 The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
 
 ## When to use remote MCP
