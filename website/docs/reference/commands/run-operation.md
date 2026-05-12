@@ -56,7 +56,7 @@ The operation is named `inline_query` in logs. If the operation fails, the statu
 - Quick, one-off operations that don't warrant a macro file (for example, granting permissions or running a data fix)
 - Exploratory queries using dbt's Jinja context
 
-If you need to reuse the operation across environments or share it with your team, write a macro instead so it's version-controlled and testable.
+If you need to reuse the operation across environments or share it with your team, write a [macro](/docs/build/jinja-macros) instead so it's version-controlled and testable.
 
 ## Command line examples
 
