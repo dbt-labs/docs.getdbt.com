@@ -94,7 +94,7 @@ Follow these steps to define UDFs in dbt:
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
-    **Optional**: You can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). `overloads` is supported for SQL UDFs in Snowflake and Postgres, and for Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
+    **Optional**: You can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
 
     <Tabs>
     <TabItem value="SQL">
@@ -116,7 +116,7 @@ Follow these steps to define UDFs in dbt:
             default_value: "'1'"    # optional, available in Snowflake and Postgres
         returns:                    # required
           data_type: integer        # required
-        overloads:                  # optional, available in Snowflake and Postgres only from 1.12+
+        overloads:                  # optional, available in 1.12+, Snowflake and Postgres only
           - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.sql
             arguments:
               - name: a_num
@@ -201,7 +201,7 @@ Follow these steps to define UDFs in dbt:
               default_value: "'1'"     # optional, available in Snowflake and Postgres
           returns:                     # required
             data_type: integer         # required
-          overloads:                   # optional, available in Snowflake from 1.12+
+          overloads:                   # optional, available in 1.12+, Snowflake only
             - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.py
               arguments:
                 - name: a_num

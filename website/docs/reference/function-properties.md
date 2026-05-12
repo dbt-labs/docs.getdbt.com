@@ -34,8 +34,8 @@ functions:
     [returns](/reference/resource-properties/returns): # required
       data_type: <string> # required, warehouse-specific
       description: <markdown_string> # optional
-    [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs (Snowflake and Postgres) and Python UDFs (Snowflake only), available in v1.12+
-      - defined_in: <string> # required, name of the SQL file containing this overload's body
+    [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs (Snowflake and Postgres) and Python UDFs (Snowflake), available in v1.12+
+      - defined_in: <string> # required, name of the SQL or Python file containing this overload's body
         arguments: # optional
           - name: <string> # required if arguments is specified
             data_type: <string> # required if arguments is specified, warehouse-specific
@@ -56,7 +56,6 @@ functions:
 <File name='functions/schema.yml'>
 
 ```yml
-
 functions:
   - name: is_positive_int
     description: Determines if a string represents a positive (+) integer
@@ -72,5 +71,13 @@ functions:
     returns:
       data_type: boolean
       description: Returns true if the input string represents a positive integer, false otherwise
+    overloads:
+      - defined_in: is_positive_int_numeric
+        arguments:
+          - name: a_num
+            data_type: numeric
+            description: The number that I want to check if it's a positive integer
+        returns:
+          data_type: boolean
 ```
 </File>
