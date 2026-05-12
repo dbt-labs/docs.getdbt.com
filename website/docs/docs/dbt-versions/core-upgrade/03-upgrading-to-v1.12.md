@@ -5,13 +5,7 @@ description: New features and changes in dbt Core v1.12
 displayed_sidebar: "docs"
 ---
 
-# Upgrading to v1.12
-
-:::info Beta coming soon
-
-<Constant name="core" /> v1.12 is not yet available in beta. We will update this guide when it becomes available.
-
-:::
+# Upgrading to v1.12 <Lifecycle status="beta" />
 
 ## Resources
 - <Constant name="core" /> v1.12 changelog (coming soon)
