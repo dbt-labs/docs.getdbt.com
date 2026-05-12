@@ -192,19 +192,18 @@ Existing dbt-core event names fall into three categories:
 
 ### Warning codes in Fusion
 
-In <Constant name="fusion" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). You can use either form interchangeably in `warn_error_options`, and both will appear in any warning messages printed at runtime:
+In <Constant name="fusion" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). You should only use the name in the `warn_error_options`, even though both will appear in any warning messages printed at runtime:
 
 ```yaml
 flags:
   warn_error_options:
     error:
-      - NothingToDo    # by name
-      - 1074           # by code (JinjaLogWarning / exceptions.warn())
+      - NothingToDo   # by name
     silence:
       - FreshnessConfigProblem   # by name
 ```
 
-Any value that is not a recognized numeric code, supported legacy event name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup.
+Any value that is not a recognized numeric code, supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup.
 
 ### Supported legacy dbt-core event name aliases
 
