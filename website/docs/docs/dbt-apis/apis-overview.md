@@ -2,7 +2,7 @@
 title: "APIs Overview"
 description: "Learn how dbt accounts on the Enterprise-tier plans can query the dbt APIs."
 id: "overview"
-pagination_next: "docs/dbt-apis/user-tokens"
+pagination_next: "docs/dbt-apis/rate-limits"
 pagination_prev: null
 ---
 
@@ -17,6 +17,8 @@ Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Consta
 - The [<Constant name="semantic_layer" /> APIs](/docs/dbt-apis/sl-api-overview) provides multiple API options which allow you to query your metrics defined in the <Constant name="semantic_layer" />.
 
 If you want to learn more about webhooks, refer to [Webhooks for your jobs](/docs/deploy/webhooks).
+
+For request quotas and throttling behavior, refer to [API rate limits](/docs/dbt-apis/rate-limits).
 
 ## How to Access the APIs
 
