@@ -30,6 +30,10 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 You can now pass a SQL or Jinja string directly to `dbt run-operation` using the `--sql` flag, without defining a macro first. The statement runs through the full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. When your SQL contains no Jinja, dbt skips manifest compilation entirely for faster execution. For more information, refer to [About dbt run-operation](/reference/commands/run-operation).
 
+### `on_error` model config <Lifecycle status="beta" />
+
+You can configure whether downstream models run when an upstream model fails using the [`on_error`](/reference/resource-configs/on_error) config. Set `on_error: continue` on a model to allow its downstream models to still attempt to run even when it fails. By default (`skip_children`), dbt skips all downstream models on failure. Note that [`--fail-fast`](/reference/global-configs/failing-fast) takes precedence &mdash; runs with `--fail-fast` stop at the first failure, even if a model is configured with `on_error: continue`.
+
 ### New Semantic Layer YAML spec
 
 <Constant name="core" /> v1.12 adds support for the latest Semantic Layer YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.

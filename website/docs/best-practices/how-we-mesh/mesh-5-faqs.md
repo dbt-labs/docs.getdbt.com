@@ -284,7 +284,7 @@ Used in conjunction with dbt Mesh, <Constant name="catalog" /> becomes a powerfu
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="How does the dbt CLI relate to and work with dbt Mesh?">
+<DetailsToggle alt_header="How does the dbt platform CLI relate to and work with dbt Mesh?">
 
 The [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) allows users to develop and run dbt commands from their preferred development environments, like VS Code, Sublime Text, or terminal interfaces. This flexibility is particularly beneficial in a dbt Mesh setup, where managing multiple projects can be complex. Developers can work in their preferred tools while leveraging the centralized capabilities of <Constant name="dbt" />.
 

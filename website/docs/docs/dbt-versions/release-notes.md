@@ -29,6 +29,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 - **Enhancement:** The [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) now supports account creation. If you sign in with an existing dbt user that doesn't have an associated <Constant name="dbt_platform"/> account, the registration flow prompts you to create one instead of requiring a separate workflow.
 - **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (three dots → **Delete**). Deleting the open conversation clears the panel.
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
+- **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
 
 ## April 2026
 
