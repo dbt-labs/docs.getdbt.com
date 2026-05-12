@@ -202,14 +202,14 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Notification Manager">
 
-The Notification Manager permission set allows users to configure and manage Slack and email [job notifications](/docs/deploy/job-notifications) without requiring full Account Admin access. This is ideal for team leads or operations users who need to manage who receives job alerts.
+The Notification Manager permission set allows users to configure and manage Slack, Microsoft Teams, and email [job notifications](/docs/deploy/job-notifications) without requiring full Account Admin access. This is ideal for team leads or operations users who need to manage who receives job alerts.
 
 Notable features:
 - Notification Manager is an account-level set.
 - Can create, edit, and delete job notification rules for Slack and email recipients **across all projects** on the account.
 - Read-only access to members (to populate the recipient picker).
 - Read-only access to Slack OAuth configuration status (for viewing the Slack integration connection).
-- Connecting or disconnecting the Slack workspace integration remains Account Admin-only.
+- Connecting or disconnecting the Slack or Microsoft Teams integration remains Account Admin-only.
 - No access to other account settings, jobs, runs, or environments.
 
 </Expandable>

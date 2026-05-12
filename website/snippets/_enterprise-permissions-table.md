@@ -44,7 +44,7 @@ Key:
 | Webhooks                 | W             | -             | -                   | -                    | -                       | -                    | -               | -              | -      |
 </FilterableTable>
 
-<sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings. The **Notification Manager** permission set has dedicated write access to **Job notifications** (Slack and email) without requiring full Account settings access.
+<sup>*</sup>Permission sets with write (**W**) access to Account settings can modify account-level settings. The **Notification Manager** permission set has dedicated write access to **Job notifications** (Slack, Microsoft Teams, and email) without requiring full Account settings access.
 
 <sup>**</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
