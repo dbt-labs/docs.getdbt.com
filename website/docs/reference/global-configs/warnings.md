@@ -40,7 +40,7 @@ Warnings that should be treated as errors can be specified through the `error` p
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, warning codes are numeric (for example, `1600`, `1074`) rather than the event class names used in <Constant name="core" />. <Constant name="fusion" /> uses numeric codes as the canonical configuration key, with a subset of legacy <Constant name="core" /> event names supported as aliases. The <Constant name="fusion" /> warning codes will be present in any warnings displayed and you can also find them using the `--log-format json` flag, which includes the numeric code in the `code` field of each log entry. See [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) for the full list of supported event name aliases.
+In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). You can use either form interchangeably in `warn_error_options`. Messages printed at runtime include both the name and the code. See [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) for the full list of supported event names and their corresponding codes.
 
 </VersionBlock>
 
@@ -192,23 +192,23 @@ Existing dbt-core event names fall into three categories:
 
 ### Warning codes in Fusion
 
-In <Constant name="fusion" />, every warning has a numeric error code (for example, `1600`, `1074`, `1085`). Numeric codes are the canonical configuration key and you can use them directly in `warn_error_options`:
+In <Constant name="fusion" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). You can use either form interchangeably in `warn_error_options`, and both will appear in any warning messages printed at runtime:
 
 ```yaml
 flags:
   warn_error_options:
     error:
-      - 1601   # NothingToDo
-      - 1074   # JinjaLogWarning / exceptions.warn()
+      - NothingToDo    # by name
+      - 1074           # by code (JinjaLogWarning / exceptions.warn())
     silence:
-      - 1078   # FreshnessConfigProblem
+      - FreshnessConfigProblem   # by name
 ```
 
-A subset of legacy <Constant name="core" /> event names are also accepted as aliases and mapped to their corresponding <Constant name="fusion" /> codes. Any value that is not a recognized numeric code, supported legacy event name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup.
+Any value that is not a recognized numeric code, supported legacy event name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup.
 
 ### Supported legacy dbt-core event name aliases
 
-Each row lists a canonical <Constant name="fusion" /> warning code and the legacy <Constant name="core" /> event name that <Constant name="fusion" /> accepts as an alias. You can use either the numeric code or the event name in your `warn_error_options` configuration:
+Each row lists a <Constant name="fusion" /> warning code and the legacy <Constant name="core" /> event name. You can use either the numeric code or the event name interchangeably in your `warn_error_options` configuration:
 
 | Fusion code | dbt-core event name | Description |
 |---|---|---|
@@ -225,7 +225,20 @@ Each row lists a canonical <Constant name="fusion" /> warning code and the legac
 | 1078 | `FreshnessConfigProblem` | A source has no freshness configuration; freshness check was skipped |
 | 1084 | `WarnStateTargetEqual` | The `--state` and `--target` directories are the same path |
 | 1086 | `WEOIncludeExcludeDeprecation` | Deprecated `include`/`exclude` keys were used in `warn_error_options`; use `error`/`warn` instead |
-| _no code_ | `LogTestResult` | A data test result (pass/warn/fail); matched by name only |
+| 1089 | `NoNodeForYamlKey` | A YAML key references a node that doesn't exist in the project |
+| 1090 | `MacroNotFoundForPatch` | A `patches:` entry in a YAML file references a macro that doesn't exist |
+| 1091 | `InvalidConcurrentBatchesConfig` | `concurrent_batches` is configured but not supported for this model |
+| 1092 | `NoNodesForSelectionCriteria` | `--select` criteria matched no nodes |
+| 1093 | `MicrobatchModelNoEventTimeInputs` | A microbatch model has no upstream inputs with `event_time` configured |
+| 1094 | `UnversionedBreakingChange` | A breaking change was made to an unversioned model |
+| 1095 | `UnsupportedConstraintMaterialization` | A constraint was defined on a materialization that doesn't support it |
+| 1097 | `UnusedResourceConfigPath` | A `+config` path in `dbt_project.yml` doesn't match any resources |
+| 1098 | `DepsScrubbedPackageName` | A package name contained characters that were scrubbed during install |
+| 1099 | `DepsFoundDuplicatePackage` | The same package was found more than once in `packages.yml` |
+| 1506 | `InvalidMacroAnnotation` | A macro's YAML annotation (argument name or type) doesn't match its Jinja definition |
+| _no code_ | `LogTestResult` | A data test result (pass/warn/fail) |
+| _no code_ | `RunResultWarning` | A model or test run completed with `warn` status |
+| _no code_ | `RunResultWarningMessage` | The message accompanying a `warn`-status run result |
 
 ### Unsupported Core event names
 
@@ -235,7 +248,7 @@ The table below is not a complete list of unsupported names. It only includes <C
 
 | dbt-core event name | Message |
 |---|---|
-| `MicrobatchMacroOutsideOfBatchesDeprecation` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
+| `MicrobatchMacroOutsideOfBatchesDeprecation` | Fusion only supports the newer behavior-change flag, where this case is a hard error. |
 | `SeedExceedsLimitSamePath` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
 | `SeedIncreased` | This warning comes from partial parsing in dbt Core, which Fusion does not support. |
 | `GenerateSchemaNameNullValueDeprecation` | Fusion only supports the newer behavior-change flag, where this case is a hard error. |
@@ -257,8 +270,7 @@ The table below is not a complete list of unsupported names. It only includes <C
 | `EnvironmentVariableNamespaceDeprecation` | Fusion reserves the `DBT_ENGINE_` prefix and rejects unknown environment variables that use it. |
 | `UnusedTables` | Fusion does not allow source overrides, so packages must disable a source explicitly instead. |
 | `WrongResourceSchemaFile` | Fusion reports this case under `NoNodeForYamlKey` instead. |
-| `PackageInstallPathDeprecation` | Deprecation from 5+ years ago; not implemented |
-| `InternalDeprecation` | Internal Python adapter API; not applicable to Fusion |
+| `PackageNodeDependsOnRootProjectNode` | Fusion only supports the newer behavior-change flag `require_ref_searches_node_package_before_root`, where this case is a hard error. |
 
 ### Warnings that are hard errors in Fusion
 
