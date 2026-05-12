@@ -5,7 +5,7 @@ id: "fusion"
 level: 'Beginner'
 icon: 'zap'
 hide_table_of_contents: true
-tags: ['dbt Fusion engine', 'dbt Cloud','Quickstart']
+tags: ['dbt Fusion engine', 'dbt platform','Quickstart']
 recently_updated: true
 ---
 
