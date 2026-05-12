@@ -29,6 +29,8 @@ dbt parse --no-partial-parse --show-all-deprecations
 
 The `--no-partial-parse` flag ensures that even deprecations only picked up during parsing are included. The `--show-all-deprecations` flag ensures that each occurrence of the deprecations is listed instead  of just the first.
 
+<VersionBlock firstVersion="2.0">
+
 :::note <Constant name="fusion" /> and `dbt parse`
 
 When you use the <Constant name="fusion_engine" />, omit `--no-partial-parse` from the command above. That flag is deprecated in <Constant name="fusion" /> and may log deprecation warning `dbt1700`. Run `dbt parse --show-all-deprecations` without `--no-partial-parse`.
@@ -36,6 +38,8 @@ When you use the <Constant name="fusion_engine" />, omit `--no-partial-parse` fr
 For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
 
 :::
+
+</VersionBlock>
 
 ```bash
 

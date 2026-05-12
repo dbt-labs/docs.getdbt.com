@@ -8,11 +8,15 @@ import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flag
 
 ### Partial Parsing
 
+<VersionBlock firstVersion="2.0">
+
 :::note <Constant name="fusion" /> and partial parsing
 
 <FusionPartialParseCliFlags />
 
 :::
+
+</VersionBlock>
 
 The `PARTIAL_PARSE` flag can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.
 
