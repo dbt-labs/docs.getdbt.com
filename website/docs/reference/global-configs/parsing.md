@@ -29,7 +29,8 @@ dbt run --no-partial-parse
 
 :::note <Constant name="fusion" /> and partial parsing
 
-In <Constant name="fusion" /> job runs, the `--partial-parse` and `--no-partial-parse` CLI flags are deprecated. Passing them may log deprecation warning `dbt1700`. Remove these flags from <Constant name="fusion" /> job commands. For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
+<Constant name="fusion" /> job runs no longer support the `--partial-parse` and `--no-partial-parse` CLI flags. If you pass them (for example, from a <Constant name="core" />command or script), dbt logs deprecation warning `dbt1700`. Remove these flags from your <Constant name="fusion" /> job commands. For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
+
 
 :::
 
