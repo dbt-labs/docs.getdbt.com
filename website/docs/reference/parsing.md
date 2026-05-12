@@ -3,6 +3,8 @@ title: "Project Parsing"
 description: "Read this guide to understand the project parsing configuration in dbt."
 ---
 
+import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)
 - Partial parsing [profile config](/docs/local/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
@@ -39,7 +41,7 @@ The [`PARTIAL_PARSE` global config](/reference/global-configs/parsing) can be en
 
 :::note <Constant name="fusion" /> and partial parsing
 
-In <Constant name="fusion" /> job runs, the `--partial-parse` and `--no-partial-parse` CLI flags are deprecated. Passing them (for example, from a <Constant name="core" /> command or script) may log deprecation warning `dbt1700`. The warning refers to the _flag_, not to whether the engine applies incremental parsing internally. Remove these flags from <Constant name="fusion" /> job commands. For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
+<FusionPartialParseCliFlags />
 
 :::
 

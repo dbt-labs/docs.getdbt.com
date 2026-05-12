@@ -4,7 +4,15 @@ id: "parsing"
 sidebar: "Parsing"
 ---
 
+import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+
 ### Partial Parsing
+
+:::note <Constant name="fusion" /> and partial parsing
+
+<FusionPartialParseCliFlags />
+
+:::
 
 The `PARTIAL_PARSE` flag can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.
 
@@ -26,13 +34,6 @@ dbt run --no-partial-parse
 ```
 
 </File>
-
-:::note <Constant name="fusion" /> and partial parsing
-
-<Constant name="fusion" /> job runs no longer support the `--partial-parse` and `--no-partial-parse` CLI flags. If you pass them (for example, from a <Constant name="core" />command or script), dbt logs deprecation warning `dbt1700`. Remove these flags from your <Constant name="fusion" /> job commands. For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
-
-
-:::
 
 ### Static parser
 
