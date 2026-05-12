@@ -117,22 +117,8 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
 
 ## Examples
 
-The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. Configuration varies by client — select your tool below and replace the placeholder values with your own:
+The MCP protocol is programming language and framework agnostic, so use whatever helps you build agents. Alternatively, you can connect the remote dbt MCP server to MCP clients that support header-based authentication. Configuration varies by client — select your tool in the following tabs and replace the placeholder values with your own:
 
-:::warning Use numeric IDs, not full URLs
-Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeric IDs, not full URLs. The host in the `url` field should include `https://`, but ID headers must be integers only:
-
-```bash
-# ✅ Correct
-"url": "https://cloud.getdbt.com/api/ai/v1/mcp"
-"x-dbt-prod-environment-id": "54321"
-"x-dbt-user-id": "123"
-
-# ❌ Wrong — don't paste full URLs into ID headers
-"x-dbt-prod-environment-id": "https://cloud.getdbt.com/deploy/12345/projects/67890/environments/54321"
-"x-dbt-user-id": "https://cloud.getdbt.com/settings/profile"
-```
-:::
 
 <Tabs>
 <TabItem value="claude" label="Claude Code">
@@ -195,9 +181,23 @@ Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeri
 </TabItem>
 </Tabs>
 
-:::info Other clients
-For other MCP clients (Codex, Windsurf, and so on), refer to your client's MCP configuration docs for the correct key format.
+
+:::warning Use numeric IDs, not full URLs
+Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeric IDs, not full URLs. The host in the `url` field should include `https://`, but ID headers must be integers only:
+
+```bash
+# ✅ Correct
+"url": "https://cloud.getdbt.com/api/ai/v1/mcp"
+"x-dbt-prod-environment-id": "54321"
+"x-dbt-user-id": "123"
+
+# ❌ Wrong — don't paste full URLs into ID headers
+"x-dbt-prod-environment-id": "https://cloud.getdbt.com/deploy/12345/projects/67890/environments/54321"
+"x-dbt-user-id": "https://cloud.getdbt.com/settings/profile"
+```
 :::
+
+For other MCP clients (Codex, Windsurf, and so on), refer to your client's MCP configuration docs for the correct key format.
 
 For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
