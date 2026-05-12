@@ -20,7 +20,7 @@ Remote MCP is a good fit when:
 - You need <Constant name="semantic_layer"/>, Administrative, and Discovery APIs access without a local dbt project.
 
 :::info Local development requires local MCP
-Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the dbt CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
+Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the local <Constant name="core" /> or <Constant name="fusion" /> CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
 :::
 
 ## Set up remote MCP

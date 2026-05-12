@@ -1340,6 +1340,7 @@ const sidebarSettings = {
             "reference/resource-configs/materialized",
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
+            "reference/resource-configs/on_error",
             "reference/resource-configs/sql_header",
           ],
         },
