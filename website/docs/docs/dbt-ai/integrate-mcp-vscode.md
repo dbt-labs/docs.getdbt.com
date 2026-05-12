@@ -219,7 +219,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     }
     ```
 
-    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). For the full OAuth flow, scopes, and limitations, see [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). For the full OAuth flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
     </TabItem>
     <TabItem value="token" label="Token-based">

@@ -77,7 +77,7 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
 ## Set up with remote dbt MCP server
 
-Remote MCP supports **OAuth** (Enterprise and Enterprise+, private beta) or **token-based** headers. For OAuth, the MCP URL is `https://<Access URL>/api/ai/v1/mcp` (from **Account settings**). For prerequisites, flow, and limitations, see [Use Remote MCP quickstart](/docs/dbt-ai/mcp-quickstart-remote) and [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+Remote MCP supports **OAuth** (Enterprise and Enterprise+, private beta) or **token-based** headers. For OAuth, the MCP URL is `https://<Access URL>/api/ai/v1/mcp` (from **Account settings**). For prerequisites, flow, and limitations, refer to [Use Remote MCP quickstart](/docs/dbt-ai/mcp-quickstart-remote) and [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
 The deeplink below configures **token-based** authentication (URL and headers).
 

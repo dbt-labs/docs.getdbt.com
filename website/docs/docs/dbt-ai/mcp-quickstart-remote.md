@@ -36,14 +36,14 @@ In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://d
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
 
-- **<Constant name="dbt_platform"/> host**: Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. See [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
+- **<Constant name="dbt_platform"/> host**: Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. Refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
 - **Production environment ID**: From **Orchestration** in <Constant name="dbt_platform"/>. You will use it as the `x-dbt-prod-environment-id` header.
 - **Token** &mdash; PAT or service token with Semantic Layer and Developer permissions.
-- **If you use `execute_sql`:** You must use a PAT, plus your development environment ID and user ID. See [Finding your IDs](/docs/dbt-ai/mcp-find-ids).
+- **If you use `execute_sql`:** You must use a PAT, plus your development environment ID and user ID. Refer to [Finding your IDs](/docs/dbt-ai/mcp-find-ids).
 
 ### 3. Choose authentication: OAuth or tokens
 
-- **OAuth (remote)**: No API tokens in your client config when your MCP client supports OAuth for remote servers. See [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp) for the full flow, requirements, and limitations.
+- **OAuth (remote)**: No API tokens in your client config when your MCP client supports OAuth for remote servers. Refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp) for the full flow, requirements, and limitations.
 
   <MCPRemoteOauthBetaCallout />
 
@@ -57,7 +57,7 @@ Depending on your auth method, you may also need:
 
 - **Production environment ID**: From **Orchestration** in <Constant name="dbt_platform"/>. Used as the `x-dbt-prod-environment-id` header for token-based setup.
 - **Token** &mdash; PAT or service token with Semantic Layer and Developer permissions (token-based setup only).
-- **If you use `execute_sql`:** You must use a PAT, plus your development environment ID and user ID. See [Finding your IDs](/docs/dbt-ai/mcp-find-ids).
+- **If you use `execute_sql`:** You must use a PAT, plus your development environment ID and user ID. Refer to [Finding your IDs](/docs/dbt-ai/mcp-find-ids).
 
 <MCPCreditUsage />
 
@@ -68,7 +68,7 @@ Configure your MCP client with the MCP URL and headers from the previous step.
 <Tabs groupId="auth-method">
 <TabItem value="oauth" label="OAuth">
 
-Configure your client with the MCP URL from the previous step and follow your client's OAuth flow (browser sign-in). Your MCP client must support OAuth for HTTP-based MCP servers. For the full flow, scopes, and limitations, see [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+Configure your client with the MCP URL from the previous step and follow your client's OAuth flow (browser sign-in). Your MCP client must support OAuth for HTTP-based MCP servers. For the full flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported MCP clients self-register on first connect (dynamic registration, RFC 7591); clients that don't support it must be registered manually by an admin in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) for both flows and the list of registered clients.
 
 <Tabs groupId="client">
 <TabItem value="claude" label="Claude Code">
@@ -217,7 +217,7 @@ Gemini uses the `httpUrl` key instead of `url`:
 </TabItem>
 </Tabs>
 
-- For the complete list of headers, Cursor and other client examples, and optional headers, see [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp). 
+- For the complete list of headers, Cursor and other client examples, and optional headers, refer to [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp).
 - For local MCP, configuration uses environment variables; check out the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) for more information.
 
 Once you have configured your MCP client, you can test your setup by asking your AI assistant a data-related question (for example, _"What models are in my dbt project?"_ or _"What metrics are defined in my Semantic Layer?"_). If dbt MCP is working, the response will use your dbt metadata.

@@ -27,7 +27,7 @@ For OAuth (local or remote), use your [access URL with a static subdomain](/docs
 
 Claude Desktop reads MCP servers from `claude_desktop_config.json`. Open it from **Settings &rarr; Developer &rarr; Edit Config**.
 
-### Set up with local dbt MCP server
+### Set up with local dbt MCP server {#desktop-local}
 
 For a fast first install, you can download the prebuilt `.mcpb` file; for more control, edit the JSON directly.
 
@@ -53,9 +53,9 @@ To open the configuration file and add or replace the dbt MCP server entry:
 
 5. Save the file and restart Claude Desktop. You'll see an MCP server indicator in the bottom-right corner of the conversation input box.
 
-For more configuration options (env vars, service tokens, tool-access controls), see [Set up local MCP](/docs/dbt-ai/setup-local-mcp).
+For more configuration options (env vars, service tokens, tool-access controls), refer to [Set up local MCP](/docs/dbt-ai/setup-local-mcp).
 
-### Set up with remote dbt MCP server
+### Set up with remote dbt MCP server {#desktop-remote}
 
 The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `uvx` or local install needed. Claude Desktop connects to it over HTTP.
 
@@ -82,7 +82,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     }
     ```
 
-    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). For the full OAuth flow, scopes, and limitations, see [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). For the full OAuth flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
     </TabItem>
     <TabItem value="token" label="Token-based">
@@ -117,7 +117,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
 Claude Code reads MCP servers from `.mcp.json` at the root of your project (the repository root for your workspace). If you already configured the dbt MCP server for another client, you can reuse the same JSON shape here &mdash; you don't need a second, separate registration.
 
-### Set up with local dbt MCP server
+### Set up with local dbt MCP server {#code-local}
 
 1. Follow [Set up local MCP](/docs/dbt-ai/setup-local-mcp) to choose your auth pattern:
    - OAuth with the <Constant name="dbt_platform" />
@@ -131,7 +131,7 @@ Claude Code reads MCP servers from `.mcp.json` at the root of your project (the 
 The Claude Code CLI can register MCP servers with `claude mcp add`, but it typically writes to the user-level config (`~/.claude.json`) rather than the project's `.mcp.json`. For dbt MCP, we recommend committing `.mcp.json` to your repository so the setup is project-scoped and easier to share.
 :::
 
-### Set up with remote dbt MCP server
+### Set up with remote dbt MCP server {#code-remote}
 
 Claude Code can connect to the remote dbt MCP server over HTTP &mdash; same JSON shape as Claude Desktop, lives in `.mcp.json` instead of `claude_desktop_config.json`.
 
@@ -163,7 +163,7 @@ You can also register the same server from the CLI:
 claude mcp add --transport http dbt https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/
 ```
 
-For the full OAuth flow, scopes, and limitations, see [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp).
+For the full OAuth flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
 </TabItem>
 <TabItem value="token" label="Token-based">
