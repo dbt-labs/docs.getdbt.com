@@ -15,7 +15,7 @@ The remote MCP server is the ideal choice when:
 - You don't want to or are restricted from installing additional software (`uvx`, `dbt-mcp`) on your system.
 - Your primary use case is _consumption-based_: querying metrics, exploring metadata, viewing lineage.
 - You need access to <Constant name="semantic_layer"/>, Administrative, and Discovery APIs without maintaining a local dbt project.
-- You don't need to execute CLI commands. Remote MCP does not support dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more). If you need to execute dbt CLI commands, use the [local MCP server](/docs/dbt-ai/setup-local-mcp) instead.
+- You don't need to execute CLI commands. Remote MCP does not support local CLI commands (`dbt run`, `dbt build`, `dbt test`, and more). If you need to execute dbt commands, use the [local MCP server](/docs/dbt-ai/setup-local-mcp) instead.
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
