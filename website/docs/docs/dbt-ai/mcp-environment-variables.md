@@ -9,7 +9,7 @@ This page is a condensed reference for all environment variables used by the loc
 
 ## Local CLI
 
-These variables are required to use dbt CLI commands through MCP.
+These variables are required to use dbt commands through MCP.
 
 <SimpleTable>
 | Variable | Required | Description |
@@ -17,7 +17,7 @@ These variables are required to use dbt CLI commands through MCP.
 | `DBT_PROJECT_DIR` | Required | Full path to your dbt project folder (the folder containing `dbt_project.yml`). |
 | `DBT_PATH` | Required | Full path to your dbt executable. Find it by running `which dbt` (macOS/Linux) or `where dbt` (Windows). |
 | `DBT_PROFILES_DIR` | Optional | Path to a custom `profiles.yml` directory. Defaults to `~/.dbt/`. |
-| `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt CLI commands time out. Defaults to `60`. Compile runs the whole project, so large projects may need a higher limit to avoid timeouts. |
+| `DBT_CLI_TIMEOUT` | Optional | Seconds before dbt commands time out. Defaults to `60`. Compile runs the whole project, so large projects may need a higher limit to avoid timeouts. |
 </SimpleTable>
 
 ## dbt platform
@@ -68,7 +68,7 @@ All tools are available by default. To disable a toolset, set any of the followi
 <SimpleTable>
 | Variable | Default | Description |
 | --- | --- | --- |
-| `DISABLE_DBT_CLI` | `false` | Disable dbt CLI tools. |
+| `DISABLE_DBT_CLI` | `false` | Disable dbt Core and Fusion CLI tools. |
 | `DISABLE_SEMANTIC_LAYER` | `false` | Disable Semantic Layer tools. |
 | `DISABLE_DISCOVERY` | `false` | Disable Discovery API tools. |
 | `DISABLE_ADMIN_API` | `false` | Disable Admin API tools. |
@@ -86,7 +86,7 @@ If any `DBT_MCP_ENABLE_*` variable is set, only the explicitly enabled toolsets 
 <SimpleTable>
 | Variable | Description |
 | --- | --- |
-| `DBT_MCP_ENABLE_DBT_CLI` | Set to `true` to enable dbt CLI tools. |
+| `DBT_MCP_ENABLE_DBT_CLI` | Set to `true` to enable dbt Core and Fusion CLI tools. |
 | `DBT_MCP_ENABLE_SEMANTIC_LAYER` | Set to `true` to enable Semantic Layer tools. |
 | `DBT_MCP_ENABLE_DISCOVERY` | Set to `true` to enable Discovery API tools. |
 | `DBT_MCP_ENABLE_ADMIN_API` | Set to `true` to enable Admin API tools. |
