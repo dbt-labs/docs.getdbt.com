@@ -34,7 +34,7 @@ functions:
     [returns](/reference/resource-properties/returns): # required
       data_type: <string> # required, warehouse-specific
       description: <markdown_string> # optional
-    [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs only, available in v1.12+
+    [overloads](/reference/resource-properties/overloads): # optional, SQL UDFs only (Snowflake and Postgres), available in v1.12+
       - defined_in: <string> # required, name of the SQL file containing this overload's body
         arguments: # optional
           - name: <string> # required if arguments is specified
@@ -42,8 +42,8 @@ functions:
             description: <markdown_string> # optional
             default_value: <string | boolean | integer> # optional, available in Snowflake and Postgres
           - name: ... # declare additional arguments
-        returns: # required
-          data_type: <string> # required, warehouse-specific
+        returns: # optional, inherits from root function if omitted
+          data_type: <string> # required if returns is specified, warehouse-specific
           description: <markdown_string> # optional
       - defined_in: ... # declare additional overloads
 

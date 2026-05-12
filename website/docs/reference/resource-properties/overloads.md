@@ -26,8 +26,8 @@ functions:
             data_type: <string>    # required if arguments is specified, warehouse-specific
             description: <markdown_string>
             default_value: <string | boolean | integer> # optional, Snowflake and Postgres only
-        returns:                   # required
-          data_type: <string>      # required, warehouse-specific
+        returns:                   # optional, inherits from root function if omitted
+          data_type: <string>      # required if returns is specified, warehouse-specific
           description: <markdown_string>
       - defined_in: ...            # declare additional overloads
 
@@ -45,7 +45,7 @@ The `overloads` property lets you define multiple argument signatures for the sa
 
 Each overload references a separate SQL file that contains its function body, and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built, retried, and selected together.
 
-`overloads` is only supported for SQL UDFs. Python UDFs do not support overloads.
+`overloads` is only supported for SQL UDFs in Snowflake and Postgres. Python UDFs do not support overloads.
 
 ## Behavior
 
@@ -71,7 +71,7 @@ The argument list for the overload. Follows the same structure as [function argu
 
 ### returns
 
-The return type for the overload. Follows the same structure as [returns](/reference/resource-properties/returns).
+The return type for the overload. Follows the same structure as [returns](/reference/resource-properties/returns). If omitted, the overload inherits the return type of the root function.
 
 ## Example
 

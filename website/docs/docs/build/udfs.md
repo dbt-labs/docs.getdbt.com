@@ -94,7 +94,7 @@ Follow these steps to define UDFs in dbt:
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
-    **Optional**: For SQL UDFs, you can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
+    **Optional**: For SQL UDFs in Snowflake and Postgres, you can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). Each overload references a separate SQL file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
 
     <Tabs>
     <TabItem value="SQL">
@@ -121,7 +121,7 @@ Follow these steps to define UDFs in dbt:
             arguments:
               - name: a_num
                 data_type: numeric
-            returns:
+            returns:              # optional, inherits from root function if omitted
               data_type: integer
     ```
     </File>
@@ -269,16 +269,6 @@ Follow these steps to define UDFs in dbt:
     $$ LANGUAGE SQL;
     ```
 
-    ```sql
-    -- Overload (is_positive_int_numeric.sql)
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_num NUMERIC)
-    RETURNS INTEGER
-    IMMUTABLE
-    AS $$
-      SELECT CASE WHEN a_num > 0 THEN 1 ELSE 0 END
-    $$ LANGUAGE SQL;
-    ```
-
     </TabItem>
 
     <TabItem value="BigQuery">
@@ -291,15 +281,6 @@ Follow these steps to define UDFs in dbt:
     );
     ```
 
-    ```sql
-    -- Overload (is_positive_int_numeric.sql)
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_num NUMERIC)
-    RETURNS INT64
-    AS (
-      CASE WHEN a_num > 0 THEN 1 ELSE 0 END
-    );
-    ```
-
     </TabItem>
 
     <TabItem value="Databricks">
@@ -309,14 +290,6 @@ Follow these steps to define UDFs in dbt:
     RETURNS INT
     DETERMINISTIC
     RETURN REGEXP_INSTR(a_string, '^[0-9]+$');
-    ```
-
-    ```sql
-    -- Overload (is_positive_int_numeric.sql)
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_num DECIMAL)
-    RETURNS INT
-    DETERMINISTIC
-    RETURN CASE WHEN a_num > 0 THEN 1 ELSE 0 END;
     ```
 
     </TabItem>
@@ -465,7 +438,7 @@ For more information about selecting UDFs, see the examples in [Node selector me
 - Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported.
 - Python UDFs are supported in Snowflake and BigQuery only (when using <Constant name="core" /> or <Constant name="fusion" />). Other warehouses aren't yet supported for Python UDFs.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
-- The `overloads` property is only supported for SQL UDFs.
+- The `overloads` property is only supported for SQL UDFs in Snowflake and Postgres.
 
 ## Related FAQs
 
