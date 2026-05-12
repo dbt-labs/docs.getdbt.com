@@ -114,6 +114,7 @@ These variables control the behavior of Semantic Layer tools.
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DBT_MCP_SL_METRICS_RELATED_MAX` | `10` | Maximum number of metrics for which `list_metrics` also returns dimension and entity names inline, reducing the number of tool calls needed to answer data questions. When the metric count is at or below this value, dimensions and entities are embedded directly in the `list_metrics` response. When above this value, only metric names are returned and the LLM calls `get_dimensions`/`get_entities` separately. Set to `0` to always return metrics only and never inline dimension or entity data. |
+| `DBT_MCP_SL_MAX_RESPONSE_CHARS` | `16000` | Maximum character length of the CSV returned by `list_metrics`. Must be an integer `>= 0`. When the response would exceed this length _and_ the metric count is above `DBT_MCP_SL_METRICS_RELATED_MAX`, the `description` and `metadata` columns are dropped from the response to save tokens. Set to `0` to disable trimming and always return the full response. |
 </SimpleTable>
 
 ## Logging and debugging
