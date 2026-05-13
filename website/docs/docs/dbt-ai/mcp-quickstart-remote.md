@@ -1,13 +1,7 @@
 ---
-<<<<<<< add/remote-mcp-oauth
-title: "Use the remote dbt MCP server"
-sidebar_label: "Use the remote dbt MCP server"
-description: "Connect to the remote dbt MCP server using HTTP with no local installation."
-=======
 title: "Connect to the remote dbt MCP server"
 sidebar_label: "Connect to the remote dbt MCP server"
 description: "Connect to the remote dbt MCP server via HTTP with no local installation."
->>>>>>> current
 id: "mcp-quickstart-remote"
 ---
 
