@@ -37,7 +37,7 @@ To get started, choose the quickstart that matches your setup:
 | --- | --- | --- |
 | Query data and run <Constant name="platform_cli"/> commands locally while connected to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL, Codegen).  | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |  Uses [local MCP server](#local-mcp-server). |
 | Run <Constant name="platform_cli"/> commands locally, with or without a <Constant name="dbt_platform" /> account; with an account, also query data and explore metadata through the same server. | [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |  Uses [local MCP server](#local-mcp-server). |
-| Use MCP with zero local install (query data only through hosted tools; no <Constant name="platform_cli"/> commands).  | [Use MCP with zero install](/docs/dbt-ai/mcp-quickstart-remote) |  Uses [remote MCP server](#remote-mcp-server). |
+| Use MCP with zero local install (query data only through hosted tools; no <Constant name="platform_cli"/> commands).  | [Connect to the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote) |  Uses [remote MCP server](#remote-mcp-server). |
 </SimpleTable>
 
 To configure or disable specific tools (local MCP), see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).

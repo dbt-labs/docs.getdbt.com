@@ -17,9 +17,13 @@ meta:
   config_page: '/reference/resource-configs/snowflake-configs'
 ---
 
+import SnowflakeAuth from '/snippets/_snowflake-auth.md';
+
 <VersionBlock firstVersion="2.0">
 
 # Connect Snowflake to Fusion <Lifecycle status='preview' />
+
+<SnowflakeAuth />
 
 You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
@@ -199,6 +203,8 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 
 # Connect Snowflake to dbt Core
 
+<SnowflakeAuth />
+
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -208,7 +214,6 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 <SnowflakeColumn />
-
 
 ## Authentication Methods
 

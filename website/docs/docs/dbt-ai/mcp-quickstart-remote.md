@@ -1,7 +1,13 @@
 ---
+<<<<<<< add/remote-mcp-oauth
 title: "Use the remote dbt MCP server"
 sidebar_label: "Use the remote dbt MCP server"
 description: "Connect to the remote dbt MCP server using HTTP with no local installation."
+=======
+title: "Connect to the remote dbt MCP server"
+sidebar_label: "Connect to the remote dbt MCP server"
+description: "Connect to the remote dbt MCP server via HTTP with no local installation."
+>>>>>>> current
 id: "mcp-quickstart-remote"
 ---
 
@@ -9,9 +15,11 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 
-# Use dbt MCP with no local install <Lifecycle status="self_service,managed,managed_plus"/>
+# Connect to the remote dbt MCP server <Lifecycle status="self_service,managed,managed_plus"/>
 
 The remote MCP server connects to <Constant name="dbt_platform"/> using HTTP. No local installation is required &mdash; you configure your MCP client with a URL and headers instead of running `uvx dbt-mcp`.
+
+<Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
 
 ## When to use remote MCP
 

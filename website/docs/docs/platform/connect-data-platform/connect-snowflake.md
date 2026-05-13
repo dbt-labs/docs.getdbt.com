@@ -5,19 +5,18 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
+import SnowflakeAuth from '/snippets/_snowflake-auth.md';
+
 # Connect Snowflake <ProductCard text="Fusion compatible" />
 
-:::note
+import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
+
+<SnowflakeColumn />
 
 <Constant name="dbt_platform" /> connections and credentials inherit the permissions of the accounts configured. You can customize roles and associated permissions in Snowflake to fit your company's requirements and fine-tune access to database objects in your account.
 
 Refer to [Snowflake permissions](/reference/database-permissions/snowflake-permissions) for more information about customizing roles in Snowflake. To see which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
-:::
-
-import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
-
-<SnowflakeColumn />
 
 ## Warehouse permissions for Fusion
 
@@ -40,27 +39,11 @@ The following fields are required when creating a Snowflake connection:
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile. 
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile.
 
 ### Username and password with MFA
 
-:::info Snowflake authentication
-
-Starting November 2025, Snowflake will phase out single-factor password authentication, and multi-factor authentication (MFA) will be enforced.
-
-MFA will be required for all `Username / Password` authentication.
-
-To continue using key pair authentication, users should update any deployment environments currently using `Username / Password` by November 2025.
-
-Refer to [Snowflake's blog post](https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/) for more information.
-
-:::
-
-:::info Snowflake MFA plan availability
-
-Snowflake's MFA is available on all [plan types](https://www.getdbt.com/pricing).
-
-:::
+<SnowflakeAuth />
 
 **Available in:** Development environments
 
