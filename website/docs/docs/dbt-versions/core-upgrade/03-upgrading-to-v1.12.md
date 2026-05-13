@@ -10,7 +10,7 @@ displayed_sidebar: "docs"
 ## Resources
 - [<Constant name="core" /> v1.12 changelog](https://github.com/dbt-labs/dbt-core/blob/v1.12.0b1/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
 
 ## What to know before upgrading
 

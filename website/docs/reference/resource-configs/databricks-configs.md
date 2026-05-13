@@ -974,7 +974,7 @@ You need to use the same set of names for compute across your outputs, though yo
 
 :::
 
-To configure this inside of <Constant name="dbt" />, use the [extended attributes feature](/docs/dbt-platform-environments#extended-attributes-) on the desired environments:
+To configure this inside of <Constant name="dbt" />, use the [extended attributes feature](/docs/dbt-platform-environments#extended-attributes) on the desired environments:
 
 ```yaml
 

@@ -28,7 +28,7 @@ Both development and deployment environments have a section called **General Set
 | Environment name | Production  | The environment name  | Any string! |
 | Environment type | Deployment | The type of environment | Deployment, Development|
 | Set deployment type | PROD |  Designates the deployment environment type. | Production, Staging, General | 
-| dbt version | Latest | <Constant name="dbt" /> automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/dbt-release-tracks) you select. | Lastest, Compatible, Extended |
+| dbt version | Latest | <Constant name="dbt" /> automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/dbt-release-tracks) you select. | Latest, Compatible, Extended |
 | Only run on a custom branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
 | Custom branch | dev | Custom Branch name | See below |
 
