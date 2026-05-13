@@ -20,7 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## May 2026
 
-- **New:** Fusion release tracks are now being rolled out across across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/cloud-release-tracks?version=2.0#fusion-release-tracks) for more information.
+- **New:** Fusion release tracks are now being rolled out across across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#fusion-release-tracks) for more information.
 - **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 - **Fix:** [`state:modified`](/reference/node-selection/methods#state) now detects changes to [UDF](/docs/build/udfs) properties (such as `arguments` and `returns`) defined in `.yml` files. Previously, only changes to the SQL or Python function body were detected.
 - **New:** [Native private packages](/docs/build/packages#native-private-packages) are now generally available (GA).
