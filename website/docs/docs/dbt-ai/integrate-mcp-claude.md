@@ -11,17 +11,40 @@ import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 
-Claude is an AI assistant from Anthropic with two primary interfaces:
+Claude is an AI assistant from Anthropic with three primary interfaces:
+- [Claude (web)](https://claude.ai): The browser-based interface. Supports remote MCP via the Connectors UI — no config file needed.
 - [Claude Desktop](https://claude.ai/download): A GUI with MCP support for file access and commands, plus basic coding features.
 - [Claude Code](https://www.anthropic.com/claude-code): A terminal/IDE tool for development.
 
-Both interfaces can connect to either the **local** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) or the **remote** dbt MCP server (HTTP, no install, consumption-focused). Pick the section that matches your Claude interface, then choose local or remote.
+All three interfaces can connect to the **remote** dbt MCP server (HTTP, no install, consumption-focused). Claude Desktop and Claude Code can also connect to the **local** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`). Pick the section that matches your Claude interface, then choose local or remote.
 
 You don't need to clone the dbt-mcp repository &mdash; for local setups, install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the configs later in this page). Only clone the repository if you want to [contribute to dbt MCP](https://github.com/dbt-labs/dbt-mcp/issues).
 
 <StaticSubdomainRequired />
 
 For OAuth (local or remote), use your [access URL with a static subdomain](/docs/platform/about-platform/access-regions-ip-addresses).
+
+## Claude (web) {#web}
+
+The [Claude web app](https://claude.ai) supports remote MCP via its Connectors UI — no config file or local install required. OAuth is the only supported auth method for this interface.
+
+<MCPRemoteOauthBetaCallout />
+
+<MCPRemoteServerUrl />
+
+To connect dbt MCP to Claude (web):
+
+1. In Claude, go to **Customize** &rarr; **Connectors** &rarr; **+** &rarr; **Add custom connector**.
+2. Enter a name (for example, `dbt`) and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`).
+
+<Lightbox src="/img/docs/dbt-cloud/oauth-add-custom-connector.png" title="Add custom connector dialog in Claude web with the dbt MCP URL" />
+
+3. Click **Add**. Claude opens a browser window for you to sign in to dbt and approve the consent screen.
+4. Return to Claude. Ask a data-related question to confirm the connection.
+
+<Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" title="OAuth consent screen showing scopes requested by Claude" />
+
+For details on scopes, sessions, and revoking access, see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
 ## Claude Desktop
 
