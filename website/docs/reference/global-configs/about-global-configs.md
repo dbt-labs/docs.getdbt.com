@@ -53,7 +53,7 @@ The `--target` flag allows you to run the same dbt project against different env
 
 Use this table to compare all available flags and how to configure them across interfaces:
 
-- **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/cloud-cli-installation).
+- **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/dbt-cli-installation).
 - **Type / default**: Shows the accepted value type and default.
 - **In project**: Indicates whether you can set the flag in `dbt_project.yml`.
 - **Env var**: Shows the corresponding environment variable name, when available. In general, v1.10 and earlier use the `DBT_` prefix, while v1.11+ uses the `DBT_ENGINE_` prefix.
