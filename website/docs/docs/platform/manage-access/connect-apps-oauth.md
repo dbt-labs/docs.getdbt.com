@@ -52,6 +52,13 @@ To add a manually registered integration:
 
 Manually registered clients appear in the **Manually registered** section.
 
+When configuring your client, use the following OAuth endpoints (replace `yourprefix` with your dbt platform subdomain):
+
+| Endpoint | URL |
+|----------|-----|
+| Authorization | `https://yourprefix.dbt.com/oauth/authorize` |
+| Token | `https://yourprefix.dbt.com/oauth/token` |
+
 ## Use with remote MCP
 
 When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. Clients that support dynamic registration complete this automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
@@ -74,11 +81,14 @@ From the consent screen, the user can:
 
 Scopes available today include:
 
-- **View account information**:read-only access to account details such as project and environment settings.
-- **Query dbt Semantic Layer**: query project data using <Constant name="semantic_layer" /> metrics.
-- **View project metadata from dbt Catalog**: access model descriptions, column lineage, and other project metadata.
-- **Develop dbt models**: use development tooling, including the CLI, to make updates to dbt models.
-- **Run jobs**: view, edit, and re-trigger dbt jobs.
+| Scope | Description |
+|-------|-------------|
+| `offline_access` | Allows the client to request a refresh token to maintain long-lived sessions |
+| `account:read` | Read-only access to account details such as project and environment settings |
+| `projects:query` | Query project data using <Constant name="semantic_layer" /> metrics |
+| `catalog:read` | Access model descriptions, column lineage, and other project metadata from dbt Catalog |
+| `projects:develop` | Use development tooling, including the CLI, to make updates to dbt models |
+| `jobs:run` | View, edit, and re-trigger dbt jobs |
 
 ## Sessions and refresh tokens
 
