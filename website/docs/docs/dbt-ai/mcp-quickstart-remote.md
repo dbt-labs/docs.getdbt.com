@@ -70,7 +70,11 @@ Configure your MCP client with the MCP URL and headers from the previous step.
 <Tabs groupId="auth-method">
 <TabItem value="oauth" label="OAuth">
 
-Configure your client with the MCP URL from the previous step and follow your client's OAuth flow (browser sign-in). Your MCP client must support OAuth for HTTP-based MCP servers. For the full flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported MCP clients self-register on first connect (dynamic registration, RFC 7591); clients that don't support it must be registered manually by an admin in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) for both flows and the list of registered clients.
+Configure your client with the MCP URL from the previous step and follow your client's OAuth flow (browser sign-in). Your MCP client must support OAuth for HTTP-based MCP servers. 
+
+For the full workflow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported MCP clients self-register on first connect (dynamic registration, RFC 7591); clients that don't support it must be registered manually by an admin in <Constant name="dbt_platform" />. 
+
+Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) for both instructions and the list of registered clients.
 
 <Tabs groupId="client">
 <TabItem value="claude" label="Claude Code">
