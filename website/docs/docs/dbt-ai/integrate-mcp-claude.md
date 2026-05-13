@@ -87,7 +87,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     }
     ```
 
-    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> **Account settings** under **MCP URL**.
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
 
     </TabItem>
     <TabItem value="token" label="Token-based">
@@ -166,7 +166,7 @@ Add the following to `.mcp.json` at your project root. On first connect, Claude 
 }
 ```
 
-Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> **Account settings** under **MCP URL**.
+Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
 
 You can also register the same server from the CLI:
 

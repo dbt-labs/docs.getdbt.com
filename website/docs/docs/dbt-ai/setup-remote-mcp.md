@@ -49,7 +49,7 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 - [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled for your account.
 - Enterprise or Enterprise+ account and join the private beta by contacting your account manager.
 - An MCP client that supports OAuth for remote (HTTP) MCP servers.
-- Your **MCP URL** (or **Access URL**) from **Account settings** in <Constant name="dbt_platform"/>. Check out the next section [MCP URL](#mcp-url) for more information.
+- Your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform"/>. Check out the next section [MCP URL](#mcp-url) for more information.
 
 ### MCP URL {#mcp-url}
 

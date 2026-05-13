@@ -16,7 +16,7 @@ import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 VS Code can connect to either the **local** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) or the **remote** dbt MCP server (HTTP, no install, consumption-focused). Before starting, make sure you have:
 - VS Code installed with the latest updates.
 - For local MCP: completed the [local MCP setup](/docs/dbt-ai/setup-local-mcp) and configured your dbt project paths.
-- For remote MCP: your **MCP URL** (or **Access URL**) from **Account settings** in <Constant name="dbt_platform" />.
+- For remote MCP: your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform" />.
 
 ## Set up with local dbt MCP server
 
@@ -224,7 +224,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     }
     ```
 
-    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> **Account settings** under **MCP URL**.
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
 
     </TabItem>
     <TabItem value="token" label="Token-based">

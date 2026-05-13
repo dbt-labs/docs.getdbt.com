@@ -61,20 +61,22 @@ When configuring your client, use the following OAuth endpoints (replace `yourpr
 
 ## Use with remote MCP
 
-When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. The client needs just your dbt platform MCP URL, which you can find in **Account settings** → **Integrations** → **App integrations**. Clients that support dynamic registration complete the registration step automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
+When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. The client needs just your dbt platform MCP URL, which you can find under **Account settings** → **Access URLs** → **MCP Endpoint URL**. 
 
-To connect a custom MCP client to dbt, navigate to your AI tool's connector settings and enter your dbt platform MCP URL:
+Clients that support dynamic registration complete the registration step automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
 
-- **Claude (web)**: Go to **Customize** &rarr; **Connectors** &rarr; **+** &rarr; **Add custom connector**
-- **ChatGPT**: Go to **Settings** &rarr; **Apps** &rarr; **Create App**
+1. To connect a custom MCP client to dbt, navigate to your AI tool's connector settings and enter your <Constant name="dbt_platform" /> MCP URL. The following example shows how to connect a custom MCP (Claude in this case) client to dbt. 
+  
+2. Enter a name and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`), then click **Add**.
+     <Lightbox src="/img/docs/dbt-cloud/oauth-add-custom-connector.png" title="Custom connector dialog showing the dbt MCP URL" />
 
-<Lightbox src="/img/docs/dbt-cloud/oauth-connectors-page.png" title="Adding a custom dbt connector in an AI tool's connector settings" />
+3. The tool will redirect you to dbt to complete the OAuth consent flow.
+    <Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" width="60%" title="OAuth consent screen showing requested scopes and project access" />
 
-Enter a name and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`), then click **Add**.
+4. The tool will be added to the **Custom connectors** table and you can then connect it to dbt by clicking **Connect**.
+   <Lightbox src="/img/docs/dbt-cloud/oauth-connectors-page.png" title="Adding a custom dbt connector in an AI tool's connector settings" />
 
-<Lightbox src="/img/docs/dbt-cloud/oauth-add-custom-connector.png" title="Custom connector dialog showing the dbt MCP URL" />
-
-The tool will redirect you to dbt to complete the OAuth consent flow.
+5. That's it! You can now use the tool to connect to dbt. Ask your tool a question like "What is the total revenue for the last 30 days?" go on from there!
 
 For more information on remote MCP OAuth setup, see [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
 
