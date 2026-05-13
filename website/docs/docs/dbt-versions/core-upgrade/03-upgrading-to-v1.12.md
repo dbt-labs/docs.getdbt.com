@@ -42,10 +42,6 @@ Key changes in the new spec:
 
 For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
 
-### `.env` file for environment variables <Lifecycle status="beta" />
-
-<Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
-
 ### `packages` config for Python UDFs <Lifecycle status="beta" />
 
 You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
@@ -55,12 +51,6 @@ You can specify public third-party PyPI packages for your Python UDF with the op
 You can reference a named selector from `selectors.yml` inside `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`). This makes it easier to compose reusable YAML selectors with other [selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators) on the command line without duplicating logic.
 
 When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt also raises a warning when these flags are combined. If you want to combine a selector with `--select` or `--exclude`, use the new `selector:` method instead.
-
-### Compiled SQL for snapshots <Lifecycle status="beta" />
-
-`dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path.
-
-For more information, refer to [About dbt compile](/reference/commands/compile).
 
 ### Support for `vars.yml` <Lifecycle status="beta" />
 
@@ -128,4 +118,6 @@ You can read more about each of these behavior changes in the following links:
 ## Quick hits
 
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.
+- <Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
+- `dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path. For more information, refer to [About dbt compile](/reference/commands/compile).
 
