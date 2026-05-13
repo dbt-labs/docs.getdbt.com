@@ -31,7 +31,7 @@ If you're using Tableau Server, you need to add the [<Constant name="dbt" /> IP 
 
 To configure automatic downstream exposures, you should meet the following:
 
-1. Your environment and jobs are on a supported [<Constant name="dbt" /> release track](/docs/dbt-versions/cloud-release-tracks).
+1. Your environment and jobs are on a supported [<Constant name="dbt" /> release track](/docs/dbt-versions/dbt-release-tracks).
 2. You have a <Constant name="dbt" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
 3. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 4. You have [proper permissions](/docs/platform/manage-access/enterprise-permissions) to edit <Constant name="dbt" /> project or production environment settings.
@@ -104,7 +104,7 @@ import ViewExposures from '/snippets/_auto-exposures-view.md';
 
 [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures) using the dbt [Cloud job scheduler](/docs/deploy/job-scheduler) to proactively refresh the underlying data sources (extracts) that power your Tableau Workbooks.
 
-This beta capability requires deployment jobs on [Latest](/docs/dbt-versions/cloud-release-tracks) with <Constant name="core" /> and _isn't_ available on [Latest <Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks) (the <Constant name="fusion_engine" /> preview). For setup details, refer to [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures).
+This beta capability requires deployment jobs on [Latest](/docs/dbt-versions/dbt-release-tracks) with <Constant name="core" /> and _isn't_ available on [Latest <Constant name="fusion" />](/docs/dbt-versions/dbt-release-tracks) (the <Constant name="fusion_engine" /> preview). For setup details, refer to [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures).
 
 - Orchestrating exposures with a `dbt build` job ensures that downstream exposures, like Tableau extracts, are updated regularly and automatically.
 - You can control the frequency of these refreshes by configuring environment variables.

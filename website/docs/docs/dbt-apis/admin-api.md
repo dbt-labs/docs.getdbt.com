@@ -1,6 +1,6 @@
 ---
 title: "dbt Administrative API"
-id: "admin-cloud-api"
+id: "admin-api"
 pagination_next: "docs/dbt-apis/discovery-api"
 ---
 

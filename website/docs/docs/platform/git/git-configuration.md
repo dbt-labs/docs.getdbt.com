@@ -1,6 +1,7 @@
 ---
 title: "Configure Git in dbt"
 description: "Learn about the Git providers supported in dbt"
+id: "configure-git"
 hide_table_of_contents: true
 pagination_next: "docs/platform/git/managed-repository"
 ---

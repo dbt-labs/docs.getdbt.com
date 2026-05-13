@@ -1,11 +1,11 @@
 ---
 title: "dbt environments"
-id: "dbt-cloud-environments"
+id: "dbt-platform-environments"
 description: "Learn about dbt's development environment to execute your project in the IDE"
 pagination_next: "docs/platform/migration"
 ---
 
-An environment determines how <Constant name="dbt" /> will execute your project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
+An environment determines how <Constant name="dbt" /> will execute your project in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) (for development) and scheduled jobs (for deployment).
 
 Critically, in order to execute dbt, environments define three variables:
 
@@ -37,7 +37,7 @@ To create a new <Constant name="dbt" /> development environment:
 
 ### Set developer credentials
 
-To use the dbt <Constant name="studio_ide" /> or <Constant name="platform_cli" />, each developer will need to set up [personal development credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
+To use the dbt <Constant name="studio_ide" /> or <Constant name="platform_cli" />, each developer will need to set up [personal development credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
 
 <Lightbox src="/img/docs/dbt-platform/refresh-ide/new-development-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
 
