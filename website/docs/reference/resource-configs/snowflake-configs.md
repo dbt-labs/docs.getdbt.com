@@ -674,7 +674,8 @@ To guarantee accuracy, an incremental model using the `delete+insert` strategy w
 
 - `view` (default): Skips intermediate step of creating a temporary physical table for the tmp relation; fastest but not suitable for all strategies.
 - `table`: A session-scoped temporary table; not visible in the Snowflake catalog and isolated per session.
-- `transient`: A transient table; persists in the catalog, enabling [Snowflake native lineage tracking](https://docs.snowflake.com/en/user-guide/ui-snowsight-lineage), while avoiding the 7-day fail-safe storage costs of permanent tables. Supported with `delete+insert` and `microbatch` strategies.
+- `transient`: A transient table; persists in the catalog, enabling [Snowflake native lineage tracking](https://docs.snowflake.com/en/user-guide/ui-snowsight-lineage), while avoiding the 7-day fail-safe storage costs of permanent tables.
+  **Note:** This value is distinct from the separate model-level `transient` config described later, which controls the final model relation. 
 
 Defined in the project YAML:
 
