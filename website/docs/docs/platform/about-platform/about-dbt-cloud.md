@@ -38,7 +38,7 @@ In addition to providing a hosted architecture for running dbt across your organ
     title="dbt Copilot*"
     body="Use dbt Copilot to generate documentation, tests, semantic models, metrics, and SQL code from scratch, giving you the flexibility to modify or fix generated code."
     link="/docs/platform/dbt-copilot"
-    icon="copilot"/>
+    icon="dbt-copilot"/>
 
 <Card
     title="Manage environments"
