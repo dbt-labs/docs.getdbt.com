@@ -5,16 +5,10 @@ description: New features and changes in dbt Core v1.12
 displayed_sidebar: "docs"
 ---
 
-# Upgrading to v1.12
-
-:::info Beta coming soon
-
-<Constant name="core" /> v1.12 is not yet available in beta. We will update this guide when it becomes available.
-
-:::
+# Upgrading to v1.12 <Lifecycle status="beta" />
 
 ## Resources
-- <Constant name="core" /> v1.12 changelog (coming soon)
+- [<Constant name="core" /> v1.12 changelog](https://github.com/dbt-labs/dbt-core/blob/v1.12.0b1/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
 
