@@ -713,7 +713,7 @@ In the configuration format for the model SQL file:
 
 When `tmp_relation_type` is set to `transient`, the tmp relation becomes a real table that persists in the target schema under a deterministic name. If multiple runs of the same incremental model execute concurrently in the same schema, they can overwrite each other's tmp relation, causing data duplication or incorrect results. For example, this might happen when developers share a target schema or when CI and production runs overlap.
 
-This risk depends on how you configure schemas and databases  for your dbt models. To prevent conflicts, use `snowflake__resolve_incremental_tmp_relation` to route tmp relations to a schema that is unique per run or environment. For more information, refer to [Avoiding tmp relation conflicts](#avoiding-tmp-relation-conflicts).
+This risk depends on how you configure schemas and databases for your dbt models. To prevent conflicts, use `snowflake__resolve_incremental_tmp_relation` to route tmp relations to a schema that is unique per run or environment. For more information, refer to [Avoiding tmp relation conflicts](#avoiding-tmp-relation-conflicts).
 
 :::
 
