@@ -55,7 +55,7 @@ To get started, in VS Code:
 
     <Expandable alt_header="Local MCP (CLI only)">
 
-    For users who only want to use dbt CLI commands with <Constant name="core" /> or <Constant name="fusion" />
+    For users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion" />
 
     <VersionBlock lastVersion="1.10">
 

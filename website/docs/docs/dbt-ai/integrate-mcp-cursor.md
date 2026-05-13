@@ -24,7 +24,7 @@ Click one of the following application links with Cursor open to automatically c
 
 <TabItem value="CLI only (dbt Core and Fusion)">
 
-Local configuration for users who only want to use dbt CLI commands with <Constant name="core" /> or <Constant name="fusion_engine" /> (no <Constant name="dbt_platform" /> features).
+Local configuration for users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion_engine" /> (no <Constant name="dbt_platform" /> features).
 
 [Add dbt Core or Fusion to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJlbnYiOnsiREJUX1BST0pFQ1RfRElSIjoiL3BhdGgvdG8veW91ci9kYnQvcHJvamVjdCIsIkRCVF9QQVRIIjoiL3BhdGgvdG8veW91ci9kYnQvZXhlY3V0YWJsZSJ9LCJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJkYnQtbWNwIl19)
 
