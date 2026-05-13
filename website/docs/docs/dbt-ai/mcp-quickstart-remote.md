@@ -8,6 +8,7 @@ id: "mcp-quickstart-remote"
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
+import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 
 # Connect to the remote dbt MCP server <Lifecycle status="self_service,managed,managed_plus"/>
 
@@ -45,11 +46,10 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 
 ### 3. Choose authentication: OAuth or tokens
 
-- **OAuth (remote)**: No API tokens in your client config when your MCP client supports OAuth for remote servers. Refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp) for the full flow, requirements, and limitations.
+- **OAuth (remote)** &mdash; No API tokens in your client config. Requires an OAuth-capable MCP client. Available in private beta for Enterprise and Enterprise+ accounts.
+- **Token-based** &mdash; PAT or service token in the `Authorization` header. Works with any client and is required for shared/CI setups and for `execute_sql` (which needs a PAT).
 
-  <MCPRemoteOauthBetaCallout />
-
-- **Token-based**: Use a personal access token (PAT) or service token in the `Authorization` header. Required for some clients, automation, shared setups, and tools that need explicit tokens (for example `execute_sql` with a PAT).
+<MCPRemoteOauthBetaCallout />
 
 ### 4. Get your MCP URL and IDs
 
@@ -70,11 +70,9 @@ Configure your MCP client with the MCP URL and headers from the previous step.
 <Tabs groupId="auth-method">
 <TabItem value="oauth" label="OAuth">
 
-Configure your client with the MCP URL from the previous step and follow your client's OAuth flow (browser sign-in). Your MCP client must support OAuth for HTTP-based MCP servers. 
+<MCPOauthPreflight />
 
-For the full workflow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported MCP clients self-register on first connect (dynamic registration, RFC 7591); clients that don't support it must be registered manually by an admin in <Constant name="dbt_platform" />. 
-
-Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth) for both instructions and the list of registered clients.
+Configure your client with the MCP URL from the previous step. On first connect, your client opens a browser for sign-in and consent.
 
 <Tabs groupId="client">
 <TabItem value="claude" label="Claude Code">

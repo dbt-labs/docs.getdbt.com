@@ -9,6 +9,7 @@ import MCPExample from '/snippets/_mcp-config-files.md';
 import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
+import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 
 [Microsoft Visual Studio Code (VS Code)](https://code.visualstudio.com/mcp) is a powerful and popular integrated development environment (IDE).
 
@@ -206,7 +207,11 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     <Tabs>
     <TabItem value="oauth" label="OAuth (remote)">
 
-    OAuth removes the need to paste tokens into your config. VS Code opens a browser for sign-in and consent the first time the server connects.
+    _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+
+    <MCPOauthPreflight />
+
+    Add the following to `mcp.json`. VS Code opens a browser for sign-in and consent the first time the server connects.
 
     ```json
     {
@@ -219,7 +224,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     }
     ```
 
-    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). For the full OAuth flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> **Account settings** under **MCP URL**.
 
     </TabItem>
     <TabItem value="token" label="Token-based">

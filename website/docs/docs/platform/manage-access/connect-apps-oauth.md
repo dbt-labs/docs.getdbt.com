@@ -77,7 +77,7 @@ From the consent screen, the user can:
 - Choose whether to grant access to **all projects** or only **selected projects**.
 - Toggle **Keep session alive** to control whether dbt automatically refreshes their session (see [Sessions and refresh tokens](#sessions-and-refresh-tokens)).
 
-<Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" title="OAuth consent screen showing requested scopes and project access" />
+<Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" width="60%" title="OAuth consent screen showing requested scopes and project access" />
 
 Scopes available today include:
 

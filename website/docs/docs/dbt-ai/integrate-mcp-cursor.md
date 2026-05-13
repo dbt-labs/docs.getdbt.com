@@ -5,6 +5,8 @@ description: "Guide to set up Cursor with dbt-mcp"
 id: "integrate-mcp-cursor"
 ---
 
+import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
+
 [Cursor](https://docs.cursor.com/context/model-context-protocol) is an AI-powered code editor, powered by Microsoft Visual Studio Code (VS Code). 
 
 After setting up your MCP server, you connect it to Cursor. Log in to Cursor and follow the steps that align with your use case.
@@ -77,9 +79,14 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
 ## Set up with remote dbt MCP server
 
-Remote MCP supports **OAuth** (Enterprise and Enterprise+, private beta) or **token-based** headers. For OAuth, the MCP URL is `https://<Access URL>/api/ai/v1/mcp` (from **Account settings**). For prerequisites, flow, and limitations, refer to [Use Remote MCP quickstart](/docs/dbt-ai/mcp-quickstart-remote) and [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
+Remote MCP supports **OAuth** or **token-based** headers.
 
-The deeplink below configures **token-based** authentication (URL and headers).
+- _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+- For either method, the MCP URL is `https://<Access URL>/api/ai/v1/mcp`. You can find the URL in <Constant name="dbt_platform"/> **Account settings** under **MCP URL**.
+
+<MCPOauthPreflight />
+
+The deeplink below configures **token-based** authentication (URL and headers). For OAuth setup, follow the [remote MCP quickstart](/docs/dbt-ai/mcp-quickstart-remote#5-configure-your-mcp-client).
 
 1. Click the following application link with Cursor open:
 

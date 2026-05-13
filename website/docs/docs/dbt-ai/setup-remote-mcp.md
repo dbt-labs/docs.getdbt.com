@@ -61,13 +61,26 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 2. When prompted, complete sign-in in the browser and approve the requested scopes on the consent screen.
 3. Return to your MCP client; subsequent requests use the OAuth session according to your client's behavior.
 
-For details on scopes, sessions and refresh tokens, revoking access, and audit logging, see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
+### Register your MCP client
+
+OAuth requires every client to be registered with <Constant name="dbt_platform" />. There are two paths:
+
+- **Dynamic registration (default)** &mdash; Clients that implement [Dynamic Client Registration (RFC 7591)](/docs/platform/manage-access/connect-apps-oauth#dynamic-registration) self-register the first time a user connects. No admin action required. Most modern MCP clients (such as Claude Desktop, Claude Code, Cursor, and VS Code) support this.
+- **Manual registration** &mdash; For clients that don't support dynamic registration, an account admin registers the client in **Account settings → Integrations → App integrations**. Manually registered clients use [PKCE (RFC 7636)](/docs/platform/manage-access/connect-apps-oauth#manual-registration) instead of a client secret. See [Manual registration](/docs/platform/manage-access/connect-apps-oauth#manual-registration) for the admin walkthrough.
+
+Both types appear in **App integrations** in <Constant name="dbt_platform" />, where admins can review and audit each connected client.
+
+### Scopes you'll consent to
+
+The first time you connect, dbt shows a consent screen listing the scopes (the specific permissions the client is allowed to use) the MCP client is requesting. Scopes act as a **filter on your existing permissions** &mdash; they don't grant new access. You can also choose whether the client gets access to all projects or only selected projects.
+
+For the full list of scopes and what each one allows, see [Scopes and consent](/docs/platform/manage-access/connect-apps-oauth#scopes-and-consent). For sessions, refresh tokens, revoking access, and audit logging, see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
 ### Limitations
 
 - Remote MCP doesn't support local dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [local MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
 
-For client-specific steps, see the [integration guides](#integration-guides) at the end of this page.
+For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
 
 ## Token-based authentication {#token-based-authentication}
 
@@ -85,20 +98,20 @@ Token-based authentication lets you connect to the remote MCP server without OAu
 
 3. For the remote MCP, you will pass on headers through the JSON blob to configure required fields:
 
-  #### Configuration for APIs and SQL tools**
+  #### Configuration for APIs and SQL tools
 
   | Header | Required | Description |
   | --- | --- | --- |
   | Authorization | Required | Your [personal access token (PAT)](/docs/dbt-apis/user-tokens) or [service token](/docs/dbt-apis/service-tokens) from the <Constant name="dbt_platform"/>. <br/> **Note**: When using the Semantic Layer, we recommended to use a PAT. If you're using a service token, make sure that it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. <br /><br /> The value must be in the format `Token YOUR_DBT_ACCESS_TOKEN` or `Bearer YOUR_DBT_ACCESS_TOKEN`, replacing `YOUR_DBT_ACCESS_TOKEN` with your actual token.  |
   | x-dbt-prod-environment-id | Required | Your <Constant name="dbt_platform"/> production environment ID |
 
-  #### Additional configuration for SQL tools**
+  #### Additional configuration for SQL tools
   | Header | Required | Description |
   | --- | --- | --- |
   | x-dbt-dev-environment-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> development environment ID |
   | x-dbt-user-id | Required for `execute_sql` | Your <Constant name="dbt_platform"/> user ID ([see docs](/faqs/Accounts/find-user-id)) |
 
-  #### Additional configuration for Fusion tools**
+  #### Additional configuration for Fusion tools
 
 Fusion tools, by default, defer to the environment provided via `x-dbt-prod-environment-id` for model and table metadata.
 
@@ -109,7 +122,7 @@ Fusion tools, by default, defer to the environment provided via `x-dbt-prod-envi
   | x-dbt-fusion-disable-defer | Optional | Default: `false`. When set to `true`, <Constant name="fusion"/> tools will not defer to the production environment and use the models and table metadata from the development environment (`x-dbt-dev-environment-id`) instead. |
 
 
-  #### Configuration to disable tools**
+  #### Configuration to disable tools
   | Header | Required  | Description |
   | --- | --- | --- |
   | x-dbt-disable-tools | Optional | A comma-separated list of tools to disable. For instance: `get_all_models,text_to_sql,list_entities` |

@@ -10,6 +10,7 @@ import StaticSubdomainRequired from '/snippets/_static-subdomain-required.md';
 import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
+import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 
 Claude is an AI assistant from Anthropic with two primary interfaces:
 - [Claude Desktop](https://claude.ai/download): A GUI with MCP support for file access and commands, plus basic coding features.
@@ -69,7 +70,11 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     <Tabs>
     <TabItem value="oauth" label="OAuth (remote)">
 
-    OAuth removes the need to paste tokens into your config. Claude Desktop opens a browser for sign-in and consent the first time the server connects.
+    _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+
+    <MCPOauthPreflight />
+
+    Add the following to `claude_desktop_config.json`. Claude Desktop opens a browser for sign-in and consent the first time the server connects.
 
     ```json
     {
@@ -82,7 +87,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     }
     ```
 
-    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). For the full OAuth flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
+    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> **Account settings** under **MCP URL**.
 
     </TabItem>
     <TabItem value="token" label="Token-based">
@@ -144,6 +149,12 @@ Add the `dbt` entry to `.mcp.json` using the tab that matches your auth method:
 <Tabs>
 <TabItem value="oauth" label="OAuth (remote)">
 
+_OAuth is in private beta for Enterprise and Enterprise+ accounts._
+
+<MCPOauthPreflight />
+
+Add the following to `.mcp.json` at your project root. On first connect, Claude Code opens a browser for sign-in and consent.
+
 ```json
 {
   "mcpServers": {
@@ -155,15 +166,13 @@ Add the `dbt` entry to `.mcp.json` using the tab that matches your auth method:
 }
 ```
 
-Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). On first connect, Claude Code opens a browser for sign-in and consent.
+Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> **Account settings** under **MCP URL**.
 
 You can also register the same server from the CLI:
 
 ```bash
 claude mcp add --transport http dbt https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/
 ```
-
-For the full OAuth flow, scopes, and limitations, refer to [OAuth (remote MCP)](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp). Supported clients self-register on first connect (dynamic registration); others need an admin to register them manually in <Constant name="dbt_platform" />. Refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
 </TabItem>
 <TabItem value="token" label="Token-based">
