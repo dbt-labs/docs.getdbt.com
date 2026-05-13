@@ -16,7 +16,11 @@ Claude is an AI assistant from Anthropic with two primary interfaces:
 - [Claude Desktop](https://claude.ai/download): A GUI with MCP support for file access and commands, plus basic coding features.
 - [Claude Code](https://www.anthropic.com/claude-code): A terminal/IDE tool for development.
 
-Both interfaces can connect to either the **local** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) or the **remote** dbt MCP server (HTTP, no install, consumption-focused). Pick the section that matches your Claude interface, then choose local or remote.
+Both interfaces can connect to either:
+- Local dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) 
+- Remote dbt MCP server (HTTP, no install, consumption-focused). 
+
+Pick the section that matches your Claude interface, then choose local or remote.
 
 You don't need to clone the dbt-mcp repository &mdash; for local setups, install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the configs later in this page). Only clone the repository if you want to [contribute to dbt MCP](https://github.com/dbt-labs/dbt-mcp/issues).
 
