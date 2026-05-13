@@ -145,17 +145,7 @@ The following deprecated flags require updates in your job definitions or script
 
 - **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
 
-<VersionBlock lastVersion="1.99">
-
-If you are viewing these docs for <Constant name="core" />, use the version selector to open **dbt Fusion engine (Latest)** (version **2.0**), then return to this section to read guidance for `--partial-parse` and `--no-partial-parse` on <Constant name="fusion" /> job runs.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="2.0">
-
 <FusionPartialParseCliFlags />
-
-</VersionBlock>
 
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 
