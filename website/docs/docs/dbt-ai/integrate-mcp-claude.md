@@ -12,8 +12,8 @@ import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 
 Claude is an AI assistant from Anthropic with two primary interfaces:
-- [Claude Desktop](https://claude.ai/download) &mdash; a GUI with MCP support for file access and commands, plus basic coding features.
-- [Claude Code](https://www.anthropic.com/claude-code) &mdash; a terminal/IDE tool for development.
+- [Claude Desktop](https://claude.ai/download): A GUI with MCP support for file access and commands, plus basic coding features.
+- [Claude Code](https://www.anthropic.com/claude-code): A terminal/IDE tool for development.
 
 Both interfaces can connect to either the **local** dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) or the **remote** dbt MCP server (HTTP, no install, consumption-focused). Pick the section that matches your Claude interface, then choose local or remote.
 
