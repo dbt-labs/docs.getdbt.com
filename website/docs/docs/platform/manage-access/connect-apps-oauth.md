@@ -61,15 +61,24 @@ When configuring your client, use the following OAuth endpoints (replace `yourpr
 
 ## Use with remote MCP
 
-When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. Clients that support dynamic registration complete this automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
+When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup-remote-mcp#oauth-remote-mcp), it authenticates using OAuth. The client needs just your dbt platform MCP URL, which you can find in **Account settings** → **Integrations** → **App integrations**. Clients that support dynamic registration complete the registration step automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
 
-The **App integrations** section will also display the full **MCP URL** for your account so you can copy it directly into your AI tool.
+To connect a custom MCP client to dbt (for example, in Claude):
+
+1. In your AI tool, navigate to the connectors or integrations settings and choose to add a custom connector.
+2. Enter a name for the connector and paste your dbt platform MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`).
+
+<Lightbox src="/img/docs/dbt-cloud/oauth-connectors-page.png" title="Adding a custom dbt connector in an AI tool's connector settings" />
+
+3. Click **Add**. The tool will redirect you to dbt to complete the OAuth consent flow.
+
+<Lightbox src="/img/docs/dbt-cloud/oauth-add-custom-connector.png" title="Custom connector dialog showing the dbt MCP URL" />
 
 For more information on remote MCP OAuth setup, see [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
 
 ## Scopes and consent
 
-The first time a user connects an MCP client to dbt, dbt shows a consent screen listing the scopes the client is requesting. Scopes act as a **filter on the user's existing permissions** &mdash; they don't grant any new access. A user can only consent to scopes for permissions they already have in dbt.
+The first time a user connects a tool to dbt through OAuth, dbt shows a consent screen listing the scopes the client is requesting. Scopes act as a **filter on the user's existing permissions** &mdash; they don't grant any new access. A user can only consent to scopes for permissions they already have in dbt.
 
 From the consent screen, the user can:
 
@@ -79,7 +88,7 @@ From the consent screen, the user can:
 
 <Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" title="OAuth consent screen showing requested scopes and project access" />
 
-Scopes available today include:
+The exact scopes shown depend on what the connecting tool requests. The full list of available scopes is:
 
 | Scope | Description |
 |-------|-------------|
@@ -89,6 +98,16 @@ Scopes available today include:
 | `catalog:read` | Access model descriptions, column lineage, and other project metadata from dbt Catalog |
 | `projects:develop` | Use development tooling, including the CLI, to make updates to dbt models |
 | `jobs:run` | View, edit, and re-trigger dbt jobs |
+
+### For developers: handling partial scope grants
+
+When a user unchecks one or more scopes on the consent screen, the access token is issued with only the approved subset. Your client should:
+
+- Request only the scopes your tool actually needs — don't request scopes as a precaution.
+- Handle `403` responses gracefully and surface a clear message if a required scope was not granted.
+- Avoid assuming the full set of requested scopes was approved; always check the `scope` field in the token response.
+
+To select the scopes your client should request, choose from the list above. For clients registered via [Dynamic Client Registration](#dynamic-registration), scopes are declared in the registration request. For [manually registered clients](#manual-registration), scopes are configured as part of the registration form.
 
 ## Sessions and refresh tokens
 
