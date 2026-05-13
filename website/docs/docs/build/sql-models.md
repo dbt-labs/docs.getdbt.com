@@ -26,6 +26,7 @@ A SQL model is a `select` statement. Models are defined in `.sql` files (typical
 - The model name is inherited from the filename and must match the _filename_ of a model &mdash; including case sensitivity. Any mismatched casing can prevent dbt from applying configurations correctly and may affect metadata in [<Constant name="catalog" />](/docs/explore/explore-projects).
 - We strongly recommend using underscores for model names, not dots. For example, use `models/my_model.sql` instead of `models/my.model.sql`.
 - Models can be nested in subdirectories within the `models` directory.
+- Starting in <Constant name="core" /> v1.12, you can use Jinja-style suffixes (`.j2`, `.jinja`, `.jinja2`) on `.sql` files (for example, `my_model.sql.j2`) by enabling the [`allow_jinja_file_extensions`](/reference/global-configs/behavior-changes#jinja-file-extensions) flag.
 
 Refer to [How we style our dbt models](/best-practices/how-we-style/1-how-we-style-our-dbt-models) for details on how we recommend you name your models.
 

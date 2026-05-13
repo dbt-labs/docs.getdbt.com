@@ -9,18 +9,20 @@ import UniversalLogin from '/snippets/_universal-login.md';
 
 # Single sign-on (SSO) overview <Lifecycle status="managed, managed_plus" />
 
-This overview explains how users are provisioned in <Constant name="dbt" /> via single sign-on (SSO).
-<Constant name="dbt" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login. 
+This overview explains how users are provisioned in <Constant name="dbt" /> using single sign-on (SSO).
+<Constant name="dbt" /> supports JIT (Just-in-Time) provisioning and IdP-initiated login.
 
 <UniversalLogin />
 
 For SSO, users also use your account **Access URL** or **dbt Enterprise Login URL**, as described in this page.
 
-To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID). Learn more about our dbt plans [here](https://www.getdbt.com/pricing/).
+In the <Constant name="dbt_platform" />, dbt assigns an SSO slug (an identifier used in your SSO login URL) to your SSO configuration. The slug is system-generated and read-only. Existing SSO configurations remain valid, but you can’t edit the slug. If you delete and recreate your SSO configuration, the new configuration uses a new, system-generated slug.
+
+To further automate your workflow, you can use [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) to provision users, manage group memberships, and automate license assignments directly from your identity provider (IdP) (Okta or Microsoft Entra ID).
 
 ## Prerequisites
 
-- You have a <Constant name="dbt" /> Enterprise or Enterprise+ plan. [Contact us](mailto:sales@getdbt.com) to learn more, book a demo, or enroll.
+- You have a <Constant name="dbt" /> Enterprise or Enterprise+ plan. [Contact us](mailto:sales@getdbt.com) to learn more, book a demo, or enroll. For plan details, refer to [Pricing](https://www.getdbt.com/pricing/).
 
 ## Auth0 URIs
 
@@ -34,21 +36,21 @@ The diagram below explains the basic process by which users are provisioned in <
 
 #### Diagram Explanation
 
-- **Login Page**: The user accesses the <Constant name="dbt" /> login experience for example [https://login.dbt.com](https://login.dbt.com), their account **Access URL**, or their **dbt Enterprise Login URL**, and initiates the SSO flow.
-- **IdP-Initiated Login**: The user accesses the <Constant name="dbt" /> login page within the Identity Provider by selecting the <Constant name="dbt" /> application. This will begin the IdP login flow.
-- **IdP Login Page**: The user is prompted to login to the Identity Provider. This will grant the <Constant name="dbt" /> application access to the details of their account.
+- **Login Page**: The user accesses the <Constant name="dbt" /> login experience (for example, [https://login.dbt.com](https://login.dbt.com)), their account **Access URL**, or their **dbt Enterprise Login URL**, and initiates the SSO flow.
+- **IdP-Initiated Login**: The user accesses the <Constant name="dbt" /> login page within the Identity Provider by selecting the <Constant name="dbt" /> application. This starts the IdP login flow.
+- **IdP Login Page**: The user is prompted to log in to the Identity Provider. This grants the <Constant name="dbt" /> application access to the details of their account.
 - **Login?**: The user can choose to continue or to abort the login process.
   - **Yes**: The user logs in, grants the <Constant name="dbt" /> application, and continues.
   - **No**: The user does not log in. They return to the IdP login page.
-- **User Exists?**: This step checks if the user already exist in <Constant name="dbt" />'s user database.
+- **User Exists?**: This step checks if the user already exists in <Constant name="dbt" />'s user database.
   - **Yes**: If so, skip the user creation process
   - **No**: If so, create a new entry in the <Constant name="dbt" /> database for the new user.
 - **Create <Constant name="dbt" /> User**: This will create a new entry in the <Constant name="dbt" /> database for the new user. This user record contains the user's email address, first and last name, and any IdP attributes (for example, groups) passed along from the Identity Provider. <Constant name="dbt" /> will send a verification email, and the user must follow the steps in the [User experience section](/docs/platform/manage-access/invite-users#user-experience) to use SSO in <Constant name="dbt" />.
-- **Attach Matching Accounts**: <Constant name="dbt" /> find all of the accounts configured to match the SSO config used by this user to log in, and then create a user license record mapping the user to the account. This step will also delete any licenses that the user should not have based on the current SSO config.
-- **Attach Matching Permissions (Groups)**: <Constant name="dbt" /> iterates through the groups on the matching accounts, and find all that fit one of the below categories:
+- **Attach Matching Accounts**: <Constant name="dbt" /> finds all of the accounts configured to match the SSO config used by this user to log in, and then creates a user license record mapping the user to the account. This step also deletes any licenses that the user should not have based on the current SSO config.
+- **Attach Matching Permissions (Groups)**: <Constant name="dbt" /> iterates through the groups on the matching accounts and finds all that fit one of the following categories:
   - Have an SSO mapping group that is assigned to the user
-  - Have the "Assign by Default" option checked.
-Then, assign all of these (and only these) to the user license. This step will also remove any permissions that the user should not have based on the current SSO group mappings.
+  - Have the **Assign by Default** option selected.
+Then, assign all of these (and only these) to the user license. This step also removes any permissions that the user should not have based on the current SSO group mappings.
 - **<Constant name="dbt" /> Application**: After these steps, the user is redirected into the <Constant name="dbt" /> application, and they can begin to use the application normally.
 
 :::note License and permission mappings use IdP groups

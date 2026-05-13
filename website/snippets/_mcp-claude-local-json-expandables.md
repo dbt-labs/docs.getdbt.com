@@ -12,7 +12,7 @@ Before you begin, make sure your account admin enables AI features on your <Cons
 
 <Expandable alt_header="Local MCP (CLI only)">
 
-Local configuration for users who only want to use dbt CLI commands with <Constant name="core" /> or <Constant name="fusion" />
+Local configuration for users who only want to use dbt commands with <Constant name="core" /> or <Constant name="fusion" />
 
 ```json
 {
