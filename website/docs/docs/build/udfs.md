@@ -131,7 +131,11 @@ Follow these steps to define UDFs in dbt:
     <File name='functions/is_positive_int_numeric.sql'>
 
     ```sql
+    # syntax for Snowflake
     CASE WHEN a_num > 0 THEN 1 ELSE 0 END
+
+    # syntax for Postgres
+    SELECT CASE WHEN a_num > 0 THEN 1 ELSE 0 END
     ```
 
     </File>

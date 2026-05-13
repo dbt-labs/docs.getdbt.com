@@ -102,7 +102,11 @@ Create a separate SQL file for each overload body. In this example, the base fun
 <File name='functions/null_if_empty.sql'>
 
 ```sql
+# syntax for Snowflake
 CASE WHEN val = '' THEN NULL ELSE val END
+
+# syntax for Postgres
+SELECT CASE WHEN val = '' THEN NULL ELSE val END
 ```
 
 </File>
@@ -110,7 +114,11 @@ CASE WHEN val = '' THEN NULL ELSE val END
 <File name='functions/null_if_empty_numeric.sql'>
 
 ```sql
+# syntax for Snowflake
 CASE WHEN val = 0 THEN NULL ELSE val END
+
+# syntax for Postgres
+SELECT CASE WHEN val = 0 THEN NULL ELSE val END
 ```
 
 </File>
