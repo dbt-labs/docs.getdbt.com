@@ -51,9 +51,10 @@ The [Discovery API](/docs/dbt-apis/discovery-api) will contain a subset of data 
 
 Complete all of these items to ensure your <Constant name="dbt" /> resources and jobs will continue working without interruption.
 
-Use one of these two URL login options:
+Use one of these URL login options:
 
-- `us1.dbt.com.` If you were previously logging in with a username and password at `cloud.getdbt.com`, you should instead plan to log in at us1.dbt.com. The original URL will still work, but you’ll have to click through to be redirected upon login. If you have single sign-on configured, you will use the unique URL listed in the SSO account settings (ex: `ACCOUNT_PREFIX.us1.dbt.com`).
+- [https://login.dbt.com](https://login.dbt.com): Universal login shows the accounts you can access across instances. Account administrators can enable or disable this path with **Enable global account discovery** in [Account settings](/docs/platform/account-settings#enable-global-account-discovery).
+- `us1.dbt.com`: If you previously signed in with a username and password at `login.dbt.com`, plan to sign in at `us1.dbt.com` instead. The original URL still works, but you need to click through to continue after sign-in. If SSO is configured, use the unique URL listed in your SSO account settings, for example, `ACCOUNT_PREFIX.us1.dbt.com`.
 - `ACCOUNT_PREFIX.us1.dbt.com`: A unique URL specifically for your account. If you belong to multiple accounts, each will have a unique URL available as long as they have been migrated to multi-cell. 
 Check out [access, regions, and IP addresses](/docs/platform/about-platform/access-regions-ip-addresses) for more information.
 

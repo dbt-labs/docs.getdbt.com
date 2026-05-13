@@ -5,7 +5,7 @@ id: dbt-environment
 ---
 
 :::info 
-The dbt platform CLI provides the `dbt environment` command for environment and connection details. If you're using <Constant name="fusion" /> or <Constant name="core" />, use `dbt debug` to inspect profile, target, and connection &mdash; or use `dbtf debug` if you have more than one dbt CLI and want to inspect <Constant name="fusion" />.
+The dbt platform CLI provides the `dbt environment` command for environment and connection details. If you're using <Constant name="fusion" /> or <Constant name="core" />, use `dbt debug` to inspect profile, target, and connection &mdash; or use `dbtf debug` if you have both Core/Fusion and platform CLIs and want to inspect <Constant name="fusion" />.
 
 :::
 

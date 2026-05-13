@@ -326,7 +326,7 @@ Follow these steps to define UDFs in dbt:
     ```
     </File>
 
-When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the UDF definition from the state manifest (for example, a production environment) if the function is not selected or not yet built in your target environment. This allows models that depend on UDFs to run successfully in [continuous integration](/docs/deploy/continuous-integration) and development workflows.
+    When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the existing UDF in the deferred environment (for example, production) if the function is not selected or not yet built in your target environment. This requires a state manifest specified using `--state` or an equivalent environment variable (such as `DBT_ENGINE_STATE`), which dbt uses to determine where to defer. This allows models that depend on UDFs to run successfully in [continuous integration](/docs/deploy/continuous-integration) and development workflows. For more information, refer to [Configure state selection](/reference/node-selection/configure-state).
 
 5. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
@@ -343,7 +343,7 @@ When using [`--defer`](/reference/node-selection/defer), `function()` resolves t
     In your DAG, a UDF node is created from the SQL/Python and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
    <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" width="85%" title="The DAG for the UDF node" />
 
-After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example) or its configurations, your changes will be applied to the UDF in the warehouse next time you `build`.
+After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you `build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
 
 
 ## Using UDFs in unit tests

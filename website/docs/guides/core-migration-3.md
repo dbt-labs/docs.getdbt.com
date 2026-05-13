@@ -75,7 +75,7 @@ The <Constant name="studio_ide" /> provides a simplified interface that's access
 - Combining/piping commands, such as `dbt run -s (bash command)`, is not available.
 
 ### dbt CLI
-The <Constant name="dbt" /> CLI allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your <Constant name="dbt" /> development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
+The <Constant name="dbt" /> CLI allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your <Constant name="dbt_platform" /> development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
 
 When moving from dbt Core to <Constant name="dbt" />, make sure you check the `.gitignore` file contains the [necessary folders](/docs/platform/git/version-control-basics#the-gitignore-file). dbt Core doesn't interact with git so <Constant name="dbt" /> doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, <Constant name="dbt" /> won't add any missing entries to the `.gitignore file`.
 

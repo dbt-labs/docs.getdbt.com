@@ -94,7 +94,7 @@ This section applies to <Constant name="dbt_platform" /> users running the <Cons
 When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
-<Expandable alt_header="How can I query or preview metrics with the dbt CLI?">
+<Expandable alt_header="How can I query or preview metrics with the dbt platform CLI?">
 
 Check out the following video for a short video demo of how to query or preview metrics with the <Constant name="platform_cli" />:
 
@@ -653,7 +653,7 @@ Keep in mind that modifying your shell configuration files can have an impact on
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt CLI?">
+<DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt platform CLI?">
 
 The default `limit` for query issues from the <Constant name="platform_cli" /> is 100 rows. We set this default to prevent returning unnecessarily large data sets as the <Constant name="platform_cli" /> is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
 

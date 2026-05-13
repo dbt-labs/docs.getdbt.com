@@ -165,7 +165,7 @@ This is not currently possible, but something we hope to enable in the near futu
 
 <DetailsToggle alt_header="Is it possible to orchestrate job runs across multiple different projects?">
 
-<Constant name="dbt" /> will soon offer the capability to trigger jobs on the completion of another job, including a job in a different project. This offers one mechanism for executing a pipeline from start to finish across projects.
+Yes. You can configure <Constant name="dbt" /> to trigger a job when another job completes, including jobs in different projects. This is one way to execute a pipeline end to end across projects. For details, refer to [Trigger on job completion](/docs/deploy/deploy-jobs#trigger-on-job-completion).
 
 </DetailsToggle>
 
@@ -284,7 +284,7 @@ Used in conjunction with dbt Mesh, <Constant name="catalog" /> becomes a powerfu
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="How does the dbt CLI relate to and work with dbt Mesh?">
+<DetailsToggle alt_header="How does the dbt platform CLI relate to and work with dbt Mesh?">
 
 The [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) allows users to develop and run dbt commands from their preferred development environments, like VS Code, Sublime Text, or terminal interfaces. This flexibility is particularly beneficial in a dbt Mesh setup, where managing multiple projects can be complex. Developers can work in their preferred tools while leveraging the centralized capabilities of <Constant name="dbt" />.
 

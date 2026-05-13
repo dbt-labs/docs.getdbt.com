@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-The <Constant name="fusion_engine" /> is here! We currently offer it as a [private preview](/docs/dbt-versions/product-lifecycles#the-dbt-platform) on the <Constant name="dbt_platform" />. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
+The <Constant name="fusion_engine" /> is here and is now generally available for <Constant name="dbt_platform" /> projects on Snowflake! We currently offer it as a [preview](/docs/dbt-versions/product-lifecycles#the-dbt-platform) for all other supported adapters. Even if we haven't enabled it for your account, you can still start preparing your projects for upgrade. Use this checklist to ensure a smooth upgrade once <Constant name="fusion" /> becomes available. If this is all new to you, first [learn about <Constant name="fusion" />](/docs/fusion), its current state, and the features available. 
 
 import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md';
 
@@ -75,7 +75,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 
 ### Stay informed about Fusion progress
 
-The <Constant name="fusion_engine" /> remains in private preview and we currently offer it for eligible projects! We will notify you when all your projects are ready for <Constant name="fusion" /> based on our eligibility checks on your deployment jobs. In the meantime, keep up-to-date with these resources: 
+The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! We will notify you when all your projects are ready for <Constant name="fusion" /> based on our eligibility checks on your deployment jobs. In the meantime, keep up-to-date with these resources: 
 
 - [ ] Check out the [Fusion homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
 - [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to learn about the new features and functionality that impact your dbt projects.

@@ -24,7 +24,7 @@ dbt commands run against the platform's infrastructure and benefit from:
 * Support for dbt Mesh ([cross-project `ref`](/docs/mesh/govern/project-dependencies))
 * Significant platform improvements, to be released over the coming months
 
-<Lightbox src="/img/docs/dbt-platform/cloud-cli-overview.jpg" title="Diagram of how the dbt CLI works with dbt's infrastructure to run dbt commands from your local command line." />
+<Lightbox src="/img/docs/dbt-platform/dbt-cli-overview.png" title="Diagram of how the dbt CLI works with dbt's infrastructure to run dbt commands from your local command line." />
 
 ## Prerequisites
 
