@@ -20,11 +20,11 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### Overloaded UDFs <Lifecycle status="beta" />
+### New UDF features <Lifecycle status="beta" />
 
-You can define multiple argument signatures for the same user-defined function (UDF) using the `overloads` property. This is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are grouped into one <Term id="dag">DAG</Term> node, so they're built and retried together.
+- You can define multiple argument signatures for the same user-defined function (UDF) using the `overloads` property. This is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are grouped into one <Term id="dag">DAG</Term> node, so they're built and retried together. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and [`overloads`](/reference/resource-properties/overloads).
 
-For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and [`overloads`](/reference/resource-properties/overloads).
+- You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
 
 ### `on_error` model config <Lifecycle status="beta" />
 
@@ -41,10 +41,6 @@ Key changes in the new spec:
 - `type_params` is deprecated; its parameters are now top-level keys within each metric definition.
 
 For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
-
-### `packages` config for Python UDFs <Lifecycle status="beta" />
-
-You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
 
 ### `selector` method for named YAML selectors <Lifecycle status="beta" />
 
