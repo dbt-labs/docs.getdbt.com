@@ -6,11 +6,11 @@ description: "Reference for the dbt_cloud.yml credentials file used by the dbt C
 pagination_next: null
 ---
 
-The `dbt_cloud.yml` file stores the credentials that dbt tools &mdash; like the <Constant name="platform_cli" />, the [dbt VS Code extension](/docs/about-dbt-extension), and more &mdash; use to authenticate with <Constant name="dbt_platform" />. You can download it from <Constant name="dbt_platform" /> and save it locally to your `.dbt` directory.
+The `dbt_cloud.yml` file stores the credentials that dbt tools &mdash; like the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation), the [dbt VS Code extension](/docs/about-dbt-extension), and more &mdash; use to authenticate with <Constant name="dbt_platform" />. You can download it from <Constant name="dbt_platform" /> and save it locally to your `.dbt` directory.
 
 This page covers:
 
-- [How to download it and set up the `.dbt` directory](#download-dbt_cloudyml) for the dbt CLI or the VS Code extension
+- [How to download it and set up the `.dbt` directory](#download-dbt_cloudyml) for the <Constant name="platform_cli" /> or the VS Code extension
 - [The file structure](#file-structure) and field reference
 - [The companion `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) in `dbt_project.yml`
 
@@ -21,11 +21,11 @@ The `dbt_cloud.yml` file contains API keys. Store it securely and make sure you 
 ## Download dbt_cloud.yml
 import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
-How you download the file depends on whether you're configuring the <Constant name="platform_cli" /> or the [dbt VS Code extension](/docs/about-dbt-extension).
+How you download the file depends on whether you're configuring the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension](/docs/about-dbt-extension).
 
 1. In <Constant name="dbt_platform" />, select the project you want to work on. The project must already have a [development environment](/docs/dbt-platform-environments#create-a-development-environment) set up.
 2. Go to **Account settings** → **Your profile**, then follow the steps for your tool:
-  - dbt CLI: Navigate to **CLI** → **Configure Cloud authentication** and click **Download CLI configuration file**.
+  - <Constant name="platform_cli" />: Navigate to **CLI** → **Configure Cloud authentication** and click **Download CLI configuration file**.
   - dbt VS Code extension: Navigate to **VS Code Extension** → **Set up your credentials** and click **Download credentials**.
     The downloaded `dbt_cloud.yml` includes your [Personal access token (PAT)](/docs/dbt-apis/user-tokens).
 3. Move the file to your `.dbt` directory. If you don't have one yet, try one of these quick setup (one command) options:
@@ -87,7 +87,7 @@ projects:
 
 </File>
 
-For exmaple, if I had a Jaffle and wizard shop account, here's what my `dbt_cloud.yml` file would look like:
+For example, if I had a Jaffle and wizard shop account, here's what my `dbt_cloud.yml` file would look like:
 
 <File name="dbt_cloud.yml">
 
