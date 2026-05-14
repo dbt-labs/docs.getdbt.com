@@ -20,7 +20,6 @@ Both interfaces can connect to either:
 - Local dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) 
 - Remote dbt MCP server (HTTP, no install, consumption-focused). 
 
-Pick the section that matches your Claude interface, then choose local or remote.
 
 You don't need to clone the dbt-mcp repository &mdash; for local setups, install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the configs later in this page). Only clone the repository if you want to [contribute to dbt MCP](https://github.com/dbt-labs/dbt-mcp/issues).
 
