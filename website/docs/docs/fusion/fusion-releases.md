@@ -34,7 +34,7 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 
 On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses the account default or your chosen **Fusion release track**. Release tracks control how often that environment receives new Fusion builds. They're separate from the local CLI release channels in the previous section.
 
-For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable`, and more), see [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
+For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable`, and more), see [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::tip Live data below is for local CLI channels
 
