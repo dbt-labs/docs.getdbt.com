@@ -69,24 +69,24 @@ A `dbt_cloud.yml` file looks like this:
 ```yaml
 version: "1"
 context:
-  active-host: "<active host>"           # for example, "abc123.us1.dbt.com"
-  active-project: "<project-id>"         # for example, "123456"
+  active-host: your_active_host       # for example, "abc123.us1.dbt.com"
+  active-project: your_project_id     # for example, "123456"
 projects:
-  - project-name: "<project-name>"
-    project-id: "<project-id>"
-    account-name: "<account-name>"
-    account-id: "<account-id>"
-    account-host: "<account-host>"        # for example, "abc123.us1.dbt.com"
-    token-name: "<token-name>"            # for example, "cloud-cli-1234"
-    token-value: "<token-value>"
+  - project-name: your_project_name
+    project-id: your_project_id
+    account-name: your_account_name
+    account-id: your_account_id
+    account-host: your_account_host   # for example, "abc123.us1.dbt.com"
+    token-name: your_token_name       # for example, "cloud-cli-1234"
+    token-value: your_token_value
 
-  - project-name: "<project-name>"
-    project-id: "<project-id>"
-    account-name: "<account-name>"
-    account-id: "<account-id>"
-    account-host: "<account-host>"
-    token-name: "<token-name>"
-    token-value: "<token-value>"
+  - project-name: your_project_name
+    project-id: your_project_id
+    account-name: your_account_name
+    account-id: your_account_id
+    account-host: your_account_host
+    token-name: your_token_name
+    token-value: your_token_value
 ```
 
 </File>
@@ -98,7 +98,7 @@ projects:
 | `version` | Yes | The schema version of the file. Currently `"1"`. |
 | `context.active-project` | Yes | The `project-id` of the project to use by default when running commands. Must match a `project-id` listed under `projects`. |
 | `context.active-host` | Yes | The `account-host` to use by default (for example, `cloud.getdbt.com`). |
-| `context.defer-env-id` | No | The environment ID to defer to for build artifacts. Optional override of the project's default deferral environment. <Constant name="platform_cli" /> only. See [Configure deferral](/docs/platform/about-cloud-develop-defer#configure-deferral-environment-id). |
+| `context.defer-env-id` | No | The environment ID to defer to for build artifacts. Optional override of the project's default deferral environment. <Constant name="platform_cli" /> only. Refer to [Configure deferral](/docs/platform/about-cloud-develop-defer#configure-deferral-environment-id). |
 | `projects[].project-name` | Yes | A human-readable name for the project. |
 | `projects[].project-id` | Yes | The <Constant name="dbt_platform" /> project ID. Find it in the URL when viewing your project (for example, `…/projects/123456`). |
 | `projects[].account-name` | Yes | A human-readable name for the account. |
@@ -119,7 +119,7 @@ version:
 # Your project configs...
 
 dbt-cloud:
-  project-id: PROJECT_ID
+  project-id: your_project_id
   defer-env-id: '123456'  # optional
 ```
 
