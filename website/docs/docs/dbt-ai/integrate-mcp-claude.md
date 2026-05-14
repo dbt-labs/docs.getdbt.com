@@ -43,7 +43,7 @@ For a fast first install, you can download the prebuilt `.mcpb` file; for more c
 4. Enable the server in Claude Desktop.
 5. Ask Claude a data-related question and see dbt MCP in action!
 
-#### Advanced config with Claude desktop {#advanced-config-with-claude-desktop}
+#### Advanced config with Claude Desktop {#advanced-config-with-claude-desktop}
 
 Use advanced configuration when you want to define the dbt MCP server yourself in Claude's configuration file &mdash; the same JSON where Claude stores every MCP server, under `mcpServers`, with fields like `command`, `args`, and `env`. See the [MCP install pattern](https://modelcontextprotocol.io/quickstart/user#installing-the-filesystem-server) for the underlying convention.
 
