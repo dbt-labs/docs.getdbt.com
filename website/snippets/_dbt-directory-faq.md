@@ -10,11 +10,9 @@ If you've never had a `.dbt` directory, you should perform the following recomme
   1. Clone your dbt project repository locally.
   2. Use the `mkdir` command followed by the name of the folder you want to create. 
     - If using macOS, add the `~` prefix to create a `.dbt` folder in the root of your filesystem:
+     - macOS: `mkdir ~/.dbt`
+     - Windows: `mkdir %USERPROFILE%\.dbt`
 
-     ```bash
-     mkdir ~/.dbt # macOS
-     mkdir %USERPROFILE%\.dbt # Windows
-     ```
 </TabItem>
 
 <TabItem value="Move the dbt_cloud.yml file">
