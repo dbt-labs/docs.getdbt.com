@@ -57,11 +57,11 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 
 ### How it works
 
-1. In your MCP client, navigate to the connector or integrations settings and add your MCP URL (see [MCP URL](#mcp-url)):
+1. In your MCP client, navigate to the connector or integrations settings and add your MCP URL (see [MCP URL](#mcp-url)). For example, if you used Claude or ChatGPT, you would go to:
    - **Claude (web)**: **Customize** &rarr; **Connectors** &rarr; **+** &rarr; **Add custom connector**
    - **ChatGPT**: **Settings** &rarr; **Apps** &rarr; **Create App**
    - For Claude Desktop and Claude Code, see [Integrate Claude with dbt MCP](/docs/dbt-ai/integrate-mcp-claude).
-2. When prompted, complete sign-in in the browser and approve the requested scopes on the consent screen.
+2. When prompted in your MCP client, complete sign-in in the browser and approve the requested scopes on the consent screen.
 3. Return to your MCP client; subsequent requests use the OAuth session according to your client's behavior.
 
 ### Register your MCP client
