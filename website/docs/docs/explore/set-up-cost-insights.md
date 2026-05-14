@@ -6,7 +6,7 @@ id: "set-up-cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reduction', 'cost optimization']
 ---
 
-# Set up Cost Insights <Lifecycle status="private_beta,managed,managed_plus" />
+# Set up Cost Insights <Lifecycle status="beta,managed,managed_plus" />
 
 This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from state-aware orchestration across your dbt projects and models.
 

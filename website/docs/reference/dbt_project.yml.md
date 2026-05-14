@@ -47,9 +47,9 @@ The following example is a list of all available configurations in the `dbt_proj
 [flags](/reference/global-configs/project-flags):
   [<global-configs>](/reference/global-configs/project-flags)
 
-[dbt-cloud](/docs/platform/cloud-cli-installation):
-  [project-id](/docs/platform/configure-cloud-cli#configure-the-dbt-cli): project_id # Required
-  [defer-env-id](/docs/platform/about-cloud-develop-defer#defer-in-dbt-cli): environment_id # Optional
+[dbt-cloud](/docs/platform/dbt-cli-installation):
+  [project-id](/docs/platform/configure-dbt-cli#configure-the-dbt-cli): project_id # Required
+  [defer-env-id](/docs/platform/about-defer#defer-in-dbt-cli): environment_id # Optional
   [account-host](/docs/platform/about-platform/access-regions-ip-addresses): account-host # Defaults to 'cloud.getdbt.com'; Required if use a different Access URL
 
 [analyses](/docs/build/analyses): # Requires the require_corrected_analysis_fqns flag; available starting v1.12

@@ -1,6 +1,6 @@
 ---
 title: Configure and use the dbt CLI
-id: configure-cloud-cli
+id: configure-dbt-cli
 description: "Instructions on how to configure the dbt CLI"
 sidebar_label: "Configuration and usage"
 pagination_next: null
@@ -11,7 +11,7 @@ import LongSession from '/snippets/_long-sessions-cli.md';
 Learn how to configure the <Constant name="platform_cli" /> for your <Constant name="dbt" /> project to run dbt commands, like `dbt environment show` to view your <Constant name="dbt" /> configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
 - Secure credential storage in the <Constant name="dbt_platform" />.
-- [Automatic deferral](/docs/platform/about-cloud-develop-defer) of build artifacts to your project's production environment.
+- [Automatic deferral](/docs/platform/about-defer) of build artifacts to your project's production environment.
 - Speedier, lower-cost builds.
 - Support for <Constant name="mesh" /> ([cross-project ref](/docs/mesh/govern/project-dependencies)), and more.
 
@@ -19,14 +19,14 @@ Learn how to configure the <Constant name="platform_cli" /> for your <Constant n
 
 - You must set up a project in <Constant name="dbt" />.
   - **Note** &mdash; If you're using the <Constant name="platform_cli" />, you can connect to your [data platform](/docs/platform/connect-data-platform/about-connections) directly in the <Constant name="dbt_platform" /> interface and don't need a [`profiles.yml`](/docs/local/profiles.yml) file. 
-- You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The <Constant name="platform_cli" /> will use these credentials, stored securely in <Constant name="dbt" />, to communicate with your data platform.
-- You must be on dbt version 1.5 or higher. Refer to [<Constant name="dbt" /> versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
+- You must have your [personal development credentials](/docs/dbt-platform-environments#set-developer-credentials) set for that project. The <Constant name="platform_cli" /> will use these credentials, stored securely in <Constant name="dbt" />, to communicate with your data platform.
+- You must be on dbt version 1.5 or higher. Refer to [<Constant name="dbt" /> versions](/docs/dbt-versions/upgrade-dbt-platform-version) to upgrade.
 
 ## Configure the dbt CLI
 
 Once you install the <Constant name="platform_cli" />, you need to configure it to connect to a <Constant name="dbt" /> project.
 
-1. In <Constant name="dbt" />, select the project you want to configure your <Constant name="platform_cli" /> with. The project must already have a [development environment](/docs/dbt-cloud-environments#create-a-development-environment) set up.
+1. In <Constant name="dbt" />, select the project you want to configure your <Constant name="platform_cli" /> with. The project must already have a [development environment](/docs/dbt-platform-environments#create-a-development-environment) set up.
 2. From the main menu, go to **CLI**.
 3. In the **Configure Cloud authentication** section, click **Download CLI configuration file** to download your `dbt_cloud.yml` credentials file.
 

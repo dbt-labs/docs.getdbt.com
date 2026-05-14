@@ -76,7 +76,7 @@ With the readiness experience enabled, you can monitor your project's eligibilit
 <Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The Fusion readiness checklist"/>
 
 Common ineligibility reasons include:
-- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available]
+- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available]
 - Not using a [supported data platform](/docs/fusion/supported-features?version=2.0#requirements)
 - Project doesn't have at least one successful job run
 - Jobs that haven't run in the last 7 days or have recent failures
@@ -85,7 +85,7 @@ As you complete the steps in this guide, check the readiness panel to see your e
 
 ## Upgrade to the latest dbt Core version
 
-Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/cloud-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
+Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
 
 :::tip Test before you deploy
 
@@ -149,7 +149,7 @@ After validating in staging (or development if you don't have staging), upgrade 
 
 ### Step 5: Update jobs
 
-While environments control the dbt version for most scenarios, some older job configurations may have version overrides. Review your jobs and [update any that specify a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#jobs) to ensure they use the environment's Latest release track.
+While environments control the dbt version for most scenarios, some older job configurations may have version overrides. Review your jobs and [update any that specify a dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#jobs) to ensure they use the environment's Latest release track.
 
 ## Resolve all deprecation warnings
 

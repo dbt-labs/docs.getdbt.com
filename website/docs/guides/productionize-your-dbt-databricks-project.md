@@ -33,7 +33,7 @@ To get started, let's revisit the deployment environment created for your produc
 
 In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, you can design [data lakehouses](https://www.databricks.com/product/data-lakehouse) with separate environments. The _production_ environment includes the relations (schemas, tables, and views) that end users query or use, typically in a BI tool or ML model.
 
-In <Constant name="dbt" />, [environments](/docs/dbt-cloud-environments) come in two flavors:
+In <Constant name="dbt" />, [environments](/docs/dbt-platform-environments) come in two flavors:
 
 - Deployment &mdash; Defines the settings used for executing jobs created within that environment.
 - Development &mdash; Determine the settings used in the <Constant name="studio_ide" /> for a particular <Constant name="dbt" /> project. 
@@ -157,7 +157,7 @@ Inserting <Constant name="dbt" /> jobs into a Databricks Workflows allows you to
 - Logs and Run History: Accessing logs and run history becomes more convenient when using <Constant name="dbt" />.
 - Monitoring and Notification Features: <Constant name="dbt" /> comes equipped with monitoring and notification features like the ones described above that can help you stay informed about the status and performance of your jobs.
 
-To trigger your <Constant name="dbt" /> job from Databricks, follow the instructions in our [Databricks Workflows to run <Constant name="dbt" /> jobs guide](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
+To trigger your <Constant name="dbt" /> job from Databricks, follow the instructions in our [Databricks Workflows to run <Constant name="dbt" /> jobs guide](/guides/databricks-workflows).
 
 ## Data masking
 

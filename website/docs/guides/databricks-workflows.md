@@ -1,6 +1,6 @@
 ---
 title: "Use Databricks workflows to run dbt jobs"
-id: how-to-use-databricks-workflows-to-run-dbt-cloud-jobs
+id: databricks-workflows
 description: Learn how to use Databricks workflows to run dbt jobs
 displayText: "Use Databricks workflows to run dbt jobs"
 hoverSnippet: Learn how to use Databricks workflows to run dbt jobs

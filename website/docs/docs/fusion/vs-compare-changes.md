@@ -35,7 +35,7 @@ To use the dbt VS Code extension compare changes feature, you need:
 - The [dbt VS Code extension](/docs/install-dbt-extension) installed with a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
 - [Advanced CI features](/docs/platform/account-settings#enabling-advanced-ci-features) enabled in your <Constant name="dbt_platform" /> account
 - A `dbt_cloud.yml` file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux). The extension uses this to authenticate with <Constant name="dbt_platform" />. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />. [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account.
-- A baseline state to compare your changes against. See [How it works](#how-it-works) to choose between [automatic deferral](/docs/platform/about-cloud-develop-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
+- A baseline state to compare your changes against. See [How it works](#how-it-works) to choose between [automatic deferral](/docs/platform/about-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
 
 ## How it works
 
@@ -81,7 +81,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
   No. When you click **Compare**, the extension builds the model into your development schema automatically, so you don’t need to run `dbt build` yourself. It then compares that development build against the version in your deferred environment (usually staging or production).
 
-  If the model hasn’t been built yet in your deferred environment, the comparison can’t run. For more details, see [Defer to production](/docs/platform/about-cloud-develop-defer).
+  If the model hasn’t been built yet in your deferred environment, the comparison can’t run. For more details, see [Defer to production](/docs/platform/about-defer).
 
 </Expandable>
 
