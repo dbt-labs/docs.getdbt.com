@@ -18,6 +18,12 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access to the next monthly **Compatible** release after the <Constant name="core" /> v1.12 final release.
 
+:::info `dbt-adapters` version requirement
+<Constant name="core" /> v1.12 requires `dbt-adapters` v1.24.1 or later.
+
+If you are upgrading from <Constant name="core" /> v1.10 or v1.11, `pip` upgrades `dbt-adapters` to 1.24.1 or later when you install <Constant name="core" /> v1.12.
+:::
+
 ## New and changed features and functionality
 
 ### `on_error` model config <Lifecycle status="beta" />

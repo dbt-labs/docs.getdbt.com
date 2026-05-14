@@ -17,6 +17,12 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality that is included in <Constant name="core" /> v1.10! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.10 final release.
 
+:::caution `dbt-adapters` version compatibility
+<Constant name="core" /> v1.10 is not compatible with `dbt-adapters` v1.24.1 or later.
+
+To avoid incompatibility errors, upgrade to the latest `dbt-core` 1.10.x patch release before upgrading any adapter packages. These patch releases cap `dbt-adapters` below 1.24, so `pip` resolves to a compatible version.
+:::
+
 ## New and changed features and functionality
 
 New features and functionality available in <Constant name="core" /> v1.10
