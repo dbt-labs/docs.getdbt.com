@@ -80,7 +80,7 @@ export default function DocRootLayoutMain({
         // For other prerelease versions (like 1.11 beta)
         setPreData({
           showisPrereleaseBanner: true,
-          isPrereleaseBannerText: `You're viewing the docs for the beta version of dbt Core. Features may change before final release. Read more in the <a href="/docs/dbt-versions/core-upgrade/upgrading-to-v1.11">Upgrade guide</a>.`,
+          isPrereleaseBannerText: `You're viewing the docs for the beta version of dbt Core. Features may change before final release. Read more in the <a href="/docs/dbt-versions/core-upgrade/upgrading-to-v1.12">Upgrade guide</a>.`,
         });
       }
     }

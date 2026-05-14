@@ -161,7 +161,7 @@ Here’s our branching strategy again, but now with the dbt Cloud processes we w
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
-| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
+| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-platform-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
 | --- | --- | --- | --- | --- |
 | Development | development | - | `main` | Operations done in the IDE (including creating feature branches) |
 | Continuous Integration | deployment | General | `main` | A continuous integration job |
@@ -260,7 +260,7 @@ Here’s our branching strategy again, but now with the dbt Cloud processes we w
 
 In order to create the jobs in our diagram, we need dbt Cloud environments. Here are the common configurations for this setup\: 
 
-| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-cloud-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
+| Environment Name | [Environment Type](https://docs.getdbt.com/docs/dbt-platform-environments#types-of-environments) | [Deployment Type](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment) | Base Branch | Will handle… |
 | --- | --- | --- | --- | --- |
 | Development | development | - | `qa` | Operations done in the IDE (including creating feature branches) |
 | Feature CI | deployment | General | `qa` | A continuous integration job |

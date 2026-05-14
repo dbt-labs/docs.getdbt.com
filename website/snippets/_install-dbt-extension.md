@@ -21,11 +21,11 @@ To use the extension, you must meet the following prerequisites:
 | Prerequisite | Details |
 | --- | --- |
 | **<Constant name="fusion_engine" />**  | The [dbt VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview) requires the <Constant name="fusion_engine" /> binary (a small executable program). The extension will prompt you to install it, or you can [install it manually](#install-the-dbt-fusion-engine-from-the-command-line-if-you-havent-already) at any time. <br /><br />[Register your email](#register-the-extension) within 14 days of installing the dbt extension.  Free for up to 15 users.  |
-| **Project files** | - You need a `profiles.yml` configuration file.<br /><br />⁃ You _may_ need to [download](#register-with-dbt_cloudyml) a `dbt_cloud.yml` file depending on your [registration path](#choose-your-registration-path).<br /><br />⁃ You don't need a <Constant name="dbt_platform" /> project to use the extension. |
+| **Project files** | - You need a `profiles.yml` configuration file.<br /><br />⁃ You _may_ need to [download a `dbt_cloud.yml`](/reference/dbt_cloud.yml) file depending on your [registration path](#choose-your-registration-path).<br /><br />⁃ You don't need a <Constant name="dbt_platform" /> project to use the extension. |
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor) code editor. |
 | **Operating systems** | macOS, Windows, or Linux-based computer. |
 |  **Configure your local setup** (Optional) | [Configure the extension](/docs/configure-dbt-extension) to mirror your dbt environment locally and set any environment variables locally to use the VS Code extension features. |
-| **Run dbt-autofix** (Optional) | [Run dbt-autofix](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-autofix) to fix any errors and deprecations in your dbt project. |
+| **Run  dbt-autofix** (Optional) | If you haven't already installed the "Migrate <Constant name="core"/> to <Constant name="fusion" /> agent skill", you can alternatively [run dbt-autofix](/guides/prepare-fusion-upgrade?step=5#what-the-autofix-tool-handles) to fix any errors and deprecations in your dbt project. |
 
 ## Install the extension
 
@@ -128,7 +128,7 @@ After downloading the extension and installing the <Constant name="fusion_engine
 - The extension is free for organizations for up to 15 users (see the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup)).
 - Registration links your editor to a dbt account so you can keep using the extension beyond the grace period.
 - This _does not_ require a <Constant name="dbt_platform" /> project — just a dbt account.
-- If a valid `dbt_cloud.yml` file exists on your machine, the extension will automatically use it and skip login.
+- If a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists on your machine, the extension will automatically use it and skip login.
 - If you already have a dbt account (even from years ago), you will be directed into an OAuth sign-in flow.
 
 <Expandable alt_header="Understanding regions">
@@ -141,7 +141,7 @@ Use a credential file (`dbt_cloud.yml`) instead of sign-in when:
 - Your organization uses a non-default region (`eu1`, `us2`, and so on).
 - You prefer file-based credentials.
 
-If you're unsure whether you have a `US1` account from the past, try signing in or using **Forgot password** at [us1.dbt.com](http://us1.dbt.com). If nothing comes up, continue with [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml).
+If you're unsure whether you have a `US1` account from the past, try signing in or using **Forgot password** at [us1.dbt.com](http://us1.dbt.com). If nothing comes up, continue with the [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) section.
 </Expandable>
 
 #### Choose your registration path
@@ -151,7 +151,7 @@ Your dbt VS Code extension registration path depends on your situation. Select t
 - **New to dbt and never created a dbt account?** → Use [First-time registration](#first-time-registration).
 - **Have an existing dbt account and can sign in?** → Use [Existing dbt account](#existing-dbt-account).
 - **Email already exists or can’t sign in?** (locked, forgot password) → Use [Recover your login](#recover-your-login).
-- **Can't sign in or your organization uses a non-default region** (`eu1`, `us2`) → Use [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml).
+- **Can't sign in or your organization uses a non-default region** (`eu1`, `us2`) → Read the [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) section for more information.
 
 ### First-time registration
 
@@ -169,7 +169,7 @@ Use this if you've _never_ created a dbt account before.
 
 ### Existing account sign-in {#existing-dbt-account}
 
-Use this if you have an existing dbt account &mdash; including older or inactive accounts. dbt automatically detects your account and `dbt_cloud.yml` file if it exists (no file download needed). Use this to easily work across machines.
+Use this if you have an existing dbt account &mdash; including older or inactive accounts. dbt automatically detects your account and [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file if it exists (no file download needed). Use this to easily work across machines.
 
 1. [Update the VS Code extension](https://code.visualstudio.com/docs/setup/setup-overview#_update-cadence) to the latest version and restart your editor before beginning the registration process.
 2. Click the registration prompt or open the command palette and type: **dbt: Register dbt extension.**
@@ -179,7 +179,7 @@ Use this if you have an existing dbt account &mdash; including older or inactive
 6. Select the account you want to use and click **Continue**.
 7. You should see a page confirming your successful registration. Close the tab and go back to your editor to continue the registration.
 
-**When you might still need a `dbt_cloud.yml`:**
+**When you might still need a [`dbt_cloud.yml`](/reference/dbt_cloud.yml):**
 - You want a file-based credential for automations.
 - You're on the free Developer plan and your workflow needs a local credential file for defer.
 - Your region requires it (for example, regions like `eu1` or `us2`).
@@ -207,19 +207,15 @@ To reset your password and sign in through the OAuth flow:
 Use this if you can't sign in to your dbt account, your org uses a non-default region (`eu1`, `us2`), or your workflow requires a credential file.
 
 1. Log in to <Constant name="dbt_platform" /> and open **Account settings** → **VS Code extension**.
-2. In the **Set up your credentials** section, click **Download credentials** to get `dbt_cloud.yml` file.
+2. In the **Set up your credentials** section, click **Download credentials** to get your [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file.
     <Lightbox src="/img/docs/extension/download-registration-2.png" width="70%" title="Download the dbt_cloud.yml file from your dbt platform account."/>
-3. Move the file into your dbt directory:
-    - macOS/Linux: `~/.dbt/dbt_cloud.yml`
-    - Windows: `C:\Users\[username]\.dbt\`
-
-    For help creating/moving the `.dbt` directory, see [this FAQ](#how-to-create-a-dbt-directory-in-root-and-move-dbt_cloudyml-file).
+3. Move the file into your `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux, `C:\Users\[username]\.dbt\` on Windows). Refer to [`dbt_cloud.yml`](/reference/dbt_cloud.yml#download-dbt_cloudyml) for setup steps including how to create the `.dbt` directory.
 
 4. Return to the VS Code editor, open the command palette and type: **dbt: Register dbt extension**.
 5. The extension will detect the credential file and you can continue with the registration flow.
 
 **Behavior details:**
-- If the `dbt_cloud.yml` file exists, it takes precedence over any login flow and the extension uses it automatically.
+- If the [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists, it takes precedence over any login flow and the extension uses it automatically.
 - If the file is missing, you'll be prompted to sign in or add the file.
 
 ## Configure environment variables locally {#configure-environment-variables}

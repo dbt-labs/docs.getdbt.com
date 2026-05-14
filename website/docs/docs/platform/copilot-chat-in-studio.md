@@ -22,7 +22,7 @@ For multi-step workflows like building new models end-to-end, refactoring existi
 ## Prerequisites
 
 - Must have a [<Constant name="dbt" /> Starter, Enterprise or Enterprise+ account](https://www.getdbt.com/pricing).
-- Development environment is on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing updates.
+- Development environment is on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates.
 - <Constant name="copilot" /> enabled for your account.
     - Admins must [enable <Constant name="copilot" />](/docs/platform/enable-dbt-copilot#enable-dbt-copilot) (and opt-in to AI features, if required) in your dbt Cloud project settings.
 

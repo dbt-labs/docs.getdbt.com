@@ -27,7 +27,7 @@ These [features](#studio-ide-features) create a powerful editing environment for
 
 <Lightbox src="/img/docs/dbt-platform/platform-ide/ide-basic-layout.png" width="85%" title="The Studio IDE includes version control, files/folders, an editor, a command/console, and more."/>
 
-<Lightbox src src="/img/docs/dbt-platform/platform-ide/cloud-ide-v2.png" width="85%" title="Enable dark mode for a great viewing experience in low-light environments."/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/cloud-ide-v2.png" width="85%" title="Enable dark mode for a great viewing experience in low-light environments."/>
 </DocCarousel>
 
 :::tip Disable ad blockers
@@ -76,13 +76,13 @@ The <Constant name="studio_ide" /> comes with **CodeGenCodeLens**, a powerful fe
 
 ### dbt YAML validation
 
-The <Constant name="studio_ide" /> uses JSON Schema from the open source [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project to power YAML completion, structure checks, and inline diagnostics. These schemas are aligned with the <Constant name="fusion_engine" /> specification and apply across [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/cloud-release-tracks), even when your development environment is running <Constant name="core" />.
+The <Constant name="studio_ide" /> uses JSON Schema from the open source [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project to power YAML completion, structure checks, and inline diagnostics. These schemas are aligned with the <Constant name="fusion_engine" /> specification and apply across [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/dbt-release-tracks), even when your development environment is running <Constant name="core" />.
 
 If a warning looks wrong but <Constant name="dbt" /> commands succeed, trust your project commands and report the discrepancy so the schema can be improved. For background on the latest Semantic Layer YAML shape, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
 ## Get started with the Studio IDE
 
-In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-cloud-environments). In the following steps, we outline how to set up developer credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
+In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-platform-environments). In the following steps, we outline how to set up developer credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
 
 The <Constant name="studio_ide" /> uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
 
@@ -168,9 +168,9 @@ As a proprietary product, <Constant name="dbt" />'s source code isn't available 
 <DetailsToggle alt_header="What is the difference between developing on the Studio IDE, the dbt CLI, and dbt Core?">
 You can develop dbt using the web-based IDE in <Constant name="dbt" /> or on the command line interface using the <Constant name="platform_cli" /> or open-source <Constant name="core" />, all of which enable you to execute dbt commands. The key distinction between the <Constant name="platform_cli" /> and <Constant name="core" /> is the <Constant name="platform_cli" /> is tailored for <Constant name="dbt" />'s infrastructure and integrates with all its features:
 
-- <Constant name="studio_ide" />: <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-cloud-features"><Constant name="dbt" /></a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.
+- <Constant name="studio_ide" />: <a href="https://docs.getdbt.com/docs/platform/about-platform/dbt-platform-features"><Constant name="dbt" /></a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.
 
-- <Constant name="platform_cli" />: <a href="https://docs.getdbt.com/docs/platform/cloud-cli-installation">The <Constant name="platform_cli" /></a> allows you to run dbt commands against your dbt <Constant name="dbt" /> development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
+- <Constant name="platform_cli" />: <a href="https://docs.getdbt.com/docs/platform/dbt-cli-installation">The <Constant name="platform_cli" /></a> allows you to run dbt commands against your dbt <Constant name="dbt" /> development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
 
 - <Constant name="core" />: <Constant name="core" /> is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that's freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
 

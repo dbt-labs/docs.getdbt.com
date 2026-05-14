@@ -9,6 +9,8 @@ id: "setup-remote-mcp"
 
 The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
 
+<Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
+
 ## When to use remote MCP
 
 The remote MCP server is the ideal choice when:
