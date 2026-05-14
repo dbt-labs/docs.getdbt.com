@@ -13,27 +13,31 @@ import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 
 Claude is an AI assistant from Anthropic with two primary interfaces:
-- [Claude Desktop](https://claude.ai/download): A GUI with MCP support for file access and commands, plus basic coding features.
-- [Claude Code](https://www.anthropic.com/claude-code): A terminal/IDE tool for development.
+- [Claude Desktop](#claude-desktop): A GUI with MCP support for file access and commands, plus basic coding features.
+- [Claude Code](#claude-code): A terminal/IDE tool for development.
 
 Both interfaces can connect to either:
 - Local dbt MCP server (runs on your machine, supports CLI commands like `dbt run`) 
 - Remote dbt MCP server (HTTP, no install, consumption-focused). 
 
+## Prerequisites
 
-You don't need to clone the dbt-mcp repository &mdash; for local setups, install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the configs later in this page). Only clone the repository if you want to [contribute to dbt MCP](https://github.com/dbt-labs/dbt-mcp/issues).
+- You use Claude for AI or agentic work
+- For OAuth (local or remote), use your [access URL with a static subdomain](/docs/platform/about-platform/access-regions-ip-addresses).
 
 <StaticSubdomainRequired />
 
-For OAuth (local or remote), use your [access URL with a static subdomain](/docs/platform/about-platform/access-regions-ip-addresses).
-
 ## Claude Desktop
 
-Claude Desktop reads MCP servers from `claude_desktop_config.json`. Open it from **Settings &rarr; Developer &rarr; Edit Config**.
+[Claude Desktop](https://claude.ai/download) reads MCP servers from `claude_desktop_config.json`. Open it from **Settings &rarr; Developer &rarr; Edit Config**.
 
 ### Set up with local dbt MCP server {#desktop-local}
 
 For a fast first install, you can download the prebuilt `.mcpb` file; for more control, edit the JSON directly.
+
+:::tip
+You don't need to clone the dbt-mcp repository &mdash; for local setups, install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the configs later in this page). Only clone the repository if you want to [contribute to dbt MCP](https://github.com/dbt-labs/dbt-mcp/issues).
+:::
 
 #### Quick install with the .mcpb file
 
@@ -123,9 +127,13 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
 ## Claude Code
 
-Claude Code reads MCP servers from `.mcp.json` at the root of your project (the repository root for your workspace). If you already configured the dbt MCP server for another client, you can reuse the same JSON shape here &mdash; you don't need a second, separate registration.
+[Claude Code](https://www.anthropic.com/claude-code) reads MCP servers from `.mcp.json` at the root of your project (the repository root for your workspace). If you already configured the dbt MCP server for another client, you can reuse the same JSON shape here &mdash; you don't need a second, separate registration.
 
 ### Set up with local dbt MCP server {#code-local}
+
+:::tip
+You don't need to clone the dbt-mcp repository &mdash; for local setups, install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` (or use the configs later in this page). Only clone the repository if you want to [contribute to dbt MCP](https://github.com/dbt-labs/dbt-mcp/issues).
+:::
 
 1. Follow [Set up local MCP](/docs/dbt-ai/setup-local-mcp) to choose your auth pattern:
    - OAuth with the <Constant name="dbt_platform" />
