@@ -8,7 +8,7 @@ In <Constant name="dbt" />, you can import a git repository from any valid git U
 ## Git protocols
 Use an SSH clone URL for your repository. <Constant name="dbt" /> accepts both common shapes: SCP-style URLs like `git@github.com:organization/repo-name.git` and URLs that start with `ssh://`, for example `ssh://git@github.com/organization/repo-name.git`. Do not use `https://...` or other HTTP URLs, because <Constant name="dbt" /> clones over SSH and cannot clone repositories supplied with the HTTP protocol.
 
-### Equivalent ssh:// URL format {#equivalent-ssh-url-format}
+### Equivalent ssh:// URL format
 
 When you copy an SSH URL from your git provider (usually found under **Code** -> **Clone** -> **SSH**), it is often SCP-style and uses a colon (`:`) between the host and the path. That format is valid in <Constant name="dbt" />. If you prefer a `ssh://` URL instead, you can rewrite it as follows.
 
