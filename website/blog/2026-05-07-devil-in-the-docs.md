@@ -115,7 +115,7 @@ This is the first page of many in this new chapter. But we're planning a few thi
 
 - **Version-aware docs fetching**: Right now these tools return current docs. A developer on dbt Core 1.10 asking about incremental strategies gets 2026 docs. Version-aware routing &mdash; returning the right page for the right dbt version &mdash; is the next meaningful improvement, and we're [working](https://github.com/dbt-labs/dbt-mcp/pull/638) through it now!
 - **Smarter search ranking**: Relevance is good. Relevance tuned to dbt-specific concepts and query patterns would be better.
-- **Coverage gaps as a signal**: usage data tells us which pages answer well and which leave users hunting. Spotting the missing, thin, or outdated ones and fixing them means cleaner answers the next time someone asks.
+- **Coverage gaps as a signal**: Usage data tells us which pages answer well and which leave users hunting. Spotting the missing, thin, or outdated ones and fixing them means cleaner answers the next time someone asks.
 - **A dedicated dbt docs MCP server** maybe? It's not the right call right now &mdash; one coherent product with an active existing server is the right place to start &mdash; but in the future, maybe a standalone docs server could reach every MCP client regardless of whether they use the dbt MCP server at all?
 
 ## Give it a try!
