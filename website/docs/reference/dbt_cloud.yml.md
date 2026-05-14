@@ -6,7 +6,7 @@ description: "Reference for the dbt_cloud.yml credentials file used by the dbt C
 pagination_next: null
 ---
 
-The `dbt_cloud.yml` file stores the credentials that the <Constant name="platform_cli" /> and the [dbt VS Code extension](/docs/about-dbt-extension) use to authenticate with the <Constant name="dbt_platform" />. You download it from the <Constant name="dbt_platform" /> and save it locally to your `.dbt` directory.
+The `dbt_cloud.yml` file stores the credentials that dbt tools — including the <Constant name="platform_cli" />, the [dbt VS Code extension](/docs/about-dbt-extension), and more — use to authenticate with the <Constant name="dbt_platform" />. You download it from the <Constant name="dbt_platform" /> and save it locally to your `.dbt` directory.
 
 This page covers:
 
@@ -69,25 +69,24 @@ A `dbt_cloud.yml` file looks like this:
 ```yaml
 version: "1"
 context:
-  active-project: "<project id from the list below>"
-  active-host: "<active host from the list>"
-  defer-env-id: "<optional defer environment id>"
+  active-host: "<active host>"           # for example, "abc123.us1.dbt.com"
+  active-project: "<project-id>"         # for example, "123456"
 projects:
   - project-name: "<project-name>"
     project-id: "<project-id>"
     account-name: "<account-name>"
     account-id: "<account-id>"
-    account-host: "<account-host>" # for example, "cloud.getdbt.com"
-    token-name: "<pat-name>"
-    token-value: "<pat-value>"
+    account-host: "<account-host>"        # for example, "abc123.us1.dbt.com"
+    token-name: "<token-name>"            # for example, "cloud-cli-1234"
+    token-value: "<token-value>"
 
   - project-name: "<project-name>"
     project-id: "<project-id>"
     account-name: "<account-name>"
     account-id: "<account-id>"
-    account-host: "<account-host>" # for example, "cloud.getdbt.com"
-    token-name: "<pat-name>"
-    token-value: "<pat-value>"
+    account-host: "<account-host>"
+    token-name: "<token-name>"
+    token-value: "<token-value>"
 ```
 
 </File>
