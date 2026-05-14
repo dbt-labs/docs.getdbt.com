@@ -34,7 +34,7 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 
 On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses the account default or your chosen **Fusion release track**. Release tracks control how often that environment receives new Fusion builds. They're separate from the local CLI release channels in the previous section.
 
-For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable`, and more), see [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
+For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable`, and more), refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::tip Live data below is for local CLI channels
 
@@ -46,7 +46,7 @@ The **Current versions** cards and full release list below pull the public Fusio
     <summary>Updating local Fusion</summary>
 <p>
 
-The following commands apply only to **local** installations of <Constant name="fusion" />. They do not change which Fusion build runs in the <Constant name="dbt_platform" />. Instead, you can set a [Fusion release track](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in  <Constant name="dbt_platform" />.
+The following commands apply only to _local_ installations of <Constant name="fusion" />. They do not affect which Fusion build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [Fusion release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.
 
 Running the system update command without a version flag installs the `latest` stable release:
 
