@@ -22,7 +22,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
 
-You can now pass a SQL or Jinja string directly to the `dbt run-operation` command using the `--sql` flag, without defining a macro first. The statement runs through the full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. When your SQL contains no Jinja, dbt skips manifest compilation entirely for faster execution. For more information, refer to [About dbt run-operation](/reference/commands/run-operation).
+You can now use the `--sql` flag with `dbt run-operation` to execute ad hoc database statements directly against your warehouse, without defining a macro. This is useful for one-off operations like dropping or altering a table, applying grants, or running a data fix. The statement runs through dbt's full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. For more information, refer to [About dbt run-operation](/reference/commands/run-operation).
 
 ### `on_error` model config <Lifecycle status="beta" />
 
