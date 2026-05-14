@@ -25,7 +25,7 @@ To use the extension, you must meet the following prerequisites:
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor) code editor. |
 | **Operating systems** | macOS, Windows, or Linux-based computer. |
 |  **Configure your local setup** (Optional) | [Configure the extension](/docs/configure-dbt-extension) to mirror your dbt environment locally and set any environment variables locally to use the VS Code extension features. |
-| **Run [Fusion migration]( dbt-autofix** (Optional) | If you haven't already installed the "Migrate <Constant name="core"/> to <Constant name="fusion" /> agent skill", you can alternatively [run dbt-autofix](/guides/prepare-fusion-upgrade?step=5#what-the-autofix-tool-handles) to fix any errors and deprecations in your dbt project. |
+| **Run  dbt-autofix** (Optional) | If you haven't already installed the "Migrate <Constant name="core"/> to <Constant name="fusion" /> agent skill", you can alternatively [run dbt-autofix](/guides/prepare-fusion-upgrade?step=5#what-the-autofix-tool-handles) to fix any errors and deprecations in your dbt project. |
 
 ## Install the extension
 
