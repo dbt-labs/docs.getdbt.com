@@ -10,23 +10,29 @@ The `dbt_cloud.yml` file stores the credentials that dbt tools — including the
 
 This page covers:
 
-- [Where the file lives](#file-location)
+- [Where the file lives and how to set up the `.dbt` directory](#file-location-and-dbt-directory-setup)
 - [How to download it](#download-dbt_cloudyml) for the dbt CLI or the VS Code extension
 - [The file structure](#file-structure) and field reference
 - [The companion `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) in `dbt_project.yml`
 
-## File location
+## File location and `.dbt` directory setup
+
+import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
 Save your `dbt_cloud.yml` file in the `.dbt` directory:
 
 - **Mac or Linux**: `~/.dbt/dbt_cloud.yml`
 - **Windows**: `C:\Users\yourusername\.dbt\dbt_cloud.yml`
 
-If you have multiple copies and your file has a numerical addendum (for example, `dbt_cloud(2).yml`), remove the additional text from the filename.
-
 :::warning Keep this file safe
 The `dbt_cloud.yml` file contains API keys. Store it securely and do not commit it to version control.
 :::
+
+If you don't have a `.dbt` directory yet, or need to move the file after downloading, follow these steps:
+
+<DbtDirectoryFaq />
+
+If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The dbt CLI and extension only look for the exact filename.
 
 ## Download `dbt_cloud.yml`
 
@@ -130,18 +136,3 @@ dbt-cloud:
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
 | `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-cloud-develop-defer) and <Constant name="platform_cli" /> deferral overrides. |
 
-## FAQs
-
-import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
-
-<DetailsToggle alt_header="How to create a .dbt directory and move your file">
-
-<DbtDirectoryFaq />
-
-</DetailsToggle>
-
-<DetailsToggle alt_header="My downloaded file is named dbt_cloud(2).yml — what do I do?">
-
-If you've downloaded the file more than once, your browser may add a numerical suffix to the filename (for example, `dbt_cloud(2).yml`). Rename the file to `dbt_cloud.yml` before moving it into your `.dbt` directory. The CLI and extension only look for the exact filename `dbt_cloud.yml`.
-
-</DetailsToggle>
