@@ -26,7 +26,7 @@ How you download the file depends on whether you're configuring the <Constant na
 
 ### For the dbt CLI
 
-1. In <Constant name="dbt_platform" />, select the project you want to configure with the <Constant name="platform_cli" />. The project must already have a [development environment](/docs/dbt-cloud-environments#create-a-development-environment) set up.
+1. In <Constant name="dbt_platform" />, select the project you want to configure with the <Constant name="platform_cli" />. The project must already have a [development environment](/docs/dbt-platform-environments#create-a-development-environment) set up.
 2. From the main menu, go to **CLI**.
 3. In the **Configure Cloud authentication** section, click **Download CLI configuration file** to download your `dbt_cloud.yml` credentials file.
 
@@ -141,7 +141,7 @@ projects:
 | `version` | Yes | The schema version of the file. Currently `"1"`. |
 | `context.active-project` | Yes | The `project-id` of the project to use by default when running commands. Must match a `project-id` listed under `projects`. |
 | `context.active-host` | Yes | The `account-host` to use by default (for example, `cloud.getdbt.com`). |
-| `context.defer-env-id` | No | The environment ID to defer to for build artifacts. Optional override of the project's default deferral environment. <Constant name="platform_cli" /> only. Refer to [Configure deferral](/docs/platform/about-cloud-develop-defer#configure-deferral-environment-id). |
+| `context.defer-env-id` | No | The environment ID to defer to for build artifacts. Optional override of the project's default deferral environment. <Constant name="platform_cli" /> only. Refer to [Configure deferral](/docs/platform/about-defer#configure-deferral-environment-id). |
 | `projects[].project-name` | Yes | A human-readable name for the project. |
 | `projects[].project-id` | Yes | The <Constant name="dbt_platform" /> project ID. Find it in the URL when viewing your project (for example, `…/projects/123456`). |
 | `projects[].account-name` | Yes | A human-readable name for the account. |
@@ -171,4 +171,4 @@ dbt-cloud:
 | Field | Required | Description |
 |-------|----------|-------------|
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
-| `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-cloud-develop-defer) and <Constant name="platform_cli" /> deferral overrides. |
+| `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-defer) and <Constant name="platform_cli" /> deferral overrides. |
