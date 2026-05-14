@@ -52,7 +52,7 @@ This is the lowest-friction path for teams that don't need full IDE integration 
 
 The dbt VS Code extension runs <Constant name="fusion" /> and its language server in a local process and connects directly to your warehouse. For this reason, you need a `profiles.yml` for local extension development sessions.
 
-Download your `dbt_cloud.yml` from your <Constant name="dbt_platform" /> **Account settings** (refer to [Register with dbt_cloud.yml](/docs/install-dbt-extension#register-with-dbt_cloudyml) for detailed instructions) and <Constant name="fusion" /> attempts to hydrate non-sensitive credential metadata from <Constant name="dbt_platform" /> automatically. To avoid manually recreating your warehouse configuration, use `dbt init`.
+Download your [`dbt_cloud.yml`](/reference/dbt_cloud.yml) from your <Constant name="dbt_platform" /> **Account settings** and <Constant name="fusion" /> attempts to hydrate non-sensitive credential metadata from <Constant name="dbt_platform" /> automatically. To avoid manually recreating your warehouse configuration, use `dbt init`.
 
 ```shell
 dbt init
@@ -224,7 +224,7 @@ You can also document this convention in your project's `CONTRIBUTING.md` so it'
 
 ## 4. dbt Mesh and deferral
 
-If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during local development when a `dbt_cloud.yml` is present.
+If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during local development when a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present.
 
 ### How it works
 
@@ -239,7 +239,7 @@ Downloaded publication artifact for <upstream_project> to <path> (resolving cros
 
 <Constant name="fusion" /> caches downloaded publication artifacts for up to one hour, so subsequent runs in the same session skip the download and resolve refs from the local cache.
 
-Auto-deferral is also on by default. When a `dbt_cloud.yml` is present, <Constant name="fusion" /> defers to your project's configured deferral environment, so you build only modified models and their downstream dependencies while the rest resolve against the production state.
+Auto-deferral is also on by default. When a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present, <Constant name="fusion" /> defers to your project's configured deferral environment, so you build only modified models and their downstream dependencies while the rest resolve against the production state.
 
 ### Disabling deferral
 
@@ -265,7 +265,7 @@ The following table summarizes the key differences between the two local develop
 | **Credentials** | Managed through your <Constant name="dbt_platform" /> session, no `profiles.yml` needed | `profiles.yml` required; use `dbt init` to hydrate from <Constant name="dbt_platform" /> |
 | **Environment variables** | Same env vars as in <Constant name="dbt_platform" /> automatically | Use a `.env` file at the project root |
 | **Version management** | `dbt system update` to stay current | Dev container recommended for automatic sync |
-| **dbt Mesh / deferral** | Auto-enabled when `dbt_cloud.yml` present; `--no-defer` to disable | Auto-enabled when `dbt_cloud.yml` present; toggle off in extension settings |
+| **dbt Mesh / deferral** | Auto-enabled when [`dbt_cloud.yml`](/reference/dbt_cloud.yml) present; `--no-defer` to disable | Auto-enabled when [`dbt_cloud.yml`](/reference/dbt_cloud.yml) present; toggle off in extension settings |
 </SimpleTable>
 
 ## Related docs
