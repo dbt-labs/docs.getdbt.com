@@ -141,7 +141,7 @@ Use a credential file (`dbt_cloud.yml`) instead of sign-in when:
 - Your organization uses a non-default region (`eu1`, `us2`, and so on).
 - You prefer file-based credentials.
 
-If you're unsure whether you have a `US1` account from the past, try signing in or using **Forgot password** at [us1.dbt.com](http://us1.dbt.com). If nothing comes up, continue with [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) below.
+If you're unsure whether you have a `US1` account from the past, try signing in or using **Forgot password** at [us1.dbt.com](http://us1.dbt.com). If nothing comes up, continue with the [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) section.
 </Expandable>
 
 #### Choose your registration path
@@ -151,7 +151,7 @@ Your dbt VS Code extension registration path depends on your situation. Select t
 - **New to dbt and never created a dbt account?** → Use [First-time registration](#first-time-registration).
 - **Have an existing dbt account and can sign in?** → Use [Existing dbt account](#existing-dbt-account).
 - **Email already exists or can’t sign in?** (locked, forgot password) → Use [Recover your login](#recover-your-login).
-- **Can't sign in or your organization uses a non-default region** (`eu1`, `us2`) → Use [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) below.
+- **Can't sign in or your organization uses a non-default region** (`eu1`, `us2`) → Read the [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) section for more info.
 
 ### First-time registration
 
