@@ -46,7 +46,7 @@ The **Current versions** cards and full release list below pull the public Fusio
     <summary>Updating local Fusion</summary>
 <p>
 
-The following commands apply only to **local** installations of <Constant name="fusion" />. They do not change which Fusion build runs in the <Constant name="dbt_platform" />. In  <Constant name="dbt_platform" />, you set a [Fusion release track](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment instead.
+The following commands apply only to **local** installations of <Constant name="fusion" />. They do not change which Fusion build runs in the <Constant name="dbt_platform" />. Instead, you can set a [Fusion release track](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in  <Constant name="dbt_platform" />.
 
 Running the system update command without a version flag installs the `latest` stable release:
 
