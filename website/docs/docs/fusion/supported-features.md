@@ -50,7 +50,7 @@ Note that we have removed some deprecated features and introduced more rigorous 
 :::tip 
 <Constant name="dbt_platform" /> customers using <Constant name="fusion" /> can [develop across multiple development surfaces](/docs/fusion/fusion-availability), including  <Constant name="studio_ide"/> and VS Code with the dbt extension. 
 
-<Constant name="dbt_platform" /> [features](/docs/cloud/about-cloud/dbt-cloud-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
+<Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-platform-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
 :::
 
 If you're not sure what features are available in <Constant name="fusion" />, the dbt VS Code extension, <Constant name="fusion"/>-CLI, or more, the following table focuses on <Constant name="fusion" />-powered options. 
@@ -80,6 +80,8 @@ In this table, self-hosted means it's open-source/source-available and runs on y
 | Governance (PII/PHI tracking) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 | CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 
+For a full reference of Snowflake functions supported in <Constant name="fusion"/>, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
+
 <sup>1</sup> Support for other <Constant name="dbt_platform" /> and <Term id="lsp"/> features, like Column-level lineage, is coming soon. See [About LSP](/docs/about-dbt-lsp) for a more detailed comparison of dbt development environments.<br />
 <sup>2</sup> The [dbt VS Code extension](/docs/about-dbt-extension) is usable in VS Code, Cursor, Windsurf, and other VS Code–based editors.
 
@@ -91,7 +93,7 @@ Here are some additional considerations if using the Fusion CLI without the VS C
       - Benefits from Fusion engine's performance for `parse`, `compile`, `build`, and `run`, but _doesn't_ include <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.  
       - Requires `profiles.yml` only (no `dbt_cloud.yml`).
     - **dbt VS Code extension**
-      - Free to use and runs on the <Constant name="fusion_engine" />; register your email within 14 days. 
+      - Free to use and runs on the <Constant name="fusion_engine" />; register your email within 14 days.
       - Benefits from <Constant name="fusion" /> engine's performance for `parse`, `compile`, `build`, and `run`, and includes <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.
       - Capped at 15 users per organization. See the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup) for more information.
       - If you already have a <Constant name="dbt_platform" /> user account (even if a trial expired), sign in with the same email. Unlock or reset it if locked.  

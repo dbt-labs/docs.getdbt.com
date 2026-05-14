@@ -6,11 +6,7 @@ id: "cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reductions', 'cost optimizations']
 ---
 
-# Cost Insights <Lifecycle status="private_beta,managed,managed_plus" />
-
-:::info Private beta feature
-Cost Insights is a private beta feature. To request access, contact your account manager.
-:::
+# Cost Insights <Lifecycle status="beta,managed,managed_plus" />
 
 Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [state-aware orchestration](/docs/deploy/state-aware-about).
 
@@ -23,13 +19,21 @@ With Cost Insights, you can see:
 - **Cost trends over time**: Track your warehouse spend and optimization impact across your dbt projects.
 - **Filter by asset type**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
 
-
-
 The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of state-aware optimizations across various dimensions:
 
 - [Project dashboard](/docs/explore/explore-cost-data#project-dashboard)
 - [Catalog on Model page](/docs/explore/explore-cost-data#model-performance-in-catalog)
 - [Job details page](/docs/explore/explore-cost-data#job-details) 
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
+
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-model.png" title="Cost Insights in Catalog"/>
+
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
+
+</DocCarousel>
 
 ## Prerequisities
 

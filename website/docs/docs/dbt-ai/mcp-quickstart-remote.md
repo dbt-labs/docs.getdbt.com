@@ -1,13 +1,17 @@
 ---
-title: "Use dbt MCP with zero local install"
-sidebar_label: "Use MCP with zero install"
+title: "Connect to the remote dbt MCP server"
+sidebar_label: "Connect to the remote dbt MCP server"
 description: "Connect to the remote dbt MCP server via HTTP with no local installation."
 id: "mcp-quickstart-remote"
 ---
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
+# Connect to the remote dbt MCP server <Lifecycle status="self_service,managed,managed_plus"/>
+
 The remote MCP server connects to <Constant name="dbt_platform"/> using HTTP. No local installation is required &mdash; you configure your MCP client with a URL and headers instead of running `uvx dbt-mcp`.
+
+<Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
 
 ## When to use remote MCP
 
@@ -18,19 +22,19 @@ Remote MCP is a good fit when:
 - You need <Constant name="semantic_layer"/>, Administrative, and Discovery APIs access without a local dbt project.
 
 :::info Local development requires local MCP
-Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the dbt CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
+Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the local <Constant name="core" /> or <Constant name="fusion" /> CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
 :::
 
 ## Set up remote MCP
 Follow these steps to set up the remote MCP server:
 
 ### 1. Enable AI features
-In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) turned on.
+In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-copilot) turned on.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
 
-- **<Constant name="dbt_platform"/> host**: Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. See [Access, Regions, & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
+- **<Constant name="dbt_platform"/> host**: Form the URL as `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/` (for example, `https://cloud.getdbt.com/api/ai/v1/mcp/`). For multi-cell accounts, the host is in the format `ACCOUNT_PREFIX.us1.dbt.com`. See [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
 - **Production environment ID**: From **Orchestration** in <Constant name="dbt_platform"/>. You will use it as the `x-dbt-prod-environment-id` header.
 - **Token** &mdash; PAT or service token with Semantic Layer and Developer permissions.
 - **If you use `execute_sql`:** You must use a PAT, plus your development environment ID and user ID. See [Finding your IDs](/docs/dbt-ai/mcp-find-ids).

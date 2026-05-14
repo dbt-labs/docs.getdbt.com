@@ -25,7 +25,7 @@ To use the extension, you must meet the following prerequisites:
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor) code editor. |
 | **Operating systems** | macOS, Windows, or Linux-based computer. |
 |  **Configure your local setup** (Optional) | [Configure the extension](/docs/configure-dbt-extension) to mirror your dbt environment locally and set any environment variables locally to use the VS Code extension features. |
-| **Run dbt-autofix** (Optional) | [Run dbt-autofix](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-autofix) to fix any errors and deprecations in your dbt project. |
+| **Run dbt-autofix** (Optional) | [Run dbt-autofix](/guides/prepare-fusion-upgrade?step=5#what-the-autofix-tool-handles) to fix any errors and deprecations in your dbt project. |
 
 ## Install the extension
 
@@ -54,26 +54,29 @@ You're all set up with the dbt extension! The next steps are:
 - [Register the extension](#register-the-extension) with your email address or <Constant name="dbt_platform" /> account to continue using it beyond the trial period.
 - Review the [limitations and unsupported features](/docs/fusion/supported-features#limitations) if you haven't already.
 
-
 ## Getting started
 
-Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear on the sidebar. From here, you can access workflows to help you get started, offers information about the extension and your dbt project, and provides helpful links to guide you. For more information, see the [the dbt extension menu](/docs/about-dbt-extension#the-dbt-extension-menu) documentation. 
+Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear in the sidebar. Click it to open the **Get started** panel.
 
-You can get started with the extension a couple of ways: 
-- Running `dbtf init` to use the terminal onboarding,
-- Opening **dbt: Register dbt extension** in the command palette,
-- Using the **Get started** button in the extension menu.
+The **Get started** panel is a persistent, always-on setup companion available in both VS Code and Cursor.  It continuously monitors your environment and surfaces the single most important next action. As new <Constant name="fusion" /> releases ship or your project changes, the panel resurfaces relevant steps automatically.
 
-The following steps explain how to get started using the **Get started** button in the extension menu:
+<Lightbox src="/img/docs/extension/vsce-get-started.png" width="100%" title="The Get started panel in VS Code showing the four setup steps, with the active step highlighted as an orange CTA button."/>
 
-1. From the sidebar menu, click the dbt logo to open the menu and expand the **Get started** section. 
-2. Click the **dbt Walkthrough** status bar to view the welcome screen.
-    <Lightbox src="/img/docs/extension/welcome-screen.png" width="80%" title="dbt VS Code extension welcome screen."/>
-3. Click through the items to get started with the extension:
-    - **Open your dbt project:** Launches file explorer so you can select the dbt project you want to open with Fusion.
-    - **Check Fusion compatibility:** Runs the [Fusion upgrade](#upgrade-to-fusion) workflows to bring your project up-to-date. If you encounter any parsing errors, you can also run the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) to resolve them.
-    - **Explore features:** Opens the [documentation](/docs/about-dbt-extension) so you can learn more about all the extension has to offer.
-    - [**Register:**](#register-the-extension) Launches the registration workflow so you can continue to use the extension beyond the trial period.
+The panel guides you through four setup steps in order, showing only what's relevant to your current state:
+
+1. **Install or update <Constant name="fusion_engine" />**: Detects whether the <Constant name="fusion_engine" /> binary is missing or outdated and installs or updates it with a single click.
+2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
+3. **Check Fusion compatibility**: Guides you through upgrading your project to <Constant name="fusion" />. When you click this step, you can choose between two paths:
+    - **Start with an agent**: Installs the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill to your editor's skill folder
+        - This opens your AI chat (dbt Copilot or Cursor) with a migration prompt pre-filled. 
+        - A notification will confirm: _"We'll install the Migrate <Constant name="core" /> to <Constant name="fusion" /> agent skill to the editor's skill folder. Then we'll open your AI chat with a prompt to start the migration."_
+        - Click **Install & open chat** to proceed &mdash; the chat opens with the prompt already loaded, so you just press enter and the agent handles the migration. No CLI commands needed. Requires Copilot or Cursor.
+    - **Start manually in CLI**: Runs the <Constant name="fusion" /> upgrade workflow in your terminal. Refer to [Upgrade to <Constant name="fusion" />](#upgrade-to-fusion) for more info.
+4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day trial period. See [Register the extension](#register-the-extension).
+
+When all four steps are complete, the panel shows a green **Extension setup complete** button.
+
+<Lightbox src="/img/docs/extension/vsce-get-started-complete.png" width="100%" title="The Get started panel showing Extension setup complete with all four steps checked."/>
 
 ## Upgrade to Fusion
 
@@ -83,20 +86,26 @@ If you are already running the <Constant name="fusion_engine" />, you must be on
 
 :::
 
-The dbt extension provides a built-in upgrade tool to walk you through the process of configuring <Constant name="fusion" />  and updating your dbt project to support all of its features and fix any deprecated code. To start the process:
+The dbt extension provides two ways to upgrade your project to <Constant name="fusion" /> from the **Get started** panel:
 
-1. From the VS Code sidebar menu, click the **dbt logo**.
-2. In the resulting pane, open the **Get started** section and click the **Get started** button. 
+- **Agentic migration** &mdash; Automatically runs the <Constant name="dbt_core" />-to-<Constant name="fusion" /> migration via dbt Copilot or Cursor without any CLI steps. Select this option in the **Check Fusion compatibility** step of the **Get started** panel. Requires Copilot or Cursor.
+- **Manual CLI onboarding** &mdash; Walks you through the upgrade interactively in your terminal. Use this if you prefer the CLI or don't have Copilot or Cursor.
 
-    <Lightbox src="/img/docs/extension/fusion-onboarding-experience.png" width="80%" title="The dbt extension help pane and upgrade assistant." /> 
+### Manual CLI onboarding
 
-You can also manually start this process by opening a CLI window and running: 
+You can manually update your project to <Constant name="fusion" /> in a couple of ways:
 
-```
-dbt init --fusion-upgrade
-```
+- Trigger the manual flow from the **Get started** panel by selecting the **Manual CLI onboarding** option in the **Check Fusion compatibility** step.
+- Run the following command in your terminal:
 
-This will start the upgrade tool and guide you through the Fusion upgrade with a series of prompts:
+    ```
+    dbt init --fusion-upgrade
+    ```
+    <br />
+
+    <Lightbox src="/img/docs/extension/vsce-manual-upgrade.png" width="100%" title="The dbt extension Get started panel and upgrade assistant." /> 
+
+This starts the upgrade tool and guides you through the <Constant name="fusion" />  upgrade with a series of prompts:
 - **Do you have an existing dbt platform account?**: If you answer `Y`, you will be given instructions for downloading your dbt platform profile to register the extension. An `N` answer will skip to the next step.
 - **Ready to run a dbtf init?** (If there is no `profiles.yml` file present): You will go through the dbt configuration processes, including connecting to your data warehouse. 
 - **Ready to run a dbtf debug?** (If there is an existing `profiles.yml` file): Validates that your project is configured correctly and can connect to your data warehouse.
@@ -124,7 +133,7 @@ After downloading the extension and installing the <Constant name="fusion_engine
 
 <Expandable alt_header="Understanding regions">
 
-Most users can sign in from the extension's browser registration page for the default `US1` region. If that works, you have an account in the default region and don't need to consider other [regions](/docs/cloud/about-cloud/access-regions-ip-addresses).
+Most users can sign in from the extension's browser registration page for the default `US1` region. If that works, you have an account in the default region and don't need to consider other [regions](/docs/platform/about-platform/access-regions-ip-addresses).
 
 Use a credential file (`dbt_cloud.yml`) instead of sign-in when:
 
@@ -166,7 +175,7 @@ Use this if you have an existing dbt account &mdash; including older or inactive
 2. Click the registration prompt or open the command palette and type: **dbt: Register dbt extension.**
 3. In the browser registration form, select **Sign in** at the bottom of the form.
 4. Enter your email address associated with your dbt account and click **Continue**. If you don't remember your password, see [Recover your login](#recover-your-login) for help.
-5. You'll then have the option to select your existing dbt account.
+5. You'll then have the option to select your existing dbt account. If you don't have a dbt account, you will be prompted to create an account instead with your existing dbt user. 
 6. Select the account you want to use and click **Continue**.
 7. You should see a page confirming your successful registration. Close the tab and go back to your editor to continue the registration.
 

@@ -41,7 +41,7 @@ As another example, you could `clone` your modified incremental models as the fi
 
 ## Cloning in dbt
 
-You can clone nodes between states in <Constant name="dbt" /> using the `dbt clone` command. This is available in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) and the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in <Constant name="dbt" />, read [Using defer in <Constant name="dbt" />](/docs/cloud/about-cloud-develop-defer).
+You can clone nodes between states in <Constant name="dbt" /> using the `dbt clone` command. This is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) and the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in <Constant name="dbt" />, read [Using defer in <Constant name="dbt" />](/docs/platform/about-defer).
 
 - **Using <Constant name="platform_cli" />** &mdash; The `dbt clone` command in the <Constant name="platform_cli" /> automatically includes the `--defer` flag. This means you can use the `dbt clone` command without any additional setup.
 
@@ -49,7 +49,7 @@ You can clone nodes between states in <Constant name="dbt" /> using the `dbt clo
 
   - Set up your **Production environment** and have a successful job run.
   - Enable **Defer to production** by toggling the switch in the lower-right corner of the command bar.
-    <Lightbox src="/img/docs/dbt-cloud/defer-toggle.png" width="80%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
+    <Lightbox src="/img/docs/dbt-platform/defer-toggle.png" width="80%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the Studio IDE."/>
   - Run the `dbt clone` command from the command bar.
   
   
