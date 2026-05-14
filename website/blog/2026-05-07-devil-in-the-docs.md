@@ -45,7 +45,7 @@ So we chatted about this and toyed with the idea of either:
 
 But that still left us with the question of how to get the docs closer to users in a way that is easy to use and maintain.
 
-We ran some sql queries using the [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) and also used [Insights](/docs/explore/dbt-insights?version=2.0) for exploratory analysis in our internal dbt platform account:
+We ran some sql queries using Fusion in the [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) and also used [Insights](/docs/explore/dbt-insights?version=2.0) for exploratory analysis in our internal dbt platform account:
 
 We saw that the dbt MCP server had these benefits:
 - Great adoption already and had a ton of the infrastructure in place. Adding the docs tools would be a natural extension of that and would be a great way to get the docs closer to users
@@ -91,7 +91,7 @@ We also added the product docs toolset to dbt's [Developer agent](/docs/dbt-ai/d
 
 The Book arrived. No context switch required.
 
-Since we've added the docs toolsets in March, **428 unique dbt accounts** have reached for the docs through the dbt MCP server &mdash; and every one of those calls means that a user didn't have to leave their workflow to find the docs they needed. That's a win for users and a win for the docs team.
+Since we've added the docs toolsets in March, over **1000 unique dbt accounts** have reached for the docs through the dbt MCP server &mdash; and every one of those calls means that a user didn't have to leave their workflow to find the docs they needed. That's a win for users and a win for the docs team.
 
 And it's growing fast: **338** docs-tool calls in March (the month they launched), **1,113** in April, and over **6,000** in the first couple of weeks of May.
 
@@ -116,7 +116,7 @@ This is the first page of many in this new chapter. But we're planning a few thi
 - **Version-aware docs fetching**: Right now these tools return current docs. A developer on dbt Core 1.10 asking about incremental strategies gets 2026 docs. Version-aware routing &mdash; returning the right page for the right dbt version &mdash; is the next meaningful improvement, and we're [working](https://github.com/dbt-labs/dbt-mcp/pull/638) through it now!
 - **Smarter search ranking**: Relevance is good. Relevance tuned to dbt-specific concepts and query patterns would be better.
 - **Coverage gaps as a signal**: Usage data tells us which pages answer well and which leave users hunting. Spotting the missing, thin, or outdated ones and fixing them means cleaner answers the next time someone asks.
-- **A dedicated dbt docs MCP server**: Maybe? It's not the right call right now &mdash; one coherent product with an active existing server is the right place to start &mdash; but in the future, maybe a standalone docs server could reach every MCP client regardless of whether they use the dbt MCP server at all?
+- **A dedicated dbt docs API or MCP server**: Maybe? It's not the right call right now &mdash; one coherent product with an active existing server is the right place to start &mdash; but in the future, maybe a standalone docs server could reach every MCP client regardless of whether they use the dbt MCP server at all?
 
 ## Give it a try!
 
