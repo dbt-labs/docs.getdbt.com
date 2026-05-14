@@ -41,19 +41,13 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</TabItem>
 	</Tabs>
 
-:::important UDF support
-Additional languages (for example, Java, JavaScript, Scala) aren't currently supported when developing UDFs.
-
-See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
-:::
-
 ## Defining UDFs in dbt
 
-You can define SQL and Python UDFs in dbt. Python UDFs are supported in Snowflake and BigQuery when using <Constant name="core" /> or <Constant name="fusion" />. 
+You can define SQL, Python, and JavaScript (available in <Constant name="core" /> v1.12+) UDFs in dbt. Python and JavaScript UDFs are supported in Snowflake and BigQuery only.
 
 Follow these steps to define UDFs in dbt:
 
-1. Create a SQL or Python file under the `functions` directory. For example, this UDF checks if a string represents a positive integer:
+1. Create a SQL, Python, or JavaScript file under the `functions` directory. For example, this UDF checks if a string represents a positive integer:
 
     <Tabs>
 
@@ -64,8 +58,8 @@ Follow these steps to define UDFs in dbt:
 
     ```sql
     # syntax for BigQuery, Snowflake, and Databricks
-    REGEXP_INSTR(a_string, '^[0-9]+$') 
-    
+    REGEXP_INSTR(a_string, '^[0-9]+$')
+
     # syntax for Redshift and Postgres
     SELECT REGEXP_INSTR(a_string, '^[0-9]+$')
 
@@ -76,15 +70,29 @@ Follow these steps to define UDFs in dbt:
 
     </TabItem>
     <TabItem value="Python">
-    Define a Python UDF in a Python file. 
+    Define a Python UDF in a Python file.
 
     <File name='functions/is_positive_int.py'>
 
     ```py
     import re
-    
+
     def main(a_string):
         return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+    ```
+    </File>
+    </TabItem>
+    <TabItem value="JavaScript">
+    Define a JavaScript UDF in a JavaScript file.
+
+    :::info Beta feature
+    Support for JavaScript UDFs is a beta feature in <Constant name="core" /> v1.12.
+    ::: 
+
+    <File name='functions/is_positive_int.js'>
+
+    ```js
+    return /^[0-9]+$/.test(a_string) ? 1 : 0;
     ```
     </File>
     </TabItem>
@@ -184,10 +192,34 @@ Follow these steps to define UDFs in dbt:
     ```
     </File>
     </TabItem>
+    <TabItem value="JavaScript">
+
+    JavaScript UDFs don't require additional configs beyond the standard [function properties](/reference/function-properties). You can optionally set a Snowflake-specific config to control argument quoting:
+
+    - [`snowflake.quote_args`](/reference/resource-configs/quote_args): Controls whether argument names are quoted when creating the UDF on Snowflake. Defaults to `true`.
+
+    <File name='functions/schema.yml'>
+
+    ```yml
+    functions:
+      - name: is_positive_int                    # required
+        description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
+        config:
+          snowflake:                             # optional
+            quote_args: false                   # optional, Snowflake only, defaults to true
+        arguments:                               # optional
+          - name: a_string                       # required if arguments is specified
+            data_type: string                    # required if arguments is specified
+            description: The string to check     # optional
+        returns:                                 # required
+          data_type: integer                     # required
+    ```
+    </File>
+    </TabItem>
     </Tabs>
 
     :::info volatility warehouse-specific
-   	Something to note is that `volatility` is accepted in dbt for both SQL and Python UDFs, but the handling of it is warehouse-specific. BigQuery ignores `volatility` and dbt displays a warning. In Snowflake, `volatility` is applied when creating the UDF. Refer to [volatility](/reference/resource-configs/volatility) for more information.
+   	Something to note is that `volatility` is accepted in dbt for SQL, Python, and JavaScript UDFs, but the handling of it is warehouse-specific. BigQuery ignores `volatility` and dbt displays a warning. In Snowflake, `volatility` is applied when creating the UDF. Refer to [volatility](/reference/resource-configs/volatility) for more information.
     :::
 
 3. Run one of the following `dbt build` commands to build your UDFs and create them in the warehouse:
@@ -204,9 +236,9 @@ Follow these steps to define UDFs in dbt:
     dbt build --select is_positive_int
     ```
 
-     When you run `dbt build`, both the `functions/schema.yml` file and the corresponding SQL or Python file (for example, `functions/is_positive_int.sql` or `functions/is_positive_int.py`) work together to generate the `CREATE FUNCTION` statement.
+    When you run `dbt build`, both the `functions/schema.yml` file and the corresponding SQL, Python, or JavaScript file work together to generate the `CREATE FUNCTION` statement.
      
-     The rendered `CREATE FUNCTION` statement depends on which adapter you're using. For example:
+    The rendered `CREATE FUNCTION` statement depends on which adapter you're using. For example:
 
     <Tabs>
 
@@ -312,6 +344,33 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     </Tabs>
     </TabItem>
+
+    <TabItem value="JavaScript">
+    <Tabs>
+
+    <TabItem value="Snowflake">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INTEGER
+    LANGUAGE JAVASCRIPT
+    AS $$
+    return /^[0-9]+$/.test(A_STRING) ? 1 : 0;
+    $$;
+    ```
+    </TabItem>
+
+    <TabItem value="BigQuery">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INT64
+    LANGUAGE js
+    AS r'''
+    return /^[0-9]+$/.test(a_string) ? 1 : 0;
+    ''';
+    ```
+    </TabItem>
+    </Tabs>
+    </TabItem>
     </Tabs>
 
 4. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
@@ -343,7 +402,7 @@ Follow these steps to define UDFs in dbt:
     In your DAG, a UDF node is created from the SQL/Python and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
    <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" width="85%" title="The DAG for the UDF node" />
 
-After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you `build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
+After defining a UDF, if you update the SQL, Python, or JavaScript file that contains its function body (`is_positive_int.sql`, `is_positive_int.py`, or `is_positive_int.js` in these examples), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you `build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
 
 
 ## Using UDFs in unit tests
@@ -388,7 +447,8 @@ Use the [`build` command](/reference/commands/build#functions) to select UDFs wh
 For more information about selecting UDFs, see the examples in [Node selector methods](/reference/node-selection/methods#file).
 
 ## Limitations
-- Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported. 
+- Creating UDFs in other languages (for example, Java or Scala) is not yet supported.
+- JavaScript UDFs are supported on Snowflake and BigQuery only. Using JavaScript UDFs on an unsupported adapter raises a parsing error.
 - Python UDFs are supported in Snowflake and BigQuery only (when using <Constant name="core" /> or <Constant name="fusion" />). Other warehouses aren't yet supported for Python UDFs.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
 

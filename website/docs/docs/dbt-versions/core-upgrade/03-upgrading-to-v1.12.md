@@ -20,6 +20,10 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
+### JavaScript UDFs <Lifecycle status="beta" />
+
+<Constant name="core" /> v1.12 adds support for JavaScript user-defined functions (UDFs) on Snowflake and BigQuery. Define a JavaScript UDF by creating a `.js` file in your `functions/` directory and a corresponding YAML file with the function's arguments and return type. For more information, refer to [User-defined functions](/docs/build/udfs).
+
 ### `on_error` model config <Lifecycle status="beta" />
 
 You can configure whether downstream models run when an upstream model fails using the [`on_error`](/reference/resource-configs/on_error) config. Set `on_error: continue` on a model to allow its downstream models to still attempt to run even when it fails. By default (`skip_children`), dbt skips all downstream models on failure. Note that [`--fail-fast`](/reference/global-configs/failing-fast) takes precedence &mdash; runs with `--fail-fast` stop at the first failure, even if a model is configured with `on_error: continue`.
@@ -88,6 +92,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
+- You can use the [`snowflake.quote_args`](/reference/resource-configs/quote_args) config on JavaScript UDFs to control whether argument names are quoted in the generated `CREATE FUNCTION` statement. When `true` (default), Snowflake quotes argument names and uppercases them internally, so you must reference arguments in uppercase inside the function body.
 - You can set the [`iceberg_version`](/docs/mesh/iceberg/snowflake-iceberg-support#adapter-properties) config on Snowflake Iceberg tables to control which Iceberg format version Snowflake uses. Set it to `3` to use Iceberg V3, which improves `VARIANT` type support and makes row-level changes more efficient by tracking deletions separately instead of rewriting data. The default value is `2`. Note that you cannot change the value of `iceberg_version` after table creation.
 - You can configure the [`scheduler`](/reference/resource-configs/snowflake-configs#scheduler) parameter on Snowflake dynamic tables to control how refreshes are managed. Setting it to `ENABLE` lets Snowflake automatically refresh the dynamic table, while `DISABLE` means dbt manages refreshes during model execution. When `scheduler` is set to `ENABLE`, you must also specify [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag). 
 
