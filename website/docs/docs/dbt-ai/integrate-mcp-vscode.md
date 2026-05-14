@@ -197,12 +197,14 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
 <MCPRemoteOauthBetaCallout />
 
-<MCPRemoteServerUrl />
-
 1. Open the command palette (`Control/Command + Shift + P`) and select one of:
     - **MCP: Open Workspace Folder MCP Configuration** &mdash; for this workspace.
     - **MCP: Open User Configuration** &mdash; for your user.
-2. Add a `dbt` entry under the top-level `servers` key. (VS Code uses `servers`, not `mcpServers`.) Pick the tab that matches your auth method:
+2. Get your MCP URL:
+
+    <MCPRemoteServerUrl />
+
+3. Add a `dbt` entry under the top-level `servers` key. (VS Code uses `servers`, not `mcpServers`.) Pick the tab that matches your auth method:
 
     <Tabs>
     <TabItem value="oauth" label="OAuth (remote)">
@@ -253,7 +255,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     </TabItem>
     </Tabs>
 
-3. Save the file. Use **MCP: List Servers** from the command palette to start the server, then ask Copilot Chat a data-related question to confirm the connection.
+4. Save the file. Use **MCP: List Servers** from the command palette to start the server, then ask Copilot Chat a data-related question to confirm the connection.
 
 ## Troubleshooting
 
