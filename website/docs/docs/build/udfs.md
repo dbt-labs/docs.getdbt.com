@@ -94,7 +94,7 @@ Follow these steps to define UDFs in dbt:
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
-    **Optional**: You can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
+    **Optional**: You can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
 
     <Tabs>
     <TabItem value="SQL">

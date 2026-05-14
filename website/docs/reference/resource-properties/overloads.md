@@ -41,7 +41,7 @@ functions:
 The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-The `overloads` property lets you define multiple argument signatures for the same UDF. The database dispatches to the correct version based on the argument types passed at call time. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake.
+The `overloads` property lets you define multiple argument signatures for the same UDF. This lets you call the same function name with different input types, without creating separate UDFs for each variant. The warehouse calls the right version based on the argument types. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake.
 
 Each overload references a separate SQL or Python file that contains its function body, and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built, retried, and selected together.
 
