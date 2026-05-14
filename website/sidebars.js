@@ -1184,6 +1184,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "reference/dbt_project.yml",
+        "reference/dbt_cloud.yml",
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
