@@ -27,7 +27,7 @@ Learn how to configure the <Constant name="platform_cli" /> for your <Constant n
 Once you install the <Constant name="platform_cli" />, you need to configure it to connect to a <Constant name="dbt" /> project.
 
 1. In <Constant name="dbt" />, select the project you want to configure your <Constant name="platform_cli" /> with. The project must already have a [development environment](/docs/dbt-platform-environments#create-a-development-environment) set up.
-2. Download your `dbt_cloud.yml` credentials file and save it to your `.dbt` directory (`~/.dbt/dbt_cloud.yml` on Mac/Linux, `C:\Users\yourusername\.dbt\dbt_cloud.yml` on Windows). For download steps, the full file structure, and a field reference, see [`dbt_cloud.yml`](/reference/dbt_cloud.yml).
+2. Download your `dbt_cloud.yml` credentials file and save it to your `.dbt` directory (`~/.dbt/dbt_cloud.yml` on Mac/Linux, `C:\Users\yourusername\.dbt\dbt_cloud.yml` on Windows). For download steps, the full file structure, and a field reference, refer to [`dbt_cloud.yml`](/reference/dbt_cloud.yml).
 
 3. After downloading the config file and creating your directory, navigate to a project in your terminal:
 
