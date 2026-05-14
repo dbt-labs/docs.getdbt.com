@@ -14,7 +14,7 @@ If you have a monorepo with several dbt projects, opening a single pull request 
 - You have a <Constant name="dbt" /> account.
 - CI features:
    - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your <Constant name="dbt" /> account must be on the [Starter, Enterprise, or Enterprise+ plan](https://www.getdbt.com/pricing/).
-   - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/cloud-release-tracks) and to <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts. Refer to [Configure SQLFluff linting](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) when you add SQLFluff to your project.
+   - [SQL linting](/docs/deploy/continuous-integration#sql-linting) is available on [<Constant name="dbt" /> release tracks](/docs/dbt-versions/dbt-release-tracks) and to <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts. Refer to [Configure SQLFluff linting](/docs/deploy/continuous-integration#to-configure-sqlfluff-linting) when you add SQLFluff to your project.
 
 :::note SQLFluff and the <Constant name="fusion_engine" />
 SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs that run on the <Constant name="fusion_engine" />. For more information, refer to [<Constant name="fusion" /> limitations](/docs/fusion/supported-features#limitations).
@@ -22,7 +22,7 @@ SQLFluff linting is not yet supported for <Constant name="dbt_platform" /> jobs 
 
 - [Advanced CI](/docs/deploy/advanced-ci) features:
    - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your <Constant name="dbt" /> account must be on an [Enterprise-tier plan](https://www.getdbt.com/pricing/) and have enabled Advanced CI features. Please ask your [<Constant name="dbt" /> administrator to enable](/docs/platform/account-settings#account-access-to-advanced-ci-features) this feature for you. After enablement, the **dbt compare** option becomes available in the CI job settings.
-- Set up a [connection with your <Constant name="git" /> provider](/docs/platform/git/git-configuration-in-dbt-cloud). This integration lets <Constant name="dbt" /> run jobs on your behalf for job triggering.
+- Set up a [connection with your <Constant name="git" /> provider](/docs/platform/git/configure-git). This integration lets <Constant name="dbt" /> run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/platform/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
 import GitProvidersCI from '/snippets/_git-providers-supporting-ci.md';
@@ -96,7 +96,7 @@ The following is an example of a CI report in a GitHub pull request, which is sh
 
 ## Trigger a CI job with the API <Lifecycle status="managed,managed_plus" />
 
-If you're not using <Constant name="dbt" />’s native <Constant name="git" /> integration with [GitHub](/docs/platform/git/connect-github), [GitLab](/docs/platform/git/connect-gitlab), or [Azure DevOps](/docs/platform/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-apis/admin-cloud-api) to trigger a CI job to run. However, <Constant name="dbt" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
+If you're not using <Constant name="dbt" />’s native <Constant name="git" /> integration with [GitHub](/docs/platform/git/connect-github), [GitLab](/docs/platform/git/connect-gitlab), or [Azure DevOps](/docs/platform/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-apis/admin-api) to trigger a CI job to run. However, <Constant name="dbt" /> will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from <Constant name="git" /> providers, which is only available through the native integrations.
 
 If you instead need workflows that run after a merge (not CI checks on an open pull request), refer to [Continuous deployment in <Constant name="dbt" />](/docs/deploy/continuous-deployment) and [Merge jobs](/docs/deploy/merge-jobs).
 
@@ -281,7 +281,7 @@ Double-check that your PR isn't trying to merge using a commit that belongs to a
 
 <DetailsToggle alt_header="CI job not triggering for Virtual Private dbt users">
 
-To trigger jobs on <Constant name="dbt" /> using the [API](/docs/dbt-apis/admin-cloud-api), your Git provider needs to connect to your <Constant name="dbt" /> account.
+To trigger jobs on <Constant name="dbt" /> using the [API](/docs/dbt-apis/admin-api), your Git provider needs to connect to your <Constant name="dbt" /> account.
 
 If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.
 </DetailsToggle>

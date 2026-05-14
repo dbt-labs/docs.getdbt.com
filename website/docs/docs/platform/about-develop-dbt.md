@@ -3,7 +3,7 @@ title: Develop with dbt
 id: about-develop-dbt
 description: "Learn how to develop your dbt projects using dbt."
 sidebar_label: "Develop with dbt" 
-pagination_next: "docs/platform/about-cloud-develop-defer"
+pagination_next: "docs/platform/about-defer"
 intro_text: "Develop dbt projects using the dbt platform, a faster and more reliable way to deploy dbt and manage your project in a single, web-based UI."
 ---
 
@@ -20,7 +20,7 @@ Choose the option that best fits your needs:
   <Card
     title="dbt CLI"
     body="Allows you to develop and run dbt commands from your local command line or code editor against your dbt development environment."
-    link="/docs/platform/cloud-cli-installation"
+    link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>
 
   <Card

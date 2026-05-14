@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Environment-level permissions give <Constant name="dbt" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment gives users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
+Environment-level permissions give <Constant name="dbt" /> admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-platform-environments) within a project. Granting access to an environment gives users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
 
 You can configure multiple rows for the same permission set within a group when each row has different project scope and/or environment write access.
 

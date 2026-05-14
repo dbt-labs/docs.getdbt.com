@@ -84,7 +84,7 @@ Support for other data platforms, such as Fabric, isn't available at this time. 
 
 <Expandable alt_header="Do I need to be on a specific version of dbt to use dbt Semantic Layer?">
 
-Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-versions/upgrade-dbt-platform-version).
 </Expandable>
 
 <Expandable alt_header="Does dbt Semantic Layer require a specific dbt plan?">

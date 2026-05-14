@@ -50,7 +50,7 @@ Note that we have removed some deprecated features and introduced more rigorous 
 :::tip 
 <Constant name="dbt_platform" /> customers using <Constant name="fusion" /> can [develop across multiple development surfaces](/docs/fusion/fusion-availability), including  <Constant name="studio_ide"/> and VS Code with the dbt extension. 
 
-<Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-cloud-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
+<Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-platform-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
 :::
 
 If you're not sure what features are available in <Constant name="fusion" />, the dbt VS Code extension, <Constant name="fusion"/>-CLI, or more, the following table focuses on <Constant name="fusion" />-powered options. 
