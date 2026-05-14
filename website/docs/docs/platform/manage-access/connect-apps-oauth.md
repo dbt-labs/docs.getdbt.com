@@ -52,12 +52,12 @@ To add a manually registered integration:
 
 Manually registered clients appear in the **Manually registered** section.
 
-When configuring your client, use the following OAuth endpoints (replace `yourprefix` with your dbt platform subdomain):
+When configuring your client, use the following OAuth endpoints (replace `YOUR_PREFIX` with your dbt platform subdomain):
 
 | Endpoint | URL |
 |----------|-----|
-| Authorization | `https://yourprefix.dbt.com/oauth/authorize` |
-| Token | `https://yourprefix.dbt.com/oauth/token` |
+| Authorization | `https://YOUR_PREFIX.dbt.com/oauth/authorize` |
+| Token | `https://YOUR_PREFIX.dbt.com/oauth/token` |
 
 ## Use with remote MCP
 
