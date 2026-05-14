@@ -57,7 +57,7 @@ For more information, refer to [Using threads](/docs/running-a-dbt-project/using
 ### How to use Fusion
  
 You can:
-- Select Fusion from the [dropdown/toggle in the dbt platform](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine)
+- Select Fusion from the [dropdown/toggle in the dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
 - [Install the dbt extension for VSCode](/docs/install-dbt-extension) <Lifecycle status="preview" />
 - [Install the Fusion CLI](/docs/local/install-dbt?version=2#get-started) <Lifecycle status="preview" />
 

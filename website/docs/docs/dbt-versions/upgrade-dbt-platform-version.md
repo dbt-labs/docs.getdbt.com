@@ -1,12 +1,12 @@
 ---
 title: "Upgrade versions in dbt platform"
-id: "upgrade-dbt-version-in-cloud"
+id: "upgrade-dbt-platform-version"
 ---
 
 import FusionDWH from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 
-In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
+In <Constant name="dbt" />, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-platform-environments) are configured to use a specific version of <Constant name="core" />. The version can be upgraded at any time.
 
 ## Environments
 
@@ -22,7 +22,7 @@ The **Latest** track ensures you have up-to-date <Constant name="dbt" /> functio
 
 As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
-To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the name of your release track:
+To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the name of your release track:
 - `fusion-nightly`
 - `fusion-stable` (formerly `latest-fusion`)
 - `fusion-extended`
@@ -33,14 +33,14 @@ To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-a
 
 ### Override dbt version
 
-Configure your project to use a different dbt version than what's configured in your [development environment](/docs/dbt-cloud-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
+Configure your project to use a different dbt version than what's configured in your [development environment](/docs/dbt-platform-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
 
 1. Click your account name from the left side panel and select **Account settings**. 
 2. Choose **Credentials** from the sidebar and select a project. This opens a side panel.
 3. In the side panel, click **Edit** and scroll to the **User development settings** section. 
 4. Choose a version from the **dbt version** dropdown and click **Save**.
 
-  An example of overriding the configured version to [**Latest** release track](/docs/dbt-versions/cloud-release-tracks) for the selected project:
+  An example of overriding the configured version to [**Latest** release track](/docs/dbt-versions/dbt-release-tracks) for the selected project:
 
   <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
@@ -160,14 +160,14 @@ For more on version support and future releases, see [Understanding <Constant na
 
 ### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/core-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-legacy-versions-under-10).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/core-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10).
 
 ### Testing your changes before upgrading
 
 Once you know what code changes you'll need to make, you can start implementing them. We recommend you:
 - Create a separate dbt project, "Upgrade project", to test your changes before making them live in your main dbt project.
 - In your "Upgrade project", connect to the same repository you use for your production project.
-- Set the development environment [settings](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to run the latest version of <Constant name="core" />.
+- Set the development environment [settings](/docs/dbt-versions/upgrade-dbt-platform-version) to run the latest version of <Constant name="core" />.
 - Check out a branch `dbt-version-upgrade`, make the appropriate updates to your project, and verify your dbt project compiles and runs with the new version in the <Constant name="studio_ide" />.
   - If upgrading directly to the latest version results in too many issues, try testing your project iteratively on successive minor versions. There are years of development and a few breaking changes between distant versions of <Constant name="core" /> (for example, 1.0 --> 1.10). The likelihood of experiencing problems upgrading between successive minor versions is much lower, which is why upgrading regularly is recommended.
 - Once you have your project compiling and running on the latest version of dbt in the development environment for your `dbt-version-upgrade` branch, try replicating one of your production jobs to run off your branch's code.

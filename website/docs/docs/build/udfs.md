@@ -16,7 +16,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 
 ## Prerequisites
 
-* Make sure you're using dbt platform's **Latest Fusion** or **Latest** [release track](/docs/dbt-versions/cloud-release-tracks) or dbt Core v1.11.
+* Make sure you're using dbt platform's **Latest Fusion** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or dbt Core v1.11.
 * Use one of the following adapters:
 
 	<Tabs>

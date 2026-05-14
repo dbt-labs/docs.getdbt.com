@@ -113,7 +113,7 @@ The UDFs are called out individually in further sections below.
 Within dbt Cloud, you’ll need the following (more detail can be found [here](https://docs.getdbt.com/docs/use-dbt-semantic-layer/quickstart-sl#prerequisites)):
 
 - Have a dbt Cloud Team or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment.
-- Have both your production and development [environments](https://docs.getdbt.com/docs/dbt-cloud-environments) running dbt version 1.6 or higher.
+- Have both your production and development [environments](https://docs.getdbt.com/docs/dbt-platform-environments) running dbt version 1.6 or higher.
 - Create a successful job run in the environment where you [configure the Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer).
 
 ## The Code

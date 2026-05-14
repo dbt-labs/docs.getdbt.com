@@ -12,16 +12,16 @@ You can also implement continuous integration (CI) in <Constant name="dbt" />, w
 
 ## Trigger jobs with automation or APIs
 
-[Merge jobs](/docs/deploy/merge-jobs) and [deploy jobs](/docs/deploy/deploy-jobs) start from your [<Constant name="git" /> provider](/docs/platform/git/git-configuration-in-dbt-cloud) or from other triggers you configure inside <Constant name="dbt" />. Merge jobs that react to merges use the webhook flow summarized in [How merge jobs work](#how-merge-jobs-work) below and detailed under [Set up job trigger on Git merge](/docs/deploy/merge-jobs#set-up-merge-jobs).
+[Merge jobs](/docs/deploy/merge-jobs) and [deploy jobs](/docs/deploy/deploy-jobs) start from your [<Constant name="git" /> provider](/docs/platform/git/configure-git) or from other triggers you configure inside <Constant name="dbt" />. Merge jobs that react to merges use the webhook flow summarized in [How merge jobs work](#how-merge-jobs-work) below and detailed under [Set up job trigger on Git merge](/docs/deploy/merge-jobs#set-up-merge-jobs).
 
-To start the same merge or deployment job from your own tooling, use the [Administrative API](/docs/dbt-apis/admin-cloud-api) and [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run). Configure and validate the job in <Constant name="dbt" /> first, note the account and job identifiers from the deployment URL or job settings, authenticate with [service tokens](/docs/dbt-apis/service-tokens) or [personal access tokens](/docs/dbt-apis/user-tokens), assemble the HTTPS request headers and JSON body from [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run), then monitor the resulting run alongside any webhook-triggered executions in job history.
+To start the same merge or deployment job from your own tooling, use the [Administrative API](/docs/dbt-apis/admin-api) and [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run). Configure and validate the job in <Constant name="dbt" /> first, note the account and job identifiers from the deployment URL or job settings, authenticate with [service tokens](/docs/dbt-apis/service-tokens) or [personal access tokens](/docs/dbt-apis/user-tokens), assemble the HTTPS request headers and JSON body from [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run), then monitor the resulting run alongside any webhook-triggered executions in job history.
 
 - **CI triggered through Administrative API payloads** behaves differently than rerunning deployment or merge jobs. Follow [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api) on the [CI jobs](/docs/deploy/ci-jobs) page.
 - **Integrations** with schedulers and platforms (for example [Airflow and <Constant name="dbt" />](/guides/airflow-and-dbt-cloud), Prefect, Databricks) are collected on [Deployment tools](/docs/deploy/deployment-tools).
 
 ## How merge jobs work
 
-When you set up merge jobs, <Constant name="dbt" /> listens for notifications from your [<Constant name="git" /> provider](/docs/platform/git/git-configuration-in-dbt-cloud) indicating that a PR has been merged. When <Constant name="dbt" /> receives one of these notifications, it enqueues a new run of the merge job.
+When you set up merge jobs, <Constant name="dbt" /> listens for notifications from your [<Constant name="git" /> provider](/docs/platform/git/configure-git) indicating that a PR has been merged. When <Constant name="dbt" /> receives one of these notifications, it enqueues a new run of the merge job.
 
 You can set up merge jobs to perform one of the following when a PR merges:
 

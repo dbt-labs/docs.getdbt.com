@@ -17,7 +17,7 @@ For a complete list of configuration options and property specs, see the [Semant
 
 MetricFlow allows you to:
 - Intuitively define metrics in your dbt project
-- Develop from your preferred environment, whether that's the [dbt platform CLI](/docs/platform/cloud-cli-installation), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), or [<Constant name="core" />](/docs/local/install-dbt)
+- Develop from your preferred environment, whether that's the [dbt platform CLI](/docs/platform/dbt-cli-installation), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), or [<Constant name="core" />](/docs/local/install-dbt)
 - Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
 - Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
 
