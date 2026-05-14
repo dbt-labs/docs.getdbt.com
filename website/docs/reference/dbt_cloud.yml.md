@@ -10,31 +10,17 @@ The `dbt_cloud.yml` file stores the credentials that dbt tools — including the
 
 This page covers:
 
-- [Where the file lives and how to set up the `.dbt` directory](#file-location-and-dbt-directory-setup)
-- [How to download it](#download-dbt_cloudyml) for the dbt CLI or the VS Code extension
+- [How to download it and set up the `.dbt` directory](#download-dbt_cloudyml) for the dbt CLI or the VS Code extension
 - [The file structure](#file-structure) and field reference
 - [The companion `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) in `dbt_project.yml`
-
-## File location and `.dbt` directory setup
-
-import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
-
-Save your `dbt_cloud.yml` file in the `.dbt` directory:
-
-- **Mac or Linux**: `~/.dbt/dbt_cloud.yml`
-- **Windows**: `C:\Users\yourusername\.dbt\dbt_cloud.yml`
 
 :::warning Keep this file safe
 The `dbt_cloud.yml` file contains API keys. Store it securely and do not commit it to version control.
 :::
 
-If you don't have a `.dbt` directory yet, or need to move the file after downloading, follow these steps:
-
-<DbtDirectoryFaq />
-
-If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The dbt CLI and extension only look for the exact filename.
-
 ## Download `dbt_cloud.yml`
+
+import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
 How you download the file depends on whether you're configuring the <Constant name="platform_cli" /> or the [dbt VS Code extension](/docs/about-dbt-extension).
 
@@ -57,14 +43,65 @@ How you download the file depends on whether you're configuring the <Constant na
 
     </details>
 
-4. Save the file to your [`.dbt` directory](#file-location).
+4. Move the file to your `.dbt` directory. If you don't have one yet, you can set it up with a one-liner or follow the step-by-step instructions below.
+
+    **Quick setup (one command):**
+
+    <Tabs>
+    <TabItem value="mac-linux" label="Mac / Linux">
+
+    ```bash
+    mkdir -p ~/.dbt && mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
+    ```
+
+    </TabItem>
+    <TabItem value="windows" label="Windows">
+
+    ```powershell
+    mkdir %USERPROFILE%\.dbt 2>nul & move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
+    ```
+
+    </TabItem>
+    </Tabs>
+
+    **Step-by-step:**
+
+    <DbtDirectoryFaq />
+
+    If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The dbt CLI and extension only look for the exact filename.
 
 ### For the dbt VS Code extension
 
 1. In <Constant name="dbt_platform" />, go to **Account settings** → **Your profile** → **VS Code Extension**.
 2. Click **Download credentials**. The downloaded `dbt_cloud.yml` includes your [Personal access token (PAT)](/docs/dbt-apis/user-tokens).
-3. Save the file to your [`.dbt` directory](#file-location). This registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
-4. Confirm that the `project-id` in your [`dbt_project.yml` `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) matches the project you're working on.
+3. Move the file to your `.dbt` directory. If you don't have one yet, you can set it up with a one-liner or follow the step-by-step instructions below.
+
+    **Quick setup (one command):**
+
+    <Tabs>
+    <TabItem value="mac-linux" label="Mac / Linux">
+
+    ```bash
+    mkdir -p ~/.dbt && mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
+    ```
+
+    </TabItem>
+    <TabItem value="windows" label="Windows">
+
+    ```powershell
+    mkdir %USERPROFILE%\.dbt 2>nul & move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
+    ```
+
+    </TabItem>
+    </Tabs>
+
+    **Step-by-step:**
+
+    <DbtDirectoryFaq />
+
+    If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The dbt CLI and extension only look for the exact filename.
+
+4. Confirm that the `project-id` in your [`dbt_project.yml` `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) matches the project you're working on. This registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
 
 ## File structure
 
@@ -135,4 +172,3 @@ dbt-cloud:
 |-------|----------|-------------|
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
 | `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-cloud-develop-defer) and <Constant name="platform_cli" /> deferral overrides. |
-
