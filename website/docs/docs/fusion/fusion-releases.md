@@ -36,15 +36,6 @@ On <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-envi
 
 For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable`, and more), refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the release track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
 
-You can find the Fusion build currently associated with each release track for 
-
-| Release track | API value | Current Fusion version | Last verified | Notes |
-| ------------- | --------- | ------------------------ | ------------- | ----- |
-| **Fusion Nightly** | `fusion-nightly` | 2.0.0-preview.176 | 2026-05-06 | Nightly cadence; earliest access to new changes |
-| **Fusion Stable** (default) | `fusion-stable` | 2.0.0-preview.176 | 2026-05-06 | Weekly cadence; recommended default for most environments |
-| **Fusion Extended** | `fusion-extended` | 2.0.0-preview.175 | 2026-05-06 | Monthly cadence; generally lags **Fusion Stable** by about one month |
-| **Fusion Fallback** | `fusion-fallback` | 2.0.0-preview.175 | 2026-05-06 | Emergency rollback option; lags **Fusion Extended** by about one month |
-
 :::tip Live data below is for local CLI channels
 
 The **Current versions** cards and full release list below pull the public Fusion manifest used for **local** installs (`dev`, `canary`, `latest`). You should use [release tracks](/docs/dbt-versions/dbt-release-tracks) for <Constant name="dbt_platform" /> planning.
