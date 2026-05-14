@@ -23,7 +23,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Job Creator permission set**: Adds a new Job Creator role that grants read access to jobs, environments, connections, and project resources, enabling users to create and manage jobs without broader administrative privileges. Contact your account manager to enable.
+- **Job creator permission set**: Adds a new Job creator role that grants read access to jobs, environments, connections, and project resources, enabling users to create and manage jobs without broader administrative privileges. Contact your account manager to enable.
 
 ### Studio IDE
 
