@@ -93,7 +93,7 @@ The Book arrived. No context switch required.
 
 Since we've added the docs toolsets in March, **428 unique dbt accounts** have reached for the docs through the dbt MCP server &mdash; and every one of those calls means that a user didn't have to leave their workflow to find the docs they needed. That's a win for users and a win for the docs team.
 
-And it's growing fast: **338** docs-tool calls in March (the month they launched), **1,113** in April, and **887** already in the first week of May.
+And it's growing fast: **338** docs-tool calls in March (the month they launched), **1,113** in April, and over **6,000** in the first couple of weeks of May.
 
 <iframe
   src="/charts/mcp-docs-usage.html"
