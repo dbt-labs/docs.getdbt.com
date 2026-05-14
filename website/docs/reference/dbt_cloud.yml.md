@@ -74,7 +74,7 @@ How you download the file depends on whether you're configuring the <Constant na
 
 ## File structure
 
-A `dbt_cloud.yml` file looks like this:
+Your `dbt_cloud.yml` file has the following structure:
 
 <File name="dbt_cloud.yml">
 
@@ -103,23 +103,57 @@ projects:
 
 </File>
 
+For exmaple, if I had a Jaffle and wizard shop account, here's what my `dbt_cloud.yml` file would look like:
+
+<File name="dbt_cloud.yml">
+
+```yaml
+version: "1"
+context:
+  active-host: "abc123.us1.dbt.com"
+  active-project: "123456"
+projects:
+  - project-name: "Project 1"
+    project-id: "123"
+    account-name: "Jaffle and wizard shop" 
+    account-id: "1"
+    account-host: "abc123.us1.dbt.com"
+    token-name: "cloud-cli-1091"
+    token-value: "dbtu_token_value"            # this would be a longer token value
+  - project-name: "Project 2"
+    project-id: "456"
+    account-name: "Jaffle and wizard shop"
+    account-id: "1"
+    account-host: "abc123.us1.dbt.com"
+    token-name: "cloud-cli-1091"
+    token-value: "dbtu_token_value"
+  - project-name: "Project 3"
+    project-id: "789"
+    account-name: "Jaffle and wizard shop"
+    account-id: "1"
+    account-host: "abc123.us1.dbt.com"
+    token-name: "cloud-cli-1091"
+    token-value: "dbtu_token_value"
+```
+</File>
+
 ### Field reference
 
 | Field | Required | Description |
 |-------|----------|-------------|
 | `version` | Yes | The schema version of the file. Currently `"1"`. |
+| `context.active-host` | Yes | The `account-host` to use by default. You can find it in the **Account settings** page. |
 | `context.active-project` | Yes | The `project-id` of the project to use by default when running commands. Must match a `project-id` listed under `projects`. |
-| `context.active-host` | Yes | The `account-host` to use by default (for example, `cloud.getdbt.com`). |
 | `context.defer-env-id` | No | The environment ID to defer to for build artifacts. Optional override of the project's default deferral environment. <Constant name="platform_cli" /> only. Refer to [Configure deferral](/docs/platform/about-defer#configure-deferral-environment-id). |
-| `projects[].project-name` | Yes | A human-readable name for the project. |
-| `projects[].project-id` | Yes | The <Constant name="dbt_platform" /> project ID. Find it in the URL when viewing your project (for example, `…/projects/123456`). |
-| `projects[].account-name` | Yes | A human-readable name for the account. |
-| `projects[].account-id` | Yes | The <Constant name="dbt_platform" /> account ID. |
-| `projects[].account-host` | Yes | The host for your account, for example `cloud.getdbt.com`, `emea.dbt.com`, or your single-tenant access URL. |
-| `projects[].token-name` | Yes | A name for the [Personal access token (PAT)](/docs/dbt-apis/user-tokens). |
-| `projects[].token-value` | Yes | The PAT value. Treat this as a secret. |
+| `projects.project-name` | Yes | A human-readable name for the project. |
+| `projects.project-id` | Yes | The <Constant name="dbt_platform" /> project ID. Find it in the URL when viewing your project (for example, `…/projects/123456`). |
+| `projects.account-name` | Yes | A human-readable name for the account. |
+| `projects.account-id` | Yes | The <Constant name="dbt_platform" /> account ID. |
+| `projects.account-host` | Yes | The host for your account, for example `cloud.getdbt.com`, `emea.dbt.com`, or your single-tenant access URL. |
+| `projects.token-name` | Yes | A name for the [Personal access token (PAT)](/docs/dbt-apis/user-tokens). |
+| `projects.token-value` | Yes | The PAT value. Treat this as a secret. |
 
-## The `dbt-cloud` block in `dbt_project.yml`
+## The dbt-cloud block in dbt_project.yml
 
 The `dbt-cloud` block is a companion config that lives in your project's `dbt_project.yml` file (not in `dbt_cloud.yml`). It tells the <Constant name="platform_cli" />, the <Constant name="studio_ide" />, and <Constant name="fusion" /> which <Constant name="dbt_platform" /> project your local project corresponds to.
 
