@@ -62,12 +62,10 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
 <MCPRemoteOauthBetaCallout />
 
+<MCPRemoteServerUrl />
+
 1. From Claude Desktop, go to **Settings &rarr; Developer &rarr; Edit Config** to open `claude_desktop_config.json`.
-2. Get your MCP URL:
-
-    <MCPRemoteServerUrl />
-
-3. Add a `dbt` entry under `mcpServers`, using the tab that matches your auth method:
+2. Add a `dbt` entry under `mcpServers`, using the tab that matches your auth method:
 
     <Tabs>
     <TabItem value="oauth" label="OAuth (remote)">
@@ -114,7 +112,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     </TabItem>
     </Tabs>
 
-4. Save the file and restart Claude Desktop. Ask Claude a data question to confirm the server is connected.
+3. Save the file and restart Claude Desktop. Ask Claude a data question to confirm the server is connected.
 
 ## Claude Code
 
@@ -140,61 +138,58 @@ Claude Code can connect to the remote dbt MCP server over HTTP &mdash; same JSON
 
 <MCPRemoteOauthBetaCallout />
 
-1. Open `.mcp.json` at the root of your project (create it if it doesn't exist).
-2. Get your MCP URL:
+<MCPRemoteServerUrl />
 
-    <MCPRemoteServerUrl />
+Add the `dbt` entry to `.mcp.json` using the tab that matches your auth method:
 
-3. Add the `dbt` entry to `.mcp.json` using the tab that matches your auth method:
+<Tabs>
+<TabItem value="oauth" label="OAuth (remote)">
 
-    <Tabs>
-    <TabItem value="oauth" label="OAuth (remote)">
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
+    }
+  }
+}
+```
 
-    ```json
-    {
-      "mcpServers": {
-        "dbt": {
-          "type": "http",
-          "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
-        }
+On first connect, Claude Code opens a browser for sign-in and consent. You can also register the same server from the CLI:
+
+```bash
+claude mcp add --transport http dbt https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/
+```
+
+<MCPRemoteOauthRegistrationNote />
+
+</TabItem>
+<TabItem value="token" label="Token-based">
+
+```json
+{
+  "mcpServers": {
+    "dbt": {
+      "type": "http",
+      "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
+      "headers": {
+        "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
+        "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
+        "x-dbt-user-id": "DBT_USER_ID",
+        "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
       }
     }
-    ```
+  }
+}
+```
 
-    On first connect, Claude Code opens a browser for sign-in and consent. You can also register the same server from the CLI:
+<MCPRemoteTokenHeaders />
 
-    ```bash
-    claude mcp add --transport http dbt https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/
-    ```
+</TabItem>
+</Tabs>
 
-    <MCPRemoteOauthRegistrationNote />
-
-    </TabItem>
-    <TabItem value="token" label="Token-based">
-
-    ```json
-    {
-      "mcpServers": {
-        "dbt": {
-          "type": "http",
-          "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/",
-          "headers": {
-            "Authorization": "Token YOUR_DBT_ACCESS_TOKEN",
-            "x-dbt-prod-environment-id": "DBT_PROD_ENV_ID",
-            "x-dbt-user-id": "DBT_USER_ID",
-            "x-dbt-dev-environment-id": "DBT_DEV_ENV_ID"
-          }
-        }
-      }
-    }
-    ```
-
-    <MCPRemoteTokenHeaders />
-
-    </TabItem>
-    </Tabs>
-
-4. Save the file. Claude Code picks up `.mcp.json` on startup &mdash; ask it a data question to confirm the connection.
+Save the file. Claude Code picks up `.mcp.json` on startup &mdash; ask it a data question to confirm the connection.
 
 ## Troubleshooting
 <Expandable alt_header="Claude Desktop errors">
