@@ -5,7 +5,7 @@ slug: the-devil-in-the-docs
 authors: [mirna_wong]
 tags: [ai, docs, mcp]
 hide_table_of_contents: false
-date: 2026-05-07
+date: 2026-05-15
 is_featured: true
 image: /img/blog/2026-04-30-the-devil-is-in-the-docs/devil-in-the-docsv2.png
 ---
