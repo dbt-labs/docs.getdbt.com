@@ -25,26 +25,10 @@ How you download the file depends on whether you're configuring the <Constant na
 
 1. In <Constant name="dbt_platform" />, select the project you want to work on. The project must already have a [development environment](/docs/dbt-platform-environments#create-a-development-environment) set up.
 2. Go to **Account settings** → **Your profile**, then follow the steps for your tool:
-
-    <Tabs>
-    <TabItem value="cli" label="dbt CLI">
-
-    Navigate to **CLI** → **Configure Cloud authentication** and click **Download CLI configuration file**.
-
-    </TabItem>
-    <TabItem value="vscode" label="dbt VS Code extension">
-
-    Navigate to **VS Code Extension** → **Set up your credentials** and click **Download credentials**.
-
-    </TabItem>
-    </Tabs>
-
+  - dbt CLI: Navigate to **CLI** → **Configure Cloud authentication** and click **Download CLI configuration file**.
+  - dbt VS Code extension: Navigate to **VS Code Extension** → **Set up your credentials** and click **Download credentials**.
     The downloaded `dbt_cloud.yml` includes your [Personal access token (PAT)](/docs/dbt-apis/user-tokens).
-
-3. Move the file to your `.dbt` directory. If you don't have one yet, use one of the options:
-
-    **Quick setup (one command):**
-
+3. Move the file to your `.dbt` directory. If you don't have one yet, try one of these quick setup (one command) options:
     <Tabs>
     <TabItem value="mac-linux" label="Mac / Linux">
 
@@ -62,7 +46,7 @@ How you download the file depends on whether you're configuring the <Constant na
     </TabItem>
     </Tabs>
 
-   <Expandable alt_header="Manually create and move your `.dbt` directory">
+   <Expandable alt_header="Manually create and move your .dbt directory">
 
    <DbtDirectoryFaq />
     
