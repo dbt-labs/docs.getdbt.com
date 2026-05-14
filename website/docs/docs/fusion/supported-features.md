@@ -91,13 +91,13 @@ Here are some additional considerations if using the Fusion CLI without the VS C
     - **Fusion CLI** ([binary](/blog/dbt-fusion-engine-components))
       - Free to use and runs on the <Constant name="fusion_engine" /> (distinct from <Constant name="core" />). 
       - Benefits from Fusion engine's performance for `parse`, `compile`, `build`, and `run`, but _doesn't_ include <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.  
-      - Requires `profiles.yml` only (no `dbt_cloud.yml`).
+      - Requires [`profiles.yml`](/docs/local/profiles.yml) only (no [`dbt_cloud.yml`](/reference/dbt_cloud.yml)).
     - **dbt VS Code extension**
       - Free to use and runs on the <Constant name="fusion_engine" />; register your email within 14 days.
       - Benefits from <Constant name="fusion" /> engine's performance for `parse`, `compile`, `build`, and `run`, and includes <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.
       - Capped at 15 users per organization. See the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup) for more information.
       - If you already have a <Constant name="dbt_platform" /> user account (even if a trial expired), sign in with the same email. Unlock or reset it if locked.  
-      - Requires both `profiles.yml` and `dbt_cloud.yml` files.
+      - Requires both [`profiles.yml`](/docs/local/profiles.yml) and [`dbt_cloud.yml`](/reference/dbt_cloud.yml) files.
 
 ## Limitations
 

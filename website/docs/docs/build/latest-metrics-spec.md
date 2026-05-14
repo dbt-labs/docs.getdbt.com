@@ -607,7 +607,7 @@ To update packages, a package maintainer should:
 
 2. Validate the changes by running:
 
-  - For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
+  - For <Constant name="fusion" /> and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
 
     ```bash
     dbt parse
