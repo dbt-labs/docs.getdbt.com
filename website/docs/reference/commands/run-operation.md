@@ -38,7 +38,11 @@ The `--sql` flag for `dbt run-operation` is a beta feature in <Constant name="co
 
 Starting <Constant name="core" /> v1.12, you can use the `--sql` flag to run SQL or Jinja directly against your target database &mdash; no macro definition required. This means you can use dbt's full Jinja context (for example, `ref()`, `source()`, `var()`, and `target`) directly in your SQL string. When your SQL contains no Jinja, dbt skips manifest compilation entirely, making execution faster.
 
-You cannot combine the `--sql` flag with a macro name or `--args`.
+For example, to drop a table in the warehouse:
+
+```bash
+dbt run-operation --sql "DROP TABLE IF EXISTS my_schema.old_table"
+```
 
 dbt prints status lines to the terminal as the operation runs:
 
@@ -49,12 +53,11 @@ dbt prints status lines to the terminal as the operation runs:
 
 The operation is named `inline_query` in logs. If the operation fails, the status line shows `ERROR` instead of `OK`.
 
+Note that you cannot combine the `--sql` flag with a macro name or `--args`.
+
 ### When to use `--sql` instead of a macro
 
-`--sql` is useful for:
-
-- Quick, one-off operations that don't warrant a macro file (for example, granting permissions or running a data fix)
-- Exploratory queries using dbt's Jinja context
+`--sql` is useful for quick, one-off operations that don't warrant a macro file (for example, granting permissions, dropping a table, or running a data fix).
 
 If you need to reuse the operation across environments or share it with your team, write a [macro](/docs/build/jinja-macros) instead so it's version-controlled and testable.
 
@@ -73,15 +76,12 @@ If you need to reuse the operation across environments or share it with your tea
 - Use the `--sql` flag:
 
   ```bash
-  # Run a simple query
-  dbt run-operation --sql "select 1"
-
   # Execute DDL
   dbt run-operation --sql "CREATE TABLE my_schema.my_table (id int)"
 
   # Use Jinja context variables
   dbt run-operation --sql "GRANT SELECT ON {{ target.schema }} TO reporter"
 
-  # Reference a dbt model
-  dbt run-operation --sql "select * from {{ ref('my_model') }}"
+  # Grant select on a dbt model using ref()
+  dbt run-operation --sql "GRANT SELECT ON {{ ref('my_model') }} TO reporter"
   ```
