@@ -30,10 +30,32 @@ The <Constant name="fusion_engine" /> is distributed through three release chann
 | `canary` | The latest version to be officially released | ⚠️ Most recent stable version but still undergoing thorough testing |
 | `dev` | The latest development build | ❌ May be unstable; may not have passed all internal tests |
 
+## Platform Fusion release tracks
+
+On the <Constant name="dbt_platform" />, each [environment](/docs/deploy/deploy-environments) uses a **Fusion release track** you choose (or your account default). Tracks control how often that environment receives new Fusion builds. They are separate from the local CLI channels in the previous section.
+
+For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable`, and more), see [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks). To change the track for an environment, follow [Upgrade dbt in dbt platform](/docs/dbt-versions/upgrade-dbt-platform-version).
+
+The table below lists the Fusion build currently associated with each platform Fusion track. dbt updates these pins on the cadence described in the release tracks doc. Refresh this table when release communications go out, or confirm the tag in your account if you need certainty for a change window.
+
+| Release track | API value | Current Fusion version | Last verified | Notes |
+| ------------- | --------- | ------------------------ | ------------- | ----- |
+| **Fusion Nightly** | `fusion-nightly` | 2.0.0-preview.176 | 2026-05-06 | Nightly cadence; earliest access to new changes |
+| **Fusion Stable** (default) | `fusion-stable` | 2.0.0-preview.176 | 2026-05-06 | Weekly cadence; recommended default for most environments |
+| **Fusion Extended** | `fusion-extended` | 2.0.0-preview.175 | 2026-05-06 | Monthly cadence; generally lags **Fusion Stable** by about one month |
+| **Fusion Fallback** | `fusion-fallback` | 2.0.0-preview.175 | 2026-05-06 | Emergency rollback option; lags **Fusion Extended** by about one month |
+
+:::tip Live data below is for local CLI channels
+
+The **Current versions** cards and full release list below pull the public Fusion manifest used for **local** installs (`dev`, `canary`, `latest`). That feed does not drive the platform Fusion track table above. If a channel tag matches a track tag in practice, that is coincidental for a given week—always use the track table and [release tracks](/docs/dbt-versions/dbt-release-tracks) for platform planning.
+
+:::
+
 <details>
-    <summary>Updating Fusion</summary>
+    <summary>Updating local Fusion</summary>
 <p>
-The following instructions are for updating local installations of <Constant name="fusion" />. <Constant name="dbt_platform" /> users automatically get the `latest` updates.
+
+The following commands apply only to **local** installations of <Constant name="fusion" />. They do not change which Fusion build runs in the <Constant name="dbt_platform" />; there you set a [Fusion release track](/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment instead.
 
 Running the system update command without a version flag installs the `latest` stable release:
 
