@@ -34,7 +34,7 @@ As part of your initial <Constant name="dbt" /> setup, you should already have D
 
 ## Create a new CI environment
 
-See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-platform-environments#create-a-deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
 
 When setting a Schema in the **Deployment Credentials** area, remember that <Constant name="dbt" /> will automatically generate a custom schema name for each PR to ensure that they don't interfere with your deployed models. This means you can safely set the same Schema name as your Production job.
 
@@ -124,7 +124,7 @@ By [linting](/docs/platform/studio-ide/lint-format#lint) your project during CI,
 
 Seamlessly enable [SQL linting for your CI job](/docs/deploy/continuous-integration#sql-linting) in <Constant name="dbt" /> to invoke [SQLFluff](https://docs.sqlfluff.com/en/stable/), a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors.
 
-SQL linting in CI lints all the changed SQL files in your project (compared to the last deferred production state). Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ accounts](https://www.getdbt.com/pricing) using [release tracks](/docs/dbt-versions/cloud-release-tracks). 
+SQL linting in CI lints all the changed SQL files in your project (compared to the last deferred production state). Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ accounts](https://www.getdbt.com/pricing) using [release tracks](/docs/dbt-versions/dbt-release-tracks). 
 
 
 ### Manually set up SQL linting in CI
@@ -339,13 +339,13 @@ As noted above, this branch will outlive any individual feature, and will be the
 
 ### 2. Update your Development environment to use the `qa` branch
 
-See [Custom branch behavior](/docs/dbt-cloud-environments#custom-branch-behavior). Setting `qa` as your custom branch ensures that the IDE creates new branches and PRs with the correct target, instead of using `main`.
+See [Custom branch behavior](/docs/dbt-platform-environments#custom-branch-behavior). Setting `qa` as your custom branch ensures that the IDE creates new branches and PRs with the correct target, instead of using `main`.
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
 
 ### 3. Create a new QA environment
 
-See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **QA**. Just like your existing Production and CI environments, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-platform-environments#create-a-deployment-environment). The environment should be called **QA**. Just like your existing Production and CI environments, it will be a Deployment-type environment.
 
 Set its branch to `qa` as well.
 

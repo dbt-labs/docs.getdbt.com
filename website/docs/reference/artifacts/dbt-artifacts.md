@@ -26,7 +26,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](/reference/artifacts/sources-json): produced by `source freshness`
 
-When running commands from the [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/platform/configure-cloud-cli#how-to-skip-artifacts-from-being-downloaded).
+When running commands from the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/platform/configure-dbt-cli#how-to-skip-artifacts-from-being-downloaded).
 
 ## Where are artifacts produced?
 

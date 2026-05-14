@@ -27,13 +27,13 @@ import CoreMigrationTable from '/snippets/_core-migration-table.md';
 
    - <Constant name="dbt" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. Infrastructure is managed for you &mdash; no custom scripts or fragile orchestration. State-aware orchestration only builds what's changed, so you waste less compute and time. Browser-based development and Copilot open up development to analysts, so you're no longer the bottleneck for every change. With end-to-end lineage, shared metric definitions, and CI that catches regressions before production, you spend less time debugging and more time building. 
    <Constant name="dbt" /> also supports:
-     - Development experiences tailored to multiple personas ([<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation))
+     - Development experiences tailored to multiple personas ([<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation))
      - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
      - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
      - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
      - [<Constant name="catalog" />](/docs/explore/explore-projects) for easier data discovery and understanding
 
-   Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-cloud-features).
+   Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features).
 - <Constant name="core" /> is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for 'single players' and small technical teams, all development happens on a command-line interface (CLI), and production deployments must be self-hosted and maintained. 
 
 You absorb the cost of every upgrade, every broken CI run, and every request that pulls you away from real work: maintaining infrastructure, debugging the CI pipeline, and fielding every change that requires CLI access. Compute runs unchecked, upgrades are risky, and there's no easy way to trace what broke or why. This requires significant, costly work that adds up over time to maintain and scale &mdash; and without governance, shared definitions, or reliable testing.
@@ -113,8 +113,8 @@ Your existing dbt project source code should live in a <Constant name="git" /> r
 
 1. Ensure your dbt project is in a <Constant name="git" /> repository.
 
-2. In **Account settings**, select **Integrations** to [connect your <Constant name="git" /> repository](/docs/platform/git/git-configuration-in-dbt-cloud) to <Constant name="dbt" />:
-   - (**Recommended**) Connect with one of the [native integrations](/docs/platform/git/git-configuration-in-dbt-cloud) in <Constant name="dbt" /> (such as GitHub, GitLab, and Azure DevOps).
+2. In **Account settings**, select **Integrations** to [connect your <Constant name="git" /> repository](/docs/platform/git/configure-git) to <Constant name="dbt" />:
+   - (**Recommended**) Connect with one of the [native integrations](/docs/platform/git/configure-git) in <Constant name="dbt" /> (such as GitHub, GitLab, and Azure DevOps).
 
      This method is preferred for its simplicity, security features (including secure OAuth logins and automated workflows like CI builds on pull requests), and overall ease of use.
    - [Import a <Constant name="git" /> repository](/docs/platform/git/import-a-project-by-git-url) from any valid <Constant name="git" /> URL that points to a dbt project.
@@ -132,24 +132,24 @@ This section highlights the development configurations you'll need for your <Con
 
 The most common data environments are production, staging, and development. The way dbt Core manages [environments](/docs/environments-in-dbt) is through `target`, which are different sets of connection details. 
 
-[<Constant name="dbt" /> environments](/docs/dbt-cloud-environments) go further by:
+[<Constant name="dbt" /> environments](/docs/dbt-platform-environments) go further by:
 - Integrating with features such as job scheduling or version control, making it easier to manage the full lifecycle of your dbt projects within a single platform.
 - Streamlining the process of switching between development, staging, and production contexts.
 - Making it easy to configure environments through the <Constant name="dbt" /> UI instead of manually editing the `profiles.yml` file. You can also [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in <Constant name="dbt" />.
-- Adding `profiles.yml` attributes to <Constant name="dbt" /> environment settings with [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes).
+- Adding `profiles.yml` attributes to <Constant name="dbt" /> environment settings with [Extended Attributes](/docs/dbt-platform-environments#extended-attributes).
 - Using [Git repo caching](/docs/platform/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="managed,managed_plus" />
 
 ### Initial setup steps
-1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/platform/studio-ide/develop-in-studio#access-the-cloud-ide). You'll need this to access your dbt project and start developing.
+1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-platform-environments#create-a-development-environment) environment and [development credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide). You'll need this to access your dbt project and start developing.
 
-2. **dbt Core version** &mdash; In your <Constant name="dbt" /> environment, select a [release track](/docs/dbt-versions/cloud-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and <Constant name="dbt" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of dbt Core you're using.
-   - When using <Constant name="core" />, you need to think about which version you're using and manage your own upgrades. When using <Constant name="dbt" />, leverage [release tracks](/docs/dbt-versions/cloud-release-tracks) so you don't have to.
+2. **dbt Core version** &mdash; In your <Constant name="dbt" /> environment, select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and <Constant name="dbt" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of dbt Core you're using.
+   - When using <Constant name="core" />, you need to think about which version you're using and manage your own upgrades. When using <Constant name="dbt" />, leverage [release tracks](/docs/dbt-versions/dbt-release-tracks) so you don't have to.
 
 3. **Connect to your data platform** &mdash; When using <Constant name="dbt" />, you can [connect to your data platform](/docs/platform/connect-data-platform/about-connections) directly in the UI.
    - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
 
-4. **Development tools** &mdash; Set up your development workspace with the [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) (command line interface or code editor) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt code in your tool of choice.
-   - If you've previously installed <Constant name="core" />, the [<Constant name="dbt" /> CLI installation doc](/docs/platform/cloud-cli-installation?install=pip#install-dbt-cloud-cli) has more information on how to install the <Constant name="dbt" /> CLI, create aliases, or uninstall <Constant name="core" /> for a smooth transition.
+4. **Development tools** &mdash; Set up your development workspace with the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) (command line interface or code editor) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) (browser-based) to build, test, run, and version control your dbt code in your tool of choice.
+   - If you've previously installed <Constant name="core" />, the [<Constant name="dbt" /> CLI installation doc](/docs/platform/dbt-cli-installation?install=pip#install-dbt-cloud-cli) has more information on how to install the <Constant name="dbt" /> CLI, create aliases, or uninstall <Constant name="core" /> for a smooth transition.
 
 ### Additional configuration
 Explore these additional configurations to optimize your developer setup further:
@@ -171,7 +171,7 @@ In dbt Core, environment variables, or the [`env_var` function](/reference/dbt-j
 
 ### Environment variables in dbt
   - <Constant name="dbt" /> environment variables must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`).
-  - If your <Constant name="core" /> environment variables don't follow this naming convention, perform a ["find and replace"](/docs/platform/studio-ide/develop-in-studio#dbt-cloud-ide-features) in your project to make sure all references to these environment variables contain the proper naming conventions.
+  - If your <Constant name="core" /> environment variables don't follow this naming convention, perform a ["find and replace"](/docs/platform/studio-ide/develop-in-studio#studio-ide-features) in your project to make sure all references to these environment variables contain the proper naming conventions.
 - <Constant name="dbt" /> secures environment variables that enable more flexible configuration of data warehouse connections or git provider integrations, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET`to obscure them in logs and the UI.
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
@@ -205,7 +205,7 @@ To use the [<Constant name="dbt" />'s job scheduler](/docs/deploy/job-scheduler)
 
 ### Initial setup steps
 1. **<Constant name="core" /> version** &mdash; In your environment settings, configure <Constant name="dbt" /> with the same <Constant name="core" /> version.
-   - Once your full migration is complete, we recommend upgrading your environments to [release tracks](/docs/dbt-versions/cloud-release-tracks) to always get the latest features and more. You only need to do this once.
+   - Once your full migration is complete, we recommend upgrading your environments to [release tracks](/docs/dbt-versions/dbt-release-tracks) to always get the latest features and more. You only need to do this once.
 
 2. **Configure your jobs** &mdash; [Create jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs) for scheduled or event-driven dbt jobs. You can use cron execution, manual, pull requests, or trigger on the completion of another job.
    - Note that alongside [jobs in <Constant name="dbt" />](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
@@ -239,9 +239,9 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 
 ## Model development and discovery
 
-In this section, you'll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation).
+In this section, you'll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation).
 
-You'll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
+You'll want to make sure you set up your [development environment and credentials](/docs/dbt-platform-environments#set-developer-credentials).
 
 1. In your [development tool](/docs/platform/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and run some [dbt commands](/reference/dbt-commands):
    - Run `dbt compile` to make sure your project compiles correctly.

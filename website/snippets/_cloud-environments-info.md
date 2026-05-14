@@ -28,13 +28,13 @@ Both development and deployment environments have a section called **General Set
 | Environment name | Production  | The environment name  | Any string! |
 | Environment type | Deployment | The type of environment | Deployment, Development|
 | Set deployment type | PROD |  Designates the deployment environment type. | Production, Staging, General | 
-| dbt version | Latest | <Constant name="dbt" /> automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/cloud-release-tracks) you select. | Lastest, Compatible, Extended |
+| dbt version | Latest | <Constant name="dbt" /> automatically upgrades the dbt version running in this environment, based on the [release track](/docs/dbt-versions/dbt-release-tracks) you select. | Latest, Compatible, Extended |
 | Only run on a custom branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
 | Custom branch | dev | Custom Branch name | See below |
 
 :::note About dbt version
 
-<Constant name="dbt" /> allows users to select a [release track](/docs/dbt-versions/cloud-release-tracks) to receive ongoing dbt version upgrades at the cadence that makes sense for their team.
+<Constant name="dbt" /> allows users to select a [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing dbt version upgrades at the cadence that makes sense for their team.
 :::
 
 ### Custom branch behavior
@@ -84,7 +84,7 @@ db_groups:
   To set a project-scoped variable, go to **Orchestration** > **Environments** > **Environment variables**, and set a value in the **Project default** column. This value applies across all environments in the project, making it available to profiles during connection tests. See [environment variables](/docs/build/environment-variables?version=2.0#setting-environment-variables) for more information.
 
 #### How extended attributes work
-If you're developing in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), extended attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
+If you're developing in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), extended attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
 - If the attribute exists in another source (such as your project settings), it will replace its value (like environment-level values) in the profile. It also overrides any custom environment variables (if not itself wired using the syntax described for secrets above)
 

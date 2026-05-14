@@ -14,7 +14,7 @@ The `dbt environment` command enables you to interact with your <Constant name="
 - Viewing your local configuration details (account ID, active project ID, deployment environment, and more).
 - Viewing your <Constant name="dbt" /> configuration details (environment ID, environment name, connection type, and more).
 
-This guide lists all the commands and options you can use with `dbt environment` in the [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation). To use them, add a command or option like this: `dbt environment [command]` or use the shorthand `dbt env [command]`.
+This guide lists all the commands and options you can use with `dbt environment` in the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation). To use them, add a command or option like this: `dbt environment [command]` or use the shorthand `dbt env [command]`.
 
 ### dbt environment show
 
