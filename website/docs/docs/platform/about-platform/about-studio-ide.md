@@ -1,6 +1,6 @@
 ---
 title: "About Studio IDE"
-id: about-cloud-ide
+id: about-studio-ide
 description: "about dbt Studio Integrated Development Environment"
 sidebar_label: About dbt Studio IDE
 ---
@@ -20,7 +20,7 @@ With the Cloud <Constant name="studio_ide" />, you can:
     * Currently, you can't preview python models
 - Visualize a directed acyclic graph (DAG), and more.
 
-<Lightbox src src="/img/docs/dbt-platform/platform-ide/cloud-ide-v2.png" width="85%" title="The Studio IDE in dark mode"/>
+<Lightbox src="/img/docs/dbt-platform/platform-ide/cloud-ide-v2.png" width="85%" title="The Studio IDE in dark mode"/>
 
 For more information, read the complete [Cloud <Constant name="studio_ide" /> guide](/docs/platform/studio-ide/develop-in-studio).
 

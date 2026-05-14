@@ -7,6 +7,7 @@ pagination_next: null
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
 <SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
@@ -34,13 +35,21 @@ The following steps walk you through the setup of a Databricks Azure Private Lin
    - Azure Databricks Workspace URL (for example, adb-################.##.azuredatabricks.net)
    - Databricks Azure resource ID: /subscriptions/SUB_ID/resourceGroups/RG/providers/Microsoft.Databricks/workspaces/WORKSPACE_NAME
      - Use the full ARM resource ID, replacing SUB_ID, RG, and WORKSPACE_NAME with your values
-   - dbt Azure multi-tenant environment (EMEA):
+   - dbt Azure multi-tenant environment (US or EMEA):
    - Azure Databricks workspace region (for example, WestEurope, NorthEurope)
    ```
 
    </Expandable>
 
+   <PrivateLinkSLA />
+
 5. Once our Support team confirms the resources are available in the Azure portal, navigate to the Azure Databricks Workspace and browse to **Networking** > **Private Endpoint Connections**. Then, highlight the `dbt` named option and select **Approve**.
+
+   :::warning DNS impact when approving the first private endpoint
+   Approving the first private endpoint connection for an Azure Databricks workspace modifies the workspace's DNS resolution. Azure inserts a `privatelink.azuredatabricks.net` DNS `A` record that redirects the workspace URL to the private IP address instead of the public endpoint.
+
+   Any clients — including other dbt platform projects, tools, or users — that connect to this workspace over the public internet **may lose connectivity** after this change. Coordinate this change with all teams that use the workspace before approving. For more information, see [Azure services DNS zone configuration](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns#azure-services-dns-zone-configuration).
+   :::
 
 ## Create connection in dbt
 

@@ -1,6 +1,6 @@
 ---
 title: "How to upgrade a dbt account"
-id: "cloud-upgrade-instructions"
+id: "platform-upgrade-instructions"
 description: "Instructions for upgrading a dbt account after the trial ends."
 ---
 

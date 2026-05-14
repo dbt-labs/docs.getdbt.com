@@ -1,15 +1,17 @@
 ---
-title: "Use dbt MCP with zero local install"
-sidebar_label: "Use MCP with zero install"
+title: "Connect to the remote dbt MCP server"
+sidebar_label: "Connect to the remote dbt MCP server"
 description: "Connect to the remote dbt MCP server via HTTP with no local installation."
 id: "mcp-quickstart-remote"
 ---
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
-# Use dbt MCP with no local install <Lifecycle status="self_service,managed,managed_plus"/>
+# Connect to the remote dbt MCP server <Lifecycle status="self_service,managed,managed_plus"/>
 
 The remote MCP server connects to <Constant name="dbt_platform"/> using HTTP. No local installation is required &mdash; you configure your MCP client with a URL and headers instead of running `uvx dbt-mcp`.
+
+<Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
 
 ## When to use remote MCP
 
@@ -20,7 +22,7 @@ Remote MCP is a good fit when:
 - You need <Constant name="semantic_layer"/>, Administrative, and Discovery APIs access without a local dbt project.
 
 :::info Local development requires local MCP
-Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the dbt CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
+Local development and agentic workflows (for example, running dbt commands like `dbt run` or `dbt build` from your AI assistant) require the **local** MCP server. Remote MCP does not support the local <Constant name="core" /> or <Constant name="fusion" /> CLI or local project access. Use [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) or [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) for those workflows.
 :::
 
 ## Set up remote MCP

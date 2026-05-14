@@ -27,13 +27,13 @@ const sidebarSettings = {
     {
       type: "category",
       label: "About the dbt platform",
-      link: { type: "doc", id: "docs/platform/about-platform/dbt-cloud-features" },
+      link: { type: "doc", id: "docs/platform/about-platform/dbt-platform-features" },
       items: [
         "docs/platform/about-platform/architecture",
         "docs/platform/about-platform/browsers",
         "docs/platform/about-platform/login",
-        "docs/platform/about-platform/change-your-dbt-cloud-theme",
-        "docs/platform/about-platform/dbt-cloud-features",
+        "docs/platform/about-platform/change-your-dbt-theme",
+        "docs/platform/about-platform/dbt-platform-features",
         "docs/platform/about-platform/access-regions-ip-addresses",
         "docs/platform/about-platform/tenancy",
       ],
@@ -69,14 +69,14 @@ const sidebarSettings = {
           type: "category",
           label: "dbt platform setup",
           collapsed: true,
-          link: { type: "doc", id: "docs/platform/about-cloud-setup" },
+          link: { type: "doc", id: "docs/platform/about-platform-setup" },
           items: [
-            "docs/platform/about-cloud-setup",
+            "docs/platform/about-platform-setup",
             "docs/configuration-checklist",
             "docs/platform/about-profiles",
             "docs/platform/account-settings",
             "docs/platform/account-integrations",
-            "docs/dbt-cloud-environments",
+            "docs/dbt-platform-environments",
             "docs/platform/migration",
             {
               type: "category",
@@ -204,10 +204,10 @@ const sidebarSettings = {
               label: "Configure Git",
               link: {
                 type: "doc",
-                id: "docs/platform/git/git-configuration-in-dbt-cloud",
+                id: "docs/platform/git/configure-git",
               },
               items: [
-                "docs/platform/git/git-configuration-in-dbt-cloud",
+                "docs/platform/git/configure-git",
                 "docs/platform/git/managed-repository",
                 "docs/platform/git/import-a-project-by-git-url",
                 "docs/platform/git/connect-github",
@@ -265,6 +265,7 @@ const sidebarSettings = {
                         "docs/platform/secure/private-connectivity/aws/aws-databricks",
                         "docs/platform/secure/private-connectivity/aws/aws-redshift",
                         "docs/platform/secure/private-connectivity/aws/aws-postgres",
+                        "docs/platform/secure/private-connectivity/aws/aws-teradata",
                         "docs/platform/secure/private-connectivity/aws/aws-self-hosted",
                       ],
                     },
@@ -278,6 +279,7 @@ const sidebarSettings = {
                         "docs/platform/secure/private-connectivity/azure/azure-databricks",
                         "docs/platform/secure/private-connectivity/azure/azure-postgres",
                         "docs/platform/secure/private-connectivity/azure/azure-synapse",
+                        "docs/platform/secure/private-connectivity/azure/azure-teradata",
                         "docs/platform/secure/private-connectivity/azure/azure-self-hosted",
                       ],
                     },
@@ -392,7 +394,7 @@ const sidebarSettings = {
       items: [
         "docs/platform/about-develop-dbt",
         "docs/about-dbt-lsp",
-        "docs/platform/about-cloud-develop-defer",
+        "docs/platform/about-defer",
         {
           type: "category",
           label: "dbt VS Code extension",
@@ -410,10 +412,10 @@ const sidebarSettings = {
           type: "category",
           label: "dbt CLI",
           collapsed: true,
-          link: { type: "doc", id: "docs/platform/cloud-cli-installation" },
+          link: { type: "doc", id: "docs/platform/dbt-cli-installation" },
           items: [
-            "docs/platform/cloud-cli-installation",
-            "docs/platform/configure-cloud-cli",
+            "docs/platform/dbt-cli-installation",
+            "docs/platform/configure-dbt-cli",
           ],
         },
         {
@@ -759,7 +761,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/explore/explore-projects" },
           items: [
             "docs/explore/explore-projects",
-            "docs/explore/access-from-dbt-cloud",
+            "docs/explore/access-from-dbt-platform",
             "docs/explore/column-level-lineage",
             "docs/explore/data-health-signals",
             "docs/explore/explore-multiple-projects",
@@ -987,8 +989,8 @@ const sidebarSettings = {
       items: [
         "docs/dbt-versions/about-versions",
         "docs/dbt-versions/dbt-versions",
-        "docs/dbt-versions/cloud-release-tracks",
-        "docs/dbt-versions/upgrade-dbt-version-in-cloud",
+        "docs/dbt-versions/dbt-release-tracks",
+        "docs/dbt-versions/upgrade-dbt-platform-version",
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
         {
@@ -1018,7 +1020,7 @@ const sidebarSettings = {
       },
       items: [
         "docs/dbt-versions/dbt-cloud-release-notes",
-        "docs/dbt-versions/dbt-cloud-release-notes-gen",
+        "docs/dbt-versions/dbt-platform-release-notes-gen",
         "docs/dbt-versions/compatible-track-changelog",
         "docs/dbt-versions/2025-release-notes",
         "docs/dbt-versions/2024-release-notes",
@@ -1051,9 +1053,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Administrative API",
-      link: { type: "doc", id: "docs/dbt-apis/admin-cloud-api" },
+      link: { type: "doc", id: "docs/dbt-apis/admin-api" },
       items: [
-        "docs/dbt-apis/admin-cloud-api",
+        "docs/dbt-apis/admin-api",
         {
           type: "link",
           label: "API v2",
@@ -1182,6 +1184,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "reference/dbt_project.yml",
+        "reference/dbt_cloud.yml",
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
@@ -1338,6 +1341,7 @@ const sidebarSettings = {
             "reference/resource-configs/materialized",
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
+            "reference/resource-configs/on_error",
             "reference/resource-configs/sql_header",
           ],
         },

@@ -9,6 +9,7 @@ import FusionAdapters from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 import FusionThreads from '/snippets/_fusion-threads.md';
+import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
 
 <FusionLifecycle />
 
@@ -107,12 +108,9 @@ See the [Changes overview](/reference/changes-overview) for a full comparison.
 
 Some historic CLI flags in dbt Core will no longer do anything in Fusion. If you pass them into a dbt command using Fusion, the command will not error, but the flag will do nothing (and warn accordingly).
 
-One exception to this rule: The `--models` / `--model` / `-m` flag was renamed to `--select` / `-s` way back in dbt Core v0.21 (Oct 2021). Rather than quietly accepting the old flag and ignoring your selection criteria — which could mean building your entire <Term id="dag"/> when you only meant a small subset — Fusion will raise an error. Please update your job definitions accordingly.
-
-If you pass `--models` as the value to `-s` (for example, `dbt run -s --models`), Fusion's stricter CLI arg parsing will throw an error because no valid selector value was supplied to `-s`. dbt Core silently treated `--models` as a model name in this case. Update any scripts or job definitions using this pattern to pass a valid selector value.
-
 | flag name | remediation |
 | ----------| ----------- |
+| `--models` / `--model` / `-m` | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
 | `dbt seed` [`--show`](/reference/commands/seed) | N/A |
 | [`--print` / `--no-print`](/reference/global-configs/print-output) | No action required |
 | [`--printer-width`](/reference/global-configs/print-output#printer-width) | No action required |
@@ -123,7 +121,7 @@ If you pass `--models` as the value to `-s` (for example, `dbt run -s --models`)
 | `--single-threaded` / `--no-single-threaded` | No action required |
 | `dbt source freshness` [`--output` / `-o`](/docs/deploy/source-freshness)  | |
 | [`--config-dir`](/reference/commands/debug)  | No action required | 
-| [`--resource-type` / `--exclude-resource-type`](/reference/global-configs/resource-type) | change to `--resource-types` / `--exclude-resource-types` |
+| [`--resource-type` / `--exclude-resource-type`](/reference/global-configs/resource-type) | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
 | `--show-resource-report` / `--no-show-resource-report` | No action required |
 | [`--log-cache-events` / `--no-log-cache-events`](/reference/global-configs/logs#logging-relational-cache-events) | No action required | 
 | `--use-experimental-parser` / `--no-use-experimental-parser` | No action required |
@@ -137,7 +135,17 @@ If you pass `--models` as the value to `-s` (for example, `dbt run -s --models`)
 | `--use-fast-test-edges` / `--no-use-fast-test-edges` | No action required |
 | [`--introspect` / `--no-introspect`](/reference/commands/compile#introspective-queries) | No action required |
 | `--inject-ephemeral-ctes` / `--no-inject-ephemeral-ctes` | | 
-| [`--partial-parse` / `--no-partial-parse`](/reference/parsing#partial-parsing)  | No action required |
+| [`--partial-parse` / `--no-partial-parse`](/reference/parsing#partial-parsing)  | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
+
+##### CLI flags that need changes {#cli-flags-that-need-changes}
+
+The following deprecated flags require updates in your job definitions or scripts:
+
+- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="core" /> v0.21). <Constant name="fusion" /> raises an error if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); <Constant name="core" /> treated that as a model name, but <Constant name="fusion" /> requires a valid selector.
+
+- **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
+
+<FusionPartialParseCliFlags />
 
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 

@@ -59,7 +59,7 @@ In this section, you'll create two new, empty projects in <Constant name="dbt" /
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: **Jaffle | Data Analytics** and **Jaffle | Finance**.
 
-To [create](/docs/platform/about-cloud-setup) a new project in <Constant name="dbt" />:
+To [create](/docs/platform/about-platform-setup) a new project in <Constant name="dbt" />:
 
 1. From **Account settings**, go to **Projects**. Click **New project**.
 2. Enter a project name and click **Continue**.
@@ -69,7 +69,7 @@ To [create](/docs/platform/about-cloud-setup) a new project in <Constant name="d
 4. In the **Configure your environment** section, enter the **Settings** for your new project.
 5. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your data platform account.
 6. Click **Next** if the test succeeded. If it fails, you might need to go back and double-check your settings.
-   - For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
+   - For this guide, make sure you create a single [development](/docs/dbt-platform-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
      - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
      - For "Jaffle | Finance", set the default database to `jaffle_finance`.
 7. Continue the prompts to complete the project setup. Once configured, each project should have:
@@ -111,7 +111,7 @@ To set a production environment:
 
 This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
-<Constant name="dbt" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) or in-browser [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
+<Constant name="dbt" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) or in-browser [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="studio_ide" />.
 

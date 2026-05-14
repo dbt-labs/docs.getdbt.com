@@ -79,7 +79,7 @@ When this is enabled, only users with the **Fusion admin** [permission set](/doc
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin permissions to groups"/>
 
-For more details on access control, see [Assign access to upgrade](/docs/dbt-versions/upgrade-dbt-version-in-cloud#assign-access-to-upgrade).
+For more details on access control, see [Assign access to upgrade](/docs/dbt-versions/upgrade-dbt-platform-version#assign-access-to-upgrade).
 
 ### Step 1: Start the upgrade assistant
 
@@ -418,7 +418,7 @@ Ensure all systems dependent on your production data still function correctly:
 
 ### Step 8: Update any remaining jobs with version overrides
 
-Some jobs might have [version overrides](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version) set from earlier testing. Now that production is on <Constant name="fusion" />, remove these overrides:
+Some jobs might have [version overrides](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version) set from earlier testing. Now that production is on <Constant name="fusion" />, remove these overrides:
 
 1. Navigate to **Orchestration** → **Jobs**.
 2. Review each job's settings.
