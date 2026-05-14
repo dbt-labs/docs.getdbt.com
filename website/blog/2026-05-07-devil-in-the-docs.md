@@ -79,7 +79,7 @@ The dbt MCP server could already handle lineage lookups, test runs, Semantic Lay
 - **[`search_product_docs`](/docs/dbt-ai/mcp-available-tools?version=2.0#product-docs)** &mdash; searches docs.getdbt.com and returns titles, URLs, and relevance-ranked descriptions for pages matching your query.
 - **[`get_product_doc_pages`](/docs/dbt-ai/mcp-available-tools?version=2.0#product-docs)** &mdash; fetches the full markdown content of one or more docs pages by path or URL.
 
-The workflow mirrors how a human would use the docs: search first to find what's relevant, then fetch the full content. The difference is that it happens inside whatever AI tool you're already using, without a context switching headache. 
+The workflow mirrors how a human would use the docs: Search first to find what's relevant, then fetch the full content. The difference is that it happens inside whatever AI tool you're already using, without a context switching headache. 
 
 Alongside this, [dbt agent skills](https://skills.sh/dbt-labs/dbt-agent-skills) remain the best path for agents not connected via MCP. The two complement each other: the skill proved the demand; the MCP tools are the native solution.
 
