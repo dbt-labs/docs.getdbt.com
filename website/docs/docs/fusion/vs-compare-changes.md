@@ -34,7 +34,7 @@ To use the dbt VS Code extension compare changes feature, you need:
 - A <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements) (BigQuery, Databricks, Redshift, or Snowflake)
 - The [dbt VS Code extension](/docs/install-dbt-extension) installed with a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
 - [Advanced CI features](/docs/platform/account-settings#enabling-advanced-ci-features) enabled in your <Constant name="dbt_platform" /> account
-- A [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux). The extension uses this to authenticate with <Constant name="dbt_platform" />. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />.
+- A [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux), used by the extension to authenticate with <Constant name="dbt_platform" />.
 - A baseline state to compare your changes against. See [How it works](#how-it-works) to choose between [automatic deferral](/docs/platform/about-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
 
 ## How it works
