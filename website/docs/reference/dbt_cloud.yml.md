@@ -62,11 +62,11 @@ How you download the file depends on whether you're configuring the <Constant na
     </TabItem>
     </Tabs>
 
-        <Expandable alt_header="Manually create and move your `.dbt` directory"/>
+   <Expandable alt_header="Manually create and move your `.dbt` directory">
 
-        <DbtDirectoryFaq />
+   <DbtDirectoryFaq />
     
-        </Expandable>
+   </Expandable>
 
     If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The dbt CLI and extension only look for the exact filename.
 
