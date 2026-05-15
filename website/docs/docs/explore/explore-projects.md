@@ -261,7 +261,13 @@ Example of applying the **Materialization type** _lens_ on a zoomed-out lineage 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.png" width="100%" title="Example of the Materialization type lens" />
 
-Example of applying the **Test status** _lens_ on a lineage graph filtered to models. In the bottom-left corner, open **Lenses** and select **Test status**. Each node displays a colored badge for its latest test status (for example, **PASS** or **UNKNOWN**), and the legend lists Pass, Error, Fail, Warn, Skipped, and Reused.
+Example of applying the **Test status** _lens_ on a lineage graph filtered to models. In the bottom-left corner, open **Lenses** and select **Test status**. Each node displays a colored badge for its latest test status:
+- Pass
+- Error
+- Fail
+- Warn
+- Skipped
+- Reused.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.png" width="100%" title="Example of the Test Status lens" />
 
