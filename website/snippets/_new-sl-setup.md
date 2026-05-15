@@ -69,7 +69,9 @@ This credential controls the physical access to underlying data accessed by the 
 #### Configure development credentials and create a personal token
 
 :::info Read-only users: personal credentials for Semantic Layer <Lifecycle status="private_beta" />
-Read-only seat users can now configure personal warehouse credentials to query the Semantic Layer. This capability is in private beta as of May 2026. Follow the steps below to set up your credentials and generate a PAT. Contact your account manager to join the beta.
+Read-only seat users can now configure personal warehouse credentials to query the <Constant name="semantic_layer" />. This capability is in private beta as of May 2026. 
+
+Read the following steps to set up your credentials and generate a [personal access token](/docs/dbt-apis/user-tokens). Contact your account manager to join the beta.
 :::
 
 Using [personal access tokens (PATs)](/docs/dbt-apis/user-tokens) is also a supported authentication method for the dbt <Constant name="semantic_layer" />. This enables user-level authentication, reducing the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. 

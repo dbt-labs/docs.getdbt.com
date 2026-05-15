@@ -30,7 +30,7 @@ The remote MCP server is the ideal choice when:
 <SimpleTable>
 | If you need... | Use... |
 | --- | --- |
-| Read-only user access (private beta) | **OAuth ("login with dbt")**. Read the note below this table. |
+| Read-only user access (private beta) | **OAuth ("login with dbt")** authentication method. Read the note below this table. |
 | Fastest first-time setup and your MCP client supports OAuth for HTTP servers | **OAuth (remote)** <br /> Available in private beta for Enterprise and Enterprise+ accounts |
 | `execute_sql` with a PAT, automation, or clients without OAuth | **Token-based** (PAT or service token) |
 | Shared or team setup | **Service token** (token-based) |
@@ -38,7 +38,9 @@ The remote MCP server is the ideal choice when:
 </SimpleTable>
 
 :::info Read-only users: "login with dbt" OAuth for Remote MCP <Lifecycle status="private_beta" />
-Read-only seat users can connect to the Remote MCP server using the "login with dbt" OAuth flow. Unlike PATs, OAuth tokens are short-lived and auto-refresh automatically, reducing credential management overhead. This is in private beta as of May 2026. Contact your account manager to join. Once enrolled, you can authenticate using the OAuth flow instead of manually configuring an `Authorization` header.
+Read-only seat users can connect to the Remote MCP server using the "login with dbt" OAuth flow. Unlike PATs, OAuth tokens are short-lived and auto-refresh automatically, reducing credential management overhead. 
+
+This is in private beta as of May 2026. Contact your account manager to join. Once enrolled, you can authenticate using the OAuth flow instead of manually configuring an `Authorization` header.
 :::
 
 :::warning `execute_sql` requires a PAT
