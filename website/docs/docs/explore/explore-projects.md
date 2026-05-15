@@ -252,7 +252,12 @@ A resource in your project is characterized by resource type, materialization ty
 
 ### Example of lenses
 
-Example of applying the **Materialization type** _lens_ on a zoomed-out lineage graph. In the bottom-left corner, open **Lenses** and select **Materialization type**. Each node displays a colored badge for its materialization type (for example, **VIEW** or **TABLE**), and the legend lists Table, View, Incremental, Ephemeral, and Materialized View.
+Example of applying the **Materialization type** _lens_ on a zoomed-out lineage graph. In the bottom-left corner, open **Lenses** and select **Materialization type**. Each node displays a colored badge for its related materialization type:
+- Table
+- View
+- Incremental
+- Ephemeral
+- Materialized View.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.png" width="100%" title="Example of the Materialization type lens" />
 
