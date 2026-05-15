@@ -51,7 +51,7 @@ Earlier this year we'd been discussing docs data and how AI tools are now fetchi
 So we chatted about this and toyed with the idea of either:
 - Building a new docs MCP server, which meant starting from scratch and building all the infrastructure from the ground up
 - Adding docs tools to the existing dbt MCP server, which meant we would need to add the docs toolset category to the existing dbt MCP server (which already has users and is set up)
-- Leaving it alone since we have the docs in [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) (shout out to the amazing work from the DX team!), which is way forward for users who install the dbt agent skills
+- Leaving it alone since we have the docs in [dbt agent skills](https://github.com/dbt-labs/dbt-agent-skills) (shout out to the amazing work from the DX team!), which is the way forward for users who install the dbt agent skills
 
 But that still left us with the question of how to get the docs closer to users in a way that is easy to use and maintain.
 
@@ -72,7 +72,7 @@ As mentioned above, we already had a solid foundation for AI-readable docs:
 - `AGENTS.md` file that lists how to access the docs via web requests
 - A published [`fetching-dbt-docs` skill](https://skills.sh/dbt-labs/dbt-agent-skills/fetching-dbt-docs) that teaches AI agents how to access our docs via web requests, installed across Claude Code, Copilot, Gemini CLI, and others
 
-The skill approach works great and relies on the someone installing it and the agent knowing the skill existed We were curious to see what would help bring docs even closer to users.
+The skill approach works great and relies on the someone installing it and the agent knowing the skill existed. However, we were curious to see what would help bring docs even closer to users.
 
 ## The solution: delivering The Book
 
