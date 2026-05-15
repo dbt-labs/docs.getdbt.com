@@ -6,7 +6,7 @@ id: "explore-cost-data"
 tags: ['scheduler','SAO', 'cost savings', 'models built', 'cost insights']
 ---
 
-# Explore cost data <Lifecycle status="private_beta,managed,managed_plus" />
+# Explore cost data <Lifecycle status="beta,managed,managed_plus" />
 
 You can access Cost Insights in these different <Constant name="dbt_platform" /> areas:
 
@@ -32,7 +32,7 @@ import CostInsights from '/snippets/_cost-insights-sao.md';
 
 The Cost Insights section in your project dashboard gives you a high-level view of warehouse costs and the impact of optimization through state-aware orchestration.
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
 
 ### Access
 
@@ -99,7 +99,7 @@ import ModelPerformance from '/snippets/_model-performance.md';
 
 The **Insights** section on the Job details page provides cost and performance data for individual jobs.
 
-<Lightbox src="/img/docs/dbt-cloud/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
+<Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-job.png" title="Cost Insights in job details"/>
 
 ### Access
 

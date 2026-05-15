@@ -10,15 +10,15 @@ import FusionReleases from '/src/components/fusionReleases';
 
 # Fusion releases <Lifecycle status="preview" />
 
-:::note Preview feature
+:::note Fusion availability
 
-This page shows release information for preview builds of <Constant name="fusion" /> only. When <Constant name="fusion" /> becomes generally available, these channels will transition to <Constant name="fusion" /> [release tracks](/docs/dbt-versions/cloud-release-tracks).
+This page shows release information for local builds of <Constant name="fusion" /> only. <Constant name="fusion" /> releases on the <Constant name="dbt_platform" /> adhere to the [release tracks](/docs/dbt-versions/dbt-release-tracks) categories, giving you control over release cadence and stability.
 
 :::
 
 Track current versions and full release history for the <Constant name="fusion_engine" />. This data updates live from dbt release channels.
 
-For detailed information about each release, refer to the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
+Each of the versions on this page links to the matching section in the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md) on GitHub.
 
 ## Release channels
 

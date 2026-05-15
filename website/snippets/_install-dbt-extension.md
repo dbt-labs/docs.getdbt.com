@@ -21,11 +21,11 @@ To use the extension, you must meet the following prerequisites:
 | Prerequisite | Details |
 | --- | --- |
 | **<Constant name="fusion_engine" />**  | The [dbt VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview) requires the <Constant name="fusion_engine" /> binary (a small executable program). The extension will prompt you to install it, or you can [install it manually](#install-the-dbt-fusion-engine-from-the-command-line-if-you-havent-already) at any time. <br /><br />[Register your email](#register-the-extension) within 14 days of installing the dbt extension.  Free for up to 15 users.  |
-| **Project files** | - You need a `profiles.yml` configuration file.<br /><br />⁃ You _may_ need to [download](#register-with-dbt_cloudyml) a `dbt_cloud.yml` file depending on your [registration path](#choose-your-registration-path).<br /><br />⁃ You don't need a <Constant name="dbt_platform" /> project to use the extension. |
+| **Project files** | - You need a `profiles.yml` configuration file.<br /><br />⁃ You _may_ need to [download a `dbt_cloud.yml`](/reference/dbt_cloud.yml) file depending on your [registration path](#choose-your-registration-path).<br /><br />⁃ You don't need a <Constant name="dbt_platform" /> project to use the extension. |
 | **Editor** | [VS Code](https://code.visualstudio.com/), [Cursor](https://www.cursor.com/en), or [Windsurf](https://windsurf.com/editor) code editor. |
 | **Operating systems** | macOS, Windows, or Linux-based computer. |
 |  **Configure your local setup** (Optional) | [Configure the extension](/docs/configure-dbt-extension) to mirror your dbt environment locally and set any environment variables locally to use the VS Code extension features. |
-| **Run dbt-autofix** (Optional) | [Run dbt-autofix](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-autofix) to fix any errors and deprecations in your dbt project. |
+| **Run  dbt-autofix** (Optional) | If you haven't already installed the "Migrate <Constant name="core"/> to <Constant name="fusion" /> agent skill", you can alternatively [run dbt-autofix](/guides/prepare-fusion-upgrade?step=5#what-the-autofix-tool-handles) to fix any errors and deprecations in your dbt project. |
 
 ## Install the extension
 
@@ -54,26 +54,29 @@ You're all set up with the dbt extension! The next steps are:
 - [Register the extension](#register-the-extension) with your email address or <Constant name="dbt_platform" /> account to continue using it beyond the trial period.
 - Review the [limitations and unsupported features](/docs/fusion/supported-features#limitations) if you haven't already.
 
-
 ## Getting started
 
-Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear on the sidebar. From here, you can access workflows to help you get started, offers information about the extension and your dbt project, and provides helpful links to guide you. For more information, see the [the dbt extension menu](/docs/about-dbt-extension#the-dbt-extension-menu) documentation. 
+Once the <Constant name="fusion_engine"/> and dbt VS Code extension have been installed in your environment, the dbt logo will appear in the sidebar. Click it to open the **Get started** panel.
 
-You can get started with the extension a couple of ways: 
-- Running `dbtf init` to use the terminal onboarding,
-- Opening **dbt: Register dbt extension** in the command palette,
-- Using the **Get started** button in the extension menu.
+The **Get started** panel is a persistent, always-on setup companion available in both VS Code and Cursor.  It continuously monitors your environment and surfaces the single most important next action. As new <Constant name="fusion" /> releases ship or your project changes, the panel resurfaces relevant steps automatically.
 
-The following steps explain how to get started using the **Get started** button in the extension menu:
+<Lightbox src="/img/docs/extension/vsce-get-started.png" width="100%" title="The Get started panel in VS Code showing the four setup steps, with the active step highlighted as an orange CTA button."/>
 
-1. From the sidebar menu, click the dbt logo to open the menu and expand the **Get started** section. 
-2. Click the **dbt Walkthrough** status bar to view the welcome screen.
-    <Lightbox src="/img/docs/extension/welcome-screen.png" width="80%" title="dbt VS Code extension welcome screen."/>
-3. Click through the items to get started with the extension:
-    - **Open your dbt project:** Launches file explorer so you can select the dbt project you want to open with Fusion.
-    - **Check Fusion compatibility:** Runs the [Fusion upgrade](#upgrade-to-fusion) workflows to bring your project up-to-date. If you encounter any parsing errors, you can also run the [`dbt-autofix` tool](https://github.com/dbt-labs/dbt-autofix?tab=readme-ov-file#installation) to resolve them.
-    - **Explore features:** Opens the [documentation](/docs/about-dbt-extension) so you can learn more about all the extension has to offer.
-    - [**Register:**](#register-the-extension) Launches the registration workflow so you can continue to use the extension beyond the trial period.
+The panel guides you through four setup steps in order, showing only what's relevant to your current state:
+
+1. **Install or update <Constant name="fusion_engine" />**: Detects whether the <Constant name="fusion_engine" /> binary is missing or outdated and installs or updates it with a single click.
+2. **Open project**: Checks for a `dbt_project.yml` file in your workspace to confirm a valid dbt project is open before proceeding.
+3. **Check Fusion compatibility**: Guides you through upgrading your project to <Constant name="fusion" />. When you click this step, you can choose between two paths:
+    - **Start with an agent**: Installs the **Migrate <Constant name="core" /> to <Constant name="fusion" />** agent skill to your editor's skill folder
+        - This opens your AI chat (dbt Copilot or Cursor) with a migration prompt pre-filled. 
+        - A notification will confirm: _"We'll install the Migrate <Constant name="core" /> to <Constant name="fusion" /> agent skill to the editor's skill folder. Then we'll open your AI chat with a prompt to start the migration."_
+        - Click **Install & open chat** to proceed &mdash; the chat opens with the prompt already loaded, so you just press enter and the agent handles the migration. No CLI commands needed. Requires Copilot or Cursor.
+    - **Start manually in CLI**: Runs the <Constant name="fusion" /> upgrade workflow in your terminal. Refer to [Upgrade to <Constant name="fusion" />](#upgrade-to-fusion) for more info.
+4. **Register**: Confirms you've registered your email to use the extension beyond the 14-day trial period. See [Register the extension](#register-the-extension).
+
+When all four steps are complete, the panel shows a green **Extension setup complete** button.
+
+<Lightbox src="/img/docs/extension/vsce-get-started-complete.png" width="100%" title="The Get started panel showing Extension setup complete with all four steps checked."/>
 
 ## Upgrade to Fusion
 
@@ -83,20 +86,26 @@ If you are already running the <Constant name="fusion_engine" />, you must be on
 
 :::
 
-The dbt extension provides a built-in upgrade tool to walk you through the process of configuring <Constant name="fusion" />  and updating your dbt project to support all of its features and fix any deprecated code. To start the process:
+The dbt extension provides two ways to upgrade your project to <Constant name="fusion" /> from the **Get started** panel:
 
-1. From the VS Code sidebar menu, click the **dbt logo**.
-2. In the resulting pane, open the **Get started** section and click the **Get started** button. 
+- **Agentic migration** &mdash; Automatically runs the <Constant name="dbt_core" />-to-<Constant name="fusion" /> migration via dbt Copilot or Cursor without any CLI steps. Select this option in the **Check Fusion compatibility** step of the **Get started** panel. Requires Copilot or Cursor.
+- **Manual CLI onboarding** &mdash; Walks you through the upgrade interactively in your terminal. Use this if you prefer the CLI or don't have Copilot or Cursor.
 
-    <Lightbox src="/img/docs/extension/fusion-onboarding-experience.png" width="80%" title="The dbt extension help pane and upgrade assistant." /> 
+### Manual CLI onboarding
 
-You can also manually start this process by opening a CLI window and running: 
+You can manually update your project to <Constant name="fusion" /> in a couple of ways:
 
-```
-dbt init --fusion-upgrade
-```
+- Trigger the manual flow from the **Get started** panel by selecting the **Manual CLI onboarding** option in the **Check Fusion compatibility** step.
+- Run the following command in your terminal:
 
-This will start the upgrade tool and guide you through the Fusion upgrade with a series of prompts:
+    ```
+    dbt init --fusion-upgrade
+    ```
+    <br />
+
+    <Lightbox src="/img/docs/extension/vsce-manual-upgrade.png" width="100%" title="The dbt extension Get started panel and upgrade assistant." /> 
+
+This starts the upgrade tool and guides you through the <Constant name="fusion" />  upgrade with a series of prompts:
 - **Do you have an existing dbt platform account?**: If you answer `Y`, you will be given instructions for downloading your dbt platform profile to register the extension. An `N` answer will skip to the next step.
 - **Ready to run a dbtf init?** (If there is no `profiles.yml` file present): You will go through the dbt configuration processes, including connecting to your data warehouse. 
 - **Ready to run a dbtf debug?** (If there is an existing `profiles.yml` file): Validates that your project is configured correctly and can connect to your data warehouse.
@@ -119,12 +128,12 @@ After downloading the extension and installing the <Constant name="fusion_engine
 - The extension is free for organizations for up to 15 users (see the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup)).
 - Registration links your editor to a dbt account so you can keep using the extension beyond the grace period.
 - This _does not_ require a <Constant name="dbt_platform" /> project — just a dbt account.
-- If a valid `dbt_cloud.yml` file exists on your machine, the extension will automatically use it and skip login.
+- If a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists on your machine, the extension will automatically use it and skip login.
 - If you already have a dbt account (even from years ago), you will be directed into an OAuth sign-in flow.
 
 <Expandable alt_header="Understanding regions">
 
-Most users can sign in from the extension's browser registration page for the default `US1` region. If that works, you have an account in the default region and don't need to consider other [regions](/docs/cloud/about-cloud/access-regions-ip-addresses).
+Most users can sign in from the extension's browser registration page for the default `US1` region. If that works, you have an account in the default region and don't need to consider other [regions](/docs/platform/about-platform/access-regions-ip-addresses).
 
 Use a credential file (`dbt_cloud.yml`) instead of sign-in when:
 
@@ -132,7 +141,7 @@ Use a credential file (`dbt_cloud.yml`) instead of sign-in when:
 - Your organization uses a non-default region (`eu1`, `us2`, and so on).
 - You prefer file-based credentials.
 
-If you're unsure whether you have a `US1` account from the past, try signing in or using **Forgot password** at [us1.dbt.com](http://us1.dbt.com). If nothing comes up, continue with [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml).
+If you're unsure whether you have a `US1` account from the past, try signing in or using **Forgot password** at [us1.dbt.com](http://us1.dbt.com). If nothing comes up, continue with the [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) section.
 </Expandable>
 
 #### Choose your registration path
@@ -142,7 +151,7 @@ Your dbt VS Code extension registration path depends on your situation. Select t
 - **New to dbt and never created a dbt account?** → Use [First-time registration](#first-time-registration).
 - **Have an existing dbt account and can sign in?** → Use [Existing dbt account](#existing-dbt-account).
 - **Email already exists or can’t sign in?** (locked, forgot password) → Use [Recover your login](#recover-your-login).
-- **Can't sign in or your organization uses a non-default region** (`eu1`, `us2`) → Use [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml).
+- **Can't sign in or your organization uses a non-default region** (`eu1`, `us2`) → Read the [Register with `dbt_cloud.yml`](#register-with-dbt_cloudyml) section for more information.
 
 ### First-time registration
 
@@ -160,17 +169,17 @@ Use this if you've _never_ created a dbt account before.
 
 ### Existing account sign-in {#existing-dbt-account}
 
-Use this if you have an existing dbt account &mdash; including older or inactive accounts. dbt automatically detects your account and `dbt_cloud.yml` file if it exists (no file download needed). Use this to easily work across machines.
+Use this if you have an existing dbt account &mdash; including older or inactive accounts. dbt automatically detects your account and [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file if it exists (no file download needed). Use this to easily work across machines.
 
 1. [Update the VS Code extension](https://code.visualstudio.com/docs/setup/setup-overview#_update-cadence) to the latest version and restart your editor before beginning the registration process.
 2. Click the registration prompt or open the command palette and type: **dbt: Register dbt extension.**
 3. In the browser registration form, select **Sign in** at the bottom of the form.
 4. Enter your email address associated with your dbt account and click **Continue**. If you don't remember your password, see [Recover your login](#recover-your-login) for help.
-5. You'll then have the option to select your existing dbt account.
+5. You'll then have the option to select your existing dbt account. If you don't have a dbt account, you will be prompted to create an account instead with your existing dbt user. 
 6. Select the account you want to use and click **Continue**.
 7. You should see a page confirming your successful registration. Close the tab and go back to your editor to continue the registration.
 
-**When you might still need a `dbt_cloud.yml`:**
+**When you might still need a [`dbt_cloud.yml`](/reference/dbt_cloud.yml):**
 - You want a file-based credential for automations.
 - You're on the free Developer plan and your workflow needs a local credential file for defer.
 - Your region requires it (for example, regions like `eu1` or `us2`).
@@ -198,19 +207,15 @@ To reset your password and sign in through the OAuth flow:
 Use this if you can't sign in to your dbt account, your org uses a non-default region (`eu1`, `us2`), or your workflow requires a credential file.
 
 1. Log in to <Constant name="dbt_platform" /> and open **Account settings** → **VS Code extension**.
-2. In the **Set up your credentials** section, click **Download credentials** to get `dbt_cloud.yml` file.
+2. In the **Set up your credentials** section, click **Download credentials** to get your [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file.
     <Lightbox src="/img/docs/extension/download-registration-2.png" width="70%" title="Download the dbt_cloud.yml file from your dbt platform account."/>
-3. Move the file into your dbt directory:
-    - macOS/Linux: `~/.dbt/dbt_cloud.yml`
-    - Windows: `C:\Users\[username]\.dbt\`
-
-    For help creating/moving the `.dbt` directory, see [this FAQ](#how-to-create-a-dbt-directory-in-root-and-move-dbt_cloudyml-file).
+3. Move the file into your `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux, `C:\Users\[username]\.dbt\` on Windows). Refer to [`dbt_cloud.yml`](/reference/dbt_cloud.yml#download-dbt_cloudyml) for setup steps including how to create the `.dbt` directory.
 
 4. Return to the VS Code editor, open the command palette and type: **dbt: Register dbt extension**.
 5. The extension will detect the credential file and you can continue with the registration flow.
 
 **Behavior details:**
-- If the `dbt_cloud.yml` file exists, it takes precedence over any login flow and the extension uses it automatically.
+- If the [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file exists, it takes precedence over any login flow and the extension uses it automatically.
 - If the file is missing, you'll be prompted to sign in or add the file.
 
 ## Configure environment variables locally {#configure-environment-variables}

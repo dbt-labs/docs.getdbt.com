@@ -3,7 +3,7 @@
 
 <Expandable alt_header="Assess impact and required actions">
 
-If you're using a `dbt-snowflake` version below v1.10.6 or have not yet migrated to a [release track](/docs/dbt-versions/cloud-release-tracks) in the <Constant name="dbt_platform" />, your adapter version is incompatible with this change and may fail to build incremental models that meet _both_ of the following conditions:
+If you're using a `dbt-snowflake` version below v1.10.6 or have not yet migrated to a [release track](/docs/dbt-versions/dbt-release-tracks) in the <Constant name="dbt_platform" />, your adapter version is incompatible with this change and may fail to build incremental models that meet _both_ of the following conditions:
 
 - Contain string columns with collation defined
 - Use the `on_schema_change='sync_all_columns'` config

@@ -20,10 +20,10 @@ To view the project-level lineage graph, click the **View lineage** icon in the 
 - Selecting a model reveals its dependent projects in the lineage.
 - Click on an upstream (parent) project to view the other projects that reference it in the **Relationships** tab, showing the number of downstream (child) projects that depend on them. 
   - This includes all projects listing the upstream one as a dependency in its `dependencies.yml` file, even without a direct `{{ ref() }}`.
-- Selecting a project node from a public model opens its detailed lineage graph if you have the [permissions](/docs/cloud/manage-access/enterprise-permissions) to do so.
+- Selecting a project node from a public model opens its detailed lineage graph if you have the [permissions](/docs/platform/manage-access/enterprise-permissions) to do so.
 
 :::tip Indirect dependencies
-When viewing a project's lineage, <Constant name="catalog" /> shows only _directly_ [referenced](/docs/mesh/govern/project-dependencies) public models. It doesn't show [indirect dependencies](/faqs/Project_ref/indirectly-reference-upstream-model). If a referenced model in your project depends on another upstream public model, the second-level model won't appear in <Constant name="catalog" />, however it will appear in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) lineage view.
+When viewing a project's lineage, <Constant name="catalog" /> shows only _directly_ [referenced](/docs/mesh/govern/project-dependencies) public models. It doesn't show [indirect dependencies](/faqs/Project_ref/indirectly-reference-upstream-model). If a referenced model in your project depends on another upstream public model, the second-level model won't appear in <Constant name="catalog" />, however it will appear in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) lineage view.
 :::
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-parent.png" width="100%" height="100" title="View your cross-project lineage in a parent project and the other projects that reference it by clicking the 'Relationships' tab."/>

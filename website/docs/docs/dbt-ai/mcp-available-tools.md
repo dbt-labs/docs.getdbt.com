@@ -14,7 +14,7 @@ The following sections list every tool by category, along with which server type
 
 | Tools | Local | Remote |
 | --- | --- | --- |
-| [dbt CLI](#dbt-cli)  | ✅ | ❌ |
+| [dbt commands](#dbt-commands)  | ✅ | ❌ |
 | [Semantic Layer](#semantic-layer) | ✅ | ✅ |
 | [SQL](#sql)  | ✅ | ✅ |
 | [Metadata Discovery](#discovery) | ✅ | ✅ |
