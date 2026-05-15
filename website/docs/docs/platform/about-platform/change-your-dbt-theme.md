@@ -1,6 +1,6 @@
 ---
 title: "Change your dbt theme" 
-id: change-your-dbt-cloud-theme
+id: change-your-dbt-theme
 description: "Learn about theme switching in dbt"
 sidebar_label: Change your dbt theme
 image: /img/docs/dbt-platform/using-dbt-platform/light-vs-dark.png
@@ -14,7 +14,7 @@ You can seamlessly switch between these modes directly from the profile menu, cu
 
 Your selected theme is stored in your user profile, ensuring a consistent experience across <Constant name="dbt" />.
 
-Theme selection applies across all areas of <Constant name="dbt" />, including the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [<Constant name="catalog" />](/docs/explore/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Change themes in <Constant name="dbt" />](/docs/platform/about-platform/change-your-dbt-cloud-theme#change-themes-in-dbt-cloud).
+Theme selection applies across all areas of <Constant name="dbt" />, including the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [<Constant name="catalog" />](/docs/explore/explore-projects), [environments](/docs/environments-in-dbt), [jobs](/docs/deploy/jobs), and more. Learn more about customizing themes in [Change themes in <Constant name="dbt" />](/docs/platform/about-platform/change-your-dbt-theme#change-themes-in-dbt).
 
 ## Change themes in dbt
 

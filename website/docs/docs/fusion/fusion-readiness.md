@@ -19,7 +19,7 @@ Use the following checklist to prepare your projects for the <Constant name="fus
 
 ### Upgrade to the latest dbt version
 
-The **Latest** [release track](/docs/dbt-versions/cloud-release-tracks) has all of the most recent features to help you prepare for <Constant name="fusion" />.
+The **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) has all of the most recent features to help you prepare for <Constant name="fusion" />.
 
 - [ ] Make sure all your projects are on the **Latest** release track across all deployment environments and jobs. This will ensure the simplest, most predictable experience by allowing you to pre-validate that your project doesn't rely on deprecated behaviors. 
 
@@ -68,7 +68,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 
 - [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
   - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for Fusion. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
-- [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available).
+- [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available).
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.

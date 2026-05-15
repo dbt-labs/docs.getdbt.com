@@ -69,7 +69,7 @@ A [<Constant name="dbt" /> account admin](/docs/platform/manage-access/enterpris
 1. To create a new project in <Constant name="dbt" />, navigate to **Account home**.
 2. Click on **+New project**. 
 3. Fill out the **Project name**. Name the project something that allows you to recognize it's a <Constant name="core" /> project. 
-   - You don't need to set up a [data warehouse](/docs/supported-data-platforms) or [<Constant name="git" /> connection](/docs/platform/git/git-configuration-in-dbt-cloud), however to upgrade the hybrid project to a full <Constant name="dbt" /> project, you'd need to set up data warehouse and <Constant name="git" /> connection.
+   - You don't need to set up a [data warehouse](/docs/supported-data-platforms) or [<Constant name="git" /> connection](/docs/platform/git/configure-git), however to upgrade the hybrid project to a full <Constant name="dbt" /> project, you'd need to set up data warehouse and <Constant name="git" /> connection.
 4. Select the **Advanced settings** toggle and then select the **Hybrid development** checkbox. Click **Continue**.
    - The hybrid project will have a visible **Hybrid** indicator in the project list to help you identify it.
 <Lightbox src="/img/docs/deploy/hp-new-project.jpg" title="Hybrid project new project" />

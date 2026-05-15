@@ -1,6 +1,7 @@
 ---
 title: "Release tracks in dbt platform"
 sidebar_label: "About release tracks"
+id: "dbt-release-tracks"
 description: "Learn how to get automatic upgrades to dbt in the dbt platform. Access new features and enhancements as soon as they become available."
 ---
 
@@ -37,7 +38,7 @@ _`Fusion Stable` is the default for all new <Constant name="fusion" />-powered p
 | **Extended** | The previous month's **Compatible** release. | Enterprise, Enterprise+ | `extended` |
 | **Fallback** | The previous month's **Extended** release. | Enterprise+ | `fallback` |
 
-To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
+To configure an environment in the [dbt Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest) to use a release track, set `dbt_version` to the release track name:
 - `fusion-nightly`
 - `fusion-stable` (formerly `latest-fusion`)
 - `fusion-extended`
@@ -125,11 +126,11 @@ Switching to **Fallback** alerts the dbt Support team, who may reach out to help
 
 ### How to upgrade {#upgrade-tips}
 
-If you regularly develop your dbt project in <Constant name="dbt" />, and you're still running on a legacy version of <Constant name="core" />, dbt Labs recommends that you try upgrading your project in a development environment. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). Then, launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and do your development work as usual. Everything should work as you expect.
+If you regularly develop your dbt project in <Constant name="dbt" />, and you're still running on a legacy version of <Constant name="core" />, dbt Labs recommends that you try upgrading your project in a development environment. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version). Then, launch the <Constant name="studio_ide" /> or <Constant name="platform_cli" /> and do your development work as usual. Everything should work as you expect.
 
 If you do see something unexpected or surprising, revert back to the previous version and record the differences you observed. [Contact <Constant name="dbt" /> support](/docs/dbt-support#dbt-cloud-support) with your findings for a more detailed investigation.
 
-Next, we recommend that you try upgrading your project’s [deployment environment](/docs/dbt-versions/upgrade-dbt-version-in-cloud#environments). If your project has a [staging deployment environment](/docs/deploy/deploy-environments#staging-environment), upgrade and try working with it for a few days before you proceed with upgrading the production environment. 
+Next, we recommend that you try upgrading your project’s [deployment environment](/docs/dbt-versions/upgrade-dbt-platform-version#environments). If your project has a [staging deployment environment](/docs/deploy/deploy-environments#staging-environment), upgrade and try working with it for a few days before you proceed with upgrading the production environment. 
 
 If your organization has multiple dbt projects, we recommend starting your upgrade with projects that are smaller, newer, or more familiar for your team. That way, if you do encounter any issues, it'll be easier and faster to troubleshoot those before proceeding to upgrade larger or more complex projects.
 

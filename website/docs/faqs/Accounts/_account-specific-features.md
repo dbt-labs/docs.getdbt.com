@@ -125,7 +125,7 @@ The number of projects and run slots available to your organization varies based
 
 <Constant name="dbt" /> offers a range of plans with varying features to suit different organizational needs. 
 
-For information on the different plan types and upgrading your plan, refer to our document on [How to upgrade a dbt Cloud account](/faqs/Accounts/cloud-upgrade-instructions).
+For information on the different plan types and upgrading your plan, refer to our document on [How to upgrade a dbt Cloud account](/faqs/Accounts/platform-upgrade-instructions).
 
 ## Related content
 
