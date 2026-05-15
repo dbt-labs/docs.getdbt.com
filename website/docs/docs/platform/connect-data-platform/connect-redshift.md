@@ -39,9 +39,9 @@ See the following supported authentication methods for Redshift:
 - Username and password
 - SSH tunneling
 - Identity Center via [external Oauth](/docs/platform/manage-access/redshift-external-oauth)
-- IAM User authentication via [extended attributes](/docs/dbt-cloud-environments#extended-attributes)
+- IAM User authentication via [extended attributes](/docs/dbt-platform-environments#extended-attributes)
 
-On the <Constant name="dbt_platform" />, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox.
+On the <Constant name="dbt_platform" />, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-platform-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox.
 
 You will need to create an IAM User, generate an [access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey), and either:
 - on a cluster, a database user is expected in the `user` field. The IAM user is only leveraged for authentication, the database user for authorization

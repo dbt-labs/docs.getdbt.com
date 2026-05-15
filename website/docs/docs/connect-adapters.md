@@ -9,7 +9,7 @@ This section provides more details on different ways you can connect dbt to an a
 
 ### Set up in dbt
 
-Explore the fastest and most reliable way to deploy dbt using <Constant name="dbt" />, a hosted architecture that runs <Constant name="core" /> across your organization. <Constant name="dbt" /> lets you seamlessly [connect](/docs/platform/about-cloud-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="dbt" /> UI.
+Explore the fastest and most reliable way to deploy dbt using <Constant name="dbt" />, a hosted architecture that runs <Constant name="core" /> across your organization. <Constant name="dbt" /> lets you seamlessly [connect](/docs/platform/about-platform-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the <Constant name="dbt" /> UI.
 
 ### Install with dbt Core
 

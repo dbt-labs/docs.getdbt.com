@@ -16,7 +16,7 @@ A <Constant name="dbt" /> project can have multiple deployment environments, pro
 To learn different approaches to managing <Constant name="dbt" /> environments and recommendations for your organization's unique needs, read [<Constant name="dbt" /> environment best practices](/guides/set-up-ci).
 :::
 
-Learn more about development vs. deployment environments in [<Constant name="dbt" /> Environments](/docs/dbt-cloud-environments).
+Learn more about development vs. deployment environments in [<Constant name="dbt" /> Environments](/docs/dbt-platform-environments).
 
 There are three types of deployment environments:
 - **Production**: Environment for transforming data and building pipelines for production use.
@@ -80,7 +80,7 @@ There is exactly one source (`sensitive_source`), and all downstream dbt models 
 
 **Cross-project references in dbt Mesh:** Let's say you have `Project B` downstream of `Project A` with cross-project refs configured in the models. When developers work in the IDE for `Project B`, cross-project refs will resolve to the staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the staging environment. Only the production environment will reference the production data, keeping the data and access isolated without needing separate projects.
 
-**Faster development enabled by deferral:** If `Project B` also has a staging deployment, then references to unbuilt upstream models<VersionBlock firstVersion="1.11"> and [user-defined functions (UDFs)](/docs/build/udfs)</VersionBlock> within `Project B` will resolve to that environment using [deferral](/docs/platform/about-cloud-develop-defer), rather than resolving to the models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> in production. This saves developers time and warehouse spend, while preserving clear separation of environments.
+**Faster development enabled by deferral:** If `Project B` also has a staging deployment, then references to unbuilt upstream models<VersionBlock firstVersion="1.11"> and [user-defined functions (UDFs)](/docs/build/udfs)</VersionBlock> within `Project B` will resolve to that environment using [deferral](/docs/platform/about-defer), rather than resolving to the models<VersionBlock firstVersion="1.11"> and functions</VersionBlock> in production. This saves developers time and warehouse spend, while preserving clear separation of environments.
 
 Finally, the staging environment has its own view in [<Constant name="catalog" />](/docs/explore/explore-projects), giving you a full view of your prod and pre-prod data.
 
@@ -108,20 +108,20 @@ Each project can have multiple connections (Snowflake account, Redshift host, Bi
 
 This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
 
-For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings.
+For all warehouses, use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override missing or inactive (grayed-out) settings.
 
 <WHCode>
 
 
 <div warehouse="Postgres">
 
-This section will not appear if you are using Postgres, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
+This section will not appear if you are using Postgres, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Redshift">
 
-This section will not appear if you are using Redshift, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
+This section will not appear if you are using Redshift, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override these values.
 
 </div>
 
@@ -139,13 +139,13 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 <div warehouse="Bigquery">
 
-This section will not appear if you are using Bigquery, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
+This section will not appear if you are using Bigquery, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Spark">
 
-This section will not appear if you are using Spark, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
+This section will not appear if you are using Spark, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override these values.
 
 </div>
 
@@ -166,7 +166,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 This section allows you to determine the credentials that should be used when connecting to your warehouse. The authentication methods may differ depending on the warehouse and <Constant name="dbt" /> tier you are on.
 
-For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
+For all warehouses, use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
 
 <WHCode>
 
@@ -221,7 +221,7 @@ For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#exten
 
 - **Dataset**: Target dataset
 
-Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
+Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
 
 </div>
 

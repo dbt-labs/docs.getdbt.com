@@ -43,7 +43,7 @@ If you already have the <Constant name="fusion_engine" /> installed, you can ski
     ```bash
     dbtf --version
     ```
-    You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have another dbt CLI installed). Default install path:
+    You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have the Core or platform CLI installed). Default install path:
 
        - macOS/Linux: `$HOME/.local/bin/dbt`
        - Windows: `C:\Users\<username>\.local\bin\dbt.exe`

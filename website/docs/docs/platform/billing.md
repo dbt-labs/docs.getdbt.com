@@ -139,7 +139,7 @@ The following table outlines the limits of <Constant name="copilot" /> actions b
 |Plan                       |Limit |
 |---------------------------|------|
 |Developer                  | ❌   |
-|Starter*                   |500   |
+|Starter*                   |100   |
 |Enterprise                 |5,000 |
 |Enterpise+                 |10,000|
 
