@@ -38,7 +38,7 @@ For cadence, plan availability, and API values (`fusion-nightly`, `fusion-stable
 
 :::tip Live data below is for local CLI channels
 
-The **Current versions** cards and full release list below pull the public Fusion manifest used for **local** installs (`dev`, `canary`, `latest`). You should use [release tracks](/docs/dbt-versions/dbt-release-tracks) for <Constant name="dbt_platform" /> planning.
+The **Current versions** cards and full release list below pull the public <Constant name="fusion" /> manifest used for _local_ installs (`dev`, `canary`, `latest`). You should use [release tracks](/docs/dbt-versions/dbt-release-tracks) for <Constant name="dbt_platform" /> planning.
 
 :::
 
@@ -46,7 +46,7 @@ The **Current versions** cards and full release list below pull the public Fusio
     <summary>Updating local Fusion</summary>
 <p>
 
-The following commands apply only to _local_ installations of <Constant name="fusion" />. They do not affect which Fusion build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [Fusion release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.
+The following commands apply only to _local_ installations of <Constant name="fusion" />. They don't affect which <Constant name="fusion" /> build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [Fusion release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.
 
 Running the system update command without a version flag installs the `latest` stable release:
 
