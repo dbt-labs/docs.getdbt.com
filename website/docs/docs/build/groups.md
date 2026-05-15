@@ -111,7 +111,13 @@ select ...
 
 ### Referencing a model in a group
 
-By default, all models within a group have the `protected` [access modifier](/reference/resource-configs/access). This means they can be referenced by downstream resources in _any_ group in the same project, using the [`ref`](/reference/dbt-jinja-functions/ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
+By default, all models within a group have the `protected` [access modifier](/reference/resource-configs/access). This means they can be referenced by downstream resources in _any_ group in the same project, using the [`ref`](/reference/dbt-jinja-functions/ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it.
+
+<VersionBlock firstVersion="1.12">
+
+Macros are not subject to group membership checks. When using [`dbt run-operation`](/reference/commands/run-operation), you can use `ref()` in a [macro](/docs/build/jinja-macros) to reference a private or protected model regardless of which group that model belongs to.
+
+</VersionBlock>
 
 <File name='models/schema.yml'>
 
