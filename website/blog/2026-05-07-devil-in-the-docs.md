@@ -13,9 +13,9 @@ image: /img/blog/2026-04-30-the-devil-is-in-the-docs/devil-in-the-docsv2.png
 > *"By all means, move at a glacial pace."*
 > — Miranda Priestly, *[The Devil Wears Prada](https://en.wikipedia.org/wiki/The_Devil_Wears_Prada_(film))*
 
-There's another scene in _The Devil Wears Prada_ that I think about more than that one. If you haven't seen it yet, I'll try not to spoil it for you. Miranda turns to Andy (Miranda's assistant) and explains, with complete "patience", that the [cerulean blue](https://en.wikipedia.org/wiki/Cerulean) in Andy's "lumpy sweater" didn't come out of thin air &mdash; it's traced back through a chain of deliberate fashion decisions made years earlier, by people who thought carefully about every choice. The sweater Andy bought from the store was the end of a long chain of deliberate _curation_, carefully veiled to protect the illusion that the sweater effortlessly came into existence.
+There's another scene in _The Devil Wears Prada_ that I think about more than that one. If you haven't seen it yet, I'll try not to spoil it for you. Miranda turns to Andy (Miranda's assistant) and explains, with such impatience, that the [cerulean blue](https://en.wikipedia.org/wiki/Cerulean) in Andy's "lumpy sweater" didn't come out of thin air &mdash; it's traced back through a chain of deliberate fashion decisions made years earlier, by people who thought carefully about every choice. The sweater Andy bought from the store was the end of a long chain of deliberate _curation_, carefully veiled to protect the illusion that the sweater effortlessly came into existence.
 
-That's how I'd describe documentation, especially in the AI era. A user &mdash; could be a developer, analyst, data engineer &mdash; asks an AI tool a question and gets an answer. They don't _need_ to see every decision in the chain behind it: what to include, how to structure it, where the gaps are, what needs updating. But those decisions shape every answer they get. Somewhere upstream, a docs team is making careful, deliberate choices that ripple all the way down to the moment the answer lands in the user's editor.
+That's how I'd describe documentation, especially in the AI era. A user &mdash; could be a developer, analyst, data engineer, tech writer 😜 &mdash; asks an AI tool a question and gets an answer. They don't _need_ to see every decision in the chain behind it: what to include, how to structure it, where the gaps are, what needs updating. But those decisions shape every answer they get. Somewhere upstream, a docs team is making careful, deliberate choices that ripple all the way down to the moment the answer lands in the user's editor.
 
 This blog discusses how docs teams are trying to bring those decisions closer to users &mdash; and why that architecture matters more than ever in the AI era.
 
@@ -25,18 +25,25 @@ This blog discusses how docs teams are trying to bring those decisions closer to
 
 Think of Andy in *The Devil Wears Prada* &mdash; constantly fielding requests for information she could theoretically find, but scrambling each time because it isn't at her fingertips. She's not uninformed. She's just not connected to the right source when it counts.
 
-That was the [dbt MCP server's](/docs/dbt-ai/about-mcp) relationship with the docs:
+That is a little similar to the relationship between the [dbt MCP server](/docs/dbt-ai/about-mcp) and the docs:
 
-- The open source documentation at [docs.getdbt.com](https://docs.getdbt.com) is carefully maintained (by the docs team _and_ our amazing dbt community), up-to-date, and formatted for humans, of course. And now machine consumption: there's an `llms.txt` index, a full-content flat file, and Markdown output on every page. We have an `AGENTS.md` file that lists how to access the docs via web requests. The source was solid and accessible.
-- The dbt MCP server &mdash; where dbt users interact with dbt through AI tools &mdash; couldn't reach any of it by default. It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, Fusion, Server Metadata. But none of them connected to the live docs by default. It didn't have our docs as its main source.
+- The open source documentation at [docs.getdbt.com](https://docs.getdbt.com) is carefully maintained (by the docs team _and_ our amazing dbt community), up-to-date, and formatted for humans and now, AI.
+  - There's an `llms.txt` index, a full-content flat file, and Markdown output on every page.
+  - We have an `AGENTS.md` file that lists how to access the docs via web requests.
+  - The source was solid and accessible.
+- The dbt MCP server is a powerful feature that dbt users interact with dbt through AI tools. It also had a connection to the docs via web searching and training data.
+  - It has eight toolset categories: CLI, Semantic Layer, Discovery, Admin API, SQL, Codegen, Fusion, Server Metadata.
+  - But none of them connected directly to the live docs _by default_. It didn't have our docs as its main source.
 
-So when an agent was asked *"how do I configure incremental models?"*, it could in theory reach the docs with its own browsing tools, but the experience was inconsistent. Sometimes it fetched a page, sometimes it leaned on training data or pieced an answer together; and when it _did_ fetch, it usually pulled rendered HTML rather than the Markdown source &mdash; heavier, noisier, and less token-efficient. There was no direct, native path inside the server that pointed agents at the canonical docs in their cleanest form by default.
+So when an agent was asked *"how do I configure incremental models?"*, it could absolutely in theory reach the docs with its own browsing tools, but the experience was inconsistent. Sometimes it fetched a page via web search, sometimes it leaned on training data, or pieced an answer together; and when it _did_ fetch, it usually pulled rendered HTML rather than the Markdown source &mdash; heavier, noisier, and less token-efficient. There was no direct, native path inside the server that pointed agents at the canonical docs in their cleanest form by default.
 
 <Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-meme.png" width="45%"title="Miranda mad at AI for hallucinating about incremental models (but for real an actual response I received from AI when I was adding the docs tools to the MCP server)" />
 
 ## The research: using the data to make better decisions
 
-Earlier this year we'd been discussing docs data and how AI tools are now fetching them to answer questions. The term 'canonical docs' was mentioned and I struggled to understand what it meant and how it was different from the docs we were already building. But then [Google announced their new docs API and MCP server](https://developers.googleblog.com/introducing-the-developer-knowledge-api-and-mcp-server/) &mdash; then it clicked! Docs are now the source of truth (canonical source) and more important than ever in the AI era 💃💃💃!
+Remember when Andy finally does her homework at Runway &mdash; studying the designers, the history, learning who's who &mdash; so she can anticipate Miranda's needs before being asked? That's the energy this stage called for: pulling the data, weighing the options, and making a deliberate call before committing to a solution.
+
+Earlier this year we'd been discussing docs data and how AI tools are now fetching them to answer questions. The term 'canonical docs' was mentioned and I struggled to understand what it meant and how it was different from the docs we were already building. But then [Google announced their new docs API and MCP server](https://developers.googleblog.com/introducing-the-developer-knowledge-api-and-mcp-server/) &mdash; then it clicked! Docs are now the source of truth (canonical source) and pretty important in the AI era 💃💃💃!
 
 So we chatted about this and toyed with the idea of either:
 - Building a new docs MCP server, which meant starting from scratch and building all the infrastructure from the ground up
@@ -45,14 +52,14 @@ So we chatted about this and toyed with the idea of either:
 
 But that still left us with the question of how to get the docs closer to users in a way that is easy to use and maintain.
 
-We ran some SQL queries using Fusion in the [dbt VS Code extension](/docs/install-dbt-extension?version=2.0) and also used [Insights](/docs/explore/dbt-insights?version=2.0) for exploratory analysis in our internal dbt platform account:
+We ran some SQL queries in our internal analytics project in dbt platform using Fusion in the [dbt VS Code extension](/docs/install-dbt-extension) and also used [Insights](/docs/explore/dbt-insights) for exploratory analysis.
 
 We saw that the dbt MCP server had these benefits:
 - Great adoption already, with a ton of infrastructure in place. Adding the docs tools would be a natural extension of that, bringing docs directly to users where they already work.
 - Eight toolset categories already but none of them could directly access docs.getdbt.com.
 - Open source and free, which also meant every user would get docs access automatically.
 
-But the problem was when an agent needed to answer *"how do I configure incremental models?"* &mdash; it might search the web or pull from training data, but there was no guaranteed path to the main source of truth, the current docs.
+But the problem was when an agent needed to answer *"how do I configure incremental models?"* &mdash; there was no guaranteed path to the main source of truth, the current docs.
 
 As mentioned above, we already had a solid foundation for AI-readable docs:
 
@@ -62,7 +69,7 @@ As mentioned above, we already had a solid foundation for AI-readable docs:
 - `AGENTS.md` file that lists how to access the docs via web requests
 - A published [`fetching-dbt-docs` skill](https://skills.sh/dbt-labs/dbt-agent-skills/fetching-dbt-docs) that teaches AI agents how to access our docs via web requests, installed across Claude Code, Copilot, Gemini CLI, and others
 
-The skill approach works great! But it relied on the agent knowing the skill existed, installing it, and performing web fetches as a workaround. We were curious to see what would help bring docs closer to users.
+The skill approach works great and relies on the someone installing it and the agent knowing the skill existed We were curious to see what would help bring docs even closer to users.
 
 ## The solution: delivering The Book
 
@@ -72,7 +79,7 @@ The Book is what carrying a chain of careful decisions actually looks like &mdas
 
 That's the standard we were trying to meet. Developers shouldn't have to leave their workflow to find docs. The docs &mdash; and all the careful decisions baked into them &mdash; should arrive in the tool they're already using, at the moment they need to evaluate something and move forward.
 
-The dbt MCP server could already handle lineage lookups, test runs, Semantic Layer queries, job debugging. But ask it *"what's the syntax for a snapshot strategy?"* and it might get it right or it might get it wrong or it might improvise. Training data. Best guess. The Book wasn't being "delivered".
+The dbt MCP server could already handle lineage lookups, test runs, Semantic Layer queries, job debugging. But ask it *"what's the syntax for a snapshot strategy?"* and it might get it right or it might get it wrong or it might improvise. Fetching from the web. Training data, or best guess. The Book wasn't being "delivered" consistently.
 
 ✨ **The solution:** We added two tools to the dbt MCP server under a new **"Product Docs"** category — the ninth toolset✨:
 
@@ -91,9 +98,9 @@ We also added the product docs toolset to dbt's [Developer agent](/docs/dbt-ai/d
 
 The Book arrived. No context switch required.
 
-Since we've added the docs toolsets in March, over **1000 unique dbt accounts** have reached for the docs through the dbt MCP server &mdash; and every one of those calls means that a user didn't have to leave their workflow to find the docs they needed. That's a win for users and a win for the docs team.
+So since we've added the docs toolsets in March, over **1000 unique dbt accounts** have reached for the docs through the dbt MCP server &mdash; and every one of those calls means that a user didn't have to leave their workflow to find the docs they needed. That's a win for users and a win for the docs team.
 
-And it's growing fast: **338** docs-tool calls in March (the month they launched), **1,113** in April, and over **6,000** in the first couple weeks of May.
+And it's growing fast: **338** docs-tool calls in March (the month they launched), **1,113** in April, and over **6,000** so far in May.
 
 <iframe
   src="/charts/mcp-docs-usage.html"
@@ -107,7 +114,7 @@ And those calls are mostly coming from *agents* &mdash; autonomous, multi-step t
 
 For analysts exploring a shared project, it means understanding what a model does without navigating to a separate tab. For teams working across different dbt setups, it means consistent, authoritative answers regardless of where they're working or who's asking. For the docs team, it means the work we put into writing and maintaining docs.getdbt.com is doing more than it was before &mdash; reaching users where they actually are.
 
-<Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-wear-chanel.png" width="55%"title="Emily loving that users are faster using the dbt MCP server with the docs tools than without" />
+<Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-wear-chanel.png" width="55%"title="Emily happier that docs are in the MCP server" />
 
 ## What's next
 
