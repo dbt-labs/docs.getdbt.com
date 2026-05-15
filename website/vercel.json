@@ -1486,6 +1486,11 @@
       "permanent": true
     },
     {
+      "source": "/docs/dbt-versions/dbt-cloud-release-notes-gen",
+      "destination": "/docs/dbt-versions/dbt-platform-release-notes-gen",
+      "permanent": true
+    },
+    {
       "source": "/docs/verified-adapters",
       "destination": "/docs/supported-data-platforms",
       "permanent": true

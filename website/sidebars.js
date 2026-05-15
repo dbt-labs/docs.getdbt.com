@@ -186,6 +186,7 @@ const sidebarSettings = {
                       },
                       items: [
                         "docs/platform/manage-access/oauth-intro",
+                        "docs/platform/manage-access/connect-apps-oauth",
                         "docs/platform/manage-access/set-up-snowflake-oauth",
                         "docs/platform/manage-access/set-up-databricks-oauth",
                         "docs/platform/manage-access/set-up-bigquery-oauth",
@@ -1184,6 +1185,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "reference/dbt_project.yml",
+        "reference/dbt_cloud.yml",
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
