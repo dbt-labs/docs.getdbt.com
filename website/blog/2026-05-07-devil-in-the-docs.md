@@ -96,6 +96,8 @@ Alongside this, [dbt agent skills](https://skills.sh/dbt-labs/dbt-agent-skills) 
 
 We also added the product docs toolset to dbt's [Developer agent](/docs/dbt-ai/developer-agent?version=2.0) experience &mdash; bringing the docs closer to users in dbt platform and the Studio IDE. 🎉
 
+<Lightbox src="/img/blog/2026-04-30-the-devil-is-in-the-docs/dwp-dev-agent.png" width="70%"title="Developer agent using the product docs tools" />
+
 The Book arrived. No context switch required.
 
 So since we've added the docs toolsets in March, over **1000 unique dbt accounts** have reached for the docs through the dbt MCP server &mdash; and every one of those calls means that a user didn't have to leave their workflow to find the docs they needed. That's a win for users and a win for the docs team.
