@@ -19,6 +19,9 @@ That's how I'd describe documentation, especially in the AI era. A user &mdash; 
 
 This blog discusses how docs teams are trying to bring those decisions closer to users &mdash; and why that architecture matters more than ever in the AI era.
 
+:::tip Ready to try it?
+Get started with the [dbt MCP quickstart guide](/docs/dbt-ai/mcp-quickstart-oauth) or check out the [product docs tools reference](/docs/dbt-ai/mcp-available-tools#product-docs) if you're already connected.
+:::
 <!-- truncate -->
 
 ## The gap: docs were there, but not natively delivered
