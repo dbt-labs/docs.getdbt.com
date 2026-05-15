@@ -32,6 +32,11 @@ Start a new branch to begin resolving deprecation warnings using one of the foll
 - [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/platform/studio-ide/autofix-deprecations). You can run the autofix tool on the **Compatible** or **Latest** release track.
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
+- [ ] **Remove behavior change flag overrides:** <Constant name="fusion" /> forcibly enables all behavior change flags. Remove any `flags:` overrides in your `dbt_project.yml` that opt out of these behaviors and validate that your project works correctly with them enabled.
+
+### Upgrade YAML spec
+
+- [ ] **Migrate Semantic Layer configs:** If your project uses the Semantic Layer, make sure your metric configurations use the [latest YAML spec](/docs/build/latest-metrics-spec).
 
 ### Validate and upgrade your dbt packages
 
@@ -41,8 +46,6 @@ The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_p
 - [ ] Check package repositories to make sure they're compatible with <Constant name="fusion" />. If a package you use is not yet compatible, we recommend opening an issue with the maintainer, making the contribution yourself, or removing the package temporarily before you upgrade.
 
 ### Validate user-defined functions
-
-### Validate support for functions
 
 Check that <Constant name="fusion" /> supports all user-defined functions (UDFs) in your project.
 
