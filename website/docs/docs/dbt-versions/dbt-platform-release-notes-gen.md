@@ -23,7 +23,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Job Creator permission set**: Adds a new Job Creator role that grants read access to jobs, environments, connections, and project resources, enabling users to create and manage jobs without broader administrative privileges. Contact your account manager to enable.
+- **Job creator permission set**: Adds a new Job creator role that grants read access to jobs, environments, connections, and project resources, enabling users to create and manage jobs without broader administrative privileges. Contact your account manager to enable.
 
 ### Studio IDE
 
@@ -35,7 +35,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Admin API tools enabled by default**: The admin API toolset (job management and run operations) is now always available in the dbt Copilot dev agent and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
 
-- **Improved Studio IDE agent prompt**: Clearer tool use and responses, including better formatting for anything you might copy out of the chat.
+- **Improved Studio IDE agent prompt**: The Developer agent in Studio now uses dbt commands more efficiently (including fewer redundant `dbt ls calls` and correct `dbt show` limits), runs independent reads in parallel when appropriate, surfaces clear next-step choices instead of ending mid-action, stays within local git capabilities (no PR/GitHub promises), and formats SQL and YAML in copy-ready code blocks.
 
 ### Orchestration and run status
 
@@ -49,7 +49,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Paginated OAuth client registration tables**: The App Integrations settings card now loads manually registered and dynamically registered OAuth clients from separate paginated queries (10 rows per page). Each table has independent pagination controls, and deleting the last row on a non-first page automatically returns you to the previous page.
 
-- **MCP endpoint URL displayed in account settings and App Integrations**: When the dbt Model Context Protocol (MCP) feature is enabled, dbt displays your account's MCP endpoint URL in the **Account settings** -> **Integrations** page in the **App Integrations** section with a copy button, making it easier to connect external AI tools to your dbt account. Contact your account manager to enable.
+- **MCP endpoint URL displayed in account settings and App Integrations**: When the dbt Model Context Protocol (MCP) feature is enabled, your account's MCP endpoint URL is now shown in the Account settings page and in the App Integrations card with a copy button, making it easier to connect external AI tools to your dbt account. Contact your account manager to enable.
 
 ### Catalog
 
@@ -65,7 +65,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Studio IDE
 
-- **Accurate node statuses during runs**: During dbt runs in Studio, node statuses in run logs now updates correctly when evaluation events arrive, so in-progress state matches what’s actually happening.
+- **Accurate node status during runs**: During dbt runs in Studio, node status in run logs now updates correctly when evaluation events arrive, so in-progress state matches what’s actually happening.
 
 - **Clearer git ref lock errors**: A few failure paths that used to surface as unclear errors now show messages that explain what happened and what to try next.
 
