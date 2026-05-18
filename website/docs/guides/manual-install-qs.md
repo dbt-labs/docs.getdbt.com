@@ -15,7 +15,7 @@ hide_table_of_contents: true
 
 When you use <Constant name="core" /> to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
 
-If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="studio_ide" />), refer to the [<Constant name="dbt" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) &mdash; a <Constant name="dbt" /> powered command line.
+If you want to edit files and run projects using the web-based dbt Integrated Development Environment (<Constant name="studio_ide" />), refer to the [<Constant name="dbt" /> quickstarts](/guides). You can also develop and run dbt commands using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) &mdash; a <Constant name="dbt" /> powered command line.
 
 ### Prerequisites
 
@@ -471,7 +471,7 @@ We recommend using <Constant name="dbt" /> as the easiest and most reliable way 
 
 For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.png" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
+<Lightbox src="/img/docs/dbt-platform/deployment/run-overview.png" width="90%" title="Overview of a dbt job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
 
 For more information about using <Constant name="core" /> to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
 

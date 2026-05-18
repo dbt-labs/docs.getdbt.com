@@ -37,23 +37,39 @@ models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
     [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
-    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
     [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
 
 ```
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.10">
+<VersionBlock firstVersion="1.10" lastVersion="1.11">
 
 ```yaml
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
     [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
-    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
     [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
     [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness): <dict>
+
+  ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
+    [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[freshness](/reference/resource-configs/freshness): <dict>
+    [+](/reference/resource-configs/plus-prefix)[on_error](/reference/resource-configs/on_error): skip_children | continue
 
   ```
 
@@ -82,7 +98,7 @@ models:
 </File>
 </VersionBlock>
 
-<VersionBlock firstVersion="1.10">
+<VersionBlock firstVersion="1.10" lastVersion="1.11">
 
 Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
 
@@ -95,11 +111,35 @@ models:
     config:
       [materialized](/reference/resource-configs/materialized): <materialization_name>
       [sql_header](/reference/resource-configs/sql_header): <string>
-      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail #only for materialized views on supported adapters
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
       [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
       [freshness](/reference/resource-configs/freshness):
         # build_after is nested under freshness. Available on dbt platform Enterprise tiers only.
         build_after: <dict>
+```
+
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+Note, most model configurations are defined under `config`, while `build_after` is set under `freshness`.
+
+<File name='models/properties.yml'>
+
+```yaml
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): <materialization_name>
+      [sql_header](/reference/resource-configs/sql_header): <string>
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+      [freshness](/reference/resource-configs/freshness):
+        # build_after is nested under freshness. Available on dbt platform Enterprise tiers only.
+        build_after: <dict>
+      [on_error](/reference/resource-configs/on_error): skip_children | continue
 ```
 
 </File>
@@ -126,7 +166,22 @@ models:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.10">
+<VersionBlock firstVersion="1.10" lastVersion="1.11">
+
+```sql
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="<materialization_name>",
+    [sql_header](/reference/resource-configs/sql_header)="<string>"
+    [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views on supported adapters
+    [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
+    [freshness](/reference/resource-configs/freshness)=<dict>
+) }}
+```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
 
 ```sql
 
@@ -136,6 +191,7 @@ models:
     [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail # only for materialized views for supported adapters
     [unique_key](/reference/resource-configs/unique_key)='column_name_or_expression'
     [freshness](/reference/resource-configs/freshness)=<dict>
+    [on_error](/reference/resource-configs/on_error)="skip_children" | "continue"
 ) }}
 ```
 

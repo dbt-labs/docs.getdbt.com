@@ -15,7 +15,7 @@ This document provides a comprehensive overview of account-specific features in 
 
 ## Copilot
 
-[<Constant name="copilot" />](/docs/cloud/dbt-copilot) is an AI-powered assistant designed to accelerate your development workflow and help you focus on delivering high-quality data.
+[<Constant name="copilot" />](/docs/platform/dbt-copilot) is an AI-powered assistant designed to accelerate your development workflow and help you focus on delivering high-quality data.
 
 <Constant name="copilot" /> is available to all users in <Constant name="dbt" /> but limits are imposed according to plan type. Have a look at [dbt's pricing](https://www.getdbt.com/pricing) for more information.
 
@@ -45,7 +45,7 @@ BYOK means users can bring and configure their own OpenAI or Azure OpenAI API ke
 - When you use your own API key, your contract with the LLM provider (not dbt Labs') applies. You are responsible for managing costs, usage limits, and data handling. This means ownership and liability for API use rests with the user, not dbt Labs.
 - dbt Labs does not impose usage limits on the user's key, as it does with internally managed keys.
 - <OpenAiProjectRegion />
-- Currently, BYOK in <Constant name="dbt" /> supports OpenAI and Azure-hosted OpenAI API keys. Users enter their key through the [account settings](/docs/cloud/account-settings), and requests made by <Constant name="copilot" /> or other AI features are billed directly to the customer by the respective provider.⁠⁠⁠⁠
+- Currently, BYOK in <Constant name="dbt" /> supports OpenAI and Azure-hosted OpenAI API keys. Users enter their key through the [account settings](/docs/platform/account-settings), and requests made by <Constant name="copilot" /> or other AI features are billed directly to the customer by the respective provider.⁠⁠⁠⁠
 
 :::info
 The <Constant name="copilot" /> experience with BYOK and Azure OpenAI will not use metadata information in <Constant name="insights" />, <Constant name="canvas" />, or the <Constant name="studio_ide" />. 
@@ -125,9 +125,9 @@ The number of projects and run slots available to your organization varies based
 
 <Constant name="dbt" /> offers a range of plans with varying features to suit different organizational needs. 
 
-For information on the different plan types and upgrading your plan, refer to our document on [How to upgrade a dbt Cloud account](/faqs/Accounts/cloud-upgrade-instructions).
+For information on the different plan types and upgrading your plan, refer to our document on [How to upgrade a dbt Cloud account](/faqs/Accounts/platform-upgrade-instructions).
 
 ## Related content
 
-- [Billing](/docs/cloud/billing)
+- [Billing](/docs/platform/billing)
 

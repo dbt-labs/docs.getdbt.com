@@ -19,9 +19,14 @@ exports.versions = [
     customDisplay: "dbt Fusion engine (Latest)",
     isPrerelease: true,
   },
-    {
-    version: "1.12",
+  {
+    version: "1.13",
     customDisplay: "dbt platform (Latest Core)",
+  },
+  {
+    version: "1.12",
+    customDisplay: "Core v1.12 Beta",
+    isPrerelease: true,
   },
   {
     version: "1.11",
@@ -62,35 +67,35 @@ exports.versionedPages = [
     firstVersion: "1.9",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-apache-spark",
+    page: "docs/platform/connect-data-platform/connect-apache-spark",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-amazon-athena",
+    page: "docs/platform/connect-data-platform/connect-amazon-athena",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
+    page: "docs/platform/connect-data-platform/connect-azure-synapse-analytics",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-microsoft-fabric",
+    page: "docs/platform/connect-data-platform/connect-microsoft-fabric",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-onehouse",
+    page: "docs/platform/connect-data-platform/connect-onehouse",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-postgresql-alloydb",
+    page: "docs/platform/connect-data-platform/connect-postgresql-alloydb",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-starburst-trino",
+    page: "docs/platform/connect-data-platform/connect-starburst-trino",
     lastVersion: "1.99",
   },
   {
-    page: "docs/cloud/connect-data-platform/connect-teradata",
+    page: "docs/platform/connect-data-platform/connect-teradata",
     lastVersion: "1.99",
   },
   {

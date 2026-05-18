@@ -16,7 +16,7 @@ Learn how to query data with <Constant name="insights" /> and view documentation
 
 <Constant name="insights" /> in <Constant name="dbt" /> empowers users to seamlessly explore and query data with an intuitive, context-rich interface. It bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities into one unified experience. 
 
-<Constant name="insights" /> in <Constant name="dbt" /> integrates with [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), [<Constant name="canvas" />](/docs/cloud/canvas), [<Constant name="copilot" />](/docs/cloud/dbt-copilot), and [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
+<Constant name="insights" /> in <Constant name="dbt" /> integrates with [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [<Constant name="canvas" />](/docs/platform/canvas), [<Constant name="copilot" />](/docs/platform/dbt-copilot), and [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) to make it easier for you to perform exploratory data analysis, leverage AI-assisted tools, make faster decisions, and collaborate across teams.
 
 <Lightbox src="/img/docs/dbt-insights/insights-main.gif" title="Overview of the dbt Insights and its features" />
 
@@ -35,10 +35,10 @@ Some example use cases include:
 ## Prerequisites 
 
 - Be on a <Constant name="dbt" /> [Enterprise-tier](https://www.getdbt.com/pricing) plan &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="insights" />.
-- Available on all [tenant](/docs/cloud/about-cloud/tenancy) configurations. 
-- Have a <Constant name="dbt" /> [developer license](/docs/cloud/manage-access/seats-and-users) with access to <Constant name="insights" />.
-- Configured [developer credentials](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide).
-- Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="dbt" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
+- Available on all [tenant](/docs/platform/about-platform/tenancy) configurations. 
+- Have a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) with access to <Constant name="insights" />.
+- Configured [developer credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide).
+- Your production and development [environments](/docs/dbt-platform-environments) are on <Constant name="dbt" />’s ‘Latest’ [release track](/docs/dbt-versions/dbt-release-tracks) or a supported dbt version.
 - Use a supported data platform: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 	- Single sign-on (SSO) for development user accounts is supported. Deployment environments will be queried leveraging the user's development credentials.
 - (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="insights" />, you must also:

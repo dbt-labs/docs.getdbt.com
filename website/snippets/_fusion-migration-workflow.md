@@ -1,8 +1,4 @@
-If you have access to [<Constant name="dev_agent"/>](/docs/dbt-ai/developer-agent) and [<Constant name="copilot"/>](/docs/cloud/studio-ide/develop-copilot) with [AI features](/docs/cloud/enable-dbt-copilot?version=2.0#enable-dbt-copilot) enabled, you can use the [<Constant name="fusion"/> migration workflow](/docs/dbt-ai/developer-agent#fusion-migration-workflow) skill. This skill can help you fix compatibility errors directly from the <Constant name="studio_ide" /> using <Constant name="copilot" /> &mdash; no manual log investigation needed. It classifies every error, applies validated fixes automatically, and surfaces what's blocked.
-
-:::info
-The <Constant name="fusion" /> migration workflow is accessible through the <Constant name="dev_agent" /> in the <Constant name="studio_ide" />. If you're using VS Code or the <Constant name="platform_cli" />, use the [autofix tool](https://docs.getdbt.com/guides/fusion-package-compat?step=4) instead.
-:::
+If you have access to [<Constant name="dev_agent"/>](/docs/dbt-ai/developer-agent) and [<Constant name="copilot"/>](/docs/platform/studio-ide/develop-copilot) with [AI features](/docs/platform/enable-dbt-copilot?version=2.0#enable-dbt-copilot) enabled, you can use the [<Constant name="fusion"/> migration workflow](/docs/dbt-ai/developer-agent#fusion-migration-workflow) skill. This skill can help you fix compatibility errors directly from the <Constant name="studio_ide" /> using <Constant name="copilot" /> &mdash; no manual log investigation needed. It classifies every error, applies validated fixes automatically, and surfaces what's blocked.
 
 1. From the job list, click the **Review job** button for a job with a successful run.
    - If you don't see the **Review job** button, enable the **Show Fusion eligibility** toggle in the job list.
@@ -17,4 +13,4 @@ The <Constant name="fusion" /> migration workflow is accessible through the <Con
 7. When the project compiles with no warnings or errors, commit and publish your changes.
 8. After you merge the changes, wait for the job to run again or run it manually on <Constant name="fusion"/>.
 
-<Lightbox src="/img/docs/dbt-cloud/fusion-migration-workflow.gif" width="95%" title="The Developer Agent's fusion migration workflow triaging and fixing Fusion compatibility errors in the Studio IDE." />
+<Lightbox src="/img/docs/dbt-platform/fusion-migration-workflow.gif" width="95%" title="The Developer Agent's fusion migration workflow triaging and fixing Fusion compatibility errors in the Studio IDE." />

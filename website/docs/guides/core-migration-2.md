@@ -23,13 +23,13 @@ import CoreMigrationTable from '/snippets/_core-migration-table.md';
 <Expandable alt_header="What are dbt and dbt Core?">
 
    - <Constant name="dbt" /> is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
-     - Development experiences tailored to multiple personas ([<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation))
+     - Development experiences tailored to multiple personas ([<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation))
      - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
      - The [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
      - Domain ownership of data with multi-project [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) setups
      - [<Constant name="catalog" />](/docs/explore/explore-projects) for easier data discovery and understanding
 
-   Learn more about [<Constant name="dbt" /> features](/docs/cloud/about-cloud/dbt-cloud-features).
+   Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features).
 - <Constant name="core" /> is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for 'single players' and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
 
 </Expandable>
@@ -88,8 +88,8 @@ Once the benefits of a consolidated platform are clear, move the rest of your te
 <Expandable alt_header="User roles and responsibilities"> 
 
 Assess the users or personas involved in the pre-move, during the move, and post-move.
-- **Administrators**: Plan for new [access controls](/docs/cloud/manage-access/about-user-access) in <Constant name="dbt" />, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
-- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in <Constant name="dbt" />, training on [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) usage, and role changes.
+- **Administrators**: Plan for new [access controls](/docs/platform/manage-access/about-user-access) in <Constant name="dbt" />, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
+- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in <Constant name="dbt" />, training on [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) usage, and role changes.
 - **Data consumers:** Discover data insights by using [<Constant name="catalog" />](/docs/explore/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. <Lifecycle status="self_service,managed" />
 
 </Expandable>
@@ -118,7 +118,7 @@ Discover how <Constant name="dbt" /> can help simplify development, orchestratio
 
 <Expandable alt_header="Understand access control">
 
-Transition to <Constant name="dbt" />'s [access control](/docs/cloud/manage-access/about-user-access) mechanisms to ensure security and proper access management. <Constant name="dbt" /> administrators can use <Constant name="dbt" />'s permission model to control user-level access in a <Constant name="dbt" /> account:
+Transition to <Constant name="dbt" />'s [access control](/docs/platform/manage-access/about-user-access) mechanisms to ensure security and proper access management. <Constant name="dbt" /> administrators can use <Constant name="dbt" />'s permission model to control user-level access in a <Constant name="dbt" /> account:
 - **License-based access controls:** Users are configured with account-wide license types. These licenses control the things a user can do within the application: view project metadata, develop changes within those projects, or administer access to those projects.
 - **Role-based Access Control (RBAC):** Users are assigned to *groups* with specific permissions on specific projects or all projects in the account. A user may be a member of multiple groups, and those groups may have permissions on multiple projects. <Lifecycle status="managed,managed_plus" />
 
@@ -126,7 +126,7 @@ Transition to <Constant name="dbt" />'s [access control](/docs/cloud/manage-acce
 
 <Expandable alt_header="Manage environments"> 
 
-If you require isolation between production and pre-production data environments due to sensitive data, <Constant name="dbt" /> can support Development, Staging, and Production data [environments](/docs/dbt-cloud-environments).
+If you require isolation between production and pre-production data environments due to sensitive data, <Constant name="dbt" /> can support Development, Staging, and Production data [environments](/docs/dbt-platform-environments).
 
 This provides developers with the benefits of an enhanced workflow while ensuring isolation between Staging and Production data, and locking down permissions on Prod.
 
@@ -148,27 +148,27 @@ After [setting the foundations of <Constant name="dbt" />](/guides/core-migratio
 - **Review your dbt project:** Ensure your project compiles correctly and that you can run commands. Make sure your models are accurate and monitor performance post-move.
 - **Start cutover:** You can start the cutover to <Constant name="dbt" /> by creating a <Constant name="dbt" /> job with commands that only run a small subset of the DAG. Validate the tables are being populated in the proper database/schemas as expected. Then continue to expand the scope of the job to include more sections of the DAG as you gain confidence in the results.
 - **Precision testing:** Use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
-- **Access and permissions**: Review and adjust [access controls and permissions](/docs/cloud/manage-access/about-user-access) within <Constant name="dbt" /> to maintain security protocols and safeguard your data.
+- **Access and permissions**: Review and adjust [access controls and permissions](/docs/platform/manage-access/about-user-access) within <Constant name="dbt" /> to maintain security protocols and safeguard your data.
 
 ## Transition and training
 
-Once you've confirmed that <Constant name="dbt" /> orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you're still using an external orchestrator (such as Airflow), and you've swapped out `dbt-core` execution for <Constant name="dbt" /> execution (through the [API](/docs/dbt-cloud-apis/overview)).
+Once you've confirmed that <Constant name="dbt" /> orchestration and CI/CD are working as expected, you should pause your current orchestration tool and stop or update your current CI/CD process. This is not relevant if you're still using an external orchestrator (such as Airflow), and you've swapped out `dbt-core` execution for <Constant name="dbt" /> execution (through the [API](/docs/dbt-apis/overview)).
 
-Familiarize your team with <Constant name="dbt" />'s [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
-- **Release tracks:** Choose a [release track](/docs/dbt-versions/cloud-release-tracks) for automatic dbt version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of <Constant name="core" />.
-- **Development tools**: Use the [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) or [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio) to build, test, run, and version control your dbt projects.
+Familiarize your team with <Constant name="dbt" />'s [features](/docs/platform/about-platform/dbt-platform-features) and optimize development and deployment processes. Some key features to consider include:
+- **Release tracks:** Choose a [release track](/docs/dbt-versions/dbt-release-tracks) for automatic dbt version upgrades, at the cadence appropriate for your team — removing the hassle of manual updates and the risk of version discrepancies. You can also get early access to new functionality, ahead of <Constant name="core" />.
+- **Development tools**: Use the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) to build, test, run, and version control your dbt projects.
 - **Documentation and Source freshness:**  Automate storage of [documentation](/docs/build/documentation) and track [source freshness](/docs/deploy/source-freshness) in <Constant name="dbt" />, which streamlines project maintenance.
 - **Notifications and logs:** Receive immediate [notifications](/docs/deploy/monitor-jobs) for job failures, with direct links to the job details. Access comprehensive logs for all job runs to help with troubleshooting.
 - **CI/CD:** Use <Constant name="dbt" />'s [CI/CD](/docs/deploy/ci-jobs) feature to run your dbt projects in a temporary schema whenever new commits are pushed to open pull requests. This helps with catching bugs before deploying to production.
 
 ### Beyond your move
 
-Now that you've chosen <Constant name="dbt" /> as your platform, you've unlocked the power of streamlining collaboration, enhancing workflow efficiency, and leveraging powerful [features](/docs/cloud/about-cloud/dbt-cloud-features) for analytics engineering teams. Here are some additional features you can use to unlock the full potential of <Constant name="dbt" />:
+Now that you've chosen <Constant name="dbt" /> as your platform, you've unlocked the power of streamlining collaboration, enhancing workflow efficiency, and leveraging powerful [features](/docs/platform/about-platform/dbt-platform-features) for analytics engineering teams. Here are some additional features you can use to unlock the full potential of <Constant name="dbt" />:
 
-- **Audit logs:** Use [audit logs](/docs/cloud/manage-access/audit-log) to review actions performed by people in your organization. Audit logs contain audited user and system events in real time. You can even [export](/docs/cloud/manage-access/audit-log#exporting-logs) *all* the activity (beyond the 90 days you can view in <Constant name="dbt" />). <Lifecycle status="managed,managed_plus" />
-- **<Constant name="dbt" /> APIs:** Use <Constant name="dbt" />'s robust [APIs](/docs/dbt-cloud-apis/overview) to create, read, update, and delete (CRUD) projects/jobs/environments project. The [<Constant name="dbt" /> Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage. While the [Discovery API](/docs/dbt-cloud-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="self_service,managed" />
+- **Audit logs:** Use [audit logs](/docs/platform/manage-access/audit-log) to review actions performed by people in your organization. Audit logs contain audited user and system events in real time. You can even [export](/docs/platform/manage-access/audit-log#exporting-logs) *all* the activity (beyond the 90 days you can view in <Constant name="dbt" />). <Lifecycle status="managed,managed_plus" />
+- **<Constant name="dbt" /> APIs:** Use <Constant name="dbt" />'s robust [APIs](/docs/dbt-apis/overview) to create, read, update, and delete (CRUD) projects/jobs/environments project. The [<Constant name="dbt" /> Administrative API](/docs/dbt-apis/admin-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage. While the [Discovery API](/docs/dbt-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="self_service,managed" />
 - **<Constant name="catalog" />**: Use [<Constant name="catalog" />](/docs/explore/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their [lineage](https://docs.getdbt.com/terms/data-lineage) to gain a better understanding of its latest production state. (Once you have a successful job in a Production environment). <Lifecycle status="self_service,managed" />
-- **dbt Semantic Layer:** The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define universal metrics on top of your models that can then be queried in your [business intelligence (BI) tool](/docs/cloud-integrations/avail-sl-integrations). This means no more inconsistent metrics — there's now a centralized way to define these metrics and create visibility in every component of the data flow. <Lifecycle status="self_service,managed" />
+- **dbt Semantic Layer:** The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define universal metrics on top of your models that can then be queried in your [business intelligence (BI) tool](/docs/platform-integrations/avail-sl-integrations). This means no more inconsistent metrics — there's now a centralized way to define these metrics and create visibility in every component of the data flow. <Lifecycle status="self_service,managed" />
 - **dbt Mesh:** Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to share data models across organizations, enabling data teams to collaborate on shared data models and leverage the work of other teams. <Lifecycle status="managed,managed_plus" />
 
 ### Additional help
