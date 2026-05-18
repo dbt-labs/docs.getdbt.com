@@ -352,7 +352,7 @@ Follow these steps to define UDFs in dbt:
 
 After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you `build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
 
-## Defining overloaded UDFs
+### Defining overloaded UDFs
 
 Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake.
 
@@ -381,7 +381,20 @@ To define overloaded UDFs:
 
     </File>
 
-2. Create a separate file for each overload body:
+2. Create a separate file for each overload body.
+
+    For example, the body for the root function, which accepts a `string` argument:
+
+    <File name='functions/is_positive_int.sql'>
+
+    ```sql
+    # Snowflake syntax
+    REGEXP_INSTR(a_string, '^[0-9]+$')
+    ```
+
+    </File>
+
+    And the body for the overload, which accepts a `numeric` argument:
 
     <File name='functions/is_positive_int_numeric.sql'>
 
