@@ -58,9 +58,7 @@ Check that <Constant name="fusion" /> supports all user-defined functions (UDFs)
 
 <Constant name="fusion" /> supports nearly all built-in data platform functions out of the box. However, data platforms continuously add new functions that <Constant name="fusion" /> may not yet support.
 
-If you see the error `dbt0209: No function <function name>`, the resolution depends on whether the function is a UDF or a built-in function:
-
-If you see this warning:
+If you see the error `dbt0209: No function <function name>`, you can resolve it depending on whether the function is a UDF or a built-in function:
 
 - [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) to get the full <Constant name="fusion" /> experience. With `static_analysis: baseline` (the default), most UDFs will work out of the box.
 - [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). <Constant name="fusion" />'s `baseline` mode handles most cases, but will throw warnings and not errors. You can set `static_analysis: off` for specific models if needed. 
