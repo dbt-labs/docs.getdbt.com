@@ -514,9 +514,11 @@ Learn more about `INITIALIZATION_WAREHOUSE` in [Snowflake's docs](https://docs.s
 
 ### Refresh warehouse
 
-Starting `dbt-snowflake` v1.12, you can use the `refresh_warehouse` parameter to specify a separate warehouse for the dynamic table's self-refresh operations. This is separate from [`snowflake_warehouse`](#configuring-virtual-warehouses), which controls <Term id="ddl" /> execution. By setting `refresh_warehouse`, you can use a smaller warehouse for automatic refreshes while keeping a larger `snowflake_warehouse` for DDL operations.
+Starting `dbt-snowflake` v1.12, you can use the `refresh_warehouse` parameter in your model configuration to specify a separate warehouse for the dynamic table's self-refresh operations. This is separate from [`snowflake_warehouse`](#configuring-virtual-warehouses), which controls <Term id="ddl" /> execution. By setting `refresh_warehouse`, you can use a smaller warehouse for automatic refreshes while keeping a larger `snowflake_warehouse` for DDL operations.
 
-To configure the `refresh_warehouse` parameter, refer to the following example:
+To configure the `refresh_warehouse` parameter in your model, refer to the following example:
+
+<File name='models/<model_name>.sql'>
 
 ```sql
 {{ config(
@@ -528,6 +530,8 @@ To configure the `refresh_warehouse` parameter, refer to the following example:
 
 select * from {{ source('raw', 'events') }}
 ```
+
+</File>
 
 **Key points:**
 - If `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and self-refresh operations.
