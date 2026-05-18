@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/guides/explorer-quickstart",
+      "destination": "/docs/explore/explore-projects",
+      "permanent": true
+    },
+    {
       "source": "/community/events",
       "destination": "https://www.getdbt.com/events",
       "source": "/community/spotlight",
