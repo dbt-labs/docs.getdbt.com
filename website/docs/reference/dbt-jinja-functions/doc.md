@@ -28,6 +28,7 @@ models:
 ```
 
 </File>
+
 When you run `dbt docs generate` and view the docs site, this text appears exactly as written but only for the `order_total_cents` column of the `orders` model.
 
 
