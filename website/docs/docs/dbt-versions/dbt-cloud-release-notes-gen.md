@@ -35,7 +35,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Admin API tools enabled by default**: The admin API toolset (job management and run operations) is now always available in the dbt Copilot dev agent and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
 
-- **Improved Studio IDE agent prompt**: Clearer tool use and responses, including better formatting for anything you might copy out of the chat.
+- **Improved Studio IDE agent prompt**: The Developer agent in Studio now uses dbt commands more efficiently (including fewer redundant `dbt ls calls` and correct `dbt show` limits), runs independent reads in parallel when appropriate, surfaces clear next-step choices instead of ending mid-action, stays within local git capabilities (no PR/GitHub promises), and formats SQL and YAML in copy-ready code blocks.
 
 ### Orchestration and run status
 
