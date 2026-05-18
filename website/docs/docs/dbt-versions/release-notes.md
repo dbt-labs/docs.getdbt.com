@@ -20,6 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## May 2026
 
+- **New:** The **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions) is now available for Enterprise accounts. Assign it to users who need to manage Slack, Microsoft Teams, and email job notifications across all projects without requiring full Account Admin access.
 - **Beta**: [Cost Insights](/docs/explore/cost-insights), available in public beta, shows estimated warehouse compute costs and run times for dbt projects and models in <Constant name="dbt_platform"/>, highlighting efficiency gains from [state-aware orchestration](/docs/deploy/state-aware-about). Refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights) and [Explore cost data](/docs/explore/explore-cost-data) to learn more.
 - **New:** Fusion release tracks are now being rolled out across across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#fusion-release-tracks) for more information.
 - **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
