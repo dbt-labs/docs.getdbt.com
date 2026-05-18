@@ -21,8 +21,6 @@ For walkthroughs of both the preparation and upgrade processes, check out our de
 - [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-fusion-upgrade?step=1)
 - [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-fusion?step=1)
 
-not done
-Follow the step-by-step Prepare to upgrade to Fusion guide and the Upgrade to Fusion guide when you're ready to make the switch.
 
 ### Upgrade to the latest dbt version (recommended)
 
