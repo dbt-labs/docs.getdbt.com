@@ -222,6 +222,7 @@ models:
 | [`scheduler`](#scheduler)       | `<string>` | no       | `DISABLE`   | alter          |
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
 | [`snowflake_initialization_warehouse`](#initialization-warehouse)   | `<string>` | no       | `None`      | alter  |
+| [`refresh_warehouse`](#refresh-warehouse)   | `<string>` | no       | `None`      | alter  |
 | [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
 | [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
 | [`cluster_by`](#dynamic-table-clustering)     | `<string>` or `<list>` | no       | `None` | alter   |
@@ -252,6 +253,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[scheduler](#scheduler): ENABLE | DISABLE
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_warehouse](#refresh-warehouse): <warehouse-name>
     [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
     [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
@@ -280,6 +282,7 @@ models:
       [scheduler](#scheduler): ENABLE | DISABLE
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
       [snowflake_initialization_warehouse](#initialization-warehouse): <warehouse-name>
+      [refresh_warehouse](#refresh-warehouse): <warehouse-name>
       [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
       [initialize](#initialize): ON_CREATE | ON_SCHEDULE
       [cluster_by](#dynamic-table-clustering): <column-name> | [<column-name>, <column-name>, ...]
@@ -306,6 +309,7 @@ models:
     [scheduler](#scheduler)="ENABLE" | "DISABLE",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
     [snowflake_initialization_warehouse](#initialization-warehouse)="<warehouse-name>",
+    [refresh_warehouse](#refresh-warehouse)="<warehouse-name>",
     [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
     [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
     [cluster_by](#dynamic-table-clustering)="<column-name>" | ["<column-name>", "<column-name>", ...],
@@ -507,6 +511,34 @@ select * from {{ source('raw', 'events') }}
 - To revert to the default behavior after setting an initialization warehouse, either remove the `snowflake_initialization_warehouse` parameter from your model configuration or explicitly set it to `None`.
 
 Learn more about `INITIALIZATION_WAREHOUSE` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-warehouses).
+
+### Refresh warehouse
+
+Starting `dbt-snowflake` v1.12, you can use the `refresh_warehouse` parameter in your model configuration to specify a separate warehouse for the dynamic table's self-refresh operations. This is separate from [`snowflake_warehouse`](#configuring-virtual-warehouses), which controls <Term id="ddl" /> execution. By setting `refresh_warehouse`, you can use a smaller warehouse for automatic refreshes while keeping a larger `snowflake_warehouse` for DDL operations.
+
+To configure the `refresh_warehouse` parameter in your model, refer to the following example:
+
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    materialized='dynamic_table',
+    snowflake_warehouse='LARGE_EXECUTION_WH',
+    refresh_warehouse='SMALL_REFRESH_WH',
+    target_lag='1 hour'
+) }}
+
+select * from {{ source('raw', 'events') }}
+```
+
+</File>
+
+**Key points:**
+- If `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and self-refresh operations.
+- You can change `refresh_warehouse` on an existing dynamic table without a full refresh.
+- To revert to the default behavior after setting a refresh warehouse, remove the `refresh_warehouse` parameter from your model configuration or explicitly set it to `None`.
+
+Learn more about the `WAREHOUSE` parameter in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-warehouses).
 
 </VersionBlock>
 
