@@ -74,7 +74,7 @@ The new features are:
     - Use `env var` to autocomplete env var
 - **Dark mode**	&mdash;  Use dark mode in the <Constant name="studio_ide" /> for low-light environments.
 
-Read more about all the [Cloud <Constant name="studio_ide" /> features](/docs/platform/studio-ide/develop-in-studio#cloud-ide-features).
+Read more about all the [Cloud <Constant name="studio_ide" /> features](/docs/platform/studio-ide/develop-in-studio#studio-ide-features).
 
 ### Classic IDE deprecation notice
 
@@ -109,7 +109,7 @@ Some of the improvements include:
 - Better organization and navigation with features like drag and drop of files, breadcrumb, build button drop-down, and more.
 - You can use new features like auto-format your file, auto-complete model names, and git diff view to see your changes before making a pull request.
 
-Read more about the new [Cloud <Constant name="studio_ide" /> features](/docs/platform/studio-ide/develop-in-studio#cloud-ide-features) and check out [New and improved Cloud <Constant name="studio_ide" />](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!
+Read more about the new [Cloud <Constant name="studio_ide" /> features](/docs/platform/studio-ide/develop-in-studio#studio-ide-features) and check out [New and improved Cloud <Constant name="studio_ide" />](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!
 
 ## September 2022
 

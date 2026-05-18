@@ -1,6 +1,6 @@
 ---
 title: "The dbt platform features"
-id: "dbt-cloud-features"
+id: "dbt-platform-features"
 sidebar_label: "dbt platform features"
 description: "Explore dbt's features and learn why the dbt platform is the fastest way to deploy dbt"
 hide_table_of_contents: true
@@ -19,7 +19,7 @@ In addition to providing a hosted architecture for running dbt across your organ
 <Card
     title="dbt CLI"
     body="Use the CLI for the dbt platform to develop, test, run, and version control dbt projects and commands, directly from the command line."
-    link="/docs/platform/cloud-cli-installation"
+    link="/docs/platform/dbt-cli-installation"
     icon="dbt-bit"/>
 
 <Card
@@ -38,7 +38,7 @@ In addition to providing a hosted architecture for running dbt across your organ
     title="dbt Copilot*"
     body="Use dbt Copilot to generate documentation, tests, semantic models, metrics, and SQL code from scratch, giving you the flexibility to modify or fix generated code."
     link="/docs/platform/dbt-copilot"
-    icon="copilot"/>
+    icon="dbt-copilot"/>
 
 <Card
     title="Manage environments"
@@ -117,6 +117,13 @@ In addition to providing a hosted architecture for running dbt across your organ
     body="Learn how to query data and perform exploratory data analysis using dbt Insights."
     link="/docs/explore/dbt-insights"
     icon="dbt-bit"/>
+
+  <Card
+    title="Cost Insights*"
+    body="Track warehouse compute costs and understand the impact of optimizations across your dbt projects and models."
+    link="/docs/explore/cost-insights"
+    icon="dbt-bit"
+    lifecycle="beta"/>
 
 </div> <br />
 

@@ -129,7 +129,7 @@ By default, all users can access the <Constant name="fusion"/> upgrade experienc
 - **Fusion admin** &mdash; Assign to user accounts only. Cannot be assigned to service tokens.
 - **Account admin** &mdash; Assign to user accounts or service tokens. Allows both users and service tokens to perform upgrades.
 
-For more information, refer to [Upgrade to dbt <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine).
+For more information, refer to [Upgrade to dbt <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
 
 </Expandable>
 <Expandable alt_header="Git admin">
