@@ -122,6 +122,8 @@ The Redshift adapter supports the `query_group` session parameter, enabling dbt 
 
 <RedshiftDatasharing />
 
+For setup instructions, see [Redshift setup](/docs/local/connect-data-platform/redshift-setup).
+
 ## Late binding views
 
 Redshift supports <Term id="view">views</Term> unbound from their dependencies, or [late binding views](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html#late-binding-views). This DDL option "unbinds" a view from the data it selects from. In practice, this means that if upstream views or tables are dropped with a cascade qualifier, the late-binding view does not get dropped as well.
