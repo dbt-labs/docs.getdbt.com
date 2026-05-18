@@ -44,7 +44,7 @@ The following macros switch to `SHOW` commands when `datasharing: true`:
 If you see `pg_*` queries running with `datasharing` enabled, this is not automatically a bug. Only the macros listed above are migrated &mdash; some macros remain on `pg_*` by design (for example, `get_relations` for dependency tracking and `list_function_relations_without_caching` for function discovery). Custom macro overrides in your project are not affected. To confirm whether a `pg_*` query is expected, check which macro is being overridden and which metadata operation is running.
 :::
 
-Take note of the following limitations when using `datasharing`:
+The following limitations apply when using `datasharing`:
 
 - Creating views (including materialized views) in another database is not supported.
 - Cross-database grants on objects are not supported.
