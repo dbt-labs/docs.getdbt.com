@@ -32,7 +32,10 @@ You can receive email alerts about jobs by configuring the <Constant name="dbt" 
 ### Prerequisites 
 - You must be a _developer user_, _account admin_, or have the **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions) to configure email notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
     - As a developer user, you can set up email notifications for yourself. 
-    - As an account admin or Notification Manager, you can set up notifications for yourself and other team members across all projects. 
+
+Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
+- The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
+- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise). This permission manages notifications across all projects without full Account Admin access
 
 ### Configure email notifications
 
@@ -99,6 +102,10 @@ If there has been a change in user roles or Slack permissions where you no longe
 - You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
 - The integration only supports _public_ channels in the Slack workspace. 
 
+Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
+- The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
+- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise). This permission manages notifications across all projects without full Account Admin access
+
 ### Set up the Slack integration
 
 1. Select **Account settings** and then select **Integrations** from the left sidebar. 
@@ -156,9 +163,9 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
-- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise) — manages notifications across all projects without full Account Admin access
+- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise). This permission manages notifications across all projects without full Account Admin access
 
-IT licenses can't configure Slack job notifications. Only **Account Admins** can connect or disconnect the Slack workspace.
+IT licenses can receive job notifications but can't [configure them](/docs/platform/manage-access/seats-and-users?version=1.12). Only **Account Admins** can connect or disconnect the Slack workspace.
 
 ### Set up the Slack integration
 
@@ -220,7 +227,6 @@ The banner appears when all of the following are true:
 
 Before migrating, you must unlink the legacy Slack integration and link the <Constant name="dbt_platform" /> app. Unlinking the legacy integration is a manual step, and only one Slack app can be linked at a time.
 
-
 The banner appears when all of the following are true:
 
 - You have notification settings from a previous Slack integration.
@@ -280,6 +286,10 @@ Before you begin:
 - You must have a <Constant name="dbt_platform" /> account
 - You have a Microsoft Teams account that you want to receive job notifications from.
 - Make sure you have permission to view the **Account integrations** and **Job notifications** pages in <Constant name="dbt_platform" />.
+
+Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
+- The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
+- The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise). This permission manages notifications across all projects without full Account Admin access
 
 ### Set up Microsoft Teams
 To enable Microsoft Teams job notifications, complete the following sections:
