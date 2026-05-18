@@ -10,7 +10,8 @@ description: "Learn about the performance of your models so you can make improve
 
 To view model performance in <Constant name="catalog" />:
 
-1. Select your project in the left sidebar.
+1. Navigate to **<Constant name="catalog" />** in the left-hand menu.
+2. Select your project in the left sidebar.
 2. Click the **Performance** tab.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
