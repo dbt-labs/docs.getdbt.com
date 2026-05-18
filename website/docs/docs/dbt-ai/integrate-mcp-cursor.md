@@ -5,6 +5,8 @@ description: "Guide to set up Cursor with dbt-mcp"
 id: "integrate-mcp-cursor"
 ---
 
+import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
+
 [Cursor](https://docs.cursor.com/context/model-context-protocol) is an AI-powered code editor, powered by Microsoft Visual Studio Code (VS Code). 
 
 After setting up your MCP server, you connect it to Cursor. Log in to Cursor and follow the steps that align with your use case.
@@ -77,11 +79,20 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
 ## Set up with remote dbt MCP server
 
+Remote MCP supports **OAuth** or **token-based** headers.
+
+- _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+- For either method, the MCP URL is `https://<Access URL>/api/ai/v1/mcp`. You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
+
+<MCPOauthPreflight />
+
+The deeplink below configures **token-based** authentication (URL and headers). For OAuth setup, follow the [remote MCP quickstart](/docs/dbt-ai/mcp-quickstart-remote#5-configure-your-mcp-client).
+
 1. Click the following application link with Cursor open:
 
     [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=dbt&config=eyJ1cmwiOiJodHRwczovLzxob3N0Pi9hcGkvYWkvdjEvbWNwLyIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6InRva2VuIDx0b2tlbj4iLCJ4LWRidC1wcm9kLWVudmlyb25tZW50LWlkIjoiPHByb2QtaWQ%252BIn19)
 
-2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template.
+2. Provide your URL/headers by updating the **host**, **production environment ID**, and **service token** in the template. Use `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp` as the server URL (no trailing slash).
    :::tip IDs are integers, not URLs
    `DBT_PROD_ENV_ID`, `DBT_USER_ID`, and `DBT_DEV_ENV_ID` must be numeric IDs (for example, `54321`), not full URLs. 
 
