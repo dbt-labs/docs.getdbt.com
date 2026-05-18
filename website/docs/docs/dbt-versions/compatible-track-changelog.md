@@ -12,7 +12,7 @@ For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks
 
 ## May 2026
 
-The compatible release scheduled for May 2026 will be skipped in order to stabilize`dbt-core 1.12.0` release across the <Constant name="dbt_platform"/>.
+The compatible release scheduled for May 2026 will be skipped in order to stabilize `dbt-core 1.12.0` release across the <Constant name="dbt_platform" />.
 
 Compatible releases will resume in June 2026.
 
