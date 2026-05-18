@@ -49,7 +49,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Paginated OAuth client registration tables**: The App Integrations settings card now loads manually registered and dynamically registered OAuth clients from separate paginated queries (10 rows per page). Each table has independent pagination controls, and deleting the last row on a non-first page automatically returns you to the previous page.
 
-- **MCP endpoint URL displayed in account settings and App Integrations**: When the dbt Model Context Protocol (MCP) feature is enabled, your account's MCP endpoint URL is now shown in the Account settings page and in the App Integrations card with a copy button, making it easier to connect external AI tools to your dbt account. Contact your account manager to enable.
+- **MCP endpoint URL displayed in account settings and App Integrations**: When the dbt Model Context Protocol (MCP) feature is enabled, dbt displays your account's MCP endpoint URL in the **Account settings** -> **Integrations** page in the **App Integrations** section with a copy button, making it easier to connect external AI tools to your dbt account. Contact your account manager to enable.
 
 ### Catalog
 
