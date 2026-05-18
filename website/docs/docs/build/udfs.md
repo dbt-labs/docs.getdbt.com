@@ -94,8 +94,6 @@ Follow these steps to define UDFs in dbt:
 
 2. Specify the function name and define the config, properties, return type, and optional arguments in a corresponding properties YAML file.
 
-    **Optional**: You can define multiple argument signatures for the same function using the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+). This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in` and specifies its own `arguments` and `returns`. All overloads are part of one <Term id="dag">DAG</Term> node.
-
     <Tabs>
     <TabItem value="SQL">
 
@@ -116,28 +114,7 @@ Follow these steps to define UDFs in dbt:
             default_value: "'1'"    # optional, available in Snowflake and Postgres
         returns:                    # required
           data_type: integer        # required
-        overloads:                  # optional, available in 1.12+, Snowflake and Postgres only
-          - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.sql
-            arguments:
-              - name: a_num
-                data_type: numeric
-            returns:              # optional, inherits from root function if omitted
-              data_type: integer
     ```
-    </File>
-
-    When using `overloads`, you need to create a separate SQL file for each overload body:
-
-    <File name='functions/is_positive_int_numeric.sql'>
-
-    ```sql
-    # syntax for Snowflake
-    CASE WHEN a_num > 0 THEN 1 ELSE 0 END
-
-    # syntax for Postgres
-    SELECT CASE WHEN a_num > 0 THEN 1 ELSE 0 END
-    ```
-
     </File>
 
     </TabItem>
@@ -205,25 +182,7 @@ Follow these steps to define UDFs in dbt:
               default_value: "'1'"     # optional, available in Snowflake and Postgres
           returns:                     # required
             data_type: integer         # required
-          overloads:                   # optional, available in 1.12+, Snowflake only
-            - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.py
-              arguments:
-                - name: a_num
-                  data_type: numeric
-              returns:                 # optional, inherits from root function if omitted
-                data_type: integer
     ```
-    </File>
-
-    When using `overloads`, you need to create a separate Python file for each overload body:
-
-    <File name='functions/is_positive_int_numeric.py'>
-
-    ```python
-    def main(a_num):
-        return 1 if a_num > 0 else 0
-    ```
-
     </File>
     </TabItem>
     </Tabs>
@@ -247,8 +206,8 @@ Follow these steps to define UDFs in dbt:
     ```
 
      When you run `dbt build`, both the `functions/schema.yml` file and the corresponding SQL or Python file (for example, `functions/is_positive_int.sql` or `functions/is_positive_int.py`) work together to generate the `CREATE FUNCTION` statement.
-     
-     The rendered `CREATE FUNCTION` statement depends on which adapter you're using. When you use [`overloads`](/reference/resource-properties/overloads) (available in <Constant name="core" /> v1.12+), dbt renders an additional `CREATE FUNCTION` statement for each overload using the same function name but different argument types. For example:
+
+     The rendered `CREATE FUNCTION` statement depends on which adapter you're using. For example:
 
     <Tabs>
 
@@ -264,17 +223,6 @@ Follow these steps to define UDFs in dbt:
     IMMUTABLE
     AS $$
       REGEXP_INSTR(a_string, '^[0-9]+$')
-    $$;
-    ```
-
-    ```sql
-    -- Overload (is_positive_int_numeric.sql)
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_num NUMERIC)
-    RETURNS INTEGER
-    LANGUAGE SQL
-    IMMUTABLE
-    AS $$
-      CASE WHEN a_num > 0 THEN 1 ELSE 0 END
     $$;
     ```
 
@@ -328,17 +276,6 @@ Follow these steps to define UDFs in dbt:
     $$;
     ```
 
-    ```sql
-    -- Overload (is_positive_int_numeric.sql)
-    CREATE OR REPLACE FUNCTION udf_schema.is_positive_int(a_num numeric)
-    RETURNS int
-    LANGUAGE sql
-    IMMUTABLE
-    AS $$
-      SELECT CASE WHEN a_num > 0 THEN 1 ELSE 0 END
-    $$;
-    ```
-
     </TabItem>
 
     </Tabs>
@@ -359,20 +296,6 @@ Follow these steps to define UDFs in dbt:
     import re
     def main(a_string):
       return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
-    $$;
-    ```
-
-    ```sql
-    -- Overload (is_positive_int_numeric.py)
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_num NUMERIC)
-      RETURNS INTEGER
-      LANGUAGE PYTHON
-      RUNTIME_VERSION = '3.11'
-      HANDLER = 'main'
-      PACKAGES = ('numpy', 'pandas==1.5.0')
-    AS $$
-    def main(a_num):
-      return 1 if a_num > 0 else 0
     $$;
     ```
     </TabItem>
@@ -428,6 +351,50 @@ Follow these steps to define UDFs in dbt:
    <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" width="85%" title="The DAG for the UDF node" />
 
 After defining a UDF, if you update the SQL/Python file that contains its function body (`is_positive_int.sql` or `is_positive_int.py` in this example), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you `build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
+
+## Defining overloaded UDFs
+
+Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake.
+
+To define overloaded UDFs:
+
+1. Add an `overloads` list to the function definition in your properties YAML file. Each entry uses `defined_in` to reference a separate file, with optional `arguments` and `returns`:
+
+    <File name='functions/schema.yml'>
+
+    ```yml
+    functions:
+      - name: is_positive_int
+        arguments:
+          - name: a_string
+            data_type: string
+        returns:
+          data_type: integer
+        overloads:
+          - defined_in: is_positive_int_numeric   # references functions/is_positive_int_numeric.sql
+            arguments:
+              - name: a_num
+                data_type: numeric
+            returns:              # optional, inherits from root function if omitted
+              data_type: integer
+    ```
+
+    </File>
+
+2. Create a separate file for each overload body:
+
+    <File name='functions/is_positive_int_numeric.sql'>
+
+    ```sql
+    # Snowflake syntax
+    CASE WHEN a_num > 0 THEN 1 ELSE 0 END
+    ```
+
+    </File>
+
+All overloads are grouped into one DAG node (the root function), so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. When dbt builds the function, it renders a separate `CREATE FUNCTION` statement for each overload using the same function name but different argument types.
+
+For more information, refer to the [`overloads`](/reference/resource-properties/overloads) reference.
 
 ## Using UDFs in unit tests
 

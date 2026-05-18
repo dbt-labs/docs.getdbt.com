@@ -43,7 +43,7 @@ The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
 
 The `overloads` property lets you define multiple argument signatures for the same [user-defined function UDF](/docs/build/udfs). This lets you call the same function name with different input types, without creating separate UDFs for each variant. The warehouse calls the right version based on the argument types. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake.
 
-Each overload references a separate file that contains its function body, and specifies its own `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built, retried, and selected together.
+Each overload references a separate file that contains its function body, with optional `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed.
 
 ## Behavior
 
@@ -62,6 +62,11 @@ Each entry in the `overloads` list supports the following properties.
 The name of the file (without extension) that contains the overload's function body. The file must exist in the `functions/` directory. For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql` for SQL UDFs or `functions/null_if_empty_numeric.py` for Python UDFs.
 
 Each overload must reference a unique file. The root function's file and all `defined_in` values must be distinct.
+
+dbt raises a parsing error if:
+- A `defined_in` value matches the root function's own file.
+- Two overloads reference the same file.
+- The referenced file doesn't exist in the `functions/` directory.
 
 ### arguments
 
