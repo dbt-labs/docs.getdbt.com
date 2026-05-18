@@ -17,11 +17,16 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 Use the following checklist to prepare your projects for the <Constant name="fusion_engine" />
 
-### Upgrade to the latest dbt version
+For walkthroughs of both the preparation and upgrade processes, check out our detailed guides:
+- [ ] [Upgrade to Fusion Pt. 1: Preparing to upgrade](/guides/prepare-fusion-upgrade?step=1)
+- [ ] [Upgrade to Fusion Pt. 2: Making the move](/guides/upgrade-to-fusion?step=1)
+
+
+### Upgrade to the latest dbt version (recommended)
 
 The **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) has all of the most recent features to help you prepare for <Constant name="fusion" />.
 
-- [ ] Make sure all your projects are on the **Latest** release track across all deployment environments and jobs. This will ensure the simplest, most predictable experience by allowing you to pre-validate that your project doesn't rely on deprecated behaviors. 
+- [ ] Make sure all your projects are on the **Latest** release track across all deployment environments and jobs. This is not a strict requirement for upgrading, but it will ensure the simplest, most predictable experience by allowing you to pre-validate that your project doesn't rely on deprecated behaviors. 
 
 ### Resolve all deprecation warnings
 
@@ -32,6 +37,11 @@ Start a new branch to begin resolving deprecation warnings using one of the foll
 - [ ] **Run autofix in the dbt platform:** You can address deprecation warnings using the [autofix tool in the Studio IDE](/docs/platform/studio-ide/autofix-deprecations). You can run the autofix tool on the **Compatible** or **Latest** release track.
 - [ ] **Run autofix locally:** Use the [VS Code extension](/docs/about-dbt-extension). The extension has a built-in ["Getting Started" workflow](/docs/install-dbt-extension#getting-started) that will debug your dbt project in the VS Code or Cursor IDE and execute the autofix tool. This has the added benefit of installing <Constant name="fusion" /> to your computer so you can begin testing locally before implementing in your <Constant name="dbt_platform" /> account.
 - [ ] **Run autofix locally (without the extension):** Visit the autofix [GitHub repo](https://github.com/dbt-labs/dbt-autofix) to run the tool locally if you're not using VS Code or Cursor. This will only run the tool, it will not install <Constant name="fusion" />.
+- [ ] **Remove behavior change flag overrides:** <Constant name="fusion" /> forcibly enables all behavior change flags. Remove any `flags:` overrides in your `dbt_project.yml` that opt out of these behaviors and validate that your project works correctly with them enabled.
+
+### Upgrade YAML spec
+
+- [ ] **Migrate Semantic Layer configs:** If your project uses the Semantic Layer, make sure your metric configurations use the [latest YAML spec](/docs/build/latest-metrics-spec).
 
 ### Validate and upgrade your dbt packages
 
@@ -42,15 +52,11 @@ The most commonly used dbt Labs managed packages (such as `dbt_utils` and `dbt_p
 
 ### Validate user-defined functions
 
-### Validate support for functions
-
 Check that <Constant name="fusion" /> supports all user-defined functions (UDFs) in your project.
 
 <Constant name="fusion" /> supports nearly all built-in data platform functions out of the box. However, data platforms continuously add new functions that <Constant name="fusion" /> may not yet support.
 
-If you see the error `dbt0209: No function <function name>`, the resolution depends on whether the function is a UDF or a built-in function:
-
-If you see this warning:
+If you see the error `dbt0209: No function <function name>`, you can resolve it depending on whether the function is a UDF or a built-in function:
 
 - [ ] **For custom UDFs:** Recreate it as a [native dbt UDF](/docs/build/udfs#defining-udfs-in-dbt) to get the full <Constant name="fusion" /> experience. With `static_analysis: baseline` (the default), most UDFs will work out of the box.
 - [ ] **For Warehouse-native functions:** Submit a [GitHub issue](https://github.com/dbt-labs/dbt-fusion). <Constant name="fusion" />'s `baseline` mode handles most cases, but will throw warnings and not errors. You can set `static_analysis: off` for specific models if needed. 
@@ -68,14 +74,14 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 
 - [ ] Ensure you have at least one job running in each of your projects in the <Constant name="dbt_platform" />.
   - [ ] Ensure each job has run within the last 7 days. Jobs that haven't run recently are considered inactive and are ineligible for Fusion. If you see a "no active jobs" ineligibility reason in the Fusion readiness UI, run the job manually or adjust its schedule.
-- [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available).
+- [ ] Ensure all jobs are running on the [**Latest** release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available) for the smoothest upgrade experience.
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
 
 ### Stay informed about Fusion progress
 
-The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! We will notify you when all your projects are ready for <Constant name="fusion" /> based on our eligibility checks on your deployment jobs. In the meantime, keep up-to-date with these resources: 
+The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! Keep up-to-date with these resources: 
 
 - [ ] Check out the [Fusion homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
 - [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to learn about the new features and functionality that impact your dbt projects.
