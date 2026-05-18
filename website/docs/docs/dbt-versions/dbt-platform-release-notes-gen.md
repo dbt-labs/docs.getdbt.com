@@ -65,7 +65,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Studio IDE
 
-- **Accurate node status during runs**: During dbt runs in Studio, node status in run logs now updates correctly when evaluation events arrive, so in-progress state matches what’s actually happening.
+- **Accurate node statuses during runs**: During dbt runs in Studio, node statuses in run logs now updates correctly when evaluation events arrive, so in-progress state matches what’s actually happening.
 
 - **Clearer git ref lock errors**: A few failure paths that used to surface as unclear errors now show messages that explain what happened and what to try next.
 
