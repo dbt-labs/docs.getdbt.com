@@ -55,6 +55,8 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
+- **Notification Manager permission set**: A new account-level **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions) is now available for Enterprise accounts. Assign it to users who need to manage Slack, Microsoft Teams, and email job notifications across all projects without requiring full Account Admin access.
+
 - **Credentials page access with `user_credential_write` permission**: Users with the `user_credential_write` permission on any project can now access the Credentials settings page and edit their development credentials, even without a Developer-tier license or `develop_access`.
 
 ## Fixes
