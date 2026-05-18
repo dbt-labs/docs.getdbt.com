@@ -5,26 +5,24 @@ description: New features and changes in dbt Core v1.12
 displayed_sidebar: "docs"
 ---
 
-# Upgrading to v1.12
-
-:::info Beta coming soon
-
-<Constant name="core" /> v1.12 is not yet available in beta. We will update this guide when it becomes available.
-
-:::
+# Upgrading to v1.12 <Lifecycle status="beta" />
 
 ## Resources
-- <Constant name="core" /> v1.12 changelog (coming soon)
+- [<Constant name="core" /> v1.12 changelog](https://github.com/dbt-labs/dbt-core/blob/v1.12.0b1/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-<Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access to the next monthly **Compatible** release after the <Constant name="core" /> v1.12 final release.
+<Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access to the next monthly **Compatible** release after the <Constant name="core" /> v1.12 final release.
 
 ## New and changed features and functionality
+
+### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
+
+You can now use the `--sql` flag with `dbt run-operation` to execute ad hoc database statements directly against your warehouse, without defining a macro. This is useful for one-off operations like dropping or altering a table, applying grants, or running a data fix. The statement runs through dbt's full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. For more information, refer to [About dbt run-operation](/reference/commands/run-operation).
 
 ### `on_error` model config <Lifecycle status="beta" />
 
@@ -42,10 +40,6 @@ Key changes in the new spec:
 
 For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
 
-### `.env` file for environment variables <Lifecycle status="beta" />
-
-<Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
-
 ### `packages` config for Python UDFs <Lifecycle status="beta" />
 
 You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
@@ -55,12 +49,6 @@ You can specify public third-party PyPI packages for your Python UDF with the op
 You can reference a named selector from `selectors.yml` inside `--select` or `--exclude` using the [`selector` method](/reference/node-selection/methods#selector) (for example, `selector:my_selector`). This makes it easier to compose reusable YAML selectors with other [selection methods](/reference/node-selection/methods), [graph operators](/reference/node-selection/graph-operators), and [set operators](/reference/node-selection/set-operators) on the command line without duplicating logic.
 
 When you use the legacy `--selector` flag together with `--select` or `--exclude`, dbt only uses `--selector` for node selection and ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt also raises a warning when these flags are combined. If you want to combine a selector with `--select` or `--exclude`, use the new `selector:` method instead.
-
-### Compiled SQL for snapshots <Lifecycle status="beta" />
-
-`dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path.
-
-For more information, refer to [About dbt compile](/reference/commands/compile).
 
 ### Support for `vars.yml` <Lifecycle status="beta" />
 
@@ -129,4 +117,6 @@ You can read more about each of these behavior changes in the following links:
 ## Quick hits
 
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.
+- <Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
+- `dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path. For more information, refer to [About dbt compile](/reference/commands/compile).
 
