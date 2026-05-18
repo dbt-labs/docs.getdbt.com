@@ -20,6 +20,27 @@ There are two reasons why `semantic_manifest.json` exists alongside `manifest.js
 - Deserialization: `dbt-core` and MetricFlow use different libraries for handling data serialization.
 - Efficiency and performance: MetricFlow and the dbt Semantic Layer need specific semantic details from the manifest. By trimming down the information printed into `semantic_manifest.json`, the process becomes more efficient and enables faster data handling between `dbt-core` and MetricFlow.
 
+<VersionBlock firstVersion="1.12">
+
+## OSI document
+
+Starting in <Constant name="core" /> v1.12, dbt also emits `target/osi_document.json` at parse time alongside `target/semantic_manifest.json`. The `osi_document.json` artifact is an OSI (Open Semantic Interchange) representation of your project's <Constant name="semantic_layer" />.
+
+For example, run:
+
+```bash
+dbt parse
+```
+
+Generated artifacts include:
+
+```text
+target/semantic_manifest.json
+target/osi_document.json
+```
+
+</VersionBlock>
+
 ## Top-level keys
 <VersionBlock firstVersion="1.12">
 Top-level keys for the semantic manifest are:

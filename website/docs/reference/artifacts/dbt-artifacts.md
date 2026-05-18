@@ -21,6 +21,11 @@ They could also be used to:
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [semantic manifest](/reference/artifacts/sl-manifest): produced whenever your dbt project is parsed
+<VersionBlock firstVersion="1.12">
+
+- [OSI document](/reference/artifacts/sl-manifest#osi-document): produced whenever your dbt project is parsed
+
+</VersionBlock>
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project
 - [run results](/reference/artifacts/run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`
