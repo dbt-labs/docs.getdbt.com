@@ -582,15 +582,3 @@ dbt strips the Jinja suffix when determining node names; resource names remain u
 
 When this flag is `false` or unset, dbt ignores files with these suffixes without logging a warning. If you've already added schema properties for that file, you'll see a "Did not find matching node for patch warning on schema.yml" warning.
 
-
-To enable the flag, add it under `flags` in `dbt_project.yml`:
-
-<File name='dbt_project.yml'>
-
-```yml
-flags:
-  allow_jinja_file_extensions: true
-```
-
-</File>
-
