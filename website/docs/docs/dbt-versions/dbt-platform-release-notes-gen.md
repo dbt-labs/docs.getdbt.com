@@ -17,6 +17,66 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## May 13, 2026
+
+## New
+
+### APIs, Identity, and Administration
+
+- **Job creator permission set**: Adds a new Job creator role that grants read access to jobs, environments, connections, and project resources, enabling users to create and manage jobs without broader administrative privileges. Contact your account manager to enable.
+
+### Studio IDE
+
+- **Hidden file support in file search**: You can optionally include dotfiles in file search results; search remains limited to your project tree.
+
+## Enhancements
+
+### dbt Copilot and agents
+
+- **Admin API tools enabled by default**: The admin API toolset (job management and run operations) is now always available in the dbt Copilot dev agent and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
+
+- **Improved Studio IDE agent prompt**: The Developer agent in Studio now uses dbt commands more efficiently (including fewer redundant `dbt ls calls` and correct `dbt show` limits), runs independent reads in parallel when appropriate, surfaces clear next-step choices instead of ending mid-action, stays within local git capabilities (no PR/GitHub promises), and formats SQL and YAML in copy-ready code blocks.
+
+### Orchestration and run status
+
+- **Fusion upgrade available banner on environment settings**: A new banner appears on the environment settings page when Fusion is available for a project but not yet enabled. Admins can click **Enable Fusion access** directly from the banner to open the upgrade confirmation modal. Users without the required permissions see a read-only message directing them to contact an admin.
+
+### Deployment and configuration
+
+- **Snowflake password authentication blocked for new credentials**: Password authentication is no longer available when creating new Snowflake development or deployment credentials. New credentials default to key-pair authentication. Existing credentials that still use password authentication display a warning banner and cannot be saved until you migrate to key-pair or OAuth.
+
+### Integrations
+
+- **Paginated OAuth client registration tables**: The App Integrations settings card now loads manually registered and dynamically registered OAuth clients from separate paginated queries (10 rows per page). Each table has independent pagination controls, and deleting the last row on a non-first page automatically returns you to the previous page.
+
+- **MCP endpoint URL displayed in account settings and App Integrations**: When the dbt Model Context Protocol (MCP) feature is enabled, your account's MCP endpoint URL is now shown in the Account settings page and in the App Integrations card with a copy button, making it easier to connect external AI tools to your dbt account. Contact your account manager to enable.
+
+### Catalog
+
+- **Multi-value test result status filtering**: The `TestAppliedFilter` input now supports a `lastKnownResults` field that accepts an array of test statuses, allowing you to filter applied tests by multiple result states in a single query. You can include `null` in the array to match tests with no known result. The previous scalar field `lastKnownResult` is deprecated; use `lastKnownResults` instead. For more information, refer to [Filter tests by last-known result](/docs/dbt-apis/discovery-schema-environment-applied-tests#filter-tests-by-last-known-result)
+
+## Fixes
+
+### Orchestration and run status
+
+- **Repo cache hard reset applied unconditionally**: The git hard reset performed after restoring a repository cache is now always executed, removing a feature flag that previously controlled this behavior and ensuring a clean working directory after every cache restoration.
+
+- **Clearer error message for missing repository URL**: When a job cannot clone its repository because no remote URL is configured, the error message now explains the most likely causes — an invalid Git remote URL, a Git provider outage, or a deprecated HTTPS connection — and directs you to verify the URL, confirm your provider is operational, and ensure the repository uses SSH with deploy keys before retrying.
+
+### Studio IDE
+
+- **Accurate node status during runs**: During dbt runs in Studio, node status in run logs now updates correctly when evaluation events arrive, so in-progress state matches what’s actually happening.
+
+- **Clearer git ref lock errors**: A few failure paths that used to surface as unclear errors now show messages that explain what happened and what to try next.
+
+### Deployment and configuration
+
+- **Clearer connection test error messages**: The connection test failure message now prompts you to verify your connection details and confirm that your credentials have access to the data warehouse, rather than showing a generic failure message.
+
+### Run logs
+
+- **Structured run logs enabled by default**: Structured run step logs are now always used when available, without requiring a feature flag. Runs that already have structured logs continue to display them; runs with only plaintext logs fall back to the legacy view automatically.
+
 ## May 6, 2026
 
 ## New
