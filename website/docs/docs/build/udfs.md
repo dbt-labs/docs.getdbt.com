@@ -407,7 +407,7 @@ To define overloaded UDFs:
 
 All overloads are grouped into one DAG node (the root function), so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. When dbt builds the function, it renders a separate `CREATE FUNCTION` statement for each overload using the same function name but different argument types.
 
-For more information, refer to the [`overloads`](/reference/resource-properties/overloads) reference.
+For more information, refer to [`overloads`](/reference/resource-properties/overloads).
 
 ## Using UDFs in unit tests
 
