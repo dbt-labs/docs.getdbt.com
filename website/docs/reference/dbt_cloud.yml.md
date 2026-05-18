@@ -21,13 +21,12 @@ The `dbt_cloud.yml` file contains API keys. Store it securely and make sure you 
 ## Download dbt_cloud.yml
 import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
-How you download the file depends on whether you're configuring the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension](/docs/about-dbt-extension).
+How you download the file depends on whether you're configuring the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension](/docs/about-dbt-extension). The downloaded `dbt_cloud.yml` includes your [personal access token (PAT)](/docs/dbt-apis/user-tokens).
 
 1. In <Constant name="dbt_platform" />, select the project you want to work on. The project must already have a [development environment](/docs/dbt-platform-environments#create-a-development-environment) set up.
 2. Go to **Account settings** → **Your profile**, then follow the steps for your tool:
   - <Constant name="platform_cli" />: Navigate to **CLI** → **Configure Cloud authentication** and click **Download CLI configuration file**.
   - dbt VS Code extension: Navigate to **VS Code Extension** → **Set up your credentials** and click **Download credentials**.
-    The downloaded `dbt_cloud.yml` includes your [Personal access token (PAT)](/docs/dbt-apis/user-tokens).
 3. Move the file to your `.dbt` directory. If you don't have one yet, try one of these quick setup (one command) options:
     <Tabs>
     <TabItem value="mac-linux" label="Mac / Linux">
@@ -87,7 +86,7 @@ projects:
 
 </File>
 
-For example, if I had a Jaffle and wizard shop account, here's what my `dbt_cloud.yml` file would look like:
+For example, if you have a Jaffle and wizard shop account, here's what your `dbt_cloud.yml` file would look like:
 
 <File name="dbt_cloud.yml">
 
@@ -155,10 +154,13 @@ dbt-cloud:
 
 </File>
 
+<SimpleTable>
+
 | Field | Required | Description |
 |-------|----------|-------------|
 | `project-id` | Yes | The <Constant name="dbt_platform" /> project ID this local project maps to. Find it in the URL when viewing your project (for example, `https://YOUR_ACCESS_URL/develop/26228/projects/123456` → `123456`). |
 | `defer-env-id` | No | The environment ID to defer to for build artifacts. Used for <Constant name="fusion" /> [auto-deferral](/docs/platform/about-defer) and <Constant name="platform_cli" /> deferral overrides. |
+</SimpleTable>
 
 ## Related docs
 - [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation)
