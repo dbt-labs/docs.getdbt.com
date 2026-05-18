@@ -173,7 +173,7 @@ If your organization uses [Snowflake Network Policies](https://docs.snowflake.co
 
 You need a VPCE ID to create a network policy in Snowflake:
 1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints** 
-2. Open your endpoint to find its VPCE ID on the endpoint details page. 
+2. Open your endpoint and locate its **VPCE ID** field on the endpoint details page. 
 3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to obtain the VPCE ID. 
 4. If you're creating an endpoint for Internal Stage, the VPCE ID is different from the VPCE ID for the main service endpoint.
 
