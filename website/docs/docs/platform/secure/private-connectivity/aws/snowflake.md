@@ -208,7 +208,7 @@ For quick and automated setup of network rules via SQL in Snowflake, the followi
 CREATE NETWORK RULE allow_dbt_cloud_access
   MODE = INGRESS
   TYPE = AWSVPCEID
-  VALUE_LIST = ('<VPCE_ID>'); -- Replace '<VPCE_ID>' with the VPCE ID from your endpoint details page or from Support
+  VALUE_LIST = ('<VPCE_ID>'); -- Replace '<VPCE_ID>' with the VPCE ID the actual value
 
 ```
 
