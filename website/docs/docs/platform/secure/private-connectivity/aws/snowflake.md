@@ -191,7 +191,7 @@ Open the Snowflake UI and take the following steps:
 4. Give the rule a name.
 5. Select a database and schema where the rule will be stored. These selections are for permission settings and organizational purposes; they do not affect the rule itself.
 6. Set the type to `AWS VPCE ID` and the mode to `Ingress`.
-7. Type the VPCE ID from the endpoint details page in <Constant name="dbt_platform" /> (or from <Constant name="dbt" /> Support if you used Support-led setup) into the identifier box and press **Enter**.
+7. Enter the VPCE ID from the endpoint details page in <Constant name="dbt_platform" /> (or from <Constant name="dbt" /> Support if you used Support-led setup) into the identifier box.
 8. Click **Create Network Rule**.
 
 <Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink2.png" title="Create Network Rule"/>
