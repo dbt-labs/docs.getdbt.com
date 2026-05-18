@@ -21,7 +21,7 @@ The `dbt_cloud.yml` file contains API keys. Store it securely and make sure you 
 ## Download dbt_cloud.yml
 import DbtDirectoryFaq from '/snippets/_dbt-directory-faq.md';
 
-How you download the file depends on whether you're configuring the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension](/docs/about-dbt-extension). The downloaded `dbt_cloud.yml` includes your [Personal access token (PAT)](/docs/dbt-apis/user-tokens).
+How you download the file depends on whether you're configuring the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or the [dbt VS Code extension](/docs/about-dbt-extension). The downloaded `dbt_cloud.yml` includes your [personal access token (PAT)](/docs/dbt-apis/user-tokens).
 
 1. In <Constant name="dbt_platform" />, select the project you want to work on. The project must already have a [development environment](/docs/dbt-platform-environments#create-a-development-environment) set up.
 2. Go to **Account settings** → **Your profile**, then follow the steps for your tool:
