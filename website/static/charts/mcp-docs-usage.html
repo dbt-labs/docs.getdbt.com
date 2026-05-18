@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dbt MCP docs-tool usage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0D0D0D;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      color: #fff;
+    }
+
+    .chart-section {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Bar animation ── */
+    .bar {
+      transform-box: fill-box;
+      transform-origin: bottom center;
+      transform: scaleY(0);
+      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #bar-april { transition-delay: 130ms; }
+    #bar-may   { transition-delay: 260ms; }
+    .bar.go    { transform: scaleY(1); }
+
+    /* ── Value label fade-in ── */
+    .val {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    #val-march  { transition-delay: 600ms; }
+    #val-april  { transition-delay: 730ms; }
+    #val-may    { transition-delay: 860ms; }
+    .val.go     { opacity: 1; }
+
+    /* ── Badge ── */
+    .badge {
+      opacity: 0;
+      transition: opacity 0.4s ease 1s;
+    }
+    .badge.go { opacity: 1; }
+
+    /* ── Stat ── */
+    .stat-number {
+      opacity: 0;
+      transition: opacity 0.4s ease 0.2s;
+    }
+    .stat-number.go { opacity: 1; }
+  </style>
+</head>
+<body>
+<div class="chart-section">
+    <!--
+      Chart area:  x=180–1520  (1340px wide)
+                   y=220–726   (506px tall, max=8000)
+      Grid steps:  2000 units = 126.5px
+      Bar zone:    1340/3 = 446.7px  |  bar width: 220px
+      Centers:     403 / 850 / 1297  |  left edges: 293 / 740 / 1187
+
+      March  338 → h=21    top=705
+      April 1113 → h=70    top=656
+      May   6774 → h=428   top=298
+    -->
+    <svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Background -->
+      <rect width="1600" height="900" fill="#0D0D0D"/>
+
+      <!-- ── HEADER ── -->
+      <text x="80" y="94" font-size="26" font-weight="500" fill="#FFFFFF" letter-spacing="-0.4"
+            font-family="'DM Sans', -apple-system, sans-serif">dbt MCP docs-tool calls per month</text>
+      <text x="80" y="124" font-size="13" font-weight="400" fill="rgba(255,255,255,0.4)"
+            font-family="'DM Sans', -apple-system, sans-serif">Since launch in March 2026</text>
+
+      <!-- Stat — top right, counts up via JS -->
+      <text x="1520" y="84" font-size="11" font-weight="500" fill="rgba(255,255,255,0.35)"
+            text-anchor="end" letter-spacing="1.2"
+            font-family="'DM Sans', -apple-system, sans-serif">UNIQUE dbt ACCOUNTS REACHED</text>
+      <text id="stat-428" class="stat-number" x="1520" y="134" font-size="54" font-weight="600"
+            fill="#FE6703" text-anchor="end" letter-spacing="-2"
+            font-family="'DM Sans', -apple-system, sans-serif">0</text>
+
+      <!-- Divider -->
+      <line x1="80" y1="156" x2="1520" y2="156" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+      <!-- ── GRID ── -->
+      <line x1="180" y1="220" x2="1520" y2="220" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="180" y1="346" x2="1520" y2="346" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="180" y1="473" x2="1520" y2="473" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="180" y1="599" x2="1520" y2="599" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="180" y1="726" x2="1520" y2="726" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+      <!-- Y-axis labels -->
+      <text x="164" y="224" font-size="11" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="'DM Sans', -apple-system, sans-serif">8,000</text>
+      <text x="164" y="350" font-size="11" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="'DM Sans', -apple-system, sans-serif">6,000</text>
+      <text x="164" y="477" font-size="11" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="'DM Sans', -apple-system, sans-serif">4,000</text>
+      <text x="164" y="603" font-size="11" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="'DM Sans', -apple-system, sans-serif">2,000</text>
+      <text x="164" y="730" font-size="11" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="'DM Sans', -apple-system, sans-serif">0</text>
+
+      <!-- ── BARS ── -->
+
+      <!-- March — muted (launch, low volume) -->
+      <g id="bar-march" class="bar">
+        <rect x="293" y="705" width="220" height="21" fill="#FE6703" opacity="0.28" rx="6"/>
+        <rect x="293" y="711" width="220" height="15" fill="#FE6703" opacity="0.28" rx="0"/>
+      </g>
+
+      <!-- April — secondary -->
+      <g id="bar-april" class="bar">
+        <rect x="740" y="656" width="220" height="70" fill="#FE6703" opacity="0.52" rx="6"/>
+        <rect x="740" y="662" width="220" height="64" fill="#FE6703" opacity="0.52" rx="0"/>
+      </g>
+
+      <!-- May — hero, full color -->
+      <g id="bar-may" class="bar">
+        <rect x="1187" y="298" width="220" height="428" fill="#FE6703" rx="6"/>
+        <rect x="1187" y="304" width="220" height="422" fill="#FE6703" rx="0"/>
+      </g>
+
+      <!-- ── VALUE LABELS ── -->
+      <text id="val-march" class="val" x="403" y="689" font-size="20" font-weight="600"
+            fill="rgba(255,255,255,0.85)" text-anchor="middle"
+            font-family="'DM Sans', -apple-system, sans-serif">338</text>
+      <text id="val-april" class="val" x="850" y="640" font-size="20" font-weight="600"
+            fill="rgba(255,255,255,0.85)" text-anchor="middle"
+            font-family="'DM Sans', -apple-system, sans-serif">1,113</text>
+      <text id="val-may" class="val" x="1297" y="282" font-size="20" font-weight="600"
+            fill="rgba(255,255,255,0.85)" text-anchor="middle"
+            font-family="'DM Sans', -apple-system, sans-serif">6,774</text>
+
+      <!-- ── X-AXIS LABELS ── -->
+      <text x="403" y="762" font-size="13" font-weight="500" fill="rgba(255,255,255,0.65)" text-anchor="middle" font-family="'DM Sans', -apple-system, sans-serif">March 2026</text>
+      <text x="403" y="782" font-size="11" fill="rgba(255,255,255,0.28)" text-anchor="middle" font-family="'DM Sans', -apple-system, sans-serif">launch month</text>
+
+      <text x="850" y="762" font-size="13" font-weight="500" fill="rgba(255,255,255,0.65)" text-anchor="middle" font-family="'DM Sans', -apple-system, sans-serif">April 2026</text>
+
+      <text x="1297" y="762" font-size="13" font-weight="500" fill="rgba(255,255,255,0.65)" text-anchor="middle" font-family="'DM Sans', -apple-system, sans-serif">May 2026</text>
+      <text x="1297" y="782" font-size="11" fill="rgba(255,255,255,0.28)" text-anchor="middle" font-family="'DM Sans', -apple-system, sans-serif">first 14 days (May 1–14)</text>
+
+      <!-- ── GROWTH BADGE ── -->
+      <g class="badge" id="badge-growth">
+        <rect x="1038" y="466" width="70" height="22" fill="#FE6703" rx="11"/>
+        <text x="1073" y="481" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle"
+              font-family="'DM Sans', -apple-system, sans-serif">+508%</text>
+        <line x1="950" y1="651" x2="1037" y2="477" stroke="rgba(254,103,3,0.22)" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="1187" y1="298" x2="1109" y2="477" stroke="rgba(254,103,3,0.22)" stroke-width="1" stroke-dasharray="3,3"/>
+      </g>
+
+      <!-- ── FOOTER ── -->
+      <line x1="80" y1="840" x2="1520" y2="840" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <text x="80" y="864" font-size="11" fill="rgba(255,255,255,0.18)" font-family="'DM Sans', -apple-system, sans-serif">
+        Calls recorded via the dbt MCP server. May 2026 figures represent the first 14 days of the month only.
+      </text>
+
+    </svg>
+  </div>
+
+  <script>
+    const svg = document.querySelector('svg');
+    let triggered = false;
+
+    function triggerAnimation() {
+      if (triggered) return;
+      triggered = true;
+
+      // Animate bars
+      document.querySelectorAll('.bar').forEach(el => el.classList.add('go'));
+      // Animate value labels
+      document.querySelectorAll('.val').forEach(el => el.classList.add('go'));
+      // Animate growth badge
+      document.querySelectorAll('.badge').forEach(el => el.classList.add('go'));
+      // Animate stat number
+      document.getElementById('stat-428').classList.add('go');
+      countUp(document.getElementById('stat-428'), 1300, 1100, 200);
+    }
+
+    function countUp(el, target, duration, delay) {
+      setTimeout(() => {
+        const start = performance.now();
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      }, delay);
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          triggerAnimation();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(svg);
+  </script>
+</body>
+</html>
