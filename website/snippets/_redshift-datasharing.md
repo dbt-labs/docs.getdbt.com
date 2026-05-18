@@ -41,7 +41,7 @@ The following macros switch to `SHOW` commands when `datasharing: true`:
 `ra3_node: true` also enables this behavior and is supported for backward compatibility. For new projects, use `datasharing: true` instead.
 
 :::note
-If you see `pg_*` queries running with `datasharing: true`, this is not automatically a bug. Only the macros listed above are migrated &mdash; some queries remain on `pg_*` by design (for example, dependency tracking and UDF/function discovery. In addition any custom macro overrides in your project are not affected by this setting. To confirm whether a `pg_*` query is expected, check which macro is being overridden and which metadata operation is running.
+If you see `pg_*` queries running with `datasharing` enabled, this is not automatically a bug. Only the macros listed above are migrated &mdash; some macros remain on `pg_*` by design (for example, `get_relations` for dependency tracking and `list_function_relations_without_caching` for function discovery). Custom macro overrides in your project are not affected. To confirm whether a `pg_*` query is expected, check which macro is being overridden and which metadata operation is running.
 :::
 
 Take note of the following limitations when using `datasharing`:
