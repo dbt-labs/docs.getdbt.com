@@ -218,6 +218,14 @@ You can ask the agent questions and issue commands like:
 
 The agent notes when your local project state may differ from the job — for example, if you're on a different branch or have uncommitted changes — so you have full context before acting on any suggested fixes.
 
+## Timeout handling
+
+When a dbt command run by the <Constant name="dev_agent" /> runs for more than 5 minutes, the agent automatically attempts to stop the command on the server before returning control to you.
+
+Instead of hanging or showing a generic error, the agent returns a clear message that explains the command timed out and was aborted. The message also tells you whether the cancellation request succeeded. If cancellation fails, it's possible the command may still be running on the server.
+
+You can then choose whether to retry the command, narrow the request, or take another action.
+
 ## Fusion migration workflow {#fusion-migration-workflow}
 
 import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
