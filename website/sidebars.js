@@ -1496,6 +1496,7 @@ const sidebarSettings = {
             "reference/resource-configs/packages",
             "reference/resource-properties/returns",
             "reference/resource-properties/function-arguments",
+            "reference/resource-properties/overloads",
           ],
         },
       ],
