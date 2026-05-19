@@ -11,11 +11,9 @@ The `doc()` Jinja function, which is analogous to `ref()`, looks up the named do
 
 ## Usage
 
-In dbt, column descriptions can be defined directly in a model’s properties YAML file. These descriptions are written as plain text and are associated with a specific column.
+In dbt, column descriptions can be defined directly in a model's properties YAML file. These descriptions are written as plain text and are associated with a specific column.
 
 ### Properties YAML file descriptions
-
-This example shows how a column description is defined directly in a properties YAML file:
 
 <File name="models/orders.yml">
 
@@ -24,13 +22,12 @@ models:
   - name: orders
     columns:
       - name: order_total_cents
-        description: "Total order amount in cents."
+        description: "Total order amount in cents. This value is always a positive integer and excludes taxes and shipping."
 ```
 
 </File>
 
 When you run `dbt docs generate` and view the docs site, this text appears exactly as written but only for the `order_total_cents` column of the `orders` model.
-
 
 ### Reusing documentation with doc()
 
@@ -40,17 +37,17 @@ With this approach, documentation is written once in a markdown file using a nam
 
 First, define a reusable documentation block in a `docs.md`:
 
-<File name="models/docs.md">
+<File name="models/docs/example.md">
 
 ```
-{% docs customer_id %}
-A reusable customer identifier.
+{% docs order_total_cents %}
+Total order amount in cents. This value is always a positive integer and excludes taxes and shipping.
 {% enddocs %}
 ```
 
 </File>
 
-This defines a docs block named `customer_id`. Reference it with `doc('customer_id')` in description fields wherever you need the same text.
+This defines a docs block named `order_total_cents`. Reference it with `doc('order_total_cents')` in description fields wherever you need the same text.
 
 Next, reference this documentation in your properties YAML file:
 
@@ -61,17 +58,18 @@ models:
   - name: orders
     columns:
       - name: order_total_cents
-        description: "{{ doc('customer_id') }}"
+        description: "{{ doc('order_total_cents') }}"
 ```
 
 </File>
+
 When you run `dbt docs generate`, dbt resolves the `doc()` reference by looking up the corresponding docs block and injecting its content into the generated documentation.
 
 As a result, the column description displays the text defined in the markdown file, rather than inline YAML.
 
-### Duplicate docs block names
+## Duplicate docs block names
 
-Docs block names must be unique within your project. If you define multiple `{% docs ... %}` blocks with the same name, dbt can’t reliably decide which block to render when you call `doc('DOCS_BLOCK_NAME')`.
+Docs block names must be unique within your project. If you define multiple `{% docs %}` blocks with the same name, dbt cannot reliably determine which block to use when `doc('DOCS_BLOCK_NAME')` is called.
 
 <VersionBlock firstVersion="1.11" lastVersion="1.99">
 
@@ -80,12 +78,12 @@ In <Constant name="core" /> v1.11 and later, duplicate docs block names are not 
 <File name="models/docs/example.md">
 
 ```
-{% docs customer_id %}
-A reusable customer identifier.
+{% docs order_total_cents %}
+Total order amount in cents. This value is always a positive integer and excludes taxes and shipping.
 {% enddocs %}
 
-{% docs customer_id %}
-A different definition for customer id.
+{% docs order_total_cents %}
+Total order amount in cents, excluding taxes and shipping fees.
 {% enddocs %}
 ```
 
@@ -93,48 +91,42 @@ A different definition for customer id.
 
 ```shell
 dbt parse
-13:23:41  Running with dbt=1.11.7
-13:23:41  Registered adapter: duckdb=1.10.1
-13:23:41  Encountered an error:
+09:08:21  Running with dbt=1.11.8
+09:08:22  Registered adapter: duckdb=1.10.1
+09:08:22  Encountered an error:
 Compilation Error
-  dbt found two docs with the name "customer_id".
+  dbt found two docs with the name "order_total_cents".
+  
   Since these resources have the same name, dbt will be unable to find the correct resource
-  when looking for doc("customer_id").
+  when looking for doc("order_total_cents").
+  
   To fix this, change the name of one of these resources:
-  - doc.doc_test.customer_id (models/docs/example.md)
-  - doc.doc_test.customer_id (models/docs/example.md)
+  - doc.doc_test.order_total_cents (models/docs/example.md)
+  - doc.doc_test.order_total_cents (models/docs/example.md)
 ```
 
 </VersionBlock>
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, duplicate docs block names are not allowed. If duplicates are found, dbt reports the conflicting files. Rename one block so each docs block name is unique. For more information, refer to [Stricter evaluation of duplicate docs blocks](/docs/dbt-versions/core-upgrade/upgrading-to-fusion?version=2.0#stricter-evaluation-of-duplicate-docs-blocks).
+In the <Constant name="fusion_engine" />, duplicate docs block names are not allowed. If duplicates are found, dbt reports the conflicting files and surfaces a warning. Rename one block so each docs block name is unique. For more information, refer to [Stricter evaluation of duplicate docs blocks](/docs/dbt-versions/core-upgrade/upgrading-to-fusion?version=2.0#stricter-evaluation-of-duplicate-docs-blocks).
 
-For example, define a docs block with the same name in two different markdown files:
-
-<File name="models/crm/_crm.md">
+<File name="models/docs/example.md">
 
 ```
-{% docs customer_id %}
-A reusable customer identifier.
+{% docs order_total_cents %}
+Total order amount in cents. This value is always a positive integer and excludes taxes and shipping.
 {% enddocs %}
-```
 
-</File>
-
-<File name="models/docs/crm/business_class_marketing.md">
-
-```
-{% docs customer_id %}
-A different definition for customer id.
+{% docs order_total_cents %}
+Total order amount in cents, excluding taxes and shipping fees.
 {% enddocs %}
 ```
 
 </File>
 
 ```text
-dbt found two docs with the same name: 'customer_id' in files: 'models/crm/_crm.md' and 'models/docs/crm/business_class_marketing.md'
+dbt found two docs with the same name: 'order_total_cents' in files: 'models/docs/example.md' and 'models/docs/example.md'
 ```
 
 </VersionBlock>
