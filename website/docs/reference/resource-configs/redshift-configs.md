@@ -11,6 +11,8 @@ To-do:
 - think about whether some of these should be outside of models
 --->
 
+import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
+
 ## Incremental materialization strategies
 
 In dbt-redshift, the following incremental materialization strategies are supported:
@@ -115,6 +117,12 @@ The Redshift adapter supports the `query_group` session parameter, enabling dbt 
   ```
 
 </VersionBlock>
+
+## Datasharing <Lifecycle status="beta" />
+
+<RedshiftDatasharing />
+
+For setup instructions, see [Redshift setup](/docs/local/connect-data-platform/redshift-setup).
 
 ## Late binding views
 

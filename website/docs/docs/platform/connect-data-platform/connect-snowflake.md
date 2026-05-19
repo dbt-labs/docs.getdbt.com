@@ -39,7 +39,7 @@ The following fields are required when creating a Snowflake connection:
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) area of their user profile.
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure Deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) area of their user profile.
 
 ### Username and password with MFA
 
@@ -65,7 +65,7 @@ to authenticate <Constant name="dbt" /> to run queries against Snowflake on beha
 
 [MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all `Username / Password` logins. Snowflake's MFA support is powered by the Duo Security service.
 
-- In <Constant name="dbt" />, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
+- In <Constant name="dbt" />, set the following [extended attribute](/docs/dbt-platform-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
 
    ```yaml
   authenticator: username_password_mfa
@@ -132,7 +132,7 @@ To learn how to optimize performance with data platform-specific configurations 
 
 ### Custom domain URL
 
-To connect to Snowflake through a custom domain (vanity URL) instead of the account locator, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to configure the `host` parameter with the custom domain:
+To connect to Snowflake through a custom domain (vanity URL) instead of the account locator, use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to configure the `host` parameter with the custom domain:
 
 ```yaml
 host: https://custom_domain_to_snowflake.com

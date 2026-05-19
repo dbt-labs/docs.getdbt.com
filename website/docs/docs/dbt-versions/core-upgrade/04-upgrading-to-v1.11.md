@@ -11,13 +11,13 @@ displayed_sidebar: "docs"
 
 - [<Constant name="core" /> v1.11 changelog](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.11 final release.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.11 final release.
 
 ## New and changed features and functionality
 
@@ -111,6 +111,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 - The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
 - The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
 - The `immutable_where` configuration is supported in dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
+- You can set [`copy_grants: true`](/reference/resource-configs/snowflake-configs#copy-grants-dynamic-tables) on a dynamic table to preserve existing object-level privileges when the table is recreated during a `--full-refresh`. When set to `false` (default), all previously granted permissions are dropped on recreation, requiring manual re-grants.
 
 ### BigQuery
 

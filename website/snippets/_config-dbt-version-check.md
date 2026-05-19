@@ -1,5 +1,5 @@
 
-Starting in 2024, when you select a [release track in <Constant name="dbt" />](/docs/dbt-versions/cloud-release-tracks) to receive ongoing dbt version upgrades, dbt will ignore the `require-dbt-version` config.
+Starting in 2024, when you select a [release track in <Constant name="dbt" />](/docs/dbt-versions/dbt-release-tracks) to receive ongoing dbt version upgrades, dbt will ignore the `require-dbt-version` config.
 
 dbt Labs is committed to zero breaking changes for code in dbt projects, with ongoing releases to <Constant name="dbt" /> and new versions of dbt Core. We also recommend these best practices:
 

@@ -9,7 +9,7 @@ tags: [v1.1.41, v1.1.40, v1.1.39, v1.1.38, v1.1.37, v1.1.36, v1.1.35, v1.1.34, v
 
 :::note
 
-This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your <Constant name="dbt" /> environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your <Constant name="dbt" /> environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::
 

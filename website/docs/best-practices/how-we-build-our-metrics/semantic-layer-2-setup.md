@@ -9,7 +9,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-3-build
 
 There are two options for developing a dbt project, including the <Constant name="semantic_layer" />:
 
-- [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation) &mdash; MetricFlow commands are embedded in the <Constant name="platform_cli" /> under the `dbt sl` subcommand. This is the easiest, most full-featured way to develop <Constant name="semantic_layer" /> code for the time being. You can use the editor of your choice and run commands from the terminal.
+- [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) &mdash; MetricFlow commands are embedded in the <Constant name="platform_cli" /> under the `dbt sl` subcommand. This is the easiest, most full-featured way to develop <Constant name="semantic_layer" /> code for the time being. You can use the editor of your choice and run commands from the terminal.
 
 - [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) &mdash; You can create semantic models and metrics in the <Constant name="studio_ide" />. 
 

@@ -58,7 +58,7 @@ import AuthTypesFusion from '/snippets/_dbt_connection_support_fusion.md';
 
 Warehouse connections are an account-level resource. You can find them under **Accounts settings** > **Connections**.
 
-Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-cloud-environments). 
+Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-platform-environments). 
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/connections-new-model.png" width="60%" title="Connection model"/>
 

@@ -8,7 +8,7 @@ tags: ['Databricks', 'dbt Fusion', 'dbt Core']
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
+dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks). All other table configurations were also supported in 1.8.
 
 
 | Option    | Description| Required?     | Model support   | Example      |
@@ -42,7 +42,7 @@ For details, see the [documentation of Databricks behavior flags](/reference/glo
 ### Python submission methods
 _Available in versions 1.9 or higher_
 
-In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks)), you can use these four options for `submission_method`: 
+In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
 
 * `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
@@ -974,7 +974,7 @@ You need to use the same set of names for compute across your outputs, though yo
 
 :::
 
-To configure this inside of <Constant name="dbt" />, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments:
+To configure this inside of <Constant name="dbt" />, use the [extended attributes feature](/docs/dbt-platform-environments#extended-attributes) on the desired environments:
 
 ```yaml
 

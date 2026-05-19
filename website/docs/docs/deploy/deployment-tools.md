@@ -67,7 +67,7 @@ If your organization uses [Dagster](https://dagster.io/), you can use the [dagst
 
 Use Databricks workflows to call the <Constant name="dbt" /> job API, which has several benefits such as integration with other ETL processes, utilizing <Constant name="dbt" /> job features, separation of concerns, and custom job triggering based on custom conditions or logic. These advantages lead to more modularity, efficient debugging, and flexibility in scheduling <Constant name="dbt" /> jobs.
 
-For more info, refer to the guide on [Databricks workflows and <Constant name="dbt" /> jobs](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
+For more info, refer to the guide on [Databricks workflows and <Constant name="dbt" /> jobs](/guides/databricks-workflows).
 
 ## Kestra
 
