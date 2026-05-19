@@ -34,7 +34,7 @@ If you're ready to get started, choose one of the following options. To learn mo
 <Card
     title="dbt Fusion engine upgrade"
     body="Learn how you can upgrade and leverage the speed and scale of the dbt Fusion engine"
-    link="/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine"
+    link="/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine"
     icon="dbt-bit"/>
 
 </div>

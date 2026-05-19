@@ -6,11 +6,7 @@ id: "cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reductions', 'cost optimizations']
 ---
 
-# Cost Insights <Lifecycle status="private_beta,managed,managed_plus" />
-
-:::info Private beta feature
-Cost Insights is a private beta feature. To request access, contact your account manager.
-:::
+# Cost Insights <Lifecycle status="beta,managed,managed_plus" />
 
 Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [state-aware orchestration](/docs/deploy/state-aware-about).
 

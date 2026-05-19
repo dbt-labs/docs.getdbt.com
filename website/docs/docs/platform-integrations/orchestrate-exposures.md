@@ -17,9 +17,9 @@ Use [<Constant name="dbt_platform" /> job scheduler](/docs/deploy/job-scheduler)
 
 :::warning <Constant name="fusion" /> not supported for this beta
 
-Orchestrating downstream exposures _isn't_ available when your deployments use [Latest <Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks). Supported jobs must use [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine.
+Orchestrating downstream exposures _isn't_ available when your deployments use [Latest <Constant name="fusion" />](/docs/dbt-versions/dbt-release-tracks). Supported jobs must use [Latest](/docs/dbt-versions/dbt-release-tracks) with the <Constant name="core" /> engine.
 
-On the [Latest <Constant name="fusion" />](/docs/dbt-versions/cloud-release-tracks) release track (the <Constant name="fusion_engine" /> preview), orchestrating downstream exposures isn’t supported yet. Setting `DBT_ACTIVE_EXPOSURES` and `DBT_ACTIVE_EXPOSURES_BUILD_AFTER` won’t enable orchestration behavior (like Tableau extract refreshes) or the related job log entries.
+On the [Latest <Constant name="fusion" />](/docs/dbt-versions/dbt-release-tracks) release track (the <Constant name="fusion_engine" /> preview), orchestrating downstream exposures isn’t supported yet. Setting `DBT_ACTIVE_EXPOSURES` and `DBT_ACTIVE_EXPOSURES_BUILD_AFTER` won’t enable orchestration behavior (like Tableau extract refreshes) or the related job log entries.
 
 The private beta is for <Constant name="dbt" /> Enterprise accounts. Contact your account representative for access.
 
@@ -31,7 +31,7 @@ The private beta is for <Constant name="dbt" /> Enterprise accounts. Contact you
 
 :::tip Available in private beta
 
-Orchestrating exposures is currently available in private beta to <Constant name="dbt" /> Enterprise accounts. Your deployment environments and scheduled jobs must use [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine (not [Latest <Constant name="fusion" /> engine](/docs/dbt-versions/cloud-release-tracks)). To join the beta, contact your account representative.
+Orchestrating exposures is currently available in private beta to <Constant name="dbt" /> Enterprise accounts. Your deployment environments and scheduled jobs must use [Latest](/docs/dbt-versions/dbt-release-tracks) with the <Constant name="core" /> engine (not [Latest <Constant name="fusion" /> engine](/docs/dbt-versions/dbt-release-tracks)). To join the beta, contact your account representative.
 
 :::
 
@@ -59,7 +59,7 @@ The following table summarizes the differences between visualizing and orchestra
 To orchestrate downstream exposures, you should meet the following:
 
 - [Configured downstream exposures](/docs/platform-integrations/downstream-exposures-tableau) and ensured desired exposures are included in your lineage.
-- Verified your environment and jobs use [Latest](/docs/dbt-versions/cloud-release-tracks) with <Constant name="core" />. [Latest <Constant name="fusion" /> engine](/docs/dbt-versions/cloud-release-tracks), the <Constant name="fusion_engine" /> preview, does _not_ support orchestrating downstream exposures yet.
+- Verified your environment and jobs are on a supported dbt [release track](/docs/dbt-versions/dbt-release-tracks).
 - Have a <Constant name="dbt" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
 - Created a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run.
 - Have [admin permissions](/docs/platform/manage-access/enterprise-permissions) in <Constant name="dbt" /> to edit project settings or production environment settings.
@@ -70,14 +70,14 @@ To orchestrate downstream exposures, you should meet the following:
 
 ## Orchestrate downstream exposures
 
-To orchestrate downstream exposures and see refreshes happen automatically during scheduled jobs on [Latest](/docs/dbt-versions/cloud-release-tracks) with the <Constant name="core" /> engine:
+To orchestrate downstream exposures and see refreshes happen automatically during scheduled jobs on [Latest](/docs/dbt-versions/dbt-release-tracks) with the <Constant name="core" /> engine:
 
 1. In the <Constant name="dbt_platform" />, click **Deploy**, then **Environments**, and select the **Environment variables** tab.
 2. Click **Add variable** and set the [environment level variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) `DBT_ACTIVE_EXPOSURES` to `1` within the environment you want the refresh to happen.
 3. Then set the `DBT_ACTIVE_EXPOSURES_BUILD_AFTER` to control the maximum refresh frequency (in minutes) you want between each exposure refresh.
 4. Set the variable to **1440** minutes (24 hours) by default. This means that downstream exposures won’t refresh Tableau extracts more often than this set interval, even if the related models run more frequently.
    <Lightbox src="/img/docs/platform-integrations/auto-exposures/active-exposures-env-var.jpg" width="100%" title="Set the environment variable `DBT_ACTIVE_EXPOSURES` to `1`."/>
-5. Run a production job on [Latest](/docs/dbt-versions/cloud-release-tracks) with <Constant name="core" />. Each run can trigger a downstream exposure refresh; if a job runs before the configured interval has passed, <Constant name="dbt" /> skips the downstream exposure refresh and marks it as `skipped` in the job logs.
+5. Run a production job on [Latest](/docs/dbt-versions/dbt-release-tracks) with <Constant name="core" />. Each run can trigger a downstream exposure refresh; if a job runs before the configured interval has passed, <Constant name="dbt" /> skips the downstream exposure refresh and marks it as `skipped` in the job logs.
 6. View downstream exposure entries in your run job logs.
    <Lightbox src="/img/docs/platform-integrations/auto-exposures/active-exposure-log.jpg" title="View the downstream exposure logs in the dbt run job logs."/>
    - View more details in the debug logs for any troubleshooting.

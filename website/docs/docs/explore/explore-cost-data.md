@@ -6,7 +6,7 @@ id: "explore-cost-data"
 tags: ['scheduler','SAO', 'cost savings', 'models built', 'cost insights']
 ---
 
-# Explore cost data <Lifecycle status="private_beta,managed,managed_plus" />
+# Explore cost data <Lifecycle status="beta,managed,managed_plus" />
 
 You can access Cost Insights in these different <Constant name="dbt_platform" /> areas:
 

@@ -50,7 +50,7 @@ Note that we have removed some deprecated features and introduced more rigorous 
 :::tip 
 <Constant name="dbt_platform" /> customers using <Constant name="fusion" /> can [develop across multiple development surfaces](/docs/fusion/fusion-availability), including  <Constant name="studio_ide"/> and VS Code with the dbt extension. 
 
-<Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-cloud-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
+<Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-platform-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
 :::
 
 If you're not sure what features are available in <Constant name="fusion" />, the dbt VS Code extension, <Constant name="fusion"/>-CLI, or more, the following table focuses on <Constant name="fusion" />-powered options. 
@@ -91,13 +91,13 @@ Here are some additional considerations if using the Fusion CLI without the VS C
     - **Fusion CLI** ([binary](/blog/dbt-fusion-engine-components))
       - Free to use and runs on the <Constant name="fusion_engine" /> (distinct from <Constant name="core" />). 
       - Benefits from Fusion engine's performance for `parse`, `compile`, `build`, and `run`, but _doesn't_ include <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.  
-      - Requires `profiles.yml` only (no `dbt_cloud.yml`).
+      - Requires [`profiles.yml`](/docs/local/profiles.yml) only (no [`dbt_cloud.yml`](/reference/dbt_cloud.yml)).
     - **dbt VS Code extension**
       - Free to use and runs on the <Constant name="fusion_engine" />; register your email within 14 days.
       - Benefits from <Constant name="fusion" /> engine's performance for `parse`, `compile`, `build`, and `run`, and includes <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.
       - Capped at 15 users per organization. See the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup) for more information.
       - If you already have a <Constant name="dbt_platform" /> user account (even if a trial expired), sign in with the same email. Unlock or reset it if locked.  
-      - Requires both `profiles.yml` and `dbt_cloud.yml` files.
+      - Requires both [`profiles.yml`](/docs/local/profiles.yml) and [`dbt_cloud.yml`](/reference/dbt_cloud.yml) files.
 
 ## Limitations
 
