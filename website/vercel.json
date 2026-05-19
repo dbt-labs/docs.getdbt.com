@@ -5123,6 +5123,26 @@
       "source": "/docs/dbt-cloud-apis/:path*",
       "destination": "/docs/dbt-apis/:path*",
       "permanent": true
+    },
+    {
+      "source": "/docs/cloud-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
     }
   ]
 }
