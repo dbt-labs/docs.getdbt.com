@@ -31,7 +31,7 @@ To use the extension, you must meet the following prerequisites:
 
 To install the dbt VS Code extension, follow these steps in your editor of choice:
 
-1. Navigate to the **Extensions** tab of your editor and search for `dbt`. Locate the extension from the publisher `dbtLabsInc` or `dbt Labs Inc`. Click **Install**.
+1. Navigate to the **Extensions** tab of your editor and search for `dbt`. Locate the extension from the publisher `dbtLabsInc` or `dbt Labs, LLC`. Click **Install**.
     <Lightbox src="/img/docs/extension/extension-marketplace.png" width="90%" title="Search for the extension"/>
 2. Open a dbt project in your VS Code environment if you haven't already. Make sure it is added to your current workspace. If you see a **dbt Extension** label in your editor's status bar, then the extension has installed successfully. You can hover over this **dbt Extension** label to see diagnostic information about the extension.
     <Lightbox src="/img/docs/extension/dbt-extension-statusbar.png" width="60%" title="If you see the 'dbt Extension` label, the extension is activated"/>

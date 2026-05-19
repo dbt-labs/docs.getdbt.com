@@ -114,7 +114,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 The dbt VS Code extension is available in the [Visual Studio extension marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). Download it directly from your VS Code editor:
 
 1. Navigate to the **Extensions** tab of VS Code (or Cursor).
-2. Search for `dbt` and choose the one from the publisher `dbt Labs Inc`.
+2. Search for `dbt` and choose the one from the publisher `dbt Labs, LLC`.
     <Lightbox src="/img/docs/extension/extension-marketplace.png" width="60%" title="Search for the extension"/>
 3. Click **Install**.
 4. When the prompt appears, you can register the extension now or skip it (you can register later). You can also check out our [installation instructions](/docs/install-dbt-extension) to come back to it later.

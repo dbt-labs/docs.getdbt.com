@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/platform/copilot-styleguide",
+      "destination": "/docs/dbt-ai/developer-agent",
+      "permanent": true
+    },
+    {
       "source": "/guides/explorer-quickstart",
       "destination": "/docs/explore/explore-projects",
       "permanent": true
