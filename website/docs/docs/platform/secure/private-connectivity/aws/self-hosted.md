@@ -7,9 +7,9 @@ sidebar_label: "Self-hosted services"
 
 # Configuring AWS PrivateLink for a self-hosted service <Lifecycle status="managed_plus" />
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 AWS PrivateLink enables secure, private connectivity between <Constant name="dbt" /> and your self-hosted services. These services may include version control systems (VCS), data warehouses, or any other applications you manage. With PrivateLink, you do not need to expose your service to the public internet. All communication occurs over a private network, significantly enhancing security. For more details, refer to the [AWS PrivateLink documentation](https://docs.aws.amazon.com/vpc/latest/privatelink/).
 
@@ -51,9 +51,9 @@ Before you begin, make sure to review the following requirements:
 
     - Confirm that your service or application is operational and healthy behind the designated load balancer before proceeding.
 
-3. **dbt AWS Account ARN**
+3. **dbt AWS IAM Role ARN**
 
-    - Contact [dbt Support](mailto:support@getdbt.com) to obtain the dbt AWS account ARN. You will need this in order to allow dbt to connect to your Endpoint Service.
+    - Contact [dbt Support](mailto:support@getdbt.com) to obtain the dbt AWS IAM role ARN. You will need this in order to allow dbt to connect to your Endpoint Service.
 
 
 ## Additional NLB configuration
@@ -99,9 +99,9 @@ For more details, see [Update the security groups for your Network Load Balancer
 
 5. After the Endpoint Service is created, select it and go to the **Allow principals** tab
 
-6. Click **Allow principals** and add the dbt AWS account ARN that you obtained from support:
+6. Click **Allow principals** and add the dbt AWS IAM role ARN that you obtained from support:
 
-    - Principal: `arn:aws:iam::<dbt-account-id>:root`
+    - Principal: `arn:aws:iam::<dbt-account-id>:role/MTPL_Admin`
 
 ### Obtain the endpoint service name
 
@@ -125,7 +125,7 @@ Subject: New AWS Self-hosted PrivateLink Request
 - Custom DNS (if HTTPS/TLS):
   - DNS record:
 - Service Region (for example, us-east-1, eu-west-2):
-- dbt AWS environment (US, EMEA, AU):
+- dbt AWS environment (US, EMEA, AU, JP):
 ```
 </Expandable>
 

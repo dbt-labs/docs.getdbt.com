@@ -15,10 +15,6 @@ import FusionAdapters from '/snippets/_fusion-dwh.md';
 
 ## Introduction
 
-import FusionPreview from '/snippets/_fusion-private-preview.md';
-
-<FusionPreview />
-
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and like any new version you should take steps to prepare to upgrade. This guide will take you through those preparations. 
 
 If <Constant name="fusion" /> is brand new to you, take a look at our [comprehensive documentation](/docs/fusion) on what it is, how it behaves, and what's different from <Constant name="core" /> before getting started with this guide. Once you're caught up, it's time to begin preparing your projects for the speed and power that <Constant name="fusion" /> has to offer.
@@ -80,7 +76,7 @@ With the readiness experience enabled, you can monitor your project's eligibilit
 <Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The Fusion readiness checklist"/>
 
 Common ineligibility reasons include:
-- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available]
+- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available]
 - Not using a [supported data platform](/docs/fusion/supported-features?version=2.0#requirements)
 - Project doesn't have at least one successful job run
 - Jobs that haven't run in the last 7 days or have recent failures
@@ -89,7 +85,7 @@ As you complete the steps in this guide, check the readiness panel to see your e
 
 ## Upgrade to the latest dbt Core version
 
-Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/cloud-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
+Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
 
 :::tip Test before you deploy
 
@@ -153,7 +149,7 @@ After validating in staging (or development if you don't have staging), upgrade 
 
 ### Step 5: Update jobs
 
-While environments control the dbt version for most scenarios, some older job configurations may have version overrides. Review your jobs and [update any that specify a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#jobs) to ensure they use the environment's Latest release track.
+While environments control the dbt version for most scenarios, some older job configurations may have version overrides. Review your jobs and [update any that specify a dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#jobs) to ensure they use the environment's Latest release track.
 
 ## Resolve all deprecation warnings
 

@@ -174,7 +174,7 @@ Now you might be wondering, how do you identify opportunities for performance im
 
 ### dbt Admin API
 
-With the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-cloud-api), you can  pull the dbt artifacts from your <Constant name="dbt" /> run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
+With the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api), you can  pull the dbt artifacts from your <Constant name="dbt" /> run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
 
 ### Conclusion
 

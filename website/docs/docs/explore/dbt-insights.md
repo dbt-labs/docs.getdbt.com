@@ -37,8 +37,8 @@ Some example use cases include:
 - Be on a <Constant name="dbt" /> [Enterprise-tier](https://www.getdbt.com/pricing) plan &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="insights" />.
 - Available on all [tenant](/docs/platform/about-platform/tenancy) configurations. 
 - Have a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) with access to <Constant name="insights" />.
-- Configured [developer credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-cloud-ide).
-- Your production and development [environments](/docs/dbt-cloud-environments) are on <Constant name="dbt" />’s ‘Latest’ [release track](/docs/dbt-versions/cloud-release-tracks) or a supported dbt version.
+- Configured [developer credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide).
+- Your production and development [environments](/docs/dbt-platform-environments) are on <Constant name="dbt" />’s ‘Latest’ [release track](/docs/dbt-versions/dbt-release-tracks) or a supported dbt version.
 - Use a supported data platform: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
 	- Single sign-on (SSO) for development user accounts is supported. Deployment environments will be queried leveraging the user's development credentials.
 - (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="insights" />, you must also:

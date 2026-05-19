@@ -8,7 +8,7 @@ tags: ['Databricks', 'dbt Fusion', 'dbt Core']
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks). All other table configurations were also supported in 1.8.
+dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it now on the [<Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks). All other table configurations were also supported in 1.8.
 
 
 | Option    | Description| Required?     | Model support   | Example      |
@@ -42,7 +42,7 @@ For details, see the [documentation of Databricks behavior flags](/reference/glo
 ### Python submission methods
 _Available in versions 1.9 or higher_
 
-In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/cloud-release-tracks)), you can use these four options for `submission_method`: 
+In dbt-databricks v1.9 (try it now in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks)), you can use these four options for `submission_method`: 
 
 * `all_purpose_cluster`: Executes the python model either directly using the [command api](https://docs.databricks.com/api/workspace/commandexecution) or by uploading a notebook and creating a one-off job run
 * `job_cluster`: Creates a new job cluster to execute an uploaded notebook as a one-off job run
@@ -265,9 +265,9 @@ The `insert_overwrite` strategy updates data in a table by replacing existing re
 
 When using `liquid_clustered_by`, the `replace on` keys used will be the same as the `liquid_clustered_by` keys (same as `partition_by` behavior). 
 
-When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `True` (in SQL warehouses or when using cluster computes) dbt dynamically overwrites partitions and only replaces the partitions or clusters returned by your model query. dbt runs a [partitionOverwriteMode='dynamic' `insert overwrite` statement](https://docs.databricks.com/aws/en/delta/selective-overwrite#dynamic-partition-overwrites-with-partitionoverwritemode-legacyl), which helps reduce unnecessary overwrites and improves performance. 
+When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `true` (in SQL warehouses or when using cluster computes) dbt dynamically overwrites partitions and only replaces the partitions or clusters returned by your model query. dbt runs a [partitionOverwriteMode='dynamic' `insert overwrite` statement](https://docs.databricks.com/aws/en/delta/selective-overwrite#dynamic-partition-overwrites-with-partitionoverwritemode-legacyl), which helps reduce unnecessary overwrites and improves performance. 
 
-When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `False` in SQL warehouses, dbt truncates (empties) the entire table before inserting new data. This replaces all rows in the table each time the model runs, which can increase run time and cost for large datasets
+When you set [`use_replace_on_for_insert_overwrite`](/reference/global-configs/databricks-changes#use-replace-on-for-insert_overwrite-strategy) to `false` in SQL warehouses, dbt truncates (empties) the entire table before inserting new data. This replaces all rows in the table each time the model runs, which can increase run time and cost for large datasets
 
 If you don't specify `partition_by` or `liquid_clustered_by`, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` and `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
 
@@ -974,7 +974,7 @@ You need to use the same set of names for compute across your outputs, though yo
 
 :::
 
-To configure this inside of <Constant name="dbt" />, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments:
+To configure this inside of <Constant name="dbt" />, use the [extended attributes feature](/docs/dbt-platform-environments#extended-attributes) on the desired environments:
 
 ```yaml
 

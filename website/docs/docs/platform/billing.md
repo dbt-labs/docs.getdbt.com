@@ -114,6 +114,8 @@ Usage information is available to customers on consumption-based plans, and some
 
 A defined number of <Constant name="copilot" /> invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to Copilot functionality will be temporarily disabled until the start of the next billing cycle.
 
+The <Constant name="copilot"/> <Constant name="dev_agent"/> (public preview) currently draws from your available <Constant name="copilot"/> request allotment. Pricing and usage are subject to change.
+
 ### Usage and metering information 
 
 <Expandable alt_header="AI usage tracking by Copilot actions">
@@ -137,7 +139,7 @@ The following table outlines the limits of <Constant name="copilot" /> actions b
 |Plan                       |Limit |
 |---------------------------|------|
 |Developer                  | ❌   |
-|Starter*                   |500   |
+|Starter*                   |100   |
 |Enterprise                 |5,000 |
 |Enterpise+                 |10,000|
 
@@ -240,7 +242,7 @@ There are 2 options to disable models from being built and charged:
 
 ### Best practices for optimizing successful models built
 
-When thinking of ways to optimize your costs from successful models built, there are methods to reduce those costs while still adhering to best practices. To ensure that you are still utilizing tests and rebuilding views when logic is changed, it's recommended to implement a combination of the best practices that fit your needs. More specifically, if you decide to exclude views from your regularly scheduled <Constant name="dbt" /> job runs, it's imperative that you set up a merge job (with a link to the section) to deploy updated view logic when changes are detected.
+When thinking of ways to optimize your costs from successful models built, there are methods to reduce those costs while still adhering to best practices. To ensure that you are still utilizing tests and rebuilding views when logic is changed, it's recommended to implement a combination of the best practices that fit your needs. More specifically, if you decide to exclude views from your regularly scheduled <Constant name="dbt" /> job runs, it's imperative that you set up a [merge job](#exclude-views-while-running-tests) to deploy updated view logic when changes are detected.
 
 #### Exclude views in a dbt job
 
