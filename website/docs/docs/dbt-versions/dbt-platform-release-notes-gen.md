@@ -50,7 +50,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **dbt State cost-optimization options in job settings**: When dbt State is enabled for your account, the job settings execution section replaces the legacy "Enable Fusion cost optimization features" accordion with dedicated checkboxes for dbt State and, on Fusion, State-aware orchestration. The two options are mutually exclusive. Contact your account manager to enable.
 
-- **Support for the "dbt State" label in job change history**: The audit log's Job Change History section now displays "dbt State" as the human-readable label for the `dbt_state` cost-optimization feature, consistent with the labels for State-aware orchestration and Efficient testing.
+- **Support for the "dbt State" label in job change history**: The audit log's job change history section now displays "dbt State" as the human-readable label for the `dbt_state` cost-optimization feature, consistent with the labels for State-aware orchestration and Efficient testing.
 
 - **Clearer Fusion eligibility message for migrated jobs**: The Fusion eligibility surface now maps the `job_on_fusion` reason code to "This job is already running on Fusion." with no call-to-action, giving clearer feedback for jobs that are already migrated.
 
