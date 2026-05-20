@@ -5,7 +5,7 @@ id: "doc"
 description: "Use `doc()` in description fields to reference docs blocks."
 ---
  
-You can specify documentation text in a docs block, then use the `doc()` Jinja function in description fields as a way to reuse the same text in multiple places. You can only use the `doc()` Jinja function in properties YAML files for resources with description properties, for example, models, model columns, sources, source tables, source columns, and so on.
+You can specify documentation text in a docs block, then use the `doc()` Jinja function in description fields as a way to reuse the same text in multiple places. You can only use the `doc()` Jinja function in properties YAML files for resources with description properties. For example, models, model columns, sources, source tables, source columns, and so on.
  
 The `doc()` Jinja function, which is analogous to `ref()`, looks up the named docs block (for example, `{% docs orders %} ... {% enddocs %}` in a `docs.md` file) and returns its rendered content. For more information, refer to the [Documentation guide](/docs/explore/build-and-view-your-docs).
  
@@ -13,7 +13,7 @@ The `doc()` Jinja function, which is analogous to `ref()`, looks up the named do
  
 In dbt, column descriptions can be defined directly in a model's properties YAML file. These descriptions are written as plain text and are associated with a specific column.
  
-### Properties YAML file descriptions
+### Manually adding descriptions
  
 <File name="models/orders.yml">
  
@@ -29,7 +29,7 @@ models:
  
 When you run `dbt docs generate` and view the docs site, this text appears exactly as written but only for the `order_total_cents` column of the `orders` model.
  
-### Reusing documentation with doc()
+### Reusing descriptions with doc()
  
 To avoid repeating the same description across multiple models or columns, dbt lets you define documentation separately and reference it using the `doc()` function.
  
@@ -67,7 +67,7 @@ When you run `dbt docs generate`, dbt resolves the `doc()` reference by looking 
  
 As a result, the column description displays the text defined in the markdown file, rather than inline YAML.
  
-## Duplicate docs block names
+## Avoid duplicate names
  
 Docs block names must be unique within your project. If you define multiple `{% docs %}` blocks with the same name, dbt cannot reliably determine which block to use when `doc('DOCS_BLOCK_NAME')` is called.
  
