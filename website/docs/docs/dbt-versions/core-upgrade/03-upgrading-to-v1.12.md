@@ -20,9 +20,17 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### JavaScript UDFs <Lifecycle status="beta" />
+### Extensions to UDFs <Lifecycle status="beta" />
 
-<Constant name="core" /> v1.12 adds support for JavaScript user-defined functions (UDFs) on Snowflake and BigQuery. Define a JavaScript UDF by creating a `.js` file in your `functions/` directory and a corresponding YAML file with the function's arguments and return type. For more information, refer to [User-defined functions](/docs/build/udfs).
+- <Constant name="core" /> v1.12 adds support for JavaScript user-defined functions (UDFs) on Snowflake and BigQuery. Define a JavaScript UDF by creating a `.js` file in your `functions/` directory and a corresponding YAML file with the function's arguments and return type. For more information, refer to [User-defined functions](/docs/build/udfs).
+
+- You can define multiple argument signatures for the same user-defined function (UDF) using the `overloads` property. This lets you call the same function name with different input types, without creating separate UDFs for each variant. This is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in`, with optional `arguments` and `returns`. All overloads are grouped into one <Term id="dag">DAG</Term> node, so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. For more information, refer to [Defining overloaded UDFs](/docs/build/udfs#defining-udfs-in-dbt#defining-overloaded-UDFs) and [`overloads`](/reference/resource-properties/overloads).
+
+- You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
+
+### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
+
+You can now use the `--sql` flag with `dbt run-operation` to execute ad hoc database statements directly against your warehouse, without defining a macro. This is useful for one-off operations like dropping or altering a table, applying grants, or running a data fix. The statement runs through dbt's full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. For more information, refer to [About dbt run-operation](/reference/commands/run-operation).
 
 ### `on_error` model config <Lifecycle status="beta" />
 
@@ -39,10 +47,6 @@ Key changes in the new spec:
 - `type_params` is deprecated; its parameters are now top-level keys within each metric definition.
 
 For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
-
-### `packages` config for Python UDFs <Lifecycle status="beta" />
-
-You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
 
 ### `selector` method for named YAML selectors <Lifecycle status="beta" />
 
@@ -101,6 +105,7 @@ You can read more about each of these behavior changes in the following links:
 - You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. 
 
     When `transient` is not set on a model, the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default. Set this flag to `true` to make all dynamic tables transient by default.
+- Set the [`refresh_warehouse`](/reference/resource-configs/snowflake-configs#refresh-warehouse) parameter to choose which Snowflake warehouse runs a dynamic table’s automatic refreshes. This is separate from `snowflake_warehouse`, which is used for <Term id="ddl" /> execution. For example, you might use a smaller warehouse for refreshes and a larger one for DDL.
 
 ### BigQuery
 

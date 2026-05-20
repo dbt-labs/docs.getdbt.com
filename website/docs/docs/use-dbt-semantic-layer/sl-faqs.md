@@ -79,7 +79,7 @@ The dbt Semantic Layer supports the following data platforms:
 - Postgres
 - Trino
 
-Support for other data platforms, such as Fabric, isn't available at this time. If you're interested in using the dbt Semantic Layer with a data platform not on the list, please [contact us](https://www.getdbt.com/get-started).
+Support for other data platforms, such as Fabric, isn't available at this time. If you're interested in using the dbt Semantic Layer with a data platform not on the list, please [contact us](https://www.getdbt.com/contact).
 </Expandable>
 
 <Expandable alt_header="Do I need to be on a specific version of dbt to use dbt Semantic Layer?">
@@ -102,7 +102,7 @@ dbt Core users can also query their semantic layer locally using the command lin
 
 <Expandable alt_header="Is there a solution or licensing path for an organization that doesn't use dbt for pipelining, but might like to implement the dbt Semantic Layer?">
 
-If you're interested in the this type of implementation, please reach out to us [here](https://www.getdbt.com/get-started).
+If you're interested in the this type of implementation, please reach out to us [here](https://www.getdbt.com/contact).
 </Expandable>
 
 ## How does the dbt Semantic Layer work?
