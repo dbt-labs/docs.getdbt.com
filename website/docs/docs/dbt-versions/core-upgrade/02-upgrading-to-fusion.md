@@ -218,7 +218,7 @@ In older versions of <Constant name="core" />, it was possible to create scenari
 <Constant name="fusion" /> adds stricter evaluation of names of docs blocks to prevent such ambiguity. It will present an error if it detects duplicate names:
 
 ```bash
-dbt found two docs with the same name: 'docs_block_title in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
+dbt found two docs with the same name: 'docs_block_title' in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
 ```
 
 To resolve this error, rename any duplicate docs blocks. 
