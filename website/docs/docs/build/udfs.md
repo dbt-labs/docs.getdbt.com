@@ -413,7 +413,7 @@ After defining a UDF, if you update the SQL, Python, or JavaScript file that con
 
 ### Defining overloaded UDFs
 
-Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake.
+Use the [`overloads`](/reference/resource-properties/overloads) property (available in <Constant name="core" /> v1.12+) to define multiple argument signatures for the same function. This lets you call the same function name with different input types, without creating separate UDFs for each variant. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
 
 To define overloaded UDFs:
 
@@ -514,7 +514,7 @@ For more information about selecting UDFs, see the examples in [Node selector me
 - JavaScript UDFs are supported on Snowflake and BigQuery only. Using JavaScript UDFs on an unsupported adapter raises a parsing error.
 - Python UDFs are supported in Snowflake and BigQuery only (when using <Constant name="core" /> or <Constant name="fusion" />). Other warehouses aren't yet supported for Python UDFs.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
-- The `overloads` property is supported for SQL UDFs in Snowflake and Postgres, and for Python UDFs in Snowflake.
+- The `overloads` property is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
 
 ## Related FAQs
 
