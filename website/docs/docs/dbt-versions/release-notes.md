@@ -20,6 +20,8 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## May 2026
 
+- **Enhancement:** The admin API toolset (job management and run operations) is now always available in the <Constant name="dbt" /> <Constant name="copilot" /> [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
+- **Fix:** When a job cannot clone its repository because no remote URL is configured, the error message now explains the most likely causes (an invalid Git remote URL, a Git provider outage, or a deprecated HTTPS connection) and directs you to verify the URL, confirm your provider is operational, and ensure the repository uses SSH with deploy keys before retrying.
 - **New:** The **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions) is now available for Enterprise accounts. Assign it to users who need to manage Slack, Microsoft Teams, and email job notifications across all projects without requiring full Account Admin access.
 - **Beta**: [Cost Insights](/docs/explore/cost-insights), available in public beta, shows estimated warehouse compute costs and run times for dbt projects and models in <Constant name="dbt_platform"/>, highlighting efficiency gains from [state-aware orchestration](/docs/deploy/state-aware-about). Refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights) and [Explore cost data](/docs/explore/explore-cost-data) to learn more.
 - **New:** Fusion release tracks are now being rolled out across across accounts in phases. Refer to [Fusion release tracks](/docs/dbt-versions/dbt-release-tracks?version=2.0#fusion-release-tracks) for more information.
