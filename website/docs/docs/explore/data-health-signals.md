@@ -17,9 +17,9 @@ Note,  we don’t calculate data health for non-dbt resources.
 - Each data health signal reflects key data health components, such as test success status, missing resource descriptions, missing tests, absence of builds in 30-day windows, [and more](#data-health-signal-criteria).
 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-health-signal.jpg" width="55%" title="View data health signals for your models."/> 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-health-signal.png" width="55%" title="View data health signals for your models."/> 
 
-## Access data health signals
+## Access data health signalss
 
 Access data health signals in the following places:
 - In the [search function](/docs/explore/explore-projects#search-resources) or under **Models**, **Sources**, or **Exposures** in the **Resource** tab.  
