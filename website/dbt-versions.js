@@ -17,11 +17,11 @@ const products = [
     name: "Fusion",
     subProducts: [
       {
-        name: "dbt Fusion engine (Latest)",
+        name: "dbt platform (stable)",
         version: "2.0",
       },
       {
-        name: "Fusion CLI",
+        name: "dbt Fusion engine",
         version: "2.0",
       },
     ],
@@ -30,8 +30,12 @@ const products = [
     name: "Core",
     subProducts: [
       {
-        name: "dbt platform (Latest Core)",
-        version: "1.12",
+        name: "dbt platform (latest)",
+        version: "1.11",
+      },
+      {
+        name: "dbt Core v2.0",
+        version: "2.0",
       },
       {
         name: "Core v1.11",
@@ -42,6 +46,19 @@ const products = [
         name: "Core v1.10 (Compatible/Extended)",
         EOLDate: "2026-06-15",
         version: "1.10",
+      },
+    ],
+  },
+  {
+    name: "dbt platform",
+    subProducts: [
+      {
+        name: "Latest (Core)",
+        version: "1.12",
+      },
+      {
+        name: "Stable (Fusion)",
+        version: "2.0",
       },
     ],
   },
