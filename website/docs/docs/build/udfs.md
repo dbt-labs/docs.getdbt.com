@@ -41,6 +41,12 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</TabItem>
 	</Tabs>
 
+:::important UDF support
+Additional languages (for example, Java, Scala) aren't currently supported when developing UDFs.
+
+See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
+:::
+
 ## Defining UDFs in dbt
 
 You can define SQL, Python, and JavaScript (available in <Constant name="core" /> v1.12+) UDFs in dbt. Python and JavaScript UDFs are supported in Snowflake and BigQuery only.
@@ -207,7 +213,7 @@ Follow these steps to define UDFs in dbt:
         description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
         config:
           snowflake:                             # optional
-            quote_args: false                   # optional, Snowflake only, defaults to true
+            quote_args: false                    # optional, Snowflake only, defaults to true
         arguments:                               # optional
           - name: a_string                       # required if arguments is specified
             data_type: string                    # required if arguments is specified
