@@ -95,9 +95,9 @@ This next part will happen in you code hosting platform. We need to save your AP
   defaultValue="github"
   values={[
     { label: 'GitHub', value: 'github', },
-    {label: 'GitLab', value: 'gitlab', },
-    {label: 'Azure DevOps', value: 'ado', },  
-    {label: 'Bitbucket', value: 'bitbucket', },
+    { label: 'GitLab', value: 'gitlab', },
+    { label: 'Azure DevOps', value: 'ado', },  
+    { label: 'Bitbucket', value: 'bitbucket', }
   ]
 }>
 <TabItem value="github">
@@ -414,9 +414,10 @@ For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the
   defaultValue="single-job"
   values={[
     { label: 'Only job', value: 'single-job', },
-    {label: 'Lint and dbt job', value: 'multi-job', },
+    {label: 'Lint and dbt job', value: 'multi-job', }
   ]
 }>
+
 <TabItem value="single-job">
 
 ```yaml
@@ -480,12 +481,13 @@ Additionally, you’ll see the job in the run history of <Constant name="dbt" />
 <Tabs
   defaultValue="github"
   values={[
-    { label: 'GitHub', value: 'github', },
+    {label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
     {label: 'Azure DevOps', value: 'ado', },
-    {label: 'Bitbucket', value: 'bitbucket', },
+    {label: 'Bitbucket', value: 'bitbucket', }
   ]
 }>
+
 <TabItem value="github">
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png" title="dbt run on merge job in GitHub" width="80%" />
@@ -534,10 +536,11 @@ The setup for this pipeline will use the same steps as the prior page. Before mo
 <Tabs
   defaultValue="bitbucket"
   values={[
-    { label: ‘Bitbucket’, value: ‘bitbucket’, },
-    { label: ‘CodeCommit’, value: ‘codecommit’, },
+    { label: 'Bitbucket', value: 'bitbucket', },
+    { label: 'CodeCommit', value: 'codecommit', }
   ]
 }>
+
 <TabItem value="bitbucket">
 
 For this job, we’ll set it up using the `bitbucket-pipelines.yml` file as in the prior step. The YAML file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
@@ -559,9 +562,9 @@ image: python:3.11.1
 pipelines:
   # This job will run when pull requests are created in the repository
   pull-requests:
-    ‘**’:
+    '**':
       - step:
-          name: ‘Run dbt PR Job’
+          name: 'Run dbt PR Job'
           script:
             # Check to only build if PR destination is master (or other branch). 
             # Comment or remove line below if you want to run on all PR’s regardless of destination branch.
@@ -577,6 +580,7 @@ pipelines:
 ```
 
 </TabItem>
+
 <TabItem value="codecommit">
 
 For this job, use AWS CodeBuild and CodePipeline to trigger a dbt Slim CI job every time a pull request is opened in your CodeCommit repository.
@@ -589,16 +593,16 @@ The following variables control this job:
 - `DBT_JOB_BRANCH`: Tells the <Constant name="dbt" /> job to run the code in the branch that created this PR
 - `DBT_JOB_SCHEMA_OVERRIDE`: Tells the <Constant name="dbt" /> job to run into a custom target schema
 
-:::note Prerequisites
+#### Prerequisites
+
 Before proceeding, make sure you have:
 - Connected your dbt project to CodeCommit by following the [CodeCommit integration guide](/docs/cloud/git/import-a-project-by-git-url#aws-codecommit)
 - Configured the [pull request URL template for CodeCommit](/docs/collaborate/git/pr-template#aws-codecommit) in your dbt project settings
 - Created a [Slim CI job](/docs/deploy/slim-ci-jobs) in dbt — do not configure it to trigger on pull requests, since this pipeline will trigger it through the API
-:::
 
 Before starting, complete step 1 of the [run on merge guide](/guides/custom-cicd-pipelines?step=2) to get your dbt API key. The steps below replace steps 2 through 5 for CodeCommit users.
 
-**1. Store your dbt API key in AWS Systems Manager**
+#### 1. Store your dbt API key in AWS Systems Manager
 
 Instead of storing your API key as a repository variable, store it securely in [AWS Systems Manager Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-create-console.html):
 
@@ -615,7 +619,7 @@ Next, grant your CodeBuild project’s service role permission to read the param
 3. Under **Resources**, click **Add ARN** and specify the ARN of your parameter
 4. Save and name the policy, then attach it to the IAM role associated with your CodeBuild project (the role name appears in the **Source** section of your CodeBuild project configuration)
 
-**2. Add configuration files to your project**
+#### 2. Add configuration files to your project
 
 Add the following files to your dbt project:
 
@@ -754,7 +758,7 @@ phases:
       - python -u ./python/run_and_monitor_dbt_cloud_job.py
 ```
 
-**3. Create a CodeBuild project**
+#### 3. Create a CodeBuild project
 
 Follow the [AWS CodeBuild documentation](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-console.html) to create a project. For the dbt integration, configure the following settings:
 
@@ -762,7 +766,7 @@ Follow the [AWS CodeBuild documentation](https://docs.aws.amazon.com/codebuild/l
 - **Environment**: Select **Ubuntu** as the operating system
 - **Buildspec**: Select **Use a buildspec file** and enter `ci-configuration/buildspec.yml` as the path
 
-**4. Create a CodePipeline**
+#### 4. Create a CodePipeline
 
 Follow the [AWS CodePipeline documentation](https://docs.aws.amazon.com/codepipeline/latest/userguide/pipelines-create.html) to create a pipeline:
 
@@ -772,7 +776,7 @@ Follow the [AWS CodePipeline documentation](https://docs.aws.amazon.com/codepipe
 
 After you save, the pipeline automatically triggers an initial run.
 
-**5. Modify the CloudWatch Events rule**
+#### 5. Modify the CloudWatch Events rule
 
 When you create a CodePipeline that monitors a CodeCommit repository, AWS automatically creates a CloudWatch Events rule that triggers the pipeline on any repository change. Modify this rule so the pipeline only runs when a pull request is created:
 
