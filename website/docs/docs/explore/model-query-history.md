@@ -62,8 +62,6 @@ To enable model query history in <Constant name="dbt" />, follow these steps:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/enable-query-history.png" width="95%" title="Enable query history in your environment settings." />
 
-
-
 ## Credential permissions
 
 This section explains the permissions and steps you need to enable and view model query history in <Constant name="catalog" />.
@@ -195,7 +193,7 @@ To enhance your discovery, you can view your model query history in various loca
 2. In the lower left of your lineage, click on **Lenses** and select **Consumption queries**. 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-lenses.png" width="85%" title="View model consumption queries in your lineage using the 'Lenses' feature." />
 
-3. Your lineage should display a small red box above each model, indicating the consumption query number. The number for each model represents the model consumption over the last 30 days.
+3. Your lineage should display a small purple box above each model, indicating the consumption query number. The number for each model represents the model consumption over the last 30 days.
 
 ### View from Model list
 
