@@ -185,7 +185,7 @@ Native private packages let you install packages from [supported](#prerequisites
 - **<Constant name="dbt_platform" />**: You must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
   - **[GitHub](/docs/platform/git/connect-github)**
   - **[Azure DevOps](/docs/platform/git/connect-azure-devops)**
-    - Use the `org/project/repo` path with the `ado` or `azure_devops` provider.
+    - Use the `org/project/repo` path with the `ado` provider.
   - **[GitLab](/docs/platform/git/connect-gitlab)**
     - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project.
 - **Locally using <Constant name="fusion" /> or <Constant name="core" /> v1.12+**: You must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
