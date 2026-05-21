@@ -5,6 +5,9 @@
  * Override source URL:
  *   DEPLOYMENT_CONFIG_VALIDATOR_README_URL=https://raw.githubusercontent.com/org/repo/main/README.md
  *
+ * Private repo (required for dbt-labs/dbt_architecture_validator):
+ *   VALIDATOR_DOCS_REPO_TOKEN — PAT with read access (contents:read is enough for fine-grained PATs)
+ *
  * README is stripped of its top-level H1 so the docs page can own the title (same idea as MCP Tools section omitting ## Tools).
  *
  * Content strategy (v1): embed the **full** upstream README (Option 1). If Product prefers a shorter page later,
@@ -27,9 +30,11 @@ const OUT_PATH = path.join(
 );
 
 function fetch(url) {
+  const token = process.env.VALIDATOR_DOCS_REPO_TOKEN;
+  const headers = token ? { Authorization: `token ${token}` } : {};
   return new Promise((resolve, reject) => {
     https
-      .get(url, (res) => {
+      .get(url, { headers }, (res) => {
         if (res.statusCode !== 200) {
           reject(new Error(`HTTP ${res.statusCode}: ${url}`));
           return;

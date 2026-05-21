@@ -4,6 +4,9 @@
  *
  * Override URL:
  *   PLATFORM_CAPABILITIES_YAML_URL=https://raw.githubusercontent.com/org/repo/main/platform_capabilities.yml
+ *
+ * Private repo (required for dbt-labs/dbt-cloud-platform-validator-metadata):
+ *   VALIDATOR_DOCS_REPO_TOKEN — PAT with read access (same token as deployment-config-validator README fetch)
  */
 
 const fs = require('fs');
@@ -23,9 +26,11 @@ const OUT_PATH = path.join(
 );
 
 function fetch(url) {
+  const token = process.env.VALIDATOR_DOCS_REPO_TOKEN;
+  const headers = token ? { Authorization: `token ${token}` } : {};
   return new Promise((resolve, reject) => {
     https
-      .get(url, (res) => {
+      .get(url, { headers }, (res) => {
         if (res.statusCode !== 200) {
           reject(new Error(`HTTP ${res.statusCode}: ${url}`));
           return;
