@@ -307,7 +307,7 @@ var siteSettings = {
 
           <div class='footer-sub-items'>
             <div class="footer-copyright">
-              <span>&copy; ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.</span>
+              <span>&copy; ${new Date().getFullYear()} dbt Labs, LLC. All Rights Reserved.</span>
             </div>
             <div class="footer-sub-items-links">
               <a href='https://www.getdbt.com/terms-of-use/'>Terms of Service</a>
@@ -424,10 +424,10 @@ var siteSettings = {
                   id: "dbt-platform",
                   name: "dbt platform",
                   routes: [
-                    { route: "/docs/about-cloud-setup" },
+                    { route: "/docs/platform/about-platform-setup" },
                     { route: "/docs/platform/account-settings" },
                     { route: "/docs/platform/account-integrations" },
-                    { route: "/docs/dbt-cloud-environments" },
+                    { route: "/docs/dbt-platform-environments" },
                     { route: "/docs/platform/migration" },
                   ],
                   subsections: [

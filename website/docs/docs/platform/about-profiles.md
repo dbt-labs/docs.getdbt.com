@@ -11,7 +11,7 @@ pagination_prev: null
 <Constant name="dbt_platform" /> profiles define the connections, credentials, and attributes you use to connect to a data warehouse. 
 </IntroText>
 
-Assign profiles to [deployment environments](/docs/dbt-cloud-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](/dbt-cloud/api-v3#/operations/List%20Profiles).
+Assign profiles to [deployment environments](/docs/dbt-platform-environments#deployment-environment) and reuse those profiles in other deployment environments within the same project. You can manage profiles programmatically using our [API documentation](/dbt-cloud/api-v3#/operations/List%20Profiles).
 
 ## Environment profiles table
 
@@ -75,7 +75,7 @@ The following steps are the same regardless of which approach you take:
     - Has no consecutive dashes or underscores
 2. From **Connection details**, select a connection from the list of available [global connections](/docs/platform/connect-data-platform/about-connections#connection-management) or add a new connection. 
 3. Configure the **Deployment credentials** for your warehouse connection.
-4. Add any [**Extended attributes**](/docs/dbt-cloud-environments#extended-attributes) you need. If you use [`env_var()`](/reference/dbt-jinja-functions/env_var) in Extended Attributes, the referenced environment variables must be _project-scoped_ in order to work with connection tests. Since profiles are environment-agnostic, environment-scoped variables are not available during connection tests.
+4. Add any [**Extended attributes**](/docs/dbt-platform-environments#extended-attributes) you need. If you use [`env_var()`](/reference/dbt-jinja-functions/env_var) in Extended Attributes, the referenced environment variables must be _project-scoped_ in order to work with connection tests. Since profiles are environment-agnostic, environment-scoped variables are not available during connection tests.
 
    To set a project-scoped variable, go to **Orchestration** > **Environments** > **Environment variables**, and enter a value in the **Project default** column. Learn more in [environment variables](/docs/build/environment-variables?version=2.0#setting-environment-variables).
 5. Click **Save** at the top of the screen. 

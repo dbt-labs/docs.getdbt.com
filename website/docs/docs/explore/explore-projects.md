@@ -133,7 +133,11 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 
 ### Example of full lineage graph
 
-Example of exploring a model in the project's lineage graph:
+To explore a model in your project's lineage graph in <Constant name="catalog" />:
+
+1. Select your project in the left sidebar.
+2. Click the **View lineage** button.
+3. Click a model to view the description.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of full lineage graph" />
 
@@ -248,13 +252,24 @@ A resource in your project is characterized by resource type, materialization ty
 
 ### Example of lenses
 
-Example of applying the **Materialization type** _lens_ with the lineage graph zoomed out. In this view, each model name has a color according to the materialization type legend at the bottom, which specifies the materialization type. This color-coding helps to quickly identify the materialization types of different models.
+Example of applying the **Materialization type** _lens_ on a zoomed-out lineage graph. In the bottom-left corner, open **Lenses** and select **Materialization type**. Each node displays a colored badge for its related materialization type:
+- Table
+- View
+- Incremental
+- Ephemeral
+- Materialized View.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.jpg" width="100%" title="Example of the Materialization type lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.png" width="100%" title="Example of the Materialization type lens" />
 
-Example of applying the **Tests Status** _lens_, where each model name displays the tests status according to the legend at the bottom, which specifies the test status.
+Example of applying the **Test status** _lens_ on a lineage graph filtered to models. In the bottom-left corner, open **Lenses** and select **Test status**. Each node displays a colored badge for its latest test status:
+- Pass
+- Error
+- Fail
+- Warn
+- Skipped
+- Reused.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.jpg" width="100%" title="Example of the Test Status lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.png" width="100%" title="Example of the Test Status lens" />
 
 ## Keyword search {#search-resources}
 
@@ -388,9 +403,17 @@ Example of the Tests view:
 
 ### Example of model details
 
+To view a model's details page in <Constant name="catalog" />:
+
+1. Select your project in the sidebar.
+2. Click **Models**.
+3. Under **Models**, select a model (for example, `customers`).
+
+On the **General** tab, you can review the description, latest status, and lineage graph. Select **Full Lineage** to open the full graph view.
+
 <DocCarousel slidesPerView={1}>
 
-Example of the details view for the model `customers`:<br /> <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of resource details" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
 <Lightbox src="/img/docs/platform-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="Example of downstream exposure details for Tableau."/>
 

@@ -25,5 +25,5 @@ Use this <Constant name="studio_ide" />  page to help you quickly reference some
 ## Related docs
 
 - [Quickstart guide](/guides)
-- [About <Constant name="dbt" />](/docs/platform/about-platform/dbt-cloud-features)
+- [About <Constant name="dbt" />](/docs/platform/about-platform/dbt-platform-features)
 - [Develop in the Cloud](/docs/platform/studio-ide/develop-in-studio)

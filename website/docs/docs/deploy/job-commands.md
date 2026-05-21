@@ -81,14 +81,14 @@ In the following example image, the first four run steps are successful. However
 
 Job command failures can mean different things for different commands. Some common reasons why a job command may fail:
 
-- **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
+- **Failure at `dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. By default, if a model fails, its downstream models are also skipped. In <Constant name="core" /> v1.12+, you can set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to still attempt to run despite the failure.
 
-- **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](/reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs/warnings), only an error stops the next step. 
+- **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](/reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs/warnings), only an error fails the command. Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
 
-- **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command executes resources in the DAG-specified order. If any upstream resource fails, all downstream resources are skipped, and the command exits with an error code of 1.
+- **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command executes resources in the DAG-specified order. If any upstream resource fails, all downstream resources are skipped, and the command exits with an error code of `1`. In <Constant name="core" /> v1.12+, you can set [`on_error: continue`](/reference/resource-configs/on_error) on a model to allow its downstream models to still attempt to run when that model fails.
 
 - **Selector failures**
-   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs/failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
+   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`--fail-fast`](/reference/global-configs/failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
 
    - If a selector doesn't match any nodes, it's not considered a failure.
 
