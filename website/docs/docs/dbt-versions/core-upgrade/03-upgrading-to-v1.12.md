@@ -20,6 +20,16 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
+### Native private packages in dbt Core
+
+<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`, at parity with the <Constant name="fusion_engine" />. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. <Constant name="core" /> uses your system's SSH configuration for authentication. Use the `provider` key to specify your Git provider; this key tells <Constant name="core" /> which SSH URL format to construct.
+
+```yaml
+packages:
+  - private: your-org/your-internal-repo
+    provider: "github"  # Supported values: "github", "gitlab", "ado", "azure_devops"
+```
+
 ### Extensions to UDFs <Lifecycle status="beta" />
 
 - You can define multiple argument signatures for the same user-defined function (UDF) using the `overloads` property. This lets you call the same function name with different input types, without creating separate UDFs for each variant. This is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in`, with optional `arguments` and `returns`. All overloads are grouped into one <Term id="dag">DAG</Term> node, so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. For more information, refer to [Defining overloaded UDFs](/docs/build/udfs#defining-udfs-in-dbt#defining-overloaded-UDFs) and [`overloads`](/reference/resource-properties/overloads).
