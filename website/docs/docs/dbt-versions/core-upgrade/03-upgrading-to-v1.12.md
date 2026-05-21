@@ -22,7 +22,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ### Native private packages in dbt Core
 
-<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`, at parity with the <Constant name="fusion_engine" />. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. <Constant name="core" /> uses your system's SSH configuration for authentication. Use the `provider` key to specify your Git provider; this key tells <Constant name="core" /> which SSH URL format to construct.
+<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`, at parity with the <Constant name="fusion_engine" />. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the `provider` key to specify your Git provider; this key tells dbt which SSH URL format to construct.
 
 ```yaml
 packages:
