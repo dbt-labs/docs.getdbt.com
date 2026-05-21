@@ -30,7 +30,7 @@ Configurations in your root dbt project have _higher_ precedence than configurat
 
 Most configurations are "clobbered"  when applied hierarchically. Whenever a more specific value is available, it will completely replace the less specific value. Note that a few configs have different merge behavior:
 - [`tags`](/reference/resource-configs/tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags are applied in its `.sql` file, the final set of tags will include all of them.
-- [`meta`](/reference/resource-configs/meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key).
+- [`meta`](/reference/resource-configs/meta) dictionaries are shallow-merged. Top-level keys from a more specific config replace the same top-level key from a less specific config. However, nested dictionaries within `meta` are **not** recursively merged. For example, if `dbt_project.yml` sets `+meta: {owner: "alice", dagster: {automation_condition: "eager"}}` and a model sets `meta: {dagster: {asset_key: "my_key"}}`, the result is `{owner: "alice", dagster: {asset_key: "my_key"}}`. `owner` survives because it's a separate top-level key, but `automation_condition` is lost because `dagster` was replaced as a whole.
 - When using the [`freshness`](/reference/resource-configs/freshness) config, a more specific key-value pair replaces a less specific value with the same key.
 - [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
 - For clobbering and merging configurations that are inherited from multiple levels, the general rules are:
