@@ -123,7 +123,7 @@ To _chain_ deploy jobs together:
    - You can also use the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this.
 4. In the **Completes on** option, select the job run status(es) that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.
 
-<Lightbox src="/img/docs/deploy/deploy-job-completion.jpg" width="100%" title="Example of Trigger on job completion on the Deploy job page"/>
+<Lightbox src="/img/docs/deploy/deploy-job-completion.png" width="100%" title="Example of Trigger on job completion on the Deploy job page"/>
 
 5. You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/platform/manage-access/enterprise-permissions#project-role-permissions) to the project and job to configure the trigger. 
 

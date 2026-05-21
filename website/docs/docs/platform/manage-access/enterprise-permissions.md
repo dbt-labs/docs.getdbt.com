@@ -206,9 +206,9 @@ The Notification Manager permission set allows users to configure and manage Sla
 
 Notable features:
 - Notification Manager is an account-level set.
-- Can create, edit, and delete job notification rules for Slack and email recipients **across all projects** on the account.
+- Can create, edit, and delete job notification rules for Slack, Microsoft Teams, and email recipients **across all projects** on the account.
 - Read-only access to members (to populate the recipient picker).
-- Read-only access to Slack OAuth configuration status (for viewing the Slack integration connection).
+- Read-only access to Slack and Microsoft Teams OAuth configuration status (for viewing the Slack and Microsoft Teams integration connection).
 - Connecting or disconnecting the Slack or Microsoft Teams integration remains Account Admin-only.
 - No access to other account settings, jobs, runs, or environments.
 
