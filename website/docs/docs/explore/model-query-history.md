@@ -62,21 +62,27 @@ To enable model query history in <Constant name="dbt" />, follow these steps:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/enable-query-history.png" width="95%" title="Enable query history in your environment settings." />
 
-
-
 ## Credential permissions
 
 This section explains the permissions and steps you need to enable and view model query history in <Constant name="catalog" />.
 
 The model query history feature uses the credentials in your production environment to gather metadata from your data warehouse’s query logs. This means you may need elevated permissions with the warehouse. Before making any changes to your data platform permissions, confirm the configured permissions in <Constant name="dbt" />:
 
-1. Navigate to **Deploy** and then **Environments**.
+1. Navigate to **Orchestration** and then **Environments**.
 2. Select the Environment marked **PROD** and click **Settings**.
-3. Look at the information under **Deployment credentials**. 
+3. Click **Edit**.
+4. Click the sync icon in the **Connection profiles** section.
+5. Look at the information under **Deployment credentials**. 
    - Note: Querying query history entails warehouse costs / uses credits.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-credentials.jpg" width="50%" title="Confirm your deployment credentials in your environment settings page." />
+<DocCarousel slidesPerView={1}>
 
-4. Copy or cross reference those credential permissions with the warehouse permissions and grant your user the right permissions.
+<Lightbox src="/img/docs/dbt-platform/sync-icon.png" width="100%" title="Click the sync icon in the Connection profiles section." />
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-credentials.png" width="100%" title="Confirm your deployment credentials in your environment settings page." />
+
+</DocCarousel>
+
+6. Copy or cross reference those credential permissions with the warehouse permissions and grant your user the right permissions.
 
 ### Snowflake model query history
 
@@ -174,20 +180,20 @@ To enhance your discovery, you can view your model query history in various loca
 2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the **Most consumed models**.
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.jpg" width="85%" title="View most consumed models on the 'Performance' page in dbt Catalog." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.png" width="85%" title="View most consumed models on the 'Performance' page in dbt Catalog." />
 
 4. Click on a model for more details and go to the **Performance** tab.
 5. On the **Performance** tab, scroll down to the **Model performance** section. 
 6. Select the **Consumption queries** tab to view the consumption queries over a given time for that model. 
-<Lightbox src="/img/docs/collaborate/model-consumption-queries.jpg" width="90%" title="View consumption queries over time for a given model." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-queries.png" width="90%" title="View consumption queries over time for a given model." />
 
 ### View from Project lineage
 
 1. To view your model in your project lineage, go to the main **Overview page** and click on **Project lineage.**
 2. In the lower left of your lineage, click on **Lenses** and select **Consumption queries**. 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-lenses.jpg" width="85%" title="View model consumption queries in your lineage using the 'Lenses' feature." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-lenses.png" width="85%" title="View model consumption queries in your lineage using the 'Lenses' feature." />
 
-3. Your lineage should display a small red box above each model, indicating the consumption query number. The number for each model represents the model consumption over the last 30 days.
+3. Your lineage should display a small purple box above each model, indicating the consumption query number. The number for each model represents the model consumption over the last 30 days.
 
 ### View from Model list
 
