@@ -596,9 +596,9 @@ The following variables control this job:
 #### Prerequisites
 
 Before proceeding, make sure you have:
-- Connected your dbt project to CodeCommit by following the [CodeCommit integration guide](/docs/cloud/git/import-a-project-by-git-url#aws-codecommit)
-- Configured the [pull request URL template for CodeCommit](/docs/collaborate/git/pr-template#aws-codecommit) in your dbt project settings
-- Created a [Slim CI job](/docs/deploy/slim-ci-jobs) in dbt — do not configure it to trigger on pull requests, since this pipeline will trigger it through the API
+- Connected your dbt project to CodeCommit by following the [CodeCommit integration guide](/docs/platform/git/import-a-project-by-git-url#aws-codecommit)
+- Configured the [pull request URL template for CodeCommit](/docs/platform/git/pr-template#aws-codecommit) in your dbt project settings
+- Created a [CI job](/docs/deploy/ci-jobs) in dbt — do not configure it to trigger on pull requests, since this pipeline will trigger it through the API
 
 Before starting, complete step 1 of the [run on merge guide](/guides/custom-cicd-pipelines?step=2) to get your dbt API key. The steps below replace steps 2 through 5 for CodeCommit users.
 
