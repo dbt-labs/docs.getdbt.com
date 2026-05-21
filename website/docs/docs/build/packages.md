@@ -242,7 +242,7 @@ packages:
 Add the `provider` key when:
 - You are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />.
 - You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2#get-started) or the [VS Code extension](/docs/local/install-dbt?version=2#get-started)) (required).
-- You are using <Constant name="core" /> v1.12 or later (required).
+- You are using <Constant name="core" /> v1.12 or later for SSH-based cloning (required).
 
 ```yaml
 packages:
@@ -287,7 +287,7 @@ If you're using the <Constant name="dbt_platform" />, the SSH key method will no
 
 :::note
 
-[Native private packages](#native-private-packages) is the recommended approach for GitHub, GitLab, and Azure DevOps. The git token method is still functional in both <Constant name="fusion" /> and the <Constant name="dbt_platform" />, but requires provisioning a personal access token. It can be useful as a fallback if you need to unblock yourself.
+[Native private packages](#native-private-packages) is the recommended approach for GitHub, GitLab, and Azure DevOps. The git token method is still functional in <Constant name="core" />, <Constant name="fusion" />, and the <Constant name="dbt_platform" />, but requires provisioning a personal access token. It remains the supported path for <Constant name="core" /> users who need HTTPS-based cloning.
 
 :::
 
