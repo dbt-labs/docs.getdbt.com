@@ -8,7 +8,13 @@ Select the **Compatible** and **Extended** release tracks if you need a less-fre
 
 Each monthly **Compatible** release includes functionality matching up-to-date open source versions of <Constant name="core" /> and adapters at the time of release.
 
-For more information, see [release tracks](/docs/dbt-versions/cloud-release-tracks).
+For more information, see [release tracks](/docs/dbt-versions/dbt-release-tracks).
+
+## May 2026
+
+The compatible release scheduled for May 2026 will be skipped in order to stabilize `dbt-core 1.12.0` release across the <Constant name="dbt_platform" />.
+
+Compatible releases will resume in June 2026.
 
 ## April 2026
 

@@ -17,7 +17,7 @@ As a data team, it’s critical that you have context into the downstream use ca
 - Gain a better understanding of how models are used in downstream analytics, improving governance and decision-making.
 - Reduce incidents and optimize workflows by linking upstream models to downstream dependencies.
 - Automate exposure tracking for supported BI tools, ensuring lineage is always up to date.
-- [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures) to refresh the underlying data sources during scheduled dbt jobs, improving timeliness and reducing costs. Orchestrating exposures is a way to ensure that your BI tools are updated regularly using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler). See the [previous page](/docs/platform-integrations/downstream-exposures) for more info.
+- [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures) to refresh the underlying data sources during scheduled dbt jobs, improving timeliness and reducing costs. Orchestrating exposures is a way to ensure that your BI tools are updated regularly using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler). See the [previous page](/docs/platform-integrations/downstream-exposures) for more information.
 
 In <Constant name="dbt" />, you can configure downstream exposures in two ways:
 - Manually &mdash; Declared [explicitly](/docs/build/exposures#declaring-an-exposure) in your project’s YAML files.
@@ -31,7 +31,7 @@ If you're using Tableau Server, you need to add the [<Constant name="dbt" /> IP 
 
 To configure automatic downstream exposures, you should meet the following:
 
-1. Your environment and jobs are on a supported [<Constant name="dbt" /> release track](/docs/dbt-versions/cloud-release-tracks).
+1. Your environment and jobs are on a supported [<Constant name="dbt" /> release track](/docs/dbt-versions/dbt-release-tracks).
 2. You have a <Constant name="dbt" /> account on the [Enterprise or Enterprise+ plan](https://www.getdbt.com/pricing/).
 3. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 4. You have [proper permissions](/docs/platform/manage-access/enterprise-permissions) to edit <Constant name="dbt" /> project or production environment settings.
@@ -103,6 +103,8 @@ import ViewExposures from '/snippets/_auto-exposures-view.md';
 ## Orchestrate exposures <Lifecycle status="beta,managed,managed_plus"/>
 
 [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures) using the dbt [Cloud job scheduler](/docs/deploy/job-scheduler) to proactively refresh the underlying data sources (extracts) that power your Tableau Workbooks.
+
+This beta capability requires deployment jobs on [Latest](/docs/dbt-versions/dbt-release-tracks) with <Constant name="core" /> and _isn't_ available on [Latest <Constant name="fusion" />](/docs/dbt-versions/dbt-release-tracks) (the <Constant name="fusion_engine" /> preview). For setup details, refer to [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures).
 
 - Orchestrating exposures with a `dbt build` job ensures that downstream exposures, like Tableau extracts, are updated regularly and automatically.
 - You can control the frequency of these refreshes by configuring environment variables.

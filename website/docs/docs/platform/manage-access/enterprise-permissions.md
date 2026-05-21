@@ -129,7 +129,7 @@ By default, all users can access the <Constant name="fusion"/> upgrade experienc
 - **Fusion admin** &mdash; Assign to user accounts only. Cannot be assigned to service tokens.
 - **Account admin** &mdash; Assign to user accounts or service tokens. Allows both users and service tokens to perform upgrades.
 
-For more information, refer to [Upgrade to dbt <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-version-in-cloud#dbt-fusion-engine).
+For more information, refer to [Upgrade to dbt <Constant name="fusion"/>](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
 
 </Expandable>
 <Expandable alt_header="Git admin">
@@ -198,6 +198,19 @@ Notable features:
 - Grants read-only access to metadata related to dbt models, runs, sources, and tests.
 - No access to modify, execute, or manage dbt jobs, repositories, or users.
 - No other access to <Constant name="dbt" /> features.
+
+</Expandable>
+<Expandable alt_header="Notification Manager">
+
+The Notification Manager permission set allows users to configure and manage Slack, Microsoft Teams, and email [job notifications](/docs/deploy/job-notifications) without requiring full Account Admin access. This is ideal for team leads or operations users who need to manage who receives job alerts.
+
+Notable features:
+- Notification Manager is an account-level set.
+- Can create, edit, and delete job notification rules for Slack, Microsoft Teams, and email recipients **across all projects** on the account.
+- Read-only access to members (to populate the recipient picker).
+- Read-only access to Slack and Microsoft Teams OAuth configuration status (for viewing the Slack and Microsoft Teams integration connection).
+- Connecting or disconnecting the Slack or Microsoft Teams integration remains Account Admin-only.
+- No access to other account settings, jobs, runs, or environments.
 
 </Expandable>
 <Expandable alt_header="Project creator">

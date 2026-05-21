@@ -68,6 +68,18 @@ The audit log supports various events for different objects in <Constant name="d
 | SSO Login Failed           | login.sso.failed               | User login via SSO failed                              |
 | SSO Login Succeeded        | login.sso.succeeded            | User successfully logged in via SSO                    |
 
+### OAuth clients
+
+These events cover the lifecycle of OAuth clients registered in **Account settings** -> **Integrations** -> **App integrations** (check out [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth)). Actions a user performs through an OAuth-connected client &mdash; for example, creating a job &mdash; are logged under the relevant event (such as `job_definition.added`) with the user as the actor.
+
+| Event name                    | Event type                              | Description                                                                                                                                       |
+| ----------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Client Authorization Approved | oauth_client.authorization_approved     | A user approved an OAuth consent request for a client.                                                                                            |
+| Client Authorization Denied   | oauth_client.authorization_denied       | A user denied an OAuth consent request for a client.                                                                                              |
+| Client Authorized             | oauth_client.authorized                 | A user completed the OAuth consent flow and authorized a client to access dbt on their behalf.                                                    |
+| Client Registered             | oauth_client.registered                 | An OAuth client was registered, either manually by an admin or dynamically through [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591).      |
+| Client Removed                | oauth_client.removed                    | An OAuth client was removed from **Account settings** -> **Integrations** -> **App integrations**.                                                 |
+
 ### Environment
 
 | Event Name          | Event Type          | Description                          |
