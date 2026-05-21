@@ -210,7 +210,7 @@ packages:
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo # your-org/your-repo path
-    provider: "github" # Supported values: "github", "gitlab", "ado", "azure_devops"
+    provider: "github" # Supported values: "github", "gitlab", "ado"
 ```
 </File>
 
@@ -247,7 +247,7 @@ Add the `provider` key when:
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo
-    provider: "github" # Supported values: "github", "gitlab", "ado", "azure_devops"
+    provider: "github" # Supported values: "github", "gitlab", "ado"
 ```
 
 <Constant name="core" /> and <Constant name="fusion" /> use the `provider` value to construct the correct SSH URL for cloning, based on the provider:
@@ -256,7 +256,7 @@ packages:
 | --- | --- |
 | `github` | `git@github.com:org/repo.git` |
 | `gitlab` | `git@gitlab.com:org/repo.git` |
-| `ado` or `azure_devops` | `git@ssh.dev.azure.com:v3/org/project/repo` |
+| `ado` | `git@ssh.dev.azure.com:v3/org/project/repo` |
 
 <Constant name="core" /> and <Constant name="fusion" /> rely on your system's SSH configuration to authenticate and clone the private repository. If `git clone` works on your system for the private package repo, the private package install should work too.
 

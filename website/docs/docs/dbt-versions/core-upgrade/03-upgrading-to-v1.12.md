@@ -27,7 +27,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 ```yaml
 packages:
   - private: your-org/your-internal-repo
-    provider: "github"  # Supported values: "github", "gitlab", "ado", "azure_devops"
+    provider: "github"  # Supported values: "github", "gitlab", "ado"
 ```
 
 ### Extensions to UDFs <Lifecycle status="beta" />
