@@ -157,6 +157,18 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Job creator">
+
+Job creator is a scoped project-level permission set for users who need to create, edit, and run jobs within assigned projects and environments without broader administrative access.
+
+Notable features:
+- Job creator is a project-level set.
+- Can create, edit, and run jobs within assigned projects and environments.
+- Read-only access to environments, environment variables, and related project settings needed to configure jobs.
+- Cannot create or delete environments or edit environment variables.
+- More limited than [Job admin](#job-admin), which can edit environments, environment variables, and data platform configurations.
+
+</Expandable>
 <Expandable alt_header="Job runner">
 
 Job runner is a specialized permission set for users who need access to run jobs and view the outcomes. 
