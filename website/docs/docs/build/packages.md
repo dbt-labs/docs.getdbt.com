@@ -199,7 +199,7 @@ Use the `private` key in your `packages.yml` or `dependencies.yml` to clone pack
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo # your-org/your-repo path
-    provider: "github" # Supported values: "github", "gitlab", "ado", "azure_devops"
+    provider: "github" # Supported values: "github", "gitlab", "ado"
   - package: normal packages
   [...]
 ```
