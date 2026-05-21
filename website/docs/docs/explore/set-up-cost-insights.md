@@ -6,7 +6,7 @@ id: "set-up-cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reduction', 'cost optimization']
 ---
 
-# Set up Cost Insights <Lifecycle status="private_beta,managed,managed_plus" />
+# Set up Cost Insights <Lifecycle status="beta,managed,managed_plus" />
 
 This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from state-aware orchestration across your dbt projects and models.
 
@@ -29,7 +29,7 @@ After completing these setup steps, you can view cost and optimization data acro
 
 ## Assign required permissions
 
-Users with the following [permission sets](/docs/cloud/manage-access/enterprise-permissions) can view cost data by default:
+Users with the following [permission sets](/docs/platform/manage-access/enterprise-permissions) can view cost data by default:
 
 - Account Admin
 - Account Viewer
@@ -41,7 +41,7 @@ Users with the following [permission sets](/docs/cloud/manage-access/enterprise-
 - Project Creator
 - Team Admin
 
-For more information on how to assign permissions to users, refer to [About user access](/docs/cloud/manage-access/about-user-access).
+For more information on how to assign permissions to users, refer to [About user access](/docs/platform/manage-access/about-user-access).
 
 ## Configure platform metadata credentials
 

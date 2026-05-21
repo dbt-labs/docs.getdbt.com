@@ -13,11 +13,11 @@ Use MetricFlow in dbt to centrally define your metrics. As a key component of th
 
 For a complete list of configuration options and property specs, see the [Semantic Layer reference](/reference/semantic-layer-reference).
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-concept.png" width="50%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-concept.png" width="50%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 MetricFlow allows you to:
 - Intuitively define metrics in your dbt project
-- Develop from your preferred environment, whether that's the [dbt platform CLI](/docs/cloud/cloud-cli-installation), [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), or [<Constant name="core" />](/docs/local/install-dbt)
+- Develop from your preferred environment, whether that's the [dbt platform CLI](/docs/platform/dbt-cli-installation), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), or [<Constant name="core" />](/docs/local/install-dbt)
 - Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
 - Harness the true magic of the universal <Constant name="semantic_layer" /> and dynamically query these metrics in downstream tools (Available for <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+](https://www.getdbt.com/pricing/) accounts only).
 
@@ -74,7 +74,7 @@ MetricFlow allows you to:
   <Card
     title="Available integrations"
     body="Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
-    link="/docs/cloud-integrations/avail-sl-integrations"
+    link="/docs/platform-integrations/avail-sl-integrations"
     icon="dbt-bit"/>
 
 </div> <br />

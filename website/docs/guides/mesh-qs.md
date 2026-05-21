@@ -38,7 +38,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 To leverage <Constant name="mesh" />, you need the following:
 
-- You must have a [<Constant name="dbt" /> Enterprise-tier account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="managed,managed_plus" />
+- You must have a [<Constant name="dbt" /> Enterprise-tier account](https://www.getdbt.com/contact) <Lifecycle status="managed,managed_plus" />
 - You have access to a cloud data platform, permissions to load the sample data tables, and <Constant name="dbt" /> permissions to create new projects. 
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](/guides/snowflake?step=3)
@@ -59,7 +59,7 @@ In this section, you'll create two new, empty projects in <Constant name="dbt" /
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: **Jaffle | Data Analytics** and **Jaffle | Finance**.
 
-To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="dbt" />:
+To [create](/docs/platform/about-platform-setup) a new project in <Constant name="dbt" />:
 
 1. From **Account settings**, go to **Projects**. Click **New project**.
 2. Enter a project name and click **Continue**.
@@ -69,7 +69,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="dbt"
 4. In the **Configure your environment** section, enter the **Settings** for your new project.
 5. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your data platform account.
 6. Click **Next** if the test succeeded. If it fails, you might need to go back and double-check your settings.
-   - For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
+   - For this guide, make sure you create a single [development](/docs/dbt-platform-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
      - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
      - For "Jaffle | Finance", set the default database to `jaffle_finance`.
 7. Continue the prompts to complete the project setup. Once configured, each project should have:
@@ -104,14 +104,14 @@ To set a production environment:
 6. Click **Test Connection** to confirm the deployment connection.
 6. Click **Save** to create a production environment.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
 
 
 ## Set up a foundational project
 
 This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
-<Constant name="dbt" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) or in-browser [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+<Constant name="dbt" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) or in-browser [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 
 In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="studio_ide" />.
 
@@ -640,6 +640,7 @@ Here are some additional resources to help you continue your journey:
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref)
 - [<Constant name="catalog" />](/docs/explore/explore-projects)
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — keep your local and platform environments in sync across credentials, env vars, and <Constant name="fusion"/> versions
 
 </ConfettiTrigger>
 

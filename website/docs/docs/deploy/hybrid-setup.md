@@ -64,28 +64,28 @@ Before connecting your dbt Core project to a <Constant name="dbt" /> project, ma
 
 Create a hybrid project in <Constant name="dbt" /> to allow you to upload your <Constant name="core" /> artifacts to <Constant name="dbt" />. 
 
-A [<Constant name="dbt" /> account admin](/docs/cloud/manage-access/enterprise-permissions#permission-sets) should perform the following steps and share the artifacts information with a <Constant name="core" /> user:
+A [<Constant name="dbt" /> account admin](/docs/platform/manage-access/enterprise-permissions#permission-sets) should perform the following steps and share the artifacts information with a <Constant name="core" /> user:
 
 1. To create a new project in <Constant name="dbt" />, navigate to **Account home**.
 2. Click on **+New project**. 
 3. Fill out the **Project name**. Name the project something that allows you to recognize it's a <Constant name="core" /> project. 
-   - You don't need to set up a [data warehouse](/docs/supported-data-platforms) or [<Constant name="git" /> connection](/docs/cloud/git/git-configuration-in-dbt-cloud), however to upgrade the hybrid project to a full <Constant name="dbt" /> project, you'd need to set up data warehouse and <Constant name="git" /> connection.
+   - You don't need to set up a [data warehouse](/docs/supported-data-platforms) or [<Constant name="git" /> connection](/docs/platform/git/configure-git), however to upgrade the hybrid project to a full <Constant name="dbt" /> project, you'd need to set up data warehouse and <Constant name="git" /> connection.
 4. Select the **Advanced settings** toggle and then select the **Hybrid development** checkbox. Click **Continue**.
    - The hybrid project will have a visible **Hybrid** indicator in the project list to help you identify it.
 <Lightbox src="/img/docs/deploy/hp-new-project.jpg" title="Hybrid project new project" />
 
-5. After creating a project, create a corresponding [production environment](/docs/deploy/deploy-environments#create-a-deployment-environment) and click **Save**. You will need to create a placeholder [profile](/docs/cloud/about-profiles) and assign it to the environment to save. 
+5. After creating a project, create a corresponding [production environment](/docs/deploy/deploy-environments#create-a-deployment-environment) and click **Save**. You will need to create a placeholder [profile](/docs/platform/about-profiles) and assign it to the environment to save. 
 6. (Optional) To update an existing dbt project to a hybrid project, navigate to **Account settings** and then select the **Project**. Click **Edit** and then check the **Hybrid development** checkbox.
 <Lightbox src="/img/docs/deploy/hp-existing-project.jpg" width="80%" title="Hybrid project for an existing project" />
 
 ### Generate service token and artifact upload values
-A <Constant name="dbt" /> admin should perform these steps to generate a [service token](/docs/dbt-cloud-apis/service-tokens#enterprise-plans-using-service-account-tokens) (with both **Job Runner** _and_ **Job Viewer** permissions) and copy the values needed to configure a <Constant name="core" /> project so it's ready to upload generated artifacts to <Constant name="dbt" />.
+A <Constant name="dbt" /> admin should perform these steps to generate a [service token](/docs/dbt-apis/service-tokens#enterprise-plans-using-service-account-tokens) (with both **Job Runner** _and_ **Job Viewer** permissions) and copy the values needed to configure a <Constant name="core" /> project so it's ready to upload generated artifacts to <Constant name="dbt" />.
 
 The <Constant name="dbt" /> admin should share the values with a <Constant name="core" /> user.
 
 1. Go to the Hybrid project environment you created in the previous step by navigating to **Deploy** > **Environments** and selecting the environment.
 2. Select the **Artifact upload** button and copy the following values, which the dbt Core user will need to reference in their dbt Core's `dbt_project.yml` configuration:
-   - **[Tenant URL](/docs/cloud/about-cloud/access-regions-ip-addresses)**
+   - **[Tenant URL](/docs/platform/about-platform/access-regions-ip-addresses)**
    - **Account ID**
    - **Environment ID**
    - **Create a service token**
@@ -172,5 +172,5 @@ Now that you've integrated <Constant name="core" /> artifacts with your <Constan
 
 
 - Collaborate with <Constant name="dbt" /> users by enabling them to visualize and perform [cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref) to dbt models that live in Core projects.
-- (Coming soon) New users interested in the [<Constant name="canvas" />](/docs/cloud/canvas) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
-- <Constant name="core" /> users can navigate to [<Constant name="catalog" />](/docs/explore/explore-projects) and view their models and assets. To view <Constant name="catalog" />, you must have a [read-only seat](/docs/cloud/manage-access/seats-and-users).
+- (Coming soon) New users interested in the [<Constant name="canvas" />](/docs/platform/canvas) can build off of dbt models already created by a central data team in <Constant name="core" /> rather than having to start from scratch.
+- <Constant name="core" /> users can navigate to [<Constant name="catalog" />](/docs/explore/explore-projects) and view their models and assets. To view <Constant name="catalog" />, you must have a [read-only seat](/docs/platform/manage-access/seats-and-users).
