@@ -102,3 +102,4 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 <ReleaseNote status="New">The [Semantic Layer querying](/docs/explore/navigate-dbt-insights#semantic-layer-querying) within dbt <Constant name="insights" /> is now generally available (GA), enabling you to build SQL queries against the Semantic Layer without writing SQL code.</ReleaseNote>
 <ReleaseNote status="Enhancement">Eligible <Constant name="dbt_platform" /> accounts in the <Constant name="fusion" /> private preview can now use [Exposures](/docs/platform-integrations/downstream-exposures).</ReleaseNote>
 
+
