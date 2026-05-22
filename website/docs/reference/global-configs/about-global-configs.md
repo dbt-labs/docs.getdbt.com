@@ -129,6 +129,7 @@ Use this table to compare all available flags and how to configure them across i
 | [full_refresh](/reference/resource-configs/full_refresh) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_ENGINE_FULL_REFRESH` | `--full-refresh` <br /> `--no-full-refresh` |
 | [indirect_selection](/reference/node-selection/test-selection-examples#syntax-examples) | ❌ | enum <br /> default: eager | ✅ | `DBT_ENGINE_INDIRECT_SELECTION` | `--indirect-selection` |
 | [introspect](/reference/commands/compile#introspective-queries) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_INTROSPECT` | `--introspect` <br /> `--no-introspect` |
+| [latest_version_pointer_enabled_by_default](/docs/mesh/govern/model-versions#pointing-to-the-latest-version) (v1.12+) | ❌ | boolean <br /> default: False | ✅ | ❌ | ❌ |
 | [log_cache_events](/reference/global-configs/logs#logging-relational-cache-events) | ❌ | boolean <br /> default: False | ❌ | `DBT_ENGINE_LOG_CACHE_EVENTS` | `--log-cache-events` <br /> `--no-log-cache-events` |
 | [log_format_file](/reference/global-configs/logs#log-formatting) | ❌ | enum <br /> default: default (text) | ✅ | `DBT_ENGINE_LOG_FORMAT_FILE` | `--log-format-file` |
 | [log_format](/reference/global-configs/logs#log-formatting) | ❌ | enum <br /> default: default (text) | ✅ | `DBT_ENGINE_LOG_FORMAT` | `--log-format` |
