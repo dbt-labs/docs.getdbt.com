@@ -189,7 +189,7 @@ We are in the *very* early days of MCP as a protocol and determining how best to
 We have high confidence that the approach of serving context to your AI systems via dbt will prove a durable piece of this stack. As we work with the Community on implementing this in real world use cases, it is quite likely that the details of the implementation and how you access it may change. Here are some of the areas we expect this to evolve.
 
 **Determining the best source of context for the dbt MCP**
-You’ll notice that these tools have two broad information inputs - dbt Cloud APIs and the dbt CLI. We expect to continue to build on both of these, specifically with dbt Cloud APIs to serve the abstraction of choice when it is desirable to operate off of a specific [environment](https://docs.getdbt.com/docs/dbt-cloud-environments). 
+You’ll notice that these tools have two broad information inputs - dbt Cloud APIs and the dbt CLI. We expect to continue to build on both of these, specifically with dbt Cloud APIs to serve the abstraction of choice when it is desirable to operate off of a specific [environment](https://docs.getdbt.com/docs/dbt-platform-environments). 
 
 There will be other use cases, specifically for dbt development, when you’ll want to operate based off of your current working context, we’ll be releasing tooling for that in the near future (and welcome Community submitted ideas and contributions). We’re looking forward to trying out alternative methods here and looking forward to hearing from the Community how you would like to have this context loaded in. Please feel free to experiment and share your findings with us.
 

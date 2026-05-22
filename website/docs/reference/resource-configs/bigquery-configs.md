@@ -1063,7 +1063,7 @@ gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceA
 gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/bigquery.dataEditor
 #Grant Service Account user 
 gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/iam.serviceAccountUser
-#Grant Colab Entperprise User
+#Grant Colab Enterprise User
 gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} --member=serviceAccount:dbt-bigframes-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role=roles/aiplatform.colabEnterpriseUser
 ```
 
@@ -1084,7 +1084,7 @@ my_dbt_project_sa:
   outputs:
     dev:
       compute_region: us-central1
-      dataset: <BIGQUERY_DATESET>
+      dataset: <BIGQUERY_DATASET>
       gcs_bucket: <GCS BUCKET USED FOR BIGFRAME LOGS>
       job_execution_timeout_seconds: 300
       job_retries: 1

@@ -5,9 +5,9 @@ title: "dbt Command reference"
 You can run dbt using the following tools:
 
 - In your browser with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) 
-- On the command line interface using the [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
+- On the command line interface using the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
   
-A key distinction with the tools mentioned, is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/platform/about-platform/dbt-cloud-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
+A key distinction with the tools mentioned, is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/platform/about-platform/dbt-platform-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
 
 ## Parallel execution
 

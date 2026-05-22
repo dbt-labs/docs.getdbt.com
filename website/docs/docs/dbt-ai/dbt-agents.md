@@ -49,7 +49,7 @@ Chat with your data, get accurate answers powered by the [dbt Semantic Layer](/d
 
 The Analyst agent is a beta feature. Enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For more information, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
-#### Developer agent <Lifecycle status="preview,managed,managed_plus"/>
+#### Developer agent <Lifecycle status="preview,self_service,managed,managed_plus"/>
 
 The <Constant name="dev_agent" /> is the next evolution of <Constant name="copilot" /> in the <Constant name="studio_ide" />, purpose-built to streamline the developer experience. Describe the data product or change you want &mdash; the agent writes or refactors models, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. Stay in flow in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 

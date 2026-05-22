@@ -41,7 +41,7 @@ As another example, you could `clone` your modified incremental models as the fi
 
 ## Cloning in dbt
 
-You can clone nodes between states in <Constant name="dbt" /> using the `dbt clone` command. This is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) and the [<Constant name="platform_cli" />](/docs/platform/cloud-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in <Constant name="dbt" />, read [Using defer in <Constant name="dbt" />](/docs/platform/about-cloud-develop-defer).
+You can clone nodes between states in <Constant name="dbt" /> using the `dbt clone` command. This is available in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) and the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in <Constant name="dbt" />, read [Using defer in <Constant name="dbt" />](/docs/platform/about-defer).
 
 - **Using <Constant name="platform_cli" />** &mdash; The `dbt clone` command in the <Constant name="platform_cli" /> automatically includes the `--defer` flag. This means you can use the `dbt clone` command without any additional setup.
 
