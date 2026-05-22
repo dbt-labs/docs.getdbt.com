@@ -64,7 +64,7 @@ If your <Constant name="git" /> provider has a native integration with <Constant
 
 :::
 
-The setup below shows how to call the <Constant name="dbt" /> API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
+The setup below shows how to call the <Constant name="dbt" /> API to run a job every time there's a push to your [default branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch).
 
 ### 1. Get your dbt API key
 
@@ -88,7 +88,7 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 
 ### 2. Put your dbt API key into your repo
 
-This next part will happen in you code hosting platform. We need to save your API key from above into a repository secret so the job we create can access it. It is **not** recommended to ever save passwords or API keys in your code, so this step ensures that your key stays secure, but is still usable for your pipelines.
+Adding you dbt API key to your repo happens in your code hosting platform. You need to save your API key from the previous section as a repository secret so the job we create can access it. We do **not** recommended you ever save passwords or API keys in your code, so this step ensures that your key stays secure, but is still usable for your pipelines.
 
 <Tabs
   defaultValue="github"
