@@ -34,7 +34,7 @@ When viewing a downstream (child) project that imports and refs public models fr
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-child.png" width="100%" height="100" title="View a downstream (child) project that imports and refs public models from the upstream (parent) project."/>
 
-## Explore the project-level lineage graphs
+## Explore the project-level lineage graph
 
 For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore your project's lineage](/docs/explore/explore-projects#project-lineage). You can also interact with it at the project level and view the details.
 
