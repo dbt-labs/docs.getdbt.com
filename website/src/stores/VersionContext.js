@@ -22,6 +22,29 @@ function findProductForSubProduct(subProductName) {
   return null;
 }
 
+// Find a product by its top-level name field
+function findProduct(productName) {
+  return products.find((product) => product.name === productName) || null;
+}
+
+// Resolve a subProduct from product name + version URL params
+function resolveSubProductFromProductAndVersion(productName, versionString) {
+  const product = findProduct(productName);
+  if (!product) return null;
+
+  let matches = product.subProducts.filter((sp) => sp.version === versionString);
+
+  if (matches.length === 0 && /^\d+$/.test(versionString)) {
+    matches = product.subProducts.filter((sp) =>
+      sp.version.startsWith(`${versionString}.`)
+    );
+  }
+
+  if (matches.length === 0) return null;
+
+  return (matches.find((sp) => !sp.isBeta) || matches[0]).name;
+}
+
 // Resolve a subProduct name from a version string (backward compat for ?version= URLs)
 function resolveSubProductFromVersion(versionString) {
   for (const product of products) {
@@ -60,15 +83,26 @@ export const VersionContextProvider = ({ value = "", children }) => {
   const location = useLocation()
   const pendingSubProductRef = useRef(null)
 
-  // Helper to update URL with subProduct parameter
-  const updateUrlSubProduct = useCallback((newSubProductName) => {
+  // Helper to update URL with product name + version parameters
+  const updateUrlParams = useCallback((newSubProductName) => {
     const url = new URL(window.location.href)
-    url.searchParams.set('subProduct', newSubProductName)
-    // Keep version in URL for backward compatibility with external links
     const sp = findSubProduct(newSubProductName);
+    const productName = findProductForSubProduct(newSubProductName);
+
+    url.searchParams.delete('subProduct')
+
+    if (productName) {
+      url.searchParams.set('name', productName)
+    } else {
+      url.searchParams.delete('name')
+    }
+
     if (sp?.version) {
       url.searchParams.set('version', sp.version)
+    } else {
+      url.searchParams.delete('version')
     }
+
     window.history.replaceState({}, '', url.toString())
   }, [])
 
@@ -77,16 +111,24 @@ export const VersionContextProvider = ({ value = "", children }) => {
     const storageSubProduct = window.localStorage.getItem('dbtSubProduct')
     const urlParams = new URLSearchParams(search);
 
-    // Try new subProduct param first
+    // Try product name + version params first
+    const rawNameParam = urlParams.get('name')
+    const nameParam = rawNameParam ? sanitizeHtml(rawNameParam) : null
+    const rawVersionParam = urlParams.get('version')
+    const versionParam = rawVersionParam ? sanitizeHtml(rawVersionParam) : null
+    if (nameParam && versionParam) {
+      const fromProductAndVersion = resolveSubProductFromProductAndVersion(nameParam, versionParam)
+      if (fromProductAndVersion) return fromProductAndVersion
+    }
+
+    // Fall back to legacy subProduct param
     const rawSubProductParam = urlParams.get('subProduct')
     const subProductParam = rawSubProductParam ? sanitizeHtml(rawSubProductParam) : null
     if (subProductParam && findSubProduct(subProductParam)) {
       return subProductParam
     }
 
-    // Fall back to legacy version param
-    const rawVersionParam = urlParams.get('version')
-    const versionParam = rawVersionParam ? sanitizeHtml(rawVersionParam) : null
+    // Fall back to legacy version-only param
     if (versionParam) {
       // Exact version match
       const fromVersion = resolveSubProductFromVersion(versionParam)
@@ -122,8 +164,8 @@ export const VersionContextProvider = ({ value = "", children }) => {
     const resolved = resolveSubProductFromSearch(window.location.search)
     setSubProductName(resolved)
     window.localStorage.setItem('dbtSubProduct', resolved)
-    updateUrlSubProduct(resolved)
-  }, [resolveSubProductFromSearch, updateUrlSubProduct])
+    updateUrlParams(resolved)
+  }, [resolveSubProductFromSearch, updateUrlParams])
 
   // Initial sync on mount
   useEffect(() => {
@@ -132,13 +174,13 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   // Listen for route changes via Docusaurus router
   useEffect(() => {
-    if (location.search.includes('subProduct=') || location.search.includes('version=')) {
+    if (location.search.includes('name=') || location.search.includes('subProduct=') || location.search.includes('version=')) {
       const resolved = resolveSubProductFromSearch(location.search)
       setSubProductName(resolved)
       window.localStorage.setItem('dbtSubProduct', resolved)
-      updateUrlSubProduct(resolved)
+      updateUrlParams(resolved)
     }
-  }, [location.search, resolveSubProductFromSearch, updateUrlSubProduct])
+  }, [location.search, resolveSubProductFromSearch, updateUrlParams])
 
   // Capture version from link hrefs before navigation
   useEffect(() => {
@@ -148,12 +190,18 @@ export const VersionContextProvider = ({ value = "", children }) => {
       const href = anchor.getAttribute('href')
       if (!href) return
 
-      if (href.includes('subProduct=') || href.includes('version=')) {
+      if (href.includes('name=') || href.includes('subProduct=') || href.includes('version=')) {
         try {
           const url = new URL(href, window.location.origin)
+          const nameFromLink = url.searchParams.get('name')
           const subProductFromLink = url.searchParams.get('subProduct')
           const versionFromLink = url.searchParams.get('version')
-          if (subProductFromLink) {
+          if (nameFromLink && versionFromLink) {
+            pendingSubProductRef.current = {
+              type: 'nameAndVersion',
+              value: { name: nameFromLink, version: versionFromLink },
+            }
+          } else if (subProductFromLink) {
             pendingSubProductRef.current = { type: 'subProduct', value: subProductFromLink }
           } else if (versionFromLink) {
             pendingSubProductRef.current = { type: 'version', value: versionFromLink }
@@ -175,7 +223,12 @@ export const VersionContextProvider = ({ value = "", children }) => {
       pendingSubProductRef.current = null
 
       let resolved;
-      if (pending.type === 'subProduct') {
+      if (pending.type === 'nameAndVersion') {
+        resolved = resolveSubProductFromProductAndVersion(
+          sanitizeHtml(pending.value.name),
+          sanitizeHtml(pending.value.version)
+        )
+      } else if (pending.type === 'subProduct') {
         const sanitized = sanitizeHtml(pending.value)
         if (findSubProduct(sanitized)) resolved = sanitized
       } else if (pending.type === 'version') {
@@ -191,10 +244,10 @@ export const VersionContextProvider = ({ value = "", children }) => {
       if (resolved) {
         setSubProductName(resolved)
         window.localStorage.setItem('dbtSubProduct', resolved)
-        updateUrlSubProduct(resolved)
+        updateUrlParams(resolved)
       }
     }
-  }, [location.pathname, updateUrlSubProduct])
+  }, [location.pathname, updateUrlParams])
 
   // Called when user clicks a version menu item (reads data-dbt-subproduct attribute)
   const updateVersion = (e) => {
@@ -203,7 +256,7 @@ export const VersionContextProvider = ({ value = "", children }) => {
     if (newSubProductName && findSubProduct(newSubProductName)) {
       setSubProductName(newSubProductName)
       window.localStorage.setItem('dbtSubProduct', newSubProductName)
-      updateUrlSubProduct(newSubProductName)
+      updateUrlParams(newSubProductName)
     }
   }
 
