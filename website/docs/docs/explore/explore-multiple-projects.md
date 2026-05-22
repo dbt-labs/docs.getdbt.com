@@ -59,8 +59,6 @@ To view all the projects in your account (displayed as a lineage graph or list v
 From the account-level lineage graph, you can also:
 
 - Click **List view** to switch to a table of projects and public models.
-- Select a project from the **Projects** tab or a model from the **Public Models** tab to open its [resource details page](/docs/explore/explore-projects#view-resource-details).
-- Click **Lineage view** to return to the graph.
 - Double-click a project node to open that project's resource-level lineage graph.
 
 ### Explore a project's resource-level lineage
