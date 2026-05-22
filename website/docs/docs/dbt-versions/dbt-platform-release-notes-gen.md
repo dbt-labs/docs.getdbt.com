@@ -30,7 +30,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Cursor-based pagination for Discovery API job queries**: The Discovery API now supports `first` and `after` pagination arguments on job-based list queries, including `models`, `sources`, `seeds`, `snapshots`, `tests`, `macros`, `metrics`, and `exposures`. Each returned node includes a `paginationCursor` field you can pass as `after` on the next request to fetch the following page. The default and maximum page size is 100; a response shorter than the requested page size indicates the end of the result set.
+- **Cursor-based pagination for Discovery API job queries**: Job-based Discovery API queries now support cursor pagination with `first` and `after` arguments. Supported queries include `models`, `sources`, `seeds`, `snapshots`, `tests`, `macros`, `metrics`, and `exposures`. Use the returned `paginationCursor` value as `after` to fetch the next page. Page size defaults to and caps at 100.
 
 - **Support for the`lastKnownResults` filter accepting `null` values**: The `lastKnownResults` filter on `TestAppliedFilter` now accepts `null` as a value, allowing you to match tests that have no recorded result status.
 
@@ -50,9 +50,9 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **User-Defined Function (UDF) support**: Catalog now recognizes `function` as a resource type. You can browse, search, and filter UDFs from navigation and environment summaries, and view each function's details — including arguments, return type, and source code — on a dedicated detail page. Functions appear in the mini-lineage on their own detail page but not in the main project lineage DAG.
+- **User-defined function (UDF) support**: Catalog now supports `function` as a resource type. You can browse, search, and filter UDFs, and view function details including arguments, return type, and source code. Functions appear in their own mini-lineage view, but not in the main project DAG.
 
-- **Connection-aware Cost Insights enablement**: The Cost Insights enablement check now chains through the environment's connection and its platform metadata credentials to confirm that `cost_insights_enabled` is set. When credentials are not configured or `cost_insights_enabled` is `false`, cost-related tabs and metrics are hidden and a banner guides you to configure platform metadata credentials.
+- **Connection-aware Cost Insights enablement**: Cost Insights now checks the environment connection and platform metadata credentials to confirm `cost_insights_enabled` is configured. If credentials are missing or disabled, cost metrics and tabs are hidden and a banner prompts you to configure platform metadata credentials.
 
 ### Studio IDE
 
