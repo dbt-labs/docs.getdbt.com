@@ -45,11 +45,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Orchestration and run status
 
-- **dbt State status pills on job list and job detail**: When dbt State is enabled for your account, job list items and the job detail header now show one of three status indicators — "State-aware orchestration", "dbt State", or "dbt State disabled", instead of the legacy "Cost optimization features" pill. Contact your account manager to enable.
-
-
-- **Support for the "dbt State" label in job change history**: The audit log's job change history section now displays "dbt State" as the human-readable label for the `dbt_state` cost-optimization feature, consistent with the labels for State-aware orchestration and Efficient testing.
-
 - **Clearer Fusion eligibility message for migrated jobs**: The Fusion eligibility surface now maps the `job_on_fusion` reason code to "This job is already running on Fusion." with no call-to-action, giving clearer feedback for jobs that are already migrated.
 
 - **Fusion job warning notifications enabled by default**: Warning notifications for Fusion runs are now always active and no longer require a feature flag, so you will see run-level warning statuses without any additional configuration.
