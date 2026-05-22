@@ -793,20 +793,20 @@ The setup for CodeCommit follows the same steps as the prior page. Before moving
 Before proceeding, make sure you have also:
 - Connected your dbt project to CodeCommit by following the [CodeCommit integration guide](/docs/platform/git/import-a-project-by-git-url#aws-codecommit)
 - Configured the [pull request URL template for CodeCommit](/docs/platform/git/pr-template#aws-codecommit) in your dbt project settings
-- Created a [Slim CI job](/docs/deploy/slim-ci-jobs) in dbt — do not configure it to trigger on pull requests, since this pipeline will trigger it through the API
+- Created a [CI job](/docs/deploy/ci-jobs) in dbt — do not configure it to trigger on pull requests, since this pipeline will trigger it through the API
 :::
 
-The pull request pipeline uses a separate CodeBuild project from the merge pipeline, because it runs a different dbt job (your Slim CI job) and requires branch and schema values that are dynamically passed at build time from the pull request event.
+The pull request pipeline uses a separate CodeBuild project from the merge pipeline, because it runs a different dbt job (your CI job) and requires branch and schema values that are dynamically passed at build time from the pull request event.
 
 **1. Add `ci-configuration/buildspec.yml` to your project**
 
-This is separate from the `buildspec-merge.yml` you created in the prior step. It references your Slim CI job and leaves `DBT_JOB_BRANCH` and `DBT_JOB_SCHEMA_OVERRIDE` empty — a Lambda function will pass those values at build time.
+This is separate from the `buildspec-merge.yml` you created in the prior step. It references your CI job and leaves `DBT_JOB_BRANCH` and `DBT_JOB_SCHEMA_OVERRIDE` empty — a Lambda function will pass those values at build time.
 
 Replace the placeholder values with your actual dbt account details:
 
 - `YOUR_DBT_ACCOUNT_ID`: The number after `accounts/` in your dbt job URL
 - `YOUR_DBT_PROJECT_ID`: The number after `projects/` in your dbt job URL
-- `YOUR_DBT_PR_JOB_ID`: The number after `jobs/` in the URL of your Slim CI job
+- `YOUR_DBT_PR_JOB_ID`: The number after `jobs/` in the URL of your CI job
 - `YOUR_SSM_PARAMETER_NAME`: The name of the SSM parameter you created in step 2 of the prior page (for example, `DBT_API_KEY`)
 
   ```yaml
@@ -865,7 +865,7 @@ Note the service role name shown in the **Environment** section. In **IAM**, fin
 
 **3. Create a Lambda trigger function**
 
-The Lambda function receives the pull request event from EventBridge, extracts the PR branch and PR ID, then starts CodeBuild with those values as environment variable overrides. This is what ensures the dbt Slim CI job runs against your PR branch with a PR-specific schema.
+The Lambda function receives the pull request event from EventBridge, extracts the PR branch and PR ID, then starts CodeBuild with those values as environment variable overrides. This is what ensures the dbt CI job runs against your PR branch with a PR-specific schema.
 
 1. In the AWS console, go to **Lambda** → **Create function**
 2. Select **Author from scratch**, name the function (for example, `dbt-ci-trigger`), and choose **Python 3.12** as the runtime
