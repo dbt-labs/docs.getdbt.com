@@ -44,7 +44,6 @@ Additionally, if you’re using the free tier of GitLab you can still follow thi
 
 ![Warning from GitLab showing payment information is required](/img/guides/orchestration/custom-cicd-pipelines/gitlab-cicd-payment-warning.png)
 
-
 ### How to setup pipelines
 
 This guide provides details for multiple code hosting platforms. Where steps are unique, they are presented without a selection option. If code is specific to a platform (i.e. GitHub, GitLab, Bitbucket) you will see a selection option for each.
