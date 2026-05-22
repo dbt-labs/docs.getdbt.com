@@ -218,10 +218,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Fixes
 
-### dbt Copilot and agents
-
-- **Fixed errors with BYOK deployments that use OpenAI reasoning models**: Fixed request errors when using BYOK OpenAI and Azure OpenAI reasoning model endpoints.
-
 ### Semantic Layer
 
 - **Custom metric granularities no longer rejected**: Metric manifest fields `granularity` and `offset_to_grain` now accept arbitrary string values instead of only a fixed enum. Projects using custom granularities such as `fiscal_year` will no longer fail ingestion.
