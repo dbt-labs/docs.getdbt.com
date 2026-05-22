@@ -48,7 +48,7 @@ For migration guidance and a comparison between the latest spec and the legacy s
 
 ### OSI Semantic Layer artifact
 
-<Constant name="core" /> v1.12 emits `target/osi_document.json` at parse time alongside `target/semantic_manifest.json`. This artifact provides an OSI (Open Semantic Interchange) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
+Starting in <Constant name="core" /> v1.12, dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
 
 ### `selector` method for named YAML selectors <Lifecycle status="beta" />
 

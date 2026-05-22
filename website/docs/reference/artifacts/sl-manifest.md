@@ -23,8 +23,8 @@ There are two reasons why `semantic_manifest.json` exists alongside `manifest.js
 <VersionBlock firstVersion="1.12">
 
 ## OSI document
-
-Starting in <Constant name="core" /> v1.12, dbt also emits `target/osi_document.json` at parse time alongside `target/semantic_manifest.json`. The `osi_document.json` artifact is an OSI (Open Semantic Interchange) representation of your project's <Constant name="semantic_layer" />.
+**Produced by:** Any command that parses your project (same as the semantic manifest).
+Starting in <Constant name="core" /> v1.12, dbt also writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This file represents your project's <Constant name="semantic_layer" /> in the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange) format, a vendor-agnostic schema for describing semantic models and metrics.
 
 For example, run:
 

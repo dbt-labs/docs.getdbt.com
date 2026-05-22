@@ -3,7 +3,17 @@ title: "About dbt artifacts"
 sidebar_label: "About dbt artifacts"
 ---
 
+<VersionBlock lastVersion="1.11">
+
 With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`semantic_manifest.json`, `manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`semantic_manifest.json`, `osi_document.json`, `manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+
+</VersionBlock>
 
 - [documentation](/docs/explore/build-and-view-your-docs)
 - [state](/reference/node-selection/syntax#about-node-selection)
