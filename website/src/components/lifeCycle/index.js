@@ -31,13 +31,13 @@ const statusColors = {
   private_preview: '#FE6703',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
   // Release note category colors
-  'New': '#aad552',
-  'Enhancement': '#3ca5f9',
-  'Fix': '#bab2ff',
+  'New': '#9786ff',
+  'Enhancement': '#ff9e5f',
+  'Fix': '#92c430',
   'Behavior change': '#ffcc25',
   'Beta': '#bab2ff',
   'Private beta': '#bab2ff',
-};
+}; 
 
 const fontColors = {
   [MANAGED_PLUS]: "#030711",
