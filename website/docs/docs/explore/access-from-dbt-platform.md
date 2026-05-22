@@ -8,12 +8,6 @@ Access <Constant name="catalog" /> from jobs, <Constant name="insights" />, and 
 
 This page describes how to open <Constant name="catalog" /> from orchestration and exploration workflows in <Constant name="dbt" />. The primary way to open <Constant name="catalog" /> is **Catalog** in the navigation; you can also open it from jobs and <Constant name="insights" /> as described in the sections below.
 
-To open a resource in the <Constant name="studio_ide" /> from <Constant name="catalog" />, open the resource's details page and select **Open in Studio IDE**. For more about browsing resources and opening them in other tools, refer to [Discover data with Catalog](/docs/explore/explore-projects#view-resource-details).
-
-### Canvas
-
-Open <Constant name="catalog" /> from <Constant name="canvas" /> to view resource metadata and lineage while you work with models visually.
-
 ### Lineage tab in jobs
 
 The **Lineage tab** in <Constant name="dbt" /> jobs displays the lineage associated with the [job run](/docs/deploy/jobs). You can open <Constant name="catalog" /> directly from this tab to understand the dependencies and relationships of resources in your project.
