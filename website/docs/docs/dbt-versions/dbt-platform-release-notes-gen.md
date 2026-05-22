@@ -60,7 +60,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Deployment and configuration
 
-- **Environment permission elevation for the `job creator` role**: The `job_creator` role is now included in the set of roles that allow environment-level permission elevation, consistent with other development roles such as `developer` and `git_admin`.
+- **Environment permission elevation for the `job creator` role**: The `job_creator` role is now included in the set of roles that allow environment-level permission elevation, consistent with other development roles such as `developer` and `git_admin`. Refer to [Job creator](/docs/platform/manage-access/enterprise-permissions#job-creator) for more information.
 
 ## May 13, 2026
 
