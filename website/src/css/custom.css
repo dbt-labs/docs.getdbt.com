@@ -471,6 +471,13 @@ ul.table-of-contents .hash-link::before {
   border-radius: 5px;
 }
 
+/* dbt platform release notes: keep the lifecycle pill at its natural size inside the flex row */
+.doc-release-notes-lifecycle .rn-entry .lifecycle {
+  flex: 0 0 auto;
+  margin-left: 0;
+  margin-top: 0.125rem;
+}
+
 pre {
   font-size: 14px !important;
 }
