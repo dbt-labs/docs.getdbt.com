@@ -47,7 +47,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **dbt State status pills on job list and job detail**: When dbt State is enabled for your account, job list items and the job detail header now show one of three status indicators — "State-aware orchestration", "dbt State", or "dbt State disabled", instead of the legacy "Cost optimization features" pill. Contact your account manager to enable.
 
-- **dbt State cost-optimization options in job settings**: When dbt State is enabled for your account, the job settings execution section replaces the legacy "Enable Fusion cost optimization features" accordion with dedicated checkboxes for dbt State and, on Fusion, State-aware orchestration. The two options are mutually exclusive. Contact your account manager to enable.
 
 - **Support for the "dbt State" label in job change history**: The audit log's job change history section now displays "dbt State" as the human-readable label for the `dbt_state` cost-optimization feature, consistent with the labels for State-aware orchestration and Efficient testing.
 
