@@ -88,7 +88,7 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 
 ### 2. Put your dbt API key into your repo
 
-Adding you dbt API key to your repo happens in your code hosting platform. You need to save your API key from the previous section as a repository secret so the job we create can access it. We do **not** recommended you ever save passwords or API keys in your code, so this step ensures that your key stays secure, but is still usable for your pipelines.
+Adding you dbt API key to your repo happens in your code hosting platform. You need to save your API key from the previous section as a repository secret so the job we create can access it. Never save passwords or API keys in your code. The following steps ensure that your key stays secure, but is still usable for your pipelines.
 
 <Tabs
   defaultValue="github"
@@ -176,18 +176,16 @@ In Bitbucket:
     Here’s a video showing these steps:
     <WistiaVideo id="1fddpsqpfv" />
 
-  
-
 </TabItem>
 <TabItem value="codecommit">
 
 In AWS, store your API key in Systems Manager (SSM) Parameter Store instead of a repository secret:
 
-1. Open the AWS console and go to **Systems Manager** → **Parameter Store**
-2. Click **Create parameter**
-3. Enter a name for the parameter (for example, `DBT_API_KEY`)
-4. Set the type to **SecureString** and paste in your dbt service token as the value
-5. Click **Create parameter**
+1. Open the AWS console and go to **Systems Manager** → **Parameter Store**.
+2. Click **Create parameter**.
+3. Enter a name for the parameter (for example, `DBT_API_KEY`).
+4. Set the type to **SecureString** and paste in your dbt service token as the value.
+5. Click **Create parameter**.
 
 You’ll reference this parameter in the CodeBuild project environment in step 4.
 
@@ -204,7 +202,7 @@ my_awesome_project
 │   └── run_and_monitor_dbt_job.py
 ```
 
-This Python file has everything you need to call the <Constant name="dbt" /> API, but requires a few inputs (see snip below). Those inputs are fed to this script through environment variables that will be defined in the next step.
+The following Python file has everything you need to call the <Constant name="dbt" /> API, but requires a few inputs as outlined below. These inputs will be fed to this script through environment variables that will be defined in the next step.
 
 ```python
 #------------------------------------------------------------------------------
@@ -716,7 +714,11 @@ Additionally, you’ll see the job in the run history of <Constant name="dbt" />
 
 To test the pipeline, merge a pull request (or push a commit directly) to your main branch. You should see a new build start in your CodeBuild project within a few seconds. You can monitor the run in the CodeBuild console under **Build history**.
 
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/codecommit-run-on-pr.png" title="Find new build under build history of CodeBuild console" width="80%" />
+
 In dbt, the job will appear in your run history with a cause of "CodeCommit Merge CI Job".
+
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/codecommit-dbt-cloud-pr.png" title="Check dbt run history for CodeCommit build triggered" width="80%" />
 
 </TabItem>
 </Tabs>
