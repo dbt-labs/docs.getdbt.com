@@ -811,8 +811,8 @@ Replace the placeholder values with your actual dbt account details:
 - `YOUR_DBT_PR_JOB_ID`: The number after `jobs/` in the URL of your CI job
 - `YOUR_SSM_PARAMETER_NAME`: The name of the SSM parameter you created in step 2 of the prior page (for example, `DBT_API_KEY`)
 
-  ```yaml
-  version: 0.2
+```yaml
+version: 0.2
 
 env:
   variables:
@@ -826,16 +826,16 @@ env:
   parameter-store:
     DBT_API_KEY: "YOUR_SSM_PARAMETER_NAME"
 
-  phases:
-    install:
-      commands:
-        - apt-get update -y
-        - python -m pip install --upgrade pip
-        - pip install requests
-    build:
-      commands:
-        - python -u ./python/run_and_monitor_dbt_cloud_job.py
-  ```
+phases:
+  install:
+    commands:
+      - apt-get update -y
+      - python -m pip install --upgrade pip
+      - pip install requests
+  build:
+    commands:
+      - python -u ./python/run_and_monitor_dbt_cloud_job.py
+```
 
 **2. Create a CodeBuild project for pull requests**
 
