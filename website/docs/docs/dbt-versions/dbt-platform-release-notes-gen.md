@@ -28,7 +28,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt platform
 
-- **dbt State subscription and settings page**: A new dbt State settings page is available under **Account settings** when the feature is enabled. The page shows your current subscription status, days remaining in a trial, expiring-soon warnings, and actions to start a trial, set up billing, cancel, or manage your subscription. Contact your account manager to enable.
 
 ### dbt Copilot and agents
 
