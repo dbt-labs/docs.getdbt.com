@@ -26,9 +26,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Notification Manager permission set**: A new `notification_manager` account-level role grants read and write access to job notification settings, Slack integration status, and member listings without requiring broader admin permissions. Refer to [Notification Manger](/docs/platform/manage-access/enterprise-permissions#notification-manager) for more information.
 
-### dbt platform
-
-
 ### dbt Copilot and agents
 
 - **Anthropic bring your own key (BYOK) support**: You can now configure an Anthropic API key alongside your OpenAI key on the Copilot settings page. When an Anthropic key is present, dbt Copilot defaults to an Anthropic model and displays a Default badge next to that provider. The settings card has been renamed from "API Keys" to "AI providers" and now supports a unified edit, save, and cancel flow across both providers. Contact your account manager to enable.
