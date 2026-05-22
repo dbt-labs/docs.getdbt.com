@@ -23,7 +23,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Job creator permission set**: Adds a new Job creator role that grants read access to jobs, environments, connections, and project resources, enabling users to create and manage jobs without broader administrative privileges. Contact your account manager to enable.
+- **Job creator permission set**: Adds a new [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) for users who need to create, edit, and run jobs within assigned projects and environments. Job creators have read-only access to environments and environment variables and cannot edit environment settings. 
 
 ### Studio IDE
 
