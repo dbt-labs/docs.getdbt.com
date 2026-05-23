@@ -263,7 +263,7 @@ For information about `github` context property names and their use cases, refer
 ```yaml
 name: run dbt job on push
 
-# This filter says only run this job when there is a push to the main branch
+# This filter says only run this job when there is a push to the default branch
 # This works off the assumption that you've restricted this branch to only all PRs to push to the default branch
 # Update the name to match the name of your default branch
 on:
@@ -384,7 +384,7 @@ run-dbt-cloud-job:
 
 For this new job, open the existing Azure pipeline you created above and select the *Edit* button. We'll want to edit the corresponding Azure pipeline YAML file with the appropriate configuration, instead of the starter code, along with including a `variables` section to pass in the required variables.
 
-Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run *only* when there are pushes to a branch named `main` (like a PR merged to your main branch).
+Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run *only* when there are pushes to a [default branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch) named `main` (like a PR merged to your default branch).
 
 Read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
 
@@ -484,7 +484,7 @@ pipelines:
 </TabItem>
 <TabItem value="codecommit">
 
-For CodeCommit, you'll configure a CodeBuild project and an EventBridge rule to trigger a dbt job every time code is pushed to your main branch (for example, when a pull request is merged).
+For CodeCommit, you'll configure a CodeBuild project and an EventBridge rule to trigger a dbt job every time code is pushed to your default branch (for example, when a pull request is merged to `main`).
 
 Add the following files to your dbt project:
 
@@ -496,7 +496,7 @@ my_awesome_project
 │   └── run_and_monitor_dbt_cloud_job.py
 ```
 
-**Create `python/run_and_monitor_dbt_cloud_job.py`**
+**Create `python/run_and_monitor_dbt_cloud_job.py` with the following content:**
 
 ```python
 import requests
@@ -576,7 +576,7 @@ if __name__ == "__main__":
     main()
 ```
 
-**Create `ci-configuration/buildspec-merge.yml`**
+**Create `ci-configuration/buildspec-merge.yml` with the following content:**
 
 Replace the placeholder values with your actual dbt account details:
 
