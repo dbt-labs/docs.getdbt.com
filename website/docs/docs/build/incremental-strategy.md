@@ -188,7 +188,7 @@ Importantly, `append` doesn't check for duplicates or verify whether a record al
 
 The `delete+insert` strategy deletes the data for the `unique_key` from the target table and then inserts the data for those with a `unique_key`, which may be less efficient for larger datasets. It ensures updated records are fully replaced, avoiding partial updates and can be useful when a `unique_key` isn't truly unique or when `merge` is unsupported.
 
-`delete+insert` doesn't map directly to SCD logic (type 1 or 2) because it overwrites data and tracks history.
+`delete+insert` doesn't map directly to SCD logic (type 1 or 2) because it overwrites data at the row level and while it can add new rows, it does not track history.
 
 For SCD2, use [dbt snapshots](/docs/build/snapshots#what-are-snapshots), not `delete+insert`.
 
