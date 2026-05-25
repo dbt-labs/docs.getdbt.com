@@ -8,6 +8,12 @@ intro_text: "Behavior change flags let you control when to adopt new runtime beh
 import StateModified from '/snippets/_state-modified-compare.md';
 import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
 
+:::caution Behavior change flags reaching maturity
+
+Several behavior change flags are planned to be enabled by default in an upcoming release. Some of these can stop a previously-succeeding build. Review the [behavior flag changes and their impact](/reference/global-configs/behavior-flag-maturity) to understand which flags may affect your project and how to opt out before the change takes effect.
+
+:::
+
 :::info How this relates to other changes
 
 Since behavior change flags are different from other dbt changes, it's important to understand the difference:
