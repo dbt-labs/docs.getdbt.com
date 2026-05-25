@@ -636,3 +636,10 @@ devon_fulcher:
     linkedin: devonfulcher
   name: Devon Fulcher
   page: true
+mirna_wong:
+  image_url: /img/blog/authors/mwong.png
+  title: Senior Technical Writer at dbt Labs
+  socials:
+    linkedin: mirnawong
+  name: Mirna Wong
+  page: true
