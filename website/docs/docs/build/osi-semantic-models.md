@@ -43,7 +43,7 @@ To define semantic models with OSI documents:
     }
     ```
 
-3. Run any command that triggers compilation, such as `dbt compile` or `dbt run`. dbt automatically discovers and parses OSI files. 
+3. Run any command that triggers compilation, such as `dbt compile` or `dbt run`. dbt automatically discovers and parses OSI files.
 
 The resulting semantic models and metrics appear in `manifest.json`, `semantic_manifest.json`, and `osi_document.json`.
 
