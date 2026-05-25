@@ -19,6 +19,7 @@ For example, a macro can reference a private model:
 {% macro example_macro() %}
   {{ ref('my_private_model') }}
 {% endmacro %}
+```
 
 </VersionBlock>
 
