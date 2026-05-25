@@ -39,6 +39,21 @@
   ],
   "redirects": [
     {
+      "source": "/docs/platform/copilot-styleguide",
+      "destination": "/docs/dbt-ai/developer-agent",
+      "permanent": true
+    },
+    {
+      "source": "/guides/explorer-quickstart",
+      "destination": "/docs/explore/explore-projects",
+      "permanent": true
+    },
+    {
+      "source": "/guides/explorer-qs",
+      "destination": "/docs/explore/explore-projects",
+      "permanent": true
+    },
+    {
       "source": "/community/events",
       "destination": "https://www.getdbt.com/events",
       "source": "/community/spotlight",
@@ -1483,6 +1498,11 @@
     {
       "source": "/docs/dbt-versions/release-notes/:path((?!dbt-cloud-changelog-2021|dbt-cloud-changelog-2019-2020).*)",
       "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/dbt-cloud-release-notes-gen",
+      "destination": "/docs/dbt-versions/dbt-platform-release-notes-gen",
       "permanent": true
     },
     {
@@ -5102,6 +5122,26 @@
     {
       "source": "/docs/dbt-cloud-apis/:path*",
       "destination": "/docs/dbt-apis/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/docs/platform-integrations/set-up-snowflake-native-app",
+      "destination": "/docs/platform/connect-data-platform/connect-snowflake",
       "permanent": true
     }
   ]

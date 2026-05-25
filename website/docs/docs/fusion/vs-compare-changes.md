@@ -34,7 +34,7 @@ To use the dbt VS Code extension compare changes feature, you need:
 - A <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements) (BigQuery, Databricks, Redshift, or Snowflake)
 - The [dbt VS Code extension](/docs/install-dbt-extension) installed with a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
 - [Advanced CI features](/docs/platform/account-settings#enabling-advanced-ci-features) enabled in your <Constant name="dbt_platform" /> account
-- A `dbt_cloud.yml` file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux). The extension uses this to authenticate with <Constant name="dbt_platform" />. Without that file, compare changes cannot connect to <Constant name="dbt_platform" />. [Download](/docs/install-dbt-extension?version=2.0#register-with-dbt_cloudyml) it from your <Constant name="dbt_platform" /> account.
+- A [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file in your local `.dbt` directory (`~/.dbt/dbt_cloud.yml` on macOS/Linux), used by the extension to authenticate with <Constant name="dbt_platform" />.
 - A baseline state to compare your changes against. See [How it works](#how-it-works) to choose between [automatic deferral](/docs/platform/about-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
 
 ## How it works
@@ -72,7 +72,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 <Expandable alt_header="Are queries run on behalf of the developer?"> 
 
-  Yes. All comparison queries in development are run using your local development credentials using the `dbt_cloud.yml` file, directly from the dbt VS Code extension. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
+  Yes. All comparison queries in development are run using your local development credentials using the [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, directly from the dbt VS Code extension. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
 </Expandable>
 <Expandable alt_header="Is this using my warehouse credits?"> 
   Yes. Because the comparison runs in your development environment using your dev credentials, it will use your warehouse’s compute.

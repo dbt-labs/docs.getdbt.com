@@ -186,6 +186,7 @@ const sidebarSettings = {
                       },
                       items: [
                         "docs/platform/manage-access/oauth-intro",
+                        "docs/platform/manage-access/connect-apps-oauth",
                         "docs/platform/manage-access/set-up-snowflake-oauth",
                         "docs/platform/manage-access/set-up-databricks-oauth",
                         "docs/platform/manage-access/set-up-bigquery-oauth",
@@ -379,6 +380,94 @@ const sidebarSettings = {
         },
         "docs/running-a-dbt-project/run-your-dbt-projects",
         "docs/running-a-dbt-project/using-threads",
+      ],
+    },
+    {
+      type: 'html',
+      value: 'dbt AI and intelligence',
+      className: 'sidebar-title',
+    },
+        "docs/dbt-ai/about-dbt-ai",
+    {
+      type: "category",
+      label: "dbt Copilot",
+      collapsed: true,
+      link: { type: "doc", id: "docs/platform/dbt-copilot-overview" },
+      items: [
+        "docs/platform/dbt-copilot-overview",
+        "docs/platform/dbt-copilot",
+        {
+          type: "category",
+          label: "Get started",
+          collapsed: true,
+          items: [
+            "docs/platform/enable-dbt-copilot",
+            "docs/platform/use-dbt-copilot",
+            "docs/platform/copilot-chat-in-studio",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Agents",
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
+          items: [
+            "docs/dbt-ai/dbt-agents",
+            "docs/dbt-ai/analyst-agent",
+            "docs/dbt-ai/developer-agent",
+          ],
+        },
+        {
+          type: "category",
+          label: "Reference",
+          collapsed: true,
+          items: [
+            "docs/platform/dbt-copilot-faqs",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "dbt MCP server",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
+      items: [
+        "docs/dbt-ai/about-mcp",
+        "docs/dbt-ai/mcp-available-tools",
+        {
+          type: "category",
+          label: "Get started",
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
+          items: [
+            "docs/dbt-ai/mcp-quickstart-oauth",
+            "docs/dbt-ai/mcp-quickstart-cli",
+            "docs/dbt-ai/mcp-quickstart-remote",
+          ],
+        },
+        {
+          type: "category",
+          label: "Setup and configuration",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/setup-local-mcp",
+            "docs/dbt-ai/setup-remote-mcp",
+            "docs/dbt-ai/mcp-environment-variables",
+            "docs/dbt-ai/mcp-find-ids",
+          ],
+        },
+        {
+          type: "category",
+          label: "Integrations",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/integrate-mcp-claude",
+            "docs/dbt-ai/integrate-mcp-cursor",
+            "docs/dbt-ai/integrate-mcp-vscode",
+          ],
+        },
+        "docs/dbt-ai/mcp-troubleshooting",
       ],
     },
     {
@@ -851,81 +940,6 @@ const sidebarSettings = {
     },
     {
       type: 'html',
-      value: 'dbt AI and intelligence',
-      className: 'sidebar-title',
-    },
-        "docs/dbt-ai/about-dbt-ai",
-    {
-      type: "category",
-      label: "dbt Copilot",
-      collapsed: true,
-      link: { type: "doc", id: "docs/platform/dbt-copilot-overview" },
-      items: [
-        "docs/platform/dbt-copilot-overview",
-        "docs/platform/dbt-copilot",
-        "docs/platform/enable-dbt-copilot",
-        "docs/platform/use-dbt-copilot",
-        "docs/platform/copilot-styleguide",
-        "docs/platform/copilot-chat-in-studio",
-        "docs/platform/dbt-copilot-faqs",
-        {
-          type: "category",
-          label: "dbt Agents",
-          collapsed: true,
-          link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
-          items: [
-            "docs/dbt-ai/dbt-agents",
-            "docs/dbt-ai/analyst-agent",
-            "docs/dbt-ai/developer-agent",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt MCP server",
-      collapsed: true,
-      link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
-      items: [
-        "docs/dbt-ai/about-mcp",
-        "docs/dbt-ai/mcp-available-tools",
-        {
-          type: "category",
-          label: "Get started",
-          collapsed: true,
-          link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
-          items: [
-            "docs/dbt-ai/mcp-quickstart-oauth",
-            "docs/dbt-ai/mcp-quickstart-cli",
-            "docs/dbt-ai/mcp-quickstart-remote",
-          ],
-        },
-        {
-          type: "category",
-          label: "Setup and configuration",
-          collapsed: true,
-          items: [
-            "docs/dbt-ai/setup-local-mcp",
-            "docs/dbt-ai/setup-remote-mcp",
-            "docs/dbt-ai/mcp-environment-variables",
-            "docs/dbt-ai/mcp-find-ids",
-          ],
-        },
-        {
-          type: "category",
-          label: "Integrations",
-          collapsed: true,
-          items: [
-            "docs/dbt-ai/integrate-mcp-claude",
-            "docs/dbt-ai/integrate-mcp-cursor",
-            "docs/dbt-ai/integrate-mcp-vscode",
-          ],
-        },
-        "docs/dbt-ai/mcp-troubleshooting",
-      ],
-    },
-    {
-      type: 'html',
       value: 'Additional tools',
       className: 'sidebar-title',
     },
@@ -946,18 +960,6 @@ const sidebarSettings = {
             "docs/platform-integrations/downstream-exposures",
             "docs/platform-integrations/downstream-exposures-tableau",
             "docs/platform-integrations/orchestrate-exposures",
-          ],
-        },
-        {
-          type: "category",
-          label: "Snowflake Native App",
-          link: {
-            type: "doc",
-            id: "docs/platform-integrations/snowflake-native-app",
-          },
-          items: [
-            "docs/platform-integrations/snowflake-native-app",
-            "docs/platform-integrations/set-up-snowflake-native-app",
           ],
         },
         {
@@ -1184,6 +1186,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "reference/dbt_project.yml",
+        "reference/dbt_cloud.yml",
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
@@ -1473,6 +1476,7 @@ const sidebarSettings = {
             "reference/resource-configs/packages",
             "reference/resource-properties/returns",
             "reference/resource-properties/function-arguments",
+            "reference/resource-properties/overloads",
           ],
         },
       ],

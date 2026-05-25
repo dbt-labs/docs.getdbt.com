@@ -157,6 +157,18 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Job creator">
+
+Job creator is a scoped project-level permission set for users who need to create, edit, and run jobs within assigned projects and environments without broader administrative access.
+
+Notable features:
+- Job creator is a project-level set.
+- Can create, edit, and run jobs within assigned projects and environments.
+- Read-only access to environments, environment variables, and related project settings needed to configure jobs.
+- Cannot create or delete environments or edit environment variables.
+- More limited than [Job admin](#job-admin), which can edit environments, environment variables, and data platform configurations.
+
+</Expandable>
 <Expandable alt_header="Job runner">
 
 Job runner is a specialized permission set for users who need access to run jobs and view the outcomes. 
@@ -198,6 +210,19 @@ Notable features:
 - Grants read-only access to metadata related to dbt models, runs, sources, and tests.
 - No access to modify, execute, or manage dbt jobs, repositories, or users.
 - No other access to <Constant name="dbt" /> features.
+
+</Expandable>
+<Expandable alt_header="Notification Manager">
+
+The Notification Manager permission set allows users to configure and manage Slack, Microsoft Teams, and email [job notifications](/docs/deploy/job-notifications) without requiring full Account Admin access. This is ideal for team leads or operations users who need to manage who receives job alerts.
+
+Notable features:
+- Notification Manager is an account-level set.
+- Can create, edit, and delete job notification rules for Slack, Microsoft Teams, and email recipients **across all projects** on the account.
+- Read-only access to members (to populate the recipient picker).
+- Read-only access to Slack and Microsoft Teams OAuth configuration status (for viewing the Slack and Microsoft Teams integration connection).
+- Connecting or disconnecting the Slack or Microsoft Teams integration remains Account Admin-only.
+- No access to other account settings, jobs, runs, or environments.
 
 </Expandable>
 <Expandable alt_header="Project creator">

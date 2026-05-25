@@ -17,7 +17,7 @@ By moving your environments and jobs to release tracks you can get all the funct
 
 ### Fusion release tracks
 
-The <Constant name="dbt_platform" /> has four <Constant name="fusion" /> release tracks available to give you control over stability vs. velocity. 
+The <Constant name="dbt_platform" /> has four <Constant name="fusion" /> release tracks available to give you control over stability vs. velocity.
 
 _`Fusion Stable` is the default for all new <Constant name="fusion" />-powered projects._
 
