@@ -49,7 +49,7 @@ Configure AI keys using:
 
 ### AI integrations
 
-Once AI features have been [enabled](/docs/platform/enable-dbt-copilot#enable-dbt-copilot), you can use dbt Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="dbt" /> features like [<Constant name="copilot" />](/docs/platform/dbt-copilot) and [Ask dbt](/docs/platform-integrations/snowflake-native-app).
+Once AI features have been [enabled](/docs/platform/enable-dbt-copilot#enable-dbt-copilot), you can use dbt Labs' AI integration or bring-your-own provider to support AI-powered <Constant name="dbt" /> features like [<Constant name="copilot" />](/docs/platform/dbt-copilot).
 
 <Constant name="dbt" /> supports AI integrations for dbt Labs-managed OpenAI keys, Self-managed OpenAI keys, or Self-managed Azure OpenAI keys.
 
