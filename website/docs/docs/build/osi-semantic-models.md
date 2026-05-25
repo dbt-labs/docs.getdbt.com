@@ -6,6 +6,8 @@ sidebar_label: "OSI semantic layer documents"
 tags: [Metrics, Semantic Layer]
 ---
 
+# OSI semantic layer documents <Lifecycle status="beta" />
+
 <VersionCallout version="1.12" /> 
 
 <Constant name="core" /> v1.12 and higher supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI-sourced definitions and native dbt semantic models can coexist in the same project.
@@ -45,7 +47,7 @@ To define semantic models with OSI documents:
 
 3. Run any command that triggers compilation, such as `dbt compile` or `dbt run`. dbt automatically discovers and parses OSI files.
 
-The resulting semantic models and metrics appear in `manifest.json`, `semantic_manifest.json`, and `osi_document.json`.
+The resulting semantic models and metrics appear in [dbt artifacts](/reference/artifacts/dbt-artifacts) such as `manifest.json`, `semantic_manifest.json`, and `osi_document.json`.
 
 ## Limitations
 
