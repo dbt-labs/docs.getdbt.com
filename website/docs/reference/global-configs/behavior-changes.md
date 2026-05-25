@@ -10,7 +10,7 @@ import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config
 
 :::caution Behavior change flags reaching maturity
 
-Several behavior change flags are planned to be enabled by default in an upcoming release. Some of these can stop a previously-succeeding build. Review the [behavior flag changes and their impact](/reference/global-configs/behavior-flag-maturity) to understand which flags may affect your project and how to opt out before the change takes effect.
+Several behavior change flags are planned to be enabled by default in <Constant name="core" /> v1.12 and on the <Constant name="dbt_platform" /> **Latest** release track. Refer to the [behavior flag changes and their impact](/reference/global-configs/behavior-flag-maturity) to understand which flags may affect your project and how to opt out before the change takes effect.
 
 :::
 

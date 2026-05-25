@@ -4,7 +4,7 @@ id: "behavior-flag-maturity"
 sidebar: "Behavior flag maturity"
 ---
 
-Several behavior change flags are scheduled to reach maturity in an upcoming release, switching their default values from `false` to `true`. This page describes what each change means for your project and what action, if any, you need to take.
+Several behavior change flags are planned to reach maturity in <Constant name="core" /> v1.12 and on the <Constant name="dbt_platform" /> **Latest** release track, which will switch their default values from `false` to `true`. This page describes what each change means for your project and what action, if any, you need to take.
 
 To preserve the legacy behavior for any flag, set it explicitly to `false` in your `dbt_project.yml` before upgrading:
 
