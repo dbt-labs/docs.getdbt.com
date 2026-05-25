@@ -11,7 +11,7 @@ The `dbt run-operation` command is used to invoke a macro or execute a SQL or Ji
 
 <VersionBlock firstVersion="1.12">
 
-Macros are not subject to model access restrictions. When using [`dbt run-operation`](/reference/commands/run-operation), you can use `ref()` in a [macro](/docs/build/jinja-macros) to reference private or protected models regardless of their [access](/reference/resource-configs/access) level.
+Macros are outside the group and access control system, so they are not subject to model [access](/reference/resource-configs/access) restrictions. This includes macros invoked using `dbt run-operation` &mdash; you can use `ref()` in a [macro](/docs/build/jinja-macros) to reference `private` or `protected` models regardless of their access level.
 
 </VersionBlock>
 
