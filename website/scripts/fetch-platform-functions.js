@@ -138,8 +138,9 @@ function validate(platform, functions) {
 
 async function processPlatform(platform, token) {
   console.log(`\n[${platform.id}] Fetching ${platform.name} functions from ${platform.functionsUrl}`);
-  const html = await fetchText(platform.functionsUrl);
-  const scraped = platform.parseHtml(html);
+  const scraped = platform.fetchFunctions
+    ? await platform.fetchFunctions((url) => fetchText(url, { token }))
+    : platform.parseHtml(await fetchText(platform.functionsUrl));
   console.log(`[${platform.id}] Parsed ${scraped.length} functions from docs`);
 
   console.log(`[${platform.id}] Fetching Fusion typechecking support list`);

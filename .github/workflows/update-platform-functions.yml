@@ -73,8 +73,10 @@ jobs:
 
       - name: Open Fusion gap issues for new functions
         if: steps.should_run.outputs.run == 'true'
+        continue-on-error: true
         run: node website/scripts/create-fusion-gap-issues.js ${{ matrix.platform }}
         env:
+          # Optional: PAT with issues:write on dbt-labs/dbt-fusion (separate from FUSION_REPO_TOKEN / dbt-labs/fs read)
           FUSION_ISSUES_TOKEN: ${{ secrets.FUSION_ISSUES_TOKEN }}
 
       - name: Commit updated data if changed
@@ -84,4 +86,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add website/static/data/functions/${{ matrix.platform }}.json
           git diff --staged --quiet || git commit -m "chore: update ${{ matrix.platform }} function support data [skip ci]"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
