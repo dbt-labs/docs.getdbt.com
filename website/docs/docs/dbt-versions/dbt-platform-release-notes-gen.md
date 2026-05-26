@@ -152,8 +152,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (**More actions** menu (three dots) > **Delete**). Deleting the open conversation clears the panel.
 - **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 
-<<<<<<<< HEAD:website/docs/docs/dbt-versions/dbt-cloud-release-notes-gen.md
-========
 ### dbt platform
 
 - **Clearer message when account creation is disabled**: The `/accounts/new` page now renders an inline "Account creation is disabled" message instead of silently redirecting to the home page, preventing a redirect loop for users with zero accounts.
@@ -228,7 +226,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Tag search field**: Tags are now a searchable field in the advanced search panel. You can filter results by tag matches. Filtering uses OR logic, returning assets that match any of the specified tags rather than requiring all tags to be present.
 
->>>>>>>> public/current:website/docs/docs/dbt-versions/dbt-platform-release-notes-gen.md
 ## April 22, 2026
 
 ## New
