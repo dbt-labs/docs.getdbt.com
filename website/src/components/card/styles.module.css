@@ -69,6 +69,11 @@ html[data-theme="dark"] {
   .cardBody {
     color: var(--text-inverse-secondary);
   }
+
+  .cardBody code {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-inverse-primary);
+  }
 }
 
 
