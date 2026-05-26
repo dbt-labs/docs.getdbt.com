@@ -69,6 +69,14 @@ html[data-theme="dark"] {
   .cardBody {
     color: var(--text-inverse-secondary);
   }
+
+  /* Counteract the `a article *` wildcard rule in custom.css which sets
+     all children of linked cards to white in dark mode, overriding the
+     :not(pre) > code colors from custom.css and making code chips unreadable. */
+  .cardBody code {
+    background-color: rgba(246, 245, 255, 1);
+    color: rgba(61, 24, 154, 1);
+  }
 }
 
 
