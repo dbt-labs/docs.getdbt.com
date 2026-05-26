@@ -34,8 +34,10 @@ const YAML_SCHEMA = yaml.DEFAULT_SCHEMA.extend([
   makeTagType('sequence'),
 ]);
 
-const FUSION_REPO = process.env.FUSION_REPO;
-const FUSION_BASE_PATH = process.env.FUSION_BASE_PATH;
+// Defaults match dbt-labs/fs (private; requires FUSION_REPO_TOKEN with repo read access).
+const FUSION_REPO = process.env.FUSION_REPO || 'dbt-labs/fs';
+const FUSION_BASE_PATH =
+  process.env.FUSION_BASE_PATH || 'crates/sdf-sql-functions/assets';
 const OUT_DIR = path.join(__dirname, '..', 'static', 'data', 'functions');
 
 // ---------------------------------------------------------------------------
@@ -56,7 +58,11 @@ async function fetchGitHubFile(repoPath, filePath, token) {
   if (token) headers['Authorization'] = `token ${token}`;
   const res = await fetch(apiUrl, { headers });
   // Intentionally omit the URL from the error to avoid leaking repo details in logs
-  if (!res.ok) throw new Error(`HTTP ${res.status} fetching fusion function list`);
+  if (!res.ok) {
+    const err = new Error(`HTTP ${res.status} fetching fusion function list`);
+    err.status = res.status;
+    throw err;
+  }
   return res.text();
 }
 
@@ -148,6 +154,16 @@ async function processPlatform(platform, token) {
     console.log(`[${platform.id}] Parsed ${fusionSupported.size} supported function names`);
   } catch (err) {
     console.warn(`[${platform.id}] Warning: could not fetch Fusion support list: ${err.message}`);
+    if (err.status === 401) {
+      console.warn(
+        `[${platform.id}] FUSION_REPO_TOKEN was rejected (HTTP 401). Update the GitHub Actions ` +
+          'secret with a PAT that can read dbt-labs/fs (fine-grained tokens need dbt-labs SSO authorization).'
+      );
+    } else if (err.status === 404) {
+      console.warn(
+        `[${platform.id}] Check FUSION_REPO (${FUSION_REPO}) and FUSION_BASE_PATH (${FUSION_BASE_PATH}).`
+      );
+    }
     console.warn(`[${platform.id}] fusion_typecheck will be false for all entries`);
   }
 

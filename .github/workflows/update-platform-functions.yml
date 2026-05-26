@@ -44,13 +44,32 @@ jobs:
             echo "run=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Verify Fusion repo access
+        if: steps.should_run.outputs.run == 'true'
+        env:
+          FUSION_REPO_TOKEN: ${{ secrets.FUSION_REPO_TOKEN }}
+        run: |
+          if [ -z "$FUSION_REPO_TOKEN" ]; then
+            echo "::error::FUSION_REPO_TOKEN secret is not set. Add a PAT with read access to dbt-labs/fs."
+            exit 1
+          fi
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: token ${FUSION_REPO_TOKEN}" \
+            -H "Accept: application/vnd.github.raw+json" \
+            "https://api.github.com/repos/dbt-labs/fs/contents/crates/sdf-sql-functions/assets/${{ matrix.platform }}/functions.sdf.yml")
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::FUSION_REPO_TOKEN cannot read dbt-labs/fs (HTTP ${HTTP_CODE}). Update the repository secret with a valid PAT that has read access to dbt-labs/fs. For fine-grained tokens, authorize SSO for the dbt-labs organization."
+            exit 1
+          fi
+          echo "Fusion repo access OK for ${{ matrix.platform }}"
+
       - name: Fetch and validate function data
         if: steps.should_run.outputs.run == 'true'
         run: node website/scripts/fetch-platform-functions.js ${{ matrix.platform }}
         env:
+          FUSION_REPO: dbt-labs/fs
+          FUSION_BASE_PATH: crates/sdf-sql-functions/assets
           FUSION_REPO_TOKEN: ${{ secrets.FUSION_REPO_TOKEN }}
-          FUSION_REPO: ${{ secrets.FUSION_REPO }}
-          FUSION_BASE_PATH: ${{ secrets.FUSION_BASE_PATH }}
 
       - name: Open Fusion gap issues for new functions
         if: steps.should_run.outputs.run == 'true'
