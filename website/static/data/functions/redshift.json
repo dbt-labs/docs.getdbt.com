@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "redshift",
     "platform_name": "Amazon Redshift",
-    "fetched_at": "2026-05-26T10:20:02.291Z",
+    "fetched_at": "2026-05-26T10:37:24.195Z",
     "count": 336
   },
   "functions": [
@@ -256,7 +256,7 @@
       "category": "Date functions header",
       "docs_url": "https://docs.aws.amazon.com/redshift/latest/dg/r_DATE_CMP_TIMESTAMPTZ.html",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "DATE_PART",
@@ -368,28 +368,28 @@
       "category": "Date functions header",
       "docs_url": "https://docs.aws.amazon.com/redshift/latest/dg/r_TIMESTAMP_CMP_TIMESTAMPTZ.html",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "TIMESTAMPTZ_CMP",
       "category": "Date functions header",
       "docs_url": "https://docs.aws.amazon.com/redshift/latest/dg/r_TIMESTAMPTZ_CMP.html",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "TIMESTAMPTZ_CMP_DATE",
       "category": "Date functions header",
       "docs_url": "https://docs.aws.amazon.com/redshift/latest/dg/r_TIMESTAMPTZ_CMP_DATE.html",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "TIMESTAMPTZ_CMP_TIMESTAMP",
       "category": "Date functions header",
       "docs_url": "https://docs.aws.amazon.com/redshift/latest/dg/r_TIMESTAMPTZ_CMP_TIMESTAMP.html",
       "preview_status": "GA",
-      "fusion_typecheck": false
+      "fusion_typecheck": true
     },
     {
       "name": "TIMEZONE",

@@ -20,19 +20,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const yaml = require('js-yaml');
 const { PLATFORMS } = require('./platforms.config');
-
-// The fs functions.sdf.yml uses custom YAML tags like !rust, !datafusion, !macro.
-// js-yaml rejects unknown tags by default. Register catch-all types for all
-// node kinds so any tag is accepted (we only care that implemented-by is present).
-const makeTagType = (kind) =>
-  new yaml.Type('!', { kind, multi: true, resolve: () => true, construct: (d) => d });
-const YAML_SCHEMA = yaml.DEFAULT_SCHEMA.extend([
-  makeTagType('scalar'),
-  makeTagType('mapping'),
-  makeTagType('sequence'),
-]);
+const { buildFusionIndex, isFunctionSupported } = require('./fusion-match');
 
 // Defaults match dbt-labs/fs (private; requires FUSION_REPO_TOKEN with repo read access).
 const FUSION_REPO = process.env.FUSION_REPO || 'dbt-labs/fs';
@@ -64,53 +53,6 @@ async function fetchGitHubFile(repoPath, filePath, token) {
     throw err;
   }
   return res.text();
-}
-
-// ---------------------------------------------------------------------------
-// YAML parsing
-// The fs functions.sdf.yml uses multi-document YAML (--- separated).
-// Each document is: { function: { name, section, implemented-by?, ... } }
-// ---------------------------------------------------------------------------
-
-function parseFusionYaml(yamlText) {
-  const docs = [];
-  // Use the custom schema so !rust, !datafusion etc. don't throw
-  yaml.loadAll(yamlText, (doc) => { if (doc) docs.push(doc); }, { schema: YAML_SCHEMA });
-
-  const supported = new Set(); // uppercased names with typechecking support
-
-  for (const doc of docs) {
-    const fn = doc?.function;
-    if (!fn?.name) continue;
-    // Skip internal helpers (prefixed with _)
-    if (fn.name.startsWith('_')) continue;
-    // Any entry in the YAML means L2 typechecking is supported
-    supported.add(fn.name.toUpperCase());
-  }
-
-  return supported;
-}
-
-/**
- * Fusion's Redshift YAML uses TIMESTAMPZ spellings; AWS docs use TIMESTAMPTZ.
- * Register doc-side aliases so joins match supported functions.
- */
-function expandFusionAliases(platformId, supported) {
-  if (platformId !== 'redshift') return;
-  for (const name of [...supported]) {
-    if (name.includes('TIMESTAMPZ') && !name.includes('TIMESTAMPTZ')) {
-      supported.add(name.replace(/TIMESTAMPZ/g, 'TIMESTAMPTZ'));
-    }
-  }
-}
-
-function isFusionSupported(name, platformId, supported) {
-  if (supported.has(name)) return true;
-  if (platformId === 'redshift') {
-    const fusionSpelling = name.replace(/TIMESTAMPTZ/g, 'TIMESTAMPZ');
-    if (fusionSpelling !== name && supported.has(fusionSpelling)) return true;
-  }
-  return false;
 }
 
 // ---------------------------------------------------------------------------
@@ -166,16 +108,15 @@ async function processPlatform(platform, token) {
   console.log(`[${platform.id}] Parsed ${scraped.length} functions from docs`);
 
   console.log(`[${platform.id}] Fetching Fusion typechecking support list`);
-  let fusionSupported = new Set();
+  let fusionIndex = null;
   try {
     if (!FUSION_REPO || !FUSION_BASE_PATH) {
       throw new Error('FUSION_REPO and FUSION_BASE_PATH env vars must be set');
     }
     const yamlPath = `${FUSION_BASE_PATH}/${platform.id}/functions.sdf.yml`;
     const yamlText = await fetchGitHubFile(FUSION_REPO, yamlPath, token);
-    fusionSupported = parseFusionYaml(yamlText);
-    expandFusionAliases(platform.id, fusionSupported);
-    console.log(`[${platform.id}] Parsed ${fusionSupported.size} supported function names`);
+    fusionIndex = buildFusionIndex(yamlText, platform.id);
+    console.log(`[${platform.id}] Parsed ${fusionIndex.supportedNames.size} supported function names`);
   } catch (err) {
     console.warn(`[${platform.id}] Warning: could not fetch Fusion support list: ${err.message}`);
     if (err.status === 401) {
@@ -196,7 +137,9 @@ async function processPlatform(platform, token) {
     category: fn.category,
     docs_url: fn.docs_url,
     preview_status: fn.preview_status,
-    fusion_typecheck: isFusionSupported(fn.name, platform.id, fusionSupported),
+    fusion_typecheck: fusionIndex
+      ? isFunctionSupported(fn, platform.id, fusionIndex)
+      : false,
   }));
 
   merged.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
