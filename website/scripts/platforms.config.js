@@ -173,13 +173,29 @@ const PLATFORMS = [
   {
     id: 'bigquery',
     name: 'BigQuery',
-    functionsUrl: 'https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators',
+    functionsUrl: 'https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/functions-all',
     parseHtml(html) {
-      return scrapeHeadingTablePage(
-        html,
-        'https://cloud.google.com',
-        /^(see also|related|overview|introduction)/i
-      );
+      const root = parseHtml(html);
+      const functions = [];
+      const table = root.querySelector('main table') || root.querySelector('table');
+      if (!table) return functions;
+
+      const baseUrl = 'https://docs.cloud.google.com';
+      for (const row of table.querySelectorAll('tr')) {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 2) continue;
+
+        const anchor = cells[0].querySelector('a');
+        const code = anchor?.querySelector('code') || anchor;
+        if (!code) continue;
+
+        const name = code.textContent.trim().toUpperCase();
+        const href = anchor.getAttribute('href') || '';
+        const docsUrl = href.startsWith('http') ? href : `${baseUrl}${href}`;
+
+        functions.push({ name, category: 'Built-in', docs_url: docsUrl, preview_status: 'GA' });
+      }
+      return functions;
     },
   },
   {
