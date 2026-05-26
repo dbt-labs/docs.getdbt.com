@@ -91,6 +91,28 @@ function parseFusionYaml(yamlText) {
   return supported;
 }
 
+/**
+ * Fusion's Redshift YAML uses TIMESTAMPZ spellings; AWS docs use TIMESTAMPTZ.
+ * Register doc-side aliases so joins match supported functions.
+ */
+function expandFusionAliases(platformId, supported) {
+  if (platformId !== 'redshift') return;
+  for (const name of [...supported]) {
+    if (name.includes('TIMESTAMPZ') && !name.includes('TIMESTAMPTZ')) {
+      supported.add(name.replace(/TIMESTAMPZ/g, 'TIMESTAMPTZ'));
+    }
+  }
+}
+
+function isFusionSupported(name, platformId, supported) {
+  if (supported.has(name)) return true;
+  if (platformId === 'redshift') {
+    const fusionSpelling = name.replace(/TIMESTAMPTZ/g, 'TIMESTAMPZ');
+    if (fusionSpelling !== name && supported.has(fusionSpelling)) return true;
+  }
+  return false;
+}
+
 // ---------------------------------------------------------------------------
 // Validation
 // ---------------------------------------------------------------------------
@@ -152,6 +174,7 @@ async function processPlatform(platform, token) {
     const yamlPath = `${FUSION_BASE_PATH}/${platform.id}/functions.sdf.yml`;
     const yamlText = await fetchGitHubFile(FUSION_REPO, yamlPath, token);
     fusionSupported = parseFusionYaml(yamlText);
+    expandFusionAliases(platform.id, fusionSupported);
     console.log(`[${platform.id}] Parsed ${fusionSupported.size} supported function names`);
   } catch (err) {
     console.warn(`[${platform.id}] Warning: could not fetch Fusion support list: ${err.message}`);
@@ -173,7 +196,7 @@ async function processPlatform(platform, token) {
     category: fn.category,
     docs_url: fn.docs_url,
     preview_status: fn.preview_status,
-    fusion_typecheck: fusionSupported.has(fn.name),
+    fusion_typecheck: isFusionSupported(fn.name, platform.id, fusionSupported),
   }));
 
   merged.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
