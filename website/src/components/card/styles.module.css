@@ -25,14 +25,6 @@
   color: var(--text-neutral-secondary);
 }
 
-/* Ensure inline <code> in card bodies matches the site-wide inline code style
-   from custom.css (:not(pre) > code), which has no dark mode override and
-   therefore uses the same light-purple values in both themes. */
-.cardBody code {
-  background-color: rgba(246, 245, 255, 1);
-  color: rgba(61, 24, 154, 1);
-}
-
 .cardBody a, .cardBody a:hover {
   text-decoration: underline;
 }
