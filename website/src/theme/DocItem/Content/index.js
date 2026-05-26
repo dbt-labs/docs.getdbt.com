@@ -29,9 +29,17 @@ export default function DocItemContent({ children }) {
 
   const { metadata, frontMatter } = useDoc();
   const isQuickstartGuide = metadata?.id?.startsWith("guides/");
+  const isReleaseNotesLifecycleDoc =
+    metadata?.id === "docs/dbt-versions/dbt-cloud-release-notes";
 
   return (
-    <div className={clsx(ThemeClassNames.docs.docMarkdown, "markdown")}>
+    <div
+      className={clsx(
+        ThemeClassNames.docs.docMarkdown,
+        "markdown",
+        isReleaseNotesLifecycleDoc && "doc-release-notes-lifecycle"
+      )}
+    >
       {syntheticTitle && (
         <header>
           <Heading as="h1">{syntheticTitle}</Heading>

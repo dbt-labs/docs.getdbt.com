@@ -30,7 +30,14 @@ const statusColors = {
   preview: '#FE6703',
   private_preview: '#FE6703',
   // new_constant: '#99A1AF', use this gray color if you want a new color.
-};
+  // Release note category colors
+  'New': '#9786ff',
+  'Enhancement': '#ff9e5f',
+  'Fix': '#92c430',
+  'Behavior change': '#ffcc25',
+  'Beta': '#bab2ff',
+  'Private beta': '#bab2ff',
+}; 
 
 const fontColors = {
   [MANAGED_PLUS]: "#030711",
@@ -103,6 +110,7 @@ export default function Lifecycle(props) {
               rel="noopener noreferrer"
               className={`${styles.lifecycle} lifecycle`}
               style={style}
+              data-lifecycle-status={status}
               title={`Go to ${url}`} // optional tooltip for better UX
             >
               {displayName}
@@ -116,6 +124,7 @@ export default function Lifecycle(props) {
             key={index}
             className={`${styles.lifecycle} lifecycle`}
             style={style}
+            data-lifecycle-status={status}
           >
             {displayName}
           </span>
