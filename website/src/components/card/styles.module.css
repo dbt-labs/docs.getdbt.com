@@ -71,8 +71,8 @@ html[data-theme="dark"] {
   }
 
   .cardBody code {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: var(--text-inverse-primary);
+    background-color: var(--ifm-color-emphasis-200);
+    color: var(--ifm-color-emphasis-900);
   }
 }
 
