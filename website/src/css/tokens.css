@@ -80,6 +80,15 @@
   --border-inverse-secondary: rgba(255, 255, 255, 0.5);
   --border-inverse-tertiary: rgba(255, 255, 255, 0.1);
   --border-inverse-disabled: rgba(255, 255, 255, 0.1);
+
+  /* Inline code token colors */
+  --inline-code-bg: rgba(246, 245, 255, 1);
+  --inline-code-color: rgba(61, 24, 154, 1);
+}
+
+html[data-theme="dark"] {
+  --inline-code-bg: rgba(151, 134, 255, 0.15);
+  --inline-code-color: var(--color-coalesce-purple-400);
 }
 
 /* Brand & Accent Text */
