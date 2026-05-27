@@ -226,7 +226,7 @@ Follow these steps to define UDFs in dbt:
     </Tabs>
 
     :::info volatility warehouse-specific
-   	Something to note is that `volatility` is accepted in dbt for SQL, Python, and JavaScript UDFs, but the handling of it is warehouse-specific. For SQL and Python UDFs on BigQuery, `volatility` is ignored and dbt displays a warning. For JavaScript UDFs on BigQuery, `deterministic` and `non-deterministic` are applied when creating the UDF; `stable` is not supported and dbt displays a warning. In Snowflake, all supported volatility values are applied when creating the UDF. Refer to [volatility](/reference/resource-configs/volatility) for more information.
+   	Something to note is that `volatility` is accepted in dbt for SQL, Python, and JavaScript UDFs, but the handling of it is warehouse-specific. For SQL and Python UDFs on BigQuery, `volatility` is ignored and dbt displays a warning. For JavaScript UDFs on BigQuery, `deterministic` and `non-deterministic` are applied when creating the UDF; `stable` is not supported. In Snowflake, all supported volatility values are applied when creating the UDF. Refer to [volatility](/reference/resource-configs/volatility) for more information.
     :::
 
 3. Run one of the following `dbt build` commands to build your UDFs and create them in the warehouse:
