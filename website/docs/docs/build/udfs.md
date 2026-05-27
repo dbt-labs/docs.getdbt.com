@@ -213,7 +213,7 @@ Follow these steps to define UDFs in dbt:
         description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
         config:
           snowflake:                             # optional
-            quote_args: false                    # optional, Snowflake only, defaults to true
+            quote_args: true                     # optional, Snowflake only
         arguments:                               # optional
           - name: a_string                       # required if arguments is specified
             data_type: string                    # required if arguments is specified
@@ -363,11 +363,11 @@ Follow these steps to define UDFs in dbt:
 
     <TabItem value="Snowflake">
     ```sql
-    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int("a_string" STRING)
     RETURNS INTEGER
     LANGUAGE JAVASCRIPT
     AS $$
-    return /^[0-9]+$/.test(A_STRING) ? 1 : 0;
+    return /^[0-9]+$/.test(a_string) ? 1 : 0;
     $$;
     ```
     </TabItem>

@@ -204,8 +204,8 @@ Create a separate JavaScript file for each overload body. In this example, the b
 <File name='functions/null_if_empty.js'>
 
 ```javascript
-if (VAL === '') return null;
-return VAL;
+if (val === '') return null;
+return val;
 ```
 
 </File>
@@ -213,8 +213,8 @@ return VAL;
 <File name='functions/null_if_empty_numeric.js'>
 
 ```javascript
-if (VAL === 0) return null;
-return VAL;
+if (val === 0) return null;
+return val;
 ```
 
 </File>

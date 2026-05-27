@@ -21,9 +21,9 @@ functions:
 
 When creating JavaScript user-defined functions (UDFs) on Snowflake, `quote_args` controls whether argument names are quoted in the `CREATE FUNCTION` statement. Defaults to `true`.
 
-When `quote_args` is `true`, Snowflake quotes argument names, which preserves the exact casing used in the YAML definition. When accessing arguments inside the function body, you must use the uppercase version of the name, because Snowflake uppercases unquoted identifiers internally.
+When `quote_args` is `true`, Snowflake quotes argument names, which preserves their exact casing. Inside the function body, reference arguments using the same case as defined in the YAML (for example, `a_string`).
 
-When `quote_args` is `false`, argument names are not quoted. Snowflake uppercases them automatically, and you can reference them case-insensitively in the function body.
+When `quote_args` is `false`, argument names are not quoted. Snowflake uppercases them automatically, so you must reference them in uppercase inside the function body (for example, `A_STRING`).
 
 This config applies to JavaScript UDFs on Snowflake only. It has no effect on other adapters or languages.
 
@@ -51,7 +51,7 @@ functions:
 <File name='functions/is_positive_int.js'>
 
 ```js
-return /^[0-9]+$/.test(a_string) ? 1 : 0;
+return /^[0-9]+$/.test(A_STRING) ? 1 : 0;
 ```
 </File>
 
@@ -62,7 +62,7 @@ CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
 RETURNS INTEGER
 LANGUAGE JAVASCRIPT
 AS $$
-return /^[0-9]+$/.test(a_string) ? 1 : 0;
+return /^[0-9]+$/.test(A_STRING) ? 1 : 0;
 $$;
 ```
 
@@ -73,7 +73,7 @@ CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int("a_string" STRING)
 RETURNS INTEGER
 LANGUAGE JAVASCRIPT
 AS $$
-return /^[0-9]+$/.test(A_STRING) ? 1 : 0;
+return /^[0-9]+$/.test(a_string) ? 1 : 0;
 $$;
 ```
 
