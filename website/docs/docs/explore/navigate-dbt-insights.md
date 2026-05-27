@@ -47,14 +47,15 @@ The Semantic Layer querying in dbt <Constant name="insights" /> lets you build q
 To build a query in dbt <Constant name="insights" />:
 
 1. From the main menu, go to **<Constant name="insights" />**.
-2. Click **Build a query**. 
-3. Select what you want to include in your query.
+2. Click **Build a query**.
+3. From the Environment dropdown, select **Prod** or **Staging**. Even thought you see "Development" as an option, queries against development environments are deferred based on deferral rules, so selecting it will not query your development environment directly.
+4. Select what you want to include in your query.
     - Click **Add Metric** to select the metrics for your query. 
     - Click **Add Group by** to choose the dimensions that break down your metric, such as time grain (day, week, month), region, product, or customer.
     - Click **Add Filter** to create a filter to narrow your results.
     - Click **Add Order by** to select how you want to sort the results of your query. 
-    - Click **Add Limit**, select the amount of results you want to see when you run your query. If left blank, you will get all the results. 
-4. Click **Run** to run your query.
+    - Click **Add Limit**, select the amount of results you want to see when you run your query. If left blank, you will get all results. 
+5. Click **Run** to run your query.
     Results are available in the **Data** tab. You can see the SQL code generated in the **Details** tab.
 
     <DocCarousel slidesPerView={1}>
