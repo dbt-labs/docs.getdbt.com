@@ -101,8 +101,9 @@ To locate this option:
 Use **Debug on <Constant name="fusion" />** to choose how to proceed:
 
 - **Debug in Studio** opens <Constant name="studio_ide" /> with <Constant name="fusion" /> debugging enabled so you can troubleshoot before running a full deployment.
+   - Clicking this option automatically sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion`. To revert this, go to **Account settings**, select **Credentials**, choose your project, and update the **dbt version** under **User development settings**. For more details, refer to [Override dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version).
 - **Debug in Studio with <Constant name="copilot" />** does the same, with <Constant name="copilot" /> support, when your account has AI features enabled.
-- **Run once on <Constant name="fusion" />** runs a one-time <Constant name="fusion" /> test run for the job.
+- **Run once on <Constant name="fusion" />** runs a one-time <Constant name="fusion" /> test run for the job. This option is temporarily disabled while a <Constant name="fusion" /> run request is pending.
 
 ### Stay informed about Fusion progress
 
