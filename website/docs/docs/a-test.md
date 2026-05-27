@@ -1,6 +1,6 @@
 ---
 title: Testing version
-id: test
+id: a-test
 description: "test"
 sidebar_label: "Version test"
 pagination_next: null
