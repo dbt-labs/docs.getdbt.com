@@ -964,18 +964,6 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Snowflake Native App",
-          link: {
-            type: "doc",
-            id: "docs/platform-integrations/snowflake-native-app",
-          },
-          items: [
-            "docs/platform-integrations/snowflake-native-app",
-            "docs/platform-integrations/set-up-snowflake-native-app",
-          ],
-        },
-        {
-          type: "category",
           label: "Semantic Layer integrations",
           link: {
             type: "doc",

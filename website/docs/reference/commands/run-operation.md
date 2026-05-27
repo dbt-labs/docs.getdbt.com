@@ -9,6 +9,20 @@ id: "run-operation"
 
 The `dbt run-operation` command is used to invoke a macro or execute a SQL or Jinja string directly against the target database. For usage information on macro-based operations, refer to [operations](/docs/build/hooks-operations#about-operations).
 
+<VersionBlock firstVersion="1.12">
+
+Macros aren't subject to model [access](/reference/resource-configs/access) and [group](/reference/resource-configs/group) control system. As a result, a [macro](/docs/build/jinja-macros) can use `ref()` to reference `private` or `protected` models, including when the macro is invoked with `dbt run-operation`.
+
+For example, a macro can reference a private model:
+
+```jinja
+{% macro example_macro() %}
+  {{ ref('my_private_model') }}
+{% endmacro %}
+```
+
+</VersionBlock>
+
 ## Usage
 
 ```

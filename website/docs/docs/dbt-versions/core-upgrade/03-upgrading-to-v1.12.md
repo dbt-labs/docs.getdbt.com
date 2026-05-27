@@ -105,7 +105,6 @@ You can read more about each of these behavior changes in the following links:
 - You can create Snowflake dynamic tables as transient (no [Fail-safe period](https://docs.snowflake.com/en/user-guide/data-failsafe)) by setting the [`transient`](/reference/resource-configs/snowflake-configs#transient-dynamic-tables) config on models. 
 
     When `transient` is not set on a model, the [`snowflake_default_transient_dynamic_tables`](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) flag controls the default. Set this flag to `true` to make all dynamic tables transient by default.
-- Set the [`refresh_warehouse`](/reference/resource-configs/snowflake-configs#refresh-warehouse) parameter to choose which Snowflake warehouse runs a dynamic table’s automatic refreshes. This is separate from `snowflake_warehouse`, which is used for <Term id="ddl" /> execution. For example, you might use a smaller warehouse for refreshes and a larger one for DDL.
 
 ### BigQuery
 
@@ -121,6 +120,7 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
+- Macros invoked with the [`dbt run-operation`](/reference/commands/run-operation) command can now call `ref()` on models with `private` or `protected` [access](/reference/resource-configs/access) without raising a `DbtReferenceError`. Because macros are not part of the group and access control system, dbt doesn't enforce group membership when a macro references a model.
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.
 - <Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
 - `dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path. For more information, refer to [About dbt compile](/reference/commands/compile).
