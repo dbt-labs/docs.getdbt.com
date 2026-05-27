@@ -20,6 +20,21 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## May 2026
 
+### Snowflake Summit 2026 announcements
+
+The following features are new or enhanced as part of dbt Labs announcements at [Snowflake Summit 2026](https://www.getdbt.com/events/snowflake-summit-2026) in San Francisco from June 1–4, 2026:
+
+- **Alpha:** <Constant name="core" /> v2.0 is the open-source Apache 2.0 foundation that the <Constant name="fusion_engine" /> builds on. It delivers a faster, Rust-based runtime while preserving the dbt experience practitioners already know. Ships as two distributions: `dbt-core` (OSS, Apache 2.0) and dbt (<Constant name="fusion" /> distribution, proprietary). <!-- TODO: Add doc link for Core v2.0 when page is published -->
+- **Beta:** dbt State skips or clones nodes when the logic and data haven't changed, rather than rebuilding everything on every run. Available in <Constant name="core" /> v1.12+, dbt v2.0, the <Constant name="dbt_platform" />, and the <Constant name="fusion_engine" />. State-aware orchestration is no longer being enabled for new customers. Refer to Migrate to dbt State <!-- TODO: Add doc link for "Migrate to dbt State" when page is published --> for more information.
+- **New:** dbt State pricing is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit. <!-- TODO: Add doc link for dbt State pricing when page is published -->
+- **New:** <Constant name="copilot" /> has been renamed to dbt Wizard. No action is required and your existing setup and configuration carry over automatically. <!-- TODO: Add doc link for dbt Wizard rename when page is published -->
+- **New:** dbt Wizard in the <Constant name="dbt_platform" /> now includes a standalone chat interface for project-aware work without opening the IDE, alongside the existing experience in the <Constant name="studio_ide" />. Supports approval mode and lets you choose your dbt version and defer target from the session. Available on Starter, Enterprise, and Enterprise+ accounts. <!-- TODO: Add doc link for dbt Wizard standalone chat when page is published -->
+- **Beta:** The dbt Wizard CLI is a terminal-native AI agent for analytics engineers. Install it on macOS or Linux to build and refactor models, generate tests and documentation, debug job failures, and explore lineage, all grounded in your local dbt project. Requires your own OpenAI API key (BYOK). <!-- TODO: Add doc link for dbt Wizard CLI when page is published -->
+- **New:** dbt login is a new CLI command available in <Constant name="core" /> v2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, and dbt Wizard CLI with no separate sign-in flows needed across tools. <!-- TODO: Add doc link for dbt login when page is published -->
+- **New:** dbt Wizard now supports Anthropic as a BYOK provider. Enterprise and Enterprise+ accounts can configure an Anthropic API key under Account settings → dbt Wizard → AI providers, alongside the existing OpenAI and Azure OpenAI options. <!-- TODO: Add doc link for dbt Wizard Anthropic BYOK when page is published -->
+
+### Pre-Snowflake Summit 2026
+
 - **Enhancement:** Users granted `user_credential_write` can access **Your profile** > **Credentials** without `develop_access` (including read-only users). Environment variable overrides and dbt version overrides still require `develop_access`. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 - **New:** The [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) is now available for Enterprise accounts. Assign it to users who need to create, edit, and run jobs within assigned projects and environments without access to edit environments or environment variables.
 - **Enhancement:** The admin API toolset (job management and run operations) is now always available in the <Constant name="dbt" /> <Constant name="copilot" /> [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
