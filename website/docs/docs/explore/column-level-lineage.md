@@ -39,7 +39,7 @@ Passthrough and rename columns are clearly labeled and color-coded in the lineag
 
 In the following `dim_salesforce_accounts` model example (located at the end of the lineage), the description for a column inherited from the `stg_salesforce__accounts` model (located second to the left) indicates its origin. This helps developers quickly identify the original source of the column, making it easier to know where to make documentation changes.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.jpg" width="100%" title="Example of lineage with propagated and inherited column descriptions."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.png" width="100%" title="Example of lineage with propagated and inherited column descriptions."/>
 
 ## Column-level lineage use cases {#use-cases}
 

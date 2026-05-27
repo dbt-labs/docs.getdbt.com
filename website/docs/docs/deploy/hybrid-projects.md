@@ -26,7 +26,7 @@ Hybrid projects is available in public preview to [<Constant name="dbt" /> Enter
 To upload artifacts, make sure you meet these prerequisites:
 
 - Your organization is on a [<Constant name="dbt" /> Enterprise+ plan](https://www.getdbt.com/pricing)
-- You're on [<Constant name="dbt" />'s release tracks](/docs/dbt-versions/cloud-release-tracks) and your <Constant name="core" /> project is on dbt v1.10 or higher
+- You're on [<Constant name="dbt" />'s release tracks](/docs/dbt-versions/dbt-release-tracks) and your <Constant name="core" /> project is on dbt v1.10 or higher
 - [Configured](/docs/deploy/hybrid-setup#connect-project-in-dbt-cloud) a hybrid project in <Constant name="dbt" />.
 - Updated your existing <Constant name="core" /> project with latest changes and [configured it with model access](/docs/deploy/hybrid-setup#make-dbt-core-models-public):
     - Ensure models that you want to share with other <Constant name="dbt" /> projects use `access: public` in their model configuration. This makes the models more discoverable and shareable
