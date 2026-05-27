@@ -216,19 +216,19 @@ selectors unambiguous.
 
 <VersionBlock lastVersion="1.10">
 
-Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the [`--resource-type` flag](/reference/global-configs/resource-type), which can be used with the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` commands.
 
 ```bash
 dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
 dbt list --select "resource_type:test"         # list all tests in your project
-dbt list --select "resource_type:source"       # list all sources in your project
+dbt list --select "resource_type:source" 
 ```
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.11">
 
-Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, `function`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, `function`, and so on). This is similar to the [`--resource-type` flag](/reference/global-configs/resource-type), which can be used with the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` commands.
 
 ```bash
 dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
