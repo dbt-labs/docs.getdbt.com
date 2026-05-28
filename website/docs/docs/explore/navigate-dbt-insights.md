@@ -98,9 +98,25 @@ The Query console sidebar menu and icons contains the following options:
 
 ### Bookmark 
 
-Save and access your frequently used queries. 
+Save and access your frequently used queries from the query console sidebar.
 
-<Lightbox src="/img/docs/dbt-insights/manage-bookmarks.png" width="90%" title="Manage your query bookmarks" /> 
+To save and manage bookmarks:
+
+1. Click **Bookmark** in the [Query console menu](#query-console-menu) to save the current query. In the **Bookmark Query Details** modal, add a **Title** and **Description**.
+2. Select the **Bookmark** icon in the sidebar to open your list of saved queries.
+3. Select a saved Insight to view its details or open it in the query editor.
+
+For sharing saved Insights and version history, check out [Save your Insights](/docs/explore/access-dbt-insights#save-your-insights).
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-insights/save-insights-modal.png" width="95%" title="Bookmark Query Details modal" />
+
+<Lightbox src="/img/docs/dbt-insights/manage-bookmarks.png" width="90%" title="Manage your query bookmarks" />
+
+<Lightbox src="/img/docs/dbt-insights/view-saved-insights.png" width="95%" title="List view of saved Insights" />
+
+</DocCarousel>
 
 ### Query history
 
