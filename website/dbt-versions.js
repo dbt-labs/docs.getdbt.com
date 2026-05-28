@@ -34,10 +34,6 @@ const products = [
         version: "1.12",
       },
       {
-        name: "dbt Core v2 (alpha)",
-        version: "2.0",
-      },
-      {
         name: "dbt Core v1.12 (beta)",
         version: "1.12",
       },
