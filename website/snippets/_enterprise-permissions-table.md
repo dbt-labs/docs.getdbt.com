@@ -48,6 +48,12 @@ Key:
 
 <sup>**</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
+::::note Credentials access
+Users can access the **Credentials** page under **Your profile** when they have `develop_access` or `user_credential_write` on at least one project.
+
+An admin can grant `user_credential_write` to any group, regardless of which permission set the group is assigned. Environment variable overrides and dbt version overrides still require `develop_access`.
+::::
+
 
 #### Project access for account permissions
 
@@ -81,19 +87,19 @@ Key:
 #### Account access for project permissions
 
 <FilterableTable>
-| Account-level permission | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
+| Account-level permission | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
 | Account settings         |   R   |    -    |         -           |          -           |       R        |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
 | Auth provider            |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Billing                  |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Connections              |   R   |    R    |        R<sup>*</sup>|          R           |       R        |     R     |     R     |     R     |     -       |      -      |    -     |        -       |      R      |     R      |
+| Connections              |   R   |    R    |        R<sup>*</sup>|          R           |       R        |     R     |     R     |     R     |     R       |      -      |    -     |        -       |      R      |     R      |
 | Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
 | Groups                   |   R   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
 | Invitations              |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      R      |     R      |
 | Licenses                 |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      -      |     R      |
 | Members                  |   W   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
 | Project (create)         |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Public models            |   R   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |     R    |        R       |      R      |     R      |
+| Public models            |   R   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     R       |      R      |     R    |        R       |      R      |     R      |
 | Service tokens           |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Webhooks                 |   W   |    -    |         -           |          -           |       -        |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 </FilterableTable>
@@ -103,22 +109,22 @@ Key:
 #### Project access for project permissions
 
 <FilterableTable>
-|Project-level permission  | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
-| Environment credentials  |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     W     |    -        |      -      |                  -                      |        -       |     R       |     R      |
-| Custom env. variables    |   W   |    W<sup>**</sup>  |         -           |          -           |       W        |     W<sup>**</sup>    |      -       |     W     |     W     |     -       |      R      |                  -                      |        -       |     R       |     W      |
-| Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |      -       |     R     |     R     |      -      |      -      |                  -                      |       -        |     -       |     R      |
-| Data platform configs    |   W   |    W    |         -           |          -           |       W        |     W     |      -       |     R     |     W     |     -       |      -      |                  -                      |       -        |     R       |     R      |
-| Develop (IDE or CLI)     |   W   |    W    |         -           |          -           |       -        |     W     |      -       |     -     |     -     |     -       |      -      |                  -                      |       -        |     -       |      -     |
-| Environments             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      -      |      R      |                  -                      |       -        |     R       |     R      |
-| Fusion upgrade           |   -   |    -    |         -           |          -           |       -        |     -     |      W       |     -     |     -     |     -       |      -      |                  -                      |        -       |      -      |     -      |
-| Jobs                     |   W   |    R<sup>*</sup>   |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
-| Metadata GraphQL API access| R   |    R    |         R           |          R           |       R        |     R     |      -       |     R     |     R     |      -      |      R      |                  R                      |       -        |     R       |     R      |
-| Permissions              |   W   |    -    |         -           |          -           |       R        |     R     |      -       |     R     |     -     |      -      |      -      |                  -                      |       -        |     -       |     R      |
-| Projects                 |   W   |    R    |         R           |          R           |       W        |     R     |      -       |     W     |     R     |      -      |      R      |                  -                      |       -        |     R       |     W      |
-| Repositories             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     W     |     -     |      -      |      -      |                  -                      |       -        |     R       |     R      |
-| Runs                     |   W   |    R<sup>*</sup>   |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
-| Semantic Layer config    |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      -      |      -      |                  -                      |        W       |     R       |     R      |
+|Project-level permission  | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
+| Environment credentials  |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     W     |      R      |    -        |      -      |                  -                      |        -       |     R       |     R      |
+| Custom env. variables    |   W   |    W<sup>**</sup>  |         -           |          -           |       W        |     W<sup>**</sup>    |      -       |     W     |     W     |      R      |     -       |      R      |                  -                      |        -       |     R       |     W      |
+| Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |      -       |     R     |     R     |      -      |      -      |      -      |                  -                      |       -        |     -       |     R      |
+| Data platform configs    |   W   |    W    |         -           |          -           |       W        |     W     |      -       |     R     |     W     |      R      |     -       |      -      |                  -                      |       -        |     R       |     R      |
+| Develop (IDE or CLI)     |   W   |    W    |         -           |          -           |       -        |     W     |      -       |     -     |     -     |      -      |     -       |      -      |                  -                      |       -        |     -       |      -     |
+| Environments             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     R     |     W     |      R      |      -      |      R      |                  -                      |       -        |     R       |     R      |
+| Fusion upgrade           |   -   |    -    |         -           |          -           |       -        |     -     |      W       |     -     |     -     |      -      |     -       |      -      |                  -                      |        -       |      -      |     -      |
+| Jobs                     |   W   |    R<sup>*</sup>   |         R           |          R           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      R      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Metadata GraphQL API access| R   |    R    |         R           |          R           |       R        |     R     |      -       |     R     |     R     |      R      |      -      |      R      |                  R                      |       -        |     R       |     R      |
+| Permissions              |   W   |    -    |         -           |          -           |       R        |     R     |      -       |     R     |     -     |      -      |      -      |      -      |                  -                      |       -        |     -       |     R      |
+| Projects                 |   W   |    R    |         R           |          R           |       W        |     R     |      -       |     W     |     R     |      R      |      -      |      R      |                  -                      |       -        |     R       |     W      |
+| Repositories             |   W   |    R    |         -           |          -           |       R        |     R     |      -       |     W     |     -     |      R      |      -      |      -      |                  -                      |       -        |     R       |     R      |
+| Runs                     |   W   |    R<sup>*</sup>   |         -           |          -           |       R<sup>*</sup>       |     R<sup>*</sup>    |      -       |     R<sup>*</sup>    |     W     |      W      |      W      |      R      |                  -                      |       -        |     R       |     R<sup>*</sup>     |
+| Semantic Layer config    |   W   |    R    |         -           |          -           |       W        |     R     |      -       |     R     |     R     |      R      |      -      |      -      |                  -                      |        W       |     R       |     R      |
 
 </FilterableTable>
 
