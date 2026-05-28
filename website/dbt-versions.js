@@ -31,34 +31,20 @@ const products = [
     subProducts: [
       {
         name: "dbt platform (latest)",
-        version: "1.11",
+        version: "1.12",
       },
       {
-        name: "dbt Core v2.0",
+        name: "dbt Core v2 (alpha)",
         version: "2.0",
+      },
+      {
+        name: "dbt Core v1.12 (beta)",
+        version: "1.12",
       },
       {
         name: "Core v1.11",
         EOLDate: "2026-12-18",
         version: "1.11",
-      },
-      {
-        name: "Core v1.10 (Compatible/Extended)",
-        EOLDate: "2026-06-15",
-        version: "1.10",
-      },
-    ],
-  },
-  {
-    name: "dbt platform",
-    subProducts: [
-      {
-        name: "Latest (Core)",
-        version: "1.12",
-      },
-      {
-        name: "Stable (Fusion)",
-        version: "2.0",
       },
     ],
   },
