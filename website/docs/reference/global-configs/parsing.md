@@ -91,7 +91,7 @@ dbt run --use-v2-parser --v2-parser "uv run fs parse"
 
 </File>
 
-When the v2 parser fails, dbt surfaces typed exceptions to make failures easier to diagnose:
+When the v2 parser fails, dbt surfaces these exceptions to make failures easier to diagnose:
 
 | Exception | Cause |
 |---|---|
