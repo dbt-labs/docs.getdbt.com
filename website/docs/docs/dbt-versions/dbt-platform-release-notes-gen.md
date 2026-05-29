@@ -17,6 +17,51 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## May 27, 2026
+
+## New
+
+### Webhooks
+
+- **Disabled webhook subscriptions banner**: The webhooks settings page now shows a dismissible warning banner when one or more webhook subscriptions have been automatically disabled due to repeated failures. Disabled subscriptions now display an "Archived" badge with a tooltip explaining how to reactivate them.
+
+### Studio IDE
+
+- **Directory listing API**: The file browser now supports streaming directory listings in Newline-Delimited JSON (NDJSON) format, returning each file's name and type. The endpoint supports an optional `limit` parameter and `ETag` and `Last-Modified` headers to avoid re-fetching unchanged directory contents.
+
+- **File and directory deletion API**: You can now delete individual files or entire directory trees from the workspace. Recursive deletion requires `recursive=true` to be set explicitly, preventing accidental data loss.
+
+- **File and directory rename and move API**: You can now move files and directories within the workspace. An `overwrite` parameter controls whether an existing destination is replaced. The endpoint surfaces clear errors for missing sources, path traversal, name-too-long conditions, and directory conflicts.
+
+## Enhancements
+
+### Webhooks
+
+- **Bounded webhook delivery history fetches**: Webhook delivery history reads are now capped at 1,000 records and limited to a 7-day lookback window, preventing unbounded memory growth from high-volume subscriptions. You should see more consistent performance for webhook history lookups on active subscriptions.
+
+### Integrations
+
+- **Smoother token refresh flow in OAuth consent page**: To provide a smoother experience with fewer steps, you only see the project selector for scopes that require project-level access.
+
+### APIs, Identity, and Administration
+
+- **Create account button shown for existing users**: The **Create account** button in the account switcher is now also shown to users who already have accounts, making it easier to create additional accounts. Please contact your account manager to enable.
+
+- **Private endpoint edit**: The private endpoint detail page now supports editing the endpoint name and port. An "Edit" button opens an inline form with validation, a confirmation modal, and clear error messaging. Please contact your account manager to enable.
+
+- **Private endpoint status badges with icons**: Connectivity status and endpoint state badges on the private endpoint list and detail pages now include status icon variants (success, error, in-progress, waiting, canceled, and health-unknown) for clearer at-a-glance status.
+
+## Fixes
+
+### dbt Copilot and agents
+
+- **Protected edits to generated files**: dbt Copilot is now instructed not to edit files in `dbt_packages/`, `target/`, or `logs/`, directing fixes to source-controlled files instead.
+
+- **Build validation after column changes**: dbt Copilot now runs `dbt build` (not just `dbt compile`) after edits that add, rename, or alias columns, or change `ref` or `source` references, catching runtime errors that compilation alone would miss.
+
+### Webhooks
+
+- **Skipped invalid email addresses in model notifications**: Model-level notifications now validates email addresses before attempting delivery, skipping any invalid entries with a warning rather than proceeding with an invalid address. This ensures dispatching model notifications to correct email addresses.
 
 ## May 20, 2026
 
