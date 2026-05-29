@@ -56,7 +56,7 @@ When you use the legacy `--selector` flag together with `--select` or `--exclude
 
 You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in-varsyml) file, located at the project root, to define project variables. This keeps variable definitions in one place and helps simplify `dbt_project.yml`. Variables defined in `vars.yml` are parsed _before_ `dbt_project.yml`, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. You can continue to define variables in `dbt_project.yml` as before, but you cannot define variables in both files. For details and precedence, refer to [Project variables](/docs/build/project-variables).
 
-### Opt-in v2 parser
+### Opt-in v2 parser <Lifecycle status="beta" />
 
 <Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag, which delegates parsing to the Fusion parser (`fs parse`) instead of dbt Core's own parser. This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
 
