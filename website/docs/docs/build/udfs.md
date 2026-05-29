@@ -201,9 +201,7 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     <TabItem value="JavaScript">
 
-    JavaScript UDFs don't require additional configs beyond the standard [function properties](/reference/function-properties). You can optionally set a Snowflake-specific config to control argument quoting:
-
-    - [`snowflake.quote_args`](/reference/resource-configs/quote_args): Controls whether argument names are quoted when creating the UDF on Snowflake. Defaults to `true`.
+    You can optionally set [`snowflake.quote_args`](/reference/resource-configs/quote_args) to control whether argument names are quoted when creating a JavaScript UDF on Snowflake.
 
     <File name='functions/schema.yml'>
 
@@ -213,7 +211,7 @@ Follow these steps to define UDFs in dbt:
         description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
         config:
           snowflake:                             # optional
-            quote_args: true                     # optional, Snowflake only
+            quote_args: true                     # optional, JavaScript UDFs on Snowflake only
         arguments:                               # optional
           - name: a_string                       # required if arguments is specified
             data_type: string                    # required if arguments is specified
