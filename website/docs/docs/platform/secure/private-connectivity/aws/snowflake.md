@@ -23,13 +23,13 @@ import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md';
 ## Configure AWS PrivateLink
 
 This section walks you through the setup of an AWS-hosted Snowflake PrivateLink endpoint in a <Constant name="dbt_platform" />. You can set up in two ways:
-- [Self-serve private endpoints](#self-serve-private-endpoints): Self-serve configuration of Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> user interface. Currently in private beta. 
+- [Self-serve private endpoints](#self-serve-private-endpoints): Self-serve configuration of Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> user interface. Currently in beta. 
 - [Support-led setup](#support-led-setup): Requires contacting dbt Support to configure Snowflake PrivateLink endpoints. Non-self service configuration of Snowflake PrivateLink endpoints. 
 
-### Self-serve private endpoints <Lifecycle status="private_beta" />
+### Self-serve private endpoints <Lifecycle status="beta" />
 
 :::note
-Self-serve private endpoints are currently in private beta for Snowflake on AWS. To join the beta, please reach out to your account manager. 
+Self-serve private endpoints are currently in beta for Snowflake on AWS. 
 
 This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead.
 :::
