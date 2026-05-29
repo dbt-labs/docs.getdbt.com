@@ -29,7 +29,7 @@ This section walks you through the setup of an AWS-hosted Snowflake PrivateLink 
 ### Self-serve private endpoints <Lifecycle status="beta" />
 
 :::note
-Self-serve private endpoints are currently in beta for Snowflake on AWS. 
+Self-serve private endpoints are currently in beta for Snowflake on AWS, and available to all eligible customers.
 
 This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead.
 :::
