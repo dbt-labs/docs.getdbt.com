@@ -56,13 +56,19 @@ When you use the legacy `--selector` flag together with `--select` or `--exclude
 
 You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in-varsyml) file, located at the project root, to define project variables. This keeps variable definitions in one place and helps simplify `dbt_project.yml`. Variables defined in `vars.yml` are parsed _before_ `dbt_project.yml`, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. You can continue to define variables in `dbt_project.yml` as before, but you cannot define variables in both files. For details and precedence, refer to [Project variables](/docs/build/project-variables).
 
+### Opt-in v2 parser
+
+<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag, which delegates parsing to the Fusion parser (`fs parse`) instead of dbt Core's own parser. This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
+
+For how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
+
 ### Improved exception handling and error messages
 
 <Constant name="core" /> v1.12 improves exception handling so error messages are clearer and stack traces are easier to interpret.
 
 Previously, some internal failures surfaced as Python errors (for example, `AttributeError`, `KeyError`, `IndexError`, `RuntimeError`), which could be difficult to understand. In <Constant name="core" /> v1.12, these are replaced with dbt errors (such as `CompilationError` and `ParsingError`) that include a clear error message. When you need the full Python error output for debugging, use `--debug` or check the logs.
 
-Key improvements:
+Key improvements include:
 
 - **Cleaner default output**: Built-in Python exceptions (`Exception`, `ValueError`, `RuntimeError`) are replaced with dbt errors, so dbt no longer treats them as internal errors or displays unnecessary stack traces.
 - **Parsing and config validation**: Invalid field values raise a `ParsingError` instead of a raw `InvalidFieldValue` exception when applying `dbt_project.yml` configs to resources. In a generic data test, a `config` value that is a string or a number instead of a set of key-value pairs raises a `TestConfigNotDictError`.
@@ -70,14 +76,10 @@ Key improvements:
 - **`dbt run-operation`**: When a `run-operation` call fails, the exception message is included in `run_results.json`, which makes failures easier to inspect.
 - **Cycle detection**: Dependency graph cycles raise a `CompilationError` instead of the built-in `RuntimeError`.
 - **Semantic model dependencies**: When a semantic model references a disabled or missing model, dbt raises a `CompilationError` instead of an `IndexError`.
-<Expandable alt_header="More scenarios with exception handling improvements">
-
-- A string concatenation in a `doc()` argument (such as `doc('foo' ~ 'bar')`) is skipped during doc block resolution instead of crashing with an `AttributeError`. 
-- A Jinja variable (such as `doc(my_variable)`) raises a `DocTargetNotFoundError`.
-- When a `meta` value in `schema.yml` references an undefined Jinja variable, dbt converts it to `None` instead of raising a `TypeError` during partial parse.
-- When `sources`, `tables`, `exposure` tags, or `packages` are set to `null`, dbt treats them as an empty list instead of raising a `TypeError`.
-- When a model with custom contract constraints is evaluated during `state:modified` selection, dbt returns `None` for unknown constraint types instead of raising a `KeyError`.
-</Expandable>
+- **`doc()` resolution**: A string concatenation in a `doc()` argument (such as `doc('foo' ~ 'bar')`) is skipped during doc block resolution instead of crashing with an `AttributeError`. A Jinja variable (such as `doc(my_variable)`) raises a `DocTargetNotFoundError`.
+- **Undefined Jinja in `meta`**: When a `meta` value in `schema.yml` references an undefined Jinja variable, dbt converts it to `None` instead of raising a `TypeError` during partial parse.
+- **Null list properties**: When `sources`, `tables`, `exposure` tags, or `packages` are set to `null`, dbt treats them as an empty list instead of raising a `TypeError`.
+- **Custom contract constraints**: When a model with custom contract constraints is evaluated during `state:modified` selection, dbt returns `None` for unknown constraint types instead of raising a `KeyError`.
 
 ### Managing changes to legacy behaviors
 
