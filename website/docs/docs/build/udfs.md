@@ -42,7 +42,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</Tabs>
 
 :::important UDF support
-Additional languages (for example, Java, Scala) aren't currently supported when developing UDFs.
+Additional languages (for example, Java, Scala) aren't currently supported for UDFs.
 
 See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
 :::
