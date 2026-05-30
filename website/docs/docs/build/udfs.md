@@ -413,7 +413,7 @@ Follow these steps to define UDFs in dbt:
     In your DAG, a UDF node is created from the SQL/Python and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
    <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" width="85%" title="The DAG for the UDF node" />
 
-After defining a UDF, if you update the SQL, Python, or JavaScript file that contains its function body (`is_positive_int.sql`, `is_positive_int.py`, or `is_positive_int.js` in these examples), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you `build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
+After defining a UDF, if you update the SQL, Python, or JavaScript file that contains its function body (`is_positive_int.sql`, `is_positive_int.py`, or `is_positive_int.js` in these examples), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you run `dbt build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
 
 ### Defining overloaded UDFs
 
