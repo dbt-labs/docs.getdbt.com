@@ -58,7 +58,7 @@ You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in
 
 ### Opt-in v2 parser <Lifecycle status="beta" />
 
-<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag, which delegates parsing to the Fusion parser (`fs parse`) instead of dbt Core's own parser. This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
+<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to the Fusion parser instead of dbt Core's own parser. This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
 
 For how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
 

@@ -58,7 +58,7 @@ config:
 
 <VersionBlock firstVersion="1.12" lastVersion="1.99">
 
-The `use_v2_parser` flag delegates parsing to the Fusion parser (`fs parse`) instead of <Constant name="core" />'s own parser. This is an opt-in flag — it changes no behavior unless explicitly set.
+The `use_v2_parser` flag delegates parsing to the Fusion parser instead of <Constant name="core" />'s own parser. This is an opt-in flag — it changes no behavior unless explicitly set.
 
 You can enable the v2 parser in three ways:
 
@@ -77,7 +77,6 @@ flags:
 
 Other behaviors to know about include:
 
-- **`v2_parser` (custom parse command)**: By default, dbt invokes `fs parse` when `--use-v2-parser` is set. To use a custom command or wrapper, set `--v2-parser` (env: `DBT_ENGINE_V2_PARSER`).
 
 - **Partial parsing**: Partial parsing is disabled when `--use-v2-parser` is set. Any stale `partial_parse.msgpack` from a prior run is automatically removed on entry.
 - **`write_manifest`**: `write_manifest` does not work in this mode because the Fusion parser's artifacts (`manifest.json` and `semantic_manifest.json`) are canonical and dbt Core does not re-serialize or overwrite them.
