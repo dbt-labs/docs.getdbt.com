@@ -85,7 +85,7 @@ Other behaviors to know about include:
 <File name="Usage">
 
 ```bash
-dbt run --use-v2-parser --v2-parser "uv run fs parse"
+dbt run --use-v2-parser
 ```
 
 </File>
