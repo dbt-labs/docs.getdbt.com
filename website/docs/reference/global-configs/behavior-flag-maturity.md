@@ -4,14 +4,20 @@ id: "behavior-flag-maturity"
 sidebar: "Behavior flag maturity"
 ---
 
-Several behavior change flags are planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track, which will switch their default values from `false` to `true`. This page describes what each change means for your project and what action, if any, you need to take.
+When a behavior change flag reaches maturity, its default value switches from `false` to `true`. This page documents flags on the <Constant name="dbt_platform" /> **Latest** release track that have reached maturity or are planned to reach maturity. For each flag, it describes what the change means for your project and how to preserve the previous behavior.
 
-To preserve the legacy behavior for any flag, set it explicitly to `false` in your `dbt_project.yml` before the change takes effect:
+For flags still in the introduction phase, refer to [Behavior changes](/reference/global-configs/behavior-changes).
+
+To preserve the previous behavior for any flag on this page, set it explicitly to `false` in your `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
 ```yml
 flags:
+  require_explicit_package_overrides_for_builtin_materializations: false
+  require_resource_names_without_spaces: false
+  source_freshness_run_project_hooks: false
+  require_generic_test_arguments_property: false
   skip_nodes_if_on_run_start_fails: false
   require_nested_cumulative_type_params: false
   require_all_warnings_handled_by_warn_error: false
@@ -23,9 +29,9 @@ flags:
 
 </File>
 
-## Summary
+## Reaching maturity
 
-The following table shows all flags reaching maturity and their potential impact.
+Several behavior change flags are planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track, which will switch their default values from `false` to `true`.
 
 | Flag | Impact |
 |---|---|
@@ -92,8 +98,6 @@ The legacy structure raises a validation error from the semantic manifest valida
 
 Any project with a cumulative metric still using the un-nested syntax stops parsing entirely on the first command. Because parsing fails, the error affects every dbt command: `run`, `build`, `test`, `compile`, `docs generate`, the <Constant name="semantic_layer" />, and more.
 
-For migration guidance and syntax examples, refer to [Cumulative metrics](/reference/global-configs/behavior-changes#cumulative-metrics).
-
 
 ## `require_all_warnings_handled_by_warn_error`
 
@@ -129,7 +133,28 @@ Example warnings that switch from "log only" to "error" for `warn_error: true` u
 - `RunResultWarningMessage` — emitted when a test or model returns `WARN` status
 - Various adapter-level warnings not previously handled by `--warn-error`
 
-For recommended rollout steps, refer to [Warn-error handler for all warnings](/reference/global-configs/behavior-changes#warn-error-handler-for-all-warnings).
+Note that enabling this for projects that use `--warn-error` may cause builds to fail on warnings that were previously ignored. We recommend enabling it gradually.
+
+<Expandable alt_header="Recommended steps to enable the flag">
+
+We recommend the following rollout plan when setting the `require_all_warnings_handled_by_warn_error` flag to `true`:
+
+1. Run a full build without partial parsing to surface parse-time warnings, and confirm it finishes successfully:
+
+   ```bash
+   dbt build --no-partial-parse
+   ```
+
+   - Some warnings are only emitted at parse time.
+   - If the build fails because warnings are already treated as errors (via `--warn-error` or `--warn-error-options`), fix those first and re-run.
+2. Review the logs:
+   - If you have any warnings at this point, it means they weren't handled by `--warn-error`/`--warn-error-options`. Continue to the next step.
+   - If there are no warnings, enable the flag in all environments and that's it!
+3. Enable `require_all_warnings_handled_by_warn_error` in your development environment and fix any warnings that now surface as errors.
+4. Enable the flag in your CI environment (if you have one) and ensure builds pass.
+5. Enable the flag in your production environment.
+
+</Expandable>
 
 
 ## `require_batched_execution_for_custom_microbatch_strategy`
@@ -196,8 +221,6 @@ Flipping the default to `true` for this flag silently changes the `state:modifie
 - **False "modified" on the first run after the flag flips.** If the baseline manifest was captured before the flag flipped (rendered values stored) and the current parse runs after the flip (literal text stored), every node whose YAML config contains Jinja will appear as `state:modified`, even if nothing has changed. This causes a full rebuild on the first CI run after the upgrade.
 - **New positives going forward.** After both manifests are captured with the flag enabled, `state:modified` will catch cases where two equivalent Jinja expressions render to the same value (for example, switching from `"{{ env_var('MAT', 'view') }}"` to `view`).
 
-For more information, refer to [Source definitions for state:modified](/reference/global-configs/behavior-changes#source-definitions-for-state).
-
 
 ## `require_yaml_configuration_for_mf_time_spines`
 
@@ -228,7 +251,7 @@ This flag has no functional impact; the legacy time-spine model continues to wor
 - The `MFTimespineWithoutYamlConfigurationDeprecation` warning no longer appears in logs.
 - If you use `--warn-error`, the warning no longer fires and will no longer escalate to an error.
 
-For more information, refer to [MetricFlow time spine YAML](/reference/global-configs/behavior-changes#metricflow-time-spine-yaml).
+For more information, refer to [MetricFlow timespine](/docs/build/metricflow-time-spine).
 
 
 ## `validate_macro_args`
@@ -259,5 +282,109 @@ On its own, the flag emits warnings and builds continue. However, these warnings
 
 This affects projects where the `arguments:` listed in a macro's YAML patch no longer match the macro's actual Jinja signature. For those projects, every command fails at parse time until you either update the YAML arguments to match the macro or remove the `arguments:` block entirely.
 
-For more information, refer to [Macro argument validation](/reference/global-configs/behavior-changes#macro-argument-validation).
 
+## Already mature
+
+The following flags have already reached maturity in prior releases.
+
+| Flag | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+|---|---|---|
+| [`require_explicit_package_overrides_for_builtin_materializations`](#require_explicit_package_overrides_for_builtin_materializations) | 2024.06 | <Constant name="core" /> v1.8.0 |
+| [`require_resource_names_without_spaces`](#require_resource_names_without_spaces) | 2025.05 | <Constant name="core" /> v1.10.0 |
+| [`source_freshness_run_project_hooks`](#source_freshness_run_project_hooks) | 2025.05 | <Constant name="core" /> v1.10.0 |
+| [`require_generic_test_arguments_property`](#require_generic_test_arguments_property) | 2025.08 | <Constant name="core" /> v1.10.8 |
+
+## `require_explicit_package_overrides_for_builtin_materializations`
+
+Setting the `require_explicit_package_overrides_for_builtin_materializations` flag to `true` prevents this automatic override.
+
+We have deprecated the behavior where installed packages could override built-in materializations without your explicit opt-in. When this flag is set to `true`, a materialization defined in a package that matches the name of a built-in materialization will no longer be included in the search and resolution order. Unlike macros, materializations don't use the `search_order` defined in the project `dispatch` config.
+
+The built-in materializations are `'view'`, `'table'`, `'incremental'`, `'materialized_view'` for models as well as `'test'`, `'unit'`, `'snapshot'`, `'seed'`, and `'clone'`.
+
+You can still explicitly override built-in materializations, in favor of a materialization defined in a package, by reimplementing the built-in materialization in your root project and wrapping the package implementation.
+
+<File name='macros/materialization_view.sql'>
+
+```sql
+{% materialization view, snowflake %}
+  {{ return(my_installed_package_name.materialization_view_snowflake()) }}
+{% endmaterialization %}
+```
+
+</File>
+
+In the future, we may extend the project-level [`dispatch` configuration](/reference/project-configs/dispatch-config) to support a list of authorized packages for overriding built-in materialization.
+
+## `require_resource_names_without_spaces`
+
+The `require_resource_names_without_spaces` flag enforces using resource names without spaces.
+
+The names of dbt resources (for example, models) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `true`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
+
+<File name='models/model name with spaces.sql'>
+
+```sql
+-- This model file should be renamed to model_name_with_underscores.sql
+```
+
+</File>
+
+## `source_freshness_run_project_hooks`
+
+Set the `source_freshness_run_project_hooks` flag to include/exclude "project hooks" ([`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end)) in the `dbt source freshness` command execution. The flag is set to `true` (include) by default.
+
+If you have a specific project [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end) hooks that should not run before/after `source freshness` command, you can add a conditional check to those hooks:
+
+<File name='dbt_project.yml'>
+
+```yaml
+on-run-start:
+  - '{{ ... if flags.WHICH != 'freshness' }}'
+```
+</File>
+
+## `require_generic_test_arguments_property`
+
+dbt supports parsing key-value arguments that are inputs to generic tests when specified under the `arguments` property. In the past, dbt didn't support a way to clearly disambiguate between properties that were inputs to generic tests and framework configurations, and only accepted arguments as top-level properties.
+
+In **Latest**, the `require_generic_test_arguments_property` flag is set to `true` by default. In dbt Core versions prior to 1.10.8, the default value is `false`. Using the `arguments` property in test definitions is optional in either case.
+
+If you do use `arguments` while the flag is `false`, dbt will recognize it but raise the `ArgumentsPropertyInGenericTestDeprecation` warning. This warning lets you know that the flag will eventually default to `true` across all releases and will be parsed as keyword arguments to the data test.
+
+Here's an example using the new `arguments` property:
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "order_items_subtotal = subtotal"
+```
+
+</File>
+
+Here's an example using the alternative `test_name` format:
+
+<File name='model.yml'>
+
+```yaml
+models:
+  - name: my_model_with_generic_test
+    data_tests:
+    - name: arbitrary_name
+      test_name: dbt_utils.expression_is_true
+      arguments:
+         expression: "order_items_subtotal = subtotal"
+      config:
+        where: "1=1"
+```
+
+</File>
+
+When you set the `require_generic_test_arguments_property` flag to `true`, dbt will:
+- Parse any key-value pairs under `arguments` in generic tests as inputs to the generic test macro.
+- Raise a `MissingArgumentsPropertyInGenericTestDeprecation` warning if additional non-config arguments are specified outside of the `arguments` property.

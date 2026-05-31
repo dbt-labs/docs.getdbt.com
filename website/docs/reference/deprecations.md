@@ -490,7 +490,7 @@ If you are seeing this warning, unfortunately, there isn't much you can do at th
 
 ### MFCumulativeTypeParamsDeprecation
 
-In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-changes#cumulative-metrics) was deprecated. 
+In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-flag-maturity#require_nested_cumulative_type_params) was deprecated. 
 
 Example:
 
@@ -749,7 +749,7 @@ The following are recommended approaches:
 
 ### PackageMaterializationOverrideDeprecation
 
-The behavior where installed packages could override built-in materializations without your explicit opt-in is deprecated. Setting the [`require_explicit_package_overrides_for_builtin_materializations` flag](/reference/global-configs/behavior-changes#package-override-for-built-in-materialization) to `false` in your `dbt_project.yml` allowed packages that matched the name of a built-in materialization to continue to be included in the search and resolution order.
+The behavior where installed packages could override built-in materializations without your explicit opt-in is deprecated. Setting the [`require_explicit_package_overrides_for_builtin_materializations` flag](/reference/global-configs/behavior-flag-maturity#require_explicit_package_overrides_for_builtin_materializations) to `false` in your `dbt_project.yml` allowed packages that matched the name of a built-in materialization to continue to be included in the search and resolution order.
 
 #### PackageMaterializationOverrideDeprecation warning resolution
 
@@ -860,7 +860,7 @@ Rename the resource in violation so it no longer contains a space in its name.
 
 ### SourceFreshnessProjectHooksNotRun
 
-If you are seeing this, it means that the behavior flag `source_freshness_run_project_hooks` is set to `false` and either `on-run-start` or `on-run-end` is defined ([docs](/reference/global-configs/behavior-changes#project-hooks-with-source-freshness)). Previously, project hooks wouldn't be run on sources when `dbt source freshness` was run. 
+If you are seeing this, it means that the behavior flag `source_freshness_run_project_hooks` is set to `false` and either `on-run-start` or `on-run-end` is defined ([docs](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks)). Previously, project hooks wouldn't be run on sources when `dbt source freshness` was run. 
 
 Example: 
 
@@ -874,7 +874,7 @@ information: https://docs.getdbt.com/reference/global-configs/legacy-behaviors
 
 #### SourceFreshnessProjectHooksNotRun warning resolution
 
-Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-changes#project-hooks-with-source-freshness).
+Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks).
 
 ### SourceOverrideDeprecation
 
