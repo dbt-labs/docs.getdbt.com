@@ -94,7 +94,6 @@ When the v2 parser fails, dbt surfaces these exceptions to make failures easier 
 
 | Exception | Cause |
 |---|---|
-| `FusionParserMissingError` | The parser was not found |
 | `FusionParserError` | The parser exited with a non-zero code or produced no output |
 | `FusionParserSchemaError` | The output could not be parsed as valid JSON. Please check your JSON and try again. |
 | `FusionParserVersionError` | The output manifest uses an incompatible schema version. Make sure you're using Core v1.12 or higher. |
