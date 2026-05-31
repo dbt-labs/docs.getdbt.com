@@ -60,6 +60,7 @@ You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in
 
 <Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to Fusion's Rust parser instead of dbt Core's own Python parser. This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
 
+
 :::note
 The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues]() to help us close the gap.
 :::
