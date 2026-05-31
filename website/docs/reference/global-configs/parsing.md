@@ -94,7 +94,7 @@ When the v2 parser fails, dbt surfaces these exceptions to make failures easier 
 
 | Exception | Cause |
 |---|---|
-| `FusionParserMissingError` | The parser binary was not found |
+| `FusionParserMissingError` | The parser was not found |
 | `FusionParserError` | The parser exited with a non-zero code or produced no output |
 | `FusionParserSchemaError` | The output could not be parsed as valid JSON |
 | `FusionParserVersionError` | The output manifest uses an incompatible schema version |
