@@ -64,7 +64,7 @@ This is an opt-in flag that changes no behavior unless explicitly set, making it
 
 
 :::note
-The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues]() to help us close the gap.
+The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues](https://github.com/dbt-labs/dbt-core/issues) to help us close the gap.
 :::
 
 For more information on how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
