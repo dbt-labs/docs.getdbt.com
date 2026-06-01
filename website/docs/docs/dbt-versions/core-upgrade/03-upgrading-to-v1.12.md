@@ -27,11 +27,24 @@ dbt State makes dbt smarter about what to build &mdash; instead of rebuilding ev
 To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state). It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings); enabling dbt State on every `dbt run` or `dbt build` for you. 
 
 To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml` instead. You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
-## `dbt login`
+
+### `dbt login`
 
 `dbt login` signs you in to dbt from the command line to access features that require authentication. It opens a browser prompt to sign in to an existing dbt platform account or create a free one. Run `dbt login` status to check your current authentication status.
 
-Use `dbt login` for [dbt State](/reference/commands/login#dbt-login-status) or local development (interactive authentication) on macOS, Linux, or Windows. Refer to [`dbt login`](/reference/commands/login) for more info.
+Use `dbt login` for [dbt State](/reference/commands/login#dbt-login-with-dbt-state) or local development (interactive authentication) on macOS, Linux, or Windows. Refer to [`dbt login`](/reference/commands/login) for more info.
+
+### Opt-in v2 parser <Lifecycle status="beta" />
+
+<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to Fusion's Rust parser instead of dbt Core's own Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward Fusion compatibility, so you can catch and fix any project issues gradually rather than all at once.
+
+This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
+
+:::note
+The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues](https://github.com/dbt-labs/dbt-core/issues) to help us close the gap.
+:::
+
+For more information on how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
 
 ### Native private packages in dbt Core
 
@@ -87,18 +100,6 @@ When you use the legacy `--selector` flag together with `--select` or `--exclude
 
 You can use the [`vars.yml`](/docs/build/project-variables#defining-variables-in-varsyml) file, located at the project root, to define project variables. This keeps variable definitions in one place and helps simplify `dbt_project.yml`. Variables defined in `vars.yml` are parsed _before_ `dbt_project.yml`, so you can reference them in `dbt_project.yml` using `{{ var('...') }}`. You can continue to define variables in `dbt_project.yml` as before, but you cannot define variables in both files. For details and precedence, refer to [Project variables](/docs/build/project-variables).
 
-### Opt-in v2 parser <Lifecycle status="beta" />
-
-<Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to Fusion's Rust parser instead of dbt Core's own Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward Fusion compatibility, so you can catch and fix any project issues gradually rather than all at once.
-
-This is an opt-in flag that changes no behavior unless explicitly set, making it a low-risk way to test Fusion parser compatibility from within <Constant name="core" /> v1.12.
-
-
-:::note
-The Rust parser is beta. Its output manifest may differ from the Python parser's in edge cases, which can affect downstream behavior. Fall back by removing `--use-v2-parser`, and [report issues](https://github.com/dbt-labs/dbt-core/issues) to help us close the gap.
-:::
-
-For more information on how to enable the flag, related behaviors, and parser error types, refer to [Opt-in v2 parser](/reference/global-configs/parsing#opt-in-v2-parser).
 
 ### Improved exception handling and error messages
 
