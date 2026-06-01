@@ -20,7 +20,7 @@ functions:
     returns:
       data_type: <string>
     overloads:
-      - defined_in: <string>       # required, name of the SQL or Python file
+      - defined_in: <string>       # required, name of the SQL, Python, or JavaScript file
         arguments:                 # optional
           - name: <arg name>       # required if arguments is specified
             data_type: <string>    # required if arguments is specified, warehouse-specific
@@ -41,7 +41,7 @@ functions:
 The `overloads` property is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-The `overloads` property lets you define multiple argument signatures for the same [user-defined function UDF](/docs/build/udfs). This lets you call the same function name with different input types, without creating separate UDFs for each variant. The warehouse calls the right version based on the argument types. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake.
+The `overloads` property lets you define multiple argument signatures for the same [user-defined function UDF](/docs/build/udfs). This lets you call the same function name with different input types, without creating separate UDFs for each variant. The warehouse calls the right version based on the argument types. `overloads` is supported for SQL UDFs in Snowflake and Postgres, and Python and JavaScript UDFs in Snowflake.
 
 Each overload references a separate file that contains its function body, with optional `arguments` and `returns`. All overloads are grouped into one DAG node (the root function), so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed.
 
@@ -59,7 +59,7 @@ Each entry in the `overloads` list supports the following properties.
 
 ### defined_in
 
-The name of the file (without extension) that contains the overload's function body. The file must exist in the `functions/` directory. For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql` for SQL UDFs or `functions/null_if_empty_numeric.py` for Python UDFs.
+The name of the file (without extension) that contains the overload's function body. The file must exist in the `functions/` directory. For example, `defined_in: null_if_empty_numeric` references `functions/null_if_empty_numeric.sql` for SQL UDFs, `functions/null_if_empty_numeric.py` for Python UDFs, or `functions/null_if_empty_numeric.js` for JavaScript UDFs.
 
 Each overload must reference a unique file. The root function's file and all `defined_in` values must be distinct.
 
@@ -81,7 +81,7 @@ The return type for the overload. Follows the same structure as [returns](/refer
 <Tabs>
 <TabItem value="SQL">
 
-<File name='functions/schema.yml'>
+<File name='functions/null_if_empty.yml'>
 
 ```yml
 functions:
@@ -131,7 +131,7 @@ SELECT CASE WHEN val = 0 THEN NULL ELSE val END
 </TabItem>
 <TabItem value="Python">
 
-<File name='functions/schema.yml'>
+<File name='functions/null_if_empty.yml'>
 
 ```yml
 functions:
@@ -171,6 +171,50 @@ def main(val):
 ```python
 def main(val):
     return None if val == 0 else val
+```
+
+</File>
+
+</TabItem>
+<TabItem value="JavaScript">
+
+<File name='functions/null_if_empty.yml'>
+
+```yml
+functions:
+  - name: null_if_empty
+    arguments:
+      - name: val
+        data_type: varchar
+    returns:
+      data_type: varchar
+    overloads:
+      - defined_in: null_if_empty_numeric
+        arguments:
+          - name: val
+            data_type: numeric
+        returns:
+          data_type: numeric
+```
+
+</File>
+
+Create a separate JavaScript file for each overload body. In this example, the base function handles empty strings, and the overload handles numeric values:
+
+<File name='functions/null_if_empty.js'>
+
+```javascript
+if (val === '') return null;
+return val;
+```
+
+</File>
+
+<File name='functions/null_if_empty_numeric.js'>
+
+```javascript
+if (val === 0) return null;
+return val;
 ```
 
 </File>
