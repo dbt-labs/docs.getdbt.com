@@ -31,7 +31,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 For versioned models, you can configure dbt to automatically create a pointer view named after a model's base name (for example, `dim_customers`) once the latest version materializes successfully. This lets users always query the current version without maintaining a view manually.
 
-Enable this feature in your project with the `latest_version_pointer_enabled_by_default: true` flag in `dbt_project.yml`, or per model using the [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config. You can customize the pointer name per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro. For more information, refer to [Model versions](/docs/mesh/govern/model-versions#pointing-to-the-latest-version).
+Enable this feature in your project with the [`latest_version_pointer_enabled_by_default: true`](/docs/mesh/govern/model-versions#pointing-to-the-latest-version) flag in `dbt_project.yml`, or per model using the [`latest_version_pointer.enabled`](/reference/resource-configs/latest_version_pointer) config. You can customize the pointer name per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro. For more information, refer to [Model versions](/docs/mesh/govern/model-versions#pointing-to-the-latest-version).
 
 ### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
 

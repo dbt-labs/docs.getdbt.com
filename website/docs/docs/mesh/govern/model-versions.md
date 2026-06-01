@@ -405,7 +405,7 @@ If you want a view that always tracks the latest version instead of pinning to a
 
 The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When enabled, users querying outside of dbt always get the current version. This config only applies to versioned models.
 
-Enable this feature in your project by setting the `latest_version_pointer_enabled_by_default` flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer` config:
+Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/docs/mesh/govern/model-versions#pointing-to-the-latest-version) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
 
 <Tabs>
 <TabItem value="global" label="Enable globally">

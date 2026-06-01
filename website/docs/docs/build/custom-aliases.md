@@ -138,7 +138,11 @@ To override the default, create a macro named `generate_latest_version_pointer_a
 
 ```jinja2
 {% macro generate_latest_version_pointer_alias(custom_alias_name=none, node=none) -%}
-    {{ node.name ~ "_latest" }}
+    {%- if custom_alias_name -%}
+        {{ custom_alias_name | trim }}
+    {%- else -%}
+        {{ node.name ~ "_latest" }}
+    {%- endif -%}
 {%- endmacro %}
 ```
 
