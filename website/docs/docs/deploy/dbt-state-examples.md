@@ -40,6 +40,8 @@ You get the same result with and without dbt State.
 <Tabs queryString="initial-run">
 <TabItem value="without" label="Without dbt State">
 
+
+```shell
 Running with dbt=1.12.0-b2
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 644 macros, 3 unit tests
@@ -82,7 +84,7 @@ Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12
 </TabItem>
 <TabItem value="with" label="With dbt State">
 
-```
+```shell
 Running with dbt=1.12.0-b2
 State adapter: dbt-state v2.22.7 is enabled
 Registered adapter: snowflake=1.11.5
@@ -137,7 +139,7 @@ With dbt State enabled, dbt detects that these models just ran and that neither 
 <Tabs queryString="second-run">
 <TabItem value="without" label="Without dbt State">
 
-```
+```shell
 Running with dbt=1.12.0-b2
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 644 macros, 3 unit tests
@@ -179,7 +181,7 @@ Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12
 </TabItem>
 <TabItem value="with" label="With dbt State">
 
-```
+```shell
 Running with dbt=1.12.0-b2
 State adapter: dbt-state v2.22.7 is enabled
 Registered adapter: snowflake=1.11.5
@@ -235,7 +237,7 @@ Imagine you've made a small change to the `customers` model and run it in a fres
 <Tabs queryString="select-customers-fresh-dev">
 <TabItem value="without" label="Without dbt State">
 
-```
+```shell
 Running with dbt=1.12.0-b2
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 658 macros, 3 unit tests
@@ -263,7 +265,7 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
 </TabItem>
 <TabItem value="with" label="With dbt State">
 
-```
+```shell
 Running with dbt=1.12.0-b2
 State adapter: dbt-state v2.22.7 is enabled
 Registered adapter: snowflake=1.11.5
@@ -298,7 +300,7 @@ Suppose you create a fresh dev schema and run only the `customers` model. Withou
 <Tabs queryString="select-customers-new-dev">
 <TabItem value="without" label="Without dbt State">
 
-```
+```shell
 Running with dbt=1.12.0-b2
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 658 macros, 3 unit tests
@@ -326,7 +328,7 @@ Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
 </TabItem>
 <TabItem value="with" label="With dbt State">
 
-```
+```shell
 Running with dbt=1.12.0-b2
 State adapter: dbt-state v2.22.7 is enabled
 Registered adapter: snowflake=1.11.5
