@@ -63,9 +63,11 @@ You can configure whether downstream models run when an upstream model fails usi
 
 <Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
 
+This is separate from the new <Constant name="semantic_layer" /> YAML spec below, which changes how you define semantic models and metrics in native dbt YAML.
+
 ### New Semantic Layer YAML spec
 
-<Constant name="core" /> v1.12 adds support for the latest Semantic Layer YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
+<Constant name="core" /> v1.12 adds support for the latest <Constant name="semantic_layer" /> YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
 
 Key changes in the new spec:
 - `semantic_model` is nested directly under each model instead of being a standalone top-level key.
