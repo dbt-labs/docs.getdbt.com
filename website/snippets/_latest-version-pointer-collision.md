@@ -17,16 +17,19 @@ To fix this, you can do the following:
 
 <Tabs>
 <TabItem value="remove" label="Remove the `alias` (recommended)">
-- Remove the `alias` from the latest version.
-  ```yaml
+
+Remove the `alias` from the latest version:
+
+```yaml
         # config:
         #   alias: dim_customers
 ```
-Advantages: simple and safe; just let the automatic pointer handle it. That's what this feature is designed for 😎 
+Advantages: simple and safe; just let the automatic pointer handle it. 
 
 </TabItem>
 <TabItem value="disable" label="Disable the latest version pointer for only that model">
-  ```yaml
+
+```yaml
         config:
           alias: dim_customers
     config:
@@ -48,7 +51,6 @@ Advantages: immediately backward-compatible for pre-existing `alias` configs.
 <TabItem value="override" label=" Override the `generate_latest_version_pointer_alias` macro">
 
 Override the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro to use a different naming convention globally.
-
 
 `macros/generate_latest_version_pointer_alias.sql`
 
