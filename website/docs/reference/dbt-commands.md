@@ -33,7 +33,7 @@ For information about selecting models on the command line, refer to [Model sele
 Commands with a ('❌') indicate write commands, commands with a ('✅') indicate read commands, and commands with a (N/A) indicate it's not relevant to the parallelization of dbt commands.
 
 :::info
-Some commands are not yet supported in the <Constant name="fusion_engine" /> or have limited functionality. See the [Fusion supported features](/docs/fusion/supported-features) page for details.
+Some commands are not yet supported in the <Constant name="fusion_engine" /> or have limited functionality. Refer to the [Fusion supported features](/docs/fusion/supported-features) page for details.
 :::
 
 
@@ -46,12 +46,14 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
-| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> uses [`--write-catalog`](/reference/commands/cmd-docs) flag instead |
+| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
 | help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
 | [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| [lint](/reference/commands/lint) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | Requires <Constant name="dbt_platform" /> project on <Constant name="fusion" /> |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [login](/reference/commands/login) | Logs in to your <Constant name="dbt_platform" /> account | N/A | <Constant name="core" /> v2.0 and later <br /> <Constant name="platform_cli" /> |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
