@@ -27,6 +27,11 @@ That work is documented below — it should be simple, straightforward, and in 
 
 You can find more information about what's changing in the dbt Fusion engine [changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
 
+:::tip Test Fusion parser compatibility from dbt Core v1.12
+
+If you're on <Constant name="core" /> v1.12, you can test Fusion parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the Fusion parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
+
+:::
 
 <FusionUpgradeSteps />
 
