@@ -285,14 +285,7 @@ This affects projects where the `arguments:` listed in a macro's YAML patch no l
 
 ## Already mature
 
-The following flags have already reached maturity in prior releases.
-
-| Flag | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
-|---|---|---|
-| [`require_explicit_package_overrides_for_builtin_materializations`](#require_explicit_package_overrides_for_builtin_materializations) | 2024.06 | <Constant name="core" /> v1.8.0 |
-| [`require_resource_names_without_spaces`](#require_resource_names_without_spaces) | 2025.05 | <Constant name="core" /> v1.10.0 |
-| [`source_freshness_run_project_hooks`](#source_freshness_run_project_hooks) | 2025.05 | <Constant name="core" /> v1.10.0 |
-| [`require_generic_test_arguments_property`](#require_generic_test_arguments_property) | 2025.08 | <Constant name="core" /> v1.10.8 |
+The following flags have already reached maturity in prior releases. For intro and maturity dates, refer to [Behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes).
 
 ## `require_explicit_package_overrides_for_builtin_materializations`
 

@@ -9,17 +9,7 @@ import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config
 
 :::caution Behavior change flags reaching maturity
 
-Several behavior change flags are planned to be enabled by default on the <Constant name="dbt_platform" /> **Latest** release track. The following flags are affected:
-
-- [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails)
-- [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-flag-maturity#require_nested_cumulative_type_params)
-- [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-flag-maturity#require_all_warnings_handled_by_warn_error)
-- [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy)
-- [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-flag-maturity#state_modified_compare_more_unrendered_values)
-- [`require_yaml_configuration_for_mf_time_spines`](/reference/global-configs/behavior-flag-maturity#require_yaml_configuration_for_mf_time_spines)
-- [`validate_macro_args`](/reference/global-configs/behavior-flag-maturity#validate_macro_args)
-
-Refer to [Behavior flag maturity and impact](/reference/global-configs/behavior-flag-maturity) to understand which flags may affect your project and how to opt out before the change takes effect.
+Several behavior change flags are planned to be enabled by default on the <Constant name="dbt_platform" /> **Latest** release track. Refer to [Behavior flag maturity and impact](/reference/global-configs/behavior-flag-maturity) and the [Mature and maturing flags](#mature-and-maturing-flags) section below to see which flags are affected, how they may impact your project, and how to opt out before the change takes effect.
 
 :::
 
@@ -151,24 +141,28 @@ This table outlines which version of the dbt adapter contains the behavior chang
 
 ## Mature and maturing flags
 
-These behavior change flags have reached maturity or are planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. This section lists each flag by name and links to [Behavior flag maturity and impact](/reference/global-configs/behavior-flag-maturity) for full detail, including what changed, impact on your project, and how to opt out.
+These behavior change flags have reached maturity or are planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. This section lists each flag by name and links to [Behavior flag maturity and impact](/reference/global-configs/behavior-flag-maturity) for full detail, including what changed, impact on your project, and how to opt out. For introduction dates, see the [dbt Core behavior changes](#dbt-core-behavior-changes) table above.
 
 ### Already mature
 
-- [`require_explicit_package_overrides_for_builtin_materializations`](/reference/global-configs/behavior-flag-maturity#require_explicit_package_overrides_for_builtin_materializations) (<Constant name="dbt" /> **Latest** 2024.06, <Constant name="core" /> v1.8.0)
-- [`require_resource_names_without_spaces`](/reference/global-configs/behavior-flag-maturity#require_resource_names_without_spaces) (<Constant name="dbt" /> **Latest** 2025.05, <Constant name="core" /> v1.10.0)
-- [`source_freshness_run_project_hooks`](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks) (<Constant name="dbt" /> **Latest** 2025.05, <Constant name="core" /> v1.10.0)
-- [`require_generic_test_arguments_property`](/reference/global-configs/behavior-flag-maturity#require_generic_test_arguments_property) (<Constant name="dbt" /> **Latest** 2025.08, <Constant name="core" /> v1.10.8)
+| Flag | Maturity date | <Constant name="core" /> |
+|---|---|---|
+| [`require_explicit_package_overrides_for_builtin_materializations`](/reference/global-configs/behavior-flag-maturity#require_explicit_package_overrides_for_builtin_materializations) | 2024.06 | v1.8.0 |
+| [`require_resource_names_without_spaces`](/reference/global-configs/behavior-flag-maturity#require_resource_names_without_spaces) | 2025.05 | v1.10.0 |
+| [`source_freshness_run_project_hooks`](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks) | 2025.05 | v1.10.0 |
+| [`require_generic_test_arguments_property`](/reference/global-configs/behavior-flag-maturity#require_generic_test_arguments_property) | 2025.08 | v1.10.8 |
 
 ### Reaching maturity
 
-- [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails)
-- [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-flag-maturity#require_nested_cumulative_type_params)
-- [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-flag-maturity#require_all_warnings_handled_by_warn_error)
-- [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy)
-- [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-flag-maturity#state_modified_compare_more_unrendered_values)
-- [`require_yaml_configuration_for_mf_time_spines`](/reference/global-configs/behavior-flag-maturity#require_yaml_configuration_for_mf_time_spines)
-- [`validate_macro_args`](/reference/global-configs/behavior-flag-maturity#validate_macro_args)
+| Flag | Maturity date |
+|---|---|
+| [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails) | TBD* |
+| [`require_nested_cumulative_type_params`](/reference/global-configs/behavior-flag-maturity#require_nested_cumulative_type_params) | TBD* |
+| [`require_all_warnings_handled_by_warn_error`](/reference/global-configs/behavior-flag-maturity#require_all_warnings_handled_by_warn_error) | TBD* |
+| [`require_batched_execution_for_custom_microbatch_strategy`](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy) | TBD* |
+| [`state_modified_compare_more_unrendered_values`](/reference/global-configs/behavior-flag-maturity#state_modified_compare_more_unrendered_values) | TBD* |
+| [`require_yaml_configuration_for_mf_time_spines`](/reference/global-configs/behavior-flag-maturity#require_yaml_configuration_for_mf_time_spines) | TBD* |
+| [`validate_macro_args`](/reference/global-configs/behavior-flag-maturity#validate_macro_args) | TBD* |
 
 When the <Constant name="dbt" /> Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 
