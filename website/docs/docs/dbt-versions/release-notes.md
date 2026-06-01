@@ -20,6 +20,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## May 2026
 
+- **Enhancement:** Users granted `user_credential_write` can access **Your profile** > **Credentials** without `develop_access` (including read-only users). Environment variable overrides and dbt version overrides still require `develop_access`. Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 - **New:** The [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) is now available for Enterprise accounts. Assign it to users who need to create, edit, and run jobs within assigned projects and environments without access to edit environments or environment variables.
 - **Enhancement:** The admin API toolset (job management and run operations) is now always available in the <Constant name="dbt" /> <Constant name="copilot" /> [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) and no longer requires a feature flag. You no longer need to contact your account manager to enable these tools.
 - **Fix:** When a job cannot clone its repository because no remote URL is configured, the error message now explains the most likely causes (an invalid Git remote URL, a Git provider outage, or a deprecated HTTPS connection) and directs you to verify the URL, confirm your provider is operational, and ensure the repository uses SSH with deploy keys before retrying.
