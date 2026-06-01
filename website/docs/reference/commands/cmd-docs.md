@@ -122,7 +122,7 @@ The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of
 
 ## --write-catalog flag
 
-The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. You can use this flag with the following commands:
+The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. <Constant name="fusion" /> jobs running in <Constant name="dbt_platform" />, dbt automatically runs `write-catalog`, `build`, and `run`, and hydrates your Catalog, so you don't need to manually include it. You can use this flag with the following commands:
 
 - `dbt build`
 - `dbt run`
@@ -135,9 +135,12 @@ The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/c
 dbt build --write-catalog
 ```
 
+
 ### Platform behavior
 
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead.
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead. Additionally, for <Constant name="fusion" /> jobs running in the platform, dbt will run `write-catalog` automatically with `build` or `run`, so you don't need to run a separate command to hydrate your metadata. In the platform, you can optionally choose to include it when running `dbt parse` or `dbt compile`.
+
+Note:
 
 ### Local usage
 
@@ -159,7 +162,7 @@ Instead of loading a static `manifest.json` in the browser, v2 builds a compact 
 
 ### Generate the index
 
-Before serving, build your project with the `--write-index` flag. You can add this flag to any dbt command. It writes index files to the `target/index/` directory, which is what `dbt docs serve` reads from:
+Before serving, build your project with the `--write-index` flag. You can add this flag to dbt `build`, `run`, `parse`, or `compile` commands. It writes index files to the `target/index/` directory which is what `dbt docs serve` reads from:
 
 ```shell
 dbt compile --write-index
@@ -169,13 +172,11 @@ dbt compile --write-index
 dbt build --write-index
 ```
 
-Add `--write-lineage` to also generate column-level lineage data:
+Add [`--static-analysis strict`](/docs/fusion/new-concepts) to for column lineage and richer column metadata from your warehouse:
 
 ```shell
-dbt build --write-index --write-lineage
+dbt build --write-index --static-analysis strict
 ```
-
-Add [`--static-analysis strict`](/docs/fusion/new-concepts) to pull column type metadata from your warehouse:
 
 ```shell
 dbt build --write-index --static-analysis strict
