@@ -769,6 +769,7 @@ const sidebarSettings = {
           items: [
             "docs/mesh/iceberg/apache-iceberg-support",
             "docs/mesh/iceberg/about-catalogs",
+            "docs/mesh/iceberg/catalogs-yml",
             "docs/mesh/iceberg/snowflake-iceberg-support",
             "docs/mesh/iceberg/databricks-iceberg-support",
             "docs/mesh/iceberg/bigquery-iceberg-support",
