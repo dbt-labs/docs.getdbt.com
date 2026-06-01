@@ -12,13 +12,9 @@ pagination_next: "docs/deploy/dbt-state-migration"
 
 <IntroText>
 
-These examples use the Jaffle Shop project to show side-by-side comparisons of CLI output with and without dbt State enabled.
+These examples use the Jaffle Shop project to show side-by-side comparisons of DAG and CLI output with and without dbt State enabled.
 
 </IntroText>
-
-The following examples use this [Jaffle Shop project](https://github.com/dbt-labs/jaffle-shop) DAG as a reference. You can refer to it to understand the model lineage for each scenario.
-
-<Lightbox src="/img/docs/dbt-state/dbt_state_dag.png" title="The Jaffle Shop DAG" />
 
 Each of the following scenarios shows how a run differs between <Constant name="core" /> alone and <Constant name="core" /> with dbt State, using the same command and project.
 
@@ -40,6 +36,9 @@ You get the same result with and without dbt State.
 <Tabs queryString="initial-run">
 <TabItem value="without" label="Without dbt State">
 
+<Lightbox src="/img/docs/dbt-state/first_run_not_enabled.png" width="60%" title="DAG: Initial run without dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -80,9 +79,14 @@ Completed successfully
 Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12
 ```
 
+</Expandable>
 
 </TabItem>
 <TabItem value="with" label="With dbt State">
+
+<Lightbox src="/img/docs/dbt-state/first_run_enabled.png" width="60%" title="DAG: Initial run with dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -125,6 +129,8 @@ Completed successfully. Total cache hits: 0. Estimated time saved: 0.00s. Freshn
 Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=12
 ```
 
+</Expandable>
+
 </TabItem>
 </Tabs>
 
@@ -138,6 +144,10 @@ With dbt State enabled, dbt detects that these models just ran and that neither 
 
 <Tabs queryString="second-run">
 <TabItem value="without" label="Without dbt State">
+
+<Lightbox src="/img/docs/dbt-state/second_run_not_enabled.png" width="60%" title="DAG: Second run without dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -178,8 +188,14 @@ Completed successfully
 Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12
 ```
 
+</Expandable>
+
 </TabItem>
 <TabItem value="with" label="With dbt State">
+
+<Lightbox src="/img/docs/dbt-state/second_run_enabled.png" width="60%" title="DAG: Second run with dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -223,6 +239,8 @@ Completed successfully. Total cache hits: 6. Estimated time saved: 12.32s. Fresh
 Done. PASS=6 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=6 TOTAL=12
 ```
 
+</Expandable>
+
 </TabItem>
 </Tabs>
 
@@ -236,6 +254,10 @@ Imagine you've made a small change to the `customers` model and run it in a fres
 
 <Tabs queryString="select-customers-fresh-dev">
 <TabItem value="without" label="Without dbt State">
+
+<Lightbox src="/img/docs/dbt-state/fresh_dev_not_enabled.png" width="60%" title="DAG: Fresh dev environment without dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -262,8 +284,14 @@ Completed with 1 error, 0 partial successes, and 0 warnings:
 Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
 ```
 
+</Expandable>
+
 </TabItem>
 <TabItem value="with" label="With dbt State">
+
+<Lightbox src="/img/docs/dbt-state/fresh_dev_enabled.png" width="60%" title="DAG: Fresh dev environment with dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -284,10 +312,10 @@ Completed successfully
 Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
 ```
 
+</Expandable>
 
 </TabItem>
 </Tabs>
-
 
 ## Selecting a model in a new dev schema with no model changes
 
@@ -299,6 +327,10 @@ Suppose you create a fresh dev schema and run only the `customers` model. Withou
 
 <Tabs queryString="select-customers-new-dev">
 <TabItem value="without" label="Without dbt State">
+
+<Lightbox src="/img/docs/dbt-state/new_dev_not_enabled.png" width="60%" title="DAG: New dev schema without dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -325,8 +357,14 @@ Completed with 1 error, 0 partial successes, and 0 warnings:
 Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
 ```
 
+</Expandable>
+
 </TabItem>
 <TabItem value="with" label="With dbt State">
+
+<Lightbox src="/img/docs/dbt-state/new_dev_enabled.png" width="60%" title="DAG: New dev schema with dbt State" />
+
+<Expandable alt_header="CLI output">
 
 ```shell
 Running with dbt=1.12.0-b2
@@ -346,6 +384,8 @@ Completed successfully. Total cache hits: 1. Estimated time saved: 2.20s. Freshn
 
 Done. PASS=0 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=1 TOTAL=1
 ```
+
+</Expandable>
 
 </TabItem>
 </Tabs>
