@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 # Upgrading to v1.12 <Lifecycle status="beta" />
 
 ## Resources
-- [<Constant name="core" /> v1.12 changelog](https://github.com/dbt-labs/dbt-core/blob/v1.12.0b1/CHANGELOG.md)
+- [<Constant name="core" /> v1.12 changelog](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
 - [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
 
