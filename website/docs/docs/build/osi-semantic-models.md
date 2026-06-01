@@ -45,9 +45,11 @@ To define semantic models with OSI documents:
     }
     ```
 
+    This example defines a semantic model only. To add metrics, include a `metrics` array on the semantic model per the [OSI specification](https://github.com/open-semantic-interchange/OSI).
+
 3. Run any command that triggers compilation, such as `dbt compile` or `dbt run`. dbt automatically discovers and parses OSI files.
 
-The resulting semantic models and metrics appear in [dbt artifacts](/reference/artifacts/dbt-artifacts) such as `manifest.json`, `semantic_manifest.json`, and `osi_document.json`.
+The resulting semantic models (and metrics, when defined in your OSI documents) appear in [dbt artifacts](/reference/artifacts/dbt-artifacts) such as `manifest.json`, `semantic_manifest.json`, and `osi_document.json`.
 
 ## Limitations
 
