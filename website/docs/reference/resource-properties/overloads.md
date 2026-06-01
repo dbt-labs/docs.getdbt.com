@@ -81,7 +81,7 @@ The return type for the overload. Follows the same structure as [returns](/refer
 <Tabs>
 <TabItem value="SQL">
 
-<File name='functions/schema.yml'>
+<File name='functions/null_if_empty.yml'>
 
 ```yml
 functions:
@@ -131,7 +131,7 @@ SELECT CASE WHEN val = 0 THEN NULL ELSE val END
 </TabItem>
 <TabItem value="Python">
 
-<File name='functions/schema.yml'>
+<File name='functions/null_if_empty.yml'>
 
 ```yml
 functions:
@@ -178,7 +178,7 @@ def main(val):
 </TabItem>
 <TabItem value="JavaScript">
 
-<File name='functions/schema.yml'>
+<File name='functions/null_if_empty.yml'>
 
 ```yml
 functions:

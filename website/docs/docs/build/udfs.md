@@ -16,7 +16,7 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 
 ## Prerequisites
 
-* Make sure you're using dbt platform's **Latest Fusion** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or dbt Core v1.11.
+* Make sure you're using dbt platform's **Latest Fusion** or **Latest** [release track](/docs/dbt-versions/dbt-release-tracks) or <Constant name="core" /> v1.11.
 * Use one of the following adapters:
 
 	<Tabs>
@@ -42,7 +42,9 @@ Refer to [Function properties](/reference/function-properties) or [Function conf
 	</Tabs>
 
 :::important UDF support
-JavaScript UDFs are supported in dbt Core v1.12+ (beta) on Snowflake and BigQuery.Additional languages (for example, Java, Scala) aren't currently supported for UDFs.
+JavaScript UDFs are supported in <Constant name="core" />  v1.12+ (beta) on Snowflake and BigQuery.
+
+Additional languages (for example, Java, Scala) aren't currently supported for UDFs.
 
 See the [Limitations](#limitations) section below for the full list of currently supported UDF capabilities.
 :::
@@ -111,7 +113,7 @@ Follow these steps to define UDFs in dbt:
     <Tabs>
     <TabItem value="SQL">
 
-    <File name='functions/schema.yml'>
+    <File name='functions/is_positive_int.yml'>
 
     ```yml
     functions:
@@ -174,7 +176,7 @@ Follow these steps to define UDFs in dbt:
     
     The following example shows a Python UDF with the required configs (`runtime_version`, `entry_point`), the optional `packages` config, and other common configs:
 
-    <File name='functions/schema.yml'>
+    <File name='functions/is_positive_int.yml'>
 
     ```yml
       functions:
@@ -203,7 +205,7 @@ Follow these steps to define UDFs in dbt:
 
     You can optionally set [`snowflake.quote_args`](/reference/resource-configs/quote_args) to control whether argument names are quoted when creating a JavaScript UDF on Snowflake.
 
-    <File name='functions/schema.yml'>
+    <File name='functions/is_positive_int.yml'>
 
     ```yml
     functions:
@@ -241,7 +243,7 @@ Follow these steps to define UDFs in dbt:
     dbt build --select is_positive_int
     ```
 
-    When you run `dbt build`, both the `functions/schema.yml` file and the corresponding SQL, Python, or JavaScript file work together to generate the `CREATE FUNCTION` statement.
+    When you run `dbt build`, the property file (`functions/is_positive_int.yml`) and the corresponding SQL, Python, or JavaScript file work together to generate the `CREATE FUNCTION` statement.
      
     The rendered `CREATE FUNCTION` statement depends on which adapter you're using. For example:
 
@@ -413,7 +415,13 @@ Follow these steps to define UDFs in dbt:
     In your DAG, a UDF node is created from the SQL/Python and YAML definitions, and there will be a dependency between `is_positive_int` → `my_model`.
    <Lightbox src="/img/docs/building-a-dbt-project/UDF-DAG.png" width="85%" title="The DAG for the UDF node" />
 
-After defining a UDF, if you update the SQL, Python, or JavaScript file that contains its function body (`is_positive_int.sql`, `is_positive_int.py`, or `is_positive_int.js` in these examples), its configurations, or its properties defined in the `.yml` file (such as `arguments` or `returns`), your changes will be applied to the UDF in the warehouse next time you run `dbt build`. dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
+After defining a UDF, your changes are applied to the UDF in the warehouse the next time you run `dbt build` when you update any of the following:
+
+- The SQL, Python, or JavaScript file that contains its function body (`is_positive_int.sql`, `is_positive_int.py`, or `is_positive_int.js` in these examples)
+- Its configurations
+- Its properties defined in the `.yml` file (such as `arguments` or `returns`)
+
+dbt detects all of these changes when using [`state:modified`](/reference/node-selection/methods#state).
 
 ### Defining overloaded UDFs
 
@@ -423,7 +431,7 @@ To define overloaded UDFs:
 
 1. Add an `overloads` list to the function definition in your properties YAML file. Each entry uses `defined_in` to reference a separate file, with optional `arguments` and `returns`:
 
-    <File name='functions/schema.yml'>
+    <File name='functions/is_positive_int.yml'>
 
     ```yml
     functions:

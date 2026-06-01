@@ -31,7 +31,7 @@ This config applies to JavaScript UDFs on Snowflake only. It has no effect on ot
 
 In this example, `quote_args` is set to `false` so argument names are not quoted in the generated `CREATE FUNCTION` statement:
 
-<File name='functions/schema.yml'>
+<File name='functions/is_positive_int.yml'>
 
 ```yaml
 functions:
