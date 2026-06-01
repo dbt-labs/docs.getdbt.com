@@ -92,6 +92,29 @@ Once you're set up, ask your first question in your terminal. Try some [prompts]
 
 <Constant name="wizard" /> will read your project's lineage, tests, and metadata and propose changes as a diff. You approve, reject, or redirect before anything is written.
 
+
+<div style={{maxWidth: '100%', margin: '20px 0'}}>
+<video
+  width="100%"
+  controls
+  autoPlay
+  muted
+  loop
+  playsInline
+  onLoadedMetadata={(event) => {
+    event.currentTarget.defaultPlaybackRate = 2.0;
+    event.currentTarget.playbackRate = 2.0;
+  }}
+  onPlay={(event) => {
+    event.currentTarget.playbackRate = 2.0;
+  }}
+>
+  <source src="/img/wizard.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>dbt Wizard CLI in your terminal</span>
+</div>
+
 For refactor or change requests, <Constant name="wizard" /> automatically assesses downstream impact first by reporting affected models, metrics, and tests with a severity rating before proposing any changes.
 
 When <Constant name="wizard" /> manages deferral, you point it at a target in your `profiles.yml` and it compiles and defers to that target automatically, so it can validate against already-built upstream models without rebuilding everything. Refer to [Deferral and state](/docs/dbt-ai/wizard-how-it-works#deferral-and-state) and [About dbt State](/docs/deploy/dbt-state-about) for details.
