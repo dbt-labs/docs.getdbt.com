@@ -1,0 +1,95 @@
+/* WizardPopcorn — inline link + a burst of popping ASCII wizards. */
+
+/* The inline trigger, styled like a normal docs link. */
+.link {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--ifm-link-color);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration-style: solid;
+}
+
+/* Full-viewport, click-through layer that holds the popping wizards. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.pop {
+  position: fixed;
+  transform-origin: center bottom;
+  animation: wizard-popcorn 1.2s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+/* The little wizard sprite (no card — just the figure). */
+.sprite {
+  margin: 0;
+  padding: 0;
+  background: none;
+  line-height: 1;
+  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.sprite span {
+  display: block;
+  white-space: pre;
+}
+
+/* dbt Wizard palette, matched to the Figma export. */
+.hat {
+  color: #fe6702;
+}
+.face {
+  color: #ffffff;
+  /* keep the white face readable on light docs backgrounds */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.45);
+}
+.legs {
+  color: #b0a3ff;
+}
+
+/* Pop up, overshoot, then float away and fade. */
+@keyframes wizard-popcorn {
+  0% {
+    transform: translateY(20px) scale(0) rotate(var(--rot, 0deg));
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(-12px) scale(calc(var(--scale, 1) * 1.18))
+      rotate(var(--rot, 0deg));
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-34px) scale(var(--scale, 1)) rotate(var(--rot, 0deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-70px) scale(calc(var(--scale, 1) * 0.9))
+      rotate(var(--rot, 0deg));
+    opacity: 0;
+  }
+}
+
+/* No surprise motion for folks who opt out. */
+@media (prefers-reduced-motion: reduce) {
+  .pop {
+    animation: none;
+    display: none;
+  }
+}

@@ -23,7 +23,7 @@ The <Constant name="studio_ide" /> streamlines your workflow, and features a pop
 1. **<Constant name="git" /> repository link:** The <Constant name="git" /> repository link, located on the upper left of the <Constant name="studio_ide" />, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
     * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant <Constant name="dbt" /> accounts.
 
-2. **Documentation site button:** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
+2. **Documentation site button:** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command (<Constant name="core_v1" /> only) from the Command bar.
 
 3. [**Version Control**](#editing-features): The <Constant name="studio_ide" />'s powerful Version Control section contains all git-related elements, including the <Constant name="git" /> actions button and the **Changes** section. 
 
@@ -181,7 +181,9 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 4. **Lint button** &mdash; The **Lint** button runs the [linter](/docs/platform/studio-ide/lint-format) on the active file in the file editor. The linter checks for syntax errors and style issues in your code and displays the results in the **Code quality** tab.
 
-5. **dbt Copilot** &mdash; [dbt Copilot](/docs/platform/dbt-copilot) is an AI assistant integrated into the <Constant name="studio_ide" />. Use the quick-action buttons to generate documentation, tests, semantic models, and metrics with a single click. The Copilot panel also provides access to the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent), which applies natural language prompts to generate or refactor models, semantic models, tests, and documentation autonomously. Select **Ask** or **Code** mode in the bottom toolbar to activate the <Constant name="dev_agent" />. <Lifecycle status="self_service,managed,managed_plus" />
+5. **dbt Wizard** &mdash; [dbt Wizard](/docs/dbt-ai/wizard-ide) is the new and recommended governed agentic experience integrated into the <Constant name="studio_ide" /> that uses your project context to help you develop governed dbt changes faster. It can generate or refactor models, semantic models, tests, and documentation from natural language prompts. <Lifecycle status="self_service,managed,managed_plus" />
+
+    [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 
 6. **Commands tab** &mdash; View the most recently run [dbt commands](/reference/dbt-commands) from your current IDE session, their results, and relevant system logs.
 

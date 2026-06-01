@@ -4,7 +4,7 @@ import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 const { themes } = require('prism-react-renderer')
 
-const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
+const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Set SITE_URL by environment */
@@ -345,7 +345,7 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
-          exclude: ["hover-terms.md"],
+          exclude: ["hover-terms.md", "faqs/Runs/sao-difference-core.md"],
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
@@ -559,23 +559,18 @@ var siteSettings = {
   },
 };
 
-// If versions json file found, add versions dropdown to nav
-if (versions) {
+// If products defined, add version dropdown to nav using sub-product names as items
+if (products) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
     position: "left",
     className: "nav-versioning",
-    items: [
-      ...versions.reduce((acc, version) => {
-        if (version?.version) {
-          acc.push({
-            label: `${version.version}`,
-            href: "#",
-          });
-        }
-        return acc;
-      }, []),
-    ],
+    items: products.flatMap((product) =>
+      product.subProducts.map((sp) => ({
+        label: sp.name,
+        href: "#",
+      }))
+    ),
   });
 }
 

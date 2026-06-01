@@ -1,3 +1,4 @@
+
 import CopilotLimitation from '/snippets/_copilot-limitation.md';
 
 Generate documentation, tests, metrics, and semantic models [resources](/docs/build/projects) with the click-of-a-button in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) using dbt Copilot, saving you time. To access and use this AI feature:
@@ -14,5 +15,3 @@ Generate documentation, tests, metrics, and semantic models [resources](/docs/bu
    - **Accept** or **Reject** the generated code.
 4. Verify the AI-generated code. You can update or fix the code as needed.
 5. Click **Save As**. You should see the file changes under the **Version control** section.
-
-<Lightbox src="/img/docs/dbt-platform/platform-ide/dbt-copilot-doc.gif" width="100%" title="Example of using dbt Copilot to generate documentation in the IDE" />
