@@ -91,7 +91,7 @@ This section applies to <Constant name="dbt_platform" /> users running the <Cons
 
 
 :::tip Run dbt parse to reflect metric changes
-When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file<VersionBlock firstVersion="1.12"> and `osi_document.json`</VersionBlock>, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
 <Expandable alt_header="How can I query or preview metrics with the dbt platform CLI?">

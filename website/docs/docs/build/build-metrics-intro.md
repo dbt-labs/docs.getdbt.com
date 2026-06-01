@@ -13,12 +13,6 @@ Use MetricFlow in dbt to centrally define your metrics. As a key component of th
 
 For a complete list of configuration options and property specs, see the [Semantic Layer reference](/reference/semantic-layer-reference).
 
-<VersionBlock firstVersion="1.12">
-
-Starting in <Constant name="core" /> v1.12, dbt emits `target/osi_document.json` at parse time alongside `target/semantic_manifest.json`. This artifact provides an OSI (Open Semantic Interchange) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
-
-</VersionBlock>
-
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-concept.png" width="50%" title="This diagram shows how the dbt Semantic Layer works with your data stack." />
 
 MetricFlow allows you to:
