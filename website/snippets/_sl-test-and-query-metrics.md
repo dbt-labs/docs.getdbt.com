@@ -22,10 +22,10 @@ Refer to the following steps to get started:
 
 1. Install the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) (if you haven't already). Then, navigate to your dbt project directory.
 2. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....".
-3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in <Constant name="dbt" />, which is stored in the `/target` directory. If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
+3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in <Constant name="dbt" />, which is stored in the `/target` directory. <VersionBlock firstVersion="1.12">Starting in <Constant name="core" /> v1.12, dbt also writes `osi_document.json` to your `target/` directory at parse time. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).</VersionBlock> If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
 
 :::tip Run dbt parse to reflect metric changes
-When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file<VersionBlock firstVersion="1.12"> and `osi_document.json`</VersionBlock>, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 :::
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
