@@ -16,7 +16,11 @@ These examples use the Jaffle Shop project to show side-by-side comparisons of C
 
 </IntroText>
 
-It helps to walk through specific scenarios and see how runs differ between <Constant name="core" /> alone and <Constant name="core" /> with dbt State. Each section below includes the command, a short explanation, and screenshots of the terminal output.
+The following examples use this Jaffle Shop project DAG as a reference. You can refer to it to understand the model lineage for each scenario.
+
+<Lightbox src="/img/docs/dbt-state/dbt_state_dag.png" title="The Jaffle Shop DAG" />
+
+Each of the following scenarios shows how a run differs between <Constant name="core" /> alone and <Constant name="core" /> with dbt State, using the same command and project.
 
 | Scenario | Command | What dbt State changes |
 | --- | --- | --- |
