@@ -59,9 +59,11 @@ You can now use the `--sql` flag with `dbt run-operation` to execute ad hoc data
 
 You can configure whether downstream models run when an upstream model fails using the [`on_error`](/reference/resource-configs/on_error) config. Set `on_error: continue` on a model to allow its downstream models to still attempt to run even when it fails. By default (`skip_children`), dbt skips all downstream models on failure. Note that [`--fail-fast`](/reference/global-configs/failing-fast) takes precedence &mdash; runs with `--fail-fast` stop at the first failure, even if a model is configured with `on_error: continue`.
 
-### OSI semantic layer documents <Lifecycle status="beta" />
+### OSI semantic layer support <Lifecycle status="beta" />
 
-<Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
+- <Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
+- dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
+
 
 ### New Semantic Layer YAML spec
 
@@ -74,10 +76,6 @@ Key changes in the new spec:
 - `type_params` is deprecated; its parameters are now top-level keys within each metric definition.
 
 For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
-
-### OSI Semantic Layer artifact
-
-Starting in <Constant name="core" /> v1.12, dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
 
 ### `selector` method for named YAML selectors <Lifecycle status="beta" />
 
