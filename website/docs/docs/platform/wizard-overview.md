@@ -58,7 +58,13 @@ A terminal-based agent for governed data development in dbt, whether your team u
 
 <WizardCliInstall />
 
-<Lightbox src="/img/docs/wizard-cli-intro.png" width="85%" title="dbt Wizard CLI in your terminal" />
+<div style={{maxWidth: '100%', margin: '20px 0'}}>
+<video width="100%" controls autoPlay muted loop playsInline>
+  <source src="/img/wizard.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>dbt Wizard CLI in your terminal</span>
+</div>
 
 </TabItem>
 <TabItem value="platform" label={<span className="tabs-lifecycle-label">dbt platform <Lifecycle status="preview" size="90%" /></span>}>
