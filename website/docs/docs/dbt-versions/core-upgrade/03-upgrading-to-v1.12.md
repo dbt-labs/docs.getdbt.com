@@ -22,6 +22,8 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ### Extensions to UDFs <Lifecycle status="beta" />
 
+- <Constant name="core" /> v1.12 adds support for JavaScript user-defined functions (UDFs) on Snowflake and BigQuery. Define a JavaScript UDF by creating a `.js` file in your `functions/` directory and a corresponding YAML file with the function's arguments and return type. For more information, refer to [User-defined functions](/docs/build/udfs).
+
 - You can define multiple argument signatures for the same user-defined function (UDF) using the `overloads` property. This lets you call the same function name with different input types, without creating separate UDFs for each variant. This is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in`, with optional `arguments` and `returns`. All overloads are grouped into one <Term id="dag">DAG</Term> node, so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. For more information, refer to [Defining overloaded UDFs](/docs/build/udfs#defining-udfs-in-dbt#defining-overloaded-UDFs) and [`overloads`](/reference/resource-properties/overloads).
 
 - You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
@@ -95,6 +97,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
+- You can use the [`snowflake.quote_args`](/reference/resource-configs/quote_args) config on JavaScript UDFs to control whether argument names are quoted in the generated `CREATE FUNCTION` statement. When `true` (default), Snowflake quotes argument names, preserving their exact casing, so you reference arguments using the same case as defined in the YAML inside the function body. When `false`, argument names are unquoted and Snowflake uppercases them, so you must reference them in uppercase inside the function body.
 - You can set the [`iceberg_version`](/docs/mesh/iceberg/snowflake-iceberg-support#adapter-properties) config on Snowflake Iceberg tables to control which Iceberg format version Snowflake uses. Set it to `3` to use Iceberg V3, which improves `VARIANT` type support and makes row-level changes more efficient by tracking deletions separately instead of rewriting data. The default value is `2`. Note that you cannot change the value of `iceberg_version` after table creation.
 - You can configure the [`scheduler`](/reference/resource-configs/snowflake-configs#scheduler) parameter on Snowflake dynamic tables to control how refreshes are managed. Setting it to `ENABLE` lets Snowflake automatically refresh the dynamic table, while `DISABLE` means dbt manages refreshes during model execution. When `scheduler` is set to `ENABLE`, you must also specify [`target_lag`](/reference/resource-configs/snowflake-configs#target-lag). 
 
