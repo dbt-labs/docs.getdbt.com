@@ -21,8 +21,8 @@ To fix this, you can do the following:
 Remove the `alias` from the latest version:
 
 ```yaml
-        # config:
-        #   alias: dim_customers
+config:
+  alias: dim_customers
 ```
 Advantages: simple and safe; just let the automatic pointer handle it. 
 
