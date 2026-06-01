@@ -100,23 +100,21 @@ If you are new to dbt, start with [interactive authentication](#interactive-auth
 
 #### Authenticate with a service token
 
-In non-interactive environments (such as CI/CD jobs, scheduled jobs, or external orchestrators like Airflow or Dagster), use a [service token](/docs/dbt-apis/service-tokens) instead of `dbt login`. Set the following environment variables so dbt can authenticate and retrieve a feature license:
+In non-interactive environments (such as CI/CD jobs, scheduled jobs, or external orchestrators), use a [service token](/docs/dbt-apis/service-tokens) instead of `dbt login`. Set the following [environment variables](/docs/build/environment-variables?version=2.0&name=Fusion#special-environment-variables) so dbt can authenticate and retrieve a feature license:
 
 | Environment variable | Description |
 |---|---|
-| `DBT_CLOUD_ACCOUNT_HOST` | Your <Constant name="dbt_platform" /> [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) (for example, `cloud.getdbt.com`). |
+| `DBT_CLOUD_ACCOUNT_HOST` | Your <Constant name="dbt_platform" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`). |
 | `DBT_CLOUD_ACCOUNT_ID` | Your <Constant name="dbt_platform" /> account ID. |
 | `DBT_CLOUD_TOKEN` | The service token value. Create a service token with a permission set that includes feature licensing access, such as `Job Runner`, `Job Creator`, `Job Admin`, `Developer`, or `Account Admin`. |
 | `DBT_CLOUD_PROJECT_ID` | Your <Constant name="dbt_platform" /> project ID. |
 
 ```shell
-export DBT_CLOUD_ACCOUNT_HOST=cloud.getdbt.com
+export DBT_CLOUD_ACCOUNT_HOST=abc123.us1.dbt.com
 export DBT_CLOUD_ACCOUNT_ID=12345
 export DBT_CLOUD_TOKEN=dbtc_xxxxxxxx
 export DBT_CLOUD_PROJECT_ID=67890
 ```
-
-If you set these environment variables, dbt prefers them over any `dbt_cloud.yml` configuration. Some orchestrators (such as [Dagster](https://docs.dagster.io/integrations/libraries/dbt/dbt-cloud#orchestration-example)) recommend setting these variables when running jobs.
 
 <Expandable title="What to do in common scenarios">
 
