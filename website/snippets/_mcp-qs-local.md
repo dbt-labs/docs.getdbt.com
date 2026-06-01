@@ -5,7 +5,7 @@ This quickstart walks you through connecting dbt MCP server to your local dbt pr
 
 If you'd like to connect to <Constant name="dbt_platform"/> with the CLI, see the [OAuth quickstart](/docs/dbt-ai/mcp-quickstart-oauth).
 
-To connect to <Constant name="wizard">, see the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart).
+To connect to <Constant name="wizard" />, see the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart).
 
 :::tip No clone required
 You don't need to clone the dbt-mcp repository. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp` — it fetches and runs dbt-mcp for you.
