@@ -11,7 +11,8 @@ pagination_prev: null
 
 **Local command line interface (CLI)**
 - Leverage the speed and scale of the <Constant name="fusion_engine" /> or use <Constant name="core" />:
-  - [Install dbt Core](/docs/local/install-dbt) &mdash; Uses the Python-based <Constant name="core" /> engine for traditional workflows. Does not include <Term id="lsp"/> features found in the dbt VS Code extension like autocomplete, hover insights, lineage, and more. 
+  - [Install dbt Core v1](/docs/local/install-dbt) &mdash; Uses the Python-based <Constant name="core_v1" /> engine for traditional workflows. Does not include <Term id="lsp"/> features found in the dbt VS Code extension like autocomplete, hover insights, lineage, and more.
+  - [Install dbt Core v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) <Lifecycle status="alpha" /> &mdash; Uses the open-source, Rust-based <Constant name="core_v2" /> engine. Does not include <Term id="lsp"/> features.
   - [Install dbt Fusion CLI](/docs/local/install-dbt?version=2#get-started) &mdash; Provides Fusion performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp"/> features.
 
 **dbt VS Code extension**

@@ -6,11 +6,12 @@ id: "view-documentation"
 
 dbt provides intuitive and scalable tools for viewing your dbt documentation. Detailed documentation is essential for your developers and other stakeholders to gain shared context for your dbt project.
 
-You can view documentation in two complementary ways, depending on your needs:
+You can view documentation in three complementary ways, depending on your needs:
 
 | Option | Description | Availability |
 |------|-------------|--------------|
-| [**dbt Docs**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
+| [**dbt Docs (Legacy)**](#dbt-docs) | Generates a static website with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). | <Constant name="core" /> or <Constant name="dbt" /> Developer plans |
+| [**dbt Docs v2**](#dbt-docs-v2) <Lifecycle status="alpha" size="70" /> | A modern, performant open-source catalog built for data consumers. Includes a redesigned UI, large-project performance, Semantic Layer metadata, column-level lineage (Fusion), and a REST API for AI agents. | <Constant name="fusion_engine" /> and <Constant name="core_v2" /> |
 | [**<Constant name="catalog" />**](/docs/explore/explore-projects) | The premier documentation experience in <Constant name="dbt" />. Builds on dbt Docs to provide a dynamic, real-time interface with rich [metadata](/docs/explore/explore-projects#generate-metadata), customizable views, deep insight into your project and resources, and collaborative tools. | <Constant name="dbt" /> Starter, Enterprise, or Enterprise+ plans |
 
 ## Navigating your documentation
@@ -41,7 +42,24 @@ To access <Constant name="catalog" />, navigate to the **Catalog** option in the
 
 For additional details and instructions on how to explore your lineage, navigate your resources, view model query history and data health signals, feature availability, and more &mdash; refer to [Discover data with <Constant name="catalog" />](/docs/explore/explore-projects).
 
-### dbt Docs
+### dbt Docs v2 <Lifecycle status="alpha"/>
+
+dbt Docs v2 is the next-generation open-source catalog experience, available when using the <Constant name="fusion_engine" /> and <Constant name="core_v2" />. It is designed for data consumers (analysts, BI users, data scientists, and stakeholders) who need to understand what data exists, how it was built, and whether they can trust it.
+
+Key improvements over dbt Docs:
+
+- **Performance:** Better handling for large dbt projects. The server reads from compact, pre-built index files rather than loading the full `manifest.json` in the browser.
+- **Modernized UI:** Visually aligned with the dbt platform, with better navigation and resource discovery.
+- **Semantic Layer metadata:** Surfaces compiled SQL logic, queryable dimensions, and metric definitions from your dbt Semantic Layer.
+- **Column-level lineage:** Available when using the <Constant name="fusion_engine" />.
+- **REST API:** Exposes a `/api/v1/` interface so AI agents and external tooling can query metadata without a browser. This makes dbt Docs v2 a context source for MCP servers and coding agents.
+
+To generate and serve dbt Docs v2, use the <Constant name="fusion_engine" /> or <Constant name="core_v2" /> to build your project with `--write-index` (for example, `dbt compile --write-index`), then run `dbt docs serve`. Add [`--static-analysis strict`](https://docs.getdbt.com/docs/fusion/new-concepts?version=1.13) to also pull column type metadata from your warehouse. Add `--write-lineage` to generate column-level lineage.
+
+Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
+
+
+### dbt Docs (Legacy)
 
 dbt Docs provides valuable insights into your <Constant name="core" /> or <Constant name="dbt" /> Developer plan projects. The interface enables you to navigate to the documentation for specific models. That might look something like this:
 
@@ -73,7 +91,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 To learn how to deploy your documentation site, see [Build and view your docs with <Constant name="dbt" />](/docs/explore/build-and-view-your-docs).
 
-### dbt Docs
+### dbt Docs (Legacy)
 dbt Docs was built to make it easy to host on the web. The site is "static," meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
 
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))

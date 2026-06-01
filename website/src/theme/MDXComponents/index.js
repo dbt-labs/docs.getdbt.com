@@ -43,6 +43,7 @@ import ProductCard from '@site/src/components/productCard';
 import DetailsToggle from '@site/src/components/detailsToggle';
 import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
+import WizardPopcorn from '@site/src/components/wizardPopcorn/';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
@@ -93,6 +94,7 @@ const MDXComponents = {
   DetailsToggle: DetailsToggle,
   Expandable: Expandable,
   ConfettiTrigger: ConfettiTrigger,
+  WizardPopcorn: WizardPopcorn,
   SortableTable: SortableTable,
   FilterableTable: FilterableTable,
   SimpleTable: SimpleTable,

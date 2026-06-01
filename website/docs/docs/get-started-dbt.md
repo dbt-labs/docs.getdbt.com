@@ -11,12 +11,13 @@ Begin your dbt journey by choosing how you want to develop:
 - [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use local tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
 - [**Local only**](#dbt-local-installations) &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [Fusion CLI](/docs/local/install-dbt?version=2#get-started), or [<Constant name="core" />](/docs/local/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
 - **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="platform_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="insights" />, <Constant name="canvas" />, and more.
+- [**<Constant name="wizard" />**](#dbt-wizard) &mdash; The AI agent for analytics engineering, available in the <Constant name="dbt_platform" /> and from your terminal. Grounded in your project's lineage, model health, and semantic definitions.
 
 ## The dbt platform
 
 <Constant name="dbt" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
 
-The <Constant name="fusion_engine" /> adds managed execution, [state-aware orchestration](/docs/deploy/state-aware-about), and a unified development experience so you can focus on building rather than infrastructure.
+The <Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
 
 Choose your warehouse to get started with a quickstart:
 
@@ -104,6 +105,26 @@ Develop locally using the <Constant name="fusion_engine" /> or <Constant name="c
     body="Learn how to connect dbt to DuckDB."
     link="/guides/duckdb?step=1"
     icon="duckdb-seeklogo"/>
+</div>
+
+## dbt Wizard
+
+[<Constant name="wizard" />](/docs/platform/wizard-overview) is an AI agent purpose-built for analytics engineering. It uses dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your project's lineage, model health, tests, and semantic definitions — to build, refactor, validate, and document your project grounded in full project context.
+
+<div className="grid--3-col">
+
+<Card
+    title="dbt Wizard in the dbt platform"
+    body="Use dbt Wizard in the Studio IDE or home app to build and refactor models from natural language, generate tests and docs, and validate changes against your warehouse."
+    link="/docs/dbt-ai/wizard-ide"
+    icon="dbt-copilot"/>
+
+<Card
+    title="dbt Wizard from your terminal"
+    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform account. Requires an OpenAI API key (BYOK)."
+    link="/docs/dbt-ai/wizard-quickstart"
+    icon="dbt-copilot"/>
+
 </div>
 
 ## Related docs
