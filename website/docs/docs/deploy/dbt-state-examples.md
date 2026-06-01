@@ -16,7 +16,7 @@ These examples use the Jaffle Shop project to show side-by-side comparisons of C
 
 </IntroText>
 
-The following examples use this Jaffle Shop project DAG as a reference. You can refer to it to understand the model lineage for each scenario.
+The following examples use this [Jaffle Shop project](https://github.com/dbt-labs/jaffle-shop) DAG as a reference. You can refer to it to understand the model lineage for each scenario.
 
 <Lightbox src="/img/docs/dbt-state/dbt_state_dag.png" title="The Jaffle Shop DAG" />
 
