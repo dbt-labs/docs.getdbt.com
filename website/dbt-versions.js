@@ -1,53 +1,81 @@
 /**
- * Sets the available dbt versions available in the navigation
- * @type {Array.<{
- * version: string,
- * EOLDate: string,
- * isPrerelease: boolean,
- * customDisplay: string,
- * }>}
- * @property {string} version The version number
- * @property {string} EOLDate "End of Life" date which is used to show the EOL banner
- * @property {boolean} isPrerelease Boolean used for showing the prerelease banner
- * @property {string} customDisplay Allows setting a custom display name for the current version
+ * Products define the top-level categories in the version menu.
+ * Each product contains sub-products (release tracks) with an associated version.
  *
- * customDisplay for dbt platform should be a version ahead of latest dbt Core release (GA or beta).
+ * Sub-product properties:
+ * @property {string} name - Display name (must be unique across all products)
+ * @property {string} version - The version number used by VersionBlock for content filtering
+ * @property {boolean} [isBeta] - Marks this sub-product as beta/prerelease
+ * @property {string} [EOLDate] - End-of-life date (YYYY-MM-DD) for EOL banners
+ *
+ * The same version can appear in multiple sub-products. Each sub-product
+ * appears as a separate item in the version menu, even when versions overlap.
  */
-exports.versions = [
+
+const products = [
   {
-    version: "2.0",
-    customDisplay: "dbt Fusion engine (Latest)",
-    isPrerelease: true,
+    name: "Fusion",
+    subProducts: [
+      {
+        name: "dbt platform (stable)",
+        version: "2.0",
+      },
+      {
+        name: "dbt Fusion engine",
+        version: "2.0",
+      },
+    ],
   },
   {
-    version: "1.13",
-    customDisplay: "dbt platform (Latest Core)",
-  },
-  {
-    version: "1.12",
-    customDisplay: "Core v1.12 Beta",
-    isPrerelease: true,
-  },
-  {
-    version: "1.11",
-    customDisplay: "Core v1.11",
-    EOLDate: "2026-12-18",
-  },
-  {
-    version: "1.10",
-    customDisplay: "Core v1.10 (Compatible/Extended)",
-    EOLDate: "2026-06-15",
+    name: "Core",
+    subProducts: [
+      {
+        name: "dbt platform (latest)",
+        version: "1.12",
+      },
+      {
+        name: "dbt Core v1.12 (beta)",
+        version: "1.12",
+      },
+      {
+        name: "Core v1.11",
+        EOLDate: "2026-12-18",
+        version: "1.11",
+      },
+    ],
   },
 ];
 
+exports.products = products;
+
 /**
- * Controls doc page visibility in the sidebar based on the current version
+ * Backward-compatible versions array derived from products.
+ * When the same version appears in multiple sub-products, the first occurrence wins.
+ * Used by versionedPages/versionedCategories utilities and VersionContext internals.
+ */
+const _seenVersions = new Set();
+exports.versions = products.flatMap((product) =>
+  product.subProducts
+    .filter((sp) => {
+      if (_seenVersions.has(sp.version)) return false;
+      _seenVersions.add(sp.version);
+      return true;
+    })
+    .map((sp) => ({
+      version: sp.version,
+      customDisplay: sp.name,
+      isPrerelease: sp.isBeta || false,
+      EOLDate: sp.EOLDate,
+    }))
+);
+
+/**
+ * Controls doc page visibility in the sidebar based on the current version.
  * @type {Array.<{
  * page: string,
+ * firstVersion: string,
  * lastVersion: string,
  * }>}
- * @property {string} page The target page to hide/show in the sidebar
- * @property {string} lastVersion The last version the page is visible in the sidebar
  */
 exports.versionedPages = [
   {
@@ -301,13 +329,12 @@ exports.versionedPages = [
 ];
 
 /**
- * Controls doc category visibility in the sidebar based on the current version
+ * Controls doc category visibility in the sidebar based on the current version.
  * @type {Array.<{
  * category: string,
  * firstVersion: string,
+ * lastVersion: string,
  * }>}
- * @property {string} category The target category to hide/show in the sidebar
- * @property {string} firstVersion The first version the category is visible in the sidebar
  */
 exports.versionedCategories = [
   {
