@@ -78,9 +78,11 @@ You can configure whether downstream models run when an upstream model fails usi
 - dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
 
 
+This is separate from the new <Constant name="semantic_layer" /> YAML spec below, which changes how you define semantic models and metrics in native dbt YAML.
+
 ### New Semantic Layer YAML spec
 
-<Constant name="core" /> v1.12 adds support for the latest Semantic Layer YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
+<Constant name="core" /> v1.12 adds support for the latest <Constant name="semantic_layer" /> YAML specification, which simplifies how you define metrics and dimensions by embedding semantic annotations directly alongside each model.
 
 Key changes in the new spec:
 - `semantic_model` is nested directly under each model instead of being a standalone top-level key.
