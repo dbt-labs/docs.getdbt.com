@@ -857,6 +857,7 @@ const sidebarSettings = {
           items: ["docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral"],
         },
 
+        "docs/deploy/dbt-state-examples",
         "docs/deploy/dbt-state-interface",
         "docs/deploy/dbt-state-migration",
       ],
