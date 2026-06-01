@@ -21,15 +21,15 @@ The <Constant name="fusion_engine" /> [fully comprehends your project's SQL](/bl
 
 It can do this because its compilation step is more comprehensive than that of the <Constant name="core" /> engine. When <Constant name="core" /> referred to _compilation_, it only meant _rendering_ &mdash; converting Jinja-templated strings into a SQL query to send to a database.
 
-The dbt Fusion engine can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of Fusion's new capabilities.
+<Constant name="fusion_engine" /> can also render Jinja, but then it completes a second phase: _static analysis_, producing and validating a logical plan for every rendered query in the project. This step is the cornerstone of Fusion's new capabilities.
 
 </IntroText>
 
-| Step | dbt Core engine | dbt Fusion engine |
-|------|-----------------|--------------------|
-| Render Jinja into SQL | ✅ | ✅ |
-| Produce and statically analyze logical plan  | ❌ | ✅ |
-| Run rendered SQL | ✅ | ✅ |
+| Step | dbt Core v1 engine | dbt Core v2 (alpha) | dbt Fusion engine |
+|------|--------------------|--------------------|-------------------|
+| Render Jinja into SQL | ✅ | ✅ | ✅ |
+| Produce and statically analyze logical plan | ❌ | ✅ <small>(Fusion + login)</small> | ✅ |
+| Run rendered SQL | ✅ | ✅ | ✅ |
 
 ## Principles of static analysis
 
@@ -86,6 +86,11 @@ VS Code extension features by static analysis configuration:
 | Automatic refactor column names | ❌ | ❌ | ✅ |
 | Rich column lineage | ❌ | ❌ | ✅ |
 | Detect data type and function signature errors | ❌ | ❌ | ✅ |
+
+- dbt VS Code extension features in this table are available to all users for 14 days. 
+- After the 14-day period, sign in or register for a <Constant name="dbt_platform" /> account from the dbt VS Code extension to keep using advanced capabilities. 
+- Unregistered users can continue using core editing and build workflows without signing in.
+- Existing registered dbt VS Code extension users keep access to registration-required features automatically.
 
 :::tip Supported Snowflake functions
 To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support)
@@ -155,10 +160,15 @@ Setting `static_analysis` to `baseline` mode lets you start using <Constant name
 
 ## Recapping the differences between engines
 
-<Constant name="core" />:
+<Constant name="core_v1" />:
 
 - Renders and runs models one at a time.
 - Never runs static analysis.
+
+[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in alpha):
+
+- Built on the Rust-based <Constant name="fusion_engine" /> as the open-source dbt Core release.
+- Supports static analysis with a subset of <Constant name="fusion" /> features.
 
 The <Constant name="fusion_engine" /> (baseline mode &mdash; default):
 
@@ -172,7 +182,7 @@ The <Constant name="fusion_engine" /> (strict mode):
 
 ## Configuring `static_analysis`
 
-You can modify the way static analysis is applied for specific models in your project. The static analysis configuration cascades from most strict to least strict. Going downstream in your lineage, a model can keep the same mode or relax it &mdash; it can't be stricter than its parent. 
+You can modify the way static analysis is applied for specific models in your project. The static analysis configuration cascades from most strict to least strict. Going downstream in your lineage, a model can keep the same mode or relax it &mdash; it can't be stricter than its parent.
 
 Setting `static_analysis: strict` on a model does not automatically set `strict` for downstream models; they keep the project default unless you set them explicitly. For rules and examples, refer to [strict mode inheritance](#strict-mode-inheritance) and [How static analysis modes cascade](/reference/resource-configs/static-analysis#how-static-analysis-modes-cascade).
 
@@ -182,6 +192,12 @@ The [`static_analysis`](/reference/resource-configs/static-analysis) config opti
 - `strict` (previously `on`): Statically analyze all SQL before execution begins. Use this for maximum validation guarantees &mdash; nothing runs until the entire project is proven valid.
 - `off`: Skip SQL analysis on this model and its descendants.
 
+<VersionBlock firstVersion="2.0">
+
+Any run that uses `strict` mode requires authentication using [`dbt login`](/reference/commands/login), whether `strict` is set with the `--static-analysis strict` CLI flag or in `dbt_project.yml`. Unauthenticated runs fall back to `baseline`.
+
+</VersionBlock>
+
 :::caution Deprecated values
 
 The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use `strict` instead.
@@ -190,7 +206,7 @@ The `on` and `unsafe` values are deprecated and will be removed in May 2026. Use
 
 When you disable static analysis, features of the VS Code extension which depend on SQL comprehension will be unavailable.
 
-The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the [`--static-analysis strict` or `--static-analysis off` CLI flags](/reference/global-configs/static-analysis-flag) to override all model-level configuration. 
+The best place to configure `static_analysis` is as a config on an individual model or group of models. As a debugging aid, you can also use the [`--static-analysis strict`](/reference/global-configs/static-analysis-flag) or `--static-analysis off` CLI flags to override all model-level configuration.
 
 ### Incrementally adopting strict mode
 

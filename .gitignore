@@ -15,6 +15,10 @@ website/i18n/*
 .vscode
 .idea
 
+# Claude Code local worktrees and settings (never commit)
+.claude/worktrees/
+.claude/settings.local.json
+
 # Local Netlify folder
 .netlify
 
