@@ -1,6 +1,6 @@
 ---
-title: "Example usage for dbt State"
-sidebar_label: "Example usage"
+title: "dbt State usage examples"
+sidebar_label: "dbt State examples"
 description: "Side-by-side dbt Core and dbt Core with dbt State execution scenarios using the Jaffle Shop project."
 id: "dbt-state-examples"
 tags: ['dbt State']
@@ -40,7 +40,6 @@ You get the same result with and without dbt State.
 <Tabs queryString="initial-run">
 <TabItem value="without" label="Without dbt State">
 
-```
 Running with dbt=1.12.0-b2
 Registered adapter: snowflake=1.11.5
 Found 12 models, 6 seeds, 27 data tests, 6 sources, 644 macros, 3 unit tests
