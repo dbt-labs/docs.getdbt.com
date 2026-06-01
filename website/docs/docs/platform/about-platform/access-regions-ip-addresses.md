@@ -45,11 +45,12 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 ## Microsoft Azure {#Azure}
 
 <FilterableTable>
-
+au2-cell-1-azure
 | Region | Location | <div style={{width:'110px'}}>Access URL</div> | <div style={{width:'100px'}}>IP addresses</div> | Available plans | <div style={{width:'200px'}}>Status page link</div> |
 |--------|----------|------------|--------------|-------| --------- |
 | North America  | East US 2 (Virginia) | <small>ACCOUNT_PREFIX.us2.dbt.com</small> | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
 | EMEA  |  North Europe (Ireland)  |  <small>ACCOUNT_PREFIX.eu2.dbt.com</small>  | 20.13.190.192/26   | All Enterprise plans | [EMEA Cell 1 AZURE](https://status.getdbt.com/emea-cell-1-azure) |
+| AUS | tbd | <small>ACCOUNT_PREFIX.us2.dbt.com</small> | tbd | All Enterprise plans | [AUS Cell 1 AZURE](https://status.getdbt.com/au2-cell-1-azure) |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
 </FilterableTable>
