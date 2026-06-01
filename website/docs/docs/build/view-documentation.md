@@ -54,7 +54,7 @@ Key improvements over dbt Docs:
 - **Column-level lineage:** Available when using the <Constant name="fusion_engine" />.
 - **REST API:** Exposes a `/api/v1/` interface so AI agents and external tooling can query metadata without a browser. This makes dbt Docs v2 a context source for MCP servers and coding agents.
 
-To generate and serve dbt Docs v2, use the <Constant name="fusion_engine" /> or <Constant name="core_v2" /> to build your project with `--write-index` (for example, `dbt compile --write-index`), then run `dbt docs serve`. Add [`--static-analysis strict`](https://docs.getdbt.com/docs/fusion/new-concepts?version=1.13) to also pull column type metadata from your warehouse. Add `--write-lineage` to generate column-level lineage.
+To generate and serve dbt Docs v2, use the <Constant name="fusion_engine" /> or <Constant name="core_v2" /> to build your project with `--write-index` (for example, `dbt compile --write-index`). Then, run `dbt docs serve`. Add [`--static-analysis strict`](https://docs.getdbt.com/docs/fusion/new-concepts?version=1.13) to also pull column lineage and richer column type metadata from your warehouse. 
 
 Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage.
 
