@@ -31,7 +31,6 @@ It does not support non-interactive authentication. For [non-interactive](#non-i
 Use `dbt login` to unlock advanced features including:
 
 - advanced features in the [dbt VS Code extension](/docs/about-dbt-extension)
-- [dbt Wizard CLI](/docs/dbt-ai/about-dbt-wizard-cli)
 - [dbt State](#dbt-login-with-dbt-state)
 - advanced features in v2.0 CLI
 
@@ -39,12 +38,7 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1
 
 ## Before you log in
 
-Most advanced features are available free for 14 days from your first use of the CLI or dbt VS Code extension, whichever happens first &mdash; no account required.
-
-After the 14-day period ends:
-
-- **In the CLI:** You'll be prompted to run `dbt login` when you try to use [advanced features](/docs/fusion/fusion-availability?version=1.13) that require authentication.
-- **In the dbt VS Code extension:** Most features continue to work without signing in. [Advanced features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) prompt you to run `dbt login` to register.
+Most advanced features are available free for 14 days from your first use of the dbt VS Code extension. After the 14-day period ends, most features continue to work without signing in. [Advanced features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) prompt you to run `dbt login` to register. 
 
 Signing in with `dbt login`, or [signing in or registering](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account, unlocks the full feature set across dbt tools that use the shared login state.
 
