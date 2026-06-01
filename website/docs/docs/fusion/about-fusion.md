@@ -24,13 +24,11 @@ The <Constant name="fusion_engine" /> shares the same familiar framework for aut
 
 ### What is Fusion
 
-Fusion is an entirely new piece of software, written in a different programming language (Rust) than <Constant name="core" /> (Python). Fusion is significantly faster than <Constant name="core" />, and it has a native understanding of SQL across multiple engine dialects. Fusion will eventually support the full dbt Core framework, a superset of dbt Core’s capabilities, and the vast majority of existing dbt projects.
+Fusion is written in Rust and has a native understanding of SQL across multiple engine dialects. Fusion will eventually support the full dbt Core framework, a superset of dbt Core capabilities, and the vast majority of existing dbt projects.
 
-Fusion contains mixture of source-available, proprietary, and open source code. That means:
-- dbt Labs publishes much of the source code in the [`dbt-fusion` repository](https://github.com/dbt-labs/dbt-fusion), where you can read the code and participate in community discussions.
-- The local <Constant name="fusion"/> CLI and dbt VS Code extension are free to use. Some advanced capabilities, like state-aware orchestration and Advanced CI, are exclusively available for [<Constant name="dbt_platform"/>](https://www.getdbt.com/pricing) customers on specific plans. Refer to [supported features](/docs/fusion/supported-features#paid-features) for more information.
+[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the open-source Apache 2.0 foundation that <Constant name="fusion" /> builds on. <Constant name="core_v2" /> delivers a faster, Rust-based runtime for dbt projects; <Constant name="fusion" /> extends it with SQL comprehension, column-level lineage, and richer development capabilities. It is currently in alpha.
 
-Read more about the licensing for the dbt Fusion engine in the [dbt Fusion engine license agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement).
+<Constant name="core_v2" /> is published as Apache 2.0 open source in the [`dbt-core` repository](https://github.com/dbt-labs/dbt-core), the single canonical home for issues and contributions. Fusion, which includes the <Constant name="fusion_engine" />’s richer capabilities, is proprietary.
 
 ## Why use Fusion
 
@@ -41,7 +39,6 @@ As a developer, Fusion can:
 
 All of that and more is available in the [dbt extension for VSCode](/docs/about-dbt-extension), with Fusion at the foundation.
 
-Fusion also enables more-efficient deployments of large DAGs. By tracking which columns are used where, and which source tables have fresh data, Fusion can ensure that models are rebuilt only when they need to process new data. This ["state-aware orchestration"](/docs/deploy/state-aware-about) is a feature of the dbt platform (formerly dbt Cloud).
 
 ### Thread management
 

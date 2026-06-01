@@ -6,6 +6,8 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
 The <Constant name="fusion_engine" /> provides a comprehensive telemetry system that replaces [<Constant name="core" />'s structured logging](/reference/events-logging#structured-logging). Built on [OpenTelemetry](https://opentelemetry.io/) conventions and backed by a stable protobuf schema, it enables deep integration with orchestrators, observability platforms, and custom tooling.
 
 This uses the same integration that <Constant name="dbt_platform" /> relies on for orchestration and monitoring, providing proven and production-ready features that work at scale.
@@ -89,7 +91,7 @@ When <Constant name="fusion" /> skips a node, the telemetry includes a reason:
 | Skip reason      | Description                                                      |
 | ---------------- | ---------------------------------------------------------------- |
 | `upstream`       | A dependency failed.                                              |
-| `cached`         | <Constant name="fusion" /> reused results from cache (no changes detected via [state aware orchestration](/docs/deploy/state-aware-about)). |
+| `cached`         | <Constant name="fusion" /> reused results from cache (no changes detected via [dbt State](/docs/deploy/dbt-state-about)). |
 | `phase_disabled` | The phase was disabled (for example, `--static-analysis off`).    |
 | `noop`           | Node doesn't perform work in this phase (for example, ephemeral models). |
 
@@ -211,6 +213,8 @@ If you're familiar with <Constant name="core" />'s structured logging, here's ho
 Note that <Constant name="core" />'s `fail` status maps to <Constant name="fusion" />'s `node_outcome: success` because <Constant name="fusion" /> distinguishes between "the test ran successfully and found data issues" versus "the test couldn't run." This separation enables more precise alerting and retry logic.
 
 <Constant name="fusion" /> adds `skip_reason: cached` for nodes reused via [State Aware Orchestration](/docs/deploy/state-aware-about), which has no <Constant name="core" /> equivalent.
+
+<SaoDeprecated />
 
 ## Record structure
 

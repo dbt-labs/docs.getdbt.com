@@ -21,6 +21,11 @@ Starting in 2024, <Constant name="dbt" /> provides the functionality from new ve
 
 New features and functionality available in <Constant name="core" /> v1.10
 
+### dbt State <Lifecycle status="preview" />
+
+dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is available as a plugin for <Constant name="core" /> v1.10. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
+
+
 ### The `--sample` flag
 
 Large data sets can slow down dbt build times, making it harder for developers to test new code efficiently. The [`--sample` flag](/docs/build/sample-flag), available for the `run` and `build` commands, helps reduce build times and warehouse costs by running dbt in sample mode. It generates filtered refs and sources using time-based sampling, allowing developers to validate outputs without building entire models.

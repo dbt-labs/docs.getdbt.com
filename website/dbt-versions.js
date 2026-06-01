@@ -34,6 +34,10 @@ const products = [
         version: "1.12",
       },
       {
+        name: "dbt Core v2.0 (alpha)",
+        version: "2.0",
+      },
+      {
         name: "dbt Core v1.12 (beta)",
         version: "1.12",
       },
@@ -78,6 +82,10 @@ exports.versions = products.flatMap((product) =>
  * }>}
  */
 exports.versionedPages = [
+  {
+    page: "docs/reference/commands/lint",
+    firstVersion: "2.0",  
+  },
   {
     page: "docs/local/connect-data-platform/salesforce-data-cloud-setup",
     firstVersion: "2.0",

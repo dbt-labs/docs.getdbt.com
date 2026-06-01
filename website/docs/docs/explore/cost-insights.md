@@ -6,20 +6,24 @@ id: "cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reductions', 'cost optimizations']
 ---
 
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
 # Cost Insights <Lifecycle status="beta,managed,managed_plus" />
 
-Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [state-aware orchestration](/docs/deploy/state-aware-about).
+Cost Insights shows estimated costs and compute time for your dbt projects and models directly in the <Constant name="dbt_platform" />, so you can measure and share the impact of optimizations like [dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about).
 
-[State-aware orchestration](/docs/deploy/state-aware-about) makes your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When this is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable <Constant name="fusion" /> and state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
+<SaoDeprecated />
+
+[dbt State](/docs/deploy/dbt-state-about) and [state-aware orchestration](/docs/deploy/state-aware-about) make your dbt workflows more efficient by reusing models and tests instead of running full rebuilds. When either is enabled, Cost Insights helps you demonstrate the resulting cost reductions and efficiency gains. These cost and cost reduction estimates are based on a retroactive analysis of runs after you enable <Constant name="fusion" /> and dbt State or state-aware orchestration. They reflect actual historical usage, _not_ forecasts of future costs or cost reductions.
 
 With Cost Insights, you can see:
 
 - **How much your dbt models cost to run**: See the compute cost and times for each model and job in your warehouse's native units.
-- **The cost reductions from using state-aware orchestration**: Understand the cost reduction when state-aware orchestration reuses unchanged models.
+- **The cost reductions from using dbt State or state-aware orchestration**: Understand the cost reduction when dbt State or state-aware orchestration reuses unchanged models.
 - **Cost trends over time**: Track your warehouse spend and optimization impact across your dbt projects.
 - **Filter by asset type**: On Cost Insights charts (**Cost**, **Usage**, **Query run time**, **Builds**), use the **Assets** dropdown menu to filter data by **Models**, **Tests**, or **All**. Each tab keeps its own selection.
 
-The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of state-aware optimizations across various dimensions:
+The Cost Insights section is available in different <Constant name="dbt_platform" /> areas and lets you view your cost data and the impact of dbt State and state-aware orchestration optimizations across various dimensions:
 
 - [Project dashboard](/docs/explore/explore-cost-data#project-dashboard)
 - [Catalog on Model page](/docs/explore/explore-cost-data#model-performance-in-catalog)
@@ -190,8 +194,8 @@ Keep the following in mind when using Cost Insights:
 - Changes to cost variables only apply to future calculations &mdash; historical cost data remains unchanged.
 
 **Optimization data**
-- Optimization and usage reduction data is available once state-aware orchestration is enabled and begins reusing models across runs.
-- For accounts already using state-aware orchestration, run at least one full model build within the last 10 days before enabling Cost Insights to establish a baseline for cost reduction calculations. If you don't see cost reduction data, run a full build to establish the baseline.
+- Optimization and usage reduction data is available once dbt State or state-aware orchestration is enabled and begins reusing models across runs.
+- For accounts already using dbt State or state-aware orchestration, run at least one full model build within the last 10 days before enabling Cost Insights to establish a baseline for cost reduction calculations. If you don't see cost reduction data, run a full build to establish the baseline.
 - Cost Insights currently calculates estimated reductions in warehouse compute usage at the model level and will expand to include tests and seeds in the future.
 
 **Exporting data**
@@ -204,5 +208,6 @@ Keep the following in mind when using Cost Insights:
 <FAQ path="Cost optimizations/troubleshooting-cost-data" />
 <FAQ path="Cost optimizations/metadata-warehouse-costs" />
 <FAQ path="Cost optimizations/job-frequency" />
+<FAQ path="Runs/what-happened-to-sao" />
 
 

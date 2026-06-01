@@ -1,0 +1,1 @@
+*<Constant name="wizard" /> is in public preview as an AI agent layer across the managed <Constant name="dbt_platform" />. Some customers may still have access to dbt Copilot until the updated AI agent layer is generally available. [Contact dbt Support](mailto:support@getdbt.com) with any questions.*

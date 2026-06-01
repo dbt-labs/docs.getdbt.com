@@ -23,6 +23,10 @@ Starting in 2024, <Constant name="dbt" /> provides the functionality from new ve
 
 New features and functionality available in <Constant name="core" /> v1.11
 
+### dbt State <Lifecycle status="preview" />
+
+dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is available as a plugin for <Constant name="core" /> v1.11. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
+
 ### User-defined functions (UDFs)
 
 dbt Core v1.11 introduces support for user-defined functions (UDFs), which enable you to define and register custom functions in your warehouse. Like macros, UDFs promote code reuse, but they are objects in the warehouse so you can reuse the same logic in tools outside dbt.
