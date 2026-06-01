@@ -44,7 +44,7 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1
 
 <VersionBlock firstVersion="1.12">
 
-### `dbt login` with dbt State
+## `dbt login` with dbt State
 
 When [dbt State](/docs/deploy/dbt-state-about) is enabled, `dbt login` is used specifically for dbt State authentication, not for general <Constant name="dbt_platform" /> access. Running this command opens a browser window with two options:
 
