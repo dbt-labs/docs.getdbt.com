@@ -66,9 +66,11 @@ You can now use the `--sql` flag with `dbt run-operation` to execute ad hoc data
 
 You can configure whether downstream models run when an upstream model fails using the [`on_error`](/reference/resource-configs/on_error) config. Set `on_error: continue` on a model to allow its downstream models to still attempt to run even when it fails. By default (`skip_children`), dbt skips all downstream models on failure. Note that [`--fail-fast`](/reference/global-configs/failing-fast) takes precedence &mdash; runs with `--fail-fast` stop at the first failure, even if a model is configured with `on_error: continue`.
 
-### OSI semantic layer documents <Lifecycle status="beta" />
+### OSI semantic layer support <Lifecycle status="beta" />
 
-<Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
+- <Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
+- dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
+
 
 ### New Semantic Layer YAML spec
 
@@ -81,10 +83,6 @@ Key changes in the new spec:
 - `type_params` is deprecated; its parameters are now top-level keys within each metric definition.
 
 For migration guidance and a comparison between the latest spec and the legacy spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec). For the semantic model reference, refer to [Semantic models](/docs/build/semantic-models).
-
-### OSI Semantic Layer artifact
-
-Starting in <Constant name="core" /> v1.12, dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
 
 ### `selector` method for named YAML selectors <Lifecycle status="beta" />
 
@@ -160,7 +158,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### BigQuery
 
-- Added the [`bigquery_use_standard_sql_for_partitions`](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) flag. When set to `true`, dbt uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) instead of legacy SQL (`$__PARTITIONS_SUMMARY__`) when calling `get_partitions_metadata()`. The flag defaults to `false` in this release. BigQuery is [deprecating legacy SQL starting June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026), so it is recommended to migrate before that date.
+- Added the [`bigquery_use_standard_sql_for_partitions`](/reference/global-configs/bigquery-changes#the-bigquery_use_standard_sql_for_partitions-flag) flag, which controls whether `get_partitions_metadata()` uses standard SQL (`INFORMATION_SCHEMA.PARTITIONS`) or legacy SQL (`$__PARTITIONS_SUMMARY__`). The flag defaulted to `false` when first introduced in this release, but has been flipped to `true` by default ahead of BigQuery's [legacy SQL deprecation on June 1, 2026](https://docs.cloud.google.com/bigquery/docs/release-notes#February_25_2026). To revert to legacy SQL, set the flag to `false` in `dbt_project.yml`.
 - Added the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag. When you set this flag to `true`, dbt raises a `DbtRuntimeError` if you run metadata-based source freshness checks with wildcard table identifiers (for example, `events_*`), preventing incorrect freshness results.
 - You can configure BigQuery job link logging with `job_link_info_level_log`. By default, dbt logs job links at the debug level. To log job links at the info level, set `job_link_info_level_log: true` in your BigQuery profile. This makes job links visible in dbt logs for easier access to the BigQuery console. For more information, see [BigQuery setup](/docs/local/connect-data-platform/bigquery-setup#job_link_info_level_log).
 - You can set `job_execution_timeout_seconds` per model, snapshot, seed, or test, in addition to the profile-level configuration. The per-resource value takes precedence over the default value set in the profile level. For more information, refer to [BigQuery setup](/docs/local/connect-data-platform/bigquery-setup#job_execution_timeout_seconds).
