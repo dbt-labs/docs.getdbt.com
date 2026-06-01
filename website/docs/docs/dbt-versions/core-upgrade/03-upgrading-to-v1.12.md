@@ -20,6 +20,16 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
+### Native private packages in dbt Core
+
+<Constant name="core" /> now supports [native private packages](/docs/build/packages#native-private-packages) in `packages.yml` and `dependencies.yml`, at parity with the <Constant name="fusion_engine" />. You can install packages from private GitHub, GitLab, or Azure DevOps repos using the `private` key without configuring a token or full Git URL. dbt uses your system's SSH configuration for authentication. Use the [`provider` key](/docs/build/packages#using-the-provider-key) to specify your Git provider and tell dbt which SSH URL format to construct. For example:
+
+```yaml
+packages:
+  - private: your-org/your-internal-repo
+    provider: "github"  # Supported values: "github", "gitlab", "ado"
+```
+
 ### Extensions to UDFs <Lifecycle status="beta" />
 
 - <Constant name="core" /> v1.12 adds support for JavaScript user-defined functions (UDFs) on Snowflake and BigQuery. Define a JavaScript UDF by creating a `.js` file in your `functions/` directory and a corresponding YAML file with the function's arguments and return type. For more information, refer to [User-defined functions](/docs/build/udfs).
