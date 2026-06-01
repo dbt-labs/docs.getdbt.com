@@ -40,6 +40,7 @@ Refer to the [FAQs](#faqs) for more information about managing multiple <Constan
 See the [Hybrid development with <Constant name="dbt_platform"/>  and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) guide to keep credentials, environment variables, and <Constant name="fusion"/> versions in sync across your local CLI and <Constant name="dbt_platform"/>.
 :::
 
+
 ## Install dbt CLI
 
 You can install the <Constant name="platform_cli" /> via the command line by using one of the following methods: 
@@ -279,6 +280,16 @@ import CloudCliRelativePath from '/snippets/_cloud-cli-relative-path.md';
 
 <CloudCliRelativePath />
 
+## dbt Wizard
+
+[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is an AI agent purpose-built for analytics engineering. It's grounded in your dbt project through a [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) &mdash; a structured context index of your project's lineage, model health, test coverage, and semantic definitions. Before the agent writes a single line, it knows which models are healthy, what depends on what, and where gaps in tests or documentation exist.
+
+- **Build and refactor from natural language**: Describe the change, get a reviewable diff before anything is written to disk.
+- **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before they reach production.
+- **Navigate with full project context**: Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and flag affected models, tests, and metrics before acting.
+
+For data practitioners working locally, this means AI assistance grounded in your actual project state &dash; not a generic code assistant. Bring your own key to experience the full agentic analytics engineering loop. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+
 ## FAQs
 
 <DetailsToggle alt_header="What's the difference between the dbt CLI and dbt Core?">
@@ -337,4 +348,3 @@ The <Constant name="platform_cli" /> allows only one command that writes to the 
 
 </DetailsToggle>
   
-

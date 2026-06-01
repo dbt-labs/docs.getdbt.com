@@ -19,6 +19,7 @@ The dbt VS Code extension is available in the [VS Code Marketplace](https://mark
 
 The dbt VS Code extension is only compatible with the <Constant name="fusion_engine" />, but not with <Constant name="core" />.
 
+
 :::tip Try out the Fusion quickstart guide
 
 Check out the [Fusion quickstart guide](/guides/fusion?step=1) to try the dbt VS Code extension in action.
@@ -40,10 +41,24 @@ Check out the following video to see the features and functionality of the dbt V
   />
 </div>
 
+### Sign in and feature access
+
+After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available free for 14 days &mdash; no account needed! After that, [sign in or register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account to keep using advanced features. Previously only registered users had access to the dbt VS Code extension.
+
+Without an account, the vast majority of features continue to work. Only advanced features prompt you to sign in after the trial period ends.
+
+:::note Strict static analysis requires sign-in from day one
+If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass `--static-analysis strict` at runtime, a <Constant name="dbt_platform" /> account is required regardless of the 14-day trial period.
+:::
+
+Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+
+In <Constant name="core" /> v2.0 and later, authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across the CLI, dbt VS Code extension, dbt State (if you log in using <Constant name="dbt_platform" />). Go through the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
+
 ### The dbt extension menu
 
 The dbt logo on the sidebar (or the **dbt Extension** text on the bottom tray) launches the main menu for the extension. This menu contains helpful information and actions you can take:
-- **Get started button:** Launches the [Fusion upgrade](/docs/install-dbt-extension#upgrade-to-fusion) workflow.
+- **Get started button:** Launches the [Fusion upgrade](/docs/upgrade-to-fusion-extension) workflow.
 - **Extension info:** Information about the extension, Fusion, and your dbt project. Includes configuration options and actions.
 - **Help:** Quick links to support, bug submissions, and documentation.
 
@@ -56,14 +71,6 @@ The dbt extension caches important schema information from your data warehouse t
 1. Click the **dbt logo** on the sidebar to open the menu.
 2. Expand the **Extension info** section and location the **Actions** subsection.
 3. Click **Clear Cache** to update.
-
-### Productivity features
-
-:::info This section has moved
-
-We've moved productivity features to their own page! Check out their [new location](/docs/dbt-extension-features).
-
-:::
 
 ## Using the extension
 
@@ -116,6 +123,16 @@ To solve this issue, do one of the following:
   ```
   This could disable _all_ use of the schema store, resulting in unintended consequences. 
 
+
+## dbt Wizard
+
+The dbt VS Code extension and [dbt Wizard](/docs/dbt-ai/wizard-quickstart) are designed to work together. The extension, powered by the <Constant name="fusion_engine" />, gives you fast parsing, inline error detection, and IntelliSense. [dbt Wizard](/docs/dbt-ai/wizard-quickstart) adds an AI layer on top &mdash; one that works with a live understanding of your project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai), a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+
+- **Build and refactor from natural language**: Describe what you want, review the diff, approve or redirect before anything is saved.
+- **Validate changes before they land**: The agent compiles and runs against your warehouse in a tight loop — not just editor linting.
+- **Work with your full project map**: Traverse the [DAG](/docs/explore/explore-projects), understand downstream impact, and keep tests and YAML in sync as models change.
+
+For data practitioners, combining the extension's Fusion-powered editor experience with dbt Wizard's project-aware agent means less manual YAML, fewer context switches, and faster iteration on complex modeling work. See [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
 
 ## Support
 
