@@ -21,6 +21,11 @@ Starting in 2024, <Constant name="dbt" /> provides the functionality from new ve
 
 Features and functionality new in dbt v1.9.
 
+### dbt State <Lifecycle status="preview" />
+
+dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is available as a plugin for <Constant name="core" /> v1.9. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
+
+
 ### Microbatch `incremental_strategy`
 
 :::info 

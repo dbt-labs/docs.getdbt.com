@@ -108,42 +108,82 @@ In addition, you can look at the **Job Details** page's **Insights** tab to show
 
 Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in <Constant name="dbt" /> is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Starter and Enterprise-tier plans).
 
-## dbt Copilot: Usage metering and limiting <Lifecycle status="Starter, Enterprise, Enterprise+" />
+## dbt State usage
 
-<Constant name="copilot" /> usage is measured based on the number of completed AI requests, known as <Constant name="copilot" /> actions. Usage limits are enforced to ensure fair access and system performance.
+[dbt state](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. Learn more about how your usage influences the price so you can plan your savings effectively.
 
-A defined number of <Constant name="copilot" /> invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to Copilot functionality will be temporarily disabled until the start of the next billing cycle.
+### About free trial
 
-The <Constant name="copilot"/> <Constant name="dev_agent"/> (public preview) currently draws from your available <Constant name="copilot"/> request allotment. Pricing and usage are subject to change.
+Eligible new organizations receive 30 days of free use with no usage limit. After the free period, a credit card or enterprise contract (for dbt platform managed plans) is required to continue.
+
+### dbt State pricing
+
+dbt State is a separate, usage-based product available to both dbt Core and dbt platform users.
+
+### Cancellation
+
+Usage is tracked through your cancellation date. You're billed at month end for usage incurred before cancellation and not charged for usage after.
+
+### Target table
+
+A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models) and unique tests (including tests with `store_failures` enabled or disabled). When you run `dbt build` or similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules.
+
+All reuses of the same active target table inside of a single day (based on UTC time) are counted as a single daily active target table (DATT).
+
+### Daily active target tables
+
+For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables for which dbt State performs a unique skip or clone, and unique test reuse operations on a given calendar day.
+
+### Monthly cost calculation
+
+dbt State calculates cost per billing period using the unit price (USD $0.094) x sum of daily active target tables (DATT) for all account users and all days in that billing period. For example, if you have 100 DATT in a billing period, you'll be billed for 100 * $0.094 = $9.40.
+
+## dbt AI: Usage metering and limiting <Lifecycle status="Starter, Enterprise, Enterprise+" />
+
+dbt AI usage is measured based on the number of completed AI requests, known as dbt Copilot actions. Usage limits are enforced to ensure fair access and system performance.
+
+A defined number of dbt Copilot invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to dbt AI will be temporarily disabled until the start of the next billing cycle.
+
+As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 1. After July 1, this bridge ends and Wizard usage will be metered separately. Pricing and usage are subject to change.
 
 ### Usage and metering information 
 
-<Expandable alt_header="AI usage tracking by Copilot actions">
+<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 1)">
 
-<Constant name="copilot" /> actions refer to requests made to the <Constant name="copilot" /> assistant through the <Constant name="dbt" /> interface. These actions are recorded and displayed on the billing page alongside other usage metrics.
+As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 1. After July 1, this bridge ends and Wizard usage will be metered separately. 
 
-The following interactions count as <Constant name="copilot" /> actions:
-
-- **Each inline generation** &mdash; Every time <Constant name="copilot" /> writes or suggests code in your file, it counts toward your usage limit.
-
-- **Each generation of documentation, tests, semantic models, or metrics** &mdash; Any time you ask <Constant name="copilot" /> to automatically create things like documentation, tests, data models, or metrics, it counts as one interaction.
-
-- **Each generation within <Constant name="copilot" /> chats on <Constant name="canvas" /> or <Constant name="insights" />** &mdash; Any time you use <Constant name="copilot" /> chat in <Constant name="canvas" /> or <Constant name="insights" /> to generate something, it counts as an interaction.
+Users that bring their own key (BYOK) aren't affected by this bridge.
 
 </Expandable>
 
-<Expandable alt_header="Allowed limits on number of Copilot actions per month per license">
+<Expandable alt_header="AI usage tracking by dbt Copilot actions">
 
-The following table outlines the limits of <Constant name="copilot" /> actions by plan per month:
+dbt Copilot actions refer to requests made to the dbt Copilot assistant through the <Constant name="dbt" /> interface. These actions are recorded and displayed on the billing page alongside other usage metrics by accessing the **Copilot Actions** tab in the **Billing** page.
 
+The following interactions count as dbt Copilot actions:
+
+- **Each inline generation** &mdash; Every time dbt AI writes or suggests code in your file, it counts toward your usage limit.
+
+- **Each generation of documentation, tests, semantic models, or metrics** &mdash; Any time you ask dbt AI to automatically create things like documentation, tests, data models, or metrics, it counts as one interaction.
+
+- **Each generation within dbt AI chats on <Constant name="canvas" /> or <Constant name="insights" />** &mdash; Any time you use dbt Copilot chat in <Constant name="canvas" /> or <Constant name="insights" /> to generate something, it counts as an interaction.
+
+</Expandable>
+
+<Expandable alt_header="Allowed limits on number of dbt Copilot actions per month per license">
+
+The following table outlines the limits of dbt Copilot actions by plan per month:
+
+<SimpleTable>
 |Plan                       |Limit |
 |---------------------------|------|
 |Developer                  | ❌   |
 |Starter*                   |100   |
 |Enterprise                 |5,000 |
 |Enterpise+                 |10,000|
+</SimpleTable>
 
-*Team plan customers who enrolled in <Constant name="copilot" /> Beta prior to March 19, 2025 have access to <Constant name="copilot" />. All other legacy Team plan customers must move to the [Starter plan or above](https://www.getdbt.com/pricing) to get access. 
+*Team plan customers who enrolled in dbt Copilot Beta prior to March 19, 2025 have access to dbt Copilot. All other legacy Team plan customers must move to the [Starter plan or above](https://www.getdbt.com/pricing) to get access. 
 
 </Expandable>
 
@@ -155,9 +195,9 @@ For users on the Starter plan, the account owner receives an email notification 
 
 For users enrolled on the Enterprise and Enterprise+ plans, both the billing administrator and the account administrator are notified by email when the usage limit is reached.
 
-Once usage limits are reached, attempts to perform an action in <Constant name="copilot" /> triggers a banner notification indicating that the limit has been exceeded.
+Once usage limits are reached, attempts to perform an action in dbt Copilot triggers a banner notification indicating that the limit has been exceeded.
 
-Under Bring Your Own Key (BYOK), usage is not tracked by <Constant name="copilot" /> and is subject to your OpenAI limits.
+Under Bring Your Own Key (BYOK), usage is not tracked by dbt AI and is subject to your OpenAI limits.
 
 </Expandable>
 
@@ -168,9 +208,9 @@ To view the usage in your account:
 1. Navigate to [**Account settings**](/docs/platform/account-settings).
 
 2. Select **Billing** under the Settings header.
-3. On the billing page, click **<Constant name="copilot" />** to view your usage.
+3. On the billing page, click the **Copilot Actions** tab to view your usage.
 
-<Lightbox src="/img/docs/dbt-platform/view-usage-in-copilot.gif" title="View usage in Copilot" />
+<Lightbox src="/img/docs/dbt-platform/view-usage-in-copilot.gif" title="View usage in dbt Copilot" />
 
 
 ## Plans and Billing
@@ -179,7 +219,7 @@ To view the usage in your account:
 
 ### Developer plan billing
 
-Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the <Constant name="dbt" /> platform is still accessible, and no work will be lost.
+Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the <Constant name="dbt" /> platform is still 54accessible, and no work will be lost.
 
 All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Developer Plan, the included model entitlements may be different from what’s reflected above.
 
@@ -235,10 +275,39 @@ There are 2 options to disable models from being built and charged:
 1. Open the **Job Settings** of every job and navigate to the **Triggers** section. Disable the **Run on Schedule** and set the **Continuous Integration** feature **Run on Pull Requests?**  to **No**. Check your workflows to ensure that you are not triggering any runs via the <Constant name="dbt" /> API. This option will enable you to keep your <Constant name="dbt" /> jobs without building more models. 
 2. Alternatively, you can delete some or all of your <Constant name="dbt" /> jobs. This will ensure that no runs are kicked off, but you will permanently lose your job(s). 
 
-
 ## Optimize costs in dbt
 
 <Constant name="dbt" /> offers ways to optimize your model’s built usage and warehouse costs. 
+
+### Best practices for optimizing cost with dbt State
+
+#### Use `lag_tolerence` to reduce unnecessary model execution
+
+You can save even more time and compute by defining how old your data can be before a model should be triggered. We’ve introduced lag_tolerance so that you can do things like differentiate local development needs vs prod. 
+
+For example:
+
+<File name="dbt_project.yml">
+
+```yaml
+models:
+  +state:
+    lag_tolerance: "{{ '4h' if target.name == 'prod' else '7d' }}"
+```
+
+</File>
+
+In this example, models in the `prod` target rebuild only when upstream data is more than 4 hours old. In all other environments, models wait 7 days before rebuilding.
+
+For more details, refer to the [`lag_tolerance` config reference](/reference/resource-configs/lag-tolerance).
+
+#### Use selectors with `dbt build` to run limited upstream nodes
+
+In development, use [selectors](/reference/node-selection/yaml-selectors) with `dbt build` to limit how many upstream nodes run. Nodes that are not selected can be [deferred](/reference/node-selection/defer) instead of rebuilt, which avoids extra dbt State activity on those targets. Automatic `state:modified` selection in development may be supported in a future release.
+
+#### Avoid conditional materializations
+
+Avoid conditional materialization patterns such as `table` in production and `view` in development for the same model. Different materializations between environments can prevent dbt State from matching targets correctly and reduce skip/clone effectiveness.
 
 ### Best practices for optimizing successful models built
 
@@ -320,22 +389,4 @@ Once you've identified which models could be optimized, check out these other re
 * [Best Practices for Optimizing Your dbt and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
 * [How to optimize and troubleshoot dbt models on Databricks](/guides/optimize-dbt-models-on-databricks)
 
-## FAQs
-
-* What happens if I need more seats on the Starter plan? 
-_If you need more developer seats, select the [Contact Sales](https://www.getdbt.com/contact) option from the billing settings to talk to our sales team about an Enterprise or Enterprise+ plan._  
-
-* What if I go significantly over my included free models on the Starter or Developer plan?
-_Consider upgrading to a Starter or Enterprise-tier plan. Starter and Enterprise-tier plans include more models and allow you to exceed the monthly usage limit. Enterprise accounts are supported by a dedicated account management team and offer annual plans, custom configurations, and negotiated usage rates._ 
-
-* I want to upgrade my plan. Will all of my work carry over?
-_Yes. Your <Constant name="dbt" /> account will be upgraded without impacting your existing projects and account settings._
-
-* How do I determine the right plan for me?
- _The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Starter plan._
-
-* What are the <Constant name="semantic_layer" /> trial terms?
-_Starter and Enterprise-tier customers can sign up for a free trial of the <Constant name="semantic_layer" />, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
-
-* What is the reasonable use limitation for the <Constant name="semantic_layer" /> powered by MetricFlow during the trial? 
-_Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of dbt Labs._
+For answers to common plan and billing questions, refer to [Billing FAQs](/docs/platform/billing-faqs).

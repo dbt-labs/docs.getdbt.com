@@ -22,7 +22,7 @@ The query console is the main component of <Constant name="insights" />. It allo
 2. [Query console menu](#query-console-menu), which contains **Bookmark (icon)**, **Develop**, and **Run** buttons. 
 3. [Query output panel](#query-output-panel), below the query editor and displays the results of a query:
   - Has three tabs: **Data**, **Chart**, and **Details**, which allow you to analyze query execution and visualize results.
-4. [Query console sidebar menu](#query-console-sidebar-menu), which contains the **<Constant name="catalog" />**, **Bookmark**, **Query history**, and **<Constant name="copilot" />** icons.
+4. [Query console sidebar menu](#query-console-sidebar-menu), which contains the **<Constant name="catalog" />**, **Bookmark**, **Query history**, and **dbt Copilot** icons.
 
 <Lightbox src="/img/docs/dbt-insights/insights-main.png" title="dbt Insights main interface with blank query editor" />
 
@@ -31,7 +31,7 @@ The Query console menu is located at the top right of the Query editor. It conta
 
 - **Bookmark** button &mdash; Save your frequently used SQL queries as favorites for easier access.
   - When you click **Bookmark**, a **Bookmark Query Details** modal (pop up box) will appear where you can add a **Title** and **Description**.
-  - Let [<Constant name="copilot" />](/docs/platform/dbt-copilot) do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
+  - Let dbt Copilot do the writing for you &mdash; use the AI assistant to automatically generate a helpful description for your bookmark.
   - Access the newly created bookmark from the **Bookmark** icon in the [Query console sidebar menu](#query-console-sidebar-menu). 
  - **Develop**: Open the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="canvas" />](/docs/platform/canvas) to continue editing your SQL query.
 - **Run** button &mdash; Run your SQL query and view the results in the **Data** tab.
@@ -72,7 +72,7 @@ To build a query in dbt <Constant name="insights" />:
 The Query output panel is below the query editor and displays the results of a query. It displays the following tabs to analyze query execution and visualize results:
 - **Data** tab &mdash; Preview your SQL results, with results paginated.
 - **Details** tab &mdash; Generates succinct details of executed SQL query:
-  - Query metadata &mdash; <Constant name="copilot" />'s AI-generated title and description. Along with the supplied SQL and compiled SQL.
+  - Query metadata &mdash; dbt Copilot's AI-generated title and description. Along with the supplied SQL and compiled SQL.
   - Connection details &mdash; Relevant data platform connection information.
   - Query details &mdash; Query duration, status, column count, row count.
 - **Chart** tab &mdash; Visualizes query results with built-in charts. 
@@ -110,13 +110,17 @@ View past queries, their statuses (All, Success, Error, or Pending), start time,
 
 ### dbt Copilot
 
-Use [dbt <Constant name="copilot" />'s AI assistant](/docs/platform/dbt-copilot) to modify or generate queries using natural language prompts or to chat with the Analyst agent to gather insights about your data. There are two ways you can use dbt <Constant name="copilot" /> in <Constant name="insights" /> to interact with your data:
+import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
-<Lightbox src="/img/docs/dbt-insights/insights-copilot-tabs.png" width="50%" title="dbt Copilot in Insights" />
+<CopilotWizardDifferences/>
 
-- **Agent** <Lifecycle status='beta' /> - Ask questions to the Analyst agent to get intelligent data analysis with automated workflows, governed insights, and actionable recommendations. This is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. 
+Use dbt Copilot to modify or generate queries using natural language prompts or to chat with the Analyst agent to gather insights about your data. 
 
-  To enable the Analyst agent, enable beta features under **Account settings** > **Personal profile** > **Experimental features**. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
+Use dbt Copilot in Insights in two ways:
+- **Generate SQL**: Build queries in <Constant name="insights" /> with natural language prompts to explore and query data with an intuitive, context-rich interface. For more information, see [Build queries in dbt Insights](/docs/explore/navigate-dbt-insights).
+- **dbt Copilot Analyst agent** <Lifecycle status='beta' />: Ask questions to get intelligent data analysis with automated workflows, governed insights, and actionable recommendations. This is a conversational AI feature where you can ask natural language prompts and receive analysis in real-time. 
+
+  Enable beta features under **Account settings** > **Personal profile** > **Experimental features** to use the Analyst agent. For steps on how to enable, see [Preview new dbt platform features](/docs/dbt-versions/experimental-features). 
 
   Some sample questions you can ask the agent: 
 
@@ -125,7 +129,7 @@ Use [dbt <Constant name="copilot" />'s AI assistant](/docs/platform/dbt-copilot)
   - _How should I optimize my marketing spend next quarter?_
   - _How many customers do I have, broken down by customer type?_
 
-  The Analyst agent creates an analysis plan based on your question. The agent:
+  dbt Copilot Analyst agent creates an analysis plan based on your question. dbt Copilot Analyst agent:
 
   1. Gets context using your semantic models and metrics. 
   2. Generates SQL queries using your project's definitions.  
@@ -134,9 +138,11 @@ Use [dbt <Constant name="copilot" />'s AI assistant](/docs/platform/dbt-copilot)
 
   The agent can loop through these steps multiple times if it hasn't reached a complete answer, allowing for complex, multi-step analysis.⁠
 
-  For more information, see [Analyze data with the Analyst agent](/docs/platform/use-dbt-copilot#analyze-data-with-the-analyst-agent).
+  For more information, see [dbt Copilot in Insights](/docs/dbt-ai/analyst-agent).
 
-- **Generate SQL** - Build queries in <Constant name="insights" /> with natural language prompts to explore and query data with an intuitive, context-rich interface. For more information, see [Build queries](/docs/platform/use-dbt-copilot#build-queries).
+
+
+<Lightbox src="/img/docs/dbt-insights/insights-copilot-tabs.png" width="50%" title="dbt Copilot in Insights" />
 
 ## LSP features
 
