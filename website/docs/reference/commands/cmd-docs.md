@@ -122,7 +122,7 @@ The <Constant name="fusion_engine" /> uses the `--write-catalog` flag instead of
 
 ## --write-catalog flag
 
-The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. For Fusion jobs running in dbt platform, we automatically run `write-catalog` `build` and `run`, so you don't need to include it by default and will get your Catalog hydrated automatically. You can use this flag with the following commands:
+The `--write-catalog` flag generates the [`catalog.json`](/reference/artifacts/catalog-json) artifact, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project. Note for Fusion jobs running in dbt platform, we automatically run `write-catalog` `build` and `run`, so you don't need to include it by default and will get your Catalog hydrated automatically. You can use this flag with the following commands:
 
 - `dbt build`
 - `dbt run`
@@ -138,7 +138,7 @@ dbt build --write-catalog
 
 ### Platform behavior
 
-In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead. For Fusion jobs running in the platform, we will run `write-catalog` automatically with `build` or `run`, so you don't need to run a separate command to hydrate your metadata.
+In <Constant name="dbt_platform" /> jobs running on <Constant name="fusion" />, you don't need to change anything. When `dbt docs generate` is called (either as a job step or separate command), the platform automatically uses `--write-catalog` instead. Additionally, for Fusion jobs running in the platform, we will run `write-catalog` automatically with `build` or `run`, so you don't need to run a separate command to hydrate your metadata. In the platform, you can optionally choose to include it when running `dbt parse` or `dbt compile`.
 
 Note:
 
