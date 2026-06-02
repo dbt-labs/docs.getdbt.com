@@ -1082,7 +1082,7 @@ For development use cases, people typically query the historical or latest defin
 ### How is this model or metric used in downstream tools?
 [Exposures](/docs/build/exposures) provide a method to define how a model or metric is actually used in dashboards and other analytics tools and use cases. You can query an exposure’s definition to see how project nodes are used and query its upstream lineage results to understand the state of the data used in it, which powers use cases like a freshness and quality status tile.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.png" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
 
 
 <details>
