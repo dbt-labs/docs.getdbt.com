@@ -397,13 +397,13 @@ We opted to use `generate_alias_name` for this functionality so that the logic r
 
 <VersionBlock firstVersion="1.12">
 
-If you want a view that always tracks the latest version instead of pinning to a specific one, see [Pointing to the latest version](#pointing-to-the-latest-version).
+If you want a view that always tracks the latest model version instead of pinning to a specific one, see [Pointing to the latest version](#pointing-to-the-latest-version).
 
 ### Pointing to the latest version <Lifecycle status="beta" />
 
 <LatestVersionPointerBeta />
 
-The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When enabled, users querying outside of dbt always get the current version. This config only applies to versioned models.
+The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When you enable it, querying outside of dbt always returns the current version. This config only applies to versioned models.
 
 Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
 
