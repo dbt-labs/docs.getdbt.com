@@ -209,7 +209,14 @@ import RequiresRegistration from '/snippets/_extension-requires-registration.md'
 
 <RequiresRegistration />
 
-Open the **Catalog** tab to explore your project's catalog &mdash; powered by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor. Browse model and column documentation, descriptions, and metadata enriched by the <Constant name="dbt_platform" /> alongside your code.
+Open the **Catalog** tab to see catalog information for the model you're working on &mdash; enriched by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor.
+
+For the currently open model, the catalog tab surfaces:
+
+- The build status, last build time, and run duration from the <Constant name="dbt_platform" />.
+- The model's **Description**.
+- The model's **Columns**, including each column's type, description, and test results. Sort columns alphabetically or by tests.
+- A **View in dbt platform** link to open the resource in the <Constant name="dbt_platform" />.
 
 The catalog tab is an enrichment feature. After the 14-day trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
 
