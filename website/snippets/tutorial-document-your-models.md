@@ -58,9 +58,7 @@ Update your `models/schema.yml` file to include some descriptions, such as those
 
 [<Constant name="catalog" />](/docs/explore/explore-projects) provides powerful tools to interact with your dbt projects, including documentation:
 
-Catalog reflects Production by default. If your account has additional environments (for example, Staging), you can select them from the environment dropdown.
-
-1. From the IDE, run one of the following commands:
+1. Run one of the following commands:
    - `dbt docs generate` if you're on <Constant name="core" />
    - `dbt build` if you're on the <Constant name="fusion_engine" />
 2. Click **<Constant name="catalog" />** in the navigation menu to launch <Constant name="catalog" />.
