@@ -11,7 +11,8 @@ pagination_prev: null
 
 **Local command line interface (CLI)**
 - Leverage the speed and scale of the <Constant name="fusion_engine" /> or use <Constant name="core" />:
-  - [Install dbt Core](/docs/local/install-dbt) &mdash; Uses the Python-based <Constant name="core" /> engine for traditional workflows. Does not include <Term id="lsp"/> features found in the dbt VS Code extension like autocomplete, hover insights, lineage, and more. 
+  - [Install dbt Core v1](/docs/local/install-dbt) &mdash; Uses the Python-based <Constant name="core_v1" /> engine for traditional workflows. Does not include <Term id="lsp"/> features found in the dbt VS Code extension like autocomplete, hover insights, lineage, and more.
+  - [Install dbt Core v2](/docs/dbt-versions/core-upgrade/upgrading-to-v2) <Lifecycle status="alpha" /> &mdash; Uses the open-source, Rust-based <Constant name="core_v2" /> engine. Does not include <Term id="lsp"/> features.
   - [Install dbt Fusion CLI](/docs/local/install-dbt?version=2#get-started) &mdash; Provides Fusion performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp"/> features.
 
 **dbt VS Code extension**
@@ -25,5 +26,5 @@ pagination_prev: null
 - [Connect to a data platform](/docs/local/connect-data-platform/about-dbt-connections).
 - Learn [how to run your dbt projects](/docs/running-a-dbt-project/run-your-dbt-projects).
 
-If you're interested in using the <Constant name="dbt_platform" />, our feature-rich, browser-based UI, you can learn more in [About dbt set up](/docs/cloud/about-cloud-setup).
+If you're interested in using the <Constant name="dbt_platform" />, our feature-rich, browser-based UI, you can learn more in [About dbt set up](/docs/platform/about-platform-setup).
 

@@ -165,7 +165,7 @@ This is not currently possible, but something we hope to enable in the near futu
 
 <DetailsToggle alt_header="Is it possible to orchestrate job runs across multiple different projects?">
 
-<Constant name="dbt" /> will soon offer the capability to trigger jobs on the completion of another job, including a job in a different project. This offers one mechanism for executing a pipeline from start to finish across projects.
+Yes. You can configure <Constant name="dbt" /> to trigger a job when another job completes, including jobs in different projects. This is one way to execute a pipeline end to end across projects. For details, refer to [Trigger on job completion](/docs/deploy/deploy-jobs#trigger-on-job-completion).
 
 </DetailsToggle>
 
@@ -185,7 +185,7 @@ If a data quality issue does slip through, you also have the option of simply ro
 
 <DetailsToggle alt_header="How does dbt handle job run logs and can it feed them to standard monitoring tools, reports, etc.?">
 
-Yes, all of this metadata is accessible via the [<Constant name="dbt" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api). This metadata can be fed into a monitoring tool, or used to create reports and dashboards. 
+Yes, all of this metadata is accessible via the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api). This metadata can be fed into a monitoring tool, or used to create reports and dashboards. 
 
 We also expose some of this information in <Constant name="dbt" /> itself in [jobs](/docs/deploy/jobs), [environments](/docs/environments-in-dbt) and in [<Constant name="catalog" />](https://www.getdbt.com/product/dbt-explorer).
 
@@ -203,7 +203,7 @@ For example, [Snowflake cross-account data shares](https://docs.snowflake.com/en
 
 <DetailsToggle alt_header="How do user access permissions work in dbt Mesh? ">
 
-The existence of projects that have at least one public model will be visible to everyone in the organization with [read-only access](/docs/cloud/manage-access/seats-and-users). 
+The existence of projects that have at least one public model will be visible to everyone in the organization with [read-only access](/docs/platform/manage-access/seats-and-users). 
 
 Private or protected models require a user to have read-only access to the specific project to see its existence.
 
@@ -215,7 +215,7 @@ There’s model-level access within dbt, role-based access for users and groups 
 
 First things first: access to underlying data is always defined and enforced by the underlying data platform (for example, BigQuery, Databricks, Redshift, Snowflake, Starburst, etc.) This access is managed by executing “DCL statements” (namely `grant`). dbt makes it easy to [configure `grants` on models](/reference/resource-configs/grants), which provision data access for other roles/users/groups in the data warehouse. However, dbt does _not_ automatically define or coordinate those grants unless they are configured explicitly. Refer to your organization's system for managing data warehouse permissions.
 
-[<Constant name="dbt" /> Enterprise and Enterprise+ plans](https://www.getdbt.com/pricing) support [role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control-) that manages granular permissions for users and user groups. You can control which users can see or edit all aspects of a <Constant name="dbt" /> project. A user’s access to <Constant name="dbt" /> projects also determines whether they can “explore” that project in detail. Roles, users, and groups are defined within the <Constant name="dbt" /> application via the UI or by integrating with an identity provider.
+[<Constant name="dbt" /> Enterprise and Enterprise+ plans](https://www.getdbt.com/pricing) support [role-based access control (RBAC)](/docs/platform/manage-access/about-user-access#role-based-access-control-) that manages granular permissions for users and user groups. You can control which users can see or edit all aspects of a <Constant name="dbt" /> project. A user’s access to <Constant name="dbt" /> projects also determines whether they can “explore” that project in detail. Roles, users, and groups are defined within the <Constant name="dbt" /> application via the UI or by integrating with an identity provider.
 
 [Model access](/docs/mesh/govern/model-access) defines where models can be referenced. It also informs the discoverability of those projects within <Constant name="catalog" />. Model `access` is defined in code, just like any other model configuration (`materialized`, `tags`, etc).
 
@@ -284,9 +284,9 @@ Used in conjunction with dbt Mesh, <Constant name="catalog" /> becomes a powerfu
 
 </DetailsToggle>
 
-<DetailsToggle alt_header="How does the dbt CLI relate to and work with dbt Mesh?">
+<DetailsToggle alt_header="How does the dbt platform CLI relate to and work with dbt Mesh?">
 
-The [<Constant name="dbt" /> CLI](/docs/cloud/cloud-cli-installation) allows users to develop and run dbt commands from their preferred development environments, like VS Code, Sublime Text, or terminal interfaces. This flexibility is particularly beneficial in a dbt Mesh setup, where managing multiple projects can be complex. Developers can work in their preferred tools while leveraging the centralized capabilities of <Constant name="dbt" />.
+The [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) allows users to develop and run dbt commands from their preferred development environments, like VS Code, Sublime Text, or terminal interfaces. This flexibility is particularly beneficial in a dbt Mesh setup, where managing multiple projects can be complex. Developers can work in their preferred tools while leveraging the centralized capabilities of <Constant name="dbt" />.
 
 </DetailsToggle>
 
@@ -313,7 +313,7 @@ While basic Mesh functionality works in hybrid setups, some advanced platform fe
 
 <DetailsToggle alt_header="Does dbt Mesh require me to be on a specific version of dbt?">
 
-Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to take advantage of [cross-project dependencies](/docs/mesh/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
+Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-platform-version) to take advantage of [cross-project dependencies](/docs/mesh/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
 
 </DetailsToggle>
 
