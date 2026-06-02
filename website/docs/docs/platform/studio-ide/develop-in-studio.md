@@ -12,14 +12,15 @@ The <Constant name="dbt" /> integrated development environment (<Constant name="
 
 The <Constant name="studio_ide" /> offers several [keyboard shortcuts](/docs/platform/studio-ide/keyboard-shortcuts) and [editing features](/docs/platform/studio-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
 
-- Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
-- AI copilot &mdash; Use [<Constant name="copilot" />](/docs/platform/dbt-copilot), an AI-powered assistant, to [generate code](/docs/platform/studio-ide/develop-copilot#generate-and-edit-code) using natural language prompts and [create resources](/docs/platform/studio-ide/develop-copilot#generate-resources) such as documentation, tests, and semantic models. With the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent), you can generate or refactor models from natural language with plan-based, auditable changes. See [Develop with <Constant name="copilot" />](/docs/platform/studio-ide/develop-copilot) for more details.
-- Auto-completion &mdash; Suggests table names, arguments, and column names as you type, saving time and reducing typos.
-- Code [formatting and linting](/docs/platform/studio-ide/lint-format) &mdash; Helps standardize and fix your SQL code effortlessly.
-- Navigation tools &mdash; Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
-- Version control &mdash; Manage code versions with a few clicks.
-- Project documentation &mdash; Generate and view your [project documentation](#build-and-document-your-projects) for your dbt project in real-time.
-- Build, test, and run button &mdash; Build, test, and run your project with a button click or by using the <Constant name="studio_ide" /> command bar.  
+- Agentic development: [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) is the new and recommended AI agent for governed data development in dbt. It uses your project context to help you develop governed dbt changes faster. 
+  - [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
+- Auto-completion: Suggests tables, arguments, and columns as you type.
+- Code [formatting and linting](/docs/platform/studio-ide/lint-format): Standardizes and fixes SQL code.
+- Navigation tools: Jump to lines, find and replace text, and navigate project files.
+- Version control: Manage code versions with a few clicks.
+- Project documentation: Generate and view [project documentation](#build-and-document-your-projects) in real time.
+- Build, test, and run button: Build, test, and run your project from a button or the <Constant name="studio_ide" /> command bar.
+- Syntax highlighting for SQL: Improves readability and helps reduce syntax errors.
 
 These [features](#studio-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
 
@@ -55,8 +56,7 @@ To understand how to navigate the <Constant name="studio_ide" /> and its user in
 | [**<Constant name="studio_ide" /> shortcuts**](/docs/platform/studio-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/platform/studio-ide/keyboard-shortcuts) in the <Constant name="studio_ide" /> by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
 | **IDE version control** | The <Constant name="studio_ide" /> version control section and git button allow you to apply the concept of [version control](/docs/platform/git/version-control-basics) to your project directly into the <Constant name="studio_ide" />. <br /><br /> - Create or change branches, execute git commands using the git button.<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/platform/git/merge-conflicts)<br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch.<br /> - Use Git diff view to view what has been changed in a file before you make a pull request.<br /> - Use the **Prune branches** [button](/docs/platform/studio-ide/ide-user-interface#prune-branches-modal) to delete local branches that have been deleted from the remote repository, keeping your branch management tidy.<br /> - Sign your [git commits](/docs/platform/studio-ide/git-commit-signing) to mark them as 'Verified'. <Lifecycle status="managed,managed_plus" /> |
 | **Preview and Compile button** | You can [compile or preview](/docs/platform/studio-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
-| [**<Constant name="copilot" />**](/docs/platform/studio-ide/develop-copilot)| A powerful AI-powered assistant that can [generate code](/docs/platform/studio-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/platform/studio-ide/develop-copilot#generate-resources) (like documentation, tests, metrics, and semantic models) for you &mdash; with the click of a button. <Lifecycle status="self_service,managed,managed_plus" />. |
-| [**<Constant name="dev_agent" />**](/docs/dbt-ai/developer-agent) | Autonomous AI agent in the <Constant name="studio_ide" /> that writes or refactors dbt models from natural language, validates with <Constant name="fusion_engine" />, and runs against your warehouse with full context. <Lifecycle status="beta" />. |
+| [**<Constant name="wizard" />**](/docs/dbt-ai/wizard-ide) | Governed agentic development in the Studio IDE. Ask project-aware questions, generate resources, and write or refactor models from natural language — grounded in your project’s lineage, tests, and model health. <Lifecycle status="self_service,managed,managed_plus" /> |
 | **Build, test, and run button**  | Build, test, and run your project with the click of a button or by using the command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the <Constant name="studio_ide" />. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within <Constant name="dbt" />. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the <Constant name="studio_ide" /> for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
@@ -69,7 +69,6 @@ To understand how to navigate the <Constant name="studio_ide" /> and its user in
 | **Status bar** | This area provides you with useful information about your <Constant name="studio_ide" /> and project status. You also have additional options like enabling light or dark mode, restarting the <Constant name="studio_ide" />, or [recloning your repo](/docs/platform/git/version-control-basics).
 | **Dark mode**  | From the status bar in the <Constant name="studio_ide" />, enable dark mode for a great viewing experience in low-light environments. 
 
-
 ### Code generation
 
 The <Constant name="studio_ide" /> comes with **CodeGenCodeLens**, a powerful feature that simplifies creating models from your sources with a click of a button. To use this feature, click on the  **Generate model** action next to each table in the source YAML file(s). It automatically creates a basic starting staging model for you to expand on. This feature helps streamline your workflow by automating the first steps of model generation.
@@ -80,6 +79,27 @@ The <Constant name="studio_ide" /> uses JSON Schema from the open source [dbt-js
 
 If a warning looks wrong but <Constant name="dbt" /> commands succeed, trust your project commands and report the discrepancy so the schema can be improved. For background on the latest Semantic Layer YAML shape, see [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
 
+### dbt Wizard
+
+
+### dbt Wizard
+
+[<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) helps you develop trusted dbt projects faster in the <Constant name="studio_ide" />. It understands more than the file you’re editing. It uses dbt's native metadata engine to understand your project’s lineage, model health, test coverage, and semantic definitions, so it can provide answers and suggestions based on your _full_ project context.
+
+With <Constant name="wizard" />, you can:
+
+- **Build and refactor models:** Describe what you want to create or change, then review the proposed diff before any files are updated.
+- **Validate changes as you work:** Compile changes with <Constant name="fusion_engine" /> and run them against your warehouse to catch issues early.
+- **Understand downstream impact:** See affected models, tests, and metrics _before_ making changes.
+- **Generate YAML resources:** Create documentation, tests, semantic models, and metrics from the Studio IDE console.
+
+For data practitioners, this means less time context-switching between files, less manual YAML writing, and faster iteration on complex modeling work &mdash; all inside the environment where you already work
+
+To get started, refer to [dbt Wizard in the Studio IDE](/docs/dbt-ai/wizard-ide).
+
+import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
+
+<CopilotWizardDifferences/>
 ## Get started with the Studio IDE
 
 In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-platform-environments). In the following steps, we outline how to set up developer credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
@@ -137,7 +157,9 @@ Nice job, you're ready to start developing and building models 🎉!
   - Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the <Constant name="git" /> branch name. For example, using the branch name as a prefix for a development schema.
   - Run [MetricFlow commands](/docs/build/metricflow-commands) to create and manage metrics in your project with the [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl).
 
-- **Generate your YAML configurations with <Constant name="copilot" />** &mdash; [dbt Copilot](/docs/platform/dbt-copilot) is a powerful artificial intelligence (AI) feature that helps automate development in <Constant name="dbt" />. It can [generate code](/docs/platform/studio-ide/develop-copilot#generate-and-edit-code) using natural language, and [generate resources](/docs/platform/studio-ide/develop-copilot#generate-resources) (like documentation, tests, metrics,and semantic models) for you directly in the <Constant name="studio_ide" />, so you can accomplish more in less time. <Lifecycle status="self_service,managed,managed_plus" /> 
+- **Develop with <Constant name="wizard" />:** [<Constant name="wizard" />](/docs/platform/wizard-platform) is the new and recommended AI agent for governed data development in dbt. It uses your project context to help you develop governed dbt changes faster. <Lifecycle status="self_service,managed,managed_plus" />
+
+  [dbt Copilot](/docs/platform/studio-ide/develop-studio-ai#dbt-copilot-in-studio-ide) is separate from <Constant name="wizard" /> and is dbt's inline AI assistance experience, providing single-click generation of SQL, documentation, tests, and semantic models in <Constant name="studio_ide" />, <Constant name="canvas" />, and <Constant name="insights" />. 
 
 - **Build and view your project's docs** &mdash; The <Constant name="studio_ide" /> makes it possible to [build and view](/docs/explore/build-and-view-your-docs) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 

@@ -34,6 +34,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
 - Each dbt model can define one semantic model via a `semantic_model` block. Use the optional `name` field if you need a different display name.
 - Configure semantic models in a YAML file within your dbt project directory, embedded within your model definitions rather than as separate configurations.
+- You can also define semantic models using [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) documents, an alternative to <Constant name="core" />'s native YAML configuration. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
 
 </VersionBlock>
 

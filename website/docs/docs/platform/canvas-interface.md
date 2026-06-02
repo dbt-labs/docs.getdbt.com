@@ -25,7 +25,7 @@ The <Constant name="canvas" /> interface is composed of:
 	- **Input:** Source models and data
 	- **Transform:** Data transformation tools
 	- **Output:** Output model configurations
-	- **[Copilot](/docs/platform/build-canvas-copilot):** AI tools to help you build fast and efficiently
+	- **[dbt Copilot](/docs/platform/build-canvas-copilot):** AI tools to help you build fast and efficiently
 	- **SQL:** View your completed model's compiled SQL
 - **Operators** &mdash; Tiles that provide source data, perform specific transformations, and layer configurations (such as model, join, aggregate, filter, and so on). Use connectors to link the operators and build a complete data transformation pipeline. 
 - **Canvas** &mdash; The main whiteboard space below the node toolbar. The canvas allows you to create or modify models through a sleek drag-and-drop experience.
