@@ -47,7 +47,7 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 |---|---|---|---|
 | [<Constant name="dbt_platform" /> — <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) | Public preview | Managed keys, or BYOK | Managed usage is included with [dbt AI](/docs/platform/billing#dbt-ai-usage-metering-and-limiting) by plan (not available on Developer). BYOK is available on Enterprise and Enterprise+. |
 | [<Constant name="dbt_platform" /> — <Constant name="wizard" /> home tab](/docs/platform/wizard-home) | Public beta | Managed keys, or BYOK | Same as <Constant name="studio_ide" />. |
-| [Terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | BYOK, or OpenAI subscription | <Constant name="dbt" /> doesn't meter CLI usage — you pay your AI provider directly. Works with or without a <Constant name="dbt_platform" /> account. |
+| [Terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | BYOK, or OpenAI subscription |You pay your AI provider directly. Works with or without a <Constant name="dbt_platform" /> account. |
 
 </SimpleTable>
 
