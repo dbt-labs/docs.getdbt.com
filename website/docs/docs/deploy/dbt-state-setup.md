@@ -49,7 +49,7 @@ To enable dbt State:
 
 8. Click **Enable dbt State**.
 
-The **dbt State** page where you started your trial in step 2 displays how many days remain in your trial period alongside the following monthly data:
+The **dbt State** page where you started your trial in step 3 displays how many days remain in your trial period alongside the following monthly data:
 
 - Number of models reused
 - Total % build reduction
