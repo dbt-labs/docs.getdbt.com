@@ -63,7 +63,7 @@ From the account-level lineage graph, you can also:
 
 ### Explore a project's resource-level lineage
 
-From a project's **Overview** page, **View lineage** opens the resource-level lineage graph for that project. In this view, you can see:
+From a project's **Overview** page, click **View lineage** to open the resource-level lineage graph for that project. In this view, you can see:
 
 - Sources, seeds, and models in the current project, with connectors between them.
 - Downstream projects that reference the project's public models, shown as separate project nodes connected by dashed lines.
