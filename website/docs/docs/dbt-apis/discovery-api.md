@@ -68,7 +68,7 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 
 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Use exposures to embed data health tiles in your dashboards to distill trust signals for data consumers." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.png" width="60%" title="Use exposures to embed data health tiles in your dashboards to distill trust signals for data consumers." />
 
 </TabItem>
 
