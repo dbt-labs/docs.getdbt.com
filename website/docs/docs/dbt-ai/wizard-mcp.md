@@ -141,7 +141,7 @@ wizard mcp login SERVER_NAME
 wizard mcp logout SERVER_NAME
 ```
 
-To request specific scopes at login, pass the `--scopes` (comma-separated) CLI flag, which is the same as setting `scopes` in `config.toml`:
+To request specific scopes at login, pass the `--scopes` CLI flag with a comma-separated list. This requests the same scopes as the scopes key in `config.toml`, but just for that login:
 
 ```bash
 wizard mcp login SERVER_NAME --scopes read,write
