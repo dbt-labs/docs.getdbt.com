@@ -64,7 +64,7 @@ Catalog reflects Production. If your account has additional environments (for ex
    - `dbt docs generate` if you're on <Constant name="core" />
    - `dbt build` if you're on the <Constant name="fusion_engine" />
 2. Click **<Constant name="catalog" />** in the navigation menu to launch <Constant name="catalog" />.
-3. <Constant name="catalog" /> reflects **Production**. If your account has additional environments (for example, **Staging**), you can select them from the environment dropdown.
+3. <Constant name="catalog" /> reflects **Production** by default. If your account has additional environments (for example, **Staging**), you can select them from the environment dropdown.
 
   <Lightbox src="/img/docs/collaborate/dbt-explorer/catalog-nav-dropdown.png" width="85%" title="Select an environment in Catalog." />
 
