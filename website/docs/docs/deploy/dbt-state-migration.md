@@ -12,11 +12,9 @@ import DbtStateVsSao from '/snippets/_dbt-state-vs-sao.md';
 
 <DbtStateVsSao />
 
-To migrate to dbt State, update your configs from `freshness.build_after` to the new `state` block. Refer to the [configuration changes](#configuration-changes) table for the full mapping.
+## Migrate your configuration
 
-## Configuration changes
-
-Much of dbt State's configuration will feel familiar if you've used state-aware orchestration, but there is one significant difference: the `build_after` configs have moved out of the `freshness` block and into a new `state` block.
+Move your configs from the `freshness.build_after` block to the new `state` block. Much of this will feel familiar, but there is one significant difference: `build_after` configs now live under `state` instead of `freshness`.
 
 | State-aware orchestration | dbt State | Notes |
 |---|---|---|
