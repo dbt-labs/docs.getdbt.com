@@ -114,7 +114,7 @@ When the [`latest_version_pointer`](/reference/resource-configs/latest_version_p
 
 The default implementation uses the model's base name (for example, `dim_customers`) unless a custom alias is set using `latest_version_pointer.alias`:
 
-<File name='get_latest_version_pointer_alias.sql'>
+<File name='macros/generate_latest_version_pointer_alias.sql'>
 
 ```jinja2
 {% macro generate_latest_version_pointer_alias(custom_alias_name=none, node=none) -%}
