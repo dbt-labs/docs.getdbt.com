@@ -52,12 +52,14 @@ Advantages: immediately backward-compatible for pre-existing `alias` configs.
 
 Override the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro to use a different naming convention globally.
 
-`macros/generate_latest_version_pointer_alias.sql`
+<File name='macros/generate_latest_version_pointer_alias.sql'>
 
-```
+```sql
 {% macro generate_latest_version_pointer_alias(custom_alias_name=none, node=none) -%}
     {{ node.name ~ "_latest" }}
 {%- endmacro %}
 ```
+
+</File>
 </TabItem>
 </Tabs>
