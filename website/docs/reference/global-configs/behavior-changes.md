@@ -87,6 +87,7 @@ flags:
   require_corrected_analysis_fqns: false
   require_source_and_semantic_model_names_without_spaces: false
   allow_jinja_file_extensions: false
+  latest_version_pointer_enabled_by_default: false
 ```
 
 </File>
@@ -116,6 +117,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_corrected_analysis_fqns](#project-level-configuration-for-analyses) | 2026.3 | TBD* | 1.12.0 | TBD* | - | - |
 | [require_source_and_semantic_model_names_without_spaces](#no-spaces-in-source-and-semantic-model-names) | 2026.4 | TBD* | 1.12.0 | TBD* | - | - |
 | [allow_jinja_file_extensions](#jinja-file-extensions) | 2026.5 | TBD* | 1.12.0 | TBD* | - | - |
+| [latest_version_pointer_enabled_by_default](#latest-version-pointer-for-versioned-models) | 2026.5 | TBD* | 1.12.0 | TBD* | - | - |
 
 
 #### dbt adapter behavior changes
@@ -581,4 +583,16 @@ When set to `true`, dbt recognizes Jinja-style extension suffixes (for example,`
 dbt strips the Jinja suffix when determining node names; resource names remain unchanged regardless of whether the Jinja suffix is present. For example, a [docs block](/docs/build/documentation#using-docs-blocks) file named `my_docs.md.j2` is parsed identically to `my_docs.md`, and a model file named `my_model.sql.j2` is parsed as the model `my_model`.
 
 When this flag is `false` or unset, dbt ignores files with these suffixes without logging a warning. If you've already added schema properties for that file, you'll see a "Did not find matching node for patch warning on schema.yml" warning.
+
+### Latest version pointer for versioned models <Lifecycle status="beta" />
+
+:::info Beta feature
+The `latest_version_pointer_enabled_by_default` flag is a beta feature in <Constant name="core" /> v1.12.
+:::
+
+The `latest_version_pointer_enabled_by_default` flag is set to `false` by default.
+
+When you set it to `true`, dbt automatically creates a [latest version pointer](/docs/mesh/govern/model-versions#pointing-to-the-latest-version) view for every versioned model in the project, without requiring per-model configuration. The pointer view is named after the model's base name (for example, `dim_customers`) and always points to the relation for the model with `is_latest_version: true` (for example, `dim_customers_v2`).
+
+Without this flag, you must opt in per model by setting [`latest_version_pointer.enabled: true`](/reference/resource-configs/latest_version_pointer) in the model config.
 
