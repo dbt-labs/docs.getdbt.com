@@ -14,12 +14,12 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 The resource-level lineage graph for a project displays cross-project relationships in the DAG. Nodes that represent another dbt project show a project icon to the left of the project name.
 
-From a project's overview page, click **View lineage** in the upper right corner to open that project's resource-level lineage graph. In that graph:
-- Viewing an upstream (parent) project displays the downstream (child) projects that depend on it.
-- Selecting a model reveals its dependent projects in the lineage.
-- Click on an upstream (parent) project to view the other projects that reference it in the **Relationships** tab, showing the number of downstream (child) projects that depend on them. 
+From a project's **Overview** page, click **View lineage** in the upper right corner to open that project's resource-level lineage graph. In that graph:
+- View an upstream (parent) project to see the downstream (child) projects that depend on it.
+- Select a model to reveal its dependent projects in the lineage.
+- Click on an upstream (parent) project to view the other projects that reference it in the **Relationships** tab, showing the number of downstream (child) projects that depend on them.
   - This includes all projects listing the upstream one as a dependency in its `dependencies.yml` file, even without a direct `{{ ref() }}`.
-- Selecting a project node from a public model opens its detailed lineage graph if you have the [permissions](/docs/platform/manage-access/enterprise-permissions) to do so.
+- Select a project node from a public model to open its detailed lineage graph if you have the [permissions](/docs/platform/manage-access/enterprise-permissions) to do so.
 
 :::tip Indirect dependencies
 When viewing a project's lineage, <Constant name="catalog" /> shows only _directly_ [referenced](/docs/mesh/govern/project-dependencies) public models. It doesn't show [indirect dependencies](/faqs/Project_ref/indirectly-reference-upstream-model). If a referenced model in your project depends on another upstream public model, the second-level model won't appear in <Constant name="catalog" />, however it will appear in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) lineage view.
@@ -40,18 +40,13 @@ For cross-project collaboration, you can interact with the DAG in all the same w
 
 If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for the specific project where those models are defined.
 
-To view all the projects in your account (displayed as a lineage graph or list view):
-
-- Navigate to the left section of the **Catalog** page, near the navigation.
-- Hover over the project name and select the account name. This takes you to an account-level lineage graph page, where you can view all the projects in the account, including dependencies and relationships between different projects.
-- Click the **List view** icon in the page's upper right corner to see a list view of all the projects in the account.
-- The list view page displays a public model list, project list, and a search bar for project searches.
-- Click the **Lineage view** icon in the page's upper right corner to view the account-level lineage graph.
-
 ### View account-level lineage
+
+To view all projects in your account as a lineage graph or list:
 
 1. In **<Constant name="catalog" />**, open the **Catalog** page.
 2. Click **Account lineage** in the upper right corner.
+
 On the account-level lineage graph, each project appears as its own node with the project name and a count of public models it exposes. Arrows between nodes show how projects depend on one another. The top toolbar includes a search bar and **List view** and lineage view toggles. Zoom controls appear in the lower right corner.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/account-level-lineage.gif" width="100%" title="Account-level lineage graph showing cross-project dependencies between projects."/>
@@ -71,8 +66,8 @@ From a project's **Overview** page, click **View lineage** to open the resource-
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/multi-project-overview.gif" width="95%" title="Resource-level lineage graph with a selected model and the Relationships tab."/>
 
-When you select a model, a details panel opens on the right. In this panel, you can see:
+When you select a model, a details panel opens on the right:
 
-- On the **General** tab: the model description and metadata fields such as **Project** and **Relation**.
-- On the **Columns** tab: each column's name, data type, and description, plus column test results when tests are defined. A **Search for columns** field appears at the top of the tab.
-- On the **Relationships** tab: downstream projects that reference the model, listed under **Referenced by**.
+- **General** tab: the model description and metadata fields such as **Project** and **Relation**.
+- **Columns** tab: each column's name, data type, and description, plus column test results when tests are defined. A **Search for columns** field appears at the top of the tab.
+- **Relationships** tab: downstream projects that reference the model, listed under **Referenced by**.
