@@ -29,7 +29,7 @@ For background on MCP itself, refer to the [Model Context Protocol introduction]
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers (including managing them and setting per-tool approvals) through the `config.toml` file.
 
 :::info MCP servers are a CLI feature
-Configuring MCP servers is available only in the <Constant name="wizard" /> CLI. In the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), <Constant name="wizard" /> includes a built-in set of dbt tools (such as product documentation lookup), but you can't add or configure your own MCP servers there.
+Configuring MCP servers is available only in the <Constant name="wizard" /> CLI. Although you're not able to configure your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), <Constant name="wizard" /> includes a built-in set of dbt tools such as dbt Agent skill and dbt MCP's product documentation fetching.
 :::
 
 ## Supported MCP server types
