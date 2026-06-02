@@ -25,7 +25,7 @@ for r in res.result:
     print(f"{r.node.name}: {r.status}")
 ```
 
-For implementation details, see the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/cli/main.py).
+For implementation details, see the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/cli/main.py).
 
 ## Parallel execution not supported
 

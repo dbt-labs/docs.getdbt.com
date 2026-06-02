@@ -35,7 +35,7 @@ In some cases, you may want to convert _all_ warnings to errors. However, when y
 :::
 
 Warnings that should be treated as errors can be specified through the `error` parameter. Warning names can be found in:
-  - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
+  - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
   - Using the `--log-format json` flag.
 
 <VersionBlock firstVersion="2.0">

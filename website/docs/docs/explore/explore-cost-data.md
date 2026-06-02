@@ -8,6 +8,7 @@ tags: ['scheduler','SAO', 'cost savings', 'models built', 'cost insights']
 
 # Explore cost data <Lifecycle status="beta,managed,managed_plus" />
 
+
 You can access Cost Insights in these different <Constant name="dbt_platform" /> areas:
 
 - [Project dashboard](#project-dashboard)
@@ -30,7 +31,7 @@ import CostInsights from '/snippets/_cost-insights-sao.md';
 
 ## Project dashboard
 
-The Cost Insights section in your project dashboard gives you a high-level view of warehouse costs and the impact of optimization through state-aware orchestration.
+The Cost Insights section in your project dashboard gives you a high-level view of warehouse costs and the impact of optimization through dbt State or state-aware orchestration.
 
 <Lightbox src="/img/docs/dbt-platform/cost-insights/cost-insights-project.png" title="Cost Insights in the project dashboard"/>
 
@@ -60,13 +61,13 @@ You can customize the cost data you want to view by:
 
 The project dashboard includes the following tabs that help you analyze cost and optimization trends over time.
 
-- **Cost**: Shows the estimated build cost reduction when using state-aware orchestration.
-- **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
+- **Cost**: Shows the estimated build cost reduction when using dbt State or state-aware orchestration.
+- **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from dbt State or state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
-- **Query run time**: Shows the estimated reduction in build time when using state-aware orchestration.
-- **Builds**: Shows total builds split into number of assets rebuilt and assets reused by state-aware orchestration.
+- **Query run time**: Shows the estimated reduction in build time when using dbt State or state-aware orchestration.
+- **Builds**: Shows total builds split into number of assets rebuilt and assets reused by dbt State or state-aware orchestration.
 
 ### Table view
 
@@ -118,13 +119,13 @@ For **Cost**, **Usage**, **Query run time**, and **Builds** tabs, you can custom
 ### Visualization tabs
 
 - **Runs**: Displays the success rate and run duration in minutes for recent runs. You can select a time period with options for **Last week**, **Last 14 days**, and **Last 30 days**.
-- **Cost**: Shows the estimated build cost reduction when using state-aware orchestration.
-- **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
+- **Cost**: Shows the estimated build cost reduction when using dbt State or state-aware orchestration.
+- **Usage**: Shows the estimated warehouse usage consumed and the reduction in usage from dbt State or state-aware orchestration over the selected timeframe. The **Usage** tab represents generic usage for your warehouse. The specific unit depends on your data warehouse:
     - Snowflake: Credits
     - BigQuery: Slot hours or bytes scanned (currently combined into one generic usage number)
     - Databricks: Databricks Units (DBUs)
-- **Query run time**: Shows the estimated query execution time and the reduction in run duration from state-aware orchestration.
-- **Builds**: Shows the number of assets built versus reused by state-aware orchestration.
+- **Query run time**: Shows the estimated query execution time and the reduction in run duration from dbt State or state-aware orchestration.
+- **Builds**: Shows the number of assets built versus reused by dbt State or state-aware orchestration.
 
 ### Table view 
 

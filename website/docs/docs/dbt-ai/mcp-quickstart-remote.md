@@ -33,8 +33,7 @@ Local development and agentic workflows (for example, running dbt commands like 
 Follow these steps to set up the remote MCP server.
 
 ### 1. Enable AI features
-
-In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-copilot) turned on.
+In <Constant name="dbt_platform"/>, ensure that you have [AI features](/docs/platform/enable-dbt-ai) turned on.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
