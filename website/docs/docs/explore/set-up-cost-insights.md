@@ -6,9 +6,11 @@ id: "set-up-cost-insights"
 tags: ['SAO', 'cost savings', 'models built', 'cost insights', 'cost reduction', 'cost optimization']
 ---
 
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
 # Set up Cost Insights <Lifecycle status="beta,managed,managed_plus" />
 
-This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from state-aware orchestration across your dbt projects and models.
+This guide walks you through setting up Cost Insights to track warehouse compute costs and cost reductions from dbt State and state-aware orchestration across your dbt projects and models.
 
 ## Prerequisites
 
@@ -23,7 +25,7 @@ To set up Cost Insights, follow these steps:
 1. [Assign required permissions.](#assign-required-permissions)
 2. [Configure platform metadata credentials.](#configure-platform-metadata-credentials)
 3. [(Optional) Configure Cost Insights settings.](#configure-cost-insights-settings-optional)
-4. [(Optional) Enable state-aware orchestration in your job settings.](#enable-state-aware-orchestration-optional)
+4. [(Optional) Enable dbt State or state-aware orchestration in your job settings.](#enable-dbt-state-or-state-aware-orchestration-optional)
 
 After completing these setup steps, you can view cost and optimization data across multiple areas of the <Constant name="dbt_platform" />. Refer to [Explore cost data](/docs/explore/explore-cost-data) to learn more about the Cost Insights section and how to use it.
 
@@ -108,9 +110,13 @@ To change the default value:
 
 These custom values will apply to all future cost calculations for this connection. If you clear these values, they will reset to the default warehouse pricing.
 
-## Enable state-aware orchestration (optional)
+## Enable dbt State (optional)
 
-Cost Insights displays cost data for your dbt models and jobs without state-aware orchestration. However, to understand the impact of optimizations and see cost reductions from model and test reuse, you must enable state-aware orchestration in your jobs. For steps on how to enable this feature, see [Setting up state-aware orchestration](/docs/deploy/state-aware-setup).
+<SaoDeprecated />
+
+Cost Insights displays cost data for your dbt models and jobs without dbt State. However, to understand the impact of optimizations and see cost reductions from model and test reuse, you must enable dbt State in your jobs. For steps on how to enable it, see [Setting up dbt State](/docs/deploy/dbt-state-setup).
+
+Cost Insights also reflects cost reductions and efficiency gains from state-aware orchestration if you have it enabled.
 
 import CostInsights from '/snippets/_cost-insights-sao.md';
 

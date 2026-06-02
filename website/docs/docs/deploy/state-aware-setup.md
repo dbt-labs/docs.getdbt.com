@@ -4,6 +4,7 @@ sidebar_label: "Setting up state-aware"
 description: "Set up state-aware orchestration to automatically determine which models to build by detecting changes in code or data every time a job runs." 
 id: "state-aware-setup"
 tags: ['scheduler']
+unlisted: true
 ---
 
 # Setting up state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
@@ -14,7 +15,9 @@ Set up state-aware orchestration to automatically determine which models to buil
 
 </IntroText>
 
-State-aware orchestration is in private preview. To request access, contact your account manager.
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 
@@ -385,3 +388,8 @@ This way, if either `dim_wizards` or `dim_worlds` has fresh upstream data and en
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [`freshness`](/reference/resource-configs/freshness)
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Setting up dbt State](/docs/deploy/dbt-state-setup)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)
