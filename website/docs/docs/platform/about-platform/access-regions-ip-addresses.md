@@ -49,7 +49,7 @@ Your <Constant name="dbt" /> account will always connect to your data platform o
 |--------|----------|------------|--------------|-------| --------- |
 | North America  | East US 2 (Virginia) | <small>ACCOUNT_PREFIX.us2.dbt.com</small> | 20.10.67.192/26 | All Enterprise plans | [US Cell 1 AZURE](https://status.getdbt.com/us-cell-1-azure) |
 | EMEA  |  North Europe (Ireland)  |  <small>ACCOUNT_PREFIX.eu2.dbt.com</small>  | 20.13.190.192/26   | All Enterprise plans | [EMEA Cell 1 AZURE](https://status.getdbt.com/emea-cell-1-azure) |
-| APAC | Australia East | <small>ACCOUNT_PREFIX.au2.dbt.com</small> | tbd | All Enterprise plans | [AUS Cell 1 AZURE](https://status.getdbt.com/au-2-cell-1-azure) |
+| APAC | Australia East | <small>ACCOUNT_PREFIX.au2.dbt.com</small> | 20.11.97.208/28 | All Enterprise plans | [AUS Cell 1 AZURE](https://status.getdbt.com/au-2-cell-1-azure) |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | All Enterprise plans | Customized |
 
 </FilterableTable>
