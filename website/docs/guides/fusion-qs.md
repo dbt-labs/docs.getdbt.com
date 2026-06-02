@@ -71,32 +71,11 @@ It's easy to think of the <Constant name="fusion_engine" /> and the dbt extensio
 
 The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started) and [extension](/docs/install-dbt-extension) installation guides:
 
-<Tabs queryString="installation">
-<TabItem value="mac-linux" label="macOS & Linux">
-
-1. Run the following command in the terminal to install the <Constant name="fusion_engine" /> CLI.
+1. Run the following commands to install the <Constant name="fusion_engine" /> CLI:
     ```shell
-    curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
+    pip install dbt==2.0.0rc178
+    dbtf system update
     ```
-2. To use `dbt` immediately after installation, reload your shell so that the new `$PATH` is recognized:
-    ```shell
-    exec $SHELL
-    ```
-    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
-</TabItem>
-<TabItem value="windows" label="Windows (PowerShell)">
-
-1. Run the following command in PowerShell to install the <Constant name="fusion_engine" /> CLI:
-    ```powershell
-    irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-    ```
-2. To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
-    ```powershell
-    Start-Process powershell
-    ```
-    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
-</TabItem>
-</Tabs>
 
 ### Verify the <Constant name="fusion_engine" /> installation
 
@@ -106,7 +85,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```
 2. You should see output similar to the following:
     ```bash
-    dbt-fusion 2.0.0-preview.45
+    dbt 2.0.0-preview.178
     ```
 
 ### Install the dbt VS Code extension

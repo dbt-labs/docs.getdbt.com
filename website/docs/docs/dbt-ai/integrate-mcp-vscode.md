@@ -49,7 +49,7 @@ To get started, in VS Code:
 
     Local MCP with OAuth is for users who want to use the <Constant name="dbt_platform" /> features.
 
-    Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Copilot](/docs/platform/enable-dbt-copilot) for more info.
+    Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt AI](/docs/platform/enable-dbt-ai) for more info.
     
     Choose your configuration based on your use case:
 
