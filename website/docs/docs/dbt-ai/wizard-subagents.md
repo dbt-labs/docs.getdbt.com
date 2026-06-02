@@ -1,7 +1,7 @@
 ---
 title: "Use subagents with dbt Wizard"
 id: "wizard-subagents"
-description: "Delegate work to specialized subagents in dbt Wizard — in the dbt platform or the CLI."
+description: "Delegate work to specialized subagents in dbt Wizard, in the dbt platform or the CLI."
 sidebar_label: "Use subagents"
 tags: [AI, Wizard]
 ---
@@ -11,29 +11,29 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 # Use subagents with <Constant name="wizard"/> <Lifecycle status="beta"/>
 
 <IntroText>
-Subagents let <Constant name="wizard" /> spin up focused, parallel agents to handle parts of a larger task — one to explore your project, one to make changes, one to review them. <Constant name="wizard"/> orchestrates them and consolidates the results back into your session.
+Subagents let <Constant name="wizard" /> spin up focused, parallel agents to handle parts of a larger task &mdash; one to explore your project, one to make changes, one to review them. <Constant name="wizard"/> orchestrates them and consolidates the results back into your session.
 </IntroText>
+
+Subagents run more work in parallel, which uses more tokens than a single-agent session handling the same task. Spawn them when a task genuinely benefits from division of labor.
 
 <WizardFeedbackCallout />
 
-:::info
-Subagents run more work in parallel, which uses more tokens than a single-agent session handling the same task. Spawn them when a task genuinely benefits from division of labor.
-:::
-
 ## Where you can use subagents
 
-Subagents work with <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). <Constant name="wizard"/> surfaces subagent activity in both places so you can see what each agent is working on.
+Subagents work with <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). 
 
-What differs is configuration. Defining custom agents, setting display nicknames, and tuning global limits is done through the <Constant name="wizard" /> CLI and its `config.toml` file. The sections below call out which steps are CLI-specific.
+<Constant name="wizard"/> surfaces subagent activity in both places so you can see what each agent is working on.
+
+<Constant name="wizard" /> enables you to define custom agents, set display nicknames, and define global limits through the `config.toml` file. The following sections call out which steps are CLI-specific.
 
 ## How subagents work
 
-<Constant name="wizard"/> handles orchestration for you — spawning agents (starting up a new helper agent to work on a task), routing work to them, waiting for results, and consolidating their output. Subagents are spawned only when you explicitly ask for them or when a task you describe maps onto a configured agent.
+<Constant name="wizard"/> handles orchestration for you &mdash; spawning agents (starting up a new helper agent to work on a task), routing work to them, waiting for results, and consolidating their output. Subagents are spawned only when you explicitly ask for them or when a task you describe maps onto a configured agent.
 
 For example, prompt <Constant name="wizard"/>:
 
 ```
-Review PR #482. Use one agent to map what changed, one to check tests
+Review PR #123. Use one agent to map what changed, one to check tests
 and downstream impact, and one to look up the relevant dbt docs.
 ```
 
@@ -54,7 +54,7 @@ and downstream impact, and one to look up the relevant dbt docs.
 
 </SimpleTable>
 
-You don't need to declare these — <Constant name="wizard"/> routes to them automatically when a task fits, or you can ask for one by name (for example, "use `test_writer` to add tests to `stg_customers`"). To add your own roles, refer to [Custom agents](#custom-agents-cli).
+You don't need to declare these &mdash; <Constant name="wizard"/> routes to them automatically when a task fits, or you can ask for one by name (for example, "use `test_writer` to add tests to `stg_customers`"). To add your own roles, refer to [Custom agents](#custom-agents-cli).
 
 ## Manage subagents
 
@@ -75,11 +75,11 @@ You can also tell <Constant name="wizard"/> in plain language to steer, stop, or
 
 Subagents inherit the parent session's [approval and sandbox policy](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing). Any runtime overrides you set for a turn (permissions, sandbox mode) apply to the agents it spawns. Approval requests from a subagent surface in your session labeled with their source, so you know which agent is asking.
 
-A custom agent can override sandbox settings for itself — useful when, for example, an exploration agent should stay read-only while a build agent needs workspace write access.
+A custom agent can override sandbox settings for itself &mdash; useful when, for example, an exploration agent should stay read-only while a build agent needs workspace write access.
 
-## Custom agents (CLI)
+## Custom agents (CLI) { #custom-agents }
 
-Beyond the built-in behavior, you can define custom agent *roles* in `~/.dbt/wizard/config.toml`. Each role is a reusable agent — a reviewer, an explorer, a debugger — that <Constant name="wizard"/> can spawn by name.
+Beyond the built-in behavior, you can define custom agent _roles_ in `~/.dbt/wizard/config.toml`. Each role is a reusable agent &mdash; a reviewer, an explorer, a debugger &mdash; that <Constant name="wizard"/> can spawn by name.
 
 A role is declared as a `[agents.ROLE_NAME]` table. The role name is the key (for example, `[agents.reviewer]`), and the table supports these fields:
 
@@ -97,7 +97,7 @@ The role's behavior — its AI model, `developer_instructions`, sandbox mode, an
 
 ### Display nicknames
 
-When several instances of the same role run at once, `nickname_candidates` give each a readable label in the UI (for example, `Scout`, `Ranger`). Nicknames are cosmetic — <Constant name="wizard"/> identifies a role by its `[agents.ROLE_NAME]` key, not the nickname shown.
+When several instances of the same role run at once, `nickname_candidates` give each a readable label in the UI (for example, `Scout`, `Ranger`). Nicknames are cosmetic &mdash; <Constant name="wizard"/> identifies a role by its `[agents.ROLE_NAME]` key, not the nickname shown.
 
 ### Global settings
 
@@ -174,8 +174,8 @@ one to propose a fix. Summarize what each found.
 
 ## Related docs
 
-- [Use MCP servers with <Constant name="wizard" />](/docs/dbt-ai/wizard-mcp) — give agents more tools and context
-- [Use skills](/docs/dbt-ai/wizard-skills) — reusable, project-specific instructions
-- [<Constant name="wizard" /> slash commands](/docs/dbt-ai/wizard-slash-commands) — `/agent` and `/subagents`
-- [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config) — `config.toml` keys and precedence
-- [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works) — approvals and sandboxing
+- [Use MCP servers with <Constant name="wizard" />](/docs/dbt-ai/wizard-mcp) to give agents more tools and context
+- [Use skills](/docs/dbt-ai/wizard-skills) for reusable, project-specific instructions
+- [<Constant name="wizard" /> slash commands](/docs/dbt-ai/wizard-slash-commands) for `/agent` and `/subagents`
+- [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config) for `config.toml` keys and precedence
+- [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works) for approvals and sandboxing
