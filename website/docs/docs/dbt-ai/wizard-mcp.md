@@ -34,7 +34,7 @@ Configuring MCP servers is available only in the <Constant name="wizard" /> CLI.
 
 ## Supported MCP server types
 
-<Constant name="wizard" /> supports two transports and reads server-provided instructions:
+<Constant name="wizard" /> supports two transports:
 
 <SimpleTable>
 
@@ -42,9 +42,12 @@ Configuring MCP servers is available only in the <Constant name="wizard" /> CLI.
 |------|-------------|
 | STDIO server (standard input/output, a server that runs as a program on your own computer, instead of one you connect to over the internet) | Runs as a local process that <Constant name="wizard"/> starts with a command (for example, `npx` or `uvx`). Supports environment variables. |
 | Streamable HTTP server | A server you reach at a URL. Supports bearer-token and OAuth authentication. |
-| Server instructions | <Constant name="wizard"/> reads the `instructions` field a server returns during initialization and uses it as cross-tool guidance. |
 
 </SimpleTable>
+
+:::note Server instructions
+For either transport, <Constant name="wizard"/> reads the `instructions` field a server returns during initialization and uses it as cross-tool guidance.
+:::
 
 ## Add an MCP server
 
@@ -109,11 +112,14 @@ These keys can be set under an `[mcp_servers.NAME]` block in `config.toml`.
 | `bearer_token_env_var` | HTTP | Name of the environment variable to read a bearer token from. Sent as `Authorization: Bearer TOKEN`. |
 | `http_headers` | HTTP | Table of static HTTP headers to send with each request. |
 | `env_http_headers` | HTTP | HTTP headers whose values are read from environment variables. |
+| `scopes` | HTTP | Array of OAuth scopes to request during login. Overrides the scopes the server advertises. |
+| `oauth.client_id` | HTTP | OAuth client identifier presented during authorization and token exchange. |
+| `oauth_resource` | HTTP | OAuth resource parameter to include in login requests ([RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707)). |
 | `enabled` | Both | Whether the server is active. Defaults to `true`. |
 | `required` | Both | When `true`, `wizard exec` errors if this server fails to initialize. |
 | `enabled_tools` | Both | Allowlist of tool names to expose from the server. |
 | `disabled_tools` | Both | Blocklist of tool names to hide from the server. |
-| `default_tools_approval_mode` | Both | Default approval mode for this server's tools (`auto`, `prompt`, or `approve`). |
+| `default_tools_approval_mode` | Both | Default approval mode for this server's tools: `prompt` (ask before each call) or `auto`/`approve` (run without asking, which behave the same). |
 | `startup_timeout_sec` | Both | How long to wait for the server to start and list its tools. |
 | `tool_timeout_sec` | Both | How long to wait for an individual tool call. |
 
@@ -133,6 +139,12 @@ For streamable HTTP servers that use OAuth, authenticate from the CLI:
 ```bash
 wizard mcp login SERVER_NAME
 wizard mcp logout SERVER_NAME
+```
+
+To request specific scopes at login, pass `--scopes` (comma-separated), which is equivalent to setting `scopes` in `config.toml`:
+
+```bash
+wizard mcp login SERVER_NAME --scopes read,write
 ```
 
 For servers that use a static token, set `bearer_token_env_var` to the name of an environment variable holding the token, and export that variable before starting `wizard`.
