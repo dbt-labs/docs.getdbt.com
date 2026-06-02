@@ -44,7 +44,7 @@ If you have permissions for a project in the account, you can view all public mo
 
 To view all projects in your account as a lineage graph or list:
 
-1. In **<Constant name="catalog" />**, open the **Catalog** page.
+1. In **<Constant name="catalog" />**, select your project from the sidebar.
 2. Click **Account lineage** in the upper right corner.
 
 On the account-level lineage graph, each project appears as its own node with the project name and a count of public models it exposes. Arrows between nodes show how projects depend on one another. The top toolbar includes a search bar and **List view** and lineage view toggles. Zoom controls appear in the lower right corner.
