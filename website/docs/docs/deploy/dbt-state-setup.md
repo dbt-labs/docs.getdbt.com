@@ -84,7 +84,9 @@ To enable dbt State on any job &mdash; whether already existing or newly created
 
    If dbt State is already enabled on your <Constant name="dbt_platform" /> account, you'll be prompted to enable it on your machine. You can change this at any time by editing `~/.dbt/user_settings.yml`. For more information about login behavior, refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
 
-dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. To disable it for a specific run, use the `--no-manage-state` CLI flag or set `DBT_ENGINE_MANAGE_STATE=0`. To enable it explicitly, use `--manage-state` or `DBT_ENGINE_MANAGE_STATE=1`.
+dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
+
+You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE` environment variable. 
 
 To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml`:
 
@@ -120,7 +122,9 @@ To install the plugin:
    pip install dbt-state
    ```
 
-dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. The `--manage-state` and `--no-manage-state` CLI flags are not available in older <Constant name="core" /> versions — use the `DBT_ENGINE_ENABLE_STATE=0` environment variable or the `enable_state` project flag to disable it per run.
+dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
+
+The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
 </TabItem>
 </Tabs>
