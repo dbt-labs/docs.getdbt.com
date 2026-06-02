@@ -48,7 +48,7 @@ To build a query in dbt <Constant name="insights" />:
 
 1. From the main menu, go to **<Constant name="insights" />**.
 2. Click **Build a query**.
-3. From the Environment dropdown, select **Prod** or **Staging**. Even thought you see "Development" as an option, queries against development environments are deferred based on deferral rules, so selecting it will not query your development environment directly.
+3. From the Environment dropdown, select **PROD** or **STG**. Even thought you see **DEV** as an option, queries against development environments are deferred based on deferral rules, so selecting it will not query your development environment directly.
 4. Select what you want to include in your query.
     - Click **Add Metric** to select the metrics for your query. 
     - Click **Add Group by** to choose the dimensions that break down your metric, such as time grain (day, week, month), region, product, or customer.
