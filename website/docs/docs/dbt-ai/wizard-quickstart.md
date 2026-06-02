@@ -179,7 +179,7 @@ For example, you might use <Constant name="wizard" /> in the <Constant name="dbt
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [CLI reference](/docs/dbt-ai/wizard-cli)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
-- [Use MCP servers](/docs/dbt-ai/wizard-mcp)
+- [Use MCP servers (CLI)](/docs/dbt-ai/wizard-mcp)
 - [Use subagents](/docs/dbt-ai/wizard-subagents)
 
 </TabItem>

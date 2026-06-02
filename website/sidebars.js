@@ -418,6 +418,7 @@ const sidebarSettings = {
                 "docs/dbt-ai/wizard-cli",
                 "docs/dbt-ai/wizard-byok",
                 "docs/dbt-ai/wizard-headless",
+                "docs/dbt-ai/wizard-mcp",
               ],
             },
             {
@@ -428,7 +429,6 @@ const sidebarSettings = {
                 "docs/dbt-ai/wizard-how-it-works",
                 "docs/dbt-ai/wizard-use-cases",
                 "docs/dbt-ai/wizard-skills",
-                "docs/dbt-ai/wizard-mcp",
                 "docs/dbt-ai/wizard-subagents",
                 "docs/dbt-ai/wizard-migrate",
               ],

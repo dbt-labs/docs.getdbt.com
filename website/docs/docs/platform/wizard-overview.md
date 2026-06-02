@@ -112,7 +112,7 @@ Now that you know where to start, continue with the **[Quickstart](/docs/dbt-ai/
 
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
 - [Skills](/docs/dbt-ai/wizard-skills) — give dbt Wizard reusable instructions for your project
-- [Use MCP servers](/docs/dbt-ai/wizard-mcp) — connect dbt Wizard to more tools and context
+- [Use MCP servers (CLI)](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
 - [Use subagents](/docs/dbt-ai/wizard-subagents) — delegate work to specialized agents
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
 - [dbt MCP server](/docs/dbt-ai/about-mcp) — bring dbt context into any MCP-compatible AI tool

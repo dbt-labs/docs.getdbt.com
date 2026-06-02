@@ -174,7 +174,7 @@ one to propose a fix. Summarize what each found.
 
 ## Related docs
 
-- [Use MCP servers with <Constant name="wizard" />](/docs/dbt-ai/wizard-mcp) to give agents more tools and context
+- [Use MCP servers with the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp) to give agents more tools and context
 - [Use skills](/docs/dbt-ai/wizard-skills) for reusable, project-specific instructions
 - [<Constant name="wizard" /> slash commands](/docs/dbt-ai/wizard-slash-commands) for `/agent` and `/subagents`
 - [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config) for `config.toml` keys and precedence
