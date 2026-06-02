@@ -19,8 +19,8 @@ Learn how to access <Constant name="insights" />, run queries, and view results.
 - View the results of the query and its details using the **Data** or **Details** tabs
 - Create a visualization of your query results using the **Chart** tab
 - View the history of queries and their statuses (like Success, Error, Pending) using the **Query history** tab
-- Use <Constant name="copilot" /> to generate or edit SQL queries using natural language prompts
-- Integrate with [<Constant name="copilot" />](/docs/platform/dbt-copilot), [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), and [<Constant name="canvas" />](/docs/platform/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
+- Use dbt Copilot in Insights to generate or edit SQL queries using natural language prompts
+- Integrate with [<Constant name="catalog" />](/docs/explore/explore-projects), [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), and [<Constant name="canvas" />](/docs/platform/canvas) to provide a seamless experience for data exploration, AI-assisted writing, and collaboration
 
 ## Access the dbt Insights interface
 
@@ -69,25 +69,30 @@ Let's use an example to illustrate how to run queries in <Constant name="insight
     order by 1
     ```
 
-### Use dbt Copilot 
-To make things easier, [use <Constant name="copilot" />](/docs/platform/use-dbt-copilot#build-queries) to save time and explore other ways to analyze the data. <Constant name="copilot" /> can help you quickly update the query or generate a new one based on your prompt.
+### Use dbt Copilot
 
-1. Click the **<Constant name="copilot" />** icon in the Query console sidebar.
-2. In the dropdown menu above the <Constant name="copilot" /> prompt box, select **Generate SQL**.
+To make things easier, [use dbt Copilot in Insights](/docs/explore/navigate-dbt-insights) to save time and explore other ways to analyze the data. dbt Copilot can help you quickly update the query or generate a new one based on your prompt.
+
+import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
+
+<CopilotWizardDifferences/>
+
+1. Click the **dbt Copilot** icon in the Query console sidebar.
+2. In the dropdown menu above the dbt Copilot prompt box, select **Generate SQL**.
 3. Enter your prompt in natural language and ask for a yearly breakdown of unique customers and total revenue.
 4. Click **↑** to submit your prompt.
-4. <Constant name="copilot" /> responds with:
+4. dbt Copilot responds with:
    - A summary of the query
    - An explanation of the logic
    - The SQL it generated
    - Options to **Add** or **Replace** the existing query with the generated SQL
-5. Review the output and click **Replace** to use the <Constant name="copilot" />-generated SQL in your editor.
+5. Review the output and click **Replace** to use the dbt Copilot-generated SQL in your editor.
 6. Click **Run** to preview the results.
 
 <Lightbox src="/img/docs/dbt-insights/insights-copilot.png" width="60%" title="dbt Insights with dbt Copilot" />
 
 From here, you can:
-- Continue building or modifying the query using <Constant name="copilot" />.
+- Continue building or modifying the query using dbt Copilot.
 - Explore the [results](#view-results) in the **Data** tab.
 - [View metadata and query details](#view-details) in the **Details** tab.
 - [Visualize results](#chart-results) in the **Chart** tab.
@@ -110,7 +115,7 @@ Using the same example, you can perform some exploratory data analysis by runnin
 
 ### View details
 View the details of the query by clicking on the **Details** tab:
-- **Query metadata** &mdash; <Constant name="copilot" />-generated title and description, the supplied SQL, and corresponding compiled SQL.
+- **Query metadata** &mdash; dbt Copilot-generated title and description, the supplied SQL, and corresponding compiled SQL.
 - **Connection details** &mdash; Relevant data platform connection information.
 - **Query details** &mdash; Query duration, status, column count, row count.
 
@@ -144,7 +149,7 @@ This integrated view allows you and your users to maintain your query workflow, 
 - Same search capabilities as <Constant name="catalog" />
 - Allows users to narrow down displayed objects by type
 - Hyperlink from SQL code `ref` to the corresponding <Constant name="catalog" /> page
-- View assets in more detail by opening with the full <Constant name="catalog" /> experience or open them in <Constant name="copilot" />.
+- View assets in more detail by opening with the full <Constant name="catalog" /> experience or open them in dbt Copilot.
 
 To access <Constant name="catalog" />, click on the **<Constant name="catalog" />** icon in the [Query console sidebar menu](/docs/explore/navigate-dbt-insights#query-console-sidebar-menu).
 

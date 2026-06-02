@@ -73,15 +73,31 @@ models:
 
 ## Generating documentation
 
+<VersionBlock lastVersion="1.99">
+
 Generate documentation for your project by following these steps:
 
 1. Run the `dbt docs generate` [command](/reference/commands/cmd-docs#dbt-docs-generate) to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
 2. Ensure you've created the models with `dbt run` or `dbt build` to view the documentation for all columns, not just those described in your project.
 3. Run the `dbt docs serve` [command](/reference/commands/cmd-docs#dbt-docs-serve) if you're developing locally to use these `.json` files to populate a local website.
 
-dbt provides two complementary ways to [view documentation](/docs/build/view-documentation), and your descriptions, after they're generated:
+</VersionBlock>
 
-- [**dbt Docs**](/docs/build/view-documentation#dbt-docs): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core" /> or <Constant name="dbt" /> Developer plans.
+<VersionBlock firstVersion="2.0">
+
+Using the <Constant name="fusion_engine" />, dbt Docs v2 replaces the v1 static site with a modern, performant catalog served through a local REST API. To generate and serve documentation:
+
+1. Run any dbt command with `--write-index` to build the index (for example, `dbt compile --write-index` or `dbt build --write-index`). This writes index files to `target/index/`, which is what `dbt docs serve` reads from.
+2. Run `dbt docs serve` to start the local documentation server.
+
+Refer to [dbt docs commands](/reference/commands/cmd-docs) for full usage details.
+
+</VersionBlock>
+
+dbt provides three complementary ways to [view documentation](/docs/build/view-documentation) after descriptions are generated:
+
+- [**dbt Docs (Legacy)**](/docs/build/view-documentation#dbt-docs): A static documentation site with model lineage, metadata, and documentation that can be hosted on your web server (like S3 or Netlify). Available for <Constant name="core_v1" /> or <Constant name="dbt" /> Developer plans.
+- [**dbt Docs v2**](/docs/build/view-documentation#dbt-docs-v2) <Lifecycle status="alpha"/>: A modern, performant open-source catalog with a redesigned UI, Semantic Layer metadata, column-level lineage, and a REST API. Available with the <Constant name="fusion_engine" /> and <Constant name="core_v2" />.
 - [**<Constant name="catalog" />**](/docs/explore/explore-projects): Builds upon dbt Docs to provide a dynamic, real-time interface with enhanced metadata, customizable views, deeper project insights, and collaboration tools. Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ plans](https://www.getdbt.com/pricing).
 
 Refer to [View documentation](/docs/build/view-documentation) to get the most out of your dbt project's documentation.
