@@ -203,18 +203,18 @@ Preview query output directly from inside your editor for faster validation and 
 
 ## Explore your catalog <Lifecycle status="beta" />
 
-**Requires registration**
+**Requires dbt platform account registration**
 
-Open the **Catalog** tab to see catalog information for the model you're working on &mdash; enriched by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor.
+Open the **Catalog** tab to see information for the model you're working on &mdash; enriched by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor.
 
-For the currently open model, the catalog tab surfaces:
+For the current model, the catalog tab surfaces:
 
 - The build status, last build time, and run duration from the <Constant name="dbt_platform" />.
 - The model's **Description**.
-- The model's **Columns**, including each column's type, description, and test results. Sort columns alphabetically or by tests.
+- The model's **Columns**, including each column's type, description, and test results. Sort columns alphabetically or by test name.
 - A **View in dbt platform** link to open the resource in the <Constant name="dbt_platform" />.
 
-The catalog tab is an advanced feature. After the 14-day trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
+The **Catalog** tab is an advanced feature. Before your 14-day trial expires, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to continue using it.
 
 <Lightbox src="/img/docs/extension/vsce-catalog-tab.png" width="100%" title="Example of the Catalog tab in the dbt VS Code extension" />
 
