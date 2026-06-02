@@ -13,21 +13,25 @@ models:
         enabled: true
 ```
 
-To fix this, you can do the following:
+To fix this, select one of the following options:
 
-<Tabs>
-<TabItem value="remove" label="Remove the `alias` (recommended)">
+- [Remove the `alias` (recommended)](#remove-the-alias-recommended)
+- [Disable the latest version pointer for that model](#disable-the-latest-version-pointer-for-that-model)
+- [Set a unique `alias`](#set-a-unique-alias)
+- [Override the `generate_latest_version_pointer_alias` macro](#override-the-generate_latest_version_pointer_alias-macro)
 
-Remove the `alias` from the latest version:
+#### Remove the `alias` (recommended)
+
+Remove the `alias` from the latest version and let the automatic pointer handle it:
 
 ```yaml
 config:
   alias: dim_customers
 ```
-Advantages: simple and safe; just let the automatic pointer handle it. 
 
-</TabItem>
-<TabItem value="disable" label="Disable the latest version pointer for only that model">
+#### Disable the latest version pointer for that model
+
+This approach is immediately backward-compatible for pre-existing `alias` configs:
 
 ```yaml
         config:
@@ -37,20 +41,16 @@ Advantages: simple and safe; just let the automatic pointer handle it.
         enabled: false
 ```
 
-Advantages: immediately backward-compatible for pre-existing `alias` configs.
-
-</TabItem>
-<TabItem value="unique" label="Set a different `latest_version_pointer.alias` that is unique">
+#### Set a unique `alias`
 
 ```yaml
         config:
           alias: dim_customers_latest
 ```
-</TabItem>
 
-<TabItem value="override" label=" Override the `generate_latest_version_pointer_alias` macro">
+#### Override the `generate_latest_version_pointer_alias` macro
 
-Override the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro to use a different naming convention globally.
+Override the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro to use a different naming convention globally:
 
 <File name='macros/generate_latest_version_pointer_alias.sql'>
 
@@ -61,5 +61,3 @@ Override the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliase
 ```
 
 </File>
-</TabItem>
-</Tabs>
