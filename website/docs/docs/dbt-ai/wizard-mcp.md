@@ -22,13 +22,15 @@ For background on MCP itself, refer to the [Model Context Protocol introduction]
 
 Out of the box, <Constant name="wizard"/> understands your dbt project. An MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your session. Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf — for example:
 
-- **dbt MCP server** — governed access to your models, metrics, and lineage.
-- **GitHub server** — read and review pull requests.
-- **Warehouse or ticketing server** — pull in context that lives outside dbt.
+- dbt MCP server for governed access to your models, metrics, and lineage.
+- GitHub server to read and review pull requests.
+- Data warehouse or other server to pull in context that lives outside dbt.
 
-MCP works with <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). Once a server is connected, <Constant name="wizard"/> uses its tools the same way in either place.
+MCP works with <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). 
 
-What differs is configuration. Adding, removing, authenticating, and customizing MCP servers (including managing them and setting per-tool approvals) is done through the <Constant name="wizard" /> CLI and its `config.toml` file. The sections below call out which steps are CLI-specific.
+Once a server is connected, <Constant name="wizard"/> uses its tools the same way in either place.
+
+The <Constant name="wizard"/> CLI enables you to add, remove, authenticate, and customize MCP servers (including managing them and setting per-tool approvals) through the `config.toml` file. The following sections below call out which steps are CLI-specific.
 
 ## Supported MCP server types
 
@@ -38,13 +40,15 @@ What differs is configuration. Adding, removing, authenticating, and customizing
 
 | Type | Description |
 |------|-------------|
-| STDIO server (standard input/output — a server that runs as a program on your own computer, instead of one you connect to over the internet) | Runs as a local process that <Constant name="wizard"/> starts with a command (for example, `npx` or `uvx`). Supports environment variables. |
+| STDIO server (standard input/output, a server that runs as a program on your own computer, instead of one you connect to over the internet) | Runs as a local process that <Constant name="wizard"/> starts with a command (for example, `npx` or `uvx`). Supports environment variables. |
 | Streamable HTTP server | A server you reach at a URL. Supports bearer-token and OAuth authentication. |
 | Server instructions | <Constant name="wizard"/> reads the `instructions` field a server returns during initialization and uses it as cross-tool guidance. |
 
 </SimpleTable>
 
 ## Add an MCP server
+
+The following instructions explain how to add an MCP server.
 
 <Tabs>
 <TabItem value="cli" label="CLI" default>
@@ -97,7 +101,9 @@ Restart `wizard` after editing `config.toml` — MCP servers are loaded at sessi
 </TabItem>
 <TabItem value="platform" label="dbt platform">
 
-In the <Constant name="dbt_platform" />, the [dbt MCP server](/docs/dbt-ai/about-mcp) is available to <Constant name="wizard" /> through your connected environment — no `config.toml` editing required. <Constant name="wizard"/> uses governed project metadata (lineage, model health, tests, run results, and the <Constant name="semantic_layer" />) out of the box in both <Constant name="studio_ide" /> and the home app.
+In the <Constant name="dbt_platform" />, the [dbt MCP server](/docs/dbt-ai/about-mcp) is available to <Constant name="wizard" /> through your connected environment. This means that you don't need a `config.toml` at all. 
+
+<Constant name="wizard"/> uses governed project metadata (lineage, model health, tests, run results, and the <Constant name="semantic_layer" />) out of the box in both <Constant name="studio_ide" /> and the home app.
 
 Adding and managing other MCP servers, setting nicknames, and configuring per-tool approvals is specific to the <Constant name="wizard" /> CLI. Switch to the **CLI** tab for those steps.
 
@@ -170,6 +176,7 @@ Inspecting and removing servers is done through the <Constant name="wizard" /> C
 MCP tool calls follow the same [approval and sandboxing](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing) rules as the rest of <Constant name="wizard" />. Use `enabled_tools` and `disabled_tools` to control which tools a server exposes, so <Constant name="wizard"/> can only call the ones you intend.
 
 ## Examples
+Here are some explains explaining some possible common scenarios where you need to add an MCP server and how to do it.
 
 ### dbt MCP server
 
