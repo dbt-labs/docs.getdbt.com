@@ -27,13 +27,13 @@ const sidebarSettings = {
     {
       type: "category",
       label: "About the dbt platform",
-      link: { type: "doc", id: "docs/platform/about-platform/dbt-cloud-features" },
+      link: { type: "doc", id: "docs/platform/about-platform/dbt-platform-features" },
       items: [
         "docs/platform/about-platform/architecture",
         "docs/platform/about-platform/browsers",
         "docs/platform/about-platform/login",
-        "docs/platform/about-platform/change-your-dbt-cloud-theme",
-        "docs/platform/about-platform/dbt-cloud-features",
+        "docs/platform/about-platform/change-your-dbt-theme",
+        "docs/platform/about-platform/dbt-platform-features",
         "docs/platform/about-platform/access-regions-ip-addresses",
         "docs/platform/about-platform/tenancy",
       ],
@@ -69,14 +69,14 @@ const sidebarSettings = {
           type: "category",
           label: "dbt platform setup",
           collapsed: true,
-          link: { type: "doc", id: "docs/platform/about-cloud-setup" },
+          link: { type: "doc", id: "docs/platform/about-platform-setup" },
           items: [
-            "docs/platform/about-cloud-setup",
+            "docs/platform/about-platform-setup",
             "docs/configuration-checklist",
             "docs/platform/about-profiles",
             "docs/platform/account-settings",
             "docs/platform/account-integrations",
-            "docs/dbt-cloud-environments",
+            "docs/dbt-platform-environments",
             "docs/platform/migration",
             {
               type: "category",
@@ -186,6 +186,7 @@ const sidebarSettings = {
                       },
                       items: [
                         "docs/platform/manage-access/oauth-intro",
+                        "docs/platform/manage-access/connect-apps-oauth",
                         "docs/platform/manage-access/set-up-snowflake-oauth",
                         "docs/platform/manage-access/set-up-databricks-oauth",
                         "docs/platform/manage-access/set-up-bigquery-oauth",
@@ -204,10 +205,10 @@ const sidebarSettings = {
               label: "Configure Git",
               link: {
                 type: "doc",
-                id: "docs/platform/git/git-configuration-in-dbt-cloud",
+                id: "docs/platform/git/configure-git",
               },
               items: [
-                "docs/platform/git/git-configuration-in-dbt-cloud",
+                "docs/platform/git/configure-git",
                 "docs/platform/git/managed-repository",
                 "docs/platform/git/import-a-project-by-git-url",
                 "docs/platform/git/connect-github",
@@ -384,6 +385,121 @@ const sidebarSettings = {
     },
     {
       type: 'html',
+      value: 'AI and dbt',
+      className: 'sidebar-title',
+    },
+        "docs/dbt-ai/about-dbt-ai",
+        "docs/platform/enable-dbt-ai",
+        {
+          type: "category",
+          label: "dbt Wizard",
+          collapsed: true,
+          link: { type: "doc", id: "docs/platform/wizard-overview" },
+          items: [
+            "docs/platform/wizard-overview",
+            "docs/dbt-ai/wizard-quickstart",
+            {
+              type: "category",
+              label: "Wizard in platform",
+              collapsed: true,
+              link: { type: "doc", id: "docs/platform/wizard-platform" },
+              items: [
+                "docs/platform/wizard-platform",
+                "docs/dbt-ai/wizard-ide",
+                "docs/platform/wizard-home",
+              ],
+            },
+            {
+              type: "category",
+              label: "Wizard CLI",
+              collapsed: true,
+              link: { type: "doc", id: "docs/dbt-ai/about-dbt-wizard-cli" },
+              items: [
+                "docs/dbt-ai/about-dbt-wizard-cli",
+                "docs/dbt-ai/wizard-cli",
+                "docs/dbt-ai/wizard-byok",
+                "docs/dbt-ai/wizard-headless",
+              ],
+            },
+            {
+              type: "category",
+              label: "Learn",
+              collapsed: true,
+              items: [
+                "docs/dbt-ai/wizard-how-it-works",
+                "docs/dbt-ai/wizard-use-cases",
+                "docs/dbt-ai/wizard-skills",
+                "docs/dbt-ai/wizard-migrate",
+              ],
+            },
+            {
+              type: "category",
+              label: "Reference",
+              collapsed: true,
+              items: [
+                "docs/dbt-ai/wizard-cli-reference",
+                "docs/dbt-ai/wizard-slash-commands",
+                "docs/dbt-ai/wizard-config",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Copilot",
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/copilot-overview" },
+          items: [
+            "docs/dbt-ai/copilot-overview",
+            "docs/dbt-ai/analyst-agent",
+          ],
+        },
+    {
+      type: "category",
+      label: "dbt MCP server",
+      collapsed: true,
+      link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
+      items: [
+        "docs/dbt-ai/about-mcp",
+        "docs/dbt-ai/mcp-available-tools",
+        {
+          type: "category",
+          label: "Get started",
+          collapsed: true,
+          link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
+          items: [
+            "docs/dbt-ai/mcp-quickstart-oauth",
+            "docs/dbt-ai/mcp-quickstart-cli",
+            "docs/dbt-ai/mcp-quickstart-remote",
+          ],
+        },
+        {
+          type: "category",
+          label: "Setup and configuration",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/setup-local-mcp",
+            "docs/dbt-ai/setup-remote-mcp",
+            "docs/dbt-ai/mcp-environment-variables",
+            "docs/dbt-ai/mcp-find-ids",
+          ],
+        },
+        {
+          type: "category",
+          label: "Integrations",
+          collapsed: true,
+          items: [
+            "docs/dbt-ai/integrate-mcp-claude",
+            "docs/dbt-ai/integrate-mcp-cursor",
+            "docs/dbt-ai/integrate-mcp-vscode",
+          ],
+        },
+        "docs/dbt-ai/mcp-troubleshooting",
+      ],
+    },
+    "docs/dbt-ai/dbt-ai-faqs",
+    {
+      type: 'html',
       value: 'Build and develop',
       className: 'sidebar-title',
     },
@@ -395,7 +511,7 @@ const sidebarSettings = {
       items: [
         "docs/platform/about-develop-dbt",
         "docs/about-dbt-lsp",
-        "docs/platform/about-cloud-develop-defer",
+        "docs/platform/about-defer",
         {
           type: "category",
           label: "dbt VS Code extension",
@@ -405,6 +521,8 @@ const sidebarSettings = {
             "docs/about-dbt-extension",
             "docs/dbt-extension-features",
             "docs/install-dbt-extension",
+            "docs/upgrade-to-fusion-extension",
+            "docs/sign-in-dbt-extension",
             "docs/configure-dbt-extension",
             "docs/fusion/vs-compare-changes",
           ],
@@ -413,10 +531,10 @@ const sidebarSettings = {
           type: "category",
           label: "dbt CLI",
           collapsed: true,
-          link: { type: "doc", id: "docs/platform/cloud-cli-installation" },
+          link: { type: "doc", id: "docs/platform/dbt-cli-installation" },
           items: [
-            "docs/platform/cloud-cli-installation",
-            "docs/platform/configure-cloud-cli",
+            "docs/platform/dbt-cli-installation",
+            "docs/platform/configure-dbt-cli",
           ],
         },
         {
@@ -433,7 +551,7 @@ const sidebarSettings = {
             "docs/platform/studio-ide/git-commit-signing",
             "docs/platform/studio-ide/lint-format",
             "docs/platform/studio-ide/autofix-deprecations",
-            "docs/platform/studio-ide/develop-copilot",
+            "docs/platform/studio-ide/develop-studio-ai",
           ],
         },
         {
@@ -534,6 +652,7 @@ const sidebarSettings = {
                 "docs/build/dimensions",
                 "docs/build/entities",
                 "docs/build/measures",
+                "docs/build/osi-semantic-models",
               ],
             },
             {
@@ -691,16 +810,6 @@ const sidebarSettings = {
         "docs/deploy/continuous-deployment",
         {
           type: "category",
-          label: "State aware",
-          link: { type: "doc", id: "docs/deploy/state-aware-about" },
-          items: [
-            "docs/deploy/state-aware-about",
-            "docs/deploy/state-aware-setup",
-            "docs/deploy/state-aware-interface",
-          ],
-        },
-        {
-          type: "category",
           label: "Jobs",
           link: { type: "doc", id: "docs/deploy/jobs" },
           items: [
@@ -739,6 +848,24 @@ const sidebarSettings = {
     }, // end of "Deploy dbt"
     {
       type: "category",
+      label: "Optimize builds with dbt State",
+      link: { type: "doc", id: "docs/deploy/dbt-state-about" },
+      items: [
+        "docs/deploy/dbt-state-about",
+        {
+          type: "category",
+          label: "Set up dbt State",
+          link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
+          items: ["docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral"],
+        },
+
+        "docs/deploy/dbt-state-examples",
+        "docs/deploy/dbt-state-interface",
+        "docs/deploy/dbt-state-migration",
+      ],
+    },
+    {
+      type: "category",
       label: "Explore your data",
       link: { type: "doc", id: "docs/explore/explore-your-data" },
       items: [
@@ -762,7 +889,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/explore/explore-projects" },
           items: [
             "docs/explore/explore-projects",
-            "docs/explore/access-from-dbt-cloud",
+            "docs/explore/access-from-dbt-platform",
             "docs/explore/column-level-lineage",
             "docs/explore/data-health-signals",
             "docs/explore/explore-multiple-projects",
@@ -852,81 +979,6 @@ const sidebarSettings = {
     },
     {
       type: 'html',
-      value: 'dbt AI and intelligence',
-      className: 'sidebar-title',
-    },
-        "docs/dbt-ai/about-dbt-ai",
-    {
-      type: "category",
-      label: "dbt Copilot",
-      collapsed: true,
-      link: { type: "doc", id: "docs/platform/dbt-copilot-overview" },
-      items: [
-        "docs/platform/dbt-copilot-overview",
-        "docs/platform/dbt-copilot",
-        "docs/platform/enable-dbt-copilot",
-        "docs/platform/use-dbt-copilot",
-        "docs/platform/copilot-styleguide",
-        "docs/platform/copilot-chat-in-studio",
-        "docs/platform/dbt-copilot-faqs",
-        {
-          type: "category",
-          label: "dbt Agents",
-          collapsed: true,
-          link: { type: "doc", id: "docs/dbt-ai/dbt-agents" },
-          items: [
-            "docs/dbt-ai/dbt-agents",
-            "docs/dbt-ai/analyst-agent",
-            "docs/dbt-ai/developer-agent",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt MCP server",
-      collapsed: true,
-      link: { type: "doc", id: "docs/dbt-ai/about-mcp", },
-      items: [
-        "docs/dbt-ai/about-mcp",
-        "docs/dbt-ai/mcp-available-tools",
-        {
-          type: "category",
-          label: "Get started",
-          collapsed: true,
-          link: { type: "doc", id: "docs/dbt-ai/mcp-quickstart-oauth" },
-          items: [
-            "docs/dbt-ai/mcp-quickstart-oauth",
-            "docs/dbt-ai/mcp-quickstart-cli",
-            "docs/dbt-ai/mcp-quickstart-remote",
-          ],
-        },
-        {
-          type: "category",
-          label: "Setup and configuration",
-          collapsed: true,
-          items: [
-            "docs/dbt-ai/setup-local-mcp",
-            "docs/dbt-ai/setup-remote-mcp",
-            "docs/dbt-ai/mcp-environment-variables",
-            "docs/dbt-ai/mcp-find-ids",
-          ],
-        },
-        {
-          type: "category",
-          label: "Integrations",
-          collapsed: true,
-          items: [
-            "docs/dbt-ai/integrate-mcp-claude",
-            "docs/dbt-ai/integrate-mcp-cursor",
-            "docs/dbt-ai/integrate-mcp-vscode",
-          ],
-        },
-        "docs/dbt-ai/mcp-troubleshooting",
-      ],
-    },
-    {
-      type: 'html',
       value: 'Additional tools',
       className: 'sidebar-title',
     },
@@ -947,18 +999,6 @@ const sidebarSettings = {
             "docs/platform-integrations/downstream-exposures",
             "docs/platform-integrations/downstream-exposures-tableau",
             "docs/platform-integrations/orchestrate-exposures",
-          ],
-        },
-        {
-          type: "category",
-          label: "Snowflake Native App",
-          link: {
-            type: "doc",
-            id: "docs/platform-integrations/snowflake-native-app",
-          },
-          items: [
-            "docs/platform-integrations/snowflake-native-app",
-            "docs/platform-integrations/set-up-snowflake-native-app",
           ],
         },
         {
@@ -990,8 +1030,8 @@ const sidebarSettings = {
       items: [
         "docs/dbt-versions/about-versions",
         "docs/dbt-versions/dbt-versions",
-        "docs/dbt-versions/cloud-release-tracks",
-        "docs/dbt-versions/upgrade-dbt-version-in-cloud",
+        "docs/dbt-versions/dbt-release-tracks",
+        "docs/dbt-versions/upgrade-dbt-platform-version",
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
         {
@@ -1021,7 +1061,7 @@ const sidebarSettings = {
       },
       items: [
         "docs/dbt-versions/dbt-cloud-release-notes",
-        "docs/dbt-versions/dbt-cloud-release-notes-gen",
+        "docs/dbt-versions/dbt-platform-release-notes-gen",
         "docs/dbt-versions/compatible-track-changelog",
         "docs/dbt-versions/2025-release-notes",
         "docs/dbt-versions/2024-release-notes",
@@ -1054,9 +1094,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Administrative API",
-      link: { type: "doc", id: "docs/dbt-apis/admin-cloud-api" },
+      link: { type: "doc", id: "docs/dbt-apis/admin-api" },
       items: [
-        "docs/dbt-apis/admin-cloud-api",
+        "docs/dbt-apis/admin-api",
         {
           type: "link",
           label: "API v2",
@@ -1185,6 +1225,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "reference/dbt_project.yml",
+        "reference/dbt_cloud.yml",
         "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
@@ -1338,11 +1379,28 @@ const sidebarSettings = {
             "reference/resource-configs/begin",
             "reference/resource-properties/concurrent_batches",
             "reference/resource-configs/contract",
+            "reference/resource-configs/latest_version_pointer",
             "reference/resource-configs/lookback",
             "reference/resource-configs/materialized",
             "reference/resource-properties/model_name",
             "reference/resource-configs/on_configuration_change",
+            "reference/resource-configs/on_error",
             "reference/resource-configs/sql_header",
+          ],
+        },
+        {
+          type: "category",
+          label: "For dbt State",
+          link: { type: "doc", id: "reference/resource-configs/dbt-state-configs" },
+          items: [
+            "reference/resource-configs/dbt-state-configs",
+            "reference/resource-configs/lag-tolerance",
+            "reference/resource-configs/require-fresh-data-from",
+            "reference/resource-configs/evaluate-volatile-sql",
+            "reference/resource-configs/pre-clone",
+            "reference/resource-configs/execute-hooks-on-any-reuse",
+            "reference/resource-configs/metadata-warehouse",
+            "reference/resource-configs/defer-to-target",
           ],
         },
         {
@@ -1472,8 +1530,10 @@ const sidebarSettings = {
             "reference/resource-configs/runtime-version",
             "reference/resource-configs/entry-point",
             "reference/resource-configs/packages",
+            "reference/resource-configs/quote_args",
             "reference/resource-properties/returns",
             "reference/resource-properties/function-arguments",
+            "reference/resource-properties/overloads",
           ],
         },
       ],
@@ -1503,7 +1563,9 @@ const sidebarSettings = {
             "reference/commands/dbt-environment",
             "reference/commands/init",
             "reference/commands/invocation",
+            "reference/commands/lint",
             "reference/commands/list",
+            "reference/commands/login",
             "reference/commands/parse",
             "reference/commands/retry",
             "reference/commands/rpc",
@@ -1583,6 +1645,7 @@ const sidebarSettings = {
                 "reference/global-configs/command-line-options",
                 "reference/global-configs/environment-variable-configs",
                 "reference/global-configs/project-flags",
+                "reference/global-configs/user-settings",
               ],
             },
             {
@@ -1985,7 +2048,15 @@ const sidebarSettings = {
   ],
   support: [
     "docs/dbt-support",
-    "docs/platform/billing",
+    {
+      type: "category",
+      label: "Billing",
+      collapsed: true,
+      items: [
+        "docs/platform/billing",
+        "docs/platform/billing-faqs",
+      ],
+    },
   ],
 };
 

@@ -76,7 +76,7 @@ With the readiness experience enabled, you can monitor your project's eligibilit
 <Lightbox src="/img/fusion/fusion-readiness.png" width="60%" title="The Fusion readiness checklist"/>
 
 Common ineligibility reasons include:
-- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/cloud-release-tracks#which-release-tracks-are-available]
+- Environment(s) not on the **Latest** [release track](/docs/dbt-versions/dbt-release-tracks#which-release-tracks-are-available]
 - Not using a [supported data platform](/docs/fusion/supported-features?version=2.0#requirements)
 - Project doesn't have at least one successful job run
 - Jobs that haven't run in the last 7 days or have recent failures
@@ -85,7 +85,7 @@ As you complete the steps in this guide, check the readiness panel to see your e
 
 ## Upgrade to the latest dbt Core version
 
-Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/cloud-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
+Before upgrading to <Constant name="fusion" />, you need to move your environments to the **Latest** [<Constant name="core" /> release track](/docs/dbt-versions/dbt-release-tracks). The **Latest** track includes all the features and tooling to help you prepare for <Constant name="fusion" />. It ensures the smoothest upgrade experience by validating that your project doesn't rely on deprecated behaviors.
 
 :::tip Test before you deploy
 
@@ -149,7 +149,7 @@ After validating in staging (or development if you don't have staging), upgrade 
 
 ### Step 5: Update jobs
 
-While environments control the dbt version for most scenarios, some older job configurations may have version overrides. Review your jobs and [update any that specify a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#jobs) to ensure they use the environment's Latest release track.
+While environments control the dbt version for most scenarios, some older job configurations may have version overrides. Review your jobs and [update any that specify a dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#jobs) to ensure they use the environment's Latest release track.
 
 ## Resolve all deprecation warnings
 
@@ -425,7 +425,7 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
    <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them Fusion eligible."/>
 3. Click **Debug on Fusion** and choose one of the following:
    - [Debug in Studio](#debug-in-studio)
-   - [Debug in Studio with Copilot](#debug-in-studio-with-copilot)
+   - [Debug in Studio with dbt Wizard](#debug-in-studio-with-copilot)
    - [Run once on Fusion](#run-once-on-fusion)
 
 
@@ -444,7 +444,7 @@ In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your de
 5. When the project runs with no warnings or errors, commit and publish your changes.
 6. After you merge the changes, wait for the job to run again or run it manually.
 
-#### Debug in Studio with Copilot <Lifecycle status="beta" size="80%" />
+#### Debug in Studio with dbt Wizard <Lifecycle status="beta" size="80%" />
 
 import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 

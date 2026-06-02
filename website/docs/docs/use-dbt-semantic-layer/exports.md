@@ -18,11 +18,11 @@ Essentially, exports are like any other table in your data platform &mdash; they
 
 - You have a <Constant name="dbt" /> account on a [Starter or Enterprise-tier](https://www.getdbt.com/pricing/) plan. 
 - You use one of the following data platforms: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
-- You are on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
+- You are on [dbt version](/docs/dbt-versions/upgrade-dbt-platform-version) 1.7 or newer.
 - You have the <Constant name="semantic_layer" /> [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a <Constant name="dbt" /> environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.
 - You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
-- You have the [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) installed. Note, that exports aren't supported in <Constant name="studio_ide" /> yet.
+- You have the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) installed. Note, that exports aren't supported in <Constant name="studio_ide" /> yet.
 
 ## Benefits of exports
 
@@ -57,7 +57,7 @@ Before you're able to run exports in development or production, you'll need to m
 
 There are two ways to run an export:
   
-- [Run exports in development](#exports-in-development) using the [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation) to test the output before production (You can configure exports in the <Constant name="studio_ide" />, however running them directly in the <Constant name="studio_ide" /> isn't supported yet). 
+- [Run exports in development](#exports-in-development) using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) to test the output before production (You can configure exports in the <Constant name="studio_ide" />, however running them directly in the <Constant name="studio_ide" /> isn't supported yet). 
   - If you're using the <Constant name="studio_ide" />, use `dbt build` to run exports. Make sure you have the [environment variable](#set-environment-variable) enabled. 
 - [Run exports in production](#exports-in-production) using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 

@@ -13,7 +13,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 - **<Constant name="core" />** is an open-source command line tool that you can install locally in your environment, and communication with databases is facilitated through adapters.
 
-If you're not sure which is the right solution for you, read our [What is dbt?](/docs/introduction) and our [<Constant name="dbt" /> features](//docs/platform/about-platform/dbt-cloud-features) articles to help you decide. If you still have questions, don't hesitate to [contact us](https://www.getdbt.com/contact/).
+If you're not sure which is the right solution for you, read our [What is dbt?](/docs/introduction) and our [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) articles to help you decide. If you still have questions, don't hesitate to [contact us](https://www.getdbt.com/contact/).
 
 To begin configuring dbt now, select the option that is right for you.
 
@@ -22,7 +22,7 @@ To begin configuring dbt now, select the option that is right for you.
 <Card
     title="dbt platform setup"
     body="Learn how to connect to a data platform, integrate with secure authentication methods, and configure a sync with a git repo."
-    link="/docs/platform/about-cloud-setup"
+    link="/docs/platform/about-platform-setup"
     icon="dbt-bit"/>
 
 <Card

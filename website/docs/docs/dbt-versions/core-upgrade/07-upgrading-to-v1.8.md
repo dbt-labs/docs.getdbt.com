@@ -9,7 +9,7 @@ displayed_sidebar: "docs"
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.8.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 
 ## What to know before upgrading
 
@@ -17,7 +17,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## Release tracks 
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of dbt Core via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. Select a release track in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access everything in dbt Core v1.8+ and more. To upgrade an environment in the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `latest`.
 
 ## New and changed features and functionality
 
@@ -26,6 +26,10 @@ Features and functionality new in dbt v1.8.
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 <SnowflakeColumn />
+
+### dbt State <Lifecycle status="preview" />
+
+dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is available as a plugin for <Constant name="core" /> v1.8. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ### Unit Tests
 
