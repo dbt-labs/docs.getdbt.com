@@ -165,8 +165,6 @@ View column lineage:
 - Double-click on a node to update the DAG selector.
 - You can also use column selectors in the lineage window by adding the `column:` prefix and appending the column name.
 
-
-
 <video width="100%" height="100%" playsinline muted controls>
   <source src="/img/docs/extension/lineage.mp4" type="video/webm" />
 </video>
@@ -205,9 +203,7 @@ Preview query output directly from inside your editor for faster validation and 
 
 ## Explore your catalog <Lifecycle status="beta" />
 
-import RequiresRegistration from '/snippets/_extension-requires-registration.md';
-
-<RequiresRegistration />
+**Requires registration:**
 
 Open the **Catalog** tab to see catalog information for the model you're working on &mdash; enriched by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor.
 
@@ -218,7 +214,7 @@ For the currently open model, the catalog tab surfaces:
 - The model's **Columns**, including each column's type, description, and test results. Sort columns alphabetically or by tests.
 - A **View in dbt platform** link to open the resource in the <Constant name="dbt_platform" />.
 
-The catalog tab is an enrichment feature. After the 14-day trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
+The catalog tab is an advanced feature. After the 14-day trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
 
 <Lightbox src="/img/docs/extension/vsce-catalog-tab.png" width="100%" title="Example of the Catalog tab in the dbt VS Code extension" />
 
