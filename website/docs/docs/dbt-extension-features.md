@@ -203,6 +203,18 @@ Preview query output directly from inside your editor for faster validation and 
   <source src="/img/docs/extension/preview-cte.mp4" type="video/webm" />
 </video>
 
+## Explore your catalog <Lifecycle status="beta" />
+
+import RequiresRegistration from '/snippets/_extension-requires-registration.md';
+
+<RequiresRegistration />
+
+Open the **Catalog** tab to explore your project's catalog &mdash; powered by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor. Browse model and column documentation, descriptions, and metadata enriched by the <Constant name="dbt_platform" /> alongside your code.
+
+The catalog tab is an enrichment feature. After the 14-day trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
+
+<Lightbox src="/img/docs/extension/vsce-catalog-tab.png" width="100%" title="Example of the Catalog tab in the dbt VS Code extension" />
+
 import CompareChangesTLDR from '/snippets/_compare-changes-tldr.md';
 
 <CompareChangesTLDR />
