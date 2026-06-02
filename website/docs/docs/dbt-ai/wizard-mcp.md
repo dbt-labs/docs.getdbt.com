@@ -11,7 +11,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 # Use MCP servers with <Constant name="wizard"/> <Lifecycle status="beta"/>
 
 <IntroText>
-The Model Context Protocol (MCP) connects <Constant name="wizard" /> to external tools and context. Add an MCP server and <Constant name="wizard"/> can call its tools mid-session — query the dbt MCP server for governed project metadata, open a pull request through the GitHub MCP server, or pull in any other MCP-compatible service.
+The Model Context Protocol (MCP) connects <Constant name="wizard" /> to external tools and context. Add an MCP server and <Constant name="wizard"/> can call its tools mid-session &mdash; query the dbt MCP server for governed project metadata, open a pull request through the GitHub MCP server, or pull in any other MCP-compatible service.
 </IntroText>
 
 <WizardFeedbackCallout />
@@ -20,7 +20,7 @@ For background on MCP itself, refer to the [Model Context Protocol introduction]
 
 ## Where you can use MCP servers
 
-Out of the box, <Constant name="wizard"/> understands your dbt project. An MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your session. Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf — for example:
+<Constant name="wizard"/> natively understands your dbt project, and having an MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your session. Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf. For example:
 
 - dbt MCP server for governed access to your models, metrics, and lineage.
 - GitHub server to read and review pull requests.
