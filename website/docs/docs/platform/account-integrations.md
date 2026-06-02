@@ -16,7 +16,7 @@ To configure a <Constant name="git" /> account integration:
 1. Navigate to **Account settings** in the side menu.
 2. Under the **Settings** section, click on **Integrations**.
 3. Click on the <Constant name="git" /> provider from the list and select the **Pencil** icon to the right of the provider.
-4. <Constant name="dbt" /> [natively connects](/docs/platform/git/git-configuration-in-dbt-cloud) to the following <Constant name="git" /> providers:
+4. <Constant name="dbt" /> [natively connects](/docs/platform/git/configure-git) to the following <Constant name="git" /> providers:
 
    - [GitHub](/docs/platform/git/connect-github)
    - [GitLab](/docs/platform/git/connect-gitlab)

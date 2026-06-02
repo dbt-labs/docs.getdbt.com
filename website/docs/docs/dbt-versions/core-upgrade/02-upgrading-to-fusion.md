@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to the dbt Fusion engine (v2.0)"
+title: "Upgrading to the dbt Fusion engine"
 id: upgrading-to-fusion
 description: New features and changes in Fusion
 displayed_sidebar: "docs"
@@ -9,6 +9,7 @@ import FusionAdapters from '/snippets/_fusion-dwh.md';
 import FusionUpgradeSteps from '/snippets/_fusion-upgrade-steps.md';
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 import FusionThreads from '/snippets/_fusion-threads.md';
+import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
 
 <FusionLifecycle />
 
@@ -26,6 +27,11 @@ That work is documented below — it should be simple, straightforward, and in 
 
 You can find more information about what's changing in the dbt Fusion engine [changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
 
+:::tip Test Fusion parser compatibility from dbt Core v1.12
+
+If you're on <Constant name="core" /> v1.12, you can test Fusion parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the Fusion parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
+
+:::
 
 <FusionUpgradeSteps />
 
@@ -44,6 +50,16 @@ dbt Labs is committed to moving forward with Fusion, and it will not support any
 ### Ecosystem packages
 
 The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with Fusion. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse with the new Fusion engine. We're working with those package maintainers to make packages available for Fusion. Packages requiring an upgrade to a new release for Fusion compatibility, will be documented in this upgrade guide.
+
+## New and changed features and functionality
+
+### dbt State <Lifecycle status="preview" />
+
+dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in the <Constant name="fusion_engine" />.
+
+To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state) from your CLI. It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings) &mdash; enabling dbt State on every `dbt run` or `dbt build` for you. 
+
+To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml`. You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ### Changed functionality
 
@@ -107,10 +123,9 @@ See the [Changes overview](/reference/changes-overview) for a full comparison.
 
 Some historic CLI flags in dbt Core will no longer do anything in Fusion. If you pass them into a dbt command using Fusion, the command will not error, but the flag will do nothing (and warn accordingly).
 
-One exception to this rule: The `--models` / `--model` / `-m` flag was renamed to `--select` / `--s` way back in dbt Core v0.21 (Oct 2021). Silently skipping this flag means ignoring your command's selection criteria, which could mean building your entire DAG when you only meant to select a small subset. For this reason, the `--models` / `--model` / `-m` flag **will raise an error** in Fusion. Please update your job definitions accordingly.
-
 | flag name | remediation |
 | ----------| ----------- |
+| `--models` / `--model` / `-m` | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
 | `dbt seed` [`--show`](/reference/commands/seed) | N/A |
 | [`--print` / `--no-print`](/reference/global-configs/print-output) | No action required |
 | [`--printer-width`](/reference/global-configs/print-output#printer-width) | No action required |
@@ -121,7 +136,7 @@ One exception to this rule: The `--models` / `--model` / `-m` flag was renamed t
 | `--single-threaded` / `--no-single-threaded` | No action required |
 | `dbt source freshness` [`--output` / `-o`](/docs/deploy/source-freshness)  | |
 | [`--config-dir`](/reference/commands/debug)  | No action required | 
-| [`--resource-type` / `--exclude-resource-type`](/reference/global-configs/resource-type) | change to `--resource-types` / `--exclude-resource-types` |
+| [`--resource-type` / `--exclude-resource-type`](/reference/global-configs/resource-type) | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
 | `--show-resource-report` / `--no-show-resource-report` | No action required |
 | [`--log-cache-events` / `--no-log-cache-events`](/reference/global-configs/logs#logging-relational-cache-events) | No action required | 
 | `--use-experimental-parser` / `--no-use-experimental-parser` | No action required |
@@ -135,7 +150,17 @@ One exception to this rule: The `--models` / `--model` / `-m` flag was renamed t
 | `--use-fast-test-edges` / `--no-use-fast-test-edges` | No action required |
 | [`--introspect` / `--no-introspect`](/reference/commands/compile#introspective-queries) | No action required |
 | `--inject-ephemeral-ctes` / `--no-inject-ephemeral-ctes` | | 
-| [`--partial-parse` / `--no-partial-parse`](/reference/parsing#partial-parsing)  | No action required |
+| [`--partial-parse` / `--no-partial-parse`](/reference/parsing#partial-parsing)  | Refer to [CLI flags that need changes](#cli-flags-that-need-changes). |
+
+##### CLI flags that need changes {#cli-flags-that-need-changes}
+
+The following deprecated flags require updates in your job definitions or scripts:
+
+- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="core" /> v0.21). <Constant name="fusion" /> raises an error if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); <Constant name="core" /> treated that as a model name, but <Constant name="fusion" /> requires a valid selector.
+
+- **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
+
+<FusionPartialParseCliFlags />
 
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 
@@ -208,7 +233,7 @@ In older versions of <Constant name="core" />, it was possible to create scenari
 <Constant name="fusion" /> adds stricter evaluation of names of docs blocks to prevent such ambiguity. It will present an error if it detects duplicate names:
 
 ```bash
-dbt found two docs with the same name: 'docs_block_title in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
+dbt found two docs with the same name: 'docs_block_title' in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
 ```
 
 To resolve this error, rename any duplicate docs blocks. 

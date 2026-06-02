@@ -33,7 +33,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/local/profiles.yml) value.
 
-    To learn more, refer to [Extended attributes](/docs/dbt-cloud-environments#extended-attributes).
+    To learn more, refer to [Extended attributes](/docs/dbt-platform-environments#extended-attributes).
 
     The **Extended Attributes** text box is available from your environment's settings page: 
 
@@ -70,7 +70,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     - Feedback and community support &mdash; Engage and share feedback with the dbt Labs team and dbt Community slack using channels like [#dbt-cloud-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) and [#dbt-metricflow](https://getdbt.slack.com/archives/C02CCBBBR1D). Or reach out to your dbt Cloud account representative.
     - Resources for upgrading &mdash; Refer to some additional info and resources to help you upgrade your dbt version:
-    - [Upgrade version in dbt Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+    - [Upgrade version in dbt Cloud](/docs/dbt-versions/upgrade-dbt-platform-version)
     - [Version migration guides](/docs/dbt-versions/core-upgrade)
 
   </Expandable>
@@ -119,7 +119,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='dbt Cloud APIs'>
 
-    Beginning December 1, 2023, the [Administrative API](/docs/dbt-apis/admin-cloud-api) v2 and v3 will expect you to limit all "list" or `GET` API methods to 100 results per API request. This limit enhances the efficiency and stability of our services. If you need to handle more than 100 results, then use the `limit` and `offset` query parameters to paginate those results; otherwise, you will receive an error. 
+    Beginning December 1, 2023, the [Administrative API](/docs/dbt-apis/admin-api) v2 and v3 will expect you to limit all "list" or `GET` API methods to 100 results per API request. This limit enhances the efficiency and stability of our services. If you need to handle more than 100 results, then use the `limit` and `offset` query parameters to paginate those results; otherwise, you will receive an error. 
 
     This maximum limit applies to [multi-tenant instances](/docs/platform/about-platform/access-regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
@@ -150,13 +150,13 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - Development workflow for dbt Semantic Layer
     - Speedier, lower cost builds
 
-    Refer to [dbt CLI](/docs/platform/cloud-cli-installation) to learn more.
+    Refer to [dbt CLI](/docs/platform/dbt-cli-installation) to learn more.
 
   </Expandable>
 
 - <Expandable alt_header='Custom branch fix'>
 
-    If you don't set a [custom branch](/docs/dbt-cloud-environments#custom-branch-behavior) for your dbt Cloud environment, it now defaults to the default branch of your Git repository (for example, `main`). Previously, [CI jobs](/docs/deploy/ci-jobs) would run for pull requests (PRs) that were opened against _any branch_ or updated with new commits if the **Custom Branch** option wasn't set. 
+    If you don't set a [custom branch](/docs/dbt-platform-environments#custom-branch-behavior) for your dbt Cloud environment, it now defaults to the default branch of your Git repository (for example, `main`). Previously, [CI jobs](/docs/deploy/ci-jobs) would run for pull requests (PRs) that were opened against _any branch_ or updated with new commits if the **Custom Branch** option wasn't set. 
 
     ## Azure DevOps 
 
@@ -222,7 +222,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='Semantic layer GA'>
   
-    If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher and migrate to the latest Semantic Layer.
+    If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-platform-version) to dbt v1.6 or higher and migrate to the latest Semantic Layer.
 
     dbt Labs is thrilled to announce that the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is now generally available. It offers consistent data organization, improved governance, reduced costs, enhanced efficiency, and accessible data for better decision-making and collaboration across organizations.
 
@@ -309,11 +309,11 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     * The **What’s new?** product update widget is back in the dbt Cloud UI! The Docs team will begin updating the content to keep you informed about new features.
     * Launched the re-released [Semantic Layer beta docs](/docs/use-dbt-semantic-layer/dbt-sl), which introduces users to the new API, new guide to set up MetricFlow and the new Semantic Layer, as well as revamp the ‘Use the dbt Semantic Layer’ section for users.
-    * Updated [Admin API v2 and v3](/docs/dbt-apis/admin-cloud-api) to help you understand the differences between them and which version includes the endpoints you use.
+    * Updated [Admin API v2 and v3](/docs/dbt-apis/admin-api) to help you understand the differences between them and which version includes the endpoints you use.
     * To improve discoverability, the docs team made changes to the [deploy dbt sidebar](/docs/deploy/deployments). We added cards and aligned better with the dbt Cloud UI and the way it’s used.
     * Deprecated legacy job schemas in the [Discovery API](/docs/dbt-apis/discovery-api).
     * Added a page to describe [experimental and beta features](/docs/dbt-versions/experimental-features) in dbt Cloud and what you need to know about them.
-    * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-cloud-environments#extended-attributes-beta), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
+    * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-platform-environments#extended-attributes-beta), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
     ## 🎯 Core projects
 
     * We released [dbt 1.6](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
@@ -580,7 +580,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
 - <Expandable alt_header='Admin API'>
 
-    dbt Labs updated the docs for the [dbt Cloud Administrative API](/docs/dbt-apis/admin-cloud-api) and they are now available for both [v2](/dbt-cloud/api-v2#/) and [v3](/dbt-cloud/api-v3#/). 
+    dbt Labs updated the docs for the [dbt Cloud Administrative API](/docs/dbt-apis/admin-api) and they are now available for both [v2](/dbt-cloud/api-v2#/) and [v3](/dbt-cloud/api-v3#/). 
 
     - Now using Spotlight for improved UI and UX.
     - All endpoints are now documented for v2 and v3. Added automation to the docs so they remain up to date.  
@@ -606,7 +606,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - We added information related to the newly created [IT license](/docs/platform/manage-access/about-user-access#license-based-access-control), available for Team and Enterprise plans. 
     - We added a new [Supported browser page](/docs/platform/about-platform/browsers), which lists the recommended browsers for dbt Cloud.
     - We launched a new page informing users of [new Experimental features option](/docs/dbt-versions/experimental-features) in dbt Cloud.
-    - We worked with dbt Engineering to help publish new beta versions of the dbt [dbt Cloud Administrative API docs](/docs/dbt-apis/admin-cloud-api). 
+    - We worked with dbt Engineering to help publish new beta versions of the dbt [dbt Cloud Administrative API docs](/docs/dbt-apis/admin-api). 
 
     ## 🎯 Core projects
 
@@ -642,7 +642,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     - Performance-related upgrades:
         - Reduced cold start time by 60+%
         - Improved render time of modals in the IDE by 98%
-        - Improved IDE performance with dbt Core v1.5+ (faster and snappier – highly encourage you to [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud)!)
+        - Improved IDE performance with dbt Core v1.5+ (faster and snappier – highly encourage you to [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-platform-version)!)
     - Upgraded sqlfmt (which powers the Format button) to 0.18.0
     - Updated Build button to change menu options based on file/model type (snapshot, macro, etc.)
     - Display message to disable adblocker for file contents error
@@ -845,7 +845,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
 
     ## New 📚 Guides and ✏️ blog posts
 
-    - [Use Databricks workflows to run dbt Cloud jobs](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs)
+    - [Use Databricks workflows to run dbt Cloud jobs](/guides/databricks-workflows)
     - [Refresh Tableau workbook with extracts after a job finishes](/guides/zapier-refresh-tableau-workbook)
     - [dbt Python Snowpark workshop/tutorial](/guides/dbt-python-snowpark)
     - [How to optimize and troubleshoot dbt Models on Databricks](/guides/optimize-dbt-models-on-databricks)
@@ -868,7 +868,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     Refer to some additional info and resources to help you upgrade your dbt version:
 
     - [How to upgrade dbt without fear](/blog/upgrade-dbt-without-fear) 
-    - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-legacy-versions-under-10)
+    - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-platform-version#upgrading-legacy-versions-under-10)
     - [Version migration guides](/docs/dbt-versions/core-upgrade)
 
   </Expandable>
@@ -882,7 +882,7 @@ Archived release notes for <Constant name="dbt" /> from 2023
     ## New features 
 
     - Commit and revert individual files under **Version Control**.
-    - Use the [command palette](/docs/platform/studio-ide/develop-in-studio#cloud-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
+    - Use the [command palette](/docs/platform/studio-ide/develop-in-studio#studio-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
     - Create PRs even when there are uncommitted changes (under the **git** dropdown).
     - The IDE will display more autocomplete suggestions when editing a YML file, powered by [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema).
     - The file tree now has additional options in the right-click menu, such as Copy model as ref or Copy file path.

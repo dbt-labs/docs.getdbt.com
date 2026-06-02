@@ -53,7 +53,7 @@ The `--target` flag allows you to run the same dbt project against different env
 
 Use this table to compare all available flags and how to configure them across interfaces:
 
-- **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/cloud-cli-installation).
+- **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/dbt-cli-installation).
 - **Type / default**: Shows the accepted value type and default.
 - **In project**: Indicates whether you can set the flag in `dbt_project.yml`.
 - **Env var**: Shows the corresponding environment variable name, when available. In general, v1.10 and earlier use the `DBT_` prefix, while v1.11+ uses the `DBT_ENGINE_` prefix.
@@ -135,6 +135,7 @@ Use this table to compare all available flags and how to configure them across i
 | [log_level_file](/reference/global-configs/logs#log-level) | ❌ | enum <br /> default: debug | ✅ | `DBT_ENGINE_LOG_LEVEL_FILE` | `--log-level-file` |
 | [log_level](/reference/global-configs/logs#log-level) | ❌ | enum <br /> default: info | ✅ | `DBT_ENGINE_LOG_LEVEL` | `--log-level` |
 | [log_path](/reference/global-configs/logs) | ❌ | path <br /> default: None (uses `logs/`) | ❌ | `DBT_ENGINE_LOG_PATH` | `--log-path` |
+| [manage_state](/docs/deploy/dbt-state-setup) (v1.12+) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_MANAGE_STATE` | `--manage-state` <br /> `--no-manage-state` |
 | [partial_parse](/reference/global-configs/parsing#partial-parsing) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_PARTIAL_PARSE` | `--partial-parse` <br /> `--no-partial-parse` |
 | [populate_cache](/reference/global-configs/cache) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_POPULATE_CACHE` | `--populate-cache` <br /> `--no-populate-cache` |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_PRINT` | `--print` <br /> `--no-print` |
@@ -156,6 +157,7 @@ Use this table to compare all available flags and how to configure them across i
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
+| [use_v2_parser](/reference/global-configs/parsing#opt-in-v2-parser) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_V2_PARSER` | `--use-v2-parser` |
 | [version_check](/reference/global-configs/version-compatibility) | ❌ | boolean <br /> default: varies | ✅ | `DBT_ENGINE_VERSION_CHECK` | `--version-check` <br /> `--no-version-check` |
 | [warn_error_options](/reference/global-configs/warnings) | ✅ | dict <br /> default: {} | ✅ | `DBT_ENGINE_WARN_ERROR_OPTIONS` | `--warn-error-options` |
 | [warn_error](/reference/global-configs/warnings) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_WARN_ERROR` | `--warn-error` |

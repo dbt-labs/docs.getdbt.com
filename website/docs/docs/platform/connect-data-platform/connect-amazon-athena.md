@@ -7,7 +7,7 @@ sidebar_label: "Connect Amazon Athena"
 
 # Connect Amazon Athena
 
-Your environment(s) must be on a supported [release track](/docs/dbt-versions/cloud-release-tracks) to use the Amazon Athena connection.
+Your environment(s) must be on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to use the Amazon Athena connection.
 
 Connect <Constant name="dbt" /> to Amazon's Athena interactive query service to build your dbt project. The following are the required and optional fields for configuring the Athena connection:
 
@@ -43,8 +43,8 @@ Enter your _development_ (not deployment) credentials with the following fields:
 If you prefer to not store long-lived IAM user AWS Access Key ID and AWS Secret Access Key in the <Constant name="dbt_platform" />, you can use `aws_session_token`, which is part of [temporary AWS Security Token Service (STS) credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html), instead. This approach mirrors a user or role’s long-term permissions.
 
 To use temporary credentials:
-1. Enter the **AWS Access Key ID** and **AWS Secret Access Key** in the [development environment settings](/docs/dbt-cloud-environments#create-a-development-environment) in the <Constant name="dbt_platform" /> user interface (UI).
-2. Since the `aws_session_token` isn't available as a UI field in <Constant name="dbt_platform" />, add it using [Extended attributes](/docs/dbt-cloud-environments#extended-attributes) in the environment settings or [<Constant name="dbt_platform" /> profiles](/docs/platform/about-profiles). 
+1. Enter the **AWS Access Key ID** and **AWS Secret Access Key** in the [development environment settings](/docs/dbt-platform-environments#create-a-development-environment) in the <Constant name="dbt_platform" /> user interface (UI).
+2. Since the `aws_session_token` isn't available as a UI field in <Constant name="dbt_platform" />, add it using [Extended attributes](/docs/dbt-platform-environments#extended-attributes) in the environment settings or [<Constant name="dbt_platform" /> profiles](/docs/platform/about-profiles). 
 
       When you set the `aws_session_token` in **Extended attributes**, the key is case-sensitive and must be exactly `aws_session_token`.
 
