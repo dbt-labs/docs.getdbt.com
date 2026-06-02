@@ -6,7 +6,7 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-platform-version"
 pagination_prev: null
 ---
 
-Both dbt engines &mdash; the <Constant name="fusion_engine"/> (Rust-based) and <Constant name="core"/> (Python-based) &mdash; follow [semantic versioning](https://semver.org/). This page explains how versioning works for local dbt installations.
+dbt is available in multiple distributions: the <Constant name="fusion_engine"/> (Rust-based, proprietary), <Constant name="core_v2"/> (Rust-based, open-source), and <Constant name="core_v1"/> (Python-based, open-source). dbt Core v1 follows [semantic versioning](https://semver.org/) for the 1.x series; <Constant name="core_v2"/> and the <Constant name="fusion_engine"/> use the 2.x series. This page explains how versioning works for local dbt installations.
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 

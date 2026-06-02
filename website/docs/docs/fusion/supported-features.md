@@ -31,12 +31,13 @@ To use Fusion in your dbt project you must:
 - Be able to run your project on the latest version of <Constant name="core" /> with no deprecation warnings or errors.
 - Migrate your Semantic Layer configurations to the [latest YAML spec](/docs/build/latest-metrics-spec).
 
-
 ## Parity with dbt Core
 
-Our goal is for the <Constant name="fusion_engine" /> to support all capabilities of the <Constant name="core" /> framework, and then some. <Constant name="fusion" /> already supports many of the capabilities in <Constant name="core" /> v1.9, and we're working fast to add more.
+Our goal is for the <Constant name="fusion_engine" /> to support all capabilities of the <Constant name="core_v1" /> framework, and then some. <Constant name="fusion" /> already supports many of the capabilities in <Constant name="core" /> v1.11, and we're working fast to add more.
 
 Note that we have removed some deprecated features and introduced more rigorous validation of erroneous project code. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) for details.
+
+[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the next major version of dbt Core, built on the Fusion runtime and released as open source under Apache 2.0. It is currently in alpha.
 
 ## Features and capabilities
 <!-- table for feature comparison ("What's available where?")-->
@@ -45,12 +46,12 @@ Note that we have removed some deprecated features and introduced more rigorous 
 - To learn about the <Term id="lsp"/> features supported across the <Constant name="dbt_platform"/>, refer to [About dbt LSP](/docs/about-dbt-lsp).
 - To stay up-to-date on the latest features and capabilities, check out the [Fusion diaries](https://github.com/dbt-labs/dbt-fusion/discussions).
 
-<Constant name="core" /> (built on Python) supports <Term id="sql-rendering" /> but lacks SQL parsing and modern editor features powered by <Constant name="fusion_engine" /> and the <Term id="lsp"/>. 
+<Constant name="core_v1" /> (built on Python) supports <Term id="sql-rendering" /> but lacks SQL parsing and modern editor features powered by <Constant name="fusion_engine" /> and the <Term id="lsp"/>. <Constant name="core_v2" /> (built on Rust, open source) adds static analysis and select Fusion engine capabilities. 
 
 :::tip 
 <Constant name="dbt_platform" /> customers using <Constant name="fusion" /> can [develop across multiple development surfaces](/docs/fusion/fusion-availability), including  <Constant name="studio_ide"/> and VS Code with the dbt extension. 
 
-<Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-platform-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), [State-aware orchestration](/docs/deploy/state-aware-about), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing). 
+<Constant name="dbt_platform" /> [features](/docs/platform/about-platform/dbt-platform-features) (like [Advanced CI](/docs/deploy/advanced-ci), [dbt <Constant name="mesh" />](/docs/mesh/about-mesh), and more) are available regardless of which surface you use, depending on your [dbt plan](https://www.getdbt.com/pricing).
 :::
 
 If you're not sure what features are available in <Constant name="fusion" />, the dbt VS Code extension, <Constant name="fusion"/>-CLI, or more, the following table focuses on <Constant name="fusion" />-powered options. 
@@ -75,8 +76,8 @@ In this table, self-hosted means it's open-source/source-available and runs on y
 | **Platform and governance** |  |  |  |  |  |
 | Advanced CI compare changes | ❌ | ❌ | ✅ | ✅ | ❌ |
 | dbt <Constant name="mesh" /> | ❌ | ❌ | ✅ | ✅ | ❌ |
+| [dbt State](/docs/deploy/dbt-state-about) (formerly state-aware orchestration) | ✅ | ✅ | ✅ | ✅ | ❌ |
 | Efficient testing | ❌ | ❌ | ✅ | ✅ | ✅ |
-| State-aware orchestration (SAO) | ❌ | ❌ | ✅ | ✅ | ❌ |
 | Governance (PII/PHI tracking) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 | CI/CD cost optimization (Slimmer CI) | ❌ | ❌ | <small>Coming soon</small> | <small>Coming soon</small> | ✅ |
 
@@ -87,16 +88,20 @@ For a full reference of Snowflake functions supported in <Constant name="fusion"
 
 
 #### Additional considerations
-Here are some additional considerations if using the Fusion CLI without the VS Code extension or the VS Code extension without the Fusion CLI:
+Here are some additional considerations if using the Fusion CLI without the VS Code extension or the VS Code extension without the Fusion CLI. Some dbt VS Code extension features require you to sign in to or register for a <Constant name="dbt_platform" /> account.
+
     - **Fusion CLI** ([binary](/blog/dbt-fusion-engine-components))
-      - Free to use and runs on the <Constant name="fusion_engine" /> (distinct from <Constant name="core" />). 
+      - Free to use and runs on the <Constant name="fusion_engine" />
       - Benefits from Fusion engine's performance for `parse`, `compile`, `build`, and `run`, but _doesn't_ include <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.  
-      - Requires [`profiles.yml`](/docs/local/profiles.yml) only (no [`dbt_cloud.yml`](/reference/dbt_cloud.yml)).
+      - Requires `profiles.yml` only (no `dbt_cloud.yml`).
     - **dbt VS Code extension**
-      - Free to use and runs on the <Constant name="fusion_engine" />; register your email within 14 days.
+      - Free to use and runs on the <Constant name="fusion_engine" />.
+      - dbt VS Code extension features are available to all users for 14 days. After the 14-day period, sign in or register for a <Constant name="dbt_platform" /> account from the dbt VS Code extension to keep using advanced capabilities.
+      - Unregistered users can continue using core editing and build workflows without signing in.
+      - Existing registered dbt VS Code extension users keep access to registration-required features automatically.
       - Benefits from <Constant name="fusion" /> engine's performance for `parse`, `compile`, `build`, and `run`, and includes <Term id="lsp"/> [features](/docs/dbt-extension-features) like autocomplete, hover insights, lineage, and more.
       - Capped at 15 users per organization. See the [acceptable use policy](https://www.getdbt.com/dbt-assets/vscode-plugin-aup) for more information.
-      - If you already have a <Constant name="dbt_platform" /> user account (even if a trial expired), sign in with the same email. Unlock or reset it if locked.  
+      - If you already have a <Constant name="dbt_platform" /> user account (even if a trial expired), sign in with the same email. Unlock or reset it if locked. If you don't have an account, create one from the login page.
       - Requires both [`profiles.yml`](/docs/local/profiles.yml) and [`dbt_cloud.yml`](/reference/dbt_cloud.yml) files.
 
 ## Limitations

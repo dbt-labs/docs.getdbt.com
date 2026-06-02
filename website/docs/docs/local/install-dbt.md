@@ -32,9 +32,24 @@ This is the fastest way to get started with dbt locally.
 
 [Install Fusion with the dbt VS Code extension](/docs/local/install-dbt?version=2#installation)
 
+### dbt Wizard
+
+[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is a natural next step for local dbt development. It works with both <Constant name="fusion_engine" /> and <Constant name="core" /> — [dbt Wizard](/docs/dbt-ai/wizard-quickstart) adds an AI agent that works with a live understanding of your entire project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+
+- **Build and refactor from natural language**: Describe the change, get a reviewable diff, approve before anything is written.
+- **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before production.
+- **Navigate with full project context**: Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and keep tests and YAML in sync as models evolve.
+
+For data practitioners, <Constant name="wizard"/> adds an AI layer that knows your project — not just your code. See [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+
 ## dbt Core
 
-[<Constant name="core" />](/docs/local/install-dbt?version=1) is the original Python-based dbt engine. <Constant name="core" /> changed data transformation forever and includes a rich set of features:
+dbt Core is the open-source engine for running dbt locally. It is available in two versions:
+
+- [<Constant name="core_v1" />](/docs/local/install-dbt?version=1): The original Python-based dbt engine with a rich set of features.
+- [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) <Lifecycle status="alpha" />: The next major version, built on the Fusion runtime. Currently in alpha.
+
+[<Constant name="core_v1" />](/docs/local/install-dbt?version=1) includes:
 
 - **Apache License 2.0** &mdash; <Constant name="core" /> is open source now and forever.
 - **Community adapters** &mdash; An amazing community of contributors has built adapters for a vast [catalog of data warehouses](/docs/supported-data-platforms).
@@ -43,6 +58,8 @@ This is the fastest way to get started with dbt locally.
 
 [Install dbt Core now!](/docs/local/install-dbt?version=1#installation)
 
+[dbt Wizard](/docs/dbt-ai/wizard-quickstart) also works with <Constant name="core" /> — see [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to add AI-assisted development to your Core workflow.
+
 ## Installation
 
 <VersionBlock firstVersion="2.0">
@@ -50,13 +67,6 @@ This is the fastest way to get started with dbt locally.
 The <Constant name="fusion_engine" /> provides faster parsing, compilation, and execution. Choose your preferred installation method:
 
 <Tabs>
-<TabItem value="vscode" label="VS Code extension" default>
-
-import InstallExtension from '/snippets/_install-dbt-extension.md'; 
-
-<InstallExtension/>
-
-</TabItem>
 
 <TabItem value="cli" label="Fusion CLI">
 
@@ -64,7 +74,7 @@ import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
 ## Install Fusion from the CLI <Lifecycle status="preview" />
 
-Fusion can be installed via the command line from our official content delivery network (CDN). <Constant name="fusion"/> CLI delivers <Constant name="fusion_engine" /> performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp" /> features. For the best <Constant name="fusion_engine" /> experience, install the dbt VS Code extension in your VS Code or compatible IDE. 
+<Constant name="fusion"/> CLI delivers <Constant name="fusion_engine" /> performance benefits (faster parsing, compilation, execution) but does not include <Term id="lsp" /> features. For the best <Constant name="fusion_engine" /> experience, install the dbt VS Code extension in your VS Code or compatible IDE. 
 
 <FusionManualInstall />
 
@@ -171,6 +181,14 @@ import AboutFusion from '/snippets/_about-fusion.md';
 <AboutFusion />
 
 </TabItem>
+
+<TabItem value="vscode" label="VS Code extension" default>
+
+import InstallExtension from '/snippets/_install-dbt-extension.md'; 
+
+<InstallExtension/>
+
+</TabItem>
 </Tabs>
 
 </VersionBlock>
@@ -185,7 +203,7 @@ We've written a [guide](https://discourse.getdbt.com/t/how-we-set-up-our-compute
 
 :::
 
-If you're using the command line, we recommend learning some basics of your terminal to help you work more effectively. In particular, it's important to understand `cd`, `ls` and `pwd` to be able to navigate through the directory structure of your computer easily.
+If you're using the command line, we recommend learning some basics of your terminal to help you work more effectively. In particular, it's important to understand `cd`, `ls` and `pwd` to be able to navigate through the directory structure of your computer easily. If you've never used the terminal before, check out the [terminal guide](/guides/terminal-guide).
 
 <Tabs>
 <TabItem value="pip" label="pip" default>
@@ -217,7 +235,7 @@ You can create virtual environments using tools like [conda](https://anaconda.or
 
 Depending on the operating system you use, you'll need to execute specific steps to set up a virtual environment. 
 
-To set up a Python virtual environment, navigate to your project directory and execute the command. This will generate a new virtual environment within a local folder that you can name anything.  [Our convention](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md#virtual-environments) has been to name it `env` or `env-anything-you-want`
+To set up a Python virtual environment, navigate to your project directory and execute the command. This will generate a new virtual environment within a local folder that you can name anything.  [Our convention](https://github.com/dbt-labs/dbt-core/blob/1.latest/CONTRIBUTING.md#virtual-environments) has been to name it `env` or `env-anything-you-want`
 
 <Tabs>
   <TabItem value="Unix/macOS" label="Unix/macOS">
@@ -520,7 +538,7 @@ Notes:
 
 ### Building your own dbt Docker image
 
-If the pre-made images don't fit your use case, we also provide a [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/main/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/main/docker/README.md) that can be used to build custom images in a variety of ways.
+If the pre-made images don't fit your use case, we also provide a [`Dockerfile`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/Dockerfile) and [`README`](https://github.com/dbt-labs/dbt-core/blob/1.latest/docker/README.md) that can be used to build custom images in a variety of ways.
 
 In particular, the Dockerfile supports building images:
 - Images that all adapters maintained by dbt Labs

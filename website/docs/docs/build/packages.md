@@ -178,30 +178,39 @@ Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's creat
 Native private packages let you install packages from [supported](#prerequisites) private <Constant name="git" /> repos using the `private` key, without having to configure a [token](#git-token-method) or write out a full Git URL. This simplifies setup and reduces credential management.
 
 - <Constant name="dbt_platform" />: Uses your existing <Constant name="git" /> [integration](/docs/platform/git/configure-git) for authentication.
-- <Constant name="fusion" /> locally: Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
+- Locally using <Constant name="fusion" /> or <Constant name="core" /> v1.12+: Uses your system's SSH configuration. Requires the [`provider` key](#using-the-provider-key).
 
 #### Prerequisites
 
-- To use native private packages, you must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
+- **<Constant name="dbt_platform" />**: You must have one of the following <Constant name="git" /> providers configured in the **Integrations** section of your **Account settings**:
   - **[GitHub](/docs/platform/git/connect-github)**
   - **[Azure DevOps](/docs/platform/git/connect-azure-devops)**
     - Use the `org/project/repo` path with the `ado` provider.
   - **[GitLab](/docs/platform/git/connect-gitlab)**
     - Every GitLab repo with private packages must also be a <Constant name="dbt_platform" /> project.
-- If using <Constant name="fusion" /> locally, you must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
+- **Locally using <Constant name="fusion" /> or <Constant name="core" /> v1.12+**: You must have an SSH key configured on your machine for the relevant Git provider and include the [`provider` key](#using-the-provider-key) in your package configuration.
 
 #### Configuration
 
-Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="dbt" /> Git integration without having to provision an access token or create a <Constant name="dbt" /> environment variable. 
-
+Use the `private` key in your `packages.yml` or `dependencies.yml` to clone package repos using your existing <Constant name="dbt" /> Git integration without having to provision an access token or create a <Constant name="dbt" /> environment variable.
 
 <File name="packages.yml">
 
 ```yaml
 packages:
   - private: dbt-labs/awesome_repo # your-org/your-repo path
+    provider: "github" # Supported values: "github", "gitlab", "ado"
   - package: normal packages
   [...]
+```
+</File>
+
+<File name="dependencies.yml">
+
+```yaml
+packages:
+  - private: dbt-labs/awesome_repo # your-org/your-repo path
+    provider: "github" # Supported values: "github", "gitlab", "ado"
 ```
 </File>
 
@@ -233,6 +242,7 @@ packages:
 Add the `provider` key when:
 - You are using multiple <Constant name="git" /> integrations or using the <Constant name="fusion_engine" />.
 - You are using <Constant name="fusion" /> locally (with the [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2#get-started) or the [VS Code extension](/docs/local/install-dbt?version=2#get-started)) (required).
+- You are using <Constant name="core" /> v1.12 or later for SSH-based cloning (required).
 
 ```yaml
 packages:
@@ -240,7 +250,7 @@ packages:
     provider: "github" # Supported values: "github", "gitlab", "ado"
 ```
 
-<Constant name="fusion" /> uses the `provider` value to construct the correct SSH URL for cloning, based on the provider:
+<Constant name="core" /> and <Constant name="fusion" /> use the `provider` value to construct the correct SSH URL for cloning, based on the provider:
 
 | Provider | SSH URL format |
 | --- | --- |
@@ -248,7 +258,7 @@ packages:
 | `gitlab` | `git@gitlab.com:org/repo.git` |
 | `ado` | `git@ssh.dev.azure.com:v3/org/project/repo` |
 
-<Constant name="fusion" /> relies on your system's SSH configuration to authenticate and clone the private repository. If `git clone` works on your system for the private package repo, the private package install should work too.
+<Constant name="core" /> and <Constant name="fusion" /> rely on your system's SSH configuration to authenticate and clone the private repository. If `git clone` works on your system for the private package repo, the private package install should work too.
 
 ### SSH key method (CLI only)
 
@@ -277,7 +287,7 @@ If you're using the <Constant name="dbt_platform" />, the SSH key method will no
 
 :::note
 
-[Native private packages](#native-private-packages) is the recommended approach for GitHub, GitLab, and Azure DevOps. The git token method is still functional in both <Constant name="fusion" /> and the <Constant name="dbt_platform" />, but requires provisioning a personal access token. It can be useful as a fallback if you need to unblock yourself.
+[Native private packages](#native-private-packages) is the recommended approach for GitHub, GitLab, and Azure DevOps. The git token method is still functional in <Constant name="core" />, <Constant name="fusion" />, and the <Constant name="dbt_platform" />, but requires provisioning a personal access token. It remains the supported path for <Constant name="core" /> users who need HTTPS-based cloning.
 
 :::
 
