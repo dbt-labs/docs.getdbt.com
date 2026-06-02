@@ -246,8 +246,8 @@ new columns and confirm downstream refs still resolve.
 
 ## Related docs
 
-- [dbt MCP server](/docs/dbt-ai/about-mcp) — the dbt-maintained server and its available tools
-- [Use subagents with <Constant name="wizard" />](/docs/dbt-ai/wizard-subagents) — delegate work to specialized agents
-- [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config) — `config.toml` keys and precedence
-- [<Constant name="wizard" /> CLI command reference](/docs/dbt-ai/wizard-cli-reference) — `wizard mcp` flags and subcommands
-- [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works) — approvals and sandboxing
+- [dbt MCP server](/docs/dbt-ai/about-mcp): The dbt-maintained server and its available tools
+- [Use subagents with <Constant name="wizard" />](/docs/dbt-ai/wizard-subagents): Delegate work to specialized agents
+- [<Constant name="wizard" /> CLI config](/docs/dbt-ai/wizard-config): `config.toml` keys and precedence
+- [<Constant name="wizard" /> CLI command reference](/docs/dbt-ai/wizard-cli-reference): `wizard mcp` flags and subcommands
+- [How <Constant name="wizard" /> works](/docs/dbt-ai/wizard-how-it-works): Approvals and sandboxing
