@@ -82,7 +82,7 @@ To enable dbt State on any job &mdash; whether already existing or newly created
 
    This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state).
 
-   If dbt State is already enabled on your <Constant name="dbt_platform" /> account, you'll be prompted to enable it on your machine. You can change this at any time by editing `~/.dbt/user_settings.yml`. For more information about login behavior, refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
+   If dbt State is already enabled on your <Constant name="dbt_platform" /> account, you'll be prompted to enable it on your machine. You can change this at any time by editing the settings file located at `~/.dbt/user_settings.yml`. For more information about login behavior, refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
 
