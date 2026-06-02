@@ -1,5 +1,1 @@
-:::info 
-The <Constant name="wizard" /> CLI doesn't yet work with the dbt platform CLI (formerly the dbt Cloud CLI). Support for the dbt platform CLI is coming soon.
-
-In the meantime, run the <Constant name="wizard" /> CLI in a project that uses <Constant name="fusion" /> or <Constant name="core" />.
-:::
+Note that the <Constant name="wizard" /> CLI doesn't yet work with the dbt platform CLI (formerly the dbt Cloud CLI), support coming soon. In the meantime, run the <Constant name="wizard" /> CLI in a project that uses <Constant name="fusion" /> or <Constant name="core" />.
