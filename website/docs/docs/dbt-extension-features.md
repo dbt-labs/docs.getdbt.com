@@ -203,7 +203,7 @@ Preview query output directly from inside your editor for faster validation and 
 
 ## Explore your catalog <Lifecycle status="beta" />
 
-**Requires registration:**
+**Requires registration**
 
 Open the **Catalog** tab to see catalog information for the model you're working on &mdash; enriched by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor.
 
