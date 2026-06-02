@@ -23,7 +23,7 @@ Much of dbt State's configuration will feel familiar if you've used state-aware 
 | `freshness.build_after.updates_on` | [`state.require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) | Same `any` and `all` options with the same behavior: <br/>- `any` (default): rebuilds when _any_ direct parent has fresh data <br/>- `all`: rebuilds only when _all_ direct parents have fresh data |
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
-:::note Backwards compatibility in Fusion
+:::note Backward compatibility in Fusion
 In the <Constant name="fusion_engine" />, dbt State will automatically fall back to your existing `build_after` configs if `lag_tolerance` is not set. This means you can enable dbt State without updating your project configs first.
 :::
 
@@ -138,6 +138,16 @@ models:
 ```
 
 </File>
+
+## Known differences from state-aware orchestration   
+
+If you notice more models rebuilding than expected after migrating, these are the most common causes:
+
+- **Views with `select *`**: dbt State can’t determine what columns `select *` resolves to without querying the upstream schema, so it always rebuilds these views rather than risk reusing a stale result.
+- **Non-deterministic SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order each run, producing different compiled SQL every time. dbt State sees a new hash and rebuilds; if the affected model has downstream dependencies, those models rebuild, too.
+- **`build_after` vs `lag_tolerance`**: State-aware orchestration’s `build_after` skipped rebuilds entirely within the configured time window, even if the SQL changed. dbt State _always_ rebuilds when it detects a SQL change, regardless of the value set in `lag_tolerance`.
+
+See [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
 
 ## Limitation
 
