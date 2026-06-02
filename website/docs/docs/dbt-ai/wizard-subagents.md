@@ -77,7 +77,7 @@ Subagents inherit the parent session's [approval and sandbox policy](/docs/dbt-a
 
 A custom agent can override sandbox settings for itself &mdash; useful when, for example, an exploration agent should stay read-only while a build agent needs workspace write access.
 
-## Custom agents (CLI) { #custom-agents }
+## Custom agents (CLI) {#custom-agents}
 
 Beyond the built-in behavior, you can define custom agent _roles_ in `~/.dbt/wizard/config.toml`. Each role is a reusable agent &mdash; a reviewer, an explorer, a debugger &mdash; that <Constant name="wizard"/> can spawn by name.
 
