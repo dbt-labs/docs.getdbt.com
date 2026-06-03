@@ -53,9 +53,9 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 :::info
 dbt automatically deactivates a webhook after 1,000 consecutive failed delivery attempts, or after 7 days of consecutive failures if fewer than 1,000 attempts have been made. To re-activate a deactivated webhook, use any of the following methods:
 
-- **dbt platform UI** &mdash; Update the webhook's endpoint URL. dbt automatically reactivates the webhook when the URL is changed.
-- **REST API** &mdash; Send a `PUT` request and set `active` to `true`, or update `client_url` to a new endpoint URL.
-- **Terraform Provider** &mdash; Set `active = true` or update `client_url` in your webhook resource.
+- **dbt platform UI**: Update the webhook's endpoint URL. dbt automatically reactivates the webhook when the URL is changed.
+- **REST API**: Send a `PUT` request and set `active` to `true`, or update `client_url` to a new endpoint URL.
+- **Terraform Provider**: Set `active = true` or update `client_url` in your webhook resource.
 :::
 
 To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
