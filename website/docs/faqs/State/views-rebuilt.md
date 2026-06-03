@@ -44,7 +44,7 @@ from {{ source("my_source", "my_table") }}
 ```
 :::
 
-## Non-deterministic SQL from introspective macros
+## Non-deterministic Jinja templating, including introspective macros
 
 Some macros, such as `dbt_utils.get_relations_by_pattern` combined with `dbt_utils.union_relations`, don't always return relations in the same order. This means the compiled SQL can look different on every run, even when nothing has actually changed. dbt State sees a new hash and rebuilds the model.
 

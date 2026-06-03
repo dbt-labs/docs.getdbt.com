@@ -144,7 +144,7 @@ models:
 If you notice more models rebuilding than expected after migrating, these are the most common causes:
 
 - **Views with `select *`**: dbt State can’t determine what columns `select *` resolves to without querying the upstream schema, so it always rebuilds these views rather than risk reusing a stale result.
-- **Non-deterministic SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order each run, producing different compiled SQL every time. dbt State sees a new hash and rebuilds; if the affected model has downstream dependencies, those models rebuild, too.
+- **Non-determinism in Jinja-templated SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order each run, producing different compiled SQL every time. dbt State sees a new hash and rebuilds; if the affected model has downstream dependencies, those models rebuild, too.
 - **`build_after` vs `lag_tolerance`**: State-aware orchestration’s `build_after` skipped rebuilds entirely within the configured time window, even if the SQL changed. dbt State _always_ rebuilds when it detects a SQL change, regardless of the value set in `lag_tolerance`.
 
 See [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
