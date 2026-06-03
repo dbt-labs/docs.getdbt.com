@@ -147,7 +147,7 @@ dbt State behaves differently from state-aware orchestration in a few ways:
   - **Views with `select *`**: dbt State can’t determine what columns `select *` resolves to without querying the upstream schema, so it always rebuilds these views rather than risk reusing a stale result.
   - **Non-determinism in Jinja-templated SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order each run, producing different compiled SQL every time. dbt State sees a new hash and rebuilds; if the affected model has downstream dependencies, those models rebuild, too.
 
-  See [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
+  Refer to [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
 
 - **`build_after` vs `lag_tolerance`**: Both configs help avoid running a model more often than needed (even when fresh upstream data is available frequently), but they work differently:
   - `freshness.build_after` (for example, `{count: 4, period: hour}`) skips the model unless the configured time has elapsed _and_ upstream sources have new data since the last run. A SQL change does not override this; both conditions must be met.
