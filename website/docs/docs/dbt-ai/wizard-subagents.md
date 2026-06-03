@@ -95,40 +95,130 @@ A custom agent can override sandbox settings for itself &mdash; useful when, for
 
 ## Custom agents (CLI) {#custom-agents}
 
-You can define custom agent _roles_ in `~/.dbt/wizard/config.toml`. 
+You can define custom agent roles by adding standalone TOML files under `~/.dbt/wizard/agents/`.
 
-A custom agent role is a reusable role for a particular type of work you want <Constant name="wizard"/> to perform, like reviewing code, exploring a project, or debugging something. You can create any role name that fits your workflow, it doesn't't have to be one of the built-in roles. 
+A custom agent role is a reusable role for a particular type of work you want <Constant name="wizard"/> to perform, such as writing UDFs, exploring a project, or debugging an issue. You can create any role name that fits your workflow; it does not have to be one of the built-in roles.
 
-Each role has two parts:
+Each file defines one custom agent role. The file name must match the agent's `name` field. For example, an agent with `name = "udf_helper"` must be defined in `~/.dbt/wizard/agents/udf_helper.toml`.
 
-| Part | Where it lives| What it does |
-|------|---------------|--------------|
-| Role declaration | `~/.dbt/wizard/config.toml` | Gives the role a name and tells when to use it.|
-| Role config | A `.toml` file referenced by `config_file` | Defines how that role behaves, including its model, instructions, sandbox mode, and MCP servers.|
+<Constant name="wizard"/> loads each custom agent file as a configuration layer for spawned agent sessions. This means a custom agent can override the same settings as a normal <Constant name="wizard"/> session config, such as the model, instructions, sandbox mode, and MCP servers.
 
-Declare a role by adding an `[agents.ROLE_NAME]` table to your main `config.toml`. Replace `ROLE_NAME` with the name you want to use for the role. For example, `[agents.reviewer]` creates a role named `reviewer`.
+The best custom agents are narrow and opinionated. Give each one a clear job, the tools it needs for that job, and instructions that keep it from drifting into adjacent work.
 
-The `[agents.ROLE_NAME]` table supports these fields:
+Every custom agent file must define:
 
 <SimpleTable>
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `description` | Yes* | Explains when to use the role.  <Constant name="wizard"/>  reads this description to decide whether the role fits a task. *Required unless supplied by the file referenced in `config_file`. |
-| `config_file` | No | Path to a role-specific .toml file. Not the same file as your main `~/.dbt/wizard/config.toml`, it's an additional config file for this role. Relative paths resolve from the main `config.toml` file that declares the role. This is where you set the role's model, instructions, sandbox, and MCP servers. |
-| `nickname_candidates` | No | Display-only labels for instances of this role in the UI, such as `Scout` or `Ranger`. The nickname does not identify the role. |
+| `name` | Yes | Agent name <Constant name="wizard"/> uses when spawning or referring to this agent. Must match the file name without `.toml`. For example, `name = "udf_helper"` must be in `udf_helper.toml`. |
+| `description` | Yes | Explains when to use the agent. <Constant name="wizard"/> reads this description to decide whether the agent fits a task. |
+| `developer_instructions` | Yes | Core instructions that define the agent's behavior. |
+| `nickname_candidates` | No | Display-only labels for spawned instances of this agent in the UI, such as `UDF helper` or `UDF queen`.  The nickname does not identify the agent. |
+| `model` | No | Model this agent should use. Inherits from the parent session when omitted. |
+| `sandbox_mode` | No | Sandbox mode for this agent. Inherits from the parent session when omitted. |
+| `mcp_servers` | No | MCP servers available to this agent. Inherits from the parent session when omitted. |
 
 </SimpleTable>
 
-The file referenced by config_file is an ordinary [`config.toml`](/docs/dbt-ai/wizard-config#configtoml) layer. It accepts the same keys as your main config, including `model`, `developer_instructions`, sandbox settings, and `mcp_servers`. Any setting you do not define in the role-specific file inherits from the parent session.
+You can also include other supported [`config.toml`](/docs/dbt-ai/wizard-config#configtoml) keys in a custom agent file. Any setting you don't define in the custom agent file inherits from the parent session.
+
+### Example custom agent
+
+Create a standalone custom agent file. The file name and `name` value must match:
+
+<File name="~/.dbt/wizard/agents/udf_helper.toml">
+
+```toml
+name = "udf_helper" # matches the udf_helper.toml file name
+description = "Helps design and implement dbt UDFs and models that use them."
+
+developer_instructions = """
+You are an expert in dbt UDFs.
+
+Focus on:
+- choosing the right UDF pattern
+- writing clear function definitions
+- configuring function paths
+- using {{ function() }} references correctly
+- adding focused models and tests that demonstrate the UDF
+- keeping changes small and additive
+
+Before editing files, explain the proposed UDF design.
+When editing files, avoid unrelated changes.
+"""
+
+sandbox_mode = "workspace-write"
+nickname_candidates = ["UDF helper", "UDF queen"]
+```
+
+</File>
+
+Then ask <Constant name="wizard"/> to use the agent by name:
+
+```text
+Use udf_helper to create a UDF model that checks whether customer IDs are positive integers.
+```
+
+You can also let <Constant name="wizard"/> choose the agent automatically by describing the task:
+
+```text
+Create a dbt UDF that checks whether customer IDs are positive integers, then add a small model that uses it.
+```
 
 ### Display nicknames
 
-When several instances of the same role run at once, `nickname_candidates` give each a readable label in the UI (for example, `Scout`, `Ranger`). Nicknames are display-only &mdash; <Constant name="wizard"/> identifies a role by its `[agents.ROLE_NAME]` key, not the nickname shown.
+When several instances of the same agent run at once, `nickname_candidates` give each one a readable label in the UI. For example, two spawned `udf_helper` agents might appear as `UDF helper` and `UDF queen`.
+
+Nicknames are display-only. <Constant name="wizard"/> identifies the agent by its `name` field, not by the nickname shown in the UI.
+
+### Example with an MCP server
+
+Custom agent files can include MCP server configuration when the agent needs additional tools or context.
+
+Again, the file name and `name` value must match:
+
+<File name="~/.dbt/wizard/agents/dbt_docs_helper.toml">
+
+```toml
+name = "dbt_docs_helper"
+description = "Looks up relevant dbt documentation for patterns referenced in a change."
+
+developer_instructions = """
+Use the dbt docs MCP server to confirm APIs, options, and version-specific behavior.
+Return concise answers with links or exact references when available.
+Do not edit files.
+"""
+
+sandbox_mode = "read-only"
+
+[mcp_servers.dbt]
+command = "uvx"
+args = ["dbt-mcp"]
+```
+
+</File>
+
+This setup works well for prompts like:
+
+```text
+Have udf_helper design the UDF change and dbt_docs_helper verify the dbt function configuration.
+```
 
 ### Global settings
 
-Tune how agents run under the `[agents]` section in `config.toml`:
+Global subagent settings live under the `[agents]` section in `~/.dbt/wizard/config.toml`:
+
+<File name="~/.dbt/wizard/config.toml">
+
+```toml
+[agents]
+max_depth = 2
+job_max_runtime_seconds = 1800
+interrupt_message = true
+```
+
+</File>
 
 <SimpleTable>
 
@@ -139,59 +229,64 @@ Tune how agents run under the `[agents]` section in `config.toml`:
 | `interrupt_message` | Whether to record a model-visible message when an agent turn is interrupted. Defaults to `true`. |
 
 </SimpleTable>
+
 ## Examples
 
-### Pull request review
+### UDF implementation
 
-Define three roles that split a review into exploration, validation, and documentation lookup. Declare the roles in your main `config.toml` and point each at a role config file:
+Define a custom agent that specializes in dbt UDF work. Each custom agent is a standalone TOML file under `~/.dbt/wizard/agents/`.
 
-<File name='~/.dbt/wizard/config.toml'>
+<File name="~/.dbt/wizard/agents/udf_helper">
 
 ```toml
-[agents]
-max_depth = 2
+name = "udf_helper"
+description = "Helps design and implement dbt UDFs and models that use them."
 
-[agents.pr_explorer]
-description = "Maps what changed in a pull request and which models, tests, and exposures it touches."
-config_file = "./agents/pr_explorer.toml"
-nickname_candidates = ["Scout", "Ranger"]
+developer_instructions = """
+You are an expert in dbt UDFs.
 
-[agents.reviewer]
-description = "Reviews dbt model changes for test coverage, naming conventions, and contract compatibility."
-config_file = "./agents/reviewer.toml"
+Focus on:
+- choosing the right UDF pattern
+- writing clear function definitions
+- configuring function paths
+- using {{ function() }} references correctly
+- adding focused models and tests that demonstrate the UDF
+- keeping changes small and additive
 
-[agents.docs_researcher]
-description = "Looks up relevant dbt documentation for patterns referenced in the change."
-config_file = "./agents/docs_researcher.toml"
+Before editing files, explain the proposed UDF design.
+When editing files, avoid unrelated changes.
+"""
+
+sandbox_mode = "workspace-write"
+nickname_candidates = ["UDF helper", "UDF queen"]
 ```
 
 </File>
 
-Each role config file is a normal config layer. For example, the explorer stays read-only, while the researcher gets access to the dbt MCP server:
+Optionally, configure global subagent settings in your main `config.toml`:
 
-<File name='./agents/docs_researcher.toml'>
+<File name="~/.dbt/wizard/config.toml">
 
 ```toml
-developer_instructions = "Find and cite the dbt docs pages relevant to the change so the reviewer can link to them. Do not edit files."
-
-[mcp_servers.dbt]
-command = "uvx"
-args = ["dbt-mcp"]
+[agents]
+max_depth = 2
 ```
 
 </File>
 
 Then prompt <Constant name="wizard"/>:
 
+```text
+Use udf_helper to create a UDF that checks whether customer IDs are positive integers, then add a small model that uses it.
 ```
-Review PR #482 using pr_explorer, reviewer, and docs_researcher.
-```
+
+<Constant name="wizard"/> starts the requested agent, lets it work on the UDF implementation, and consolidates the result into your session.
 
 ### Debug a failed job run (home app)
 
 In the <Constant name="dbt_platform" /> home app, ask <Constant name="wizard"/> to investigate a failed job by delegating to focused agents:
 
-```
+```text
 The nightly job failed. Use one agent to pull the run error and logs,
 one to trace the failing model's lineage and find the root cause, and
 one to propose a fix. Summarize what each found.
