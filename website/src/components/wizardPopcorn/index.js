@@ -42,18 +42,33 @@ const WIZARD_LINES = [
   { text: '███ █   ███', part: 'legs' },
 ];
 
-const partClass = { hat: styles.hat, face: styles.face, legs: styles.legs };
+// Roller skates, appended under the feet for the skating finale only.
+const SKATE_LINES = [
+  { text: '▟███▙  ▟██▙', part: 'skate' },
+  { text: ' O O    O O', part: 'wheel' },
+];
 
-const Sprite = () => (
-  <pre className={styles.sprite} aria-hidden="true">
-    {WIZARD_LINES.map((line, i) => (
-      <span key={i} className={partClass[line.part]}>
-        {line.text}
-        {'\n'}
-      </span>
-    ))}
-  </pre>
-);
+const partClass = {
+  hat: styles.hat,
+  face: styles.face,
+  legs: styles.legs,
+  skate: styles.skate,
+  wheel: styles.wheel,
+};
+
+const Sprite = ({ skates = false }) => {
+  const lines = skates ? [...WIZARD_LINES, ...SKATE_LINES] : WIZARD_LINES;
+  return (
+    <pre className={styles.sprite} aria-hidden="true">
+      {lines.map((line, i) => (
+        <span key={i} className={partClass[line.part]}>
+          {line.text}
+          {'\n'}
+        </span>
+      ))}
+    </pre>
+  );
+};
 
 const rand = (min, max) => Math.random() * (max - min) + min;
 
@@ -221,7 +236,7 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
           {/* The Wizard only appears once the dust has shimmered in. */}
           {finale !== 'dust' && (
             <div className={styles[`finale_${finale}`]}>
-              <Sprite />
+              <Sprite skates />
               {finale === 'poofing' &&
                 PUFFS.map((p, i) => (
                   <span

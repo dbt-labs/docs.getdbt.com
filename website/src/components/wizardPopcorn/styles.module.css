@@ -63,6 +63,13 @@
 .legs {
   color: #b0a3ff;
 }
+/* Roller skates for the skating finale. */
+.skate {
+  color: #59d6ff;
+}
+.wheel {
+  color: #ffd166;
+}
 
 /* Pop up, overshoot, then float away and fade. */
 @keyframes wizard-popcorn {
