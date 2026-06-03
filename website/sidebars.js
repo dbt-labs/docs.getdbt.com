@@ -1377,6 +1377,7 @@ const sidebarSettings = {
             "reference/resource-configs/begin",
             "reference/resource-properties/concurrent_batches",
             "reference/resource-configs/contract",
+            "reference/resource-configs/latest_version_pointer",
             "reference/resource-configs/lookback",
             "reference/resource-configs/materialized",
             "reference/resource-properties/model_name",

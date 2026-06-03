@@ -10,3 +10,5 @@ import DbtStateVsSao from '/snippets/_dbt-state-vs-sao.md';
 On June 1, 2026, dbt Labs and Fivetran announced **[dbt State](/docs/deploy/dbt-state-about)**<Lifecycle status="preview" /> as a new and improved version of state-aware orchestration. A key feature is [`lag_tolerance`](/reference/resource-configs/lag-tolerance), which controls how much time must pass since the last upstream data change before a node is eligible for a rebuild.
 
 <DbtStateVsSao />
+
+To get started, refer to [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration).

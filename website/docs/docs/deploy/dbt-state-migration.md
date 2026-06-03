@@ -12,18 +12,18 @@ import DbtStateVsSao from '/snippets/_dbt-state-vs-sao.md';
 
 <DbtStateVsSao />
 
-To migrate to dbt State, update your configs from `freshness.build_after` to the new `state` block. Refer to the [configuration changes](#configuration-changes) table for the full mapping.
-
-## Configuration changes
+## Migrating your configuration
 
 Much of dbt State's configuration will feel familiar if you've used state-aware orchestration, but there is one significant difference: the `build_after` configs have moved out of the `freshness` block and into a new `state` block.
+
+To migrate to dbt State, move your configs from `freshness.build_after` to the new `state` block. Refer to the following table for the full mapping.
 
 | State-aware orchestration | dbt State | Notes |
 |---|---|---|
 | `freshness.build_after.updates_on` | [`state.require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) | Same `any` and `all` options with the same behavior: <br/>- `any` (default): rebuilds when _any_ direct parent has fresh data <br/>- `all`: rebuilds only when _all_ direct parents have fresh data |
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
-:::note Backwards compatibility in Fusion
+:::note Backward compatibility in Fusion
 In the <Constant name="fusion_engine" />, dbt State will automatically fall back to your existing `build_after` configs if `lag_tolerance` is not set. This means you can enable dbt State without updating your project configs first.
 :::
 
