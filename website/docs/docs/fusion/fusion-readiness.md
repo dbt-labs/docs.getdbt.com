@@ -84,7 +84,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 The <Constant name="fusion_engine" /> is generally available for <Constant name="dbt_platform" /> projects on Snowflake and in preview for all other eligible projects! Keep up-to-date with these resources: 
 
 - [ ] Check out the [Fusion homepage](https://www.getdbt.com/product/fusion) for available resources, including supported adapters, prerequisites, installation instructions, limitations, and deprecations.
-- [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to learn about the new features and functionality that impact your dbt projects.
+- [ ] Read the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to learn about the new features and functionality that impact your dbt projects.
 - [ ] Monitor progress and get insight into the development process by reading the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements).
 - [ ] Learn how [dbt State](/docs/deploy/dbt-state-about) can reduce warehouse costs by 30%+ by rebuilding models only when data or code changes.
 

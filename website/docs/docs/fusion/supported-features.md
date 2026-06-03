@@ -35,7 +35,7 @@ To use Fusion in your dbt project you must:
 
 Our goal is for the <Constant name="fusion_engine" /> to support all capabilities of the <Constant name="core_v1" /> framework, and then some. <Constant name="fusion" /> already supports many of the capabilities in <Constant name="core" /> v1.11, and we're working fast to add more.
 
-Note that we have removed some deprecated features and introduced more rigorous validation of erroneous project code. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) for details.
+Note that we have removed some deprecated features and introduced more rigorous validation of erroneous project code. Refer to the [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) for details.
 
 [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the next major version of dbt Core, built on the Fusion runtime and released as open source under Apache 2.0. It is currently in alpha.
 
