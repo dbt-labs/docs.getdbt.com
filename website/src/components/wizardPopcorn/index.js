@@ -19,7 +19,7 @@ import styles from './styles.module.css';
 const UNLOCK_AT = 10;
 
 // Finale timing (ms): grow-in with sparkles → hold while it speaks → poof.
-const SUMMON_MS = 1200;
+const SUMMON_MS = 1600;
 const SPEAK_MS = 3800;
 const POOF_MS = 850;
 
@@ -61,17 +61,25 @@ const prefersReducedMotion = () =>
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Fine-grained sparkles that scatter across the page as the Wizard is summoned.
-// Positions are offsets from screen center in vw/vh so they cover the full
-// viewport; `g` is the glyph, `s` a size multiplier, `d` the stagger.
-const GLYPHS = ['✦', '✧', '⋆', '·', '˙', '*'];
-const SPARKLES = Array.from({ length: 90 }, (_, i) => ({
-  x: rand(-49, 49),
-  y: rand(-49, 49),
-  d: rand(0, 0.7),
-  s: rand(0.5, 1.2),
-  g: GLYPHS[i % GLYPHS.length],
-}));
+// Firework sparkles that burst out from the center as the Wizard is summoned.
+// Each particle flies from the middle of the screen to an offset (vw/vh) so the
+// whole burst radiates outward. `g` is the glyph, `c` color, `s` size, `d`
+// stagger. Grouped into a few staggered "shells" so it reads like fireworks.
+const GLYPHS = ['✦', '✧', '⋆', '✺', '✷', '·'];
+const COLORS = ['#fe6702', '#b0a3ff', '#ffffff', '#7fd1ff', '#ffd166', '#ff7ac6'];
+const SPARKLES = Array.from({ length: 120 }, (_, i) => {
+  // Radiate evenly in all directions, with jitter, out to a random radius.
+  const angle = rand(0, Math.PI * 2);
+  const radius = rand(12, 55);
+  return {
+    x: Math.cos(angle) * radius,
+    y: Math.sin(angle) * radius * 0.9,
+    d: (i % 4) * 0.18 + rand(0, 0.12), // a few shells, lightly jittered
+    s: rand(0.5, 1.3),
+    g: GLYPHS[i % GLYPHS.length],
+    c: COLORS[i % COLORS.length],
+  };
+});
 
 // The puff of magic dust the Wizard leaves behind as it vanishes. Particles
 // drift outward and fade. Positions/sizes in em, like the sparkles.
@@ -192,6 +200,8 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
                   '--sx': `${s.x}vw`,
                   '--sy': `${s.y}vh`,
                   '--ss': s.s,
+                  color: s.c,
+                  textShadow: `0 0 8px ${s.c}`,
                   animationDelay: `${s.d}s`,
                 }}
               >

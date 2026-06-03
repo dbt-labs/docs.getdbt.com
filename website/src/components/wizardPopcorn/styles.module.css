@@ -101,10 +101,17 @@
 }
 
 /* The centered wizard is blown up to fill most of the viewport. The sprite is
- * ~10 lines tall and ~11 chars wide; sizing the font off vh/vw makes the whole
- * figure span roughly 80% of the page while still fitting on either axis. */
+ * a <pre>, which the docs theme styles heavily (code-block font-size, padding,
+ * background), so we override those with !important to win the cascade and
+ * size the figure off vh/vw — ~85% of the page, fitting on either axis. */
 .finale .sprite {
-  font-size: min(8vh, 9vw);
+  font-size: min(8.5vh, 10vw) !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  max-width: none !important;
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
 }
 
@@ -130,49 +137,33 @@
   animation: wizard-poof 0.6s ease-in forwards;
 }
 
-/* The Wizard's speech bubble, anchored near the top of the screen. */
+/* The Wizard's line — floating glowing text near the top, no box. The dark
+ * outline + purple glow keep it legible over light or dark docs backgrounds. */
 .speech {
   position: absolute;
-  top: 6vh;
+  top: 7vh;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  max-width: min(34rem, 86vw);
-  padding: 1rem 1.3rem;
-  background: #ffffff;
-  color: #1c1c2b;
-  border: 2px solid #b0a3ff;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  font-family: var(--ifm-font-family-base, sans-serif);
-  font-size: clamp(1rem, 2.4vh, 1.4rem);
-  font-weight: 600;
-  line-height: 1.4;
+  max-width: min(40rem, 88vw);
   text-align: center;
-  animation: speech-pop 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  font-family: var(--ifm-font-family-base, sans-serif);
+  font-size: clamp(1.2rem, 3vh, 2rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: #ffffff;
+  text-shadow: 0 0 1px #1c1c2b, 0 2px 2px rgba(0, 0, 0, 0.7),
+    0 0 14px rgba(176, 163, 255, 0.95), 0 0 28px rgba(176, 163, 255, 0.6);
+  animation: speech-pop 0.4s cubic-bezier(0.2, 1.4, 0.4, 1) both;
 }
 
-/* Little tail pointing down toward the Wizard. */
-.speech::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -11px;
-  transform: translateX(-50%);
-  border-left: 11px solid transparent;
-  border-right: 11px solid transparent;
-  border-top: 11px solid #b0a3ff;
-}
-
-/* Fine-grained sparkles that scatter across the page as the Wizard arrives. */
+/* Firework particles that burst outward from the center as the Wizard arrives. */
 .sparkle {
   position: absolute;
   left: 50%;
   top: 50%;
-  font-size: 1.6vmin;
-  color: #b0a3ff;
-  text-shadow: 0 0 5px rgba(176, 163, 255, 0.9);
-  animation: sparkle-twinkle 0.8s ease-out forwards;
+  font-size: 2.6vmin;
+  animation: firework 0.9s ease-out forwards;
 }
 
 /* Magic dust left behind as the Wizard poofs away. */
@@ -228,21 +219,19 @@
   }
 }
 
-@keyframes sparkle-twinkle {
+@keyframes firework {
   0% {
-    /* sit at the scattered spot, invisible and tiny */
-    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
-      scale(0);
+    /* launch from the center, tiny and bright */
+    transform: translate(-50%, -50%) scale(0.2);
     opacity: 0;
   }
-  40% {
-    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
-      scale(var(--ss, 1));
+  15% {
     opacity: 1;
   }
   100% {
+    /* fly outward to the scattered offset, expanding and fading */
     transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
-      scale(calc(var(--ss, 1) * 0.4));
+      scale(calc(var(--ss, 1) * 1.2));
     opacity: 0;
   }
 }
