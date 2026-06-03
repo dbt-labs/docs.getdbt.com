@@ -68,7 +68,7 @@ Where:
 For example, to add a filesystem MCP server that runs locally through `npx`. It needs no environment variables, so `--env` is omitted:
 
 ```bash
-wizard mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /path/to/project
+wizard mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /Users/you/my-project
 ```
 
 To connect the [dbt MCP server](/docs/dbt-ai/about-mcp), use the streamable HTTP form below — refer to [dbt MCP server](#dbt-mcp-server) under Examples.
@@ -91,7 +91,7 @@ Instead of the `wizard mcp add` command, you can edit `config.toml` yourself. <C
 # STDIO server (runs locally)
 [mcp_servers.filesystem]
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/project"]
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/Users/you/my-project"]
 
 # Streamable HTTP server
 [mcp_servers.github]
