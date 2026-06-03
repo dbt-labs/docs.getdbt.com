@@ -11,7 +11,7 @@ The default documentation experience in <Constant name="dbt" /> is [<Constant na
 
 Refer to [documentation](/docs/build/documentation) for more configuration details.
 
-This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Constant name="dbt" />. dbt Docs is still accessible and offers basic documentation, but it doesn't offer the same speed, metadata, or visibility as <Constant name="catalog" />. dbt Docs is available to <Constant name="dbt" /> developer plans or <Constant name="core" /> users.
+This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in <Constant name="dbt" />. dbt Docs is still accessible and offers basic documentation, but it doesn't offer the same speed, metadata, or visibility as <Constant name="catalog" />. dbt Docs is available to <Constant name="dbt" /> developer plans or <Constant name="core_v1" /> users.
 
 ## Set up a documentation job
 
@@ -49,7 +49,7 @@ To create and schedule documentation-only jobs at the end of your production job
 
 ## dbt Docs
 
-dbt Docs, available on developer plans or dbt Core users, generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and lineage  &mdash; and helps you understand the data in your warehouse.
+dbt Docs, available on developer plans or <Constant name="core_v1" /> users, generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and lineage  &mdash; and helps you understand the data in your warehouse.
 
 ### Configure project documentation
 
@@ -67,7 +67,7 @@ For a richer and more interactive experience, try out [<Constant name="catalog" 
 
 ### Generating documentation
 
-To generate documentation in the <Constant name="studio_ide" />, run the `dbt docs generate` command in the **Command Bar** in the <Constant name="studio_ide" />. This command will generate the documentation for your dbt project as it exists in development in your IDE session.
+To generate documentation in the <Constant name="studio_ide" />, run the `dbt docs generate` command (<Constant name="core_v1" /> only) in the **Command Bar** in the <Constant name="studio_ide" />. This command will generate the documentation for your dbt project as it exists in development in your IDE session.
 
 After running `dbt docs generate` in the <Constant name="studio_ide" />, click the icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 

@@ -27,7 +27,7 @@ models:
  
 </File>
  
-When you run `dbt docs generate` and view the docs site, this text appears exactly as written but only for the `order_total_cents` column of the `orders` model.
+When you run `dbt docs generate` (<Constant name="core_v1" /> only) and view the docs site, this text appears exactly as written but only for the `order_total_cents` column of the `orders` model.
  
 ### Reusing descriptions with doc()
  
@@ -63,7 +63,7 @@ models:
  
 </File>
  
-When you run `dbt docs generate`, dbt resolves the `doc()` reference by looking up the corresponding docs block and injecting its content into the generated documentation.
+When you run `dbt docs generate` (<Constant name="core_v1" /> only), dbt resolves the `doc()` reference by looking up the corresponding docs block and injecting its content into the generated documentation.
  
 As a result, the column description displays the text defined in the markdown file, rather than inline YAML.
  

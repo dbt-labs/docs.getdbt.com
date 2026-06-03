@@ -6,9 +6,23 @@ hide_table_of_contents: true
 ---
 
 import FusionAvailability from '/snippets/_fusion_availability.md';
+import FusionFeatures from '/snippets/_fusion-features.md';
+import FusionLifecycle from '/snippets/_fusion-lifecycle.md';
+import ExtensionFeatures from '/snippets/_extension-features.md';
+
+The dbt Fusion engine and dbt Core v2 are currently in active development. Refer to the following tables to track lifecycle status and feature availability across the available products. 
+
+<FusionLifecycle/>
+<FusionFeatures/>
+<ExtensionFeatures/>
+
+## Develop with Fusion
 
 <FusionAvailability/>
 
-- Like <Constant name="core" />, you can install <Constant name="fusion" /> locally from the [CLI](/docs/local/install-dbt?version=2#get-started) to power local workflows. For ergonomic and LSP-based intelligent development (powered by <Constant name="fusion" />), [install the VS Code extension](/docs/local/install-dbt?version=2#get-started).
--  <Constant name="fusion"/> in the <Constant name="dbt_platform" /> is generally available to Snowflake users and in preview for other supported adapters. To use <Constant name="fusion" /> in the <Constant name="dbt_platform" />, [upgrade environments to the <Constant name="fusion_engine" />](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine) to power your projects.
-   - If your account isn't on the <Constant name="fusion_engine" />, you use the <Constant name="dbt_platform"/> with the traditional Python-based <Constant name="core" /> engine. However, it doesn't come with the <Constant name="fusion" /> [features](/docs/fusion/supported-features#features-and-capabilities), such as 30x faster compilation/parsing, autocomplete, hover info, inline error highlights, and more. To use <Constant name="fusion" />, contact your account team for access.
+## Additional resources
+
+- Install <Constant name="fusion" /> locally from the [CLI](/docs/local/install-dbt?version=2#get-started)
+- Install the [dbt VS Code extension](/docs/local/install-dbt?version=2#get-started)
+- Upgrade environments to the [<Constant name="fusion_engine" />](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
+- <Constant name="fusion" /> [features](/docs/fusion/supported-features#features-and-capabilities)

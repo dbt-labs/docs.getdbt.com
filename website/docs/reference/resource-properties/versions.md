@@ -165,9 +165,22 @@ Each other version has declared a modification from the top-level property:
 
 
 ### Our recommendations
+
+<VersionBlock lastVersion="1.11">
+
 - Follow a consistent naming convention for model versions and aliases.
 - Use `defined_in` and `alias` only if you have good reason.
 - Create a view that always points to the latest version of your model. You can automate this for all versioned models in your project with an `on-run-end` hook. For more details, read the full docs on ["Model versions"](/docs/mesh/govern/model-versions#configuring-database-location-with-alias)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+- Follow a consistent naming convention for model versions and aliases.
+- Use `defined_in` and `alias` only if you have good reason.
+- Use the [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config to automatically create a view pointing to the latest version of your model. Enable it per model or globally with the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models) flag in `dbt_project.yml`.
+
+</VersionBlock>
 
 ### Detecting breaking changes
 

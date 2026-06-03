@@ -11,6 +11,7 @@ intro_text: This guide helps you implement an in-place upgrade from the latest v
 ---
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 ## Introduction 
 
@@ -19,9 +20,8 @@ The <Constant name="fusion_engine" /> represents the next evolution of data tran
 Once you complete the <Constant name="fusion" /> migration, your team will benefit from:
 
 - ⚡ Up to 30x faster parsing and compilation
-- 💰 30%+ reduction in warehouse costs (with state-aware orchestration)
+- 💰 30%+ reduction in warehouse costs (with [dbt State](/docs/deploy/dbt-state-about))
 - 🔍 Enhanced SQL validation and error messages
-- 🚀 [State-aware orchestration](/docs/deploy/state-aware-about) for intelligent model rebuilding
 - 🛠️ Modern development tools
 
 ## Prerequisites
@@ -358,38 +358,11 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 <FusionReadinessPanel />
 
-### Step 5: Enable state-aware orchestration (optional but recommended) <Lifecycle status="Enterprise, Enterprise+"/>
+### Step 5: Enable dbt State (optional but recommended) <Lifecycle status="preview" />
 
-One of <Constant name="fusion" />'s most powerful features is [state-aware orchestration](/docs/deploy/state-aware-about), which automatically determines which models need rebuilding based on code or data changes. This can reduce warehouse costs by 30% or more.
+[dbt State](/docs/deploy/dbt-state-about) automatically determines which models need rebuilding based on code or data changes, which can reduce warehouse costs by 30% or more. dbt State is in preview. To get started, see [Set up dbt State](/docs/deploy/dbt-state-setup).
 
-State-aware orchestration is in private preview. To request access, contact your account manager. Once your account has access, new deploy jobs in <Constant name="fusion" /> environments are automatically state-aware.
-
-To enable it for existing jobs:
-
-1. Navigate to **Deploy** → **Jobs**.
-2. Click on a production job to open its settings.
-3. Click **Edit** in the top right.
-4. Scroll to **Execution settings**.
-5. Check the box for **Enable Fusion cost optimization features**.
-6. Expand **More options** to see additional settings:
-   - **State-aware orchestration**
-   - **Efficient testing**
-7. Click **Save**.
-
-<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-triggers-section.png" width="90%" title="Enable Fusion cost optimization features"/>
-
-Repeat this for all production jobs to maximize cost savings. For more details, see [Setting up state-aware orchestration](/docs/deploy/state-aware-setup).
-
-:::tip Dropped tables and views
-
-If you use state-aware orchestration, dbt doesn't detect changes when a table or view is dropped outside of dbt because the cache is unique to each dbt platform environment. As a result, state-aware orchestration won't rebuild that model until there is new data or a code change in the model.
-
-To circumvent this limitation: 
-- Use the **Clear cache** button on the target Environment page to force a full rebuild (acts like a reset), or
-- Temporarily disable State-aware orchestration for the job and rerun it.
-
-
-:::
+<SaoDeprecated />
 
 ### Step 6: Monitor production jobs
 
@@ -397,14 +370,8 @@ Watch your production jobs closely for the first 24-48 hours:
 
 - **Check scheduled job runs:** Navigate to **Deploy** → **Jobs** → **Run history**
 - **Monitor run times:** Compare to historical averages. You should see significant improvements.
-- **Review the state-aware interface**: Check the [Models built and reused chart](/docs/deploy/state-aware-interface) to see cost savings in action.
+- **Review cost savings**: If you enabled dbt State, check [Cost Insights](/docs/explore/cost-insights) to see savings in action.
 - **Watch for warnings**: Review logs for any unexpected messages.
-
-:::tip State-aware monitoring
-
-With state-aware orchestration enabled, you'll see models marked as **Reused** in the job logs when they don't need rebuilding. This is expected behavior and indicates cost savings!
-
-:::
 
 ### Step 7: Validate downstream integrations
 
@@ -438,9 +405,31 @@ If you encounter critical issues in production, you can revert your dbt version:
 
 :::info Rollback impact
 
-Rolling back to **Latest** will disable <Constant name="fusion" />-specific features like state-aware orchestration. Only rollback if you're experiencing production-critical issues.
+Rolling back to **Latest** will disable <Constant name="fusion" />-specific features. Only rollback if you're experiencing production-critical issues.
 
 :::
+
+## dbt lint <Lifecycle status="beta" />
+
+Now that your project is running on <Constant name="fusion" />, you have access to `dbt lint`. The `lint` command is a high-performance SQL linter built into <Constant name="fusion" />. It is SQLFluff-compatible: it reads your existing `.sqlfluff` config file, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments.
+
+### Basic usage
+
+```bash
+# Lint all SQL files in the project
+dbt lint
+
+# Lint a specific file
+dbt lint models/my_model.sql
+
+# Automatically fix violations
+dbt lint --fix
+
+# Lint only files changed in your working tree
+dbt lint --changed
+```
+
+See the [`dbt lint` reference](/reference/commands/lint) for the full list of flags, supported dialects, and suppression syntax.
 
 ## Next steps
 
@@ -450,8 +439,8 @@ You've successfully upgraded your entire dbt platform project to <Constant name=
 
 For your next steps:
 
-- **Optimize further**: Explore [advanced state-aware configurations](/docs/deploy/state-aware-setup#advanced-configurations) to fine-tune refresh intervals.
-- **Monitor savings**: Use the [state-aware interface](/docs/deploy/state-aware-interface) to track models built vs. reused.
+- **Optimize further**: Explore [dbt State configurations](/reference/resource-configs/dbt-state-configs) to fine-tune refresh intervals.
+- **Monitor savings**: Use [Cost Insights](/docs/explore/cost-insights) to track models built vs. reused.
 - **Train your team**: Share <Constant name="fusion" /> features and best practices with your team.
 - **Explore new features**: Check out column-level lineage, live CTE previews, and other <Constant name="fusion" />-powered capabilities.
 - **Stay informed**: Follow the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for updates on new features.

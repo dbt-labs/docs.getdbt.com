@@ -84,13 +84,7 @@ There is exactly one source (`sensitive_source`), and all downstream dbt models 
 
 Finally, the staging environment has its own view in [<Constant name="catalog" />](/docs/explore/explore-projects), giving you a full view of your prod and pre-prod data.
 
-To explore your staging environment in <Constant name="catalog" />:
-
-1. Click **<Constant name="catalog" />** in the left sidebar.
-2. From the environment dropdown, select **Staging**.
-3. View metadata from your project's staging deployment environment.
-
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.gif" width="85%" title="Explore in a staging environment" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 
 
 ### Create a Staging environment

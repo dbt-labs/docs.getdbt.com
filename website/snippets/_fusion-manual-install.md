@@ -1,52 +1,133 @@
-If you already have the <Constant name="fusion_engine" /> installed, you can skip this step. If you don't have it installed, you can follow these steps to install it:
+If you already have the <Constant name="fusion_engine" /> installed, you can skip this step. If you don't have it installed, choose your preferred installation method:
 
-1. Open a new command-line window and run the following command to install the <Constant name="fusion_engine" />:
+<Tabs queryString="installation">
 
-    <Tabs queryString="installation">
-    <TabItem value="mac-linux" label="macOS & Linux">
+<TabItem value="cdn" label="macOS & Linux (CDN)">
 
-    Run the following command in the terminal:
+Run the following command in the terminal:
 
-    ```shell
-    curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
-    ```
+```shell
+curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
+```
 
-    To use `dbtf` immediately after installation, reload your shell so that the new `$PATH` is recognized:
+To use `dbt` immediately after installation, reload your shell so that the new `$PATH` is recognized:
 
-    ```shell
-    exec $SHELL
-    ```
+```shell
+exec $SHELL
+```
 
-    Or, close and reopen your Terminal window. This will load the updated environment settings into the new session.
+Or, close and reopen your terminal window. This will load the updated environment settings into the new session.
 
-    </TabItem>
-    <TabItem value="windows" label="Windows (PowerShell)">
+</TabItem>
 
-    Run the following command in PowerShell:
+<TabItem value="windows-cdn" label="Windows (CDN)">
 
-    ```powershell
-    irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-    ```
+Run the following command in PowerShell:
 
-    To use `dbtf` immediately after installation, reload your shell so that the new `Path` is recognized:
+```powershell
+irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
+```
 
-    ```powershell
-    Start-Process powershell
-    ```
+To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
 
-    Or, close and reopen PowerShell. This will load the updated environment settings into the new session.
+```powershell
+Start-Process powershell
+```
 
-    </TabItem>
-    </Tabs>
+Or, close and reopen PowerShell. This will load the updated environment settings into the new session.
 
-2. Run the following command to verify you've installed <Constant name="fusion" />:
-    ```bash
-    dbtf --version
-    ```
-    You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have the Core or platform CLI installed). Default install path:
+</TabItem>
 
-       - macOS/Linux: `$HOME/.local/bin/dbt`
-       - Windows: `C:\Users\<username>\.local\bin\dbt.exe`
+<TabItem value="homebrew" label="Homebrew (macOS)">
 
-    The installer adds this path automatically, but you may need to reload your shell for the `dbtf` command to work.
+If you have [Homebrew](https://brew.sh/) installed, run:
 
+```shell
+brew install dbt
+```
+
+To upgrade to a newer version:
+
+```shell
+brew upgrade dbt
+```
+
+</TabItem>
+
+<TabItem value="winget" label="winget (Windows)">
+
+If you have [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/) installed, run:
+
+```shell
+winget install --id dbtLabs.dbt --exact
+```
+
+To upgrade to a specific version:
+
+```shell
+winget install --id dbtLabs.dbt --exact --version <version>
+```
+
+</TabItem>
+
+<TabItem value="pip" label="pip">
+
+You can install <Constant name="fusion" /> using `pip`. We recommend installing into a Python virtual environment to avoid dependency conflicts.
+
+### Set up a virtual environment (recommended)
+
+<Tabs>
+  <TabItem value="unix-macos-venv" label="macOS & Linux">
+
+  ```shell
+  python3 -m venv .venv
+  source .venv/bin/activate
+  ```
+
+  </TabItem>
+  <TabItem value="windows-venv" label="Windows">
+
+  ```shell
+  py -m venv .venv
+  .venv\Scripts\activate
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Install dbt
+
+Run the following commands to install the preview version and update to the latest.
+
+```shell
+pip install dbt==2.0.0rc178
+dbt system update
+```
+
+The `pip install dbt` command installs the latest stable release. `dbt system update` then pulls the latest <Constant name="fusion_engine" /> binary.
+
+
+### Deactivate the virtual environment
+
+When you're done, deactivate the environment:
+
+```shell
+deactivate
+```
+
+</TabItem>
+
+</Tabs>
+
+Run the following command to verify your installation:
+
+```bash
+dbt --version
+```
+
+You can use `dbt` or its <Constant name="fusion" /> alias `dbtf` (handy if you already have the Core or platform CLI installed). Default install path:
+
+- macOS/Linux: `$HOME/.local/bin/dbt`
+- Windows: `C:\Users\<username>\.local\bin\dbt.exe`
+
+The installer adds this path automatically, but you may need to reload your shell for the `dbtf` command to work.
