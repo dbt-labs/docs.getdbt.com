@@ -15,9 +15,7 @@ import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flag
 dbt Core v2.0 is currently in alpha. This does not affect the Fusion in platform rollout, which continues on its existing track.
 :::
 
-dbt Core v2.0 is the next major evolution of dbt Core, the trusted open-source standard for data transformation, now rebuilt on the Fusion runtime and released under Apache 2.0. It delivers a faster, Rust-based foundation while preserving the dbt experience practitioners already know.
-
-dbt Core v2.0 is the open-source foundation that the dbt Fusion engine builds on. For the full Fusion-powered experience, including SQL comprehension, column-level lineage, instant feedback, and platform-connected workflows, install the `dbt` distribution.
+dbt v2.0 marks a new foundation for dbt with a faster, Rust-based runtime rebuilt from the ground up and released in two distributions. [dbt Core v2.0](/docs/local/install-dbt) is the open-source evolution of the trusted data transformation standard, now under Apache 2.0. [dbt Fusion](/docs/fusion/about-fusion) builds on that same foundation and adds SQL comprehension, column-level lineage, instant feedback, and platform-connected workflows. Both distributions share the same project language and DAG semantics, so your existing dbt project works with either.
 
 <FusionLifecycle />
 
