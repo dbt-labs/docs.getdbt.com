@@ -5,7 +5,7 @@ id: "connect-apps-oauth"
 sidebar_label: "Connect apps with OAuth"
 ---
 
-# Connect apps with OAuth <Lifecycle status="private_beta,managed,managed_plus" />
+# Connect apps with OAuth <Lifecycle status="beta,managed,managed_plus" />
 
 The **App integrations** section in <Constant name="dbt_platform" /> lets admins manage OAuth 2.0 client registrations &mdash; a standard that lets external apps connect to dbt securely without sharing API tokens. Use it for:
 
@@ -13,7 +13,7 @@ The **App integrations** section in <Constant name="dbt_platform" /> lets admins
 - Your own API integrations built against <Constant name="dbt_platform" /> APIs, when you want end users to sign in with their dbt identity instead of distributing tokens.
 - Third-party apps and IDE extensions that support OAuth for connecting to dbt.
 
-This feature is available to Account admins on Enterprise or Enterprise+ plans.
+This feature is available to Account admins on Starter, Enterprise or Enterprise+ plans.
 
 To access this section, go to **Account settings** → **Integrations** → **App integrations**.
 
