@@ -17,6 +17,32 @@
 const { parse: parseHtml } = require('node-html-parser');
 
 // ---------------------------------------------------------------------------
+// URL resolution
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve a function link's href against the page it was scraped from.
+ *
+ * Uses the WHATWG URL parser so every href shape resolves correctly:
+ *  - absolute        ("https://…")                  → returned as-is
+ *  - relative        ("functions/abs")              → resolved against the page dir
+ *  - root-relative   ("/sql-reference/functions/x") → resolved against the origin
+ *
+ * Naive string concatenation (`base + href`) breaks on root-relative hrefs,
+ * producing duplicated path segments like
+ *   https://docs.snowflake.com/en/sql-reference//sql-reference/functions/finetune-show
+ * which 404. Always resolve through this helper instead.
+ */
+function resolveDocsUrl(href, pageUrl) {
+  if (!href) return '';
+  try {
+    return new URL(href, pageUrl).href;
+  } catch {
+    return href;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Shared HTML parsing helpers
 // ---------------------------------------------------------------------------
 
@@ -24,7 +50,7 @@ const { parse: parseHtml } = require('node-html-parser');
  * Generic scraper for pages that use heading → table layout (Trino, DuckDB, etc).
  * Walks body tracking category headings, then extracts anchors from table rows.
  */
-function scrapeHeadingTablePage(html, baseUrl, skipHeadings = /^(see also|related|notes?)/i) {
+function scrapeHeadingTablePage(html, pageUrl, skipHeadings = /^(see also|related|notes?)/i) {
   const root = parseHtml(html);
   const functions = [];
   const body = root.querySelector('.body-content') || root.querySelector('main') || root;
@@ -47,7 +73,7 @@ function scrapeHeadingTablePage(html, baseUrl, skipHeadings = /^(see also|relate
 
       const name = anchor.textContent.trim().toUpperCase();
       const href = anchor.getAttribute('href') || '';
-      const docsUrl = href.startsWith('http') ? href : `${baseUrl}${href}`;
+      const docsUrl = resolveDocsUrl(href, pageUrl);
 
       const rowText = row.textContent;
       let previewStatus = 'GA';
@@ -60,6 +86,8 @@ function scrapeHeadingTablePage(html, baseUrl, skipHeadings = /^(see also|relate
   }
   return functions;
 }
+
+const SNOWFLAKE_FUNCTIONS_URL = 'https://docs.snowflake.com/en/sql-reference/functions-all';
 
 /**
  * Snowflake all-functions page uses a single flat table with columns:
@@ -81,10 +109,17 @@ function scrapeSnowflakeFlatTable(html) {
 
     const name = anchor.textContent.trim().toUpperCase();
     const href = anchor.getAttribute('href') || '';
-    // hrefs are relative like "functions/abs" — resolve against base
-    const docsUrl = href.startsWith('http')
-      ? href
-      : `https://docs.snowflake.com/en/sql-reference/${href}`;
+    // Snowflake's hrefs are inconsistent: some are root-relative with the
+    // locale ("/en/sql-reference/functions/abs"), some without it
+    // ("/sql-reference/functions/abs"). Resolve against the page URL, then
+    // guarantee the /en/ prefix so the link doesn't 301-redirect.
+    let docsUrl = resolveDocsUrl(href, SNOWFLAKE_FUNCTIONS_URL);
+    if (docsUrl.startsWith('https://docs.snowflake.com/sql-reference/')) {
+      docsUrl = docsUrl.replace(
+        'https://docs.snowflake.com/sql-reference/',
+        'https://docs.snowflake.com/en/sql-reference/'
+      );
+    }
 
     // Category is in column 2 as a link to the category page
     const categoryAnchor = cells[2].querySelector('a');
@@ -110,7 +145,7 @@ const PLATFORMS = [
   {
     id: 'snowflake',
     name: 'Snowflake',
-    functionsUrl: 'https://docs.snowflake.com/en/sql-reference/functions-all',
+    functionsUrl: SNOWFLAKE_FUNCTIONS_URL,
     parseHtml(html) {
       return scrapeSnowflakeFlatTable(html);
     },
@@ -128,9 +163,7 @@ const PLATFORMS = [
         const name = anchor.textContent.trim().toUpperCase();
         if (!name || name.length > 60) continue;
         const href = anchor.getAttribute('href') || '';
-        const docsUrl = href.startsWith('http')
-          ? href
-          : `https://docs.databricks.com${href}`;
+        const docsUrl = resolveDocsUrl(href, this.functionsUrl);
         functions.push({ name, category: 'Built-in', docs_url: docsUrl, preview_status: 'GA' });
       }
       // Deduplicate by name
@@ -161,9 +194,7 @@ const PLATFORMS = [
           if (!href.includes('.html')) continue;
           const name = anchor.textContent.trim().toUpperCase();
           if (!name || name.length > 60) continue;
-          const docsUrl = href.startsWith('http')
-            ? href
-            : `https://docs.aws.amazon.com/redshift/latest/dg/${href}`;
+          const docsUrl = resolveDocsUrl(href, this.functionsUrl);
           functions.push({ name, category: currentCategory, docs_url: docsUrl, preview_status: 'GA' });
         }
       }
@@ -177,7 +208,7 @@ const PLATFORMS = [
     parseHtml(html) {
       return scrapeHeadingTablePage(
         html,
-        'https://cloud.google.com',
+        this.functionsUrl,
         /^(see also|related|overview|introduction)/i
       );
     },
@@ -187,7 +218,7 @@ const PLATFORMS = [
     name: 'Trino',
     functionsUrl: 'https://trino.io/docs/current/functions.html',
     parseHtml(html) {
-      return scrapeHeadingTablePage(html, 'https://trino.io', /^(see also|related)/i);
+      return scrapeHeadingTablePage(html, this.functionsUrl, /^(see also|related)/i);
     },
   },
   {
@@ -195,7 +226,7 @@ const PLATFORMS = [
     name: 'DuckDB',
     functionsUrl: 'https://duckdb.org/docs/sql/functions/overview',
     parseHtml(html) {
-      return scrapeHeadingTablePage(html, 'https://duckdb.org', /^(see also|related)/i);
+      return scrapeHeadingTablePage(html, this.functionsUrl, /^(see also|related)/i);
     },
   },
 ];
