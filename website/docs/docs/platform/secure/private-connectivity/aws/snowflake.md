@@ -53,7 +53,7 @@ Before requesting a private endpoint, allowlist <Constant name="dbt" /> Labs' AW
 
 After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS account in Snowflake, you can request a new private endpoint. Follow these steps to do so:
 
-1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
+1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints**.
 2. In the **Private endpoints** table, review your existing endpoints. The table shows all private endpoints in your account (including non-Snowflake ones) with the following details:
    - **Name**
    - **Connection type** (for example, Snowflake)
@@ -168,7 +168,7 @@ s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.ama
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. Snowflake supports two network rule types: VPCE ID-based (recommended) and IP/CIDR-based. The following steps use VPCE ID. If your organization requires an IP-based network policy instead, the CIDR range isn't available in the <Constant name="dbt_platform" /> UI. Please contact [dbt Support](mailto:support@getdbt.com) to get it.
 
 You need a VPCE ID to create a network policy in Snowflake:
-1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints** 
+1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints** 
 2. Open your endpoint and locate its **VPCE ID** field on the endpoint details page. 
 3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to obtain the VPCE ID. 
 4. If you're creating an endpoint for Internal Stage, the VPCE ID is different from the VPCE ID for the main service endpoint.

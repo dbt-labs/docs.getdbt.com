@@ -10,6 +10,11 @@ tags: ['dbt State']
 
 dbt State is natively available in <Constant name="dbt_platform" /> and locally in <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" />. It is also available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
 
+Before you begin:
+
+- dbt State supports Snowflake, Databricks, BigQuery, and Redshift.
+- You can connect dbt State to an existing <Constant name="dbt_platform" /> account or use a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state).
+
 Select the option that matches your setup:
 
 <Tabs>
@@ -19,9 +24,11 @@ Select the option that matches your setup:
 
 To enable dbt State:
 
-1. In your <Constant name="dbt_platform" /> account, click your account name at the bottom of the left-side menu and click **Account settings**.
+1. In your <Constant name="dbt_platform" /> account, click your account name in the lower-left corner above your username and click **Account settings**.
 2. Under **Settings**, go to **State**.
 3. Click **Start your 30-day free trial**.
+
+   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For more information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
       :::info Extended trial for state-aware orchestration users
       If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended to 90 days when you sign up. If you don't see the extension, contact your account team.
@@ -37,20 +44,20 @@ To enable dbt State:
 
 7. In the **Upgrade to dbt State** page, select the jobs to enable dbt State for. You can either enable:
 
-   - **All jobs in an environment**: Enables dbt State on all jobs within the selected environment at once.
-   - **Specific jobs**: Enables dbt State on individual jobs.
+   - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New deploy jobs created in that environment will have dbt State enabled automatically.
+   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](#enabling-dbt-state-on-individual-jobs).
 
 8. Click **Enable dbt State**.
 
-Once dbt State is enabled, all new jobs will have dbt State enabled by default. The **dbt State** page displays how many days remain in your trial period alongside the following monthly data:
+The **dbt State** page where you started your trial in step 3 displays how many days remain in your trial period alongside the following monthly data:
 
 - Number of models reused
 - Total % build reduction
 - Total query run time reduction 
 
-#### Enabling dbt State on existing deploy jobs <!--confirm if State is only for deploy jobs-->
+#### Enabling dbt State on individual jobs
 
-To enable dbt State on existing deploy jobs:
+To enable dbt State on any job &mdash; whether already existing or newly created in an environment that doesn't have dbt State enabled:
 
 1. Go to **Orchestration** > **Jobs**.
 2. Select the job you want dbt State enabled for.
@@ -75,9 +82,11 @@ To enable dbt State on existing deploy jobs:
 
    This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state).
 
-dbt State is now enabled and will be used automatically on your next `dbt run` or `dbt build`.
+   If dbt State is already enabled on your <Constant name="dbt_platform" /> account, you'll be prompted to enable it on your machine. You can change this at any time by editing the settings file located at `~/.dbt/user_settings.yml`. For more information about login behavior, refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
 
-You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. 
+dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
+
+You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE` environment variable. 
 
 To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml`:
 
@@ -113,9 +122,9 @@ To install the plugin:
    pip install dbt-state
    ```
 
-dbt State is now enabled and will be used automatically on your next `dbt run` or `dbt build`.
+dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
 
-The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE=0`) or project flag (`enable_state`) to enable or disable dbt State.
+The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
 </TabItem>
 </Tabs>
@@ -171,3 +180,4 @@ DBT_ENGINE_MANAGE_STATE=1 dbt run --target dev --select "customers"
 - [Configuring deferral](/docs/deploy/dbt-state-deferral)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
+- [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)

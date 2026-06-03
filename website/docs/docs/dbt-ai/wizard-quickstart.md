@@ -14,6 +14,7 @@ import WizardCliOnboarding from '/snippets/_wizard-cli-onboarding.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
+import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
 # dbt Wizard quickstart
 
@@ -75,6 +76,8 @@ _Available in public beta._
 You'll need:
 - An OpenAI subscription, or your own API key or cloud credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, or Snowflake Cortex (preview)
 - A dbt project set up locally
+
+<WizardCliDbtCliSupport />
 
 <NewToTerminal />
 
