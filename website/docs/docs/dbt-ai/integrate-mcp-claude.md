@@ -11,6 +11,7 @@ import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteTokenHeaders from '/snippets/_mcp-remote-token-headers.md';
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
+import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
 
 Claude is an AI assistant from Anthropic with two primary interfaces:
 - [Claude Desktop](#claude-desktop): A GUI with MCP support for file access and commands, plus basic coding features.
@@ -82,15 +83,9 @@ _OAuth is in private beta for Enterprise and Enterprise+ accounts._
 
 <MCPOauthPreflight />
 
-For OAuth, add dbt as a custom connector through Claude Desktop's settings &mdash; you don't need to edit `claude_desktop_config.json`. Claude Desktop opens a browser for sign-in and consent the first time it connects.
+For OAuth, add dbt as a custom connector through Claude Desktop's settings &mdash; you don't need to edit `claude_desktop_config.json`.
 
-1. In Claude Desktop, go to **Chat** &rarr; Customize**.
-2. Click **Connectors** and then **Add custom connector**.
-3. Enter a name (for example, `dbt`) and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`), then click **Add**.
-4. Click **Connect** on the new dbt connector. Claude Desktop redirects you to dbt to complete the OAuth consent flow, where you can approve or deny individual [scopes](/docs/platform/manage-access/connect-apps-oauth#scopes-and-consent).
-5. After you approve, the connector shows as connected. Ask Claude a data question to confirm.
-
-For the full custom connector flow and screenshots, see [Use with remote MCP](/docs/platform/manage-access/connect-apps-oauth#use-with-remote-mcp).
+<MCPCustomConnectorOauth />
 
 </TabItem>
 <TabItem value="token" label="Token-based">
