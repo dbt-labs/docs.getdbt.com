@@ -48,16 +48,38 @@ const SKATE_LINES = [
   { text: ' O O    O O', part: 'wheel' },
 ];
 
+// A laptop on a neck strap, held at chest height for the skating finale.
+const LAPTOP_LINES = [
+  { text: '  ╱    ╲', part: 'strap' },
+  { text: ' ▟██████▙', part: 'laptop' },
+  { text: ' ▐▤▤▤▤▤▤▌', part: 'keys' },
+  { text: ' ▔▔▔▔▔▔▔▔', part: 'keys' },
+];
+
 const partClass = {
   hat: styles.hat,
   face: styles.face,
   legs: styles.legs,
   skate: styles.skate,
   wheel: styles.wheel,
+  strap: styles.strap,
+  laptop: styles.laptop,
+  keys: styles.keys,
 };
 
+// The full skating getup: wizard + laptop tray (between face and legs) + skates.
+const SKATING_LINES = (() => {
+  const legStart = WIZARD_LINES.findIndex((l) => l.part === 'legs');
+  return [
+    ...WIZARD_LINES.slice(0, legStart),
+    ...LAPTOP_LINES,
+    ...WIZARD_LINES.slice(legStart),
+    ...SKATE_LINES,
+  ];
+})();
+
 const Sprite = ({ skates = false }) => {
-  const lines = skates ? [...WIZARD_LINES, ...SKATE_LINES] : WIZARD_LINES;
+  const lines = skates ? SKATING_LINES : WIZARD_LINES;
   return (
     <pre className={styles.sprite} aria-hidden="true">
       {lines.map((line, i) => (

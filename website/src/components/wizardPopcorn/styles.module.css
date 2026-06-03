@@ -70,6 +70,17 @@
 .wheel {
   color: #ffd166;
 }
+/* Laptop-on-a-neck-strap for the skating finale. */
+.strap {
+  color: #c9bfa3;
+}
+.laptop {
+  color: #8fe3ff;
+  text-shadow: 0 0 6px rgba(143, 227, 255, 0.8);
+}
+.keys {
+  color: #c8ccd8;
+}
 
 /* Pop up, overshoot, then float away and fade. */
 @keyframes wizard-popcorn {
@@ -112,7 +123,7 @@
  * background), so we override those with !important to win the cascade and
  * size the figure off vh/vw — ~85% of the page, fitting on either axis. */
 .finale .sprite {
-  font-size: min(7vh, 8.5vw) !important;
+  font-size: min(4.8vh, 6.5vw) !important;
   line-height: 1 !important;
   margin: 0 !important;
   padding: 0 !important;
