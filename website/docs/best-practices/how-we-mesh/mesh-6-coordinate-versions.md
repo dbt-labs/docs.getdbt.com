@@ -122,13 +122,11 @@ This then updates the default `ref` to the new version. For example, `{{ ref('up
 After all consumers have [migrated](#best-practices-for-consumers) to the new version, you can clean up the deprecated version. You could choose to "hard delete" all old versions, or "soft delete" them for continuity.
 
 :::info
-When you clean up under an enforced contract, removing a deprecated version, or renaming so the model is no longer versioned (for example, renaming `fishtown_analytics_orders_v2.sql` to `fishtown_analytics_orders.sql`), may require more than a single change:
+When removing or renaming a versioned model with an enforced contract, first deprecate the version you plan to retire.
 
-1. Set a `deprecation_date` on the version you are retiring. Use a date in the past if you are removing it immediately.
-2. Merge that change and run your production job so [state-aware CI](/docs/deploy/ci-jobs) records the deprecation.
-3. In a follow-up change, remove or rename the model.
+Set a `deprecation_date` on the retiring version. Use a date in the past if you are removing it immediately. Merge that change and run your production job so [state-aware CI](/docs/deploy/ci-jobs) records the deprecation. In a follow-up change, remove or rename the model, such as renaming `fishtown_analytics_orders_v2.sql` to `fishtown_analytics_orders.sql`.
 
-Without that intermediate workflow, dbt may treat the removal as an unexpected breaking contract change and fail CI. For an optional demonstration of this workflow, refer to [video walkthrough on removing a versioned model with an enforced contract](https://www.youtube.com/watch?v=FQ905Zj5C1o).
+Skipping this intermediate step may cause dbt to treat the removal as an unexpected breaking contract change and fail CI. For an optional walkthrough, refer to the [video walkthrough on removing a versioned model with an enforced contract](https://www.youtube.com/watch?v=FQ905Zj5C1o).
 :::
 
 <Tabs>
