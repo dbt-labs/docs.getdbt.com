@@ -108,7 +108,7 @@ The file referenced by config_file is an ordinary [`config.toml`](/docs/dbt-ai/w
 
 ### Display nicknames
 
-When several instances of the same role run at once, `nickname_candidates` give each a readable label in the UI (for example, `Scout`, `Ranger`). Nicknames are cosmetic &mdash; <Constant name="wizard"/> identifies a role by its `[agents.ROLE_NAME]` key, not the nickname shown.
+When several instances of the same role run at once, `nickname_candidates` give each a readable label in the UI (for example, `Scout`, `Ranger`). Nicknames are display-only &mdash; <Constant name="wizard"/> identifies a role by its `[agents.ROLE_NAME]` key, not the nickname shown.
 
 ### Global settings
 
