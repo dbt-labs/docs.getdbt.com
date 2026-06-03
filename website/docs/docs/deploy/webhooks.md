@@ -18,7 +18,7 @@ You can create webhooks for these events from the [<Constant name="dbt" /> web-b
 - `job.run.completed` &mdash; Run completed. This can be a run that has failed or succeeded.
 - `job.run.errored` &mdash; Run errored.
 
-<Constant name="dbt" /> retries sending each event five times. <Constant name="dbt" /> keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
+<Constant name="dbt" /> retries sending each event five times. <Constant name="dbt" /> keeps a log of each webhook delivery for 7 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
 A webhook in <Constant name="dbt" /> has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the <Constant name="dbt" /> webhooks system will interpret this as a failure.
 
@@ -51,7 +51,11 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
    <Constant name="dbt" /> provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
 
 :::info
-Note that <Constant name="dbt" /> automatically deactivates a webhook after 5 consecutive failed attempts to send events to your endpoint. To re-activate the webhook, locate it in the webhooks list and click the reactivate button to enable it and continue receiving events.
+dbt automatically deactivates a webhook after 1,000 consecutive failed delivery attempts, or after 7 days of consecutive failures if fewer than 1,000 attempts have been made. To re-activate a deactivated webhook, use any of the following methods:
+
+- **dbt platform UI** &mdash; Update the webhook's endpoint URL. dbt automatically reactivates the webhook when the URL is changed.
+- **REST API** &mdash; Send a `PUT` request and set `active` to `true`, or update `client_url` to a new endpoint URL.
+- **Terraform Provider** &mdash; Set `active = true` or update `client_url` in your webhook resource.
 :::
 
 To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
