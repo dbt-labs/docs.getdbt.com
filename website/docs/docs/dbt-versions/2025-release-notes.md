@@ -125,7 +125,7 @@ The following features are new or enhanced as part of our [dbt Launch Showcase](
 
 - **New**: The dbt Fusion engine is the brand new dbt engine re-written from the ground up to provide incredible speed, cost-savings tools, and comprehensive SQL language tools. The dbt Fusion engine is now available in beta for Snowflake users.
   - Read more [about Fusion](/docs/fusion).
-  - Understand what actions you need to take to get your projects Fusion-ready with the [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
+  - Understand what actions you need to take to get your projects Fusion-ready with the [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
   - Begin testing today with the [quickstart guide](/guides/fusion).
   - Know [where we're headed with the dbt Fusion engine](https://getdbt.com/blog/where-we-re-headed-with-the-dbt-fusion-engine). 
 - **New**: The dbt VS Code extension is a powerful new tool that brings the speed and productivity of the dbt Fusion engine into your Visual Studio Code editor. This is a free download that will forever change your dbt development workflows. The dbt VS Code extension is now available as beta [alongside Fusion](https://getdbt.com/blog/get-to-know-the-new-dbt-fusion-engine-and-vs-code-extension). Check out the [installation instructions](/docs/install-dbt-extension) and read more [about the features](/docs/about-dbt-extension) to get started enhancing your dbt workflows today! 

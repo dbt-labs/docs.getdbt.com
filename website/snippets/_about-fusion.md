@@ -11,5 +11,5 @@ Fusion marks a significant update to dbt. While many of the workflows you've gro
 - [Installing VS Code extension](/docs/install-dbt-extension)
 - [Fusion release track](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine)
 - [Quickstart for Fusion](/guides/fusion?step=1)
-- [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)
+- [Upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2)
 - [Fusion license agreement](https://www.getdbt.com/dbt-fusion-engine-license-agreement)
