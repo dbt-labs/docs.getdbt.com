@@ -7,7 +7,7 @@ sidebar_label: "Connect apps with OAuth"
 
 import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
 
-# Connect apps with OAuth <Lifecycle status="beta,managed,managed_plus" />
+# Connect apps with OAuth <Lifecycle status="beta,self_service,managed,managed_plus" />
 
 The **App integrations** section in <Constant name="dbt_platform" /> lets admins manage OAuth 2.0 client registrations &mdash; a standard that lets external apps connect to dbt securely without sharing API tokens. Use it for:
 
