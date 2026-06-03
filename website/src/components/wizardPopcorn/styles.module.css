@@ -105,7 +105,7 @@
  * background), so we override those with !important to win the cascade and
  * size the figure off vh/vw — ~85% of the page, fitting on either axis. */
 .finale .sprite {
-  font-size: min(8.5vh, 10vw) !important;
+  font-size: min(7vh, 8.5vw) !important;
   line-height: 1 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -137,31 +137,53 @@
   animation: wizard-poof 0.85s cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
 
-/* A full-screen light sweep that makes the whole page shimmer. */
+/* A full-screen light sweep that makes the whole page shimmer. Two diagonal
+ * bands cross at different speeds, over a softly pulsing magical glow. */
 .shimmer {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    115deg,
-    transparent 30%,
-    rgba(217, 200, 255, 0.16) 48%,
-    rgba(255, 255, 255, 0.22) 50%,
-    rgba(217, 200, 255, 0.16) 52%,
-    transparent 70%
-  );
-  background-size: 280% 280%;
+      115deg,
+      transparent 28%,
+      rgba(217, 200, 255, 0.28) 46%,
+      rgba(255, 255, 255, 0.42) 50%,
+      rgba(217, 200, 255, 0.28) 54%,
+      transparent 72%
+    ),
+    linear-gradient(
+      -60deg,
+      transparent 30%,
+      rgba(191, 233, 255, 0.22) 49%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(191, 233, 255, 0.22) 51%,
+      transparent 70%
+    );
+  background-size: 300% 300%, 320% 320%;
   mix-blend-mode: screen;
-  animation: shimmer-sweep 3.6s ease-in-out infinite;
+  animation: shimmer-sweep 3.4s ease-in-out infinite;
+}
+
+/* A soft radial glow that breathes behind everything for extra shimmer. */
+.shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(176, 163, 255, 0.22),
+    transparent 60%
+  );
+  animation: glow-pulse 2.6s ease-in-out infinite;
 }
 
 /* The Wizard's line — floating glowing text near the top, no box. A soft glow
  * pulse keeps it shimmering; the dark edge keeps it legible on any background. */
 .speech {
   position: absolute;
-  top: 7vh;
+  bottom: 6vh;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 2;
   max-width: min(40rem, 88vw);
   text-align: center;
   font-family: var(--ifm-font-family-base, sans-serif);
@@ -250,13 +272,29 @@
   }
 }
 
-/* A slow diagonal light sweep across the whole screen. */
+/* Two diagonal light sweeps crossing the screen (one layer each way). */
 @keyframes shimmer-sweep {
   0% {
-    background-position: 0% 0%;
+    background-position: 0% 0%, 100% 100%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%;
   }
   100% {
-    background-position: 100% 100%;
+    background-position: 0% 0%, 100% 100%;
+  }
+}
+
+/* Soft breathing glow behind everything. */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
   }
 }
 

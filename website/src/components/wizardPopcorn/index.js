@@ -18,8 +18,10 @@ import styles from './styles.module.css';
 // Clicks needed to summon the Wizard finale.
 const UNLOCK_AT = 10;
 
-// Finale timing (ms): ease in with fairy dust → hold while it speaks → dissolve.
-const SUMMON_MS = 1600;
+// Finale timing (ms): fairy dust shimmers in first → the Wizard eases up →
+// holds while it speaks → dissolves away.
+const DUST_MS = 1500;
+const SUMMON_MS = 1500;
 const SPEAK_MS = 3800;
 const POOF_MS = 850;
 
@@ -68,7 +70,7 @@ const prefersReducedMotion = () =>
 // mote so no two move alike.
 const GLYPHS = ['✦', '✧', '⋆', '·', '˙'];
 const COLORS = ['#ffe9a8', '#ffffff', '#d9c8ff', '#ffd6f0', '#bfe9ff', '#b0a3ff'];
-const DUST = Array.from({ length: 130 }, (_, i) => ({
+const DUST = Array.from({ length: 220 }, (_, i) => ({
   left: rand(0, 100),
   top: rand(0, 100),
   size: rand(0.5, 1.7),
@@ -99,7 +101,7 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
   const [pops, setPops] = useState([]);
   const nextId = useRef(0);
 
-  // Finale state machine: null → 'summon' → 'speaking' → 'poofing' → null.
+  // Finale state machine: null → 'dust' → 'summon' → 'speaking' → 'poofing'.
   const [finale, setFinale] = useState(null);
   const clickCount = useRef(0);
   const timers = useRef([]);
@@ -114,14 +116,15 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
   );
 
   const startFinale = useCallback(() => {
-    setFinale('summon');
+    setFinale('dust'); // fairy dust shimmers in before the Wizard arrives
     timers.current.push(
-      setTimeout(() => setFinale('speaking'), SUMMON_MS),
-      setTimeout(() => setFinale('poofing'), SUMMON_MS + SPEAK_MS),
+      setTimeout(() => setFinale('summon'), DUST_MS),
+      setTimeout(() => setFinale('speaking'), DUST_MS + SUMMON_MS),
+      setTimeout(() => setFinale('poofing'), DUST_MS + SUMMON_MS + SPEAK_MS),
       setTimeout(() => {
         setFinale(null);
         timers.current = [];
-      }, SUMMON_MS + SPEAK_MS + POOF_MS),
+      }, DUST_MS + SUMMON_MS + SPEAK_MS + POOF_MS),
     );
   }, []);
 
@@ -217,24 +220,27 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
           {finale === 'speaking' && (
             <div className={styles.speech}>{SPEECH}</div>
           )}
-          <div className={styles[`finale_${finale}`]}>
-            <Sprite />
-            {finale === 'poofing' &&
-              PUFFS.map((p, i) => (
-                <span
-                  key={i}
-                  className={styles.puff}
-                  style={{
-                    '--sx': `${p.x}em`,
-                    '--sy': `${p.y}em`,
-                    '--ss': p.s,
-                    animationDelay: `${p.d}s`,
-                  }}
-                >
-                  {p.g}
-                </span>
-              ))}
-          </div>
+          {/* The Wizard only appears once the dust has shimmered in. */}
+          {finale !== 'dust' && (
+            <div className={styles[`finale_${finale}`]}>
+              <Sprite />
+              {finale === 'poofing' &&
+                PUFFS.map((p, i) => (
+                  <span
+                    key={i}
+                    className={styles.puff}
+                    style={{
+                      '--sx': `${p.x}em`,
+                      '--sy': `${p.y}em`,
+                      '--ss': p.s,
+                      animationDelay: `${p.d}s`,
+                    }}
+                  >
+                    {p.g}
+                  </span>
+                ))}
+            </div>
+          )}
         </div>
       )}
     </>
