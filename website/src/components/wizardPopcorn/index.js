@@ -6,22 +6,25 @@ import styles from './styles.module.css';
  * burst of little colorful ASCII dbt Wizards across the viewport, then they
  * fade away. Click again for more. A playful easter egg for the docs.
  *
- * Hidden "next level": click enough times and you unlock a finale — a single
- * big Wizard dances in the center of the screen for a few seconds, then casts
- * a spell and poofs itself out of existence. The counter resets afterward, so
- * it can be earned again.
+ * Hidden "next level": click enough times and you summon the Wizard — fine
+ * sparkles scatter as a giant Wizard blows up to fill the screen, it delivers
+ * a line in a speech bubble, then poofs itself out of existence. The counter
+ * resets afterward, so it can be summoned again.
  *
  * Accessibility: the link is a real <button>; the burst is decorative
  * (aria-hidden) and is suppressed under `prefers-reduced-motion`.
  */
 
-// Clicks needed to unlock the dancing finale.
-const UNLOCK_AT = 15;
+// Clicks needed to summon the Wizard finale.
+const UNLOCK_AT = 10;
 
-// Finale timing (ms). Dance length sits in the requested 5–8s window.
-const DANCE_MS = 6000;
-const SPELL_MS = 700; // the spell flash before poofing
-const POOF_MS = 850; // the puff-out + lingering magic dust
+// Finale timing (ms): grow-in with sparkles → hold while it speaks → poof.
+const SUMMON_MS = 1200;
+const SPEAK_MS = 3800;
+const POOF_MS = 850;
+
+const SPEECH =
+  "You've summoned dbt Wizard. Side effects may include cleaner models and suspiciously green runs.";
 
 // The wizard figure, grouped by part so each line can be colored.
 // Whitespace is significant — keep it exactly as-is.
@@ -58,16 +61,15 @@ const prefersReducedMotion = () =>
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Sprinkles of magic that blanket the whole page when the Wizard casts its
-// spell. Positions are offsets from screen center in vw/vh so they cover the
-// full viewport; `g` is the glyph, `s` a size multiplier, `d` the stagger.
-const GLYPHS = ['✦', '✧', '✨', '⋆', '·'];
-const SPARKLES = Array.from({ length: 60 }, (_, i) => ({
-  // Spread across the page (±48% of the viewport from center) with jitter.
-  x: rand(-48, 48),
-  y: rand(-48, 48),
-  d: rand(0, 0.18),
-  s: rand(0.6, 1.4),
+// Fine-grained sparkles that scatter across the page as the Wizard is summoned.
+// Positions are offsets from screen center in vw/vh so they cover the full
+// viewport; `g` is the glyph, `s` a size multiplier, `d` the stagger.
+const GLYPHS = ['✦', '✧', '⋆', '·', '˙', '*'];
+const SPARKLES = Array.from({ length: 90 }, (_, i) => ({
+  x: rand(-49, 49),
+  y: rand(-49, 49),
+  d: rand(0, 0.7),
+  s: rand(0.5, 1.2),
   g: GLYPHS[i % GLYPHS.length],
 }));
 
@@ -89,12 +91,12 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
   const [pops, setPops] = useState([]);
   const nextId = useRef(0);
 
-  // Finale state machine: null → 'dancing' → 'casting' → 'poofing' → null.
+  // Finale state machine: null → 'summon' → 'speaking' → 'poofing' → null.
   const [finale, setFinale] = useState(null);
   const clickCount = useRef(0);
   const timers = useRef([]);
 
-  // Clear any pending finale timers when we unmount mid-dance.
+  // Clear any pending finale timers when we unmount mid-finale.
   useEffect(
     () => () => {
       timers.current.forEach(clearTimeout);
@@ -104,14 +106,14 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
   );
 
   const startFinale = useCallback(() => {
-    setFinale('dancing');
+    setFinale('summon');
     timers.current.push(
-      setTimeout(() => setFinale('casting'), DANCE_MS),
-      setTimeout(() => setFinale('poofing'), DANCE_MS + SPELL_MS),
+      setTimeout(() => setFinale('speaking'), SUMMON_MS),
+      setTimeout(() => setFinale('poofing'), SUMMON_MS + SPEAK_MS),
       setTimeout(() => {
         setFinale(null);
         timers.current = [];
-      }, DANCE_MS + SPELL_MS + POOF_MS),
+      }, SUMMON_MS + SPEAK_MS + POOF_MS),
     );
   }, []);
 
@@ -181,28 +183,26 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
 
       {finale && (
         <div className={styles.finale} aria-hidden="true">
-          <div className={styles[`finale_${finale}`]}>
-            {finale === 'dancing' && (
-              <span className={styles.unlockBadge}>
-                ✨ You've unlocked the dbt Wizard! Watch out for their spell ✨
+          {finale === 'summon' &&
+            SPARKLES.map((s, i) => (
+              <span
+                key={i}
+                className={styles.sparkle}
+                style={{
+                  '--sx': `${s.x}vw`,
+                  '--sy': `${s.y}vh`,
+                  '--ss': s.s,
+                  animationDelay: `${s.d}s`,
+                }}
+              >
+                {s.g}
               </span>
-            )}
+            ))}
+          {finale === 'speaking' && (
+            <div className={styles.speech}>{SPEECH}</div>
+          )}
+          <div className={styles[`finale_${finale}`]}>
             <Sprite />
-            {finale === 'casting' &&
-              SPARKLES.map((s, i) => (
-                <span
-                  key={i}
-                  className={styles.sparkle}
-                  style={{
-                    '--sx': `${s.x}vw`,
-                    '--sy': `${s.y}vh`,
-                    '--ss': s.s,
-                    animationDelay: `${s.d}s`,
-                  }}
-                >
-                  {s.g}
-                </span>
-              ))}
             {finale === 'poofing' &&
               PUFFS.map((p, i) => (
                 <span
