@@ -87,7 +87,6 @@ You can also add the Analyst read permission set to an existing group.
 4. Select the projects the permission set should apply to. **All projects** is the default option.
 5. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-create-group.png" width="75%" title="Create a group and assign the Analyst read permission set" />
 
 **2. Assign users the read-only license and add them to the group**
 
