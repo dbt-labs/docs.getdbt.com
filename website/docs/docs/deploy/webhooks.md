@@ -51,11 +51,11 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
    <Constant name="dbt" /> provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
 
 :::info
-dbt automatically deactivates a webhook after 1,000 consecutive failed delivery attempts, or after 7 days of consecutive failures if fewer than 1,000 attempts have been made. To re-activate a deactivated webhook, use any of the following methods:
+dbt automatically deactivates a webhook after either 1,000 consecutive failed deliveries or 7 consecutive days of failed deliveries, whichever occurs first. To reactivate a webhook, use one of the following methods:
 
 - **dbt platform UI**: Update the webhook's endpoint URL. <Constant name="dbt" /> automatically reactivates the webhook when the URL is changed.
 - **REST API**: Send a `PUT` request to [Update a webhook](#update-a-webhook) and set `active` to `true`, or update `client_url` to a new endpoint URL.
-- **Terraform Provider**: Set `active = true` and update `client_url` in your webhook resource.
+- **Terraform provider**: Set `active = true` and update `client_url` in your webhook resource.
 :::
 
 To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
