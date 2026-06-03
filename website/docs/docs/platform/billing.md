@@ -132,7 +132,7 @@ All reuses of the same active target table inside of a single day (based on UTC 
 
 ### Daily active target tables
 
-For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables for which dbt State performs a unique skip or clone, and unique test reuse operations on a given calendar day.
+For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables for which dbt State performs at least one of the following operations on a given calendar day: a unique skip, a unique clone, or a unique test reuse.
 
 ### Monthly cost calculation
 
