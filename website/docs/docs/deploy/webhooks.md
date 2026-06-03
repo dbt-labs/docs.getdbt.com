@@ -55,7 +55,7 @@ dbt automatically deactivates a webhook after 1,000 consecutive failed delivery 
 
 - **dbt platform UI**: Update the webhook's endpoint URL. <Constant name="dbt" /> automatically reactivates the webhook when the URL is changed.
 - **REST API**: Send a `PUT` request to [Update a webhook](#update-a-webhook) and set `active` to `true`, or update `client_url` to a new endpoint URL.
-- **Terraform Provider**: Set `active = true` or update `client_url` in your webhook resource.
+- **Terraform Provider**: Set `active = true` and update `client_url` in your webhook resource.
 :::
 
 To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
