@@ -41,10 +41,6 @@ To retain the behavior prior to v1.7, there are two main options:
 - [`dbt docs generate`](/reference/commands/cmd-docs) now supports `--select` to generate [catalog metadata](/reference/artifacts/catalog-json) for a subset of your project.
 - [Source freshness](/docs/deploy/source-freshness) can now be generated from warehouse metadata tables.
 
-### dbt State <Lifecycle status="preview" />
-
-dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is available as a plugin for <Constant name="core" /> v1.7. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
-
 ### MetricFlow enhancements
 
 - Automatically create metrics on measures with [`create_metric: true`](/docs/build/semantic-models).
