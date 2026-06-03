@@ -53,8 +53,9 @@ For either transport, <Constant name="wizard"/> reads the `instructions` field a
 
 Use the `wizard mcp add` command, or edit `~/.dbt/wizard/config.toml` directly. Either one will write to the same `[mcp_servers.NAME]` configuration.
 
-### Add a STDIO server
-
+<Tabs>
+<TabItem value="stdio" label="Add a STDIO server">
+  
 ```bash
 wizard mcp add SERVER_NAME --env VAR1=value1 -- COMMAND ARGS
 ```
@@ -73,15 +74,16 @@ wizard mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /Use
 
 To connect the [dbt MCP server](/docs/dbt-ai/about-mcp), use the streamable HTTP form below — refer to [dbt MCP server](#dbt-mcp-server) under Examples.
 
-### Add a streamable HTTP server
+</TabItem>
+<TabItem value="stdio" label="Add a streamable HTTP server">
 
 ```bash
 wizard mcp add SERVER_NAME --url https://example.com/mcp --bearer-token-env-var MY_TOKEN
 ```
 
 To see all MCP subcommands, run `wizard mcp --help`. For the full list of flags, refer to the [CLI command reference](/docs/dbt-ai/wizard-cli-reference).
-
-### Edit config.toml directly
+</TabItem>
+<TabItem value="stdio" label="Edit config.toml directly">
 
 Instead of the `wizard mcp add` command, you can edit `config.toml` yourself. <Constant name="wizard"/> stores MCP configuration in `~/.dbt/wizard/config.toml` alongside its other settings:
 
@@ -103,6 +105,9 @@ http_headers = { "X-Region" = "us-east-1" }
 </File>
 
 Restart `wizard` after editing `config.toml` — MCP servers are loaded at session start. For how settings resolve, refer to [Config precedence](/docs/dbt-ai/wizard-config#config-precedence).
+
+</TabItem>
+</Tabs>
 
 ## Configuration keys
 
