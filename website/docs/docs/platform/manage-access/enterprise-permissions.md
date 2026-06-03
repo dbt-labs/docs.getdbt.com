@@ -57,9 +57,9 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Analyst read">
+<Expandable alt_header="Analyst read" lifecycle="beta">
 
-The Analyst read permission set <Lifecycle status="beta" /> is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
+The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
 
 Notable features:
 - Analyst read is a project-level set.
@@ -69,7 +69,7 @@ Notable features:
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group.
 
-<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="85%" title="Add users to a group assigned the Analyst read permission set" />
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="75%" title="Add users to a group assigned the Analyst read permission set" />
 
 </Expandable>
 <Expandable alt_header="Billing admin">
