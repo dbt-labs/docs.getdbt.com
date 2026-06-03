@@ -33,6 +33,17 @@ select * from renamed
 
 dbt State reuses a model by confirming its SQL hasn't changed. With `select *`, it can't tell what columns are actually being selected without querying the upstream schema. dbt State can't confirm the query is the same, and rebuilds the view to be safe.
 
+:::tip
+To make this view eligible for reuse, remove the import CTE and reference the source directly with explicit column names:
+
+```sql
+select
+    id as order_id,
+    ...
+from {{ source("my_source", "my_table") }}
+```
+:::
+
 ## Non-deterministic SQL from introspective macros
 
 Some macros, such as `dbt_utils.get_relations_by_pattern` combined with `dbt_utils.union_relations`, don't always return relations in the same order. This means the compiled SQL can look different on every run, even when nothing has actually changed. dbt State sees a new hash and rebuilds the model.

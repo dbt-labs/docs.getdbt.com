@@ -24,7 +24,7 @@ Much of dbt State's configuration will feel familiar if you've used state-aware 
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
 :::note Backward compatibility in Fusion
-In the <Constant name="fusion_engine" />, dbt State will automatically fall back to your existing `build_after` configs if `lag_tolerance` is not set. This means you can enable dbt State without updating your project configs first.
+In the <Constant name="fusion_engine" />, dbt State will automatically fall back to your existing `build_after` configs if `lag_tolerance` and `require_fresh_data_from` are not set. This means you can enable dbt State without updating your project configs first.
 :::
 
 ### Examples
