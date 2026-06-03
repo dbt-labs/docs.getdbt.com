@@ -47,7 +47,7 @@ Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4
 
 dbt Copilot supports different AI providers, including bring your own key (BYOK) for Enterprise and Enterprise+ plans:
 
-- dbt Labs-managed OpenAI API key
+- dbt Labs-<Term id="managed" /> OpenAI API key
 - BYOK OpenAI API key
 - BYOK Azure OpenAI API key
 
@@ -63,6 +63,8 @@ Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported 
 
 Once AI features have been [enabled](#enable-ai-features), Enterprise and Enterprise+ accounts can configure a custom AI provider. If you bring your own provider, you will incur API calls and associated charges from that provider.
 
+\* *Managed (or Managed by <Constant name="dbt" /> Labs): <Constant name="dbt" /> Labs manages the AI provider connection; no user provider key is required. Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
+
 ### dbt Wizard
 
 To configure your AI provider for <Constant name="wizard" />:
@@ -76,9 +78,9 @@ To configure your AI provider for <Constant name="wizard" />:
 
   <TabItem value="openai" label="OpenAI">
 
-  **Managed by <Constant name="dbt" /> Labs** (default, no setup required)
+  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
 
-  1. Select the toggle for **<Constant name="dbt" /> Labs** to use <Constant name="dbt" /> Labs' managed OpenAI key.
+  1. Select the toggle for **<Constant name="dbt" /> Labs** to use <Constant name="dbt" /> Labs' managed* OpenAI key.
   2. Click **Save**.
 
   <Lightbox src="/img/docs/dbt-platform/account-integration-dbtlabs.png" width="85%" title="Example of the dbt Labs integration page" />
@@ -126,9 +128,9 @@ To configure your AI provider for <Constant name="wizard" />:
 
   <TabItem value="anthropic" label="Anthropic">
 
-  **Managed by <Constant name="dbt" /> Labs** (default, no setup required)
+  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
 
-  1. Select **<Constant name="dbt" /> Labs** from the list to use <Constant name="dbt" /> Labs' managed Anthropic key.
+  1. Select **<Constant name="dbt" /> Labs** from the list to use <Constant name="dbt" /> Labs' managed* Anthropic key.
   2. Click **Save**.
 
   **Managed by you** (Enterprise or Enterprise+ plans)
@@ -157,7 +159,7 @@ To configure your AI provider for dbt Copilot:
 <Tabs queryString="ai-integration"> 
   <TabItem value="dbtlabs" label="dbt Labs OpenAI">
 
-  1. Select the toggle for **dbt Labs** to use dbt Labs' managed OpenAI key.
+  1. Select the toggle for **dbt Labs** to use dbt Labs' managed* OpenAI key.
   2. Click **Save**.
 
   <Lightbox src="/img/docs/dbt-platform/account-integration-dbtlabs.png" width="85%" title="Example of the dbt Labs integration page" />
