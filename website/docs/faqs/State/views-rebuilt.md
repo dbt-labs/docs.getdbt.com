@@ -1,6 +1,6 @@
 ---
 title: Why is my model being rebuilt instead of reused?
-description: "Learn the common reasons dbt State rebuilds models instead of reusing them, including SELECT *, non-deterministic macros, and semantic differences from state-aware orchestration."
+description: "Learn the common reasons dbt State rebuilds models instead of reusing them."
 sidebar_label: 'Why is my model being rebuilt instead of reused?'
 id: views-rebuilt
 ---
@@ -46,7 +46,7 @@ from {{ source("my_source", "my_table") }}
 
 ## Non-deterministic Jinja templating
 
-Some macros, such as the introspective macro `dbt_utils.get_relations_by_pattern` combined with `dbt_utils.union_relations`, don't always return relations in the same order. This means the compiled SQL can look different on every run, even when nothing has actually changed. dbt State sees a new hash and rebuilds the model.
+Some macros, such as `dbt_utils.get_relations_by_pattern` (an introspective macro) combined with `dbt_utils.union_relations`, don't always return relations in the same order. This means the compiled SQL can look different on every run, even when nothing has actually changed. dbt State sees a new hash and rebuilds the model.
 
 This can affect any model type, not just views. If a base or staging model rebuilds every run, all of its downstream models will, too.
 
