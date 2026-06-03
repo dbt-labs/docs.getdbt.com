@@ -23,6 +23,8 @@ Your personal dbt agent &mdash; wherever you work.
 
 Think of it like a map of your city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout.
 
+To learn more about <Constant name="wizard" /> and see it in action, check out the [demo video](https://www.youtube.com/watch?v=-lIzh1xQWMA)!
+
 <Constant name="wizard"/> comes with the following capabilities:
 
 - **Project understanding:** A native dbt metadata engine for lineage, contracts, tests, and runtime context
