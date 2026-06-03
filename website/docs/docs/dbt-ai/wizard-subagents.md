@@ -14,30 +14,37 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 Subagents let <Constant name="wizard" /> spin up focused, parallel agents to handle parts of a larger task &mdash; one to explore your project, one to make changes, one to review them. <Constant name="wizard"/> orchestrates them and consolidates the results back into your session.
 </IntroText>
 
-Subagents run more work in parallel, which uses more tokens than a single-agent session handling the same task. Spawn them when a task genuinely benefits from division of labor.
+Use subagents when your task can be split into independent pieces of work. It's good for things like reviewing a large pull request, debugging a failed job, adding tests across multiple models, or researching documentation while another agent inspects your project.
+
+For smaller, direct tasks, you usually don't need subagents. For example, ask one question like “What does this model do?” or “Fix this failing test” without asking to split the work.
+
+Subagents run more work in parallel, which uses more tokens than a single-agent session handling the same task. Use them when the task benefits from division of labor.
 
 <WizardFeedbackCallout />
 
 ## Where you can use subagents
 
-Subagents work with <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). 
+Subagents work in <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). 
 
 <Constant name="wizard"/> surfaces subagent activity in both places so you can see what each agent is working on.
 
-<Constant name="wizard" /> enables you to define custom agents, set display nicknames, and define global limits through the `config.toml` file. The following sections call out which steps are CLI-specific.
+In the CLI, you can also define custom agent roles, set display nicknames, and configure global limits through the `config.toml` file. The following sections call out which steps are CLI-specific.
 
 ## How subagents work
+An agent is a role that describes a type of work, like `explorer`, `worker`, or `test_writer`. 
 
-<Constant name="wizard"/> handles orchestration for you &mdash; spawning agents (starting up a new helper agent to work on a task), routing work to them, waiting for results, and consolidating their output. Subagents are spawned only when you explicitly ask for them or when a task you describe maps onto a configured agent.
+A subagent is a running instance of one of those roles. For example, if starts two explorer agents to answer two different questions, those are two subagents using the same agent role.
 
-For example, prompt <Constant name="wizard"/>:
+<Constant name="wizard"/> handles orchestration for you. It starts subagents, routes work to them, waits for their results, and consolidates their output into your session.
 
-```
-Review PR #123. Use one agent to map what changed, one to check tests
-and downstream impact, and one to look up the relevant dbt docs.
-```
+Subagents are used in the following ways:
 
-<Constant name="wizard"/> spawns the agents, lets them work in parallel, and brings their findings back into one response.
+| How subagents start | Example |
+| ------------------- | ------- |
+| You ask to split up the work. | `Review PR #123. Use one agent to map what changed, one to check tests and downstream impact, and one to look up the relevant dbt docs.` |
+| <Constant name="wizard"/> automatically uses a configured agent because your task matches that agent's description. | `Add tests for stg_customers and check whether similar staging models are missing tests.` |
+
+<Constant name="wizard"/> then spawns the agents, lets them work in parallel, and brings their findings back into one response.
 
 ## Built-in agents
 
@@ -45,16 +52,23 @@ and downstream impact, and one to look up the relevant dbt docs.
 
 <SimpleTable>
 
-| Agent | What it's for |
-|-------|--------------|
-| `explorer` | Answers specific, well-scoped questions about your project. Fast and read-only — spawn several in parallel for independent questions. |
-| `worker` | Performs execution and production work, such as, implementing part of a feature, fixing tests or bugs, or splitting a large refactor into independent chunks. |
-| `validation` | Provides dbt validation. After model edits, runs structured validation — SQL check, `dbt run` with `--defer`, prod vs. dev comparison, and impact analysis — to validate changes before you merge. |
-| `test_writer` | Tests dbt coverage. Analyzes project metadata and warehouse data to find coverage gaps, validates assumptions with queries, and writes `schema.yml` tests for models with low or no coverage. |
+| Agent | What it's for | Example |
+|-------|---------------| ------- | 
+| `explorer` | Answers specific, well-scoped questions about your project. Fast and read-only &mdash; spawn several in parallel for independent questions. | `Use explorer to explain what depends on fct_orders.` |
+| `worker` | Performs execution and production work, such as, implementing part of a feature, fixing tests or bugs, or splitting a large refactor into independent chunks. | `Use worker to update these staging models to follow our naming convention.` |
+| `validation` | Provides dbt validation. After model edits, runs structured validation &mdash; SQL check, `dbt run` with `--defer`, prod vs. dev comparison, and impact analysis &mdash; to validate changes before you merge. | `Use validation to check whether my changes to int_payments are safe to merge.` |
+| `test_writer` | Improves dbt test coverage. Analyzes project metadata and warehouse data to find coverage gaps, validates assumptions with queries, and writes `schema.yml` tests for models with low or no coverage. | `Use test_writer to add tests to stg_customers.` |
 
 </SimpleTable>
 
-You don't need to declare these &mdash; <Constant name="wizard"/> routes to them automatically when a task fits, or you can ask for one by name (for example, "use `test_writer` to add tests to `stg_customers`"). To add your own roles, refer to [Custom agents](#custom-agents-cli).
+You don't need to declare these &mdash; <Constant name="wizard"/> routes to them automatically when a task fits, or you can ask for one by name. For example, both of these prompts can use the `test_writer` agent:
+
+| Prompt style	| Example |
+| ------------- | ------- |
+| Ask naturally	| Add useful tests for stg_customers. |
+| Ask for the agent by name	| Use test_writer to add tests to stg_customers.|
+
+To add your own roles, refer to [Custom agents](#custom-agents-cli).
 
 ## Manage subagents
 
@@ -62,14 +76,16 @@ Use slash commands inside an interactive session to inspect and steer agent thre
 
 <SimpleTable>
 
-| Command | What it does |
-|---------|-------------|
-| `/agent` | Switch the active agent thread to inspect or steer ongoing work. |
-| `/subagents` | View and switch between running subagent threads. |
+| Command | What it does | Example |
+|---------|------------- | ------- |
+| `/agent` | Switch the active agent thread to inspect or steer ongoing work. | Use `/agent` when you want to jump from the main session into a specific agent thread to give it more direction. |
+| `/subagents` | View and switch between running subagent threads. | Use `/subagents` to see which helper agents are active during a delegated task, then select one to inspect its progress. |
 
 </SimpleTable>
 
-You can also tell <Constant name="wizard"/> in plain language to steer, stop, or close an agent thread. For the full list of session commands, refer to the [slash command reference](/docs/dbt-ai/wizard-slash-commands).
+You can also tell <Constant name="wizard"/> in plain language to steer, stop, or close an agent thread. For example, `Stop the docs researcher agent and continue with the reviewer findings.`
+
+For the full list of session commands, refer to the [slash command reference](/docs/dbt-ai/wizard-slash-commands).
 
 ## Approvals and sandbox
 
@@ -81,14 +97,14 @@ A custom agent can override sandbox settings for itself &mdash; useful when, for
 
 You can define custom agent _roles_ in `~/.dbt/wizard/config.toml`. 
 
-A custom agent role is a reusable role for a particular type of work you want to perform, like reviewing code, exploring a project, or debugging something. You can create any role name that fits your workflow, it doens't have to be one of the built-in roles. 
+A custom agent role is a reusable role for a particular type of work you want <Constant name="wizard"/> to perform, like reviewing code, exploring a project, or debugging something. You can create any role name that fits your workflow, it doesn't't have to be one of the built-in roles. 
 
 Each role has two parts:
 
 | Part | Where it lives| What it does |
 |------|---------------|--------------|
 | Role declaration | `~/.dbt/wizard/config.toml` | Gives the role a name and tells when to use it.|
-| ROle config | A `.toml` file referenced by `config_file` | Defines how that role behaves, including its model, instructions, sandbox mode, and MCP servers.|
+| Role config | A `.toml` file referenced by `config_file` | Defines how that role behaves, including its model, instructions, sandbox mode, and MCP servers.|
 
 Declare a role by adding an `[agents.ROLE_NAME]` table to your main `config.toml`. Replace `ROLE_NAME` with the name you want to use for the role. For example, `[agents.reviewer]` creates a role named `reviewer`.
 
@@ -98,7 +114,7 @@ The `[agents.ROLE_NAME]` table supports these fields:
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `description` | Yes* | Explains when to use the role. reads this description to decide whether the role fits a task. *Required unless supplied by the file referenced in `config_file`. |
+| `description` | Yes* | Explains when to use the role.  <Constant name="wizard"/>  reads this description to decide whether the role fits a task. *Required unless supplied by the file referenced in `config_file`. |
 | `config_file` | No | Path to a role-specific .toml file. Not the same file as your main `~/.dbt/wizard/config.toml`, it's an additional config file for this role. Relative paths resolve from the main `config.toml` file that declares the role. This is where you set the role's model, instructions, sandbox, and MCP servers. |
 | `nickname_candidates` | No | Display-only labels for instances of this role in the UI, such as `Scout` or `Ranger`. The nickname does not identify the role. |
 
