@@ -47,7 +47,7 @@ Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4
 
 dbt Copilot supports different AI providers, including bring your own key (BYOK) for Enterprise and Enterprise+ plans:
 
-- dbt Labs-managed* OpenAI API key
+- dbt Labs-<Term id="managed" /> OpenAI API key
 - BYOK OpenAI API key
 - BYOK Azure OpenAI API key
 
