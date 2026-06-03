@@ -14,6 +14,7 @@ import WizardCliOnboarding from '/snippets/_wizard-cli-onboarding.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
+import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
 # dbt Wizard quickstart
 
@@ -76,6 +77,8 @@ You'll need:
 - An OpenAI subscription, or your own API key or cloud credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, or Snowflake Cortex (preview)
 - A dbt project set up locally
 
+<WizardCliDbtCliSupport />
+
 <NewToTerminal />
 
 #### Get started in your terminal
@@ -91,6 +94,29 @@ Once you're set up, ask your first question in your terminal. Try some [prompts]
     <WizardPrompts />
 
 <Constant name="wizard" /> will read your project's lineage, tests, and metadata and propose changes as a diff. You approve, reject, or redirect before anything is written.
+
+
+<div style={{maxWidth: '100%', margin: '20px 0'}}>
+<video
+  width="100%"
+  controls
+  autoPlay
+  muted
+  loop
+  playsInline
+  onLoadedMetadata={(event) => {
+    event.currentTarget.defaultPlaybackRate = 2.0;
+    event.currentTarget.playbackRate = 2.0;
+  }}
+  onPlay={(event) => {
+    event.currentTarget.playbackRate = 2.0;
+  }}
+>
+  <source src="/img/wizard.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>dbt Wizard CLI in your terminal</span>
+</div>
 
 For refactor or change requests, <Constant name="wizard" /> automatically assesses downstream impact first by reporting affected models, metrics, and tests with a severity rating before proposing any changes.
 

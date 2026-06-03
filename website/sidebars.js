@@ -858,6 +858,7 @@ const sidebarSettings = {
           items: ["docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral"],
         },
 
+        "docs/deploy/dbt-state-examples",
         "docs/deploy/dbt-state-interface",
         "docs/deploy/dbt-state-migration",
       ],
@@ -1376,6 +1377,7 @@ const sidebarSettings = {
             "reference/resource-configs/begin",
             "reference/resource-properties/concurrent_batches",
             "reference/resource-configs/contract",
+            "reference/resource-configs/latest_version_pointer",
             "reference/resource-configs/lookback",
             "reference/resource-configs/materialized",
             "reference/resource-properties/model_name",

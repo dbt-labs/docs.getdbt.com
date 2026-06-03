@@ -86,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "fast-track-to-dbt-workshop",
+      id: "fivetran-dbt-labs-merger-webinar",
       content:
-      "Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!",
+      "Fivetran + dbt Labs: The merger, what's shipping, and live Q&A on June 25 - Save your seat!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop",
+      "https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;

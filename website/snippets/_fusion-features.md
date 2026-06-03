@@ -10,6 +10,7 @@ To access the full set of features, register with your email address or sign in 
 | dbt docs v2 (lite) | ✅ | ✅ | ✅ |
 | Syntax error detection | - | ✅ | ✅ |
 | LSP (lite) | - | ✅ | ✅ |
+| dbt lint   | - | ✅ | ✅ |
 | SQL Comprehension | - | - | ✅ |
 | Full LSP | - | - | ✅ |
 | Query cache | - | - | ✅ |
