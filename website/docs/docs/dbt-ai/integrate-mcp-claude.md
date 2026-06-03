@@ -85,7 +85,7 @@ _OAuth is in private beta for Enterprise and Enterprise+ accounts._
 For OAuth, add dbt as a custom connector through Claude Desktop's settings &mdash; you don't need to edit `claude_desktop_config.json`. Claude Desktop opens a browser for sign-in and consent the first time it connects.
 
 1. In Claude Desktop, go to **Chat** &rarr; Customize**.
-2. Click **Add custom connector**.
+2. Click **Connectors** and then **Add custom connector**.
 3. Enter a name (for example, `dbt`) and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`), then click **Add**.
 4. Click **Connect** on the new dbt connector. Claude Desktop redirects you to dbt to complete the OAuth consent flow, where you can approve or deny individual [scopes](/docs/platform/manage-access/connect-apps-oauth#scopes-and-consent).
 5. After you approve, the connector shows as connected. Ask Claude a data question to confirm.
