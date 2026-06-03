@@ -55,7 +55,7 @@ Use the `wizard mcp add` command, or edit `~/.dbt/wizard/config.toml` directly. 
 
 <Tabs>
 <TabItem value="stdio" label="Add a STDIO server">
-  
+
 ```bash
 wizard mcp add SERVER_NAME --env VAR1=value1 -- COMMAND ARGS
 ```
@@ -76,7 +76,7 @@ To connect the [dbt MCP server](/docs/dbt-ai/about-mcp), use the streamable HTTP
 
 </TabItem>
 
-<TabItem value="stdio" label="Add a streamable HTTP server">
+<TabItem value="http" label="Add a streamable HTTP server">
 
 ```bash
 wizard mcp add SERVER_NAME --url https://example.com/mcp --bearer-token-env-var MY_TOKEN
@@ -86,7 +86,7 @@ To see all MCP subcommands, run `wizard mcp --help`. For the full list of flags,
 
 </TabItem>
 
-<TabItem value="stdio" label="Edit config.toml directly">
+<TabItem value="config" label="Edit config.toml directly">
 
 Instead of the `wizard mcp add` command, you can edit `config.toml` yourself. <Constant name="wizard"/> stores MCP configuration in `~/.dbt/wizard/config.toml` alongside its other settings:
 
