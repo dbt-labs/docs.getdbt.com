@@ -23,16 +23,12 @@ import SnowflakeOauthWithPL from '/snippets/_snowflake-oauth-with-pl.md';
 ## Configure AWS PrivateLink
 
 This section walks you through the setup of an AWS-hosted Snowflake PrivateLink endpoint in a <Constant name="dbt_platform" />. You can set up in two ways:
-- [Self-serve private endpoints](#self-serve-private-endpoints): Self-serve configuration of Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> user interface. Currently in private beta. 
+- [Self-serve private endpoints](#self-serve-private-endpoints): Self-serve configuration of Snowflake PrivateLink endpoints directly in <Constant name="dbt_platform" /> user interface. Currently in beta. 
 - [Support-led setup](#support-led-setup): Requires contacting dbt Support to configure Snowflake PrivateLink endpoints. Non-self service configuration of Snowflake PrivateLink endpoints. 
 
-### Self-serve private endpoints <Lifecycle status="private_beta" />
+### Self-serve private endpoints <Lifecycle status="beta" />
 
-:::note
-Self-serve private endpoints are currently in private beta for Snowflake on AWS. To join the beta, please reach out to your account manager. 
-
-This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead.
-:::
+_Self-serve private endpoints are currently in beta for Snowflake on AWS, and available to all eligible customers. This feature isn't available for Azure or GCP. If you don't see **Private endpoints** in your account settings, use the [Support-led setup](#support-led-setup) instead._
 
 This section walks you through the process of requesting a new Snowflake PrivateLink endpoint in <Constant name="dbt_platform" />. 
 
@@ -57,7 +53,7 @@ Before requesting a private endpoint, allowlist <Constant name="dbt" /> Labs' AW
 
 After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS account in Snowflake, you can request a new private endpoint. Follow these steps to do so:
 
-1. In <Constant name="dbt_platform" />, go to **Account settings → Integrations → Private endpoints**.
+1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints**.
 2. In the **Private endpoints** table, review your existing endpoints. The table shows all private endpoints in your account (including non-Snowflake ones) with the following details:
    - **Name**
    - **Connection type** (for example, Snowflake)
@@ -169,9 +165,13 @@ s3_stage_vpce_dns_name: '*.vpce-012345678abcdefgh-4321dcba.s3.us-west-2.vpce.ama
 <Lightbox src="/img/docs/dbt-platform/snowflake-internal-stage-dns.png" title="Internal Stage DNS"/>
 
 ## Configuring network policies
-If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. Snowflake supports two network rule types: VPCE ID-based (recommended) and IP/CIDR-based. The following steps use VPCE ID. If your organization requires an IP-based network policy instead, the CIDR range isn't available in the <Constant name="dbt_platform" /> UI. Please contact [dbt Support](mailto:support@getdbt.com) to get it.
 
-You can request the VPCE IDs from [<Constant name="dbt" /> Support](mailto:support@getdbt.com), that you can use to create a network policy. If creating an endpoint for Internal Stage, the VPCE ID will be different from the VPCE ID of the main service endpoint.
+You need a VPCE ID to create a network policy in Snowflake:
+1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints** 
+2. Open your endpoint and locate its **VPCE ID** field on the endpoint details page. 
+3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to obtain the VPCE ID. 
+4. If you're creating an endpoint for Internal Stage, the VPCE ID is different from the VPCE ID for the main service endpoint.
 
 :::note Network Policy for Snowflake Internal Stage PrivateLink
 For guidance on protecting both the Snowflake service and Internal Stage consult the Snowflake [network policies](https://docs.snowflake.com/en/user-guide/network-policies#strategies-for-protecting-both-service-and-internal-stage) and [network rules](https://docs.snowflake.com/en/user-guide/network-rules#incoming-requests) docs. 
@@ -187,7 +187,7 @@ Open the Snowflake UI and take the following steps:
 4. Give the rule a name.
 5. Select a database and schema where the rule will be stored. These selections are for permission settings and organizational purposes; they do not affect the rule itself.
 6. Set the type to `AWS VPCE ID` and the mode to `Ingress`.
-7. Type the VPCE ID provided by <Constant name="dbt" /> Support into the identifier box and press **Enter**.
+7. Enter the VPCE ID from the endpoint details page in <Constant name="dbt_platform" /> (or from <Constant name="dbt" /> Support if you used Support-led setup) into the identifier box.
 8. Click **Create Network Rule**.
 
 <Lightbox src="/img/docs/dbt-platform/snowflakeprivatelink2.png" title="Create Network Rule"/>
@@ -208,7 +208,7 @@ For quick and automated setup of network rules via SQL in Snowflake, the followi
 CREATE NETWORK RULE allow_dbt_cloud_access
   MODE = INGRESS
   TYPE = AWSVPCEID
-  VALUE_LIST = ('<VPCE_ID>'); -- Replace '<VPCE_ID>' with the actual ID provided
+  VALUE_LIST = ('<VPCE_ID>'); -- Replace '<VPCE_ID>' with the VPCE ID the actual value
 
 ```
 

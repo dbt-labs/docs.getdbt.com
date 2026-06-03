@@ -75,7 +75,7 @@ The following table lists features available for adapters:
 
 ### Catalog 
 
-For adapters that support it, you can partially build the catalog. This builds the catalog for only selected models via `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
+For adapters that support it, you can partially build the catalog (<Constant name="core_v1" /> only). This builds the catalog for only selected models via `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, run `dbt docs generate` to build the full catalog.
 
 ### Source freshness
 

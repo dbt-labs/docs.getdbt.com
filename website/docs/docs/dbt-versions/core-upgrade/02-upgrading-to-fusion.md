@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to the dbt Fusion engine (v2.0)"
+title: "Upgrading to the dbt Fusion engine"
 id: upgrading-to-fusion
 description: New features and changes in Fusion
 displayed_sidebar: "docs"
@@ -27,6 +27,11 @@ That work is documented below — it should be simple, straightforward, and in 
 
 You can find more information about what's changing in the dbt Fusion engine [changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
 
+:::tip Test Fusion parser compatibility from dbt Core v1.12
+
+If you're on <Constant name="core" /> v1.12, you can test Fusion parser compatibility before fully migrating by using the opt-in [`--use-v2-parser`](/reference/global-configs/parsing#opt-in-v2-parser) flag. This delegates parsing to the Fusion parser without changing any other behavior, making it a low-risk way to catch compatibility issues early.
+
+:::
 
 <FusionUpgradeSteps />
 
@@ -45,6 +50,16 @@ dbt Labs is committed to moving forward with Fusion, and it will not support any
 ### Ecosystem packages
 
 The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with Fusion. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse with the new Fusion engine. We're working with those package maintainers to make packages available for Fusion. Packages requiring an upgrade to a new release for Fusion compatibility, will be documented in this upgrade guide.
+
+## New and changed features and functionality
+
+### dbt State <Lifecycle status="preview" />
+
+dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in the <Constant name="fusion_engine" />.
+
+To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state) from your CLI. It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings) &mdash; enabling dbt State on every `dbt run` or `dbt build` for you. 
+
+To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml`. You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ### Changed functionality
 
@@ -218,7 +233,7 @@ In older versions of <Constant name="core" />, it was possible to create scenari
 <Constant name="fusion" /> adds stricter evaluation of names of docs blocks to prevent such ambiguity. It will present an error if it detects duplicate names:
 
 ```bash
-dbt found two docs with the same name: 'docs_block_title in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
+dbt found two docs with the same name: 'docs_block_title' in files: 'models/crm/_crm.md' and 'docs/crm/business_class_marketing.md'
 ```
 
 To resolve this error, rename any duplicate docs blocks. 
