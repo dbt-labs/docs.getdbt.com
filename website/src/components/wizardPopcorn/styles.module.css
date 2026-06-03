@@ -208,26 +208,6 @@
   animation: glow-pulse 2.6s ease-in-out infinite;
 }
 
-/* The Wizard's line — floating glowing text near the top, no box. A soft glow
- * pulse keeps it shimmering; the dark edge keeps it legible on any background. */
-.speech {
-  position: absolute;
-  bottom: 6vh;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  max-width: min(40rem, 88vw);
-  text-align: center;
-  font-family: var(--ifm-font-family-base, sans-serif);
-  font-size: clamp(1.2rem, 3vh, 2rem);
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1.4;
-  color: #ffffff;
-  -webkit-font-smoothing: antialiased;
-  animation: speech-in 0.7s ease-out both, speech-glow 2.8s ease-in-out infinite;
-}
-
 /* Fine fairy-dust mote: drifts upward and twinkles on its own loop. */
 .dust {
   position: absolute;
@@ -350,31 +330,6 @@
     transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
       scale(calc(var(--ss, 1) * 1.6));
     opacity: 0;
-  }
-}
-
-/* Smooth fade-and-rise in (no bouncy scale). */
-@keyframes speech-in {
-  0% {
-    transform: translateX(-50%) translateY(14px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Gentle glow pulse so the text shimmers while it sits. */
-@keyframes speech-glow {
-  0%,
-  100% {
-    text-shadow: 0 0 1px #1c1c2b, 0 2px 3px rgba(0, 0, 0, 0.65),
-      0 0 12px rgba(176, 163, 255, 0.7);
-  }
-  50% {
-    text-shadow: 0 0 1px #1c1c2b, 0 2px 3px rgba(0, 0, 0, 0.65),
-      0 0 22px rgba(176, 163, 255, 1), 0 0 36px rgba(176, 163, 255, 0.55);
   }
 }
 

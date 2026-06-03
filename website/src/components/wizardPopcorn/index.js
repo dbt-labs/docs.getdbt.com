@@ -16,16 +16,13 @@ import styles from './styles.module.css';
  */
 
 // Clicks needed to summon the Wizard finale.
-const UNLOCK_AT = 10;
+const UNLOCK_AT = 20;
 
 // Finale timing (ms): fairy dust shimmers in first → the Wizard roller-skates
 // across the page → poofs out of existence.
 const DUST_MS = 1500;
 const SKATE_MS = 3600;
 const POOF_MS = 850;
-
-const SPEECH =
-  "You've summoned dbt Wizard. Side effects may include cleaner models and suspiciously green runs.";
 
 // The wizard figure, grouped by part so each line can be colored.
 // Whitespace is significant — keep it exactly as-is.
@@ -271,9 +268,6 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
               {d.g}
             </span>
           ))}
-          {finale === 'skating' && (
-            <div className={styles.speech}>{SPEECH}</div>
-          )}
           {/* The Wizard only appears once the dust has shimmered in. */}
           {finale !== 'dust' && (
             <div className={styles[`finale_${finale}`]}>
