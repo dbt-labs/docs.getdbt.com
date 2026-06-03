@@ -24,7 +24,7 @@ For background on MCP itself, refer to the [Model Context Protocol introduction]
 
 - dbt MCP server for governed access to your models, metrics, and lineage.
 - GitHub server to read and review pull requests.
-- Data warehouse or other server to pull in context that lives outside dbt.
+- Data warehouse server, or another server, to pull in context that lives outside dbt.
 
 The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers (including managing them and setting per-tool approvals) through the `config.toml` file.
 
@@ -53,13 +53,19 @@ For either transport, <Constant name="wizard"/> reads the `instructions` field a
 
 Use the `wizard mcp add` command, or edit `~/.dbt/wizard/config.toml` directly. Either one will write to the same `[mcp_servers.NAME]` configuration.
 
-**Add a STDIO server:**
+### Add a STDIO server
 
 ```bash
 wizard mcp add SERVER_NAME --env VAR1=value1 -- COMMAND ARGS
 ```
 
-For example, to add a filesystem MCP server that runs locally through `npx`:
+Where:
+
+- `SERVER_NAME` is a name you choose for the server (for example, `filesystem`).
+- `--env VAR1=value1` is optional and repeatable, and applies only to STDIO servers.
+- Everything after `--` is the command <Constant name="wizard"/> runs to launch the server, so the space after `--` is intentional.
+
+For example, to add a filesystem MCP server that runs locally through `npx`. It needs no environment variables, so `--env` is omitted:
 
 ```bash
 wizard mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /path/to/project
@@ -67,7 +73,7 @@ wizard mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /pat
 
 To connect the [dbt MCP server](/docs/dbt-ai/about-mcp), use the streamable HTTP form below — refer to [dbt MCP server](#dbt-mcp-server) under Examples.
 
-**Add a streamable HTTP server:**
+### Add a streamable HTTP server
 
 ```bash
 wizard mcp add SERVER_NAME --url https://example.com/mcp --bearer-token-env-var MY_TOKEN
@@ -75,7 +81,9 @@ wizard mcp add SERVER_NAME --url https://example.com/mcp --bearer-token-env-var 
 
 To see all MCP subcommands, run `wizard mcp --help`. For the full list of flags, refer to the [CLI command reference](/docs/dbt-ai/wizard-cli-reference).
 
-**Or edit `config.toml` directly.** <Constant name="wizard"/> stores MCP configuration in `~/.dbt/wizard/config.toml` alongside its other settings:
+### Edit config.toml directly
+
+Instead of the `wizard mcp add` command, you can edit `config.toml` yourself. <Constant name="wizard"/> stores MCP configuration in `~/.dbt/wizard/config.toml` alongside its other settings:
 
 <File name='~/.dbt/wizard/config.toml'>
 
@@ -134,7 +142,7 @@ approval_mode = "approve"
 
 ## Authenticate a server
 
-For streamable HTTP servers that use OAuth, authenticate from the CLI:
+If a streamable HTTP server uses OAuth, you must authenticate from the CLI before <Constant name="wizard"/> can use it. Run:
 
 ```bash
 wizard mcp login SERVER_NAME
@@ -151,7 +159,7 @@ For servers that use a static token, set `bearer_token_env_var` to the name of a
 
 ## Manage MCP servers (CLI)
 
-Inspecting and removing servers is done through the <Constant name="wizard" /> CLI:
+Manage your configured servers through the <Constant name="wizard" /> CLI, or by editing `config.toml` directly. The CLI provides these commands:
 
 <SimpleTable>
 
@@ -168,7 +176,7 @@ Inspecting and removing servers is done through the <Constant name="wizard" /> C
 
 ## Approvals and tool permissions
 
-MCP tool calls follow the same [approval and sandboxing](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing) rules as the rest of <Constant name="wizard" />. Use `enabled_tools` and `disabled_tools` to control which tools a server exposes, so <Constant name="wizard"/> can only call the ones you intend.
+MCP tool calls follow the same [approval and sandboxing](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing) rules as the rest of <Constant name="wizard" />. To control which tools a server exposes, set `enabled_tools` and `disabled_tools` in `config.toml` (there's no dedicated CLI flag), so <Constant name="wizard"/> can only call the ones you intend.
 
 ## Examples
 
