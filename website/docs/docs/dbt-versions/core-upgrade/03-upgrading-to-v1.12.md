@@ -64,6 +64,13 @@ packages:
 
 - You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
 
+
+### `latest_version_pointer` for versioned models <Lifecycle status="beta" />
+
+For versioned models, you can configure dbt to automatically create a pointer view named after a model's base name (for example, `dim_customers`) once the latest version materializes successfully. This lets you query the current version without maintaining a view manually.
+
+Enable this feature in your project with the [`latest_version_pointer_enabled_by_default: true`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models) flag in `dbt_project.yml`, or per model using the [`latest_version_pointer.enabled`](/reference/resource-configs/latest_version_pointer) config. You can customize the pointer name per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro. For more information, refer to [Model versions](/docs/mesh/govern/model-versions#pointing-to-the-latest-version).
+
 ### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
 
 You can now use the `--sql` flag with `dbt run-operation` to execute ad hoc database statements directly against your warehouse, without defining a macro. This is useful for one-off operations like dropping or altering a table, applying grants, or running a data fix. The statement runs through dbt's full Jinja compilation pipeline, so you have access to `ref()`, `source()`, `var()`, `target`, and all other context variables. For more information, refer to [About dbt run-operation](/reference/commands/run-operation).
@@ -137,6 +144,7 @@ You can read more about each of these behavior changes in the following links:
 - (Introduced, disabled by default) [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses). When set to `true`, dbt applies project-level analysis configuration from `dbt_project.yml`. Previously, dbt silently ignored this configuration. This flag also corrects fully qualified names (FQNs) of analyses by removing the extra path segment, making them consistent with other resource types (for example, `your_project.my_analysis` instead of `your_project.analyses.my_analysis`). For more information, refer to [Analyses](/docs/build/analyses).
 - (Introduced, disabled by default) [`require_source_and_semantic_model_names_without_spaces`](/reference/global-configs/behavior-changes#no-spaces-in-source-and-semantic-model-names). By default, dbt raises a [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the flag is set to `true`, dbt raises an error.
 - (Introduced, disabled by default) [`allow_jinja_file_extensions`](/reference/global-configs/behavior-changes#jinja-file-extensions). When set to `True`, dbt recognizes Jinja-style extension suffixes (`.j2`, `.jinja`, `.jinja2`) on `.sql` and `.md` files. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+- (Introduced, disabled by default) [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models). When set to `true`, dbt automatically creates a latest version pointer view for every versioned model in your project, without requiring per-model configuration.
 
 ## Adapter-specific features and functionalities
 
@@ -163,6 +171,7 @@ You can read more about each of these behavior changes in the following links:
 
 - The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) flag defaults to `false`, preserving legacy behavior of sending `BEGIN`/`COMMIT`/`ROLLBACK` statements even when autocommit is enabled. To skip unnecessary transaction statements and improve performance, set the flag to `true`.
 - Added support for the `query_group` session parameter, allowing dbt to tag queries for Redshift Workload Manager routing and query logging. When configured in a profile, dbt sets `query_group` when opening a connection and the value applies for the duration of that session. You can also configure `query_group` at the model level to temporarily override the default value for a specific model, and dbt reverts the value at the end of model materialization. For more information, see [Redshift configurations](/reference/resource-configs/redshift-configs#session-configuration).
+
 
 ## Quick hits
 

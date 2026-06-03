@@ -6,7 +6,7 @@ The <Constant name="fusion_engine" /> and dbt Core v2 are in various stages of d
 |------------|---------|:------:|
 | **dbt Core v2.0 (local)** | | Alpha |
 | **Fusion (local)** | | Preview |
-|            | Snowflake | GA |
+|            | Snowflake | Preview |
 |            | BigQuery | Preview  |
 |            | Databricks | Private preview |
 |            | Redshift | Preview |
