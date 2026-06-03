@@ -124,7 +124,7 @@ If you are planning to set up the same Snowflake account to different <Constant 
 If your account has been assigned a static subdomain for the [access URL migration](/docs/platform/about-platform/account-url-migration), you may need to update Snowflake security integrations shared across projects or connections to prevent service disruptions. Connections created after your account's migration require an additional OAuth redirect URI. You can find this redirect URI under the [connection's OAuth details](#locate-the-redirect-uri-value), or you can reference [API access URLs](/docs/dbt-apis/overview). Once found, alter your existing security integrations to add the redirect URI.
 
 ```sql
-ALTER SECURITY INTEGRATION IF EXISTS <INTEGRATION-NAME>
+ALTER SECURITY INTEGRATION IF EXISTS <INTEGRATION_NAME>
 SET OAUTH_ALTERNATE_REDIRECT_URIS = ('<ACCESS_URL>/complete/snowflake')
 ```
 
