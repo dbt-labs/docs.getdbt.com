@@ -67,7 +67,7 @@ Notable features:
 - Can access <Constant name="catalog" />.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
-To access the capabilities of this permission set, you must add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group.
+To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group.
 
 <Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="85%" title="Add users to a group assigned the Analyst read permission set" />
 

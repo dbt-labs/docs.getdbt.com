@@ -21,7 +21,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
-- **New**: The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set <Lifecycle status="beta" /> is now available for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources. To access the capabilities of this permission set, you must add users to a group that's assigned the Analyst read permission set.
+- **New**: The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set <Lifecycle status="beta" /> is now available for Enterprise plans. Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources. 
 - **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
 
 ### Snowflake Summit 2026 announcements
