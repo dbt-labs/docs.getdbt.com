@@ -18,11 +18,10 @@ import styles from './styles.module.css';
 // Clicks needed to summon the Wizard finale.
 const UNLOCK_AT = 10;
 
-// Finale timing (ms): fairy dust shimmers in first → the Wizard eases up →
-// holds while it speaks → dissolves away.
+// Finale timing (ms): fairy dust shimmers in first → the Wizard roller-skates
+// across the page → poofs out of existence.
 const DUST_MS = 1500;
-const SUMMON_MS = 1500;
-const SPEAK_MS = 3800;
+const SKATE_MS = 3600;
 const POOF_MS = 850;
 
 const SPEECH =
@@ -101,7 +100,7 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
   const [pops, setPops] = useState([]);
   const nextId = useRef(0);
 
-  // Finale state machine: null → 'dust' → 'summon' → 'speaking' → 'poofing'.
+  // Finale state machine: null → 'dust' → 'skating' → 'poofing' → null.
   const [finale, setFinale] = useState(null);
   const clickCount = useRef(0);
   const timers = useRef([]);
@@ -118,13 +117,12 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
   const startFinale = useCallback(() => {
     setFinale('dust'); // fairy dust shimmers in before the Wizard arrives
     timers.current.push(
-      setTimeout(() => setFinale('summon'), DUST_MS),
-      setTimeout(() => setFinale('speaking'), DUST_MS + SUMMON_MS),
-      setTimeout(() => setFinale('poofing'), DUST_MS + SUMMON_MS + SPEAK_MS),
+      setTimeout(() => setFinale('skating'), DUST_MS),
+      setTimeout(() => setFinale('poofing'), DUST_MS + SKATE_MS),
       setTimeout(() => {
         setFinale(null);
         timers.current = [];
-      }, DUST_MS + SUMMON_MS + SPEAK_MS + POOF_MS),
+      }, DUST_MS + SKATE_MS + POOF_MS),
     );
   }, []);
 
@@ -217,7 +215,7 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
               {d.g}
             </span>
           ))}
-          {finale === 'speaking' && (
+          {finale === 'skating' && (
             <div className={styles.speech}>{SPEECH}</div>
           )}
           {/* The Wizard only appears once the dust has shimmered in. */}

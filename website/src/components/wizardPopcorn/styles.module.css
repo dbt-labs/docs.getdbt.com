@@ -115,24 +115,21 @@
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
 }
 
-.finale_summon,
-.finale_speaking,
+.finale_skating,
 .finale_poofing {
   position: relative;
-  transform-origin: center center;
+  /* Where the skate ends — the poof picks up from the same spot so it
+   * disappears wherever it skated to (no jump back to center). */
+  --skate-end: 34vw;
+  transform-origin: center bottom;
 }
 
-/* Phase 1 — the Wizard eases up from nothing to full size (smooth settle). */
-.finale_summon {
-  animation: wizard-grow 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* Phase 2 — the Wizard roller-skates in from the left and glides across. */
+.finale_skating {
+  animation: wizard-skate 3.6s cubic-bezier(0.3, 0, 0.5, 1) forwards;
 }
 
-/* Phase 2 — a slow, gentle hover while it speaks. */
-.finale_speaking {
-  animation: wizard-idle 4s ease-in-out infinite;
-}
-
-/* Phase 3 — dissolve away smoothly. */
+/* Phase 3 — poof out of existence wherever the skate left it. */
 .finale_poofing {
   animation: wizard-poof 0.85s cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
@@ -217,38 +214,46 @@
   animation: puff-out 0.8s ease-out forwards;
 }
 
-/* Ease up from nothing to full size — smooth, no jerky overshoot. */
-@keyframes wizard-grow {
+/* Roller-skate in from the left and glide across, with a skater's side-to-side
+ * push: alternating lean and a little bob, gradually crossing to --skate-end. */
+@keyframes wizard-skate {
   0% {
-    transform: scale(0.2);
+    transform: translateX(-72vw) translateY(0) rotate(-10deg);
     opacity: 0;
   }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-36vw) translateY(-1.2vh) rotate(11deg);
+  }
+  40% {
+    transform: translateX(-18vw) translateY(0) rotate(-11deg);
+  }
+  55% {
+    transform: translateX(0vw) translateY(-1.2vh) rotate(11deg);
+  }
+  70% {
+    transform: translateX(16vw) translateY(0) rotate(-9deg);
+  }
+  85% {
+    transform: translateX(28vw) translateY(-1vh) rotate(8deg);
+  }
   100% {
-    transform: scale(1);
+    transform: translateX(var(--skate-end, 34vw)) translateY(0) rotate(0deg);
     opacity: 1;
   }
 }
 
-/* Slow, gentle hover while the Wizard delivers its line. */
-@keyframes wizard-idle {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-1.2vh) scale(1.012);
-  }
-}
-
-/* Dissolve: drift up slightly, blur and fade away. */
+/* Dissolve: stay where it skated to, drift up slightly, blur and fade away. */
 @keyframes wizard-poof {
   0% {
-    transform: translateY(0) scale(1);
+    transform: translateX(var(--skate-end, 34vw)) translateY(0) scale(1);
     opacity: 1;
     filter: blur(0);
   }
   100% {
-    transform: translateY(-4vh) scale(1.12);
+    transform: translateX(var(--skate-end, 34vw)) translateY(-4vh) scale(1.12);
     opacity: 0;
     filter: blur(10px);
   }
