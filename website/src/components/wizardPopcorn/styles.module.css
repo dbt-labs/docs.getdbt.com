@@ -83,10 +83,16 @@
 .keys {
   color: #c8ccd8;
 }
-/* dbt logo on the laptop screen. */
-.logo {
-  color: #fe6702;
-  font-weight: 700;
+/* The dbt bit logo overlaid on the laptop screen. Sized/placed in em so it
+ * tracks the sprite's font-size and rides the skate/poof transforms. */
+.laptopLogo {
+  position: absolute;
+  top: 9.5em;
+  left: 3em;
+  width: 2.6em;
+  height: 2.6em;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 3px rgba(254, 103, 2, 0.6));
 }
 
 /* Pop up, overshoot, then float away and fade. */
@@ -123,6 +129,8 @@
   justify-content: center;
   pointer-events: none;
   z-index: 10000;
+  /* Shared so the sprite and the overlaid logo size off the same unit. */
+  --wiz-fs: min(4.3vh, 6vw);
 }
 
 /* The centered wizard is blown up to fill most of the viewport. The sprite is
@@ -130,7 +138,7 @@
  * background), so we override those with !important to win the cascade and
  * size the figure off vh/vw — ~85% of the page, fitting on either axis. */
 .finale .sprite {
-  font-size: min(4.3vh, 6vw) !important;
+  font-size: var(--wiz-fs) !important;
   line-height: 1 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -143,6 +151,8 @@
 .finale_skating,
 .finale_poofing {
   position: relative;
+  /* Match the sprite's font-size so the logo's em units line up with it. */
+  font-size: var(--wiz-fs);
   /* Where the skate ends — the poof picks up from the same spot so it
    * disappears wherever it skated to (no jump back to center). */
   --skate-end: 34vw;
