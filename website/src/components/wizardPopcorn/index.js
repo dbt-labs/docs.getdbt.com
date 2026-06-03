@@ -6,10 +6,10 @@ import styles from './styles.module.css';
  * burst of little colorful ASCII dbt Wizards across the viewport, then they
  * fade away. Click again for more. A playful easter egg for the docs.
  *
- * Hidden "next level": click enough times and you summon the Wizard — fine
- * sparkles scatter as a giant Wizard blows up to fill the screen, it delivers
- * a line in a speech bubble, then poofs itself out of existence. The counter
- * resets afterward, so it can be summoned again.
+ * Hidden "next level": click enough times and you summon the Wizard — fairy
+ * dust shimmers across the screen as a giant Wizard eases up to fill it,
+ * delivers a line, then dissolves away. The counter resets afterward, so it
+ * can be summoned again.
  *
  * Accessibility: the link is a real <button>; the burst is decorative
  * (aria-hidden) and is suppressed under `prefers-reduced-motion`.
@@ -18,7 +18,7 @@ import styles from './styles.module.css';
 // Clicks needed to summon the Wizard finale.
 const UNLOCK_AT = 10;
 
-// Finale timing (ms): grow-in with sparkles → hold while it speaks → poof.
+// Finale timing (ms): ease in with fairy dust → hold while it speaks → dissolve.
 const SUMMON_MS = 1600;
 const SPEAK_MS = 3800;
 const POOF_MS = 850;
@@ -61,25 +61,25 @@ const prefersReducedMotion = () =>
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Firework sparkles that burst out from the center as the Wizard is summoned.
-// Each particle flies from the middle of the screen to an offset (vw/vh) so the
-// whole burst radiates outward. `g` is the glyph, `c` color, `s` size, `d`
-// stagger. Grouped into a few staggered "shells" so it reads like fireworks.
-const GLYPHS = ['✦', '✧', '⋆', '✺', '✷', '·'];
-const COLORS = ['#fe6702', '#b0a3ff', '#ffffff', '#7fd1ff', '#ffd166', '#ff7ac6'];
-const SPARKLES = Array.from({ length: 120 }, (_, i) => {
-  // Radiate evenly in all directions, with jitter, out to a random radius.
-  const angle = rand(0, Math.PI * 2);
-  const radius = rand(12, 55);
-  return {
-    x: Math.cos(angle) * radius,
-    y: Math.sin(angle) * radius * 0.9,
-    d: (i % 4) * 0.18 + rand(0, 0.12), // a few shells, lightly jittered
-    s: rand(0.5, 1.3),
-    g: GLYPHS[i % GLYPHS.length],
-    c: COLORS[i % COLORS.length],
-  };
-});
+// Ambient fairy dust: fine motes scattered across the whole screen that drift
+// gently and twinkle on their own loops, so the page shimmers the entire time
+// the Wizard is present. `left`/`top` are absolute viewport positions (vw/vh);
+// `size` (vmin), `c` color, `dur`/`delay` (s) and `drift`/`rise` (px) vary per
+// mote so no two move alike.
+const GLYPHS = ['✦', '✧', '⋆', '·', '˙'];
+const COLORS = ['#ffe9a8', '#ffffff', '#d9c8ff', '#ffd6f0', '#bfe9ff', '#b0a3ff'];
+const DUST = Array.from({ length: 130 }, (_, i) => ({
+  left: rand(0, 100),
+  top: rand(0, 100),
+  size: rand(0.5, 1.7),
+  dur: rand(2.6, 5.2),
+  delay: rand(0, 4),
+  drift: rand(-18, 18),
+  rise: rand(-26, -90),
+  peak: rand(0.55, 1),
+  g: GLYPHS[i % GLYPHS.length],
+  c: COLORS[i % COLORS.length],
+}));
 
 // The puff of magic dust the Wizard leaves behind as it vanishes. Particles
 // drift outward and fade. Positions/sizes in em, like the sparkles.
@@ -191,23 +191,29 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
 
       {finale && (
         <div className={styles.finale} aria-hidden="true">
-          {finale === 'summon' &&
-            SPARKLES.map((s, i) => (
-              <span
-                key={i}
-                className={styles.sparkle}
-                style={{
-                  '--sx': `${s.x}vw`,
-                  '--sy': `${s.y}vh`,
-                  '--ss': s.s,
-                  color: s.c,
-                  textShadow: `0 0 8px ${s.c}`,
-                  animationDelay: `${s.d}s`,
-                }}
-              >
-                {s.g}
-              </span>
-            ))}
+          {/* A soft light sweep so the whole screen shimmers. */}
+          <div className={styles.shimmer} />
+          {/* Ambient fairy dust drifting and twinkling across the page. */}
+          {DUST.map((d, i) => (
+            <span
+              key={i}
+              className={styles.dust}
+              style={{
+                left: `${d.left}vw`,
+                top: `${d.top}vh`,
+                fontSize: `${d.size}vmin`,
+                color: d.c,
+                textShadow: `0 0 6px ${d.c}`,
+                '--drift': `${d.drift}px`,
+                '--rise': `${d.rise}px`,
+                '--peak': d.peak,
+                animationDuration: `${d.dur}s`,
+                animationDelay: `${d.delay}s`,
+              }}
+            >
+              {d.g}
+            </span>
+          ))}
           {finale === 'speaking' && (
             <div className={styles.speech}>{SPEECH}</div>
           )}

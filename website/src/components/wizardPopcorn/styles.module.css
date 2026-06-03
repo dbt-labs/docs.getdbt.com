@@ -122,23 +122,40 @@
   transform-origin: center center;
 }
 
-/* Phase 1 — the Wizard blows up from nothing to fill the screen. */
+/* Phase 1 — the Wizard eases up from nothing to full size (smooth settle). */
 .finale_summon {
-  animation: wizard-grow 1.2s cubic-bezier(0.2, 1.3, 0.4, 1) forwards;
+  animation: wizard-grow 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Phase 2 — settled at full size, with a gentle idle float while it speaks. */
+/* Phase 2 — a slow, gentle hover while it speaks. */
 .finale_speaking {
-  animation: wizard-idle 2.4s ease-in-out infinite;
+  animation: wizard-idle 4s ease-in-out infinite;
 }
 
-/* Phase 3 — puff out of existence. */
+/* Phase 3 — dissolve away smoothly. */
 .finale_poofing {
-  animation: wizard-poof 0.6s ease-in forwards;
+  animation: wizard-poof 0.85s cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
 
-/* The Wizard's line — floating glowing text near the top, no box. The dark
- * outline + purple glow keep it legible over light or dark docs backgrounds. */
+/* A full-screen light sweep that makes the whole page shimmer. */
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(217, 200, 255, 0.16) 48%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(217, 200, 255, 0.16) 52%,
+    transparent 70%
+  );
+  background-size: 280% 280%;
+  mix-blend-mode: screen;
+  animation: shimmer-sweep 3.6s ease-in-out infinite;
+}
+
+/* The Wizard's line — floating glowing text near the top, no box. A soft glow
+ * pulse keeps it shimmering; the dark edge keeps it legible on any background. */
 .speech {
   position: absolute;
   top: 7vh;
@@ -149,21 +166,22 @@
   text-align: center;
   font-family: var(--ifm-font-family-base, sans-serif);
   font-size: clamp(1.2rem, 3vh, 2rem);
-  font-weight: 800;
-  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   color: #ffffff;
-  text-shadow: 0 0 1px #1c1c2b, 0 2px 2px rgba(0, 0, 0, 0.7),
-    0 0 14px rgba(176, 163, 255, 0.95), 0 0 28px rgba(176, 163, 255, 0.6);
-  animation: speech-pop 0.4s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  -webkit-font-smoothing: antialiased;
+  animation: speech-in 0.7s ease-out both, speech-glow 2.8s ease-in-out infinite;
 }
 
-/* Firework particles that burst outward from the center as the Wizard arrives. */
-.sparkle {
+/* Fine fairy-dust mote: drifts upward and twinkles on its own loop. */
+.dust {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  font-size: 2.6vmin;
-  animation: firework 0.9s ease-out forwards;
+  pointer-events: none;
+  animation-name: dust-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
 }
 
 /* Magic dust left behind as the Wizard poofs away. */
@@ -177,62 +195,68 @@
   animation: puff-out 0.8s ease-out forwards;
 }
 
-/* Blow up: from a sparkly speck to full size, with a little overshoot. */
+/* Ease up from nothing to full size — smooth, no jerky overshoot. */
 @keyframes wizard-grow {
   0% {
-    transform: scale(0) rotate(-12deg);
+    transform: scale(0.2);
     opacity: 0;
   }
-  60% {
-    opacity: 1;
-  }
-  80% {
-    transform: scale(1.06) rotate(2deg);
-  }
   100% {
-    transform: scale(1) rotate(0deg);
+    transform: scale(1);
     opacity: 1;
   }
 }
 
-/* Subtle breathing float while the Wizard delivers its line. */
+/* Slow, gentle hover while the Wizard delivers its line. */
 @keyframes wizard-idle {
   0%,
   100% {
     transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-1.5vh) scale(1.01);
+    transform: translateY(-1.2vh) scale(1.012);
   }
 }
 
+/* Dissolve: drift up slightly, blur and fade away. */
 @keyframes wizard-poof {
   0% {
-    transform: scale(1.1) rotate(0deg);
+    transform: translateY(0) scale(1);
     opacity: 1;
     filter: blur(0);
   }
   100% {
-    transform: scale(0.2) rotate(20deg);
+    transform: translateY(-4vh) scale(1.12);
     opacity: 0;
-    filter: blur(6px);
+    filter: blur(10px);
   }
 }
 
-@keyframes firework {
+/* Fairy dust: float upward with a little sideways drift, twinkling in and out. */
+@keyframes dust-float {
   0% {
-    /* launch from the center, tiny and bright */
-    transform: translate(-50%, -50%) scale(0.2);
+    transform: translate(0, 0);
     opacity: 0;
   }
-  15% {
-    opacity: 1;
+  25% {
+    opacity: var(--peak, 1);
+  }
+  75% {
+    opacity: var(--peak, 1);
   }
   100% {
-    /* fly outward to the scattered offset, expanding and fading */
-    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
-      scale(calc(var(--ss, 1) * 1.2));
+    transform: translate(var(--drift, 0), var(--rise, -40px));
     opacity: 0;
+  }
+}
+
+/* A slow diagonal light sweep across the whole screen. */
+@keyframes shimmer-sweep {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
   }
 }
 
@@ -251,14 +275,28 @@
   }
 }
 
-@keyframes speech-pop {
+/* Smooth fade-and-rise in (no bouncy scale). */
+@keyframes speech-in {
   0% {
-    transform: translateX(-50%) translateY(8px) scale(0.85);
+    transform: translateX(-50%) translateY(14px);
     opacity: 0;
   }
   100% {
-    transform: translateX(-50%) translateY(0) scale(1);
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
+  }
+}
+
+/* Gentle glow pulse so the text shimmers while it sits. */
+@keyframes speech-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 1px #1c1c2b, 0 2px 3px rgba(0, 0, 0, 0.65),
+      0 0 12px rgba(176, 163, 255, 0.7);
+  }
+  50% {
+    text-shadow: 0 0 1px #1c1c2b, 0 2px 3px rgba(0, 0, 0, 0.65),
+      0 0 22px rgba(176, 163, 255, 1), 0 0 36px rgba(176, 163, 255, 0.55);
   }
 }
 
