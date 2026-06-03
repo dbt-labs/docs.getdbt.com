@@ -15,7 +15,7 @@
 | [Snowflake Cortex](https://www.snowflake.com/en/legal/terms-of-service/) | - | ✓ (BYOK) |
 </SimpleTable>
 
-\* *Managed: <Constant name="dbt" /> Labs manages the AI provider connection; no user provider key is required.*
+\* *Managed: <Constant name="dbt" /> Labs manages the AI provider connection; no user provider key is required. Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more info.*
 
 <br />
 
