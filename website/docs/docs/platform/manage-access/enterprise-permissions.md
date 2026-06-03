@@ -96,7 +96,7 @@ You can skip or automate this step if license mapping and group mapping are enab
 2. Select the user you want to add to the group.
 3. Select the group you want to add the user to and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-assign-user.png" width="75%" title="Assign a user the read-only license and add them to the group" />
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="75%" title="Assign a user the read-only license and add them to the group" />
 
 For more information, refer to [Grant access](/docs/platform/manage-access/about-user-access#grant-access).
 
