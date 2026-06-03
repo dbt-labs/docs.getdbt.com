@@ -86,10 +86,192 @@
   }
 }
 
+/* ── Finale: the unlocked dancing Wizard ─────────────────────────────────
+ * A single big Wizard centered on screen: it dances, casts a spell, then
+ * poofs out. Click-through and decorative, like the popcorn overlay.
+ */
+.finale {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* The centered wizard is blown up to fill most of the viewport. The sprite is
+ * ~10 lines tall and ~11 chars wide; sizing the font off vh/vw makes the whole
+ * figure span roughly 80% of the page while still fitting on either axis. */
+.finale .sprite {
+  font-size: min(8vh, 9vw);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+
+/* Shared wrapper so sparkles can be positioned relative to the sprite. */
+.finale_dancing,
+.finale_casting,
+.finale_poofing {
+  position: relative;
+  transform-origin: center bottom;
+}
+
+/* Phase 1 — full-on boogie: hop, shimmy side to side, and wiggle. */
+.finale_dancing {
+  animation: wizard-boogie 0.6s ease-in-out infinite;
+}
+
+/* Phase 2 — rear back and flash for the spell. */
+.finale_casting {
+  animation: wizard-cast 0.7s ease-in-out forwards;
+}
+
+/* Phase 3 — puff out of existence. */
+.finale_poofing {
+  animation: wizard-poof 0.6s ease-in forwards;
+}
+
+/* "Level 2 unlocked" caption floating above the dance. */
+.unlockBadge {
+  position: absolute;
+  left: 50%;
+  top: -3.2em;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 90vw;
+  text-align: center;
+  font-family: var(--ifm-font-family-base, sans-serif);
+  font-size: clamp(0.9rem, 2.2vh, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fe6702;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  animation: badge-float 0.7s ease-in-out infinite alternate;
+}
+
+/* Sparkles flung outward when the spell is cast. */
+.sparkle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Sized off the viewport so the spread scales with the big wizard. */
+  font-size: min(6vh, 7vw);
+  color: #b0a3ff;
+  text-shadow: 0 0 6px rgba(176, 163, 255, 0.9);
+  animation: sparkle-fly 0.7s ease-out forwards;
+}
+
+/* Magic dust left behind as the Wizard poofs away. */
+.puff {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: min(6vh, 7vw);
+  color: #d9d0ff;
+  text-shadow: 0 0 10px rgba(176, 163, 255, 0.85);
+  animation: puff-out 0.8s ease-out forwards;
+}
+
+@keyframes wizard-boogie {
+  0% {
+    transform: translate(-12px, 0) rotate(-9deg) scale(1, 1);
+  }
+  20% {
+    transform: translate(10px, -22px) rotate(8deg) scale(1.06, 0.96);
+  }
+  40% {
+    transform: translate(-8px, -4px) rotate(-7deg) scale(0.97, 1.05);
+  }
+  60% {
+    transform: translate(12px, -24px) rotate(9deg) scale(1.08, 0.94);
+  }
+  80% {
+    transform: translate(-6px, -2px) rotate(-5deg) scale(1, 1.03);
+  }
+  100% {
+    transform: translate(-12px, 0) rotate(-9deg) scale(1, 1);
+  }
+}
+
+@keyframes wizard-cast {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  35% {
+    transform: translateY(6px) scale(0.94) rotate(-4deg);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.18) rotate(3deg);
+    filter: brightness(2.2);
+  }
+  100% {
+    transform: translateY(-6px) scale(1.1) rotate(0deg);
+    filter: brightness(1.4);
+  }
+}
+
+@keyframes wizard-poof {
+  0% {
+    transform: scale(1.1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(0.2) rotate(20deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes sparkle-fly {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
+      scale(calc(var(--ss, 1) * 1.3));
+    opacity: 0;
+  }
+}
+
+@keyframes puff-out {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
+      scale(calc(var(--ss, 1) * 1.6));
+    opacity: 0;
+  }
+}
+
+@keyframes badge-float {
+  from {
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
 /* No surprise motion for folks who opt out. */
 @media (prefers-reduced-motion: reduce) {
   .pop {
     animation: none;
+    display: none;
+  }
+
+  /* The finale is gated in JS too, but hide it here as belt-and-suspenders. */
+  .finale {
     display: none;
   }
 }
