@@ -10,6 +10,8 @@ tags: ['dbt State']
 
 dbt State is natively available in <Constant name="dbt_platform" /> and locally in <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" />. It is also available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
 
+Once enabled, dbt State runs automatically on every `dbt run` or `dbt build`.
+
 Before you begin:
 
 - dbt State supports Snowflake, Databricks, BigQuery, and Redshift.
