@@ -69,7 +69,31 @@ Notable features:
 
 To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group.
 
-<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="75%" title="Add users to a group assigned the Analyst read permission set" />
+#### Set up read-only user access
+
+**1. Create a group with the Analyst read permission set**
+
+You can also add the Analyst read permission set to an existing group.
+
+1. Go to **Account settings** &rarr; **Groups & Licenses**.
+2. Give the group a descriptive name.
+3. Click **Add permission** and select the **Analyst read** permission set.
+4. Select the projects the permission set should apply to. **All projects** is the default option.
+5. Click **Save**.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-create-group.png" width="75%" title="Create a group and assign the Analyst read permission set" />
+
+**2. Assign users the read-only license and add them to the group**
+
+You can skip or automate this step if license mapping and group mapping are enabled through SSO or SCIM. Use this flow to test with a single user.
+
+1. Go to **Account settings** &rarr; **Users**.
+2. Select the user you want to add to the group.
+3. Select the group you want to add the user to and click **Save**.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-assign-user.png" width="75%" title="Assign a user the read-only license and add them to the group" />
+
+For more information, refer to [Grant access](/docs/platform/manage-access/about-access#grant-access).
 
 </Expandable>
 <Expandable alt_header="Billing admin">

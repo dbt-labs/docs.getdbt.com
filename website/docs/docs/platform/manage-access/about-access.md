@@ -158,6 +158,32 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
+### Set up read-only user access <Lifecycle status="beta" />
+
+To give users read-only access to analyze dbt models and project resources, assign them the [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set through a group. Users won't have access until they're added to a group that's assigned the permission set.
+
+**1. Create a group with the Analyst read permission set**
+
+You can also add the Analyst read permission set to an existing group.
+
+1. Go to **Account settings** &rarr; **Groups & Licenses**.
+2. Give the group a descriptive name.
+3. Click **Add permission** and select the **Analyst read** permission set.
+4. Select the projects the permission set should apply to. **All projects** is the default option.
+5. Click **Save**.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-create-group.png" width="75%" title="Create a group and assign the Analyst read permission set" />
+
+**2. Assign users the read-only license and add them to the group**
+
+You can skip or automate this step if license mapping and group mapping are enabled through SSO or SCIM. Use this flow to test with a single user.
+
+1. Go to **Account settings** &rarr; **Users**.
+2. Select the user you want to add to the group.
+3. Select the group you want to add the user to and click **Save**.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-assign-user.png" width="75%" title="Assign a user the read-only license and add them to the group" />
+
 ## Role-based access control <Lifecycle status="managed,managed_plus" />
 
 Role-based access control (RBAC) allows you to grant users access to features and functionality based on their group membership. With this method, you can grant users varying access levels to different projects and environments. You can take access and security to the next level by integrating <Constant name="dbt" /> with a third-party identity provider (IdP) to grant users access when they authenticate with your SSO or OAuth service.
