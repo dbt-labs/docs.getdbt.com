@@ -69,39 +69,36 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
 <MCPRemoteOauthBetaCallout />
 
+Get your MCP URL first &mdash; you'll need it for both auth methods:
+
+<MCPRemoteServerUrl />
+
+Then follow the tab that matches your auth method:
+
+<Tabs>
+<TabItem value="oauth" label="OAuth (remote)">
+
+_OAuth is in private beta for Enterprise and Enterprise+ accounts._
+
+<MCPOauthPreflight />
+
+For OAuth, add dbt as a custom connector through Claude Desktop's settings &mdash; you don't need to edit `claude_desktop_config.json`. Claude Desktop opens a browser for sign-in and consent the first time it connects.
+
+1. In Claude Desktop, go to **Settings &rarr; Connectors**.
+2. Click **Add custom connector**.
+3. Enter a name (for example, `dbt`) and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`), then click **Add**.
+4. Click **Connect** on the new dbt connector. Claude Desktop redirects you to dbt to complete the OAuth consent flow, where you can approve or deny individual [scopes](/docs/platform/manage-access/connect-apps-oauth#scopes-and-consent).
+5. After you approve, the connector shows as connected. Ask Claude a data question to confirm.
+
+For the full custom connector flow and screenshots, see [Use with remote MCP](/docs/platform/manage-access/connect-apps-oauth#use-with-remote-mcp).
+
+</TabItem>
+<TabItem value="token" label="Token-based">
+
+Use token-based auth when your client doesn't yet support OAuth for HTTP MCP servers, or when you need a shared/CI setup.
+
 1. From Claude Desktop, go to **Settings &rarr; Developer &rarr; Edit Config** to open `claude_desktop_config.json`.
-2. Get your MCP URL:
-
-    <MCPRemoteServerUrl />
-
-3. Add a `dbt` entry under `mcpServers`, using the tab that matches your auth method:
-
-    <Tabs>
-    <TabItem value="oauth" label="OAuth (remote)">
-
-    _OAuth is in private beta for Enterprise and Enterprise+ accounts._
-
-    <MCPOauthPreflight />
-
-    Add the following to `claude_desktop_config.json`. Claude Desktop opens a browser for sign-in and consent the first time the server connects.
-
-    ```json
-    {
-      "mcpServers": {
-        "dbt": {
-          "type": "http",
-          "url": "https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/"
-        }
-      }
-    }
-    ```
-
-    Replace `YOUR_DBT_HOST_URL` with your hostname (for example, `abc123.us1.dbt.com`). You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
-
-    </TabItem>
-    <TabItem value="token" label="Token-based">
-
-    Use token-based auth when your client doesn't yet support OAuth for HTTP MCP servers, or when you need a shared/CI setup.
+2. Add a `dbt` entry under `mcpServers`:
 
     ```json
     {
@@ -122,10 +119,10 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
 
     <MCPRemoteTokenHeaders />
 
-    </TabItem>
-    </Tabs>
+3. Save the file and restart Claude Desktop. Ask Claude a data question to confirm the server is connected.
 
-4. Save the file and restart Claude Desktop. Ask Claude a data question to confirm the server is connected.
+</TabItem>
+</Tabs>
 
 ## Claude Code
 
