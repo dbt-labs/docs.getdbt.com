@@ -58,25 +58,18 @@ const prefersReducedMotion = () =>
   window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Sprinkles of magic flung out when the Wizard casts its spell. Positions are
-// in em units (so they scale with the sprite); `g` is the glyph, `s` a size
-// multiplier, `d` the stagger delay.
-const SPARKLES = [
-  { x: -3.2, y: -1.5, d: 0, g: '✦', s: 1.1 },
-  { x: 3.4, y: -2.2, d: 0.06, g: '✧', s: 0.8 },
-  { x: -2.6, y: 2.4, d: 0.14, g: '✨', s: 1 },
-  { x: 2.8, y: 2.0, d: 0.09, g: '✦', s: 0.9 },
-  { x: 0, y: -3.6, d: 0.03, g: '✨', s: 1.2 },
-  { x: -4.2, y: 0.4, d: 0.12, g: '⋆', s: 0.7 },
-  { x: 4.4, y: 0.2, d: 0.05, g: '✧', s: 1 },
-  { x: -1.6, y: -3.1, d: 0.16, g: '✦', s: 0.8 },
-  { x: 1.8, y: -2.9, d: 0.02, g: '⋆', s: 0.9 },
-  { x: -3.6, y: -2.6, d: 0.1, g: '✨', s: 0.7 },
-  { x: 3.8, y: -1.2, d: 0.18, g: '✦', s: 1.1 },
-  { x: -2.0, y: 3.0, d: 0.07, g: '✧', s: 0.8 },
-  { x: 2.2, y: 3.2, d: 0.13, g: '⋆', s: 1 },
-  { x: 0.6, y: 3.6, d: 0.2, g: '✨', s: 0.9 },
-];
+// Sprinkles of magic that blanket the whole page when the Wizard casts its
+// spell. Positions are offsets from screen center in vw/vh so they cover the
+// full viewport; `g` is the glyph, `s` a size multiplier, `d` the stagger.
+const GLYPHS = ['✦', '✧', '✨', '⋆', '·'];
+const SPARKLES = Array.from({ length: 60 }, (_, i) => ({
+  // Spread across the page (±48% of the viewport from center) with jitter.
+  x: rand(-48, 48),
+  y: rand(-48, 48),
+  d: rand(0, 0.18),
+  s: rand(0.6, 1.4),
+  g: GLYPHS[i % GLYPHS.length],
+}));
 
 // The puff of magic dust the Wizard leaves behind as it vanishes. Particles
 // drift outward and fade. Positions/sizes in em, like the sparkles.
@@ -201,8 +194,8 @@ const WizardPopcorn = ({ children = 'wizard logo' }) => {
                   key={i}
                   className={styles.sparkle}
                   style={{
-                    '--sx': `${s.x}em`,
-                    '--sy': `${s.y}em`,
+                    '--sx': `${s.x}vw`,
+                    '--sy': `${s.y}vh`,
                     '--ss': s.s,
                     animationDelay: `${s.d}s`,
                   }}

@@ -116,9 +116,9 @@
   transform-origin: center bottom;
 }
 
-/* Phase 1 — full-on boogie: hop, shimmy side to side, and wiggle. */
+/* Phase 1 — a full dance routine: leans, jumps, spins, hops and wiggles. */
 .finale_dancing {
-  animation: wizard-boogie 0.6s ease-in-out infinite;
+  animation: wizard-dance 1.9s ease-in-out infinite;
 }
 
 /* Phase 2 — rear back and flash for the spell. */
@@ -154,11 +154,11 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  /* Sized off the viewport so the spread scales with the big wizard. */
-  font-size: min(6vh, 7vw);
+  font-size: 3vmin;
   color: #b0a3ff;
   text-shadow: 0 0 6px rgba(176, 163, 255, 0.9);
-  animation: sparkle-fly 0.7s ease-out forwards;
+  /* Quick twinkle — sprinkles blanket the page then vanish fast. */
+  animation: sparkle-twinkle 0.45s ease-out forwards;
 }
 
 /* Magic dust left behind as the Wizard poofs away. */
@@ -172,24 +172,44 @@
   animation: puff-out 0.8s ease-out forwards;
 }
 
-@keyframes wizard-boogie {
+@keyframes wizard-dance {
   0% {
-    transform: translate(-12px, 0) rotate(-9deg) scale(1, 1);
+    transform: translate(0, 0) rotate(0deg) scale(1, 1);
   }
-  20% {
-    transform: translate(10px, -22px) rotate(8deg) scale(1.06, 0.96);
+  10% {
+    /* lean and rise to the left */
+    transform: translate(-7vw, -4vh) rotate(-16deg) scale(0.94, 1.06);
   }
-  40% {
-    transform: translate(-8px, -4px) rotate(-7deg) scale(0.97, 1.05);
+  22% {
+    /* big jump to the right */
+    transform: translate(7vw, -11vh) rotate(16deg) scale(1.06, 0.92);
   }
-  60% {
-    transform: translate(12px, -24px) rotate(9deg) scale(1.08, 0.94);
+  34% {
+    /* land, lean left */
+    transform: translate(-6vw, 0) rotate(-12deg) scale(1.02, 0.98);
   }
-  80% {
-    transform: translate(-6px, -2px) rotate(-5deg) scale(1, 1.03);
+  46% {
+    /* spring straight up */
+    transform: translate(0, -13vh) rotate(2deg) scale(1.1, 0.9);
+  }
+  58% {
+    /* swing out right */
+    transform: translate(6vw, -2vh) rotate(14deg) scale(0.98, 1.04);
+  }
+  70% {
+    /* hop back to the left */
+    transform: translate(-5vw, -7vh) rotate(-14deg) scale(1.04, 0.96);
+  }
+  82% {
+    /* settle right with a tilt */
+    transform: translate(4vw, 0) rotate(9deg) scale(1, 1.02);
+  }
+  92% {
+    /* quick wiggle */
+    transform: translate(-2vw, -3vh) rotate(-6deg) scale(1, 1);
   }
   100% {
-    transform: translate(-12px, 0) rotate(-9deg) scale(1, 1);
+    transform: translate(0, 0) rotate(0deg) scale(1, 1);
   }
 }
 
@@ -224,17 +244,21 @@
   }
 }
 
-@keyframes sparkle-fly {
+@keyframes sparkle-twinkle {
   0% {
-    transform: translate(-50%, -50%) scale(0.2);
+    /* sit at the scattered spot, invisible and tiny */
+    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
+      scale(0);
     opacity: 0;
   }
-  30% {
+  40% {
+    transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
+      scale(var(--ss, 1));
     opacity: 1;
   }
   100% {
     transform: translate(calc(-50% + var(--sx, 0)), calc(-50% + var(--sy, 0)))
-      scale(calc(var(--ss, 1) * 1.3));
+      scale(calc(var(--ss, 1) * 0.4));
     opacity: 0;
   }
 }
