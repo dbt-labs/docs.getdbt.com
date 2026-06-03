@@ -10,6 +10,7 @@ image: /img/docs/wizard-cli-intro.png
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
+import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
 # <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -31,6 +32,8 @@ Use <Constant name="wizard" /> CLI to:
 - Run non-interactively in CI with `exec` and `review`
 
 For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases).
+
+<WizardCliDbtCliSupport />
 
 <WizardSupportedProviders />
 
