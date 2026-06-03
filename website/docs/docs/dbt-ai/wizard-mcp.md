@@ -20,7 +20,7 @@ For background on MCP itself, refer to the [Model Context Protocol introduction]
 
 ## Why use an MCP server
 
-<Constant name="wizard"/> natively understands your dbt project, and having an MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your session. Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf. For example:
+<Constant name="wizard"/> natively understands your dbt project, and having an MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your [session](/docs/dbt-ai/wizard-how-it-works#sessions). Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf. For example:
 
 - dbt MCP server for governed access to your models, metrics, and lineage.
 - GitHub server to read and review pull requests.
@@ -51,7 +51,7 @@ For either transport, <Constant name="wizard"/> reads the `instructions` field a
 
 ## Add an MCP server
 
-Use the `wizard mcp add` command, or edit `~/.dbt/wizard/config.toml` directly. Both write to the same `[mcp_servers.NAME]` configuration.
+Use the `wizard mcp add` command, or edit `~/.dbt/wizard/config.toml` directly. Either one will write to the same `[mcp_servers.NAME]` configuration.
 
 **Add a STDIO server:**
 

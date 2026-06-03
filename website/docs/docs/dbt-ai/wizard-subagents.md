@@ -48,9 +48,9 @@ and downstream impact, and one to look up the relevant dbt docs.
 | Agent | What it's for |
 |-------|--------------|
 | `explorer` | Answers specific, well-scoped questions about your project. Fast and read-only — spawn several in parallel for independent questions. |
-| `worker` | Execution and production work: implementing part of a feature, fixing tests or bugs, or splitting a large refactor into independent chunks. |
-| `validation` | A dbt validation specialist. After model edits, runs structured validation — SQL check, `dbt run` with `--defer`, prod vs. dev comparison, and impact analysis — to validate changes before you merge. |
-| `test_writer` | A dbt test coverage specialist. Analyzes project metadata and warehouse data to find coverage gaps, validates assumptions with queries, and writes `schema.yml` tests for models with low or no coverage. |
+| `worker` | Performs execution and production work, such as, implementing part of a feature, fixing tests or bugs, or splitting a large refactor into independent chunks. |
+| `validation` | Provides dbt validation. After model edits, runs structured validation — SQL check, `dbt run` with `--defer`, prod vs. dev comparison, and impact analysis — to validate changes before you merge. |
+| `test_writer` | Tests dbt coverage. Analyzes project metadata and warehouse data to find coverage gaps, validates assumptions with queries, and writes `schema.yml` tests for models with low or no coverage. |
 
 </SimpleTable>
 
