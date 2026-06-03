@@ -48,12 +48,20 @@ const SKATE_LINES = [
   { text: ' O O    O O', part: 'wheel' },
 ];
 
-// A laptop on a neck strap, held at chest height for the skating finale.
+// A laptop on a neck strap, held at chest height for the skating finale. The
+// screen carries a dbt logo, so the screen row is split into colored segments.
 const LAPTOP_LINES = [
   { text: '  ╱    ╲', part: 'strap' },
-  { text: ' ▟██████▙', part: 'laptop' },
-  { text: ' ▐▤▤▤▤▤▤▌', part: 'keys' },
-  { text: ' ▔▔▔▔▔▔▔▔', part: 'keys' },
+  { text: ' ┌──────┐', part: 'laptop' },
+  {
+    segments: [
+      { text: ' │ ', part: 'laptop' },
+      { text: 'dbt', part: 'logo' },
+      { text: '  │', part: 'laptop' },
+    ],
+  },
+  { text: ' └──────┘', part: 'laptop' },
+  { text: '▟████████▙', part: 'keys' },
 ];
 
 const partClass = {
@@ -65,6 +73,7 @@ const partClass = {
   strap: styles.strap,
   laptop: styles.laptop,
   keys: styles.keys,
+  logo: styles.logo,
 };
 
 // The full skating getup: wizard + laptop tray (between face and legs) + skates.
@@ -83,8 +92,14 @@ const Sprite = ({ skates = false }) => {
   return (
     <pre className={styles.sprite} aria-hidden="true">
       {lines.map((line, i) => (
-        <span key={i} className={partClass[line.part]}>
-          {line.text}
+        <span key={i} className={line.part ? partClass[line.part] : undefined}>
+          {line.segments
+            ? line.segments.map((s, j) => (
+                <span key={j} className={partClass[s.part]}>
+                  {s.text}
+                </span>
+              ))
+            : line.text}
           {'\n'}
         </span>
       ))}

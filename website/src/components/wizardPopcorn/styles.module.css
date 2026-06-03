@@ -46,7 +46,9 @@
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
 }
 
-.sprite span {
+/* Each line is a block; segments within a line (e.g. the dbt logo on the
+ * laptop screen) are inline children, so only target direct children here. */
+.sprite > span {
   display: block;
   white-space: pre;
 }
@@ -80,6 +82,11 @@
 }
 .keys {
   color: #c8ccd8;
+}
+/* dbt logo on the laptop screen. */
+.logo {
+  color: #fe6702;
+  font-weight: 700;
 }
 
 /* Pop up, overshoot, then float away and fade. */
@@ -123,7 +130,7 @@
  * background), so we override those with !important to win the cascade and
  * size the figure off vh/vw — ~85% of the page, fitting on either axis. */
 .finale .sprite {
-  font-size: min(4.8vh, 6.5vw) !important;
+  font-size: min(4.3vh, 6vw) !important;
   line-height: 1 !important;
   margin: 0 !important;
   padding: 0 !important;
