@@ -57,6 +57,21 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Analyst read">
+
+The Analyst read permission set <Lifecycle status="beta" /> is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
+
+Notable features:
+- Analyst read is a project-level set.
+- Read-only access to project resources, jobs, runs, and environment configs.
+- Can access <Constant name="catalog" />.
+- No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
+
+To access the capabilities of this permission set, you must add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group.
+
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="85%" title="Add users to a group assigned the Analyst read permission set" />
+
+</Expandable>
 <Expandable alt_header="Billing admin">
 
 The Billing admin permission set can review product usage information that impacts the final billing of <Constant name="dbt" /> (for example, models run).
