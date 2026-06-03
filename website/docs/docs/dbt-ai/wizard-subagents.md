@@ -79,21 +79,32 @@ A custom agent can override sandbox settings for itself &mdash; useful when, for
 
 ## Custom agents (CLI) {#custom-agents}
 
-Beyond the built-in behavior, you can define custom agent _roles_ in `~/.dbt/wizard/config.toml`. Each role is a reusable agent &mdash; a reviewer, an explorer, a debugger &mdash; that <Constant name="wizard"/> can spawn by name.
+You can define custom agent _roles_ in `~/.dbt/wizard/config.toml`. 
 
-A role is declared as a `[agents.ROLE_NAME]` table. The role name is the key (for example, `[agents.reviewer]`), and the table supports these fields:
+A custom agent role is a reusable role for a particular type of work you want to perform, like reviewing code, exploring a project, or debugging something. You can create any role name that fits your workflow, it doens't have to be one of the built-in roles. 
+
+Each role has two parts:
+
+| Part | Where it lives| What it does |
+|------|---------------|--------------|
+| Role declaration | `~/.dbt/wizard/config.toml` | Gives the role a name and tells when to use it.|
+| ROle config | A `.toml` file referenced by `config_file` | Defines how that role behaves, including its model, instructions, sandbox mode, and MCP servers.|
+
+Declare a role by adding an `[agents.ROLE_NAME]` table to your main `config.toml`. Replace `ROLE_NAME` with the name you want to use for the role. For example, `[agents.reviewer]` creates a role named `reviewer`.
+
+The `[agents.ROLE_NAME]` table supports these fields:
 
 <SimpleTable>
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `description` | Yes* | When to use the role. <Constant name="wizard"/> reads this to decide which role fits a task. *Required unless supplied by the referenced `config_file`. |
-| `config_file` | No | Path to a role-specific config layer (a `.toml` file). Relative paths resolve against the `config.toml` that defines the role. This is where you set the role's model, instructions, sandbox, and MCP servers. |
-| `nickname_candidates` | No | Readable display labels for spawned instances of this role. |
+| `description` | Yes* | Explains when to use the role. reads this description to decide whether the role fits a task. *Required unless supplied by the file referenced in `config_file`. |
+| `config_file` | No | Path to a role-specific .toml file. Not the same file as your main `~/.dbt/wizard/config.toml`, it's an additional config file for this role. Relative paths resolve from the main `config.toml` file that declares the role. This is where you set the role's model, instructions, sandbox, and MCP servers. |
+| `nickname_candidates` | No | Display-only labels for instances of this role in the UI, such as `Scout` or `Ranger`. The nickname does not identify the role. |
 
 </SimpleTable>
 
-The role's behavior — its AI model, `developer_instructions`, sandbox mode, and `mcp_servers` — lives in the file referenced by `config_file`. That file is an ordinary [`config.toml`](/docs/dbt-ai/wizard-config#configtoml) layer, so it accepts the same keys as your main config. Anything you don't set there inherits from the parent session.
+The file referenced by config_file is an ordinary [`config.toml`](/docs/dbt-ai/wizard-config#configtoml) layer. It accepts the same keys as your main config, including `model`, `developer_instructions`, sandbox settings, and `mcp_servers`. Any setting you do not define in the role-specific file inherits from the parent session.
 
 ### Display nicknames
 
