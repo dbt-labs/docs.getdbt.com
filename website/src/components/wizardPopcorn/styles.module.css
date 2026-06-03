@@ -89,8 +89,8 @@
   position: absolute;
   top: 9.5em;
   left: 3em;
-  width: 2.6em;
-  height: 2.6em;
+  width: 2em;
+  height: 2em;
   transform: translate(-50%, -50%);
   filter: drop-shadow(0 0 3px rgba(254, 103, 2, 0.6));
 }
