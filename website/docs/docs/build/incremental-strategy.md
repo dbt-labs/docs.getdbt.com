@@ -274,7 +274,7 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 
 </File>
 
-If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy) in your `dbt_project.yml` to enable batched execution of your custom strategy. 
+If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution of your custom strategy.
 
 ### Custom strategies from a package
 
