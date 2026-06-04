@@ -118,7 +118,7 @@ Eligible new organizations receive 30 days of free use with no usage limit. Afte
 
 ### dbt State pricing
 
-dbt State is a separate, usage-based product available to both dbt Core and dbt platform users.
+dbt State is a separate, usage-based product available to dbt Core, dbt platform, and dbt Fusion engine users.
 
 ### Cancellation
 
