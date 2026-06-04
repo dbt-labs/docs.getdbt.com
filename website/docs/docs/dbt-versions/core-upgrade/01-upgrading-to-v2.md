@@ -42,7 +42,7 @@ Install the [<Constant name="fusion" /> release candidate](/docs/local/install-d
 
 ### dbt Core v2.0
 
-If you specifically need the open-source distribution, you must target an explicit pin. You can copy the following commands to install the alpha and immediately update to the most recent version:
+If you specifically need the open-source distribution of v2, you must target an explicit pin during the alpha. You can copy the following commands to install the alpha and immediately update to the most recent version:
 
 ```shell
 pip install dbt-core==2.0.0-alpha.1
@@ -55,7 +55,7 @@ dbt v1 and v2 share a common language spec — the code in your project. dbt Lab
 
 At the same time, we want to take this opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
-That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the dbt Copilot agent skill.
+That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [Fusion upgrade agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
 
 :::tip Test Fusion parser compatibility from dbt Core v1.12
 
@@ -75,7 +75,7 @@ The following adapters are supported in v2.0:
 
 dbt Labs is committed to moving forward with v2, and it will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
-- All [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- Some [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
 
