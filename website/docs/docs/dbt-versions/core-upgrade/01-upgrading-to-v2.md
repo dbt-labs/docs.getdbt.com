@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v2.0"
 id: upgrading-to-v2
-description: Install dbt Core v2.0 or Fusion — the Rust-based foundation for dbt
+description: Install dbt Core v2.0 — the open-source Rust-based foundation that dbt Fusion builds on
 displayed_sidebar: "docs"
 ---
 
@@ -15,7 +15,7 @@ import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flag
 dbt Core v2.0 is currently in alpha. This does not affect the Fusion in platform rollout, which continues on its existing track.
 :::
 
-dbt v2.0 marks a new foundation for dbt with a faster, Rust-based runtime rebuilt from the ground up and released in two distributions. [dbt Core v2.0](/docs/local/install-dbt) is the open-source evolution of the trusted data transformation standard, now under Apache 2.0. [dbt Fusion](/docs/fusion/about-fusion) builds on that same foundation and adds SQL comprehension, column-level lineage, instant feedback, and platform-connected workflows. Both distributions share the same project language and DAG semantics, so your existing dbt project works with either.
+v2.0 marks a new foundation for dbt with a faster, Rust-based runtime rebuilt from the ground up and released in two distributions. [dbt Core v2.0](/docs/local/install-dbt) is the open-source evolution of the trusted data transformation standard. [dbt Fusion](/docs/fusion/about-fusion) extends that foundation and adds SQL comprehension, column-level lineage, instant feedback, and platform-connected workflows. Both distributions share the same project language and DAG semantics, so your existing dbt project works with either.
 
 <FusionLifecycle />
 
@@ -41,19 +41,17 @@ pip install dbt-core==2.0.0-alpha.1
 dbt system update
 ```
 
-### Fusion installation
+### Fusion
 
 For the richer experience, install the [<Constant name="fusion" /> release candidate](/docs/local/install-dbt?version=2.0) today.
 
 ## What to know before upgrading
 
-<Constant name="core" />  and dbt Fusion share a common language spec—the code in your project. dbt Labs is committed to providing feature parity with <Constant name="core" />  wherever possible.
+<Constant name="core" />  and dbt Fusion share a common language spec—the code in your project. dbt Labs is committed to providing feature parity with <Constant name="core_v1" /> wherever possible.
 
 At the same time, we want to take this opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for readiness on Fusion.
 
-That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper.
-
-You can find more information about what's changing in the dbt Fusion engine [changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
+That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the dbt Copilot agent skill.
 
 :::tip Test Fusion parser compatibility from dbt Core v1.12
 
@@ -65,7 +63,7 @@ If you're on <Constant name="core" /> v1.12, you can test Fusion parser compatib
 
 ### Supported adapters
 
-The following adapters are supported in the dbt Fusion engine:
+The following adapters are supported in dbt v2.0:
 
 <FusionAdapters />
 
@@ -83,7 +81,7 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ### dbt State <Lifecycle status="preview" />
 
-dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in the <Constant name="fusion_engine" />.
+dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in the <Constant name="fusion_engine" />, and is also available for earlier versions of dbt Core via `pip install dbt-state`.
 
 To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state) from your CLI. It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings) &mdash; enabling dbt State on every `dbt run` or `dbt build` for you. 
 
