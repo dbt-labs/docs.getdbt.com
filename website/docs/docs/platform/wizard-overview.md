@@ -23,6 +23,8 @@ Your personal dbt agent &mdash; wherever you work.
 
 Think of it like a map of your city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout.
 
+To learn more about <Constant name="wizard" /> and see it in action, check out the [demo video](https://www.youtube.com/watch?v=-lIzh1xQWMA)!
+
 <Constant name="wizard"/> comes with the following capabilities:
 
 - **Project understanding:** A native dbt metadata engine for lineage, contracts, tests, and runtime context
@@ -36,7 +38,7 @@ Think of it like a map of your city: <Constant name="wizard" /> knows how everyt
 ## Use dbt Wizard
 <Constant name="wizard" /> is available in:
 
-- **[<Constant name="dbt_platform" />](/docs/platform/wizard-platform)**:  Use managed AI provider keys or bring your own key (BYOK) credentials for a [supported provider](#supported-ai-providers). Available in public preview for <Constant name="studio_ide"/> and in public beta for the <Constant name="wizard"/> home tab.
+- **[<Constant name="dbt_platform" />](/docs/platform/wizard-platform)**:  Use <Term id="managed" /> AI provider keys or bring your own key (BYOK) credentials for a [supported provider](#supported-ai-providers). Available in public preview for <Constant name="studio_ide"/> and in public beta for the <Constant name="wizard"/> home tab.
 - **[Terminal](/docs/dbt-ai/wizard-cli)** (public beta): Use BYOK credentials for a [supported provider](#supported-ai-providers).
 
 For more info on pricing, refer to the [Billing](/docs/platform/billing) page.

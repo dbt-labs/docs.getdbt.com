@@ -109,7 +109,7 @@ Compilation Error
  
 <VersionBlock firstVersion="2.0">
  
-In the <Constant name="fusion_engine" />, duplicate docs block names are not allowed. If duplicates are found, dbt reports the conflicting files and surfaces a warning. Rename one block so each docs block name is unique. For more information, refer to [Stricter evaluation of duplicate docs blocks](/docs/dbt-versions/core-upgrade/upgrading-to-fusion?version=2.0#stricter-evaluation-of-duplicate-docs-blocks).
+In the <Constant name="fusion_engine" />, duplicate docs block names are not allowed. If duplicates are found, dbt reports the conflicting files and surfaces a warning. Rename one block so each docs block name is unique. For more information, refer to [Stricter evaluation of duplicate docs blocks](/docs/dbt-versions/core-upgrade/upgrading-to-v2?version=2.0#stricter-evaluation-of-duplicate-docs-blocks).
  
 <File name="models/docs/example.md">
  

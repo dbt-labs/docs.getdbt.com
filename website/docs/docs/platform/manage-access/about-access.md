@@ -148,9 +148,11 @@ import LicenseOverrideNote from '/snippets/_license-override-note.md';
 
 ### Permissions
 
-Permissions determine what a developer-licensed user can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
+Permissions determine what users can do in your <Constant name="dbt" /> account. By default, members of the `Owner` and `Member` groups have full access to all areas and features. When you want to restrict access to features, assign users to groups with stricter permission sets. Keep in mind that if a user belongs to multiple groups, the most permissive group will take precedence.
 
-The permissions available depends on whether you're on an [Enterprise, Enterprise+](/docs/platform/manage-access/enterprise-permissions), or [self-service Starter](/docs/platform/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
+The permissions available depend on whether you're on an [Enterprise, Enterprise+](/docs/platform/manage-access/enterprise-permissions), or [self-service Starter](/docs/platform/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
+
+Some access to user settings (for example, **Credentials** settings in **Your profile**) can be granted with additional permissions (such as `user_credential_write`). Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example permissions dropdown while editing an existing group." />
 

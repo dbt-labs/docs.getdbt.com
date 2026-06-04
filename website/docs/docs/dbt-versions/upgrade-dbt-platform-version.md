@@ -51,7 +51,7 @@ Configure your project to use a different dbt version than what's configured in 
 
 dbt Labs has introduced the new [<Constant name="fusion_engine" />](/docs/fusion), a ground-up rebuild of dbt. This is currently generally available for Snowflake projects and in preview for other supported adapters on the <Constant name="dbt_platform" />. Eligible customers can update environments to <Constant name="fusion" /> using the same workflows as v1.x, but remember:
 - If you don't see the `Latest Fusion` release track as an option, you should check with your dbt Labs account team about eligibility.
-- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
+- To increase the compatibility of your project, update all jobs and environments to the **Latest** release track and read more about the changes in our [upgrade guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
 - Make sure you're using a supported adapter and authentication method:
   <FusionDWH /> 
 - Once you upgrade your development environment(s) to `Latest Fusion`, every user will have to restart the IDE.

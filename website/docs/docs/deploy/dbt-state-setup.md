@@ -33,7 +33,7 @@ To enable dbt State:
    Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For more information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
       :::info Extended trial for state-aware orchestration users
-      If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended to 90 days when you sign up. If you don't see the extension, contact your account team.
+      If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
       :::
 
 4. Review and agree to the terms of service.
