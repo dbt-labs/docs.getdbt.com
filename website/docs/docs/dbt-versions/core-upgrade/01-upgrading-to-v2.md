@@ -29,27 +29,31 @@ Two dbt distributions build on the Fusion runtime:
 
 | Distribution | Install | License | What you get |
 |---|---|---|---|
+| **Fusion** | [Multiple installation options](/docs/local/install-dbt?version=2.0) | Proprietary | dbt Core v2.0 foundation plus Fusion features: SQL comprehension, column-level lineage, and more. |
 | **dbt Core v2.0** | `pip install dbt-core` | Apache 2.0 | Open-source Rust-based runtime. Faster parsing and execution. |
-| **Fusion** | `pip install dbt` | Proprietary | dbt Core v2.0 foundation plus Fusion features: SQL comprehension, column-level lineage, and more. |
 
 ## Installation
 
-Currently, to install <Constant name="core_v2" />, you must target an explicit pin. You can copy the following commands to install the alpha and immediately update to the most recent version:
+For most users, the recommended path is to install Fusion as it includes all of dbt Core v2.0 plus the robust Fusion feature set.
+
+### Fusion
+
+Install the [<Constant name="fusion" /> release candidate](/docs/local/install-dbt?version=2.0) today.
+
+### dbt Core v2.0
+
+If you specifically need the open-source distribution, you must target an explicit pin. You can copy the following commands to install the alpha and immediately update to the most recent version:
 
 ```shell
 pip install dbt-core==2.0.0-alpha.1
 dbt system update
 ```
 
-### Fusion
-
-For the richer experience, install the [<Constant name="fusion" /> release candidate](/docs/local/install-dbt?version=2.0) today.
-
 ## What to know before upgrading
 
-<Constant name="core" />  and dbt Fusion share a common language spec—the code in your project. dbt Labs is committed to providing feature parity with <Constant name="core_v1" /> wherever possible.
+dbt v1 and v2 share a common language spec — the code in your project. dbt Labs is committed to providing feature parity with v1 wherever possible.
 
-At the same time, we want to take this opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for readiness on Fusion.
+At the same time, we want to take this opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
 That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the dbt Copilot agent skill.
 
@@ -63,13 +67,13 @@ If you're on <Constant name="core" /> v1.12, you can test Fusion parser compatib
 
 ### Supported adapters
 
-The following adapters are supported in dbt v2.0:
+The following adapters are supported in v2.0:
 
 <FusionAdapters />
 
 ### A clean slate
 
-dbt Labs is committed to moving forward with Fusion, and it will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
+dbt Labs is committed to moving forward with v2, and it will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
 - All [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
@@ -89,17 +93,17 @@ To enable dbt State for everyone on your project, add [`manage_state: true`](/re
 
 ### Changed functionality
 
-When developing the Fusion engine, there were opportunities to improve the dbt framework - failing earlier (when possible), fixing bugs, optimizing run order, and deprecating flags that are no longer relevant. The result is a handful of specific and nuanced changes to existing behavior.
+When developing v2, there were opportunities to improve the dbt framework — failing earlier (when possible), fixing bugs, optimizing run order, and deprecating flags that are no longer relevant. The result is a handful of specific and nuanced changes to existing behavior.
 
-When upgrading to Fusion, you should expect the following changes in functionality:
+When upgrading to v2, you should expect the following changes in functionality:
 
 #### Parse time printing of relations will print out the full qualified name, instead of an empty string
 
 In dbt Core v1, when printing the result of `get_relation()`, the parse time output for that Jinja would print `None` (the undefined object coerces to the string "None").
 
-In Fusion, to help with intelligent batching of `get_relation()` calls (and significantly speed up `dbt compile`), dbt needs to construct a relation object with the fully qualified name resolved at parse time for the `get_relation()` adapter call.
+In v2, to help with intelligent batching of `get_relation()` calls (and significantly speed up `dbt compile`), dbt needs to construct a relation object with the fully qualified name resolved at parse time for the `get_relation()` adapter call.
 
-Constructing a relation object with the fully qualified name in Fusion produces different behavior than dbt Core in `print()`, `log()`, or any Jinja macro that outputs to `stdout` or `stderr` at parse time. 
+Constructing a relation object with the fully qualified name in v2 produces different behavior than v1 in `print()`, `log()`, or any Jinja macro that outputs to `stdout` or `stderr` at parse time. 
 
 Example:
 
@@ -126,7 +130,7 @@ relation: None
 relation_via_api: my_db.my_schema.my_table
 ```
 
-The output after `dbt parse` in Fusion:
+The output after `dbt parse` in v2:
 
 ```
 relation: my_db.my_schema.my_table
@@ -137,7 +141,7 @@ relation_via_api: my_db.my_schema.my_table
 
 :::info What are "deprecated flags"?
 
-Deprecated flags are command-line flags (like `--models`, `--print`) that you pass to dbt commands. These are being removed in Fusion.
+Deprecated flags are command-line flags (like `--models`, `--print`) that you pass to dbt commands. These are being removed in v2.
 
 This is different from:
 - [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code (models, YAML, macros) that need to be updated
@@ -147,7 +151,7 @@ See the [Changes overview](/reference/changes-overview) for a full comparison.
 
 :::
 
-Some historic CLI flags in dbt Core will no longer do anything in Fusion. If you pass them into a dbt command using Fusion, the command will not error, but the flag will do nothing (and warn accordingly).
+Some historic CLI flags from v1 will no longer do anything in v2. If you pass them into a dbt command in v2, the command will not error, but the flag will do nothing (and warn accordingly).
 
 | flag name | remediation |
 | ----------| ----------- |
@@ -182,7 +186,7 @@ Some historic CLI flags in dbt Core will no longer do anything in Fusion. If you
 
 The following deprecated flags require updates in your job definitions or scripts:
 
-- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in <Constant name="core" /> v0.21). <Constant name="fusion" /> raises an error if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); <Constant name="core" /> treated that as a model name, but <Constant name="fusion" /> requires a valid selector.
+- **`--models` / `--model` / `-m`:** Use `--select` / `-s` instead (renamed in dbt Core v0.21). dbt raises an error in v2 if you use the old flags. Do not pass `--models` as the value to `-s` (for example, `dbt run -s --models`); v1 treated that as a model name, but v2 requires a valid selector.
 
 - **`--resource-type` / `--exclude-resource-type`:** Use `--resource-types` / `--exclude-resource-types`. For more information, see [Resource type flags](/reference/global-configs/resource-type).
 
@@ -190,7 +194,7 @@ The following deprecated flags require updates in your job definitions or script
 
 #### Conflicting package versions when a local package depends on a hub package which the root package also wants will error
 
-If a local package depends on a hub package that the root package also wants, `dbt deps` doesn't resolve conflicting versions in dbt Core v1; it will install whatever the root project requests.
+If a local package depends on a hub package that the root package also wants, `dbt deps` doesn't resolve conflicting versions in <Constant name="core_v1" />; it will install whatever the root project requests.
 
 Fusion will present an error:
 
@@ -217,9 +221,9 @@ Or a nonexistent adapter method:
 {{ adapter.does_not_exist() }}
 ```
 
-In dbt Core v1, `dbt parse` passes, but `dbt compile` fails.
+In v1, `dbt parse` passes, but `dbt compile` fails.
 
-Fusion will error out during `parse`.
+In v2, dbt will error out during `parse`.
 
 #### Parse will fail on missing generic test
 
@@ -234,9 +238,9 @@ models:
 
 ```
 
-In dbt Core v1, `dbt parse` passes, but `dbt compile` fails.
+In v1, `dbt parse` passes, but `dbt compile` fails.
 
-Fusion will error out during `parse`.   
+In v2, dbt will error out during `parse`.   
 
 #### Parse will fail on missing variable
 
@@ -248,13 +252,14 @@ select {{ var('does_not_exist') }} as my_column
 
 ```
 
-In dbt Core v1, `dbt parse` passes, but `dbt compile` fails.
+In v1, `dbt parse` passes, but `dbt compile` fails.
 
-Fusion will error out during `parse`.
+In v2, dbt will error out during `parse`.
 
 #### Stricter evaluation of duplicate docs blocks
 
-In older versions of <Constant name="core" />, it was possible to create scenarios with duplicate [docs blocks](/docs/build/documentation#using-docs-blocks). For example, you can have two packages with identical docs blocks referenced by an unqualified name in your dbt project. In this case, <Constant name="core" /> would use whichever docs block is referenced without any warnings or errors. 
+In v1, it was possible to create scenarios with duplicate [docs blocks](/docs/build/documentation#using-docs-blocks). For example, you can have two packages with identical docs blocks referenced by an unqualified name in your dbt project. In this case, v1 would use whichever docs block is referenced without any warnings or errors.
+
 
 <Constant name="fusion" /> adds stricter evaluation of names of docs blocks to prevent such ambiguity. It will present an error if it detects duplicate names:
 
@@ -268,9 +273,9 @@ To resolve this error, rename any duplicate docs blocks.
 
 You can no longer interoperate with pre-1.8 versions of dbt-core if you're a:
 - Hybrid customer running Fusion and an old (pre-v1.8) version of dbt Core
-- Customer upgrading from the old (pre-v1.8) version of dbt Core to Fusion
+- Customer upgrading from an old (pre-v1.8) version of dbt Core to v2
 
-Fusion can not interoperate with the old manifest, which powers features like deferral for `state:modified` comparison.
+Fusion cannot interoperate with the old manifest, which powers features like deferral for `state:modified` comparison.
 
 #### `dbt clean` will not delete any files in configured resource paths or files outside the project directory
 
@@ -278,19 +283,19 @@ In dbt Core v1, `dbt clean` deletes:
 - Any files outside the project directory if `clean-targets` is configured with an absolute path or relative path containing `../`, though there is an opt-in config to disable this (`--clean-project-files-only` / `--no-clean-project-files-only`).
 - Any files in the `asset-paths` or `doc-paths` (even though other resource paths, like `model-paths` and `seed-paths`, are restricted).
 
-In Fusion, `dbt clean` will not delete any files in configured resource paths or files outside the project directory.
+In v2, `dbt clean` will not delete any files in configured resource paths or files outside the project directory.
 
 #### All unit tests are run first in `dbt build`
 
 In dbt Core v1, the direct parents of the model being unit tested needed to exist in the warehouse to retrieve the needed column name and type information. `dbt build` runs the unit tests (and their dependent models) _in lineage order_.
 
-In Fusion, `dbt build` runs _all_ of the unit tests _first_, and then build the rest of the DAG, due to built-in column name and type awareness. 
+In v2, `dbt build` runs _all_ of the unit tests _first_, and then builds the rest of the DAG, due to built-in column name and type awareness.
 
 #### Configuring `--threads`
 
-dbt Core runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
+<Constant name="core_v1" /> runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
 
-<Constant name="fusion"/>  handles threading differently depending on your data platform:
+Version 2 handles threading differently depending on your data platform:
 
 <FusionThreads />
 
@@ -298,7 +303,7 @@ For more information, refer to [Using threads](/docs/running-a-dbt-project/using
 
 #### Continue to compile unrelated nodes after hitting a compile error
 
-As soon as dbt Core's `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
+As soon as <Constant name="core_v1" /> `compile` encounters an error compiling one of your models, dbt stops and doesn't compile anything else.
 
 When Fusion's `compile` encounters an error, it will skip nodes downstream of the one that failed to compile, but it will keep compiling the rest of the DAG (in parallel, up to the number of configured / optimal threads).
 
@@ -324,7 +329,7 @@ Will produce this table when `dbt seed` is executed:
 | cat    |   |  
 | bear   |   |  
 
-Fusion will not produce this extra column in the table resulting from `dbt seed`:
+In v2, it will not produce this extra column in the table resulting from `dbt seed`:
 
 | animal |  
 | ------ |  
@@ -394,7 +399,7 @@ This move is only necessary for fragments defined outside of the main YAML struc
 
 #### Algebraic operations in Jinja macros
 
-In <Constant name="core" />, you can set algebraic functions in the return function of a Jinja macro:
+In v1, you can set algebraic functions in the return function of a Jinja macro:
 
 ```jinja
 {% macro my_macro() %}
@@ -404,13 +409,13 @@ return('xyz') + 'abc'
 {% endmacro %}
 ```
 
-This is no longer supported in <Constant name="fusion" /> and will return an error: 
+This is no longer supported in v2 and will return an error: 
 
 ```bash
 error: dbt1501: Failed to add template invalid operation: return() is called in a non-block context
 ```
 
-This is not a common use case and there is no deprecation warning for this behavior in  <Constant name="core" />. The supported format is:
+This is not a common use case and there is no deprecation warning for this behavior in v1. The supported format is:
 
 ```jinja
 {% macro my_macro() %}
