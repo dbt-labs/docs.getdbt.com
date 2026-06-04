@@ -128,11 +128,13 @@ Usage is tracked through your cancellation date. You're billed at month end for 
 
 A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models) and unique tests (including tests with `store_failures` enabled or disabled). When you run `dbt build` or similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules.
 
+Each unique test is treated as its own target table. For example, if `stg_customers` has `not_null` and `unique` tests on its `id` column and `raw.customers` hasn't changed since the last run, `stg_customers` and its two tests each count as a separate DATT, which is three DATTs total.
+
 All reuses of the same active target table inside of a single day (based on UTC time) are counted as a single daily active target table (DATT).
 
 ### Daily active target tables
 
-For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables for which dbt State performs at least one of the following operations on a given calendar day: a unique skip, a unique clone, or a unique test reuse.
+For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables (as defined previously) for which dbt State performs at least one of the following operations on a single day (based on UTC time): a unique skip, a unique clone, or a unique test reuse.
 
 ### Monthly cost calculation
 
