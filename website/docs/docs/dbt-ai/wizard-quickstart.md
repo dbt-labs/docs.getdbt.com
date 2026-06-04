@@ -24,6 +24,8 @@ Use <Constant name="wizard" /> in your terminal or in the <Constant name="dbt_pl
 
 By the end of this guide, you can install or invoke <Constant name="wizard" /> in your terminal (depending on your dbt version), authenticate with your <Constant name="dbt_platform" /> credentials if applicable, and send your first prompt.
 
+<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+
 Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
 
 <WizardSupportedProviders />
@@ -180,6 +182,8 @@ For example, you might use <Constant name="wizard" /> in the <Constant name="dbt
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [CLI reference](/docs/dbt-ai/wizard-cli)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
+- [Use MCP servers (CLI)](/docs/dbt-ai/wizard-mcp)
+- [Use subagents](/docs/dbt-ai/wizard-subagents)
 
 </TabItem>
 </Tabs>
