@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v2.0"
 id: upgrading-to-v2
-description: Install dbt Core v2.0 — the open-source Rust-based foundation that dbt Fusion builds on
+description: New features and changes in v2.0
 displayed_sidebar: "docs"
 ---
 
