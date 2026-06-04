@@ -24,7 +24,7 @@ To migrate to dbt State, move your configs from `freshness.build_after` to the n
 | `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) | Combined into a single field with shorthand values (for example, `1800s`, `30m`, `12h`, `1d`, `2w`) or Jinja expressions |
 
 :::note Backward compatibility in Fusion
-In the <Constant name="fusion_engine" />, dbt State will automatically fall back to your existing `build_after` configs if `lag_tolerance` is not set. This means you can enable dbt State without updating your project configs first.
+In the <Constant name="fusion_engine" />, dbt State will automatically fall back to your existing `build_after` configs if `lag_tolerance` and `require_fresh_data_from` are not set. This means you can enable dbt State without updating your project configs first.
 :::
 
 ### Examples
@@ -139,9 +139,20 @@ models:
 
 </File>
 
-## Limitation
+## Known differences from state-aware orchestration
 
-State aware orchestration’s Efficient Testing feature (private beta) is currently not available in dbt State.
+State-aware orchestration and dbt State differ in a few ways:
+
+- **More models rebuilding than expected**: If you notice more rebuilds after you migrate, the most common causes are:
+  - **Views with `select *`**: dbt State can't determine which columns `select *` resolves to without querying the upstream schema, so it always rebuilds these views rather than risk reusing a stale result.
+  - **Non-determinism in Jinja-templated SQL**: Macros like `dbt_utils.get_relations_by_pattern` with `dbt_utils.union_relations` can return relations in a different order on each run, which produces different compiled SQL. dbt State detects a new hash and rebuilds the model. If that model has downstream dependencies, those models rebuild, too.
+
+  Refer to [Why is my model being rebuilt instead of reused?](/faqs/State/views-rebuilt) for details on each cause and how to diagnose them.
+
+- **`build_after` vs `lag_tolerance`**: Both configs reduce how often a model runs when upstream data is frequently fresh, but they work differently:
+  - `freshness.build_after` (for example, `{count: 4, period: hour}`) skips the model unless the configured interval has elapsed _and_ upstream sources have new data since the last run. A SQL change alone does not trigger a rebuild; both conditions must be met.
+  - `state.lag_tolerance` (for example, `4h`) skips the model unless upstream data is newer than the model's last run by at least the configured interval. Unlike `build_after`, a detected SQL change triggers a rebuild.
+- **Efficient Testing not yet available**: State-aware orchestration offers Efficient Testing (private beta); dbt State doesn't support it yet.
 
 ## Related docs
 

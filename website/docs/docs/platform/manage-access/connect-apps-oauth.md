@@ -5,7 +5,9 @@ id: "connect-apps-oauth"
 sidebar_label: "Connect apps with OAuth"
 ---
 
-# Connect apps with OAuth <Lifecycle status="beta,managed,managed_plus" />
+import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
+
+# Connect apps with OAuth <Lifecycle status="beta,self_service,managed,managed_plus" />
 
 The **App integrations** section in <Constant name="dbt_platform" /> lets admins manage OAuth 2.0 client registrations &mdash; a standard that lets external apps connect to dbt securely without sharing API tokens. Use it for:
 
@@ -65,18 +67,7 @@ When you connect an MCP client to the [remote dbt MCP server](/docs/dbt-ai/setup
 
 Clients that support dynamic registration complete the registration step automatically &mdash; you'll see them appear in the **Dynamically registered** table after first use.
 
-1. To connect a custom MCP client to dbt, navigate to your AI tool's connector settings and enter your <Constant name="dbt_platform" /> MCP URL. The following example shows how to connect dbt to a custom MCP in Claude Desktop.
-  
-2. Enter a name and paste your MCP URL (for example, `https://abc123.us1.dbt.com/api/ai/v1/mcp`), then click **Add**.
-     <Lightbox src="/img/docs/dbt-cloud/oauth-add-custom-connector.png" title="Custom connector dialog showing the dbt MCP URL" />
-
-3. The tool will redirect you to dbt to complete the OAuth consent flow where you can approve or deny individual [scopes](#scopes-and-consent].
-    <Lightbox src="/img/docs/dbt-cloud/oauth-consent-screen.png" width="60%" title="OAuth consent screen showing requested scopes and project access" />
-
-4. The tool will be added to the **Custom connectors** table and you can then connect it to dbt by clicking **Connect**.
-   <Lightbox src="/img/docs/dbt-cloud/oauth-connectors-page.png" title="Adding a custom dbt connector in an AI tool's connector settings" />
-
-5. That's it 🎉! You can now use the tool to connect to dbt. Ask your tool a question like "What is the total revenue for the last 30 days?" go on from there!
+<MCPCustomConnectorOauth />
 
 For more information on remote MCP OAuth setup, see [Use the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote).
 
