@@ -51,7 +51,7 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 
 </SimpleTable>
 
-For included action limits by plan and how managed usage is metered, refer to the [Billing](/docs/platform/billing) page. To bring your own key, refer to [supported providers](#supported-ai-providers) below.
+For included action limits by plan and how managed usage is metered, refer to the [Billing](/docs/platform/billing) page. To bring your own key, refer to [supported providers](#supported-ai-providers) on this page.
 
 <WizardSupportedProviders />
 
