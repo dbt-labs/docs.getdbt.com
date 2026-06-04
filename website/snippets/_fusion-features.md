@@ -15,7 +15,6 @@ To access the full set of features, register with your email address or sign in 
 | Full LSP | - | - | ✅ |
 | Query cache | - | - | ✅ |
 | dbt docs v2 (full) | - | - | ✅ |
-| dbt State | - | - | ✅ |
 | dbt Mesh | - | - | ✅ |
 | Auto-deferral | - | - | ✅ |
 | Compare changes | - | - | ✅ |
