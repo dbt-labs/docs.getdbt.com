@@ -14,30 +14,31 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 Subagents let <Constant name="wizard" /> spin up focused, parallel agents to handle parts of a larger task &mdash; one to explore your project, one to make changes, one to review them. <Constant name="wizard"/> orchestrates them and consolidates the results back into your session.
 </IntroText>
 
-Use subagents when your task can be split into independent pieces of work. It's good for things like reviewing a large pull request, debugging a failed job, adding tests across multiple models, or researching documentation while another agent inspects your project.
+Use subagents when you can split a task into independent pieces of work. They're useful for reviewing a large pull request, debugging a failed job, adding tests across multiple models, or researching documentation while another agent inspects your project.
 
-For smaller, direct tasks, you usually don't need subagents. For example, ask one question like “What does this model do?” or “Fix this failing test” without asking to split the work.
+For smaller, direct tasks, you usually don't need subagents. Ask a single question, like "What does this model do?" or "Fix this failing test," without splitting the work across agents.
 
-Subagents run more work in parallel, which uses more tokens than a single-agent session handling the same task. Use them when the task benefits from division of labor.
+Subagents run work in parallel, which uses more tokens than handling the same task in a single-agent session. Use them when the task benefits from dividing the work.
 
 <WizardFeedbackCallout />
 
 ## Where you can use subagents
 
-Subagents work in <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). 
+Subagents work in <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli).
 
 <Constant name="wizard"/> surfaces subagent activity in both places so you can see what each agent is working on.
 
 In the CLI, you can also define custom agent roles, set display nicknames, and configure global limits through the `config.toml` file. The following sections call out which steps are CLI-specific.
 
 ## How subagents work
-An agent is a role that describes a type of work, like `explorer`, `worker`, or `test_writer`. 
 
-A subagent is a running instance of one of those roles. For example, if starts two explorer agents to answer two different questions, those are two subagents using the same agent role.
+An agent is a role that describes a type of work, like `explorer`, `worker`, or `test_writer`.
+
+A subagent is a running instance of one of those roles. For example, if you start two explorer agents to answer two different questions, you have two subagents that share the same agent role.
 
 <Constant name="wizard"/> handles orchestration for you. It starts subagents, routes work to them, waits for their results, and consolidates their output into your session.
 
-Subagents are used in the following ways:
+You can use subagents in the following ways:
 
 | How subagents start | Example |
 | ------------------- | ------- |
@@ -55,7 +56,7 @@ Subagents are used in the following ways:
 | Agent | What it's for | Example |
 |-------|---------------| ------- | 
 | `explorer` | Answers specific, well-scoped questions about your project. Fast and read-only &mdash; spawn several in parallel for independent questions. | `Use explorer to explain what depends on fct_orders.` |
-| `worker` | Performs execution and production work, such as, implementing part of a feature, fixing tests or bugs, or splitting a large refactor into independent chunks. | `Use worker to update these staging models to follow our naming convention.` |
+| `worker` | Performs execution and production work, such as implementing part of a feature, fixing tests or bugs, or splitting a large refactor into independent chunks. | `Use worker to update these staging models to follow our naming convention.` |
 | `validation` | Provides dbt validation. After model edits, runs structured validation &mdash; SQL check, `dbt run` with `--defer`, prod vs. dev comparison, and impact analysis &mdash; to validate changes before you merge. | `Use validation to check whether my changes to int_payments are safe to merge.` |
 | `test_writer` | Improves dbt test coverage. Analyzes project metadata and warehouse data to find coverage gaps, validates assumptions with queries, and writes `schema.yml` tests for models with low or no coverage. | `Use test_writer to add tests to stg_customers.` |
 
@@ -66,7 +67,7 @@ You don't need to declare these &mdash; <Constant name="wizard"/> routes to them
 | Prompt style	| Example |
 | ------------- | ------- |
 | Ask naturally	| Add useful tests for stg_customers. |
-| Ask for the agent by name	| Use test_writer to add tests to stg_customers.|
+| Ask for the agent by name	| Use test_writer to add tests to stg_customers. |
 
 To add your own roles, refer to [Custom agents](#custom-agents-cli).
 
@@ -89,7 +90,7 @@ For the full list of session commands, refer to the [slash command reference](/d
 
 ## Approvals and sandbox
 
-Subagents inherit the parent session's [approval and sandbox policy](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing). Any runtime overrides you set for a turn (permissions, sandbox mode) apply to the agents it spawns. Approval requests from a subagent surface in your session labeled with their source, so you know which agent is asking.
+Subagents inherit the parent session's [approval and sandbox policy](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing). Any runtime overrides you set for a turn (permissions, sandbox mode) apply to the subagents it spawns. When a subagent requests approval, your session shows the request with its source so you know which agent is asking.
 
 A custom agent can override sandbox settings for itself &mdash; useful when, for example, an exploration agent should stay read-only while a build agent needs workspace write access.
 
@@ -114,7 +115,7 @@ Every custom agent file must define:
 | `name` | Yes | Agent name <Constant name="wizard"/> uses when spawning or referring to this agent. Must match the file name without `.toml`. For example, `name = "udf_helper"` must be in `udf_helper.toml`. |
 | `description` | Yes | Explains when to use the agent. <Constant name="wizard"/> reads this description to decide whether the agent fits a task. |
 | `developer_instructions` | Yes | Core instructions that define the agent's behavior. |
-| `nickname_candidates` | No | Display-only labels for spawned instances of this agent in the UI, such as `UDF helper` or `UDF queen`.  The nickname does not identify the agent. |
+| `nickname_candidates` | No | Display-only labels for spawned instances of this agent in the UI, such as `UDF helper` or `UDF queen`. The nickname does not identify the agent. |
 | `model` | No | Model this agent should use. Inherits from the parent session when omitted. |
 | `sandbox_mode` | No | Sandbox mode for this agent. Inherits from the parent session when omitted. |
 | `mcp_servers` | No | MCP servers available to this agent. Inherits from the parent session when omitted. |
@@ -168,7 +169,7 @@ Create a dbt UDF that checks whether customer IDs are positive integers, then ad
 
 ### Display nicknames
 
-When several instances of the same agent run at once, `nickname_candidates` give each one a readable label in the UI. For example, two spawned `udf_helper` agents might appear as `UDF helper` and `UDF queen`.
+When several instances of the same agent run at once, use `nickname_candidates` to give each instance a readable label in the UI. For example, two spawned `udf_helper` agents might appear as `UDF helper` and `UDF queen`.
 
 Nicknames are display-only. <Constant name="wizard"/> identifies the agent by its `name` field, not by the nickname shown in the UI.
 
@@ -236,7 +237,7 @@ interrupt_message = true
 
 Define a custom agent that specializes in dbt UDF work. Each custom agent is a standalone TOML file under `~/.dbt/wizard/agents/`.
 
-<File name="~/.dbt/wizard/agents/udf_helper">
+<File name="~/.dbt/wizard/agents/udf_helper.toml">
 
 ```toml
 name = "udf_helper"
@@ -292,7 +293,7 @@ one to trace the failing model's lineage and find the root cause, and
 one to propose a fix. Summarize what each found.
 ```
 
-<Constant name="wizard"/> spawns the agents, each works its part against your connected project, and <Constant name="wizard"/> consolidates the diagnosis and proposed fix into one response.
+<Constant name="wizard"/> spawns the agents, each one works on its part of your connected project, and <Constant name="wizard"/> consolidates the diagnosis and proposed fix into one response.
 
 ## Related docs
 

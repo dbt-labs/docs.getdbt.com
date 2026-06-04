@@ -20,16 +20,16 @@ For background on MCP itself, refer to the [Model Context Protocol introduction]
 
 ## Why use an MCP server
 
-<Constant name="wizard"/> natively understands your dbt project, and having an MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your [session](/docs/dbt-ai/wizard-how-it-works#sessions). Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf. For example:
+<Constant name="wizard"/> natively understands your dbt project. An MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your [session](/docs/dbt-ai/wizard-how-it-works#sessions). Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf. For example:
 
 - dbt MCP server for governed access to your models, metrics, and lineage.
 - GitHub server to read and review pull requests.
 - Data warehouse server, or another server, to pull in context that lives outside dbt.
 
-The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers (including managing them and setting per-tool approvals) through the `config.toml` file.
+The <Constant name="wizard"/> CLI lets you add, remove, authenticate, and customize MCP servers, including per-tool approvals, through the `config.toml` file.
 
 :::info MCP servers are a CLI feature
-Configuring MCP servers is available only in the <Constant name="wizard" /> CLI. Although you're not able to configure your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), <Constant name="wizard" /> includes a built-in set of dbt tools such as dbt Agent skill and dbt MCP's product documentation fetching.
+You can configure MCP servers only in the <Constant name="wizard" /> CLI. You can't add your own MCP servers in the <Constant name="dbt_platform" /> (<Constant name="studio_ide" /> and the home app), but <Constant name="wizard" /> includes built-in dbt tools, such as [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills) and product documentation fetching through the dbt MCP server.
 :::
 
 ## Supported MCP server types
@@ -46,7 +46,7 @@ Configuring MCP servers is available only in the <Constant name="wizard" /> CLI.
 </SimpleTable>
 
 :::note Server instructions
-For either transport, <Constant name="wizard"/> reads the `instructions` field a server returns during initialization and uses it as cross-tool guidance.
+For either transport, <Constant name="wizard"/> reads the `instructions` field the server returns during initialization and uses it as cross-tool guidance.
 :::
 
 ## Add an MCP server
@@ -66,7 +66,7 @@ Where:
 - `--env VAR1=value1` is optional and repeatable, and applies only to STDIO servers.
 - Everything after `--` is the command <Constant name="wizard"/> runs to launch the server, so the space after `--` is intentional.
 
-For example, to add a filesystem MCP server that runs locally through `npx`. It needs no environment variables, so `--env` is omitted:
+For example, add a filesystem MCP server that runs locally through `npx`. This server needs no environment variables, so omit `--env`:
 
 ```bash
 wizard mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem /Users/you/my-project
@@ -158,7 +158,7 @@ wizard mcp login SERVER_NAME
 wizard mcp logout SERVER_NAME
 ```
 
-To request specific scopes at login, pass the `--scopes` CLI flag with a comma-separated list. This requests the same scopes as the scopes key in `config.toml`, but just for that login:
+To request specific scopes at login, pass the `--scopes` CLI flag with a comma-separated list. This requests the same scopes as the `scopes` key in `config.toml`, but only for that login:
 
 ```bash
 wizard mcp login SERVER_NAME --scopes read,write
@@ -185,11 +185,11 @@ Manage your configured servers through the <Constant name="wizard" /> CLI, or by
 
 ## Approvals and tool permissions
 
-MCP tool calls follow the same [approval and sandboxing](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing) rules as the rest of <Constant name="wizard" />. To control which tools a server exposes, set `enabled_tools` and `disabled_tools` in `config.toml` (there's no dedicated CLI flag), so <Constant name="wizard"/> can only call the ones you intend.
+MCP tool calls follow the same [approval and sandboxing](/docs/dbt-ai/wizard-how-it-works#approval-and-sandboxing) rules as the rest of <Constant name="wizard" />. Set `enabled_tools` and `disabled_tools` in `config.toml` to control which tools a server exposes (there's no dedicated CLI flag). That way, <Constant name="wizard"/> calls only the tools you intend.
 
 ## Examples
 
-Here are some common scenarios where you'd add an MCP server, and how to do it.
+The following examples show common scenarios for adding an MCP server and how to configure them.
 
 ### dbt MCP server
 
@@ -209,7 +209,7 @@ The local server reads its connection settings (such as `DBT_HOST`, `DBT_TOKEN`,
 </TabItem>
 <TabItem value="remote" label="Remote (dbt platform account)">
 
-Hosted on the platform with no local install. Form the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
+Hosted on the platform with no local install. Build the URL from your platform host (`https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`, for example `https://cloud.getdbt.com/api/ai/v1/mcp/`), then authenticate:
 
 ```bash
 wizard mcp add dbt --url https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/
@@ -250,7 +250,7 @@ Then set that environment variable to your actual token before starting <Constan
 export GITHUB_MCP_TOKEN="your-real-token-here"
 ```
 
-<Constant name="wizard"/> reads the token from the environment at runtime and sends it as `Authorization: Bearer <the token>`. Storing only the variable name in `config.toml` keeps the secret out of your committed config.
+At runtime, <Constant name="wizard"/> reads the token from the environment and sends it as `Authorization: Bearer <the token>`. Store only the variable name in `config.toml` to keep the secret out of your committed config.
 
 ```
 Review the dbt model changes in PR #482 — check for missing tests on
