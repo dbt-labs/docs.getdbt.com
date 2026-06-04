@@ -99,6 +99,10 @@ lsp:
   displayText: LSP
   hoverSnippet: Language Server Protocol (LSP) enables developer features like live CTE previews, hover info, error highlighting, and more.
 
+managed:
+  displayText: managed
+  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required. Refer to Billing for more information.
+
 materialization:
   displayText: materialization
   hoverSnippet: The exact Data Definition Language (DDL) that dbt will use when creating the model’s equivalent in a data warehouse.

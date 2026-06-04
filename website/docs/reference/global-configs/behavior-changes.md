@@ -12,11 +12,11 @@ import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config
 
 Since behavior change flags are different from other dbt changes, it's important to understand the difference:
 - [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code that will stop working (behavior flags often control when these become errors)
-- [Deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
+- [Deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags) &mdash; Command-line flags being removed in dbt Fusion
 
 See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-If you're upgrading to [dbt Fusion](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) or [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2), all behavior change flags are removed and the new behavior is always enabled.
+If you're upgrading to [dbt Fusion](/docs/dbt-versions/core-upgrade/upgrading-to-v2) or [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2), all behavior change flags are removed and the new behavior is always enabled.
 
 :::
 
