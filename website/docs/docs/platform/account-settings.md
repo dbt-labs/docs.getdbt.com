@@ -49,11 +49,11 @@ To use, select the **Enable partial parsing between deployment runs** option fro
 
 ## Account access and enablement
 
-### Enabling dbt Copilot <Lifecycle status="self_service,managed,managed_plus" /> 
+Enable access to features in your account by selecting the appropriate option from your account settings.
 
-[<Constant name="copilot" />](/docs/platform/dbt-copilot) is an AI-powered assistant fully integrated into your dbt experience and is designed to accelerate your analytics workflows.
+### Enabling AI features
 
-To use this feature, your <Constant name="dbt" /> administrator must enable <Constant name="copilot" /> on your account by selecting the **Enable account access to dbt Copilot features** option from the account settings. For more information, see [Enable dbt Copilot](/docs/platform/enable-dbt-copilot).
+Admins can enable access to both <Constant name="wizard" /> (dbt Labs’ AI agent layer, available on the <Constant name="dbt_platform" /> and CLI) and dbt Copilot for authorized users across the <Constant name="dbt_platform" />. 
 
 ### Enabling Advanced CI features <Lifecycle status="managed,managed_plus" />
 
@@ -73,6 +73,17 @@ You can bring [external metadata](/docs/explore/external-metadata-ingestion) int
 
 To use external metadata ingestion, you must be an [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) with permission to edit connections. Enable <Constant name="catalog" /> in your account by selecting the **Ingest external metadata in dbt Catalog (formerly dbt Explorer)** option from your account settings. For more information, see [Enable external metadata ingestion](/docs/explore/external-metadata-ingestion#enable-external-metadata-ingestion).
 
+### Enable global account discovery
+
+When **Enable global account discovery** is on, users can discover all accounts associated with their email address at login. Users still access accounts using their credentials or the account's designated auth method (for example, SSO). Refer to [Log in to dbt platform](/docs/platform/about-platform/login) for more info.
+
+import UniversalLoginST from '/snippets/_universal-login-st.md';
+
+<UniversalLoginST />
+
+Disabling this setting means users must know their [account URL](/docs/platform/about-platform/access-regions-ip-addresses#accessing-your-account) to log in; they will not see a list of accounts at login.
+
+To change this setting, select or clear the **Enable global account discovery** option in your account settings. If you disable it, a confirmation pop-up box explains that users will need the account URL to log in and access the account.
 
 ## Project settings history
 

@@ -18,7 +18,7 @@ If you have a monorepo with several dbt projects, merging a single pull request 
 
 ## Prerequisites
 - You have a <Constant name="dbt" /> account. 
-- You have set up a [connection with your <Constant name="git" /> provider](/docs/platform/git/git-configuration-in-dbt-cloud). This integration lets <Constant name="dbt" /> run jobs on your behalf for job triggering.
+- You have set up a [connection with your <Constant name="git" /> provider](/docs/platform/git/configure-git). This integration lets <Constant name="dbt" /> run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/platform/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 - For deferral (which is the default), make sure there has been at least one successful job run in the environment you defer to.
 

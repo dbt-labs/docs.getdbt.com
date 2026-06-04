@@ -2,7 +2,7 @@
 featured_image: ""
 
 # This CTA lives in right sidebar on blog index
-featured_cta: "the_launch_desk_live"
+featured_cta: "fivetran_dbt_labs_merger_webinar"
 
 # Show or hide hero title, description, cta from blog index
 show_title: false

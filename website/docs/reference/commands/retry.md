@@ -16,7 +16,7 @@ Retry re-executes the last invocation from the point of failure.
 The `dbt retry` flags apply when you use a local dbt installation or the <Constant name="studio_ide" />.
 
 :::note dbt platform CLI
-If you use the [<Constant name="dbt_platform" /> CLI](/docs/platform/cloud-cli-installation) against your cloud environment, `dbt retry` accepts only a small subset of overrides—typically `--threads`, `--vars`, and related options. Use `dbt retry --help` on your machine for the exact list your CLI build supports.
+If you use the [<Constant name="dbt_platform" /> CLI](/docs/platform/dbt-cli-installation) against your cloud environment, `dbt retry` accepts only a small subset of overrides—typically `--threads`, `--vars`, and related options. Use `dbt retry --help` on your machine for the exact list your CLI build supports.
 :::
 
 <VersionBlock lastVersion="1.99">

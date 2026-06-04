@@ -61,7 +61,7 @@ import Recommendationoverwritesthemanifest from '/snippets/_recommendation-overw
 
 <VersionBlock firstVersion="1.9">
 
-To reduce false positives during `state:modified` selection due to env-aware logic, you can set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`.
+To reduce false positives during `state:modified` selection due to env-aware logic, you can set the `state_modified_compare_more_unrendered_values` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `true`.
 
 <StateModified features={'/snippets/_state-modified-compare.md'}/>
 
