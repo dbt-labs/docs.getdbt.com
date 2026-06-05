@@ -15,6 +15,7 @@ datatype: string | [string]
     { label: 'Sources', value: 'sources', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Functions', value: 'functions', },
   ]
 }>
 <TabItem value="models">
@@ -298,6 +299,31 @@ models:
 select ...
 
 {% endtest %}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="functions">
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +tags: <string> | [<string>]
+```
+
+</File>
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: [<function-name>]
+    config:
+      tags: <string> | [<string>]
 ```
 
 </File>

@@ -1,6 +1,6 @@
 ---
 sidebar_label: "schema"
-resource_types: [models, seeds, tests]
+resource_types: [models, seeds, tests, functions]
 description: "Override the default schema when dbt creates resources in your data platform."
 datatype: string
 ---
@@ -119,12 +119,43 @@ data_tests:
 This would result in the test results being stored in the `test_results` schema.
 </File>
 </TabItem>
+
+<TabItem value="functions" label="Functions">
+
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a function in your `dbt_project.yml` or a properties YAML file.
+
+For example, to place functions in a schema called `udfs`:
+
+<File name='dbt_project.yml'>
+
+```yml
+functions:
+  your_project:
+    +schema: udfs
+```
+</File>
+
+In a `functions/schema.yml` file:
+
+<File name='functions/schema.yml'>
+
+```yaml
+functions:
+  - name: calculate_tax
+    config:
+      schema: udfs
+```
+</File>
+
+This creates the function in the `udfs` schema instead of the target schema.
+
+</TabItem>
 </Tabs>
 
 Refer to [Usage](#usage) for more examples.
 
 ## Definition
-Optionally specify a custom schema for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), [snapshot](/docs/build/snapshots), [saved query](/docs/build/saved-queries), or [test](/docs/build/data-tests). 
+Optionally specify a custom schema for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), [snapshot](/docs/build/snapshots), [saved query](/docs/build/saved-queries), [test](/docs/build/data-tests), or [function](/docs/build/udfs). 
 
 For users on <Constant name="dbt" /> v1.8 or earlier, use the [`target_schema` config](/reference/resource-configs/target_schema) to specify a custom schema for a snapshot.
 
