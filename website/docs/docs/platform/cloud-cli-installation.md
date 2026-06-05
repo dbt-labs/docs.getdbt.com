@@ -22,7 +22,6 @@ dbt commands run against the platform's infrastructure and benefit from:
 * [Automatic deferral](/docs/platform/about-defer) of build artifacts to your project's production environment 
 * Speedier, lower-cost builds
 * Support for dbt Mesh ([cross-project `ref`](/docs/mesh/govern/project-dependencies))
-* Significant platform improvements, to be released over the coming months
 
 <Lightbox src="/img/docs/dbt-platform/dbt-cli-overview.png" title="Diagram of how the dbt CLI works with dbt's infrastructure to run dbt commands from your local command line." />
 
