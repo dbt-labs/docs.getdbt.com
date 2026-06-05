@@ -4,9 +4,9 @@ id: "behavior-flag-removed"
 sidebar: "Removed behavior flags"
 ---
 
-When <Constant name="core_v2" /> removes a behavior flag, the flag is no longer configurable. The new behavior is always enabled and the old behavior is no longer supported. Any flag still set in `dbt_project.yml` will be ignored.
+When <Constant name="core_v2" /> removes a behavior flag, you can no longer configure the flag. The new behavior is always enabled and the old behavior is not supported. Any flag still set in `dbt_project.yml` will be ignored.
 
-If you're upgrading to [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2), remove these flags from your `dbt_project.yml` to avoid unexpected configuration.
+If you're upgrading to [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2), remove these flags from your `dbt_project.yml`.
 
 ## Flags removed in dbt Core v2
 
