@@ -24,7 +24,7 @@ The **Exposures** table lists every exposure in the project so you can quickly a
    - **Owner**: The owner of the exposure.
    - **Owner email**: The email address of the owner of the exposure.
    - **Integration**: The BI tool that the exposure is integrated with.
-   - **Exposure mode**: The type of exposure defined: **Auto** or **Manual**.
+   - **Exposure mode**: The type of exposure defined: **Auto** or **Manual**. Auto exposures from Tableau appear alongside manual exposures
 
 <Lightbox src="/img/docs/platform-integrations/auto-exposures/explorer-view-resources.png" width="120%" title="View the Exposures table from the Catalog sidebar."/>
 
