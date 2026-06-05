@@ -21,7 +21,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
-- **Behavior change:** Several behavior change flags are planned to reach maturity (enabled by default) on the <Constant name="dbt_platform" /> **Latest** release track. Refer to [Behavior flag maturity and impact](/reference/global-configs/behavior-flag-maturity) to understand which flags may affect your project and how to opt out before the change takes effect.
+- **Behavior change:** Several behavior change flags are planned to reach maturity (enabled by default) on the <Constant name="dbt_platform" /> **Latest** release track. Refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to understand which flags may affect your project and how to opt out before the change takes effect.
 - **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
 
 ### Snowflake Summit 2026 announcements

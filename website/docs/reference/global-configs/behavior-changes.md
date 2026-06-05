@@ -29,9 +29,10 @@ Another category of flags provides existing projects with a migration window for
 - Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
 
 These flags go through three phases of development:
-1. **Introduction (disabled by default):** dbt adds logic to support both 'old' and 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
-2. **Maturity (enabled by default):** The default value of the flag is switched, from `false` to `true`, enabling the new behavior by default. Users can preserve the 'old' behavior and opt out of the 'new' behavior by setting the flag to `false` in their projects. They may see deprecation warnings when they do so.
-3. **Removal (generally enabled):** After marking the flag for deprecation, we remove it along with the 'old' behavior it supported from the dbt codebases. We aim to support most flags indefinitely, but we're not committed to supporting them forever. If we choose to remove a flag, we'll offer significant advance notice.
+1. **Introduction (disabled by default):** dbt adds logic to support both 'old' and 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior. For flags still in the introduction phase, refer to [Introduced behavior flags](/reference/global-configs/behavior-flag-introduction). 
+2. **Maturity (enabled by default):** The default value of the flag is switched, from `false` to `true`, enabling the new behavior by default. Users can preserve the 'old' behavior and opt out of the 'new' behavior by setting the flag to `false` in their projects. They may see deprecation warnings when they do so. For flags that have already reached maturity, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity).
+3. **Removal (generally enabled):** After marking the flag for deprecation, we remove it along with the 'old' behavior it supported from the dbt codebases. We aim to support most flags indefinitely, but we're not committed to supporting them forever. If we choose to remove a flag, we'll offer significant advance notice. For flags removed in <Constant name="core_v2" />, refer to [Removed behavior flags](/reference/global-configs/behavior-flag-removed).
+
 
 ## What is a behavior change?
 
@@ -140,5 +141,3 @@ This table outlines which version of the dbt adapter contains the behavior chang
 | [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#bigquery-use-batch-source-freshness) | BigQuery 1.11.0rc2 | - | - |
 | [bigquery_reject_wildcard_metadata_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) | BigQuery 1.12.0 | - | - |
 | [snowflake_default_transient_dynamic_tables](/reference/global-configs/snowflake-changes#the-snowflake_default_transient_dynamic_tables-flag) | Snowflake 1.12.0 | - | - |
-
-For flags that have already reached maturity, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity). For flags still in the introduction phase, refer to [Introduced behavior flags](/reference/global-configs/behavior-flag-introduction). For flags removed in <Constant name="core_v2" />, refer to [Removed behavior flags](/reference/global-configs/behavior-flag-removed).
