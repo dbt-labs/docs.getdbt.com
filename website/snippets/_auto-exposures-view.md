@@ -14,7 +14,7 @@ Navigate to <Constant name="catalog" /> by selecting **Catalog** from the top-le
 View all downstream exposures for a project from the Catalog sidebar:
 
 1. In the sidebar, select your project.
-2. Under the project, select **Exposure**.
+2. Under the project, select **Exposure**. You will only see this option if you set up downstream exposures in [Tableau](/docs/platform-integrations/downstream-exposures-tableau?#set-up-in-tableau) and [dbt](/docs/platform-integrations/downstream-exposures-tableau?#set-up-in-dbt-cloud).
 
 The **Exposures** table lists every exposure in the project so you can quickly access and manage them. Auto exposures from Tableau appear alongside manual exposures. The table displays the following information:
 
