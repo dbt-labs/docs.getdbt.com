@@ -29,6 +29,7 @@ This page covers the slash commands supported by <Constant name="wizard" />. The
 ## Related docs
 
 - [Wizard CLI command reference](/docs/dbt-ai/wizard-cli-reference) for flags and subcommands
+- [Use subagents](/docs/dbt-ai/wizard-subagents) for the `/agent` and `/subagents` commands
 - [Non-interactive mode](/docs/dbt-ai/wizard-headless) for using `wizard exec` in scripts and CI
 - [Configuration reference](/docs/dbt-ai/wizard-config) for `config.toml` keys and precedence
 - [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other dbt Core commands

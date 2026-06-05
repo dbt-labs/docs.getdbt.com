@@ -12,6 +12,7 @@ import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import WizardCliOnboarding from '/snippets/_wizard-cli-onboarding.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
+import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
 # Install <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -21,6 +22,8 @@ Install the <Constant name="wizard" /> CLI from your terminal for agentic and go
 
 This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
+
+To learn more about <Constant name="wizard" /> and see it in action, check out the [demo video](https://www.youtube.com/watch?v=-lIzh1xQWMA)!
 
 ## Install dbt Wizard CLI
 
@@ -33,6 +36,8 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 - macOS, Windows, or Linux
 - A dbt project with a built `target/` directory (`dbt parse`, `dbt compile`, or `dbt build`)
 - Credentials for a supported CLI provider. Refer to [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) in the next section.
+
+<WizardCliDbtCliSupport />
 
 <WizardFeedbackCallout />
 

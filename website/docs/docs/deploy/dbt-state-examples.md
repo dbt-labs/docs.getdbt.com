@@ -25,7 +25,7 @@ Each of the following scenarios shows how a run differs between <Constant name="
 | Scenario | Command | What dbt State changes |
 | --- | --- | --- |
 | [Initial run in empty schema](#initial-run-in-empty-schema) | `dbt run --target prod` | Same result |
-| [Second run](#second-run) | `dbt run --target prod` | Skips unchanged nodes |
+| [Second run](#second-run) | `dbt run --target prod` | Reuses unchanged table models; rebuilds views with `select *` |
 | [Selecting a model in a fresh dev environment after changing the customers model](#selecting-a-model-in-a-fresh-dev-environment-after-changing-the-customers-model) | `dbt run --target dev --select "customers"` | Defers to prod for upstream models |
 | [Selecting a model in a new dev schema with no model changes](#selecting-a-model-in-a-new-dev-schema-with-no-model-changes) | `dbt run --target dev --select "customers"` | Defers and clones unchanged models |
 
@@ -134,7 +134,7 @@ Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=12
 dbt run --target prod
 ```
 
-With dbt State enabled, dbt detects that these models just ran and that neither the models nor the source data changed, so it skips unnecessary work.
+With dbt State enabled, the six table models are reused — nothing changed, so there's nothing to rebuild. The six staging views still rebuild because they use `select *`. [Learn why views with `select *` are always rebuilt.](/faqs/State/views-rebuilt)
 
 <Tabs queryString="second-run">
 <TabItem value="without" label="Without dbt State">

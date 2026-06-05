@@ -63,7 +63,13 @@ But first, she decides to interact with the data to learn more.
 
 From the **Customer model page** in <Constant name="catalog" />, Kimiko selects **Analyze data** from the **Open in...** dropdown. This enables her to query data for the Customer model. Once opened, <Constant name="insights" /> contains a query poised and ready to run.
 
-<Lightbox src="/img/guides/analyst-qs/query.png" width="90%" title="Open query" />
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/guides/analyst-qs/catalog-analyze-data.png" width="50%" title="Select Analyze data from Catalog" />
+
+<Lightbox src="/img/guides/analyst-qs/query.png" width="90%" title="Open query in Insights" />
+
+</DocCarousel>
 
 When Kimiko runs the query, she can look at the data underyling it. The same context she saw in <Constant name="catalog" /> she now sees in her SQL editing experience.
 

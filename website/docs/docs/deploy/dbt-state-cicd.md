@@ -28,6 +28,7 @@ OAuth client authentication requires two credentials:
 Before configuring CI/CD authentication, make sure you have:
 
 - dbt State installed and configured. Refer to [Set up dbt State](/docs/deploy/dbt-state-setup) for more information.
+- A standalone dbt State account at [app.state.dbt.com](https://app.state.dbt.com/).
 - Admin permissions in your dbt State organization.
 
 ## Creating an OAuth client

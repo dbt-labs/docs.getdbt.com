@@ -418,6 +418,7 @@ const sidebarSettings = {
                 "docs/dbt-ai/wizard-cli",
                 "docs/dbt-ai/wizard-byok",
                 "docs/dbt-ai/wizard-headless",
+                "docs/dbt-ai/wizard-mcp",
               ],
             },
             {
@@ -428,6 +429,7 @@ const sidebarSettings = {
                 "docs/dbt-ai/wizard-how-it-works",
                 "docs/dbt-ai/wizard-use-cases",
                 "docs/dbt-ai/wizard-skills",
+                "docs/dbt-ai/wizard-subagents",
                 "docs/dbt-ai/wizard-migrate",
               ],
             },
@@ -1377,6 +1379,7 @@ const sidebarSettings = {
             "reference/resource-configs/begin",
             "reference/resource-properties/concurrent_batches",
             "reference/resource-configs/contract",
+            "reference/resource-configs/latest_version_pointer",
             "reference/resource-configs/lookback",
             "reference/resource-configs/materialized",
             "reference/resource-properties/model_name",

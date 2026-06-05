@@ -10,6 +10,7 @@ image: /img/docs/wizard-cli-intro.png
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
+import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
 # <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -31,6 +32,8 @@ Use <Constant name="wizard" /> CLI to:
 - Run non-interactively in CI with `exec` and `review`
 
 For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases).
+
+<WizardCliDbtCliSupport />
 
 <WizardSupportedProviders />
 
@@ -57,6 +60,12 @@ Looking for the in-platform experience? Visit [About <Constant name="wizard" /> 
     title="Non-interactive mode"
     body="Run dbt Wizard in scripts and CI with exec, review, and other headless workflows."
     link="/docs/dbt-ai/wizard-headless"
+    icon="wizard"/>
+
+<Card
+    title="Use MCP servers"
+    body="Connect the dbt Wizard CLI to MCP servers for more tools and context."
+    link="/docs/dbt-ai/wizard-mcp"
     icon="wizard"/>
 
 <Card
