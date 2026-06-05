@@ -189,19 +189,43 @@ function QuickstartTOC() {
     }
   }, [activeStep, mounted]);
 
+  // Sync visible step when the URL ?step= param changes (e.g. in-page links)
+  useEffect(() => {
+    if (!mounted) return;
+
+    const stepFromUrl = queryParams.step ? parseInt(queryParams.step, 10) : null;
+
+    if (stepFromUrl && !isNaN(stepFromUrl) && stepFromUrl !== activeStep) {
+      const currentStepWrapper = document.querySelector(
+        `.${style.stepWrapper}[data-step='${activeStep}']`
+      );
+      const newStepWrapper = document.querySelector(
+        `.${style.stepWrapper}[data-step='${stepFromUrl}']`
+      );
+
+      currentStepWrapper?.classList.add(style.hidden);
+      newStepWrapper?.classList.remove(style.hidden);
+
+      setActiveStep(stepFromUrl);
+    }
+  }, [location.search, mounted, activeStep, queryParams.step]);
+
   // Handle updating the active step
   const updateStep = (currentStepIndex, newStepIndex) => {
-    const currentStep = document.querySelector(
-      `.${style.stepWrapper}[data-step='${currentStepIndex}']`
+    const nextStep = parseInt(newStepIndex, 10);
+    const currentStep = parseInt(currentStepIndex, 10);
+
+    const currentStepWrapper = document.querySelector(
+      `.${style.stepWrapper}[data-step='${currentStep}']`
     );
-    const newStep = document.querySelector(
-      `.${style.stepWrapper}[data-step='${newStepIndex}']`
+    const newStepWrapper = document.querySelector(
+      `.${style.stepWrapper}[data-step='${nextStep}']`
     );
 
-    currentStep?.classList.add(style.hidden);
-    newStep?.classList.remove(style.hidden);
+    currentStepWrapper?.classList.add(style.hidden);
+    newStepWrapper?.classList.remove(style.hidden);
 
-    setActiveStep(newStepIndex);
+    setActiveStep(nextStep);
   };
 
   const handleNext = (currentStepIndex) => {
