@@ -1623,7 +1623,9 @@ const sidebarSettings = {
                 id: "reference/global-configs/behavior-changes",
               },
               items: [
+                "reference/global-configs/behavior-flag-introduction",
                 "reference/global-configs/behavior-flag-maturity",
+                "reference/global-configs/behavior-flag-removed",
               ],
             },
             {

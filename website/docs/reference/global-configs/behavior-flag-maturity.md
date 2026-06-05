@@ -76,7 +76,7 @@ Project hooks ([`on-run-start` / `on-run-end`](/reference/project-configs/on-run
 
 ```yaml
 on-run-start:
-  - '{{ ... if flags.WHICH != 'freshness' }}'
+  - "{{ ... if flags.WHICH != 'freshness' }}"
 ```
 </File>
 
@@ -156,28 +156,6 @@ flags:
 
 ### `skip_nodes_if_on_run_start_fails`
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-
-<div>
-
-<h4 style={{marginTop: 0}}>Previous behavior (`false`)</h4>
-
-If an `on-run-start` hook fails, dbt logs the error and continues executing all selected nodes. The run finishes with one `ERROR` (the hook) but models still build.
-
-</div>
-
-<div>
-
-<h4 style={{marginTop: 0}}>New behavior (`true`)</h4>
-
-If any `on-run-start` hook fails, every selected node is skipped. The run finishes with the hook `ERROR` and every model marked `SKIP`.
-
-</div>
-
-</div>
-
-#### Impact
-
 If your project uses `on-run-start` hooks for non-critical work (for example, telemetry, notifications, audit inserts, attaching session settings), your build will stop producing output whenever a hook fails. Tables and views that previously refreshed daily will stop updating the next time the hook fails.
 
 For more information, refer to [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end).
@@ -185,54 +163,10 @@ For more information, refer to [`on-run-start` / `on-run-end`](/reference/projec
 
 ### `require_nested_cumulative_type_params`
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-
-<div>
-
-<h4 style={{marginTop: 0}}>Previous behavior (`false`)</h4>
-
-A cumulative metric using the legacy `type_params.window` / `type_params.grain_to_date` syntax is parsed successfully and emits a `MFCumulativeTypeParamsDeprecation` warning.
-
-</div>
-
-<div>
-
-<h4 style={{marginTop: 0}}>New behavior (`true`)</h4>
-
-The legacy structure raises a validation error from the semantic manifest validator. `dbt parse` fails &mdash; no nodes run, no models build, no tests execute.
-
-</div>
-
-</div>
-
-#### Impact
-
 Any project with a cumulative metric still using the un-nested syntax stops parsing entirely on the first command. Because parsing fails, the error affects every dbt command: `run`, `build`, `test`, `compile`, `docs generate`, the <Constant name="semantic_layer" />, and more.
 
 
 ### `require_all_warnings_handled_by_warn_error`
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-
-<div>
-
-<h4 style={{marginTop: 0}}>Previous behavior (`false`)</h4>
-
-`--warn-error` only escalates warnings that explicitly call the internal `warn_or_error()` handler. Warnings fired through the standard event system are logged to output only and bypass `--warn-error` entirely.
-
-</div>
-
-<div>
-
-<h4 style={{marginTop: 0}}>New behavior (`true`)</h4>
-
-Every `warn`-level event is routed through the `--warn-error` / `--warn-error-options` handler. Warnings that were previously log only can now stop the build.
-
-</div>
-
-</div>
-
-#### Impact
 
 This only affects projects that use `warn_error: true` or `--warn-error` &mdash; common in CI or in <Constant name="dbt_platform" /> production jobs configured for strict mode. Projects without `--warn-error` are not affected.
 
@@ -272,28 +206,6 @@ We recommend the following rollout plan when setting the `require_all_warnings_h
 
 This flag is only relevant if your project has a custom `get_incremental_microbatch_sql` macro. If you don't have a custom microbatch macro, you don't need to set this flag.
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-
-<div>
-
-<h4 style={{marginTop: 0}}>Previous behavior (`false`)</h4>
-
-The custom `get_incremental_microbatch_sql` macro is called once with the full date range per run. dbt emits a `MicrobatchMacroOutsideOfBatchesDeprecation` warning.
-
-</div>
-
-<div>
-
-<h4 style={{marginTop: 0}}>New behavior (`true`)</h4>
-
-dbt orchestrates batches and calls the macro once per `event_time_start` / `event_time_end` window. The deprecation warning is suppressed.
-
-</div>
-
-</div>
-
-#### Impact
-
 If you have overridden `get_incremental_microbatch_sql` &mdash; typically to work around an adapter limitation or implement a custom partition strategy &mdash; your macro is invoked under a batched contract for which it was never written. Possible outcomes:
 
 - The macro ignores the smaller `event_time_start` / `event_time_end` window and re-processes the full range every batch, leading to wasted compute, duplicate rows, or `MERGE`/`INSERT` conflicts.
@@ -305,28 +217,6 @@ Projects without a custom microbatch macro are unaffected; the built-in macro al
 
 ### `state_modified_compare_more_unrendered_values`
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-
-<div>
-
-<h4 style={{marginTop: 0}}>Previous behavior (`false`)</h4>
-
-`unrendered_config` stores the rendered value of Jinja expressions in YAML configs. For example, `materialized: "{{ env_var('MAT', 'view') }}"` is stored as `materialized: "view"`. `state:modified` comparisons use the post-render value.
-
-</div>
-
-<div>
-
-<h4 style={{marginTop: 0}}>New behavior (`true`)</h4>
-
-`unrendered_config` stores the literal Jinja text. `state:modified` comparisons reflect changes to the expression itself, even when the rendered value is identical.
-
-</div>
-
-</div>
-
-#### Impact
-
 Flipping the default to `true` for this flag silently changes the `state:modified` selection set that most CI, Slim CI, and `dbt build --defer` workflows rely on. There are two ways this surfaces:
 
 - **False "modified" on the first run after the flag flips.** If the baseline manifest was captured before the flag flipped (rendered values stored) and the current parse runs after the flip (literal text stored), every node whose YAML config contains Jinja will appear as `state:modified`, even if nothing has changed. This causes a full rebuild on the first CI run after the upgrade.
@@ -334,28 +224,6 @@ Flipping the default to `true` for this flag silently changes the `state:modifie
 
 
 ### `require_yaml_configuration_for_mf_time_spines`
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-
-<div>
-
-<h4 style={{marginTop: 0}}>Previous behavior (`false`)</h4>
-
-A project using the legacy `metricflow_time_spine.sql` model without a YAML `time_spine` declaration parses successfully and emits `MFTimespineWithoutYamlConfigurationDeprecation`.
-
-</div>
-
-<div>
-
-<h4 style={{marginTop: 0}}>New behavior (`true`)</h4>
-
-The project continues to parse and run in exactly the same way, but the deprecation warning is suppressed.
-
-</div>
-
-</div>
-
-#### Impact
 
 This flag has no functional impact; the legacy time-spine model continues to work in both cases. The only visible changes are:
 
@@ -366,28 +234,6 @@ For more information, refer to [MetricFlow timespine](/docs/build/metricflow-tim
 
 
 ### `validate_macro_args`
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', marginBottom: '20px'}}>
-
-<div>
-
-<h4 style={{marginTop: 0}}>Previous behavior (`false`)</h4>
-
-When a macro has a YAML patch whose argument names, count, or types don't match the Jinja `{% macro name(args) %}` signature, dbt silently accepts the patch.
-
-</div>
-
-<div>
-
-<h4 style={{marginTop: 0}}>New behavior (`true`)</h4>
-
-dbt parses the Jinja signature, compares it against the YAML patch, and raises `InvalidMacroAnnotation` warnings for any mismatches. These warnings are handled by `--warn-error`.
-
-</div>
-
-</div>
-
-#### Impact
 
 On its own, the flag emits warnings and builds continue. However, these warnings use the force-handled path and respect `--warn-error`, so projects with `--warn-error` set will see build failures at parse time.
 
