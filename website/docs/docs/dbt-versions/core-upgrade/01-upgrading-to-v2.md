@@ -29,8 +29,8 @@ Two dbt distributions build on the Fusion runtime:
 
 | Distribution | Install | License | What you get |
 |---|---|---|---|
-| **Fusion** | [Multiple installation options](/docs/local/install-dbt?version=2.0) | Proprietary | dbt Core v2.0 foundation plus Fusion features: SQL comprehension, column-level lineage, and more. |
-| **dbt Core v2.0** | `pip install dbt-core` | Apache 2.0 | Open-source Rust-based runtime. Faster parsing and execution. |
+| **Fusion** | pip, brew, winget, CDN — [see all options](/docs/local/install-dbt?version=2.0) | Proprietary | dbt Core v2.0 foundation plus Fusion features: SQL comprehension, column-level lineage, and more. |
+| **dbt Core v2.0** | pip, brew | Apache 2.0 | Open-source Rust-based runtime. Faster parsing and execution. |
 
 ## Installation
 
@@ -38,11 +38,15 @@ For most users, the recommended path is to install Fusion as it includes all of 
 
 ### Fusion
 
-Install the [<Constant name="fusion" /> release candidate](/docs/local/install-dbt?version=2.0) today.
+Install Fusion using pip, or see all [installation options](/docs/local/install-dbt?version=2.0) (brew, winget, CDN):
+
+```shell
+pip install dbt
+```
 
 ### dbt Core v2.0
 
-If you specifically need the open-source distribution of v2, you must target an explicit pin during the alpha. You can copy the following commands to install the alpha and immediately update to the most recent version:
+If you specifically need the open-source distribution of v2, install dbt Core. During alpha, you must target an explicit pin. You can copy the following commands to install the alpha and immediately update to the most recent version:
 
 ```shell
 pip install dbt-core==2.0.0-alpha.1
@@ -51,9 +55,9 @@ dbt system update
 
 ## What to know before upgrading
 
-We are taking this opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
+This new major version is an opportunity to _strengthen the framework_ by removing deprecated functionality, rationalizing confusing behavior, and providing more rigorous validation on erroneous inputs. This means that there is some work involved in preparing an existing dbt project for v2.
 
-That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [Fusion upgrade agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
+That work is documented below — it should be simple, straightforward, and in many cases, auto-fixable with the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper or the [agent skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt-migration/skills/migrating-dbt-core-to-fusion).
 
 :::tip Test Fusion parser compatibility from dbt Core v1.12
 
@@ -71,7 +75,7 @@ The following adapters are supported in v2.0:
 
 ### A clean slate
 
-dbt Labs is committed to moving forward with v2, and it will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
+v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
 - Some [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
@@ -80,14 +84,6 @@ dbt Labs is committed to moving forward with v2, and it will not support any dep
 The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external_tables`, `dbt_project_evaluator`) are already compatible with Fusion. External packages published by organizations outside of dbt may use outdated code or incompatible features that fail to parse with the new Fusion engine. We're working with those package maintainers to make packages available for Fusion. Packages requiring an upgrade to a new release for Fusion compatibility, will be documented in this upgrade guide.
 
 ## New and changed features and functionality
-
-### dbt State <Lifecycle status="preview" />
-
-dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in the <Constant name="fusion_engine" />, and is also available for earlier versions of dbt Core via `pip install dbt-state`.
-
-To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state) from your CLI. It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings) &mdash; enabling dbt State on every `dbt run` or `dbt build` for you. 
-
-To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml`. You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ### Changed functionality
 
@@ -267,14 +263,6 @@ dbt found two docs with the same name: 'docs_block_title' in files: 'models/crm/
 
 To resolve this error, rename any duplicate docs blocks. 
 
-#### End of support for legacy manifest versions
-
-You can no longer interoperate with pre-1.8 versions of dbt-core if you're a:
-- Hybrid customer running Fusion and an old (pre-v1.8) version of dbt Core
-- Customer upgrading from an old (pre-v1.8) version of dbt Core to v2
-
-Fusion cannot interoperate with the old manifest, which powers features like deferral for `state:modified` comparison.
-
 #### `dbt clean` will not delete any files in configured resource paths or files outside the project directory
 
 In dbt Core v1, `dbt clean` deletes:
@@ -407,10 +395,12 @@ return('xyz') + 'abc'
 {% endmacro %}
 ```
 
-This is no longer supported in v2 and will return an error: 
+This is no longer supported in v2 and will emit a warning:
 
 ```bash
-error: dbt1501: Failed to add template invalid operation: return() is called in a non-block context
+[warning] [JinjaTopLevelReturn (dbt1508)]: return is not at the top level of the block.
+Its value is final and cannot be modified by surrounding expressions.
+Example: return(0) + 1. The + 1 is ignored and the macro returns 0.
 ```
 
 This is not a common use case and there is no deprecation warning for this behavior in v1. The supported format is:
