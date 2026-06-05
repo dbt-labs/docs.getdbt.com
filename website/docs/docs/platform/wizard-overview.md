@@ -36,14 +36,24 @@ To learn more about <Constant name="wizard" /> and see it in action, check out t
 <WizardFeedbackCallout />
 
 ## Use dbt Wizard
-<Constant name="wizard" /> is available in:
 
-- **[<Constant name="dbt_platform" />](/docs/platform/wizard-platform)**:  Use <Term id="managed" /> AI provider keys or bring your own key (BYOK) credentials for a [supported provider](#supported-ai-providers). Available in public preview for <Constant name="studio_ide"/> and in public beta for the <Constant name="wizard"/> home tab.
-- **[Terminal](/docs/dbt-ai/wizard-cli)** (public beta): Use BYOK credentials for a [supported provider](#supported-ai-providers).
-
-For more info on pricing, refer to the [Billing](/docs/platform/billing) page.
+<Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working locally in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
 
 <Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+
+The following table shows where <Constant name="wizard" /> is available, the AI keys each surface uses, and how usage is billed:
+
+<SimpleTable>
+
+| Where | Status | AI provider keys | Availability and cost |
+|---|---|---|---|
+| [<Constant name="dbt_platform" /> — <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) | Public preview | Managed keys, or BYOK | Managed usage is included with [dbt AI](/docs/platform/billing#dbt-ai-usage-metering-and-limiting) by plan (not available on Developer). BYOK is available on Enterprise and Enterprise+. |
+| [<Constant name="dbt_platform" /> — <Constant name="wizard" /> home tab](/docs/platform/wizard-home) | Public beta | Managed keys, or BYOK | Same as <Constant name="studio_ide" />. |
+| [Terminal (CLI)](/docs/dbt-ai/wizard-cli) | Public beta | BYOK, or OpenAI subscription |You pay your AI provider directly. Works with or without a <Constant name="dbt_platform" /> account. |
+
+</SimpleTable>
+
+For included action limits by plan and how managed usage is metered, refer to the [Billing](/docs/platform/billing) page. To bring your own key, refer to [supported providers](#supported-ai-providers) on this page.
 
 <WizardSupportedProviders />
 
@@ -104,5 +114,7 @@ Now that you know where to start, continue with the **[Quickstart](/docs/dbt-ai/
 
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
 - [Skills](/docs/dbt-ai/wizard-skills) — give dbt Wizard reusable instructions for your project
+- [Use MCP servers (CLI)](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
+- [Use subagents](/docs/dbt-ai/wizard-subagents) — delegate work to specialized agents
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
 - [dbt MCP server](/docs/dbt-ai/about-mcp) — bring dbt context into any MCP-compatible AI tool
