@@ -74,6 +74,7 @@ A standalone account makes sense if you:
 <FAQ path="State/data-storage" />
 <FAQ path="State/last-updated-timestamp" />
 <FAQ path="State/model-change-calculation" />
+<FAQ path="State/views-rebuilt" />
 <FAQ path="State/server-failure" />
 <FAQ path="State/multiple-projects" />
 <FAQ path="State/non-prod-environment" />

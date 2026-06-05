@@ -28,7 +28,7 @@ import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
 To use state-aware orchestration, make sure you meet these prerequisites:
 
 - You must have a <Constant name="dbt" /> [Enterprise and Enterprise+ accounts](https://www.getdbt.com/signup/) and a [Developer seat license](/docs/platform/manage-access/seats-and-users).
-- You have updated the environment that will run state-aware orchestration to the <Constant name="fusion_engine" />. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-fusion).
+- You have updated the environment that will run state-aware orchestration to the <Constant name="fusion_engine" />. For more information, refer to [Upgrading to dbt Fusion engine](/docs/dbt-versions/core-upgrade/upgrading-to-v2).
 - Your account must have access to state-aware orchestration. Contact your account manager to request access.
 - You must have a dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections).
 - You must have [access permission](/docs/platform/manage-access/about-user-access) to view, create, modify, or run jobs.
