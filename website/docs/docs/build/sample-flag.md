@@ -24,7 +24,7 @@ The `--sample` flag will become more robust over time, but it only supports time
 
 ## Using the `--sample` flag
 
-The `--sample` flag is available for the [`run`](/reference/commands/run) and [`build`](/reference/commands/build) commands. When used, sample mode generates filtered refs and sources. Since it's using time-based sampling, if you have refs like `{{ ref('some_model') }}` being sampled, you need to set [`event_time`](/reference/resource-configs/event-time) for `some_model` to the field that will be used as the timestamp. 
+The `--sample` flag is available for the [`run`](/reference/commands/run) and [`build`](/reference/commands/build) commands. When used, sample mode wraps each `ref()` and `source()` in a time filter on that resource's configured [`event_time`](/reference/resource-configs/event-time) column. There is no automatic timestamp detection. If `event_time` is not configured on an upstream model, source, or seed, dbt reads the full table instead.
 
 There are two time-based sample specifications supported for sample mode:
 - **Relative time specs:** Filters sampled data from the time the command is run back to a specified integer and granularity. Supported granularities are:
@@ -34,6 +34,9 @@ There are two time-based sample specifications supported for sample mode:
     - Years
 - **Static time specs:** Filters your data between a defined start and end period using date and/or timestamp.
 
+dbt applies the filter as a subquery with a `WHERE` clause, limited to the time window you pass to `--sample`. Relative time specs are calculated from the time the command runs (UTC).
+
+When you use `--sample`, dbt executes your model SQL against the warehouse and builds tables containing only data from the specified time window.
 
 ### Examples
 
@@ -43,33 +46,39 @@ Let's say you want to run your `stg_customers` model and build the table in your
 dbt run --select path/to/stg_customers --sample="3 days"
 ```
 
-If you have an even larger model, for example, `stg_orders` you can set sample mode to hours:
+If you have an even larger model, for example, `stg_orders`, you can set sample mode to hours:
 
 ```
-dbt run --select path/to/stg_customers --sample="6 hours"
+dbt run --select path/to/stg_orders --sample="6 hours"
 ```
 
-Next, let's say you want to validate data for your entire business from a sample size further in the past - your busiest week in July, from the first until closing time on the eighth. You can run the following: 
+Next, to sample a fixed historical time range instead of a window relative to when the command runs, specify a start and end date or timestamp. For example, to validate data for your entire business during your busiest week in July, from the first until closing time on the eighth:
 
 ```
 dbt run --sample="{'start': '2024-07-01', 'end': '2024-07-08 18:00:00'}"
 ```
 
-To prevent a `ref` from being sampled, append `.render()` to it:
+To prevent a `ref()` or `source()` from being sampled, append `.render()` to it. For example, you might keep a small dimension table unfiltered while still sampling a large fact table:
 
 ```sql
-
 with
 
-source as (
+customers as (
 
     select * from {{ ref('stg_customers').render() }}
 
 ),
 
-...
+orders as (
 
+    select * from {{ source('jaffle_shop', 'orders') }}
+
+)
+
+select *
+from orders
+left join customers using (customer_id)
 ```
 
-dbt will then execute the model SQL against the target data warehouse and build the tables with data from the sample sizes.
+In this example, `orders` is sampled using the `event_time` configured on the `jaffle_shop.orders` source. `stg_customers` is not sampled because `.render()` skips the time filter for that `ref()`.
  
