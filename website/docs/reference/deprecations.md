@@ -7,9 +7,9 @@ intro_text: "Deprecations are about features in your project code (models, confi
 
 Deprecated functionality still works in the v1.10 release but is no longer supported and will be removed in a future version. Deprecations currently show as warnings but don't prevent runs and other commands (unless you've configured [warnings as errors](/reference/global-configs/warnings)), but will cause errors after upgrading if not addressed. 
 
-Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
+Not the same as [behavior change flags](/reference/global-configs/behavior-changes) (which are opt-in/out flags in your `dbt_project.yml` file) or [deprecated CLI flags](/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags) (which are command-line flags being removed in <Constant name="fusion" />). See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-fusion)? You must resolve all deprecations listed on this page before upgrading.
+Upgrading to [<Constant name="fusion" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2)? You must resolve all deprecations listed on this page before upgrading.
 
 :::
 
@@ -35,7 +35,7 @@ The `--no-partial-parse` flag ensures that even deprecations only picked up duri
 
 When you use the <Constant name="fusion_engine" />, omit `--no-partial-parse` from the command above. That flag is deprecated in <Constant name="fusion" /> and may log deprecation warning `dbt1700`. Run `dbt parse --show-all-deprecations` without `--no-partial-parse`.
 
-For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-fusion#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
+For more information, refer to [Deprecated flags](/docs/dbt-versions/core-upgrade/upgrading-to-v2#deprecated-flags) in the guide to upgrading to the <Constant name="fusion_engine" />.
 
 :::
 

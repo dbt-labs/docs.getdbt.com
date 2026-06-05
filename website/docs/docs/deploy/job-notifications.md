@@ -287,7 +287,7 @@ Before you begin:
 - You have a Microsoft Teams account that you want to receive job notifications from.
 - Make sure you have permission to view the **Account integrations** and **Job notifications** pages in <Constant name="dbt_platform" />.
 
-Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
+Once an account admin links the Microsoft Teams app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
 - The [**Notification Manager**](/docs/platform/manage-access/enterprise-permissions) permission set (Enterprise). This permission manages notifications across all projects without full Account Admin access
 
