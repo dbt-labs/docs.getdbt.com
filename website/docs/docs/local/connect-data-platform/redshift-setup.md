@@ -154,7 +154,7 @@ import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 | `tcp_keepalive_idle`  | 200 | Number of seconds of inactivity before the first keep-alive probe is sent |
 | `tcp_keepalive_interval`  | 200 | Number of seconds of inactivity before the next probe is sent |
 | `tcp_keepalive_count`  | 5 | Number of times probes will be sent |
-| `drop_without_cascade`  | false | Optional, default `False`. Omits `CASCADE` from `DROP` statements. Available in `dbt-redshift` v1.11.0rc3 and later. |
+| `drop_without_cascade`  | false | Optional, default `False`. Omits `CASCADE` from `DROP TABLE/VIEW/MATERIALIZED VIEW` statements. Available in `dbt-redshift` v1.11.0rc3 and later. |
 
 For your tcp_keepalive inputs, we recommend taking a look at the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/troubleshooting-connections.html) for more information on the right configuration for you. 
 
@@ -352,10 +352,10 @@ To run certain macros with autocommit, load the profile with autocommit using th
 
 ### `drop_without_cascade`
 
-When set to `true`, dbt emits `DROP TABLE`, `DROP VIEW`, and `DROP MATERIALIZED VIEW` statements without `CASCADE`. On Redshift clusters with many dependent objects, resolving the `CASCADE` dependency graph on every drop adds overhead. For projects with no downstream view dependencies, enabling `drop_without_cascade` reduces that overhead.
+Set `drop_without_cascade: true` to omit `CASCADE` from `DROP TABLE`, `DROP VIEW`, and `DROP MATERIALIZED VIEW` statements. Use this when your project has no downstream dependents (for example, it uses only unbound views) and you want to avoid the overhead of resolving the `CASCADE` dependency graph on every drop for large clusters.
 
 :::info
-This option is intended for projects with no dependent views downstream of dropped relations. If a dependent object exists and `CASCADE` is omitted, Redshift raises an error.
+This option is intended for projects with no downstream dependents. If a dependent object exists and `CASCADE` is omitted, Redshift raises an error.
 :::
 
 ### `sort` and `dist` keys
