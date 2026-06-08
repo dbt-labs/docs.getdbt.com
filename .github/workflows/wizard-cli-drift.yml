@@ -110,6 +110,12 @@ jobs:
           DRIFT_DIFF: ${{ steps.drift.outputs.diff }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          # Ensure the labels exist so `gh issue create` doesn't fail on a
+          # missing label (only `wizard-cli-drift` is guaranteed to pre-exist).
+          gh label create wizard-cli-drift --repo "$GITHUB_REPOSITORY" --color BFD4F2 --description "Wizard CLI reference drift" 2>/dev/null || true
+          gh label create documentation --repo "$GITHUB_REPOSITORY" --color 0075CA --description "Documentation changes" 2>/dev/null || true
+          gh label create chore --repo "$GITHUB_REPOSITORY" --color FEF2C0 --description "Maintenance / chore" 2>/dev/null || true
+
           WIZARD_VER=$(dbt-wizard --version 2>/dev/null || echo "unknown")
           SLASH_ALERT=""
           if [ "$SLASH_REACHABLE" = "false" ]; then
