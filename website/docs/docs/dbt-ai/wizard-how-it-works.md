@@ -124,7 +124,7 @@ Use the [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) for local deve
 
 ### Connections and authentication (MCP)
 
-<Constant name="wizard" /> can connect to MCP servers from the CLI, including the [dbt MCP server](/docs/dbt-ai/about-mcp), for access to platform APIs, <Constant name="semantic_layer" /> metadata, and cross-project context.
+<Constant name="wizard" /> can connect to MCP servers from the CLI, including the [dbt MCP server](/docs/dbt-ai/about-mcp), for access to platform APIs, <Constant name="semantic_layer" /> metadata, and cross-project context. For the complete setup (like supported server types, configuration keys, authentication, and examples), refer to [Use MCP servers with the <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-mcp).
 
 To connect to an MCP server, run the following commands, replacing `MCP_NAME` with a name of your choice and `YOUR_MCP_URL` with the URL of the MCP server:
 

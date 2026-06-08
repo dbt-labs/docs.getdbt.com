@@ -123,10 +123,14 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
     dbt build
     ```
 
-This will:
-- Load example data into your warehouse
-- Create, build, and test models
-- Verify your dbt environment is fully operational
+    #### Viewing metadata in Catalog
+
+    Run `dbt build --write-catalog` locally to generate docs metadata (`dbt build` alone does not generate docs metadata). To view that metadata in <Constant name="catalog" />, run a job in <Constant name="dbt_platform" /> so the metadata is uploaded. For details, refer to [Platform behavior](/reference/commands/cmd-docs?version=2.0#platform-behavior).
+
+    This will:
+    - Load example data into your warehouse
+    - Create, build, and test models
+    - Verify your dbt environment is fully operational
 
 ## Explore with the dbt VS Code extension
 
