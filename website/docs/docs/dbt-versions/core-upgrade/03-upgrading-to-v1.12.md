@@ -20,19 +20,13 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### dbt State <Lifecycle status="preview" />
-
-dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in <Constant name="core" /> v1.12.
-
-To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state). It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings); enabling dbt State on every `dbt run` or `dbt build` for you. 
-
-To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml` instead. You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
-
 ### `dbt login`
 
-`dbt login` signs you in to dbt from the command line to access features that require authentication. It opens a browser prompt to sign in to an existing dbt platform account or create a free one. Run `dbt login` status to check your current authentication status.
+In <Constant name="core" /> v1.12, [`dbt login`](/reference/commands/login) is used exclusively to enable [dbt State](/docs/deploy/dbt-state-about) (a paid feature available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users). `dbt login` opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a [standalone dbt State account](https://app.state.dbt.com). It automatically sets `manage_state: true` in [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings), enabling dbt State on every `dbt run` or `dbt build`.
 
-Use `dbt login` for [dbt State](/reference/commands/login#dbt-login-with-dbt-state) or local development (interactive authentication) on macOS, Linux, or Windows. Refer to [`dbt login`](/reference/commands/login) for more info.
+Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
+
+In the <Constant name="fusion_engine" />, `dbt login` unlocks a broader set of features beyond dbt State, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login).
 
 ### Opt-in v2 parser <Lifecycle status="beta" />
 

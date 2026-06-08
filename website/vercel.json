@@ -39,6 +39,11 @@
   ],
   "redirects": [
     {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-fusion",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v2",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-ai/dbt-agents",
       "destination": "/docs/dbt-ai/about-dbt-ai",
       "permanent": true

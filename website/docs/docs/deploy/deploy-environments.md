@@ -93,7 +93,7 @@ Finally, the staging environment has its own view in [<Constant name="catalog" /
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/create-staging-environment.png" width="85%" title="Create a staging environment" />
 
 
-Follow the steps outlined in [deployment credentials](#deployment-connection) to complete the remainder of the environment setup.
+Follow the steps outlined in [connection profiles](/docs/platform/about-profiles) to complete the remainder of the environment setup.
 
 We recommend that the data warehouse credentials be for a dedicated user or service principal.
 
@@ -162,92 +162,11 @@ This section will not appear if you are using Spark, as all values are inferred 
 </WHCode>
 
 
-### Deployment credentials
+### Connection profiles
 
-This section allows you to determine the credentials that should be used when connecting to your warehouse. The authentication methods may differ depending on the warehouse and <Constant name="dbt" /> tier you are on.
+Deployment credentials are managed through connection profiles, which are created at the project level and assigned to deployment environments. Profiles define the credentials and attributes dbt uses to connect to your warehouse.
 
-For all warehouses, use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
-
-<WHCode>
-
-<div warehouse="Postgres">
-
-<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="85%" title="Postgres Deployment Credentials Settings"/>
-
-#### Editable fields
-
-- **Username**: Postgres username to use (most likely a service account)
-- **Password**: Postgres password for the listed user
-- **Schema**: Target schema
-
-</div>
-
-<div warehouse="Redshift">
-
-<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="85%" title="Redshift Deployment Credentials Settings"/>
-
-#### Editable fields
-
-- **Username**: Redshift username to use (most likely a service account)
-- **Password**: Redshift password for the listed user
-- **Schema**: Target schema
-
-</div>
-
-<div warehouse="Snowflake">
-
-<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-credentials.png" width="85%" title="Snowflake Deployment Credentials Settings"/>
-
-#### Editable fields
-
-- **Auth Method**: This determines the way dbt connects to your warehouse
-  - One of: [**Username & Password**, **Key Pair**]
-- If **Username & Password**:
-  - **Username**: username to use (most likely a service account)
-  - **Password**: password for the listed user
-- If **Key Pair**:
-  - **Username**: username to use (most likely a service account)
-  - **Private Key**: value of the Private SSH Key (optional in the user interface, but required for key pair authentication when dbt runs)
-  - **Private Key Passphrase**: value of the Private SSH Key Passphrase (optional, only if required)
-- **Schema**: Target Schema for this environment
-
-</div>
-
-<div warehouse="Bigquery">
-
-<Lightbox src="/img/docs/collaborate/bigquery-deploy-env-deploy-credentials.png" width="85%" title="Bigquery Deployment Credentials Settings"/>
-
-#### Editable fields
-
-- **Dataset**: Target dataset
-
-Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
-
-</div>
-
-<div warehouse="Spark">
-
-<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="85%" title="Spark Deployment Credentials Settings"/>
-
-#### Editable fields
-
-- **Token**: Access token
-- **Schema**: Target schema
-
-</div>
-
-<div warehouse="Databricks">
-
-<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="85%" title="Databricks Deployment Credentials Settings"/>
-
-#### Editable fields
-
-- **Token**: Access token
-- **Schema**: Target schema
-
-</div>
-
-</WHCode>
+To configure credentials for this environment, refer to [About dbt platform profiles](/docs/platform/about-profiles).
 
 ## Delete an environment
 

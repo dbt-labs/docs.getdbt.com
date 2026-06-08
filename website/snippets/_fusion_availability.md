@@ -1,5 +1,5 @@
 :::info Not sure where to start?
-Try out the [<Constant name="fusion" /> quickstart](/guides/fusion) and check out the [<Constant name="fusion" /> migration guide](/docs/dbt-versions/core-upgrade/upgrading-to-fusion) to see how to migrate your project.
+Try out the [<Constant name="fusion" /> quickstart](/guides/fusion) and check out the [<Constant name="fusion" /> migration guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) to see how to migrate your project.
 :::
 
 <Constant name="fusion_engine" /> powers dbt development everywhere, including the [<Constant name="dbt_platform" />](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine), [VS Code/Cursor/Windsurf](/docs/about-dbt-extension), and [locally](/docs/local/install-dbt?version=2#installation).
