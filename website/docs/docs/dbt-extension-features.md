@@ -220,7 +220,7 @@ The **Catalog** tab is an advanced feature. Before your 14-day trial expires, [s
 
 ## Generate a system report
 
-Generate a system report to collect your extension logs and system information into a zip file. This is useful when troubleshooting issues with the dbt VS Code extension. You can share the zip file with dbt Labs support to help diagnose problems.
+Generate a system report to collect your VS Code extension logs and system information into a zip file. This is useful when troubleshooting issues with the dbt VS Code extension. You can share the zip file with dbt Labs support to help diagnose problems.
 
 To generate and download a system report:
 
