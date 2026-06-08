@@ -16,7 +16,7 @@ Since behavior change flags are different from other dbt changes, it's important
 
 See the [Changes overview](/reference/changes-overview) for a quick comparison.
 
-If you're upgrading to [dbt Fusion](/docs/dbt-versions/core-upgrade/upgrading-to-v2) or [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2), all behavior change flags are removed and the new behavior is always enabled.
+If you're upgrading to [dbt Fusion](/docs/dbt-versions/core-upgrade/upgrading-to-v2) or [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2), a subset of behavior change flags are removed and their new behavior is always enabled.
 
 :::
 
