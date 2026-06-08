@@ -121,6 +121,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ### Redshift
 
 - The new `datasharing` profile credential enables `dbt-redshift` to use Redshift-native metadata commands (`SHOW` commands such as `SHOW TABLES` and `SHOW COLUMNS`) instead of PostgreSQL catalog tables such as `pg_*` and `information_schema`. This supports cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).<Lifecycle status="beta" />
+- The `drop_without_cascade` profile credential emits `DROP TABLE/VIEW/MATERIALIZED VIEW` statements without `CASCADE`. Redshift resolves the `CASCADE` dependency graph on every `DROP`, which adds overhead on large clusters. If your project has no downstream dependents (for example, it uses only unbound views) you can set `drop_without_cascade: true` to skip that cost. When enabled and a dependent object exists, Redshift raises an error. For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup).
 
 ### Spark
 

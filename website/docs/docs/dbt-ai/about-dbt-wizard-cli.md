@@ -63,6 +63,12 @@ Looking for the in-platform experience? Visit [About <Constant name="wizard" /> 
     icon="wizard"/>
 
 <Card
+    title="Use MCP servers"
+    body="Connect the dbt Wizard CLI to MCP servers for more tools and context."
+    link="/docs/dbt-ai/wizard-mcp"
+    icon="wizard"/>
+
+<Card
     title="CLI commands"
     body="Curated reference for common wizard subcommands and global flags."
     link="/docs/dbt-ai/wizard-cli-reference"
