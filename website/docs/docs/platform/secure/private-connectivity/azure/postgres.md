@@ -50,4 +50,4 @@ From your Azure portal:
 
 Once you've completed the setup in the Azure environment, you can configure a private endpoint in <Constant name="dbt" />:
 
-<PrivateLinkCreateConnection platform="Postgres" publicLabel="Default Endpoint" privateLabel="PrivateLink Endpoint" />
+<PrivateLinkCreateConnection platform="Postgres"  />

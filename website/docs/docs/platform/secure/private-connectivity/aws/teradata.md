@@ -60,4 +60,4 @@ The following steps walk you through the setup of a Teradata VantageCloud AWS Pr
 
 Once you've completed the setup with dbt Support, you can configure a private endpoint in <Constant name="dbt" />:
 
-<PrivateLinkCreateConnection platform="Teradata" field="Host field" endpointNote=" by the display name you submitted in the support ticket" />
+<PrivateLinkCreateConnection platform="Teradata"  />

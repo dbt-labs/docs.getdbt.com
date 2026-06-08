@@ -50,4 +50,4 @@ From your Azure portal:
 
 Once you've completed the step above, you can configure a private endpoint in <Constant name="dbt" />:
 
-<PrivateLinkCreateConnection platform="Synapse" publicLabel="Default Endpoint" privateLabel="PrivateLink Endpoint" />
+<PrivateLinkCreateConnection platform="Synapse" />
