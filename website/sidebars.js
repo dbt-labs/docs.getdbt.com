@@ -280,6 +280,7 @@ const sidebarSettings = {
                         "docs/platform/secure/private-connectivity/azure/azure-databricks",
                         "docs/platform/secure/private-connectivity/azure/azure-postgres",
                         "docs/platform/secure/private-connectivity/azure/azure-synapse",
+                        "docs/platform/secure/private-connectivity/azure/azure-fabric",
                         "docs/platform/secure/private-connectivity/azure/azure-teradata",
                         "docs/platform/secure/private-connectivity/azure/azure-self-hosted",
                       ],
