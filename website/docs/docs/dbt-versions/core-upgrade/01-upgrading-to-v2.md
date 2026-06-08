@@ -15,7 +15,9 @@ import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flag
 dbt Core v2.0 is currently in alpha. This does not affect the Fusion in platform rollout, which continues on its existing track.
 :::
 
-v2.0 marks a new foundation for dbt: a faster, Rust-based runtime, rebuilt from the ground up and available in two distributions. For most users, the right choice is [Fusion](/docs/fusion/about-fusion), which extends the open-source core with SQL comprehension, column-level lineage, instant feedback, and platform-connected workflows. For license-aware customers, we offer [dbt Core v2.0](/docs/local/install-dbt), a distribution that includes only Apache 2.0 open-source code. Both distributions share the same project language and DAG semantics, so once you upgrade to v2.0, your existing dbt project works with either distribution.
+v2.0 marks a new foundation for dbt: a faster, Rust-based runtime, rebuilt from the ground up and available in two distributions. For most users, the right choice is [Fusion](/docs/fusion/about-fusion), which extends the open-source core with SQL comprehension, column-level lineage, instant feedback, and platform-connected workflows.
+
+For license-aware customers, we offer [dbt Core v2.0](/docs/local/install-dbt), a distribution that includes only Apache 2.0 open-source code. Both distributions share the same project language and DAG semantics, so once you upgrade to v2.0, your existing dbt project works with either distribution.
 
 <FusionLifecycle />
 
@@ -30,7 +32,7 @@ Two dbt distributions build on the Fusion runtime:
 | Distribution | Install | License | What you get |
 |---|---|---|---|
 | **Fusion** | pip, brew, winget, CDN — [see all options](/docs/local/install-dbt?version=2.0) | Proprietary | dbt Core v2.0 foundation plus Fusion features: SQL comprehension, column-level lineage, and more. |
-| **dbt Core v2.0** | pip, brew | Apache 2.0 | Open-source Rust-based runtime. Faster parsing and execution. |
+| **dbt Core v2.0** | pip, brew | Apache 2.0 | Open-source Rust-based runtime: Faster parsing and execution. |
 
 ## Installation
 
@@ -133,17 +135,11 @@ relation_via_api: my_db.my_schema.my_table
 
 #### Deprecated flags
 
-:::info What are "deprecated flags"?
-
-Deprecated flags are command-line flags (like `--models`, `--print`) that you pass to dbt commands. These are being removed in v2.
-
-This is different from:
+Deprecated flags are command-line flags (like `--models`, `--print`) that you pass to dbt commands. These are being removed in v2. This is different from:
 - [Deprecation warnings](/reference/deprecations) &mdash; Features in your project code (models, YAML, macros) that need to be updated
 - [Behavior change flags](/reference/global-configs/behavior-changes) &mdash; Flags in `dbt_project.yml` that let you opt in/out of new behaviors
 
 See the [Changes overview](/reference/changes-overview) for a full comparison.
-
-:::
 
 Some historic CLI flags from v1 will no longer do anything in v2. If you pass them into a dbt command in v2, the command will not error, but the flag will do nothing (and warn accordingly).
 
@@ -281,7 +277,7 @@ In v2, `dbt build` runs _all_ of the unit tests _first_, and then builds the res
 
 <Constant name="core_v1" /> runs with `--threads 1` by default. You can increase this number to run more nodes in parallel on the remote data platform, up to the max parallelism enabled by the DAG.
 
-Version 2 handles threading differently depending on your data platform:
+v2 handles threading differently depending on your data platform:
 
 <FusionThreads />
 
