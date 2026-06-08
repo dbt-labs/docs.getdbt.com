@@ -7,6 +7,7 @@ pagination_next: null
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
@@ -55,10 +56,4 @@ The following steps walk you through the setup of a Databricks Azure Private Lin
 
 Once you've completed the setup in the Databricks environment, you can configure a private endpoint in <Constant name="dbt" />:
 
-1. Navigate to **Account Settings** → **Connections** and select **Create new connection**.
-2. Select **Databricks**.
-3. You will see two radio buttons: **Public** and **Private**. Select **Private**.
-4. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-5. Configure the remaining data platform details.
-6. Test your connection and save it.
-7. To use this connection, navigate to **Account Settings** → **Projects**, select your project, and choose the PrivateLink connection you created at the **Configure your development environment** step.
+<PrivateLinkCreateConnection platform="Databricks" />
