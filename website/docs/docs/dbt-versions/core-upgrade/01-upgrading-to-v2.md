@@ -58,7 +58,6 @@ pip install --pre dbt-core
 Explicit pin:
 ```shell
 pip install dbt-core==2.0.0-alpha.1
-dbt system update
 ```
 
 ## What to know before upgrading
