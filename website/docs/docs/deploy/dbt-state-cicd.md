@@ -49,7 +49,7 @@ DBT_ENV_SECRET_STATE_OAUTH_CLIENT_SECRET=your-client-secret
 
 Make sure to replace `your-client-id` and `your-client-secret` with the values from your OAuth client.
 
-## Verify dbt State is active
+## Verifying dbt State is active
 
 1. Run any dbt transformation job in your orchestrated environment.
 2. Check the log output. You should see a message like this, then the specific dbt State step status:
