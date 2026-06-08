@@ -53,7 +53,7 @@ If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass 
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
 
-In <Constant name="core" /> v2.0 and later, authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across the CLI, dbt VS Code extension, dbt State (if you log in using <Constant name="dbt_platform" />). Go through the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
+Authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across the CLI, dbt VS Code extension, dbt State (if you log in using <Constant name="dbt_platform" />). Go through the [get started wizard](/docs/install-dbt-extension#getting-started) or run `dbt login` from your terminal, then restart or reload VS Code. The extension detects your login automatically.
 
 ### The dbt extension menu
 
