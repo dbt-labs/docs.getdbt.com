@@ -17,7 +17,7 @@
 
 \* *Managed: <Constant name="dbt" /> Labs manages the AI provider connection; no user provider key is required. Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more info.*
 
-<sup>†</sup> *Anthropic enterprise and subscription licenses (such as Claude Enterprise) aren't supported — Anthropic's [terms of service](https://www.anthropic.com/legal/consumer-terms) prohibit third-party harness use. BYOK requires an Anthropic API key.*
+<sup>†</sup> *Anthropic enterprise and subscription licenses (such as Claude Enterprise) aren't supported per Anthropic's [terms of service](https://www.anthropic.com/legal/consumer-terms). BYOK requires an Anthropic API key.*
 
 <br />
 
