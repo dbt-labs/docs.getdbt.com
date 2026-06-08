@@ -8,6 +8,8 @@ sidebar_label: "Microsoft Fabric"
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
+# Configuring Private Link for Microsoft Fabric <Lifecycle status="beta"/>
+
 <SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 The following steps walk you through the setup of a Private Link endpoint for Microsoft Fabric in a <Constant name="dbt" /> multi-tenant environment.
