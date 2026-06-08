@@ -32,7 +32,7 @@ Use the `providers` subcommand to enable a provider and store credentials:
 
 ```bash
 wizard providers list
-wizard providers configure openai_subscription    # or openai, anthropic, bedrock, azure, gemini, snowflake
+wizard providers configure openai_subscription    # or openai, bedrock, azure, gemini, snowflake
 wizard providers enable openai_subscription
 ```
 
