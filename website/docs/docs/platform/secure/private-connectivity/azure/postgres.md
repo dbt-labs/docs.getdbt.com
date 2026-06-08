@@ -49,8 +49,10 @@ From your Azure portal:
 
 Once you've completed the setup in the Azure environment, you can configure a private endpoint in <Constant name="dbt" />:
 
-1. Navigate to **Settings** → **Create new project** → select **Postgres**. 
-2. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+1. Navigate to **Account Settings** → **Connections** and select **Create new connection**.
+2. Select **Postgres**.
+3. You will see two radio buttons: **Default Endpoint** and **PrivateLink Endpoint**. Select **PrivateLink Endpoint**.
+4. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+5. Configure the remaining data platform details.
+6. Test your connection and save it.
+7. To use this connection, navigate to **Account Settings** → **Projects**, select your project, and choose the PrivateLink connection you created at the **Configure your development environment** step.
