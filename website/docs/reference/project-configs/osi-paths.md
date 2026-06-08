@@ -3,7 +3,6 @@ datatype: [directorypath]
 default_value: [OSI]
 ---
 
-
 <VersionCallout version="1.12" />
 
 <File name='dbt_project.yml'>
