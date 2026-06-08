@@ -178,7 +178,7 @@ DBT_ENGINE_MANAGE_STATE=1 dbt run --target dev --select "customers"
 ## Related docs
 
 - [About dbt State](/docs/deploy/dbt-state-about)
-- [CI/CD setup](/docs/deploy/dbt-state-cicd)
+- [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [Configuring deferral](/docs/deploy/dbt-state-deferral)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
