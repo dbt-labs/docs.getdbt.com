@@ -118,21 +118,19 @@ Eligible new organizations receive 30 days of free use with no usage limit. Afte
 
 ### dbt State pricing
 
-dbt State is a separate, usage-based product available to both dbt Core and dbt platform users.
+dbt State is a separate, usage-based product available to dbt Core, dbt platform, and dbt Fusion engine users.
 
 ### Cancellation
 
 Usage is tracked through your cancellation date. You're billed at month end for usage incurred before cancellation and not charged for usage after.
 
-### Target table
-
-A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models) and unique tests (including tests with `store_failures` enabled or disabled). When you run `dbt build` or similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules.
-
-All reuses of the same active target table inside of a single day (based on UTC time) are counted as a single daily active target table (DATT).
-
 ### Daily active target tables
 
-For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables for which dbt State performs a unique skip or clone, and unique test reuse operations on a given calendar day.
+For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables (as defined below) for which dbt State performs at least one of the following unique operations on a given day (based on UTC time): a skip, clone, or test reuse.
+
+A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models). It also includes each distinct test (even if the tests are not built into the database because `store_failures` is disabled). For example, if `stg_customers` has `not_null` and `unique` tests on its `id` column, that's three target tables: the model and its two tests.
+
+When you run `dbt build` or a similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules. All reuses of the same active target table in a single day (based on UTC time) are counted as a single daily active target table (DATT).
 
 ### Monthly cost calculation
 
