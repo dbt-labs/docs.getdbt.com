@@ -102,54 +102,66 @@ jobs:
         if: (steps.drift.outputs.changed == 'true' || steps.slash_source.outputs.reachable == 'false') && steps.existing.outputs.number == ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Pass dynamic/untrusted values through the environment instead of
+          # splicing them into the script with ${{ }}. The diff contains the
+          # wizard --help output (backticks, $(...), flag syntax) which would
+          # otherwise be executed as shell when interpolated into a heredoc.
+          SLASH_REACHABLE: ${{ steps.slash_source.outputs.reachable }}
+          DRIFT_DIFF: ${{ steps.drift.outputs.diff }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           WIZARD_VER=$(dbt-wizard --version 2>/dev/null || echo "unknown")
           SLASH_ALERT=""
-          if [ "${{ steps.slash_source.outputs.reachable }}" = "false" ]; then
-            SLASH_ALERT="
-          > **⚠️ Slash command source unreachable** — \`wizard/dbt-codex/codex-rs/tui/src/slash_command.rs\` could not be fetched from \`dbt-fivetran-collab/june-1-tmp-monorepo\`. The repo may have moved or been archived. Update \`GH_REPO\` and \`SLASH_CMD_PATH\` in \`generate-wizard-cli-reference.js\` and regenerate. The existing \`_wizard-slash-commands-generated.md\` file is preserved and the live page is unaffected until you update the script.
-          "
+          if [ "$SLASH_REACHABLE" = "false" ]; then
+            SLASH_ALERT="> **⚠️ Slash command source unreachable** — \`wizard/dbt-codex/codex-rs/tui/src/slash_command.rs\` could not be fetched from \`dbt-fivetran-collab/june-1-tmp-monorepo\`. The repo may have moved or been archived. Update \`GH_REPO\` and \`SLASH_CMD_PATH\` in \`generate-wizard-cli-reference.js\` and regenerate. The existing \`_wizard-slash-commands-generated.md\` file is preserved and the live page is unaffected until you update the script."
           fi
+          # Build the body in a file so untrusted diff content is never evaluated.
+          {
+            echo "## Wizard CLI reference drift detected"
+            echo
+            echo "The weekly drift check found changes that require a docs update."
+            echo
+            echo "**Binary version:** $WIZARD_VER"
+            echo "**Workflow run:** $RUN_URL"
+            if [ -n "$SLASH_ALERT" ]; then
+              echo
+              echo "$SLASH_ALERT"
+            fi
+            echo
+            echo "### What to do"
+            echo
+            echo "1. If the slash command source path changed, update \`GH_REPO\` / \`SLASH_CMD_PATH\` in \`website/scripts/generate-wizard-cli-reference.js\`."
+            echo "2. Install the latest wizard binary locally:"
+            echo '   ```bash'
+            echo "   curl -fsSL https://public.staging.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh"
+            echo '   ```'
+            echo "3. Regenerate the reference partials:"
+            echo '   ```bash'
+            echo "   cd website && npm run generate:wizard-cli"
+            echo '   ```'
+            echo "4. Review the diff, update any curated prose if needed, commit, and open a PR."
+            echo
+            echo "### Diff (truncated to 8 000 chars)"
+            echo
+            echo '```diff'
+            printf '%s\n' "$DRIFT_DIFF"
+            echo '```'
+          } > issue_body.md
           gh issue create \
             --repo "$GITHUB_REPOSITORY" \
             --title "chore: wizard CLI reference needs update (drift or source change detected)" \
             --label "wizard-cli-drift,documentation,chore" \
-            --body "$(cat <<BODY
-          ## Wizard CLI reference drift detected
-
-          The weekly drift check found changes that require a docs update.
-
-          **Binary version:** $WIZARD_VER
-          **Workflow run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          $SLASH_ALERT
-
-          ### What to do
-
-          1. If the slash command source path changed, update \`GH_REPO\` / \`SLASH_CMD_PATH\` in \`website/scripts/generate-wizard-cli-reference.js\`.
-          2. Install the latest wizard binary locally:
-             \`\`\`bash
-             curl -fsSL https://public.staging.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
-             \`\`\`
-          3. Regenerate the reference partials:
-             \`\`\`bash
-             cd website && npm run generate:wizard-cli
-             \`\`\`
-          4. Review the diff, update any curated prose if needed, commit, and open a PR.
-
-          ### Diff (truncated to 8 000 chars)
-
-          \`\`\`diff
-          ${{ steps.drift.outputs.diff }}
-          \`\`\`
-          BODY
-          )"
+            --body-file issue_body.md
 
       - name: Add comment to existing drift issue
         if: (steps.drift.outputs.changed == 'true' || steps.slash_source.outputs.reachable == 'false') && steps.existing.outputs.number != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ steps.existing.outputs.number }}
+          RUN_ID: ${{ github.run_id }}
+          SLASH_REACHABLE: ${{ steps.slash_source.outputs.reachable }}
         run: |
           WIZARD_VER=$(dbt-wizard --version 2>/dev/null || echo "unknown")
-          gh issue comment "${{ steps.existing.outputs.number }}" \
+          gh issue comment "$ISSUE_NUMBER" \
             --repo "$GITHUB_REPOSITORY" \
-            --body "Still detected as of run ${{ github.run_id }} (binary: $WIZARD_VER). Slash source reachable: ${{ steps.slash_source.outputs.reachable }}. Run \`cd website && npm run generate:wizard-cli\` to refresh."
+            --body "Still detected as of run $RUN_ID (binary: $WIZARD_VER). Slash source reachable: $SLASH_REACHABLE. Run \`cd website && npm run generate:wizard-cli\` to refresh."
