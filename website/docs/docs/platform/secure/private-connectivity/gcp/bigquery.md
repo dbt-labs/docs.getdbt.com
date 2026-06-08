@@ -47,9 +47,4 @@ Once dbt Support completes the configuration, you can start creating new connect
 
 <PrivateLinkCreateConnection
   platform="BigQuery"
-  publicLabel="Default Endpoint"
-  privateLabel="PrivateLink Endpoint"
-  field="API endpoint field"
-  remainingDetails="Input any remaining data platform details, including the BigQuery credentials you might have created in previous steps."
-  testLine="Save the connection and test in either a project job or Studio session."
 />
