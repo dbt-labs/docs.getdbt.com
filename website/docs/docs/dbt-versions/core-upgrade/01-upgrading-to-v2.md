@@ -48,8 +48,14 @@ pip install dbt
 
 ### dbt Core v2.0
 
-If you specifically need the open-source distribution of v2, install dbt Core. During alpha, you must target an explicit pin. You can copy the following commands to install the alpha and immediately update to the most recent version:
+If you specifically need the open-source distribution of v2, install dbt Core. During alpha, you must target either the pre-release version or an explicit pin. You can copy the following commands to install the alpha and immediately update to the most recent version:
 
+Pre-release version:
+```shell
+pip install --pre dbt-core
+```
+
+Explicit pin:
 ```shell
 pip install dbt-core==2.0.0-alpha.1
 dbt system update
