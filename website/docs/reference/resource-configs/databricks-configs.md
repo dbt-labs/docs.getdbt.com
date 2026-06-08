@@ -136,6 +136,36 @@ models:
 
 </File>
 
+#### Controlling the serverless environment version
+_Available in versions 1.11.4 or higher_
+
+When you run a Python model on serverless compute, dbt-databricks can build the serverless environment for you. There are two ways to control it:
+
+- **Let dbt generate the environment.** Set the top-level `environment_key` config (which binds the serverless task to an environment) together with `environment_dependencies` (the list of packages to install in that environment). When both are set, dbt emits an `environments` block whose `spec` uses environment version `4` and your `environment_dependencies`. The default environment version `4` is set by dbt-databricks; Databricks documents the available serverless [environment versions](https://docs.databricks.com/aws/en/release-notes/serverless/environment-version/) separately.
+- **Define the environment yourself.** Provide an `environments` block under `python_job_config` to set the environment version explicitly (for example, to pin a version other than `4`). You still need to set the top-level `environment_key` so the task references the environment you define &mdash; the key must match the `environment_key` inside the `environments` block.
+
+When you supply your own `environments` block, dbt does not generate one from `environment_dependencies`: the `dependencies` you list in the block replace those auto-generated dependencies (they do not merge). This block does not affect the model's `packages`, which are installed as cluster libraries independently of the `environments` block.
+
+<File name='schema.yml'>
+
+```yaml
+models:
+  - name: my_model
+    config:
+      submission_method: serverless_cluster
+      create_notebook: true
+      environment_key: "default"
+
+      python_job_config:
+        environments:
+          - environment_key: "default"
+            spec:
+              environment_version: "3"
+              dependencies: ["pandas"]
+```
+
+</File>
+
 
 ## Configuring columns
 _Available in versions 1.10 or higher_
