@@ -16,7 +16,7 @@ Before you begin:
 
 - dbt State supports Snowflake, Databricks, BigQuery, and Redshift.
 - You can connect dbt State to an existing <Constant name="dbt_platform" /> account or use a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state).
-- dbt State is a paid subscription service. For pricing details, see [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+- dbt State is a paid subscription service. For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
 Select the option that matches your setup:
 
