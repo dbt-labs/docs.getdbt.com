@@ -124,7 +124,7 @@ To install the plugin:
    pip install dbt-state
    ```
 
-dbt State is now enabled. When you execute `dbt run`, a browser window opens where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). After authenticating, dbt State runs automatically on every `dbt run` or `dbt build`.
+dbt State is now enabled. The first time you execute `dbt run` or `dbt build`, a browser window opens where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). After authenticating, dbt State runs automatically on every `dbt run` or `dbt build`.
 
 The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
