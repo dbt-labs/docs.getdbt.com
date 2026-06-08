@@ -15,6 +15,10 @@ To-do:
 See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
 :::
 
+:::note
+See [Spark on dbt Core v2 and Fusion](#spark-on-core-v2-and-fusion) for what's currently supported and what is coming soon to the next-gen dbt runtime.
+:::
+
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](/reference/model-configs).
@@ -332,6 +336,36 @@ There are three profile configurations available:
 | `query_retries` | Integer |	1 |	How many times the adapter retries when connection loss occurs during query execution. |
 
 The adapter catches specific connection exceptions (such as `ConnectionResetError`, `BrokenPipeError`, and `TTransportException`) and retries with a fresh cursor when connection loss occurs. After exhausting all retries, dbt raises a `DbtRuntimeError` and suggests increasing `query_retries` in your profile.
+
+## Spark on Core v2 and Fusion
+
+:::note
+The Spark adapter for dbt Core v2 and Fusion is currently in Beta. Some functionality is already usable, but there are some rough edges that we're working on. Keep on reading to learn more.
+:::
+
+The Spark adapter for dbt Core v2/Fusion supports Spark Connect. To use Spark Connect, add the following to your `profiles.yml`:
+```yaml
+spark-connect:
+  target: spark
+  outputs:
+    spark:
+      type: spark
+      method: spark-connect   # synonyms: sc, connect
+      port: 15002
+      user: lucas   # "user" is optional. When set, will be passed as the `user_id`
+      auth: TOKEN   # You can also use auth=NONE for skipping authentication
+      token: myauthtoken   # "token" or "password" is required when auth=TOKEN
+      host: yoursparkhost.com
+      schema: the_schema
+      server_side_parameters:   # your Spark session parameters
+        "spark.sql.<...>": "session-parameter-value"
+```
+
+The following features have not been implemented yet:
+
+- The SQL understanding module of dbt Fusion for Spark is currently the exact same as Databricks'. This means it is less strict than it should be, since Databricks SQL is a superset of Spark SQL, i.e not all valid Databricks SQL is valid Spark SQL.
+- Currently incremental models are not supported. We're working on it!
+- Python models are not supported yet.
 
 
 </VersionBlock>
