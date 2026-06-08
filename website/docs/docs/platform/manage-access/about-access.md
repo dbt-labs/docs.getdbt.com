@@ -180,8 +180,6 @@ You can also add the Analyst read permission set to an existing group.
 4. Select the projects the permission set should apply to. **All projects** is the default option.
 5. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-create-group.png" width="75%" title="Create a group and assign the Analyst read permission set" />
-
 **2. Assign users the read-only license and add them to the group**
 
 You can skip or automate this step if license mapping and group mapping are enabled through SSO or SCIM. Use this flow to test with a single user.
@@ -190,7 +188,9 @@ You can skip or automate this step if license mapping and group mapping are enab
 2. Select the user you want to add to the group.
 3. Select the group you want to add the user to and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-assign-user.png" width="75%" title="Assign a user the read-only license and add them to the group" />
+<Lightbox src="/img/docs/dbt-platform/access-control/analyst-read-permission.png" width="75%" title="Assign a user the read-only license and add them to the group" />
+
+For more information, refer to [Grant access](/docs/platform/manage-access/about-user-access#grant-access).
 
 ## Role-based access control <Lifecycle status="managed,managed_plus" />
 

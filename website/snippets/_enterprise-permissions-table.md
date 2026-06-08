@@ -86,30 +86,30 @@ Key:
 
 #### Account access for project permissions
 
-<FilterableTable>
+
 | Account-level permission | Admin | Analyst | Analyst read | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
-| Account settings         |   R   |    -    |      -       |         -           |          -           |       R        |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
+| Account settings         |   R   |    -    |      R       |         -           |          -           |       R        |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
 | Auth provider            |   -   |    -    |      -       |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Billing                  |   -   |    -    |      -       |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Connections              |   R   |    R    |      R       |        R<sup>*</sup>|          R           |       R        |     R     |     R     |     R     |     R       |      -      |    -     |        -       |      R      |     R      |
-| Cost Insights            |   -   |    -    |      -       |         R           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
-| Groups                   |   R   |    -    |      -       |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
+| Cost Insights            |   -   |    -    |      R       |         R           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
+| Groups                   |   R   |    -    |      R       |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
 | Invitations              |   W   |    R    |      R       |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      R      |     R      |
 | Licenses                 |   W   |    R    |      R       |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      -      |     R      |
-| Members                  |   W   |    -    |      -       |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
+| Members                  |   W   |    -    |      R       |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
 | Project (create)         |   -   |    -    |      -       |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Public models            |   R   |    R    |      R       |         -           |          -           |       R        |     R     |     R     |     R     |     R       |      R      |     R    |        R       |      R      |     R      |
 | Service tokens           |   -   |    -    |      -       |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
 | Webhooks                 |   W   |    -    |      -       |         -           |          -           |       -        |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-</FilterableTable>
+
 
 <sup>*</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
 #### Project access for project permissions
 
 <FilterableTable>
-|Project-level permission  | Admin | Analyst | Analyst read | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|Project-level permission  | Admin | Analyst | Analyst read<sup>***</sup> | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Fusion admin | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
 |--------------------------|:-----:|:-------:|:------------:|:-------------------:|:--------------------:|:--------------:|:---------:|:------------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:---------------------------------------:|:--------------:|:-----------:|:----------:|
 | Environment credentials  |   W   |    R    |      R       |         -           |          -           |       W        |     R     |      -       |     R     |     W     |      R      |    -        |      -      |                  -                      |        -       |     R       |     R      |
 | Custom env. variables    |   W   |    W<sup>**</sup>  |      R       |         -           |          -           |       W        |     W<sup>**</sup>    |      -       |     W     |     W     |      R      |     -       |      R      |                  -                      |        -       |     R       |     W      |
@@ -131,3 +131,5 @@ Key:
 <sup>*</sup>These permissions are `R`ead-only by default, but may be changed to `W`rite with [environment permissions](/docs/platform/manage-access/environment-permissions#environments-and-roles).
 
 <sup>**</sup>Custom env. variables for the `Developer` and `Analyst` roles are set in the **Credentials** section of **Account settings**.
+
+<sup>***</sup>The **Analyst read** permission set also includes `user_credential_write`, letting users manage their own credentials on the **Credentials** page (under **Your profile**).
