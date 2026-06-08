@@ -73,7 +73,7 @@ Notable features:
 - Can access <Constant name="catalog" />.
 - No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
 
-To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-access#set-up-read-only-user-access).
+To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
 
 </Expandable>
 <Expandable alt_header="Billing admin">
