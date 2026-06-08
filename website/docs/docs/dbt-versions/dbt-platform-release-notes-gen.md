@@ -17,6 +17,53 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## June 3, 2026
+
+## New
+
+### dbt Copilot and agents
+
+- **Debug with Copilot from run and job surfaces**: A new "Debug with Copilot" button appears on failed run detail pages, runs lists, job details, environment runs, and the project home activity feed. Clicking it opens dbt Copilot or the full-page Wizard to investigate and debug the failed run. Please contact your account manager to enable.
+
+### dbt platform
+
+- **dbt State trial progress, stats, and usage on settings page**: The dbt State settings page now shows a trial progress bar (days elapsed of 30), monthly model reuse stats (models reused, build reduction percentage, and query run time reduction), and a model build chart. These sections appear when an account has an active dbt State subscription.
+- **Delete private link endpoint**: You can now delete private link endpoints from the endpoint details page. A confirmation modal requires you to type `DELETE` before the deletion proceeds. Please contact your account manager to enable.
+
+### APIs, Identity, and Administration
+
+- **OAuth consent improvements**: OAuth consent now recognizes the `identity:read` scope, displaying a "Read user details" label and description. Scopes limited to `identity:read` and `offline_access` no longer show the project access selector.
+
+## Enhancements
+
+### dbt platform
+
+- **AI providers settings page consolidated**: The Copilot and Wizard settings pages are unified under a single "AI providers" page at `/settings/accounts/{id}/pages/ai`. The previous `/pages/copilot` URL redirects automatically, and the sidebar item and page title now use "AI providers."
+- **"Enable dbt State" checked by default on job create**: When creating a new job, the **Enable dbt State** checkbox is now checked by default on both Mantle and Fusion environments when dbt State is available and an active subscription is present.
+- **dbt State model build chart adds "Reused (cloned)" series**: The dbt State model build chart now tracks three series — Built, Reused (no-op), and Reused (cloned) — giving a more detailed breakdown of model reuse.
+- **Teams notifications generally available**: Microsoft Teams notifications no longer require a feature flag. The Teams integration now appears in the OAuth integrations card and notification settings for all accounts.
+- **Private endpoints page shows Beta badge and updated info banner**: The private endpoints list and create pages now display a "Beta" badge in the header. The info banner on the create page is no longer dismissible and has updated copy clarifying that self-serve creation is available only for Snowflake AWS.
+
+### Orchestration and run status
+
+- **Reused node status in run results**: Studio IDE now recognizes and surfaces the `reused` node status in run results and metadata counts, giving you a more accurate picture of what ran during a dbt invocation.
+
+## Fixes
+
+### Orchestration and Run Status
+
+- **Run list action buttons fixed and clickable**: Action buttons on the runs list (for example, "Debug with Copilot") no longer silently navigate to the run detail page instead of triggering the intended action.
+
+### Catalog
+
+- **Accurate health status filtering for stale assets**: The Catalog health filter now correctly classifies assets with a healthy bitmask but a last successful run older than 30 days as "Caution" instead of "Healthy." Assets whose last run was marked `reused` continue to be treated as healthy.
+
+## Behavior Changes
+
+### dbt Copilot and agents
+
+- **Agent validates autofix with `dbt build` instead of `dbt compile`**: dbt Wizard autofix and model change validation is improved by defaulting to broader `dbt build` commands.
+
 ## May 27, 2026
 
 ## New
