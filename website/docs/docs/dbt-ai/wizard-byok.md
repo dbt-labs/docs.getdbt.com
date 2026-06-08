@@ -80,6 +80,10 @@ export OPENAI_API_KEY="sk-..."
 export ANTHROPIC_API_KEY="sk-ant-..."
 ```
 
+:::note
+Anthropic enterprise and subscription licenses (such as Claude Enterprise or a Claude subscription) aren't supported. Anthropic's [terms of service](https://www.anthropic.com/legal/consumer-terms) prohibit using a third-party harness with a Claude subscription or enterprise plan. To use Anthropic with BYOK, you need an Anthropic API key.
+:::
+
 </TabItem>
 </Tabs>
 
