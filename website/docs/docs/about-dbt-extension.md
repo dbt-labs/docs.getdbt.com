@@ -43,12 +43,12 @@ Check out the following video to see the features and functionality of the dbt V
 
 ### Sign in and feature access
 
-After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available free for 14 days &mdash; no account needed! After that, [sign in or register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account to keep using advanced features. Previously only registered users had access to the dbt VS Code extension.
+After you install the dbt VS Code extension, all [features](/docs/dbt-extension-features) are available for 14 days with no registration! After that, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account to keep using advanced features. Previously only registered users had access to the dbt VS Code extension.
 
-Without an account, the vast majority of features continue to work. Only advanced features prompt you to sign in after the trial period ends.
+Without registration, the vast majority of features continue to work. Only advanced features prompt you to register or sign-in to an existing account after the trial period ends.
 
-:::note Strict static analysis requires sign-in from day one
-If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass `--static-analysis strict` at runtime, a <Constant name="dbt_platform" /> account is required regardless of the 14-day trial period.
+:::note Strict static analysis requires registration
+If your project uses `static_analysis: strict` in `dbt_project.yml` or you pass `--static-analysis strict` at runtime, registration for a <Constant name="dbt_platform" /> account is required regardless of the trial status.
 :::
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
