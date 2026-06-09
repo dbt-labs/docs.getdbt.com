@@ -2,7 +2,7 @@
 title: "Wizard CLI command reference"
 id: "wizard-cli-reference"
 description: "Full reference for all wizard subcommands and global flags."
-sidebar_label: "CLI commands"
+sidebar_label: "Command reference"
 tags: [AI, Wizard, Reference]
 image: /img/docs/wizard-cli-intro.png
 ---
@@ -29,6 +29,6 @@ If you see any issues, please [file an issue](https://github.com/dbt-labs/docs.g
 ## Related docs
 
 - [Slash command reference](/docs/dbt-ai/wizard-slash-commands) for interactive TUI slash commands
-- [Non-interactive mode](/docs/dbt-ai/wizard-headless)
+- [Headless mode](/docs/dbt-ai/wizard-headless)
 - [Configuration reference](/docs/dbt-ai/wizard-config)
 - [dbt command reference](/reference/dbt-commands) for `dbt run`, `dbt build`, and other dbt Core commands

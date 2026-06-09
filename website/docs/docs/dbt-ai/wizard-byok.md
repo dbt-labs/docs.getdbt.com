@@ -1,7 +1,7 @@
 ---
 title: "Configure BYOK for dbt Wizard"
 id: "wizard-byok"
-description: "Bring your own API key to use dbt Wizard CLI. Supports OpenAI, Anthropic, AWS Bedrock, and Snowflake Cortex (preview)."
+description: "Bring your own API key to use dbt Wizard CLI. Supports OpenAI, Anthropic, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview)."
 sidebar_label: "BYOK configuration"
 tags: [AI, Wizard, Configuration]
 ---
@@ -32,7 +32,7 @@ Use the `providers` subcommand to enable a provider and store credentials:
 
 ```bash
 wizard providers list
-wizard providers configure openai_subscription    # or openai, anthropic, bedrock, azure, snowflake
+wizard providers configure openai_subscription    # or openai, bedrock, azure, gemini, snowflake
 wizard providers enable openai_subscription
 ```
 
@@ -55,7 +55,7 @@ Credentials are stored in `~/.dbt/wizard/provider-auth.json`. Provider settings 
 
 The first time you start <Constant name="wizard" /> in a project, onboarding prompts you to choose a provider:
 
-1. At the **Configure a Provider** prompt, select your provider (OpenAI subscription, OpenAI API key, Anthropic, Amazon Bedrock, Azure, or Snowflake).
+1. At the **Configure a Provider** prompt, select your provider (OpenAI subscription, OpenAI API key, Anthropic, Amazon Bedrock, Azure, Google Gemini, or Snowflake).
 2. Paste your API key or cloud credential details when prompted, then press **Enter**.
 3. Choose an AI model to finish.
 

@@ -69,42 +69,15 @@ wizard system uninstall
 
 ## Telemetry
 
-<Constant name="wizard" /> collects anonymous product telemetry to improve the AI agent experience. This data helps us understand usage patterns, optimize performance, and attribute compute costs — without ever capturing your code, queries, or file contents.
+<Constant name="wizard" /> collects anonymous product telemetry to improve the AI agent experience, understand usage patterns, optimize performance, and attribute compute costs without capturing your code, queries, prompts, responses, or file contents.
 
-### What we don't collect
-
-- Prompt or response content (your conversations with the AI)
-- SQL queries, file paths, or dbt node names
-- MCP tool call arguments or outputs
-- Raw API keys or tokens (only SHA-256 hashed identifiers)
-- Error messages containing user content (limited to error class/code only)
-
-### What we do collect
-
-High-level, anonymous usage signals only:
-
-- **Session events** for when a session starts and ends, client surface (CLI/VS Code/Desktop), model selected, OS/arch, binary version, session duration, and turn count
-- **Turn events** for per-conversation-turn status (completed/failed/interrupted), duration, and aggregate token counts
-- **Tool usage** for which tool was called, whether it succeeded, and execution time. Tool arguments and outputs are never collected.
-- **LLM request metadata** for model, provider, latency, token counts, and estimated cost for each request routed through the gateway. No prompt or response content.
-
-### How to opt out
-
-<Constant name="wizard" /> respects the following opt-out mechanisms, checked in order:
-
-1. `DO_NOT_TRACK=1` environment variable (community standard)
-2. `DBT_SEND_ANONYMOUS_USAGE_STATS=false` environment variable
-3. Consent stored in `~/.dbt/.user.yml`
-
-Setting any of these disables all client-side telemetry. Note that LiteLLM Gateway telemetry is server-side infrastructure monitoring and does not require user opt-in.
-
-For dbt Core's general usage stats stance, refer to [Usage statistics](/reference/global-configs/usage-stats).
+For details about what is collected, what is not collected, and how to opt out of client telemetry, refer to [<Constant name="wizard" /> CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry).
 
 ## Related docs
 
-- [Quickstart](/docs/dbt-ai/wizard-quickstart): Get up and running with <Constant name="wizard" /> in your terminal or in the <Constant name="dbt_platform" />
+- [Get started with the local CLI](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
 - [Configure BYOK](/docs/dbt-ai/wizard-byok): Manage your API key and choose an AI model
 - [Command reference](/docs/dbt-ai/wizard-cli-reference): Full reference for all `wizard` subcommands and global flags
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios
 - [Migrate from another AI agent](/docs/dbt-ai/wizard-migrate): Migrate from another AI agent to <Constant name="wizard" />
-- [Telemetry](#telemetry): What dbt Wizard collects and how to opt out
+- [CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry): What <Constant name="wizard" /> CLI collects and how to opt out

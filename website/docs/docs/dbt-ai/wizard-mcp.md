@@ -18,6 +18,26 @@ The Model Context Protocol (MCP) connects <Constant name="wizard" /> to external
 
 For background on MCP itself, refer to the [Model Context Protocol introduction](https://modelcontextprotocol.io/introduction). For the dbt-maintained server specifically, refer to the [dbt MCP server](/docs/dbt-ai/about-mcp).
 
+## Locations and precedence
+
+MCP servers are configured under `[mcp_servers.NAME]` in `config.toml`. Use user-level config for servers you want in every local project, and project-level config for servers that should travel with a trusted repo.
+
+The following table summarizes where <Constant name="wizard" /> looks for MCP server configuration. Use the intended locations for new MCP servers, and keep compatibility locations only when migrating existing setup. Project-level MCP config loads only for trusted projects. Within project-level locations, the current working directory wins over parent directories. Project-level servers win over user-level servers with the same name.
+
+<SimpleTable>
+
+| Location | Level | Use for new MCP servers? | Precedence |
+| --- | --- | --- | --- |
+| `.dbt/wizard/config.toml` | Project | Yes. Use `[mcp_servers.NAME]` here for repo-shared MCP servers. | Highest project MCP config location; closer to the current working directory wins over parent directories. |
+| `~/.dbt/wizard/config.toml` | User | Yes. Use this for MCP servers you want across all local projects. The `wizard mcp add` command writes here. | Below project config, above compatibility imports. |
+| `.mcp.json` | Project | No. Compatibility import for existing MCP setup. | Imported with the project config for the same directory. |
+| `~/.dbt/wizard/.mcp.json` | User | No. Compatibility import for existing MCP setup. | Imported with user config; takes precedence over `~/.mcp.json` if both exist. |
+| `~/.mcp.json` | User | No. Compatibility import for existing MCP setup. | User-level fallback. |
+
+</SimpleTable>
+
+Avoid defining the same MCP server name in more than one location unless you intentionally want the higher-precedence location to override it. If a compatibility `.mcp.json` file and `config.toml` in the same directory define the same server name, remove the duplicate and keep the intended `config.toml` entry.
+
 ## Why use an MCP server
 
 <Constant name="wizard"/> natively understands your dbt project. An MCP server extends that reach to the other tools and systems your work depends on, so you can do more without leaving your [session](/docs/dbt-ai/wizard-how-it-works#sessions). Each server you add gives <Constant name="wizard"/> a new set of tools it can call on your behalf. For example:
@@ -51,7 +71,7 @@ For either transport, <Constant name="wizard"/> reads the `instructions` field t
 
 ## Add an MCP server
 
-Use the `wizard mcp add` command, or edit `~/.dbt/wizard/config.toml` directly. Either one will write to the same `[mcp_servers.NAME]` configuration.
+Use the `wizard mcp add` command, or edit `~/.dbt/wizard/config.toml` directly. Either one writes user-level `[mcp_servers.NAME]` configuration.
 
 <Tabs>
 <TabItem value="stdio" label="Add a STDIO server">
@@ -88,7 +108,7 @@ To see all MCP subcommands, run `wizard mcp --help`. For the full list of flags,
 
 <TabItem value="config" label="Edit config.toml directly">
 
-Instead of the `wizard mcp add` command, you can edit `config.toml` yourself. <Constant name="wizard"/> stores MCP configuration in `~/.dbt/wizard/config.toml` alongside its other settings:
+Instead of the `wizard mcp add` command, you can edit `config.toml` yourself. <Constant name="wizard"/> stores user-level MCP configuration in `~/.dbt/wizard/config.toml` alongside its other settings:
 
 <File name='~/.dbt/wizard/config.toml'>
 
