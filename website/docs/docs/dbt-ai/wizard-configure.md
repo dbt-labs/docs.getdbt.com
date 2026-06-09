@@ -74,14 +74,15 @@ You can also change the model during a session with `/model`.
 
 ### Configure provider keys
 
-For BYOK, set provider credentials with environment variables or `wizard providers`. For OpenAI and Anthropic API keys, use:
+For BYOK, set provider credentials with environment variables or `wizard providers`. For OpenAI, Anthropic, and Amazon Bedrock API keys, use:
 
 ```bash
 export OPENAI_API_KEY=sk-...
 export ANTHROPIC_API_KEY=sk-ant-...
+export AWS_BEARER_TOKEN_BEDROCK=ABSK...
 ```
 
-For OpenAI subscription, AWS Bedrock, Azure, and Snowflake Cortex, use `wizard providers` or the `/providers` slash command instead of config file keys. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
+For OpenAI subscription, Azure, and Snowflake Cortex, use `wizard providers` or the `/providers` slash command instead of config file keys. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
 
 ### Change approval behavior
 
