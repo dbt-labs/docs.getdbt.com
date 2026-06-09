@@ -23,7 +23,7 @@ These flags work on the base interactive `wizard` command.
 | `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
 | `--remote <ADDR>` | — | string | Connect the TUI to a remote app server endpoint. |
 | `--remote-auth-token-env <ENV_VAR>` | — | string | Name of the environment variable containing the bearer token to send to a remote app server websocket |
-| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of wizard |
+| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of Wizard |
 | `-i, --image <FILE>...` | `-i` | path | Optional image(s) to attach to the initial prompt |
 | `-m, --model <MODEL>` | `-m` | enum | Model the agent should use |
 | `--oss` | — | boolean | Use open-source provider |
@@ -53,7 +53,6 @@ These flags work on the base interactive `wizard` command.
 | [`mcp-server`](#mcp-server) | — | Start Wizard as an MCP server (stdio) |
 | [`app-server`](#app-server) | — | [experimental] Run the app server or related tooling |
 | [`remote-control`](#remote-control) | — | [experimental] Manage the app-server daemon with remote control enabled |
-| [`app`](#app) | — | Launch the Wizard desktop app (opens the app installer if missing) |
 | [`completion`](#completion) | — | Generate shell completion scripts |
 | [`update`](#update) | — | Update Wizard to the latest version |
 | [`doctor`](#doctor) | — | Diagnose local Wizard installation, config, auth, and runtime health |
@@ -85,7 +84,7 @@ wizard exec [OPTIONS] <COMMAND> [ARGS]
 | `-c, --config <key=value>` | `-c` | string | Override a configuration value that would otherwise be loaded from `~/.dbt/wizard/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. |
 | `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
 | `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
-| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of wizard |
+| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of Wizard |
 | `-i, --image <FILE>...` | `-i` | path | Optional image(s) to attach to the initial prompt |
 | `-m, --model <MODEL>` | `-m` | enum | Model the agent should use |
 | `--oss` | — | boolean | Use open-source provider |
@@ -104,6 +103,8 @@ wizard exec [OPTIONS] <COMMAND> [ARGS]
 | `--output-schema <FILE>` | — | path | Path to a JSON Schema file describing the model's final response shape |
 | `--color <COLOR>` | — | enum | Specifies color settings for use in the output |
 | `--json` | — | boolean | Print events to stdout as JSONL |
+| `--include-subagent-events` | — | boolean | When --json is set, also capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
+| `--no-validation` | — | boolean | When set, the validation gate always responds with "declined" so the validation sub-agent is never spawned. Useful for benchmarking runs where sub-agent overhead is not desired |
 | `-o, --output-last-message <FILE>` | `-o` | path | Specifies file where the last message from the agent should be written |
 
 ## review {#review}
@@ -219,23 +220,6 @@ Start Wizard as an MCP server (stdio)
 | `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
 | `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
 
-## app {#app}
-
-Launch the Wizard desktop app (opens the app installer if missing)
-
-**Arguments:**
-
-| Argument | Description |
-|----------|-------------|
-| `[PATH]` | Workspace path to open in Wizard Desktop |
-
-| Flag | Short | Type | Description |
-|------|-------|------|-------------|
-| `-c, --config <key=value>` | `-c` | string | Override a configuration value that would otherwise be loaded from `~/.dbt/wizard/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. |
-| `--download-url <DOWNLOAD_URL_OVERRIDE>` | — | string | Override the app installer download URL (advanced) |
-| `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
-| `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
-
 ## completion {#completion}
 
 Generate shell completion scripts
@@ -334,7 +318,7 @@ Resume a previous interactive session (picker by default; use --last to continue
 | `--include-non-interactive` | — | boolean | Include non-interactive sessions in the resume picker and --last selection |
 | `--remote <ADDR>` | — | string | Connect the TUI to a remote app server endpoint. |
 | `--remote-auth-token-env <ENV_VAR>` | — | string | Name of the environment variable containing the bearer token to send to a remote app server websocket |
-| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of wizard |
+| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of Wizard |
 | `-i, --image <FILE>...` | `-i` | path | Optional image(s) to attach to the initial prompt |
 | `-m, --model <MODEL>` | `-m` | enum | Model the agent should use |
 | `--oss` | — | boolean | Use open-source provider |
@@ -370,7 +354,7 @@ Fork a previous interactive session (picker by default; use --last to fork the m
 | `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
 | `--remote <ADDR>` | — | string | Connect the TUI to a remote app server endpoint. |
 | `--remote-auth-token-env <ENV_VAR>` | — | string | Name of the environment variable containing the bearer token to send to a remote app server websocket |
-| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of wizard |
+| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of Wizard |
 | `-i, --image <FILE>...` | `-i` | path | Optional image(s) to attach to the initial prompt |
 | `-m, --model <MODEL>` | `-m` | enum | Model the agent should use |
 | `--oss` | — | boolean | Use open-source provider |
