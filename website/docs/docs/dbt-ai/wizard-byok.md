@@ -12,15 +12,16 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 # Configure BYOK for <Constant name="wizard" /> <Lifecycle status="beta"/>
 
 <IntroText>
-You can use the <Constant name="wizard" /> CLI with bring-your-own-key (BYOK), which means you supply credentials from a supported provider.
+You can use the <Constant name="wizard" /> CLI with bring-your-own-key (BYOK), which means you supply your own credentials from a supported AI provider instead of using dbt Labs' infrastructure.
 </IntroText>
 
 <WizardFeedbackCallout />
 
-The following BYOK instructions on this page apply to the CLI only. <Constant name="dbt_platform" /> uses a separate [account-level integration](/docs/platform/enable-dbt-ai). BYOK works as follows:
+The following BYOK instructions on this page apply to the CLI only. <Constant name="dbt_platform" /> uses a separate [account-level integration](/docs/platform/enable-dbt-ai).
 
-- <Constant name="wizard" /> calls your chosen provider's API directly using your key.
-- Usage costs appear on your provider account.
+The "key" in BYOK is whatever credential your chosen provider uses to authenticate API requests — an API key for OpenAI or Anthropic, a bearer token for AWS Bedrock, or a token/PAT for Snowflake Cortex. When you configure a provider with that credential, <Constant name="wizard" /> calls the provider's API directly using it, so:
+
+- Usage costs appear on your provider account, not your dbt Labs account.
 - Token costs are billed by whichever provider you choose.
 
 <WizardSupportedProviders />
