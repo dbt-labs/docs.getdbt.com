@@ -131,9 +131,15 @@ function validate(platform, functions) {
 // ---------------------------------------------------------------------------
 
 async function processPlatform(platform, token) {
-  console.log(`\n[${platform.id}] Fetching ${platform.name} functions from ${platform.functionsUrl}`);
-  const html = await fetchText(platform.functionsUrl);
-  const scraped = platform.parseHtml(html);
+  let scraped;
+  if (platform.scrape) {
+    console.log(`\n[${platform.id}] Fetching ${platform.name} functions (multi-page)`);
+    scraped = await platform.scrape((url) => fetchText(url));
+  } else {
+    console.log(`\n[${platform.id}] Fetching ${platform.name} functions from ${platform.functionsUrl}`);
+    const html = await fetchText(platform.functionsUrl);
+    scraped = platform.parseHtml(html);
+  }
   console.log(`[${platform.id}] Parsed ${scraped.length} functions from docs`);
 
   console.log(`[${platform.id}] Fetching Fusion typechecking support list`);

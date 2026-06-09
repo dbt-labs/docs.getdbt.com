@@ -157,16 +157,18 @@ const PLATFORMS = [
     parseHtml(html) {
       const root = parseHtml(html);
       const functions = [];
-      // Databricks uses a flat <ul> or <table> listing — try both
+      // Databricks anchor text now includes " function" suffix (e.g. "abs function").
+      // Extract the name from the href's last path segment instead — it's always just the
+      // lowercase function name (e.g. href ends in "/functions/abs").
       const anchors = root.querySelectorAll('article a[href*="functions/"]');
       for (const anchor of anchors) {
-        const name = anchor.textContent.trim().toUpperCase();
-        if (!name || name.length > 60) continue;
         const href = anchor.getAttribute('href') || '';
+        const slug = href.split('/').pop().replace(/\.html?$/, '');
+        const name = slug.toUpperCase();
+        if (!name || name.length > 60) continue;
         const docsUrl = resolveDocsUrl(href, this.functionsUrl);
         functions.push({ name, category: 'Built-in', docs_url: docsUrl, preview_status: 'GA' });
       }
-      // Deduplicate by name
       return [...new Map(functions.map((f) => [f.name, f])).values()];
     },
   },
@@ -174,28 +176,51 @@ const PLATFORMS = [
     id: 'redshift',
     name: 'Amazon Redshift',
     functionsUrl: 'https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html',
-    parseHtml(html) {
-      // Redshift docs use a <div class="highlights"> with links grouped by category
-      const root = parseHtml(html);
-      const functions = [];
-      let currentCategory = 'Uncategorized';
+    // Redshift index page links to category pages; each category page lists its functions.
+    async scrape(fetchFn) {
+      const indexHtml = await fetchFn(this.functionsUrl);
+      const indexRoot = parseHtml(indexHtml);
+      const content = indexRoot.querySelector('#main-content') || indexRoot;
 
-      const content = root.querySelector('#main-content') || root;
-      for (const node of content.childNodes) {
-        const tag = node.tagName?.toLowerCase();
-        if (tag === 'h2' || tag === 'h3') {
-          currentCategory = node.textContent.trim().replace(/\s*[¶#]$/, '');
-          continue;
-        }
-        if (tag !== 'ul' && tag !== 'table') continue;
-
-        for (const anchor of node.querySelectorAll('a')) {
+      // Collect category page URLs from the first UL (uses mixed href patterns)
+      const categoryUrls = [];
+      for (const ul of content.querySelectorAll('ul')) {
+        for (const anchor of ul.querySelectorAll('a')) {
           const href = anchor.getAttribute('href') || '';
-          if (!href.includes('.html')) continue;
-          const name = anchor.textContent.trim().toUpperCase();
-          if (!name || name.length > 60) continue;
-          const docsUrl = resolveDocsUrl(href, this.functionsUrl);
-          functions.push({ name, category: currentCategory, docs_url: docsUrl, preview_status: 'GA' });
+          if (href.startsWith('./') && href.endsWith('.html')) {
+            const url = resolveDocsUrl(href, this.functionsUrl);
+            if (!categoryUrls.includes(url)) categoryUrls.push(url);
+          }
+        }
+        if (categoryUrls.length > 0) break;
+      }
+
+      const functions = [];
+      for (const catUrl of categoryUrls) {
+        try {
+          const catHtml = await fetchFn(catUrl);
+          const catRoot = parseHtml(catHtml);
+          const catContent = catRoot.querySelector('#main-content') || catRoot;
+          const category = catRoot.querySelector('h1')?.textContent
+            .trim().replace(/\s*functions?$/i, '').trim() || 'Built-in';
+
+          // Function links on category pages use ./r_*.html hrefs
+          for (const anchor of catContent.querySelectorAll('a[href]')) {
+            const href = anchor.getAttribute('href') || '';
+            if (!href.match(/\.\/r_/i)) continue;
+            const linkText = anchor.textContent.trim();
+            // Clean "AVG function" → "AVG", "STDDEV_SAMP and STDDEV_POP functions" → ["STDDEV_SAMP", "STDDEV_POP"]
+            const cleaned = linkText.replace(/\s+functions?$/i, '').trim();
+            const parts = cleaned.split(/\s+and\s+/i);
+            const docsUrl = resolveDocsUrl(href, catUrl);
+            for (const part of parts) {
+              const name = part.trim().toUpperCase();
+              if (!name || name.length > 80) continue;
+              functions.push({ name, category, docs_url: docsUrl, preview_status: 'GA' });
+            }
+          }
+        } catch (err) {
+          console.warn(`[redshift] Warning: could not fetch ${catUrl}: ${err.message}`);
         }
       }
       return [...new Map(functions.map((f) => [f.name, f])).values()];
@@ -206,27 +231,114 @@ const PLATFORMS = [
     name: 'BigQuery',
     functionsUrl: 'https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators',
     parseHtml(html) {
-      return scrapeHeadingTablePage(
-        html,
-        this.functionsUrl,
-        /^(see also|related|overview|introduction)/i
-      );
+      const root = parseHtml(html);
+      const functions = [];
+      const body = root.querySelector('.body-content') || root.querySelector('main') || root;
+      // BigQuery's function table is nested inside divs — querySelectorAll finds it regardless of depth.
+      // Each row: cell[0] = <a href="..."><code>FUNC_NAME</code></a>, cell[1] = description
+      for (const table of body.querySelectorAll('table')) {
+        for (const row of table.querySelectorAll('tbody tr')) {
+          const cells = row.querySelectorAll('td');
+          if (!cells.length) continue;
+          const anchor = cells[0].querySelector('a');
+          if (!anchor) continue;
+          const name = anchor.textContent.trim().toUpperCase();
+          if (!name || name.length > 60) continue;
+          const href = anchor.getAttribute('href') || '';
+          const docsUrl = resolveDocsUrl(href, this.functionsUrl);
+          functions.push({ name, category: 'Built-in', docs_url: docsUrl, preview_status: 'GA' });
+        }
+      }
+      return [...new Map(functions.map((f) => [f.name, f])).values()];
     },
   },
   {
     id: 'trino',
     name: 'Trino',
-    functionsUrl: 'https://trino.io/docs/current/functions.html',
+    // functions.html is now a category index; functions/list.html has the full alphabetical list
+    functionsUrl: 'https://trino.io/docs/current/functions/list.html',
     parseHtml(html) {
-      return scrapeHeadingTablePage(html, this.functionsUrl, /^(see also|related)/i);
+      const root = parseHtml(html);
+      const functions = [];
+      const body = root.querySelector('.body-content') || root.querySelector('main') || root;
+      // list.html: alphabetical sections (h2 "A", "B", ...) each with <li><a>func()</a></li>
+      for (const section of body.querySelectorAll('section')) {
+        const heading = section.querySelector('h2,h3,h4');
+        const headingText = heading?.textContent.trim().replace(/[#¶]/g, '').trim() || '';
+        // Only process single-letter alphabetical sections
+        if (!/^[A-Z]$/i.test(headingText)) continue;
+
+        for (const anchor of section.querySelectorAll('li a')) {
+          const text = anchor.textContent.trim();
+          // Strip argument list: "abs()" → "abs", "add_months(date, n)" → "add_months"
+          const name = text.replace(/\s*\(.*$/, '').trim().toUpperCase();
+          if (!name || name.length > 60) continue;
+
+          const href = anchor.getAttribute('href') || '';
+          // Derive category from href filename: "math.html#abs" → "Math"
+          const hrefFile = href.split('#')[0].replace(/\.html?$/, '');
+          const category = hrefFile
+            ? hrefFile.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+            : 'Uncategorized';
+
+          const docsUrl = resolveDocsUrl(href, this.functionsUrl);
+          functions.push({ name, category, docs_url: docsUrl, preview_status: 'GA' });
+        }
+      }
+      return [...new Map(functions.map((f) => [f.name, f])).values()];
     },
   },
   {
     id: 'duckdb',
     name: 'DuckDB',
-    functionsUrl: 'https://duckdb.org/docs/sql/functions/overview',
-    parseHtml(html) {
-      return scrapeHeadingTablePage(html, this.functionsUrl, /^(see also|related)/i);
+    functionsUrl: 'https://duckdb.org/docs/current/sql/functions/overview.html',
+    // DuckDB overview page links to category pages; each has tables with "Name"/"Function" columns.
+    async scrape(fetchFn) {
+      const indexHtml = await fetchFn(this.functionsUrl);
+      const indexRoot = parseHtml(indexHtml);
+      const body = indexRoot.querySelector('.body-content') || indexRoot.querySelector('main') || indexRoot;
+
+      // Collect internal category page URLs (contain /functions/ but not overview, not external, no fragment anchors)
+      const categoryUrls = [];
+      for (const anchor of body.querySelectorAll('a[href]')) {
+        const href = anchor.getAttribute('href') || '';
+        if (!href.includes('/functions/') || href.includes('overview') || href.startsWith('http') || href.startsWith('#') || href.includes('#')) continue;
+        const url = resolveDocsUrl(href, this.functionsUrl);
+        if (url.includes('duckdb.org') && !categoryUrls.includes(url)) categoryUrls.push(url);
+      }
+
+      const functions = [];
+      for (const catUrl of categoryUrls) {
+        try {
+          const catHtml = await fetchFn(catUrl);
+          const catRoot = parseHtml(catHtml);
+          const catBody = catRoot.querySelector('.body-content') || catRoot.querySelector('main') || catRoot;
+
+          const catSlug = catUrl.split('/').pop().replace(/\.html?$/, '');
+          const category = catSlug.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
+          // Find tables whose first column header is "Name" or "Function"
+          for (const table of catBody.querySelectorAll('table')) {
+            const headerRow = table.querySelector('thead tr') || table.querySelector('tr');
+            if (!headerRow) continue;
+            const firstHeader = headerRow.querySelectorAll('th,td')[0]?.textContent.trim().toLowerCase();
+            if (firstHeader !== 'name' && firstHeader !== 'function') continue;
+
+            for (const row of table.querySelectorAll('tbody tr')) {
+              const cells = row.querySelectorAll('td');
+              if (!cells.length) continue;
+              // Strip argument list: "abs(x)" → "abs", "any_value(arg)" → "any_value"
+              const name = cells[0].textContent.trim().replace(/\s*\(.*$/, '').trim().toUpperCase();
+              // Only accept identifier-like names (no operators like +, -, etc.)
+              if (!name || !/^[A-Z][A-Z0-9_]*$/.test(name)) continue;
+              functions.push({ name, category, docs_url: catUrl, preview_status: 'GA' });
+            }
+          }
+        } catch (err) {
+          console.warn(`[duckdb] Warning: could not fetch ${catUrl}: ${err.message}`);
+        }
+      }
+      return [...new Map(functions.map((f) => [f.name, f])).values()];
     },
   },
 ];
