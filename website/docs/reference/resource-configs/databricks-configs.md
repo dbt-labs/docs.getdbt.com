@@ -1159,6 +1159,8 @@ The following table summarizes our configuration support:
 | [TBLPROPERTIES](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html#tblproperties) | `tblproperties` | MV/ST | All |
 | [TAGS](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) | `databricks_tags` | MV/ST | v1.11+ |
 | [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | `schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' }` | MV/ST | All |
+| [SCHEDULE EVERY](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters) | `schedule: { 'every': '\<n\> \<unit\>' }` | MV/ST | v1.12+ |
+| [TRIGGER ON UPDATE](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters) | `schedule: { 'on_update': true, 'at_most_every': '\<n\> \<unit\>' }` | MV/ST | v1.12+ |
 | query | defined by your model SQL | on_configuration_change for MV only | All |
 
 <File name='mv_example.sql'>
@@ -1215,9 +1217,15 @@ As with views and tables, adding a `description` to your configuration will lead
 `tblproperties` works the same as for views and tables with an important exception: the adapter maintains a list of keys that are set by Databricks when making an materialized view or streaming table which are ignored for the purpose of determining configuration changes.
 
 #### schedule
-Use this to set the refresh schedule for the model.  If you use the `schedule` key, a `cron` key is required in the associated dictionary, but `time_zone_value` is optional (see the example above).  The `cron` value should be formatted as documented by Databricks.
+Use this to set the refresh schedule for the model. The `schedule` dictionary supports three mutually exclusive modes. Set exactly one of `cron`, `every`, or `on_update`:
+
+- `cron`: refresh on a [cron](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters) schedule. Format the `cron` value as documented by Databricks. The optional `time_zone_value` is only valid alongside `cron` (see the example above).
+- `every` _(Available in versions 1.12 or higher)_: refresh on a fixed interval, emitting `SCHEDULE EVERY`. Format the value as `'\<n> \<unit>'`, where `\<unit>` is `HOURS`, `DAYS`, or `WEEKS` (for example, `'2 HOURS'`).
+- `on_update` _(Available in versions 1.12 or higher)_: set to `true` to refresh whenever upstream data changes, emitting `TRIGGER ON UPDATE`. Optionally add `at_most_every` to rate-limit refreshes, formatted as `'\<n> \<unit>'` (for example, `'15 MINUTES'`). The interval must be at least 60 seconds.
+
 If a schedule is set on the materialization in Databricks and your dbt project does not specify a schedule for it (when `on_configuration_change` is set to `apply`), the refresh schedule will be set to manual when you next run the project.
-Even when schedules are set, dbt will request that the materialization be refreshed manually when run.
+
+For the `cron` mode, dbt requests a manual refresh on every run. For the `every` and `on_update` modes, Databricks auto-manages the refresh, so dbt does not issue a manual refresh on a no-op re-run.
 
 #### query
 For materialized views, if the compiled query for the model differs from the query in the database, we will the take the configured `on_configuration_change` action.
