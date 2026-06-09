@@ -1206,6 +1206,17 @@ _Available in versions 1.11 or higher_
 ) }}
 ```
 
+dbt-databricks v1.12 adds support for key-only tags. To set a tag that has a key but no value, set the tag's value to an empty string `''` or to `None`:
+
+```sql
+{{ config(
+    materialized='streaming_table',
+    databricks_tags={'sensitive': '', 'reviewed': None}
+) }}
+```
+
+This applies to both table-level and column-level `databricks_tags`. Non-string values, such as numbers or booleans, are coerced to strings.
+
 Tags are applied via `ALTER` statements after the materialization is created. Once applied, tags cannot be removed through dbt-databricks configuration changes. To remove tags, you must use Databricks directly or a post-hook.
 
 #### description
