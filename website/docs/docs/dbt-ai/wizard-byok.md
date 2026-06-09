@@ -270,27 +270,11 @@ Paste API key/token, or press enter to configure it later:
 
 #### Authentication options
 
-The key/token field accepts a regular API token or a Programmatic Access Token (PAT), depending on how your Snowflake account is set up. Both go in the same place — the **Paste API key/token** prompt in the terminal, or **Set key/token** (option 3) in the TUI.
+The key/token field accepts a regular API token or a Programmatic Access Token (PAT), depending on how your Snowflake account is set up. Both go in the same place &mdash; the **Paste API key/token** prompt in the terminal, or **Set key/token** (option 3) in the TUI.
 
-<Tabs>
-
-<TabItem value="api-token" label="API token (password-based accounts)">
-
-1. If your Snowflake account uses username and password login, generate a token via the [Cortex REST API prerequisites](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api#prerequisites).
-2. Paste the token at the key/token prompt.
-</TabItem>
-
-<TabItem value="pat" label="Programmatic Access Token (PAT) -- required for SSO and Okta users">
-If your Snowflake account authenticates through SSO, Okta, or another federated identity provider, password-based token generation is not available. Use a PAT instead:
-1. In Snowflake, go to **Profile** → **Programmatic access tokens**.
-2. Select **Generate token** and follow the prompts.
-3. Copy the token value — it's only shown once.
-4. Paste the PAT at the key/token prompt. 
-
-
-For full instructions, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
-</TabItem>
-</Tabs>
+1. In your Snowflake account, [generate your API or PAT token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
+2. Select **Generate token** and copy the token value
+3. Go back to <Constant name="wizard" /> and paste the PAT at the key/token prompt. 
 
 To set a default Snowflake Cortex model, add the model ID to `~/.dbt/wizard/config.toml`:
 
