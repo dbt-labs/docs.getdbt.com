@@ -52,7 +52,7 @@ See the [Limitations](#limitations) section below for the full list of currently
 
 ## Defining UDFs in dbt
 
-You can define SQL and Python UDFs in dbt. Python UDFs are currently supported in Snowflake and BigQuery when using <Constant name="core" />. 
+You can define SQL and Python UDFs in dbt. Python UDFs are currently supported in Snowflake, BigQuery, and Databricks when using <Constant name="core" />. 
 
 Follow these steps to define UDFs in dbt:
 
@@ -147,12 +147,27 @@ Follow these steps to define UDFs in dbt:
     
     <TabItem value="Python">
     
-    The following configs are required when defining a Python UDF: 
+    The following configs are required when defining a Python UDF on Snowflake and BigQuery. On Databricks, they're optional and ignored (see the note below):
 
     - [`runtime_version`](/reference/resource-configs/runtime-version) &mdash; Specify the Python version to run. Supported values are:
       - [Snowflake](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-introduction): `3.10`, `3.11`, `3.12`, and `3.13`
       - [BigQuery](https://cloud.google.com/bigquery/docs/user-defined-functions-python): `3.11`
     - [`entry_point`](/reference/resource-configs/entry-point) &mdash; Specify the Python function to be called.
+
+    :::info Databricks Python UDFs
+    On Databricks, `runtime_version` and `entry_point` are accepted for cross-adapter compatibility but have no effect. Databricks manages the Python runtime internally and uses the function body directly, so dbt displays a warning if you set them. Python UDFs on Databricks require Unity Catalog. Because Databricks uses the body directly rather than calling a named entry point, write the function body so its last statement is a `return`. For example:
+
+    <File name='functions/price_for_xlarge.py'>
+
+    ```py
+    def price_for_xlarge(price):
+        return price * 2
+
+    return price_for_xlarge(price)
+    ```
+
+    </File>
+    :::
 
     
     For example:
@@ -164,8 +179,8 @@ Follow these steps to define UDFs in dbt:
         - name: is_positive_int # required
           description: My UDF that returns 1 if a string represents a naked positive integer (like "10", "+8" is not allowed). # optional
           config:
-            runtime_version: "3.11"   # required
-            entry_point: main         # required
+            runtime_version: "3.11"   # required for Snowflake and BigQuery; optional and ignored on Databricks
+            entry_point: main         # required for Snowflake and BigQuery; optional and ignored on Databricks
             schema: udf_schema
             database: udf_db
             volatility: deterministic  
@@ -300,6 +315,22 @@ Follow these steps to define UDFs in dbt:
     ''';
     ```
     </TabItem>
+
+    <TabItem value="Databricks">
+    ```sql
+    CREATE OR REPLACE FUNCTION udf_db.udf_schema.is_positive_int(a_string STRING)
+    RETURNS INT
+    LANGUAGE PYTHON
+    AS $$
+      import re
+      def main(a_string):
+        return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+      return main(a_string)
+    $$;
+    ```
+
+    Databricks omits the `RUNTIME_VERSION` and `HANDLER` clauses. The runtime is managed internally and the function body is used directly.
+    </TabItem>
     </Tabs>
     </TabItem>
     </Tabs>
@@ -377,7 +408,7 @@ For more information about selecting UDFs, see the examples in [Node selector me
 
 ## Limitations
 - Creating UDFs in other languages (for example, Java, JavaScript, or Scala) is not yet supported. 
-- Creating Python UDFs are currently supported in Snowflake and BigQuery only. Other warehouses aren't yet supported.
+- Creating Python UDFs are currently supported in Snowflake, BigQuery, and Databricks only. Other warehouses aren't yet supported. On Databricks, Python UDFs require Unity Catalog.
 - Support for Python UDFs in <Constant name="fusion" /> is not yet available. Read the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for the latest updates.
 - Only <Term id="scalar">scalar</Term> and <Term id="aggregate">aggregate</Term> functions are currently supported. For more information, see [Supported function types](/reference/resource-configs/type#supported-function-types).
 
