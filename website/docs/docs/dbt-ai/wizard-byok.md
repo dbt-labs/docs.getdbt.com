@@ -258,11 +258,15 @@ Snowflake API base override (optional):
 Paste API key/token, or press enter to configure it later:
 ```
 
+<SimpleTable>
+
 | Prompt | What to enter |
 |--------|---------------|
 | **Snowflake account ID** | Your Snowflake account identifier (for example, `myorg-myaccount`) |
 | **Snowflake API base override (optional)** | Leave blank — this is only needed for custom or private Snowflake endpoints |
 | **Paste API key/token** | Your authentication token — refer to [Authentication options](#authentication-options) in the next section |
+
+</SimpleTable>
 
 #### Authentication options
 
