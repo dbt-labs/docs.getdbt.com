@@ -19,7 +19,7 @@ You can use the <Constant name="wizard" /> CLI with bring-your-own-key (BYOK), w
 
 The following BYOK instructions on this page apply to the CLI only. <Constant name="dbt_platform" /> uses a separate [account-level integration](/docs/platform/enable-dbt-ai).
 
-The "key" in BYOK is whatever credential your chosen provider uses to authenticate API requests — an API key for OpenAI or Anthropic, a bearer token for AWS Bedrock, or a token/PAT for Snowflake Cortex. When you configure a provider with that credential, <Constant name="wizard" /> calls the provider's API directly using it, so:
+The "key" in BYOK is whatever credential your chosen provider uses to authenticate API requests &mdash; an API key for OpenAI or Anthropic, a bearer token for AWS Bedrock, or a token/PAT for Snowflake Cortex. When you configure a provider with that credential, <Constant name="wizard" /> calls the provider's API directly using it, so:
 
 - Usage costs appear on your provider account, not your dbt Labs account.
 - Token costs are billed by whichever provider you choose.
@@ -30,9 +30,9 @@ The "key" in BYOK is whatever credential your chosen provider uses to authentica
 
 You can configure a provider in one of the following ways:
 
-- **Terminal commands**: Best for users who want to configure providers from the shell.
-- **Interactive session**: Best for most users working in the <Constant name="wizard" /> TUI. Use the `/providers` slash command.
-- **Environment variables**: Best for headless runs, such as `wizard exec`, automation, or temporary local sessions.
+- [**Terminal commands**:](#configure-in-the-terminal) Best for users who want to configure providers from the shell.
+- [**Interactive session**:](#configure-in-the-tui) Best for most users working in the <Constant name="wizard" /> TUI. Use the `/providers` slash command.
+- [**Environment variables**:](#set-your-api-key) Best for headless runs, such as `wizard exec`, automation, or temporary local sessions.
 
 ### Configure in the terminal
 
@@ -44,7 +44,7 @@ wizard providers configure PROVIDER_NAME
 wizard providers enable PROVIDER_NAME
 ```
 
-Replacing `PROVIDER_NAME` with the name of a supported provider, such as `openai`, `anthropic`, `bedrock`, `azure`, `gemini`, or `snowflake`.
+Replacing `PROVIDER_NAME` with the name of a supported provider, such as `openai`, `anthropic`, `bedrock`, `azure`, `gemini`, or `snowflake`. Then follow the prompts to enter your credentials.
 
 The `wizard providers list` command shows you the currently configured providers and their status:
 
@@ -70,12 +70,10 @@ wizard providers configure openai
 wizard providers enable openai
 ```
 
-For OpenAI subscription support, run `wizard providers configure openai_subscription` and follow the prompts. Use `wizard providers configure openai` if you want to use an OpenAI API key instead.
-
 To store an API key without echoing it in your shell history:
 
 ```bash
-printf '%s' 'sk-...' | wizard providers set-key openai
+printf '%s' 'sk-...' | wizard providers set-key PROVIDER_NAME
 ```
 
 Credentials are stored in `~/.dbt/wizard/provider-auth.json`. Provider settings are stored in `~/.dbt/wizard/providers.json`.
@@ -160,6 +158,31 @@ export AWS_BEARER_TOKEN_BEDROCK="ABSK..."
 ```
 
 </TabItem>
+
+<TabItem value="azure" label="Azure AI Foundry">
+
+```bash
+export AZURE_API_KEY="..."
+```
+
+</TabItem>
+
+<TabItem value="gemini" label="Google Gemini">
+
+```bash
+export GOOGLE_API_KEY="..."
+```
+
+</TabItem>
+
+<TabItem value="snowflake" label="Snowflake Cortex">
+
+```bash
+export SNOWFLAKE_API_KEY="..."
+```
+
+</TabItem>
+
 </Tabs>
 
 To make an environment variable available across terminal sessions, add it to your shell profile, such as `.zshrc`, `.bashrc`, or equivalent.
@@ -215,6 +238,8 @@ model = "BEDROCK_MODEL_ID"
 
 Snowflake Cortex BYOK support in the CLI is in preview. Availability and setup steps may change. Ensure your Snowflake account has the privileges required for Cortex large language model (LLM) functions. Refer to the [Snowflake Cortex documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/overview).
 
+You can [authenticate](#authentication-options) with Snowflake Cortex using an API token or a Programmatic Access Token (PAT) (for SSO and Okta users).
+
 ```bash
 wizard providers list
 wizard providers enable snowflake
@@ -243,19 +268,21 @@ Paste API key/token, or press enter to configure it later:
 
 The key/token field accepts a regular API token or a Programmatic Access Token (PAT), depending on how your Snowflake account is set up. Both go in the same place — the **Paste API key/token** prompt in the terminal, or **Set key/token** (option 3) in the TUI.
 
-**API token (password-based accounts)**
+<Tabs
+
+<TabItem value="api-token" label="API token (password-based accounts)">
 
 If your Snowflake account uses username and password login, generate a token via the [Cortex REST API prerequisites](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api#prerequisites).
+</TabItem>
 
-**Programmatic Access Token (PAT) — required for SSO and Okta users**
-
+<TabItem value="pat" label="Programmatic Access Token (PAT) -- required for SSO and Okta users">
 If your Snowflake account authenticates through SSO, Okta, or another federated identity provider, password-based token generation is not available. Use a PAT instead:
-
 1. In Snowflake, go to **Profile** → **Programmatic access tokens**.
 2. Select **Generate token** and follow the prompts.
 3. Copy the token value — it's only shown once.
-
 Paste the PAT at the key/token prompt. For full instructions, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
+</TabItem>
+</Tabs>
 
 To set a default Snowflake Cortex model, add the model ID to `~/.dbt/wizard/config.toml`:
 
