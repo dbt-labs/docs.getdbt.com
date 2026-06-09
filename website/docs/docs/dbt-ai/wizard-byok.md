@@ -222,7 +222,13 @@ wizard providers list
 wizard debug models
 ```
 
-When prompted during `wizard providers configure snowflake`, you'll need to provide your Snowflake account URL and an authentication token. The method you use to generate that token depends on how your Snowflake account is set up.
+The `wizard providers configure snowflake` command prompts you for the following:
+
+| Prompt | What to enter |
+|--------|---------------|
+| **Snowflake account ID** | Your Snowflake account identifier (for example, `myorg-myaccount`) |
+| **API key** | Your authentication token — see [Authentication options](#authentication-options) below |
+| **Snowflake API base override (optional)** | Leave blank unless you're using a custom or private Snowflake endpoint |
 
 #### Authentication options
 
@@ -238,9 +244,9 @@ If your Snowflake account authenticates through SSO, Okta, or another federated 
 2. Select **Generate token** and follow the prompts.
 3. Copy the token value — it's only shown once.
 
-For step-by-step instructions, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
+Paste the PAT at the **API key** prompt. Leave the **API base override** field blank.
 
-Once you have the token, pass it when `wizard providers configure snowflake` prompts for credentials.
+For step-by-step instructions on generating a PAT, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
 
 To set a default Snowflake Cortex model, add the model ID to `~/.dbt/wizard/config.toml`:
 
