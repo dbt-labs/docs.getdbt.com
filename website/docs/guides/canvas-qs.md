@@ -54,7 +54,7 @@ Click on an icon to expand its section or execute an action depending on its pur
 5. The **Previews** pane that displays previews data for individual operators.
 6. The **Add** option for creating new models, editing existing, or adding seed files.
 7. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
-8. The [<Constant name="copilot" />](/docs/platform/dbt-copilot) icon (where available). Use natural language to build your <Constant name="canvas" /> models.
+8. The [<Constant name="wizard" />](/docs/platform/wizard-platform) icon (where available). Use natural language to build your <Constant name="canvas" /> models.
 9. The **SQL code** area displays the SQL that compiles your model.
 10. The **Run** command executes `dbt run` for the model.
 11. This button is initially a **Commit** command for your integrated <Constant name="git" /> provider. It will change to "Open pull request" once your first commit is made. The button will not initially appear until you begin working in the canvas area.
@@ -238,7 +238,7 @@ This will [materialize](/docs/build/materializations) the data as a `view` in yo
 
 :::tip
 
-Have dbt [<Constant name="copilot" />](/docs/platform/dbt-copilot) enabled for your <Constant name="dbt" /> Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
+Have dbt [<Constant name="wizard" />](/docs/platform/wizard-platform) enabled for your <Constant name="dbt" /> Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
 
 :::
 

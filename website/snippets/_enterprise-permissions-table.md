@@ -48,6 +48,12 @@ Key:
 
 <sup>**</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.
 
+::::note Credentials access
+Users can access the **Credentials** page under **Your profile** when they have `develop_access` or `user_credential_write` on at least one project.
+
+An admin can grant `user_credential_write` to any group, regardless of which permission set the group is assigned. Environment variable overrides and dbt version overrides still require `develop_access`.
+::::
+
 
 #### Project access for account permissions
 
@@ -81,21 +87,21 @@ Key:
 #### Account access for project permissions
 
 <FilterableTable>
-| Account-level permission | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner  | Job viewer  | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
-|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|
-| Account settings         |   R   |    -    |         -           |          -           |       R        |     -     |     R     |     -     |     -       |      -      |    -     |        -       |      -      |     R      |
-| Auth provider            |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Billing                  |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Connections              |   R   |    R    |        R<sup>*</sup>|          R           |       R        |     R     |     R     |     R     |     R       |      -      |    -     |        -       |      R      |     R      |
-| Cost Insights            |   -   |    -    |         R           |          R           |       R        |     -     |     R     |     R     |     -       |      -      |    -     |        -       |      -      |     R      |
-| Groups                   |   R   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Invitations              |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      R      |     R      |
-| Licenses                 |   W   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     -       |      R      |    -     |        -       |      -      |     R      |
-| Members                  |   W   |    -    |         -           |          -           |       R        |     R     |     R     |     -     |     -       |      -      |    -     |        -       |      R      |     R      |
-| Project (create)         |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Public models            |   R   |    R    |         -           |          -           |       R        |     R     |     R     |     R     |     R       |      R      |     R    |        R       |      R      |     R      |
-| Service tokens           |   -   |    -    |         -           |          -           |       -        |     -     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
-| Webhooks                 |   W   |    -    |         -           |          -           |       -        |     W     |     -     |     -     |     -       |      -      |    -     |        -       |      -      |     -      |
+| Account-level permission | Admin | Analyst | Cost Insights Admin | Cost Insights Viewer | Database admin | Developer | Git Admin | Job admin | Job creator | Job runner | Job viewer | Metadata (Discovery API only) | Semantic Layer | Stakeholder/Read-Only | Team admin |
+|--------------------------|:-----:|:-------:|:-------------------:|:--------------------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:----------:|:----------:|:-----------------------------:|:--------------:|:---------------------:|:----------:|
+| Account settings         |   R   |    -    |          -          |          -           |       R        |     -     |     R     |     -     |      -      |     -      |     -      |               -               |       -        |           R           |     R      |
+| Auth provider            |   -   |    -    |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Billing                  |   -   |    -    |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Connections              |   R   |    R    |    R<sup>*</sup>    |          R           |       R        |     R     |     R     |     R     |      R      |     -      |     -      |               -               |       R        |           R           |     R      |
+| Cost Insights            |   -   |    -    |          R          |          R           |       R        |     -     |     R     |     R     |      -      |     -      |     -      |               -               |       -        |           R           |     R      |
+| Groups                   |   R   |    -    |          -          |          -           |       R        |     R     |     R     |     -     |      -      |     -      |     -      |               -               |       R        |           R           |     R      |
+| Invitations              |   W   |    R    |          -          |          -           |       R        |     R     |     R     |     R     |      -      |     R      |     -      |               -               |       R        |           R           |     R      |
+| Licenses                 |   W   |    R    |          -          |          -           |       R        |     R     |     R     |     R     |      -      |     R      |     -      |               -               |       -        |           R           |     R      |
+| Members                  |   W   |    -    |          -          |          -           |       R        |     R     |     R     |     -     |      -      |     -      |     -      |               -               |       R        |           R           |     R      |
+| Project (create)         |   -   |    -    |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Public models            |   R   |    R    |          -          |          -           |       R        |     R     |     R     |     R     |      R      |     R      |     R      |               R               |       R        |           R           |     R      |
+| Service tokens           |   -   |    -    |          -          |          -           |       -        |     -     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
+| Webhooks                 |   W   |    -    |          -          |          -           |       -        |     W     |     -     |     -     |      -      |     -      |     -      |               -               |       -        |           -           |     -      |
 </FilterableTable>
 
 <sup>*</sup>**Cost Insights Admin** can edit [platform metadata credentials](/docs/explore/set-up-cost-insights#configure-platform-metadata-credentials) and [Cost Insights](/docs/explore/set-up-cost-insights) settings in **Connection settings**, even though **Connections** is read-only (**R**) for this permission set.

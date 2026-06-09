@@ -17,6 +17,98 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## June 3, 2026
+
+## New
+
+### dbt Copilot and agents
+
+- **Debug with Copilot from run and job surfaces**: A new "Debug with Copilot" button appears on failed run detail pages, runs lists, job details, environment runs, and the project home activity feed. Clicking it opens dbt Copilot or the full-page Wizard to investigate and debug the failed run. Please contact your account manager to enable.
+
+### dbt platform
+
+- **dbt State trial progress, stats, and usage on settings page**: The dbt State settings page now shows a trial progress bar (days elapsed of 30), monthly model reuse stats (models reused, build reduction percentage, and query run time reduction), and a model build chart. These sections appear when an account has an active dbt State subscription.
+- **Delete private link endpoint**: You can now delete private link endpoints from the endpoint details page. A confirmation modal requires you to type `DELETE` before the deletion proceeds. Please contact your account manager to enable.
+
+### APIs, Identity, and Administration
+
+- **OAuth consent improvements**: OAuth consent now recognizes the `identity:read` scope, displaying a "Read user details" label and description. Scopes limited to `identity:read` and `offline_access` no longer show the project access selector.
+
+## Enhancements
+
+### dbt platform
+
+- **AI providers settings page consolidated**: The Copilot and Wizard settings pages are unified under a single "AI providers" page at `/settings/accounts/{id}/pages/ai`. The previous `/pages/copilot` URL redirects automatically, and the sidebar item and page title now use "AI providers."
+- **"Enable dbt State" checked by default on job create**: When creating a new job, the **Enable dbt State** checkbox is now checked by default on both Mantle and Fusion environments when dbt State is available and an active subscription is present.
+- **dbt State model build chart adds "Reused (cloned)" series**: The dbt State model build chart now tracks three series — Built, Reused (no-op), and Reused (cloned) — giving a more detailed breakdown of model reuse.
+- **Teams notifications generally available**: Microsoft Teams notifications no longer require a feature flag. The Teams integration now appears in the OAuth integrations card and notification settings for all accounts.
+- **Private endpoints page shows Beta badge and updated info banner**: The private endpoints list and create pages now display a "Beta" badge in the header. The info banner on the create page is no longer dismissible and has updated copy clarifying that self-serve creation is available only for Snowflake AWS.
+
+### Orchestration and run status
+
+- **Reused node status in run results**: Studio IDE now recognizes and surfaces the `reused` node status in run results and metadata counts, giving you a more accurate picture of what ran during a dbt invocation.
+
+## Fixes
+
+### Orchestration and Run Status
+
+- **Run list action buttons fixed and clickable**: Action buttons on the runs list (for example, "Debug with Copilot") no longer silently navigate to the run detail page instead of triggering the intended action.
+
+### Catalog
+
+- **Accurate health status filtering for stale assets**: The Catalog health filter now correctly classifies assets with a healthy bitmask but a last successful run older than 30 days as "Caution" instead of "Healthy." Assets whose last run was marked `reused` continue to be treated as healthy.
+
+## Behavior Changes
+
+### dbt Copilot and agents
+
+- **Agent validates autofix with `dbt build` instead of `dbt compile`**: dbt Wizard autofix and model change validation is improved by defaulting to broader `dbt build` commands.
+
+## May 27, 2026
+
+## New
+
+### Webhooks
+
+- **Disabled webhook subscriptions banner**: The webhooks settings page now shows a dismissible warning banner when one or more webhook subscriptions have been automatically disabled due to repeated failures. Disabled subscriptions now display an "Archived" badge with a tooltip explaining how to reactivate them.
+
+### Studio IDE
+
+- **Directory listing API**: The file browser now supports streaming directory listings in Newline-Delimited JSON (NDJSON) format, returning each file's name and type. The endpoint supports an optional `limit` parameter and `ETag` and `Last-Modified` headers to avoid re-fetching unchanged directory contents.
+
+- **File and directory deletion API**: You can now delete individual files or entire directory trees from the workspace. Recursive deletion requires `recursive=true` to be set explicitly, preventing accidental data loss.
+
+- **File and directory rename and move API**: You can now move files and directories within the workspace. An `overwrite` parameter controls whether an existing destination is replaced. The endpoint surfaces clear errors for missing sources, path traversal, name-too-long conditions, and directory conflicts.
+
+## Enhancements
+
+### Webhooks
+
+- **Bounded webhook delivery history fetches**: Webhook delivery history reads are now capped at 1,000 records and limited to a 7-day lookback window, preventing unbounded memory growth from high-volume subscriptions. You should see more consistent performance for webhook history lookups on active subscriptions.
+
+### Integrations
+
+- **Smoother token refresh flow in OAuth consent page**: To provide a smoother experience with fewer steps, you only see the project selector for scopes that require project-level access.
+
+### APIs, Identity, and Administration
+
+- **Create account button shown for existing users**: The **Create account** button in the account switcher is now also shown to users who already have accounts, making it easier to create additional accounts. Please contact your account manager to enable.
+
+- **Private endpoint edit**: The private endpoint detail page now supports editing the endpoint name and port. An "Edit" button opens an inline form with validation, a confirmation modal, and clear error messaging. Please contact your account manager to enable.
+
+- **Private endpoint status badges with icons**: Connectivity status and endpoint state badges on the private endpoint list and detail pages now include status icon variants (success, error, in-progress, waiting, canceled, and health-unknown) for clearer at-a-glance status.
+
+## Fixes
+
+### dbt Copilot and agents
+
+- **Protected edits to generated files**: dbt Copilot is now instructed not to edit files in `dbt_packages/`, `target/`, or `logs/`, directing fixes to source-controlled files instead.
+
+- **Build validation after column changes**: dbt Copilot now runs `dbt build` (not just `dbt compile`) after edits that add, rename, or alias columns, or change `ref` or `source` references, catching runtime errors that compilation alone would miss.
+
+### Webhooks
+
+- **Skipped invalid email addresses in model notifications**: Model-level notifications now validates email addresses before attempting delivery, skipping any invalid entries with a warning rather than proceeding with an invalid address. This ensures dispatching model notifications to correct email addresses.
 
 ## May 20, 2026
 
@@ -148,9 +240,9 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt Copilot and agents
 
-- **Preview**: The [Developer agent](/docs/dbt-ai/developer-agent) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/dbt-ai/developer-agent).
-- **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/dbt-ai/developer-agent#availability-and-considerations) from the conversation list (**More actions** menu (three dots) > **Delete**). Deleting the open conversation clears the panel.
-- **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/dbt-ai/developer-agent) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
+- **Preview**: The [Developer agent](/docs/platform/wizard-platform) is now in preview. Use natural language prompts to build or refactor models, and generate SQL, tests, documentation, and semantic models from scratch. For more information, refer to the [Developer agent](/docs/platform/wizard-platform).
+- **Enhancement:** Delete individual [<Constant name="copilot" /> chat conversations](/docs/platform/wizard-platform#availability-and-considerations) from the conversation list (**More actions** menu (three dots) > **Delete**). Deleting the open conversation clears the panel.
+- **Enhancement:** Commands run by <Constant name="copilot" /> and the [<Constant name="dev_agent" />](/docs/platform/wizard-platform) now appear in the <Constant name="studio_ide" /> **Commands** tab with a <Constant name="copilot" /> icon and **Run by Copilot** tooltip, so you can tell agent-run commands apart from manually run ones.
 
 ### dbt platform
 
@@ -186,7 +278,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt Copilot and agents
 
-- **Job investigation support in Studio agent**: The Studio IDE dev agent can now help you investigate and troubleshoot dbt job and run failures using the `troubleshooting-dbt-job-errors` skill. The agent notes when your local project state may differ from the job (for example, a different branch or uncommitted changes). This feature is currently in beta. Refer to [Debug job failures](/docs/dbt-ai/developer-agent?version=2.0#debug-job-failures) for more information.
+- **Job investigation support in Studio agent**: The Studio IDE dev agent can now help you investigate and troubleshoot dbt job and run failures using the `troubleshooting-dbt-job-errors` skill. The agent notes when your local project state may differ from the job (for example, a different branch or uncommitted changes). This feature is currently in beta. Refer to [Debug job failures](/docs/platform/wizard-platform?version=2.0#debug-job-failures) for more information.
 
 ### Semantic Layer
 
@@ -232,33 +324,33 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **Health and run status filters in catalog search**: The catalog search sidebar now includes health and last run status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (`success`, `error`, `skipped`, `reused`).
+- **Health and run status filters in catalog search**: The catalog search sidebar now includes Health and Last Run Status filter sections. You can filter dbt resources (models, sources, and exposures) by health status (healthy, caution, degraded, unknown) and by last run status (success, error, skipped, reused).
 
-- **Tag search field**: Tag is now a searchable field in the advanced search side panel. You can filter results by tag matches.
+- **Tag search field**: Tag is now a searchable field in the advanced search panel. You can filter results by tag matches
 
 ## Enhancements
 
 ### Studio IDE
 
-- **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to avoid incorrect theming when the user-preferences service is slow to respond.
+- **More reliable dark mode on initial load**: Added additional layers of theme preference fallbacks, including the user's OS theme preferences, to aid in incorrect theming when user-preferences is slow to respond.
 
-- **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, commands or lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
+- **Deep-linking to console tabs**: You can now navigate directly to a specific Studio IDE console tab (for example, Commands or Lineage) using a `consoleTab` URL query parameter. Invalid tab identifiers are removed from the URL automatically.
 
 - **Compile button after deprecation autofix in Fusion**: After the deprecation autofix workflow completes in Fusion environments, a **Compile** button now appears in the autofix results panel so you can immediately verify the updated project without manually triggering a compile.
 
 ### Orchestration and run status
 
-- **Fusion eligibility toggle replaces dropdown filter**: The Fusion eligibility dropdown filter on the jobs list has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
+- **Fusion eligibility toggle replaces dropdown filter**: The jobs list Fusion eligibility dropdown filter has been replaced with a toggle and help icon. When enabled, each job displays its current Fusion eligibility badge, and a persistent info banner explains how eligibility is recalculated. The toggle state is saved per-project in your browser.
 
-- **Debug on Fusion menu**: The single **Run once on Fusion** button on the job details page and job list has been replaced with a **Debug on Fusion** menu that offers **Debug in Studio**, **Run once on Fusion**, and (when dbt Copilot is enabled) **Debug in Studio with Copilot** options. Refer to [Prepare to upgrade to <Constant name="fusion"/>](/guides/prepare-fusion-upgrade?step=7) for more information.
+- **Debug on Fusion menu**: The single "Run once on Fusion" button on the job details page and job list has been replaced with a "Debug on Fusion" menu that offers "Debug in Studio," "Run once on Fusion," and (when dbt Copilot is enabled) "Debug in Studio with Copilot" options.
 
-- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same **Debug on Fusion** menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
+- **Simplified Fusion run error banner**: The Fusion run error banner on run details now uses the same "Debug on Fusion" menu as the jobs page. The banner no longer requires setting a personal dbt version override before navigating to Studio.
 
 ### Webhooks
 
 - **Webhook test flow uses receipt polling**: Testing a webhook subscription now triggers a test event and polls for the delivery receipt, showing the actual HTTP status code and error from the endpoint response. A 60-second timeout is applied, with a clear timeout message if the endpoint does not respond in time.
 
-- **Webhook receipt endpoint returns 404 for pending events**: The receipt endpoint for webhook events now returns a `404` response when a delivery record has not yet been written (for example, when the notification system has not yet processed the event), rather than returning an incomplete record.
+- **Webhook receipt endpoint returns 404 for pending events**: The webhook event receipt endpoint now returns a `404` response when a delivery record has not yet been written (for example, when the notification system has not yet processed the event), rather than returning an incomplete record.
 
 - **Corrected status code for timed-out webhook deliveries**: Webhook delivery history records now show `504` as the HTTP status code when a delivery timed out (previously stored as `0`), improving accuracy in the delivery history view.
 
@@ -266,15 +358,15 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Integrations
 
-- **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt platform app invited for notifications to be delivered. Contact your account manager to enable.
+- **Slack notification settings migration banner**: A migration banner now appears on the Slack notification settings page when you have notification settings from a previous Slack integration. You can migrate them to the new Slack app in one click or dismiss the banner. After migration, you are shown which private channels need the dbt Cloud bot invited for notifications to be delivered. Contact your account manager to enable.
 
 ### dbt platform
 
-- **View account information scope on OAuth consent page**: The OAuth consent page now displays a "View account information" (`account:read`) scope option, which grants view-only access to account details including project and environment information.
+- **`account:read` scope on OAuth consent page**: The OAuth consent page now displays a "View account information" scope option, which grants view-only access to account details including project and environment information.
 
 - **PrivateLink endpoint pending status**: A new `pending` connectivity status is available for PrivateLink endpoints, in addition to the existing `success` and `failed` states.
 
-- **Permission added to member role**: The member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
+- **`fusion_readiness_read` permission added to Member role**: The Member permission set now includes `fusion_readiness_read`, allowing members to view Fusion readiness information for projects without requiring elevated permissions.
 
 ## Fixes
 
@@ -1154,7 +1246,7 @@ Release notes are grouped by date for single-tenant environments.
 ### Fixes
 
 - **AI-assisted workflows**
-  - **Enhancement:** [dbt <Constant name="copilot" />](/docs/platform/dbt-copilot) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
+  - **Enhancement:** [dbt <Constant name="copilot" />](/docs/platform/wizard-platform) adds missing column descriptions more accurately. <Constant name="copilot" /> generated documentation now correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
 
 - **Catalog & lineage**
   - **Fixes missing auto-generated exposures in model lineage**: Auto-generated exposures now appear correctly in lineage views.

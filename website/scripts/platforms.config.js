@@ -20,8 +20,36 @@ const REDSHIFT_BASE = 'https://docs.aws.amazon.com/redshift/latest/dg/';
 const DUCKDB_BASE = 'https://duckdb.org';
 
 // ---------------------------------------------------------------------------
+// URL resolution
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve a function link's href against the page it was scraped from.
+ *
+ * Uses the WHATWG URL parser so every href shape resolves correctly:
+ *  - absolute        ("https://…")                  → returned as-is
+ *  - relative        ("functions/abs")              → resolved against the page dir
+ *  - root-relative   ("/sql-reference/functions/x") → resolved against the origin
+ *
+ * Naive string concatenation (`base + href`) breaks on root-relative hrefs,
+ * producing duplicated path segments like
+ *   https://docs.snowflake.com/en/sql-reference//sql-reference/functions/finetune-show
+ * which 404. Always resolve through this helper instead.
+ */
+function resolveDocsUrl(href, pageUrl) {
+  if (!href) return '';
+  try {
+    return new URL(href, pageUrl).href;
+  } catch {
+    return href;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Shared HTML parsing helpers
 // ---------------------------------------------------------------------------
+
+const SNOWFLAKE_FUNCTIONS_URL = 'https://docs.snowflake.com/en/sql-reference/functions-all';
 
 /**
  * Snowflake all-functions page uses a single flat table with columns:
@@ -43,9 +71,17 @@ function scrapeSnowflakeFlatTable(html) {
 
     const name = anchor.textContent.trim().toUpperCase();
     const href = anchor.getAttribute('href') || '';
-    const docsUrl = href.startsWith('http')
-      ? href
-      : `https://docs.snowflake.com/en/sql-reference/${href}`;
+    // Snowflake's hrefs are inconsistent: some are root-relative with the
+    // locale ("/en/sql-reference/functions/abs"), some without it
+    // ("/sql-reference/functions/abs"). Resolve against the page URL, then
+    // guarantee the /en/ prefix so the link doesn't 301-redirect.
+    let docsUrl = resolveDocsUrl(href, SNOWFLAKE_FUNCTIONS_URL);
+    if (docsUrl.startsWith('https://docs.snowflake.com/sql-reference/')) {
+      docsUrl = docsUrl.replace(
+        'https://docs.snowflake.com/sql-reference/',
+        'https://docs.snowflake.com/en/sql-reference/'
+      );
+    }
 
     const categoryAnchor = cells[2].querySelector('a');
     const category = categoryAnchor
@@ -215,7 +251,7 @@ const PLATFORMS = [
   {
     id: 'snowflake',
     name: 'Snowflake',
-    functionsUrl: 'https://docs.snowflake.com/en/sql-reference/functions-all',
+    functionsUrl: SNOWFLAKE_FUNCTIONS_URL,
     parseHtml(html) {
       return scrapeSnowflakeFlatTable(html);
     },
