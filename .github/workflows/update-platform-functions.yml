@@ -2,7 +2,7 @@ name: Update platform function support data
 
 on:
   schedule:
-    - cron: '0 6 * * *' # daily at 6am UTC
+    - cron: '0 6 * * 1' # weekly on Mondays at 6am UTC
   workflow_dispatch:
     inputs:
       platforms:
