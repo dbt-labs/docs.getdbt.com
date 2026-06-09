@@ -218,6 +218,18 @@ The **Catalog** tab is an advanced feature. Before your 14-day trial expires, [s
 
 <Lightbox src="/img/docs/extension/vsce-catalog-tab.png" width="100%" title="Example of the Catalog tab in the dbt VS Code extension" />
 
+## Generate a system report
+
+Generate a system report to collect your VS Code extension logs and system information into a zip file. This is useful when troubleshooting issues with the dbt VS Code extension. You can share the zip file with dbt Labs support to help diagnose problems.
+
+To generate and download a system report:
+
+1. Open the Command Palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows/Linux).
+2. Search for and select **dbt: Generate System Report**.
+3. Choose a location to save the .zip file when prompted.
+4. A notification will confirm where the file was saved.
+
+
 import CompareChangesTLDR from '/snippets/_compare-changes-tldr.md';
 
 <CompareChangesTLDR />

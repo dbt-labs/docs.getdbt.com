@@ -73,8 +73,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 
 1. Run the following commands to install the <Constant name="fusion_engine" /> CLI:
     ```shell
-    pip install dbt==2.0.0rc178
-    dbtf system update
+    pip install --pre dbt
     ```
 
 ### Verify the <Constant name="fusion_engine" /> installation
