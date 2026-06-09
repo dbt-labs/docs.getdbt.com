@@ -268,7 +268,7 @@ Paste API key/token, or press enter to configure it later:
 
 The key/token field accepts a regular API token or a Programmatic Access Token (PAT), depending on how your Snowflake account is set up. Both go in the same place — the **Paste API key/token** prompt in the terminal, or **Set key/token** (option 3) in the TUI.
 
-<Tabs
+<Tabs>
 
 <TabItem value="api-token" label="API token (password-based accounts)">
 
