@@ -236,25 +236,25 @@ Paste API key/token, or press enter to configure it later:
 |--------|---------------|
 | **Snowflake account ID** | Your Snowflake account identifier (for example, `myorg-myaccount`) |
 | **Snowflake API base override (optional)** | Leave blank — this is only needed for custom or private Snowflake endpoints |
-| **Paste API key/token** | Your authentication token — see [Authentication options](#authentication-options) below |
+| **Paste API key/token** | Your authentication token — refer to [Authentication options](#authentication-options) in the next section |
 
 #### Authentication options
 
-**API key (username and password)**
+The key/token field accepts a regular API token or a Programmatic Access Token (PAT), depending on how your Snowflake account is set up. Both go in the same place — the **Paste API key/token** prompt in the terminal, or **Set key/token** (option 3) in the TUI.
 
-If your account uses password-based login, you can generate a token directly via the [Cortex REST API](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api#prerequisites).
+**API token (password-based accounts)**
+
+If your Snowflake account uses username and password login, generate a token via the [Cortex REST API prerequisites](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api#prerequisites).
 
 **Programmatic Access Token (PAT) — required for SSO and Okta users**
 
-If your Snowflake account authenticates through SSO, Okta, or another federated identity provider, password-based token generation is not available. Instead, generate a Programmatic Access Token (PAT) from the Snowflake UI:
+If your Snowflake account authenticates through SSO, Okta, or another federated identity provider, password-based token generation is not available. Use a PAT instead:
 
 1. In Snowflake, go to **Profile** → **Programmatic access tokens**.
 2. Select **Generate token** and follow the prompts.
 3. Copy the token value — it's only shown once.
 
-Paste the PAT at the **Paste API key/token** prompt.
-
-For step-by-step instructions on generating a PAT, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
+Paste the PAT at the key/token prompt. For full instructions, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
 
 To set a default Snowflake Cortex model, add the model ID to `~/.dbt/wizard/config.toml`:
 
