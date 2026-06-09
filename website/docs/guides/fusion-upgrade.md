@@ -189,7 +189,7 @@ Your development environment is now on <Constant name="fusion" />, but your prod
 - Identify and resolve any project-specific issues.
 - Train team members on any workflow changes.
 
-When you're ready to upgrade production, you'll update your deployment environments and jobs to use the `Latest Fusion` release track. We'll cover that in the next section.
+When you're ready to upgrade production, you'll update your deployment environments and jobs to use the `Fusion Stable` release track. We'll cover that in the next section.
 
 ## Upgrade staging and intermediate environments
 
@@ -229,10 +229,10 @@ Change your staging environment to use the <Constant name="fusion" /> release tr
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **Latest Fusion** from the list.
+3. Select **Fusion Stable** from the list.
 4. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion from the dbt version dropdown"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Fusion Stable from the dbt version dropdown"/>
 
 Your staging environment is now configured to use <Constant name="fusion" />! Any jobs associated with this environment will use <Constant name="fusion" /> on their next run.
 
@@ -325,17 +325,17 @@ Access your production environment configuration:
 
 <Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Access production environment settings"/>
 
-### Step 3: Upgrade to Latest Fusion
+### Step 3: Upgrade to Fusion Stable
 
 Update your production environment to use <Constant name="fusion" />:
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **Latest Fusion** from the list.
+3. Select **Fusion Stable** from the list.
 4. Review your settings one final time to ensure everything is correct.
 5. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion for production"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Fusion Stable for production"/>
 
 Your production environment is now running on <Constant name="fusion" />!
 
@@ -399,7 +399,7 @@ If you encounter critical issues in production, you can revert your dbt version:
 
 1. Navigate to **Orchestration** → **Environments** → **Production**.
 2. Click **Edit**.
-3. Change **dbt version** from **Latest Fusion** back to **Latest**.
+3. Change **dbt version** from **Fusion Stable** back to **Latest**.
 4. Click **Save**.
 5. Jobs will use <Constant name="core" /> on their next run.
 
