@@ -4,6 +4,7 @@ sidebar_label: "Navigating the interface"
 description: "Learn how to navigate the state-aware orchestration interface for better visibility into model builds and cost tracking." 
 id: "state-aware-interface"
 tags: ['scheduler','SAO', 'cost savings', 'models built']
+unlisted: true
 ---
 
 <IntroText>
@@ -11,6 +12,10 @@ tags: ['scheduler','SAO', 'cost savings', 'models built']
 Learn how to navigate the state-aware orchestration interface for better visibility into model builds and cost tracking.
 
 </IntroText>
+
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 ## Models built and reused chart
 
@@ -79,3 +84,9 @@ State-aware orchestration uses a cached hash of both code and data state for eac
 - After clearing the cache, the next run rebuilds every model from scratch. Subsequent runs rely on the regenerated cache.
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-clear-cache.png" width="90%" title="Clear cache button"/>
 
+## Related docs
+
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)

@@ -71,32 +71,10 @@ It's easy to think of the <Constant name="fusion_engine" /> and the dbt extensio
 
 The following are the essential steps from the [<Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started) and [extension](/docs/install-dbt-extension) installation guides:
 
-<Tabs queryString="installation">
-<TabItem value="mac-linux" label="macOS & Linux">
-
-1. Run the following command in the terminal to install the <Constant name="fusion_engine" /> CLI.
+1. Run the following commands to install the <Constant name="fusion_engine" /> CLI:
     ```shell
-    curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
+    pip install --pre dbt
     ```
-2. To use `dbt` immediately after installation, reload your shell so that the new `$PATH` is recognized:
-    ```shell
-    exec $SHELL
-    ```
-    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
-</TabItem>
-<TabItem value="windows" label="Windows (PowerShell)">
-
-1. Run the following command in PowerShell to install the <Constant name="fusion_engine" /> CLI:
-    ```powershell
-    irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-    ```
-2. To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
-    ```powershell
-    Start-Process powershell
-    ```
-    Or you can close and reopen your terminal window. This will load the updated environment settings into the new session.
-</TabItem>
-</Tabs>
 
 ### Verify the <Constant name="fusion_engine" /> installation
 
@@ -106,7 +84,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
     ```
 2. You should see output similar to the following:
     ```bash
-    dbt-fusion 2.0.0-preview.45
+    dbt 2.0.0-preview.178
     ```
 
 ### Install the dbt VS Code extension
@@ -114,7 +92,7 @@ The following are the essential steps from the [<Constant name="fusion_engine" /
 The dbt VS Code extension is available in the [Visual Studio extension marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). Download it directly from your VS Code editor:
 
 1. Navigate to the **Extensions** tab of VS Code (or Cursor).
-2. Search for `dbt` and choose the one from the publisher `dbt Labs Inc`.
+2. Search for `dbt` and choose the one from the publisher `dbt Labs, LLC`.
     <Lightbox src="/img/docs/extension/extension-marketplace.png" width="60%" title="Search for the extension"/>
 3. Click **Install**.
 4. When the prompt appears, you can register the extension now or skip it (you can register later). You can also check out our [installation instructions](/docs/install-dbt-extension) to come back to it later.
@@ -144,10 +122,14 @@ Now let's create your first dbt project powered by <Constant name="fusion" />!
     dbt build
     ```
 
-This will:
-- Load example data into your warehouse
-- Create, build, and test models
-- Verify your dbt environment is fully operational
+    #### Viewing metadata in Catalog
+
+    Run `dbt build --write-catalog` locally to generate docs metadata (`dbt build` alone does not generate docs metadata). To view that metadata in <Constant name="catalog" />, run a job in <Constant name="dbt_platform" /> so the metadata is uploaded. For details, refer to [Platform behavior](/reference/commands/cmd-docs?version=2.0#platform-behavior).
+
+    This will:
+    - Load example data into your warehouse
+    - Create, build, and test models
+    - Verify your dbt environment is fully operational
 
 ## Explore with the dbt VS Code extension
 
