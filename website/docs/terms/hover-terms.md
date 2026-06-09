@@ -101,7 +101,11 @@ lsp:
 
 managed:
   displayText: managed
-  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required. Refer to billing for more info.
+  hoverSnippet: dbt Labs manages the AI provider connection; no user provider key is required. Refer to
+  hoverLink: /docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1
+  hoverLinkText: Billing
+  hoverLinkSuffix: for more info.
+
 
 materialization:
   displayText: materialization

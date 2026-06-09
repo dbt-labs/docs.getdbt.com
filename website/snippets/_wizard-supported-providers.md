@@ -8,7 +8,7 @@
 
 | Provider | <Constant name="wizard" /> in <Constant name="dbt_platform" /> | <Constant name="wizard" /> CLI |
 |---|---|---|
-| [OpenAI](https://openai.com/policies/row-terms-of-use/) | ✓ (<Term id="managed"/> or BYOK) | ✓ (OpenAI subscription or BYOK) |
+| [OpenAI](https://openai.com/policies/row-terms-of-use/) | ✓ (<Term id="managed" /> or BYOK) | ✓ (OpenAI subscription or BYOK) |
 | [Anthropic](https://www.anthropic.com/legal/consumer-terms)<sup>†</sup> | ✓ (BYOK) | ✓ (BYOK) |
 | [Azure AI Foundry](https://www.microsoft.com/licensing/terms) / Azure OpenAI | ✓ (BYOK) | ✓ (BYOK) |
 | [AWS Bedrock](https://aws.amazon.com/service-terms/) |- | ✓ (BYOK) |
