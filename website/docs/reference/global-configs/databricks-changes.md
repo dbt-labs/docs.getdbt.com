@@ -13,6 +13,7 @@ The following are the current [behavior change flags](/docs/reference/global-con
 | [`use_materialization_v2`](#use-restructured-materializations)      | 1.10.0                  | TBD                        | Active |
 | [`use_managed_iceberg`](#use-managed-iceberg)  | 1.11.0  |  1.12.0                                                     | Active |
 | [`use_replace_on_for_insert_overwrite`](#use-replace-on-for-insert_overwrite-strategy)   | 1.11.0   | 1.12.0                    | Active, defaults to `True` |
+| [`use_describe_as_json_for_relation_metadata`](#use-describe-as-json-for-relation-metadata) | 1.12.0 | TBD | Active |
 
 ## Use information schema for columns
 
@@ -213,3 +214,21 @@ The `use_replace_on_for_insert_overwrite` flag is only relevant when using incre
 
 If you previously relied on this behavior to get full table replacement without dropping existing metadata, that behavior continues to exist with the flag set to `True`, provided you do not use any partitions or liquid clustering clusters.
 These data layout optimizations only tend to have a significant effect for tables that are approximately 1 TB large or greater, at which point regular replacement of all of the data is probably not the best approach.
+
+## Use `describe` as JSON for relation metadata
+_Available in versions 1.12.0 or higher_
+
+The `use_describe_as_json_for_relation_metadata` flag is `False` by default. When set to `True`, dbt fetches relation metadata (such as constraints, column masks, row filters, and view definitions) with a single [`DESCRIBE TABLE EXTENDED ... AS JSON`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-aux-describe-table) call instead of issuing multiple `information_schema` queries. This one call replaces several reads and improves metadata-fetch performance.
+
+This flag requires Databricks Runtime 17.3 or higher. On older runtimes, dbt falls back to the `information_schema` queries. The flag is also skipped for Hive metastore relations and for foreign/federated tables, which continue to use `information_schema`.
+
+To enable it, set the flag to `True` in your `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  use_describe_as_json_for_relation_metadata: true
+```
+
+</File>
