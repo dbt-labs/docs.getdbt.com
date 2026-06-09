@@ -30,7 +30,7 @@ The BYOK instructions on this page apply to the CLI only. The <Constant name="db
 You can configure a provider in one of the following ways:
 
 - **Terminal commands**: Best for users who want to configure providers from the shell.
-- **Interactive setup**: Best for most users working in the <Constant name="wizard" /> TUI. Use the `/providers` slash command.
+- **Interactive session**: Best for most users working in the <Constant name="wizard" /> TUI. Use the `/providers` slash command.
 - **Environment variables**: Best for headless runs, such as `wizard exec`, automation, or temporary local sessions.
 
 ### Configure in the terminal
