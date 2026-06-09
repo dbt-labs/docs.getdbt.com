@@ -222,13 +222,21 @@ wizard providers list
 wizard debug models
 ```
 
-The `wizard providers configure snowflake` command prompts you for the following:
+The `wizard providers configure snowflake` command walks you through the following prompts:
+
+```
+Enable this provider? [Y/n]:
+Models to enable [1]:
+Snowflake account ID:
+Snowflake API base override (optional):
+Paste API key/token, or press enter to configure it later:
+```
 
 | Prompt | What to enter |
 |--------|---------------|
 | **Snowflake account ID** | Your Snowflake account identifier (for example, `myorg-myaccount`) |
-| **API key** | Your authentication token — see [Authentication options](#authentication-options) below |
-| **Snowflake API base override (optional)** | Leave blank unless you're using a custom or private Snowflake endpoint |
+| **Snowflake API base override (optional)** | Leave blank — this is only needed for custom or private Snowflake endpoints |
+| **Paste API key/token** | Your authentication token — see [Authentication options](#authentication-options) below |
 
 #### Authentication options
 
@@ -244,7 +252,7 @@ If your Snowflake account authenticates through SSO, Okta, or another federated 
 2. Select **Generate token** and follow the prompts.
 3. Copy the token value — it's only shown once.
 
-Paste the PAT at the **API key** prompt. Leave the **API base override** field blank.
+Paste the PAT at the **Paste API key/token** prompt.
 
 For step-by-step instructions on generating a PAT, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
 
