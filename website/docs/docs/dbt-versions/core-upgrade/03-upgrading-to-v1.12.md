@@ -20,19 +20,13 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### dbt State <Lifecycle status="preview" />
-
-dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in <Constant name="core" /> v1.12.
-
-To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state). It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings); enabling dbt State on every `dbt run` or `dbt build` for you. 
-
-To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml` instead. You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
-
 ### `dbt login`
 
-`dbt login` signs you in to dbt from the command line to access features that require authentication. It opens a browser prompt to sign in to an existing dbt platform account or create a free one. Run `dbt login` status to check your current authentication status.
+In <Constant name="core" /> v1.12, [`dbt login`](/reference/commands/login) is used exclusively to enable [dbt State](/docs/deploy/dbt-state-about) (a paid feature available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users). `dbt login` opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a [standalone dbt State account](https://app.state.dbt.com). It automatically sets `manage_state: true` in [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings), enabling dbt State on every `dbt run` or `dbt build`.
 
-Use `dbt login` for [dbt State](/reference/commands/login#dbt-login-with-dbt-state) or local development (interactive authentication) on macOS, Linux, or Windows. Refer to [`dbt login`](/reference/commands/login) for more info.
+Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
+
+In the <Constant name="fusion_engine" />, `dbt login` unlocks a broader set of features beyond dbt State, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login).
 
 ### Opt-in v2 parser <Lifecycle status="beta" />
 
@@ -63,6 +57,13 @@ packages:
 - You can define multiple argument signatures for the same user-defined function (UDF) using the `overloads` property. This lets you call the same function name with different input types, without creating separate UDFs for each variant. This is supported for SQL UDFs in Snowflake and Postgres, and Python UDFs in Snowflake. Each overload references a separate file using `defined_in`, with optional `arguments` and `returns`. All overloads are grouped into one <Term id="dag">DAG</Term> node, so they're built and selected together. On retry, dbt skips overloads that succeeded and reruns only those that failed. For more information, refer to [Defining overloaded UDFs](/docs/build/udfs#defining-udfs-in-dbt#defining-overloaded-UDFs) and [`overloads`](/reference/resource-properties/overloads).
 
 - You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
+
+
+### `latest_version_pointer` for versioned models <Lifecycle status="beta" />
+
+For versioned models, you can configure dbt to automatically create a pointer view named after a model's base name (for example, `dim_customers`) once the latest version materializes successfully. This lets you query the current version without maintaining a view manually.
+
+Enable this feature in your project with the [`latest_version_pointer_enabled_by_default: true`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models) flag in `dbt_project.yml`, or per model using the [`latest_version_pointer.enabled`](/reference/resource-configs/latest_version_pointer) config. You can customize the pointer name per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro. For more information, refer to [Model versions](/docs/mesh/govern/model-versions#pointing-to-the-latest-version).
 
 ### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
 
@@ -137,6 +138,7 @@ You can read more about each of these behavior changes in the following links:
 - (Introduced, disabled by default) [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses). When set to `true`, dbt applies project-level analysis configuration from `dbt_project.yml`. Previously, dbt silently ignored this configuration. This flag also corrects fully qualified names (FQNs) of analyses by removing the extra path segment, making them consistent with other resource types (for example, `your_project.my_analysis` instead of `your_project.analyses.my_analysis`). For more information, refer to [Analyses](/docs/build/analyses).
 - (Introduced, disabled by default) [`require_source_and_semantic_model_names_without_spaces`](/reference/global-configs/behavior-changes#no-spaces-in-source-and-semantic-model-names). By default, dbt raises a [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the flag is set to `true`, dbt raises an error.
 - (Introduced, disabled by default) [`allow_jinja_file_extensions`](/reference/global-configs/behavior-changes#jinja-file-extensions). When set to `True`, dbt recognizes Jinja-style extension suffixes (`.j2`, `.jinja`, `.jinja2`) on `.sql` and `.md` files. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+- (Introduced, disabled by default) [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models). When set to `true`, dbt automatically creates a latest version pointer view for every versioned model in your project, without requiring per-model configuration.
 
 ## Adapter-specific features and functionalities
 
@@ -163,6 +165,7 @@ You can read more about each of these behavior changes in the following links:
 
 - The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) flag defaults to `false`, preserving legacy behavior of sending `BEGIN`/`COMMIT`/`ROLLBACK` statements even when autocommit is enabled. To skip unnecessary transaction statements and improve performance, set the flag to `true`.
 - Added support for the `query_group` session parameter, allowing dbt to tag queries for Redshift Workload Manager routing and query logging. When configured in a profile, dbt sets `query_group` when opening a connection and the value applies for the duration of that session. You can also configure `query_group` at the model level to temporarily override the default value for a specific model, and dbt reverts the value at the end of model materialization. For more information, see [Redshift configurations](/reference/resource-configs/redshift-configs#session-configuration).
+
 
 ## Quick hits
 

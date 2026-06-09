@@ -1,18 +1,16 @@
 ---
-title: "dbt Wizard skills"
+title: "Use skills with dbt Wizard CLI"
 id: "wizard-skills"
-description: "Create and use skills to give dbt Wizard reusable, project-specific instructions — in the dbt platform or the CLI."
+description: "Create and use skills to give dbt Wizard CLI reusable, project-specific instructions."
 sidebar_label: "Use skills"
 tags: [AI, Wizard]
 ---
 
-# <Constant name="wizard"/> skills <Lifecycle status="beta"/>
+# Use skills with <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
 <IntroText>
 Skills are reusable instructions that help <Constant name="wizard" /> follow your team's SQL conventions, naming rules, modeling patterns, and workflows without repeating them in every prompt.
 </IntroText>
-
-Skills work the same way in the [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) and the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli). They use the same file format and folder structure, but differ in how you create the files.
 
 <Constant name="wizard" /> also includes built-in skills from [dbt Agent skills](https://github.com/dbt-labs/dbt-agent-skills), maintained by dbt Labs. These are always available, no setup needed.
 
@@ -20,9 +18,9 @@ When you initialize <Constant name="wizard" /> in a project, it can also detect 
 
 For general project context (`AGENTS.md`, `CLAUDE.md`), refer to [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — <Constant name="wizard" /> reads those instruction files out of the box.
 
-## How skills work
+## Locations and precedence
 
-At the start of every session, <Constant name="wizard"/> scans for repo-level skills in the `.agents/skills/` directory in your dbt project root:
+At the start of every session, <Constant name="wizard"/> scans for project-level skills in `.agents/skills/` from your dbt project root down to your current working directory:
 
 ```text
 .agents/
@@ -31,7 +29,7 @@ At the start of every session, <Constant name="wizard"/> scans for repo-level sk
       SKILL.md
 ```
 
-The CLI also discovers user-global skills in `~/.agents/skills/`, and can auto-discover existing Claude Code skills under `.claude/skills/`.
+The CLI also discovers user-level skills in `~/.agents/skills/`, user-level Claude Code skills under `~/.claude/skills/`, and project-level Claude Code skills under `.claude/skills/`.
 
 ```text
 .claude/
@@ -42,41 +40,23 @@ The CLI also discovers user-global skills in `~/.agents/skills/`, and can auto-d
 
 Custom skills use the [Agent Skills](https://agentskills.io/specification) format, the same format used by [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) on GitHub. A skill file contains YAML frontmatter (`name`, `description`) and a Markdown body with instructions.
 
-The following table summarizes where <Constant name="wizard" /> looks for skills and which location takes precedence when names clash, sorted by precedence (highest to lowest).
+The following table summarizes where <Constant name="wizard" /> looks for skills. Use the intended locations for new skills, and keep compatibility locations only when migrating existing setup. Within project-level locations, the current working directory wins over parent directories. Project-level skills win over user-level and built-in skills.
 
 <SimpleTable>
 
-| Location | Scope | Precedence |
-| --- | --- | --- |
-| `.agents/skills/NAME/SKILL.md` | Repo-level (project root) | Highest — overrides global and built-in |
-| `~/.agents/skills/NAME/SKILL.md` | CLI-global (all your projects) | Below project, above built-in |
-| `.claude/skills/NAME/SKILL.md` | Auto-discovered Claude Code skills | Below custom skills |
-| Built-in [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) | Shipped with <Constant name="wizard" /> | Lowest |
-| `~/.dbt/wizard/skills/` | CLI-global (legacy) | Backward-compatibility only |
+| Location | Level | Use for new skills? | Precedence |
+| --- | --- | --- | --- |
+| `.agents/skills/NAME/SKILL.md` | Project | Yes. Use this for skills shared with a repo or subdirectory. | Highest project skill location; closer to the current working directory wins over parent directories. |
+| `~/.agents/skills/NAME/SKILL.md` | User | Yes. Use this for skills you want across all local projects. | Below project skills, above compatibility imports and built-in skills. |
+| `.claude/skills/NAME/SKILL.md` | Project | No. Compatibility import for existing Claude Code skills. | Below intended project and user skill locations. |
+| `~/.claude/skills/NAME/SKILL.md` | User | No. Compatibility import for existing Claude Code skills. | Below intended project and user skill locations. |
+| Built-in [dbt Agent Skills](https://github.com/dbt-labs/dbt-agent-skills) | Built-in | No. Shipped with <Constant name="wizard" />. | Lowest. |
 
 </SimpleTable>
 
-If a custom skill and a built-in skill share the same name, the custom skill takes precedence.
+Avoid duplicate skill names across locations. If you need to replace a built-in or imported skill, create the replacement in an intended project or user location and remove or rename the older copy.
 
 ## Create a skill
-
-<Tabs>
-<TabItem value="platform" label="dbt platform" default>
-
-In [Studio IDE](/docs/dbt-ai/wizard-ide), use the file explorer to create the skill directory and file:
-
-1. Create a folder at `.agents/skills/SKILL_NAME/` in your project root.
-2. Add a `SKILL.md` file inside it. A typical `SKILL.md` includes:
-   - YAML frontmatter with at minimum `name` and `description`.
-   - A Markdown body with sections for when to use the skill, workflow steps, and conventions.
-   - Optional `references/` files for extra detail the agent can load when needed.
-3. Optionally add supporting files under `.agents/skills/SKILL_NAME/references/` (for example, `references/naming-conventions.md`) that the agent can read when the skill is active.
-4. Start a new <Constant name="wizard"/> chat — skills are discovered at session start, so mid-session changes won't be picked up until you start a new chat.
-
-If a custom skill and a built-in skill use the same name, the custom skill takes precedence.
-
-</TabItem>
-<TabItem value="cli" label="CLI">
 
 From your terminal, use the following commands to create a skill folder and file:
 
@@ -86,9 +66,6 @@ touch .agents/skills/my-team-style/SKILL.md
 ```
 
 Then write your skill file. Refer to [Skill file format](#skill-file-format) in the next section for more information. Start a new `wizard` session to apply the changes. Skills are discovered at session start and changes made mid-session won't be picked up until you restart.
-
-</TabItem>
-</Tabs>
 
 ## Skill file format
 
@@ -145,18 +122,6 @@ The `references/` subfolder is for supporting material that would make `SKILL.md
 
 <Constant name="wizard"/> applies skills automatically when it detects a match between the skill's `description` and your task. You can also invoke a skill explicitly:
 
-<Tabs>
-<TabItem value="platform" label="dbt platform" default>
-
-In the <Constant name="wizard"/> chat panel:
-
-1. Prompt the agent and reference the skill by name — for example: `Use my-team-style to refactor this model and update related YAML`.
-2. If needed, use `@` mentions to point to the skill file or supporting `.md` files directly.
-3. Review and approve proposed changes as usual in the <Constant name="wizard"/> panel.
-
-</TabItem>
-<TabItem value="cli" label="CLI">
-
 Reference the skill by name in your prompt:
 
 ```
@@ -168,9 +133,6 @@ Or point to the file directly with `@`:
 ```
 @.agents/skills/my-team-style/SKILL.md — apply these conventions to the new model.
 ```
-
-</TabItem>
-</Tabs>
 
 ## Global skills (CLI only) {#global-skills-cli-only}
 
@@ -186,8 +148,6 @@ SKILL.md
 </File>
 
 If a project skill and a global skill use the same name, the project skill takes precedence.
-
-The CLI still reads `~/.dbt/wizard/skills/` for backward compatibility, but use `~/.agents/skills/` for new global skills.
 
 ## Built-in dbt skills
 
@@ -234,5 +194,6 @@ Built-in skills are updated with each <Constant name="wizard"/> release. Custom 
 ## Related docs
 
 - [<Constant name="wizard"/> in Studio IDE](/docs/dbt-ai/wizard-ide)
+- [Use skills in the <Constant name="dbt_platform" />](/docs/dbt-ai/wizard-platform-skills)
 - [How <Constant name="wizard"/> works](/docs/dbt-ai/wizard-how-it-works)
 - [<Constant name="wizard"/> CLI overview](/docs/dbt-ai/about-dbt-wizard-cli)

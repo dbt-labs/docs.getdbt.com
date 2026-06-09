@@ -47,14 +47,15 @@ The Semantic Layer querying in dbt <Constant name="insights" /> lets you build q
 To build a query in dbt <Constant name="insights" />:
 
 1. From the main menu, go to **<Constant name="insights" />**.
-2. Click **Build a query**. 
-3. Select what you want to include in your query.
+2. Click **Build a query**.
+3. From the Environment dropdown, select **PROD** or **STG**. Even thought you see **DEV** as an option, queries against development environments are deferred based on deferral rules, so selecting it will not query your development environment directly.
+4. Select what you want to include in your query.
     - Click **Add Metric** to select the metrics for your query. 
     - Click **Add Group by** to choose the dimensions that break down your metric, such as time grain (day, week, month), region, product, or customer.
     - Click **Add Filter** to create a filter to narrow your results.
     - Click **Add Order by** to select how you want to sort the results of your query. 
-    - Click **Add Limit**, select the amount of results you want to see when you run your query. If left blank, you will get all the results. 
-4. Click **Run** to run your query.
+    - Click **Add Limit**, select the amount of results you want to see when you run your query. If left blank, you will get all results. 
+5. Click **Run** to run your query.
     Results are available in the **Data** tab. You can see the SQL code generated in the **Details** tab.
 
     <DocCarousel slidesPerView={1}>
@@ -98,9 +99,25 @@ The Query console sidebar menu and icons contains the following options:
 
 ### Bookmark 
 
-Save and access your frequently used queries. 
+Save and access your frequently used queries from the query console sidebar.
 
-<Lightbox src="/img/docs/dbt-insights/manage-bookmarks.png" width="90%" title="Manage your query bookmarks" /> 
+To save and manage bookmarks:
+
+1. Click **Bookmark** in the [Query console menu](#query-console-menu) to save the current query. In the **Bookmark Query Details** modal, add a **Title** and **Description**.
+2. Select the **Bookmark** icon in the sidebar to open your list of saved queries.
+3. Select a saved Insight to view its details or open it in the query editor.
+
+For sharing saved Insights and version history, check out [Save your Insights](/docs/explore/access-dbt-insights#save-your-insights).
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-insights/save-insights-modal.png" width="95%" title="Bookmark Query Details modal" />
+
+<Lightbox src="/img/docs/dbt-insights/manage-bookmarks.png" width="90%" title="Manage your query bookmarks" />
+
+<Lightbox src="/img/docs/dbt-insights/view-saved-insights.png" width="95%" title="List view of saved Insights" />
+
+</DocCarousel>
 
 ### Query history
 
