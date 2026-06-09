@@ -1,6 +1,6 @@
 /**
  * Diffs the newly-fetched platform function JSON against the previously
- * committed version and opens GitHub issues in dbt-labs/dbt-fusion for any
+ * committed version and opens GitHub issues in dbt-labs/dbt-core for any
  * brand-new functions that are missing Fusion typechecking support.
  *
  * Runs inside update-platform-functions.yml, after fetch but before commit,
@@ -10,7 +10,7 @@
  *   node scripts/create-fusion-gap-issues.js snowflake
  *
  * Env vars:
- *   FUSION_ISSUES_TOKEN  — PAT with issues:write on dbt-labs/dbt-fusion
+ *   FUSION_ISSUES_TOKEN  — PAT with issues:write on https://github.com/dbt-labs/dbt-core
  */
 
 const fs = require('fs');
@@ -18,7 +18,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 const { PLATFORMS } = require('./platforms.config');
 
-const ISSUES_REPO = 'dbt-labs/dbt-fusion';
+const ISSUES_REPO = 'dbt-labs/dbt-core';
 const ISSUE_LABEL = 'SQL_understanding';
 const DATA_DIR = path.join(__dirname, '..', 'static', 'data', 'functions');
 

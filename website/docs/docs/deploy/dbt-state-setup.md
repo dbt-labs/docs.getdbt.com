@@ -15,7 +15,7 @@ Once enabled, dbt State runs automatically on every `dbt run` or `dbt build`.
 Before you begin:
 
 - dbt State supports Snowflake, Databricks, BigQuery, and Redshift.
-- You can connect dbt State to an existing <Constant name="dbt_platform" /> account or use a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state).
+- dbt State requires authentication either through a <Constant name="dbt_platform" /> account, or a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state). For pricing information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
 Select the option that matches your setup:
 
@@ -124,7 +124,7 @@ To install the plugin:
    pip install dbt-state
    ```
 
-dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
+dbt State is now enabled. The first time you execute `dbt run` or `dbt build`, a browser window opens where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). After authenticating, dbt State runs automatically on every `dbt run` or `dbt build`.
 
 The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
