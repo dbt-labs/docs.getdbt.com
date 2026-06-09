@@ -21,6 +21,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
+**Beta**: Workspace-level Private Link for Microsoft Fabric is now available in beta. Configure a private connection between the <Constant name="dbt_platform" /> and your Fabric workspace so SQL traffic stays on Azure's private network. For more information, refer to [Configuring Private Link for Microsoft Fabric](/docs/platform/secure/private-connectivity/azure/azure-fabric).
 - **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
 
 ### Snowflake Summit 2026 announcements

@@ -12,6 +12,7 @@
 | [Anthropic](https://www.anthropic.com/legal/consumer-terms) | ✓ (BYOK) | ✓ (BYOK) |
 | [Azure AI Foundry](https://www.microsoft.com/licensing/terms) / Azure OpenAI | ✓ (BYOK) | ✓ (BYOK) |
 | [AWS Bedrock](https://aws.amazon.com/service-terms/) |- | ✓ (BYOK) |
+| [Google Gemini](https://ai.google.dev/gemini-api/terms) | - | ✓ (BYOK) |
 | [Snowflake Cortex](https://www.snowflake.com/en/legal/terms-of-service/) | - | ✓ (BYOK) |
 </SimpleTable>
 
