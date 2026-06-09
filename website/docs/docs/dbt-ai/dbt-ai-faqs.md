@@ -107,15 +107,17 @@ Yes, <Constant name="wizard" /> is powered by ai-codegen-api, which is deployed 
 
 <Expandable alt_header="Which AI model providers does dbt Wizard use?">
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> supports <strong><Term id="managed" /> OpenAI</strong>, **BYOK OpenAI**, **BYOK Anthropic**, and **BYOK Azure AI Foundry**. By default, accounts use <Term id="managed" /> OpenAI. Enterprise-tier accounts can [bring their own provider keys](/docs/platform/enable-dbt-ai#configure-ai-provider).
+In the <Constant name="dbt_platform" />, <Constant name="wizard" /> supports <Term id="managed" /> OpenAI, BYOK OpenAI, BYOK Anthropic, and BYOK Azure AI Foundry. By default, accounts use <Term id="managed" /> OpenAI. Enterprise-tier accounts can [bring their own provider keys](/docs/platform/enable-dbt-ai#configure-ai-provider).
 
-The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports **OpenAI**, **Anthropic**, **AWS Bedrock**, and **Snowflake Cortex** (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) for more information.
+The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports OpenAI, Anthropic, AWS Bedrock, and Snowflake Cortex (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) for more information.
 
 </Expandable>
 
 <Expandable alt_header="Do we support BYOK (bring your own key) at the project level?">
 
-The <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
+In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
+
+<Constant name="wizard" /> CLI supports BYOK locally for OpenAI, Anthropic, AWS Bedrock, and Snowflake Cortex (preview). 
 
 </Expandable>
 
