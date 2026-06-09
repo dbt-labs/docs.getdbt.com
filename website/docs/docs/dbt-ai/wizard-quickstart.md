@@ -1,123 +1,307 @@
 ---
-title: "Get started with the dbt Wizard local CLI"
+title: "Getting started with dbt Wizard CLI"
 id: "wizard-quickstart"
-description: "Install the dbt Wizard local CLI, complete first-run onboarding, and send your first prompt from the terminal."
-sidebar_label: "Get started with the local CLI"
+description: "Set up dbt Wizard CLI, connect it to a sample dbt project, and use it to make and validate your first dbt change."
+sidebar_label: "Getting started with Wizard CLI"
 tags: [AI, CLI, dbt Wizard]
 hide_table_of_contents: true
 ---
 
-import WizardPrompts from '/snippets/wizard-prompts.md';
-import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import WizardCliOnboarding from '/snippets/_wizard-cli-onboarding.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
-# Get started with the <Constant name="wizard" /> local CLI
+<div style={{maxWidth: '900px'}}>
+
+# Getting started with <Constant name="wizard" /> CLI
 
 <IntroText>
-Install <Constant name="wizard" /> locally and start an agentic dbt development session from your terminal.
+Set up <Constant name="wizard" /> CLI in a local dbt project and use it to understand, edit, and validate dbt code from your terminal.
 </IntroText>
 
-<WizardCliInstall />
+By the end of this guide, you'll have:
 
-By the end of this guide, you can install <Constant name="wizard" /> locally, authenticate with your <Constant name="dbt_platform" /> credentials if applicable, complete first-run onboarding, and send your first prompt from the terminal.
-
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
-
-Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.
-
-<WizardSupportedProviders />
-
-<VersionBlock lastVersion="1.99">
-
-:::tip Upgrade to the <Constant name="fusion_engine" />
-On <Constant name="fusion_engine"/> (version 2.0 and later), start <Constant name="wizard"/> with `wizard` and use `wizard COMMAND_NAME` for CLI commands.
-:::
-
-</VersionBlock>
+- A local sample dbt project that <Constant name="wizard" /> can inspect
+- <Constant name="wizard" /> CLI installed and configured with a supported AI provider
+- A first <Constant name="wizard" /> session that explains the project
+- A small dbt change proposed by <Constant name="wizard" />, reviewed by you, and validated with dbt
 
 ## Prerequisites
 
 You'll need:
 
-- An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, or Snowflake Cortex (preview)
-- A dbt project set up locally
+- A terminal and basic familiarity with `cd`, `ls`, and `pwd`
+- Git installed locally
+- A dbt project connected to a supported data platform
+- A working dbt executable, such as <Constant name="fusion" /> or <Constant name="core" />
+- A supported AI provider configured using [BYOK](/docs/dbt-ai/wizard-byok), or an OpenAI subscription
 
 <WizardCliDbtCliSupport />
 
 <NewToTerminal />
 
-## Complete first-run onboarding
+## Preparing a sample dbt project
 
-<WizardCliOnboarding />
+Use a small dbt project for your first <Constant name="wizard" /> session so you can review changes safely. This guide uses a fictional Magic Shop dataset with four source tables and a small staging layer.
 
-Once you're set up, ask your first question in your terminal. Try some [prompts](/docs/dbt-ai/wizard-use-cases) to see how <Constant name="wizard" /> works:
+You can add the sample data to an existing local dbt project, or create a new dbt project for this walkthrough.
 
-<WizardPrompts />
+### Setting up sample data
 
-<Constant name="wizard" /> will read your project's lineage, tests, and metadata and propose changes as a diff. You approve, reject, or redirect before anything is written.
-
-<div style={{maxWidth: '100%', margin: '20px 0'}}>
-<video
-  width="100%"
-  controls
-  autoPlay
-  muted
-  loop
-  playsInline
-  onLoadedMetadata={(event) => {
-    event.currentTarget.defaultPlaybackRate = 2.0;
-    event.currentTarget.playbackRate = 2.0;
-  }}
-  onPlay={(event) => {
-    event.currentTarget.playbackRate = 2.0;
-  }}
->
-  <source src="/img/wizard.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>dbt Wizard CLI in your terminal</span>
-</div>
-
-For refactor or change requests, <Constant name="wizard" /> automatically assesses downstream impact first by reporting affected models, metrics, and tests with a severity rating before proposing any changes.
-
-When <Constant name="wizard" /> manages deferral, you point it at a target in your `profiles.yml` and it compiles and defers to that target automatically, so it can validate against already-built upstream models without rebuilding everything. Refer to [Deferral and state](/docs/dbt-ai/wizard-how-it-works#deferral-and-state) and [About dbt State](/docs/deploy/dbt-state-about) for details.
-
-## Useful terminal commands
-
-Use the following commands to get started:
+Create or load the following source tables in your warehouse. The examples in this guide assume the tables are available in a database named `raw` and a schema named `magic_shop`. If you use a different location, update `models/staging/sources.yml` in the next step.
 
 <SimpleTable>
 
-| Command | Description | Example |
-|---------|-------------|---------|
-| `wizard "[prompt]"` | Start an interactive session seeded with a prompt. Once you activate the session, you don't need to pass your prompt in quotes. | `wizard "summarize what this project does"` |
-| `wizard exec "[prompt]"` | Run a single prompt non-interactively and exit | `wizard exec "list all models with no tests"` |
-| `wizard review --uncommitted` | Non-interactive code review of uncommitted changes | `wizard review --uncommitted` |
-| `wizard review --base BRANCH` | Review diff against a base branch | `wizard review --base main` |
-| `wizard resume` | Resume a previous session | `wizard resume --last` |
-| `wizard apply` | Apply the latest Wizard diff to your working directory | `wizard apply TASK_ID` |
-| `wizard login` / `logout` | Authenticate with your dbt platform account | `wizard login` |
-| `wizard mcp` | Manage MCP server connections | `wizard mcp add dbt` |
-| `wizard update` | Update Wizard to the latest version | `wizard update` |
+| Source table | Columns |
+| --- | --- |
+| `wizards` | `id`, `w_name`, `email`, `phone`, `world` |
+| `orders` | `id`, `customer`, `wand`, `date` |
+| `wands` | `id`, `name` |
+| `worlds` | `id`, `name` |
 
 </SimpleTable>
 
-:::tip Need to re-run setup?
-If you want to re-run onboarding — re-authenticate, reset project config, or retrigger the trusted folder prompt &mdash; refer to [Re-trigger onboarding flows](/docs/dbt-ai/wizard-config#re-trigger-onboarding-flows).
-:::
+<!-- TODO: Add a public sample data setup script or CSV download when available. -->
+
+### Adding staging models
+
+In your dbt project, create a `models/staging` directory:
+
+```shell
+mkdir -p models/staging
+```
+
+Add a source configuration file:
+
+<File name="models/staging/sources.yml">
+
+```yaml
+version: 2
+
+sources:
+  - name: raw
+    database: raw
+    schema: magic_shop
+    tables:
+      - name: wizards
+        columns:
+          - name: id
+          - name: w_name
+          - name: email
+            meta:
+              contains_pii: true
+          - name: phone
+            meta:
+              contains_pii: true
+          - name: world
+      - name: orders
+        columns:
+          - name: id
+          - name: customer
+          - name: wand
+          - name: date
+      - name: wands
+        columns:
+          - name: id
+          - name: name
+      - name: worlds
+        columns:
+          - name: id
+          - name: name
+```
+
+</File>
+
+Then add these staging models:
+
+<File name="models/staging/stg_wizards.sql">
+
+```sql
+select
+    id as wizard_id,
+    w_name as wizard_name,
+    email,
+    coalesce(
+        regexp_like(
+            email,
+            '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+        ) = true,
+        false
+    ) as is_valid_email_address,
+    phone as phone_number,
+    world as world_id
+from {{ source('raw', 'wizards') }}
+```
+
+</File>
+
+<File name="models/staging/stg_orders.sql">
+
+```sql
+select
+    id as order_id,
+    customer as wizard_id,
+    wand as wand_id,
+    date as order_date,
+    datediff(
+        'day',
+        order_date,
+        {{ dbt.current_timestamp() }}
+    ) as days_since_ordered
+from {{ source('raw', 'orders') }}
+```
+
+</File>
+
+<File name="models/staging/stg_wands.sql">
+
+```sql
+select
+    id as wand_id,
+    name as wand_name
+from {{ source('raw', 'wands') }}
+```
+
+</File>
+
+<File name="models/staging/stg_worlds.sql">
+
+```sql
+select
+    id as world_id,
+    name as world_name
+from {{ source('raw', 'worlds') }}
+```
+
+</File>
+
+Confirm that your project can compile:
+
+```shell
+dbt compile
+```
+
+If `dbt compile` fails, fix the dbt project before continuing. <Constant name="wizard" /> works best when it can compile and inspect your project.
+
+## Installing dbt Wizard CLI
+
+<WizardCliInstall />
+
+After installing, confirm that <Constant name="wizard" /> is available:
+
+```shell
+wizard --version
+```
+
+## Configuring dbt Wizard CLI
+
+From the root of your dbt project, start <Constant name="wizard" />:
+
+```shell
+wizard
+```
+
+Complete first-run onboarding:
+
+<WizardCliOnboarding />
+
+## Asking Wizard to explain the project
+
+Start with a read-only prompt so you can verify that <Constant name="wizard" /> understands your project before asking it to make changes:
+
+```text
+summarize what this project does
+```
+
+Then ask <Constant name="wizard" /> to identify a focused improvement:
+
+```text
+which staging models are missing tests?
+```
+
+Review the response and choose one small change to make in the next step.
+
+## Making your first dbt change
+
+Ask <Constant name="wizard" /> to add tests or documentation to one staging model. For example:
+
+```text
+add not_null and unique tests to the primary key of stg_wizards
+```
+
+<Constant name="wizard" /> proposes a diff before it writes changes. Review the diff, then approve, reject, or redirect the change.
+
+## Validating the change
+
+After you apply a change, run dbt from the same project directory:
+
+```shell
+dbt build --select stg_wizards+
+```
+
+If the command succeeds, review the changed files:
+
+```shell
+git diff
+```
+
+If the command fails, return to <Constant name="wizard" /> and paste the error message:
+
+```text
+dbt build failed with this error: ERROR_MESSAGE
+```
+
+Replace `ERROR_MESSAGE` with the error from your terminal.
+
+## Reviewing before you commit
+
+Use <Constant name="wizard" /> to review your local changes:
+
+```shell
+wizard review --uncommitted
+```
+
+Then commit the change with your usual Git workflow:
+
+```shell
+git status
+git add .
+git commit -m "Add tests for staging model"
+```
+
+## Troubleshooting
+
+### Wizard cannot find dbt
+
+Confirm that your dbt executable works from the same terminal:
+
+```shell
+dbt --version
+dbt compile
+```
+
+If your project uses a virtual environment, activate it before starting <Constant name="wizard" />.
+
+### Provider authentication fails
+
+Run `/providers` in the interactive <Constant name="wizard" /> session and check that your provider is enabled and authenticated. For BYOK setup details, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
+
+### The sample project does not compile
+
+Run `dbt debug` and `dbt compile` before starting <Constant name="wizard" />. Fix connection, source, seed, or dependency errors first.
+
+## Conclusion
+
+You installed <Constant name="wizard" /> CLI, connected it to a local dbt project, asked project-aware questions, made a small model change, and validated that change with dbt.
 
 ## Next steps
 
-- [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for realistic analytics engineering scenarios
-- [Install and update reference](/docs/dbt-ai/wizard-cli) for full install, update, and uninstall details
-- [Configure BYOK](/docs/dbt-ai/wizard-byok) for managing your API key and choosing an AI model
-- [Configuration reference](/docs/dbt-ai/wizard-config) for setting persistent defaults in `config.toml` and per-project dbt settings in `wizard_config.toml`
-- [Use skills locally](/docs/dbt-ai/wizard-skills) for giving Wizard reusable instructions for your project
-- [Use MCP servers](/docs/dbt-ai/wizard-mcp) to connect <Constant name="wizard" /> CLI to more tools and context
-- [Migrate from Claude Code](/docs/dbt-ai/wizard-migrate) for bringing existing Claude Code project context into <Constant name="wizard" />
+- Try more [Wizard use cases](/docs/dbt-ai/wizard-use-cases)
+- Configure default models and project settings in [Configuration reference](/docs/dbt-ai/wizard-config)
+- Add reusable project guidance with [Wizard skills](/docs/dbt-ai/wizard-skills)
 
 <WizardFeedbackCallout />
+
+</div>
