@@ -358,7 +358,7 @@ spark-connect:
       type: spark
       method: spark-connect   # synonyms: sc, connect
       port: 15002
-      user: lucas   # "user" is optional. When set, will be passed as the `user_id`
+      user: john_spark   # Optional. When set, will be passed as the Spark Connect `user_id`
       auth: TOKEN   # You can also use auth=NONE for skipping authentication
       token: myauthtoken   # "token" or "password" is required when auth=TOKEN
       host: yoursparkhost.com
