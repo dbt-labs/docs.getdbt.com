@@ -15,9 +15,11 @@ To-do:
 See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
 :::
 
+<VersionBlock firstVersion="2.0">
 :::note
 See [Spark on dbt Core v2 and Fusion](#spark-on-core-v2-and-fusion) for what's currently supported and what is coming soon to the next-gen dbt runtime.
 :::
+</VersionBlock>
 
 ## Configuring tables
 
@@ -336,6 +338,10 @@ There are three profile configurations available:
 | `query_retries` | Integer |	1 |	How many times the adapter retries when connection loss occurs during query execution. |
 
 The adapter catches specific connection exceptions (such as `ConnectionResetError`, `BrokenPipeError`, and `TTransportException`) and retries with a fresh cursor when connection loss occurs. After exhausting all retries, dbt raises a `DbtRuntimeError` and suggests increasing `query_retries` in your profile.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="2.0">
 
 ## Spark on Core v2 and Fusion
 
