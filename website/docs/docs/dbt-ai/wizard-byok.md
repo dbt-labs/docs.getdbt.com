@@ -277,10 +277,7 @@ The key/token field accepts a regular API token or a Programmatic Access Token (
 <TabItem value="api-token" label="API token (password-based accounts)">
 
 1. If your Snowflake account uses username and password login, generate a token via the [Cortex REST API prerequisites](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api#prerequisites).
-2. Paste the token at the key/token prompt. For example:
-```bash
-export SNOWFLAKE_API_KEY="YOUR_API_TOKEN"
-```
+2. Paste the token at the key/token prompt.
 </TabItem>
 
 <TabItem value="pat" label="Programmatic Access Token (PAT) -- required for SSO and Okta users">
@@ -288,10 +285,8 @@ If your Snowflake account authenticates through SSO, Okta, or another federated 
 1. In Snowflake, go to **Profile** → **Programmatic access tokens**.
 2. Select **Generate token** and follow the prompts.
 3. Copy the token value — it's only shown once.
-4. Paste the PAT at the key/token prompt. For example:
-```bash
-export SNOWFLAKE_API_KEY="YOUR_PAT"
-```
+4. Paste the PAT at the key/token prompt. 
+
 
 For full instructions, refer to the [Snowflake PAT documentation](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
 </TabItem>
