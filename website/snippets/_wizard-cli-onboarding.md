@@ -9,7 +9,7 @@ The first time you start <Constant name="wizard" /> in a project, it walks you t
 - Add any **extra compile flags** to append to the startup `dbt compile -s state:modified+`, or leave empty to skip.
 - **Configure [deferral](/docs/dbt-ai/wizard-config#deferral)** &mdash; choose **Wizard** (<Constant name="wizard" /> manages it), **Manual**, or **Disabled**. If you choose **Wizard**, enter the `profiles.yml` target to defer to (defaults to `prod`). On the <Constant name="fusion_engine" /> connected to the <Constant name="dbt_platform" />, <Constant name="wizard" /> instead offers to let the platform handle deferral.
 - Confirm your **detected dbt profile and target**, or customize the profile, target, or `profiles.yml` path.
-- **Configure a provider** (OpenAI subscription, OpenAI API key, Anthropic, Amazon Bedrock, Azure, or Snowflake). If you use an OpenAI subscription, <Constant name="wizard" /> configures it with `wizard providers configure openai_subscription`. For other providers, paste your API key or cloud credentials, then **choose a model**. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
+- **Configure a provider** (OpenAI subscription, OpenAI API key, Anthropic, Amazon Bedrock, Azure, or Snowflake). If you use an OpenAI subscription, <Constant name="wizard" /> configures it with `wizard providers configure openai_subscription`. For other providers, paste your API key or provider credentials, then **choose a model**. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
 
 To re-run any of these steps later, refer to [Re-trigger onboarding flows](/docs/dbt-ai/wizard-config#re-trigger-onboarding-flows).
 
@@ -17,7 +17,8 @@ To re-run any of these steps later, refer to [Re-trigger onboarding flows](/docs
 During onboarding, <Constant name="wizard" /> prompts you to configure a provider interactively. To skip the API key prompt &mdash; for headless runs like `wizard exec` or to reuse your key across sessions &mdash; set it as an environment variable before starting `wizard` instead:
 
 ```bash
-export OPENAI_API_KEY="sk-..."      # or ANTHROPIC_API_KEY, etc.
+export OPENAI_API_KEY="sk-..."                  # or ANTHROPIC_API_KEY
+export AWS_BEARER_TOKEN_BEDROCK="ABSK..."       # for Amazon Bedrock
 ```
 
 For AWS Bedrock and Snowflake Cortex, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
