@@ -33,7 +33,7 @@ Learn how to query data with <Constant name="insights" /> and view documentation
 - (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="insights" />, you must also:
   - [Configure](/docs/use-dbt-semantic-layer/setup-sl) the <Constant name="semantic_layer" /> for your dbt project.
   - Have a successful job run in the environment where you configured the <Constant name="semantic_layer" />. 
-- (Optional) To enable [Language Server Protocol (LSP) features](/docs/explore/navigate-dbt-insights#lsp-features-in-dbt-insights) in <Constant name="insights" /> and run your compilations on the <Constant name="fusion_engine" />, set your development environment to use the **Latest Fusion** dbt version.
+- (Optional) To enable [Language Server Protocol (LSP) features](/docs/explore/navigate-dbt-insights#lsp-features-in-dbt-insights) in <Constant name="insights" /> and run your compilations on the <Constant name="fusion_engine" />, set your development environment to use the **Fusion Stable** dbt version.
 
 ## Key benefits
 
