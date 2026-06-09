@@ -31,10 +31,10 @@ renamed as (
 select * from renamed
 ```
 
-dbt State reuses a model when its compiled SQL matches the stored hash. For views with `select *`, dbt State can't determine which columns the query selects without querying the upstream schema, so it can't confirm the SQL is unchanged. It always rebuilds these views to avoid reusing a stale result.
+dbt State reuses a model when its compiled SQL matches the stored hash. For views with `select *`, dbt State can't determine which columns the query selects without querying the upstream schema, so it can't confirm the SQL is unchanged. It always rebuilds these views to avoid reusing a stale result. When dbt State rebuilds a view, it also re-runs any tests defined on the model.
 
 :::tip
-To make this view eligible for reuse, remove the import CTE and reference the source directly with explicit column names:
+To make this view eligible for reuse, remove the imported CTE and reference the source directly with explicit column names:
 
 ```sql
 select
@@ -42,6 +42,8 @@ select
     ...
 from {{ source("my_source", "my_table") }}
 ```
+
+If you can't remove `select *`, you can exclude views from running with `--exclude config.materialized:view`.
 :::
 
 ## Non-deterministic Jinja templating
