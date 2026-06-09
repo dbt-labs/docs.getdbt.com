@@ -12,7 +12,7 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 # Configure BYOK for <Constant name="wizard" /> <Lifecycle status="beta"/>
 
 <IntroText>
-The <Constant name="wizard" /> CLI runs in bring-your-own-key (BYOK) mode, which means you supply credentials from a supported provider.
+You can use the <Constant name="wizard" /> CLI with bring-your-own-key (BYOK), which means you supply credentials from a supported provider.
 </IntroText>
 
 <WizardFeedbackCallout />
