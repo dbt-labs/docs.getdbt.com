@@ -100,7 +100,7 @@ Yes, <Constant name="wizard" /> is powered by ai-codegen-api, which is deployed 
 <Expandable alt_header="What data/code is used to train the AI model supporting dbt Wizard?">
 
 
-<Constant name="wizard" /> is supported by several third-party pre-trained AI models at the customer's election (<Term id="managed" /> OpenAI, BYOK OpenAI, BYOK Anthropic, or BYOK Azure AI Foundry). When using <Term id="managed" /> OpenAI, our agreement with OpenAI prohibits OpenAI from retaining your data persistently. Refer to our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
+<Constant name="wizard" /> is supported by several third-party pre-trained AI models at your discretion. (<Term id="managed" /> OpenAI, BYOK OpenAI, BYOK Anthropic, or BYOK Azure AI Foundry). When using <Term id="managed" /> OpenAI, our agreement with OpenAI prohibits OpenAI from retaining your data persistently. Refer to our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
 
 
 </Expandable>
