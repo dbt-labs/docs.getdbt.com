@@ -105,6 +105,12 @@ The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode).
 
+## Data retention
+
+The dbt MCP server doesn't store or retain any production data or job run results itself. It's a read-only access layer that reads metadata, job results, and Semantic Layer data from the dbt platform in real time when a tool is called.
+
+How long job runs and artifacts are available to query depends on your [dbt platform data retention policy](https://docs.getdbt.com/docs/dbt-cloud-apis/data-retention), not the MCP server. As long as a job or artifact exists in dbt platform, the MCP server can access it.
+
 ## Resources
 - [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) &mdash; full list of variables and tool configuration for local MCP
 - For more information, refer to our blog on [Introducing the dbt MCP Server](/blog/introducing-dbt-mcp-server#getting-started).
