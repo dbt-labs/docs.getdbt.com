@@ -23,6 +23,8 @@ Install the <Constant name="wizard"/> CLI by running the following commands:
 <Tabs groupId="wizard-install-os">
 <TabItem value="macos-linux" label="macOS/Linux" default>
 
+Run the following in Terminal:
+
 ```bash
 curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
 ```
@@ -30,7 +32,7 @@ curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | 
 </TabItem>
 <TabItem value="windows" label="Windows">
 
-Run the following in PowerShell:
+Run the following in your Windows command line tool:
 
 ```powershell
 irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
