@@ -429,9 +429,6 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
    - [Debug in Studio](#debug-in-studio)
    - [Debug in Studio with <Constant name="wizard" />](#debug-in-studio-with-dbt-wizard)
    - [Run once on <Constant name="fusion" />](#run-once-on-fusion)
-   - [Debug in Studio with dbt Wizard](#debug-in-studio-with-copilot)
-   - [Run once on Fusion](#run-once-on-fusion)
-
 
 #### Debug in Studio
 
