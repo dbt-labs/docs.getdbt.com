@@ -427,7 +427,7 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
    <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them Fusion eligible."/>
 3. Click **Debug on <Constant name="fusion" />** and choose one of the following:
    - [Debug in Studio](#debug-in-studio)
-   - [Debug in Studio with <Constant name="copilot" />](#debug-in-studio-with-copilot)
+   - [Debug in Studio with <Constant name="wizard" />](#debug-in-studio-with-dbt-wizard)
    - [Run once on <Constant name="fusion" />](#run-once-on-fusion)
    - [Debug in Studio with dbt Wizard](#debug-in-studio-with-copilot)
    - [Run once on Fusion](#run-once-on-fusion)
