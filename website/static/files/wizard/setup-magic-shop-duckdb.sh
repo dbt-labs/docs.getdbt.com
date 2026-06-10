@@ -148,21 +148,21 @@ fi
 
 cat <<'BANNER'
 
-  ✨ Magic Shop is ready! ✨
-
      _ _    _    __      ___                _             _    _       _            _   
   __| | |__| |_  \ \    / (_)_____ _ _ _ __| |  __ _ _  _(_)__| |__ __| |_ __ _ _ _| |_ 
  / _` | '_ \  _|  \ \/\/ /| |_ / _` | '_/ _` | / _` | || | / _| / /(_-<  _/ _` | '_|  _|
  \__,_|_.__/\__|   \_/\_/ |_/__\__,_|_| \__,_| \__, |\_,_|_\__|_\_\/__/\__\__,_|_|  \__|
                                                   |_|
 
+  ✨ Magic Shop is ready! ✨
+
 BANNER
 
 cat <<EOF
 Next steps:
-  cd $PROJECT_DIR
-  source .venv/bin/activate
-  wizard          # install Wizard CLI first if needed — see the quickstart
+  1. cd $PROJECT_DIR
+  2. source .venv/bin/activate
+  3. wizard          # install Wizard CLI first if needed — see the quickstart
 
 When Wizard starts, paste your AI provider key at the prompt.
 
