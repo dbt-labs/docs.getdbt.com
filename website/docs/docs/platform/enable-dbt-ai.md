@@ -1,7 +1,7 @@
 ---
-title: "Enable AI in dbt platform"
-sidebar_label: "Enable AI in dbt platform"
-description: "Enable AI features in the dbt platform, including dbt Wizard and dbt Copilot, to speed up your development."
+title: "Get started in dbt platform"
+sidebar_label: "Get started in dbt platform"
+description: "Get started with AI features in the dbt platform, including dbt Wizard and dbt Copilot, to speed up your development."
 ---
 
 import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
@@ -9,7 +9,7 @@ import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
-# Enable AI in dbt platform <Lifecycle status="self_service,managed,managed_plus" />
+# Get started in dbt platform <Lifecycle status="self_service,managed,managed_plus" />
 
 <IntroText>
 Enable AI features in <Constant name="dbt_platform" /> to speed up your development and focus on delivering quality data.
@@ -41,13 +41,31 @@ To opt in to AI features, a <Constant name="dbt" /> admin can follow these steps
 
 Note: To disable (only after enabled), repeat steps 1 to 3, toggle off in step 4, and repeat step 5.
 
+## Try your first prompt
+
+After AI features are enabled, open <Constant name="wizard" /> from the left sidebar in the <Constant name="dbt_platform" />. You can use it from the home tab for an agent-native workflow, or from <Constant name="studio_ide" /> when you want to work alongside the file editor.
+
+Try a prompt such as:
+
+- `summarize what this project does`
+- `which models in this project have no tests?`
+- `add not_null and unique tests to the primary key of stg_customers`
+
+Use the home tab to investigate, generate, review diffs, and run validations. Use <Constant name="studio_ide" /> when you want direct file control with the editor, console, and file explorer.
+
+## Next steps
+
+- [<Constant name="wizard" /> home tab](/docs/platform/wizard-home)
+- [<Constant name="wizard" /> in <Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide)
+- [Prompt cookbook](/guides/prompt-cookbook)
+
 <WizardSupportedProviders />
 
 #### dbt Copilot
 
 dbt Copilot supports different AI providers, including bring your own key (BYOK) for Enterprise and Enterprise+ plans:
 
-- dbt Labs-managed OpenAI API key
+- dbt Labs-<Term id="managed" /> OpenAI API key
 - BYOK OpenAI API key
 - BYOK Azure OpenAI API key
 
@@ -63,6 +81,8 @@ Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported 
 
 Once AI features have been [enabled](#enable-ai-features), Enterprise and Enterprise+ accounts can configure a custom AI provider. If you bring your own provider, you will incur API calls and associated charges from that provider.
 
+\* *Managed (or Managed by <Constant name="dbt" /> Labs): <Constant name="dbt" /> Labs manages the AI provider connection; no user provider key is required. Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
+
 ### dbt Wizard
 
 To configure your AI provider for <Constant name="wizard" />:
@@ -76,9 +96,9 @@ To configure your AI provider for <Constant name="wizard" />:
 
   <TabItem value="openai" label="OpenAI">
 
-  **Managed by <Constant name="dbt" /> Labs** (default, no setup required)
+  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
 
-  1. Select the toggle for **<Constant name="dbt" /> Labs** to use <Constant name="dbt" /> Labs' managed OpenAI key.
+  1. Select the toggle for **<Constant name="dbt" /> Labs** to use <Constant name="dbt" /> Labs' managed* OpenAI key.
   2. Click **Save**.
 
   <Lightbox src="/img/docs/dbt-platform/account-integration-dbtlabs.png" width="85%" title="Example of the dbt Labs integration page" />
@@ -126,9 +146,9 @@ To configure your AI provider for <Constant name="wizard" />:
 
   <TabItem value="anthropic" label="Anthropic">
 
-  **Managed by <Constant name="dbt" /> Labs** (default, no setup required)
+  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
 
-  1. Select **<Constant name="dbt" /> Labs** from the list to use <Constant name="dbt" /> Labs' managed Anthropic key.
+  1. Select **<Constant name="dbt" /> Labs** from the list to use <Constant name="dbt" /> Labs' managed* Anthropic key.
   2. Click **Save**.
 
   **Managed by you** (Enterprise or Enterprise+ plans)
@@ -157,7 +177,7 @@ To configure your AI provider for dbt Copilot:
 <Tabs queryString="ai-integration"> 
   <TabItem value="dbtlabs" label="dbt Labs OpenAI">
 
-  1. Select the toggle for **dbt Labs** to use dbt Labs' managed OpenAI key.
+  1. Select the toggle for **dbt Labs** to use dbt Labs' managed* OpenAI key.
   2. Click **Save**.
 
   <Lightbox src="/img/docs/dbt-platform/account-integration-dbtlabs.png" width="85%" title="Example of the dbt Labs integration page" />

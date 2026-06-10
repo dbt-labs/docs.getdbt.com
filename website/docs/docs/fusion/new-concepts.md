@@ -160,15 +160,10 @@ Setting `static_analysis` to `baseline` mode lets you start using <Constant name
 
 ## Recapping the differences between engines
 
-<Constant name="core_v1" />:
+<Constant name="core_v1" /> and [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in alpha):
 
 - Renders and runs models one at a time.
 - Never runs static analysis.
-
-[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) (currently in alpha):
-
-- Built on the Rust-based <Constant name="fusion_engine" /> as the open-source dbt Core release.
-- Supports static analysis with a subset of <Constant name="fusion" /> features.
 
 The <Constant name="fusion_engine" /> (baseline mode &mdash; default):
 

@@ -53,7 +53,7 @@ Always review AI-generated content, as it may be incorrect. For prompt best prac
 <div className="grid--2-col">
 
 <Card
-    title="Enable AI in dbt"
+    title="Get started in dbt platform"
     body="Turn on dbt Wizard and dbt Copilot for your account in the dbt platform."
     link="/docs/platform/enable-dbt-ai"
     icon="wizard"/>
@@ -71,9 +71,27 @@ Always review AI-generated content, as it may be incorrect. For prompt best prac
     icon="wizard"/>
 
 <Card
-    title="dbt AI FAQs"
-    body="Common questions about availability, data handling, and billing."
-    link="/docs/dbt-ai/dbt-ai-faqs"
+    title="Use skills"
+    body="Give dbt Wizard reusable instructions for your project."
+    link="/docs/dbt-ai/wizard-platform-skills"
+    icon="wizard"/>
+
+<Card
+    title="Use subagents"
+    body="Organize long-running dbt Wizard work into focused agent threads."
+    link="/docs/dbt-ai/wizard-platform-subagents"
+    icon="wizard"/>
+
+<Card
+    title="Use MCP servers"
+    body="Understand MCP server support in the dbt platform experience."
+    link="/docs/dbt-ai/wizard-platform-mcp"
+    icon="wizard"/>
+
+<Card
+    title="Data & Privacy"
+    body="Understand how dbt Wizard in the dbt platform handles privacy and data."
+    link="/docs/dbt-ai/wizard-platform-privacy-data"
     icon="wizard"/>
 
 </div>
