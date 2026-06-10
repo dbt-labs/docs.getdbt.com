@@ -108,6 +108,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 | --- | --- | --- | --- |
 | Microsoft Graph | Delegated | `User.Read` | Yes |
 | Microsoft Graph | Delegated | `GroupMember.Read.All` | Yes |
+| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` | Optional — may be required if users are assigned to > 200 groups |
 
 </SimpleTable>
 
