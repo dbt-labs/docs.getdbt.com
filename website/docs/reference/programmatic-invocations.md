@@ -66,7 +66,7 @@ For safe parallel execution, you can use the [<Constant name="platform_cli" />](
 Each command returns a `dbtRunnerResult` object with three attributes:
 
 - `success` (bool): Whether the command succeeded.
-- `result`: When the command completes (successfully or with handled errors), the command's result or results. The return type varies by command.
+- `result`: When the command completes (successfully or with handled errors), it returns the command's result(s). The return type varies by command.
 - `exception`: When the dbt invocation encounters an unhandled error and does not complete, the exception that was raised.
 
 There is a one-to-one correspondence between [CLI exit codes](/reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
