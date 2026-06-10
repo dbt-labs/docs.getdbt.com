@@ -19,7 +19,7 @@ Test selection is powerful, and we know it can be tricky. To that end, we've inc
 
 Use the `test_type` selector to run a specific category of tests without relying on model selection. This is useful when you want to isolate unit tests from data tests — for example, running only unit tests during development for fast feedback, or running only data tests in production where unit test compute isn't needed. The `test_type` selector works across all engines (<Constant name="core" /> and <Constant name="fusion" />).
 
-The following selectors can be used with `dbt compile --select` to compile matching test nodes without executing them.
+The following configurations can be used with `test_type` selector to compile matching test nodes without executing them.
 For command behavior, refer to [About dbt compile command](/reference/commands/compile).
 
 **Run only unit tests** — use this during development or CI to validate SQL logic before materializing models:
