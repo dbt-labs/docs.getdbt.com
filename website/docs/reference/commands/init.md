@@ -26,20 +26,13 @@ If the profile does not exist in `profiles.yml` or the command is run inside an 
 
 `dbt init --help` includes both global flags (which apply to all dbt commands) and a small number of `init`-specific options. The most commonly used `init` options are:
 
-```bash
-dbt init [PROJECT_NAME] [--profile PROFILE_NAME] [--skip-profile-setup]
-```
-
-### Common options
-
 - `PROJECT_NAME` (optional positional argument): Name of the project folder to create. If omitted, `dbt init` prompts you for a project name.
 - `--profile PROFILE_NAME`: Use an existing profile name from your `profiles.yml` instead of prompting to create or configure one.
 - `-s`, `--skip-profile-setup`: Skip interactive profile setup.
 
-:::note Version behavior
-The behavior of `dbt init --profile` changed in <Constant name="core" /> v1.7.0. In versions before v1.7.0, `--profile` was not consistently applied.
-For your installed version, run `dbt init --help` to confirm available options.
-:::
+```bash
+dbt init [PROJECT_NAME] [--profile PROFILE_NAME] [--skip-profile-setup]
+```
 
 For global command options that also apply to `dbt init`, refer to [Command line options](/reference/global-configs/command-line-options).
 
