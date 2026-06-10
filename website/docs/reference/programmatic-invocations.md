@@ -2,22 +2,15 @@
 title: "Programmatic invocations"
 ---
 
-In v1.5, <Constant name="core" /> added support for programmatic invocations. You can run the same top-level commands as the <Constant name="core" /> CLI from a Python script or application through the exposed entry point.
-
-Programmatic invocations let you call dbt commands from Python scripts and applications, instead of running them in a shell. This is useful when you want to embed dbt runs into a larger application or workflow, while still using the same command surface area as the CLI.
+Programmatic invocations let you call dbt commands from Python scripts and applications, instead of running them in a shell. This is useful when you want to embed dbt runs into a larger application or workflow, while still using the same command surface area as the <Constant name="core" /> CLI.
 
 Common use cases include:
 
-- Running dbt as part of a Python application or service.
-- Integrating dbt runs into orchestration workflows.
-- Capturing structured events and customizing logging with callbacks.
-- Building internal tools that need to run dbt commands and inspect results.
+- Running dbt as part of a Python application or service
+- Integrating dbt runs into orchestration workflows
+- Building internal tools that need to run dbt commands and inspect results
 
-To use programmatic invocations, create a `dbtRunner` in your Python code. Then call `invoke` with a command name (such as `run` or `build`) and any flags and options you would pass on the command line. Each invocation returns a `dbtRunnerResult` object you can inspect for success, results, and exceptions. For details, refer to [`dbtRunnerResult`](#dbtrunnerresult).
-
-Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven’t done so already.
-
-That entry point is the `dbtRunner` class—call `invoke` on it to run the same commands available in the <Constant name="platform_cli" />.
+Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven't done so already.
 
 ```python
 from dbt.cli.main import dbtRunner, dbtRunnerResult
@@ -40,7 +33,7 @@ For implementation details, refer to the source definitions of `dbtRunner` and `
 
 ## Supported arguments
 
-`dbtRunner.invoke` accepts the same arguments as the <Constant name="platform_cli" />. The first positional argument is the command (for example, `run`, `build`, `test`), followed by any flags and options you would normally pass on the command line.
+`dbtRunner.invoke` accepts the same arguments as the <Constant name="core" /> CLI. The first positional argument is the command (for example, `run`, `build`, `test`), followed by any flags and options you would normally pass on the command line.
 
 For example, `dbt.invoke(["run", "--select", "tag:my_tag"])` is equivalent to running `dbt run --select tag:my_tag`. There is no separate, dbtRunner‑specific list of arguments; the authoritative source for available options is the CLI help reference (`dbt --help`, `dbt run --help`, and so on) and the [dbt command reference](/reference/dbt-commands) documentation.
 
@@ -79,7 +72,7 @@ There is a one-to-one correspondence between [CLI exit codes](/reference/exit-co
 
 ## Commitments and caveats
 
-From <Constant name="core" /> v1.5 onward, we're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short- and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
+We're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short- and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
 
 In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
 
