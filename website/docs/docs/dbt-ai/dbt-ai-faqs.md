@@ -100,22 +100,24 @@ Yes, <Constant name="wizard" /> is powered by ai-codegen-api, which is deployed 
 <Expandable alt_header="What data/code is used to train the AI model supporting dbt Wizard?">
 
 
-<Constant name="wizard" /> is supported by several third-party pre-trained AI models at the customer's election (managed OpenAI, BYOK OpenAI, BYOK Anthropic, or BYOK Azure AI Foundry). When using managed OpenAI, our agreement with OpenAI prohibits OpenAI from retaining your data persistently. Refer to our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
+<Constant name="wizard" /> is supported by several third-party pre-trained AI models at your discretion. (<Term id="managed" /> OpenAI, BYOK OpenAI, BYOK Anthropic, or BYOK Azure AI Foundry). When using <Term id="managed" /> OpenAI, our agreement with OpenAI prohibits OpenAI from retaining your data persistently. Refer to our [dbt Labs AI principles page](https://www.getdbt.com/legal/ai-principles) for more information.
 
 
 </Expandable>
 
 <Expandable alt_header="Which AI model providers does dbt Wizard use?">
 
-In the <Constant name="dbt_platform" />, <Constant name="wizard" /> supports **managed OpenAI**, **BYOK OpenAI**, **BYOK Anthropic**, and **BYOK Azure AI Foundry**. By default, accounts use managed OpenAI. Enterprise-tier accounts can [bring their own provider keys](/docs/platform/enable-dbt-ai#configure-ai-provider).
+In the <Constant name="dbt_platform" />, <Constant name="wizard" /> supports <Term id="managed" /> OpenAI, BYOK OpenAI, BYOK Anthropic, and BYOK Azure AI Foundry. By default, accounts use <Term id="managed" /> OpenAI. Enterprise-tier accounts can [bring their own provider keys](/docs/platform/enable-dbt-ai#configure-ai-provider).
 
-The [<Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli) supports **OpenAI**, **Anthropic**, **AWS Bedrock**, and **Snowflake Cortex** (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) for more information.
+The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports OpenAI, Anthropic, AWS Bedrock, and Snowflake Cortex (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) for more information.
 
 </Expandable>
 
 <Expandable alt_header="Do we support BYOK (bring your own key) at the project level?">
 
-The <Constant name="wizard" /> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
+In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
+
+<Constant name="wizard" /> CLI supports BYOK locally for OpenAI, Anthropic, AWS Bedrock, and Snowflake Cortex (preview). 
 
 </Expandable>
 

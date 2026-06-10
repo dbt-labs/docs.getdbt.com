@@ -45,6 +45,12 @@ Looking for the in-platform experience? Visit [About <Constant name="wizard" /> 
 <div className="grid--3-col">
 
 <Card
+    title="Get started with the local CLI"
+    body="Install dbt Wizard locally, complete first-run onboarding, and send your first prompt."
+    link="/docs/dbt-ai/wizard-quickstart"
+    icon="wizard"/>
+
+<Card
     title="Install and update"
     body="Install, verify, update, and uninstall the dbt Wizard CLI on your machine."
     link="/docs/dbt-ai/wizard-cli"
@@ -57,9 +63,15 @@ Looking for the in-platform experience? Visit [About <Constant name="wizard" /> 
     icon="wizard"/>
 
 <Card
-    title="Non-interactive mode"
-    body="Run dbt Wizard in scripts and CI with exec, review, and other headless workflows."
-    link="/docs/dbt-ai/wizard-headless"
+    title="Use skills"
+    body="Give dbt Wizard reusable instructions for your project."
+    link="/docs/dbt-ai/wizard-skills"
+    icon="wizard"/>
+
+<Card
+    title="Use subagents"
+    body="Organize long-running dbt Wizard work into focused agent threads."
+    link="/docs/dbt-ai/wizard-subagents"
     icon="wizard"/>
 
 <Card
@@ -69,21 +81,39 @@ Looking for the in-platform experience? Visit [About <Constant name="wizard" /> 
     icon="wizard"/>
 
 <Card
-    title="CLI commands"
+    title="Headless mode"
+    body="Run dbt Wizard in scripts and CI with exec, review, and other headless workflows."
+    link="/docs/dbt-ai/wizard-headless"
+    icon="wizard"/>
+
+<Card
+    title="Migrate to dbt Wizard"
+    body="Move Claude Code project context, skills, and settings into dbt Wizard."
+    link="/docs/dbt-ai/wizard-migrate"
+    icon="wizard"/>
+
+<Card
+    title="Command reference"
     body="Curated reference for common wizard subcommands and global flags."
     link="/docs/dbt-ai/wizard-cli-reference"
     icon="wizard"/>
 
 <Card
-    title="Slash commands"
+    title="Slash command reference"
     body="Full reference for interactive TUI slash commands."
     link="/docs/dbt-ai/wizard-slash-commands"
     icon="wizard"/>
 
 <Card
-    title="CLI config"
+    title="Config reference"
     body="Configure agent runtime defaults and per-project dbt Wizard settings."
     link="/docs/dbt-ai/wizard-config"
+    icon="wizard"/>
+
+<Card
+    title="Data & privacy"
+    body="Understand what dbt Wizard CLI collects and how to opt out."
+    link="/docs/dbt-ai/wizard-telemetry"
     icon="wizard"/>
 
 </div>
