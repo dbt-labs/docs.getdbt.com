@@ -188,7 +188,7 @@ Now that you've set up SSO with Entra ID, you can [set up SCIM](/docs/platform/m
 
 <Expandable alt_header="Receiving a 'AADSTS90094: Admin consent is required' error">
 
-If you set up SSO before December 2025, your existing configuration may still require `Directory.Read.All` rather than the `GroupMember.Read.All` scope shown for new setups. Alternatively, delete and re-create your SSO configuration to use the new targeted scopes. Refer to [Configuring permissions](#configuring-permissions) for details.
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All`. To use the updated scopes, delete and re-create your SSO [configuration](#configuring-permissions).
 
 </Expandable>
 
