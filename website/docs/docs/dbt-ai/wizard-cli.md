@@ -53,7 +53,8 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 wizard system update
 ```
 
-
+<!--
+incorrect command and commenting out until correct command provided
 ## Uninstall
 
 Run the following command to uninstall <Constant name="wizard" />:
@@ -61,7 +62,7 @@ Run the following command to uninstall <Constant name="wizard" />:
 ```bash
 wizard system uninstall
 ```
-
+-->
 
 ## Telemetry
 
