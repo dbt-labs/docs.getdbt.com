@@ -27,7 +27,7 @@ You'll need:
 
 - A terminal and basic familiarity with `cd`, `ls`, and `pwd`
 - Python 3.9 or later
-- An AI provider key &mdash; an [OpenAI API key](https://platform.openai.com/api-keys) is the fastest, or [bring your own key](/docs/dbt-ai/wizard-byok) for another provider
+- An AI provider key &mdash; [bring your own key](/docs/dbt-ai/wizard-byok) for the supported providers (OpenAI, Anthropic, AWS Bedrock, Azure, Gemini, or Snowflake)
 
 <WizardCliDbtCliSupport />
 
@@ -71,7 +71,7 @@ If `dbt build` fails, fix the dbt project before continuing. <Constant name="wiz
 
 ## Start Wizard
 
-The setup script built the project, and you've installed <Constant name="wizard" /> CLI. To start a session, complete three steps from your project directory.
+The setup script built the project, and you've installed <Constant name="wizard" /> CLI. From your project directory:
 
 1. Activate the virtual environment:
 
@@ -80,19 +80,13 @@ The setup script built the project, and you've installed <Constant name="wizard"
     source .venv/bin/activate
     ```
 
-2. Set your AI provider key. <Constant name="wizard" /> needs an AI provider before it can answer prompts or propose changes. The fastest option is an [OpenAI API key](https://platform.openai.com/api-keys):
-
-    ```shell
-    export OPENAI_API_KEY="sk-..."
-    ```
-
-    Setting the key here means onboarding skips the provider prompt in the next step. You can also bring your own key for Anthropic, Azure, AWS Bedrock, Gemini, or Snowflake Cortex, or configure a provider interactively during onboarding. For all provider options, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
-
-3. Start <Constant name="wizard" />:
+2. Start <Constant name="wizard" />:
 
     ```shell
     wizard
     ```
+
+<Constant name="wizard" /> needs a supported AI provider before it can answer prompts or propose changes. During first-run onboarding, select your provider and paste your API key **at the prompt**. Entering it at the prompt keeps it out of your shell history and stores it in `~/.dbt/wizard/provider-auth.json`. The fastest option is an [OpenAI API key](https://platform.openai.com/api-keys); you can also use Anthropic, Azure, AWS Bedrock, Gemini, or Snowflake Cortex. For all provider options, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
 
 Complete first-run onboarding:
 
@@ -100,21 +94,47 @@ Complete first-run onboarding:
 
 When <Constant name="wizard" /> asks for your dbt profile location, use this project directory. The setup script writes `profiles.yml` in the project root, where <Constant name="fusion" /> can find it.
 
+:::caution Keep your API key safe
+Treat your provider key like a password. Prefer entering it at the onboarding prompt rather than as a shell command, since environment variables and command-line values can persist in your shell history. Never commit keys to version control or paste them into shared logs, screenshots, or chats, and rotate any key that's been exposed.
+:::
+
+<Expandable alt_header="Set the key with an environment variable instead">
+
+For headless runs (like `wizard exec`) or to reuse a key across sessions, set it as an environment variable before starting <Constant name="wizard" />:
+
+```shell
+export OPENAI_API_KEY="sk-..."
+```
+
+For Amazon Bedrock, the variable is `AWS_BEARER_TOKEN_BEDROCK` (a common mistake is `AWS_BEDROCK_TOKEN`, which <Constant name="wizard" /> doesn't read):
+
+```shell
+export AWS_BEARER_TOKEN_BEDROCK="ABSK..."
+```
+
+Environment variables can persist in your shell history. To set a key without echoing it, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok#set-your-api-key).
+
+</Expandable>
+
 ## Asking Wizard to explain the project
 
-Start with a read-only prompt so you can verify that <Constant name="wizard" /> understands your project before asking it to make changes:
+Send prompts one at a time: enter a prompt, press **Enter**, and review the response before sending the next one.
+
+Start with a read-only prompt to confirm <Constant name="wizard" /> understands your project:
 
 ```text
 summarize what this project does
 ```
 
-Then ask <Constant name="wizard" /> to identify a focused improvement:
+<Constant name="wizard" /> reads your project's models, seeds, and metadata and returns a quick summary in seconds &mdash; without changing anything. That's your first result.
+
+Once you've reviewed the summary, ask <Constant name="wizard" /> to find a gap to fix:
 
 ```text
 which staging models are missing tests?
 ```
 
-Review the response and choose one small change to make in the next step.
+Review the response and pick one model to improve in the next step.
 
 ## Making your first dbt change
 

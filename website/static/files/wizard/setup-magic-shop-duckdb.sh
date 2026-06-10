@@ -54,6 +54,11 @@ magic_shop_wizard:
     dev:
       type: duckdb
       path: magic_shop.duckdb
+    # A 'prod' target is included so Wizard's default deferral target
+    # resolves out of the box. It points at the same local DuckDB file.
+    prod:
+      type: duckdb
+      path: magic_shop.duckdb
 EOF
 
 cat > seeds/wizards.csv <<'EOF'
@@ -141,15 +146,24 @@ if command -v git >/dev/null 2>&1; then
     commit -q -m "Initial Magic Shop project" || true
 fi
 
+cat <<'BANNER'
+
+  ✨ Magic Shop is ready! ✨
+
+     _ _    _    __      ___                _             _    _       _            _   
+  __| | |__| |_  \ \    / (_)_____ _ _ _ __| |  __ _ _  _(_)__| |__ __| |_ __ _ _ _| |_ 
+ / _` | '_ \  _|  \ \/\/ /| |_ / _` | '_/ _` | / _` | || | / _| / /(_-<  _/ _` | '_|  _|
+ \__,_|_.__/\__|   \_/\_/ |_/__\__,_|_| \__,_| \__, |\_,_|_\__|_\_\/__/\__\__,_|_|  \__|
+                                                  |_|
+
+BANNER
+
 cat <<EOF
-
-Magic Shop is ready.
-
 Next steps:
   cd $PROJECT_DIR
   source .venv/bin/activate
-  # Install Wizard CLI next (see the quickstart), then:
-  export OPENAI_API_KEY="sk-..."
-  wizard
+  wizard          # install Wizard CLI first if needed — see the quickstart
+
+When Wizard starts, paste your AI provider key at the prompt.
 
 EOF
