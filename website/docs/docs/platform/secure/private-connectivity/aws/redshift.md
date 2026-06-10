@@ -8,6 +8,7 @@ sidebar_label: "Redshift"
 # Configure AWS PrivateLink for Redshift <Lifecycle status="managed_plus" />
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkTroubleshooting from '/snippets/_privatelink-troubleshooting.md';
 import PrivateLinkCrossZone from '/snippets/_privatelink-cross-zone-load-balancing.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
@@ -157,10 +158,6 @@ Subject: New Multi-Tenant PrivateLink Request
 
 Once <Constant name="dbt" /> Support completes the configuration, you can start creating new connections using PrivateLink.
 
-1. Navigate to **Settings** → **Create new project** → select **Redshift**.
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
-3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="Redshift" />
 
 <PrivateLinkTroubleshooting features={'/snippets/_privatelink-troubleshooting.md'}/>
