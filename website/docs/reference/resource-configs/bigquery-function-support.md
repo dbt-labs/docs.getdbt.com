@@ -13,8 +13,8 @@ import BigQueryFunctionsTable from '/snippets/_functions-table-bigquery.md';
 
 The following table lists _every_ BigQuery built-in function and its typechecking support status. Use the table's search and filters to find specific functions.
 
-:::info Refreshed daily
-This table is updated often from the [BigQuery SQL function reference](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/functions-all) and cross-referenced with <Constant name="fusion"/>'s support list. If you spot a discrepancy, we'd love for you to contribute and [open an issue](https://github.com/dbt-labs/dbt-fusion/issues/new?labels=SQL_understanding) in the <Constant name="fusion"/> repository!
+:::info Refreshed weekly
+This table is updated weekly from the [BigQuery SQL function reference](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/functions-all) and cross-referenced with <Constant name="fusion"/>'s support list. If you spot a discrepancy, we'd love for you to contribute and [open an issue](https://github.com/dbt-labs/dbt-fusion/issues/new?labels=SQL_understanding) in the <Constant name="fusion"/> repository!
 :::
 
 <BigQueryFunctionsTable />
