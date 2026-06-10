@@ -21,7 +21,7 @@ For example, a macro can reference a private model:
 {% endmacro %}
 ```
 
-And then you can run that macro using `dbt run-operation`:
+You can then run that macro using `dbt run-operation`:
 
 ```bash
 dbt run-operation example_macro
