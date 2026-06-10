@@ -98,7 +98,7 @@ This occurs when tenant-level admin consent hasn't been granted for the dbt SSO 
 
 <Expandable alt_header="Receiving a 'AADSTS90094: Admin consent is required' error">
 
-If you set up SSO before December 2025, your existing configuration may still require `Directory.Read.All` rather than the `GroupMember.Read.All` scope shown for new setups. Alternatively, delete and re-create your SSO configuration to use the new targeted scopes. Refer to [Configuring permissions](/docs/platform/manage-access/set-up-sso-microsoft-entra-id#configuring-permissions) for details.
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All` for new setups. To use the updated scopes, delete and re-create your SSO [configuration](/docs/platform/manage-access/set-up-sso-microsoft-entra-id#configuring-permissions). 
 
 </Expandable>
 
