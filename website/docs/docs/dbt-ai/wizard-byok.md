@@ -31,7 +31,7 @@ The "key" in BYOK is whatever credential your chosen provider uses to authentica
 You can configure a provider in one of the following ways:
 
 - [**Terminal commands**:](#configure-in-the-terminal) Best for users who want to configure providers from the shell.
-- [**Interactive session**:](#configure-in-the-tui) Best for most users working in the <Constant name="wizard" /> TUI. Use the `/providers` slash command.
+- [**Interactive session**:](#configure-in-the-tui) Best for most users working in the <Constant name="wizard" /> text based user interface (TUI). Use the `/providers` slash command.
 - [**Environment variables**:](#set-your-api-key) Best for headless runs, such as `wizard exec`, automation, or temporary local sessions.
 
 ### Configure in the terminal
