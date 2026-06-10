@@ -119,7 +119,7 @@ function scrapeBigQueryFlatTable(html) {
 
     functions.push({ name, category: 'Built-in', docs_url: docsUrl, preview_status: 'GA' });
   }
-  return functions;
+  return [...new Map(functions.map((f) => [f.name, f])).values()];
 }
 
 function scrapeTrinoListPage(html) {

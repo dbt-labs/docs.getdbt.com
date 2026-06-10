@@ -18,7 +18,7 @@ const SNIPPETS_DIR = path.join(__dirname, '..', 'snippets');
 
 function buildTable(functions) {
   const header = [
-    '| <div style={{width:"120px"}}>Function</div> | Category | Fusion typechecking | Availability |',
+    '| Function | Category | Fusion typechecking | Availability |',
     '|------|----------|:-------------------:|--------------|',
   ].join('\n');
 
@@ -33,9 +33,7 @@ function buildTable(functions) {
   const rows = functions.map((f) => {
     const l2 = f.fusion_typecheck ? '✓' : '—';
     const safeName = escape(f.name);
-    // Function name links to Snowflake docs; constrained span keeps column narrow.
-    // title= shows the full name on hover when truncated.
-    const nameCell = `<a href="${f.docs_url}"><span style={{display:"inline-block",maxWidth:"240px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",verticalAlign:"middle"}} title="${safeName}">${safeName}</span></a>`;
+    const nameCell = `<a href="${f.docs_url}">${safeName}</a>`;
     return `| ${nameCell} | ${escape(f.category)} | ${l2} | ${f.preview_status} |`;
   });
 
