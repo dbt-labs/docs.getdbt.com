@@ -11,6 +11,7 @@ image: /img/docs/wizard-cli-intro.png
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
+import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 
 # <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -18,7 +19,9 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 The <Constant name="wizard" /> CLI helps teams ship higher-quality dbt changes faster and with less risk. Built for governed data development in dbt, it understands your project, routes to the right dbt tools, validates changes, and shows how logic evolves from your local machine.
 </IntroText>
 
-<WizardFeedbackCallout />
+## Install the dbt Wizard CLI
+
+<WizardCliInstall />
 
 For a first session walkthrough, visit the [Quickstart](/docs/dbt-ai/wizard-quickstart) page.
 
@@ -117,3 +120,5 @@ Looking for the in-platform experience? Visit [About <Constant name="wizard" /> 
     icon="wizard"/>
 
 </div>
+
+<WizardFeedbackCallout />
