@@ -15,8 +15,8 @@ Managing Python local environments can be challenging! You can use these best pr
 
 | Best practice | Recommendation | Why it matters |
 |---------------|----------------|----------------|
-| [Install <Constant name="core" /> with an adapter](/docs/local/install-dbt?version=1#installing-the-adapter) and keep versions in sync | Install with: `python -m pip install dbt-core dbt-ADAPTER_NAME` <br /><br /> (For example, `python -m pip install dbt-core dbt-snowflake`) <br /><br /> Match adapter versions to your <Constant name="core" /> version <br /><br /> | Provides a complete, compatible, and ready-to-run dbt setup <br /><br /> <br /><br /> Prevents runtime errors and adapter incompatibilities |
-| For tooling without a warehouse connection, install dbt Core without an adapter | `python -m pip install dbt-core` | Keeps your setup lean, predictable, and easier to maintain|
+| [Install <Constant name="core" /> with an adapter](/docs/local/install-dbt?version=1#installing-the-adapter) and keep versions in sync | Install with: `python -m pip install dbt-ADAPTER_NAME` <br /><br /> (For example, `python -m pip install dbt-snowflake`) <br /><br /> Match adapter versions to your <Constant name="core" /> version <br /><br /> | Provides a complete, compatible, and ready-to-run dbt setup <br /><br /> <br /><br /> Prevents runtime errors and adapter incompatibilities |
+| For tooling without a warehouse connection, install dbt Core without an adapter | `python -m pip install` | Keeps your setup lean, predictable, and easier to maintain|
 | Use [virtual environments](/faqs/Core/install-pip-best-practices.md#using-virtual-environments) | Install dbt in an isolated environment (for example, `venv`, `pipenv`, `poetry`) | Avoids dependency conflicts |
 | Reactivate your virtual environment for each session | Reactivate your virtual environment at the start of each new session before installing dependencies or running dbt commands | Keeps your dbt setup predictable, isolated, and reproducible |
 | [Create a project](/docs/local/install-dbt#create-a-project) | Use the `dbt init` command to create and initialize your first project | Creates a standard dbt project and verifies your installation |
@@ -24,7 +24,7 @@ Managing Python local environments can be challenging! You can use these best pr
 
 <br />
 
-Note, dbt adapters and <Constant name="core" /> are versioned and installed independently to prevent unintended changes to an existing <Constant name="core" /> installation. 
+Note, dbt adapters and <Constant name="core" /> are versioned independently to make it easier for us to maintain and independently evolve adapters going forward. 
 
 ### Using virtual environments
 

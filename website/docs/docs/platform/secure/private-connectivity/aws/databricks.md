@@ -8,11 +8,12 @@ pagination_next: null
 
 # Configuring Databricks PrivateLink <Lifecycle status="managed_plus" />
 
-import SetUpPages from '/snippets/_available-tiers-private-connection.md';
+import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
-<SetUpPages features={'/snippets/_available-tiers-private-connection.md'}/>
+<SetUpPages features={'/snippets/_available-tiers-enterprise-plus.md'}/>
 
 The following steps walk you through the setup of a Databricks AWS PrivateLink endpoint in the <Constant name="dbt" /> multi-tenant environment.
 
@@ -34,7 +35,7 @@ The following steps walk you through the setup of a Databricks AWS PrivateLink e
    - dbt platform account URL:
    - Databricks instance name:
    - Databricks cluster AWS Region (for example, us-east-1, eu-west-2):
-   - dbt AWS multi-tenant environment (US, EMEA, AU):
+   - dbt AWS multi-tenant environment (US, EMEA, AU, JP):
    ```
 
    </Expandable>
@@ -56,8 +57,4 @@ The following steps walk you through the setup of a Databricks AWS PrivateLink e
 
 Once you've completed the setup in the Databricks environment, you can configure a private endpoint in <Constant name="dbt" />:
 
-1. Navigate to **Settings** → **Create new project** → select **Databricks**. 
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**. 
-3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="Databricks" />

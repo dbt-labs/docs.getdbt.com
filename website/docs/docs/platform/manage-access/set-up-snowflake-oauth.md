@@ -49,7 +49,7 @@ In the following `CREATE OR REPLACE SECURITY INTEGRATION` example query, replace
 
 Important: If you’re using secondary roles, you must include `OAUTH_USE_SECONDARY_ROLES = 'IMPLICIT';` in the statement.
 
-```
+```sql
 CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
   TYPE = OAUTH
   ENABLED = TRUE
@@ -83,7 +83,7 @@ Additional configuration options may be specified for the security integration a
 
 The Database Admin is responsible for creating a Snowflake Connection in <Constant name="dbt" />. This Connection is configured using a Snowflake Client ID and Client Secret. These values can be determined by running the following query in Snowflake:
 
-```
+```sql
 with
 
 integration_secrets as (
@@ -121,12 +121,16 @@ If you are planning to set up the same Snowflake account to different <Constant 
 
 ## Subdomain migration
 
-If you're a [multi-tenant account](/docs/platform/about-platform/access-regions-ip-addresses) being migrated to a static subdomain, you may need to take additional action in your Snowflake account to prevent service disruptions.
+If your account uses a static subdomain for the [access URL migration](/docs/platform/about-platform/account-url-migration), you might need to update Snowflake security integrations shared across projects or connections to prevent service disruptions. 
 
-Snowflake limits each security integration (`CREATE SECURITY INTEGRATION … TYPE = OAUTH`) to a single redirect URI. If you configured your OAuth integration with `cloud.getdbt.com`, you must take one of two courses of action: 
+Connections created after migration require an additional OAuth redirect URI. Find this redirect URI under the [connection's OAuth details](#locate-the-redirect-uri-value) or in [API access URLs](/docs/dbt-apis/overview), then add it to your existing Snowflake security integration. 
 
-- **Configure an additional security integration:** In your Snowflake account, you will have one with the original URL (for example, `cloud.getdbt.com/complete/snowflake`) as the redirect URI, and another using the new static subdomain. Refer to our [regions & IP addresses page](/docs/platform/about-platform/access-regions-ip-addresses) for a complete list of the original domains in your region (marked as "multi-tenant" on the chart).
-- **Use a single security integration:** Create one that uses the new static subdomain as the redirect URI. In this scenario, you must recreate all of your [existing connections](/docs/platform/connect-data-platform/about-connections#connection-management).
+```sql
+ALTER SECURITY INTEGRATION IF EXISTS <INTEGRATION_NAME>
+SET OAUTH_ALTERNATE_REDIRECT_URIS = ('<ACCESS_URL>/complete/snowflake')
+```
+
+Values for `OAUTH_REDIRECT_URI` and `OAUTH_ALTERNATE_REDIRECT_URIS` are interchangeable.
 
 ### Troubleshooting
 
@@ -153,7 +157,7 @@ Enterprise customers who have single-tenant deployments will have a different ra
 
 Depending on how you've configured your Snowflake network policies or IP allow listing, you may have to explicitly add the network policy that includes the allow listed <Constant name="dbt" /> IPs to the security integration you just made.
 
-```
+```sql
 ALTER SECURITY INTEGRATION <security_integration_name>
 SET NETWORK_POLICY = <network_policy_name> ;
 ```
@@ -163,7 +167,7 @@ SET NETWORK_POLICY = <network_policy_name> ;
 
 If you want to use secondary roles but experience `Current sessions is restricted. USE ROLE not allowed` error when setting up Snowflake OAuth, double-check you added the following statement to the query:
 
-```
+```sql
 OAUTH_USE_SECONDARY_ROLES = 'IMPLICIT';
 ```
 

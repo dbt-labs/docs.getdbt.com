@@ -112,7 +112,7 @@ The following environment variable is set automatically for the <Constant name="
 - `DBT_CLOUD_GIT_BRANCH` &mdash; Provides the development Git branch name in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
   - The variable changes when the branch is changed.
   - Doesn't require restarting the <Constant name="studio_ide" /> after a branch change.
-  - Currently not available in the [<Constant name="dbt" /> CLI](/docs/platform/cloud-cli-installation).
+  - Currently not available in the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation).
 
 Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) (`{{ env_var('DBT_CLOUD_GIT_BRANCH') }}`).
 
@@ -122,7 +122,7 @@ The following environment variables are set automatically:
 
 - `DBT_ENV` &mdash; This key is reserved for the <Constant name="dbt" /> application and will always resolve to 'prod'. For deployment runs only.
 - `DBT_CLOUD_ENVIRONMENT_NAME` &mdash; The name of the <Constant name="dbt" /> environment in which `dbt` is running. 
-- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of <Constant name="dbt" /> environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-cloud-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.
+- `DBT_CLOUD_ENVIRONMENT_TYPE` &mdash; The type of <Constant name="dbt" /> environment in which `dbt` is running. The valid values are `dev`, `staging`, or `prod`. The value will be empty for [General deployment environments](/docs/dbt-platform-environments#types-of-environments), so use a default like `{{ env_var('DBT_CLOUD_ENVIRONMENT_TYPE', '') }}`.
 - `DBT_CLOUD_INVOCATION_CONTEXT` &mdash; The context type in which `dbt` is invoked. The values are `dev`, `staging`, `prod`, or `ci`. 
     - Additionally, use `DBT_CLOUD_INVOCATION_CONTEXT` in the `generate_schema_name()` macro to define explicit guidelines to use the default schema only (with the `dbt_cloud_pr prefix`) in CI job runs, even if those CI jobs run in the same environment as production jobs.
 
@@ -173,7 +173,7 @@ However, there are some limitations when using env vars with Snowflake OAuth Con
 
 - You can't use them in the account/host field, but they can be used for database, warehouse, and role. For these fields, [use extended attributes](/docs/deploy/deploy-environments#deployment-connection).
 
-Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so <Constant name="dbt" /> simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/deploy/deploy-environments#deployment-credentials) instead.
+Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so <Constant name="dbt" /> simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/dbt-platform-environments#extended-attributes) instead.
 :::
 
 </Expandable>

@@ -48,7 +48,7 @@ With the <Constant name="studio_ide" />, you can seamlessly use [SQLFluff](https
 - Displays a **Code Quality** tab to view code errors, provides code quality visibility and management.
 
 :::info Linting considerations
-- The <Constant name="studio_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **Latest Fusion** release track. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
+- The <Constant name="studio_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **Fusion Stable** release track. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
 - Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
 :::
 
@@ -75,7 +75,7 @@ You can lint multiple SQL files at once, depending on how you are working with d
 
 - **<Constant name="core" />:** Does not include a built-in linter. To lint SQL files in your project, use a third-party linter such as SQLFluff configured to use the [dbt templater](https://docs.sqlfluff.com/en/stable/configuration/templating/dbt.html). You can lint multiple files by specifying one or more file or directory paths as arguments to the command.
 
-- **<Constant name="platform_cli" />:** Supports the same linting [commands](/docs/platform/configure-cloud-cli#lint-sql-files) as <Constant name="core" />:
+- **<Constant name="platform_cli" />:** Supports the same linting [commands](/docs/platform/configure-dbt-cli#lint-sql-files) as <Constant name="core" />:
 
     ```
     dbt sqlfluff lint [PATHS]... [flags]
