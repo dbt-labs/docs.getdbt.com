@@ -9,7 +9,7 @@ When a behavior change flag reaches maturity, its default value switches from `f
 - **[Mature flags](#mature-flags)**: Flags that have already reached maturity and are enabled by default
 - **[Flags reaching maturity](#flags-reaching-maturity)**: Flags planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track, where the default will switch to `true`
 
-For each flag, this page describes what the change means for your project and how to preserve the previous behavior. For flags still in the introduction phase, refer to [Behavior changes](/reference/global-configs/behavior-changes).
+For each flag, this page describes what the change means for your project and how to preserve the previous behavior. For flags still in the introduction phase, refer to [Behavior flag introduction](/reference/global-configs/behavior-flag-introduction).
 
 ## Mature flags
 

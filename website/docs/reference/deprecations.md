@@ -389,7 +389,7 @@ config:
 
 dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `false`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
 
-When the `require_unique_project_resource_names` flag is set to `true`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-changes#unique-project-resource-names).
+When the `require_unique_project_resource_names` flag is set to `true`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-flag-introduction#unique-project-resource-names).
 
 #### DuplicateNameDistinctNodeTypesDeprecation warning resolution
 
@@ -459,7 +459,7 @@ Ensure your exposure names only contain letters, numbers, and underscores. A mor
 
 dbt raises this deprecation warning when a custom `generate_schema_name` macro returns a `null` value. Returning `null` schema names can lead to invalid or unpredictable behavior.
 
-This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name) is set to `false`. When the flag is set to `true`, dbt raises an error during parsing.
+This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-flag-introduction#valid-schema-from-generate_schema_name) is set to `false`. When the flag is set to `true`, dbt raises an error during parsing.
 
 #### GenerateSchemaNameNullValueDeprecation warning resolution
 
@@ -490,7 +490,7 @@ If you are seeing this warning, unfortunately, there isn't much you can do at th
 
 ### MFCumulativeTypeParamsDeprecation
 
-In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-changes#cumulative-metrics) was deprecated.
+In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-flag-introduction#cumulative-metrics) was deprecated.
 
 Example:
 
