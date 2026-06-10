@@ -1,6 +1,6 @@
 ## Private connectivity feature matrix
 
-The following charts outline private connectivity options across <Constant name="dbt" /> [multi-tenant (MT) and single-tenant (ST)](/docs/cloud/about-cloud/tenancy) deployments.
+The following charts outline private connectivity options across <Constant name="dbt" /> [multi-tenant (MT) and single-tenant (ST)](/docs/platform/about-platform/tenancy) deployments.
 
 **Legend:**
 
@@ -145,8 +145,8 @@ Your services can connect to <Constant name="dbt" /> over private connectivity. 
       <td>Azure Fabric</td>
       <td>-</td>
       <td>-</td>
-      <td>❌</td>
-      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
       <td>-</td>
     </tr>
     <tr>

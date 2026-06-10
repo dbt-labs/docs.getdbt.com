@@ -207,7 +207,7 @@ const FilterableTable = ({ children }) => {
       // Show filter if:
       // 1. Column has 1-20 unique values (good for dropdown)
       // 2. OR it's the first column (name/key column) with any number of values
-      if ((values.length >= 1 && values.length <= 20) || (colIndex === 0 && values.length >= 1)) {
+      if ((values.length >= 1 && values.length <= 50) || (colIndex === 0 && values.length >= 1)) {
         options[colIndex] = values;
       }
     });
@@ -364,49 +364,9 @@ const FilterableTable = ({ children }) => {
   // If we're in a SimpleTable context, render as a plain table
   if (isSimpleTable) {
     return (
-      <>
-        <table ref={tableRef} style={{ display: 'none' }}>
-          {children}
-        </table>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              {headers.map((header, index) => (
-                <th 
-                  key={index}
-                  style={{ 
-                    textAlign: columnAlignments[index] || 'left',
-                    padding: '0.75rem',
-                    border: '1px solid var(--ifm-table-border-color)',
-                    backgroundColor: 'var(--ifm-table-head-background)',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  <Markdown>{header}</Markdown>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {initialData.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.cells.map((cell, cellIndex) => (
-                  <td 
-                    key={cellIndex}
-                    style={{ 
-                      textAlign: columnAlignments[cellIndex] || 'left',
-                      padding: '0.75rem',
-                      border: '1px solid var(--ifm-table-border-color)'
-                    }}
-                  >
-                    <Markdown>{cell}</Markdown>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        {children}
+      </table>
     );
   }
 

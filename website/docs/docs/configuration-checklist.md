@@ -20,33 +20,33 @@ This checklist ensures you have everything in the right place, allowing you to d
 
 ## Data warehouse
 
-The dbt platform supports [global connections](/docs/cloud/connect-data-platform/about-connections#connection-management) for your data warehouses. This means that a single configured connection can be used across multiple projects and environments. The dbt platform supports multiple data warehouse connections, including (but not limited to) BigQuery, Databricks, Redshift, and Snowflake. One of the earliest account configuration steps you'll want to take is ensuring you have a working connection:
+The dbt platform supports [global connections](/docs/platform/connect-data-platform/about-connections#connection-management) for your data warehouses. This means that a single configured connection can be used across multiple projects and environments. The dbt platform supports multiple data warehouse connections, including (but not limited to) BigQuery, Databricks, Redshift, and Snowflake. One of the earliest account configuration steps you'll want to take is ensuring you have a working connection:
 
-- [ ] Use the [connection set up documentation](/docs/cloud/connect-data-platform/about-connections) to configure the data warehouse connection of your choice. 
+- [ ] Use the [connection set up documentation](/docs/platform/connect-data-platform/about-connections) to configure the data warehouse connection of your choice. 
 - [ ] Verify that dbt developers have proper roles and access in your data warehouse(s).
 - [ ] Be sure the data warehouse has real data you can reference. This can be production or development data. We have a sandbox e-commerce project called [The Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) that you can use if you prefer. The Jaffle Shop includes mock data and ready-to-run models!
 - [ ] Whether starting a brand new project or importing an existing dbt Core project, you'll want to make sure you have the [proper structure configured](/docs/build/projects).
     - [ ] If you are migrating from Core, there are some important things you'll need to know, so check out our [migration guide](/guides/core-migration-2?step=1).
-- [ ] Your users will need to [configure their credentials](/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide) to connect to the development environment in the dbt Studio IDE.
-    - [ ] Ensure that all users who need access to work in the IDE have a [developer license](/docs/cloud/manage-access/seats-and-users) assigned in your account. 
+- [ ] Your users will need to [configure their credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) to connect to the development environment in the dbt Studio IDE.
+    - [ ] Ensure that all users who need access to work in the IDE have a [developer license](/docs/platform/manage-access/seats-and-users) assigned in your account. 
 - [ ] dbt models are primarily written as [SELECT statements](/docs/build/sql-models), so an early step for measuring success is having a developer run a simple select statement in the IDE and validating the results. 
     - [ ] You can also verify the connection by running basic SQL queries using [dbt Insights](/docs/explore/access-dbt-insights).
 - [ ] Create a single model and ensure that you can [run it](/reference/dbt-commands) successfully. 
-    - [ ] For an easy to use drag-and-drop interface, try creating it with [dbt Canvas](/docs/cloud/canvas).
+    - [ ] For an easy to use drag-and-drop interface, try creating it with [dbt Canvas](/docs/platform/canvas).
 - [ ] Create a service account with proper access for your [production jobs](/docs/deploy/jobs).
 
 ## Git configuration
 
 Git is, for many dbt environments, the backbone of your project. Git repositories are where your dbt files will live and where your developers will collaborate and manage version control of your project. 
 
-- [ ] Configure a [Git repository](/docs/cloud/git/git-configuration-in-dbt-cloud) for your account. dbt supports integrations with:
-    - [GitHub](/docs/cloud/git/connect-github)
-    - [GitLab](/docs/cloud/git/connect-gitlab)
-    - [Azure DevOps](/docs/cloud/git/connect-azure-devops)
-    - Other providers using [Git clone](/docs/cloud/git/import-a-project-by-git-url)
-    - If you aren't ready to integrate with an existing Git solution, dbt can provide you with a [managed Git repository](/docs/cloud/git/managed-repository). 
-- [ ] Ensure developers can [checkout](/docs/cloud/git/version-control-basics#git-overview) a new branch in your repo.
-- [ ] Ensure developers in the IDE can [commit changes](/docs/cloud/studio-ide/ide-user-interface#basic-layout). 
+- [ ] Configure a [Git repository](/docs/platform/git/configure-git) for your account. dbt supports integrations with:
+    - [GitHub](/docs/platform/git/connect-github)
+    - [GitLab](/docs/platform/git/connect-gitlab)
+    - [Azure DevOps](/docs/platform/git/connect-azure-devops)
+    - Other providers using [Git clone](/docs/platform/git/import-a-project-by-git-url)
+    - If you aren't ready to integrate with an existing Git solution, dbt can provide you with a [managed Git repository](/docs/platform/git/managed-repository). 
+- [ ] Ensure developers can [checkout](/docs/platform/git/version-control-basics#git-overview) a new branch in your repo.
+- [ ] Ensure developers in the IDE can [commit changes](/docs/platform/studio-ide/ide-user-interface#basic-layout). 
 
 ## Environments and jobs
 
@@ -61,7 +61,7 @@ Additionally, you will have only one `Development` environment per project, but 
 
 Once you connect your data warehouse and complete the Git integration, you can configure environments and jobs:
 
-- [ ] Start by creating a new [Development environment](/docs/dbt-cloud-environments#create-a-development-environment) for your project. 
+- [ ] Start by creating a new [Development environment](/docs/dbt-platform-environments#create-a-development-environment) for your project. 
 - [ ] Create a [Production Deployment environment](/docs/deploy/deploy-environments).
     - [ ] (Optional) Create an additional Staging or General environment.
 - [ ] [Create and schedule](/docs/deploy/deploy-jobs#create-and-schedule-jobs) a deployment job. 
@@ -72,13 +72,13 @@ Once you connect your data warehouse and complete the Git integration, you can c
 
 The dbt platform offers a variety of access control tools that you can leverage to grant or revoke user access, configure RBAC, and assign user licenses and permissions.
 
-- [ ] Manually [invite users](/docs/cloud/manage-access/invite-users) to the dbt platform, and they can authenticate using [MFA (SMS or authenticator app)](/docs/cloud/manage-access/mfa).
-- [ ] Configure [single sign-on or OAuth](/docs/cloud/manage-access/sso-overview) for advanced access control. <Lifecycle status="managed,managed_plus" /> accounts only. 
-    - [ ] Create [SSO mappings](/docs/cloud/manage-access/about-user-access#sso-mappings-) for groups
-- Configure [System for Cross-Domain Identity Management (SCIM)](/docs/cloud/manage-access/scim) if available for your IdP. 
+- [ ] Manually [invite users](/docs/platform/manage-access/invite-users) to the dbt platform, and they can authenticate using [MFA (SMS or authenticator app)](/docs/platform/manage-access/mfa).
+- [ ] Configure [single sign-on or OAuth](/docs/platform/manage-access/sso-overview) for advanced access control. <Lifecycle status="managed,managed_plus" /> accounts only. 
+    - [ ] Create [SSO mappings](/docs/platform/manage-access/about-user-access#sso-mappings-) for groups
+- Configure [System for Cross-Domain Identity Management (SCIM)](/docs/platform/manage-access/scim) if available for your IdP. 
 - [ ] Ensure invited users are able to connect to the data warehouse from their personal profile. 
-- [ ] [Create groups](/docs/cloud/manage-access/about-user-access#create-new-groups-) with granular permission sets assigned.
-- [ ] Create [RBAC rules](https://docs.getdbt.com/docs/cloud/manage-access/about-user-access#role-based-access-control-) to assign users to groups and permission sets upon sign in. <Lifecycle status="managed,managed_plus" /> accounts only. 
+- [ ] [Create groups](/docs/platform/manage-access/about-user-access#create-new-groups-) with granular permission sets assigned.
+- [ ] Create [RBAC rules](https://docs.getdbt.com/docs/platform/manage-access/about-user-access#role-based-access-control-) to assign users to groups and permission sets upon sign in. <Lifecycle status="managed,managed_plus" /> accounts only. 
 - [ ] Enforce SSO for all non-admin users, and MFA is enforced for all password-based logins. 
 
 ## Continue the journey 

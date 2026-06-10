@@ -4,7 +4,7 @@ import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 const { themes } = require('prism-react-renderer')
 
-const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
+const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Set SITE_URL by environment */
@@ -86,14 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "agent-skills-webinar",
+      id: "fivetran-dbt-labs-merger-webinar",
       content:
-        "Join our free webinar on April 22 &amp; 23: Ship smarter agents with dbt Agent Skills. Learn to build production-ready AI agents on your data layer.",
+      "Fivetran + dbt Labs: The merger, what's shipping, and live Q&A on June 25 - Save your seat!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/ship-smarter-agents-building-for-production-with-dbt-agent-skills/?utm_medium=internal&utm_source=docs&utm_campaign=_&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -151,7 +151,7 @@ var siteSettings = {
           position: "right",
         },
         {
-          to: "/docs/dbt-cloud-apis/overview",
+          to: "/docs/dbt-apis/overview",
           label: "APIs",
           position: "right",
         },
@@ -216,7 +216,7 @@ var siteSettings = {
           items: [
             {
               label: "Log in to dbt",
-              to: "https://cloud.getdbt.com/",
+              to: "https://login.dbt.com/",
               target: "_blank",
             },
             {
@@ -307,7 +307,7 @@ var siteSettings = {
 
           <div class='footer-sub-items'>
             <div class="footer-copyright">
-              <span>&copy; ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.</span>
+              <span>&copy; ${new Date().getFullYear()} dbt Labs, LLC. All Rights Reserved.</span>
             </div>
             <div class="footer-sub-items-links">
               <a href='https://www.getdbt.com/terms-of-use/'>Terms of Service</a>
@@ -345,7 +345,7 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
-          exclude: ["hover-terms.md"],
+          exclude: ["hover-terms.md", "faqs/Runs/sao-difference-core.md"],
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
@@ -424,34 +424,34 @@ var siteSettings = {
                   id: "dbt-platform",
                   name: "dbt platform",
                   routes: [
-                    { route: "/docs/about-cloud-setup" },
-                    { route: "/docs/cloud/account-settings" },
-                    { route: "/docs/cloud/account-integrations" },
-                    { route: "/docs/dbt-cloud-environments" },
-                    { route: "/docs/cloud/migration" },
+                    { route: "/docs/platform/about-platform-setup" },
+                    { route: "/docs/platform/account-settings" },
+                    { route: "/docs/platform/account-integrations" },
+                    { route: "/docs/dbt-platform-environments" },
+                    { route: "/docs/platform/migration" },
                   ],
                   subsections: [
                     {
                       id: "connect-data-platform",
                       name: "Connect data platform",
                       routes: [
-                        { route: "/docs/cloud/connect-data-platform/**" },
+                        { route: "/docs/platform/connect-data-platform/**" },
                       ],
                     },
                     {
                       id: "manage-access",
                       name: "Manage access",
-                      routes: [{ route: "/docs/cloud/manage-access/**" }],
+                      routes: [{ route: "/docs/platform/manage-access/**" }],
                     },
                     {
                       id: "git",
                       name: "Git",
-                      routes: [{ route: "/docs/cloud/git/**" }],
+                      routes: [{ route: "/docs/platform/git/**" }],
                     },
                     {
                       id: "secure",
                       name: "Secure",
-                      routes: [{ route: "/docs/cloud/secure/**" }],
+                      routes: [{ route: "/docs/platform/secure/**" }],
                     },
                   ],
                 },
@@ -487,12 +487,12 @@ var siteSettings = {
             {
               id: "platform",
               name: "Platform",
-              routes: [{ route: "/docs/cloud/**" }],
+              routes: [{ route: "/docs/platform/**" }],
             },
             {
               id: "api-reference",
               name: "API Reference",
-              routes: [{ route: "/docs/dbt-cloud-apis/**" }],
+              routes: [{ route: "/docs/dbt-apis/**" }],
             },
           ],
           siteTitle: "dbt Developer Hub",
@@ -559,23 +559,18 @@ var siteSettings = {
   },
 };
 
-// If versions json file found, add versions dropdown to nav
-if (versions) {
+// If products defined, add version dropdown to nav using sub-product names as items
+if (products) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
     position: "left",
     className: "nav-versioning",
-    items: [
-      ...versions.reduce((acc, version) => {
-        if (version?.version) {
-          acc.push({
-            label: `${version.version}`,
-            href: "#",
-          });
-        }
-        return acc;
-      }, []),
-    ],
+    items: products.flatMap((product) =>
+      product.subProducts.map((sp) => ({
+        label: sp.name,
+        href: "#",
+      }))
+    ),
   });
 }
 

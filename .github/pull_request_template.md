@@ -6,7 +6,7 @@ To learn more about the writing conventions used in the dbt Labs docs, see the [
 -->
 
 ## Checklist
-<!-- Ensure your PR meets the following items. Feel free to add additiona checklist items to the list if additional checks need to happen before the PR is merged, such as:
+<!-- Ensure your PR meets the following items. Feel free to add additional checklist items to the list if additional checks need to happen before the PR is merged, such as:
 - [ ] Needs technical review
 - [ ] Change base branch
 - [ ] Merge on xyz date

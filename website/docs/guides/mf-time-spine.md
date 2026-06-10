@@ -164,7 +164,7 @@ For the time spine you created, let's run it and preview the output if you haven
     ```
 
     This will output results similar to the following in the <Constant name="studio_ide" />:
-    <Lightbox src="/img/quickstarts/dbt-cloud/validate-mf-timespine-output.png" title="Validate the metrics and time spine output in the Studio IDE" />
+    <Lightbox src="/img/quickstarts/dbt-platform/validate-mf-timespine-output.png" title="Validate the metrics and time spine output in the Studio IDE" />
 
 5. Double check that the results are correct and returning the expected data.
 
@@ -258,7 +258,7 @@ For some extra practice, try one of the following exercises:
 
 ### Custom calendars
 
-To support custom calendars (like fiscal years, fiscal quarters, and so on), create an additional time spine and configure it in YAML. This feature is available in the <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks) or [<Constant name="core" /> 1.9 and later](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+To support custom calendars (like fiscal years, fiscal quarters, and so on), create an additional time spine and configure it in YAML. This feature is available in the <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/dbt-release-tracks) or [<Constant name="core" /> 1.9 and later](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
 
 1. Add a new SQL file named `fiscal_calendar.sql` with the following content (or use your own custom calendar and configure it in YAML):
     <File name='models/marts/fiscal_calendar.sql'>
