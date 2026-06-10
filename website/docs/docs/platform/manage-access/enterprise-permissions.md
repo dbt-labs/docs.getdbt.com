@@ -57,6 +57,25 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Analyst read" lifecycle="private_beta">
+
+The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
+
+:::info Availability
+
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable them, contact your account manager.
+
+:::
+
+Notable features:
+- Analyst read is a project-level set.
+- Read-only access to project resources, jobs, runs, and environment configs.
+- Can access <Constant name="catalog" />.
+- No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
+
+To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
+
+</Expandable>
 <Expandable alt_header="Billing admin">
 
 The Billing admin permission set can review product usage information that impacts the final billing of <Constant name="dbt" /> (for example, models run).
