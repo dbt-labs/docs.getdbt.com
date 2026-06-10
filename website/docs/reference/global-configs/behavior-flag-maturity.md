@@ -135,7 +135,7 @@ Several behavior change flags are planned to reach maturity on the <Constant nam
 | [`require_batched_execution_for_custom_microbatch_strategy`](#require_batched_execution_for_custom_microbatch_strategy) | Behavior change for custom microbatch macros |
 | [`state_modified_compare_more_unrendered_values`](#state_modified_compare_more_unrendered_values) | Selection-set change with potential CI impact |
 | [`require_yaml_configuration_for_mf_time_spines`](#require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
-| [`validate_macro_args`](#validate_macro_args) | New warning for mismatched macro arguments |
+| [`validate_macro_args`](#validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
 To retain the legacy behavior after these flags reach maturity, set them to `false` in your `dbt_project.yml`:
 
@@ -178,26 +178,22 @@ Example warnings that switch from "log only" to "error" for `warn_error: true` u
 - `RunResultWarningMessage` — emitted when a test or model returns `WARN` status
 - Various adapter-level warnings not previously handled by `--warn-error`
 
-Note that enabling this for projects that use `--warn-error` may cause builds to fail on warnings that were previously ignored. We recommend enabling it gradually.
+<Expandable alt_header="Resolving build failures from this flag">
 
-<Expandable alt_header="Recommended steps to enable the flag">
+If your project uses `--warn-error` and builds are failing after this flag was enabled, follow these steps to identify and resolve the build failures:
 
-We recommend the following rollout plan when setting the `require_all_warnings_handled_by_warn_error` flag to `true`:
-
-1. Run a full build without partial parsing to surface parse-time warnings, and confirm it finishes successfully:
+1. Run a full build without partial parsing to surface all failures:
 
    ```bash
    dbt build --no-partial-parse
    ```
 
-   - Some warnings are only emitted at parse time.
-   - If the build fails because warnings are already treated as errors (via `--warn-error` or `--warn-error-options`), fix those first and re-run.
-2. Review the logs:
-   - If you have any warnings at this point, it means they weren't handled by `--warn-error`/`--warn-error-options`. Continue to the next step.
-   - If there are no warnings, enable the flag in all environments and that's it!
-3. Enable `require_all_warnings_handled_by_warn_error` in your development environment and fix any warnings that now surface as errors.
-4. Enable the flag in your CI environment (if you have one) and ensure builds pass.
-5. Enable the flag in your production environment.
+   Some errors are only emitted at parse time, so skipping partial parsing ensures you see the full picture.
+
+2. Review the logs and look for error names listed above (for example, `JinjaLogWarning`, `WarnStateTargetEqual`, or `RunResultWarningMessage`).
+3. Fix the underlying issue for each failure in your development environment and confirm the build passes.
+4. Verify builds pass in your CI environment (if you have one).
+5. Verify builds pass in your production environment.
 
 </Expandable>
 
