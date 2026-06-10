@@ -85,14 +85,26 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 3. Create a service account key for your new project from the [Service accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts?walkthrough_id=iam--create-service-account-keys&start_index=1#step_index=1). For more information, refer to [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) in the Google Cloud docs. When downloading the JSON file, make sure to use a filename you can easily remember. For example, `dbt-user-creds.json`. For security reasons, dbt Labs recommends that you protect this JSON file like you would your identity credentials; for example, don't check the JSON file into your version control software.
 
 ## Connect dbt to BigQuery​
-1. Create a new project in [<Constant name="dbt" />](/docs/platform/about-platform/access-regions-ip-addresses). Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New project**.
-2. Enter a project name and click **Continue**.
-3. For the warehouse, click **BigQuery** then **Next** to set up your connection.
-4. Click **Upload a Service Account JSON File** in settings.
-5. Select the JSON file you downloaded in [Generate BigQuery credentials](#generate-bigquery-credentials) and <Constant name="dbt" /> will fill in all the necessary fields.
-6. Optional &mdash; <Constant name="dbt" /> Enterprise plans can configure developer OAuth with BigQuery, providing an additional layer of security. For more information, refer to [Set up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth).
-7. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your BigQuery account.
-8. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
+1. In [<Constant name="dbt" />](/docs/platform/about-platform/access-regions-ip-addresses), click your account name in the left side menu.
+2. Navigate to **Account settings** and click **+ New project**.
+3. Enter a project name and click **Continue**.
+4. For the warehouse, click **BigQuery** then **Next** to set up your connection.
+5. Click **Upload a Service Account JSON File** in settings.
+6. Select the JSON file you downloaded in Generate BigQuery credentials and <Constant name="dbt" /> will fill in all the necessary fields.
+7. (Optional) <Constant name="dbt" /> Enterprise plans can configure developer OAuth with BigQuery, providing an additional layer of security. For more information, refer to [Set up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth).
+8. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+9. Select your project that uses the BigQuery connection.
+10. Click **Edit**.
+11. Enter your **Development credentials** for BigQuery with:
+    - **Authentication Method** &mdash; Select **Service Account JSON**. This uses the service account you uploaded when you set up the project connection.
+    - **Dataset** &mdash; You may notice that the dataset name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the dataset connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="studio_ide" />.
+    - **Target name** &mdash; Leave as the default.
+    - **Threads** &mdash; Leave as the default (6). This is the number of simultaneous connections that <Constant name="dbt" /> will make to build models concurrently.
+
+    <Lightbox src="/img/bigquery/dbt_platform_bigquery_development_credentials.png" title="BigQuery Development Credentials" />
+
+12. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your BigQuery account.
+13. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
 
 
 ## Set up a dbt managed repository 

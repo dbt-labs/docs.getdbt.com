@@ -111,6 +111,8 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 - The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
 - The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
 - The `immutable_where` configuration is supported in dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
+- You can set [`copy_grants: true`](/reference/resource-configs/snowflake-configs#copy-grants-dynamic-tables) on a dynamic table to preserve existing object-level privileges when the table is recreated during a `--full-refresh`. When set to `false` (default), all previously granted permissions are dropped on recreation, requiring manual re-grants.
+- Set the [`refresh_warehouse`](/reference/resource-configs/snowflake-configs#refresh-warehouse) parameter to choose which Snowflake warehouse runs a dynamic table's automatic refreshes. This is separate from `snowflake_warehouse`, which is used for <Term id="ddl" /> execution. For example, you might use a smaller warehouse for refreshes and a larger one for DDL. If `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and automatic refreshes.
 
 ### BigQuery
 
@@ -119,6 +121,7 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 ### Redshift
 
 - The new `datasharing` profile credential enables `dbt-redshift` to use Redshift-native metadata commands (`SHOW` commands such as `SHOW TABLES` and `SHOW COLUMNS`) instead of PostgreSQL catalog tables such as `pg_*` and `information_schema`. This supports cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).<Lifecycle status="beta" />
+- The `drop_without_cascade` profile credential emits `DROP TABLE/VIEW/MATERIALIZED VIEW` statements without `CASCADE`. Redshift resolves the `CASCADE` dependency graph on every `DROP`, which adds overhead on large clusters. If your project has no downstream dependents (for example, it uses only unbound views) you can set `drop_without_cascade: true` to skip that cost. When enabled and a dependent object exists, Redshift raises an error. For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup).
 
 ### Spark
 
