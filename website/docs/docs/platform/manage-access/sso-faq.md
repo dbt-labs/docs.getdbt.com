@@ -96,6 +96,12 @@ This occurs when tenant-level admin consent hasn't been granted for the dbt SSO 
 
 </Expandable>
 
+<Expandable alt_header="Receiving a 'AADSTS90094: Admin consent is required' error">
+
+If you set up SSO before Dec 2025, you may need to request `Directory.Read.All` instead of `Directory.AccessAsUser.All`. Alternatively, delete and re-create your SSO configuration to use the new targeted scopes [mentioned earlier](#configuring-permissions).
+
+</Expandable>
+
 <Expandable alt_header='"This SSO endpoint is disabled. Please contact your administrator to have them update your IdP SSO settings to use Auth0 instead."'>
 
 This error message appears after a successful login when your IdP is misconfigured and the callback URL is pointing to <Constant name="dbt_platform" /> instead of Auth0. Your admin needs to update the IdP configuration to use the correct IdP values from **Account settings → Single Sign-On**.
