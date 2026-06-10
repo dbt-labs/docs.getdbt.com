@@ -44,7 +44,7 @@ wizard providers configure PROVIDER_NAME
 wizard providers enable PROVIDER_NAME
 ```
 
-Replacing `PROVIDER_NAME` with the name of a supported provider, such as `openai`, `anthropic`, `bedrock`, `azure`, `gemini`, or `snowflake`. Then follow the prompts to enter your credentials.
+Replace `PROVIDER_NAME` with the name of a supported provider, such as `openai`, `anthropic`, `bedrock`, `azure`, `gemini`, or `snowflake`. Then, follow the prompts to enter your credentials.
 
 The `wizard providers list` command shows you the currently configured providers and their status:
 
@@ -270,10 +270,10 @@ Paste API key/token, or press enter to configure it later:
 
 #### Authentication options
 
-The key/token field accepts a regular API token or a Programmatic Access Token (PAT), depending on how your Snowflake account is set up. Both go in the same place &mdash; the **Paste API key/token** prompt in the terminal, or **Set key/token** (option 3) in the TUI.
+The key/token field accepts a regular API token or a Programmatic Access Token (PAT), depending on how your Snowflake account is configured. Both are entered in the same place &mdash; the **Paste API key/token** prompt in the terminal, or **Set key/token** (option 3) in the TUI.
 
 1. In your Snowflake account, [generate your API or PAT token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens#label-pat-generate).
-2. Select **Generate token** and copy the token value
+2. Select **Generate token** and copy the token value.
 3. Go back to <Constant name="wizard" /> and paste the PAT at the key/token prompt. 
 
 To set a default Snowflake Cortex model, add the model ID to `~/.dbt/wizard/config.toml`:
