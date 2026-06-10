@@ -57,12 +57,15 @@ Update your `models/schema.yml` file to include some descriptions, such as those
 <TabItem value="View in Catalog" >
 
 [<Constant name="catalog" />](/docs/explore/explore-projects) provides powerful tools to interact with your dbt projects, including documentation:
-1. From the IDE, run one of the following commands:
+
+1. Run one of the following commands:
    - `dbt docs generate` if you're on <Constant name="core" />
    - `dbt build` if you're on the <Constant name="fusion_engine" />
-2. Click **Catalog** in the navigation menu to launch <Constant name="catalog" />.
-3. In the <Constant name="catalog" /> pane, click the environment selection dropdown menu at the top of the file tree and change it from **Production** to **Development**.
-  <Lightbox src="/img/docs/collaborate/dbt-explorer/catalog-nav-dropdown.png" width="85%" title="View your development environment information." />
+2. Click **<Constant name="catalog" />** in the navigation menu to launch <Constant name="catalog" />.
+3. <Constant name="catalog" /> reflects **Production** by default. If your account has additional environments (for example, **Staging**), you can select them from the environment dropdown.
+
+  <Lightbox src="/img/docs/collaborate/dbt-explorer/catalog-nav-dropdown.png" width="85%" title="Select an environment in Catalog." />
+
 4. Select your project from the file tree.
 5. Use the search bar or browse the resource list to find the `customers` model.
 6. Click the model to view its details, including the descriptions you added.

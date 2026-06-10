@@ -28,6 +28,10 @@ These models compile directly to SQL and are indistinguishable from other dbt mo
 
 <Prerequisites feature={'/snippets/_canvas-prerequisites.md'} />
 
+import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
+
+<CopilotWizardDifferences/>
+
 ## Feedback
 
 Please note, always review AI-generated code and content as it may produce incorrect results.

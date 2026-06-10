@@ -2765,6 +2765,22 @@ h2.anchor.clicked a.hash-link:before {
   padding: 10px;
 }
 
+/* Lifecycle pills in tab labels — smaller and aligned with tab text */
+.tabs-lifecycle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tabs__item .lifecycle {
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 2px 8px;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
 /* Default color and border for tabs */
 .tabs__item {
   background-color: var(--text-inverse-primary); /* Sets the tab color the same as the file borders */
