@@ -14,6 +14,7 @@ categories:
   - title: Foundations
     guides:
       - terminal-guide
+      - wizard-cli-qs
 
   - title: Popular
     guides:

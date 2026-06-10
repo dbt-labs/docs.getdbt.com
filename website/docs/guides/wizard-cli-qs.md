@@ -1,9 +1,10 @@
 ---
 title: "Getting started with dbt Wizard CLI"
-id: "wizard-quickstart"
+id: "wizard-cli-qs"
 description: "Set up dbt Wizard CLI with DuckDB, sample data, and your first validated dbt change."
-sidebar_label: "Getting started with Wizard CLI"
-tags: [AI, CLI, dbt Wizard]
+level: 'Beginner'
+icon: 'dbt'
+tags: ['dbt Wizard', 'CLI', 'Quickstart']
 hide_table_of_contents: true
 ---
 
