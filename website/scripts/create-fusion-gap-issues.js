@@ -140,8 +140,12 @@ async function run(platformId) {
     return false;
   };
 
-  // New gaps: functions added to the platform list that Fusion doesn't support yet
-  const newGaps = newFunctions.filter((f) => !isSupported(f) && !oldNames.has(f.name));
+  // New gaps: functions added to the platform list that Fusion doesn't support yet.
+  // Skip wildcard names (e.g. AS_*OBJECT_TYPE*, IS_*OBJECT_TYPE*) — these are
+  // pattern entries in platform docs, not real function names Fusion can target.
+  const newGaps = newFunctions.filter(
+    (f) => !isSupported(f) && !oldNames.has(f.name) && !f.name.includes('*')
+  );
 
   if (newGaps.length === 0) {
     console.log(`[gap-issues][${platformId}] No new gaps detected`);

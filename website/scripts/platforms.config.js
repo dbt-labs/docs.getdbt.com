@@ -234,7 +234,8 @@ function scrapeDatabricksPage(html) {
     const name = hrefMatch
       ? hrefMatch[1].toUpperCase()
       : anchor.textContent.trim().toUpperCase().replace(/\s+FUNCTION$/, '');
-    if (!name || name.length > 60) continue;
+    // Only accept valid SQL function identifiers — filters out operators (IS TRUE, +, etc.)
+    if (!name || !/^[A-Z][A-Z0-9_]*$/.test(name) || name.length > 60) continue;
     const docsUrl = href.startsWith('http')
       ? href
       : `https://docs.databricks.com${href}`;
