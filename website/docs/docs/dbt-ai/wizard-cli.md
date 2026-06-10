@@ -23,7 +23,7 @@ Install the <Constant name="wizard" /> CLI from your terminal for agentic and go
 This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
 
-## Install dbt Wizard CLI
+Run the following command to install the <Constant name="wizard"/> CLI:
 
 <WizardCliInstall />
 
