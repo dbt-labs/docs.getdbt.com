@@ -33,13 +33,107 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
-## Authentication
+## Supported Authentication Types
 
-The Fabric Lakehouse adapter (`dbt-fabricspark`) connects to Fabric Spark through the Livy API. You can authenticate using Azure CLI, which allows dbt to use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file and run `az login`.
+<Tabs>
+
+<TabItem value="Azure CLI">
+
+The Fabric Lakehouse adapter (`dbt-fabricspark`) connects to Fabric Spark through the Livy API. You can authenticate through the Livy API using Azure CLI which allows dbt to use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file and run `az login`.
 
 When you authenticate, Azure CLI may open a browser window or prompt you to complete sign-in on the [Microsoft device login](https://microsoft.com/devicelogin) page and enter a one-time code to complete sign-in. Once authentication is successful, dbt automatically reuses the active Azure CLI session for subsequent commands.
 
-Refer to [`session-jobs`](/docs/local/connect-data-platform/fabricspark-setup#session-jobs) for an example authentication configuration.
+#### Example Azure CLI configuration
+
+<File name="profiles.yml">
+
+```yml
+default:
+  target: dev
+  outputs:
+    dev:
+      type: fabricspark
+      method: livy
+      endpoint: https://api.fabric.microsoft.com/v1
+      workspaceid: <your-workspace-id>
+      lakehouseid: <your-lakehouse-id>
+      lakehouse: my_lakehouse
+      schema: my_lakehouse
+      threads: 1
+
+      # Authentication (CLI for local dev)
+      authentication: CLI
+
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="Service Principal">
+
+You can authenticate through the Livy API using a Service Principal for CI/CD purposes which allows dbt to use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file and run `az login`.
+
+#### Example Service Principal configuration
+
+<File name="profiles.yml">
+
+```yml
+default:
+  target: dev
+  outputs:
+    dev:
+      type: fabricspark
+      method: livy
+      endpoint: https://api.fabric.microsoft.com/v1
+      workspaceid: <your-workspace-id>
+      lakehouseid: <your-lakehouse-id>
+      lakehouse: my_lakehouse
+      schema: my_lakehouse
+      threads: 1
+
+      # Authentication (SPN for CI/CD)
+      authentication: SPN
+      client_id: <your-client-id>              # Required for SPN
+      tenant_id: <your-tenant-id>              # Required for SPN
+      client_secret: <your-client-secret>      # Required for SPN
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="Fabric Notebook">
+
+You can authenticate through the Livy API from a Fabric notebook for production workloads and orchestration use cases within the Microsoft Fabric ecosystem. This method uses [`notebookutils.credentials`](https://learn.microsoft.com/en-us/fabric/data-engineering/notebookutils/notebookutils-credentials?tabs=python).
+
+It is recommended to use Python Notebooks compared to PySpark Notebooks to minimise compute costs as the Livy API spins up its own Spark sessions.
+
+#### Example Fabric Notebook Configuration
+
+<File name="profiles.yml">
+
+```yml
+default:
+  target: dev
+  outputs:
+    dev:
+      type: fabricspark
+      method: livy
+      endpoint: https://api.fabric.microsoft.com/v1
+      workspaceid: <your-workspace-id>
+      lakehouseid: <your-lakehouse-id>
+      lakehouse: my_lakehouse
+      schema: my_lakehouse
+      threads: 1
+
+      # Authentication (fabric_notebook for execution from a Fabric notebook)
+      authentication: fabric_notebook
+```
+
+</File>
+
+</TabItem>
 
 ## Connection methods
 
@@ -130,6 +224,4 @@ Delta-only features:
 
 ### Limitations
 
-1. Lakehouse schemas are not supported. Refer to [limitations](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-schemas#public-preview-limitations)
-2. Service principal authentication is not supported yet by Livy API.
-3. Only Delta, CSV and Parquet table data formats are supported by Fabric Lakehouse.
+1. Only Delta, CSV and Parquet table data formats are supported by Fabric Lakehouse.
