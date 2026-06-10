@@ -72,7 +72,7 @@ There is a one-to-one correspondence between [CLI exit codes](/reference/exit-co
 
 ## Commitments and caveats
 
-We're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short- and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
+We're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
 
 In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
 
