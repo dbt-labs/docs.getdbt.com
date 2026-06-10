@@ -30,3 +30,5 @@ yarn-error.log*
 
 # Local Vercel folder
 .vercel
+
+.playwright-mcp/
