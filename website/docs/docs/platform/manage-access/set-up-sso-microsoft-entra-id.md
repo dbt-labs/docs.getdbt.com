@@ -108,14 +108,14 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 | --- | --- | --- | --- |
 | Microsoft Graph | Delegated | `User.Read` | Yes |
 | Microsoft Graph | Delegated | `GroupMember.Read.All` | Yes |
-| Microsoft Graph | Delegated | `Directory.AccessAsUser.All` | Optional — may be required if users are assigned to > 200 groups |
+| Microsoft Graph | Delegated | `Directory.Read.All` | Optional — may be required if users are assigned to > 200 groups |
 
 </SimpleTable>
 
-The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`. 
+The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.Read.All`. 
 
 :::info SSO before December 2025
-If you set up SSO before Dec 2025, you may need to request `Directory.Read.All` instead of `GroupMember.Read.All`. Alternatively, delete and re-create your SSO configuration to use the new targeted scopes above.
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All`. To use the updated scopes, delete and re-create your SSO [configuration](#configuring-permissions).
 :::
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
@@ -188,7 +188,7 @@ Now that you've set up SSO with Entra ID, you can [set up SCIM](/docs/platform/m
 
 <Expandable alt_header="Receiving a 'AADSTS90094: Admin consent is required' error">
 
-If you set up SSO before Dec 2025, you may need to request `Directory.Read.All` instead of `GroupMember.Read.All`. Alternatively, delete and re-create your SSO configuration to use the new targeted scopes [mentioned earlier](#configuring-permissions).
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All`. To use the updated scopes, delete and re-create your SSO [configuration](#configuring-permissions).
 
 </Expandable>
 
