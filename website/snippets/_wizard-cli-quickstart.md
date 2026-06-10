@@ -27,7 +27,7 @@ You'll need:
 
 - A terminal and basic familiarity with `cd`, `ls`, and `pwd`
 - Python 3.9 or later
-- A supported AI provider configured using [BYOK](/docs/dbt-ai/wizard-byok), or an OpenAI subscription
+- An AI provider key &mdash; an [OpenAI API key](https://platform.openai.com/api-keys) is the fastest, or [bring your own key](/docs/dbt-ai/wizard-byok) for another provider
 
 <WizardCliDbtCliSupport />
 
@@ -35,25 +35,16 @@ You'll need:
 
 ## Creating a local DuckDB project
 
-Use the setup script to create a complete Magic Shop dbt project locally. The script creates a project folder, installs the <Constant name="fusion_engine" /> in a virtual environment, writes sample seed and model files, loads the seed data into DuckDB, runs `dbt build`, and installs <Constant name="wizard" /> CLI if it isn't already installed.
+Use the setup script to create a complete Magic Shop dbt project locally. The script creates a project folder, installs the <Constant name="fusion_engine" /> in a virtual environment, writes sample seed and model files, loads the seed data into DuckDB, and runs `dbt build`. You'll install <Constant name="wizard" /> CLI in the next step.
 
 ```shell
-DOCS_BASE_URL="https://docs.getdbt.com"
-curl -fsSL "$DOCS_BASE_URL/files/wizard/setup-magic-shop-duckdb.sh" | bash
+curl -fsSL https://docs.getdbt.com/files/wizard/setup-magic-shop-duckdb.sh | bash
 ```
 
 The setup creates a new `magic_shop_wizard` directory. To use a different directory name, set `PROJECT_DIR`:
 
 ```shell
-DOCS_BASE_URL="https://docs.getdbt.com"
-curl -fsSL "$DOCS_BASE_URL/files/wizard/setup-magic-shop-duckdb.sh" | PROJECT_DIR=my_wizard_project bash
-```
-
-After the script finishes, change into the project directory and activate the virtual environment:
-
-```shell
-cd magic_shop_wizard
-source .venv/bin/activate
+curl -fsSL https://docs.getdbt.com/files/wizard/setup-magic-shop-duckdb.sh | PROJECT_DIR=my_wizard_project bash
 ```
 
 You should see a successful run with four seeds and four view models. The project contains:
@@ -72,43 +63,42 @@ You should see a successful run with four seeds and four view models. The projec
 
 If `dbt build` fails, fix the dbt project before continuing. <Constant name="wizard" /> works best when it can compile and inspect your project.
 
-## Installing dbt Wizard CLI
+## Install Wizard
 
-The setup script installs <Constant name="wizard" /> CLI if it isn't already installed. If you skipped the setup script or want to reinstall <Constant name="wizard" />, use the installer:
+<Constant name="wizard" /> CLI is a standalone tool you can point at any dbt project &mdash; here, the Magic Shop project you just created.
 
 <WizardCliInstall />
 
-After installing, confirm that <Constant name="wizard" /> is available:
+## Start Wizard
 
-```shell
-wizard --version
-```
+The setup script built the project, and you've installed <Constant name="wizard" /> CLI. To start a session, complete three steps from your project directory.
 
-## Choosing an AI provider
+1. Activate the virtual environment:
 
-<Constant name="wizard" /> CLI needs access to an AI provider before it can answer prompts or propose changes. The fastest setup is an OpenAI API key or OpenAI subscription. You can also bring your own key for Anthropic, Azure, AWS Bedrock, Gemini, or Snowflake Cortex.
+    ```shell
+    cd magic_shop_wizard
+    source .venv/bin/activate
+    ```
 
-For an OpenAI API key, set the environment variable before starting <Constant name="wizard" />:
+2. Set your AI provider key. <Constant name="wizard" /> needs an AI provider before it can answer prompts or propose changes. The fastest option is an [OpenAI API key](https://platform.openai.com/api-keys):
 
-```shell
-export OPENAI_API_KEY="sk-..."
-```
+    ```shell
+    export OPENAI_API_KEY="sk-..."
+    ```
 
-For all provider options, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
+    Setting the key here means onboarding skips the provider prompt in the next step. You can also bring your own key for Anthropic, Azure, AWS Bedrock, Gemini, or Snowflake Cortex, or configure a provider interactively during onboarding. For all provider options, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
 
-## Configuring dbt Wizard CLI
+3. Start <Constant name="wizard" />:
 
-From the root of your dbt project, start <Constant name="wizard" />:
-
-```shell
-wizard
-```
+    ```shell
+    wizard
+    ```
 
 Complete first-run onboarding:
 
 <WizardCliOnboarding />
 
-When <Constant name="wizard" /> asks for your dbt profile location, use the project directory you created for this guide. The setup script writes `profiles.yml` in the project root, where <Constant name="fusion" /> can find it.
+When <Constant name="wizard" /> asks for your dbt profile location, use this project directory. The setup script writes `profiles.yml` in the project root, where <Constant name="fusion" /> can find it.
 
 ## Asking Wizard to explain the project
 

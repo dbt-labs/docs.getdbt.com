@@ -118,11 +118,27 @@ select
 from {{ ref('worlds') }}
 EOF
 
+cat > .gitignore <<'EOF'
+.venv/
+target/
+dbt_packages/
+dbt_internal_packages/
+logs/
+*.duckdb
+.user.yml
+EOF
+
 dbt seed
 dbt build
 
-if ! command -v wizard >/dev/null 2>&1; then
-  curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
+# Initialize a git repo so `wizard review` and the commit steps work later.
+# Done after the build so generated artifacts are already ignored and the
+# working tree is clean when you start Wizard.
+if command -v git >/dev/null 2>&1; then
+  git init -q
+  git add -A
+  git -c user.name="dbt Wizard" -c user.email="wizard@example.com" \
+    commit -q -m "Initial Magic Shop project" || true
 fi
 
 cat <<EOF
@@ -132,6 +148,7 @@ Magic Shop is ready.
 Next steps:
   cd $PROJECT_DIR
   source .venv/bin/activate
+  # Install Wizard CLI next (see the quickstart), then:
   export OPENAI_API_KEY="sk-..."
   wizard
 
