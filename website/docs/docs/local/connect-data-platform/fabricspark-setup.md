@@ -135,6 +135,8 @@ default:
 
 </TabItem>
 
+</Tabs>
+
 ## Connection methods
 
 `dbt-fabricspark` can connect to Fabric Spark runtime using Fabric Livy API method. The Fabric Livy API allows submitting jobs in two different modes:  
