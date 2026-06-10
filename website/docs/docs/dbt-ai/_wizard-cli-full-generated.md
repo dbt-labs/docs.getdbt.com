@@ -43,32 +43,31 @@ These flags work on the base interactive `wizard` command.
 
 | Command | Aliases | Description |
 |---------|---------|-------------|
-| [`exec`](#exec) | `e` | Run Wizard non-interactively |
+| [`exec`](#exec) | `e` | Run wizard non-interactively |
 | [`review`](#review) | — | Run a code review non-interactively |
 | [`login`](#login) | — | Manage login |
 | [`logout`](#logout) | — | Remove stored authentication credentials |
-| [`mcp`](#mcp) | — | Manage external MCP servers for Wizard |
-| [`plugin`](#plugin) | — | Manage Wizard plugins |
+| [`mcp`](#mcp) | — | Manage external MCP servers for wizard |
+| [`plugin`](#plugin) | — | Manage wizard plugins |
 | [`providers`](#providers) | — | Manage model providers |
-| [`mcp-server`](#mcp-server) | — | Start Wizard as an MCP server (stdio) |
+| [`mcp-server`](#mcp-server) | — | Start wizard as an MCP server (stdio) |
 | [`app-server`](#app-server) | — | [experimental] Run the app server or related tooling |
 | [`remote-control`](#remote-control) | — | [experimental] Manage the app-server daemon with remote control enabled |
-| [`app`](#app) | — | Launch the Wizard desktop app (opens the app installer if missing) |
 | [`completion`](#completion) | — | Generate shell completion scripts |
-| [`update`](#update) | — | Update Wizard to the latest version |
-| [`doctor`](#doctor) | — | Diagnose local Wizard installation, config, auth, and runtime health |
-| [`sandbox`](#sandbox) | — | Run commands within a Wizard-provided sandbox |
+| [`update`](#update) | — | Update wizard to the latest version |
+| [`doctor`](#doctor) | — | Diagnose local wizard installation, config, auth, and runtime health |
+| [`sandbox`](#sandbox) | — | Run commands within a wizard-provided sandbox |
 | [`debug`](#debug) | — | Debugging tools |
-| [`apply`](#apply) | `a` | Apply the latest diff produced by Wizard agent as a `git apply` to your local working tree |
+| [`apply`](#apply) | `a` | Apply the latest diff produced by wizard agent as a `git apply` to your local working tree |
 | [`resume`](#resume) | — | Resume a previous interactive session (picker by default; use --last to continue the most recent) |
 | [`fork`](#fork) | — | Fork a previous interactive session (picker by default; use --last to fork the most recent) |
-| [`cloud`](#cloud) | — | [EXPERIMENTAL] Browse tasks from Wizard Cloud and apply changes locally |
+| [`cloud`](#cloud) | — | [EXPERIMENTAL] Browse tasks from wizard in dbt platform and apply changes locally |
 | [`exec-server`](#exec-server) | — | [EXPERIMENTAL] Run the standalone exec-server service |
 | [`features`](#features) | — | Inspect feature flags |
 
 ## exec {#exec}
 
-Run Wizard non-interactively
+Run wizard non-interactively
 
 ```bash
 wizard exec [OPTIONS] <COMMAND> [ARGS]
@@ -104,6 +103,8 @@ wizard exec [OPTIONS] <COMMAND> [ARGS]
 | `--output-schema <FILE>` | — | path | Path to a JSON Schema file describing the model's final response shape |
 | `--color <COLOR>` | — | enum | Specifies color settings for use in the output |
 | `--json` | — | boolean | Print events to stdout as JSONL |
+| `--include-subagent-events` | — | boolean | When `--json` is set, capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
+| `--no-validation` | — | boolean | When set, the validation gate always responds with "declined" so the validation sub-agent is never spawned. Useful for benchmarking runs where sub-agent overhead is not desired |
 | `-o, --output-last-message <FILE>` | `-o` | path | Specifies file where the last message from the agent should be written |
 
 ## review {#review}
@@ -119,7 +120,7 @@ Run a code review non-interactively
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|
 | `-c, --config <key=value>` | `-c` | string | Override a configuration value that would otherwise be loaded from `~/.dbt/wizard/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. |
-| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of Wizard |
+| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of wizard |
 | `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
 | `--uncommitted` | — | boolean | Review staged, unstaged, and untracked changes |
 | `--base <BRANCH>` | — | string | Review changes against the given base branch |
@@ -149,7 +150,7 @@ Remove stored authentication credentials
 
 ## mcp {#mcp}
 
-Manage external MCP servers for Wizard
+Manage external MCP servers for dbt Wizard
 
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|
@@ -159,7 +160,7 @@ Manage external MCP servers for Wizard
 
 ## plugin {#plugin}
 
-Manage Wizard plugins
+Manage dbt Wizard plugins
 
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|
@@ -179,12 +180,12 @@ Manage model providers
 
 ## mcp-server {#mcp-server}
 
-Start Wizard as an MCP server (stdio)
+Start dbt Wizard as an MCP server (stdio)
 
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|
 | `-c, --config <key=value>` | `-c` | string | Override a configuration value that would otherwise be loaded from `~/.dbt/wizard/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. |
-| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of Wizard |
+| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of wizard |
 | `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
 | `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
 
@@ -197,7 +198,7 @@ Start Wizard as an MCP server (stdio)
 | `-c, --config <key=value>` | `-c` | string | Override a configuration value that would otherwise be loaded from `~/.dbt/wizard/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. |
 | `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
 | `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
-| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of Wizard |
+| `--strict-config` | — | boolean | Error out when config.toml contains fields that are not recognized by this version of wizard |
 | `--listen <URL>` | — | string | Transport endpoint URL. Supported values: `stdio://` (default), `unix://`, `unix://PATH`, `ws://IP:PORT`, `off` |
 | `--analytics-default-enabled` | — | boolean | Controls whether analytics are enabled by default. |
 | `--ws-auth <MODE>` | — | enum | Websocket auth mode for non-loopback listeners |
@@ -219,23 +220,6 @@ Start Wizard as an MCP server (stdio)
 | `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
 | `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
 
-## app {#app}
-
-Launch the Wizard desktop app (opens the app installer if missing)
-
-**Arguments:**
-
-| Argument | Description |
-|----------|-------------|
-| `[PATH]` | Workspace path to open in Wizard Desktop |
-
-| Flag | Short | Type | Description |
-|------|-------|------|-------------|
-| `-c, --config <key=value>` | `-c` | string | Override a configuration value that would otherwise be loaded from `~/.dbt/wizard/config.toml`. Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed as TOML. If it fails to parse as TOML, the raw string is used as a literal. |
-| `--download-url <DOWNLOAD_URL_OVERRIDE>` | — | string | Override the app installer download URL (advanced) |
-| `--enable <FEATURE>` | — | string | Enable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=true` |
-| `--disable <FEATURE>` | — | string | Disable a feature (repeatable). Equivalent to `-c features.&lt;name&gt;=false` |
-
 ## completion {#completion}
 
 Generate shell completion scripts
@@ -254,7 +238,7 @@ Generate shell completion scripts
 
 ## update {#update}
 
-Update Wizard to the latest version
+Update dbt Wizard to the latest version
 
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|
@@ -264,7 +248,7 @@ Update Wizard to the latest version
 
 ## doctor {#doctor}
 
-Diagnose local Wizard installation, config, auth, and runtime health
+Diagnose local dbt Wizard installation, config, auth, and runtime health
 
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|
@@ -279,7 +263,7 @@ Diagnose local Wizard installation, config, auth, and runtime health
 
 ## sandbox {#sandbox}
 
-Run commands within a Wizard-provided sandbox
+Run commands within a dbt Wizard-provided sandbox
 
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|
@@ -299,7 +283,7 @@ Debugging tools
 
 ## apply {#apply}
 
-Apply the latest diff produced by Wizard agent as a `git apply` to your local working tree
+Apply the latest diff produced by dbt Wizard agent as a `git apply` to your local working tree
 
 **Arguments:**
 
@@ -388,7 +372,7 @@ Fork a previous interactive session (picker by default; use --last to fork the m
 
 ## cloud {#cloud}
 
-[EXPERIMENTAL] Browse tasks from Wizard Cloud and apply changes locally
+[EXPERIMENTAL] Browse tasks from dbt Wizard in dbt platform and apply changes locally
 
 | Flag | Short | Type | Description |
 |------|-------|------|-------------|

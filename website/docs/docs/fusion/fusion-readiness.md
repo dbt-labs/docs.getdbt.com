@@ -78,6 +78,7 @@ We determine <Constant name="fusion" /> eligibility using data from your job run
 - [ ] Resolve any job failures &mdash; all jobs must run successfully for eligibility checks to work.
 - [ ] Delete any jobs that are no longer in use to ensure accurate eligibility reporting. 
 - [ ] Make sure you've promoted the changes for deprecation resolution and package upgrades to your git branches that map to your deployment environments.
+- [ ] For eligible jobs, use **Debug on <Constant name="fusion" />** to debug in <Constant name="studio_ide" /> or run once on <Constant name="fusion" />. Refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
 
 ### Stay informed about Fusion progress
 

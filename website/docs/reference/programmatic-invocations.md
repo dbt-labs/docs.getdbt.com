@@ -2,11 +2,15 @@
 title: "Programmatic invocations"
 ---
 
-In v1.5, <Constant name="core" /> added support for programmatic invocations. The intent is to expose the existing <Constant name="core" /> CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
+Programmatic invocations let you call dbt commands from Python scripts and applications, instead of running them in a shell. This is useful when you want to embed dbt runs into a larger application or workflow, while still using the same command surface area as the <Constant name="core" /> CLI.
 
-Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven’t done so already.
+Common use cases include:
 
-The entry point is the `dbtRunner` class, which allows you to `invoke` the same commands available in the <Constant name="dbt" /> CLI.
+- Running dbt as part of a Python application or service
+- Integrating dbt runs into orchestration workflows
+- Building internal tools that need to run dbt commands and inspect results
+
+Refer to the [<Constant name="core" /> package on PyPI](https://pypi.org/project/dbt-core/) to install the official Python package for <Constant name="core" /> if you haven't done so already.
 
 ```python
 from dbt.cli.main import dbtRunner, dbtRunnerResult
@@ -25,35 +29,50 @@ for r in res.result:
     print(f"{r.node.name}: {r.status}")
 ```
 
-For implementation details, see the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/cli/main.py).
+For implementation details, refer to the source definitions of `dbtRunner` and `dbtRunnerResult` in the [<Constant name="core" /> repository](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/cli/main.py).
+
+## Supported arguments
+
+`dbtRunner.invoke` accepts the same arguments as the <Constant name="core" /> CLI. The first positional argument is the command (for example, `run`, `build`, `test`), followed by any flags and options you would normally pass on the command line.
+
+For example, `dbt.invoke(["run", "--select", "tag:my_tag"])` is equivalent to running `dbt run --select tag:my_tag`. There is no separate, dbtRunner‑specific list of arguments; the authoritative source for available options is the CLI help reference (`dbt --help`, `dbt run --help`, and so on) and the [dbt command reference](/reference/dbt-commands) documentation.
+
+```python
+from dbt.cli.main import dbtRunner
+dbt = dbtRunner()
+# equivalent ways to pass arguments
+dbt.invoke(["run", "--select", "tag:my_tag"])
+dbt.invoke(["run"], select="tag:my_tag")
+```
 
 ## Parallel execution not supported
 
-[`dbt-core`](https://pypi.org/project/dbt-core/) doesn't support [safe parallel execution](/reference/dbt-commands#parallel-execution) for multiple invocations in the same process. This means it's not safe to run multiple dbt commands concurrently. It's officially discouraged and requires a wrapping process to handle sub-processes. This is because:
+[`dbt-core`](https://pypi.org/project/dbt-core/) doesn't support [safe parallel execution](/reference/dbt-commands#parallel-execution) for multiple invocations in the same process. Running multiple dbt commands concurrently in one process is unsafe and officially discouraged, and requires a wrapping process to manage subprocesses. This is because:
 
 - Running concurrent commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
-- Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, which can be achieved using methods like spawning subprocesses or using tools like Celery.
+- Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, for example by spawning subprocesses or using Celery for orchestration.
 
-To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
+For [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), both of which do that additional work to manage concurrency (multiple processes) on your behalf.
 
 ## `dbtRunnerResult`
 
-Each command returns a `dbtRunnerResult` object, which has three attributes:
-- `success` (bool): Whether the command succeeded.
-- `result`: If the command completed (successfully or with handled errors), its result(s). Return type varies by command.
-- `exception`: If the dbt invocation encountered an unhandled error and did not complete, the exception it encountered.
+Each command returns a `dbtRunnerResult` object with three attributes:
 
-There is a 1:1 correspondence between [CLI exit codes](/reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
+- `success` (bool): Whether the command succeeded.
+- `result`: When the command completes (successfully or with handled errors), it returns the command's result(s). The return type varies by command.
+- `exception`: When the dbt invocation encounters an unhandled error and does not complete, the exception that was raised.
+
+There is a one-to-one correspondence between [CLI exit codes](/reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
 
 | Scenario                                                                                    | CLI Exit Code | `success` | `result`         | `exception` |
 |---------------------------------------------------------------------------------------------|--------------:|-----------|-------------------|-------------|
 | Invocation completed without error                                                          | 0             | `True`      | varies by command | `None`        |
-| Invocation completed with at least one handled error (e.g. test failure, model build error) | 1             | `False`     | varies by command | `None`        |
+| Invocation completed with at least one handled error (for example, test failure or model build error) | 1             | `False`     | varies by command | `None`        |
 | Unhandled error. Invocation did not complete, and returns no results.                       | 2             | `False`     | `None`              | Exception   |
 
-## Commitments & Caveats
+## Commitments and caveats
 
-From <Constant name="core" /> v1.5 onward, we making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases, in the short & medium term, while we work on a set of stable, long-term interfaces that will ultimately replace it.
+We're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short- and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
 
 In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
 
@@ -63,7 +82,7 @@ In particular, the objects returned by each command in `dbtRunnerResult.result` 
 The syntax and support for these patterns are liable to change in future versions of `dbt-core`.
 :::
 
-The goal of `dbtRunner` is to offer parity with CLI workflows, within a programmatic environment. There are a few advanced usage patterns that extend what's possible with the CLI.
+The goal of `dbtRunner` is to offer parity with CLI workflows within a programmatic environment. There are a few advanced usage patterns that extend what's possible with the CLI.
 
 ### Reusing objects
 
@@ -78,7 +97,7 @@ res: dbtRunnerResult = dbtRunner().invoke(["parse"])
 manifest: Manifest = res.result
 
 # introspect manifest
-# e.g. assert every public model has a description
+# for example, assert every public model has a description
 for node in manifest.nodes.values():
     if node.resource_type == "model" and node.access == "public":
         assert node.description != "", f"{node.name} is missing a description"
@@ -109,7 +128,7 @@ dbt.invoke(["list"])
 
 ### Overriding parameters
 
-Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.
+Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The command must be specified, in a list, as the first positional argument.
 ```python
 from dbt.cli.main import dbtRunner
 dbt = dbtRunner()
