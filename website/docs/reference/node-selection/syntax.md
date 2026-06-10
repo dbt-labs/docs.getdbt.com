@@ -5,24 +5,54 @@ description: "Node selection syntax enables you to execute dbt commands for spec
 
 dbt's node selection syntax makes it possible to run only specific resources in a given invocation of dbt. This selection syntax is used for the following subcommands:
 
+<VersionBlock lastVersion="1.11">
+
 | command                         | argument(s)                                                          |
 | :------------------------------ | -------------------------------------------------------------------- |
 | [run](/reference/commands/run)             | `--select`, `--exclude`, `--selector`, `--defer`                     |
 | [test](/reference/commands/test)           | `--select`, `--exclude`, `--selector`, `--defer`                     |
 | [seed](/reference/commands/seed)           | `--select`, `--exclude`, `--selector`                                |
-| [snapshot](/reference/commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
+| [snapshot](/reference/commands/snapshot)   | `--select`, `--exclude`, `--selector`                                |
 | [ls (list)](/reference/commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
 | [compile](/reference/commands/compile)     | `--select`, `--exclude`, `--selector`, `--inline`                    |
 | [freshness](/reference/commands/source)    | `--select`, `--exclude`, `--selector`                                |
 | [build](/reference/commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
-| [docs generate](/reference/commands/cmd-docs) | `--select`, `--exclude`, `--selector`                  |
+| [docs generate](/reference/commands/cmd-docs) | `--select`, `--exclude`, `--selector`                             |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+| command                         | argument(s)                                                          |
+| :------------------------------ | -------------------------------------------------------------------- |
+| [run](/reference/commands/run)             | `--select`, `--exclude`, `--defer`                                   |
+| [test](/reference/commands/test)           | `--select`, `--exclude`, `--defer`                                   |
+| [seed](/reference/commands/seed)           | `--select`, `--exclude`                                              |
+| [snapshot](/reference/commands/snapshot)   | `--select`, `--exclude`                                              |
+| [ls (list)](/reference/commands/list)      | `--select`, `--exclude`, `--resource-type`                           |
+| [compile](/reference/commands/compile)     | `--select`, `--exclude`, `--inline`                                  |
+| [freshness](/reference/commands/source)    | `--select`, `--exclude`                                              |
+| [build](/reference/commands/build)         | `--select`, `--exclude`, `--resource-type`, `--defer`                |
+| [docs generate](/reference/commands/cmd-docs) | `--select`, `--exclude`                                           |
+
+</VersionBlock>
 
 :::info Nodes and resources
 
 We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably. These encompass all the models, tests, sources, seeds, snapshots, exposures, and analyses in your project. They are the objects that make up dbt's DAG (directed acyclic graph).
 :::
 
+<VersionBlock lastVersion="1.11">
+
 The `--select` and `--selector` arguments are similar in that they both allow you to select resources. To understand the difference, see [Differences between `--select` and `--selector`](/reference/node-selection/yaml-selectors#difference-between---select-and---selector).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+You can reference a named selector using the `selector:` method with `--select` or `--exclude`. To learn more, refer to [`selector:` method](/reference/node-selection/methods#selector).
+
+</VersionBlock>
 
 ## Specifying resources
 
@@ -48,7 +78,7 @@ Select resources to build (run, test, seed, snapshot) or check freshness: `--sel
 
 ### Examples
 
-By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--select` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--select`, `--exclude`, and `--selector`) also apply to other dbt tasks, such as `test` and `build`.
+By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--select` flag with `dbt run` to select a subset of models to run. <VersionBlock lastVersion="1.11">Note that the following arguments (`--select`, `--exclude`, and `--selector`) also apply to other dbt tasks, such as `test` and `build`.</VersionBlock><VersionBlock firstVersion="1.12">Note that the following arguments (`--select` and `--exclude`) also apply to other dbt tasks, such as `test` and `build`.</VersionBlock>
 
 <Tabs>
 <TabItem value="select" label="Examples of select flag">
@@ -109,11 +139,19 @@ dbt run --select "selector:staging,tag:nightly"
 
 </Tabs>
 
-As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
-consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
-Note that when you're using `--selector`, dbt ignores `--select` and `--exclude`. Starting in <Constant name="core" /> v1.12, dbt raises `SelectExcludeIgnoredWithSelectorWarning` when `--selector` is combined with `--select` or `--exclude`.
+As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments, consider using a [yaml selector](/reference/node-selection/yaml-selectors).
 
-The `--select` and `--selector` arguments are similar in that they both allow you to select resources. To understand the difference between `--select` and `--selector` arguments, see [this section](/reference/node-selection/yaml-selectors#difference-between---select-and---selector) for more details.
+<VersionBlock lastVersion="1.11">
+You can use a predefined definition with the `--selector` flag. Note that when you're using `--selector`, dbt ignores `--select` and `--exclude`.
+
+The `--select` and `--selector` arguments are similar in that they both allow you to select resources. To understand the difference, see [Differences between `--select` and `--selector`](/reference/node-selection/yaml-selectors#difference-between---select-and---selector).
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+You can reference a predefined selector using the `selector:` method when using `--select` or `--exclude`. To learn more, refer to [`selector:` method](/reference/node-selection/methods#selector).
+
+</VersionBlock>
 
 ### Troubleshoot with the `ls` command
 
@@ -125,6 +163,3 @@ dbt ls --select "source_status:fresher+" # Shows sources updated since the last 
 dbt ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
 dbt ls --select "result:<status>+" state:modified+ --state ./<dbt-artifact-path> # Lists nodes that match certain [result statuses](/reference/node-selection/syntax#the-result-status) and are modified.
 ```
-
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="node-selection"/>

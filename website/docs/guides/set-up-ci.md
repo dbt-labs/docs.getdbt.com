@@ -34,7 +34,7 @@ As part of your initial <Constant name="dbt" /> setup, you should already have D
 
 ## Create a new CI environment
 
-See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-platform-environments#create-a-deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
 
 When setting a Schema in the **Deployment Credentials** area, remember that <Constant name="dbt" /> will automatically generate a custom schema name for each PR to ensure that they don't interfere with your deployed models. This means you can safely set the same Schema name as your Production job.
 
@@ -53,6 +53,8 @@ In the Execution Settings, your command will be preset to `dbt build --select st
 
 To be able to find modified nodes, dbt needs to have something to compare against. <Constant name="dbt" /> uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
 
+If you point CI at a non-production environment (staging, QA, UAT, or similar) that runs many jobs, comparison manifests can change unpredictably, or lag behind merges to your integration branch (for example, `develop`).
+
 :::info Use CI to test your metrics
 If you've [built semantic nodes](/docs/build/build-metrics-intro) in your dbt project, you can [validate them in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 :::
@@ -68,6 +70,10 @@ To test your new flow, create a new branch in the <Constant name="studio_ide" />
 - If you make a new commit while a CI run based on older code is in progress, it will be automatically canceled and replaced with the fresh code.
 - An unlimited number of CI jobs can run at once. If 10 developers all commit code to different PRs at the same time, each person will get their own schema containing their changes. Once each PR is merged, <Constant name="dbt" /> will drop that schema.
 - CI jobs will never block a production run.
+
+## Keep comparison manifests stable {#keep-comparison-manifests-stable}
+
+Deferring to Production is straightforward when one primary deploy job owns artifacts and merges are infrequent. With high merge volume, Production’s manifest can still move while other pull requests stay open, so CI may select extra `state:modified` nodes until those branches incorporate the latest merges (or you add a fast [merge triggered](/docs/deploy/merge-jobs) `dbt parse` in the deferred environment). Busy staging, QA, or UAT environments add another failure mode as many jobs with different settings overwrite `manifest.json`. Any deferred environment can also be stale for a short window right after a merge until the next successful run refreshes artifacts.
 
 ## Enforce best practices with dbt project evaluator
 
@@ -114,11 +120,11 @@ If you create a seed to exclude groups of models from a specific test, remember 
 
 ## Run linting checks with SQLFluff
 
-By [linting](/docs/cloud/studio-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
+By [linting](/docs/platform/studio-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
 
 Seamlessly enable [SQL linting for your CI job](/docs/deploy/continuous-integration#sql-linting) in <Constant name="dbt" /> to invoke [SQLFluff](https://docs.sqlfluff.com/en/stable/), a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors.
 
-SQL linting in CI lints all the changed SQL files in your project (compared to the last deferred production state). Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ accounts](https://www.getdbt.com/pricing) using [release tracks](/docs/dbt-versions/cloud-release-tracks). 
+SQL linting in CI lints all the changed SQL files in your project (compared to the last deferred production state). Available on <Constant name="dbt" /> [Starter, Enterprise, or Enterprise+ accounts](https://www.getdbt.com/pricing) using [release tracks](/docs/dbt-versions/dbt-release-tracks). 
 
 
 ### Manually set up SQL linting in CI
@@ -333,13 +339,13 @@ As noted above, this branch will outlive any individual feature, and will be the
 
 ### 2. Update your Development environment to use the `qa` branch
 
-See [Custom branch behavior](/docs/dbt-cloud-environments#custom-branch-behavior). Setting `qa` as your custom branch ensures that the IDE creates new branches and PRs with the correct target, instead of using `main`.
+See [Custom branch behavior](/docs/dbt-platform-environments#custom-branch-behavior). Setting `qa` as your custom branch ensures that the IDE creates new branches and PRs with the correct target, instead of using `main`.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
 
 ### 3. Create a new QA environment
 
-See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **QA**. Just like your existing Production and CI environments, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-platform-environments#create-a-deployment-environment). The environment should be called **QA**. Just like your existing Production and CI environments, it will be a Deployment-type environment.
 
 Set its branch to `qa` as well.
 

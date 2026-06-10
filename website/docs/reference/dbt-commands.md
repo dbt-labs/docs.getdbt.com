@@ -4,10 +4,10 @@ title: "dbt Command reference"
 
 You can run dbt using the following tools:
 
-- In your browser with the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio)
-- On the command line interface using the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
+- In your browser with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)
+- On the command line interface using the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
 
-A key distinction is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/cloud/about-cloud/dbt-cloud-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
+A key distinction is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/platform/about-platform/dbt-platform-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
 
 ## Parallel execution
 
@@ -48,12 +48,14 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
-| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> uses [`--write-catalog`](/reference/commands/cmd-docs) flag instead |
+| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [environment](/reference/commands/dbt-environment) | Enables you to interact with your <Constant name="dbt_platform" /> environment. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
 | help | Displays help information for any command | N/A | <Constant name="core" />, <Constant name="platform_cli" /> <br /> All [supported versions](/docs/dbt-versions) |
 | [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | <Constant name="fusion" /> <br /> <Constant name="core" /><br /> All [supported versions](/docs/dbt-versions) |
 | [invocation](/reference/commands/invocation) | Enables users to debug long-running sessions by interacting with active invocations.|  N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions) |
+| [lint](/reference/commands/lint) | Lints SQL files in a project for style, correctness, and convention violations | ✅ | Requires <Constant name="dbt_platform" /> project on <Constant name="fusion" /> |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
+| [login](/reference/commands/login) | Logs in to your <Constant name="dbt_platform" /> account | N/A | <Constant name="core" /> v2.0 and later <br /> <Constant name="platform_cli" /> |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | <Constant name="platform_cli" /> <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ✅ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions) |

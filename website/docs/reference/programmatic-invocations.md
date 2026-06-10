@@ -52,7 +52,7 @@ dbt.invoke(["run"], select="tag:my_tag")
 - Running concurrent commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
 - Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, for example by spawning subprocesses or using Celery for orchestration.
 
-For safe parallel execution, you can use the [<Constant name="platform_cli" />](/docs/cloud/cloud-cli-installation) or [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), both of which do that additional work to manage concurrency (multiple processes) on your behalf.
+For [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), both of which do that additional work to manage concurrency (multiple processes) on your behalf.
 
 ## `dbtRunnerResult`
 
@@ -72,7 +72,7 @@ There is a one-to-one correspondence between [CLI exit codes](/reference/exit-co
 
 ## Commitments and caveats
 
-We're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
+We're making an ongoing commitment to providing a Python entry point at functional parity with <Constant name="core" />'s CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases in the short- and medium-term while we work on a set of stable, long-term interfaces that will ultimately replace it.
 
 In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
 
@@ -128,7 +128,7 @@ dbt.invoke(["list"])
 
 ### Overriding parameters
 
-Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.
+Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The command must be specified, in a list, as the first positional argument.
 ```python
 from dbt.cli.main import dbtRunner
 dbt = dbtRunner()

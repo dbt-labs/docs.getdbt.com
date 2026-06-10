@@ -29,8 +29,8 @@ dbt Labs supports an expanded notion of `dependencies` across multiple dbt proje
   - Configure models in upstream project with [`access: public`](/reference/resource-configs/access) and have at least one successful job run after defining `access`.
   - Define a [Production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) in the upstream project and make sure at least _one deployment job_ has run successfully there. This job should generate a [`manifest.json` file](/reference/artifacts/manifest-json) &mdash; it includes the metadata needed for downstream projects.
   - If the upstream project has a Staging environment, run at least one successful deployment job there to ensure downstream cross-project references resolve correctly.
-- Each project `name` must be unique in your <Constant name="dbt" /> account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, avoid creating projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`; use [environment-level isolation](/docs/dbt-cloud-environments#types-of-environments) instead.
-  - <Constant name="dbt" /> supports [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management), available to all <Constant name="dbt" /> users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
+- Each project `name` must be unique in your <Constant name="dbt" /> account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, avoid creating projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`; use [environment-level isolation](/docs/dbt-platform-environments#types-of-environments) instead.
+  - <Constant name="dbt" /> supports [Connections](/docs/platform/connect-data-platform/about-connections#connection-management), available to all <Constant name="dbt" /> users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
 - The `dbt_project.yml` file is case-sensitive, which means the project name must exactly match the name in your `dependencies.yml`.  For example, `jaffle_marketing`, not `JAFFLE_MARKETING`.
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
@@ -169,3 +169,4 @@ These are the exceptions, rather than the rule. Installing another team's projec
 ## Related docs
 - Refer to the [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use <Constant name="mesh" />.
 - [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — manage credentials, env vars, deferral, and <Constant name="fusion"/> versions when developing locally against a Mesh project

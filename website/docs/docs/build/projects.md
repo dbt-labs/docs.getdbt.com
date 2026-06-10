@@ -86,7 +86,7 @@ Some [plans](https://www.getdbt.com/pricing) support only one dbt project, while
 
 ## New projects
 
-You can create new projects and [share them](/docs/cloud/git/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
+You can create new projects and [share them](/docs/platform/git/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
 After you set up a connection with your data platform, you can [initialize your new project in <Constant name="dbt" />](/guides) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 

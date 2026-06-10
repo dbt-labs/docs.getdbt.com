@@ -4,7 +4,7 @@ import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
 const { themes } = require('prism-react-renderer')
 
-const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
+const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Set SITE_URL by environment */
@@ -52,15 +52,17 @@ var siteSettings = {
   headTags: [
     // Load Optimizely synchronously (no async/defer) so experiments apply
     // before page content renders, preventing a flash of unexperimented content.
-    ...(OPTIMIZELY_ID ? [
-      {
-        tagName: 'script',
-        attributes: {
-          src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
-          type: 'text/javascript',
-        },
-      }
-    ] : []),
+    ...(OPTIMIZELY_ID
+      ? [
+          {
+            tagName: "script",
+            attributes: {
+              src: `https://cdn.optimizely.com/js/${OPTIMIZELY_ID}.js`,
+              type: "text/javascript",
+            },
+          },
+        ]
+      : []),
   ],
   themeConfig: {
     docs: {
@@ -84,17 +86,14 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "fast-track-workshop",
+      id: "fivetran-dbt-labs-merger-webinar",
       content:
-        "Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!",
+      "Fivetran + dbt Labs: The merger, what's shipping, and live Q&A on June 25 - Save your seat!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=____&utm_term=all_all__",
-    // Set community spotlight member on homepage
-    // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "original-dbt-athena-maintainers",
+      "https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -152,7 +151,7 @@ var siteSettings = {
           position: "right",
         },
         {
-          to: "/docs/dbt-cloud-apis/overview",
+          to: "/docs/dbt-apis/overview",
           label: "APIs",
           position: "right",
         },
@@ -196,15 +195,17 @@ var siteSettings = {
             },
             {
               label: "Community forum",
-              to: "/community/forum",
+              href: "https://discourse.getdbt.com/",
+            },
+            {
+              label: "Webinars",
+              href: "https://www.getdbt.com/resources/webinars",
+              target: "_blank",
             },
             {
               label: "Events",
-              to: "/community/events",
-            },
-            {
-              label: "Spotlight",
-              to: "/community/spotlight",
+              href: "https://www.getdbt.com/events",
+              target: "_blank",
             },
           ],
         },
@@ -215,7 +216,7 @@ var siteSettings = {
           items: [
             {
               label: "Log in to dbt",
-              to: "https://cloud.getdbt.com/",
+              to: "https://login.dbt.com/",
               target: "_blank",
             },
             {
@@ -280,7 +281,7 @@ var siteSettings = {
               <a href='/community/join'>Join the Community</a>
               <a href="/community/contribute">Become a Contributor</a>
               <a href="https://hub.getdbt.com/" target="_blank">Open Source dbt Packages</a>
-              <a href="/community/forum">Community Forum</a>
+              <a href="https://discourse.getdbt.com/" target="_blank" rel="noreferrer noopener">Community Forum</a>
             </div>
             <div class="footer-grid-item">
               <h5 class="heading-5">Support</h5>
@@ -306,7 +307,7 @@ var siteSettings = {
 
           <div class='footer-sub-items'>
             <div class="footer-copyright">
-              <span>&copy; ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.</span>
+              <span>&copy; ${new Date().getFullYear()} dbt Labs, LLC. All Rights Reserved.</span>
             </div>
             <div class="footer-sub-items-links">
               <a href='https://www.getdbt.com/terms-of-use/'>Terms of Service</a>
@@ -344,7 +345,7 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
-          exclude: ["hover-terms.md"],
+          exclude: ["hover-terms.md", "faqs/Runs/sao-difference-core.md"],
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
@@ -369,7 +370,6 @@ var siteSettings = {
       path.resolve("plugins/buildGlobalData"),
       { versionedPages, versionedCategories },
     ],
-    path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),
@@ -385,7 +385,9 @@ var siteSettings = {
       "@signalwire/docusaurus-plugin-llms-txt",
       {
         generate: {
-          enableMarkdownFiles: true,
+          // Individual .md files are generated by buildRawMarkdownData (raw source,
+          // VersionBlock tags preserved). Disable here to avoid conflict.
+          enableMarkdownFiles: false,
           enableLlmsFullTxt: true,
           relativePaths: false,
         },
@@ -422,32 +424,34 @@ var siteSettings = {
                   id: "dbt-platform",
                   name: "dbt platform",
                   routes: [
-                    { route: "/docs/about-cloud-setup" },
-                    { route: "/docs/cloud/account-settings" },
-                    { route: "/docs/cloud/account-integrations" },
-                    { route: "/docs/dbt-cloud-environments" },
-                    { route: "/docs/cloud/migration" },
+                    { route: "/docs/platform/about-platform-setup" },
+                    { route: "/docs/platform/account-settings" },
+                    { route: "/docs/platform/account-integrations" },
+                    { route: "/docs/dbt-platform-environments" },
+                    { route: "/docs/platform/migration" },
                   ],
                   subsections: [
                     {
                       id: "connect-data-platform",
                       name: "Connect data platform",
-                      routes: [{ route: "/docs/cloud/connect-data-platform/**" }],
+                      routes: [
+                        { route: "/docs/platform/connect-data-platform/**" },
+                      ],
                     },
                     {
                       id: "manage-access",
                       name: "Manage access",
-                      routes: [{ route: "/docs/cloud/manage-access/**" }],
+                      routes: [{ route: "/docs/platform/manage-access/**" }],
                     },
                     {
                       id: "git",
                       name: "Git",
-                      routes: [{ route: "/docs/cloud/git/**" }],
+                      routes: [{ route: "/docs/platform/git/**" }],
                     },
                     {
                       id: "secure",
                       name: "Secure",
-                      routes: [{ route: "/docs/cloud/secure/**" }],
+                      routes: [{ route: "/docs/platform/secure/**" }],
                     },
                   ],
                 },
@@ -462,9 +466,7 @@ var siteSettings = {
                     {
                       id: "about-fusion-install",
                       name: "Install dbt Fusion engine",
-                      routes: [
-                        { route: "/docs/fusion/about-fusion-install" },
-                      ],
+                      routes: [{ route: "/docs/fusion/about-fusion-install" }],
                     },
                     {
                       id: "core-connect-data-platform",
@@ -485,12 +487,12 @@ var siteSettings = {
             {
               id: "platform",
               name: "Platform",
-              routes: [{ route: "/docs/cloud/**" }],
+              routes: [{ route: "/docs/platform/**" }],
             },
             {
               id: "api-reference",
               name: "API Reference",
-              routes: [{ route: "/docs/dbt-cloud-apis/**" }],
+              routes: [{ route: "/docs/dbt-apis/**" }],
             },
           ],
           siteTitle: "dbt Developer Hub",
@@ -519,7 +521,7 @@ var siteSettings = {
     "/js/onetrust.js",
     "/js/hide-forethought.js",
     {
-      src: "https://www.google.com/recaptcha/api.js?render=6LeIksMrAAAAABYsWNCpUv15lXXzEZj91zdDCymo",
+      src: "https://www.google.com/recaptcha/api.js?render=6LdcbMEsAAAAAOMzfSqbwkS5beDLJBxqIedWFz6M",
       async: true,
       defer: true,
     },
@@ -557,23 +559,18 @@ var siteSettings = {
   },
 };
 
-// If versions json file found, add versions dropdown to nav
-if (versions) {
+// If products defined, add version dropdown to nav using sub-product names as items
+if (products) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
     position: "left",
     className: "nav-versioning",
-    items: [
-      ...versions.reduce((acc, version) => {
-        if (version?.version) {
-          acc.push({
-            label: `${version.version}`,
-            href: "#",
-          });
-        }
-        return acc;
-      }, []),
-    ],
+    items: products.flatMap((product) =>
+      product.subProducts.map((sp) => ({
+        label: sp.name,
+        href: "#",
+      }))
+    ),
   });
 }
 

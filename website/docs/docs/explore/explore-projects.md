@@ -8,7 +8,7 @@ pagination_prev: null
 ---
  
 
-# Discover data with Catalog <Lifecycle status="starter,managed,managed_plus" />
+# Discover data with Catalog <Lifecycle status="self_service,managed,managed_plus" />
 
 <IntroText>
 
@@ -16,7 +16,7 @@ With <Constant name="catalog" />, you can view your project's [resources](/docs/
 
 </IntroText>
 
-Use <Constant name="catalog" /> to navigate and manage your projects within <Constant name="dbt" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="catalog" /> integrates with the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio), [dbt <Constant name="insights" />](/docs/explore/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="canvas" />](/docs/cloud/canvas) to help you develop or view your dbt resources.
+Use <Constant name="catalog" /> to navigate and manage your projects within <Constant name="dbt" /> to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. <Constant name="catalog" /> integrates with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio), [dbt <Constant name="insights" />](/docs/explore/dbt-insights), [<Constant name="orchestrator" />](/docs/deploy/deployments), and [<Constant name="canvas" />](/docs/platform/canvas) to help you develop or view your dbt resources.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ If your organization works in both dbt Core and Cloud, you can unify these workf
 
 Connect directly to your data warehouse with [external metadata ingestion](/docs/explore/external-metadata-ingestion), giving you visibility into tables, views, and other resources that aren't defined in dbt with <Constant name="catalog" />.
 
-We create dbt metadata and pull external metadata. <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display details about the state of your project. The available metadata depends on which [deployment environment](/docs/deploy/deploy-environments) you’ve designated as production or staging in your dbt project.
+We create dbt metadata and pull external metadata. <Constant name="catalog" /> uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display details about the state of your project. The available metadata depends on which [deployment environment](/docs/deploy/deploy-environments) you’ve designated as production or staging in your dbt project.
 
 ## Catalog overview 
 
@@ -50,13 +50,14 @@ We create dbt metadata and pull external metadata. <Constant name="catalog" /> u
 Navigate the <Constant name="catalog" /> overview page to access your project's resources and metadata. The page includes the following sections:
 
 - **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
-- **Sidebar** &mdash; Use the left sidebar to browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar. You can also browse model [performance](/docs/explore/model-performance) and [project recommendations](/docs/explore/project-recommendations) depending on your plan. Refer to [Availability by plan[(#availability-by-plan) for more info.
+- **Sidebar** &mdash; Use the left sidebar to browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar. You can also browse model [performance](/docs/explore/model-performance) and [project recommendations](/docs/explore/project-recommendations) depending on your plan. Refer to [Availability by plan](#availability-by-plan) for more info.
     - Find your project recommendations within your project's landing page.*
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
+- **ERD view** &mdash; Explore structural relationships between models to understand potential join paths and connecting keys for analysis. <Lifecycle status="Alpha" />
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
 - **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/mesh/govern/model-access#access-modifiers) in your project. You can also navigate to all public models in your account through this view.
 - **Model query history** &mdash; Use [model query history](/docs/explore/model-query-history) to track consumption queries on your models for deeper insights.
-- **Visualize downstream exposures** &mdash; [Set up](/docs/cloud-integrations/downstream-exposures-tableau) and [visualize downstream exposures](/docs/explore/view-downstream-exposures) to automatically expose relevant data models from Tableau to enhance visibility.
+- **Visualize downstream exposures** &mdash; [Set up](/docs/platform-integrations/downstream-exposures-tableau) and [visualize downstream exposures](/docs/explore/view-downstream-exposures) to automatically expose relevant data models from Tableau to enhance visibility.
 - **Data health signals** &mdash; View the [data-health-signals](/docs/explore/data-health-signals) for each resource to understand its health and performance.
 
 ### Catalog permissions
@@ -76,6 +77,7 @@ When using global navigation and searching across your projects, the following p
 | Core lineage & resource browsing | ✅ | ✅ | ✅ |
 | [Global navigation](/docs/explore/global-navigation) | ✅ | ✅ | ✅ |
 | [Data health signals](/docs/explore/data-health-signals) | ✅ | ✅ | ✅ |
+| [ERD view](#explore-your-projects-erd-view) <Lifecycle status="Alpha" /> | ✅ | ✅ | ✅ |
 | [Model performance](/docs/explore/model-performance) | ❌ | ✅ | ✅ |
 | [Project recommendations](/docs/explore/project-recommendations) | ❌ | ✅ | ✅ |
 | [Column-level lineage](/docs/explore/column-level-lineage) | ❌ | ✅ | ✅ |
@@ -97,7 +99,7 @@ If you don't see the project lineage graph immediately, click **Render Lineage**
 
 The nodes in the lineage graph represent the project's resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
-By default, <Constant name="catalog" /> shows the project's [applied state](/docs/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
+By default, <Constant name="catalog" /> shows the project's [applied state](/docs/dbt-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
 
 To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, <Constant name="catalog" /> excludes these resources from the full lineage graph unless a search query returns them as results.
 
@@ -113,7 +115,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
     - View the node's [resource details](#view-resource-details) page
 - Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph's right-hand side that displays a high-level summary of the resource's details. The side panel includes a **General** tab for information like description, materialized type, and other details. In the side panel's upper right corner:
     - Click the View Resource icon to [view the resource details](#view-resource-details).
-    - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+    - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
     - Click the Copy Link to Page icon to copy the page's link to your clipboard.
 - Use [selectors](/reference/node-selection/methods) (in the search bar) to select specific resources or a subset of the DAG. This can help narrow the focus on the resources that interest you. All selectors are available for use, except those requiring a state comparison (result, source status, and state). You can also use the `--exclude` and the `--select` flag (which is optional). Examples:
     - `resource_type:model [RESOURCE_NAME]` &mdash; Returns all models matching the name search
@@ -131,9 +133,98 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 
 ### Example of full lineage graph
 
-Example of exploring a model in the project's lineage graph:
+To explore a model in your project's lineage graph in <Constant name="catalog" />:
+
+1. Select your project in the left sidebar.
+2. Click the **View lineage** button.
+3. Click a model to view the description.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of full lineage graph" />
+
+## Explore your project's ERD view <Lifecycle status="Alpha" />
+
+[Entity relationship diagrams (ERD)](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) in <Constant name="catalog" /> help you understand how models relate structurally. This includes which models can be joined and which keys connect them. ERD complements lineage by showing relationship paths for analysis, not only transformation dependencies.
+
+:::info
+ERD is currently in alpha and is enabled for selected customer accounts. To request access for your account, contact your account manager.
+:::
+
+To access ERD in <Constant name="catalog" />:
+
+1. Navigate to **<Constant name="catalog"/>** in the top-level navigation.
+2. Select a model.
+3. Open the **Relationships** tab (marked **alpha**) on the model's resource details page to access ERD.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/erd-in-catalog.png" width="100%" title="Open the Relationships tab in Catalog to access ERD." />
+
+### Why ERD is useful
+
+When you explore an unfamiliar part of your business data (for example, `orders`, `customers`, or `subscriptions`), you often need to answer questions like which dimensions you can access when you join models.
+
+Without ERD, you may need to inspect schema files manually, run local tooling, or ask teammates. ERD brings this context into <Constant name="catalog" /> so you can investigate faster in <Constant name="dbt_platform" />.
+
+### ERD versus lineage
+
+ERD and lineage answer different questions:
+
+- **Lineage (DAG)** shows how data is built, that is, the transformation dependencies between resources.
+- **ERD** shows how data is related for analysis, that is, which models can be joined and which keys connect them.
+
+Use lineage to understand build flow. Use ERD to understand join paths.
+
+### How ERD determines relationships
+
+In <Constant name="catalog" />, ERD builds model connections using metadata from your dbt project. This includes relationship tests, model contracts, and <Constant name="semantic_layer" /> entities.
+
+If ERD cannot find enough explicit relationship metadata, it can also suggest likely model connections based on available dbt context.
+
+Because ERD relies on dbt metadata, relationships defined only in your warehouse might not appear unless that relationship metadata is also represented in data that <Constant name="catalog" /> uses.
+
+ERD supports multiple overlays so you can compare explicit and suggested connections:
+
+- **Relationship tests**: Relationships defined in `schema.yml` tests.
+- **<Constant name="semantic_layer" /> entities**: Relationships inferred from MetricFlow entity definitions, such as primary and foreign entity matches.
+- **Foreign key (FK) constraints**: Relationships derived from foreign key constraints in model contracts.
+- **Heuristic inferred**: Candidate relationships inferred from `_id` naming patterns and scored by confidence.
+
+### Understanding summary and overlay state
+
+Each overlay uses a distinct visual style and color in the ERD canvas so you can quickly identify relationship sources.
+
+The relationships summary panel shows relationship totals, model count, and a per-type breakdown for the current graph scope.
+
+Overlay controls reflect availability:
+
+- If a relationship type exists in the current scope, you can toggle it on or off.
+- If no connections of that type exist, the toggle is disabled and marked as unavailable in the current view.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/erd-overlay-toggle.png" width="100%" title="Toggle ERD relationship types based on availability in the current scope." />
+
+### Confidence and review for inferred relationships
+
+Relationship tests and FK constraints are stronger signals because they are defined directly in your project.
+
+When explicit relationship metadata is limited, ERD suggests additional relationships to support discovery. For heuristic suggestions, you can:
+
+- Inspect confidence and supporting evidence.
+- Review a generated YAML snippet.
+- Approve or dismiss individual suggestions.
+- Approve all high-confidence suggestions in bulk.
+
+### What you can do in ERD
+
+In an ERD, you can:
+
+- Navigate with zoom, pan, and minimap.
+- Filter by schema or domain scope.
+- Search and highlight matching models.
+- Click any edge type to inspect relationship details.
+- Open a model details panel for metadata, columns, and relationships.
+- Set a model as focus to recenter the graph on that model and its one-hop neighbors.
+
+### Consideration
+
+Use ERD for testing and exploration only. Because the feature is still maturing, behavior and interfaces may change, including potentially breaking changes.
 
 ## Lenses
 
@@ -161,13 +252,24 @@ A resource in your project is characterized by resource type, materialization ty
 
 ### Example of lenses
 
-Example of applying the **Materialization type** _lens_ with the lineage graph zoomed out. In this view, each model name has a color according to the materialization type legend at the bottom, which specifies the materialization type. This color-coding helps to quickly identify the materialization types of different models.
+Example of applying the **Materialization type** _lens_ on a zoomed-out lineage graph. In the bottom-left corner, open **Lenses** and select **Materialization type**. Each node displays a colored badge for its related materialization type:
+- Table
+- View
+- Incremental
+- Ephemeral
+- Materialized View.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.jpg" width="100%" title="Example of the Materialization type lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.png" width="100%" title="Example of the Materialization type lens" />
 
-Example of applying the **Tests Status** _lens_, where each model name displays the tests status according to the legend at the bottom, which specifies the test status.
+Example of applying the **Test status** _lens_ on a lineage graph filtered to models. In the bottom-left corner, open **Lenses** and select **Test status**. Each node displays a colored badge for its latest test status:
+- Pass
+- Error
+- Fail
+- Warn
+- Skipped
+- Reused.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.jpg" width="100%" title="Example of the Test Status lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.png" width="100%" title="Example of the Test Status lens" />
 
 ## Keyword search {#search-resources}
 
@@ -216,13 +318,13 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 - **Resources** tab &mdash; All resources in the project organized by type. Select any resource type in the list and all those resources in the project will display as a table in the main section of the page. For a description on the different resource types (like models, metrics, and so on), refer to [About dbt projects](/docs/build/projects).
   - [Data health signals](/docs/explore/data-health-signals) are visible to the right of the resource name under the **Health** column.
 - **File Tree** tab &mdash; All resources in the project organized by the file in which they are defined. This mirrors the file tree in your dbt project repository.
-- **Database** tab &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-cloud-apis/project-state) of your project.
+- **Database** tab &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-apis/project-state) of your project.
 
 ## Integrated tool access
 
-Users with a [developer license](/docs/cloud/manage-access/about-user-access#license-based-access-control) or an analyst seat\* can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files, in <Constant name="insights" /> to query it, or in <Constant name="canvas" /> for visual editing.
+Users with a [developer license](/docs/platform/manage-access/about-user-access#license-based-access-control) or an analyst seat\* can open a resource directly from the <Constant name="catalog" /> in the <Constant name="studio_ide" /> to view its model files, in <Constant name="insights" /> to query it, or in <Constant name="canvas" /> for visual editing.
 
-\* The [Analyst license type](/docs/cloud/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
+\* The [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## View model versions
 
@@ -234,7 +336,7 @@ You can view the definition and latest run results of any resource in your proje
 The details (metadata) available to you depends on the resource's type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment.
 
 In the upper right corner of the resource details page, you can:
-- Click the [Open in <Constant name="studio_ide" />](#open-in-ide) icon to examine the resource using the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+- Click the [Open in <Constant name="studio_ide" />](#open-in-ide) icon to examine the resource using the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 - Click the Share icon to copy the page's link to your clipboard.
 
 <Expandable alt_header="What details are available for a model?">
@@ -301,11 +403,19 @@ Example of the Tests view:
 
 ### Example of model details
 
+To view a model's details page in <Constant name="catalog" />:
+
+1. Select your project in the sidebar.
+2. Click **Models**.
+3. Under **Models**, select a model (for example, `customers`).
+
+On the **General** tab, you can review the description, latest status, and lineage graph. Select **Full Lineage** to open the full graph view.
+
 <DocCarousel slidesPerView={1}>
 
-Example of the details view for the model `customers`:<br /> <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of resource details" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
-<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="Example of downstream exposure details for Tableau."/>
+<Lightbox src="/img/docs/platform-integrations/auto-exposures/explorer-lineage2.png" width="95%" title="Example of downstream exposure details for Tableau."/>
 
 </DocCarousel>
 
@@ -317,6 +427,6 @@ Example of the details view for the model `customers`:<br /> <Lightbox src="/img
 You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per <Constant name="dbt" /> project as "production" or "staging," and ensure the proper metadata has been generated then you'll be able to view it in <Constant name="catalog" />. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
 ## Related content
-- [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions)
+- [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions)
 - [About model governance](/docs/mesh/govern/about-model-governance)
 - Blog on [What is data mesh?](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh)

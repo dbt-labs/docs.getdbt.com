@@ -27,6 +27,14 @@ The Redshift adapter for Fusion supports the following [authentication methods](
 - Password
 - IAM profile
 
+## Warehouse permissions
+
+import FusionRedshiftWarehousePerms from '/snippets/_fusion-warehouse-permissions-redshift.md';
+
+<FusionRedshiftWarehousePerms />
+
+For example SQL grants in Redshift, refer to [Redshift permissions](/reference/database-permissions/redshift-permissions).
+
 ## Configure Fusion
 
 Executing `dbt init` in your CLI will prompt for the following fields:
@@ -119,6 +127,7 @@ Find Redshift-specific configuration information in the [Redshift adapter refere
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/redshift-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
+import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
@@ -136,7 +145,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `role`  | None | Optional, user identifier of the current session |
 | `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
-| `ra3_node`  | true | Optional, default `False`. Enables cross-database sources |
+| `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Kept for backward compatibility; use `datasharing` for new projects instead. |
+| `datasharing` <Lifecycle status="beta" /> | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift` v1.11.0rc1 and later. |
 | `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
 | `retry_all`  | true | Allows dbt to retry all statements in a query|
@@ -144,6 +154,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | `tcp_keepalive_idle`  | 200 | Number of seconds of inactivity before the first keep-alive probe is sent |
 | `tcp_keepalive_interval`  | 200 | Number of seconds of inactivity before the next probe is sent |
 | `tcp_keepalive_count`  | 5 | Number of times probes will be sent |
+| `drop_without_cascade`  | false | Optional, default `False`. Omits `CASCADE` from `DROP TABLE/VIEW/MATERIALIZED VIEW` statements. Available in `dbt-redshift` v1.11.0rc3 and later. |
 
 For your tcp_keepalive inputs, we recommend taking a look at the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/troubleshooting-connections.html) for more information on the right configuration for you. 
 
@@ -197,8 +208,9 @@ company-name:
       # Optional Redshift configs:
       sslmode: prefer
       role: None
-      ra3_node: true 
-      autocommit: true 
+      ra3_node: true
+      datasharing: true
+      autocommit: true
       threads: 4
       connect_timeout: None
 
@@ -252,10 +264,11 @@ If you receive the "You must specify a region" error when using IAM Authenticati
       connect_timeout: None 
       [retries](#retries): 1 
       role: None
-      sslmode: prefer 
-      ra3_node: true  
-      autocommit: true  
-      autocreate: true  
+      sslmode: prefer
+      ra3_node: true
+      datasharing: true
+      autocommit: true
+      autocreate: true
       db_groups: ['ANALYSTS']
 
 ```
@@ -327,11 +340,23 @@ profile-to-my-RS-target:
 
 To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
 
+### `datasharing` <Lifecycle status="beta" />
+
+<RedshiftDatasharing />
+
 ### Deprecated `profile` parameters in 1.5
 
 - `iam_duration_seconds`
 
 - `keepalives_idle`
+
+### `drop_without_cascade`
+
+Set `drop_without_cascade: true` to omit `CASCADE` from `DROP TABLE`, `DROP VIEW`, and `DROP MATERIALIZED VIEW` statements. Use this when your project has no downstream dependents (for example, it uses only unbound views) and you want to avoid the overhead of resolving the `CASCADE` dependency graph on every drop for large clusters.
+
+:::info
+This option is intended for projects with no downstream dependents. If a dependent object exists and `CASCADE` is omitted, Redshift raises an error.
+:::
 
 ### `sort` and `dist` keys
 
