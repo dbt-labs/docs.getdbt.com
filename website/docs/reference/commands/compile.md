@@ -107,14 +107,21 @@ You can use `dbt compile` to compile tests, as long as your selector matches a t
 
 You can also target groups of tests with selector methods:
 
+**Compile all test nodes:**
+
 ```bash
-# Compile all test nodes
 dbt compile --select "resource_type:test"
+```
 
-# Compile only generic tests
+**Compile only generic tests:**
+
+```bash
 dbt compile --select "test_type:generic"
+```
 
-# Compile only singular tests
+**Compile only singular tests:**
+
+```bash
 dbt compile --select "test_type:singular"
 ```
 
