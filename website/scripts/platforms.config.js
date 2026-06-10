@@ -98,11 +98,24 @@ function scrapeSnowflakeFlatTable(html) {
   return functions;
 }
 
+// Derives a short display qualifier from a BigQuery docs URL path segment.
+// Used to disambiguate functions that appear under multiple reference pages.
+// e.g. aggregate-dp-functions → "Differential Privacy", date_functions → "Date"
+function bigQueryUrlContext(url) {
+  const match = url.match(/\/([a-z][a-z0-9_-]+[-_]functions)#/);
+  if (!match) return null;
+  const slug = match[1];
+  if (slug === 'aggregate-dp-functions') return 'Differential Privacy';
+  const label = slug.replace(/[-_]functions$/, '').replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return label.replace(/\bJson\b/, 'JSON').replace(/\bSql\b/, 'SQL');
+}
+
 function scrapeBigQueryFlatTable(html) {
   const root = parseHtml(html);
-  const functions = [];
+  const raw = [];
   const table = root.querySelector('main table') || root.querySelector('table');
-  if (!table) return functions;
+  if (!table) return raw;
 
   const baseUrl = 'https://docs.cloud.google.com';
   for (const row of table.querySelectorAll('tr')) {
@@ -117,9 +130,31 @@ function scrapeBigQueryFlatTable(html) {
     const href = anchor.getAttribute('href') || '';
     const docsUrl = href.startsWith('http') ? href : `${baseUrl}${href}`;
 
-    functions.push({ name, category: 'Built-in', docs_url: docsUrl, preview_status: 'GA' });
+    raw.push({ name, docs_url: docsUrl });
   }
-  return [...new Map(functions.map((f) => [f.name, f])).values()];
+
+  // Count occurrences so we know which names need disambiguation
+  const counts = {};
+  for (const f of raw) counts[f.name] = (counts[f.name] || 0) + 1;
+
+  // For duplicates: keep the aggregate_functions entry as the base name,
+  // qualify everything else with its URL context
+  const canonicalUrl = /\/aggregate_functions#/;
+  const seen = new Set();
+  const functions = [];
+
+  for (const f of raw) {
+    let displayName = f.name;
+    if (counts[f.name] > 1 && !canonicalUrl.test(f.docs_url)) {
+      const ctx = bigQueryUrlContext(f.docs_url);
+      if (ctx) displayName = `${f.name} (${ctx})`;
+    }
+    if (seen.has(displayName)) continue;
+    seen.add(displayName);
+    functions.push({ name: displayName, category: 'Built-in', docs_url: f.docs_url, preview_status: 'GA' });
+  }
+
+  return functions;
 }
 
 function scrapeTrinoListPage(html) {
