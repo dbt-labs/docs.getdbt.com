@@ -35,16 +35,18 @@ You'll need:
 
 ## Creating a local DuckDB project
 
-Use the setup script to create a complete Magic Shop dbt project locally. The script creates a project folder, installs the <Constant name="fusion_engine" /> in a virtual environment, writes sample seed and model files, loads the seed data into DuckDB, and runs `dbt build`.
+Use the setup script to create a complete Magic Shop dbt project locally. The script creates a project folder, installs the <Constant name="fusion_engine" /> in a virtual environment, writes sample seed and model files, loads the seed data into DuckDB, runs `dbt build`, and installs <Constant name="wizard" /> CLI if it isn't already installed.
 
 ```shell
-curl -fsSL https://docs.getdbt.com/files/wizard/setup-magic-shop-duckdb.sh | bash
+DOCS_BASE_URL="https://docs.getdbt.com"
+curl -fsSL "$DOCS_BASE_URL/files/wizard/setup-magic-shop-duckdb.sh" | bash
 ```
 
 The setup creates a new `magic_shop_wizard` directory. To use a different directory name, set `PROJECT_DIR`:
 
 ```shell
-curl -fsSL https://docs.getdbt.com/files/wizard/setup-magic-shop-duckdb.sh | PROJECT_DIR=my_wizard_project bash
+DOCS_BASE_URL="https://docs.getdbt.com"
+curl -fsSL "$DOCS_BASE_URL/files/wizard/setup-magic-shop-duckdb.sh" | PROJECT_DIR=my_wizard_project bash
 ```
 
 After the script finishes, change into the project directory and activate the virtual environment:
@@ -71,6 +73,8 @@ You should see a successful run with four seeds and four view models. The projec
 If `dbt build` fails, fix the dbt project before continuing. <Constant name="wizard" /> works best when it can compile and inspect your project.
 
 ## Installing dbt Wizard CLI
+
+The setup script installs <Constant name="wizard" /> CLI if it isn't already installed. If you skipped the setup script or want to reinstall <Constant name="wizard" />, use the installer:
 
 <WizardCliInstall />
 

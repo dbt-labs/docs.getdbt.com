@@ -121,6 +121,10 @@ EOF
 dbt seed
 dbt build
 
+if ! command -v wizard >/dev/null 2>&1; then
+  curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
+fi
+
 cat <<EOF
 
 Magic Shop is ready.
@@ -128,6 +132,7 @@ Magic Shop is ready.
 Next steps:
   cd $PROJECT_DIR
   source .venv/bin/activate
+  export OPENAI_API_KEY="sk-..."
   wizard
 
 EOF
