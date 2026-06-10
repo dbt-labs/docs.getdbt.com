@@ -111,7 +111,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 
 </SimpleTable>
 
-The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.Read.All`. 
+The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.AccessAsUser.All`. 
 
 :::info SSO before December 2025
 If you set up SSO before Dec 2025, you may need to request `Directory.Read.All` instead of `GroupMember.Read.All`. Alternatively, delete and re-create your SSO configuration to use the new targeted scopes above.
