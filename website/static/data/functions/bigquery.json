@@ -3,7 +3,7 @@
     "platform": "bigquery",
     "platform_name": "BigQuery",
     "fetched_at": "2026-05-26T10:19:54.207Z",
-    "count": 408
+    "count": 398
   },
   "functions": [
     {
@@ -217,13 +217,6 @@
       "fusion_typecheck": true
     },
     {
-      "name": "AVG",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_avg",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
       "name": "BAG_OF_WORDS",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/text-analysis-functions#bag_of_words",
@@ -409,13 +402,6 @@
       "name": "COUNT",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#count",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
-      "name": "COUNT",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_count",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -710,34 +696,6 @@
       "name": "EXTRACT",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#extract",
-      "preview_status": "GA",
-      "fusion_typecheck": false
-    },
-    {
-      "name": "EXTRACT",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#extract",
-      "preview_status": "GA",
-      "fusion_typecheck": false
-    },
-    {
-      "name": "EXTRACT",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/interval_functions#extract",
-      "preview_status": "GA",
-      "fusion_typecheck": false
-    },
-    {
-      "name": "EXTRACT",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#extract",
-      "preview_status": "GA",
-      "fusion_typecheck": false
-    },
-    {
-      "name": "EXTRACT",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#extract",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
@@ -1267,13 +1225,6 @@
       "fusion_typecheck": true
     },
     {
-      "name": "LAST_DAY",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#last_day",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
       "name": "LAST_VALUE",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#last_value",
@@ -1662,13 +1613,6 @@
       "name": "PERCENTILE_CONT",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#percentile_cont",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
-      "name": "PERCENTILE_CONT",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_percentile_cont",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
@@ -2541,13 +2485,6 @@
       "fusion_typecheck": true
     },
     {
-      "name": "STRING",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#string",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
       "name": "STRING_AGG",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#string_agg",
@@ -2579,13 +2516,6 @@
       "name": "SUM",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#sum",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
-      "name": "SUM",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_sum",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
