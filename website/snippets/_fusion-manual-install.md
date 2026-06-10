@@ -100,10 +100,10 @@ You can install <Constant name="fusion" /> using `pip`. We recommend installing 
 Run the following commands to install the preview version and update to the latest.
 
 ```shell
-pip install --pre dbt
+python -m pip install --pre dbt
 ```
 
-The `pip install --pre dbt` command installs the latest <Constant name="fusion" /> release.
+The `python -m pip install --pre dbt` command installs the latest <Constant name="fusion" /> release.
 
 
 ### Deactivate the virtual environment
