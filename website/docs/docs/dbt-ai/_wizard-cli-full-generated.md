@@ -103,7 +103,7 @@ wizard exec [OPTIONS] <COMMAND> [ARGS]
 | `--output-schema <FILE>` | — | path | Path to a JSON Schema file describing the model's final response shape |
 | `--color <COLOR>` | — | enum | Specifies color settings for use in the output |
 | `--json` | — | boolean | Print events to stdout as JSONL |
-| `--include-subagent-events` | — | boolean | When --json is set, also capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
+| `--include-subagent-events` | — | boolean | When `--json` is set, capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
 | `--no-validation` | — | boolean | When set, the validation gate always responds with "declined" so the validation sub-agent is never spawned. Useful for benchmarking runs where sub-agent overhead is not desired |
 | `-o, --output-last-message <FILE>` | `-o` | path | Specifies file where the last message from the agent should be written |
 

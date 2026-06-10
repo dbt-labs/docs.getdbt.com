@@ -82,7 +82,7 @@ dbt wizard exec [OPTIONS] <COMMAND> [ARGS]
 | `--output-schema <FILE>` | — | Path to a JSON Schema file describing the model's final response shape |
 | `--color <COLOR>` | — | Specifies color settings for use in the output |
 | `--json` | — | Print events to stdout as JSONL |
-| `--include-subagent-events` | — | When --json is set, also capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
+| `--include-subagent-events` | — | When `--json` is set, capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
 | `--no-validation` | — | When set, the validation gate always responds with "declined" so the validation sub-agent is never spawned. Useful for benchmarking runs where sub-agent overhead is not desired |
 | `-o, --output-last-message <FILE>` | — | Specifies file where the last message from the agent should be written |
 | `-h, --help` | — | Print help (see a summary with '-h') |
@@ -153,7 +153,7 @@ Run a code review against the current repository
 | `--ignore-rules` | — | Do not load user or project execpolicy `.rules` files |
 | `--output-schema <FILE>` | — | Path to a JSON Schema file describing the model's final response shape |
 | `--json` | — | Print events to stdout as JSONL |
-| `--include-subagent-events` | — | When --json is set, also capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
+| `--include-subagent-events` | — | When `--json` is set, capture and emit sub-agent events tagged with their thread ID. Each sub-agent event gets a `sub_agent_thread_id` field added to the JSONL line so consumers can distinguish it from the primary agent's events |
 | `--no-validation` | — | When set, the validation gate always responds with "declined" so the validation sub-agent is never spawned. Useful for benchmarking runs where sub-agent overhead is not desired |
 | `-o, --output-last-message <FILE>` | — | Specifies file where the last message from the agent should be written |
 | `-h, --help` | — | Print help (see a summary with '-h') |
