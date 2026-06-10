@@ -55,10 +55,10 @@ default:
       type: fabricspark
       method: livy
       endpoint: https://api.fabric.microsoft.com/v1
-      workspaceid: <your-workspace-id>
-      lakehouseid: <your-lakehouse-id>
-      lakehouse: my_lakehouse
-      schema: my_lakehouse
+      workspaceid: WORKSPACE_ID
+      lakehouseid: LAKEHOUSE_ID
+      lakehouse: LAKEHOUSE_NAME
+      schema: LAKEHOUSE_OR_SCHEMA_NAME
       threads: 1
 
       # Authentication (CLI for local dev)
@@ -86,17 +86,17 @@ default:
       type: fabricspark
       method: livy
       endpoint: https://api.fabric.microsoft.com/v1
-      workspaceid: <your-workspace-id>
-      lakehouseid: <your-lakehouse-id>
-      lakehouse: my_lakehouse
-      schema: my_lakehouse
+      workspaceid: WORKSPACE_ID
+      lakehouseid: LAKEHOUSE_ID
+      lakehouse: LAKEHOUSE_NAME
+      schema: LAKEHOUSE_OR_SCHEMA_NAME
       threads: 1
 
       # Authentication (SPN for CI/CD)
       authentication: SPN
-      client_id: <your-client-id>              # Required for SPN
-      tenant_id: <your-tenant-id>              # Required for SPN
-      client_secret: <your-client-secret>      # Required for SPN
+      client_id: SPN_CLIENT_ID               # Required for SPN
+      tenant_id: AD_TENANT_ID                # Required for SPN
+      client_secret: SPN_CLIENT_SECRET       # Required for SPN
 ```
 
 </File>
@@ -121,10 +121,10 @@ default:
       type: fabricspark
       method: livy
       endpoint: https://api.fabric.microsoft.com/v1
-      workspaceid: <your-workspace-id>
-      lakehouseid: <your-lakehouse-id>
-      lakehouse: my_lakehouse
-      schema: my_lakehouse
+      workspaceid: WORKSPACE_ID
+      lakehouseid: LAKEHOUSE_ID
+      lakehouse: LAKEHOUSE_NAME
+      schema: LAKEHOUSE_OR_SCHEMA_NAME
       threads: 1
 
       # Authentication (fabric_notebook for execution from a Fabric notebook)
