@@ -3,7 +3,6 @@ title: "About dbt Wizard CLI"
 id: "about-dbt-wizard-cli"
 description: "The dbt Wizard CLI helps teams ship higher-quality dbt changes faster and with less risk."
 sidebar_label: "About dbt Wizard CLI"
-hide_table_of_contents: true
 tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
 ---
