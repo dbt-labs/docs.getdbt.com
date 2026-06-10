@@ -115,7 +115,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 The default scope only requires `User.Read` and `GroupMember.Read.All`. If you assign a user to more than 200 groups, you may need to grant additional permissions such as `Directory.Read.All`. 
 
 :::info SSO before December 2025
-If you set up SSO before December 2025, your existing configuration may still require `Directory.Read.All` rather than the `GroupMember.Read.All` scope shown for new setups. Alternatively, delete and re-create your SSO configuration to use the new targeted scopes. Refer to [Configuring permissions](#configuring-permissions) for details.
+If you set up SSO before December 2025, your existing configuration may request `Directory.Read.All` instead of `GroupMember.Read.All`. To use the updated scopes, delete and re-create your SSO [configuration](#configuring-permissions).
 :::
 
 16. Save these permissions, then click **Grant admin consent** to grant admin consent for this directory on behalf of all of your users.
