@@ -4,10 +4,10 @@ title: "dbt Command reference"
 
 You can run dbt using the following tools:
 
-- In your browser with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) 
+- In your browser with the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)
 - On the command line interface using the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) or open-source [<Constant name="core" />](/docs/local/install-dbt).
-  
-A key distinction with the tools mentioned, is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/platform/about-platform/dbt-platform-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
+
+A key distinction is that <Constant name="platform_cli" /> and <Constant name="studio_ide" /> are designed to support safe parallel execution of dbt commands, leveraging <Constant name="dbt_platform" />'s infrastructure and its comprehensive [features](/docs/platform/about-platform/dbt-platform-features). In contrast, <Constant name="core" /> _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
 
 ## Parallel execution
 
@@ -15,7 +15,7 @@ A key distinction with the tools mentioned, is that <Constant name="platform_cli
 
 In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 
-To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel) &mdash; for example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time. However, you can't run `dbt build` and `dbt run` (both write operations) at the same time.
+To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands in parallel &mdash; for example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation). However, you can't run `dbt build` and `dbt run` (both write operations) in parallel.
 
 dbt commands can be `read` or `write` commands:
 
@@ -28,9 +28,11 @@ dbt commands can be `read` or `write` commands:
 
 The following sections outline the commands supported by dbt and their relevant flags. They are available in all tools and all [supported versions](/docs/dbt-versions) unless noted otherwise. You can run these commands in your specific tool by prefixing them with `dbt` &mdash; for example, to run the `test` command, type `dbt test`.
 
+You can also call these commands and flags programmatically using `dbtRunner.invoke`. For details, refer to [Programmatic invocations](/reference/programmatic-invocations).
+
 For information about selecting models on the command line, refer to [Model selection syntax](/reference/node-selection/syntax).
 
-Commands with a ('❌') indicate write commands, commands with a ('✅') indicate read commands, and commands with a (N/A) indicate it's not relevant to the parallelization of dbt commands.
+Commands marked ❌ indicate write commands, commands marked ✅ indicate read commands, and commands marked N/A indicate that parallel execution isn't relevant for that command.
 
 :::info
 Some commands are not yet supported in the <Constant name="fusion_engine" /> or have limited functionality. Refer to the [Fusion supported features](/docs/fusion/supported-features) page for details.
