@@ -42,7 +42,7 @@ For implementation details, refer to the source definitions of `dbtRunner` and `
 
 `dbtRunner.invoke` accepts the same arguments as the <Constant name="platform_cli" />. The first positional argument is the command (for example, `run`, `build`, `test`), followed by any flags and options you would normally pass on the command line.
 
-For example, `dbt.invoke(["run", "--select", "tag:my_tag"])` is equivalent to running `dbt run --select tag:my_tag`. There is no separate, dbtRunner‑specific list of arguments; the authoritative source for available options is the CLI help (`dbt --help`, `dbt run --help`, and so on) and the [dbt command reference](/reference/dbt-commands) documentation.
+For example, `dbt.invoke(["run", "--select", "tag:my_tag"])` is equivalent to running `dbt run --select tag:my_tag`. There is no separate, dbtRunner‑specific list of arguments; the authoritative source for available options is the CLI help reference (`dbt --help`, `dbt run --help`, and so on) and the [dbt command reference](/reference/dbt-commands) documentation.
 
 ```python
 from dbt.cli.main import dbtRunner
