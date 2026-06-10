@@ -4,7 +4,7 @@ title: "Programmatic invocations"
 
 In v1.5, <Constant name="core" /> added support for programmatic invocations. You can run the same top-level commands as the <Constant name="core" /> CLI from a Python script or application through the exposed entry point.
 
-Programmatic invocations let you call dbt commands from Python, instead of running them in a shell. This is useful when you want to embed dbt runs into a larger application or workflow, while still using the same command surface area as the CLI.
+Programmatic invocations let you call dbt commands from Python scripts and applications, instead of running them in a shell. This is useful when you want to embed dbt runs into a larger application or workflow, while still using the same command surface area as the CLI.
 
 Common use cases include:
 
