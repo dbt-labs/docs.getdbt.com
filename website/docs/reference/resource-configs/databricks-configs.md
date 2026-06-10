@@ -1246,7 +1246,7 @@ Set `materialized='metric_view'` to manage a [Unity Catalog metric view](https:/
 ```sql
 {{ config(materialized='metric_view') }}
 
-version: 0.1
+version: 1.1
 source: "{{ ref('source_orders') }}"
 filter: status = 'completed'
 dimensions:
