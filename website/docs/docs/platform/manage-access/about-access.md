@@ -152,7 +152,7 @@ Permissions determine what users can do in your <Constant name="dbt" /> account.
 
 The permissions available depend on whether you're on an [Enterprise, Enterprise+](/docs/platform/manage-access/enterprise-permissions), or [self-service Starter](/docs/platform/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
 
-Some access to user settings (for example, under **Your profile**, select **Credentials**) can be granted with additional permissions (such as `user_credential_write`). Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
+Some access to user settings (for example, **Credentials** settings in **Your profile**) can be granted with additional permissions (such as `user_credential_write`). Refer to [Enterprise permissions](/docs/platform/manage-access/enterprise-permissions) for more information.
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example permissions dropdown while editing an existing group." />
 

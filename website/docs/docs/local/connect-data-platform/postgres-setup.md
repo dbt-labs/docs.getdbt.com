@@ -88,7 +88,7 @@ When connecting to a Postgres server using a client SSL connection, dbt verifies
 ### `keepalives_idle`
 If the database closes its connection while dbt is waiting for data, you may see the error `SSL SYSCALL error: EOF detected`. Lowering the [`keepalives_idle` value](https://www.postgresql.org/docs/9.3/libpq-connect.html) may prevent this, because the server will send a ping to keep the connection active more frequently. 
 
-[dbt's default setting](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/adapters/postgres/connections.py#L28) is 0 (the server's default value), but can be configured lower (perhaps 120 or 60 seconds), at the cost of a chattier network connection.
+[dbt's default setting](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-postgres/src/dbt/adapters/postgres/connections.py#L32) is 0 (the server's default value), but can be configured lower (perhaps 120 or 60 seconds), at the cost of a chattier network connection.
 
 
 #### retries

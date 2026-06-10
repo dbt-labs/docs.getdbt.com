@@ -2,7 +2,7 @@
 title: "Set up automatic downstream exposures"
 sidebar_label: "Set up automatic exposures"
 description: "Set up and visualize exposures automatically by auto-generating them from Tableau dashboards, helping you understand how models are used in downstream tools for a richer lineage."
-image: /img/docs/platform-integrations/auto-exposures/explorer-lineage2.jpg
+image: /img/docs/platform-integrations/auto-exposures/explorer-lineage2.png
 ---
 
 # Set up automatic exposures in Tableau <Lifecycle status="managed,managed_plus" />
@@ -92,9 +92,9 @@ Once configured in both Tableau and [<Constant name="dbt" />](#set-up-in-dbt-clo
       <Constant name="dbt" /> immediately starts a sync when you update the selected collections list, capturing new workbooks and removing irrelevant ones.
       :::
 
-5. <Constant name="dbt" /> imports everything in the collection(s) and you can continue to [view them](#view-auto-exposures) in <Constant name="catalog" />. 
+5. <Constant name="dbt" /> imports everything in the collection(s) and you can continue to [view them](#view-downstream-exposures) in <Constant name="catalog" />. 
 
-   <Lightbox src="/img/docs/platform-integrations/auto-exposures/explorer-lineage2.jpg" width="100%" title="View from the dbt Catalog in your Project lineage view, displayed with the Tableau icon."/>
+   <Lightbox src="/img/docs/platform-integrations/auto-exposures/explorer-lineage2.png" width="100%" title="View from the dbt Catalog in your Project lineage view, displayed with the Tableau icon."/>
 
 import ViewExposures from '/snippets/_auto-exposures-view.md';
 
@@ -104,7 +104,7 @@ import ViewExposures from '/snippets/_auto-exposures-view.md';
 
 [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures) using the dbt [Cloud job scheduler](/docs/deploy/job-scheduler) to proactively refresh the underlying data sources (extracts) that power your Tableau Workbooks.
 
-This beta capability requires deployment jobs on [Latest](/docs/dbt-versions/dbt-release-tracks) with <Constant name="core" /> and _isn't_ available on [Latest <Constant name="fusion" />](/docs/dbt-versions/dbt-release-tracks) (the <Constant name="fusion_engine" /> preview). For setup details, refer to [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures).
+This beta capability requires deployment jobs on [Latest](/docs/dbt-versions/dbt-release-tracks) with <Constant name="core" /> and _isn't_ available on [Fusion Stable](/docs/dbt-versions/dbt-release-tracks) (the <Constant name="fusion_engine" /> preview). For setup details, refer to [Orchestrate exposures](/docs/platform-integrations/orchestrate-exposures).
 
 - Orchestrating exposures with a `dbt build` job ensures that downstream exposures, like Tableau extracts, are updated regularly and automatically.
 - You can control the frequency of these refreshes by configuring environment variables.
