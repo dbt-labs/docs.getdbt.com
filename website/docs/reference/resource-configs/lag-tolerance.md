@@ -59,6 +59,8 @@ Source systems may update more frequently than downstream models need to rebuild
 
 With `lag_tolerance`, you can prevent those unnecessary rebuilds. When dbt State evaluates whether to rebuild a node, it checks whether upstream parents have fresh data that exceeds the `lag_tolerance` threshold. If they haven't, dbt reuses the existing node rather than cloning or rebuilding it.
 
+> Note: If the logic of the models change (e.g. sql written in the model.sql file) - then the models could rebuild earlier than the configured `lag_tolerance`.
+
 This config accepts two value types:
 
 - **Duration strings** in the format `<number><unit>`:
