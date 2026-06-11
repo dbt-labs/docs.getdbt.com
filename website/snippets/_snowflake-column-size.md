@@ -17,7 +17,7 @@ dbt ls -s config.materialized:incremental,config.on_schema_change:sync_all_colum
 - If the command returns `No nodes selected!`, no action is required.
 - If the command returns one or more models (for example, `Found 1000 models, 644 macros`), you may be impacted if those models have string columns that don't specify a width. In that case, upgrade to a version that includes the fix:
 
-    - **<Constant name="core" />**: `dbt-snowflake` v1.10.6 or later. For upgrade instructions, see [Upgrade adapters](/docs/local/install-dbt) in the dbt Core v1 installation instructions.
+    - **<Constant name="core" />**: `dbt-snowflake` v1.10.6 or later. For upgrade instructions, refer to [Upgrade adapters](/docs/local/install-dbt) in the <Constant name="core" /> v1 installation instructions.
     - **<Constant name="dbt_platform" />**: Any release track (Latest, Compatible, Extended, or Fallback).
     - **<Constant name="fusion_engine" />**: v2.0.0-preview.147 or higher.
 

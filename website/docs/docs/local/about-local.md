@@ -17,7 +17,7 @@ For the best local development experience, we recommend the <Constant name="fusi
 - **SQL comprehension:** Dialect-aware validation catches errors before they reach your warehouse.
 - **Column-level lineage:** Trace data flow across your entire project.
 
-[Install Fusion now!](/docs/local/install-dbt)
+[Install <Constant name="fusion"/> now!](/docs/local/install-dbt)
 
 ### dbt VS Code extension
 
@@ -30,14 +30,14 @@ The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant nam
 
 This is the fastest way to get started with dbt locally.
 
-[Install Fusion with the dbt VS Code extension](/docs/local/install-dbt)
+[Install <Constant name="fusion" /> with the dbt VS Code extension](/docs/local/install-dbt)
 
 ## dbt Core
 
-dbt Core is the open-source engine for running dbt locally. It is available in two versions:
+<Constant name="core" /> is the open-source engine for running dbt locally. It is available in two versions:
 
 - [<Constant name="core_v1" />](/docs/local/install-dbt?version=1): The original Python-based dbt engine with a rich set of features.
-- [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) <Lifecycle status="alpha" />: The next major version, built on the Fusion runtime. Currently in alpha.
+- [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) <Lifecycle status="alpha" />: The next major version, built on the <Constant name="fusion"/> runtime. Currently in alpha.
 
 [<Constant name="core_v1" />](/docs/local/install-dbt?version=1) includes:
 
@@ -46,7 +46,7 @@ dbt Core is the open-source engine for running dbt locally. It is available in t
 - **Code editor support:** Build your dbt project in popular editors like VS Code or Cursor.
 - **Command line interface:** Run your project from the terminal using macOS Terminal, iTerm, or the integrated terminal in your code editor.
 
-[Install dbt Core now!](/docs/local/install-dbt?version=1#installation)
+[Install <Constant name="core" />now!](/docs/local/install-dbt?version=1#installation)
 
 ## dbt Wizard
 
@@ -65,7 +65,7 @@ For data practitioners, <Constant name="wizard"/> adds an AI layer that knows yo
 
 The dbt MCP server connects your local dbt project to AI assistants using the [Model Context Protocol](https://modelcontextprotocol.io/). It works with both <Constant name="fusion_engine" /> and <Constant name="core" />, and requires no repository clone.
 
-- **dbt CLI tools:** Run `dbt run`, `build`, `test`, `compile`, `list`, `parse`, and `show` directly from your AI assistant's chat interface.
+- **<Constant name="platform_cli" /> tools:** Run `dbt run`, `build`, `test`, `compile`, `list`, `parse`, and `show` directly from your AI assistant's chat interface.
 - **Local project context:** Surface model lineage, node details, and dependency graphs from your local `manifest.json` without leaving your editor.
 - **Code generation:** Auto-generate model YAML, source definitions, and staging SQL from your warehouse schema (requires the codegen toolset to be enabled).
 - **Zero-clone install:** Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`. No repository clone needed!

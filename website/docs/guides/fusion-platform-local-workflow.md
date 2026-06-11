@@ -151,7 +151,7 @@ On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versio
 
 ### Versions installed locally
 
-By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs the latest stable release, the same version that ships with the **Fusion Stable** release track on <Constant name="dbt_platform" />:
+By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs the latest stable release, the same version that ships with the **<Constant name="fusion" /> Stable** release track on <Constant name="dbt_platform" />:
 
 ```shell
 # macOS / Linux

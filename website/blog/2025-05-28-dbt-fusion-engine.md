@@ -137,7 +137,7 @@ Whether or not you can move your existing project to Fusion today, you can jump 
 
 - **dbt customers:** Over the coming weeks, in projects eligible to start using Fusion, you’ll see a toggle in your account or receive a message from your account team. From there, [you can activate Fusion for your environments](/docs/dbt-versions/upgrade-dbt-platform-version#dbt-fusion-engine).
 - **To use the VS Code extension:** [Install the "dbt" extension](/docs/install-dbt-extension) directly from the marketplace for automated setup and head to the quickstart. This will also automatically install the Fusion-powered CLI for you.
-- **To use the dbt CLI powered by Fusion:** Simply [install Fusion](/docs/local/install-dbt?version=2)
+- **To use the <Constant name="platform_cli" /> powered by <Constant name="fusion" />:** Simply [install Fusion](/docs/local/install-dbt?version=2)
 
 *If you are looking to migrate an existing project to Fusion, see the [migration guide](/docs/dbt-versions/core-upgrade/upgrading-to-v2) — as well as the [`dbt-autofix`](https://github.com/dbt-labs/dbt-autofix) helper, which automatically addresses many of the changes needed to migrate to Fusion.*
 
