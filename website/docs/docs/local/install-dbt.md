@@ -77,7 +77,7 @@ dbtf system update
 ```
 
 :::note
-`dbtf system update` installs <Constant name="fusion" /> globally — it updates your `PATH` in `~/.zshrc` and creates a `dbtf` alias. To manage multiple versions or isolate your install, use separate shell profiles or virtual environments.
+`dbtf system update` installs <Constant name="fusion" /> globally &mdash; it updates your `PATH` in `~/.zshrc` and creates a `dbtf` alias. To manage multiple versions or isolate your install, use separate shell profiles or virtual environments.
 :::
 
 ## Uninstall Fusion
