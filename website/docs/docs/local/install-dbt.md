@@ -46,7 +46,7 @@ Refer to the [dbt VS Code extension docs](/docs/about-dbt-extension) for more in
 Common issues and resolutions:
 
 - **dbt command not found:** Add the installation location to your `$PATH`.
-- **Version conflicts:** Check that no other <Constant name="core" /> or dbt CLI versions are installed or active on your machine.
+- **Version conflicts:** Check that no other <Constant name="core" /> or <Constant name="platform_cli" /> versions are installed or active on your machine.
 - **Installation permissions:** Make sure your user account can install software locally.
 
 ## Frequently asked questions
@@ -64,10 +64,10 @@ Common issues and resolutions:
 ## Install dbt Core v2 CLI <Lifecycle status="Alpha" />
 
 :::caution dbt Core v2 is in alpha
-dbt Core v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable local development, use <Constant name="fusion" />.
+<Constant name="core" /> v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable local development, use <Constant name="fusion" />.
 :::
 
-dbt Core v2 is the next major version of dbt Core, built on the <Constant name="fusion_engine" /> runtime. Install it with `pip`, same as v1, but target the v2 prerelease package.
+<Constant name="core" /> v2 is the next major version of <Constant name="core" />, built on the <Constant name="fusion_engine" /> runtime. Install it with `pip`, same as v1, but target the v2 prerelease package.
 
 <Expandable alt_header="Pip installation">
 
@@ -91,7 +91,7 @@ Confirm that the installed version begins with `2.`.
 
 ## Install dbt Core v1 CLI
 
-dbt Core v1 is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
+<Constant name="core" /> v1 is the original open-source dbt engine. Install it with `pip`, Docker, or from source.
 
 <Expandable alt_header="Pip installation" >
 
