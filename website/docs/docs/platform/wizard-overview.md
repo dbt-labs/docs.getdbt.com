@@ -23,8 +23,6 @@ Your personal dbt agent &mdash; wherever you work.
 
 Think of it like a map of your city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout.
 
-To learn more about <Constant name="wizard" /> and see it in action, check out the [demo video](https://www.youtube.com/watch?v=-lIzh1xQWMA)!
-
 <Constant name="wizard"/> comes with the following capabilities:
 
 - **Project understanding:** A native dbt metadata engine for lineage, contracts, tests, and runtime context
@@ -32,8 +30,6 @@ To learn more about <Constant name="wizard" /> and see it in action, check out t
 - **Safe validation:** Compiles and builds changes before review
 - **Complete workflow:** Investigate, change, validate, and review in one place
 - **Setup and governance:** Works out of the box with dbt governance built in
-
-<WizardFeedbackCallout />
 
 ## Use dbt Wizard
 
@@ -117,5 +113,7 @@ Now that you know where to start, continue with **[Get started with the local CL
 - [Use subagents in the dbt platform](/docs/dbt-ai/wizard-platform-subagents) — delegate work to specialized agents
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
 - [Data & Privacy in the dbt platform](/docs/dbt-ai/wizard-platform-privacy-data) — understand how dbt Wizard in the dbt platform handles privacy and data
+
+<WizardFeedbackCallout />
 
 <WizardPlatformPreviewDisclaimer />

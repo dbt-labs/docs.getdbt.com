@@ -83,7 +83,7 @@ When enabled by an admin, <Constant name="wizard" /> is available to users with 
 
 **In the CLI**:
 
-For <Constant name="wizard" /> CLI, bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, or Snowflake Cortex (preview). Install and configure the CLI on your local machine. BYOK means any token costs will be billed directly by whichever provider you choose.
+For <Constant name="wizard" /> CLI, bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). Install and configure the CLI on your local machine. BYOK means any token costs will be billed directly by whichever provider you choose.
 
 Refer to [Quickstart](/docs/dbt-ai/wizard-quickstart) for more information.
 
@@ -109,7 +109,7 @@ Yes, <Constant name="wizard" /> is powered by ai-codegen-api, which is deployed 
 
 In the <Constant name="dbt_platform" />, <Constant name="wizard" /> supports <Term id="managed" /> OpenAI, BYOK OpenAI, BYOK Anthropic, and BYOK Azure AI Foundry. By default, accounts use <Term id="managed" /> OpenAI. Enterprise-tier accounts can [bring their own provider keys](/docs/platform/enable-dbt-ai#configure-ai-provider).
 
-The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports OpenAI, Anthropic, AWS Bedrock, and Snowflake Cortex (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) for more information.
+The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview) in bring-your-own-key mode. Refer to [Configure BYOK](/docs/dbt-ai/wizard-byok) and [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) for more information.
 
 </Expandable>
 
@@ -117,7 +117,7 @@ The [<Constant name="wizard"/> CLI](/docs/dbt-ai/wizard-cli) supports OpenAI, An
 
 In <Constant name="dbt_platform" />, the <Constant name="wizard"/> BYOK option is currently an account-only configuration. However, there may be a future where we make this configurable on a project-level.
 
-<Constant name="wizard" /> CLI supports BYOK locally for OpenAI, Anthropic, AWS Bedrock, and Snowflake Cortex (preview). 
+<Constant name="wizard" /> CLI supports BYOK locally for OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview). 
 
 </Expandable>
 
