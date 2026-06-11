@@ -60,7 +60,7 @@ For data practitioners, <Constant name="wizard"/> adds an AI layer that knows yo
 
 [dbt Wizard](/docs/dbt-ai/wizard-quickstart) also works with <Constant name="core" />. See the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to add AI-assisted development to your Core workflow.
 
-## dbt MCP Server
+## dbt MCP server
 
 The dbt MCP server connects your local dbt project to AI assistants using the [Model Context Protocol](https://modelcontextprotocol.io/). It works with both <Constant name="fusion_engine" /> and <Constant name="core" />, and requires no repository clone.
 
