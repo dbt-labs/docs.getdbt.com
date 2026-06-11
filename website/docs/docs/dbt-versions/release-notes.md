@@ -21,7 +21,9 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
-**Beta**: Workspace-level Private Link for Microsoft Fabric is now available in beta. Configure a private connection between the <Constant name="dbt_platform" /> and your Fabric workspace so SQL traffic stays on Azure's private network. For more information, refer to [Configuring Private Link for Microsoft Fabric](/docs/platform/secure/private-connectivity/azure/azure-fabric).
+- **Private beta**: The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is available for Enterprise plans. 
+   - *New*: Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources. The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use, while the Analyst read permission set and read-only permission changes are in private beta. To enable them, contact your account manager.
+- **Beta**: Workspace-level Private Link for Microsoft Fabric is now available in beta. Configure a private connection between the <Constant name="dbt_platform" /> and your Fabric workspace so SQL traffic stays on Azure's private network. For more information, refer to [Configuring Private Link for Microsoft Fabric](/docs/platform/secure/private-connectivity/azure/azure-fabric).
 - **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
 
 ### Snowflake Summit 2026 announcements
@@ -64,6 +66,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Enhancement:** Delete individual [<Constant name="wizard" /> chat conversations](/docs/dbt-ai/wizard-ide#availability-and-considerations) from the conversation list (three dots → **Delete**). Deleting the open conversation clears the panel.
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 - **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
+- **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
 
 ## April 2026
 
