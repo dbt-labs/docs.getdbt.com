@@ -76,6 +76,10 @@ The following command will update to the latest version of Fusion and adapter co
 dbtf system update
 ```
 
+:::note
+`dbtf system update` installs <Constant name="fusion" /> globally — it updates your `PATH` in `~/.zshrc` and creates a `dbtf` alias. To manage multiple versions or isolate your install, use separate shell profiles or virtual environments.
+:::
+
 ## Uninstall Fusion
 
 This command will uninstall the Fusion binary from your system, but aliases will remain wherever they are installed (for example `~/.zshrc`):
