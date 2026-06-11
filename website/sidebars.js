@@ -1612,7 +1612,19 @@ const sidebarSettings = {
           },
           items: [
             "reference/global-configs/about-global-configs",
-            "reference/global-configs/behavior-changes",
+            {
+              type: "category",
+              label: "Behavior changes",
+              link: {
+                type: "doc",
+                id: "reference/global-configs/behavior-changes",
+              },
+              items: [
+                "reference/global-configs/behavior-flag-introduction",
+                "reference/global-configs/behavior-flag-maturity",
+                "reference/global-configs/behavior-flag-removed",
+              ],
+            },
             {
               type: "category",
               label: "Adapter behavior changes",
