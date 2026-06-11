@@ -88,7 +88,7 @@ var siteSettings = {
     announcementBar: {
       id: "fivetran-dbt-labs-merger-webinar",
       content:
-      "Fivetran + dbt Labs: The merger, what's shipping, and live Q&A on June 25 - Save your seat!",
+      "What's shipping at Fivetran + dbt Labs: Faster pipelines, smarter agents on June 25 - Save your seat!",
       isCloseable: true,
     },
     announcementBarActive: true,
