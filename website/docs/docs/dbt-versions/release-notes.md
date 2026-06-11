@@ -79,7 +79,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **New:** The <Constant name="platform_cli" /> now implements the `GET /tree/{path}` directory listing endpoint (previously a stub). The endpoint returns a streaming NDJSON response with directory entries as `[name, type]` pairs and supports HTTP caching via ETag.
 - **New:** The <Constant name="platform_cli" /> now implements the `DELETE /files/tree/{path}` endpoint for deleting files and directories. Add `?recursive=true` to delete directories recursively.
 - **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
-- **Enhancement:** Tool-approval and file-edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
+- **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
 - **Behavior change:** Private endpoint create, update, and delete API operations now return `404` for accounts without the `business_critical` entitlement. GET and list endpoints remain available without that entitlement and return an empty list so the UI can render upgrade prompts.
 
 ## April 2026
