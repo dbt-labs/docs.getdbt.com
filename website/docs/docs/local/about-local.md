@@ -56,7 +56,7 @@ dbt Core is the open-source engine for running dbt locally. It is available in t
 - **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before production.
 - **Navigate with full project context**: Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and keep tests and YAML in sync as models evolve.
 
-For data practitioners, <Constant name="wizard"/> adds an AI layer that knows your project — not just your code. See [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
+For data practitioners, <Constant name="wizard"/> adds an AI layer that knows your project, not just your code. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
 
 [dbt Wizard](/docs/dbt-ai/wizard-quickstart) also works with <Constant name="core" />. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to add AI-assisted development to your Core workflow.
 
