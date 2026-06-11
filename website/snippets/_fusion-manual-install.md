@@ -9,7 +9,7 @@ python -m pip install --pre dbt
 To upgrade to a newer version:
 
 ```shell
-python -m pip upgrade dbt
+python -m pip install --upgrade --pre dbt
 ```
 
 </Expandable>
