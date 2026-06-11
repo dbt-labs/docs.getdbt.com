@@ -281,7 +281,7 @@ To fix, rewrite the macro to use the per-batch window. For example:
     {%- set source = arg_dict["temp_relation"] -%}
     {%- set event_time = arg_dict["incremental_predicates"] -%}
 
-    -- Use the per-batch window dbt passes in via event_time_start/event_time_end
+    -- Use the per-batch window dbt passes via event_time_start/event_time_end
     -- (exposed through arg_dict["incremental_predicates"] or model.config.event_time_*),
     -- NOT a hard-coded date filter.
     insert into {{ target }}
@@ -289,7 +289,7 @@ To fix, rewrite the macro to use the per-batch window. For example:
 {% endmacro %}
 ```
 
-To verify, run `dbt run --event-time-start <date> --event-time-end <date> -s <model>` for a single batch and confirm the row count matches that one day.
+To verify, run `dbt run --event-time-start <date> --event-time-end <date> -s <model>` for a single batch and confirm the row count matches that single day.
 
 To opt out of this behavior, set the flag to `false`:
 
@@ -307,14 +307,14 @@ flags:
 
 ### `state_modified_compare_more_unrendered_values`
 
-Flipping the default to `true` for this flag silently changes the `state:modified` selection set that most CI, Slim CI, and `dbt build --defer` workflows rely on. There are two ways this surfaces:
+Setting the default to `true` for this flag silently changes the `state:modified` selection set that most CI, Slim CI, and `dbt build --defer` workflows rely on. There are two ways this surfaces:
 
-- **False "modified" on the first run after the flag flips.** If the baseline manifest was captured before the flag flipped (rendered values stored) and the current parse runs after the flip (literal text stored), every node whose YAML config contains Jinja will appear as `state:modified`, even if nothing has changed. This causes a full rebuild on the first CI run after the upgrade.
+- **False "modified" on the first run after the flag is set to `true`.** If the baseline manifest was captured before the flag is set (rendered values stored) and the current parse runs after the setting change (literal text stored), every node whose YAML config contains Jinja will appear as `state:modified`, even if nothing has changed. This causes a full rebuild on the first CI run after the upgrade.
 - **New positives going forward.** After both manifests are captured with the flag enabled, `state:modified` will catch cases where two equivalent Jinja expressions render to the same value (for example, switching from `"{{ env_var('MAT', 'view') }}"` to `view`).
 
 <Expandable alt_header="What to expect">
 
-On the first CI or Slim CI run after the flag flips, any node whose YAML config uses Jinja (`env_var`, `var`, conditional materialization) may appear as `state:modified` even if nothing changed. This is because the baseline manifest stored rendered values while the new parse stores literal Jinja text &mdash; the two sides of the comparison differ on serialization, not on real changes. 
+On the first CI or Slim CI run after the flag is set, any node whose YAML config uses Jinja (`env_var`, `var`, conditional materialization) may appear as `state:modified` even if nothing changed. This is because the baseline manifest stored rendered values while the new parse stores literal Jinja text &mdash; the two sides of the comparison differ on serialization, not on real changes. 
 
 Once your production job runs once on the **Latest** release track and generates a new baseline manifest, both sides of the `state:modified` comparison use the same format and the extra diffs disappear.
 
