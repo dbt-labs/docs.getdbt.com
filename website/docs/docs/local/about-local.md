@@ -46,7 +46,7 @@ This is the fastest way to get started with dbt locally.
 - **Code editor support:** Build your dbt project in popular editors like VS Code or Cursor.
 - **Command line interface:** Run your project from the terminal using macOS Terminal, iTerm, or the integrated terminal in your code editor.
 
-[Install <Constant name="core" />now!](/docs/local/install-dbt?version=1#installation)
+[Install <Constant name="core" />now!](/docs/local/install-dbt)
 
 ## dbt Wizard
 
