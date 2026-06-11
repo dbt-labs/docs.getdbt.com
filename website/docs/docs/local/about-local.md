@@ -50,7 +50,8 @@ dbt Core is the open-source engine for running dbt locally. It is available in t
 
 ## dbt Wizard
 
-[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is a natural next step for local dbt development. It works with both <Constant name="fusion_engine" /> and <Constant name="core" /> — [dbt Wizard](/docs/dbt-ai/wizard-quickstart) adds an AI agent that works with a live understanding of your entire project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is a natural next step for local dbt development. It works with both <Constant name="fusion_engine" /> and <Constant name="core" />. dbt Wizard adds an AI agent that understands your full project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai), a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+
 
 - **Build and refactor from natural language**: Describe the change, get a reviewable diff, approve before anything is written.
 - **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before production.
