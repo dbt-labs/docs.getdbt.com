@@ -145,7 +145,7 @@ For more information, refer to [`on-run-start` / `on-run-end`](/reference/projec
 
 <Expandable alt_header="Recommended actions">
 
-If every model is skipped after an `on-run-start` hook fails, find which `on-run-start` hook failed in the run log &mdash; it appears as an `ERROR` immediately before all the nodes marked `SKIP`. 
+If every model is skipped after an `on-run-start` hook fails, find which `on-run-start` hook failed in the run log &mdash; it appears as an `ERROR` immediately before all the nodes marked `SKIP`. From there, either remove the hook if it's not required, or fix the root cause of the failure by reviewing the hook's SQL statements.
 
 To opt out of this behavior, set the flag to `false`:
 
@@ -167,10 +167,10 @@ Any project with a cumulative metric still using the un-nested syntax stops pars
 
 <Expandable alt_header="Recommended actions">
 
-If `dbt parse` fails with `Semantic Manifest validation failed` referencing one or more cumulative metrics, migrate the metrics by moving `window` and `grain_to_date` from `type_params` into `type_params.cumulative_type_params`:
+If `dbt parse` fails with `Semantic Manifest validation failed` referencing one or more cumulative metrics, migrate the metrics by moving `window` and `grain_to_date` from `type_params` into `type_params.cumulative_type_params`. Alternatively, you can migrate to the [latest YAML spec](/docs/build/latest-metrics-spec#type_params), which removes `type_params` entirely.
 
 ```yaml
-# Before (legacy)
+# Legacy
 metrics:
   - name: weekly_active_users
     type: cumulative
@@ -178,7 +178,7 @@ metrics:
       measure: distinct_users
       window: 7 days
 
-# After (nested)
+# Nested
 metrics:
   - name: weekly_active_users
     type: cumulative
@@ -186,6 +186,13 @@ metrics:
       measure: distinct_users
       cumulative_type_params:
         window: 7 days
+
+# Latest spec
+metrics:
+  - name: weekly_active_users
+    type: cumulative
+    input_metric: distinct_users
+    window: 7 days
 ```
 
 Re-run `dbt parse` to confirm the manifest validates. 
