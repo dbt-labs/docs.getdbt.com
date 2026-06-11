@@ -5,11 +5,11 @@ Before you can connect dbt to Salesforce Data 360, you need the following:
 - A Data 360 instance.
 - The `server.key` private key file. For more information, refer to [Generating a private key and certificate](#generating-a-private-key-and-certificate).
 - An external client app configured for JWT Bearer token flow. For more information, refer to [Setting up the external client app](#setting-up-the-external-client-app).
-- `Data Cloud Architect` and `Data Cloud User`  permissions
+- `Data Cloud Architect` and `Data Cloud User`  permissions.
 
 ### Generating a private key and certificate
 
-Before creating the external client app, generate a private key (`server.key`) and a self-signed certificate (`server.crt`) in Salesforce. Salesforce uses the certificate to verify the JWT Bearer token that dbt sends. Refer to the [Create a Private Key and Self-Signed Digital Certificate](https://developer.salesforce.com/docs/atlas.en-us.252.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_key_and_cert.htm) for instructions.
+Before creating the external client app, generate a private key (`server.key`) and a self-signed certificate (`server.crt`) in Salesforce. Salesforce uses the certificate to verify the JWT Bearer token that dbt sends. Refer to [Create a Private Key and Self-Signed Digital Certificate](https://developer.salesforce.com/docs/atlas.en-us.252.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_key_and_cert.htm) for instructions.
 
 :::note
 It is recommended to generate these credentials under a **service user account** rather than an individual user account to simplify credential management.
@@ -27,7 +27,7 @@ Then, configure the OAuth settings for the app:
 2. Set the **Callback URL** to `https://login.salesforce.com/services/oauth2/callback`.
 3. Under **OAuth Scopes**, add the following to the **Selected OAuth Scopes** list:
    - `api` - To manage user data via APIs
-   - `refresh_token, offline_access` - To perform requests at any time, even when the user is offline or tokens have expired
+   - `refresh_token`, `offline_access` - To perform requests at any time, even when the user is offline or tokens have expired
    - `cdp_query_api` - To perform SQL queries on Data 360 data
 4. Under **Flow Enablement**, select **Enable JWT Bearer Flow**.
 5. Click **Upload Files** and upload the `server.crt` file created in [Generating a private key and certificate](#generating-a-private-key-and-certificate).
