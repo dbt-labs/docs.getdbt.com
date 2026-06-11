@@ -69,4 +69,4 @@ The dbt MCP server connects your local dbt project to AI assistants using the [M
 - **Code generation:** Auto-generate model YAML, source definitions, and staging SQL from your warehouse schema (requires the codegen toolset to be enabled).
 - **Zero-clone install:** Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `uvx dbt-mcp`. No repository clone needed!
 
-[Connect dbt MCP server to your local project](/docs/dbt-ai/mcp-quickstart-local)
+[Connect dbt MCP server to your local project](/docs/dbt-ai/mcp-quickstart-cli)
