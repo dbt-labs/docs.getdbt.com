@@ -9,7 +9,7 @@ pagination_prev: "docs/local/install-dbt"
 
 <Constant name="fusion"/> automatically loads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal). This helps you manage credentials and settings without hardcoding them in your `profiles.yml` or exposing them in your shell history.
 
-### Using a `.env` file
+## Using a `.env` file
 
 1. Create a `.env` file in your current working directory (typically at the root of your dbt project):
    ```env
