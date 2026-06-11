@@ -234,7 +234,6 @@ For editable mode: `python -m pip install -e .`
 
 For more details, read the [contributing guidelines](https://github.com/dbt-labs/dbt-core/blob/HEAD/CONTRIBUTING.md).
 
-<FAQ path="Core/install-pip-best-practices" />
 
 </Expandable>
 
