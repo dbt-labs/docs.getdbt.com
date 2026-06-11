@@ -246,6 +246,21 @@ query ($jobId: BigInt!, $runId: BigInt!) {
 }
 ```
 
+For jobs with many models, paginate with `first`, `after`, and `paginationCursor`. Refer to [Job-based queries](/docs/dbt-apis/discovery-querying#job-based-queries) in the Discovery API querying guide.
+
+```graphql
+query JobModelsPage($jobId: BigInt!, $runId: BigInt, $first: Int!, $after: String) {
+  job(id: $jobId, runId: $runId) {
+    models(first: $first, after: $after) {
+      uniqueId
+      name
+      status
+      paginationCursor
+    }
+  }
+}
+```
+
 </details>
 
 ### What’s changed since the last run?

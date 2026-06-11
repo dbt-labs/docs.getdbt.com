@@ -199,6 +199,112 @@ pageInfo {
 totalCount # Total number of records across all pages
 ```
 
+#### Job-based queries
+
+Job-based list endpoints also support cursor pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object (or the equivalent legacy top-level queries such as `models(jobId:, runId:)`).
+
+The following job-based list fields accept `first` and `after`:
+
+- `models`
+- `sources`
+- `seeds`
+- `snapshots`
+- `tests`
+- `macros`
+- `metrics`
+- `exposures`
+
+Pass `first` to set the page size (capped at 100). Each returned item includes a `paginationCursor` field. Pass that value as `after` on the next request to fetch the following page.
+
+Unlike environment queries, these job-based endpoints do not return a `PageInfo` object or `hasNextPage` field. When a page contains fewer rows than `first`, you have reached the last page.
+
+If you omit `first` and `after`, the API still returns all matching rows today. In a future update, unpaginated requests will return at most 100 rows. That change will roll out after advance notice. Until then, pass `first` and `after` explicitly when you query large jobs.
+
+The examples below use a job's `models` list. The same `first` and `after` arguments work for the other job-based resource types listed above.
+
+Before you run the examples, set up [Authorization](#authorization) and your [Discovery API endpoint](#discovery-api-endpoints). In [**Account settings**](/docs/platform/account-settings), copy the GraphQL URL from **Access URLs** and create a [Metadata Only service token](/docs/dbt-apis/service-tokens) under **Service Tokens**.
+
+To find `jobId` and `runId` for the query variables:
+
+1. From the main menu, go to **Orchestration** > [**Jobs**](/docs/deploy/deploy-jobs) and open the deploy job you want to query.
+2. Copy `jobId` from the job page URL. It is the numeric segment after `jobs/`:
+
+   ```text
+   /deploy/<account>/projects/<project>/jobs/<jobId>/
+   ```
+
+3. Optional: open a run for that job (from the job's run history or **Orchestration** > **Runs**) and copy `runId` from the run URL:
+
+   ```text
+   /deploy/<account>/projects/<project>/runs/<runId>
+   ```
+
+   If you omit `runId` in the query, the API uses the job's latest run.
+
+You can also look up job and run IDs with the [Admin API](/docs/dbt-apis/admin-api). Run the query with the [GraphQL explorer](#run-queries-with-the-graphql-explorer) or [HTTP requests](#run-queries-using-http-requests).
+
+**First page**
+
+Query:
+
+```graphql
+query JobModelsPage($jobId: BigInt!, $runId: BigInt, $first: Int!, $after: String) {
+  job(id: $jobId, runId: $runId) {
+    models(first: $first, after: $after) {
+      uniqueId
+      paginationCursor
+    }
+  }
+}
+```
+
+Variables (replace the IDs with your job and run):
+
+```json
+{
+  "jobId": 12345,
+  "runId": 67890,
+  "first": 10,
+  "after": null
+}
+```
+
+Example response (truncated):
+
+```json
+{
+  "data": {
+    "job": {
+      "models": [
+        {
+          "uniqueId": "model.my_project.stg_orders",
+          "paginationCursor": "Y3Vyc29yOm1vZGVsLm15X3Byb2plY3Quc3RnX29yZGVycw=="
+        },
+        {
+          "uniqueId": "model.my_project.dim_customers",
+          "paginationCursor": "Y3Vyc29yOm1vZGVsLm15X3Byb2plY3QuZGltX2N1c3RvbWVycw=="
+        }
+      ]
+    }
+  }
+}
+```
+
+**Next page**
+
+Set `after` to the `paginationCursor` from the **last** row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Keep `first` the same unless you want a different page size.
+
+```json
+{
+  "jobId": 12345,
+  "runId": 67890,
+  "first": 10,
+  "after": "Y3Vyc29yOm1vZGVsLm15X3Byb2plY3QuZGltX2N1c3RvbWVycw=="
+}
+```
+
+Repeat until a page returns fewer rows than `first`. That shorter page is the last page.
+
 ### Filters
 
 Filtering helps to narrow down the results of an API query. If you want to query and return only models and tests that are failing or find models that are taking too long to run, you can fetch execution details such as [`executionTime`](/docs/dbt-apis/discovery-schema-job-models#fields), [`runElapsedTime`](/docs/dbt-apis/discovery-schema-job-models#fields), or [`status`](/docs/dbt-apis/discovery-schema-job-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
