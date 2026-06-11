@@ -26,7 +26,7 @@ DuckDB does not require authentication &mdash; it runs locally on your machine.
 
 ### Installing dbt-duckdb
 
-The DuckDB adapter is built into the <Constant name="fusion" /> CLI. To get started, [install dbt Fusion](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2#get-started) as the development interface.
+The DuckDB adapter is built into the <Constant name="fusion" /> CLI. To get started, [install <Constant name="fusion" />](/docs/local/install-dbt). We recommend using the [VS Code Extension](/docs/local/install-dbt?version=2) as the development interface.
 
 #### DuckDB driver and extensions {#driver-and-extensions}
 
