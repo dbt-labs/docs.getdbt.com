@@ -12,3 +12,12 @@
   max-width: 400px;
   font-style: normal;
 }
+
+.termToolTip a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.termToolTip a:hover {
+  color: #fff;
+}

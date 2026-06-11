@@ -16,8 +16,14 @@ Analytics engineering requires more than code generation &mdash; it requires und
 <div style={{maxWidth: '1200px'}} className="grid--3-col">
 
 <Card
-    title="Enable AI in dbt"
-    body="Turn on dbt AI agent and inline AI assistance features for your account in the dbt platform."
+    title="Get started with the local CLI"
+    body="Install dbt Wizard locally and start a terminal session."
+    link="/docs/dbt-ai/wizard-quickstart"
+    icon="wizard"/>
+
+<Card
+    title="Get started in dbt platform"
+    body="Enabled AI in your dbt platform account. Use dbt Wizard for governed dbt data development and dbt Copilot for inline AI assistance in dbt platform."
     link="/docs/platform/enable-dbt-ai"
     icon="wizard"/>
 
@@ -25,13 +31,7 @@ Analytics engineering requires more than code generation &mdash; it requires und
     title="About dbt Wizard"
     body="Purpose-built AI for governed data development in the dbt platform and CLI."
     link="/docs/platform/wizard-overview"
-    icon="wizard"/>
-
-<Card
-    title="dbt Wizard quickstart"
-    body="Get started with dbt Wizard in the dbt platform or your terminal."
-    link="/docs/dbt-ai/wizard-quickstart"
-    icon="wizard"/>
+    icon="wizard"/>    
 
 <Card
     title="dbt Wizard in the platform"
