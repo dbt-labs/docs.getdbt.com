@@ -20,7 +20,7 @@ python -m pip install --upgrade --pre dbt
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
 ```
 
-To use `dbt` immediately after installation, close and reopen or reload your shell so that the new `$PATH` is recognized:
+To use `dbt` immediately after installation, close and reopen your terminal or reload your shell so that the new `$PATH` is recognized:
 
 ```shell
 exec $SHELL
