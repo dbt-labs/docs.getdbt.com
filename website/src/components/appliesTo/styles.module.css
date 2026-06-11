@@ -1,0 +1,28 @@
+.appliesTo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0 16px;
+}
+
+.label {
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.pill {
+    background-color: #E5E7EB;
+    color: #030711;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    line-height: 1.6;
+    display: inline-block;
+}
+
+[data-theme='dark'] .pill {
+    background-color: #374151;
+    color: #F3F4F6;
+}
