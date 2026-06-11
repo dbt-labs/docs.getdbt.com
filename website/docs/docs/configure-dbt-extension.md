@@ -127,7 +127,7 @@ The following steps will explain how to configure environment variables using Po
 
 #### About `.env` file support
 
-The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions. 
+The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available when running dbt commands in the terminal and when using the extension's menu actions.
 
 <EnvFileConsiderations />
 
@@ -238,7 +238,7 @@ To configure environment variables in the terminal session:
 
 
 ## dbt extension settings
-<!-- moved content from website/docs/docs/local/install-dbt?version=2#get-started.md to here -->
+<!-- moved content from website/docs/docs/local/install-dbt?version=2.md to here -->
 
 After installing the dbt extension and configuring your local setup, you may want to configure it to better fit your development workflow:
 

@@ -306,9 +306,11 @@ const sidebarSettings = {
           type: "category",
           label: "dbt local installation",
           collapsed: true,
-          link: { type: "doc", id: "docs/local/install-dbt" },
+          link: { type: "doc", id: "docs/local/about-local" },
           items: [
+            "docs/local/about-local",
             "docs/local/install-dbt",
+            "docs/local/configure-environment-variables",
             "docs/local/profiles.yml",
             "docs/local/connection-profiles",
             "docs/local/dbt-core-environments",
@@ -1612,7 +1614,19 @@ const sidebarSettings = {
           },
           items: [
             "reference/global-configs/about-global-configs",
-            "reference/global-configs/behavior-changes",
+            {
+              type: "category",
+              label: "Behavior changes",
+              link: {
+                type: "doc",
+                id: "reference/global-configs/behavior-changes",
+              },
+              items: [
+                "reference/global-configs/behavior-flag-introduction",
+                "reference/global-configs/behavior-flag-maturity",
+                "reference/global-configs/behavior-flag-removed",
+              ],
+            },
             {
               type: "category",
               label: "Adapter behavior changes",
