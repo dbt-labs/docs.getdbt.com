@@ -26,6 +26,12 @@ To use `dbt` immediately after installation, close and reopen or reload your she
 exec $SHELL
 ```
 
+To upgrade to a newer version:
+
+```shell
+dbt system update
+```
+
 </Expandable>
 
 <Expandable alt_header="CDN installation for Windows">
@@ -38,6 +44,12 @@ To use `dbt` immediately after installation, close and reopen or reload your she
 
 ```powershell
 Start-Process powershell
+```
+
+To upgrade to a newer version:
+
+```shell
+dbt system update
 ```
 
 </Expandable>
