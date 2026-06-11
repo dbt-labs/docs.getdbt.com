@@ -22,6 +22,9 @@ The <Constant name="fusion_engine" /> includes built-in support for:
 - [Databricks](/docs/local/connect-data-platform/databricks-setup)
 - [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup)
 - [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup)
+- [Salesforce Data 360](/docs/local/connect-data-platform/salesforce-data-cloud-setup)
+- [DuckDB](/docs/local/connect-data-platform/duckdb-setup)
+- [Apache Spark](/docs/local/connect-data-platform/spark-setup)
 
 <Constant name="fusion" /> uses [ADBC (Arrow Database Connectivity)](https://arrow.apache.org/adbc/) drivers for high-performance connections to these platforms. No separate adapter installation is required.
 
