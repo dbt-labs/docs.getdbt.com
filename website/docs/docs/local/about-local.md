@@ -1,6 +1,6 @@
 ---
 title: About dbt local installations
-id: about-dbt-local
+id: about-local
 description: "dbt tools and resources that can be installed on your local machine"
 sidebar_label: "About local installation"
 pagination_next: "docs/local/install-dbt"
