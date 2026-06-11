@@ -52,7 +52,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **New:** Public REST API endpoints at `/api/ide/v3/{environment_id}/files/` support <Constant name="studio_ide" /> workspace file operations, including stat, read, write, list, delete, mkdir, and rename. Pass file paths as query parameters.
 - **New:** The `GET /api/ide/v3/{environment_id}/status` endpoint returns the `dbt_version` and `is_fusion` status for a given environment.
 - **New:** The <Constant name="platform_cli" /> Python client's `create_invocation()` method now supports a `workspace` parameter, so you can run invocations against persisted workspace files on workers.
-- **Enhancement:** The [Private Link](/docs/platform/secure/about-privatelink) Endpoint API response now includes an `egress_cidr` field with the egress CIDR block for your Private Link endpoint. Use this value to allowlist the endpoint in your warehouse configuration. The field is nullable and is available on both list and detail endpoints.
+- **Enhancement:** The Private Link Endpoint API response now includes an `egress_cidr` field with the egress CIDR block for your private endpoint. Use this value to allowlist the endpoint in your warehouse configuration. The field is nullable and is available on both list and detail endpoints.
 - **Behavior change:** The `fusion_migration_state` API field now returns `"not-started"` instead of `null` for projects that have not yet begun a Fusion migration. You can also cancel a migration from the `rolled-back` state.
 
 
