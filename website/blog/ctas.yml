@@ -31,7 +31,7 @@
   url: https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=themed-webinar____&utm_term=all_all__
 
 - name: fivetran_dbt_labs_merger_webinar
-  header: "Fivetran + dbt Labs: The merger"
-  subheader: Join us June 25 for what's shipping in dbt and a live Q&A. Save your seat!
-  button_text: Save your seat
+  header: "What's shipping at Fivetran + dbt Labs:"
+  subheader: Faster pipelines, smarter agents on June 25!
+  button_text: Save your seat!
   url: https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__
