@@ -59,7 +59,6 @@ This is the fastest way to get started with dbt locally.
 
 For data practitioners, <Constant name="wizard"/> adds an AI layer that knows your project, not just your code. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
 
-[dbt Wizard](/docs/dbt-ai/wizard-quickstart) also works with <Constant name="core" />. Refer to the [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to add AI-assisted development to your Core workflow.
 
 ## dbt MCP server
 
