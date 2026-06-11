@@ -222,18 +222,19 @@ If you omit `first` and `after`, the API still returns all matching rows today. 
 
 The examples below use a job's `models` list. The same `first` and `after` arguments work for the other job-based resource types listed above.
 
-Before you run the examples, set up [Authorization](#authorization) and your [Discovery API endpoint](#discovery-api-endpoints). In [**Account settings**](/docs/platform/account-settings), copy the GraphQL URL from **Access URLs** and create a [Metadata Only service token](/docs/dbt-apis/service-tokens) under **Service Tokens**.
+Before you run the examples:
 
-To find `jobId` and `runId` for the query variables:
-
-1. From the main menu, go to **Orchestration** > [**Jobs**](/docs/deploy/deploy-jobs) and open the deploy job you want to query.
-2. Copy `jobId` from the job page URL. It is the numeric segment after `jobs/`:
+1. In <Constant name="dbt_platform" />, click your account name in the left sidebar and select [**Account settings**](/docs/platform/account-settings).
+2. Under **Access URLs**, copy your **Metadata** / **Discovery API** GraphQL URL. Refer to [Discovery API endpoints](#discovery-api-endpoints) and [Authorization](#authorization) for URL format and token requirements.
+3. In **Account settings**, open **Service Tokens** and create a [Metadata Only service token](/docs/dbt-apis/service-tokens). Save the token value when it is shown.
+4. From the main menu, go to **Orchestration** > [**Jobs**](/docs/deploy/deploy-jobs) and open the deploy job you want to query.
+5. Copy `jobId` from the job page URL. It is the numeric segment after `jobs/`:
 
    ```text
    /deploy/<account>/projects/<project>/jobs/<jobId>/
    ```
 
-3. Optional: open a run for that job (from the job's run history or **Orchestration** > **Runs**) and copy `runId` from the run URL:
+6. Optional: open a run for that job (from the job's run history or **Orchestration** > **Runs**) and copy `runId` from the run URL:
 
    ```text
    /deploy/<account>/projects/<project>/runs/<runId>
@@ -241,7 +242,7 @@ To find `jobId` and `runId` for the query variables:
 
    If you omit `runId` in the query, the API uses the job's latest run.
 
-You can also look up job and run IDs with the [Admin API](/docs/dbt-apis/admin-api). Run the query with the [GraphQL explorer](#run-queries-with-the-graphql-explorer) or [HTTP requests](#run-queries-using-http-requests).
+7. Run the query with the [GraphQL explorer](#run-queries-with-the-graphql-explorer) or [HTTP requests](#run-queries-using-http-requests). You can also look up job and run IDs with the [Admin API](/docs/dbt-apis/admin-api).
 
 **First page**
 
