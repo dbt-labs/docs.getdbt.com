@@ -137,33 +137,71 @@ Several behavior change flags on the <Constant name="dbt_platform" /> Latest rel
 | [`require_yaml_configuration_for_mf_time_spines`](#require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
 | [`validate_macro_args`](#validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
-To retain the legacy behavior after these flags reach maturity, set them to `false` in your `dbt_project.yml`:
-
-<File name='dbt_project.yml'>
-
-```yml
-flags:
-  skip_nodes_if_on_run_start_fails: false
-  require_nested_cumulative_type_params: false
-  require_all_warnings_handled_by_warn_error: false
-  require_batched_execution_for_custom_microbatch_strategy: false
-  state_modified_compare_more_unrendered_values: false
-  require_yaml_configuration_for_mf_time_spines: false
-  validate_macro_args: false
-```
-
-</File>
-
 ### `skip_nodes_if_on_run_start_fails`
 
 If your project uses `on-run-start` hooks for non-critical work (for example, telemetry, notifications, audit inserts, attaching session settings), your build will stop producing output whenever a hook fails. Tables and views that previously refreshed daily will stop updating the next time the hook fails.
 
 For more information, refer to [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end).
 
+<Expandable alt_header="Recommended actions">
+
+If every model is skipped after an `on-run-start` hook fails, find which `on-run-start` hook failed in the run log &mdash; it appears as an `ERROR` immediately before all the nodes marked `SKIP`. 
+
+To opt out of this behavior, set the flag to `false`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  skip_nodes_if_on_run_start_fails: false
+```
+
+</File>
+
+</Expandable>
+
 
 ### `require_nested_cumulative_type_params`
 
 Any project with a cumulative metric still using the un-nested syntax stops parsing entirely on the first command. Because parsing fails, the error affects every dbt command: `run`, `build`, `test`, `compile`, `docs generate`, the <Constant name="semantic_layer" />, and more.
+
+<Expandable alt_header="Recommended actions">
+
+If `dbt parse` fails with `Semantic Manifest validation failed` referencing one or more cumulative metrics, migrate the metrics by moving `window` and `grain_to_date` from `type_params` into `type_params.cumulative_type_params`:
+
+```yaml
+# Before (legacy)
+metrics:
+  - name: weekly_active_users
+    type: cumulative
+    type_params:
+      measure: distinct_users
+      window: 7 days
+
+# After (nested)
+metrics:
+  - name: weekly_active_users
+    type: cumulative
+    type_params:
+      measure: distinct_users
+      cumulative_type_params:
+        window: 7 days
+```
+
+Re-run `dbt parse` to confirm the manifest validates. 
+
+To opt out of this behavior, set the flag to `false`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_nested_cumulative_type_params: false
+```
+
+</File>
+
+</Expandable>
 
 
 ### `require_all_warnings_handled_by_warn_error`
@@ -178,22 +216,36 @@ Example warnings that switch from "log only" to "error" for `warn_error: true` u
 - `RunResultWarningMessage` — emitted when a test or model returns `WARN` status
 - Various adapter-level warnings not previously handled by `--warn-error`
 
-<Expandable alt_header="Resolving build failures from this flag">
+<Expandable alt_header="Recommended actions">
 
-If your project uses `--warn-error` and builds are failing after this flag was enabled, follow these steps to identify and resolve the build failures:
+If a job using `warn_error: true` or `--warn-error` fails with `EventCompilationError` at parse or run time for an event class that previously only appeared as a log line, you can silence specific warnings with `warn_error_options`:
 
-1. Run a full build without partial parsing to surface all failures:
+<File name='dbt_project.yml'>
 
-   ```bash
-   dbt build --no-partial-parse
-   ```
+```yaml
+flags:
+  warn_error_options:
+    silence:
+      - JinjaLogWarning
+      - WarnStateTargetEqual
+      - RunResultWarningMessage
+      - SelectExcludeIgnoredWithSelectorWarning
+```
 
-   Some errors are only emitted at parse time, so skipping partial parsing ensures you see the full picture.
+</File>
 
-2. Review the logs and look for error names listed above (for example, `JinjaLogWarning`, `WarnStateTargetEqual`, or `RunResultWarningMessage`).
-3. Fix the underlying issue for each failure in your development environment and confirm the build passes.
-4. Verify builds pass in your CI environment (if you have one).
-5. Verify builds pass in your production environment.
+You can also use the `warn` list to keep specific events as warnings even when `--warn-error` would otherwise escalate them to errors.
+
+To opt out of this behavior, set the flag to `false`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_all_warnings_handled_by_warn_error: false
+```
+
+</File>
 
 </Expandable>
 
@@ -210,6 +262,41 @@ If you have overridden `get_incremental_microbatch_sql` &mdash; typically to wor
 
 Projects without a custom microbatch macro are unaffected; the built-in macro already runs in batches.
 
+<Expandable alt_header="Recommended actions">
+
+If a microbatch model errors mid-run, produces duplicate rows or `MERGE`/`INSERT` conflicts, or reprocesses the full date range for every batch, check whether the `get_incremental_microbatch_sql` macro filters by the `event_time_start` / `event_time_end` window. If it uses a hard-coded date filter (for example, `here event_ts >= current_date - interval '1 day'`) or reads only `_dbt_max_partition`, the macro ignores the per-batch window and reprocesses the full range on every iteration.
+
+To fix, rewrite the macro to use the per-batch window. For example:
+
+```sql
+{% macro get_incremental_microbatch_sql(arg_dict) %}
+    {%- set target = arg_dict["target_relation"] -%}
+    {%- set source = arg_dict["temp_relation"] -%}
+    {%- set event_time = arg_dict["incremental_predicates"] -%}
+
+    -- Use the per-batch window dbt passes in via event_time_start/event_time_end
+    -- (exposed through arg_dict["incremental_predicates"] or model.config.event_time_*),
+    -- NOT a hard-coded date filter.
+    insert into {{ target }}
+    select * from {{ source }}
+{% endmacro %}
+```
+
+To verify, run `dbt run --event-time-start <date> --event-time-end <date> -s <model>` for a single batch and confirm the row count matches that one day.
+
+To opt out of this behavior, set the flag to `false`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_batched_execution_for_custom_microbatch_strategy: false
+```
+
+</File>
+
+</Expandable>
+
 
 ### `state_modified_compare_more_unrendered_values`
 
@@ -217,6 +304,31 @@ Flipping the default to `true` for this flag silently changes the `state:modifie
 
 - **False "modified" on the first run after the flag flips.** If the baseline manifest was captured before the flag flipped (rendered values stored) and the current parse runs after the flip (literal text stored), every node whose YAML config contains Jinja will appear as `state:modified`, even if nothing has changed. This causes a full rebuild on the first CI run after the upgrade.
 - **New positives going forward.** After both manifests are captured with the flag enabled, `state:modified` will catch cases where two equivalent Jinja expressions render to the same value (for example, switching from `"{{ env_var('MAT', 'view') }}"` to `view`).
+
+<Expandable alt_header="What to expect">
+
+On the first CI or Slim CI run after the flag flips, any node whose YAML config uses Jinja (`env_var`, `var`, conditional materialization) may appear as `state:modified` even if nothing changed. This is because the baseline manifest stored rendered values while the new parse stores literal Jinja text &mdash; the two sides of the comparison differ on serialization, not on real changes. 
+
+Once your production job runs once on the **Latest** release track and generates a new baseline manifest, both sides of the `state:modified` comparison use the same format and the extra diffs disappear.
+
+No code change is required. The cost is one extra rebuild cycle for affected nodes.
+
+This new behavior fixes the legacy behavior. Previously, the comparison silently missed real changes to Jinja expressions (for example, switching from `"{{ env_var('MAT', 'view') }}"` to `view` renders identically and was never caught). With this flag enabled, `state:modified` is more accurate going forward.
+
+To opt out, set the flag to `false` in `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  state_modified_compare_more_unrendered_values: false
+```
+
+</File>
+
+Opting out is recommended during a production deploy freeze or if your project has heavy Jinja in YAML configs and the one-time rebuild would exceed your CI compute budget. Otherwise, it is recommended to have this flag enabled.
+
+</Expandable>
 
 
 ### `require_yaml_configuration_for_mf_time_spines`
@@ -228,9 +340,58 @@ This flag has no functional impact; the legacy time-spine model continues to wor
 
 For more information, refer to [MetricFlow timespine](/docs/build/metricflow-time-spine).
 
+<Expandable alt_header="Opting out of this flag">
+
+No action is required for most projects. The legacy `metricflow_time_spine.sql` model continues to work with or without this flag.
+
+If you rely on the `MFTimespineWithoutYamlConfigurationDeprecation` warning firing under `--warn-error` to enforce a YAML migration, you can opt out by setting the flag to `false` in `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  require_yaml_configuration_for_mf_time_spines: false
+```
+
+</File>
+
+To remove the deprecation warning permanently, migrate `metricflow_time_spine.sql` to a YAML `time_spine` block under a model entry in `models:`. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for the current syntax.
+
+</Expandable>
+
 
 ### `validate_macro_args`
 
 On its own, the flag emits warnings and builds continue. However, these warnings use the force-handled path and respect `--warn-error`, so projects with `--warn-error` set will see build failures at parse time.
 
 This affects projects where the `arguments:` listed in a macro's YAML patch no longer match the macro's actual Jinja signature. For those projects, every command fails at parse time until you either update the YAML arguments to match the macro or remove the `arguments:` block entirely.
+
+<Expandable alt_header="Recommended actions">
+
+If `InvalidMacroAnnotation` warnings are appearing at parse time (or causing parse failures with `--warn-error` set), check each log line &mdash; it names the macro and the specific mismatch. In the `macros:` YAML block for each affected macro, align the `arguments:` entries with the `{% macro name(args) %}` declaration in the `.sql` file, or remove the `arguments:` block entirely.
+
+To silence the warnings without fixing the YAML, use `warn_error_options`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  warn_error_options:
+    silence:
+      - InvalidMacroAnnotation
+```
+
+</File>
+
+To opt out of this behavior, set the flag to `false`:
+
+<File name='dbt_project.yml'>
+
+```yaml
+flags:
+  validate_macro_args: false
+```
+
+</File>
+
+</Expandable>
