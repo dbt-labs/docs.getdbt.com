@@ -12,9 +12,19 @@ tags: [AI, Wizard, Privacy]
 dbt Labs is committed to protecting your privacy and data. This page explains how <Constant name="wizard" /> in the <Constant name="dbt_platform" /> handles your data.
 </IntroText>
 
+<Expandable alt_header="Does dbt Wizard access my warehouse data?">
+
+<Constant name="wizard" /> can initiate dbt commands and run queries on your behalf. When those actions run, <Constant name="wizard" /> can view the resulting outputs &mdash; which may include row-level data &mdash; to respond in your session. <Constant name="wizard" /> does not extract raw warehouse data outside of your controlled environment. Any warehouse query requires your explicit permission before it runs. You should always review AI output for completeness and accuracy.
+</Expandable>
+
+<Expandable alt_header="Does dbt Wizard store or use personal data?">
+
+<Constant name="wizard" /> stores your conversation history &mdash; including your prompts, responses, and any query results returned during your session &mdash; so you can revisit past chats. Conversation content is encrypted at rest and in transit. History is retained for 90 days and is only visible to you; dbt Labs cannot access or decrypt it. You can delete your conversation history at any time in the product. dbt Labs does not use your prompts, chat history, or command results for model training.
+</Expandable>
+
 <Expandable alt_header="Is my data used by dbt Labs to train AI models?">
 
-No. <Constant name="wizard" /> in the <Constant name="dbt_platform" /> does not use client warehouse data to train AI models. It uses API calls to an AI provider.
+No. dbt Labs does not use customer content processed by <Constant name="wizard" /> &mdash; including warehouse query results, prompts, or conversation history &mdash; for AI model training. A zero data retention (ZDR) policy is also in place with AI providers, which prevents training on the provider side as well.
 </Expandable>
 
 <Expandable alt_header="Does dbt Labs share my personal data with third parties?">
@@ -22,20 +32,12 @@ No. <Constant name="wizard" /> in the <Constant name="dbt_platform" /> does not 
 dbt Labs only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
 </Expandable>
 
-<Expandable alt_header="Does dbt Wizard store or use personal data?">
-
-The user opens <Constant name="wizard" /> and prompts the agent. <Constant name="wizard" /> in the <Constant name="dbt_platform" /> uses the context needed to perform the requested action.
-</Expandable>
-
-<Expandable alt_header="Does dbt Wizard access my warehouse data?">
-
-<Constant name="wizard" /> in the <Constant name="dbt_platform" /> uses metadata, including column names, model SQL, model names, and model documentation. Row-level data from the warehouse is never used or sent to a third-party provider. You must double-check AI output for completeness and accuracy.
-</Expandable>
-
 <Expandable alt_header="Can dbt Wizard data be deleted upon client written request?">
 
-Data from using <Constant name="wizard" /> in the <Constant name="dbt_platform" />, aside from usage data, does not persist on dbt Labs systems. Usage data is retained by dbt Labs. dbt Labs does not have possession of any personal or sensitive data. To the extent a client identifies personal or sensitive information uploaded by or on behalf of the client to dbt Labs systems, that data can be deleted within 30 days of written request.
+Yes. <Constant name="wizard" /> conversation history is retained for 90 days by default, and you can delete chats in the product at any time. Conversation data &mdash; including query results stored in conversation history &mdash; is encrypted and only decrypted at your request. To the extent a client identifies personal or sensitive information uploaded to dbt Labs systems, that data can be deleted within 30 days of written request.
 </Expandable>
+
+
 
 ## Related docs
 
