@@ -61,7 +61,7 @@ Common issues and resolutions:
 
 <TabItem value="CoreV2" label="dbt Core v2">
 
-## Install dbt Core v2 CLI <Lifecycle status="alpha" />
+## Install dbt Core v2 CLI <Lifecycle status="Alpha" />
 
 :::caution dbt Core v2 is in alpha
 dbt Core v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable local development, use <Constant name="fusion" />.
