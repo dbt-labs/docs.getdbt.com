@@ -43,7 +43,7 @@ For most users, the recommended path is to install Fusion as it includes all of 
 Install Fusion using pip, or see all [installation options](/docs/local/install-dbt?version=2.0) (brew, winget, CDN):
 
 ```shell
-pip install dbt
+python -m pip install --pre dbt
 ```
 
 ### dbt Core v2.0
@@ -52,12 +52,12 @@ If you specifically need the open-source distribution of v2, install dbt Core. D
 
 Pre-release version:
 ```shell
-pip install --pre dbt-core
+python -m pip install --pre dbt-core
 ```
 
 Explicit pin:
 ```shell
-pip install dbt-core==2.0.0-alpha.1
+python -m pip install dbt-core==2.0.0-alpha.1
 ```
 
 ## What to know before upgrading
