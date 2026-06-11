@@ -9,6 +9,18 @@ sidebar_label: "Connect Salesforce Data 360"
 
 The <Constant name="fusion_engine" /> in <Constant name="dbt_platform" /> supports connecting to Salesforce Data 360.
 
+## Prerequisites
+
+Before connecting dbt to Salesforce Data 360, you need the following:
+
+- A Data 360 instance
+- [An external client app that dbt connects to for the Data 360 instance](https://help.salesforce.com/s/articleView?id=xcloud.create_a_local_external_client_app.htm&type=5), with [OAuth configured](https://help.salesforce.com/s/articleView?id=xcloud.configure_external_client_app_oauth_settings.htm&type=5). OAuth scopes must include:
+  - `api` — To manage user data via APIs.
+  - `refresh_token`, `offline_access` — To perform requests at any time, even when the user is offline or tokens have expired.
+  - `cdp_query_api` — To execute ANSI SQL queries on Data 360 data.
+- [A private key and the `server.key` file](https://developer.salesforce.com/docs/atlas.en-us.252.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_key_and_cert.htm)
+- `Data Cloud Architect` and `Data Cloud User`  permissions
+
 ## Connection fields
 
 To connect to Salesforce Data 360, configure the connection settings and provide your credentials.
@@ -34,13 +46,6 @@ Enter the following credentials to authenticate with Salesforce Data 360:
 | Username | Your Salesforce Data 360 username. | user.name@example.com |
 | Client ID | The `Consumer Key` of the Salesforce Data 360 app. | |
 | Private Key | The private key for JWT bearer flow authentication. | |
-
-## Warehouse permissions
-
-You need to have the following permissions in Salesforce to use this connection in the <Constant name="dbt_platform" />:
-
-- Data Cloud Architect
-- Data Cloud User
 
 ## Authentication method
 
