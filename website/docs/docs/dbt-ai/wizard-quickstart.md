@@ -44,7 +44,7 @@ On <Constant name="fusion_engine"/> (version 2.0 and later), start <Constant nam
 You'll need:
 
 - An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, or Snowflake Cortex (preview)
-- A dbt project set up locally
+- A dbt project with a built `target/` directory (run `dbt parse`, `dbt compile`, or `dbt build`)
 
 <WizardCliDbtCliSupport />
 

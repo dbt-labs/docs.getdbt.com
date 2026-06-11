@@ -23,9 +23,7 @@ Install the <Constant name="wizard" /> CLI from your terminal for agentic and go
 This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
 (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
 
-To learn more about <Constant name="wizard" /> and see it in action, check out the [demo video](https://www.youtube.com/watch?v=-lIzh1xQWMA)!
-
-## Install dbt Wizard CLI
+Run the following command to install the <Constant name="wizard"/> CLI:
 
 <WizardCliInstall />
 
@@ -38,8 +36,6 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 - Credentials for a supported CLI provider. Refer to [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) in the next section.
 
 <WizardCliDbtCliSupport />
-
-<WizardFeedbackCallout />
 
 <WizardSupportedProviders />
 
@@ -57,7 +53,8 @@ Run the following command to update <Constant name="wizard" /> to the latest ver
 wizard system update
 ```
 
-
+<!--
+incorrect command and commenting out until correct command provided
 ## Uninstall
 
 Run the following command to uninstall <Constant name="wizard" />:
@@ -65,7 +62,7 @@ Run the following command to uninstall <Constant name="wizard" />:
 ```bash
 wizard system uninstall
 ```
-
+-->
 
 ## Telemetry
 
@@ -81,3 +78,5 @@ For details about what is collected, what is not collected, and how to opt out o
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios
 - [Migrate from another AI agent](/docs/dbt-ai/wizard-migrate): Migrate from another AI agent to <Constant name="wizard" />
 - [CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry): What <Constant name="wizard" /> CLI collects and how to opt out
+
+<WizardFeedbackCallout />
