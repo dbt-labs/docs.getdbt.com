@@ -13,7 +13,7 @@ This page lines up about 20 common ANSI SQL functions side by side so you can sp
 The **Applies to** badge under each function shows every data platform it's available on, not just the two compared here.
 
 :::tip Looking for the full list?
-This page is a curated comparison, not an exhaustive catalog. For every built-in function and whether <Constant name="fusion"/> can typecheck it, see [Snowflake functions in Fusion](/reference/resource-configs/snowflake-function-support) and [BigQuery functions in Fusion](/reference/resource-configs/bigquery-function-support).
+This page is a curated comparison, not an exhaustive catalog. For every built-in function and whether <Constant name="fusion"/> can typecheck it, see [Snowflake functions in Fusion](/reference/resource-configs/snowflake-function-support) and BigQuery functions in Fusion (ADD BQ SQL FUNCTIONS LINK).
 :::
 
 ## Functions where the arguments differ
