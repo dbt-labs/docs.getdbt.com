@@ -18,8 +18,8 @@ const SNIPPETS_DIR = path.join(__dirname, '..', 'snippets');
 
 function buildTable(functions) {
   const header = [
-    '| Function | Category | Fusion typechecking | Availability |',
-    '|------|----------|:-------------------:|--------------|',
+    '| <div style={{minWidth:"200px"}}>Function</div> | Category | Fusion typechecking |',
+    '|------|----------|:-------------------:|',
   ].join('\n');
 
   const escape = (s) => s
@@ -34,7 +34,7 @@ function buildTable(functions) {
     const l2 = f.fusion_typecheck ? '✓' : '—';
     const safeName = escape(f.name);
     const nameCell = `<a href="${f.docs_url}">${safeName}</a>`;
-    return `| ${nameCell} | ${escape(f.category)} | ${l2} | ${f.preview_status} |`;
+    return `| ${nameCell} | ${escape(f.category)} | ${l2} |`;
   });
 
   return [header, ...rows].join('\n');
