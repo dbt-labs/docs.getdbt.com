@@ -443,7 +443,7 @@ For your next steps:
 - **Monitor savings**: Use [Cost Insights](/docs/explore/cost-insights) to track models built vs. reused.
 - **Train your team**: Share <Constant name="fusion" /> features and best practices with your team.
 - **Explore new features**: Check out column-level lineage, live CTE previews, and other <Constant name="fusion" />-powered capabilities.
-- **Stay informed**: Follow the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for updates on new features.
+- **Stay informed**: Follow the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for updates on new features.
 
 :::tip Share your success
 
