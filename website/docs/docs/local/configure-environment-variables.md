@@ -1,5 +1,5 @@
 ---
-title: Install dbt
+title: Configure environment variables
 id: configure-environment-variables
 description: "Configure environment variables"
 sidebar_label: "Environment variables"

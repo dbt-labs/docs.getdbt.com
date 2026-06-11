@@ -245,6 +245,7 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 
 ## Next steps
 
+- Configure [environment variables](/docs/local/configure-environment-variables) to manage credentials.
 - Configure your [profiles.yml](/docs/local/profiles.yml#location-of-profilesyml) file.
 - Configure your [data platform connection](/docs/local/connect-data-platform/about-dbt-connections).
 - Create your first [dbt project](/docs/build/projects) using the [`dbt init`](/reference/commands/init) command. 
