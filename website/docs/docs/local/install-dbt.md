@@ -1,74 +1,17 @@
 ---
-title: Install dbt
+title: Install dbt locally
 id: install-dbt
 description: "Learn how to install dbt in local environments"
 sidebar_label: "Install dbt"
-pagination_next: "docs/local/dbt-core-environments"
+pagination_next: "docs/local/configure-environment-variables"
 pagination_prev: null
 ---
 
-dbt enables data teams to transform data using analytics engineering best practices. You can run dbt locally through a command line interface (CLI) to build, test, and deploy your data transformations.
-
-## dbt Fusion engine (recommended)
-
-For the best local development experience, we recommend the <Constant name="fusion_engine" />. Built in Rust, <Constant name="fusion" /> delivers:
-
-- **Faster performance** &mdash; Up to 10x faster parsing, compilation, and execution.
-- **SQL comprehension** &mdash; Dialect-aware validation catches errors before they reach your warehouse.
-- **Column-level lineage** &mdash; Trace data flow across your entire project.
-
-[Install Fusion now!](/docs/local/install-dbt?version=2#installation)
-
-### dbt VS Code extension
-
-The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant name="fusion" />'s performance with powerful <Term id="lsp"/> editor features:
-
-- **IntelliSense** &mdash; Autocomplete for models, macros, and columns.
-- **Inline errors** &mdash; See SQL errors as you type.
-- **Hover insights** &mdash; View model definitions and column info without leaving your code.
-- **Refactoring tools** &mdash; Rename models and columns across your project.
-
-This is the fastest way to get started with dbt locally.
-
-[Install Fusion with the dbt VS Code extension](/docs/local/install-dbt?version=2#installation)
-
-### dbt Wizard
-
-[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is a natural next step for local dbt development. It works with both <Constant name="fusion_engine" /> and <Constant name="core" /> — [dbt Wizard](/docs/dbt-ai/wizard-quickstart) adds an AI agent that works with a live understanding of your entire project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
-
-- **Build and refactor from natural language**: Describe the change, get a reviewable diff, approve before anything is written.
-- **Validate in a tight loop**: Every proposed change compiles and runs against your warehouse, catching issues before production.
-- **Navigate with full project context**: Traverse the [DAG](/docs/explore/explore-projects), surface downstream impact, and keep tests and YAML in sync as models evolve.
-
-For data practitioners, <Constant name="wizard"/> adds an AI layer that knows your project — not just your code. See [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to get started.
-
-## dbt Core
-
-dbt Core is the open-source engine for running dbt locally. It is available in two versions:
-
-- [<Constant name="core_v1" />](/docs/local/install-dbt?version=1): The original Python-based dbt engine with a rich set of features.
-- [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) <Lifecycle status="alpha" />: The next major version, built on the Fusion runtime. Currently in alpha.
-
-[<Constant name="core_v1" />](/docs/local/install-dbt?version=1) includes:
-
-- **Apache License 2.0** &mdash; <Constant name="core" /> is open source now and forever.
-- **Community adapters** &mdash; An amazing community of contributors has built adapters for a vast [catalog of data warehouses](/docs/supported-data-platforms).
-- **Code editor support** &mdash; Build your dbt project in popular editors like VS Code or Cursor.
-- **Command line interface** &mdash; Run your project from the terminal using macOS Terminal, iTerm, or the integrated terminal in your code editor.
-
-[Install dbt Core now!](/docs/local/install-dbt?version=1#installation)
-
-[dbt Wizard](/docs/dbt-ai/wizard-quickstart) also works with <Constant name="core" /> — see [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart) to add AI-assisted development to your Core workflow.
-
-## Installation
-
-<VersionBlock firstVersion="2.0">
-
-The <Constant name="fusion_engine" /> provides faster parsing, compilation, and execution. Choose your preferred installation method:
+Get dbt running on your machine in a few minutes. Choose your path:
 
 <Tabs>
 
-<TabItem value="cli" label="Fusion CLI">
+<TabItem value="Fusion" label="Fusion + dbt extension (recommended)" default>
 
 import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
@@ -78,89 +21,24 @@ import FusionManualInstall from '/snippets/_fusion-manual-install.md';
 
 <FusionManualInstall />
 
-## Update Fusion
+## Install the extension
 
-The following command will update to the latest version of Fusion and adapter code:
+Install the dbt VS Code extension on [VS Code, Cursor](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt&ssr=false#overview), and [Windsurf](https://open-vsx.org/extension/dbtLabsInc/dbt)
 
-```shell
-dbtf system update
-```
+1. In your editor, open the **Extensions** tab and search for `dbt`.
+2. Locate the extension from the publisher `dbtLabsInc` or `dbt Labs Inc`, then click **Install**.
 
-## Uninstall Fusion
+    <Lightbox src="/img/docs/extension/extension-marketplace.png" width="90%" title="Search for the extension"/>
 
-This command will uninstall the Fusion binary from your system, but aliases will remain wherever they are installed (for example `~/.zshrc`):
+3. Confirm that the extension is active by checking for the **dbt Extension** label in the status bar. Hover over the label to view diagnostic information.
 
-```shell
-dbtf system uninstall
-```
+    <Lightbox src="/img/docs/extension/dbt-extension-statusbar.png" width="60%" title="If you see the 'dbt Extension' label, the extension is activated"/>
 
-## Adapter installation
+4. After the extension activates, it automatically downloads the correct dbt Language Server (<Term id="lsp"/>) for your operating system.
 
-Database drivers used by adapters are **not** bundled in the <Constant name="fusion" /> binary. Instead, <Constant name="fusion" /> automatically downloads the correct [ADBC](https://arrow.apache.org/adbc/) driver for your data platform the first time you run a dbt command (such as `dbt run`, `dbt debug`, or `dbt compile`). <Constant name="fusion" /> detects which driver you need based on your `profiles.yml` configuration and downloads it from the dbt Labs CDN at the time of first connection.
+    <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="The dbt Language Server will be installed automatically"/>
 
-For supported adapters, refer to [Fusion requirements](/docs/fusion/supported-features#requirements). For details on network access requirements (including restricted network environments), refer to [Networking requirements](/docs/fusion/fusion-networking).
-
-## Environment variables
-
-<Constant name="fusion"/> automatically loads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal). This helps you manage credentials and settings without hardcoding them in your `profiles.yml` or exposing them in your shell history.
-
-### Using a `.env` file
-
-1. Create a `.env` file in your current working directory (typically at the root of your dbt project):
-   ```env
-   DBT_MY_DATABASE=my_database
-   DBT_MY_SCHEMA=my_schema
-   DBT_SECRET_KEY=my_secret_value
-   ```
-
-2. Reference these variables in your `profiles.yml` using the [`env_var` Jinja function](/reference/dbt-jinja-functions/env_var):
-   ```yaml
-   my_profile:
-     target: dev
-     outputs:
-       dev:
-         type: snowflake
-         account: my_account
-         database: "{{ env_var('DBT_MY_DATABASE') }}"
-         schema: "{{ env_var('DBT_MY_SCHEMA') }}"
-   ```
-
-3. Run dbt commands normally. <Constant name="fusion"/> will automatically load the variables from the `.env` file. For example, running `dbtf debug` will show your connection using the values from `.env`:
-   ```shell
-   dbtf debug
-   ...
-   Debugging connection:
-   "authenticator": "my_authenticator",
-   "account": "my_account",
-   "user": "my_user",
-   "database": "my_database",        # Loaded from DBT_MY_DATABASE in .env
-   "schema": "my_schema",            # Loaded from DBT_MY_SCHEMA in .env
-   ```
-
-:::note
-We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or <VersionBlock lastVersion="1.10">`DBT_PROJECT_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROJECT_DIR`</VersionBlock> environment variable, and dbt won't search your project root if you're running commands from a different directory location.
-:::
-
-### Precedence order
-
-When the same environment variable is defined in multiple places, <Constant name="fusion"/> uses the following precedence order (highest to lowest):
-
-1. Shell environment &mdash; Variables set directly in your shell (for example, `export DBT_MY_VAR=value`)
-2. `.env` file &mdash; Variables defined in the `.env` file in your current working directory
-
-This means environment variables set in your shell always override values from the `.env` file.
-
-:::tip
-Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to version control. The `dbtf init` command automatically includes `.env` in the generated `.gitignore` file.
-:::
-
-For more details on managing environment variables locally, refer to [Configure your local environment](/docs/configure-dbt-extension#set-environment-variables-locally).
-
-## profiles.yml location
-
-<Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or `profiles.yml` in arbitrary working directories.
-
-For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/profiles.yml#location-of-profilesyml).
+Check out the [dbt VS Code extension docs](/docs/about-dbt-extension) for more information.
 
 ## Troubleshooting
 
@@ -182,44 +60,39 @@ import AboutFusion from '/snippets/_about-fusion.md';
 
 </TabItem>
 
-<TabItem value="vscode" label="VS Code extension" default>
+<TabItem value="CoreV2" label="dbt Core v2">
 
-import InstallExtension from '/snippets/_install-dbt-extension.md'; 
-
-<InstallExtension/>
-
-</TabItem>
-</Tabs>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.99">
-
-[<Constant name="core" />](https://github.com/dbt-labs/dbt-core) is an open-source project where you can develop from the command line and run your dbt project.
-
-:::info How we set up our computers for working on dbt projects
-
-We've written a [guide](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243) for our recommended setup when running dbt projects using <Constant name="core" />.
-
+:::caution dbt Core v2 is in alpha
+dbt Core v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable local development, use <Constant name="fusion" />.
 :::
 
-If you're using the command line, we recommend learning some basics of your terminal to help you work more effectively. In particular, it's important to understand `cd`, `ls` and `pwd` to be able to navigate through the directory structure of your computer easily. If you've never used the terminal before, check out the [terminal guide](/guides/terminal-guide).
+dbt Core v2 is the next major version of dbt Core, built on the <Constant name="fusion_engine" /> runtime. It is installed using `pip`, same as v1, but targets the v2 prerelease package.
 
-<Tabs>
-<TabItem value="pip" label="pip" default>
+**Installation with pip:**
 
-You need to use `pip` to install dbt Core on Windows, Linux, or MacOS operating systems.
+```shell
+python -m pip install --pre dbt-core
+```
 
-You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt-core/).
+```shell
+dbt --version
+```
 
-<FAQ path="Core/install-pip-os-prereqs" />
-<FAQ path="Core/install-python-compatibility" />
+Confirm the installed version begins with `2.`.
 
-## What is a Python virtual environment?
+<AboutFusion />
 
-A Python virtual environment creates an isolated workspace for Python projects, preventing conflicts between dependencies of different projects and versions.
+</TabItem>
 
-You can create virtual environments using tools like [conda](https://anaconda.org/anaconda/conda), [poetry](https://python-poetry.org/docs/managing-environments/) or `venv`. This guide uses `venv` because it's lightweight, has the fewest additional dependencies, and is included in Python by default.
+<TabItem value="Core" label="dbt Core v1">
+
+dbt Core v1 is the original OSS offering. It installs and runs in a Python virtual environment. We recommend `pip` installation, but you can also use Docker or install directly from the source. 
+
+
+<Expandable alt_header="Pip installation" >
+
+Use `pip` to install dbt Core on Windows, Linux, or macOS operating systems.
+
 
 ### Prerequisites
 
@@ -229,20 +102,20 @@ You can create virtual environments using tools like [conda](https://anaconda.or
 - Have the necessary permissions to create directories and install packages on your machine.
 - Once you've met the prerequisites, follow these steps to set up your virtual environment.
 
-### Set up a Python virtual environment 
+### Create virtual environment
 
-`venv` will set up a Python virtual environment within the `env` folder.
+`venv` will set up a Python virtual environment within the `.venv` folder.
 
 Depending on the operating system you use, you'll need to execute specific steps to set up a virtual environment. 
 
-To set up a Python virtual environment, navigate to your project directory and execute the command. This will generate a new virtual environment within a local folder that you can name anything.  [Our convention](https://github.com/dbt-labs/dbt-core/blob/1.latest/CONTRIBUTING.md#virtual-environments) has been to name it `env` or `env-anything-you-want`
+To set up a Python virtual environment, navigate to your project directory and execute the command. This will generate a new virtual environment within a local folder that you can name anything.
 
 <Tabs>
   <TabItem value="Unix/macOS" label="Unix/macOS">
     1. Create your virtual environment:
 
     ```shell
-    python3 -m venv env
+    python3 -m venv .venv
     ```
 
     2. Activate your virtual environment:
@@ -264,7 +137,7 @@ To set up a Python virtual environment, navigate to your project directory and e
     ```
   </TabItem>
 
-  <TabItem value="Windows" label="Windows">
+<TabItem value="Windows" label="Windows">
 
     Note: Syntax may vary slightly depending on the program. For example, bash would be `source env/Scripts/activate`. The following examples use PowerShell:
     
@@ -480,9 +353,9 @@ dbt --version
 
 </Expandable>
 
-</TabItem>
+</Expandable>
 
-<TabItem value="docker" label="Docker">
+<Expandable alt_header="Docker">
 
 <Constant name="core" /> and all adapter plugins maintained by dbt Labs are available as [Docker](https://docs.docker.com/) images, and distributed via [GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages) in a [public registry](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core).
 
@@ -547,9 +420,9 @@ In particular, the Dockerfile supports building images:
 
 Please note that, if you go the route of building your own Docker images, we are unable to offer dedicated support for custom use cases. If you run into problems, you are welcome to [ask the community for help](/community/resources/getting-help) or [open an issue](/community/resources/contributor-expectations#issues) in the `dbt-core` repository. If many users are requesting the same enhancement, we will tag the issue `help_wanted` and invite community contribution.
 
-</TabItem>
+</Expandable>
 
-<TabItem value="source" label="Source">
+<Expandable alt_header="Source">
 
 <Constant name="core" /> and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install from source if you want the latest code or want to install dbt from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.
 
@@ -598,6 +471,8 @@ To install in editable mode, such as while contributing, use `python -m pip inst
 <FAQ path="Core/install-python-compatibility" />
 <FAQ path="Core/install-pip-best-practices" />
 
+</Expandable>
+
 </TabItem>
 </Tabs>
 
@@ -623,8 +498,12 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 
 After installing <Constant name="core" />, create your first [dbt project](/docs/build/projects) using the [`dbt init`](/reference/commands/init) command. This initializes a new project with the standard dbt directory structure and helps verify that your installation is working as expected.
 
+## profiles.yml location
+
+<Constant name="fusion"/> searches for `profiles.yml` in the `--profiles-dir` flag (if specified), project root directory, or `~/.dbt/` directory. Unlike <Constant name="core"/>, <Constant name="fusion"/> does not support the <VersionBlock lastVersion="1.10">`DBT_PROFILES_DIR`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_PROFILES_DIR`</VersionBlock> environment variable or `profiles.yml` in arbitrary working directories.
+
+For complete details on profiles.yml configuration and search order, refer to [About profiles.yml](/docs/local/profiles.yml#location-of-profilesyml).
+
 ### Related content
 
 - [Quickstart for dbt Core from a manual install](https://docs.getdbt.com/guides/manual-install?step=1)
-
-</VersionBlock>
