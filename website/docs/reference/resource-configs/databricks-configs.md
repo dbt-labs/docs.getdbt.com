@@ -1342,7 +1342,7 @@ Set the refresh schedule for the model using one of three mutually exclusive mod
 |------|--------|--------|---------|
 | `cron` | `schedule: { 'cron': '...', 'time_zone_value': '...' }` | Cron string ([Databricks format](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters)). `time_zone_value` is optional. | All |
 | `every` | `schedule: { 'every': '<n> <unit>' }` | `'<n> <unit>'` where unit is `HOURS`, `DAYS`, or `WEEKS` — for example, `'2 HOURS'` | v1.12+ |
-| `on_update` | `schedule: { 'on_update': true, 'at_most_every': '<n> <unit>' }` | Set to `true` to refresh when upstream data changes. `at_most_every` is optional and rate-limits refreshes (minimum 60 seconds) — for example, `'15 MINUTES'` | v1.12+ |
+| `on_update` | `schedule: { 'on_update': true, 'at_most_every': '<n> <unit>' }` | Set to `true` to refresh when upstream data changes. `at_most_every` is optional and rate-limits refreshes (minimum 60 seconds). For example, `'15 MINUTES'` | v1.12+ |
  
 **Refresh behavior by mode:**
 - `cron`: dbt requests a manual refresh on every run.
