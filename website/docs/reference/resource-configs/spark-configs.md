@@ -370,7 +370,7 @@ spark-connect:
 The following features have not been implemented yet:
 
 - The SQL understanding module of dbt Fusion for Spark is currently the exact same as Databricks'. This means it is less strict than it should be, since Databricks SQL is a superset of Spark SQL, i.e not all valid Databricks SQL is valid Spark SQL.
-- Currently only `append` and `insert_overwrite ` incremental models are supported. We're working on `merge` and `microbatch`!
+- Currently only `append`, `insert_overwrite` and `merge` incremental models are supported. We're working on `microbatch`!
 - Python models are not supported yet.
 
 
