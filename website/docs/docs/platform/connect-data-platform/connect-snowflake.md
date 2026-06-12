@@ -41,7 +41,7 @@ This section describes the different authentication methods for connecting <Cons
 
 :::note Snowflake authentication in the dbt platform
 
-You cannot create new Snowflake credentials with username and password in <Constant name="dbt_platform" />. New development and deployment credentials default to [key pair](#key-pair) authentication. For development credentials on Enterprise-tier plans, [Snowflake OAuth](#snowflake-oauth) is also available when configured on the connection. To update existing password credentials, refer to [Migrate from username and password](#migrate-from-username-and-password).
+You cannot create new Snowflake credentials with username and password in <Constant name="dbt_platform" />. New development and deployment credentials default to [key pair](#key-pair) authentication. For development credentials on Enterprise-tier plans, [Snowflake OAuth](#snowflake-oauth) is also available when configured on the connection. To update existing password credentials, refer to [Username and password with MFA](#username-and-password-with-mfa).
 
 :::
 
@@ -91,15 +91,17 @@ a Snowflake user without the configuration of Snowflake password in <Constant na
 For more information on configuring a Snowflake OAuth connection in <Constant name="dbt" />, please see [the docs on setting up Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
 
-### Migrate from username and password
-
-**Available in:** Existing development and deployment credentials only
+:::note Migrate from username and password
 
 If your credentials still use username and password, you can view the existing configuration in **Credentials**, connection profiles, or deployment credential forms, but you cannot save changes until you switch **Auth method** to key pair or OAuth. A warning banner may also appear at the top of your account when password credentials are still in use.
 
-<Lightbox src="/img/docs/dbt-platform/snowflake-password-auth-warning-banner.png" width="85%" title="Snowflake password authentication warning banner at the top of the account"/>
-
 To migrate off of username and password, follow the steps in [Key pair](#key-pair) or [Snowflake OAuth](#snowflake-oauth).
+
+:::
+
+### Username and password with MFA
+
+**Available in:** Existing development and deployment credentials only
 
 If you are still on username and password while you plan your migration, [MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all password logins. Snowflake's MFA support is powered by the Duo Security service.
 
