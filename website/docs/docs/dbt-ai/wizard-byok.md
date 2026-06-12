@@ -26,6 +26,10 @@ The "key" in BYOK is whatever credential your chosen provider uses to authentica
 
 <WizardSupportedProviders />
 
+:::note Anthropic subscriptions
+In the CLI, you can sign in with an Anthropic subscription (such as Claude Pro or Max) instead of BYOK. A subscription includes a limited amount of API usage per month. Once you hit that limit, switch to BYOK with your own Anthropic API key for higher usage. Configure it with the `anthropic_subscription` provider.
+:::
+
 ## Configure a provider
 
 You can configure a provider in one of the following ways:
@@ -55,6 +59,7 @@ dbt                   true     remote     dbt          3
 openai                false    local      missing      3
 openai_subscription   false    local      missing      1
 anthropic             false    local      missing      3
+anthropic_subscription false   local      missing      1
 bedrock               true     local      configured   15
 azure                 false    local      missing      3
 snowflake             false    local      missing      3
@@ -105,10 +110,11 @@ Example provider menu:
   2. openai               disabled; 3/3 models selected; missing credentials; needs setup
   3. openai_subscription  disabled; 1/1 models selected; not connected; needs setup
   4. anthropic            disabled; 3/3 models selected; authenticated; needs setup
-  5. bedrock              enabled; 15/15 models selected; authenticated; active
-  6. azure                disabled; 3/3 models selected; missing credentials; needs setup
-  7. snowflake            disabled; 3/3 models selected; missing credentials; needs setup
-  8. gemini               disabled; 3/3 models selected; missing credentials; needs setup
+  5. anthropic_subscription disabled; 1/1 models selected; not connected; needs setup
+  6. bedrock              enabled; 15/15 models selected; authenticated; active
+  7. azure                disabled; 3/3 models selected; missing credentials; needs setup
+  8. snowflake            disabled; 3/3 models selected; missing credentials; needs setup
+  9. gemini               disabled; 3/3 models selected; missing credentials; needs setup
 ```
 
 ## Set your API key
