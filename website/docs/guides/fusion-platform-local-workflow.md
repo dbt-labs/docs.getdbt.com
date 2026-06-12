@@ -151,7 +151,7 @@ On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versio
 
 ### Versions installed locally
 
-By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt?version=2#installation) installs the latest stable release, the same version that ships with the **Fusion Stable** release track on <Constant name="dbt_platform" />:
+By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs the latest stable release, the same version that ships with the **<Constant name="fusion" /> Stable** release track on <Constant name="dbt_platform" />:
 
 ```shell
 # macOS / Linux
@@ -270,11 +270,11 @@ The following table summarizes the key differences between the two local develop
 
 ## Related docs
 
-- [Install <Constant name="fusion" />](/docs/local/install-dbt?version=2#installation)
+- [Install <Constant name="fusion" />](/docs/local/install-dbt)
 - [dbt platform CLI installation](/docs/platform/dbt-cli-installation)
 - [<Constant name="fusion" /> releases and release channels](/docs/fusion/fusion-releases)
 - [About profiles.yml](/docs/local/profiles.yml)
-- [Environment variables (local)](/docs/local/install-dbt?version=2#environment-variables)
+- [Environment variables (local)](/docs/local/configure-environment-variables)
 - [VS Code dev containers](https://code.visualstudio.com/docs/devcontainers/containers)
 - [dbt Mesh overview](/docs/mesh/about-mesh)
 - [Deferral in dbt](/docs/platform/about-defer)
