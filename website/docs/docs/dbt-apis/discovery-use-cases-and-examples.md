@@ -234,13 +234,14 @@ New example:
 ```graphql
 query ($jobId: BigInt!, $runId: BigInt!) {
   job(id: $jobId, runId: $runId) {
-    models {
+    models(first: 10, after: "{somePaginationCursorValue}") {
       name
       status
       tests {
         name
         status
       }
+      paginationCursor
     }
   }
 }

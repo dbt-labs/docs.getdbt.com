@@ -199,6 +199,34 @@ pageInfo {
 totalCount # Total number of records across all pages
 ```
 
+The `PageInfo` and `totalCount` pattern described above applies to the `environment` endpoints, which return results as a connection of `edges` and `nodes`.
+
+#### Job-based endpoint pagination
+
+The job-based endpoints (the list fields on the `job` object, such as `models`, `sources`, `seeds`, `snapshots`, `tests`, `macros`, `metrics`, and `exposures`) use a simpler form of cursor-based pagination. These endpoints return a flat list rather than an `edges`/`nodes` connection, so they don't expose a `PageInfo` object. Instead:
+
+- `first` integer type &mdash; Returns the first n elements for each page.
+- `after` string type &mdash; Sets the cursor to retrieve elements after. Set it to the `paginationCursor` value of the last element from the previous page.
+- `paginationCursor` string type &mdash; An opaque, per-element field you select on each node. Pass the last element's `paginationCursor` as the `after` argument to fetch the next page.
+
+We recommend always specifying `first` to keep response sizes manageable. If you omit it, large responses may be capped to the first 100 elements.
+
+There's no `hasNextPage` field on these endpoints. You've reached the end of the result set when a page returns fewer elements than `first` (or fewer than the default page size).
+
+Below is an example that fetches a page of models from a job and selects the `paginationCursor` for each model so you can request the next page:
+
+```graphql
+{
+  job(id: 123) {
+    models(first: 10, after: "{somePaginationCursorValue}") {
+      uniqueId
+      executionTime
+      paginationCursor
+    }
+  }
+}
+```
+
 ### Filters
 
 Filtering helps to narrow down the results of an API query. If you want to query and return only models and tests that are failing or find models that are taking too long to run, you can fetch execution details such as [`executionTime`](/docs/dbt-apis/discovery-schema-job-models#fields), [`runElapsedTime`](/docs/dbt-apis/discovery-schema-job-models#fields), or [`status`](/docs/dbt-apis/discovery-schema-job-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
