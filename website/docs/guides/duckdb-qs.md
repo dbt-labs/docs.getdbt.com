@@ -16,12 +16,13 @@ tags: ['dbt Core','Quickstart']
 
 In this quickstart guide, you'll learn how to use <Constant name="core" /> with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
+This guide covers DuckDB with <Constant name="core" /> command-line interface (CLI). For Fusion-specific DuckDB setup, refer to [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup?version=2).
 
 This guide will demonstrate how to: 
 
-- [Create a virtual development environment](/docs/core/pip-install#using-virtual-environments) using a template provided by dbt Labs.
+- Create a virtual development environment using a template provided by dbt Labs.
 - We will set up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
-- Run through the steps outlined in the `jaffle_shop_duck_db` repository, but if you want to dig into the underlying code further, refer to the [README](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/README.md) for the Jaffle Shop template.
+- Run through the steps outlined in the `jaffle_shop_duckdb` repository, but if you want to dig into the underlying code further, refer to the [README](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/README.md) for the Jaffle Shop template.
 - Run any dbt command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, five years of data instead of just one).
 
@@ -31,7 +32,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 ### Related content
 
 
-- [DuckDB setup](/docs/core/connect-data-platform/duckdb-setup)
+- [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup)
 - [Create a GitHub repository](/guides/manual-install?step=2)
 - [Build your first models](/guides/manual-install?step=3)
 - [Test and document your project](/guides/manual-install?step=4)
@@ -39,7 +40,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Prerequisites
 
-- When using DuckDB with <Constant name="core" />, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in <Constant name="cloud" />.
+- When using DuckDB with <Constant name="core" />, you'll need to use the CLI. Currently, DuckDB is not supported in <Constant name="dbt_platform" />.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
@@ -64,7 +65,7 @@ Below is an example of the `requirements.txt` file alongside other key files lik
 
 ```
 
-For more information, refer to the [DuckDB setup](/docs/core/connect-data-platform/duckdb-setup).
+For more information, refer to the [DuckDB setup](/docs/local/connect-data-platform/duckdb-setup).
 
 <Tabs>
   <TabItem value="local" label="Local">
@@ -79,7 +80,7 @@ For more information, refer to the [DuckDB setup](/docs/core/connect-data-platfo
 
     ```
 
-2. Change into the docs-duckdb directory from the command line:
+2. Change into the `jaffle_shop_duckdb` directory from the command line:
 
     ```shell
 
@@ -148,8 +149,8 @@ Here's what a successful output will look like:
 ```jinja
 
 (venv) ➜  jaffle_shop_duckdb git:(duckdb) dbt build
-15:10:12  Running with dbt=1.8.1
-15:10:13  Registered adapter: duckdb=1.8.1
+15:10:12  Running with dbt=x.y.z
+15:10:13  Registered adapter: duckdb=x.y.z
 15:10:13  Found 5 models, 3 seeds, 20 data tests, 416 macros
 15:10:13  
 15:10:14  Concurrency: 24 threads (target='dev')
@@ -233,8 +234,29 @@ The steps will fail if you decide to run this project in your data warehouse (ou
 </Tabs>
 
 
+## Local storage
 
+DuckDB stores your data in a local `.duckdb` file on your machine. The location of this file is defined by the `path` field in your [`profiles.yml`](/docs/local/profiles.yml).
 
+In this quickstart, the project is configured to use a file named `jaffle_shop.duckdb`. After running `dbt build`, you can confirm that the database file was created by running the following command:
+
+```shell
+ls -lah *.duckdb
+```
+
+You should see a `jaffle_shop.duckdb` file in your project directory. This file contains the tables and views built by dbt and persists between runs.
+
+If you delete the file:
+
+```shell
+rm *.duckdb
+```
+
+Running `dbt build` again will recreate it.
+
+:::note
+If you use a relative path (such as `./local.duckdb`), the file is created relative to your `profiles.yml` file.
+:::
 
 
 
@@ -250,9 +272,9 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
 
 1. When installation is done, run:
     ```shell
-    jafgen [number of years to generate] # e.g. jafgen 6
+    jafgen --years NUMBER_OF_YEARS
     ``` 
-    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, you would run: `jafgen --years 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/core/connect-data-platform/duckdb-setup) adapter.
+    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. For example, to generate data for 6 years, run `jafgen --years 6`. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/local/connect-data-platform/duckdb-setup) adapter.
 
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
 ## Next steps
@@ -262,7 +284,7 @@ Now that you have <Constant name="core" />, DuckDB, and the Jaffle Shop data up 
 - The [About projects](/docs/build/projects) page guides you through the structure of a dbt project and its components.
 - [dbt command reference](/reference/dbt-commands) explains the various commands available and what they do.
 - [dbt Labs courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
-- Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [<Constant name="cloud" />](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
+- Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [<Constant name="dbt" />](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
 - Check out the other [quickstart guides](/guides?tags=Quickstart) to begin integrating into your existing data warehouse.
 
 Additionally, with your new understanding of the basics of using DuckDB, consider optimizing your setup by [documenting your project](/guides/duckdb#document-your-project), [commit your changes](/guides/duckdb#commit-your-changes) and, [schedule a job](/guides/duckdb#schedule-a-job). 
@@ -282,7 +304,7 @@ Commit your changes to ensure the repository is up to date with the latest code.
 1. In the GitHub repository you created for your project, run the following commands in the terminal:
 
 ```shell
-git add 
+git add .
 git commit -m "Your commit message"
 git push
 ```
@@ -304,6 +326,5 @@ Congratulations on making it through the guide 🎉!
 </ConfettiTrigger>
 
 </div>
-
 
 

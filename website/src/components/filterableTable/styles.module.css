@@ -127,6 +127,8 @@
   z-index: 1;
   padding-top: 40px;
   margin-top: 0.5rem;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .tableWrapper table {
@@ -135,7 +137,7 @@
 }
 
 .filterableTable {
-  width: 100%;
+  width: auto;
   border-collapse: collapse;
   margin: 0;
 }

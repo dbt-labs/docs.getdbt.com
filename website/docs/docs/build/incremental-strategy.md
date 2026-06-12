@@ -22,7 +22,7 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table shows the support of each incremental strategy across adapters available on <Constant name="cloud" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks). Some strategies may be unavailable if you're not on **Latest** and the feature hasn't been released to the **Compatible** track.  
+This table shows the support of each incremental strategy across adapters available on <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/dbt-release-tracks). Some strategies may be unavailable if you're not on **Latest** and the feature hasn't been released to the **Compatible** track.  
 
 If you're interested in an adapter available in <Constant name="core" /> only, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
 
@@ -34,7 +34,7 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅   |  ✅ |   |   ✅   |
 | [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |           |    ✅   |    | ✅ |  ✅    |
 | [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅   |    |    ✅   | ✅ |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |    |          ✅         |          ✅         |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   | ✅ |          ✅         |          ✅         |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   | ✅  | ✅ | ✅  |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   | ✅  |    |  ✅  |
 | [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |    |
@@ -274,7 +274,7 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 
 </File>
 
-If you use a custom microbatch macro, set a [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-changes#custom-microbatch-strategy) in your `dbt_project.yml` to enable batched execution of your custom strategy. 
+If you use a custom microbatch macro, use the [`require_batched_execution_for_custom_microbatch_strategy` behavior flag](/reference/global-configs/behavior-flag-introduction#custom-microbatch-strategy) in your `dbt_project.yml` to control batched execution. Set it to `true` to opt in before the flag matures. After the flag matures (default: `true`), set it to `false` to revert to single-invocation behavior.
 
 ### Custom strategies from a package
 
@@ -292,5 +292,3 @@ To use the `merge_null_safe` custom incremental strategy from the `example` pack
 
 </File>
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="incremental"/>

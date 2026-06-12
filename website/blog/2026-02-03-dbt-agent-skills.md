@@ -39,22 +39,24 @@ Our [agent skills repo](https://github.com/dbt-labs/dbt-agent-skills) contains s
 - **Platform operations**: Troubleshoot job failures, configure the dbt MCP server
 - **Migration**: Move projects from dbt Core to the dbt Fusion engine
 
-You’ll notice these skills vary in size of task and complexity. The primary [_using dbt for analytics engineering_ skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/using-dbt-for-analytics-engineering) contains information about the entire workflow loop for analytics engineering. Other skills are more focused and task dependent.
+You’ll notice these skills vary in size of task and complexity. The primary [_using dbt for analytics engineering_ skill](https://github.com/dbt-labs/dbt-agent-skills/tree/main/skills/dbt/skills/using-dbt-for-analytics-engineering) contains information about the entire workflow loop for analytics engineering. Other skills are more focused and task dependent.
 
 We plan to continue refining these and adding more skills over time. If there’s a skill that would be useful that you don’t see, please open an issue on the repo.
 
 ## Quickstart
 
-### Add the skills to your agent
+### 1. Add the skills to your agent
 
-In Claude Code, run these commands:
+In Claude Code, run these commands (one at a time):
 
 ```bash
 /plugin marketplace add dbt-labs/dbt-agent-skills
+```
+```bash
 /plugin install dbt@dbt-agent-marketplace
 ```
 
-For other agents, use this command ([requires Node to be installed](https://nodejs.org/en/download)):
+For agents other than Claude Code, use this command ([requires Node to be installed](https://nodejs.org/en/download)):
 
 ```bash
 npx skills add dbt-labs/dbt-agent-skills --global
@@ -62,9 +64,13 @@ npx skills add dbt-labs/dbt-agent-skills --global
 
 or just manually copy the files you want into the [correct path for your agent](https://github.com/vercel-labs/skills?tab=readme-ov-file#supported-agents).
 
-### Try it yourself
+### 2. Start a new agent session
 
-Boot up the coding agent of your choice and try giving an instruction like:
+Restart your terminal to make sure the new skills are detected.
+
+### 3. Try it yourself
+
+Try giving an instruction like:
 
 - Plan and build models for my new HubSpot source tables
 - Work out why my `dbt build` just failed

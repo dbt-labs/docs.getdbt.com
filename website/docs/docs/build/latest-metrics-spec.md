@@ -11,9 +11,9 @@ The latest Semantic Layer specification creates an open standard for defining me
 
 With the new spec, you get simpler configuration without losing flexibility, faster onboarding for new contributors, and a clearer path to consistent, governed metrics across your organization. 
 
-:::info Availability
-The new YAML spec is currently only available in the <Constant name="fusion_engine" />, and will be coming soon to the <Constant name="dbt_platform" /> **Latest** release track and <Constant name="core" /> v1.12 (coming in 1H 2026).
-:::
+import LatestYamlSpecAvailability from '/snippets/_latest-yaml-spec-availability.md';
+
+<LatestYamlSpecAvailability />
 
 ## Changes in the latest spec 
 
@@ -58,6 +58,10 @@ semantic_models:
 </div>
 
 </div>
+
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
 
 ### Entities and dimensions
 
@@ -579,7 +583,13 @@ metrics:
 
 ## Migrating to the latest spec
 
-Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="cloud_ide" />.
+:::note Studio IDE YAML validation
+The <Constant name="studio_ide" /> validates dbt YAML using JSON Schema from the [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) project. These definitions are aligned with the <Constant name="fusion_engine" /> and apply across all [<Constant name="dbt_platform" /> release tracks](/docs/dbt-versions/dbt-release-tracks), including when your development environment is still running <Constant name="core" />.
+
+If the <Constant name="studio_ide" /> flags your YAML as invalid but <Constant name="dbt" /> commands succeed, trust your run results. Share examples with [dbt Support](mailto:support@getdbt.com) or your account team so the schema can be updated.
+:::
+
+Migrate your legacy metrics to the latest YAML spec using the dbt-autofix tool in your CLI, the [dbt VS Code extension](/docs/about-dbt-extension), or <Constant name="dbt_platform"/>'s <Constant name="studio_ide" />.
 
 import CopilotLimitation from '/snippets/_copilot-limitation.md';
 
@@ -597,10 +607,20 @@ To update packages, a package maintainer should:
 
 2. Validate the changes by running:
 
+  - For <Constant name="fusion" /> and dbt users in the <Constant name="platform_cli" /> or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
+
     ```bash
     dbt parse
-    dbt sl validate  # For dbt platform and Fusion users in IDE / Cloud CLI
-    mf validate-configs # For Fusion CLI users not connected to dbt platform and using local MetricFlow
+    dbt sl validate
+    ```
+
+    When using `dbt sl validate` locally, the command validates your local semantic manifest, and not the platform's manifest. This means your uncommitted local changes are included in the validation.
+
+  - For Fusion CLI users not connected to dbt platform and using local MetricFlow:
+
+    ```bash
+    dbt parse
+    mf validate-configs
     ```
 
 3. Release a new version of the package with the updated metrics definitions.
@@ -632,13 +652,13 @@ The [dbt-autofix tool](https://github.com/dbt-labs/dbt-autofix) rewrites legacy 
 
 ### Using the Studio IDE
 
-Convert your metrics in the <Constant name="cloud_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
+Convert your metrics in the <Constant name="studio_ide" /> in the <Constant name="dbt_platform" /> without having to install the `dbt-autofix` tool.
 
-1. Navigate to the <Constant name="cloud_ide" /> by clicking **Studio** in the left menu.
+1. Navigate to the <Constant name="studio_ide" /> by clicking **Studio** in the left menu.
 2. Make sure to save and commit your work before proceeding. The autofix command may overwrite any unsaved changes.
-3. In the <Constant name="cloud_ide" />, run the following command:
+3. In the <Constant name="studio_ide" />, run the following command:
 
     ```bash
     dbt-autofix deprecations --semantic-layer
     ```
-4. Click **Commit and sync** in the top left of the <Constant name="cloud_ide" /> to commit these changes to the project repository.
+4. Click **Commit and sync** in the top left of the <Constant name="studio_ide" /> to commit these changes to the project repository.

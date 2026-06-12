@@ -19,7 +19,7 @@ link="https://www.getdbt.com/community/join-the-community/"
 <Card
     title="Community Forum"
     body="Have a question about how to do something in dbt? Hop into the Community Forum and work with others to create long lived community knowledge."
-    link="/community/forum"
+    link="https://discourse.getdbt.com/"
     icon="discussions"
 />
 
@@ -37,10 +37,16 @@ link="https://www.getdbt.com/community/join-the-community/"
 />
 
 <Card
-    title="Upcoming events"
-    body="Whether it's in-person Meetups in your local area, dbt Summit – the annual Analytics Engineering Conference – or online Office Hours there are options for everyone."
-    link="community/events"
+    title="Webinars"
+    body="Browse upcoming and on-demand dbt Labs webinars and workshops."
+    link="https://www.getdbt.com/resources/webinars"
     icon="calendar" />
+
+<Card
+    title="Events"
+    body="Find meetups, conferences, training, and other dbt community events online and in person."
+    link="https://www.getdbt.com/events"
+    icon="globe" />
 
 <Card
     title="Watch past events"
