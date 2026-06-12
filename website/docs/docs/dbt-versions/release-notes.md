@@ -48,12 +48,9 @@ The following features are new or enhanced as part of dbt Labs announcements at 
   - **New**: [Support for Anthropic as a BYOK provider for dbt AI](/docs/platform/enable-dbt-ai#configure-your-ai-provider). 
   - **New**: [`dbt login`](/reference/commands/login) is a new CLI command available in <Constant name="core" /> v2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, dbt State, and dbt Wizard CLI with no separate sign-in flows needed.
 - **New:** OAuth client registrations now accept custom-scheme redirect URIs (for example, `cursor://` or `vscode://`), so you can build native app OAuth integrations with Cursor and VS Code.
-- **New:** The `POST /api/private/trial-licenses/` API endpoint generates trial feature licenses for the dbt VS Code extension, so you can try developer-plan features for a configurable trial period without a full <Constant name="dbt_platform" /> account.
 - **New:** Public REST API endpoints at `/api/ide/v3/{environment_id}/files/` support <Constant name="studio_ide" /> workspace file operations, including stat, read, write, list, delete, mkdir, and rename. Pass file paths as query parameters.
 - **New:** The `GET /api/ide/v3/{environment_id}/status` endpoint returns the `dbt_version` and `is_fusion` status for a given environment.
 - **New:** The <Constant name="platform_cli" /> Python client's `create_invocation()` method now supports a `workspace` parameter, so you can run invocations against persisted workspace files on workers.
-- **Enhancement:** The Private Link Endpoint API response now includes an `egress_cidr` field with the egress CIDR block for your private endpoint. Use this value to allowlist the endpoint in your warehouse configuration. The field is nullable and is available on both list and detail endpoints.
-- **Behavior change:** The `fusion_migration_state` API field now returns `"not-started"` instead of `null` for projects that have not yet begun a Fusion migration. You can also cancel a migration from the `rolled-back` state.
 
 
 ## May 2026
@@ -76,11 +73,8 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 - **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
 - **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
-- **New:** The <Constant name="platform_cli" /> now implements the `GET /tree/{path}` directory listing endpoint (previously a stub). The endpoint returns a streaming NDJSON response with directory entries as `[name, type]` pairs and supports HTTP caching via ETag.
-- **New:** The <Constant name="platform_cli" /> now implements the `DELETE /files/tree/{path}` endpoint for deleting files and directories. Add `?recursive=true` to delete directories recursively.
 - **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
 - **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
-- **Behavior change:** Private endpoint create, update, and delete API operations now return `404` for accounts without the `business_critical` entitlement. GET and list endpoints remain available without that entitlement and return an empty list so the UI can render upgrade prompts.
 
 ## April 2026
 
