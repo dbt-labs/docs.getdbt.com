@@ -15,7 +15,7 @@ Once enabled, dbt State runs automatically on every `dbt run` or `dbt build`.
 Before you begin:
 
 - dbt State supports Snowflake, Databricks, BigQuery, and Redshift.
-- dbt State requires authentication either through a <Constant name="dbt_platform" /> account, or a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state). For pricing information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+- dbt State requires authentication either through a <Constant name="dbt_platform" /> account, or a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state).
 
 Select the option that matches your setup:
 
@@ -30,7 +30,7 @@ To enable dbt State:
 2. Under **Settings**, go to **State**.
 3. Click **Start your 30-day free trial**.
 
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For more information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue.
 
       :::info Extended trial for state-aware orchestration users
       If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
@@ -182,4 +182,3 @@ DBT_ENGINE_MANAGE_STATE=1 dbt run --target dev --select "customers"
 - [Configuring deferral](/docs/deploy/dbt-state-deferral)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
-- [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)
