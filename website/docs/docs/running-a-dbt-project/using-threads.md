@@ -26,7 +26,7 @@ You will define the number of threads in your `profiles.yml` file (when developi
 
 ## Fusion engine thread optimization
 
-In the context of <Constant name="fusion"/>, a **thread** is an open connection to your data warehouse—not the number of parallel threads on your local machine's CPU. Data platforms vary in how many concurrent connections they allow; exceeding those limits causes the platform to reject new connections.
+In the context of <Constant name="fusion"/>, a **thread** is an open connection to your data warehouse, not the number of parallel threads on your local machine's CPU. Data platforms vary in how many concurrent connections they allow; exceeding those limits causes the platform to reject new connections.
 
 Historically, analytics engineers set `threads:` to ensure dbt never opened more connections than the platform could handle.
 
