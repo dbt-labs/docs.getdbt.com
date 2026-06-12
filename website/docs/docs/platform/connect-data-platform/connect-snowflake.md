@@ -99,7 +99,7 @@ If your credentials still use username and password, you can view the existing c
 
 <Lightbox src="/img/docs/dbt-platform/snowflake-password-auth-warning-banner.png" width="85%" title="Snowflake password authentication warning banner at the top of the account"/>
 
-To move off username and password, follow the steps in [Key pair](#key-pair) or [Snowflake OAuth](#snowflake-oauth).
+To migrate off of username and password, follow the steps in [Key pair](#key-pair) or [Snowflake OAuth](#snowflake-oauth).
 
 If you are still on username and password while you plan your migration, [MFA](https://docs.snowflake.com/en/user-guide/security-mfa) is required by Snowflake for all password logins. Snowflake's MFA support is powered by the Duo Security service.
 
