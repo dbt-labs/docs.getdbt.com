@@ -17,7 +17,7 @@
 
 </SimpleTable>
 
-<sup>†</sup> *In the CLI, you can sign in with an Anthropic subscription (such as Claude Pro or Max), which includes a limited amount of API usage per month. For higher or unmetered usage, use BYOK with your own Anthropic API key. Anthropic enterprise licenses (such as Claude Enterprise) aren't supported per Anthropic's [terms of service](https://www.anthropic.com/legal/consumer-terms).*
+<sup>†</sup> *Anthropic enterprise licenses (such as Claude Enterprise) aren't supported per Anthropic's [terms of service](https://www.anthropic.com/legal/consumer-terms).*
 
 - [Configure <Constant name="dbt_platform" />](/docs/platform/enable-dbt-ai#enable-ai-features) integrations in account settings.
 - [Configure BYOK for the CLI](/docs/dbt-ai/wizard-byok) by running `wizard providers configure PROVIDER_NAME` and follow the prompts.
