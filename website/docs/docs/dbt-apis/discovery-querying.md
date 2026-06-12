@@ -218,35 +218,17 @@ Pass `first` to set the page size (capped at 100). Each returned item includes a
 
 Unlike environment queries, these job-based endpoints do not return a `PageInfo` object or `hasNextPage` field. When a page contains fewer rows than `first`, you have reached the last page.
 
-If you omit `first` and `after`, the API still returns all matching rows today. In a future update, unpaginated requests will return at most 100 rows. That change will roll out after advance notice. Until then, pass `first` and `after` explicitly when you query large jobs.
+If you omit `first` and `after`, the API returns all matching rows today. For large jobs, pass `first` and `after` explicitly so your integration does not depend on unpaginated responses.
 
-The examples below use a job's `models` list. The same `first` and `after` arguments work for the other job-based resource types listed above.
+:::note Upcoming change to unpaginated requests
 
-Before you run the examples:
+In a future update, requests that omit `first` and `after` will return at most 100 rows. dbt Labs will provide advance notice before that change rolls out.
 
-1. In <Constant name="dbt_platform" />, click your account name in the left sidebar and select [**Account settings**](/docs/platform/account-settings).
-2. Under **Access URLs**, copy your **Metadata** / **Discovery API** GraphQL URL. Refer to [Discovery API endpoints](#discovery-api-endpoints) and [Authorization](#authorization) for URL format and token requirements.
-3. In **Account settings**, open **Service Tokens** and create a [Metadata Only service token](/docs/dbt-apis/service-tokens). Save the token value when it is shown.
-4. From the main menu, go to **Orchestration** > [**Jobs**](/docs/deploy/deploy-jobs) and open the deploy job you want to query.
-5. Copy `jobId` from the job page URL. It is the numeric segment after `jobs/`:
+:::
 
-   ```text
-   /deploy/<account>/projects/<project>/jobs/<jobId>/
-   ```
+To run the example, use your [Discovery API endpoint](#discovery-api-endpoints) and a [Metadata Only service token](#authorization). Get `jobId` and optional `runId` from the job or run URL, or with the [Admin API](/docs/dbt-apis/admin-api). If you omit `runId`, the API uses the job's latest run. Run the query in the [GraphQL explorer](#run-queries-with-the-graphql-explorer) or via [HTTP requests](#run-queries-using-http-requests).
 
-6. Optional: open a run for that job (from the job's run history or **Orchestration** > **Runs**) and copy `runId` from the run URL:
-
-   ```text
-   /deploy/<account>/projects/<project>/runs/<runId>
-   ```
-
-   If you omit `runId` in the query, the API uses the job's latest run.
-
-7. Run the query with the [GraphQL explorer](#run-queries-with-the-graphql-explorer) or [HTTP requests](#run-queries-using-http-requests). You can also look up job and run IDs with the [Admin API](/docs/dbt-apis/admin-api).
-
-**First page**
-
-Query:
+The example below uses a job's `models` list. The same `first` and `after` arguments work for the other resource types listed above. For a use-case example with more fields, refer to [Use cases and examples for the Discovery API](/docs/dbt-apis/discovery-use-cases-and-examples).
 
 ```graphql
 query JobModelsPage($jobId: BigInt!, $runId: BigInt, $first: Int!, $after: String) {
@@ -259,7 +241,7 @@ query JobModelsPage($jobId: BigInt!, $runId: BigInt, $first: Int!, $after: Strin
 }
 ```
 
-Variables (replace the IDs with your job and run):
+First page variables:
 
 ```json
 {
@@ -270,30 +252,7 @@ Variables (replace the IDs with your job and run):
 }
 ```
 
-Example response (truncated):
-
-```json
-{
-  "data": {
-    "job": {
-      "models": [
-        {
-          "uniqueId": "model.my_project.stg_orders",
-          "paginationCursor": "Y3Vyc29yOm1vZGVsLm15X3Byb2plY3Quc3RnX29yZGVycw=="
-        },
-        {
-          "uniqueId": "model.my_project.dim_customers",
-          "paginationCursor": "Y3Vyc29yOm1vZGVsLm15X3Byb2plY3QuZGltX2N1c3RvbWVycw=="
-        }
-      ]
-    }
-  }
-}
-```
-
-**Next page**
-
-Set `after` to the `paginationCursor` from the _last_ row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Keep `first` the same unless you want a different page size.
+For the next page, set `after` to the `paginationCursor` from the _last_ row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Repeat until a page returns fewer rows than `first`.
 
 ```json
 {
@@ -303,8 +262,6 @@ Set `after` to the `paginationCursor` from the _last_ row of the previous page. 
   "after": "Y3Vyc29yOm1vZGVsLm15X3Byb2plY3QuZGltX2N1c3RvbWVycw=="
 }
 ```
-
-Repeat until a page returns fewer rows than `first`. That shorter page is the last page.
 
 ### Filters
 
