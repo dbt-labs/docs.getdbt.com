@@ -293,7 +293,7 @@ Example response (truncated):
 
 **Next page**
 
-Set `after` to the `paginationCursor` from the **last** row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Keep `first` the same unless you want a different page size.
+Set `after` to the `paginationCursor` from the _last_ row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Keep `first` the same unless you want a different page size.
 
 ```json
 {
