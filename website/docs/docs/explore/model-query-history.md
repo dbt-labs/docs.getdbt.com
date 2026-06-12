@@ -46,7 +46,7 @@ To access the features, you should meet the following requirements:
 
 :::note
 - **New production environments:** <Constant name="dbt" /> automatically enables query history when you create a new [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) in **Orchestration** (marked **PROD**). This applies to Snowflake, BigQuery, Redshift, and Databricks on [Enterprise-tier plans](https://www.getdbt.com/pricing/). Development environments are not included.
-- **Existing production environments:** You must enable query history manually in your **PROD** environment settings. First, complete the [credential permissions](#credential-permissions) for your warehouse, then follow the steps below.
+- **Existing production environments:** You must enable query history manually in your **PROD** environment settings. Configure the [credential permissions](#credential-permissions) for your warehouse prior to starting the steps in this section.
 :::
 
 To enable model query history in <Constant name="dbt" />, follow these steps:
