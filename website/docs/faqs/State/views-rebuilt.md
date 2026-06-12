@@ -12,7 +12,7 @@ These two patterns commonly cause unexpected rebuilds:
 - [Views with `select *`](#views-with-select-)
 - [Non-deterministic Jinja templating](#non-deterministic-jinja-templating)
 
-## Views with `select *`
+#### Views with `select *`
 
 dbt State always rebuilds views that use `select *` anywhere in their SQL, including inside CTEs. A common staging pattern like the following triggers this behavior:
 
@@ -46,13 +46,13 @@ from {{ source("my_source", "my_table") }}
 If you can't remove `select *`, you can exclude views from running with `--exclude config.materialized:view`.
 :::
 
-## Non-deterministic Jinja templating
+#### Non-deterministic Jinja templating
 
 Some macros, such as `dbt_utils.get_relations_by_pattern` (an introspective macro) combined with `dbt_utils.union_relations`, can return relations in a different order on each run. That produces different compiled SQL even when your project logic hasn't changed. dbt State detects a new hash and rebuilds the model.
 
 This pattern can affect any model type, not just views. If a base or staging model rebuilds on every run, all of its downstream models rebuild, too.
 
-## How to diagnose
+#### How to diagnose
 
 In <Constant name="core" /> v1.7–v1.12, run the `dbt-state explain` command to see why dbt State rebuilt or reused a specific model.
 
