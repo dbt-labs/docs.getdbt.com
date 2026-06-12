@@ -17,10 +17,31 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const { PLATFORMS } = require('./platforms.config');
+const { buildFusionIndex, isFunctionSupported } = require('./fusion-match');
 
 const ISSUES_REPO = 'dbt-labs/dbt-core';
 const ISSUE_LABEL = 'SQL_understanding';
 const DATA_DIR = path.join(__dirname, '..', 'static', 'data', 'functions');
+const FUSION_REPO = process.env.FUSION_REPO || 'dbt-labs/fs';
+const FUSION_BASE_PATH =
+  process.env.FUSION_BASE_PATH || 'crates/sdf-sql-functions/assets';
+
+async function fetchFusionYaml(platformId, token) {
+  const filePath = `${FUSION_BASE_PATH}/${platformId}/functions.sdf.yml`;
+  const apiUrl = `https://api.github.com/repos/${FUSION_REPO}/contents/${filePath}`;
+  const headers = {
+    'User-Agent': 'dbt-docs-bot/1.0',
+    Accept: 'application/vnd.github.raw+json',
+  };
+  if (token) headers.Authorization = `token ${token}`;
+  const res = await fetch(apiUrl, { headers });
+  if (!res.ok) {
+    const err = new Error(`HTTP ${res.status} fetching fusion function list for ${platformId}`);
+    err.status = res.status;
+    throw err;
+  }
+  return res.text();
+}
 
 async function githubRequest(method, endpoint, body, token) {
   const res = await fetch(`https://api.github.com${endpoint}`, {
@@ -79,11 +100,13 @@ async function createIssue(fn, platform, token) {
 }
 
 async function run(platformId) {
-  const token = process.env.FUSION_ISSUES_TOKEN;
-  if (!token) {
+  const issuesToken = process.env.FUSION_ISSUES_TOKEN;
+  if (!issuesToken) {
     console.warn('[gap-issues] FUSION_ISSUES_TOKEN not set — skipping issue creation');
     return;
   }
+
+  const fusionToken = process.env.FUSION_REPO_TOKEN;
 
   const platform = PLATFORMS.find((p) => p.id === platformId);
   if (!platform) {
@@ -101,8 +124,28 @@ async function run(platformId) {
   const oldFunctions = getPreviousFunctions(platformId);
   const oldNames = new Set(oldFunctions.map((f) => f.name));
 
-  // New gaps: functions added to the platform list that Fusion doesn't support yet
-  const newGaps = newFunctions.filter((f) => !f.fusion_typecheck && !oldNames.has(f.name));
+  let fusionIndex = null;
+  if (fusionToken) {
+    try {
+      const yamlText = await fetchFusionYaml(platformId, fusionToken);
+      fusionIndex = buildFusionIndex(yamlText, platformId);
+    } catch (err) {
+      console.warn(`[gap-issues][${platformId}] Could not re-verify Fusion YAML: ${err.message}`);
+    }
+  }
+
+  const isSupported = (fn) => {
+    if (fn.fusion_typecheck) return true;
+    if (fusionIndex && isFunctionSupported(fn, platformId, fusionIndex)) return true;
+    return false;
+  };
+
+  // New gaps: functions added to the platform list that Fusion doesn't support yet.
+  // Skip wildcard names (e.g. AS_*OBJECT_TYPE*, IS_*OBJECT_TYPE*) — these are
+  // pattern entries in platform docs, not real function names Fusion can target.
+  const newGaps = newFunctions.filter(
+    (f) => !isSupported(f) && !oldNames.has(f.name) && !f.name.includes('*')
+  );
 
   if (newGaps.length === 0) {
     console.log(`[gap-issues][${platformId}] No new gaps detected`);
@@ -118,11 +161,11 @@ async function run(platformId) {
     const platformName = platformId.charAt(0).toUpperCase() + platformId.slice(1);
     const title = `[${platformName}] Add typechecking support for ${fn.name}`;
     try {
-      if (await issueExists(title, token)) {
+      if (await issueExists(title, issuesToken)) {
         console.log(`  [skip] ${fn.name} — issue already exists`);
         skipped++;
       } else {
-        await createIssue(fn, platformId, token);
+        await createIssue(fn, platformId, issuesToken);
         console.log(`  [created] ${fn.name}`);
         created++;
       }
