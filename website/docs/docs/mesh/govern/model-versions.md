@@ -405,7 +405,7 @@ If you want a view that always tracks the latest model version instead of pinnin
 
 The [`latest_version_pointer`](/reference/resource-configs/latest_version_pointer) config automatically creates a view named after the model's base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). When you enable it, querying outside of dbt always returns the current version. This config only applies to versioned models.
 
-Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
+Enable this feature in your project by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`, or enable it per model with the `latest_version_pointer.enabled` config:
 
 <Tabs>
 <TabItem value="global" label="Enable globally">

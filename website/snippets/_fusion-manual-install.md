@@ -1,46 +1,60 @@
-If you already have the <Constant name="fusion_engine" /> installed, you can skip this step. If you don't have it installed, choose your preferred installation method:
+Choose your preferred installation method:
 
-<Tabs queryString="installation">
+<Expandable alt_header="Pip installation for Windows, macOS, and Linux">
 
-<TabItem value="cdn" label="macOS & Linux (CDN)">
+```shell
+python -m pip install --pre dbt
+```
 
-Run the following command in the terminal:
+To upgrade to a newer version:
+
+```shell
+python -m pip install --upgrade --pre dbt
+```
+
+</Expandable>
+
+<Expandable alt_header="CDN installation for macOS and Linux">
 
 ```shell
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
 ```
 
-To use `dbt` immediately after installation, reload your shell so that the new `$PATH` is recognized:
+To use `dbt` immediately after installation, close and reopen your terminal or reload your shell so that the new `$PATH` is recognized:
 
 ```shell
 exec $SHELL
 ```
 
-Or, close and reopen your terminal window. This will load the updated environment settings into the new session.
+To upgrade to a newer version:
 
-</TabItem>
+```shell
+dbt system update
+```
 
-<TabItem value="windows-cdn" label="Windows (CDN)">
+</Expandable>
 
-Run the following command in PowerShell:
+<Expandable alt_header="CDN installation for Windows">
 
 ```powershell
 irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
 ```
 
-To use `dbt` immediately after installation, reload your shell so that the new `Path` is recognized:
+To use `dbt` immediately after installation, close and reopen or reload your shell so that the new `Path` is recognized:
 
 ```powershell
 Start-Process powershell
 ```
 
-Or, close and reopen PowerShell. This will load the updated environment settings into the new session.
+To upgrade to a newer version:
 
-</TabItem>
+```shell
+dbt system update
+```
 
-<TabItem value="homebrew" label="Homebrew (macOS)">
+</Expandable>
 
-If you have [Homebrew](https://brew.sh/) installed, run:
+<Expandable alt_header="Homebrew installation for macOS">
 
 ```shell
 brew install dbt
@@ -52,11 +66,9 @@ To upgrade to a newer version:
 brew upgrade dbt
 ```
 
-</TabItem>
+</Expandable>
 
-<TabItem value="winget" label="winget (Windows)">
-
-If you have [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/) installed, run:
+<Expandable alt_header="Winget installation for Windows">
 
 ```shell
 winget install --id dbtLabs.dbt --exact
@@ -68,55 +80,8 @@ To upgrade to a specific version:
 winget install --id dbtLabs.dbt --exact --version <version>
 ```
 
-</TabItem>
+</Expandable>
 
-<TabItem value="pip" label="pip">
-
-You can install <Constant name="fusion" /> using `pip`. We recommend installing into a Python virtual environment to avoid dependency conflicts.
-
-### Set up a virtual environment (recommended)
-
-<Tabs>
-  <TabItem value="unix-macos-venv" label="macOS & Linux">
-
-  ```shell
-  python3 -m venv .venv
-  source .venv/bin/activate
-  ```
-
-  </TabItem>
-  <TabItem value="windows-venv" label="Windows">
-
-  ```shell
-  py -m venv .venv
-  .venv\Scripts\activate
-  ```
-
-  </TabItem>
-</Tabs>
-
-### Install dbt
-
-Run the following commands to install the preview version and update to the latest.
-
-```shell
-python -m pip install --pre dbt
-```
-
-The `python -m pip install --pre dbt` command installs the latest <Constant name="fusion" /> release.
-
-
-### Deactivate the virtual environment
-
-When you're done, deactivate the environment:
-
-```shell
-deactivate
-```
-
-</TabItem>
-
-</Tabs>
 
 Run the following command to verify your installation:
 
