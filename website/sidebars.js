@@ -1263,6 +1263,7 @@ const sidebarSettings = {
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/spark-configs",
         "reference/resource-configs/bigquery-configs",
+        "reference/resource-configs/bigquery-function-support",
         "reference/resource-configs/clickhouse-configs",
         "reference/resource-configs/databricks-configs",
         "reference/resource-configs/deltastream-configs",
