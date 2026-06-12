@@ -42,8 +42,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt platform
 
-- **Password change form removed from profile settings**: The in-page password change form has been removed from user profile security settings. You can now reset your password only via the email-based reset flow. The reset button remains available in profile settings.
-- **"Forgot password?" link removed from sign-in form**: The "Forgot password?" link no longer appears on the email sign-in form. Use the password reset email flow from your profile settings to recover access.
+- **Password management updates**: The in-page password change form has been removed from profile security settings, and the "Forgot password?" link no longer appears on the sign-in page. Password resets are now handled through the email-based reset flow, which can be initiated from your profile settings.
 
 ## June 3, 2026
 
