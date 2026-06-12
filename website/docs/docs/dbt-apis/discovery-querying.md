@@ -201,7 +201,7 @@ totalCount # Total number of records across all pages
 
 #### Job-based queries
 
-Job-based list endpoints also support cursor pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object (or the equivalent legacy top-level queries such as `models(jobId:, runId:)`).
+Job-based list endpoints also support cursor-based pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object (or the equivalent legacy top-level queries such as `models(jobId:, runId:)`).
 
 The following job-based list fields accept `first` and `after`:
 
