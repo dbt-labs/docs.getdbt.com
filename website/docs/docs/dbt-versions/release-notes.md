@@ -21,6 +21,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
+- **Behavior change:** On June 23, 2026, several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track will reach maturity (enabled by default). Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to see which flags may affect your project and how to opt out before then.
 - **Beta:** The <Constant name="fusion_engine" /> now supports the Salesforce Data 360 connection in the <Constant name="dbt_platform" />. For more information, refer to [Connect Salesforce Data 360](/docs/platform/connect-data-platform/connect-salesforce).
 - **Behavior change:** Several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track are planned to reach maturity (enabled by default) on June 23, 2026. Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to understand which flags may affect your project and how to opt out before the change takes effect. 
 - **Private beta**: The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is available for Enterprise plans. 
@@ -47,6 +48,11 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
   - **New**: [Support for Anthropic as a BYOK provider for dbt AI](/docs/platform/enable-dbt-ai#configure-your-ai-provider). 
   - **New**: [`dbt login`](/reference/commands/login) is a new CLI command available in <Constant name="core" /> v2.0 and later. It opens browser-based authentication and shares your login state across the CLI, dbt VS Code extension, dbt State, and dbt Wizard CLI with no separate sign-in flows needed.
+- **New:** OAuth client registrations now accept custom-scheme redirect URIs (for example, `cursor://` or `vscode://`), so you can build native app OAuth integrations with Cursor and VS Code.
+- **New:** Public REST API endpoints at `/api/ide/v3/{environment_id}/files/` support <Constant name="studio_ide" /> workspace file operations, including stat, read, write, list, delete, mkdir, and rename. Pass file paths as query parameters.
+- **New:** The `GET /api/ide/v3/{environment_id}/status` endpoint returns the `dbt_version` and `is_fusion` status for a given environment.
+- **New:** The <Constant name="platform_cli" /> Python client's `create_invocation()` method now supports a `workspace` parameter, so you can run invocations against persisted workspace files on workers.
+
 
 ## May 2026
 
@@ -68,6 +74,8 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 - **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
 - **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
+- **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
+- **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
 
 ## April 2026
 
@@ -89,6 +97,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Enhancement:** The Studio IDE now validates dbt YAML using <Constant name="fusion" /> aligned JSON Schema from [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema) across [dbt platform release tracks](/docs/dbt-versions/dbt-release-tracks), including for development environments on <Constant name="core" />. This improves autocomplete and structural feedback in the editor. Diagnostics can occasionally disagree with what your environment accepts; use dbt runs and previews as the source of truth. For context, review [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec) and [dbt YAML validation in Studio](/docs/platform/studio-ide/develop-in-studio#dbt-yaml-validation). This will be a phased rollout starting the week of April 6th.
 - **Enhancement:** The Studio IDE status bar now offers more control, more detailed information, and quicker access to settings for deferral, dbt version, and project status. For more information, refer to the [Studio IDE docs](/docs/platform/studio-ide/ide-user-interface#the-command-and-status-bar). These updates roll out in phases to existing accounts starting April 6.
 - **Enhancement:** In Snowflake **Private endpoints**, output validation errors now display inline beneath the text area (instead of as a page-level banner). The **Submit request** button is also disabled when the output is invalid (for example, empty, malformed JSON, or missing required fields).
+- **Enhancement:** The <Constant name="studio_ide" /> now supports deep links to a specific console tab using the `?consoleTab=` query parameter. For example, append `?consoleTab=problems` to open Studio with the **Problems** tab pre-selected. The `problems` tab applies only when it is available for the current session.
 
 ## March 2026
 
