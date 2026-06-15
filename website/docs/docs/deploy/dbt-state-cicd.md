@@ -12,7 +12,7 @@ tags: ['dbt State']
 This setup only applies when using the standalone [dbt State web app](https://app.state.dbt.com/).
 :::
 
-Browser-based authentication is not possible in non-interactive environments such as CI/CD pipelines (for example, GitHub Actions, GitLab CI, Jenkins) or production orchestration tools (for example, Airflow, Prefect). dbt State supports OAuth client credentials for authentication in these environments.
+In a non-interactive environment, dbt runs without a person available to complete authentication manually &mdash; for example, CI/CD pipelines (such as GitHub Actions, GitLab CI, and Jenkins) and production orchestration tools (such as Airflow and Prefect). Browser-based authentication isn't possible in these environments; dbt State authenticates with OAuth client credentials instead, so it stays active and keeps caching to optimize your builds.
 
 dbt State automatically detects when it's running in a non-interactive environment. If OAuth client credentials are not provided, dbt State disables itself and displays a warning, allowing your dbt commands to continue without caching.
 
