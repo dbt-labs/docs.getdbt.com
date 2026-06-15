@@ -82,6 +82,6 @@ A standalone account makes sense if you:
 ## Related docs
 
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
-- [CI/CD setup](/docs/deploy/dbt-state-cicd)
+- [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
