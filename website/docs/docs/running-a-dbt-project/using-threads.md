@@ -34,7 +34,7 @@ Historically, analytics engineers set `threads:` to ensure dbt never opened more
 
 However, if <Constant name="fusion"/> still opens more connections than your warehouse can handle, configure `threads` to cap the maximum number of concurrent connections.
 
-Project parsing runs separately and automatically uses all available CPUs. To disable parallel parsing and run one operation at a time, use the `--no-parallel flag`. This is useful for debugging parse errors and does not affect threads.
+Project parsing runs separately and automatically uses all available CPUs. To disable parallel parsing and run one operation at a time, use the `--no-parallel` flag. This is useful for debugging parse errors and does not affect threads.
 
 ### Adapter-specific behavior
 
