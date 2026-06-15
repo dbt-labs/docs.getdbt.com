@@ -1,14 +1,14 @@
 ---
-title: "Non-interactive mode"
+title: "Headless mode"
 id: "wizard-headless"
-description: "Run dbt Wizard non-interactively for scripts, CI pipelines, and automation."
-sidebar_label: "Non-interactive mode"
+description: "Run dbt Wizard in headless mode for scripts, CI pipelines, and automation."
+sidebar_label: "Headless mode"
 tags: [AI, Wizard]
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Non-interactive mode <Lifecycle status="beta"/>
+# Headless mode <Lifecycle status="beta"/>
 
 <IntroText>
 <Constant name="wizard" /> can run without the interactive TUI — useful for scripts, CI pipelines, pre-commit hooks, and any workflow where you want a one-shot result without human-in-the-loop approval.
@@ -93,9 +93,9 @@ wizard review --commit abc1234
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
 
-## Permissions in non-interactive mode
+## Permissions in headless mode
 
-In non-interactive `exec` mode, Wizard runs without interactive approval prompts. Pre-grant the sandbox permissions you need:
+In headless `exec` mode, Wizard runs without interactive approval prompts. Pre-grant the sandbox permissions you need:
 
 ```bash
 # Read-only analysis (default — safe for CI)

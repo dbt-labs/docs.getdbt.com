@@ -43,7 +43,7 @@ For most users, the recommended path is to install Fusion as it includes all of 
 Install Fusion using pip, or see all [installation options](/docs/local/install-dbt?version=2.0) (brew, winget, CDN):
 
 ```shell
-pip install dbt
+python -m pip install --pre dbt
 ```
 
 ### dbt Core v2.0
@@ -52,13 +52,12 @@ If you specifically need the open-source distribution of v2, install dbt Core. D
 
 Pre-release version:
 ```shell
-pip install --pre dbt-core
+python -m pip install --pre dbt-core
 ```
 
 Explicit pin:
 ```shell
-pip install dbt-core==2.0.0-alpha.1
-dbt system update
+python -m pip install dbt-core==2.0.0-alpha.1
 ```
 
 ## What to know before upgrading
@@ -85,7 +84,7 @@ The following adapters are supported in v2.0:
 
 v2 will not support any deprecated functionality (see the [Changes overview](/reference/changes-overview) for details):
 - All [deprecation warnings](/reference/deprecations) must be resolved before upgrading to the new engine. This includes historic deprecations and [new ones as of dbt Core v1.10](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10#deprecation-warnings).
-- Some [behavior change flags](/reference/global-configs/behavior-changes#behaviors) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
+- Some [behavior change flags](/reference/global-configs/behavior-changes#behavior-change-flags) will be removed (generally enabled). You can no longer opt out of them using `flags:` in your `dbt_project.yml`.
 
 ### Ecosystem packages
 

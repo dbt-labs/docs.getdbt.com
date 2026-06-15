@@ -94,7 +94,7 @@ Use this table to compare all available flags and how to configure them across i
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_RESOURCE_TYPES` <br></br> `DBT_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
 | [sample](/docs/build/sample-flag) | ✅ | string <br /> default: None | ❌ | `DBT_SAMPLE` | `--sample` |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | ❌ | boolean <br /> default: True | ✅ | `DBT_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats` <br /> `--no-send-anonymous-usage-stats` |
-| [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
+| [source_freshness_run_project_hooks](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
 | [state](/reference/node-selection/defer) | ❌ | path <br /> default: none | ❌ | `DBT_STATE`, `DBT_DEFER_STATE` | `--state` <br /> `--defer-state` |
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |
 | [store_failures](/reference/resource-configs/store_failures) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_STORE_FAILURES` | `--store-failures` <br /> `--no-store-failures` |
@@ -147,7 +147,7 @@ Use this table to compare all available flags and how to configure them across i
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_RESOURCE_TYPES` <br></br> `DBT_ENGINE_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
 | [sample](/docs/build/sample-flag) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_SAMPLE` | `--sample` |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats` <br /> `--no-send-anonymous-usage-stats` |
-| [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
+| [source_freshness_run_project_hooks](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
 | [sqlparse](/reference/global-configs/sqlparse) | ❌ | YAML map <br /> default: MAX_GROUPING_DEPTH and MAX_GROUPING_TOKENS set to null | ❌ | `DBT_ENGINE_SQLPARSE` | `--sqlparse` |
 | [state](/reference/node-selection/defer) | ❌ | path <br /> default: none | ❌ | `DBT_ENGINE_STATE`, `DBT_ENGINE_DEFER_STATE` | `--state` <br /> `--defer-state` |
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |

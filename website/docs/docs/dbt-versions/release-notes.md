@@ -21,6 +21,11 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
+- **Beta:** The <Constant name="fusion_engine" /> now supports the Salesforce Data 360 connection in the <Constant name="dbt_platform" />. For more information, refer to [Connect Salesforce Data 360](/docs/platform/connect-data-platform/connect-salesforce).
+- **Behavior change:** Several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track are planned to reach maturity (enabled by default) on June 23, 2026. Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to understand which flags may affect your project and how to opt out before the change takes effect. 
+- **Private beta**: The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is available for Enterprise plans. 
+   - *New*: Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources. The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use, while the Analyst read permission set and read-only permission changes are in private beta. To enable them, contact your account manager.
+- **Beta**: Workspace-level Private Link for Microsoft Fabric is now available in beta. Configure a private connection between the <Constant name="dbt_platform" /> and your Fabric workspace so SQL traffic stays on Azure's private network. For more information, refer to [Configuring Private Link for Microsoft Fabric](/docs/platform/secure/private-connectivity/azure/azure-fabric).
 - **Beta**: [Cost Insights](/docs/explore/cost-insights) now supports Amazon Redshift Serverless and provisioned clusters. Configure your platform metadata credentials with the `sys:monitor` role or `SYSLOG ACCESS UNRESTRICTED` permission to allow dbt to read cross-user query history, then set your pricing in Cost Insights settings. For more information, refer to [Set up Cost Insights](/docs/explore/set-up-cost-insights).
 
 ### Snowflake Summit 2026 announcements
@@ -37,7 +42,6 @@ The following features are new or enhanced as part of dbt Labs announcements at 
   - **New**: Generate and serve [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) with the <Constant name="fusion_engine" /> or <Constant name="core" /> v2 by running a dbt command with `--use-index`, then `dbt docs serve`. Add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) for richer column type metadata.
 - **Preview**: [dbt State](/docs/deploy/dbt-state-about) is now available in preview!
   - **New**: dbt State skips or clones nodes when the logic and data haven't changed, rather than rebuilding everything on every run. Available in <Constant name="core" /> v1.12+, <Constant name="dbt" /> v2.0, the <Constant name="dbt_platform" />, and the <Constant name="fusion_engine" />. To get started, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
-  - **New**: [dbt State pricing](/docs/platform/billing#dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
   - **Behavior change**: State-aware orchestration is no longer being enabled for new customers. Refer to [Migrate to dbt State](/docs/deploy/dbt-state-migration) for more information.
 
 - **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
@@ -63,6 +67,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Enhancement:** Delete individual [<Constant name="wizard" /> chat conversations](/docs/dbt-ai/wizard-ide#availability-and-considerations) from the conversation list (three dots → **Delete**). Deleting the open conversation clears the panel.
 - **New:** The Fusion + Snowflake connection experience is now generally available on the dbt platform. See our [Fusion upgrade guides](/guides/prepare-fusion-upgrade?step=1) for information on enabling the upgrade workflows for your environments today!
 - **Enhancement:** In the Discovery API [Tests object schema](/docs/dbt-apis/discovery-schema-environment-applied-tests), you can now filter `environment.applied.tests` by multiple test result statuses in a single query using the new `lastKnownResults: [TestStatus]` filter field on `TestAppliedFilter`. The single-value `lastKnownResult` filter field is still supported but deprecated. Update your queries to use `lastKnownResults` going forward.
+- **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
 
 ## April 2026
 
@@ -97,7 +102,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Enhancement**: The Model Timing tab displays an informative banner for <Constant name="fusion_engine" /> runs instead of the timing chart. The banner explains "Model timing is not yet available for Fusion runs" and provides context about threading differences. Non-Fusion runs continue to show the timing chart normally.
 - **Behavior change**: [Snowflake plans to increase](https://docs.snowflake.com/en/release-notes/bcr-bundles/un-bundled/bcr-2118) the default column size for string and binary data types in May 2026. `dbt-snowflake` versions below v1.10.6 may fail to build certain incremental models when this change is deployed. [Assess impact and take any required actions](/reference/resource-configs/snowflake-configs#assess-impact-and-required-actions).
 - **New**: The new <Constant name="semantic_layer"/> YAML specification is now available on the <Constant name="dbt_platform" /> **Latest** release track. For an overview of the changes and steps how to migrate to the latest YAML spec, refer to [Migrate to the latest YAML spec](/docs/build/latest-metrics-spec).
-- **Behavior change:** New projects in trial, starter, or Enterprise accounts now default to **Fusion Latest** for all new environments with a supported adapter (Redshift, Snowflake, BigQuery, and Databricks). You can revert to another version by changing the dbt version in your [environment settings](/docs/dbt-platform-environments#change-environment-settings).
+- **Behavior change:** New projects in trial, starter, or Enterprise accounts now default to **Fusion Stable** for all new environments with a supported adapter (Redshift, Snowflake, BigQuery, and Databricks). You can revert to another version by changing the dbt version in your [environment settings](/docs/dbt-platform-environments#change-environment-settings).
 
 ## February 2026
 
@@ -131,7 +136,7 @@ The Invites endpoints of the dbt platform Admin v2 API now include these additio
 
   State-aware orchestration is in private preview. refer to the [prerequisites for using the feature](/docs/deploy/state-aware-setup#prerequisites).
 - **Enhancement:** [dbt <Constant name="wizard" />](/docs/platform/wizard-platform) correctly detects column names across various `schema.yml` files, adds only missing descriptions, and preserves existing ones.
-- **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files as well as <Term id="lsp" />-powered features. For more information, refer to [Install <Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2#get-started#environment-variables). 
+- **Enhancement**: The <Constant name="fusion"/> CLI now automatically reads environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. This provides a simple way to manage credentials and configuration without hardcoding them in your `profiles.yml`. The [dbt VS Code extension](/docs/about-dbt-extension) also supports `.env` files and <Term id="lsp" />-powered features. For more information, refer to [Configure environment variables](/docs/local/configure-environment-variables).
 - **New**: The new <Constant name="semantic_layer"/>  YAML specification creates an open standard for defining metrics and dimensions that works across multiple platforms. The new spec is now live in the <Constant name="fusion_engine" />.
   
   Key changes:
