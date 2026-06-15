@@ -33,11 +33,13 @@ Configure the following fields to set up your Salesforce Data 360 connection:
 
 Enter the following credentials to authenticate with Salesforce Data 360:
 
+<SimpleTable>
 | Field | Description | Example |
 | ----- | ----------- | ------- |
 | Username | Your Salesforce Data 360 username. | user.name@example.com |
 | Client ID | The `Consumer Key` of the Salesforce Data 360 app. | |
 | Private Key | The private key for JWT bearer flow authentication. | |
+</SimpleTable>
 
 - For **Username**, use your Salesforce account username. Authentication will only succeed if that username has one of the profiles or permission sets added to the external client app in [step 9](#creating-the-external-client-app).
 - For **Client ID**, get the Consumer Key from your external client app in Salesforce. Go to **Settings** > **OAuth Settings** > **Consumer Key and Secret**. Copy the **Consumer Key** and paste to the **Client ID** field.
