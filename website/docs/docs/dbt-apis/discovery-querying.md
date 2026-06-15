@@ -203,7 +203,7 @@ The previously described `PageInfo` and `totalCount` pattern applies to the `env
 
 #### Job-based endpoint pagination
 
-Job-based list endpoints also support cursor-based pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object (or the equivalent legacy top-level queries such as `models(jobId:, runId:)`). These endpoints return a flat list rather than an `edges`/`nodes` connection, so they do not expose a `PageInfo` object.
+Job-based list endpoints also support cursor-based pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object. These endpoints return a flat list rather than an `edges`/`nodes` connection, so they do not expose a `PageInfo` object.
 
 The following job-based list fields accept `first` and `after`:
 
@@ -220,7 +220,7 @@ Pass `first` to set the page size (capped at 100). Each returned item includes a
 
 Unlike environment queries, these job-based endpoints do not return a `PageInfo` object or `hasNextPage` field. You have reached the last page when a page returns fewer rows than `first` (or fewer than the default page size).
 
-We recommend always specifying `first` to keep response sizes manageable. If you omit `first` and `after`, the API returns all matching rows today. For large jobs, pass `first` and `after` explicitly so your integration does not depend on unpaginated responses.
+We recommend always specifying `first` to keep response sizes manageable. Historically, omitting `first` and `after` would cause the API to return all matching rows. For large jobs, best practice is to pass `first` and `after` explicitly so your integration does not depend on unpaginated responses.
 
 :::note Upcoming change to unpaginated requests
 
