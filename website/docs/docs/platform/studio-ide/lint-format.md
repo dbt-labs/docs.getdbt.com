@@ -48,7 +48,7 @@ With the <Constant name="studio_ide" />, you can seamlessly use [SQLFluff](https
 - Displays a **Code Quality** tab to view code errors, provides code quality visibility and management.
 
 :::info Linting considerations
-- The <Constant name="studio_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **Latest Fusion** release track. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
+- The <Constant name="studio_ide" /> runs linting using the <Constant name="core" /> engine, even when your development environment uses the **Fusion Stable** release track. For more information, see [Fusion limitations](/docs/fusion/supported-features#limitations).
 - Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
 :::
 
