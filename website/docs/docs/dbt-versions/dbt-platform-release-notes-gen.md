@@ -165,8 +165,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **User-defined function (UDF) support**: Catalog now supports `function` as a resource type. You can browse, search, and filter UDFs, and view function details including arguments, return type, and source code. Functions appear in their own mini-lineage view, but not in the main project DAG.
-
 - **Connection-aware Cost Insights enablement**: Cost Insights now checks the environment connection and platform metadata credentials to confirm `cost_insights_enabled` is configured. If credentials are missing or disabled, cost metrics and tabs are hidden and a banner prompts you to configure platform metadata credentials.
 
 ### Studio IDE
