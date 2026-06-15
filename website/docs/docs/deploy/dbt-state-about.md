@@ -18,7 +18,7 @@ With dbt State, dbt first compares the logic and data of each node to previous b
 
 dbt State can reuse all node types that create relations in the database (such as models, snapshots, seeds) and data tests.
 
-dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com).
 
 ## Benefits
 
@@ -85,4 +85,3 @@ A standalone account makes sense if you:
 - [CI/CD setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
-- [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)
