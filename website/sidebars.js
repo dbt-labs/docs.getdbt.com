@@ -1236,6 +1236,7 @@ const sidebarSettings = {
         "reference/project-configs/macro-paths",
         "reference/project-configs/name",
         "reference/project-configs/on-run-start-on-run-end",
+        "reference/project-configs/osi-paths",
         "reference/project-configs/packages-install-path",
         "reference/project-configs/profile",
         "reference/project-configs/query-comment",
