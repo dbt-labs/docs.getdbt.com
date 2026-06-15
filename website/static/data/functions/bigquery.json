@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "bigquery",
     "platform_name": "BigQuery",
-    "fetched_at": "2026-05-26T10:19:54.207Z",
+    "fetched_at": "2026-06-15T08:14:20.489Z",
     "count": 408
   },
   "functions": [
@@ -221,7 +221,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_avg",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "BAG_OF_WORDS",
@@ -417,7 +417,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_count",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "COUNTIF",
@@ -1264,14 +1264,14 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#last_day",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "LAST_DAY (Datetime)",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#last_day",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "LAST_VALUE",
@@ -1659,18 +1659,18 @@
       "fusion_typecheck": true
     },
     {
-      "name": "PERCENTILE_CONT (Navigation)",
-      "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#percentile_cont",
-      "preview_status": "GA",
-      "fusion_typecheck": true
-    },
-    {
       "name": "PERCENTILE_CONT (Differential Privacy)",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_percentile_cont",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERCENTILE_CONT (Navigation)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#percentile_cont",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "PERCENTILE_DISC",
@@ -2538,14 +2538,14 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#string_for_json",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "STRING (Timestamp)",
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#string",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "STRING_AGG",
@@ -2587,7 +2587,7 @@
       "category": "Built-in",
       "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_sum",
       "preview_status": "GA",
-      "fusion_typecheck": true
+      "fusion_typecheck": false
     },
     {
       "name": "TAN",
