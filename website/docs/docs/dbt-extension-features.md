@@ -13,7 +13,7 @@ The dbt VS Code extension is backed by the speed and power of the <Constant name
 
 :::info Registration for advanced features
 
-Most dbt VS Code extension features are available to all users for 14 days. After the 14-day trial period, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features. The vast majority of features remain available without signing in. Existing registered users keep access automatically.
+Most dbt VS Code extension features are available to all users for 14 days. After the 14-day trial period, [register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features. The vast majority of features remain available without registration. Existing registered users keep access automatically.
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
 
@@ -29,7 +29,7 @@ In dbt v1.12, 2.0, and later, authentication is handled by [`dbt login`](/refere
 
 Parse even the largest projects up to 30x faster than with dbt Core.
 
-The **LSP query cache** (for faster incremental compiles) requires registration after the 14-day trial.
+**Requires registration** — LSP query cache (for faster incremental compiles).
 
 <video width="100%" height="100%" playsinline muted controls>
   <source src="/img/docs/extension/zoomzoom.mp4" type="video/webm" />
@@ -65,13 +65,17 @@ Usage:
 
 Automatically validate your SQL code to detect errors and surface warnings without hitting the warehouse.
 
-**Available without registration** — syntax-tree diagnostics for Jinja, YAML, and SQL syntax errors (L1):
+**Available to all users:** 
+
+Syntax-tree diagnostics for Jinja, YAML, and SQL syntax errors (L1):
 
 - Syntax errors (missing commas, misspelled keywords, and more)
 - Hover over red squiggles to display errors
 - Full diagnostic information is available in the **Problems** panel
 
-**Requires registration** — L2 Fusion SQL comprehension diagnostics (depends on strict static analysis):
+**Requires registration:**
+
+L2 Fusion SQL comprehension diagnostics (depends on strict static analysis):
 
 - Missing `group by` clauses, or columns that are neither grouped nor aggregated
 - Invalid function names or arguments
@@ -86,7 +90,7 @@ Automatically validate your SQL code to detect errors and surface warnings witho
 
 Autocomplete SQL functions, model names, macros, and more.
 
-**Available without registration:**
+**Available to all users:**
 
 - Autocomplete `ref`s and `source` calls. For example, type `{{ ref(`  or `{{ source(` and you will see a list of available resources and their type complete the function call. Autocomplete doesn't trigger when replacing existing model names inside parentheses.
 - Dialect-aware SQL function autocomplete
@@ -97,14 +101,18 @@ Autocomplete SQL functions, model names, macros, and more.
 
 Rename models or columns and see references update project-wide.
 
-**Available without registration — renaming models:**
+**Available to all users:** 
+
+Renaming models:
 
 - Right-click on a file in the file tree and select **Rename**.
 - After renaming the file, you'll get a prompt asking if you want to make refactoring changes.
   - Select **OK** to apply the changes, or **Show Preview** to display a preview of refactorings.
 - After applying your changes, `ref`s should be updated to use the updated model name.
 
-**Requires registration — renaming columns (depends on strict static analysis):**
+**Requires registration:**
+
+Renaming columns (depends on strict static analysis):
 
 Column renaming depends on strict static analysis, which validates column references across your project before the extension updates downstream models.
 
@@ -123,13 +131,15 @@ Note: Renaming models and columns is not yet supported for snapshots, or any res
 
 Jump to the definition of any `ref`, macro, model, or column with a single click. Particularly useful in large projects with many models and macros. Excludes definitions from installed packages.
 
-**Available without registration:**
+**Available to all users:**
 
 - Command or Ctrl-click to go to the definition for an identifier.
 - Right-click an identifier and select **Go to Definition** or **Go to References**.
 - Jinja LSP go-to-definition for `ref()`, `source()`, and macros.
 
-**Requires registration (depends on strict static analysis):**
+**Requires registration:**
+
+Column and CTE go-to-definition (depends on `strict` static analysis):
 
 - Go-to-definition for column names
 - Go-to-definition for CTE names
@@ -142,7 +152,9 @@ Jump to the definition of any `ref`, macro, model, or column with a single click
 
 See lineage at the column or table level as you develop — no context switching or breaking flow.
 
-**Available without registration — table-level lineage:**
+**Available to all users:** 
+
+Table-level lineage:
 
 :::tip Using the lineage tab in Cursor
 
@@ -156,7 +168,9 @@ View table lineage:
 - The lineage pane updates as you navigate the files in your dbt project.
 - Right-click on a node to update the DAG, or view column lineage for a node.
 
-**Requires registration — column-level lineage (depends on strict static analysis):**
+**Requires registration:** 
+
+Column-level lineage (depends on strict static analysis):
 
 View column lineage:
 - Right-click on a filename, or in the SQL contents of a model file.
@@ -173,6 +187,8 @@ View column lineage:
 
 See context on tables, columns, and functions without leaving your code. Simply hover over any SQL element to see details like column names and data types.
 
+**Requires registration:**  
+
 Hover insights depend on strict static analysis, which lets the extension understand column types and function signatures across your project.
 
 Usage:
@@ -187,13 +203,15 @@ Usage:
 
 Preview query output directly from inside your editor for faster validation and debugging.
 
-**Available without registration:**
+**Available to all users:**
 
 - Click the **table icon** or use keyboard shortcut `cmd+enter` (macOS) / `ctrl+enter` (Windows/Linux) to preview query results for a model or selected SQL snippet.
 - Results are displayed in the **Query Results** tab in the bottom panel.
 - The preview table is sortable and results are stored until the tab is closed.
 
-**Requires registration after the trial — CTE preview:**
+**Requires registration:**
+
+CTE preview:
 
 - Click the **Preview CTE** codelens to preview CTE results.
 
@@ -203,7 +221,7 @@ Preview query output directly from inside your editor for faster validation and 
 
 ## Explore your catalog <Lifecycle status="beta" />
 
-**Requires dbt platform account registration**
+**Requires registration:**  
 
 Open the **Catalog** tab to see information for the model you're working on &mdash; enriched by your <Constant name="dbt_platform" /> account &mdash; without leaving your editor.
 
@@ -214,7 +232,7 @@ For the current model, the catalog tab surfaces:
 - The model's **Columns**, including each column's type, description, and test results. Sort columns alphabetically or by test name.
 - A **View in dbt platform** link to open the resource in the <Constant name="dbt_platform" />.
 
-The **Catalog** tab is an advanced feature. Before your 14-day trial expires, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to continue using it.
+The **Catalog** tab is an advanced feature. Before your 14-day trial expires, [register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to continue using it.
 
 <Lightbox src="/img/docs/extension/vsce-catalog-tab.png" width="100%" title="Example of the Catalog tab in the dbt VS Code extension" />
 
