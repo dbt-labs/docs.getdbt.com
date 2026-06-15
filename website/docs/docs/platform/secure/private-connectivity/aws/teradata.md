@@ -8,6 +8,7 @@ sidebar_label: "Teradata VantageCloud"
 # Configuring AWS PrivateLink for Teradata VantageCloud <Lifecycle status="managed_plus" />
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
@@ -59,8 +60,4 @@ The following steps walk you through the setup of a Teradata VantageCloud AWS Pr
 
 Once you've completed the setup with dbt Support, you can configure a private endpoint in <Constant name="dbt" />:
 
-1. Navigate to **Settings** → **Create new project** → select **Teradata**.
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**.
-3. Select the private endpoint from the dropdown by the display name you submitted in the support ticket (this automatically populates the **Host** field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="Teradata"  />

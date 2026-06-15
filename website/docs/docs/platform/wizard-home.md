@@ -29,7 +29,7 @@ The <Constant name="wizard" /> home tab is complementary to the [<Constant name=
 - A Starter, Enterprise, or Enterprise+ plan
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/platform/manage-access/seats-and-users).
 - A [development environment](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) and credentials set up in the <Constant name="studio_ide" />.
-- [Enabled AI features](/docs/platform/enable-dbt-ai) for your account.
+- [Enabled AI features](/docs/platform/enable-dbt-ai#enable-ai-features) for your account.
 - If you're using <Constant name="wizard" /> in the home tab, you need to [enable experimental features](/docs/dbt-versions/experimental-features) for your account.
 
 ## What you can do

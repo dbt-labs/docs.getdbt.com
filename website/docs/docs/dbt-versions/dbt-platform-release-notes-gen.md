@@ -17,6 +17,29 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+
+## June 10, 2026
+
+## New
+
+### dbt Copilot and agents
+
+- **dbt documentation search and retrieval tools**: The [remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote) now includes `search_product_docs` and `get_product_doc_pages`. Available in <Constant name="copilot" /> and in agent clients connected to remote dbt MCP. Refer to the [product docs toolset](/docs/dbt-ai/mcp-available-tools?version=2.0#product-docs).
+- **Dimension values lookup tool**: A new `get_dimension_values` MCP tool lets agents retrieve distinct values for a given Semantic Layer dimension, optionally scoped to specific metrics. Use this to discover valid filter values (for example, available regions or order statuses) before building a `where` clause in a `query_metrics` call.
+
+## Enhancements
+
+### Studio IDE
+
+- **Workspace file operations API**: Adds public Studio file operation endpoints for `stat`, `get`, `put`, `list directory`, `delete`, `mkdir`, and `rename` under `/api/ide/v3/{environment_id}/files/`. File paths are passed as query parameters to avoid user paths appearing in traces.
+- **Environment status endpoint**: Adds a `/api/ide/v3/{environment_id}/status` endpoint that returns the dbt version and Fusion status for a development environment, allowing Studio to display version information without additional API calls.
+
+## Behavior Changes
+
+### dbt platform
+
+- **Password management updates**: The in-page password change form has been removed from profile security settings, and the "Forgot password?" link no longer appears on the sign-in page. Password resets are now handled through the email-based reset flow, which can be initiated from your profile settings.
+
 ## June 3, 2026
 
 ## New
@@ -160,7 +183,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Job creator permission set**: Adds a new [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) for users who need to create, edit, and run jobs within assigned projects and environments. Job creators have read-only access to environments and environment variables and cannot edit environment settings. 
+- **Job creator permission set**: Adds a new [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) for users who need to create, edit, and run jobs within assigned projects and environments. Job creators have read-only access to environments and environment variables and cannot edit environment settings.
 
 ### Studio IDE
 
