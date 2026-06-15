@@ -88,7 +88,7 @@ var siteSettings = {
     announcementBar: {
       id: "fivetran-dbt-labs-merger-webinar",
       content:
-      "What's shipping at Fivetran + dbt Labs: Faster pipelines, smarter agents on June 25 - Save your seat!",
+      "Fivetran + dbt Labs: The future of dbt Core v2.0, what we're building together, and live Q&A on June 25 - Save your seat!",
       isCloseable: true,
     },
     announcementBarActive: true,
@@ -173,7 +173,7 @@ var siteSettings = {
             },
             {
               label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements",
+              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
             },
             {
               label: "Courses",
