@@ -4,7 +4,7 @@ Before you can connect dbt to Salesforce Data 360, you need the following:
 
 - A Data 360 instance.
 - The `server.key` private key file. For more information, refer to [Generating a private key and certificate](#generating-a-private-key-and-certificate).
-- An external client app configured for JWT Bearer token flow. For more information, refer to [Setting up the external client app](#setting-up-the-external-client-app).
+- An external client app configured for JSON Web Token (JWT) Bearer token flow. For more information, refer to [Setting up the external client app](#setting-up-the-external-client-app).
 - `Data Cloud Architect` and `Data Cloud User`  permissions.
 
 ### Generating a private key and certificate

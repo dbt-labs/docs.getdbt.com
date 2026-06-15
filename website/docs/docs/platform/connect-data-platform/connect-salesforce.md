@@ -24,7 +24,7 @@ Configure the following fields to set up your Salesforce Data 360 connection:
 | Field | Description | Example |
 | ----- | ----------- | ------- |
 | Connection name | A name for your Salesforce Data 360 connection. | |
-| Auth method | The authentication method used to connect to Salesforce Data 360. JSON Web Token (JWT) is the only supported method. | JWT Bearer Flow (default) |
+| Auth method | The authentication method used to connect to Salesforce Data 360. JWT is the only supported method. | JWT Bearer Flow (default) |
 | Login URL | The Salesforce instance URL. | `https://login.salesforce.com` (default) |
 | Database | (Optional) The Salesforce Data 360 database to connect to. | |
 | Data Transform Run Timeout | (Optional) The timeout duration (in milliseconds) for data transformation runs. | |
