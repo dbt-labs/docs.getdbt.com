@@ -199,9 +199,11 @@ pageInfo {
 totalCount # Total number of records across all pages
 ```
 
-#### Job-based queries
+The previously described `PageInfo` and `totalCount` pattern applies to the `environment` endpoints, which return results as a connection of `edges` and `nodes`.
 
-Job-based list endpoints also support cursor-based pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object (or the equivalent legacy top-level queries such as `models(jobId:, runId:)`).
+#### Job-based endpoint pagination
+
+Job-based list endpoints also support cursor-based pagination. Use this pattern when you query resources under the [`job`](/docs/dbt-apis/discovery-schema-job) object (or the equivalent legacy top-level queries such as `models(jobId:, runId:)`). These endpoints return a flat list rather than an `edges`/`nodes` connection, so they do not expose a `PageInfo` object.
 
 The following job-based list fields accept `first` and `after`:
 
@@ -214,11 +216,11 @@ The following job-based list fields accept `first` and `after`:
 - `metrics`
 - `exposures`
 
-Pass `first` to set the page size (capped at 100). Each returned item includes a `paginationCursor` field. Pass that value as `after` on the next request to fetch the following page.
+Pass `first` to set the page size (capped at 100). Each returned item includes a `paginationCursor` field—an opaque, per-element value you select in your query. Pass the last item's `paginationCursor` as `after` on the next request to fetch the following page.
 
-Unlike environment queries, these job-based endpoints do not return a `PageInfo` object or `hasNextPage` field. When a page contains fewer rows than `first`, you have reached the last page.
+Unlike environment queries, these job-based endpoints do not return a `PageInfo` object or `hasNextPage` field. You have reached the last page when a page returns fewer rows than `first` (or fewer than the default page size).
 
-If you omit `first` and `after`, the API returns all matching rows today. For large jobs, pass `first` and `after` explicitly so your integration does not depend on unpaginated responses.
+We recommend always specifying `first` to keep response sizes manageable. If you omit `first` and `after`, the API returns all matching rows today. For large jobs, pass `first` and `after` explicitly so your integration does not depend on unpaginated responses.
 
 :::note Upcoming change to unpaginated requests
 
@@ -252,7 +254,7 @@ First page variables:
 }
 ```
 
-For the next page, set `after` to the `paginationCursor` from the _last_ row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Repeat until a page returns fewer rows than `first`.
+For the next page, set `after` to the `paginationCursor` from the _last_ row of the previous page. The cursor is an opaque encoded string, not the `uniqueId`. Repeat until a page returns fewer rows than `first` (or fewer than the default page size).
 
 ```json
 {
