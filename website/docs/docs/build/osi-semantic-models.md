@@ -10,7 +10,7 @@ tags: [Metrics, Semantic Layer]
 
 <VersionCallout version="1.12" />
 
-<Constant name="core" /> v1.12 and higher supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project or a custom directory configured with [`osi-paths`](/reference/project-configs/osi-paths), and dbt parses them into the manifest alongside any native dbt semantic models. OSI-sourced definitions and native dbt semantic models can coexist in the same project.
+<Constant name="core" /> v1.12 and higher supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, or configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml` to use one or more custom directories relative to your project root. dbt parses them into the manifest alongside any native dbt semantic models. OSI-sourced definitions and native dbt semantic models can coexist in the same project.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ tags: [Metrics, Semantic Layer]
 
 To define semantic models with OSI documents:
 
-1. Create an `OSI/` directory at the root of your dbt project, at the same level as `dbt_project.yml`. To use a different directory, configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml`.
+1. Create an `OSI/` directory at the root of your dbt project, at the same level as `dbt_project.yml`. To use one or more custom directories instead, configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml` with paths relative to your project root.
 2. Add one or more OSI `.json` files to the directory. You can organize files into subdirectories; dbt scans the entire directory tree.
 
     The `source` field must be the fully qualified warehouse location of a dbt model in this project, in the form `database.schema.alias` (for example, `my_database.my_schema.fct_orders`). dbt matches each dataset on database, schema, and model alias. Each dataset `source` must resolve to a dbt model. For restrictions on dataset sources, refer to [Limitations](#limitations).

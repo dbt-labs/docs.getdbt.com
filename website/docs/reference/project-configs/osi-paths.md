@@ -21,6 +21,25 @@ Optionally specify a custom list of directories where [Open Semantic Interchange
 
 By default, dbt will search for OSI documents in the `OSI` directory, for example, `osi-paths: ["OSI"]`.
 
+import RelativePath from '/snippets/_relative-path.md';
+
+<RelativePath
+path="osi-paths"
+absolute="/Users/username/project/OSI"
+/>
+
+- ✅ **Do**
+  - Use relative path:
+    ```yml
+    osi-paths: ["OSI"]
+    ```
+
+- ❌ **Don't:**
+  - Avoid absolute paths:
+    ```yml
+    osi-paths: ["/Users/username/project/OSI"]
+    ```
+
 ## Examples
 
 Use a subdirectory named `semantic_interchange` instead of `OSI`:
