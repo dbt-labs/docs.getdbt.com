@@ -183,9 +183,8 @@ Job creator is a scoped project-level permission set for users who need to creat
 
 Notable features:
 - Job creator is a project-level set.
-- Can create, edit, and run jobs within assigned projects and environments.
-- Read-only access to environments, environment variables, and related project settings needed to configure jobs.
-- Cannot create or delete environments or edit environment variables.
+- Can create, edit, and run jobs in environment types where the group has [environment write access](/docs/platform/manage-access/environment-permissions-setup). Without write access, job and run actions are read-only.
+- Read-only access to environment settings and environment variables (cannot create or delete environments or edit environment variables).
 - More limited than [Job admin](#job-admin), which can edit environments, environment variables, and data platform configurations.
 
 </Expandable>

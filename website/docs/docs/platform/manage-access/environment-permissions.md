@@ -41,9 +41,12 @@ Environment write permissions can be specified for the following roles:
 - Database admin
 - Developer<sup>*</sup>
 - Git admin
+- Job creator<sup>**</sup>
 - Team admin
 
 <sup>*</sup> In the [enterprise permissions](/docs/platform/manage-access/enterprise-permissions) table, the `Developer` role has read-only access to environment settings, but when added to a group, the **Environment write access** field defaults to `All environments`, which grants broader environment permissions than the table implies. The `Analyst`, `Database admin`, `Git admin`, and `Team admin` roles get **Read-only environment access** by default unless you specify different access under **Environment write access** for that group.
+
+<sup>**</sup> [Job creator](/docs/platform/manage-access/enterprise-permissions#job-creator) has read-only access to environments in the enterprise permissions table. Users can create, edit, and run jobs only in environment types where the group has **Environment write access**. Refer to [Set up environment-level permissions](/docs/platform/manage-access/environment-permissions-setup).
 
 
 Depending on your current group mappings, you may have to update roles to ensure users have the correct access level to environments. 
@@ -51,6 +54,7 @@ Depending on your current group mappings, you may have to update roles to ensure
 Determine what personas need updated environment access and the roles they should be mapped to. The personas below highlight a few scenarios for environment permissions: 
 
 - **Developer** &mdash; Write access to create/run jobs in non-production environments
+- **Job creator** &mdash; Write access to specific environment types (for example, Development and Staging) to create and run jobs without broader administrative access
 - **Testing/QA** &mdash; Write access to staging and development environments to test
 - **Production deployment** &mdash; Write access to all environments, including production, for deploying
 - **Analyst** &mdash; Doesn't need environmental write access but read-only access for discovery and troubleshooting
