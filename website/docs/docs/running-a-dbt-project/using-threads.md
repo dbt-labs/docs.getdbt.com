@@ -24,7 +24,15 @@ You will define the number of threads in your `profiles.yml` file (when developi
 
 ## Fusion engine thread optimization
 
-The <Constant name="fusion_engine" /> handles threading differently than <Constant name="core" />. Rather than treating `threads` as a strict limit, <Constant name="fusion"/> manages parallelism based on each adapter's characteristics.
+In the context of <Constant name="fusion"/>, a thread is an open connection to your data warehouse, not the number of parallel threads on your local machine's CPU. Data platforms vary in how many concurrent connections they allow; exceeding those limits causes the platform to reject new connections.
+
+Historically, analytics engineers set `threads:` to ensure dbt never opened more connections than the platform could handle.
+
+<Constant name="fusion"/> works well without configuring `threads`. Rather than treating `threads` as a strict limit, <Constant name="fusion"/> automatically manages connection parallelism based on platform limits and uses backpressure to avoid overloading your warehouse. In general, we recommend not setting `threads` when using <Constant name="fusion"/>.
+
+However, if <Constant name="fusion"/> still opens more connections than your warehouse can handle, configure `threads` to cap the maximum number of concurrent connections.
+
+Project parsing runs separately and automatically uses all available CPUs. To disable parallel parsing and run one operation at a time, use the `--no-parallel` flag. This is useful for debugging parse errors and does not affect threads.
 
 ### Adapter-specific behavior
 
