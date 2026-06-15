@@ -51,12 +51,20 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
    <Constant name="dbt" /> provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
 
 :::info
-dbt automatically deactivates a webhook after either 1,000 consecutive failed deliveries or 7 consecutive days of failed deliveries, whichever occurs first. To reactivate a webhook, use one of the following methods:
+dbt automatically deactivates a webhook after either 1,000 consecutive failed deliveries or 7 consecutive days of failed deliveries, whichever occurs first. For more information, refer to [Deactivated webhooks](#deactivated-webhooks).
+:::
+
+### Deactivated webhooks {#deactivated-webhooks}
+
+On the **Account settings → Webhooks** page, a dismissible warning banner appears when one or more subscriptions have been deactivated. Deactivated subscriptions display an **Archived** badge in the status column instead of the latest HTTP status. Hover over the badge to see why the subscription was archived and how to reactivate it.
+
+<Lightbox src="/img/docs/deploy/webhooks-archived.png" width="100%" title="Webhooks page showing the disabled subscription warning banner and Archived status badge"/>
+
+To reactivate a webhook, use one of the following methods:
 
 - **dbt platform UI**: Update the webhook's endpoint URL. <Constant name="dbt" /> automatically reactivates the webhook when the URL is changed.
 - **REST API**: Send a `PUT` request to [Update a webhook](#update-a-webhook) and set `active` to `true`, or update `client_url` to a new endpoint URL.
 - **Terraform provider**: Set `active = true` and update `client_url` in your webhook resource.
-:::
 
 To find the appropriate <Constant name="dbt" /> access URL for your region and plan, refer to [Regions & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).
 
