@@ -21,6 +21,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
+- **New:** [Model query history](/docs/explore/model-query-history) for Redshift and Databricks is now generally available (GA). 
 - **Behavior change:** On June 23, 2026, several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track will reach maturity (enabled by default). Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to see which flags may affect your project and how to opt out before then.
 - **Beta:** The <Constant name="fusion_engine" /> now supports the Salesforce Data 360 connection in the <Constant name="dbt_platform" />. For more information, refer to [Connect Salesforce Data 360](/docs/platform/connect-data-platform/connect-salesforce).
 - **Behavior change:** Several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track are planned to reach maturity (enabled by default) on June 23, 2026. Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to understand which flags may affect your project and how to opt out before the change takes effect. 
