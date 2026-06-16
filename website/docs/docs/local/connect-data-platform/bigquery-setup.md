@@ -774,7 +774,23 @@ my-profile:
       dataproc_region: us-central1
 ```
 
+### Reservation
 
+If your organization has set up BigQuery Reservations, you may specify `reservation` for dbt to use for query execution.
+
+This applies to all jobs for the target. To override it for a specific model or set of models, use the [`reservation` model config](/reference/resource-configs/bigquery-configs#using-reservations).
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      reservation: projects/abc-admin/locations/US/reservations/my-reservation
+```
 
 ## Local OAuth gcloud setup
 
