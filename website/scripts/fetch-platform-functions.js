@@ -59,19 +59,21 @@ async function fetchGitHubFile(repoPath, filePath, token) {
 // Validation
 // ---------------------------------------------------------------------------
 
-// Per-platform spot-checks: stable, universally-supported functions Fusion is
-// known to typecheck. Each listed name MUST resolve to fusion_typecheck: true
-// after the join, or the run fails — guarding against a regression in the
-// name/URL matching that would silently flip functions to false. BigQuery's
-// list also includes overloaded names in their scraped parenthetical form to
-// exercise the qualifier-stripping path.
+// Per-platform spot-checks: functions Fusion is known to typecheck. Each listed
+// name MUST resolve to fusion_typecheck: true after the join, or the run fails —
+// guarding against a regression in the name/URL matching that would silently
+// flip functions to false. To avoid biasing toward a handful of common math
+// functions, each list is a frozen random sample (seeded, GA-only) drawn across
+// the platform's supported functions — see the regeneration note in
+// scripts/spot-checks.test.js. BigQuery's list also includes overloaded names
+// in their scraped parenthetical form to exercise qualifier stripping.
 const SPOT_CHECKS = {
-  bigquery: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'CONCAT', 'LAST_DAY (Datetime)', 'STRING (Timestamp)', 'PERCENTILE_CONT (Navigation)'],
-  databricks: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'COALESCE'],
-  duckdb: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'COALESCE'],
-  redshift: ['ABS', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'CONCAT', 'REPLACE'],
-  snowflake: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'TRIM', 'COALESCE'],
-  trino: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'CONCAT'],
+  bigquery: ['DATETIME_DIFF', 'IS_NAN', 'LAX_STRING', 'REGEXP_CONTAINS', 'SPLIT', 'STRPOS', 'ST_GEOHASH', 'UNIX_MICROS', 'LAST_DAY (Datetime)', 'STRING (Timestamp)', 'PERCENTILE_CONT (Navigation)'],
+  databricks: ['COVAR_POP', 'H3_CENTERASGEOJSON', 'PARSE_JSON', 'POSITIVE', 'ST_CLOSESTPOINT', 'ST_MAKEPOLYGON', 'TO_TIMESTAMP', 'UNIFORM'],
+  duckdb: ['ARRAY_APPEND', 'ARRAY_UNIQUE', 'ISOYEAR', 'MAKE_TIME', 'PG_TYPEOF', 'REGEXP_EXTRACT', 'REGR_SLOPE', 'STRPTIME'],
+  redshift: ['ANY_VALUE', 'ARRAY', 'DATE_PART', 'JSON_PARSE', 'LN', 'ST_ISPOLYGONCW', 'ST_Z', 'TEXT_TO_INT_ALT'],
+  snowflake: ['ABS', 'CONVERT_TIMEZONE', 'DATABASE_REFRESH_HISTORY', 'DECOMPRESS_BINARY', 'IFF', 'IS_ARRAY', 'PARSE_IP', 'ST_COVERS'],
+  trino: ['LINE_LOCATE_POINT', 'LN', 'REGEXP_COUNT', 'SIGN', 'SPLIT_PART', 'ST_INTERSECTS', 'ST_XMIN', 'UUID'],
 };
 
 function validate(platform, functions) {
