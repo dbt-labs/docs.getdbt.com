@@ -6,17 +6,18 @@ level: 'Beginner'
 icon: 'bigquery'
 hide_table_of_contents: true
 tags: ['BigQuery', 'Platform', 'Quickstart']
+product_badge: "Fusion compatible"
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-## Introduction
+## Introduction 
 
-In this quickstart guide, you'll learn how to use <Constant name="cloud" /> with BigQuery. It will show you how to: 
+In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with BigQuery. It will show you how to: 
 
 - Create a Google Cloud Platform (GCP) project.
 - Access sample data in a public dataset.
-- Connect <Constant name="cloud" /> to BigQuery.
+- Connect <Constant name="dbt" /> to BigQuery.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
 - Document your models.
@@ -28,7 +29,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ### Prerequisites​
 
-- You have a  [<Constant name="cloud" /> account](https://www.getdbt.com/signup/). 
+- You have a  [<Constant name="dbt" /> account](https://www.getdbt.com/signup/). 
 - You have a [Google account](https://support.google.com/accounts/answer/27441?hl=en).
 - You can use a personal or work account to set up BigQuery through [Google Cloud Platform (GCP)](https://cloud.google.com/free).
 
@@ -84,14 +85,26 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 3. Create a service account key for your new project from the [Service accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts?walkthrough_id=iam--create-service-account-keys&start_index=1#step_index=1). For more information, refer to [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) in the Google Cloud docs. When downloading the JSON file, make sure to use a filename you can easily remember. For example, `dbt-user-creds.json`. For security reasons, dbt Labs recommends that you protect this JSON file like you would your identity credentials; for example, don't check the JSON file into your version control software.
 
 ## Connect dbt to BigQuery​
-1. Create a new project in [<Constant name="cloud" />](/docs/cloud/about-cloud/access-regions-ip-addresses). Navigate to **Account settings** (by clicking on your account name in the left side menu), and click **+ New project**.
-2. Enter a project name and click **Continue**.
-3. For the warehouse, click **BigQuery** then **Next** to set up your connection.
-4. Click **Upload a Service Account JSON File** in settings.
-5. Select the JSON file you downloaded in [Generate BigQuery credentials](#generate-bigquery-credentials) and <Constant name="cloud" /> will fill in all the necessary fields.
-6. Optional &mdash; <Constant name="cloud" /> Enterprise plans can configure developer OAuth with BigQuery, providing an additional layer of security. For more information, refer to [Set up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
-7. Click **Test Connection**. This verifies that <Constant name="cloud" /> can access your BigQuery account.
-8. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
+1. In [<Constant name="dbt" />](/docs/platform/about-platform/access-regions-ip-addresses), click your account name in the left side menu.
+2. Navigate to **Account settings** and click **+ New project**.
+3. Enter a project name and click **Continue**.
+4. For the warehouse, click **BigQuery** then **Next** to set up your connection.
+5. Click **Upload a Service Account JSON File** in settings.
+6. Select the JSON file you downloaded in Generate BigQuery credentials and <Constant name="dbt" /> will fill in all the necessary fields.
+7. (Optional) <Constant name="dbt" /> Enterprise plans can configure developer OAuth with BigQuery, providing an additional layer of security. For more information, refer to [Set up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth).
+8. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+9. Select your project that uses the BigQuery connection.
+10. Click **Edit**.
+11. Enter your **Development credentials** for BigQuery with:
+    - **Authentication Method** &mdash; Select **Service Account JSON**. This uses the service account you uploaded when you set up the project connection.
+    - **Dataset** &mdash; You may notice that the dataset name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the dataset connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="studio_ide" />.
+    - **Target name** &mdash; Leave as the default.
+    - **Threads** &mdash; Leave as the default (6). This is the number of simultaneous connections that <Constant name="dbt" /> will make to build models concurrently.
+
+    <Lightbox src="/img/bigquery/dbt_platform_bigquery_development_credentials.png" title="BigQuery Development Credentials" />
+
+12. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your BigQuery account.
+13. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
 
 
 ## Set up a dbt managed repository 
@@ -99,9 +112,9 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 
 
 ## Initialize your dbt project​ and start developing
-Now that you have a repository configured, you can initialize your project and start development in <Constant name="cloud" />:
+Now that you have a repository configured, you can initialize your project and start development in <Constant name="dbt" />:
 
-1. Click **Start developing in the <Constant name="cloud_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the <Constant name="studio_ide" />**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
@@ -113,10 +126,10 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-You have two options for working with files in the <Constant name="cloud_ide" />:
+You have two options for working with files in the <Constant name="studio_ide" />:
 
 - Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="cloud_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The <Constant name="studio_ide" /> prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
 
 Name the new branch `add-customers-model`.
 

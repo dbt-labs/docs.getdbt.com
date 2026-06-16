@@ -181,7 +181,7 @@ For example, a `dbt run` command is only needed if there is the potential for a 
 it's effectively a deploy action.
 By contrast, a `dbt run` command is needed for a table in the same scenarios *AND when the data in the table needs to be updated*.
 This also holds true for incremental and snapshot models, whose underlying relations are tables.
-In the table cases, the scheduling mechanism is either <Constant name="cloud" /> or your local scheduler;
+In the table cases, the scheduling mechanism is either <Constant name="dbt" /> or your local scheduler;
 there is no built-in functionality to automatically refresh the data behind a table.
 However, most platforms (Postgres excluded) provide functionality to configure automatically refreshing a materialized view.
 Hence, materialized views work similarly to incremental models with the benefit of not needing to run dbt to refresh the data.
@@ -266,7 +266,4 @@ def model(dbt, session):
 </WHCode>
 
 **Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
-
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="materialization"/>
 

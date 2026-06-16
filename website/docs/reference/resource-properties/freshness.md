@@ -64,6 +64,9 @@ A freshness block is used to define the acceptable amount of time between the mo
 
 In the `freshness` block, one or both of `warn_after` and `error_after` can be provided. If neither is provided, then dbt will not calculate freshness snapshots for the tables in this source.
 
+- `warn_after`: Duration (for example, 12 hours) after which dbt raises a warning if the most recent available data is older than this threshold.
+- `error_after`: Duration (for example, 24 hours) after which dbt fails the freshness check if the most recent available data is older than this threshold.
+
 In most cases, the `loaded_at_field` is required. Some adapters support calculating source freshness from the warehouse metadata tables and can exclude the `loaded_at_field`. <VersionBlock firstVersion="1.10">Alternatively, you can define `loaded_at_query` to use custom SQL expression to calculate the timestamp.</VersionBlock>
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
@@ -81,6 +84,16 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
 - [Databricks](/reference/resource-configs/databricks-configs) (Supported in the <Constant name="fusion_engine" />)
 
+<VersionBlock firstVersion="1.12">
+:::note Wildcard table identifiers
+On BigQuery, metadata-based freshness checks are not reliable for sources defined with wildcard table identifiers (for example, `events_*`).
+
+To prevent incorrect freshness results, enable the [`bigquery_reject_wildcard_metadata_source_freshness`](/reference/global-configs/bigquery-changes#the-bigquery_reject_wildcard_metadata_source_freshness-flag) flag in your `dbt_project.yml`. When enabled, dbt raises an error if metadata-based freshness is used with a wildcard table identifier.
+
+To calculate freshness for wildcard tables, configure [`loaded_at_field`](#loaded_at_field) to use query-based freshness checks instead.
+:::
+</VersionBlock>
+
 Freshness blocks are applied hierarchically:
 - A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source.
 - A `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
@@ -89,7 +102,13 @@ This is useful when all of the tables in a source have the same `loaded_at_field
 
 To exclude a source from freshness calculations, explicitly set `freshness: null`.
 
-In state-aware orchestration, dbt uses the warehouse metadata by default to check if sources (or upstream models in the case of Mesh) are fresh. For more information on how freshness is used by state-aware orchestration, see [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations). 
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
+
+In state-aware orchestration, dbt uses the warehouse metadata by default to check if sources (or upstream models in the case of Mesh) are fresh. For more information on how freshness is used by state-aware orchestration, see [Advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
+
+If you're using [dbt State](/docs/deploy/dbt-state-about), `loaded_at_field` and `loaded_at_query` are also used for source freshness detection (for example, to ensure late-arriving records are detected). Refer to [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration) for more details.
 
 ## loaded_at_field
 

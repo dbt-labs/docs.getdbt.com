@@ -15,6 +15,7 @@ description: "This guide explains how to use the description key to add YAML des
     { label: 'Macros', value: 'macros', },
     { label: 'Data tests', value: 'data_tests', },
     { label: 'Unit tests', value: 'unit_tests', },
+    { label: 'Groups', value: 'groups', },
   ]
 }>
 <TabItem value="models">
@@ -209,6 +210,25 @@ unit_tests:
 
 </TabItem>
 
+<TabItem value="groups">
+
+
+<File name='models/schema.yml'>
+
+```yml
+
+groups:
+  - name: group_name
+    description: markdown_string  # Supported in v1.10 and later
+    owner:
+      email: owner@example.com
+
+```
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -223,8 +243,9 @@ A user-defined description used to document:
 - macros, and macro arguments
 - data tests, and data test columns
 - unit tests for models
+- groups (dbt Core v1.10+)
 
-These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="explorer" />](/docs/explore/explore-projects)). 
+These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [<Constant name="catalog" />](/docs/explore/explore-projects)). 
 
 Descriptions can include markdown, as well as the [`doc` Jinja function](/reference/dbt-jinja-functions/doc).
 
@@ -387,7 +408,7 @@ models:
 
 This section applies to <Constant name="core" /> users only. Including an image from your repository ensures your images are version-controlled. 
 
-Both <Constant name="cloud" /> and <Constant name="core" /> users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+Both <Constant name="dbt" /> and <Constant name="core" /> users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include an image in your model's `description` field:
 
@@ -429,7 +450,7 @@ If mixing images and text, also consider using a docs block.
 
 ### Include an image from the web in your descriptions
 
-This section applies to <Constant name="cloud" /> and <Constant name="core" /> users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+This section applies to <Constant name="dbt" /> and <Constant name="core" /> users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
 
 To include images from the web, specify the image URL in your model's `description` field:
 
@@ -440,7 +461,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://github.com/dbt-labs/dbt-core/blob/main/etc/dbt-core.svg)"
+    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt-core/refs/heads/1.latest/docs/images/dbt-core.svg)"
 
     columns:
       - name: customer_id

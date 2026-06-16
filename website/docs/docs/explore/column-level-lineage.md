@@ -5,9 +5,9 @@ description: "Use dbt Catalog's column-level lineage to gain insights about your
 
 # Column-level lineage <Lifecycle status="managed,managed_plus" />
 
-<Constant name="explorer" /> now offers column-level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, <Constant name="explorer" /> provides end-to-end lineage for the data in that column given how it's used.
+<Constant name="catalog" /> now offers column-level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, <Constant name="catalog" /> provides end-to-end lineage for the data in that column given how it's used.
 
-CLL is available to all <Constant name="cloud" /> Enterprise plans that can use <Constant name="explorer" />. 
+CLL is available to all <Constant name="dbt" /> Enterprise plans that can use <Constant name="catalog" />. 
 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="95%" title="Overview of column level lineage"/>
@@ -18,9 +18,9 @@ import ExplorerCourse from '/snippets/_explorer-course-link.md';
 
 ## Access the column-level lineage
 
-There is no additional setup required for CLL if your account is on an Enterprise plan that can use <Constant name="explorer" />. You can access the CLL by expanding the column card in the **Columns** tab of an <Constant name="explorer" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
+There is no additional setup required for CLL if your account is on an Enterprise plan that can use <Constant name="catalog" />. You can access the CLL by expanding the column card in the **Columns** tab of an <Constant name="catalog" /> [resource details page](/docs/explore/explore-projects#view-resource-details) for a model, source, or snapshot.
 
-<Constant name="cloud" /> updates the lineage in Explorer after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
+<Constant name="dbt" /> updates the lineage in Explorer after each run that's executed in the production or staging environment. At least one job in the production or staging environment must run `dbt docs generate`. Refer to [Generating metadata](/docs/explore/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to expand for the CLL"/>
 
@@ -39,7 +39,7 @@ Passthrough and rename columns are clearly labeled and color-coded in the lineag
 
 In the following `dim_salesforce_accounts` model example (located at the end of the lineage), the description for a column inherited from the `stg_salesforce__accounts` model (located second to the left) indicates its origin. This helps developers quickly identify the original source of the column, making it easier to know where to make documentation changes.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.jpg" width="100%" title="Example of lineage with propagated and inherited column descriptions."/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.png" width="100%" title="Example of lineage with propagated and inherited column descriptions."/>
 
 ## Column-level lineage use cases {#use-cases}
 
@@ -59,14 +59,14 @@ When exploring your data products, navigating column lineage allows analytics en
 
 ## Caveats
 
-Refer to the following CLL caveats or limitations as you navigate <Constant name="explorer" />.
+Refer to the following CLL caveats or limitations as you navigate <Constant name="catalog" />.
 
 ### Column usage
 Column-level lineage reflects the lineage from `select` statements in your models' SQL code. It doesn't reflect other usage like joins and filters. 
 
 ### SQL parsing
 
-Column-level lineage relies on SQL parsing. Errors can occur when parsing fails or a column's origin is unknown (like with JSON unpacking, lateral joins, and so on). In these cases, lineage may be incomplete and <Constant name="cloud" /> will provide a warning about it in the column lineage. 
+Column-level lineage relies on SQL parsing. Errors can occur when parsing fails or a column's origin is unknown (like with JSON unpacking, lateral joins, and so on). In these cases, lineage may be incomplete and <Constant name="dbt" /> will provide a warning about it in the column lineage. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-parsing-error-pill.png" title="Example of warning in the full lineage graph"/>
 
