@@ -7,6 +7,8 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import DevToStarterUpgradeBody from '/snippets/_dev-to-starter-upgrade-body.md';
+
 <IntroText>
 Common questions about <Constant name="dbt" /> plans, billing, and usage. For pricing and plan details, refer to [Billing](/docs/platform/billing).
 </IntroText>
@@ -31,12 +33,7 @@ Yes. Your <Constant name="dbt" /> account will be upgraded without impacting you
 
 <Expandable alt_header="What happens when I upgrade from Developer to Starter?">
 
-The free two-week trial is only available to new accounts at signup &mdash; but if you're already on the Developer plan, you can upgrade to Starter and immediately access all Starter features without needing to go through the trial.
-
-
-
-
-When you upgrade from Developer to Starter, you move directly to paid billing &mdash; you'll enter your payment information and select your developer license seats to complete the upgrade. Your existing projects and settings carry over.
+<DevToStarterUpgradeBody />
 
 </Expandable>
 
