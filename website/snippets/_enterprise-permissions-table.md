@@ -51,7 +51,7 @@ Key:
 ::::note Credentials access
 Users can access the **Credentials** page under **Your profile** when they have `develop_access` or `user_credential_write` on at least one project.
 
-An admin can grant `user_credential_write` to any group, regardless of which permission set the group is assigned. Environment variable overrides and dbt version overrides still require `develop_access`.
+An admin can grant `user_credential_write` to any group, regardless of which permission set the group is assigned. Users with only `user_credential_write` can configure warehouse and Git credentials on that page; environment variable and dbt version overrides still require `develop_access`.
 ::::
 
 
