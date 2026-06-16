@@ -35,7 +35,8 @@ The free two-week trial is only available to new accounts at signup &mdash; but 
 
 
 
-When you upgrade from Developer to Starter, you move directly to paid Starter billing. You'll need to enter your payment information and select your developer seats before your upgrade is complete. Your existing projects and account settings are not affected.
+
+When you upgrade from Developer to Starter, you move directly to paid billing &mdash; you'll enter your payment information and select your developer license seats to complete the upgrade. Your existing projects and settings carry over.
 
 </Expandable>
 
