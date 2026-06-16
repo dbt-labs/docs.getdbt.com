@@ -307,6 +307,34 @@ models:
             some_key: some_value
 ```
 
+The same resolution applies to generic test definitions. If you define a custom key directly under a test in a `tests:` block, nest it under `config.meta`:
+
+Example that results in the warning:
+
+```yaml
+tests:
+  - name: custom_generic_test
+    description: My custom generic test
+    arguments:
+      - name: active_timestamp
+        type: timestamp
+        description: The active timestamp for the model
+```
+
+Example of the resolution:
+
+```yaml
+tests:
+  - name: custom_generic_test
+    description: My custom generic test
+    config:
+      meta:
+        arguments:
+          - name: active_timestamp
+            type: timestamp
+            description: The active timestamp for the model
+```
+
 To access custom configurations nested under attributes of `meta`, use `config.get('meta')` and then index the meta dictionary by the name of your custom attribute. Users will need to adjust their code that accesses the custom config keys directly as top-level keys.
 
 Example before custom configurations were nested under meta:
