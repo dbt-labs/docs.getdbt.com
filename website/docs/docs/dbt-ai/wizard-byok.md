@@ -291,7 +291,7 @@ To set a default Snowflake Cortex model, add the model ID to `~/.dbt/wizard/conf
 model = "SNOWFLAKE_CORTEX_MODEL_ID"
 ```
 
-### Databricks <Lifecycle status="beta"/>
+### Databricks Unity AI Gateway <Lifecycle status="beta"/>
 
 <Constant name="wizard" /> connects to Databricks through the Unity Catalog AI Gateway, so you bring your own models served from your Databricks workspace. Make sure the [serving endpoints](https://docs.databricks.com/en/machine-learning/model-serving/index.html) you plan to use are deployed and that your Databricks token has permission to query them.
 
