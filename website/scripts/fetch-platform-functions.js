@@ -167,15 +167,16 @@ async function processPlatform(platform, token) {
   const outPath = path.join(OUT_DIR, `${platform.id}.json`);
   fs.mkdirSync(OUT_DIR, { recursive: true });
   const output = {
+    // Intentionally no fetch timestamp: it would change on every run and open a
+    // PR even when no function data changed. Git history records when data moves.
     _meta: {
       platform: platform.id,
       platform_name: platform.name,
-      fetched_at: new Date().toISOString(),
       count: merged.length,
     },
     functions: merged,
   };
-  fs.writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf8');
+  fs.writeFileSync(outPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
   console.log(`[${platform.id}] Wrote ${merged.length} functions to ${outPath}`);
 }
 
