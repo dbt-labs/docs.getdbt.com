@@ -1,8 +1,12 @@
 ---
-title: "About state in dbt"
+title: "About local state in dbt"
 description: "dbt operations are stateless and idempotent, but artifacts enable state-based features like slim CI and deferral."
 pagination_next: "reference/node-selection/configure-state"
 ---
+
+:::tip Looking for a managed state experience?
+If you want a managed experience for state with dbt to skip rerunning models that haven't changed, check out [dbt State](/docs/deploy/dbt-state-about).
+:::
 
 One of the greatest underlying assumptions about dbt is that its operations should be **stateless** and **<Term id="idempotent" />**. That is, it doesn't matter how many times a model has been run before, or if it has ever been run before. It doesn't matter if you run it once or a thousand times. Given the same raw data, you can expect the same transformed result. A given run of dbt doesn't need to "know" about _any other_ run; it just needs to know about the code in the project and the objects in your database as they exist _right now_.
 

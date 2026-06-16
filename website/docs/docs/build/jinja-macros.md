@@ -78,7 +78,7 @@ You can recognize Jinja based on the delimiters the language uses, which we refe
 -  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from executing or outputing a string. Don't use `--` for comment.
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
-* **Using <Constant name="cloud" />:** Click the compile button to see the compiled SQL in the Compiled SQL pane
+* **Using <Constant name="dbt" />:** Click the compile button to see the compiled SQL in the Compiled SQL pane
 * **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
@@ -192,5 +192,3 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 {% endfor %}
 ```
 
-<Snippet path="discourse-help-feed-header" />
-<DiscourseHelpFeed tags="wee"/>

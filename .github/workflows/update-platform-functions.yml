@@ -1,0 +1,109 @@
+name: Update platform function support data
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # weekly on Mondays at 6am UTC
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: 'Comma-separated platform IDs to update (leave blank for all)'
+        required: false
+        default: ''
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    concurrency:
+      group: update-platform-functions-${{ github.ref }}
+      cancel-in-progress: false
+
+    strategy:
+      fail-fast: false # let other platforms succeed even if one fails
+      max-parallel: 1 # prevent matrix jobs from racing when pushing to the same branch
+      matrix:
+        platform: [snowflake, databricks, redshift, bigquery, trino, duckdb]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: website
+
+      - name: Check if platform is in requested list
+        id: should_run
+        run: |
+          INPUT="${{ github.event.inputs.platforms }}"
+          if [ -z "$INPUT" ] || echo ",$INPUT," | grep -q ",${{ matrix.platform }},"; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Verify Fusion repo access
+        if: steps.should_run.outputs.run == 'true'
+        env:
+          FUSION_REPO_TOKEN: ${{ secrets.FUSION_REPO_TOKEN }}
+        run: |
+          if [ -z "$FUSION_REPO_TOKEN" ]; then
+            echo "::error::FUSION_REPO_TOKEN secret is not set. Add a PAT with read access to dbt-labs/fs."
+            exit 1
+          fi
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: token ${FUSION_REPO_TOKEN}" \
+            -H "Accept: application/vnd.github.raw+json" \
+            "https://api.github.com/repos/dbt-labs/fs/contents/crates/sdf-sql-functions/assets/${{ matrix.platform }}/functions.sdf.yml")
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::FUSION_REPO_TOKEN cannot read dbt-labs/fs (HTTP ${HTTP_CODE}). Update the repository secret with a valid PAT that has read access to dbt-labs/fs. For fine-grained tokens, authorize SSO for the dbt-labs organization."
+            exit 1
+          fi
+          echo "Fusion repo access OK for ${{ matrix.platform }}"
+
+      - name: Fetch and validate function data
+        if: steps.should_run.outputs.run == 'true'
+        run: node website/scripts/fetch-platform-functions.js ${{ matrix.platform }}
+        env:
+          FUSION_REPO: dbt-labs/fs
+          FUSION_BASE_PATH: crates/sdf-sql-functions/assets
+          FUSION_REPO_TOKEN: ${{ secrets.FUSION_REPO_TOKEN }}
+
+      - name: Open Fusion gap issues for new functions
+        if: steps.should_run.outputs.run == 'true'
+        continue-on-error: true
+        run: node website/scripts/create-fusion-gap-issues.js ${{ matrix.platform }}
+        env:
+          # Optional: PAT with issues:write on dbt-labs/dbt-fusion (separate from FUSION_REPO_TOKEN / dbt-labs/fs read)
+          FUSION_ISSUES_TOKEN: ${{ secrets.FUSION_ISSUES_TOKEN }}
+
+      - name: Open PR if data changed
+        if: steps.should_run.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add website/static/data/functions/${{ matrix.platform }}.json
+          if git diff --staged --quiet; then
+            echo "No function support data changes for ${{ matrix.platform }}"
+            exit 0
+          fi
+          BRANCH="chore/update-${{ matrix.platform }}-function-data"
+          git checkout -b "$BRANCH"
+          git commit -m "chore: update ${{ matrix.platform }} function support data"
+          git push --force origin "$BRANCH"
+          gh pr create \
+            --title "chore: update ${{ matrix.platform }} function support data" \
+            --body "Automated update of ${{ matrix.platform }} built-in function support data." \
+            --base current \
+            --head "$BRANCH" \
+          || echo "PR already open for $BRANCH — branch updated"

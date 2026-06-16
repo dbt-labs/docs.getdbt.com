@@ -8,47 +8,47 @@ id: account-specific-features
 import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
 
 <IntroText>
-The features in <Constant name="cloud" /> are tailored to each organization's unique configuration, including user permissions, project setup, and subscription level, with guidance provided to help teams make the most of their available capabilities.
+The features in <Constant name="dbt" /> are tailored to each organization's unique configuration, including user permissions, project setup, and subscription level, with guidance provided to help teams make the most of their available capabilities.
 </IntroText>
 
-This document provides a comprehensive overview of account-specific features in <Constant name="cloud" /> according to plan type.
+This document provides a comprehensive overview of account-specific features in <Constant name="dbt" /> according to plan type.
 
 ## Copilot
 
-[<Constant name="copilot" />](/docs/cloud/dbt-copilot) is an AI-powered assistant designed to accelerate your development workflow and help you focus on delivering high-quality data.
+[<Constant name="wizard" />](/docs/platform/wizard-platform) is an AI-powered assistant designed to accelerate your development workflow and help you focus on delivering high-quality data.
 
-<Constant name="copilot" /> is available to all users in <Constant name="cloud" /> but limits are imposed according to plan type. Have a look at [dbt Cloud's pricing](https://www.getdbt.com/pricing) for more information.
+<Constant name="wizard" /> is available to all users in <Constant name="dbt" /> but limits are imposed according to plan type. Have a look at [dbt's pricing](https://www.getdbt.com/pricing) for more information.
 
 ## Copilot features
 
 ### Codegen <Lifecycle status="Starter, Enterprise, Enterprise+"/>
 
-<Constant name="copilot" /> codegen refers to the code generation capabilities provided by <Constant name="copilot" />, an AI-powered assistant integrated into <Constant name="cloud" />. This feature allows users to generate SQL code, documentation, tests, and semantic models directly from natural language prompts, helping automate and accelerate common analytics engineering workflows.⁠⁠⁠⁠
+<Constant name="wizard" /> codegen refers to the code generation capabilities provided by <Constant name="wizard" />, an AI-powered assistant integrated into <Constant name="dbt" />. This feature allows users to generate SQL code, documentation, tests, and semantic models directly from natural language prompts, helping automate and accelerate common analytics engineering workflows.⁠⁠⁠⁠
 
-<Constant name="copilot" /> codegen uses metadata such as relationships, lineage, and model context from your dbt projects to produce contextually accurate code. This helps avoid mistakes common with generic AI tools by ensuring generated code matches your actual schema and conventions.⁠⁠⁠⁠
+<Constant name="wizard" /> codegen uses metadata such as relationships, lineage, and model context from your dbt projects to produce contextually accurate code. This helps avoid mistakes common with generic AI tools by ensuring generated code matches your actual schema and conventions.⁠⁠⁠⁠
 
-The code <Constant name="copilot" /> generates may include:
+The code <Constant name="wizard" /> generates may include:
 
 - Base/staging/semantic models (including SQL for new models)
 - YAML files for documentation or tests
 - Inline SQL expressions
 - Semantic model structures and metrics
 
-<Constant name="copilot" /> codegen is available in the <Constant name="cloud_ide" />, <Constant name="visual_editor" />, and (soon) <Constant name="query_page" />, making it possible to generate and edit code directly within these interfaces.⁠ 
+<Constant name="wizard" /> codegen is available in the <Constant name="studio_ide" />, <Constant name="canvas" />, and (soon) <Constant name="insights" />, making it possible to generate and edit code directly within these interfaces.⁠ 
 
 ### Bring your own key (BYOK) <Lifecycle status="Enterprise, Enterprise+"/>
 
 BYOK allows users to provide and manage their own encryption or API keys, rather than relying on keys managed by a vendor or third party. This gives organizations greater control over data security, compliance, and contracts.
 
-BYOK means users can bring and configure their own OpenAI or Azure OpenAI API key. With BYOK, users have more control over privacy, observability, and security for their data and metadata. Take note of the following when using BYOK:
+BYOK means users can bring and configure their own OpenAI, Anthropic, or Azure AI Foundry credentials. With BYOK, users have more control over privacy, observability, and security for their data and metadata. Take note of the following when using BYOK:
 
 - When you use your own API key, your contract with the LLM provider (not dbt Labs') applies. You are responsible for managing costs, usage limits, and data handling. This means ownership and liability for API use rests with the user, not dbt Labs.
 - dbt Labs does not impose usage limits on the user's key, as it does with internally managed keys.
 - <OpenAiProjectRegion />
-- Currently, BYOK in <Constant name="cloud" /> supports OpenAI and Azure-hosted OpenAI API keys. Users enter their key through the [account settings](/docs/cloud/account-settings), and requests made by <Constant name="copilot" /> or other AI features are billed directly to the customer by the respective provider.⁠⁠⁠⁠
+- Currently, BYOK in <Constant name="dbt" /> supports OpenAI and Azure-hosted OpenAI API keys. Users enter their key through the [account settings](/docs/platform/account-settings), and requests made by <Constant name="wizard" /> or other AI features are billed directly to the customer by the respective provider.⁠⁠⁠⁠
 
 :::info
-The <Constant name="copilot" /> experience with BYOK and Azure OpenAI will not use metadata information in <Constant name="query_page" />, <Constant name="visual_editor" />, or the <Constant name="cloud_ide" />. 
+The <Constant name="wizard" /> experience with BYOK and Azure OpenAI will not use metadata information in <Constant name="insights" />, <Constant name="canvas" />, or the <Constant name="studio_ide" />. 
 
 Without this contextual data, the LLM's responses may be suboptimal compared to those generated by the default dbt AI service. This is a temporary limitation, and we are working on an update that will enable the use of Azure OpenAI APIs.
 :::
@@ -67,23 +67,23 @@ Note that BYOK is different from bring your own cloud (BYOC). BYOK refers to key
 
 ### Natural language in Canvas <Lifecycle status="Enterprise, Enterprise+"/>
 
-Natural language in <Constant name="visual_editor" /> refers to the ability to build data models visually in <Constant name="visual_editor" /> using plain language prompts, powered by GenAI (<Constant name="copilot" />). You can describe what you want to build or transform, and the tool generates the underlying SQL and transformation steps for you. No SQL expertise is required. It's aimed at making data modeling more accessible to less-technical users or anyone who prefers a drag-and-drop or conversational interface over hand-coding SQL.⁠⁠
+Natural language in <Constant name="canvas" /> refers to the ability to build data models visually in <Constant name="canvas" /> using plain language prompts, powered by GenAI (<Constant name="wizard" />). You can describe what you want to build or transform, and the tool generates the underlying SQL and transformation steps for you. No SQL expertise is required. It's aimed at making data modeling more accessible to less-technical users or anyone who prefers a drag-and-drop or conversational interface over hand-coding SQL.⁠⁠
 
-Natural language lets users translate business questions or transformation requests directly into data workflows. This accelerates the process of creating governed, production-ready models while maintaining best practices and version control. You can edit <Constant name="visual_editor" /> models collaboratively, and you can see both the graphical workflow and the SQL code it produces.⁠⁠⁠⁠
+Natural language lets users translate business questions or transformation requests directly into data workflows. This accelerates the process of creating governed, production-ready models while maintaining best practices and version control. You can edit <Constant name="canvas" /> models collaboratively, and you can see both the graphical workflow and the SQL code it produces.⁠⁠⁠⁠
 
-The natural language capability is fully integrated into the <Constant name="visual_editor" /> workspace. You can start with a blank model and generate models or transformation steps by specifying requirements in everyday language. <Constant name="copilot" /> interprets the request, constructs the model in the <Constant name="visual_editor" />, and presents it visually &mdash; making it easy to refine, preview, and publish changes.⁠⁠
+The natural language capability is fully integrated into the <Constant name="canvas" /> workspace. You can start with a blank model and generate models or transformation steps by specifying requirements in everyday language. <Constant name="wizard" /> interprets the request, constructs the model in the <Constant name="canvas" />, and presents it visually &mdash; making it easy to refine, preview, and publish changes.⁠⁠
 
 This approach is especially valuable for analysts and business users, allowing broader participation in data transformation tasks without losing dbt's governance, reproducibility, and code review processes.
 
 ## Canvas <Lifecycle status="Enterprise, Enterprise+"/>
 
-<Constant name="visual_editor" /> enables efficient data access and transformation through a visual interface, combining the benefits of code-driven development with AI-assisted code generation for a seamless, flexible experience.
+<Constant name="canvas" /> enables efficient data access and transformation through a visual interface, combining the benefits of code-driven development with AI-assisted code generation for a seamless, flexible experience.
 
 ## dbt Insights <Lifecycle status="Enterprise, Enterprise+"/>
 
-<Constant name="query_page" /> is an interactive feature in <Constant name="cloud" /> designed for writing, running, and analyzing SQL queries within an intuitive interface. It brings together SQL query execution, results visualization, and integration with dbt metadata and documentation &mdash; all in one place.⁠⁠
+<Constant name="insights" /> is an interactive feature in <Constant name="dbt" /> designed for writing, running, and analyzing SQL queries within an intuitive interface. It brings together SQL query execution, results visualization, and integration with dbt metadata and documentation &mdash; all in one place.⁠⁠
 
-It supports key features such as query history, the ability to export results to CSV, basic charting (for example, line and bar charts), and direct links to <Constant name="explorer" /> and the <Constant name="cloud_ide" /> for a seamless workflow between exploration and development.⁠⁠⁠⁠
+It supports key features such as query history, the ability to export results to CSV, basic charting (for example, line and bar charts), and direct links to <Constant name="catalog" /> and the <Constant name="studio_ide" /> for a seamless workflow between exploration and development.⁠⁠⁠⁠
 
 Analysts can quickly analyze metrics across data, while engineers can leverage context, metadata, and dbt lineage details to debug or validate data models.⁠⁠⁠⁠
 
@@ -91,7 +91,7 @@ You can save and share frequently used SQL queries, and explore documentation or
 
 The interface supports syntax highlighting, code completion, asset linking (to easily reference dbt models/tables), and connects to the Semantic Layer for querying metrics or columns by name.
 
-While <Constant name="query_page" /> supports some light visualizations and query sharing, it is not intended to replace BI tools for reporting or dashboarding. Instead, it's focused on fast ad hoc analysis and insight generation. Integrations allow users to "jump off" into downstream BI tools with their queries if needed.⁠
+While <Constant name="insights" /> supports some light visualizations and query sharing, it is not intended to replace BI tools for reporting or dashboarding. Instead, it's focused on fast ad hoc analysis and insight generation. Integrations allow users to "jump off" into downstream BI tools with their queries if needed.⁠
 
 ## dbt Mesh cross platform <Lifecycle status="Enterprise, Enterprise+"/>
 
@@ -99,11 +99,11 @@ dbt Mesh cross-platform (sometimes called "cross-platform Mesh" or "cross-platfo
 
 ## SCIM <Lifecycle status="Enterprise, Enterprise+"/>
 
-SCIM (System for Cross-Domain Identity Management) automates user identities and groups, enhancing security and simplifying admin tasks. It allows for real-time user provisioning, deprovisioning, and profile updates in <Constant name="cloud" />, primarily using Okta as the identity provider.
+SCIM (System for Cross-Domain Identity Management) automates user identities and groups, enhancing security and simplifying admin tasks. It allows for real-time user provisioning, deprovisioning, and profile updates in <Constant name="dbt" />, primarily using Okta as the identity provider.
 
 ## Hybrid projects <Lifecycle status="Enterprise, Enterprise+"/>
 
-Hybrid projects refer to a setup where both <Constant name="core" /> and <Constant name="cloud" /> are utilized within the same organization, often working on the same codebase or data platform. This approach enables different teams or contributors to work in the environment that aligns best with their preferences or workflows, while still benefiting from shared assets and centralized metadata.
+Hybrid projects refer to a setup where both <Constant name="core" /> and <Constant name="dbt" /> are utilized within the same organization, often working on the same codebase or data platform. This approach enables different teams or contributors to work in the environment that aligns best with their preferences or workflows, while still benefiting from shared assets and centralized metadata.
 
 ## Enterprise security <Lifecycle status="Enterprise+"/>
 
@@ -111,11 +111,11 @@ Enterprise security includes robust capabilities for managing network access and
 
 ### PrivateLink
 
-PrivateLink provides a secure and private connection between your organization's environments, such as databases, version control systems, or data warehouses and <Constant name="cloud" />. This setup ensures that traffic remains within the AWS network, avoiding exposure to the public internet.
+PrivateLink provides a secure and private connection between your organization's environments, such as databases, version control systems, or data warehouses and <Constant name="dbt" />. This setup ensures that traffic remains within the AWS network, avoiding exposure to the public internet.
 
 ### IP allowlist
 
-IP restrictions (IP allowlist/blocklist) let organizations control which IPs can access their <Constant name="cloud" /> account.
+IP restrictions (IP allowlist/blocklist) let organizations control which IPs can access their <Constant name="dbt" /> account.
 
 ## Projects and run slots 
 
@@ -123,11 +123,11 @@ The number of projects and run slots available to your organization varies based
 
 ## Upgrade plan
 
-<Constant name="cloud" /> offers a range of plans with varying features to suit different organizational needs. 
+<Constant name="dbt" /> offers a range of plans with varying features to suit different organizational needs. 
 
-For information on the different plan types and upgrading your plan, refer to our document on [How to upgrade a dbt Cloud account](/faqs/Accounts/cloud-upgrade-instructions).
+For information on the different plan types and upgrading your plan, refer to our document on [How to upgrade a dbt Cloud account](/faqs/Accounts/platform-upgrade-instructions).
 
 ## Related content
 
-- [Billing](/docs/cloud/billing)
+- [Billing](/docs/platform/billing)
 

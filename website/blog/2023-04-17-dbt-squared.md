@@ -92,7 +92,7 @@ Operating at scale meant we needed to adapt our processes that once worked for a
 
 ### Project setup flow
 
-Because we decided to go with a multi-project architecture, there was some initial setup needed. Each country would need a dbt project in our Git repository and also needed to be deployed in dbt Cloud…twice, as each affiliate has a dev and a prod project. To avoid setting up all of the projects manually in the dbt Cloud UI, we implemented a python library as a wrapper around the [dbt Cloud Administrative API](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api).  This would read a YAML configuration file and deploy all of the projects automatically. This saved a lot of time, as we would already have a new team’s dbt project setup in both the git repository and dbt Cloud as soon as they were ready to start building.
+Because we decided to go with a multi-project architecture, there was some initial setup needed. Each country would need a dbt project in our Git repository and also needed to be deployed in dbt Cloud…twice, as each affiliate has a dev and a prod project. To avoid setting up all of the projects manually in the dbt Cloud UI, we implemented a python library as a wrapper around the [dbt Cloud Administrative API](https://docs.getdbt.com/docs/dbt-apis/admin-api).  This would read a YAML configuration file and deploy all of the projects automatically. This saved a lot of time, as we would already have a new team’s dbt project setup in both the git repository and dbt Cloud as soon as they were ready to start building.
 
 ### Development flow
 

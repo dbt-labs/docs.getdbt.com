@@ -30,10 +30,28 @@ Configurations in your root dbt project have _higher_ precedence than configurat
 
 Most configurations are "clobbered"  when applied hierarchically. Whenever a more specific value is available, it will completely replace the less specific value. Note that a few configs have different merge behavior:
 - [`tags`](/reference/resource-configs/tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags are applied in its `.sql` file, the final set of tags will include all of them.
-- [`meta`](/reference/resource-configs/meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key).
 - When using the [`freshness`](/reference/resource-configs/freshness) config, a more specific key-value pair replaces a less specific value with the same key.
 - [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
-- For clobbering and merging configurations that are inherited from multiple levels, the general rules are:
+- [`meta`](/reference/resource-configs/meta) dictionaries are **shallow-merged**, meaning dbt merges only the top-level keys and does not look inside nested dictionaries. When the same top-level key appears at more than one level, the more specific value replaces the less specific one entirely — even if that value is itself a dictionary. Top-level keys that appear at only one level are kept.
+  For example, if `dbt_project.yml` sets:
+  ```yaml
+  +meta: {owner: "alice", dagster: {automation_condition: "eager"}}
+  ```
+ 
+  and a model sets:
+  ```yaml
+  meta: {dagster: {asset_key: "my_key"}}
+  ```
+ 
+  the result is:
+  ```yaml
+  {owner: "alice", dagster: {asset_key: "my_key"}}
+  ```
+ 
+  `owner` is kept because it appears at only one level. `dagster` appears at both levels, so the more specific value replaces it as a whole — and because the merge never looks inside `dagster`, the nested `automation_condition` is lost.  A deep (recursive) merge would instead combine the nested keys, producing `dagster: {automation_condition: "eager", asset_key: "my_key"}`. `meta` doen't do this &mdash; nested dictionaries are replaced, not merged.
+
+### Which config wins across levels
+For clobbering and merging configurations that are inherited from multiple levels, the general rules are:
     - Node-level configs (more specific) clobber project-level configs (less specific).
     - For sources, table-level configs (more specific) clobber source-level configs (less specific).
     - The root project's configuration in `dbt_project.yml` clobbers configuration within package files. This is so that users can control the behavior of packages they are installing using `dbt deps` without needing to edit the code in those package files directly.

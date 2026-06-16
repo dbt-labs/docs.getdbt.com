@@ -13,8 +13,8 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.6.latest/CHANGELOG.md)
-- [<Constant name="core" /> installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
+- [<Constant name="core" /> installation guide](/docs/local/install-dbt)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/7481)
 
 ## What to know before upgrading
@@ -80,8 +80,8 @@ More consistency and flexibility around packages. Resources defined in a package
 - `vars` defined in a package's `dbt_project.yml` are now available in the resolution order when compiling nodes in that package, though CLI `--vars` and the root project's `vars` will still take precedence. See ["Variable Precedence"](/docs/build/project-variables#variable-precedence) for details.
 - `generate_x_name` macros (defining custom rules for database, schema, alias naming) follow the same pattern as other "global" macros for package-scoped overrides. See [macro dispatch](/reference/dbt-jinja-functions/dispatch) for an overview of the patterns that are possible.
 
-:::caution Closed Beta - <Constant name="cloud" /> Enterprise
-[**Project dependencies**](/docs/mesh/govern/project-dependencies): Introduces `dependencies.yml` and dependent `projects` as a feature of <Constant name="cloud" /> Enterprise. Allows enforcing model access (public vs. protected/private) across project/package boundaries. Enables cross-project `ref` of public models, without requiring the installation of upstream source code.
+:::caution Closed Beta - <Constant name="dbt" /> Enterprise
+[**Project dependencies**](/docs/mesh/govern/project-dependencies): Introduces `dependencies.yml` and dependent `projects` as a feature of <Constant name="dbt" /> Enterprise. Allows enforcing model access (public vs. protected/private) across project/package boundaries. Enables cross-project `ref` of public models, without requiring the installation of upstream source code.
 :::
 
 ### Deprecated functionality

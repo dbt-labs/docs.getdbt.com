@@ -142,7 +142,7 @@ The migration steps here are much simpler than splitting up a monolith!
 ## Additional Resources
 ### Our example projects
 
-We've provided a set of example projects you can use to explore the topics covered here. We've split our [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) project into 3 separate projects in a multi-repo <Constant name="mesh" />. Note that you'll need to leverage <Constant name="cloud" /> to use multi-project architecture, as cross-project references are powered via <Constant name="cloud" />'s APIs.
+We've provided a set of example projects you can use to explore the topics covered here. We've split our [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) project into 3 separate projects in a multi-repo <Constant name="mesh" />. Note that you'll need to leverage <Constant name="dbt" /> to use multi-project architecture, as cross-project references are powered via <Constant name="dbt" />'s APIs.
 
 - **[Platform](https://github.com/dbt-labs/jaffle-shop-mesh-platform)** - containing our centralized staging models.
 - **[Marketing](https://github.com/dbt-labs/jaffle-shop-mesh-marketing)** - containing our marketing marts.

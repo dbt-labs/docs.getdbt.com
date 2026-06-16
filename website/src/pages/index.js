@@ -5,7 +5,6 @@ import Card from '@site/src/components/card';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/p/blog-archive-f05.json';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useDateTimeFormat } from '@docusaurus/theme-common/internal';
-import { getSpotlightMember } from '../utils/get-spotlight-member';
 import Link from '@docusaurus/Link';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import StructuredData from '@site/src/components/StructuredData';
@@ -37,28 +36,7 @@ function Home() {
       return accumulator;
     }, []);
 
-  const featuredResource = {
-    title: 'How we structure our dbt projects',
-    description:
-      'Our hands-on learnings for how to structure your dbt project for success and gain insights into the principles of analytics engineering.',
-    link: '/best-practices/how-we-structure/1-guide-overview',
-    image: '/img/structure-dbt-projects.png',
-    sectionTitle: 'Featured resource',
-  };
-
-  // Set spotlightSection to featuredResource by default
-  let spotlightSection = featuredResource;
-
-  // Check if featured community spotlight member set in Docusaurus config
   const { siteConfig } = useDocusaurusContext();
-  let communitySpotlightMember =
-    siteConfig?.themeConfig?.communitySpotlightMember || null;
-
-  // Get spotlight member by ID or date if available
-  const spotlightMember = getSpotlightMember(communitySpotlightMember);
-  if (spotlightMember) {
-    spotlightSection = spotlightMember;
-  }
 
   // note: we've removed the in-hero search input so that we can rely on navbar DocSearch (⌘K) only.
 
@@ -95,7 +73,7 @@ function Home() {
                   <Link
                     id="hero-vs-code-cta"
                     className="hero-border-beam-cta"
-                    to="/docs/install-dbt-extension">
+                    to="/docs/local/install-dbt">
                       <span>Install dbt VS Code extension + Fusion</span>
                       </Link>
                 </div>
@@ -109,6 +87,13 @@ function Home() {
                 <h2 className="heading-2">New to dbt? Start here.</h2>
               </div>
               <div className="home-card-grid">
+                <Card
+                  title="dbt Wizard"
+                  tag="Beta"
+                  body="Build, refactor, and validate dbt projects with an AI agent purpose-built for analytics engineering — in the dbt platform or from your terminal."
+                  link="/docs/platform/wizard-overview"
+                  icon="dbt-copilot"
+                />
                 <Card
                   title="dbt Fusion engine"
                   tag="Article"
@@ -127,7 +112,7 @@ function Home() {
                   title="Move to the dbt platform"
                   tag="Guide"
                   body="Migrate from dbt Core to the powerful, lightning fast dbt platform today!"
-                  link="/guides/core-to-cloud-1?step=1"
+                  link="/guides/core-migration-1?step=1"
                   icon="tool"
                 />
               </div>
@@ -142,9 +127,9 @@ function Home() {
               </div>
               <div className="home-card-grid">
                 <Card
-                  title="dbt Copilot"
-                  body="AI-powered assistant that automates code, tests, and documentation in your workflow."
-                  link="/docs/cloud/dbt-copilot"
+                  title="dbt Wizard"
+                  body="AI agent purpose-built for analytics engineering — available in the dbt platform and from your terminal."
+                  link="/docs/platform/wizard-overview"
                   icon="dbt-copilot"
                 />
                 <Card
@@ -153,6 +138,13 @@ function Home() {
                   link="/docs/about-dbt-extension"
                   icon="vsce"
                   showBorderBeam
+                />
+                <Card
+                  title="dbt State"
+                  tag="Preview"
+                  body="dbt State makes dbt smarter about what to build — skipping unnecessary rebuilds by reusing nodes when logic and data haven't changed. Works with dbt Core, dbt platform, and the dbt Fusion engine."
+                  link="/docs/deploy/dbt-state-about"
+                  icon="forward"
                 />
                 <Card
                   title="dbt Orchestrator"
@@ -169,7 +161,7 @@ function Home() {
                 <Card
                   title="dbt Canvas"
                   body="dbt Canvas helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation."
-                  link="/docs/cloud/canvas"
+                  link="/docs/platform/canvas"
                   icon="canvas"
                 />
                 <Card
@@ -187,7 +179,7 @@ function Home() {
                 <Card
                   title="Studio IDE"
                   body="The dbt integrated development environment (Studio IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects."
-                  link="/docs/cloud/studio-ide/develop-in-studio#get-started-with-the-cloud-ide"
+                  link="/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide"
                   icon="dashboard"
                 />
                 <Card
@@ -210,10 +202,10 @@ function Home() {
               <div className="home-link-grid">
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Documentation</h4>
-                  <Link to="/docs/dbt-cloud-apis/overview">API Docs</Link>
+                  <Link to="/docs/dbt-apis/overview">API Docs</Link>
                   <Link to="/docs/introduction">Product Docs</Link>
                   <Link to="/best-practices">Best Practices</Link>
-                  <Link to="/docs/cloud/dbt-copilot">Copilot</Link>
+                  <Link to="/docs/platform/wizard-overview">dbt Wizard</Link>
                 </div>
                 <div className="home-link-grid-item">
                   <h4 className="heading-4">Guides</h4>
@@ -270,14 +262,23 @@ function Home() {
                 <Card
                   title="Answer a question on Discourse"
                   body="Help someone solve a real problem—and build your reputation doing it."
-                  link="/community/forum"
+                  link="https://discourse.getdbt.com/"
                   icon="message"
+                  target="_blank"
                 />
                 <Card
-                  title="Events and Meetups"
-                  body="Join local and global dbt meetups."
-                  link="/community/events"
+                  title="Webinars"
+                  body="Upcoming and on-demand sessions from dbt Labs."
+                  link="https://www.getdbt.com/resources/webinars"
+                  icon="calendar"
+                  target="_blank"
+                />
+                <Card
+                  title="Events"
+                  body="Meetups, conferences, and community gatherings."
+                  link="https://www.getdbt.com/events"
                   icon="globe"
+                  target="_blank"
                 />
                 <Card
                   title="Courses & Tutorials"
