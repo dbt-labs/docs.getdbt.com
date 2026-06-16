@@ -59,16 +59,19 @@ async function fetchGitHubFile(repoPath, filePath, token) {
 // Validation
 // ---------------------------------------------------------------------------
 
-// Per-platform spot-checks: functions Fusion is known to typecheck. Overloaded
-// entries use their scraped parenthetical form so a regression in qualifier
-// stripping fails the run instead of silently flipping them to false.
+// Per-platform spot-checks: stable, universally-supported functions Fusion is
+// known to typecheck. Each listed name MUST resolve to fusion_typecheck: true
+// after the join, or the run fails — guarding against a regression in the
+// name/URL matching that would silently flip functions to false. BigQuery's
+// list also includes overloaded names in their scraped parenthetical form to
+// exercise the qualifier-stripping path.
 const SPOT_CHECKS = {
-  snowflake: ['ABS'],
-  bigquery: ['ABS', 'LAST_DAY (Datetime)', 'STRING (Timestamp)', 'PERCENTILE_CONT (Navigation)'],
-  databricks: ['ABS'],
-  redshift: ['ABS'],
-  trino: ['ABS'],
-  duckdb: ['ABS'],
+  bigquery: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'CONCAT', 'LAST_DAY (Datetime)', 'STRING (Timestamp)', 'PERCENTILE_CONT (Navigation)'],
+  databricks: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'COALESCE'],
+  duckdb: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'COALESCE'],
+  redshift: ['ABS', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'CONCAT', 'REPLACE'],
+  snowflake: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'TRIM', 'COALESCE'],
+  trino: ['ABS', 'CEIL', 'FLOOR', 'ROUND', 'LOWER', 'UPPER', 'LENGTH', 'CONCAT'],
 };
 
 function validate(platform, functions) {
@@ -218,4 +221,8 @@ async function main() {
   console.log('\nAll platforms updated successfully.');
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = { SPOT_CHECKS, validate };
