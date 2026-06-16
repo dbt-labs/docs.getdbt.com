@@ -225,7 +225,7 @@ These data layout optimizations only tend to have a significant effect for table
 
 ## Use `DESCRIBE AS JSON` for relation metadata
 
-The `use_describe_as_json_for_relation_metadata` flag controls how dbt fetches relation-level metadata &mdash; constraints (primary key, foreign key, and non-null), column masks, row filters, and view descriptions &mdash; for Databricks tables and views. It accepts two values:
+The `use_describe_as_json_for_relation_metadata` flag controls how dbt fetches relation-level metadata such as constraints (primary key, foreign key, and non-null), column masks, row filters, and view descriptions for Databricks tables and views. It accepts two values:
 
 - **`false`** (default): dbt issues multiple `information_schema` queries per relation to fetch this metadata.
 - **`true`**: dbt fetches all of this metadata in a single [`DESCRIBE TABLE EXTENDED ... AS JSON`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-aux-describe-table) call per relation.
@@ -240,6 +240,6 @@ dbt uses the `DESCRIBE AS JSON` path for a given relation only when _all_ of the
 - The relation is not a foreign table.
 - The compute is a SQL warehouse, or runs on DBR 17.3 or later.
 
-If any condition isn't met, dbt falls back to `information_schema` queries for that relation. The fallback is per-relation, so you can safely enable the flag on projects with mixed compute types.
+If any condition isn't met, dbt falls back to `information_schema` queries for that relation. The fallback happens per relation, so you can safely enable the flag on projects with mixed compute types.
 
 
