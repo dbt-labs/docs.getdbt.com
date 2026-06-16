@@ -14,7 +14,7 @@
 | [AWS Bedrock](https://aws.amazon.com/service-terms/) |- | ✓ (BYOK) |
 | [Google Gemini](https://ai.google.dev/gemini-api/terms) | - | ✓ (BYOK) |
 | [Snowflake Cortex](https://www.snowflake.com/en/legal/terms-of-service/) | - | ✓ (BYOK) |
-| [Databricks](https://www.databricks.com/legal/mcsa) | - | ✓ (BYOK) |
+| [Databricks Unity AI Gateway](https://www.databricks.com/legal/mcsa) | - | ✓ (BYOK) |
 
 </SimpleTable>
 
