@@ -17,6 +17,76 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+
+## June 10, 2026
+
+## New
+
+### dbt Copilot and agents
+
+- **dbt documentation search and retrieval tools**: The [remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote) now includes `search_product_docs` and `get_product_doc_pages`. Available in <Constant name="copilot" /> and in agent clients connected to remote dbt MCP. Refer to the [product docs toolset](/docs/dbt-ai/mcp-available-tools?version=2.0#product-docs).
+- **Dimension values lookup tool**: A new `get_dimension_values` MCP tool lets agents retrieve distinct values for a given Semantic Layer dimension, optionally scoped to specific metrics. Use this to discover valid filter values (for example, available regions or order statuses) before building a `where` clause in a `query_metrics` call.
+
+## Enhancements
+
+### Studio IDE
+
+- **Workspace file operations API**: Adds public Studio file operation endpoints for `stat`, `get`, `put`, `list directory`, `delete`, `mkdir`, and `rename` under `/api/ide/v3/{environment_id}/files/`. File paths are passed as query parameters to avoid user paths appearing in traces.
+- **Environment status endpoint**: Adds a `/api/ide/v3/{environment_id}/status` endpoint that returns the dbt version and Fusion status for a development environment, allowing Studio to display version information without additional API calls.
+
+## Behavior Changes
+
+### dbt platform
+
+- **Password management updates**: The in-page password change form has been removed from profile security settings, and the "Forgot password?" link no longer appears on the sign-in page. Password resets are now handled through the email-based reset flow, which can be initiated from your profile settings.
+
+## June 3, 2026
+
+## New
+
+### dbt Copilot and agents
+
+- **Debug with Copilot from run and job surfaces**: A new "Debug with Copilot" button appears on failed run detail pages, runs lists, job details, environment runs, and the project home activity feed. Clicking it opens dbt Copilot or the full-page Wizard to investigate and debug the failed run. Please contact your account manager to enable.
+
+### dbt platform
+
+- **dbt State trial progress, stats, and usage on settings page**: The dbt State settings page now shows a trial progress bar (days elapsed of 30), monthly model reuse stats (models reused, build reduction percentage, and query run time reduction), and a model build chart. These sections appear when an account has an active dbt State subscription.
+- **Delete private link endpoint**: You can now delete private link endpoints from the endpoint details page. A confirmation modal requires you to type `DELETE` before the deletion proceeds. Please contact your account manager to enable.
+
+### APIs, Identity, and Administration
+
+- **OAuth consent improvements**: OAuth consent now recognizes the `identity:read` scope, displaying a "Read user details" label and description. Scopes limited to `identity:read` and `offline_access` no longer show the project access selector.
+
+## Enhancements
+
+### dbt platform
+
+- **AI providers settings page consolidated**: The Copilot and Wizard settings pages are unified under a single "AI providers" page at `/settings/accounts/{id}/pages/ai`. The previous `/pages/copilot` URL redirects automatically, and the sidebar item and page title now use "AI providers."
+- **"Enable dbt State" checked by default on job create**: When creating a new job, the **Enable dbt State** checkbox is now checked by default on both Mantle and Fusion environments when dbt State is available and an active subscription is present.
+- **dbt State model build chart adds "Reused (cloned)" series**: The dbt State model build chart now tracks three series — Built, Reused (no-op), and Reused (cloned) — giving a more detailed breakdown of model reuse.
+- **Teams notifications generally available**: Microsoft Teams notifications no longer require a feature flag. The Teams integration now appears in the OAuth integrations card and notification settings for all accounts.
+- **Private endpoints page shows Beta badge and updated info banner**: The private endpoints list and create pages now display a "Beta" badge in the header. The info banner on the create page is no longer dismissible and has updated copy clarifying that self-serve creation is available only for Snowflake AWS.
+
+### Orchestration and run status
+
+- **Reused node status in run results**: Studio IDE now recognizes and surfaces the `reused` node status in run results and metadata counts, giving you a more accurate picture of what ran during a dbt invocation.
+
+## Fixes
+
+### Orchestration and Run Status
+
+- **Run list action buttons fixed and clickable**: Action buttons on the runs list (for example, "Debug with Copilot") no longer silently navigate to the run detail page instead of triggering the intended action.
+
+### Catalog
+
+- **Accurate health status filtering for stale assets**: The Catalog health filter now correctly classifies assets with a healthy bitmask but a last successful run older than 30 days as "Caution" instead of "Healthy." Assets whose last run was marked `reused` continue to be treated as healthy.
+
+## Behavior Changes
+
+### dbt Copilot and agents
+
+- **Agent validates autofix with `dbt build` instead of `dbt compile`**: dbt Wizard autofix and model change validation is improved by defaulting to broader `dbt build` commands.
+
 ## May 27, 2026
 
 ## New
@@ -95,8 +165,6 @@ Release notes are grouped by date for single-tenant environments.
 
 ### Catalog
 
-- **User-defined function (UDF) support**: Catalog now supports `function` as a resource type. You can browse, search, and filter UDFs, and view function details including arguments, return type, and source code. Functions appear in their own mini-lineage view, but not in the main project DAG.
-
 - **Connection-aware Cost Insights enablement**: Cost Insights now checks the environment connection and platform metadata credentials to confirm `cost_insights_enabled` is configured. If credentials are missing or disabled, cost metrics and tabs are hidden and a banner prompts you to configure platform metadata credentials.
 
 ### Studio IDE
@@ -113,7 +181,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ### APIs, Identity, and Administration
 
-- **Job creator permission set**: Adds a new [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) for users who need to create, edit, and run jobs within assigned projects and environments. Job creators have read-only access to environments and environment variables and cannot edit environment settings. 
+- **Job creator permission set**: Adds a new [Job creator permission set](/docs/platform/manage-access/enterprise-permissions#job-creator) for users who need to create, edit, and run jobs within assigned projects and environments. Job creators have read-only access to environments and environment variables and cannot edit environment settings.
 
 ### Studio IDE
 

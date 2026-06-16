@@ -1,14 +1,14 @@
 ---
-title: "Use subagents with dbt Wizard"
+title: "Use subagents with dbt Wizard CLI"
 id: "wizard-subagents"
-description: "Delegate work to specialized subagents in dbt Wizard, in the dbt platform or the CLI."
+description: "Delegate work to specialized subagents in dbt Wizard CLI."
 sidebar_label: "Use subagents"
 tags: [AI, Wizard]
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
-# Use subagents with <Constant name="wizard"/> <Lifecycle status="beta"/>
+# Use subagents with <Constant name="wizard"/> CLI <Lifecycle status="beta"/>
 
 <IntroText>
 Subagents let <Constant name="wizard" /> spin up focused, parallel agents to handle parts of a larger task &mdash; one to explore your project, one to make changes, one to review them. <Constant name="wizard"/> orchestrates them and consolidates the results back into your session.
@@ -22,13 +22,30 @@ Subagents run work in parallel, which uses more tokens than handling the same ta
 
 <WizardFeedbackCallout />
 
+## Locations and precedence
+
+You can define custom agent roles by adding standalone TOML files at the project level or user level. Use project-level agents for roles that should travel with a repo, and user-level agents for roles you want across all local projects.
+
+The following table summarizes where <Constant name="wizard" /> looks for custom agents. Use the intended locations for new agents, and keep compatibility locations only when migrating existing setup. Project-level agent config loads only for trusted projects. Within project-level locations, the current working directory wins over parent directories. Project-level agents win over user-level agents with the same name.
+
+<SimpleTable>
+
+| Location | Level | Use for new agents? | Precedence |
+| --- | --- | --- | --- |
+| `.dbt/wizard/agents/NAME.toml` | Project | Yes. Use this for agents shared with a repo or subdirectory. | Highest project agent location; closer to the current working directory wins over parent directories. |
+| `~/.dbt/wizard/agents/NAME.toml` | User | Yes. Use this for agents you want across all local projects. | Below project agents, above compatibility imports. |
+| `.claude/agents/NAME.md` | Project | No. Compatibility import for existing Claude Code agents. | Below `.dbt/wizard/agents/` in the same project location. |
+| `~/.claude/agents/NAME.md` | User | No. Compatibility import for existing Claude Code agents. | Below `~/.dbt/wizard/agents/`. |
+
+</SimpleTable>
+
+If two custom agents use the same name, <Constant name="wizard" /> uses the higher-precedence location and fills in any missing fields from lower-precedence locations when possible. Avoid duplicate names unless you intentionally want to override an existing role.
+
 ## Where you can use subagents
 
-Subagents work in <Constant name="wizard" /> both in the [<Constant name="dbt_platform" />](/docs/platform/wizard-platform) (<Constant name="studio_ide" /> and the home app) and in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli).
+Subagents work in the [<Constant name="wizard" /> CLI](/docs/dbt-ai/about-dbt-wizard-cli).
 
-<Constant name="wizard"/> surfaces subagent activity in both places so you can see what each agent is working on.
-
-In the CLI, you can also define custom agent roles, set display nicknames, and configure global limits through the `config.toml` file. The following sections call out which steps are CLI-specific.
+You can define custom agent roles, set display nicknames, and configure global limits through the `config.toml` file.
 
 ## How subagents work
 
@@ -94,13 +111,11 @@ Subagents inherit the parent session's [approval and sandbox policy](/docs/dbt-a
 
 A custom agent can override sandbox settings for itself &mdash; useful when, for example, an exploration agent should stay read-only while a build agent needs workspace write access.
 
-## Custom agents (CLI) {#custom-agents}
-
-You can define custom agent roles by adding standalone TOML files under `~/.dbt/wizard/agents/`.
+## Custom agents {#custom-agents}
 
 A custom agent role is a reusable role for a particular type of work you want <Constant name="wizard"/> to perform, such as writing UDFs, exploring a project, or debugging an issue. You can create any role name that fits your workflow; it does not have to be one of the built-in roles.
 
-Each file defines one custom agent role. The file name must match the agent's `name` field. For example, an agent with `name = "udf_helper"` must be defined in `~/.dbt/wizard/agents/udf_helper.toml`.
+Each file defines one custom agent role. The file name must match the agent's `name` field. For example, an agent with `name = "udf_helper"` must be defined in an `agents/udf_helper.toml` file.
 
 <Constant name="wizard"/> loads each custom agent file as a configuration layer for spawned agent sessions. This means a custom agent can override the same settings as a normal <Constant name="wizard"/> session config, such as the model, instructions, sandbox mode, and MCP servers.
 

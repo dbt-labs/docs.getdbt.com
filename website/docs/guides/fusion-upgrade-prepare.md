@@ -409,9 +409,11 @@ Once you've verified the updated packages work correctly:
 
 Use the <Constant name="fusion" /> readiness panel to validate your jobs against the <Constant name="fusion_engine" /> and fix any issues you find.
 
+For jobs that are eligible for <Constant name="fusion" /> in the readiness experience, **Run once on <Constant name="fusion" />** is replaced by a **Debug on <Constant name="fusion" />** dropdown in the eligibility banner or modal. Use a debug option when you want to inspect or fix issues interactively in <Constant name="studio_ide" />. Use **Run once on <Constant name="fusion" />** when you want to validate execution behavior in a deployment context.
+
 ### Review your jobs
 
-The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status:
+The readiness panel shows how many jobs are ineligible for <Constant name="fusion" /> or have an unknown eligibility status. If you don't see eligibility messaging, ask an account admin to enable **Fusion readiness & upgrade features** in [Account settings](/docs/platform/account-settings). For setup steps, refer to [Enable Fusion readiness features](/guides/prepare-fusion-upgrade?step=3).
 
 :::note
 If a job has not run in the last 7 days, you must run it once for the debugging options to be available.
@@ -423,26 +425,25 @@ If a job has not run in the last 7 days, you must run it once for the debugging 
    <Lightbox src="/img/fusion/review-jobs.png" width="60%" title="Shortcut to review your jobs from the readiness panel"/>
 2. Find the <Constant name="fusion" /> eligibility icon to the right of your jobs. Click **Review job** for  any job that is ineligible or has an unknown eligibility status.
    <Lightbox src="/img/fusion/job-eligibility.png" width="60%" title="Take action on your jobs to make them Fusion eligible."/>
-3. Click **Debug on Fusion** and choose one of the following:
+3. Click **Debug on <Constant name="fusion" />** and choose one of the following:
    - [Debug in Studio](#debug-in-studio)
-   - [Debug in Studio with dbt Wizard](#debug-in-studio-with-copilot)
-   - [Run once on Fusion](#run-once-on-fusion)
-
+   - [Debug in Studio with <Constant name="wizard" />](#debug-in-studio-with-dbt-wizard)
+   - [Run once on <Constant name="fusion" />](#run-once-on-fusion)
 
 #### Debug in Studio
 
 In the <Constant name="studio_ide" />, run <Constant name="fusion" /> in your development environment to review project warnings and errors:
 
-1. Click **Debug in Studio**. The <Constant name="studio_ide" /> opens and selects the **Problems** tab.
-
-2. dbt sets only your development environment to <Constant name="fusion" />.
+1. Click **Debug in Studio**. dbt sets your user-level `DBT_DEVELOP_CORE_VERSION` environment variable to `latest-fusion`, then opens the <Constant name="studio_ide" /> with the **Problems** tab selected.
 
 <Lightbox src="/img/fusion/fusion-ide.png" width="60%" title="Running Fusion in development"/>
 
-3. Review the warnings or errors in the **Problems** tab.
-4. Fix the issues directly or run the [autofix tool](/docs/platform/studio-ide/autofix-deprecations).
-5. When the project runs with no warnings or errors, commit and publish your changes.
-6. After you merge the changes, wait for the job to run again or run it manually.
+2. Review the warnings or errors in the **Problems** tab.
+3. Fix the issues directly or run the [autofix tool](/docs/platform/studio-ide/autofix-deprecations).
+4. When the project runs with no warnings or errors, commit and publish your changes.
+5. After you merge the changes, wait for the job to run again or run it manually.
+
+To revert the `latest-fusion` override, use the dbt version control in <Constant name="studio_ide" /> or update the **dbt version** under **User development settings** in [Account settings](/docs/platform/account-settings) → **Credentials**. For more details, refer to [Override dbt version](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version).
 
 #### Debug in Studio with dbt Wizard <Lifecycle status="beta" size="80%" />
 
@@ -452,9 +453,9 @@ import FusionMigrationWorkflow from '/snippets/_fusion-migration-workflow.md';
 
 #### Run once on Fusion
 
-When you are confident a job is ready for <Constant name="fusion" />, you can run it once on the engine without changing environment-wide settings:
+When you are confident a job is ready for <Constant name="fusion" />, you can run it once on the engine without changing environment-wide settings. **Run once on <Constant name="fusion" />** can be temporarily unavailable while a <Constant name="fusion" /> run request is already pending.
 
-1. Click **Run once on Fusion**.
+1. Click **Run once on <Constant name="fusion" />**.
 2. The job window opens and dbt runs the job on <Constant name="fusion" /> without changing other jobs or environment settings.
 3. When the job succeeds, click **Override eligibility status** to update the eligibility status.
    <Lightbox src="/img/fusion/eligibility-status.png" width="60%" title="Override the eligibility status of a successful job."/>

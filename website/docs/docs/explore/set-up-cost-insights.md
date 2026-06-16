@@ -16,7 +16,6 @@ This guide walks you through setting up Cost Insights to track warehouse compute
 
 Before setting up Cost Insights, ensure you have:
 
-- A dbt account with <Constant name="fusion_engine" /> enabled. Contact your account manager to enable <Constant name="fusion" /> for your account.
 - An administrator role.
 - A supported data warehouse: Snowflake, BigQuery, Databricks, or Amazon Redshift.
 

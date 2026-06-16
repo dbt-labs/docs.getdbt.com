@@ -108,36 +108,6 @@ In addition, you can look at the **Job Details** page's **Insights** tab to show
 
 Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in <Constant name="dbt" /> is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Starter and Enterprise-tier plans).
 
-## dbt State usage
-
-[dbt state](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. Learn more about how your usage influences the price so you can plan your savings effectively.
-
-### About free trial
-
-Eligible new organizations receive 30 days of free use with no usage limit. After the free period, a credit card or enterprise contract (for dbt platform managed plans) is required to continue.
-
-### dbt State pricing
-
-dbt State is a separate, usage-based product available to both dbt Core and dbt platform users.
-
-### Cancellation
-
-Usage is tracked through your cancellation date. You're billed at month end for usage incurred before cancellation and not charged for usage after.
-
-### Target table
-
-A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models) and unique tests (including tests with `store_failures` enabled or disabled). When you run `dbt build` or similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules.
-
-All reuses of the same active target table inside of a single day (based on UTC time) are counted as a single daily active target table (DATT).
-
-### Daily active target tables
-
-For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables for which dbt State performs a unique skip or clone, and unique test reuse operations on a given calendar day.
-
-### Monthly cost calculation
-
-dbt State calculates cost per billing period using the unit price (USD $0.094) x sum of daily active target tables (DATT) for all account users and all days in that billing period. For example, if you have 100 DATT in a billing period, you'll be billed for 100 * $0.094 = $9.40.
-
 ## dbt AI: Usage metering and limiting <Lifecycle status="Starter, Enterprise, Enterprise+" />
 
 dbt AI usage is measured based on the number of completed AI requests, known as dbt Copilot actions. Usage limits are enforced to ensure fair access and system performance.
