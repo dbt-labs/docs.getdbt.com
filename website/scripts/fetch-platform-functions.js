@@ -21,7 +21,7 @@
 const fs = require('fs');
 const path = require('path');
 const { PLATFORMS } = require('./platforms.config');
-const { buildFusionIndex, isFunctionSupported } = require('./fusion-match');
+const { buildFusionIndex, isFunctionSupported, normalizeFunctionKey } = require('./fusion-match');
 
 // Defaults match dbt-labs/fs (private; requires FUSION_REPO_TOKEN with repo read access).
 const FUSION_REPO = process.env.FUSION_REPO || 'dbt-labs/fs';
@@ -59,6 +59,18 @@ async function fetchGitHubFile(repoPath, filePath, token) {
 // Validation
 // ---------------------------------------------------------------------------
 
+// Per-platform spot-checks: functions Fusion is known to typecheck. Overloaded
+// entries use their scraped parenthetical form so a regression in qualifier
+// stripping fails the run instead of silently flipping them to false.
+const SPOT_CHECKS = {
+  snowflake: ['ABS'],
+  bigquery: ['ABS', 'LAST_DAY (Datetime)', 'STRING (Timestamp)', 'PERCENTILE_CONT (Navigation)'],
+  databricks: ['ABS'],
+  redshift: ['ABS'],
+  trino: ['ABS'],
+  duckdb: ['ABS'],
+};
+
 function validate(platform, functions) {
   const minExpected = { snowflake: 400, databricks: 100, redshift: 100, bigquery: 100, trino: 100, duckdb: 50 };
   const min = minExpected[platform.id] ?? 50;
@@ -84,12 +96,18 @@ function validate(platform, functions) {
     );
   }
 
-  // Spot-check a known stable function to catch join logic bugs
-  if (platform.id === 'snowflake') {
-    const abs = functions.find((f) => f.name === 'ABS');
-    if (!abs) throw new Error(`[snowflake] ABS not found — scraper may be broken`);
-    if (!abs.fusion_typecheck) {
-      throw new Error(`[snowflake] ABS is not marked fusion_typecheck — check the join logic`);
+  // Spot-check known stable functions to catch join-logic regressions. Each
+  // listed name MUST resolve to fusion_typecheck: true. Overloaded names are
+  // included in their scraped parenthetical form to guard the matching path
+  // that strips qualifiers (e.g. "LAST_DAY (Datetime)" ↔ Fusion "last_day").
+  for (const expected of SPOT_CHECKS[platform.id] ?? []) {
+    const target = normalizeFunctionKey(expected);
+    const fn = functions.find((f) => normalizeFunctionKey(f.name) === target);
+    if (!fn) {
+      throw new Error(`[${platform.id}] spot-check function "${expected}" not found — scraper may be broken`);
+    }
+    if (!fn.fusion_typecheck) {
+      throw new Error(`[${platform.id}] spot-check "${expected}" is not marked fusion_typecheck — check the join logic`);
     }
   }
 
