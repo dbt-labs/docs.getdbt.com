@@ -29,7 +29,7 @@ Yes. Your <Constant name="dbt" /> account will be upgraded without impacting you
 
 </Expandable>
 
-<Expandable alt_header="Do I get a free trial when upgrading from Developer to Starter?">
+<Expandable alt_header="What happens when I upgrade from Developer to Starter?">
 
 No. The free two-week Starter trial is for new accounts at signup, not for existing Developer plan customers upgrading to Starter.
 
