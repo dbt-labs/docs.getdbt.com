@@ -94,6 +94,20 @@ Select your preferred option and click **Confirm & Submit**.
 
   <Lightbox src="/img/docs/dbt-platform/endpoint-exists.png" width="70%" title="Endpoint already exists popup with options to create a new interface endpoint or re-use an existing one"/>
 
+#### Edit a private endpoint {#edit-a-private-endpoint}
+
+You can update an endpoint **Name** and **Port** from the endpoint details page. If you don't see an **Edit** button, contact your account manager to enable private endpoint updates for your account.
+
+1. In <Constant name="dbt_platform" />, go to **Account settings** → **Private endpoints**.
+2. In the **Private endpoints** table, click the endpoint you want to update.
+3. On the endpoint details page, click **Edit**.
+
+<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-edit.png" title="Private endpoint details page with the Edit button" />
+
+4. Update **Name** and/or **Port** as needed.
+5. Click **Save changes**.
+6. In the **Save changes?** confirmation modal, click **Save changes** to apply your updates.
+
 #### Troubleshooting and errors
 
 If an endpoint request fails, <Constant name="dbt_platform"/> displays error details that are safe to share externally.
@@ -166,7 +180,7 @@ If your organization uses [Snowflake Network Policies](https://docs.snowflake.co
 
 You need a VPCE ID to create a network policy in Snowflake:
 1. In <Constant name="dbt_platform" />, go to **Account settings → Private endpoints** 
-2. Open your endpoint and locate its **VPCE ID** field on the endpoint details page. 
+2. Click the endpoint in the table, then locate its **Endpoint identifier** field on the endpoint details page. 
 3. If you configured PrivateLink through [Support-led setup](#support-led-setup), or **Private endpoints** is not available in your account settings, contact [<Constant name="dbt" /> Support](mailto:support@getdbt.com) to obtain the VPCE ID. 
 4. If you're creating an endpoint for Internal Stage, the VPCE ID is different from the VPCE ID for the main service endpoint.
 
