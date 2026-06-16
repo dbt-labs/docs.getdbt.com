@@ -35,6 +35,7 @@ The following example is a list of all available configurations in the `dbt_proj
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 [function-paths](/reference/project-configs/function-paths): [directorypath]
+[osi-paths](/reference/project-configs/osi-paths): [directorypath]
 
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 

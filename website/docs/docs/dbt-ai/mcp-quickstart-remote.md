@@ -9,6 +9,7 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
+import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
 
 # Connect to the remote dbt MCP server <Lifecycle status="self_service,managed,managed_plus"/>
 
@@ -33,8 +34,7 @@ Local development and agentic workflows (for example, running dbt commands like 
 Follow these steps to set up the remote MCP server.
 
 ### 1. Enable AI features
-
-In <Constant name="dbt_platform"/>, ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-copilot) turned on.
+In <Constant name="dbt_platform"/>, ensure that you have [AI features](/docs/platform/enable-dbt-ai) turned on.
 
 ### 2. Get your credentials
 Obtain the following information from <Constant name="dbt_platform"/>:
@@ -73,6 +73,12 @@ Configure your MCP client with the MCP URL and headers from the previous step.
 <MCPOauthPreflight />
 
 Configure your client with the MCP URL from the previous step. On first connect, your client opens a browser for sign-in and consent.
+
+Some tools (like Claude Desktop) let you add dbt as a custom connector through their UI instead of editing a config file:
+
+<MCPCustomConnectorOauth />
+
+For tools configured with a JSON file, use the tab that matches your client:
 
 <Tabs groupId="client">
 <TabItem value="claude" label="Claude Code">

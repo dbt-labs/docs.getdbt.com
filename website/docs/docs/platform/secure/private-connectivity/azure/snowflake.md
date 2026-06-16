@@ -6,6 +6,7 @@ sidebar_label: "Snowflake"
 ---
 
 import SetUpPages from '/snippets/_available-tiers-enterprise-plus.md';
+import PrivateLinkCreateConnection from '/snippets/_privatelink-create-connection.md';
 import PrivateLinkSLA from '/snippets/_private-connection-SLA.md';
 import CloudProviders from '/snippets/_private-connection-across-providers.md';
 
@@ -76,11 +77,7 @@ SELECT SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS ( 'AZURE_PRIVATE_ENDPOINT_RESOU
 
 Once dbt Support completes the configuration, you can start creating new connections using Private Link.
 
-1. From **Account settings** → **Projects**, click **+ New project** and select **Snowflake**.
-2. You will see two radio buttons: **Public** and **Private**. Select **Private**.
-3. Select the private endpoint from the dropdown (this automatically populates the hostname/account field).
-4. Configure the remaining data platform details.
-5. Test your connection and save it.
+<PrivateLinkCreateConnection platform="Snowflake" />
 
 ## Configuring network policies
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you need to add a network rule for <Constant name="dbt" />. 

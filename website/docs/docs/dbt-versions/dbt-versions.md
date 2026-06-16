@@ -6,7 +6,7 @@ pagination_next: "docs/dbt-versions/upgrade-dbt-platform-version"
 pagination_prev: null
 ---
 
-Both dbt engines &mdash; the <Constant name="fusion_engine"/> (Rust-based) and <Constant name="core"/> (Python-based) &mdash; follow [semantic versioning](https://semver.org/). This page explains how versioning works for local dbt installations.
+dbt is available in multiple distributions: the <Constant name="fusion_engine"/> (Rust-based, proprietary), <Constant name="core_v2"/> (Rust-based, open-source), and <Constant name="core_v1"/> (Python-based, open-source). dbt Core v1 follows [semantic versioning](https://semver.org/) for the 1.x series; <Constant name="core_v2"/> and the <Constant name="fusion_engine"/> use the 2.x series. This page explains how versioning works for local dbt installations.
 
 If you're using the <Constant name="dbt_platform" /> (including the <Constant name="platform_cli"/>), you don't need to manage dbt versions yourself. [Release tracks](/docs/dbt-versions/dbt-release-tracks) automatically keep you up to date and provide early access to new features.
 
@@ -108,7 +108,7 @@ Refer to [Supported data platforms](/docs/supported-data-platforms) for the full
 
 ## End-of-life versions
 
-Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version), [<Constant name="fusion" />](/docs/local/install-dbt?version=2#update-fusion) [<Constant name="core" />](/docs/local/install-dbt?version=1#upgrading-dbt-core). All versions prior to v1.0 have been deprecated.
+Once a dbt version reaches end-of-life (EOL), it no longer receives patches, including for known bugs. We recommend upgrading to a newer version in [<Constant name="dbt" />](/docs/dbt-versions/upgrade-dbt-platform-version), [<Constant name="fusion" />](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt). All versions prior to v1.0 have been deprecated.
 
 ## Current version support
 
