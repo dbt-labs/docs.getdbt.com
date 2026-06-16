@@ -107,8 +107,13 @@ function spotCheckMatching(platform, functions, fusionIndex, { sampleSize = SPOT
   const failures = sampled.filter((fn) => !fn.fusion_typecheck).map((fn) => fn.name);
   if (failures.length) {
     throw new Error(
-      `[${platform.id}] spot-check: ${failures.length} function(s) are in Fusion's support ` +
-      `list but marked fusion_typecheck:false — name/URL matching is broken: ${failures.join(', ')}`
+      `[${platform.id}] spot-check failed — these functions are in Fusion's functions.sdf.yml ` +
+      `but the build marked them fusion_typecheck:false: ${failures.join(', ')}.\n` +
+      `    Cause: the name/URL matching in scripts/fusion-match.js is missing matches it should make ` +
+      `(this is a fresh random sample, so a re-run may surface different functions with the same root cause).\n` +
+      `    Next: reproduce locally with \`cd website && npx jest fusion-match\`, then check ` +
+      `normalizeFunctionKey / isFunctionSupported — likely the docs introduced a new scraped-name format ` +
+      `(e.g. a new qualifier or alias) that Fusion lists differently.`
     );
   }
   console.log(`  ✓ spot-checked ${sampled.length} random Fusion functions (${overload.length} overloaded available)`);
@@ -120,22 +125,30 @@ function validate(platform, functions, fusionIndex) {
 
   if (functions.length < min) {
     throw new Error(
-      `[${platform.id}] Expected ${min}+ functions, got ${functions.length} — ` +
-      `${platform.name} may have changed their page structure`
+      `[${platform.id}] Expected ${min}+ functions, got ${functions.length}. ` +
+      `${platform.name} likely changed their docs page layout.\n` +
+      `    Next: open ${platform.functionsUrl} and update this platform's parseHtml/fetchFunctions ` +
+      `selectors in scripts/platforms.config.js.`
     );
   }
 
   const missingNames = functions.filter((f) => !f.name);
   if (missingNames.length > 0) {
     throw new Error(
-      `[${platform.id}] ${missingNames.length} functions are missing names — check the scraper selectors`
+      `[${platform.id}] ${missingNames.length} scraped function(s) have an empty name.\n` +
+      `    Next: the name selector in this platform's parseHtml in scripts/platforms.config.js is ` +
+      `matching the wrong element — inspect ${platform.functionsUrl} and fix the selector.`
     );
   }
 
   const typecheckCount = functions.filter((f) => f.fusion_typecheck).length;
   if (typecheckCount === 0) {
     throw new Error(
-      `[${platform.id}] No fusion-supported functions found — check YAML parsing`
+      `[${platform.id}] 0 of ${functions.length} functions matched Fusion's support list. ` +
+      `The scrape worked but the join produced nothing.\n` +
+      `    Next: check the warnings above — usually the Fusion YAML failed to fetch (bad/expired ` +
+      `FUSION_REPO_TOKEN) or moved (FUSION_REPO=${FUSION_REPO}, FUSION_BASE_PATH=${FUSION_BASE_PATH}). ` +
+      `If both are fine, the YAML format may have changed — check buildFusionIndex in scripts/fusion-match.js.`
     );
   }
 

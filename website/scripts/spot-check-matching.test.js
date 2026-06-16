@@ -41,7 +41,7 @@ describe('spotCheckMatching', () => {
       { name: 'PERCENTILE_CONT (Navigation)', fusion_typecheck: true },
       { name: 'BAG_OF_WORDS', fusion_typecheck: false }, // not in Fusion — ignored
     ];
-    expect(() => spotCheckMatching('bigquery', functions, fusionIndex, opts)).not.toThrow();
+    expect(() => spotCheckMatching({ id: 'bigquery' }, functions, fusionIndex, opts)).not.toThrow();
   });
 
   it('throws when a Fusion function is marked false (exact-match regression)', () => {
@@ -49,7 +49,7 @@ describe('spotCheckMatching', () => {
       { name: 'ABS', fusion_typecheck: false }, // ABS is in Fusion — must be true
       { name: 'CONCAT', fusion_typecheck: true },
     ];
-    expect(() => spotCheckMatching('bigquery', functions, fusionIndex, opts)).toThrow(/marked fusion_typecheck:false/);
+    expect(() => spotCheckMatching({ id: 'bigquery' }, functions, fusionIndex, opts)).toThrow(/spot-check failed/);
   });
 
   it('throws when an overloaded name is marked false (qualifier-stripping regression)', () => {
@@ -57,16 +57,16 @@ describe('spotCheckMatching', () => {
       { name: 'ABS', fusion_typecheck: true },
       { name: 'LAST_DAY (Datetime)', fusion_typecheck: false }, // base LAST_DAY is in Fusion
     ];
-    expect(() => spotCheckMatching('bigquery', functions, fusionIndex, opts)).toThrow(/LAST_DAY \(Datetime\)/);
+    expect(() => spotCheckMatching({ id: 'bigquery' }, functions, fusionIndex, opts)).toThrow(/LAST_DAY \(Datetime\)/);
   });
 
   it('does nothing when no Fusion index is available', () => {
     const functions = [{ name: 'ABS', fusion_typecheck: false }];
-    expect(() => spotCheckMatching('bigquery', functions, null, opts)).not.toThrow();
+    expect(() => spotCheckMatching({ id: 'bigquery' }, functions, null, opts)).not.toThrow();
   });
 
   it('ignores functions Fusion does not list', () => {
     const functions = [{ name: 'BAG_OF_WORDS', fusion_typecheck: false }];
-    expect(() => spotCheckMatching('bigquery', functions, fusionIndex, opts)).not.toThrow();
+    expect(() => spotCheckMatching({ id: 'bigquery' }, functions, fusionIndex, opts)).not.toThrow();
   });
 });
