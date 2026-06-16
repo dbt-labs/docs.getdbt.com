@@ -14,15 +14,15 @@ The following <Constant name="core_v2" /> behavior flags are removed in <Constan
 
 | Flag | New behavior (always enabled) |
 |---|---|
-| [`require_explicit_package_overrides_for_builtin_materializations`](#require_explicit_package_overrides_for_builtin_materializations) | Packages cannot override built-in materializations without explicit opt-in. |
-| [`require_resource_names_without_spaces`](#require_resource_names_without_spaces) | Spaces in resource names raise an error. |
-| [`source_freshness_run_project_hooks`](#source_freshness_run_project_hooks) | Project hooks run during `dbt source freshness`. |
-| [`skip_nodes_if_on_run_start_fails`](#skip_nodes_if_on_run_start_fails) | All selected nodes are skipped if an `on-run-start` hook fails. |
-| [`state_modified_compare_more_unrendered_values`](#state_modified_compare_more_unrendered_values) | `state:modified` comparisons use unrendered Jinja values. |
-| [`require_yaml_configuration_for_mf_time_spines`](#require_yaml_configuration_for_mf_time_spines) | MetricFlow time spine deprecation warning is suppressed. |
-| [`require_batched_execution_for_custom_microbatch_strategy`](#require_batched_execution_for_custom_microbatch_strategy) | Custom microbatch macros are called once per batch window. |
+| `require_explicit_package_overrides_for_builtin_materializations` | Packages cannot override built-in materializations without explicit opt-in. |
+| `require_resource_names_without_spaces` | Spaces in resource names raise an error. |
+| `source_freshness_run_project_hooks` | Project hooks run during `dbt source freshness`. |
+| `skip_nodes_if_on_run_start_fails` | All selected nodes are skipped if an `on-run-start` hook fails. |
+| `state_modified_compare_more_unrendered_values` | `state:modified` comparisons use unrendered Jinja values. |
+| `require_yaml_configuration_for_mf_time_spines` | MetricFlow time spine deprecation warning is suppressed. |
+| `require_batched_execution_for_custom_microbatch_strategy` | Custom microbatch macros are called once per batch window. |
 
-## dbt adapter flags removed in v2.0.0
+## dbt adapter flags removed in dbt Core v2
 
 The following adapter behavior flags are also removed in <Constant name="core_v2" />:
 
