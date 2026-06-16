@@ -52,7 +52,7 @@ This is the lowest-friction path for teams that don't need full IDE integration 
 
 The dbt VS Code extension runs <Constant name="fusion" /> and its language server in a local process and connects directly to your warehouse. For this reason, you need a `profiles.yml` for local extension development sessions.
 
-Download your `dbt_cloud.yml` from your <Constant name="dbt_platform" /> **Account settings** (refer to [Register with dbt_cloud.yml](/docs/install-dbt-extension#register-with-dbt_cloudyml) for detailed instructions) and <Constant name="fusion" /> attempts to hydrate non-sensitive credential metadata from <Constant name="dbt_platform" /> automatically. To avoid manually recreating your warehouse configuration, use `dbt init`.
+Download your [`dbt_cloud.yml`](/reference/dbt_cloud.yml) from your <Constant name="dbt_platform" /> **Account settings** and <Constant name="fusion" /> attempts to hydrate non-sensitive credential metadata from <Constant name="dbt_platform" /> automatically. To avoid manually recreating your warehouse configuration, use `dbt init`.
 
 ```shell
 dbt init
@@ -147,11 +147,11 @@ The **Latest** release track on <Constant name="dbt_platform" /> updates continu
 
 ### Versions on the dbt platform
 
-On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **Latest**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/fusion/fusion-releases).
+On <Constant name="dbt_platform" />, <Constant name="fusion" /> follows a versionless release track model. The default release track is **Fusion Stable**, which always runs the most recent stable release. For details on release tracks and their stability levels, see [<Constant name="fusion" /> releases](/docs/dbt-versions/dbt-release-tracks?#fusion-release-tracks).
 
 ### Versions installed locally
 
-By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt?version=2#installation) installs the latest stable release, the same version that ships with the **Latest** release track on <Constant name="dbt_platform" />:
+By default, the <Constant name="fusion" /> [installation script](/docs/local/install-dbt) installs the latest stable release, the same version that ships with the **<Constant name="fusion" /> Stable** release track on <Constant name="dbt_platform" />:
 
 ```shell
 # macOS / Linux
@@ -189,7 +189,7 @@ curl -fsSL https://raw.githubusercontent.com/brooklyn-data/dbt-fusion-devcontain
 Then open your project in VS Code and select **Reopen in Container** when prompted. VS Code builds the image and installs the latest stable <Constant name="fusion" /> release automatically.
 
 :::info Coming soon
-We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **<Constant name="fusion" /> Latest**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
+We're introducing additional <Constant name="fusion" /> release tracks on <Constant name="dbt_platform" /> beyond **Fusion Stable**. When they're available, we'll update this guide with steps to pin your dev container to a specific track.
 :::
 
 ### Without dev containers: update at the start of each session
@@ -224,7 +224,7 @@ You can also document this convention in your project's `CONTRIBUTING.md` so it'
 
 ## 4. dbt Mesh and deferral
 
-If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during local development when a `dbt_cloud.yml` is present.
+If your project uses [dbt Mesh](/docs/mesh/about-mesh), referencing models from other dbt projects via cross-project refs, <Constant name="fusion" /> handles this automatically during local development when a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present.
 
 ### How it works
 
@@ -239,7 +239,7 @@ Downloaded publication artifact for <upstream_project> to <path> (resolving cros
 
 <Constant name="fusion" /> caches downloaded publication artifacts for up to one hour, so subsequent runs in the same session skip the download and resolve refs from the local cache.
 
-Auto-deferral is also on by default. When a `dbt_cloud.yml` is present, <Constant name="fusion" /> defers to your project's configured deferral environment, so you build only modified models and their downstream dependencies while the rest resolve against the production state.
+Auto-deferral is also on by default. When a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) is present, <Constant name="fusion" /> defers to your project's configured deferral environment, so you build only modified models and their downstream dependencies while the rest resolve against the production state.
 
 ### Disabling deferral
 
@@ -265,16 +265,16 @@ The following table summarizes the key differences between the two local develop
 | **Credentials** | Managed through your <Constant name="dbt_platform" /> session, no `profiles.yml` needed | `profiles.yml` required; use `dbt init` to hydrate from <Constant name="dbt_platform" /> |
 | **Environment variables** | Same env vars as in <Constant name="dbt_platform" /> automatically | Use a `.env` file at the project root |
 | **Version management** | `dbt system update` to stay current | Dev container recommended for automatic sync |
-| **dbt Mesh / deferral** | Auto-enabled when `dbt_cloud.yml` present; `--no-defer` to disable | Auto-enabled when `dbt_cloud.yml` present; toggle off in extension settings |
+| **dbt Mesh / deferral** | Auto-enabled when [`dbt_cloud.yml`](/reference/dbt_cloud.yml) present; `--no-defer` to disable | Auto-enabled when [`dbt_cloud.yml`](/reference/dbt_cloud.yml) present; toggle off in extension settings |
 </SimpleTable>
 
 ## Related docs
 
-- [Install <Constant name="fusion" />](/docs/local/install-dbt?version=2#installation)
+- [Install <Constant name="fusion" />](/docs/local/install-dbt)
 - [dbt platform CLI installation](/docs/platform/dbt-cli-installation)
 - [<Constant name="fusion" /> releases and release channels](/docs/fusion/fusion-releases)
 - [About profiles.yml](/docs/local/profiles.yml)
-- [Environment variables (local)](/docs/local/install-dbt?version=2#environment-variables)
+- [Environment variables (local)](/docs/local/configure-environment-variables)
 - [VS Code dev containers](https://code.visualstudio.com/docs/devcontainers/containers)
 - [dbt Mesh overview](/docs/mesh/about-mesh)
 - [Deferral in dbt](/docs/platform/about-defer)

@@ -38,7 +38,7 @@ This section applies to <Constant name="dbt_platform" /> users running the <Cons
 
 <TabItem value="core" label="MetricFlow with dbt Core">  
 
-This section applies to <Constant name="core" /> users running the <Constant name="core" /> engine or users running [source available](https://www.getdbt.com/licenses-faq) <Constant name="fusion" /> locally and aren't on <Constant name="dbt_platform" />.
+This section applies to <Constant name="core" /> users running the <Constant name="core" /> engine or users running [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) <Constant name="fusion" /> locally and aren't on <Constant name="dbt_platform" />.
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
  
@@ -59,12 +59,12 @@ Use MetricFlow commands to retrieve metadata and query metrics. The following ta
 
 | Development setup | Engine | Hosted on | <div style={{width:'100px'}}>Prefix</div>  | Notes |
 |------------|------------|----------------|-------------|-----------|
-|<Constant name="studio_ide" />/<Constant name="platform_cli" /> or VS Code extension <small>Fusion only</small>| <Constant name="fusion_engine" /> or <Constant name="core" /> engine| <Constant name="dbt_platform" /> | `dbt sl` | Remote execution; Platform manages versions.<br />VS Code extension users must have a `dbt_cloud.yml` file with a token to connect to dbt platform |
+|<Constant name="studio_ide" />/<Constant name="platform_cli" /> or VS Code extension <small>Fusion only</small>| <Constant name="fusion_engine" /> or <Constant name="core" /> engine| <Constant name="dbt_platform" /> | `dbt sl` | Remote execution; Platform manages versions.<br />VS Code extension users must have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to dbt platform |
 | Open-source <br /> (no <Constant name="dbt_platform" /> project) | <Constant name="fusion" /> (source available) or <br />  <Constant name="core" /> engine | Local machine | `mf` | Install and manage MetricFlow locally. |
 
-- If you’re using <Constant name="fusion" /> with <Constant name="dbt_platform" /> and have a `dbt_cloud.yml` file with a valid token to connect to <Constant name="dbt_platform" />, run MetricFlow commands using the `dbt sl` prefix. 
+- If you’re using <Constant name="fusion" /> with <Constant name="dbt_platform" /> and have a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file with a valid token to connect to <Constant name="dbt_platform" />, run MetricFlow commands using the `dbt sl` prefix. 
   - This allows you to interact with metrics that are executed remotely on <Constant name="dbt_platform" /> (for example, from the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation)).
-- If you’re using [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2#get-started) ([source available](https://www.getdbt.com/licenses-faq)) and aren't connected to <Constant name="dbt_platform" />, install MetricFlow separately and use the `mf` prefix to run commands locally.
+- If you’re using [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) ([source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement)) and aren't connected to <Constant name="dbt_platform" />, install MetricFlow separately and use the `mf` prefix to run commands locally.
 - If you’re using <Constant name="core" /> locally without <Constant name="fusion" />, run MetricFlow commands using the `mf` prefix.
 
 
@@ -91,7 +91,7 @@ This section applies to <Constant name="dbt_platform" /> users running the <Cons
 
 
 :::tip Run dbt parse to reflect metric changes
-When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the <Constant name="semantic_layer" />. This updates the `semantic_manifest.json` file<VersionBlock firstVersion="1.12"> and `osi_document.json`</VersionBlock>, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
 <Expandable alt_header="How can I query or preview metrics with the dbt platform CLI?">
@@ -106,7 +106,7 @@ Check out the following video for a short video demo of how to query or preview 
 
 <TabItem value="corecommands" label="Commands for dbt Core">
 
-This section applies to <Constant name="core" /> users running the <Constant name="core" /> engine or users running [source available](https://www.getdbt.com/licenses-faq) <Constant name="fusion" /> locally and not a <Constant name="dbt_platform" /> user. Commands and validations execute locally and use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`.
+This section applies to <Constant name="core" /> users running the <Constant name="core" /> engine or users running [source available](https://www.getdbt.com/dbt-fusion-engine-license-agreement) <Constant name="fusion" /> locally and not a <Constant name="dbt_platform" /> user. Commands and validations execute locally and use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`.
 
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
@@ -218,7 +218,7 @@ The list of available saved queries:
 
 The following command performs validations against the defined semantic model configurations.
 
-- For Fusion and dbt users in the dbt platform CLI or locally with a valid `dbt_cloud.yml`:
+- For Fusion and dbt users in the dbt platform CLI or locally with a valid [`dbt_cloud.yml`](/reference/dbt_cloud.yml):
 
   ```bash
   dbt sl validate

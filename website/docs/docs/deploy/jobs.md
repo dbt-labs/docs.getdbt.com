@@ -8,7 +8,7 @@ hide_table_of_contents: true
 ---
 
 :::info
-Use the [<Constant name="dev_agent"/>](/docs/dbt-ai/developer-agent) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes &mdash; powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
+Use the [<Constant name="wizard"/>](/docs/dbt-ai/wizard-ide) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes &mdash; powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
 :::
 
 These are the available job types in <Constant name="dbt" />: 

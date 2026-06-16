@@ -17,7 +17,7 @@ The [dbt MCP server](https://github.com/dbt-labs/dbt-mcp) provides a standardize
 
 To help with dbt, assistants need your project metadata and, when you allow it, supported actions such as CLI runs, platform APIs, and <Constant name="semantic_layer" /> queries. The dbt MCP server exposes those to MCP clients and supports use cases such as conversational access to data, agentic automation for dbt workflows, and AI-assisted development. This page covers local and remote setups, available tools, and how to get started.
 
-The MCP server provides access to the <Constant name="platform_cli"/>, [API](/docs/dbt-apis/overview), the [Discovery API](/docs/dbt-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
+The MCP server provides access to [<Constant name="wizard" />](/docs/platform/wizard-overview), <Constant name="platform_cli"/>, [API](/docs/dbt-apis/overview), the [Discovery API](/docs/dbt-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
@@ -67,6 +67,8 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 - You either don’t want to install, or are restricted from installing, additional software on your system.
 - Your use case is primarily consumption-based (for example, querying metrics, exploring metadata, viewing lineage).
 
+The remote MCP server is available on all <Constant name="dbt_platform" /> [plans](https://www.getdbt.com/pricing). However, the underlying [dbt APIs](/docs/dbt-apis/overview) that the server's tools rely on vary by plan type. For example, the Discovery API and <Constant name="semantic_layer" /> APIs. As a result, the tools available to you through the remote MCP server depend on your plan.
+
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
@@ -98,10 +100,17 @@ To view the full list of tools, see [Available tools](/docs/dbt-ai/mcp-available
 
 ## MCP integrations
 
-The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports token authentication and tool use capabilities. We have created integration guides for the following clients:
+The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports OAuth or token authentication and tool use capabilities, depending on your setup. We have created integration guides for the following clients:
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
 - [VS Code](/docs/dbt-ai/integrate-mcp-vscode).
+
+## Data retention
+
+The dbt MCP server doesn't store or retain any production data or job run results. It's a read-only access layer that reads metadata, job results, and <Constant name="semantic_layer"/> data from the <Constant name="dbt_platform"/> in real time when a tool is called.
+
+Your [dbt platform data retention policy](https://www.getdbt.com/security) determines how long job runs and artifacts are available, not the MCP server. As long as a job or artifact exists in dbt platform, the MCP server can read it.
+
 
 ## Resources
 - [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) &mdash; full list of variables and tool configuration for local MCP

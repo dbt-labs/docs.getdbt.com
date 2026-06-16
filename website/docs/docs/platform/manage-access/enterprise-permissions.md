@@ -57,6 +57,26 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Analyst read" lifecycle="private_beta">
+
+The Analyst read permission set is a project-level set designed for users who need read-only access to analyze dbt models and project resources without the ability to develop or make changes.
+
+:::info Availability
+
+The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use. The **Analyst read** permission set and the read-only permission changes described here are in **private beta**. To enable them, contact your account manager.
+
+:::
+
+Notable features:
+- Analyst read is a project-level set.
+- Read-only access to project resources, jobs, runs, and environment configs.
+- Can access <Constant name="catalog" />.
+- Includes `user_credential_write`, so users can view and edit their own development credentials on **Your profile** > **Credentials** without access to the <Constant name="studio_ide" /> or <Constant name="platform_cli" />. Read-only users still need personal development credentials on this page to run warehouse queries in analysis features such as <Constant name="insights" /> and the <Constant name="semantic_layer" />.
+- No write access and no access to develop in the <Constant name="studio_ide" /> or <Constant name="platform_cli" />.
+
+To access the capabilities of this permission set, you _must_ add users to a group that's assigned the Analyst read permission set. Users won't have access until they're added to the group. For the setup steps, refer to [Set up read-only user access](/docs/platform/manage-access/about-user-access#set-up-read-only-user-access).
+
+</Expandable>
 <Expandable alt_header="Billing admin">
 
 The Billing admin permission set can review product usage information that impacts the final billing of <Constant name="dbt" /> (for example, models run).
@@ -157,6 +177,18 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
+<Expandable alt_header="Job creator">
+
+Job creator is a scoped project-level permission set for users who need to create, edit, and run jobs within assigned projects and environments without broader administrative access.
+
+Notable features:
+- Job creator is a project-level set.
+- Can create, edit, and run jobs within assigned projects and environments.
+- Read-only access to environments, environment variables, and related project settings needed to configure jobs.
+- Cannot create or delete environments or edit environment variables.
+- More limited than [Job admin](#job-admin), which can edit environments, environment variables, and data platform configurations.
+
+</Expandable>
 <Expandable alt_header="Job runner">
 
 Job runner is a specialized permission set for users who need access to run jobs and view the outcomes. 
@@ -198,6 +230,19 @@ Notable features:
 - Grants read-only access to metadata related to dbt models, runs, sources, and tests.
 - No access to modify, execute, or manage dbt jobs, repositories, or users.
 - No other access to <Constant name="dbt" /> features.
+
+</Expandable>
+<Expandable alt_header="Notification Manager">
+
+The Notification Manager permission set allows users to configure and manage Slack, Microsoft Teams, and email [job notifications](/docs/deploy/job-notifications) without requiring full Account Admin access. This is ideal for team leads or operations users who need to manage who receives job alerts.
+
+Notable features:
+- Notification Manager is an account-level set.
+- Can create, edit, and delete job notification rules for Slack, Microsoft Teams, and email recipients **across all projects** on the account.
+- Read-only access to members (to populate the recipient picker).
+- Read-only access to Slack and Microsoft Teams OAuth configuration status (for viewing the Slack and Microsoft Teams integration connection).
+- Connecting or disconnecting the Slack or Microsoft Teams integration remains Account Admin-only.
+- No access to other account settings, jobs, runs, or environments.
 
 </Expandable>
 <Expandable alt_header="Project creator">

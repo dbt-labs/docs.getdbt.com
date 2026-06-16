@@ -89,7 +89,6 @@ If you're developing in the [<Constant name="studio_ide" />](/docs/platform/stud
 - If the attribute exists in another source (such as your project settings), it will replace its value (like environment-level values) in the profile. It also overrides any custom environment variables (if not itself wired using the syntax described for secrets above)
 
 - If the attribute doesn't exist, it will add the attribute or value pair to the profile.
-- 
 
 #### Only the **top-level keys** are accepted in extended attributes
 This means that if you want to change a specific sub-key value, you must provide the entire top-level key as a JSON block in your resulting YAML. For example, if you want to customize a particular field within a [service account JSON](/docs/local/connect-data-platform/bigquery-setup#service-account-json) for your BigQuery connection (like 'project_id' or 'client_email'), you need to provide an override for the entire top-level `keyfile_json` main key/attribute using extended attributes. Include the sub-fields as a nested JSON block.

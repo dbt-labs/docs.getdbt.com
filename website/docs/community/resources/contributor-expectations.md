@@ -2,7 +2,7 @@
 title: "Expectations for dbt contributors"
 ---
 
-Whether it's `dbt-core`, `dbt-fusion`, adapters, packages, or this very documentation site, contributing to the open source or source-available code that supports the dbt ecosystem is a great way to share your knowledge, level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt ecosystem projects.
+Whether it's `dbt-core`, adapters, packages, or this very documentation site, contributing to the open source or source-available code that supports the dbt ecosystem is a great way to share your knowledge, level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt ecosystem projects.
 
 Have you seen things in other projects that you like, and think we could learn from? [Open a discussion on the dbt Community Forum](https://discourse.getdbt.com), or start a conversation in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community) (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
 
@@ -49,7 +49,7 @@ Sometimes, this can feel like shouting into the void, especially if you aren't m
 
 ### Discussions
 
-A discussion is best suited to propose a Big Idea, such as brand-new capability in the <Constant name="fusion_engine" /> or an adapter. Anyone can open a discussion, comment on an existing one, or reply in a thread.
+A discussion is best suited to propose a Big Idea, such as brand-new capability in the Core framework. Anyone can open a discussion, comment on an existing one, or reply in a thread.
 
 When you open a new discussion, you might be looking for validation from other members of the community — folks who identify with your problem statement, who like your proposed idea, and who may have their own ideas for how it could be improved. The most helpful comments propose nuances or desirable user experiences to be considered in design and refinement. Unlike an **issue**, there is no specific code change that would “resolve” a discussion.
 
@@ -71,9 +71,9 @@ Comment on it! Explain that you've run into the same bug, or had a similar idea 
 
 ##### You've opened a new issue. What can you expect to happen?
 
-In our most critical repositories (such as `dbt-core` and `dbt-fusion`), our goal is to respond to new issues as soon as possible. This initial response will often be a short acknowledgement that the maintainers are aware of the issue, signalling our perception of its urgency. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
+In our most critical repositories (such as `dbt-core`), our goal is to respond to new issues as soon as possible. This initial response will often be a short acknowledgement that the maintainers are aware of the issue, signalling our perception of its urgency. Depending on the nature of your issue, it might be well suited to an external contribution, from you or another community member.
 
-**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt-core`](https://github.com/dbt-labs/dbt-core) and its component libraries ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters) (also includes the dbt Labs managed adapters)), as well as [`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion) (the next-generation engine powering the dbt standard). We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
+**What if you're opening an issue in a different repository?** We have engineering teams dedicated to active maintenance of [`dbt-core`](https://github.com/dbt-labs/dbt-core) (v1 and v2), as well as the component libraries of v1 ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters) (also includes the dbt Labs managed adapters)). The `dbt-core` repository is also the home of dbt Core v2, the open-source Rust-based foundation built on the Fusion runtime; this code previously lived in ([`dbt-fusion`](https://github.com/dbt-labs/dbt-fusion)). We've open-sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
 **You're not sure about the status of your issue.** If your issue is in an actively maintained repo and has a `triage` label attached, we're aware it's something that needs a response. If the issue has been triaged, but not prioritized, this could mean:
 
@@ -109,7 +109,7 @@ Some of the most common labels are explained below:
 
 **PRs must include robust testing.** Comprehensive testing within pull requests is crucial for the stability of dbt. By prioritizing robust testing, we ensure the reliability of our codebase, minimize unforeseen issues, and safeguard against potential regressions. **We cannot merge changes that risk the backward incompatibility of existing documented behaviors.** We understand that creating thorough tests often requires significant effort, and your dedication to this process greatly contributes to the project's overall reliability. Thank you for your commitment to maintaining the integrity of our codebase and the experience of everyone using dbt!
 
-**PRs go through two review steps.** First, we aim to respond with feedback on whether we think the implementation is appropriate from a product & usability standpoint. At this point, we will close PRs that we believe fall outside the scope of <Constant name="core" /> or the public components of the <Constant name="fusion_engine" />, or which might lead to an inconsistent user experience. This is an important part of our role as maintainers; we're always open to hearing disagreement. If a PR passes this first review, we will queue it up for code review, at which point we aim to test it ourselves and provide thorough feedback.
+**PRs go through two review steps.** First, we aim to respond with feedback on whether we think the implementation is appropriate from a product & usability standpoint. At this point, we will close PRs that we believe fall outside the scope of <Constant name="core" />, or which might lead to an inconsistent user experience. Many of these are great ideas for add-on functionality that is better suited for a package or plugin. This is an important part of our role as maintainers; we're always open to hearing disagreement. If a PR passes this first review, we will queue it up for code review, at which point we aim to test it ourselves and provide thorough feedback.
 
 **We receive more PRs than we can thoroughly review, test, and merge.** Our teams have finite capacity, and our top priority is maintaining a well-scoped, high-quality framework for the tens of thousands of people who use it every week. To that end, we must prioritize overall stability and planned improvements over a long tail of niche potential features. For best results, say what in particular you'd like feedback on, and explain what would it mean to you, your team, and other community members to have the proposed change merged. Smaller PRs tackling well-scoped issues tend to be easier and faster for review. Two examples of community-contributed PRs:
 
@@ -124,10 +124,14 @@ Some of the most common labels are explained below:
 
 ### Inclusion in release versions
 
-#### <Constant name="core" />
+#### <Constant name="core_v1" />
 
 Both bug fixes and backwards-compatible new features will be included in the [next minor release of <Constant name="core" />](/docs/dbt-versions#how-dbt-core-uses-semantic-versioning). Fixes for regressions and net-new bugs that were present in the minor version's original release will be backported to versions with [active support](/docs/dbt-versions). Other bug fixes may be backported when we have high confidence that they're narrowly scoped and won't cause unintended side effects.
 
-####  dbt Fusion engine
+#### <Constant name="core_v2" />
 
-During the <Constant name="fusion_engine" />'s public beta process, new releases will be cut regularly. After the new engine reaches General Availability, we will update this document with a longer-term release strategy, although you can expect it to be similar to <Constant name="core" />'s.
+[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the next major version of dbt Core, built on the Fusion runtime. Contributions to `dbt-core` targeting the v2.x series follow the same principles as v1.x: bug fixes and backwards-compatible features are included in the next available release. Because Core v2 is currently in alpha, we will be releasing new versions rapidly as we get closer to the final v2.0.0 release (General Availability).
+
+#### <Constant name="fusion_engine" />
+
+The <Constant name="fusion_engine" /> is released continuously, and it contains a superset of the code and functionality available in <Constant name="core_v2" />. When Core v2.0.0 is released (General Availability), the version numbers for Core v2 and Fusion will converge.
