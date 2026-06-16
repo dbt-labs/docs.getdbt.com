@@ -31,7 +31,9 @@ Yes. Your <Constant name="dbt" /> account will be upgraded without impacting you
 
 <Expandable alt_header="What happens when I upgrade from Developer to Starter?">
 
-No. The free two-week Starter trial is for new accounts at signup, not for existing Developer plan customers upgrading to Starter.
+The free two-week trial is only available to new accounts at signup &mdash; but if you're already on the Developer plan, you can upgrade to Starter and immediately access all Starter features without needing to go through the trial.
+
+
 
 When you upgrade from Developer to Starter, you move directly to paid Starter billing. You'll need to enter your payment information and select your developer seats before your upgrade is complete. Your existing projects and account settings are not affected.
 
