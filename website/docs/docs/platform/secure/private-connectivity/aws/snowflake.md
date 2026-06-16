@@ -62,7 +62,7 @@ After Snowflake confirms they've allowlisted <Constant name="dbt" /> Labs' AWS a
    - **Connectivity status** (for example, **Success** or **Unknown**)
    - **Connections** — the number of <Constant name="dbt_platform" /> connections using the endpoint
 
-   You can search by **Name** or **URL**. You can only _create_ new endpoints for Snowflake at this time. To delete an endpoint, contact [dbt Support](mailto:support@getdbt.com).
+   You can search by **Name** or **URL**. The table lists all private endpoints in your account, but self-serve create, edit, and delete is only available for Snowflake on AWS at this time.
 
     <Lightbox src="/img/docs/dbt-platform/private-endpoint-page.png" title="Private endpoints table showing existing endpoints, connectivity status, and the Request new button"/>
 
@@ -83,6 +83,33 @@ Once you configure PrivateLink on the **Connections** page, you'll see the new e
 If the connection test fails immediately after setup, this is expected &mdash; it doesn't mean something is wrong. DNS changes can take a few minutes to propagate. Wait a few minutes, then test again before contacting support.
 :::
 
+<Expandable alt_header="Edit or delete a private endpoint" is_open={true}>
+
+If you don't see **Edit** or **Delete endpoint**, contact your account manager to enable private endpoint updates for your account.
+
+**Edit an endpoint**
+
+1. In the **Private endpoints** table, click the endpoint you want to update.
+2. On the endpoint details page, click **Edit**.
+3. Update **Name** and/or **Port** as needed.
+4. Click **Save changes**.
+5. In the **Save changes?** modal, click **Save changes** to apply your updates.
+
+<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-edit.png" title="Private endpoint details page with the Edit button" />
+
+**Delete an endpoint**
+
+An endpoint with associated connections can't be deleted. Remove those connections first.
+
+1. In the **Private endpoints** table, click the endpoint you want to delete.
+2. On the endpoint details page, click **Edit**.
+3. Scroll to the bottom of the page and click **Delete endpoint**.
+4. In the **Delete endpoint** modal, type `DELETE` to confirm, then click **Delete endpoint**.
+
+<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-delete.png" title="Private endpoint details page in edit mode with the Delete endpoint button" />
+
+</Expandable>
+
 #### Duplicate endpoint requests
 
 If you submit a request using a VPCE ID that matches an existing endpoint, <Constant name="dbt_platform"/> displays an **Endpoint already exists** popup with two options:
@@ -93,20 +120,6 @@ If you submit a request using a VPCE ID that matches an existing endpoint, <Cons
 Select your preferred option and click **Confirm & Submit**.
 
   <Lightbox src="/img/docs/dbt-platform/endpoint-exists.png" width="70%" title="Endpoint already exists popup with options to create a new interface endpoint or re-use an existing one"/>
-
-#### Edit a private endpoint {#edit-a-private-endpoint}
-
-You can update an endpoint **Name** and **Port** from the endpoint details page. If you don't see an **Edit** button, contact your account manager to enable private endpoint updates for your account.
-
-1. In <Constant name="dbt_platform" />, go to **Account settings** → **Private endpoints**.
-2. In the **Private endpoints** table, click the endpoint you want to update.
-3. On the endpoint details page, click **Edit**.
-
-<Lightbox src="/img/docs/dbt-platform/private-endpoint-details-edit.png" title="Private endpoint details page with the Edit button" />
-
-4. Update **Name** and/or **Port** as needed.
-5. Click **Save changes**.
-6. In the **Save changes?** confirmation modal, click **Save changes** to apply your updates.
 
 #### Troubleshooting and errors
 
