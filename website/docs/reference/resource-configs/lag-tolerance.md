@@ -81,7 +81,7 @@ This config accepts two value types:
   lag_tolerance: "{{ '4h' if target.name == 'prod' else '7d' }}"
   ```
 
-### When `lag_tolerance` does not apply
+### When does `lag_tolerance` apply
 
 `lag_tolerance` only applies to data freshness checks. A downstream model still rebuilds within its tolerance window if an upstream model's compiled SQL has changed since the last run, regardless of the `lag_tolerance` setting.
 
