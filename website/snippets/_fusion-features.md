@@ -19,4 +19,3 @@ To access the full set of features, register with your email address or sign in 
 | Auto-deferral | - | - | ✅ |
 | Compare changes | - | - | ✅ |
 | Precise column-level lineage artifact generation | - | - | ✅ |
-| `dbt lineage` command | - | - | ✅ |
