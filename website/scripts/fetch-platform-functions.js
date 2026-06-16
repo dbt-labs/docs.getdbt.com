@@ -21,7 +21,7 @@
 const fs = require('fs');
 const path = require('path');
 const { PLATFORMS } = require('./platforms.config');
-const { buildFusionIndex, isFunctionSupported, normalizeFunctionKey } = require('./fusion-match');
+const { buildFusionIndex, isFunctionSupported } = require('./fusion-match');
 
 // Defaults match dbt-labs/fs (private; requires FUSION_REPO_TOKEN with repo read access).
 const FUSION_REPO = process.env.FUSION_REPO || 'dbt-labs/fs';
@@ -59,24 +59,62 @@ async function fetchGitHubFile(repoPath, filePath, token) {
 // Validation
 // ---------------------------------------------------------------------------
 
-// Per-platform spot-checks: functions Fusion is known to typecheck. Each listed
-// name MUST resolve to fusion_typecheck: true after the join, or the run fails —
-// guarding against a regression in the name/URL matching that would silently
-// flip functions to false. To avoid biasing toward a handful of common math
-// functions, each list is a frozen random sample (seeded, GA-only) drawn across
-// the platform's supported functions — see the regeneration note in
-// scripts/spot-checks.test.js. BigQuery's list also includes overloaded names
-// in their scraped parenthetical form to exercise qualifier stripping.
-const SPOT_CHECKS = {
-  bigquery: ['DATETIME_DIFF', 'IS_NAN', 'LAX_STRING', 'REGEXP_CONTAINS', 'SPLIT', 'STRPOS', 'ST_GEOHASH', 'UNIX_MICROS', 'LAST_DAY (Datetime)', 'STRING (Timestamp)', 'PERCENTILE_CONT (Navigation)'],
-  databricks: ['COVAR_POP', 'H3_CENTERASGEOJSON', 'PARSE_JSON', 'POSITIVE', 'ST_CLOSESTPOINT', 'ST_MAKEPOLYGON', 'TO_TIMESTAMP', 'UNIFORM'],
-  duckdb: ['ARRAY_APPEND', 'ARRAY_UNIQUE', 'ISOYEAR', 'MAKE_TIME', 'PG_TYPEOF', 'REGEXP_EXTRACT', 'REGR_SLOPE', 'STRPTIME'],
-  redshift: ['ANY_VALUE', 'ARRAY', 'DATE_PART', 'JSON_PARSE', 'LN', 'ST_ISPOLYGONCW', 'ST_Z', 'TEXT_TO_INT_ALT'],
-  snowflake: ['ABS', 'CONVERT_TIMEZONE', 'DATABASE_REFRESH_HISTORY', 'DECOMPRESS_BINARY', 'IFF', 'IS_ARRAY', 'PARSE_IP', 'ST_COVERS'],
-  trino: ['LINE_LOCATE_POINT', 'LN', 'REGEXP_COUNT', 'SIGN', 'SPLIT_PART', 'ST_INTERSECTS', 'ST_XMIN', 'UUID'],
-};
+// How many functions to spot-check from each oracle pool per run.
+const SPOT_CHECK_SAMPLE_SIZE = 8;
 
-function validate(platform, functions) {
+// Fisher-Yates pick of up to `n` items, using an injectable RNG so tests can
+// seed it. Does not mutate the input.
+function sampleRandom(arr, n, rng = Math.random) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a.slice(0, n);
+}
+
+// Spot-check the name/URL matching against regressions on every run, with a
+// fresh random sample (no frozen list to maintain). Fusion's own support list
+// is the oracle: any function Fusion lists that also appears in the scraped
+// docs MUST come out as fusion_typecheck: true. Two pools are sampled, both
+// derived independently of the matcher under test so the check isn't circular:
+//   - exact:    scraped name is verbatim a Fusion name (guards the basic path)
+//   - overload: scraped name has a trailing "(qualifier)" whose base is a
+//               Fusion name (guards qualifier stripping — the regression that
+//               flipped "LAST_DAY (Datetime)" to false)
+// Deterministic coverage of the matching logic itself lives in
+// fusion-match.test.js, which needs no network and runs in normal CI.
+function spotCheckMatching(platform, functions, fusionIndex, { sampleSize = SPOT_CHECK_SAMPLE_SIZE, rng = Math.random } = {}) {
+  if (!fusionIndex) return; // no Fusion oracle this run — nothing to check against
+  const fusionNames = fusionIndex.supportedNames; // Set of UPPERCASE Fusion names
+
+  const exact = [];
+  const overload = [];
+  for (const fn of functions) {
+    const upper = fn.name.toUpperCase();
+    if (fusionNames.has(upper)) {
+      exact.push(fn);
+    } else if (/\([^()]*\)\s*$/.test(upper)) {
+      const base = upper.replace(/\s*\([^()]*\)\s*$/, '').trim();
+      if (fusionNames.has(base)) overload.push(fn);
+    }
+  }
+
+  const sampled = [
+    ...sampleRandom(exact, sampleSize, rng),
+    ...sampleRandom(overload, sampleSize, rng),
+  ];
+  const failures = sampled.filter((fn) => !fn.fusion_typecheck).map((fn) => fn.name);
+  if (failures.length) {
+    throw new Error(
+      `[${platform.id}] spot-check: ${failures.length} function(s) are in Fusion's support ` +
+      `list but marked fusion_typecheck:false — name/URL matching is broken: ${failures.join(', ')}`
+    );
+  }
+  console.log(`  ✓ spot-checked ${sampled.length} random Fusion functions (${overload.length} overloaded available)`);
+}
+
+function validate(platform, functions, fusionIndex) {
   const minExpected = { snowflake: 400, databricks: 100, redshift: 100, bigquery: 100, trino: 100, duckdb: 50 };
   const min = minExpected[platform.id] ?? 50;
 
@@ -101,20 +139,7 @@ function validate(platform, functions) {
     );
   }
 
-  // Spot-check known stable functions to catch join-logic regressions. Each
-  // listed name MUST resolve to fusion_typecheck: true. Overloaded names are
-  // included in their scraped parenthetical form to guard the matching path
-  // that strips qualifiers (e.g. "LAST_DAY (Datetime)" ↔ Fusion "last_day").
-  for (const expected of SPOT_CHECKS[platform.id] ?? []) {
-    const target = normalizeFunctionKey(expected);
-    const fn = functions.find((f) => normalizeFunctionKey(f.name) === target);
-    if (!fn) {
-      throw new Error(`[${platform.id}] spot-check function "${expected}" not found — scraper may be broken`);
-    }
-    if (!fn.fusion_typecheck) {
-      throw new Error(`[${platform.id}] spot-check "${expected}" is not marked fusion_typecheck — check the join logic`);
-    }
-  }
+  spotCheckMatching(platform, functions, fusionIndex);
 
   console.log(`  ✓ ${functions.length} functions, ${typecheckCount} with typechecking support`);
 }
@@ -167,7 +192,7 @@ async function processPlatform(platform, token) {
 
   merged.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
 
-  validate(platform, merged);
+  validate(platform, merged, fusionIndex);
 
   const outPath = path.join(OUT_DIR, `${platform.id}.json`);
   fs.mkdirSync(OUT_DIR, { recursive: true });
@@ -227,4 +252,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { SPOT_CHECKS, validate };
+module.exports = { validate, spotCheckMatching, sampleRandom };
