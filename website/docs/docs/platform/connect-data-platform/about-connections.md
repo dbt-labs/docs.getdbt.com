@@ -19,6 +19,7 @@ The <Constant name="dbt_platform" /> can connect with a variety of data platform
 | [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ | Preview |
 | [Microsoft Fabric](/docs/platform/connect-data-platform/connect-microsoft-fabric) | ✅ | ❌ |
 | [PostgreSQL](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
+| [Salesforce Data 360](/docs/platform/connect-data-platform/connect-salesforce) <Lifecycle status="beta"/> | ❌ | ✅ |
 | [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ | ✅ |
 | [Starburst or Trino](/docs/platform/connect-data-platform/connect-starburst-trino) | ✅ | ❌ |
 | [Teradata](/docs/platform/connect-data-platform/connect-teradata) <Lifecycle status="preview" /> | ✅ | ❌ |
