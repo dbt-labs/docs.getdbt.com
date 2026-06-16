@@ -22,6 +22,8 @@ Select the option that matches your setup:
 <Tabs>
 <TabItem value="platform" label="dbt platform">
 
+#### Enabling dbt State on your account
+
 **Prerequisite**: You must be an admin in your <Constant name="dbt_platform" /> account.
 
 To enable dbt State:
@@ -66,6 +68,35 @@ To enable dbt State on any job &mdash; whether already existing or newly created
 3. Click **Settings** > **Edit**.
 4. In the **Execution settings** section of the job, select **Enable dbt State**.
 5. Click **Save**.
+
+#### Enabling dbt State in the Studio IDE
+
+dbt State can run automatically while you work in your <Constant name="studio_ide" />. You can [turn it on for your development environment](#enabling-dbt-state-on-a-development-environment) so it's the default for everyone, or you can [override that setting just for your own account](#overriding-dbt-state-setting-per-user).
+
+**Prerequisite**: dbt State must be [enabled on your account](#enabling-dbt-state-on-your-account).
+
+##### Enabling dbt State on a development environment
+
+Enabling dbt State on your development environment turns it on for everyone using the <Constant name="studio_ide" />, unless they override it for their own account.
+
+1. Go to **Orchestration** > **Environments** and select your development environment.
+2. Click **Settings** > **Edit**.
+3. In the **dbt State** section, select **Enable dbt State**.
+4. Click **Save**.
+
+##### Overriding dbt State setting per user
+
+You can override the development environment's dbt State setting for your own account without affecting other users. Because the user-level setting takes precedence over the environment-level setting, you can turn dbt State on for yourself before enabling it for your whole team, or turn it off when it's enabled at the environment level.
+
+1. Click your account name in the lower-left corner and select **Account settings**.
+2. Under **Your profile**, go to **Credentials**.
+3. Select the project you want to enable dbt State for.
+4. Click **Edit** and go to the **User development settings** section.
+5. Under **dbt State**, select one of the following options:
+   - **Enabled** — Enables dbt State for your user regardless of the development environment setting.
+   - **Disabled** — Disables dbt State for your user regardless of the development environment setting.
+   - **Reset (inherit from development)** — Clears your override and falls back to the dbt State setting configured on your development environment. This option only appears after you've saved an **Enabled** or **Disabled** override.
+6. Click **Save**.
 
 </TabItem>
 <TabItem value="fusion" label="dbt Core 1.12 / Fusion">
