@@ -20,7 +20,7 @@ This guide covers DuckDB with <Constant name="core" /> command-line interface (C
 
 This guide will demonstrate how to: 
 
-- [Create a virtual development environment](/docs/local/install-dbt#using-virtual-environments) using a template provided by dbt Labs.
+- Create a virtual development environment using a template provided by dbt Labs.
 - We will set up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
 - Run through the steps outlined in the `jaffle_shop_duckdb` repository, but if you want to dig into the underlying code further, refer to the [README](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/README.md) for the Jaffle Shop template.
 - Run any dbt command from the environment’s terminal. 

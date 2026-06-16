@@ -72,6 +72,10 @@ models:
 
 ## Definition
 
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
+
 The model `freshness` config powers state-aware orchestration by rebuilding models _only when new source or upstream data is available_, helping you reduce unnecessary rebuilds and optimize spend. This is useful for models that depend on other models but only need to be updated periodically.
 
 `freshness` works alongside dbt job orchestration by helping you determine when models should be rebuilt in a scheduled job. When a job runs, dbt makes sure models run only when needed, which helps avoid overbuilding models unnecessarily. dbt does this by:
@@ -88,6 +92,15 @@ The configuration consists of the following parts:
 | `build_after` | Available on dbt platform Enterprise tiers only. Config nested under `freshness`. Used to determine whether a model should be rebuilt when new data is present, based on whether the specified count and period have passed since the model was last built. Although dbt checks for new data every time the job runs, `build_after` ensures the model is only rebuilt if enough time has passed and new data is available. |
 | `count` and `period` | Specify how often dbt should check for new data. For example, `count: 4, period: hour` means dbt will check every 4 hours.<br /><br /> Note that for every `freshness` config, you're required to either set values for both `count` and `period`, or set `freshness: null`.|
 | `updates_on` | Optional. Default is `any`. Determines when upstream data changes should trigger a job build. Use the following values:<br /> - `any` (default): The model will build once _any_ direct upstream node has new data since the last build. Faster and may increase spend.<br /> - `all`: The model will only build when _all_ direct upstream nodes have new data since the last build. Less spend and more requirements. |
+
+If you're using [dbt State](/docs/deploy/dbt-state-about), the `build_after` configs have moved out of the `freshness` block and into the `state` block:
+
+| State-aware orchestration | dbt State |
+|---|---|
+| `freshness.build_after.count` + `freshness.build_after.period` | [`state.lag_tolerance`](/reference/resource-configs/lag-tolerance) |
+| `freshness.build_after.updates_on` | [`state.require_fresh_data_from`](/reference/resource-configs/require-fresh-data-from) |
+
+For more information, refer to [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration).
 
 ## Default
 

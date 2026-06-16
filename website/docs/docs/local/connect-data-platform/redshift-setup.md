@@ -146,7 +146,7 @@ import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 | `autocreate`  | false | Optional, default `False`. Creates user if they do not exist |
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
 | `ra3_node`  | true | Optional, default `False`. Enables cross-database sources. Kept for backward compatibility; use `datasharing` for new projects instead. |
-| `datasharing` <Lifecycle status="beta" /> | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift v1.11.0rc1` and later. |
+| `datasharing` <Lifecycle status="beta" /> | true | Optional, default `False`. Enables cross-database and cross-cluster access for [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). Available in `dbt-redshift` v1.11.0rc1 and later. |
 | `autocommit`  | true | Optional, default `True`. Enables autocommit after each statement |
 | `retries`  | 1 | Number of retries (on each statement) |
 | `retry_all`  | true | Allows dbt to retry all statements in a query|
@@ -154,6 +154,7 @@ import RedshiftDatasharing from '/snippets/_redshift-datasharing.md';
 | `tcp_keepalive_idle`  | 200 | Number of seconds of inactivity before the first keep-alive probe is sent |
 | `tcp_keepalive_interval`  | 200 | Number of seconds of inactivity before the next probe is sent |
 | `tcp_keepalive_count`  | 5 | Number of times probes will be sent |
+| `drop_without_cascade`  | false | Optional, default `False`. Omits `CASCADE` from `DROP TABLE/VIEW/MATERIALIZED VIEW` statements. Available in `dbt-redshift` v1.11.0rc3 and later. |
 
 For your tcp_keepalive inputs, we recommend taking a look at the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/troubleshooting-connections.html) for more information on the right configuration for you. 
 
@@ -348,6 +349,14 @@ To run certain macros with autocommit, load the profile with autocommit using th
 - `iam_duration_seconds`
 
 - `keepalives_idle`
+
+### `drop_without_cascade`
+
+Set `drop_without_cascade: true` to omit `CASCADE` from `DROP TABLE`, `DROP VIEW`, and `DROP MATERIALIZED VIEW` statements. Use this when your project has no downstream dependents (for example, it uses only unbound views) and you want to avoid the overhead of resolving the `CASCADE` dependency graph on every drop for large clusters.
+
+:::info
+This option is intended for projects with no downstream dependents. If a dependent object exists and `CASCADE` is omitted, Redshift raises an error.
+:::
 
 ### `sort` and `dist` keys
 

@@ -15,6 +15,10 @@
     - Username / Password
     - IAM profile
   </Expandable>
+
+  <Expandable alt_header="Salesforce Data 360">
+    - JSON Web Token (JWT) bearer authentication
+  </Expandable>
   
   <Expandable alt_header="Snowflake">
     - Username / Password

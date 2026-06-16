@@ -7,7 +7,7 @@ tags: [scheduler]
 ---
 
 :::info
-Use the [<Constant name="dev_agent"/>](/docs/dbt-ai/developer-agent) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes  &mdash;  powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
+Use the [<Constant name="wizard"/>](/docs/dbt-ai/wizard-ide) to investigate and troubleshoot dbt job and run failures by asking the agent about recent failures, root causes, and fixes  &mdash;  powered by the `troubleshooting-dbt-job-errors` skill in dbt Agent Skills.
 :::
 
 The job scheduler is the backbone of running jobs in <Constant name="dbt" />, bringing power and simplicity to building data pipelines in both continuous integration and production contexts. The scheduler frees teams from having to build and maintain their own infrastructure, and ensures the timeliness and reliability of data transformations.
@@ -30,7 +30,7 @@ The scheduler also:
 - Uses [<Constant name="dbt" />'s Git repository caching](/docs/platform/account-settings#git-repository-caching) to protect against third-party outages and improve job run reliability. <Lifecycle status="managed,managed_plus" />
 - Powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
 - Uses [Hybrid projects](/docs/deploy/hybrid-projects) to upload <Constant name="core" /> artifacts into dbt for central visibility, cross-project referencing, and easier collaboration. <Lifecycle status="beta,managed_plus" />
-- Uses [state-aware orchestration](/docs/deploy/state-aware-about) to decide what needs to be rebuilt based on source freshness, model staleness, and code changes. <Lifecycle status="beta,managed,managed_plus" />
+- Uses [dbt State](/docs/deploy/dbt-state-about) to decide what needs to be rebuilt based on upstream data freshness and code changes. <Lifecycle status="preview" />
 
 ## Scheduler terms
 
