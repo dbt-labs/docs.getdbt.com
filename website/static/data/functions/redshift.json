@@ -2,7 +2,6 @@
   "_meta": {
     "platform": "redshift",
     "platform_name": "Amazon Redshift",
-    "fetched_at": "2026-05-26T10:37:24.195Z",
     "count": 336
   },
   "functions": [
