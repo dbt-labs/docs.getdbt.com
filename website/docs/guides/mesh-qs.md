@@ -11,14 +11,14 @@ hide_table_of_contents: true
 
 ## Introduction
 
-<Constant name="mesh" /> is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections &mdash; for faster data development. <Constant name="mesh" /> is available for [<Constant name="cloud" /> Enterprise](https://www.getdbt.com/) accounts.
+<Constant name="mesh" /> is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections &mdash; for faster data development. <Constant name="mesh" /> is available for [<Constant name="dbt" /> Enterprise](https://www.getdbt.com/) accounts.
 
-This guide will teach you how to set up a multi-project design using foundational concepts of [<Constant name="mesh" />](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) and how to implement a data mesh in <Constant name="cloud" />:
+This guide will teach you how to set up a multi-project design using foundational concepts of [<Constant name="mesh" />](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) and how to implement a data mesh in <Constant name="dbt" />:
 
 - Set up a foundational project called “Jaffle | Data Analytics”
 - Set up a downstream project called “Jaffle | Finance”
 - Add model access, versions, and contracts
-- Set up a <Constant name="cloud" /> job that is triggered on completion of an upstream job
+- Set up a <Constant name="dbt" /> job that is triggered on completion of an upstream job
  
 For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
@@ -38,8 +38,8 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 To leverage <Constant name="mesh" />, you need the following:
 
-- You must have a [<Constant name="cloud" /> Enterprise-tier account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="managed,managed_plus" />
-- You have access to a cloud data platform, permissions to load the sample data tables, and <Constant name="cloud" /> permissions to create new projects. 
+- You must have a [<Constant name="dbt" /> Enterprise-tier account](https://www.getdbt.com/contact) <Lifecycle status="managed,managed_plus" />
+- You have access to a cloud data platform, permissions to load the sample data tables, and <Constant name="dbt" /> permissions to create new projects. 
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](/guides/snowflake?step=3)
   - [Databricks](/guides/databricks?step=3)
@@ -52,14 +52,14 @@ This guide assumes you have experience with or fundamental knowledge of dbt. Tak
 
 ## Create and configure two projects
 
-In this section, you'll create two new, empty projects in <Constant name="cloud" /> to serve as your foundational and downstream projects:
+In this section, you'll create two new, empty projects in <Constant name="dbt" /> to serve as your foundational and downstream projects:
 
 - **Foundational projects** (or upstream projects) typically contain core models and datasets that serve as the base for further analysis and reporting.
 - **Downstream projects** build on these foundations, often adding more specific transformations or business logic for dedicated teams or purposes. 
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: **Jaffle | Data Analytics** and **Jaffle | Finance**.
 
-To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="cloud" />:
+To [create](/docs/platform/about-platform-setup) a new project in <Constant name="dbt" />:
 
 1. From **Account settings**, go to **Projects**. Click **New project**.
 2. Enter a project name and click **Continue**.
@@ -67,9 +67,9 @@ To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="clou
    - Use "Jaffle | Finance" for the other project
 3. Select your data platform, then **Next** to set up your connection.
 4. In the **Configure your environment** section, enter the **Settings** for your new project.
-5. Click **Test Connection**. This verifies that <Constant name="cloud" /> can access your data platform account.
+5. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your data platform account.
 6. Click **Next** if the test succeeded. If it fails, you might need to go back and double-check your settings.
-   - For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
+   - For this guide, make sure you create a single [development](/docs/dbt-platform-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
      - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
      - For "Jaffle | Finance", set the default database to `jaffle_finance`.
 7. Continue the prompts to complete the project setup. Once configured, each project should have:
@@ -93,7 +93,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in <Constant name="clou
 
 
 ### Create a production environment
-In <Constant name="cloud" />, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage <Constant name="explorer" /> in the [later steps](/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
+In <Constant name="dbt" />, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage <Constant name="catalog" /> in the [later steps](/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
 
 To set a production environment:
 1. Navigate to **Deploy** -> **Environments**, then click **Create New Environment**.
@@ -104,23 +104,23 @@ To set a production environment:
 6. Click **Test Connection** to confirm the deployment connection.
 6. Click **Save** to create a production environment.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/prod-settings-1.png" width="100%" title="Set your production environment as the default environment in your Environment Settings"/>
 
 
 ## Set up a foundational project
 
 This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
-<Constant name="cloud" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="cloud" /> CLI](/docs/cloud/cloud-cli-installation) or in-browser [<Constant name="cloud_ide" />](/docs/cloud/studio-ide/develop-in-studio).
+<Constant name="dbt" /> enables data practitioners to develop in their tool of choice and comes equipped with a local [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) or in-browser [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio).
 
-In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="cloud_ide" />.
+In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the <Constant name="studio_ide" />.
 
-1. First, navigate to the **<Constant name="cloud_ide"/>** page to verify your setup.
+1. First, navigate to the **<Constant name="studio_ide"/>** page to verify your setup.
 2. Click **Initialize dbt project** if you’ve started with an empty repo.
 3. Delete the `models/example` folder.  
 4. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `analytics`.
 5. In your `dbt_project.yml` file, remove lines 39-42 (the `my_new_project` model reference).
-6. In the **File <Constant name="explorer" />**, hover over the project directory and click the **...**, then select **Create file**.
+6. In the **File <Constant name="catalog" />**, hover over the project directory and click the **...**, then select **Create file**.
 7. Create two new folders: `models/staging` and `models/core`.
 
 
@@ -224,7 +224,7 @@ Now that you've set up the foundational project, let's start building the data a
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/mesh/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
-  - Note, Enable [**Generate docs on run**](/docs/deploy/deploy-jobs) for this job to update assets in <Constant name="explorer" />. Once run, you can click **Catalog** from the main navigation and select your project to see its lineage, tests, and documentation coming through successfully.
+  - Note, Enable [**Generate docs on run**](/docs/deploy/deploy-jobs) for this job to update assets in <Constant name="catalog" />. Once run, you can click **Catalog** from the main navigation and select your project to see its lineage, tests, and documentation coming through successfully.
 
 ## Define a public model and run first job
 
@@ -282,7 +282,7 @@ To make `fct_orders` publicly available:
 
 Note: By default, model access is set to "protected", which means they can only be referenced within the same project. Learn more about access types and model groups [here](/docs/mesh/govern/model-access#access-modifiers).
 
-2. Navigate to the <Constant name="cloud_ide" /> **Lineage** tab to see the model noted as **Public**, below the model name.
+2. Navigate to the <Constant name="studio_ide" /> **Lineage** tab to see the model noted as **Public**, below the model name.
 
 <Lightbox src="/img/guides/dbt-mesh/da_lineage.png" title="Jaffle | Data Analytics lineage" />
 
@@ -293,18 +293,18 @@ Note: By default, model access is set to "protected", which means they can only 
 
 Before a downstream team can leverage assets from this foundational project, you need to [create a production environment](/guides/mesh-qs?step=3#create-a-production-environment) and run a [deployment job](/docs/deploy/deploy-jobs) successfully.
 
-To run your first deployment <Constant name="cloud" /> job, you will need to create a new <Constant name="cloud" /> job.  
+To run your first deployment <Constant name="dbt" /> job, you will need to create a new <Constant name="dbt" /> job.  
 1. Go to **Orchestration** > **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
-3. Select the **Generate docs on run** option. This will hydrate your metadata in <Constant name="explorer"/>.
+3. Select the **Generate docs on run** option. This will hydrate your metadata in <Constant name="catalog"/>.
 
 <Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt job." />
 
 4. Click **Save**.
 5. Click **Run now** to trigger the job.
-6. After the run is complete, navigate to <Constant name="explorer"/>. You should now see your lineage, tests, and documentation coming through successfully.
+6. After the run is complete, navigate to <Constant name="catalog"/>. You should now see your lineage, tests, and documentation coming through successfully.
 
-For details on how <Constant name="cloud" /> uses metadata from the Staging environment to resolve references in downstream projects, check out the section on [Staging with downstream dependencies](/docs/mesh/govern/project-dependencies#staging-with-downstream-dependencies).
+For details on how <Constant name="dbt" /> uses metadata from the Staging environment to resolve references in downstream projects, check out the section on [Staging with downstream dependencies](/docs/mesh/govern/project-dependencies#staging-with-downstream-dependencies).
 
 ## Reference a public model in your downstream project
 
@@ -314,7 +314,7 @@ In this section, you will set up the downstream project, "Jaffle | Finance", and
 2. Delete the `models/example` folder.
 3. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `finance`.
 4. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
-5. In the **File <Constant name="explorer" />**, hover over the project directory, click the **...** and select **Create file**.
+5. In the **File <Constant name="catalog" />**, hover over the project directory, click the **...** and select **Create file**.
 6. Name the file `dependencies.yml`.
 7. Add the upstream `analytics` project and the `dbt_utils` package. Click **Save**.
 
@@ -420,7 +420,7 @@ You're now set to add a model that explores how payment types vary throughout a 
 
     </File> 
 
-2. Notice the cross-project ref at work! When you add the `ref`, the <Constant name="cloud_ide" />'s auto-complete feature recognizes the public model as available.
+2. Notice the cross-project ref at work! When you add the `ref`, the <Constant name="studio_ide" />'s auto-complete feature recognizes the public model as available.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_autocomplete.png" title="Cross-project ref autocomplete in the Studio IDE" />
 
 3. This automatically resolves (or links) to the correct database, schema, and table/view set by the upstream project.
@@ -554,7 +554,7 @@ select * from {{ ref('fct_orders') }}
 ## Add a dbt job in the downstream project
 Before proceeding, make sure you commit and merge your changes in both the “Jaffle | Data Analytics” and “Jaffle | Finance” projects.
 
-A member of the Finance team would like to schedule a <Constant name="cloud" /> job for their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
+A member of the Finance team would like to schedule a <Constant name="dbt" /> job for their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
 
 1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Orchestration** > **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
@@ -610,7 +610,7 @@ select * from final
 
 </File>
 
-3. In the <Constant name="cloud_ide" />, go to **Version control** to commit and merge the changes.
+3. In the <Constant name="studio_ide" />, go to **Version control** to commit and merge the changes.
 4. Go to the **Deploy** and then **Jobs** page.
 5. Click **Run now** to run the Finance job. The `agg_customer_payment_journey` model will build and display a deprecation date warning.
 
@@ -618,7 +618,7 @@ select * from final
 
 ## View lineage with dbt Catalog
 
-Use [<Constant name="explorer" />](/docs/explore/explore-projects) to view the lineage across projects in <Constant name="cloud" />. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/explore/explore-multiple-projects).
+Use [<Constant name="catalog" />](/docs/explore/explore-projects) to view the lineage across projects in <Constant name="dbt" />. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/explore/explore-multiple-projects).
 
 <Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="85%" title="View 'Jaffle | Data Analytics' lineage with dbt Catalog " />
 
@@ -631,7 +631,7 @@ Congratulations 🎉! You're ready to bring the benefits of <Constant name="mesh
 - How to establish a foundational project "Jaffle | Data Analytics."
 - Create a downstream project "Jaffle | Finance."
 - Implement model access, versions, and contracts.
-- Set up <Constant name="cloud" /> jobs triggered by upstream job completions.
+- Set up <Constant name="dbt" /> jobs triggered by upstream job completions.
 
 Here are some additional resources to help you continue your journey:
 
@@ -639,7 +639,8 @@ Here are some additional resources to help you continue your journey:
 - [<Constant name="mesh" /> FAQs](/best-practices/how-we-mesh/mesh-5-faqs)
 - [Implement <Constant name="mesh" /> with the <Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/mesh/govern/project-dependencies#how-to-write-cross-project-ref)
-- [<Constant name="explorer" />](/docs/explore/explore-projects)
+- [<Constant name="catalog" />](/docs/explore/explore-projects)
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — keep your local and platform environments in sync across credentials, env vars, and <Constant name="fusion"/> versions
 
 </ConfettiTrigger>
 

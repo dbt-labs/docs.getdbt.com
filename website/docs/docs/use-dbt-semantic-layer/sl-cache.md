@@ -22,8 +22,8 @@ While you can use caching to speed up your queries and reduce compute time, know
 - Declarative caching also allows you to dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
 
 ## Prerequisites
-- <Constant name="cloud" /> [Enterprise or Enterprise+](https://www.getdbt.com/) plans.
-- <Constant name="cloud" /> environments must be on [release tracks](/docs/dbt-versions/cloud-release-tracks) and not legacy <Constant name="core" /> versions.
+- <Constant name="dbt" /> [Enterprise or Enterprise+](https://www.getdbt.com/) plans.
+- <Constant name="dbt" /> environments must be on [release tracks](/docs/dbt-versions/dbt-release-tracks) and not legacy <Constant name="core" /> versions.
 - A successful job run and [production environment](/docs/deploy/deploy-environments#set-as-production-environment).
 - For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML configuration file.
 
@@ -69,7 +69,7 @@ How declarative caching works:
 
 <summary> 📹 Check out this video demo to see how declarative caching works!</summary>
 
-This video demonstrates the concept of declarative caching, how to run it using the <Constant name="cloud" /> scheduler, and how fast your dashboards load as a result.
+This video demonstrates the concept of declarative caching, how to run it using the <Constant name="dbt" /> scheduler, and how fast your dashboards load as a result.
 
 <LoomVideo id='aea82a4dee364dfdb536e7b8068684e7' />
 
@@ -77,7 +77,7 @@ This video demonstrates the concept of declarative caching, how to run it using 
 
 Refer to the following diagram, which illustrates what happens when the <Constant name="semantic_layer" /> receives a query request:
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Overview of the declarative cache query flow" />
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Overview of the declarative cache query flow" />
 
 ### Declarative caching setup
 
@@ -114,24 +114,24 @@ saved-queries:
 
 ### Run your declarative cache
 
-After setting up declarative caching in your YAML configuration, you can now run [exports](/docs/use-dbt-semantic-layer/exports) with the <Constant name="cloud" /> job scheduler to build a cached table from a saved query into your data platform.
+After setting up declarative caching in your YAML configuration, you can now run [exports](/docs/use-dbt-semantic-layer/exports) with the <Constant name="dbt" /> job scheduler to build a cached table from a saved query into your data platform.
 
-- Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query <Constant name="cloud" />.
+- Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query <Constant name="dbt" />.
 - The dbt Semantic Layer builds a cache table in your data platform in a dedicated `dbt_sl_cache` schema. 
 - The cache schema and tables are created using your deployment credentials. You need to grant read access to this schema for your <Constant name="semantic_layer" /> user.
 - The cache refreshes (or rebuilds) on the same schedule as the saved query job.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/cache-creation-flow.jpg" width="70%" title="Overview of the cache creation flow." />
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/cache-creation-flow.jpg" width="70%" title="Overview of the cache creation flow." />
 
 After a successful job run, you can go back to your dashboard to experience the speed and benefits of declarative caching.
 
 ## Cache management
 
-<Constant name="cloud" /> uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
+<Constant name="dbt" /> uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
 
-If an upstream model has data in it that was created after the cache was created, <Constant name="cloud" /> invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and <Constant name="cloud" /> will write a new cache the next time your saved query runs.
+If an upstream model has data in it that was created after the cache was created, <Constant name="dbt" /> invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and <Constant name="dbt" /> will write a new cache the next time your saved query runs.
 
-You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
+You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-apis/sl-api-overview) using the `InvalidateCacheResult` field.
 
 ## FAQs
 

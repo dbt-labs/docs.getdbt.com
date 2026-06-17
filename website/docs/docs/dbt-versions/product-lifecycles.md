@@ -14,17 +14,17 @@ All dbt features fall into a lifecycle category determined by their availability
 
 ### The dbt platform
 
-<Constant name="cloud" /> features all fall into one of the following categories:
+<Constant name="dbt" /> features all fall into one of the following categories:
 
 - **Beta:** Beta features are in development and might not be entirely stable; they should be used at the customer’s risk, as breaking changes could occur. Beta features might not be fully documented, technical support is limited, and service level objectives (SLOs) might not be provided. Download the [Beta Features Terms and Conditions](/assets/beta-tc.pdf) for more details. If a beta feature is marked `Private`, it must be enabled by dbt Labs, and access is not self-service. If documentation is available, it will include instructions for requesting access.
 - **Preview:**  Preview features are stable and considered functionally ready for production deployments. Some planned additions and modifications to feature behaviors could occur before they become generally available. New functionality that is not backward compatible could also be introduced. Preview features include documentation, technical support, and service level objectives (SLOs). Features in preview are provided at no extra cost, although they might become paid features when they become generally available. If a preview feature is marked `Private`, it must be enabled by dbt Labs, and access is not self-service. Refer to the feature documentation for instructions on requesting access.
-- **Generally available (GA):** Generally available features provide stable features introduced to all qualified <Constant name="cloud" /> accounts. Service level agreements (SLAs) apply to GA features, including documentation and technical support. Certain GA feature availability is determined by the dbt version of the environment. To always receive the latest GA features, ensure your <Constant name="cloud" /> [environments](/docs/dbt-cloud-environments) are on a supported [Release Track](/docs/dbt-versions/cloud-release-tracks).
+- **Generally available (GA):** Generally available features provide stable features introduced to all qualified <Constant name="dbt" /> accounts. Service level agreements (SLAs) apply to GA features, including documentation and technical support. Certain GA feature availability is determined by the dbt version of the environment. To always receive the latest GA features, ensure your <Constant name="dbt" /> [environments](/docs/dbt-platform-environments) are on a supported [Release Track](/docs/dbt-versions/dbt-release-tracks).
 - **Deprecated:** Features in this state are no longer being developed or enhanced by dbt Labs. They will continue functioning as-is, and their documentation will persist until their removal date. However, they are no longer subject to technical support. 
 - **Removed:** Removed features are no longer available on the platform in any capacity.
 
 ### dbt Core
 
-We release <Constant name="core" /> in the following lifecycle states. Core releases follow semantic versioning, which you can read more about in [About Core versions](/docs/dbt-versions/core).
+We release <Constant name="core" /> in the following lifecycle states. Core releases follow semantic versioning, which you can read more about in [About dbt versions](/docs/dbt-versions).
 - **Unreleased:** We will include this functionality in the next minor version prerelease. However, we make no commitments about its behavior or implementation. As maintainers, we reserve the right to change any part of it, or remove it entirely (with an accompanying explanation.)
 
 - **Prerelease:**
@@ -45,8 +45,8 @@ We release <Constant name="core" /> in the following lifecycle states. Core rele
 
 ### dbt Fusion engine
 
-The <Constant name="fusion_engine" /> and [VS Code extension](/docs/about-dbt-extension) are currently in preview for local installations and beta in <Constant name="cloud" />.
+The <Constant name="fusion_engine" /> and [VS Code extension](/docs/about-dbt-extension) are currently in preview for local installations and beta in <Constant name="dbt" />.
 
 - **Beta:** Beta features are still in development and are only available to select customers. Beta features are incomplete and might not be entirely stable; they should be used at the customer’s risk, as breaking changes could occur. Beta features might not be fully documented, technical support is limited, and service level objectives (SLOs) might not be provided. Download the [Beta Features Terms and Conditions](/assets/beta-tc.pdf) for more details.
-- **Preview:** Preview features are stable and considered functionally ready for production deployments that are using supported features and do not depend on deprecated functionality. For more about the status of features and functionality, the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) contain the most recent updates.
+- **Preview:** Preview features are stable and considered functionally ready for production deployments that are using supported features and do not depend on deprecated functionality. For more about the status of features and functionality, the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) contain the most recent updates.
 - **Path to Generally available (GA):** Learn what's required for the dbt Fusion engine to reach GA in our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post.

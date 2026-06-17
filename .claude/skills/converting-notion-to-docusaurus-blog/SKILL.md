@@ -77,15 +77,19 @@ For each image in the Notion export folder:
 
 Copy the Notion markdown file to `website/blog/YYYY-MM-DD-slug.md` first. This establishes the baseline for git diffs.
 
-### 7. Apply Transformations as Edits
+### 7. Commit the Raw Baseline
+
+Stage the new blog file and any copied images and create a commit (e.g. `chore: import raw Notion export for <slug>`) before making any edits. This anchors the baseline in git history so that all subsequent transformations appear as a single, reviewable diff against the import commit.
+
+### 8. Apply Transformations as Edits
 
 Apply transformation rules (see below) as individual edits to the copied file. This makes changes visible in git diff, allowing review of exactly what was modified.
 
-### 8. Spellcheck Pass
+### 9. Spellcheck Pass
 
 Run a spellcheck on the content and fix any typos or spelling errors. Be careful to preserve technical terms, product names (dbt, MetricFlow, BigQuery), and intentional stylistic choices.
 
-### 9. Report Results
+### 10. Report Results
 
 Summarize: files created, images processed, spelling corrections made, any TODO items (e.g., incomplete author entry).
 
@@ -144,12 +148,13 @@ Notion Export:
     image.png
     image 1.png
 
-Step 1 - Copy original:
+Step 1 - Copy original + images, then commit:
   website/blog/YYYY-MM-DD-slug.md  (raw Notion content)
-
-Step 2 - Apply edits (diffable):
-  website/blog/YYYY-MM-DD-slug.md  (transformed)
   website/static/img/blog/YYYY-MM-DD-slug/
     semantic-name.png
     another-semantic-name.png
+  → git commit (baseline import)
+
+Step 2 - Apply edits (diffable against baseline commit):
+  website/blog/YYYY-MM-DD-slug.md  (transformed)
 ```

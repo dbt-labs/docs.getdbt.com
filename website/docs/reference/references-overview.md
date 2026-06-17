@@ -8,7 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-The References section contains reference materials for developing with dbt, which includes <Constant name="cloud" /> and <Constant name="core" />.
+The References section contains reference materials for developing with dbt, which includes <Constant name="dbt" /> and <Constant name="core" />.
 
 Learn how to add more configurations to your dbt project or adapter, use properties for extra ability, refer to dbt commands, use powerful Jinja functions to streamline your dbt project, and understand how to use dbt artifacts.  <br />
 
@@ -30,6 +30,12 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     title="Resource configurations and properties"
     body="Properties and configurations that provide extra abilities to your projects resources."
     link="/reference/configs-and-properties"
+    icon="computer"/>
+
+<Card
+    title="Semantic Layer configurations"
+    body="Complete configuration reference for semantic models, metrics, and dimensions in the dbt Semantic Layer."
+    link="/reference/semantic-layer-reference"
     icon="computer"/>
 
 <Card

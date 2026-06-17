@@ -27,7 +27,7 @@ And once you have a time spine, you need to configure it in YAML to tell MetricF
 ### Prerequisites
 Before you start, make sure you have:
 
-- A dbt project set up. If you don't have one, follow the [<Constant name="semantic_layer" /> quickstart guide](/guides/sl-snowflake-qs?step=1) or the [<Constant name="cloud" /> quickstart guides](/guides?tags=Quickstart) guide to help you get started.
+- A dbt project set up. If you don't have one, follow the [<Constant name="semantic_layer" /> quickstart guide](/guides/sl-snowflake-qs?step=1) or the [<Constant name="dbt" /> quickstart guides](/guides?tags=Quickstart) guide to help you get started.
 
 ## Add a time spine SQL model
 
@@ -80,7 +80,7 @@ The time spine is a dbt model that generates a series of dates (or timestamps) a
     dbt show --select time_spine_daily # Use this command to preview the model if developing locally
     ```
 
-4. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
+4. If developing in the <Constant name="studio_ide" />, you can preview the model by clicking the **Preview** button:
    <Lightbox src="/img/mf-guide-preview-time-spine-table.png" title="Preview the time spine model in the Studio IDE" />
 
 ## Add YAML configuration for the time spine
@@ -148,7 +148,7 @@ For the time spine you created, let's run it and preview the output if you haven
    dbt show --select time_spine_daily # Use this command to preview the model if developing locally
    ```
 
-2. If developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button:
+2. If developing in the <Constant name="studio_ide" />, you can preview the model by clicking the **Preview** button:
     <Lightbox src="/img/mf-guide-preview-time-spine-table.png" title="Preview the time spine model in the Studio IDE" />
 
 3. Check that the model:
@@ -163,8 +163,8 @@ For the time spine you created, let's run it and preview the output if you haven
     dbt sl query --metrics revenue --group-by metric_time
     ```
 
-    This will output results similar to the following in the <Constant name="cloud_ide" />:
-    <Lightbox src="/img/quickstarts/dbt-cloud/validate-mf-timespine-output.png" title="Validate the metrics and time spine output in the Studio IDE" />
+    This will output results similar to the following in the <Constant name="studio_ide" />:
+    <Lightbox src="/img/quickstarts/dbt-platform/validate-mf-timespine-output.png" title="Validate the metrics and time spine output in the Studio IDE" />
 
 5. Double check that the results are correct and returning the expected data.
 
@@ -245,7 +245,7 @@ To support multiple granularities (like hourly, yearly, monthly), create additio
    dbt sl query --metrics orders --group-by metric_time__year
    ```
 
-If you're developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
+If you're developing in the <Constant name="studio_ide" />, you can preview the model by clicking the **Preview** button.
    <Lightbox src="/img/mf-guide-query.png" title="Validate the metrics and time spine output in the Studio IDE" />
 
 :::tip Extra credit!
@@ -258,7 +258,7 @@ For some extra practice, try one of the following exercises:
 
 ### Custom calendars
 
-To support custom calendars (like fiscal years, fiscal quarters, and so on), create an additional time spine and configure it in YAML. This feature is available in the <Constant name="cloud" />'s [Latest release track](/docs/dbt-versions/cloud-release-tracks) or [<Constant name="core" /> 1.9 and later](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
+To support custom calendars (like fiscal years, fiscal quarters, and so on), create an additional time spine and configure it in YAML. This feature is available in the <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/dbt-release-tracks) or [<Constant name="core" /> 1.9 and later](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9).
 
 1. Add a new SQL file named `fiscal_calendar.sql` with the following content (or use your own custom calendar and configure it in YAML):
     <File name='models/marts/fiscal_calendar.sql'>
@@ -331,7 +331,7 @@ To support custom calendars (like fiscal years, fiscal quarters, and so on), cre
    dbt show --select fiscal_calendar # Use this command to preview the model if developing locally
    ```
 
-   If you're developing in the <Constant name="cloud_ide" />, you can preview the model by clicking the **Preview** button.
+   If you're developing in the <Constant name="studio_ide" />, you can preview the model by clicking the **Preview** button.
 
 4. Validate the output by querying the generated model along with your metrics:
    ```bash

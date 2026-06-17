@@ -21,16 +21,16 @@ While this is a great way to reuse code, share utility macros, and establish a s
 
 dbt Labs supports an expanded notion of `dependencies` across multiple dbt projects:
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
-- **Projects** &mdash; The dbt method to take a dependency on another project. Using a metadata service that runs behind the scenes, <Constant name="cloud" /> resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
+- **Projects** &mdash; The dbt method to take a dependency on another project. Using a metadata service that runs behind the scenes, <Constant name="dbt" /> resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
 ## Prerequisites
-- Available in [<Constant name="cloud" /> Enterprise or Enterprise+](https://www.getdbt.com/pricing). To use it, designate a [public model](/docs/mesh/govern/model-access) and add a [cross-project ref](#how-to-write-cross-project-ref).
+- Available in [<Constant name="dbt" /> Enterprise or Enterprise+](https://www.getdbt.com/pricing). To use it, designate a [public model](/docs/mesh/govern/model-access) and add a [cross-project ref](#how-to-write-cross-project-ref).
 - For the upstream ("producer") project setup:
   - Configure models in upstream project with [`access: public`](/reference/resource-configs/access) and have at least one successful job run after defining `access`.
   - Define a [Production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) in the upstream project and make sure at least _one deployment job_ has run successfully there. This job should generate a [`manifest.json` file](/reference/artifacts/manifest-json) &mdash; it includes the metadata needed for downstream projects.
   - If the upstream project has a Staging environment, run at least one successful deployment job there to ensure downstream cross-project references resolve correctly.
-- Each project `name` must be unique in your <Constant name="cloud" /> account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, avoid creating projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`; use [environment-level isolation](/docs/dbt-cloud-environments#types-of-environments) instead.
-  - <Constant name="cloud" /> supports [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management), available to all <Constant name="cloud" /> users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
+- Each project `name` must be unique in your <Constant name="dbt" /> account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, avoid creating projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`; use [environment-level isolation](/docs/dbt-platform-environments#types-of-environments) instead.
+  - <Constant name="dbt" /> supports [Connections](/docs/platform/connect-data-platform/about-connections#connection-management), available to all <Constant name="dbt" /> users. Connections allows different data platform connections per environment, eliminating the need to duplicate projects. Projects can use multiple connections of the same warehouse type. Connections are reusable across projects and environments.
 - The `dbt_project.yml` file is case-sensitive, which means the project name must exactly match the name in your `dependencies.yml`.  For example, `jaffle_marketing`, not `JAFFLE_MARKETING`.
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
@@ -45,7 +45,7 @@ If your dbt project relies on models from another project, you can define that r
 2. In the `dependencies.yml`, list the upstream dbt project your project depends on as they appear in the `dbt_projects.yml` file.
 3. (Optional) Define the specific models you expect from that upstream project to make the dependency explicit.
 4. Use [`ref()`](/reference/dbt-jinja-functions/ref) with the project name to reference upstream models in your SQL.
-5. Commit the changes and ensure the dependency is configured in <Constant name="cloud" />.
+5. Commit the changes and ensure the dependency is configured in <Constant name="dbt" />.
 6. dbt will resolve the dependency, ensure upstream projects are built first, and surface cross-project lineage in the lineage and DAG (Directed Acyclic Graph) views.
 
 ### Example
@@ -83,7 +83,7 @@ What's happening here?
 
 The `dbt_utils` package &mdash; When you run `dbt deps`, dbt will pull down this package's full contents (100+ macros) as source code and add them to your environment. You can then call any macro from the package, just as you can call macros defined in your own project.
 
-The `jaffle_finance` projects &mdash; This is a new scenario. Unlike installing a package, the models in the `jaffle_finance` project will _not_ be pulled down as source code and parsed into your project. Instead, <Constant name="cloud" /> provides a metadata service that resolves references to [**public models**](/docs/mesh/govern/model-access) defined in the `jaffle_finance` project.
+The `jaffle_finance` projects &mdash; This is a new scenario. Unlike installing a package, the models in the `jaffle_finance` project will _not_ be pulled down as source code and parsed into your project. Instead, <Constant name="dbt" /> provides a metadata service that resolves references to [**public models**](/docs/mesh/govern/model-access) defined in the `jaffle_finance` project.
 
 ### Advantages
 
@@ -112,6 +112,14 @@ with monthly_revenue as (
 
 </File>
 
+
+
+<VersionBlock firstVersion="1.12">
+import SLMeshLatestSpec from '/snippets/_sl-mesh-latest-spec.md';
+
+<SLMeshLatestSpec/>
+</VersionBlock>
+
 #### Cycle detection
 
 import CycleDetection from '/snippets/_mesh-cycle-detection.md';
@@ -130,7 +138,7 @@ Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-
 
 #### Staging with downstream dependencies
 
-<Constant name="cloud" /> begins using the Staging environment to resolve cross-project references from downstream projects as soon as it exists in a project without "fail-over" to Production. This means that <Constant name="cloud" /> will consistently use metadata from the Staging environment to resolve references in downstream projects, even if there haven't been any successful runs in the configured Staging environment. 
+<Constant name="dbt" /> begins using the Staging environment to resolve cross-project references from downstream projects as soon as it exists in a project without "fail-over" to Production. This means that <Constant name="dbt" /> will consistently use metadata from the Staging environment to resolve references in downstream projects, even if there haven't been any successful runs in the configured Staging environment. 
 
 To avoid causing downtime for downstream developers, you should define and trigger a job before marking the environment as Staging:
 
@@ -161,3 +169,4 @@ These are the exceptions, rather than the rule. Installing another team's projec
 ## Related docs
 - Refer to the [<Constant name="mesh" />](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use <Constant name="mesh" />.
 - [Quickstart with <Constant name="mesh" />](/guides/mesh-qs)
+- [Hybrid development with <Constant name="dbt_platform"/> and <Constant name="fusion"/>](/guides/fusion-platform-local-workflow) — manage credentials, env vars, deferral, and <Constant name="fusion"/> versions when developing locally against a Mesh project
