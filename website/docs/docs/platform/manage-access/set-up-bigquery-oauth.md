@@ -208,10 +208,19 @@ To connect a new project to your WIF configuration:
 Create a new or updated environment to use the WIF connection. 
 
 When you set your environment connection to the WIF configuration, you will then see two fields appear under the Deployment credentials section: 
-- **Workload pool provider path:** This field is required for all WIF configurations.
-    Example: `//iam.googleapis.com/projects/<numeric_project_id>/locations/global/workloadIdentityPools/<workpool_name>/providers/<workpool_providername>`
-- **Service account impersonation URL:** Used only if you’ve configured your workpool to use a service account impersonation for accessing your BigQuery resources (as opposed to granting the workpool direct resource access to the BigQuery resources).
-    Example: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts<serviceaccountemail>:generateAccessToken`
+- **Workload pool provider path:** This field is required for all WIF configurations. For example:
+ - `//iam.googleapis.com/projects/<numeric_project_id>/locations/global/workloadIdentityPools/<workpool_name>/providers/<workpool_providername>`
+- **Service account impersonation URL:** Used only if you’ve configured your workpool to use a service account impersonation for accessing your BigQuery resources (as opposed to granting the workpool direct resource access to the BigQuery resources). For example:
+ - `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/<serviceaccountemail>:generateAccessToken`
+
+To avoid errors from incorrect casing or typos, we recommend retrieving these values directly from GCP rather than constructing them manually:
+
+1. In the GCP console, go to **IAM & Admin > Workload Identity Federation**.
+2. Click your workload identity pool, then click the provider you created for this configuration.
+3. Click **Download configuration** at the top of the provider detail page.
+4. Open the downloaded JSON file and copy the following values:
+    - The `audience` field &mdash; paste into the **Workload pool provider path** field in dbt.
+    - The `service_account_impersonation_url` field &mdash; paste into the **Service account impersonation URL** field in dbt.
 
 If you don't already have a job based on the deployment environment with a connection set up for WIF, you should create one now. Once you've configured it with the preferred settings, run the job.
 
