@@ -10,15 +10,19 @@ tags: ['dbt State']
 
 dbt State is natively available in <Constant name="dbt_platform" /> and locally in <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" />. It is also available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
 
+Once enabled, dbt State runs automatically on every `dbt run` or `dbt build`.
+
 Before you begin:
 
 - dbt State supports Snowflake, Databricks, BigQuery, and Redshift.
-- You can connect dbt State to an existing <Constant name="dbt_platform" /> account or use a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state).
+- dbt State requires authentication either through a <Constant name="dbt_platform" /> account, or a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state).
 
 Select the option that matches your setup:
 
 <Tabs>
 <TabItem value="platform" label="dbt platform">
+
+#### Enabling dbt State on your account
 
 **Prerequisite**: You must be an admin in your <Constant name="dbt_platform" /> account.
 
@@ -28,10 +32,10 @@ To enable dbt State:
 2. Under **Settings**, go to **State**.
 3. Click **Start your 30-day free trial**.
 
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For more information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue.
 
       :::info Extended trial for state-aware orchestration users
-      If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended to 90 days when you sign up. If you don't see the extension, contact your account team.
+      If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
       :::
 
 4. Review and agree to the terms of service.
@@ -64,6 +68,38 @@ To enable dbt State on any job &mdash; whether already existing or newly created
 3. Click **Settings** > **Edit**.
 4. In the **Execution settings** section of the job, select **Enable dbt State**.
 5. Click **Save**.
+
+#### Enabling dbt State in Studio
+
+When you enable dbt State in the <Constant name="studio_ide" />, it runs automatically on every `dbt run` or `dbt build` during development &mdash; skipping unchanged models and reusing production results so your runs are _faster_.
+
+You can [turn it on for your development environment](#enabling-dbt-state-on-a-development-environment) so it's the default for everyone, or you can [override that setting just for your own account](#overriding-dbt-state-setting-per-user).
+
+**Prerequisite**: An account admin must [enable dbt State](#enabling-dbt-state-on-your-account) before you can use it.
+
+##### Enabling dbt State on a development environment
+
+Enabling dbt State on your development environment turns it on for everyone using the <Constant name="studio_ide" />, unless they override it for their own account.
+
+1. Go to **Orchestration** > **Environments** and select your development environment.
+2. Click **Settings** > **Edit**.
+3. In the **dbt State** section, select **Enable dbt State**.
+4. Click **Save**. 
+5. In the pop-up box, click **Continue** if you want to go ahead with the changes and restart all IDE sessions for this project.
+
+##### Overriding dbt State setting per user
+
+You can override the development environment's dbt State setting for your own account without affecting other users. Because the user-level setting takes precedence over the environment-level setting, you can turn dbt State on for yourself before enabling it for your whole team, or turn it off when it's enabled at the environment level.
+
+1. Click your account name in the lower-left corner and select **Account settings**.
+2. Under **Your profile**, go to **Credentials**.
+3. Select the project you want to enable dbt State for.
+4. Click **Edit** and go to the **User development settings** section.
+5. Under **dbt State**, select one of the following options:
+   - **Enabled**: Enables dbt State for your user regardless of the development environment setting.
+   - **Disabled**: Disables dbt State for your user regardless of the development environment setting.
+   - **Reset (inherit from development)**: Only appears after you've saved an **Enabled** or **Disabled** override. Clears your override and falls back to the dbt State setting configured on your development environment.
+6. Click **Save**.
 
 </TabItem>
 <TabItem value="fusion" label="dbt Core 1.12 / Fusion">
@@ -122,7 +158,7 @@ To install the plugin:
    pip install dbt-state
    ```
 
-dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
+dbt State is now enabled. The first time you execute `dbt run` or `dbt build`, a browser window opens where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). After authenticating, dbt State runs automatically on every `dbt run` or `dbt build`.
 
 The CLI flags `--manage-state` and `--no-manage-state` are not available in older <Constant name="core" /> versions. Use the environment variable (`DBT_ENGINE_ENABLE_STATE`) or project flag (`enable_state`) to enable or disable dbt State.
 
@@ -176,8 +212,7 @@ DBT_ENGINE_MANAGE_STATE=1 dbt run --target dev --select "customers"
 ## Related docs
 
 - [About dbt State](/docs/deploy/dbt-state-about)
-- [CI/CD setup](/docs/deploy/dbt-state-cicd)
+- [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [Configuring deferral](/docs/deploy/dbt-state-deferral)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
-- [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)

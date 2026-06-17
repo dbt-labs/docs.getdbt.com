@@ -127,6 +127,10 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
+    page: "docs/platform/connect-data-platform/connect-salesforce",
+    firstVersion: "2.0",
+  },
+  {
     page: "docs/platform/connect-data-platform/connect-starburst-trino",
     lastVersion: "1.99",
   },

@@ -20,19 +20,13 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### dbt State <Lifecycle status="preview" />
-
-dbt State makes dbt smarter about what to build &mdash; instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. dbt State is natively available in <Constant name="core" /> v1.12.
-
-To enable dbt State locally, run [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state). It opens a browser window to sign in to your <Constant name="dbt_platform" /> account or create a free one, then automatically writes `manage_state: true` to [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings); enabling dbt State on every `dbt run` or `dbt build` for you. 
-
-To enable dbt State for everyone on your project, add [`manage_state: true`](/reference/global-configs/about-global-configs) to the `flags:` block in `dbt_project.yml` instead. You can also enable or disable dbt State per run using [CLI flags](/reference/global-configs/about-global-configs): `--manage-state` or `--no-manage-state`, or set the `DBT_ENGINE_MANAGE_STATE=1` environment variable. For more information, refer to [About dbt State](/docs/deploy/dbt-state-about) and [Setting up dbt State](/docs/deploy/dbt-state-setup).
-
 ### `dbt login`
 
-`dbt login` signs you in to dbt from the command line to access features that require authentication. It opens a browser prompt to sign in to an existing dbt platform account or create a free one. Run `dbt login` status to check your current authentication status.
+In <Constant name="core" /> v1.12, [`dbt login`](/reference/commands/login) is used exclusively to enable [dbt State](/docs/deploy/dbt-state-about) (a paid feature available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users). `dbt login` opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a [standalone dbt State account](https://app.state.dbt.com). It automatically sets `manage_state: true` in [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings), enabling dbt State on every `dbt run` or `dbt build`.
 
-Use `dbt login` for [dbt State](/reference/commands/login#dbt-login-with-dbt-state) or local development (interactive authentication) on macOS, Linux, or Windows. Refer to [`dbt login`](/reference/commands/login) for more info.
+Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
+
+In the <Constant name="fusion_engine" />, `dbt login` unlocks a broader set of features beyond dbt State, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login).
 
 ### Opt-in v2 parser <Lifecycle status="beta" />
 
@@ -69,7 +63,7 @@ packages:
 
 For versioned models, you can configure dbt to automatically create a pointer view named after a model's base name (for example, `dim_customers`) once the latest version materializes successfully. This lets you query the current version without maintaining a view manually.
 
-Enable this feature in your project with the [`latest_version_pointer_enabled_by_default: true`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models) flag in `dbt_project.yml`, or per model using the [`latest_version_pointer.enabled`](/reference/resource-configs/latest_version_pointer) config. You can customize the pointer name per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro. For more information, refer to [Model versions](/docs/mesh/govern/model-versions#pointing-to-the-latest-version).
+Enable this feature in your project with the [`latest_version_pointer_enabled_by_default: true`](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models) flag in `dbt_project.yml`, or per model using the [`latest_version_pointer.enabled`](/reference/resource-configs/latest_version_pointer) config. You can customize the pointer name per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro. For more information, refer to [Model versions](/docs/mesh/govern/model-versions#pointing-to-the-latest-version).
 
 ### `--sql` flag for `dbt run-operation` <Lifecycle status="beta" />
 
@@ -81,7 +75,7 @@ You can configure whether downstream models run when an upstream model fails usi
 
 ### OSI semantic layer support <Lifecycle status="beta" />
 
-- <Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
+- <Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. To use a different directory, configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml`. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
 - dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
 
 
@@ -139,12 +133,12 @@ Key improvements:
 
 You can read more about each of these behavior changes in the following links:
 
-- (Introduced, disabled by default) [`require_valid_schema_from_generate_schema_name`](/reference/global-configs/behavior-changes#valid-schema-from-generate_schema_name). This flag is set to `false` by default. With this setting, dbt raises the [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value. When set to `true`, dbt enforces stricter validation and raises a parsing error instead of a warning.
-- (Introduced, disabled by default) [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-changes#sql_header-in-data-tests). When set to `true`, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level in your `properties.yml` file. For more information, refer to [Data test configurations](/reference/data-test-configs).
-- (Introduced, disabled by default) [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses). When set to `true`, dbt applies project-level analysis configuration from `dbt_project.yml`. Previously, dbt silently ignored this configuration. This flag also corrects fully qualified names (FQNs) of analyses by removing the extra path segment, making them consistent with other resource types (for example, `your_project.my_analysis` instead of `your_project.analyses.my_analysis`). For more information, refer to [Analyses](/docs/build/analyses).
-- (Introduced, disabled by default) [`require_source_and_semantic_model_names_without_spaces`](/reference/global-configs/behavior-changes#no-spaces-in-source-and-semantic-model-names). By default, dbt raises a [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the flag is set to `true`, dbt raises an error.
-- (Introduced, disabled by default) [`allow_jinja_file_extensions`](/reference/global-configs/behavior-changes#jinja-file-extensions). When set to `True`, dbt recognizes Jinja-style extension suffixes (`.j2`, `.jinja`, `.jinja2`) on `.sql` and `.md` files. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
-- (Introduced, disabled by default) [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models). When set to `true`, dbt automatically creates a latest version pointer view for every versioned model in your project, without requiring per-model configuration.
+- (Introduced, disabled by default) [`require_valid_schema_from_generate_schema_name`](/reference/global-configs/behavior-flag-introduction#valid-schema-from-generate_schema_name). This flag is set to `false` by default. With this setting, dbt raises the [`GenerateSchemaNameNullValueDeprecation`](/reference/deprecations#generateschemanamenullvaluedeprecation) warning when a custom `generate_schema_name` macro returns a `null` value. When set to `true`, dbt enforces stricter validation and raises a parsing error instead of a warning.
+- (Introduced, disabled by default) [`require_sql_header_in_test_configs`](/reference/global-configs/behavior-flag-introduction#sql_header-in-data-tests). When set to `true`, you can set [`sql_header`](/reference/resource-configs/sql_header) in the `config` of a generic data test at the model or column level in your `properties.yml` file. For more information, refer to [Data test configurations](/reference/data-test-configs).
+- (Introduced, disabled by default) [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-flag-introduction#project-level-configuration-for-analyses). When set to `true`, dbt applies project-level analysis configuration from `dbt_project.yml`. Previously, dbt silently ignored this configuration. This flag also corrects fully qualified names (FQNs) of analyses by removing the extra path segment, making them consistent with other resource types (for example, `your_project.my_analysis` instead of `your_project.analyses.my_analysis`). For more information, refer to [Analyses](/docs/build/analyses).
+- (Introduced, disabled by default) [`require_source_and_semantic_model_names_without_spaces`](/reference/global-configs/behavior-flag-introduction#no-spaces-in-source-and-semantic-model-names). By default, dbt raises a [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the flag is set to `true`, dbt raises an error.
+- (Introduced, disabled by default) [`allow_jinja_file_extensions`](/reference/global-configs/behavior-flag-introduction#jinja-file-extensions). When set to `True`, dbt recognizes Jinja-style extension suffixes (`.j2`, `.jinja`, `.jinja2`) on `.sql` and `.md` files. This enables Jinja-aware syntax highlighting in IDEs that associate these suffixes with Jinja templating.
+- (Introduced, disabled by default) [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models). When set to `true`, dbt automatically creates a latest version pointer view for every versioned model in your project, without requiring per-model configuration.
 
 ## Adapter-specific features and functionalities
 
@@ -175,7 +169,7 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
-- Macros invoked with the [`dbt run-operation`](/reference/commands/run-operation) command can now call `ref()` on models with `private` or `protected` [access](/reference/resource-configs/access) without raising a `DbtReferenceError`. Because macros are not part of the group and access control system, dbt doesn't enforce group membership when a macro references a model.
+- Macros invoked with the [`dbt run-operation`](/reference/commands/run-operation) command can now `ref()` models with `private` or `protected` [access](/reference/resource-configs/access) without raising a `DbtReferenceError`. Because macros are not part of the group and access control system, dbt doesn't enforce group membership when a macro called by `run-operation` references a model.
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.
 - <Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
 - `dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path. For more information, refer to [About dbt compile](/reference/commands/compile).
