@@ -2,7 +2,6 @@
   "_meta": {
     "platform": "duckdb",
     "platform_name": "DuckDB",
-    "fetched_at": "2026-05-26T10:20:02.102Z",
     "count": 510
   },
   "functions": [
