@@ -134,16 +134,16 @@ Here are the required and optional fields for the WIF config in your `profiles.y
 | Field | Required | Description |
 |-------|----------|-------------|
 | `method` | Yes | Set to `external-oauth-wif`. |
-| `workload_pool_provider_path` | Yes | Full resource path of the GCP workload identity pool provider that trusts your Entra tenant, for example `//iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. |
+| `workload_pool_provider_path` | Yes | The full resource path of the GCP workload identity pool provider that trusts your Entra tenant (for example, `//iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/my-pool/providers/my-provider`). |
 | `token_endpoint.type` | Yes | The external identity provider type. Only `entra` is currently supported. |
-| `token_endpoint.request_url` | Yes | The Entra OAuth token endpoint, for example `https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token`. |
+| `token_endpoint.request_url` | Yes | The Entra OAuth token endpoint (for example, `https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token`). |
 | `token_endpoint.request_data` | Yes | The URL-encoded request body used to fetch the Entra token (for example `grant_type`, `client_id`, `client_secret`, and `scope`). |
 | `service_account_impersonation_url` | No | The `generateAccessToken` URL of a service account to impersonate after federation, if you want BigQuery access scoped to that service account's permissions. |
 
 </SimpleTable>
 
 #### WIF config example in `profiles.yml`
-The following code snippet is an example of a WIF config in your `profiles.yml`, replacing the values with your own:
+The following code snippet is an example of a WIF config in your `profiles.yml`. Make sure to replace the values with your own:
 
 <File name="profiles.yml">
 
@@ -216,7 +216,7 @@ BigQuery targets can be specified using one of four methods:
 For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
 :::tip Workload Identity Federation
-WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0&name=Fusion#supported-authentication-types). It's not supported in dbt Core v1.12 and earlier.
+WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0&name=Fusion#supported-authentication-types). It's not supported in <Constant name="core" /> v1.12 and earlier.
 :::
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
