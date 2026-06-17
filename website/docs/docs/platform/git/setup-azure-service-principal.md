@@ -34,9 +34,9 @@ The following personas are required to complete the steps on this page:
 
 ## Register a Microsoft Entra ID app
 
-:::note
+:::note Admin consent
 
-It is required to grant tenant-wide admin consent to this app registration (Enterprise Applications → the app → Permissions → Grant admin consent, or via the admin consent workflow), if the tenant is configured to disallow user self-consent.
+If your tenant is configured to disallow user self-consent, an Entra ID admin must grant tenant-wide admin consent for this app after you add the API permissions (Enterprise Applications -> your app -> Permissions -> Grant admin consent).
 
 :::
 
