@@ -66,6 +66,8 @@ The following example displays the current flags and their current default value
 
 Here's an example of the available behavior change flags with their default values:
 
+<VersionBlock lastVersion="1.11">
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -94,6 +96,40 @@ flags:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.12">
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  require_explicit_package_overrides_for_builtin_materializations: true
+  require_resource_names_without_spaces: true
+  source_freshness_run_project_hooks: true
+  skip_nodes_if_on_run_start_fails: true
+  state_modified_compare_more_unrendered_values: true
+  require_yaml_configuration_for_mf_time_spines: true
+  require_batched_execution_for_custom_microbatch_strategy: true
+  require_nested_cumulative_type_params: true
+  validate_macro_args: true
+  require_all_warnings_handled_by_warn_error: true
+  require_generic_test_arguments_property: true
+  require_unique_project_resource_names: false
+  require_ref_searches_node_package_before_root: false
+  require_valid_schema_from_generate_schema_name: false
+  enable_truthy_nulls_equals_macro: false
+  require_sql_header_in_test_configs: false
+  require_corrected_analysis_fqns: false
+  require_source_and_semantic_model_names_without_spaces: false
+  allow_jinja_file_extensions: false
+  latest_version_pointer_enabled_by_default: false
+```
+
+</File>
+
+</VersionBlock>
+
 #### dbt Core behavior changes
 
 This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
@@ -103,14 +139,14 @@ This table outlines which month of the **Latest** release track in <Constant nam
 | [require_explicit_package_overrides_for_builtin_materializations](/reference/global-configs/behavior-flag-maturity#require_explicit_package_overrides_for_builtin_materializations) | 2024.04          | 2024.06             | 1.6.14, 1.7.14  | 1.8.0             | 2.0 |
 | [require_resource_names_without_spaces](/reference/global-configs/behavior-flag-maturity#require_resource_names_without_spaces)                           | 2024.05          | 2025.05                | 1.8.0           | 1.10.0             | 2.0 |
 | [source_freshness_run_project_hooks](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks)                              | 2024.03          | 2025.05                | 1.8.0           | 1.10.0             | 2.0 |
-| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flag-introduction#failures-in-on-run-start-hooks)                                | 2024.10          | -                | 1.9.0           | -              | 2.0 |
-| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flag-introduction#source-definitions-for-statemodified)                   | 2024.10          | -                | 1.9.0           | -              | 2.0 |
-| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flag-introduction#metricflow-time-spine-yaml)                  | 2024.10          | -                | 1.9.0           | -              | 2.0 |
-| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flag-introduction#custom-microbatch-strategy)                  | 2024.11         | -                | 1.9.0           | -              | 2.0 |
-| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flag-introduction#cumulative-metrics)         |   2024.11         | -                 | 1.9.0           | -            | - |
+| [skip_nodes_if_on_run_start_fails](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails)                                | 2024.10          | -                | 1.9.0           | 1.12.0              | 2.0 |
+| [state_modified_compare_more_unrendered_values](/reference/global-configs/behavior-flag-maturity#state_modified_compare_more_unrendered_values)                   | 2024.10          | -                | 1.9.0           | 1.12.0              | 2.0 |
+| [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flag-maturity#require_yaml_configuration_for_mf_time_spines)                  | 2024.10          | -                | 1.9.0           | 1.12.0              | 2.0 |
+| [require_batched_execution_for_custom_microbatch_strategy](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy)                  | 2024.11         | -                | 1.9.0           | 1.12.0              | 2.0 |
+| [require_nested_cumulative_type_params](/reference/global-configs/behavior-flag-maturity#require_nested_cumulative_type_params)         |   2024.11         | -                 | 1.9.0           | 1.12.0            | - |
 | [enable_truthy_nulls_equals_macro](/reference/global-configs/behavior-flag-introduction#null-safe-equality) | 2025.02 | - | 1.9.0 | - | - |
-| [validate_macro_args](/reference/global-configs/behavior-flag-introduction#macro-argument-validation)         | 2025.03           | -                 | 1.10.0          | -            | - |
-| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flag-introduction#warn-error-handler-for-all-warnings)         |   2025.06         | -                 | 1.10.0          | -            | - |
+| [validate_macro_args](/reference/global-configs/behavior-flag-maturity#validate_macro_args)         | 2025.03           | -                 | 1.10.0          | 1.12.0            | - |
+| [require_all_warnings_handled_by_warn_error](/reference/global-configs/behavior-flag-maturity#require_all_warnings_handled_by_warn_error)         |   2025.06         | -                 | 1.10.0          | 1.12.0            | - |
 | [require_generic_test_arguments_property](/reference/global-configs/behavior-flag-maturity#require_generic_test_arguments_property) | 2025.07 | 2025.08 | 1.10.5 | 1.10.8 | - |
 | [require_unique_project_resource_names](/reference/global-configs/behavior-flag-introduction#unique-project-resource-names) | 2025.12 | - | 1.11.0 | - | - |
 | [require_ref_searches_node_package_before_root](/reference/global-configs/behavior-flag-introduction#package-ref-search-order) | 2025.12 | - | 1.11.0 | - | - |

@@ -12,6 +12,8 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 The sections below document flags that have not yet reached maturity (default still `false`). For intro and maturity dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
 
+<VersionBlock lastVersion="1.11">
+
 ### Failures in on-run-start hooks {#failures-in-on-run-start-hooks}
 
 This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails).
@@ -19,6 +21,10 @@ This flag is planned to reach maturity on the <Constant name="dbt_platform" /> *
 The flag is `false` by default.
 
 Set the `skip_nodes_if_on_run_start_fails` flag to `true` to skip all selected resources from running if there is a failure on an `on-run-start` hook.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.11">
 
 ### Source definitions for state:modified {#source-definitions-for-statemodified}
 
@@ -36,11 +42,15 @@ Set `state_modified_compare_more_unrendered_values` to `true` to reduce false po
 
 Setting the flag to `true` changes the `state:modified` comparison from using rendered values to unrendered values instead. It accomplishes this by persisting `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
 
+</VersionBlock>
+
 ### No spaces in source and semantic model names {#no-spaces-in-source-and-semantic-model-names}
 
 The `require_source_and_semantic_model_names_without_spaces` flag is set to `false` by default.
 
 Source names and semantic model names should contain letters, numbers, and underscores &mdash; _not_ spaces. dbt raises the [`ResourceNamesWithSpacesDeprecation`](/reference/deprecations#resourcenameswithspacesdeprecation) warning if it detects a space in a source name or semantic model name. When the `require_source_and_semantic_model_names_without_spaces` flag is set to `true`, dbt raises an error.
+
+<VersionBlock lastVersion="1.11">
 
 ### MetricFlow time spine YAML {#metricflow-time-spine-yaml}
 
@@ -54,6 +64,10 @@ When the flag is set to `true`, dbt will continue to support the SQL file config
 
 The MetricFlow properties YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details.
 
+</VersionBlock>
+
+<VersionBlock lastVersion="1.11">
+
 ### Custom microbatch strategy {#custom-microbatch-strategy}
 
 This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy).
@@ -65,6 +79,10 @@ Set the flag to `true` if you have a custom microbatch macro set up in your proj
 If you have a custom microbatch macro and the flag is left as `false`, dbt will issue a deprecation warning.
 
 Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` to prevent unintended interactions with existing custom incremental strategies. But this is no longer necessary, as setting `DBT_EXPERMINENTAL_MICROBATCH` will no longer have an effect on runtime functionality.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.11">
 
 ### Cumulative metrics {#cumulative-metrics}
 
@@ -109,6 +127,8 @@ Once the metric is updated, it will work as expected:
         window: 7 days
 ```
 
+</VersionBlock>
+
 ### Null-safe equality (equals macro) {#null-safe-equality}
 
 The `enable_truthy_nulls_equals_macro` flag is `false` by default. Setting it to `true` in your `dbt_project.yml` enables null-safe equality in the dbt [equals](/reference/dbt-jinja-functions/cross-database-macros#equals) macro, which is used in incremental and snapshot materializations.
@@ -127,6 +147,8 @@ flags:
 ```
 
 </File>
+
+<VersionBlock lastVersion="1.11">
 
 ### Macro argument validation {#macro-argument-validation}
 
@@ -171,6 +193,10 @@ Macro argument validation runs during project parsing, not during macro executio
 
 </Expandable>
 
+</VersionBlock>
+
+<VersionBlock lastVersion="1.11">
+
 ### Warn-error handler for all warnings {#warn-error-handler-for-all-warnings}
 
 This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#require_all_warnings_handled_by_warn_error).
@@ -201,6 +227,8 @@ We recommend the following rollout plan when setting the `require_all_warnings_h
 5. Enable the flag in your production environment.
 
 </Expandable>
+
+</VersionBlock>
 
 ### Unique project resource names {#unique-project-resource-names}
 

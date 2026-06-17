@@ -21,6 +21,13 @@ The following flags have reached maturity:
 | [`require_resource_names_without_spaces`](#require_resource_names_without_spaces) | 2025.05 | v1.10.0 |
 | [`source_freshness_run_project_hooks`](#source_freshness_run_project_hooks) | 2025.05 | v1.10.0 |
 | [`require_generic_test_arguments_property`](#require_generic_test_arguments_property) | 2025.08 | v1.10.8 |
+| [`skip_nodes_if_on_run_start_fails`](#skip_nodes_if_on_run_start_fails) | - | v1.12.0 |
+| [`state_modified_compare_more_unrendered_values`](#state_modified_compare_more_unrendered_values) | - | v1.12.0 |
+| [`require_yaml_configuration_for_mf_time_spines`](#require_yaml_configuration_for_mf_time_spines) | - | v1.12.0 |
+| [`require_batched_execution_for_custom_microbatch_strategy`](#require_batched_execution_for_custom_microbatch_strategy) | - | v1.12.0 |
+| [`require_nested_cumulative_type_params`](#require_nested_cumulative_type_params) | - | v1.12.0 |
+| [`validate_macro_args`](#validate_macro_args) | - | v1.12.0 |
+| [`require_all_warnings_handled_by_warn_error`](#require_all_warnings_handled_by_warn_error) | - | v1.12.0 |
 
 To opt out of mature flags and preserve the previous behavior, set them explicitly to `false` in your `dbt_project.yml`:
 
@@ -32,6 +39,13 @@ flags:
   require_resource_names_without_spaces: false
   source_freshness_run_project_hooks: false
   require_generic_test_arguments_property: false
+  skip_nodes_if_on_run_start_fails: false
+  state_modified_compare_more_unrendered_values: false
+  require_yaml_configuration_for_mf_time_spines: false
+  require_batched_execution_for_custom_microbatch_strategy: false
+  require_nested_cumulative_type_params: false
+  validate_macro_args: false
+  require_all_warnings_handled_by_warn_error: false
 ```
 
 </File>
@@ -122,6 +136,34 @@ models:
 With this flag enabled, dbt will:
 - Parse any key-value pairs under `arguments` in generic tests as inputs to the generic test macro.
 - Raise a `MissingArgumentsPropertyInGenericTestDeprecation` warning if additional non-config arguments are specified outside of the `arguments` property.
+
+### `skip_nodes_if_on_run_start_fails`
+
+The flag is `true` by default. dbt skips all selected resources from running if there is a failure on an `on-run-start` hook.
+
+### `state_modified_compare_more_unrendered_values`
+
+The flag is `true` by default. dbt uses unrendered values for `state:modified` checks, reducing false positives when configs differ by target environment (for example, `prod` vs. `dev`). It persists `unrendered_config` during model parsing and `unrendered_database` and `unrendered_schema` configs during source parsing.
+
+### `require_yaml_configuration_for_mf_time_spines`
+
+The `require_yaml_configuration_for_mf_time_spines` flag is set to `true` by default. dbt requires MetricFlow time spine configuration to use YAML. Set the flag to `false` to allow legacy SQL file configuration &mdash; dbt raises a deprecation warning if it detects a time spine configured in a SQL config block.
+
+### `require_batched_execution_for_custom_microbatch_strategy`
+
+The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `true` by default. dbt executes custom microbatch strategies in batches. This flag is only relevant if your project has a custom microbatch macro; if it doesn't, dbt handles microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
+
+### `require_nested_cumulative_type_params`
+
+The `require_nested_cumulative_type_params` flag is `true` by default. dbt raises an error if cumulative metrics are improperly nested. To revert to a warning, set `require_nested_cumulative_type_params` to `false`.
+
+### `validate_macro_args`
+
+The `validate_macro_args` flag is set to `true` by default. dbt validates macro argument names and types during project parsing.
+
+### `require_all_warnings_handled_by_warn_error`
+
+The `require_all_warnings_handled_by_warn_error` flag is set to `true` by default. All warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. Projects using `--warn-error` (or `--warn-error-options='{"error":"all"}'`) may see new build failures on warnings that were previously ignored.
 
 ## Flags reaching maturity
 
