@@ -279,7 +279,13 @@ import DeprecationWarnings4 from '/snippets/_deprecation-warnings.md';
 
 Nest custom configs under `meta` and ensure `meta` is nested under `config` (similar to [`PropertyMovedToConfigDeprecation`](#propertymovedtoconfigdeprecation)).
 
-Example that results in the warning: 
+The same resolution applies whether the custom key is in a model config or a generic test definition. Select the relevant tab for an example:
+
+<Tabs>
+
+<TabItem value="model" label="Model config">
+
+Example that results in the warning:
 
 ```yaml
 models:
@@ -307,7 +313,11 @@ models:
             some_key: some_value
 ```
 
-The same resolution applies to generic test definitions. If you define a custom key directly under a test in a `tests:` block, nest it under `config.meta`:
+</TabItem>
+
+<TabItem value="test" label="Generic test definition">
+
+If you define a custom key directly under a test in a `tests:` block, nest it under `config.meta`.
 
 Example that results in the warning:
 
@@ -334,6 +344,10 @@ tests:
             type: timestamp
             description: The active timestamp for the model
 ```
+
+</TabItem>
+
+</Tabs>
 
 To access custom configurations nested under attributes of `meta`, use `config.get('meta')` and then index the meta dictionary by the name of your custom attribute. Users will need to adjust their code that accesses the custom config keys directly as top-level keys.
 
