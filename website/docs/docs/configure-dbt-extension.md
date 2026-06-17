@@ -235,8 +235,6 @@ To configure environment variables in the terminal session:
     </Tabs>
 2. Verify the changes by running a dbt command and checking the output.
 
-
-
 ## dbt extension settings
 <!-- moved content from website/docs/docs/local/install-dbt?version=2.md to here -->
 
@@ -249,9 +247,9 @@ After installing the dbt extension and configuring your local setup, you may wan
 
 ## Check your file associations
 
-The dbt extension only powers <Term id="lsp" /> features &mdash; like autocomplete, go-to-definition, and database-aware IntelliSense &mdash; for files associated with the `sql` language. If your `.sql` files are associated with a different language, the dbt extension can't read them and these features silently stop working.
+The dbt extension powers <Term id="lsp" /> features &mdash; like autocomplete, go-to-definition, and database-aware IntelliSense &mdash; for files associated with the `sql` language. If your `.sql` files are associated with a different language, the dbt extension won't be able to read them and these features silently stop working.
 
-This is easy to miss if you're coming from another extension. For example, the dbt Power User extension associates model and snapshot files with `jinja-sql`, and the Snowflake extension uses `snowflake-sql`. Both override the `sql` association the dbt extension expects, so you get the other extension's IntelliSense (or none at all) instead of the dbt extension's.
+If you're using another extension (like dbt Power User, which associates model and snapshot files with `jinja-sql`, or Snowflake, which uses `snowflake-sql`), it overrides the `sql` association the dbt extension expects. You get that extension's IntelliSense instead of dbt's &mdash; or none at all.
 
 To check your associations, open your VS Code or Cursor `settings.json` and look for a [`files.associations`](https://code.visualstudio.com/docs/languages/identifiers) block. Make sure your dbt files map to `sql`:
 
@@ -263,7 +261,7 @@ To check your associations, open your VS Code or Cursor `settings.json` and look
 }
 ```
 
-If you also run ad hoc queries through another extension (like the Snowflake extension), keep those files in a separate, ideally gitignored, directory and scope the other association to just that path. For example:
+If you also run ad hoc queries through another extension (like the Snowflake extension), you can keep those files in a separate, gitignored directory and scope the other association to just that path. For example:
 
 ```json
 {
@@ -274,7 +272,7 @@ If you also run ad hoc queries through another extension (like the Snowflake ext
 }
 ```
 
-This way the dbt extension handles your dbt files, and the other extension only touches the files you intend it to.
+This way the dbt extension handles your dbt files, and the other extension only touches the files you want it to.
 
 ## Next steps
 Now that you've configured your local environment, you can start using the dbt extension to streamline your dbt development workflows. Check out the following resources to get started:
