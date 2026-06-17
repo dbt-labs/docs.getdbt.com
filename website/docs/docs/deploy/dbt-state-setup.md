@@ -69,11 +69,13 @@ To enable dbt State on any job &mdash; whether already existing or newly created
 4. In the **Execution settings** section of the job, select **Enable dbt State**.
 5. Click **Save**.
 
-#### Enabling dbt State in the Studio IDE
+#### Enabling dbt State in Studio
 
-dbt State can run automatically while you work in your <Constant name="studio_ide" />. You can [turn it on for your development environment](#enabling-dbt-state-on-a-development-environment) so it's the default for everyone, or you can [override that setting just for your own account](#overriding-dbt-state-setting-per-user).
+When you enable dbt State in the <Constant name="studio_ide" />, it runs automatically on every `dbt run` or `dbt build` during development &mdash; skipping unchanged models and reusing production results so your runs are _faster_.
 
-**Prerequisite**: dbt State must be [enabled on your account](#enabling-dbt-state-on-your-account).
+You can [turn it on for your development environment](#enabling-dbt-state-on-a-development-environment) so it's the default for everyone, or you can [override that setting just for your own account](#overriding-dbt-state-setting-per-user).
+
+**Prerequisite**: An account admin must [enable dbt State](#enabling-dbt-state-on-your-account) before you can use it.
 
 ##### Enabling dbt State on a development environment
 
@@ -82,7 +84,8 @@ Enabling dbt State on your development environment turns it on for everyone usin
 1. Go to **Orchestration** > **Environments** and select your development environment.
 2. Click **Settings** > **Edit**.
 3. In the **dbt State** section, select **Enable dbt State**.
-4. Click **Save**.
+4. Click **Save**. 
+5. In the pop-up box, click **Continue** if you want to go ahead with the changes and restart all IDE sessions for this project.
 
 ##### Overriding dbt State setting per user
 
