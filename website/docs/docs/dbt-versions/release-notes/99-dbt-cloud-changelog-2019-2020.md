@@ -9,7 +9,7 @@ tags: [v1.1.16, v1.1.15, v1.1.14, v1.1.13, v1.1.12, v1.1.11, v1.1.10, v1.1.09, v
 
 :::note
 
-This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your dbt Cloud environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+This changelog references dbt versions that are no longer supported and have been removed from the docs. For more information about upgrading to a supported version of dbt in your dbt Cloud environment, read [Upgrade dbt version in Cloud](/docs/dbt-versions/upgrade-dbt-platform-version).
 
 :::
 
@@ -224,7 +224,7 @@ This release includes security enhancements and improvements across the entire
 <Constant name="dbt" /> application.
 
 #### Enhancements
-- Support for viewing development docs inside of the <Constant name="studio_ide" /> ([docs](/docs/cloud/studio-ide/develop-in-studio)
+- Support for viewing development docs inside of the <Constant name="studio_ide" /> ([docs](/docs/platform/studio-ide/develop-in-studio)
 - Change CI temporary schema names to be prefixed with `dbt_cloud` instead of `sinter`
 - Change coloring and iconography to improve accessibility and UX across the application
 - [Enterprise] Support the specification of multiple authorized domains in SSO configuration

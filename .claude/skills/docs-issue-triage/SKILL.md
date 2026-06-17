@@ -12,15 +12,27 @@ This skill reads open GitHub issues in `dbt-labs/docs.getdbt.com`, scores them b
 
 ## Step 1: Fetch open issues
 
-Use the `list_issues` tool to fetch open issues from `dbt-labs/docs.getdbt.com`. Fetch up to 100 at a time. For each issue, collect:
-- Issue number and title
+Use the `list_issues` tool to fetch open issues from `dbt-labs/docs.getdbt.com`. Supported options:
+
+- **Limit by count**: Use `perPage` to fetch a specific number (e.g. 10, 50, 100 max per request)
+- **Sort order**: Use `orderBy: CREATED_AT` + `direction: ASC` for oldest-first, `DESC` for newest-first
+- **Pagination**: Use the `endCursor` from `pageInfo` to fetch the next page
+
+For each issue, collect:
+- Issue number, title, and URL
 - Body / description
-- Existing labels
+- Existing labels (full list — needed for safe label merging in Step 4)
 - Comment count
 - Created date
 - Updated date
 
-Skip issues that already have both a `priority:` label AND a `size:` label — they've already been triaged.
+**Skip** issues that already have both a `priority:` label AND a `size:` label — they've already been triaged. Track partially-labeled issues (priority but no size, or vice versa) separately — see Edge Cases.
+
+Before proceeding to Step 4, verify that all triage labels exist in the repo by checking the known label set:
+- `priority: high`, `priority: medium`, `priority: low`
+- `size: x-small`, `size: small`, `size: medium`, `size: large`, `size: x-large`
+
+If any label is missing from the repo, note it to the user before applying — do not create labels automatically.
 
 ---
 
@@ -72,7 +84,7 @@ Format:
 ### 🔴 Priority: High
 | # | Title | Suggested Size | Confidence | Notes |
 |---|---|---|---|---|
-| #123 | Broken link in quickstart | x-small | High | 404 detected in title |
+| [#123](url) | Broken link in quickstart | x-small | High | 404 detected in title |
 ...
 
 ### 🟡 Priority: Medium
@@ -80,9 +92,17 @@ Format:
 
 ### 🟢 Priority: Low
 ...
+
+### ⚠️ Partially Labeled (needs one dimension only)
+| # | Title | Has | Needs | Suggested | Confidence | Notes |
+|---|---|---|---|---|---|---|
+| [#456](url) | Some issue | `size: small` | priority | `priority: medium` | High | Support ticket origin |
+...
 ```
 
-Include a **Confidence** column (High / Medium / Low) to flag issues where the scoring is uncertain and human review is recommended before applying labels.
+- Link each issue number to its GitHub URL (e.g. `[#123](https://github.com/dbt-labs/docs.getdbt.com/issues/123)`)
+- Include a **Confidence** column (High / Medium / Low) to flag issues where the scoring is uncertain and human review is recommended before applying labels
+- List partially-labeled issues in their own section so they're clearly distinguished
 
 At the end of the table, ask:
 > "Would you like me to apply these labels to GitHub? I can apply all of them, only the high-confidence ones, or you can tell me which specific issues to label."
@@ -93,20 +113,20 @@ At the end of the table, ask:
 
 Never apply labels without explicit user confirmation. Once confirmed:
 
-1. For each confirmed issue, use `issue_write` with `method: update` to apply the priority and size labels.
-2. Only apply the two triage labels — do not remove or change any existing labels.
-3. Report back with a summary of what was applied and flag any failures.
+1. For each confirmed issue, construct the full label list by **merging** the new triage labels into the issue's existing labels. Never pass only the new labels — this would strip all existing labels.
+   - Example: existing labels `["content", "improvement", "paper cut"]` + new labels `["priority: medium", "size: small"]` → pass `["content", "improvement", "paper cut", "priority: medium", "size: small"]`
+2. Use `issue_write` with `method: update` and the merged label list.
+3. For partially-labeled issues, only add the missing dimension — preserve the existing triage label.
+4. Report back with a summary of what was applied and flag any failures.
 
 **Label names must exactly match:**
 - `priority: high`, `priority: medium`, `priority: low`
 - `size: x-small`, `size: small`, `size: medium`, `size: large`, `size: x-large`
 
-If a label doesn't exist in the repo yet, note it to the user — do not create labels automatically.
-
 ---
 
 ## Edge cases
 
-- **Already partially labeled** (has priority but not size, or vice versa): Score the missing dimension only and flag it.
+- **Already partially labeled** (has priority but not size, or vice versa): Score the missing dimension only, show in the dedicated partially-labeled section, and only apply the missing label.
 - **Ambiguous issues**: If the issue is too vague to score confidently, assign a Low confidence rating and suggest the user review before applying.
 - **Large batch**: If there are more than 50 un-triaged issues, offer to triage in batches by priority tier or by date range.

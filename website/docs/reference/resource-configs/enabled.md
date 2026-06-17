@@ -234,7 +234,7 @@ analyses:
 
 </File>
 
-To configure analyses at the project level, set the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-changes#project-level-configuration-for-analyses) flag to `true` in your `dbt_project.yml`.
+To configure analyses at the project level, set the [`require_corrected_analysis_fqns`](/reference/global-configs/behavior-flag-introduction#project-level-configuration-for-analyses) flag to `true` in your `dbt_project.yml`.
 
 <File name='dbt_project.yml'>
 

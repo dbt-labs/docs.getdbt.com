@@ -4,6 +4,7 @@ sidebar_label: "Navigating the interface"
 description: "Learn how to navigate the state-aware orchestration interface for better visibility into model builds and cost tracking." 
 id: "state-aware-interface"
 tags: ['scheduler','SAO', 'cost savings', 'models built']
+unlisted: true
 ---
 
 <IntroText>
@@ -11,6 +12,10 @@ tags: ['scheduler','SAO', 'cost savings', 'models built']
 Learn how to navigate the state-aware orchestration interface for better visibility into model builds and cost tracking.
 
 </IntroText>
+
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 ## Models built and reused chart
 
@@ -22,7 +27,7 @@ When you go to your **Account home**, you'll see a chart showing the number of m
 You can also view the number of reused models per project in the **Accounts home** page.
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/account-home-chart.png" width="90%" title="Models built and reused chart in Account home"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/account-home-chart.png" width="90%" title="Models built and reused chart in Account home"/>
 <Lightbox src="/img/docs/deploy/sao-model-reuse.png" width="90%" title="View reused models count per project in the Accounts home page"/>
 </DocCarousel>
 
@@ -34,19 +39,19 @@ Under the **Runs** tab:
 - **Recent runs**
 - **Total run duration time** 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/sao-runs-chart.png" width="90%" title="Charts for Recent runs and Total run duration time"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-runs-chart.png" width="90%" title="Charts for Recent runs and Total run duration time"/>
 
 Under the **Models** tab:
 - **Models built** 
 - **Models reused**
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/sao-models-chart.png" width="90%" title="Charts for Models built and Models reused"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-models-chart.png" width="90%" title="Charts for Models built and Models reused"/>
 
 ## Logs view of built models
 
 When running a job, a structured logs view shows which models were built, skipped, or reused. 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/sao-logs-view.png" title="Logs view of built models"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-logs-view.png" title="Logs view of built models"/>
 
 1. Each model has an icon indicating its status.
 2. The **Reused** tab indicates the total number of reused models.
@@ -59,7 +64,7 @@ Lineage lenses are interactive visual filters in [dbt <Constant name="catalog" /
 
 The **Latest status** lens shows the status from the latest execution of the resource in the current environment. When you use this lens to view your lineage, models that were reused from state-aware orchestration are tagged with **Reused**. 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/sao-latest-status-lens.png" width="90%" title="Latest status lens showing reused models"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-latest-status-lens.png" width="90%" title="Latest status lens showing reused models"/>
 
 To view your lineage with the **Latest status** lens:
 
@@ -77,5 +82,11 @@ State-aware orchestration uses a cached hash of both code and data state for eac
 - The **Clear cache** button is only available if you have enabled state-aware orchestration.
 
 - After clearing the cache, the next run rebuilds every model from scratch. Subsequent runs rely on the regenerated cache.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/sao-clear-cache.png" width="90%" title="Clear cache button"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/sao-clear-cache.png" width="90%" title="Clear cache button"/>
 
+## Related docs
+
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)

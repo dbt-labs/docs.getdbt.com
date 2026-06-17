@@ -1,15 +1,8 @@
-<VersionBlock lastVersion="1.11">
 :::info Availability
-The latest YAML spec is available in the <Constant name="dbt_platform" /> **Latest** release track and the <Constant name="fusion_engine" />. Support in <Constant name="core" /> is planned for v1.12.
+The latest YAML spec is supported in the following environments:
 
-For more information about availability, reach out to your account manager or post in the [#dbt-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
+- **<Constant name="dbt_platform" /> (Latest release track)**
+- **<Constant name="fusion_engine" />** 
+- **<Constant name="core" /> v1.12**
+
 :::
-</VersionBlock>
-
-<VersionBlock firstVersion="1.12">
-:::info Availability
-The latest YAML spec is available in the <Constant name="dbt_platform" /> **Latest** release track and the <Constant name="fusion_engine" />. Support in <Constant name="core" /> is available starting in v1.12.
-
-For more information about availability, reach out to your account manager or post in the [#dbt-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
-:::
-</VersionBlock>
