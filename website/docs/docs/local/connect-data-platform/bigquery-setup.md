@@ -134,9 +134,9 @@ Here are the required and optional fields for the WIF config in your `profiles.y
 | Field | Required | Description |
 |-------|----------|-------------|
 | `method` | Yes | Set to `external-oauth-wif`. |
-| `workload_pool_provider_path` | Yes | The full resource path of the GCP workload identity pool provider that trusts your Entra tenant (for example, `//iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/my-pool/providers/my-provider`). |
+| `workload_pool_provider_path` | Yes | The full resource path of the GCP workload identity pool provider that trusts your Entra tenant. |
 | `token_endpoint.type` | Yes | The external identity provider type. Only `entra` is currently supported. |
-| `token_endpoint.request_url` | Yes | The Entra OAuth token endpoint (for example, `https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token`). |
+| `token_endpoint.request_url` | Yes | The Entra OAuth token endpoint. |
 | `token_endpoint.request_data` | Yes | The URL-encoded request body used to fetch the Entra token (for example `grant_type`, `client_id`, `client_secret`, and `scope`). |
 | `service_account_impersonation_url` | No | The `generateAccessToken` URL of a service account to impersonate after federation, if you want BigQuery access scoped to that service account's permissions. |
 
