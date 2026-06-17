@@ -249,7 +249,7 @@ After installing the dbt extension and configuring your local setup, you may wan
 
 The dbt extension powers <Term id="lsp" /> features &mdash; like autocomplete, go-to-definition, and database-aware IntelliSense &mdash; for files associated with the `sql` language. If your `.sql` files are associated with a different language, the dbt extension won't be able to read them and these features silently stop working.
 
-If you're using another extension (like dbt Power User, which associates model and snapshot files with `jinja-sql`, or Snowflake, which uses `snowflake-sql`), it overrides the `sql` association the dbt extension expects. You get that extension's IntelliSense instead of dbt's &mdash; or none at all.
+If you're using another extension (like Snowflake, which uses `snowflake-sql`), it overrides the `sql` association the dbt extension expects. You get that extension's IntelliSense instead of dbt's &mdash; or none at all.
 
 To check your associations, open your VS Code or Cursor `settings.json` and look for a [`files.associations`](https://code.visualstudio.com/docs/languages/identifiers) block. Make sure your dbt files map to `sql`:
 
