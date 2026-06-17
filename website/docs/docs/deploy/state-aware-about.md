@@ -3,6 +3,7 @@ title: "About state-aware orchestration"
 description: "Learn about how state-aware orchestration automatically determines which models to build by detecting changes in code or data every time a job runs." 
 id: "state-aware-about"
 tags: ['scheduler','SAO']
+unlisted: true
 ---
 
 # About state-aware orchestration <Lifecycle status="private_preview,managed,managed_plus" />
@@ -14,16 +15,20 @@ Every time a job runs, state-aware orchestration automatically determines which 
 </IntroText>
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md';
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
 
 <FusionLifecycle />
 
 State-aware orchestration saves you compute costs and reduces runtime because when a job runs, it checks for new records and only builds the models that will change.
 
+
 <Lightbox src="/img/docs/deploy/sao.gif" title="Fusion powered state-aware orchestration" />
 
-We built <Constant name="cloud" />'s state-aware orchestration on these four core principles:
+We built <Constant name="dbt" />'s state-aware orchestration on these four core principles:
 
-- **Real-time shared state:** All jobs write to a real-time shared model-level state, allowing <Constant name="cloud" /> to rebuild only changed models regardless of which jobs the model is built in.
+- **Real-time shared state:** All jobs write to a real-time shared model-level state, allowing <Constant name="dbt" /> to rebuild only changed models regardless of which jobs the model is built in.
 - **Model-level queueing:** Jobs queue up at the model-level so you can avoid any 'collisions' and prevent rebuilding models that were just updated by another job.
 - **State-aware and state agnostic support:** You can build jobs dynamically (state-aware) or explicitly (state-agnostic). Both approaches update shared state so everything is kept in sync.
 - **Sensible defaults:** State-aware orchestration works out-of-the-box (natively), with an optional configuration setting for more advanced controls. For more information, refer to [state-aware advanced configurations](/docs/deploy/state-aware-setup#advanced-configurations).
@@ -34,11 +39,11 @@ State-aware orchestration does not depend on [static analysis](/docs/fusion/new-
 
 ## Optimizing builds with state-aware orchestration
 
-State-aware orchestration uses shared state tracking to determine which models need to be built by detecting changes in code or data every time a job runs. It also supports custom refresh intervals and custom source freshness configurations, so <Constant name="cloud" /> only rebuilds models when they're actually needed.
+State-aware orchestration uses shared state tracking to determine which models need to be built by detecting changes in code or data every time a job runs. It also supports custom refresh intervals and custom source freshness configurations, so <Constant name="dbt" /> only rebuilds models when they're actually needed.
 
-For example, you can configure your project so that <Constant name="cloud" /> skips rebuilding the `dim_wizards` model (and its parents) if they’ve already been refreshed within the last 4 hours, even if the job itself runs more frequently.
+For example, you can configure your project so that <Constant name="dbt" /> skips rebuilding the `dim_wizards` model (and its parents) if they’ve already been refreshed within the last 4 hours, even if the job itself runs more frequently.
 
-Without configuring anything, <Constant name="cloud" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
+Without configuring anything, <Constant name="dbt" />'s state-aware orchestration automatically knows to build your models either when the code has changed or if there’s any new data in a source (or upstream model in the case of [dbt Mesh](/docs/mesh/about-mesh)).
 
 **Note:** When a model fails a [data test](/docs/build/data-tests), state-aware orchestration rebuilds it on subsequent runs instead of reusing it from prior state. This ensures dbt reevaluates models with unresolved data quality issues.
 
@@ -165,6 +170,7 @@ The following section lists some considerations when using Efficient testing in 
 
 ## Related FAQs
 
+<FAQ path="Runs/what-happened-to-sao" />
 <FAQ path="Runs/sao-difference-core" />
 
 ## Related docs
@@ -173,3 +179,7 @@ The following section lists some considerations when using Efficient testing in 
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [`freshness`](/reference/resource-configs/freshness)
+- [About dbt State](/docs/deploy/dbt-state-about)
+- [Set up dbt State](/docs/deploy/dbt-state-setup)
+- [dbt State configs](/reference/resource-configs/dbt-state-configs)
+- [Migrate to dbt State](/docs/deploy/dbt-state-migration)

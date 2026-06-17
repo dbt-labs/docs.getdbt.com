@@ -130,7 +130,23 @@ You can find more details on the available properties for sources in the [refere
 <FAQ path="Runs/running-models-downstream-of-source" />
 
 ## Source data freshness
-With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
+With a couple of extra configs, dbt can optionally capture the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining Service Level Agreements (SLAs) for your warehouse.
+
+### Fusion and dbt State
+
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
+
+<SaoDeprecated />
+
+If you're using the <Constant name="fusion_engine" /> with [state-aware orchestration](/docs/deploy/state-aware-about), dbt automatically tracks source freshness using warehouse metadata. You don't need to configure `warn_after` or `error_after` for dbt to detect when source data changes.
+
+If you're using [dbt State](/docs/deploy/dbt-state-about), use [`lag_tolerance`](/reference/resource-configs/lag-tolerance) to control how frequently models rebuild based on upstream data changes. You can also configure `loaded_at_field` or `loaded_at_query` on your source for more accurate freshness detection (for example, for streaming data or late-arriving records).
+
+However, you should still configure source freshness if you want to:
+- Receive SLA alerts when sources don't update within expected timeframes.
+- Define custom freshness logic using `loaded_at_field` or `loaded_at_query` (for example, for streaming data or partial loads).
+- Track freshness for source views. Fusion treats views as "always fresh" since it can't determine freshness from view metadata.
+
 
 ### Declaring source freshness
 To configure source freshness information, add a `freshness` block to your source and `loaded_at_field` to your table declaration:

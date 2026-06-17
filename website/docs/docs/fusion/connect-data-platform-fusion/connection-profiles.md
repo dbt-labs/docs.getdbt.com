@@ -10,4 +10,4 @@ import ConnectionProfiles from '/snippets/_connection-profiles.md';
 
 ## Related docs
 
-- [About `profiles.yml`](/docs/fusion/connect-data-platform-fusion/profiles.yml)
+- [About `profiles.yml`](/docs/local/profiles.yml)

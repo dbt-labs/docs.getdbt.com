@@ -35,7 +35,7 @@ To select the appropriate size of your SQL warehouse, consider the use case and 
 
 ### Provision warehouses by workload
 
-Another technique worth implementing is to provision separate SQL warehouses for building dbt pipelines instead of ad hoc, interactive SQL analysis. This is because the query design patterns and compute usage are different for these two types of workloads. Choose T-shirt sizes based on data volumes and SLAs (scale-up principle), and choose auto-scaling based on concurrency requirements (scale-out principle). For larger deployments, this approach could be expanded to map different workload sizes to multiple “pipeline” warehouses, if needed. On the dbt side, take into account the [number of threads you have](/docs/core/connect-data-platform/connection-profiles#understanding-threads), meaning how many dbt models you can run in parallel. The higher the thread count, the more compute you will require.
+Another technique worth implementing is to provision separate SQL warehouses for building dbt pipelines instead of ad hoc, interactive SQL analysis. This is because the query design patterns and compute usage are different for these two types of workloads. Choose T-shirt sizes based on data volumes and SLAs (scale-up principle), and choose auto-scaling based on concurrency requirements (scale-out principle). For larger deployments, this approach could be expanded to map different workload sizes to multiple “pipeline” warehouses, if needed. On the dbt side, take into account the [number of threads you have](/docs/local/profiles.yml#understanding-threads), meaning how many dbt models you can run in parallel. The higher the thread count, the more compute you will require.
 
 ### Configure auto-stop
 
@@ -170,11 +170,11 @@ Databricks is committed to continuously improving its performance. For example, 
 
 ### dbt Discovery API
 
-Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, <Constant name="cloud" /> generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-cloud-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. <Constant name="cloud" /> users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
+Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, <Constant name="dbt" /> generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. <Constant name="dbt" /> users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
 
 ### dbt Admin API
 
-With the [<Constant name="cloud" /> Admin API](/docs/dbt-cloud-apis/admin-cloud-api), you can  pull the dbt artifacts from your <Constant name="cloud" /> run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
+With the [<Constant name="dbt" /> Admin API](/docs/dbt-apis/admin-api), you can  pull the dbt artifacts from your <Constant name="dbt" /> run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
 
 ### Conclusion
 

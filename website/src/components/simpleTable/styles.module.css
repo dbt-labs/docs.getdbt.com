@@ -1,0 +1,28 @@
+.simpleTableWrapper {
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.simpleTableWrapper table {
+  width: auto;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.simpleTableWrapper table th,
+.simpleTableWrapper table td {
+  border: 1px solid var(--ifm-table-border-color);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.simpleTableWrapper table th {
+  background-color: var(--ifm-table-head-background);
+  font-weight: bold;
+}
+
+.simpleTableWrapper table tbody tr:nth-child(even) {
+  background-color: var(--ifm-table-stripe-background);
+}

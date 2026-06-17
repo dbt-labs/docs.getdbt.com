@@ -10,26 +10,26 @@ recently_updated: true
 
 ## Introduction
 
-As a data analyst, you play a key role in transforming complex data into trusted, actionable insights for your team. With <Constant name="cloud" />, you can use built-in, AI-powered tools to build governed data models, explore how they’re built, and even run your own analysis.
+As a data analyst, you play a key role in transforming complex data into trusted, actionable insights for your team. With <Constant name="dbt" />, you can use built-in, AI-powered tools to build governed data models, explore how they’re built, and even run your own analysis.
 
 In this quickstart, you’ll learn how to:
 
-* Use <Constant name="explorer" /> to browse and understand data models across both dbt and Snowflake data assets
-* Use <Constant name="query_page" /> to run queries for exploring and validating your data
-* Use <Constant name="visual_editor" /> to visually build your own data models
-* Build confidence using <Constant name="cloud" /> as your workspace enhanced with AI
+* Use <Constant name="catalog" /> to browse and understand data models across both dbt and Snowflake data assets
+* Use <Constant name="insights" /> to run queries for exploring and validating your data
+* Use <Constant name="canvas" /> to visually build your own data models
+* Build confidence using <Constant name="dbt" /> as your workspace enhanced with AI
 
 Here's more about the tools you will use on your journey:
-* <Constant name="explorer" />: View your project's resources (such as models, tests, and metrics), their lineage, and query patterns to gain a better understanding of its latest production state.
-* <Constant name="query_page" />: Explore, validate, and query data with an intuitive, context-rich interface that bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities.
-* <Constant name="visual_editor" />: Quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation.
+* <Constant name="catalog" />: View your project's resources (such as models, tests, and metrics), their lineage, and query patterns to gain a better understanding of its latest production state.
+* <Constant name="insights" />: Explore, validate, and query data with an intuitive, context-rich interface that bridges technical and business users by combining metadata, documentation, AI-assisted tools, and powerful querying capabilities.
+* <Constant name="canvas" />: Quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation.
 
 
 ## Prerequisites
 
 Before you begin, make sure:
 
-* You have access to and credentials configured for a <Constant name="cloud" /> project
+* You have access to and credentials configured for a <Constant name="dbt" /> project
 * Your team has already run a successful dbt job, so models are built and ready
 * You have a a git provider connected and authenticated
 
@@ -43,7 +43,7 @@ Kimiko wonders, "How do I find data in our project that will help me answer thei
 
 ### Explore a stakeholder question
 
-She navigates to the data catalog, <Constant name="explorer" />, by signing into <Constant name="cloud" /> and clicking <Constant name="explorer" /> in the left panel. Because the question was about customers, Kimiko begins by searching for "customers" in <Constant name="explorer" />:
+She navigates to the data catalog, <Constant name="catalog" />, by signing into <Constant name="dbt" /> and clicking <Constant name="catalog" /> in the left panel. Because the question was about customers, Kimiko begins by searching for "customers" in <Constant name="catalog" />:
 
 <Lightbox src="/img/guides/analyst-qs/catalog-search.png" width="90%" title="Catalog search for customers" />
 
@@ -61,17 +61,23 @@ But first, she decides to interact with the data to learn more.
 
 ### Query data in Insights
 
-From the **Customer model page** in <Constant name="explorer" />, Kimiko selects **Analyze data** from the **Open in...** dropdown. This enables her to query data for the Customer model. Once opened, <Constant name="query_page" /> contains a query poised and ready to run.
+From the **Customer model page** in <Constant name="catalog" />, Kimiko selects **Analyze data** from the **Open in...** dropdown. This enables her to query data for the Customer model. Once opened, <Constant name="insights" /> contains a query poised and ready to run.
 
-<Lightbox src="/img/guides/analyst-qs/query.png" width="90%" title="Open query" />
+<DocCarousel slidesPerView={1}>
 
-When Kimiko runs the query, she can look at the data underyling it. The same context she saw in <Constant name="explorer" /> she now sees in her SQL editing experience.
+<Lightbox src="/img/guides/analyst-qs/catalog-analyze-data.png" width="50%" title="Select Analyze data from Catalog" />
 
-As she looks through the data, she sees information about each customer. She also notices the `first_ordered_at` column. Kimiko wants to code the query but her SQL is a little rusty so she uses natural language in dbt Copilot:
+<Lightbox src="/img/guides/analyst-qs/query.png" width="90%" title="Open query in Insights" />
+
+</DocCarousel>
+
+When Kimiko runs the query, she can look at the data underyling it. The same context she saw in <Constant name="catalog" /> she now sees in her SQL editing experience.
+
+As she looks through the data, she sees information about each customer. She also notices the `first_ordered_at` column. Kimiko wants to code the query but her SQL is a little rusty so she uses natural language in dbt Wizard:
 
 *How many new customers did we get in each month last year? I'd like to use my customer model and the first ordered at field to do this analysis.*
 
-dbt Copilot writes SQL that Kimiko decides to use: 
+dbt Wizard writes SQL that Kimiko decides to use: 
 
 ```sql
 select 
@@ -85,7 +91,7 @@ group by 1
 order by 1;
 ```
 
-Kimiko clicks **Replace** to move all of the SQL into her editor and replaces the original query. She runs the new query and reviews the data but decides to limit the dates using Copilot once again:
+Kimiko clicks **Replace** to move all of the SQL into her editor and replaces the original query. She runs the new query and reviews the data but decides to limit the dates using dbt Wizard once again:
 
 *Can we limit the dates to 2024?*
 
@@ -117,9 +123,9 @@ She often comes back to this data so Kimiko decides to bookmark the page by clic
 
 ### Visualize results
 
-Kimiko has a few conversations with teammates and she finds out they're running pretty similar one-off queries, so she decides to take her long running query that she previously bookmarked and turn it into a full-fledged dbt model using <Constant name="visual_editor" />. She does this so she can share it with others, which de-duplicates work and helps her team become more efficient. 
+Kimiko has a few conversations with teammates and she finds out they're running pretty similar one-off queries, so she decides to take her long running query that she previously bookmarked and turn it into a full-fledged dbt model using <Constant name="canvas" />. She does this so she can share it with others, which de-duplicates work and helps her team become more efficient. 
 
-To do this, she opens the query in <Constant name="query_page" /> and clicks **Develop** then ***Develop in** <Constant name="visual_editor" />. This opens the SQL query in a visual form, represented in a DAG.
+To do this, she opens the query in <Constant name="insights" /> and clicks **Develop** then ***Develop in** <Constant name="canvas" />. This opens the SQL query in a visual form, represented in a DAG.
 
 <!-- ![ADD IMAGE Canvas-overview](/img/analyst-walkthrough/canvas-overview.png) -->
 
@@ -131,7 +137,7 @@ Now Kimiko's entire team, those who have the same access as her, can run this mo
 
 ### The query becomes a model
 
-Going forward, Kimiko is able to return to her project in <Constant name="explorer" /> and run the model to get the most current results. From here, she can:
+Going forward, Kimiko is able to return to her project in <Constant name="catalog" /> and run the model to get the most current results. From here, she can:
 
 * Manually run the model, which also runs tests and is versioned so Kimiko can track changes over time
 * Trigger a scheduled job to run the dbt model, like every Monday for her stakeholder report

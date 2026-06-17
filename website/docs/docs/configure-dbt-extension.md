@@ -5,6 +5,8 @@ id: "configure-dbt-extension"
 description: "Optimize your VS Code extension environment (files, env vars, connectivity)."
 ---
 
+import EnvFileConsiderations from '/snippets/_env-file-considerations.md';
+
 Whether you currently use <Constant name="dbt_platform" /> or self-host with <Constant name="fusion" />, or you’re a <Constant name="core" /> user upgrading to <Constant name="fusion" />, follow the instructions on this page to:
 
 <!-- no toc -->
@@ -23,26 +25,26 @@ The steps differ slightly depending on whether you use <Constant name="dbt_platf
 
 - <Constant name="fusion_engine" /> installed
 - Downloaded and installed the dbt VS Code extension
-- Basic understanding of [Git workflows](/docs/cloud/git/version-control-basics) and [dbt project structure](/best-practices/how-we-structure/1-guide-overview)
-- [Developer or analyst license](https://www.getdbt.com/pricing) if you're using <Constant name="dbt_platform" />
+- Basic understanding of [Git workflows](/docs/platform/git/version-control-basics) and [dbt project structure](/best-practices/how-we-structure/1-guide-overview)
+- [Developer or analyst license](https://www.getdbt.com/pricing)\* if you're using <Constant name="dbt_platform" />. Note, the [Analyst license type](/docs/platform/manage-access/about-user-access?version=1.12#licenses) is not available for new purchase.
 
 ## Prepare your local setup 
 
 In this section, we'll walk you through the steps to prepare your local setup for the dbt VS Code extension. If you're a <Constant name="dbt_platform" /> user that installed the VS Code extension, follow these steps. If you're a self-hosted user, you most likely already have a local setup and environment variables but can confirm using these steps.
 
 1. [Clone](https://code.visualstudio.com/docs/sourcecontrol/overview#_cloning-a-repository) your dbt project repository from your Git provider to your local machine. If you use <Constant name="dbt_platform" />, clone the same repo connected to your project.
-2. Ensure you have a dbt [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml). This file defines your data warehouse connection. If you don't have one, run `dbt init` in the terminal to configure your adapter. 
+2. Ensure you have a dbt [`profiles.yml` file](/docs/local/profiles.yml). This file defines your data warehouse connection. If you don't have one, run `dbt init` in the terminal to configure your adapter. 
 3. Validate your `profiles.yml` and project configuration by running `dbt debug`.
 4. Add a `dbt_cloud.yml` file from the <Constant name="dbt_platform" /> Account settings:
    - Navigate to **Your profile** -> **VS Code Extension** -> **Download credentials**.
-   - Download the `dbt_cloud.yml` file with your [**Personal access Token (PAT)**](/docs/dbt-cloud-apis/user-tokens) included and place it in the `~/.dbt/` directory. This then registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
-   - Check the `project_id` in your `dbt_project.yml` file matching the project you're working on.
+   - Place the downloaded file in your `~/.dbt/` directory. This registers and connects the extension to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral. Refer to [`dbt_cloud.yml`](/reference/dbt_cloud.yml) for the file's structure and required fields.
+   - Check the `project-id` in your [`dbt_project.yml` `dbt-cloud` block](/reference/dbt_cloud.yml#the-dbt-cloud-block-in-dbt_projectyml) matches the project you're working on.
 5. Confirm connection from your workstation (like running `dbt debug` in the terminal). Your local computer connects directly to your data warehouse and Git.  
    - <Constant name="dbt_platform" /> users: Ensure your laptop/VPN is allowed; <Constant name="dbt_platform" /> IPs no longer apply. Check with your admin if you have any issues.
    - <Constant name="core" /> users: This has likely already been configured.
 6. (Optional) If your project uses environment variables, [find them](/docs/build/environment-variables#setting-and-overriding-environment-variables) in the <Constant name="dbt_platform" /> and [set them](#set-environment-variables-locally) in VS Code or Cursor.
    - <Constant name="dbt_platform" /> users: Copy any environment variables from **Deploy → Environments → Environment variables** tab in <Constant name="dbt_platform" />.  Masked secrets are hidden.  Work with your admin to get those values.  
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
+    <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/navigate-to-env-vars.png" title="Environment variables tab"/>
 
 ## Set environment variables locally
 
@@ -125,14 +127,9 @@ The following steps will explain how to configure environment variables using Po
 
 #### About `.env` file support
 
-The [<Constant name="fusion"/> CLI](/docs/fusion/install-fusion-cli) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available both when running dbt commands in the terminal as well as when using the extension's menu actions. 
+The [<Constant name="fusion"/> CLI](/docs/local/install-dbt?version=2) and the dbt VS Code extension can automatically read environment variables from a `.env` file in your current working directory (the folder you `cd` into and run dbt commands from in your terminal), if one exists. The environment variables you define in the `.env` file are available when running dbt commands in the terminal and when using the extension's menu actions.
 
-Here are some considerations when defining environment variables in the `.env` file:
-
-- The `.env` file provides a convenient way to set environment variables that work across both the CLI and the extension.
-- We recommend placing your `.env` file in the project root and running dbt commands from that location because the file is loaded _only_ from your current working directory. It doesn't support the `--project-dir` flag or `DBT_PROJECT_DIR` environment variable, and dbt won't search your project root if you're running commands from a different directory location.
-- Add `.env` to your `.gitignore` file to prevent sensitive credentials from being committed to your repo.
-- Order of precedence: Environment variables set directly in your shell (such as `export DBT_ENV_VAR=value`) take precedence over values defined in the `.env` file.
+<EnvFileConsiderations />
 
 ### Configure in the VS Code extension settings
 
@@ -241,7 +238,7 @@ To configure environment variables in the terminal session:
 
 
 ## dbt extension settings
-<!-- moved content from website/docs/docs/fusion/install-fusion-cli.md to here -->
+<!-- moved content from website/docs/docs/local/install-dbt?version=2.md to here -->
 
 After installing the dbt extension and configuring your local setup, you may want to configure it to better fit your development workflow:
 
@@ -255,4 +252,4 @@ Now that you've configured your local environment, you can start using the dbt e
 
 - [About the dbt extension](/docs/about-dbt-extension)
 - [dbt extension features](/docs/dbt-extension-features)
-- [Register the extension](/docs/install-dbt-extension#register-the-extension)
+- [Sign in or register](/docs/sign-in-dbt-extension)
