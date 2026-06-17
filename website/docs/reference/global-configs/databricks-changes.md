@@ -13,6 +13,7 @@ The following are the current [behavior change flags](/docs/reference/global-con
 | [`use_materialization_v2`](#use-restructured-materializations)      | 1.10.0                  | TBD                        | Active |
 | [`use_managed_iceberg`](#use-managed-iceberg)  | 1.11.0  |  1.12.0                                                     | Active |
 | [`use_replace_on_for_insert_overwrite`](#use-replace-on-for-insert_overwrite-strategy)   | 1.11.0   | 1.12.0                    | Active, defaults to `true` |
+| [`use_describe_as_json_for_relation_metadata`](#use-describe-as-json-for-relation-metadata) | 1.12.0 | TBD | Active, defaults to `false` |
 
 ## Use information schema for columns
 
@@ -221,3 +222,24 @@ The `use_replace_on_for_insert_overwrite` flag controls which SQL syntax dbt gen
 
 If you previously relied on this behavior to get full table replacement without dropping existing metadata, that behavior continues to exist with the flag set to `true`, provided you do not use any partitions or liquid clustering clusters.
 These data layout optimizations only tend to have a significant effect for tables that are approximately 1 TB large or greater, at which point regular replacement of all of the data is probably not the best approach.
+
+## Use `DESCRIBE AS JSON` for relation metadata
+
+The `use_describe_as_json_for_relation_metadata` flag controls how dbt fetches relation-level metadata such as constraints (primary key, foreign key, and non-null), column masks, row filters, and view descriptions for Databricks tables and views. It accepts two values:
+
+- **`false`** (default): dbt issues multiple `information_schema` queries per relation to fetch this metadata.
+- **`true`**: dbt fetches all of this metadata in a single [`DESCRIBE TABLE EXTENDED ... AS JSON`](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-aux-describe-table) call per relation.
+
+Enabling this flag is useful for projects that have many models with constraints, column masks, or row filters, because it reduces the number of metadata queries dbt has to issue.
+
+#### Requirements
+
+dbt uses the `DESCRIBE AS JSON` path for a given relation only when _all_ of the following are true:
+
+- The relation is in Unity Catalog (not the Hive metastore).
+- The relation is not a foreign table.
+- The compute is a SQL warehouse, or runs on DBR 17.3 or later.
+
+If any condition isn't met, dbt falls back to `information_schema` queries for that relation. The fallback happens per relation, so you can safely enable the flag on projects with mixed compute types.
+
+
