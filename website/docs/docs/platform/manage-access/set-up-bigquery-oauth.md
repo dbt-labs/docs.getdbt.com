@@ -107,10 +107,6 @@ Select **Allow**. This redirects you back to the <Constant name="dbt_platform" /
 Workload Identity Federation (WIF) allows application workloads, running outside the <Constant name="dbt_platform" />, to act as a service account without the need to manage service accounts or other keys for deployment environments. The following instructions will enable you to authenticate your BigQuery connection in the <Constant name="dbt_platform" /> using WIF. 
 Currently, Microsoft Entra ID is the only supported identity provider (IdP). If you need additional IdP support, please contact your account team.
 
-:::info WIF not supported in <Constant name="fusion_engine"/>
-WIF is not currently supported in [<Constant name="fusion"/>](/docs/fusion/supported-features?version=2.0#bigquery). Use a [Native OAuth connection](#set-up-bigquery-native-oauth) or service account instead. [Support for WIF](https://github.com/dbt-labs/dbt-fusion/issues/1629) is coming soon.
-:::
-
 ### 1. Set up Entra ID
 
 Create an app in Entra where dbt will request access tokens when authenticating to BigQuery via the workload identity pool:
