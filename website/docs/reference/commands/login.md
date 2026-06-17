@@ -14,7 +14,7 @@ Available in <Constant name="dbt" /> v1.12 and v2.0 and later.
 
 </VersionBlock>
 
-`dbt login` signs you in to dbt from the command line to access advanced features requiring login. It opens browser-based authentication, prompting you to either sign in to an existing dbt platform account or create a free account. 
+Use `dbt login` from the command line to access advanced dbt features by creating a _free_ dbt account. It opens browser-based authentication, prompting you to either sign in to an existing <Constant name="dbt_platform" /> account or create a free new one &mdash; no paid plan needed!
 
 Run [`dbt login status`](#dbt-login-status) to view your current authentication status.
 
@@ -36,11 +36,17 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1
 
 ## Before you log in
 
-Most advanced features are available free for 14 days from your first use of the dbt VS Code extension. After the 14-day period ends, most features continue to work without signing in. [Advanced features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) prompt you to run `dbt login` to register. 
+Downloading the dbt VS Code extension gives you 14 days to try [advanced features](/docs/fusion/fusion-availability#dbt-vs-code-extension-features) &mdash; no account needed. After the trial ends, register for a free dbt account to keep using them. Core features keep working either way.
 
-Signing in with `dbt login`, or [signing in or registering](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account, unlocks the full feature set across dbt tools that use the shared login state.
+This 14-day trial applies to the dbt VS Code extension only. It's separate from the [dbt platform trial](https://www.getdbt.com/pricing) and doesn't require a credit card or a paid plan.
 
-Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+Creating a free account is what keeps advanced features working after your trial ends. It also carries your access across all your dbt tools &mdash; the CLI, the dbt VS Code extension, and dbt State &mdash; so you log in once instead of per tool. It's free: no paid plan or credit card required.
+
+Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to advanced features in local development.
+
+Note that this is separate from [<Constant name="dbt_platform"/> user license types](/docs/platform/manage-access/seats-and-users?version=2.0&name=Fusion) (such as Developer or Analyst), which controls what you can do _inside_ <Constant name="dbt_platform" />.
+
+Refer to [VS Code extension features](/docs/fusion/fusion-availability#dbt-vs-code-extension-features) for the full list of features and their availability.
 
 <VersionBlock firstVersion="1.12">
 
@@ -79,7 +85,7 @@ Use `dbt login` when you're developing locally in a terminal or IDE and can comp
 
 - When you run `dbt login`, dbt opens a browser-based authentication flow. After you complete authentication, dbt stores your login state locally and confirms that you're signed in.
 - After you sign in, dbt can use your login state to unlock advanced features across the dbt CLI, VS Code extension, and dbt State.
-- Your session stays active across terminal sessions. The local license expires after 7 days, but dbt can automatically refresh it while you're active. If dbt can't refresh your session, or if your session expires after inactivity, dbt prompts you to run `dbt login` again.
+- Your session stays active across terminal sessions, and dbt refreshes it automatically while you're active. As long as you use dbt at least once every 7 days, you stay signed in. If you're inactive for longer, dbt prompts you to run `dbt login` again. Refer to [Staying signed in](#staying-signed-in) for details.
 
 Run `dbt login` from your **local terminal** (not in the <Constant name="dbt_platform" /> UI).
 
@@ -100,7 +106,11 @@ If you are new to dbt, start with [interactive authentication](#interactive-auth
 
 #### Authenticate with a service token
 
-In non-interactive environments (such as CI/CD jobs, scheduled jobs, or external orchestrators), use a [service token](/docs/dbt-apis/service-tokens) instead of `dbt login`. Set the following [environment variables](/docs/build/environment-variables?version=2.0&name=Fusion#special-environment-variables) so dbt can authenticate and retrieve a feature license:
+In non-interactive environments (such as CI/CD jobs, scheduled jobs, or external orchestrators like Airflow), use a [service token](/docs/dbt-apis/service-tokens) instead of `dbt login`. The service token does two jobs: it authenticates the run _and_ unlocks access to advanced features, so they work in your pipeline the same way they do locally.
+
+Unlike interactive `dbt login`, service tokens don't expire, so there's nothing to refresh. Rotate them yourself in <Constant name="dbt_platform" /> when you need to.
+
+Set the following [environment variables](/docs/build/environment-variables#special-environment-variables) so dbt can authenticate and unlock that access:
 
 | Environment variable | Description |
 |---|---|
@@ -148,6 +158,30 @@ When you run a command or use a feature that requires authentication, dbt checks
 
 For the VS Code extension registration flow, refer to [Sign in or register](/docs/sign-in-dbt-extension).
 
+## Staying signed in
+
+Once you log in, dbt keeps you signed in automatically &mdash; you usually won't notice it at all.
+
+You stay signed in as long as you use dbt at least once every 7 days. If you're inactive for longer than that, dbt might ask you to log in again in your next session to ensure security.
+
+If your access expires, run `dbt login` to sign back in.
+If you're on the 14-day trial without a dbt account? Create a free account with `dbt login` &mdash; it's the best way to use the [full set of features](/docs/fusion/fusion-availability#dbt-vs-code-extension-features) and get the most out of the extension. Not ready to run `dbt login`? No worries &mdash; continue using the core features after the trial ends.
+
+If you're not sure where you stand, run [`dbt license info`](#troubleshooting) to check your status.
+
+<Expandable title="How staying signed in works under the hood">
+
+The only number that matters to you is 7 days: use dbt at least once a week and you stay signed in. Here's what happens behind the scenes to make that work.
+
+Once you've logged in, dbt keeps two short-lived credentials fresh for you, automatically and in the background &mdash; you don't need to do anything:
+
+- A 24-hour access token validates your access to advanced features. dbt renews it about once an hour whenever it can reach <Constant name="dbt_platform" />, so it never actually runs out while you're working &mdash; you won't hit the 24-hour limit in practice.
+- A 7-day sign-in backs those renewals. Any dbt activity resets the 7-day clock, so the only way to get signed out is to not use dbt for more than 7 days straight.
+
+If you go offline, your current access keeps working until it expires, and dbt retries the next time you run a command.
+
+</Expandable>
+
 ## Usage
 
 This page lists the commands and output you can use with `dbt login`.
@@ -175,7 +209,7 @@ After you sign in or register, dbt saves your credentials to your local dbt conf
 - macOS and Linux: `~/.dbt/`
 - Windows: `C:\Users\[username]\.dbt\`
 
-Your login session remains active across terminal sessions. While you're actively using dbt, your session renews automatically. If your session expires, dbt prompts you to run `dbt login` again.
+For how long you stay signed in, refer to [Staying signed in](#staying-signed-in).
 
 When authentication completes successfully, the CLI shows:
 
@@ -224,18 +258,69 @@ If dbt is not authenticated, the CLI shows:
 Status: unauthenticated
 ```
 
+### dbt license info
+
+Fusion uses local licenses to catch your logged-in state and give you access to advanced features. Run `dbt license info` as an additional check to verify the status of the license used by Fusion. This is useful when an advanced feature isn't working and `dbt login status` tells you you're authenticated:
+
+```shell
+dbt license info
+```
+
+Add `--json` for machine-readable output:
+
+```shell
+dbt license info --json
+```
+
+For how to interpret each status, refer to [Troubleshooting](#troubleshooting).
+
 ### dbt --help
 
-`dbt login` appears in the `dbt --help` available commands list:
+`dbt login` and `dbt license` appear in the `dbt --help` available commands list:
 
 ```text
 Available Commands:
   login          Log in to dbt
+  license         Manage your dbt license
 ```
+
+## Troubleshooting
+
+If an advanced feature isn't working, or you're not sure whether you're still signed in, run `dbt license info` to check your access:
+
+```shell
+dbt license info
+```
+
+Add `--json` for machine-readable output:
+
+```shell
+dbt license info --json
+```
+
+The output shows your current status. Use the following table to interpret it:
+
+| Status | What it means | What to do |
+|---|---|---|
+| `valid` | You're signed in and your features are available. | Nothing &mdash; you're all set. |
+| `trial_expired` | Your 14-day dbt VS Code extension trial has ended. | [Sign in or register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. |
+| `expired` | Your access has expired. | Run `dbt login` to sign in again. |
+| `not_found` | dbt couldn't find any sign-in for you. | Run `dbt login`, or set a [service token](#authenticate-with-a-service-token) for orchestrated runs. |
+| `invalid` | Your access failed validation. | Run `dbt login` to refresh it. |
+| `transient_error` | A temporary network or server issue. | Retry &mdash; your cached access stays active in the meantime. |
+
+:::note If you just registered a new account
+If you created a new <Constant name="dbt_platform" /> account but haven't verified your email yet, dbt warns you on each run during a short grace period.
+
+After the grace period ends, advanced features stop working until you verify. You can still use core features like code error diagnostics and Jinja LSP go-to ref definition, [and more](/docs/fusion/fusion-availability#fusion-and-dbt-core-v2-features).
+
+Check your inbox for the verification email, or [contact dbt Support](/docs/dbt-support) if you need it resent.
+:::
 
 ## Related commands
 
 - [`dbt login status`](#dbt-login-status) &mdash; Shows your current dbt authentication status.
+- [`dbt license info`](#troubleshooting) &mdash; Shows your current access status and helps diagnose feature availability.
 - [`dbt init`](/reference/commands/init) &mdash; Use during first-time project setup; prompts you to run `dbt login` to unlock authenticated features.
 - [`dbt deps`](/reference/commands/deps) &mdash; Installs packages for a dbt project.
 - [`dbt debug`](/reference/commands/debug) &mdash; Tests your dbt project and connection configuration.
