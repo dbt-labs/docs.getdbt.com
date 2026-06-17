@@ -34,6 +34,12 @@ The following personas are required to complete the steps on this page:
 
 ## Register a Microsoft Entra ID app
 
+:::info Admin consent
+
+If your tenant is configured to disallow user self-consent, an Entra ID admin must grant tenant-wide admin consent to this app after you add the API permissions (Enterprise Applications -> your app -> Permissions -> Grant admin consent).
+
+:::
+
 A Microsoft Entra ID admin needs to perform the following steps:
 
 1. Sign into your Azure portal and click **Microsoft Entra ID**.
