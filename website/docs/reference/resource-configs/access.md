@@ -31,7 +31,7 @@ There are multiple approaches to configuring access:
   
   models:
     - name: my_public_model
-      access: public 
+      access: public
       
   ```
   </File>
