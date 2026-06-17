@@ -127,7 +127,7 @@ Workload Identity Federation (WIF) lets you authenticate to BigQuery using crede
 Before selecting this method, an administrator must configure a workload identity pool and provider in GCP that trusts your Entra tenant. You'll need the resulting workload pool provider path.
 
 #### Configuration fields
-Here are the required fields for the WIF config in your `profiles.yml` file:
+Here are the required or optional fields for the WIF config in your `profiles.yml` file:
 
 <SimpleTable>
 
