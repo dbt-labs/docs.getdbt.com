@@ -349,6 +349,8 @@ tests:
 
 </Tabs>
 
+#### Accessing nested configurations
+
 To access custom configurations nested under attributes of `meta`, use `config.get('meta')` and then index the meta dictionary by the name of your custom attribute. Users will need to adjust their code that accesses the custom config keys directly as top-level keys.
 
 Example before custom configurations were nested under meta:
