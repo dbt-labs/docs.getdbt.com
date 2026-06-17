@@ -93,9 +93,9 @@ You can override the development environment's dbt State setting for your own ac
 3. Select the project you want to enable dbt State for.
 4. Click **Edit** and go to the **User development settings** section.
 5. Under **dbt State**, select one of the following options:
-   - **Enabled** — Enables dbt State for your user regardless of the development environment setting.
-   - **Disabled** — Disables dbt State for your user regardless of the development environment setting.
-   - **Reset (inherit from development)** — Clears your override and falls back to the dbt State setting configured on your development environment. This option only appears after you've saved an **Enabled** or **Disabled** override.
+   - **Enabled**: Enables dbt State for your user regardless of the development environment setting.
+   - **Disabled**: Disables dbt State for your user regardless of the development environment setting.
+   - **Reset (inherit from development)**: Only appears after you've saved an **Enabled** or **Disabled** override. Clears your override and falls back to the dbt State setting configured on your development environment.
 6. Click **Save**.
 
 </TabItem>
