@@ -143,7 +143,7 @@ Here are the required fields for the WIF config in your `profiles.yml` file:
 </SimpleTable>
 
 #### WIF config example in `profiles.yml`
-The following code snippet is an example of a WIF config in your `profiles.yml`:
+The following code snippet is an example of a WIF config in your `profiles.yml`, replacing the values with your own:
 
 <File name="profiles.yml">
 
@@ -161,8 +161,8 @@ default:
       workload_pool_provider_path: //iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/my-pool/providers/my-provider
       token_endpoint:
         type: entra
-        request_url: https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
-        request_data: "grant_type=client_credentials&client_id={{ env_var('ENTRA_CLIENT_ID') }}&client_secret={{ env_var('ENTRA_CLIENT_SECRET') }}&scope=<scope>/.default"
+        request_url: https://login.microsoftonline.com/TENANT_ID/oauth2/v2.0/token
+        request_data: "grant_type=client_credentials&client_id={{ env_var('ENTRA_CLIENT_ID') }}&client_secret={{ env_var('ENTRA_CLIENT_SECRET') }}&scope=SCOPE/.default"
         
       # Optional: include only if your workload identity pool doesn't have direct resource access and needs to impersonate a service account.
       # service_account_impersonation_url: https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/sa@project.iam.gserviceaccount.com:generateAccessToken
