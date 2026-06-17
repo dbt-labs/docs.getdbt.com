@@ -122,7 +122,7 @@ default:
 
 Workload Identity Federation (WIF) lets you authenticate to BigQuery using credentials issued by an external OAuth identity provider &mdash; currently Microsoft Entra &mdash; without managing a Google service account key file. 
 
-<Constant name="fusion" /> exchanges an Entra-issued token for short-lived Google credentials through a BigQuery [workload identity pool](https://cloud.google.com/iam/docs/workload-identity-federation).
+<Constant name="fusion" /> exchanges an Entra-issued token for short-lived Google credentials through a Google Cloud [workload identity pool](https://cloud.google.com/iam/docs/workload-identity-federation).
 
 Before selecting this method, an administrator must configure a workload identity pool and provider in GCP that trusts your Entra tenant. You'll need the resulting workload pool provider path.
 
