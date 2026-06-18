@@ -3,6 +3,7 @@ import { VersionContextProvider } from '../stores/VersionContext'
 import { useVersionUrlSync } from '../utils/useVersionUrlSync'
 import { OptimizelyInitializer } from '../components/OptimizelyInitializer'
 import { DatadogInitializer } from "../components/DatadogInitializer";
+import { ConsentCookieCleanup } from "../components/ConsentCookieCleanup";
 
 /**
  * Inner component that syncs version to URL on route changes.
@@ -19,6 +20,7 @@ function Root({children}) {
     <VersionContextProvider>
       <OptimizelyInitializer />
       <DatadogInitializer />
+      <ConsentCookieCleanup />
       <VersionUrlSyncHandler>
         {children}
       </VersionUrlSyncHandler>
