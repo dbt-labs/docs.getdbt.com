@@ -16,7 +16,7 @@ Usage statistics are fired when dbt is invoked and when models are run. These ev
 
 For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
 
-- <Constant name="cloud" /> has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of dbt. 
+- <Constant name="dbt" /> has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of dbt. 
 
 - <Constant name="core" /> users have telemetry enabled by default to help us understand usage patterns and improve the product. You can opt out of event tracking at any time by adding the following to your `dbt_project.yml` file:
 
@@ -30,4 +30,4 @@ For full transparency, you can see all the event definitions in [`tracking.py`](
 
   dbt Core users can also use the `DO_NOT_TRACK` environment variable to enable or disable sending anonymous data. For more information, see [Environment variables](/docs/build/environment-variables).
 
-  `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
+  `DO_NOT_TRACK=1` is the same as <VersionBlock lastVersion="1.10">`DBT_SEND_ANONYMOUS_USAGE_STATS=False`</VersionBlock><VersionBlock firstVersion="1.11">`DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS=False`</VersionBlock>.

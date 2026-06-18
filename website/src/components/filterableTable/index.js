@@ -1,7 +1,8 @@
-import React, { useState, useMemo, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useLayoutEffect, useContext } from 'react';
 import Markdown from 'markdown-to-jsx';
 import getSvgIcon from '../../utils/get-svg-icon';
 import styles from './styles.module.css';
+import { SimpleTableContext } from '../simpleTable';
 
 const stripMarkdown = (text) => {
   if (!text) return '';
@@ -119,6 +120,9 @@ const parseTableFromDOM = (tableElement) => {
 };
 
 const FilterableTable = ({ children }) => {
+  // Check if we're inside a SimpleTable wrapper
+  const isSimpleTable = useContext(SimpleTableContext);
+  
   const tableRef = useRef(null);
   const [tableData, setTableData] = useState({ headers: [], data: [], columnAlignments: [] });
   const [openFilterIndex, setOpenFilterIndex] = useState(null);
@@ -203,7 +207,7 @@ const FilterableTable = ({ children }) => {
       // Show filter if:
       // 1. Column has 1-20 unique values (good for dropdown)
       // 2. OR it's the first column (name/key column) with any number of values
-      if ((values.length >= 1 && values.length <= 20) || (colIndex === 0 && values.length >= 1)) {
+      if ((values.length >= 1 && values.length <= 50) || (colIndex === 0 && values.length >= 1)) {
         options[colIndex] = values;
       }
     });
@@ -356,6 +360,15 @@ const FilterableTable = ({ children }) => {
   const hasActiveColumnFilter = (colIndex) => {
     return (columnFilters[colIndex] || []).length > 0;
   };
+
+  // If we're in a SimpleTable context, render as a plain table
+  if (isSimpleTable) {
+    return (
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        {children}
+      </table>
+    );
+  }
 
   return (
     <div className={styles.filterableTableContainer}>

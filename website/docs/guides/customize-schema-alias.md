@@ -28,10 +28,10 @@ Different warehouses have different names for _logical databases_. The informati
 
 The following is dbt's out-of-the-box default behavior:
 
-- The database where the object is created is defined by the database configured at the [environment level in <Constant name="cloud" />](/docs/dbt-cloud-environments) or in the [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml) in dbt Core.
+- The database where the object is created is defined by the database configured at the [environment level in <Constant name="dbt" />](/docs/dbt-platform-environments) or in the [`profiles.yml` file](/docs/local/profiles.yml) in dbt Core.
 
 - The schema depends on whether you have defined a [custom schema](/docs/build/custom-schemas) for the model:
-    - If you haven't defined a custom schema, dbt creates the object in the default schema. In <Constant name="cloud" />, this is typically `dbt_username` for development and the default schema for deployment environments. In dbt Core, it uses the schema specified in the `profiles.yml` file.
+    - If you haven't defined a custom schema, dbt creates the object in the default schema. In <Constant name="dbt" />, this is typically `dbt_username` for development and the default schema for deployment environments. In dbt Core, it uses the schema specified in the `profiles.yml` file.
     - If you define a custom schema, dbt concatenates the schema mentioned earlier with the custom one.
     - For example, if the configured schema is `dbt_myschema` and the custom one is `marketing`, the objects will be created under `dbt_myschema_marketing`.
     - Note that for automated CI jobs, the schema name derives from the job number and PR number: `dbt_cloud_pr_<job_id>_<pr_id>`.
@@ -80,15 +80,15 @@ Further, the staging version of `fct_player_stats` should exist in a unique loca
 
 We often leverage the following when customizing these macros:
 
-- In <Constant name="cloud" />, we recommend utilizing [environment variables](/docs/build/environment-variables) to define where the dbt invocation is occurring (dev/stg/prod).
+- In <Constant name="dbt" />, we recommend utilizing [environment variables](/docs/build/environment-variables) to define where the dbt invocation is occurring (dev/stg/prod).
     - They can be set at the environment level and all jobs will automatically inherit the default values. We'll add Jinja logic (`if/else/endif`) to identify whether the run happens in dev, prod, Ci, and more.
     
 - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](/reference/dbt-jinja-functions/target). 
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/custom-schema-env-var.png" title="Custom schema environmental variables target name." />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/Environment Variables/custom-schema-env-var.png" title="Custom schema environmental variables target name." />
 
-To allow the database/schema/object name to depend on the current branch, you can use the out-of-the-box `DBT_CLOUD_GIT_BRANCH` environment variable in <Constant name="cloud" /> [special environment variables](/docs/build/environment-variables#special-environment-variables).
+To allow the database/schema/object name to depend on the current branch, you can use the out-of-the-box `DBT_CLOUD_GIT_BRANCH` environment variable in <Constant name="dbt" /> [special environment variables](/docs/build/environment-variables#special-environment-variables).
 
 
 ## Example use cases
@@ -268,7 +268,7 @@ For teams who prefer to isolate work based on the feature branch, you may want t
 
 :::note
 
-The `DBT_CLOUD_GIT_BRANCH` variable is only available within the <Constant name="cloud_ide" /> and not the <Constant name="cloud_cli" />.
+The `DBT_CLOUD_GIT_BRANCH` variable is only available within the <Constant name="studio_ide" /> and not the <Constant name="platform_cli" />.
 
 :::
 
@@ -512,13 +512,13 @@ We prefer to use [environment variables](/docs/build/environment-variables) over
 - `target.name` cannot be set at the environment-level. Therefore, every job within the environment must explicitly specify the `target.name` override. If the job does not have the appropriate `target.name` value set, the database/schema/alias may not resolve properly. Alternatively, environment variable values are inherited by the jobs within their corresponding environment. The environment variable values can also be overwritten within the jobs if needed.
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/custom-schema-env-var-targetname.png" title="Customize schema alias env var."/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/custom-schema-env-var-targetname.png" title="Customize schema alias env var."/>
 
 
 - `target.name` requires every developer to input the same value (often ‘dev’) into the target name section of their project development credentials. If a developer doesn’t have the appropriate target name value set, their database/schema/alias may not resolve properly. 
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/development-credentials.png" title="Development credentials." width="60%" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/development-credentials.png" title="Development credentials." width="60%" />
 
 
 ### Always enforce custom schemas

@@ -16,7 +16,7 @@ async function getDiscourseTopics({ body }) {
     if(!query) throw new Error('Unable to build query string.')
     
     // Get topics from Discourse
-    let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
+    let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search.json?q=${query}`, { headers })
 
     // Return empty array if no topics found for search query
     // 200 status is used to prevent triggering Datadog alerts

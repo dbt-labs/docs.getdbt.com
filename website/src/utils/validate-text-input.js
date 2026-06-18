@@ -40,7 +40,7 @@ export const validateTextInput = (text, setValidationError) => {
   const sqlPatterns = [
     /(\b(union|select|insert|update|delete|drop|create|alter|exec|execute)\b)/gi,
     /(--|\/\*|\*\/)/g,
-    /('|(\\')|('')|(%27)|(%2527))/gi,
+    /((%27)|(%2527))/gi,
   ];
 
   for (const pattern of sqlPatterns) {
@@ -54,7 +54,7 @@ export const validateTextInput = (text, setValidationError) => {
 
   // Check for excessive special characters (potential obfuscation)
   const specialCharRatio =
-    (text.match(/[^a-zA-Z0-9\s.,!?()-]/g) || []).length / text.length;
+    (text.match(/[^a-zA-Z0-9\s.,!?()'-]/g) || []).length / text.length;
   if (specialCharRatio > 0.3 && text.length > 10) {
     setValidationError("Too many special characters. Please use plain text");
     return false;

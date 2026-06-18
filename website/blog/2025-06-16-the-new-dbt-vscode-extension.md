@@ -31,11 +31,11 @@ You wanted to check the lineage of your project, one of the coolest features of 
 
 Did you want to check your project's metadata? You had to rely on [`dbt docs`](/reference/commands/cmd-docs) (that whole process again), or build some custom solution with the [`manifest.json`](/reference/artifacts/manifest-json).
 
-Moving to dbt Cloud (now called just <Constant name="cloud" />) made things smoother. It has a built-in <Constant name="cloud_ide" /> with git integration, easier to compile and preview models. An auto-updating lineage tab below the model, a much better documentation with dbt Explorer, now renamed to Catalog. And a lot of other powerful features for orchestration, observability, CI/CD, and more.
+Moving to dbt Cloud (now called just <Constant name="dbt_platform" />) made things smoother. It has a built-in <Constant name="studio_ide" /> with git integration, easier to compile and preview models. An auto-updating lineage tab below the model, a much better documentation with dbt Explorer, now renamed to Catalog. And a lot of other powerful features for orchestration, observability, CI/CD, and more.
 
-The cloud-based <Constant name="cloud" /> was a big step up, but even so, many of us still preferred to use our own dev environments. We like using our themes, our VS Code extensions, our terminals, but this would mean losing all the nice cloud features while developing. A sad trade-off.
+The cloud-based <Constant name="dbt_platform" /> was a big step up, but even so, many of us still preferred to use our own dev environments. We like using our themes, our VS Code extensions, our terminals, but this would mean losing all the nice cloud features while developing. A sad trade-off.
 
-We've already been to <Constant name="cloud" /> platform and back to the terminal, and some problems remain. Consider this all too common scenario when modifying a dbt model: forgetting a comma[1]. You don't learn your mistake until after dbt tries to run this model on your warehouse, but dbt can't do this until your cluster is turned on. So it's not until a full minute later that you get the feedback about your missing punctuation mark.
+We've already been to <Constant name="dbt_platform" /> platform and back to the terminal, and some problems remain. Consider this all too common scenario when modifying a dbt model: forgetting a comma[1]. You don't learn your mistake until after dbt tries to run this model on your warehouse, but dbt can't do this until your cluster is turned on. So it's not until a full minute later that you get the feedback about your missing punctuation mark.
 
 [1]: because you are using trailing commas instead of leading commas, and they're harder to see, and I'm talking too much about the comma fight.
 
@@ -67,7 +67,7 @@ This is the greatest improvement of this engine, IMHO.
 
 ### Model and Column Lineage
 
-My next favorite feature is the lineage view. If you were a <Constant name="cloud" /> platform user, you would feel at home. And if you were using dbt Core, finally, no more generating `dbt docs` to visualize lineage.
+My next favorite feature is the lineage view. If you were a <Constant name="dbt" /> platform user, you would feel at home. And if you were using dbt Core, finally, no more generating `dbt docs` to visualize lineage.
 
 Now there's a tab lineage tab that shows your project’s lineage directly in VS Code. It’s interactive and live. You can use the lenses feature, that's pretty cool to have a good visualization of your project by different attributes like resource_type, or materialization.
 

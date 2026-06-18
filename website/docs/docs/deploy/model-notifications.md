@@ -4,7 +4,7 @@ description: "While a job is running, receive email notifications in real time a
 intro_text: "Set up dbt to notify model owners through email about issues in your deployment environments."
 ---
 
-Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-cloud-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
+Configure dbt to send email notifications to model owners about issues in deployment [environments](/docs/dbt-platform-environments#types-of-environments) as soon as they happen &mdash; while the job is still running. Model owners can specify which statuses to receive notifications about:
 
 - **Success** and **Fails** for models
 - **Warning**, **Success**, and **Fails** for tests
@@ -21,8 +21,8 @@ To be timely and keep the number of notifications to a reasonable amount when mu
 Create configuration YAML files in your project for dbt to send notifications about the status of your models and tests in your deployment environments.
 
 ## Prerequisites
-- Your <Constant name="cloud" /> administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
-- Your deployment environment(s) must be on a [release track](/docs/dbt-versions/cloud-release-tracks) instead of a legacy <Constant name="core" /> version.
+- Your <Constant name="dbt" /> administrator has [enabled the appropriate account setting](#enable-access-to-model-notifications) for you.
+- Your deployment environment(s) must be on a [release track](/docs/dbt-versions/dbt-release-tracks) instead of a legacy <Constant name="core" /> version.
 
 ## Configure groups
 
@@ -126,14 +126,14 @@ Attaching a group to a model also encompasses its tests, so you will also receiv
 
 ## Enable access to model notifications 
 
-Provide <Constant name="cloud" /> account members the ability to configure and receive alerts about issues with models or tests that are encountered during job runs.  
+Provide <Constant name="dbt" /> account members the ability to configure and receive alerts about issues with models or tests that are encountered during job runs.  
 
-To use model-level notifications, your <Constant name="cloud" /> account must have access to the feature. Ask your <Constant name="cloud" /> administrator to enable this feature for account members by following these steps:
+To use model-level notifications, your <Constant name="dbt" /> account must have access to the feature. Ask your <Constant name="dbt" /> administrator to enable this feature for account members by following these steps:
 
 1. Navigate to **Notification settings** from your profile name in the sidebar (lower left-hand side). 
 2. From **Email notifications**, enable the setting **Enable group/owner notifications on models** under the **Model notifications** section. Then, specify which statuses to receive notifications about (Success, Warning, and/or Fails). 
 3. Click **Save**.
 
-  <Lightbox src="/img/docs/dbt-cloud/example-enable-model-notifications.png" title="Example of the setting Enable group/owner notifications on models" /> 
+  <Lightbox src="/img/docs/dbt-platform/example-enable-model-notifications.png" title="Example of the setting Enable group/owner notifications on models" /> 
 
 
