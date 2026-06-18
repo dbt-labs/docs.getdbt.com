@@ -1350,23 +1350,19 @@ Set the refresh schedule for the model using one of three mutually exclusive mod
 If a schedule exists in Databricks but your dbt project doesn't specify one, the schedule resets to manual on your next run (when `on_configuration_change` is set to `apply`).
  
 #### query
-<<<<<<< sd-db/docs-sync/pr-1285
-For materialized views, if the compiled query for the model differs from the query in the database, we will the take the configured `on_configuration_change` action.
-Changes to query are not currently detectable for streaming tables; see the next section for details.
-
-### on_configuration_change 
-`on_configuration_change` is supported for materialized views and streaming tables, though the two materializations handle it different ways.
-
-#### Materialized Views
-Currently, the only change that can be applied without recreating the materialized view in Databricks is to update the schedule.
-This is due to limitations in the Databricks SQL API.
-
-#### Streaming Tables
-For streaming tables, only changes to the partitioning currently requires the table be dropped and recreated.
-For any other supported configuration change, we use `CREATE OR REFRESH` (plus an `ALTER` statement for changes to the schedule) to apply the changes.
-There is currently no mechanism for the adapter to detect if the streaming table query has changed, so in this case, regardless of the behavior requested by on_configuration_change, we will use a `create or refresh` statement (assuming `partitioned by` hasn't changed); this will cause the query to be applied to future rows without rerunning on any previously processed rows.
-If your source data is still available, running with '--full-refresh' will reprocess the available data with the updated current query.
-
+For materialized views, if the compiled query differs from what's in the database, dbt takes the configured `on_configuration_change` action. Query changes aren't currently detectable for streaming tables. Refer to [on_configuration_change](#on_configuration_change) for details.
+ 
+### on_configuration_change
+ 
+| Materialization | Drop and recreate required? | Notes |
+|----------------|----------------------------|-------|
+| Materialized views | Yes, for all changes except schedule updates | Databricks SQL API limitation |
+| Streaming tables | Only when `partition_by` changes | All other supported changes use `CREATE OR REFRESH` plus an `ALTER` for schedule changes |
+ 
+Note on streaming table query changes: there's currently no way for the adapter to detect if a streaming table query has changed. Regardless of `on_configuration_change` behavior, dbt uses `CREATE OR REFRESH`, which applies the updated query to future rows only &mdash; previously processed rows aren't reprocessed.
+ 
+To reprocess available source data with an updated query, run with `--full-refresh`.
+ 
 ## Metric views
 _Available in versions 1.12 or higher_
 
@@ -1385,16 +1381,20 @@ dimensions:
     expr: order_date
   - name: status
     expr: status
+    synonyms: [state, order_state]
 measures:
   - name: total_orders
     expr: count(1)
   - name: total_revenue
     expr: sum(revenue)
+    synonyms: [revenue, sales]
 ```
 
 </File>
 
-Reference the source relation in `source` with `ref()` so dbt resolves dependencies. Query the resulting metric view with the `MEASURE()` function. See the [Databricks metric views documentation](https://docs.databricks.com/aws/en/metric-views/) for the full YAML schema.
+Reference the source relation in `source` with `ref()` so dbt resolves dependencies. Query the resulting metric view with the `MEASURE()` function.
+
+dbt passes the YAML body through to Databricks unchanged, so a metric view supports the **entire** [Unity Catalog metric view YAML specification](https://docs.databricks.com/aws/en/business-semantics/metric-views/yaml-reference), not only the keys shown above. Any field Databricks accepts server-side works through dbt, including [`synonyms`](https://docs.databricks.com/aws/en/metric-views/semantic-metadata) and `display_name` on dimensions and measures, and `format` and `window` on measures.
 
 You can also set `databricks_tags` and [`grants`](/reference/resource-configs/grants) on a metric view. `tblproperties` are applied only when the view is updated in place (with `view_update_via_alter`) or replaced, not on first creation.
 
@@ -1409,21 +1409,6 @@ When you set [`view_update_via_alter`](/reference/global-configs/databricks-chan
 
 If neither the definition nor the tags or properties have changed, dbt skips the update.
 
-=======
-For materialized views, if the compiled query differs from what's in the database, dbt takes the configured `on_configuration_change` action. Query changes aren't currently detectable for streaming tables. Refer to [on_configuration_change](#on_configuration_change) for details.
- 
-### on_configuration_change
- 
-| Materialization | Drop and recreate required? | Notes |
-|----------------|----------------------------|-------|
-| Materialized views | Yes, for all changes except schedule updates | Databricks SQL API limitation |
-| Streaming tables | Only when `partition_by` changes | All other supported changes use `CREATE OR REFRESH` plus an `ALTER` for schedule changes |
- 
-Note on streaming table query changes: there's currently no way for the adapter to detect if a streaming table query has changed. Regardless of `on_configuration_change` behavior, dbt uses `CREATE OR REFRESH`, which applies the updated query to future rows only &mdash; previously processed rows aren't reprocessed.
- 
-To reprocess available source data with an updated query, run with `--full-refresh`.
- 
->>>>>>> current
 ## Setting table properties
 [Table properties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) can be set with your configuration for tables or views using `tblproperties`:
  
