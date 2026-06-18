@@ -21,7 +21,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
-### dbt Copilot and agents
+### dbt Wizard and agents
 
 - **OAuth scopes declared in Model Context Protocol resource metadata**: The Model Context Protocol (MCP) protected resource metadata endpoint now advertises the OAuth scopes it supports (`offline_access`, `account:read`, `projects:query`, `catalog:read`, `projects:develop`, and `jobs:run`). MCP clients that perform dynamic capability discovery can now request the correct scopes automatically.
 
