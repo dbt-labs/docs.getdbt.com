@@ -50,7 +50,7 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 Run the following command to update <Constant name="wizard" /> to the latest version:
 
 ```bash
-wizard system update
+wizard update
 ```
 
 <!--
