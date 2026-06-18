@@ -22,7 +22,7 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `target/compiled` directory contains `select` statements that you can run in any query editor.
     - The `target/run` directory contains the SQL dbt executes to build your models.
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
-    - **<Constant name="dbt" /> users**: Use the above, or the `Details` tab in the command output.
+    - **<Constant name="dbt_platform" /> users**: Use the above, or open **Invocation history** (the `^` control next to the command bar), select the command you ran, select the resource by name, and enable **Debug logs** to read the compiled SQL in the log text. Refer to [Reviewing SQL that dbt runs](/faqs/Runs/checking-logs).
     - **<Constant name="core" /> users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
 5. If you are really stuck, try [asking for help](/community/resources/getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
 
@@ -358,7 +358,7 @@ In some cases, these errors might occur as a result of queries that dbt runs "be
 - For incremental models, and snapshots: merge, update and insert statements
 
 In these cases, you should check out the logs — this contains _all_ the queries dbt has run.
-- **<Constant name="dbt" />**: Use the `Details` in the command output to see logs, or check the `logs/dbt.log` file
+- **<Constant name="dbt_platform" />**: Open **Invocation history**, select the command you ran, select the resource by name, and enable **Debug logs** to read the log text. Or check the `logs/dbt.log` file. Refer to [Reviewing SQL that dbt runs](/faqs/Runs/checking-logs). For failed data tests, refer to [Debug failed tests](/faqs/Runs/failed-tests).
 - **<Constant name="core" />**: Open the `logs/dbt.log` file.
 
 :::tip Isolating errors in the logs
