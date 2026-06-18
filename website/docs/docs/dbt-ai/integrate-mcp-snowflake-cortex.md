@@ -27,7 +27,7 @@ At a high level, you'll:
 ### In dbt
 
 - [AI features](/docs/platform/enable-dbt-ai) enabled for your account.
-- Remote MCP OAuth available for your account. <MCPRemoteOauthBetaCallout />
+- Remote MCP OAuth enabled for your account. <Lifecycle status="beta" /> The remote MCP server is generally available, but the OAuth connection method this guide relies on is in public beta. A <Constant name="dbt_platform" /> admin must turn on beta features in **Account settings** to enable it. <MCPRemoteOauthBetaCallout />
 - A [static subdomain](/docs/platform/about-platform/access-regions-ip-addresses) on your account. <StaticSubdomainRequired />
 - At least a read-only role on the <Constant name="dbt_platform" />. The agent inherits each connected user's permissions, so a user only sees the projects and resources they already have access to.
 - A configured <Constant name="semantic_layer" /> in the project you want to query, with metrics and dimensions defined.
@@ -141,6 +141,8 @@ The agent can't query dbt until each user authorizes it. Complete the OAuth flow
 2. Find the **dbt Semantic Layer MCP** connector you created and select **Connect**.
 3. Snowflake redirects you to <Constant name="dbt_platform" /> to sign in and approve the requested [scopes](/docs/platform/manage-access/connect-apps-oauth#scopes-and-consent) on the consent screen. You can scope the connection to a specific project (recommended) so the agent only sees that project's data.
 4. After you approve, the connector shows as **Connected** and you're returned to Snowflake.
+
+Snowflake self-registers with <Constant name="dbt_platform" /> through Dynamic Client Registration on first connect, so no admin action is needed to register it. Admins can review and audit the connected client, and manage sessions and scopes, in **Account settings → Integrations → App integrations**. For the full registration, consent, and session model, see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth).
 
 ## Verify the connection
 
