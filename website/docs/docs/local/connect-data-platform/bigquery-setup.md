@@ -24,6 +24,7 @@ You can configure the BigQuery adapter by running `dbt init` in your CLI or manu
 The BigQuery adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
 - Service account (JSON file)
 - gcloud OAuth
+- Workload Identity Federation (Microsoft Entra)
 
 ## Warehouse permissions
 
@@ -117,6 +118,58 @@ default:
 
 </TabItem>
 
+<TabItem value="Workload Identity Federation (Microsoft Entra)">
+
+Workload Identity Federation (WIF) lets you authenticate to BigQuery using credentials issued by an external OAuth identity provider &mdash; currently Microsoft Entra &mdash; without managing a Google service account key file. 
+
+<Constant name="fusion" /> exchanges an Entra-issued token for short-lived Google credentials through a Google Cloud [workload identity pool](https://docs.cloud.google.com/iam/docs/workload-identity-federation#pools).
+
+Before selecting this method, an administrator must configure a workload identity pool and provider in GCP that trusts your Entra tenant. You'll need the resulting workload pool provider path.
+
+#### Configuration fields
+Here are the required and optional fields for the WIF config in your `profiles.yml` file:
+
+<SimpleTable>
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `method` | Yes | Set to `external-oauth-wif`. |
+| `workload_pool_provider_path` | Yes | The full resource path of the GCP workload identity pool provider that trusts your Entra tenant. |
+| `token_endpoint.type` | Yes | The external identity provider type. Only `entra` is currently supported. |
+| `token_endpoint.request_url` | Yes | The Entra OAuth token endpoint. |
+| `token_endpoint.request_data` | Yes | The URL-encoded request body used to fetch the Entra token (for example `grant_type`, `client_id`, `client_secret`, and `scope`). |
+| `service_account_impersonation_url` | No | The `generateAccessToken` URL of a service account to impersonate after federation, if you want BigQuery access scoped to that service account's permissions. |
+
+</SimpleTable>
+
+#### WIF config example in `profiles.yml`
+The following code snippet is an example of a WIF config in your `profiles.yml`. Make sure to replace the values with your own:
+
+<File name="profiles.yml">
+
+```yaml
+default:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      threads: 16
+      database: ABC123
+      schema: JAFFLE_SHOP
+      method: external-oauth-wif
+      location: us-east1
+      workload_pool_provider_path: //iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/my-pool/providers/my-provider
+      token_endpoint:
+        type: entra
+        request_url: https://login.microsoftonline.com/TENANT_ID/oauth2/v2.0/token
+        request_data: "grant_type=client_credentials&client_id={{ env_var('ENTRA_CLIENT_ID') }}&client_secret={{ env_var('ENTRA_CLIENT_SECRET') }}&scope=SCOPE/.default"
+        
+      # Optional: include only if your workload identity pool doesn't have direct resource access and needs to impersonate a service account.
+      # service_account_impersonation_url: https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/sa@project.iam.gserviceaccount.com:generateAccessToken
+```
+
+</File>
+</TabItem>
 </Tabs>
 
 ## More information
@@ -147,6 +200,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 import BigQueryPerms from '/snippets/_bigquery-permissions.md';
 
+
+
 <BigQueryPerms />
 
 ## Authentication Methods
@@ -159,6 +214,10 @@ BigQuery targets can be specified using one of four methods:
 4. [service account JSON](#service-account-json)
 
 For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
+
+:::tip Workload Identity Federation
+WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0&name=Fusion#supported-authentication-types). It's not supported in <Constant name="core" /> v1.12 and earlier.
+:::
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
 

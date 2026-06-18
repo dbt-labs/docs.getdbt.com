@@ -125,7 +125,7 @@ With this flag enabled, dbt will:
 
 ## Flags reaching maturity
 
-Several behavior change flags on the <Constant name="dbt_platform" /> Latest release track are planned to reach maturity on June 23, 2026, switching their default values from `false` to `true`. For intro dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
+Several behavior change flags on the <Constant name="dbt_platform" /> Latest release track are planned to reach maturity on June 29, 2026, switching their default values from `false` to `true`. For intro dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
 
 | Flag | Impact |
 |---|---|
