@@ -263,7 +263,7 @@ If you want to use both extensions, keep your ad hoc query files in a separate, 
 ```
 
 :::tip Autocomplete not working?
-If column autocomplete isn't working, it's probably not your file associations. Make sure [strict static analysis](/docs/dbt-extension-features) is enabled &mdash; that's what powers column-level suggestions from your warehouse.
+If column autocomplete isn't working, it's probably not your file associations. Make sure [strict static analysis](/docs/fusion/new-concepts?version=2.0&name=Fusion#configuring-static_analysis) is enabled &mdash; that's what powers column-level suggestions from your warehouse.
 :::
 
 ## Next steps
