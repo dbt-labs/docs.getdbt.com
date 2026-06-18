@@ -1206,7 +1206,7 @@ _Available in versions 1.11 or higher_
 ) }}
 ```
 
-dbt-databricks v1.12 adds support for key-only tags. To set a tag that has a key but no value, set the tag's value to an empty string `''` or to `None`:
+`dbt-databricks` v1.12+ adds support for key-only tags. To set a tag that has a key but no value, set the tag's value to an empty string `''` or to `None`:
 
 ```sql
 {{ config(
