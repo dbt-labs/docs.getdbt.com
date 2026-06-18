@@ -1308,6 +1308,7 @@ We support [on_configuration_change](/reference/resource-configs/on_configuratio
 | [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | `schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' }` | MV/ST | All |
 | [SCHEDULE EVERY](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters) | `schedule: { 'every': '\<n\> \<unit\>' }` | MV/ST | v1.12+ |
 | [TRIGGER ON UPDATE](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters) | `schedule: { 'on_update': true, 'at_most_every': '\<n\> \<unit\>' }` | MV/ST | v1.12+ |
+| [WITH ROW FILTER](https://docs.databricks.com/aws/en/tables/row-and-column-filters) | `row_filter` | MV/ST | v1.12+ |
 | query | defined by your model SQL | on_configuration_change for MV only | All |
 </SimpleTable>
 
@@ -1429,7 +1430,12 @@ If a schedule exists in Databricks but your dbt project doesn't specify one, the
  
 #### query
 For materialized views, if the compiled query differs from what's in the database, dbt takes the configured `on_configuration_change` action. Query changes aren't currently detectable for streaming tables. Refer to [on_configuration_change](#on_configuration_change) for details.
- 
+
+#### row_filter
+_Available in versions 1.12 or higher_
+
+`row_filter` applies a [Unity Catalog row filter](https://docs.databricks.com/aws/en/tables/row-and-column-filters) to a model. It is supported on `table`, `incremental`, `materialized_view`, and `streaming_table` materializations. Refer to [Setting row filters](#setting-row-filters) for the full config reference and examples.
+
 ### on_configuration_change
  
 | Materialization | Drop and recreate required? | Notes |
