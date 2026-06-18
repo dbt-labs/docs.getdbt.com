@@ -5,10 +5,8 @@ sidebar: "Introduced behavior flags"
 ---
 
 import AnalysesProjectLevelConfig from '/snippets/_analyses-project-level-config.md';
-import BehaviorFlagsMaturityCallout from '/snippets/_behavior-flags-maturity-callout.md';
 import StateModified from '/snippets/_state-modified-compare.md';
 
-<BehaviorFlagsMaturityCallout />
 
 The sections below document flags that have not yet reached maturity (default still `false`). For intro and maturity dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
 
@@ -16,9 +14,7 @@ The sections below document flags that have not yet reached maturity (default st
 
 ### Failures in on-run-start hooks {#failures-in-on-run-start-hooks}
 
-This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails).
-
-The flag is `false` by default.
+The flag is `false` by default in <Constant name="core" /> v1.11 and earlier; it reached maturity in <Constant name="core" /> v1.12. For more information, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails).
 
 Set the `skip_nodes_if_on_run_start_fails` flag to `true` to skip all selected resources from running if there is a failure on an `on-run-start` hook.
 
@@ -28,15 +24,13 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `true` to skip all selected r
 
 ### Source definitions for state:modified {#source-definitions-for-statemodified}
 
-This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#state_modified_compare_more_unrendered_values).
+The flag is `false` by default in <Constant name="core" /> v1.11 and earlier; it reached maturity in <Constant name="core" /> v1.12. For more information, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#state_modified_compare_more_unrendered_values).
 
 :::info
 
 <StateModified features={'/snippets/_state-modified-compare.md'}/>
 
 :::
-
-The flag is `false` by default.
 
 Set `state_modified_compare_more_unrendered_values` to `true` to reduce false positives during `state:modified` checks (especially when configs differ by target environment like `prod` vs. `dev`).
 
@@ -54,9 +48,7 @@ Source names and semantic model names should contain letters, numbers, and under
 
 ### MetricFlow time spine YAML {#metricflow-time-spine-yaml}
 
-This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#require_yaml_configuration_for_mf_time_spines).
-
-The `require_yaml_configuration_for_mf_time_spines` flag is set to `false` by default.
+The flag is `false` by default in <Constant name="core" /> v1.11 and earlier; it reached maturity in <Constant name="core" /> v1.12. For more information, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#require_yaml_configuration_for_mf_time_spines).
 
 In previous versions (dbt Core 1.8 and earlier), the MetricFlow time spine configuration was stored in a `metricflow_time_spine.sql` file.
 
@@ -70,9 +62,9 @@ The MetricFlow properties YAML file should have the `time_spine:` field. Refer t
 
 ### Custom microbatch strategy {#custom-microbatch-strategy}
 
-This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy).
+The flag is `false` by default in <Constant name="core" /> v1.11 and earlier; it reached maturity in <Constant name="core" /> v1.12. For more information, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#require_batched_execution_for_custom_microbatch_strategy).
 
-The `require_batched_execution_for_custom_microbatch_strategy` flag is set to `false` by default and is only relevant if you already have a custom microbatch macro in your project. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
+The `require_batched_execution_for_custom_microbatch_strategy` flag is only relevant if you already have a custom microbatch macro in your project. If you don't have a custom microbatch macro, you don't need to set this flag as dbt will handle microbatching automatically for any model using the [microbatch strategy](/docs/build/incremental-microbatch#how-microbatch-compares-to-other-incremental-strategies).
 
 Set the flag to `true` if you have a custom microbatch macro set up in your project. When the flag is set to `true`, dbt will execute the custom microbatch strategy in batches.
 
@@ -86,7 +78,7 @@ Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment va
 
 ### Cumulative metrics {#cumulative-metrics}
 
-This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#require_nested_cumulative_type_params).
+The flag is `false` by default in <Constant name="core" /> v1.11 and earlier; it reached maturity in <Constant name="core" /> v1.12. For more information, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#require_nested_cumulative_type_params).
 
 [Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), dbt Core v1.9 and newer. Currently, dbt will warn users if they have cumulative metrics improperly nested. To enforce the new format (resulting in an error instead of a warning), set the `require_nested_cumulative_type_params` to `true`.
 
@@ -152,7 +144,7 @@ flags:
 
 ### Macro argument validation {#macro-argument-validation}
 
-This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#validate_macro_args).
+The flag is `false` by default in <Constant name="core" /> v1.11 and earlier; it reached maturity in <Constant name="core" /> v1.12. For more information, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#validate_macro_args).
 
 dbt supports optional validation for macro arguments using the `validate_macro_args` flag. By default, the `validate_macro_args` flag is set to `false`, which means that dbt won't validate the names or types of documented macro arguments.
 
@@ -199,9 +191,7 @@ Macro argument validation runs during project parsing, not during macro executio
 
 ### Warn-error handler for all warnings {#warn-error-handler-for-all-warnings}
 
-This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#require_all_warnings_handled_by_warn_error).
-
-By default, the `require_all_warnings_handled_by_warn_error` flag is set to `false`.
+The flag is `false` by default in <Constant name="core" /> v1.11 and earlier; it reached maturity in <Constant name="core" /> v1.12. For more information, refer to [Mature behavior flags](/reference/global-configs/behavior-flag-maturity#require_all_warnings_handled_by_warn_error).
 
 When you set `require_all_warnings_handled_by_warn_error` to `true`, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `false`, only some warnings are processed by the handler while others may bypass it.
 
