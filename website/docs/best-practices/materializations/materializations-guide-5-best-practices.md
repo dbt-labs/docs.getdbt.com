@@ -54,6 +54,31 @@ models:
       +materialized: view
 ```
 
+### Ephemeral intermediate models
+
+Intermediate models sit between staging and marts, breaking up complex transformations into manageable pieces. Consider these aspects when choosing their materialization:
+
+- 🚫 Intermediate models are not accessed directly by end users. They exist to simplify mart logic.
+- 🧩 They serve as building blocks that get referenced by marts or other intermediate models.
+- 👻 This makes them ideal candidates for ephemeral materialization, which doesn't create objects in your warehouse.
+
+Ephemeral models are interpolated as <Term id="cte">CTE</Term> into the models that reference them. This keeps your warehouse clean and avoids cluttering it with models that aren't meant for direct querying:
+
+```yaml
+models:
+  jaffle_shop:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: ephemeral
+```
+
+:::tip When to avoid ephemeral models
+Ephemeral models can make troubleshooting more difficult since they don't exist as queryable objects. If you need to inspect intermediate results during development, consider materializing them as views in a custom schema with restricted permissions instead. This gives you visibility while keeping them separate from production models.
+:::
+
+For more details on intermediate model patterns, refer to [How we structure our dbt projects: Intermediate](/best-practices/how-we-structure/3-intermediate).
+
 ### Table and incremental marts
 
 As we’ve learned, views store only the logic of the transformation in the warehouse, so our runs take only a couple seconds per model (or less). What happens when we go to query the data though?

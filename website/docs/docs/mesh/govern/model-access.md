@@ -7,11 +7,11 @@ description: "Define model access with group capabilities"
 
 :::info "Model access" is not "User access"
 
-**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in <Constant name="cloud" /> to manage permissions. Refer to [User access](/docs/cloud/manage-access/about-user-access) for more info.
+**Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in <Constant name="dbt" /> to manage permissions. Refer to [User access](/docs/platform/manage-access/about-user-access) for more info.
 
 The two concepts will be closely related, as we develop multi-project collaboration workflows this year:
 - Users with access to develop in a dbt project can view and modify **all** models in that project, including private models.
-- Users in the same <Constant name="cloud" /> account _without_ access to develop in a project cannot view that project's private models, and they can take a dependency on its public models only.
+- Users in the same <Constant name="dbt" /> account _without_ access to develop in a project cannot view that project's private models, and they can take a dependency on its public models only.
 :::
 
 ## Related documentation
@@ -46,6 +46,7 @@ Each model can only belong to one `group`, and groups cannot be nested. If you s
 
 
 import ModelGovernanceRollback from '/snippets/_model-governance-rollback.md';
+import MacroAccessRestrictions from '/snippets/_macro-access-restrictions.md';
 
 <ModelGovernanceRollback />
 
@@ -68,6 +69,8 @@ dbt.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```
+
+<MacroAccessRestrictions />
 
 By default, all models are `protected`. This means that other models in the same project can reference them, regardless of their group. This is largely for backward compatibility when assigning groups to an existing set of models, as there may already be existing references across group assignments.
 
@@ -162,7 +165,7 @@ As we continue to develop multi-project collaboration, `access: public` will mea
 ### How do I ref a model from another project?
 
 You can `ref` a model from another project in two ways:
-1. [Project dependency](/docs/mesh/govern/project-dependencies): In <Constant name="cloud" /> Enterprise, you can use project dependencies to `ref`  a model. <Constant name="cloud" /> uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
+1. [Project dependency](/docs/mesh/govern/project-dependencies): In <Constant name="dbt" /> Enterprise, you can use project dependencies to `ref`  a model. <Constant name="dbt" /> uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
 2. ["Package" dependency](/docs/build/packages): Another way to `ref` a model from another project is to treat the other project as a package dependency. This requires installing the other project as a package, including its full source code, as well as its upstream dependencies.
 
 ### How do I restrict access to models defined in a package?

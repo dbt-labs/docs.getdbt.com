@@ -13,21 +13,21 @@ Whether you're using the CLI or working within the <Constant name="dbt_platform"
 <div className="grid--3-col">
 
 <Card
-    title="About dbt Core versions"
-    body="Information about how dbt Core is versioned and how to target those versions."
-    link="/docs/dbt-versions/core"
+    title="About dbt versions"
+    body="Learn about semantic versioning for dbt engines, and how long those versions are supported."
+    link="/docs/dbt-versions"
     icon="dbt-bit"/>
 
 <Card
     title="About release tracks"
     body="Learn about how versions of dbt align with the release tracks available on the dbt platform."
-    link="/docs/dbt-versions/cloud-release-tracks"
+    link="/docs/dbt-versions/dbt-release-tracks"
     icon="dbt-bit"/>
 
 <Card
     title="Upgrade versions in dbt platform"
     body="Instructions for upgrading your dbt platform projects to the latest version of dbt, including the Fusion Engine."
-    link="/docs/dbt-versions/upgrade-dbt-version-in-cloud"
+    link="/docs/dbt-versions/upgrade-dbt-platform-version"
     icon="dbt-bit"/>
 
 <Card
