@@ -30,7 +30,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 † When `table_format` is `iceberg`, `file_format` must be `delta`.
 
-‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook.
+‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
 <sup>^</sup> When `liquid_clustered_by` is enabled, dbt-databricks issues an `OPTIMIZE` (Liquid Clustering) operation after each run. To disable this behavior, set the variable `DATABRICKS_SKIP_OPTIMIZE=true`, which can be passed into the dbt run command (`dbt run --vars "{'databricks_skip_optimize': true}"`) or set as an environment variable. See [issue #802](https://github.com/databricks/dbt-databricks/issues/802).
 
@@ -151,7 +151,7 @@ When materializing models of various types, you may include several optional col
 \* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters).
 
 
-† `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook.
+† `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
 This example uses the column-level configurations in the previous table:
 
@@ -170,6 +170,35 @@ models:
         column_mask:
           function: my_catalog.my_schema.mask_email
           using_columns: "customer_id, 'literal string'"
+```
+
+</File>
+
+## Setting row filters
+_Available in versions 1.12 or higher_
+
+You can set `row_filter` to apply a [Unity Catalog row filter](https://docs.databricks.com/aws/en/tables/row-and-column-filters) to a model, restricting which rows a query returns based on a SQL UDF. dbt applies the filter with a `WITH ROW FILTER` clause when it creates the relation, and emits `ALTER ... SET ROW FILTER` / `ALTER ... DROP ROW FILTER` to add, update, or remove the filter on subsequent runs.
+
+`row_filter` is an optional model-level config. When you set it, both of the following properties are required:
+
+| Property   | Description   | Required?| Example  |
+|------------|---------------|----------|----------|
+| function   | The row-filter UDF to apply. Provide either an unqualified name (dbt qualifies it with the model's catalog and schema) or a fully qualified `catalog.schema.function`. dbt rejects a two-part schema.function name as ambiguous. | Yes | `region_filter` |
+| columns    | The columns passed as arguments to the filter function. Can be a single string or a list. Required when `function` is set. | Yes | `[region]` |
+
+Row filters are supported on the `table`, `incremental`, `materialized_view`, and `streaming_table` materializations. They are _not_ supported on regular views or on Hive Metastore relations. Configuring `row_filter` on either raises a compiler error.
+
+This example applies a row filter to a model:
+
+<File name='schema.yml'>
+
+```yaml
+models:
+  - name: orders
+    config:
+      row_filter:
+        function: my_catalog.my_schema.region_filter
+        columns: [region]
 ```
 
 </File>
@@ -1279,6 +1308,7 @@ We support [on_configuration_change](/reference/resource-configs/on_configuratio
 | [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | `schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' }` | MV/ST | All |
 | [SCHEDULE EVERY](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters) | `schedule: { 'every': '\<n\> \<unit\>' }` | MV/ST | v1.12+ |
 | [TRIGGER ON UPDATE](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view#parameters) | `schedule: { 'on_update': true, 'at_most_every': '\<n\> \<unit\>' }` | MV/ST | v1.12+ |
+| [WITH ROW FILTER](https://docs.databricks.com/aws/en/tables/row-and-column-filters) | `row_filter` | MV/ST | v1.12+ |
 | query | defined by your model SQL | on_configuration_change for MV only | All |
 </SimpleTable>
 
@@ -1327,7 +1357,56 @@ _Available in versions 1.11 or higher_
 ) }}
 ```
 
+`dbt-databricks` v1.12+ adds support for key-only tags. To set a tag that has a key but no value, set the tag's value to an empty string `''` or to `None`:
+
+```sql
+{{ config(
+    materialized='streaming_table',
+    databricks_tags={'sensitive': '', 'reviewed': None}
+) }}
+```
+
+This applies to both table-level and column-level `databricks_tags`. Non-string values, such as numbers or booleans, are converted to strings.
+
 Tags are applied via `ALTER` statements after the materialization is created. Once applied, tags cannot be removed through dbt-databricks configuration changes. To remove tags, you must use Databricks directly or a post-hook.
+
+:::caution Behavior change in v1.12
+Starting in `dbt-databricks` v1.12.0, `databricks_tags` configurations are merged additively across config hierarchy levels (for example, project-level and model-level), rather than having lower-level configs completely replace higher-level ones.
+
+When the same tag key is defined at multiple levels, the lower-level value takes precedence. Tag keys defined only at higher levels are retained.
+
+This behavior applies anywhere `databricks_tags` can be configured, including tables, columns, materialized views, and streaming tables.
+:::
+
+For example, with the following project-level and model-level configs:
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  my_project:
+    +databricks_tags:
+      a: "b"
+      c: "project_value"
+```
+
+</File>
+
+<File name='models/my_model.sql'>
+
+```sql
+{{ config(
+    databricks_tags={'c': 'model_value', 'k': 'v'}
+) }}
+```
+
+</File>
+
+The resulting tags are:
+
+- `a: b` — retained from the project level
+- `c: model_value` — the model-level value overrides the project-level `c`
+- `k: v` — added at the model level
 
 #### description
 As with views and tables, adding a `description` to your configuration will lead to a table-level comment getting added to your materialization.
@@ -1351,7 +1430,12 @@ If a schedule exists in Databricks but your dbt project doesn't specify one, the
  
 #### query
 For materialized views, if the compiled query differs from what's in the database, dbt takes the configured `on_configuration_change` action. Query changes aren't currently detectable for streaming tables. Refer to [on_configuration_change](#on_configuration_change) for details.
- 
+
+#### row_filter
+_Available in versions 1.12 or higher_
+
+`row_filter` applies a [Unity Catalog row filter](https://docs.databricks.com/aws/en/tables/row-and-column-filters) to a model. It is supported on `table`, `incremental`, `materialized_view`, and `streaming_table` materializations. Refer to [Setting row filters](#setting-row-filters) for the full config reference and examples.
+
 ### on_configuration_change
  
 | Materialization | Drop and recreate required? | Notes |
