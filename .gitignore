@@ -31,3 +31,6 @@ website/i18n/*
 website/snippets/_mcp-tools-from-readme.md
 # Auto-generated at build time by scripts/generate-functions-snippet.js
 website/snippets/_functions-table-*.md
+
+# Weekly editorial sweep scratch output
+sweep-output/

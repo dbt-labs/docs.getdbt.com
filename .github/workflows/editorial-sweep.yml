@@ -1,0 +1,146 @@
+name: Monthly editorial sweep
+
+# Runs on the 1st of each month at 09:00 UTC (GMT) and on demand. Scans recently changed
+# docs for small editorial issues — broken links, typos, and brand/style
+# violations (dbt Cloud, DBT, Coalesce, em dashes in bullets, Latin
+# abbreviations, sentence-case headers) — using lychee + Vale + regex. Opens a
+# draft PR for the unambiguous auto-fixes (e.g. DBT -> dbt) and posts a summary
+# of everything (including report-only findings) to Slack.
+#
+# Required repo secret:
+#   SLACK_WEBHOOK_URL  incoming webhook bound to the #docs private channel.
+
+on:
+  schedule:
+    - cron: '0 9 1 * *' # 1st of each month, 09:00 UTC
+  workflow_dispatch:
+    inputs:
+      full_repo:
+        description: 'Scan the entire docs set instead of just the last 30 days of changes'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: current
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Compute changed docs (last 30 days)
+        id: changed
+        run: |
+          mkdir -p sweep-output
+          if [ "${{ inputs.full_repo }}" = "true" ]; then
+            FILES=$(git ls-files 'website/docs/**/*.md' 'website/docs/**/*.mdx' 'website/snippets/**/*.md' 'website/snippets/**/*.mdx')
+          else
+            BASE=$(git rev-list -1 --before='30 days ago' current || true)
+            if [ -n "$BASE" ]; then
+              FILES=$(git diff --name-only "$BASE" current -- 'website/docs/**' 'website/snippets/**' | grep -E '\.(md|mdx)$' || true)
+            else
+              FILES=$(git ls-files 'website/docs/**/*.md' 'website/docs/**/*.mdx')
+            fi
+          fi
+          # keep only files that still exist
+          EXISTING=""
+          for f in $FILES; do [ -f "$f" ] && EXISTING="$EXISTING $f"; done
+          echo "files=$(echo $EXISTING | xargs)" >> "$GITHUB_OUTPUT"
+          echo "count=$(echo $EXISTING | wc -w | xargs)" >> "$GITHUB_OUTPUT"
+          echo "Changed docs: $EXISTING"
+
+      - name: Set up Python
+        if: steps.changed.outputs.count != '0'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Vale
+        if: steps.changed.outputs.count != '0'
+        run: pip install vale==3.9.1.0
+
+      - name: Run Vale (JSON)
+        if: steps.changed.outputs.count != '0'
+        continue-on-error: true
+        run: |
+          vale --output=JSON ${{ steps.changed.outputs.files }} > sweep-output/vale.json || true
+          echo "Vale output written."
+
+      - name: Run lychee link checker (JSON)
+        if: steps.changed.outputs.count != '0'
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --config .github/lychee.toml --format json --output sweep-output/lychee.json ${{ steps.changed.outputs.files }}
+          fail: false
+          output: sweep-output/lychee.json
+
+      - name: Detect findings and safe fixes
+        env:
+          SWEEP_FULL_REPO: ${{ inputs.full_repo == true && '1' || '' }}
+        run: node website/scripts/editorial-sweep.js detect
+
+      - name: Open one PR per category
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          MONTH=$(date -u +%Y-%m)
+          echo '{}' > sweep-output/prs.json
+
+          # links + typos are report-only (no safe automatic fix); brand-style
+          # carries the unambiguous auto-fixes.
+          for CAT in brand-style; do
+
+            BRANCH="sweep/${CAT}-${MONTH}"
+            git checkout -B "$BRANCH" current
+            node website/scripts/editorial-sweep.js apply "$CAT"
+
+            if git diff --quiet -- 'website'; then
+              echo "No $CAT fixes to commit."
+              git checkout current
+              continue
+            fi
+
+            git add website
+            git commit -m "Editorial sweep: ${CAT} fixes (${MONTH})"
+            git push -f origin "$BRANCH"
+
+            TITLE="Editorial sweep: ${CAT} fixes (${MONTH})"
+            BODY=$'Automated monthly editorial sweep. Small, low-risk fixes for the docs team to review and approve.\n\nDetected by lychee + Vale + brand/style checks. Please skim the diff and reject anything that reads wrong.'
+            URL=$(gh pr list --head "$BRANCH" --json url --jq '.[0].url' 2>/dev/null || true)
+            if [ -z "$URL" ]; then
+              URL=$(gh pr create --base current --head "$BRANCH" --draft \
+                --title "$TITLE" --body "$BODY" --label "documentation" 2>/dev/null || true)
+            fi
+            echo "$CAT -> $URL"
+            jq --arg c "$CAT" --arg u "$URL" '. + {($c): $u}' sweep-output/prs.json > sweep-output/prs.tmp && mv sweep-output/prs.tmp sweep-output/prs.json
+
+            git checkout current
+          done
+
+      - name: Build summary
+        env:
+          SWEEP_FULL_REPO: ${{ inputs.full_repo == true && '1' || '' }}
+        run: node website/scripts/editorial-sweep.js summary
+
+      - name: Post to Slack
+        if: ${{ env.SLACK_WEBHOOK_URL != '' }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -sf -X POST -H 'Content-type: application/json' \
+            --data @sweep-output/slack.json "$SLACK_WEBHOOK_URL" && echo "Posted to Slack."
