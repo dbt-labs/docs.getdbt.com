@@ -30,7 +30,7 @@ dbt-databricks v1.9 adds support for the `table_format: iceberg` config. Try it 
 
 † When `table_format` is `iceberg`, `file_format` must be `delta`.
 
-‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. As of dbt-databricks v1.12.0, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) rather than the lower level fully replacing the higher one.
+‡ `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
 <sup>^</sup> When `liquid_clustered_by` is enabled, dbt-databricks issues an `OPTIMIZE` (Liquid Clustering) operation after each run. To disable this behavior, set the variable `DATABRICKS_SKIP_OPTIMIZE=true`, which can be passed into the dbt run command (`dbt run --vars "{'databricks_skip_optimize': true}"`) or set as an environment variable. See [issue #802](https://github.com/databricks/dbt-databricks/issues/802).
 
@@ -151,7 +151,7 @@ When materializing models of various types, you may include several optional col
 \* `using_columns` supports all parameter types listed in [Databricks column mask parameters](https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-column-mask#parameters).
 
 
-† `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. As of dbt-databricks v1.12.0, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) rather than the lower level fully replacing the higher one.
+† `databricks_tags` are applied via `ALTER` statements. Tags cannot be removed via dbt-databricks once applied. To remove tags, use Databricks directly or a post-hook. Starting in `dbt-databricks` v1.12, `databricks_tags` set at multiple config hierarchy levels [merge additively](#databricks_tags) instead of the lower (more specific) level fully replacing the higher one.
 
 This example uses the column-level configurations in the previous table:
 
@@ -1329,8 +1329,12 @@ _Available in versions 1.11 or higher_
 
 Tags are applied via `ALTER` statements after the materialization is created. Once applied, tags cannot be removed through dbt-databricks configuration changes. To remove tags, you must use Databricks directly or a post-hook.
 
-:::caution Breaking change in v1.12.0
-As of dbt-databricks v1.12.0, `databricks_tags` set at different config hierarchy levels (for example, project-level and model-level) merge additively instead of the lower-level config completely replacing the higher-level one. Keys defined at the lower level override matching keys from the higher level, and any other keys from the higher level are retained. This applies wherever `databricks_tags` is set, including tables, columns, materialized views, and streaming tables.
+:::caution Behavior change in v1.12
+Starting in `dbt-databricks` v1.12.0, `databricks_tags` configurations are merged additively across config hierarchy levels (for example, project-level and model-level), rather than having lower-level configs completely replace higher-level ones.
+
+When the same tag key is defined at multiple levels, the lower-level value takes precedence. Tag keys defined only at higher levels are retained.
+
+This behavior applies anywhere `databricks_tags` can be configured, including tables, columns, materialized views, and streaming tables.
 :::
 
 For example, with the following project-level and model-level configs:
@@ -1357,7 +1361,11 @@ models:
 
 </File>
 
-The model is tagged with `a: b` (kept from the project level), `c: model_value` (the model-level value overrides the project-level `c`), and `k: v` (added at the model level).
+The resulting tags are:
+
+- `a: b` — retained from the project level
+- `c: model_value` — the model-level value overrides the project-level `c`
+- `k: v` — added at the model level
 
 #### description
 As with views and tables, adding a `description` to your configuration will lead to a table-level comment getting added to your materialization.
