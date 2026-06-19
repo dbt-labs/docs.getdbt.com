@@ -51,7 +51,6 @@ function generateForPlatform(platform) {
 
   const raw = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   const functions = raw.functions || [];
-  const fetchedAt = raw._meta?.fetched_at ?? 'unknown';
 
   let content;
   if (functions.length === 0) {
@@ -60,7 +59,7 @@ function generateForPlatform(platform) {
 _Function data has not yet been populated. Trigger the \`update-platform-functions\` GitHub Action to generate it._
 `;
   } else {
-    content = `<!-- Auto-generated from ${platform.id}.json (${functions.length} functions, fetched ${fetchedAt}). Do not edit directly. -->
+    content = `<!-- Auto-generated from ${platform.id}.json (${functions.length} functions). Do not edit directly. -->
 
 ${buildTable(functions)}
 `;
