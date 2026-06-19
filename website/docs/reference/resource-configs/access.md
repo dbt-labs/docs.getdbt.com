@@ -23,7 +23,7 @@ Note that for backwards compatibility, `access` is supported as a top-level key,
 
 There are multiple approaches to configuring access:
 
-- In `properties.yml` using the older method: 
+- In `properties.yml` using the older method (dbt v 1.9 and older), top-level &mdash; directly under the model: 
 
   <File name='models/properties_my_public_model.yml'>
   
@@ -31,14 +31,12 @@ There are multiple approaches to configuring access:
   
   models:
     - name: my_public_model
-      config:
-        access: public # Older method, still supported
-          # changed to config in v1.10
+      access: public
       
   ```
   </File>
   
-- In `properties.yml` using the new method (for v1.7 or higher). Use either the older method or the new method, but not both for the same model:
+- In `properties.yml` using the latest method (for v1.10 or higher). Use either the older method or the latest method, but not both for the same model:
 
   <File name='models/properties_my_public_model.yml'>
   

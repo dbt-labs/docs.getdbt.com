@@ -81,7 +81,7 @@ models:
 
 The `latest_version_pointer` config creates a view named after a [versioned model's](/docs/mesh/govern/model-versions) base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). The view is created after the model with `is_latest_version = true` materializes successfully and is skipped for all other versions.
 
-You can also enable this feature globally for all versioned models by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`:
+You can also enable this feature globally for all versioned models by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
@@ -112,6 +112,6 @@ By default, the pointer view uses the model's base name (for example, `dim_custo
 
 - [Model versions](/docs/mesh/govern/model-versions)
 - [Pointing to the latest version](/docs/mesh/govern/model-versions#pointing-to-the-latest-version)
-- [`latest_version_pointer_enabled_by_default` flag](/reference/global-configs/behavior-changes#latest-version-pointer-for-versioned-models)
+- [`latest_version_pointer_enabled_by_default` flag](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models)
 - [`versions`](/reference/resource-properties/versions)
 - [`latest_version`](/reference/resource-properties/latest_version)
