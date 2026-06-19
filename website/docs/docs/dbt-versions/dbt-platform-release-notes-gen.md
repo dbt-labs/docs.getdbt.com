@@ -17,6 +17,18 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## June 17, 2026
+
+## Enhancements
+
+### dbt Wizard and agents
+
+- **OAuth scopes declared in Model Context Protocol resource metadata**: The Model Context Protocol (MCP) protected resource metadata endpoint now advertises the OAuth scopes it supports (`offline_access`, `account:read`, `projects:query`, `catalog:read`, `projects:develop`, and `jobs:run`). MCP clients that perform dynamic capability discovery can now request the correct scopes automatically.
+
+### dbt platform
+
+- **dbt State in development**: [Enable dbt State](/docs/deploy/dbt-state-setup#enabling-dbt-state-in-studio) in development environments, or override it per user in **User development settings**. Requires dbt State to be enabled on the account by an admin.
+- **dbt State disabled for unsupported warehouse adapters on jobs**: The dbt State checkbox in job settings is now disabled when the job's environment uses an unsupported warehouse adapter. A help icon displays a tooltip explaining the limitation, and the feature is automatically removed from the job payload on save.
 
 ## June 10, 2026
 
