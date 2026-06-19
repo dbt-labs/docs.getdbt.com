@@ -802,21 +802,17 @@ select ...
 
 </File>
 
-**Note:**
-The `hours_to_expiration` only applies to initial creation of the underlying table. It doesn't reset for incremental models when they do another run.
-To override this behaviour, you can call a macro in the +post-hook section that resets incremental tables
+The `hours_to_expiration` config only applies when the underlying table is first created. It doesn't reset on incremental runs.To work around this, call a macro in your +post-hook that resets the expiration timestamp manually. Update the hours argument to match your hours_to_expiration value.
 
 **Example macro SQL:**
 
 ```sql
-{% macro reset_expiration_for_incremental() %}
+{% macro reset_expiration_for_incremental(hours) %}
   -- Check if the current model is being run incrementally
   {% if is_incremental() %}
-    -- Set expiration timestamp for the table because it's only set on creation, not on merge
-    ALTER TABLE {{ this }} 
-        SET OPTIONS (expiration_timestamp = TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 336 HOUR))
-  {% else %}
-    SELECT 1;
+    -- Set expiration timestamp because it's only applied on creation, not on merge
+    ALTER TABLE {{ this }}
+      SET OPTIONS (expiration_timestamp = TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL {{ hours }} HOUR))
   {% endif %}
 {% endmacro %}
 ```
@@ -826,8 +822,7 @@ To override this behaviour, you can call a macro in the +post-hook section that 
 models:
   my_project:
     +post-hook:
-      - "{{ reset_expiration_for_incremental() }}"
-
+      - "{{ reset_expiration_for_incremental(hours=6) }}"
 ```
 
 </File>
