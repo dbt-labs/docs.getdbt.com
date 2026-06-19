@@ -40,6 +40,14 @@ Without dbt State, every selected node rebuilds on every run regardless of wheth
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
+### Daily active target tables
+
+Daily active target tables (DATT) are measured as the number of distinct target tables for which dbt State performs at least one of the following unique operations on a given day (based on UTC time): a skip, clone, or test reuse.
+
+A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, and dbt models (including incremental models). It also includes each distinct test (even if the tests are not built into the database because `store_failures` is disabled). For example, if `stg_customers` has `not_null` and `unique` tests on its `id` column, that's three target tables: the model and its two tests.
+
+When you run `dbt build` or a similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules. All reuses of the same active target table in a single day (based on UTC time) are counted as a single daily active target table (DATT).
+
 ## Supported data warehouses
 
 dbt State is supported on the following data warehouses:
