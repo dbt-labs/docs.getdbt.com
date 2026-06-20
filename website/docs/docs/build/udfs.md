@@ -89,6 +89,24 @@ Follow these steps to define UDFs in dbt:
         return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
     ```
     </File>
+
+    :::info Databricks
+    On Databricks, the contents of the `.py` file become the UDF body verbatim, and Databricks evaluates that body directly instead of calling a named entry point. Write the body so its last statement is a top-level `return` that produces the result. Because of that top-level `return`, the Databricks source is a function _body_, not a runnable `.py` module:
+
+    <File name='functions/is_positive_int.py'>
+
+    ```py
+    import re
+
+    def main(a_string):
+        return 1 if re.search(r'^[0-9]+$', a_string or '') else 0
+
+    return main(a_string)
+    ```
+    </File>
+
+    Python UDFs on Databricks require Unity Catalog.
+    :::
     </TabItem>
     <TabItem value="JavaScript">
     Define a JavaScript UDF in a JavaScript file.
@@ -171,18 +189,7 @@ Follow these steps to define UDFs in dbt:
     You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. List package names, such as `numpy` and `pandas`, and optionally pin versions, such as `pandas==1.5.0`. The warehouse installs these packages when it creates the UDF, so your UDF can use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before you can use them.
 
     :::info Databricks Python UDFs
-    On Databricks, `runtime_version` and `entry_point` are accepted for cross-adapter compatibility but have no effect. Databricks manages the Python runtime internally and uses the function body directly, so dbt displays a warning if you set them. Python UDFs on Databricks require Unity Catalog. Because Databricks uses the body directly rather than calling a named entry point, write the function body so its last statement is a `return`. For example:
-
-    <File name='functions/price_for_xlarge.py'>
-
-    ```py
-    def price_for_xlarge(price):
-        return price * 2
-
-    return price_for_xlarge(price)
-    ```
-
-    </File>
+    On Databricks, `runtime_version` and `entry_point` are accepted for cross-adapter compatibility but have no effect — Databricks manages the Python runtime internally and uses the function body directly, so dbt displays a warning if you set them. Python UDFs on Databricks also require Unity Catalog. For how the function body must be written (the body is used directly, so its last statement must be a top-level `return`), see the Databricks note under the Python source in Step 1.
     :::
 
     :::info Beta feature
@@ -384,7 +391,7 @@ Follow these steps to define UDFs in dbt:
     $$;
     ```
 
-    Databricks omits the `RUNTIME_VERSION` and `HANDLER` clauses. The runtime is managed internally and the function body is used directly.
+    Databricks omits the `RUNTIME_VERSION` and `HANDLER` clauses. The runtime is managed internally, and the contents of your `.py` file become the function body verbatim — including the trailing `return main(a_string)` that produces the result.
     </TabItem>
     </Tabs>
     </TabItem>
