@@ -60,7 +60,6 @@ The SQL on this page uses placeholders. Replace each one with your own value bef
 | `<mcp_server_name>` | A name for the external MCP server object. |
 | `<agent_name>` | A name for the Cortex agent. |
 | `<cortex_model>` | The orchestration model for the agent (for example, `claude-4-sonnet`). |
-
 ## Step 1: Create the API integration
 
 Run this as `ACCOUNTADMIN`. The integration tells Snowflake how to reach the remote dbt MCP endpoint and how to complete OAuth using Dynamic Client Registration with PKCE (no client secret).
@@ -92,7 +91,7 @@ Grant your role the ability to create an external MCP server, then create one th
 GRANT CREATE EXTERNAL MCP SERVER ON SCHEMA <target_database>.<target_schema> TO ROLE <target_role>;
 
 -- Create an external MCP server pointing to the remote dbt MCP endpoint.
-CREATE EXTERNAL MCP SERVER IF NOT EXISTS <mcp_server_name>
+CREATE EXTERNAL MCP SERVER IF NOT EXISTS <target_database>.<target_schema>.<mcp_server_name>
   WITH DISPLAY_NAME = 'dbt Semantic Layer MCP'
   URL = 'https://YOUR_DBT_HOST_URL/api/ai/v1/mcp'
   API_INTEGRATION = <integration_name>;
