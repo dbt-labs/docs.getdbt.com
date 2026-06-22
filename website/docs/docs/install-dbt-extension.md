@@ -8,7 +8,7 @@ image: /img/docs/extension/extension-marketplace.png
 
 # Install the dbt VS Code extension <Lifecycle status="preview" />
 
-import InstallExtension from '/snippets/_install-dbt-extension.md'; 
+import InstallExtension from '/snippets/_install-dbt-extension.md';
 
 <InstallExtension/>
 
