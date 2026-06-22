@@ -22,9 +22,10 @@ This summary provides an overview of the default rate limits across the main API
 - [Administrative API](/docs/dbt-apis/admin-api): 5,000 requests per minute per account (`/api/`).
 - [Discovery API](/docs/dbt-apis/discovery-api) (GraphQL): 500 requests per minute (`/graphql/`).
 - [SCIM and IdP provisioning](#scim-and-idp-provisioning): 20 requests every 5 seconds per account.
-- [Remote MCP](#remote-mcp): Same limits as the Administrative and Discovery APIs.
+- [Remote MCP](#remote-mcp): 5,000 requests per minute per IP (global API rate limit).
+- [Local MCP](#local-mcp): Subject to the public Administrative and Discovery API limits above.
 
-For SCIM scope, throttling responses, and identity provider behavior, refer to [SCIM and IdP provisioning](#scim-and-idp-provisioning) and [Set up SCIM](/docs/platform/manage-access/scim) for account configuration. For remote MCP integration and usage patterns, refer to [Remote MCP](#remote-mcp).
+For SCIM scope, throttling responses, and identity provider behavior, refer to [SCIM and IdP provisioning](#scim-and-idp-provisioning) and [Set up SCIM](/docs/platform/manage-access/scim) for account configuration. For MCP integration and usage patterns, refer to [Remote MCP](#remote-mcp) and [Local MCP](#local-mcp).
 
 ## Pagination and the Discovery API
 
@@ -42,9 +43,13 @@ For configuration steps, use [Set up SCIM](/docs/platform/manage-access/scim). F
 
 ## Remote MCP
 
-[Remote MCP](/docs/dbt-ai/about-mcp) does not define its own requests-per-minute cap. It uses the same authentication as other integrations (for example, personal access tokens, service account tokens, or OAuth where supported), and each underlying HTTP request counts against the same limits as a direct API client: 5,000 requests per minute for `/api/` (Administrative API) and 500 requests per minute for `/graphql/` (Discovery API), as summarized above. Calls to other platform endpoints consume those endpoints’ limits when applicable.
+[Remote MCP](/docs/dbt-ai/about-mcp) uses the same default global API rate limit as other <Constant name="dbt" /> APIs: 5,000 requests per minute per IP. It uses the same authentication as other integrations (for example, personal access tokens, service account tokens, or OAuth where supported).
 
-Treat MCP-driven automation like any other API client: reuse sensible page sizes for GraphQL, avoid retrying over and over with no pause, and wait before trying again when you receive `429` responses (wait longer if you still get `429` responses).
+Treat remote MCP automation like any other API client: avoid retrying over and over with no pause, and wait before trying again when you receive `429` responses (wait longer if you still get `429` responses).
+
+## Local MCP
+
+[Local MCP](/docs/dbt-ai/about-mcp) calls the public [Administrative API](/docs/dbt-apis/admin-api) and [Discovery API](/docs/dbt-apis/discovery-api) directly, so those limits apply: 5,000 requests per minute per account for `/api/` and 500 requests per minute for `/graphql/`, as summarized above.
 
 ## Exceeding the rate limit
 
