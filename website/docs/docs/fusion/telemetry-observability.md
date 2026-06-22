@@ -49,7 +49,7 @@ OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" dbtf build --export-to-otlp
 
 ### Download telemetry from platform job runs
 
-On the <Constant name="dbt_platform" />, Fusion job runs store OTel telemetry as Parquet artifacts for dbt command steps. From a completed run, open the **Run summary** tab, select a step, and click **Download** > **Download OTel log**. The option appears only for <Constant name="fusion"/> runs where the step produced an OTel file. For step-by-step instructions, refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
+On the <Constant name="dbt_platform" />, <Constant name="fusion"/> job runs store OTel telemetry as Parquet artifacts for dbt command steps. From a completed run, open the **Run summary** tab, select a step, and click **Download** > **Download OTel log**. The option appears only for <Constant name="fusion"/> runs where the step produced an OTel file. For step-by-step instructions, refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
 
 ## Telemetry data
 
