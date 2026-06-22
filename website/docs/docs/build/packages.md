@@ -218,7 +218,7 @@ packages:
 :::info Azure DevOps considerations and limitations
 There are some considerations and limitations when using native private packages from Azure DevOps. Open the expandable section to learn more.
 
-<Expandable alt_header="Azure DevOps considerations and limitations">
+<Expandable alt_header="Native private packages and Azure DevOps limitations">
 
 1. Use the `ado` provider and specify the `org/project/repo` path in the `private` key.
 
