@@ -44,7 +44,7 @@ Your sign-in session stays active across editor restarts. dbt automatically rene
 
 When re-authorizing, the **Authorize dbt login** consent screen lists the access being requested. Click **Allow access** to continue.
 
-## Choose a sign-in path
+## Choose a sign-in path {#choose-a-sign-in-path}
 
 There are a couple of different ways to sign in or register for a <Constant name="dbt_platform" /> account. Choose the best path for you:
 
@@ -206,9 +206,9 @@ If your dbt project uses environment variables, configure them locally so the ex
 
 </Tabs>
 
-## Troubleshooting
+## Troubleshooting {#troubleshooting}
 
-<!-- This anchor is linked from the VS Code extension. Please do not change it -->
+<!-- This anchor is linked from the VS Code extension and install-dbt-extension legacy redirects. Please do not change it. -->
 
 <FusionTroubleshooting />
 
