@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import VersionContext from '../../stores/VersionContext';
 import { availableInCurrentVersion } from '../../utils/available-in-current-version';
 
@@ -15,12 +15,7 @@ import { availableInCurrentVersion } from '../../utils/available-in-current-vers
 export default function VersionBlock({ firstVersion = "0", lastVersion = undefined, product = undefined, children }) {
   const { version, product: currentProduct } = useContext(VersionContext);
 
-  const [loading, setLoading] = useState(true);
 
-  // Hide until version is resolved from context (prevents hydration mismatch)
-  useEffect(() => {
-    version && setLoading(false);
-  }, [version]);
 
   if (version) {
     // Product filter: hide if a specific product is required but doesn't match
@@ -30,5 +25,5 @@ export default function VersionBlock({ firstVersion = "0", lastVersion = undefin
     if (!availableInCurrentVersion(version, firstVersion, lastVersion)) return null;
   }
 
-  return loading ? null : <>{children}</>;
+  return <>{children}</>;
 }

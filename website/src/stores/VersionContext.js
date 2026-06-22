@@ -63,7 +63,7 @@ function getDefaultSubProductName() {
   return products[0]?.subProducts[0]?.name;
 }
 
-const defaultSubProductName = getDefaultSubProductName();
+const defaultSubProductName = "dbt platform (latest)";
 const defaultSubProduct = findSubProduct(defaultSubProductName);
 
 const VersionContext = createContext({
