@@ -356,6 +356,26 @@
       "permanent": true
     },
     {
+      "source": "/docs/install-dbt-extension/register-with-an-existing-dbt-account",
+      "destination": "/docs/sign-in-dbt-extension?registration-path=existing-account#existing-dbt-account",
+      "permanent": true
+    },
+    {
+      "source": "/docs/install-dbt-extension/register-the-extension",
+      "destination": "/docs/sign-in-dbt-extension#choose-a-sign-in-path",
+      "permanent": true
+    },
+    {
+      "source": "/docs/install-dbt-extension/choose-your-registration-path",
+      "destination": "/docs/sign-in-dbt-extension#choose-a-sign-in-path",
+      "permanent": true
+    },
+    {
+      "source": "/docs/install-dbt-extension/troubleshooting",
+      "destination": "/docs/sign-in-dbt-extension#troubleshooting",
+      "permanent": true
+    },
+    {
       "source": "/docs/fusion/install-fusion-cli",
       "destination": "/docs/local/install-dbt",
       "permanent": true

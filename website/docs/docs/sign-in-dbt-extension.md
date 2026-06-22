@@ -208,7 +208,7 @@ If your dbt project uses environment variables, configure them locally so the ex
 
 ## Troubleshooting {#troubleshooting}
 
-<!-- This anchor is linked from the VS Code extension and install-dbt-extension legacy redirects. Please do not change it. -->
+<!-- This anchor is linked from the VS Code extension. Please do not change it -->
 
 <FusionTroubleshooting />
 
