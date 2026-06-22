@@ -18,7 +18,7 @@ Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Consta
 
 If you want to learn more about webhooks, refer to [Webhooks for your jobs](/docs/deploy/webhooks).
 
-For request quotas and throttling behavior, refer to [API rate limits](/docs/dbt-apis/rate-limits).
+<Snippet path="api-rate-limits-callout" />
 
 ## How to Access the APIs
 

@@ -11,7 +11,7 @@ By leveraging the metadata in <Constant name="dbt" />, you can create systems fo
 
 You can access the Discovery API through [ad hoc queries](/docs/dbt-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using <Constant name="dbt" /> features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles](/docs/explore/data-tile).
 
-For request quotas, pagination guidance, and throttling behavior, refer to [API rate limits](/docs/dbt-apis/rate-limits).
+<Snippet path="api-rate-limits-callout-discovery" />
 
 <Lightbox src="/img/docs/dbt-platform/discovery-api/discovery-api-figure.png" width="80%" title="A rich ecosystem for integration "/>
 
