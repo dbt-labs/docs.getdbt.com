@@ -17,14 +17,6 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
-## June 22, 2026
-
-## Enhancements
-
-### APIs, Identity, and Administration
-
-- **Private endpoint API operations now in API reference**: The [Administrative API v3](/dbt-cloud/api-v3) reference now includes list, create, retrieve, update, and delete operations for private endpoints. These endpoints were previously omitted from the public API docs. Self-serve create, update, and delete may still require your account manager to enable the corresponding feature for your account.
-
 ## June 17, 2026
 
 ## Enhancements
