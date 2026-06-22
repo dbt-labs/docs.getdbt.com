@@ -7,7 +7,7 @@ import MDXContent from "@theme/MDXContent";
 import IntroText from "@site/src/components/IntroText";
 import QuickstartTOC from "@site/src/components/quickstartTOC";
 import {QuickstartGuideTitle} from "../../../components/quickstartGuideCard";
-import { Feedback } from "../../../components/feedback";
+
 
 function useSyntheticTitle() {
   const { metadata, frontMatter, contentTitle } = useDoc();
@@ -56,7 +56,7 @@ export default function DocItemContent({ children }) {
         <MDXContent>{children}</MDXContent>
       )}
 
-      <Feedback />
+
     </div>
   );
 }
