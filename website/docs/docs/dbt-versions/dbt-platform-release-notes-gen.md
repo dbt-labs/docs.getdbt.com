@@ -17,6 +17,14 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## June 16, 2026
+
+## Enhancements
+
+### Orchestration
+
+- **Download OTel logs from Fusion job runs**: The run step **Download** menu now includes **Download OTel log** for Fusion dbt command steps that produced an OpenTelemetry Parquet artifact. Use it to export step telemetry for debugging and analysis. For more information, refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
+
 ## June 17, 2026
 
 ## Enhancements
