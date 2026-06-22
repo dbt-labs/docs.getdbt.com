@@ -12,13 +12,17 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 The sections below document flags that have not yet reached maturity (default still `false`). For intro and maturity dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
 
-<a id="dbt-platform-on-fusion"></a>
+## Behavior flags in Fusion {#behavior-flags-in-fusion}
 
-:::note dbt platform on Fusion
+In <Constant name="fusion" />, all behavior change flags permanently enforce the new behavior. The opt-in/opt-out lifecycle described on the [Behavior changes](/reference/global-configs/behavior-changes) page applies to dbt Core only. In Fusion:
 
-In <Constant name="fusion" />, all behavior change flags enforce the new behavior regardless of what is set in `dbt_project.yml`. The defaults documented on this page apply to <Constant name="core_v1" /> only. Setting a flag to `false` in a <Constant name="fusion" /> project has no effect.
+- Every flag on this page is always enabled, regardless of what is set in `dbt_project.yml`.
+- Setting a flag to `false` has no effect.
+- If a new behavior causes problems in your project, the fix is to update your project code, not to revert the flag.
 
-:::
+If you're on Fusion and troubleshooting unexpected behavior from a specific flag, go directly to that flag's section below for details on what changed and how to adapt.
+
+## Introduced flags
 
 ### Failures in on-run-start hooks {#failures-in-on-run-start-hooks}
 
