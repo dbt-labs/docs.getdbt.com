@@ -1,13 +1,6 @@
-Choose the install method for your operating system:
+Choose your preferred installation method:
 
-- **Windows:** CDN installation (PowerShell), Winget, or Pip
-- **macOS:** CDN installation, Homebrew, or Pip
-- **Linux:** CDN installation or Pip
-
-<Tabs groupId="fusion-install-os">
-<TabItem value="windows" label="Windows" default>
-
-### Pip
+<Expandable alt_header="Pip installation for Windows, macOS, and Linux">
 
 ```shell
 python -m pip install --pre dbt
@@ -19,54 +12,9 @@ To upgrade to a newer version:
 python -m pip install --upgrade --pre dbt
 ```
 
-### CDN (PowerShell)
+</Expandable>
 
-Run the following in PowerShell:
-
-```powershell
-irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
-```
-
-To use `dbt` immediately after installation, close and reopen or reload your shell so that the new `Path` is recognized:
-
-```powershell
-Start-Process powershell
-```
-
-To upgrade to a newer version:
-
-```shell
-dbt system update
-```
-
-### Winget
-
-```shell
-winget install --id dbtLabs.dbt --exact
-```
-
-To upgrade to a specific version:
-
-```shell
-winget install --id dbtLabs.dbt --exact --version <version>
-```
-
-</TabItem>
-<TabItem value="macos-linux" label="macOS/Linux">
-
-### Pip
-
-```shell
-python -m pip install --pre dbt
-```
-
-To upgrade to a newer version:
-
-```shell
-python -m pip install --upgrade --pre dbt
-```
-
-### CDN
+<Expandable alt_header="CDN installation for macOS and Linux">
 
 ```shell
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
@@ -88,7 +36,29 @@ dbt system update
 `dbtf system update` installs <Constant name="fusion" /> globally &mdash; it updates your `PATH` in `~/.zshrc` and creates a `dbtf` alias. To manage multiple versions or isolate your install, use separate shell profiles or virtual environments.
 :::
 
-### Homebrew (macOS)
+</Expandable>
+
+<Expandable alt_header="CDN installation for Windows">
+
+```powershell
+irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
+```
+
+To use `dbt` immediately after installation, close and reopen or reload your shell so that the new `Path` is recognized:
+
+```powershell
+Start-Process powershell
+```
+
+To upgrade to a newer version:
+
+```shell
+dbt system update
+```
+
+</Expandable>
+
+<Expandable alt_header="Homebrew installation for macOS">
 
 ```shell
 brew install dbt
@@ -100,8 +70,22 @@ To upgrade to a newer version:
 brew upgrade dbt
 ```
 
-</TabItem>
-</Tabs>
+</Expandable>
+
+<Expandable alt_header="Winget installation for Windows">
+
+```shell
+winget install --id dbtLabs.dbt --exact
+```
+
+To upgrade to a specific version:
+
+```shell
+winget install --id dbtLabs.dbt --exact --version <version>
+```
+
+</Expandable>
+
 
 Run the following command to verify your installation:
 

@@ -46,7 +46,7 @@ To use the extension, you need the following:
 
     <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="The dbt Language Server will be installed automatically"/>
 
-6. If the <Constant name="fusion_engine" /> isn't installed, the extension prompts you to download and install it. Follow the notification steps, or [install it manually from the command line](#install-the-dbt-fusion-engine-from-the-command-line-if-you-havent-already). Open the install method that matches your operating system.
+6. If the <Constant name="fusion_engine" /> isn't installed, the extension prompts you to download and install it. Follow the notification steps, or [install it manually from the command line](#install-the-dbt-fusion-engine-from-the-command-line-if-you-havent-already).
 
     <Lightbox src="/img/docs/extension/install-dbt-fusion-engine.png" width="60%" title="Follow the prompt to install the dbt Fusion engine"/>
 
