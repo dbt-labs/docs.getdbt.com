@@ -17,6 +17,10 @@ Private connections enables secure communication from any <Constant name="dbt" /
 
 <CloudProviders />
 
+The [Administrative API v3](/dbt-cloud/api-v3) reference includes list, create, retrieve, update, and delete operations for private endpoints.
+
+<CloudProviders />
+
 
 ## Available platforms
 
