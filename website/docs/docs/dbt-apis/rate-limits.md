@@ -15,11 +15,11 @@ pagination_prev: "docs/dbt-apis/overview"
 
 </IntroText>
 
-The [Administrative API](/docs/dbt-apis/admin-cloud-api) and the [Discovery API](/docs/dbt-apis/discovery-api) do not share the same limit. In general, you can send more requests per minute to admin endpoints under `/api/`, and fewer to Discovery’s GraphQL endpoints under `/graphql/`, because Discovery queries often return more data per call. You use the same credentials for both APIs: [personal access tokens](/docs/dbt-apis/user-tokens), [service account tokens](/docs/dbt-apis/service-tokens), and OAuth when your organization supports it. Refer to [Authentication tokens](/docs/dbt-apis/authentication) for information on how to create and use those credentials. The [APIs overview](/docs/dbt-apis/overview) explains what each API is for.
+The [Administrative API](/docs/dbt-apis/admin-api) and the [Discovery API](/docs/dbt-apis/discovery-api) do not share the same limit. In general, you can send more requests per minute to admin endpoints under `/api/`, and fewer to Discovery’s GraphQL endpoints under `/graphql/`, because Discovery queries often return more data per call. You use the same credentials for both APIs: [personal access tokens](/docs/dbt-apis/user-tokens), [service account tokens](/docs/dbt-apis/service-tokens), and OAuth when your organization supports it. Refer to [Authentication tokens](/docs/dbt-apis/authentication) for information on how to create and use those credentials. The [APIs overview](/docs/dbt-apis/overview) explains what each API is for.
 
 This summary provides an overview of the default rate limits across the main API and integration surfaces:
 
-- [Administrative API](/docs/dbt-apis/admin-cloud-api): 5,000 requests per minute per account (`/api/`).
+- [Administrative API](/docs/dbt-apis/admin-api): 5,000 requests per minute per account (`/api/`).
 - [Discovery API](/docs/dbt-apis/discovery-api) (GraphQL): 500 requests per minute (`/graphql/`).
 - [SCIM and IdP provisioning](#scim-and-idp-provisioning): 20 requests every 5 seconds per account.
 - [Remote MCP](#remote-mcp): Same limits as the Administrative and Discovery APIs.
@@ -36,7 +36,7 @@ For SCIM, the application rate limit of 20 requests every 5 seconds for each acc
 
 It does not apply to user `GET`, `PATCH`, or `DELETE`, to any Group operations (create, list, get, replace, patch, or delete), or to other SCIM endpoints such as Service Provider Config, schemas, resource types, or config token routes. Those operations are outside this 20 requests every 5 seconds rule; they may still be subject to other platform rate limits.
 
-When that limit is exceeded, the response is `429 Too Many Requests`. The response emits both `Retry-After` and `x-rate-limit-retry-after-seconds` (for example, Okta integrations often honor `Retry-After`, while SailPoint often honors `x-rate-limit-retry-after-seconds`). Configure your identity provider to read the header your provisioning stack supports, and to retry with exponential backoff when throttled.
+When that limit is exceeded, the response is `429 Too Many Requests`. The response emits both `Retry-After` and `x-rate-limit-retry-after-seconds` (for example, Okta integrations often honor `Retry-After`, while SailPoint often honors `x-rate-limit-retry-after-seconds`). These headers indicate how long to wait before sending the next request. Configure your identity provider to read the header your provisioning stack supports, and to retry with exponential backoff when throttled.
 
 For configuration steps, use [Set up SCIM](/docs/platform/manage-access/scim). For information on licenses, permissions, [single sign-on SSO](/docs/platform/manage-access/sso-overview), and how SCIM fits into account access, refer to [About user access in dbt](/docs/platform/manage-access/about-user-access).
 
@@ -48,5 +48,5 @@ Treat MCP-driven automation like any other API client: reuse sensible page sizes
 
 ## Exceeding the rate limit
 
-For the [Administrative API](/docs/dbt-apis/admin-cloud-api) and [Discovery API](/docs/dbt-apis/discovery-api), if you go over the limit you get a `429 Too Many Requests` response and a five-minute cool-down. After five minutes you can send requests again as usual.
+For the [Administrative API](/docs/dbt-apis/admin-api) and [Discovery API](/docs/dbt-apis/discovery-api), if you go over the limit you get a `429 Too Many Requests` response and a five-minute cool-down. After five minutes you can send requests again as usual.
 
