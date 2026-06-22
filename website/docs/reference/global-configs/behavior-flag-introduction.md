@@ -12,6 +12,14 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 The sections below document flags that have not yet reached maturity (default still `false`). For intro and maturity dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
 
+<a id="dbt-platform-on-fusion"></a>
+
+:::note dbt platform on Fusion
+
+In <Constant name="fusion" />, all behavior change flags enforce the new behavior regardless of what is set in `dbt_project.yml`. The defaults documented on this page apply to <Constant name="core_v1" /> only. Setting a flag to `false` in a <Constant name="fusion" /> project has no effect.
+
+:::
+
 ### Failures in on-run-start hooks {#failures-in-on-run-start-hooks}
 
 This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails).
@@ -371,7 +379,7 @@ When this flag is `false` or unset, dbt ignores files with these suffixes withou
 The `latest_version_pointer_enabled_by_default` flag is a beta feature in <Constant name="core" /> v1.12.
 :::
 
-The `latest_version_pointer_enabled_by_default` flag is set to `false` by default.
+The `latest_version_pointer_enabled_by_default` flag is set to `false` by default in <Constant name="core_v1" />. In <Constant name="fusion" />, this flag defaults to `true`, which enables the latest version pointer for all versioned models automatically.
 
 When you set it to `true`, dbt automatically creates a [latest version pointer](/docs/mesh/govern/model-versions#pointing-to-the-latest-version) view for every versioned model in the project, without requiring per-model configuration. The pointer view is named after the model's base name (for example, `dim_customers`) and always points to the relation for the model with `is_latest_version: true` (for example, `dim_customers_v2`).
 
