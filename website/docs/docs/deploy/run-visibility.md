@@ -75,7 +75,11 @@ For more information about each status, refer to [Telemetry and observability](h
 
 <VersionBlock firstVersion="2.0">
 
-- For <Constant name="fusion_engine" /> runs on dbt command steps (such as **Invoke dbt with `dbt build`**), you can download the step's OpenTelemetry (OTel) telemetry as a Parquet file. Select the step and click **Download** > **Download OTel log**. This option appears only when the step emitted an OTel artifact. Some steps, such as `dbt deps`, don't produce one. For analysis examples, refer to [Querying telemetry data](/docs/fusion/telemetry-observability#querying-telemetry-data).
+- You can download OpenTelemetry (OTel) logs for <Constant name="fusion" /> job command steps as a Parquet file. The file contains structured step-level log data that you can query or inspect outside dbt.
+
+To download it, go to the **Run summary** tab in the job, select a step and click **Download** > **Download OTel log** to export a Parquet file
+
+This option only appears when the step emitted an OTel log artifact.  Some steps, such as `dbt deps`, don't produce one. For analysis examples, refer to [Querying telemetry data](/docs/fusion/telemetry-observability#querying-telemetry-data).
 
 </VersionBlock>
 
