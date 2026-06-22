@@ -1,0 +1,475 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - banner [ref=e4]:
+      - 'link "Fivetran + dbt Labs: The future of dbt Core v2.0, what we''re building together, and live Q&A on June 25 - Save your seat!" [ref=e5] [cursor=pointer]':
+        - /url: https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__
+        - generic [ref=e6]: "Fivetran + dbt Labs: The future of dbt Core v2.0, what we're building together, and live Q&A on June 25 - Save your seat!"
+      - button "Close" [ref=e7] [cursor=pointer]:
+        - img [ref=e8]
+    - navigation "Main" [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - link "dbt Logo" [ref=e14] [cursor=pointer]:
+            - /url: /
+            - img "dbt Logo" [ref=e16]
+          - 'button "Version: v2.0" [ref=e18] [cursor=pointer]'
+        - generic [ref=e19]:
+          - button "Docs" [ref=e21] [cursor=pointer]
+          - link "Guides" [ref=e22] [cursor=pointer]:
+            - /url: /guides
+          - link "APIs" [ref=e23] [cursor=pointer]:
+            - /url: /docs/dbt-apis/overview
+          - button "Help" [ref=e25] [cursor=pointer]
+          - button "Community" [ref=e27] [cursor=pointer]
+          - button "Account" [ref=e29] [cursor=pointer]
+          - link "Install VS Code extension" [ref=e30] [cursor=pointer]:
+            - /url: https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt
+          - button "Switch between dark and light mode (currently light mode)" [disabled] [ref=e32]:
+            - img [ref=e33]
+          - button "Search (Command+K)" [ref=e36] [cursor=pointer]:
+            - img [ref=e38]
+    - generic [ref=e42]:
+      - complementary [ref=e43]:
+        - generic [ref=e45]:
+          - link "dbt Logo" [ref=e46] [cursor=pointer]:
+            - /url: /
+            - img "dbt Logo" [ref=e47]
+          - navigation "Docs sidebar" [ref=e48]:
+            - list [ref=e49]:
+              - listitem [ref=e50]:
+                - link "About References" [ref=e51] [cursor=pointer]:
+                  - /url: /reference/references-overview
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - link "Project configs" [ref=e54] [cursor=pointer]:
+                    - /url: /category/project-configs
+                  - button "Expand sidebar category 'Project configs'" [ref=e55] [cursor=pointer]
+              - listitem [ref=e56]:
+                - generic [ref=e57]:
+                  - link "Platform-specific configs" [ref=e58] [cursor=pointer]:
+                    - /url: /reference/resource-configs
+                  - button "Collapse sidebar category 'Platform-specific configs'" [expanded] [ref=e59] [cursor=pointer]
+                - list [ref=e60]:
+                  - listitem [ref=e61]:
+                    - link "Microsoft Azure Synapse DWH configurations" [ref=e62] [cursor=pointer]:
+                      - /url: /reference/resource-configs/azuresynapse-configs
+                  - listitem [ref=e63]:
+                    - link "Amazon Athena configurations" [ref=e64] [cursor=pointer]:
+                      - /url: /reference/resource-configs/athena-configs
+                  - listitem [ref=e65]:
+                    - link "Cloudera Impala configurations" [ref=e66] [cursor=pointer]:
+                      - /url: /reference/resource-configs/impala-configs
+                  - listitem [ref=e67]:
+                    - link "Apache Spark configurations" [ref=e68] [cursor=pointer]:
+                      - /url: /reference/resource-configs/spark-configs
+                  - listitem [ref=e69]:
+                    - link "BigQuery configurations" [ref=e70] [cursor=pointer]:
+                      - /url: /reference/resource-configs/bigquery-configs
+                  - listitem [ref=e71]:
+                    - link "ClickHouse configurations" [ref=e72] [cursor=pointer]:
+                      - /url: /reference/resource-configs/clickhouse-configs
+                  - listitem [ref=e73]:
+                    - link "Confluent Cloud configurations" [ref=e74] [cursor=pointer]:
+                      - /url: /reference/resource-configs/confluent-configs
+                  - listitem [ref=e75]:
+                    - link "Databricks configurations" [ref=e76] [cursor=pointer]:
+                      - /url: /reference/resource-configs/databricks-configs
+                  - listitem [ref=e77]:
+                    - link "DeltaStream configurations" [ref=e78] [cursor=pointer]:
+                      - /url: /reference/resource-configs/deltastream-configs
+                  - listitem [ref=e79]:
+                    - link "Doris/SelectDB configurations" [ref=e80] [cursor=pointer]:
+                      - /url: /reference/resource-configs/doris-configs
+                  - listitem [ref=e81]:
+                    - link "DuckDB configurations" [ref=e82] [cursor=pointer]:
+                      - /url: /reference/resource-configs/duckdb-configs
+                  - listitem [ref=e83]:
+                    - link "Exasol configurations" [ref=e84] [cursor=pointer]:
+                      - /url: /reference/resource-configs/exasol-configs
+                  - listitem [ref=e85]:
+                    - link "Microsoft Fabric Data Warehouse configurations" [ref=e86] [cursor=pointer]:
+                      - /url: /reference/resource-configs/fabric-configs
+                  - listitem [ref=e87]:
+                    - link "Microsoft Fabric Spark configurations" [ref=e88] [cursor=pointer]:
+                      - /url: /reference/resource-configs/fabricspark-configs
+                  - listitem [ref=e89]:
+                    - link "Firebolt configurations" [ref=e90] [cursor=pointer]:
+                      - /url: /reference/resource-configs/firebolt-configs
+                  - listitem [ref=e91]:
+                    - link "Greenplum configurations" [ref=e92] [cursor=pointer]:
+                      - /url: /reference/resource-configs/greenplum-configs
+                  - listitem [ref=e93]:
+                    - link "Cloudera Hive configurations" [ref=e94] [cursor=pointer]:
+                      - /url: /reference/resource-configs/hive-configs
+                  - listitem [ref=e95]:
+                    - link "Infer configurations" [ref=e96] [cursor=pointer]:
+                      - /url: /reference/resource-configs/infer-configs
+                  - listitem [ref=e97]:
+                    - link "IBM Netezza configurations" [ref=e98] [cursor=pointer]:
+                      - /url: /reference/resource-configs/ibm-netezza-config
+                  - listitem [ref=e99]:
+                    - link "Materialize configurations" [ref=e100] [cursor=pointer]:
+                      - /url: /reference/resource-configs/materialize-configs
+                  - listitem [ref=e101]:
+                    - link "Microsoft SQL Server configurations" [ref=e102] [cursor=pointer]:
+                      - /url: /reference/resource-configs/mssql-configs
+                  - listitem [ref=e103]:
+                    - link "MindsDB configurations" [ref=e104] [cursor=pointer]:
+                      - /url: /reference/resource-configs/mindsdb-configs
+                  - listitem [ref=e105]:
+                    - link "Oracle configurations" [ref=e106] [cursor=pointer]:
+                      - /url: /reference/resource-configs/oracle-configs
+                  - listitem [ref=e107]:
+                    - link "Postgres configurations" [ref=e108] [cursor=pointer]:
+                      - /url: /reference/resource-configs/postgres-configs
+                  - listitem [ref=e109]:
+                    - link "Redshift configurations" [ref=e110] [cursor=pointer]:
+                      - /url: /reference/resource-configs/redshift-configs
+                  - listitem [ref=e111]:
+                    - link "Salesforce Data 360 configurations" [ref=e112] [cursor=pointer]:
+                      - /url: /reference/resource-configs/data-cloud-configs
+                  - listitem [ref=e113]:
+                    - link "SingleStore configurations" [ref=e114] [cursor=pointer]:
+                      - /url: /reference/resource-configs/singlestore-configs
+                  - listitem [ref=e115]:
+                    - link "Snowflake configurations" [ref=e116] [cursor=pointer]:
+                      - /url: /reference/resource-configs/snowflake-configs
+                  - listitem [ref=e117]:
+                    - link "Starburst/Trino configurations" [ref=e118] [cursor=pointer]:
+                      - /url: /reference/resource-configs/trino-configs
+                  - listitem [ref=e119]:
+                    - link "Starrocks configurations" [ref=e120] [cursor=pointer]:
+                      - /url: /reference/resource-configs/starrocks-configs
+                  - listitem [ref=e121]:
+                    - link "Teradata configurations" [ref=e122] [cursor=pointer]:
+                      - /url: /reference/resource-configs/teradata-configs
+                  - listitem [ref=e123]:
+                    - link "Upsolver configurations" [ref=e124] [cursor=pointer]:
+                      - /url: /reference/resource-configs/upsolver-configs
+                  - listitem [ref=e125]:
+                    - link "Vertica configurations" [ref=e126] [cursor=pointer]:
+                      - /url: /reference/resource-configs/vertica-configs
+                  - listitem [ref=e127]:
+                    - link "IBM watsonx.data Presto configurations" [ref=e128] [cursor=pointer]:
+                      - /url: /reference/resource-configs/watsonx-presto-config
+                  - listitem [ref=e129]:
+                    - link "IBM watsonx.data Spark configurations" [ref=e130] [cursor=pointer]:
+                      - /url: /reference/resource-configs/watsonx-spark-config
+                  - listitem [ref=e131]:
+                    - link "Yellowbrick configurations" [ref=e132] [cursor=pointer]:
+                      - /url: /reference/resource-configs/yellowbrick-configs
+                  - listitem [ref=e133]:
+                    - generic [ref=e134]:
+                      - link "Fusion function support" [ref=e135] [cursor=pointer]:
+                        - /url: /reference/fusion-function-support
+                      - button "Collapse sidebar category 'Fusion function support'" [expanded] [ref=e136] [cursor=pointer]
+                    - list [ref=e137]:
+                      - listitem [ref=e138]:
+                        - link "Snowflake" [ref=e139] [cursor=pointer]:
+                          - /url: /reference/resource-configs/snowflake-function-support
+                      - listitem [ref=e140]:
+                        - link "BigQuery" [ref=e141] [cursor=pointer]:
+                          - /url: /reference/resource-configs/bigquery-function-support
+                      - listitem [ref=e142]:
+                        - link "Databricks" [ref=e143] [cursor=pointer]:
+                          - /url: /reference/fusion-function-support/databricks-function-support
+                      - listitem [ref=e144]:
+                        - link "Amazon Redshift" [ref=e145] [cursor=pointer]:
+                          - /url: /reference/fusion-function-support/redshift-function-support
+                      - listitem [ref=e146]:
+                        - link "Trino" [ref=e147] [cursor=pointer]:
+                          - /url: /reference/fusion-function-support/trino-function-support
+                      - listitem [ref=e148]:
+                        - link "DuckDB" [ref=e149] [cursor=pointer]:
+                          - /url: /reference/fusion-function-support/duckdb-function-support
+                      - listitem [ref=e150]:
+                        - link "Snowflake vs BigQuery comparison" [ref=e151] [cursor=pointer]:
+                          - /url: /reference/fusion-function-support/sql-functions-comparison
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "Resource configs and properties" [ref=e154] [cursor=pointer]:
+                    - /url: /reference/resource-configs/resource-path
+                  - button "Expand sidebar category 'Resource configs and properties'" [ref=e155] [cursor=pointer]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "Commands" [ref=e158] [cursor=pointer]:
+                    - /url: /reference/dbt-commands
+                  - button "Expand sidebar category 'Commands'" [ref=e159] [cursor=pointer]
+              - listitem [ref=e160]:
+                - generic [ref=e161]:
+                  - link "Jinja reference" [ref=e162] [cursor=pointer]:
+                    - /url: /category/jinja-reference
+                  - button "Expand sidebar category 'Jinja reference'" [ref=e163] [cursor=pointer]
+              - listitem [ref=e164]:
+                - generic [ref=e165]:
+                  - link "dbt Artifacts" [ref=e166] [cursor=pointer]:
+                    - /url: /reference/artifacts/dbt-artifacts
+                  - button "Expand sidebar category 'dbt Artifacts'" [ref=e167] [cursor=pointer]
+              - listitem [ref=e168]:
+                - generic [ref=e169]:
+                  - link "Database Permissions" [ref=e170] [cursor=pointer]:
+                    - /url: /reference/database-permissions/about-database-permissions
+                  - button "Expand sidebar category 'Database Permissions'" [ref=e171] [cursor=pointer]
+          - button "Collapse sidebar" [ref=e172] [cursor=pointer]:
+            - img [ref=e173]
+      - main [ref=e177]:
+        - generic [ref=e179]:
+          - generic [ref=e181]:
+            - article [ref=e182]:
+              - generic [ref=e183]:
+                - navigation "Breadcrumbs" [ref=e184]:
+                  - list [ref=e185]:
+                    - listitem [ref=e186]:
+                      - link "Home page" [ref=e187] [cursor=pointer]:
+                        - /url: /
+                        - img [ref=e188]
+                    - listitem [ref=e190]:
+                      - link "Platform-specific configs" [ref=e191] [cursor=pointer]:
+                        - /url: /reference/resource-configs
+                    - listitem [ref=e192]:
+                      - generic [ref=e193]: Fusion function support
+                - button "Copy page options" [ref=e195] [cursor=pointer]:
+                  - img [ref=e196]
+                  - text: Copy page
+                  - img [ref=e199]
+              - generic [ref=e201]:
+                - heading "Fusion function support" [level=1] [ref=e203]
+                - paragraph [ref=e204]: Fusion can typecheck your SQL during static analysis — catching a wrong argument type or a misspelled function before you ever run a model. Support is tracked per data platform, since every warehouse ships its own set of built-in functions.
+                - paragraph [ref=e205]: "This section answers two questions:"
+                - list [ref=e206]:
+                  - listitem [ref=e207]:
+                    - strong [ref=e208]:
+                      - text: Is
+                      - emphasis [ref=e209]: this
+                      - text: function supported?
+                    - text: Each platform has a searchable table of every built-in function and whether Fusion can typecheck it.
+                  - listitem [ref=e210]:
+                    - strong [ref=e211]: Does this function behave the same everywhere?
+                    - text: The comparison page lines up functions that share a name but differ in their arguments across platforms.
+                - heading "Turn on typecheckingDirect link to Turn on typechecking" [level=2] [ref=e212] [cursor=pointer]:
+                  - text: Turn on typechecking
+                  - link "Direct link to Turn on typechecking" [ref=e213]:
+                    - /url: "#turn-on-typechecking"
+                - paragraph [ref=e214]: "To let Fusion typecheck your functions in dbt platform, the CLI, or the dbt VS Code extension:"
+                - list [ref=e215]:
+                  - listitem [ref=e216]:
+                    - text: Run
+                    - code [ref=e217]: dbt login
+                    - text: to authenticate.
+                  - listitem [ref=e218]:
+                    - text: Set
+                    - 'link "static_analysis: strict" [ref=e219] [cursor=pointer]':
+                      - /url: /docs/fusion/new-concepts?version=2.0
+                      - code [ref=e220]: "static_analysis: strict"
+                    - text: in your project configuration.
+                - heading "Function support by platformDirect link to Function support by platform" [level=2] [ref=e221] [cursor=pointer]:
+                  - text: Function support by platform
+                  - link "Direct link to Function support by platform" [ref=e222]:
+                    - /url: "#function-support-by-platform"
+                - paragraph [ref=e223]: Pick your platform to see every built-in function and its typechecking status. Each bar shows how much of that platform's catalog Fusion can typecheck today — refreshed weekly.
+                - generic [ref=e224]:
+                  - link "Snowflake 608 of 941 functions 65% typecheck coverage 65% typecheckable View functions →" [active] [ref=e225] [cursor=pointer]:
+                    - /url: /reference/resource-configs/snowflake-function-support
+                    - generic [ref=e227]: Snowflake
+                    - generic [ref=e228]:
+                      - strong [ref=e229]: "608"
+                      - text: of 941 functions
+                    - img "65% typecheck coverage" [ref=e230]
+                    - generic [ref=e232]:
+                      - generic [ref=e233]: 65% typecheckable
+                      - generic [ref=e234]: View functions →
+                  - link "BigQuery 340 of 408 functions 83% typecheck coverage 83% typecheckable View functions →" [ref=e235] [cursor=pointer]:
+                    - /url: /reference/resource-configs/bigquery-function-support
+                    - generic [ref=e237]: BigQuery
+                    - generic [ref=e238]:
+                      - strong [ref=e239]: "340"
+                      - text: of 408 functions
+                    - img "83% typecheck coverage" [ref=e240]
+                    - generic [ref=e242]:
+                      - generic [ref=e243]: 83% typecheckable
+                      - generic [ref=e244]: View functions →
+                  - link "Databricks 630 of 757 functions 83% typecheck coverage 83% typecheckable View functions →" [ref=e245] [cursor=pointer]:
+                    - /url: /reference/fusion-function-support/databricks-function-support
+                    - generic [ref=e247]: Databricks
+                    - generic [ref=e248]:
+                      - strong [ref=e249]: "630"
+                      - text: of 757 functions
+                    - img "83% typecheck coverage" [ref=e250]
+                    - generic [ref=e252]:
+                      - generic [ref=e253]: 83% typecheckable
+                      - generic [ref=e254]: View functions →
+                  - link "Amazon Redshift 321 of 336 functions 96% typecheck coverage 96% typecheckable View functions →" [ref=e255] [cursor=pointer]:
+                    - /url: /reference/fusion-function-support/redshift-function-support
+                    - generic [ref=e257]: Amazon Redshift
+                    - generic [ref=e258]:
+                      - strong [ref=e259]: "321"
+                      - text: of 336 functions
+                    - img "96% typecheck coverage" [ref=e260]
+                    - generic [ref=e262]:
+                      - generic [ref=e263]: 96% typecheckable
+                      - generic [ref=e264]: View functions →
+                  - link "Trino 392 of 411 functions 95% typecheck coverage 95% typecheckable View functions →" [ref=e265] [cursor=pointer]:
+                    - /url: /reference/fusion-function-support/trino-function-support
+                    - generic [ref=e266]:
+                      - generic [ref=e267]: T
+                      - generic [ref=e268]: Trino
+                    - generic [ref=e269]:
+                      - strong [ref=e270]: "392"
+                      - text: of 411 functions
+                    - img "95% typecheck coverage" [ref=e271]
+                    - generic [ref=e273]:
+                      - generic [ref=e274]: 95% typecheckable
+                      - generic [ref=e275]: View functions →
+                  - link "DuckDB 386 of 510 functions 76% typecheck coverage 76% typecheckable View functions →" [ref=e276] [cursor=pointer]:
+                    - /url: /reference/fusion-function-support/duckdb-function-support
+                    - generic [ref=e278]: DuckDB
+                    - generic [ref=e279]:
+                      - strong [ref=e280]: "386"
+                      - text: of 510 functions
+                    - img "76% typecheck coverage" [ref=e281]
+                    - generic [ref=e283]:
+                      - generic [ref=e284]: 76% typecheckable
+                      - generic [ref=e285]: View functions →
+                - heading "Compare functions across platformsDirect link to Compare functions across platforms" [level=2] [ref=e286] [cursor=pointer]:
+                  - text: Compare functions across platforms
+                  - link "Direct link to Compare functions across platforms" [ref=e287]:
+                    - /url: "#compare-functions-across-platforms"
+                - paragraph [ref=e288]: Some functions share a name but take their arguments in a different order, or make different arguments optional — the kind of thing that quietly breaks a query when you move it between platforms.
+                - link [ref=e291] [cursor=pointer]:
+                  - /url: /reference/fusion-function-support/sql-functions-comparison
+                  - article [ref=e292]:
+                    - generic [ref=e293]:
+                      - generic:
+                        - img
+                    - heading "Snowflake vs BigQuery" [level=4] [ref=e295]
+                    - generic [ref=e296]: Side-by-side syntax for ~20 common functions, starting with the ones most likely to trip you up.
+                - generic [ref=e297]:
+                  - heading "Was this page helpful?" [level=2] [ref=e298]
+                  - generic [ref=e300]:
+                    - button "Yes" [ref=e301]:
+                      - img [ref=e302]
+                      - text: "Yes"
+                    - button "No" [ref=e304]:
+                      - img [ref=e305]
+                      - text: "No"
+                  - generic [ref=e307]:
+                    - generic [ref=e308]:
+                      - link "Privacy policy" [ref=e309] [cursor=pointer]:
+                        - /url: https://www.getdbt.com/cloud/privacy-policy
+                      - link "Create a GitHub issue" [ref=e310] [cursor=pointer]:
+                        - /url: https://github.com/dbt-labs/docs.getdbt.com/issues
+                    - paragraph [ref=e312]:
+                      - text: This site is protected by reCAPTCHA and the Google
+                      - link "Privacy Policy" [ref=e313] [cursor=pointer]:
+                        - /url: https://policies.google.com/privacy
+                      - text: and
+                      - link "Terms of Service" [ref=e314] [cursor=pointer]:
+                        - /url: https://policies.google.com/terms
+                      - text: apply.
+              - generic [ref=e315]:
+                - generic [ref=e317]:
+                  - text: "Tags:"
+                  - list [ref=e318]:
+                    - listitem [ref=e319]:
+                      - link "dbt Fusion" [ref=e320] [cursor=pointer]:
+                        - /url: /tags/dbt-fusion
+                    - listitem [ref=e321]:
+                      - link "static_analysis" [ref=e322] [cursor=pointer]:
+                        - /url: /tags/static-analysis
+                - link "Edit this page" [ref=e325] [cursor=pointer]:
+                  - /url: https://github.com/dbt-labs/docs.getdbt.com/edit/undefined/website/docs/reference/fusion-function-support/index.md
+                  - img [ref=e326]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e330]:
+              - link "Previous « Yellowbrick configurations" [ref=e331] [cursor=pointer]:
+                - /url: /reference/resource-configs/yellowbrick-configs
+                - generic [ref=e332]: Previous
+                - generic [ref=e333]: « Yellowbrick configurations
+          - img "Loading" [ref=e335]
+    - contentinfo [ref=e336]:
+      - generic [ref=e340]:
+        - generic [ref=e342]:
+          - generic [ref=e343]:
+            - generic [ref=e344]: Get started
+            - heading "Start building with dbt." [level=2] [ref=e345]
+            - paragraph [ref=e346]: The free dbt VS Code extension is the best way to develop locally with the dbt Fusion Engine.
+          - generic [ref=e347]:
+            - link "Install free extension" [ref=e348] [cursor=pointer]:
+              - /url: https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt
+            - link "Request your demo" [ref=e349] [cursor=pointer]:
+              - /url: https://www.getdbt.com/contact
+        - generic [ref=e351]:
+          - link "dbt Labs" [ref=e353] [cursor=pointer]:
+            - /url: /
+            - img "dbt Labs" [ref=e354]
+          - generic [ref=e355]:
+            - generic [ref=e356]:
+              - heading "Resources" [level=5] [ref=e357]
+              - link "VS Code Extension" [ref=e358] [cursor=pointer]:
+                - /url: /docs/about-dbt-extension
+              - link "Resource Hub" [ref=e359] [cursor=pointer]:
+                - /url: https://www.getdbt.com/resources
+              - link "dbt Learn" [ref=e360] [cursor=pointer]:
+                - /url: https://www.getdbt.com/dbt-learn
+              - link "Certification" [ref=e361] [cursor=pointer]:
+                - /url: https://www.getdbt.com/dbt-certification
+              - link "Developer Blog" [ref=e362] [cursor=pointer]:
+                - /url: /blog
+            - generic [ref=e363]:
+              - heading "Community" [level=5] [ref=e364]
+              - link "Join the Community" [ref=e365] [cursor=pointer]:
+                - /url: /community/join
+              - link "Become a Contributor" [ref=e366] [cursor=pointer]:
+                - /url: /community/contribute
+              - link "Open Source dbt Packages" [ref=e367] [cursor=pointer]:
+                - /url: https://hub.getdbt.com/
+              - link "Community Forum" [ref=e368] [cursor=pointer]:
+                - /url: https://discourse.getdbt.com/
+            - generic [ref=e369]:
+              - heading "Support" [level=5] [ref=e370]
+              - link "Contact Support" [ref=e371] [cursor=pointer]:
+                - /url: /docs/dbt-support
+              - link "Professional Services" [ref=e372] [cursor=pointer]:
+                - /url: https://www.getdbt.com/services
+              - link "Find a Partner" [ref=e373] [cursor=pointer]:
+                - /url: https://www.getdbt.com/partner-directory
+              - link "System Status" [ref=e374] [cursor=pointer]:
+                - /url: https://status.getdbt.com/
+            - generic [ref=e375]:
+              - heading "Connect with Us" [level=5] [ref=e376]
+              - generic [ref=e377]:
+                - link "GitHub" [ref=e378] [cursor=pointer]:
+                  - /url: https://github.com/dbt-labs/docs.getdbt.com
+                  - img [ref=e379]
+                - link "LinkedIn" [ref=e381] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/dbtlabs/mycompany/
+                  - img [ref=e382]
+                - link "YouTube" [ref=e384] [cursor=pointer]:
+                  - /url: https://www.youtube.com/channel/UCVpBwKK-ecMEV75y1dYLE5w
+                  - img [ref=e385]
+                - link "Instagram" [ref=e387] [cursor=pointer]:
+                  - /url: https://www.instagram.com/dbt_labs/
+                  - img [ref=e388]
+                - link "X" [ref=e390] [cursor=pointer]:
+                  - /url: https://x.com/dbt_labs
+                  - img [ref=e391]
+                - link "Bluesky" [ref=e393] [cursor=pointer]:
+                  - /url: https://bsky.app/profile/getdbt.com
+                  - img [ref=e394]
+                - link "Community Slack" [ref=e396] [cursor=pointer]:
+                  - /url: https://www.getdbt.com/community/join-the-community/
+                  - img [ref=e397]
+          - generic [ref=e399]:
+            - generic [ref=e400]: © 2026 dbt Labs, LLC. All Rights Reserved.
+            - generic [ref=e401]:
+              - link "Terms of Service" [ref=e402] [cursor=pointer]:
+                - /url: https://www.getdbt.com/terms-of-use/
+              - link "Privacy Policy" [ref=e403] [cursor=pointer]:
+                - /url: https://www.getdbt.com/cloud/privacy-policy/
+              - link "Security" [ref=e404] [cursor=pointer]:
+                - /url: https://www.getdbt.com/security/
+              - button "Cookie Settings" [ref=e405] [cursor=pointer]
+  - iframe

@@ -1,0 +1,113 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+    gap: 16px;
+    margin: 24px 0 32px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid var(--border-neutral-tertiary);
+    border-radius: 16px;
+    padding: 20px;
+    background-color: var(--bg-surface-default);
+    text-decoration: none !important;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-green-400, #00a37a);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    color: inherit;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.mono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--color-green-400, #00a37a);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.name {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.count {
+    font-size: 0.95rem;
+    color: var(--text-neutral-secondary);
+}
+
+.count strong {
+    font-size: 1.5rem;
+    color: var(--text-neutral-primary, inherit);
+}
+
+.barTrack {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--border-neutral-tertiary);
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #00a37a, #33c9a6);
+    transition: width 0.4s ease;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+
+.pct {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-neutral-secondary);
+}
+
+.cta {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-green-400, #00a37a);
+}
+
+html[data-theme='dark'] .card {
+    background-color: var(--bg-surface-inverse);
+    border-color: var(--border-inverse-tertiary);
+}
+
+html[data-theme='dark'] .count {
+    color: var(--text-inverse-secondary);
+}
+
+html[data-theme='dark'] .pct {
+    color: var(--text-inverse-secondary);
+}

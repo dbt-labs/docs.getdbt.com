@@ -48,6 +48,7 @@ import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
 import AppliesTo from '@site/src/components/appliesTo';
+import FunctionSupportGrid from '@site/src/components/functionSupportGrid';
 
 const MDXComponents = {
   Head,
@@ -103,5 +104,6 @@ const MDXComponents = {
   IntroText: IntroText,
   Constant: Constant,
   AppliesTo: AppliesTo,
+  FunctionSupportGrid: FunctionSupportGrid,
 };
 export default MDXComponents;
