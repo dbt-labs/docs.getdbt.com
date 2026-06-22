@@ -12,7 +12,7 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 The sections below document flags that have not yet reached maturity (default still `false`). For intro and maturity dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
 
-## Behavior flags in Fusion {#behavior-flags-in-fusion}
+## Behavior flags in Fusion 
 
 In <Constant name="fusion" />, all behavior change flags permanently enforce the new behavior. The opt-in/opt-out lifecycle described on the [Behavior changes](/reference/global-configs/behavior-changes) page applies to dbt Core only. In Fusion:
 
