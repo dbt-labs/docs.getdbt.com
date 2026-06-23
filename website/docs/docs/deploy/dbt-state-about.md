@@ -47,11 +47,7 @@ To use dbt State, you need:
 - A supported version of dbt. 
     - Natively available for <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" /> both in <Constant name="dbt_platform" /> and locally.
     - Available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
-- A supported data platform. dbt State currently supports:
-    - Snowflake
-    - Databricks
-    - BigQuery
-    - Redshift
+- A supported data platform. dbt State currently supports, Snowflake, Databricks, BigQuery, and Redshift
 - A supported dbt State account type, which you can learn more about in [Signing up for dbt State](#signing-up-for-dbt-state):
     - A current <Constant name="dbt_platform" /> account
     - A standalone dbt State account
