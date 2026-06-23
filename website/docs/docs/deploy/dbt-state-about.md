@@ -63,10 +63,6 @@ More data warehouses are on the roadmap. If you're using another data warehouse 
 
 ## Signing up for dbt State
 
-:::note
-dbt State is available on current dbt platform plans (Starter, Developer, Team, and Enterprise). Legacy Team plan accounts are not eligible.
-:::
-
 When you sign up for dbt State, you'll choose one of two paths:
 
 - **<Constant name="dbt_platform" /> account** — dbt State is connected to your existing <Constant name="dbt_platform" /> account. Your dbt State credentials are the same as your platform credentials, and dbt State has access to your platform environments and jobs.
