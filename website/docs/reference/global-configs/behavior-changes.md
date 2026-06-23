@@ -128,7 +128,7 @@ When a maturity date has not yet been set (shown as `-`), we have not yet determ
 - Migrate your project to support the new behavior, and then set the flag to `true` to stop seeing the warnings.
 - Explicitly set the flag to `false`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 
-:::note <Constant name="fusion" />
+:::note Fusion behavior change flags
 
 In <Constant name="fusion" />, all behavior change flags are permanently in the "Always enabled" state. Setting any flag to `false` in `dbt_project.yml` has no effect. For more details, see [Behavior flags in Fusion](/reference/global-configs/behavior-flag-introduction#behavior-flags-in-fusion).
 
