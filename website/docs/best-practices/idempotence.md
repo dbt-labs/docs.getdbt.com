@@ -100,7 +100,7 @@ You can also use microbatch incremental models for large time-series datasets. M
 | Pitfall | Why it breaks idempotence | Fix |
 |---|---|---|
 | Using `current_timestamp()` in a model | Produces different values on every run | Use a column from the source data as the timestamp |
-| Appending without a `unique_key` | Re-runs create duplicate rows | Add `unique_key` to your incremental config |
+| Appending without a `unique_key` | Without a `unique_key`, most adapters/strategies append rows and can duplicate on re-runs.| Add `unique_key` to your incremental config |
 | Generating surrogate keys with random values | Different runs produce different keys for the same row | Use deterministic hashing (for example, `dbt_utils.generate_surrogate_key`) |
 | Hardcoding "today's date" in logic | Results change based on when the model runs, not the data | Filter on source timestamps instead |
 
