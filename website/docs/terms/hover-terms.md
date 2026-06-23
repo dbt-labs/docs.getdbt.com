@@ -89,7 +89,7 @@ grain:
 
 idempotent:
   displayText: idempotent
-  hoverSnippet: An idempotent operation produces the same result no matter how many times you run it. In dbt, this means your models should be safe to re-run and always produce consistent results &mdash; whether they've run once or a hundred times.
+  hoverSnippet: An idempotent operation produces the same result no matter how many times you run it. In dbt, this means your models should be safe to re-run and always produce consistent results -- whether they've run once or a hundred times.
 
 json:
   displayText: JSON
