@@ -45,7 +45,7 @@ For the full list of available configs, see [dbt State configs](/reference/resou
 To use dbt State, you need:
 
 - A supported version of dbt. 
-    - Natively available for <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" /> both in <Constant name="dbt_platform" /> and locally in <Constant name="core" />. 
+    - Natively available for <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" /> both in <Constant name="dbt_platform" /> and locally.
     - Available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
 - A supported data platform. dbt State currently supports:
     - Snowflake
