@@ -21,6 +21,7 @@ For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelo
 
 ## June 2026
 
+- **Enhancement**: You can [download OpenTelemetry (OTel) logs](/docs/deploy/run-visibility#access-logs) for individual dbt command steps in Fusion job runs.
 - **Enhancement**: You can now configure [dbt State](/docs/deploy/dbt-state-about) for the <Constant name="studio_ide" /> directly in the <Constant name="dbt_platform" /> UI &mdash; either as a team-wide default on your development environment, or as a personal override. For more information, refer to [Enabling dbt State in Studio](/docs/deploy/dbt-state-setup#enabling-dbt-state-in-studio).
 - **New:** [Model query history](/docs/explore/model-query-history) for Redshift and Databricks is now generally available (GA). 
 - **Behavior change:** On June 29, 2026, several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track will reach maturity (enabled by default). Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to see which flags may affect your project and how to opt out before then.
