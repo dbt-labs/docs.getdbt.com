@@ -19,13 +19,12 @@ Before you set up dbt State, make sure you have:
     - Available as a plugin for <Constant name="core" /> v1.7 through v1.11
 - A supported data platform. dbt State currently supports Snowflake, Databricks, BigQuery, and Redshift
 - A supported dbt State account type. dbt State requires authentication through either:
-   - A current <Constant name="dbt_platform" /> account
-         - dbt State isn't available to users on [legacy Starter](/docs/platform/billing#legacy-plans) plans. If you're on a legacy Starter plan, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance.
+   - A current <Constant name="dbt_platform" /> account*
    - A standalone dbt State account that's independent of <Constant name="dbt_platform" />
-   
    
    To learn more about which account option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state). For pricing information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
+*dbt State isn't available to users on [legacy Starter](/docs/platform/billing#legacy-plans) plans. If you're on a legacy Starter plan, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance.
 
 More data warehouses are on the roadmap. If you're using another data warehouse and are interested in dbt State, [let us know](https://www.getdbt.com/contact).
 
