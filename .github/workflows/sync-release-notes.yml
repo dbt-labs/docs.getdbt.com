@@ -1,0 +1,106 @@
+name: Sync ST release notes to MT
+
+on:
+  push:
+    branches:
+      - current
+    paths:
+      - website/docs/docs/dbt-versions/dbt-platform-release-notes-gen.md
+  workflow_dispatch:
+    inputs:
+      week:
+        description: 'Week heading to sync (e.g. June 17, 2026). Required for manual test runs.'
+        required: true
+        type: string
+
+jobs:
+  sync:
+    if: github.repository == 'dbt-labs/docs.getdbt.com'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    concurrency:
+      group: sync-release-notes
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Determine week to sync
+        id: week
+        env:
+          WEEK_INPUT: ${{ github.event.inputs.week }}
+        run: |
+          if [ -n "$WEEK_INPUT" ]; then
+            echo "value=$WEEK_INPUT" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          WEEK=$(python3 - <<'PY'
+          import re
+          from pathlib import Path
+
+          path = Path("website/docs/docs/dbt-versions/dbt-platform-release-notes-gen.md")
+          pattern = re.compile(r"^##\s+([A-Za-z]+\s+\d{1,2},\s+\d{4})\s*$")
+          for line in path.read_text(encoding="utf-8").splitlines():
+              match = pattern.match(line.strip())
+              if match:
+                  print(match.group(1))
+                  break
+          else:
+              raise SystemExit("No week heading found in ST release notes file")
+          PY
+          )
+          echo "value=$WEEK" >> "$GITHUB_OUTPUT"
+
+      - name: Extract and update MT release notes
+        run: |
+          python3 .github/scripts/extract_release_notes.py \
+            --st-file website/docs/docs/dbt-versions/dbt-platform-release-notes-gen.md \
+            --mt-file website/docs/docs/dbt-versions/release-notes.md \
+            --week "${{ steps.week.outputs.value }}"
+
+      - name: Open draft PR if MT file changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add website/docs/docs/dbt-versions/release-notes.md
+          if git diff --staged --quiet; then
+            echo "No MT release notes changes for week ${{ steps.week.outputs.value }}"
+            exit 0
+          fi
+
+          BRANCH="automation/sync-mt-release-notes-${{ steps.week.outputs.value }}"
+          BRANCH="${BRANCH// /-}"
+
+          git checkout -b "$BRANCH"
+          git commit -m "docs: sync MT release notes for ${{ steps.week.outputs.value }}"
+
+          git push --force origin "$BRANCH"
+
+          EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number' || true)
+          if [ -n "$EXISTING_PR" ]; then
+            echo "Draft PR already open: #$EXISTING_PR"
+            exit 0
+          fi
+
+          gh pr create \
+            --draft \
+            --base current \
+            --head "$BRANCH" \
+            --title "docs: sync MT release notes for ${{ steps.week.outputs.value }}" \
+            --body "Automated sync of weekly single-tenant release notes into the monthly multi-tenant/VPC release notes.
+
+          Week synced: **${{ steps.week.outputs.value }}**
+
+          Please review for accuracy and add any MT-only items manually." \
+            --label release-notes \
+            --assignee nataliefiann
