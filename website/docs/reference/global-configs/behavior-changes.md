@@ -98,7 +98,7 @@ flags:
 
 #### dbt Core behavior changes
 
-This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default). The **<Constant name="fusion" />** column shows whether the new behavior is always enforced in Fusion (regardless of the flag value in `dbt_project.yml`).
+This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default). The **<Constant name="fusion" />** column shows whether the new behavior is always enforced in <Constant name="fusion" /> (regardless of the flag value in `dbt_project.yml`).
 
 | Flag                                                            | <Constant name="dbt" /> **Latest**: Intro | <Constant name="dbt" /> **Latest**: Maturity | <Constant name="core" />: Intro | <Constant name="core" />: Maturity | <Constant name="core" />: Removed | <Constant name="fusion" /> |
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|----|-----|
