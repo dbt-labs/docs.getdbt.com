@@ -18,7 +18,8 @@ export default function Stoplight({ version }) {
           ".yaml"
         }
         platformUrl={useBaseUrl("/")}
-        basePath={useBaseUrl("/dbt-cloud/api-" + version) + "#"}
+        router="hash"
+        basePath="/"
         hideSchemas
       />
     </>
