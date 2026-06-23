@@ -28,7 +28,7 @@ Before you set up dbt State, make sure you have:
    
    To learn more about which account option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state). For pricing information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
-Note that dbt State isn't available to legacy Starter <Constant name="dbt_platform" /> accounts. If you're on a legacy account, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance. 
+Note that dbt State isn't available to [legacy Starter](/docs/platform/billing#legacy-plans) <Constant name="dbt_platform" /> accounts. If you're on a legacy account, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance. 
 
 More data warehouses are on the roadmap. If you're using another data warehouse and are interested in dbt State, [let us know](https://www.getdbt.com/contact).
 

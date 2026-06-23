@@ -56,7 +56,7 @@ To use dbt State, you need:
     - A current <Constant name="dbt_platform" /> account
     - A standalone dbt State account
 
-Note that dbt State isn't available to legacy Starter <Constant name="dbt_platform" /> accounts. If you're on a legacy account, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance. 
+Note that dbt State isn't available to [legacy Starter](/docs/platform/billing#legacy-plans) <Constant name="dbt_platform" /> accounts. If you're on a legacy account, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance. 
 
 More data warehouses are on the roadmap. If you're using another data warehouse and are interested in dbt State, [let us know](https://www.getdbt.com/contact).
 
