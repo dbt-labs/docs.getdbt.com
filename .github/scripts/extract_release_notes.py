@@ -22,6 +22,11 @@ CATEGORY_MAP = {
     "behavior change": "Behavior change",
 }
 
+MT_CATEGORY_PREFIX_RE = re.compile(
+    r"^\*\*(New|Enhancement|Fix|Behavior change|Beta|Alpha|Preview|Private beta)\*\*:?\s*",
+    re.IGNORECASE,
+)
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -106,6 +111,44 @@ def format_mt_bullet(category: str, body: str) -> str:
     return f"- **{category}:** {body}"
 
 
+def bullet_signature(text: str) -> str:
+    """Return a normalized title key used to detect duplicate bullets."""
+    line = text.strip()
+    if line.startswith("- "):
+        line = line[2:].strip()
+    line = MT_CATEGORY_PREFIX_RE.sub("", line, count=1)
+    title_match = re.match(r"\*\*([^*]+)\*\*", line)
+    if title_match:
+        return re.sub(r"\s+", " ", title_match.group(1).strip().lower())
+    return re.sub(r"\s+", " ", line[:120].lower())
+
+
+def collect_existing_signatures(mt_lines: list[str]) -> set[str]:
+    return {
+        bullet_signature(line)
+        for line in mt_lines
+        if line.strip().startswith("- ")
+    }
+
+
+def filter_duplicates(
+    formatted: list[str], existing: set[str]
+) -> tuple[list[str], list[str]]:
+    new_bullets: list[str] = []
+    skipped: list[str] = []
+    seen = set(existing)
+
+    for bullet in formatted:
+        signature = bullet_signature(bullet)
+        if signature in seen:
+            skipped.append(bullet)
+            continue
+        new_bullets.append(bullet)
+        seen.add(signature)
+
+    return new_bullets, skipped
+
+
 def find_month_insert_line(lines: list[str], month_heading: str) -> int:
     target = f"## {month_heading}"
     for index, line in enumerate(lines):
@@ -141,13 +184,31 @@ def main() -> int:
     insert_at = find_month_insert_line(mt_lines, month_heading)
 
     formatted = [format_mt_bullet(category, body) for category, body in bullets]
+    existing_signatures = collect_existing_signatures(mt_lines)
+    to_insert, skipped = filter_duplicates(formatted, existing_signatures)
 
     print(f"Week: {args.week}")
     print(f"Target month section: ## {month_heading}")
     print(f"Bullets found: {len(formatted)}")
+    print(f"Skipped (already in MT file): {len(skipped)}")
+    print(f"Would add: {len(to_insert)}")
     print()
+
+    if skipped:
+        print("--- Skipped duplicates ---")
+        for bullet in skipped:
+            print(bullet)
+        print("--- End skipped ---")
+        print()
+
+    if not to_insert:
+        print("No new bullets to add — all entries already exist in the MT file.")
+        if args.dry_run:
+            print("Dry run only — no files were changed.")
+        return 0
+
     print("--- Preview (what would be added to the monthly file) ---")
-    for bullet in formatted:
+    for bullet in to_insert:
         print(bullet)
     print("--- End preview ---")
 
@@ -156,7 +217,7 @@ def main() -> int:
         print("Dry run only — no files were changed.")
         return 0
 
-    new_mt_lines = mt_lines[:insert_at] + formatted + [""] + mt_lines[insert_at:]
+    new_mt_lines = mt_lines[:insert_at] + to_insert + [""] + mt_lines[insert_at:]
     mt_path.write_text("\n".join(new_mt_lines) + "\n", encoding="utf-8")
     print(f"Updated {mt_path}")
     return 0
