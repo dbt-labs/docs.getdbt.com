@@ -1,6 +1,6 @@
 :::info Private endpoint configuration
 
-Refer to the following info in order to help you manage private connectivity:
+When managing private connectivity, consider the following:
 
 - Using [Environment variables](/docs/build/environment-variables) when configuring private connection endpoints isn't supported in <Constant name="dbt" />. Instead, use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to dynamically change these values in your <Constant name="dbt" /> environment.
 
