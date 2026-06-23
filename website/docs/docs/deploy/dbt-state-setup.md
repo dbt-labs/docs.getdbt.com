@@ -8,16 +8,29 @@ tags: ['dbt State']
 
 # Setting up dbt State <Lifecycle status="preview" />
 
-dbt State is natively available in <Constant name="dbt_platform" /> and locally in <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" />. It is also available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
+This page walks you through setting up dbt State across <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion" />.
 
-Once enabled, dbt State runs automatically on every `dbt run` or `dbt build`.
+## Prerequisites
 
-Before you begin:
+Before you set up dbt State, make sure you have:
 
-- dbt State supports Snowflake, Databricks, BigQuery, and Redshift.
-- dbt State requires authentication either through a <Constant name="dbt_platform" /> account, or a [standalone account](https://app.state.dbt.com) that's independent of <Constant name="dbt_platform" />. For details on which option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state). For pricing information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+- A supported dbt version or experience. dbt State is:
+    - Natively available in <Constant name="dbt_platform" />, <Constant name="core" /> v1.12 and later, and the <Constant name="fusion_engine" />
+    - Available as a plugin for <Constant name="core" /> v1.7 through v1.11
+- A supported data platform. dbt State currently supports Snowflake, Databricks, BigQuery, and Redshift
+- A supported dbt State account type. dbt State requires authentication through either:
+   - A current <Constant name="dbt_platform" /> account*
+   - A standalone dbt State account that's independent of <Constant name="dbt_platform" />
+   
+   To learn more about which account option is right for you, refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state). For pricing information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
-Select the option that matches your setup:
+*dbt State isn't available to users on [legacy Starter](/docs/platform/billing#legacy-plans) plans. If you're on a legacy Starter plan, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance.
+
+More data warehouses are on the roadmap. If you're using another data warehouse and are interested in dbt State, [let us know](https://www.getdbt.com/contact).
+
+## Setting up dbt State
+
+Set up dbt State either in <Constant name="dbt_platform" /> or locally in <Constant name="core" /> by using the following steps depending on how you're using dbt.
 
 <Tabs>
 <TabItem value="platform" label="dbt platform">
