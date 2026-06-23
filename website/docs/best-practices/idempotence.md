@@ -12,69 +12,90 @@ If you're new to dbt, idempotence is worth understanding before you build increm
 
 ## What idempotence means in dbt
 
-A dbt model is idempotent if running it once and running it ten times in a row produces the same output. The final state of the data should be identical no matter how many times you've executed the model.
+A dbt model is idempotent if running it once and running it ten times in a row produces the same result. The final state of the data should be identical regardless of how many times you've ran the model.
 
-dbt is designed around this expectation. A dbt run doesn't need to "know" about previous runs — it just looks at the code and the current state of your database and produces the correct result.
+This is because each model is a pure function of your code and the current state of your database, not of how many times it's run before. Given the same inputs, it always produces the same output.
 
-This makes dbt-managed transformations:
+This makes dbt transformations:
 
-- **Safe to retry** — if a run fails partway through, re-running it won't corrupt your data.
-- **Easy to backfill** — you can re-run historical data without worrying about double-counting or drift.
-- **Predictable in CI** — the same code always produces the same data, which makes testing reliable.
+- Safe to retry if a run fails partway through, re-running it won't corrupt your data.
+- Easy to backfill so you can re-run historical data without worrying about double-counting or drift.
+- Predictable in CI so the same code always produces the same data, which makes testing reliable.
 
-## How dbt's materializations support idempotence
-
+## Materializations and idempotence
+ 
 Most dbt materializations are idempotent by default:
+
+<SimpleTable>
 
 | Materialization | How it achieves idempotence |
 |---|---|
-| `table` | Drops and recreates the table on every run |
+| `table` | Rebuilds the table from scratch on every run (`create or replace`) |
 | `view` | Replaces the view definition on every run |
-| `incremental` | Requires deliberate configuration — see below |
-| `snapshot` | Uses `updated_at` or row hash to detect changes without duplicating rows |
+| `incremental` | Requires deliberate configuration. Read the [next section](#idempotence-and-incremental-models) for more details. |
+| `materialized_view` | Creates or replaces the materialized view definition on each run; the warehouse manages data refresh |
 
-Tables and views are straightforward — dbt always produces a fresh result from scratch. Incremental models are where idempotence requires more care.
+</SimpleTable>
 
 ## Idempotence and incremental models
 
-Incremental models only process new or changed rows, which means they're inherently stateful. If you're not careful, re-running an incremental model can produce duplicate rows or inconsistent results.
+Incremental models only process new or changed rows, which means they depend on the existing state of the target table. If you're not careful, re-running an incremental model can produce duplicate rows or inconsistent results.
 
-The most common pitfall is appending rows without any deduplication logic:
+The most common pitfall is appending rows without deduplication or a reliable unique key. Compare these side by side:
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '24px'}}>
+
+<div>
+
+**Non-idempotent incremental example**
+
+This example filters incrementally but doesn't define a `unique_key`, so rows at the boundary can be appended again on re-runs which might result in duplicate rows.
 
 ```sql
--- ⚠️ Not idempotent — re-runs will duplicate rows
+-- ❌ Not idempotent: re-runs can duplicate rows 
 {{ config(materialized='incremental') }}
 
 select * from {{ source('events', 'raw_events') }}
+
 {% if is_incremental() %}
-  where event_at > (select max(event_at) from {{ this }})
+  where event_at >= (select max(event_at) from {{ this }})
 {% endif %}
 ```
 
-If this model runs twice in a row with overlapping data, you'll get duplicate rows.
+</div>
 
-### Make incremental models idempotent
+<div>
 
-Use a `unique_key` with your incremental model to make it idempotent. dbt will use this key to perform an upsert (merge) instead of an append:
+**Idempotent incremental example**
+
+This example adds a `unique_key`, so matching rows are updated or replaced instead of appended as duplicates.
 
 ```sql
--- ✅ Idempotent — re-runs upsert instead of appending
+-- ✅ Idempotent when event_id is unique
 {{ config(
   materialized='incremental',
   unique_key='event_id'
 ) }}
 
 select * from {{ source('events', 'raw_events') }}
+
 {% if is_incremental() %}
-  where event_at > (select max(event_at) from {{ this }})
+  where event_at >= (select max(event_at) from {{ this }})
 {% endif %}
 ```
 
-With `unique_key` set, dbt will update existing rows and insert new ones — running it twice produces the same result.
+</div>
 
-You can also use [microbatch incremental models](/docs/build/incremental-microbatch), which treat each time period as an atomic, replaceable unit. Microbatch models are idempotent by design.
+</div>
+
+With `unique_key` set, dbt updates existing rows and inserts new rows instead of appending duplicates. Depending on your adapter and [incremental strategy](/docs/build/incremental-strategy), dbt does this with `merge` or `delete+insert`.
+
+You can also use microbatch incremental models for large time-series datasets. Microbatch models process data in batches based on an `event_time` column, and can be more resilient for very large incremental workloads.
+
 
 ### Other common pitfalls
+
+<SimpleTable>
 
 | Pitfall | Why it breaks idempotence | Fix |
 |---|---|---|
@@ -83,15 +104,16 @@ You can also use [microbatch incremental models](/docs/build/incremental-microba
 | Generating surrogate keys with random values | Different runs produce different keys for the same row | Use deterministic hashing (for example, `dbt_utils.generate_surrogate_key`) |
 | Hardcoding "today's date" in logic | Results change based on when the model runs, not the data | Filter on source timestamps instead |
 
+</SimpleTable>
+
 ## Full-refresh as a safety net
 
 When an incremental model gets into a bad state (for example, due to a schema change or logic bug), you can always run `dbt run --full-refresh` to drop and rebuild the table from scratch. This is the escape hatch that makes incremental models recoverable.
 
 Think of full-refresh as proof that your underlying logic is still idempotent — even if the incremental path is optimized, the full result should always be reproducible.
 
-## Further reading
+## Related docs
 
 - [State selection and stateless runs](/reference/node-selection/state-selection)
 - [Incremental models](/docs/build/incremental-models)
 - [Microbatch incremental models](/docs/build/incremental-microbatch)
-- [dbt retry](/reference/commands/retry)

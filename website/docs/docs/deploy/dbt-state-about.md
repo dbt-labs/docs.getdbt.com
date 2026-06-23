@@ -20,6 +20,10 @@ dbt State can reuse all node types that create relations in the database (such a
 
 dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
+:::tip Built on idempotence
+dbt State can safely reuse or skip a node only because dbt models are [idempotent](/best-practices/idempotence) &mdash; re-running produces the same result, so reusing a previous build is equivalent to rebuilding.
+:::
+
 ## Benefits
 
 dbt State delivers efficiency gains across both production and development environments:
