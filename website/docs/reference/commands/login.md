@@ -19,7 +19,7 @@ Run [`dbt login status`](#dbt-login-status) to view your current authentication 
 `dbt login` is an interactive, browser-based sign-in flow for local development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
 
 - advanced features in the [dbt VS Code extension](/docs/about-dbt-extension)
-- [dbt State](/docs/deploy/dbt-state-setup#dbt-login-with-dbt-state)
+- [dbt State](/docs/deploy/dbt-state-setup?version=2.0#how-dbt-login-works-with-dbt-state)
 - advanced features in v2.0 CLI
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
