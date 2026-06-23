@@ -95,7 +95,7 @@ The dbt VS Code extension is available in the [Visual Studio extension marketpla
 2. Search for `dbt` and choose the one from the publisher `dbt Labs, LLC`.
     <Lightbox src="/img/docs/extension/extension-marketplace.png" width="60%" title="Search for the extension"/>
 3. Click **Install**.
-4. When the prompt appears, you can register the extension now or skip it (you can register later). You can also check out our [installation instructions](/docs/install-dbt-extension) to come back to it later.
+4. When the prompt appears, you can register the extension or skip it. Check out the [registration](/docs/sign-in-dbt-extension) or [installation](/docs/install-dbt-extension) instructions to come back to it later.
 5. Confirm you've installed the extension by looking for the **dbt Extension** label in the status bar. If you see it, the extension was installed successfully!
     <Lightbox src="/img/docs/extension/extension-lsp-download.png" width="60%" title="Verify installation in the status bar."/>
 
