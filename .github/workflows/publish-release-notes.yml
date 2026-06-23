@@ -45,9 +45,15 @@ jobs:
           echo "value=$WEEK" >> "$GITHUB_OUTPUT"
 
       - name: Mark PR ready for review
+        id: mark_ready
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh pr ready ${{ steps.pr.outputs.number }}
+        run: |
+          gh api \
+            --method PATCH \
+            "repos/${{ github.repository }}/pulls/${{ steps.pr.outputs.number }}" \
+            --input - <<< '{"draft":false}'
 
       - name: Notify Slack via Zapier
         env:
