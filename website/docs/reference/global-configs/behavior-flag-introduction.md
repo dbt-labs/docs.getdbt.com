@@ -14,13 +14,13 @@ The sections below document flags that have not yet reached maturity (default st
 
 ## Behavior flags in Fusion 
 
-In <Constant name="fusion" />, all behavior change flags permanently enforce the new behavior. The opt-in/opt-out lifecycle described on the [Behavior changes](/reference/global-configs/behavior-changes) page applies to dbt Core only. In Fusion:
+In <Constant name="fusion" />, all behavior change flags permanently enforce the new behavior. The opt-in/opt-out lifecycle described on the [Behavior changes](/reference/global-configs/behavior-changes) page applies to <Constant name="core" />only. In Fusion:
 
 - Every flag on this page is always enabled, regardless of what is set in `dbt_project.yml`.
 - Setting a flag to `false` has no effect.
 - If a new behavior causes problems in your project, the fix is to update your project code, not to revert the flag.
 
-If you're on Fusion and troubleshooting unexpected behavior from a specific flag, go directly to that flag's section below for details on what changed and how to adapt.
+If you're on <Constant name="fusion" /> and troubleshooting unexpected behavior from a specific flag, go directly to that flag's section below for details on what changed and how to adapt.
 
 ## Introduced flags
 
