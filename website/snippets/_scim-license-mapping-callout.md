@@ -4,7 +4,7 @@
 
 Open the following toggle for the option that applies to your identity provider:
 
-<Expandable alt_header="Different options per identity provider">
+<Expandable alt_header="Toggle options per identity provider">
 
 - **Okta:** Enable **Manage user licenses with SCIM** in **Account settings > SSO & SCIM** and follow the [Okta license management doc](/docs/platform/manage-access/scim-manage-user-licenses).
 - **Entra ID:** Use [SSO-based Active Directory group → license mapping](/docs/platform/manage-access/seats-and-users#mapped-configuration). It works alongside an active Entra ID SCIM setup. Keep the **Manage user licenses with SCIM** toggle _disabled_ as enabling it removes license mapping for Entra ID users.
