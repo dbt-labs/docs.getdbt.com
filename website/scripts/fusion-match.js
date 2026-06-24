@@ -27,9 +27,20 @@ function normalizeFunctionUrl(url) {
   }
 }
 
-/** Ignore underscores when comparing names (DATEADD ↔ date_add). */
+/**
+ * Build a comparison key that tolerates the cosmetic differences between how a
+ * platform's docs name a function and how Fusion's YAML names it:
+ *   - a trailing parenthetical qualifier the docs add to disambiguate overloads
+ *     (e.g. "LAST_DAY (Datetime)", "PERCENTILE_CONT (Navigation)", "STRING (Timestamp)")
+ *     — Fusion lists these under the bare name ("last_day"), so strip it.
+ *   - underscores (DATEADD ↔ date_add).
+ *   - case.
+ */
 function normalizeFunctionKey(name) {
-  return name.toUpperCase().replace(/_/g, '');
+  return name
+    .replace(/\s*\([^()]*\)\s*$/, '')
+    .toUpperCase()
+    .replace(/_/g, '');
 }
 
 /**

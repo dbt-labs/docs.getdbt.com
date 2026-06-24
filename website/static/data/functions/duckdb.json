@@ -2,8 +2,7 @@
   "_meta": {
     "platform": "duckdb",
     "platform_name": "DuckDB",
-    "fetched_at": "2026-05-26T10:20:02.102Z",
-    "count": 510
+    "count": 511
   },
   "functions": [
     {
@@ -3419,6 +3418,13 @@
       "name": "REPEAT_ROW",
       "category": "utility",
       "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#repeat_rowvarargs-num_rows",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "REPLACE_TYPE",
+      "category": "utility",
+      "docs_url": "https://duckdb.org/docs/current/sql/functions/utility#replace_typevalue-source_type-target_type",
       "preview_status": "GA",
       "fusion_typecheck": false
     },
