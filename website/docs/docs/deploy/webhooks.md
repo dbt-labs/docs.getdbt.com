@@ -32,7 +32,7 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 - You have a <Constant name="dbt" /> account that is on the [Starter or Enterprise-tier](https://www.getdbt.com/pricing/) plan. 
 - For `write` access to webhooks: 
     - **Enterprise-tier plans** &mdash; Permission sets are the same for both API service tokens and the <Constant name="dbt" /> UI. You, or the API service token, must have the Account Admin, Admin, or Developer [permission set](/docs/platform/manage-access/enterprise-permissions).  
-    - **Starter plan accounts** &mdash; For the <Constant name="dbt" /> UI, you need to have a [Developer license](/docs/platform/manage-access/self-service-permissions).
+    - **Starter plan accounts** &mdash; For the <Constant name="dbt" /> user interface (UI), you need to have a [Developer license](/docs/platform/manage-access/self-service-permissions).
 - You have a multi-tenant or an AWS single-tenant deployment model in <Constant name="dbt" />. For more information, refer to [Tenancy](/docs/platform/about-platform/tenancy).
 - Your destination system supports [Authorization headers](#troubleshooting).
 
