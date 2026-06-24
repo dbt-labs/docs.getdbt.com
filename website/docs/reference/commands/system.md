@@ -66,11 +66,6 @@ Update to the canary channel:
 dbt system update --version canary
 ```
 
-
-```shell
-dbt system update --package all
-```
-
 ## dbt system uninstall
 
 `dbt system uninstall` removes the CLI binary from your system. On macOS and Linux, it downloads and runs the official `uninstall.sh` script. On Windows, a PowerShell script handles removal after the current process exits (to release the file lock on the running executable).
