@@ -581,13 +581,6 @@ taylor_dunlap:
   title: Senior Solutions Architect at dbt Labs
   name: Taylor Dunlap
   page: true
-toby_mao:
-  image_url: /img/blog/authors/toby-mao.png
-  socials:
-    linkedin: toby-mao
-  name: Toby Mao
-  page: true
-  title: Director, Engineering at Fivetran
 viraj_parekh:
   image_url: /img/blog/authors/viraj-parekh.jpeg
   title: Field CTO at Astronomer
