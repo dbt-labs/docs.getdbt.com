@@ -1,4 +1,4 @@
-:::info License mapping with SCIM
+#### License mapping with SCIM
 
 <Constant name="dbt_platform"/> supports automatic license assignment with SCIM, with different options depending on your identity provider:
 
@@ -6,4 +6,3 @@
 - **Entra ID:** Use [SSO-based Active Directory group → license mapping](/docs/platform/manage-access/seats-and-users#mapped-configuration). It works alongside an active Entra ID SCIM setup. Keep the **Manage user licenses with SCIM** toggle _disabled_ as enabling it removes license mapping for Entra ID users.
 
 For more details, refer to the [Does SCIM support automatic license assignment? FAQ](/docs/platform/manage-access/scim-faq#does-scim-support-automatic-license-assignment).
-:::
