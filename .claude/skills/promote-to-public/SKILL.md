@@ -46,6 +46,17 @@ Wait for the user's answer before continuing.
 
 ---
 
+## Step 3: Placeholder reference
+
+Before running any commands, substitute the placeholders below with real branch names. Never pass the literal strings to git.
+
+| Placeholder | Replace with |
+|-------------|--------------|
+| `PRIVATE_BRANCH` | The actual branch name captured in Step 1 (for example, `st-release-notes-2026-06-24`) |
+| `PUBLIC_BRANCH` | A new branch name for `docs.getdbt.com` — must differ from `PRIVATE_BRANCH` (for example, `st-release-notes-2026-06-24-public`) |
+
+---
+
 ## Step 3a: Promote with no commit history (single clean commit)
 
 Use this path when the user chose "single clean commit."
