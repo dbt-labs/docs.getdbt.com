@@ -72,10 +72,6 @@ Update both `dbt` and `dbt-lsp` to the latest version:
 dbt system update --package all
 ```
 
-:::info dbt-lsp deprecation note
-`dbt-lsp` is a compatibility binary. The `dbt` binary now includes language server functionality via `dbt lsp`. Prefer updating the `dbt` package directly.
-:::
-
 ## dbt system uninstall
 
 `dbt system uninstall` removes the CLI binary from your system. On macOS and Linux, it downloads and runs the official `uninstall.sh` script. On Windows, a PowerShell script handles removal after the current process exits (to release the file lock on the running executable).
