@@ -13,10 +13,11 @@ dbt Labs is committed to protecting your privacy and data. This page explains ho
 </IntroText>
 
 <Expandable alt_header="Does dbt Wizard access my warehouse data?">
-  
-<Constant name="wizard" /> can run dbt commands and queries on your behalf. Every query needs your explicit permission first. When a query runs, d<Constant name="wizard" /> sends the results &mdsah; which may include row-level data &mdsah; to the LLM provider so it can respond in your session. 
 
-The provider doesn't keep this data or use it for training, under a zero data retention (ZDR) agreement. <Constant name="wizard" /> doesn't export or store your raw warehouse data outside the <Constant name="dbt_platform" />. We recommend to always review AI output for accuracy.
+<Constant name="wizard" /> can run dbt commands and queries on your behalf, and every query needs your explicit permission first. When a query runs, <Constant name="wizard" /> sends those results &mdsah; which may include row-level data &mdsah; to the AI provider so it can respond in your session. 
+
+For dbt-managed AI providers, we have zero data retention (ZDR) agreements in place that prevents the provider from retaining or using this data for training. If you bring your own AI provider (BYOK), that provider's terms will govern retention and training. Always review AI output for accuracy.
+
 </Expandable>
 
 <Expandable alt_header="Does dbt Wizard store or use personal data?">
