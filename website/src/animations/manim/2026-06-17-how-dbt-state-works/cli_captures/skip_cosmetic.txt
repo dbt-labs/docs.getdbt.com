@@ -1,0 +1,57 @@
+  dbt-core 2.0.0-alpha.1
+   Loading ~/.dbt/profiles.yml
+   Loading packages.yml
+dbt State is enabled (endpoint https://api.state.dbt.com:443, defer_to prod)
+    Reused [-------] seed  dev_joell_raw.raw_supplies (table - No new changes on any upstreams)
+    Reused [-------] seed  dev_joell_raw.raw_products (table - No new changes on any upstreams)
+    Reused [-------] seed  dev_joell_raw.raw_orders (table - No new changes on any upstreams)
+    Reused [-------] seed  dev_joell_raw.raw_items (table - No new changes on any upstreams)
+    Reused [-------] seed  dev_joell_raw.raw_customers (table - No new changes on any upstreams)
+    Reused [-------] model dev_joell.stg_supplies (view - No new changes on any upstreams)
+    Reused [-------] test  not_null_stg_supplies_supply_uuid (No new changes on any upstreams)
+    Reused [-------] test  unique_stg_supplies_supply_uuid (No new changes on any upstreams)
+    Reused [-------] model dev_joell.stg_products (view - No new changes on any upstreams)
+    Reused [-------] test  unique_stg_products_product_id (No new changes on any upstreams)
+    Reused [-------] test  not_null_stg_products_product_id (No new changes on any upstreams)
+    Reused [-------] model dev_joell.stg_orders (view - No new changes on any upstreams)
+    Reused [-------] test  dbt_utils_expression_is_true_stg_orders_order_total_tax_paid_subtotal (No new changes on any upstreams)
+    Reused [-------] test  unique_stg_orders_order_id (No new changes on any upstreams)
+    Reused [-------] test  not_null_stg_orders_order_id (No new changes on any upstreams)
+    Reused [-------] model dev_joell.stg_order_items (view - No new changes on any upstreams)
+    Reused [-------] test  not_null_stg_order_items_order_id (No new changes on any upstreams)
+    Reused [-------] test  unique_stg_order_items_order_item_id (No new changes on any upstreams)
+    Reused [-------] test  not_null_stg_order_items_order_item_id (No new changes on any upstreams)
+    Reused [-------] test  relationships_stg_order_items_order_id__order_id__ref_stg_orders_ (No new changes on any upstreams)
+    Reused [-------] seed  dev_joell_raw.raw_stores (table - No new changes on any upstreams)
+    Reused [-------] model dev_joell.stg_customers (view - No new changes on any upstreams)
+    Reused [-------] test  not_null_stg_customers_customer_id (No new changes on any upstreams)
+    Reused [-------] test  unique_stg_customers_customer_id (No new changes on any upstreams)
+    Reused [-------] model dev_joell.supplies (table - No new changes on any upstreams)
+    Reused [-------] model dev_joell.products (table - No new changes on any upstreams)
+    Passed [  3.37s] unit_test dev_joell_dbt_test__audit.test_does_location_opened_at_trunc_to_date
+    Passed [  4.03s] unit_test dev_joell_dbt_test__audit.test_supply_costs_sum_correctly
+    Reused [-------] model dev_joell.stg_locations (view - No new changes on any upstreams)
+    Reused [-------] test  not_null_stg_locations_location_id (No new changes on any upstreams)
+    Reused [-------] test  unique_stg_locations_location_id (No new changes on any upstreams)
+    Reused [-------] model dev_joell.order_items (table - No new changes on any upstreams)
+    Reused [-------] test  unique_order_items_order_item_id (No new changes on any upstreams)
+    Reused [-------] test  not_null_order_items_order_item_id (No new changes on any upstreams)
+    Reused [-------] model dev_joell.locations (table - No new changes on any upstreams)
+    Passed [  2.59s] unit_test dev_joell_dbt_test__audit.test_order_items_compute_to_bools_correctly
+    Reused [-------] model dev_joell.orders (table - No new changes on any upstreams)
+    Reused [-------] test  unique_orders_order_id (No new changes on any upstreams)
+    Reused [-------] test  relationships_orders_customer_id__customer_id__ref_stg_customers_ (No new changes on any upstreams)
+    Reused [-------] test  not_null_orders_order_id (No new changes on any upstreams)
+    Reused [-------] test  dbt_utils_expression_is_true_orders_order_total_subtotal_tax_paid (No new changes on any upstreams)
+    Reused [-------] test  relationships_order_items_order_id__order_id__ref_orders_ (No new changes on any upstreams)
+    Reused [-------] test  dbt_utils_expression_is_true_orders_order_items_subtotal_subtotal (No new changes on any upstreams)
+    Reused [-------] model dev_joell.customers (table - No new changes on any upstreams)
+    Reused [-------] test  accepted_values_customers_customer_type__new__returning (No new changes on any upstreams)
+    Reused [-------] test  not_null_customers_customer_id (No new changes on any upstreams)
+    Reused [-------] test  unique_customers_customer_id (No new changes on any upstreams)
+    Reused [-------] test  dbt_utils_expression_is_true_customers_lifetime_spend_pretax_lifetime_tax_paid_lifetime_spend (No new changes on any upstreams)
+
+==================== Execution Summary =====================
+Finished 'build' successfully for target 'snowflake' [26.1s]
+Processed: 12 models | 27 tests | 6 seeds | 3 unit tests
+Summary: 48 total | 3 success | 45 reused
