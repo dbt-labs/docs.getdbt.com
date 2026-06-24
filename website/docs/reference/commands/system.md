@@ -9,6 +9,12 @@ description: "Use dbt system to update, uninstall, or pre-install ADBC adapter d
 
 `dbt system` provides commands for managing the <Constant name="fusion" /> CLI and <Constant name="platform_cli" /> installations. <Constant name="core" /> has no equivalent.
 
+:::important
+
+`dbt system update` and `dbt system uninstall` are only supported for [CDN installations](/docs/local/install-dbt) of <Constant name="fusion" />. If you installed <Constant name="fusion" /> via Pip, Homebrew, or Winget, you'll need to update or uninstall dbt from those tools.
+
+:::
+
 ## Usage
 
 ```shell
@@ -78,29 +84,21 @@ dbt system update --package all
 
 ## dbt system uninstall
 
-`dbt system uninstall` removes the CLI binary from your system. On macOS and Linux, it downloads and runs the official `uninstall.sh` script. On Windows, a PowerShell script handles removal after the current process exits (to release the file lock on the running executable).
+`dbt system uninstall` removes the CLI binary from your system. On macOS and Linux, it downloads and runs the official `uninstall.sh` script. On Windows, a PowerShell script handles removal after the current process exits (to release the file lock on the running executable). There are no flags for this command.
 
 ```shell
 dbt system uninstall
 ```
 
-This command takes no additional flags.
-
 ## dbt system install-drivers
 
-`dbt system install-drivers` downloads and caches all supported ADBC adapter driver libraries (`.dylib`, `.so`, `.dll`) for every supported data platform at once. Normally, dbt downloads drivers on first use when you run a command against a new data platform. Use `dbt system install-drivers` to pre-populate the cache (for example, before going offline or switching between projects that target different warehouses).
+`dbt system install-drivers` downloads and caches all supported ADBC adapter driver libraries (`.dylib`, `.so`, `.dll`) for every supported data platform at once. Normally, dbt downloads drivers on first use when you run a command against a new data platform. Use `dbt system install-drivers` to pre-populate the cache (for example, before going offline or switching between projects that target different warehouses). There are no flags for this command.
 
 ```shell
 dbt system install-drivers
 ```
 
-This command takes no additional flags.
-
 :::tip Networking note
 `dbt system install-drivers` downloads files from `https://public.cdn.getdbt.com`. If your environment restricts outbound network access, make sure this endpoint is allowlisted. See [Fusion networking requirements](/docs/fusion/fusion-networking) for the full list of endpoints.
 :::
 
-## Related commands
-
-- [`dbt debug`](/reference/commands/debug) &mdash; Test your dbt project and connection configuration.
-- [Fusion networking requirements](/docs/fusion/fusion-networking) &mdash; Review outbound endpoints required by the <Constant name="fusion_engine" />.
