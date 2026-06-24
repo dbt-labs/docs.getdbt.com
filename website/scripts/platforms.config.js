@@ -5,8 +5,14 @@
  *  - id:             Machine identifier used as the platform key and directory name
  *  - name:           Display name used in docs and logs
  *  - functionsUrl:   Primary docs URL (used in logs; may redirect)
+ *  - refName:        Human label for the platform's own SQL function reference
+ *  - icon:           Card icon (a file in /static/img/icons or a Font Awesome `fa-` name)
+ *  - slug:           Optional URL override to preserve an existing public URL
  *  - parseHtml:      Sync scraper for single-page sources (optional if fetchFunctions set)
  *  - fetchFunctions: Async scraper for multi-page sources (optional)
+ *
+ * The display fields (refName, icon, slug) drive the auto-generated per-platform
+ * pages under docs/reference/fusion-function-support — see generate-functions-snippet.js.
  *
  * To add a new platform: add one entry here and implement parseHtml or fetchFunctions.
  * The fetch and snippet-generation scripts are fully generic — no other files change.
@@ -288,6 +294,9 @@ const PLATFORMS = [
     id: 'snowflake',
     name: 'Snowflake',
     functionsUrl: SNOWFLAKE_FUNCTIONS_URL,
+    refName: 'Snowflake SQL function reference',
+    icon: 'snowflake',
+    slug: '/reference/resource-configs/snowflake-function-support',
     parseHtml(html) {
       return scrapeSnowflakeFlatTable(html);
     },
@@ -296,6 +305,8 @@ const PLATFORMS = [
     id: 'databricks',
     name: 'Databricks',
     functionsUrl: 'https://docs.databricks.com/en/sql/language-manual/sql-ref-functions-builtin-alpha.html',
+    refName: 'Databricks SQL function reference',
+    icon: 'databricks',
     parseHtml(html) {
       return scrapeDatabricksPage(html);
     },
@@ -304,6 +315,8 @@ const PLATFORMS = [
     id: 'redshift',
     name: 'Amazon Redshift',
     functionsUrl: 'https://docs.aws.amazon.com/redshift/latest/dg/c_SQL_functions.html',
+    refName: 'Amazon Redshift SQL function reference',
+    icon: 'redshift',
     async fetchFunctions(fetchText) {
       const indexHtml = await fetchText(this.functionsUrl);
       const indexRoot = parseHtml(indexHtml);
@@ -337,6 +350,9 @@ const PLATFORMS = [
     id: 'bigquery',
     name: 'BigQuery',
     functionsUrl: 'https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/functions-all',
+    refName: 'BigQuery SQL function reference',
+    icon: 'bigquery',
+    slug: '/reference/resource-configs/bigquery-function-support',
     parseHtml(html) {
       return scrapeBigQueryFlatTable(html);
     },
@@ -345,6 +361,8 @@ const PLATFORMS = [
     id: 'trino',
     name: 'Trino',
     functionsUrl: 'https://trino.io/docs/current/functions/list.html',
+    refName: 'Trino function reference',
+    icon: 'fa-square-terminal',
     parseHtml(html) {
       return scrapeTrinoListPage(html);
     },
@@ -353,6 +371,8 @@ const PLATFORMS = [
     id: 'duckdb',
     name: 'DuckDB',
     functionsUrl: 'https://duckdb.org/docs/current/sql/functions/overview',
+    refName: 'DuckDB function reference',
+    icon: 'duckdb-seeklogo',
     async fetchFunctions(fetchText) {
       const overviewHtml = await fetchText(this.functionsUrl);
       const overviewRoot = parseHtml(overviewHtml);
