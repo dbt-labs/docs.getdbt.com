@@ -75,7 +75,7 @@ You can configure whether downstream models run when an upstream model fails usi
 
 ### OSI semantic layer support <Lifecycle status="beta" />
 
-- <Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
+- <Constant name="core" /> v1.12 supports the [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) standard for defining semantic models and metrics. You can place OSI-format `.json` files in an `OSI/` directory at the root of your project, and dbt parses them into the manifest alongside any native dbt semantic models. To use a different directory, configure [`osi-paths`](/reference/project-configs/osi-paths) in `dbt_project.yml`. OSI versions `0.1.0` and `0.1.1` are supported; any other version raises a parse error. For more information, refer to [OSI semantic layer documents](/docs/build/osi-semantic-models).
 - dbt writes an `osi_document.json` file to your `target/` directory alongside `semantic_manifest.json` at parse time. This artifact provides an Open Semantic Interchange (OSI) representation of your project's <Constant name="semantic_layer" />. For more information, refer to [Semantic manifest](/reference/artifacts/sl-manifest#osi-document).
 
 
@@ -165,6 +165,13 @@ You can read more about each of these behavior changes in the following links:
 
 - The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#redshift_skip_autocommit_transaction_statements-flag) flag defaults to `false`, preserving legacy behavior of sending `BEGIN`/`COMMIT`/`ROLLBACK` statements even when autocommit is enabled. To skip unnecessary transaction statements and improve performance, set the flag to `true`.
 - Added support for the `query_group` session parameter, allowing dbt to tag queries for Redshift Workload Manager routing and query logging. When configured in a profile, dbt sets `query_group` when opening a connection and the value applies for the duration of that session. You can also configure `query_group` at the model level to temporarily override the default value for a specific model, and dbt reverts the value at the end of model materialization. For more information, see [Redshift configurations](/reference/resource-configs/redshift-configs#session-configuration).
+
+### Databricks
+
+- You can use the [`row_filter`](/reference/resource-configs/databricks-configs#setting-row-filters) config to apply a [Unity Catalog row filter](https://docs.databricks.com/aws/en/tables/row-and-column-filters) to a model, restricting which rows a query returns based on a SQL UDF. Row filters are supported on `table`, `incremental`, `materialized_view`, and `streaming_table` materializations. They are not supported on regular views or Hive Metastore relations.
+- [`databricks_tags`](/reference/resource-configs/databricks-configs#databricks_tags) has two updates in v1.12:
+  - You can now set a tag's value to `''` or `None` to apply a key-only tag with no value.
+  - Configs now merge additively across hierarchy levels (for example, project-level and model-level) instead of lower-level configs completely replacing higher-level ones. When the same tag key is defined at multiple levels, the lower-level value takes precedence.
 
 
 ## Quick hits

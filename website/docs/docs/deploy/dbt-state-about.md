@@ -18,15 +18,15 @@ With dbt State, dbt first compares the logic and data of each node to previous b
 
 dbt State can reuse all node types that create relations in the database (such as models, snapshots, seeds) and data tests.
 
-dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com).
+dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
 
 ## Benefits
 
 dbt State delivers efficiency gains across both production and development environments:
 
-- **Fresher data, lower costs** — Nodes only rebuild when the result would be different (new data or code changes), reducing warehouse compute while keeping production data fresh.
-- **Faster iteration cycles** — In development, dbt automatically clones selected nodes from production whenever possible, so you spend less time waiting for builds and more time writing code.
-- **Smarter than standard deferral** — Unlike standard deferral, which always builds selected nodes and only defers unselected upstream references, dbt State decides whether transformations need to run at all, or whether an existing table can simply be cloned.
+- **Fresher data, lower costs**: Nodes only rebuild when the result would be different (new data or code changes), reducing warehouse compute while keeping production data fresh.
+- **Faster iteration cycles**: In development, dbt automatically clones selected nodes from production whenever possible, so you spend less time waiting for builds and more time writing code.
+- **Smarter than standard deferral**: Unlike standard deferral, which always builds selected nodes and only defers unselected upstream references, dbt State decides whether transformations need to run at all, or whether an existing table can simply be cloned.
 
 ## How dbt State works
 
@@ -40,17 +40,21 @@ Without dbt State, every selected node rebuilds on every run regardless of wheth
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
-## Supported data warehouses
+## Prerequisites
 
-dbt State is supported on the following data warehouses:
+To use dbt State, you need:
 
-- Snowflake
-- Databricks
-- BigQuery
-- Redshift
+- A supported version of dbt. 
+    - Natively available for <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" /> both in <Constant name="dbt_platform" /> and locally.
+    - Available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
+- A supported data platform. dbt State currently supports Snowflake, Databricks, BigQuery, and Redshift
+- A supported dbt State account type, which you can learn more about in [Signing up for dbt State](#signing-up-for-dbt-state):
+    - A current <Constant name="dbt_platform" /> account*
+    - A standalone dbt State account
+
+*dbt State isn't available to users on [legacy Starter](/docs/platform/billing#legacy-plans) plans. If you're on a legacy Starter plan, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance.
 
 More data warehouses are on the roadmap. If you're using another data warehouse and are interested in dbt State, [let us know](https://www.getdbt.com/contact).
-
 
 ## Signing up for dbt State
 
@@ -82,6 +86,7 @@ A standalone account makes sense if you:
 ## Related docs
 
 - [Set up dbt State](/docs/deploy/dbt-state-setup)
-- [CI/CD setup](/docs/deploy/dbt-state-cicd)
+- [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
+- [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)
