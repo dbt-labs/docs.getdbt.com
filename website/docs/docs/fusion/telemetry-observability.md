@@ -278,3 +278,5 @@ dbt Labs provides an official open-source client library. Built in Rust for perf
 - A fully typed Python package wrapping the Rust core, installable via `uv tool install`.
 
 The library provides type-safe, forward-compatible access to telemetry data. Stream JSONL in real time, query Parquet files, and build custom integrations with confidence that schema changes won't break your code.
+
+We'll be announcing the public release in the near future.
