@@ -11,5 +11,5 @@ Open the following toggle for the option that applies to your identity provider:
 - 
 </Expandable>
 
-For more details, refer to the [Does SCIM support automatic license assignment? FAQ](/docs/platform/manage-access/scim-faq#does-scim-support-automatic-license-assignment).
+For more details, refer to the [Does SCIM support automatic license assignment?](/docs/platform/manage-access/scim-faq#does-scim-support-automatic-license-assignment) FAQ.
 :::
