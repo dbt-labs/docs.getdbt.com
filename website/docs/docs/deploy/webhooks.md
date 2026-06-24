@@ -55,7 +55,9 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
 
 dbt automatically archives a webhook after 1,000 consecutive failed deliveries or 7 consecutive days of failed deliveries, whichever comes first.
 
-On the **Account settings → Webhooks** page in <Constant name="dbt_platform"/>, a dismissible warning banner appears when one or more subscriptions are archived. Archived subscriptions show an **Archived** badge in the status column instead of an HTTP status. Hover over the badge for details on why dbt archived it and how to reactivate it.
+- On the **Account settings → Webhooks** page in <Constant name="dbt_platform"/>, a dismissible warning banner appears when one or more subscriptions are archived.
+- Archived subscriptions show an **Archived** badge in the status column instead of an HTTP status.
+- Hover over the badge for details on why dbt archived it and how to reactivate it.
 
 <Lightbox src="/img/docs/deploy/webhooks-archived.png" width="100%" title="Webhooks page showing the archived subscription warning banner with the 'Archived; status badge"/>
 
