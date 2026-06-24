@@ -50,19 +50,18 @@ You can also check out the free [dbt Fundamentals course](https://learn.getdbt.c
    
    <Constant name="dbt" /> provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
 
-:::info
-dbt automatically deactivates a webhook after either 1,000 consecutive failed deliveries or 7 consecutive days of failed deliveries, whichever occurs first. For more information, refer to [Deactivated webhooks](#deactivated-webhooks).
-:::
 
-### Deactivated webhooks {#deactivated-webhooks}
+## Archived webhooks
 
-On the **Account settings → Webhooks** page, a dismissible warning banner appears when one or more subscriptions have been deactivated. Deactivated subscriptions display an **Archived** badge in the status column instead of the latest HTTP status. Hover over the badge to see why the subscription was archived and how to reactivate it.
+dbt automatically archives a webhook after 1,000 consecutive failed deliveries or 7 consecutive days of failed deliveries, whichever comes first.
 
-<Lightbox src="/img/docs/deploy/webhooks-archived.png" width="100%" title="Webhooks page showing the disabled subscription warning banner and Archived status badge"/>
+On the **Account settings → Webhooks** page in <Constant name="dbt_platform"/>, a dismissible warning banner appears when one or more subscriptions are archived. Archived subscriptions show an **Archived** badge in the status column instead of an HTTP status. Hover over the badge for details on why dbt archived it and how to reactivate it.
+
+<Lightbox src="/img/docs/deploy/webhooks-archived.png" width="100%" title="Webhooks page showing the archived subscription warning banner with the 'Archived; status badge"/>
 
 To reactivate a webhook, use one of the following methods:
 
-- **dbt platform UI**: Update the webhook's endpoint URL. <Constant name="dbt" /> automatically reactivates the webhook when the URL is changed.
+- **<Constant name="dbt_platform"/> UI**: Update the webhook's endpoint URL. <Constant name="dbt" /> automatically reactivates the webhook when the URL changes.
 - **REST API**: Send a `PUT` request to [Update a webhook](#update-a-webhook) and set `active` to `true`, or update `client_url` to a new endpoint URL.
 - **Terraform provider**: Set `active = true` and update `client_url` in your webhook resource.
 
