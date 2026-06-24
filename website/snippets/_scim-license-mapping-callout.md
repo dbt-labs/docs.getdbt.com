@@ -2,7 +2,6 @@
 
 <Constant name="dbt_platform"/> supports automatic license assignment with SCIM, with these different identity provider options:
 
-Open the following toggle for the option that applies to your identity provider:
 
 <Expandable alt_header="Toggle options per identity provider">
 
