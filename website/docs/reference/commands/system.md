@@ -2,12 +2,12 @@
 title: "About dbt system command"
 sidebar_label: "system"
 id: "system"
-description: "Use dbt system to update, uninstall, or pre-install ADBC adapter drivers for the dbt CLI."
+description: "Use dbt system to update or uninstall the Fusion engine using the CLI, or pre-install supported ADBC adapter drivers."
 ---
 
 # About dbt system command
 
-`dbt system` provides commands for managing the <Constant name="fusion" /> CLI and <Constant name="platform_cli" /> installations. <Constant name="core" /> has no equivalent.
+`dbt system` provides commands for managing the <Constant name="fusion" /> CLI installation. <Constant name="core" /> has no equivalent.
 
 ## Usage
 
@@ -35,15 +35,15 @@ dbt system update [flags]
 
 | Flag | Description |
 |---|---|
-| `--version VERSION` | Update to a specific version (for example, `1.2.3`) or a named channel (`canary`, `dev`). Defaults to the latest stable release. |
-| `--package PACKAGE` | Which package to update. Accepts `dbt`, `dbt-lsp`, or `all`. Defaults to `dbt`. |
+| `--version VERSION` | Update to a specific version (for example, `2.0.0-preview.190`) or a named channel (`canary`, `dev`). Defaults to the latest stable release. |
+| `--package PACKAGE` | Which package to update. Accepts `dbt` or `all`. Defaults to `dbt`. |
 
 ### Version channels
 
 | Channel | Description |
 |---|---|
 | _(none)_ | Latest stable release |
-| `canary` | Most recent preview build |
+| `canary` | Most recent preview build (under active testing and may be pulled back) |
 | `dev` | Development build (may be unstable) |
 
 ### Examples
@@ -66,7 +66,6 @@ Update to the canary channel:
 dbt system update --version canary
 ```
 
-Update both `dbt` and `dbt-lsp` to the latest version:
 
 ```shell
 dbt system update --package all
