@@ -129,9 +129,7 @@ You can override the development environment's dbt State setting for your own ac
    dbt login
    ```
 
-   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login`](/reference/commands/login#dbt-login-with-dbt-state).
-
-   If dbt State is already enabled on your <Constant name="dbt_platform" /> account, you'll be prompted to enable it on your machine. You can change this at any time by editing the settings file located at `~/.dbt/user_settings.yml`. For more information about login behavior, refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
+   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](#dbt-login-with-dbt-state).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
 
@@ -177,6 +175,27 @@ The CLI flags `--manage-state` and `--no-manage-state` are not available in olde
 
 </TabItem>
 </Tabs>
+
+## How `dbt login` works with dbt State
+
+When [dbt State](/docs/deploy/dbt-state-about) is enabled, [`dbt login`](/reference/commands/login?#dbt-login---help) is used for dbt State authentication. Running this command opens a browser window with two options:
+
+- **Log in with your <Constant name="dbt_platform" /> account**: Enter your email address. If you don't have a <Constant name="dbt_platform" /> account, dbt Labs will create a standalone [Developer account](https://www.getdbt.com/pricing) for you. After that, you'll authorize access between the CLI and <Constant name="dbt_platform" />.
+- **Log in without a <Constant name="dbt_platform" /> account**: Redirects you to the dbt State standalone app at [app.state.dbt.com](https://app.state.dbt.com), where a token is created and stored locally at `~/.dbt/auth_state.json`. dbt State is automatically enabled locally after account creation.
+
+In the <Constant name="fusion_engine" />, after platform authentication, the CLI checks your configuration and responds accordingly:
+
+<SimpleTable>
+
+| dbt State enabled in <Constant name="dbt_platform" />? | dbt State enabled locally? | Behavior |
+|---|---|---|
+| ✅ | ✅ | dbt State is ready to use. |
+| ✅ | ❌ | CLI prompts you to enable dbt State locally. If you confirm, [`user_settings.yml`](/reference/global-configs/user-settings) is updated automatically. |
+| ❌ | ✅ | CLI prompts you to enable dbt State in your platform account. |
+
+</SimpleTable>
+
+In <Constant name="core" /> v1.12, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform).
 
 dbt State works out of the box, but the following steps can help you get more value from it.
 
