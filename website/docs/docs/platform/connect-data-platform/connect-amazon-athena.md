@@ -26,7 +26,7 @@ Connect <Constant name="dbt" /> to Amazon's Athena interactive query service to 
 | Boto3 retries                 | num_boto3_retries| Number of times to retry boto3 requests (for example, deleting S3 files for materialized tables)| Integer | Optional | 5 |
 | Iceberg retries               | num_iceberg_retries| Number of times to retry iceberg commit queries to fix ICEBERG_COMMIT_ERROR       | Integer | Optional | 0 |
 
-### Development credentials
+### User credentials
 
 Enter your _development_ (not deployment) credentials with the following fields:
 
