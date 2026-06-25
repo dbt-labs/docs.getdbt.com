@@ -4,7 +4,6 @@ id: "wizard-quickstart"
 description: "Install the dbt Wizard local CLI, complete first-run onboarding, and send your first prompt from the terminal."
 sidebar_label: "Get started with the local CLI"
 tags: [AI, CLI, dbt Wizard]
-hide_table_of_contents: true
 ---
 
 import WizardPrompts from '/snippets/wizard-prompts.md';
