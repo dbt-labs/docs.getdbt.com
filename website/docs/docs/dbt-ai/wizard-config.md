@@ -2,7 +2,7 @@
 title: "dbt Wizard CLI configuration"
 id: "wizard-config"
 description: "Full reference for both dbt Wizard configuration files — the agent runtime config and the per-project dbt Wizard settings."
-sidebar_label: "CLI config"
+sidebar_label: "Config reference"
 tags: [AI, Wizard]
 ---
 

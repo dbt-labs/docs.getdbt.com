@@ -2,7 +2,8 @@
 
 | dbt Core | Initial release | Support level and end date |
 |:---:|:---:|:---:|
-| [**v1.12**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.12) | May 2026 | Beta |
+| [**v2.0**](/docs/dbt-versions/core-upgrade/upgrading-to-v2) |  |  |
+| [**v1.12**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.12) |  |  |
 | [**v1.11**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.11) | Dec 19, 2025 | **Active Support — Dec 18, 2026** |
 | [**v1.10**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.10) | Jun 16, 2025 | **Critical Support — Jun 15, 2026** |
 | [**v1.9**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) | Dec 9, 2024 | Deprecated ⛔️ |
