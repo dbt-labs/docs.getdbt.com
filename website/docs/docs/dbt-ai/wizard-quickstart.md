@@ -21,6 +21,8 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 Install <Constant name="wizard" /> locally and start an agentic dbt development session from your terminal.
 </IntroText>
 
+<WizardCliDbtCliSupport />
+
 <WizardCliInstall />
 
 By the end of this guide, you can install <Constant name="wizard" /> locally, authenticate with your <Constant name="dbt_platform" /> credentials if applicable, complete first-run onboarding, and send your first prompt from the terminal.
@@ -45,8 +47,6 @@ You'll need:
 
 - An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, Snowflake Cortex (preview), or Databricks
 - A dbt project with a built `target/` directory (run `dbt parse`, `dbt compile`, or `dbt build`)
-
-<WizardCliDbtCliSupport />
 
 <NewToTerminal />
 
