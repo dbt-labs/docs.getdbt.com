@@ -4,7 +4,7 @@ id: "idempotence"
 description: "Learn about best practices for configuring your dbt project to ensure idempotent results."
 ---
 
-<Term id="idempotent">Idempotence</Term> is a foundational expectation in dbt. It means your transformations should be safe to re-run and always produce the same result, regardless of how many times they've run before.
+<Term id="idempotent">Idempotence</Term> is a foundational goal for every dbt project. It means your transformations should be safe to re-run and always produce the same result, regardless of how many times they've run before.
 
 :::info Why this matters early
 If you're new to dbt, idempotence is worth understanding before you build incremental models. It's easy to accidentally write logic that works fine the first time but breaks on re-runs.
@@ -12,7 +12,7 @@ If you're new to dbt, idempotence is worth understanding before you build increm
 
 ## What idempotence means in dbt
 
-A dbt model is idempotent it produces the same results if you run it once or a hundred times. The final state of the data should be identical regardless of how many times you've run the model.
+A dbt model is idempotent if it produces the same results whether you run it once or a hundred times. The final state of the data should be identical regardless of how many times you've run the model.
 
 This is because each model is a pure function of your code and the current state of your database, not of how many times it's run before. Given the same inputs, it always produces the same output.
 
@@ -90,7 +90,7 @@ select * from {{ source('events', 'raw_events') }}
 
 With `unique_key` set, dbt updates existing rows and inserts new rows instead of appending duplicates. Depending on your adapter and [incremental strategy](/docs/build/incremental-strategy), dbt does this with `merge` or `delete+insert`.
 
-You can also use microbatch incremental models for large time-series datasets. Microbatch models process data in batches based on an `event_time` column, and can be more resilient for very large incremental workloads.
+You can also use [microbatch incremental models](/docs/build/incremental-microbatch) for large time-series datasets. Microbatch models process data in batches based on an `event_time` column, and can be more resilient for very large incremental workloads.
 
 
 ### Common risks
@@ -113,6 +113,8 @@ When an incremental model gets into a bad state (for example, due to a schema ch
 Think of `--full-refresh` as proof that your underlying logic is still idempotent. Even if the incremental path is optimized, the full result should always be reproducible.
 
 ## Related docs
+
+These docs cover the dbt features most affected by idempotence:
 
 - [State selection and stateless runs](/reference/node-selection/state-selection)
 - [Incremental models](/docs/build/incremental-models)

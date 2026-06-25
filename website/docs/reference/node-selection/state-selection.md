@@ -9,7 +9,7 @@ If you want a managed experience for state with dbt to skip rerunning models tha
 :::
 
 :::info Why idempotence matters here
-State selection and deferral are safest when your models are [<Term id="idempotent">idempotent</Term>](/best-practices/idempotence), meaning re-running with the same inputs returns the same result. For more info, refer to [Idempotence in dbt](/best-practices/idempotence).
+State selection and deferral rely on your models being [<Term id="idempotent">idempotent</Term>](/best-practices/idempotence), meaning re-running with the same inputs returns the same result. For more info, refer to [Idempotence in dbt](/best-practices/idempotence).
 :::
 
 One of the greatest underlying assumptions about dbt is that its operations should be **stateless** and **<Term id="idempotent" />**. That is, it doesn't matter how many times a model has been run before, or if it has ever been run before. It doesn't matter if you run it once or a thousand times. Given the same raw data, you can expect the same transformed result. A given run of dbt doesn't need to "know" about _any other_ run; it just needs to know about the code in the project and the objects in your database as they exist _right now_.
