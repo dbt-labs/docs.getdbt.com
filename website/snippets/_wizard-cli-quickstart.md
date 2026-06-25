@@ -12,12 +12,12 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 Set up <Constant name="wizard" /> CLI with a local DuckDB dbt project and use it to understand, edit, and validate dbt code from your terminal.
 </IntroText>
 
-In this quickstart, you'll create a local Magic Shop dbt project, load sample data into DuckDB, ask <Constant name="wizard" /> to inspect the project, have <Constant name="wizard" /> propose tests for a staging model, and validate the change with `dbt build`.
+In this quickstart, you'll create a local Magic Shop dbt project, load sample data into DuckDB, ask <Constant name="wizard" /> to inspect the project, have <Constant name="wizard" /> propose tests for a staging model, and validate the change with `dbt build`. It takes about 10 minutes, mostly one-time setup.
 
 By the end of this guide, you'll have:
 
 - A local DuckDB project built with the <Constant name="fusion_engine" /> that <Constant name="wizard" /> can inspect
-- <Constant name="wizard" /> CLI installed and configured with a supported AI provider
+- <Constant name="wizard" /> CLI installed and connected to AI &mdash; through your <Constant name="dbt_platform" /> account or your own provider key
 - A first <Constant name="wizard" /> session that explains the project
 - A small dbt change proposed by <Constant name="wizard" />, reviewed by you, and validated with dbt
 
@@ -27,7 +27,7 @@ You'll need:
 
 - A terminal and basic familiarity with `cd`, `ls`, and `pwd`
 - Python 3.9 or later
-- An AI provider key &mdash; [bring your own key](/docs/dbt-ai/wizard-byok) for the supported providers (OpenAI, Anthropic, AWS Bedrock, Azure, Gemini, or Snowflake)
+- A way to connect <Constant name="wizard" /> to AI &mdash; either a <Constant name="dbt_platform" /> account (you can create one with `dbt login`) or your own [provider key](/docs/dbt-ai/wizard-byok) (OpenAI, Anthropic, AWS Bedrock, Azure, Gemini, or Snowflake). You'll choose during setup.
 
 <WizardCliDbtCliSupport />
 
@@ -86,13 +86,23 @@ The setup script built the project, and you've installed <Constant name="wizard"
     wizard
     ```
 
-<Constant name="wizard" /> needs a supported AI provider before it can answer prompts or propose changes. During first-run onboarding, select your provider and paste your API key **at the prompt**. Entering it at the prompt keeps it out of your shell history and stores it in `~/.dbt/wizard/provider-auth.json`. The fastest option is an [OpenAI API key](https://platform.openai.com/api-keys); you can also use Anthropic, Azure, AWS Bedrock, Gemini, or Snowflake Cortex. For all provider options, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
+<Constant name="wizard" /> needs an AI provider before it can answer prompts or propose changes. Choose one of these paths:
 
-Complete first-run onboarding:
+<Tabs>
+<TabItem value="dbt-login" label="Sign in with dbt (recommended)" default>
 
-<WizardCliOnboarding />
+Run `dbt login` to sign in to &mdash; or create &mdash; a <Constant name="dbt_platform" /> account. <Constant name="wizard" /> then uses the managed `dbt` provider, so there's no separate API key to create, bill, or rotate. It's the fastest way to get started, and your login is shared across the dbt CLI, the [dbt VS Code extension](/docs/about-dbt-extension), and <Constant name="wizard" />.
 
-When <Constant name="wizard" /> asks for your dbt profile location, use this project directory. The setup script writes `profiles.yml` in the project root, where <Constant name="fusion" /> can find it.
+```shell
+dbt login
+```
+
+This opens a browser to sign in or create an account. You can also sign in at the browser prompt during onboarding.
+
+</TabItem>
+<TabItem value="byok" label="Bring your own key">
+
+Prefer a fully self-managed setup with no <Constant name="dbt_platform" /> account? Bring your own key for a supported provider (OpenAI, Anthropic, AWS Bedrock, Azure, Gemini, or Snowflake). During onboarding, select your provider and paste your API key **at the prompt** &mdash; entering it there keeps it out of your shell history and stores it in `~/.dbt/wizard/provider-auth.json`. For all provider options, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
 
 :::caution Keep your API key safe
 Treat your provider key like a password. Prefer entering it at the onboarding prompt rather than as a shell command, since environment variables and command-line values can persist in your shell history. Never commit keys to version control or paste them into shared logs, screenshots, or chats, and rotate any key that's been exposed.
@@ -115,6 +125,15 @@ export AWS_BEARER_TOKEN_BEDROCK="ABSK..."
 Environment variables can persist in your shell history. To set a key without echoing it, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok#set-your-api-key).
 
 </Expandable>
+
+</TabItem>
+</Tabs>
+
+Complete first-run onboarding:
+
+<WizardCliOnboarding />
+
+When <Constant name="wizard" /> asks for your dbt profile location, use this project directory. The setup script writes `profiles.yml` in the project root, where <Constant name="fusion" /> can find it.
 
 ## Asking Wizard to explain the project
 
@@ -208,10 +227,6 @@ Run `/providers` in the interactive <Constant name="wizard" /> session and check
 ### The sample project does not build
 
 Run `dbt debug`, `dbt seed`, and `dbt build` before starting <Constant name="wizard" />. Fix profile, seed, or model errors first.
-
-## Conclusion
-
-You installed <Constant name="wizard" /> CLI, connected it to a local DuckDB project built with the <Constant name="fusion_engine" />, asked project-aware questions, made a small model change, and validated that change with dbt.
 
 ## Next steps
 
