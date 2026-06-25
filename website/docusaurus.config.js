@@ -2,6 +2,7 @@ import path from "path";
 import math from "remark-math";
 import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
+import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
 const { themes } = require('prism-react-renderer')
 
 const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
@@ -88,7 +89,7 @@ var siteSettings = {
     announcementBar: {
       id: "fivetran-dbt-labs-merger-webinar",
       content:
-      "Fivetran + dbt Labs: The merger, what's shipping, and live Q&A on June 25 - Save your seat!",
+      "Fivetran + dbt Labs: The future of dbt Core v2.0, what we're building together, and live Q&A on June 25 - Save your seat!",
       isCloseable: true,
     },
     announcementBarActive: true,
@@ -173,7 +174,7 @@ var siteSettings = {
             },
             {
               label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements",
+              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
             },
             {
               label: "Courses",
@@ -354,7 +355,7 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
-          remarkPlugins: [math],
+          remarkPlugins: [math, remarkBlogFootnoteLinks],
           rehypePlugins: [katex],
           // Un-truncated blog posts will throw an error
           // https://docusaurus.io/blog/releases/3.5#onuntruncatedblogposts

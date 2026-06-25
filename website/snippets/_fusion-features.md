@@ -1,6 +1,6 @@
 ## Fusion and dbt Core v2 features
 
-<Constant name="core" /> v2 and <Constant name="fusion" /> represent the next evolution of the classic dbt Core toolset, with performance enhancements and powerful new features. <Constant name="core" /> v2 includes everything available in dbt Core v1.x, plus the speed and power of <Constant name="fusion" />. Level up your development by [installing the <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2#get-started).
+<Constant name="core" /> v2 and <Constant name="fusion" /> represent the next evolution of the classic <Constant name="core" /> toolset, with performance enhancements and powerful new features. <Constant name="core" /> v2 includes everything available in <Constant name="core" /> v1.x, plus the speed and power of <Constant name="fusion" />. Level up your development by [installing the <Constant name="fusion_engine" />](/docs/local/install-dbt?version=2).
 
 To access the full set of features, register with your email address or sign in to your <Constant name="dbt_platform" /> account using `dbt login`. The following table shows which features are available to all users and which require registration:
 
@@ -19,4 +19,3 @@ To access the full set of features, register with your email address or sign in 
 | Auto-deferral | - | - | ✅ |
 | Compare changes | - | - | ✅ |
 | Precise column-level lineage artifact generation | - | - | ✅ |
-| `dbt lineage` command | - | - | ✅ |

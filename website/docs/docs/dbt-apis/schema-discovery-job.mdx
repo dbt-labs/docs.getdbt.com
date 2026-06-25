@@ -30,9 +30,10 @@ query JobQueryExample {
   # Provide runId for looking at specific run, otherwise it defaults to latest run
   job(id: 940) {
     # Get all models from this job's latest run
-    models(schema: "analytics") {
+    models(schema: "analytics", first: 10, after: "{somePaginationCursorValue}") {
       uniqueId
       executionTime
+      paginationCursor
     }
 
     # Or query a single node
