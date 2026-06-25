@@ -1,6 +1,7 @@
 ---
 title: "Product lifecycles"
 id: "product-lifecycles"
+hide_table_of_contents: true
 description: "Learn about dbt Labs' product lifecycles."
 ---
 
@@ -83,6 +84,15 @@ dbt Core releases follow semantic versioning. Read more in [About dbt versions](
 
 <div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
   <div style={{background: 'var(--color-terminal-black-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
+    <strong style={{color: 'var(--color-terminal-black-700)', fontSize: '1rem'}}>Unreleased</strong>
+  </div>
+  <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
+    Planned for the next minor version prerelease. No commitments on behavior or implementation. Maintainers reserve the right to change or remove it entirely.
+  </div>
+</div>
+
+<div style={{border: '1px solid var(--border-neutral-tertiary)', borderRadius: '16px', overflow: 'hidden'}}>
+  <div style={{background: 'var(--color-terminal-black-100)', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--border-neutral-tertiary)'}}>
     <strong style={{color: 'var(--color-terminal-black-700)', fontSize: '1rem'}}>Alpha</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
@@ -157,7 +167,7 @@ The dbt Fusion engine and [VS Code extension](/docs/about-dbt-extension) are in 
     <strong style={{color: 'var(--color-green-700)', fontSize: '1rem'}}>Generally available (GA)</strong>
   </div>
   <div style={{padding: '1.25rem 1.5rem', background: 'var(--ifm-background-color)'}}>
-    Fully supported and available to all qualified accounts. SLOs, documentation, and technical support apply.
+    Learn what's required for the dbt Fusion engine to reach GA in our [Path to GA](/blog/dbt-fusion-engine-path-to-ga) blog post.
   </div>
 </div>
 
