@@ -1874,6 +1874,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/idempotence",
         "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
