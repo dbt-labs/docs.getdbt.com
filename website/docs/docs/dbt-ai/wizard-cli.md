@@ -20,11 +20,9 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 Install the <Constant name="wizard" /> CLI from your terminal for agentic and governed data development in dbt.
 </IntroText>
 
-This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
-(Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
+This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine. (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
 
-Run the following command to install the <Constant name="wizard"/> CLI:
-
+<WizardCliDbtCliSupport />
 <WizardCliInstall />
 
 Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and onboarding](#first-run-setup-and-onboarding) sections for more details.
@@ -34,8 +32,6 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 - macOS, Windows, or Linux
 - A dbt project with a built `target/` directory (`dbt parse`, `dbt compile`, or `dbt build`)
 - Credentials for a supported CLI provider. Refer to [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) in the next section.
-
-<WizardCliDbtCliSupport />
 
 <WizardSupportedProviders />
 
