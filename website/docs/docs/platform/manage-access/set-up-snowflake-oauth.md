@@ -25,7 +25,7 @@ To set up Snowflake OAuth in <Constant name="dbt" />, admins from both are requi
 2. [Create a security integration](#create-a-security-integration) in Snowflake.
 3. [Configure a connection](#configure-a-connection-in-dbt-cloud) in <Constant name="dbt" />.
 
-To use Snowflake in the <Constant name="studio_ide" />, all developers must [authenticate with Snowflake](#authorize-user-credentials) in their profile credentials.
+To use Snowflake in the <Constant name="studio_ide" />, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
 
 ### Locate the redirect URI value
 
@@ -104,7 +104,7 @@ To complete the creation of your connection in <Constant name="dbt" />:
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt" />
 
-### Authorize user credentials
+### Authorize developer credentials
 
 Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to <Constant name="dbt" /> to complete the setup process. At this point, users should now be able to use the <Constant name="studio_ide" /> with their user credentials.
 

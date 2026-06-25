@@ -199,7 +199,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     * **Target name** &mdash; Leave as the default.
     * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="dbt" /> will make to build models concurrently.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_user_credentials.png" title="dbt - Snowflake User credentials" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake User credentials" />
 
 11. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Snowflake account.
 12. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Snowflake settings and credentials.

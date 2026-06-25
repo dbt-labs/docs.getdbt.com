@@ -122,7 +122,7 @@ If you created your Teradata Vantage database instance at https://clearscape.ter
    * **Password** &mdash; The password of Teradata database.
    * **Schema** &mdash; The default database to use.
   
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_user_credentials.png" title="dbt - Teradata User credentials" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt - Teradata User credentials" />
 
 10. Click **Test Connection** to verify that <Constant name="dbt" /> can access your Teradata Vantage instance.
 11. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Teradata settings and credentials.

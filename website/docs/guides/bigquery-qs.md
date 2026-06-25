@@ -101,7 +101,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
     - **Target name** &mdash; Leave as the default.
     - **Threads** &mdash; Leave as the default (6). This is the number of simultaneous connections that <Constant name="dbt" /> will make to build models concurrently.
 
-    <Lightbox src="/img/bigquery/dbt_platform_bigquery_user_credentials.png" title="BigQuery User credentials" />
+    <Lightbox src="/img/bigquery/dbt_platform_bigquery_development_credentials.png" title="BigQuery User credentials" />
 
 12. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your BigQuery account.
 13. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.

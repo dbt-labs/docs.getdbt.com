@@ -241,7 +241,7 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 
 In this section, you'll be able to validate whether your models run or compile correctly in your development tool of choice: The [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) or [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation).
 
-You'll want to make sure you set up your [development environment and credentials](/docs/dbt-platform-environments#set-user-credentials).
+You'll want to make sure you set up your [development environment and credentials](/docs/dbt-platform-environments#set-developer-credentials).
 
 1. In your [development tool](/docs/platform/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and run some [dbt commands](/reference/dbt-commands):
    - Run `dbt compile` to make sure your project compiles correctly.

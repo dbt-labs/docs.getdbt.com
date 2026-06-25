@@ -518,7 +518,7 @@ We prefer to use [environment variables](/docs/build/environment-variables) over
 - `target.name` requires every developer to input the same value (often ‘dev’) into the target name section of their project user credentials. If a developer doesn’t have the appropriate target name value set, their database/schema/alias may not resolve properly. 
 
 
-<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/user-credentials.png" title="User credentials." width="60%" />
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/development-credentials.png" title="User credentials." width="60%" />
 
 
 ### Always enforce custom schemas
