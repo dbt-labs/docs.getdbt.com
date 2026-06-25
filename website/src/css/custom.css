@@ -3143,3 +3143,12 @@ html[data-theme='dark'] .sidebar-title {
 .grecaptcha-badge {
   display: none;
 }
+
+/* Footnote references rendered in blog list excerpts (see
+   plugins/remarkBlogFootnoteLinks.js) — style the deep link like a real
+   footnote marker. */
+.blog-excerpt-footnote-ref {
+  vertical-align: super;
+  font-size: 0.75em;
+  line-height: 0;
+}
