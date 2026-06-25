@@ -1,6 +1,6 @@
 ---
 title: "OAuth overview"
-description: "Connect user credentials to data platforms using OAuth in the dbt platform."
+description: "Connect development credentials to data platforms using OAuth in the dbt platform."
 id: "oauth-intro"
 sidebar_label: "OAuth overview"
 ---
