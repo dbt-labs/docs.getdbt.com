@@ -1,7 +1,7 @@
 ---
-title: "Getting started with dbt Wizard CLI"
+title: "Building with dbt Wizard CLI and DuckDB"
 id: "wizard-cli-qs"
-description: "Set up dbt Wizard CLI with DuckDB, sample data, and your first validated dbt change."
+description: "Create a local DuckDB project, configure dbt Wizard CLI, and use it to make, test, and document a dbt change."
 level: 'Beginner'
 icon: 'dbt'
 tags: ['dbt Wizard', 'CLI', 'Quickstart']

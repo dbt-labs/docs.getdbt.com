@@ -6,20 +6,20 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
 <div style={{maxWidth: '900px'}}>
 
-# Getting started with <Constant name="wizard" /> CLI
+# Building with <Constant name="wizard" /> CLI and DuckDB
 
 <IntroText>
-Set up <Constant name="wizard" /> CLI with a local DuckDB dbt project and use it to understand, edit, and validate dbt code from your terminal.
+Install <Constant name="wizard" /> CLI, create a local DuckDB dbt project, and use <Constant name="wizard" /> to make, test, and document a real dbt change.
 </IntroText>
 
-In this quickstart, you'll create a local Magic Shop dbt project, load sample data into DuckDB, ask <Constant name="wizard" /> to inspect the project, have <Constant name="wizard" /> propose tests for a staging model, and validate the change with `dbt build`. It takes about 10 minutes, mostly one-time setup.
+In this guide, you'll create a local Magic Shop dbt project, load sample data into DuckDB, ask <Constant name="wizard" /> to inspect the project, have <Constant name="wizard" /> propose tests and docs for a staging model, and validate the change with `dbt build`. It takes about 7-8 minutes.
 
 By the end of this guide, you'll have:
 
-- A local DuckDB project built with the <Constant name="fusion_engine" /> that <Constant name="wizard" /> can inspect
 - <Constant name="wizard" /> CLI installed and connected to AI &mdash; through your <Constant name="dbt_platform" /> account or your own provider key
+- A local DuckDB project built with the <Constant name="fusion_engine" /> that <Constant name="wizard" /> can inspect
 - A first <Constant name="wizard" /> session that explains the project
-- A small dbt change proposed by <Constant name="wizard" />, reviewed by you, and validated with dbt
+- A small dbt change proposed by <Constant name="wizard" />, reviewed by you, documented, and validated with dbt
 
 ## Prerequisites
 
@@ -33,9 +33,15 @@ You'll need:
 
 <NewToTerminal />
 
-## Creating a local DuckDB project
+## 1. Install <Constant name="wizard" />
 
-Use the setup script to create a complete Magic Shop dbt project locally. The script creates a project folder, installs the <Constant name="fusion_engine" /> in a virtual environment, writes sample seed and model files, loads the seed data into DuckDB, and runs `dbt build`. You'll install <Constant name="wizard" /> CLI in the next step.
+<Constant name="wizard" /> CLI is a standalone tool you can point at any dbt project. In this guide, you'll point it at a tiny DuckDB project you create next.
+
+<WizardCliInstall />
+
+## 2. Create a local DuckDB project
+
+Use the setup script to create a complete Magic Shop dbt project locally. The script creates a project folder, installs the <Constant name="fusion_engine" /> in a virtual environment, writes sample seed and model files, loads the seed data into DuckDB, and runs `dbt build`.
 
 ```shell
 curl -fsSL https://docs.getdbt.com/files/wizard/setup-magic-shop-duckdb.sh | bash
@@ -63,13 +69,7 @@ You should see a successful run with four seeds and four view models. The projec
 
 If `dbt build` fails, fix the dbt project before continuing. <Constant name="wizard" /> works best when it can compile and inspect your project.
 
-## Install Wizard
-
-<Constant name="wizard" /> CLI is a standalone tool you can point at any dbt project &mdash; here, the Magic Shop project you just created.
-
-<WizardCliInstall />
-
-## Start Wizard
+## 3. Start <Constant name="wizard" />
 
 The setup script built the project, and you've installed <Constant name="wizard" /> CLI. From your project directory:
 
@@ -135,7 +135,7 @@ Complete first-run onboarding:
 
 When <Constant name="wizard" /> asks for your dbt profile location, use this project directory. The setup script writes `profiles.yml` in the project root, where <Constant name="fusion" /> can find it.
 
-## Asking Wizard to explain the project
+## 4. Ask <Constant name="wizard" /> to explain the project
 
 Send prompts one at a time: enter a prompt, press **Enter**, and review the response before sending the next one.
 
@@ -155,17 +155,17 @@ which staging models are missing tests?
 
 Review the response and pick one model to improve in the next step.
 
-## Making your first dbt change
+## 5. Make your first dbt change
 
-Ask <Constant name="wizard" /> to add tests to one staging model:
+Ask <Constant name="wizard" /> to add tests and docs to one staging model:
 
 ```text
-add not_null and unique tests to wizard_id in stg_wizards
+add not_null and unique tests to wizard_id in stg_wizards, and add clear column descriptions for the model
 ```
 
 <Constant name="wizard" /> proposes a diff before it writes changes. Review the diff, then approve, reject, or redirect the change.
 
-## Validating the change
+## 6. Validate the change
 
 After you apply a change, run dbt from the same project directory:
 
@@ -179,6 +179,8 @@ If the command succeeds, review the changed files:
 git diff
 ```
 
+You should see a YAML change that adds tests and descriptions for `stg_wizards`. The `dbt build` command confirms that the model, tests, and YAML parse cleanly.
+
 If the command fails, return to <Constant name="wizard" /> and paste the error message:
 
 ```text
@@ -187,7 +189,7 @@ dbt build failed with this error: ERROR_MESSAGE
 
 Replace `ERROR_MESSAGE` with the error from your terminal.
 
-## Reviewing before you commit
+## 7. Review before you commit
 
 Use <Constant name="wizard" /> to review your local changes:
 
@@ -200,12 +202,12 @@ Then commit the change with your usual Git workflow:
 ```shell
 git status
 git add .
-git commit -m "Add tests for staging model"
+git commit -m "Add tests and docs for staging model"
 ```
 
 ## What just happened
 
-You created a local DuckDB project with the <Constant name="fusion_engine" />, loaded sample data with seeds, built staging models, and started <Constant name="wizard" /> in the project. <Constant name="wizard" /> used your dbt project files and build context to answer questions, propose tests, and help you validate the change.
+You installed <Constant name="wizard" /> CLI, created a local DuckDB project with the <Constant name="fusion_engine" />, loaded sample data with seeds, built staging models, and started <Constant name="wizard" /> in the project. <Constant name="wizard" /> used your dbt project files and build context to answer questions, propose tests and docs, and help you validate the change.
 
 ## Troubleshooting
 
@@ -233,6 +235,9 @@ Run `dbt debug`, `dbt seed`, and `dbt build` before starting <Constant name="wiz
 - Try more [Wizard use cases](/docs/dbt-ai/wizard-use-cases)
 - Configure default models and project settings in [Configuration reference](/docs/dbt-ai/wizard-config)
 - Add reusable project guidance with [Wizard skills](/docs/dbt-ai/wizard-skills)
+- Learn how <Constant name="wizard" /> uses [deferral and state](/docs/dbt-ai/wizard-how-it-works#deferral-and-state), or read more about [dbt state](/docs/deploy/dbt-state-about)
+- Connect a real project to the <Constant name="dbt_platform" /> when you're ready to deploy scheduled jobs
+- Install the [dbt VS Code extension](/docs/about-dbt-extension) if you want dbt editing help in your IDE too
 
 <WizardFeedbackCallout />
 
