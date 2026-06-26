@@ -32,7 +32,7 @@ Use the table below to confirm this guide is the right path for your account. An
 | Active jobs (run in last 30 days) | Fewer than 10 | 10 or more |
 | Projects | Fewer than 3 | 3 or more |
 | Environments | Fewer than 5 | 5 or more |
-| **What to do** | Follow this guide | Contact your account manager to scope a [Professional Services migration](https://www.getdbt.com/services) |
+| **What to do** | Follow this guide or contact  [Professional Services migration](https://www.getdbt.com/services) for help | Contact your account manager to scope a [Professional Services migration](https://www.getdbt.com/services) |
 
 </SimpleTable>
 
