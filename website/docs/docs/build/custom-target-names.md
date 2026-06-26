@@ -24,6 +24,6 @@ To set a custom target name for a job in <Constant name="dbt" />, configure the 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/jobs-settings-target-name.png" title="Overriding the target name to 'prod'"/>
 
 ## dbt Studio IDE
-When developing in <Constant name="dbt" />, you can set a custom target name in your development credentials. Click your account name above the profile icon in the left panel, select **Account settings**, then go to **Credentials**. Choose the project to update the target name.
+When developing in <Constant name="dbt" />, you can set a custom target name in your user credentials. Click your account name above the profile icon in the left panel, select **Account settings**, then go to **Credentials**. Choose the project to update the target name.
 
 <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/development-credentials.png" title="Overriding the target name to 'dev'"/>

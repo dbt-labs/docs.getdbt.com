@@ -26,10 +26,10 @@ Learn how to query data with <Constant name="insights" /> and view documentation
 - Be on a <Constant name="dbt" /> [Enterprise or Enterprise+](https://www.getdbt.com/pricing) plan &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="insights" />.
 - Available on all [tenant](/docs/platform/about-platform/tenancy) configurations. 
 - Have a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) with access to <Constant name="insights" />.
-- Configured [developer credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide).
+- Configured [user credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide).
 - Your production and development [environments](/docs/dbt-platform-environments) are on <Constant name="dbt" />’s ‘Latest’ [release track](/docs/dbt-versions/dbt-release-tracks) or a supported dbt version.
 - Use a supported data platform: Snowflake, BigQuery, Databricks, Redshift, or Postgres.
-	- Single sign-on (SSO) for development user accounts is supported. Deployment environments will be queried leveraging the user's development credentials.
+	- Single sign-on (SSO) for development user accounts is supported. Deployment environments will be queried leveraging the user's user credentials configured in **Account settings**.
 - (Optional) &mdash; To query [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) metrics from the <Constant name="insights" />, you must also:
   - [Configure](/docs/use-dbt-semantic-layer/setup-sl) the <Constant name="semantic_layer" /> for your dbt project.
   - Have a successful job run in the environment where you configured the <Constant name="semantic_layer" />. 
