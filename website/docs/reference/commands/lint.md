@@ -68,9 +68,9 @@ The following dialects are currently supported with `dbt lint`:
 
 Additional dialect support is coming soon.
 
-## Format
+## dbt format
 
-`dbt format` (also available as `dbt fmt`) automatically formats your SQL files according to the layout (`LT*`) rules in your `.sqlfluff` file. Unlike `dbt lint`, it does not issue diagnostics. It applies fixes silently and in place when you run the command.
+`dbt format` (also available as `dbt fmt`) automatically formats your SQL files according to the layout (`LT*`) rules in your `.sqlfluff` file. Unlike `dbt lint`, it doesn't issue diagnostics. It applies fixes silently and in place when you run the command.
 
 ```shell
 dbt format [FILE] [flags]
