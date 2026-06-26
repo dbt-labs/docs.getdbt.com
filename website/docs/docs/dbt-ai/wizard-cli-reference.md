@@ -26,7 +26,7 @@ If you see any issues, please [file an issue](https://github.com/dbt-labs/docs.g
 
 ## Common commands
 
-Most people only need a handful of commands. Start here, then use the full reference below for everything else.
+Most people use a handful of commands to get started. View the following table and then refer to the rest of the page for more details.
 
 <SimpleTable>
 | I want to... | Command |
