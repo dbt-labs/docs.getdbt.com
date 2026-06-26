@@ -42,7 +42,7 @@ To improve your experience using <Constant name="dbt" />, we suggest that you tu
 - A [<Constant name="dbt" /> account](https://www.getdbt.com/signup) and [Developer seat license](/docs/platform/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/platform/git/connect-github) or [Importing a project by git URL](/docs/platform/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections)
-- A [development environment and development credentials](#get-started-with-the-studio-ide) set up
+- A [development environment and user credentials](#get-started-with-the-studio-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
 ## Studio IDE features
@@ -102,19 +102,19 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 <CopilotWizardDifferences/>
 ## Get started with the Studio IDE
 
-In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-platform-environments). In the following steps, we outline how to set up developer credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
+In order to start experiencing the great features of the <Constant name="studio_ide" />, you need to first set up a [<Constant name="dbt" /> development environment](/docs/dbt-platform-environments). In the following steps, we outline how to set up user credentials and access the <Constant name="studio_ide" />. If you're creating a new project, you will automatically configure this during the project setup. 
 
-The <Constant name="studio_ide" /> uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
+The <Constant name="studio_ide" /> uses user credentials to connect to your data platform. These user credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
 
-Set up your developer credentials:
+Set up your user credentials:
 
 1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/platform/about-platform/access-regions-ip-addresses) for your region and plan.
 2. Select the relevant project in the list.
 3. Click **Edit** on the bottom right of the page.
-4. Enter the details under **Development Credentials**.
+4. Enter the details under **User credentials**.
 5. Click **Save.**
 
-<Lightbox src="/img/docs/dbt-platform/refresh-ide/dev-credentials.png" width="85%" height="100" title="Configure developer credentials in your profile"/>
+<Lightbox src="/img/docs/dbt-platform/refresh-ide/dev-credentials.png" width="85%" height="100" title="Configure user credentials in your profile"/>
 
 6. Navigate to the <Constant name="studio_ide" /> by clicking **Studio** in the left menu.
 7. Initialize your project and familiarize yourself with the <Constant name="studio_ide" /> and its delightful [features](#studio-ide-features).
