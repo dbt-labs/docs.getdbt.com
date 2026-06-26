@@ -68,28 +68,13 @@ The following dialects are currently supported with `dbt lint`:
 
 Additional dialect support is coming soon.
 
-## dbt format
-
-`dbt format` (also available as `dbt fmt`) automatically formats your SQL files according to the layout (`LT*`) rules in your `.sqlfluff` file. Unlike `dbt lint`, it doesn't issue diagnostics. It applies fixes silently and in place when you run the command.
-
-```shell
-dbt format [FILE] [flags]
-dbt fmt [FILE] [flags]
-```
-
-`[FILE]` is optional. When omitted, `dbt format` formats all SQL files in your project.
-
 ## Beta limitations
 
 Keep these limitations in mind:
 
-### Macro linting
+### Layout rules
 
-`dbt lint`, by default, doesn't lint the SQL that macro calls produce. This behavior is similar to SQLFluff's `ignore_templated_areas`, but you can't configure it in dbt today. As a result, `dbt lint` doesn't run introspection queries during Jinja render time, and it suppresses lint diagnostics from SQL that macros produce.
-
-### Render variant limit
-
-`dbt lint` doesn't respect the `render_variant_limit` setting and always renders only one variant. As a result, it lints only the SQL your Jinja templates produce using the inputs available at parse time. It doesn't lint SQL that _could_ be produced by a macro under different inputs.
+`dbt lint` doesn't currently issue layout (`LT*`) warnings. Layout enforcement will ship as a separate subcommand, `dbt fmt` (coming soon), which will format code to your layout policy rather than warn. This keeps lint output focused on correctness and style issues that require human intervention, while layout becomes a formatting step.
 
 ### Rules without autofix
 
