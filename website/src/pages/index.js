@@ -190,7 +190,7 @@ function Home() {
                 <Card
                   title="Set up CI/CD and deployment"
                   body="Schedule jobs and ship changes safely with continuous integration."
-                  link="/docs/deploy/deployment-overview"
+                  link="h/docs/deploy/deployments"
                   icon="deploy"
                 />
                 <Card
