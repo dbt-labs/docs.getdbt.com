@@ -39,57 +39,58 @@ Most people use a handful of commands to get started. View the following table a
 | Update to the latest version | `wizard update` | Updates wizard to the newest release. |
 </SimpleTable>
 
+<CliGenerated />
+
 ## Examples
 
-A few common commands in context. Swap in your own prompts and flags.
+Here are some examples and commands that you migth use. Replace the example prompts with your own:
 
-### Run a task without the TUI
 
-Use `wizard exec` for one-off tasks, scripts, and CI. It runs the agent, prints the result, and exits.
+- **Run a task without the TUI**
 
-```shell
-# Run a task and exit
-wizard exec "explain what the orders model does"
+  Use `wizard exec` for one-off tasks, scripts, and CI. It runs the agent, prints the result, and exits.
 
-# Pipe a prompt in from stdin
-echo "summarize my schema.yml files" | wizard exec -
+  ```shell
+  # Run a task and exit
+  wizard exec "explain what the orders model does"
 
-# Emit machine-readable output for scripting
-wizard exec --json "list my models" > result.jsonl
-```
+  # Pipe a prompt in from stdin
+  echo "summarize my schema.yml files" | wizard exec -
 
-### Review your changes
+  # Emit machine-readable output for scripting
+  wizard exec --json "list my models" > result.jsonl
+  ```
 
-`wizard review` runs a code review without starting an interactive session.
+- **Review your changes**
 
-```shell
-# Review staged, unstaged, and untracked changes
-wizard review --uncommitted
+  `wizard review` runs a code review without starting an interactive session.
 
-# Review your branch against main
-wizard review --base main
-```
+  ```shell
+  # Review staged, unstaged, and untracked changes
+  wizard review --uncommitted
 
-### Resume a session
+  # Review your branch against main
+  wizard review --base main
+  ```
 
-```shell
-# Continue your most recent session
-wizard resume --last
+- **Resume a session**
 
-# Pick from a list of past sessions
-wizard resume
-```
+  ```shell
+  # Continue your most recent session
+  wizard resume --last
 
-### Override a config value
+  # Pick from a list of past sessions
+  wizard resume
+  ```
 
-Use `-c` to override any value from `~/.dbt/wizard/config.toml` for a single run, without editing the file.
+- **Override a config value**
 
-```shell
-# Set the model for this run only
-wizard exec -c model="dbt/gpt-5.5" "your prompt"
-```
+  Use `-c` to override any value from `~/.dbt/wizard/config.toml` for a single run, without editing the file.
 
-<CliGenerated />
+  ```shell
+  # Set the model for this run only
+  wizard exec -c model="dbt/gpt-5.5" "your prompt"
+  ```
 
 ## Related docs
 
