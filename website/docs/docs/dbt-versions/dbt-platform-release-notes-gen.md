@@ -287,7 +287,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Notification Manager permission set**: A new account-level **Notification Manager** [permission set](/docs/platform/manage-access/enterprise-permissions) is now available for Enterprise accounts. Assign it to users who need to manage Slack, Microsoft Teams, and email job notifications across all projects without requiring full Account Admin access.
 
-- **Credentials page access with `user_credential_write` permission**: Users with the `user_credential_write` permission on any project can now access the Credentials settings page and edit their development credentials, even without a Developer-tier license or `develop_access`.
+- **Credentials page access with `user_credential_write` permission**: Users with the `user_credential_write` permission on any project can now access the Credentials settings page and edit their user credentials, even without a Developer-tier license or `develop_access`.
 
 ## Fixes
 
@@ -624,7 +624,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **More responsive Git status decorations:** Studio IDE debounces rapid file change events and avoids applying stale responses, so Git status badges update more reliably during bulk edits and saves.
 
-- **Clearer server status details:** The server status popover uses a clearer grouped layout and action buttons to help you troubleshoot development credentials and server health. Please contact your account manager to enable.
+- **Clearer server status details:** The server status popover uses a clearer grouped layout and action buttons to help you troubleshoot user credentials and server health. Please contact your account manager to enable.
 
 ### dbt Copilot and agents
 
