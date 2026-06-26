@@ -110,7 +110,7 @@ This is a deliberate choice. Linting every possible render variant is expensive 
 
 `dbt lint` lints the SQL that all macros produce. However, it intentionally suppresses diagnostics for macros that would issue introspection queries if `execute` were set to `true`. Without `execute` enabled, these macros typically produce invalid SQL. Flagging violations against that output generates noise rather than signal.
 
-This behavior is similar to SQLFluff's `ignore_templated_areas` setting. However, you can't configure it today. dbt Labs believes suppressing diagnostics for introspection macros is the correct default for dbt projects, and exposing a toggle would create more confusion than it resolves.
+This behavior is similar to SQLFluff's `ignore_templated_areas` setting. However, you can't configure it today.
 
 </DetailsToggle>
 
