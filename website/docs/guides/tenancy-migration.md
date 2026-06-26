@@ -23,7 +23,7 @@ This guide walks you through a self-serve migration between [<Constant name="dbt
 
 It's meant for accounts that have been assessed by the dbt Labs team as low complexity. Your dbt Labs contact will provide a migration window before you begin &mdash; do not start until you've received it.
 
-Use the table below to confirm this guide is the right path for your account. Any one signal crossing the high threshold is enough to recommend a Professional Services-led migration instead.
+Use the following table to confirm this guide is the right path for your account. If your account crosses the high-complexity threshold for even one signal, we recommend a Professional Services-led migration instead.
 
 <SimpleTable>
 
@@ -32,7 +32,7 @@ Use the table below to confirm this guide is the right path for your account. An
 | Active jobs (run in last 30 days) | Fewer than 10 | 10 or more |
 | Projects | Fewer than 3 | 3 or more |
 | Environments | Fewer than 5 | 5 or more |
-| **What to do** | Follow this guide or contact  [Professional Services migration](https://www.getdbt.com/services) for help | Contact your account manager to scope a [Professional Services migration](https://www.getdbt.com/services) |
+| **How to proceed** | If all signals are low complexity, follow this guide or contact  [Professional Services migration](https://www.getdbt.com/services) for help | If one or more signals are high complexity, contact your account manager to scope a [Professional Services migration](https://www.getdbt.com/services) |
 
 </SimpleTable>
 
