@@ -11,6 +11,8 @@ tags: ['dbt State']
 This configuration applies to self-managed dbt deployments. If you're using the <Constant name="dbt_platform" />, deferral is configured through your environment settings in the UI.
 :::
 
+`defer_to_target` is part of [dbt State](/docs/deploy/dbt-state-setup), which manages model caching and deferral across environments.
+
 <File name="profiles.yml">
 
 ```yaml

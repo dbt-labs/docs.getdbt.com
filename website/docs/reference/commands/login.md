@@ -44,7 +44,24 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability#dbt-vs-co
 
 ## `dbt login` with dbt State
 
-For dbt State-specific login behavior (platform vs standalone sign-in paths, local prompts, and `user_settings.yml` behavior), refer to [`dbt login` with dbt State](/docs/deploy/dbt-state-setup#dbt-login-with-dbt-state).
+When [dbt State](/docs/deploy/dbt-state-about) is enabled, [`dbt login`](/reference/commands/login?#dbt-login---help) is used for dbt State authentication. Running this command opens a browser window with two options:
+
+- **Log in with your <Constant name="dbt_platform" /> account**: Enter your email address. If you don't have a <Constant name="dbt_platform" /> account, dbt Labs will create a standalone [Developer account](https://www.getdbt.com/pricing) for you. After that, you'll authorize access between the CLI and <Constant name="dbt_platform" />.
+- **Log in without a <Constant name="dbt_platform" /> account**: Redirects you to the dbt State standalone app at [app.state.dbt.com](https://app.state.dbt.com), where a token is created and stored locally at `~/.dbt/auth_state.json`. dbt State is automatically enabled locally after account creation.
+
+In the <Constant name="fusion_engine" />, after platform authentication, the CLI checks your configuration and responds accordingly:
+
+<SimpleTable>
+
+| dbt State enabled in <Constant name="dbt_platform" />? | dbt State enabled locally? | Behavior |
+|---|---|---|
+| ✅ | ✅ | dbt State is ready to use. |
+| ✅ | ❌ | CLI prompts you to enable dbt State locally. If you confirm, [`user_settings.yml`](/reference/global-configs/user-settings) is updated automatically. |
+| ❌ | ✅ | CLI prompts you to enable dbt State in your platform account. |
+
+</SimpleTable>
+
+In <Constant name="core" /> v1.12, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform).
 
 </VersionBlock>
 
