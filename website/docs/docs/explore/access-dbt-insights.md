@@ -178,7 +178,7 @@ Insights offers a robust save feature for quickly finding the queries you use mo
 
 
 ## Considerations 
-- <Constant name="insights" /> uses your user credentials to query. You have the ability to query against any object in your data warehouse that is accessible using your user credentials. 
+- <Constant name="insights" /> uses your user credentials to query. You have the ability to query against any object in your data warehouse that is accessible using your user credentials configured in **Account settings**. 
 - Every Jinja function uses [`defer --favor-state`](/reference/node-selection/defer) to resolve Jinja.
 
 <!-- this can move to another page -->

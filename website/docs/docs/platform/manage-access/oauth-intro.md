@@ -17,9 +17,9 @@ Pick the best documentation for your platform to configure OAuth and have develo
 
 | Platform | Doc | Description |
 |----------|-----|----------------|
-| **Snowflake** | [Set up Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth) | Authorize user credentials using Snowflake (or Snowflake SSO). |
-| **Databricks** | [Set up Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth) | Authorize user credentials using Databricks. |
-| **BigQuery** | [Set up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth) | Authorize user credentials using Google. |
+| **Snowflake** | [Set up Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth) | Authorize user credentials with Snowflake (or Snowflake SSO). |
+| **Databricks** | [Set up Databricks OAuth](/docs/platform/manage-access/set-up-databricks-oauth) | Authorize user credentials with Databricks. |
+| **BigQuery** | [Set up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth) | Authorize user credentials with Google. |
 | **Snowflake (external)** | [Set up external OAuth with Snowflake](/docs/platform/manage-access/snowflake-external-oauth) | Use an external identity provider (IdP) for Snowflake OAuth. |
 | **Redshift (external)** | [Set up external OAuth with Redshift](/docs/platform/manage-access/redshift-external-oauth) | Use an external identity provider (IdP) for Redshift OAuth. |
 

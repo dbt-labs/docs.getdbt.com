@@ -92,7 +92,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 5. Click **Upload a Service Account JSON File** in settings.
 6. Select the JSON file you downloaded in Generate BigQuery credentials and <Constant name="dbt" /> will fill in all the necessary fields.
 7. (Optional) <Constant name="dbt" /> Enterprise plans can configure developer OAuth with BigQuery, providing an additional layer of security. For more information, refer to [Set up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth).
-8. Set up your personal user credentials by going to **Your profile** > **Credentials**.
+8. Set up your personal user credentials by navigating to **Your profile** > **Credentials**.
 9. Select your project that uses the BigQuery connection.
 10. Click **Edit**.
 11. Enter your **User credentials** for BigQuery with:
