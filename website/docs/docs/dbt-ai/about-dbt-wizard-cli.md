@@ -18,6 +18,7 @@ import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 The <Constant name="wizard" /> CLI helps teams ship higher-quality dbt changes faster and with less risk. Built for governed data development in dbt, it understands your project, routes to the right dbt tools, validates changes, and shows how logic evolves from your local machine.
 </IntroText>
 
+<WizardCliDbtCliSupport /> 
 Install the <Constant name="wizard"/> CLI by running the following commands:
 
 <Tabs groupId="wizard-install-os">
@@ -53,8 +54,6 @@ Use <Constant name="wizard" /> CLI to:
 - Run non-interactively in CI with `exec` and `review`
 
 For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases).
-
-<WizardCliDbtCliSupport />
 
 <WizardSupportedProviders />
 
