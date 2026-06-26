@@ -68,7 +68,7 @@ Overall we are going to set up the environments, build scalable pipelines in dbt
 
 <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/4-enable-anaconda.png" title="Enable Anaconda"/>
 
-<CreateSnowflakeSqlFile continueList />
+<CreateSnowflakeSqlFile />
 
 ## Connect to data source
 
