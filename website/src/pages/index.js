@@ -85,7 +85,7 @@ function Home() {
               <div>
                 <span className="eyebrow">Get started</span>
                 <h2 className="heading-2">Choose your path</h2>
-                <p>Four ways to start with dbt. Pick the one that fits how you work &mdash; you can mix and match later.</p>
+                <p>Three ways to start with dbt. Pick the one that fits how you work &mdash; you can mix and match later.</p>
               </div>
               <div className="home-card-grid">
                 <Card
@@ -97,8 +97,8 @@ function Home() {
                   showBorderBeam
                 />
                 <Card
-                  title="Try dbt fast"
-                  body="Install the free VS Code extension with the dbt Fusion engine and start developing locally in minutes."
+                  title="Develop locally"
+                  body="Run dbt on your own machine. Start with the VS Code extension and dbt Fusion engine (dbt Wizard built in), or install the CLI — dbt Fusion (OSS) or dbt Core."
                   link="/docs/local/install-dbt"
                   icon="vsce"
                 />
@@ -108,12 +108,6 @@ function Home() {
                   body="Use dbt Wizard, the AI agent for analytics engineering — in the dbt platform or from your terminal."
                   link="/docs/platform/wizard-overview"
                   icon="dbt-copilot"
-                />
-                <Card
-                  title="Run dbt Core"
-                  body="Install dbt Core and the dbt Fusion CLI to run dbt from your terminal on your own infrastructure."
-                  link="/docs/local/install-dbt"
-                  icon="dbt-core"
                 />
               </div>
             </div>
@@ -216,7 +210,7 @@ function Home() {
                 <h2 className="heading-2">Explore the docs by product</h2>
                 <p>The full product reference, grouped by what each tool helps you do.</p>
               </div>
-              <h4 className="heading-4">Develop</h4>
+              <h4 className="heading-4 card-group-heading">Develop</h4>
               <div className="home-card-grid">
                 <Card
                   title="dbt Wizard"
@@ -244,7 +238,7 @@ function Home() {
                   icon="dashboard"
                 />
               </div>
-              <h4 className="heading-4">Run</h4>
+              <h4 className="heading-4 card-group-heading">Run</h4>
               <div className="home-card-grid">
                 <Card
                   title="dbt State"
@@ -260,7 +254,7 @@ function Home() {
                   icon="deploy"
                 />
               </div>
-              <h4 className="heading-4">Understand</h4>
+              <h4 className="heading-4 card-group-heading">Understand</h4>
               <div className="home-card-grid">
                 <Card
                   title="dbt Insights"
