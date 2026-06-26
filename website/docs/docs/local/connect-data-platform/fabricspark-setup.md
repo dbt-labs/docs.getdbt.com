@@ -73,7 +73,12 @@ default:
 
 <TabItem value="Service principal">
 
-You can authenticate through the Livy API using a Service Principal for CI/CD purposes which allows dbt to use credentials from an active `az login` session. To use this method, set `authentication: CLI` in your `profiles.yml` file and run `az login`.
+Use a Microsoft Entra ID service principal for CI/CD and other automated workloads. This method uses app registration credentials, not an active az login session. To use this method, set `authentication: SPN` in your `profiles.yml` file and provide the service principal's client ID, tenant ID, and client secret.
+
+Before you run with service principal authentication, make sure:
+
+- The service principal has access to the Fabric workspace and lakehouse.
+- Service principals can use Fabric APIs is enabled in the Fabric Admin port.
 
 #### Example service principal configuration
 
