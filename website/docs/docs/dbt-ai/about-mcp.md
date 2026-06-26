@@ -67,6 +67,8 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 - You either don’t want to install, or are restricted from installing, additional software on your system.
 - Your use case is primarily consumption-based (for example, querying metrics, exploring metadata, viewing lineage).
 
+Read-only seat users can access the remote MCP server to consume <Constant name="semantic_layer"/> metrics. A "login with dbt" OAuth flow for read-only users is available in private beta. Check out [Set up remote MCP](/docs/dbt-ai/setup-remote-mcp) for details. <Lifecycle status="private_beta" />
+
 The remote MCP server is available on all <Constant name="dbt_platform" /> [plans](https://www.getdbt.com/pricing). However, the underlying [dbt APIs](/docs/dbt-apis/overview) that the server's tools rely on vary by plan type. For example, the Discovery API and <Constant name="semantic_layer" /> APIs. As a result, the tools available to you through the remote MCP server depend on your plan.
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
