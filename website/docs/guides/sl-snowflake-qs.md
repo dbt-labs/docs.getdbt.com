@@ -20,6 +20,7 @@ import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
 import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
 import RunProdJob from '/snippets/_sl-run-prod-job.md';
 import SlSetUp from '/snippets/_new-sl-setup.md'; 
+import CreateSnowflakeSqlFile from '/snippets/_create-snowflake-sql-file.md';
 
 ## Introduction
 
@@ -113,11 +114,9 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 </Tabs>
 
-## Create new Snowflake worksheet and set up environment
+## Create new Snowflake SQL file and set up environment
 
-1. Log in to your [trial Snowflake account](https://signup.snowflake.com).
-2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
-3. Select **SQL Worksheet** to create a new worksheet.
+<CreateSnowflakeSqlFile />
 
 ### Set up and load data into Snowflake
 
