@@ -17,6 +17,104 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+
+## June 24, 2026
+
+## New
+
+### Insights
+
+- **Cost breakdown by job**: Cost Insights now includes a Jobs table view alongside the existing all-models view. Use the **All**/**Jobs** toggle to switch between a per-model breakdown and a per-job summary, and select **Download** to export the active view as a comma-separated values (CSV) file.
+
+### Run Logs
+
+- **Download OpenTelemetry logs**: You can download OpenTelemetry (OTel) logs for individual dbt command steps in Fusion job runs.
+
+### APIs, Identity, and Administration
+
+- **Run history now scoped to projects**: You can now view live run, step, and log data scoped to a specific project. Results support filtering by step status and log type, with consistent pagination across all views.
+
+- **Presigned log download URLs**: Logs for completed run steps are now downloaded directly from storage rather than streamed through the service, improving download reliability and performance. Download links expire after 15 minutes.
+
+- **Email verification short-code flow for OAuth registration**: A new email verification flow sends a 6-digit numeric code directly in the email body rather than a click-through link, supporting OAuth client registration flows where you enter the code in the application.
+
+## Enhancements
+
+### Studio IDE
+
+- **Find in files**: The [Studio IDE](/docs/platform/studio-ide/ide-user-interface#search-your-project) now includes search and replace functionality and a command palette, enabling you to quickly find and replace text across your project, navigate files, jump to symbols, and run IDE configuration commands.
+
+### Catalog
+
+- **Filter assets by run status**: You can now filter Catalog search results by the most recent run status of an asset — success, error, or skipped — making it easier to spot and investigate assets that may need attention.
+
+- **Model metadata preserved after failed or skipped runs:** Lineage, tests, descriptions, and other model metadata now persist correctly even when a run fails, is skipped, or reuses a prior result. Previously, these runs could overwrite stored metadata, causing tests to detach from their models and lineage to disappear.
+
+### dbt State
+
+- **dbt State now works on CI and merge jobs**: You can now enable the dbt State cost-optimization option on CI and merge jobs, not just deploy jobs. Previously this returned a validation error.
+- **dbt State credential management simplified**: Studio IDE now uses account-level dbt State credentials, removing the per-user provisioning step that previously ran on first use.
+
+### Semantic Layer
+
+- **Longer query timeout for Semantic Layer**: The query timeout has been doubled from 10 minutes to 20 minutes, reducing timeout errors for long-running queries.
+
+### APIs, Identity, and Administration
+
+- **[Administrative API v3](/dbt-cloud/api-v3) now supports private endpoints**: [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
+
+- **System for Cross-domain Identity Management (SCIM) configuration visible in account admin**: You can now view your SCIM configuration directly in account admin settings, including whether SCIM is enabled and whether manual updates are allowed.
+
+- **Clearer error messages for service outages**: When a third-party service, such as a data warehouse, is temporarily unavailable, the dbt platform now returns a descriptive error message instead of a generic one, making it easier to diagnose connection issues.
+
+### Integrations
+
+- **BigQuery Workload Identity Federation falls back to connection impersonation**: When a BigQuery Workload Identity Federation (WIF) credential has no explicit `service_account_impersonation_url`, the platform now derives the URL from the connection-level `impersonate_service_account` field. This supports the Terraform `dbtcloud_global_connection` configuration pattern where impersonation is defined on the connection rather than the credential.
+
+- **Snowflake connection hostname normalized for TLS**: Snowflake account identifiers containing underscores (for example, `fdr_apac_dev`) are now hyphenated when building connection hostnames and OAuth URLs, preventing Transport Layer Security (TLS) hostname verification failures against Snowflake's wildcard certificate.
+
+- **Google SSO retries on transient token endpoint errors**: Google Workspace Single Sign-On (SSO) group refresh now retries once on 5xx responses from the Google token endpoint before surfacing an authentication error, reducing sign-in failures caused by transient Google API outages.
+
+- **Databricks OAuth retries on transient token endpoint errors**: The Databricks OAuth token refresh path now retries once on 5xx responses before surfacing a retryable error, making profile generation for Databricks OAuth connections more resilient to short Databricks outages.
+
+### dbt AI and agents
+
+- **dbt Model Context Protocol (MCP) semantic search for related models**: The `get_related_models` tool is now available in multi-project agent contexts, allowing the agent to search for semantically similar models across projects by resolving each project's production environment automatically.
+
+## Fixes
+
+### Studio IDE
+
+- **Clearer errors for unconfigured development credentials**: Studio IDE now returns an actionable error when development credentials are not configured for an environment.
+
+- **More precise error responses for development environment setup**: The development environment endpoint now returns distinct HTTP status codes for missing project configuration (400), unconfigured development credentials (412), permission errors (401), and retrieval timeouts (504), rather than mapping multiple failure modes to the same error response.
+
+### APIs, Identity, and Administration
+
+- **Connection test restricted to authorized environments**: The connection test endpoint now validates that the environment ID in the request belongs to the account and project, returning a 404 for unrecognized environment IDs instead of silently proceeding.
+
+- **SSO redirect preserved after session expiry on logout**: When an unauthenticated user visits the logout endpoint on a multi-tenant cell, the platform now resolves the correct Single Sign-On (SSO)-mandatory provider from the request host and redirects to `/enterprise-login/<slug>` instead of stranding them on `/login/`.
+
+- **Publications handler handles cloud-config timeouts gracefully**: When a `GetCrossProjectEnvironment` or `ListEnvironments` call to cloud-config exceeds its deadline, the publications handler now returns an `UNAVAILABLE` status to the caller instead of propagating an unhandled error. You can retry the request after a short delay.
+
+### Semantic Layer
+
+- **More reliable Semantic Layer job result retrieval**: Semantic Layer job and paginated query results now deserialize more reliably, reducing failures when retrieving query results.
+
+- **Fixed database write errors for cache timestamps**: Resolves an issue where the cache engine could fail to persist timestamps because timezone-aware datetimes cannot be encoded into `TIMESTAMP WITHOUT TIME ZONE` columns by `asyncpg`. The fix ensures timezone-naive UTC timestamps are used for all database writes.
+
+- **Result-too-large Semantic Layer errors now return HTTP 400**: Semantic Layer queries that exceed the result size limit now return a bad request error instead of an internal server error.
+
+### dbt Copilot and agents
+
+- **Safer handling of non-JSON OpenAI error responses**: Error handling for OpenAI `BadRequestError` now gracefully handles responses with non-JSON bodies, preventing an unhandled exception when parsing the error code. You should see a proper error rather than an internal server error in these cases.
+
+## Behavior Changes
+
+### APIs, Identity, and Administration
+
+- **Account-scoped credential reads enforced for Personal Access Tokens**: The user credentials endpoints now enforce account scoping consistently when a request uses an account-scoped Personal Access Token (PAT). Requests that previously returned credentials outside the token's account now return a 404.
+
 ## June 17, 2026
 
 ## Enhancements
