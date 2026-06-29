@@ -59,9 +59,8 @@ snapshots/
 
 When you're ready to lint those paths, remove their entries from `.sqlfluffignore`.
 
-:::tip Reducing noise in the Studio IDE Problems tab
+### Reducing noise in the Studio IDE Problems tab
 The Studio IDE lints SQL automatically and surfaces violations in the **Problems** tab. If you see a large number of style warnings and aren't ready to address them, add your model directories to `.sqlfluffignore` to remove those violations from the **Problems** tab immediately. Remove the ignore entries incrementally as you clean up violations.
-:::
 
 ## Suppressing violations
 
