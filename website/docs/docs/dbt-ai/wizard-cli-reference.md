@@ -43,7 +43,7 @@ Most people use a handful of commands to get started. View the following table a
 
 ## Examples
 
-Here are some examples and commands that you migth use. Replace the example prompts with your own:
+Here are some examples and commands that you might use. Replace the example prompts with your own:
 
 
 - **Run a task without the TUI**
