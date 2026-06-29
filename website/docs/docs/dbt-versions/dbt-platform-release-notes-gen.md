@@ -36,8 +36,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Presigned log download URLs**: Logs for completed run steps are now downloaded directly from storage rather than streamed through the service, improving download reliability and performance. Download links expire after 15 minutes.
 
-- **Email verification short-code flow for OAuth registration**: A new email verification flow sends a 6-digit numeric code directly in the email body rather than a click-through link, supporting OAuth client registration flows where you enter the code in the application.
-
 ## Enhancements
 
 ### Studio IDE
@@ -62,8 +60,6 @@ Release notes are grouped by date for single-tenant environments.
 ### APIs, Identity, and Administration
 
 - **[Administrative API v3](/dbt-cloud/api-v3) now supports private endpoints**: [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
-
-- **System for Cross-domain Identity Management (SCIM) configuration visible in account admin**: You can now view your SCIM configuration directly in account admin settings, including whether SCIM is enabled and whether manual updates are allowed.
 
 - **Clearer error messages for service outages**: When a third-party service, such as a data warehouse, is temporarily unavailable, the dbt platform now returns a descriptive error message instead of a generic one, making it easier to diagnose connection issues.
 
