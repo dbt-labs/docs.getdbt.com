@@ -1081,6 +1081,7 @@ const sidebarSettings = {
   ],
   apis: [
     "docs/dbt-apis/overview",
+    "docs/dbt-apis/rate-limits",
     {
       type: "category",
       label: "API Access",

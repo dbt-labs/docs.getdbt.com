@@ -107,7 +107,7 @@ In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with [
     - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
     - **Port** &mdash; 1433 (which is the default).
     - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
-5. Enter the **Development credentials** for your new project:
+5. Enter the **User credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
     - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
