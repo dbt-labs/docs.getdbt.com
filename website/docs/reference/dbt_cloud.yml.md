@@ -11,6 +11,7 @@ The `dbt_cloud.yml` file stores the credentials that dbt tools &mdash; like the 
 This page covers:
 
 - [How to download it and set up the `.dbt` directory](#download-dbt_cloudyml) for the <Constant name="platform_cli" /> or the VS Code extension
+- [When to update it](#update-or-switch-projects)
 - [The file structure](#file-structure) and field reference
 - [The companion `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) in `dbt_project.yml`
 
@@ -54,6 +55,19 @@ How you download the file depends on whether you're configuring the [<Constant n
     If your downloaded file has a numerical suffix (for example, `dbt_cloud(2).yml`), rename it to `dbt_cloud.yml` before moving it. The dbt CLI and extension only look for the exact filename.
 
 4. Confirm that the `project-id` in your [`dbt_project.yml` `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) matches the project you're working on. This registers and connects your tool to <Constant name="dbt_platform" /> and enables platform features such as <Constant name="mesh" /> and deferral.
+
+## Update or switch projects
+
+The `dbt_cloud.yml` file is local to your machine and doesn't update automatically. Re-download it when:
+
+- You get access to a new project and want to work on it locally
+- A project is removed from your account or your project access changes
+- Your token changes, expires, or is rotated
+- Your account host changes, such as when your account moves regions
+
+The file can include multiple projects from the same <Constant name="dbt_platform" /> account. To switch projects, update `context.active-project` to the `project-id` for the project you want to use. The active project must match one of the projects listed under `projects`.
+
+If you work in multiple <Constant name="dbt_platform" /> accounts, keep a separate `dbt_cloud.yml` file for each account and move the file you want to use into your `.dbt` directory.
 
 ## File structure
 
