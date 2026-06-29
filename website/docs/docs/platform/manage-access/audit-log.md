@@ -34,7 +34,7 @@ On the audit log page, you will see a list of various events and their associate
 
 ### Event details
 
-Click the event card to see the details about the activity that triggered the event. This view provides important details, including when it happened and what type of event was triggered. For example, if someone changes the settings for a job, you can use the event details to see which job was changed (type of event: `job_definition.changed`), by whom (person who triggered the event: `actor`), and when (time it was triggered: `created_at`). For types of events and their descriptions, see [Events in audit log](#audit-log-events).
+Click the event card to see the details about the activity that triggered the event. This view provides important details, including when it happened and what type of event was triggered. For example, if someone changes the settings for a job, you can use the event details to see which job was changed (type of event: `job_definition.changed`), by whom (person who triggered the event: `actor`), and when (time it was triggered: `created_at`). For types of events and their descriptions, refer to [Events in audit log](#audit-log-events).
 
 The event details provide the key factors of an event:
 
@@ -70,7 +70,7 @@ The audit log supports various events for different objects in <Constant name="d
 
 ### OAuth clients
 
-These events cover the lifecycle of OAuth clients registered in **Account settings** &rarr; **Integrations** &rarr; **App integrations** (see [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth)). Actions a user performs through an OAuth-connected client (for example, creating a job) are logged under the relevant event (such as `job_definition.added`) with the user as the actor.
+These events cover the lifecycle of OAuth clients registered in **Account settings** &rarr; **Integrations** &rarr; **App integrations** (refer to [Connect apps with OAuth](/docs/platform/manage-access/connect-apps-oauth)). Actions a user performs through an OAuth-connected client (for example, creating a job) are logged under the relevant event (such as `job_definition.added`) with the user as the actor.
 
 | Event name                    | Event type                              | Description                                                                                                                                       |
 | ----------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -271,7 +271,7 @@ curl --request GET \
   --header 'Authorization: Bearer YOUR_TOKEN'
 ```
 
-The response includes a `data` array of events with details such as `event_type`, `event_label`, `actor`, `created_at`, and `event_context`. Use `logged_at_start` and `logged_at_end` to filter by date range, and `limit` and `offset` to paginate through results. If you omit the date parameters, the request returns events from the last 90 days. For more options, see [List Recent Audit Log Events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events) in the API reference.
+The response includes a `data` array of events with details such as `event_type`, `event_label`, `actor`, `created_at`, and `event_context`. Use `logged_at_start` and `logged_at_end` to filter by date range, and `limit` and `offset` to paginate through results. If you omit the date parameters, the request returns events from the last 90 days. For more options, refer to [List Recent Audit Log Events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events) in the API reference.
 
 ### Download a CSV export
 
@@ -332,5 +332,5 @@ Teams often automate audit log access in a few ways:
 - **Periodic CSV exports:** Use the download endpoint to export a date range as CSV for compliance archival or analysis.
 - **Full history exports:** Use the bulk export workflow when you need your complete audit log history programmatically, similar to **Export All** in the UI.
 
-For endpoint details, see [Audit Logs](/dbt-cloud/api-v3#tag/Audit-Logs) in the Administrative API v3 reference.
+For endpoint details, refer to [Audit Logs](/dbt-cloud/api-v3#tag/Audit-Logs) in the Administrative API v3 reference.
 
