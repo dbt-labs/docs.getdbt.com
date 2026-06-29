@@ -7,7 +7,7 @@ description: "Use dbt system to update or uninstall the Fusion engine using the 
 
 # About dbt system command
 
-`dbt system` provides commands for managing the <Constant name="fusion" /> CLI installation. The <Constant name="fusion_engine" /> is a single compiled binary with no dependencies on other libraries. Once installed, `dbt system` lets you update, uninstall, and manage drivers directly
+`dbt system` provides commands for managing the <Constant name="fusion" /> CLI installation. The <Constant name="fusion_engine" /> is a single compiled binary with no dependencies on other libraries. Once installed, `dbt system` lets you update, uninstall, and manage drivers directly without pip, brew, or a Python environment. 
 
 `dbt system update` and `dbt system uninstall` are only supported for [CDN installations](/docs/local/install-dbt) of <Constant name="fusion" />. If you installed <Constant name="fusion" /> via Pip, Homebrew, or Winget, you'll need to update or uninstall dbt from those tools.
 
