@@ -122,7 +122,7 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 
 ### 4. Create the OAuth settings in the data warehouse
 
-1. Open up a Snowflake worksheet and copy/paste the following:
+1. Open up a Snowflake SQL file and copy/paste the following:
 
 ```sql
 
@@ -239,7 +239,7 @@ Ensure that the username (for example, email address) entered in the IdP matches
 
 You'll be switching between the Entra ID site and Snowflake. Keep your Entra ID account open for this process.
 
-Copy and paste the following as a template in a Snowflake worksheet:
+Copy and paste the following as a template in a Snowflake SQL file:
 
 ```sql
 

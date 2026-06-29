@@ -20,7 +20,7 @@ Runtime Error
 Usually this errors indicates that there is an issue with missing/stale credentials/authentication. No worries, we have a few workarounds for you to try:
 
 **In the <Constant name="studio_ide" />:**
-If this is happening in the <Constant name="studio_ide" />, you'll want to navigate to the Profile settings where your development credentials are configured. Once you're there, you'll need to either re-enter or re-authorize your credentials in order to get around this error message.
+If this is happening in the <Constant name="studio_ide" />, you'll want to navigate to the Profile settings where your user credentials are configured. Once you're there, you'll need to either re-enter or re-authorize your credentials in order to get around this error message.
 
 **In a job:**
 If this is happening in a job, it might be that you made some sort of change to the deployment environment in which the job is configured and did not re-enter your deployment credentials upon saving those changes. To fix this, you'll need to go back into the deployment environment settings, re-enter your credentials (either the private key/private key passphrase or the username and password), and kick off a new job run.

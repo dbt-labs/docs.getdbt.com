@@ -42,6 +42,12 @@ Write a Parquet file (saves to `target/metadata/` directory):
 dbtf build --otel-parquet-file-name telemetry.parquet
 ```
 
+Write a Parquet file with full trace-level logs (recommended for debugging):
+
+```bash
+dbtf build --log-level-file trace --otel-parquet-file-name telemetry.parquet
+```
+
 Export to an OpenTelemetry collector:
 ```bash
 OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" dbtf build --export-to-otlp
@@ -133,6 +139,10 @@ List skipped nodes, reasons, and upstream details:
 cat telemetry.jsonl | jq 'select(.attributes.node_outcome == "NODE_OUTCOME_SKIPPED") | {node: .attributes.unique_id, reason: .attributes.node_skip_reason, upstream: .attributes.node_skip_upstream_detail.upstream_unique_id }'
 ```
 
+### Downloading telemetry from the dbt platform
+
+If you ran a job in the <Constant name="dbt_platform" />, you can download the OpenTelemetry (OTEL) Parquet artifact from the run page using the **Download** dropdown. The download includes the `telemetry-<step>-otel.parquet` file for each step in the run.
+
 ### Parquet analysis with DuckDB
 
 Leverage DuckDB to better understand your telemetry data stored in Parquet files. 
@@ -163,6 +173,10 @@ duckdb.sql("""
     GROUP BY attributes.node_outcome
 """).show()
 ```
+
+### Web-based Parquet viewers
+
+For ad hoc exploration without a local install, web-based Parquet viewers (such as [PondPilot](https://app.pondpilot.io/)) let you upload a Parquet file and run SQL queries in the browser. Some viewers support LLM-assisted query generation to help you explore an unfamiliar schema.
 
 ## OpenTelemetry integration
 
@@ -260,11 +274,13 @@ Unlike <Constant name="core" />'s structured logging, <Constant name="fusion" />
 
 This makes <Constant name="fusion" /> telemetry a reliable foundation for production integrations, orchestrators, and long-term analytics pipelines.
 
-## Official client library (coming soon) {#official-client-library}
+## Official client library
 
-dbt Labs is developing an official open-source client library. Built in Rust for performance, it will be available as:
+dbt Labs provides an official open-source client library. Built in Rust for performance, it is available as:
 
-- A standalone Rust crate and CLI.
-- A fully-typed Python package wrapping the Rust core.
+- A standalone Rust crate and CLI (`dbt-telemetry-export-cli`).
+- A fully typed Python package wrapping the Rust core, installable via `uv tool install`.
 
-The library will provide type-safe, forward-compatible access to telemetry data—stream JSONL in real-time, query Parquet files, and build custom integrations with confidence that schema changes won't break your code.
+The library provides type-safe, forward-compatible access to telemetry data. Stream JSONL in real time, query Parquet files, and build custom integrations with confidence that schema changes won't break your code.
+
+We'll be announcing the public release in the near future.

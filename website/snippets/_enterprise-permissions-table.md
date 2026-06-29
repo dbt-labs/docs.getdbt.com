@@ -23,7 +23,7 @@ Key:
 
 <FilterableTable>
 
-| Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Viewer |
+| Account-level permission | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Manage marketplace apps | Notification Manager | Project creator | Security admin | Account Viewer |
 |:-------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:-----------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Account settings<sup>*</sup>        | W             | -             | -                   | -                    | -                       | -                    | R               | R              | R      |
 | Audit logs               | R             | -             | -                   | -                    | -                       | -                    | -               | R              | R      |
@@ -58,7 +58,7 @@ An admin can grant `user_credential_write` to any group, regardless of which per
 #### Project access for account permissions
 
 <FilterableTable>
-| Project-level permission     | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Notification Manager | Project creator | Security admin | Viewer |
+| Project-level permission     | Account Admin | Billing admin | Cost Insights Admin | Cost Insights Viewer | Notification Manager | Project creator | Security admin | Account Viewer |
 |:-----------------------------|:-------------:|:-------------:|:-------------------:|:--------------------:|:--------------------:|:---------------:|:--------------:|:------:|
 | Environment credentials      | W             | -             | -                   | -                    | -                    | W               | -              | R      |
 | Custom env. variables        | W             | -             | -                   | -                    | -                    | W               | -              | R      |

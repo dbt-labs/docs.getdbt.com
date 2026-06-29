@@ -89,7 +89,7 @@ grain:
 
 idempotent:
   displayText: idempotent
-  hoverSnippet: Idempotent describes a process that gives you the same result no matter how many times you run it.
+  hoverSnippet: An idempotent operation produces the same results no matter how many times you run it. In dbt, this means your model runs will always produce consistent results.
 
 json:
   displayText: JSON
