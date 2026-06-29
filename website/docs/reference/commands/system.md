@@ -23,8 +23,8 @@ dbt system <subcommand> [flags]
 
 | Subcommand | Description |
 |---|---|
-| `dbt system update` | Update CLI to the latest (or a specified) version |
-| `dbt system uninstall` | Remove CLI from your system |
+| `dbt system update` | Update <Constant name="fusion" /> CLI to the latest (or a specified) version |
+| `dbt system uninstall` | Remove <Constant name="fusion" />  from your system |
 | `dbt system install-drivers` | Pre-install all supported ADBC adapter drivers |
 
 ## dbt system update
