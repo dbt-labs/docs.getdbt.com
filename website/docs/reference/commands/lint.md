@@ -68,13 +68,20 @@ The following dialects are currently supported with `dbt lint`:
 
 Additional dialect support is coming soon.
 
+## dbt format
+
+`dbt format` (also available as `dbt fmt`) automatically formats your SQL files according to the layout (`LT*`) rules in your `.sqlfluff` file. Unlike `dbt lint`, it doesn't issue diagnostics. It applies fixes silently and in place when you run the command.
+
+```shell
+dbt format [FILE] [flags]
+dbt fmt [FILE] [flags]
+```
+
+`[FILE]` is optional. When omitted, `dbt format` formats all SQL files in your project.
+
 ## Beta limitations
 
 Keep these limitations in mind:
-
-### Layout rules
-
-`dbt lint` doesn't currently issue layout (`LT*`) warnings. Layout enforcement will ship as a separate subcommand, `dbt fmt` (coming soon), which will format code to your layout policy rather than warn. This keeps lint output focused on correctness and style issues that require human intervention, while layout becomes a formatting step.
 
 ### Rules without autofix
 
@@ -88,6 +95,24 @@ The following rules report violations but can't be auto-fixed by `--fix`. They r
 ### Single fix pass
 
 `--fix` runs a single pass; it doesn't iterate until the file is clean. A fix applied by one rule can expose a violation from another rule on the next run. For example, `AL09` removes a self-alias, which may then cause `RF02` to flag the now-unqualified reference. Re-run `dbt lint --fix` until the output is clean.
+
+## FAQs
+
+<DetailsToggle alt_header="Why does dbt lint only lint one variant of Jinja-templated SQL?">
+
+`dbt lint` always renders exactly one variant of your Jinja templates: the SQL your templates produce using the inputs available at parse time. It does not attempt to lint every possible SQL output a macro could produce under different inputs.
+
+This is a deliberate choice. Linting every possible render variant is expensive and surfaces violations in SQL your project may never execute. dbt Labs believes linting the SQL your project produces using its parse-time inputs is the right model for dbt projects. If you have feedback on this approach, open an issue in the [dbt-core GitHub repository](https://github.com/dbt-labs/dbt-core/issues) with the `Linter` label.
+
+</DetailsToggle>
+
+<DetailsToggle alt_header="Why doesn't dbt lint report violations from some macros?">
+
+`dbt lint` lints the SQL that all macros produce. However, it intentionally suppresses diagnostics for macros that would issue introspection queries if `execute` were set to `true`. Without `execute` enabled, these macros typically produce invalid SQL. Flagging violations against that output generates noise rather than signal.
+
+This behavior is similar to SQLFluff's `ignore_templated_areas` setting. However, you can't configure it today.
+
+</DetailsToggle>
 
 ## Feedback
 
