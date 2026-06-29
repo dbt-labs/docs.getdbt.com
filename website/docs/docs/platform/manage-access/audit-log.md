@@ -9,7 +9,7 @@ pagination_prev: "docs/platform/manage-access/about-user-access"
 
 # dbt audit log <Lifecycle status="managed,managed_plus" />
 
-To review actions performed by people in your account, <Constant name="dbt" /> provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. You can also [query and export audit log events through the API](#querying-and-exporting-through-the-api).
+To review actions performed by people in your account, <Constant name="dbt" /> provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. You can also [query and export audit log events through the API](#using-the-api).
 
 You must be an **Account admin**, **Account viewer**, or **Security admin** to access the audit log, and this feature is only available on Enterprise plans.
 
@@ -250,17 +250,23 @@ You can use the audit log to export all historical audit results for security, c
 
 <Lightbox src="/img/docs/dbt-platform/dbt-platform-enterprise/audit-log-section.png" width="95%" title="View audit log export options"/>
 
-## Querying and exporting through the API
+## Using the API
 
-You can also query and export audit log events with the [Administrative API](/docs/dbt-apis/admin-api). Use the API when you want to pull audit data into a script, a scheduled job, or security monitoring or log aggregation tooling. The same access requirements at the top of this page apply to the API.
+You can also query and export audit log events with the [Administrative API v3](/dbt-cloud/api-v3). Use the API when you want to pull audit data into a script, a scheduled job, or security monitoring or log aggregation tooling. The same access requirements at the top of this page apply to the API. For common automation approaches, see [Common automation patterns](#common-automation-patterns).
 
-Authenticate with a [service token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens), passed as `Authorization: Bearer YOUR_TOKEN` or `Token YOUR_TOKEN`. 
+| If you want to… | Use |
+| --- | --- |
+| Pull recent events into a script or SIEM | [Query events](#query-events) |
+| Export a date range as CSV | [Download a CSV](#download-a-csv) |
+| Export full history | [Bulk export](#bulk-export) |
+
+Authenticate with a [service token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens), passed as `Authorization: Bearer YOUR_TOKEN` or `Token YOUR_TOKEN`.
 
 Bulk exports require a [personal access token](/docs/dbt-apis/user-tokens) as service tokens aren't supported for that step.
 
-To start a bulk export, use a [personal access token](/docs/dbt-apis/user-tokens). Service tokens are not supported for that step.
+Without date parameters, list and CSV download requests default to the last 90 days.
 
-In the examples below, replace `YOUR_ACCESS_URL` with your <Constant name="dbt" /> access URL, `ACCOUNT_ID` with your account ID, and `YOUR_TOKEN` with your token. You can find your account ID in **Account settings**, or refer to [Finding your user and account IDs](/faqs/Accounts/find-user-id) for more information.
+In the following examples, replace `YOUR_ACCESS_URL` with your <Constant name="dbt" /> access URL, `ACCOUNT_ID` with your account ID, and `YOUR_TOKEN` with your token. You can find your account ID in **Account settings**, or refer to [Finding your user and account IDs](/faqs/Accounts/find-user-id) for more information.
 
 ### Query events
 
@@ -273,7 +279,7 @@ curl --request GET \
   --header 'Authorization: Bearer YOUR_TOKEN'
 ```
 
-The response includes a `data` array of events with details such as `event_type`, `event_label`, `actor`, `created_at`, and `event_context`. Use `logged_at_start` and `logged_at_end` to filter by date range, and `limit` and `offset` to paginate through results. If you omit the date parameters, the request returns events from the last 90 days. For more options, refer to [List Recent Audit Log Events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events) in the API reference.
+The response includes a `data` array of events with details such as `event_type`, `event_label`, `actor`, `created_at`, and `event_context`. Use `logged_at_start` and `logged_at_end` to filter by date range, and `limit` and `offset` to paginate through results. For more options, refer to [List Recent Audit Log Events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events) in the API reference.
 
 ### Download a CSV
 
@@ -286,13 +292,13 @@ curl --request GET \
   --output audit-log.csv
 ```
 
-You can use the same `logged_at_start` and `logged_at_end` query parameters as the list endpoint. If you omit them, the export includes events from the last 90 days.
+You can use the same `logged_at_start` and `logged_at_end` query parameters as the list endpoint.
 
 ### Bulk export
 
 To export your full audit log history through the API, use the same workflow as **Export All** in the UI:
 
-1. Submit an export request with `POST` to `/api/v3/accounts/ACCOUNT_ID/audit-logs/export/`. The response returns a `job_id` in the `data` object (`data.job_id`). Use a [personal access token](/docs/dbt-apis/user-tokens) for this step. Service tokens are not supported.
+1. Submit an export request with `POST` to `/api/v3/accounts/ACCOUNT_ID/audit-logs/export/`. The response returns a `job_id` in the `data` object (`data.job_id`). Use a [personal access token](/docs/dbt-apis/user-tokens) for this step.
 
 ```shell
 curl --request POST \
@@ -334,5 +340,5 @@ Teams often automate audit log access in a few ways:
 - **Periodic CSV exports:** Use the download endpoint to export a date range as CSV for compliance archival or analysis.
 - **Full history exports:** Use the bulk export workflow when you need your complete audit log history programmatically, similar to **Export All** in the UI.
 
-For endpoint details, refer to [Audit Logs](/dbt-cloud/api-v3#tag/Audit-Logs) in the Administrative API v3 reference.
+For endpoint details, refer to the [Administrative API v3 reference](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events).
 
