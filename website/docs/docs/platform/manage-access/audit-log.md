@@ -254,7 +254,9 @@ You can use the audit log to export all historical audit results for security, c
 
 You can also query and export audit log events with the [Administrative API](/docs/dbt-apis/admin-api). Use the API when you want to pull audit data into a script, a scheduled job, or security monitoring or log aggregation tooling. The same access requirements at the top of this page apply to the API.
 
-Authenticate with a [service token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens). Pass your token in the `Authorization` header as `Bearer YOUR_TOKEN` or `Token YOUR_TOKEN`.
+Authenticate with a [service token](/docs/dbt-apis/service-tokens) or [personal access token](/docs/dbt-apis/user-tokens), passed as `Authorization: Bearer YOUR_TOKEN` or `Token YOUR_TOKEN`. 
+
+Bulk exports require a [personal access token](/docs/dbt-apis/user-tokens) as service tokens aren't supported for that step.
 
 To start a bulk export, use a [personal access token](/docs/dbt-apis/user-tokens). Service tokens are not supported for that step.
 
