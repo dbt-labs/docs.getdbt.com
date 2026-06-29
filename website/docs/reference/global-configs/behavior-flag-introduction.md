@@ -12,18 +12,6 @@ import StateModified from '/snippets/_state-modified-compare.md';
 
 The sections below document flags that have not yet reached maturity (default still `false`). For intro and maturity dates, refer to the [dbt Core behavior changes](/reference/global-configs/behavior-changes#dbt-core-behavior-changes) table.
 
-## Behavior flags in Fusion 
-
-In <Constant name="fusion" />, all behavior change flags permanently enforce the new behavior. The opt-in/opt-out lifecycle described on the [Behavior changes](/reference/global-configs/behavior-changes) page applies to <Constant name="core" />only. In Fusion:
-
-- Every flag on this page is always enabled, regardless of what is set in `dbt_project.yml`.
-- Setting a flag to `false` has no effect.
-- If a new behavior causes problems in your project, the fix is to update your project code, not to revert the flag.
-
-If you're on <Constant name="fusion" /> and troubleshooting unexpected behavior from a specific flag, go directly to that flag's section below for details on what changed and how to adapt.
-
-## Introduced flags
-
 ### Failures in on-run-start hooks {#failures-in-on-run-start-hooks}
 
 This flag is planned to reach maturity on the <Constant name="dbt_platform" /> **Latest** release track. Before it takes effect, review [how it may impact your project](/reference/global-configs/behavior-flag-maturity#skip_nodes_if_on_run_start_fails).
