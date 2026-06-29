@@ -286,7 +286,7 @@ curl --request GET \
 
 You can use the same `logged_at_start` and `logged_at_end` query parameters as the list endpoint. If you omit them, the export includes events from the last 90 days.
 
-### Export all events in bulk
+### Bulk export
 
 To export your full audit log history through the API, use the same workflow as **Export All** in the UI:
 
