@@ -16,15 +16,16 @@ pagination_prev: null
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC) environments.
 
-For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md).
+For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
 
 ## June 2026
 
+- **Enhancement**: The [Administrative API v3](/dbt-cloud/api-v3) now supports private endpoint operations &mdash; [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
 - **Enhancement**: You can [download OpenTelemetry (OTel) logs](/docs/deploy/run-visibility#access-logs) for individual dbt command steps in Fusion job runs.
 - **Enhancement**: You can now configure [dbt State](/docs/deploy/dbt-state-about) for the <Constant name="studio_ide" /> directly in the <Constant name="dbt_platform" /> UI &mdash; either as a team-wide default on your development environment, or as a personal override. For more information, refer to [Enabling dbt State in Studio](/docs/deploy/dbt-state-setup#enabling-dbt-state-in-studio).
 - **New:** [Model query history](/docs/explore/model-query-history) for Redshift and Databricks is now generally available (GA). 
-- **Behavior change:** On June 29, 2026, several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track will reach maturity (enabled by default). Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to see which flags may affect your project and how to opt out before then.
+- **Behavior change:** On September 1, 2026, several behavior change flags on the <Constant name="dbt_platform" /> **Latest** release track will reach maturity (enabled by default). Refer to [Flags reaching maturity](/reference/global-configs/behavior-flag-maturity#flags-reaching-maturity) to see which flags may affect your project and how to opt out before then.
 - **Beta:** The <Constant name="fusion_engine" /> now supports the Salesforce Data 360 connection in the <Constant name="dbt_platform" />. For more information, refer to [Connect Salesforce Data 360](/docs/platform/connect-data-platform/connect-salesforce).
 - **Private beta**: The [Analyst read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set is available for Enterprise plans. 
    - *New*: Analyst read is a project-level permission set that provides read-only access to analyze dbt models and project resources. The OAuth integration that lets read-only users connect to analysis features (such as the [dbt MCP server](/docs/dbt-ai/about-mcp)) is available to use, while the Analyst read permission set and read-only permission changes are in private beta. To enable them, contact your account manager.
