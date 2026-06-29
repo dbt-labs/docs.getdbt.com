@@ -302,13 +302,13 @@ Notable features:
 - Can access <Constant name="catalog" />.
 
 </Expandable>
-<Expandable alt_header="Viewer">
+<Expandable alt_header="Account Viewer">
 The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
 
-The Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
+The Account Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
 
 Notable features:
-- Viewer is an account-level set.
+- Account Viewer is an account-level set.
 - Read-only access to all settings, projects, environments, and runs.
 - Read-only access to audit logs, including sensitive account-level information.
 - No access to the IDE. 
