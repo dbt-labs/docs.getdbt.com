@@ -856,7 +856,7 @@ const sidebarSettings = {
           type: "category",
           label: "Set up dbt State",
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
-          items: ["docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral"],
+          items: ["docs/deploy/dbt-state-setup", "docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral"],
         },
 
         "docs/deploy/dbt-state-examples",
@@ -1875,6 +1875,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/idempotence",
         "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",

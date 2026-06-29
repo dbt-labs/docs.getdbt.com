@@ -63,7 +63,7 @@ There are two ways to run an export:
 
 ## Exports in development
 
-You can run an export in your development environment using your development credentials if you want to test the output of the export before production. 
+You can run an export in your development environment if you want to test its output before production. 
 
 This section explains the different commands and options available to run exports in development.
 

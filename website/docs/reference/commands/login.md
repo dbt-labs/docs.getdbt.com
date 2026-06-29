@@ -6,13 +6,9 @@ description: "Use dbt login in dbt Core v2.0 and later to authenticate and unloc
 intro_text: "Use dbt login to authenticate once and unlock gated features across dbt tools."
 ---
 
-<VersionBlock lastVersion="1.12">
-
 :::info
 Available in <Constant name="dbt" /> v1.12 and v2.0 and later.
 :::
-
-</VersionBlock>
 
 Run `dbt login` from the command line to unlock advanced dbt features. It'll open browser-based authentication where you can sign in to your existing <Constant name="dbt_platform" /> account or create a free one &mdash; no credit card required!
 
@@ -20,19 +16,15 @@ Run [`dbt login status`](#dbt-login-status) to view your current authentication 
 
 ## When to use dbt login
 
-`dbt login` is intended for [dbt State](#dbt-login-with-dbt-state) or local development ([interactive](#interactive-authentication)) on macOS, Linux, and Windows, where you can complete authentication in a browser. 
-
-It does not support non-interactive authentication. For [non-interactive](#non-interactive-environments) environments, such as CI/CD jobs, scheduled jobs, or external orchestrators, use a service token instead to access advanced features.
-
-### What dbt login unlocks
-
-Use `dbt login` to unlock advanced features including:
+`dbt login` is an interactive, browser-based sign-in flow for local development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
 
 - advanced features in the [dbt VS Code extension](/docs/about-dbt-extension)
-- [dbt State](#dbt-login-with-dbt-state)
+- [dbt State](/docs/deploy/dbt-state-setup?version=2.0#how-dbt-login-works-with-dbt-state)
 - advanced features in v2.0 CLI
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+
+`dbt login` doesn't support non-interactive authentication. For [non-interactive](#non-interactive-environments) environments, such as CI/CD jobs, scheduled jobs, or external orchestrators, use a service token instead.
 
 ## Before you log in
 
@@ -52,24 +44,7 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability#dbt-vs-co
 
 ## `dbt login` with dbt State
 
-When [dbt State](/docs/deploy/dbt-state-about) is enabled, `dbt login` is used specifically for dbt State authentication, not for general <Constant name="dbt_platform" /> access. Running this command opens a browser window with two options:
-
-- **Log in with your <Constant name="dbt_platform" /> account**: Enter your email address. If you don't have a <Constant name="dbt_platform" /> account, dbt Labs will create a standalone [Developer account](https://www.getdbt.com/pricing) for you. After that, you'll authorize access between the CLI and <Constant name="dbt_platform" />.
-
-  In the <Constant name="fusion_engine" />, once authenticated, the CLI checks your configuration and responds accordingly:
-
-  | dbt State enabled in <Constant name="dbt_platform" />? | dbt State enabled locally? | Behavior |
-  |---|---|---|
-  | ✅ | ✅ | dbt State is ready to use. |
-  | ✅ | ❌ | CLI prompts you to enable dbt State locally. If you confirm, [`user_settings.yml`](/reference/global-configs/user-settings) is updated automatically. |
-  | ❌ | ✅ | CLI prompts you to enable dbt State in your platform account. |
-
-  In <Constant name="core" /> v1.12, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform).
-
-- **Log in without a <Constant name="dbt_platform" /> account**: Redirects you to the dbt State standalone app at [app.state.dbt.com](https://app.state.dbt.com), where a token is created and stored locally at `~/.dbt/auth_state.json`. dbt State is automatically enabled locally after account creation. Select this option if any of the following apply:
-  - You don't have a <Constant name="dbt_platform" /> account.
-  - You don't have admin permissions to enable dbt State in your <Constant name="dbt_platform" /> account.
-  - You want to try dbt State independently first.
+For dbt State-specific login behavior (platform vs standalone sign-in paths, local prompts, and `user_settings.yml` behavior), refer to [`dbt login` with dbt State](/docs/deploy/dbt-state-setup#dbt-login-with-dbt-state).
 
 </VersionBlock>
 
@@ -114,12 +89,16 @@ Unlike interactive `dbt login`, service tokens don't expire, so there's nothing 
 
 Set the following [environment variables](/docs/build/environment-variables#special-environment-variables) so dbt can authenticate and unlock that access:
 
+<SimpleTable>
+
 | Environment variable | Description |
 |---|---|
 | `DBT_CLOUD_ACCOUNT_HOST` | Your <Constant name="dbt_platform" /> [access URL](/docs/platform/about-platform/access-regions-ip-addresses) (for example, `abc123.us1.dbt.com`). |
 | `DBT_CLOUD_ACCOUNT_ID` | Your <Constant name="dbt_platform" /> account ID. |
 | `DBT_CLOUD_TOKEN` | The service token value. Create a service token with a permission set that includes feature licensing access, such as `Job Runner`, `Job Creator`, `Job Admin`, `Developer`, or `Account Admin`. |
 | `DBT_CLOUD_PROJECT_ID` | Your <Constant name="dbt_platform" /> project ID. |
+
+</SimpleTable>
 
 ```shell
 export DBT_CLOUD_ACCOUNT_HOST=abc123.us1.dbt.com
@@ -192,7 +171,6 @@ This page lists the commands and output you can use with `dbt login`:
 - [`dbt login --help`](#dbt-login---help)
 - [`dbt login status`](#dbt-login-status)
 - [`dbt license info`](#dbt-license-info)
-- [`dbt --help`](#dbt---help)
 
 ### dbt login
 
@@ -293,16 +271,6 @@ dbt license info --json
 ```
 
 For how to interpret each status, refer to [Troubleshooting](#troubleshooting).
-
-### dbt --help
-
-`dbt login` and `dbt license` appear in the `dbt --help` available commands list:
-
-```text
-Available Commands:
-  login          Log in to dbt
-  license         Manage your dbt license
-```
 
 ## Troubleshooting
 

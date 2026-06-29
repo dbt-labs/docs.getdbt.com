@@ -33,7 +33,7 @@ In this example, assume you have raw events continuously landing into `raw.event
 Configure the SQL model with the following settings:
 
 - Use the `incremental` filter to only scan rows newer than the latest timestamp already in the target.
-- Use `incremental_strategy='merge'` with `unique_key=event_id` to give you idempotent upserts (inserts + updates).
+- Use `incremental_strategy='merge'` with `unique_key=event_id` to give you <Term id="idempotent">idempotent</Term> upserts (inserts + updates).
 - Cluster by date using `cluster_by=['event_date']` helps with query pruning during `MERGE` operations (syntax varies by warehouse).
 - Run the model every few minutes to achieve a freshness service level agreement (SLA) measured in minutes, depending on ingestion and job scheduling.
 
