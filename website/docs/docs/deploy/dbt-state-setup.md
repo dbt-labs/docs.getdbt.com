@@ -52,7 +52,7 @@ To enable dbt State:
 7. In the **Upgrade to dbt State** page, select the jobs to enable dbt State for. You can either enable:
 
    - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New deploy jobs created in that environment will have dbt State enabled automatically.
-   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](#enabling-dbt-state-on-individual-jobs).
+   - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 
 8. Click **Enable dbt State**.
 
@@ -60,49 +60,11 @@ The **dbt State** page where you started your trial in step 3 displays how many 
 
 - Number of models reused
 - Total % build reduction
-- Total query run time reduction 
+- Total query run time reduction
 
-#### Enabling dbt State on individual jobs
-
-To enable dbt State on any job &mdash; whether already existing or newly created in an environment that doesn't have dbt State enabled:
-
-1. Go to **Orchestration** > **Jobs**.
-2. Select the job you want dbt State enabled for.
-3. Click **Settings** > **Edit**.
-4. In the **Execution settings** section of the job, select **Enable dbt State**.
-5. Click **Save**.
-
-#### Enabling dbt State in Studio
-
-When you enable dbt State in the <Constant name="studio_ide" />, it runs automatically on every `dbt run` or `dbt build` during development &mdash; skipping unchanged models and reusing production results so your runs are _faster_.
-
-You can [turn it on for your development environment](#enabling-dbt-state-on-a-development-environment) so it's the default for everyone, or you can [override that setting just for your own account](#overriding-dbt-state-setting-per-user).
-
-**Prerequisite**: An account admin must [enable dbt State](#enabling-dbt-state-on-your-account) before you can use it.
-
-##### Enabling dbt State on a development environment
-
-Enabling dbt State on your development environment turns it on for everyone using the <Constant name="studio_ide" />, unless they override it for their own account.
-
-1. Go to **Orchestration** > **Environments** and select your development environment.
-2. Click **Settings** > **Edit**.
-3. In the **dbt State** section, select **Enable dbt State**.
-4. Click **Save**. 
-5. In the pop-up box, click **Continue** if you want to go ahead with the changes and restart all IDE sessions for this project.
-
-##### Overriding dbt State setting per user
-
-You can override the development environment's dbt State setting for your own account without affecting other users. Because the user-level setting takes precedence over the environment-level setting, you can turn dbt State on for yourself before enabling it for your whole team, or turn it off when it's enabled at the environment level.
-
-1. Click your account name in the lower-left corner and select **Account settings**.
-2. Under **Your profile**, go to **Credentials**.
-3. Select the project you want to enable dbt State for.
-4. Click **Edit** and go to the **User development settings** section.
-5. Under **dbt State**, select one of the following options:
-   - **Enabled**: Enables dbt State for your user regardless of the development environment setting.
-   - **Disabled**: Disables dbt State for your user regardless of the development environment setting.
-   - **Reset (inherit from development)**: Only appears after you've saved an **Enabled** or **Disabled** override. Clears your override and falls back to the dbt State setting configured on your development environment.
-6. Click **Save**.
+For next steps, see:
+- [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
+- [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
 <TabItem value="fusion" label="dbt Core 1.12 / Fusion">
