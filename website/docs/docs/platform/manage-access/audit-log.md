@@ -252,7 +252,7 @@ You can use the audit log to export all historical audit results for security, c
 
 ## Using the API
 
-You can also query and export audit log events with the [Administrative API v3](/dbt-cloud/api-v3). Use the API when you want to pull audit data into a script, a scheduled job, or security monitoring or log aggregation tooling. The same access requirements at the top of this page apply to the API. For common automation approaches, see [Common automation patterns](#common-automation-patterns).
+You can also query and export audit log events with the [Administrative API v3](/dbt-cloud/api-v3). Use the API when you want to pull audit data into a script, a scheduled job, or security monitoring or log aggregation tooling. The same access requirements at the top of this page apply to the API. For common automation approaches, refer to [Common automation patterns](#common-automation-patterns).
 
 | If you want to… | Use |
 | --- | --- |
