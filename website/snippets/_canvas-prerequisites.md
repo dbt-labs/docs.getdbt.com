@@ -1,7 +1,7 @@
 ## Canvas prerequisites
 Before using <Constant name="canvas" />, you should:
 - Have a [<Constant name="dbt" /> Enterprise or Enterprise+](https://www.getdbt.com/pricing) account.
-- Have a [developer license](/docs/platform/manage-access/seats-and-users) with developer credentials set up.
+- Have a [developer license](/docs/platform/manage-access/seats-and-users) with user credentials set up.
 - Be using one of the following adapters:
     - Bigquery
     - Databricks

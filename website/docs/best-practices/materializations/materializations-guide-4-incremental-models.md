@@ -44,7 +44,7 @@ Let’s think through the information we’d need to build such a model that onl
 - 🕜  **a timestamp indicating when a record was last updated**, let’s call it our `updated_at` timestamp, as that’s a typical convention and what we have in our example above.
 - ⌛ the **most recent timestamp from this table _in our warehouse_** _—_ that is, the one created by the previous run — to act as a cutoff point. We’ll call the model we’re working in `this`, for ‘this model we’re working in’.
 
-That would lets us construct logic like this:
+That would let us construct logic like this:
 
 ```sql
 select * from orders

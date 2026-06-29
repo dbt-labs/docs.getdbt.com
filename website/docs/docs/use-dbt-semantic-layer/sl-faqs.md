@@ -280,7 +280,7 @@ The dbt Semantic Layer uses service or personal tokens for authentication.
 
 [Service tokens](/docs/dbt-apis/service-tokens) are mapped to underlying data platform credentials. These credentials control physical access to the raw data. The credential configuration allows admins to create a credential and map it to service tokens, which can then be shared to relevant teams for BI connection setup. You can configure credentials and service tokens to reflect your teams and their roles.
 
-Personal access tokens [(PATs)](/docs/dbt-apis/user-tokens) enable user-level authentication. When you use PATs to authenticate, your personal development credentials are used when running queries against the Semantic Layer.
+Personal access tokens [(PATs)](/docs/dbt-apis/user-tokens) enable user-level authentication. When you use PATs to authenticate, your personal user credentials are used when running queries against the Semantic Layer.
 
 Currently, the credentials you configure when setting up the dbt Semantic Layer are used for every request. Any physical access policies you have tied to your credentials will be respected.
 
