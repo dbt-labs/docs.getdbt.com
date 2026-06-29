@@ -273,7 +273,7 @@ curl --request GET \
 
 The response includes a `data` array of events with details such as `event_type`, `event_label`, `actor`, `created_at`, and `event_context`. Use `logged_at_start` and `logged_at_end` to filter by date range, and `limit` and `offset` to paginate through results. If you omit the date parameters, the request returns events from the last 90 days. For more options, refer to [List Recent Audit Log Events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events) in the API reference.
 
-### Download a CSV export
+### Download a CSV
 
 To download audit log events as a CSV file, send a `GET` request to `/api/v3/accounts/ACCOUNT_ID/audit-logs/download/`. This is the API equivalent of **Export Selection** in the UI:
 
