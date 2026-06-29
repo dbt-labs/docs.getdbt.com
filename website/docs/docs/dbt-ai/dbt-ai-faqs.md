@@ -69,7 +69,7 @@ dbt Copilot features include quick-action buttons in <Constant name="studio_ide"
 
 <Expandable alt_header="Can I use my existing dbt Copilot action allotment with dbt Wizard?">
 
-Yes, as a temporary compatibility bridge through July 1. After July 1, this bridge ends. 
+Yes, as a temporary compatibility bridge through July 13. After July 13, this bridge ends. 
 
 </Expandable>
 

@@ -37,11 +37,11 @@ The following fields are required when creating a Snowflake connection:
 
 ## Authentication methods
 
-This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their development credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) area of their user profile.
+This section describes the different authentication methods for connecting <Constant name="dbt" /> to Snowflake. Configure deployment environment (Production, Staging, General) credentials globally in the [**Connections**](/docs/deploy/deploy-environments#deployment-connection) area of **Account settings**. Individual users configure their user credentials in the [**Credentials**](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) area of their user profile.
 
 :::note Snowflake authentication in the dbt platform
 
-You cannot create new Snowflake credentials with username and password in <Constant name="dbt_platform" />. New development and deployment credentials default to [key pair](#key-pair) authentication. For development credentials on Enterprise-tier plans, [Snowflake OAuth](#snowflake-oauth) is also available when configured on the connection. To update existing password credentials, refer to [Username and password with MFA](#username-and-password-with-mfa).
+You cannot create new Snowflake credentials with username and password in <Constant name="dbt_platform" />. New development and deployment credentials default to [key pair](#key-pair) authentication. For user credentials on Enterprise-tier plans, [Snowflake OAuth](#snowflake-oauth) is also available when configured on the connection. To update existing password credentials, refer to [Username and password with MFA](#username-and-password-with-mfa).
 
 :::
 
