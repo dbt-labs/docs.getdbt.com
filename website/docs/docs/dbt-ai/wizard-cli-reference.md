@@ -35,7 +35,7 @@ Most people use a handful of commands to get started. View the following table a
 | Run a one-off task without the TUI | `wizard exec "add tests to my staging models"` | Runs the agent once, prints the result, and exits. Good for scripts and CI. |
 | Review my uncommitted changes | `wizard review --uncommitted` | Runs a code review on your staged, unstaged, and untracked changes. |
 | Pick up where I left off | `wizard resume --last` | Reopens your most recent session with its full history. |
-| Check that my install is healthy | `wizard doctor` | Diagnoses your install, config, auth, and connectivity. |
+| Check that my install is healthy | `wizard doctor` | Diagnoses your install, config, auth, runtime health |
 | Update to the latest version | `wizard update` | Updates wizard to the newest release. |
 </SimpleTable>
 
