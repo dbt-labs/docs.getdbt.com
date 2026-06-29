@@ -58,7 +58,7 @@ How you download the file depends on whether you're configuring the [<Constant n
 
 ## Update or switch projects
 
-The `dbt_cloud.yml` file is local to your machine and doesn't update automatically. Re-download it when:
+The `dbt_cloud.yml` file is local to your machine and doesn't update automatically. Make sure to re-download it when:
 
 - You get access to a new project and want to work on it locally
 - A project is removed from your account or your project access changes
@@ -136,6 +136,8 @@ projects:
 
 ### Field reference
 
+<SimpleTable>
+  
 | Field | Required | Description |
 |-------|----------|-------------|
 | `version` | Yes | The schema version of the file. Currently `"1"`. |
@@ -149,6 +151,8 @@ projects:
 | `projects.account-host` | Yes | The host for your account, for example `cloud.getdbt.com`, `emea.dbt.com`, or your single-tenant access URL. |
 | `projects.token-name` | Yes | A name for the [Personal access token (PAT)](/docs/dbt-apis/user-tokens). |
 | `projects.token-value` | Yes | The PAT value. Treat this as a secret. |
+
+</SimpleTable>
 
 ## The dbt-cloud block in dbt_project.yml
 
