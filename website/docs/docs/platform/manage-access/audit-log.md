@@ -260,7 +260,7 @@ To start a bulk export, use a [personal access token](/docs/dbt-apis/user-tokens
 
 In the examples below, replace `YOUR_ACCESS_URL` with your <Constant name="dbt" /> access URL, `ACCOUNT_ID` with your account ID, and `YOUR_TOKEN` with your token. You can find your account ID in **Account settings**, or refer to [Finding your user and account IDs](/faqs/Accounts/find-user-id) for more information.
 
-### Query audit log events
+### Query events
 
 To fetch audit log events as JSON, send a `GET` request to `/api/v3/accounts/ACCOUNT_ID/audit-logs/`:
 
