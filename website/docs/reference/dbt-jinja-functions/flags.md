@@ -24,7 +24,7 @@ drop table ...
 The list of available flags is defined in the [`flags` module](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/flags.py) within `dbt-core`.
 
 Recommended use cases include:
-- different <Term id="materialization" /> logic based on "run modes," such as `flags.FULL_REFRESH` and `flags.STORE_FAILURES`
+- different <Term id="materialization" /> logic based on "run modes," such as `flags.FULL_REFRESH`, `flags.EMPTY`, and `flags.STORE_FAILURES`
 - running hooks conditionally based on the current command / task type, via `flags.WHICH`
 
 **Note:** It is _not_ recommended to use flags as an input to parse-time configurations, properties, or dependencies (`ref` + `source`). Flags are likely to change in every invocation of dbt, and their parsed values will become stale (and yield incorrect results) in subsequent invocations that have partial parsing enabled. For more details, see [the docs on parsing](/reference/parsing).
@@ -68,6 +68,22 @@ $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 
 select 1 as id
 ```
+
+## flags.EMPTY
+
+`flags.EMPTY` is set when dbt runs with the `--empty` flag. You can use it in Jinja to conditionally adjust logic when dbt builds schema-only dry runs instead of processing full input data.
+
+<File name='models/my_model.sql'>
+
+```sql
+{% if flags.EMPTY %}
+    -- empty mode logic
+{% else %}
+    -- standard execution logic
+{% endif %}
+```
+
+</File>
 
 ## flags.WHICH
 
