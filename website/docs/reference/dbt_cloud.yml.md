@@ -11,7 +11,7 @@ The `dbt_cloud.yml` file stores the credentials that dbt tools &mdash; like the 
 This page covers:
 
 - [How to download it and set up the `.dbt` directory](#download-dbt_cloudyml) for the <Constant name="platform_cli" /> or the VS Code extension
-- [When to update it](#update-or-switch-projects)
+- [Update or switch projects](#update-or-switch-projects)
 - [The file structure](#file-structure) and field reference
 - [The companion `dbt-cloud` block](#the-dbt-cloud-block-in-dbt_projectyml) in `dbt_project.yml`
 
