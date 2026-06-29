@@ -14,7 +14,7 @@ product_badge: "Fusion compatible"
 
 In this quickstart guide, you'll learn how to use <Constant name="dbt" /> with Snowflake. It will show you how to: 
 
-- Create a new Snowflake worksheet.
+- Create a new Snowflake SQL file.
 - Load sample data into your Snowflake account.
 - Connect <Constant name="dbt" /> to Snowflake.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
@@ -45,9 +45,11 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 
-## Create a new Snowflake worksheet 
-1. Log in to your trial Snowflake account. 
-2. In the Snowflake UI, click **+ Create** in the left-hand corner, underneath the Snowflake logo, which opens a dropdown. Select the first option, **SQL Worksheet**. 
+## Create a new Snowflake SQL file
+
+import CreateSnowflakeSqlFile from '/snippets/_create-snowflake-sql-file.md';
+
+<CreateSnowflakeSqlFile />
 
 ## Load data 
 
