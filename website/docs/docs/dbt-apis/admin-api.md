@@ -4,6 +4,8 @@ id: "admin-api"
 pagination_next: "docs/dbt-apis/discovery-api"
 ---
 
+import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
+
 # dbt Administrative API <Lifecycle status="self_service,managed,managed_plus" />
 
 The <Constant name="dbt" /> Administrative API is enabled by default for [Starter, Enterprise, and Enterprise+ plans](https://www.getdbt.com/pricing/). It can be used to:
@@ -17,7 +19,7 @@ The <Constant name="dbt" /> Administrative API is enabled by default for [Starte
 
 Many endpoints of the Administrative API can also be called through the [<Constant name="dbt" /> Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest). The built-in documentation on the Terraform registry contains [a guide on how to get started with the provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/guides/1_getting_started) as well as [a page showing all the Terraform resources available](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/guides/99_list_resources) to configure.
 
-<Snippet path="api-rate-limits-callout" />
+<ApiRateLimitsCallout />
 
 <div className="grid--2-col">
 

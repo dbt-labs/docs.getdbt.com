@@ -6,6 +6,8 @@ pagination_next: "docs/dbt-apis/rate-limits"
 pagination_prev: null
 ---
 
+import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
+
 # APIs overview <Lifecycle status="self_service,managed,managed_plus" />
 
 Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Constant name="dbt" /> APIs.
@@ -18,7 +20,7 @@ Accounts on the Starter, Enterprise, and Enterprise+ plans can query the <Consta
 
 If you want to learn more about webhooks, refer to [Webhooks for your jobs](/docs/deploy/webhooks).
 
-<Snippet path="api-rate-limits-callout" />
+<ApiRateLimitsCallout />
 
 ## How to Access the APIs
 
