@@ -62,7 +62,7 @@ The `dbt_cloud.yml` file is local to your machine and doesn't update automatical
 
 - You get access to a new project and want to work on it locally
 - A project is removed from your account or your project access changes
-- Your token changes, expires, or is rotated
+- Your token changes or is rotated
 - Your account host changes, such as when your account moves regions
 
 The file can include multiple projects from the same <Constant name="dbt_platform" /> account. To switch projects, update `context.active-project` to the `project-id` for the project you want to use. The active project must match one of the projects listed under `projects`.
