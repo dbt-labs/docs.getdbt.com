@@ -131,7 +131,7 @@ After you choose a setup path, use these docs to build the core pieces of a dbt 
 
 ## Build with AI
 
-<Constant name="wizard" /> is an AI agent for analytics engineering. It can help you build, refactor, validate, and document dbt projects after you have a project to work in.
+Once you have a working project, <Constant name="wizard" /> can help you build, refactor, validate, and document it.
 
 <div className="grid--3-col">
 

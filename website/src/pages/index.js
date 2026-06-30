@@ -131,29 +131,14 @@ function Home() {
                 <aside className="home-start-aside">
                   <div>
                     <span className="eyebrow">Get started</span>
-                    <h2 className="heading-2">Find the right path</h2>
-                    <p>Compare platform, local, and open source paths.</p>
                   </div>
                   <div className="home-card-grid home-card-grid--path">
                     <Card
-                      title="Get started with dbt"
-                      body="Compare platform, local, and open source paths, then choose the best next step for your project."
+                      title="Not sure where to start?"
+                      body="Compare the platform, local, and open source paths."
                       link="/docs/get-started-dbt"
                       icon="compass"
                       showBorderBeam
-                    />
-                    <Card
-                      title="Develop locally"
-                      body="Use dbt from VS Code or your terminal with the dbt Fusion engine or dbt Core."
-                      link="/docs/get-started-dbt#develop-locally"
-                      icon="vsce"
-                    />
-                    <Card
-                      title="Build with AI"
-                      tag="Beta"
-                      body="Use dbt Wizard after you have a project to work in."
-                      link="/docs/get-started-dbt#build-with-ai"
-                      icon="dbt-copilot"
                     />
                   </div>
                 </aside>
