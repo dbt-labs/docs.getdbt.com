@@ -9,17 +9,8 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 # Building with <Constant name="wizard" /> CLI and DuckDB
 
 <IntroText>
-Install <Constant name="wizard" /> CLI, create a local DuckDB dbt project, and use <Constant name="wizard" /> to make, test, and document a real dbt change.
+Create a local DuckDB dbt project, then use <Constant name="wizard" /> to inspect it, make a change, and validate it &mdash; all from your terminal. Takes about 7-8 minutes.
 </IntroText>
-
-In this guide, you'll create a local Magic Shop dbt project, load sample data into DuckDB, ask <Constant name="wizard" /> to inspect the project, have <Constant name="wizard" /> propose tests and docs for a staging model, and validate the change with `dbt build`. It takes about 7-8 minutes.
-
-By the end of this guide, you'll have:
-
-- <Constant name="wizard" /> CLI installed and connected to AI &mdash; through your <Constant name="dbt_platform" /> account or your own provider key
-- A local DuckDB project built with the <Constant name="fusion_engine" /> that <Constant name="wizard" /> can inspect
-- A first <Constant name="wizard" /> session that explains the project
-- A small dbt change proposed by <Constant name="wizard" />, reviewed by you, documented, and validated with dbt
 
 ## Prerequisites
 
@@ -167,44 +158,33 @@ add not_null and unique tests to wizard_id in stg_wizards, and add clear column 
 
 ## 6. Validate the change
 
-After you apply a change, run dbt from the same project directory:
-
-```shell
-dbt build --select stg_wizards+
-```
-
-If the command succeeds, review what changed:
-
-```shell
-git status
-git diff
-```
-
-You should see tests and descriptions added for `stg_wizards`. <Constant name="wizard" /> may add them to a new schema file (for example, `_stg_wizards.yml`) &mdash; new files show up under `git status`, while `git diff` shows edits to files dbt was already tracking. The `dbt build` command confirms that the model, tests, and YAML parse cleanly.
-
-If the command fails, return to <Constant name="wizard" /> and paste the error message:
+You don't have to leave <Constant name="wizard" /> to check your work. Ask it to build and test the model:
 
 ```text
-dbt build failed with this error: ERROR_MESSAGE
+build stg_wizards and its downstream models, then tell me whether the tests pass
 ```
 
-Replace `ERROR_MESSAGE` with the error from your terminal.
+<Constant name="wizard" /> runs `dbt build --select stg_wizards+` for you (with your approval) and reports the result. If a model or test fails, it reads the error and proposes a fix &mdash; no copying error messages back and forth. That's the difference from a plain terminal: <Constant name="wizard" /> can run dbt and act on what it finds.
 
-## 7. Review before you commit
+:::tip Prefer to run it yourself?
+You can still run any command directly in another terminal &mdash; for example, `dbt build --select stg_wizards+`.
+:::
 
-Use <Constant name="wizard" /> to review your local changes:
+## 7. Review and commit
 
-```shell
-wizard review --uncommitted
+Ask <Constant name="wizard" /> to review everything before you commit:
+
+```text
+review my uncommitted changes and summarize what changed
 ```
 
-Then commit the change with your usual Git workflow:
+When you're happy with the summary, let <Constant name="wizard" /> commit for you:
 
-```shell
-git status
-git add .
-git commit -m "Add tests and docs for staging model"
+```text
+commit these changes with a clear message
 ```
+
+<Constant name="wizard" /> stages the files and writes the commit (with your approval). Prefer to do it by hand? Run `wizard review --uncommitted` or your usual `git` commands instead.
 
 ## What just happened
 
