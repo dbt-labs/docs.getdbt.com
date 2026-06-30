@@ -1206,8 +1206,7 @@ div .toggle_src-components-faqs-styles-module {
 }
 
 /* Keep card titles aligned across a row: give the icon header a fixed
-   height (icons have varying intrinsic sizes) and lift the Beta/Preview
-   tag out of flow so it never pushes the title down. */
+   height because icons have varying intrinsic sizes. */
 .home-card-grid article > div:first-child {
   min-height: 32px;
   align-items: flex-start;
@@ -1216,13 +1215,6 @@ div .toggle_src-components-faqs-styles-module {
 .home-card-grid article > div:first-child img {
   max-height: 28px;
   width: auto;
-}
-
-.home-card-grid .tag {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  margin: 0;
 }
 
 .card.large .button {
@@ -2425,7 +2417,7 @@ button .DocSearch-Button-Keys {
 
 .home section.home-quickstart:first-of-type {
   padding-top: 0;
-  margin-top: -1rem;
+  margin-top: 0.5rem;
 }
 
 .home-card-grid {
@@ -2485,8 +2477,10 @@ button .DocSearch-Button-Keys {
 }
 
 .home-start-layout .tag {
+  position: absolute;
   top: 1rem;
   right: 1rem;
+  margin: 0;
 }
 
 .home-card-grid--quickstarts {
