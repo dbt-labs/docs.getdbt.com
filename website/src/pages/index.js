@@ -89,15 +89,6 @@ function Home() {
                     <h2 className="heading-2">Pick your platform</h2>
                     <p>Choose your data platform and follow a quickstart to build your first project end to end.</p>
                   </div>
-                  <div className="home-card-grid home-card-grid--path">
-                    <Card
-                      title="Not sure where to start?"
-                      body="Compare the platform, local, and open source paths."
-                      link="/docs/get-started-dbt"
-                      icon="compass"
-                      showBorderBeam
-                    />
-                  </div>
                 </div>
                 <div className="home-card-grid home-card-grid--quickstarts">
                   <Card
@@ -135,6 +126,15 @@ function Home() {
                     body="Browse every quickstart and pick your warehouse or engine."
                     link="/docs/get-started-dbt"
                     icon="compass"
+                  />
+                </div>
+                <div className="home-card-grid home-card-grid--path">
+                  <Card
+                    title="Not sure where to start?"
+                    body="Compare the platform, local, and open source paths."
+                    link="/docs/get-started-dbt"
+                    icon="compass"
+                    showBorderBeam
                   />
                 </div>
               </div>
