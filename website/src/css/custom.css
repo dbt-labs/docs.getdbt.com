@@ -2438,8 +2438,49 @@ button .DocSearch-Button-Keys {
 .home-start-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-  gap: 32px;
+  gap: 28px;
   align-items: start;
+}
+
+.home-start-layout .heading-2 {
+  font-size: var(--text-4xl);
+}
+
+.home-start-layout p {
+  max-width: 48rem;
+  font-size: var(--text-base);
+}
+
+.home-start-layout .home-card-grid {
+  gap: 16px;
+}
+
+.home-start-layout article {
+  min-height: 0;
+  padding: 1.5rem;
+}
+
+.home-start-layout article > div:first-child {
+  min-height: 24px;
+  margin-bottom: 0.75rem;
+}
+
+.home-start-layout article > div:first-child img {
+  max-height: 24px;
+}
+
+.home-start-layout article .heading-4 {
+  font-size: var(--text-xl);
+}
+
+.home-start-layout article p {
+  margin-bottom: 0;
+  font-size: var(--text-sm);
+}
+
+.home-start-layout .tag {
+  top: 1rem;
+  right: 1rem;
 }
 
 .home-card-grid--quickstarts {
@@ -2457,6 +2498,10 @@ button .DocSearch-Button-Keys {
 @media(max-width: 996px) {
   .home-start-layout {
     grid-template-columns: 1fr;
+  }
+
+  .home-start-layout .heading-2 {
+    font-size: var(--text-3xl);
   }
 
   .home-start-aside {
