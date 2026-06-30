@@ -2427,10 +2427,16 @@ button .DocSearch-Button-Keys {
 }
 
 .home-start-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.home-start-header {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-  gap: 28px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.46fr);
+  gap: 36px;
+  align-items: end;
 }
 
 .home-start-layout .heading-2 {
@@ -2442,11 +2448,6 @@ button .DocSearch-Button-Keys {
 .home-start-layout p {
   max-width: 48rem;
   font-size: var(--text-base);
-}
-
-.home-start-layout > div > div:first-child,
-.home-start-aside > div:first-child {
-  margin-bottom: 1rem;
 }
 
 .home-start-layout .home-card-grid {
@@ -2484,28 +2485,20 @@ button .DocSearch-Button-Keys {
 }
 
 .home-card-grid--quickstarts {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .home-card-grid--path {
   grid-template-columns: 1fr;
 }
 
-.home-start-aside {
-  padding-left: 8px;
-}
-
 @media(max-width: 996px) {
-  .home-start-layout {
+  .home-start-header {
     grid-template-columns: 1fr;
   }
 
   .home-start-layout .heading-2 {
     font-size: var(--text-3xl);
-  }
-
-  .home-start-aside {
-    padding-left: 0;
   }
 
   .home-card-grid {

@@ -83,54 +83,11 @@ function Home() {
           <section className="section--compact home-quickstart">
             <div className="container">
               <div className="home-start-layout">
-                <div>
+                <div className="home-start-header">
                   <div>
                     <span className="eyebrow">Quickstarts</span>
                     <h2 className="heading-2">Pick your platform</h2>
                     <p>Choose your data platform and follow a quickstart to build your first project end to end.</p>
-                  </div>
-                  <div className="home-card-grid home-card-grid--quickstarts">
-                    <Card
-                      title="Snowflake"
-                      body="Build your first dbt project on Snowflake."
-                      link="/guides/snowflake?step=1"
-                      icon="snowflake"
-                    />
-                    <Card
-                      title="Databricks"
-                      body="Build your first dbt project on Databricks."
-                      link="/guides/databricks?step=1"
-                      icon="databricks"
-                    />
-                    <Card
-                      title="BigQuery"
-                      body="Build your first dbt project on BigQuery."
-                      link="/guides/bigquery?step=1"
-                      icon="bigquery"
-                    />
-                    <Card
-                      title="Redshift"
-                      body="Build your first dbt project on Redshift."
-                      link="/guides/redshift?step=1"
-                      icon="redshift"
-                    />
-                    <Card
-                      title="DuckDB"
-                      body="Build your first dbt project locally with DuckDB."
-                      link="/guides/duckdb?step=1"
-                      icon="duckdb-seeklogo"
-                    />
-                    <Card
-                      title="See all platforms"
-                      body="Browse every quickstart and pick your warehouse or engine."
-                      link="/docs/get-started-dbt"
-                      icon="compass"
-                    />
-                  </div>
-                </div>
-                <aside className="home-start-aside">
-                  <div>
-                    <span className="eyebrow">Get started</span>
                   </div>
                   <div className="home-card-grid home-card-grid--path">
                     <Card
@@ -141,7 +98,45 @@ function Home() {
                       showBorderBeam
                     />
                   </div>
-                </aside>
+                </div>
+                <div className="home-card-grid home-card-grid--quickstarts">
+                  <Card
+                    title="Snowflake"
+                    body="Build your first dbt project on Snowflake."
+                    link="/guides/snowflake?step=1"
+                    icon="snowflake"
+                  />
+                  <Card
+                    title="Databricks"
+                    body="Build your first dbt project on Databricks."
+                    link="/guides/databricks?step=1"
+                    icon="databricks"
+                  />
+                  <Card
+                    title="BigQuery"
+                    body="Build your first dbt project on BigQuery."
+                    link="/guides/bigquery?step=1"
+                    icon="bigquery"
+                  />
+                  <Card
+                    title="Redshift"
+                    body="Build your first dbt project on Redshift."
+                    link="/guides/redshift?step=1"
+                    icon="redshift"
+                  />
+                  <Card
+                    title="DuckDB"
+                    body="Build your first dbt project locally with DuckDB."
+                    link="/guides/duckdb?step=1"
+                    icon="duckdb-seeklogo"
+                  />
+                  <Card
+                    title="See all platforms"
+                    body="Browse every quickstart and pick your warehouse or engine."
+                    link="/docs/get-started-dbt"
+                    icon="compass"
+                  />
+                </div>
               </div>
             </div>
           </section>
