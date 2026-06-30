@@ -5,6 +5,10 @@ description: "dbt transforms raw warehouse data into trusted data products and b
 pagination_next: null
 pagination_prev: null
 intro_text: "dbt transforms raw warehouse data into trusted data products. You write simple SQL select statements, and dbt handles the heavy lifting by creating modular, maintainable data models that power analytics, operations, and AI -- replacing the need for complex and fragile transformation code."
+banner:
+  text: "This is a test banner"
+  link: https://google.com
+  open_in_new_tab: true
 ---
 
 <Snippet path="what-is-dbt-intro" />
