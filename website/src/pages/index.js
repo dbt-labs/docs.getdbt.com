@@ -63,7 +63,7 @@ function Home() {
           <header className="baton-hero baton-hero--compact">
             <div className="container">
               <div>
-                <h1 className="heading-1 heading-1--tight">Build, test, and ship trusted data with dbt</h1>
+                <h1 className="heading-1 heading-1--tight">The dbt Developer Hub</h1>
                 <p className="hero-subcopy">
                 Find everything you need to build, document, and collaborate with dbt &mdash; faster.
                 </p>
