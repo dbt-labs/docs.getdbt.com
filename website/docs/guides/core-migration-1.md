@@ -99,7 +99,7 @@ This section outlines the considerations and methods to connect your data platfo
    - [Starburst or Trino](/docs/platform/connect-data-platform/connect-starburst-trino)
    - [Teradata](/docs/platform/connect-data-platform/connect-teradata)
 
-2. You can verify your data platform connections by clicking the **Test connection** button in your deployment and development credentials settings.
+2. You can verify your data platform connections by clicking the **Test connection** button in your deployment and user credentials settings.
 
 ### Additional configuration
 
@@ -140,7 +140,7 @@ The most common data environments are production, staging, and development. The 
 - Using [Git repo caching](/docs/platform/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="managed,managed_plus" />
 
 ### Initial setup steps
-1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-platform-environments#create-a-development-environment) environment and [development credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide). You'll need this to access your dbt project and start developing.
+1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-platform-environments#create-a-development-environment) environment and [user credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide). You'll need this to access your dbt project and start developing.
 
 2. **dbt Core version** &mdash; In your <Constant name="dbt" /> environment, select a [release track](/docs/dbt-versions/dbt-release-tracks) for ongoing dbt version upgrades. If your team plans to use both dbt Core and <Constant name="dbt" /> for developing or deploying your dbt project, you can run `dbt --version` in the command line to find out which version of dbt Core you're using.
    - When using <Constant name="core" />, you need to think about which version you're using and manage your own upgrades. When using <Constant name="dbt" />, leverage [release tracks](/docs/dbt-versions/dbt-release-tracks) so you don't have to.
@@ -154,7 +154,7 @@ The most common data environments are production, staging, and development. The 
 ### Additional configuration
 Explore these additional configurations to optimize your developer setup further:
 
-1. **Custom target names** &mdash; Using [`custom target.names`](/docs/build/custom-target-names) in your dbt projects helps identify different environments (like development, staging, and production). While you can specify the `custom target.name` values in your developer credentials or orchestration setup, we recommend using [environment variables](/docs/build/environment-variables) as the preferred method. They offer a clearer way to handle different environments and are better supported by dbt's partial parsing feature, unlike using [`{{ target }}` logic](/reference/dbt-jinja-functions/target) which is meant for defining the data warehouse connection.
+1. **Custom target names** &mdash; Using [`custom target.names`](/docs/build/custom-target-names) in your dbt projects helps identify different environments (like development, staging, and production). While you can specify the `custom target.name` values in your development credentials or orchestration setup, we recommend using [environment variables](/docs/build/environment-variables) as the preferred method. They offer a clearer way to handle different environments and are better supported by dbt's partial parsing feature, unlike using [`{{ target }}` logic](/reference/dbt-jinja-functions/target) which is meant for defining the data warehouse connection.
 
 ### dbt commands
 1. Review the [dbt commands](/reference/dbt-commands) supported for <Constant name="dbt" /> development. For example, `dbt init` isn't needed in <Constant name="dbt" /> as you can create a new project directly in <Constant name="dbt" />.

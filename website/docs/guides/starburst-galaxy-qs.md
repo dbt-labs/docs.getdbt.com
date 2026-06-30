@@ -209,7 +209,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 9. Enter the **Settings** for your new project:
     - **Host** – The **Host** value from the **Connection information** modal in your Starburst Galaxy tab.
     - **Port** – 443 (which is the default)
-10. Enter the **Development Credentials** for your new project:
+10. Enter the **User credentials** for your new project:
     - **User** – The **User** value from the **Connection information** modal in your Starburst Galaxy tab. Make sure to use the entire string, including the account's role which is the `/` and all the characters that follow. If you don’t include it, your default role is used and that might not have the correct permissions for project development.
     - **Password** – The password you use to log in to your Starburst Galaxy account.
     - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables). For future reference, database is synonymous to catalog between <Constant name="dbt" /> and Starburst Galaxy. 

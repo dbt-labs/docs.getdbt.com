@@ -1081,6 +1081,7 @@ const sidebarSettings = {
   ],
   apis: [
     "docs/dbt-apis/overview",
+    "docs/dbt-apis/rate-limits",
     {
       type: "category",
       label: "API Access",
@@ -1874,6 +1875,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/idempotence",
         "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
