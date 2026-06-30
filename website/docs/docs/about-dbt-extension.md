@@ -9,7 +9,7 @@ pagination_next: "docs/dbt-extension-features"
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
 
-<Applicability surface="oss" engine="fusion" />
+<Applicability surface="local" engine="fusion" />
 
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing locally.

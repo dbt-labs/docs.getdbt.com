@@ -3,7 +3,8 @@ import styles from './styles.module.css';
 
 const SURFACE_LABELS = {
   platform: 'dbt platform',
-  oss: 'local development',
+  local: 'local development',
+  oss: 'OSS only',
   both: 'dbt platform and local development',
 };
 
@@ -25,7 +26,7 @@ export default function Applicability({ surface, plan = 'all', engine = 'both' }
   }
 
   const surfaceLabel = SURFACE_LABELS[surface];
-  const shouldShowPlan = surface !== 'oss' && plan !== 'all' && PLAN_LABELS[plan];
+  const shouldShowPlan = !['local', 'oss'].includes(surface) && plan !== 'all' && PLAN_LABELS[plan];
   const shouldShowEngine = engine !== 'both' && ENGINE_LABELS[engine];
 
   if (surface === 'both' && !shouldShowPlan && !shouldShowEngine) {

@@ -28,9 +28,16 @@ describe('Applicability', () => {
   });
 
   it('renders a local development signal and ignores plan props', () => {
-    render(<Applicability surface="oss" plan="enterprise+" />);
+    render(<Applicability surface="local" plan="enterprise+" />);
 
     expect(screen.getByLabelText('Page applicability')).toHaveTextContent('Applies to local development');
+    expect(screen.queryByText('Enterprise+')).not.toBeInTheDocument();
+  });
+
+  it('renders an OSS-only signal and ignores plan props', () => {
+    render(<Applicability surface="oss" plan="enterprise+" />);
+
+    expect(screen.getByLabelText('Page applicability')).toHaveTextContent('Applies to OSS only');
     expect(screen.queryByText('Enterprise+')).not.toBeInTheDocument();
   });
 
