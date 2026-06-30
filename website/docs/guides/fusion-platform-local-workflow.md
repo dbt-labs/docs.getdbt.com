@@ -55,7 +55,7 @@ The dbt VS Code extension runs <Constant name="fusion" /> and its language serve
 Download your [`dbt_cloud.yml`](/reference/dbt_cloud.yml) from your <Constant name="dbt_platform" /> **Account settings** and <Constant name="fusion" /> attempts to hydrate non-sensitive credential metadata from <Constant name="dbt_platform" /> automatically. 
 
 
-If you get access to a new project, re-download the `dbt_cloud.yml ` file before working on it locally. To switch between projects already listed in your file, update [`context.active-project`](/reference/dbt_cloud.yml#update-or-switch-projects). To avoid manually recreating your warehouse configuration, use `dbt init`.
+If you get access to a new project, re-download the `dbt_cloud.yml` file before working on it locally. To switch between projects already listed in your file, update [`context.active-project`](/reference/dbt_cloud.yml#update-or-switch-projects). To avoid manually recreating your warehouse configuration, use `dbt init`.
 
 ```shell
 dbt init
