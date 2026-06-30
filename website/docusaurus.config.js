@@ -88,8 +88,7 @@ var siteSettings = {
     },
     announcementBar: {
       id: "dbt-state-july-2026-webinar",
-      content:
-      "dbt State: Build what's changed, skip what hasn't. Join us for a live virtual event on July 15th to learn how to save on warehouse compute costs!",
+      content: "dbt State: Build what's changed, skip what hasn't. Join us for a live virtual event on July 15th to learn how to save on warehouse compute costs!",
       isCloseable: true,
     },
     announcementBarActive: true,
