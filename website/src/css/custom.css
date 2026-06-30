@@ -2415,19 +2415,18 @@ button .DocSearch-Button-Keys {
 
 .home .baton-hero.baton-hero--compact {
   scale: 0.95;
-  transform: translateY(-2rem);
+  transform: translateY(-2.5rem);
 
-}
-
-.home section.home-quickstart {
-  padding-top: 1rem;
-  margin-top: 1rem;
 }
 
 .home section:first-of-type {
   padding-top: 2rem;
 }
 
+.home section.home-quickstart:first-of-type {
+  padding-top: 0;
+  margin-top: -1rem;
+}
 
 .home-card-grid {
   display: grid;
@@ -2444,11 +2443,18 @@ button .DocSearch-Button-Keys {
 
 .home-start-layout .heading-2 {
   font-size: var(--text-4xl);
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
 }
 
 .home-start-layout p {
   max-width: 48rem;
   font-size: var(--text-base);
+}
+
+.home-start-layout > div > div:first-child,
+.home-start-aside > div:first-child {
+  margin-bottom: 1rem;
 }
 
 .home-start-layout .home-card-grid {
@@ -3029,8 +3035,8 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 }
 
 .baton-hero.baton-hero--compact {
-  padding: 8rem .55rem 12rem;
-  margin-bottom: -5rem;
+  padding: 8rem .55rem 10rem;
+  margin-bottom: -5.5rem;
 }
 
 @media (max-width: 996px) {

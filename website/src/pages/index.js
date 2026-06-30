@@ -132,7 +132,7 @@ function Home() {
                   <div>
                     <span className="eyebrow">Get started</span>
                     <h2 className="heading-2">Find the right path</h2>
-                    <p>New to dbt, developing locally, or exploring platform workflows? Start with the guide that matches how you work.</p>
+                    <p>Compare platform, local, and open source paths.</p>
                   </div>
                   <div className="home-card-grid home-card-grid--path">
                     <Card
