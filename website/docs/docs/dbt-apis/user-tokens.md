@@ -2,6 +2,7 @@
 title: "User tokens"
 sidebar_label: "Personal access tokens"
 id: "user-tokens"
+pagination_prev: "docs/dbt-apis/rate-limits"
 pagination_next: "docs/dbt-apis/service-tokens"
 ---
 
