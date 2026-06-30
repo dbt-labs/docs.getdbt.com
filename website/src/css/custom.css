@@ -2435,20 +2435,6 @@ button .DocSearch-Button-Keys {
   gap: 24px;
 }
 
-/* Align the Develop / Run / Understand group headings with the card
-   content below them (cards have 2.5rem inner padding). */
-.home .card-group-heading {
-  padding-left: 2.5rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 996px) {
-  .home .card-group-heading {
-    padding-left: 0;
-  }
-}
-
 @media(max-width: 996px) {
   .home-card-grid {
     grid-template-columns: 1fr;
