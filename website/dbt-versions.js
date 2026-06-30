@@ -94,7 +94,6 @@ exports.versionedPages = [
   {
     page: "docs/local/connect-data-platform/salesforce-data-cloud-setup",
     firstVersion: "2.0",
-    product: "Fusion",
   },
   {
     page: "docs/build/sample-flag",
