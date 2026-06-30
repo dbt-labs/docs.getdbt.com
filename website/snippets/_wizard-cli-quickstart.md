@@ -173,13 +173,14 @@ After you apply a change, run dbt from the same project directory:
 dbt build --select stg_wizards+
 ```
 
-If the command succeeds, review the changed files:
+If the command succeeds, review what changed:
 
 ```shell
+git status
 git diff
 ```
 
-You should see a YAML change that adds tests and descriptions for `stg_wizards`. The `dbt build` command confirms that the model, tests, and YAML parse cleanly.
+You should see tests and descriptions added for `stg_wizards`. <Constant name="wizard" /> may add them to a new schema file (for example, `_stg_wizards.yml`) &mdash; new files show up under `git status`, while `git diff` shows edits to files dbt was already tracking. The `dbt build` command confirms that the model, tests, and YAML parse cleanly.
 
 If the command fails, return to <Constant name="wizard" /> and paste the error message:
 
@@ -208,6 +209,67 @@ git commit -m "Add tests and docs for staging model"
 ## What just happened
 
 You installed <Constant name="wizard" /> CLI, created a local DuckDB project with the <Constant name="fusion_engine" />, loaded sample data with seeds, built staging models, and started <Constant name="wizard" /> in the project. <Constant name="wizard" /> used your dbt project files and build context to answer questions, propose tests and docs, and help you validate the change.
+
+## Optional: feel the full power of dbt
+
+You now have a working dbt and <Constant name="wizard" /> setup. These optional add-ons layer on more dbt features so you can see how they fit together. Each one is self-contained &mdash; do them in any order, or skip them.
+
+<Expandable alt_header="See dbt state and deferral in action">
+
+dbt can build only what changed by comparing your project to a previous run. It's the same state mechanism <Constant name="wizard" /> uses for [deferral](/docs/dbt-ai/wizard-how-it-works#deferral-and-state).
+
+1. Build the project once and save the result as a baseline:
+
+    ```shell
+    dbt build
+    cp -r target prod-state
+    ```
+
+2. Change one model &mdash; or ask <Constant name="wizard" /> to &mdash; then build only what changed and anything downstream of it:
+
+    ```shell
+    dbt build --select state:modified+ --state prod-state
+    ```
+
+    dbt rebuilds just the modified model instead of all eight nodes. On a real project with hundreds of models, that's the difference between a multi-minute run and a few seconds.
+
+For more, refer to [About dbt state](/docs/deploy/dbt-state-about).
+
+</Expandable>
+
+<Expandable alt_header="Edit the project in the dbt VS Code extension">
+
+The [dbt VS Code extension](/docs/about-dbt-extension) adds autocomplete, lineage, and inline previews while you edit, and it shares the same `dbt login` as <Constant name="wizard" />.
+
+1. Install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt), or from your terminal:
+
+    ```shell
+    code --install-extension dbtLabsInc.dbt
+    ```
+
+2. Open the project:
+
+    ```shell
+    code .
+    ```
+
+Now you can edit `stg_wizards.sql` with dbt-aware help in the editor and keep using <Constant name="wizard" /> in the terminal for larger changes.
+
+</Expandable>
+
+<Expandable alt_header="Catch issues fast with Fusion lint">
+
+Your project already runs on the [<Constant name="fusion_engine" />](/docs/fusion). Because Fusion understands your SQL, it can flag issues without touching your warehouse.
+
+Run the linter:
+
+```shell
+dbt lint
+```
+
+Fusion checks every model and points to the exact line of each finding &mdash; for example, the unnecessary quotes around `"date"` in `stg_orders.sql`. Fix what it reports and run `dbt lint` again to confirm a clean result. This is the same analysis <Constant name="wizard" /> relies on to understand your project.
+
+</Expandable>
 
 ## Troubleshooting
 
