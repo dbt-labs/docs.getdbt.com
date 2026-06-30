@@ -33,14 +33,14 @@ export default function DocItemContent({ children }) {
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, "markdown")}>
-      {frontMatter.applicability && (
-        <Applicability {...frontMatter.applicability} />
-      )}
-
       {syntheticTitle && (
         <header>
           <Heading as="h1">{syntheticTitle}</Heading>
         </header>
+      )}
+
+      {frontMatter.applicability && (
+        <Applicability {...frontMatter.applicability} />
       )}
 
       {frontMatter.intro_text && (
