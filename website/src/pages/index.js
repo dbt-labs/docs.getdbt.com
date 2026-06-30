@@ -82,80 +82,81 @@ function Home() {
           </header>
           <section className="section--compact home-quickstart">
             <div className="container">
-              <div>
-                <span className="eyebrow">Quickstarts</span>
-                <h2 className="heading-2">Pick your platform</h2>
-                <p>Choose your data platform and follow a quickstart to build your first project end to end.</p>
-              </div>
-              <div className="home-card-grid">
-                <Card
-                  title="Snowflake"
-                  body="Build your first dbt project on Snowflake."
-                  link="/guides/snowflake?step=1"
-                  icon="snowflake"
-                />
-                <Card
-                  title="Databricks"
-                  body="Build your first dbt project on Databricks."
-                  link="/guides/databricks?step=1"
-                  icon="databricks"
-                />
-                <Card
-                  title="BigQuery"
-                  body="Build your first dbt project on BigQuery."
-                  link="/guides/bigquery?step=1"
-                  icon="bigquery"
-                />
-                <Card
-                  title="Redshift"
-                  body="Build your first dbt project on Redshift."
-                  link="/guides/redshift?step=1"
-                  icon="redshift"
-                />
-                <Card
-                  title="DuckDB"
-                  body="Build your first dbt project locally with DuckDB."
-                  link="/guides/duckdb?step=1"
-                  icon="duckdb-seeklogo"
-                />
-                <Card
-                  title="See all platforms"
-                  body="Browse every quickstart and pick your warehouse or engine."
-                  link="/docs/get-started-dbt"
-                  icon="compass"
-                />
-              </div>
-            </div>
-          </section>
-
-          <section className="section--compact">
-            <div className="container">
-              <div>
-                <span className="eyebrow">Get started</span>
-                <h2 className="heading-2">Find the right path for you</h2>
-                <p>New to dbt, developing locally, or exploring platform workflows? Start with the guide that matches how you work.</p>
-              </div>
-              <div className="home-card-grid">
-                <Card
-                  title="Get started with dbt"
-                  body="Compare platform, local, and open source paths, then choose the best next step for your project."
-                  link="/docs/get-started-dbt"
-                  icon="compass"
-                  showBorderBeam
-                />
-                <Card
-                  title="Develop locally"
-                  body="Use dbt from VS Code or your terminal with the dbt Fusion engine or dbt Core, with or without a dbt platform account."
-                  link="/docs/get-started-dbt#develop-locally"
-                  icon="vsce"
-                />
-                <Card
-                  title="Build with AI"
-                  tag="Beta"
-                  body="Use dbt Wizard in the dbt platform or from your terminal after you have a project to work in."
-                  link="/docs/get-started-dbt#build-with-ai"
-                  icon="dbt-copilot"
-                />
+              <div className="home-start-layout">
+                <div>
+                  <div>
+                    <span className="eyebrow">Quickstarts</span>
+                    <h2 className="heading-2">Pick your platform</h2>
+                    <p>Choose your data platform and follow a quickstart to build your first project end to end.</p>
+                  </div>
+                  <div className="home-card-grid home-card-grid--quickstarts">
+                    <Card
+                      title="Snowflake"
+                      body="Build your first dbt project on Snowflake."
+                      link="/guides/snowflake?step=1"
+                      icon="snowflake"
+                    />
+                    <Card
+                      title="Databricks"
+                      body="Build your first dbt project on Databricks."
+                      link="/guides/databricks?step=1"
+                      icon="databricks"
+                    />
+                    <Card
+                      title="BigQuery"
+                      body="Build your first dbt project on BigQuery."
+                      link="/guides/bigquery?step=1"
+                      icon="bigquery"
+                    />
+                    <Card
+                      title="Redshift"
+                      body="Build your first dbt project on Redshift."
+                      link="/guides/redshift?step=1"
+                      icon="redshift"
+                    />
+                    <Card
+                      title="DuckDB"
+                      body="Build your first dbt project locally with DuckDB."
+                      link="/guides/duckdb?step=1"
+                      icon="duckdb-seeklogo"
+                    />
+                    <Card
+                      title="See all platforms"
+                      body="Browse every quickstart and pick your warehouse or engine."
+                      link="/docs/get-started-dbt"
+                      icon="compass"
+                    />
+                  </div>
+                </div>
+                <aside className="home-start-aside">
+                  <div>
+                    <span className="eyebrow">Get started</span>
+                    <h2 className="heading-2">Find the right path</h2>
+                    <p>New to dbt, developing locally, or exploring platform workflows? Start with the guide that matches how you work.</p>
+                  </div>
+                  <div className="home-card-grid home-card-grid--path">
+                    <Card
+                      title="Get started with dbt"
+                      body="Compare platform, local, and open source paths, then choose the best next step for your project."
+                      link="/docs/get-started-dbt"
+                      icon="compass"
+                      showBorderBeam
+                    />
+                    <Card
+                      title="Develop locally"
+                      body="Use dbt from VS Code or your terminal with the dbt Fusion engine or dbt Core."
+                      link="/docs/get-started-dbt#develop-locally"
+                      icon="vsce"
+                    />
+                    <Card
+                      title="Build with AI"
+                      tag="Beta"
+                      body="Use dbt Wizard after you have a project to work in."
+                      link="/docs/get-started-dbt#build-with-ai"
+                      icon="dbt-copilot"
+                    />
+                  </div>
+                </aside>
               </div>
             </div>
           </section>

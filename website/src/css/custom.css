@@ -2435,7 +2435,34 @@ button .DocSearch-Button-Keys {
   gap: 24px;
 }
 
+.home-start-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.home-card-grid--quickstarts {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.home-card-grid--path {
+  grid-template-columns: 1fr;
+}
+
+.home-start-aside {
+  padding-left: 8px;
+}
+
 @media(max-width: 996px) {
+  .home-start-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-start-aside {
+    padding-left: 0;
+  }
+
   .home-card-grid {
     grid-template-columns: 1fr;
   }
