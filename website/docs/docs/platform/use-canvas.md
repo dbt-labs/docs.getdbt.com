@@ -18,7 +18,7 @@ Access and use <Constant name="canvas" /> to create or edit dbt models through a
 
 ## Access Canvas
 
-Before accessing the editor, you should have a <Constant name="dbt" /> project already set up. This includes a <Constant name="git" /> repository, data platform connection, environments, and developer credentials. If you don't have this set up, please contact your <Constant name="dbt" /> Admin.
+Before accessing the editor, you should have a <Constant name="dbt" /> project already set up. This includes a <Constant name="git" /> repository, data platform connection, environments, and user credentials. If you don't have this set up, please contact your <Constant name="dbt" /> Admin.
 
 Access **<Constant name="canvas" />** at any time from the left-side menu.
 

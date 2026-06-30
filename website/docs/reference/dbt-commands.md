@@ -66,6 +66,6 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions) |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
-| [`wizard`](/docs/dbt-ai/wizard-cli-reference) | Starts an agentic dbt development session with <Constant name="wizard"/> from the command line | N/A | Local development <br />  [All supported versions](/docs/dbt-versions) |
+| [wizard](/docs/dbt-ai/wizard-cli-reference) | Starts an agentic dbt development session with <Constant name="wizard"/> from the command line | N/A | Local development <br />  [All supported versions](/docs/dbt-versions) |
 
 Note, use the [`--version`](/reference/commands/version) flag to display the installed <Constant name="core" /> or <Constant name="platform_cli" /> version. (Not applicable for the <Constant name="studio_ide" />). Available on all [supported versions](/docs/dbt-versions).
