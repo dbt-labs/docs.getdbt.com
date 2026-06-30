@@ -2,8 +2,8 @@
 title: "Get started with dbt"
 id: get-started-dbt
 description: "Choose the best path to start developing with dbt, whether you use the dbt platform, local development tools, or open source workflows."
-hide_table_of_contents: false
-pagination_next: null
+hide_table_of_contents: true
+pagination_next: "docs/about-setup"
 pagination_prev: null
 ---
 
