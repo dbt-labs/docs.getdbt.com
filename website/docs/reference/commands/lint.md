@@ -44,6 +44,24 @@ dbt lint [FILE] [flags]
 
 `dbt lint` auto-discovers the nearest `.sqlfluff` file in your project directory tree. CLI flags `--rules` and `--exclude-rules` take precedence over the values in the config file. To create a `.sqlfluff` file, see [SQLFluff configuration files](https://docs.sqlfluff.com/en/stable/configuration/setting_configuration.html).
 
+## Ignoring files and directories
+
+Use a `.sqlfluffignore` file at your project root to exclude paths you aren't ready to lint yet, such as `dbt_packages/` or `models/legacy/`.
+
+`.sqlfluffignore` uses `.gitignore`-style syntax. For the full pattern reference, see the [SQLFluff `.sqlfluffignore` documentation](https://docs.sqlfluff.com/en/stable/configuration.html#id2).
+
+```
+# .sqlfluffignore
+dbt_packages/
+models/legacy/
+snapshots/
+```
+
+When you're ready to lint those paths, remove their entries from `.sqlfluffignore`.
+
+### Reducing noise in the Studio IDE Problems tab
+The Studio IDE lints SQL automatically and surfaces violations in the **Problems** tab. If you see a large number of style warnings and aren't ready to address them, add your model directories to `.sqlfluffignore` to remove those violations from the **Problems** tab immediately. Remove the ignore entries incrementally as you clean up violations.
+
 ## Suppressing violations
 
 `dbt lint` supports the full SQLFluff suppression syntax:
