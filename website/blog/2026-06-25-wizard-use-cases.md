@@ -17,7 +17,7 @@ We recently released [dbt Wizard](/docs/platform/wizard-overview), a CLI for doi
 Data projects are never done and I had a few tasks I've been putting off:
 
 * Migrating from MotherDuck to Iceberg + BigQuery
-* Upgrading dbt Core (version) to dbt Fusion  
+* Upgrading dbt Core to dbt Fusion  
 * Migrating from dbt Core to dbt platform  
 * Building out a semantic layer
 
