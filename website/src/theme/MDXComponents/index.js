@@ -47,6 +47,8 @@ import WizardPopcorn from '@site/src/components/wizardPopcorn/';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
+import Applicability from '@site/src/components/applicability';
+import AvailabilityMatrix from '@site/src/components/availabilityMatrix';
 
 const MDXComponents = {
   Head,
@@ -101,5 +103,7 @@ const MDXComponents = {
   VersionCallout: VersionCallout,
   IntroText: IntroText,
   Constant: Constant,
+  Applicability: Applicability,
+  AvailabilityMatrix: AvailabilityMatrix,
 };
 export default MDXComponents;

@@ -6,6 +6,9 @@ hide_table_of_contents: true
 tags: ["scheduler"]
 pagination_next: "docs/deploy/job-scheduler"
 pagination_prev: null
+applicability:
+  surface: "platform"
+  plan: "starter+"
 ---
 
 <IntroText>

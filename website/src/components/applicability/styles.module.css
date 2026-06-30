@@ -1,0 +1,70 @@
+.applicability {
+  align-items: center;
+  background: var(--bg-neutral-secondary-subtle);
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 999px;
+  color: var(--text-neutral-secondary);
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size: 13px;
+  font-weight: 400;
+  gap: 6px;
+  line-height: 1.4;
+  margin: 0 0 16px;
+  padding: 6px 12px;
+}
+
+.surface strong {
+  color: var(--text-neutral-primary);
+  font-weight: 600;
+}
+
+.separator {
+  color: var(--text-neutral-quaternary);
+}
+
+.planPill,
+.enginePill {
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 4px 8px;
+}
+
+.planPill {
+  background: #FAECE7;
+  color: #993C1D;
+}
+
+.enginePill {
+  background: var(--bg-neutral-secondary-default);
+  border: 0.5px solid var(--border-neutral-secondary-hover);
+  color: var(--text-neutral-secondary);
+}
+
+:global(html[data-theme="dark"]) .applicability {
+  background: var(--color-terminal-black-900);
+  border-color: var(--border-inverse-tertiary);
+  color: var(--text-inverse-secondary);
+}
+
+:global(html[data-theme="dark"]) .surface strong {
+  color: var(--text-inverse-primary);
+}
+
+:global(html[data-theme="dark"]) .separator {
+  color: var(--text-inverse-tertiary);
+}
+
+:global(html[data-theme="dark"]) .planPill {
+  background: #4a261b;
+  color: #ffb98c;
+}
+
+:global(html[data-theme="dark"]) .enginePill {
+  background: var(--color-terminal-black-800);
+  border-color: var(--border-inverse-secondary);
+  color: var(--text-inverse-primary);
+}

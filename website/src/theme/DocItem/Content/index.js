@@ -8,6 +8,7 @@ import IntroText from "@site/src/components/IntroText";
 import QuickstartTOC from "@site/src/components/quickstartTOC";
 import {QuickstartGuideTitle} from "../../../components/quickstartGuideCard";
 import { Feedback } from "../../../components/feedback";
+import Applicability from "@site/src/components/applicability";
 
 function useSyntheticTitle() {
   const { metadata, frontMatter, contentTitle } = useDoc();
@@ -32,6 +33,10 @@ export default function DocItemContent({ children }) {
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, "markdown")}>
+      {frontMatter.applicability && (
+        <Applicability {...frontMatter.applicability} />
+      )}
+
       {syntheticTitle && (
         <header>
           <Heading as="h1">{syntheticTitle}</Heading>
