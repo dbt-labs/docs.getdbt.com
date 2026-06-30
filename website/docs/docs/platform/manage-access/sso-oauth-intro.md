@@ -6,6 +6,8 @@ id: "sso-oauth-intro"
 
 # Single sign-on and OAuth <Lifecycle status="managed, managed_plus" />
 
+<Applicability surface="platform" plan="enterprise+" />
+
 This section covers how to authenticate users and connect data platforms in <Constant name="dbt_platform" /> using:
 
 <!-- no toc -->

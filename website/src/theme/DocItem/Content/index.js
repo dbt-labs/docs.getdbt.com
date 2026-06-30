@@ -39,7 +39,7 @@ export default function DocItemContent({ children }) {
         </header>
       )}
 
-      {frontMatter.applicability && (
+      {syntheticTitle && frontMatter.applicability && (
         <Applicability {...frontMatter.applicability} />
       )}
 

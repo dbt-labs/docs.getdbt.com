@@ -10,6 +10,8 @@ pagination_next: "docs/explore/navigate-dbt-insights"
 
 # About dbt Insights <Lifecycle status="beta,managed,managed_plus" />
 
+<Applicability surface="platform" plan="enterprise+" />
+
 <IntroText>
 Learn how to query data with <Constant name="insights" /> and view documentation in <Constant name="catalog" />.
 </IntroText>
