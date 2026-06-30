@@ -10,7 +10,6 @@ image: /img/docs/wizard-cli-intro.png
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
-import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 
 # <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
@@ -18,31 +17,9 @@ import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 The <Constant name="wizard" /> CLI helps teams ship higher-quality dbt changes faster and with less risk. Built for governed data development in dbt, it understands your project, routes to the right dbt tools, validates changes, and shows how logic evolves from your local machine.
 </IntroText>
 
-<WizardCliDbtCliSupport /> 
-Install the <Constant name="wizard"/> CLI by running the following commands:
+<WizardCliDbtCliSupport />
 
-<Tabs groupId="wizard-install-os">
-<TabItem value="macos-linux" label="macOS/Linux" default>
-
-Run the following in Terminal:
-
-```bash
-curl -fsSL https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.sh | sh
-```
-
-</TabItem>
-<TabItem value="windows" label="Windows">
-
-Run the following in your Windows command line tool:
-
-```powershell
-irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
-```
-
-</TabItem>
-</Tabs>
-
-For a first session walkthrough, visit the [Quickstart](/docs/dbt-ai/wizard-quickstart) page.
+<Constant name="wizard" /> CLI runs locally on macOS, Linux, and Windows. To install it and send your first prompt, follow the [Quickstart](/docs/dbt-ai/wizard-quickstart). For all install, update, and uninstall options, refer to [Install <Constant name="wizard" /> CLI](/docs/dbt-ai/wizard-cli).
 
 Use <Constant name="wizard" /> CLI to:
 

@@ -1,4 +1,5 @@
 import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
+import WizardCliConnectAi from '/snippets/_wizard-cli-connect-ai.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
@@ -50,37 +51,7 @@ Replace `PATH_TO_YOUR_DBT_PROJECT` with the folder that contains your `dbt_proje
 
 Choose one path:
 
-<Tabs>
-<TabItem value="dbt-login" label="Sign in with dbt (recommended)" default>
-
-Run `dbt login` to sign in to your <Constant name="dbt_platform" /> account or create one:
-
-```shell
-dbt login
-```
-
-This opens a browser. After you sign in, <Constant name="wizard" /> can use the managed `dbt` provider. You don't need to create, bill, or rotate a separate API key.
-
-</TabItem>
-<TabItem value="byok" label="Bring your own key">
-
-Configure a provider in the terminal:
-
-```shell
-wizard providers configure PROVIDER_NAME
-wizard providers enable PROVIDER_NAME
-```
-
-Replace `PROVIDER_NAME` with a supported provider, such as `openai`, `anthropic`, `bedrock`, `azure`, `gemini`, or `snowflake`. You can also configure providers from the interactive session with `/providers`.
-
-:::caution Keep your API key safe
-Treat your provider key like a password. Never commit keys to version control, paste them into shared logs, or include them in screenshots.
-:::
-
-For provider details, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
-
-</TabItem>
-</Tabs>
+<WizardCliConnectAi />
 
 ## 4. Start and configure <Constant name="wizard" />
 
