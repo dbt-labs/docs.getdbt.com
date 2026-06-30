@@ -3,8 +3,8 @@ import styles from './styles.module.css';
 
 const SURFACE_LABELS = {
   platform: 'dbt platform',
-  oss: 'OSS / CLI',
-  both: 'dbt platform and OSS / CLI',
+  oss: 'local development',
+  both: 'dbt platform and local development',
 };
 
 const PLAN_LABELS = {
