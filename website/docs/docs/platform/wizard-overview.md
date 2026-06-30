@@ -7,9 +7,6 @@ pagination_next: null
 keywords: ["dbt Wizard", "dbt Agents", "AI", "analytics", "dbt"]
 ---
 
-import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
-import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
-import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
@@ -21,9 +18,7 @@ Your personal dbt agent &mdash; wherever you work.
 
 <Constant name="wizard" /> is an AI agent purpose-built for governed data development in dbt. Unlike general-purpose coding agents, it understands your dbt project through a [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine) &mdash; a structured index of lineage, model health, tests, contracts, run results, and semantic definitions.
 
-Think of it like a map of your city: <Constant name="wizard" /> knows how everything connects before it starts, rather than walking every street to figure out the layout.
-
-<Constant name="wizard"/> comes with the following capabilities:
+Use <Constant name="wizard" /> to:
 
 - **Project understanding:** A native dbt metadata engine for lineage, contracts, tests, and runtime context
 - **Impact awareness:** Checks upstream and downstream dependencies before you change code
@@ -33,9 +28,7 @@ Think of it like a map of your city: <Constant name="wizard" /> knows how everyt
 
 ## Use dbt Wizard
 
-<Constant name="wizard" /> is for anyone doing dbt development — from analytics engineers working locally in the terminal to teams building in the <Constant name="dbt_platform" />. You can use it in the platform with managed or bring-your-own-key (BYOK) credentials, or in the terminal with your own key, with or without a <Constant name="dbt_platform" /> account.
-
-<Constant name="wizard" /> is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) &mdash; no specific engine is required.
+<Constant name="wizard" /> is for anyone doing dbt development, from analytics engineers working locally in the terminal to teams building in the <Constant name="dbt_platform" />. It is data warehouse agnostic and works with both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt).
 
 The following table shows where <Constant name="wizard" /> is available, the AI keys each surface uses, and how usage is billed:
 
@@ -49,70 +42,35 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 
 </SimpleTable>
 
-For included action limits by plan and how managed usage is metered, refer to the [Billing](/docs/platform/billing) page. To bring your own key, refer to [supported providers](#supported-ai-providers) on this page.
+For included action limits by plan and how managed usage is metered, refer to [Billing](/docs/platform/billing). For supported bring-your-own-key (BYOK) providers, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok#supported-ai-providers).
 
-<WizardSupportedProviders />
+## Get started
 
-## Get started with dbt Wizard
+Choose the path that matches where you want to work:
 
-<Tabs>
-<TabItem value="terminal" label={<span className="tabs-lifecycle-label">Terminal <Lifecycle status="beta" size="90%" /></span>} default>
+<div className="grid--2-col">
 
-_Available in public beta._
+<Card
+    title="Use dbt Wizard in the dbt platform"
+    body="Enable dbt AI, then use dbt Wizard from the platform home app or Studio IDE."
+    link="/docs/platform/enable-dbt-ai"
+    icon="wizard"/>
 
-A terminal-based agent for governed data development in dbt, whether your team uses the <Constant name="dbt_platform" /> or self-hosts. Bring your own key to experience the full agentic analytics engineering loop.
+<Card
+    title="Use dbt Wizard CLI"
+    body="Install dbt Wizard locally, connect an AI provider, and send your first prompt from the terminal."
+    link="/docs/dbt-ai/wizard-quickstart"
+    icon="wizard"/>
 
-<NewToTerminal />
-
-<WizardCliInstall />
-
-<div style={{maxWidth: '100%', margin: '20px 0'}}>
-<video width="100%" controls autoPlay muted loop playsInline>
-  <source src="/img/wizard.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-<span style={{display: 'block', textAlign: 'center', fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)', marginTop: '8px'}}>dbt Wizard CLI in your terminal</span>
 </div>
 
-</TabItem>
-<TabItem value="platform" label={<span className="tabs-lifecycle-label">dbt platform <Lifecycle status="preview" size="90%" /></span>}>
+## Learn more
 
-_Available in public preview._
-
-Leverage agentic capabilities in the home app or [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) for governed data development in dbt.
-
-To get started:
-
-1. Make sure an admin has [enabled](/docs/platform/enable-dbt-ai) <Constant name="wizard" />.
-2. Navigate to the <Constant name="wizard" /> icon in the left sidebar of the <Constant name="dbt_platform" />.
-3. Open a project in [<Constant name="studio_ide" />](/docs/dbt-ai/wizard-ide) or the home app.
-4. Try a prompt, such as:
-    - `summarize what this project does`
-    - `list all models with no tests`
-    - `add not_null and unique tests to the primary key of stg_customers`
-
-Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompts.
-
-<Lightbox src="/img/docs/dbt-platform/wizard-home-agent.png" width="85%" title="dbt Wizard in the dbt platform" />
-
-(Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>.)
-
-</TabItem>
-</Tabs>
-
-## Next steps
-
-Now that you know where to start, continue with **[Get started with the local CLI](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Get started in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
-
-
-## Related docs
-
-- [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
-- [Use skills in the dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
-- [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
-- [Use subagents in the dbt platform](/docs/dbt-ai/wizard-platform-subagents) — delegate work to specialized agents
-- [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
-- [Data & Privacy in the dbt platform](/docs/dbt-ai/wizard-platform-privacy-data) — understand how dbt Wizard in the dbt platform handles privacy and data
+- [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
+- [How dbt Wizard works](/docs/dbt-ai/wizard-how-it-works)
+- [About dbt Wizard CLI](/docs/dbt-ai/about-dbt-wizard-cli)
+- [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide)
+- [Data and privacy in the dbt platform](/docs/dbt-ai/wizard-platform-privacy-data)
 
 <WizardFeedbackCallout />
 

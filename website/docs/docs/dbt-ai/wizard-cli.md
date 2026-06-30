@@ -7,7 +7,6 @@ tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
 ---
 
-import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 import WizardCliOnboarding from '/snippets/_wizard-cli-onboarding.md';
 import NewToTerminal from '/snippets/_new-to-terminal.md';
@@ -31,9 +30,13 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 
 - macOS, Windows, or Linux
 - A dbt project with a built `target/` directory (`dbt parse`, `dbt compile`, or `dbt build`)
-- Credentials for a supported CLI provider. Refer to [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) in the next section.
+- Credentials for a supported AI provider. Refer to [Supported AI providers](#supported-ai-providers).
 
-<WizardSupportedProviders />
+## Supported AI providers
+
+<Constant name="wizard" /> CLI supports OpenAI subscription auth and bring-your-own-key (BYOK) credentials from OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, Snowflake Cortex, and Databricks Unity AI Gateway.
+
+For provider-specific setup, authentication fields, and model options, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok#supported-ai-providers).
 
 <NewToTerminal />
 

@@ -7,7 +7,6 @@ tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
 ---
 
-import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
@@ -32,7 +31,7 @@ Use <Constant name="wizard" /> CLI to:
 
 For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases).
 
-<WizardSupportedProviders />
+<Constant name="wizard" /> CLI supports OpenAI subscription auth and bring-your-own-key (BYOK) providers, including OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, Snowflake Cortex, and Databricks Unity AI Gateway. For setup details, refer to [Configure BYOK](/docs/dbt-ai/wizard-byok).
 
 Looking for the in-platform experience? Visit [About <Constant name="wizard" /> in the dbt platform](/docs/platform/wizard-platform).
 
@@ -77,42 +76,15 @@ Looking for the in-platform experience? Visit [About <Constant name="wizard" /> 
     link="/docs/dbt-ai/wizard-mcp"
     icon="wizard"/>
 
-<Card
-    title="Headless mode"
-    body="Run dbt Wizard in scripts and CI with exec, review, and other headless workflows."
-    link="/docs/dbt-ai/wizard-headless"
-    icon="wizard"/>
-
-<Card
-    title="Migrate to dbt Wizard"
-    body="Move Claude Code project context, skills, and settings into dbt Wizard."
-    link="/docs/dbt-ai/wizard-migrate"
-    icon="wizard"/>
-
-<Card
-    title="Command reference"
-    body="Curated reference for common wizard subcommands and global flags."
-    link="/docs/dbt-ai/wizard-cli-reference"
-    icon="wizard"/>
-
-<Card
-    title="Slash command reference"
-    body="Full reference for interactive TUI slash commands."
-    link="/docs/dbt-ai/wizard-slash-commands"
-    icon="wizard"/>
-
-<Card
-    title="Config reference"
-    body="Configure agent runtime defaults and per-project dbt Wizard settings."
-    link="/docs/dbt-ai/wizard-config"
-    icon="wizard"/>
-
-<Card
-    title="Data & privacy"
-    body="Understand what dbt Wizard CLI collects and how to opt out."
-    link="/docs/dbt-ai/wizard-telemetry"
-    icon="wizard"/>
-
 </div>
+
+## Additional references
+
+- [Headless mode](/docs/dbt-ai/wizard-headless): Run dbt Wizard in scripts and CI with `exec`, `review`, and other headless workflows.
+- [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate): Move Claude Code project context, skills, and settings into dbt Wizard.
+- [Command reference](/docs/dbt-ai/wizard-cli-reference): Review common `wizard` subcommands and global flags.
+- [Slash command reference](/docs/dbt-ai/wizard-slash-commands): Review interactive text-based user interface (TUI) slash commands.
+- [Config reference](/docs/dbt-ai/wizard-config): Configure agent runtime defaults and per-project dbt Wizard settings.
+- [Data and privacy](/docs/dbt-ai/wizard-telemetry): Understand what dbt Wizard CLI collects and how to opt out.
 
 <WizardFeedbackCallout />
