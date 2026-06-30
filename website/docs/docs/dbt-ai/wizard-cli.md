@@ -20,13 +20,9 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 Install the <Constant name="wizard" /> CLI from your terminal for agentic and governed data development in dbt.
 </IntroText>
 
-This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
-(Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
+This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine. (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
 
-To learn more about <Constant name="wizard" /> and see it in action, check out the [demo video](https://www.youtube.com/watch?v=-lIzh1xQWMA)!
-
-## Install dbt Wizard CLI
-
+<WizardCliDbtCliSupport />
 <WizardCliInstall />
 
 Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and onboarding](#first-run-setup-and-onboarding) sections for more details.
@@ -36,10 +32,6 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 - macOS, Windows, or Linux
 - A dbt project with a built `target/` directory (`dbt parse`, `dbt compile`, or `dbt build`)
 - Credentials for a supported CLI provider. Refer to [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) in the next section.
-
-<WizardCliDbtCliSupport />
-
-<WizardFeedbackCallout />
 
 <WizardSupportedProviders />
 
@@ -54,10 +46,11 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 Run the following command to update <Constant name="wizard" /> to the latest version:
 
 ```bash
-wizard system update
+wizard update
 ```
 
-
+<!--
+incorrect command and commenting out until correct command provided
 ## Uninstall
 
 Run the following command to uninstall <Constant name="wizard" />:
@@ -65,7 +58,7 @@ Run the following command to uninstall <Constant name="wizard" />:
 ```bash
 wizard system uninstall
 ```
-
+-->
 
 ## Telemetry
 
@@ -81,3 +74,5 @@ For details about what is collected, what is not collected, and how to opt out o
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios
 - [Migrate from another AI agent](/docs/dbt-ai/wizard-migrate): Migrate from another AI agent to <Constant name="wizard" />
 - [CLI data use and telemetry](/docs/dbt-ai/wizard-telemetry): What <Constant name="wizard" /> CLI collects and how to opt out
+
+<WizardFeedbackCallout />

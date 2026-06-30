@@ -78,7 +78,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 <Expandable alt_header="Are queries run on behalf of the developer?"> 
 
-  Yes. All comparison queries in development run using your local development credentials, directly from the dbt VS Code extension. If you authenticated with a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, that's the credential the extension uses; otherwise it uses the credentials from your active dbt profile. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
+  Yes. All comparison queries in development run using your local development credentials or platform-based user credentials, directly from the dbt VS Code extension. If you authenticated with a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, these are the credentials configured in your **Account settings**; otherwise it uses the credentials from your active dbt profile. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
 </Expandable>
 <Expandable alt_header="Is this using my warehouse credits?"> 
   Yes. Because the comparison runs in your development environment using your dev credentials, it will use your warehouse’s compute.

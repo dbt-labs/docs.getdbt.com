@@ -142,13 +142,13 @@ dbt AI usage is measured based on the number of completed AI requests, known as 
 
 A defined number of dbt Copilot invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to dbt AI will be temporarily disabled until the start of the next billing cycle.
 
-As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 1. After July 1, this bridge ends and Wizard usage will be metered separately. Pricing and usage are subject to change.
+As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. Pricing and usage are subject to change.
 
 ### Usage and metering information 
 
-<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 1)">
+<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 13)">
 
-As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 1. After July 1, this bridge ends and Wizard usage will be metered separately. 
+As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. 
 
 Users that bring their own key (BYOK) aren't affected by this bridge.
 
@@ -279,7 +279,7 @@ There are 2 options to disable models from being built and charged:
 
 ### Best practices for optimizing cost with dbt State
 
-#### Use `lag_tolerence` to reduce unnecessary model execution
+#### Use `lag_tolerance` to reduce unnecessary model execution
 
 You can save even more time and compute by defining how old your data can be before a model should be triggered. We’ve introduced lag_tolerance so that you can do things like differentiate local development needs vs prod. 
 

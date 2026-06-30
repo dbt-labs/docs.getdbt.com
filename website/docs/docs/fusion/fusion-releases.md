@@ -18,7 +18,7 @@ This page shows release information for local builds of <Constant name="fusion" 
 
 Track current versions and full release history for the <Constant name="fusion_engine" />. This data updates live from dbt release channels.
 
-Each of the versions on this page links to the matching section in the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md) on GitHub.
+Each of the versions on this page links to the matching section in the [dbt Fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md) on GitHub.
 
 ## Release channels
 

@@ -27,7 +27,7 @@ Learn how to access <Constant name="insights" />, run queries, and view results.
 Before accessing <Constant name="insights" />, ensure that the [prerequisites](/docs/explore/dbt-insights#prerequisites) are met.
 
 1. To access <Constant name="insights" />, select the **Insights** option in the navigation sidebar.
-2. If your [developer credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) aren’t set up, <Constant name="insights" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your developer credentials.
+2. If your [user credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) aren’t set up, <Constant name="insights" /> will prompt you to set them up. The ability to query data is subject to warehouse provider permissions according to your user credentials.
 3. Once your credentials are set up, you can write, run, and edit SQL queries in the <Constant name="insights" /> editor for existing models in your project. 
 
 ## Run queries
@@ -178,7 +178,7 @@ Insights offers a robust save feature for quickly finding the queries you use mo
 
 
 ## Considerations 
-- <Constant name="insights" /> uses your development credentials to query. You have the ability to query against any object in your data warehouse that is accessible using your development credentials. 
+- <Constant name="insights" /> uses your user credentials to query. You have the ability to query against any object in your data warehouse that is accessible using your user credentials configured in **Account settings**. 
 - Every Jinja function uses [`defer --favor-state`](/reference/node-selection/defer) to resolve Jinja.
 
 <!-- this can move to another page -->

@@ -1,0 +1,2865 @@
+{
+  "_meta": {
+    "platform": "bigquery",
+    "platform_name": "BigQuery",
+    "count": 408
+  },
+  "functions": [
+    {
+      "name": "ABS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#abs",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ACOS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#acos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ACOSH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#acosh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AEAD.DECRYPT_BYTES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#aeaddecrypt_bytes",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AEAD.DECRYPT_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#aeaddecrypt_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AEAD.ENCRYPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#aeadencrypt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#agg",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ANY_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#any_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPENDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#appends",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "APPROX_COUNT_DISTINCT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions#approx_count_distinct",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_QUANTILES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions#approx_quantiles",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_TOP_COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions#approx_top_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "APPROX_TOP_SUM",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions#approx_top_sum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ARRAY_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#array_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_CONCAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array_concat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_CONCAT_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#array_concat_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_FIRST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array_first",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_LAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array_last",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_REVERSE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array_reverse",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_SLICE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array_slice",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ARRAY_TO_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#array_to_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASCII",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#ascii",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#asin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ASINH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#asinh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ATAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#atan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ATAN2",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#atan2",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ATANH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#atanh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AVG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#avg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "AVG (Differential Privacy)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_avg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BAG_OF_WORDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/text-analysis-functions#bag_of_words",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "BIT_AND",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#bit_and",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bit_functions#bit_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_OR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#bit_or",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BIT_XOR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#bit_xor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BOOL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#bool_for_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "BYTE_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#byte_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/conversion_functions#cast",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CBRT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#cbrt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CEIL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#ceil",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CEILING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#ceiling",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CHANGES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#changes",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "CHAR_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#char_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHARACTER_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#character_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CHR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#chr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CODE_POINTS_TO_BYTES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#code_points_to_bytes",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CODE_POINTS_TO_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#code_points_to_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COLLATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#collate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONCAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#concat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CONTAINS_SUBSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#contains_substr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CORR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#corr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#cos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COSH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#cosh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COSINE_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#cosine_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "COT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#cot",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#coth",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNT (Differential Privacy)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_count",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COUNTIF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#countif",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COVAR_POP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#covar_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "COVAR_SAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#covar_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CSC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#csc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CSCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#csch",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CUME_DIST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions#cume_dist",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#current_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_DATETIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#current_datetime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#current_time",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "CURRENT_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#current_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_ADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_BUCKET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#date_bucket",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DATE_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_FROM_UNIX_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date_from_unix_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_SUB",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date_sub",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATE_TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#date_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATETIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#datetime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATETIME_ADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#datetime_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATETIME_BUCKET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#datetime_bucket",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DATETIME_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#datetime_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATETIME_SUB",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#datetime_sub",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DATETIME_TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#datetime_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DENSE_RANK",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions#dense_rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DESTINATION_NODE_ID",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#destination_node_id",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DETERMINISTIC_DECRYPT_BYTES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#deterministic_decrypt_bytes",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DETERMINISTIC_DECRYPT_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#deterministic_decrypt_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DETERMINISTIC_ENCRYPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#deterministic_encrypt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DIV",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#div",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "DLP_DETERMINISTIC_DECRYPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/dlp_functions#dlp_deterministic_decrypt",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DLP_DETERMINISTIC_ENCRYPT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/dlp_functions#dlp_deterministic_encrypt",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "DLP_KEY_CHAIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/dlp_functions#dlp_key_chain",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EDGES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#edges",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EDIT_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#edit_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ELEMENT_ID",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#element_id",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ENDS_WITH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#ends_with",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ERROR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/debugging_functions#error",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EUCLIDEAN_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#euclidean_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#exp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXTERNAL_OBJECT_TRANSFORM",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/table-functions-built-in#external_object_transform",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTERNAL_QUERY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/federated_query_functions#external_query",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "EXTRACT (Date)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTRACT (Datetime)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTRACT (Interval)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/interval_functions#extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTRACT (Time)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "EXTRACT (Timestamp)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "FARM_FINGERPRINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hash_functions#farm_fingerprint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FIRST_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#first_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FLOAT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#double_for_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FLOOR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#floor",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#format_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#format_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_DATETIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#format_datetime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#format_time",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FORMAT_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#format_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BASE32",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#from_base32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_BASE64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#from_base64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "FROM_HEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#from_hex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GAP_FILL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#gap_fill",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GENERATE_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#generate_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GENERATE_DATE_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#generate_date_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GENERATE_RANGE_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#generate_range_array",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "GENERATE_TIMESTAMP_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/array_functions#generate_timestamp_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GENERATE_UUID",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/utility-functions#generate_uuid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GREATEST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#greatest",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "GROUPING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#grouping",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_COUNT.EXTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hll_functions#hll_countextract",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_COUNT.INIT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hll_functions#hll_countinit",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_COUNT.MERGE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hll_functions#hll_countmerge",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "HLL_COUNT.MERGE_PARTIAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hll_functions#hll_countmerge_partial",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IEEE_DIVIDE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#ieee_divide",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INITCAP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#initcap",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#instr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#int64_for_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_INF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#is_inf",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "IS_NAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#is_nan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_ARRAY_APPEND",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_array_append",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_ARRAY_INSERT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_array_insert",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_EXTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_extract",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "JSON_EXTRACT_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_extract_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_EXTRACT_SCALAR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_extract_scalar",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_EXTRACT_STRING_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_extract_string_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_FLATTEN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_flatten",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_KEYS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_keys",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_OBJECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_object",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_QUERY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_query",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_QUERY_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_query_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_REMOVE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_remove",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_SET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_set",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_STRIP_NULLS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_strip_nulls",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_TYPE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_type",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JSON_VALUE_ARRAY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#json_value_array",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JUSTIFY_DAYS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/interval_functions#justify_days",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JUSTIFY_HOURS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/interval_functions#justify_hours",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "JUSTIFY_INTERVAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/interval_functions#justify_interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.ADD_KEY_FROM_RAW_BYTES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keysadd_key_from_raw_bytes",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.KEYSET_CHAIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keyskeyset_chain",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.KEYSET_FROM_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keyskeyset_from_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.KEYSET_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keyskeyset_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.KEYSET_TO_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keyskeyset_to_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.NEW_KEYSET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keysnew_keyset",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.NEW_WRAPPED_KEYSET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keysnew_wrapped_keyset",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.REWRAP_KEYSET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keysrewrap_keyset",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.ROTATE_KEYSET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keysrotate_keyset",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KEYS.ROTATE_WRAPPED_KEYSET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aead_encryption_functions#keysrotate_wrapped_keyset",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "KLL_QUANTILES.EXTRACT_FLOAT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesextract_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.EXTRACT_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesextract_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.EXTRACT_POINT_FLOAT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesextract_point_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.EXTRACT_POINT_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesextract_point_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.INIT_FLOAT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesinit_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.INIT_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesinit_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.MERGE_FLOAT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesmerge_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.MERGE_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesmerge_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.MERGE_PARTIAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesmerge_partial",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.MERGE_POINT_FLOAT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesmerge_point_double",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "KLL_QUANTILES.MERGE_POINT_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/kll_functions#kll_quantilesmerge_point_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LABELS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#labels",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "LAG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#lag",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_DAY (Date)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#last_day",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_DAY (Datetime)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#last_day",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAST_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#last_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAX_BOOL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#lax_bool",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAX_FLOAT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#lax_double",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAX_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#lax_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LAX_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#lax_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#lead",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#least",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LEFT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#left",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#ln",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#log",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOG10",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#log10",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOGICAL_AND",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#logical_and",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOGICAL_OR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#logical_or",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LOWER",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#lower",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LPAD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#lpad",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "LTRIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#ltrim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAKE_INTERVAL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/interval_functions#make_interval",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAX",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#max",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MAX_BY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#max_by",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MD5",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hash_functions#md5",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#min",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MIN_BY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#min_by",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "MOD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#mod",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.HOST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#nethost",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.IP_FROM_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netip_from_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.IP_NET_MASK",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netip_net_mask",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.IP_TO_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netip_to_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.IP_TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netip_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.IPV4_FROM_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netipv4_from_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.IPV4_TO_INT64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netipv4_to_int64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.PUBLIC_SUFFIX",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netpublic_suffix",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.REG_DOMAIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netreg_domain",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NET.SAFE_IP_FROM_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/net_functions#netsafe_ip_from_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NODES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#nodes",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NORMALIZE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#normalize",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "NORMALIZE_AND_CASEFOLD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#normalize_and_casefold",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NTH_VALUE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#nth_value",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "NTILE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions#ntile",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "OBJ.FETCH_METADATA",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objfetch_metadata",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OBJ.GET_ACCESS_URL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objget_access_url",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OBJ.GET_READ_URL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objget_read_url",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OBJ.MAKE_REF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/objectref_functions#objmake_ref",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "OCTET_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#octet_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_BIGNUMERIC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/conversion_functions#parse_bignumeric",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#parse_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_DATETIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/datetime_functions#parse_datetime",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#parse_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_NUMERIC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/conversion_functions#parse_numeric",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#parse_time",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PARSE_TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#parse_timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PATH_FIRST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#path_first",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PATH_LAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#path_last",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PATH_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#path_length",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "PERCENT_RANK",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions#percent_rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENTILE_CONT (Differential Privacy)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_percentile_cont",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENTILE_CONT (Navigation)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#percentile_cont",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "PERCENTILE_DISC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#percentile_disc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POW",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#pow",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "POWER",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#power",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RAND",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#rand",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANGE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANGE_BUCKET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#range_bucket",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RANGE_CONTAINS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANGE_END",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range_end",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANGE_INTERSECT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range_intersect",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANGE_OVERLAPS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range_overlaps",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANGE_SESSIONIZE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range_sessionize",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANGE_START",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/range-functions#range_start",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "RANK",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions#rank",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_CONTAINS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_extract",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_EXTRACT_ALL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_extract_all",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_INSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_instr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_REPLACE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_replace",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REGEXP_SUBSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#regexp_substr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REPEAT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#repeat",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REPLACE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#replace",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "REVERSE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#reverse",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RIGHT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#right",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ROUND",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#round",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ROW_NUMBER",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions#row_number",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RPAD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#rpad",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "RTRIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#rtrim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "S2_CELLIDFROMPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#s2_cellidfrompoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "S2_COVERINGCELLIDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#s2_coveringcellids",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SAFE_ADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#safe_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SAFE_CAST",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/conversion_functions#safe_casting",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SAFE_CONVERT_BYTES_TO_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#safe_convert_bytes_to_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SAFE_DIVIDE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#safe_divide",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SAFE_MULTIPLY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#safe_multiply",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SAFE_NEGATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#safe_negate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SAFE_SUBTRACT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#safe_subtract",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/search_functions#search",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SEC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#sec",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SECH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#sech",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SESSION_USER",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/security_functions#session_user",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA1",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hash_functions#sha1",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA256",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hash_functions#sha256",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SHA512",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/hash_functions#sha512",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIGN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#sign",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#sin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SINH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#sinh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SOUNDEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#soundex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SOURCE_NODE_ID",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/graph-sql-functions#source_node_id",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SPLIT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#split",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SQRT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#sqrt",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ANGLE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_angle",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_AREA",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_area",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASBINARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_asbinary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASGEOJSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_asgeojson",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ASTEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_astext",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_AZIMUTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_azimuth",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BOUNDARY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_boundary",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BOUNDINGBOX",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_boundingbox",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BUFFER",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_buffer",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_BUFFERWITHTOLERANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_bufferwithtolerance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CENTROID",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_centroid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CENTROID_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_centroid_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CLOSESTPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_closestpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CLUSTERDBSCAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_clusterdbscan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CONTAINS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_contains",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_CONVEXHULL",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_convexhull",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_COVEREDBY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_coveredby",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_COVERS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_covers",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DIFFERENCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_difference",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DIMENSION",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_dimension",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISJOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_disjoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_distance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DUMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_dump",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_DWITHIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_dwithin",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ENDPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_endpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_EQUALS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_equals",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_EXTENT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_extent",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_EXTERIORRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_exteriorring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROM",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geogfrom",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMGEOJSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geogfromgeojson",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMTEXT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geogfromtext",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGFROMWKB",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geogfromwkb",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geogpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOGPOINTFROMGEOHASH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geogpointfromgeohash",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOHASH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geohash",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_GEOMETRYTYPE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_geometrytype",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_HAUSDORFFDISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_hausdorffdistance",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_HAUSDORFFDWITHIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_hausdorffdwithin",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_INTERIORRINGS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_interiorrings",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERSECTION",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_intersection",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERSECTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_intersects",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_INTERSECTSBOX",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_intersectsbox",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISCLOSED",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_isclosed",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISCOLLECTION",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_iscollection",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISEMPTY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_isempty",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_ISRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_isring",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_LENGTH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_length",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_LINEINTERPOLATEPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_lineinterpolatepoint",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_LINELOCATEPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_linelocatepoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_LINESUBSTRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_linesubstring",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_MAKELINE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_makeline",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MAKEPOLYGON",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_makepolygon",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MAKEPOLYGONORIENTED",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_makepolygonoriented",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_MAXDISTANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_maxdistance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NPOINTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_npoints",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMGEOMETRIES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_numgeometries",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_NUMPOINTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_numpoints",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_PERIMETER",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_perimeter",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_POINTN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_pointn",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_REGIONSTATS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_regionstats",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "ST_SIMPLIFY",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_simplify",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_SNAPTOGRID",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_snaptogrid",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_STARTPOINT",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_startpoint",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_TOUCHES",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_touches",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_UNION",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_union",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_UNION_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_union_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_WITHIN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_within",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_X",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_x",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "ST_Y",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_y",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STARTS_WITH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#starts_with",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#stddev",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV_POP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#stddev_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STDDEV_SAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#stddev_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRING (JSON)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#string_for_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRING (Timestamp)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRING_AGG",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#string_agg",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "STRPOS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#strpos",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUBSTR",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#substr",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUBSTRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#substring",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "SUM",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#sum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "SUM (Differential Privacy)",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_sum",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TAN",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#tan",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TANH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#tanh",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TEXT_ANALYZE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/text-analysis-functions#text_analyze",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TF_IDF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/text-analysis-functions#tf_idf",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIME",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#time",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIME_ADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#time_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIME_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#time_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIME_SUB",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#time_sub",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIME_TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#time_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_ADD",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_add",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_BUCKET",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/time-series-functions#timestamp_bucket",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "TIMESTAMP_DIFF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_diff",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_MICROS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_micros",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_MILLIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_millis",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_SECONDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_seconds",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_SUB",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_sub",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TIMESTAMP_TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BASE32",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#to_base32",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_BASE64",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#to_base64",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_CODE_POINTS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#to_code_points",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_HEX",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#to_hex",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_JSON",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#to_json",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TO_JSON_STRING",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/json_functions#to_json_string",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRANSLATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#translate",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRIM",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#trim",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TRUNC",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/mathematical_functions#trunc",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "TYPEOF",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/utility-functions#typeof",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "UNICODE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#unicode",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_DATE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/date_functions#unix_date",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_MICROS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#unix_micros",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_MILLIS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#unix_millis",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UNIX_SECONDS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#unix_seconds",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "UPPER",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/string_functions#upper",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VAR_POP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#var_pop",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VAR_SAMP",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#var_samp",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VARIANCE",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/statistical_aggregate_functions#variance",
+      "preview_status": "GA",
+      "fusion_typecheck": true
+    },
+    {
+      "name": "VECTOR_INDEX.STATISTICS",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/vectorindex_functions#vector_indexstatistics",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
+      "name": "VECTOR_SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/search_functions#vector_search",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    }
+  ]
+}

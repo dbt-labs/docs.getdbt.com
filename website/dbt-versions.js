@@ -127,6 +127,10 @@ exports.versionedPages = [
     lastVersion: "1.99",
   },
   {
+    page: "docs/platform/connect-data-platform/connect-salesforce",
+    firstVersion: "2.0",
+  },
+  {
     page: "docs/platform/connect-data-platform/connect-starburst-trino",
     lastVersion: "1.99",
   },
@@ -160,6 +164,10 @@ exports.versionedPages = [
   },
   {
     page: "docs/local/connect-data-platform/clickhouse-setup",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/local/connect-data-platform/confluent-setup",
     lastVersion: "1.99",
   },
   {

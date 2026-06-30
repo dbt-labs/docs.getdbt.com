@@ -18,8 +18,8 @@ const SNIPPETS_DIR = path.join(__dirname, '..', 'snippets');
 
 function buildTable(functions) {
   const header = [
-    '| <div style={{width:"120px"}}>Function</div> | Category | Fusion typechecking | Availability |',
-    '|------|----------|:-------------------:|--------------|',
+    '| <div style={{minWidth:"200px"}}>Function</div> | Category | Fusion typechecking |',
+    '|------|----------|:-------------------:|',
   ].join('\n');
 
   const escape = (s) => s
@@ -33,10 +33,8 @@ function buildTable(functions) {
   const rows = functions.map((f) => {
     const l2 = f.fusion_typecheck ? '✓' : '—';
     const safeName = escape(f.name);
-    // Function name links to Snowflake docs; constrained span keeps column narrow.
-    // title= shows the full name on hover when truncated.
-    const nameCell = `<a href="${f.docs_url}"><span style={{display:"inline-block",maxWidth:"240px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",verticalAlign:"middle"}} title="${safeName}">${safeName}</span></a>`;
-    return `| ${nameCell} | ${escape(f.category)} | ${l2} | ${f.preview_status} |`;
+    const nameCell = `<a href="${f.docs_url}">${safeName}</a>`;
+    return `| ${nameCell} | ${escape(f.category)} | ${l2} |`;
   });
 
   return [header, ...rows].join('\n');
@@ -53,7 +51,6 @@ function generateForPlatform(platform) {
 
   const raw = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   const functions = raw.functions || [];
-  const fetchedAt = raw._meta?.fetched_at ?? 'unknown';
 
   let content;
   if (functions.length === 0) {
@@ -62,7 +59,7 @@ function generateForPlatform(platform) {
 _Function data has not yet been populated. Trigger the \`update-platform-functions\` GitHub Action to generate it._
 `;
   } else {
-    content = `<!-- Auto-generated from ${platform.id}.json (${functions.length} functions, fetched ${fetchedAt}). Do not edit directly. -->
+    content = `<!-- Auto-generated from ${platform.id}.json (${functions.length} functions). Do not edit directly. -->
 
 ${buildTable(functions)}
 `;

@@ -92,16 +92,16 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 5. Click **Upload a Service Account JSON File** in settings.
 6. Select the JSON file you downloaded in Generate BigQuery credentials and <Constant name="dbt" /> will fill in all the necessary fields.
 7. (Optional) <Constant name="dbt" /> Enterprise plans can configure developer OAuth with BigQuery, providing an additional layer of security. For more information, refer to [Set up BigQuery OAuth](/docs/platform/manage-access/set-up-bigquery-oauth).
-8. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+8. Set up your personal user credentials by navigating to **Your profile** > **Credentials**.
 9. Select your project that uses the BigQuery connection.
 10. Click **Edit**.
-11. Enter your **Development credentials** for BigQuery with:
+11. Enter your **User credentials** for BigQuery with:
     - **Authentication Method** &mdash; Select **Service Account JSON**. This uses the service account you uploaded when you set up the project connection.
     - **Dataset** &mdash; You may notice that the dataset name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the dataset connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="studio_ide" />.
     - **Target name** &mdash; Leave as the default.
     - **Threads** &mdash; Leave as the default (6). This is the number of simultaneous connections that <Constant name="dbt" /> will make to build models concurrently.
 
-    <Lightbox src="/img/bigquery/dbt_platform_bigquery_development_credentials.png" title="BigQuery Development Credentials" />
+    <Lightbox src="/img/bigquery/dbt_platform_bigquery_development_credentials.png" title="BigQuery User credentials" />
 
 12. Click **Test Connection**. This verifies that <Constant name="dbt" /> can access your BigQuery account.
 13. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
