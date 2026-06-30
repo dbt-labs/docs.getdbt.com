@@ -92,10 +92,6 @@ jobs:
             exit 0
           fi
 
-          gh label create "release-notes" \
-            --description "Automated ST to MT release notes sync PRs" \
-            --color "43CA69" 2>/dev/null || true
-
           gh pr create \
             --draft \
             --base current \
