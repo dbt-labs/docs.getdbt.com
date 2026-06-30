@@ -93,7 +93,7 @@ The following features are new or enhanced as part of [dbt's Coalesce analytics 
 - **Fix**: Resolved a bug that caused [saved query](/docs/build/saved-queries) exports to fail during `dbt build` with `Unable to get saved_query` errors. 
 - **New**: The <Constant name="semantic_layer" /> GraphQL API now has a [`queryRecords`](/docs/dbt-apis/sl-graphql#query-records) endpoint. With this endpoint, you can view the query history both for Insights and <Constant name="semantic_layer" /> queries.
 - **Fix**: Resolved a bug that caused <Constant name="semantic_layer" /> queries with a trailing whitespace to produce an error. This issue mostly affected [Push.ai](https://docs.push.ai/data-sources/semantic-layers/dbt) users and is fixed now. 
-- **New**: You can now use [personal access tokens (PATs)](/docs/dbt-apis/user-tokens) to authenticate in the Semantic Layer. This enables user-level authentication and reduces the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal development credentials. For more information, see [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl).
+- **New**: You can now use [personal access tokens (PATs)](/docs/dbt-apis/user-tokens) to authenticate in the Semantic Layer. This enables user-level authentication and reduces the need for sharing tokens between users. When you authenticate using PATs, queries are run using your personal user credentials. For more information, see [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl).
 
 ## July 2025
 

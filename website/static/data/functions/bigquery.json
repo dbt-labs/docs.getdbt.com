@@ -1658,16 +1658,16 @@
       "fusion_typecheck": true
     },
     {
-      "name": "PERCENTILE_CONT (Navigation)",
+      "name": "PERCENTILE_CONT (Differential Privacy)",
       "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#percentile_cont",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_percentile_cont",
       "preview_status": "GA",
       "fusion_typecheck": true
     },
     {
-      "name": "PERCENTILE_CONT (Differential Privacy)",
+      "name": "PERCENTILE_CONT (Navigation)",
       "category": "Built-in",
-      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-dp-functions#dp_percentile_cont",
+      "docs_url": "https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions#percentile_cont",
       "preview_status": "GA",
       "fusion_typecheck": true
     },

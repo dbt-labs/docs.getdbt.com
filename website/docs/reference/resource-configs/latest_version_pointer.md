@@ -79,6 +79,12 @@ models:
 
 <LatestVersionPointerBeta />
 
+:::note dbt platform on Fusion
+
+In <Constant name="fusion" />, `latest_version_pointer` is enabled by default for all versioned models. If you have a versioned model with an explicit `alias` that matches the model's base name, you may see a `dbt1005` collision error. See [Naming collisions](#naming-collisions) below for how to resolve it.
+
+:::
+
 The `latest_version_pointer` config creates a view named after a [versioned model's](/docs/mesh/govern/model-versions) base name (for example, `dim_customers`) that always points to the latest versioned relation (for example, `dim_customers_v2`). The view is created after the model with `is_latest_version = true` materializes successfully and is skipped for all other versions.
 
 You can also enable this feature globally for all versioned models by setting the [`latest_version_pointer_enabled_by_default`](/reference/global-configs/behavior-flag-introduction#latest-version-pointer-for-versioned-models) flag to `true` in `dbt_project.yml`:
@@ -105,6 +111,8 @@ By default, the pointer view uses the model's base name (for example, `dim_custo
 
 - **Per model**: Set `latest_version_pointer.alias` in the model config.
 - **Globally**: Override the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro in your project. This macro follows the same pattern as [`generate_alias_name`](/docs/build/custom-aliases#generate_alias_name).
+
+## Naming collisions {#naming-collisions}
 
 <LatestVersionPointerCollision />
 

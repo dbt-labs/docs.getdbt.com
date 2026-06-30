@@ -3,6 +3,8 @@ title: "About the Discovery API"
 pagination_next: "docs/dbt-apis/discovery-use-cases-and-examples"
 ---
 
+import ApiRateLimitsCallout from '/snippets/_api-rate-limits-callout.md';
+
 # About the Discovery API <Lifecycle status="self_service,managed,managed_plus" />
 
 Every time <Constant name="dbt" /> runs a project, it generates and stores information about the project. The metadata includes details about your project’s models, sources, and other nodes along with their execution results. With the <Constant name="dbt" /> Discovery API, you can query this comprehensive information to gain a better understanding of your <Term id="dag">DAG</Term> and the data it produces.
@@ -10,6 +12,8 @@ Every time <Constant name="dbt" /> runs a project, it generates and stores infor
 By leveraging the metadata in <Constant name="dbt" />, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization.
 
 You can access the Discovery API through [ad hoc queries](/docs/dbt-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using <Constant name="dbt" /> features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles](/docs/explore/data-tile).
+
+<ApiRateLimitsCallout />
 
 <Lightbox src="/img/docs/dbt-platform/discovery-api/discovery-api-figure.png" width="80%" title="A rich ecosystem for integration "/>
 
