@@ -2449,6 +2449,10 @@ button .DocSearch-Button-Keys {
   margin-bottom: 1rem;
 }
 
+.home-start-aside > div:first-child {
+  margin-bottom: 0.8rem;
+}
+
 .home-start-layout .home-card-grid {
   gap: 16px;
 }
