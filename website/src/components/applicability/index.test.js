@@ -113,7 +113,7 @@ describe('Applicability', () => {
           preset: 'platform_enterprise',
           feature: 'dbt Insights',
           engine: 'not_engine_specific',
-          excludes: ['dbt Core-only workflows', 'local CLI workflows'],
+          excludes: ['local CLI workflows'],
         }}
       />
     );
