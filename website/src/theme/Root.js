@@ -1,6 +1,5 @@
 import React from 'react'
 import { VersionContextProvider } from '../stores/VersionContext'
-import { PageBannerProvider } from '../stores/PageBannerContext'
 import { useVersionUrlSync } from '../utils/useVersionUrlSync'
 import { OptimizelyInitializer } from '../components/OptimizelyInitializer'
 import { DatadogInitializer } from "../components/DatadogInitializer";
@@ -18,13 +17,11 @@ function VersionUrlSyncHandler({ children }) {
 function Root({children}) {
   return (
     <VersionContextProvider>
-      <PageBannerProvider>
-        <OptimizelyInitializer />
-        <DatadogInitializer />
-        <VersionUrlSyncHandler>
-          {children}
-        </VersionUrlSyncHandler>
-      </PageBannerProvider>
+      <OptimizelyInitializer />
+      <DatadogInitializer />
+      <VersionUrlSyncHandler>
+        {children}
+      </VersionUrlSyncHandler>
     </VersionContextProvider>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import { useDoc } from "@docusaurus/plugin-content-docs/client";
@@ -8,7 +8,6 @@ import IntroText from "@site/src/components/IntroText";
 import QuickstartTOC from "@site/src/components/quickstartTOC";
 import {QuickstartGuideTitle} from "../../../components/quickstartGuideCard";
 import { Feedback } from "../../../components/feedback";
-import { useSetPageBanner } from "@site/src/stores/PageBannerContext";
 
 function useSyntheticTitle() {
   const { metadata, frontMatter, contentTitle } = useDoc();
@@ -30,15 +29,6 @@ export default function DocItemContent({ children }) {
 
   const { metadata, frontMatter } = useDoc();
   const isQuickstartGuide = metadata?.id?.startsWith("guides/");
-
-  // dbt Custom: publish this page's `banner` frontmatter so the global
-  // announcement bar can render it in place of the default banner. Clear it on
-  // unmount so the global banner returns when navigating to other pages.
-  const setPageBanner = useSetPageBanner();
-  useEffect(() => {
-    setPageBanner(frontMatter.banner || null);
-    return () => setPageBanner(null);
-  }, [frontMatter.banner, setPageBanner]);
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, "markdown")}>

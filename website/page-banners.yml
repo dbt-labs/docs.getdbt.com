@@ -1,0 +1,18 @@
+# Page-specific banners.
+#
+# Each entry renders a banner in place of the global announcement bar on the
+# listed page(s). Banners are baked into the static HTML at build time, so they
+# appear with no flash of the global banner.
+#
+# Per entry:
+#   paths / path (required): one path (string) or a list of paths. Use the
+#                            page's URL path, e.g. /docs/introduction.
+#   text (required):         banner message; inline HTML is supported.
+#   link (optional):         URL the banner links to.
+#   open_in_new_tab (optional): open the link in a new tab.
+
+- paths:
+    - /docs/introduction
+  text: "This is a test banner"
+  link: https://google.com
+  open_in_new_tab: true

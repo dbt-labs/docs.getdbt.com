@@ -1,19 +1,35 @@
 import React from 'react';
 import {useThemeConfig} from '@docusaurus/theme-common';
 import {useAnnouncementBar} from '@docusaurus/theme-common/internal';
+import {useLocation} from '@docusaurus/router';
+import {usePluginData} from '@docusaurus/useGlobalData';
 import AnnouncementBarCloseButton from '@theme/AnnouncementBar/CloseButton';
 import AnnouncementBarContent from '@theme/AnnouncementBar/Content';
-import {usePageBanner} from '@site/src/stores/PageBannerContext';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
 /* dbt Customizations:
  * 1. Wrap entire AnnouncementBar in link to make whole banner clickable
  * 2. Allow an individual page to override the global announcement bar via a
- *    `banner` frontmatter property (text / link / open_in_new_tab). When a page
- *    publishes a banner (see DocItem/Content + PageBannerContext), render that
- *    in place of the global announcement bar, reusing the same styling.
+ *    `banner` frontmatter property (text / link / open_in_new_tab). The
+ *    buildPageBanners plugin collects these at build time into global data
+ *    keyed by permalink, so the correct banner is rendered into the static
+ *    HTML during SSR — no client-side swap, no flash.
 */
+
+// Match the build plugin's normalization (drop trailing slash, keep root "/").
+function normalizePath(pathname) {
+  if (!pathname) return pathname;
+  return pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+}
+
+// Look up a page-specific banner for the current route from build-time data.
+function usePageBanner() {
+  const data = usePluginData('docusaurus-build-page-banners-plugin');
+  const {pathname} = useLocation();
+  const banners = data?.banners ?? {};
+  return banners[normalizePath(pathname)] ?? null;
+}
 
 // Render a page-specific banner using the built-in announcement bar styling
 function PageAnnouncementBanner({ banner }) {
