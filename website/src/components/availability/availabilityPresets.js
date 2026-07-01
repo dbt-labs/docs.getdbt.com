@@ -55,9 +55,11 @@ export const PLAN_BADGE_LABELS = {
 };
 
 export const ENGINE_BADGE_LABELS = {
-  fusion: 'Fusion',
+  all_engines: 'All engines',
   core_python: 'Core (Python)',
+  fusion: 'Fusion',
   core_and_fusion: 'Core and Fusion',
+  not_engine_specific: 'Not engine-specific',
 };
 
 export const availabilityPresets = {

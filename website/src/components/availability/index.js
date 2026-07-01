@@ -63,8 +63,10 @@ function buildRows(availability) {
 
 // The badge is always derived from surface + plans + engine — writers never write badge text.
 function getBadgeFacets(merged) {
+  const engineFacet = ENGINE_BADGE_LABELS[merged.engine];
+
   if (merged.preset === 'all_users') {
-    return ['all users'];
+    return ['all users', engineFacet];
   }
 
   if (!merged.surface) {
@@ -74,7 +76,7 @@ function getBadgeFacets(merged) {
   return [
     SURFACE_LABELS[merged.surface],
     PLAN_BADGE_LABELS[merged.plans],
-    ENGINE_BADGE_LABELS[merged.engine],
+    engineFacet,
   ];
 }
 

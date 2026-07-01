@@ -4,12 +4,12 @@ import userEvent from '@testing-library/user-event';
 import Availability from './index';
 
 describe('Availability', () => {
-  it('renders an all-users badge with the engine row', async () => {
+  it('shows the engine on the badge for all users without requiring a click', async () => {
     const user = userEvent.setup();
     render(<Availability availability={{ preset: 'all_users', engine: 'all_engines' }} />);
 
-    const badge = screen.getByRole('button', { name: /applies to: all users/i });
-    expect(badge).toHaveTextContent('Applies to: all users');
+    const badge = screen.getByRole('button', { name: /applies to: all users · all engines/i });
+    expect(badge).toHaveTextContent('Applies to: all users · All engines');
 
     await user.click(badge);
 
@@ -22,7 +22,9 @@ describe('Availability', () => {
     const user = userEvent.setup();
     render(<Availability availability={{ preset: 'platform', engine: 'core_and_fusion' }} />);
 
-    const badge = screen.getByRole('button', { name: /applies to: dbt platform · all plans/i });
+    const badge = screen.getByRole('button', {
+      name: /applies to: dbt platform · all plans · core and fusion/i,
+    });
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
@@ -38,7 +40,9 @@ describe('Availability', () => {
       />
     );
 
-    const badge = screen.getByRole('button', { name: /applies to: dbt platform · enterprise/i });
+    const badge = screen.getByRole('button', {
+      name: /applies to: dbt platform · enterprise · not engine-specific/i,
+    });
     expect(screen.getByText('Enterprise')).toHaveAttribute('data-availability-facet', 'plan');
 
     await user.click(badge);
@@ -65,10 +69,12 @@ describe('Availability', () => {
     expect(tooltip).toHaveTextContent('dbt Fusion');
   });
 
-  it('omits the engine facet from the badge for all_engines / not_engine_specific', async () => {
+  it('shows all_engines / not_engine_specific on the badge too, not just single engines', async () => {
     render(<Availability availability={{ preset: 'cli', engine: 'all_engines' }} />);
 
-    expect(screen.getByRole('button', { name: /applies to: cli\./i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /applies to: cli · all engines/i })
+    ).toBeInTheDocument();
   });
 
   it('never renders a lifecycle status row (owned by the H1 pill)', async () => {
