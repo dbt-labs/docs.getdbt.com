@@ -5,7 +5,7 @@ description: "Learn about dbt State, its benefits, and key concepts for running 
 id: "dbt-state-about"
 tags: ['dbt State']
 availability:
-  preset: platform
+  preset: all_users
   engine: core_and_fusion
 ---
 
