@@ -27,7 +27,6 @@
     - /docs/dbt-ai/wizard-skills
     - /docs/dbt-ai/wizard-platform-skills
     - /docs/dbt-ai/wizard-ide
-    - /guides
   text: "dbt Wizard: An agent purpose-built for analytics engineering. Join us virtually on July 22nd to see real demos in the CLI and dbt platform!"
   link: "https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t"
   open_in_new_tab: true
