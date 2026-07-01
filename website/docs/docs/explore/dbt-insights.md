@@ -16,13 +16,6 @@ availability:
 
 # About dbt Insights <Lifecycle status="beta" />
 
-<Availability availability={{
-  preset: "platform_enterprise",
-  feature: "dbt Insights",
-  engine: "not_engine_specific",
-  excludes: ["local CLI workflows"],
-}} />
-
 <IntroText>
 Learn how to query data with <Constant name="insights" /> and view documentation in <Constant name="catalog" />.
 </IntroText>

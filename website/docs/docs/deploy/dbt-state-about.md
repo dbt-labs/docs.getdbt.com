@@ -15,13 +15,6 @@ availability:
 
 # About dbt State <Lifecycle status="preview" />
 
-<Availability availability={{
-  preset: "dbt_state",
-  engine: "core_and_fusion",
-  notes: ["Requires a dbt platform account or standalone dbt State account"],
-  excludes: ["legacy Starter plan accounts"],
-}} />
-
 <IntroText>
 
 dbt State makes dbt smarter about what to build. Instead of rebuilding every node on every run, dbt reuses nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed.

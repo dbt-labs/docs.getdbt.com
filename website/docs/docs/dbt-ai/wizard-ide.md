@@ -15,12 +15,6 @@ import WizardIde from '/snippets/_wizard-ide.md';
 
 # dbt Wizard in Studio IDE <Lifecycle status="preview"/>
 
-<Availability availability={{
-  preset: "wizard_platform",
-  surface: "Studio IDE",
-  engine: "core_and_fusion",
-}} />
-
 <IntroText>
 Use <Constant name="wizard" /> in the <Constant name="studio_ide" /> to ship trusted dbt changes faster. It understands your project, answers context-grounded questions, generates models, tests, docs, and <Constant name="semantic_layer" /> definitions, and shows file diffs before changes are persisted.
 </IntroText>

@@ -17,11 +17,6 @@ import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 
 # <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
-<Availability availability={{
-  preset: "wizard_cli",
-  engine: "core_and_fusion",
-}} />
-
 <IntroText>
 The <Constant name="wizard" /> CLI helps teams ship higher-quality dbt changes faster and with less risk. Built for governed data development in dbt, it understands your project, routes to the right dbt tools, validates changes, and shows how logic evolves from your local machine.
 </IntroText>

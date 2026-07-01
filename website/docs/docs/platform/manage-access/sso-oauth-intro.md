@@ -9,11 +9,6 @@ availability:
 
 # Single sign-on and OAuth <Lifecycle status="managed, managed_plus" />
 
-<Availability availability={{
-  preset: "platform_enterprise",
-  engine: "not_engine_specific",
-}} />
-
 This section covers how to authenticate users and connect data platforms in <Constant name="dbt_platform" /> using:
 
 <!-- no toc -->
