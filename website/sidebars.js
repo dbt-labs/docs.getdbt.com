@@ -401,7 +401,6 @@ const sidebarSettings = {
           items: [
             "docs/platform/wizard-overview",
             "docs/dbt-ai/wizard-quickstart",
-            "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
             {
