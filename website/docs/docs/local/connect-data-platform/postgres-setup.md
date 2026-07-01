@@ -24,6 +24,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
+For a hands-on walkthrough with a local PostgreSQL database and Docker, refer to the [Quickstart for dbt Core using local PostgreSQL](/guides/postgres).
 
 ## Profile Configuration
 

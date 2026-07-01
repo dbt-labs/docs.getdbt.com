@@ -101,10 +101,15 @@ Develop locally using the <Constant name="fusion_engine" /> or <Constant name="c
     icon="dbt-bit"/>
 
 <Card
-    title="Quickstart for dbt with DuckDB"
-    body="Learn how to connect dbt to DuckDB."
+    title="Quickstart for dbt Core with DuckDB"
+    body="Learn how to connect dbt Core to DuckDB."
     link="/guides/duckdb?step=1"
     icon="duckdb-seeklogo"/>
+<Card
+    title="Quickstart for dbt Core with local PostgreSQL"
+    body="Learn how to connect dbt Core to a local PostgreSQL database."
+    link="/guides/postgres?step=1"
+    icon="postgres"/>
 </div>
 
 ## dbt Wizard
