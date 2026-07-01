@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import { FIELD_LABELS, VALUE_LABELS, availabilityPresets } from './availabilityPresets';
 
@@ -206,8 +206,16 @@ export default function Applicability({ availability, ...legacyApplicability }) 
     [availability, legacyApplicability]
   );
   const [isOpen, setIsOpen] = useState(false);
+  const [isPinned, setIsPinned] = useState(false);
   const wrapperRef = useRef(null);
+  const openTimeoutRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
   const tooltipId = useId();
+
+  const clearHoverTimers = useCallback(() => {
+    window.clearTimeout(openTimeoutRef.current);
+    window.clearTimeout(closeTimeoutRef.current);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
@@ -216,18 +224,21 @@ export default function Applicability({ availability, ...legacyApplicability }) 
 
     function handlePointerDown(event) {
       if (!wrapperRef.current?.contains(event.target)) {
+        setIsPinned(false);
         setIsOpen(false);
       }
     }
 
     function handleFocusIn(event) {
       if (!wrapperRef.current?.contains(event.target)) {
+        setIsPinned(false);
         setIsOpen(false);
       }
     }
 
     function handleKeyDown(event) {
       if (event.key === 'Escape') {
+        setIsPinned(false);
         setIsOpen(false);
       }
     }
@@ -245,6 +256,8 @@ export default function Applicability({ availability, ...legacyApplicability }) 
     };
   }, [isOpen]);
 
+  useEffect(() => () => clearHoverTimers(), [clearHoverTimers]);
+
   if (!normalized) {
     return null;
   }
@@ -253,8 +266,22 @@ export default function Applicability({ availability, ...legacyApplicability }) 
     <span
       ref={wrapperRef}
       className={styles.wrapper}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={() => {
+        if (isPinned) {
+          return;
+        }
+
+        clearHoverTimers();
+        openTimeoutRef.current = window.setTimeout(() => setIsOpen(true), 250);
+      }}
+      onMouseLeave={() => {
+        if (isPinned) {
+          return;
+        }
+
+        clearHoverTimers();
+        closeTimeoutRef.current = window.setTimeout(() => setIsOpen(false), 150);
+      }}
     >
       <button
         type="button"
@@ -262,8 +289,16 @@ export default function Applicability({ availability, ...legacyApplicability }) 
         aria-label={`${normalized.badgeText}. Show availability details`}
         aria-expanded={isOpen}
         aria-describedby={isOpen ? tooltipId : undefined}
-        onClick={() => setIsOpen((current) => !current)}
+        onClick={() => {
+          clearHoverTimers();
+          setIsPinned((current) => {
+            const nextPinned = !current;
+            setIsOpen(nextPinned);
+            return nextPinned;
+          });
+        }}
         onFocus={() => {
+          clearHoverTimers();
           window.setTimeout(() => {
             setIsOpen(true);
           }, 0);

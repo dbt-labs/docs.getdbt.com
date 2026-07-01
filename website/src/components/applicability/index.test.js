@@ -92,7 +92,7 @@ describe('Applicability', () => {
 
     await user.hover(badge);
 
-    const tooltip = screen.getByRole('tooltip');
+    const tooltip = await screen.findByRole('tooltip');
     expect(tooltip).toHaveTextContent('Product');
     expect(tooltip).toHaveTextContent('dbt VS Code extension');
     expect(tooltip).toHaveTextContent('Engine');
@@ -146,7 +146,9 @@ describe('Applicability', () => {
 
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).toHaveTextContent('Product');
+    expect(tooltip).toHaveTextContent('dbt platform');
     expect(tooltip).toHaveTextContent('Feature');
+    expect(tooltip).toHaveTextContent('dbt Insights');
     expect(tooltip).toHaveTextContent('Plans');
     expect(tooltip).toHaveTextContent('Engine');
     expect(tooltip).not.toHaveTextContent('Surface');
@@ -165,7 +167,8 @@ describe('Applicability', () => {
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Product');
+    expect(tooltip).not.toHaveTextContent('Product');
+    expect(tooltip).toHaveTextContent('Feature');
     expect(tooltip).toHaveTextContent('dbt Wizard');
     expect(tooltip).toHaveTextContent('Plans');
     expect(tooltip).toHaveTextContent('Starter, Enterprise, and Enterprise+');
@@ -190,7 +193,8 @@ describe('Applicability', () => {
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Product');
+    expect(tooltip).not.toHaveTextContent('Product');
+    expect(tooltip).toHaveTextContent('Feature');
     expect(tooltip).toHaveTextContent('dbt State');
     expect(tooltip).toHaveTextContent('Surface');
     expect(tooltip).toHaveTextContent('Multiple surfaces');
@@ -229,5 +233,18 @@ describe('Applicability', () => {
     await user.click(screen.getByRole('button', { name: 'Outside' }));
 
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+  });
+
+  it('keeps a clicked tooltip open after mouse leave', async () => {
+    const user = userEvent.setup();
+    render(<Applicability availability="wizard_platform" />);
+
+    const badge = screen.getByRole('button', { name: /dbt platform · dbt wizard/i });
+    await user.click(badge);
+    expect(screen.getByRole('tooltip')).toBeInTheDocument();
+
+    await user.unhover(badge);
+
+    expect(screen.getByRole('tooltip')).toBeInTheDocument();
   });
 });

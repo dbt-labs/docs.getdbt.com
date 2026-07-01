@@ -174,14 +174,14 @@ export const availabilityPresets = {
   wizard: {
     description: 'Use for dbt Wizard pages.',
     badge: ['dbt Wizard'],
-    product: 'wizard',
+    feature: 'dbt Wizard',
     surface: 'platform',
     plans: 'starter_and_above',
   },
   wizard_cli: {
     description: 'Use for dbt Wizard CLI pages.',
     badge: ['dbt Wizard CLI', 'Local development'],
-    product: 'wizard_cli',
+    feature: 'dbt Wizard',
     workflow: 'local',
     surface: 'cli',
     engine: 'core_and_fusion',
@@ -190,7 +190,7 @@ export const availabilityPresets = {
   wizard_platform: {
     description: 'Use for dbt Wizard pages in the dbt platform.',
     badge: ['dbt platform', 'dbt Wizard', 'Starter and above'],
-    product: 'wizard',
+    feature: 'dbt Wizard',
     surface: 'platform',
     plans: 'starter_and_above',
     engine: 'core_and_fusion',
@@ -199,7 +199,7 @@ export const availabilityPresets = {
   dbt_state: {
     description: 'Use for dbt State pages that apply across platform, Core, and Fusion workflows.',
     badge: ['dbt State', 'Core and Fusion', 'Preview'],
-    product: 'dbt_state',
+    feature: 'dbt State',
     surface: 'multiple',
     engine: 'core_and_fusion',
     status: 'preview',
