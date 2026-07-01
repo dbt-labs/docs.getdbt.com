@@ -8,11 +8,8 @@ pagination_next: "docs/dbt-extension-features"
 availability:
   preset: vscode_fusion_preview
   engine: fusion
-  registration:
-    - All features are available for 14 days without registration
-    - Advanced features require free dbt platform registration after trial
   excludes:
-    - dbt Core with the Python engine
+    - dbt Core (Python engine)
 ---
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
