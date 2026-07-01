@@ -189,17 +189,20 @@ describe('Applicability', () => {
       />
     );
 
-    const badge = screen.getByRole('button', { name: /dbt state · core and fusion · preview/i });
+    const badge = screen.getByRole('button', { name: /dbt state · core and fusion/i });
+    expect(badge).not.toHaveTextContent('Preview');
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).not.toHaveTextContent('Product');
     expect(tooltip).toHaveTextContent('Feature');
     expect(tooltip).toHaveTextContent('dbt State');
-    expect(tooltip).toHaveTextContent('Surface');
-    expect(tooltip).toHaveTextContent('Multiple surfaces');
+    expect(tooltip).toHaveTextContent('Where');
+    expect(tooltip).toHaveTextContent('Local development; dbt platform');
     expect(tooltip).toHaveTextContent('Engines');
     expect(tooltip).toHaveTextContent('dbt Core (Python) and dbt Fusion');
+    expect(tooltip).not.toHaveTextContent('Status');
+    expect(tooltip).not.toHaveTextContent('Public preview');
     expect(tooltip).toHaveTextContent('Requires a dbt platform account or standalone dbt State account');
     expect(tooltip).toHaveTextContent('legacy Starter plan accounts');
   });

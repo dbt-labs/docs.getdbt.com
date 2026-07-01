@@ -13,7 +13,7 @@ export const FIELD_LABELS = {
   product: 'Product',
   registration: 'Registration',
   status: 'Status',
-  surface: 'Surface',
+  surface: 'Where',
   workflow: 'Workflow',
 };
 
@@ -198,10 +198,9 @@ export const availabilityPresets = {
   },
   dbt_state: {
     description: 'Use for dbt State pages that apply across platform, Core, and Fusion workflows.',
-    badge: ['dbt State', 'Core and Fusion', 'Preview'],
+    badge: ['dbt State', 'Core and Fusion'],
     feature: 'dbt State',
-    surface: 'multiple',
+    surface: ['Local development', 'dbt platform'],
     engine: 'core_and_fusion',
-    status: 'preview',
   },
 };
