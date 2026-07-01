@@ -9,7 +9,7 @@ describe('Availability', () => {
     render(<Availability availability={{ preset: 'all_users', engine: 'all_engines' }} />);
 
     const badge = screen.getByRole('button', { name: /applies to: all users · all engines/i });
-    expect(badge).toHaveTextContent('Applies to: all users · All engines');
+    expect(badge).toHaveTextContent('Applies to: All users · All engines');
 
     await user.click(badge);
 
@@ -75,6 +75,25 @@ describe('Availability', () => {
     expect(
       screen.getByRole('button', { name: /applies to: cli · all engines/i })
     ).toBeInTheDocument();
+  });
+
+  it('encodes dbt State access details in one preset', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability={{ preset: 'dbt_state' }} />);
+
+    const badge = screen.getByRole('button', { name: /applies to: dbt state · all engines/i });
+    expect(badge).toHaveTextContent('Applies to: dbt State · All engines');
+
+    await user.click(badge);
+
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Where');
+    expect(tooltip).toHaveTextContent('Local development; dbt platform');
+    expect(tooltip).toHaveTextContent('Engines');
+    expect(tooltip).toHaveTextContent('All engines');
+    expect(tooltip).toHaveTextContent('Access');
+    expect(tooltip).toHaveTextContent('paid usage-based service after 30-day trial');
+    expect(tooltip).not.toHaveTextContent('Plans');
   });
 
   it('never renders a lifecycle status row (owned by the H1 pill)', async () => {

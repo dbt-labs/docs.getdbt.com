@@ -1,7 +1,7 @@
 // Availability answers one question for the reader: "who is this page for?"
 //
 // Three independent choices, each a flat list — pick one value from each that applies:
-//   preset: which surface (all_users | platform | cli | vscode_extension)
+//   preset: which audience/surface (all_users | platform | cli | vscode_extension | dbt_state)
 //   plans:  which plan tier (only meaningful when preset: platform)
 //   engine: which engine
 //
@@ -16,6 +16,7 @@
 //     engine: not_engine_specific
 
 export const FIELD_LABELS = {
+  access: 'Access',
   engine: 'Engine',
   engines: 'Engines',
   plans: 'Plans',
@@ -23,12 +24,16 @@ export const FIELD_LABELS = {
 };
 
 export const SURFACE_LABELS = {
+  local_and_platform: 'Local development; dbt platform',
   platform: 'dbt platform',
   cli: 'CLI',
   vscode: 'VS Code extension',
 };
 
 export const VALUE_LABELS = {
+  access: {
+    dbt_state_paid: 'Requires a dbt platform account or standalone dbt State account; paid usage-based service after 30-day trial',
+  },
   engine: {
     all_engines: 'All engines',
     core_python: 'dbt Core (Python)',
@@ -77,5 +82,12 @@ export const availabilityPresets = {
   vscode_extension: {
     description: 'dbt VS Code extension pages.',
     surface: 'vscode',
+  },
+  dbt_state: {
+    description: 'dbt State pages. Encodes cross-surface, all-engine, and paid-service access details.',
+    feature: 'dbt State',
+    surface: 'local_and_platform',
+    engine: 'all_engines',
+    access: 'dbt_state_paid',
   },
 };

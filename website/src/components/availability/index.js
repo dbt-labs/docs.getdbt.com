@@ -9,9 +9,9 @@ import {
   availabilityPresets,
 } from './availabilityPresets';
 
-// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Plans.
+// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Plans, Access.
 // Lifecycle status is owned by the H1 <Lifecycle> pill and is never repeated here.
-const ROW_ORDER = ['surface', 'engine', 'plans'];
+const ROW_ORDER = ['surface', 'engine', 'plans', 'access'];
 
 const PLAN_FACETS = Object.values(PLAN_BADGE_LABELS);
 
@@ -67,6 +67,10 @@ function getBadgeFacets(merged) {
 
   if (merged.preset === 'all_users') {
     return ['All users', engineFacet];
+  }
+
+  if (merged.feature) {
+    return [merged.feature, engineFacet];
   }
 
   if (!merged.surface) {

@@ -5,8 +5,7 @@ description: "Learn about dbt State, its benefits, and key concepts for running 
 id: "dbt-state-about"
 tags: ['dbt State']
 availability:
-  preset: all_users
-  engine: all_engines
+  preset: dbt_state
 ---
 
 # About dbt State <Lifecycle status="preview" />
