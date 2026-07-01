@@ -40,7 +40,11 @@ Warnings that should be treated as errors can be specified through the `error` p
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). Runtime messages show both, but `warn_error_options` only accepts the **name** — use the event name, Fusion-native name, or a supported group (`all`, `*`). Numeric codes aren't accepted and will cause an error. To find the name for a code you see in your logs, check [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases).
+In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). 
+
+Runtime messages show both, but `warn_error_options` only accepts the _name_. Use the event name, Fusion-native name, or a supported group (`all`, `*`). Numeric codes aren't accepted and will cause an error. 
+
+To find the name for a code you see in your logs, check out [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases).
 
 </VersionBlock>
 
@@ -192,7 +196,7 @@ Existing dbt-core event names fall into three categories:
 
 ### Warning codes in Fusion
 
-In <Constant name="fusion" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). Warning messages at runtime show both, but `warn_error_options` only accepts the **name** — never the code:
+In <Constant name="fusion" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). Warning messages at runtime show both, but `warn_error_options` only accepts the _name_,  never the code:
 
 ```yaml
 flags:
@@ -203,11 +207,11 @@ flags:
       - FreshnessConfigProblem   # by name
 ```
 
-Any value that isn't a supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup — this includes numeric codes. For example, `{error: [1092]}` fails, but `{error: [NoNodesForSelectionCriteria]}` works.
+Any value that isn't a supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup, including numeric codes. For example, `{error: [1092]}` fails, but `{error: [NoNodesForSelectionCriteria]}` works.
 
 ### Supported legacy dbt-core event name aliases
 
-When you see a warning code in your logs, use this table to find the matching event name to put in `warn_error_options`. The code column is only for looking up warnings you see at runtime — you can't use the code itself in your config:
+When you see a warning code in your logs, use the following table to find the matching event name to put in `warn_error_options`. The code column is only for looking up warnings you see at runtime &mdash; you can't use the code itself in your config:
 
 | Fusion code (runtime only) | dbt-core event name (use this in config) | Description |
 |---|---|---|
