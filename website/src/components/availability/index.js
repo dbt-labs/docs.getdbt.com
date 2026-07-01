@@ -9,10 +9,12 @@ import {
   availabilityPresets,
 } from './availabilityPresets';
 
-// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Plans,
-// Available to, Access. Lifecycle status is owned by the H1 <Lifecycle> pill and is
-// never repeated here.
-const ROW_ORDER = ['surface', 'engine', 'plans', 'account', 'access'];
+// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Available
+// to, Plans, Access. "Available to" comes before "Plans" so a broader account/entitlement
+// path (for example, dbt Core via a standalone account) reads before a platform-only plan
+// restriction — otherwise readers can stop at "Plans" and assume the page is platform-only.
+// Lifecycle status is owned by the H1 <Lifecycle> pill and is never repeated here.
+const ROW_ORDER = ['surface', 'engine', 'account', 'plans', 'access'];
 
 const PLAN_FACETS = Object.values(PLAN_BADGE_LABELS);
 
