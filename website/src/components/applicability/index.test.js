@@ -134,6 +134,49 @@ describe('Applicability', () => {
     expect(tooltip).not.toHaveTextContent('Optional');
   });
 
+  it('renders plan facets for Wizard platform availability', async () => {
+    const user = userEvent.setup();
+    render(<Applicability availability="wizard_platform" />);
+
+    const badge = screen.getByRole('button', { name: /dbt platform · dbt wizard · starter and above/i });
+    expect(screen.getByText('Starter and above')).toHaveAttribute('data-availability-facet', 'plan');
+
+    await user.click(badge);
+
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Product');
+    expect(tooltip).toHaveTextContent('dbt Wizard');
+    expect(tooltip).toHaveTextContent('Plans');
+    expect(tooltip).toHaveTextContent('Starter, Enterprise, and Enterprise+');
+    expect(tooltip).toHaveTextContent('Public preview');
+  });
+
+  it('renders dbt State availability across surfaces and engines', async () => {
+    const user = userEvent.setup();
+    render(
+      <Applicability
+        availability={{
+          preset: 'dbt_state',
+          notes: ['Requires a dbt platform account or standalone dbt State account'],
+          excludes: ['legacy Starter plan accounts'],
+        }}
+      />
+    );
+
+    const badge = screen.getByRole('button', { name: /dbt state · core and fusion · preview/i });
+    await user.click(badge);
+
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Product');
+    expect(tooltip).toHaveTextContent('dbt State');
+    expect(tooltip).toHaveTextContent('Surface');
+    expect(tooltip).toHaveTextContent('Multiple surfaces');
+    expect(tooltip).toHaveTextContent('Engines');
+    expect(tooltip).toHaveTextContent('dbt Core Python engine and dbt Fusion engine');
+    expect(tooltip).toHaveTextContent('Requires a dbt platform account or standalone dbt State account');
+    expect(tooltip).toHaveTextContent('legacy Starter plan accounts');
+  });
+
   it('opens on focus and closes on Escape', async () => {
     const user = userEvent.setup();
     render(<Applicability availability="cli_all_engines" />);

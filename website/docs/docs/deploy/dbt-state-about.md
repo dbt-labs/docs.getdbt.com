@@ -4,9 +4,21 @@ sidebar_label: "About dbt State"
 description: "Learn about dbt State, its benefits, and key concepts for running only what has changed in your dbt project."
 id: "dbt-state-about"
 tags: ['dbt State']
+availability:
+  preset: dbt_state
+  notes:
+    - Requires a dbt platform account or standalone dbt State account
+  excludes:
+    - legacy Starter plan accounts
 ---
 
 # About dbt State <Lifecycle status="preview" />
+
+<Applicability availability={{
+  preset: "dbt_state",
+  notes: ["Requires a dbt platform account or standalone dbt State account"],
+  excludes: ["legacy Starter plan accounts"],
+}} />
 
 <IntroText>
 

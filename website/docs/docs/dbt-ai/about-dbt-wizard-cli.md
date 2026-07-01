@@ -5,6 +5,8 @@ description: "The dbt Wizard CLI helps teams ship higher-quality dbt changes fas
 sidebar_label: "About dbt Wizard CLI"
 tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
+availability:
+  preset: wizard_cli
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -14,7 +16,7 @@ import WizardCliInstall from '/snippets/_wizard-cli-install-by-version.md';
 
 # <Constant name="wizard" /> CLI <Lifecycle status="beta"/>
 
-<Applicability surface="local" />
+<Applicability availability="wizard_cli" />
 
 <IntroText>
 The <Constant name="wizard" /> CLI helps teams ship higher-quality dbt changes faster and with less risk. Built for governed data development in dbt, it understands your project, routes to the right dbt tools, validates changes, and shows how logic evolves from your local machine.
