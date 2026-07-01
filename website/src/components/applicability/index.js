@@ -112,7 +112,7 @@ function buildRows(availability) {
       return null;
     }
 
-    const labelKey = key === 'engine' && availability.engine === 'core_and_fusion' ? 'engines' : key;
+    const labelKey = key === 'engine' && ['all_engines', 'core_and_fusion'].includes(availability.engine) ? 'engines' : key;
     if (labelKey === 'surface' && productValue === formatted) {
       return null;
     }
