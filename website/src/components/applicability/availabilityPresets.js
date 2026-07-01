@@ -26,9 +26,9 @@ export const VALUE_LABELS = {
     platform_users: 'dbt platform users',
   },
   engine: {
-    core_python: 'dbt Core Python engine',
-    fusion: 'dbt Fusion engine',
-    core_and_fusion: 'dbt Core Python engine and dbt Fusion engine',
+    core_python: 'dbt Core (Python)',
+    fusion: 'dbt Fusion',
+    core_and_fusion: 'dbt Core (Python) and dbt Fusion',
     all_engines: 'All engines',
     not_engine_specific: 'Not engine-specific',
   },

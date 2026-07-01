@@ -96,7 +96,7 @@ describe('Applicability', () => {
     expect(tooltip).toHaveTextContent('Product');
     expect(tooltip).toHaveTextContent('dbt VS Code extension');
     expect(tooltip).toHaveTextContent('Engine');
-    expect(tooltip).toHaveTextContent('dbt Fusion engine');
+    expect(tooltip).toHaveTextContent('dbt Fusion');
     expect(tooltip).toHaveTextContent('Registration');
     expect(tooltip).toHaveTextContent('Advanced features require free dbt platform registration after trial');
   });
@@ -122,7 +122,7 @@ describe('Applicability', () => {
     expect(tooltip).toHaveTextContent('Local development; dbt platform development');
     expect(tooltip).toHaveTextContent('VS Code; CLI; dbt platform');
     expect(tooltip).toHaveTextContent('Engines');
-    expect(tooltip).toHaveTextContent('dbt Core Python engine and dbt Fusion engine');
+    expect(tooltip).toHaveTextContent('dbt Core (Python) and dbt Fusion');
     expect(tooltip).toHaveTextContent('Partial support');
   });
 
@@ -170,7 +170,7 @@ describe('Applicability', () => {
     expect(tooltip).toHaveTextContent('Plans');
     expect(tooltip).toHaveTextContent('Starter, Enterprise, and Enterprise+');
     expect(tooltip).toHaveTextContent('Engines');
-    expect(tooltip).toHaveTextContent('dbt Core Python engine and dbt Fusion engine');
+    expect(tooltip).toHaveTextContent('dbt Core (Python) and dbt Fusion');
     expect(tooltip).toHaveTextContent('Public preview');
   });
 
@@ -195,7 +195,7 @@ describe('Applicability', () => {
     expect(tooltip).toHaveTextContent('Surface');
     expect(tooltip).toHaveTextContent('Multiple surfaces');
     expect(tooltip).toHaveTextContent('Engines');
-    expect(tooltip).toHaveTextContent('dbt Core Python engine and dbt Fusion engine');
+    expect(tooltip).toHaveTextContent('dbt Core (Python) and dbt Fusion');
     expect(tooltip).toHaveTextContent('Requires a dbt platform account or standalone dbt State account');
     expect(tooltip).toHaveTextContent('legacy Starter plan accounts');
   });
