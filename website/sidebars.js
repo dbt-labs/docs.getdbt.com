@@ -437,7 +437,6 @@ const sidebarSettings = {
                 "docs/dbt-ai/wizard-ide",
                 "docs/platform/wizard-home",
                 "docs/dbt-ai/wizard-platform-skills",
-                "docs/dbt-ai/wizard-platform-subagents",
                 "docs/dbt-ai/wizard-platform-mcp",
                 "docs/dbt-ai/wizard-platform-privacy-data",
               ],
