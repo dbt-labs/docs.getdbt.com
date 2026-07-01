@@ -66,7 +66,7 @@ function getBadgeFacets(merged) {
   const engineFacet = ENGINE_BADGE_LABELS[merged.engine];
 
   if (merged.preset === 'all_users') {
-    return ['all users', engineFacet];
+    return ['All users', engineFacet];
   }
 
   if (!merged.surface) {

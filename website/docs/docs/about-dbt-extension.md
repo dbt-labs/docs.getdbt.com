@@ -6,7 +6,7 @@ sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
 availability:
-  preset: vscode_extension
+  preset: all_users
   engine: fusion
 ---
 
