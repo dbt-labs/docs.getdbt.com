@@ -69,7 +69,7 @@
 }
 
 .tooltip {
-  background: var(--bg-neutral-primary);
+  background: var(--bg-neutral-primary-default);
   border: 1px solid var(--border-neutral-tertiary);
   border-radius: 8px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
@@ -87,7 +87,7 @@
 }
 
 .tooltip::before {
-  background: var(--bg-neutral-primary);
+  background: var(--bg-neutral-primary-default);
   border-left: 1px solid var(--border-neutral-tertiary);
   border-top: 1px solid var(--border-neutral-tertiary);
   content: '';
