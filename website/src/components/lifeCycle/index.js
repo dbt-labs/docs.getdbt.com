@@ -68,7 +68,7 @@ export default function Lifecycle(props) {
     return null;
   }
 
-  const sizePercent = props.size !== undefined ? parseFloat(props.size) / 100 : 0.72;
+  const sizePercent = props.size !== undefined ? parseFloat(props.size) / 100 : 0.82;
 
   const statuses = props.status.split(',').map(s => {
     const trimmedStatus = s.trim();
