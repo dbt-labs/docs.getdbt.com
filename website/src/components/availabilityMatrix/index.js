@@ -10,9 +10,10 @@ const STATE_LABELS = {
 };
 
 const PLAN_LABELS = {
-  'developer+': 'Developer+',
+  all: 'All plans',
+  'developer+': 'All plans',
   'starter+': 'Starter+',
-  'enterprise+': 'Enterprise+',
+  'enterprise+': 'All Enterprise tiers',
   'enterprise-only': 'Enterprise only',
 };
 

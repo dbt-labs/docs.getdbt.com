@@ -8,7 +8,7 @@ pagination_next: "docs/deploy/job-scheduler"
 pagination_prev: null
 applicability:
   surface: "platform"
-  plan: "developer+"
+  plan: "all"
 ---
 
 <IntroText>

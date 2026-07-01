@@ -24,7 +24,7 @@ describe('AvailabilityMatrix', () => {
     expect(screen.getByText('OSS / CLI')).toBeInTheDocument();
     expect(screen.getByText('dbt platform')).toBeInTheDocument();
     expect(screen.getByText('Free')).toBeInTheDocument();
-    expect(screen.getByText('Enterprise+')).toBeInTheDocument();
+    expect(screen.getByText('All Enterprise tiers')).toBeInTheDocument();
     expect(screen.getByText('Preview')).toBeInTheDocument();
     expect(screen.getByText('Not supported')).toBeInTheDocument();
   });
@@ -87,5 +87,22 @@ describe('AvailabilityMatrix', () => {
 
     expect(within(platformCell).getByText('Yes')).toBeInTheDocument();
     expect(within(platformCell).getByText('Starter+')).toBeInTheDocument();
+  });
+
+  it('renders all-plan availability without Developer+ ambiguity', () => {
+    render(
+      <AvailabilityMatrix
+        rows={[
+          {
+            engine: 'Core (Python)',
+            oss: { state: 'none' },
+            platform: { state: 'ga', plan: 'developer+' },
+          },
+        ]}
+      />
+    );
+
+    expect(screen.getByText('All plans')).toBeInTheDocument();
+    expect(screen.queryByText('Developer+')).not.toBeInTheDocument();
   });
 });

@@ -9,9 +9,10 @@ const SURFACE_LABELS = {
 };
 
 const PLAN_LABELS = {
-  'developer+': 'Developer+',
+  all: 'All plans',
+  'developer+': 'All plans',
   'starter+': 'Starter+',
-  'enterprise+': 'Enterprise+',
+  'enterprise+': 'All Enterprise tiers',
   'enterprise-only': 'Enterprise only',
 };
 
@@ -26,11 +27,17 @@ export default function Applicability({ surface, plan = 'all', engine = 'both' }
   }
 
   const surfaceLabel = SURFACE_LABELS[surface];
-  const shouldShowPlan = !['local', 'oss'].includes(surface) && plan !== 'all' && PLAN_LABELS[plan];
+  const shouldShowPlan = !['local', 'oss', 'both'].includes(surface) && PLAN_LABELS[plan];
   const shouldShowEngine = engine !== 'both' && ENGINE_LABELS[engine];
 
   if (surface === 'both' && !shouldShowPlan && !shouldShowEngine) {
-    return null;
+    return (
+      <div className={styles.applicability} aria-label="Page applicability">
+        <span className={styles.surface}>
+          Applies to <strong>all users</strong>
+        </span>
+      </div>
+    );
   }
 
   if (!surfaceLabel) {
