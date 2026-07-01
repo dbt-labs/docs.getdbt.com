@@ -91,12 +91,11 @@ describe('Availability', () => {
     expect(tooltip).toHaveTextContent('Local development; dbt platform');
     expect(tooltip).toHaveTextContent('Engines');
     expect(tooltip).toHaveTextContent('All engines');
-    expect(tooltip).toHaveTextContent('Plans');
-    expect(tooltip).toHaveTextContent('Starter, Enterprise, and Enterprise+');
     expect(tooltip).toHaveTextContent('Available to');
     expect(tooltip).toHaveTextContent('dbt platform account or standalone dbt State account');
     expect(tooltip).toHaveTextContent('Access');
     expect(tooltip).toHaveTextContent('Free trial, usage-based after trial');
+    expect(tooltip).not.toHaveTextContent('Plans');
   });
 
   it('falls back to a generic account label when no feature name is set', async () => {
