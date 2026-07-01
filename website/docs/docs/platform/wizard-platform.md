@@ -8,6 +8,7 @@ tags: [AI, Wizard]
 keywords: ["dbt Wizard", "dbt platform", "AI", "agent", "dbt"]
 availability:
   preset: wizard_platform
+  engine: core_and_fusion
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
@@ -16,7 +17,10 @@ import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 
 # About dbt Wizard in the dbt platform <Lifecycle status="preview,self_service,managed,managed_plus" />
 
-<Applicability availability="wizard_platform" />
+<Availability availability={{
+  preset: "wizard_platform",
+  engine: "core_and_fusion",
+}} />
 
 <IntroText>
 <Constant name="wizard" /> helps teams ship trusted dbt changes faster and with less risk. It uses native dbt metadata, routes to the right tools, and validates with warehouse awareness so teams can investigate, change, validate, and ship in one place.

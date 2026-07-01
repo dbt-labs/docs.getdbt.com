@@ -15,7 +15,7 @@ import WizardIde from '/snippets/_wizard-ide.md';
 
 # dbt Wizard in Studio IDE <Lifecycle status="preview"/>
 
-<Applicability availability={{
+<Availability availability={{
   preset: "wizard_platform",
   surface: "Studio IDE",
   engine: "core_and_fusion",

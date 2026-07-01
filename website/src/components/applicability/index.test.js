@@ -19,6 +19,27 @@ describe('Applicability', () => {
     expect(screen.getByRole('tooltip')).toHaveTextContent('Applies to all users');
   });
 
+  it('renders all-user availability metadata with engine details', async () => {
+    const user = userEvent.setup();
+    render(
+      <Applicability
+        availability={{
+          preset: 'all_users',
+          engine: 'all_engines',
+        }}
+      />
+    );
+
+    const badge = screen.getByRole('button', { name: /applies to: all users/i });
+    await user.click(badge);
+
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Availability');
+    expect(tooltip).toHaveTextContent('Applies to all users');
+    expect(tooltip).toHaveTextContent('Engines');
+    expect(tooltip).toHaveTextContent('All engines');
+  });
+
   it('renders a platform Enterprise badge with structured plan details from legacy props', async () => {
     const user = userEvent.setup();
     render(<Applicability surface="platform" plan="enterprise+" />);
@@ -148,6 +169,8 @@ describe('Applicability', () => {
     expect(tooltip).toHaveTextContent('dbt Wizard');
     expect(tooltip).toHaveTextContent('Plans');
     expect(tooltip).toHaveTextContent('Starter, Enterprise, and Enterprise+');
+    expect(tooltip).toHaveTextContent('Engines');
+    expect(tooltip).toHaveTextContent('dbt Core Python engine and dbt Fusion engine');
     expect(tooltip).toHaveTextContent('Public preview');
   });
 

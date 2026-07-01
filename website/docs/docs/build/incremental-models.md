@@ -4,10 +4,9 @@ description: "Learn how to configure and optimize incremental models when develo
 id: "incremental-models"
 keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration", "incremental predicates"]
 intro_text: "Learn how to configure and optimize incremental models when developing in dbt."
-applicability:
-  surface: "both"
-  plan: "all"
-  engine: "both"
+availability:
+  preset: all_users
+  engine: all_engines
 ---
 
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';

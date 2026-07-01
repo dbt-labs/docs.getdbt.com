@@ -3,10 +3,9 @@ title: "Materializations"
 description: "Configure materializations in dbt to control how the SQL is run and resulting data is stored."
 id: "materializations"
 pagination_next: "docs/build/incremental-models"
-applicability:
-  surface: "both"
-  plan: "all"
-  engine: "both"
+availability:
+  preset: all_users
+  engine: all_engines
 ---
 
 ## Overview

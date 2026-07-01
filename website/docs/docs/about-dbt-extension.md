@@ -7,6 +7,7 @@ image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
 availability:
   preset: vscode_fusion_preview
+  engine: fusion
   registration:
     - All features are available for 14 days without registration
     - Advanced features require free dbt platform registration after trial
@@ -16,8 +17,9 @@ availability:
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
 
-<Applicability availability={{
+<Availability availability={{
   preset: "vscode_fusion_preview",
+  engine: "fusion",
   registration: [
     "All features are available for 14 days without registration",
     "Advanced features require free dbt platform registration after trial",

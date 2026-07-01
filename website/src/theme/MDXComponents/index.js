@@ -104,6 +104,7 @@ const MDXComponents = {
   IntroText: IntroText,
   Constant: Constant,
   Applicability: Applicability,
+  Availability: Applicability,
   AvailabilityMatrix: AvailabilityMatrix,
 };
 export default MDXComponents;

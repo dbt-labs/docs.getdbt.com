@@ -16,7 +16,7 @@ availability:
 
 # About dbt Insights <Lifecycle status="beta" />
 
-<Applicability availability={{
+<Availability availability={{
   preset: "platform_enterprise",
   feature: "dbt Insights",
   engine: "not_engine_specific",

@@ -20,6 +20,7 @@ export const FIELD_LABELS = {
 export const VALUE_LABELS = {
   availability: {
     open_source: 'Open source',
+    all_users: 'Applies to all users',
   },
   availableTo: {
     platform_users: 'dbt platform users',
@@ -80,6 +81,12 @@ export const VALUE_LABELS = {
 };
 
 export const availabilityPresets = {
+  all_users: {
+    description: 'Use for pages that apply to all dbt users.',
+    badge: ['all users'],
+    availability: 'all_users',
+    engine: 'all_engines',
+  },
   platform_all_plans: {
     description: 'Use for dbt platform pages available to every platform plan.',
     badge: ['dbt platform', 'All plans'],
@@ -177,6 +184,7 @@ export const availabilityPresets = {
     product: 'wizard_cli',
     workflow: 'local',
     surface: 'cli',
+    engine: 'core_and_fusion',
     status: 'beta',
   },
   wizard_platform: {
@@ -185,6 +193,7 @@ export const availabilityPresets = {
     product: 'wizard',
     surface: 'platform',
     plans: 'starter_and_above',
+    engine: 'core_and_fusion',
     status: 'preview',
   },
   dbt_state: {
