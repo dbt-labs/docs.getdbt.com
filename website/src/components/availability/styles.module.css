@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.applicability {
+.availability {
   align-items: center;
   background: var(--bg-neutral-secondary-subtle);
   border: 1px solid var(--border-neutral-tertiary);
@@ -22,13 +22,13 @@
   text-align: left;
 }
 
-.applicability:hover,
-.applicability:focus-visible {
+.availability:hover,
+.availability:focus-visible {
   border-color: var(--border-neutral-secondary-hover);
   color: var(--text-neutral-primary);
 }
 
-.applicability:focus-visible {
+.availability:focus-visible {
   outline: 2px solid var(--border-brand-primary);
   outline-offset: 2px;
 }
@@ -122,14 +122,14 @@
   min-width: 0;
 }
 
-:global(html[data-theme="dark"]) .applicability {
+:global(html[data-theme="dark"]) .availability {
   background: var(--color-terminal-black-900);
   border-color: var(--border-inverse-tertiary);
   color: var(--text-inverse-secondary);
 }
 
-:global(html[data-theme="dark"]) .applicability:hover,
-:global(html[data-theme="dark"]) .applicability:focus-visible {
+:global(html[data-theme="dark"]) .availability:hover,
+:global(html[data-theme="dark"]) .availability:focus-visible {
   border-color: var(--border-inverse-secondary);
   color: var(--text-inverse-primary);
 }

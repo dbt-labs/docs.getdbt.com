@@ -6,7 +6,7 @@ sidebar_label: "About dbt Wizard CLI"
 tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
 availability:
-  preset: wizard_cli
+  preset: cli
   engine: core_and_fusion
 ---
 

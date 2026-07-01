@@ -1,92 +1,39 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.css';
-import { FIELD_LABELS, VALUE_LABELS, availabilityPresets } from './availabilityPresets';
+import {
+  ENGINE_BADGE_LABELS,
+  FIELD_LABELS,
+  PLAN_BADGE_LABELS,
+  SURFACE_LABELS,
+  VALUE_LABELS,
+  availabilityPresets,
+} from './availabilityPresets';
 
-const SURFACE_LABELS = {
-  platform: 'dbt platform',
-  local: 'local development',
-  oss: 'OSS only',
-  both: 'dbt platform and local development',
-};
+// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Plans.
+// Lifecycle status is owned by the H1 <Lifecycle> pill and is never repeated here.
+const ROW_ORDER = ['surface', 'engine', 'plans'];
 
-const PLAN_LABELS = {
-  all: 'All plans',
-  'developer+': 'All plans',
-  'starter+': 'Starter and above',
-  'enterprise+': 'Enterprise',
-  'enterprise-only': 'Enterprise only',
-};
-
-const ENGINE_LABELS = {
-  core: 'Core (Python)',
-  fusion: 'Fusion',
-};
-
-const ROW_ORDER = [
-  'product',
-  'feature',
-  'workflow',
-  'surface',
-  'availableTo',
-  'engine',
-  'plans',
-  'license',
-  'status',
-  'availability',
-  'registration',
-  'optional',
-  'partialSupport',
-  'notes',
-  'excludes',
-];
-
-const AVAILABILITY_ALIASES = {
-  partial_support: 'partialSupport',
-  available_to: 'availableTo',
-};
-
-function normalizeKey(key) {
-  return AVAILABILITY_ALIASES[key] || key;
-}
+const PLAN_FACETS = Object.values(PLAN_BADGE_LABELS);
 
 function formatValue(key, value) {
   if (value === undefined || value === null || value === '') {
     return null;
   }
 
-  const normalizedKey = normalizeKey(key);
-
-  if (Array.isArray(value)) {
-    return value
-      .map((entry) => formatValue(normalizedKey, entry))
-      .filter(Boolean)
-      .join('; ');
-  }
-
-  return VALUE_LABELS[normalizedKey]?.[value] || value;
+  return VALUE_LABELS[key]?.[value] || value;
 }
 
-function getBadgeText(badge) {
-  if (!badge) {
+function getBadgeText(facets) {
+  const filtered = facets.filter(Boolean);
+  if (!filtered.length) {
     return null;
   }
 
-  if (Array.isArray(badge)) {
-    return `Applies to: ${badge.filter(Boolean).join(' · ')}`;
-  }
-
-  return badge.startsWith('Applies to:') ? badge : `Applies to: ${badge}`;
+  return `Applies to: ${filtered.join(' · ')}`;
 }
 
 function getBadgeParts(badgeText) {
   const prefix = 'Applies to:';
-  if (!badgeText.startsWith(prefix)) {
-    return {
-      prefix: null,
-      facets: [badgeText],
-    };
-  }
-
   return {
     prefix,
     facets: badgeText.slice(prefix.length).trim().split(' · ').filter(Boolean),
@@ -94,57 +41,61 @@ function getBadgeParts(badgeText) {
 }
 
 function isPlanFacet(facet) {
-  return [
-    'All plans',
-    'Starter and above',
-    'Enterprise',
-    'Enterprise+',
-  ].includes(facet);
+  return PLAN_FACETS.includes(facet);
 }
 
 function buildRows(availability) {
-  const productValue = formatValue('product', availability.product);
-
   return ROW_ORDER.map((key) => {
-    const value = availability[key] ?? availability[normalizeKey(key)];
-    const formatted = formatValue(key, value);
+    const formatted = formatValue(key, availability[key]);
     if (!formatted) {
       return null;
     }
 
-    const labelKey = key === 'engine' && ['all_engines', 'core_and_fusion'].includes(availability.engine) ? 'engines' : key;
-    if (labelKey === 'surface' && productValue === formatted) {
-      return null;
-    }
+    // Use the plural "Engines" label when the value covers more than one engine.
+    const labelKey =
+      key === 'engine' && ['all_engines', 'core_and_fusion'].includes(availability.engine)
+        ? 'engines'
+        : key;
 
-    return {
-      label: FIELD_LABELS[labelKey] || key,
-      value: formatted,
-    };
+    return { label: FIELD_LABELS[labelKey] || key, value: formatted };
   }).filter(Boolean);
 }
 
-function normalizeAvailabilityKeys(availability) {
-  return Object.entries(availability).reduce((normalized, [key, value]) => ({
-    ...normalized,
-    [normalizeKey(key)]: value,
-  }), {});
+// The badge is always derived from surface + plans + engine — writers never write badge text.
+function getBadgeFacets(merged) {
+  if (merged.preset === 'all_users') {
+    return ['all users'];
+  }
+
+  if (!merged.surface) {
+    return [];
+  }
+
+  return [
+    SURFACE_LABELS[merged.surface],
+    PLAN_BADGE_LABELS[merged.plans],
+    ENGINE_BADGE_LABELS[merged.engine],
+  ];
 }
 
-function normalizeStructuredAvailability(availability) {
-  const availabilityObject = typeof availability === 'string' ? { preset: availability } : availability;
+function normalizeAvailability(availability) {
+  const availabilityObject =
+    typeof availability === 'string' ? { preset: availability } : availability;
   if (!availabilityObject || typeof availabilityObject !== 'object') {
     return null;
   }
 
   const preset = availabilityObject.preset ? availabilityPresets[availabilityObject.preset] : null;
-  const merged = normalizeAvailabilityKeys({
-    ...preset,
-    ...availabilityObject,
-  });
-  const badgeText = getBadgeText(merged.badge || preset?.badge);
+  const merged = { ...preset, ...availabilityObject };
 
-  if (!badgeText || badgeText === 'Applies to: dbt') {
+  // A platform page with no explicit plan tier applies to every plan.
+  if (merged.surface === 'platform' && !merged.plans) {
+    merged.plans = 'all_platform_plans';
+  }
+
+  const badgeText = getBadgeText(getBadgeFacets(merged));
+
+  if (!badgeText) {
     return null;
   }
 
@@ -155,56 +106,8 @@ function normalizeStructuredAvailability(availability) {
   };
 }
 
-function normalizeLegacyApplicability({ surface, plan = 'all', engine = 'both' }) {
-  if (!surface) {
-    return null;
-  }
-
-  const surfaceLabel = SURFACE_LABELS[surface];
-  const shouldShowPlan = !['local', 'oss', 'both'].includes(surface) && PLAN_LABELS[plan];
-  const shouldShowEngine = engine !== 'both' && ENGINE_LABELS[engine];
-
-  if (surface === 'both' && !shouldShowPlan && !shouldShowEngine) {
-    const badgeText = 'Applies to: all users';
-    return {
-      badgeText,
-      badgeParts: getBadgeParts(badgeText),
-      rows: [{ label: 'Availability', value: 'Applies to all users' }],
-    };
-  }
-
-  if (!surfaceLabel) {
-    return null;
-  }
-
-  const badge = [surfaceLabel];
-  const rows = [{ label: 'Surface', value: surfaceLabel }];
-
-  if (shouldShowPlan) {
-    badge.push(PLAN_LABELS[plan]);
-    rows.push({
-      label: 'Plans',
-      value: plan === 'enterprise+' ? 'Enterprise and Enterprise+' : PLAN_LABELS[plan],
-    });
-  }
-
-  if (shouldShowEngine) {
-    badge.push(ENGINE_LABELS[engine]);
-    rows.push({ label: 'Engine', value: ENGINE_LABELS[engine] });
-  }
-
-  return {
-    badgeText: getBadgeText(badge),
-    badgeParts: getBadgeParts(getBadgeText(badge)),
-    rows,
-  };
-}
-
-export default function Applicability({ availability, ...legacyApplicability }) {
-  const normalized = useMemo(
-    () => normalizeStructuredAvailability(availability) || normalizeLegacyApplicability(legacyApplicability),
-    [availability, legacyApplicability]
-  );
+export default function Availability({ availability }) {
+  const normalized = useMemo(() => normalizeAvailability(availability), [availability]);
   const [isOpen, setIsOpen] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
   const wrapperRef = useRef(null);
@@ -285,7 +188,7 @@ export default function Applicability({ availability, ...legacyApplicability }) 
     >
       <button
         type="button"
-        className={styles.applicability}
+        className={styles.availability}
         aria-label={`${normalized.badgeText}. Show availability details`}
         aria-expanded={isOpen}
         aria-describedby={isOpen ? tooltipId : undefined}

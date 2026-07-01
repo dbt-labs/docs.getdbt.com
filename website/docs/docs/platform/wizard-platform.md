@@ -7,7 +7,8 @@ hide_table_of_contents: false
 tags: [AI, Wizard]
 keywords: ["dbt Wizard", "dbt platform", "AI", "agent", "dbt"]
 availability:
-  preset: wizard_platform
+  preset: platform
+  plans: starter_and_above
   engine: core_and_fusion
 ---
 

@@ -6,7 +6,7 @@ sidebar_label: "About data platform connections"
 pagination_next: "docs/platform/connect-data-platform/connect-apache-spark"
 pagination_prev: null
 availability:
-  preset: platform_all_plans
+  preset: platform
   engine: core_and_fusion
 ---
 

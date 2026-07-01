@@ -47,7 +47,7 @@ import WizardPopcorn from '@site/src/components/wizardPopcorn/';
 import VersionCallout from '@site/src/components/versionCallout';
 import IntroText from '@site/src/components/IntroText';
 import Constant from '@site/src/components/constant';
-import Applicability from '@site/src/components/applicability';
+import Availability from '@site/src/components/availability';
 import AvailabilityContext from '@site/src/components/availabilityContext';
 import AvailabilityMatrix from '@site/src/components/availabilityMatrix';
 
@@ -58,7 +58,7 @@ function H1WithAvailability(props) {
     <>
       <MDXHeading as="h1" {...props} />
       {renderAfterH1 && availability && (
-        <Applicability
+        <Availability
           availability={availability}
         />
       )}

@@ -7,7 +7,7 @@ tags: ["scheduler"]
 pagination_next: "docs/deploy/job-scheduler"
 pagination_prev: null
 availability:
-  preset: platform_all_plans
+  preset: platform
   engine: core_and_fusion
 ---
 

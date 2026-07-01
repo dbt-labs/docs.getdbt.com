@@ -6,10 +6,8 @@ sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
 availability:
-  preset: vscode_fusion_preview
+  preset: vscode_extension
   engine: fusion
-  excludes:
-    - dbt Core (Python engine)
 ---
 
 # About the dbt VS Code extension <Lifecycle status="preview" />

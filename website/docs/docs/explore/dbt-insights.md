@@ -7,11 +7,9 @@ image: /img/docs/dbt-insights/insights-chart.jpg
 pagination_prev: "docs/explore/model-query-history"
 pagination_next: "docs/explore/navigate-dbt-insights"
 availability:
-  preset: platform_enterprise
-  feature: dbt Insights
+  preset: platform
+  plans: enterprise_and_above
   engine: not_engine_specific
-  excludes:
-    - local CLI workflows
 ---
 
 # About dbt Insights <Lifecycle status="beta" />

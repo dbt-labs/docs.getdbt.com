@@ -8,7 +8,7 @@ import IntroText from "@site/src/components/IntroText";
 import QuickstartTOC from "@site/src/components/quickstartTOC";
 import {QuickstartGuideTitle} from "../../../components/quickstartGuideCard";
 import { Feedback } from "../../../components/feedback";
-import Applicability from "@site/src/components/applicability";
+import Availability from "@site/src/components/availability";
 import AvailabilityContext from "@site/src/components/availabilityContext";
 
 function useSyntheticTitle() {
@@ -47,7 +47,7 @@ export default function DocItemContent({ children }) {
       )}
 
       {syntheticTitle && frontMatter.availability && (
-        <Applicability
+        <Availability
           availability={frontMatter.availability}
         />
       )}

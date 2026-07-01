@@ -7,8 +7,7 @@ tags: [IDE]
 pagination_next: "docs/platform/studio-ide/keyboard-shortcuts"
 pagination_prev: null
 availability:
-  preset: platform_all_plans
-  feature: Studio IDE
+  preset: platform
   engine: core_and_fusion
 ---
 

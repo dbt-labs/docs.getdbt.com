@@ -3,7 +3,8 @@ title: "Single sign-on, SCIM, and OAuth"
 description: "Overview of SSO, SCIM, and OAuth options for authentication and access in the dbt platform."
 id: "sso-oauth-intro"
 availability:
-  preset: platform_enterprise
+  preset: platform
+  plans: enterprise_and_above
   engine: not_engine_specific
 ---
 
