@@ -1,7 +1,7 @@
 ---
 title: "MetricFlow time spine YAML"
 id: "require_yaml_configuration_for_mf_time_spines"
-sidebar_label: "require_yaml_configuration_for_mf_time_spines"
+sidebar_label: "require yaml configuration for mf time spines"
 ---
 
 :::caution Removed in <Constant name="core_v2" />

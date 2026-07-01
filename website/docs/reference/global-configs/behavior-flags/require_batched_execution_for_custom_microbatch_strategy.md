@@ -1,7 +1,7 @@
 ---
 title: "Custom microbatch strategy"
 id: "require_batched_execution_for_custom_microbatch_strategy"
-sidebar_label: "require_batched_execution_for_custom_microbatch_strategy"
+sidebar_label: "require batched execution for custom microbatch strategy"
 ---
 
 :::caution Removed in <Constant name="core_v2" />

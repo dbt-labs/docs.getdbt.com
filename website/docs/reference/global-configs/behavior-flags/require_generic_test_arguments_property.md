@@ -1,7 +1,7 @@
 ---
 title: "Generic test arguments property"
 id: "require_generic_test_arguments_property"
-sidebar_label: "require_generic_test_arguments_property"
+sidebar_label: "require generic test arguments property"
 ---
 
 :::info This flag has reached maturity

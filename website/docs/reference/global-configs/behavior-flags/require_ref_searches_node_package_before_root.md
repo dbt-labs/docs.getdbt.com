@@ -1,7 +1,7 @@
 ---
 title: "Package ref search order"
 id: "require_ref_searches_node_package_before_root"
-sidebar_label: "require_ref_searches_node_package_before_root"
+sidebar_label: "require ref searches node package before root"
 ---
 
 | `require_ref_searches_node_package_before_root` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |

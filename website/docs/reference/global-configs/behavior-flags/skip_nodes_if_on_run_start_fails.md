@@ -1,7 +1,7 @@
 ---
 title: "Failures in on-run-start hooks"
 id: "skip_nodes_if_on_run_start_fails"
-sidebar_label: "skip_nodes_if_on_run_start_fails"
+sidebar_label: "skip nodes if on run start fails"
 ---
 
 :::caution Removed in <Constant name="core_v2" />

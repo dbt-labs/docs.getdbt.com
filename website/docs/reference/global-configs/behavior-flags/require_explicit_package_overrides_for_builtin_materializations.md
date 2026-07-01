@@ -1,7 +1,7 @@
 ---
 title: "Package overrides for built-in materializations"
 id: "require_explicit_package_overrides_for_builtin_materializations"
-sidebar_label: "require_explicit_package_overrides_for_builtin_materializations"
+sidebar_label: "require explicit package overrides for builtin materializations"
 ---
 
 :::caution Removed in <Constant name="core_v2" />

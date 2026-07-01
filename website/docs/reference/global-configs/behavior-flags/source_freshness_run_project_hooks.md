@@ -1,7 +1,7 @@
 ---
 title: "Project hooks with source freshness"
 id: "source_freshness_run_project_hooks"
-sidebar_label: "source_freshness_run_project_hooks"
+sidebar_label: "source freshness run project hooks"
 ---
 
 :::caution Removed in <Constant name="core_v2" />

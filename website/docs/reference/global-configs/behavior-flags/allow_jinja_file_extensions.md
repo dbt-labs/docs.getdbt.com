@@ -1,7 +1,7 @@
 ---
 title: "Jinja file extensions"
 id: "allow_jinja_file_extensions"
-sidebar_label: "allow_jinja_file_extensions"
+sidebar_label: "allow jinja file extensions"
 ---
 
 :::info Beta feature

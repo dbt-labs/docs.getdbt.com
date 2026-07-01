@@ -1,7 +1,7 @@
 ---
 title: "No spaces in resource names"
 id: "require_resource_names_without_spaces"
-sidebar_label: "require_resource_names_without_spaces"
+sidebar_label: "require resource names without spaces"
 ---
 
 :::caution Removed in <Constant name="core_v2" />

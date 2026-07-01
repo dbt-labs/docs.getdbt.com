@@ -1,7 +1,7 @@
 ---
 title: "Warn-error handler for all warnings"
 id: "require_all_warnings_handled_by_warn_error"
-sidebar_label: "require_all_warnings_handled_by_warn_error"
+sidebar_label: "require all warnings handled by warn error"
 ---
 
 

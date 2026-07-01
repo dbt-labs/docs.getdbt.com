@@ -1,7 +1,7 @@
 ---
 title: "Macro argument validation"
 id: "validate_macro_args"
-sidebar_label: "validate_macro_args"
+sidebar_label: "validate macro args"
 ---
 
 

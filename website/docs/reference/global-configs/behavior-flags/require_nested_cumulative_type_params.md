@@ -1,7 +1,7 @@
 ---
 title: "Cumulative metrics"
 id: "require_nested_cumulative_type_params"
-sidebar_label: "require_nested_cumulative_type_params"
+sidebar_label: "require nested cumulative type params"
 ---
 
 

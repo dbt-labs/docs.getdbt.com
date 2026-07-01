@@ -1,7 +1,7 @@
 ---
 title: "Valid schema from generate_schema_name"
 id: "require_valid_schema_from_generate_schema_name"
-sidebar_label: "require_valid_schema_from_generate_schema_name"
+sidebar_label: "require valid schema from generate schema name"
 ---
 
 | `require_valid_schema_from_generate_schema_name` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |

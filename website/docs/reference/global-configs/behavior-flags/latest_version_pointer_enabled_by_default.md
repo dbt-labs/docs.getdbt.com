@@ -1,7 +1,7 @@
 ---
 title: "Latest version pointer for versioned models"
 id: "latest_version_pointer_enabled_by_default"
-sidebar_label: "latest_version_pointer_enabled_by_default"
+sidebar_label: "latest version pointer enabled by default"
 ---
 
 :::info Beta feature

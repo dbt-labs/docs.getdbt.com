@@ -1,7 +1,7 @@
 ---
 title: "Source definitions for state:modified"
 id: "state_modified_compare_more_unrendered_values"
-sidebar_label: "state_modified_compare_more_unrendered_values"
+sidebar_label: "state modified compare more unrendered values"
 ---
 
 :::caution Removed in <Constant name="core_v2" />
