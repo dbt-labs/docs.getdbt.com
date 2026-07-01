@@ -1,47 +1,101 @@
+.wrapper {
+  display: inline-block;
+  margin: 4px 0 18px;
+  position: relative;
+}
+
 .applicability {
   align-items: center;
   background: var(--bg-neutral-secondary-subtle);
   border: 1px solid var(--border-neutral-tertiary);
   border-radius: 999px;
   color: var(--text-neutral-secondary);
+  cursor: pointer;
   display: inline-flex;
   flex-wrap: wrap;
+  font: inherit;
   font-size: 13px;
   font-weight: 400;
   gap: 6px;
   line-height: 1.4;
-  margin: 4px 0 18px;
-  padding: 6px 12px;
+  padding: 6px 10px 6px 12px;
+  text-align: left;
 }
 
-.surface strong {
+.applicability:hover,
+.applicability:focus-visible {
+  border-color: var(--border-neutral-secondary-hover);
   color: var(--text-neutral-primary);
+}
+
+.applicability:focus-visible {
+  outline: 2px solid var(--border-brand-primary);
+  outline-offset: 2px;
+}
+
+.badgeText {
+  color: var(--text-neutral-primary);
+  font-weight: 500;
+}
+
+.infoIcon {
+  color: var(--text-neutral-tertiary);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.tooltip {
+  background: var(--bg-neutral-primary);
+  border: 1px solid var(--border-neutral-tertiary);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  color: var(--text-neutral-primary);
+  display: block;
+  font-size: 13px;
+  left: 0;
+  line-height: 1.35;
+  max-width: min(420px, calc(100vw - 32px));
+  min-width: 280px;
+  padding: 12px;
+  position: absolute;
+  top: calc(100% + 8px);
+  z-index: 20;
+}
+
+.tooltip::before {
+  background: var(--bg-neutral-primary);
+  border-left: 1px solid var(--border-neutral-tertiary);
+  border-top: 1px solid var(--border-neutral-tertiary);
+  content: '';
+  height: 10px;
+  left: 20px;
+  position: absolute;
+  top: -6px;
+  transform: rotate(45deg);
+  width: 10px;
+}
+
+.tooltipTitle {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.tooltipList {
+  display: grid;
+  gap: 6px 10px;
+  grid-template-columns: max-content minmax(0, 1fr);
+  margin: 0;
+}
+
+.tooltipList dt {
+  color: var(--text-neutral-secondary);
   font-weight: 600;
 }
 
-.separator {
-  color: var(--text-neutral-quaternary);
-}
-
-.planPill,
-.enginePill {
-  border-radius: 999px;
-  display: inline-flex;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1;
-  padding: 4px 8px;
-}
-
-.planPill {
-  background: #FAECE7;
-  color: #993C1D;
-}
-
-.enginePill {
-  background: var(--bg-neutral-secondary-default);
-  border: 0.5px solid var(--border-neutral-secondary-hover);
-  color: var(--text-neutral-secondary);
+.tooltipList dd {
+  margin: 0;
+  min-width: 0;
 }
 
 :global(html[data-theme="dark"]) .applicability {
@@ -50,21 +104,27 @@
   color: var(--text-inverse-secondary);
 }
 
-:global(html[data-theme="dark"]) .surface strong {
+:global(html[data-theme="dark"]) .applicability:hover,
+:global(html[data-theme="dark"]) .applicability:focus-visible {
+  border-color: var(--border-inverse-secondary);
   color: var(--text-inverse-primary);
 }
 
-:global(html[data-theme="dark"]) .separator {
+:global(html[data-theme="dark"]) .badgeText {
+  color: var(--text-inverse-primary);
+}
+
+:global(html[data-theme="dark"]) .infoIcon {
   color: var(--text-inverse-tertiary);
 }
 
-:global(html[data-theme="dark"]) .planPill {
-  background: #4a261b;
-  color: #ffb98c;
+:global(html[data-theme="dark"]) .tooltip,
+:global(html[data-theme="dark"]) .tooltip::before {
+  background: var(--color-terminal-black-900);
+  border-color: var(--border-inverse-tertiary);
+  color: var(--text-inverse-primary);
 }
 
-:global(html[data-theme="dark"]) .enginePill {
-  background: var(--color-terminal-black-800);
-  border-color: var(--border-inverse-secondary);
-  color: var(--text-inverse-primary);
+:global(html[data-theme="dark"]) .tooltipList dt {
+  color: var(--text-inverse-secondary);
 }

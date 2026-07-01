@@ -6,11 +6,30 @@ tags: [Semantic Layer]
 image: /img/docs/dbt-insights/insights-chart.jpg
 pagination_prev: "docs/explore/model-query-history"
 pagination_next: "docs/explore/navigate-dbt-insights"
+availability:
+  preset: platform_enterprise
+  feature: dbt Insights
+  workflow: Explore and query data
+  engine: not_engine_specific
+  license: developer_insights
+  optional:
+    - Fusion engine can be used for LSP features and compilations
+  excludes:
+    - dbt Core-only workflows
+    - local CLI workflows
 ---
 
 # About dbt Insights <Lifecycle status="beta" />
 
-<Applicability surface="platform" plan="enterprise+" />
+<Applicability availability={{
+  preset: "platform_enterprise",
+  feature: "dbt Insights",
+  workflow: "Explore and query data",
+  engine: "not_engine_specific",
+  license: "developer_insights",
+  optional: ["Fusion engine can be used for LSP features and compilations"],
+  excludes: ["dbt Core-only workflows", "local CLI workflows"],
+}} />
 
 <IntroText>
 Learn how to query data with <Constant name="insights" /> and view documentation in <Constant name="catalog" />.

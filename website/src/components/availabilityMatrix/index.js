@@ -12,8 +12,8 @@ const STATE_LABELS = {
 const PLAN_LABELS = {
   all: 'All plans',
   'developer+': 'All plans',
-  'starter+': 'Starter+',
-  'enterprise+': 'All Enterprise tiers',
+  'starter+': 'Starter and above',
+  'enterprise+': 'Enterprise',
   'enterprise-only': 'Enterprise only',
 };
 

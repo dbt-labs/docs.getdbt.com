@@ -39,8 +39,11 @@ export default function DocItemContent({ children }) {
         </header>
       )}
 
-      {syntheticTitle && frontMatter.applicability && (
-        <Applicability {...frontMatter.applicability} />
+      {syntheticTitle && (frontMatter.availability || frontMatter.applicability) && (
+        <Applicability
+          availability={frontMatter.availability}
+          {...frontMatter.applicability}
+        />
       )}
 
       {frontMatter.intro_text && (

@@ -5,11 +5,25 @@ description: "Bring all the speed and power of the dbt Fusion engine to your loc
 sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
+availability:
+  preset: vscode_fusion_preview
+  registration:
+    - All features are available for 14 days without registration
+    - Advanced features require free dbt platform registration after trial
+  excludes:
+    - dbt Core with the Python engine
 ---
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
 
-<Applicability surface="local" engine="fusion" />
+<Applicability availability={{
+  preset: "vscode_fusion_preview",
+  registration: [
+    "All features are available for 14 days without registration",
+    "Advanced features require free dbt platform registration after trial",
+  ],
+  excludes: ["dbt Core with the Python engine"],
+}} />
 
 The dbt VS Code extension brings a hyper-fast, intelligent, and cost-efficient dbt development experience to VS Code.
 This is the only way to enjoy all the power of the <Constant name="fusion_engine" /> while developing locally.
