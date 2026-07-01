@@ -114,7 +114,6 @@ export const availabilityPresets = {
     feature: 'dbt State',
     surface: 'local_and_platform',
     engine: 'all_engines',
-    plans: 'starter_and_above',
     account: 'platform_or_standalone',
     access: 'paid_usage_after_trial',
   },
