@@ -6,7 +6,7 @@ id: "dbt-state-about"
 tags: ['dbt State']
 availability:
   preset: all_users
-  engine: core_and_fusion
+  engine: all_engines
 ---
 
 # About dbt State <Lifecycle status="preview" />
