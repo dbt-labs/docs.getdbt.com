@@ -9,18 +9,20 @@ import {
   availabilityPresets,
 } from './availabilityPresets';
 
-// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Plans, Access.
-// Lifecycle status is owned by the H1 <Lifecycle> pill and is never repeated here.
-const ROW_ORDER = ['surface', 'engine', 'plans', 'access'];
+// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Plans,
+// Available to, Access. Lifecycle status is owned by the H1 <Lifecycle> pill and is
+// never repeated here.
+const ROW_ORDER = ['surface', 'engine', 'plans', 'account', 'access'];
 
 const PLAN_FACETS = Object.values(PLAN_BADGE_LABELS);
 
-function formatValue(key, value) {
+function formatValue(key, value, merged) {
   if (value === undefined || value === null || value === '') {
     return null;
   }
 
-  return VALUE_LABELS[key]?.[value] || value;
+  const label = VALUE_LABELS[key]?.[value];
+  return (typeof label === 'function' ? label(merged) : label) || value;
 }
 
 function getBadgeText(facets) {
@@ -46,7 +48,7 @@ function isPlanFacet(facet) {
 
 function buildRows(availability) {
   return ROW_ORDER.map((key) => {
-    const formatted = formatValue(key, availability[key]);
+    const formatted = formatValue(key, availability[key], availability);
     if (!formatted) {
       return null;
     }

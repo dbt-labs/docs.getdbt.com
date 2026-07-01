@@ -1,13 +1,19 @@
 // Availability answers one question for the reader: "who is this page for?"
 //
-// Three independent choices, each a flat list — pick one value from each that applies:
-//   preset: which audience/surface (all_users | platform | cli | vscode_extension | dbt_state)
-//   plans:  which plan tier (only meaningful when preset: platform)
-//   engine: which engine
+// Independent, reusable enums — pick one value from each that applies:
+//   preset:    which audience/surface (all_users | platform | cli | vscode_extension | dbt_state)
+//   plans:     which plan tier (only meaningful when preset: platform)
+//   engine:    which engine
+//   account:   account/entitlement gating that isn't exactly a plan (rare — most pages skip this)
+//   access:    billing/consumption model (rare — most pages skip this)
 //
-// The badge is composed automatically from whichever of these are set — writers
-// never write badge text, and lifecycle status stays on the H1 <Lifecycle> pill
-// instead of being duplicated here.
+// account and access are short controlled values, not free text, so a new feature with
+// unusual gating (paid add-on, entitlement, trial) reuses an existing value instead of a
+// writer inventing a new sentence. Pricing detail still belongs in prerequisites, not here.
+//
+// The badge is composed automatically from whichever of these are set — writers never
+// write badge text, and lifecycle status stays on the H1 <Lifecycle> pill instead of
+// being duplicated here.
 //
 // Example frontmatter:
 //   availability:
@@ -17,6 +23,7 @@
 
 export const FIELD_LABELS = {
   access: 'Access',
+  account: 'Available to',
   engine: 'Engine',
   engines: 'Engines',
   plans: 'Plans',
@@ -30,9 +37,27 @@ export const SURFACE_LABELS = {
   vscode: 'VS Code extension',
 };
 
+// A label can be a plain string, or a function of (merged) for wording that depends on
+// another field (for example, naming the feature in an account requirement).
 export const VALUE_LABELS = {
+  account: {
+    dbt_platform_account: 'dbt platform account',
+    standalone_account: (merged) =>
+      merged.feature ? `Standalone ${merged.feature} account` : 'Standalone account',
+    platform_or_standalone: (merged) =>
+      merged.feature
+        ? `dbt platform account or standalone ${merged.feature} account`
+        : 'dbt platform account or standalone account',
+  },
   access: {
-    dbt_state_paid: 'Requires a dbt platform account or standalone dbt State account; paid usage-based service after 30-day trial',
+    included: 'Included with your plan',
+    free_registration: 'Free with registration',
+    trial_then_paid: 'Free trial, then paid',
+    paid_usage: 'Paid, usage-based',
+    paid_usage_after_trial: 'Paid, usage-based after trial',
+    entitlement_required: 'Requires entitlement',
+    contact_sales: 'Contact sales',
+    preview_access: 'Preview access',
   },
   engine: {
     all_engines: 'All engines',
@@ -84,10 +109,11 @@ export const availabilityPresets = {
     surface: 'vscode',
   },
   dbt_state: {
-    description: 'dbt State pages. Encodes cross-surface, all-engine, and paid-service access details.',
+    description: 'dbt State pages: cross-surface, all engines, paid usage-based service after trial.',
     feature: 'dbt State',
     surface: 'local_and_platform',
     engine: 'all_engines',
-    access: 'dbt_state_paid',
+    account: 'platform_or_standalone',
+    access: 'paid_usage_after_trial',
   },
 };

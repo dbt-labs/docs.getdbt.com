@@ -77,7 +77,7 @@ describe('Availability', () => {
     ).toBeInTheDocument();
   });
 
-  it('encodes dbt State access details in one preset', async () => {
+  it('encodes dbt State account and billing gating from reusable enums, in one preset', async () => {
     const user = userEvent.setup();
     render(<Availability availability={{ preset: 'dbt_state' }} />);
 
@@ -91,9 +91,20 @@ describe('Availability', () => {
     expect(tooltip).toHaveTextContent('Local development; dbt platform');
     expect(tooltip).toHaveTextContent('Engines');
     expect(tooltip).toHaveTextContent('All engines');
+    expect(tooltip).toHaveTextContent('Available to');
+    expect(tooltip).toHaveTextContent('dbt platform account or standalone dbt State account');
     expect(tooltip).toHaveTextContent('Access');
-    expect(tooltip).toHaveTextContent('paid usage-based service after 30-day trial');
+    expect(tooltip).toHaveTextContent('Paid, usage-based after trial');
     expect(tooltip).not.toHaveTextContent('Plans');
+  });
+
+  it('falls back to a generic account label when no feature name is set', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability={{ preset: 'platform', account: 'platform_or_standalone' }} />);
+
+    await user.click(screen.getByRole('button', { name: /dbt platform · all plans/i }));
+
+    expect(screen.getByRole('tooltip')).toHaveTextContent('dbt platform account or standalone account');
   });
 
   it('never renders a lifecycle status row (owned by the H1 pill)', async () => {
