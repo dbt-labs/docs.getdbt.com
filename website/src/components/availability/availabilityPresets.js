@@ -54,7 +54,7 @@ export const VALUE_LABELS = {
     free_registration: 'Free with registration',
     trial_then_paid: 'Free trial, then paid',
     paid_usage: 'Paid, usage-based',
-    paid_usage_after_trial: 'Paid, usage-based after trial',
+    paid_usage_after_trial: 'Free trial, usage-based after trial',
     entitlement_required: 'Requires entitlement',
     contact_sales: 'Contact sales',
     preview_access: 'Preview access',

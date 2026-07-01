@@ -94,7 +94,7 @@ describe('Availability', () => {
     expect(tooltip).toHaveTextContent('Available to');
     expect(tooltip).toHaveTextContent('dbt platform account or standalone dbt State account');
     expect(tooltip).toHaveTextContent('Access');
-    expect(tooltip).toHaveTextContent('Paid, usage-based after trial');
+    expect(tooltip).toHaveTextContent('Free trial, usage-based after trial');
     expect(tooltip).not.toHaveTextContent('Plans');
   });
 
