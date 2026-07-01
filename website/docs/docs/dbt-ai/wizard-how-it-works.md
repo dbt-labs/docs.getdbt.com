@@ -235,7 +235,7 @@ Each CLI session is saved locally. This is separate from platform conversations,
 
 - [<Constant name="wizard" /> overview](/docs/platform/wizard-overview)
 - [<Constant name="wizard" /> in the dbt platform](/docs/platform/wizard-platform)
-- [<Constant name="wizard" /> quickstart](/docs/dbt-ai/wizard-quickstart)
+- [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [<Constant name="wizard" /> command reference](/docs/dbt-ai/wizard-cli-reference)

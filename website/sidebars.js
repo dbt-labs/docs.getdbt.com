@@ -393,8 +393,6 @@ const sidebarSettings = {
       className: 'sidebar-title',
     },
         "docs/dbt-ai/about-dbt-ai",
-        "docs/dbt-ai/wizard-quickstart",
-        "docs/platform/enable-dbt-ai",
         {
           type: "category",
           label: "dbt Wizard",
@@ -402,8 +400,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/platform/wizard-overview" },
           items: [
             "docs/platform/wizard-overview",
-            "docs/dbt-ai/wizard-quickstart",
-            "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
             {
@@ -413,6 +409,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/dbt-ai/about-dbt-wizard-cli" },
               items: [
                 "docs/dbt-ai/about-dbt-wizard-cli",
+                "docs/dbt-ai/wizard-quickstart",
                 "docs/dbt-ai/wizard-cli",
                 "docs/dbt-ai/wizard-byok",
                 "docs/dbt-ai/wizard-skills",

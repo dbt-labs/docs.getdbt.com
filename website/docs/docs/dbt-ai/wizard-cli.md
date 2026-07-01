@@ -68,7 +68,7 @@ For details about what is collected, what is not collected, and how to opt out o
 
 ## Related docs
 
-- [Get started with the local CLI](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
+- [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
 - [Configure BYOK](/docs/dbt-ai/wizard-byok): Manage your API key and choose an AI model
 - [Command reference](/docs/dbt-ai/wizard-cli-reference): Full reference for all `wizard` subcommands and global flags
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios
