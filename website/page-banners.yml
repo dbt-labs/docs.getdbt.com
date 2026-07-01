@@ -12,7 +12,22 @@
 #   open_in_new_tab (optional): open the link in a new tab.
 
 - paths:
-    - /docs/introduction
-  text: "This is a test banner"
-  link: https://google.com
+    - /docs/platform/wizard-overview
+    - /docs/dbt-ai/about-dbt-wizard-cli
+    - /docs/platform/wizard-platform
+    - /docs/dbt-ai/wizard-quickstart
+    - /docs/dbt-ai/wizard-how-it-works
+    - /docs/dbt-ai/about-dbt-ai
+    - /docs/dbt-ai/copilot-overview
+    - /docs/platform/enable-dbt-ai
+    - /guides/prompt-cookbook
+    - /docs/dbt-ai/about-mcp
+    - /docs/dbt-ai/integrate-mcp-claude
+    - /docs/dbt-ai/mcp-troubleshooting
+    - /docs/dbt-ai/wizard-skills
+    - /docs/dbt-ai/wizard-platform-skills
+    - /docs/dbt-ai/wizard-ide
+    - /guides
+  text: "dbt Wizard: An agent purpose-built for analytics engineering. Join us virtually on July 22nd to see real demos in the CLI and dbt platform!"
+  link: "https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t"
   open_in_new_tab: true
