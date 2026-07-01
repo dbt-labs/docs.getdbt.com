@@ -88,7 +88,7 @@ describe('Availability', () => {
 
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).toHaveTextContent('Where');
-    expect(tooltip).toHaveTextContent('dbt Core (local); dbt platform');
+    expect(tooltip).toHaveTextContent('Local development; dbt platform');
     expect(tooltip).toHaveTextContent('Engines');
     expect(tooltip).toHaveTextContent('All engines');
     expect(tooltip).toHaveTextContent('Plans');

@@ -31,7 +31,7 @@ export const FIELD_LABELS = {
 };
 
 export const SURFACE_LABELS = {
-  local_and_platform: 'dbt Core (local); dbt platform',
+  local_and_platform: 'Local development; dbt platform',
   platform: 'dbt platform',
   cli: 'CLI',
   vscode: 'VS Code extension',
