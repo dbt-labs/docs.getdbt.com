@@ -8,7 +8,7 @@ pagination_next: "docs/deploy/job-scheduler"
 pagination_prev: null
 availability:
   preset: platform
-  engine: core_and_fusion
+  engine: all_engines
 ---
 
 <IntroText>
