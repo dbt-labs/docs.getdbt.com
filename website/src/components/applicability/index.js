@@ -78,7 +78,33 @@ function getBadgeText(badge) {
   return badge.startsWith('Applies to:') ? badge : `Applies to: ${badge}`;
 }
 
+function getBadgeParts(badgeText) {
+  const prefix = 'Applies to:';
+  if (!badgeText.startsWith(prefix)) {
+    return {
+      prefix: null,
+      facets: [badgeText],
+    };
+  }
+
+  return {
+    prefix,
+    facets: badgeText.slice(prefix.length).trim().split(' · ').filter(Boolean),
+  };
+}
+
+function isPlanFacet(facet) {
+  return [
+    'All plans',
+    'Starter and above',
+    'Enterprise',
+    'Enterprise+',
+  ].includes(facet);
+}
+
 function buildRows(availability) {
+  const productValue = formatValue('product', availability.product);
+
   return ROW_ORDER.map((key) => {
     const value = availability[key] ?? availability[normalizeKey(key)];
     const formatted = formatValue(key, value);
@@ -87,6 +113,10 @@ function buildRows(availability) {
     }
 
     const labelKey = key === 'engine' && availability.engine === 'core_and_fusion' ? 'engines' : key;
+    if (labelKey === 'surface' && productValue === formatted) {
+      return null;
+    }
+
     return {
       label: FIELD_LABELS[labelKey] || key,
       value: formatted,
@@ -120,6 +150,7 @@ function normalizeStructuredAvailability(availability) {
 
   return {
     badgeText,
+    badgeParts: getBadgeParts(badgeText),
     rows: buildRows(merged),
   };
 }
@@ -134,8 +165,10 @@ function normalizeLegacyApplicability({ surface, plan = 'all', engine = 'both' }
   const shouldShowEngine = engine !== 'both' && ENGINE_LABELS[engine];
 
   if (surface === 'both' && !shouldShowPlan && !shouldShowEngine) {
+    const badgeText = 'Applies to: all users';
     return {
-      badgeText: 'Applies to: all users',
+      badgeText,
+      badgeParts: getBadgeParts(badgeText),
       rows: [{ label: 'Availability', value: 'Applies to all users' }],
     };
   }
@@ -162,6 +195,7 @@ function normalizeLegacyApplicability({ surface, plan = 'all', engine = 'both' }
 
   return {
     badgeText: getBadgeText(badge),
+    badgeParts: getBadgeParts(getBadgeText(badge)),
     rows,
   };
 }
@@ -235,7 +269,22 @@ export default function Applicability({ availability, ...legacyApplicability }) 
           }, 0);
         }}
       >
-        <span className={styles.badgeText}>{normalized.badgeText}</span>
+        <span className={styles.badgeText}>
+          {normalized.badgeParts?.prefix && (
+            <span className={styles.badgePrefix}>{normalized.badgeParts.prefix} </span>
+          )}
+          {normalized.badgeParts?.facets.map((facet, index) => (
+            <React.Fragment key={`${facet}-${index}`}>
+              {index > 0 && <span className={styles.badgeSeparator}> · </span>}
+              <span
+                className={isPlanFacet(facet) ? styles.planFacet : styles.badgeFacet}
+                data-availability-facet={isPlanFacet(facet) ? 'plan' : undefined}
+              >
+                {facet}
+              </span>
+            </React.Fragment>
+          ))}
+        </span>
         <span className={styles.infoIcon} aria-hidden="true">ⓘ</span>
       </button>
       {isOpen && (

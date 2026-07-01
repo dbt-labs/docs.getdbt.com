@@ -9,11 +9,7 @@ pagination_next: "docs/explore/navigate-dbt-insights"
 availability:
   preset: platform_enterprise
   feature: dbt Insights
-  workflow: Explore and query data
   engine: not_engine_specific
-  license: developer_insights
-  optional:
-    - Fusion engine can be used for LSP features and compilations
   excludes:
     - dbt Core-only workflows
     - local CLI workflows
@@ -24,10 +20,7 @@ availability:
 <Applicability availability={{
   preset: "platform_enterprise",
   feature: "dbt Insights",
-  workflow: "Explore and query data",
   engine: "not_engine_specific",
-  license: "developer_insights",
-  optional: ["Fusion engine can be used for LSP features and compilations"],
   excludes: ["dbt Core-only workflows", "local CLI workflows"],
 }} />
 

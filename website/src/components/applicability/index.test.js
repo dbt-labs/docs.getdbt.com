@@ -105,6 +105,35 @@ describe('Applicability', () => {
     expect(tooltip).toHaveTextContent('Partial support');
   });
 
+  it('omits duplicate product and surface rows for platform availability', async () => {
+    const user = userEvent.setup();
+    render(
+      <Applicability
+        availability={{
+          preset: 'platform_enterprise',
+          feature: 'dbt Insights',
+          engine: 'not_engine_specific',
+          excludes: ['dbt Core-only workflows', 'local CLI workflows'],
+        }}
+      />
+    );
+
+    const badge = screen.getByRole('button', { name: /dbt platform · enterprise/i });
+    expect(screen.getByText('Enterprise')).toHaveAttribute('data-availability-facet', 'plan');
+
+    await user.click(badge);
+
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent('Product');
+    expect(tooltip).toHaveTextContent('Feature');
+    expect(tooltip).toHaveTextContent('Plans');
+    expect(tooltip).toHaveTextContent('Engine');
+    expect(tooltip).not.toHaveTextContent('Surface');
+    expect(tooltip).not.toHaveTextContent('Workflow');
+    expect(tooltip).not.toHaveTextContent('License');
+    expect(tooltip).not.toHaveTextContent('Optional');
+  });
+
   it('opens on focus and closes on Escape', async () => {
     const user = userEvent.setup();
     render(<Applicability availability="cli_all_engines" />);
