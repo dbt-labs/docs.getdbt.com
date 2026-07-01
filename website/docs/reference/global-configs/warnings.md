@@ -40,7 +40,7 @@ Warnings that should be treated as errors can be specified through the `error` p
 
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). You can use either form interchangeably in `warn_error_options`. Messages printed at runtime include both the name and the code. See [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) for the full list of supported event names and their corresponding codes.
+In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). Messages printed at runtime include both the name and the code, but `warn_error_options` only accepts the event name, Fusion-native name, or supported groups (`all`, `*`). See [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) for the full list of supported event names and their corresponding codes.
 
 </VersionBlock>
 
@@ -203,11 +203,11 @@ flags:
       - FreshnessConfigProblem   # by name
 ```
 
-Any value that is not a recognized numeric code, supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup.
+Any value that is not a supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup. Numeric codes appear in warning messages, but they aren't accepted in `warn_error_options`.
 
 ### Supported legacy dbt-core event name aliases
 
-Each row lists a <Constant name="fusion" /> warning code and the legacy <Constant name="core" /> event name. You can use either the numeric code or the event name interchangeably in your `warn_error_options` configuration:
+Each row lists a <Constant name="fusion" /> warning code and the legacy <Constant name="core" /> event name. Use the event name in your `warn_error_options` configuration; the numeric code is only for identifying the warning in runtime messages:
 
 | Fusion code | dbt-core event name | Description |
 |---|---|---|
