@@ -109,10 +109,12 @@ export const availabilityPresets = {
     surface: 'vscode',
   },
   dbt_state: {
-    description: 'dbt State pages: cross-surface, all engines, paid usage-based service after trial.',
+    description:
+      'dbt State pages: cross-surface, all engines, à la carte on Starter/Enterprise+ or standalone (not Legacy Teams), usage-based after a free trial.',
     feature: 'dbt State',
     surface: 'local_and_platform',
     engine: 'all_engines',
+    plans: 'starter_and_above',
     account: 'platform_or_standalone',
     access: 'paid_usage_after_trial',
   },
