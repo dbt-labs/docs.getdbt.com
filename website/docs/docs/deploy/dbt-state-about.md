@@ -7,8 +7,6 @@ tags: ['dbt State']
 availability:
   preset: dbt_state
   engine: core_and_fusion
-  notes:
-    - Requires a dbt platform account or standalone dbt State account
   excludes:
     - legacy Starter plan accounts
 ---
