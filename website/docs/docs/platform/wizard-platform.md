@@ -77,12 +77,6 @@ Always review AI-generated content, as it may be incorrect. For prompt best prac
     icon="wizard"/>
 
 <Card
-    title="Use subagents"
-    body="Organize long-running dbt Wizard work into focused agent threads."
-    link="/docs/dbt-ai/wizard-platform-subagents"
-    icon="wizard"/>
-
-<Card
     title="Use MCP servers"
     body="Understand MCP server support in the dbt platform experience."
     link="/docs/dbt-ai/wizard-platform-mcp"

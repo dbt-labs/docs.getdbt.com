@@ -650,3 +650,11 @@ mirna_wong:
     linkedin: mirnawong
   name: Mirna Wong
   page: true
+alex_noonan:
+  image_url: /img/blog/authors/alex-noonan.jpg
+  title: Senior Developer Experience Advocate
+  socials:
+    x: alexnoonan6
+    linkedin: alexander-noonan
+  name: Alex Noonan
+  page: true
