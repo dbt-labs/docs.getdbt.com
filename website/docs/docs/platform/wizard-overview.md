@@ -53,7 +53,7 @@ For included action limits by plan and how managed usage is metered, refer to th
 
 <WizardSupportedProviders />
 
-## Get started with dbt Wizard
+## Choose a dbt Wizard experience
 
 <Tabs>
 <TabItem value="terminal" label={<span className="tabs-lifecycle-label">Terminal <Lifecycle status="beta" size="90%" /></span>} default>
@@ -102,7 +102,7 @@ Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompt
 
 ## Next steps
 
-Now that you know where to start, continue with **[Get started with the local CLI](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Get started in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
+Now that you know where to start, continue with **[Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Enable AI features in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
 
 
 ## Related docs

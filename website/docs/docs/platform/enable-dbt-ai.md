@@ -1,7 +1,7 @@
 ---
-title: "Get started in dbt platform"
-sidebar_label: "Get started in dbt platform"
-description: "Get started with AI features in the dbt platform, including dbt Wizard and dbt Copilot, to speed up your development."
+title: "Enable AI in dbt platform"
+sidebar_label: "Enable AI in dbt platform"
+description: "Enable AI features in the dbt platform, including dbt Wizard and dbt Copilot, to speed up your development."
 ---
 
 import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
@@ -9,7 +9,7 @@ import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
-# Get started in dbt platform <Lifecycle status="self_service,managed,managed_plus" />
+# Enable AI features in <Constant name="dbt_platform" /> <Lifecycle status="self_service,managed,managed_plus" />
 
 <IntroText>
 Enable AI features in <Constant name="dbt_platform" /> to speed up your development and focus on delivering quality data.

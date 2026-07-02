@@ -42,7 +42,7 @@ irm https://public.cdn.getdbt.com/dbt-wizard/install/install-wizard.ps1 | iex
 </TabItem>
 </Tabs>
 
-For a first session walkthrough, visit the [Quickstart](/docs/dbt-ai/wizard-quickstart) page.
+For a first session walkthrough, visit [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart).
 
 Use <Constant name="wizard" /> CLI to:
 
@@ -60,12 +60,12 @@ For more examples, visit [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
 Looking for the in-platform experience? Visit [About <Constant name="wizard" /> in the dbt platform](/docs/platform/wizard-platform).
 
 
-## Get started with the dbt Wizard CLI
+## Use dbt Wizard locally
 
 <div className="grid--3-col">
 
 <Card
-    title="Get started with the local CLI"
+    title="Use dbt Wizard locally"
     body="Install dbt Wizard locally, complete first-run onboarding, and send your first prompt."
     link="/docs/dbt-ai/wizard-quickstart"
     icon="wizard"/>
