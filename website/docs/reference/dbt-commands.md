@@ -65,6 +65,7 @@ Some commands are not yet supported in the <Constant name="fusion_engine" /> or 
 | [show](/reference/commands/show) | Previews table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions) |
+| [system](/reference/commands/system) | Manages the CLI installation: update to a new version, uninstall, or pre-install ADBC adapter drivers | N/A | <Constant name="fusion" /> only |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions) <br /> <Constant name="fusion" /> flag `--warn-error` not yet supported  |
 | [wizard](/docs/dbt-ai/wizard-cli-reference) | Starts an agentic dbt development session with <Constant name="wizard"/> from the command line | N/A | Local development <br />  [All supported versions](/docs/dbt-versions) |
 

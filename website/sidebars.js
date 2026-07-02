@@ -393,8 +393,6 @@ const sidebarSettings = {
       className: 'sidebar-title',
     },
         "docs/dbt-ai/about-dbt-ai",
-        "docs/dbt-ai/wizard-quickstart",
-        "docs/platform/enable-dbt-ai",
         {
           type: "category",
           label: "dbt Wizard",
@@ -433,11 +431,9 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/platform/wizard-platform" },
               items: [
                 "docs/platform/wizard-platform",
-                "docs/platform/enable-dbt-ai",
                 "docs/dbt-ai/wizard-ide",
                 "docs/platform/wizard-home",
                 "docs/dbt-ai/wizard-platform-skills",
-                "docs/dbt-ai/wizard-platform-subagents",
                 "docs/dbt-ai/wizard-platform-mcp",
                 "docs/dbt-ai/wizard-platform-privacy-data",
               ],
@@ -1578,6 +1574,7 @@ const sidebarSettings = {
             "reference/commands/show",
             "reference/commands/snapshot",
             "reference/commands/source",
+            "reference/commands/system",
             "reference/commands/test",
             "reference/commands/version",
           ],
