@@ -22,7 +22,8 @@ Essentially, exports are like any other table in your data platform &mdash; they
 - You have the <Constant name="semantic_layer" /> [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a <Constant name="dbt" /> environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.
 - You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
-- You have the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) installed. The `dbt sl export` and `dbt sl export-all` commands aren't supported in <Constant name="studio_ide" />.
+- You have the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) installed. 
+  - In <Constant name="studio_ide" />, run `dbt build` instead of `dbt sl export` or `dbt sl export-all.`
 
 ## Benefits of exports
 
