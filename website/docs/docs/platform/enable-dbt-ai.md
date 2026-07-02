@@ -1,7 +1,7 @@
 ---
-title: "Configure AI features in dbt platform"
-sidebar_label: "Configure AI features"
-description: "Configure AI features in the dbt platform, including dbt Wizard and dbt Copilot, to speed up your development."
+title: "Enable AI in dbt platform"
+sidebar_label: "Enable AI in dbt platform"
+description: "Enable AI features in the dbt platform, including dbt Wizard and dbt Copilot, to speed up your development."
 ---
 
 import OpenAiProjectRegion from '/snippets/_open-ai-project-region.md';
