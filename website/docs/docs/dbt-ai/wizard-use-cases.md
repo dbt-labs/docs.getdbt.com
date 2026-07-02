@@ -243,7 +243,7 @@ wizard exec --json "summarize test coverage by schema"
 
 ## Related docs
 
-- [dbt Wizard quickstart](/docs/dbt-ai/wizard-quickstart)
+- [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
 - [dbt Wizard overview](/docs/dbt-ai/about-dbt-wizard-cli)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in the dbt platform
