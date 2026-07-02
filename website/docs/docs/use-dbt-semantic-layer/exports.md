@@ -59,7 +59,7 @@ Before you're able to run exports in development or production, you'll need to m
 There are two ways to run an export:
   
 - [Run exports in development](#exports-in-development) using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) to test the output before production.
-  - If you're using the <Constant name="studio_ide" />, you can configure exports, but the `dbt sl export` and `dbt sl export-all` commands aren't supported. Use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled.
+  - To work in <Constant name="studio_ide" />, use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled. To work in the <Constant name="dbt" /> CLI, use the `dbt sl export` or dbt sl export-all commands to run exports.
 - [Run exports in production](#exports-in-production) using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 
 ## Exports in development
