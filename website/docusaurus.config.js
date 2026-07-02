@@ -374,6 +374,7 @@ var siteSettings = {
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),
     path.resolve("plugins/buildFusionReleases"),
+    path.resolve("plugins/buildPageBanners"),
     [
       "vercel-analytics",
       {
