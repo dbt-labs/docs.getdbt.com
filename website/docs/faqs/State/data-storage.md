@@ -12,4 +12,4 @@ dbt State sends the following metadata to dbt Labs servers:
 
 No actual data from your warehouse is transmitted.
 
-The dbt State service runs in a single US multi-tenant (MT) instance and does _not_ make any live connections to your data warehouse. For data retention details, refer to the [dbt Labs privacy policy](https://www.getdbt.com/cloud/privacy-policy).
+The dbt State service runs in a single US multi-tenant (MT) instance. The service never connects to your data warehouse. No actual data from your warehouse is transmitted. The only connection is to your running dbt process (CLI or platform) in order to exchange the metadata described above. For data retention details, refer to the [dbt Labs privacy policy](https://www.getdbt.com/cloud/privacy-policy).
