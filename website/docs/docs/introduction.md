@@ -4,7 +4,7 @@ id: "introduction"
 description: "dbt transforms raw warehouse data into trusted data products and brings purpose-built AI to every stage of the analytics development lifecycle."
 pagination_next: null
 pagination_prev: null
-intro_text: "dbt transforms raw warehouse data into trusted data products. You write simple SQL select statements, and dbt handles the heavy lifting by creating modular, maintainable data models that power analytics, operations, and AI -- replacing the need for complex and fragile transformation code."
+intro_text: "dbt is the industry standard for data transformation. Write SQL select statements; dbt handles the rest — materializing models, managing dependencies, testing data quality, and generating documentation — so your team ships trusted data products faster."
 ---
 
 <Snippet path="what-is-dbt-intro" />
@@ -19,21 +19,9 @@ import DbtFramework from '/snippets/_dbt-framework.md';
 
 <DbtFramework />
 
-### dbt Fusion engine
-
-The <Constant name="fusion_engine" /> is a Rust-based engine that delivers a lightning-fast development experience, intelligent cost savings, and improved governance. <Constant name="fusion" /> understands SQL natively across multiple dialects, catches errors instantly, and optimizes how your models are built &mdash; bringing SQL comprehension and state awareness, instant feedback, <Term id="lsp"/>, and more to every dbt workflow.
-
-<Constant name="fusion" /> powers dbt in the [<Constant name="dbt_platform" />](/docs/platform/about-platform/dbt-platform-features), [VS Code / Cursor](/docs/about-dbt-extension), and [locally from the command line](/docs/local/install-dbt?version=2). You don't need to have a <Constant name="dbt_platform" /> project to use the <Constant name="fusion_engine" />.
-
-For more information, refer to [About the <Constant name="fusion_engine" />](/docs/fusion), [supported features](/docs/fusion/supported-features), and the [get started with Fusion](/docs/fusion/get-started-fusion) pages.
-
-### dbt Core engine
-
-[<Constant name="core_v1" />](/docs/local/install-dbt) is the open-source, Python-based engine that enables data practitioners to transform data. <Constant name="core_v1" /> surfaces feedback when you run or build your project. It doesn't include <Constant name="fusion"/> features like the <Term id="lsp"/>, for example, which provides instant feedback as you type.
-
-[<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) is the open-source foundation that the <Constant name="fusion_engine" /> builds on. It delivers a faster, Rust-based runtime while preserving the dbt experience practitioners already know. It is currently in alpha.
-
-Learn more with the [quickstart for <Constant name="core" />](/guides/duckdb?step=1).
+- [**<Constant name="fusion_engine" />**](/docs/fusion) &mdash; A Rust-based engine with native SQL comprehension, instant error feedback, <Term id="lsp"/> support, and state-aware orchestration. Powers dbt in the <Constant name="dbt_platform" />, VS Code / Cursor, and locally from the command line.
+- [**<Constant name="core_v1" />**](/docs/local/install-dbt) &mdash; The open-source, Python-based engine. Surfaces feedback when you run or build your project; doesn't include LSP features.
+- [**<Constant name="core_v2" />**](/docs/dbt-versions/core-upgrade/upgrading-to-v2) &mdash; The open-source foundation the <Constant name="fusion_engine" /> builds on, delivering a faster Rust-based runtime while preserving the familiar dbt experience. Currently in alpha.
 
 ## How to use dbt
 
