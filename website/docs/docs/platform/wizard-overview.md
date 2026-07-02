@@ -102,7 +102,7 @@ Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompt
 
 ## Next steps
 
-Now that you know where to start, continue with **[Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Configure AI features in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
+Now that you know where to start, continue with **[Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Enable AI features in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
 
 
 ## Related docs

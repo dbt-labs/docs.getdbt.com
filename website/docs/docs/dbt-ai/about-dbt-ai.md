@@ -22,7 +22,7 @@ Analytics engineering requires more than code generation &mdash; it requires und
     icon="wizard"/>
 
 <Card
-    title="Configure AI features"
+    title="Enable AI features in dbt platform"
     body="Enable AI in your dbt platform account. Use dbt Wizard for governed dbt data development and dbt Copilot for inline AI assistance in dbt platform."
     link="/docs/platform/enable-dbt-ai"
     icon="wizard"/>
