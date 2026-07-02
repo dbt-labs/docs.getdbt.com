@@ -10,7 +10,7 @@ keywords: [DBT_ENGINE_INCLUDE_SAVED_QUERY, DBT_ENGINE_EXPORT_SAVED_QUERIES, expo
 Exports enhance [saved queries](/docs/build/saved-queries) by running your saved queries and writing the output to a table or view within your data platform. Saved queries are a way to save and reuse commonly used queries in MetricFlow, exports take this functionality a step further by:
 
 - Enabling you to write these queries within your data platform using the <Constant name="dbt" /> job scheduler.
-- Proving an integration path for tools that don't natively support the <Constant name="semantic_layer" /> by exposing tables of metrics and dimensions.
+- Providing an integration path for tools that don't natively support the <Constant name="semantic_layer" /> by exposing tables of metrics and dimensions.
 
 Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [<Constant name="semantic_layer" /> integration](/docs/platform-integrations/avail-sl-integrations). Running an export counts towards [queried metrics](/docs/platform/billing#what-counts-as-a-queried-metric) usage. Querying the resulting table or view from the export does not count toward queried metric usage.
 
@@ -22,7 +22,7 @@ Essentially, exports are like any other table in your data platform &mdash; they
 - You have the <Constant name="semantic_layer" /> [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a <Constant name="dbt" /> environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.
 - You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
-- You have the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) installed. Note, that exports aren't supported in <Constant name="studio_ide" /> yet.
+- You have the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) installed. The `dbt sl export` and `dbt sl export-all` commands aren't supported in <Constant name="studio_ide" />.
 
 ## Benefits of exports
 
@@ -57,8 +57,8 @@ Before you're able to run exports in development or production, you'll need to m
 
 There are two ways to run an export:
   
-- [Run exports in development](#exports-in-development) using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) to test the output before production (You can configure exports in the <Constant name="studio_ide" />, however running them directly in the <Constant name="studio_ide" /> isn't supported yet). 
-  - If you're using the <Constant name="studio_ide" />, use `dbt build` to run exports. Make sure you have the [environment variable](#set-environment-variable) enabled. 
+- [Run exports in development](#exports-in-development) using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) to test the output before production.
+  - If you're using the <Constant name="studio_ide" />, you can configure exports, but the `dbt sl export` and `dbt sl export-all` commands aren't supported. Use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled.
 - [Run exports in production](#exports-in-production) using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 
 ## Exports in development
@@ -71,7 +71,7 @@ This section explains the different commands and options available to run export
 
 - Use the [`dbt sl export-all` command](#exports-for-multiple-saved-queries) to run exports for multiple saved queries at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. 
 
-- If you're using the <Constant name="studio_ide" />, use `dbt build` to run exports. Make sure you have the [environment variable](#set-environment-variable) enabled before running the command.
+- If you're using the <Constant name="studio_ide" />, you can configure exports, but the `dbt sl export` and `dbt sl export-all` commands aren't supported. Use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled before running the command.
 
 ### Exports for single saved query
 
@@ -108,7 +108,7 @@ Export completed.
 
 ### Use the select flag
 
-You can have multiple exports for a saved query and by default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development) to select specific or multiple exports. Note, you can’t sub-select metrics or dimensions from the saved query, it’s just to change the export configuration i.e table format or schema
+You can have multiple exports for a saved query and by default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development) to select specific or multiple exports. You can't sub-select metrics or dimensions from the saved query. You can only change the export configuration, such as the table format or schema.
 
 For example, the following command runs `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
 
