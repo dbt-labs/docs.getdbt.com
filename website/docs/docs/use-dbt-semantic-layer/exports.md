@@ -72,7 +72,7 @@ This section explains the different commands and options available to run export
 
 - Use the [`dbt sl export-all` command](#exports-for-multiple-saved-queries) to run exports for multiple saved queries at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. 
 
-- If you're using the <Constant name="studio_ide" />, use `dbt build` to run exports and make sure you have the [environment variable](#set-environment-variable) enabled before running the command. Commands `dbt sl export` or `dbt sl export-all` are supported in the <Constant name="dbt"> CLI only.
+- If you're using the <Constant name="studio_ide" />, use `dbt build` to run exports and make sure you have the [environment variable](#set-environment-variable) enabled before running the command. Commands `dbt sl export` or `dbt sl export-all` are supported in the <Constant name="dbt" /> CLI only.
 
 
 ### Exports for single saved query
