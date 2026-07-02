@@ -65,7 +65,7 @@ You can run an export in your development environment if you want to test its ou
 
 This section explains the different commands and options available to run exports in development.
 
-If your environment runs on the <Constant name="fusion_engine" /> (including <Constant name="studio_ide" />), use `dbt build` instead of the commands below &mdash; see [Run exports](#run-exports) for details.
+If your environment runs on the <Constant name="fusion_engine" /> (including <Constant name="studio_ide" />), use `dbt build` instead of the following commands. Check out [Run exports](#run-exports) for details.
 
 - Use the [`dbt sl export` command](#exports-for-single-saved-query) to test and generate exports in your development environment for a singular saved query. You can also use the `--select` flag to specify particular exports from a saved query.
 
