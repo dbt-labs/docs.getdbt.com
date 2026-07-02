@@ -56,7 +56,7 @@ Before you're able to run exports in development or production, you'll need to m
 
 There are two ways to run an export:
   
-- [Run exports in development](#exports-in-development) to test the output before production. In <Constant name="studio_ide" /> or any environment on the <Constant name="fusion_engine" />, run `dbt build` instead &mdash; enable the [environment variable](#set-environment-variable) first. In the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) outside Fusion, run `dbt sl export` or `dbt sl export-all`.
+- [Run exports in development](#exports-in-development) to test the output before production. In <Constant name="studio_ide" /> or any environment on the <Constant name="fusion_engine" />, run `dbt build` instead &mdash; enable the [environment variable](#set-environment-variable) first. In the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) outside <Constant name="fusion" />, run `dbt sl export` or `dbt sl export-all`.
 - [Run exports in production](#exports-in-production) using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 
 ## Exports in development
@@ -73,7 +73,7 @@ If your environment runs on the <Constant name="fusion_engine" /> (including <Co
 
 ### Exports for single saved query
 
-These commands apply when you're using the <Constant name="dbt" /> CLI outside <Constant name="studio_ide" /> or the <Constant name="fusion_engine" />. If your environment runs on Fusion, use `dbt build` instead &mdash; see [Run exports](#run-exports) for details.
+These commands apply when you're using the <Constant name="dbt" /> CLI outside <Constant name="studio_ide" /> or the <Constant name="fusion_engine" />. If your environment runs on <Constant name="fusion" />, use `dbt build` instead. For more info, check out [Run exports](#run-exports).
 
 Use the following command to run exports in the <Constant name="dbt" /> CLI:
 
