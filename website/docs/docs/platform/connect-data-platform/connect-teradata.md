@@ -26,4 +26,4 @@ Your environment(s) must be on a supported [release track](/docs/dbt-versions/db
 | Password                      | The database password. Equivalent to the Teradata JDBC Driver PASSWORD connection parameter.  | String         | Required  | DatabasePassword123 |
 | Schema                        | Specifies the initial database to use after login, rather than the user's default database.   | String         | Required  | dbtlabsdocstest |
 
-<Lightbox src="/img/docs/dbt-platform/teradata-deployment.png" title="Example of the developer credential fields." />
+<Lightbox src="/img/docs/dbt-platform/teradata-deployment.png" title="Example of the user credential fields." />

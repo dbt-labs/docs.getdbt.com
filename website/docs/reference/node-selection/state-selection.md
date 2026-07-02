@@ -8,6 +8,10 @@ pagination_next: "reference/node-selection/configure-state"
 If you want a managed experience for state with dbt to skip rerunning models that haven't changed, check out [dbt State](/docs/deploy/dbt-state-about).
 :::
 
+:::info Why idempotence matters here
+State selection and deferral rely on your models being [<Term id="idempotent">idempotent</Term>](/best-practices/idempotence), meaning re-running with the same inputs returns the same result. For more info, refer to [Idempotence in dbt](/best-practices/idempotence).
+:::
+
 One of the greatest underlying assumptions about dbt is that its operations should be **stateless** and **<Term id="idempotent" />**. That is, it doesn't matter how many times a model has been run before, or if it has ever been run before. It doesn't matter if you run it once or a thousand times. Given the same raw data, you can expect the same transformed result. A given run of dbt doesn't need to "know" about _any other_ run; it just needs to know about the code in the project and the objects in your database as they exist _right now_.
 
 That said, dbt does store "state" &mdash; a detailed, point-in-time view of project resources (also referred to as nodes), database objects, and invocation results &mdash; in the form of its [artifacts](/docs/deploy/artifacts). If you choose, dbt can use these artifacts to inform certain  operations. Crucially, the operations themselves are still stateless and <Term id="idempotent" />: given the same manifest and the same raw data, dbt will produce the same transformed result.

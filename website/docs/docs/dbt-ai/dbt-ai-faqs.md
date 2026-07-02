@@ -69,7 +69,7 @@ dbt Copilot features include quick-action buttons in <Constant name="studio_ide"
 
 <Expandable alt_header="Can I use my existing dbt Copilot action allotment with dbt Wizard?">
 
-Yes, as a temporary compatibility bridge through July 1. After July 1, this bridge ends. 
+Yes, as a temporary compatibility bridge through July 13. After July 13, this bridge ends. 
 
 </Expandable>
 
@@ -85,7 +85,7 @@ When enabled by an admin, <Constant name="wizard" /> is available to users with 
 
 For <Constant name="wizard" /> CLI, bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). Install and configure the CLI on your local machine. BYOK means any token costs will be billed directly by whichever provider you choose.
 
-Refer to [Quickstart](/docs/dbt-ai/wizard-quickstart) for more information.
+Refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) for more information.
 
 </Expandable>
 

@@ -20,11 +20,9 @@ import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 Install the <Constant name="wizard" /> CLI from your terminal for agentic and governed data development in dbt.
 </IntroText>
 
-This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine.
-(Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
+This guide explains how to install, verify, update, and uninstall the <Constant name="wizard" /> CLI on your local machine. (Be warned, the wizard has been known to <WizardPopcorn>cast spells</WizardPopcorn>)
 
-Run the following command to install the <Constant name="wizard"/> CLI:
-
+<WizardCliDbtCliSupport />
 <WizardCliInstall />
 
 Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and onboarding](#first-run-setup-and-onboarding) sections for more details.
@@ -34,8 +32,6 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 - macOS, Windows, or Linux
 - A dbt project with a built `target/` directory (`dbt parse`, `dbt compile`, or `dbt build`)
 - Credentials for a supported CLI provider. Refer to [Supported AI providers](/docs/dbt-ai/wizard-byok#supported-ai-providers) in the next section.
-
-<WizardCliDbtCliSupport />
 
 <WizardSupportedProviders />
 
@@ -50,7 +46,7 @@ Next up, check out the [Prerequisites](#prerequisites) and [First-run setup and 
 Run the following command to update <Constant name="wizard" /> to the latest version:
 
 ```bash
-wizard system update
+wizard update
 ```
 
 <!--
@@ -72,7 +68,7 @@ For details about what is collected, what is not collected, and how to opt out o
 
 ## Related docs
 
-- [Get started with the local CLI](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
+- [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart): Install <Constant name="wizard" /> and start a local terminal session
 - [Configure BYOK](/docs/dbt-ai/wizard-byok): Manage your API key and choose an AI model
 - [Command reference](/docs/dbt-ai/wizard-cli-reference): Full reference for all `wizard` subcommands and global flags
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases): Realistic analytics engineering scenarios

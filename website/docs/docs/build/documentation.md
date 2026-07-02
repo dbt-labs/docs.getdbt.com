@@ -78,6 +78,7 @@ models:
 Generate documentation for your project by following these steps:
 
 1. Run the `dbt docs generate` [command](/reference/commands/cmd-docs#dbt-docs-generate) to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
+Before generating docs, save your YAML description updates for models, sources, and columns. Use the same project context you use for development, including any selectors or exclusions, so `manifest.json` and `catalog.json` match the resources dbt parses for that run.
 2. Ensure you've created the models with `dbt run` or `dbt build` to view the documentation for all columns, not just those described in your project.
 3. Run the `dbt docs serve` [command](/reference/commands/cmd-docs#dbt-docs-serve) if you're developing locally to use these `.json` files to populate a local website.
 

@@ -1,10 +1,9 @@
 ---
-title: "Get started with the dbt Wizard local CLI"
+title: "Use dbt Wizard locally"
 id: "wizard-quickstart"
 description: "Install the dbt Wizard local CLI, complete first-run onboarding, and send your first prompt from the terminal."
-sidebar_label: "Get started with the local CLI"
+sidebar_label: "Use dbt Wizard locally"
 tags: [AI, CLI, dbt Wizard]
-hide_table_of_contents: true
 ---
 
 import WizardPrompts from '/snippets/wizard-prompts.md';
@@ -15,11 +14,13 @@ import NewToTerminal from '/snippets/_new-to-terminal.md';
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';
 import WizardCliDbtCliSupport from '/snippets/_wizard-cli-dbt-cli-support.md';
 
-# Get started with the <Constant name="wizard" /> local CLI
+# Use <Constant name="wizard" /> locally
 
 <IntroText>
 Install <Constant name="wizard" /> locally and start an agentic dbt development session from your terminal.
 </IntroText>
+
+<WizardCliDbtCliSupport />
 
 <WizardCliInstall />
 
@@ -43,10 +44,8 @@ On <Constant name="fusion_engine"/> (version 2.0 and later), start <Constant nam
 
 You'll need:
 
-- An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, or Snowflake Cortex (preview)
+- An OpenAI subscription, or your own API key or provider credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, AWS Bedrock, Azure, Snowflake Cortex (preview), or Databricks
 - A dbt project with a built `target/` directory (run `dbt parse`, `dbt compile`, or `dbt build`)
-
-<WizardCliDbtCliSupport />
 
 <NewToTerminal />
 

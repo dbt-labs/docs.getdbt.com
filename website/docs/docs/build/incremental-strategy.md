@@ -22,9 +22,9 @@ The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is i
 
 ### Supported incremental strategies by adapter
 
-This table shows the support of each incremental strategy across adapters available on <Constant name="dbt" />'s [Latest release track](/docs/dbt-versions/dbt-release-tracks). Some strategies may be unavailable if you're not on **Latest** and the feature hasn't been released to the **Compatible** track.  
+This table shows the support of each incremental strategy across adapters available on Fusion or dbt's [Latest release track](/docs/dbt-versions/dbt-release-tracks). Some strategies may be unavailable if you're not on Latest and the feature hasn't been released to the Compatible track.
 
-If you're interested in an adapter available in <Constant name="core" /> only, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
+If you're interested in incremental strategies for additional adapters, check out the [adapter's individual configuration page](/reference/resource-configs) for more details.
 
 Click the name of the adapter in the following table for more information about supported incremental strategies:
 
@@ -40,6 +40,7 @@ Click the name of the adapter in the following table for more information about 
 | [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |    ✅   | ✅  |    |    |
 | [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅   |     | ✅ | ✅  |
 | [dbt-teradata](/reference/resource-configs/teradata-configs#valid_history-incremental-materialization-strategy)  | ✅    |  ✅   |   ✅   |    |         ✅    |
+| [dbt-duckdb](/reference/resource-configs/duckdb-configs#incremental)  | ✅    |  ✅   |   ✅   |    |         ✅    |
 
 ### Configuring incremental strategy
 
@@ -188,7 +189,7 @@ Importantly, `append` doesn't check for duplicates or verify whether a record al
 
 The `delete+insert` strategy deletes the data for the `unique_key` from the target table and then inserts the data for those with a `unique_key`, which may be less efficient for larger datasets. It ensures updated records are fully replaced, avoiding partial updates and can be useful when a `unique_key` isn't truly unique or when `merge` is unsupported.
 
-`delete+insert` doesn't map directly to SCD logic (type 1 or 2) because it overwrites data and tracks history.
+`delete+insert` doesn't map directly to SCD logic (type 1 or 2) because it overwrites data at the row level and while it can add new rows, it does not track history.
 
 For SCD2, use [dbt snapshots](/docs/build/snapshots#what-are-snapshots), not `delete+insert`.
 

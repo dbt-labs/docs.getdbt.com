@@ -4,6 +4,7 @@ id: "wizard-platform-privacy-data"
 description: "Understand how dbt Wizard in the dbt platform handles your privacy and data."
 sidebar_label: "Data & privacy"
 tags: [AI, Wizard, Privacy]
+pagination_prev: "docs/dbt-ai/wizard-platform-mcp"
 ---
 
 # <Constant name="wizard" /> in the <Constant name="dbt_platform" /> privacy and data <Lifecycle status="beta"/>
@@ -14,7 +15,10 @@ dbt Labs is committed to protecting your privacy and data. This page explains ho
 
 <Expandable alt_header="Does dbt Wizard access my warehouse data?">
 
-<Constant name="wizard" /> can initiate dbt commands and run queries on your behalf. When those actions run, <Constant name="wizard" /> can view the resulting outputs &mdash; which may include row-level data &mdash; to respond in your session. <Constant name="wizard" /> does not extract raw warehouse data outside of your controlled environment. Any warehouse query requires your explicit permission before it runs. You should always review AI output for completeness and accuracy.
+<Constant name="wizard" /> can run dbt commands and queries on your behalf, and every query needs your explicit permission first. When a query runs, <Constant name="wizard" /> sends those results &mdsah; which may include row-level data &mdash; to the AI provider so it can respond in your session. 
+
+For dbt-managed AI providers, we have zero data retention (ZDR) agreements in place that prevents the provider from retaining or using this data for training. If you bring your own AI provider (BYOK), that provider's terms will govern retention and training. Always review AI output for accuracy.
+
 </Expandable>
 
 <Expandable alt_header="Does dbt Wizard store or use personal data?">
