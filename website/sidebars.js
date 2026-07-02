@@ -403,7 +403,7 @@ const sidebarSettings = {
             "docs/dbt-ai/wizard-quickstart",
             {
               type: "link",
-              label: "Configure AI features",
+              label: "Enable AI in dbt platform",
               href: "/docs/platform/enable-dbt-ai",
             },
             "docs/dbt-ai/wizard-use-cases",
@@ -415,7 +415,6 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/dbt-ai/about-dbt-wizard-cli" },
               items: [
                 "docs/dbt-ai/about-dbt-wizard-cli",
-                "docs/dbt-ai/wizard-quickstart",
                 "docs/dbt-ai/wizard-cli",
                 "docs/dbt-ai/wizard-byok",
                 "docs/dbt-ai/wizard-skills",
