@@ -59,7 +59,7 @@ Before you're able to run exports in development or production, you'll need to m
 There are two ways to run an export:
   
 - [Run exports in development](#exports-in-development) using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) to test the output before production.
-  - To work in <Constant name="studio_ide" />, use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled. To work in the <Constant name="dbt" /> CLI, use the `dbt sl export` or dbt sl export-all commands to run exports.
+  - To work in <Constant name="studio_ide" />, use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled. To work in the <Constant name="dbt" /> CLI, use the `dbt sl export` or `dbt sl export-all` commands to run exports.
 - [Run exports in production](#exports-in-production) using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 
 ## Exports in development
@@ -72,7 +72,8 @@ This section explains the different commands and options available to run export
 
 - Use the [`dbt sl export-all` command](#exports-for-multiple-saved-queries) to run exports for multiple saved queries at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. 
 
-- If you're using the <Constant name="studio_ide" />, you can configure exports, but the `dbt sl export` and `dbt sl export-all` commands aren't supported. Use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled before running the command.
+- If you're using the <Constant name="studio_ide" />, use `dbt build` to run exports and make sure you have the [environment variable](#set-environment-variable) enabled before running the command. Commands `dbt sl export` or `dbt sl export-all` are supported in the <Constant name="dbt"> CLI only.
+
 
 ### Exports for single saved query
 
