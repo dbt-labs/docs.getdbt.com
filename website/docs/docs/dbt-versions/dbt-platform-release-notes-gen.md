@@ -18,6 +18,44 @@ unlisted: true
 Release notes are grouped by date for single-tenant environments.
 
 
+## July 1, 2026
+
+## Enhancements
+
+### APIs, Identity, and Administration
+
+- **SCIM user responses include standard group fields**: User responses from SCIM endpoints now include the standard `value` (group ID) and `display` (group display name) fields alongside the existing `id` and `displayName` fields, improving compatibility with SCIM spec consumers.
+
+- **Credentials page accessible with `user_credential_write` permission**: The credentials list and detail pages are now accessible to users who have `user_credential_write` permission even without `credentials_read`, supporting credential self-service flows.
+
+## Fixes
+
+### dbt platform
+
+- **Email notifications accept addresses with special characters**: External email notification addresses with valid but non-standard local-part characters (for example, ampersands in `ops&alerts@example.com`) are now accepted instead of being rejected by the validator.
+
+### Orchestration and run status
+
+- **Clearer errors for oversized environment variable payloads**: Oversized custom environment variables now fail at run start with a clear error that names the largest offender, instead of crashing mid-run. Reduce the variable size and retry.
+
+### dbt AI and agents
+
+- **More reliable dbt Copilot conversations**: dbt Copilot now recovers automatically from transient errors that could previously interrupt a conversation, so long threads keep working.
+
+- **Accurate job and run scoping in the Studio dev agent**: The Studio dev agent now correctly scopes job and run investigations to your current project instead of returning results across your entire account. You no longer see unrelated jobs from other projects when asking the agent to investigate a run.
+
+## Behavior Changes
+
+### dbt platform
+
+- **"Development credentials" renamed to "User credentials"**: All user-facing labels, section headings, tooltip text, and in-app messages that previously referred to "development credentials" now use "user credentials."
+
+- **Versionless migration banner removed**: The banner notifying users about migration to versionless dbt has been removed from the notification stack.
+
+### dbt AI and agents
+
+- **Separate usage limits for Studio dev agent and Copilot**: The Studio dev agent and Copilot features now enforce separate usage limits. If your account reaches the agent-credit limit for the Studio dev agent, only Studio dev agent requests are blocked — dbt Copilot features continue to work, and vice versa.
+
 ## June 24, 2026
 
 ## New
