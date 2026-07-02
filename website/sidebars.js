@@ -401,11 +401,7 @@ const sidebarSettings = {
           items: [
             "docs/platform/wizard-overview",
             "docs/dbt-ai/wizard-quickstart",
-            {
-              type: "link",
-              label: "Enable AI in dbt platform",
-              href: "/docs/platform/enable-dbt-ai",
-            },
+            "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
             "docs/dbt-ai/wizard-how-it-works",
             {
