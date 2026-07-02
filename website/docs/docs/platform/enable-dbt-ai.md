@@ -9,7 +9,7 @@ import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 
-# Configure AI features in <Constant name="dbt_platform" /> <Lifecycle status="self_service,managed,managed_plus" />
+# Enable AI features in <Constant name="dbt_platform" /> <Lifecycle status="self_service,managed,managed_plus" />
 
 <IntroText>
 Enable AI features in <Constant name="dbt_platform" /> to speed up your development and focus on delivering quality data.
