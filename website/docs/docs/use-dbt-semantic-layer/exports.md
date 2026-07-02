@@ -22,8 +22,6 @@ Essentially, exports are like any other table in your data platform &mdash; they
 - You have the <Constant name="semantic_layer" /> [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a <Constant name="dbt" /> environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.
 - You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
-- You have the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) installed. 
-  - In <Constant name="studio_ide" />, run `dbt build` instead of `dbt sl export` or `dbt sl export-all.`
 
 ## Benefits of exports
 
@@ -58,8 +56,7 @@ Before you're able to run exports in development or production, you'll need to m
 
 There are two ways to run an export:
   
-- [Run exports in development](#exports-in-development) using the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) to test the output before production.
-  - To work in <Constant name="studio_ide" />, use `dbt build` to run exports, and make sure you have the [environment variable](#set-environment-variable) enabled. To work in the <Constant name="dbt" /> CLI, use the `dbt sl export` or `dbt sl export-all` commands to run exports.
+- [Run exports in development](#exports-in-development) to test the output before production. In <Constant name="studio_ide" /> or any environment on the <Constant name="fusion_engine" />, run `dbt build` instead &mdash; enable the [environment variable](#set-environment-variable) first. In the [<Constant name="dbt" /> CLI](/docs/platform/dbt-cli-installation) outside Fusion, run `dbt sl export` or `dbt sl export-all`.
 - [Run exports in production](#exports-in-production) using the [<Constant name="dbt" /> job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 
 ## Exports in development
@@ -68,14 +65,15 @@ You can run an export in your development environment if you want to test its ou
 
 This section explains the different commands and options available to run exports in development.
 
+If your environment runs on the <Constant name="fusion_engine" /> (including <Constant name="studio_ide" />), use `dbt build` instead of the commands below &mdash; see [Run exports](#run-exports) for details.
+
 - Use the [`dbt sl export` command](#exports-for-single-saved-query) to test and generate exports in your development environment for a singular saved query. You can also use the `--select` flag to specify particular exports from a saved query.
 
 - Use the [`dbt sl export-all` command](#exports-for-multiple-saved-queries) to run exports for multiple saved queries at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. 
 
-- If you're using the <Constant name="studio_ide" />, use `dbt build` to run exports and make sure you have the [environment variable](#set-environment-variable) enabled before running the command. Commands `dbt sl export` or `dbt sl export-all` are supported in the <Constant name="dbt" /> CLI only.
-
-
 ### Exports for single saved query
+
+These commands apply when you're using the <Constant name="dbt" /> CLI outside <Constant name="studio_ide" /> or the <Constant name="fusion_engine" />. If your environment runs on Fusion, use `dbt build` instead &mdash; see [Run exports](#run-exports) for details.
 
 Use the following command to run exports in the <Constant name="dbt" /> CLI:
 
@@ -207,7 +205,7 @@ Yes, this is possible. However, the difference would be the name, schema, and ma
 <DetailsToggle alt_header="How do I run all exports for a saved query?">
 
 - In production runs, you can build the saved query by calling it directly in the build command, or you build a model and any exports downstream of that model.
-- In development, you can run all exports by running `dbt sl export --saved-query sq_name`.
+- In development, run all exports by running `dbt sl export --saved-query sq_name`. If your environment runs on the <Constant name="fusion_engine" /> (including <Constant name="studio_ide" />), run `dbt build` instead.
 
 </DetailsToggle>
 
