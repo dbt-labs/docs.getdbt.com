@@ -41,7 +41,7 @@ After clicking:
 
 <TabItem value="OAuth with dbt platform">
 
-_Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
+_OAuth with the local dbt MCP server is available for Starter, Enterprise, and Enterprise+ accounts._
 
 Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" />.
 
