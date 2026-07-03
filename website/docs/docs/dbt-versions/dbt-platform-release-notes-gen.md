@@ -52,10 +52,6 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Versionless migration banner removed**: The banner notifying users about migration to versionless dbt has been removed from the notification stack.
 
-### dbt AI and agents
-
-- **Separate usage limits for Studio dev agent and Copilot**: The Studio dev agent and Copilot features now enforce separate usage limits. If your account reaches the agent-credit limit for the Studio dev agent, only Studio dev agent requests are blocked — dbt Copilot features continue to work, and vice versa.
-
 ## June 24, 2026
 
 ## New
@@ -153,7 +149,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
-### dbt Wizard and agents
+### dbt AI and agents
 
 - **OAuth scopes declared in Model Context Protocol resource metadata**: The Model Context Protocol (MCP) protected resource metadata endpoint now advertises the OAuth scopes it supports (`offline_access`, `account:read`, `projects:query`, `catalog:read`, `projects:develop`, and `jobs:run`). MCP clients that perform dynamic capability discovery can now request the correct scopes automatically.
 
