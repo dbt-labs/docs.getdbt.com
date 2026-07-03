@@ -19,7 +19,7 @@ For local CLI only (with or without a <Constant name="dbt_platform"/> account), 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
 - For OAuth connections:
-  - OAuth for the remote MCP is available for Starter, Enterprise, and Enterprise+ plans.
+  - MCP OAuth is available for Starter, Enterprise, and Enterprise+ plans.
   - An account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable AI features](/docs/platform/enable-dbt-ai) for more info.
 
 ## Step 1: Choose your auth method and configure
@@ -28,9 +28,9 @@ For local CLI only (with or without a <Constant name="dbt_platform"/> account), 
 
 <TabItem value="oauth" label="OAuth">
 
-_Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
+_MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 
-OAuth is the fastest setup for <Constant name="dbt_platform"/> Enterprise and Enterprise+ accounts, no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
+OAuth is the fastest setup for <Constant name="dbt_platform"/> accounts, no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
 
 For OAuth _without_ a local install, use the [remote MCP server](/docs/dbt-ai/mcp-quickstart-remote). If your client does not support OAuth or you need token-based access, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#token-based-authentication).
 
