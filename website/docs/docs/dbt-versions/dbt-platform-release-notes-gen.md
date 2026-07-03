@@ -40,9 +40,9 @@ Release notes are grouped by date for single-tenant environments.
 
 ### dbt AI and agents
 
-- **More reliable dbt Copilot conversations**: dbt Copilot now recovers automatically from transient errors that could previously interrupt a conversation, so long threads keep working.
+- **More reliable dbt Wizard conversations**: dbt Wizard now recovers automatically from transient errors that could previously interrupt a conversation, so long threads keep working.
 
-- **Accurate job and run scoping in the Studio dev agent**: The Studio dev agent now correctly scopes job and run investigations to your current project instead of returning results across your entire account. You no longer see unrelated jobs from other projects when asking the agent to investigate a run.
+- **Accurate job and run scoping in dbt Wizard**: dbt Wizard now correctly scopes job and run investigations to your current project instead of returning results across your entire account. You no longer see unrelated jobs from other projects when asking dbt Wizard to investigate a run.
 
 ## Behavior Changes
 
