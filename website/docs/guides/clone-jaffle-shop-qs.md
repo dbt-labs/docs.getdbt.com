@@ -16,9 +16,9 @@ tags: ['dbt Core','Quickstart']
 
 [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt Labs' canonical sample dbt project for a fictional café business. This quickstart shows you how to clone the project using Git from GitHub or GitLab.
 
-Cloning downloads the dbt project files to your machine: models, seeds, tests, and configuration. It does not install dbt or set up a database. If you only need the project files, follow the steps below and stop after **Verify the clone**.
+Cloning downloads the dbt project files to your machine: models, seeds, tests, and configuration. It does not install dbt or set up a database. If you only need the project files, follow the [Clone the repository](#clone-the-repository) and [Verify the clone](#verify-the-clone) sections.
 
-To run dbt commands like `dbt seed`, `dbt run`, and `dbt test`, you also need dbt installed and a database to connect to. See [Next steps](#next-steps) for links to warehouse quickstarts.
+To run dbt commands like `dbt seed`, `dbt run`, and `dbt test`, you also need dbt installed and a database to connect to. Refer to [Next steps](#next-steps) for links to warehouse quickstarts.
 
 ### Related content
 
@@ -40,7 +40,8 @@ git --version
 
 ## Clone the repository
 
-### Clone from GitHub
+<Tabs>
+  <TabItem value="github" label="GitHub">
 
 1. Open your terminal and navigate to where you keep projects:
 
@@ -60,25 +61,54 @@ git --version
     cd jaffle-shop
     ```
 
-### Clone from GitLab
+  </TabItem>
+  <TabItem value="gitlab" label="GitLab">
 
 If your organization hosts Jaffle Shop on GitLab, or you have forked the repo there, clone from your GitLab URL instead:
 
-```bash
-git clone https://gitlab.com/YOUR_USERNAME/jaffle-shop.git
-cd jaffle-shop
-```
+1. Open your terminal and navigate to where you keep projects:
 
-Replace `YOUR_USERNAME` with your GitLab username or group.
+    ```bash
+    cd ~/Documents/Github
+    ```
 
-### Other git platforms
+2. Clone the repository (replace `YOUR_USERNAME` with your GitLab username or group):
+
+    ```bash
+    git clone https://gitlab.com/YOUR_USERNAME/jaffle-shop.git
+    ```
+
+3. Change into the project directory:
+
+    ```bash
+    cd jaffle-shop
+    ```
+
+  </TabItem>
+  <TabItem value="other" label="Other platforms">
 
 If your organization has mirrored or forked Jaffle Shop on Bitbucket, Azure DevOps, or another git host, use the clone URL from that platform. The `git clone` command works the same way:
 
-```bash
-git clone <your-repo-clone-url>
-cd jaffle-shop
-```
+1. Open your terminal and navigate to where you keep projects:
+
+    ```bash
+    cd ~/Documents/Github
+    ```
+
+2. Clone the repository:
+
+    ```bash
+    git clone <your-repo-clone-url>
+    ```
+
+3. Change into the project directory:
+
+    ```bash
+    cd jaffle-shop
+    ```
+
+  </TabItem>
+</Tabs>
 
 ## Verify the clone
 
@@ -95,29 +125,27 @@ You should see files and folders including:
 - `seeds/`
 - `packages.yml`
 
-Cloning is complete. You now have the Jaffle Shop project files on your machine.
+Cloning is complete! 🎉 You now have the Jaffle Shop project files on your machine.
 
 ## Next steps
 
 To run or develop the project, you need dbt installed and a database connected. These links can help:
 
-- **[Install dbt Core](/docs/local/install-dbt)** &mdash; Cloning doesn't install dbt. You need it to run commands.
-- **[Set up a virtual environment](/docs/local/install-dbt)** &mdash; Keeps dbt separate from other Python projects on your machine.
-- **[Install dependencies](/reference/commands/deps)** &mdash; The repo lists packages in `packages.yml`. Run `dbt deps` after dbt is installed.
-- **[About dbt projects](/docs/build/projects)** &mdash; Learn the project structure before editing models.
-- **[dbt Learn](https://learn.getdbt.com/)** &mdash; Interactive courses for new users.
+- **[Install dbt locally](/docs/local/install-dbt):** Cloning doesn't install dbt. You need it to run commands.
+- **[Set up a virtual environment](/docs/local/install-dbt):** Keeps dbt separate from other Python projects on your machine.
+- **[About dbt deps command](/reference/commands/deps):** The repo lists packages in `packages.yml`. Run `dbt deps` after dbt is installed.
+- **[About dbt projects](/docs/build/projects):** Learn the project structure before editing models.
+- **[dbt Learn](https://learn.getdbt.com/):** Interactive courses for new users.
 
 ### Warehouse quickstarts
 
 To run the project, you need a database and adapter configured in `profiles.yml`. Choose the quickstart for your warehouse or local setup:
 
-| Path | Guide |
-|------|-------|
-| Snowflake | [Snowflake quickstart](/guides/snowflake) |
-| BigQuery | [BigQuery quickstart](/guides/bigquery) |
-| Databricks | [Databricks quickstart](/guides/databricks) |
-| Redshift | [Redshift quickstart](/guides/redshift) |
-| Local DuckDB | Clone [`jaffle_shop_duckdb`](https://github.com/dbt-labs/jaffle_shop_duckdb) and follow the [DuckDB quickstart](/guides/duckdb) |
+- [Snowflake quickstart](/guides/snowflake)
+- [BigQuery quickstart](/guides/bigquery)
+- [Databricks quickstart](/guides/databricks)
+- [Redshift quickstart](/guides/redshift)
+- [DuckDB quickstart](/guides/duckdb): Clone [`jaffle_shop_duckdb`](https://github.com/dbt-labs/jaffle_shop_duckdb) and follow the guide.
 
 You can also browse [all quickstart guides](/guides?tags=Quickstart) or other [example dbt projects](/faqs/Project/example-projects).
 
