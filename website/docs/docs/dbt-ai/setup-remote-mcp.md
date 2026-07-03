@@ -29,8 +29,8 @@ The remote MCP server is the ideal choice when:
 
 | If you need... | Use... |
 | --- | --- |
-| Fastest first-time setup and your MCP client supports OAuth for HTTP servers | **OAuth (remote)** <br /> Available in beta for Enterprise and Enterprise+ accounts |
-| `execute_sql` with a PAT, automation, or clients without OAuth | **Token-based** (PAT or service token) |
+| Fastest first-time setup and your MCP client supports OAuth for HTTP servers | **OAuth (remote)** <br /> Available in public beta for Starter, Enterprise, and Enterprise+ accounts |
+| `execute_sql` with a PAT, automation, shared setup, or clients without OAuth | **Token-based** (PAT or service token) |
 | Shared or team setup | **Service token** (token-based) |
 | CI or automation | **Service token** (token-based) |
 
@@ -38,7 +38,7 @@ The remote MCP server is the ideal choice when:
 The `execute_sql` tool does **not** work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) in the `Authorization` header when using this tool.
 :::
 
-## OAuth (remote MCP) <Lifecycle status="beta,managed,managed_plus" /> {#oauth-remote-mcp}
+## OAuth (remote MCP) <Lifecycle status="beta,self_service,managed,managed_plus" /> {#oauth-remote-mcp}
 
 OAuth lets you connect to the remote MCP server without copying API tokens into your MCP client, when your client supports OAuth for HTTP-based MCP servers.
 
@@ -47,7 +47,7 @@ OAuth lets you connect to the remote MCP server without copying API tokens into 
 ### Prerequisites
 
 - [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled for your account.
-- Enterprise or Enterprise+ account
+- Starter, Enterprise, or Enterprise+ account
 - An MCP client that supports OAuth for remote (HTTP) MCP servers.
 - Your **MCP URL** from **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL** in <Constant name="dbt_platform"/>. Check out the next section [MCP URL](#mcp-url) for more information.
 
@@ -87,11 +87,13 @@ For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrat
 
 ## Token-based authentication {#token-based-authentication}
 
-Token-based authentication lets you connect to the remote MCP server without OAuth, when your client doesn't support OAuth for HTTP-based MCP servers.
+_OAuth remote MCP is for Starter, Enterprise, and Enterprise+ accounts._
+
+Token-based authentication lets you connect to the remote MCP server without OAuth by passing a PAT or service token in your MCP client config. Use it when your client doesn't support OAuth for HTTP-based MCP servers, when you need a shared or CI setup, or when you need `execute_sql`, which requires a PAT.
 
 ### Setup instructions
 
-1. Ensure that you have [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-ai) turned on.
+1. Ensure that you have a Starter, Enterprise, or Enterprise+ account with [AI features](https://docs.getdbt.com/docs/platform/enable-dbt-ai) turned on.
 2. Obtain the following information from <Constant name="dbt_platform"/>:
 
   - **<Constant name="dbt_platform"/> host**: Use this to form the full URL. For example, replace `YOUR_DBT_HOST_URL` here: `https://YOUR_DBT_HOST_URL/api/ai/v1/mcp/`. It may look like: `https://cloud.getdbt.com/api/ai/v1/mcp/`. If you have a multi-cell account, the host URL will be in the `ACCOUNT_PREFIX.us1.dbt.com` format. For more information, refer to [Access, Regions, & IP addresses](/docs/platform/about-platform/access-regions-ip-addresses).

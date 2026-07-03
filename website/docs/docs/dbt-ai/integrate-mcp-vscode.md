@@ -209,7 +209,7 @@ The remote dbt MCP server runs in <Constant name="dbt_platform" /> &mdash; no `u
     <Tabs>
     <TabItem value="oauth" label="OAuth (remote)">
 
-    _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+    _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 
     <MCPOauthPreflight />
 

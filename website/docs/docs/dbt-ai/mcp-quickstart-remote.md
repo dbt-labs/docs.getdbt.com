@@ -46,7 +46,7 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 
 ### 3. Choose authentication: OAuth or tokens
 
-- **OAuth (remote)** &mdash; No API tokens in your client config. Requires an OAuth-capable MCP client. Available in private beta for Enterprise and Enterprise+ accounts.
+- **OAuth (remote)** &mdash; No API tokens in your client config. Requires an OAuth-capable MCP client. Available in public beta for Starter, Enterprise, and Enterprise+ accounts.
 - **Token-based** &mdash; PAT or service token in the `Authorization` header. Works with any client and is required for shared/CI setups and for `execute_sql` (which needs a PAT).
 
 <MCPRemoteOauthBetaCallout />

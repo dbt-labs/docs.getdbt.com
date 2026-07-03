@@ -12,7 +12,7 @@ This quickstart uses the local MCP server: it runs on your machine using `uvx db
 
 For local CLI only (with or without a <Constant name="dbt_platform"/> account), see [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) or [Run dbt Wizard locally](/docs/dbt-ai/wizard-quickstart).
 
- To configure or disable specific tools, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables). Choose _OAuth_ (available for Enterprise and Enterprise+ accounts) or _Tokens_ (more control, better for shared setups).
+ To configure or disable specific tools, see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables). Choose _OAuth_ (available for Starter, Enterprise, and Enterprise+ accounts) or _Tokens_ (more control, better for shared setups).
 
 ## Prerequisites
 
@@ -26,9 +26,9 @@ For local CLI only (with or without a <Constant name="dbt_platform"/> account), 
 
 <TabItem value="oauth" label="OAuth">
 
-OAuth is the fastest setup for <Constant name="dbt_platform"/> Enterprise and Enterprise+ accounts &mdash; no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
+OAuth is the fastest setup for <Constant name="dbt_platform"/> Starter, Enterprise, and Enterprise+ accounts &mdash; no tokens to copy or manage. A browser window opens to authenticate the first time you connect. 
 
-For OAuth _without_ a local install, use the [remote MCP server](/docs/dbt-ai/mcp-quickstart-remote) (Enterprise and Enterprise+, private beta). If your client does not support OAuth or you need token-based access, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#token-based-authentication).
+For OAuth _without_ a local install, use the [remote MCP server](/docs/dbt-ai/mcp-quickstart-remote), available in public beta for Starter, Enterprise, and Enterprise+ accounts. If your client does not support OAuth or you need token-based access, use [token-based authentication](/docs/dbt-ai/setup-remote-mcp#token-based-authentication).
 
 <StaticSubdomainRequired />
 

@@ -79,7 +79,7 @@ Then follow the tab that matches your auth method:
 <Tabs>
 <TabItem value="oauth" label="OAuth (remote)">
 
-_OAuth is in private beta for Enterprise and Enterprise+ accounts._
+_Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 
 <MCPOauthPreflight />
 
@@ -157,7 +157,7 @@ Claude Code can connect to the remote dbt MCP server over HTTP &mdash; same JSON
     <Tabs>
     <TabItem value="oauth" label="OAuth (remote)">
 
-    _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+    _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 
     <MCPOauthPreflight />
 
