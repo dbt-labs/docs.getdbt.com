@@ -95,11 +95,11 @@ You should see files and folders including:
 - `seeds/`
 - `packages.yml`
 
-You have now cloned Jaffle Shop. No further steps are required unless you want to run the project.
+Cloning is complete. You now have the Jaffle Shop project files on your machine.
 
 ## Next steps
 
-Cloning is complete. If you want to do more with the project, use these links:
+To run or develop the project, you need dbt installed and a database connected. These links can help:
 
 - **[Install dbt Core](/docs/local/install-dbt)** &mdash; Cloning doesn't install dbt. You need it to run commands.
 - **[Set up a virtual environment](/docs/local/install-dbt)** &mdash; Keeps dbt separate from other Python projects on your machine.
