@@ -38,7 +38,7 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Clearer errors for oversized environment variable payloads**: Oversized custom environment variables now fail at run start with a clear error that names the largest offender, instead of crashing mid-run. Reduce the variable size and retry.
 
-### dbt Wizard and agents
+### dbt AI and agents
 
 - **More reliable dbt Wizard conversations**: dbt Wizard now recovers automatically from transient errors that could previously interrupt a conversation, so long threads keep working.
 
