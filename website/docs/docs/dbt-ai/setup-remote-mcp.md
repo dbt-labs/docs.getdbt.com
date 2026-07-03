@@ -7,7 +7,6 @@ id: "setup-remote-mcp"
 
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
-import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.md';
 
 # Set up the remote MCP server <Lifecycle status="self_service,managed,managed_plus"/>
 
@@ -41,8 +40,6 @@ The `execute_sql` tool does **not** work with service tokens. You must use a [Pe
 ## OAuth (remote MCP) <Lifecycle status="beta,self_service,managed,managed_plus" /> {#oauth-remote-mcp}
 
 OAuth lets you connect to the remote MCP server without copying API tokens into your MCP client, when your client supports OAuth for HTTP-based MCP servers.
-
-<MCPRemoteOauthBetaCallout />
 
 ### Prerequisites
 
