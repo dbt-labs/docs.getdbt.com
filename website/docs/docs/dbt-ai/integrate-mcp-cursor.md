@@ -41,7 +41,9 @@ After clicking:
 
 <TabItem value="OAuth with dbt platform">
 
-Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" /> <Lifecycle status="self_service, managed, managed_plus" />.
+_Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
+
+Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" />.
 
 Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt AI](/docs/platform/enable-dbt-ai) for more info.
 

@@ -70,6 +70,7 @@ Configure your MCP client with the MCP URL and headers from the previous step.
 
 <Tabs groupId="auth-method">
 <TabItem value="oauth" label="OAuth">
+
 _Available for Starter, Enterprise, and Enterprise+ accounts_
 
 <MCPOauthPreflight />
