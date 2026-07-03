@@ -132,8 +132,11 @@ For more information, refer to [Postgres setup](/docs/local/connect-data-platfor
 
     <Expandable alt_header="Windows (PowerShell)">
 
+    PowerShell may block `Activate.ps1` when the execution policy is `Restricted`. The following command allows scripts for this session only:
+
     ```shell
     python -m venv venv
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
     venv\Scripts\Activate.ps1
     python -m pip install --upgrade pip
     python -m pip install dbt-core dbt-postgres
