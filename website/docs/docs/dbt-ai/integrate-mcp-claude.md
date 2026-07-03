@@ -25,6 +25,7 @@ Both interfaces can connect to either:
 
 - You use Claude for AI or agentic work
 - For OAuth (local or remote), use your [access URL with a static subdomain](/docs/platform/about-platform/access-regions-ip-addresses).
+  - Remote MCP OAuth is available for Starter, Enterprise, and Enterprise+ accounts.
 
 <StaticSubdomainRequired />
 
