@@ -8,8 +8,6 @@ id: "setup-remote-mcp"
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 
-# Set up the remote MCP server <Lifecycle status="self_service,managed,managed_plus"/>
-
 The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
 
 <Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
