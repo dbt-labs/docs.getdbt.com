@@ -47,7 +47,7 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 <SimpleTable>
 | Type | Info | 
 | ---- | ---- |
-| **OAuth (remote) |  No API tokens in your client config. Requires an OAuth-capable MCP client.<br /><br /> Available for Starter, Enterprise, and Enterprise+ accounts. |
+| **OAuth (remote)** |  No API tokens in your client config. Requires an OAuth-capable MCP client.<br /><br /> Available for Starter, Enterprise, and Enterprise+ accounts. |
 | **Token-based** | PAT or service token in the `Authorization` header. Works with any client and is required for shared/CI setups and for `execute_sql` (which needs a PAT). |
 </SimpleTable>
 
