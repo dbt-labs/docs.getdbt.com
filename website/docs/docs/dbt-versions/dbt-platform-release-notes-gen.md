@@ -38,11 +38,11 @@ Release notes are grouped by date for single-tenant environments.
 
 - **Clearer errors for oversized environment variable payloads**: Oversized custom environment variables now fail at run start with a clear error that names the largest offender, instead of crashing mid-run. Reduce the variable size and retry.
 
-### dbt AI and agents
+### dbt Wizard and agents
 
-- **More reliable dbt Copilot conversations**: dbt Copilot now recovers automatically from transient errors that could previously interrupt a conversation, so long threads keep working.
+- **More reliable dbt Wizard conversations**: dbt Wizard now recovers automatically from transient errors that could previously interrupt a conversation, so long threads keep working.
 
-- **Accurate job and run scoping in the Studio dev agent**: The Studio dev agent now correctly scopes job and run investigations to your current project instead of returning results across your entire account. You no longer see unrelated jobs from other projects when asking the agent to investigate a run.
+- **Accurate job and run scoping in dbt Wizard**: dbt Wizard now correctly scopes job and run investigations to your current project instead of returning results across your entire account. You no longer see unrelated jobs from other projects when asking dbt Wizard to investigate a run.
 
 ## Behavior Changes
 
@@ -51,10 +51,6 @@ Release notes are grouped by date for single-tenant environments.
 - **"Development credentials" renamed to "User credentials"**: All user-facing labels, section headings, tooltip text, and in-app messages that previously referred to "development credentials" now use "user credentials."
 
 - **Versionless migration banner removed**: The banner notifying users about migration to versionless dbt has been removed from the notification stack.
-
-### dbt AI and agents
-
-- **Separate usage limits for Studio dev agent and Copilot**: The Studio dev agent and Copilot features now enforce separate usage limits. If your account reaches the agent-credit limit for the Studio dev agent, only Studio dev agent requests are blocked — dbt Copilot features continue to work, and vice versa.
 
 ## June 24, 2026
 
