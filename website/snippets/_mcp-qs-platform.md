@@ -18,7 +18,9 @@ For local CLI only (with or without a <Constant name="dbt_platform"/> account), 
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 - A [<Constant name="dbt_platform"/> account](https://www.getdbt.com/signup)
-- If you're using OAuth, your account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt Wizard](/docs/platform/enable-dbt-ai) for more info.
+- For OAuth connections:
+  - OAuth for the remote MCP is available for Starter, Enterprise, and Enterprise+ plans.
+  - An account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable AI features](/docs/platform/enable-dbt-ai) for more info.
 
 ## Step 1: Choose your auth method and configure
 
