@@ -84,8 +84,6 @@ For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrat
 
 ## Token-based authentication {#token-based-authentication}
 
-_OAuth remote MCP is for Starter, Enterprise, and Enterprise+ accounts._
-
 Token-based authentication lets you connect to the remote MCP server without OAuth by passing a PAT or service token in your MCP client config. Use it when your client doesn't support OAuth for HTTP-based MCP servers, when you need a shared or CI setup, or when you need `execute_sql`, which requires a PAT.
 
 ### Setup instructions
