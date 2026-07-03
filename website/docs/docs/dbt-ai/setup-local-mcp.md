@@ -61,7 +61,7 @@ The `execute_sql` tool does _not_ work with service tokens. You must use a [Pers
 
 Choose the setup method that best fits your workflow:
 
-### OAuth authentication with dbt platform <Lifecycle status="managed, managed_plus" />
+### OAuth authentication with dbt platform <Lifecycle status="self_service, managed, managed_plus" />
 
 This method uses OAuth to authenticate with your <Constant name="dbt_platform" /> account. It's the simplest setup and doesn't require managing tokens or environment variables manually.
 
