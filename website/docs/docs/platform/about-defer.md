@@ -52,6 +52,7 @@ For example, if you were to start developing on a new branch with [nothing in yo
 
 One key difference between using `--defer` in the <Constant name="platform_cli" /> and the <Constant name="studio_ide" /> is that `--defer` is *automatically* enabled in the <Constant name="platform_cli" /> for all invocations, compared with production artifacts. You can disable it with the `--no-defer` flag.
 
+<VersionBlock firstVersion="2.0">
 A dbt Cloud project id must be declared in your `dbt_project.yml` for automatic deferral to associate your project with what is declared in your `dbt_cloud.yml`.
 
 <File name="dbt_project.yml">
@@ -62,6 +63,7 @@ dbt-cloud:
 ```
 
 </File>
+</VersionBlock>
 
 ### Configure deferral environment ID
 
