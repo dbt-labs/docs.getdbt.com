@@ -2,12 +2,12 @@
 title: "About dbt login"
 sidebar_label: "login"
 id: "login"
-description: "Use dbt login in dbt v1.12 and later to authenticate and unlock gated features across dbt tools."
+description: "Use dbt login to authenticate and unlock gated features across dbt tools."
 intro_text: "Use dbt login to authenticate once and unlock gated features across dbt tools."
 ---
 
 :::info
-Available in <Constant name="dbt" /> v1.12 and v2.0 and later.
+Available in <Constant name="dbt" /> v2.0 and later.
 :::
 
 Run `dbt login` from the command line to unlock advanced dbt features. It'll open browser-based authentication where you can sign in to your existing <Constant name="dbt_platform" /> account or create a free one &mdash; no credit card required!

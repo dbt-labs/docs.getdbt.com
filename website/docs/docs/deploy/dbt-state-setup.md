@@ -15,8 +15,8 @@ This page walks you through setting up dbt State across <Constant name="core" />
 Before you set up dbt State, make sure you have:
 
 - A supported dbt version or experience. dbt State is:
-    - Natively available in <Constant name="dbt_platform" />, <Constant name="core" /> v1.13 and later, and the <Constant name="fusion_engine" />
-    - Available as a plugin for <Constant name="core" /> v1.7 through v1.11
+    - Natively available in <Constant name="dbt_platform" /> and the <Constant name="fusion_engine" />
+    - Available as a plugin for <Constant name="core" /> v1.7–1.11
 - A supported data platform. dbt State currently supports Snowflake, Databricks, BigQuery, and Redshift
 - A supported dbt State account type. dbt State requires authentication through either:
    - A current <Constant name="dbt_platform" /> account*
@@ -115,7 +115,7 @@ You can override the development environment's dbt State setting for your own ac
 6. Click **Save**.
 
 </TabItem>
-<TabItem value="fusion" label="dbt Core 1.13+ / Fusion">
+<TabItem value="fusion" label="Fusion">
 
 1. Navigate to your project:
 
