@@ -31,11 +31,15 @@ const products = [
     subProducts: [
       {
         name: "dbt platform (latest)",
-        version: "1.12",
+        version: "1.13",
       },
       {
         name: "dbt Core v2.0 (alpha)",
         version: "2.0",
+      },
+      {
+        name: "dbt Core v1.13 (beta)",
+        version: "1.13",
       },
       {
         name: "dbt Core v1.12 (beta)",
@@ -347,6 +351,10 @@ exports.versionedPages = [
   {
     page: "reference/global-configs/sqlparse",
     firstVersion: "1.11",
+  },
+  {
+    page: "reference/global-configs/user-settings",
+    firstVersion: "1.13",
   },
 ];
 

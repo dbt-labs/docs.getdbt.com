@@ -15,7 +15,7 @@ This page walks you through setting up dbt State across <Constant name="core" />
 Before you set up dbt State, make sure you have:
 
 - A supported dbt version or experience. dbt State is:
-    - Natively available in <Constant name="dbt_platform" />, <Constant name="core" /> v1.12 and later, and the <Constant name="fusion_engine" />
+    - Natively available in <Constant name="dbt_platform" />, <Constant name="core" /> v1.13 and later, and the <Constant name="fusion_engine" />
     - Available as a plugin for <Constant name="core" /> v1.7 through v1.11
 - A supported data platform. dbt State currently supports Snowflake, Databricks, BigQuery, and Redshift
 - A supported dbt State account type. dbt State requires authentication through either:
@@ -115,7 +115,7 @@ You can override the development environment's dbt State setting for your own ac
 6. Click **Save**.
 
 </TabItem>
-<TabItem value="fusion" label="dbt Core 1.12 / Fusion">
+<TabItem value="fusion" label="dbt Core 1.13+ / Fusion">
 
 1. Navigate to your project:
 
@@ -195,7 +195,7 @@ In the <Constant name="fusion_engine" />, after platform authentication, the CLI
 
 </SimpleTable>
 
-In <Constant name="core" /> v1.12, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform).
+In <Constant name="core" /> v1.13 and later, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform).
 
 dbt State works out of the box, but the following steps can help you get more value from it.
 
