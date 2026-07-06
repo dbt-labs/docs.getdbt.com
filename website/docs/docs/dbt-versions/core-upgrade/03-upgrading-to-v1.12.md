@@ -20,14 +20,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### `dbt login`
-
-In <Constant name="core" /> v1.12, [`dbt login`](/reference/commands/login) was introduced for browser-based authentication. `dbt login` opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
-
-Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
-
-In the <Constant name="fusion_engine" />, `dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login).
-
 ### Opt-in v2 parser <Lifecycle status="beta" />
 
 <Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to Fusion's Rust parser instead of dbt Core's own Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward Fusion compatibility, so you can catch and fix any project issues gradually rather than all at once.

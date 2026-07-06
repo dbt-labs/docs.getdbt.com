@@ -19,7 +19,7 @@ Run [`dbt login status`](#dbt-login-status) to view your current authentication 
 `dbt login` is an interactive, browser-based sign-in flow for local development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
 
 - advanced features in the [dbt VS Code extension](/docs/about-dbt-extension)
-- [dbt State](/docs/deploy/dbt-state-setup?version=1.13#how-dbt-login-works-with-dbt-state) in supported versions
+- [dbt State](/docs/deploy/dbt-state-setup#setting-up-dbt-state) in supported versions
 - advanced features in v2.0 CLI
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
@@ -61,6 +61,8 @@ In the <Constant name="fusion_engine" />, after platform authentication, the CLI
 
 </SimpleTable>
 
+<!-- In <Constant name="core" /> v1.12, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform). -->
+
 </VersionBlock>
 
 ## Authentication methods
@@ -74,7 +76,7 @@ You can log into dbt either using [interactive](#interactive-authentication) or 
 Use `dbt login` when you're developing locally in a terminal or IDE and can complete sign-in in a browser.
 
 - When you run `dbt login`, dbt opens a browser-based authentication flow. After you complete authentication, dbt stores your login state locally and confirms that you're signed in.
-- After you sign in, dbt can use your login state to unlock advanced features across the dbt CLI, VS Code extension, and, in supported versions, dbt State.
+- After you sign in, dbt can use your login state to unlock advanced features across the dbt CLI, VS Code extension, and dbt State.
 - Your session stays active across terminal sessions, and dbt refreshes it automatically while you're active. As long as you use dbt at least once every 7 days, you stay signed in. If you're inactive for longer, dbt prompts you to run `dbt login` again. Refer to [Staying signed in](#staying-signed-in) for details.
 
 Run `dbt login` from your **local terminal** (not in the <Constant name="dbt_platform" /> UI).
@@ -144,7 +146,7 @@ export DBT_CLOUD_PROJECT_ID=67890
 
 ## How shared login works across dbt tools
 
-- Use `dbt login` to authenticate with [dbt State](/docs/deploy/dbt-state-about) in supported versions.
+- Use `dbt login` to authenticate with [dbt State](/docs/deploy/dbt-state-about).
 You can start the sign-in flow from the [dbt VS Code extension](/docs/about-dbt-extension):
 - If you run `dbt login` from the CLI, the dbt VS Code extension uses that login in your next extension session.
 - If you sign in from the dbt VS Code extension, you can use that login the next time you run a login-gated command.
@@ -227,7 +229,7 @@ Authentication failed. Re-run dbt login to try again.
 ```
 
 :::note dbt State and dbt login
-If you have a <Constant name="dbt_platform" /> account, you can use the same account to authenticate with dbt State in supported versions — no separate sign-in required. For full dbt State setup, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+If you have a <Constant name="dbt_platform" /> account, you can use the same account to authenticate with dbt State — no separate sign-in required. For full dbt State setup, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 :::
 
 ### dbt login --help
