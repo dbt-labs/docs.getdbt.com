@@ -17,6 +17,14 @@ The following steps walk you through the setup of a Databricks Azure Private Lin
 
 <CloudProviders type='Databricks'/>
 
+:::warning VNet injection required
+
+Azure supports private endpoints for Databricks workspaces only when the workspace uses VNet injection (a customer-managed VNet). Workspaces on the default Azure-managed VNet reject private endpoint connections with a `NonVNetInjectedWorkspaceNotSupported` error.
+
+Confirm your workspace uses VNet injection before you submit the request. If it doesn't, create a new workspace with VNet injection enabled first. For more information, refer to [Deploy Azure Databricks in your own virtual network](https://learn.microsoft.com/en-us/azure/databricks/security/network/classic/vnet-inject).
+
+:::
+
 ## Configure Azure Private Link
 
 1. Navigate to your Azure Databricks workspace. 
