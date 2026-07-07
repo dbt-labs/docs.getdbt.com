@@ -75,7 +75,7 @@ The `hard_deletes` config has three methods:
 
 ## Considerations
 - **Backward compatibility**: The `invalidate_hard_deletes` config is still supported for existing snapshots but can't be used alongside `hard_deletes`.
-- **New snapshots**: For new snapshots, we recommend using `hard_deletes` instead of `invalidate_hard_deletes`.
+- **New snapshots**: For new snapshots, we recommend using `invalidate` instead of `invalidate_hard_deletes`.
 - **Migration**: If you switch an existing snapshot to use `hard_deletes` without migrating your data, you may encounter inconsistent or incorrect results, such as a mix of old and new data formats.
 
 ## Example
