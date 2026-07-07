@@ -1,20 +1,20 @@
 ---
-title: Quickstart for cloning Jaffle Shop using Git
+title: "Clone the Jaffle Shop sample project"
 id: clone-jaffle-shop
 description: "Clone the Jaffle Shop sample dbt project from GitHub or GitLab."
-hoverSnippet: "Clone the Jaffle Shop sample dbt project from GitHub or GitLab."
-platform: 'dbt-core'
-icon: 'git'
-level: 'Beginner'
+displayText: Clone the Jaffle Shop sample project
+hoverSnippet: "Get the Jaffle Shop sample dbt project on your machine using Git."
+icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Core','Quickstart']
+tags: ['dbt', 'Beginner']
+level: 'Beginner'
 ---
 
 <div style={{maxWidth: '900px'}}>
 
-## Introduction
+## What is Jaffle Shop?
 
-[Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt Labs' canonical sample dbt project for a fictional café business. This quickstart shows you how to clone the project using Git from GitHub or GitLab.
+[Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt Labs' canonical sample dbt project for a fictional café business. This guide shows you how to clone the project using Git from GitHub or GitLab.
 
 Cloning downloads the dbt project files to your machine: models, seeds, tests, and configuration. It does not install dbt or set up a database. If you only need the project files, follow the [Clone the repository](#clone-the-repository) and [Verify the clone](#verify-the-clone) sections.
 
@@ -141,13 +141,13 @@ To run or develop the project, you need dbt installed and a database connected. 
 
 To run the project, you need a database and adapter configured in `profiles.yml`. Choose the quickstart for your warehouse or local setup:
 
-- [Snowflake quickstart](/guides/snowflake)
-- [BigQuery quickstart](/guides/bigquery)
-- [Databricks quickstart](/guides/databricks)
-- [Redshift quickstart](/guides/redshift)
-- [DuckDB quickstart](/guides/duckdb): Clone [`jaffle_shop_duckdb`](https://github.com/dbt-labs/jaffle_shop_duckdb) and follow the guide.
+- [Quickstart for dbt and Snowflake](/guides/snowflake)
+- [Quickstart for dbt and BigQuery](/guides/bigquery)
+- [Quickstart for dbt and Databricks](/guides/databricks)
+- [Quickstart for dbt and Redshift](/guides/redshift)
+- [Quickstart for dbt Core using DuckDB](/guides/duckdb): Clone [`jaffle_shop_duckdb`](https://github.com/dbt-labs/jaffle_shop_duckdb) and follow the guide.
 
-You can also browse [all quickstart guides](/guides?tags=Quickstart) or other [example dbt projects](/faqs/Project/example-projects).
+You can also browse [all guides](/guides) or other [example dbt projects](/faqs/Project/example-projects).
 
 ## Optional cleanup
 
