@@ -31,7 +31,7 @@ const products = [
     subProducts: [
       {
         name: "dbt platform (latest)",
-        version: "1.13",
+        version: "1.12",
       },
       {
         name: "dbt Core v2.0 (alpha)",
