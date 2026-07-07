@@ -54,7 +54,7 @@ This pattern can affect any model type, not just views. If a base or staging mod
 
 ## How to diagnose
 
-In <Constant name="core" /> v1.7–v1.11, run the `dbt-state explain` command to see why dbt State rebuilt or reused a specific model.
+In <Constant name="core" /> v1.7–v1.12, run the `dbt-state explain` command to see why dbt State rebuilt or reused a specific model.
 
 :::caution Experimental
 The `dbt-state explain` command is experimental. It isn't available in the <Constant name="fusion_engine" /> or <Constant name="dbt_platform" /> yet.
