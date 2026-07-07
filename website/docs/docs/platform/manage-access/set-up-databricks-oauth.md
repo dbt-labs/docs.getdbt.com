@@ -1,12 +1,12 @@
 ---
 title: "Set up Databricks OAuth"
-description: "Learn how dbt administrators and developers can use Databricks OAuth to control access in a dbt account."
+description: "Learn how dbt administrators and users can use Databricks OAuth to control access in a dbt account."
 id: "set-up-databricks-oauth"
 ---
 
 # Set up Databricks OAuth <Lifecycle status="managed, managed_plus" />
 
-The <Constant name="dbt_platform" /> supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks on Enterprise and Enterprise+ plans. When you enable Databricks OAuth for a <Constant name="dbt" /> project, all developers must authenticate with Databricks in order to use the <Constant name="studio_ide" />.
+<Constant name="dbt_platform" /> accounts on Enterprise and Enterprise+ plans support developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks. When you enable Databricks OAuth for a <Constant name="dbt" /> project, all developers must authenticate with Databricks in order to use the <Constant name="studio_ide" />.
 
 ### Development and deployment authentication
 
@@ -20,7 +20,7 @@ For setup steps, refer to [Defining your dbt deployment environment](/guides/set
 
 To get started, add dbt as a custom OAuth application in Databricks.
 
-The following steps use the Databricks UI. Alternatively, use the [Databricks CLI](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-cli). Use the redirect URLs in [Redirect URLs by region](#redirect-urls-by-region) for either method.
+The following steps use the Databricks UI. Alternatively, use the [Databricks CLI](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-cli). Use the [redirect URLs for your region](#redirect-urls-by-region) for either method.
 
 1. Log in to the [account console](https://accounts.cloud.databricks.com/?_ga=2.255771976.118201544.1712797799-1002575874.1704693634) and click the **Settings** icon in the sidebar.
 
@@ -28,7 +28,7 @@ The following steps use the Databricks UI. Alternatively, use the [Databricks CL
 
 3. Enter the following details:
    - A name for your connection.
-   - The redirect URLs for your OAuth connection. Use both URLs listed for your account region in [Redirect URLs by region](#redirect-urls-by-region).
+   - The redirect URLs for your OAuth connection. Use both URLs listed for your account region.
    - For Access scopes, the APIs the application should have access to:
       - For BI applications, the SQL scope is required to allow the connected app to access Databricks SQL APIs (this is required for SQL models).
       - For applications that need to access Databricks APIs for purposes other than querying, the ALL APIs scope is required (this is required if running Python models).
@@ -58,11 +58,7 @@ Now that you have an OAuth app set up in Databricks, you'll need to add the clie
 5. Click **Edit**.
 6. Under the **Optional settings** section, add the **OAuth Client ID** and **OAuth Client Secret** from the Databricks OAuth app.
 
-<Lightbox
-  src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/DBX-auth/dbt-databricks-oauth.png"
-  title="Add Databricks OAuth credentials to the connection"
-  alt="The Optional settings section of a Databricks connection in dbt, with OAuth Client ID and OAuth Client Secret fields."
-/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/DBX-auth/dbt-databricks-oauth.png" title="Add Databricks OAuth credentials to the connection" />
 
 ### Authenticating to Databricks (Studio IDE developer)
 
@@ -74,18 +70,14 @@ Once the Databricks OAuth connection is set up for a <Constant name="dbt" /> pro
 4. Select **OAuth** as the authentication method, and click **Save**.
 5. Finalize by clicking the **Connect Databricks Account** button.
 
-<Lightbox
-  src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/DBX-auth/dbt-databricks-oauth-user.png"
-  title="Connect your Databricks account from development credentials"
-  alt="Development credentials in dbt with Auth method set to OAuth and the Connect Databricks Account button."
-/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/dbt-platform-enterprise/DBX-auth/dbt-databricks-oauth-user.png" title="Connect your Databricks account from development credentials" />
 
 You will then be redirected to Databricks and asked to approve the connection. This redirects you back to <Constant name="dbt" />. You should now be an authenticated Databricks user, ready to use the <Constant name="studio_ide" />.
 
 ### Studio OAuth flow
 
-Once a developer has authorized <Constant name="dbt" /> with Databricks, Databricks returns a refresh token to the <Constant name="dbt" /> application.
+Once a user has authorized <Constant name="dbt" /> with Databricks, Databricks returns a refresh token to the <Constant name="dbt" /> application.
 
-At the start of each Studio session, <Constant name="dbt" /> exchanges this refresh token for an access token, which it uses to connect to Databricks and execute queries in the <Constant name="studio_ide" /> on the developer's behalf. <Constant name="dbt" /> does not fetch new access tokens during an active session. When the access token expires (default: 60 minutes), restart the <Constant name="studio_ide" /> to continue development.
+At the start of each <Constant name="studio_ide" /> session, <Constant name="dbt" /> exchanges the refresh token for an access token, which it uses to connect to Databricks and execute queries on the user's behalf. <Constant name="dbt" /> does not fetch new access tokens during an active session. When the access token expires (default: 60 minutes), the user must restart the <Constant name="studio_ide" /> to continue development.
 
-The refresh token lifetime is set when you configure the OAuth app in Databricks (default refresh token TTL: 10080 minutes). When a developer's refresh token expires, they must click **Connect Databricks Account** again to re-authenticate.
+The refresh token lifetime is set when you configure the OAuth app in Databricks (default refresh token TTL: 10080 minutes). When a user's refresh token expires, they must click **Connect Databricks Account** again to re-authenticate.
