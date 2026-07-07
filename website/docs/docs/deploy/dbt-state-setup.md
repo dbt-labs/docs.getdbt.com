@@ -14,7 +14,7 @@ This page walks you through setting up dbt State across <Constant name="core" />
 
 Before you set up dbt State, make sure you have:
 
-- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and the <Constant name="fusion_engine" />. It's also available as a plugin for <Constant name="core" /> v1.7–v1.12.
+- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and the <Constant name="fusion_engine" />. It's also available as a plugin for <Constant name="core" /> v1.7–1.12.
 - **A supported data platform**: Snowflake, Databricks, BigQuery, or Redshift. More warehouses are on the roadmap.
 - **A dbt State account**: Authenticate through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). Refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state) to choose the right option, and [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
 
@@ -96,9 +96,9 @@ flags:
 
 </TabItem>
 
-<TabItem value="core-legacy" label="dbt Core 1.7–1.11">
+<TabItem value="core-legacy" label="dbt Core 1.7–1.12">
 
-dbt State is available as a plugin for older versions of <Constant name="core" /> (v1.7+). If you are running on <Constant name="core" /> v1.9 or older, we encourage you to upgrade to a [more recent version with ongoing support](/docs/dbt-versions#latest-releases).
+dbt State is available as a plugin for <Constant name="core" /> v1.7+. If you are running on <Constant name="core" /> v1.9 or older, we encourage you to upgrade to a [more recent version with ongoing support](/docs/dbt-versions#latest-releases).
 
 To install the plugin:
 
@@ -127,12 +127,6 @@ The CLI flags `--manage-state` and `--no-manage-state` are not available in olde
 
 </TabItem>
 </Tabs>
-
-
-
-
-
-
 
 
 ## Inviting team members
