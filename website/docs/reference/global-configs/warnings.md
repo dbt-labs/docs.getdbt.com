@@ -40,7 +40,7 @@ Warnings that should be treated as errors can be specified through the `error` p
 
 <VersionBlock firstVersion="1.12">
 
-Starting in v1.12, <Constant name="core" /> ignores [Fusion-specific event names](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/core/dbt/events/fusion_warn_error_options.py) in `warn_error_options` (for example, `StaticAnalysis` and `PackageParsingCompatibility`) instead of raising an error, and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />. Genuine typos still raise an error.
+Starting in v1.12, <Constant name="core" /> ignores [Fusion-specific names](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/core/dbt/events/fusion_warn_error_options.py) in `warn_error_options` (for example, `StaticAnalysis` and `PackageParsingCompatibility`) instead of raising an error, and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />. Genuine typos still raise an error.
 
 </VersionBlock>
 
