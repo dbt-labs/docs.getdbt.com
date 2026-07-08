@@ -1,6 +1,6 @@
 import MCPExample from '/snippets/_mcp-config-files.md';
 
-<Expandable alt_header="Local MCP with OAuth" lifecycle="managed,managed_plus">
+<Expandable alt_header="Local MCP with OAuth" lifecycle="self_service,managed,managed_plus">
 
 Configuration for users who want seamless OAuth authentication with the <Constant name="dbt_platform" />. 
 

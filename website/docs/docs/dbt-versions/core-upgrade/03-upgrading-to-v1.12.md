@@ -20,14 +20,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 ## New and changed features and functionality
 
-### `dbt login`
-
-In <Constant name="core" /> v1.12, [`dbt login`](/reference/commands/login) is used exclusively to enable [dbt State](/docs/deploy/dbt-state-about) (a paid feature available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users). `dbt login` opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a [standalone dbt State account](https://app.state.dbt.com). It automatically sets `manage_state: true` in [`~/.dbt/user_settings.yml`](/reference/global-configs/user-settings), enabling dbt State on every `dbt run` or `dbt build`.
-
-Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
-
-In the <Constant name="fusion_engine" />, `dbt login` unlocks a broader set of features beyond dbt State, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login).
-
 ### Opt-in v2 parser <Lifecycle status="beta" />
 
 <Constant name="core" /> v1.12 introduces the `--use-v2-parser` flag that delegates parsing to Fusion's Rust parser instead of dbt Core's own Python parser. The Rust parser is significantly faster than the Python parser — especially on larger projects, where it can be 5–10× quicker. If you're looking to speed up your development workflow or cut down on job startup times. Using the Rust parser is a natural first step toward Fusion compatibility, so you can catch and fix any project issues gradually rather than all at once.
@@ -176,8 +168,8 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
+- <Constant name="core" /> v1.12 now tolerates Fusion-specific names in [`warn_error_options`](/reference/global-configs/warnings) instead of raising an error. If your config includes a Fusion-specific name (for example, `StaticAnalysis`, `PackageParsingCompatibility`), <Constant name="core" /> ignores it and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />.
 - Macros invoked with the [`dbt run-operation`](/reference/commands/run-operation) command can now `ref()` models with `private` or `protected` [access](/reference/resource-configs/access) without raising a `DbtReferenceError`. Because macros are not part of the group and access control system, dbt doesn't enforce group membership when a macro called by `run-operation` references a model.
 - `dbt seed` now supports the [`--empty`](/reference/commands/seed#the---empty-flag) flag. Use it to create seed tables with the correct schema but without loading any data.
 - <Constant name="core" /> now automatically loads environment variables from a `.env` file in your current working directory. Shell environment variables take precedence over `.env` values. New projects created with `dbt init` include `.env` in the default `.gitignore`. For more information, refer to [About env_var function](/reference/dbt-jinja-functions/env_var#using-the-env-file).
 - `dbt compile` writes compiled SQL for [snapshots](/docs/build/snapshots) to `target/compiled/`, consistent with models, tests, analyses, and functions. Each snapshot gets its own output file, named from the snapshot identifier, so multiple snapshot blocks in the same source file do not share one compiled path. For more information, refer to [About dbt compile](/reference/commands/compile).
-

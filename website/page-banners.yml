@@ -1,0 +1,32 @@
+# Page-specific banners.
+#
+# Each entry renders a banner in place of the global announcement bar on the
+# listed page(s). Banners are baked into the static HTML at build time, so they
+# appear with no flash of the global banner.
+#
+# Per entry:
+#   paths / path (required): one path (string) or a list of paths. Use the
+#                            page's URL path, e.g. /docs/introduction.
+#   text (required):         banner message; inline HTML is supported.
+#   link (optional):         URL the banner links to.
+#   open_in_new_tab (optional): open the link in a new tab.
+
+- paths:
+    - /docs/platform/wizard-overview
+    - /docs/dbt-ai/about-dbt-wizard-cli
+    - /docs/platform/wizard-platform
+    - /docs/dbt-ai/wizard-quickstart
+    - /docs/dbt-ai/wizard-how-it-works
+    - /docs/dbt-ai/about-dbt-ai
+    - /docs/dbt-ai/copilot-overview
+    - /docs/platform/enable-dbt-ai
+    - /guides/prompt-cookbook
+    - /docs/dbt-ai/about-mcp
+    - /docs/dbt-ai/integrate-mcp-claude
+    - /docs/dbt-ai/mcp-troubleshooting
+    - /docs/dbt-ai/wizard-skills
+    - /docs/dbt-ai/wizard-platform-skills
+    - /docs/dbt-ai/wizard-ide
+  text: "dbt Wizard: An agent purpose-built for analytics engineering. Join us virtually on July 22nd to see real demos in the CLI and dbt platform!"
+  link: "https://www.getdbt.com/resources/webinars/dbt-wizard-an-agent-purpose-built-for-analytics-engineering"
+  open_in_new_tab: true

@@ -11,19 +11,19 @@ tags: [AI, Intelligence]
 Analytics engineering requires more than code generation &mdash; it requires understanding your data, how it connects, and what breaks when something changes. dbt brings purpose-built AI to that workflow, grounded in your project's lineage, tests, contracts, and metric definitions.
 </IntroText>
 
-## Get started with dbt Wizard & AI
+## Explore dbt Wizard and AI
 
 <div style={{maxWidth: '1200px'}} className="grid--3-col">
 
 <Card
-    title="Get started with the local CLI"
+    title="Use dbt Wizard locally"
     body="Install dbt Wizard locally and start a terminal session."
     link="/docs/dbt-ai/wizard-quickstart"
     icon="wizard"/>
 
 <Card
-    title="Get started in dbt platform"
-    body="Enabled AI in your dbt platform account. Use dbt Wizard for governed dbt data development and dbt Copilot for inline AI assistance in dbt platform."
+    title="Enable AI features in dbt platform"
+    body="Enable AI in your dbt platform account. Use dbt Wizard for governed dbt data development and dbt Copilot for inline AI assistance in dbt platform."
     link="/docs/platform/enable-dbt-ai"
     icon="wizard"/>
 
@@ -53,7 +53,7 @@ Analytics engineering requires more than code generation &mdash; it requires und
 
 </div>
 
-## Get started with dbt Copilot
+## Explore dbt Copilot
 
 <div style={{maxWidth: '1200px'}} className="grid--3-col">
 
@@ -71,7 +71,7 @@ Analytics engineering requires more than code generation &mdash; it requires und
 
 </div>
 
-## Get started with the dbt MCP server
+## Explore the dbt MCP server
 
 <div style={{maxWidth: '1200px'}} className="grid--3-col">
 

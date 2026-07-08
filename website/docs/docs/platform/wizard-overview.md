@@ -53,7 +53,7 @@ For included action limits by plan and how managed usage is metered, refer to th
 
 <WizardSupportedProviders />
 
-## Get started with dbt Wizard
+## Choose a dbt Wizard experience
 
 <Tabs>
 <TabItem value="terminal" label={<span className="tabs-lifecycle-label">Terminal <Lifecycle status="beta" size="90%" /></span>} default>
@@ -102,7 +102,7 @@ Refer to [Use cases and examples](/docs/dbt-ai/wizard-use-cases) for more prompt
 
 ## Next steps
 
-Now that you know where to start, continue with **[Get started with the local CLI](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Get started in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
+Now that you know where to start, continue with **[Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)** for local installation and onboarding, or **[Enable AI features in dbt platform](/docs/platform/enable-dbt-ai)** for the platform setup flow.
 
 
 ## Related docs
@@ -110,7 +110,6 @@ Now that you know where to start, continue with **[Get started with the local CL
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
 - [Use skills in the dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
 - [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
-- [Use subagents in the dbt platform](/docs/dbt-ai/wizard-platform-subagents) — delegate work to specialized agents
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
 - [Data & Privacy in the dbt platform](/docs/dbt-ai/wizard-platform-privacy-data) — understand how dbt Wizard in the dbt platform handles privacy and data
 
