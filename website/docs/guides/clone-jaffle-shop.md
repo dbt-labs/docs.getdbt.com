@@ -127,6 +127,49 @@ You should see files and folders including:
 
 Cloning is complete! 🎉 You now have the Jaffle Shop project files on your machine.
 
+## Explore the project structure
+
+Before you install dbt or connect a database, take a quick look at what you cloned. Jaffle Shop is a fictional café business. The project contains **13 models** that transform café data about customers, locations (stores), products, supplies, and orders.
+
+It also includes:
+
+- **Seeds:** Six CSV files under `seeds/jaffle-data/` that provide the raw sample data.
+- **Data tests and unit tests:** YAML alongside the models that check uniqueness, not-null values, and a few unit-test cases.
+- **Macros:** Small helper macros in `macros/`.
+- **Packages:** Dependencies listed in `packages.yml` (install later with `dbt deps`).
+
+A simplified view of the project looks like this:
+
+```text
+jaffle-shop/
+├── dbt_project.yml
+├── packages.yml
+├── models/
+│   ├── staging/          # Clean and rename raw tables
+│   │   ├── stg_customers.sql
+│   │   ├── stg_orders.sql
+│   │   ├── stg_order_items.sql
+│   │   ├── stg_products.sql
+│   │   ├── stg_locations.sql
+│   │   ├── stg_supplies.sql
+│   │   └── __sources.yml
+│   └── marts/            # Business-ready tables for the café
+│       ├── customers.sql
+│       ├── orders.sql
+│       ├── order_items.sql
+│       ├── products.sql
+│       ├── locations.sql
+│       ├── supplies.sql
+│       └── metricflow_time_spine.sql
+├── seeds/
+│   └── jaffle-data/      # Sample CSV data (customers, orders, and more)
+├── macros/
+├── analyses/
+└── data-tests/
+```
+
+Staging models sit closest to the raw seed data. Marts models join and shape that data into tables you would use for analysis. You do not need to read every file yet. This layout is a standard [dbt project](/docs/build/projects) pattern you will see in many real projects.
+
 ## Next steps
 
 To run or develop the project, you need dbt installed and a database connected. These links can help:
