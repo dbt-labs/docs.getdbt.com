@@ -122,7 +122,7 @@ You can also use `run_query` to perform SQL queries that aren't `select` stateme
 
 <VersionBlock firstVersion="2.0">
 
-If you need explicit control over whether dbt fetches results — for example, `alter` statements where fetching results from a large table can cause BigQuery to hang — use [`run_query_as`](/reference/dbt-jinja-functions/run_query_as) with `fetch_result=False`.
+If you need explicit control over whether dbt fetches results  (for example, `alter` statements where fetching results from a large table can cause BigQuery to hang) use [`run_query_as`](/reference/dbt-jinja-functions/run_query_as) with `fetch_result=False`.
 
 </VersionBlock>
 
