@@ -17,9 +17,9 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1
 
 Most features remain available without signing in &mdash; only advanced features prompt you to sign in after the trial ends.
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.13">
 
-To continue using all the features, register or login using [`dbt login`](/reference/commands/login), available from dbt Core v1.12 and later, from the command line. Your login state can be shared across dbt features, including the dbt VS Code extension and dbt State.
+To continue using all the features, register or log in using [`dbt login`](/reference/commands/login), available from <Constant name="core" /> v2.0 and later, from the command line. Your login state can be shared across dbt features, including the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
