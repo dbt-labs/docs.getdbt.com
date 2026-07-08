@@ -8,7 +8,9 @@ description: "Use `run_query_as` to run queries with an explicit `fetch_result` 
 The `run_query_as` macro provides a convenient wrapper around the [statement block](/reference/dbt-jinja-functions/statement-blocks). Use it when you need to name the statement and control whether dbt fetches results.
 
 :::info Fusion only
-The dbt Fusion engine includes `run_query_as`. dbt Core does not.
+
+The <Constant name="fusion_engine" /> includes `run_query_as`. <Constant name="core" /> does not.
+
 :::
 
 ## Args
