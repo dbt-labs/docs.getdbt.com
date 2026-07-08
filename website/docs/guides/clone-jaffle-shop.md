@@ -14,7 +14,7 @@ level: 'Beginner'
 
 ## What is Jaffle Shop?
 
-[Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt Labs' canonical sample dbt project for a fictional café business. This guide shows you how to clone the project using Git from GitHub or GitLab.
+[Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt Labs' canonical sample dbt project for a fictional cafe business. This guide shows you how to clone the project using Git from GitHub or GitLab.
 
 Cloning downloads the dbt project files to your machine: models, seeds, tests, and configuration. It does not install dbt or set up a database. If you only need the project files, follow the [Clone the repository](#clone-the-repository) and [Verify the clone](#verify-the-clone) sections.
 
@@ -129,7 +129,7 @@ Cloning is complete! 🎉 You now have the Jaffle Shop project files on your mac
 
 ## Explore the project structure
 
-Before you install dbt or connect a database, take a quick look at what you cloned. Jaffle Shop is a fictional café business. The project contains 13 models that transform café data about customers, locations (stores), products, supplies, and orders.
+Before you install dbt or connect a database, take a quick look at what you cloned. Jaffle Shop is a fictional cafe business. The project contains 13 models that transform cafe data about customers, locations (stores), products, supplies, and orders.
 
 It also includes:
 
@@ -153,7 +153,7 @@ jaffle-shop/
 │   │   ├── stg_locations.sql
 │   │   ├── stg_supplies.sql
 │   │   └── __sources.yml
-│   └── marts/            # Business-ready tables for the café
+│   └── marts/            # Business-ready tables for the cafe
 │       ├── customers.sql
 │       ├── orders.sql
 │       ├── order_items.sql
