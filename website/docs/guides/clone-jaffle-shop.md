@@ -129,7 +129,7 @@ Cloning is complete! 🎉 You now have the Jaffle Shop project files on your mac
 
 ## Explore the project structure
 
-Before you install dbt or connect a database, take a quick look at what you cloned. Jaffle Shop is a fictional café business. The project contains **13 models** that transform café data about customers, locations (stores), products, supplies, and orders.
+Before you install dbt or connect a database, take a quick look at what you cloned. Jaffle Shop is a fictional café business. The project contains 13 models that transform café data about customers, locations (stores), products, supplies, and orders.
 
 It also includes:
 
