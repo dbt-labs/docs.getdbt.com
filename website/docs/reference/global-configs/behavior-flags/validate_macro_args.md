@@ -51,7 +51,7 @@ Macro argument validation runs during project parsing, not during macro executio
 
 </Expandable>
 
-## Impact
+## Impact when the flag matures
 
 On its own, the flag emits warnings and builds continue. However, these warnings use the force-handled path and respect `--warn-error`, so projects with `--warn-error` set will see build failures at parse time.
 

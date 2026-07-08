@@ -51,7 +51,7 @@ Once the metric is updated, it will work as expected:
         window: 7 days
 ```
 
-## Impact
+## Impact when the flag matures
 
 Any project with a cumulative metric still using the un-nested syntax stops parsing entirely on the first command. Because parsing fails, the error affects every dbt command: `run`, `build`, `test`, `compile`, `docs generate`, the <Constant name="semantic_layer" />, and more.
 

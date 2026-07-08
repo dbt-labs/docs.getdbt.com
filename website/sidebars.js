@@ -1626,13 +1626,12 @@ const sidebarSettings = {
               },
               items: [
                 "reference/global-configs/behavior-changes",
-                "reference/global-configs/behavior-changes-tables",
                 {
                   type: "category",
-                  label: "Individual behavior flags",
+                  label: "Behavior change flags",
                   link: {
                     type: "generated-index",
-                    title: "Individual behavior flags",
+                    title: "Behavior change flags",
                     description: "Reference documentation for each dbt behavior change flag.",
                   },
                   items: [
@@ -1660,7 +1659,7 @@ const sidebarSettings = {
                 },
                 {
                   type: "category",
-                  label: "Adapter behavior changes",
+                  label: "Adapter behavior change flags",
                   link: {
                     type: "doc",
                     id: "reference/global-configs/adapter-behavior-changes",

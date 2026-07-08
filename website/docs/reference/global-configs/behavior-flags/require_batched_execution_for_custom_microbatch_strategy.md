@@ -26,7 +26,7 @@ If you have a custom microbatch macro and the flag is left as `false`, dbt will 
 
 Previously, users needed to set the `DBT_EXPERIMENTAL_MICROBATCH` environment variable to `true` to prevent unintended interactions with existing custom incremental strategies. Setting `DBT_EXPERIMENTAL_MICROBATCH` no longer has any effect on runtime functionality.
 
-## Impact
+## Impact when the flag matures
 
 This flag is only relevant if your project has a custom `get_incremental_microbatch_sql` macro. Projects without a custom microbatch macro are unaffected — the built-in macro already runs in batches.
 

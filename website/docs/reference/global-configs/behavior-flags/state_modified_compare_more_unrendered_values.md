@@ -33,7 +33,7 @@ Setting the flag to `true` changes the `state:modified` comparison from using re
 This flag requires rebuilding the state directory (manifest) to take effect.
 :::
 
-## Impact
+## Impact when the flag matures
 
 Setting the default to `true` silently changes the `state:modified` selection set that most CI, Slim CI, and `dbt build --defer` workflows rely on. There are two ways this surfaces:
 

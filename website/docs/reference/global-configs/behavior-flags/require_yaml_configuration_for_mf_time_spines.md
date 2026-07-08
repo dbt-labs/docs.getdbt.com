@@ -24,7 +24,7 @@ When the flag is set to `true`, dbt suppresses the `MFTimespineWithoutYamlConfig
 
 The MetricFlow properties YAML file should have the `time_spine:` field. Refer to [MetricFlow timespine](/docs/build/metricflow-time-spine) for more details.
 
-## Impact
+## Impact when the flag matures
 
 This flag has no functional impact; the legacy time-spine model continues to work in both cases. The only visible changes are:
 

@@ -39,7 +39,7 @@ We recommend the following rollout plan when setting the `require_all_warnings_h
 
 </Expandable>
 
-## Impact
+## Impact when the flag matures
 
 This only affects projects that use `warn_error: true` or `--warn-error` — common in CI or in <Constant name="dbt_platform" /> production jobs configured for strict mode. Projects without `--warn-error` are not affected.
 

@@ -22,7 +22,7 @@ Set the `skip_nodes_if_on_run_start_fails` flag to `true` to skip all selected r
 
 For more information, refer to [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end).
 
-## Impact
+## Impact when the flag matures
 
 If your project uses `on-run-start` hooks for non-critical work (for example, telemetry, notifications, audit inserts, attaching session settings), your build will stop producing output whenever a hook fails. Tables and views that previously refreshed daily will stop updating the next time the hook fails.
 
