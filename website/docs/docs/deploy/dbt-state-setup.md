@@ -14,7 +14,7 @@ This page walks you through setting up dbt State across <Constant name="core" />
 
 Before you set up dbt State, make sure you have:
 
-- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" />, <Constant name="core" /> v1.12+, and the <Constant name="fusion_engine" />. It's also available as a plugin for <Constant name="core" /> v1.7–v1.11.
+- **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and the <Constant name="fusion_engine" />. It's also available as a plugin for <Constant name="core" /> v1.7–1.12.
 - **A supported data platform**: Snowflake, Databricks, BigQuery, or Redshift. More warehouses are on the roadmap.
 - **A dbt State account**: Authenticate through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). Refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state) to choose the right option, and [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
 
@@ -67,7 +67,7 @@ For next steps, see:
 - [Enable dbt State in Studio](/docs/deploy/dbt-state-enable-studio)
 
 </TabItem>
-<TabItem value="fusion" label="dbt Core 1.12 / Fusion">
+<TabItem value="fusion" label="Fusion">
 
 1. Navigate to your project:
 
@@ -81,7 +81,7 @@ For next steps, see:
    dbt login
    ```
 
-   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](#dbt-login-with-dbt-state).
+   This opens a browser window where you can log in with your <Constant name="dbt_platform" /> account or the [standalone dbt State app](https://app.state.dbt.com). For details on authentication behavior and how it affects [`user_settings.yml`](/reference/global-configs/user-settings), refer to [`dbt login` with dbt State](/reference/commands/login#dbt-login-with-dbt-state).
 
 dbt State is now enabled and will run automatically on every `dbt run` or `dbt build`. 
 
@@ -96,9 +96,9 @@ flags:
 
 </TabItem>
 
-<TabItem value="core-legacy" label="dbt Core 1.7–1.11">
+<TabItem value="core-legacy" label="dbt Core 1.7–1.12">
 
-dbt State is available as a plugin for older versions of <Constant name="core" /> (v1.7+). If you are running on <Constant name="core" /> v1.9 or older, we encourage you to upgrade to a [more recent version with ongoing support](/docs/dbt-versions#latest-releases).
+dbt State is available as a plugin for <Constant name="core" /> v1.7+. If you are running on <Constant name="core" /> v1.9 or older, we encourage you to upgrade to a [more recent version with ongoing support](/docs/dbt-versions#latest-releases).
 
 To install the plugin:
 
@@ -127,12 +127,6 @@ The CLI flags `--manage-state` and `--no-manage-state` are not available in olde
 
 </TabItem>
 </Tabs>
-
-
-
-
-
-
 
 
 ## Inviting team members
