@@ -94,7 +94,7 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ### `dbt login`
 
-In <Constant name="core" /> v2.0, [`dbt login`](/reference/commands/login) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
+In <Constant name="dbt" /> v2.0, [`dbt login`](/reference/commands/login) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
 
 Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
 
