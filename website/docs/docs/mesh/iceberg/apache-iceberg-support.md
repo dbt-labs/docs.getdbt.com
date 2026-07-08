@@ -15,7 +15,7 @@ There are multiple layers of Iceberg support, in data platform and in dbt:
 
 In theory, the Iceberg standard enables one query engine to read from or write to Iceberg tables in an external catalog, managed by another engine or platform. In practice, different Iceberg catalogs work differently, and different query engines support the Iceberg spec to varying degrees.
 
-To the extent possible, dbt tries to abstract away the complexity of table formats, and the divergence among vendor-specific Iceberg implementations, so teams can focus on delivering reliable, well-modeled data. To learn more, click on one of the following tiles
+To the extent possible, dbt tries to abstract away the complexity of table formats, and the divergence among vendor-specific Iceberg implementations, so teams can focus on delivering reliable, well-modeled data. To learn more, click on one of the following tiles:
 
 <div className="grid--4-col">
 
@@ -26,21 +26,35 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
     icon="dbt-icon"/>
 
 <Card
-    title="Snowflake"
+    title="Using catalogs.yml"
+    body="dbt support for Apache Iceberg"
+    link="/docs/mesh/iceberg/about-catalogs"
+    icon="dbt-icon"/>
+
+<Card
+    title="Snowflake + Iceberg"
     body="Snowflake Iceberg Configurations"
     link="/docs/mesh/iceberg/snowflake-iceberg-support"
     icon="snowflake"/>
 
 <Card
-    title="BigQuery"
+    title="BigQuery + Iceberg"
     body="BigQuery Iceberg Configurations"
     link="/docs/mesh/iceberg/bigquery-iceberg-support"
     icon="bigquery"/>
 
 <Card
-    title="Databricks"
+    title="Databricks + Iceberg"
     body="Databricks Iceberg Configurations"
     link="/docs/mesh/iceberg/databricks-iceberg-support"
     icon="databricks"/>
+
+</div>
+
+<Card
+    title="DuckDB + Iceberg"
+    body="DuckDB Iceberg Configurations"
+    link="/docs/mesh/iceberg/databricks-iceberg-support"
+    icon="duckdb"/>
 
 </div>

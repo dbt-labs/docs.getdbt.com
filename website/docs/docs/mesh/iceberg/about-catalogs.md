@@ -45,4 +45,4 @@ Many data platforms, query engines, and data catalogs have added substantially m
 
 When it does exist, that support can be limited. For example, most Iceberg catalogs only support tables (`table` + `incremental` materialization in dbt), not views. They may not support atomic `create table as` statements, meaning that dbt must update tables using multiple statements without <Term id="ACID" /> guarantees.
 
-Benoit (DX Advocate at dbt Labs) created a fun [game](https://b-per.github.io/iceberg-roulette/#roulette) and [visualization](https://b-per.github.io/iceberg-roulette/#matrix) to show the current state of warehouse / catalog interoperability. (See something that looks wrong or out-of-date? Open an issue or PR in [the repo](https://github.com/b-per/iceberg-roulette).)
+Benoit (DX Advocate at dbt Labs) created a [useful visualization](https://b-per.github.io/iceberg-roulette/#matrix) (also available as a [fun interactive game](https://b-per.github.io/iceberg-roulette/)) to show the current state of warehouse / catalog interoperability. (See something that looks wrong or out-of-date? Open an issue or PR in [the repo](https://github.com/b-per/iceberg-roulette).)

@@ -70,11 +70,36 @@ These properties can be set in model configurations under the `adapter_propertie
 
 ### Configure catalog integration for managed Iceberg tables
 
-1. Create a `catalogs.yml` at the top level of your dbt project.<br />
-<br />An example:
+1. Create a `catalogs.yml` at the top level of your dbt project.
+
+<Tabs defaultValue="new" values={[
+  { label: 'New spec', value: 'new' },
+  { label: 'Old spec', value: 'old' }
+]}>
+<TabItem value="new">
+
+<File name="catalogs.yml">
 
 ```yaml
+catalogs:
+  - name: my_bigquery_iceberg_catalog
+    type: biglake_metastore
+    table_format: iceberg # optional
+    config:
+      bigquery:
+        external_volume: 'gs://mydbtbucket'
+        file_format: parquet
 
+```
+
+</File>
+
+</TabItem>
+<TabItem value="old">
+
+<File name="catalogs.yml">
+
+```yaml
 catalogs:
   - name: my_bigquery_iceberg_catalog
     active_write_integration: biglake_metastore
@@ -86,6 +111,12 @@ catalogs:
         catalog_type: biglake_metastore
 
 ```
+
+</File>
+
+</TabItem>
+</Tabs>
+
 2. Apply the catalog configuration at either the model, folder, or project level:
 
 <File name='iceberg_model.sql'>
@@ -194,6 +225,32 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 An example `catalogs.yml` with a customized `base_location_root` using `adapter_properties`:
 
+<Tabs defaultValue="new" values={[
+  { label: 'New spec', value: 'new' },
+  { label: 'Old spec', value: 'old' }
+]}>
+<TabItem value="new">
+
+<File name="catalogs.yml">
+
+```yaml
+catalogs:
+  - name: my_bigquery_iceberg_catalog
+    type: biglake_metastore
+    table_format: iceberg # optional
+    config:
+      bigquery:
+        external_volume: 'gs://mydbtbucket'
+        file_format: parquet
+        base_location_root: foo
+
+```
+
+</File>
+
+</TabItem>
+<TabItem value="old">
+
 <File name='catalogs.yml'>
 
 ```yaml
@@ -211,6 +268,9 @@ catalogs:
 ```
 
 </File>
+
+</TabItem>
+</Tabs>
 
 :::info Legacy model configuration for base_location
 

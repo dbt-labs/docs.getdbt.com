@@ -112,6 +112,31 @@ This feature requires the following:
 
 To specify Glue as the database type, add `catalog_linked_database_type: glue` under the `adapter_properties` section:
 
+<Tabs defaultValue="new" values={[
+  { label: 'New spec', value: 'new' },
+  { label: 'Old spec', value: 'old' }
+]}>
+<TabItem value="new">
+
+<File name="catalogs.yml">
+
+```yaml
+
+catalogs:
+  - name: my_glue_catalog
+    type: glue
+    table_format: iceberg
+    config:
+      snowflake:
+        catalog_database: catalog_linked_db_glue
+```
+
+</Tab>
+
+<TabItem value="old">
+
+<File name="catalogs.yml">
+
 ```yml
 catalogs:
   - name: my_glue_catalog
@@ -124,6 +149,8 @@ catalogs:
           catalog_linked_database: catalog_linked_db_glue
           catalog_linked_database_type: glue
 ```
+
+</Tab>
 
 </TabItem>
 
@@ -148,10 +175,15 @@ CREATE CATALOG INTEGRATION my_iceberg_catalog_int
   ENABLED = TRUE
   REFRESH_INTERVAL_SECONDS = <value> 
   COMMENT = 'catalog integration for dbt iceberg tables'
+;
 
+CREATE DATABASE my_iceberg_catalog_database
+  LINKED_CATALOG = (
+    'my_iceberg_catalog_int'
+  );
 ```
 
-For Unity Catalog with a bearer token :
+For Unity Catalog with a bearer token:
 
 ```sql
 
@@ -168,6 +200,11 @@ CREATE OR REPLACE CATALOG INTEGRATION my_unity_catalog_int_pat
     BEARER_TOKEN = '<bearer_token>'
   )
   ENABLED = TRUE;
+
+CREATE DATABASE my_unity_catalog_database
+  LINKED_CATALOG = (
+    'my_unity_catalog_int_pat'
+  );
 
 ```
 
@@ -266,8 +303,33 @@ You can set the following properties in model configurations under the `adapter_
 1. Create a `catalogs.yml` at the top level of your dbt project.<br />
 <br />An example of Snowflake Horizon as the catalog:
 
+<Tabs defaultValue="new" values={[
+  { label: 'New spec', value: 'new' },
+  { label: 'Old spec', value: 'old' }
+]}>
+<TabItem value="new">
+
+<File name="catalogs.yml">
+
 ```yaml
 
+catalogs:
+  - name: catalog_horizon
+    type: snowflake # TODO - should be 'horizon'
+    table_format: iceberg
+    config:
+      snowflake:
+        change_tracking: true
+        iceberg_version: 3  # available in v1.12+
+```
+
+</Tab>
+
+<TabItem value="old">
+
+<File name="catalogs.yml">
+
+```yml
 catalogs:
   - name: catalog_horizon
     active_write_integration: snowflake_write_integration
@@ -279,8 +341,11 @@ catalogs:
         adapter_properties:
           change_tracking: True
           iceberg_version: 3  # available in v1.12+
-
 ```
+
+</Tab>
+
+</TabItem>
 
 2. Add the `catalog_name` config parameter in either a config block (inside the .sql model file), properties YAML file (model folder), or your project YAML file (`dbt_project.yml`). <br />
 <br />An example of `iceberg_model.sql`:

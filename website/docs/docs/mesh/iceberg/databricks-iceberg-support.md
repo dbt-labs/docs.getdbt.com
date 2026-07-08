@@ -93,6 +93,32 @@ Databricks supports one additional configuration, `location_root`, that specifie
 1. Create a `catalogs.yml` at the top level of your dbt project (at the same level as dbt_project.yml)<br />
 <br />An example of Unity Catalog as the catalog:
 
+<Tabs defaultValue="new" values={[
+  { label: 'New spec', value: 'new' },
+  { label: 'Old spec', value: 'old' }
+]}>
+<TabItem value="new">
+
+<File name="catalogs.yml">
+
+```yaml
+
+catalogs:
+  - name: unity_catalog
+    type: unity
+    table_format: iceberg # optional
+    config:
+      databricks:
+        # optional
+        location_root: s3://cloud-storage-uri
+```
+
+</Tab>
+
+<TabItem value="old">
+
+<File name="catalogs.yml">
+
 ```yaml
 
 catalogs:
@@ -106,6 +132,8 @@ catalogs:
         adapter_properties:
           location_root: s3://cloud-storage-uri
 ```
+
+</Tab>
 
 2. Add the `catalog_name` config parameter in either a config block (inside the .sql model file), properties YAML file (model folder), or your project YAML file (`dbt_project.yml`). <br />
 <br />
