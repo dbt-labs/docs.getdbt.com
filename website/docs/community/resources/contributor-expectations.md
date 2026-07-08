@@ -90,18 +90,22 @@ In all likelihood, the maintainer who responds will also add a number of labels.
 
 In some cases, the right resolution to an open issue might be tangential to the codebase. The right path forward might be in another codebase (we'll transfer it), a documentation update, or a change that you can make yourself in user-space code. In other cases, the issue might describe functionality that the maintainers are unwilling or unable to incorporate into the main codebase. In these cases, a maintainer will close the issue (perhaps using a `wontfix` label) and explain why.
 
-Some of the most common labels are explained below:
+Many labels follow a namespaced `facet:value` model, where each facet answers one question about an issue — the kind of work it is, which subsystem it touches, which dbt engine it targets, and so on. Some facets take exactly one value; others can take several. You don't need to apply these yourself, but knowing what they mean helps you follow an issue's status.
 
-| tag                | description                                                                                                                                                                                                                                                            |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `triage`           | This is a new issue which has not yet been reviewed by a maintainer. This label is removed when a maintainer reviews and responds to the issue.                                                                                                                        |
-| `bug`              | This issue represents a defect or regression from the behavior that's documented                                                                                                                                                        |
-| `enhancement`      | This issue represents a narrow extension of an existing capability                                                                                                                                                                          |
-| `good_first_issue` | This issue does not require deep knowledge of the codebase to implement, and it is appropriate for a first-time contributor.                                                                                                                                       |
-| `help_wanted`      | This issue is trickier than a "good first issue." The required changes are scattered across the codebase, or more difficult to test. The maintainers are happy to help an experienced community contributor; they aren't planning to prioritize this issue themselves. |
-| `duplicate`        | This issue is functionally identical to another open issue. The maintainers will close this issue and encourage community members to focus conversation on the other one.                                                                                              |
-| `stale`            | This is an old issue which has not recently been updated. In repositories with a lot of activity, stale issues will periodically be closed.                                                                                                                            |
-| `wontfix`          | This issue does not require a code change in the repository, or the maintainers are unwilling to merge a change which implements the proposed behavior.                                                                                                                |
+| Facet | Example values | What it means |
+| --- | --- | --- |
+| `type:` | `type:bug`, `type:feature`, `type:docs`, `type:tech-debt`, `type:epic`, `type:good-first-issue` | The kind of work. Exactly one per issue. |
+| `scope:` | `scope:oss`, `scope:proprietary` | Where the issue belongs: `scope:oss` for public dbt Core, `scope:proprietary` for internal work. Issues opened in this repository should be `scope:oss`. |
+| `area:` | `area:static-analysis`, `area:engine`, `area:compute`, `area:adapters`, `area:vscode`, `area:wizard`, `area:autofix`, `area:cicd` | Which subsystem the issue touches. |
+| `adapter:` | `adapter:bigquery`, `adapter:snowflake`, `adapter:databricks`, `adapter:postgres`, … | Which adapter or SQL dialect is involved. |
+| `engine:` | `engine:v1` (dbt Core, Python), `engine:v2` (Fusion) | Which dbt engine the issue concerns. |
+| `priority:` | `priority:p0`, `priority:p1`, `priority:p2` | Maintainer triage urgency. |
+| `status:` | `status:triage`, `status:needs-repro`, `status:has-repro`, `status:ready-for-review` | Where the issue sits in the workflow. |
+| `resolution:` | `resolution:wontfix` | Why a closed issue was closed without a code change. |
+
+The authoritative set of labels and descriptions lives in the [label configuration](https://github.com/dbt-labs/fs/blob/main/.github/labels.yml) that syncs these labels into dbt Core. A few internal-only facets (for example, CI gates and project-tracking labels) also exist but aren't relevant to community contributions.
+
+Some issues — especially older ones — still carry the previous, un-namespaced labels such as `triage`, `bug`, `enhancement`, `good_first_issue`, `help_wanted`, `duplicate`, `stale`, and `wontfix`. These map onto the faceted labels above (`bug` → `type:bug`, `enhancement` → `type:feature`, `good_first_issue` → `type:good-first-issue`, `wontfix` → `resolution:wontfix`, and so on) and remain in place for continuity. You may see either set while the transition settles.
 
 ### Pull requests
 
@@ -121,6 +125,7 @@ Some of the most common labels are explained below:
 - **Tests, tests, tests.** When you open a PR, some tests and code checks will run. (For security reasons, some may need to be approved by a maintainer.) We will not merge any PRs with failing tests. If you're not sure why a test is failing, please say so, and we'll do our best to get to the bottom of it together.
 - **Contributor License Agreement** (CLA): This ensures that we can merge your code, without worrying about unexpected implications for the copyright or license of open source or source-available dbt software. For more details, read: ["Contributor License Agreements"](../resources/contributor-license-agreements.md)
 - **Changelog:** In projects that include a number of changes in each release, we need a reliable way to signal what's been included. The mechanism for this will vary by repository, so keep an eye out for notes about how to update the changelog.
+- **Semver label:** Some repositories require every pull request to carry exactly one `semver:patch` (bug fixes and other safe changes) or `semver:minor` (new, non-breaking features) label; `semver:major` isn't accepted. Where this applies, CI enforces it.
 
 ### Inclusion in release versions
 
