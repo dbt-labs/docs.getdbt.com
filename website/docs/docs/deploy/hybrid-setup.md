@@ -64,6 +64,15 @@ Before connecting your dbt Core project to a <Constant name="dbt" /> project, ma
 
 Create a hybrid project in <Constant name="dbt" /> to allow you to upload your <Constant name="core" /> artifacts to <Constant name="dbt" />. 
 
+<!-- TODO (PM review): Confirm the exact environment-type rule before publishing.
+     Open questions from Docs request "Hybrid Projects - environment requirements updates":
+       - Is a Staging environment supported for artifact upload, or is Production required?
+       - Is a General environment disallowed? (A user ran against General with no client-side error.)
+     Adjust the note below to match confirmed behavior, then delete this comment. -->
+:::note Environment requirements (pending PM confirmation)
+Artifact upload with hybrid projects requires a **Production** deployment environment. [Confirm whether **Staging** is also supported.] A **General** environment [is not / is] supported for this workflow.
+:::
+
 A [<Constant name="dbt" /> account admin](/docs/platform/manage-access/enterprise-permissions#permission-sets) should perform the following steps and share the artifacts information with a <Constant name="core" /> user:
 
 1. To create a new project in <Constant name="dbt" />, navigate to **Account home**.
@@ -82,6 +91,14 @@ A [<Constant name="dbt" /> account admin](/docs/platform/manage-access/enterpris
 A <Constant name="dbt" /> admin should perform these steps to generate a [service token](/docs/dbt-apis/service-tokens#enterprise-plans-using-service-account-tokens) (with both **Job Runner** _and_ **Job Viewer** permissions) and copy the values needed to configure a <Constant name="core" /> project so it's ready to upload generated artifacts to <Constant name="dbt" />.
 
 The <Constant name="dbt" /> admin should share the values with a <Constant name="core" /> user.
+
+<!-- TODO (PM review): Confirm token requirements before publishing.
+     Open question from the Docs request: is a specific environment-scoped token required, or does any
+     token with sufficient permissions work? A user reported a successful run using an account-wide
+     admin token. Adjust the note below to match confirmed behavior, then delete this comment. -->
+:::note Service token requirements (pending PM confirmation)
+The artifact upload flow generates a service token with **Job Runner** and **Job Viewer** permissions. Any service token with at least these permissions can be used for artifact upload. [Confirm whether a broader-scoped token, such as an account admin token, is also permitted or discouraged.]
+:::
 
 1. Go to the Hybrid project environment you created in the previous step by navigating to **Deploy** > **Environments** and selecting the environment.
 2. Select the **Artifact upload** button and copy the following values, which the dbt Core user will need to reference in their dbt Core's `dbt_project.yml` configuration:
@@ -133,7 +150,7 @@ Once you have the values from the previous step, you can prepare your <Constant 
    - Set the environment variables in whatever way you use them in your project.
    - To unset an environment variable, run `unset environment_variable_name`, replacing `environment_variable_name` with the actual name of the environment variable.
 
-4. In your local dbt Core project, add the following items you copied in the [previous section](/docs/deploy/hybrid-setup#enable-artifact-upload) to the dbt Core's `dbt_project.yml` file:
+4. In your local dbt Core project, add the following items you copied in the [previous section](/docs/deploy/hybrid-setup#generate-service-token-and-artifact-upload-values) to the dbt Core's `dbt_project.yml` file:
    - `tenant_hostname`
    ```yaml
    name: "jaffle_shop"
