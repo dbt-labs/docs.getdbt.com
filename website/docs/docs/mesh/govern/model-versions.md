@@ -443,6 +443,8 @@ models:
 
 The pointer view uses the model's base name by default (for example, `dim_customers`). You can override the alias per model with `latest_version_pointer.alias`, or globally by overriding the [`generate_latest_version_pointer_alias`](/docs/build/custom-aliases#generate_latest_version_pointer_alias) macro in your project.
 
+#### Naming collisions 
+
 <LatestVersionPointerCollision />
 
 </VersionBlock>

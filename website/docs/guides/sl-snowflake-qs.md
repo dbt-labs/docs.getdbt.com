@@ -20,6 +20,7 @@ import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
 import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
 import RunProdJob from '/snippets/_sl-run-prod-job.md';
 import SlSetUp from '/snippets/_new-sl-setup.md'; 
+import CreateSnowflakeSqlFile from '/snippets/_create-snowflake-sql-file.md';
 
 ## Introduction
 
@@ -113,11 +114,9 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 </Tabs>
 
-## Create new Snowflake worksheet and set up environment
+## Create new Snowflake SQL file and set up environment
 
-1. Log in to your [trial Snowflake account](https://signup.snowflake.com).
-2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
-3. Select **SQL Worksheet** to create a new worksheet.
+<CreateSnowflakeSqlFile />
 
 ### Set up and load data into Snowflake
 
@@ -189,17 +188,17 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt - Snowflake Account Settings" />
 
 6. Click **Save**.
-7. Set up your personal development credentials by going to **Your profile** > **Credentials**.
+7. Set up your personal user credentials by going to **Your profile** > **Credentials**.
 8. Select your project that uses the Snowflake connection. 
-9. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal development credentials.
-10. Enter your **Development credentials** for Snowflake with: 
+9. Click the **configure your development environment and add a connection** link. This directs you to a page where you can enter your personal user credentials.
+10. Enter your **User credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
     * **Password** &mdash; The password you set when creating your Snowflake account.
     * **Schema** &mdash; You’ll notice that the schema name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the <Constant name="studio_ide" />.
     * **Target name** &mdash; Leave as the default.
     * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that <Constant name="dbt" /> will make to build models concurrently.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake Development Credentials" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt - Snowflake User credentials" />
 
 11. Click **Test connection**. This verifies that <Constant name="dbt" /> can access your Snowflake account.
 12. If the test succeeded, click **Save** to complete the configuration. If it failed, you may need to check your Snowflake settings and credentials.
@@ -1293,7 +1292,7 @@ This section will guide you on how to use the Sigma integration to query your me
 4. Enter your name and email address. Choose a password for your account.
 <Lightbox src="/img/docs/dbt-platform/semantic-layer/sl-sigma-create-profile.png" width="50%" title="Click the '+ New project' button on the top right"/>
 
-5. Great! You now have a Sigma account. Before we get started, go back to Snowlake and open a blank worksheet. Run these lines.
+5. Great! You now have a Sigma account. Before we get started, go back to Snowflake and open a blank file. Run these lines.
 - `grant all privileges on all views in schema analytics.SCHEMA to role pc_sigma_role;`
 - `grant all privileges on all tables in schema analytics.SCHEMA to role pc_sigma_role;`
 
@@ -1334,7 +1333,7 @@ Great job on completing the comprehensive <Constant name="semantic_layer" /> gui
 
 You've learned how to:
 
-- Set up your Snowflake environment and <Constant name="dbt" />, including creating worksheets and loading data.
+- Set up your Snowflake environment and <Constant name="dbt" />, including creating SQL files and loading data.
 - Connect and configure <Constant name="dbt" /> with Snowflake.
 - Build, test, and manage <Constant name="dbt" /> projects, focusing on metrics and semantic layers.
 - Run production jobs and query metrics with our available integrations.

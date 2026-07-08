@@ -5,6 +5,5 @@
 | BigQuery      | ✅                    | ✅                          | ✅                         | ✅                       | ❌                        |    ❌    |  ❌ | ❌  | ✅              |
 | Databricks    | ✅                    | ✅                          | ✅                         | ❌                       | ❌                        |    ❌    |  ❌ | ❌  | ✅              |    
 | Redshift      | ✅                    | ❌                          | ❌                         | ❌                       | ❌                        |    ❌    |  ❌ | ❌  | ✅              |
-| Salesforce Data 360 | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
 
 ** Private connectivity is only supported for certain cloud providers and deployment types. See [Private connectivity documentation](/docs/platform/secure/private-connectivity/private-connectivity) for details.

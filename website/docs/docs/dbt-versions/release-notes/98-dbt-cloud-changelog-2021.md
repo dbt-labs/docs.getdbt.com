@@ -189,7 +189,7 @@ A lot of improvements coming for GitLab webhooks and native auth. We also fixed 
 - Updates test command suggestions and regex for common action suggestions
 - Updates order of stylesheet import to fix missing border bug
 - Fix GitLab PR link for Run Page
-- Fix infinite spinner for missing environment or development credentials
+- Fix infinite spinner for missing environment or user credentials
 - Fix infinite spinner when user is missing dev credentials
 - Do not try to push if awaiting a merge
 - Fix deleting schemas

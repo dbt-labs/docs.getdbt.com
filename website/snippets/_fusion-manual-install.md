@@ -14,7 +14,7 @@ python -m pip install --upgrade --pre dbt
 
 </Expandable>
 
-<Expandable alt_header="CDN installation for macOS and Linux">
+<Expandable alt_header="Standalone installation for macOS and Linux">
 
 ```shell
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
@@ -32,9 +32,13 @@ To upgrade to a newer version:
 dbt system update
 ```
 
+:::note
+`dbtf system update` installs <Constant name="fusion" /> globally &mdash; it updates your `PATH` in `~/.zshrc` and creates a `dbtf` alias. To manage multiple versions or isolate your install, use separate shell profiles or virtual environments.
+:::
+
 </Expandable>
 
-<Expandable alt_header="CDN installation for Windows">
+<Expandable alt_header="Standalone installation for Windows">
 
 ```powershell
 irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex

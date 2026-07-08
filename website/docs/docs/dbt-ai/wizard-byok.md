@@ -1,7 +1,7 @@
 ---
 title: "Configure BYOK for dbt Wizard"
 id: "wizard-byok"
-description: "Bring your own API key to use dbt Wizard CLI. Supports OpenAI, Anthropic, AWS Bedrock, Google Gemini, and Snowflake Cortex (preview)."
+description: "Bring your own API key to use dbt Wizard CLI. Supports OpenAI, Anthropic, AWS Bedrock, Google Gemini, Snowflake Cortex (preview), and Databricks."
 sidebar_label: "BYOK configuration"
 tags: [AI, Wizard, Configuration]
 ---
@@ -44,7 +44,7 @@ wizard providers configure PROVIDER_NAME
 wizard providers enable PROVIDER_NAME
 ```
 
-Replace `PROVIDER_NAME` with the name of a supported provider, such as `openai`, `anthropic`, `bedrock`, `azure`, `gemini`, or `snowflake`. Then, follow the prompts to enter your credentials.
+Replace `PROVIDER_NAME` with the name of a supported provider, such as `openai`, `anthropic`, `bedrock`, `azure`, `gemini`, `snowflake`, or `databricks`. Then, follow the prompts to enter your credentials.
 
 The `wizard providers list` command shows you the currently configured providers and their status:
 
@@ -183,6 +183,15 @@ export SNOWFLAKE_API_KEY="..."
 
 </TabItem>
 
+<TabItem value="databricks" label="Databricks">
+
+```bash
+export DATABRICKS_API_KEY="dapi..."
+export DATABRICKS_API_BASE="https://adb-1234567890.azuredatabricks.net"
+```
+
+</TabItem>
+
 </Tabs>
 
 To make an environment variable available across terminal sessions, add it to your shell profile, such as `.zshrc`, `.bashrc`, or equivalent.
@@ -264,7 +273,7 @@ Paste API key/token, or press enter to configure it later:
 |--------|---------------|
 | **Snowflake account ID** | Your Snowflake account identifier (for example, `myorg-myaccount`) |
 | **Snowflake API base override (optional)** | Leave blank — this is only needed for custom or private Snowflake endpoints |
-| **Paste API key/token** | Your authentication token — refer to [Authentication options](#authentication-options) in the next section |
+| **Paste API key/token** | Your authentication token &mdash; refer to [Authentication options](#authentication-options) in the next section |
 
 </SimpleTable>
 
@@ -280,6 +289,59 @@ To set a default Snowflake Cortex model, add the model ID to `~/.dbt/wizard/conf
 
 ```toml
 model = "SNOWFLAKE_CORTEX_MODEL_ID"
+```
+
+### Databricks Unity AI Gateway <Lifecycle status="beta"/>
+
+<Constant name="wizard" /> connects to Databricks through the [Unity Catalog AI Gateway](https://docs.databricks.com/aws/en/ai-gateway/), so you bring your own models served from your Databricks workspace. Make sure the [serving endpoints](https://docs.databricks.com/en/machine-learning/model-serving/index.html) you plan to use are deployed and that your Databricks token has permission to query them.
+
+```bash
+export DATABRICKS_API_KEY="dapi..."
+wizard providers configure databricks
+wizard providers enable databricks
+wizard providers list
+wizard debug models
+```
+
+The `wizard providers configure databricks` command first asks for your workspace URL, then for the serving endpoint name behind each model you enable:
+
+```
+Enable this provider? [Y/n]:
+Models to enable [1]:
+Databricks workspace URL (e.g. https://adb-1234567890.azuredatabricks.net):
+Endpoint name for databricks/claude-sonnet-4-6:
+Paste API key/token, or press enter to configure it later:
+```
+
+<SimpleTable>
+
+| Prompt | What to enter |
+|--------|---------------|
+| **Databricks workspace URL** | Your Databricks workspace URL (for example, `https://adb-1234567890.azuredatabricks.net`) |
+| **Endpoint name** | The serving endpoint name for each model (for example, `databricks-claude-sonnet-4-6`). <Constant name="wizard" /> suggests a default endpoint name for each model |
+| **Paste API key/token** | Your Databricks personal access token (PAT) |
+
+</SimpleTable>
+
+By default, <Constant name="wizard" /> maps the following models to Databricks serving endpoints. You can override any endpoint name during configuration:
+
+<SimpleTable>
+
+| Model | Default endpoint name |
+|-------|----------------------|
+| `claude-sonnet-4-6` | `databricks-claude-sonnet-4-6` |
+| `claude-opus-4-7` | `databricks-claude-opus-4-7` |
+| `claude-haiku-4-5` | `databricks-claude-haiku-4-5` |
+| `gpt-5.5` | `databricks-gpt-5-5` |
+| `gpt-5.4` | `databricks-gpt-5-4` |
+| `gpt-5.4-mini` | `databricks-gpt-5-4-mini` |
+
+</SimpleTable>
+
+To set a default Databricks model, add the model ID to `~/.dbt/wizard/config.toml`:
+
+```toml
+model = "databricks/claude-sonnet-4-6"
 ```
 
 ## Related docs

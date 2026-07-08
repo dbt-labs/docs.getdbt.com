@@ -92,6 +92,14 @@ The most popular `dbt-labs` packages (`dbt_utils`, `audit_helper`, `dbt_external
 
 ## New and changed features and functionality
 
+### `dbt login`
+
+In <Constant name="dbt" /> v2.0, [`dbt login`](/reference/commands/login) enables browser-based authentication. It opens a browser window prompting you to sign in to your <Constant name="dbt_platform" /> account or create a free account.
+
+Run [`dbt login status`](/reference/commands/login#dbt-login-status) to view your current authentication status.
+
+`dbt login` unlocks a broader set of features, such as advanced features in the [dbt VS Code extension](/docs/about-dbt-extension). For details, refer to [`dbt login`](/reference/commands/login).
+
 ### Changed functionality
 
 When developing v2, there were opportunities to improve the dbt framework — failing earlier (when possible), fixing bugs, optimizing run order, and deprecating flags that are no longer relevant. The result is a handful of specific and nuanced changes to existing behavior.

@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "databricks",
     "platform_name": "Databricks",
-    "count": 757
+    "count": 759
   },
   "functions": [
     {
@@ -1994,6 +1994,13 @@
       "fusion_typecheck": false
     },
     {
+      "name": "ISEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isearch",
+      "preview_status": "GA",
+      "fusion_typecheck": false
+    },
+    {
       "name": "ISFALSE",
       "category": "Built-in",
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/isfalse",
@@ -3280,6 +3287,13 @@
       "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/schema_of_xml",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SEARCH",
+      "category": "Built-in",
+      "docs_url": "https://docs.databricks.com/aws/en/sql/language-manual/functions/search",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SEC",

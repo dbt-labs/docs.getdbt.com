@@ -108,19 +108,47 @@ In addition, you can look at the **Job Details** page's **Insights** tab to show
 
 Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in <Constant name="dbt" /> is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Starter and Enterprise-tier plans).
 
+## dbt State usage
+
+[dbt state](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. Learn more about how your usage influences the price so you can plan your savings effectively.
+
+### About free trial
+
+Eligible new organizations receive 30 days of free use with no usage limit. After the free period, a credit card or enterprise contract (for dbt platform managed plans) is required to continue.
+
+### dbt State pricing
+
+dbt State is a separate, usage-based product available to dbt Core, dbt platform, and dbt Fusion engine users.
+
+### Cancellation
+
+Usage is tracked through your cancellation date. You're billed at month end for usage incurred before cancellation and not charged for usage after.
+
+### Daily active target tables
+
+For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables (as defined below) for which dbt State performs at least one of the following unique operations on a given day (based on UTC time): a skip, clone, or test reuse.
+
+A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models). It also includes each distinct test (even if the tests are not built into the database because `store_failures` is disabled). For example, if `stg_customers` has `not_null` and `unique` tests on its `id` column, that's three target tables: the model and its two tests.
+
+When you run `dbt build` or a similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules. All reuses of the same active target table in a single day (based on UTC time) are counted as a single daily active target table (DATT).
+
+### Monthly cost calculation
+
+dbt State calculates cost per billing period using the unit price (USD $0.094) x sum of daily active target tables (DATT) for all account users and all days in that billing period. For example, if you have 100 DATT in a billing period, you'll be billed for 100 * $0.094 = $9.40.
+
 ## dbt AI: Usage metering and limiting <Lifecycle status="Starter, Enterprise, Enterprise+" />
 
 dbt AI usage is measured based on the number of completed AI requests, known as dbt Copilot actions. Usage limits are enforced to ensure fair access and system performance.
 
 A defined number of dbt Copilot invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to dbt AI will be temporarily disabled until the start of the next billing cycle.
 
-As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 1. After July 1, this bridge ends and Wizard usage will be metered separately. Pricing and usage are subject to change.
+As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. Pricing and usage are subject to change.
 
 ### Usage and metering information 
 
-<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 1)">
+<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 13)">
 
-As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 1. After July 1, this bridge ends and Wizard usage will be metered separately. 
+As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. 
 
 Users that bring their own key (BYOK) aren't affected by this bridge.
 
@@ -251,7 +279,7 @@ There are 2 options to disable models from being built and charged:
 
 ### Best practices for optimizing cost with dbt State
 
-#### Use `lag_tolerence` to reduce unnecessary model execution
+#### Use `lag_tolerance` to reduce unnecessary model execution
 
 You can save even more time and compute by defining how old your data can be before a model should be triggered. We’ve introduced lag_tolerance so that you can do things like differentiate local development needs vs prod. 
 
