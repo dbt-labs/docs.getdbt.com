@@ -41,7 +41,9 @@ After clicking:
 
 <TabItem value="OAuth with dbt platform">
 
-Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" /> <Lifecycle status="managed, managed_plus" />.
+_OAuth with the local dbt MCP server is available for Starter, Enterprise, and Enterprise+ accounts._
+
+Configuration settings for users who want OAuth authentication with the <Constant name="dbt_platform" />.
 
 Before you begin, make sure your account admin has enabled AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt AI](/docs/platform/enable-dbt-ai) for more info.
 
@@ -81,7 +83,7 @@ Then update `env-file-path` with the absolute path to your `.env` file (for exam
 
 Remote MCP supports **OAuth** or **token-based** headers.
 
-- _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+- _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 - For either method, the MCP URL is `https://<Access URL>/api/ai/v1/mcp`. You can find the URL in <Constant name="dbt_platform"/> under **Account settings** &rarr; **Access URLs** &rarr; **MCP Endpoint URL**.
 
 <MCPOauthPreflight />
@@ -103,4 +105,3 @@ The deeplink below configures **token-based** authentication (URL and headers). 
    ```
    :::
 3. Save, and now you have access to the dbt MCP server!
-

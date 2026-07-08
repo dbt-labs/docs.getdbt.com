@@ -31,7 +31,9 @@ module.exports = function buildQuickstartIndexPage() {
         if(!fileJson)
           return null
 
-        arr.push(fileJson)
+        if (!fileJson.data.unlisted) {
+          arr.push(fileJson)
+        }
         return arr
       }, [])
    

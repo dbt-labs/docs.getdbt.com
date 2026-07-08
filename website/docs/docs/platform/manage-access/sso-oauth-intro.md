@@ -36,7 +36,7 @@ Automates user and group provisioning from your IdP into <Constant name="dbt" />
 
 ## Connection OAuth {#connection-oauth}
 
-Connection OAuth is for authenticating to your data platform (like Snowflake, BigQuery), which is different from SSO, which handles user login to <Constant name="dbt_platform" />. It lets developers authorize their development credentials with a data platform using that platform's login instead of storing passwords in <Constant name="dbt" />. *For admins and developers connecting to supported data platforms.*
+Connection OAuth is for authenticating to your data platform (like Snowflake, BigQuery), which is different from SSO, which handles user login to <Constant name="dbt_platform" />. It lets developers authorize their user credentials with a data platform using that platform's login instead of storing passwords in <Constant name="dbt" />. *For admins and developers connecting to supported data platforms.*
 
 - [OAuth overview](/docs/platform/manage-access/oauth-intro) &mdash; What's available by platform
 - [Set up Snowflake OAuth](/docs/platform/manage-access/set-up-snowflake-oauth)

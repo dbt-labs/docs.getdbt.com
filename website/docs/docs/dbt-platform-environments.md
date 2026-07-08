@@ -32,12 +32,12 @@ To create a new <Constant name="dbt" /> development environment:
 1. Navigate to **Orchestration** > **Environments**.
 2. Click **+ Create Environment**.
 3. Select **Development** as the environment type. You can only create one Development environment for a project.
-4. Fill in the fields under **General Settings** and **Development Credentials**.
+4. Fill in the fields under **General Settings** and **User credentials**.
 5. Click **Save** to create the environment.
 
-### Set developer credentials
+### Set user credentials
 
-To use the dbt <Constant name="studio_ide" /> or <Constant name="platform_cli" />, each developer will need to set up [personal development credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
+To use the dbt <Constant name="studio_ide" /> or <Constant name="platform_cli" />, each developer will need to set up [personal user credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
 
 <Lightbox src="/img/docs/dbt-platform/refresh-ide/new-development-environment-fields.png" width="85%" height="200" title="Creating a development environment"/>
 
