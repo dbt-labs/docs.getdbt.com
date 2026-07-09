@@ -6,7 +6,7 @@ sidebar_label: "require all warnings handled by warn error"
 
 
 
-| `require_all_warnings_handled_by_warn_error` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_all_warnings_handled_by_warn_error | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.06 | 1.10.0 |
 | Matured (default → `true`) | Sep 1, 2026 | — |

@@ -12,7 +12,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 
 
-| `skip_nodes_if_on_run_start_fails` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| skip_nodes_if_on_run_start_fails | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.10 | 1.9.0 |
 | Matured (default → `true`) | Sep 1, 2026 | — |

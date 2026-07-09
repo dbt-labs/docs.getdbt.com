@@ -13,7 +13,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 import StateModified from '/snippets/_state-modified-compare.md';
 
 
-| `state_modified_compare_more_unrendered_values` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| state_modified_compare_more_unrendered_values | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.10 | 1.9.0 |
 | Matured (default → `true`) | Sep 1, 2026 | — |

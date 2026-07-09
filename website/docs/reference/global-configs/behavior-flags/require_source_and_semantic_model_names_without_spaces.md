@@ -4,7 +4,7 @@ id: "require_source_and_semantic_model_names_without_spaces"
 sidebar_label: "require source and semantic model names without spaces"
 ---
 
-| `require_source_and_semantic_model_names_without_spaces` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_source_and_semantic_model_names_without_spaces | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2026.4 | 1.12.0 |
 | Matured (default → `true`) | — | — |

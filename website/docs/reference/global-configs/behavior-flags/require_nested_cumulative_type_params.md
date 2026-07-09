@@ -6,7 +6,7 @@ sidebar_label: "require nested cumulative type params"
 
 
 
-| `require_nested_cumulative_type_params` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_nested_cumulative_type_params | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.11 | 1.9.0 |
 | Matured (default → `true`) | Sep 1, 2026 | — |

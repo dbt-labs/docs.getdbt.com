@@ -12,7 +12,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 
 
-| `require_batched_execution_for_custom_microbatch_strategy` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_batched_execution_for_custom_microbatch_strategy | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.11 | 1.9.0 |
 | Matured (default → `true`) | Sep 1, 2026 | — |

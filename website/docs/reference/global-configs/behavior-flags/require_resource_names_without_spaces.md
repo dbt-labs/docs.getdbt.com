@@ -10,7 +10,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 :::
 
-| `require_resource_names_without_spaces` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_resource_names_without_spaces | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.05 | 1.8.0 |
 | Matured (default → `true`) | 2025.05 | 1.10.0 |

@@ -10,7 +10,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 :::
 
-| `source_freshness_run_project_hooks` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| source_freshness_run_project_hooks | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.03 | 1.8.0 |
 | Matured (default → `true`) | 2025.05 | 1.10.0 |

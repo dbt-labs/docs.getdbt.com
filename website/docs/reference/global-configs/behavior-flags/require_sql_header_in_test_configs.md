@@ -4,7 +4,7 @@ id: "require_sql_header_in_test_configs"
 sidebar_label: "require sql header in test configs"
 ---
 
-| `require_sql_header_in_test_configs` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_sql_header_in_test_configs | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2026.3 | 1.12.0 |
 | Matured (default → `true`) | — | — |

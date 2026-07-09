@@ -12,7 +12,7 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 
 
 
-| `require_yaml_configuration_for_mf_time_spines` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_yaml_configuration_for_mf_time_spines | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2024.10 | 1.9.0 |
 | Matured (default → `true`) | Sep 1, 2026 | — |

@@ -4,7 +4,7 @@ id: "require_unique_project_resource_names"
 sidebar_label: "require unique project resource names"
 ---
 
-| `require_unique_project_resource_names` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_unique_project_resource_names | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.12 | 1.11.0 |
 | Matured (default → `true`) | — | — |

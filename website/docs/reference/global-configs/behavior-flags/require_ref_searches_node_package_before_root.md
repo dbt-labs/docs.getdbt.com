@@ -4,7 +4,7 @@ id: "require_ref_searches_node_package_before_root"
 sidebar_label: "require ref searches node package before root"
 ---
 
-| `require_ref_searches_node_package_before_root` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| require_ref_searches_node_package_before_root | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.12 | 1.11.0 |
 | Matured (default → `true`) | — | — |

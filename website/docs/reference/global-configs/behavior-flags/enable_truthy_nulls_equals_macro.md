@@ -4,7 +4,7 @@ id: "enable_truthy_nulls_equals_macro"
 sidebar_label: "enable truthy nulls equals macro"
 ---
 
-| `enable_truthy_nulls_equals_macro` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| enable_truthy_nulls_equals_macro | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.02 | 1.9.0 |
 | Matured (default → `true`) | — | — |

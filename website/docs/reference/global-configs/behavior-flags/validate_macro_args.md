@@ -6,7 +6,7 @@ sidebar_label: "validate macro args"
 
 
 
-| `validate_macro_args` | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
+| validate_macro_args | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2025.03 | 1.10.0 |
 | Matured (default → `true`) | Sep 1, 2026 | — |
