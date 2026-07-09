@@ -63,7 +63,11 @@ The SQL on this page uses placeholders. Replace each one with your own value bef
 | `AGENT_NAME` | A name for the Cortex agent. |
 | `CORTEX_MODEL` | The orchestration model for the agent (for example, `claude-4-sonnet`). |
 
-## Step 1: Create the API integration
+## Set up the connection
+
+The following steps register the remote dbt MCP server with Snowflake and wire it up to a Cortex agent. Steps 1–3 run as Snowflake SQL, and the final step completes the OAuth handshake between Snowflake and <Constant name="dbt_platform" />.
+
+### Step 1: Create the API integration
 
 Run this as `ACCOUNTADMIN`. The integration tells Snowflake how to reach the remote dbt MCP endpoint and how to complete OAuth using Dynamic Client Registration with PKCE (no client secret).
 
@@ -86,7 +90,7 @@ CREATE API INTEGRATION IF NOT EXISTS INTEGRATION_NAME
 
 The `OAUTH_TOKEN_ENDPOINT` and `OAUTH_AUTHORIZATION_ENDPOINT` use the same host as your MCP URL. The `user_access` and `offline_access` scopes let the agent act on your behalf and refresh its session without you re-authenticating each time.
 
-## Step 2: Create the external MCP server
+### Step 2: Create the external MCP server
 
 Grant your role the ability to create an external MCP server, then create one that references the integration from Step 1.
 
@@ -100,7 +104,7 @@ CREATE EXTERNAL MCP SERVER IF NOT EXISTS TARGET_DATABASE.TARGET_SCHEMA.MCP_SERVE
   API_INTEGRATION = INTEGRATION_NAME;
 ```
 
-## Step 3: Create the Cortex agent
+### Step 3: Create the Cortex agent
 
 Grant your role the privileges to create an agent and to use the MCP server and its integration, then create the agent.
 
@@ -135,7 +139,7 @@ CREATE AGENT IF NOT EXISTS TARGET_DATABASE.TARGET_SCHEMA.AGENT_NAME
 
 Update the `instructions` and `sample_questions` to match the metrics and dimensions in your own <Constant name="semantic_layer" />. The `orchestration` instruction steers the agent toward the dbt <Constant name="semantic_layer" /> tools (like `list_metrics`, `get_dimensions`, and `query_metrics`) instead of writing raw SQL.
 
-## Step 4: Complete the OAuth flow
+### Step 4: Complete the OAuth flow
 
 The agent can't query dbt until each user authorizes it. Complete the OAuth flow once per user:
 
