@@ -2,9 +2,9 @@
 
 Keep in mind the following considerations during the upgrade process:
 
-- **Manifest incompatibility** &mdash; <Constant name="fusion" /> is backwards-compatible and can read <Constant name="core" /> [manifests](/reference/artifacts/manifest-json). However, <Constant name="core" /> isn't forward-compatible and can't read Fusion manifests. <Constant name="fusion" /> produces a `v20` manifest, while the latest version of <Constant name="core" /> still produces a `v12` manifest.
+- **Manifest compatibility** &mdash; <Constant name="fusion" /> produces a `v12` [manifest](/reference/artifacts/manifest-json) that's compatible with <Constant name="core" />. The only differences are optional <Constant name="fusion" />-specific fields that only <Constant name="fusion" /> writes, which <Constant name="core" /> safely ignores.
 
-  As a result, mixing <Constant name="core" /> and <Constant name="fusion" /> manifests across environments breaks cross-environment features. To avoid this, use `state:modified`, `--defer`, and cross-environment `dbt docs generate` only after _all_ environments are running the latest Fusion version. Using these features before all environments are on <Constant name="fusion" /> may cause errors and failures.
+  As a result, you can run <Constant name="fusion" /> and <Constant name="core" /> side by side. State-dependent features such as `state:modified`, `--defer`, and cross-environment `dbt docs generate` work across mixed <Constant name="fusion" /> and <Constant name="core" /> environments, so you can migrate to <Constant name="fusion" /> incrementally without breaking existing <Constant name="core" /> jobs.
 
 <!--
 - **dbtState-aware orchestration** &mdash; If using [state-aware orchestration](/docs/deploy/state-aware-about), dbt doesn't detect a change if a table or view is dropped outside of dbt, as the cache is unique to each <Constant name="dbt_platform" /> environment. This means state-aware orchestration will not rebuild that model until either there is new data or a change in the code that the model uses.
