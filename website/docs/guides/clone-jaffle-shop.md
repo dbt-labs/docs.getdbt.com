@@ -16,7 +16,7 @@ level: 'Beginner'
 
 [Jaffle Shop](https://github.com/dbt-labs/jaffle-shop) is dbt Labs' canonical sample dbt project for a fictional cafe business. This guide shows you how to clone the project using Git from GitHub or GitLab.
 
-Cloning downloads the dbt project files to your machine: models, seeds, tests, and configuration. It does not install dbt or set up a database. If you only need the project files, follow the [Clone the repository](#clone-the-repository) and [Verify the clone](#verify-the-clone) sections.
+Cloning downloads the dbt project files to your machine: models, seeds, tests, and configuration. It doesn't install dbt or set up a database. If you only need the project files, follow the [Clone the repository](#clone-the-repository) and [Verify the clone](#verify-the-clone) sections.
 
 To run dbt commands like `dbt seed`, `dbt run`, and `dbt test`, you also need dbt installed and a database to connect to. Refer to [Next steps](#next-steps) for links to warehouse quickstarts.
 
@@ -64,7 +64,7 @@ git --version
   </TabItem>
   <TabItem value="gitlab" label="GitLab">
 
-If your organization hosts Jaffle Shop on GitLab, or you have forked the repo there, clone from your GitLab URL instead:
+If your organization hosts Jaffle Shop on GitLab, or you've forked the repo there, clone from your GitLab URL instead:
 
 1. Open your terminal and navigate to where you keep projects:
 
@@ -87,7 +87,7 @@ If your organization hosts Jaffle Shop on GitLab, or you have forked the repo th
   </TabItem>
   <TabItem value="other" label="Other platforms">
 
-If your organization has mirrored or forked Jaffle Shop on Bitbucket, Azure DevOps, or another git host, use the clone URL from that platform. The `git clone` command works the same way:
+If your organization has mirrored or forked Jaffle Shop on Bitbucket, Azure DevOps, or another Git host, use the clone URL from that platform. The `git clone` command works the same way:
 
 1. Open your terminal and navigate to where you keep projects:
 
@@ -168,7 +168,7 @@ jaffle-shop/
 └── data-tests/
 ```
 
-Staging models sit closest to the raw seed data. Marts models join and shape that data into tables you would use for analysis. You do not need to read every file yet. This layout is a standard [dbt project](/docs/build/projects) pattern you will see in many real projects.
+Staging models sit closest to the raw seed data. Marts models join and shape that data into the tables you use for analysis. You don't need to read every file yet. This layout follows a standard [dbt project](/docs/build/projects) pattern that appears in many real-world projects.
 
 ## Next steps
 
@@ -176,7 +176,7 @@ To run or develop the project, you need dbt installed and a database connected. 
 
 - **[Install dbt locally](/docs/local/install-dbt):** Cloning doesn't install dbt. You need it to run commands.
 - **[Set up a virtual environment](/docs/local/install-dbt):** Keeps dbt separate from other Python projects on your machine.
-- **[About dbt deps command](/reference/commands/deps):** The repo lists packages in `packages.yml`. Run `dbt deps` after dbt is installed.
+- **[About dbt deps command](/reference/commands/deps):** The repo lists packages in `packages.yml`. Run `dbt deps` after you install dbt.
 - **[About dbt projects](/docs/build/projects):** Learn the project structure before editing models.
 - **[dbt Learn](https://learn.getdbt.com/):** Interactive courses for new users.
 
@@ -194,12 +194,12 @@ You can also browse [all guides](/guides) or other [example dbt projects](/faqs/
 
 ## Optional cleanup
 
-If you cloned the repo only to test these steps and do not need the project anymore, you can remove the folder:
+If you cloned the repo only to test these steps and don't need the project anymore, you can remove the folder:
 
 ```bash
 rm -rf ~/Documents/Github/jaffle-shop
 ```
 
-This deletes the cloned project from your machine. It does not affect the GitHub or GitLab repository.
+This deletes the cloned project from your machine. It doesn't affect the GitHub or GitLab repository.
 
 </div>
