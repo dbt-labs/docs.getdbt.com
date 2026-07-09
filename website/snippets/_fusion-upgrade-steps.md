@@ -2,7 +2,7 @@
 
 Keep in mind the following considerations during the upgrade process:
 
-- **Manifest compatibility** &mdash; <Constant name="fusion" /> produces a `v12` [manifest](/reference/artifacts/manifest-json) that's compatible with <Constant name="core" />. The only differences are optional, <Constant name="fusion" />-specific fields, which <Constant name="core" /> safely ignores.
+- **Manifest compatibility** &mdash; <Constant name="fusion" /> produces a `v12` [manifest](/reference/artifacts/manifest-json) that's compatible with <Constant name="core" />. The only differences are optional <Constant name="fusion" />-specific fields that only <Constant name="fusion" /> writes, which <Constant name="core" /> safely ignores.
 
   As a result, you can run <Constant name="fusion" /> and <Constant name="core" /> side by side. State-dependent features such as `state:modified`, `--defer`, and cross-environment `dbt docs generate` work across mixed <Constant name="fusion" /> and <Constant name="core" /> environments, so you can migrate to <Constant name="fusion" /> incrementally without breaking existing <Constant name="core" /> jobs.
 
