@@ -24,6 +24,8 @@ At a high level, you'll:
 
 ## Prerequisites
 
+Before you connect a Cortex agent to the remote dbt MCP server, confirm you have the following in place in both <Constant name="dbt_platform" /> and Snowflake.
+
 ### In dbt
 
 - [AI features](/docs/platform/enable-dbt-ai) enabled for your account.
