@@ -15,6 +15,8 @@ dbt Copilot integrates with [<Constant name="canvas" />](/docs/platform/canvas),
 
 ## Considerations
 
+dbt Copilot in <Constant name="canvas" /> has specific plan, setup, and AI requirements. Confirm the following before you begin.
+
 - dbt Copilot is available in the <Constant name="canvas" /> interface. Refer to [About Canvas](/docs/platform/canvas) for setup instructions.
 - Natural language prompts in <Constant name="canvas" /> are available on [Enterprise and Enterprise+](https://www.getdbt.com/pricing) plans.
 - dbt Copilot requires AI features to be [enabled](/docs/platform/enable-dbt-ai) for your account. AI terms and conditions apply. Refer to [dbt AI FAQs](/docs/dbt-ai/dbt-ai-faqs#does-dbt-labs-have-terms-in-place) for details.
