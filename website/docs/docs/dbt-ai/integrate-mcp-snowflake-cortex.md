@@ -26,7 +26,7 @@ At a high level, you'll:
 
 Before you connect a Cortex agent to the remote dbt MCP server, confirm you have the following in place in both <Constant name="dbt_platform" /> and Snowflake.
 
-### In dbt
+### dbt prerequisites
 
 - [AI features](/docs/platform/enable-dbt-ai) enabled for your account.
 - Remote MCP OAuth enabled for your account. <Lifecycle status="beta" /> The remote MCP server is generally available, but the OAuth connection method this guide relies on is in public beta. A <Constant name="dbt_platform" /> admin must turn on beta features in **Account settings** to enable it. <MCPRemoteOauthBetaCallout />
@@ -43,7 +43,7 @@ Before you connect a Cortex agent to the remote dbt MCP server, confirm you have
    Cortex agents can use the <Constant name="semantic_layer" /> to compile and execute queries without any extra setup. If you also want the agent to run ad hoc SQL against Snowflake, set read credentials for the project in **Settings → Credentials** in <Constant name="dbt_platform" />. Without those credentials, the agent can still compile <Constant name="semantic_layer" /> SQL and execute it natively on Snowflake.
    :::
 
-### In Snowflake
+### Snowflake prerequisites
 
 - Snowflake Intelligence and Cortex agents enabled in your account and region. Cortex agents and external MCP connectors are newer Snowflake features &mdash; confirm availability with your Snowflake account team.
 - The `ACCOUNTADMIN` role (or a role granted `CREATE INTEGRATION` at the account level). Creating an API integration and an external MCP server requires account-admin privileges by default.
