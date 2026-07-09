@@ -54,12 +54,13 @@ The SQL on this page uses placeholders. Replace each one with your own value bef
 | Placeholder | Description |
 | --- | --- |
 | `YOUR_DBT_HOST_URL` | Your dbt host, with no `https://` (for example, `abc123.us1.dbt.com`). |
-| `<integration_name>` | A name for the Snowflake API integration (for example, `dbt_mcp_integration`). |
-| `<target_database>.<target_schema>` | The database and schema where the MCP server and agent live. |
-| `<target_role>` | The Snowflake role that will use the agent and MCP server. |
-| `<mcp_server_name>` | A name for the external MCP server object. |
-| `<agent_name>` | A name for the Cortex agent. |
-| `<cortex_model>` | The orchestration model for the agent (for example, `claude-4-sonnet`). |
+| `INTEGRATION_NAME` | A name for the Snowflake API integration (for example, `dbt_mcp_integration`). |
+| `TARGET_DATABASE.TARGET_SCHEMA` | The database and schema where the MCP server and agent live. |
+| `TARGET_ROLE` | The Snowflake role that uses the agent and MCP server. |
+| `MCP_SERVER_NAME` | A name for the external MCP server object. |
+| `AGENT_NAME` | A name for the Cortex agent. |
+| `CORTEX_MODEL` | The orchestration model for the agent (for example, `claude-4-sonnet`). |
+
 ## Step 1: Create the API integration
 
 Run this as `ACCOUNTADMIN`. The integration tells Snowflake how to reach the remote dbt MCP endpoint and how to complete OAuth using Dynamic Client Registration with PKCE (no client secret).
@@ -67,7 +68,7 @@ Run this as `ACCOUNTADMIN`. The integration tells Snowflake how to reach the rem
 ```sql
 -- Create an API integration for the remote dbt MCP server.
 -- Uses OAuth Dynamic Client Registration + PKCE (no client secret).
-CREATE API INTEGRATION IF NOT EXISTS <integration_name>
+CREATE API INTEGRATION IF NOT EXISTS INTEGRATION_NAME
   API_PROVIDER = EXTERNAL_MCP
   API_ALLOWED_PREFIXES = ('https://YOUR_DBT_HOST_URL/api/ai/v1/mcp')
   API_USER_AUTHENTICATION = (
@@ -88,13 +89,13 @@ The `OAUTH_TOKEN_ENDPOINT` and `OAUTH_AUTHORIZATION_ENDPOINT` use the same host 
 Grant your role the ability to create an external MCP server, then create one that references the integration from Step 1.
 
 ```sql
-GRANT CREATE EXTERNAL MCP SERVER ON SCHEMA <target_database>.<target_schema> TO ROLE <target_role>;
+GRANT CREATE EXTERNAL MCP SERVER ON SCHEMA TARGET_DATABASE.TARGET_SCHEMA TO ROLE TARGET_ROLE;
 
 -- Create an external MCP server pointing to the remote dbt MCP endpoint.
-CREATE EXTERNAL MCP SERVER IF NOT EXISTS <target_database>.<target_schema>.<mcp_server_name>
+CREATE EXTERNAL MCP SERVER IF NOT EXISTS TARGET_DATABASE.TARGET_SCHEMA.MCP_SERVER_NAME
   WITH DISPLAY_NAME = 'dbt Semantic Layer MCP'
   URL = 'https://YOUR_DBT_HOST_URL/api/ai/v1/mcp'
-  API_INTEGRATION = <integration_name>;
+  API_INTEGRATION = INTEGRATION_NAME;
 ```
 
 ## Step 3: Create the Cortex agent
@@ -102,19 +103,19 @@ CREATE EXTERNAL MCP SERVER IF NOT EXISTS <target_database>.<target_schema>.<mcp_
 Grant your role the privileges to create an agent and to use the MCP server and its integration, then create the agent.
 
 ```sql
-GRANT CREATE AGENT ON SCHEMA <target_database>.<target_schema> TO ROLE <target_role>;
+GRANT CREATE AGENT ON SCHEMA TARGET_DATABASE.TARGET_SCHEMA TO ROLE TARGET_ROLE;
 
 -- Grant the role access to the MCP server and its underlying integration.
-GRANT USAGE ON EXTERNAL MCP SERVER <target_database>.<target_schema>.<mcp_server_name> TO ROLE <target_role>;
-GRANT USAGE ON INTEGRATION <integration_name> TO ROLE <target_role>;
+GRANT USAGE ON EXTERNAL MCP SERVER TARGET_DATABASE.TARGET_SCHEMA.MCP_SERVER_NAME TO ROLE TARGET_ROLE;
+GRANT USAGE ON INTEGRATION INTEGRATION_NAME TO ROLE TARGET_ROLE;
 
-CREATE AGENT IF NOT EXISTS <target_database>.<target_schema>.<agent_name>
+CREATE AGENT IF NOT EXISTS TARGET_DATABASE.TARGET_SCHEMA.AGENT_NAME
   COMMENT = 'Analytics agent powered by the dbt Semantic Layer via MCP'
   PROFILE = '{"display_name": "dbt Semantic Layer Agent"}'
   FROM SPECIFICATION
   $$
   models:
-    orchestration: "<cortex_model>"
+    orchestration: "CORTEX_MODEL"
 
   instructions:
     response: 'Answer questions about business data using the dbt Semantic Layer. Present results clearly in plain English with context about what the metrics mean. When data is returned, summarize the key insight before showing details.'
@@ -126,7 +127,7 @@ CREATE AGENT IF NOT EXISTS <target_database>.<target_schema>.<agent_name>
 
   mcp_servers:
     - server_spec:
-        name: "<target_database>.<target_schema>.<mcp_server_name>"
+        name: "TARGET_DATABASE.TARGET_SCHEMA.MCP_SERVER_NAME"
   $$;
 ```
 
