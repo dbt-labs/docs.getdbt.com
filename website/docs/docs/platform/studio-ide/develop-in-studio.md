@@ -81,9 +81,6 @@ If a warning looks wrong but <Constant name="dbt" /> commands succeed, trust you
 
 ### dbt Wizard
 
-
-### dbt Wizard
-
 [<Constant name="wizard" />](/docs/dbt-ai/wizard-ide) helps you develop trusted dbt projects faster in the <Constant name="studio_ide" />. It understands more than the file you’re editing. It uses dbt's native metadata engine to understand your project’s lineage, model health, test coverage, and semantic definitions, so it can provide answers and suggestions based on your _full_ project context.
 
 With <Constant name="wizard" />, you can:

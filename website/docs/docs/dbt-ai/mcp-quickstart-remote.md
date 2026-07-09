@@ -11,8 +11,6 @@ import MCPRemoteOauthBetaCallout from '/snippets/_mcp-remote-oauth-beta-callout.
 import MCPOauthPreflight from '/snippets/_mcp-oauth-preflight.md';
 import MCPCustomConnectorOauth from '/snippets/_mcp-custom-connector-oauth.md';
 
-# Connect to the remote dbt MCP server <Lifecycle status="self_service,managed,managed_plus"/>
-
 The remote MCP server connects to <Constant name="dbt_platform"/> using HTTP. No local installation is required &mdash; you configure your MCP client with a URL and headers instead of running `uvx dbt-mcp`.
 
 <Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
@@ -46,8 +44,12 @@ Obtain the following information from <Constant name="dbt_platform"/>:
 
 ### 3. Choose authentication: OAuth or tokens
 
-- **OAuth (remote)** &mdash; No API tokens in your client config. Requires an OAuth-capable MCP client. Available in private beta for Enterprise and Enterprise+ accounts.
-- **Token-based** &mdash; PAT or service token in the `Authorization` header. Works with any client and is required for shared/CI setups and for `execute_sql` (which needs a PAT).
+<SimpleTable>
+| Type | Info | 
+| ---- | ---- |
+| **OAuth (remote)** |  No API tokens in your client config. Requires an OAuth-capable MCP client.<br /><br /> Available for Starter, Enterprise, and Enterprise+ accounts. |
+| **Token-based** | PAT or service token in the `Authorization` header. Works with any client and is required for shared/CI setups and for `execute_sql` (which needs a PAT). |
+</SimpleTable>
 
 <MCPRemoteOauthBetaCallout />
 
@@ -69,6 +71,8 @@ Configure your MCP client with the MCP URL and headers from the previous step.
 
 <Tabs groupId="auth-method">
 <TabItem value="oauth" label="OAuth">
+
+_Available for Starter, Enterprise, and Enterprise+ accounts_
 
 <MCPOauthPreflight />
 
