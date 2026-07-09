@@ -14,14 +14,6 @@ import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 The connection uses OAuth: Snowflake registers itself with <Constant name="dbt_platform" /> through Dynamic Client Registration (DCR) with PKCE, so you don't store a client secret in Snowflake. Each user completes their own OAuth consent the first time they use the agent, which means the agent respects each user's existing dbt permissions and project access.
 
-At a high level, you'll:
-
-1. Enable AI features and confirm prerequisites in <Constant name="dbt_platform" />.
-2. Create a Snowflake API integration that points at your remote dbt MCP endpoint.
-3. Create an external MCP server in Snowflake that references the integration.
-4. Create a Cortex agent that uses the MCP server.
-5. Complete the OAuth flow to connect the agent to dbt.
-
 ## Prerequisites
 
 Before you connect a Cortex agent to the remote dbt MCP server, confirm you have the following in place in both <Constant name="dbt_platform" /> and Snowflake.
