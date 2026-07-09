@@ -41,7 +41,7 @@ dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tabl
 
 ### External tables
 
-dbt also supports creating externally-managed Iceberg tables using the model configuration [`location_root`](/reference/resource-configs/databricks-configs#configuring-tables). Databricks' DDL for creating tables requires a fully qualified `location`. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data:
+dbt also supports creating externally-managed Iceberg tables using the model configuration [`location_root`](/reference/resource-configs/databricks-configs/configuring-tables). Databricks' DDL for creating tables requires a fully qualified `location`. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data:
 
 - When you set a `location_root` string, dbt generates a `location` string of the form: `{{ location_root }}/{{ model_name }}`.
 If you set the configuration option `include_full_name_in_path` to true, dbt generates a `location` string of the form `{{ location_root }}/{{ database_name}}/{{ schema_name }}/{{ model_name }}`.

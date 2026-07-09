@@ -14,7 +14,7 @@ A lambda view pattern combines a batch / incremental fact table with a small nea
 ## When to use lambda views
 
 - You need fresher reads than your normal incremental schedule, but
-- You can't (or don't want to) use [dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) or [materialized views](/docs/build/materializations#materialized-view), or you want to keep logic entirely in dbt SQL.
+- You can't (or don't want to) use [dynamic tables](/reference/resource-configs/snowflake-configs/dynamic-tables) or [materialized views](/docs/build/materializations#materialized-view), or you want to keep logic entirely in dbt SQL.
 The examples used in this page assume the following setup:
 ### Assumptions
 The examples used in this page assume the following setup:
@@ -152,7 +152,7 @@ Take the following into consideration when using this pattern:
         - Your dbt incremental job frequency (age of `fct_events`), plus
         - Ingestion latency into `raw.events` (Snowpipe / streaming layer).
 - **Complexity vs alternatives**
-    - For many modern Snowflake implementations, a [dynamic table](/reference/resource-configs/snowflake-configs#dynamic-tables) or [materialized view](/docs/build/materializations#materialized-view) with a small `target_lag` can provide similar "always within X minutes" service level agreements with less custom SQL and warehouse‑managed incremental logic.
+    - For many modern Snowflake implementations, a [dynamic table](/reference/resource-configs/snowflake-configs/dynamic-tables) or [materialized view](/docs/build/materializations#materialized-view) with a small `target_lag` can provide similar "always within X minutes" service level agreements with less custom SQL and warehouse‑managed incremental logic.
     - Lambda views are best positioned as an _advanced / legacy pattern_ you can still use for when you:
         - Want all logic in dbt SQL
         - Lack the right warehouse feature in your environment

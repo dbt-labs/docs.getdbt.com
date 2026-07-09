@@ -292,7 +292,7 @@ The following profile fields are optional to set up. They help you configure how
 | `connect_retries`  | The number of times dbt should retry the connection to Databricks (default is `1`)  |`3`   | 
 | `connect_timeout`     | How many seconds before the connection to Databricks should timeout (default behavior is no timeouts)  | `1000` | 
 | `session_properties`  | This sets the Databricks session properties used in the connection. Execute `SET -v` to see available options  |`ansi_mode: true` |
-| `query_tags`  | JSON string of key-value pairs to attach as [query tags](/reference/resource-configs/databricks-configs#query-tags) for tracking and auditing. (Available in dbt-databricks 1.11+)  | `'{"team": "analytics"}'` | 
+| `query_tags`  | JSON string of key-value pairs to attach as [query tags](/reference/resource-configs/databricks-configs/query-tags) for tracking and auditing. (Available in dbt-databricks 1.11+)  | `'{"team": "analytics"}'` | 
 
 ## Supported Functionality
 
@@ -302,7 +302,7 @@ Most <Constant name="core" /> functionality is supported, but some features are 
 on Delta Lake.
 
 Delta-only features:
-1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/databricks-configs#the-merge-strategy))
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/databricks-configs/incremental-models#the-merge-strategy))
 2. [Snapshots](/docs/build/snapshots)
 
 

@@ -173,9 +173,9 @@ default:
 
 </File>
 
-You can refer to attached databases by the basename of the file (without its suffix) or by an `alias` you specify. The `type` argument supports `duckdb`, `sqlite`, and `postgres`. You can also pass arbitrary options using the `options` dictionary &mdash; refer to [Arbitrary ATTACH options](/reference/resource-configs/duckdb-configs#arbitrary-attach-options) for details.
+You can refer to attached databases by the basename of the file (without its suffix) or by an `alias` you specify. The `type` argument supports `duckdb`, `sqlite`, and `postgres`. You can also pass arbitrary options using the `options` dictionary &mdash; refer to [Arbitrary ATTACH options](/reference/resource-configs/duckdb-configs/arbitrary-attach-options) for details.
 
-For DuckLake, use `ducklake:` for local databases. For MotherDuck-managed DuckLake, use `md:` with `is_ducklake: true`. Refer to the [DuckLake configuration](/reference/resource-configs/duckdb-configs#ducklake) section for details.
+For DuckLake, use `ducklake:` for local databases. For MotherDuck-managed DuckLake, use `md:` with `is_ducklake: true`. Refer to the [DuckLake configuration](/reference/resource-configs/duckdb-configs/ducklake) section for details.
 
 ## Extensions
 

@@ -211,9 +211,9 @@ The following table lists the required configurations for the specific adapters,
 
 | Adapter  | `unique_key` config | `partition_by` config |
 |----------|------------------|--------------------|
-| [`dbt-postgres`](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | ✅ Required | N/A |
-| [`dbt-spark`](/reference/resource-configs/spark-configs#incremental-models)    | N/A | ✅ Required |
-| [`dbt-bigquery`](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models) | N/A | ✅ Required |
+| [`dbt-postgres`](/reference/resource-configs/postgres-configs/incremental-materialization-strategies) | ✅ Required | N/A |
+| [`dbt-spark`](/reference/resource-configs/spark-configs/incremental-models)    | N/A | ✅ Required |
+| [`dbt-bigquery`](/reference/resource-configs/bigquery-configs/merge-behavior-incremental-models) | N/A | ✅ Required |
 
 For example, if you're using `dbt-postgres`, configure `unique_key` as follows:
 
