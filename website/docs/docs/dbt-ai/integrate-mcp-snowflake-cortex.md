@@ -18,7 +18,7 @@ The connection uses OAuth: Snowflake registers itself with <Constant name="dbt_p
 
 Before connecting a Cortex agent to the remote dbt MCP server, make sure you have the following in place.
 
-### In <Constant name="dbt_platform" />
+#### In <Constant name="dbt_platform" />
 
 Make sure the following are set up before connecting from Snowflake:
 - **Account setup**
