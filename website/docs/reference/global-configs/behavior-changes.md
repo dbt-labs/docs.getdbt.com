@@ -31,7 +31,7 @@ Behavior change flags go through three phases of development:
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
 3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no committement to supporting them forever. If a flag is removed, there will be significant advanced warning.
 
-### dbt Core behavior changes
+### Introduced in dbt Core v1
 
 This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
@@ -72,7 +72,7 @@ Several behavior change flags on the dbt platform `Latest` release track are pla
 | [require_yaml_configuration_for_mf_time_spines](/reference/global-configs/behavior-flags/require_yaml_configuration_for_mf_time_spines) | Suppresses a deprecation warning (no functional change) |
 | [validate_macro_args](/reference/global-configs/behavior-flags/validate_macro_args) | New warning for mismatched macro arguments; errors with `--warn-error` |
 
-### Fusion and Core v2 behavior changes
+### Introduced in Fusion and Core v2
 
 The following flags are specific to <Constant name="fusion" /> and have no equivalent in <Constant name="core" />. They are configured the same way — in the `flags:` block of `dbt_project.yml`.
 
@@ -82,7 +82,7 @@ The following flags are specific to <Constant name="fusion" /> and have no equiv
 | bigquery_noop_alter_relation_comment | BigQuery | `false` | Fusion preview.124 (Feb 19, 2026) | Not yet set |
 
 
-### dbt adapter behavior changes
+### Adapter-specific behavior change flags
 
 This table outlines which version of the dbt adapter contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 
