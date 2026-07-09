@@ -17,6 +17,21 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## July 8, 2026
+
+## Enhancements
+
+### dbt AI and agents
+
+- **User list search and group filtering**: The user listing API now supports a `search` parameter (case-insensitive substring match across email and name) and a `group_id` parameter to retrieve only members of a specific group, enabling paginated group-member lookups for large accounts.
+
+- **Expanded Analyst Read permission set**: The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set now includes the project and account read permissions analysts need to browse catalog and configuration without write access.
+
+## Fixes
+
+### Orchestration and run status
+
+- **Clearer errors for malformed dbt commands**: A dbt step with invalid command syntax, such as an unclosed quote, now returns a user-facing syntax error instead of a generic unhandled exception.
 
 ## July 1, 2026
 

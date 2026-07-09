@@ -2,6 +2,7 @@
 title: "Salesforce Data 360 configurations"
 description: "Salesforce Data 360 Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "data-cloud-configs"
+unlisted: true
 ---
 
 # Salesforce Data 360 configurations<Lifecycle status="beta"/>

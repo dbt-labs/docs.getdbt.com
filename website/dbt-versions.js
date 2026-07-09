@@ -348,6 +348,10 @@ exports.versionedPages = [
     page: "reference/global-configs/sqlparse",
     firstVersion: "1.11",
   },
+  {
+    page: "reference/global-configs/user-settings",
+    firstVersion: "1.13",
+  },
 ];
 
 /**
