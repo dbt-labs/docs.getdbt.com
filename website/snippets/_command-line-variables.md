@@ -10,7 +10,13 @@ For example:
 $ dbt run --vars '{"event_type": "signup"}'
 ```
 
-Inside a model or macro, access the value using the `var()` function:
+You can use the same `--vars` syntax with other dbt commands, such as `dbt snapshot`:
+
+```
+$ dbt snapshot --select my_snapshot --vars '{"cutoff_date": "2026-01-01"}'
+```
+
+Inside a model, snapshot, or macro, access the value using the `var()` function:
 
 ```
 select '{{ var("event_type") }}' as event_type
