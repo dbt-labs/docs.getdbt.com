@@ -14,6 +14,7 @@ meta:
   slack_channel_link: N/A
   platform_name: 'Salesforce Data 360'
   config_page: '/reference/resource-configs/data-cloud-configs'
+unlisted: true
 ---
 
 # Salesforce Data 360 setup <Lifecycle status="beta"/>

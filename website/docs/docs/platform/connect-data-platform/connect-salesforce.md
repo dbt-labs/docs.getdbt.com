@@ -3,6 +3,7 @@ title: "Connect Salesforce Data 360"
 id: connect-salesforce
 description: "Configure Salesforce Data 360 connection."
 sidebar_label: "Connect Salesforce Data 360"
+unlisted: true
 ---
 
 # Connect Salesforce Data 360 <Lifecycle status="beta"/> <ProductCard text="Fusion compatible" />

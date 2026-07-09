@@ -22,7 +22,6 @@ The <Constant name="fusion_engine" /> includes built-in support for:
 - [Databricks](/docs/local/connect-data-platform/databricks-setup) <Lifecycle status="private_preview" />
 - [Amazon Redshift](/docs/local/connect-data-platform/redshift-setup) <Lifecycle status="preview" />
 - [Google BigQuery](/docs/local/connect-data-platform/bigquery-setup) <Lifecycle status="preview" />
-- [Salesforce Data 360](/docs/local/connect-data-platform/salesforce-data-cloud-setup) <Lifecycle status="beta" />
 - [DuckDB](/docs/local/connect-data-platform/duckdb-setup) <Lifecycle status="beta" />
 - [Apache Spark](/docs/local/connect-data-platform/spark-setup) <Lifecycle status="beta" />
 

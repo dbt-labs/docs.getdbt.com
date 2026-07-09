@@ -82,6 +82,7 @@ Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and
 
 Note that access to the [dbt APIs](/docs/dbt-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
+<SimpleTable>
 | Tools | Local | Remote |
 | --- | --- | --- |
 | <Constant name="platform_cli"/> commands  | ✅ | ❌ |
@@ -91,6 +92,9 @@ Note that access to the [dbt APIs](/docs/dbt-apis/overview) is limited depending
 | Administrative API | ✅ | ✅ |
 | Codegen Tools | ✅ | ❌ |
 | <Constant name="fusion" /> Tools | ✅ | ✅ |
+| Product Docs Tools |  ✅ | ✅ |
+| MCP Server Metadata Tools | ✅ | ✅ |
+</SimpleTable>
 
 ## Available tools
 
@@ -105,7 +109,8 @@ To view the full list of tools, see [Available tools](/docs/dbt-ai/mcp-available
 The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports OAuth or token authentication and tool use capabilities, depending on your setup. We have created integration guides for the following clients:
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
-- [VS Code](/docs/dbt-ai/integrate-mcp-vscode).
+- [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
+- [Snowflake Cortex](/docs/dbt-ai/integrate-mcp-snowflake-cortex)
 
 ## Data retention
 
