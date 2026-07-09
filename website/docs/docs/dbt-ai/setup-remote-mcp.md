@@ -78,7 +78,7 @@ For the full list of scopes and what each one allows, see [Scopes and consent](/
 
 - Remote MCP doesn't support local dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [local MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
 
-For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
+For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), [INtegrate Snowflake Cortex with MCP](/docs/dbt-ai/integrate-mcp-snowflake-cortex), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
 
 ## Token-based authentication {#token-based-authentication}
 
@@ -221,3 +221,4 @@ Step-by-step client setup (including Cursor, VS Code, and Claude) is in:
 - [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor)
 - [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode)
 - [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude)
+- [Integrate Snowflake Cortex with MCP](/docs/dbt-ai/integrate-mcp-snowflake-cortex)
