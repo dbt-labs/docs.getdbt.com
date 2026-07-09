@@ -18,19 +18,22 @@ The connection uses OAuth: Snowflake registers itself with <Constant name="dbt_p
 
 Before connecting a Cortex agent to the remote dbt MCP server, make sure you have the following in place.
 
-- **In <Constant name="dbt_platform" />:**
-  - [AI features](/docs/platform/enable-dbt-ai) enabled.
-  - [Remote MCP OAuth enabled](/docs/dbt-ai/setup-remote-mcp). 
-    - The remote MCP server is generally available, but the OAuth connection method is in public beta to Starter and Enterprise-tiered accounts.
-  - A [static subdomain](/docs/platform/about-platform/access-regions-ip-addresses) configured. 
-    - Follow [these instructions](/docs/platform/about-platform/access-regions-ip-addresses) to find your account subdomain (for example, `abc123` in `abc123.us1.dbt.com`). If your account doesn't have a subdomain, contact support for more information.
+### In <Constant name="dbt_platform" />
+
+Make sure the following are set up before connecting from Snowflake:
+- **Account setup**
+  - Have [AI features](/docs/platform/enable-dbt-ai) enabled.
+  - [Remote MCP OAuth enabled](/docs/dbt-ai/setup-remote-mcp). The remote MCP server is generally available, but the OAuth connection method is in public beta for Starter and Enterprise-tiered accounts.
+  - A [static subdomain](/docs/platform/about-platform/access-regions-ip-addresses) configured, for example `abc123` in `abc123.us1.dbt.com`. If your account doesn't have a subdomain, contact support.
+- **Access and permissions**
   - Read-only or higher access to <Constant name="dbt_platform" />. The agent inherits each connected user's permissions.
-  - A configured [<Constant name="semantic_layer" /> ](/docs/use-dbt-semantic-layer/dbt-sl) with [metrics and dimensions](/docs/build/build-metrics-intro).
-  - Your **MCP URL** from <Constant name="dbt_platform" />:
-      <MCPRemoteServerUrl />
+- **Semantic Layer setup**
+  - A configured [<Constant name="semantic_layer" />](/docs/use-dbt-semantic-layer/dbt-sl) with [metrics and dimensions](/docs/build/build-metrics-intro).
+- **MCP endpoint**
+    <MCPRemoteServerUrl />
     Use the host portion of this URL in the Snowflake SQL, for example `abc123.us1.dbt.com`.
 
-- **In Snowflake:**
+#### In Snowflake
   - Snowflake Intelligence and Cortex agents enabled in your account and region.
   - External MCP connectors available for your account. Confirm availability with your Snowflake account team.
   - The `ACCOUNTADMIN` role, or a role with account-level `CREATE INTEGRATION`.
