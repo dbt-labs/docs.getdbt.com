@@ -548,6 +548,86 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 </div>
 
+<div warehouse="Fabric">
+
+Microsoft Fabric allows you to define:
+
+- a `not_null` constraint, which is checked when the model builds
+- `primary_key`, `foreign_key`, and `unique` constraints, which are recorded on the table for reference but not checked when new data is added
+
+This means that:
+
+- `check` constraints are not supported on Microsoft Fabric. Use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` to validate custom rules instead.
+- Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints.
+- You must provide a `name` for each model-level constraint.
+- Columns in [snapshot](/docs/build/snapshots) source tables cannot have constraints. If a source column has a `not_null` constraint or similar rule, the snapshot may fail.
+
+For more on Microsoft Fabric setup, refer to [Microsoft Fabric Data Warehouse configurations](/reference/resource-configs/fabric-configs).
+
+<File name='models/constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select 
+  1 as id, 
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: dim_customers
+    config:
+      contract:
+        enforced: true
+    constraints:
+      - type: primary_key
+        columns: [id]
+        name: pk_dim_customers
+    columns:
+      - name: id
+        data_type: int
+        constraints:
+          - type: not_null
+          - type: check       # not supported -- will warn & skip
+            expression: "id > 0"
+        data_tests:
+          - unique            # primary_key constraint is not enforced
+      - name: customer_name
+        data_type: varchar(100)
+      - name: first_transaction_date
+        data_type: date
+```
+
+</File>
+
+Expected SQL to enforce constraints:
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+create table schema_name.dim_customers
+(
+    id int not null,
+    customer_name varchar(100),
+    first_transaction_date date
+);
+
+alter table schema_name.dim_customers add constraint pk_dim_customers primary key nonclustered(id) not enforced;
+```
+
+</File>
+
+</div>
+
 </WHCode>
 
 ## Custom constraints 

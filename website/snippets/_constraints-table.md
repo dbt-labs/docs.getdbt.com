@@ -77,6 +77,19 @@ Currently, `not_null` and `check` constraints are enforced only after a model is
 | check           |	✅  | ✅ |
 
 </TabItem>
+<TabItem value="Fabric" label="Fabric">
+
+Microsoft Fabric creates the table first, then adds some constraints in separate steps. Only `not_null` is checked when the model builds. Primary key, foreign key, and unique constraints are recorded on the table for reference, but Fabric does not check them when new data is added.
+
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:---------------------:|
+| not_null        | ✅  | ✅ |
+| primary_key     | ✅  | ❌ |
+| foreign_key     | ✅  | ❌ |
+| unique          | ✅  | ❌ |
+| check           | ❌  | ❌ |
+
+</TabItem>
 <TabItem value="Athena" label="Athena">
 
 | Constraint type | Definable     | Enforced |

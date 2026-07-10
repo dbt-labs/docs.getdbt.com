@@ -3,7 +3,7 @@ title: "Microsoft Fabric Data Warehouse configurations"
 id: "fabric-configs"
 ---
 
-This page describes configuration options specific to the `dbt-fabric` adapter for Microsoft Fabric Data Warehouse. It outlines supported materializations, incremental strategies (including [merge](#merge) and [microbatch](#microbatch)), cross-warehouse references, warehouse snapshots, and profile setup.
+This page describes configuration options specific to the `dbt-fabric` adapter for Microsoft Fabric Data Warehouse. It outlines supported materializations, incremental strategies (including [merge](#merge) and [microbatch](#microbatch)), [model contracts](#model-contracts), cross-warehouse references, warehouse snapshots, and profile setup.
 
 ## Materializations
 
@@ -107,6 +107,54 @@ models:
 
 > **Limitation:** Nested CTEs (Common Table Expressions) are not supported in model materialization. Models using multiple nested CTEs may fail during compilation or execution.
 
+## Model contracts
+
+The `dbt-fabric` adapter supports [model contracts](/docs/mesh/govern/model-contracts) and [constraints](/reference/resource-properties/constraints) on `table` and `incremental` models.
+
+| Constraint type | Supported | Checked when the model builds |
+|-----------------|:---------:|:-----------------------------:|
+| `not_null`      | ✅ | ✅ |
+| `primary_key`   | ✅ | ❌ |
+| `foreign_key`   | ✅ | ❌ |
+| `unique`        | ✅ | ❌ |
+| `check`         | ❌ | ❌ |
+
+<br />
+
+Only `not_null` is checked when the model builds. Other supported constraint types are recorded on the table for reference, but Microsoft Fabric does not check them when new data is added. Use [data tests](/docs/build/data-tests) if you need to verify those rules.
+
+:::note
+`check` constraints are not supported on Microsoft Fabric. To validate custom rules (for example, that `id` is greater than 0), use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` instead.
+:::
+
+Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints. You must provide a `name` for each model-level constraint.
+
+<File name='models/dim_customers.yml'>
+
+```yaml
+models:
+  - name: dim_customers
+    config:
+      contract:
+        enforced: true
+    constraints:
+      - type: primary_key
+        columns: [id]
+        name: pk_dim_customers
+    columns:
+      - name: id
+        data_type: int
+        constraints:
+          - type: not_null
+      - name: customer_name
+        data_type: varchar(100)
+      - name: first_transaction_date
+        data_type: date
+```
+
+</File>
+
+For more information, refer to [constraints](/reference/resource-properties/constraints) and [model contracts](/docs/mesh/govern/model-contracts).
 
 ## Snapshots
 
