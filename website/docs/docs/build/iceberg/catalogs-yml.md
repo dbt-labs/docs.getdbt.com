@@ -5,7 +5,7 @@ sidebar_label: "Using catalogs.yml"
 description: Understand how Iceberg catalogs fit into your dbt Mesh configurations.
 ---
 
-Now that you understand [what an Iceberg catalog is](/docs/mesh/iceberg/about-catalogs), let's talk about how to use them within dbt.
+Now that you understand [what an Iceberg catalog is](/docs/build/iceberg/about-catalogs), let's talk about how to use them within dbt.
 
 ## Getting started: Managed catalogs
 

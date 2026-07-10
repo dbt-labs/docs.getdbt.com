@@ -33,7 +33,7 @@ Over the past year, data platform vendors have been adding support for catalog "
 
 ### How dbt works with Iceberg catalogs
 
-dbt uses [Iceberg catalogs defined in `catalogs.yml`](/docs/mesh/iceberg/catalogs-yml) in order to:
+dbt uses [Iceberg catalogs defined in `catalogs.yml`](/docs/build/iceberg/catalogs-yml) in order to:
 
 - **Materialize models:** When dbt materializes a model as a table or view, if the catalog integration is declared, the underlying adapter (Spark, Trino, Snowflake, etc.) creates an Iceberg table entry in the specified catalog, both built-in or external. 
 

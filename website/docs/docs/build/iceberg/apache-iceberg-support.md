@@ -21,37 +21,37 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
 <Card
     title="Iceberg Catalogs"
     body="About Iceberg catalogs"
-    link="/docs/mesh/iceberg/about-catalogs"
+    link="/docs/build/iceberg/about-catalogs"
     icon="dbt-icon"/>
 
 <Card
     title="Using table_format + catalogs.yml"
     body="dbt support for Iceberg + catalogs"
-    link="/docs/mesh/iceberg/catalogs-yml"
+    link="/docs/build/iceberg/catalogs-yml"
     icon="dbt-icon"/>
 
 <Card
     title="Snowflake + Iceberg"
     body="Snowflake Iceberg Configurations"
-    link="/docs/mesh/iceberg/snowflake-iceberg-support"
+    link="/docs/build/iceberg/snowflake-iceberg-support"
     icon="snowflake"/>
 
 <Card
     title="BigQuery + Iceberg"
     body="BigQuery Iceberg Configurations"
-    link="/docs/mesh/iceberg/bigquery-iceberg-support"
+    link="/docs/build/iceberg/bigquery-iceberg-support"
     icon="bigquery"/>
 
 <Card
     title="Databricks + Iceberg"
     body="Databricks Iceberg Configurations"
-    link="/docs/mesh/iceberg/databricks-iceberg-support"
+    link="/docs/build/iceberg/databricks-iceberg-support"
     icon="databricks"/>
 
 <Card
     title="DuckDB + Iceberg"
     body="DuckDB Iceberg Configurations"
-    link="/docs/mesh/iceberg/databricks-iceberg-support"
+    link="/docs/build/iceberg/databricks-iceberg-support"
     icon="duckdb"/>
 
 </div>
