@@ -27,7 +27,7 @@ There are four types of possible seat licenses:
 
 ### What counts as a Successful Model Built?
 
-<Constant name="dbt" /> considers a Successful Model Built as any <Term id="model">model</Term> that is successfully built via a run through <Constant name="dbt" />’s orchestration functionality in a <Constant name="dbt" /> deployment environment. Models are counted when built and run. This includes any jobs run via <Constant name="dbt" />'s scheduler, CI builds (jobs triggered by pull requests), runs kicked off via the <Constant name="dbt" /> API, and any successor <Constant name="dbt" /> tools with similar functionality. This also includes models that are successfully built even when a run may fail to complete. For example, you may have a job that contains 100 models and on one of its runs, 51 models are successfully built and then the job fails. In this situation, only 51 models would be counted.
+A Successful Model Built is any <Term id="model">model</Term> successfully built in a <Constant name="dbt" /> deployment environment through <Constant name="dbt" />’s orchestration. This includes jobs run via the scheduler, CI builds (triggered by pull requests), and runs kicked off via the <Constant name="dbt" /> API. Models that build successfully are counted even if the overall run later fails. For example, if a job containing 100 models fails after 51 are built, only those 51 are counted.
 
 Any models built in a <Constant name="dbt" /> development environment (for example, via the <Constant name="studio_ide" />) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
 
@@ -55,35 +55,19 @@ The <Constant name="semantic_layer" />, powered by MetricFlow, measures usage in
 
 Examples of queried metrics include:
 
-- Querying one metric, grouping by one dimension → 1 queried metric 
+- Querying one metric, grouping by one or more dimensions → 1 queried metric
 
   ```shell
   dbt sl query --metrics revenue --group-by metric_time
   ```
 
-- Querying one metric, grouping by two dimensions → 1 queried metric 
-
-  ```shell
-  dbt sl query --metrics revenue --group-by metric_time,user__country
-  ```
-
-- Querying two metrics, grouping by two dimensions → 2 queried metrics 
+- Querying two metrics, grouping by two dimensions → 2 queried metrics
 
   ```shell
   dbt sl query --metrics revenue,gross_sales --group-by metric_time,user__country
   ```
 
-- Running a compile for one metric → 1 queried metric
-
-  ```shell
-  dbt sl query --metrics revenue --group-by metric_time --compile
-  ```
-
-- Running a compile for two metrics → 2 queried metrics
-
-  ```shell
-  dbt sl query --metrics revenue,gross_sales --group-by metric_time --compile
-  ```
+Compiling metrics counts the same way — one queried metric per metric compiled (for example, `dbt sl query --metrics revenue --compile` → 1 queried metric).
 
 ### Viewing usage in the product 
 
@@ -92,25 +76,25 @@ Viewing usage in the product is restricted to specific roles:
 * Starter plan &mdash; Owner group
 * Enterprise and Enterprise+ plans &mdash; Account and billing admin roles
 
-For an account-level view of usage, if you have access to the **Billing** and **Usage** pages, you can see an estimate of the usage for the month. In the Billing page of the **Account Settings**, you can see how your account tracks against its usage. You can also see which projects are building the most models.
+If you have access to the **Billing** and **Usage** pages in **Account settings**, you can see an estimate of the month's usage, how your account tracks against it, and which projects are building the most models.
 
 <Lightbox src="/img/docs/building-a-dbt-project/billing-usage-page.jpg" width="80%" title="To view account-level estimated usage, go to 'Account settings' and then select 'Billing'."/>
 
 As a Starter and Developer plan user, you can see how the account is tracking against the included models built. As an Enterprise plan user, you can see how much you have drawn down from your annual commit and how much remains.
 
-On each **Project Home** page, any user with access to that project can see how many models are built each month. From there, additional details on top jobs by models built can be found on each **Environment** page.
+On each **Project home** page, any user with project access can see how many models are built each month, with top jobs by models built available on each **Environment** page.
 
 <Lightbox src="/img/docs/building-a-dbt-project/billing-project-page.jpg" width="80%" title="Your Project home page displays how many models are built each month."/>
 
-In addition, you can look at the **Job Details** page's **Insights** tab to show how many models are being built per month for that particular job and which models are taking the longest to build. 
+The **Job details** page's **Insights** tab shows models built per month for that job and which take longest to build. 
 
 <Lightbox src="/img/docs/building-a-dbt-project/billing-job-page.jpg" width="80%" title="View how many models are being built per month for a particular job by going to the 'Insights' tab in the 'Job details' page."/>
 
-Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in <Constant name="dbt" /> is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Starter and Enterprise-tier plans).
+Usage data shown in <Constant name="dbt" /> is only an estimate and may be delayed, and some visualizations aren't available on legacy plans. Your final monthly usage appears on your monthly statements (Starter and Enterprise-tier plans).
 
 ## dbt State usage
 
-[dbt state](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. Learn more about how your usage influences the price so you can plan your savings effectively.
+[dbt state](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed.
 
 ### About free trial
 
@@ -134,25 +118,15 @@ When you run `dbt build` or a similar command, a target table is selected for ex
 
 ### Monthly cost calculation
 
-dbt State calculates cost per billing period using the unit price (USD $0.094) x sum of daily active target tables (DATT) for all account users and all days in that billing period. For example, if you have 100 DATT in a billing period, you'll be billed for 100 * $0.094 = $9.40.
+dbt State cost per billing period is the unit price multiplied by the sum of daily active target tables (DATT) across all account users and all days in that billing period. Refer to the [pricing page](https://www.getdbt.com/pricing) for current rates.
 
 ## dbt AI: Usage metering and limiting <Lifecycle status="Starter, Enterprise, Enterprise+" />
 
 dbt AI usage is measured based on the number of completed AI requests, known as dbt Copilot actions. Usage limits are enforced to ensure fair access and system performance.
 
-A defined number of dbt Copilot invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to dbt AI will be temporarily disabled until the start of the next billing cycle.
-
-As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. Pricing and usage are subject to change.
+A defined number of dbt Copilot invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to dbt AI will be temporarily disabled until the start of the next billing cycle. Pricing and usage are subject to change.
 
 ### Usage and metering information 
-
-<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 13)">
-
-As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. 
-
-Users that bring their own key (BYOK) aren't affected by this bridge.
-
-</Expandable>
 
 <Expandable alt_header="AI usage tracking by dbt Copilot actions">
 
@@ -211,7 +185,7 @@ To view the usage in your account:
 <Lightbox src="/img/docs/dbt-platform/view-usage-in-copilot.gif" title="View usage in dbt Copilot" />
 
 
-## Plans and Billing
+## Plans and billing
 
 <Constant name="dbt" /> offers several [plans](https://www.getdbt.com/pricing) with different features that meet your needs. We may make changes to our plan details from time to time. We'll always let you know in advance, so you can be prepared. The following section explains how billing works in each plan.
 
@@ -219,8 +193,7 @@ To view the usage in your account:
 
 Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the <Constant name="dbt" /> platform is still accessible, and no work will be lost.
 
-All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Developer Plan, the included model entitlements may be different from what’s reflected above.
-
+Included model entitlements may differ from what's shown here, depending on the terms when you signed up.
 
 ### Starter plan billing 
 
@@ -229,11 +202,9 @@ Starter customers pay monthly via credit card for seats and usage, and accounts 
 Usage is calculated and charged in arrears for the previous month. If you exceed 15,000 models in any month, you will be billed for additional usage on your next invoice. Additional usage is billed at the rates on our [pricing page](https://www.getdbt.com/pricing). 
 
 
-Included models that are not consumed do not roll over to future months. You can estimate your bill with a simple formula:
+Included models that are not consumed do not roll over to future months.
 
-`($100 x number of developer seats) + ((models built - 15,000) x $0.01)`
-
-All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Starter plan, the included model entitlements may be different from what’s reflected above.
+Included model entitlements may differ from what's shown here, depending on the terms when you signed up.
 
 ### Enterprise plan billing
 
@@ -309,7 +280,7 @@ Avoid conditional materialization patterns such as `table` in production and `vi
 
 ### Best practices for optimizing successful models built
 
-When thinking of ways to optimize your costs from successful models built, there are methods to reduce those costs while still adhering to best practices. To ensure that you are still utilizing tests and rebuilding views when logic is changed, it's recommended to implement a combination of the best practices that fit your needs. More specifically, if you decide to exclude views from your regularly scheduled <Constant name="dbt" /> job runs, it's imperative that you set up a [merge job](#exclude-views-while-running-tests) to deploy updated view logic when changes are detected.
+You can reduce costs from successful models built while still following best practices. Combine the approaches below to fit your needs. If you exclude views from your scheduled job runs, set up a [merge job](#exclude-views-while-running-tests) to deploy updated view logic when changes are detected.
 
 #### Exclude views in a dbt job
 
@@ -363,24 +334,19 @@ If you want to ensure that you're building views whenever the logic is changed, 
     Executing `dbt build` in this context is unnecessary because the CI job was used to both run and test the code that just got merged into main.
 5. Under the **Execution Settings**, select the default production job to compare changes against:
     - **Defer to a previous run state** &mdash; Select the “Merge Job” you created so the job compares and identifies what has changed since the last merge.
-6. In your dbt project, follow the steps in Run a <Constant name="dbt" /> job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the <Constant name="dbt" /> API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
+6. Follow [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) to create a script that triggers the <Constant name="dbt" /> API to run your job after a merge, or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
 
-The purpose of the merge job is to:
-
-- Immediately deploy any changes from PRs to production.
-- Ensure your production views remain up-to-date with how they’re defined in your codebase while remaining cost-efficient when running jobs in production.
-
-The merge action will optimize your cloud data platform spend and shorten job times, but you’ll need to decide if making the change is right for your dbt project.
+The merge job immediately deploys PR changes to production and keeps production views current with your codebase while staying cost-efficient. Decide whether this change is right for your dbt project.
 
 ### Rework inefficient models
 
 #### Job Insights tab
 
-To reduce your warehouse spend, you can identify what models, on average, are taking the longest to build in the **Job** page under the **Insights** tab. This chart looks at the average run time for each model based on its last 20 runs. Any models that are taking longer than anticipated to build might be prime candidates for optimization, which will ultimately reduce cloud warehouse spending. 
+To reduce warehouse spend, use the **Insights** tab on the **Job** page to find which models take longest to build. The chart shows each model's average run time over its last 20 runs; the slowest models are prime candidates for optimization. 
 
 #### Model Timing tab
 
-To understand better how long each model takes to run within the context of a specific run, you can look at the **Model Timing** tab. Select the run of interest on the **Run History** page to find the tab. On that **Run** page, click **Model Timing**. 
+To see how long each model takes within a specific run, select that run on the **Run History** page and click the **Model Timing** tab. 
 
 Once you've identified which models could be optimized, check out these other resources that walk through how to optimize your work: 
 * [Build scalable and trustworthy data pipelines with dbt and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
