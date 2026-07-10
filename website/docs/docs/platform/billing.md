@@ -1,8 +1,8 @@
 ---
-title: "Billing"
+title: "About billing"
 id: billing 
 description: "dbt billing information." 
-sidebar_label: Billing
+sidebar_label: About billing
 pagination_next: null
 pagination_prev: null
 ---
