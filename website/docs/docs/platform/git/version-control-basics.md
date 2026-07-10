@@ -3,6 +3,9 @@ title: "Version control basics"
 id: version-control-basics
 description: "Leverage Git to version control your code."
 sidebar_label: "Version control basics"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 # Version control basics

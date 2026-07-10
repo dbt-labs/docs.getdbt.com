@@ -3,11 +3,15 @@ title: "Set up BigQuery OAuth"
 description: "Learn how dbt administrators can use BigQuery OAuth to control access in a dbt account"
 id: "set-up-bigquery-oauth"
 pagination_next: null
+availability:
+  surface: platform
+  access: paid_plan
+  minPlan: enterprise
 ---
 
 import EntraIdGetToken from '/snippets/_entra-id-get-token.md';
 
-# Set up BigQuery OAuth <Lifecycle status="managed, managed_plus" />
+# Set up BigQuery OAuth
 
 :::info Enterprise-tier feature
 

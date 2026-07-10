@@ -3,6 +3,9 @@ title: "Upgrading to v1.2"
 description: New features and changes in dbt Core v1.2
 id: "upgrading-to-v1.2"
 displayed_sidebar: "docs"
+availability:
+  engine: v1
+  access: free
 ---
 
 ### Resources

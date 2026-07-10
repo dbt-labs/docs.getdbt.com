@@ -3,6 +3,7 @@ title: "Materializations"
 description: "Configure materializations in dbt to control how the SQL is run and resulting data is stored."
 id: "materializations"
 pagination_next: "docs/build/incremental-models"
+availability: all_users
 ---
 
 ## Overview
@@ -266,4 +267,3 @@ def model(dbt, session):
 </WHCode>
 
 **Note:** Incremental models are supported on BigQuery/Dataproc for the `merge` incremental strategy. The `insert_overwrite` strategy is not yet supported.
-

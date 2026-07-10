@@ -12,9 +12,9 @@ level: 'Advanced'
 
 <div style={{maxWidth: '900px'}}>
 
-:::important dbt Core v1
+:::important dbt Core v1.x
 
-This guide is for creating adapters for the Python-based dbt Core v1. For adapter creation on the Rust-based dbt Core v2, check out our [new guide](/guides/adapter-creation-v2?step=1)
+This guide is for creating adapters for the Python-based dbt Core v1. For adapter creation on the Rust-based dbt Core v2.0, check out our [new guide](/guides/adapter-creation-v2?step=1)
 
 :::
 
@@ -166,7 +166,7 @@ dbt Labs strongly recommends you to adopt the following approach when versioning
 - Declare major version compatibility with `dbt-adapters` and only set a boundary on the minor version if there is some known reason.
 - Do not import or rely on code from `dbt-core`. 
 - Aim to release a new minor version of your plugin as you add substantial new features. Typically, this will be triggered by adding support for new features released in `dbt-adapters` or by changes to the data platform itself.
-- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (<Constant name="core" /> v2).
+- While your plugin is new and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (dbt Core v2.0).
 - Release patch versions of your plugins whenever needed. These patch releases should only contain fixes.
 
 :::note

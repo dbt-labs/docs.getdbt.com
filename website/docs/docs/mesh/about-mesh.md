@@ -3,6 +3,7 @@ title: "About dbt Mesh"
 id: about-mesh
 sidebar_label: "About dbt Mesh"
 description: Getting started with dbt Mesh patterns
+availability: all_users
 ---
 
 import Mesh from '/snippets/_what-is-mesh.md';

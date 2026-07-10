@@ -3,6 +3,9 @@ title: "Connect to GitHub"
 description: "Learn how connecting your GitHub account provides convenience and another layer of security to dbt."
 id: "connect-github"
 sidebar_label: "Connect to GitHub"
+availability:
+  surface: platform
+  access: login_required
 ---
 
 

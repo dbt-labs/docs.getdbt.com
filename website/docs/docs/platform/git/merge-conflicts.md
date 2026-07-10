@@ -2,6 +2,9 @@
 title: "Merge conflicts"
 id: "merge-conflicts"
 pagination_next: null
+availability:
+  surface: platform
+  access: login_required
 ---
 
 [Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for <Constant name="git" /> to decide what changes to incorporate in the final merge.  

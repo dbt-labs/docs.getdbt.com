@@ -4,6 +4,7 @@ sidebar_label: "Set up dbt State"
 description: "Learn how to install and configure dbt State across dbt Core, dbt platform, and Fusion."
 id: "dbt-state-setup"
 tags: ['dbt State']
+availability: everywhere_usage
 ---
 
 # Setting up dbt State <Lifecycle status="preview" />
@@ -126,7 +127,7 @@ To see how dbt State optimizes your runs, refer to [dbt State usage examples](/d
 
 ## Configuring lag tolerance
 
-Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. We recommend starting with the following Jinja expression:
+Lag tolerance allows you to set a tolerance level for older data at the project, environment, or model level. If not configured, `lag_tolerance` defaults to `45m`. We recommend starting with the following Jinja expression:
 
 <File name="dbt_project.yml">
 

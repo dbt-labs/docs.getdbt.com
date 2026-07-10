@@ -31,7 +31,7 @@ Behavior change flags go through three phases of development:
 2. **Mature (enabled by default):** The default value of the flag is switched to the new behavior by default. You can still preserve the old behavior, but you may see deprecation warnings.
 3. **Removed (generally enabled):** The old behavior is removed from the dbt codebase(s). Most flags are supported indefinitely, but there is no committement to supporting them forever. If a flag is removed, there will be significant advanced warning.
 
-### Introduced in dbt Core v1
+### Introduced in dbt Core v1.x
 
 This table outlines which month of the **Latest** release track in <Constant name="dbt" /> and which version of <Constant name="core" /> contains the behavior change's introduction (disabled by default) or maturity (enabled by default).
 

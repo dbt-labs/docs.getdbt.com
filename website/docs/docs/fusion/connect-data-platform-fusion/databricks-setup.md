@@ -13,7 +13,10 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Databricks'
   config_page: '/reference/resource-configs/databricks-configs'
---- 
+availability:
+  preset: local_free
+  engine: v2
+---
 
 # Databricks setup <Lifecycle status='private_preview' />
 

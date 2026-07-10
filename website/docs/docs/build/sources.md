@@ -4,6 +4,7 @@ sidebar_label: "Sources"
 description: "Define data source tables when developing in dbt."
 id: "sources"
 search_weight: "heavy"
+availability: all_users
 ---
 
 ## Related reference docs

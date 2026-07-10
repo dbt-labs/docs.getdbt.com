@@ -5,25 +5,33 @@ description: "The dbt VS Code extension is backed by the dbt Fusion engine and a
 sidebar_label: "dbt extension features"
 pagination_next: "docs/install-dbt-extension"
 image: /img/docs/extension/extension-features.png
+availability: local_all
 ---
 
 # dbt VS Code extension features <Lifecycle status="preview" />
 
-The dbt VS Code extension is backed by the speed and power of the <Constant name="fusion_engine" /> and a dynamic Language Server Protocol (<Term id="lsp"/>) that enables enhanced workflows, faster development, and easy navigation.
+<IntroText>
+The dbt VS Code extension requires the <Constant name="fusion_engine" /> and uses a dynamic Language Server Protocol (<Term id="lsp" />) to provide a fast, intelligent, and cost-efficient dbt development experience with enhanced workflows and easy navigation.
+</IntroText>
+
 
 :::info Registration for advanced features
 
-Most dbt VS Code extension features are available to all users for 14 days. After the 14-day trial period, [register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using advanced features. The vast majority of features remain available without registration. Existing registered users keep access automatically.
+All dbt VS Code extension features are available to all users for 14 days. After the 14-day trial period, most features remain available without registration. To keep using advanced features, [register](/docs/sign-in-dbt-extension) for a free <Constant name="dbt_platform" /> account. Existing registered users keep access automatically.
 
-Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
+See the [feature availability](#feature-availability) table for the full list of features and what each needs.
 
 :::
 
 <VersionBlock firstVersion="1.13">
 
-In <Constant name="dbt" /> v2.0 and later, authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across dbt tools like the dbt VS Code extension and, in supported versions, dbt State.
+In <Constant name="dbt" /> v2.0 and later, authentication for registration and features that require sign-in is handled by [`dbt login`](/reference/commands/login), so your login state is shared across dbt tools like the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
+
+import ExtensionFeatures from '/snippets/_extension-features.md';
+
+<ExtensionFeatures />
 
 ## Lightning-fast parse times
 
