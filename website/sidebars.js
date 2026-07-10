@@ -2094,6 +2094,12 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/platform/billing",
+        "docs/platform/billing/how-pricing-works",
+        "docs/platform/billing/dbt-state-usage",
+        "docs/platform/billing/dbt-ai-usage",
+        "docs/platform/billing/plans-and-billing",
+        "docs/platform/billing/managing-usage",
+        "docs/platform/billing/optimize-costs",
         "docs/platform/billing-faqs",
       ],
     },

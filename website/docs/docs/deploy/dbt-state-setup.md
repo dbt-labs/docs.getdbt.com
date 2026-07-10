@@ -16,7 +16,7 @@ Before you set up dbt State, make sure you have:
 
 - **A supported dbt version**: dbt State is natively available in <Constant name="dbt_platform" /> and the <Constant name="fusion_engine" />. It's also available as a plugin for <Constant name="core" /> v1.7–1.12.
 - **A supported data platform**: Snowflake, Databricks, BigQuery, or Redshift. More warehouses are on the roadmap.
-- **A dbt State account**: Authenticate through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). Refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state) to choose the right option, and [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
+- **A dbt State account**: Authenticate through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). Refer to [About dbt State](/docs/deploy/dbt-state-about#signing-up-for-dbt-state) to choose the right option, and [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage) for pricing details. Note that dbt State isn't available on [legacy Starter](/docs/platform/billing/plans-and-billing#legacy-plans) plan. Please [contact dbt Labs](https://www.getdbt.com/contact) if that applies to you.
 
 ## Setting up dbt State
 
@@ -35,7 +35,7 @@ To enable dbt State:
 2. Under **Settings**, go to **State**.
 3. Click **Start your 30-day free trial**.
 
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For more information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For more information, refer to [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage).
 
       :::info Extended trial for state-aware orchestration users
       If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
