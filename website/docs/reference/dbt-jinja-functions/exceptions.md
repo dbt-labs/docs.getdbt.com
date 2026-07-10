@@ -5,7 +5,7 @@ id: "exceptions"
 description: "Raise warnings and errors with the `exceptions` namespace."
 ---
 
-The `exceptions` namespace provides callable functions you can use in models and macros to raise warnings or errors during compilation and execution.
+Use the `exceptions` namespace to raise your own warnings or errors from Jinja code in dbt models and macros during compilation and execution.
 
 Use these functions when you want to control how dbt responds to invalid inputs, unsupported features, or dependency problems in your own Jinja code. These are functions you call in your own Jinja code. They are different from syntax errors or undefined variable errors that Jinja may raise automatically when your template has a problem.
 
