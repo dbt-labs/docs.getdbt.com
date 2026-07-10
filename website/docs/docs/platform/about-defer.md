@@ -52,6 +52,19 @@ For example, if you were to start developing on a new branch with [nothing in yo
 
 One key difference between using `--defer` in the <Constant name="platform_cli" /> and the <Constant name="studio_ide" /> is that `--defer` is *automatically* enabled in the <Constant name="platform_cli" /> for all invocations, compared with production artifacts. You can disable it with the `--no-defer` flag.
 
+<VersionBlock firstVersion="2.0">
+A <Constant name="dbt_platform"/> project id must be declared in your `dbt_project.yml` for automatic deferral to associate your project with what is declared in your `dbt_cloud.yml`.
+
+<File name="dbt_project.yml">
+
+```yml
+dbt-cloud:
+  project-id: '654321'
+```
+
+</File>
+</VersionBlock>
+
 ### Configure deferral environment ID
 
 The <Constant name="studio_ide" /> and <Constant name="platform_cli" /> both offer additional flexibility by letting you choose the source environment for deferral artifacts. You can manually set a `defer-env-id` key in either your `[dbt_project.yml](/reference/dbt_project.yml)` (<Constant name="platform_cli" /> and <Constant name="studio_ide" />) or `dbt_cloud.yml` (<Constant name="platform_cli" /> only) file. By default, dbt will prefer metadata from the project's "Staging" environment (if defined). Otherwise, it uses "Production." For the full file reference, refer to [`dbt_cloud.yml`](/reference/dbt_cloud.yml).
@@ -74,6 +87,7 @@ context:
 
 ```yml
 dbt-cloud:
+  project-id: '654321'
   defer-env-id: '123456'
 ```
 
