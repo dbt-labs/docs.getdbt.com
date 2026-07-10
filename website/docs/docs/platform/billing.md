@@ -150,7 +150,7 @@ After the temporary bridge ends, <Constant name="wizard" /> usage will be metere
 
 <Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 13, 2026)">
 
-As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13, 2026 or longer (timeline subject to change based on user feedback). After this temporary bridge ends, <Constant name="wizard" /> usage will be metered separately. 
+As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13, 2026 or longer (timeline subject to change). After this temporary bridge ends, <Constant name="wizard" /> usage will be metered separately. 
 
 Users that bring their own key (BYOK) aren't affected by this bridge.
 
