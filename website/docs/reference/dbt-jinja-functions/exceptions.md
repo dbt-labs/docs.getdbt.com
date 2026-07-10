@@ -143,8 +143,8 @@ __Example usage__:
 
 Use the `exceptions.warn` method to raise a compiler warning with the provided message. The model will still be successful and treated as a PASS. By default, warnings will not cause dbt runs to fail. However:
 
-* If you use the `--warn-error` flag, all warnings will be promoted to errors.
-* To promote only Jinja warnings to errors (and leave other warnings alone), use `--warn-error-options`. For example, `--warn-error-options '{"error": ["JinjaLogWarning"]}'`.
+- If you use the `--warn-error` flag, all warnings will be promoted to errors.
+- To promote only Jinja warnings to errors (and leave other warnings alone), use `--warn-error-options`. For example, `--warn-error-options '{"error": ["JinjaLogWarning"]}'`.
 
 Learn more about [Warnings](/reference/global-configs/warnings).
 
