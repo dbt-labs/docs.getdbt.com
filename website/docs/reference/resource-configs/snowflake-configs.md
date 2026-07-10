@@ -11,7 +11,7 @@ import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 ## Iceberg table format
 
-Our Snowflake Iceberg table content has moved to a [new page](/docs/build/iceberg/snowflake-iceberg-support)!
+Our Snowflake Iceberg table content has moved to a [new page](/docs/build/iceberg/adapters/snowflake-iceberg-support)!
 
 ## Dynamic tables
 

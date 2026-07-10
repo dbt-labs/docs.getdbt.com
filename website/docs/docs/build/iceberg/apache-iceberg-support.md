@@ -33,13 +33,13 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
 <Card
     title="Snowflake + Iceberg"
     body="Snowflake Iceberg Configurations"
-    link="/docs/build/iceberg/snowflake-iceberg-support"
+    link="/docs/build/iceberg/adapters/snowflake-iceberg-support"
     icon="snowflake"/>
 
 <Card
     title="BigQuery + Iceberg"
     body="BigQuery Iceberg Configurations"
-    link="/docs/build/iceberg/bigquery-iceberg-support"
+    link="/docs/build/iceberg/adapters/bigquery-iceberg-support"
     icon="bigquery"/>
 
 <Card
