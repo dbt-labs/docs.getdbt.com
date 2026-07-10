@@ -4,10 +4,11 @@ sidebar_label: "version"
 id: "version"
 ---
 
-The `--version` command-line flag returns information about the currently installed version of <Constant name="core" /> or the <Constant name="platform_cli" />. This flag is not supported when invoking dbt in other <Constant name="dbt" /> runtimes (for example, the IDE or scheduled runs).
+The `--version` command-line flag returns information about the currently installed version of <Constant name="core" />, the <Constant name="platform_cli" />, or the <Constant name="fusion_engine" />. This flag is not supported when invoking dbt in other <Constant name="dbt" /> runtimes (for example, the IDE or scheduled runs).
 
 - **<Constant name="core" />** &mdash; Returns the installed version of <Constant name="core" /> and the versions of all installed adapters.
 - **<Constant name="platform_cli" />** &mdash; Returns the installed version of the [<Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) and, for the other `dbt_version` values, the _latest_ version of the dbt runtime in <Constant name="dbt" />.
+- **<Constant name="fusion_engine" />** &mdash; Returns the installed <Constant name="fusion" /> version. Because the CLI and language server ship in a single binary, they always report the same version. Refer to [Version compatibility](/docs/fusion/fusion-version-compatibility) for how this maps to the dbt VS Code extension.
 
 
 ## Versioning
@@ -41,3 +42,23 @@ Cloud CLI - 0.35.7 (fae78a6f5f6f2d7dff3cab3305fe7f99bd2a36f3 2024-01-18T22:34:52
 ```
 
 </File>
+
+<Constant name="fusion_engine" /> example:
+
+```shell
+$ dbt --version
+dbt-fusion 2.0.0-preview.92
+```
+
+For a machine-readable version, add the `--format json` flag. This is useful when filing a bug report or when tooling needs to parse the installed version:
+
+```shell
+dbt --version --format json
+```
+
+```json
+{
+  "version": "2.0.0-preview.92"
+}
+```
+

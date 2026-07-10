@@ -20,6 +20,7 @@ const sidebarSettings = {
         "docs/fusion/new-concepts",
         "docs/fusion/supported-features",
         "docs/fusion/fusion-networking",
+        "docs/fusion/fusion-version-compatibility",
         "docs/fusion/fusion-releases",
         "docs/fusion/telemetry",
       ],
