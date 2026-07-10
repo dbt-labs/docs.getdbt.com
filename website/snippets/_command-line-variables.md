@@ -12,7 +12,6 @@ $ dbt run --vars '{"event_type": "signup"}'
 
 You can use the same `--vars` syntax with other dbt commands, such as `dbt snapshot`:
 
-```
 $ dbt snapshot --select my_snapshot --vars '{"cutoff_date": "2026-01-01"}'
 ```
 
