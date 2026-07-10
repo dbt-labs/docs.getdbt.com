@@ -5,7 +5,7 @@ sidebar_label: "Cross-platform Mesh"
 description: Understand how Iceberg catalogs and dbt Mesh can combine to enable collaboration across multiple data platforms.
 ---
 
-If a model is configured with `catalog_name`, dbt will use the current project's [catalog definition](/docs/build/iceberg/about-catalogs) (in `catalogs.yml`), for the current active adapter, to resolve the top-level namespace of that model.
+If a model is configured with `catalog_name`, dbt uses the current project's [catalog definition](/docs/build/iceberg/about-catalogs) (in `catalogs.yml`), for the current active adapter, to resolve the top-level namespace of that model.
 
 This means that you can materialize a dbt model in your `databricks_project` to an Iceberg table in Unity catalog, and select from it in another model in your `snowflake_project`. You can even materialize that model back to Unity catalog, and then use it for other models in `databricks_project`.
 
@@ -77,7 +77,7 @@ with monthly_revenue as (
 
 <img width="691" height="134" alt="Flow chart: The marketing project's ROI by channel model depends on the finance project's monthly revenue model" src="https://github.com/user-attachments/assets/e0a07911-b9d5-4422-9a81-6287e1946ca2" />
 
-This will work for [both ways of resolving cross-project references](/docs/mesh/govern/project-dependencies)
+This works for [both ways of resolving cross-project references](/docs/mesh/govern/project-dependencies):
 
 1. `package` dependencies (supported in dbt Core + dbt platform)
 2. `project` dependencies (dbt platform Enterprise; the advantages of this approach are described [here](/docs/mesh/govern/project-dependencies#advantages))
@@ -123,7 +123,7 @@ Behind the scenes, Snowflake is syncing Databricks' `finance_db` ↔ Snowflake's
 
 Writes to external Iceberg catalogs are generally slower than writes to managed Iceberg tables, and they can also run into reliability issues at scale. (See our [blog](/blog/catalog-linked-databases) and [benchmark](https://github.com/dbt-labs/snow-dbx-iceberg-benchmark).)
 
-Instead of having Snowflake write directly to Unity catlog, via catalog-linked database. you can have Snowflake write directly to its (managed) Horizon catalog, and use [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation) to synchronize the Iceberg metadata for subsequent reads.
+Instead of having Snowflake write directly to Unity catalog via a catalog-linked database, you can have Snowflake write to its (managed) Horizon catalog, and use [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation) to synchronize the Iceberg metadata for subsequent reads.
 
 ```mermaid
 flowchart LR

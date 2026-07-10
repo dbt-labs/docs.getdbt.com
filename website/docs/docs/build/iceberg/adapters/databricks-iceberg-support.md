@@ -29,7 +29,7 @@ dbt does not yet support enabling [Iceberg v3](https://docs.databricks.com/aws/e
 
 ## Creating Iceberg tables
 
-To configure dbt models to materialize as Iceberg tables, you can use a catalog integration with `table_format: iceberg` (see [dbt Catalog integration configurations for databricks](#dbt-catalog-integration-configurations-for-databricks)).
+To configure dbt models to materialize as Iceberg tables, you can use a catalog integration with `table_format: iceberg` (see [dbt catalog integration configurations for Databricks](#dbt-catalog-integration-configurations-for-databricks)).
 
 <VersionBlock lastVersion="1.99">
 dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tables (formerly [UniForm](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)). The behavior flag [`use_managed_iceberg`](/reference/global-configs/databricks-changes#use-managed-iceberg) determines whether dbt creates a managed Iceberg table or a Delta table.
@@ -44,13 +44,13 @@ dbt supports both creating managed Iceberg tables and Iceberg-enabled Delta tabl
 dbt also supports creating externally-managed Iceberg tables using the model configuration [`location_root`](/reference/resource-configs/databricks-configs#configuring-tables). Databricks' DDL for creating tables requires a fully qualified `location`. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data:
 
 - When you set a `location_root` string, dbt generates a `location` string of the form: `{{ location_root }}/{{ model_name }}`.
-If you set the configuration option `include_full_name_in_path` to true, dbt generates a `location` string of the form `{{ location_root }}/{{ database_name}}/{{ schema_name }}/{{ model_name }}`.
+- If you set the configuration option `include_full_name_in_path` to `true`, dbt generates a `location` string of the form `{{ location_root }}/{{ database_name}}/{{ schema_name }}/{{ model_name }}`.
 
 <VersionBlock firstVersion="2.0">
 In Fusion, dbt also supports setting `location_root` as an [adapter property](#adapter-properties) in `catalogs.yml`.
 </VersionBlock>
 
-### dbt Catalog integration configurations for Databricks
+### dbt catalog integration configurations for Databricks
 
 <VersionBlock lastVersion="1.99">
 The following table outlines the configuration fields required to set up a catalog integration for [Iceberg compatible tables in Databricks](https://docs.databricks.com/aws/en/iceberg).
@@ -75,9 +75,11 @@ The following table outlines the configuration fields required to set up a catal
 | `adapter_properties` | Additional configurations unique to Databricks | Optional | See [Adapter properties](#adapter-properties) |
 </VersionBlock>
 
-#### Note
+:::note
 
 On Databricks, if a model has `catalog_name=<>` in its model config, the catalog name becomes the catalog part of the model's FQN. For example, if the catalog is named `my_database`, a model with `catalog_name='my_database'` is materialized as `my_database.<schema>.<model>`.
+
+:::
 
 <VersionBlock firstVersion="2.0">
 ### Adapter properties

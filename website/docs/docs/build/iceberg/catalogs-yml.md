@@ -11,7 +11,7 @@ Now that you understand [what an Iceberg catalog is](/docs/build/iceberg/about-c
 
 Several data platforms offer their own "managed" catalogs that support the Iceberg table format out-of-the-box. These include Snowflake Horizon, Databricks Unity, AWS Glue (for Athena + Redshift), and BigLake (for BigQuery).
 
-If you are using dbt with a data platform that offers a managed Iceberg catalog, then the simplest way to materialize your first dbt model as an Iceberg table is by simply setting the `table_format` configuration:
+If you are using dbt with a data platform that offers a managed Iceberg catalog, then the simplest way to materialize your first dbt model as an Iceberg table is to set the `table_format` configuration:
 
 <File name='models/hello_iceberg.sql'>
 
@@ -28,7 +28,11 @@ select 'hello_iceberg' as message
 
 That's it. This model will be materialized as an Iceberg table, with all the default configurations for this adapter, and stored in the default (managed) catalog offered by this data platform. You can now connect to that catalog using another engine (such as DuckDB) to read this table. Congratulations, you're using Iceberg!
 
-_Note: Most open source query engines, including DuckDB and Apache Spark, can operate well with external catalogs, but they don't come with a "managed" catalog. Instead, their default behavior for materializing Iceberg tables is to write parquet files + Iceberg metadata to the local filesystem (wherever the query engine is running)._
+:::note
+
+Most open source query engines, including DuckDB and Apache Spark, can operate well with external catalogs, but they don't come with a "managed" catalog. Instead, their default behavior for materializing Iceberg tables is to write parquet files and Iceberg metadata to the local filesystem (wherever the query engine is running).
+
+:::
 
 ## Next step: Using catalogs
 
@@ -56,7 +60,7 @@ flags:
 
 Each entry in `catalogs` refers to a specific catalog containing Iceberg tables. Each catalog **should** map to a top-level logical namespace (often called "database" in dbt). Each catalog may be managed or external for this data platform. Each catalog may be accessed (read from and written to) by one or multiple data platforms.
 
-For this reason, each catalog's adapter-specific configuration is nested under `<adapter>` keys (`snowflake:`, `databricks:`, etc). If you run the same dbt project, with the same `catalogs.yml`, using different adapters, dbt will always use the catalog configuration for the current active adapter.
+For this reason, each catalog's adapter-specific configuration is nested under `<adapter>` keys (such as `snowflake:` and `databricks:`). If you run the same dbt project, with the same `catalogs.yml`, using different adapters, dbt always uses the catalog configuration for the current active adapter.
 
 That said, one "catalog" **must** always point to the same actual data (Iceberg tables in object storage), regardless of whether that catalog is external to or managed by the current active adapter.
 
@@ -94,7 +98,7 @@ catalogs:
 
 #### Config inheritance
 
-Configurations defined in [`catalogs.yml`](https://docs.getdbt.com/reference/model-configs) are lowest in the model-config precedence. Meaning, if you set a more-specific config for one model (within its sql/py file), or set a project-level config, those will take precedence.
+Configurations defined in `catalogs.yml` are lowest in the [model-config precedence](/reference/model-configs). This means that if you set a more-specific config for one model (within its `.sql` or `.py` file), or set a project-level config, those take precedence.
 
 For example, we set a default `base_location_root` for all models in the `finance_db` catalog:
 
@@ -130,7 +134,7 @@ Some Iceberg-related configurations are only available at the model configuratio
 
 There is a dedicated configuration for the name of the database mapped to this catalog in each adapter. Unlike other catalog-level configurations, the `catalog_database` applies to *all* models configured with this `catalog_name`, it cannot be changed for specific models, and it does not follow the usual rules about the `database` config or the `generate_database_name` macro.
 
-Meaning: If a model has both a `database` config and a `catalog_name` config, the catalog’s `catalog_database` takes precedence over the model’s database config, to tell dbt where to materialize this model.
+This means that if a model has both a `database` config and a `catalog_name` config, the catalog’s `catalog_database` takes precedence over the model’s database config, to tell dbt where to materialize this model.
 
 Why? We strongly recommend a 1:1 mapping between each Iceberg catalog and the top-level namespace (logical "database") to which it is linked/synced. The namespaces don't have to be identical, but if you can make them the same everywhere, it is simpler to reason about and debug.
 

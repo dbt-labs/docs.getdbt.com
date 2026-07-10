@@ -9,7 +9,7 @@ import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-war
 
 dbt supports materializing Iceberg tables on BigQuery via the catalog integration, starting with the dbt-bigquery 1.10 release.
 
-## Creating Iceberg Tables
+## Creating Iceberg tables
 
 dbt supports creating Iceberg tables for two of the BigQuery materializations: 
 
@@ -21,7 +21,7 @@ dbt supports creating Iceberg tables for two of the BigQuery materializations:
 BigQuery supports Iceberg tables via its built-in catalog [BigLake Metastore](https://cloud.google.com/bigquery/docs/iceberg-tables#architecture) today. No setup is needed to access the BigLake Metastore. However, you will need to have a [storage bucket](https://docs.cloud.google.com/storage/docs/buckets#buckets) and [the required BigQuery roles](https://cloud.google.com/bigquery/docs/iceberg-tables#required-roles) configured prior to creating an Iceberg table. 
 
 
-### dbt Catalog integration configurations for BigQuery
+### dbt catalog integration configurations for BigQuery
 
 The following table outlines the configuration fields required to set up a catalog integration for [Biglake Iceberg tables in BigQuery](https://docs.cloud.google.com/bigquery/docs/iceberg-tables).
 
@@ -142,14 +142,14 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 ### Limitations
 
-BigQuery today does not support connecting to external Iceberg catalogs. In terms of SQL operations and table management features, please refer to the [BigQuery docs](https://cloud.google.com/bigquery/docs/iceberg-tables#limitations) for more information. 
+BigQuery today does not support connecting to external Iceberg catalogs. In terms of SQL operations and table management features, refer to the [BigQuery docs](https://cloud.google.com/bigquery/docs/iceberg-tables#limitations) for more information. 
 
 <VersionBlock firstVersion="1.9">
 
 ### Base location
 
 <VersionBlock lastVersion="1.99">
-BigQuery's DDL for creating iceberg tables requires that a fully qualified storage_uri be provided, including the object path. Once the user has provided the bucket name as the `external_volume` in the catalog integration, dbt will manage the storage_uri input. The default behavior in dbt is to provide an object path, referred to in dbt as the `base_location`, in the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.  We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure `base_location` with the model configuration fields `base_location_root` and `base_location_subpath`. 
+BigQuery's DDL for creating iceberg tables requires that a fully qualified storage_uri be provided, including the object path. Once the user has provided the bucket name as the `external_volume` in the catalog integration, dbt will manage the storage_uri input. The default behavior in dbt is to provide an object path, referred to in dbt as the `base_location`, in the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.  We recommend using the default behavior, but if you need to customize the resulting `base_location`, you can configure `base_location` with the model configuration fields `base_location_root` and `base_location_subpath`. 
 
 - If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
 - If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
@@ -158,7 +158,7 @@ BigQuery's DDL for creating iceberg tables requires that a fully qualified stora
 
 <BaseLocationEnvIsolation />
 
-dbt also allows users to completely override the storage_uri with the model configuration field `storage_uri`. This overrides both the catalog integration path and the other model configuration fields to supply the entire `storage_uri` path directly.
+You can also completely override the `storage_uri` with the model configuration field `storage_uri`. This overrides both the catalog integration path and the other model configuration fields to supply the entire `storage_uri` path directly.
 
 An example model with a customized `base_location`:
 
@@ -185,9 +185,9 @@ select * from {{ ref('jaffle_shop_customers') }}
 
 <VersionBlock firstVersion="2.0">
 
-BigQuery's DDL for creating iceberg tables requires that a fully qualified storage_uri be provided, including the object path. Once the user has provided the bucket name as the `external_volume` in the catalog integration, dbt will manage the storage_uri input. The default behavior in dbt is to provide an object path, referred to in dbt as the `base_location`, in the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.  We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure `base_location` through configuring `adapter_properties`.
+BigQuery's DDL for creating iceberg tables requires that a fully qualified storage_uri be provided, including the object path. Once the user has provided the bucket name as the `external_volume` in the catalog integration, dbt will manage the storage_uri input. The default behavior in dbt is to provide an object path, referred to in dbt as the `base_location`, in the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.  We recommend using the default behavior, but if you need to customize the resulting `base_location`, you can configure `base_location` through `adapter_properties`.
 
-The available adapter properties for configuration are `base_location_root`, `base_location_subpath`, and `storage_uri`. `base_location_subpath` and `storage_uri` are only accepted in model configurations (see [Adapter Properties](#adapter-properties)).
+The available adapter properties for configuration are `base_location_root`, `base_location_subpath`, and `storage_uri`. `base_location_subpath` and `storage_uri` are only accepted in model configurations (see [Adapter properties](#adapter-properties)).
 
 - If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
 - If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
@@ -196,7 +196,7 @@ The available adapter properties for configuration are `base_location_root`, `ba
 
 <BaseLocationEnvIsolation />
 
-dbt also allows users to completely override the storage_uri with the adapter property `storage_uri`. This overrides both the catalog integration path and any `base_location` overrides to supply the entire `storage_uri` path directly.
+You can also completely override the `storage_uri` with the adapter property `storage_uri`. This overrides both the catalog integration path and any `base_location` overrides to supply the entire `storage_uri` path directly.
 
 #### Example configurations
 

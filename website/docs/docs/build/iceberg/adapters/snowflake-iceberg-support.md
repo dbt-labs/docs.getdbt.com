@@ -7,9 +7,9 @@ description: Understand Snowflake support for Apache Iceberg.
 
 import BaseLocationEnvIsolation from '/snippets/_base-location-env-isolation-warning.md';
 
-dbt supports materializing the table in Iceberg table format in two different ways:
+dbt supports materializing models in the Iceberg table format in two ways:
 
-- **Simplest:** The model config `table_format = 'iceberg'` will instruct dbt to materialize this model as an Iceberg table in Snowflake Horizon (managed catalog), using Snowflake-managed storage
+- **Simplest:** The model config `table_format = 'iceberg'` instructs dbt to materialize this model as an Iceberg table in Snowflake Horizon (managed catalog), using Snowflake-managed storage
 - **Extensible:** Define an Iceberg catalog in `catalogs.yml` and configure this model with `catalog_name`
 
 ## Creating Iceberg tables
@@ -59,7 +59,7 @@ For more information, check out the Snowflake reference for [`CREATE ICEBERG TAB
 
 #### Extensible: Configure `horizon` catalog
 
-First, configure a catalog () with `type: horizon` in `catalogs.yml`:
+First, configure a catalog with `type: horizon` in `catalogs.yml`:
 
 <Tabs defaultValue="new" values={[
   { label: 'New spec', value: 'new' },
@@ -119,7 +119,7 @@ Next, configure a dbt model with the name of your Horizon catalog.
 {{
     config(
         materialized='table',
-        catalog_name='catalog_horizon',
+        catalog_name='my_horizon_catalog',
         iceberg_version=3,  # available in v1.12+
     )
 }}
@@ -139,14 +139,14 @@ dbt can also template Snowflake DDL/DML for creating and updating Iceberg tables
 First, you will need to set up a catalog integration and (recommended) catalog-linked database within Snowflake. See Snowflake docs for how to [create a catalog integration](https://docs.snowflake.com/en/sql-reference/sql/create-catalog-integration) and [catalog-linked database](https://docs.snowflake.com/en/sql-reference/sql/create-database-catalog-linked).
 
 Caveats:
-- For some external catalogs (e.g. AWS Glue), table and column identifiers must use only alphanumeric characters (letters and numbers), be lowercase, and surrounded by double quotes.
+- For some external catalogs (for example, AWS Glue), table and column identifiers must use only alphanumeric characters (letters and numbers), be lowercase, and surrounded by double quotes.
 - Starting in dbt Core v1.11, dbt-snowflake supports basic table materialization on Iceberg tables registered in a Glue catalog through a catalog-linked database. Note that incremental materializations are not yet supported.
 
 After you have created the external catalog integration, you will be able to do two things:
 
 - **Query an externally managed table:** Snowflake can query Iceberg tables whose metadata lives in the external catalog. In this scenario, Snowflake is a "reader" of the external catalog. The table’s data remains in external cloud storage (AWS S3 or GCP Bucket) as defined in the catalog storage configuration. Snowflake will use the catalog integration to fetch metadata via the REST API. Snowflake then reads the data files from cloud storage.
 
-- **Write tables to the external catalog, using Snowflake compute:** You can materialize a dbt model as an Iceberg table using Snowflake's compute, and Snowflake will register and sync that table to the external catalog (e.g. AWS Glue or Databricks Unity). The dbt model will appear in that catalog, and other query engines can read its data there.
+- **Write tables to the external catalog, using Snowflake compute:** You can materialize a dbt model as an Iceberg table using Snowflake's compute, and Snowflake will register and sync that table to the external catalog (for example, AWS Glue or Databricks Unity). The dbt model appears in that catalog, and other query engines can read its data there.
 
 Now, we can configure that external catalog in `catalogs.yml`. Here is an example for an AWS Glue catalog:
 
@@ -244,12 +244,12 @@ These are the additional configurations, specific to Snowflake, that can be supp
 
 Snowflake's `CREATE ICEBERG TABLE` DDL requires that a `base_location` be provided. dbt defines this parameter on the user's behalf to streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string of the form: `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`. 
 
-We recommend using the default behavior, but if you need to customize the resulting `base_location`, dbt allows users to configure the base_location with the model configuration fields `base_location_root` and `base_location_subpath`. <VersionBlock firstVersion="2.0"> `base_location_subpath` is only accepted in model configurations. </VersionBlock>
+We recommend using the default behavior, but if you need to customize the resulting `base_location`, you can configure the `base_location` with the model configuration fields `base_location_root` and `base_location_subpath`. <VersionBlock firstVersion="2.0"> `base_location_subpath` is only accepted in model configurations. </VersionBlock>
 
 - If no inputs are provided, dbt will output for base_location `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}`
 - If base_location_root = `foo`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}`
 - If base_location_subpath = `bar`, dbt will output `{{ external_volume }}/_dbt/{{ schema }}/{{ model_name }}/bar`
-- If base_location = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
+- If base_location_root = `foo` and base_location_subpath = `bar`, dbt will output `{{ external_volume }}/foo/{{ schema }}/{{ model_name }}/bar`
 
 While you can customize paths with `base_location_root` and `base_location_subpath`, we don't recommend you rely on these for environment isolation (such as separating development and production environments). These configuration values can be easily modified by anyone with repository access. For true environment isolation, use separate `EXTERNAL VOLUME`s with infrastructure-level access controls.
 
@@ -262,7 +262,7 @@ An example model with a customized `base_location`:
 {{
     config(
         materialized='table',
-        catalog_name='catalog_horizon',
+        catalog_name='my_horizon_catalog',
         base_location_root='foo',
         base_location_subpath='bar',
 
