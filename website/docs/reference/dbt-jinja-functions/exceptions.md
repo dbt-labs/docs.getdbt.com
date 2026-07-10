@@ -33,7 +33,6 @@ __Example usage__:
 
 The `exceptions.raise_database_error` method raises a database-style error from Jinja. Use this method in custom macros when you need to fail with an error formatted like a database error.
 
-The run fails with a `Database Error` and your custom message.
 
 __Example usage__:
 
