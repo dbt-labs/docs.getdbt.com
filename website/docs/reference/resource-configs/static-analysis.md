@@ -202,6 +202,21 @@ dbt run --static-analysis baseline # use baseline analysis for all models
 
 See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
 
+## Set a project-wide default
+
+Rather than setting `+static_analysis` on each resource type in `dbt_project.yml`, you can set a single project-wide default in the [`flags`](/reference/global-configs/about-global-configs) block:
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  default_static_analysis_level: strict # PLACEHOLDER: final flag name is not yet confirmed
+```
+
+</File>
+
+This changes the default level for resources that don't set `static_analysis` explicitly. It doesn't override configs you've set on individual resources or resource types. For the full precedence order, refer to [Set a project-wide default in `flags`](/reference/global-configs/static-analysis-flag#set-a-project-wide-default-in-flags).
+
 ## Examples
 
 The following examples show how to disable or configure `static_analysis` for different scenarios:

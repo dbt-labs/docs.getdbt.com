@@ -31,6 +31,67 @@ dbt run --static-analysis off
 
 </File>
 
+## Set a project-wide default in `flags`
+
+You can set a project-wide default for static analysis in the [`flags`](/reference/global-configs/about-global-configs) block of your `dbt_project.yml`. This lets you raise (or lower) the default level for every resource type at once, without setting `+static_analysis` on each resource type individually.
+
+<File name='dbt_project.yml'>
+
+```yml
+flags:
+  default_static_analysis_level: strict # PLACEHOLDER: final flag name is not yet confirmed
+```
+
+</File>
+
+This flag only changes the default that <Constant name="fusion" /> applies to resources that don't have `static_analysis` set explicitly. It _doesn't_ override a `static_analysis` config you've set on an individual resource or on a resource type in `dbt_project.yml`. In other words, it's equivalent to setting `+static_analysis` for every resource type, while still respecting any explicit config you've already defined:
+
+<File name='dbt_project.yml'>
+
+```yml
+# Setting the flag once…
+flags:
+  default_static_analysis_level: strict
+
+# …is roughly equivalent to setting +static_analysis on every resource type:
+models:
+  +static_analysis: strict
+seeds:
+  +static_analysis: strict
+snapshots:
+  +static_analysis: strict
+data_tests:
+  +static_analysis: strict
+unit_tests:
+  +static_analysis: strict
+sources:
+  +static_analysis: strict
+analyses:
+  +static_analysis: strict
+```
+
+</File>
+
+### Precedence
+
+<!-- PLACEHOLDER: confirm final ordering with engineering, including exactly how the CLI flag interacts (it changes the default for unset values rather than clobbering explicit configs). -->
+
+<Constant name="fusion" /> resolves the static analysis level for each resource from most specific to least specific:
+
+1. The `--static-analysis` CLI flag, which changes the default for resources that don't have an explicit config rather than overriding configs you've already set.
+2. A `static_analysis` config set on the individual resource (for example, in a `config()` block or the resource's YAML).
+3. A `static_analysis` config set for that resource type in `dbt_project.yml` (for example, under `models:`).
+4. The `flags.default_static_analysis_level` project flag.
+5. The built-in default (`baseline`).
+
+:::info Backward compatibility
+
+<!-- PLACEHOLDER: confirm the migration/deprecation plan. The existing `--static-analysis` CLI flag and the node-level `static_analysis` config are unchanged and continue to work. A behavior change flag to migrate users to the new flag name may be added later. -->
+
+The existing `--static-analysis` CLI flag and the [node-level `static_analysis` config](/reference/resource-configs/static-analysis) continue to work as before. This flag is additive. If you don't set it, your project behaves exactly as it does today.
+
+:::
+
 ## Related docs
 
 Also check out the model-level [`static_analysis` (resource config)](/reference/resource-configs/static-analysis) and [About flags](/reference/global-configs/about-global-configs) pages for more details.

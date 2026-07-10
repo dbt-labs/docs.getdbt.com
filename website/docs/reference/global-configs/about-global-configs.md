@@ -119,6 +119,7 @@ Use this table to compare all available flags and how to configure them across i
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |
 | [debug](/reference/global-configs/logs#debug-level-logging) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_DEBUG` | `--debug` <br /> `--no-debug` |
+| [default_static_analysis_level](/reference/global-configs/static-analysis-flag#set-a-project-wide-default-in-flags) 🚧 | ❌ | enum <br /> default: baseline | ✅ | `DBT_ENGINE_DEFAULT_STATIC_ANALYSIS_LEVEL` <br /> _(PLACEHOLDER: name not yet confirmed)_ | ❌ |
 | [defer](/reference/node-selection/defer) | ✅ (default) | boolean <br /> default: False | ❌ | `DBT_ENGINE_DEFER` | `--defer` <br /> `--no-defer` |
 | [defer_state](/reference/node-selection/defer) | ❌ | path <br /> default: None | ❌ | `DBT_ENGINE_DEFER_STATE` | `--defer-state` |
 | [favor_state](/reference/node-selection/defer#favor-state) | ✅ | boolean <br /> default: False | ❌ | `DBT_ENGINE_FAVOR_STATE` | `--favor-state` <br /> `--no-favor-state` |
