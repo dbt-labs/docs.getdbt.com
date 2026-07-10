@@ -35,7 +35,8 @@ Both experiences are controlled by a single AI toggle in **Account settings**.
 - Development environment is on a supported [release track](/docs/dbt-versions/dbt-release-tracks) to receive ongoing updates.
 - Opt-in to AI features by following the steps in the next section in your **Account settings**.
 - Use a supported AI provider
-  <Expandable alt_header="See the full list of supported AI providers">
+
+<Expandable alt_header="See the full list of supported AI providers">
 
   <WizardSupportedProviders />
 
@@ -49,7 +50,7 @@ Both experiences are controlled by a single AI toggle in **Account settings**.
 
   Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported for dbt Copilot.
 
-  </Expandable>
+</Expandable>
 
 ## Enable AI features
 
