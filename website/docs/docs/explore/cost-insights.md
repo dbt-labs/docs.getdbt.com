@@ -61,7 +61,7 @@ The following sections explain how costs are calculated for each supported wareh
 
 <Expandable alt_header="Snowflake">
 
-dbt computes Snowflake query costs using Snowflake's query attribution data and your credit price (`price_per_credit`). dbt pulls the `per_credit` price directly from Snowflake when available; otherwise, dbt uses the configured or default value in the <Constant name="dbt_platform" />. For more information about configuring or viewing these values, see [Configure Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
+dbt computes Snowflake query costs using Snowflake's query attribution data and your credit price (`price_per_credit`). dbt pulls the `price_per_credit` value directly from Snowflake when available; otherwise, dbt uses the configured or default value in the <Constant name="dbt_platform" />. For more information about configuring or viewing these values, see [Configure Cost Insights settings](/docs/explore/set-up-cost-insights#configure-cost-insights-settings-optional).
 
 Formula:
 ```
