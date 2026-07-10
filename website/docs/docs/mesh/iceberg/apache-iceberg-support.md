@@ -20,15 +20,15 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
 <div className="grid--4-col">
 
 <Card
-    title="Using dbt + Iceberg Catalogs"
-    body="dbt support for Apache Iceberg"
+    title="Iceberg Catalogs"
+    body="About Iceberg catalogs"
     link="/docs/mesh/iceberg/about-catalogs"
     icon="dbt-icon"/>
 
 <Card
-    title="Using catalogs.yml"
-    body="dbt support for Apache Iceberg"
-    link="/docs/mesh/iceberg/about-catalogs"
+    title="Using table_format + catalogs.yml"
+    body="dbt support for Iceberg + catalogs"
+    link="/docs/mesh/iceberg/catalogs-yml"
     icon="dbt-icon"/>
 
 <Card

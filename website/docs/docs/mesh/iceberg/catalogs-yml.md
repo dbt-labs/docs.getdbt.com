@@ -5,13 +5,42 @@ sidebar_label: "Using catalogs.yml"
 description: Understand how Iceberg catalogs fit into your dbt Mesh configurations.
 ---
 
-dbt defines `catalogs` in a single top-level file, `catalogs.yml`, that lives in the root of your project directory.
+Now that you understand [what an Iceberg catalog is](/docs/mesh/iceberg/about-catalogs), let's talk about how to use them within dbt.
+
+## Getting started: Managed catalogs
+
+Several data platforms offer their own "managed" catalogs that support the Iceberg table format out-of-the-box. These include Snowflake Horizon, Databricks Unity, AWS Glue (for Athena + Redshift), and BigLake (for BigQuery).
+
+If you are using dbt with a data platform that offers a managed Iceberg catalog, then the simplest way to materialize your first dbt model as an Iceberg table is by simply setting the `table_format` configuration:
+
+<File name="models/hello_iceberg.sql>
+
+```
+{{ config(table_format = 'iceberg) }}
+
+select 'hello_iceberg' as message
+```
+
+</File>
+
+That's it. This model will be materialized as an Iceberg table, with all the default configurations for this adapter, and stored in the default (managed) catalog offered by this data platform. Congratulations, you're using Iceberg!
+
+_Note: Most open source query engines, including DuckDB and Apache Spark, can operate well with external catalogs, but they don't come with a "managed" catalog. Instead, their default behavior for materializing Iceberg tables is to write parquet files + Iceberg metadata to the local filesystem (wherever the query engine is running)._
+
+## Next step: Using catalogs
+
+You should start using `catalogs` when:
+- You want a single place to define custom configurations for how dbt should materialize Iceberg tables
+- You want to write to multiple catalogs ("external" as well as built-in / managed)
+- You want to access the same catalog across multiple data platforms / dbt projects
+
+dbt defines `catalogs` in a single top-level file, `catalogs.yml`, that lives in the root of your project directory. We first introduced `catalogs.yml` in dbt Core v1.10; starting in dbt Core v1.12, we have introduced a new simpler spec (recommended) behind an opt-in behavior flag.
 
 ### New spec (recommended)
 
-Available in dbt Core v1.12+ (including dbt Core v2 and Fusion). See GitHub discussion [dbt-core#12723](https://github.com/dbt-labs/dbt-core/discussions/12723) for an explanation of the motivations behind the new spec, and an overview of what's changed.
+_Available in dbt Core v1.12+ (including dbt Core v2 and Fusion). See GitHub discussion [dbt-core#12723](https://github.com/dbt-labs/dbt-core/discussions/12723) for an explanation of the motivations behind the new spec, and an overview of what's changed._
 
-To use the new spec, set this behavior flag:
+To use the new spec, first set this behavior flag:
 
 <File name='dbt_project.yml'>
 
@@ -22,11 +51,11 @@ flags:
 
 </File>
 
-Each entry in `catalogs` refers to a specific "catalog" (top-level namespace, often called "database" in dbt) containing Iceberg tables, which can be read from (and potentially written to) by multiple data platforms.
+Each entry in `catalogs` refers to a specific catalog containing Iceberg tables. Each catalog **should** map to a top-level logical namespace (often called "database" in dbt). Each catalog may be managed or external for this data platform. Each catalog may be accessed (read from and written to) by one or multiple data platforms.
 
-For this reason, each catalog's configuration is nested under `<adapter>` keys (`snowflake:`, `databricks:`, etc). If you run the same dbt project, with the same `catalogs.yml`, using different adapters, dbt will always use the catalog configuration for the current active adapter.
+For this reason, each catalog's adapter-specific configuration is nested under `<adapter>` keys (`snowflake:`, `databricks:`, etc). If you run the same dbt project, with the same `catalogs.yml`, using different adapters, dbt will always use the catalog configuration for the current active adapter.
 
-That said, one "catalog" should always point to the same actual data (Iceberg catalog), regardless of whether that catalog is external to or managed by the current active adapter.
+That said, one "catalog" **must** always point to the same actual data (Iceberg tables in object storage), regardless of whether that catalog is external to or managed by the current active adapter.
 
 <VersionBlock firstVersion="1.12">
 
@@ -35,17 +64,30 @@ That said, one "catalog" should always point to the same actual data (Iceberg ca
 ```yml
 catalogs:
   - name: my_iceberg_catalog
-    type: iceberg_rest | horizon | unity | ...
-    table_format: iceberg  # optional
+    type: <catalog_type>   # see below
+    table_format: iceberg  # default, optional
     config:
       <adapter>:
         # Configuration for a specific adapter to integrate with this catalog.
-        # See available configs for each adapter.
+        # See available configs for each adapter + catalog combination.
 ```
 
 </File>
 
 </VersionBlock>
+
+#### Catalog types
+
+| catalog `type`    | default for | supported by                  | Notes                                                                                         |
+|-------------------|-------------|-------------------------------|-----------------------------------------------------------------------------------------------|
+| horizon           | snowflake   | snowflake, duckdb             |                                                                                               |
+| glue              | athena      | athena, snowflake, duckdb     |                                                                                               |
+| biglake_metastore | bigquery    | snowflake, duckdb             |                                                                                               |
+| unity             | databricks  | databricks, snowflake, duckdb | Supports Iceberg (native), Delta, "Uniform" formats                                           |
+| hive_metastore    |             | databricks                    | Supports Hudi format, in addition to Iceberg + Delta                                          |
+| ducklake          |             | duckdb                        |                                                                                               |
+| local_filesystem  |             | duckdb                        |                                                                                               |
+| iceberg_rest      |             | snowflake, duckdb             | In theory, this option can support any catalog that implements an Iceberg-compatible REST API |
 
 #### Config inheritance
 

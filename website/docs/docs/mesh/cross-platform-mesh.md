@@ -12,12 +12,13 @@ This means that you can materialize a dbt model in your `databricks_project` to 
 The requirement is an automated service for linking or syncing metadata across your Iceberg catalog and connected data platforms. These include [Snowflake catalog-linked databases](https://docs.snowflake.com/en/sql-reference/sql/create-database-catalog-linked), [Databricks catalog federation](https://docs.databricks.com/aws/en/query-federation/catalog-federation), [AWS Glue catalog federation](https://docs.aws.amazon.com/lake-formation/latest/dg/catalog-federation.html), and [GCP Lakehouse runtime catalog](https://docs.cloud.google.com/lakehouse/docs/about-lakehouse-catalogs).
 
 Supported cross-platform combinations include:
-- [Snowflake <> Databricks via Unity catalog](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest-unity)
-- [Snowflake <> Athena via Glue catalog](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest-glue)
-- [Snowflake <> DuckDB via Horizon catalog](https://roundup.getdbt.com/p/a-catalog-is-all-you-need)
-- [Snowflake <> BigQuery via BigLake catalog](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest-biglake)
+- Snowflake ↔ Databricks via Unity catalog ([Snowflake docs](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest-unity), [tutorial](https://docs.snowflake.com/en/user-guide/tutorials/tables-iceberg-set-up-bidirectional-access-to-unity-catalog))
+- Snowflake ↔ Athena via Glue catalog ([Snowflake docs](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest-glue))
+- Snowflake ↔ BigQuery via BigLake catalog ([Snowflake docs](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest-biglake))
+- Snowflake ↔ DuckDB via Horizon catalog ([example](https://github.com/dataders/dbt_aws_cloud_cost))
+- Databricks ↔ DuckDB via Unity catalog ([example](https://github.com/dataders/dbt_aws_cloud_cost))
 
-## Full example: Snowflake <> Databricks via Unity catalog
+## Full example: Snowflake ↔ Databricks via Unity catalog
 
 Let's imagine two "mesh" projects, [`jaffle_finance`](https://github.com/dbt-labs/jaffle-shop-mesh-finance) and [`jaffle_marketing`](https://github.com/dbt-labs/jaffle-shop-mesh-marketing), with a cross-project dependency `jaffle_finance -> jaffle_marketing`.
 
@@ -51,7 +52,7 @@ catalogs:
         catalog_database: snowflake_cld__finance_db
 
 # jaffle_marketing/dbt_project.yml
-# Unfortunately, Snowflake CLD <> Unity catalog requires quoted lowercase schemas + table identifiers
+# Unfortunately, Snowflake CLD ↔ Unity catalog requires quoted lowercase schemas + table identifiers
 quoting:
   schema: true
   identifier: true
