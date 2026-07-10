@@ -18,7 +18,7 @@ If you are using dbt with a data platform that offers a managed Iceberg catalog,
 ```sql
 {{ config(
   materialized = 'table',
-  table_format = 'iceberg
+  table_format = 'iceberg'
 ) }}
 
 select 'hello_iceberg' as message
@@ -26,7 +26,7 @@ select 'hello_iceberg' as message
 
 </File>
 
-That's it. This model will be materialized as an Iceberg table, with all the default configurations for this adapter, and stored in the default (managed) catalog offered by this data platform. Congratulations, you're using Iceberg!
+That's it. This model will be materialized as an Iceberg table, with all the default configurations for this adapter, and stored in the default (managed) catalog offered by this data platform. You can now connect to that catalog using another engine (such as DuckDB) to read this table. Congratulations, you're using Iceberg!
 
 _Note: Most open source query engines, including DuckDB and Apache Spark, can operate well with external catalogs, but they don't come with a "managed" catalog. Instead, their default behavior for materializing Iceberg tables is to write parquet files + Iceberg metadata to the local filesystem (wherever the query engine is running)._
 
