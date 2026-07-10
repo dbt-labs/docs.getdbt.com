@@ -67,7 +67,7 @@ First, configure a catalog () with `type: horizon` in `catalogs.yml`:
 ]}>
 <TabItem value="new">
 
-<File name="catalogs.yml">
+<File name='catalogs.yml'>
 
 ```yaml
 
@@ -82,11 +82,13 @@ catalogs:
         iceberg_version: 3  # available in v1.12+
 ```
 
-</Tab>
+</File>
+
+</TabItem>
 
 <TabItem value="old">
 
-<File name="catalogs.yml">
+<File name='catalogs.yml'>
 
 ```yml
 catalogs:
@@ -102,7 +104,7 @@ catalogs:
           iceberg_version: 3  # available in v1.12+
 ```
 
-</Tab>
+</File>
 
 </TabItem>
 
@@ -110,7 +112,7 @@ catalogs:
 
 Next, configure a dbt model with the name of your Horizon catalog.
 
-<File name="models/my_iceberg_model.sql>
+<File name='models/my_iceberg_model.sql'>
 
 ```sql
 
@@ -154,7 +156,7 @@ Now, we can configure that external catalog in `catalogs.yml`. Here is an exampl
 ]}>
 <TabItem value="new">
 
-<File name="catalogs.yml">
+<File name='catalogs.yml'>
 
 ```yaml
 
@@ -167,11 +169,13 @@ catalogs:
         catalog_database: catalog_linked_db_glue  # name of catalog-linked database in Snowflake
 ```
 
-</Tab>
+</File>
+
+</TabItem>
 
 <TabItem value="old">
 
-<File name="catalogs.yml">
+<File name='catalogs.yml'>
 
 ```yml
 catalogs:
@@ -186,7 +190,11 @@ catalogs:
           catalog_linked_database_type: glue
 ```
 
-</Tab>
+</File>
+
+</TabItem>
+
+</Tabs>
 
 ## Snowflake-specific configs for Iceberg catalogs
 
@@ -194,7 +202,6 @@ These are the additional configurations, specific to Snowflake, that can be supp
 
 #### Snowflake-managed (Horizon)
 
-<VersionBlock firstVersion="1.12">
 | Field | Required | Accepted values |
 | --- | --- | --- |
 | `change_tracking` | Optional | `True` or `False`    |

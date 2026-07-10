@@ -34,7 +34,7 @@ For more information on how to enable the flag, related behaviors, and parser er
 
 ### New Iceberg `catalogs` spec
 
-We reworked the [`catalogs.yml` spec](/docs/mesh/catalogs-yml) to make it simpler to use, and to bring it up to speed with latest developments in Iceberg support among ecosystem vendors.
+We reworked the [`catalogs.yml` spec](/docs/mesh/iceberg/catalogs-yml) to make it simpler to use, and to bring it up to speed with latest developments in Iceberg support among ecosystem vendors.
 
 The new spec can also power [cross-platform dbt Mesh](/docs/mesh/cross-platform-mesh).
 

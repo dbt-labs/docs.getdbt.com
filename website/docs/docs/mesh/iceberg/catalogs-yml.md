@@ -13,10 +13,13 @@ Several data platforms offer their own "managed" catalogs that support the Icebe
 
 If you are using dbt with a data platform that offers a managed Iceberg catalog, then the simplest way to materialize your first dbt model as an Iceberg table is by simply setting the `table_format` configuration:
 
-<File name="models/hello_iceberg.sql>
+<File name='models/hello_iceberg.sql'>
 
-```
-{{ config(table_format = 'iceberg) }}
+```sql
+{{ config(
+  materialized = 'table',
+  table_format = 'iceberg
+) }}
 
 select 'hello_iceberg' as message
 ```
@@ -82,7 +85,7 @@ catalogs:
 |-------------------|-------------|-------------------------------|-----------------------------------------------------------------------------------------------|
 | horizon           | snowflake   | snowflake, duckdb             |                                                                                               |
 | glue              | athena      | athena, snowflake, duckdb     |                                                                                               |
-| biglake_metastore | bigquery    | snowflake, duckdb             |                                                                                               |
+| biglake_metastore | bigquery    | bigquery, snowflake           |                                                                                               |
 | unity             | databricks  | databricks, snowflake, duckdb | Supports Iceberg (native), Delta, "Uniform" formats                                           |
 | hive_metastore    |             | databricks                    | Supports Hudi format, in addition to Iceberg + Delta                                          |
 | ducklake          |             | duckdb                        |                                                                                               |
@@ -95,7 +98,7 @@ Configurations defined in [`catalogs.yml`](https://docs.getdbt.com/reference/mod
 
 For example, we set a default `base_location_root` for all models in the `finance_db` catalog:
 
-<File name="catalogs.yml>
+<File name='catalogs.yml'>
 
 ```yml
 catalogs:
@@ -106,9 +109,11 @@ catalogs:
         base_location_root: 's3://my-bucket/finance_db'
 ```
 
+</File>
+
 But then we override that config for one particular model:
 
-<File name="models/finance/my_special_model.sql">
+<File name='models/finance/my_special_model.sql'>
 
 ```sql
 {{ config(
@@ -133,7 +138,9 @@ If you do not specify a `catalog_database`, then dbt will materialize models bas
 
 ### Old spec
 
-Available in dbt Core v1.10+
+_Available in dbt Core v1.10+_
+
+Each catalog configures one or more `write_integrations`, and then specifies an "active" write integration to use for the current invocation / data warehouse.
 
 <File name='catalogs.yml'>
 

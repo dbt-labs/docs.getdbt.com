@@ -49,8 +49,6 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
     link="/docs/mesh/iceberg/databricks-iceberg-support"
     icon="databricks"/>
 
-</div>
-
 <Card
     title="DuckDB + Iceberg"
     body="DuckDB Iceberg Configurations"
