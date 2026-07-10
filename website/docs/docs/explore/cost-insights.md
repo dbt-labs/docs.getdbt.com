@@ -77,7 +77,7 @@ dbt attributes Snowflake costs at the query level using the `QUERY_ATTRIBUTION_H
 
 - **Short-running queries**: Snowflake doesn't attribute per-query cost to queries that run in roughly 100 milliseconds or less.
 - **Adaptive Warehouses**: Queries run on Snowflake Adaptive Warehouses aren't included in `QUERY_ATTRIBUTION_HISTORY`.
-- **Non-execution costs**: Attribution covers warehouse execution credits only. It excludes warehouse idle time, data transfer, storage, serverless features, and AI-service costs.
+- **Non-execution costs**: Attribution covers credits Snowflake can tie to individual queries. It excludes warehouse idle time, data transfer, storage, and other costs that aren't attributable per query (for example, some serverless features and AI service costs).
 - **Data latency**: Snowflake can take several hours to populate attribution data, so very recent activity may be incomplete.
 
 As a result, Cost Insights totals can be _lower_ than the compute spend shown in your Snowflake billing dashboards. For more information, see the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/account-usage/query_attribution_history#usage-notes).
