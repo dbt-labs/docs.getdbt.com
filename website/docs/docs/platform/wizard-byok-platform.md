@@ -4,6 +4,7 @@ sidebar_label: "BYOK configuration"
 description: "Bring your own API key to use dbt Wizard and dbt Copilot in dbt platform. Supports OpenAI, Azure AI Foundry, and Anthropic."
 ---
 
+import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';
 import WizardConfigureAiProvider from '/snippets/_wizard-configure-ai-provider.md';
 import WizardPlatformPreviewDisclaimer from '/snippets/_wizard-platform-preview-disclaimer.md';
 
@@ -20,7 +21,7 @@ When you configure a provider with your own key, usage costs appear on your prov
 - A [<Constant name="dbt_platform" /> account](https://www.getdbt.com/pricing) on Starter, Enterprise, or Enterprise+ plans
 - <Constant name="dbt" /> admin permissions to enable AI features and configure providers in **Account settings**
 - AI features enabled for your account &mdash; refer to [Enable AI in dbt platform](/docs/platform/enable-dbt-ai#enable-ai-features)
-- An API key or credentials for you supported AI provider
+- An API key or credentials for your supported AI provider
   <Expandable alt_header="See the full list of supported AI providers">
 
   <WizardSupportedProviders />
