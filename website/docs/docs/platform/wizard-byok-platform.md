@@ -22,21 +22,21 @@ When you configure a provider with your own key, usage costs appear on your prov
 - <Constant name="dbt" /> admin permissions to enable AI features and configure providers in **Account settings**
 - AI features enabled for your account &mdash; refer to [Enable AI in dbt platform](/docs/platform/enable-dbt-ai#enable-ai-features)
 - An API key or credentials for your supported AI provider
-  <Expandable alt_header="See the full list of supported AI providers">
+<Expandable alt_header="See the full list of supported AI providers">
 
-  <WizardSupportedProviders />
+<WizardSupportedProviders />
 
-  #### dbt Copilot
+#### dbt Copilot
 
-  dbt Copilot supports different AI providers, including bring your own key (BYOK) for Enterprise and Enterprise+ plans:
+dbt Copilot supports different AI providers, including bring your own key (BYOK) for Enterprise and Enterprise+ plans:
 
-  - dbt Labs-<Term id="managed" /> OpenAI API key
-  - BYOK OpenAI API key
-  - BYOK Azure OpenAI API key
+- dbt Labs-<Term id="managed" /> OpenAI API key
+- BYOK OpenAI API key
+- BYOK Azure OpenAI API key
 
-  Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported for dbt Copilot.
+Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported for dbt Copilot.
 
-  </Expandable>
+</Expandable>
 
 ## Configure AI provider
 
