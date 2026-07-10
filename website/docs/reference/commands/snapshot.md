@@ -21,6 +21,7 @@ Use `--select` or `--exclude` to choose which snapshots run. For selection synta
 
 Use `--vars` when your snapshot SQL references values with the `var()` function. For syntax, precedence, and more examples, refer to [Defining variables on the command line](/docs/build/project-variables#defining-variables-on-the-command-line).
 
+```shell
 dbt snapshot --select my_snapshot --vars '{"cutoff_date": "2026-01-01"}'
 ```
 
