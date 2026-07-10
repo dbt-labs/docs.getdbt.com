@@ -64,7 +64,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
   Documentation for new features and functionality announced at Coalesce 2024:
 
-  - Iceberg table support for [Snowflake](/reference/resource-configs/snowflake-configs#iceberg-table-format)
+  - Iceberg table support for [Snowflake](/reference/resource-configs/snowflake-configs/iceberg-table-format)
   - [Athena](/reference/resource-configs/athena-configs) and [Teradata](/reference/resource-configs/teradata-configs) adapter support in dbt Cloud
   - dbt Cloud now hosted on [Azure](/docs/platform/about-platform/access-regions-ip-addresses)
   - Get comfortable with [dbt Cloud Release Tracks](/docs/dbt-versions/dbt-release-tracks) that keep your project up-to-date, automatically — on a cadence appropriate for your team

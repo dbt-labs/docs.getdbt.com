@@ -837,7 +837,7 @@ my-profile:
 
 If your organization has set up BigQuery Reservations, you may specify `reservation` for dbt to use for query execution.
 
-This applies to all jobs for the target. To override it for a specific model or set of models, use the [`reservation` model config](/reference/resource-configs/bigquery-configs#using-reservations).
+This applies to all jobs for the target. To override it for a specific model or set of models, use the [`reservation` model config](/reference/resource-configs/bigquery-configs/using-reservations).
 
 ```yaml
 my-profile:

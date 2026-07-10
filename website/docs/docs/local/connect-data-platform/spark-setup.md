@@ -388,7 +388,7 @@ Most <Constant name="core" /> functionality is supported, but some features are 
 on Delta Lake (Databricks).
 
 Delta-only features:
-1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/spark-configs#the-merge-strategy))
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/spark-configs/incremental-models#the-merge-strategy))
 2. [Snapshots](/docs/build/snapshots)
 3. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments
 

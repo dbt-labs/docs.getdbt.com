@@ -54,7 +54,7 @@ For more detailed information and to ask any questions, please visit [<Constant 
 ### Advanced configurations for incremental models
 
 - [**`incremental_predicates`** config](/docs/build/incremental-strategy#about-incremental_predicates) is now supported on the most popular adapters, enabling greater flexibility when tuning performance in `merge` and `delete` statements against large datasets.
-- **BigQuery:** The `insert_overwrite` incremental strategy supports a new (old) mechanism, [`time_ingestion_partitioning`](/reference/resource-configs/bigquery-configs#partitioning-by-an-ingestion-date-or-timestamp) + [`copy_partitions`](#copying-ingestion-time-partitions), that can yield significant savings in cost + time for large datasets.
+- **BigQuery:** The `insert_overwrite` incremental strategy supports a new (old) mechanism, [`time_ingestion_partitioning`](/reference/resource-configs/bigquery-configs/using-table-partitioning-and-clustering#partitioning-by-an-ingestion-date-or-timestamp) + [`copy_partitions`](#copying-ingestion-time-partitions), that can yield significant savings in cost + time for large datasets.
 
 ### Updates to Python models
 

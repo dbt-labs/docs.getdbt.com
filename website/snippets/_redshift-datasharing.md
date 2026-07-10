@@ -51,4 +51,4 @@ The following limitations apply when using `datasharing`:
 - Source freshness checks can have a lag of up to 5 minutes.
 - Metadata queries are limited to 10,000 rows. If a database has more than 10,000 schemas, or a schema has more than 10,000 tables, dbt runs can result in unexpected scenarios.
 - Cross-database writes require the `SNAPSHOT` transaction isolation level.
-- For views that reference tables in another database, define them as [late-binding views](/reference/resource-configs/redshift-configs#late-binding-views).
+- For views that reference tables in another database, define them as [late-binding views](/reference/resource-configs/redshift-configs/late-binding-views).

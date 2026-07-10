@@ -43,7 +43,7 @@ Specific transformation approaches include:
 - [Incremental models](/docs/build/incremental-models-overview) with merge or append strategies
 - [Microbatch incremental strategy](/docs/build/incremental-microbatch) for large time-series tables
 - Jobs scheduled very frequently (like every 5 minutes)
-- [Dynamic tables](/reference/resource-configs/snowflake-configs#dynamic-tables) or [materialized views](/docs/build/materializations#materialized-view) with short refresh intervals
+- [Dynamic tables](/reference/resource-configs/snowflake-configs/dynamic-tables) or [materialized views](/docs/build/materializations#materialized-view) with short refresh intervals
 
 ## Key recommendations
 

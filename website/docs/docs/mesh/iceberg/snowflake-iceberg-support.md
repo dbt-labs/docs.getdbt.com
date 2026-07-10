@@ -28,7 +28,7 @@ dbt supports creating Iceberg tables for three of the Snowflake materializations
 
 - [Table](/docs/build/materializations#table)
 - [Incremental](/docs/build/materializations#incremental)
-- [Dynamic Table](/reference/resource-configs/snowflake-configs#dynamic-tables) 
+- [Dynamic Table](/reference/resource-configs/snowflake-configs/dynamic-tables) 
 
 ## Iceberg catalogs
 
@@ -183,7 +183,7 @@ After you have created the external catalog integration, you will be able to do 
 
 ## dbt Catalog integration configurations for Snowflake
 
-The following table outlines the configuration fields required to set up a catalog integration for [Iceberg tables in Snowflake](/reference/resource-configs/snowflake-configs#iceberg-table-format).
+The following table outlines the configuration fields required to set up a catalog integration for [Iceberg tables in Snowflake](/reference/resource-configs/snowflake-configs/iceberg-table-format).
 
 | Field            | Required | Accepted values                                                                         |
 |------------------|----------|-----------------------------------------------------------------------------------------|
