@@ -45,13 +45,13 @@ To the extent possible, dbt tries to abstract away the complexity of table forma
 <Card
     title="Databricks + Iceberg"
     body="Databricks Iceberg Configurations"
-    link="/docs/build/iceberg/databricks-iceberg-support"
+    link="/docs/build/iceberg/adapters/databricks-iceberg-support"
     icon="databricks"/>
 
 <Card
     title="DuckDB + Iceberg"
     body="DuckDB Iceberg Configurations"
-    link="/docs/build/iceberg/databricks-iceberg-support"
+    link="/docs/build/iceberg/adapters/databricks-iceberg-support"
     icon="duckdb"/>
 
 </div>
