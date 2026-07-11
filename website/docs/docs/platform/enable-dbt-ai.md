@@ -81,7 +81,7 @@ Snowflake Cortex, AWS Bedrock, Azure AI Foundry, and Anthropic aren't supported 
 
 Once AI features have been [enabled](#enable-ai-features), Enterprise and Enterprise+ accounts can configure a custom AI provider. If you bring your own provider, you will incur API calls and associated charges from that provider.
 
-\* *Managed (or Managed by <Constant name="dbt" /> Labs): <Constant name="dbt" /> Labs manages the AI provider connection; no user provider key is required. Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
+\* *Managed (or Managed by <Constant name="dbt" /> Labs): <Constant name="dbt" /> Labs manages the AI provider connection; no user provider key is required. Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-13-2026) for more information.*
 
 ### dbt Wizard
 
@@ -96,7 +96,7 @@ To configure your AI provider for <Constant name="wizard" />:
 
   <TabItem value="openai" label="OpenAI">
 
-  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
+  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-13-2026) for more information.*
 
   1. Select the toggle for **<Constant name="dbt" /> Labs** to use <Constant name="dbt" /> Labs' managed* OpenAI key.
   2. Click **Save**.
@@ -146,7 +146,7 @@ To configure your AI provider for <Constant name="wizard" />:
 
   <TabItem value="anthropic" label="Anthropic">
 
-  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-1) for more information.*
+  **Managed\* by <Constant name="dbt" /> Labs** (default, no setup required). Refer to [Billing](/docs/platform/billing?version=2.0&name=Fusion#temporary-dbt-copilot-actions-bridge-through-july-13-2026) for more information.*
 
   1. Select **<Constant name="dbt" /> Labs** from the list to use <Constant name="dbt" /> Labs' managed* Anthropic key.
   2. Click **Save**.
