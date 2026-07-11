@@ -555,7 +555,7 @@ Microsoft Fabric allows you to define:
 - A `not_null` constraint, which is checked when the model builds
 - The `primary_key`, `foreign_key`, and `unique` constraints, which are recorded on the table for reference but not checked when new data is added
 
-This means:
+Be aware of the following limitations and requirements:
 
 - That `check` constraints are not supported on Microsoft Fabric. Use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` to validate custom rules instead.
 - Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints.
