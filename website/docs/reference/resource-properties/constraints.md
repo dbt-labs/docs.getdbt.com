@@ -552,12 +552,12 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 Microsoft Fabric allows you to define:
 
-- a `not_null` constraint, which is checked when the model builds
-- `primary_key`, `foreign_key`, and `unique` constraints, which are recorded on the table for reference but not checked when new data is added
+- A `not_null` constraint, which is checked when the model builds
+- The `primary_key`, `foreign_key`, and `unique` constraints, which are recorded on the table for reference but not checked when new data is added
 
-This means that:
+This means:
 
-- `check` constraints are not supported on Microsoft Fabric. Use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` to validate custom rules instead.
+- That `check` constraints are not supported on Microsoft Fabric. Use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` to validate custom rules instead.
 - Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints.
 - You must provide a `name` for each model-level constraint.
 - Columns in [snapshot](/docs/build/snapshots) source tables cannot have constraints. If a source column has a `not_null` constraint or similar rule, the snapshot may fail.
