@@ -102,7 +102,7 @@ The scheduler prevents queue clog by canceling runs that aren't needed, ensuring
 
 To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/deploy-jobs#schedule-days).
 
-## Deactivation of jobs <Lifecycle status='beta' />
+## Deactivation of jobs
 
 To reduce unnecessary resource consumption and reduce contention for run slots in your account, <Constant name="dbt" /> will deactivate a [deploy job](/docs/deploy/deploy-jobs) or a [CI job](/docs/deploy/ci-jobs) if it reaches 100 consecutive failing runs. A banner containing this message is displayed when a job is deactivated: "Job has been deactivated due to repeated run failures. To reactivate, verify the job is configured properly and run manually or reenable any trigger". When this happens, scheduled and triggered-to-run jobs will no longer be enqueued. 
 
