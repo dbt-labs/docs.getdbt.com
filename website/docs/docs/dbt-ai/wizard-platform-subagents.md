@@ -4,6 +4,7 @@ id: "wizard-platform-subagents"
 description: "Delegate work to specialized subagents in dbt Wizard in the dbt platform."
 sidebar_label: "Use subagents"
 tags: [AI, Wizard]
+unlisted: true
 ---
 
 import WizardFeedbackCallout from '/snippets/_wizard-feedback-callout.md';

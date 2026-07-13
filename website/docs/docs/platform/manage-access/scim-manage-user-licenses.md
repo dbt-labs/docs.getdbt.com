@@ -21,8 +21,8 @@ Before you enable SCIM license mapping:
 
 ## Enable SCIM license mapping
 
-To use license management using SCIM, go to your **Account settings** > **SSO & SCIM**. Under the **SCIM** section, enable **Manage user licenses with SCIM**. This setting enforces license type for a user based on their SCIM attribute and disable the license mapping and manual configuration set up in dbt.
-<Lightbox src="/img/docs/dbt-platform/access-control/scim-managed-licenses.png" width="60%" title="Enable SCIM managed user license distribution." />
+To manage user licenses with SCIM, go to **Account settings** > **SSO & SCIM**. Under the **SCIM** section, enable the **Ignore dbt license mapping** toggle. This setting enforces license type for a user based on their SCIM attribute and disables the license mapping and manual configuration set up in dbt.
+<Lightbox src="/img/docs/dbt-platform/access-control/scim-managed-licenses.png" width="90%" title="Enable SCIM managed user license distribution." />
 
 We recommend that you complete the setup instructions for your identity provider (IdP) prior to enabling this toggle in your dbt account. Once enabled, any existing license mappings in <Constant name="dbt" /> will be ignored.
 

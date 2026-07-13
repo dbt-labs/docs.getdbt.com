@@ -207,6 +207,8 @@ See [static analysis CLI flag](/reference/global-configs/static-analysis-flag).
 The following examples show how to disable or configure `static_analysis` for different scenarios:
 
 <!-- no toc -->
+- [Enable strict analysis for all your models](#enable-strict-analysis-for-all-your-models)
+- [Enable strict analysis for your models, not packages](#enable-strict-analysis-for-your-models-not-packages)
 - [Disable static analysis for all models in a package](#disable-static-analysis-for-all-models-in-a-package)
 - [Disable static analysis in YAML for a single model](#disable-static-analysis-in-yaml-for-a-single-model)
 - [Disable static analysis in SQL for a model using a custom UDF](#disable-static-analysis-in-sql-for-a-model-using-a-custom-udf)
@@ -214,7 +216,32 @@ The following examples show how to disable or configure `static_analysis` for di
 - [Configure static analysis for seeds](#configure-static-analysis-for-seeds)
 - [Configure static analysis for snapshots](#configure-static-analysis-for-snapshots)
 
+#### Enable strict analysis for all your models
+
+The recommended way to get maximum SQL validation for your entire project is to set `strict` in the top-level `models` configuration in your `dbt_project.yml`. This configuration applies strict analysis to every model in your project, so you don't need to configure each model individually:
+
+<File name='dbt_project.yml'>
+
+```yml
+name: jaffle_shop
+
+models:
+  jaffle_shop:
+    +static_analysis: strict
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+```
+
+</File>
+
+You can set individual subdirectories or models to `baseline` or `off` where needed (for example, models that use unsupported UDFs). Individual models can use less strict settings than the project-level config, but you can't set them to stricter settings. The project default is `baseline`.
+
+In this example, strict static analysis applies only to Jaffle Shop models. Installed packages keep the default `baseline` setting unless you explicitly configure them.
+
 #### Disable static analysis for all models in a package
+
 This example shows how to disable static analysis for all models in a package. The [`+` prefix](/reference/resource-configs/plus-prefix) applies the config to all models in the package.
 
 <File name='dbt_project.yml'>

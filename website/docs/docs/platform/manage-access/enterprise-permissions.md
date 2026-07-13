@@ -45,6 +45,20 @@ Notable features:
 - The default permissions assigned to the `Member` group.
 
 </Expandable>
+
+<Expandable alt_header="Account Viewer">
+The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
+
+The Account Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
+
+Notable features:
+- Account Viewer is an account-level set.
+- Read-only access to all settings, projects, environments, and runs.
+- Read-only access to audit logs, including sensitive account-level information.
+- No access to the IDE. 
+- Can access <Constant name="catalog" />
+
+</Expandable>
 <Expandable alt_header="Analyst">
 
 The Analyst permission set is designed for users who need to run and analyze dbt models in the IDE but can't create or edit anything outside the IDE. 
@@ -281,7 +295,7 @@ Notable features:
 </Expandable>
 <Expandable alt_header="Stakeholder and Read-Only">
 
-The Stakeholder and Read-Only are identical permission sets that are similar to Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
+The Stakeholder and Read-Only are identical permission sets that are similar to Account Viewer, but without access to sensitive content such as account settings, billing information, or audit logs. Useful for personas who need to monitor projects and their configurations.
 
 Notable features: 
 - Stakeholder is a project-level set.
@@ -300,19 +314,6 @@ Notable features:
 - Access to manage the project(s) for a team of users. Limited scope and access can be extended via environment permissions. 
 - Read-only access to many account settings (excluding sensitive content like billing and auth providers).
 - Can access <Constant name="catalog" />.
-
-</Expandable>
-<Expandable alt_header="Viewer">
-The Account Viewer permissions set provides read-only access to the <Constant name="dbt" /> account. Useful for any persona who needs insights into your <Constant name="dbt" /> account without access to create or change configurations.
-
-The Viewer permission set is frequently paired with the [Read-only license-type](/docs/platform/manage-access/seats-and-users).
-
-Notable features:
-- Viewer is an account-level set.
-- Read-only access to all settings, projects, environments, and runs.
-- Read-only access to audit logs, including sensitive account-level information.
-- No access to the IDE. 
-- Can access <Constant name="catalog" />
 
 </Expandable>
 

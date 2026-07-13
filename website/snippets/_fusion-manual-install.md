@@ -14,7 +14,7 @@ python -m pip install --upgrade --pre dbt
 
 </Expandable>
 
-<Expandable alt_header="CDN installation for macOS and Linux">
+<Expandable alt_header="Standalone installation for macOS and Linux">
 
 ```shell
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
@@ -38,7 +38,7 @@ dbt system update
 
 </Expandable>
 
-<Expandable alt_header="CDN installation for Windows">
+<Expandable alt_header="Standalone installation for Windows">
 
 ```powershell
 irm https://public.cdn.getdbt.com/fs/install/install.ps1 | iex
