@@ -74,11 +74,7 @@ dbt State will cast a wide net when trying to reuse objects. If Toby checks out 
 
 ## A deeper dive
 
-Let's go a bit deeper into how dbt State decides what to do with each node in the DAG. This decision tree shows how dbt State chooses whether to rebuild a node, clone it from another schema, or reuse the object already in place.
-
-<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/run-cache-decision-tree.png" width="100%" alt="Decision tree showing how dbt State chooses whether to rebuild, clone, or reuse a node based on state bypasses, volatile SQL handling, execution hashes, freshness, schema matches, clone eligibility, and whether fresh upstream data can still be cloned from time travel or another schema" title="dbt State decision tree for rebuild, clone, and reuse" />
-
-The three big questions are:
+Let's go a bit deeper into how dbt State decides what to do with each node in the DAG. The three big questions are:
 
 * Is there a logic change in the node or any of its parents?
 * Is there fresh data that exceeds the configured [`lag_tolerance`](/reference/resource-configs/lag-tolerance)?
