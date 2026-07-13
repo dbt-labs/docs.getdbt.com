@@ -17,6 +17,13 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## July 13, 2026
+
+## Behavior change
+
+### Billing
+- **Improved billing email alerts**: You’ll now receive email alerts when you’re drawing down on your consumption &mdash; whether that’s from models built or newer consumption features like dbt State.
+
 ## July 8, 2026
 
 ## Enhancements
