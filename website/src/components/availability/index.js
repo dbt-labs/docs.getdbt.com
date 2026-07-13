@@ -1,92 +1,12 @@
 import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import {
-  ENGINE_BADGE_LABELS,
   FIELD_LABELS,
-  PLAN_BADGE_LABELS,
   SURFACE_LABELS,
-  VALUE_LABELS,
+  SURFACE_TOOLTIPS,
   availabilityPresets,
+  getAccessFacets,
 } from './availabilityPresets';
-
-// Tooltip rows, in display order. Kept deliberately short: Where, Engine(s), Available
-// to, Plans, Access. "Available to" comes before "Plans" so a broader account/entitlement
-// path (for example, dbt Core via a standalone account) reads before a platform-only plan
-// restriction — otherwise readers can stop at "Plans" and assume the page is platform-only.
-// Lifecycle status is owned by the H1 <Lifecycle> pill and is never repeated here.
-const ROW_ORDER = ['surface', 'engine', 'account', 'plans', 'access'];
-
-const PLAN_FACETS = Object.values(PLAN_BADGE_LABELS);
-
-function formatValue(key, value, merged) {
-  if (value === undefined || value === null || value === '') {
-    return null;
-  }
-
-  const label = VALUE_LABELS[key]?.[value];
-  return (typeof label === 'function' ? label(merged) : label) || value;
-}
-
-function getBadgeText(facets) {
-  const filtered = facets.filter(Boolean);
-  if (!filtered.length) {
-    return null;
-  }
-
-  return `Applies to: ${filtered.join(' · ')}`;
-}
-
-function getBadgeParts(badgeText) {
-  const prefix = 'Applies to:';
-  return {
-    prefix,
-    facets: badgeText.slice(prefix.length).trim().split(' · ').filter(Boolean),
-  };
-}
-
-function isPlanFacet(facet) {
-  return PLAN_FACETS.includes(facet);
-}
-
-function buildRows(availability) {
-  return ROW_ORDER.map((key) => {
-    const formatted = formatValue(key, availability[key], availability);
-    if (!formatted) {
-      return null;
-    }
-
-    // Use the plural "Engines" label when the value covers more than one engine.
-    const labelKey =
-      key === 'engine' && ['all_engines', 'core_and_fusion'].includes(availability.engine)
-        ? 'engines'
-        : key;
-
-    return { label: FIELD_LABELS[labelKey] || key, value: formatted };
-  }).filter(Boolean);
-}
-
-// The badge is always derived from surface + plans + engine — writers never write badge text.
-function getBadgeFacets(merged) {
-  const engineFacet = ENGINE_BADGE_LABELS[merged.engine];
-
-  if (merged.preset === 'all_users') {
-    return ['All users', engineFacet];
-  }
-
-  if (merged.feature) {
-    return [merged.feature, engineFacet];
-  }
-
-  if (!merged.surface) {
-    return [];
-  }
-
-  return [
-    SURFACE_LABELS[merged.surface],
-    PLAN_BADGE_LABELS[merged.plans],
-    engineFacet,
-  ];
-}
 
 function normalizeAvailability(availability) {
   const availabilityObject =
@@ -98,21 +18,40 @@ function normalizeAvailability(availability) {
   const preset = availabilityObject.preset ? availabilityPresets[availabilityObject.preset] : null;
   const merged = { ...preset, ...availabilityObject };
 
-  // A platform page with no explicit plan tier applies to every plan.
-  if (merged.surface === 'platform' && !merged.plans) {
-    merged.plans = 'all_platform_plans';
+  let { surface, access, plans } = merged;
+
+  // A platform page with no explicit access requirement defaults to free, with a console
+  // warning — bare "dbt platform" badges can otherwise read as implicitly paid.
+  if (surface === 'platform' && !access) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Availability: surface "platform" has no access set (availability: ${JSON.stringify(
+        availabilityObject
+      )}). Defaulting access to "free".`
+    );
+    access = 'free';
   }
 
-  const badgeText = getBadgeText(getBadgeFacets(merged));
+  const accessFacets = getAccessFacets(access, plans, surface);
+  const surfaceLabel = SURFACE_LABELS[surface];
 
-  if (!badgeText) {
+  const rows = [];
+  if (surfaceLabel) {
+    rows.push({ label: FIELD_LABELS.surface, value: surfaceLabel, tooltip: SURFACE_TOOLTIPS[surface] });
+  }
+  accessFacets.forEach(({ facet, tooltip }) => {
+    rows.push({ label: FIELD_LABELS.access, value: facet, tooltip });
+  });
+
+  const badgeFacets = [surfaceLabel, ...accessFacets.map(({ facet }) => facet)].filter(Boolean);
+
+  if (!badgeFacets.length) {
     return null;
   }
 
   return {
-    badgeText,
-    badgeParts: getBadgeParts(badgeText),
-    rows: buildRows(merged),
+    badgeFacets,
+    rows,
   };
 }
 
@@ -175,6 +114,8 @@ export default function Availability({ availability }) {
     return null;
   }
 
+  const badgeText = normalized.badgeFacets.join(' · ');
+
   return (
     <span
       ref={wrapperRef}
@@ -199,7 +140,7 @@ export default function Availability({ availability }) {
       <button
         type="button"
         className={styles.availability}
-        aria-label={`${normalized.badgeText}. Show availability details`}
+        aria-label={`${badgeText}. Show availability details`}
         aria-expanded={isOpen}
         aria-describedby={isOpen ? tooltipId : undefined}
         onClick={() => {
@@ -218,18 +159,10 @@ export default function Availability({ availability }) {
         }}
       >
         <span className={styles.badgeText}>
-          {normalized.badgeParts?.prefix && (
-            <span className={styles.badgePrefix}>{normalized.badgeParts.prefix} </span>
-          )}
-          {normalized.badgeParts?.facets.map((facet, index) => (
+          {normalized.badgeFacets.map((facet, index) => (
             <React.Fragment key={`${facet}-${index}`}>
               {index > 0 && <span className={styles.badgeSeparator}> · </span>}
-              <span
-                className={isPlanFacet(facet) ? styles.planFacet : styles.badgeFacet}
-                data-availability-facet={isPlanFacet(facet) ? 'plan' : undefined}
-              >
-                {facet}
-              </span>
+              <span className={styles.badgeFacet}>{facet}</span>
             </React.Fragment>
           ))}
         </span>
@@ -239,10 +172,13 @@ export default function Availability({ availability }) {
         <span id={tooltipId} role="tooltip" className={styles.tooltip}>
           <span className={styles.tooltipTitle}>Applies to</span>
           <dl className={styles.tooltipList}>
-            {normalized.rows.map((row) => (
-              <React.Fragment key={`${row.label}-${row.value}`}>
+            {normalized.rows.map((row, index) => (
+              <React.Fragment key={`${row.label}-${row.value}-${index}`}>
                 <dt>{row.label}</dt>
-                <dd>{row.value}</dd>
+                <dd>
+                  {row.value}
+                  {row.tooltip ? <span className={styles.tooltipDescription}> — {row.tooltip}</span> : null}
+                </dd>
               </React.Fragment>
             ))}
           </dl>

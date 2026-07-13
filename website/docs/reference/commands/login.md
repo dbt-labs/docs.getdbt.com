@@ -246,7 +246,7 @@ Status: unauthenticated
 
 ### dbt license info
 
-<Constant name="fusion" /> uses local licenses to cache your logged-in state and give you access to advanced features. Run `dbt license info` as an additional check to verify the status of the license used by <Constant name="fusion" />. This is useful when an advanced feature isn't working and `dbt login status` tells you you're authenticated:
+dbt uses local licenses to cache your logged-in state and give you access to advanced features. Run `dbt license info` as an additional check to verify the status of the license used by <Constant name="fusion" />. This is useful when an advanced feature isn't working and `dbt login status` tells you you're authenticated:
 
 ```shell
 dbt license info

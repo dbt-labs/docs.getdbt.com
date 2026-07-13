@@ -6,9 +6,7 @@ sidebar_label: About the IDE
 tags: [IDE]
 pagination_next: "docs/platform/studio-ide/keyboard-shortcuts"
 pagination_prev: null
-availability:
-  preset: platform
-  engine: all_engines
+availability: platform_developer
 ---
 
 The <Constant name="dbt" /> integrated development environment (<Constant name="studio_ide" />) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 

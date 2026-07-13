@@ -1,120 +1,143 @@
-// Availability answers one question for the reader: "who is this page for?"
+// Availability answers two independent questions for the reader:
+//   surface: where does this feature live? (local | platform | everywhere/omitted)
+//   access:  what do I need to use it? (free | login_required | paid_plan | usage_based)
 //
-// Independent, reusable enums — pick one value from each that applies:
-//   preset:    which audience/surface (all_users | platform | cli | vscode_extension | dbt_state)
-//   plans:     which plan tier (only meaningful when preset: platform)
-//   engine:    which engine
-//   account:   account/entitlement gating that isn't exactly a plan (rare — most pages skip this)
-//   access:    billing/consumption model (rare — most pages skip this)
-//
-// account and access are short controlled values, not free text, so a new feature with
-// unusual gating (paid add-on, entitlement, trial) reuses an existing value instead of a
-// writer inventing a new sentence. Pricing detail still belongs in prerequisites, not here.
-//
-// The badge is composed automatically from whichever of these are set — writers never
-// write badge text, and lifecycle status stays on the H1 <Lifecycle> pill instead of
-// being duplicated here.
+// These facets are independent — either can render without the other. Badges never
+// mention an engine (Fusion, Core, OSS) — that distinction doesn't belong here.
 //
 // Example frontmatter:
+//   availability: platform_starter
+// or, for multi-plan features:
 //   availability:
-//     preset: platform
-//     plans: enterprise_and_above
-//     engine: not_engine_specific
+//     surface: platform
+//     access: paid_plan
+//     plans: [starter, enterprise, enterprise_plus]
 
 export const FIELD_LABELS = {
-  access: 'Access',
-  account: 'Available to',
-  engine: 'Engine',
-  engines: 'Engines',
-  plans: 'Plans',
   surface: 'Where',
+  access: 'Access',
 };
 
 export const SURFACE_LABELS = {
-  local_and_platform: 'Local development; dbt platform',
+  local: 'Local',
   platform: 'dbt platform',
-  cli: 'CLI',
-  vscode: 'VS Code extension',
 };
 
-// A label can be a plain string, or a function of (merged) for wording that depends on
-// another field (for example, naming the feature in an account requirement).
-export const VALUE_LABELS = {
-  account: {
-    dbt_platform_account: 'dbt platform account',
-    standalone_account: (merged) =>
-      merged.feature ? `Standalone ${merged.feature} account` : 'Standalone account',
-    platform_or_standalone: (merged) =>
-      merged.feature
-        ? `dbt platform account or standalone ${merged.feature} account`
-        : 'dbt platform account or standalone account',
-  },
-  access: {
-    included: 'Included with your plan',
-    free_registration: 'Free with registration',
-    trial_then_paid: 'Free trial, then paid',
-    paid_usage: 'Paid, usage-based',
-    paid_usage_after_trial: 'Free trial, usage-based after trial',
-    entitlement_required: 'Requires entitlement',
-    contact_sales: 'Contact sales',
-    preview_access: 'Preview access',
-  },
-  engine: {
-    all_engines: 'All engines',
-    core_python: 'dbt Core (Python)',
-    fusion: 'dbt Fusion',
-    core_and_fusion: 'dbt Core (Python) and dbt Fusion',
-    not_engine_specific: 'Not engine-specific',
-  },
-  plans: {
-    all_platform_plans: 'All dbt platform plans',
-    starter_and_above: 'Starter, Enterprise, and Enterprise+',
-    enterprise_and_above: 'Enterprise and Enterprise+',
-    enterprise_plus: 'Enterprise+ only',
-    none: 'No dbt platform plan required',
-  },
-  surface: SURFACE_LABELS,
+export const SURFACE_TOOLTIPS = {
+  local: 'Runs on your local machine (CLI or IDE extension).',
+  platform:
+    "Available in the dbt platform (web-based) — that alone doesn't mean paid. Check the Access badge.",
 };
 
-// Short forms used only in the badge (the tooltip uses the fuller VALUE_LABELS above).
-export const PLAN_BADGE_LABELS = {
-  all_platform_plans: 'All plans',
-  starter_and_above: 'Starter and above',
-  enterprise_and_above: 'Enterprise',
+export const PLAN_LABELS = {
+  developer: 'Developer',
+  starter: 'Starter',
+  enterprise: 'Enterprise',
   enterprise_plus: 'Enterprise+',
 };
 
-export const ENGINE_BADGE_LABELS = {
-  all_engines: 'All engines',
-  core_python: 'Core (Python)',
-  fusion: 'Fusion',
-  core_and_fusion: 'Core and Fusion',
-  not_engine_specific: 'Not engine-specific',
+const ACCESS_TOOLTIPS = {
+  Free: 'No dbt account or paid plan required.',
+  'Login required': 'Free, but requires a dbt account (dbt login).',
+  'Usage-based': 'Requires a dbt account; billed on usage. See pricing.',
 };
+
+function planListLabel(plans) {
+  const labels = plans.map((plan) => PLAN_LABELS[plan] || plan);
+  if (labels.length <= 1) {
+    return labels.join('');
+  }
+  return `${labels.slice(0, -1).join(', ')}, ${labels[labels.length - 1]}`;
+}
+
+function planTooltip(plans) {
+  if (plans.length === 1 && plans[0] === 'developer') {
+    return 'Available on the free Developer plan and up.';
+  }
+  return `Requires the ${planListLabel(plans)} plan.`;
+}
+
+// Returns an ordered list of { facet, tooltip } for the access badge/tooltip rows.
+export function getAccessFacets(access, plans, surface) {
+  switch (access) {
+    case 'free':
+      // Free is only rendered paired with the platform surface (rule: bare "dbt platform"
+      // badge could read as paid). Local/everywhere default to free implicitly.
+      return surface === 'platform' ? [{ facet: 'Free', tooltip: ACCESS_TOOLTIPS.Free }] : [];
+    case 'login_required':
+      return [{ facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] }];
+    case 'usage_based':
+      return [
+        { facet: 'Login required', tooltip: ACCESS_TOOLTIPS['Login required'] },
+        { facet: 'Usage-based', tooltip: ACCESS_TOOLTIPS['Usage-based'] },
+      ];
+    case 'paid_plan': {
+      const planList = plans && plans.length ? plans : [];
+      if (!planList.length) {
+        return [];
+      }
+      return [{ facet: planListLabel(planList), tooltip: planTooltip(planList) }];
+    }
+    default:
+      return [];
+  }
+}
 
 export const availabilityPresets = {
   all_users: {
-    description: 'Applies to every dbt user, regardless of surface or plan.',
+    description: 'Applies to every dbt user, regardless of surface. No badge is rendered.',
+    access: 'free',
   },
-  platform: {
-    description: 'dbt platform pages. Add `plans` to scope to a tier, otherwise it applies to all plans.',
+  platform_free: {
+    description: 'dbt platform features with no login or plan requirement.',
     surface: 'platform',
+    access: 'free',
   },
-  cli: {
-    description: 'CLI / local development pages, on any engine.',
-    surface: 'cli',
+  platform_login: {
+    description: 'dbt platform features that need a free dbt account, but no paid plan.',
+    surface: 'platform',
+    access: 'login_required',
   },
-  vscode_extension: {
-    description: 'dbt VS Code extension pages.',
-    surface: 'vscode',
+  platform_developer: {
+    description: 'dbt platform features available on the free Developer plan and up.',
+    surface: 'platform',
+    access: 'paid_plan',
+    plans: ['developer'],
   },
-  dbt_state: {
-    description:
-      'dbt State pages: cross-surface, all engines, à la carte on Starter/Enterprise+ or standalone (not Legacy Teams), usage-based after a free trial.',
-    feature: 'dbt State',
-    surface: 'local_and_platform',
-    engine: 'all_engines',
-    account: 'platform_or_standalone',
-    access: 'paid_usage_after_trial',
+  platform_starter: {
+    description: 'dbt platform features gated to the Starter plan and up.',
+    surface: 'platform',
+    access: 'paid_plan',
+    plans: ['starter'],
+  },
+  platform_enterprise: {
+    description: 'dbt platform features gated to the Enterprise plan.',
+    surface: 'platform',
+    access: 'paid_plan',
+    plans: ['enterprise'],
+  },
+  platform_enterprise_plus: {
+    description: 'dbt platform features gated to the Enterprise+ plan.',
+    surface: 'platform',
+    access: 'paid_plan',
+    plans: ['enterprise_plus'],
+  },
+  local_free: {
+    description: 'Local tools with no login required.',
+    surface: 'local',
+    access: 'free',
+  },
+  local_login: {
+    description: 'Local tools that need a free dbt account.',
+    surface: 'local',
+    access: 'login_required',
+  },
+  everywhere_login: {
+    description: 'Cross-surface features that need a free dbt account, but no paid plan.',
+    access: 'login_required',
+  },
+  everywhere_usage: {
+    description: 'Cross-surface features that need a dbt account and are billed on usage.',
+    access: 'usage_based',
   },
 };

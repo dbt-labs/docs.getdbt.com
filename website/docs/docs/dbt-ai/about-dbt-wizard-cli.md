@@ -5,9 +5,7 @@ description: "The dbt Wizard CLI helps teams ship higher-quality dbt changes fas
 sidebar_label: "About dbt Wizard CLI"
 tags: [AI, Wizard]
 image: /img/docs/wizard-cli-intro.png
-availability:
-  preset: cli
-  engine: core_and_fusion
+availability: local_login
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

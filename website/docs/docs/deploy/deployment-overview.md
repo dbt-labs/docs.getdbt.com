@@ -6,14 +6,12 @@ hide_table_of_contents: true
 tags: ["scheduler"]
 pagination_next: "docs/deploy/job-scheduler"
 pagination_prev: null
-availability:
-  preset: platform
-  engine: all_engines
+availability: platform_login
 ---
 
 <IntroText>
 
-Use <Constant name="dbt" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="dbt" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
+Use the <Constant name="dbt_platform" />'s capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [<Constant name="dbt_platform" />'s in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
 
 </IntroText>
 

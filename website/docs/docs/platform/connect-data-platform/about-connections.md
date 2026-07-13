@@ -5,9 +5,7 @@ description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
 pagination_next: "docs/platform/connect-data-platform/connect-apache-spark"
 pagination_prev: null
-availability:
-  preset: platform
-  engine: core_and_fusion
+availability: platform_login
 ---
 
 The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. Use the following matrix to see which connections are supported for <Constant name="core" /> and the <Constant name="fusion_engine" />.

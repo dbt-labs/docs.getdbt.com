@@ -42,24 +42,12 @@
   gap: 6px;
 }
 
-.badgePrefix,
 .badgeFacet {
   display: inline-flex;
 }
 
 .badgeSeparator {
   color: var(--text-neutral-quaternary);
-}
-
-.planFacet {
-  background: #FAECE7;
-  border-radius: 999px;
-  color: #993C1D;
-  display: inline-flex;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  padding: 3px 7px;
 }
 
 .infoIcon {
@@ -122,6 +110,14 @@
   min-width: 0;
 }
 
+.tooltipDescription {
+  color: var(--text-neutral-secondary);
+}
+
+:global(html[data-theme="dark"]) .tooltipDescription {
+  color: var(--text-inverse-secondary);
+}
+
 :global(html[data-theme="dark"]) .availability {
   background: var(--color-terminal-black-900);
   border-color: var(--border-inverse-tertiary);
@@ -140,11 +136,6 @@
 
 :global(html[data-theme="dark"]) .badgeSeparator {
   color: var(--text-inverse-tertiary);
-}
-
-:global(html[data-theme="dark"]) .planFacet {
-  background: #4a261b;
-  color: #ffb98c;
 }
 
 :global(html[data-theme="dark"]) .infoIcon {

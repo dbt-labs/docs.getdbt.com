@@ -4,147 +4,129 @@ import userEvent from '@testing-library/user-event';
 import Availability from './index';
 
 describe('Availability', () => {
-  it('shows the engine on the badge for all users without requiring a click', async () => {
-    const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'all_users', engine: 'all_engines' }} />);
-
-    const badge = screen.getByRole('button', { name: /applies to: all users · all engines/i });
-    expect(badge).toHaveTextContent('Applies to: All users · All engines');
-
-    await user.click(badge);
-
-    const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Engines');
-    expect(tooltip).toHaveTextContent('All engines');
+  it('renders nothing for all_users (everywhere + free)', () => {
+    const { container } = render(<Availability availability="all_users" />);
+    expect(container).toBeEmptyDOMElement();
   });
 
-  it('defaults an un-scoped platform preset to all plans', async () => {
+  it('renders "dbt platform · Free" for platform_free', async () => {
     const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'platform', engine: 'core_and_fusion' }} />);
+    render(<Availability availability="platform_free" />);
 
-    const badge = screen.getByRole('button', {
-      name: /applies to: dbt platform · all plans · core and fusion/i,
-    });
-    await user.click(badge);
-
-    const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Plans');
-    expect(tooltip).toHaveTextContent('All dbt platform plans');
-  });
-
-  it('scopes a platform preset with the separate plans field', async () => {
-    const user = userEvent.setup();
-    render(
-      <Availability
-        availability={{ preset: 'platform', plans: 'enterprise_and_above', engine: 'not_engine_specific' }}
-      />
-    );
-
-    const badge = screen.getByRole('button', {
-      name: /applies to: dbt platform · enterprise · not engine-specific/i,
-    });
-    expect(screen.getByText('Enterprise')).toHaveAttribute('data-availability-facet', 'plan');
+    const badge = screen.getByRole('button', { name: /dbt platform · free/i });
+    expect(badge).toHaveTextContent('dbt platform · Free');
 
     await user.click(badge);
-
     const tooltip = screen.getByRole('tooltip');
     expect(tooltip).toHaveTextContent('Where');
     expect(tooltip).toHaveTextContent('dbt platform');
-    expect(tooltip).toHaveTextContent('Plans');
-    expect(tooltip).toHaveTextContent('Enterprise and Enterprise+');
-    expect(tooltip).toHaveTextContent('Engine');
-    expect(tooltip).toHaveTextContent('Not engine-specific');
+    expect(tooltip).toHaveTextContent('Access');
+    expect(tooltip).toHaveTextContent('Free');
   });
 
-  it('shows the engine facet on the badge for a single-engine cli preset', async () => {
-    const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'cli', engine: 'fusion' }} />);
-
-    await user.click(screen.getByRole('button', { name: /applies to: cli · fusion/i }));
-
-    const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Where');
-    expect(tooltip).toHaveTextContent('CLI');
-    expect(tooltip).toHaveTextContent('Engine');
-    expect(tooltip).toHaveTextContent('dbt Fusion');
-  });
-
-  it('shows all_engines / not_engine_specific on the badge too, not just single engines', async () => {
-    render(<Availability availability={{ preset: 'cli', engine: 'all_engines' }} />);
-
+  it('renders "dbt platform · Login required" for platform_login', async () => {
+    render(<Availability availability="platform_login" />);
     expect(
-      screen.getByRole('button', { name: /applies to: cli · all engines/i })
+      screen.getByRole('button', { name: /dbt platform · login required/i })
     ).toBeInTheDocument();
   });
 
-  it('encodes dbt State account and billing gating from reusable enums, in one preset', async () => {
+  it('renders "dbt platform · Developer" for platform_developer', async () => {
     const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'dbt_state' }} />);
+    render(<Availability availability="platform_developer" />);
 
-    const badge = screen.getByRole('button', { name: /applies to: dbt state · all engines/i });
-    expect(badge).toHaveTextContent('Applies to: dbt State · All engines');
+    const badge = screen.getByRole('button', { name: /dbt platform · developer/i });
+    await user.click(badge);
 
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Available on the free Developer plan and up.');
+  });
+
+  it('joins multiple plans on the badge', async () => {
+    const user = userEvent.setup();
+    render(
+      <Availability
+        availability={{ surface: 'platform', access: 'paid_plan', plans: ['enterprise', 'enterprise_plus'] }}
+      />
+    );
+
+    const badge = screen.getByRole('button', { name: /dbt platform · enterprise, enterprise\+/i });
+    await user.click(badge);
+
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Requires the Enterprise, Enterprise+ plan.');
+  });
+
+  it('renders "Local" alone for local_free (free is implicit for local)', () => {
+    render(<Availability availability="local_free" />);
+    const badge = screen.getByRole('button', { name: /^local\./i });
+    expect(badge).toHaveTextContent('Local');
+    expect(badge).not.toHaveTextContent('Free');
+  });
+
+  it('renders "Local · Login required" for local_login', () => {
+    render(<Availability availability="local_login" />);
+    expect(
+      screen.getByRole('button', { name: /local · login required/i })
+    ).toBeInTheDocument();
+  });
+
+  it('renders access alone with no surface badge (everywhere_login)', () => {
+    render(<Availability availability="everywhere_login" />);
+    const badge = screen.getByRole('button', { name: /^login required\./i });
+    expect(badge).toHaveTextContent('Login required');
+    expect(badge).not.toHaveTextContent('dbt platform');
+    expect(badge).not.toHaveTextContent('Local');
+  });
+
+  it('renders "Login required · Usage-based" for everywhere_usage (dbt State case)', async () => {
+    const user = userEvent.setup();
+    render(<Availability availability="everywhere_usage" />);
+
+    const badge = screen.getByRole('button', { name: /login required · usage-based/i });
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Where');
-    expect(tooltip).toHaveTextContent('Local development; dbt platform');
-    expect(tooltip).toHaveTextContent('Engines');
-    expect(tooltip).toHaveTextContent('All engines');
-    expect(tooltip).toHaveTextContent('Available to');
-    expect(tooltip).toHaveTextContent('dbt platform account or standalone dbt State account');
-    expect(tooltip).toHaveTextContent('Access');
-    expect(tooltip).toHaveTextContent('Free trial, usage-based after trial');
-    expect(tooltip).not.toHaveTextContent('Plans');
+    expect(tooltip).toHaveTextContent('Free, but requires a dbt account (dbt login).');
+    expect(tooltip).toHaveTextContent('Requires a dbt account; billed on usage. See pricing.');
   });
 
-  it('falls back to a generic account label when no feature name is set', async () => {
+  it('never renders Fusion, Core, or OSS anywhere in badge output', async () => {
     const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'platform', account: 'platform_or_standalone' }} />);
+    render(
+      <Availability
+        availability={{ surface: 'platform', access: 'paid_plan', plans: ['starter', 'enterprise', 'enterprise_plus'] }}
+      />
+    );
 
-    await user.click(screen.getByRole('button', { name: /dbt platform · all plans/i }));
-
-    expect(screen.getByRole('tooltip')).toHaveTextContent('dbt platform account or standalone account');
-  });
-
-  it('never renders a lifecycle status row (owned by the H1 pill)', async () => {
-    const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'vscode_extension', engine: 'fusion' }} />);
-
-    const badge = screen.getByRole('button', { name: /vs code extension/i });
-    expect(badge).not.toHaveTextContent('Preview');
-
+    const badge = screen.getByRole('button', { name: /dbt platform/i });
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).not.toHaveTextContent('Status');
-    expect(tooltip).not.toHaveTextContent('Preview');
-    expect(tooltip).not.toHaveTextContent('Workflow');
+    expect(tooltip.textContent).not.toMatch(/fusion|core|oss/i);
+    expect(badge.textContent).not.toMatch(/fusion|core|oss/i);
   });
 
-  it('accepts a bare preset string', async () => {
-    const user = userEvent.setup();
-    render(<Availability availability="cli" />);
+  it('defaults an unset platform access to free with a console warning', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    render(<Availability availability={{ surface: 'platform' }} />);
 
-    await user.click(screen.getByRole('button', { name: /applies to: cli\./i }));
+    expect(screen.getByRole('button', { name: /dbt platform · free/i })).toBeInTheDocument();
+    expect(warnSpy).toHaveBeenCalled();
 
-    const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Where');
-    expect(tooltip).toHaveTextContent('CLI');
+    warnSpy.mockRestore();
   });
 
-  it('renders nothing without a resolvable preset', () => {
-    const { container } = render(<Availability availability={{ engine: 'fusion' }} />);
+  it('renders nothing without a resolvable surface or access', () => {
+    const { container } = render(<Availability availability={{}} />);
     expect(container).toBeEmptyDOMElement();
   });
 
   it('opens on focus and closes on Escape', async () => {
     const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'cli', engine: 'fusion' }} />);
+    render(<Availability availability="local_login" />);
 
     await user.tab();
 
-    expect(screen.getByRole('button', { name: /cli · fusion/i })).toHaveFocus();
+    expect(screen.getByRole('button', { name: /local · login required/i })).toHaveFocus();
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 
     await user.keyboard('{Escape}');
@@ -156,12 +138,12 @@ describe('Availability', () => {
     const user = userEvent.setup();
     render(
       <>
-        <Availability availability="cli" />
+        <Availability availability="local_login" />
         <button type="button">Outside</button>
       </>
     );
 
-    await user.click(screen.getByRole('button', { name: /applies to: cli\./i }));
+    await user.click(screen.getByRole('button', { name: /local · login required/i }));
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: 'Outside' }));
@@ -171,9 +153,9 @@ describe('Availability', () => {
 
   it('keeps a clicked tooltip open after mouse leave', async () => {
     const user = userEvent.setup();
-    render(<Availability availability={{ preset: 'platform', plans: 'starter_and_above' }} />);
+    render(<Availability availability="platform_starter" />);
 
-    const badge = screen.getByRole('button', { name: /dbt platform · starter and above/i });
+    const badge = screen.getByRole('button', { name: /dbt platform · starter/i });
     await user.click(badge);
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 

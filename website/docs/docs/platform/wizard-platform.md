@@ -7,9 +7,9 @@ hide_table_of_contents: false
 tags: [AI, Wizard]
 keywords: ["dbt Wizard", "dbt platform", "AI", "agent", "dbt"]
 availability:
-  preset: platform
-  plans: starter_and_above
-  engine: core_and_fusion
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
 import WizardSupportedProviders from '/snippets/_wizard-supported-providers.md';

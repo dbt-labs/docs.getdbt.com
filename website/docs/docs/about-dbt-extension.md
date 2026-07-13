@@ -5,9 +5,7 @@ description: "Bring all the speed and power of the dbt Fusion engine to your loc
 sidebar_label: "dbt VS Code extension"
 image: /img/docs/extension/extension-marketplace.png
 pagination_next: "docs/dbt-extension-features"
-availability:
-  preset: all_users
-  engine: fusion
+availability: local_login
 ---
 
 # About the dbt VS Code extension <Lifecycle status="preview" />
@@ -20,7 +18,7 @@ This is the only way to enjoy all the power of the <Constant name="fusion_engine
 
 The dbt VS Code extension is available in the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=dbtLabsInc.dbt). _Note, this is a public preview release. Behavior may change ahead of the broader generally available (GA) release._
 
-The dbt VS Code extension is only compatible with the <Constant name="fusion_engine" />, but not with <Constant name="core" />.
+The dbt VS Code extension requires the default dbt v2 installation (not dbt Core v1 — see [Engines & licensing](/docs/fusion/about-fusion)).
 
 
 :::tip Try out the Fusion quickstart guide

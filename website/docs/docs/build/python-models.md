@@ -2,9 +2,7 @@
 title: "Python models"
 description: "Configure Python models to enhance your dbt project."
 id: "python-models"
-availability:
-  preset: all_users
-  engine: all_engines
+availability: all_users
 ---
 
 Note that only specific data platforms support `dbt-py` models. Check the [platform configuration pages](/reference/resource-configs) to confirm if Python models are supported. 

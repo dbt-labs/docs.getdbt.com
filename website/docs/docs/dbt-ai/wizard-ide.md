@@ -5,9 +5,9 @@ description: "Use dbt Wizard in the Studio IDE to write or refactor dbt models f
 sidebar_label: "Wizard in Studio IDE"
 tags: [AI, Agents, Studio]
 availability:
-  preset: platform
-  plans: starter_and_above
-  engine: core_and_fusion
+  surface: platform
+  access: paid_plan
+  plans: [starter, enterprise, enterprise_plus]
 ---
 
 import CopilotResources from '/snippets/_use-copilot-resources.md';
