@@ -38,6 +38,12 @@ When you run a command like `dbt build --select +my_model`, dbt State evaluates 
 
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
+For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
+
+:::info Prefer a visual diagram?
+
+Open up the following toggle to view how dbt State chooses the fastest safe action:
+
 <Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">
 
 The following decision tree shows how dbt State chooses the most efficient valid action for each node.
@@ -48,7 +54,7 @@ The key idea is that dbt State only skips work when it can prove the existing ob
 
 </Expandable>
 
-For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
+:::
 
 ## Signing up for dbt State
 
