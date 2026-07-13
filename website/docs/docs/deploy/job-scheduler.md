@@ -106,13 +106,13 @@ To prevent over-scheduling, users will need to take action by either refactoring
 
 To reduce unnecessary resource consumption and reduce contention for run slots in your account, <Constant name="dbt" /> will deactivate a [deploy job](/docs/deploy/deploy-jobs) or a [CI job](/docs/deploy/ci-jobs) if it reaches 100 consecutive failing runs. A banner containing this message is displayed when a job is deactivated: "Job has been deactivated due to repeated run failures. To reactivate, verify the job is configured properly and run manually or reenable any trigger". When this happens, scheduled and triggered-to-run jobs will no longer be enqueued. 
 
-Jobs can also be deactivated when a <Constant name="dbt" /> account is inactive. Account owners receive a warning after 90 days without account activity. If there is no activity for another 7 days, <Constant name="dbt" /> deactivates jobs in the account. A banner containing this message is displayed when a job is deactivated because the account is inactive: "This job has been deactivated because the account is inactive. To reactivate, log in to dbt."
+Jobs can also be deactivated when a <Constant name="dbt" /> account is inactive. Account owners receive a warning after 90 days without account activity. If there is no activity for another 7 days, <Constant name="dbt" /> deactivates jobs in the account. A banner containing this message is displayed when a job is deactivated because the account is inactive: "Job has been deactivated because the account is inactive. To reactivate, either log out and log back in to dbt, then wait up to 30 minutes for the system to reactivate the job, or manually edit and save the job."
 
 To reactivate a job deactivated due to repeated run failures, you can either:
 - Update the job's settings to fix the issue and save the job (recommended)
 - Perform a manual run by clicking **Run now** on the job's page
 
-To reactivate jobs deactivated because the account is inactive, log in to <Constant name="dbt" />.
+To reactivate jobs deactivated because the account is inactive, either log out and log back in to <Constant name="dbt" />, then wait up to 30 minutes for the system to reactivate the job, or manually edit and save the job.
 
 ## FAQs
 
