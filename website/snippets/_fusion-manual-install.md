@@ -61,7 +61,7 @@ dbt system update
 <Expandable alt_header="Homebrew installation for macOS">
 
 ```shell
-brew install dbt
+brew install dbt-labs/dbt/dbt
 ```
 
 To upgrade to a newer version:
