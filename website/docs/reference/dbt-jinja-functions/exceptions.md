@@ -74,7 +74,7 @@ __Example usage__:
 
 ```sql
 {% macro check_package() %}
-  {% if execute and not 'my_package' in installed_packages %}
+  {% if execute and 'my_package' not in installed_packages %}
     {{ exceptions.raise_dependency_error('Missing required package: my_package') }}
   {% endif %}
 {% endmacro %}
