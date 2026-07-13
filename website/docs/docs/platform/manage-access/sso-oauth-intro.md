@@ -8,7 +8,7 @@ availability:
   plans: [enterprise, enterprise_plus]
 ---
 
-# Single sign-on and OAuth <Lifecycle status="managed, managed_plus" />
+# Single sign-on and OAuth 
 
 This section covers how to authenticate users and connect data platforms in <Constant name="dbt_platform" /> using:
 
