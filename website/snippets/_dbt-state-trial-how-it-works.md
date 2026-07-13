@@ -2,4 +2,3 @@
 - To start a dbt State trial, you need a dbt account so you can manage dbt State usage, billing, and spend limits from one dashboard. A paid <Constant name="dbt_platform" /> plan is _not_ required to use dbt State locally. Usage is billed directly based on daily active target tables (DATT).
 - Once started, you cannot pause the trial.
 - If you're using state-aware orchestration prior to June 1, 2026, your trial is extended until the billing period begins on September 1, 2026. If the extension isn't applied to your account, contact your account team.
-- A free tier is coming. Once available, teams under a certain usage threshold will be able to use dbt State at no cost.
