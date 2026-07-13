@@ -38,6 +38,16 @@ When you run a command like `dbt build --select +my_model`, dbt State evaluates 
 
 Without dbt State, every selected node rebuilds on every run regardless of whether anything has changed.
 
+<Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">
+
+The following decision tree shows how dbt State chooses the most efficient valid action for each node.
+
+<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/run-cache-decision-tree.png" width="100%" alt="Decision tree showing how dbt State chooses whether to rebuild, clone, or reuse a node based on state bypasses, volatile SQL handling, execution hashes, freshness, schema matches, clone eligibility, and whether fresh upstream data can still be cloned from time travel or another schema" title="dbt State decision tree for rebuild, clone, and reuse" />
+
+The key idea is that dbt State only skips work when it can prove the existing object is equivalent enough for the current run. If the SQL logic, relevant config, schema, or upstream freshness means the result might be different, dbt rebuilds instead.
+
+</Expandable>
+
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
 ## Signing up for dbt State
