@@ -142,13 +142,15 @@ dbt AI usage is measured based on the number of completed AI requests, known as 
 
 A defined number of dbt Copilot invocations is allocated monthly based on your [subscription plan](https://www.getdbt.com/pricing). Once the usage limit is reached, access to dbt AI will be temporarily disabled until the start of the next billing cycle.
 
-As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. Pricing and usage are subject to change.
+As a temporary compatibility bridge, <Constant name="wizard" /> can draw from your existing dbt Copilot included action allotment through July 13, 2026 or longer (timeline subject to change). We may extend this timeline and will provide advance notice before any changes.
+
+After the temporary bridge ends, <Constant name="wizard" /> usage will be metered separately. Pricing and usage are subject to change.
 
 ### Usage and metering information 
 
-<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 13)">
+<Expandable alt_header="Temporary dbt Copilot Actions bridge (through July 13, 2026)">
 
-As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13. After July 13, this bridge ends and Wizard usage will be metered separately. 
+As a temporary compatibility bridge, dbt Wizard can draw from your existing dbt Copilot included action allotment through July 13, 2026 or longer (timeline subject to change). After this temporary bridge ends, <Constant name="wizard" /> usage will be metered separately. 
 
 Users that bring their own key (BYOK) aren't affected by this bridge.
 
