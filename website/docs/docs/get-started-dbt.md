@@ -1,138 +1,158 @@
 ---
-title: "dbt Quickstarts"
+title: "Get started with dbt"
 id: get-started-dbt
+description: "Choose the best path to start developing with dbt, whether you use the dbt platform, local development tools, or open source workflows."
 hide_table_of_contents: true
-pagination_next: null
+pagination_next: "docs/about-setup"
 pagination_prev: null
 ---
 
-Begin your dbt journey by choosing how you want to develop:
+dbt helps you build, test, document, and deploy reliable data transformations. Choose the path that matches how you want to work, then follow a quickstart or setup guide to build your first project.
 
-- [**<Constant name="dbt_platform" />** ](#the-dbt-platform) &mdash; Develop in your browser (<Constant name="studio_ide" /> or <Constant name="canvas" />) or use local tools (VS Code extension, <Constant name="platform_cli" />) that connect to your platform account. The platform provides hosted CI/CD, documentation, and more. Supports both the [<Constant name="fusion_engine" />](/docs/fusion) and [<Constant name="core" />](/docs/local/install-dbt) engines.
-- [**Local only**](#dbt-local-installations) &mdash; Use local tools ([VS Code extension](/docs/about-dbt-extension), [<Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2), or [<Constant name="core" />](/docs/local/install-dbt)) to develop and run dbt on your own infrastructure. You can use local tools with or without a <Constant name="dbt_platform" /> account.
-- **Local + <Constant name="dbt_platform" />** &mdash; Use the VS Code extension or <Constant name="platform_cli" /> with a <Constant name="dbt_platform" /> account to develop locally while leveraging platform features like CI/CD, documentation hosting, <Constant name="insights" />, <Constant name="canvas" />, and more.
-- [**<Constant name="wizard" />**](#dbt-wizard) &mdash; The AI agent for analytics engineering, available in the <Constant name="dbt_platform" /> and from your terminal. Grounded in your project's lineage, model health, and semantic definitions.
-
-## The dbt platform
-
-<Constant name="dbt" /> provides a fully managed environment to develop, run, and deploy dbt projects—with CI/CD, documentation hosting, and more. Learn more about [<Constant name="dbt" /> features](/docs/platform/about-platform/dbt-platform-features) and [start your free trial](https://www.getdbt.com/signup/) today. 
-
-The <Constant name="fusion_engine" /> adds managed execution and a unified development experience so you can focus on building rather than infrastructure.
-
-Choose your warehouse to get started with a quickstart:
+## Choose your path
 
 <div className="grid--3-col">
 
 <Card
-    title="Quickstart for dbt and Amazon Athena"
-    body="Integrate dbt with Amazon Athena for your data transformations."
-    link="https://docs.getdbt.com/guides/athena"
-    icon="athena"/>
+    title="Start in the dbt platform"
+    body="Develop in your browser or locally with platform-connected tools, then use hosted CI/CD, documentation, orchestration, and more."
+    link="/docs/platform/about-platform/dbt-platform-features"
+    icon="rocket"/>
 
 <Card
-    title="Quickstart for dbt and Azure Synapse Analytics"
-    body="Discover how to integrate dbt with Azure Synapse Analytics for your data transformations."
-    link="https://docs.getdbt.com/guides/azure-synapse-analytics"
-    icon="azure-synapse-analytics-2"/>
+    title="Develop locally"
+    body="Use VS Code or your terminal with the dbt Fusion engine or dbt Core, with or without a dbt platform account."
+    link="#develop-locally"
+    icon="vsce"/>
 
 <Card
-    title="Quickstart for dbt and BigQuery"
-    body="Discover how to leverage dbt with BigQuery to streamline your analytics workflows."
-    link="https://docs.getdbt.com/guides/bigquery"
-    icon="bigquery"/>
+    title="Follow a quickstart"
+    body="Choose your data platform and build a first project end to end."
+    link="#quickstarts"
+    icon="compass"/>
 
-<Card
-    title="Quickstart for dbt and Databricks"
-    body="Learn how to integrate dbt with Databricks for efficient data processing and analysis."
-    link="https://docs.getdbt.com/guides/databricks"
-    icon="databricks"/>
+</div>
 
-<Card
-    title="Quickstart for dbt and Microsoft Fabric"
-    body="Explore the synergy between dbt and Microsoft Fabric to optimize your data transformations."
-    link="https://docs.getdbt.com/guides/microsoft-fabric"
-    icon="fabric"/>
+## Quickstarts
 
-<Card
-    title="Quickstart for dbt and Redshift"
-    body="Learn how to connect dbt to Redshift for more agile data transformations."
-    link="https://docs.getdbt.com/guides/redshift"
-    icon="redshift"/>
+Quickstarts are the fastest way to build your first dbt project. Pick the data platform you want to use:
+
+<div className="grid--3-col">
 
 <Card
     title="Quickstart for dbt and Snowflake"
-    body="Unlock the full potential of using dbt with Snowflake for your data transformations."
-    link="https://docs.getdbt.com/guides/snowflake"
+    body="Build your first dbt project on Snowflake."
+    link="/guides/snowflake?step=1"
     icon="snowflake"/>
 
 <Card
-    title="Quickstart for dbt and Starburst Galaxy"
-    body="Leverage dbt with Starburst Galaxy to enhance your data transformation workflows."
-    link="https://docs.getdbt.com/guides/starburst-galaxy"
-    icon="starburst"/>
+    title="Quickstart for dbt and Databricks"
+    body="Build your first dbt project on Databricks."
+    link="/guides/databricks?step=1"
+    icon="databricks"/>
 
 <Card
-    title="Quickstart for dbt and Teradata"
-    body="Discover and use dbt with Teradata to enhance your data transformation workflows."
-    link="https://docs.getdbt.com/guides/teradata"
-    icon="teradata"/>
-
-</div>
-
-## dbt local installations
-
-When you install dbt locally, you get command-line tools and the VS Code extension that enable you to transform data using analytics engineering best practices.
-
-You can use local tools with or without a <Constant name="dbt_platform" /> account. With an account, the VS Code extension and <Constant name="platform_cli" /> sync with your platform project for CI/CD, documentation, and more. Without an account, you run dbt entirely on your own infrastructure.
-
-Develop locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
-
-<div className="grid--3-col">
+    title="Quickstart for dbt and BigQuery"
+    body="Build your first dbt project on BigQuery."
+    link="/guides/bigquery?step=1"
+    icon="bigquery"/>
 
 <Card
-    title="dbt Fusion engine from a manual install"
-    body="Learn how to install dbt Fusion and set up a project."
-    link="/guides/fusion?step=2"
-    icon="dbt-bit"/>
-<Card
-    title="dbt Core from a manual install"
-    body="Learn how to install dbt Core and set up a project."
-    link="/guides/manual-install"
-    icon="dbt-bit"/>
+    title="Quickstart for dbt and Redshift"
+    body="Build your first dbt project on Redshift."
+    link="/guides/redshift?step=1"
+    icon="redshift"/>
 
 <Card
     title="Quickstart for dbt with DuckDB"
-    body="Learn how to connect dbt to DuckDB."
+    body="Build a local dbt project with DuckDB."
     link="/guides/duckdb?step=1"
     icon="duckdb-seeklogo"/>
+
+<Card
+    title="More quickstarts"
+    body="Browse quickstarts for Athena, Azure Synapse, Microsoft Fabric, Starburst, Teradata, and more."
+    link="/guides"
+    icon="compass"/>
+
 </div>
 
-## dbt Wizard
+## Develop locally
 
-[<Constant name="wizard" />](/docs/platform/wizard-overview) is an AI agent purpose-built for analytics engineering. It uses dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai) — a structured index of your project's lineage, model health, tests, and semantic definitions — to build, refactor, validate, and document your project grounded in full project context.
+Local development means you run dbt from your own machine or editor. You can work locally with a dbt platform account, or you can use open source workflows without one.
 
 <div className="grid--3-col">
 
 <Card
-    title="dbt Wizard in the dbt platform"
-    body="Use dbt Wizard in the Studio IDE or home app to build and refactor models from natural language, generate tests and docs, and validate changes against your warehouse."
-    link="/docs/dbt-ai/wizard-ide"
+    title="Install the dbt VS Code extension"
+    body="Develop locally in VS Code or Cursor with the dbt Fusion engine, live validation, lineage, and project-aware tooling."
+    link="/docs/about-dbt-extension"
+    icon="vsce"/>
+
+<Card
+    title="Install the dbt Fusion engine"
+    body="Set up the Fusion CLI locally and develop from your terminal."
+    link="/docs/local/install-dbt?version=2"
+    icon="dbt-bit"/>
+
+<Card
+    title="Install dbt Core"
+    body="Set up dbt Core locally and run open source dbt workflows from your terminal."
+    link="/docs/local/install-dbt"
+    icon="dbt-bit"/>
+
+</div>
+
+## Build with dbt
+
+After you choose a setup path, use these docs to build the core pieces of a dbt project:
+
+<div className="grid--3-col">
+
+<Card
+    title="Build your first model"
+    body="Turn SQL into modular, version-controlled models."
+    link="/docs/build/models"
+    icon="dbt-bit"/>
+
+<Card
+    title="Add tests"
+    body="Validate assumptions about your data and catch issues earlier."
+    link="/docs/build/data-tests"
+    icon="settings"/>
+
+<Card
+    title="Document your project"
+    body="Add descriptions and generate docs so your team can understand and trust your project."
+    link="/docs/build/documentation"
+    icon="book"/>
+
+</div>
+
+## Build with AI
+
+Once you have a working project, <Constant name="wizard" /> can help you build, refactor, validate, and document it.
+
+<div className="grid--3-col">
+
+<Card
+    title="Use dbt Wizard in the dbt platform"
+    body="Use dbt Wizard in the Studio IDE or home app to develop with project context."
+    link="/docs/platform/wizard-overview"
     icon="dbt-copilot"/>
 
 <Card
-    title="dbt Wizard from your terminal"
-    body="Install the dbt Wizard CLI to run the agent locally against any dbt project — with or without a dbt platform account. Requires an OpenAI API key (BYOK)."
+    title="Use dbt Wizard from your terminal"
+    body="Install the dbt Wizard CLI and run the agent locally against a dbt project."
     link="/docs/dbt-ai/wizard-quickstart"
     icon="dbt-copilot"/>
 
 </div>
 
-## Related docs
+## Explore more
 
-Expand your dbt knowledge and expertise with these additional resources:
-
-- [Join the monthly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see <Constant name="dbt" /> in action and ask questions.
-- [<Constant name="dbt" /> AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy <Constant name="dbt" /> on AWS, user reviews, and more.
-- [Best practices](/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
-- [dbt Learn](https://learn.getdbt.com) offers free online courses that cover dbt fundamentals, advanced topics, and more.
-- [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.
+- Learn [what dbt is](/docs/introduction) and how it fits into analytics engineering.
+- Explore [dbt platform features](/docs/platform/about-platform/dbt-platform-features).
+- Review [dbt best practices](/best-practices).
+- Browse [reference docs](/reference/references-overview).
+- Join the [dbt Community](https://www.getdbt.com/community/join-the-community) to learn from other data practitioners.

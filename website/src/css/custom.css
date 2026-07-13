@@ -1205,6 +1205,18 @@ div .toggle_src-components-faqs-styles-module {
   color: var(--color-white);
 }
 
+/* Keep card titles aligned across a row: give the icon header a fixed
+   height because icons have varying intrinsic sizes. */
+.home-card-grid article > div:first-child {
+  min-height: 32px;
+  align-items: flex-start;
+}
+
+.home-card-grid article > div:first-child img {
+  max-height: 28px;
+  width: auto;
+}
+
 .card.large .button {
   color: var(--color-white);
   font-size: 1.25rem;
@@ -2395,19 +2407,18 @@ button .DocSearch-Button-Keys {
 
 .home .baton-hero.baton-hero--compact {
   scale: 0.95;
-  transform: translateY(-2rem);
+  transform: translateY(-2.5rem);
 
-}
-
-.home section.home-quickstart {
-  padding-top: 1rem;
-  margin-top: 1rem;
 }
 
 .home section:first-of-type {
   padding-top: 2rem;
 }
 
+.home section.home-quickstart:first-of-type {
+  padding-top: 0;
+  margin-top: 0.5rem;
+}
 
 .home-card-grid {
   display: grid;
@@ -2415,7 +2426,92 @@ button .DocSearch-Button-Keys {
   gap: 24px;
 }
 
+.home-start-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.home-start-layout .heading-2 {
+  font-size: var(--text-4xl);
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.home-start-layout p {
+  max-width: 48rem;
+  font-size: var(--text-base);
+}
+
+.home-start-layout > div > div:first-child,
+.home-start-aside > div:first-child {
+  margin-bottom: 1rem;
+}
+
+.home-start-aside > div:first-child {
+  margin-bottom: 0.8rem;
+}
+
+.home-start-layout .home-card-grid {
+  gap: 16px;
+}
+
+.home-start-layout article {
+  min-height: 0;
+  padding: 1.5rem;
+}
+
+.home-start-layout article > div:first-child {
+  min-height: 24px;
+  margin-bottom: 0.75rem;
+}
+
+.home-start-layout article > div:first-child img {
+  max-height: 24px;
+}
+
+.home-start-layout article .heading-4 {
+  font-size: var(--text-xl);
+}
+
+.home-start-layout article p {
+  margin-bottom: 0;
+  font-size: var(--text-sm);
+}
+
+.home-start-layout .tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  margin: 0;
+}
+
+.home-card-grid--quickstarts {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.home-card-grid--path {
+  grid-template-columns: 1fr;
+}
+
+.home-start-aside {
+  padding-left: 8px;
+}
+
 @media(max-width: 996px) {
+  .home-start-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-start-layout .heading-2 {
+    font-size: var(--text-3xl);
+  }
+
+  .home-start-aside {
+    padding-left: 0;
+  }
+
   .home-card-grid {
     grid-template-columns: 1fr;
   }
@@ -2937,8 +3033,8 @@ iframe#q-messenger-frame:not(.qlfd-maximized) {
 }
 
 .baton-hero.baton-hero--compact {
-  padding: 8rem .55rem 12rem;
-  margin-bottom: -5rem;
+  padding: 8rem .55rem 10rem;
+  margin-bottom: -5.5rem;
 }
 
 @media (max-width: 996px) {

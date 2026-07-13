@@ -56,13 +56,13 @@ const sidebarSettings = {
       value: 'Get started',
       className: 'sidebar-title',
     },
-    "docs/get-started-dbt",
     {
       type: "category",
       label: "Get started with dbt",
       collapsed: true,
-      link: { type: "doc", id: "docs/about-setup" },
+      link: { type: "doc", id: "docs/get-started-dbt" },
       items: [
+        "docs/get-started-dbt",
         "docs/about-setup",
         "docs/environments-in-dbt",
         {
