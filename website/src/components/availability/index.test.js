@@ -38,7 +38,7 @@ describe('Availability', () => {
     const badge = screen.getByRole('button', { name: /dbt platform · developer/i });
     await user.click(badge);
 
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Available on the free Developer plan and up.');
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Free plan and up.');
   });
 
   it('joins multiple plans on the badge', async () => {
@@ -52,7 +52,7 @@ describe('Availability', () => {
     const badge = screen.getByRole('button', { name: /dbt platform · enterprise, enterprise\+/i });
     await user.click(badge);
 
-    expect(screen.getByRole('tooltip')).toHaveTextContent('Requires the Enterprise, Enterprise+ plan.');
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Requires Enterprise, Enterprise+ plan.');
   });
 
   it('renders "Local" alone for local_free (free is implicit for local)', () => {
@@ -85,8 +85,8 @@ describe('Availability', () => {
     await user.click(badge);
 
     const tooltip = screen.getByRole('tooltip');
-    expect(tooltip).toHaveTextContent('Free, but requires a dbt account (dbt login).');
-    expect(tooltip).toHaveTextContent('Requires a dbt account; billed on usage. See pricing.');
+    expect(tooltip).toHaveTextContent('Requires a free dbt account.');
+    expect(tooltip).toHaveTextContent('Billed on usage.');
   });
 
   it('never renders Fusion, Core, or OSS anywhere in badge output', async () => {

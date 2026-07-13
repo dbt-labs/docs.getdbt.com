@@ -24,9 +24,8 @@ export const SURFACE_LABELS = {
 };
 
 export const SURFACE_TOOLTIPS = {
-  local: 'Runs on your local machine (CLI or IDE extension).',
-  platform:
-    "Available in the dbt platform (web-based) — that alone doesn't mean paid. Check the Access badge.",
+  local: 'Runs locally.',
+  platform: 'Available in the dbt platform.',
 };
 
 export const PLAN_LABELS = {
@@ -37,9 +36,9 @@ export const PLAN_LABELS = {
 };
 
 const ACCESS_TOOLTIPS = {
-  Free: 'No dbt account or paid plan required.',
-  'Login required': 'Free, but requires a dbt account (dbt login).',
-  'Usage-based': 'Requires a dbt account; billed on usage. See pricing.',
+  Free: 'No account needed.',
+  'Login required': 'Requires a free dbt account.',
+  'Usage-based': 'Billed on usage.',
 };
 
 function planListLabel(plans) {
@@ -52,9 +51,9 @@ function planListLabel(plans) {
 
 function planTooltip(plans) {
   if (plans.length === 1 && plans[0] === 'developer') {
-    return 'Available on the free Developer plan and up.';
+    return 'Free plan and up.';
   }
-  return `Requires the ${planListLabel(plans)} plan.`;
+  return `Requires ${planListLabel(plans)} plan.`;
 }
 
 // Returns an ordered list of { facet, tooltip } for the access badge/tooltip rows.
