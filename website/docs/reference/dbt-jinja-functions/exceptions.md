@@ -18,7 +18,7 @@ These are errors or warnings that you choose to raise in your own Jinja code. Th
 
 If you're not writing custom Jinja code and are instead trying to fix an error from dbt, refer to [Debug errors](/guides/debug-errors).
 
-When calling these functions during `dbt run` or `dbt run-operation`, wrap them in `{% if execute %}`. This makes sure the function runs only when dbt executes your code, rather than when it parses your project.
+When calling these functions during `dbt run` or `dbt run-operation`, wrap them in `{% if execute %}`. This ensures the function runs only when dbt executes your code, rather than when it parses your project.
 
 Learn more about the [`execute`](/reference/dbt-jinja-functions/execute) variable.
 
