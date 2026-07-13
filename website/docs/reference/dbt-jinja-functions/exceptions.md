@@ -40,15 +40,9 @@ __Example usage__:
 
 </File>
 
+<VersionBlock lastVersion="1.99">
+
 ## raise_database_error
-
-<VersionBlock firstVersion="2.0">
-
-:::note Not supported in the Fusion engine
-`raise_database_error` is available in <Constant name="core" />. It is not currently callable in the <Constant name="fusion" />.
-:::
-
-</VersionBlock>
 
 Use `exceptions.raise_database_error` to stop a dbt run with a database-style error message from your Jinja code.
 
@@ -70,14 +64,6 @@ __Example usage__:
 
 ## raise_dependency_error
 
-<VersionBlock firstVersion="2.0">
-
-:::note Not supported in the Fusion engine
-`raise_dependency_error` is available in <Constant name="core" />. It is not currently callable in the <Constant name="fusion" />.
-:::
-
-</VersionBlock>
-
 The `exceptions.raise_dependency_error` method raises an error when a package or dependency requirement is not met. To help protect sensitive information, dbt automatically removes secrets from the error message.
 
 The run fails with a `Runtime Error` and your custom message.
@@ -95,6 +81,8 @@ __Example usage__:
 ```
 
 </File>
+
+</VersionBlock>
 
 ## raise_fail_fast_error
 
