@@ -110,15 +110,15 @@ Usage information is available to customers on consumption-based plans, and some
 
 ## dbt State usage
 
-[dbt state](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. Learn more about how your usage influences the price so you can plan your savings effectively.
+[dbt State](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. Learn more about how your usage influences the price so you can plan your savings effectively.
 
 ### About free trial
 
-Eligible new organizations receive 30 days of free use with no usage limit. After the free period, a credit card or enterprise contract (for dbt platform managed plans) is required to continue.
+dbt State is a separate, usage-based product available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users. **Eligible new organizations receive 30 days of free use with no usage limit.**
 
-### dbt State pricing
+For <Constant name="dbt_platform" /> managed plans (Enterprise and Enterprise+), a credit card or enterprise contract is required to continue after the free trial period. Using dbt State does _not_ require a paid dbt seat purchase. Usage is billed directly based on [daily active target tables (DATT)](#daily-active-target-tables).
 
-dbt State is a separate, usage-based product available to dbt Core, dbt platform, and dbt Fusion engine users.
+A free tier is coming. Once available, teams under a certain usage threshold will be able to use dbt State at no cost.
 
 ### Cancellation
 
