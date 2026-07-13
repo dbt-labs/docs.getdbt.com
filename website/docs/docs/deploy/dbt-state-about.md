@@ -40,8 +40,7 @@ Without dbt State, every selected node rebuilds on every run regardless of wheth
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
-<details>
-  <summary>How dbt State decides whether to rebuild, clone, or reuse</summary>
+<Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">
 
 The following decision tree shows how dbt State chooses the most efficient valid action for each node.
 
@@ -49,7 +48,7 @@ The following decision tree shows how dbt State chooses the most efficient valid
 
 The key idea is that dbt State only skips work when it can prove the existing object is sufficiently equivalent for the current run. If the SQL logic, relevant config, schema, or upstream freshness means the result might be different, dbt rebuilds instead.
 
-</details>
+</Expandable>
 
 ## Signing up for dbt State
 
