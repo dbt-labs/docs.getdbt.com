@@ -61,6 +61,7 @@ dbt system update
 <Expandable alt_header="Homebrew installation for macOS">
 
 ```shell
+brew trust dbt-labs/dbt
 brew install dbt-labs/dbt/dbt
 ```
 
