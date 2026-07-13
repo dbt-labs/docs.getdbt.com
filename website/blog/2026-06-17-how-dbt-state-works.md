@@ -84,7 +84,7 @@ Let's go a bit deeper into how dbt State decides what to do with each node in th
 
 dbt’s normal `state:modified` selector hashes the contents of a file. dbt State is better because it [parses the query into a syntax tree](/blog/sql-comprehension-technologies#level-1-parsing), and then calculates a hash of the query. This means it won’t rebuild on a syntactically equivalent change, like removing whitespace, adding a comment, or changing a table’s alias.
 
-<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/query-normalisation-hash-comparison.png" width="90%" alt="Two semantically equivalent SQL files produce different file hashes without dbt State, but normalizing each into a syntax tree yields the same comparison hash with dbt State" title="dbt State considers queries to be equivalent despite cosmetic differences" />
+<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/query-normalisation-hash-comparison.png" width="100%" alt="Two semantically equivalent SQL files produce different file hashes without dbt State, but normalizing each into a syntax tree yields the same comparison hash with dbt State" title="dbt State considers queries to be equivalent despite cosmetic differences" />
 
 The purpose of this normalization is to ensure that your model only gets rebuilt when its logic or data changes. One wrinkle in this is volatile SQL functions, like `current_timestamp()` or `random()`. Are they logic, like every other piece of code? Or are they themselves data, and when they change the model is invalidated and should be rebuilt?
 
