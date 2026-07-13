@@ -10,7 +10,7 @@ When you run `dbt build` or a similar command, a target table is selected for ex
 
 dbt State calculates cost per billing period using the unit price (USD $0.094) x sum of daily active target tables (DATT) for all account users and all days in that billing period. For example, if you have 100 DATT in a billing period, you'll be billed for 100 * $0.094 = $9.40.
 
-For more information, refer to the [dbt Labs Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table).
+For current unit price and more information, refer to the [dbt Labs Service Consumption Table](https://www.getdbt.com/legal/service-consumption-table).
 
 ### Cancellation
 
