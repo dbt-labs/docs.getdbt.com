@@ -40,6 +40,16 @@ Without dbt State, every selected node rebuilds on every run regardless of wheth
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
+<Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">
+
+The following decision tree shows how dbt State chooses the most efficient valid action for each node.
+
+<Lightbox src="/img/docs/deploy/run-cache-decision-tree.png" width="100%" alt="Decision tree showing how dbt State chooses whether to rebuild, clone, or reuse a node based on state bypasses, volatile SQL handling, execution hashes, freshness, schema matches, clone eligibility, and whether fresh upstream data can still be cloned from time travel or another schema" title="dbt State decision tree for rebuild, clone, and reuse" />
+
+The key idea is that dbt State only skips work when it can prove the existing object is sufficiently equivalent for the current run. If the SQL logic, relevant config, schema, or upstream freshness means the result might be different, dbt rebuilds instead.
+
+</Expandable>
+
 ## Signing up for dbt State
 
 When you sign up for dbt State, you'll choose one of two paths:
@@ -73,4 +83,5 @@ A standalone account makes sense if you:
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
+- [dbt State trial and billing](/docs/deploy/dbt-state-trial)
 - [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)
