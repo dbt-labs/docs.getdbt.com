@@ -42,7 +42,7 @@ For the full list of available configs, see [dbt State configs](/reference/resou
 
 :::info Prefer a visual diagram?
 
-Open up the following toggle to view how dbt State chooses the fastest safe action:
+Open up the following toggle to view how dbt State works:
 
 <Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">
 
