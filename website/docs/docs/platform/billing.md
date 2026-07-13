@@ -114,7 +114,7 @@ Usage information is available to customers on consumption-based plans, and some
 
 ### About free trial
 
-dbt State is a separate, usage-based product available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users. **Eligible new organizations receive 30 days of free use with no usage limit.**
+dbt State is a separate, usage-based product available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users. Eligible new organizations receive 30 days of free use with no usage limit.
 
 For <Constant name="dbt_platform" /> managed plans (Enterprise and Enterprise+), a credit card or enterprise contract is required to continue after the free trial period. Using dbt State does _not_ require a paid dbt seat purchase. Usage is billed directly based on [daily active target tables (DATT)](#daily-active-target-tables).
 
