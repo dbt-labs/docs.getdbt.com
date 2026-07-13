@@ -1,11 +1,14 @@
 ---
 title: "Billing"
-id: billing 
-description: "dbt billing information." 
+id: billing
+description: "dbt billing information."
 sidebar_label: Billing
 pagination_next: null
 pagination_prev: null
 ---
+
+import DbtStatePricing from '/snippets/_dbt-state-pricing.md';
+import DbtStateTrialHowItWorks from '/snippets/_dbt-state-trial-how-it-works.md';
 
 <Constant name="dbt" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/platform/about-platform/access-regions-ip-addresses) worldwide, <Constant name="dbt_platform" /> is the fastest and easiest way to begin transforming your data.
 
@@ -110,31 +113,13 @@ Usage information is available to customers on consumption-based plans, and some
 
 ## dbt State usage
 
-[dbt state](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. Learn more about how your usage influences the price so you can plan your savings effectively.
+[dbt State](/docs/deploy/dbt-state-about) enables dbt to reuse nodes by cloning from another location or skipping a rebuild when the logic and data haven't changed. It's a separate, usage-based product available to <Constant name="core" />, <Constant name="dbt_platform" />, and <Constant name="fusion_engine" /> users. Learn more about how your usage influences the price so you can plan your savings effectively.
 
 ### About free trial
 
-Eligible new organizations receive 30 days of free use with no usage limit. After the free period, a credit card or enterprise contract (for dbt platform managed plans) is required to continue.
+<DbtStateTrialHowItWorks />
 
-### dbt State pricing
-
-dbt State is a separate, usage-based product available to dbt Core, dbt platform, and dbt Fusion engine users.
-
-### Cancellation
-
-Usage is tracked through your cancellation date. You're billed at month end for usage incurred before cancellation and not charged for usage after.
-
-### Daily active target tables
-
-For purposes of pricing, daily active target tables (DATT) are measured as the number of distinct target tables (as defined below) for which dbt State performs at least one of the following unique operations on a given day (based on UTC time): a skip, clone, or test reuse.
-
-A target table is a database object managed by your dbt project for a given database and schema name. It includes seeds, snapshots, dbt models (including incremental models). It also includes each distinct test (even if the tests are not built into the database because `store_failures` is disabled). For example, if `stg_customers` has `not_null` and `unique` tests on its `id` column, that's three target tables: the model and its two tests.
-
-When you run `dbt build` or a similar command, a target table is selected for execution. It counts as an active target table if dbt State is able to reuse it based on your configuration rules. All reuses of the same active target table in a single day (based on UTC time) are counted as a single daily active target table (DATT).
-
-### Monthly cost calculation
-
-dbt State calculates cost per billing period using the unit price (USD $0.094) x sum of daily active target tables (DATT) for all account users and all days in that billing period. For example, if you have 100 DATT in a billing period, you'll be billed for 100 * $0.094 = $9.40.
+<DbtStatePricing />
 
 ## dbt AI: Usage metering and limiting <Lifecycle status="Starter, Enterprise, Enterprise+" />
 
