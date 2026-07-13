@@ -28,3 +28,38 @@
     outline: 2px solid #EBEDF0; /* Focus outline for accessibility */
     outline-offset: 2px;
 }
+
+/* Plan-tier badge (Developer/Starter/Enterprise/Enterprise+) — deliberately shaped
+   differently from .lifecycle so a plan requirement is never mistaken for a
+   feature-maturity status pill. */
+.planPill {
+    background-color: #d1d5dc;
+    color: #030711;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid #99A1AF;
+    margin-left: 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1.25;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, text-decoration 0.2s ease;
+    cursor: pointer;
+}
+
+.planPill:hover {
+    background-color: #EBEDF0;
+    color: #030711;
+    text-decoration: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
+    transform: scale(1.04);
+}
+
+.planPill:focus {
+    outline: 2px solid #99A1AF;
+    outline-offset: 2px;
+}
