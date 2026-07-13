@@ -18,8 +18,6 @@ All data at rest on <Constant name="dbt" /> servers is protected using AES-256 e
 
 <img src="/img/docs/dbt-platform/on-premises/data-flows.png" />
 
-For a more detailed breakdown of the <Constant name="dbt" /> apps, [download the advanced architecture guide PDF](https://drive.google.com/uc?export=download&id=1lktNuMZybXfqFtr24J8zAssEfoL9r51S).
-
 ## Communication
 
 <Constant name="dbt" /> can communicate with several external services, including data platforms, git repositories, authentication services, and directories. All communications occur over HTTPS (attempts to connect via HTTP are redirected to HTTPS). <Constant name="dbt" /> encrypts in transit using the TLS 1.2 cryptographic protocol. 

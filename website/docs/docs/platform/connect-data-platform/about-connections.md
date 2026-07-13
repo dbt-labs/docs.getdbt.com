@@ -7,27 +7,22 @@ pagination_next: "docs/platform/connect-data-platform/connect-apache-spark"
 pagination_prev: null
 availability: platform_login
 ---
+The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. Expand the sections below to know the supported data platforms for <Constant name="core" /> and the <Constant name="fusion_engine" />: 
 
-The <Constant name="dbt_platform" /> can connect with a variety of data platform providers. Use the following matrix to see which connections are supported for <Constant name="core" /> and the <Constant name="fusion_engine" />.
-
-<AvailabilityMatrix
-  type="connection"
-  rows={[
-    { label: "AlloyDB", href: "/docs/platform/connect-data-platform/connect-postgresql-alloydb", core: { state: "ga" }, fusion: { state: "none" } },
-    { label: "Amazon Athena", href: "/docs/platform/connect-data-platform/connect-amazon-athena", core: { state: "ga" }, fusion: { state: "none" } },
-    { label: "Amazon Redshift", href: "/docs/platform/connect-data-platform/connect-redshift", core: { state: "ga" }, fusion: { state: "preview" } },
-    { label: "Apache Spark", href: "/docs/platform/connect-data-platform/connect-apache-spark", core: { state: "ga" }, fusion: { state: "none" } },
-    { label: "Azure Synapse Analytics", href: "/docs/platform/connect-data-platform/connect-azure-synapse-analytics", core: { state: "ga" }, fusion: { state: "none" } },
-    { label: "Databricks", href: "/docs/platform/connect-data-platform/connect-databricks", core: { state: "ga" }, fusion: { state: "private-preview" } },
-    { label: "Google BigQuery", href: "/docs/platform/connect-data-platform/connect-bigquery", core: { state: "ga" }, fusion: { state: "preview" } },
-    { label: "Microsoft Fabric", href: "/docs/platform/connect-data-platform/connect-microsoft-fabric", core: { state: "ga" }, fusion: { state: "none" } },
-    { label: "PostgreSQL", href: "/docs/platform/connect-data-platform/connect-postgresql-alloydb", core: { state: "ga" }, fusion: { state: "none" } },
-    { label: "Salesforce Data 360", href: "/docs/platform/connect-data-platform/connect-salesforce", lifecycle: <Lifecycle status="beta" />, core: { state: "none" }, fusion: { state: "ga" } },
-    { label: "Snowflake", href: "/docs/platform/connect-data-platform/connect-snowflake", core: { state: "ga" }, fusion: { state: "ga" } },
-    { label: "Starburst or Trino", href: "/docs/platform/connect-data-platform/connect-starburst-trino", core: { state: "ga" }, fusion: { state: "none" } },
-    { label: "Teradata", href: "/docs/platform/connect-data-platform/connect-teradata", lifecycle: <Lifecycle status="preview" />, core: { state: "ga" }, fusion: { state: "none" } },
-  ]}
-/>
+| Connection | Available on Latest   | Available on Fusion|
+|------------|:---------------------:|:---------------------:|
+| [AlloyDB](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
+| [Amazon Athena](/docs/platform/connect-data-platform/connect-amazon-athena) | ✅ | ❌ |
+| [Amazon Redshift](/docs/platform/connect-data-platform/connect-redshift) | ✅ | Preview |
+| [Apache Spark](/docs/platform/connect-data-platform/connect-apache-spark) | ✅ | ❌ |
+| [Azure Synapse Analytics](/docs/platform/connect-data-platform/connect-azure-synapse-analytics) | ✅ | ❌ |
+| [Databricks](/docs/platform/connect-data-platform/connect-databricks) | ✅ | Private preview |
+| [Google BigQuery](/docs/platform/connect-data-platform/connect-bigquery) | ✅ | Preview |
+| [Microsoft Fabric](/docs/platform/connect-data-platform/connect-microsoft-fabric) | ✅ | ❌ |
+| [PostgreSQL](/docs/platform/connect-data-platform/connect-postgresql-alloydb) | ✅ | ❌ |
+| [Snowflake](/docs/platform/connect-data-platform/connect-snowflake) | ✅ | ✅ |
+| [Starburst or Trino](/docs/platform/connect-data-platform/connect-starburst-trino) | ✅ | ❌ |
+| [Teradata](/docs/platform/connect-data-platform/connect-teradata) <Lifecycle status="preview" /> | ✅ | ❌ |
 
 To connect to your database in <Constant name="dbt" />:
 

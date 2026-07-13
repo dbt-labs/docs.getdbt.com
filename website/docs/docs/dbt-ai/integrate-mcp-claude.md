@@ -25,6 +25,7 @@ Both interfaces can connect to either:
 
 - You use Claude for AI or agentic work
 - For OAuth (local or remote), use your [access URL with a static subdomain](/docs/platform/about-platform/access-regions-ip-addresses).
+  - Remote MCP OAuth is available for Starter, Enterprise, and Enterprise+ accounts.
 
 <StaticSubdomainRequired />
 
@@ -79,7 +80,7 @@ Then follow the tab that matches your auth method:
 <Tabs>
 <TabItem value="oauth" label="OAuth (remote)">
 
-_OAuth is in private beta for Enterprise and Enterprise+ accounts._
+_Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 
 <MCPOauthPreflight />
 
@@ -157,7 +158,7 @@ Claude Code can connect to the remote dbt MCP server over HTTP &mdash; same JSON
     <Tabs>
     <TabItem value="oauth" label="OAuth (remote)">
 
-    _OAuth is in private beta for Enterprise and Enterprise+ accounts._
+    _Remote MCP OAuth is available in public beta for Starter, Enterprise, and Enterprise+ accounts._
 
     <MCPOauthPreflight />
 
