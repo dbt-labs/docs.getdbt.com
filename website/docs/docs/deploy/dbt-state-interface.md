@@ -20,17 +20,14 @@ dbt State monitoring helps you:
 
 When you go to **Account settings** > **Billing & Usage** > **Usage-based features**, the **State** tab shows how many days remain in your trial period. Once dbt State is enabled, it displays the following for the current month:
 
-- **Estimated cost**: Shows your estimated cost based on Daily Active Target Table (DATT) usage.
-- **Number of models reused**: How many model builds dbt State skipped or cloned instead of rebuilding from scratch.
+- **Models reused this month**: How many model builds dbt State skipped or cloned instead of rebuilding from scratch.
 - **Total % build reduction**: The overall reduction in model builds across your account.
 - **Total query run time reduction**: The total time dbt State saved by not executing unnecessary model builds.
 
-<!--
 The **State** tab also displays the following charts:
 
 - **DATT** — Shows the target tables processed by dbt State. Daily active target tables (DATTs) are the billable units for dbt State.
 - **Asset builds** — Shows all model builds for the month, including models reused and cloned.
--->
 
 ## Models built and reused chart
 

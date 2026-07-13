@@ -58,17 +58,14 @@ To enable dbt State:
 
 The **State** tab of the **Usage-based features** page where you started your trial in step 3 displays how many days remain in your trial period alongside the following monthly data:
 
-- Estimated cost
 - Models reused this month
 - Total % build reduction
 - Total query run time reduction
 
-<!--
 You can also find the following charts on this page:
 
 - **DATT** — Shows the unique target tables processed by dbt State. Daily active target tables (DATTs) are the billable units for dbt State.
 - **Asset builds** — Shows all model builds for the month, including models reused and cloned.
--->
 
 For next steps, see:
 - [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
