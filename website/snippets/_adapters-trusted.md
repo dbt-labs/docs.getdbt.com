@@ -123,12 +123,6 @@
     icon="risingwave"/>
 
 <Card
-    title="Salesforce Data 360"
-    body="<ul><li><a href='/docs/local/connect-data-platform/salesforce-data-cloud-setup'>Install with dbt Fusion </a> </li></ul><br />"
-    pills='["Fusion"]'
-    icon="salesforce"/>
-
-<Card
     title="SingleStore"
     body="<ul><li><a href='/docs/local/connect-data-platform/singlestore-setup'>Install with dbt Core  </a><br /><br /> <a href=https://badge.fury.io/py/dbt-singlestore><img src=https://badge.fury.io/py/dbt-singlestore.svg/></a></li></ul>"
     pills='["dbt Core"]'
