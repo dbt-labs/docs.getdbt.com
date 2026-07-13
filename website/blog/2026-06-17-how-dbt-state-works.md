@@ -76,7 +76,7 @@ dbt State will cast a wide net when trying to reuse objects. If Toby checks out 
 
 Let's go a bit deeper into how dbt State decides what to do with each node in the DAG. This decision tree shows how dbt State chooses whether to rebuild a node, clone it from another schema, or reuse the object already in place.
 
-<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/run-cache-decision-tree.png" width="100%" alt="Decision tree showing how dbt State chooses whether to rebuild, clone, or reuse a node based on state bypasses, volatile SQL handling, execution hashes, freshness, schema matches, and clone eligibility" title="dbt State decision tree for rebuild, clone, and reuse" />
+<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/run-cache-decision-tree.png" width="100%" alt="Decision tree showing how dbt State chooses whether to rebuild, clone, or reuse a node based on state bypasses, volatile SQL handling, execution hashes, freshness, schema matches, clone eligibility, and whether fresh upstream data can still be cloned from time travel or another schema" title="dbt State decision tree for rebuild, clone, and reuse" />
 
 The three big questions are:
 
@@ -88,7 +88,7 @@ The three big questions are:
 
 dbt’s normal `state:modified` selector hashes the contents of a file. dbt State is better because it [parses the query into a syntax tree](/blog/sql-comprehension-technologies#level-1-parsing), and then calculates a hash of the query. This means it won’t rebuild on a syntactically equivalent change, like removing whitespace, adding a comment, or changing a table’s alias.
 
-<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/query-normalisation-hash-comparison.png" width="100%" alt="Two semantically equivalent SQL files produce different file hashes without dbt State, but normalizing each into a syntax tree yields the same comparison hash with dbt State" title="dbt State considers queries to be equivalent despite cosmetic differences" />
+<Lightbox src="/img/blog/2026-06-17-how-dbt-state-works/query-normalisation-hash-comparison.png" width="90%" alt="Two semantically equivalent SQL files produce different file hashes without dbt State, but normalizing each into a syntax tree yields the same comparison hash with dbt State" title="dbt State considers queries to be equivalent despite cosmetic differences" />
 
 The purpose of this normalization is to ensure that your model only gets rebuilt when its logic or data changes. One wrinkle in this is volatile SQL functions, like `current_timestamp()` or `random()`. Are they logic, like every other piece of code? Or are they themselves data, and when they change the model is invalidated and should be rebuilt?
 
