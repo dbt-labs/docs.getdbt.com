@@ -123,10 +123,6 @@ The `dbt-fabric` adapter supports [model contracts](/docs/mesh/govern/model-cont
 
 Only `not_null` is checked when the model builds. Other supported constraint types are recorded on the table for reference, but Microsoft Fabric does not check them when new data is added. Use [data tests](/docs/build/data-tests) if you need to verify those rules.
 
-:::note
-`check` constraints are not supported on Microsoft Fabric. To validate custom rules (for example, that `id` is greater than 0), use [data tests](/docs/build/data-tests) such as `dbt_utils.expression_is_true` instead.
-:::
-
 Microsoft Fabric does not include all constraints in the initial `create table` statement. dbt creates the table first, then runs separate statements to add model-level constraints. You must provide a `name` for each model-level constraint.
 
 <File name='models/dim_customers.yml'>
