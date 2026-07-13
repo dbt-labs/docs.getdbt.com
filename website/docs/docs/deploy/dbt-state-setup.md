@@ -32,14 +32,16 @@ Set up dbt State either in <Constant name="dbt_platform" /> or locally in <Const
 To enable dbt State:
 
 1. In your <Constant name="dbt_platform" /> account, click your account name in the lower-left corner above your username and click **Account settings**.
-2. Under **Settings**, go to **State**.
-3. Click **Start your 30-day free trial**.
 
-   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For more information, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+2. Under **Settings**, go to **Billing & Usage** > **Usage-based features**.
 
-      :::info Extended trial for state-aware orchestration users
-      If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
-      :::
+3. Under the **State** tab, click **Start free trial**.
+
+   Once started, you cannot pause the trial. After 30 days, you must add a credit card or enterprise contract to continue. For information about how the trial period and billing work, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+
+   :::info Extended trial for state-aware orchestration users
+   If you're using state-aware orchestration prior to June 1, 2026, your dbt State trial will be extended until the billing period begins on September 1, 2026. If the extension isn’t applied to your account, contact your account team.
+   :::
 
 4. Review and agree to the terms of service.
 
@@ -47,20 +49,23 @@ To enable dbt State:
 
 6. Click **Enable dbt State**.
 
-   <Lightbox src="/img/docs/dbt-state/dbt_state_enable.png" title="dbt State page" />
-
-7. In the **Upgrade to dbt State** page, select the jobs to enable dbt State for. You can either enable:
+7. Select the jobs to enable dbt State for. You can either enable:
 
    - **By environment**: Enables dbt State on all existing jobs within the selected environment at once. New deploy jobs created in that environment will have dbt State enabled automatically.
    - **By specific jobs**: Enables dbt State on individual jobs. To enable it on additional jobs later, refer to [Enabling dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs).
 
 8. Click **Enable dbt State**.
 
-The **dbt State** page where you started your trial in step 3 displays how many days remain in your trial period alongside the following monthly data:
+The **State** tab of the **Usage-based features** page where you started your trial in step 3 displays how many days remain in your trial period alongside the following monthly data:
 
-- Number of models reused
+- Models reused this month
 - Total % build reduction
 - Total query run time reduction
+
+You can also find the following charts on this page:
+
+- **DATT** — Shows the unique target tables processed by dbt State. Daily active target tables (DATTs) are the billable units for dbt State.
+- **Asset builds** — Shows all model builds for the month, including models reused and cloned.
 
 For next steps, see:
 - [Enable dbt State on individual jobs](/docs/deploy/dbt-state-enable-jobs)
