@@ -34,10 +34,4 @@ Enterprise plan billing information is not available in the <Constant name="dbt"
 
 Customers who purchased the <Constant name="dbt" /> Starter plan (formerly Team) plan before August 11, 2023, remain on a legacy pricing plan as long as your account is in good standing. The legacy pricing plan is based on seats and includes unlimited models, subject to reasonable use. 
 
-:::note Legacy <Constant name="semantic_layer" />
-
-For customers using the legacy <Constant name="semantic_layer" /> with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, <Constant name="semantic_layer" /> powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/guides/sl-snowflake-qs#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
-
-:::
-
 dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use.
