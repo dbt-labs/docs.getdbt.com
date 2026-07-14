@@ -10,10 +10,6 @@ pagination_next: null
 
 By default, dbt rebuilds every selected node on every run &mdash; even if nothing has changed. For large projects, this adds up: longer job times, higher warehouse costs, and slower feedback during development. dbt has features designed to help you skip unnecessary work and reuse existing results instead.
 
-- [dbt State](#dbt-state)
-- [Deferral](#deferral)
-- [`dbt clone`](#dbt-clone)
-
 ## dbt State
 
 [dbt State](/docs/deploy/dbt-state-about) makes dbt smarter about what to build. Instead of rebuilding every node on every run, it compares each node's logic and upstream data against the previous run and picks the most efficient path:
@@ -22,7 +18,23 @@ By default, dbt rebuilds every selected node on every run &mdash; even if nothin
 - **Clone** — If the data is fresh but exists in a different schema (for example, production), dbt clones it rather than rebuilding from scratch.
 - **Build** — If reuse isn't possible, dbt rebuilds normally and automatically defers unselected upstream nodes to production &mdash; no `--defer` or `--state` flags required.
 
-dbt State is available as a plugin for <Constant name="core" /> v1.7-1.12. Authentication requires a [<Constant name="dbt_platform" /> account](https://www.getdbt.com/signup) or a [standalone dbt State account](https://app.state.dbt.com). To get started, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+To enable dbt State:
+
+- **<Constant name="core" /> v1.7–1.12**: 
+
+    ```bash
+    cd path/to/your/project
+    pip install dbt-state
+    ```
+
+- **<Constant name="core" /> v2**:
+
+    ```bash
+    cd path/to/your/project
+    dbt login
+    ```
+
+Authentication requires a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ## Deferral
 
