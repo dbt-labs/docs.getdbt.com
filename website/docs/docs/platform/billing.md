@@ -14,10 +14,10 @@ import DbtStateTrialHowItWorks from '/snippets/_dbt-state-trial-how-it-works.md'
 
 Use the following pages to understand how billing, usage, and cost optimization work:
 
+- [Plans](/docs/platform/billing/plans-and-billing) &mdash; How billing works for the Developer, Starter, Enterprise, and legacy plans.
 - [How does dbt pricing work?](/docs/platform/billing/how-pricing-works) &mdash; How seats and usage are billed, what counts as a Successful Model Built and a Queried Metric, and how to view usage.
 - [dbt State usage](/docs/platform/billing/dbt-state-usage) &mdash; Usage-based pricing for dbt State, including daily active target tables (DATT).
 - [dbt AI: Usage metering and limiting](/docs/platform/billing/dbt-ai-usage) &mdash; How dbt AI (dbt Copilot) usage is metered and limited by plan.
-- [Plans and billing](/docs/platform/billing/plans-and-billing) &mdash; How billing works for the Developer, Starter, Enterprise, and legacy plans.
 - [Managing usage](/docs/platform/billing/managing-usage) &mdash; Usage notifications and how to stop usage from accruing.
 - [Optimize costs in dbt](/docs/platform/billing/optimize-costs) &mdash; Best practices for reducing model build usage and warehouse costs.
 
