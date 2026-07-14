@@ -94,6 +94,24 @@ You should find that the schema dbt is constructing for your model matches the o
 
 Be careful. Snapshots do not follow this behavior if target_schema is set. To have environment-aware snapshots in v1.9+ or <Constant name="dbt" />, remove the [target_schema config](/reference/resource-configs/target_schema) from your snapshots. If you still want a custom schema for your snapshots, use the [`schema`](/reference/resource-configs/schema) config instead.
 
+## Watch for prefixed schema names (for example, `public_silver`)
+
+When your profile `schema` is `public` and a model sets `+schema: silver`, dbt's default macro may build `{target.schema}_{custom_schema_name}` — producing relations such as `public_silver.stg_events` instead of `silver.stg_events`.
+
+If you intend to land models in dedicated schemas (`silver`, `gold`), override `generate_schema_name` to return the custom schema directly when one is provided:
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- if custom_schema_name is none -%}
+        {{ target.schema }}
+    {%- else -%}
+        {{ custom_schema_name | trim }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+Verify actual relation locations with `dbt ls --output json` or by querying your warehouse catalog (`pg_views`, `information_schema.tables`, or equivalent).
+
 ## Adjust as necessary
 
 Now that you understand how a model's schema is being generated, you can adjust as necessary:
