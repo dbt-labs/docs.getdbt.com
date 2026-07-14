@@ -60,7 +60,7 @@ config:
 
 :::note dbt Core flag
 
-The v2 parser flag is only supported on dbt Core v1.12 or higher. If you're already on <Constant name-"fusion" />, the flag has no impact.
+The v2 parser flag is only supported on dbt Core v1.12 or higher. If you're already on <Constant name="fusion" />, the flag has no impact.
 
 :::
 
