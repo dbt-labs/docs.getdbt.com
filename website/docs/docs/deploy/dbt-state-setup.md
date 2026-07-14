@@ -133,6 +133,7 @@ The CLI flags `--manage-state` and `--no-manage-state` are not available in olde
 </TabItem>
 </Tabs>
 
+To see how dbt State optimizes your runs, refer to [dbt State usage examples](/docs/deploy/dbt-state-examples).
 
 ## Inviting team members
 
