@@ -853,7 +853,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
           items: ["docs/deploy/dbt-state-setup", "docs/deploy/dbt-state-enable-jobs", "docs/deploy/dbt-state-enable-studio", "docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral", "docs/deploy/dbt-state-lag-tolerance"],
         },
-
+        "docs/deploy/dbt-state-trial",
         "docs/deploy/dbt-state-examples",
         "docs/deploy/dbt-state-interface",
         "docs/deploy/dbt-state-migration",

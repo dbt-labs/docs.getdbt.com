@@ -7,6 +7,9 @@ pagination_next: null
 pagination_prev: null
 ---
 
+import DbtStatePricing from '/snippets/_dbt-state-pricing.md';
+import DbtStateTrialHowItWorks from '/snippets/_dbt-state-trial-how-it-works.md';
+
 <Constant name="dbt" /> offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/platform/about-platform/access-regions-ip-addresses) worldwide, <Constant name="dbt_platform" /> is the fastest and easiest way to begin transforming your data.
 
 Use the following pages to understand how billing, usage, and cost optimization work:

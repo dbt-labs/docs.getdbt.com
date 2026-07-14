@@ -19,6 +19,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
 
+## July 2026
+
+- **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+
 ## June 2026
 
 - **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
