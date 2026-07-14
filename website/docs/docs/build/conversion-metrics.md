@@ -414,7 +414,7 @@ metrics:
 
 This will return the following results:
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
+<Lightbox src="/img/docs/dbt-platform/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
 
 Refer to [Fill null values for metrics](/docs/build/fill-nulls-advanced) for more info.
 

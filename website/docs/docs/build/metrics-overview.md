@@ -188,7 +188,7 @@ Set the native grain on the time dimension column and choose the rollup grain at
 
 - Define the data’s grain on the time dimension column with granularity (for example, hour, day, month).
 - Metrics inherit the model’s default aggregation time dimension (set at the model level), and you can optionally override it per metric with `agg_time_dimension`.
-- When querying, pick the rollup grain (day/week/month/year) in your BI tool or with the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview). You can only roll up to grains coarser than or equal to the column’s native grain.
+- When querying, pick the rollup grain (day/week/month/year) in your BI tool or with the [Semantic Layer API](/docs/dbt-apis/sl-api-overview). You can only roll up to grains coarser than or equal to the column’s native grain.
 
 ### Example
 

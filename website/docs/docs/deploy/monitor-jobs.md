@@ -24,11 +24,11 @@ To set up and add data health tiles to view data freshness and quality checks in
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.png" width="98%" title="An overview of a dbt job run which contains run summary, job trigger, run duration, and more."/>
+<Lightbox src="/img/docs/dbt-platform/deployment/deploy-scheduler.png" width="98%" title="An overview of a dbt job run which contains run summary, job trigger, run duration, and more."/>
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.png" width="95%" title="Run history dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+<Lightbox src="/img/docs/dbt-platform/deployment/run-history.png" width="95%" title="Run history dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
 
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
+<Lightbox src="/img/docs/dbt-platform/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
 
 </DocCarousel>

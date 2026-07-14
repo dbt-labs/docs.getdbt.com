@@ -11,31 +11,18 @@ intro_text: This guide helps you implement an in-place upgrade from the latest v
 ---
 
 import FusionAdapters from '/snippets/_fusion-dwh.md';
+import SaoDeprecated from '/snippets/_sao-deprecated.md';
 
 ## Introduction 
-
-import FusionPreview from '/snippets/_fusion-private-preview.md';
-
-<FusionPreview />
 
 The <Constant name="fusion_engine" /> represents the next evolution of data transformation. dbt has been rebuilt from the ground up but at its most basic, <Constant name="fusion" /> is a new version, and moving to it is the same as upgrading between <Constant name="core" /> versions in the <Constant name="dbt_platform" />. Once your project is <Constant name="fusion" /> ready, it's only a matter of pulling a few levers to make the move, but you have some flexibility in how you do so, especially in your development environments. 
 
 Once you complete the <Constant name="fusion" /> migration, your team will benefit from:
 
 - ⚡ Up to 30x faster parsing and compilation
-- 💰 30%+ reduction in warehouse costs (with state-aware orchestration)
+- 💰 30%+ reduction in warehouse costs (with [dbt State](/docs/deploy/dbt-state-about))
 - 🔍 Enhanced SQL validation and error messages
-- 🚀 [State-aware orchestration](/docs/deploy/state-aware-about) for intelligent model rebuilding
 - 🛠️ Modern development tools
-
-:::info Fusion availability
-
-<Constant name="fusion" /> on the <Constant name="dbt_platform" /> is currently in `Private preview`. Enabling it for your account depends on your plan:
-
-- **Enteprise and Enterprise+ plans:** Contact your account manager to enable <Constant name="fusion" /> for your environment.
-- **Developer and Starter plans:** Complete the steps in the [Part 1: Prepare for upgrade](/guides/prepare-fusion-upgrade) guide to become <Constant name="fusion" /> eligible, and it will be enabled for your account automatically so you can start the upgrade processes.
-
-:::
 
 ## Prerequisites
 
@@ -61,7 +48,7 @@ Always upgrade your development environment first before moving to production. T
 
 ### Assign upgrade access (optional)
 
-The <Constant name="fusion" /> upgrade assistant is controlled by two account-level settings. An [account admin](/docs/cloud/manage-access/enterprise-permissions#account-admin) must first enable the readiness experience, and can optionally restrict which users can execute the upgrade.
+The <Constant name="fusion" /> upgrade assistant is controlled by two account-level settings. An [account admin](/docs/platform/manage-access/enterprise-permissions#account-admin) must first enable the readiness experience, and can optionally restrict which users can execute the upgrade.
 
 #### Enable the Fusion readiness experience
 
@@ -82,7 +69,7 @@ By default, any user who can see the upgrade assistant can use it. To restrict u
 2. Select the checkbox next to **Enable restricted Fusion upgrade permissions**.
 3. Click **Save**.
 
-When this is enabled, only users with the **Fusion admin** [permission set](/docs/cloud/manage-access/enterprise-permissions#fusion-admin) can execute upgrades. To assign this permission:
+When this is enabled, only users with the **Fusion admin** [permission set](/docs/platform/manage-access/enterprise-permissions#fusion-admin) can execute upgrades. To assign this permission:
 
 1. Navigate to **Account settings** → **Groups** and choose the group to grant access.
 2. Click **Edit** and scroll to **Access and permissions**.
@@ -90,9 +77,9 @@ When this is enabled, only users with the **Fusion admin** [permission set](/doc
 4. Select the project(s) users should access.
 5. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin permissions to groups"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/assign-fusion-admin.png" width="60%" title="Assign Fusion admin permissions to groups"/>
 
-For more details on access control, see [Assign access to upgrade](/docs/dbt-versions/upgrade-dbt-version-in-cloud#assign-access-to-upgrade).
+For more details on access control, see [Assign access to upgrade](/docs/dbt-versions/upgrade-dbt-platform-version#assign-access-to-upgrade).
 
 ### Step 1: Start the upgrade assistant
 
@@ -101,7 +88,7 @@ Launch the <Constant name="fusion" /> upgrade workflow from your project:
 1. Log into <Constant name="dbt_platform" /> and navigate to your project.
 2. From the project homepage or sidebar, click **Start Fusion upgrade** or **Get started**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the Fusion upgrade from the project homepage"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/start-upgrade.png" width="60%" title="Start the Fusion upgrade from the project homepage"/>
 
 You'll be redirected to the <Constant name="studio_ide" /> with the upgrade assistant visible at the top.
 
@@ -111,7 +98,7 @@ Even if you resolved deprecations in Part 1, run a final check to ensure nothing
 
 1. At the top of the <Constant name="studio_ide" />, click **Check deprecation warnings**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/check-deprecations.png" width="60%" title="Check for deprecation warnings in your project"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/check-deprecations.png" width="60%" title="Check for deprecation warnings in your project"/>
 
 2. Wait for the parse to complete (this may take a few moments depending on project size).
 3. Review the results:
@@ -135,9 +122,9 @@ If you find deprecation warnings, use the autofix tool to resolve them:
 5. Review the modified files in the **Version control** panel.
 6. If all warnings are resolved, you'll see a success message.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/autofix-success.png" width="60%" title="Success message when deprecations are resolved"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/autofix-success.png" width="60%" title="Success message when deprecations are resolved"/>
 
-For detailed information about the autofix process, see [Fix deprecation warnings](/docs/cloud/studio-ide/autofix-deprecations).
+For detailed information about the autofix process, see [Fix deprecation warnings](/docs/platform/studio-ide/autofix-deprecations).
 
 :::info Manual fixes required?
 
@@ -202,7 +189,7 @@ Your development environment is now on <Constant name="fusion" />, but your prod
 - Identify and resolve any project-specific issues.
 - Train team members on any workflow changes.
 
-When you're ready to upgrade production, you'll update your deployment environments and jobs to use the `Latest Fusion` release track. We'll cover that in the next section.
+When you're ready to upgrade production, you'll update your deployment environments and jobs to use the `Fusion Stable` release track. We'll cover that in the next section.
 
 ## Upgrade staging and intermediate environments
 
@@ -234,7 +221,7 @@ Access the settings for your staging or intermediate environment:
 4. Click on your staging environment name to open its settings.
 5. Click the **Edit** button in the top right.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Navigate to environment settings"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Navigate to environment settings"/>
 
 ### Step 2: Update the dbt version
 
@@ -242,10 +229,10 @@ Change your staging environment to use the <Constant name="fusion" /> release tr
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **Latest Fusion** from the list.
+3. Select **Fusion Stable** from the list.
 4. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion from the dbt version dropdown"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Fusion Stable from the dbt version dropdown"/>
 
 Your staging environment is now configured to use <Constant name="fusion" />! Any jobs associated with this environment will use <Constant name="fusion" /> on their next run.
 
@@ -336,19 +323,19 @@ Access your production environment configuration:
 4. Click on your production environment (typically marked with a **Production** badge).
 5. Click the **Edit** button in the top right.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Access production environment settings"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/choosing-dbt-version/example-environment-settings.png" width="90%" title="Access production environment settings"/>
 
-### Step 3: Upgrade to Latest Fusion
+### Step 3: Upgrade to Fusion Stable
 
 Update your production environment to use <Constant name="fusion" />:
 
 1. In the environment settings, scroll to the **dbt version** section.
 2. Click the **dbt version** dropdown menu.
-3. Select **Latest Fusion** from the list.
+3. Select **Fusion Stable** from the list.
 4. Review your settings one final time to ensure everything is correct.
 5. Scroll to the top and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Latest Fusion for production"/>
+<Lightbox src="/img/docs/dbt-platform/platform-configuring-dbt-platform/platform-upgrading-dbt-versions/upgrade-fusion.png" width="90%" title="Select Fusion Stable for production"/>
 
 Your production environment is now running on <Constant name="fusion" />!
 
@@ -371,38 +358,11 @@ import FusionReadinessPanel from '/snippets/_fusion-migration-readiness-panel.md
 
 <FusionReadinessPanel />
 
-### Step 5: Enable state-aware orchestration (optional but recommended) <Lifecycle status="Enterprise, Enterprise+"/>
+### Step 5: Enable dbt State (optional but recommended) <Lifecycle status="preview" />
 
-One of <Constant name="fusion" />'s most powerful features is [state-aware orchestration](/docs/deploy/state-aware-about), which automatically determines which models need rebuilding based on code or data changes. This can reduce warehouse costs by 30% or more.
+[dbt State](/docs/deploy/dbt-state-about) automatically determines which models need rebuilding based on code or data changes, which can reduce warehouse costs by 30% or more. dbt State is in preview. To get started, see [Set up dbt State](/docs/deploy/dbt-state-setup).
 
-New jobs automatically have state-aware orchestration enabled in <Constant name="fusion" /> environments.
-
-To enable it for existing jobs:
-
-1. Navigate to **Deploy** → **Jobs**.
-2. Click on a production job to open its settings.
-3. Click **Edit** in the top right.
-4. Scroll to **Execution settings**.
-5. Check the box for **Enable Fusion cost optimization features**.
-6. Expand **More options** to see additional settings:
-   - **State-aware orchestration**
-   - **Efficient testing**
-7. Click **Save**.
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Enable Fusion cost optimization features"/>
-
-Repeat this for all production jobs to maximize cost savings. For more details, see [Setting up state-aware orchestration](/docs/deploy/state-aware-setup).
-
-:::tip Dropped tables and views
-
-If you use state-aware orchestration, dbt doesn't detect changes when a table or view is dropped outside of dbt because the cache is unique to each dbt platform environment. As a result, state-aware orchestration won't rebuild that model until there is new data or a code change in the model.
-
-To circumvent this limitation: 
-- Use the **Clear cache** button on the target Environment page to force a full rebuild (acts like a reset), or
-- Temporarily disable State-aware orchestration for the job and rerun it.
-
-
-:::
+<SaoDeprecated />
 
 ### Step 6: Monitor production jobs
 
@@ -410,14 +370,8 @@ Watch your production jobs closely for the first 24-48 hours:
 
 - **Check scheduled job runs:** Navigate to **Deploy** → **Jobs** → **Run history**
 - **Monitor run times:** Compare to historical averages. You should see significant improvements.
-- **Review the state-aware interface**: Check the [Models built and reused chart](/docs/deploy/state-aware-interface) to see cost savings in action.
+- **Review cost savings**: If you enabled dbt State, check [Cost Insights](/docs/explore/cost-insights) to see savings in action.
 - **Watch for warnings**: Review logs for any unexpected messages.
-
-:::tip State-aware monitoring
-
-With state-aware orchestration enabled, you'll see models marked as **Reused** in the job logs when they don't need rebuilding. This is expected behavior and indicates cost savings!
-
-:::
 
 ### Step 7: Validate downstream integrations
 
@@ -431,7 +385,7 @@ Ensure all systems dependent on your production data still function correctly:
 
 ### Step 8: Update any remaining jobs with version overrides
 
-Some jobs might have [version overrides](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version) set from earlier testing. Now that production is on <Constant name="fusion" />, remove these overrides:
+Some jobs might have [version overrides](/docs/dbt-versions/upgrade-dbt-platform-version#override-dbt-version) set from earlier testing. Now that production is on <Constant name="fusion" />, remove these overrides:
 
 1. Navigate to **Orchestration** → **Jobs**.
 2. Review each job's settings.
@@ -445,15 +399,37 @@ If you encounter critical issues in production, you can revert your dbt version:
 
 1. Navigate to **Orchestration** → **Environments** → **Production**.
 2. Click **Edit**.
-3. Change **dbt version** from **Latest Fusion** back to **Latest**.
+3. Change **dbt version** from **Fusion Stable** back to **Latest**.
 4. Click **Save**.
 5. Jobs will use <Constant name="core" /> on their next run.
 
 :::info Rollback impact
 
-Rolling back to **Latest** will disable <Constant name="fusion" />-specific features like state-aware orchestration. Only rollback if you're experiencing production-critical issues.
+Rolling back to **Latest** will disable <Constant name="fusion" />-specific features. Only rollback if you're experiencing production-critical issues.
 
 :::
+
+## dbt lint <Lifecycle status="beta" />
+
+Now that your project is running on <Constant name="fusion" />, you have access to `dbt lint`. The `lint` command is a high-performance SQL linter built into <Constant name="fusion" />. It is SQLFluff-compatible: it reads your existing `.sqlfluff` config file, uses the same rule codes (for example, `CP01`, `RF03`), and respects `-- noqa` suppression comments.
+
+### Basic usage
+
+```bash
+# Lint all SQL files in the project
+dbt lint
+
+# Lint a specific file
+dbt lint models/my_model.sql
+
+# Automatically fix violations
+dbt lint --fix
+
+# Lint only files changed in your working tree
+dbt lint --changed
+```
+
+See the [`dbt lint` reference](/reference/commands/lint) for the full list of flags, supported dialects, and suppression syntax.
 
 ## Next steps
 
@@ -463,11 +439,11 @@ You've successfully upgraded your entire dbt platform project to <Constant name=
 
 For your next steps:
 
-- **Optimize further**: Explore [advanced state-aware configurations](/docs/deploy/state-aware-setup#advanced-configurations) to fine-tune refresh intervals.
-- **Monitor savings**: Use the [state-aware interface](/docs/deploy/state-aware-interface) to track models built vs. reused.
+- **Optimize further**: Explore [dbt State configurations](/reference/resource-configs/dbt-state-configs) to fine-tune refresh intervals.
+- **Monitor savings**: Use [Cost Insights](/docs/explore/cost-insights) to track models built vs. reused.
 - **Train your team**: Share <Constant name="fusion" /> features and best practices with your team.
 - **Explore new features**: Check out column-level lineage, live CTE previews, and other <Constant name="fusion" />-powered capabilities.
-- **Stay informed**: Follow the [Fusion Diaries](https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements) for updates on new features.
+- **Stay informed**: Follow the [Fusion Diaries](https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements) for updates on new features.
 
 :::tip Share your success
 

@@ -12,9 +12,15 @@ level: 'Advanced'
 
 <div style={{maxWidth: '900px'}}>
 
+:::important dbt Core v1
+
+This guide is for creating adapters for the Python-based dbt Core v1. For adapter creation on the Rust-based dbt Core v2, check out our [new guide](/guides/adapter-creation-v2?step=1)
+
+:::
+
 ## Introduction
 
-Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, dbt Core adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt Core.
+Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, <Constant name="core_v1" /> adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in <Constant name="core_v1" />.
  
  Navigating and developing around the nuances of different databases can be daunting, but you are not alone. Visit [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond the documentation.
 
@@ -145,9 +151,9 @@ It is easiest to build an adapter for dbt when the following the <Term id="data-
 
 When your adapter becomes more popular, and people start using it, you may quickly become the maintainer of an increasingly popular open source project. With this new role, comes some unexpected responsibilities that not only include code maintenance, but also working with a community of users and contributors. To help people understand what to expect of your project, you should communicate your intentions early and often in your adapter documentation or README. Answer questions like, Is this experimental work that people should use at their own risk? Or is this production-grade code that you're committed to maintaining into the future?
 
-#### Keeping the code compatible with dbt Core
+#### Keeping the code compatible with <Constant name="core_v1" />
 
-An adapter is compatible with dbt Core if it has correctly implemented the interface defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters/) and is tested by [dbt-tests-adapters](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter). Prior to dbt Core version 1.8, this interface was contained in `dbt-core`. 
+An adapter is compatible with <Constant name="core_v1" /> if it has correctly implemented the interface defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters/) and is tested by [dbt-tests-adapters](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter). Prior to <Constant name="core_v1" /> version 1.8, this interface was contained in `dbt-core`. 
 
 New minor version releases of `dbt-adapters` may include changes to the Python interface for adapter plugins, as well as new or updated test cases. The maintainers of `dbt-adapters` will clearly communicate these changes in documentation and release notes, and they will aim for backwards compatibility whenever possible.
 
@@ -165,7 +171,7 @@ dbt Labs strongly recommends you to adopt the following approach when versioning
 
 :::note
 
-Prior to dbt Core version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (for example, 1.1.x).
+Prior to <Constant name="core_v1" /> version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (for example, 1.1.x).
 
 :::
 
@@ -685,7 +691,7 @@ This document has two sections:
 
 ### Testing prerequisites
 
-- Your adapter must be compatible with <Constant name="core" /> **v1.1** or newer
+- Your adapter must be compatible with <Constant name="core_v1" /> **v1.1** or newer
 - You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
@@ -700,7 +706,7 @@ Those utilities allow you to do three basic things:
 2. **Define a sequence of dbt commands.** The most important utility  is `run_dbt()`, which returns the [results](/reference/dbt-classes#result-objects) of each dbt command. It takes a list of CLI specifiers (subcommand + flags), as well as an optional second argument, `expect_pass=False`, for cases where you expect the command to fail.
 3. **Validate the results of those dbt commands.** For example, `check_relations_equal()` asserts that two database objects have the same structure and content. You can also write your own `assert` statements, by inspecting the results of a dbt command, or querying arbitrary database objects with `project.run_sql()`.
 
-You can see the full suite of utilities, with arguments and annotations, in [`util.py`](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/tests/util.py). You'll also see them crop up across a number of test cases. While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
+You can see the full suite of utilities, with arguments and annotations, in [`util.py`](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/tests/util.py). You'll also see them crop up across a number of test cases. While all utilities are intended to be reusable, you won't need all of them for every test. In the example below, we'll show a simple test case that uses only a few utilities.
 
 #### Example: a simple test case
 
@@ -1260,8 +1266,7 @@ Contributors to the community should think of contribution _as the end itself,_ 
 - Founder and executives who are interested in directly engaging with the community
   This is either incredibly successful or not at all depending on the profile of the founder. Typically, this works best when the founder has a practitioner-level of technical understanding and is interested in joining not to promote, but to learn and hear from users.
 
-- Software Engineers at partner products that are building and supporting integrations with either - Software Engineers at partner products that are building and supporting integrations with either dbt Core or the <Constant name="core" />
- or the <Constant name="dbt_platform" />
+- Software Engineers at partner products that are building and supporting integrations with either <Constant name="core_v1" /> or the <Constant name="dbt_platform" />
   This is successful when the engineers are familiar with dbt as a product or at least have taken our training course. The Slack is often a place where end-user questions and feedback is initially shared, so it is recommended that someone technical from the team be present. There are also a handful of channels aimed at those building integrations, which tend to be a font of knowledge.
 
 ### Who might struggle in the dbt community
@@ -1352,7 +1357,7 @@ Breaking this down:
 
 The Trusted Adapter Program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
 
-The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-core#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables dbt Core to work on more than 30 different databases (32 as of Sep '22)!
+The very first data platform dbt supported was Redshift followed quickly by Postgres ([dbt-core#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables <Constant name="core_v1" /> to work on more than 30 different databases (32 as of Sep '22)!
 
 Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due diligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source project is is important to determine the answer to the following questions:
 
@@ -1379,7 +1384,7 @@ By opting into the below, you agree to this, and we take you at your word. dbt L
 
 ### Feature Completeness
 
-To be considered for the Trusted Adapter Program, the adapter must cover the essential functionality of <Constant name="core" /> given below, with best effort given to support the entire feature set.
+To be considered for the Trusted Adapter Program, the adapter must cover the essential functionality of <Constant name="core_v1" /> given below, with best effort given to support the entire feature set.
 
 Essential functionality includes (but is not limited to the following features):
 
@@ -1394,7 +1399,7 @@ Proceed to the "Document a new adapter" step for more information.
 
 Keeping an adapter up-to-date with the latest features of dbt, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. We encourage adapter maintainers to keep track of new dbt-adapter releases and support new features relevant to their platform, ensuring users have the best version of dbt. 
 
-Before [dbt Core version 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of dbt Core. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of dbt Core v1.8+. For example, a user could use dbt-core v1.9 with dbt-postgres v1.8. 
+Before [<Constant name="core_v1" /> version 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of <Constant name="core_v1" />. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of <Constant name="core_v1" /> v1.8+. For example, a user could use dbt-core v1.9 with dbt-postgres v1.8. 
 
 ### Community responsiveness
 

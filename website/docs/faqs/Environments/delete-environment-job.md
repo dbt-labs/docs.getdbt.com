@@ -6,7 +6,7 @@ id: delete-environment-job
 --- 
 
 
-To delete an environment or job in <Constant name="dbt" />, you must have a `developer` [license](/docs/cloud/manage-access/seats-and-users) and have the necessary [access permissions](/docs/cloud/manage-access/about-user-access). 
+To delete an environment or job in <Constant name="dbt" />, you must have a `developer` [license](/docs/platform/manage-access/seats-and-users) and have the necessary [access permissions](/docs/platform/manage-access/about-user-access). 
 
 ### Delete a job
 

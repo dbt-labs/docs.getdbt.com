@@ -20,7 +20,7 @@ As long as dbt Cloud has existed, it has required users to select a version of d
 
 However, this came at a cost. While bumping a project's dbt version *appeared* as simple as selecting from a dropdown, there was real effort required to test the compatibility of the new version against existing projects, package dependencies, and adapters. On the other hand, putting this off meant foregoing access to new features and bug fixes in dbt.
 
-But no more. Today, we're ready to announce the general availability of a new option in dbt Cloud: [**the "Latest" release track.**](/docs/dbt-versions/cloud-release-tracks)
+But no more. Today, we're ready to announce the general availability of a new option in dbt Cloud: [**the "Latest" release track.**](/docs/dbt-versions/dbt-release-tracks)
 
 <!--truncate-->
 
@@ -116,7 +116,7 @@ The same behavior change flags will naturally extend to dbt packages, which are 
 
 Lastly, we’ve revisited our process around artifact interfaces. These are the workhorses of many integrations in the dbt ecosystem: those maintained by dbt Labs, by third-party vendors, or just homegrown at a particular organization. While these schemas have been versioned and well-defined since dbt Core v1.0, they have changed in many of the minor releases since.
 
-We’ve now [formalized our development best practices](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/artifacts/README.md#making-changes-to-dbtartifacts) to strongly prefer minor schema evolutions over major breaking changes. We’ve also put [checks in place](https://github.com/dbt-labs/dbt-core/blob/main/.github/workflows/check-artifact-changes.yml) to ensure we’re not unintentionally introducing breaking changes to artifacts, thus avoiding disruption to integrations across the ecosystem.
+We’ve now [formalized our development best practices](https://github.com/dbt-labs/dbt-core/blob/1.latest/docs/arch/7_Artifacts.md) to strongly prefer minor schema evolutions over major breaking changes. We’ve also put [checks in place](https://github.com/dbt-labs/dbt-core/blob/1.latest/.github/workflows/check-artifact-changes.yml) to ensure we’re not unintentionally introducing breaking changes to artifacts, thus avoiding disruption to integrations across the ecosystem.
 
 ## Our commitment
 

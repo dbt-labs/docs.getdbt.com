@@ -14,7 +14,7 @@ level: 'Advanced'
 
 ## Introduction
 
-This guide will teach you how to build and host a basic Python app which will add <Constant name="dbt" /> job events to Datadog. To do this, when a <Constant name="dbt" /> job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-schema-job-models).
+This guide will teach you how to build and host a basic Python app which will add <Constant name="dbt" /> job events to Datadog. To do this, when a <Constant name="dbt" /> job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-apis/discovery-schema-job-models).
 
 In this example, we will use [fly.io](https://fly.io) for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://ademoverflow.com/en/posts/tutorial-fastapi-aws-lambda-serverless/) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
@@ -107,7 +107,7 @@ Wrote config file fly.toml<br/>
 ## Store secrets
 
 The application requires four secrets to be set, using these names:
-- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="dbt" /> [personal access token](/docs/dbt-cloud-apis/user-tokens) or [service account token](/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
+- `DBT_CLOUD_SERVICE_TOKEN`: a <Constant name="dbt" /> [personal access token](/docs/dbt-apis/user-tokens) or [service account token](/docs/dbt-apis/service-tokens) with at least the `Metdata Only` permission.
 - `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the <Constant name="dbt" /> webhook you created earlier.
 - `DD_API_KEY`: the API key you created earlier.
 - `DD_SITE`: The Datadog site for your organisation, e.g. `datadoghq.com`.

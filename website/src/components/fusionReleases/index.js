@@ -3,11 +3,11 @@ import { usePluginData } from "@docusaurus/useGlobalData";
 import styles from "./styles.module.css";
 
 const CHANGELOG_BASE =
-  "https://github.com/dbt-labs/dbt-fusion/blob/main/CHANGELOG.md";
+  "https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md";
 
 /**
  * Fragment for a Fusion release version, matching GitHub’s autolink for the
- * corresponding `## {version}` heading in CHANGELOG.md (e.g. `2.0.0-preview.172` → `200-preview172`).
+ * corresponding `## {version}` heading in CHANGELOG-fusion.md (e.g. `2.0.0-preview.172` → `200-preview172`).
  */
 function versionToChangelogFragment(version) {
   return version

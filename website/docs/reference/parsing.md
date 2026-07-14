@@ -3,6 +3,8 @@ title: "Project Parsing"
 description: "Read this guide to understand the project parsing configuration in dbt."
 ---
 
+import FusionPartialParseCliFlags from '/snippets/_fusion-partial-parse-cli-flags.md';
+
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)
 - Partial parsing [profile config](/docs/local/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
@@ -36,6 +38,16 @@ After parsing your project, dbt stores an internal project manifest in a file ca
 Starting in v1.0, partial parsing is **on** by default. In development, partial parsing can significantly reduce the time spent waiting at the start of a run, which translates to faster dev cycles and iteration.
 
 The [`PARTIAL_PARSE` global config](/reference/global-configs/parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
+
+<VersionBlock firstVersion="2.0">
+
+:::note <Constant name="fusion" /> and partial parsing
+
+<FusionPartialParseCliFlags />
+
+:::
+
+</VersionBlock>
 
 ### Known limitations
 

@@ -59,7 +59,7 @@ Microsoft Fabric supports two authentication types:
 - Microsoft Entra service principal
 - Microsoft Entra password
 
-To better understand the authentication mechanisms, read our [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) page.
+To better understand the authentication mechanisms, read our [Connect Microsoft Fabric](/docs/platform/connect-data-platform/connect-microsoft-fabric) page.
 
 :::
 

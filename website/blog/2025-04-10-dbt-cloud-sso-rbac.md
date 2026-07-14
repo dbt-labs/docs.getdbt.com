@@ -12,7 +12,7 @@ date: 2025-04-17
 is_featured: true
 ---
 
-As a dbt Cloud admin, you’ve just upgraded to dbt Cloud on the [Enterprise plan](https://www.getdbt.com/pricing) - **congrats**! dbt Cloud has a lot to offer such as [CI/CD](/docs/deploy/about-ci), [Orchestration](/docs/deploy/deployments), [dbt Explorer](/docs/explore/explore-projects), [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro), [Visual Editor](/docs/cloud/canvas), [dbt Copilot](/docs/cloud/dbt-copilot), and so much more. ***But where should you begin?*** 
+As a dbt Cloud admin, you’ve just upgraded to dbt Cloud on the [Enterprise plan](https://www.getdbt.com/pricing) - **congrats**! dbt Cloud has a lot to offer such as [CI/CD](/docs/deploy/about-ci), [Orchestration](/docs/deploy/deployments), [dbt Explorer](/docs/explore/explore-projects), [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro), [Visual Editor](/docs/platform/canvas), [dbt Copilot](/docs/platform/wizard-platform), and so much more. ***But where should you begin?*** 
 
 We strongly recommend as you start adopting dbt Cloud functionality to make it a priority to set up Single-Sign On (SSO) and Role-Based Access Control (RBAC). This foundational step enables your organization to keep your data pipelines secure, onboard users into dbt Cloud with ease, and optimize cost savings for the long term.
 
@@ -27,7 +27,7 @@ Before we dig into SSO, RBAC, and more &mdash; let’s go over how they map into
 
 ## Single-Sign On (SSO)
 
-Your SSO configuration steps will depend on your IdP, so we encourage you to start at our [SSO Overview](/docs/cloud/manage-access/sso-overview) page and find the IdP-specific doc under that section that’s specific to your setup.
+Your SSO configuration steps will depend on your IdP, so we encourage you to start at our [SSO Overview](/docs/platform/manage-access/sso-overview) page and find the IdP-specific doc under that section that’s specific to your setup.
 
 Regardless of what IdP you use, one of the first things you should do as a dbt Cloud admin is set the **login slug** value. This should be a *unique company identifier*. 
 
@@ -35,16 +35,16 @@ Keep in mind that whatever you set, the slug will be appended to the end of the 
 - If I set my login slug to `mynewco`
 - My SSO login URL will look something like `https://cloud.getdbt.com/enterprise-login/mynewco`. 
 
-At first glance, this screen has a lot of info and fields &mdash; but with the [SSO docs](/docs/cloud/manage-access/sso-overview) in hand, dbt Cloud admins are ready to start setting up smooth, scalable workflows.
+At first glance, this screen has a lot of info and fields &mdash; but with the [SSO docs](/docs/platform/manage-access/sso-overview) in hand, dbt Cloud admins are ready to start setting up smooth, scalable workflows.
 
 <Lightbox src="/img/blog/2025-04-10-sso-and-rbac/1_sso_config.png" title="dbt Cloud's SSO configuration page" width="85%" />
 
 Let’s break this down at a high level to make it more digestible:
 
 1. After setting the desired login slug, a *dbt Cloud admin* will go to the dbt Cloud SSO configuration page and copy/paste everything under the **Identity provider values** section and will share the values with the *IdP admin*.
-2. The *IdP admin* will create a [dbt Cloud app](/docs/cloud/manage-access/set-up-sso-saml-2.0#creating-the-application) and then provide the values under the **dbt configuration** section to the *dbt Cloud admin*.
+2. The *IdP admin* will create a [dbt Cloud app](/docs/platform/manage-access/set-up-sso-saml-2.0#creating-the-application) and then provide the values under the **dbt configuration** section to the *dbt Cloud admin*.
    :::tip
-   Refer to the appropriate setup docs for [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Microsoft Entra ID](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id), or [SAML 2.0](/docs/cloud/manage-access/set-up-sso-saml-2.0).
+   Refer to the appropriate setup docs for [Google Workspace](/docs/platform/manage-access/set-up-sso-google-workspace), [Okta](/docs/platform/manage-access/set-up-sso-okta), [Microsoft Entra ID](/docs/platform/manage-access/set-up-sso-microsoft-entra-id), or [SAML 2.0](/docs/platform/manage-access/set-up-sso-saml-2.0).
    :::
 3. The *dbt Cloud admin* will fill in those values into the SSO configuration page under the **dbt configuration** section and click **Save** to complete the process.
 
@@ -54,7 +54,7 @@ After completing this process:
 - If the SSO flow isn’t working as expected, an account admin will still be able to log in with a password to correct the configuration.
 
 :::tip
-Be aware of our [SSO enforcement policy](https://docs.getdbt.com/docs/cloud/manage-access/sso-overview#sso-enforcement) &mdash; once SSO is configured, all non-admin users will have to log in via SSO as a security best practice, while account admins, by default, can still authenticate with a password in lieu of [multi-factor authentication (MFA)](/docs/cloud/manage-access/mfa).
+Be aware of our [SSO enforcement policy](https://docs.getdbt.com/docs/platform/manage-access/sso-overview#sso-enforcement) &mdash; once SSO is configured, all non-admin users will have to log in via SSO as a security best practice, while account admins, by default, can still authenticate with a password in lieu of [multi-factor authentication (MFA)](/docs/platform/manage-access/mfa).
 :::
 
 Once you've set up SSO successfully, you have additional ways to onboard your users into dbt Cloud on top of sending out an email invite:
@@ -76,7 +76,7 @@ As a prerequisite, these all should be set _before_ configuring RBAC. Let’s ge
 
 ### Licenses
 
-There are three [license types](/docs/cloud/manage-access/seats-and-users) in dbt Cloud:
+There are three [license types](/docs/platform/manage-access/seats-and-users) in dbt Cloud:
 
 - **Developer:** User can be granted *any* permissions.
 - **Read-Only:** User has read-only permissions applied to all dbt Cloud resources regardless of the role-based permissions that the user is assigned.
@@ -90,7 +90,7 @@ If a user is in multiple groups with different license types assigned, they will
 
 ### Groups
 
-Groups are used to manage permissions. They define what a user can see and do across projects and environments. We recommend reviewing our [available permissions sets](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions) and determining which are applicable to your dbt Cloud user base. 
+Groups are used to manage permissions. They define what a user can see and do across projects and environments. We recommend reviewing our [available permissions sets](https://docs.getdbt.com/docs/platform/manage-access/enterprise-permissions) and determining which are applicable to your dbt Cloud user base. 
 
 Keep in mind group permissions are additive in nature for users that belong to more than one group &mdash; meaning if a user belongs to multiple groups, they'll inherit all assigned permissions.
 
@@ -141,7 +141,7 @@ Easy enough, right? Just make sure these two conditions are checked for RBAC to 
 
 ## Automate SSO & RBAC: Introducing SCIM
 
-We have exciting news &mdash; [System for Cross-Domain Identity Management) (SCIM)](/docs/cloud/manage-access/scim) support will be generally available in May 2025 (for SCIM-compliant IdPs & Okta)! If you’re unfamiliar with SCIM, you can think of it as automated user provisioning in dbt Cloud. It makes user data more secure and simplifies the admin and user experience by automating the user identity and group lifecycle. 
+We have exciting news &mdash; [System for Cross-Domain Identity Management) (SCIM)](/docs/platform/manage-access/scim) support will be generally available in May 2025 (for SCIM-compliant IdPs & Okta)! If you’re unfamiliar with SCIM, you can think of it as automated user provisioning in dbt Cloud. It makes user data more secure and simplifies the admin and user experience by automating the user identity and group lifecycle. 
 
 Here’s why you should care about SCIM as a dbt Cloud admin:
 

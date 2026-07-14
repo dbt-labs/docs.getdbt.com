@@ -1,9 +1,10 @@
 There are multiple ways of setting flags, which depend on the use case:
-- **[Project-level `flags` in `dbt_project.yml`](/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Also, opt in or opt out of [behavior changes](/reference/global-configs/behavior-changes) to manage your migration off legacy functionality.
-- **[Environment variables](/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
 - **[CLI options](/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
+- **[Environment variables](/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](/docs/deploy/continuous-integration)), or different behavior for different users in development (based on personal preferences).
+- **[Project-level `flags` in `dbt_project.yml`](/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Also, opt in or out of [behavior changes](/reference/global-configs/behavior-changes) to manage your migration off legacy functionality.
+- **[User settings (`~/.dbt/user_settings.yml`)](/reference/global-configs/user-settings):** Define personal preferences that apply across all projects on your machine. Written automatically by `dbt login`.
 
-The most specific setting "wins." If you set the same flag in all three places, the CLI option will take precedence, followed by the environment variable, and finally, the value in `dbt_project.yml`. If you set the flag in none of those places, it will use the default value defined within dbt.
+The most specific setting "wins." CLI options take the highest precedence, followed by environment variables, then `dbt_project.yml`, and finally `user_settings.yml`. If you set the flag in none of those places, it will use the default value defined within dbt.
 
 Most flags can be set in all three places:
 ```yaml

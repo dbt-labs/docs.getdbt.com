@@ -60,7 +60,7 @@ As long as you comply with the [three restrictions in ELv2](http://www.getdbt.co
 
 Artifact type: Precompiled binary
 
-How to access: download following the instructions [here](/docs/local/install-dbt?version=2#get-started)
+How to access: download following the instructions [here](/docs/local/install-dbt?version=2)
 
 License: ELv2
 
@@ -81,11 +81,11 @@ As long as you comply with the three restrictions in ELv2,
 
 Artifact type: Precompiled binary and managed service
 
-Available at: [Download binary](/docs/local/install-dbt?version=2#get-started) and [sign up for the service](http://getdbt.com/signup)
+Available at: [Download binary](/docs/local/install-dbt?version=2) and [sign up for the service](http://getdbt.com/signup)
 
 License: ELv2 (binary) and Proprietary (service)
 
-Organizations who *do* have a commercial agreement will unlock even more capabilities, but they'll use the exact same publicly-released binary discussed above. If you want to start using platform features, [such as dbt Mesh](https://docs.getdbt.com/docs/mesh/govern/project-dependencies), all you need to do is [download a configuration file](https://docs.getdbt.com/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli). *(Joel commentary - As someone who has been juggling the dbt Cloud CLI alongside dbt Core for the last couple of years, I cannot overstate how thrilled I am by this.)*
+Organizations who *do* have a commercial agreement will unlock even more capabilities, but they'll use the exact same publicly-released binary discussed above. If you want to start using platform features, [such as dbt Mesh](https://docs.getdbt.com/docs/mesh/govern/project-dependencies), all you need to do is [download a configuration file](https://docs.getdbt.com/docs/platform/configure-dbt-cli#configure-the-dbt-cli). *(Joel commentary - As someone who has been juggling the dbt Cloud CLI alongside dbt Core for the last couple of years, I cannot overstate how thrilled I am by this.)*
 
 Obviously there's additional cloud-backed services necessary to deliver platform-specific features, such as State-Aware Orchestration. That code is proprietary and governed by your agreement with dbt Labs.
 

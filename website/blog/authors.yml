@@ -249,7 +249,7 @@ filip_byrén:
   page: true
 grace_goheen:
   image_url: /img/blog/authors/grace-goheen.jpeg
-  title: Analytics Engineer at dbt Labs
+  title: Product Manager, dbt Core at dbt Labs
   socials:
     linkedin: gracegoheen
   name: Grace Goheen
@@ -581,6 +581,13 @@ taylor_dunlap:
   title: Senior Solutions Architect at dbt Labs
   name: Taylor Dunlap
   page: true
+toby_mao:
+  image_url: /img/blog/authors/toby-mao.png
+  socials:
+    linkedin: toby-mao
+  name: Toby Mao
+  page: true
+  title: Director, Engineering at Fivetran
 viraj_parekh:
   image_url: /img/blog/authors/viraj-parekh.jpeg
   title: Field CTO at Astronomer
@@ -635,4 +642,19 @@ devon_fulcher:
   socials:
     linkedin: devonfulcher
   name: Devon Fulcher
+  page: true
+mirna_wong:
+  image_url: /img/blog/authors/mwong.png
+  title: Senior Technical Writer at dbt Labs
+  socials:
+    linkedin: mirnawong
+  name: Mirna Wong
+  page: true
+alex_noonan:
+  image_url: /img/blog/authors/alex-noonan.jpg
+  title: Senior Developer Experience Advocate
+  socials:
+    x: alexnoonan6
+    linkedin: alexander-noonan
+  name: Alex Noonan
   page: true

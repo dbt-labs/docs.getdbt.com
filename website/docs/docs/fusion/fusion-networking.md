@@ -67,11 +67,11 @@ You can also add this to your `.env` file in your project root:
 DBT_SEND_ANONYMOUS_USAGE_STATS=false
 ```
 
-For more details on `.env` file usage, refer to [Environment variables](/docs/local/install-dbt?version=2#environment-variables).
+For more details on `.env` file usage, refer to [Environment variables](/docs/local/configure-environment-variables).
 
 ## Manifest downloads (dbt platform only) <Lifecycle status="enterprise" /> {#manifest-downloads} 
 
-For [<Constant name="dbt_platform" />](/docs/cloud/about-cloud/dbt-cloud-features) customers using <Constant name="fusion" /> locally, <Constant name="fusion" /> downloads production manifests from <Constant name="dbt_platform" /> to enable features like [deferral](/reference/node-selection/defer) and [cross-project references](/docs/mesh/govern/project-dependencies). The [cloud storage provider](/docs/cloud/about-cloud/access-regions-ip-addresses) hosting your <Constant name="dbt_platform" /> cell serves these manifests via **pre-signed URLs**.
+For [<Constant name="dbt_platform" />](/docs/platform/about-platform/dbt-platform-features) customers using <Constant name="fusion" /> locally, <Constant name="fusion" /> downloads production manifests from <Constant name="dbt_platform" /> to enable features like [deferral](/reference/node-selection/defer) and [cross-project references](/docs/mesh/govern/project-dependencies). The [cloud storage provider](/docs/platform/about-platform/access-regions-ip-addresses) hosting your <Constant name="dbt_platform" /> cell serves these manifests via **pre-signed URLs**.
 
 The specific hostnames depend on your <Constant name="dbt_platform" /> deployment region and the underlying cloud provider. To ensure <Constant name="fusion" /> can download manifests, allowlist the appropriate storage domain for your region:
 

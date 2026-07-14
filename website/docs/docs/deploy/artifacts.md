@@ -8,7 +8,7 @@ When running dbt jobs, dbt generates and saves *artifacts*. You can use these ar
 
 ## Create dbt Artifacts
 
-[<Constant name="catalog" />](/docs/explore/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments).
+[<Constant name="catalog" />](/docs/explore/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments).
 
 <Constant name="catalog" /> automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
 
@@ -24,11 +24,11 @@ While running any job can produce artifacts, you should only associate one produ
 2. Select your project, and click **Edit** in the lower right. 
 3. Under **Artifacts**, select the jobs you want to produce documentation and source freshness artifacts for.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
 
 If you don't see your job listed, you might need to edit the job and select **Run source freshness** and **Generate docs on run**.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
 
 When you add a production job to a project, <Constant name="dbt" /> updates the content and provides links to the production documentation and source freshness artifacts it generated for that project. You can see these links by clicking **Deploy** in the upper left, selecting **Jobs**, and then selecting the production job. From the job page, you can select a specific run to see how artifacts were updated for that run only.
 

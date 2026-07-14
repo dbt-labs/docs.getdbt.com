@@ -37,13 +37,13 @@ To access <Constant name="canvas" />:
 1. Click **<Constant name="canvas" />** on the left-side menu.
 2. From the right side, click **Create new workspace**. This will open a new workspace with a blank untitled model. You don't need to take any additional action to continue with this guide, but in scenarios where you want to create a new model, click **+Add** on the top navigation bar and click **Create new model**.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/canvas-create-new-model.png" width="90%" title="Create a new model from the Canvas landing page."/>
+<Lightbox src="/img/docs/dbt-platform/canvas/canvas-create-new-model.png" width="90%" title="Create a new model from the Canvas landing page."/>
 
 ## Navigating the interface
 
 <Constant name="canvas" /> comprises a series of menus activated by clicking icons surrounding the border of the canvas workspace area. With none of the menu items activated, the workspace looks like this:
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/canvas-screen.png" width="90%" title="The Canvas workspace screen. The number of items is defined in this section." />
+<Lightbox src="/img/docs/dbt-platform/canvas/canvas-screen.png" width="90%" title="The Canvas workspace screen. The number of items is defined in this section." />
 
 Click on an icon to expand its section or execute an action depending on its purpose. The options are as follows:
 
@@ -54,7 +54,7 @@ Click on an icon to expand its section or execute an action depending on its pur
 5. The **Previews** pane that displays previews data for individual operators.
 6. The **Add** option for creating new models, editing existing, or adding seed files.
 7. The **Operators** toolbar (`Input`, `Transform`, and `Output`) contains the building blocks for creating a model with the editor. 
-8. The [<Constant name="copilot" />](/docs/cloud/dbt-copilot) icon (where available). Use natural language to build your <Constant name="canvas" /> models.
+8. The [<Constant name="wizard" />](/docs/platform/wizard-platform) icon (where available). Use natural language to build your <Constant name="canvas" /> models.
 9. The **SQL code** area displays the SQL that compiles your model.
 10. The **Run** command executes `dbt run` for the model.
 11. This button is initially a **Commit** command for your integrated <Constant name="git" /> provider. It will change to "Open pull request" once your first commit is made. The button will not initially appear until you begin working in the canvas area.
@@ -76,9 +76,9 @@ Operators are divided into three types:
 - **Transform:** Transform operators change and shape your data.
 - **Output:** Output operators define your model name and location.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/operators.png" width="90%" title="The operator’s menu on the side of the Canvas workspace." />
+<Lightbox src="/img/docs/dbt-platform/canvas/operators.png" width="90%" title="The operator’s menu on the side of the Canvas workspace." />
 
-Read more about the [individual operators](/docs/cloud/canvas-interface#operators) to understand the basic purpose of each. The dbt model created by the <Constant name="canvas" /> builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
+Read more about the [individual operators](/docs/platform/canvas-interface#operators) to understand the basic purpose of each. The dbt model created by the <Constant name="canvas" /> builds off of existing models. In this guide, there will be input (source) models and an output model (what you are building) which will be _your model_.  
 
 <details>
 <summary>More about operator tiles</summary>
@@ -87,7 +87,7 @@ The operators are drag-and-drop from their menu to the canvas, and when they are
 
 The tiles have the same basic setup with different fields depending on their function. All operators except for **Model** must be connected to another tile before configuring. Once configured, they’ll have the same basic layout.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/operator-tile.png" width="90%" title="An operator tile with configurations filled out." />
+<Lightbox src="/img/docs/dbt-platform/canvas/operator-tile.png" width="90%" title="An operator tile with configurations filled out." />
 
 1. **The connectors:** Click-and-drag to the connector on another operator to link them. Some connectors have L and R markers. When implementing joins, they designate the left and right joins, respectively.
 2. **The title:** Click to change. The examples and images in this guide will use the default names. 
@@ -110,13 +110,13 @@ To get started:
 2. Click **Choose a model** and then select the source `stg_models` from the dropdown. 
 3. Click the **Select model** option in the window that lists the columns.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/one-model-operator.png" width="90%" title="A single model operator." />
+<Lightbox src="/img/docs/dbt-platform/canvas/one-model-operator.png" width="90%" title="A single model operator." />
 
 You now have your first input model in <Constant name="canvas" />!
 
 4. Drag a new **Input Model** operator to the canvas below the first and repeat the previous steps, but this time set the source model to `stg_order_items`.
 
-    <Lightbox src="/img/docs/dbt-cloud/canvas/two-model-operators.png" width="90%" title="Two model operators in the canvas."/>
+    <Lightbox src="/img/docs/dbt-platform/canvas/two-model-operators.png" width="90%" title="Two model operators in the canvas."/>
 
 Now, you have two input models and are ready to transform the data!
 
@@ -130,11 +130,11 @@ Don't see a pre-existing model you're looking for? Ask your dbt admins to ensure
 
 1. From the **Operators** menu, click **Transform** and drag the **Join** operator onto the canvas to the right of the source models. 
     
-    <Lightbox src="/img/docs/dbt-cloud/canvas/join-not-connected.png" width="90%" title="A join that has not been connected to the models" />
+    <Lightbox src="/img/docs/dbt-platform/canvas/join-not-connected.png" width="90%" title="A join that has not been connected to the models" />
 
 2. Click and drag a line from the **+** connector below the `L` on the join border to the **+** on the `stg_orders` model. Do the same for the `R` connector to the `stg_order_items` model.
 
-    <Lightbox src="/img/docs/dbt-cloud/canvas/join-connected.png" width="90%" title="The join is connected to two model operators." />
+    <Lightbox src="/img/docs/dbt-platform/canvas/join-connected.png" width="90%" title="The join is connected to two model operators." />
 
 3. In the **Join** tile, click **Configure inputs.**
 4. Set the **Join type** to `Inner`.
@@ -146,7 +146,7 @@ select the following columns:
     - Note: These will appear in the order they are clicked.
 7. You've now built your join! Test it by clicking the **Play icon** in the top right corner of the join tile. Your data will populate in the **Runs and previews** pane.
 
-    <Lightbox src="/img/docs/dbt-cloud/canvas/preview-join.png" width="90%" title="A completed join with the sample data." />
+    <Lightbox src="/img/docs/dbt-platform/canvas/preview-join.png" width="90%" title="A completed join with the sample data." />
 
 :::tip
 
@@ -171,7 +171,7 @@ Multiple options for transforming your data include custom formulas, filters, an
     - **Column:** PRODUCT_ID
     - **Alias:** count_PRODUCT_ID
 
-    <Lightbox src="/img/docs/dbt-cloud/canvas/aggregation.png" width="90%" title="The configured aggregation operator tile." />
+    <Lightbox src="/img/docs/dbt-platform/canvas/aggregation.png" width="90%" title="The configured aggregation operator tile." />
 
 6. Click the **Play icon** to preview the data. You're starting to see the results you're looking for, but the data is scattered. Let's clean it up a bit more.
 
@@ -191,7 +191,7 @@ There's a lot of data there. Dozens of customers are buying hundreds of products
 4. Click **Add sorting** and in the new **Select column** field select `Aggregation1.count_PRODUCT_ID`. Set it to `Desc`.
 5. Press the **Play icon** to preview the new data.
 
-    <Lightbox src="/img/docs/dbt-cloud/canvas/order.png" width="90%" title="The ordered data operator tile config." />
+    <Lightbox src="/img/docs/dbt-platform/canvas/order.png" width="90%" title="The ordered data operator tile config." />
 
 :::tip
 
@@ -210,7 +210,7 @@ Now that you've built your model, you need to customize the output name and loca
     - Hover over a column name and click the **-** icon to remove it from the output model.
 4. Click the **play icon** to preview your final model. 
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/output-model.png" width="90%" title="The output model configures your final model's name and location." />
+<Lightbox src="/img/docs/dbt-platform/canvas/output-model.png" width="90%" title="The output model configures your final model's name and location." />
 
 :::tip Model locations
 
@@ -230,15 +230,15 @@ Now that you've built a model that results in the data you want, it's time to ru
 
 To run your model, you only need to click the big **Run** button. With the <Constant name="canvas" />, there is no command line and no need to memorize a list of commands; there is only **Run**. Click it to see the results populate in the **Runs and previews** pane.
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/run-results.png" width="90%" title="The results of a successful run in the 'Runs and previews' pane." />
+<Lightbox src="/img/docs/dbt-platform/canvas/run-results.png" width="90%" title="The results of a successful run in the 'Runs and previews' pane." />
 
 This will [materialize](/docs/build/materializations) the data as a `view` in your developer schema in the database. Once the model has been merged with your project and `dbt run` is executed in your Staging or Production environments, it will be materialized as a view in related schemas. 
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/preview-data.png" width="90%" title="Preview of the transformed data in Snowflake." />
+<Lightbox src="/img/docs/dbt-platform/canvas/preview-data.png" width="90%" title="Preview of the transformed data in Snowflake." />
 
 :::tip
 
-Have dbt [<Constant name="copilot" />](/docs/cloud/dbt-copilot) enabled for your <Constant name="dbt" /> Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
+Have dbt [<Constant name="wizard" />](/docs/platform/wizard-platform) enabled for your <Constant name="dbt" /> Enterprise account? Clear the board and try using natural language to build the model in this guide without manually configuring any operators.
 
 :::
 
@@ -246,7 +246,7 @@ Have dbt [<Constant name="copilot" />](/docs/cloud/dbt-copilot) enabled for your
 
 The models built in the <Constant name="canvas" /> are a part of your larger dbt project. They are stored in the `visual_editor` folder of your `/models` directory. This is all done automatically; you don't have to configure any paths or directories. 
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/ve-model-folder.png" width="90%" title="Example of the Canvas model path in GitHub." />
+<Lightbox src="/img/docs/dbt-platform/canvas/ve-model-folder.png" width="90%" title="Example of the Canvas model path in GitHub." />
 
 However, it won't be created in your <Constant name="git" /> repo until you commit your first model. So, back in the model's view:
 
@@ -258,7 +258,7 @@ However, it won't be created in your <Constant name="git" /> repo until you comm
 
 The following example uses GitHub as the provider:
 
-<Lightbox src="/img/docs/dbt-cloud/canvas/demo-model-github.png" width="90%" title="Example of the screen you're taken to in GitHub when you create a pull request from Canvas." />
+<Lightbox src="/img/docs/dbt-platform/canvas/demo-model-github.png" width="90%" title="Example of the screen you're taken to in GitHub when you create a pull request from Canvas." />
 
 5. Click **Create pull request** in the GitHub window.
 6. Complete the **Add a title** and **Add a description** fields. If your description is split between both, copy all the contents to the description field and give it a shorter title.
@@ -268,7 +268,7 @@ You've just submitted your first model from the <Constant name="canvas" /> for r
 
 :::tip
 
-Want to take your skills to the next level? Try taking the SQL output from your <Constant name="canvas" /> model and using it to create a model in the [<Constant name="studio_ide" />](/docs/cloud/studio-ide/develop-in-studio). 
+Want to take your skills to the next level? Try taking the SQL output from your <Constant name="canvas" /> model and using it to create a model in the [<Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio). 
 
 :::
 

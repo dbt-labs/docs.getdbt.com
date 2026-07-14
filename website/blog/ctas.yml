@@ -8,7 +8,7 @@
 
 - name: fast_track_dbt_workshop
   header: Fast track to dbt workshop
-  subheader: Join our free, Fast track to dbt workshop on April 7 or 8. Build and run your first dbt models!
+  subheader: Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!
   button_text: Register here
   url: https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=____&utm_term=all_all__
 
@@ -23,3 +23,21 @@
   subheader: Join us for the 2026 State of Analytics Engineering Virtual Event on April 29 with live Q&A and giveaways!
   button_text: Register here
   url: https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtual-event/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_state-analytics-engineering_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: fast_track_to_dbt_workshop
+  header: Fast track to dbt workshop
+  subheader: Join our free, Fast track to dbt workshop on June 3 or 4. Build and run your first dbt models!
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/fast-track-to-dbt-workshop/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_fast-track-dbt-workshop_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: fivetran_dbt_labs_merger_webinar
+  header: Fivetran + dbt Labs
+  subheader: The future of dbt Core v2.0, what we're building together, and live Q&A on June 25
+  button_text: Save your seat!
+  url: https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: dbt_state_july_2026_webinar
+  header: "dbt State: Build what's changed, skip what hasn't"
+  subheader: Join us July 15th to learn how to save on warehouse compute costs!
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__

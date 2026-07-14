@@ -31,7 +31,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 
 ### Prerequisites 
 
-- You have a [multi-tenant](/docs/cloud/about-cloud/access-regions-ip-addresses) deployment in [<Constant name="dbt" />](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
+- You have a [multi-tenant](/docs/platform/about-platform/access-regions-ip-addresses) deployment in [<Constant name="dbt" />](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/platform/about-platform/tenancy).
 - You have a [Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). If you don't, you can start a free trial. Refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs for further setup details.
 - You have an AWS account with permissions to upload data to an S3 bucket.
 - For Amazon S3 authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
@@ -95,11 +95,11 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
 
     The **Amazon S3** page should look similar to this, except for the **Authentication to S3** section which is dependant on your setup:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-config-s3.png" title="Amazon S3 connection settings in Starburst Galaxy" />
+    <Lightbox src="/img/quickstarts/dbt-platform/starburst-galaxy-config-s3.png" title="Amazon S3 connection settings in Starburst Galaxy" />
 
 8. Click **Test connection**. This verifies that Starburst Galaxy can access your S3 bucket. 
 9. Click **Connect catalog** if the connection test passes.
-    <Lightbox src="/img/quickstarts/dbt-cloud/test-connection-success.png" title="Successful connection test" />
+    <Lightbox src="/img/quickstarts/dbt-platform/test-connection-success.png" title="Successful connection test" />
 
 10. On the **Set permissions** page, click **Skip**. You can add permissions later if you want.
 11. On the **Add to cluster** page, choose the cluster you want to add the catalog to from the dropdown and click **Add to cluster**.
@@ -116,7 +116,7 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
     
     When done, click **Add privileges**.
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/add-privilege.png" title="Add privilege to accountadmin role" />
+    <Lightbox src="/img/quickstarts/dbt-platform/add-privilege.png" title="Add privilege to accountadmin role" />
 
 ## Create tables with Starburst Galaxy
 To query the Jaffle Shop data with Starburst Galaxy, you need to create tables using the Jaffle Shop data that you [loaded to your S3 bucket](#load-data-to-s3). You can do this (and run any SQL statement) from the [query editor](https://docs.starburst.io/starburst-galaxy/query/query-editor.html). 
@@ -124,7 +124,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 1. Click **Query > Query editor** on the left sidebar of the Starburst Galaxy UI. The main body of the page is now the query editor. 
 2. Configure the query editor so it queries your S3 bucket. In the upper right corner of the query editor, select your cluster in the first gray box and select your catalog in the second gray box:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-editor.png" title="Set the cluster and catalog in query editor" />
+    <Lightbox src="/img/quickstarts/dbt-platform/starburst-galaxy-editor.png" title="Set the cluster and catalog in query editor" />
 
 3. Copy and paste these queries into the query editor. Then **Run** each query individually. 
 
@@ -184,7 +184,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     ```
 4. When the queries are done, you can see the following hierarchy on the query editor's left sidebar:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-data-hierarchy.png" title="Hierarchy of data in query editor" />
+    <Lightbox src="/img/quickstarts/dbt-platform/starburst-data-hierarchy.png" title="Hierarchy of data in query editor" />
 
 5. Verify that the tables were created successfully. In the query editor, run the following queries:
 
@@ -202,14 +202,14 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     If this role is not listed for you, choose the role you selected in [Connect Starburst Galaxy to the Amazon S3 bucket](#connect-to-s3-bucket) when you added location privilege for your S3 bucket.
 3. Click **Clusters** on the left sidebar.
 4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in <Constant name="dbt" />.
-5. In another browser tab, log in to [<Constant name="dbt" />](/docs/cloud/about-cloud/access-regions-ip-addresses).
+5. In another browser tab, log in to [<Constant name="dbt" />](/docs/platform/about-platform/access-regions-ip-addresses).
 6. Create a new project in <Constant name="dbt" />. Click on your account name in the left side menu, select **Account settings**, and click **+ New Project**.
 7. Enter a project name and click **Continue**.
 8. Choose **Starburst** as your connection and click **Next**.
 9. Enter the **Settings** for your new project:
     - **Host** – The **Host** value from the **Connection information** modal in your Starburst Galaxy tab.
     - **Port** – 443 (which is the default)
-10. Enter the **Development Credentials** for your new project:
+10. Enter the **User credentials** for your new project:
     - **User** – The **User** value from the **Connection information** modal in your Starburst Galaxy tab. Make sure to use the entire string, including the account's role which is the `/` and all the characters that follow. If you don’t include it, your default role is used and that might not have the correct permissions for project development.
     - **Password** – The password you use to log in to your Starburst Galaxy account.
     - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables). For future reference, database is synonymous to catalog between <Constant name="dbt" /> and Starburst Galaxy. 

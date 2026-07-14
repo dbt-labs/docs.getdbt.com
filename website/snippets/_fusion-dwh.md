@@ -1,17 +1,17 @@
-   <Expandable alt_header="BigQuery">  
+   <Expandable alt_header="BigQuery" lifecycle="preview" lifecycle_size="75">  
     - Service Account / User Token
     - Native OAuth
     - External OAuth 
-      - [Workload Identity Federation](/docs/cloud/manage-access/set-up-bigquery-oauth?version=1.12#set-up-bigquery-workload-identity-federation) isn't currently supported in <Constant name="fusion"/>. Use a [Native OAuth connection](/docs/cloud/manage-access/set-up-bigquery-oauth#set-up-bigquery-native-oauth) or service account instead. Support coming soon.
+      - [Workload Identity Federation](/docs/platform/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation) (Microsoft Entra)
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
-  <Expandable alt_header="Databricks">
+  <Expandable alt_header="Databricks" lifecycle="private_preview" lifecycle_size="75">
     - Service Account / User Token
     - Native OAuth
   </Expandable>
 
-  <Expandable alt_header="Redshift">
+  <Expandable alt_header="Redshift" lifecycle="preview" lifecycle_size="75">
     - Username / Password
     - IAM profile
   </Expandable>
@@ -24,7 +24,7 @@
     - MFA
   </Expandable>
 
-  <Expandable alt_header="Apache Spark (Fusion CLI only)">
+  <Expandable alt_header="Apache Spark (Fusion CLI only)" lifecycle="beta" lifecycle_size="75">
     - Thrift
       - Simple Authentication and Security Layer (SASL) PLAIN
       - No SASL (NOSASL) 
@@ -34,7 +34,7 @@
         - Supports authentication using single sign-on, service accounts, or user tokens
   </Expandable>
 
-  <Expandable alt_header="DuckDB (Fusion CLI only)">
+  <Expandable alt_header="DuckDB (Fusion CLI only)" lifecycle="beta" lifecycle_size="75">
     DuckDB does not require authentication &mdash; it runs locally on your machine.
   </Expandable>
 

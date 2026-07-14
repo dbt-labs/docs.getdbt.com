@@ -33,7 +33,7 @@ This is kinda slow. Not so much as a one-off, but a project with 10,000 nodes mi
 
 ## What if we wanted it to be faster?
 
-Since running the code is slow, one way to get results faster is to not run the code. Since v1.0, dbt's parser has [used a static analyzer](https://github.com/dbt-labs/dbt-core/blob/main/docs/guides/parsing-vs-compilation-vs-runtime.md#:~:text=Simple%20Jinja%2DSQL%20models%20(using%20just%20ref()%2C%20source()%2C%20%26/or%20config()%20with%20literal%20inputs)%20are%20also%20statically%20analyzed%2C%20using%20a%20thing%20we%20built.%20This%20is%20very%20fast%20(~0.3%20ms)) to resolve refs when possible, which is [about 3x faster](https://docs.getdbt.com/reference/parsing#:~:text=For%20now%2C%20the%20static%20parser,speedup%20in%20the%20model%20parser) than going through the whole rigmarole above.
+Since running the code is slow, one way to get results faster is to not run the code. Since v1.0, dbt's parser has [used a static analyzer](https://github.com/dbt-labs/dbt-core/blob/1.latest/docs/guides/parsing-vs-compilation-vs-runtime.md#:~:text=Simple%20Jinja%2DSQL%20models%20(using%20just%20ref()%2C%20source()%2C%20%26/or%20config()%20with%20literal%20inputs)%20are%20also%20statically%20analyzed%2C%20using%20a%20thing%20we%20built.%20This%20is%20very%20fast%20(~0.3%20ms)) to resolve refs when possible, which is [about 3x faster](https://docs.getdbt.com/reference/parsing#:~:text=For%20now%2C%20the%20static%20parser,speedup%20in%20the%20model%20parser) than going through the whole rigmarole above.
 
 <Lightbox src="/img/blog/2025-02-19-faster-project-parsing-with-rust/evaluation_strategies_1.png" width="100%" />
 

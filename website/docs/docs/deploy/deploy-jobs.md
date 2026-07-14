@@ -11,17 +11,17 @@ You can use deploy jobs to build production data assets. Deploy jobs make it eas
 - Environment name
 - Sources and documentation info, if applicable
 - Job run details, including run timing, [model timing data](/docs/deploy/run-visibility#model-timing), and [artifacts](/docs/deploy/artifacts)
-- Detailed run steps with logs and their run step statuses
+- Detailed run steps with logs and their run step statuses. For <Constant name="fusion"/> runs, you can also download OpenTelemetry logs from individual steps. Refer to [Downloading logs](/docs/deploy/run-visibility#access-logs).
 
 You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days), enter a [custom cron schedule](#cron-schedule), or [trigger the job after another job completes](#trigger-on-job-completion).
 
 
 ## Prerequisites
 
-- You must have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
+- You must have a [<Constant name="dbt" /> account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/platform/manage-access/seats-and-users).
     - For the [Trigger on job completion](#trigger-on-job-completion) feature, your <Constant name="dbt" /> account must be on the [Starter or an Enterprise-tier](https://www.getdbt.com/pricing/) plan.
-- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
-- You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
+- You must have a dbt project connected to a [data platform](/docs/platform/connect-data-platform/about-connections).
+- You must have [access permission](/docs/platform/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments). 
 
 ## Create and schedule jobs {#create-and-schedule-jobs}
@@ -54,7 +54,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
         - **Job** &mdash; Specify the upstream deploy job. 
         - **Completes on** &mdash; Select the job run status(es) that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.  
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
+<Lightbox src="/img/docs/dbt-platform/using-dbt-platform/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
 5. (Optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
@@ -69,7 +69,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/local/profiles.yml#understanding-threads). Increase the thread count to increase model execution concurrency.
 
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
+    <Lightbox src="/img/docs/dbt-platform/using-dbt-platform/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
 
 ### Schedule days
 
@@ -123,9 +123,9 @@ To _chain_ deploy jobs together:
    - You can also use the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this.
 4. In the **Completes on** option, select the job run status(es) that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.
 
-<Lightbox src="/img/docs/deploy/deploy-job-completion.jpg" width="100%" title="Example of Trigger on job completion on the Deploy job page"/>
+<Lightbox src="/img/docs/deploy/deploy-job-completion.png" width="100%" title="Example of Trigger on job completion on the Deploy job page"/>
 
-5. You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/cloud/manage-access/enterprise-permissions#project-role-permissions) to the project and job to configure the trigger. 
+5. You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/platform/manage-access/enterprise-permissions#project-role-permissions) to the project and job to configure the trigger. 
 
 If another job triggers your job to run, you can find a link to the upstream job in the [run details section](/docs/deploy/run-visibility#job-run-details).
 
@@ -153,6 +153,7 @@ To view the change history:
 
 ## Related docs
 
+- [Run visibility](/docs/deploy/run-visibility)
 - [Artifacts](/docs/deploy/artifacts)
 - [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [Webhooks](/docs/deploy/webhooks)

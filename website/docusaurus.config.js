@@ -2,9 +2,10 @@ import path from "path";
 import math from "remark-math";
 import katex from "rehype-katex";
 import rehypeCodeLanguage from "./plugins/rehypeCodeLanguage.js";
+import remarkBlogFootnoteLinks from "./plugins/remarkBlogFootnoteLinks.js";
 const { themes } = require('prism-react-renderer')
 
-const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
+const { products, versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Set SITE_URL by environment */
@@ -86,14 +87,13 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "state-of-analytics-engineering-virtual-event",
-      content:
-        "Join us for the 2026 State of Analytics Engineering Virtual Event on April 29 with live Q&A and giveaways!",
+      id: "dbt-state-july-2026-webinar",
+      content: "dbt State: Build what's changed, skip what hasn't. Join us for a live virtual event on July 15th to learn how to save on warehouse compute costs!",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/2026-state-of-analytics-engineering-virtual-event/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2027_state-analytics-engineering_aw&utm_content=themed-webinar____&utm_term=all_all__",
+      "https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__",
     prism: {
       theme: (() => {
         var theme = themes.nightOwl;
@@ -151,7 +151,7 @@ var siteSettings = {
           position: "right",
         },
         {
-          to: "/docs/dbt-cloud-apis/overview",
+          to: "/docs/dbt-apis/overview",
           label: "APIs",
           position: "right",
         },
@@ -173,7 +173,7 @@ var siteSettings = {
             },
             {
               label: "Fusion Diaries",
-              href: "https://github.com/dbt-labs/dbt-fusion/discussions/categories/announcements",
+              href: "https://github.com/dbt-labs/dbt-core/discussions/categories/announcements?discussions_q=is:open+diaries+category:Announcements",
             },
             {
               label: "Courses",
@@ -216,7 +216,7 @@ var siteSettings = {
           items: [
             {
               label: "Log in to dbt",
-              to: "https://cloud.getdbt.com/",
+              to: "https://login.dbt.com/",
               target: "_blank",
             },
             {
@@ -307,7 +307,7 @@ var siteSettings = {
 
           <div class='footer-sub-items'>
             <div class="footer-copyright">
-              <span>&copy; ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.</span>
+              <span>&copy; ${new Date().getFullYear()} dbt Labs, LLC. All Rights Reserved.</span>
             </div>
             <div class="footer-sub-items-links">
               <a href='https://www.getdbt.com/terms-of-use/'>Terms of Service</a>
@@ -345,7 +345,7 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
-          exclude: ["hover-terms.md"],
+          exclude: ["hover-terms.md", "faqs/Runs/sao-difference-core.md"],
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
@@ -354,7 +354,7 @@ var siteSettings = {
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
-          remarkPlugins: [math],
+          remarkPlugins: [math, remarkBlogFootnoteLinks],
           rehypePlugins: [katex],
           // Un-truncated blog posts will throw an error
           // https://docusaurus.io/blog/releases/3.5#onuntruncatedblogposts
@@ -374,6 +374,7 @@ var siteSettings = {
     path.resolve("plugins/buildRSSFeeds"),
     path.resolve("plugins/buildRawMarkdownData"),
     path.resolve("plugins/buildFusionReleases"),
+    path.resolve("plugins/buildPageBanners"),
     [
       "vercel-analytics",
       {
@@ -424,34 +425,34 @@ var siteSettings = {
                   id: "dbt-platform",
                   name: "dbt platform",
                   routes: [
-                    { route: "/docs/about-cloud-setup" },
-                    { route: "/docs/cloud/account-settings" },
-                    { route: "/docs/cloud/account-integrations" },
-                    { route: "/docs/dbt-cloud-environments" },
-                    { route: "/docs/cloud/migration" },
+                    { route: "/docs/platform/about-platform-setup" },
+                    { route: "/docs/platform/account-settings" },
+                    { route: "/docs/platform/account-integrations" },
+                    { route: "/docs/dbt-platform-environments" },
+                    { route: "/docs/platform/migration" },
                   ],
                   subsections: [
                     {
                       id: "connect-data-platform",
                       name: "Connect data platform",
                       routes: [
-                        { route: "/docs/cloud/connect-data-platform/**" },
+                        { route: "/docs/platform/connect-data-platform/**" },
                       ],
                     },
                     {
                       id: "manage-access",
                       name: "Manage access",
-                      routes: [{ route: "/docs/cloud/manage-access/**" }],
+                      routes: [{ route: "/docs/platform/manage-access/**" }],
                     },
                     {
                       id: "git",
                       name: "Git",
-                      routes: [{ route: "/docs/cloud/git/**" }],
+                      routes: [{ route: "/docs/platform/git/**" }],
                     },
                     {
                       id: "secure",
                       name: "Secure",
-                      routes: [{ route: "/docs/cloud/secure/**" }],
+                      routes: [{ route: "/docs/platform/secure/**" }],
                     },
                   ],
                 },
@@ -487,12 +488,12 @@ var siteSettings = {
             {
               id: "platform",
               name: "Platform",
-              routes: [{ route: "/docs/cloud/**" }],
+              routes: [{ route: "/docs/platform/**" }],
             },
             {
               id: "api-reference",
               name: "API Reference",
-              routes: [{ route: "/docs/dbt-cloud-apis/**" }],
+              routes: [{ route: "/docs/dbt-apis/**" }],
             },
           ],
           siteTitle: "dbt Developer Hub",
@@ -559,23 +560,18 @@ var siteSettings = {
   },
 };
 
-// If versions json file found, add versions dropdown to nav
-if (versions) {
+// If products defined, add version dropdown to nav using sub-product names as items
+if (products) {
   siteSettings.themeConfig.navbar.items.push({
     label: "Versions",
     position: "left",
     className: "nav-versioning",
-    items: [
-      ...versions.reduce((acc, version) => {
-        if (version?.version) {
-          acc.push({
-            label: `${version.version}`,
-            href: "#",
-          });
-        }
-        return acc;
-      }, []),
-    ],
+    items: products.flatMap((product) =>
+      product.subProducts.map((sp) => ({
+        label: sp.name,
+        href: "#",
+      }))
+    ),
   });
 }
 

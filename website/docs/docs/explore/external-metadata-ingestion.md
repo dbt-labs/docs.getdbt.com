@@ -23,7 +23,7 @@ These credentials are configured separately from dbt environment credentials and
 ## Prerequisites
 
 - Have a <Constant name="dbt" /> account on the [Enterprise or Enterprise+](https://www.getdbt.com/pricing) plan.
-- You must be an [account admin with permission](/docs/cloud/manage-access/enterprise-permissions#account-admin) to edit connections.
+- You must be an [account admin with permission](/docs/platform/manage-access/enterprise-permissions#account-admin) to edit connections.
     - The credentials must have [sufficient read-level access to fetch metadata](/docs/explore/external-metadata-ingestion#configuration-instructions).
 - Have [**global navigation**](/docs/explore/explore-projects#catalog-overview) enabled.
 - Use Snowflake as your data platform.
@@ -33,7 +33,7 @@ These credentials are configured separately from dbt environment credentials and
 
 ### Enable external metadata ingestion
 
-1. Click your account name at the bottom of the left-side menu and click **[Account settings](/docs/cloud/account-settings)**.
+1. Click your account name at the bottom of the left-side menu and click **[Account settings](/docs/platform/account-settings)**.
 2. Under Account information, go to **Settings** and click **Edit** at the top right corner of the page.
 3. Select the **Ingest external metadata in dbt <Constant name="catalog" /> (formerly dbt Explorer)** option (if not already enabled).
 
@@ -41,7 +41,7 @@ These credentials are configured separately from dbt environment credentials and
 
 1. Go to **Account settings**.
 2. Click **Connections** from the left-hand side panel.
-3. Select an existing connection or create a [**New connection**](/docs/cloud/connect-data-platform/connect-snowflake) where you want to ingest metadata from.
+3. Select an existing connection or create a [**New connection**](/docs/platform/connect-data-platform/connect-snowflake) where you want to ingest metadata from.
 4. Scroll to the **Platform metadata credentials** section. Depending on your current configuration, you may see one of the following:
     - If platform metadata ingestion is not yet configured, the credentials form is immediately in edit mode.
     - If you previously canceled and see **Add credentials**, click the button to reopen the form.

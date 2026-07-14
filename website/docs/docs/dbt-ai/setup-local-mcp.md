@@ -40,6 +40,7 @@ If a required variable is not set, dbt-mcp will automatically disable that tools
 
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/) to be able to run `dbt-mcp` and [related dependencies](https://github.com/dbt-labs/dbt-mcp/blob/main/pyproject.toml) into an isolated virtual environment.
 - Have a local dbt project (if you want to use dbt CLI commands).
+- If you're using [OAuth with <Constant name="dbt_platform"/>](#oauth-authentication-with-dbt-platform), your account admin has to enable AI features on your <Constant name="dbt_platform"/> account. Refer to [Enable dbt AI](/docs/platform/enable-dbt-ai) for more info.
 
 ## Choose your auth method
 
@@ -53,14 +54,14 @@ If you're connecting to <Constant name="dbt_platform" /> features (<Constant nam
 | CI or automation | **Service token** |
 
 :::warning `execute_sql` requires a PAT
-The `execute_sql` tool does _not_ work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) for `DBT_TOKEN` when using this tool.
+The `execute_sql` tool does _not_ work with service tokens. You must use a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) for `DBT_TOKEN` when using this tool.
 :::
 
 ## Setup options
 
 Choose the setup method that best fits your workflow:
 
-### OAuth authentication with <Constant name="dbt_platform"/> <Lifecycle status="managed, managed_plus" />
+### OAuth authentication with dbt platform <Lifecycle status="self_service, managed, managed_plus" />
 
 This method uses OAuth to authenticate with your <Constant name="dbt_platform" /> account. It's the simplest setup and doesn't require managing tokens or environment variables manually.
 
@@ -159,7 +160,7 @@ DBT_PATH=/path/to/your/dbt/executable
 </TabItem>
 <TabItem value="platform-only" label="dbt platform only">
 
-Use this if you only need <Constant name="dbt_platform" /> features and won't run dbt CLI commands:
+Use this if you only need <Constant name="dbt_platform" /> features and won't run dbt commands:
 
 ```code
 DBT_HOST=cloud.getdbt.com
@@ -270,8 +271,8 @@ uvx dbt-mcp
 
 | Environment variable | Required | Description |
 | --- | --- | --- |
-| `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/cloud/about-cloud/access-regions-ip-addresses). The default is `cloud.getdbt.com`. For multi-cell and multi-tenant accounts with a static subdomain, use the full hostname — for example, `abc123.us1.dbt.com`. |
-| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-cloud-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
+| `DBT_HOST` | Required | Your <Constant name="dbt_platform" /> [instance hostname](/docs/platform/about-platform/access-regions-ip-addresses). The default is `cloud.getdbt.com`. For multi-cell and multi-tenant accounts with a static subdomain, use the full hostname — for example, `abc123.us1.dbt.com`. |
+| `DBT_TOKEN` | Required | Your personal access token or service token from the <Constant name="dbt_platform" />. <br/>**Note**: The `execute_sql` tool requires a [Personal Access Token (PAT)](/docs/dbt-apis/user-tokens) — service tokens do not work for this tool. For Semantic Layer use, a PAT is also recommended. If you're using a service token for other toolsets, make sure it has at least `Semantic Layer Only`, `Metadata Only`, and `Developer` permissions. |
 | `DBT_ACCOUNT_ID` | Required for Administrative API tools and PAT-based auth | Your [dbt account ID](/faqs/Accounts/find-user-id). Also required when using a Personal Access Token (PAT) as your `DBT_TOKEN`. |
 | `DBT_PROD_ENV_ID` | Required | Your <Constant name="dbt_platform" /> production environment ID |
 | `DBT_DEV_ENV_ID` | Optional | Your <Constant name="dbt_platform" /> development environment ID |
@@ -302,7 +303,7 @@ DBT_ACCOUNT_ID=12345          # Required when using PAT-based auth
 
 You don't need to set `MULTICELL_ACCOUNT_PREFIX` or `DBT_HOST_PREFIX`.
 
-## dbt CLI settings
+## Environment variables
 
 The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /> and <Constant name="fusion_engine" />.
 
@@ -310,7 +311,7 @@ The local dbt-mcp supports all flavors of dbt, including <Constant name="core" /
 | --- | --- | --- | --- |
 | `DBT_PROJECT_DIR` | Required | The full path to where the repository of your dbt project is hosted locally. This is the folder containing your `dbt_project.yml` file. | macOS/Linux: `/Users/myname/reponame`<br/>Windows: `C:/Users/myname/reponame` |
 | `DBT_PATH` | Required | The full path to your dbt executable (<Constant name="core" />/<Constant name="fusion" />/<Constant name="cloud_cli" />). See the next section for how to find this. | macOS/Linux: `/opt/homebrew/bin/dbt`<br/>Windows: `C:/Python39/Scripts/dbt.exe` |
-| `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt CLI commands. | Defaults to 60 seconds. |
+| `DBT_CLI_TIMEOUT` | Optional | Configure the number of seconds before your agent will timeout dbt commands. | Defaults to 60 seconds. |
 
 ### Locating your `DBT_PATH`
 

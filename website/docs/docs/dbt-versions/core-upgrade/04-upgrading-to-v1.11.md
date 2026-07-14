@@ -11,19 +11,13 @@ displayed_sidebar: "docs"
 
 - [<Constant name="core" /> v1.11 changelog](https://github.com/dbt-labs/dbt-core/blob/1.11.latest/CHANGELOG.md)
 - [<Constant name="core" /> CLI Installation guide](/docs/local/install-dbt)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud#release-tracks)
+- [dbt platform upgrade guide](/docs/dbt-versions/upgrade-dbt-platform-version#fusion-release-tracks)
 
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x. Any behavior changes will be accompanied by a [behavior change flag](/reference/global-configs/behavior-changes#behavior-change-flags) to provide a migration window for existing projects. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/cloud-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.11 final release.
-
-We continue to recommend explicitly installing both `dbt-core` and `dbt-<youradapter>`. This may become required for a future version of dbt. For example:
-
-```sql
-python3 -m pip install dbt-core dbt-snowflake
-```
+Starting in 2024, <Constant name="dbt" /> provides the functionality from new versions of <Constant name="core" /> via [release tracks](/docs/dbt-versions/dbt-release-tracks) with automatic upgrades. If you have selected the **Latest** release track in <Constant name="dbt" />, you already have access to all the features, fixes, and other functionality included in the latest <Constant name="core" /> version! If you have selected the **Compatible** release track, you will have access in the next monthly **Compatible** release after the <Constant name="core" /> v1.11 final release.
 
 ## New and changed features and functionality
 
@@ -49,13 +43,13 @@ Engine configuration environment variables use the `DBT_ENGINE_` prefix. For exa
 
 ### Managing changes to legacy behaviors
 
-<Constant name="core" /> v1.11 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
+<Constant name="core" /> v1.11 introduces new flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `true` / `false` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
-- (Introduced, disabled by default) [`require_unique_project_resource_names`](/reference/global-configs/behavior-changes#unique-project-resource-names). This flag is set to `False` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `True`, dbt raises a `DuplicateResourceNameError` error.
+- (Introduced, disabled by default) [`require_unique_project_resource_names`](/reference/global-configs/behavior-flags/require_unique_project_resource_names). This flag is set to `false` by default. With this setting, if two unversioned resources in the same package share the same name, dbt continues to run and raises a [`DuplicateNameDistinctNodeTypesDeprecation`](/reference/deprecations#duplicatenamedistinctnodetypesdeprecation) warning. When set to `true`, dbt raises a `DuplicateResourceNameError` error.
 
-- (Introduced, disabled by default) [`require_ref_searches_node_package_before_root`](/reference/global-configs/behavior-changes#package-ref-search-order). This flag is set to `False` by default. With this setting, when dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. When set to `True`, dbt searches the package where the model is defined _before_ searching the root project.
+- (Introduced, disabled by default) [`require_ref_searches_node_package_before_root`](/reference/global-configs/behavior-flags/require_ref_searches_node_package_before_root). This flag is set to `false` by default. With this setting, when dbt resolves a `ref()` in a package model, it searches for the referenced model in the root project _first_, then in the package where the model is defined. When set to `true`, dbt searches the package where the model is defined _before_ searching the root project.
 
 ### Deprecation warnings enabled by default
 
@@ -117,15 +111,17 @@ dbt parse --warn-error-options '{"silence": ["Deprecations"]}'
 - The Snowflake adapter supports basic table materialization on Iceberg tables registered in a Glue catalog through a [catalog-linked database](https://docs.snowflake.com/en/user-guide/tables-iceberg-catalog-linked-database#label-catalog-linked-db-create). For more information, see [Glue Data Catalog](/docs/mesh/iceberg/snowflake-iceberg-support#external-catalogs).
 - The `cluster_by` configuration is supported in dynamic tables. For more information, see [Dynamic table clustering](/reference/resource-configs/snowflake-configs#dynamic-table-clustering).
 - The `immutable_where` configuration is supported in dynamic tables. For more information, see [Snowflake configurations](/reference/resource-configs/snowflake-configs#immutable-where).
+- You can set [`copy_grants: true`](/reference/resource-configs/snowflake-configs#copy-grants-dynamic-tables) on a dynamic table to preserve existing object-level privileges when the table is recreated during a `--full-refresh`. When set to `false` (default), all previously granted permissions are dropped on recreation, requiring manual re-grants.
+- Set the [`refresh_warehouse`](/reference/resource-configs/snowflake-configs#refresh-warehouse) parameter to choose which Snowflake warehouse runs a dynamic table's automatic refreshes. This is separate from `snowflake_warehouse`, which is used for <Term id="ddl" /> execution. For example, you might use a smaller warehouse for refreshes and a larger one for DDL. If `refresh_warehouse` is not set, `snowflake_warehouse` is used for both DDL execution and automatic refreshes.
 
 ### BigQuery
 
-- To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `True`.
+- To improve performance, dbt can issue a single batch query when calculating source freshness through metadata, instead of executing one query per source. To enable this feature, set [bigquery_use_batch_source_freshness](/reference/global-configs/bigquery-changes#the-bigquery_use_batch_source_freshness-flag) to `true`.
 
 ### Redshift
 
 - The new `datasharing` profile credential enables `dbt-redshift` to use Redshift-native metadata commands (`SHOW` commands such as `SHOW TABLES` and `SHOW COLUMNS`) instead of PostgreSQL catalog tables such as `pg_*` and `information_schema`. This supports cross-database and cross-cluster access with [Redshift Datasharing](https://docs.aws.amazon.com/redshift/latest/dg/datashare-overview.html). For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup#datasharing).<Lifecycle status="beta" />
-- The [`redshift_skip_autocommit_transaction_statements`](/reference/global-configs/redshift-changes#the-redshift_skip_autocommit_transaction_statements-flag) flag is now `True` by default. When `autocommit=True` (the default since dbt-redshift 1.5), dbt now skips sending unnecessary `BEGIN`/`COMMIT`/`ROLLBACK` statements, improving performance by reducing round trips to Redshift. To preserve the legacy behavior, set the flag to `False`.
+- The `drop_without_cascade` profile credential emits `DROP TABLE/VIEW/MATERIALIZED VIEW` statements without `CASCADE`. Redshift resolves the `CASCADE` dependency graph on every `DROP`, which adds overhead on large clusters. If your project has no downstream dependents (for example, it uses only unbound views) you can set `drop_without_cascade: true` to skip that cost. When enabled and a dependent object exists, Redshift raises an error. For configuration details, refer to [Redshift setup](/docs/local/connect-data-platform/redshift-setup).
 
 ### Spark
 

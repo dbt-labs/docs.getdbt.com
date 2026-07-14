@@ -216,7 +216,7 @@ selectors unambiguous.
 
 <VersionBlock lastVersion="1.10">
 
-Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` [commands](/reference/dbt-commands#available-commands).
 
 ```bash
 dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
@@ -228,7 +228,7 @@ dbt list --select "resource_type:source"       # list all sources in your projec
 
 <VersionBlock firstVersion="1.11">
 
-Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, `function`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, `function`, and so on). This is similar to the `--resource-type` flag used by the `dbt build`, `dbt test`, `dbt clone`, and `dbt list` [commands](/reference/dbt-commands#available-commands).
 
 ```bash
 dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
@@ -373,7 +373,7 @@ dbt ls --select "state:modified" --state path/to/artifacts   # list all modified
 
 Because state comparison is complex, and everyone's project is different, dbt supports subselectors that include a subset of the full `modified` criteria:
 - `state:modified.body`: Changes to node body (e.g. model SQL, seed values)
-- `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`
+- `state:modified.configs`: Changes to any node configs, excluding `database`/`schema`/`alias`/`tags`
 - `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)

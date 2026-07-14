@@ -20,4 +20,4 @@
 | View table lineage           | ✅                          | N/A         | ❌        |
 | Warning detection            | ✅                          | ✅          | ❌        |
 
-_* Requires a dbt [Enterprise or Enterprise+](https://www.getdbt.com/pricing) account._
+* "Compare changes locally" requires a [dbt Enterprise or Enterprise+](https://www.getdbt.com/pricing) account. _All other dbt VS Code extension LSP features listed above are available for free._

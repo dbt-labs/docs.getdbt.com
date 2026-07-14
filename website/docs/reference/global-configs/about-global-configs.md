@@ -3,17 +3,20 @@ title: "About flags (global configs)"
 id: "about-global-configs"
 sidebar: "About flags (global configs)"
 pagination_next: null
+description: "Configure dbt flags using dbt_project.yml, environment variables, and CLI options."
 ---
 
-In dbt, "flags" (also called "global configs") are configurations for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt about _what_ to run.
+In dbt, "flags" (also called "global configs" and often configured with [environment variables](/reference/global-configs/environment-variable-configs)) are settings for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt _what_ to run.
 
 Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. Flags are "global" configs because they are available for all dbt commands and they can be set in multiple places.
 
 You can use flags with the <Constant name="fusion_engine"/> or <Constant name="core"/> engine through the CLI during local development or in <Constant name="dbt_platform"/>.
 
 There is a significant overlap between dbt's flags and dbt's command line options, but there are differences:
-- Certain flags can only be set in [`dbt_project.yml`](/reference/dbt_project.yml) and cannot be overridden for specific invocations via CLI options.
+- Certain flags can only be set in [`dbt_project.yml`](/reference/dbt_project.yml) and cannot be overridden for specific invocations by using CLI options.
 - If a CLI option is supported by specific commands, rather than supported by all commands ("global"), it is generally not considered to be a "flag".
+
+You can configure flags in `dbt_project.yml`, environment variables, and CLI options. For details, refer to [environment variable configs](/reference/global-configs/environment-variable-configs).
 
 ### Setting flags
 
@@ -48,12 +51,18 @@ dbt build --target staging
 
 The `--target` flag allows you to run the same dbt project against different environments without modifying your configuration files. Define the target in your `profiles.yml` file. Learn more about [connection profiles and targets](/docs/local/profiles.yml#understanding-targets-in-profiles).
 
-The following table lists all the available flags in dbt, the type, default value, whether it can be set in the project file, the environment variable it corresponds to, and the CLI flags it corresponds to. 
+Use this table to compare all available flags and how to configure them across interfaces:
+
+- **<Constant name="dbt" /> CLI**: Indicates whether the flag is supported in the [<Constant name="dbt_platform" />-supported CLI](/docs/platform/dbt-cli-installation).
+- **Type / default**: Shows the accepted value type and default.
+- **In project**: Indicates whether you can set the flag in `dbt_project.yml`.
+- **Env var**: Shows the corresponding environment variable name, when available. In general, v1.10 and earlier use the `DBT_` prefix, while v1.11+ uses the `DBT_ENGINE_` prefix.
+- **CLI flags**: Lists command-line options for setting the flag for a specific invocation.
 
 <VersionBlock lastVersion="1.10">
 
 
-| Flag | dbt platform CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
+| Flag | <Constant name="dbt" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
 |------|----------------|----------------|-------------|---------|-----------|
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |
@@ -85,7 +94,7 @@ The following table lists all the available flags in dbt, the type, default valu
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_RESOURCE_TYPES` <br></br> `DBT_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
 | [sample](/docs/build/sample-flag) | ✅ | string <br /> default: None | ❌ | `DBT_SAMPLE` | `--sample` |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | ❌ | boolean <br /> default: True | ✅ | `DBT_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats` <br /> `--no-send-anonymous-usage-stats` |
-| [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
+| [source_freshness_run_project_hooks](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
 | [state](/reference/node-selection/defer) | ❌ | path <br /> default: none | ❌ | `DBT_STATE`, `DBT_DEFER_STATE` | `--state` <br /> `--defer-state` |
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |
 | [store_failures](/reference/resource-configs/store_failures) | ✅ | boolean <br /> default: False | ✅ (as resource config) | `DBT_STORE_FAILURES` | `--store-failures` <br /> `--no-store-failures` |
@@ -105,7 +114,7 @@ The following table lists all the available flags in dbt, the type, default valu
 <VersionBlock firstVersion="1.11">
 
 
-| Flag | dbt platform CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
+| Flag | <Constant name="dbt" /> CLI? | Type / default | In project? | Env var | <div style={{width:'200px'}}>CLI flags</div> |
 |------|----------------|----------------|-------------|---------|-----------|
 | [cache_selected_only](/reference/global-configs/cache) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_CACHE_SELECTED_ONLY` | `--cache-selected-only` <br /> `--no-cache-selected-only` |
 | [clean_project_files_only](/reference/commands/clean#--clean-project-files-only) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_CLEAN_PROJECT_FILES_ONLY` | `--clean-project-files-only` <br /> `--no-clean-project-files-only` |
@@ -126,6 +135,7 @@ The following table lists all the available flags in dbt, the type, default valu
 | [log_level_file](/reference/global-configs/logs#log-level) | ❌ | enum <br /> default: debug | ✅ | `DBT_ENGINE_LOG_LEVEL_FILE` | `--log-level-file` |
 | [log_level](/reference/global-configs/logs#log-level) | ❌ | enum <br /> default: info | ✅ | `DBT_ENGINE_LOG_LEVEL` | `--log-level` |
 | [log_path](/reference/global-configs/logs) | ❌ | path <br /> default: None (uses `logs/`) | ❌ | `DBT_ENGINE_LOG_PATH` | `--log-path` |
+| [manage_state](/docs/deploy/dbt-state-setup) (v2.0+) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_MANAGE_STATE` | `--manage-state` <br /> `--no-manage-state` |
 | [partial_parse](/reference/global-configs/parsing#partial-parsing) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_PARTIAL_PARSE` | `--partial-parse` <br /> `--no-partial-parse` |
 | [populate_cache](/reference/global-configs/cache) | ✅ | boolean <br /> default: True | ✅ | `DBT_ENGINE_POPULATE_CACHE` | `--populate-cache` <br /> `--no-populate-cache` |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | ❌ | boolean <br /> default: True | ❌ | `DBT_ENGINE_PRINT` | `--print` <br /> `--no-print` |
@@ -137,7 +147,7 @@ The following table lists all the available flags in dbt, the type, default valu
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_RESOURCE_TYPES` <br></br> `DBT_ENGINE_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` |
 | [sample](/docs/build/sample-flag) | ✅ | string <br /> default: None | ❌ | `DBT_ENGINE_SAMPLE` | `--sample` |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats` <br /> `--no-send-anonymous-usage-stats` |
-| [source_freshness_run_project_hooks](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
+| [source_freshness_run_project_hooks](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks) | ❌ | boolean <br /> default: True | ✅ | ❌ | ❌ |
 | [sqlparse](/reference/global-configs/sqlparse) | ❌ | YAML map <br /> default: MAX_GROUPING_DEPTH and MAX_GROUPING_TOKENS set to null | ❌ | `DBT_ENGINE_SQLPARSE` | `--sqlparse` |
 | [state](/reference/node-selection/defer) | ❌ | path <br /> default: none | ❌ | `DBT_ENGINE_STATE`, `DBT_ENGINE_DEFER_STATE` | `--state` <br /> `--defer-state` |
 | [static_parser](/reference/global-configs/parsing#static-parser) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_STATIC_PARSER` | `--static-parser` <br /> `--no-static-parser` |
@@ -147,6 +157,7 @@ The following table lists all the available flags in dbt, the type, default valu
 | [use_colors_file](/reference/global-configs/logs#color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS_FILE` | `--use-colors-file` <br /> `--no-use-colors-file` |
 | [use_colors](/reference/global-configs/print-output#print-color) | ❌ | boolean <br /> default: True | ✅ | `DBT_ENGINE_USE_COLORS` | `--use-colors` <br /> `--no-use-colors` |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | ❌ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser` <br /> `--no-use-experimental-parser` |
+| [use_v2_parser](/reference/global-configs/parsing#opt-in-v2-parser) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_USE_V2_PARSER` | `--use-v2-parser` |
 | [version_check](/reference/global-configs/version-compatibility) | ❌ | boolean <br /> default: varies | ✅ | `DBT_ENGINE_VERSION_CHECK` | `--version-check` <br /> `--no-version-check` |
 | [warn_error_options](/reference/global-configs/warnings) | ✅ | dict <br /> default: {} | ✅ | `DBT_ENGINE_WARN_ERROR_OPTIONS` | `--warn-error-options` |
 | [warn_error](/reference/global-configs/warnings) | ✅ | boolean <br /> default: False | ✅ | `DBT_ENGINE_WARN_ERROR` | `--warn-error` |

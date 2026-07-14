@@ -17,7 +17,7 @@ The [dbt MCP server](https://github.com/dbt-labs/dbt-mcp) provides a standardize
 
 To help with dbt, assistants need your project metadata and, when you allow it, supported actions such as CLI runs, platform APIs, and <Constant name="semantic_layer" /> queries. The dbt MCP server exposes those to MCP clients and supports use cases such as conversational access to data, agentic automation for dbt workflows, and AI-assisted development. This page covers local and remote setups, available tools, and how to get started.
 
-The MCP server provides access to the <Constant name="platform_cli"/>, [API](/docs/dbt-cloud-apis/overview), the [Discovery API](/docs/dbt-cloud-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
+The MCP server provides access to [<Constant name="wizard" />](/docs/platform/wizard-overview), <Constant name="platform_cli"/>, [API](/docs/dbt-apis/overview), the [Discovery API](/docs/dbt-apis/discovery-api), and [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It provides access to private APIs, text-to-SQL, and SQL execution.
 
 For more information on MCP, have a look at [Get started with the Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
@@ -37,7 +37,7 @@ To get started, choose the quickstart that matches your setup:
 | --- | --- | --- |
 | Query data and run <Constant name="platform_cli"/> commands locally while connected to my <Constant name="dbt_platform" /> account (<Constant name="semantic_layer" />, Discovery API, Admin API, SQL, Codegen).  | [Connect to <Constant name="dbt_platform"/>](/docs/dbt-ai/mcp-quickstart-oauth) |  Uses [local MCP server](#local-mcp-server). |
 | Run <Constant name="platform_cli"/> commands locally, with or without a <Constant name="dbt_platform" /> account; with an account, also query data and explore metadata through the same server. | [Run dbt locally](/docs/dbt-ai/mcp-quickstart-cli) |  Uses [local MCP server](#local-mcp-server). |
-| Use MCP with zero local install (query data only through hosted tools; no <Constant name="platform_cli"/> commands).  | [Use MCP with zero install](/docs/dbt-ai/mcp-quickstart-remote) |  Uses [remote MCP server](#remote-mcp-server). |
+| Use MCP with zero local install (query data only through hosted tools; no <Constant name="platform_cli"/> commands).  | [Connect to the remote dbt MCP server](/docs/dbt-ai/mcp-quickstart-remote) |  Uses [remote MCP server](#remote-mcp-server). |
 </SimpleTable>
 
 To configure or disable specific tools (local MCP), see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
@@ -54,7 +54,7 @@ You can use the dbt MCP server in the following ways:
 The local MCP server provides the best experience for development workflows, like authoring dbt models, tests, and documentation.
 
 The [local MCP server](/docs/dbt-ai/setup-local-mcp) runs on your machine and requires installing `uvx` (which installs dbt-mcp locally) and then running `uvx dbt-mcp` to start the server. You don't need to clone the repository unless you want to contribute to dbt MCP. The local MCP server provides:
-- Full access to dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more)
+- Full access to dbt commands (`dbt run`, `dbt build`, `dbt test`, and more)
 - Support for <Constant name="core" />, <Constant name="platform_cli" />, and <Constant name="fusion_engine" />
 - Ability to work with local dbt projects with or without a <Constant name="dbt_platform" /> account
 - Optional integration with <Constant name="dbt_platform" /> APIs for metadata discovery and Semantic Layer access
@@ -67,6 +67,10 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 - You either don’t want to install, or are restricted from installing, additional software on your system.
 - Your use case is primarily consumption-based (for example, querying metrics, exploring metadata, viewing lineage).
 
+The remote MCP server is available on all <Constant name="dbt_platform" /> [plans](https://www.getdbt.com/pricing). However, the underlying [dbt APIs](/docs/dbt-apis/overview) that the server's tools rely on vary by plan type. For example, the Discovery API and <Constant name="semantic_layer" /> APIs. As a result, the tools available to you through the remote MCP server depend on your plan.
+
+Remote MCP uses the same default global API rate limit as other dbt APIs (5,000 requests per minute per IP). Local MCP is subject to the public Administrative and Discovery API limits. Refer to [API rate limits](/docs/dbt-apis/rate-limits) for details.
+
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
@@ -76,8 +80,9 @@ The dbt MCP server has access to many parts of the dbt experience related to dev
 
 Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and Administrative API; remote MCP supports <Constant name="semantic_layer" />, SQL, Discovery, Administrative API, and <Constant name="fusion" /> tools only.
 
-Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
+Note that access to the [dbt APIs](/docs/dbt-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
+<SimpleTable>
 | Tools | Local | Remote |
 | --- | --- | --- |
 | <Constant name="platform_cli"/> commands  | ✅ | ❌ |
@@ -87,6 +92,9 @@ Note that access to the [dbt APIs](/docs/dbt-cloud-apis/overview) is limited dep
 | Administrative API | ✅ | ✅ |
 | Codegen Tools | ✅ | ❌ |
 | <Constant name="fusion" /> Tools | ✅ | ✅ |
+| Product Docs Tools |  ✅ | ✅ |
+| MCP Server Metadata Tools | ✅ | ✅ |
+</SimpleTable>
 
 ## Available tools
 
@@ -98,10 +106,18 @@ To view the full list of tools, see [Available tools](/docs/dbt-ai/mcp-available
 
 ## MCP integrations
 
-The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports token authentication and tool use capabilities. We have created integration guides for the following clients:
+The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports OAuth or token authentication and tool use capabilities, depending on your setup. We have created integration guides for the following clients:
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
-- [VS Code](/docs/dbt-ai/integrate-mcp-vscode).
+- [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
+- [Snowflake Cortex](/docs/dbt-ai/integrate-mcp-snowflake-cortex)
+
+## Data retention
+
+The dbt MCP server doesn't store or retain any production data or job run results. It's a read-only access layer that reads metadata, job results, and <Constant name="semantic_layer"/> data from the <Constant name="dbt_platform"/> in real time when a tool is called.
+
+Your [dbt platform data retention policy](https://www.getdbt.com/security) determines how long job runs and artifacts are available, not the MCP server. As long as a job or artifact exists in dbt platform, the MCP server can read it.
+
 
 ## Resources
 - [Environment variables reference](/docs/dbt-ai/mcp-environment-variables) &mdash; full list of variables and tool configuration for local MCP

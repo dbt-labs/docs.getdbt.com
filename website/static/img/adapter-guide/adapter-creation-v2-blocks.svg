@@ -1,0 +1,122 @@
+<svg viewBox="0 0 760 620" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect width="760" height="620" fill="white"/>
+
+  <text x="140" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#111">dbt Core v1</text>
+  <text x="460" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#111">dbt Core v2</text>
+
+  <!-- IN V1, NOT IN V2 -->
+  <text x="8" y="52" font-size="10" font-weight="700" fill="#6b7280" letter-spacing="0.5">IN V1, NOT IN V2 — absorbed by dbt Labs or the ADBC driver</text>
+
+  <rect x="16" y="58" width="248" height="36" rx="5" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="140" y="73" text-anchor="middle" font-size="11" font-weight="600" fill="#991b1b">Connections</text>
+  <text x="140" y="87" text-anchor="middle" font-size="10" fill="#b91c1c">ConnectionManager.open / cancel / execute</text>
+  <line x1="264" y1="76" x2="298" y2="76" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="300" y="58" width="248" height="36" rx="5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="424" y="73" text-anchor="middle" font-size="11" fill="#9ca3af">ADBC driver (.so / .dylib)</text>
+  <text x="424" y="87" text-anchor="middle" font-size="10" fill="#9ca3af">not contributor-facing</text>
+
+  <rect x="16" y="102" width="248" height="36" rx="5" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="140" y="117" text-anchor="middle" font-size="11" font-weight="600" fill="#991b1b">Query execution</text>
+  <text x="140" y="131" text-anchor="middle" font-size="10" fill="#b91c1c">execute / add_query raw plumbing</text>
+  <line x1="264" y1="120" x2="298" y2="120" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="300" y="102" width="248" height="36" rx="5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="424" y="117" text-anchor="middle" font-size="11" fill="#9ca3af">dbt-adapter/src/engine/</text>
+  <text x="424" y="131" text-anchor="middle" font-size="10" fill="#9ca3af">not contributor-facing</text>
+
+  <rect x="16" y="146" width="248" height="36" rx="5" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="140" y="161" text-anchor="middle" font-size="11" font-weight="600" fill="#991b1b">Packaging / distribution</text>
+  <text x="140" y="175" text-anchor="middle" font-size="10" fill="#b91c1c">setup.py · PyPI publishing</text>
+  <line x1="264" y1="164" x2="298" y2="164" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="300" y="146" width="248" height="36" rx="5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="424" y="161" text-anchor="middle" font-size="11" fill="#9ca3af">dbt Labs</text>
+  <text x="424" y="175" text-anchor="middle" font-size="10" fill="#9ca3af">bundled and shipped by dbt Labs</text>
+
+  <rect x="16" y="190" width="248" height="36" rx="5" fill="#fee2e2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="140" y="205" text-anchor="middle" font-size="11" font-weight="600" fill="#991b1b">Python class hierarchy</text>
+  <text x="140" y="219" text-anchor="middle" font-size="10" fill="#b91c1c">inheriting from BaseAdapter</text>
+  <line x1="264" y1="208" x2="298" y2="208" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="300" y="190" width="248" height="36" rx="5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="424" y="205" text-anchor="middle" font-size="11" fill="#9ca3af">match adapter_type() arms</text>
+  <text x="424" y="219" text-anchor="middle" font-size="10" fill="#9ca3af">adapter_impl.rs — no subclasses</text>
+
+  <!-- YOUR CONTRIBUTION: SLOTS STRAIGHT ACROSS -->
+  <text x="8" y="248" font-size="10" font-weight="700" fill="#6b7280" letter-spacing="0.5">YOUR CONTRIBUTION — slots straight across</text>
+
+  <rect x="16" y="254" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="140" y="269" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">Credentials / profiles.yml</text>
+  <text x="140" y="283" text-anchor="middle" font-size="10" fill="#047857">credential fields, profile parsing</text>
+  <line x1="264" y1="272" x2="296" y2="272" stroke="#6ee7b7" stroke-width="1.5"/>
+  <polygon points="294,268 302,272 294,276" fill="#6ee7b7"/>
+  <rect x="300" y="254" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="424" y="269" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">auth/ module</text>
+  <text x="424" y="283" text-anchor="middle" font-size="10" fill="#047857">crates/dbt-adapter/src/auth/</text>
+
+  <rect x="16" y="298" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="140" y="313" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">Relation objects</text>
+  <text x="140" y="327" text-anchor="middle" font-size="10" fill="#047857">BaseRelation · quote policy · identifiers</text>
+  <line x1="264" y1="316" x2="296" y2="316" stroke="#6ee7b7" stroke-width="1.5"/>
+  <polygon points="294,312 302,316 294,320" fill="#6ee7b7"/>
+  <rect x="300" y="298" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="424" y="313" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">relation_impl.rs</text>
+  <text x="424" y="327" text-anchor="middle" font-size="10" fill="#047857">Policy::new(...) · relation config</text>
+
+  <rect x="16" y="342" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="140" y="357" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">Adapter registration</text>
+  <text x="140" y="371" text-anchor="middle" font-size="10" fill="#047857">__init__.py adapter class</text>
+  <line x1="264" y1="360" x2="296" y2="360" stroke="#6ee7b7" stroke-width="1.5"/>
+  <polygon points="294,356 302,360 294,364" fill="#6ee7b7"/>
+  <rect x="300" y="342" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="424" y="357" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">AdapterType enum + match arms</text>
+  <text x="424" y="371" text-anchor="middle" font-size="10" fill="#047857">dbt-adapter-core/src/lib.rs + adapter_impl.rs</text>
+
+  <rect x="16" y="386" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="140" y="401" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">Catalog introspection</text>
+  <text x="140" y="415" text-anchor="middle" font-size="10" fill="#047857">list_relations · get_columns · list_schemas</text>
+  <line x1="264" y1="404" x2="296" y2="404" stroke="#6ee7b7" stroke-width="1.5"/>
+  <polygon points="294,400 302,404 294,408" fill="#6ee7b7"/>
+  <rect x="300" y="386" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="424" y="401" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">MetadataAdapter trait</text>
+  <text x="424" y="415" text-anchor="middle" font-size="10" fill="#047857">crates/dbt-adapter/src/metadata/&lt;adapter&gt;/</text>
+
+  <rect x="16" y="430" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="140" y="445" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">Jinja macros</text>
+  <text x="140" y="459" text-anchor="middle" font-size="10" fill="#047857">schema / relation DDL in SQL</text>
+  <line x1="264" y1="448" x2="296" y2="448" stroke="#6ee7b7" stroke-width="1.5"/>
+  <polygon points="294,444 302,448 294,452" fill="#6ee7b7"/>
+  <rect x="300" y="430" width="248" height="36" rx="5" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="424" y="445" text-anchor="middle" font-size="11" font-weight="600" fill="#065f46">Jinja macros (same SQL)</text>
+  <text x="424" y="459" text-anchor="middle" font-size="10" fill="#047857">dispatched via execute_macro()</text>
+
+  <!-- YOUR CONTRIBUTION: NEW SHAPE -->
+  <text x="8" y="486" font-size="10" font-weight="700" fill="#6b7280" letter-spacing="0.5">YOUR CONTRIBUTION — same concept, new shape</text>
+
+  <rect x="16" y="492" width="248" height="36" rx="5" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="140" y="507" text-anchor="middle" font-size="11" font-weight="600" fill="#5b21b6">Column type conversion</text>
+  <text x="140" y="521" text-anchor="middle" font-size="10" fill="#6d28d9">convert_text_type · convert_number_type…</text>
+  <line x1="264" y1="510" x2="296" y2="510" stroke="#c4b5fd" stroke-width="1.5"/>
+  <polygon points="294,506 302,510 294,514" fill="#c4b5fd"/>
+  <rect x="300" y="492" width="248" height="36" rx="5" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="424" y="507" text-anchor="middle" font-size="11" font-weight="600" fill="#5b21b6">TypeOps trait + SqlType enum</text>
+  <text x="424" y="521" text-anchor="middle" font-size="10" fill="#6d28d9">Arrow-native · no 1:1 method mapping</text>
+
+  <rect x="16" y="536" width="248" height="36" rx="5" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="140" y="551" text-anchor="middle" font-size="11" font-weight="600" fill="#5b21b6">DDL operations</text>
+  <text x="140" y="565" text-anchor="middle" font-size="10" fill="#6d28d9">create_schema · drop_relation · rename…</text>
+  <line x1="264" y1="554" x2="296" y2="554" stroke="#c4b5fd" stroke-width="1.5"/>
+  <polygon points="294,550 302,554 294,558" fill="#c4b5fd"/>
+  <rect x="300" y="536" width="248" height="36" rx="5" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="424" y="551" text-anchor="middle" font-size="11" font-weight="600" fill="#5b21b6">Jinja macros via execute_macro()</text>
+  <text x="424" y="565" text-anchor="middle" font-size="10" fill="#6d28d9">Rust dispatches · SQL logic in macros</text>
+
+  <!-- Legend -->
+  <rect x="566" y="254" width="184" height="116" rx="6" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="658" y="272" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280">LEGEND</text>
+  <rect x="578" y="282" width="12" height="12" rx="2" fill="#fee2e2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="596" y="293" font-size="10" fill="#374151">Absorbed in v2</text>
+  <rect x="578" y="302" width="12" height="12" rx="2" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="596" y="313" font-size="10" fill="#374151">Slots straight across</text>
+  <rect x="578" y="322" width="12" height="12" rx="2" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="596" y="333" font-size="10" fill="#374151">Same concept, new shape</text>
+  <line x1="578" y1="350" x2="596" y2="350" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="600" y="354" font-size="10" fill="#374151">Gone / absorbed</text>
+</svg>

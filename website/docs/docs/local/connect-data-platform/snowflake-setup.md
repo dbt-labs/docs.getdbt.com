@@ -17,11 +17,15 @@ meta:
   config_page: '/reference/resource-configs/snowflake-configs'
 ---
 
+import SnowflakeAuth from '/snippets/_snowflake-auth.md';
+
 <VersionBlock firstVersion="2.0">
 
 # Connect Snowflake to Fusion <Lifecycle status='preview' />
 
-You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type.
+<SnowflakeAuth />
+
+You can configure the Snowflake adapter by running `dbt init` in your CLI or manually providing the `profiles.yml` file with the fields configured for your authentication type. To check out which Snowflake functions are supported in <Constant name="fusion"/> in `strict` mode, refer to [Snowflake function support](/reference/resource-configs/snowflake-function-support).
 
 The Snowflake adapter for Fusion supports the following [authentication methods](#supported-authentication-types):
 - Password 
@@ -199,6 +203,8 @@ Find Snowflake-specific configuration information in the [Snowflake adapter refe
 
 # Connect Snowflake to dbt Core
 
+<SnowflakeAuth />
+
 <ProductCard text="Fusion compatible" url="/docs/local/connect-data-platform/snowflake-setup?version=2" /> connection also available.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -208,7 +214,6 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 import SnowflakeColumn from '/snippets/_snowflake-column-size.md';
 
 <SnowflakeColumn />
-
 
 ## Authentication Methods
 
@@ -447,7 +452,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 ### account
 For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1` or `abc123.eu-west-2.aws`. 
 
-For GCP and Azure-based accounts, you have to append the region and cloud platform, such as `gcp` or `azure`, respectively. For example, `abc123.us-central1.gcp`. For details, see Snowflake's documentation: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)". 
+For GCP and Azure-based accounts, you have to append the region and may have to add the cloud platform, such as `.gcp` or `.azure`, respectively. For example, `abc123.us-central1.gcp`. However, if you get a `404` error attempting to connect, try again without the appended platform (for example, drop the `.azure`). For details, see Snowflake's documentation: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)". 
 
 Please also note that the Snowflake account name should only be the `account_name` without the prefixed `organization_name`.  To determine if the region and/or cloud platform needs to be appended to the account locator in the legacy format, see Snowflake's documentation on "[Non-VPS account locator formats by cloud platform and region](https://docs.snowflake.com/en/user-guide/admin-account-identifier#non-vps-account-locator-formats-by-cloud-platform-and-region)".
 
@@ -476,7 +481,7 @@ During node execution (such as model and test), dbt opens connections against a 
 
 The `retry_on_database_errors` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake connector encounters errors of type snowflake.connector.errors.DatabaseError. These retries can be helpful for handling errors of type "JWT token is invalid" when using key pair authentication.
 
-By default, `retry_on_database_errors` is set to `False` when using <Constant name="core" /> (for example, if you're running dbt locally with `pip install dbt-core dbt-snowflake`).
+By default, `retry_on_database_errors` is set to `False` when using <Constant name="core" /> (for example, if you're running dbt locally with `pip install dbt-snowflake`).
 
 However, in the <Constant name="dbt_platform" />, this setting is automatically set to `True`, unless the user explicitly configures it. 
 

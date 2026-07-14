@@ -10,8 +10,8 @@ id: "init"
 
 If this is your first time ever using the tool, it will:
 - ask you to name your project
-- ask you which database adapter you're using (or to [Supported Data Platforms](/docs/supported-data-platforms))
-- prompt you for each piece of information that dbt needs to connect to that database: things like `account`, `user`, `password`, etc
+- ask you which database adapter you're using (or refer to [Supported Data Platforms](/docs/supported-data-platforms))
+- prompt you for each piece of information that dbt needs to connect to that database, such as `account`, `user`, `password`, and more
 
 Then, it will:
 - Create a new folder with your project name and sample files, enough to get you started with dbt
@@ -21,6 +21,20 @@ Then, it will:
 When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile profile_name`.
 
 If the profile does not exist in `profiles.yml` or the command is run inside an existing project, the command raises an error.
+
+## Command-line options
+
+`dbt init --help` includes both global flags (which apply to all dbt commands) and a small number of `init`-specific options. The most commonly used `init` options are:
+
+- `PROJECT_NAME` (optional positional argument): Name of the project folder to create. If omitted, `dbt init` prompts you for a project name.
+- `--profile PROFILE_NAME`: Use an existing profile name from your `profiles.yml` instead of prompting to create or configure one.
+- `-s`, `--skip-profile-setup`: Skip interactive profile setup.
+
+```bash
+dbt init [PROJECT_NAME] [--profile PROFILE_NAME] [--skip-profile-setup]
+```
+
+For global command options that also apply to `dbt init`, refer to [Command line options](/reference/global-configs/command-line-options).
 
 
 ## Existing project
