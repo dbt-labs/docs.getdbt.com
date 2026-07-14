@@ -18,72 +18,59 @@ function parseMonthYearHeading(heading) {
   return new Date(year, monthIdx, 1)
 }
 
-// Parses a date from a bullet entry starting with mm/dd/yyyy
-function parseBulletDate(line) {
-  const match = line.match(/^-\s+(\d{2})\/(\d{2})\/(\d{4})/)
-  if (!match) return null
-  const [, mm, dd, yyyy] = match
-  const date = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd))
-  return isNaN(date.getTime()) ? null : date
-}
-
 function headingToAnchor(heading) {
   return heading.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-')
 }
 
-// Parses content into RSS items. If any bullet entries have mm/dd/yyyy dates,
-// returns one item per dated entry (linked to its parent month section).
-// Falls back to one item per month section if no dated entries are found.
+// Parses content into RSS items — one item per H2 or H3 heading. A reader
+// "fires" (surfaces a new item) when it sees a new anchor-based id, so adding
+// a heading produces a new feed entry regardless of the heading text.
+//
+// Dates drive feed ordering: an H2 (month section) takes the date parsed from
+// its "Month Year" text, and each H3 inherits the date of the month section it
+// sits under. H2s that aren't month headings, and any H3 that appears before
+// the first month section, are skipped so the page intro can't leak in.
 function parseItems(content, pageUrl) {
   const items = []
-  let currentSection = null
-  let hasDatedEntries = false
+  let currentMonthDate = null
 
-  for (const line of content.split('\n')) {
-    const headingMatch = line.match(/^##\s+(.+)$/)
-    if (headingMatch) {
-      const heading = headingMatch[1].trim()
+  content.split('\n').forEach((line, order) => {
+    const h2Match = line.match(/^##\s+(.+)$/)
+    const h3Match = line.match(/^###\s+(.+)$/)
+
+    if (h2Match) {
+      const heading = h2Match[1].trim()
       const date = parseMonthYearHeading(heading)
-      if (date) {
-        currentSection = { heading, date, anchor: headingToAnchor(heading) }
-      }
-      continue
+      if (!date) return
+      currentMonthDate = date
+      const link = `${pageUrl}#${headingToAnchor(heading)}`
+      items.push({
+        title: `dbt platform release notes — ${heading}`,
+        id: link,
+        link,
+        description: `New dbt platform release notes for ${heading}. Visit the page to see what's new, updated, and fixed.`,
+        date,
+        order,
+      })
+      return
     }
 
-    if (!currentSection) continue
-
-    const bulletDate = parseBulletDate(line)
-    if (bulletDate) {
-      hasDatedEntries = true
-      const sectionLink = `${pageUrl}#${currentSection.anchor}`
+    if (h3Match) {
+      const heading = h3Match[1].trim()
+      if (!currentMonthDate) return
+      const link = `${pageUrl}#${headingToAnchor(heading)}`
       items.push({
-        title: `dbt platform release notes — ${currentSection.heading}`,
-        id: `${sectionLink}-${bulletDate.toISOString().slice(0, 10)}`,
-        link: sectionLink,
-        description: `New dbt platform release notes published on ${line.replace(/^-\s+/, '').trim()}. Visit the page to see what's new, updated, and fixed.`,
-        date: bulletDate,
+        title: `dbt platform release notes — ${heading}`,
+        id: link,
+        link,
+        description: `New dbt platform release notes: ${heading}. Visit the page to see what's new, updated, and fixed.`,
+        date: currentMonthDate,
+        order,
       })
     }
-  }
+  })
 
-  if (hasDatedEntries) return items
-
-  // Fallback: one item per month section
-  const sections = []
-  for (const line of content.split('\n')) {
-    const match = line.match(/^##\s+(.+)$/)
-    if (!match) continue
-    const heading = match[1].trim()
-    const date = parseMonthYearHeading(heading)
-    if (date) sections.push({ heading, date, anchor: headingToAnchor(heading) })
-  }
-  return sections.map(({ heading, date, anchor }) => ({
-    title: `dbt platform release notes — ${heading}`,
-    id: `${pageUrl}#${anchor}`,
-    link: `${pageUrl}#${anchor}`,
-    description: `New dbt platform release notes for ${heading}. Visit the page to see what's new, updated, and fixed.`,
-    date,
-  }))
+  return items
 }
 
 function buildFeed({ title, description, pageUrl, feedPathPrefix, items }) {
@@ -133,7 +120,11 @@ module.exports = function buildRSSFeedsPlugin() {
           return null
         }
 
-        items.sort((a, b) => (a.date > b.date ? -1 : 1))
+        items.sort((a, b) =>
+          a.date.getTime() !== b.date.getTime()
+            ? b.date - a.date
+            : a.order - b.order
+        )
 
         buildFeed({
           title: 'dbt platform release notes',
