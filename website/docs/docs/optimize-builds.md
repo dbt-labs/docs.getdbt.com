@@ -12,13 +12,13 @@ By default, dbt rebuilds every selected node on every run &mdash; even if nothin
 
 ## dbt State
 
-[dbt State](/docs/deploy/dbt-state-about) is a service that makes dbt smarter about what to build. It integrates into any dbt deployment (including self-hosted deployments) without requiring a recurring <Constant name="dbt_platform" /> subscription.
+[dbt State](/docs/deploy/dbt-state-about) is a service that makes dbt smarter about what to build. It integrates into any dbt deployment, including the <Constant name="dbt_platform" /> and the self-hosted <Constant name="fusion_engine" /> and <Constant name="core" />.
 
 Instead of rebuilding every node on every run, it compares each node's logic and upstream data against the previous run and picks the most efficient path:
 
-- **Skip** — If the node's logic and upstream data haven't changed, dbt reuses the existing object in your target schema as-is.
-- **Clone** — If the data is fresh but exists in a different schema (for example, production), dbt clones it rather than rebuilding from scratch.
-- **Build** — If reuse isn't possible, dbt rebuilds normally and automatically defers unselected upstream nodes to production &mdash; no `--defer` or `--state` flags required.
+- **Skip** &mdash; If the node's logic and upstream data haven't changed, dbt reuses the existing object in your target schema as-is.
+- **Clone** &mdash; If the data is fresh but exists in a different schema (for example, production), dbt clones it rather than rebuilding from scratch.
+- **Build** &mdash; If reuse isn't possible, dbt rebuilds normally and automatically defers unselected upstream nodes to production &mdash; no `--defer` or `--state` flags required.
 
 To enable dbt State:
 
