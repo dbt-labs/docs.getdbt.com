@@ -12,6 +12,8 @@ sidebar_label: "require all warnings handled by warn error"
 | Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
 | Removed | — | — |
 
+<br />
+
 Starting in <Constant name="core" /> v1.12, the `require_all_warnings_handled_by_warn_error` flag defaults to `true`.
 
 When you set `require_all_warnings_handled_by_warn_error` to `true`, all warnings raised during a run are routed through the `--warn-error` / `--warn-error-options` handler. This ensures consistent behavior when promoting warnings to errors or silencing them. When the flag is `false`, only some warnings are processed by the handler while others may bypass it.

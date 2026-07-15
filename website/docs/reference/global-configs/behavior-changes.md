@@ -60,7 +60,7 @@ This table outlines which month of the **Latest** release track in <Constant nam
 
 ### Flags reaching maturity
 
-Several behavior change flags on the dbt platform `Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the dbt platform release tracks. The flags will still mature in the final release of dbt Core v1.12 as originally planned. For intro dates, refer to the dbt Core behavior changes table.
+Several behavior change flags on the <Constant name="dbt_platform" /> `Latest` release track are planned to reach maturity on September 1, 2026, switching their default values from `false` to `true`. The September 1 date applies only to the <Constant name="dbt_platform" /> release tracks. The flags have reached maturity in <Constant name="core" /> v1.12. For intro dates, refer to the <Constant name="core" /> behavior changes table.
 
 | Flag | Impact |
 |---|---|

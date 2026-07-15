@@ -12,7 +12,9 @@ sidebar_label: "require nested cumulative type params"
 | Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
 | Removed | — | — |
 
-[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), <Constant name="core" /> v1.9 and newer. Starting in <Constant name="core" /> v1.12, this flag defaults to `true`, meaning dbt raises an error (instead of a warning) if cumulative metrics use the un-nested syntax.
+<br />
+
+[Cumulative-type metrics](/docs/build/cumulative#parameters) are nested under the `cumulative_type_params` field in [the <Constant name="dbt" /> **Latest** release track](/docs/dbt-versions/dbt-release-tracks), <Constant name="core" /> v1.9 and newer. Starting in <Constant name="core" /> v1.12, this flag defaults to `true`, which causes dbt to raise an error instead of a warning when cumulative metrics use the un-nested syntax.
 
 Use the following metric configured with the syntax before v1.9 as an example:
 

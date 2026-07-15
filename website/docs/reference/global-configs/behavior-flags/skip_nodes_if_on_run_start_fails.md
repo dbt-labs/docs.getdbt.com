@@ -18,6 +18,8 @@ This flag was removed in <Constant name="core_v2" /> and in <Constant name="fusi
 | Matured (default → `true`) | Sep 1, 2026 | 1.12.0 |
 | Removed | — | v2.0 |
 
+<br />
+
 Starting in <Constant name="core" /> v1.12, `skip_nodes_if_on_run_start_fails` defaults to `true`, skipping all selected resources if there is a failure on an `on-run-start` hook.
 
 For more information, refer to [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end).
