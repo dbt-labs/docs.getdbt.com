@@ -19,6 +19,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
 
+## July 2026
+
+- **New:** You can now access dbt State settings from **Account settings** > **Billing & Usage**, previously found under **State**. You can manage your trial, enable dbt State on environments and jobs, and set spend alerts &mdash; all in one place. For details, refer to [dbt State trial and billing](/docs/deploy/dbt-state-trial).
+
 ## June 2026
 
 - **Fix:** If you use the Administrator API to manage [SCIM](/docs/platform/manage-access/scim) to sync users from your identity provider, the `/api/v3/accounts/{account_id}/scim/v2/Users` response now returns `value` and `display` on each embedded group reference. `id` and `displayName` are retained so existing integrations keep working — this is a non-breaking change.
@@ -47,7 +51,7 @@ The following features are new or enhanced as part of dbt Labs announcements at 
   - **New**: Generate and serve [dbt Docs v2](/docs/build/view-documentation#dbt-docs-v2) with the <Constant name="fusion_engine" /> or <Constant name="core" /> v2 by running a dbt command with `--use-index`, then `dbt docs serve`. Add [`--write-catalog`](/reference/commands/cmd-docs#--write-catalog-flag) for richer column type metadata.
 - **Preview**: [dbt State](/docs/deploy/dbt-state-about) is now available in preview!
   - **New**: dbt State skips or clones nodes when the logic and data haven't changed, rather than rebuilding everything on every run. Available natively in <Constant name="dbt" /> v2.0, the <Constant name="dbt_platform" />, and the <Constant name="fusion_engine" />, and as a plugin for <Constant name="core" /> v1.7-1.12. To get started, refer to [Set up dbt State](/docs/deploy/dbt-state-setup).
-  - **New**: [dbt State pricing](/docs/platform/billing#dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
+  - **New**: [dbt State pricing](/docs/platform/billing/dbt-state-usage) is usage-based at $0.094 per daily unique reuse. New organizations receive a 30-day free trial with no usage limit.
   - **Behavior change**: State-aware orchestration is no longer being enabled for new customers. Refer to [Migrate to dbt State](/docs/deploy/dbt-state-migration) for more information.
 
 - **New**: dbt Wizard is available in dbt platform as a public preview. Introducing dbt Wizard CLI as a public beta. Purpose-built for agentic governed data development in dbt, dbt Wizard understands your project through a  [native metadata engine](/docs/dbt-ai/wizard-how-it-works#native-metadata-engine), unlike general-purpose coding agents.
