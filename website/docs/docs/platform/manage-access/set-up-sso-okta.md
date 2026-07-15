@@ -161,8 +161,7 @@ To complete setup, follow the steps below in <Constant name="dbt" />.
 
 ### Supplying credentials
 
-First, navigate to the **Enterprise &gt; Single Sign On** page under Account
-Settings. Next, click the **Edit** button and supply the following SSO details:
+First, navigate to **Account settings** > **SSO & SCIM**. Next, click **Get started** if SSO has not been configured, or **Edit** if it has already been set up, and supply the following SSO details:
 
 
 | Field | Value |

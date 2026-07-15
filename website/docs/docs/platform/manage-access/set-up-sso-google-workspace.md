@@ -75,8 +75,8 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 
 ### Supply your OAuth Client ID and Client Secret
 
-1. Navigate to the **Enterprise &gt; Single Sign On** page under **Account settings**.
-2. Click the **Edit** button and supply the following SSO details:
+1. Navigate to **Account settings** > **SSO & SCIM**.
+2. Click **Get started** if SSO has not been configured, or **Edit** if it has already been set up, and supply the following SSO details:
     - **Log in with**: GSuite
     - **Client ID**: Paste the Client ID generated in the steps above
     - **Client Secret**: Paste the Client Secret generated in the steps above

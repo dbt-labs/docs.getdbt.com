@@ -151,7 +151,7 @@ To complete setup, follow the steps below in the <Constant name="dbt" /> applica
 
 25. From <Constant name="dbt" />, click on your account name in the left side menu and select **Account settings**.
 26. Click **SSO & SCIM** from the menu.
-27. Click the **Edit** button and supply the following SSO details:
+27. Click **Get started** if SSO has not been configured, or **Edit** if it has already been set up, and supply the following SSO details:
 
 | Field | Value |
 | ----- | ----- |
