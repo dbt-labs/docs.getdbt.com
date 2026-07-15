@@ -11,7 +11,7 @@ id: entry-point
 functions:
   - name: <function name>
     config:
-      entry_point: <string> # required for Python UDFs
+      entry_point: <string> # required for Snowflake and BigQuery; optional and ignored on Databricks
 ```
 
 </File>
@@ -20,12 +20,13 @@ functions:
 
 When creating Python UDFs, specify the Python function to be called in `entry_point`.
 
-Python UDFs are currently supported in Snowflake and BigQuery. Each warehouse uses a different name for the entry point function. The following table shows what they’re called:
+Python UDFs are currently supported in Snowflake, BigQuery, and Databricks. Each warehouse uses a different name for the entry point function. The following table shows what they’re called:
 
 | Warehouse  | How `entry_point` is used | 
 | -- | -- | 
 | Snowflake | Becomes the `HANDLER` name in `LANGUAGE PYTHON UDF` | 
 | BigQuery |  Becomes the `entry_point` in `OPTIONS(...)` |  
+| Databricks | Accepted for compatibility but has no effect. The function body is used directly, so dbt displays a warning if you set it. Available in `dbt-databricks` v1.12+. | 
 
 ## Example
 For example, if you have a Python UDF in `functions/my_function.py` with the following code which uses the function `main` as the entry point:
