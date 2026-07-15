@@ -1,7 +1,7 @@
 ---
-title: Install dbt locally
+title: Install dbt
 id: install-dbt
-description: "Learn how to install dbt in local environments"
+description: "Learn how to install the dbt CLI and other tools in your Windows, macOS, or Linux environment"
 sidebar_label: "Install dbt"
 pagination_next: "docs/local/configure-environment-variables"
 pagination_prev: null
@@ -64,7 +64,7 @@ Common issues and resolutions:
 ## Install dbt Core v2 CLI <Lifecycle status="Alpha" />
 
 :::caution dbt Core v2 is in alpha
-<Constant name="core" /> v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable local development, use <Constant name="fusion" />.
+<Constant name="core" /> v2 is under active development and not recommended for production use. Features and APIs may change before the stable release. For stable development, use <Constant name="fusion" />.
 :::
 
 <Constant name="core" /> v2 is the next major version of <Constant name="core" />, built on the <Constant name="fusion_engine" /> runtime. Install it with `pip`, same as v1, but target the v2 prerelease package.
