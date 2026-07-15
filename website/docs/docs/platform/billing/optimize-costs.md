@@ -11,7 +11,7 @@ sidebar_label: "Optimize costs"
 
 #### Use `lag_tolerance` to reduce unnecessary model execution
 
-You can save even more time and compute by defining how old your data can be before a model should be triggered. We’ve introduced lag_tolerance so that you can do things like differentiate local development needs vs prod. 
+You can save even more time and compute by defining how old your data can be before a model should be triggered. We’ve introduced lag_tolerance so that you can do things like differentiate development needs vs prod. 
 
 For example:
 
