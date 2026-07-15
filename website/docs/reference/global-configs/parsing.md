@@ -89,7 +89,7 @@ Other behaviors to know about include:
 
 
 - **Partial parsing**: Partial parsing is disabled when `--use-v2-parser` is set. Any stale `partial_parse.msgpack` from a prior run is automatically removed.
-- **`write_manifest`**: `write_manifest` does not work in this mode because the Fusion parser's artifacts (`manifest.json` and `semantic_manifest.json`) are canonical and <Constant name="core" /> does not re-serialize or overwrite them.
+- **`write_manifest`**: `write_manifest` does not work in this mode because the <Constant name="fusion" /> parser's artifacts (`manifest.json` and `semantic_manifest.json`) are canonical and <Constant name="core" /> does not re-serialize or overwrite them.
 - **Artifacts in `target/`**: When `write_json` is enabled, the handoff `manifest.json` (and `semantic_manifest.json` if present) is copied into your project's `target/` directory.
 
 Because the flag only changes _how_ your project is parsed, the lightest way to check <Constant name="fusion" /> parser compatibility is `dbt parse`. You can also pass `--use-v2-parser` with any other command.
