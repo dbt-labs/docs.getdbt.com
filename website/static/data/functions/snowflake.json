@@ -2,7 +2,7 @@
   "_meta": {
     "platform": "snowflake",
     "platform_name": "Snowflake",
-    "count": 941
+    "count": 942
   },
   "functions": [
     {
@@ -5814,6 +5814,13 @@
       "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_query_reference",
       "preview_status": "GA",
       "fusion_typecheck": true
+    },
+    {
+      "name": "SYSTEM$READ_OSI_YAML_FROM_SEMANTIC_VIEW",
+      "category": "System",
+      "docs_url": "https://docs.snowflake.com/en/sql-reference/functions/system_read_osi_yaml_from_semantic_view",
+      "preview_status": "GA",
+      "fusion_typecheck": false
     },
     {
       "name": "SYSTEM$READ_YAML_FROM_SEMANTIC_VIEW",

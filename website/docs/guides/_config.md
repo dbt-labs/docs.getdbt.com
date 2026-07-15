@@ -14,6 +14,7 @@ categories:
   - title: Foundations
     guides:
       - terminal-guide
+      - clone-jaffle-shop
 
   - title: Popular
     guides:

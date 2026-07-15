@@ -18,7 +18,7 @@ With dbt State, dbt first compares the logic and data of each node to previous b
 
 dbt State can reuse all node types that create relations in the database (such as models, snapshots, seeds) and data tests.
 
-dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage).
+dbt State works with <Constant name="core" />, the <Constant name="dbt_platform" />, and <Constant name="fusion_engine" />, across all environments and orchestrators, making it a flexible approach regardless of how you run dbt. It requires authentication either through a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For pricing details, refer to [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage).
 
 ## Benefits
 
@@ -40,21 +40,15 @@ Without dbt State, every selected node rebuilds on every run regardless of wheth
 
 For the full list of available configs, see [dbt State configs](/reference/resource-configs/dbt-state-configs).
 
-## Prerequisites
+<Expandable alt_header="How dbt State decides whether to rebuild, clone, or reuse">
 
-To use dbt State, you need:
+The following decision tree shows how dbt State chooses the most efficient valid action for each node.
 
-- A supported version of dbt. 
-    - Natively available for <Constant name="core" /> v1.12+ and the <Constant name="fusion_engine" /> both in <Constant name="dbt_platform" /> and locally.
-    - Available as a plugin for older versions of <Constant name="core" /> (1.7-1.11).
-- A supported data platform. dbt State currently supports Snowflake, Databricks, BigQuery, and Redshift
-- A supported dbt State account type, which you can learn more about in [Signing up for dbt State](#signing-up-for-dbt-state):
-    - A current <Constant name="dbt_platform" /> account*
-    - A standalone dbt State account
+<Lightbox src="/img/docs/deploy/run-cache-decision-tree.png" width="100%" alt="Decision tree showing how dbt State chooses whether to rebuild, clone, or reuse a node based on state bypasses, volatile SQL handling, execution hashes, freshness, schema matches, clone eligibility, and whether fresh upstream data can still be cloned from time travel or another schema" title="dbt State decision tree for rebuild, clone, and reuse" />
 
-*dbt State isn't available to users on [legacy Starter](/docs/platform/billing#legacy-plans) plans. If you're on a legacy Starter plan, [reach out to dbt Labs](https://www.getdbt.com/contact) for guidance.
+The key idea is that dbt State only skips work when it can prove the existing object is sufficiently equivalent for the current run. If the SQL logic, relevant config, schema, or upstream freshness means the result might be different, dbt rebuilds instead.
 
-More data warehouses are on the roadmap. If you're using another data warehouse and are interested in dbt State, [let us know](https://www.getdbt.com/contact).
+</Expandable>
 
 ## Signing up for dbt State
 
@@ -89,4 +83,6 @@ A standalone account makes sense if you:
 - [Non-interactive environment setup](/docs/deploy/dbt-state-cicd)
 - [dbt State configs](/reference/resource-configs/dbt-state-configs)
 - [Migrate from state-aware orchestration](/docs/deploy/dbt-state-migration)
-- [dbt State usage and pricing](/docs/platform/billing#dbt-state-usage)
+- [dbt State trial and billing](/docs/deploy/dbt-state-trial)
+- [dbt State usage and pricing](/docs/platform/billing/dbt-state-usage)
+

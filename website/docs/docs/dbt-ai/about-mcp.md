@@ -69,6 +69,8 @@ The [remote MCP server](/docs/dbt-ai/setup-remote-mcp) connects to the <Constant
 
 The remote MCP server is available on all <Constant name="dbt_platform" /> [plans](https://www.getdbt.com/pricing). However, the underlying [dbt APIs](/docs/dbt-apis/overview) that the server's tools rely on vary by plan type. For example, the Discovery API and <Constant name="semantic_layer" /> APIs. As a result, the tools available to you through the remote MCP server depend on your plan.
 
+Remote MCP uses the same default global API rate limit as other dbt APIs (5,000 requests per minute per IP). Local MCP is subject to the public Administrative and Discovery API limits. Refer to [API rate limits](/docs/dbt-apis/rate-limits) for details.
+
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 
 <MCPCreditUsage />
@@ -80,6 +82,7 @@ Local MCP is required for <Constant name="platform_cli"/> commands, Codegen, and
 
 Note that access to the [dbt APIs](/docs/dbt-apis/overview) is limited depending on your [plan type](https://www.getdbt.com/pricing).
 
+<SimpleTable>
 | Tools | Local | Remote |
 | --- | --- | --- |
 | <Constant name="platform_cli"/> commands  | ✅ | ❌ |
@@ -89,6 +92,9 @@ Note that access to the [dbt APIs](/docs/dbt-apis/overview) is limited depending
 | Administrative API | ✅ | ✅ |
 | Codegen Tools | ✅ | ❌ |
 | <Constant name="fusion" /> Tools | ✅ | ✅ |
+| Product Docs Tools |  ✅ | ✅ |
+| MCP Server Metadata Tools | ✅ | ✅ |
+</SimpleTable>
 
 ## Available tools
 
@@ -103,7 +109,8 @@ To view the full list of tools, see [Available tools](/docs/dbt-ai/mcp-available
 The dbt MCP server integrates with any [MCP client](https://modelcontextprotocol.io/clients) that supports OAuth or token authentication and tool use capabilities, depending on your setup. We have created integration guides for the following clients:
 - [Claude](/docs/dbt-ai/integrate-mcp-claude)
 - [Cursor](/docs/dbt-ai/integrate-mcp-cursor)
-- [VS Code](/docs/dbt-ai/integrate-mcp-vscode).
+- [VS Code](/docs/dbt-ai/integrate-mcp-vscode)
+- [Snowflake Cortex](/docs/dbt-ai/integrate-mcp-snowflake-cortex)
 
 ## Data retention
 

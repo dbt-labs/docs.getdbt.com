@@ -17,6 +17,62 @@ unlisted: true
 
 Release notes are grouped by date for single-tenant environments.
 
+## July 13, 2026
+
+## Behavior change
+
+### Billing
+- **Improved billing email alerts**: You’ll now receive email alerts when you’re drawing down on your consumption &mdash; whether that’s from models built or newer consumption features like dbt State.
+
+## July 8, 2026
+
+## Enhancements
+
+### dbt AI and agents
+
+- **User list search and group filtering**: The user listing API now supports a `search` parameter (case-insensitive substring match across email and name) and a `group_id` parameter to retrieve only members of a specific group, enabling paginated group-member lookups for large accounts.
+
+- **Expanded Analyst Read permission set**: The [Analyst Read](/docs/platform/manage-access/enterprise-permissions#analyst-read) permission set now includes the project and account read permissions analysts need to browse catalog and configuration without write access.
+
+## Fixes
+
+### Orchestration and run status
+
+- **Clearer errors for malformed dbt commands**: A dbt step with invalid command syntax, such as an unclosed quote, now returns a user-facing syntax error instead of a generic unhandled exception.
+
+## July 1, 2026
+
+## Enhancements
+
+### APIs, Identity, and Administration
+
+- **SCIM user responses include standard group fields**: User responses from SCIM endpoints now include the standard `value` (group ID) and `display` (group display name) fields alongside the existing `id` and `displayName` fields, improving compatibility with SCIM spec consumers.
+
+- **Credentials page accessible with `user_credential_write` permission**: The credentials list and detail pages are now accessible to users who have `user_credential_write` permission even without `credentials_read`, supporting credential self-service flows.
+
+## Fixes
+
+### dbt platform
+
+- **Email notifications accept addresses with special characters**: External email notification addresses with valid but non-standard local-part characters (for example, ampersands in `ops&alerts@example.com`) are now accepted instead of being rejected by the validator.
+
+### Orchestration and run status
+
+- **Clearer errors for oversized environment variable payloads**: Oversized custom environment variables now fail at run start with a clear error that names the largest offender, instead of crashing mid-run. Reduce the variable size and retry.
+
+### dbt AI and agents
+
+- **More reliable dbt Wizard conversations**: dbt Wizard now recovers automatically from transient errors that could previously interrupt a conversation, so long threads keep working.
+
+- **Accurate job and run scoping in dbt Wizard**: dbt Wizard now correctly scopes job and run investigations to your current project instead of returning results across your entire account. You no longer see unrelated jobs from other projects when asking dbt Wizard to investigate a run.
+
+## Behavior Changes
+
+### dbt platform
+
+- **"Development credentials" renamed to "User credentials"**: All user-facing labels, section headings, tooltip text, and in-app messages that previously referred to "development credentials" now use "user credentials."
+
+- **Versionless migration banner removed**: The banner notifying users about migration to versionless dbt has been removed from the notification stack.
 
 ## June 24, 2026
 
@@ -35,8 +91,6 @@ Release notes are grouped by date for single-tenant environments.
 - **Run history now scoped to projects**: You can now view live run, step, and log data scoped to a specific project. Results support filtering by step status and log type, with consistent pagination across all views.
 
 - **Presigned log download URLs**: Logs for completed run steps are now downloaded directly from storage rather than streamed through the service, improving download reliability and performance. Download links expire after 15 minutes.
-
-- **Email verification short-code flow for OAuth registration**: A new email verification flow sends a 6-digit numeric code directly in the email body rather than a click-through link, supporting OAuth client registration flows where you enter the code in the application.
 
 ## Enhancements
 
@@ -62,8 +116,6 @@ Release notes are grouped by date for single-tenant environments.
 ### APIs, Identity, and Administration
 
 - **[Administrative API v3](/dbt-cloud/api-v3) now supports private endpoints**: [`list`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/List%20Private%20Endpoints), [`create`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Create%20Private%20Endpoint), [`retrieve`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Retrieve%20Private%20Endpoint), [`update`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Update%20Private%20Endpoint), and [`delete`](https://docs.getdbt.com/dbt-cloud/api-v3?version=2.0&name=Fusion#/operations/Delete%20Private%20Endpoint). Use these endpoints to manage private connectivity programmatically.
-
-- **System for Cross-domain Identity Management (SCIM) configuration visible in account admin**: You can now view your SCIM configuration directly in account admin settings, including whether SCIM is enabled and whether manual updates are allowed.
 
 - **Clearer error messages for service outages**: When a third-party service, such as a data warehouse, is temporarily unavailable, the dbt platform now returns a descriptive error message instead of a generic one, making it easier to diagnose connection issues.
 
@@ -119,7 +171,7 @@ Release notes are grouped by date for single-tenant environments.
 
 ## Enhancements
 
-### dbt Wizard and agents
+### dbt AI and agents
 
 - **OAuth scopes declared in Model Context Protocol resource metadata**: The Model Context Protocol (MCP) protected resource metadata endpoint now advertises the OAuth scopes it supports (`offline_access`, `account:read`, `projects:query`, `catalog:read`, `projects:develop`, and `jobs:run`). MCP clients that perform dynamic capability discovery can now request the correct scopes automatically.
 

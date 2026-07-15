@@ -19,9 +19,9 @@ Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1
 
 :::
 
-<VersionBlock firstVersion="2.0">
+<VersionBlock firstVersion="1.13">
 
-In dbt v1.12, 2.0, and later, authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across various dbt tools like dbt VS Code extension and dbt State.```
+In <Constant name="dbt" /> v2.0 and later, authentication is handled by [`dbt login`](/reference/commands/login), so your login state is shared across dbt tools like the dbt VS Code extension and, in supported versions, dbt State.
 
 </VersionBlock>
 
