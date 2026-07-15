@@ -304,7 +304,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt local installation",
+          label: "dbt self-hosted installation",
           collapsed: true,
           link: { type: "doc", id: "docs/local/about-local" },
           items: [
@@ -431,6 +431,7 @@ const sidebarSettings = {
                 "docs/platform/wizard-platform",
                 "docs/dbt-ai/wizard-ide",
                 "docs/platform/wizard-home",
+                "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",
                 "docs/dbt-ai/wizard-platform-privacy-data",
@@ -2094,6 +2095,12 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/platform/billing",
+        "docs/platform/billing/plans-and-billing",
+        "docs/platform/billing/how-pricing-works",
+        "docs/platform/billing/dbt-state-usage",
+        "docs/platform/billing/dbt-ai-usage",
+        "docs/platform/billing/managing-usage",
+        "docs/platform/billing/optimize-costs",
         "docs/platform/billing-faqs",
       ],
     },

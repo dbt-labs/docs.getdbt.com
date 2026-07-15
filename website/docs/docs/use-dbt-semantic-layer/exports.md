@@ -12,7 +12,7 @@ Exports enhance [saved queries](/docs/build/saved-queries) by running your saved
 - Enabling you to write these queries within your data platform using the <Constant name="dbt" /> job scheduler.
 - Providing an integration path for tools that don't natively support the <Constant name="semantic_layer" /> by exposing tables of metrics and dimensions.
 
-Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [<Constant name="semantic_layer" /> integration](/docs/platform-integrations/avail-sl-integrations). Running an export counts towards [queried metrics](/docs/platform/billing#what-counts-as-a-queried-metric) usage. Querying the resulting table or view from the export does not count toward queried metric usage.
+Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [<Constant name="semantic_layer" /> integration](/docs/platform-integrations/avail-sl-integrations). Running an export counts towards [queried metrics](/docs/platform/billing/how-pricing-works#what-counts-as-a-queried-metric) usage. Querying the resulting table or view from the export does not count toward queried metric usage.
 
 ## Prerequisites
 
