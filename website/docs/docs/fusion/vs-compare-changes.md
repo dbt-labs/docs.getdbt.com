@@ -2,11 +2,11 @@
 title: "Compare changes locally with your dbt platform account"
 id: "vs-compare-changes"
 description: "Compare how code edits will change your data while you develop your dbt platform project locally with the dbt VS Code extension."
-sidebar_label: "Compare changes locally"
+sidebar_label: "Compare changes"
 image: /img/docs/extension/vs-compare-changes-tab.png
 ---
 
-# Compare changes in local development <Lifecycle status="beta" />
+# Compare changes during development <Lifecycle status="beta" />
 
 :::info
 This feature is in beta. All dbt VS Code extension users can use compare changes during the 14-day trial. After the trial, [sign in or register](/docs/sign-in-dbt-extension) for a <Constant name="dbt_platform" /> account to keep using it.
@@ -31,7 +31,7 @@ Compare changes in development is available for models only. Support for seeds, 
 To use the dbt VS Code extension compare changes feature, you need:
 
 - A <Constant name="fusion" /> [supported data platform](/docs/fusion/supported-features?version=2.0#requirements) (BigQuery, Databricks, Redshift, or Snowflake)
-- The [dbt VS Code extension](/docs/install-dbt-extension) installed with a local installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
+- The [dbt VS Code extension](/docs/install-dbt-extension) installed with a self-hosted installation of the [<Constant name="fusion_engine" />](/docs/fusion/get-started-fusion)
 - A baseline state to compare your changes against &mdash; refer to [How it works](#how-it-works) to choose between [automatic deferral](/docs/platform/about-defer) or [`manifest.json`](/reference/artifacts/manifest-json?version=2.0) manual setup.
 
 **Sign-in and authentication**
@@ -78,7 +78,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 <Expandable alt_header="Are queries run on behalf of the developer?"> 
 
-  Yes. All comparison queries in development run using your local development credentials or platform-based user credentials, directly from the dbt VS Code extension. If you authenticated with a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, these are the credentials configured in your **Account settings**; otherwise it uses the credentials from your active dbt profile. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
+  Yes. All comparison queries in development run using your development credentials or platform-based user credentials, directly from the dbt VS Code extension. If you authenticated with a [`dbt_cloud.yml`](/reference/dbt_cloud.yml) file, these are the credentials configured in your **Account settings**; otherwise it uses the credentials from your active dbt profile. The <Constant name="fusion_engine" /> uses your credentials to execute comparison queries in your warehouse. The results are stored in memory, so that we can keep them populated into the Compare tab for that file until you re-run.
 </Expandable>
 <Expandable alt_header="Is this using my warehouse credits?"> 
   Yes. Because the comparison runs in your development environment using your dev credentials, it will use your warehouse’s compute.
@@ -94,7 +94,7 @@ The **Compare** tab displays the changes to the data's primary keys, rows, and c
 
 <Expandable alt_header="How is this different from Advanced CI compare changes?">
 
-The dbt VS Code extension's compare changes feature applies only to your local development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
+The dbt VS Code extension's compare changes feature applies only to your self-hosted dbt development environment. If you're looking to compare changes between your production environment and the pull request's latest commit, check out [Advanced CI compare changes](/docs/deploy/advanced-ci#compare-changes).
 
 import CompareChangesTable from '/snippets/_compare-changes-table.md';
 
