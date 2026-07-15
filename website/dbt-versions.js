@@ -74,12 +74,17 @@ exports.versions = products.flatMap((product) =>
 );
 
 /**
- * Controls doc page visibility in the sidebar based on the current version.
+ * Controls doc page visibility in the sidebar based on the current version and/or product.
  * @type {Array.<{
  * page: string,
- * firstVersion: string,
- * lastVersion: string,
+ * firstVersion?: string,
+ * lastVersion?: string,
+ * product?: string,
  * }>}
+ *
+ * `product` — when set, the page is only shown when that top-level product is
+ * selected (e.g. "Fusion" or "Core"). Can be combined with firstVersion /
+ * lastVersion to further restrict by version within that product.
  */
 exports.versionedPages = [
   {
@@ -105,6 +110,7 @@ exports.versionedPages = [
   {
     page: "docs/platform/connect-data-platform/connect-apache-spark",
     lastVersion: "1.99",
+
   },
   {
     page: "docs/platform/connect-data-platform/connect-amazon-athena",
@@ -164,6 +170,10 @@ exports.versionedPages = [
   },
   {
     page: "docs/local/connect-data-platform/clickhouse-setup",
+    lastVersion: "1.99",
+  },
+  {
+    page: "docs/local/connect-data-platform/confluent-setup",
     lastVersion: "1.99",
   },
   {
@@ -338,15 +348,24 @@ exports.versionedPages = [
     page: "reference/global-configs/sqlparse",
     firstVersion: "1.11",
   },
+  {
+    page: "reference/global-configs/user-settings",
+    firstVersion: "1.13",
+  },
 ];
 
 /**
- * Controls doc category visibility in the sidebar based on the current version.
+ * Controls doc category visibility in the sidebar based on the current version and/or product.
  * @type {Array.<{
  * category: string,
- * firstVersion: string,
- * lastVersion: string,
+ * firstVersion?: string,
+ * lastVersion?: string,
+ * product?: string,
  * }>}
+ *
+ * `product` — when set, the category is only shown when that top-level product
+ * is selected (e.g. "Fusion" or "Core"). Can be combined with firstVersion /
+ * lastVersion to further restrict by version within that product.
  */
 exports.versionedCategories = [
   {

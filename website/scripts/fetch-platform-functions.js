@@ -59,39 +59,100 @@ async function fetchGitHubFile(repoPath, filePath, token) {
 // Validation
 // ---------------------------------------------------------------------------
 
-function validate(platform, functions) {
+// How many functions to spot-check from each oracle pool per run.
+const SPOT_CHECK_SAMPLE_SIZE = 8;
+
+// Fisher-Yates pick of up to `n` items, using an injectable RNG so tests can
+// seed it. Does not mutate the input.
+function sampleRandom(arr, n, rng = Math.random) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a.slice(0, n);
+}
+
+// Spot-check the name/URL matching against regressions on every run, with a
+// fresh random sample (no frozen list to maintain). Fusion's own support list
+// is the oracle: any function Fusion lists that also appears in the scraped
+// docs MUST come out as fusion_typecheck: true. Two pools are sampled, both
+// derived independently of the matcher under test so the check isn't circular:
+//   - exact:    scraped name is verbatim a Fusion name (guards the basic path)
+//   - overload: scraped name has a trailing "(qualifier)" whose base is a
+//               Fusion name (guards qualifier stripping — the regression that
+//               flipped "LAST_DAY (Datetime)" to false)
+// Deterministic coverage of the matching logic itself lives in
+// fusion-match.test.js, which needs no network and runs in normal CI.
+function spotCheckMatching(platform, functions, fusionIndex, { sampleSize = SPOT_CHECK_SAMPLE_SIZE, rng = Math.random } = {}) {
+  if (!fusionIndex) return; // no Fusion oracle this run — nothing to check against
+  const fusionNames = fusionIndex.supportedNames; // Set of UPPERCASE Fusion names
+
+  const exact = [];
+  const overload = [];
+  for (const fn of functions) {
+    const upper = fn.name.toUpperCase();
+    if (fusionNames.has(upper)) {
+      exact.push(fn);
+    } else if (/\([^()]*\)\s*$/.test(upper)) {
+      const base = upper.replace(/\s*\([^()]*\)\s*$/, '').trim();
+      if (fusionNames.has(base)) overload.push(fn);
+    }
+  }
+
+  const sampled = [
+    ...sampleRandom(exact, sampleSize, rng),
+    ...sampleRandom(overload, sampleSize, rng),
+  ];
+  const failures = sampled.filter((fn) => !fn.fusion_typecheck).map((fn) => fn.name);
+  if (failures.length) {
+    throw new Error(
+      `[${platform.id}] spot-check failed — these functions are in Fusion's functions.sdf.yml ` +
+      `but the build marked them fusion_typecheck:false: ${failures.join(', ')}.\n` +
+      `    Cause: the name/URL matching in scripts/fusion-match.js is missing matches it should make ` +
+      `(this is a fresh random sample, so a re-run may surface different functions with the same root cause).\n` +
+      `    Next: reproduce locally with \`cd website && npx jest fusion-match\`, then check ` +
+      `normalizeFunctionKey / isFunctionSupported — likely the docs introduced a new scraped-name format ` +
+      `(e.g. a new qualifier or alias) that Fusion lists differently.`
+    );
+  }
+  console.log(`  ✓ spot-checked ${sampled.length} random Fusion functions (${overload.length} overloaded available)`);
+}
+
+function validate(platform, functions, fusionIndex) {
   const minExpected = { snowflake: 400, databricks: 100, redshift: 100, bigquery: 100, trino: 100, duckdb: 50 };
   const min = minExpected[platform.id] ?? 50;
 
   if (functions.length < min) {
     throw new Error(
-      `[${platform.id}] Expected ${min}+ functions, got ${functions.length} — ` +
-      `${platform.name} may have changed their page structure`
+      `[${platform.id}] Expected ${min}+ functions, got ${functions.length}. ` +
+      `${platform.name} likely changed their docs page layout.\n` +
+      `    Next: open ${platform.functionsUrl} and update this platform's parseHtml/fetchFunctions ` +
+      `selectors in scripts/platforms.config.js.`
     );
   }
 
   const missingNames = functions.filter((f) => !f.name);
   if (missingNames.length > 0) {
     throw new Error(
-      `[${platform.id}] ${missingNames.length} functions are missing names — check the scraper selectors`
+      `[${platform.id}] ${missingNames.length} scraped function(s) have an empty name.\n` +
+      `    Next: the name selector in this platform's parseHtml in scripts/platforms.config.js is ` +
+      `matching the wrong element — inspect ${platform.functionsUrl} and fix the selector.`
     );
   }
 
   const typecheckCount = functions.filter((f) => f.fusion_typecheck).length;
   if (typecheckCount === 0) {
     throw new Error(
-      `[${platform.id}] No fusion-supported functions found — check YAML parsing`
+      `[${platform.id}] 0 of ${functions.length} functions matched Fusion's support list. ` +
+      `The scrape worked but the join produced nothing.\n` +
+      `    Next: check the warnings above — usually the Fusion YAML failed to fetch (bad/expired ` +
+      `FUSION_REPO_TOKEN) or moved (FUSION_REPO=${FUSION_REPO}, FUSION_BASE_PATH=${FUSION_BASE_PATH}). ` +
+      `If both are fine, the YAML format may have changed — check buildFusionIndex in scripts/fusion-match.js.`
     );
   }
 
-  // Spot-check a known stable function to catch join logic bugs
-  if (platform.id === 'snowflake') {
-    const abs = functions.find((f) => f.name === 'ABS');
-    if (!abs) throw new Error(`[snowflake] ABS not found — scraper may be broken`);
-    if (!abs.fusion_typecheck) {
-      throw new Error(`[snowflake] ABS is not marked fusion_typecheck — check the join logic`);
-    }
-  }
+  spotCheckMatching(platform, functions, fusionIndex);
 
   console.log(`  ✓ ${functions.length} functions, ${typecheckCount} with typechecking support`);
 }
@@ -144,20 +205,21 @@ async function processPlatform(platform, token) {
 
   merged.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
 
-  validate(platform, merged);
+  validate(platform, merged, fusionIndex);
 
   const outPath = path.join(OUT_DIR, `${platform.id}.json`);
   fs.mkdirSync(OUT_DIR, { recursive: true });
   const output = {
+    // Intentionally no fetch timestamp: it would change on every run and open a
+    // PR even when no function data changed. Git history records when data moves.
     _meta: {
       platform: platform.id,
       platform_name: platform.name,
-      fetched_at: new Date().toISOString(),
       count: merged.length,
     },
     functions: merged,
   };
-  fs.writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf8');
+  fs.writeFileSync(outPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
   console.log(`[${platform.id}] Wrote ${merged.length} functions to ${outPath}`);
 }
 
@@ -199,4 +261,8 @@ async function main() {
   console.log('\nAll platforms updated successfully.');
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = { validate, spotCheckMatching, sampleRandom };

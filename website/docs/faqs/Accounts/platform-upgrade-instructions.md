@@ -4,6 +4,8 @@ id: "platform-upgrade-instructions"
 description: "Instructions for upgrading a dbt account after the trial ends."
 ---
 
+import DevToStarterUpgradeBody from '/snippets/_dev-to-starter-upgrade-body.md';
+
 <Constant name="dbt" /> offers [several plans](https://www.getdbt.com/pricing/) with different features that meet your needs. This document is for <Constant name="dbt" /> admins and explains how to select a plan in order to continue using <Constant name="dbt" />. 
 
 ## Prerequisites 
@@ -76,6 +78,12 @@ For commonly asked billings questions, refer to the <Constant name="dbt" /> [pri
   Yes, you can upgrade or downgrade at any time. Account Owners can access their dedicated billing section via the account settings page.
     
   If you’re not sure which plan is right for you, get in touch and we’ll be happy to help you find one that fits your needs.
+
+</details>
+<details>
+  <summary>What happens when I upgrade from Developer to Starter?</summary>
+
+  <DevToStarterUpgradeBody />
 
 </details>
 <details>

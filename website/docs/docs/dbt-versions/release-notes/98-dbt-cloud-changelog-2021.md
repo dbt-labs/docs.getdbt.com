@@ -128,7 +128,7 @@ We shipped a resizable folder pane in the <Constant name="studio_ide" />, and we
 
 
 ## dbt Cloud v1.1.29 (June 23, 2021)
-We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for <Constant name="core" />. The biggest changes are better tests, providing consistency, configurability, and persistence. Additionally, we've refactored partial parsing and introduced an experimental parser; both are set to off by default.
+We're heads down working on a handful of new features that we're going to share at the end of this month. The finish line is in sight. In the meantime, check out our latest release candidates for <Constant name="core" />. The biggest changes are better tests, providing consistency, configurability, and persistence.
 
 #### New products and features
 - Add support for latest Core release candidates to <Constant name="dbt" />: v0.19.2-rc2 and v0.20.0-rc1
@@ -189,7 +189,7 @@ A lot of improvements coming for GitLab webhooks and native auth. We also fixed 
 - Updates test command suggestions and regex for common action suggestions
 - Updates order of stylesheet import to fix missing border bug
 - Fix GitLab PR link for Run Page
-- Fix infinite spinner for missing environment or development credentials
+- Fix infinite spinner for missing environment or user credentials
 - Fix infinite spinner when user is missing dev credentials
 - Do not try to push if awaiting a merge
 - Fix deleting schemas

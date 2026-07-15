@@ -12,6 +12,8 @@ level: 'Intermediate'
 
 <div style={{maxWidth: '900px'}}>
 
+import CreateSnowflakeSqlFile from '/snippets/_create-snowflake-sql-file.md';
+
 ## Introduction
 
 The focus of this workshop will be to demonstrate how we can use both *SQL and python together* in the same workflow to run *both analytics and machine learning models* on <Constant name="dbt" />.
@@ -66,7 +68,7 @@ Overall we are going to set up the environments, build scalable pipelines in dbt
 
 <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/4-enable-anaconda.png" title="Enable Anaconda"/>
 
-6. Finally, create a new Worksheet by selecting **+ Worksheet** in the upper right corner.
+<CreateSnowflakeSqlFile />
 
 ## Connect to data source
 

@@ -279,7 +279,13 @@ import DeprecationWarnings4 from '/snippets/_deprecation-warnings.md';
 
 Nest custom configs under `meta` and ensure `meta` is nested under `config` (similar to [`PropertyMovedToConfigDeprecation`](#propertymovedtoconfigdeprecation)).
 
-Example that results in the warning: 
+The same resolution applies whether the custom key is in a model config or a generic test definition. Select the relevant tab for an example:
+
+<Tabs>
+
+<TabItem value="model" label="Model config">
+
+Example that results in the warning:
 
 ```yaml
 models:
@@ -306,6 +312,44 @@ models:
           meta:
             some_key: some_value
 ```
+
+</TabItem>
+
+<TabItem value="test" label="Generic test definition">
+
+If you define a custom key directly under a test in a `tests:` block, nest it under `config.meta`.
+
+Example that results in the warning:
+
+```yaml
+tests:
+  - name: custom_generic_test
+    description: My custom generic test
+    arguments:
+      - name: active_timestamp
+        type: timestamp
+        description: The active timestamp for the model
+```
+
+Example of the resolution:
+
+```yaml
+tests:
+  - name: custom_generic_test
+    description: My custom generic test
+    config:
+      meta:
+        arguments:
+          - name: active_timestamp
+            type: timestamp
+            description: The active timestamp for the model
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Accessing nested configurations
 
 To access custom configurations nested under attributes of `meta`, use `config.get('meta')` and then index the meta dictionary by the name of your custom attribute. Users will need to adjust their code that accesses the custom config keys directly as top-level keys.
 
@@ -389,7 +433,7 @@ config:
 
 dbt raises this warning when two unversioned resources in the same package share the same name (for example, a model and a seed both named `sales`) and the `require_unique_project_resource_names` flag is set to `false`. Previously, dbt did not always detect these name conflicts, which meant duplicate names could sometimes point to the wrong resource.
 
-When the `require_unique_project_resource_names` flag is set to `true`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-flag-introduction#unique-project-resource-names).
+When the `require_unique_project_resource_names` flag is set to `true`, dbt raises a `DuplicateResourceNameError`. For more information, see [Unique project resource names](/reference/global-configs/behavior-flags/require_unique_project_resource_names).
 
 #### DuplicateNameDistinctNodeTypesDeprecation warning resolution
 
@@ -459,7 +503,7 @@ Ensure your exposure names only contain letters, numbers, and underscores. A mor
 
 dbt raises this deprecation warning when a custom `generate_schema_name` macro returns a `null` value. Returning `null` schema names can lead to invalid or unpredictable behavior.
 
-This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-flag-introduction#valid-schema-from-generate_schema_name) is set to `false`. When the flag is set to `true`, dbt raises an error during parsing.
+This deprecation warning is raised when the [`require_valid_schema_from_generate_schema_name` flag](/reference/global-configs/behavior-flags/require_valid_schema_from_generate_schema_name) is set to `false`. When the flag is set to `true`, dbt raises an error during parsing.
 
 #### GenerateSchemaNameNullValueDeprecation warning resolution
 
@@ -490,7 +534,7 @@ If you are seeing this warning, unfortunately, there isn't much you can do at th
 
 ### MFCumulativeTypeParamsDeprecation
 
-In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-flag-introduction#cumulative-metrics) was deprecated.
+In dbt [v1.9](/docs/dbt-versions/core-upgrade/upgrading-to-v1.9) implementing `window` and `time_to_grain` directly on the `type_params` of a [metric](/reference/global-configs/behavior-flags/require_nested_cumulative_type_params) was deprecated.
 
 Example:
 
@@ -749,7 +793,7 @@ The following are recommended approaches:
 
 ### PackageMaterializationOverrideDeprecation
 
-The behavior where installed packages could override built-in materializations without your explicit opt-in is deprecated. Setting the [`require_explicit_package_overrides_for_builtin_materializations` flag](/reference/global-configs/behavior-flag-maturity#require_explicit_package_overrides_for_builtin_materializations) to `false` in your `dbt_project.yml` allowed packages that matched the name of a built-in materialization to continue to be included in the search and resolution order.
+The behavior where installed packages could override built-in materializations without your explicit opt-in is deprecated. Setting the [`require_explicit_package_overrides_for_builtin_materializations` flag](/reference/global-configs/behavior-flags/require_explicit_package_overrides_for_builtin_materializations) to `false` in your `dbt_project.yml` allowed packages that matched the name of a built-in materialization to continue to be included in the search and resolution order.
 
 #### PackageMaterializationOverrideDeprecation warning resolution
 
@@ -860,7 +904,7 @@ Rename the resource in violation so it no longer contains a space in its name.
 
 ### SourceFreshnessProjectHooksNotRun
 
-If you are seeing this, it means that the behavior flag `source_freshness_run_project_hooks` is set to `false` and either `on-run-start` or `on-run-end` is defined ([docs](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks)). Previously, project hooks wouldn't be run on sources when `dbt source freshness` was run. 
+If you are seeing this, it means that the behavior flag `source_freshness_run_project_hooks` is set to `false` and either `on-run-start` or `on-run-end` is defined ([docs](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks)). Previously, project hooks wouldn't be run on sources when `dbt source freshness` was run. 
 
 Example: 
 
@@ -874,7 +918,7 @@ information: https://docs.getdbt.com/reference/global-configs/legacy-behaviors
 
 #### SourceFreshnessProjectHooksNotRun warning resolution
 
-Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-flag-maturity#source_freshness_run_project_hooks).
+Set `source_freshness_run_project_hooks` to `true`. For instructions on skipping project hooks during a `dbt source freshness` invocation, check out the [behavior change documentation](/reference/global-configs/behavior-flags/source_freshness_run_project_hooks).
 
 ### SourceOverrideDeprecation
 

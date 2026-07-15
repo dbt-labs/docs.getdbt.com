@@ -81,6 +81,41 @@ This config accepts two value types:
   lag_tolerance: "{{ '4h' if target.name == 'prod' else '7d' }}"
   ```
 
+### When does `lag_tolerance` apply
+
+`lag_tolerance` only applies to data freshness checks. A downstream model still rebuilds within its tolerance window if an upstream model's compiled SQL has changed since the last run, regardless of the `lag_tolerance` setting.
+
+This often happens with incremental models. The first time an incremental model runs, it executes a full load with no `WHERE` clause. On subsequent runs, `is_incremental()` becomes true and a filter is appended, changing the compiled SQL. dbt State detects this as a query change on the upstream model and rebuilds all downstream models, even those whose `lag_tolerance` has not elapsed.
+
+For example, `fct_orders` is an incremental model that `agg_orders_daily` depends on:
+
+<File name="models/fct_orders.sql">
+
+```sql
+{{ config(materialized='incremental', unique_key='id') }}
+
+select id, amount from {{ ref('raw_orders') }}
+{% if is_incremental() %}
+where id > (select max(id) from {{ this }})
+{% endif %}
+```
+
+</File>
+
+<File name="models/agg_orders_daily.sql">
+
+```sql
+{{ config(materialized='table', state={'lag_tolerance': '3h'}) }}
+
+select date_trunc('day', created_at) as day, sum(amount) as total
+from {{ ref('fct_orders') }}
+group by 1
+```
+
+</File>
+
+When `fct_orders` transitions from a full load to an incremental run, its compiled SQL changes. `agg_orders_daily` rebuilds on that run despite its 3-hour `lag_tolerance`.
+
 ## Default
 
 `45m`. When `lag_tolerance` is not set, dbt State applies a default tolerance of 45 minutes.

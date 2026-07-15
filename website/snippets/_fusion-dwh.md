@@ -2,7 +2,7 @@
     - Service Account / User Token
     - Native OAuth
     - External OAuth 
-      - [Workload Identity Federation](/docs/platform/manage-access/set-up-bigquery-oauth?version=1.12#set-up-bigquery-workload-identity-federation) isn't currently supported in <Constant name="fusion"/>. Use a [Native OAuth connection](/docs/platform/manage-access/set-up-bigquery-oauth#set-up-bigquery-native-oauth) or service account instead. Support coming soon.
+      - [Workload Identity Federation](/docs/platform/manage-access/set-up-bigquery-oauth#set-up-bigquery-workload-identity-federation) (Microsoft Entra)
     - [Required permissions](/docs/local/connect-data-platform/bigquery-setup#required-permissions)
   </Expandable>
 
@@ -14,10 +14,6 @@
   <Expandable alt_header="Redshift" lifecycle="preview" lifecycle_size="75">
     - Username / Password
     - IAM profile
-  </Expandable>
-
-  <Expandable alt_header="Salesforce Data 360">
-    - JSON Web Token (JWT) bearer authentication
   </Expandable>
   
   <Expandable alt_header="Snowflake">

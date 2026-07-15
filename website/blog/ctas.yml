@@ -35,3 +35,9 @@
   subheader: The future of dbt Core v2.0, what we're building together, and live Q&A on June 25
   button_text: Save your seat!
   url: https://www.getdbt.com/resources/webinars/fivetran-dbt-labs-the-merger-what-s-shipping-in-dbt-and-live-q-and-a/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_fivetran-dbt-merger_aw&utm_content=themed-webinar____&utm_term=all_all__
+
+- name: dbt_state_july_2026_webinar
+  header: "dbt State: Build what's changed, skip what hasn't"
+  subheader: Join us July 15th to learn how to save on warehouse compute costs!
+  button_text: Register here
+  url: https://www.getdbt.com/resources/webinars/dbt-state-build-what-s-changed-skip-what-hasn-t/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2027_dbt-state-deep-dive-product_aw&utm_content=themed-webinar____&utm_term=all_all__

@@ -13,10 +13,10 @@ import Prerequisites from '/snippets/_canvas-prerequisites.md';
 # About Canvas <Lifecycle status='managed,managed_plus'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
-<Constant name="canvas" /> helps you quickly access and transform data through a visual, drag-and-drop experience and with a built-in AI for custom code generation.
+<Constant name="canvas" /> helps you quickly access and transform data through a visual, drag-and-drop experience.
 </p>
 
-<Constant name="canvas" /> allows organizations to enjoy the many benefits of code-driven development—such as increased precision, ease of debugging, and ease of validation &mdash; while retaining the flexibility to have different contributors develop wherever they are most comfortable. Users can also take advantage of built-in AI for custom code generation, making it an end-to-end frictionless experience.
+<Constant name="canvas" /> allows organizations to enjoy the many benefits of code-driven development, such as increased precision, ease of debugging, and ease of validation, while retaining the flexibility to have different contributors develop wherever they are most comfortable. For natural language and AI-assisted workflows, use [dbt Copilot in <Constant name="canvas" />](/docs/platform/build-canvas-copilot).
 
 These models compile directly to SQL and are indistinguishable from other dbt models in your projects:
 - Visual models are version-controlled in your backing <Constant name="git" /> provider.
@@ -40,8 +40,8 @@ To give feedback, please reach out to your dbt Labs account team. We appreciate 
 
 ## Resources
 
-Learn more about Canvas: 
+Learn more about <Constant name="canvas" />: 
 
-- How to [use Canvas](/docs/platform/use-canvas)
-- The Canvas [quickstart guide](/guides/canvas)
-- [Canvas fundamentals course](https://learn.getdbt.com/learn/course/canvas-fundamentals) on [dbt Learn](https://learn.getdbt.com/catalog)
+- How to [use <Constant name="canvas" />](/docs/platform/use-canvas)
+- The <Constant name="canvas" /> [quickstart guide](/guides/canvas)
+- [<Constant name="canvas" /> fundamentals course](https://learn.getdbt.com/learn/course/canvas-fundamentals) on [dbt Learn](https://learn.getdbt.com/catalog)

@@ -6,7 +6,7 @@ description: "Gain early access to many new dbt Labs experimental features by en
 pagination_next: null
 ---
 
-dbt Labs often tests experimental features before deciding to continue on the [Product lifecycle](/docs/dbt-versions/product-lifecycles#dbt-cloud).
+dbt Labs often tests experimental features before deciding to continue on the [Product lifecycle](/docs/dbt-versions/product-lifecycles).
 
 You can access experimental features to preview beta features that haven’t yet been released to <Constant name="dbt" />. You can toggle on or off all experimental features in your Profile settings. Experimental features:
 
