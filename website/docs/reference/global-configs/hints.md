@@ -8,7 +8,7 @@ sidebar: "CLI hints"
 
 dbt surfaces occasional, non-blocking hints during command execution that point toward ways to reduce build and parse times. Hints appear as `[HINT]`-prefixed notes in the CLI output; they are informational only and never block a run.
 
-Each hint is shown at most once per week per project target directory.
+Each hint is shown, at most, once per week per project target directory.
 
 ## Disabling hints
 
@@ -27,6 +27,8 @@ Hints are enabled by default. To disable them, use any of the following:
     </File>
 
 ## Available hints
+
+The following hints are available today, with plans to add more in the future. 
 
 ### Large build without state or deferral
 
