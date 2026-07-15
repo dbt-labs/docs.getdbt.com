@@ -8,7 +8,7 @@ id: "setup-remote-mcp"
 import MCPCreditUsage from '/snippets/_mcp-credit-usage.md';
 import MCPRemoteServerUrl from '/snippets/_mcp-remote-server-url.md';
 
-The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. This setup requires no local installation and is ideal for data consumption use cases.
+The remote MCP server uses an HTTP connection and makes calls to dbt-mcp hosted on the cloud-based <Constant name="dbt_platform" />. The self-hosted installation is not required for remote MCP use and is ideal for data consumption use cases.
 
 <Lightbox src="/img/mcp/remote-dbt-mcp.jpg" title="Remote dbt MCP server architecture" />
 
@@ -18,7 +18,7 @@ The remote MCP server is the ideal choice when:
 - You don't want to or are restricted from installing additional software (`uvx`, `dbt-mcp`) on your system.
 - Your primary use case is _consumption-based_: querying metrics, exploring metadata, viewing lineage.
 - You need access to <Constant name="semantic_layer"/>, Administrative, and Discovery APIs without maintaining a local dbt project.
-- You don't need to execute CLI commands. Remote MCP does not support local CLI commands (`dbt run`, `dbt build`, `dbt test`, and more). If you need to execute dbt commands, use the [local MCP server](/docs/dbt-ai/setup-local-mcp) instead.
+- You don't need to execute CLI commands. Remote MCP does not support self-hosted dbt CLI commands (`dbt run`, `dbt build`, `dbt test`, and more). If you need to execute dbt commands, use the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) instead.
 
 <MCPCreditUsage />
 
@@ -76,7 +76,7 @@ For the full list of scopes and what each one allows, see [Scopes and consent](/
 
 ### Limitations
 
-- Remote MCP doesn't support local dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [local MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
+- Remote MCP doesn't support self-hosted dbt CLI commands (like `dbt run`, `dbt build`, `dbt test`, and more) or local project access; use the [self-hosted MCP server](/docs/dbt-ai/setup-local-mcp) for those workflows.
 
 For client-specific steps, see [Integrate Claude with MCP](/docs/dbt-ai/integrate-mcp-claude), [Integrate Cursor with MCP](/docs/dbt-ai/integrate-mcp-cursor), [INtegrate Snowflake Cortex with MCP](/docs/dbt-ai/integrate-mcp-snowflake-cortex), or [Integrate VS Code with MCP](/docs/dbt-ai/integrate-mcp-vscode).
 
@@ -212,7 +212,7 @@ Header values like `x-dbt-prod-environment-id` and `x-dbt-user-id` expect numeri
 
 For other MCP clients (Codex, Windsurf, and so on), refer to your client's MCP configuration docs for the correct key format.
 
-For local MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+For self-hosted MCP, configuration is done via environment variables; see the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
 ## Related docs
 
