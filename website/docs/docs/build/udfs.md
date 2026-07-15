@@ -90,8 +90,7 @@ Follow these steps to define UDFs in dbt:
     ```
     </File>
 
-    :::info Databricks
-    On Databricks, the contents of the `.py` file become the UDF body verbatim, and Databricks evaluates that body directly instead of calling a named entry point. Write the body so its last statement is a top-level `return` that produces the result. Because of that top-level `return`, the Databricks source is a function _body_, not a runnable `.py` module:
+    For Databricks, the contents of the `.py` file become the UDF body verbatim, and Databricks evaluates that body directly instead of calling a named entry point. Write the body so its last statement is a top-level `return` that produces the result. Because of that top-level `return`, the Databricks source is a function _body_, not a runnable `.py` module. For example:
 
     <File name='functions/is_positive_int.py'>
 
@@ -105,8 +104,8 @@ Follow these steps to define UDFs in dbt:
     ```
     </File>
 
-    Python UDFs on Databricks require Unity Catalog.
-    :::
+    **Note:** Python UDFs on Databricks require [Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/).
+
     </TabItem>
     <TabItem value="JavaScript">
     Define a JavaScript UDF in a JavaScript file.
@@ -186,11 +185,10 @@ Follow these steps to define UDFs in dbt:
       - [BigQuery](https://cloud.google.com/bigquery/docs/user-defined-functions-python): `3.11`
     - [`entry_point`](/reference/resource-configs/entry-point) &mdash; Specify the Python function to be called.
     <br></br>
-    You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. List package names, such as `numpy` and `pandas`, and optionally pin versions, such as `pandas==1.5.0`. The warehouse installs these packages when it creates the UDF, so your UDF can use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before you can use them.
 
-    :::info Databricks Python UDFs
-    On Databricks, `runtime_version` and `entry_point` are accepted for cross-adapter compatibility but have no effect — Databricks manages the Python runtime internally and uses the function body directly, so dbt displays a warning if you set them. Python UDFs on Databricks also require Unity Catalog. For how the function body must be written (the body is used directly, so its last statement must be a top-level `return`), see the Databricks note under the Python source in Step 1.
-    :::
+	On Databricks, `runtime_version` and `entry_point` are accepted for cross-adapter compatibility but have no effect. Databricks manages the Python runtime internally and uses the function body directly, so dbt displays a warning if you set them.
+
+    You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. List package names, such as `numpy` and `pandas`, and optionally pin versions, such as `pandas==1.5.0`. The warehouse installs these packages when it creates the UDF, so your UDF can use functionality from external Python libraries. On Snowflake, some packages are installed from the Anaconda repository, and you may need to [accept Anaconda's Terms of Service](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages#using-third-party-packages-from-anaconda) before you can use them.
 
     :::info Beta feature
     The `packages` config is a beta feature in <Constant name="core" /> v1.12.
@@ -251,7 +249,7 @@ Follow these steps to define UDFs in dbt:
    	`volatility` is accepted in dbt for SQL, Python, and JavaScript UDFs, but the handling of it is warehouse-specific. For SQL and Python UDFs on BigQuery, `volatility` is ignored and dbt displays a warning. For JavaScript UDFs on BigQuery, `deterministic` and `non-deterministic` are applied when creating the UDF; `stable` is not supported. In Snowflake, all supported volatility values are applied when creating the UDF. Refer to [volatility](/reference/resource-configs/volatility) for more information.
     :::
 
-3. Run one of the following `dbt build` commands to build your UDFs and create them in the warehouse:
+4. Run one of the following `dbt build` commands to build your UDFs and create them in the warehouse:
 
     Build all UDFs:
     
@@ -391,7 +389,7 @@ Follow these steps to define UDFs in dbt:
     $$;
     ```
 
-    Databricks omits the `RUNTIME_VERSION` and `HANDLER` clauses. The runtime is managed internally, and the contents of your `.py` file become the function body verbatim — including the trailing `return main(a_string)` that produces the result.
+    Databricks omits the `RUNTIME_VERSION` and `HANDLER` clauses. The runtime is managed internally, and the contents of your `.py` file become the function body verbatim &mdash; including the trailing `return main(a_string)` that produces the result.
     </TabItem>
     </Tabs>
     </TabItem>
@@ -424,7 +422,7 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     </Tabs>
 
-4. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
+5. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
 
     <File name="models/my_model.sql">
 
@@ -438,7 +436,7 @@ Follow these steps to define UDFs in dbt:
 
     When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the existing UDF in the deferred environment (for example, production) if the function is not selected or not yet built in your target environment. This requires a state manifest specified using `--state` or an equivalent environment variable (such as `DBT_ENGINE_STATE`), which dbt uses to determine where to defer. This allows models that depend on UDFs to run successfully in [continuous integration](/docs/deploy/continuous-integration) and development workflows. For more information, refer to [Configure state selection](/reference/node-selection/configure-state).
 
-5. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
+6. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
     <File name="models/my_model.sql">
 
