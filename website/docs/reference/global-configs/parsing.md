@@ -105,7 +105,3 @@ When the v2 parser fails, dbt surfaces these exceptions to make failures easier 
 :::
 
 </VersionBlock>
-
-### Experimental parser
-
-Not currently in use.
