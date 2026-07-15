@@ -26,7 +26,7 @@ Python UDFs are currently supported in Snowflake, BigQuery, and Databricks. Each
 | -- | -- | 
 | Snowflake | Becomes the `HANDLER` name in `LANGUAGE PYTHON UDF` | 
 | BigQuery |  Becomes the `entry_point` in `OPTIONS(...)` |  
-| Databricks | Accepted for compatibility but has no effect. The function body is used directly, so dbt displays a warning if you set it. <br /> (Available in dbt-databricks 1.12+) | 
+| Databricks | Accepted for compatibility but has no effect. The function body is used directly, so dbt displays a warning if you set it. <br /> Available in `dbt-databricks` v1.12+. | 
 
 ## Example
 For example, if you have a Python UDF in `functions/my_function.py` with the following code which uses the function `main` as the entry point:
