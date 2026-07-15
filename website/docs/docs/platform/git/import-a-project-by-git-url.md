@@ -6,20 +6,26 @@ description: "Learn how to connect to a git repository using a git URL."
 In <Constant name="dbt" />, you can import a git repository from any valid git URL that points to a dbt project. There are some important considerations to keep in mind when doing this.
 
 ## Git protocols
-Use an SSH clone URL for your repository. <Constant name="dbt" /> accepts both common shapes: SCP-style URLs like `git@github.com:organization/repo-name.git` and URLs that start with `ssh://`, for example `ssh://git@github.com/organization/repo-name.git`. Do not use `https://...` or other HTTP URLs, because <Constant name="dbt" /> clones over SSH and cannot clone repositories supplied with the HTTP protocol.
 
-### Equivalent ssh:// URL format
+Use an SSH clone URL for your repo. dbt supports both common SSH formats:
 
-When you copy an SSH URL from your git provider (usually found under **Code** -> **Clone** -> **SSH**), it is often SCP-style and uses a colon (`:`) between the host and the path. That format is valid in <Constant name="dbt" />. If you prefer a `ssh://` URL instead, you can rewrite it as follows.
+- `git@github.com:organization/repo-name.git`
+- `ssh://git@github.com/organization/repo-name.git`
 
-SCP-style with a colon:
+Don't use `https://...` or other HTTP URLs. dbt clones repos over SSH and can't clone repos that use the HTTP protocol.
+
+### Converting SSH URLs to ssh://
+
+Git providers often show SSH clone URLs in SCP-style format, with a colon between the host and repo path (usually found under **Code** -> **Clone** -> **SSH**).
+
+Example of SCP-style with a colon:
 
 ```
 git@github.com:organization/repo-name.git
 user@custom-host.example.com:organization/repo-name.git
 ```
 
-The same location using `ssh://` and `/` in the path:
+If you prefer a `ssh://` URL instead, you can rewrite it as follows. The equivalent ssh:// format uses a slash after the host:
 
 ```
 ssh://git@github.com/organization/repo-name.git
@@ -65,7 +71,7 @@ If you use GitHub, you can import your repo directly using [<Constant name="dbt"
 1. Navigate to your repository on GitHub.
 2. Click the **Code** button.
 3. Select the **SSH** tab to view the SSH clone URL.
-4. Copy the URL from the **SSH** tab. SCP-style (`git@...`) and `ssh://...` URLs are both supported. If you want the `ssh://` form, see [Equivalent ssh:// URL format](#equivalent-ssh-url-format).
+4. Copy the URL from the **SSH** tab. SCP-style (`git@...`) and `ssh://...` URLs are both supported. If you want the `ssh://` form, refer to [Converting SSH URLs to ssh://](#converting-ssh-urls-to-ssh).
 
 ### Add a deploy key
 
