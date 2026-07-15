@@ -86,8 +86,6 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
 - **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
 
-<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-rss.json).</span>
-
 ## April 2026
 
 - **Enhancement:** When a dbt command run by the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) times out, the agent now automatically attempts to cancel the stuck invocation on the server and returns a retry-friendly message, letting you decide whether to retry. Previously, timeouts resulted in an unhandled error. This applies to both model invocations and autofix runs.
