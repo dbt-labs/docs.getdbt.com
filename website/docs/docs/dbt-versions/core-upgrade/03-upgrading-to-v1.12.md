@@ -50,6 +50,7 @@ packages:
 
 - You can specify public third-party PyPI packages for your Python UDF with the optional `packages` config. The warehouse installs these packages when it creates the UDF, which lets your UDF use functionality from external Python libraries. For more information, refer to [Defining UDFs in dbt](/docs/build/udfs#defining-udfs-in-dbt) and the [packages](/reference/resource-configs/packages) config reference.
 
+- Python UDFs are now supported in Databricks, in addition to Snowflake and BigQuery. For Databricks, Python UDFs require [Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog/), and the `runtime_version` and `entry_point` configs are ignored. For more information, refer to [User-defined functions](/docs/build/udfs).
 
 ### `latest_version_pointer` for versioned models <Lifecycle status="beta" />
 
