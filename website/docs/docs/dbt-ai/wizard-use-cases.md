@@ -92,6 +92,8 @@ active, churned, and prospect. Write a column description for each.
 - You can ask <Constant name="wizard" /> to write descriptions in a specific voice or format: "Write the descriptions in plain language, one sentence each"
 - To document a whole layer at once: "Generate documentation for all models in `models/staging/` that don't have a YAML file yet"
 
+For a workflow that finds coverage gaps and checks candidate assertions against warehouse data, refer to [Add data-informed tests with <Constant name="wizard" />](/docs/dbt-ai/wizard-data-informed-tests).
+
 
 ## Debug a job failure
 
@@ -182,26 +184,26 @@ downstream ref(), the tests, the documentation, and any exposures that point to 
 
 ## Validate before shipping
 
-For changes where correctness matters more than speed, ask Wizard to validate its own output against your project before presenting the final diff.
+For changes where correctness matters more than speed, ask <Constant name="wizard" /> to assess impact and validate the result against your project.
 
 **Example prompt:**
 
 ```
-Add not_null and unique tests to the primary key of dim_customers, and make
-sure they pass against current data before you show me the diff.
+Add not_null and unique tests to the primary key of dim_customers. Use heavy
+validation, investigate any failures, and summarize skipped checks.
 ```
 
 **What <Constant name="wizard" /> does:**
 1. Generates the YAML for the new tests
-2. Compiles the project to confirm the YAML parses
-3. Runs `dbt test --select dim_customers` (with your approval) to confirm the tests actually pass
-4. If a test fails, reports which one and why, then proposes an adjusted approach — for example, investigating the duplicate rows or scoping the test to a non-null subset
-5. Only after validation passes does it present the final diff
+2. Assesses the affected resources and proposes a validation plan
+3. Runs the approved compile, build, test, and comparison steps for the selected validation level
+4. Reports failures, differences, unresolved risks, and skipped checks
+5. Shows the proposed changes for you to review
 
-Wizard runs a comparison loop like this on most write operations by default. See [Validation loop mechanics](/docs/dbt-ai/wizard-how-it-works#validation-loop-mechanics) for the full list of what gets validated.
+In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation based on the risk and cost of the change. Follow the [validation workflow](/docs/dbt-ai/wizard-validate-changes) for the checks included at each level.
 
 **Tips:**
-- Be explicit about what "validates" means for your change ("compile only" vs "compile and run tests" vs "run against a sample")
+- State the business behavior that must remain true, not only the commands to run
 - In CI, pair this with `wizard review --base main` to validate the diff against your project before opening a PR
 
 ## Add a semantic model
@@ -244,6 +246,9 @@ wizard exec --json "summarize test coverage by schema"
 ## Related docs
 
 - [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
+- [Understand a dbt project](/docs/dbt-ai/wizard-understand-project)
+- [Validate dbt changes](/docs/dbt-ai/wizard-validate-changes)
+- [Add data-informed tests](/docs/dbt-ai/wizard-data-informed-tests)
 - [dbt Wizard overview](/docs/dbt-ai/about-dbt-wizard-cli)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in the dbt platform

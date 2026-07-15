@@ -28,7 +28,7 @@ That index gives <Constant name="wizard" /> four capabilities that aren't possib
 | Impact analysis | When you ask "what breaks if I change this column?", <Constant name="wizard" /> returns the exact set of downstream models, metrics, tests, and exposures affected — instantly, from the index. Column-level lineage is tracked, so <Constant name="wizard" /> knows not just which models reference a table, but which ones reference that specific column. |
 | Health checks | <Constant name="wizard" /> knows which models have tests, which don't, which have stale data, which have failing contracts, and which had recent run failures — as a structured dataset. You can ask "what's unhealthy in this part of my DAG?" and get a precise answer without running anything. |
 | Data profiling | <Constant name="wizard" /> can profile your data — row counts, column distributions, null rates — and use that context when deciding how to build or refactor a model. It can reason about your data without materializing models or running expensive queries. |
-| Validation loop | <Constant name="wizard" /> validates its own work against the index as a built-in step inside every task — not something you have to prompt for. After generating a change, it checks: does the SQL compile? do downstream refs still resolve? did the new tests pass? If not, it adjusts and retries before showing you anything. |
+| Validation planning | <Constant name="wizard" /> uses project metadata to identify affected resources and choose relevant checks. In the CLI, you control the depth of structured validation before commands run. |
 </SimpleTable>
 
 <Constant name="wizard" /> builds and updates this index from dbt artifacts. In the <Constant name="dbt_platform" />, project state comes from your connected development environment. In the terminal, run `dbt parse`, `dbt compile`, or `dbt build` before a session so <Constant name="wizard" /> has your latest local project state.
@@ -39,24 +39,15 @@ The dbt version <Constant name="wizard" /> displays comes from your project's ma
 
 {/* DIAGRAM: dbt artifacts/manifests → metadata engine → Wizard context */}
 
-## Validation loop mechanics
+## Validation mechanics {#validation-loop-mechanics}
 
-The validation loop runs automatically inside every task. Before showing a diff, <Constant name="wizard" /> checks proposed changes against your live project state using the same index it uses for context.
+Validation can combine static checks, dbt commands, development builds, downstream impact analysis, and development-to-production comparisons. The checks that run depend on the surface, available tools, project state, permissions, and the validation depth you approve.
 
 {/* DIAGRAM: proposed change → validation → diff */}
 
-<SimpleTable>
-| Change type | What <Constant name="wizard" /> checks |
-|---|---|
-| SQL generation | Compile generated SQL |
-| Test generation | Run new tests |
-| Refactors | Verify downstream `ref()`s resolve |
-| Contracts | Check schema compatibility |
-| Semantic Layer changes | Compile semantic definitions |
-| Job investigations | Analyze run results and lineage |
-</SimpleTable>
+In <Constant name="wizard" /> CLI, choose light, medium, heavy, or skipped validation. Medium validation is the default. Light validation focuses on syntax, linting where supported, tests, and code review without materializing the changed models. Medium validation adds development materialization and downstream checks. Heavy validation adds explicit expectations and development-to-production comparisons when the required relations are available.
 
-If a check fails, <Constant name="wizard" /> explains the issue, adjusts the approach, and retries — you only see a diff once the change has passed. This loop runs without prompting; it's part of how <Constant name="wizard" /> works, not a feature you activate.
+<Constant name="wizard" /> reports failures and checks it couldn't complete. A passing check doesn't remove the need to review business logic, and a skipped check should remain visible in your review. For a complete procedure and the approval points for warehouse commands, refer to [Validate dbt changes with <Constant name="wizard" />](/docs/dbt-ai/wizard-validate-changes).
 
 ## Tools and capabilities
 

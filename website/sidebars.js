@@ -401,6 +401,16 @@ const sidebarSettings = {
             "docs/dbt-ai/wizard-quickstart",
             "docs/platform/enable-dbt-ai",
             "docs/dbt-ai/wizard-use-cases",
+            {
+              type: "category",
+              label: "Workflows",
+              collapsed: true,
+              items: [
+                "docs/dbt-ai/wizard-understand-project",
+                "docs/dbt-ai/wizard-validate-changes",
+                "docs/dbt-ai/wizard-data-informed-tests",
+              ],
+            },
             "docs/dbt-ai/wizard-how-it-works",
             {
               type: "category",
