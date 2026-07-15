@@ -1,17 +1,17 @@
 ---
-title: About dbt local installations
+title: About dbt self-hosted installations
 id: about-local
 description: "dbt tools and resources that can be installed on your local machine"
-sidebar_label: "About local installation"
+sidebar_label: "About self-hosted installation"
 pagination_next: "docs/local/install-dbt"
 pagination_prev: null
 ---
 
-dbt enables data teams to transform data using analytics engineering best practices. You can run dbt locally through a command line interface (CLI) to build, test, and deploy your data transformations, and install additional tools to enhance your workflows. 
+dbt enables data teams to transform data using analytics engineering best practices. You can run self-hosted dbt through a command line interface (CLI) to build, test, and deploy your data transformations, and install additional tools to enhance your workflows. 
 
 ## dbt Fusion engine
 
-For the best local development experience, we recommend the <Constant name="fusion_engine" />. Built in Rust, <Constant name="fusion" /> delivers:
+For the best self-hosted dbt development experience, we recommend the <Constant name="fusion_engine" />. Built in Rust, <Constant name="fusion" /> delivers:
 
 - **Faster performance:** Up to 10x faster parsing, compilation, and execution.
 - **SQL comprehension:** Dialect-aware validation catches errors before they reach your warehouse.
@@ -28,13 +28,13 @@ The [dbt VS Code extension](/docs/dbt-extension-features) combines <Constant nam
 - **Hover insights:** View model definitions and column info without leaving your code.
 - **Refactoring tools:** Rename models and columns across your project.
 
-This is the fastest way to get started with dbt locally.
+This is the fastest way to get started with self-hosted dbt.
 
 [Install <Constant name="fusion" /> with the dbt VS Code extension](/docs/local/install-dbt)
 
 ## dbt Core
 
-<Constant name="core" /> is the open-source engine for running dbt locally. It is available in two versions:
+<Constant name="core" /> is the open-source engine for running dbt. It is available in two versions:
 
 - [<Constant name="core_v1" />](/docs/local/install-dbt?version=1): The original Python-based dbt engine with a rich set of features.
 - [<Constant name="core_v2" />](/docs/dbt-versions/core-upgrade/upgrading-to-v2) <Lifecycle status="alpha" />: The next major version, built on the <Constant name="fusion"/> runtime. Currently in alpha.
@@ -50,7 +50,7 @@ This is the fastest way to get started with dbt locally.
 
 ## dbt Wizard
 
-[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is a natural next step for local dbt development. It works with both <Constant name="fusion_engine" /> and <Constant name="core" />. dbt Wizard adds an AI agent that understands your full project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai), a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
+[dbt Wizard](/docs/dbt-ai/wizard-quickstart) is a natural next step for self-hosted dbt development. It works with both <Constant name="fusion_engine" /> and <Constant name="core" />. dbt Wizard adds an AI agent that understands your full project through dbt's [native metadata engine](/docs/dbt-ai/about-dbt-ai), a structured index of your [lineage](/docs/explore/explore-projects), model health, test coverage, and semantic definitions.
 
 
 - **Build and refactor from natural language**: Describe the change, get a reviewable diff, approve before anything is written.

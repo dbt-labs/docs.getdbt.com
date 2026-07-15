@@ -16,7 +16,7 @@ Run [`dbt login status`](#dbt-login-status) to view your current authentication 
 
 ## When to use dbt login
 
-`dbt login` is an interactive, browser-based sign-in flow for local development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
+`dbt login` is an interactive, browser-based sign-in flow for development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
 
 - advanced features in the [dbt VS Code extension](/docs/about-dbt-extension)
 - [dbt State](/docs/deploy/dbt-state-setup#setting-up-dbt-state) in supported versions
@@ -34,7 +34,7 @@ This 14-day trial applies to the dbt VS Code extension only. It's separate from 
 
 A free <Constant name="dbt_platform" /> account keeps advanced features working after your trial ends and carries your access across all your dbt tools &mdash; the CLI, the VS Code extension, and dbt State &mdash; so you only log in once. No credit card required.
 
-Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to advanced features in local development.
+Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to advanced features in your local development environment.
 
 Note that this is separate from [<Constant name="dbt_platform"/> user license types](/docs/platform/manage-access/seats-and-users?version=2.0&name=Fusion) (such as Developer or Analyst), which controls what you can do _inside_ <Constant name="dbt_platform" />.
 
