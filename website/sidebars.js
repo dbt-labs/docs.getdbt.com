@@ -304,7 +304,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt local installation",
+          label: "dbt self-hosted installation",
           collapsed: true,
           link: { type: "doc", id: "docs/local/about-local" },
           items: [

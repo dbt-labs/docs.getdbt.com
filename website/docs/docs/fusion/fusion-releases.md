@@ -43,7 +43,7 @@ The **Current versions** cards and full release list below pull the public <Cons
 :::
 
 <details>
-    <summary>Updating local Fusion</summary>
+    <summary>Updating your self-hosted Fusion installation</summary>
 <p>
 
 The following commands apply only to _local_ installations of <Constant name="fusion" />. They don't affect which <Constant name="fusion" /> build your <Constant name="dbt_platform" /> environments use. Instead, you can set a [Fusion release track](https://github.com/docs/dbt-versions/dbt-release-tracks#fusion-release-tracks) per environment in <Constant name="dbt_platform" />.

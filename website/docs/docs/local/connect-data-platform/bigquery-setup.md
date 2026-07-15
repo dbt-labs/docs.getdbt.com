@@ -213,7 +213,7 @@ BigQuery targets can be specified using one of four methods:
 3. [service account file](#service-account-file)
 4. [service account JSON](#service-account-json)
 
-For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
+For self-hosted dbt installations, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
 :::tip Workload Identity Federation
 WIF authentication (`external-oauth-wif`) is available in [<Constant name="fusion" />](/docs/local/connect-data-platform/bigquery-setup?version=2.0&name=Fusion#supported-authentication-types). It's not supported in <Constant name="core" /> v1.12 and earlier.

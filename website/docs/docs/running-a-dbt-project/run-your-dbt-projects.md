@@ -33,7 +33,7 @@ import DbtFramework from '/snippets/_dbt-framework.md';
 
 ### dbt platform
 
-The <Constant name="dbt_platform" /> is a fully managed service that gives you a complete environment to build, test, deploy, and collaborate on dbt projects. You can develop in the browser or locally using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
+The <Constant name="dbt_platform" /> is a fully managed service that gives you a complete environment to build, test, deploy, and collaborate on dbt projects. You can develop in the browser or with a self-hosted installation using the <Constant name="fusion_engine" /> or <Constant name="core" /> engine.
 
 - [Develop in your browser using the <Constant name="studio_ide" />](/docs/platform/studio-ide/develop-in-studio)
 - [Seamless drag-and-drop development with <Constant name="canvas" />](/docs/platform/canvas)
@@ -41,11 +41,11 @@ The <Constant name="dbt_platform" /> is a fully managed service that gives you a
 
 For more details, see [About dbt plans](https://www.getdbt.com/pricing).
 
-### dbt local development
+### Self-hosted dbt development {#dbt-local-development}
 
-You can run dbt locally with the <Constant name="fusion_engine" /> or the <Constant name="core" /> engine:
+You can run self-hosted dbt with the <Constant name="fusion_engine" /> or the <Constant name="core" /> engine:
 
-- [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running dbt locally without a <Constant name="dbt_platform" /> project. _Recommended for local development._
+- [Install the dbt VS Code extension](/docs/about-dbt-extension) &mdash; Combines <Constant name="fusion_engine" /> performance with visual features like autocomplete, inline errors, and lineage. Includes [<Term id="lsp" /> features](/docs/about-dbt-lsp) and suitable for users with <Constant name="dbt_platform"/> projects or running self-hosted dbt without a <Constant name="dbt_platform" /> project. _Recommended for local development._
 - [Install the <Constant name="fusion" /> CLI](/docs/local/install-dbt?version=2) &mdash; <Constant name="fusion_engine" /> from the command line, but doesn't include <Term id="lsp" /> features.
 - [Install the <Constant name="platform_cli" />](/docs/platform/dbt-cli-installation) &mdash; The <Constant name="dbt_platform" /> CLI, which allows you to run dbt commands against your <Constant name="dbt_platform" /> development environment from your local command line. Requires a <Constant name="dbt_platform" /> project.
 - [Install <Constant name="core_v1" />](/docs/local/install-dbt) &mdash; The open-source, Python-based CLI that uses the <Constant name="core_v1" /> engine. Doesn't include <Term id="lsp" /> features.
