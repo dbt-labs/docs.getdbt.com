@@ -165,9 +165,6 @@ Options:
                 general --use-colors/--no-use-colors
                 setting.
 
- --use-experimental-parser / --no-use-experimental-parser
-                Enable experimental parsing features.
-
  -V, -v, --version        
                 Show version information and exit
 

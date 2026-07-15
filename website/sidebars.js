@@ -305,7 +305,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt local installation",
+          label: "dbt self-hosted installation",
           collapsed: true,
           link: { type: "doc", id: "docs/local/about-local" },
           items: [
@@ -432,6 +432,7 @@ const sidebarSettings = {
                 "docs/platform/wizard-platform",
                 "docs/dbt-ai/wizard-ide",
                 "docs/platform/wizard-home",
+                "docs/platform/wizard-byok-platform",
                 "docs/dbt-ai/wizard-platform-skills",
                 "docs/dbt-ai/wizard-platform-mcp",
                 "docs/dbt-ai/wizard-platform-privacy-data",
@@ -854,7 +855,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/dbt-state-setup" },
           items: ["docs/deploy/dbt-state-setup", "docs/deploy/dbt-state-enable-jobs", "docs/deploy/dbt-state-enable-studio", "docs/deploy/dbt-state-cicd", "docs/deploy/dbt-state-deferral", "docs/deploy/dbt-state-lag-tolerance"],
         },
-
+        "docs/deploy/dbt-state-trial",
         "docs/deploy/dbt-state-examples",
         "docs/deploy/dbt-state-interface",
         "docs/deploy/dbt-state-migration",
@@ -2095,6 +2096,12 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/platform/billing",
+        "docs/platform/billing/plans-and-billing",
+        "docs/platform/billing/how-pricing-works",
+        "docs/platform/billing/dbt-state-usage",
+        "docs/platform/billing/dbt-ai-usage",
+        "docs/platform/billing/managing-usage",
+        "docs/platform/billing/optimize-costs",
         "docs/platform/billing-faqs",
       ],
     },

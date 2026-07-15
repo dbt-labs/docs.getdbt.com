@@ -63,7 +63,7 @@ While the dbt Semantic Layer will work for both cases, it's best to allow Metric
 
 <Expandable alt_header="How is the dbt Semantic Layer priced?">
 
-The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to the [Billing](/docs/platform/billing#what-counts-as-a-queried-metric) to learn more about pricing.
+The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to the [Billing](/docs/platform/billing/how-pricing-works#what-counts-as-a-queried-metric) to learn more about pricing.
 </Expandable>
 
 ## Availability

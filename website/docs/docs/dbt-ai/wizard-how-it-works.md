@@ -151,7 +151,7 @@ The dbt MCP server reads its connection settings &mdash; such as `DBT_HOST`, `DB
 
 If <Constant name="wizard" /> can't reach the server, confirm these values are set, then restart `wizard` so it picks up the changes. 
 
-For the full list of variables and an example `.env` file, refer to [Set up local MCP](/docs/dbt-ai/setup-local-mcp) and the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+For the full list of variables and an example `.env` file, refer to [Set up self-hosted MCP](/docs/dbt-ai/setup-local-mcp) and the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
 ### Deferral and state
 
