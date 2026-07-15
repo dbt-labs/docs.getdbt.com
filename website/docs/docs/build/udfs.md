@@ -178,7 +178,7 @@ Follow these steps to define UDFs in dbt:
     
     <TabItem value="Python">
     
-    The following configs are required when defining a Python UDF on Snowflake and BigQuery. On Databricks, they're optional and ignored.
+    The following configs are required when defining a Python UDF on Snowflake and BigQuery:
 
     - [`runtime_version`](/reference/resource-configs/runtime-version) &mdash; Specify the Python version to run. Supported values are:
       - [Snowflake](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-introduction): `3.10`, `3.11`, `3.12`, and `3.13`
