@@ -4,10 +4,6 @@ id: "allow_jinja_file_extensions"
 sidebar_label: "allow jinja file extensions"
 ---
 
-:::info Beta feature
-Support for Jinja file extensions is a beta feature in <Constant name="core" /> v1.12.
-:::
-
 | allow_jinja_file_extensions | <Constant name="dbt" /> **Latest** | <Constant name="core" /> |
 |---|---|---|
 | Introduced | 2026.5 | 1.12.0 |
