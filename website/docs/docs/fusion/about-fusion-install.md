@@ -1,10 +1,10 @@
 ---
 title: "About installing Fusion"
-description: "Install the Fusion engine locally to take data transformation to the next level."
+description: "Install the Fusion engine in a self-hosted setup to take data transformation to the next level."
 id: about-fusion-install
 ---
 
-# About Fusion local installation <Lifecycle status="preview" />
+# About self-hosted Fusion installation <Lifecycle status="preview" />
 
 import FusionLifecycle from '/snippets/_fusion-lifecycle-callout.md'
 import FusionPrereqs from '/snippets/_fusion-prereqs.md';

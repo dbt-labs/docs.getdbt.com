@@ -12,34 +12,21 @@ So far we’ve focused on the `models` folder, the primary directory of our dbt 
 
 ```shell
 models
-├── intermediate
-│   └── finance
-│       ├── _int_finance__models.yml
-│       └── int_payments_pivoted_to_orders.sql
 ├── marts
-│   ├── finance
-│   │   ├── _finance__models.yml
-│   │   ├── orders.sql
-│   │   └── payments.sql
-│   └── marketing
-│       ├── _marketing__models.yml
-│       └── customers.sql
-├── staging
-│   ├── jaffle_shop
-│   │   ├── _jaffle_shop__docs.md
-│   │   ├── _jaffle_shop__models.yml
-│   │   ├── _jaffle_shop__sources.yml
-│   │   ├── base
-│   │   │   ├── base_jaffle_shop__customers.sql
-│   │   │   └── base_jaffle_shop__deleted_customers.sql
-│   │   ├── stg_jaffle_shop__customers.sql
-│   │   └── stg_jaffle_shop__orders.sql
-│   └── stripe
-│       ├── _stripe__models.yml
-│       ├── _stripe__sources.yml
-│       └── stg_stripe__payments.sql
-└── utilities
-    └── all_dates.sql
+│   ├── customers.sql
+│   ├── customers.yml
+│   ├── order_items.sql
+│   ├── order_items.yml
+│   ├── orders.sql
+│   ├── orders.yml
+│   └── ...
+└── staging
+    ├── __sources.yml
+    ├── stg_customers.sql
+    ├── stg_customers.yml
+    ├── stg_orders.sql
+    ├── stg_orders.yml
+    └── ...
 ```
 
 ### YAML in-depth
@@ -56,20 +43,14 @@ When structuring your YAML configuration files in a dbt project, you want to bal
 - ✅ **Cascade configs.** Leverage your `dbt_project.yml` to set default configurations at the directory level. Use the well-organized folder structure we’ve created thus far to define the baseline schemas and materializations, and use dbt’s cascading scope priority to define variations to this. For example, as below, define your marts to be materialized as tables by default, define separate schemas for our separate subfolders, and any models that need to use incremental materialization can be defined at the model level.
 
 ```yaml
--- dbt_project.yml
+# dbt_project.yml
 
 models:
   jaffle_shop:
     staging:
       +materialized: view
-    intermediate:
-      +materialized: ephemeral
     marts:
       +materialized: table
-      finance:
-        +schema: finance
-      marketing:
-        +schema: marketing
 ```
 
 :::tip Define your defaults.
@@ -91,19 +72,20 @@ For more information about using groups, see [Add groups to your DAG](/docs/buil
 ```shell
 jaffle_shop
 ├── analyses
-├── seeds
-│   └── employees.csv
+├── data-tests
 ├── macros
-│   ├── _macros.yml
 │   └── cents_to_dollars.sql
-├── snapshots
-└── tests
-└── assert_positive_value_for_total_amount.sql
+├── seeds
+│   └── jaffle-data
+│       ├── raw_customers.csv
+│       ├── raw_orders.csv
+│       └── ...
+└── snapshots
 ```
 
 We’ve focused heavily thus far on the primary area of action in our dbt project, the `models` folder. As you’ve probably observed though, there are several other folders in our project. While these are, by design, very flexible to your needs, we’ll discuss the most common use cases for these other folders to help get you started.
 
-- ✅ `seeds` for lookup tables. The most common use case for seeds is loading lookup tables that are helpful for modeling but don’t exist in any source systems — think mapping zip codes to states, or UTM parameters to marketing campaigns. In this example project we have a small seed that maps our employees to their `customer_id`s, so that we can handle their purchases with special logic.
+- ✅ `seeds` for lookup tables. The most common use case for seeds is loading lookup tables that are helpful for modeling but don’t exist in any source systems — think mapping zip codes to states, or UTM parameters to marketing campaigns. In this example project we have seeds in `seeds/jaffle-data/` that can populate the `raw` schema for local development when `load_source_data` is enabled.
 - ❌ `seeds` for loading source data. Do not use seeds to load data from a source system into your warehouse. If it exists in a system you have access to, you should be loading it with a proper EL tool into the raw data area of your warehouse. dbt is designed to operate on data in the warehouse, not as a data-loading tool.
 - ✅ `analyses` for storing auditing queries. The `analyses` folder lets you store any queries you want to use Jinja with and version control, but not build into models in your warehouse. There are limitless possibilities here, but the most common use case when we set up projects at dbt Labs is to keep queries that leverage the [audit helper](https://github.com/dbt-labs/dbt-audit-helper) package. This package is incredibly useful for finding discrepancies in output when migrating logic from another system into dbt.
 - ✅ `tests` for testing multiple specific tables simultaneously. As dbt tests have evolved, writing singular tests has become less and less necessary. It's extremely useful for work-shopping test logic, but more often than not you'll find yourself either migrating that logic into your own custom generic tests or discovering a pre-built test that meets your needs from the ever-expanding universe of dbt packages (between the extra tests in [`dbt-utils`](https://github.com/dbt-labs/dbt-utils) and [`dbt-expectations`](https://github.com/calogica/dbt-expectations) almost any situation is covered). One area where singular tests still shine though is flexibly testing things that require a variety of specific models. If you're familiar with the difference between [unit tests](https://en.wikipedia.org/wiki/Unit_testing) [and](https://www.testim.io/blog/unit-test-vs-integration-test/) [integration](https://www.codecademy.com/resources/blog/what-is-integration-testing/) [tests](https://en.wikipedia.org/wiki/Integration_testing) in software engineering, you can think of generic and singular tests in a similar way. If you need to test the results of how several specific models interact or relate to each other, a singular test will likely be the quickest way to nail down your logic.

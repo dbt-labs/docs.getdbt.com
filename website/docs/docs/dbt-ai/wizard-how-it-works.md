@@ -151,7 +151,7 @@ The dbt MCP server reads its connection settings &mdash; such as `DBT_HOST`, `DB
 
 If <Constant name="wizard" /> can't reach the server, confirm these values are set, then restart `wizard` so it picks up the changes. 
 
-For the full list of variables and an example `.env` file, refer to [Set up local MCP](/docs/dbt-ai/setup-local-mcp) and the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
+For the full list of variables and an example `.env` file, refer to [Set up self-hosted MCP](/docs/dbt-ai/setup-local-mcp) and the [Environment variables reference](/docs/dbt-ai/mcp-environment-variables).
 
 ### Deferral and state
 
@@ -235,7 +235,7 @@ Each CLI session is saved locally. This is separate from platform conversations,
 
 - [<Constant name="wizard" /> overview](/docs/platform/wizard-overview)
 - [<Constant name="wizard" /> in the dbt platform](/docs/platform/wizard-platform)
-- [<Constant name="wizard" /> quickstart](/docs/dbt-ai/wizard-quickstart)
+- [Use <Constant name="wizard" /> locally](/docs/dbt-ai/wizard-quickstart)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)
 - [Skills](/docs/dbt-ai/wizard-skills)
 - [<Constant name="wizard" /> command reference](/docs/dbt-ai/wizard-cli-reference)

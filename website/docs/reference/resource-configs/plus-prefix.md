@@ -31,15 +31,21 @@ models:
 
 </File>
 
-Throughout this documentation, we've tried to be consistent in using the `+` prefix in `dbt_project.yml` files.
+Throughout this documentation, we use the `+` prefix on configuration keys in `dbt_project.yml` files.
 
-However, the leading `+` is in fact _only required_ when you need to disambiguate between resource paths and configs. For example, when:
-- A config accepts a dictionary as its inputs. As an example, the [`persist_docs` config](/reference/resource-configs/persist_docs).
-- Or, a config shares a key with part of a resource path. For example, if you had a directory of models named `tags`.
+For projects using [`config-version`](/reference/project-configs/config-version) 2, dbt expects configuration keys to use the `+` prefix. Specifying configurations without the `+` prefix is [deprecated](/reference/deprecations#missingplusprefixdeprecation). Folder and file names within resource configurations still do not use the `+` prefix.
+
+The `+` prefix is especially important when you need to disambiguate between [resource paths](/reference/resource-configs/resource-path) and configs. For example, when:
+- A config accepts a dictionary as its input, such as [`persist_docs`](/reference/resource-configs/persist_docs).
+- A config shares a key with part of a resource path, such as a directory of models named `tags`.
 
 import MissingPrefix from '/snippets/_missing-prefix.md';
 
 <MissingPrefix />
+
+import DeprecationWarnings from '/snippets/_deprecation-warnings.md';
+
+<DeprecationWarnings />
 
 <File name='dbt_project.yml'>
 
@@ -55,17 +61,14 @@ models:
     columns: true
 
   jaffle_shop:
-    schema: my_schema # a plus prefix is optional here
-    +tags: # this is the tag config
+    +schema: my_schema
+    +tags: # this is the tags config
       - "hello"
     config:
-      tags: # whereas this is the tag resource path
-        # changed to config in v1.10
-        # The below config applies to models in the
-        # models/tags/ directory.
-        # Note: you don't _need_ a leading + here,
-        # but it wouldn't hurt.
-        materialized: view
+      tags: # resource path (models/tags/), not the tags config
+        # config: disambiguates path vs. config (required in v1.10+)
+        # The below config applies to models in the models/tags/ directory.
+        +materialized: view
 
 
 ```

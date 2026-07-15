@@ -2,12 +2,12 @@
 title: "About dbt login"
 sidebar_label: "login"
 id: "login"
-description: "Use dbt login in dbt Core v2.0 and later to authenticate and unlock gated features across dbt tools."
+description: "Use dbt login to authenticate and unlock gated features across dbt tools."
 intro_text: "Use dbt login to authenticate once and unlock gated features across dbt tools."
 ---
 
 :::info
-Available in <Constant name="dbt" /> v1.12 and v2.0 and later.
+Available in <Constant name="dbt" /> v2.0 and later.
 :::
 
 Run `dbt login` from the command line to unlock advanced dbt features. It'll open browser-based authentication where you can sign in to your existing <Constant name="dbt_platform" /> account or create a free one &mdash; no credit card required!
@@ -16,10 +16,10 @@ Run [`dbt login status`](#dbt-login-status) to view your current authentication 
 
 ## When to use dbt login
 
-`dbt login` is an interactive, browser-based sign-in flow for local development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
+`dbt login` is an interactive, browser-based sign-in flow for development on macOS, Linux, and Windows. Use `dbt login` to unlock advanced features including:
 
 - advanced features in the [dbt VS Code extension](/docs/about-dbt-extension)
-- [dbt State](/docs/deploy/dbt-state-setup?version=2.0#how-dbt-login-works-with-dbt-state)
+- [dbt State](/docs/deploy/dbt-state-setup#setting-up-dbt-state) in supported versions
 - advanced features in v2.0 CLI
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability?version=1.13#dbt-vs-code-extension-features) for the full list of features and their availability.
@@ -34,17 +34,34 @@ This 14-day trial applies to the dbt VS Code extension only. It's separate from 
 
 A free <Constant name="dbt_platform" /> account keeps advanced features working after your trial ends and carries your access across all your dbt tools &mdash; the CLI, the VS Code extension, and dbt State &mdash; so you only log in once. No credit card required.
 
-Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to advanced features in local development.
+Run `dbt login` to create a free account, or log in to an existing one. Logging in is simply how dbt confirms your access to advanced features in your local development environment.
 
 Note that this is separate from [<Constant name="dbt_platform"/> user license types](/docs/platform/manage-access/seats-and-users?version=2.0&name=Fusion) (such as Developer or Analyst), which controls what you can do _inside_ <Constant name="dbt_platform" />.
 
 Refer to [VS Code extension features](/docs/fusion/fusion-availability#dbt-vs-code-extension-features) for the full list of features and their availability.
 
-<VersionBlock firstVersion="1.12">
+<VersionBlock firstVersion="1.13">
 
 ## `dbt login` with dbt State
 
-For dbt State-specific login behavior (platform vs standalone sign-in paths, local prompts, and `user_settings.yml` behavior), refer to [`dbt login` with dbt State](/docs/deploy/dbt-state-setup#dbt-login-with-dbt-state).
+When [dbt State](/docs/deploy/dbt-state-about) is enabled, [`dbt login`](/reference/commands/login?#dbt-login---help) is used for dbt State authentication. Running this command opens a browser window with two options:
+
+- **Log in with your <Constant name="dbt_platform" /> account**: Enter your email address. If you don't have a <Constant name="dbt_platform" /> account, dbt Labs will create a standalone [Developer account](https://www.getdbt.com/pricing) for you. After that, you'll authorize access between the CLI and <Constant name="dbt_platform" />.
+- **Log in without a <Constant name="dbt_platform" /> account**: Redirects you to the dbt State standalone app at [app.state.dbt.com](https://app.state.dbt.com), where a token is created and stored locally at `~/.dbt/auth_state.json`. dbt State is automatically enabled locally after account creation.
+
+In the <Constant name="fusion_engine" />, after platform authentication, the CLI checks your configuration and responds accordingly:
+
+<SimpleTable>
+
+| dbt State enabled in <Constant name="dbt_platform" />? | dbt State enabled locally? | Behavior |
+|---|---|---|
+| ✅ | ✅ | dbt State is ready to use. |
+| ✅ | ❌ | CLI prompts you to enable dbt State locally. If you confirm, [`user_settings.yml`](/reference/global-configs/user-settings) is updated automatically. |
+| ❌ | ✅ | CLI prompts you to enable dbt State in your platform account. |
+
+</SimpleTable>
+
+<!-- In <Constant name="core" /> v1.12, `dbt login` automatically sets `manage_state: true` in [`user_settings.yml`](/reference/global-configs/user-settings) after platform authentication, unless you've explicitly disabled it. Whether dbt State is enabled in your <Constant name="dbt_platform" /> account is checked when you run a dbt command &mdash; if it's not enabled, dbt will fail on your next `dbt run` or `dbt build`. To resolve this, refer to [User settings](/reference/global-configs/user-settings#when-dbt-state-is-enabled-locally-but-not-in-dbt-platform). -->
 
 </VersionBlock>
 

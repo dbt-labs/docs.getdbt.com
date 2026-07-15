@@ -85,7 +85,7 @@ When enabled by an admin, <Constant name="wizard" /> is available to users with 
 
 For <Constant name="wizard" /> CLI, bring your own API key or credentials for a supported provider using [BYOK](/docs/dbt-ai/wizard-byok): OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Gemini, or Snowflake Cortex (preview). Install and configure the CLI on your local machine. BYOK means any token costs will be billed directly by whichever provider you choose.
 
-Refer to [Quickstart](/docs/dbt-ai/wizard-quickstart) for more information.
+Refer to [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart) for more information.
 
 </Expandable>
 

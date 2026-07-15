@@ -22,7 +22,7 @@ import CopilotWizardDifferences from '/snippets/_copilot-wizard-diff.md';
 - Be on a <Constant name="dbt_platform" /> [Enterprise-tier](https://www.getdbt.com/pricing) plan &mdash; [book a demo](https://www.getdbt.com/contact) to learn more about <Constant name="insights" />.
 - Available on all [tenant](/docs/platform/about-platform/tenancy) configurations. 
 - Have a <Constant name="dbt" /> [developer license](/docs/platform/manage-access/seats-and-users) with access to <Constant name="insights" />.
-- Configured [developer credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide).
+- Configured [user credentials](/docs/platform/studio-ide/develop-in-studio#get-started-with-the-studio-ide).
 
 ## Using dbt Copilot in Insights
 

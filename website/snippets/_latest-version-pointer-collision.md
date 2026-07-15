@@ -1,4 +1,10 @@
-To prevent naming collisions, dbt raises an error if the latest version's alias is the same as the pointer name. For example, the following configuration would cause an error because both `dim_customers_v2` and the pointer view would resolve to `dim_customers`:
+To prevent naming collisions, dbt raises a `dbt1005` error if the latest version's alias is the same as the pointer view name. In <Constant name="fusion" />, where `latest_version_pointer` is enabled by default, this error can surface on models that have an explicit `alias` matching the model's base name, even if you never configured the pointer yourself.
+
+For example, the following configuration would raise `dbt1005` because both `dim_customers_v2` and the pointer view would resolve to `dim_customers`:
+
+```
+dbt1005 (Cannot create latest version pointer: the latest version of 'dim_customers' is already aliased to 'dim_customers')
+```
 
 ```yaml
 models:

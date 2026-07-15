@@ -38,9 +38,19 @@ Warnings that should be treated as errors can be specified through the `error` p
   - [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/1.latest/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
   - Using the `--log-format json` flag.
 
+<VersionBlock firstVersion="1.12">
+
+Starting in v1.12, <Constant name="core" /> ignores [Fusion-specific names](https://github.com/dbt-labs/dbt-core/blob/1.12.latest/core/dbt/events/fusion_warn_error_options.py) in `warn_error_options` (for example, `StaticAnalysis` and `PackageParsingCompatibility`) instead of raising an error, and emits a note: `<name> is not being used because it's specific to the dbt Fusion engine.` This lets you share `warn_error_options` configs across <Constant name="core" /> and <Constant name="fusion" />. Genuine typos still raise an error.
+
+</VersionBlock>
+
 <VersionBlock firstVersion="2.0">
 
-In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). You can use either form interchangeably in `warn_error_options`. Messages printed at runtime include both the name and the code. See [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases) for the full list of supported event names and their corresponding codes.
+In the <Constant name="fusion_engine" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). 
+
+Runtime messages show both, but `warn_error_options` only accepts the _name_. Use the event name, Fusion-native name, or a supported group (`all`, `*`). Numeric codes aren't accepted and will cause an error. 
+
+To find the name for a code you see in your logs, check out [Supported legacy dbt-Core event name aliases](#supported-legacy-dbt-core-event-name-aliases).
 
 </VersionBlock>
 
@@ -192,7 +202,7 @@ Existing dbt-core event names fall into three categories:
 
 ### Warning codes in Fusion
 
-In <Constant name="fusion" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). You should only use the name in the `warn_error_options`, even though both will appear in any warning messages printed at runtime:
+In <Constant name="fusion" />, every warning has both a numeric code (for example, `1092`) and an event name (for example, `NoNodesForSelectionCriteria`). Warning messages at runtime show both, but `warn_error_options` only accepts the _name_,  never the code:
 
 ```yaml
 flags:
@@ -203,13 +213,13 @@ flags:
       - FreshnessConfigProblem   # by name
 ```
 
-Any value that is not a recognized numeric code, supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup.
+Any value that isn't a supported legacy event name, Fusion-native name, or supported group (`all`, `*`) causes <Constant name="fusion" /> to exit with an error at startup, including numeric codes. For example, `{error: [1092]}` fails, but `{error: [NoNodesForSelectionCriteria]}` works.
 
 ### Supported legacy dbt-core event name aliases
 
-Each row lists a <Constant name="fusion" /> warning code and the legacy <Constant name="core" /> event name. You can use either the numeric code or the event name interchangeably in your `warn_error_options` configuration:
+When you see a warning code in your logs, use the following table to find the matching event name to put in `warn_error_options`. The code column is only for looking up warnings you see at runtime &mdash; you can't use the code itself in your config:
 
-| Fusion code | dbt-core event name | Description |
+| Fusion code (runtime only) | dbt-core event name (use this in config) | Description |
 |---|---|---|
 | 1601 | `NoNodesSelected` | No nodes selected |
 | 1601 | `NothingToDo` | No nodes selected (alias) |
