@@ -18,6 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 For <Constant name="fusion_engine" /> updates, refer to the [dbt-fusion changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG-fusion.md).
 
+<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-rss.json).</span>
 
 ## July 2026
 
@@ -85,8 +86,6 @@ The following features are new or enhanced as part of dbt Labs announcements at 
 - **Enhanced** <Constant name="fusion" /> eligibility job prompts now use a **Debug on <Constant name="fusion" />** dropdown instead of a standalone **Run once on <Constant name="fusion" />** button. For more information, refer to [Update your jobs](/guides/prepare-fusion-upgrade?step=7).
 - **Enhancement:** The [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) input bar now supports arrow key history navigation. Press the up arrow at the start of the input to cycle through previous inputs, and the down arrow at the end to return to more recent ones. dbt stores up to 5 previous inputs per session.
 - **Enhancement:** Tool approval and file edit dialogs in the [<Constant name="dev_agent" />](/docs/dbt-ai/wizard-ide) now support number key shortcuts (1, 2, 3) to select options. The first option is auto-focused when a dialog appears, so you can act immediately without clicking.
-
-<span><img src="/img/fontawesome/rss.svg" alt="RSS" className="rss-icon" />Subscribe to release note updates via [RSS](https://docs.getdbt.com/feeds/release-notes-rss.xml), [Atom](https://docs.getdbt.com/feeds/release-notes-atom.xml), or [JSON Feed](https://docs.getdbt.com/feeds/release-notes-rss.json).</span>
 
 ## April 2026
 
