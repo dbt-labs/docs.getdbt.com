@@ -36,7 +36,7 @@ To enable dbt State:
     dbt login
     ```
 
-Authentication requires a pay-as-you-go <Constant name="dbt_platform" /> account with a free trial. For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+Authentication requires a pay-as-you-go <Constant name="dbt_platform" /> account with a [free trial](/docs/deploy/dbt-state-trial). For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ## Deferral
 
@@ -56,3 +56,8 @@ This is useful in development when you want to quickly populate a dev environmen
 
 ```bash
 dbt clone --select my_model
+```
+
+## dbt's selection syntax
+
+dbt has a [variety of selectors](/reference/node-selection/syntax) you can use to target specific parts of your project instead of building everything every time. For example, `+my_model` selects `my_model` and all of its upstream dependencies, while `my_model+2` selects `my_model` and two levels of downstream dependents. This lets you test your changes in isolation without running your entire project.
