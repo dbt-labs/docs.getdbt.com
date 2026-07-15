@@ -28,7 +28,7 @@ Hints are enabled by default. To disable them, use any of the following:
 
 ## Available hints
 
-The following hints are available today, with plans to add more in the future. 
+The following hints are available starting <Constant name="core" />  v1.12.
 
 ### Large build without state or deferral
 
