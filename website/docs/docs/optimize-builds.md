@@ -61,3 +61,7 @@ dbt clone --select my_model
 ## dbt's selection syntax
 
 dbt has a [variety of selectors](/reference/node-selection/syntax) you can use to target specific parts of your project instead of building everything every time. For example, `+my_model` selects `my_model` and all of its upstream dependencies, while `my_model+2` selects `my_model` and two levels of downstream dependents. This lets you test your changes in isolation without running your entire project.
+
+```bash
+dbt build --select +my_model
+```
