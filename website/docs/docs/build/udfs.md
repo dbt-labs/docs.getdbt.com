@@ -249,7 +249,7 @@ Follow these steps to define UDFs in dbt:
    	`volatility` is accepted in dbt for SQL, Python, and JavaScript UDFs, but the handling of it is warehouse-specific. For SQL and Python UDFs on BigQuery, `volatility` is ignored and dbt displays a warning. For JavaScript UDFs on BigQuery, `deterministic` and `non-deterministic` are applied when creating the UDF; `stable` is not supported. In Snowflake, all supported volatility values are applied when creating the UDF. Refer to [volatility](/reference/resource-configs/volatility) for more information.
     :::
 
-4. Run one of the following `dbt build` commands to build your UDFs and create them in the warehouse:
+3. Run one of the following `dbt build` commands to build your UDFs and create them in the warehouse:
 
     Build all UDFs:
     
@@ -422,7 +422,7 @@ Follow these steps to define UDFs in dbt:
     </TabItem>
     </Tabs>
 
-5. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
+4. Reference the UDF in a model using the `{{ function(...) }}` macro. For example:
 
     <File name="models/my_model.sql">
 
@@ -436,7 +436,7 @@ Follow these steps to define UDFs in dbt:
 
     When using [`--defer`](/reference/node-selection/defer), `function()` resolves to the existing UDF in the deferred environment (for example, production) if the function is not selected or not yet built in your target environment. This requires a state manifest specified using `--state` or an equivalent environment variable (such as `DBT_ENGINE_STATE`), which dbt uses to determine where to defer. This allows models that depend on UDFs to run successfully in [continuous integration](/docs/deploy/continuous-integration) and development workflows. For more information, refer to [Configure state selection](/reference/node-selection/configure-state).
 
-6. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
+5. Run `dbt compile` to see how the UDF is referenced. In the following example, the `{{ function('is_positive_int') }}` is replaced by the UDF name `udf_db.udf_schema.is_positive_int`.
 
     <File name="models/my_model.sql">
 
