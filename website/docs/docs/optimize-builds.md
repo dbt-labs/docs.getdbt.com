@@ -8,11 +8,13 @@ pagination_next: null
 
 # Optimize your dbt builds
 
-By default, dbt rebuilds every selected node on every run &mdash; even if nothing has changed. For large projects, this adds up: longer job times, higher warehouse costs, and slower feedback during development. dbt has features designed to help you skip unnecessary work and reuse existing results instead.
+By default, dbt rebuilds every selected node on every run &mdash; even if nothing has changed. This makes it easy to get started, but adds up for larger projects: longer job times, higher warehouse costs, and slower feedback during development. dbt has features designed to help you skip unnecessary work and reuse existing results instead.
 
 ## dbt State
 
-[dbt State](/docs/deploy/dbt-state-about) makes dbt smarter about what to build. Instead of rebuilding every node on every run, it compares each node's logic and upstream data against the previous run and picks the most efficient path:
+[dbt State](/docs/deploy/dbt-state-about) is a service that makes dbt smarter about what to build. It integrates into any dbt deployment (including self-hosted deployments) without requiring a recurring <Constant name="dbt_platform" /> subscription.
+
+Instead of rebuilding every node on every run, it compares each node's logic and upstream data against the previous run and picks the most efficient path:
 
 - **Skip** — If the node's logic and upstream data haven't changed, dbt reuses the existing object in your target schema as-is.
 - **Clone** — If the data is fresh but exists in a different schema (for example, production), dbt clones it rather than rebuilding from scratch.
@@ -34,7 +36,7 @@ To enable dbt State:
     dbt login
     ```
 
-Authentication requires a <Constant name="dbt_platform" /> account or a [standalone dbt State account](https://app.state.dbt.com). For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+Authentication requires a pay-as-you-go <Constant name="dbt_platform" /> account with a free trial. For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ## Deferral
 
@@ -54,4 +56,3 @@ This is useful in development when you want to quickly populate a dev environmen
 
 ```bash
 dbt clone --select my_model
-```
