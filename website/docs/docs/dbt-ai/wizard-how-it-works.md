@@ -158,20 +158,17 @@ How deferral is handled depends on the mode set up in `wizard_config.toml` for y
 |---|---|
 | `"wizard"` | <Constant name="wizard" /> handles deferral for you. You tell <Constant name="wizard" /> which target from your `profiles.yml` to defer to (it tries to detect one automatically when you first set up the project). <Constant name="wizard" /> then compiles that target and reuses its models for any upstream models you haven't built yourself. |
 | `"fusion_cloud"` | The <Constant name="dbt_platform" /> handles deferral against your connected environment, so <Constant name="wizard" /> doesn't manage local state. |
-| `"dbt-state"` | dbt state handles deferral, so <Constant name="wizard" /> skips its own production compile. |
+| `"cloud_cli"` | The <Constant name="platform_cli" /> handles credentials and deferral through the <Constant name="dbt_platform" />, so <Constant name="wizard" /> doesn't manage local state or inject deferral flags. |
+| `"dbt_state"` | dbt State or run cache handles deferral, so <Constant name="wizard" /> skips its own production compile. |
 | `"manual"` | You maintain the deferral manifest path manually. |
 | `"disabled"` | Deferral is disabled for the project. |
 </SimpleTable>
 
 For more about dbt State, refer to [About dbt State](/docs/deploy/dbt-state-about).
 
-When <Constant name="wizard" /> manages deferral, it always keeps [favor-state](https://docs.getdbt.com/reference/node-selection/defer?version=2.0#favor-state) _off_. `favor-state` is a built-in dbt deferral option, not something you configure in <Constant name="wizard" />.
+The per-project `favor_state` setting defaults to `true`. With favor-state on, deferred relations take precedence. Set `favor_state = false` when you want dbt to use relations you have already built in development and fall back to the deferred environment for relations that aren't available there.
 
-With favor-state off, <Constant name="wizard" /> uses your own dev version of a model when you’ve already built one. If you haven’t built that model yet, it uses the version from the deferred target instead.
-
-If favor-state were _on_, dbt would do the opposite: it would always use the deferred environment’s version, even when you’ve already built the model locally.
-
-<Constant name="wizard" /> stores the deferral mode for each project in `wizard_config.toml` under `deferral.mode`. To set or change it, refer to the [config reference](/docs/dbt-ai/wizard-config#deferral).
+<Constant name="wizard" /> stores the deferral mode for each project in `wizard_config.toml` under `deferral.mode`. For a complete setup and verification procedure, refer to [Developing with production deferral](/docs/dbt-ai/wizard-production-deferral).
 
 
 ### Approval and sandboxing

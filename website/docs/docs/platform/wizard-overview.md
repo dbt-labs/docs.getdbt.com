@@ -51,6 +51,8 @@ The following table shows where <Constant name="wizard" /> is available, the AI 
 
 For included action limits by plan and how managed usage is metered, refer to the [Billing](/docs/platform/billing) page. To bring your own key, refer to [supported providers](#supported-ai-providers) on this page.
 
+For a feature-by-feature comparison of the interactive CLI, headless CLI, <Constant name="studio_ide" />, and home tab, refer to [<Constant name="wizard" /> capabilities by surface](/docs/dbt-ai/wizard-capabilities-by-surface).
+
 <WizardSupportedProviders />
 
 ## Choose a dbt Wizard experience
@@ -110,6 +112,7 @@ Now that you know where to start, continue with **[Use self-hosted dbt Wizard](/
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide) — generate docs, tests, semantic models, SQL, and delegate end-to-end model work
 - [Use skills in the dbt platform](/docs/dbt-ai/wizard-platform-skills) — give dbt Wizard reusable instructions for your project
 - [Use MCP servers with dbt Wizard CLI](/docs/dbt-ai/wizard-mcp) — connect the dbt Wizard CLI to more tools and context
+- [dbt Wizard capabilities by surface](/docs/dbt-ai/wizard-capabilities-by-surface) — compare editing, automation, extension, and preview capabilities
 - [Migrate to dbt Wizard](/docs/dbt-ai/wizard-migrate) — switch from Claude Code, Cursor, or another AI agent to dbt Wizard
 - [Data & Privacy in the dbt platform](/docs/dbt-ai/wizard-platform-privacy-data) — understand how dbt Wizard in the dbt platform handles privacy and data
 

@@ -30,7 +30,7 @@ Pipe input via stdin:
 echo "which sources have stale freshness?" | wizard exec -
 ```
 
-Use `exec` in CI to gate on quality checks:
+Use `exec` in CI to analyze a quality question:
 
 ```bash
 # Check test coverage before merging
@@ -85,13 +85,18 @@ wizard review --commit abc1234
 ### Example: GitHub Actions code review
 
 ```yaml
+- name: Check out the pull request
+  uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+
 - name: dbt Wizard review
-  run: |
-    wizard review \
-      --base ${{ github.base_ref }} > review.md
+  run: wizard review --base "origin/${{ github.base_ref }}" > review.md
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
+
+Review findings don't automatically produce a failing exit status. Keep required parse, lint, and test gates separate, and preserve the review as additional evidence. For a complete workflow, refer to [Automate dbt reviews in CI with <Constant name="wizard" />](/docs/dbt-ai/wizard-ci-review).
 
 ## Permissions in headless mode
 
@@ -113,4 +118,5 @@ For read-only analysis tasks (coverage checks, impact queries, documentation gap
 ## Related docs
 
 - [<Constant name="wizard" /> command reference](/docs/dbt-ai/wizard-cli-reference)
+- [Automate dbt reviews in CI](/docs/dbt-ai/wizard-ci-review)
 - [Use cases and examples](/docs/dbt-ai/wizard-use-cases)

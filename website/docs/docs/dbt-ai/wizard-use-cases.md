@@ -115,6 +115,8 @@ The nightly job failed. What's the root cause and how do I fix it?
 - You can be more specific: "What caused the failure in `fct_orders` in the last run of the Production job?"
 - Wizard won't apply a fix without your approval, which is especially useful when the failure is in a production model
 
+For the evidence-gathering, diagnosis, and validation procedure, refer to [Debug a failed dbt job with <Constant name="wizard" />](/docs/dbt-ai/wizard-debug-failed-job).
+
 
 ## Assess source impact
 
@@ -220,13 +222,15 @@ week, and month granularity.
 
 **What <Constant name="wizard" /> does:**
 1. Reads `fct_orders.sql` and its YAML to understand available columns
-2. Generates a `semantic_models:` block with entities, dimensions, and measures
-3. Adds the metrics you described with the correct aggregation types
-4. Validates that the column references exist in the model
+2. Determines the dbt version and selects the compatible Semantic Layer YAML structure
+3. Proposes entities, dimensions, and metrics based on the model grain and business request
+4. Adds the definitions you approve and validates their references
 
 **Tips:**
 - If you're unsure what entities to use, ask first: "What would be good entities for a semantic model on fct_orders?"
 - <Constant name="wizard" /> follows the [dbt Semantic Layer documentation](/docs/build/semantic-models): you can ask it to explain any generated field
+
+For version-specific examples and validation steps, refer to [Build Semantic Layer definitions with <Constant name="wizard" />](/docs/dbt-ai/wizard-semantic-layer).
 
 ## CI and scripting
 
@@ -243,12 +247,17 @@ wizard review --base BRANCH_NAME
 wizard exec --json "summarize test coverage by schema"
 ```
 
+For a pull request workflow that preserves review output and keeps deterministic checks separate, refer to [Automate dbt reviews in CI with <Constant name="wizard" />](/docs/dbt-ai/wizard-ci-review).
+
 ## Related docs
 
 - [Use dbt Wizard locally](/docs/dbt-ai/wizard-quickstart)
 - [Understand a dbt project](/docs/dbt-ai/wizard-understand-project)
 - [Validate dbt changes](/docs/dbt-ai/wizard-validate-changes)
 - [Add data-informed tests](/docs/dbt-ai/wizard-data-informed-tests)
+- [Debug a failed job](/docs/dbt-ai/wizard-debug-failed-job)
+- [Build Semantic Layer definitions](/docs/dbt-ai/wizard-semantic-layer)
+- [Automate dbt reviews in CI](/docs/dbt-ai/wizard-ci-review)
 - [dbt Wizard overview](/docs/dbt-ai/about-dbt-wizard-cli)
 - [Configure BYOK](/docs/dbt-ai/wizard-byok)
 - [dbt Wizard in Studio IDE](/docs/dbt-ai/wizard-ide): same agent, in the dbt platform
