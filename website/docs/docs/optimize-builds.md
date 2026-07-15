@@ -36,7 +36,7 @@ To enable dbt State:
     dbt login
     ```
 
-Authentication requires a pay-as-you-go <Constant name="dbt_platform" /> account with a [free trial](/docs/deploy/dbt-state-trial). For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
+Authentication requires a <Constant name="dbt_platform" /> account on a Starter or Enterprise plan with a [free trial](/docs/deploy/dbt-state-trial). For more information, refer to [Setting up dbt State](/docs/deploy/dbt-state-setup).
 
 ## Deferral
 
