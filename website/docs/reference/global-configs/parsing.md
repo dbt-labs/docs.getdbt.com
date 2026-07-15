@@ -58,9 +58,9 @@ config:
 
 <VersionBlock firstVersion="1.12">
 
-:::note dbt Core flag
+:::note <Constant name="core" /> flag
 
-The v2 parser flag is only supported on dbt Core v1.12 or higher. If you're already on <Constant name="fusion" />, the flag has no impact.
+The v2 parser flag is only supported on <Constant name="core" /> v1.12 or higher. If you're already on <Constant name="fusion" />, the flag has no impact.
 
 :::
 
