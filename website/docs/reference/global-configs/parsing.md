@@ -60,15 +60,13 @@ config:
 
 :::note <Constant name="core" /> flag
 
-The v2 parser flag is only supported on <Constant name="core" /> v1.12 or higher. If you're already on <Constant name="fusion" />, the flag has no impact.
+The v2 parser flag is only applicable on <Constant name="core" /> v1.12 or higher. If you're already on <Constant name="fusion" />, the flag has no impact.
 
 :::
 
-The `use_v2_parser` flag delegates parsing to the Fusion parser instead of <Constant name="core" />'s own parser. This is an opt-in flag — it changes no behavior unless explicitly set.
+The `use_v2_parser` flag delegates parsing to the v2 parser. This is an opt-in flag.
 
-The v2 parser is the Rust-based parser from the <Constant name="fusion_engine" />. It's significantly faster than <Constant name="core" />'s Python parser, especially on larger projects, where it can be 5–10× quicker. Enabling it can speed up your development workflow and cut down on job startup times. Because it delegates to the <Constant name="fusion" /> parser used in v2.0, it's also a low-risk way to test <Constant name="fusion" /> compatibility from within <Constant name="core" /> v1.12.
-
-When enabled, dbt hands parsing off to the Fusion parser, loads the `manifest.json` it produces, and skips <Constant name="core" />'s own parser entirely. 
+The v2 parser is the Rust-based parser from the <Constant name="fusion_engine" />. It's significantly faster than the v1 Python parser, especially on larger projects, where it can be 5–10× quicker. Enabling it can speed up your development workflow and cut down on job startup times. Because it delegates to the parser used in v2.0, it's also a low-risk way to test compatibility with v2 from within <Constant name="core" /> v1.12.
 
 You can enable the v2 parser in three ways:
 
@@ -89,15 +87,15 @@ Other behaviors to know about include:
 
 
 - **Partial parsing**: Partial parsing is disabled when `--use-v2-parser` is set. Any stale `partial_parse.msgpack` from a prior run is automatically removed.
-- **`write_manifest`**: `write_manifest` does not work in this mode because the <Constant name="fusion" /> parser's artifacts (`manifest.json` and `semantic_manifest.json`) are canonical and <Constant name="core" /> does not re-serialize or overwrite them.
+- **`write_manifest`**: `write_manifest` does not work in this mode because the v2 parser's artifacts (`manifest.json` and `semantic_manifest.json`) are canonical and v1 does not re-serialize or overwrite them.
 - **Artifacts in `target/`**: When `write_json` is enabled, the handoff `manifest.json` (and `semantic_manifest.json` if present) is copied into your project's `target/` directory.
 
-Because the flag only changes _how_ your project is parsed, the lightest way to check <Constant name="fusion" /> parser compatibility is `dbt parse`. You can also pass `--use-v2-parser` with any other command.
+Because the flag only changes _how_ your project is parsed, the lightest way to check v2 parse compatibility is `dbt parse`. You can also pass `--use-v2-parser` with any other command.
 
 <File name="Usage">
 
 ```bash
-# Test Fusion parser compatibility without running models (recommended)
+# Test v2 parser compatibility without running models (recommended)
 dbt parse --use-v2-parser
 
 # Or use it with any command
