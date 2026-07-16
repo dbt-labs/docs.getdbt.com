@@ -100,7 +100,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 - You have a Slack workspace that you want to receive job notifications from.
 - You must be a Slack Workspace Owner. 
 - You must be an account admin to configure Slack notifications in <Constant name="dbt" />. For more details, refer to [Users and licenses](/docs/platform/manage-access/seats-and-users).
-- The integration only supports _public_ channels in the Slack workspace. 
+- The **Notification channel** dropdown in the UI only lists _public_ channels. To send notifications to a private channel, configure it through the [Admin API](/docs/dbt-apis/admin-api) or the [dbt platform Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) instead of the UI.
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
@@ -159,7 +159,7 @@ A single <Constant name="dbt_platform" /> account can integrate with one Slack w
 - A <Constant name="dbt_platform"/> account admin must link the Slack app at the account level.
 - Install the official <Constant name="dbt_platform"/> Slack app using the [steps outlined in the next section](#set-up-the-slack-integration-1).
 - To install the Slack app to a workspace, your Slack org must permit app installations. In some orgs this requires a Slack admin approval.
-- The integration only supports _public_ channels in the Slack workspace. 
+- The **Notification channel** dropdown in the UI only lists _public_ channels. To send notifications to a private channel, configure it through the [Admin API](/docs/dbt-apis/admin-api) or the [dbt platform Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs) instead of the UI.
 
 Once an account admin links the Slack app, licensed users can configure job notifications if they have one of the following:
 - The **Account Admin**, **Owner**, or **Member** default [group](/docs/platform/manage-access/about-user-access#groups)
@@ -227,7 +227,7 @@ The banner appears when all of the following are true:
 
 Before migrating, you must unlink the legacy Slack integration and link the <Constant name="dbt_platform" /> app. Unlinking the legacy integration is a manual step, and only one Slack app can be linked at a time.
 
-The <Constant name="dbt_platform" /> Slack app sends job notifications to _public_ channels in your workspace. Private channels are different: notifications are not delivered there until you invite the <Constant name="dbt_platform" /> app to each private channel you use.
+The <Constant name="dbt_platform" /> Slack app delivers notifications to any channel &mdash; public or private &mdash; configured in your notification settings, including channels that were set up through the [Admin API](/docs/dbt-apis/admin-api) or Terraform rather than the UI. For a private channel, notifications aren't delivered until you invite the <Constant name="dbt_platform" /> app to that channel; you can invite the app before or after migrating, and delivery picks up as soon as the invite is accepted.
 
 1. Click **Migrate settings** to copy your existing settings to the <Constant name="dbt_platform" /> app, including:
 
